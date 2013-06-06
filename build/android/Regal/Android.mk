@@ -15,7 +15,7 @@ endif
 
 regal_cflags := -DANDROID=1 -DREGAL_NO_PNG=1 -Werror
 
-regal_path   := $(LOCAL_PATH)/../../../..
+regal_path   := $(LOCAL_PATH)/../../..
 
 include $(regal_path)/build/regal.inc
 
@@ -25,7 +25,7 @@ regal_src_files += $(regal_path)/src/mongoose/mongoose.c $(regal_path)/src/md5/s
 regal_src_files := $(patsubst $(LOCAL_PATH)/%,%,$(regal_src_files))
 
 regal_c_includes := $(regal_path)/include $(regal_path)/src/regal $(regal_path)/src/boost $(regal_path)/src/mongoose $(regal_path)/src/md5/include $(regal_path)/src/lookup3 $(regal_path)/src/jsonsl
-regal_c_includes := $(patsubst $(LOCAL_PATH)/../%,%,$(regal_c_includes))
+#regal_c_includes := $(patsubst $(LOCAL_PATH)/%,%,$(regal_c_includes))
 
 regal_export_c_includes := $(regal_path)/include
 
