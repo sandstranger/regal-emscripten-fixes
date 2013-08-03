@@ -33,6 +33,8 @@
 
 #include "RegalUtil.h"
 
+#if REGAL_EMULATION
+
 REGAL_GLOBAL_BEGIN
 
 #include <cstring>    // For memset, memcpy
@@ -44,7 +46,6 @@ REGAL_GLOBAL_BEGIN
 #include <boost/print/string_list.hpp>
 
 #include "RegalEmu.h"
-#include "RegalIff.h"
 #include "RegalToken.h"
 #include "RegalDispatch.h"
 
@@ -83,14 +84,17 @@ REGAL_NAMESPACE_BEGIN
 //    http://graphics.stanford.edu/papers/cr/
 //
 
-namespace ClientState
+namespace Client
+{
+
+namespace State
 {
 
   using   ::boost::print::hex;
   using   ::boost::print::print_string;
   typedef ::boost::print::string_list<std::string> string_list;
 
-  inline static void enable(DispatchTable &dt, const GLenum cap, const GLboolean enable)
+  inline static void enable(DispatchTableGL &dt, const GLenum cap, const GLboolean enable)
   {
     if (enable)
       dt.call(&dt.glEnableClientState)(cap);
@@ -98,7 +102,7 @@ namespace ClientState
       dt.call(&dt.glDisableClientState)(cap);
   }
 
-  inline static void enablei(DispatchTable &dt, const GLenum cap, const GLuint index, const GLboolean enable)
+  inline static void enablei(DispatchTableGL &dt, const GLenum cap, const GLuint index, const GLboolean enable)
   {
     if (enable)
       dt.call(&dt.glEnableClientStateiEXT)(cap,index);
@@ -134,7 +138,7 @@ namespace ClientState
     TEX_COORD       = 7
   } vaName;
 
-  GLenum vaEnum[][6] =
+  const GLenum vaEnum[][6] =
   {
     { GL_VERTEX_ARRAY,          GL_VERTEX_ARRAY_POINTER,          GL_VERTEX_ARRAY_BUFFER_BINDING,          GL_VERTEX_ARRAY_SIZE,          GL_VERTEX_ARRAY_TYPE,          GL_VERTEX_ARRAY_STRIDE          },
     { GL_NORMAL_ARRAY,          GL_NORMAL_ARRAY_POINTER,          GL_NORMAL_ARRAY_BUFFER_BINDING,          GL_ZERO,                       GL_NORMAL_ARRAY_TYPE,          GL_NORMAL_ARRAY_STRIDE          },
@@ -176,7 +180,7 @@ namespace ClientState
       return *this;
     }
 
-    NamedVertexArray &get(DispatchTable &dt, vaName va)
+    NamedVertexArray &get(DispatchTableGL &dt, vaName va)
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -207,7 +211,7 @@ namespace ClientState
       return *this;
     }
 
-    const NamedVertexArray &set(DispatchTable &dt, vaName va) const
+    const NamedVertexArray &set(DispatchTableGL &dt, vaName va) const
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -330,7 +334,7 @@ namespace ClientState
       return *this;
     }
 
-    VertexBufferBindPoint &get(DispatchTable &dt, GLuint index)
+    VertexBufferBindPoint &get(DispatchTableGL &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -343,7 +347,7 @@ namespace ClientState
       return *this;
     }
 
-    const VertexBufferBindPoint &set(DispatchTable &dt, GLuint index) const
+    const VertexBufferBindPoint &set(DispatchTableGL &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -403,7 +407,7 @@ namespace ClientState
       return *this;
     }
 
-    GenericVertexArray &get(DispatchTable &dt, GLuint index)
+    GenericVertexArray &get(DispatchTableGL &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -426,7 +430,7 @@ namespace ClientState
       return *this;
     }
 
-    const GenericVertexArray &set(DispatchTable &dt, GLuint index) const
+    const GenericVertexArray &set(DispatchTableGL &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -532,7 +536,7 @@ namespace ClientState
       return *this;
     }
 
-    inline VertexArray &get(DispatchTable &dt)
+    inline VertexArray &get(DispatchTableGL &dt)
     {
       dt.call(&dt.glGetIntegerv)(GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
       if (vertexArrayBinding)
@@ -554,7 +558,7 @@ namespace ClientState
       return *this;
     }
 
-    inline const VertexArray &set(DispatchTable &dt) const
+    inline const VertexArray &set(DispatchTableGL &dt) const
     {
       dt.call(&dt.glBindVertexArray)(0);
       for (GLuint ii=0; ii<nNamedArrays; ii++)
@@ -629,11 +633,21 @@ namespace ClientState
       SetEnablei(cap, index, GL_FALSE);
     }
 
-    void SetEnableClientStatei(GLenum cap, GLuint index, GLboolean enabled)
+    inline void glEnableIndexedEXT(GLenum cap, GLuint index)
+    {
+      SetEnablei(cap, index, GL_TRUE);
+    }
+
+    inline void glDisableIndexedEXT(GLenum cap, GLuint index)
+    {
+      SetEnablei(cap, index, GL_FALSE);
+    }
+
+    void SetEnableClientStatei(GLuint vao, GLenum cap, GLuint index, GLboolean enabled)
     {
       // only handle these if no VAO is bound
 
-      if (vertexArrayBinding)
+      if (vao)
         return;
 
       switch (cap)
@@ -669,25 +683,35 @@ namespace ClientState
 
     inline void glEnableClientState(GLenum cap)
     {
-      SetEnableClientStatei(cap, 0, GL_TRUE);
+      SetEnableClientStatei(vertexArrayBinding, cap, 0, GL_TRUE);
     }
 
     inline void glDisableClientState(GLenum cap)
     {
-      SetEnableClientStatei(cap, 0, GL_FALSE);
+      SetEnableClientStatei(vertexArrayBinding, cap, 0, GL_FALSE);
     }
 
-    inline void glEnableClientStatei(GLenum cap, GLuint index)
+    inline void glEnableClientStateiEXT(GLenum cap, GLuint index)
     {
-      SetEnableClientStatei(cap, index, GL_TRUE);
+      SetEnableClientStatei(vertexArrayBinding, cap, index, GL_TRUE);
     }
 
-    inline void glDisableClientStatei(GLenum cap, GLuint index)
+    inline void glDisableClientStateiEXT(GLenum cap, GLuint index)
     {
-      SetEnableClientStatei(cap, index, GL_FALSE);
+      SetEnableClientStatei(vertexArrayBinding, cap, index, GL_FALSE);
     }
 
-    void BindBuffer( GLenum target, GLuint buffer )
+    inline void glEnableClientStateIndexedEXT(GLenum cap, GLuint index)
+    {
+      SetEnableClientStatei(vertexArrayBinding, cap, index, GL_TRUE);
+    }
+
+    inline void glDisableClientStateIndexedEXT(GLenum cap, GLuint index)
+    {
+      SetEnableClientStatei(vertexArrayBinding, cap, index, GL_FALSE);
+    }
+
+    void glBindBuffer( GLenum target, GLuint buffer )
     {
       switch (target)
       {
@@ -703,101 +727,122 @@ namespace ClientState
       }
     }
 
-    void glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+    inline void glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        named[VERTEX].buffer = arrayBufferBinding;
-        named[VERTEX].size = size;
-        named[VERTEX].type = type;
-        named[VERTEX].stride = stride;
-        named[VERTEX].pointer = pointer;
-      }
+        glVertexArrayVertexOffsetEXT(vertexArrayBinding, arrayBufferBinding, size, type, stride, ((char *)pointer - (char *)NULL));
     }
 
-    void glNormalPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
+    inline void glNormalPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        named[NORMAL].buffer = arrayBufferBinding;
-        named[NORMAL].type = type;
-        named[NORMAL].stride = stride;
-        named[NORMAL].pointer = pointer;
-      }
+        glVertexArrayNormalOffsetEXT(vertexArrayBinding, arrayBufferBinding, type, stride, ((char *)pointer - (char *)NULL));
     }
 
-    void glColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+    inline void glColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        named[COLOR].buffer = arrayBufferBinding;
-        named[COLOR].size = size;
-        named[COLOR].type = type;
-        named[COLOR].stride = stride;
-        named[COLOR].pointer = pointer;
-      }
+        glVertexArrayColorOffsetEXT(vertexArrayBinding, arrayBufferBinding, size, type, stride, ((char *)pointer - (char *)NULL));
     }
 
-    void glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+    inline void glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        named[SECONDARY_COLOR].buffer = arrayBufferBinding;
-        named[SECONDARY_COLOR].size = size;
-        named[SECONDARY_COLOR].type = type;
-        named[SECONDARY_COLOR].stride = stride;
-        named[SECONDARY_COLOR].pointer = pointer;
-      }
+        glVertexArraySecondaryColorOffsetEXT(vertexArrayBinding, arrayBufferBinding, size, type, stride, ((char *)pointer - (char *)NULL));
     }
 
-    void glIndexPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
+    inline void glIndexPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        named[INDEX].buffer = arrayBufferBinding;
-        named[INDEX].type = type;
-        named[INDEX].stride = stride;
-        named[INDEX].pointer = pointer;
-      }
+        glVertexArrayIndexOffsetEXT(vertexArrayBinding, arrayBufferBinding, type, stride, ((char *)pointer - (char *)NULL));
     }
 
-    void glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
+    inline void glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        named[EDGE_FLAG].buffer = arrayBufferBinding;
-        named[EDGE_FLAG].stride = stride;
-        named[EDGE_FLAG].pointer = pointer;
-      }
+        glVertexArrayEdgeFlagOffsetEXT(vertexArrayBinding, arrayBufferBinding, stride, ((char *)pointer - (char *)NULL));
     }
 
-    void glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
+    inline void glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        named[FOG_COORD].buffer = arrayBufferBinding;
-        named[FOG_COORD].type = type;
-        named[FOG_COORD].stride = stride;
-        named[FOG_COORD].pointer = pointer;
-      }
+        glVertexArrayFogCoordOffsetEXT(vertexArrayBinding, arrayBufferBinding, type, stride, ((char *)pointer - (char *)NULL));
     }
 
-    void glMultiTexCoordPointerEXT(GLenum index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+    inline void glMultiTexCoordPointerEXT(GLenum index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
     {
       if (!vertexArrayBinding)
-      {
-        GLuint ii = 7 + (index - GL_TEXTURE0);
-        named[ii].buffer = arrayBufferBinding;
-        named[ii].size = size;
-        named[ii].type = type;
-        named[ii].stride = stride;
-        named[ii].pointer = pointer;
-      }
+        glVertexArrayMultiTexCoordOffsetEXT(vertexArrayBinding, arrayBufferBinding, index, size, type, stride, ((char *)pointer - (char *)NULL));
     }
 
     inline void glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
     {
-      glMultiTexCoordPointerEXT(clientActiveTexture,size,type,stride,pointer);
+      if (!vertexArrayBinding)
+        glVertexArrayMultiTexCoordOffsetEXT(vertexArrayBinding, arrayBufferBinding, clientActiveTexture, size, type, stride, ((char *)pointer - (char *)NULL));
+    }
+
+    GLsizei computeEffectiveStride(GLsizei stride, GLint size, GLenum type)
+    {
+      if (stride != 0)
+        return stride;
+
+      // when stride == 0, compute effectiveStride based on size and type
+
+      if (size == GL_BGRA)
+        return 4;
+
+      switch (type)
+      {
+        case GL_BYTE:
+        case GL_UNSIGNED_BYTE:
+          break;
+        case GL_INT_2_10_10_10_REV:
+        case GL_UNSIGNED_INT_2_10_10_10_REV:
+          // size must be 4 for these. Just return that.
+          break;
+        case GL_SHORT:
+        case GL_UNSIGNED_SHORT:
+        case GL_HALF_FLOAT:
+          size *= 2;
+          break;
+        case GL_INT:
+        case GL_UNSIGNED_INT:
+        case GL_FLOAT:
+        case GL_FIXED:
+          size *= 4;
+          break;
+        case GL_DOUBLE:
+          size *= 8;
+          break;
+        default:
+          size = 0;
+          break;
+      }
+
+      return size;
+    }
+
+    inline void glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid * pointer)
+    {
+      if (!vertexArrayBinding)
+        glVertexArrayVertexAttribOffsetEXT(vertexArrayBinding, arrayBufferBinding, index, size, type, normalized, stride, ((char *)pointer - (char *)NULL));
+    }
+
+    inline void glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
+    {
+      if (!vertexArrayBinding)
+        glVertexArrayVertexAttribIOffsetEXT(vertexArrayBinding, arrayBufferBinding, index, size, type, stride, ((char *)pointer - (char *)NULL));
+    }
+
+    void glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid * pointer)
+    {
+      if (!vertexArrayBinding)
+      {
+        glVertexAttribLFormat(index, size, type, 0);
+        glVertexAttribBinding(index, index);
+        GLsizei effectiveStride = computeEffectiveStride(stride, size, type);
+        glBindVertexBuffer(index, arrayBufferBinding, (char *)pointer - (char *)NULL, effectiveStride);
+      }
     }
 
     void glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
@@ -807,6 +852,15 @@ namespace ClientState
         bindings[bindingindex].buffer = buffer;
         bindings[bindingindex].offset = offset;
         bindings[bindingindex].stride = stride;
+      }
+    }
+
+    inline void glVertexAttribDivisor(GLuint index, GLuint divisor)
+    {
+      if (!vertexArrayBinding)
+      {
+        generic[index].bindingIndex = index;
+        bindings[index].divisor = divisor;
       }
     }
 
@@ -887,9 +941,582 @@ namespace ClientState
     {
       vertexArrayBinding = array;
     }
+
+    inline void glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
+    {
+      if (!vaobj)
+        SetEnableClientStatei(vaobj, array, 0, GL_TRUE);
+    }
+
+    inline void glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
+    {
+      if (!vaobj)
+        SetEnableClientStatei(vaobj, array, 0, GL_FALSE);
+    }
+
+    inline void glEnableVertexArrayAttribEXT(GLuint vaobj, GLuint index)
+    {
+      if (!vaobj)
+        generic[index].enabled = GL_TRUE;
+    }
+
+    inline void glDisableVertexArrayAttribEXT(GLuint vaobj, GLuint index)
+    {
+      if (!vaobj)
+        generic[index].enabled = GL_FALSE;
+    }
+
+    void glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        named[VERTEX].buffer = buffer;
+        named[VERTEX].size = size;
+        named[VERTEX].type = type;
+        named[VERTEX].stride = stride;
+        named[VERTEX].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    void glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        named[NORMAL].buffer = buffer;
+        named[NORMAL].type = type;
+        named[NORMAL].stride = stride;
+        named[NORMAL].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    void glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        named[COLOR].buffer = buffer;
+        named[COLOR].size = size;
+        named[COLOR].type = type;
+        named[COLOR].stride = stride;
+        named[COLOR].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    void glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        named[SECONDARY_COLOR].buffer = buffer;
+        named[SECONDARY_COLOR].size = size;
+        named[SECONDARY_COLOR].type = type;
+        named[SECONDARY_COLOR].stride = stride;
+        named[SECONDARY_COLOR].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    void glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        named[INDEX].buffer = buffer;
+        named[INDEX].type = type;
+        named[INDEX].stride = stride;
+        named[INDEX].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    void glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        named[EDGE_FLAG].buffer = buffer;
+        named[EDGE_FLAG].stride = stride;
+        named[EDGE_FLAG].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    void glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        named[FOG_COORD].buffer = buffer;
+        named[FOG_COORD].type = type;
+        named[FOG_COORD].stride = stride;
+        named[FOG_COORD].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    void glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum index, GLint size, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        GLuint ii = 7 + (index - GL_TEXTURE0);
+        named[ii].buffer = buffer;
+        named[ii].size = size;
+        named[ii].type = type;
+        named[ii].stride = stride;
+        named[ii].pointer = reinterpret_cast<const GLvoid *>(offset);
+      }
+    }
+
+    inline void glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, clientActiveTexture, size, type, stride, offset);
+    }
+
+    void glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        glVertexAttribFormat(index, size, type, normalized, 0);
+        glVertexAttribBinding(index, index);
+        GLsizei effectiveStride = computeEffectiveStride(stride, size, type);
+        glBindVertexBuffer(index, buffer, offset, effectiveStride);
+      }
+    }
+
+    void glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset)
+    {
+      if (!vaobj)
+      {
+        glVertexAttribIFormat(index, size, type, 0);
+        glVertexAttribBinding(index, index);
+        GLsizei effectiveStride = computeEffectiveStride(stride, size, type);
+        glBindVertexBuffer(index, buffer, offset, effectiveStride);
+      }
+    }
+
+    void glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer)
+    {
+      if (vertexArrayBinding)
+        return;
+
+      // from glspec43.compatibility.20130214.withchanges.pdf
+      // p. 365, section 10.5.1 "Interleaved Arrays"
+      //
+      // set et; ec; en; st; sc; sv; tc; pc; pn; pv; and s as a function
+      // of table 10.6 and the value of format.
+
+      GLboolean et, ec, en;
+      GLenum    tc;
+      GLsizei   st, sc, sv;
+      GLsizei   pc, pn, pv;
+      GLsizei   s;
+
+      const int f = sizeof(GL_FLOAT);
+      const int c = 4 * sizeof(GL_UNSIGNED_BYTE);
+
+      switch(format)
+      {
+        case GL_V2F:
+          et = GL_FALSE;
+          ec = GL_FALSE;
+          en = GL_FALSE;
+          tc = GL_FLOAT;
+          st = 0;
+          sc = 0;
+          sv = 2;
+          pc = 0;
+          pn = 0;
+          pv = 0;
+          pv = 0;
+          s  = 2 * f;
+          break;
+        case GL_V3F:
+          et = GL_FALSE;
+          ec = GL_FALSE;
+          en = GL_FALSE;
+          tc = GL_FLOAT;
+          st = 0;
+          sc = 0;
+          sv = 3;
+          pc = 0;
+          pn = 0;
+          pv = 0;
+          s  = 3 * f;
+          break;
+        case GL_C4UB_V2F:
+          et = GL_FALSE;
+          ec = GL_TRUE;
+          en = GL_FALSE;
+          tc = GL_UNSIGNED_BYTE;
+          st = 0;
+          sc = 4;
+          sv = 2;
+          pc = 0;
+          pn = 0;
+          pv = c;
+          s  = c + 2 * f;
+          break;
+        case GL_C4UB_V3F:
+          et = GL_FALSE;
+          ec = GL_TRUE;
+          en = GL_FALSE;
+          tc = GL_UNSIGNED_BYTE;
+          st = 0;
+          sc = 4;
+          sv = 3;
+          pc = 0;
+          pn = 0;
+          pv = c;
+          s  = c + 3 * f;
+          break;
+        case GL_C3F_V3F:
+          et = GL_FALSE;
+          ec = GL_TRUE;
+          en = GL_FALSE;
+          tc = GL_FLOAT;
+          st = 0;
+          sc = 3;
+          sv = 3;
+          pc = 0;
+          pn = 0;
+          pv = 3 * f;
+          s  = 6 * f;
+          break;
+        case GL_N3F_V3F:
+          et = GL_FALSE;
+          ec = GL_FALSE;
+          en = GL_TRUE;
+          tc = GL_FLOAT;
+          st = 0;
+          sc = 0;
+          sv = 3;
+          pc = 0;
+          pn = 0;
+          pv = 3 * f;
+          s  = 6 * f;
+          break;
+        case GL_C4F_N3F_V3F:
+          et = GL_FALSE;
+          ec = GL_TRUE;
+          en = GL_TRUE;
+          tc = GL_FLOAT;
+          st = 0;
+          sc = 4;
+          sv = 3;
+          pc = 0;
+          pn = 4 * f;
+          pv = 7 * f;
+          s  = 10 * f;
+          break;
+        case GL_T2F_V3F:
+          et = GL_TRUE;
+          ec = GL_FALSE;
+          en = GL_FALSE;
+          tc = GL_FLOAT;
+          st = 2;
+          sc = 0;
+          sv = 3;
+          pc = 0;
+          pn = 0;
+          pv = 2 * f;
+          s  = 5 * f;
+          break;
+        case GL_T4F_V4F:
+          et = GL_TRUE;
+          ec = GL_FALSE;
+          en = GL_FALSE;
+          tc = GL_FLOAT;
+          st = 4;
+          sc = 0;
+          sv = 4;
+          pc = 0;
+          pn = 0;
+          pv = 4 * f;
+          s  = 8 * f;
+          break;
+        case GL_T2F_C4UB_V3F:
+          et = GL_TRUE;
+          ec = GL_TRUE;
+          en = GL_FALSE;
+          tc = GL_UNSIGNED_BYTE;
+          st = 2;
+          sc = 4;
+          sv = 3;
+          pc = 2 * f;
+          pn = 0;
+          pv = c + 2 * f;
+          s  = c + 5 * f;
+          break;
+        case GL_T2F_C3F_V3F:
+          et = GL_TRUE;
+          ec = GL_TRUE;
+          en = GL_FALSE;
+          tc = GL_FLOAT;
+          st = 2;
+          sc = 3;
+          sv = 3;
+          pc = 2 * f;
+          pn = 0;
+          pv = 5 * f;
+          s  = 8 * f;
+          break;
+        case GL_T2F_N3F_V3F:
+          et = GL_TRUE;
+          ec = GL_FALSE;
+          en = GL_TRUE;
+          tc = GL_FLOAT;
+          st = 2;
+          sc = 0;
+          sv = 3;
+          pc = 0;
+          pn = 2 * f;
+          pv = 5 * f;
+          s  = 8 * f;
+          break;
+        case GL_T2F_C4F_N3F_V3F:
+          et = GL_TRUE;
+          ec = GL_TRUE;
+          en = GL_TRUE;
+          tc = GL_FLOAT;
+          st = 2;
+          sc = 4;
+          sv = 3;
+          pc = 2 * f;
+          pn = 6 * f;
+          pv = 9 * f;
+          s  = 12 * f;
+          break;
+        case GL_T4F_C4F_N3F_V4F:
+          et = GL_TRUE;
+          ec = GL_TRUE;
+          en = GL_TRUE;
+          tc = GL_FLOAT;
+          st = 4;
+          sc = 4;
+          sv = 4;
+          pc = 4 * f;
+          pn = 8 * f;
+          pv = 11 * f;
+          s  = 15 * f;
+          break;
+        default:
+          RegalAssert( !"unhandled format value" );
+          return;
+      }
+
+      if ( stride == 0 )
+        stride = s;
+
+      glDisableClientState(GL_EDGE_FLAG_ARRAY);
+      glDisableClientState(GL_INDEX_ARRAY);
+      glDisableClientState(GL_SECONDARY_COLOR_ARRAY);
+      glDisableClientState(GL_FOG_COORD_ARRAY);
+
+      GLubyte *p = static_cast<GLubyte *>( const_cast<GLvoid *>(pointer) );
+
+      if (et)
+      {
+        glEnableClientState(GL_TEXTURE_COORD_ARRAY);
+        glTexCoordPointer(st, GL_FLOAT, stride, p);
+      }
+      else
+        glDisableClientState(GL_TEXTURE_COORD_ARRAY);
+
+      if (ec)
+      {
+        glEnableClientState(GL_COLOR_ARRAY);
+        glColorPointer(sc, tc, stride, p + pc);
+      }
+      else
+        glDisableClientState(GL_COLOR_ARRAY);
+
+      if (en)
+      {
+        glEnableClientState(GL_NORMAL_ARRAY);
+        glNormalPointer(GL_FLOAT, stride, p + pn);
+      }
+      else
+        glDisableClientState(GL_NORMAL_ARRAY);
+
+      glEnableClientState(GL_VERTEX_ARRAY);
+      glVertexPointer(sv, GL_FLOAT, stride, p + pv);
+    }
   };
+
+  struct PixelStore
+  {
+    GLboolean  unpackSwapBytes;           // GL_UNPACK_SWAP_BYTES
+    GLboolean  unpackLsbFirst;            // GL_UNPACK_LSB_FIRST
+    GLint      unpackImageHeight;         // GL_UNPACK_IMAGE_HEIGHT
+    GLint      unpackSkipImages;          // GL_UNPACK_SKIP_IMAGES
+    GLint      unpackRowLength;           // GL_UNPACK_ROW_LENGTH
+    GLint      unpackSkipRows;            // GL_UNPACK_SKIP_ROWS
+    GLint      unpackSkipPixels;          // GL_UNPACK_SKIP_PIXELS
+    GLint      unpackAlignment;           // GL_UNPACK_ALIGNMENT
+    GLboolean  packSwapBytes;             // GL_PACK_SWAP_BYTES
+    GLboolean  packLsbFirst;              // GL_PACK_LSB_FIRST
+    GLint      packImageHeight;           // GL_PACK_IMAGE_HEIGHT
+    GLint      packSkipImages;            // GL_PACK_SKIP_IMAGES
+    GLint      packRowLength;             // GL_PACK_ROW_LENGTH
+    GLint      packSkipRows;              // GL_PACK_SKIP_ROWS
+    GLint      packSkipPixels;            // GL_PACK_SKIP_PIXELS
+    GLint      packAlignment;             // GL_PACK_ALIGNMENT
+    GLint      pixelUnpackBufferBinding;  // GL_PIXEL_UNPACK_BUFFER_BINDING
+    GLint      pixelPackBufferBinding;    // GL_PIXEL_PACK_BUFFER_BINDING
+
+    inline PixelStore()
+      : unpackSwapBytes(GL_FALSE)
+      , unpackLsbFirst(GL_FALSE)
+      , unpackImageHeight(0)
+      , unpackSkipImages(0)
+      , unpackRowLength(0)
+      , unpackSkipRows(0)
+      , unpackSkipPixels(0)
+      , unpackAlignment(4)
+      , packSwapBytes(GL_FALSE)
+      , packLsbFirst(GL_FALSE)
+      , packImageHeight(0)
+      , packSkipImages(0)
+      , packRowLength(0)
+      , packSkipRows(0)
+      , packSkipPixels(0)
+      , packAlignment(4)
+      , pixelUnpackBufferBinding(0)
+      , pixelPackBufferBinding(0)
+    {
+    }
+
+    inline PixelStore &swap(PixelStore &other)
+    {
+      std::swap(unpackSwapBytes,other.unpackSwapBytes);
+      std::swap(unpackLsbFirst,other.unpackLsbFirst);
+      std::swap(unpackImageHeight,other.unpackImageHeight);
+      std::swap(unpackSkipImages,other.unpackSkipImages);
+      std::swap(unpackRowLength,other.unpackRowLength);
+      std::swap(unpackSkipRows,other.unpackSkipRows);
+      std::swap(unpackSkipPixels,other.unpackSkipPixels);
+      std::swap(unpackAlignment,other.unpackAlignment);
+      std::swap(packSwapBytes,other.packSwapBytes);
+      std::swap(packLsbFirst,other.packLsbFirst);
+      std::swap(packImageHeight,other.packImageHeight);
+      std::swap(packSkipImages,other.packSkipImages);
+      std::swap(packRowLength,other.packRowLength);
+      std::swap(packSkipRows,other.packSkipRows);
+      std::swap(packSkipPixels,other.packSkipPixels);
+      std::swap(packAlignment,other.packAlignment);
+      std::swap(pixelUnpackBufferBinding,other.pixelUnpackBufferBinding);
+      std::swap(pixelPackBufferBinding,other.pixelPackBufferBinding);
+      return *this;
+    }
+
+    inline PixelStore &get(DispatchTableGL &dt)
+    {
+      dt.call(&dt.glGetBooleanv)(GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
+      dt.call(&dt.glGetBooleanv)(GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
+      dt.call(&dt.glGetIntegerv)(GL_UNPACK_IMAGE_HEIGHT,&unpackImageHeight);
+      dt.call(&dt.glGetIntegerv)(GL_UNPACK_SKIP_IMAGES,&unpackSkipImages);
+      dt.call(&dt.glGetIntegerv)(GL_UNPACK_ROW_LENGTH,&unpackRowLength);
+      dt.call(&dt.glGetIntegerv)(GL_UNPACK_SKIP_ROWS,&unpackSkipRows);
+      dt.call(&dt.glGetIntegerv)(GL_UNPACK_SKIP_PIXELS,&unpackSkipPixels);
+      dt.call(&dt.glGetIntegerv)(GL_UNPACK_ALIGNMENT,&unpackAlignment);
+      dt.call(&dt.glGetBooleanv)(GL_PACK_SWAP_BYTES,&packSwapBytes);
+      dt.call(&dt.glGetBooleanv)(GL_PACK_LSB_FIRST,&packLsbFirst);
+      dt.call(&dt.glGetIntegerv)(GL_PACK_IMAGE_HEIGHT,&packImageHeight);
+      dt.call(&dt.glGetIntegerv)(GL_PACK_SKIP_IMAGES,&packSkipImages);
+      dt.call(&dt.glGetIntegerv)(GL_PACK_ROW_LENGTH,&packRowLength);
+      dt.call(&dt.glGetIntegerv)(GL_PACK_SKIP_ROWS,&packSkipRows);
+      dt.call(&dt.glGetIntegerv)(GL_PACK_SKIP_PIXELS,&packSkipPixels);
+      dt.call(&dt.glGetIntegerv)(GL_PACK_ALIGNMENT,&packAlignment);
+      dt.call(&dt.glGetIntegerv)(GL_PIXEL_UNPACK_BUFFER_BINDING,&pixelUnpackBufferBinding);
+      dt.call(&dt.glGetIntegerv)(GL_PIXEL_PACK_BUFFER_BINDING,&pixelPackBufferBinding);
+      return *this;
+    }
+
+    inline const PixelStore &set(DispatchTableGL &dt) const
+    {
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_LSB_FIRST,unpackLsbFirst);
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_ROW_LENGTH,unpackRowLength);
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_ROWS,unpackSkipRows);
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
+      dt.call(&dt.glPixelStorei)(GL_UNPACK_ALIGNMENT,unpackAlignment);
+      dt.call(&dt.glPixelStorei)(GL_PACK_SWAP_BYTES,packSwapBytes);
+      dt.call(&dt.glPixelStorei)(GL_PACK_LSB_FIRST,packLsbFirst);
+      dt.call(&dt.glPixelStorei)(GL_PACK_IMAGE_HEIGHT,packImageHeight);
+      dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_IMAGES,packSkipImages);
+      dt.call(&dt.glPixelStorei)(GL_PACK_ROW_LENGTH,packRowLength);
+      dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_ROWS,packSkipRows);
+      dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_PIXELS,packSkipPixels);
+      dt.call(&dt.glPixelStorei)(GL_PACK_ALIGNMENT,packAlignment);
+      dt.call(&dt.glBindBuffer)(GL_PIXEL_UNPACK_BUFFER_BINDING,pixelUnpackBufferBinding);
+      dt.call(&dt.glBindBuffer)(GL_PIXEL_PACK_BUFFER_BINDING,pixelPackBufferBinding);
+      return *this;
+    }
+
+    inline std::string toString(const char *delim = "\n") const
+    {
+      string_list tmp;
+      tmp << print_string("glPixelStorei(GL_UNPACK_SWAP_BYTES,",unpackSwapBytes,");",delim);
+      tmp << print_string("glPixelStorei(GL_UNPACK_LSB_FIRST,",unpackLsbFirst,");",delim);
+      tmp << print_string("glPixelStorei(GL_UNPACK_IMAGE_HEIGHT,",unpackImageHeight,");",delim);
+      tmp << print_string("glPixelStorei(GL_UNPACK_SKIP_IMAGES,",unpackSkipImages,");",delim);
+      tmp << print_string("glPixelStorei(GL_UNPACK_ROW_LENGTH,",unpackRowLength,");",delim);
+      tmp << print_string("glPixelStorei(GL_UNPACK_SKIP_ROWS,",unpackSkipRows,");",delim);
+      tmp << print_string("glPixelStorei(GL_UNPACK_SKIP_PIXELS,",unpackSkipPixels,");",delim);
+      tmp << print_string("glPixelStorei(GL_UNPACK_ALIGNMENT,",unpackAlignment,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_SWAP_BYTES,",packSwapBytes,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_LSB_FIRST,",packLsbFirst,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_IMAGE_HEIGHT,",packImageHeight,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_SKIP_IMAGES,",packSkipImages,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_ROW_LENGTH,",packRowLength,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_SKIP_ROWS,",packSkipRows,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_SKIP_PIXELS,",packSkipPixels,");",delim);
+      tmp << print_string("glPixelStorei(GL_PACK_ALIGNMENT,",packAlignment,");",delim);
+      tmp << print_string("glBindBuffer(GL_PIXEL_UNPACK_BUFFER_BINDING,",pixelUnpackBufferBinding,");",delim);
+      tmp << print_string("glBindBuffer(GL_PIXEL_PACK_BUFFER_BINDING,",pixelPackBufferBinding,");",delim);
+      return tmp;
+    }
+
+    template <typename T> void glPixelStore( GLenum pname, T param )
+    {
+      switch (pname)
+      {
+        case GL_UNPACK_SWAP_BYTES:   unpackSwapBytes   = param; break;
+        case GL_UNPACK_LSB_FIRST:    unpackLsbFirst    = param; break;
+        case GL_UNPACK_IMAGE_HEIGHT: unpackImageHeight = param; break;
+        case GL_UNPACK_SKIP_IMAGES:  unpackSkipImages  = param; break;
+        case GL_UNPACK_ROW_LENGTH:   unpackRowLength   = param; break;
+        case GL_UNPACK_SKIP_ROWS:    unpackSkipRows    = param; break;
+        case GL_UNPACK_SKIP_PIXELS:  unpackSkipPixels  = param; break;
+        case GL_UNPACK_ALIGNMENT:    unpackAlignment   = param; break;
+        case GL_PACK_SWAP_BYTES:     packSwapBytes     = param; break;
+        case GL_PACK_LSB_FIRST:      packLsbFirst      = param; break;
+        case GL_PACK_IMAGE_HEIGHT:   packImageHeight   = param; break;
+        case GL_PACK_SKIP_IMAGES:    packSkipImages    = param; break;
+        case GL_PACK_ROW_LENGTH:     packRowLength     = param; break;
+        case GL_PACK_SKIP_ROWS:      packSkipRows      = param; break;
+        case GL_PACK_SKIP_PIXELS:    packSkipPixels    = param; break;
+        case GL_PACK_ALIGNMENT:      packAlignment     = param; break;
+        default:
+          break;
+      }
+    }
+
+    void glBindBuffer( GLenum target, GLuint buffer )
+    {
+      switch (target)
+      {
+        case GL_PIXEL_UNPACK_BUFFER_BINDING:
+          pixelUnpackBufferBinding = buffer;
+          break;
+        case GL_PIXEL_PACK_BUFFER_BINDING:
+          pixelPackBufferBinding = buffer;
+          break;
+        default:
+          break;
+      }
+    }
+  };
+
+}
+
 }
 
 REGAL_NAMESPACE_END
+
+#endif
 
 #endif

@@ -49,7 +49,7 @@ namespace Emu {
   using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
   using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-  void Filt::BindTexture(const RegalContext &ctx, GLenum target, GLuint name)
+  bool Filt::BindTexture(const RegalContext &ctx, GLenum target, GLuint name)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
@@ -62,14 +62,73 @@ namespace Emu {
         case GL_TEXTURE_1D:
         case GL_TEXTURE_3D:
           Warning( "Regal does not support ", GLenumToString( target ), " as target for glBindTexture for ES 2.0 profile - skipping." );
-          filtered = true;
+          return true;
         default:
           break;
       }
     }
+
+    return false;
   }
 
-  void Filt::FramebufferTexture2D(const RegalContext &ctx, GLenum target, GLenum attachment,
+  bool Filt::BindFramebuffer(const RegalContext &ctx, GLenum target, GLuint framebuffer)
+  {
+    UNUSED_PARAMETER(ctx);
+    UNUSED_PARAMETER(target);
+    UNUSED_PARAMETER(framebuffer);
+
+    fboID = framebuffer;
+
+    return false;
+  }
+
+  bool Filt::DrawBuffers(const RegalContext &ctx, GLsizei n, const GLenum *bufs)
+  {
+    UNUSED_PARAMETER(ctx);
+
+    if (!ctx.isES2())
+      return false;
+
+    for (GLsizei i = 0; i < n; ++i)
+    {
+      if (bufs[i] == GL_NONE || (bufs[i] >= GL_COLOR_ATTACHMENT0 && bufs[i] <= GL_COLOR_ATTACHMENT15))
+        continue;
+
+      Warning( "Regal does not support ", GLenumToString( bufs[i] ), " as target for glDrawBuffers for ES 2.0 profile - skipping." );
+      return true;
+    }
+
+    return false;
+  }
+
+  bool Filt::FilterTexParameter(const RegalContext &ctx, GLenum target, GLenum pname, GLfloat param, GLfloat &newParam)
+  {
+    UNUSED_PARAMETER(ctx);
+    UNUSED_PARAMETER(target);
+
+    if (!ctx.isES2() && !ctx.isCore())
+      return false;
+
+    switch(pname)
+    {
+      case GL_TEXTURE_WRAP_S:
+      case GL_TEXTURE_WRAP_T:
+      case GL_TEXTURE_WRAP_R:
+        switch(int(param))
+        {
+          case GL_CLAMP:
+            Warning("Regal does not support GL_CLAMP wrap mode for core or ES 2.0 profiles - remapping to equivalent GL_CLAMP_TO_EDGE");
+            newParam = GL_CLAMP_TO_EDGE;
+            return true;
+          default: break;
+        }
+      default: break;
+    }
+
+    return false;
+  }
+
+  bool Filt::FramebufferTexture2D(const RegalContext &ctx, GLenum target, GLenum attachment,
                                   GLenum textarget, GLuint texture, GLint level)
   {
     UNUSED_PARAMETER(ctx);
@@ -81,18 +140,16 @@ namespace Emu {
 
     if (!FramebufferAttachmentSupported(ctx, attachment))
     {
-      filtered = true;
-      return;
+      return true;
     }
 
     if (!ctx.isES2())
-      return;
+      return false;
 
     if ((level > 0) && !ctx.info->gl_oes_fbo_render_mipmap)
     {
       Warning("glFramebufferTexture2D with level > 0 not supported for ES 2.0 without OES_fbo_render_mipmap.");
-      filtered = true;
-      return;
+      return true;
     }
 
     if (texture > 0)
@@ -110,19 +167,20 @@ namespace Emu {
 
         default:
           Warning("glFramebufferTexture2D with ", GLenumToString(target), ") not supported for ES 2.0.");
-          filtered = true;
-          break;
+          return true;
       }
     }
+
+    return false;
   }
 
-  void Filt::GenerateMipmap(const RegalContext &ctx, GLenum target)
+  bool Filt::GenerateMipmap(const RegalContext &ctx, GLenum target)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
 
     if (!ctx.isES2())
-      return;
+      return false;
 
     switch(target)
     {
@@ -134,18 +192,71 @@ namespace Emu {
         if (!ctx.info->gl_nv_texture_array)
         {
           Warning("glGenerateMipmap(GL_TEXTURE_2D_ARRAY) not supported for ES 2.0 without NV_texture_array.");
-          filtered = true;
+          return true;
         }
         break;
 
       default:
         Warning("glGenerateMipmap(", GLenumToString(target), ") not supported for ES 2.0.");
-        filtered = true;
-        break;
+        return true;
     }
+
+    return false;
   }
 
-  void Filt::RenderMode(const RegalContext &ctx, GLenum mode)
+  bool Filt::ReadBuffer(const RegalContext &ctx, GLenum src)
+  {
+    UNUSED_PARAMETER(ctx);
+    UNUSED_PARAMETER(src);
+
+    if (!ctx.isES2() || !ctx.info->gl_nv_read_buffer)
+      return false;
+
+    switch(src)
+    {
+      // These two should always be supported w/o additional extensions
+      case GL_COLOR_ATTACHMENT0:
+      case GL_BACK:
+        break;
+
+      // GL_FRONT may require NV_read_buffer_front, depending whether the context is
+      // double buffered. Let's output a warning but still pass it through
+      case GL_FRONT:
+        if (!ctx.info->gl_nv_read_buffer_front)
+          Warning("glReadBuffer(GL_FRONT) may not work on ES 2 without NV_read_buffer_front, depending on context buffering.");
+        break;
+
+      case GL_COLOR_ATTACHMENT1:
+      case GL_COLOR_ATTACHMENT2:
+      case GL_COLOR_ATTACHMENT3:
+      case GL_COLOR_ATTACHMENT4:
+      case GL_COLOR_ATTACHMENT5:
+      case GL_COLOR_ATTACHMENT6:
+      case GL_COLOR_ATTACHMENT7:
+      case GL_COLOR_ATTACHMENT8:
+      case GL_COLOR_ATTACHMENT9:
+      case GL_COLOR_ATTACHMENT10:
+      case GL_COLOR_ATTACHMENT11:
+      case GL_COLOR_ATTACHMENT12:
+      case GL_COLOR_ATTACHMENT13:
+      case GL_COLOR_ATTACHMENT14:
+      case GL_COLOR_ATTACHMENT15:
+        if (!ctx.info->gl_nv_draw_buffers)
+        {
+          Warning("glReadBuffer(GL_COLOR_ATTACHMENT1+) not supported for ES 2 without NV_draw_buffers.");
+          return true;
+        }
+        break;
+
+      default:
+        Warning("glReadBuffer(", GLenumToString(src), ") not supported for ES 2.\n");
+        return true;
+    }
+
+    return false;
+  }
+
+  bool Filt::RenderMode(const RegalContext &ctx, GLenum mode)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(mode);
@@ -154,37 +265,10 @@ namespace Emu {
       if (mode!=GL_RENDER)
       {
         Warning("Regal does not support ", GLenumToString(mode), " render mode for core or ES 2.0 profiles, only GL_RENDER is supported in those profiles - skipping.");
-        filtered = true;
+        return true;
       }
-  }
 
-  void Filt::TexParameter(const RegalContext &ctx, GLenum target, GLenum pname, GLint param)
-  {
-    TexParameter(ctx,target,pname,GLfloat(param));
-  }
-
-  void Filt::TexParameter(const RegalContext &ctx, GLenum target, GLenum pname, GLfloat param)
-  {
-    UNUSED_PARAMETER(ctx);
-    UNUSED_PARAMETER(target);
-    UNUSED_PARAMETER(pname);
-    UNUSED_PARAMETER(param);
-
-    if (ctx.isCore() || ctx.isES2())
-      switch(pname)
-      {
-        case GL_TEXTURE_WRAP_S:
-        case GL_TEXTURE_WRAP_T:
-        case GL_TEXTURE_WRAP_R:
-          switch(int(param))
-          {
-            case GL_CLAMP:
-              Warning("Regal does not support GL_CLAMP wrap mode for core or ES 2.0 profiles - skipping.");
-              filtered = true;
-            default: break;
-          }
-        default: break;
-      }
+    return false;
   }
 
   bool Filt::FramebufferAttachmentSupported(const RegalContext &ctx, GLenum attachment)
@@ -210,7 +294,7 @@ namespace Emu {
     return true;
   }
 
-  void Filt::PixelStorei(const RegalContext &ctx, GLenum pname, GLint param)
+  bool Filt::PixelStorei(const RegalContext &ctx, GLenum pname, GLint param)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(pname);
@@ -231,7 +315,7 @@ namespace Emu {
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without EXT_unpack_subimage.");
-            filtered = true;
+            return true;
           }
           break;
 
@@ -241,7 +325,7 @@ namespace Emu {
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without EXT_unpack_subimage and NV_texture_array.");
-            filtered = true;
+            return true;
           }
           break;
 
@@ -252,7 +336,7 @@ namespace Emu {
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without NV_pack_subimage.");
-            filtered = true;
+            return true;
           }
           break;
 
@@ -262,19 +346,20 @@ namespace Emu {
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without NV_pack_subimage and NV_texture_array.");
-            filtered = true;
+            return true;
           }
           break;
 
         default:
           Warning("glPixelStorei ", GLenumToString(pname), " not supported for ES 2.0.");
-          filtered = true;
-          break;
+          return true;
       }
     }
+
+    return false;
   }
 
-  void Filt::PolygonMode(const RegalContext &ctx, GLenum face, GLenum mode)
+  bool Filt::PolygonMode(const RegalContext &ctx, GLenum face, GLenum mode)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(face);
@@ -285,22 +370,25 @@ namespace Emu {
       if (face!=GL_FRONT_AND_BACK)
       {
         Warning("Regal does not support ", GLenumToString(face), " in glPolygonMode for core profile, only GL_FRONT_AND_BACK is supported - skipping.");
-        filtered = true;
+        return true;
       }
     }
 
     if (ctx.isES2())
     {
       Warning("Regal does not support glPolygonMode for ES 2.0 - skipping.");
-      filtered = true;
+      return true;
     }
+
+    return false;
   }
 
-  void Filt::FilterGet(const RegalContext &ctx, GLenum pname)
+  bool Filt::FilterGet(const RegalContext &ctx, GLenum pname, int &retVal)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(pname);
 
+    bool filtered = false;
     if (ctx.isCore() || ctx.isES2())
     {
       filtered = true;
@@ -336,7 +424,7 @@ namespace Emu {
       if (filtered)
       {
         Warning( "Regal does not support ", GLenumToString(pname), " as pname for glGet for core or ES 2.0 profiles - skipping." );
-        return;
+        return true;
       }
     }
 
@@ -361,7 +449,7 @@ namespace Emu {
       if (filtered)
       {
         Warning( "Regal does not support ", GLenumToString(pname), " as pname for glGet for core profile - skipping." );
-        return;
+        return true;
       }
     }
 
@@ -410,6 +498,35 @@ namespace Emu {
             retVal = 0;
           break;
 
+        // need to filter on ES2.0 since this query returns an
+        // INVALID_ENUM if no FBO is currently active
+        case GL_DRAW_BUFFER0:
+        case GL_DRAW_BUFFER1:
+        case GL_DRAW_BUFFER2:
+        case GL_DRAW_BUFFER3:
+        case GL_DRAW_BUFFER4:
+        case GL_DRAW_BUFFER5:
+        case GL_DRAW_BUFFER6:
+        case GL_DRAW_BUFFER7:
+        case GL_DRAW_BUFFER8:
+        case GL_DRAW_BUFFER9:
+        case GL_DRAW_BUFFER10:
+        case GL_DRAW_BUFFER11:
+        case GL_DRAW_BUFFER12:
+        case GL_DRAW_BUFFER13:
+        case GL_DRAW_BUFFER14:
+        case GL_DRAW_BUFFER15:
+          if (ctx.info->gl_nv_draw_buffers)
+          {
+            if (fboID == 0)
+              retVal = GL_NONE;
+            else
+              filtered = false;
+          }
+          else
+            retVal = GL_NONE;
+          break;
+
         default:
           filtered = false;
           break;
@@ -417,9 +534,11 @@ namespace Emu {
       if (filtered)
       {
         Warning( "Regal does not support ", GLenumToString(pname), " as pname for glGet for ES 2.0 profile - skipping." );
-        return;
+        return true;
       }
     }
+
+    return false;
   }
 }
 

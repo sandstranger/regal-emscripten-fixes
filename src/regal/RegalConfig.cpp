@@ -71,6 +71,7 @@ namespace Config {
   bool enableLog           = REGAL_LOG;
   bool enableDriver        = REGAL_DRIVER;
 
+  bool enableEmuHint       = REGAL_EMU_HINT;
   bool enableEmuPpa        = REGAL_EMU_PPA;
   bool enableEmuPpca       = REGAL_EMU_PPCA;
   bool enableEmuObj        = REGAL_EMU_OBJ;
@@ -78,6 +79,7 @@ namespace Config {
   bool enableEmuTexSto     = REGAL_EMU_TEXSTO;
   bool enableEmuXfer       = REGAL_EMU_XFER;
   bool enableEmuDsa        = REGAL_EMU_DSA;
+  bool enableEmuPath       = REGAL_EMU_PATH;
   bool enableEmuRect       = REGAL_EMU_RECT;
   bool enableEmuBaseVertex = REGAL_EMU_BASEVERTEX;
   bool enableEmuIff        = REGAL_EMU_IFF;
@@ -86,6 +88,7 @@ namespace Config {
   bool enableEmuFilter     = REGAL_EMU_FILTER;
   bool enableEmuTexC       = REGAL_EMU_TEXC;
 
+  bool forceEmuHint        = REGAL_FORCE_EMU_HINT;
   bool forceEmuPpa         = REGAL_FORCE_EMU_PPA;
   bool forceEmuPpca        = REGAL_FORCE_EMU_PPCA;
   bool forceEmuObj         = REGAL_FORCE_EMU_OBJ;
@@ -93,6 +96,7 @@ namespace Config {
   bool forceEmuTexSto      = REGAL_FORCE_EMU_TEXSTO;
   bool forceEmuXfer        = REGAL_FORCE_EMU_XFER;
   bool forceEmuDsa         = REGAL_FORCE_EMU_DSA;
+  bool forceEmuPath        = REGAL_FORCE_EMU_PATH;
   bool forceEmuRect        = REGAL_FORCE_EMU_RECT;
   bool forceEmuBaseVertex  = REGAL_FORCE_EMU_BASEVERTEX;
   bool forceEmuIff         = REGAL_FORCE_EMU_IFF;
@@ -115,6 +119,10 @@ namespace Config {
   bool frameSaveStencil           = false;
   bool frameSaveDepth             = false;
 
+  ::std::string frameSaveColorPrefix  ("color_");
+  ::std::string frameSaveStencilPrefix("stencil_");
+  ::std::string frameSaveDepthPrefix  ("depth_");
+
   bool          cache             = REGAL_CACHE;
   bool          cacheShader       = false;
   bool          cacheShaderRead   = false;
@@ -131,6 +139,8 @@ namespace Config {
   ::std::string codeSourceFile;
   ::std::string codeHeaderFile;
 #endif
+
+  ::std::string traceFile;
 
   bool          enableThreadLocking = REGAL_THREAD_LOCKING;
 
@@ -246,6 +256,11 @@ namespace Config {
     if (tmp) enableDriver = atoi(tmp)!=0;
 #endif
 
+#if REGAL_EMU_HINT
+    tmp = GetEnv( "REGAL_EMU_HINT" );
+    if (tmp) enableEmuHint = atoi(tmp)!=0;
+#endif
+
 #if REGAL_EMU_PPA
     tmp = GetEnv( "REGAL_EMU_PPA" );
     if (tmp) enableEmuPpa = atoi(tmp)!=0;
@@ -279,6 +294,11 @@ namespace Config {
 #if REGAL_EMU_DSA
     tmp = GetEnv( "REGAL_EMU_DSA" );
     if (tmp) enableEmuDsa = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_PATH
+    tmp = GetEnv( "REGAL_EMU_PATH" );
+    if (tmp) enableEmuPath = atoi(tmp)!=0;
 #endif
 
 #if REGAL_EMU_RECT
@@ -318,6 +338,11 @@ namespace Config {
 
     //
 
+#if REGAL_EMU_HINT
+    tmp = GetEnv( "REGAL_FORCE_EMU_HINT" );
+    if (tmp) forceEmuHint = atoi(tmp)!=0;
+#endif
+
 #if REGAL_EMU_PPA
     tmp = GetEnv( "REGAL_FORCE_EMU_PPA" );
     if (tmp) forceEmuPpa = atoi(tmp)!=0;
@@ -351,6 +376,11 @@ namespace Config {
 #if REGAL_EMU_DSA
     tmp = GetEnv( "REGAL_FORCE_EMU_DSA" );
     if (tmp) forceEmuDsa = atoi(tmp)!=0;
+#endif
+
+#if REGAL_EMU_PATH
+    tmp = GetEnv( "REGAL_FORCE_EMU_PATH" );
+    if (tmp) forceEmuPath = atoi(tmp)!=0;
 #endif
 
 #if REGAL_EMU_RECT
@@ -476,6 +506,9 @@ namespace Config {
     if (tmp) codeHeaderFile = tmp;
 #endif
 
+#if REGAL_TRACE
+    tmp = GetEnv( "REGAL_TRACE_FILE" );
+    if (tmp) traceFile = tmp;
 #endif
 
 #if REGAL_THREAD_LOCKING
@@ -483,6 +516,8 @@ namespace Config {
     if (tmp) enableThreadLocking = atoi(tmp)!=0;
 #else
     enableThreadLocking = false;
+#endif
+
 #endif
 
     // REGAL_NO_EMULATION is deprecated, use REGAL_EMULATION=0 instead.
@@ -537,6 +572,7 @@ namespace Config {
     Info("REGAL_LOG                 ", enableLog           ? "enabled" : "disabled");
     Info("REGAL_DRIVER              ", enableDriver        ? "enabled" : "disabled");
 
+    Info("REGAL_EMU_HINT            ", enableEmuHint       ? "enabled" : "disabled");
     Info("REGAL_EMU_PPA             ", enableEmuPpa        ? "enabled" : "disabled");
     Info("REGAL_EMU_PPCA            ", enableEmuPpca       ? "enabled" : "disabled");
     Info("REGAL_EMU_OBJ             ", enableEmuObj        ? "enabled" : "disabled");
@@ -544,6 +580,7 @@ namespace Config {
     Info("REGAL_EMU_TEXSTO          ", enableEmuTexSto     ? "enabled" : "disabled");
     Info("REGAL_EMU_XFER            ", enableEmuXfer       ? "enabled" : "disabled");
     Info("REGAL_EMU_DSA             ", enableEmuDsa        ? "enabled" : "disabled");
+    Info("REGAL_EMU_PATH            ", enableEmuPath       ? "enabled" : "disabled");
     Info("REGAL_EMU_RECT            ", enableEmuRect       ? "enabled" : "disabled");
     Info("REGAL_EMU_BASEVERTEX      ", enableEmuBaseVertex ? "enabled" : "disabled");
     Info("REGAL_EMU_IFF             ", enableEmuIff        ? "enabled" : "disabled");
@@ -552,6 +589,7 @@ namespace Config {
     Info("REGAL_EMU_FILTER          ", enableEmuFilter     ? "enabled" : "disabled");
     Info("REGAL_EMU_TEXC            ", enableEmuTexC       ? "enabled" : "disabled");
 
+    Info("REGAL_FORCE_EMU_HINT      ", forceEmuHint        ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_PPA       ", forceEmuPpa         ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_PPCA      ", forceEmuPpca        ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_OBJ       ", forceEmuObj         ? "enabled" : "disabled");
@@ -559,6 +597,7 @@ namespace Config {
     Info("REGAL_FORCE_EMU_TEXSTO    ", forceEmuTexSto      ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_XFER      ", forceEmuXfer        ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_DSA       ", forceEmuDsa         ? "enabled" : "disabled");
+    Info("REGAL_FORCE_EMU_PATH      ", forceEmuPath        ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_RECT      ", forceEmuRect        ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_BASEVERTEX", forceEmuBaseVertex  ? "enabled" : "disabled");
     Info("REGAL_FORCE_EMU_IFF       ", forceEmuIff         ? "enabled" : "disabled");
@@ -586,6 +625,10 @@ namespace Config {
 #if REGAL_CODE
     Info("REGAL_CODE_SOURCE         ", codeSourceFile                              );
     Info("REGAL_CODE_HEADER         ", codeHeaderFile                              );
+#endif
+
+#if REGAL_TRACE
+    Info("REGAL_TRACE_FILE          ", traceFile                                   );
 #endif
 
     Info("REGAL_THREAD_LOCKING      ", enableThreadLocking ? "enabled" : "disabled");
@@ -633,6 +676,7 @@ namespace Config {
         jo.object("emulation");
 
           jo.object("enable");
+            jo.member("hint",   enableEmuHint);
             jo.member("ppa",    enableEmuPpa);
             jo.member("ppca",   enableEmuPpca);
             jo.member("obj",    enableEmuObj);
@@ -640,6 +684,7 @@ namespace Config {
             jo.member("texsto", enableEmuTexSto);
             jo.member("xfer",   enableEmuXfer);
             jo.member("dsa",    enableEmuDsa);
+            jo.member("path",   enableEmuPath);
             jo.member("rect",   enableEmuRect);
             jo.member("bv",     enableEmuBaseVertex);
             jo.member("iff",    enableEmuIff);
@@ -650,6 +695,7 @@ namespace Config {
           jo.end();
 
           jo.object("force");
+            jo.member("hint",   forceEmuHint);
             jo.member("ppa",    forceEmuPpa);
             jo.member("ppca",   forceEmuPpca);
             jo.member("obj",    forceEmuObj);
@@ -657,6 +703,7 @@ namespace Config {
             jo.member("texsto", forceEmuTexSto);
             jo.member("xfer",   forceEmuXfer);
             jo.member("dsa",    forceEmuDsa);
+            jo.member("path",   forceEmuPath);
             jo.member("rect",   forceEmuRect);
             jo.member("bv",     forceEmuBaseVertex);
             jo.member("iff",    forceEmuIff);
@@ -683,9 +730,16 @@ namespace Config {
           jo.end();
         jo.end();
         jo.object("save");
-          jo.member("color",   frameSaveColor);
-          jo.member("stencil", frameSaveStencil);
-          jo.member("depth",   frameSaveDepth);
+          jo.object("enable");
+            jo.member("color",   frameSaveColor);
+            jo.member("stencil", frameSaveStencil);
+            jo.member("depth",   frameSaveDepth);
+          jo.end();
+          jo.object("prefix");
+            jo.member("color",   frameSaveColorPrefix);
+            jo.member("stencil", frameSaveStencilPrefix);
+            jo.member("depth",   frameSaveDepthPrefix);
+          jo.end();
         jo.end();
       jo.end();
 
@@ -698,6 +752,10 @@ namespace Config {
         jo.member("textureWrite", cacheShaderWrite);
         jo.member("textureRead",  cacheShaderRead);
         jo.member("directory",    cacheDirectory);
+      jo.end();
+
+      jo.object("trace");
+        jo.member("file",         traceFile);
       jo.end();
 
     jo.end();

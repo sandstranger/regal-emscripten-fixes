@@ -4,13 +4,20 @@
 # Selectively initialize Regal for known initialization calls
 # in addition to Regal API entry points.
 #
+# CGLGetCurrentContext is needed for Mac OS X/GLUT
 # eglGetDisplay is needed for apitrace eglretrace tool.
 # glXGetProcAddress is needed for Linux chromium
 # glXQueryExtension is needed for freeglut X11
+# glXGetProcAddressARB is needed for Linux Minecraft 1.6.1
 
 formulae = {
   'EmuInit' : {
-    'entries' : [ 'CGLChoosePixelFormat', 'eglGetDisplay', 'glXGetProcAddress', 'glXQueryExtension' ],
+    'entries' : [ 
+      'CGLChoosePixelFormat', 'CGLGetCurrentContext', 
+      'eglGetDisplay', 
+      'glXGetProcAddress', 'glXQueryExtension', 'glXGetProcAddressARB'
+ #     'glX.*' 
+    ],
     'prefix'  : [ 'Init::init();' ]
   }
 }
@@ -26,7 +33,8 @@ formulaeGlobal = {
 
     'wglMakeCurrent' : {
         'entries' : [ 'wglMakeCurrent' ],
-        'init' : [ 'Init::makeCurrent(RegalSystemContext(hglrc));' ]
+        'init' : [ 'if (ret)',
+                   '    Init::makeCurrent(RegalSystemContext(hglrc));' ]
     },
 
     'wglDeleteContext' : {
@@ -38,12 +46,14 @@ formulaeGlobal = {
 
     'glXMakeCurrent' : {
         'entries' : [ 'glXMakeCurrent' ],
-        'init' : [ 'Init::makeCurrent(RegalSystemContext(ctx));' ]
+        'init' : [ 'if (ret)',
+                   '    Init::makeCurrent(RegalSystemContext(ctx));' ]
     },
 
     'glXMakeContextCurrent' : {
         'entries' : [ 'glXMakeContextCurrent' ],
-        'init' : [ 'Init::makeCurrent(RegalSystemContext(ctx));' ]
+        'init' : [ 'if (ret)',
+                   '    Init::makeCurrent(RegalSystemContext(ctx));' ]
     },
 
     'glXDestroyContext' : {
@@ -55,7 +65,8 @@ formulaeGlobal = {
 
     'eglMakeCurrent' : {
         'entries' : [ 'eglMakeCurrent' ],
-        'init' : [ 'Init::makeCurrent(ctx);' ]
+        'init' : [ 'if (ret)',
+                   '    Init::makeCurrent(ctx);' ]
     },
 
     'eglDestroyContext' : {
@@ -67,7 +78,8 @@ formulaeGlobal = {
 
     'CGLSetCurrentContext' : {
         'entries' : [ 'CGLSetCurrentContext' ],
-        'init' : [ 'Init::makeCurrent(ctx);' ]
+        'init' : [ 'if (ret == 0)',
+                   '    Init::makeCurrent(ctx);' ]
     },
 
     'CGLDestroyContext' : {

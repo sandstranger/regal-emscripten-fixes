@@ -85,6 +85,7 @@ namespace Config
 
   // Initial emulation layer enable/disable
 
+  extern bool enableEmuHint;
   extern bool enableEmuPpa;
   extern bool enableEmuPpca;
   extern bool enableEmuObj;
@@ -92,6 +93,7 @@ namespace Config
   extern bool enableEmuTexSto;
   extern bool enableEmuXfer;
   extern bool enableEmuDsa;
+  extern bool enableEmuPath;
   extern bool enableEmuRect;
   extern bool enableEmuBaseVertex;
   extern bool enableEmuIff;
@@ -102,6 +104,7 @@ namespace Config
 
   // Force emulation layer enable/disable
 
+  extern bool forceEmuHint;
   extern bool forceEmuPpa;
   extern bool forceEmuPpca;
   extern bool forceEmuObj;
@@ -109,6 +112,7 @@ namespace Config
   extern bool forceEmuTexSto;
   extern bool forceEmuXfer;
   extern bool forceEmuDsa;
+  extern bool forceEmuPath;
   extern bool forceEmuRect;
   extern bool forceEmuBaseVertex;
   extern bool forceEmuIff;
@@ -133,6 +137,10 @@ namespace Config
   extern bool frameSaveStencil;
   extern bool frameSaveDepth;
 
+  extern ::std::string frameSaveColorPrefix;	// Filename prefix for saved PNGs
+  extern ::std::string frameSaveStencilPrefix;
+  extern ::std::string frameSaveDepthPrefix;
+
   // Caching
 
   extern bool          cache;
@@ -148,6 +156,10 @@ namespace Config
 
   extern ::std::string codeSourceFile;
   extern ::std::string codeHeaderFile;
+
+  // Trace
+
+  extern ::std::string traceFile;
 
   // Thread locking
 

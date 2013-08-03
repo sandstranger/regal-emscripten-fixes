@@ -1811,12 +1811,24 @@ void REGAL_CALL gmock_glVertexAttribIFormat(GLuint attribindex, GLint size, GLen
   return RegalGMockInterface::current->glVertexAttribIFormat(attribindex, size, type, relativeoffset);
 }
 
+void REGAL_CALL gmock_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset) {
+  return RegalGMockInterface::current->glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+}
+
 void REGAL_CALL gmock_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor) {
   return RegalGMockInterface::current->glVertexBindingDivisor(bindingindex, divisor);
 }
 
 void REGAL_CALL gmock_glClientAttribDefaultEXT(GLbitfield mask) {
   return RegalGMockInterface::current->glClientAttribDefaultEXT(mask);
+}
+
+void REGAL_CALL gmock_glDisableClientStateiEXT(GLenum array, GLuint index) {
+  return RegalGMockInterface::current->glDisableClientStateiEXT(array, index);
+}
+
+void REGAL_CALL gmock_glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer) {
+  return RegalGMockInterface::current->glMultiTexCoordPointerEXT(texunit, size, type, stride, pointer);
 }
 
 } // namespace
@@ -1833,7 +1845,7 @@ RegalGMockInterface::~RegalGMockInterface()
 
 RegalGMockInterface* RegalGMockInterface::current;
 
-void InitDispatchTableGMock(DispatchTable &tbl)
+void InitDispatchTableGMock(DispatchTableGL &tbl)
 {
   tbl.glAccum = gmock_glAccum;
   tbl.glAlphaFunc = gmock_glAlphaFunc;
@@ -2274,8 +2286,11 @@ void InitDispatchTableGMock(DispatchTable &tbl)
   tbl.glVertexAttribBinding = gmock_glVertexAttribBinding;
   tbl.glVertexAttribFormat = gmock_glVertexAttribFormat;
   tbl.glVertexAttribIFormat = gmock_glVertexAttribIFormat;
+  tbl.glVertexAttribLFormat = gmock_glVertexAttribLFormat;
   tbl.glVertexBindingDivisor = gmock_glVertexBindingDivisor;
   tbl.glClientAttribDefaultEXT = gmock_glClientAttribDefaultEXT;
+  tbl.glDisableClientStateiEXT = gmock_glDisableClientStateiEXT;
+  tbl.glMultiTexCoordPointerEXT = gmock_glMultiTexCoordPointerEXT;
 }
 
 REGAL_NAMESPACE_END

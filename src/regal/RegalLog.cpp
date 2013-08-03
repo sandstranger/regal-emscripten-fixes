@@ -38,10 +38,12 @@ REGAL_GLOBAL_BEGIN
 #include <cstdarg>
 
 #include <boost/print/json.hpp>
+#include <boost/print/printf.hpp>
 #include <boost/print/string_list.hpp>
 
 #include "RegalLog.h"
 #include "RegalTimer.h"
+#include "RegalBreak.h"
 #include "RegalMarker.h"
 #include "RegalThread.h"
 #include "RegalContext.h"
@@ -564,6 +566,15 @@ namespace Logging {
       m = print_string(file,":",line," ",m);
 #endif
 
+#if REGAL_BREAK
+      switch (mode)
+      {
+        case LOG_WARNING: Break::logWarning(); break;
+        case LOG_ERROR:   Break::logError();   break;
+        default:                               break;
+      }
+#endif
+
 #if REGAL_LOG_ONCE
       if (once)
         switch (mode)
@@ -634,11 +645,8 @@ namespace Logging {
 #if REGAL_LOG
       if (log && logOutput)
       {
-#if REGAL_SYS_ANDROID
-#else
         fprintf(logOutput, "%s", m.c_str());
         fflush(logOutput);
-#endif
       }
 #endif
 
@@ -648,3 +656,28 @@ namespace Logging {
 }
 
 REGAL_NAMESPACE_END
+
+REGAL_GLOBAL_BEGIN
+
+// Direct apitrace logging messages to Regal info log
+
+#if REGAL_TRACE
+namespace os {
+
+  void log(const char *format, ...);
+
+  void log(const char *format, ...)
+  {
+    va_list args;
+    va_start(args,format);
+
+    std::string message;
+    boost::print::printf(message,format,args);
+
+    Info(message);
+  }
+
+}
+#endif
+
+REGAL_GLOBAL_END

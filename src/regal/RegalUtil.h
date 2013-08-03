@@ -38,6 +38,7 @@
 #include <limits>
 
 #include "RegalSystem.h"
+#include "RegalNamespace.h"
 
 #if REGAL_SYS_X11
 #include <X11/Xlib.h>
@@ -64,58 +65,6 @@
 
 #define REGAL_QUOTE(str) #str
 #define REGAL_EQUOTE(str) REGAL_QUOTE(str)
-
-#define REGAL_NAMESPACE_INTERNAL Regal
-
-// REGAL_GLOBAL_BEGIN and REGAL_GLOBAL_END for scoping externals
-// such as C, C++ and boost includes.
-
-// VC8, VC9  - C4127: conditional expression is constant in std::list
-// VC10      - C4512:
-// VC9, VC10 - C4996: 'vsprintf': This function or variable may be unsafe
-// VC10      - C4127: conditional expression is constant
-// VC10      - C4706: assignment within conditional expression
-
-#ifdef _MSC_VER
-# define REGAL_GLOBAL_BEGIN         \
-  __pragma(pack(push))              \
-  __pragma(pack(8))                 \
-  __pragma(warning(push))           \
-  __pragma(warning(disable : 4127)) \
-  __pragma(warning(disable : 4512)) \
-  __pragma(warning(disable : 4996)) \
-  __pragma(warning(disable : 4706))
-# define REGAL_GLOBAL_END           \
-  __pragma(warning(pop))            \
-  __pragma(pack(pop))
-#else
-# define REGAL_GLOBAL_BEGIN
-# define REGAL_GLOBAL_END
-#endif
-
-// REGAL_NAMESPACE_BEGIN and REGAL_NAMESPACE_END for scoping Regal internals
-
-#ifdef _MSC_VER
-# define REGAL_NAMESPACE_BEGIN         \
-  __pragma(pack(push))                 \
-  __pragma(pack(8))                    \
-  __pragma(warning(push))              \
-  __pragma(warning(disable : 4996))    \
-  __pragma(warning(disable : 4127))    \
-  __pragma(warning(disable : 4706))    \
-  namespace REGAL_NAMESPACE_INTERNAL   \
-  {
-# define REGAL_NAMESPACE_END           \
-  }                                    \
-  __pragma(warning(pop))               \
-  __pragma(pack(pop))
-#else
-# define REGAL_NAMESPACE_BEGIN         \
-  namespace REGAL_NAMESPACE_INTERNAL   \
-  {
-# define REGAL_NAMESPACE_END           \
-  }
-#endif
 
 // Export Regal entry points by default, might want to disable
 // this for statically linking Regal: -DREGAL_DECL_EXPORT=0
@@ -172,10 +121,15 @@
 # endif
 #endif
 
-// Trace dispatch unsupported
+// Trace dispatch unsupported by default in
+// release mode
 
 #ifndef REGAL_TRACE
-#define REGAL_TRACE 0
+# if defined(NDEBUG) || REGAL_SYS_PPAPI
+#   define REGAL_TRACE 0
+# else
+#   define REGAL_TRACE 1
+# endif
 #endif
 
 // Emulation dispatch supported by default
@@ -187,7 +141,7 @@
 // Statistics gathering disabled in release mode, or embedded
 
 #ifndef REGAL_STATISTICS
-# if defined(NDEBUG) || REGAL_SYS_IOS || REGAL_SYS_PPAPI || REGAL_SYS_ANDROID
+# if defined(NDEBUG) || REGAL_SYS_IOS || REGAL_SYS_PPAPI || REGAL_SYS_ANDROID || REGAL_SYS_EMSCRIPTEN
 #  define REGAL_STATISTICS 0
 # else
 #  define REGAL_STATISTICS 1
@@ -206,6 +160,10 @@
 
 // Emulation layers supported by default
 
+#ifndef REGAL_EMU_HINT
+#define REGAL_EMU_HINT 1
+#endif
+
 #ifndef REGAL_EMU_PPA
 #define REGAL_EMU_PPA 1
 #endif
@@ -216,10 +174,6 @@
 
 #ifndef REGAL_EMU_OBJ
 #define REGAL_EMU_OBJ 1
-#endif
-
-#ifndef REGAL_EMU_BASEVERTEX
-#define REGAL_EMU_BASEVERTEX 0
 #endif
 
 #ifndef REGAL_EMU_BIN
@@ -236,6 +190,10 @@
 
 #ifndef REGAL_EMU_DSA
 #define REGAL_EMU_DSA 1
+#endif
+
+#ifndef REGAL_EMU_PATH
+#define REGAL_EMU_PATH 0
 #endif
 
 #ifndef REGAL_EMU_RECT
@@ -272,6 +230,10 @@
 
 // Emulation layer forcing disabled by default
 
+#ifndef REGAL_FORCE_EMU_HINT
+#define REGAL_FORCE_EMU_HINT 0
+#endif
+
 #ifndef REGAL_FORCE_EMU_PPA
 #define REGAL_FORCE_EMU_PPA 0
 #endif
@@ -298,6 +260,10 @@
 
 #ifndef REGAL_FORCE_EMU_DSA
 #define REGAL_FORCE_EMU_DSA 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_PATH
+#define REGAL_FORCE_EMU_PATH 0
 #endif
 
 #ifndef REGAL_FORCE_EMU_RECT

@@ -90,6 +90,7 @@ struct ContextInfo
   GLboolean core   : 1;
   GLboolean es1    : 1;
   GLboolean es2    : 1;
+  GLboolean webgl  : 1;
 
   GLint     gl_version_major;
   GLint     gl_version_minor;
@@ -141,6 +142,7 @@ struct ContextInfo
   GLboolean gl_amd_debug_output : 1;
   GLboolean gl_amd_depth_clamp_separate : 1;
   GLboolean gl_amd_draw_buffers_blend : 1;
+  GLboolean gl_amd_interleaved_elements : 1;
   GLboolean gl_amd_multi_draw_indirect : 1;
   GLboolean gl_amd_name_gen_delete : 1;
   GLboolean gl_amd_performance_monitor : 1;
@@ -149,6 +151,7 @@ struct ContextInfo
   GLboolean gl_amd_query_buffer_object : 1;
   GLboolean gl_amd_sample_positions : 1;
   GLboolean gl_amd_seamless_cubemap_per_texture : 1;
+  GLboolean gl_amd_sparse_texture : 1;
   GLboolean gl_amd_stencil_operation_extended : 1;
   GLboolean gl_amd_vertex_shader_tessellator : 1;
   GLboolean gl_angle_framebuffer_blit : 1;
@@ -160,6 +163,7 @@ struct ContextInfo
   GLboolean gl_angle_texture_compression_dxt3 : 1;
   GLboolean gl_angle_texture_compression_dxt5 : 1;
   GLboolean gl_angle_texture_usage : 1;
+  GLboolean gl_angle_timer_query : 1;
   GLboolean gl_angle_translated_shader_source : 1;
   GLboolean gl_apple_aux_depth_stencil : 1;
   GLboolean gl_apple_client_storage : 1;
@@ -186,12 +190,16 @@ struct ContextInfo
   GLboolean gl_arb_es2_compatibility : 1;
   GLboolean gl_arb_es3_compatibility : 1;
   GLboolean gl_arb_base_instance : 1;
+  GLboolean gl_arb_bindless_texture : 1;
   GLboolean gl_arb_blend_func_extended : 1;
+  GLboolean gl_arb_buffer_storage : 1;
   GLboolean gl_arb_cl_event : 1;
   GLboolean gl_arb_clear_buffer_object : 1;
+  GLboolean gl_arb_clear_texture : 1;
   GLboolean gl_arb_color_buffer_float : 1;
   GLboolean gl_arb_compressed_texture_pixel_storage : 1;
   GLboolean gl_arb_compute_shader : 1;
+  GLboolean gl_arb_compute_variable_group_size : 1;
   GLboolean gl_arb_copy_buffer : 1;
   GLboolean gl_arb_copy_image : 1;
   GLboolean gl_arb_debug_output : 1;
@@ -203,6 +211,7 @@ struct ContextInfo
   GLboolean gl_arb_draw_elements_base_vertex : 1;
   GLboolean gl_arb_draw_indirect : 1;
   GLboolean gl_arb_draw_instanced : 1;
+  GLboolean gl_arb_enhanced_layouts : 1;
   GLboolean gl_arb_explicit_uniform_location : 1;
   GLboolean gl_arb_fragment_program : 1;
   GLboolean gl_arb_fragment_shader : 1;
@@ -216,6 +225,7 @@ struct ContextInfo
   GLboolean gl_arb_half_float_pixel : 1;
   GLboolean gl_arb_half_float_vertex : 1;
   GLboolean gl_arb_imaging : 1;
+  GLboolean gl_arb_indirect_parameters : 1;
   GLboolean gl_arb_instanced_arrays : 1;
   GLboolean gl_arb_internalformat_query : 1;
   GLboolean gl_arb_internalformat_query2 : 1;
@@ -223,6 +233,7 @@ struct ContextInfo
   GLboolean gl_arb_map_buffer_alignment : 1;
   GLboolean gl_arb_map_buffer_range : 1;
   GLboolean gl_arb_matrix_palette : 1;
+  GLboolean gl_arb_multi_bind : 1;
   GLboolean gl_arb_multi_draw_indirect : 1;
   GLboolean gl_arb_multisample : 1;
   GLboolean gl_arb_multitexture : 1;
@@ -233,6 +244,7 @@ struct ContextInfo
   GLboolean gl_arb_point_sprite : 1;
   GLboolean gl_arb_program_interface_query : 1;
   GLboolean gl_arb_provoking_vertex : 1;
+  GLboolean gl_arb_query_buffer_object : 1;
   GLboolean gl_arb_robustness : 1;
   GLboolean gl_arb_sample_shading : 1;
   GLboolean gl_arb_sampler_objects : 1;
@@ -247,6 +259,7 @@ struct ContextInfo
   GLboolean gl_arb_shading_language_include : 1;
   GLboolean gl_arb_shadow : 1;
   GLboolean gl_arb_shadow_ambient : 1;
+  GLboolean gl_arb_sparse_texture : 1;
   GLboolean gl_arb_stencil_texturing : 1;
   GLboolean gl_arb_sync : 1;
   GLboolean gl_arb_tessellation_shader : 1;
@@ -262,6 +275,7 @@ struct ContextInfo
   GLboolean gl_arb_texture_env_dot3 : 1;
   GLboolean gl_arb_texture_float : 1;
   GLboolean gl_arb_texture_gather : 1;
+  GLboolean gl_arb_texture_mirror_clamp_to_edge : 1;
   GLboolean gl_arb_texture_mirrored_repeat : 1;
   GLboolean gl_arb_texture_multisample : 1;
   GLboolean gl_arb_texture_rectangle : 1;
@@ -436,6 +450,7 @@ struct ContextInfo
   GLboolean gl_ingr_blend_func_separate : 1;
   GLboolean gl_ingr_color_clamp : 1;
   GLboolean gl_ingr_interlace_read : 1;
+  GLboolean gl_intel_map_texture : 1;
   GLboolean gl_intel_parallel_arrays : 1;
   GLboolean gl_intel_texture_scissor : 1;
   GLboolean gl_khr_debug : 1;
@@ -628,6 +643,7 @@ struct ContextInfo
   GLboolean gl_sgix_texture_range : 1;
   GLboolean gl_sgix_texture_scale_bias : 1;
   GLboolean gl_sgix_vertex_preclip_hint : 1;
+  GLboolean gl_sgix_ycrcb : 1;
   GLboolean gl_sgi_color_matrix : 1;
   GLboolean gl_sgi_color_table : 1;
   GLboolean gl_sgi_texture_color_table : 1;
@@ -643,11 +659,21 @@ struct ContextInfo
   GLboolean gl_win_phong_shading : 1;
   GLboolean gl_win_specular_fog : 1;
   GLboolean gl_win_swap_hint : 1;
+  GLboolean regal_arb_draw_buffers : 1;
+  GLboolean regal_arb_multitexture : 1;
+  GLboolean regal_arb_texture_env_combine : 1;
+  GLboolean regal_arb_texture_env_dot3 : 1;
   GLboolean regal_arb_texture_storage : 1;
+  GLboolean regal_ati_draw_buffers : 1;
   GLboolean regal_ext_blend_color : 1;
   GLboolean regal_ext_blend_subtract : 1;
   GLboolean regal_ext_direct_state_access : 1;
+  GLboolean regal_ext_framebuffer_blit : 1;
   GLboolean regal_ext_framebuffer_object : 1;
+  GLboolean regal_ext_texture_edge_clamp : 1;
+  GLboolean regal_ext_texture_env_combine : 1;
+  GLboolean regal_ext_texture_env_dot3 : 1;
+  GLboolean regal_ibm_texture_mirrored_repeat : 1;
   GLboolean regal_nv_blend_square : 1;
 
 #if REGAL_SYS_WGL

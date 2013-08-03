@@ -772,6 +772,8 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       s << "//ERROR: Unsupported tex env combine rgb mode\n"; break;
       break;
   }
+  if ( env.rgb.scale != 1.0 )
+    s << "        p.xyz = clamp(" << env.rgb.scale << " * p.xyz, 0.0, 1.0);\n";
   if( skipAlpha ) {
     s << "        p.w = p.x;\n";
   } else {
@@ -830,6 +832,8 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         s << "//ERROR: Unsupported tex env combine alpha mode\n"; break;
         break;
     }
+    if ( env.a.scale != 1.0 )
+      s << "        p.w = clamp(" << env.a.scale << " * p.w, 0.0, 1.0);\n";
   }
   s << "    }\n";
 }
@@ -1387,7 +1391,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, const GLchar *vsSr
   ver = ::std::numeric_limits<GLuint64>::max();
   progcount = 0;
   RegalAssert(ctx);
-  DispatchTable & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatcher.emulation;
   store = sstore;
   pg = tbl.call(&tbl.glCreateProgram)();
   Shader( ctx, tbl, GL_VERTEX_SHADER, vs, vsSrc );
@@ -1412,7 +1416,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, const GLchar *vsSr
   tbl.call(&tbl.glUseProgram)( ctx->iff->program );
 }
 
-void Program::Shader( RegalContext * ctx, DispatchTable & tbl, GLenum type, GLuint & shader, const GLchar *src )
+void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GLuint & shader, const GLchar *src )
 {
   Internal("Regal::Program::Shader","()");
 
@@ -1443,7 +1447,7 @@ void Program::Attribs( RegalContext * ctx )
 {
   Internal("Regal::Program::Attribs","()");
 
-  DispatchTable & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatcher.emulation;
 
   tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
   //tbl.call(&tbl.glBindAttribLocation)( pg, 1, "rglWeight" );
@@ -1477,7 +1481,7 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
 {
   Internal("Regal::Program::UserShaderModeAttribs","()");
 
-  DispatchTable & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatcher.emulation;
 
   tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
   tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
@@ -1498,7 +1502,7 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
 }
 
 
-void Program::Samplers( RegalContext * ctx, DispatchTable & tbl )
+void Program::Samplers( RegalContext * ctx, DispatchTableGL & tbl )
 {
   Internal("Regal::Program::Samplers","()");
 
@@ -1516,7 +1520,7 @@ void Program::Samplers( RegalContext * ctx, DispatchTable & tbl )
   }
 }
 
-void Program::Uniforms( RegalContext * ctx, DispatchTable & tbl )
+void Program::Uniforms( RegalContext * ctx, DispatchTableGL & tbl )
 {
   Internal("Regal::Program::Uniforms","()");
 
@@ -1535,7 +1539,7 @@ void Iff::Cleanup( RegalContext &ctx )
   Internal("Regal::Iff::Cleanup","()");
 
   RestoreVao(&ctx);
-  DispatchTable &tbl = ctx.dispatcher.emulation;
+  DispatchTableGL &tbl = ctx.dispatcher.emulation;
 
   tbl.call(&tbl.glDeleteBuffers)(1, &immVbo);
   tbl.call(&tbl.glDeleteBuffers)(1, &immQuadsVbo);
@@ -1557,7 +1561,7 @@ void Iff::Cleanup( RegalContext &ctx )
     }
   }
 
-  bool isPepperGLES = (ctx.info->vendor == "Chromium");
+  const bool isWebGLish = (ctx.info->vendor == "Chromium" || ctx.info->webgl);
 
   tbl.glBindBuffer(GL_ARRAY_BUFFER, 0);
   tbl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
@@ -1566,9 +1570,8 @@ void Iff::Cleanup( RegalContext &ctx )
     // Chromium/PepperAPI GLES generates an error (visible through glGetError)
     // and logs a message if a call is made to glVertexAttribPointer and no
     // GL_ARRAY_BUFFER is bound.
-    if (!isPepperGLES) {
+    if (!isWebGLish)
       tbl.glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-    }
     tbl.glDisableVertexAttribArray(i);
   }
 }
@@ -1660,7 +1663,35 @@ void Iff::InitFixedFunction(RegalContext &ctx)
 
   // GL_ARB_ES2_compatibility
 
-  fmtmap[ GL_RGB565 ]           = GL_RGB;
+  fmtmap[ GL_RGB565      ] = GL_RGB;
+
+  // ARB_texture_rg and EXT_texture_rg
+
+  fmtmap[ GL_RED         ] = GL_RED;
+  fmtmap[ GL_RED_INTEGER ] = GL_RED;
+  fmtmap[ GL_R8          ] = GL_RED;
+  fmtmap[ GL_R16         ] = GL_RED;
+  fmtmap[ GL_R16F        ] = GL_RED;
+  fmtmap[ GL_R32F        ] = GL_RED;
+  fmtmap[ GL_R8I         ] = GL_RED;
+  fmtmap[ GL_R8UI        ] = GL_RED;
+  fmtmap[ GL_R16I        ] = GL_RED;
+  fmtmap[ GL_R16UI       ] = GL_RED;
+  fmtmap[ GL_R32I        ] = GL_RED;
+  fmtmap[ GL_R32UI       ] = GL_RED;
+
+  fmtmap[ GL_RG          ] = GL_RG;
+  fmtmap[ GL_RG_INTEGER  ] = GL_RG;
+  fmtmap[ GL_RG8         ] = GL_RG;
+  fmtmap[ GL_RG16        ] = GL_RG;
+  fmtmap[ GL_RG16F       ] = GL_RG;
+  fmtmap[ GL_RG32F       ] = GL_RG;
+  fmtmap[ GL_RG8I        ] = GL_RG;
+  fmtmap[ GL_RG8UI       ] = GL_RG;
+  fmtmap[ GL_RG16I       ] = GL_RG;
+  fmtmap[ GL_RG16UI      ] = GL_RG;
+  fmtmap[ GL_RG32I       ] = GL_RG;
+  fmtmap[ GL_RG32UI      ] = GL_RG;
 }
 
 void Iff::ShadowMultiTexBinding( GLenum texunit, GLenum target, GLuint obj )
@@ -1877,6 +1908,20 @@ void Iff::TexEnv( GLenum texunit, GLenum target, GLenum pname, const GLint *v )
           ffstate.SetTexInfo( ver, activeTextureIndex, *tup );
           break;
         }
+        case GL_RGB_SCALE:
+        case GL_ALPHA_SCALE:
+        {
+          TextureUnit *tup = & textureUnit[ activeTextureIndex ];
+          TexenvCombineState & c = (pname == GL_RGB_SCALE ? tup->env.rgb : tup->env.a);
+          GLfloat pscale = static_cast<GLfloat>(v[0]);
+          if (pscale != 1.0 && pscale != 2.0 && pscale != 4.0) {
+              Warning("Invalid value set for TexEnv Scale %f - must be 1.0, 2.0, or 4.0\n", pscale);
+              return; // error
+          }
+          c.scale = pscale;
+          ffstate.SetTexInfo( ver, activeTextureIndex, *tup );
+          break;
+        }
         default:
           break;
       }
@@ -1934,7 +1979,8 @@ void Iff::State::Process( Iff * ffn )
     pt.unit = rt.unit;
     pt.useMatrix = pt.enables != 0 && ffn->texture[i].Top() != identity;
     if( pt.unit.env.mode != TEM_Combine ) {
-      pt.unit.env.rgb = pt.unit.env.a = TexenvCombineState();
+      pt.unit.env.rgb = TexenvCombineState(true);
+      pt.unit.env.a = TexenvCombineState(false);
     }
   }
   if( p.lighting == false ) {
@@ -1962,7 +2008,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
   Internal("Regal::Iff::UpdateUniforms",ctx);
 
   Program & pgm = *currprog;
-  DispatchTable & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatcher.emulation;
   if( pgm.ver != ffstate.Ver() ) {
     pgm.ver = ffstate.Ver();
     const State::Store & p = ffstate.processed;
@@ -2195,7 +2241,7 @@ void Iff::UseFixedFunctionProgram( RegalContext * ctx )
     p = & ffprogs[ base + match ];
     // delete this program
     if( p->pg != 0 ) {
-      DispatchTable & tbl = ctx->dispatcher.emulation;
+      DispatchTableGL & tbl = ctx->dispatcher.emulation;
       tbl.call(&tbl.glDeleteShader)( p->vs );
       tbl.call(&tbl.glDeleteShader)( p->fs );
       tbl.call(&tbl.glDeleteProgram)( p->pg );
@@ -2520,7 +2566,7 @@ void Iff::LinkProgram( RegalContext *ctx, GLuint program ) {
   }
   ctx->dispatcher.emulation.glLinkProgram( program );
   Program & p = shprogmap[ program ];
-  DispatchTable & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatcher.emulation;
   p.Samplers( ctx, tbl );
   p.Uniforms( ctx, tbl );
 }

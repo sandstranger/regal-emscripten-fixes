@@ -11,6 +11,10 @@ from RegalDispatchLog import apiDispatchFuncInitCode
 from RegalDispatchEmu import dispatchSourceTemplate
 from RegalContextInfo import cond
 
+from RegalDispatchShared import dispatchSourceTemplate
+from RegalDispatchShared import apiDispatchFuncInitCode
+from RegalDispatchShared import apiDispatchGlobalFuncInitCode
+
 from Emu       import emuFindEntry, emuCodeGen
 
 ##############################################################################################
@@ -26,9 +30,11 @@ def apiStatisticsFuncDefineCode(apis, args):
       code += '#if %s\n' % cond[api.name]
 
     for function in api.functions:
-      if not function.needsContext:
-        continue
+
       if getattr(function,'regalOnly',False)==True:
+        continue
+
+      if not function.needsContext:
         continue
 
       name   = function.name
@@ -77,7 +83,7 @@ def apiStatisticsFuncDefineCode(apis, args):
         code += '  {\n'
         for i in api.enums:
           if i.name=='defines':
-            for j in i.enumerants:
+            for j in i.enumerantsByName:
               if getattr(j,'enableCap',False) == True:
                 code += '    case %-40s %-60s break;\n'%(j.name+':','statistics.enable_%s++;'%j.name)
         code += '    default: break;\n'
@@ -90,13 +96,16 @@ def apiStatisticsFuncDefineCode(apis, args):
         code += '  {\n'
         for i in api.enums:
           if i.name=='defines':
-            for j in i.enumerants:
+            for j in i.enumerantsByName:
               if getattr(j,'enableCap',False) == True:
                 code += '    case %-40s %-60s break;\n'%(j.name+':','statistics.disable_%s++;'%j.name)
         code += '    default: break;\n'
         code += '  }\n\n'
 
-      code += '  DispatchTable *_next = _context->dispatcher.statistics._next;\n'
+      if function.needsContext:
+        code += '  DispatchTableGL *_next = _context->dispatcher.statistics.next();\n'
+      else:
+        code += '  DispatchTableGlobal *_next = dispatcherGlobal.statistics.next();\n'
       code += '  RegalAssert(_next);\n'
 
       code += '  '
@@ -119,8 +128,8 @@ def apiStatisticsFuncDefineCode(apis, args):
 
 def generateDispatchStatistics(apis, args):
 
-  funcDefine = apiStatisticsFuncDefineCode( apis, args )
-  funcInit   = apiDispatchFuncInitCode( apis, args, 'statistics' )
+  funcDefine     = apiStatisticsFuncDefineCode( apis, args )
+  funcInit       = apiDispatchFuncInitCode( apis, args, 'statistics' )
 
   # Output
 
@@ -132,8 +141,9 @@ def generateDispatchStatistics(apis, args):
   substitute['DISPATCH_NAME']   = 'Statistics'
   substitute['LOCAL_INCLUDE']   = '#include "RegalStatistics.h"'
   substitute['LOCAL_CODE']      = ''
-  substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
-  substitute['API_DISPATCH_FUNC_INIT'] = funcInit
+  substitute['API_DISPATCH_FUNC_DEFINE']      = funcDefine
+  substitute['API_DISPATCH_FUNC_INIT']        = funcInit
+  substitute['API_DISPATCH_GLOBAL_FUNC_INIT'] = ''
   substitute['IFDEF'] = '#if REGAL_STATISTICS\n\n'
   substitute['ENDIF'] = '#endif\n'
 

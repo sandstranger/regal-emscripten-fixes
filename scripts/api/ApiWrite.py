@@ -27,7 +27,10 @@ from Api import StateType, State'''
 
 def writeTypedefs(file,name,typedefs):
   for j in typedefs:
-    print >>file, '%s = Typedef(\'%s\',\'%s\')\n'%(j.name,j.name,j.type),
+    if isinstance(j.type, str) or isinstance(j.type, unicode):
+      print >>file, '%s = Typedef(\'%s\',\'%s\')'%(j.name,j.name,j.type)
+    else:
+      print >>file, '%s = Typedef(\'%s\',%s)'%(j.name,j.name,j.type)
     if getattr(j,'category') != None and len(j.category):
       print >>file, '%s.category = \'%s\''%(j.name,j.category)
     if getattr(j,'default',None) != None:
@@ -104,8 +107,6 @@ defines = Enum('defines')
         print >>file, '%s.esVersions = %s'%(j.name,j.esVersions)
       if getattr(j,'enableCap',None) != None:
         print >>file, '%s.enableCap = %s'%(j.name,j.enableCap)
-      if getattr(j,'hint',None) != None:
-        print >>file, '%s.hint = %s'%(j.name,j.hint)
       if getattr(j,'bindTexture',None) != None:
         print >>file, '%s.bindTexture = %s'%(j.name,j.bindTexture)
       if getattr(j,'texImage',None) != None:
@@ -209,6 +210,8 @@ def writeExtensions(file,name,extensions):
       print >>file, '%s.functions = [\'%s\']'%(i.name,'\',\''.join(i.functions))
     if len(i.emulatedBy):
       print >>file, '%s.emulatedBy = \'%s\''%(i.name,i.emulatedBy)
+    if len(i.emulatedIf):
+      print >>file, '%s.emulatedIf = \'%s\''%(i.name,i.emulatedIf)
     print >>file, '%s.add(%s)'%(name,i.name)
     print >>file, ''
 

@@ -36,6 +36,7 @@ REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
 
+#include <cerrno>
 #include <string>
 using namespace std;
 
@@ -294,15 +295,27 @@ void *GetProcAddress( const char *entry )
     // CGL entry points are in OpenGL framework
 
     if (!lib_OpenGL) {
-      lib_OpenGL = dlopen(lib_OpenGL_filename , RTLD_LAZY);
-      Info("Loading OpenGL from ",lib_OpenGL_filename,lib_OpenGL ? " succeeded." : " failed.");
+      char temp_filename[] = "/tmp/tmp.Regal.XXXX";
+      if (mktemp(temp_filename) != NULL ) {
+        if (symlink(lib_OpenGL_filename, temp_filename) == 0 ) {
+          lib_OpenGL = dlopen(temp_filename , RTLD_LOCAL | RTLD_NOW | RTLD_FIRST);
+          Info("Loading OpenGL from ",lib_OpenGL_filename,lib_OpenGL ? " succeeded." : " failed.");
+          remove( temp_filename );
+        }
+      }
     }
 
     // GL entry point are in libGL.dylib
 
     if (!lib_GL) {
-      lib_GL = dlopen(lib_GL_filename, RTLD_LAZY);
-      Info("Loading OpenGL from ",lib_GL_filename,lib_GL ? " succeeded." : " failed.");
+      char temp_filename[] = "/tmp/tmp.Regal.XXXX";
+      if (mktemp(temp_filename) != NULL ) {
+        if (symlink(lib_GL_filename, temp_filename) == 0 ) {
+          lib_GL = dlopen(temp_filename , RTLD_LOCAL | RTLD_NOW | RTLD_FIRST);
+          Info("Loading libGL from ",lib_GL_filename,lib_GL ? " succeeded." : " failed.");
+          remove( temp_filename );
+        }
+      }
     }
 
     chdir(oldCwd);
@@ -349,6 +362,17 @@ void *GetProcAddress( const char * entry )
   }
 
   return NULL;
+}
+
+#elif REGAL_SYS_EMSCRIPTEN
+
+// Emscripten-specific GetProcAddress.  Can match EGL and GLES symbols.
+
+extern "C" void *eglGetProcAddressEMSCRIPTEN(const char *name);
+
+void *GetProcAddress(const char *entry)
+{
+    return eglGetProcAddressEMSCRIPTEN(entry);
 }
 
 #elif REGAL_SYS_GLX || REGAL_SYS_EGL
@@ -629,6 +653,8 @@ bool fileExists(const char *filename)
 
 FILE *fileOpen(const char *filename, const char *mode)
 {
+  // Return NULL for NULL or zero-length filename
+
   if (filename && *filename)
   {
     if (!strcmp(filename,"stdout"))
@@ -637,7 +663,16 @@ FILE *fileOpen(const char *filename, const char *mode)
     if (!strcmp(filename,"stderr"))
       return stderr;
 
-    return fopen(filename,mode);
+    if (!strcmp(filename,"/dev/null"))
+      return NULL;
+
+    FILE *f = fopen(filename,mode);
+    if (!f)
+    {
+      string message = print_string("Failed to open ",filename," due to errno ",errno," : ",strerror(errno));
+      Warning(message);
+    }
+    return f;
   }
 
   return NULL;

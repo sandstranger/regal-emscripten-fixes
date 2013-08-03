@@ -31,7 +31,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct DispatchTable;
+struct DispatchTableGL;
 
 struct RegalGMockInterface
 {
@@ -42,7 +42,7 @@ struct RegalGMockInterface
 ${API_DISPATCH_MOCK_DEFINE}
 };
 
-void InitDispatchTable${DISPATCH_NAME}(DispatchTable &tbl);
+void InitDispatchTable${DISPATCH_NAME}(DispatchTableGL &tbl);
 
 REGAL_NAMESPACE_END
 
@@ -92,7 +92,7 @@ RegalGMockInterface::~RegalGMockInterface()
 
 RegalGMockInterface* RegalGMockInterface::current;
 
-void InitDispatchTable${DISPATCH_NAME}(DispatchTable &tbl)
+void InitDispatchTable${DISPATCH_NAME}(DispatchTableGL &tbl)
 {
 ${API_DISPATCH_FUNC_INIT}
 }
@@ -146,13 +146,25 @@ explicitFunctionsToMock = frozenset([
     'glBindVertexBuffer',
     'glClientActiveTexture',
     'glClientAttribDefaultEXT',
+    'glColorPointer',
+    'glDisableClientState',
+    'glDisableClientStateiEXT',
+    'glDisableVertexAttribArray',
+    'glEdgeFlagPointer',
+    'glEnableClientState',
+    'glEnableVertexAttribArray',
     'glFogCoordPointer',
+    'glIndexPointer',
+    'glMultiTexCoordPointerEXT',
+    'glNormalPointer',
     'glPrimitiveRestartIndex',
     'glSecondaryColorPointer',
     'glVertexAttribBinding',
     'glVertexAttribFormat',
     'glVertexAttribIFormat',
-    'glVertexBindingDivisor'])
+    'glVertexAttribLFormat',
+    'glVertexBindingDivisor',
+    'glVertexPointer'])
 
 
 def generateGMockFunctionApi(apis):

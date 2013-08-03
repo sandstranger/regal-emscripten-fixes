@@ -37,6 +37,7 @@ include build/regaltest.inc
 include build/zlib.inc
 include build/libpng.inc
 include build/snappy.inc
+include build/apitrace.inc
 include build/glu.inc
 include build/glut.inc
 
@@ -200,6 +201,10 @@ SNAPPY.STATIC     := libsnappy.a
 
 -include $(SNAPPY.DEPS)
 
+ifeq ($(MODE),release)
+SNAPPY.CFLAGS         += -DNDEBUG
+endif
+
 ifneq ($(filter linux%,$(SYSTEM)),)
 SNAPPY.CFLAGS     += -DHAVE_UNISTD_H
 endif
@@ -220,11 +225,62 @@ tmp/$(SYSTEM)/snappy/static/%.o: src/snappy/%.c
 
 tmp/$(SYSTEM)/snappy/static/%.o: src/snappy/%.cc
 	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CXX) $(SNAPPY.CFLAGS) $(CXXFLAGS) $(PICFLAG) -o $@ -c $<
+	$(LOG_CC)$(CCACHE) $(CXX) $(SNAPPY.CFLAGS) $(CFLAGS) $(CXXFLAGS) $(PICFLAG) -o $@ -c $<
 
 lib/$(SYSTEM)/$(SNAPPY.STATIC): $(SNAPPY.OBJS)
 	@mkdir -p $(dir $@)
 	$(LOG_AR)$(CCACHE) $(AR) cr $@ $(SNAPPY.OBJS)
+
+#
+# apitrace
+#
+
+APITRACE.SRCS       := $(APITRACE.CXX)
+APITRACE.SRCS       := $(filter %.c,$(APITRACE.SRCS)) $(filter %.cc,$(APITRACE.SRCS)) $(filter %.cpp,$(APITRACE.SRCS))
+APITRACE.SRCS.NAMES := $(notdir $(APITRACE.SRCS))
+APITRACE.OBJS       := $(addprefix tmp/$(SYSTEM)/apitrace/static/,$(APITRACE.SRCS.NAMES))
+APITRACE.OBJS       := $(APITRACE.OBJS:.c=.o) $(APITRACE.OBJS:.cc=.o) $(APITRACE.OBJS:.cpp=.o)
+APITRACE.OBJS       := $(filter %.o,$(APITRACE.OBJS))
+APITRACE.DEPS       := $(APITRACE.OBJS:.o=.d)
+APITRACE.CFLAGS     := -Isrc/apitrace/common -Isrc/apitrace/dispatch -Isrc/apitrace/helpers -Isrc/apitrace/wrappers -Isrc/apitrace
+APITRACE.CFLAGS     += -Isrc/apitrace/thirdparty/khronos
+APITRACE.CFLAGS     += -Isrc/regal -Isrc/snappy -Isrc/zlib/include -Isrc/zlib/src -Isrc/boost
+APITRACE.STATIC     := libapitrace.a
+
+APITRACE.CFLAGS     += -DTRACE_OS_LOG=0 -DTRACE_BACKTRACE=0 -DTRACE_ENABLED_CHECK=0
+
+ifneq ($(filter linux%,$(SYSTEM)),)
+APITRACE.CFLAGS    += -DHAVE_X11=1
+endif
+
+ifeq ($(MODE),release)
+APITRACE.CFLAGS         += -DNDEBUG
+APITRACE.CFLAGS         += -DREGAL_NO_ASSERT=1
+endif
+
+-include $(APITRACE.DEPS)
+
+apitrace.lib: lib/$(SYSTEM)/$(APITRACE.STATIC)
+
+tmp/$(SYSTEM)/apitrace/static/%.o: src/apitrace/common/%.cpp
+	@mkdir -p $(dir $@)
+	$(LOG_CXX)$(CCACHE) $(CXX) $(APITRACE.CFLAGS) $(CFLAGS) $(PICFLAG) -o $@ -c $<
+
+tmp/$(SYSTEM)/apitrace/static/%.o: src/apitrace/dispatch/%.cpp
+	@mkdir -p $(dir $@)
+	$(LOG_CXX)$(CCACHE) $(CXX) $(APITRACE.CFLAGS) $(CFLAGS) $(PICFLAG) -o $@ -c $<
+
+tmp/$(SYSTEM)/apitrace/static/%.o: src/apitrace/helpers/%.cpp
+	@mkdir -p $(dir $@)
+	$(LOG_CXX)$(CCACHE) $(CXX) $(APITRACE.CFLAGS) $(CFLAGS) $(PICFLAG) -o $@ -c $<
+
+tmp/$(SYSTEM)/apitrace/static/%.o: src/apitrace/wrappers/%.cpp
+	@mkdir -p $(dir $@)
+	$(LOG_CXX)$(CCACHE) $(CXX) $(APITRACE.CFLAGS) $(CFLAGS) $(PICFLAG) -o $@ -c $<
+
+lib/$(SYSTEM)/$(APITRACE.STATIC): $(APITRACE.OBJS)
+	@mkdir -p $(dir $@)
+	$(LOG_AR)$(CCACHE) $(AR) cr $@ $(APITRACE.OBJS)
 ifneq ($(RANLIB),)
 	$(LOG_RANLIB)$(RANLIB) $@
 endif
@@ -275,14 +331,13 @@ ifeq ($(MODE),debug)
 endif
 
 #
-# In release mode we're agressive about leaving out functionality
+# In release mode we're aggressive about leaving out functionality
 # in order to minimize the footprint of libRegal.so.1
 #
 
 ifeq ($(MODE),release)
 LIB.CFLAGS         += -DNDEBUG
 LIB.CFLAGS         += -DREGAL_DECL_EXPORT=1
-LIB.CFLAGS         += -DREGAL_LOG=0
 LIB.CFLAGS         += -DREGAL_LOG_ALL=0
 LIB.CFLAGS         += -DREGAL_LOG_ONCE=0
 LIB.CFLAGS         += -DREGAL_LOG_JSON=0
@@ -290,10 +345,11 @@ LIB.CFLAGS         += -DREGAL_NO_HTTP=1
 LIB.CFLAGS         += -DREGAL_NO_ASSERT=1
 LIB.CFLAGS         += -DREGAL_NO_PNG=1
 LIB.CFLAGS         += -fomit-frame-pointer
-LIB.CFLAGS         += -DREGAL_ERROR=0
-LIB.CFLAGS         += -DREGAL_DEBUG=0
-LIB.CFLAGS         += -DREGAL_CACHE=0
-LIB.CFLAGS         += -DREGAL_EMULATION=1    # 0 for "loader only"
+REGAL_LOG          ?= 0
+REGAL_ERROR        ?= 0
+REGAL_CACHE        ?= 0
+REGAL_DEBUG        ?= 0
+REGAL_EMULATION    ?= 1                      # 0 for "loader only"
 LIB.CFLAGS         += -DREGAL_NO_TLS=0       # 1 for single threaded
 endif
 
@@ -305,6 +361,26 @@ ifeq ($(MODE),custom)
 endif
 
 #
+
+ifneq ($(REGAL_LOG),)
+LIB.CFLAGS         += -DREGAL_LOG=$(REGAL_LOG)
+endif
+
+ifneq ($(REGAL_ERROR),)
+LIB.CFLAGS         += -DREGAL_ERROR=$(REGAL_ERROR)
+endif
+
+ifneq ($(REGAL_CACHE),)
+LIB.CFLAGS         += -DREGAL_CACHE=$(REGAL_CACHE)
+endif
+
+ifneq ($(REGAL_DEBUG),)
+LIB.CFLAGS         += -DREGAL_DEBUG=$(REGAL_DEBUG)
+endif
+
+ifneq ($(REGAL_EMULATION),)
+LIB.CFLAGS         += -DREGAL_EMULATION=$(REGAL_EMULATION)
+endif
 
 LIB.CFLAGS         += -fvisibility=hidden
 
@@ -327,13 +403,21 @@ LIB.SDEPS          := $(LIBS.SOBJS:.o=.d)
 
 -include $(LIB.DEPS) $(LIB.SDEPS)
 
-LIB.LIBS           += -Llib/$(SYSTEM) -lpng -lz
+LIB.LIBS           += -Llib/$(SYSTEM)
+ifeq ($(filter nacl%,$(SYSTEM)),)
+LIB.LIBS           += -lapitrace -lsnappy
+endif
+LIB.LIBS           += -lpng -lz $(LDFLAGS.X11)
 
 ifneq ($(filter darwin%,$(SYSTEM)),)
 LIB.LDFLAGS        += -Wl,-reexport-lGLU -L/System/Library/Frameworks/OpenGL.framework/Versions/A/Libraries
 endif
 
 regal.lib: lib/$(SYSTEM)/$(LIB.STATIC)
+
+ifeq ($(filter nacl%,$(SYSTEM)),)
+lib/$(SYSTEM)/$(LIB.STATIC): lib/$(SYSTEM)/$(APITRACE.STATIC) lib/$(SYSTEM)/$(SNAPPY.STATIC)
+endif
 
 ifeq ($(filter nacl%,$(SYSTEM)),)
 regal.lib: lib/$(SYSTEM)/$(LIB.SHARED)
@@ -343,7 +427,7 @@ regal.lib: lib/$(SYSTEM)/$(LIB.SHARED)
 endif
 endif
 
-lib/$(SYSTEM)/$(LIB.STATIC): lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) lib/$(SYSTEM)/$(SNAPPY.STATIC) $(LIB.OBJS)
+lib/$(SYSTEM)/$(LIB.STATIC): lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) $(LIB.OBJS)
 	@mkdir -p $(dir $@)
 	$(LOG_AR)$(CCACHE) $(AR) cr $@ $(LIB.OBJS)
 ifneq ($(RANLIB),)
@@ -353,8 +437,16 @@ ifneq ($(STRIP),)
 	$(LOG_STRIP)$(STRIP) -x $@
 endif
 
-lib/$(SYSTEM)/$(LIB.SHARED): lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) lib/$(SYSTEM)/$(SNAPPY.STATIC) $(LIB.SOBJS)
+ifneq ($(filter nacl%,$(SYSTEM)),)
+lib/$(SYSTEM)/$(LIB.SHARED): lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) $(LIB.SOBJS)
+else
+lib/$(SYSTEM)/$(LIB.SHARED): lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) $(LIB.SOBJS) lib/$(SYSTEM)/$(APITRACE.STATIC) lib/$(SYSTEM)/$(SNAPPY.STATIC)
+endif
+ifneq ($(filter nacl%,$(SYSTEM)),)
 	$(LOG_LD)$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.SO) -o $@ $(LIB.SOBJS) $(LIB.LIBS) $(LIB.LDFLAGS)
+else
+	$(LOG_LD)$(CCACHE) $(LD) $(LDFLAGS.EXTRA) $(LDFLAGS.SO) -o $@ $(LDFLAGS.STARTGROUP) $(LIB.SOBJS) lib/$(SYSTEM)/$(APITRACE.STATIC) $(LDFLAGS.ENDGROUP) $(LIB.LIBS) $(LIB.LDFLAGS)
+endif
 ifneq ($(LN),)
 	$(LN) $(LIB.SHARED) lib/$(SYSTEM)/$(LIB.SONAME)
 	$(LN) $(LIB.SHARED) lib/$(SYSTEM)/$(LIB.DEVLNK)
@@ -724,11 +816,11 @@ endif
 
 REGALTEST.SRCS       += $(REGALTEST.CXX)
 REGALTEST.SRCS.NAMES := $(notdir $(REGALTEST.SRCS))
-REGALTEST.OBJS       := $(addprefix tmp/$(SYSTEM)/regal_tests/static/,$(REGALTEST.SRCS.NAMES))
+REGALTEST.OBJS       := $(addprefix tmp/$(SYSTEM)/regaltest/static/,$(REGALTEST.SRCS.NAMES))
 REGALTEST.OBJS       := $(REGALTEST.OBJS:.cpp=.o)
 REGALTEST.DEPS       := $(REGALTEST.DEPS:.o=.d)
 REGALTEST.CFLAGS     := -Isrc/googletest/include -Isrc/googlemock/include -Isrc/regal -Isrc/boost
-REGALTEST.LIBS       := -Llib/$(SYSTEM) -lgtest lib/$(SYSTEM)/$(LIB.STATIC) $(LDFLAGS.X11) -lm
+REGALTEST.LIBS       := -Llib/$(SYSTEM) $(LDFLAGS.X11) -lm
 
 ifeq ($(filter nacl%,$(SYSTEM)),)
 REGALTEST.LIBS += -ldl
@@ -738,13 +830,21 @@ endif
 
 -include $(REGALTEST.DEPS)
 
-tmp/$(SYSTEM)/regal_tests/static/%.o: tests/%.cpp
+tmp/$(SYSTEM)/regaltest/static/%.o: tests/%.cpp
 	@mkdir -p $(dir $@)
 	$(LOG_CXX)$(CCACHE) $(CXX) $(LIB.CFLAGS) $(REGALTEST.CFLAGS) $(CFLAGS) $(CFLAGS.SO) -o $@ -c $<
 
+ifneq ($(filter nacl%,$(SYSTEM)),)
+bin/$(SYSTEM)/regaltest$(BIN_EXTENSION): lib/$(SYSTEM)/$(APITRACE.STATIC) lib/$(SYSTEM)/$(SNAPPY.STATIC)
+endif
+
 bin/$(SYSTEM)/regaltest$(BIN_EXTENSION): $(REGALTEST.OBJS) lib/$(SYSTEM)/$(GTEST.STATIC) lib/$(SYSTEM)/$(LIB.STATIC) lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC)
 	@mkdir -p $(dir $@)
-	$(LOG_LD)$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(REGALTEST.OBJS) $(REGALTEST.LIBS) $(LIB.LIBS) $(LIB.LDFLAGS)
+ifeq ($(filter nacl%,$(SYSTEM)),)
+	$(LOG_LD)$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(REGALTEST.OBJS) $(REGALTEST.LIBS) $(LDFLAGS.STARTGROUP) lib/$(SYSTEM)/$(LIB.STATIC) lib/$(SYSTEM)/$(APITRACE.STATIC) $(LDFLAGS.ENDGROUP) $(LIB.LIBS) lib/$(SYSTEM)/$(GTEST.STATIC) $(LIB.LDFLAGS) 
+else
+	$(LOG_LD)$(CCACHE) $(LD) $(LDFLAGS.EXTRA) -o $@ $(REGALTEST.OBJS) $(REGALTEST.LIBS) lib/$(SYSTEM)/$(LIB.STATIC) $(LIB.LIBS) lib/$(SYSTEM)/$(GTEST.STATIC) $(LIB.LDFLAGS) 
+endif
 ifneq ($(STRIP),)
 	$(LOG_STRIP)$(STRIP) -x $@
 endif
@@ -773,5 +873,6 @@ clobber:
 
 .PHONY: export test all
 .PHONY: regal.lib regal.bin
+.PHONY: apitrace.lib
 .PHONY: zlib.lib libpng.lib snappy.lib glew.lib glu.lib glut.lib
 .PHONY: clean clobber

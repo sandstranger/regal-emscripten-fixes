@@ -112,9 +112,9 @@ ${API_TYPEDEF}
 
 /* TODO: make this automatic? */
 
-typedef void (*GLDEBUGPROCAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
-typedef void (*GLDEBUGPROCARB)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
-typedef void (*GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
+typedef void (REGAL_CALL *GLDEBUGPROCAMD)(GLuint id, GLenum category, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
+typedef void (REGAL_CALL *GLDEBUGPROCARB)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
+typedef void (REGAL_CALL *GLDEBUGPROC)(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *message, GLvoid *userParam);
 
 typedef void (*GLLOGPROCREGAL)(GLenum stream, GLsizei length, const GLchar *message, GLvoid *context);
 
@@ -212,18 +212,6 @@ def generatePublicHeader(apis, args):
 
 def apiFuncDefineCode(apis, args):
 
-  # Build a dict of default typedef values
-
-  defaults = {}
-  for api in apis:
-    for typedef in api.typedefs:
-      if getattr(typedef,'default',None)!=None:
-        defaults[typedef.name] = typedef.default
-
-  defaults['int']   = '0';
-  defaults['HDC']   = 'NULL';
-  defaults['HGLRC'] = 'NULL';
-
   #
 
   code = ''
@@ -259,8 +247,8 @@ def apiFuncDefineCode(apis, args):
         if typeIsVoid(rType):
           c += ';\n'
         else:
-          if rTypes in defaults:
-            c += ' %s;\n' % ( defaults[rTypes] )
+          if rTypes in api.defaults:
+            c += ' %s;\n' % ( api.defaults[rTypes] )
           else:
             if rType[-1]=='*' or typeIsVoidPointer(rType):
               c += ' NULL;\n'
@@ -277,7 +265,7 @@ def apiFuncDefineCode(apis, args):
             c += '  #if REGAL_SYS_ES1\n'
             c += '  if (_context->isES1()) // Pass-through for ES1 only\n'
             c += '  {\n'
-            c += '    DispatchTable *_next = &_context->dispatcher.front();\n'
+            c += '    DispatchTableGL *_next = &_context->dispatcher.front();\n'
             c += '    RegalAssert(_next);\n    '
             if not typeIsVoid(rType):
               c += 'return '
@@ -299,7 +287,7 @@ def apiFuncDefineCode(apis, args):
         else:
           if getattr(function,'regalOnly',False)==False:
             t = ''
-            t += 'DispatchTable *_next = &_context->dispatcher.front();\n'
+            t += 'DispatchTableGL *_next = &_context->dispatcher.front();\n'
             t += 'RegalAssert(_next);\n'
 
             t += listToString(indent(emuCodeGen(emue,'pre'),''))
@@ -320,51 +308,30 @@ def apiFuncDefineCode(apis, args):
 
       else:
         c += '  %s\n' % logFunction(function, 'App' )
-
         c += listToString(indent(emuCodeGen(emue,'prefix'),'  '))
 
-        if api.name=='egl':
-          c += '\n'
-          c += '  #if !REGAL_STATIC_EGL\n'
+        if getattr(function,'regalOnly',False)==False:
+          c += '  DispatchTableGlobal *_next = &dispatcherGlobal.front();\n'
+          c += '  RegalAssert(_next);\n'
 
-        c += '  if (!dispatchTableGlobal.%s)\n' % name
-        c += '  {\n'
-        c += '    GetProcAddress( dispatchTableGlobal.%s, "%s" );\n' % ( name, name )
-        c += '    RegalAssert(dispatchTableGlobal.%s!=%s);\n' % ( name, name )
-        c += '    if (dispatchTableGlobal.%s==%s)\n' % ( name, name )
-        c += '      dispatchTableGlobal.%s = NULL;\n' % ( name )
-        c += '  }\n'
-
-        if api.name=='egl':
-          c += '  #endif // !REGAL_STATIC_EGL\n\n'
-
-        if not typeIsVoid(rType):
-          if rTypes in defaults:
-            c += '  %s ret = %s;\n' % ( rTypes, defaults[rTypes] )
-          else:
-            if rType[-1]=='*' or typeIsVoidPointer(rType):
-              c += '  %s ret = NULL;\n' % rTypes
+          if not typeIsVoid(rType):
+            if rTypes in api.defaults:
+              c += '  %s ret = %s;\n' % ( rTypes, api.defaults[rTypes] )
             else:
-              c += '  %s ret = (%s) 0;\n' % ( rTypes, rTypes )
+              if rType[-1]=='*' or typeIsVoidPointer(rType):
+                c += '  %s ret = NULL;\n' % rTypes
+              else:
+                c += '  %s ret = (%s) 0;\n' % ( rTypes, rTypes )
 
-        c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
+          c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
+          c += '  '
+          if not typeIsVoid(rType):
+            c += 'ret = '
+          c += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
 
-        c += '  if (dispatchTableGlobal.%s)\n' % name
-        c += '  {\n'
-        c += '    '
-        if not typeIsVoid(rType):
-          c += 'ret = '
-        c += 'dispatchTableGlobal.%s(%s);\n' % ( name, callParams )
-        c += '    %s\n' % logFunction( function, 'Driver', ret=not typeIsVoid(rType) )
-
-        c += listToString(indent(emuCodeGen(emue,'init'),'    '))
-
-        c += '  }\n'
-        c += '  else\n'
-        c += '    Warning( "%s not available." );\n' % name
+        c += listToString(indent(emuCodeGen(emue,'init'),'  '))
 
         c += listToString(indent(emuCodeGen(emue,'suffix'),'  '))
-
         if not typeIsVoid(rType):
           c += '  return ret;\n'
       c += '}\n\n'
@@ -382,14 +349,22 @@ def apiFuncDefineCode(apis, args):
 
 def apiTypedefCode( apis, args ):
 
+  def printTypedef( name, type ):
+    if re.search( '\(\s*\*\s*\)', type ):
+      return 'typedef %s;' % ( re.sub( '\(\s*\*\s*\)', '(*%s)' % name, type ) )
+    else:
+      return'typedef %s %s;' % ( type, name )
+    
   code = ''
   for api in apis:
     code += '\n'
     if api.name in cond:
       code += '#if %s\n' % cond[api.name]
+
     if api.name == 'wgl':
       code += '#ifdef  REGAL_SYS_WGL_DECLARE_WGL\n'
       code += '#ifndef _WINDEF_\n'
+
     for typedef in api.typedefs:
 
       if api.name == 'wgl' and typedef.name=='GLYPHMETRICSFLOAT':
@@ -397,14 +372,18 @@ def apiTypedefCode( apis, args ):
         code += '#ifndef _WINGDI_\n'
       if api.name == 'wgl' and typedef.name=='HPBUFFERARB':
         code += '#endif\n'
+        code += '#endif // REGAL_SYS_WGL_DECLARE_WGL\n'
 
-      if re.search( '\(\s*\*\s*\)', typedef.type ):
-        code += 'typedef %s;\n' % ( re.sub( '\(\s*\*\s*\)', '(*%s)' % typedef.name, typedef.type ) )
+      if isinstance(typedef.type, str) or isinstance(typedef.type, unicode):
+        code += printTypedef( typedef.name, typedef.type ) + '\n'
       else:
-        code += 'typedef %s %s;\n' % ( typedef.type, typedef.name )
+        type = {}
+        mapping = { 'osx' : 'REGAL_SYS_OSX', 'ios' : 'REGAL_SYS_IOS', 'win32' : 'REGAL_SYS_WIN32', 'x11' : 'REGAL_SYS_X11', 'android' : 'REGAL_SYS_ANDROID', '' : '' }
+        for i in typedef.type:
+          if i in mapping:
+            type[mapping[i]] = printTypedef( typedef.name, typedef.type[i] )
+        code += '\n'.join(wrapIf(type,None)) + '\n'
 
-    if api.name == 'wgl':
-      code += '#endif // REGAL_SYS_WGL_DECLARE_WGL\n'
     if api.name in cond:
       code += '#endif // %s\n' % cond[api.name]
     code += '\n'
@@ -665,6 +644,8 @@ REGAL_GLOBAL_BEGIN
 #include "RegalScopedPtr.h"
 #include "RegalFrame.h"
 #include "RegalMarker.h"
+#include "RegalDispatcherGL.h"
+#include "RegalDispatcherGlobal.h"
 
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;

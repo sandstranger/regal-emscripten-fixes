@@ -163,14 +163,44 @@ ContextInfo::init(const RegalContext &context)
     }
   }
 
+  // We could get either form of the OpenGL ES string, so confirm version
+
+  #if REGAL_SYS_ES1 || REGAL_SYS_ES2
+  if (!es1 && (gles_version_major == 1))
+  {
+    es1 = GL_TRUE;
+    es2 = GL_FALSE;
+  }
+  else if (!es2 && (gles_version_major == 2))
+  {
+    es1 = GL_FALSE;
+    es2 = GL_TRUE;
+  }
+  #endif
+
+  #if REGAL_SYS_EMSCRIPTEN
+  webgl = starts_with(version, "WebGL");
+  #endif
+
   // For Mesa3D EGL/ES 2.0 on desktop Linux the version string doesn't start with
   // "OpenGL ES" Is that a Mesa3D bug? Perhaps...
 
-  #if REGAL_SYS_ES2 && REGAL_SYS_EGL && !REGAL_SYS_ANDROID
+  #if REGAL_SYS_ES2 && REGAL_SYS_EGL && !REGAL_SYS_ANDROID && !REGAL_SYS_EMSCRIPTEN
   if (Regal::Config::sysEGL)
   {
     es1 = false;
     es2 = true;
+    webgl = false;
+    gles_version_major = 2;
+    gles_version_minor = 0;
+  }
+  #endif
+
+  #if REGAL_SYS_ES2 && REGAL_SYS_EGL && REGAL_SYS_EMSCRIPTEN
+  {
+    es1 = false;
+    es2 = true;
+    webgl = true;
     gles_version_major = 2;
     gles_version_minor = 0;
   }
@@ -186,7 +216,7 @@ ContextInfo::init(const RegalContext &context)
     core = flags & GL_CONTEXT_CORE_PROFILE_BIT ? GL_TRUE : GL_FALSE;
   }
 
-  compat = !core && !es1 && !es2;
+  compat = !core && !es1 && !es2 && !webgl;
 
   if (REGAL_FORCE_CORE_PROFILE || Config::forceCoreProfile)
   {
@@ -325,7 +355,12 @@ ${VERSION_DETECT}
 ${EXT_INIT}
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
-  if (!es1)
+  if (es1)
+  {
+    maxVertexAttribs = 8;
+    maxVaryings = 0;
+  }
+  else
   {
     context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&maxVertexAttribs));
     context.dispatcher.driver.glGetIntegerv( es2 ? GL_MAX_VARYING_VECTORS : GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&maxVaryings));
@@ -337,8 +372,10 @@ ${EXT_INIT}
   if (maxVertexAttribs > REGAL_EMU_IFF_VERTEX_ATTRIBS)
       maxVertexAttribs = REGAL_EMU_IFF_VERTEX_ATTRIBS;
 
-  // Qualcomm fails with float4 attribs with 256 byte stride, so artificially limit to 8 attribs
-  if (vendor == "Qualcomm" || vendor == "Chromium")
+  // Qualcomm fails with float4 attribs with 256 byte stride, so artificially limit to 8 attribs (n*16 is used
+  // as the stride in RegalIFF).  WebGL (and Pepper) explicitly disallows stride > 255 as well.
+
+  if (vendor == "Qualcomm" || vendor == "Chromium" || webgl)
     maxVertexAttribs = 8;
 
   Info("Regal  v attribs : ",maxVertexAttribs);
@@ -387,7 +424,8 @@ def versionDeclareCode(apis, args):
       code += '  GLboolean compat : 1;\n'
       code += '  GLboolean core   : 1;\n'
       code += '  GLboolean es1    : 1;\n'
-      code += '  GLboolean es2    : 1;\n\n'
+      code += '  GLboolean es2    : 1;\n'
+      code += '  GLboolean webgl  : 1;\n\n'
 
     if name in ['gl', 'glx', 'egl']:
       code += '  GLint     %s_version_major;\n' % name
@@ -433,6 +471,7 @@ def versionInitCode(apis, args):
       code += '  core(false),\n'
       code += '  es1(false),\n'
       code += '  es2(false),\n'
+      code += '  webgl(false),\n'
 
     if name in ['gl', 'glx', 'egl']:
       code += '  %s_version_major(-1),\n' % name

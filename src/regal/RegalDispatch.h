@@ -51,10 +51,16 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct DispatchTableGlobal {
+namespace Dispatch
+{
 
-  DispatchTableGlobal();
-  ~DispatchTableGlobal();
+  struct Global
+  {
+    inline void setFunction(const size_t offset, void *func)
+    {
+      RegalAssert((offset*sizeof(void *))<sizeof(this));
+      ((void **)(this))[offset] = func;
+    }
 
 #if REGAL_SYS_WGL
     // WGL_3DL_stereo_control
@@ -298,7 +304,6 @@ struct DispatchTableGlobal {
 #endif // REGAL_SYS_WGL
 
 #if REGAL_SYS_GLX
-
     // GLX_VERSION_1_0
 
     XVisualInfo *(REGAL_CALL *glXChooseVisual)(Display *dpy, int screen, int *attribList);
@@ -531,7 +536,6 @@ struct DispatchTableGlobal {
 #endif // REGAL_SYS_GLX
 
 #if REGAL_SYS_OSX
-
     // CGL_VERSION_1_0
 
     CGLError (REGAL_CALL *CGLChoosePixelFormat)(const CGLPixelFormatAttribute *attribs, CGLPixelFormatObj *pix, GLint *npix);
@@ -598,7 +602,6 @@ struct DispatchTableGlobal {
 #endif // REGAL_SYS_OSX
 
 #if REGAL_SYS_EGL
-
     // EGL_ANGLE_query_surface_pointer
 
     EGLBoolean (REGAL_CALL *eglQuerySurfacePointerANGLE)(EGLDisplay dpy, EGLSurface surface, EGLint attribute, GLvoid **value);
@@ -711,51 +714,15 @@ struct DispatchTableGlobal {
     EGLBoolean (REGAL_CALL *eglWaitClient)(void);
 #endif // REGAL_SYS_EGL
 
-};
+  };
 
-extern DispatchTableGlobal dispatchTableGlobal;
-
-struct DispatchTable {
-
-  bool           _enabled;
-  DispatchTable *_prev;
-  DispatchTable *_next;
-
-  // Lookup a function pointer from the table,
-  // or deeper in the stack as necessary.
-
-  template<typename T>
-  T call(T *func)
+  struct GL
   {
-    RegalAssert(func);
-    if (_enabled && *func)
-      return *func;
-
-    DispatchTable *i = this;
-    RegalAssert(i);
-
-    RegalAssert(reinterpret_cast<void *>(func)>=reinterpret_cast<void *>(i));
-    RegalAssert(reinterpret_cast<void *>(func)< reinterpret_cast<void *>(i+1));
-
-    const std::size_t offset = reinterpret_cast<char *>(func) - reinterpret_cast<char *>(i);
-
-    T f = *func;
-
-    // Step down the stack for the first available function in an enabled table
-
-    while (!f || !i->_enabled)
+    inline void setFunction(const size_t offset, void *func)
     {
-      // Find the next enabled dispatch table
-      for (i = i->_next; !i->_enabled; i = i->_next) { RegalAssert(i); }
-
-      // Get the function pointer; extra cast through void* is to avoid -Wcast-align spew
-      RegalAssert(i);
-      RegalAssert(i->_enabled);
-      f = *reinterpret_cast<T *>(reinterpret_cast<void *>(reinterpret_cast<char *>(i)+offset));
+      RegalAssert((offset*sizeof(void *))<sizeof(this));
+      ((void **)(this))[offset] = func;
     }
-
-    return f;
-  }
 
     // GL_VERSION_1_0
 
@@ -1433,6 +1400,10 @@ struct DispatchTable {
     void (REGAL_CALL *glBlendFuncIndexedAMD)(GLuint buf, GLenum src, GLenum dst);
     void (REGAL_CALL *glBlendFuncSeparateIndexedAMD)(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 
+    // GL_AMD_interleaved_elements
+
+    void (REGAL_CALL *glVertexAttribParameteriAMD)(GLuint index, GLenum pname, GLint param);
+
     // GL_AMD_multi_draw_indirect
 
     void (REGAL_CALL *glMultiDrawArraysIndirectAMD)(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
@@ -1461,6 +1432,11 @@ struct DispatchTable {
     // GL_AMD_sample_positions
 
     void (REGAL_CALL *glSetMultisamplefvAMD)(GLenum pname, GLuint index, const GLfloat *val);
+
+    // GL_AMD_sparse_texture
+
+    void (REGAL_CALL *glTexStorageSparseAMD)(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+    void (REGAL_CALL *glTextureStorageSparseAMD)(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
 
     // GL_AMD_stencil_operation_extended
 
@@ -1586,10 +1562,33 @@ struct DispatchTable {
     void (REGAL_CALL *glDrawElementsInstancedBaseInstance)(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLuint baseinstance);
     void (REGAL_CALL *glDrawElementsInstancedBaseVertexBaseInstance)(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance);
 
+    // GL_ARB_bindless_texture
+
+    GLuint64 (REGAL_CALL *glGetImageHandleARB)(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+    GLuint64 (REGAL_CALL *glGetTextureHandleARB)(GLuint texture);
+    GLuint64 (REGAL_CALL *glGetTextureSamplerHandleARB)(GLuint texture, GLuint sampler);
+    void (REGAL_CALL *glGetVertexAttribLui64vARB)(GLuint index, GLenum pname, GLuint64EXT *params);
+    GLboolean (REGAL_CALL *glIsImageHandleResidentARB)(GLuint64 handle);
+    GLboolean (REGAL_CALL *glIsTextureHandleResidentARB)(GLuint64 handle);
+    void (REGAL_CALL *glMakeImageHandleNonResidentARB)(GLuint64 handle);
+    void (REGAL_CALL *glMakeImageHandleResidentARB)(GLuint64 handle, GLenum access);
+    void (REGAL_CALL *glMakeTextureHandleNonResidentARB)(GLuint64 handle);
+    void (REGAL_CALL *glMakeTextureHandleResidentARB)(GLuint64 handle);
+    void (REGAL_CALL *glProgramUniformHandleui64ARB)(GLuint program, GLint location, GLuint64 value);
+    void (REGAL_CALL *glProgramUniformHandleui64vARB)(GLuint program, GLint location, GLsizei count, const GLuint64 *values);
+    void (REGAL_CALL *glUniformHandleui64ARB)(GLint location, GLuint64 value);
+    void (REGAL_CALL *glUniformHandleui64vARB)(GLint location, GLsizei count, const GLuint64 *value);
+    void (REGAL_CALL *glVertexAttribL1ui64ARB)(GLuint index, GLuint64EXT x);
+    void (REGAL_CALL *glVertexAttribL1ui64vARB)(GLuint index, const GLuint64EXT *v);
+
     // GL_ARB_blend_func_extended
 
     void (REGAL_CALL *glBindFragDataLocationIndexed)(GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
     GLint (REGAL_CALL *glGetFragDataIndex)(GLuint program, const GLchar *name);
+
+    // GL_ARB_buffer_storage
+
+    void (REGAL_CALL *glBufferStorage)(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
 
     // GL_ARB_cl_event
 
@@ -1602,6 +1601,11 @@ struct DispatchTable {
     void (REGAL_CALL *glClearNamedBufferDataEXT)(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
     void (REGAL_CALL *glClearNamedBufferSubDataEXT)(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
 
+    // GL_ARB_clear_texture
+
+    void (REGAL_CALL *glClearTexImage)(GLuint texture, GLint level, GLenum format, GLenum type, const GLvoid *data);
+    void (REGAL_CALL *glClearTexSubImage)(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *data);
+
     // GL_ARB_color_buffer_float
 
     void (REGAL_CALL *glClampColorARB)(GLenum target, GLenum clamp);
@@ -1610,6 +1614,10 @@ struct DispatchTable {
 
     void (REGAL_CALL *glDispatchCompute)(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
     void (REGAL_CALL *glDispatchComputeIndirect)(GLintptr indirect);
+
+    // GL_ARB_compute_variable_group_size
+
+    void (REGAL_CALL *glDispatchComputeGroupSizeARB)(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
 
     // GL_ARB_copy_buffer
 
@@ -1753,6 +1761,11 @@ struct DispatchTable {
     void (REGAL_CALL *glResetMinmax)(GLenum target);
     void (REGAL_CALL *glSeparableFilter2D)(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column);
 
+    // GL_ARB_indirect_parameters
+
+    void (REGAL_CALL *glMultiDrawArraysIndirectCountARB)(GLenum mode, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+    void (REGAL_CALL *glMultiDrawElementsIndirectCountARB)(GLenum mode, GLenum type, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+
     // GL_ARB_instanced_arrays
 
     void (REGAL_CALL *glVertexAttribDivisorARB)(GLuint index, GLuint divisor);
@@ -1786,6 +1799,15 @@ struct DispatchTable {
     void (REGAL_CALL *glMatrixIndexubvARB)(GLint size, const GLubyte *indices);
     void (REGAL_CALL *glMatrixIndexuivARB)(GLint size, const GLuint *indices);
     void (REGAL_CALL *glMatrixIndexusvARB)(GLint size, const GLushort *indices);
+
+    // GL_ARB_multi_bind
+
+    void (REGAL_CALL *glBindBuffersBase)(GLenum target, GLuint first, GLsizei count, const GLuint *buffers);
+    void (REGAL_CALL *glBindBuffersRange)(GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes);
+    void (REGAL_CALL *glBindImageTextures)(GLuint first, GLsizei count, const GLuint *textures);
+    void (REGAL_CALL *glBindSamplers)(GLuint first, GLsizei count, const GLuint *samplers);
+    void (REGAL_CALL *glBindTextures)(GLuint first, GLsizei count, const GLuint *textures);
+    void (REGAL_CALL *glBindVertexBuffers)(GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides);
 
     // GL_ARB_multi_draw_indirect
 
@@ -1998,7 +2020,7 @@ struct DispatchTable {
     void (REGAL_CALL *glGetUniformfvARB)(GLhandleARB programObj, GLint location, GLfloat *params);
     void (REGAL_CALL *glGetUniformivARB)(GLhandleARB programObj, GLint location, GLint *params);
     void (REGAL_CALL *glLinkProgramARB)(GLhandleARB programObj);
-    void (REGAL_CALL *glShaderSourceARB)(GLhandleARB shaderObj, GLsizei count, const GLcharARB **string, const GLint *length);
+    void (REGAL_CALL *glShaderSourceARB)(GLhandleARB shaderObj, GLsizei count, const GLcharARB ** const string, const GLint *length);
     void (REGAL_CALL *glUniform1fARB)(GLint location, GLfloat v0);
     void (REGAL_CALL *glUniform1fvARB)(GLint location, GLsizei count, const GLfloat *value);
     void (REGAL_CALL *glUniform1iARB)(GLint location, GLint v0);
@@ -2046,6 +2068,11 @@ struct DispatchTable {
     void (REGAL_CALL *glGetNamedStringivARB)(GLint namelen, const GLchar *name, GLenum pname, GLint *params);
     GLboolean (REGAL_CALL *glIsNamedStringARB)(GLint namelen, const GLchar *name);
     void (REGAL_CALL *glNamedStringARB)(GLenum type, GLint namelen, const GLchar *name, GLint stringlen, const GLchar *string);
+
+    // GL_ARB_sparse_texture
+
+    void (REGAL_CALL *glTexPageCommitmentARB)(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+    void (REGAL_CALL *glTexturePageCommitmentEXT)(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
 
     // GL_ARB_sync
 
@@ -3140,7 +3167,7 @@ struct DispatchTable {
     void (REGAL_CALL *glBindBufferRangeEXT)(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
     void (REGAL_CALL *glEndTransformFeedbackEXT)(void);
     void (REGAL_CALL *glGetTransformFeedbackVaryingEXT)(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
-    void (REGAL_CALL *glTransformFeedbackVaryingsEXT)(GLuint program, GLsizei count, const GLchar **varyings, GLenum bufferMode);
+    void (REGAL_CALL *glTransformFeedbackVaryingsEXT)(GLuint program, GLsizei count, const GLchar ** const varyings, GLenum bufferMode);
 
     // GL_EXT_vertex_array
 
@@ -3264,6 +3291,12 @@ struct DispatchTable {
     // GL_INGR_blend_func_separate
 
     void (REGAL_CALL *glBlendFuncSeparateINGR)(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+
+    // GL_INTEL_map_texture
+
+    GLvoid *(REGAL_CALL *glMapTexture2DINTEL)(GLuint texture, GLint level, GLbitfield access, GLint *stride, GLenum *layout);
+    void (REGAL_CALL *glSyncTextureINTEL)(GLuint texture);
+    void (REGAL_CALL *glUnmapTexture2DINTEL)(GLuint texture, GLint level);
 
     // GL_INTEL_parallel_arrays
 
@@ -4243,8 +4276,69 @@ struct DispatchTable {
 
     void (REGAL_CALL *glAddSwapHintRectWIN)(GLint x, GLint y, GLsizei width, GLsizei height);
 
+  };
+
+  // Lookup a function pointer from the table,
+  // or deeper in the stack as necessary.
+
+  template<typename T, typename F>
+  F call(T &table, F *func)
+  {
+    RegalAssert(func);
+    if (table._enabled && *func)
+      return *func;
+
+    T *i = &table;
+    RegalAssert(i);
+
+    RegalAssert(reinterpret_cast<void *>(func)>=reinterpret_cast<void *>(i));
+    RegalAssert(reinterpret_cast<void *>(func)< reinterpret_cast<void *>(i+1));
+
+    const std::size_t offset = reinterpret_cast<char *>(func) - reinterpret_cast<char *>(i);
+
+    F f = *func;
+
+    // Step down the stack for the first available function in an enabled table
+
+    while (!f || !i->_enabled)
+    {
+      // Find the next enabled dispatch table
+      for (i = i->next(); !i->_enabled; i = i->next()) { RegalAssert(i); }
+
+      // Get the function pointer; extra cast through void* is to avoid -Wcast-align spew
+      RegalAssert(i);
+      RegalAssert(i->_enabled);
+      f = *reinterpret_cast<F *>(reinterpret_cast<void *>(reinterpret_cast<char *>(i)+offset));
+    }
+
+    return f;
+  }
+
+}
+
+struct DispatchTable
+{
+  bool           _enabled;
+  DispatchTable *_prev;
+  DispatchTable *_next;
 };
 
+struct DispatchTableGL : public DispatchTable, Dispatch::GL
+{
+  template<typename T> T call(T *func) { return Dispatch::call(*this,func);                                }
+  inline DispatchTableGL *next()       { return reinterpret_cast<DispatchTableGL *>(DispatchTable::_next); }
+};
+
+struct DispatchTableGlobal : public DispatchTable, Dispatch::Global
+{
+  DispatchTableGlobal();
+  ~DispatchTableGlobal();
+
+  template<typename T> T call(T *func) { return Dispatch::call(*this,func);                                    }
+  inline DispatchTableGlobal *next()   { return reinterpret_cast<DispatchTableGlobal *>(DispatchTable::_next); }
+};
+
+extern DispatchTableGlobal dispatchTableGlobal;
 REGAL_NAMESPACE_END
 
 #endif // __REGAL_DISPATCH_H__

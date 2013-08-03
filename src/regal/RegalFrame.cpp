@@ -91,7 +91,7 @@ void Frame::capture(RegalContext &context)
     Config::frameSaveDepth
   )
   {
-    DispatchTable *_next = &context.dispatcher.front();
+    DispatchTableGL *_next = &context.dispatcher.front();
     RegalAssert(_next);
 
     // Get the current viewport
@@ -122,7 +122,7 @@ void Frame::capture(RegalContext &context)
         {
           static png_color_8 pngSBIT = {8, 8, 8, 0, 8};
 
-          string filename = print_string("color_",boost::print::right(frame,3,'0'),".png");
+          string filename = print_string(Config::frameSaveColorPrefix,boost::print::right(frame,3,'0'),".png");
           FILE *fp = fopen(filename.c_str(), "wb");
           if (fp)
           {
