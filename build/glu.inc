@@ -96,3 +96,15 @@ GLU.CXX += src/glu/libnurbs/nurbtess/sampleCompTop.cc
 GLU.CXX += src/glu/libnurbs/nurbtess/sampledLine.cc
 GLU.CXX += src/glu/libnurbs/nurbtess/sampleMonoPoly.cc
 GLU.CXX += src/glu/libnurbs/nurbtess/searchTree.cc
+
+#
+
+GLU.CFLAGS     := -Isrc/glu/include -Isrc/glu/libnurbs/interface -Isrc/glu/libnurbs/internals -Isrc/glu/libnurbs/nurbtess
+GLU.CFLAGS     += -DLIBRARYBUILD
+
+GLU.SHARED     := libRegalGLU.so
+GLU.STATIC     := libRegalGLUlib.a
+
+ifneq ($(filter darwin%,$(SYSTEM)),)
+GLU.SHARED     := libRegalGLU.dylib
+endif
