@@ -138,6 +138,7 @@ struct Obj
   NameTranslator bufferNames;
   NameTranslator vaoNames;
   NameTranslator textureNames;
+  NameTranslator framebufferNames;
 
   void Init( RegalContext &ctx )
   {
@@ -150,6 +151,7 @@ struct Obj
       vaoNames.drv2app     = sharingWith->obj->vaoNames.drv2app;
       textureNames.app2drv = sharingWith->obj->textureNames.app2drv;
       textureNames.drv2app = sharingWith->obj->textureNames.drv2app;
+      // framebufferNames are not shared, unfortunately
     }
 
     bufferNames.gen  = ctx.dispatcher.emulation.glGenBuffers;
@@ -158,6 +160,8 @@ struct Obj
     vaoNames.del     = ctx.dispatcher.emulation.glDeleteVertexArrays;
     textureNames.gen = ctx.dispatcher.emulation.glGenTextures;
     textureNames.del = ctx.dispatcher.emulation.glDeleteTextures;
+    framebufferNames.gen = ctx.dispatcher.emulation.glGenFramebuffers;
+    framebufferNames.del = ctx.dispatcher.emulation.glDeleteFramebuffers;
   }
 
   void Cleanup(RegalContext &ctx)
@@ -247,6 +251,34 @@ struct Obj
   {
     UNUSED_PARAMETER(ctx);
     return textureNames.IsObject( name );
+  }
+
+  void BindFramebuffer(RegalContext &ctx, GLenum target, GLuint name)
+  {
+    DispatchTableGL &tbl = ctx.dispatcher.emulation;
+    tbl.glBindFramebuffer( target, framebufferNames.ToDriverName( name ) );
+  }
+
+  void GenFramebuffers(RegalContext &ctx, GLsizei n, GLuint *names)
+  {
+    UNUSED_PARAMETER(ctx);
+    for( int i = 0; i < n; i++ ) {
+      names[ i ] = framebufferNames.Gen();
+    }
+  }
+
+  void DeleteFramebuffers(RegalContext &ctx, GLsizei n, const GLuint * names)
+  {
+    UNUSED_PARAMETER(ctx);
+    for( int i = 0; i < n; i++ ) {
+      framebufferNames.Delete( names[ i ] );
+    }
+  }
+
+  GLboolean IsFramebuffer(RegalContext &ctx, GLuint name) const
+  {
+    UNUSED_PARAMETER(ctx);
+    return framebufferNames.IsObject( name );
   }
 };
 
