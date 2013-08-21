@@ -30,6 +30,10 @@
 #ifndef _GLIMPORTS_HPP_
 #define _GLIMPORTS_HPP_
 
+#if REGAL_PLUGIN
+#  define REGAL_SYS_EGL 1
+#  include <GL/Regal.h>
+#else
 
 #if defined(_WIN32)
 #  ifndef WIN32_LEAN_AND_MEAN
@@ -41,10 +45,8 @@
 #  include <X11/Xlib.h>
 #endif /* !_WIN32 */
 
-
 #include <GL/gl.h>
 #include <GL/glext.h>
-
 
 // Windows 8 GL headers define GL_EXT_paletted_texture but not
 // GL_TEXTURE_INDEX_SIZE_EXT, and due to the way we include DirectX headers, it
@@ -142,8 +144,8 @@ CGLError CGLUpdateContext(CGLContextObj ctx);
 
 #endif
 
-
 #include "eglimports.hpp"
 
+#endif // REGAL_PLUGIN
 
 #endif /* _GLIMPORTS_HPP_ */
