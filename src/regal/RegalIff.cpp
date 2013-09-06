@@ -2556,8 +2556,8 @@ void Iff::State::Process( Iff * ffn )
       }
     }
   }
-  p.hash = Lookup3::hashlittle(reinterpret_cast<const char *>(&p) + sizeof(p.hash) + sizeof(p.ver),
-                               sizeof(p)-sizeof(p.hash)-sizeof(p.ver), 0);
+  p.hash = Lookup3::hashlittle(reinterpret_cast<const char *>(&p.hash),
+                               reinterpret_cast<const char *>((&p)+1) - reinterpret_cast<const char *>(&p.hash), 0);
 }
 
 void Iff::UpdateUniforms( RegalContext * ctx )
@@ -2913,6 +2913,9 @@ inline bool operator == ( const Iff::State::Texture & lhs, const Iff::State::Tex
 
 inline bool operator == ( const Iff::State::Store & lhs, const Iff::State::Store & rhs )
 {
+  if( lhs.hash != rhs.hash ) {
+    return false;
+  }
   if (lhs.colorSum != rhs.colorSum)
     return false;
   if (lhs.rescaleNormal != rhs.rescaleNormal)
