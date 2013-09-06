@@ -99,6 +99,8 @@ Statistics::log() const
   log("GL_VERSION_4_0",gl_version_4_0);
   log("GL_VERSION_4_1",gl_version_4_1);
   log("GL_VERSION_4_2",gl_version_4_2);
+  log("GL_VERSION_4_3",gl_version_4_3);
+  log("GL_VERSION_4_4",gl_version_4_4);
   log("GLX_VERSION_1_0",glx_version_1_0);
   log("GLX_VERSION_1_1",glx_version_1_1);
   log("GLX_VERSION_1_2",glx_version_1_2);
@@ -440,6 +442,7 @@ Statistics::log() const
   log("GL_NV_3DVISION_SETTINGS",gl_nv_3dvision_settings);
   log("GL_NV_BGR",gl_nv_bgr);
   log("GL_NV_BINDLESS_TEXTURE",gl_nv_bindless_texture);
+  log("GL_NV_BLEND_EQUATION_ADVANCED",gl_nv_blend_equation_advanced);
   log("GL_NV_BLEND_SQUARE",gl_nv_blend_square);
   log("GL_NV_COMPUTE_PROGRAM5",gl_nv_compute_program5);
   log("GL_NV_CONDITIONAL_RENDER",gl_nv_conditional_render);
@@ -3432,6 +3435,11 @@ Statistics::log() const
   log("glProgramUniformHandleui64vNV",glProgramUniformHandleui64vNV);
   log("glUniformHandleui64NV",glUniformHandleui64NV);
   log("glUniformHandleui64vNV",glUniformHandleui64vNV);
+
+/* GL_NV_blend_equation_advanced */
+
+  log("glBlendBarrierNV",glBlendBarrierNV);
+  log("glBlendParameteriNV",glBlendParameteriNV);
 
 /* GL_NV_conditional_render */
 

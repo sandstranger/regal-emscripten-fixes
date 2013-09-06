@@ -3157,7 +3157,7 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDisable( cap );
+        _context->ppca->glDisable( cap );
       }
       #endif
     case 11 :
@@ -3522,7 +3522,7 @@ static void REGAL_CALL emu_glEnable(GLenum cap)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEnable( cap );
+        _context->ppca->glEnable( cap );
       }
       #endif
     case 11 :
@@ -5174,7 +5174,7 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        if( ! _context->ppca->Get( _context, pname, params ) ) {
+        if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
           _context->dispatcher.emulation.glGetBooleanv( pname, params );
         }
         return;
@@ -5319,7 +5319,7 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        if( ! _context->ppca->Get( _context, pname, params ) ) {
+        if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
           _context->dispatcher.emulation.glGetDoublev( pname, params );
         }
         return;
@@ -5487,7 +5487,7 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        if( ! _context->ppca->Get( _context, pname, params ) ) {
+        if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
           _context->dispatcher.emulation.glGetFloatv( pname, params );
         }
         return;
@@ -5655,7 +5655,7 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        if( ! _context->ppca->Get( _context, pname, params ) ) {
+        if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
           _context->dispatcher.emulation.glGetIntegerv( pname, params );
         }
         return;
@@ -9984,7 +9984,7 @@ static void REGAL_CALL emu_glPixelStoref(GLenum pname, GLfloat param)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowPixelStore( pname, param );
+        _context->ppca->glPixelStore( pname, param );
       }
       #endif
     case 11 :
@@ -10076,7 +10076,7 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowPixelStore( pname, param );
+        _context->ppca->glPixelStore( pname, param );
       }
       #endif
     case 11 :
@@ -10098,7 +10098,12 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowPixelStore( pname, param );
+      }
       #endif
     case 1 :
       #if REGAL_EMU_FILTER
@@ -10125,16 +10130,6 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
     case 4 :
     case 3 :
     case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowPixelStore( pname, param );
-        _context->dispatcher.emulation.glPixelStorei( pname, param );
-        return;
-      }
-      #endif
     case 1 :
       #if REGAL_EMU_FILTER
       if (_context->filt)
@@ -16333,7 +16328,9 @@ static void REGAL_CALL emu_glTexGend(GLenum coord, GLenum pname, GLdouble param)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 5;
-        _context->iff->TexGen( coord, pname, param );
+        if ( ! _context->iff->TexGen( coord, pname, param ) ) {
+            _context->dispatcher.emulation.glTexGend( coord, pname, param );
+        }
         return;
       }
       #endif
@@ -16395,7 +16392,9 @@ static void REGAL_CALL emu_glTexGendv(GLenum coord, GLenum pname, const GLdouble
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 5;
-        _context->iff->TexGen( coord, pname, params );
+        if ( ! _context->iff->TexGen( coord, pname, params ) ) {
+            _context->dispatcher.emulation.glTexGendv( coord, pname, params );
+        }
         return;
       }
       #endif
@@ -16467,7 +16466,9 @@ static void REGAL_CALL emu_glTexGenf(GLenum coord, GLenum pname, GLfloat param)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 5;
-        _context->iff->TexGen( coord, pname, param );
+        if ( ! _context->iff->TexGen( coord, pname, param ) ) {
+            _context->dispatcher.emulation.glTexGenf( coord, pname, param );
+        }
         return;
       }
       #endif
@@ -16539,7 +16540,9 @@ static void REGAL_CALL emu_glTexGenfv(GLenum coord, GLenum pname, const GLfloat 
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 5;
-        _context->iff->TexGen( coord, pname, params );
+        if ( ! _context->iff->TexGen( coord, pname, params ) ) {
+            _context->dispatcher.emulation.glTexGenfv( coord, pname, params );
+        }
         return;
       }
       #endif
@@ -16611,7 +16614,9 @@ static void REGAL_CALL emu_glTexGeni(GLenum coord, GLenum pname, GLint param)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 5;
-        _context->iff->TexGen( coord, pname, param );
+        if ( ! _context->iff->TexGen( coord, pname, param ) ) {
+            _context->dispatcher.emulation.glTexGeni( coord, pname, param );
+        }
         return;
       }
       #endif
@@ -16683,7 +16688,9 @@ static void REGAL_CALL emu_glTexGeniv(GLenum coord, GLenum pname, const GLint *p
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 5;
-        _context->iff->TexGen( coord, pname, params );
+        if ( ! _context->iff->TexGen( coord, pname, params ) ) {
+            _context->dispatcher.emulation.glTexGeniv( coord, pname, params );
+        }
         return;
       }
       #endif
@@ -16819,7 +16826,12 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowTexImage2D( target, level, format, type );
+      }
       #endif
     case 1 :
       #if REGAL_EMU_FILTER
@@ -16855,16 +16867,6 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
     case 4 :
     case 3 :
     case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowTexImage2D( target, level, format, type );
-        _context->dispatcher.emulation.glTexImage2D( target, level, internalformat, width, height, border, format, type, pixels );
-        return;
-      }
-      #endif
     case 1 :
       #if REGAL_EMU_FILTER
       if (_context->filt)
@@ -19012,7 +19014,12 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowBindTexture( target, texture );
+      }
       #endif
     case 1 :
       #if REGAL_EMU_FILTER
@@ -19071,16 +19078,6 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
       #endif
     case 3 :
     case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowBindTexture( target, texture );
-        _context->dispatcher.emulation.glBindTexture( target, texture );
-        return;
-      }
-      #endif
     case 1 :
       #if REGAL_EMU_FILTER
       if (_context->filt)
@@ -19136,7 +19133,7 @@ static void REGAL_CALL emu_glColorPointer(GLint size, GLenum type, GLsizei strid
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowColorPointer( size, type, stride, pointer );
+        _context->ppca->glColorPointer( size, type, stride, pointer );
       }
       #endif
     case 11 :
@@ -19312,7 +19309,12 @@ static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowDeleteTextures( n, textures );
+      }
       #endif
     case 1 :
     default:
@@ -19329,29 +19331,6 @@ static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 14;
         _context->obj->DeleteTextures(*_context, n, textures);
-        return;
-      }
-      #endif
-    case 14 :
-    case 13 :
-    case 12 :
-    case 11 :
-    case 10 :
-    case 9 :
-    case 8 :
-    case 7 :
-    case 6 :
-    case 5 :
-    case 4 :
-    case 3 :
-    case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowDeleteTextures( n, textures );
-        _context->dispatcher.emulation.glDeleteTextures( n, textures );
         return;
       }
       #endif
@@ -19386,7 +19365,7 @@ static void REGAL_CALL emu_glDisableClientState(GLenum cap)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDisableClientState( cap );
+        _context->ppca->glDisableClientState( cap );
       }
       #endif
     case 11 :
@@ -19621,7 +19600,7 @@ static void REGAL_CALL emu_glEdgeFlagPointer(GLsizei stride, const GLvoid *point
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEdgeFlagPointer( stride, pointer );
+        _context->ppca->glEdgeFlagPointer( stride, pointer );
       }
       #endif
     case 11 :
@@ -19699,7 +19678,7 @@ static void REGAL_CALL emu_glEnableClientState(GLenum cap)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEnableClientState( cap );
+        _context->ppca->glEnableClientState( cap );
       }
       #endif
     case 11 :
@@ -19864,6 +19843,7 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 1;
+
         _context->dispatcher.emulation.glGenTextures( n, textures );
         _context->texc->ShadowGenTextures( n, textures );
         return;
@@ -19900,7 +19880,7 @@ static void REGAL_CALL emu_glIndexPointer(GLenum type, GLsizei stride, const GLv
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowIndexPointer( type, stride, pointer );
+        _context->ppca->glIndexPointer( type, stride, pointer );
       }
       #endif
     case 11 :
@@ -19943,7 +19923,7 @@ static void REGAL_CALL emu_glInterleavedArrays(GLenum format, GLsizei stride, co
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowInterleavedArrays( format, stride, pointer );
+        _context->ppca->glInterleavedArrays( format, stride, pointer );
       }
       #endif
     case 11 :
@@ -20069,7 +20049,7 @@ static void REGAL_CALL emu_glNormalPointer(GLenum type, GLsizei stride, const GL
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowNormalPointer( type, stride, pointer );
+        _context->ppca->glNormalPointer( type, stride, pointer );
       }
       #endif
     case 11 :
@@ -20218,7 +20198,7 @@ static void REGAL_CALL emu_glPopClientAttrib(void)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->PopClientAttrib( _context );
+        _context->ppca->glPopClientAttrib( *_context );
         return;
       }
       #endif
@@ -20268,7 +20248,7 @@ static void REGAL_CALL emu_glPushClientAttrib(GLbitfield mask)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->PushClientAttrib( _context, mask );
+        _context->ppca->glPushClientAttrib( *_context, mask );
         return;
       }
       #endif
@@ -20303,7 +20283,7 @@ static void REGAL_CALL emu_glTexCoordPointer(GLint size, GLenum type, GLsizei st
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowTexCoordPointer( size, type, stride, pointer );
+        _context->ppca->glTexCoordPointer( size, type, stride, pointer );
       }
       #endif
     case 11 :
@@ -20458,6 +20438,7 @@ static void REGAL_CALL emu_glTexSubImage2D(GLenum target, GLint level, GLint xof
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 1;
+
         GLenum targetFormat;
         GLenum targetType;
         _context->texc->GetFormatAndType( target, level, &targetFormat, &targetType );
@@ -20523,7 +20504,7 @@ static void REGAL_CALL emu_glVertexPointer(GLint size, GLenum type, GLsizei stri
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexPointer( size, type, stride, pointer );
+        _context->ppca->glVertexPointer( size, type, stride, pointer );
       }
       #endif
     case 11 :
@@ -20884,7 +20865,12 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
     case 7 :
     case 6 :
       #if REGAL_EMU_IFF
-      if (_context->iff) break;
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 5;
+        _context->iff->ShadowActiveTexture( texture );
+      }
       #endif
     case 5 :
       #if REGAL_EMU_SO
@@ -20897,7 +20883,12 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowActiveTexture( texture );
+      }
       #endif
     case 1 :
     default:
@@ -20917,17 +20908,6 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
     case 8 :
     case 7 :
     case 6 :
-      #if REGAL_EMU_IFF
-      if (_context->iff)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 5;
-        if( ! _context->iff->ShadowActiveTexture( texture ) ) {
-            _context->dispatcher.emulation.glActiveTexture( texture );
-        }
-        return;
-      }
-      #endif
     case 5 :
       #if REGAL_EMU_SO
       if (_context->so)
@@ -20950,18 +20930,6 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
         if( false == _context->dsa->ShadowActiveTexture( texture ) ) {
             _dispatch.call(&_dispatch.glActiveTexture)( texture );
         }
-        return;
-      }
-      #endif
-    case 3 :
-    case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowActiveTexture( texture );
-        _context->dispatcher.emulation.glActiveTexture( texture );
         return;
       }
       #endif
@@ -20996,7 +20964,7 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowClientActiveTexture( texture );
+        _context->ppca->glClientActiveTexture( texture );
       }
       #endif
     case 11 :
@@ -23560,7 +23528,7 @@ static void REGAL_CALL emu_glFogCoordPointer(GLenum type, GLsizei stride, const 
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowFogCoordPointer( type, stride, pointer );
+        _context->ppca->glFogCoordPointer( type, stride, pointer );
       }
       #endif
     case 11 :
@@ -24898,7 +24866,7 @@ static void REGAL_CALL emu_glSecondaryColorPointer(GLint size, GLenum type, GLsi
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowSecondaryColorPointer( size, type, stride, pointer );
+        _context->ppca->glSecondaryColorPointer( size, type, stride, pointer );
       }
       #endif
     case 11 :
@@ -26319,7 +26287,7 @@ static void REGAL_CALL emu_glBindBuffer(GLenum target, GLuint buffer)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowBindBuffer( target, buffer );
+        _context->ppca->glBindBuffer( target, buffer );
       }
       #endif
     case 11 :
@@ -26510,7 +26478,7 @@ static void REGAL_CALL emu_glDeleteBuffers(GLsizei n, const GLuint *buffers)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDeleteBuffers( n, buffers );
+        _context->ppca->glDeleteBuffers( n, buffers );
       }
       #endif
     case 11 :
@@ -26990,7 +26958,7 @@ static void REGAL_CALL emu_glDisableVertexAttribArray(GLuint index)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDisableVertexAttribArray( index );
+        _context->ppca->glDisableVertexAttribArray( index );
       }
       #endif
     case 11 :
@@ -27182,7 +27150,7 @@ static void REGAL_CALL emu_glEnableVertexAttribArray(GLuint index)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEnableVertexAttribArray( index );
+        _context->ppca->glEnableVertexAttribArray( index );
       }
       #endif
     case 11 :
@@ -30718,6 +30686,14 @@ static void REGAL_CALL emu_glVertexAttribPointer(GLuint index, GLint size, GLenu
     case 14 :
     case 13 :
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glVertexAttribPointer( index, size, type, normalized, stride, pointer );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -31102,6 +31078,14 @@ static void REGAL_CALL emu_glDisablei(GLenum cap, GLuint index)
       if (_context->ppa) break;
       #endif
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glDisablei( cap, index );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -31186,6 +31170,14 @@ static void REGAL_CALL emu_glEnablei(GLenum cap, GLuint index)
       if (_context->ppa) break;
       #endif
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glEnablei( cap, index );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -31978,6 +31970,14 @@ static void REGAL_CALL emu_glVertexAttribIPointer(GLuint index, GLint size, GLen
     case 14 :
     case 13 :
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glVertexAttribIPointer( index, size, type, stride, pointer );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -32150,7 +32150,7 @@ static void REGAL_CALL emu_glPrimitiveRestartIndex(GLuint index)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowPrimitiveRestartIndex( index );
+        _context->ppca->glPrimitiveRestartIndex( index );
       }
       #endif
     case 11 :
@@ -32315,7 +32315,7 @@ static void REGAL_CALL emu_glVertexAttribDivisor(GLuint index, GLuint divisor)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexAttribDivisor( index, divisor );
+        _context->ppca->glVertexAttribDivisor( index, divisor );
       }
       #endif
     case 11 :
@@ -34849,7 +34849,12 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowGenerateMipmap( target );
+      }
       #endif
     case 1 :
       #if REGAL_EMU_FILTER
@@ -34876,16 +34881,6 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
     case 4 :
     case 3 :
     case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowGenerateMipmap( target );
-        _context->dispatcher.emulation.glGenerateMipmap( target );
-        return;
-      }
-      #endif
     case 1 :
       #if REGAL_EMU_FILTER
       if (_context->filt)
@@ -36428,6 +36423,37 @@ static GLvoid *REGAL_CALL emu_glMapBufferRange(GLenum target, GLintptr offset, G
 
 // GL_ARB_multi_bind
 
+static void REGAL_CALL emu_glBindVertexBuffers(GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+  DispatchTableGL &_dispatch = _context->dispatcher.emulation;
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 15 :
+    case 14 :
+    case 13 :
+    case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glBindVertexBuffers( first, count, buffers, offsets, strides );
+      }
+      #endif
+    case 1 :
+    default:
+      break;
+  }
+
+  DispatchTableGL *_next = _dispatch.next();
+  RegalAssert(_next);
+  _next->call(& _next->glBindVertexBuffers)(first, count, buffers, offsets, strides);
+}
+
 // GL_ARB_multi_draw_indirect
 
 static void REGAL_CALL emu_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -36587,19 +36613,43 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
     case 12 :
     case 11 :
     case 10 :
+      #if REGAL_EMU_XFER
+      if (_context->xfer)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 9;
+        _context->xfer->ShadowActiveTexture( texture );
+      }
+      #endif
     case 9 :
     case 8 :
     case 7 :
     case 6 :
       #if REGAL_EMU_IFF
-      if (_context->iff) break;
+      if (_context->iff)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 5;
+        _context->iff->ShadowActiveTexture( texture );
+      }
       #endif
     case 5 :
+      #if REGAL_EMU_SO
+      if (_context->so) break;
+      #endif
     case 4 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa) break;
+      #endif
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowActiveTexture( texture );
+      }
       #endif
     case 1 :
       #if REGAL_EMU_FILTER
@@ -36622,31 +36672,33 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
     case 8 :
     case 7 :
     case 6 :
-      #if REGAL_EMU_IFF
-      if (_context->iff)
+    case 5 :
+      #if REGAL_EMU_SO
+      if (_context->so)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 5;
-        if( ! _context->iff->ShadowActiveTexture( texture ) ) {
-            _context->dispatcher.emulation.glActiveTextureARB( texture );
+        _context->emuLevel = 4;
+        RegalAssert(_context);
+        if ( !_context->so->ActiveTexture( *_context, texture ) ) {
+           _context->dispatcher.emulation.glActiveTexture( texture );
         }
         return;
       }
       #endif
-    case 5 :
     case 4 :
-    case 3 :
-    case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
+      #if REGAL_EMU_DSA
+      if (_context->dsa)
       {
         Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowActiveTexture( texture );
-        _context->dispatcher.emulation.glActiveTexture( texture );
+        _context->emuLevel = 3;
+        if( false == _context->dsa->ShadowActiveTexture( texture ) ) {
+            _dispatch.call(&_dispatch.glActiveTexture)( texture );
+        }
         return;
       }
       #endif
+    case 3 :
+    case 2 :
     case 1 :
       #if REGAL_EMU_FILTER
       if (_context->filt)
@@ -36687,10 +36739,26 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
     case 14 :
     case 13 :
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glClientActiveTexture( texture );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
     case 8 :
+      #if REGAL_EMU_BASEVERTEX
+      if (_context->bv)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 7;
+        _context->bv->glClientActiveTexture( texture );
+      }
+      #endif
     case 7 :
     case 6 :
       #if REGAL_EMU_IFF
@@ -36703,7 +36771,18 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
       #endif
     case 5 :
     case 4 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa) break;
+      #endif
     case 3 :
+      #if REGAL_EMU_VAO
+      if (_context->vao)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 2;
+        _context->vao->ClientActiveTexture( _context, texture );
+      }
+      #endif
     case 2 :
     case 1 :
       #if REGAL_EMU_FILTER
@@ -36728,6 +36807,17 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
     case 6 :
     case 5 :
     case 4 :
+      #if REGAL_EMU_DSA
+      if (_context->dsa)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 3;
+        if (!_context->dsa->ShadowClientActiveTexture( texture )) {
+          _dispatch.call(&_dispatch.glClientActiveTexture)( texture );
+        }
+        return;
+      }
+      #endif
     case 3 :
     case 2 :
     case 1 :
@@ -40569,9 +40659,6 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
     case 14 :
     case 13 :
     case 12 :
-      #if REGAL_EMU_PPCA
-      if (_context->ppca) break;
-      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -40603,17 +40690,6 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
     case 14 :
     case 13 :
     case 12 :
-      #if REGAL_EMU_PPCA
-      if (_context->ppca)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 11;
-        if( ! _context->ppca->Get( _context, pname, params ) ) {
-          _context->dispatcher.emulation.glGetInteger64v( pname, params );
-        }
-        return;
-      }
-      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -41573,7 +41649,7 @@ static void REGAL_CALL emu_glBindVertexArray(GLuint array)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowBindVertexArray( array );
+        _context->ppca->glBindVertexArray( array );
       }
       #endif
     case 11 :
@@ -41691,7 +41767,7 @@ static void REGAL_CALL emu_glDeleteVertexArrays(GLsizei n, const GLuint *arrays)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDeleteVertexArrays( n, arrays );
+        _context->ppca->glDeleteVertexArrays( n, arrays );
       }
       #endif
     case 11 :
@@ -41961,6 +42037,14 @@ static void REGAL_CALL emu_glVertexAttribLPointer(GLuint index, GLint size, GLen
     case 14 :
     case 13 :
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glVertexAttribLPointer( index, size, type, stride, pointer );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -42003,7 +42087,7 @@ static void REGAL_CALL emu_glBindVertexBuffer(GLuint bindingindex, GLuint buffer
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowBindVertexBuffer( bindingindex, buffer, offset, stride );
+        _context->ppca->glBindVertexBuffer( bindingindex, buffer, offset, stride );
       }
       #endif
     case 11 :
@@ -42046,7 +42130,7 @@ static void REGAL_CALL emu_glVertexAttribBinding(GLuint attribindex, GLuint bind
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexAttribBinding( attribindex, bindingindex );
+        _context->ppca->glVertexAttribBinding( attribindex, bindingindex );
       }
       #endif
     case 11 :
@@ -42089,7 +42173,7 @@ static void REGAL_CALL emu_glVertexAttribFormat(GLuint attribindex, GLint size, 
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
+        _context->ppca->glVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
       }
       #endif
     case 11 :
@@ -42132,7 +42216,7 @@ static void REGAL_CALL emu_glVertexAttribIFormat(GLuint attribindex, GLint size,
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexAttribIFormat( attribindex, size, type, relativeoffset );
+        _context->ppca->glVertexAttribIFormat( attribindex, size, type, relativeoffset );
       }
       #endif
     case 11 :
@@ -42175,7 +42259,7 @@ static void REGAL_CALL emu_glVertexAttribLFormat(GLuint attribindex, GLint size,
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexAttribLFormat( attribindex, size, type, relativeoffset );
+        _context->ppca->glVertexAttribLFormat( attribindex, size, type, relativeoffset );
       }
       #endif
     case 11 :
@@ -42218,7 +42302,7 @@ static void REGAL_CALL emu_glVertexBindingDivisor(GLuint bindingindex, GLuint di
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexBindingDivisor( bindingindex, divisor );
+        _context->ppca->glVertexBindingDivisor( bindingindex, divisor );
       }
       #endif
     case 11 :
@@ -47193,7 +47277,7 @@ static void REGAL_CALL emu_glClientAttribDefaultEXT(GLbitfield mask)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ClientAttribDefaultDSA( _context, mask );
+        _context->ppca->glClientAttribDefaultEXT( *_context, mask );
         return;
       }
       #endif
@@ -48719,7 +48803,7 @@ static void REGAL_CALL emu_glDisableClientStateIndexedEXT(GLenum array, GLuint i
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDisableClientStateIndexedDSA( array, index );
+        _context->ppca->glDisableClientStateIndexedEXT( array, index );
       }
       #endif
     case 11 :
@@ -48802,7 +48886,7 @@ static void REGAL_CALL emu_glDisableClientStateiEXT(GLenum array, GLuint index)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDisableClientStateIndexedDSA( array, index );
+        _context->ppca->glDisableClientStateiEXT( array, index );
       }
       #endif
     case 11 :
@@ -48885,7 +48969,7 @@ static void REGAL_CALL emu_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum ar
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDisableVertexArrayAttribDSA( vaobj, array );
+        _context->ppca->glDisableVertexArrayAttribEXT( vaobj, array );
       }
       #endif
     case 11 :
@@ -48968,7 +49052,7 @@ static void REGAL_CALL emu_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowDisableVertexArrayDSA( vaobj, array );
+        _context->ppca->glDisableVertexArrayEXT( vaobj, array );
       }
       #endif
     case 11 :
@@ -49056,7 +49140,7 @@ static void REGAL_CALL emu_glEnableClientStateIndexedEXT(GLenum array, GLuint in
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEnableClientStateIndexedDSA( array, index );
+        _context->ppca->glEnableClientStateIndexedEXT( array, index );
       }
       #endif
     case 11 :
@@ -49139,7 +49223,7 @@ static void REGAL_CALL emu_glEnableClientStateiEXT(GLenum array, GLuint index)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEnableClientStateIndexedDSA( array, index );
+        _context->ppca->glEnableClientStateiEXT( array, index );
       }
       #endif
     case 11 :
@@ -49222,7 +49306,7 @@ static void REGAL_CALL emu_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum arr
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEnableVertexArrayAttribDSA( vaobj, array );
+        _context->ppca->glEnableVertexArrayAttribEXT( vaobj, array );
       }
       #endif
     case 11 :
@@ -49305,7 +49389,7 @@ static void REGAL_CALL emu_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowEnableVertexArrayDSA( vaobj, array );
+        _context->ppca->glEnableVertexArrayEXT( vaobj, array );
       }
       #endif
     case 11 :
@@ -54145,7 +54229,7 @@ static void REGAL_CALL emu_glMultiTexCoordPointerEXT(GLenum texunit, GLint size,
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowMultiTexCoordPointerDSA( texunit, size, type, stride, pointer );
+        _context->ppca->glMultiTexCoordPointerEXT( texunit, size, type, stride, pointer );
       }
       #endif
     case 11 :
@@ -60924,7 +61008,7 @@ static void REGAL_CALL emu_glPushClientAttribDefaultEXT(GLbitfield mask)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->PushClientAttribDefaultDSA( _context, mask );
+        _context->ppca->glPushClientAttribDefaultEXT( *_context, mask );
         return;
       }
       #endif
@@ -62005,7 +62089,7 @@ static void REGAL_CALL emu_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buff
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayColorOffsetDSA( vaobj, buffer, size, type, stride, offset );
+        _context->ppca->glVertexArrayColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62088,7 +62172,7 @@ static void REGAL_CALL emu_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint b
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayEdgeFlagOffsetDSA( vaobj, buffer, stride, offset );
+        _context->ppca->glVertexArrayEdgeFlagOffsetEXT( vaobj, buffer, stride, offset );
       }
       #endif
     case 11 :
@@ -62171,7 +62255,7 @@ static void REGAL_CALL emu_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint b
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayFogCoordOffsetDSA( vaobj, buffer, type, stride, offset );
+        _context->ppca->glVertexArrayFogCoordOffsetEXT( vaobj, buffer, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62254,7 +62338,7 @@ static void REGAL_CALL emu_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buff
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayIndexOffsetDSA( vaobj, buffer, type, stride, offset );
+        _context->ppca->glVertexArrayIndexOffsetEXT( vaobj, buffer, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62337,7 +62421,7 @@ static void REGAL_CALL emu_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLu
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayMultiTexCoordOffsetDSA( vaobj, buffer, texunit, size, type, stride, offset );
+        _context->ppca->glVertexArrayMultiTexCoordOffsetEXT( vaobj, buffer, texunit, size, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62420,7 +62504,7 @@ static void REGAL_CALL emu_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buf
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayNormalOffsetDSA( vaobj, buffer, type, stride, offset );
+        _context->ppca->glVertexArrayNormalOffsetEXT( vaobj, buffer, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62503,7 +62587,7 @@ static void REGAL_CALL emu_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GL
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArraySecondaryColorOffsetDSA( vaobj, buffer, size, type, stride, offset );
+        _context->ppca->glVertexArraySecondaryColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62586,7 +62670,7 @@ static void REGAL_CALL emu_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint b
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayTexCoordOffsetDSA( vaobj, buffer, size, type, stride, offset );
+        _context->ppca->glVertexArrayTexCoordOffsetEXT( vaobj, buffer, size, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62669,7 +62753,7 @@ static void REGAL_CALL emu_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLu
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayVertexAttribIOffsetDSA( vaobj, buffer, index, size, type, stride, offset );
+        _context->ppca->glVertexArrayVertexAttribIOffsetEXT( vaobj, buffer, index, size, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62752,7 +62836,7 @@ static void REGAL_CALL emu_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLui
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayVertexAttribOffsetDSA( vaobj, buffer, index, size, type, normalized, stride, offset );
+        _context->ppca->glVertexArrayVertexAttribOffsetEXT( vaobj, buffer, index, size, type, normalized, stride, offset );
       }
       #endif
     case 11 :
@@ -62835,7 +62919,7 @@ static void REGAL_CALL emu_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buf
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 11;
-        _context->ppca->ShadowVertexArrayVertexOffsetDSA( vaobj, buffer, size, type, stride, offset );
+        _context->ppca->glVertexArrayVertexOffsetEXT( vaobj, buffer, size, type, stride, offset );
       }
       #endif
     case 11 :
@@ -62996,6 +63080,14 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
     case 14 :
     case 13 :
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glDisableIndexedEXT( target, index );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -63106,6 +63198,14 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
     case 14 :
     case 13 :
     case 12 :
+      #if REGAL_EMU_PPCA
+      if (_context->ppca)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 11;
+        _context->ppca->glEnableIndexedEXT( target, index );
+      }
+      #endif
     case 11 :
     case 10 :
     case 9 :
@@ -64799,7 +64899,12 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowGenerateMipmap( target );
+      }
       #endif
     case 1 :
       #if REGAL_EMU_FILTER
@@ -64826,16 +64931,6 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
     case 4 :
     case 3 :
     case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowGenerateMipmap( target );
-        _context->dispatcher.emulation.glGenerateMipmap( target );
-        return;
-      }
-      #endif
     case 1 :
       #if REGAL_EMU_FILTER
       if (_context->filt)
@@ -67082,7 +67177,12 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
+      if (_context->texc)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 1;
+        _context->texc->ShadowBindTexture( target, texture );
+      }
       #endif
     case 1 :
     default:
@@ -67112,18 +67212,6 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
         if (!_context->dsa->ShadowTexture( target, texture )) {
             _dispatch.call(&_dispatch.glBindTexture)( target, texture );
         }
-        return;
-      }
-      #endif
-    case 3 :
-    case 2 :
-      #if REGAL_EMU_TEXC
-      if (_context->texc)
-      {
-        Push<int> pushLevel(_context->emuLevel);
-        _context->emuLevel = 1;
-        _context->texc->ShadowBindTexture( target, texture );
-        _context->dispatcher.emulation.glBindTexture( target, texture );
         return;
       }
       #endif
@@ -67172,51 +67260,21 @@ static void REGAL_CALL emu_glDeleteTexturesEXT(GLsizei n, const GLuint *textures
     case 3 :
     case 2 :
       #if REGAL_EMU_TEXC
-      if (_context->texc) break;
-      #endif
-    case 1 :
-    default:
-      break;
-  }
-
-  // impl
-  switch( _context->emuLevel )
-  {
-    case 15 :
-    case 14 :
-    case 13 :
-    case 12 :
-    case 11 :
-    case 10 :
-    case 9 :
-    case 8 :
-    case 7 :
-    case 6 :
-    case 5 :
-    case 4 :
-    case 3 :
-    case 2 :
-      #if REGAL_EMU_TEXC
       if (_context->texc)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 1;
         _context->texc->ShadowDeleteTextures( n, textures );
-        _context->dispatcher.emulation.glDeleteTextures( n, textures );
-        return;
       }
       #endif
     case 1 :
     default:
-    {
-      DispatchTableGL *_next = _dispatch.next();
-      RegalAssert(_next);
-      _next->call(&_next->glDeleteTexturesEXT)(n, textures);
       break;
-    }
-
   }
 
+  DispatchTableGL *_next = _dispatch.next();
+  RegalAssert(_next);
+  _next->call(& _next->glDeleteTexturesEXT)(n, textures);
 }
 
 static void REGAL_CALL emu_glGenTexturesEXT(GLsizei n, GLuint *textures)
@@ -67272,6 +67330,7 @@ static void REGAL_CALL emu_glGenTexturesEXT(GLsizei n, GLuint *textures)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 1;
+
         _context->dispatcher.emulation.glGenTextures( n, textures );
         _context->texc->ShadowGenTextures( n, textures );
         return;
@@ -67954,6 +68013,8 @@ static void REGAL_CALL emu_glVertexPointerEXT(GLint size, GLenum type, GLsizei s
 // GL_NVX_conditional_render
 
 // GL_NV_bindless_texture
+
+// GL_NV_blend_equation_advanced
 
 // GL_NV_conditional_render
 
@@ -70298,6 +70359,10 @@ void InitDispatchTableEmu(DispatchTableGL &tbl)
 
    tbl.glFlushMappedBufferRange = emu_glFlushMappedBufferRange;
    tbl.glMapBufferRange = emu_glMapBufferRange;
+
+// GL_ARB_multi_bind
+
+   tbl.glBindVertexBuffers = emu_glBindVertexBuffers;
 
 // GL_ARB_multi_draw_indirect
 
