@@ -2913,8 +2913,6 @@ inline bool operator == ( const Iff::State::Texture & lhs, const Iff::State::Tex
 
 inline bool operator == ( const Iff::State::Store & lhs, const Iff::State::Store & rhs )
 {
-  if (lhs.hash != rhs.hash)
-    return false;
   if (lhs.colorSum != rhs.colorSum)
     return false;
   if (lhs.rescaleNormal != rhs.rescaleNormal)
@@ -2938,8 +2936,6 @@ inline bool operator == ( const Iff::State::Store & lhs, const Iff::State::Store
   if (lhs.colorMaterialTarget0 != rhs.colorMaterialTarget0)
     return false;
   if (lhs.colorMaterialTarget1 != rhs.colorMaterialTarget1)
-    return false;
-  if (lhs.ver != rhs.ver)
     return false;
 
   size_t n = array_size( lhs.light );
