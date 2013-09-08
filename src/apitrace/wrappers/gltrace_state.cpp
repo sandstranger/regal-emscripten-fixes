@@ -48,7 +48,7 @@
 #if defined(_MSC_VER)
 #include <memory>
 #else
-#include <tr1/memory>
+//#include <tr1/memory>
 #endif
 #endif
 
