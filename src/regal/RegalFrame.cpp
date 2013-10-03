@@ -66,7 +66,11 @@ void Frame::capture(RegalContext &context)
 
 #if REGAL_SYS_X11 && REGAL_SYS_GLX
     if (context.x11Display && context.x11Drawable)
-      Info("X11 window manager state: ",windowManagerStateDescription(context.x11Display,context.x11Drawable));
+    {
+      std::string description = windowManagerStateDescription(context.x11Display,context.x11Drawable);
+      if (description.length())
+        Info("X11 window manager state: ",description);
+    }
 #endif
   }
 
@@ -166,7 +170,7 @@ void Frame::capture(RegalContext &context)
 
           MD5Context md5c;
           MD5Init(&md5c);
-          MD5Update(&md5c, buffer, bufferSize);
+          MD5Update(&md5c, reinterpret_cast<const unsigned char *>(buffer), bufferSize);
 
           unsigned char digest[16];
           MD5Final(digest, &md5c);
