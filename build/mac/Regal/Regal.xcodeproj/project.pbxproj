@@ -964,7 +964,7 @@
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "../../../src/mongoose ../../../src/md5/include";
 			};
 			name = Debug;
@@ -1010,7 +1010,7 @@
 					../../../src/zlib/src,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
-				SDKROOT = macosx10.7;
+				SDKROOT = macosx;
 				USER_HEADER_SEARCH_PATHS = "../../../src/mongoose ../../../src/md5/include";
 			};
 			name = Release;
