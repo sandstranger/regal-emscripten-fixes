@@ -23,6 +23,7 @@ j
 j0
 j1
 j2
+doit
 save
 Debug
 results.txt
@@ -41,3 +42,12 @@ build/win32/vs2010/Regal/Debug
 build/win32/vs2010/Regal/Release
 build/win32/vs2010/Regal/ipch
 *.opensdf
+
+# android build products
+gen/
+libs/
+obj/
+build.xml
+local.properties
+proguard-project.txt
+DerivedData

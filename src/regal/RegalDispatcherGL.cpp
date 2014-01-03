@@ -55,14 +55,16 @@ DispatcherGL::DispatcherGL()
   push_back(trace,Config::enableTrace);
   #endif
 
+  #if REGAL_HTTP
+  ::memset(&http,0,sizeof(DispatchTableGL));
+  InitDispatchTableHttp(http);
+  push_back(http,Config::enableHttp);
+  #endif
+  
+  
   #if REGAL_DEBUG
   InitDispatchTableDebug(debug);
   push_back(debug,Config::enableDebug);
-  #endif
-
-  #if REGAL_ERROR
-  InitDispatchTableError(error);
-  push_back(error,Config::enableError);
   #endif
 
   #if REGAL_EMULATION
@@ -71,6 +73,11 @@ DispatcherGL::DispatcherGL()
   push_back(emulation,Config::enableEmulation || Config::forceEmulation);
   #endif
 
+#if REGAL_ERROR
+  InitDispatchTableError(error);
+  push_back(error,Config::enableError);
+#endif
+  
   #if REGAL_CACHE
   ::memset(&cache,0,sizeof(DispatchTableGL));
   InitDispatchTableCache(cache);

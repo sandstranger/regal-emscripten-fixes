@@ -17,6 +17,7 @@
 #define set_json_regal_config_dispatch_emulation_enable_path(value)      Config::enableEmuPath = value
 #define set_json_regal_config_dispatch_emulation_enable_ppa(value)       Config::enableEmuPpa = value
 #define set_json_regal_config_dispatch_emulation_enable_ppca(value)      Config::enableEmuPpca = value
+#define set_json_regal_config_dispatch_emulation_enable_quads(value)     Config::enableEmuQuads = value
 #define set_json_regal_config_dispatch_emulation_enable_rect(value)      Config::enableEmuRect = value
 #define set_json_regal_config_dispatch_emulation_enable_so(value)        Config::enableEmuSo = value
 #define set_json_regal_config_dispatch_emulation_enable_texc(value)      Config::enableEmuTexC = value
@@ -33,6 +34,7 @@
 #define set_json_regal_config_dispatch_emulation_force_path(value)       Config::forceEmuPath = value
 #define set_json_regal_config_dispatch_emulation_force_ppa(value)        Config::forceEmuPpa = value
 #define set_json_regal_config_dispatch_emulation_force_ppca(value)       Config::forceEmuPpca = value
+#define set_json_regal_config_dispatch_emulation_force_quads(value)      Config::forceEmuQuads = value
 #define set_json_regal_config_dispatch_emulation_force_rect(value)       Config::forceEmuRect = value
 #define set_json_regal_config_dispatch_emulation_force_so(value)         Config::forceEmuSo = value
 #define set_json_regal_config_dispatch_emulation_force_texc(value)       Config::forceEmuTexC = value
@@ -65,6 +67,9 @@
 #define set_json_regal_config_frame_save_prefix_color(value)             Config::frameSaveColorPrefix = value
 #define set_json_regal_config_frame_save_prefix_depth(value)             Config::frameSaveDepthPrefix = value
 #define set_json_regal_config_frame_save_prefix_stencil(value)           Config::frameSaveStencilPrefix = value
+#define set_json_regal_config_load_egl(value)                            Config::loadEGL = value
+#define set_json_regal_config_load_es2(value)                            Config::loadES2 = value
+#define set_json_regal_config_load_gl(value)                             Config::loadGL = value
 #define set_json_regal_config_system_egl(value)                          Config::sysEGL = value
 #define set_json_regal_config_system_es1(value)                          Config::sysES1 = value
 #define set_json_regal_config_system_es2(value)                          Config::sysES2 = value

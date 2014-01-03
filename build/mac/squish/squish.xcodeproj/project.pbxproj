@@ -105,10 +105,10 @@
 				4336668D17C56B7F00D45AD9 /* maths.h */,
 				4336668E17C56B7F00D45AD9 /* rangefit.cpp */,
 				4336668F17C56B7F00D45AD9 /* rangefit.h */,
+				4336669317C56B7F00D45AD9 /* simd.h */,
 				4336669017C56B7F00D45AD9 /* simd_float.h */,
 				4336669117C56B7F00D45AD9 /* simd_sse.h */,
 				4336669217C56B7F00D45AD9 /* simd_ve.h */,
-				4336669317C56B7F00D45AD9 /* simd.h */,
 				4336669417C56B7F00D45AD9 /* singlecolourfit.cpp */,
 				4336669517C56B7F00D45AD9 /* singlecolourfit.h */,
 				4336669617C56B7F00D45AD9 /* singlecolourlookup.inl */,
@@ -212,7 +212,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
@@ -244,7 +244,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
 				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
 				CLANG_CXX_LIBRARY = "libc++";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;

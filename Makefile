@@ -24,6 +24,7 @@ include Makefile.zlib
 include Makefile.libpng
 include Makefile.snappy
 include Makefile.apitrace
+include Makefile.glslopt
 include Makefile.regal
 include Makefile.glu
 include Makefile.glut

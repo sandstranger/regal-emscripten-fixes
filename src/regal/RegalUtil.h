@@ -174,6 +174,18 @@
 # endif
 #endif
 
+// Http dispatch unsupported by default in
+// release mode
+
+#ifndef REGAL_HTTP
+# if defined(NDEBUG) || REGAL_SYS_PPAPI || REGAL_WRANGLER
+#   define REGAL_HTTP 0
+# else
+#   define REGAL_HTTP 1
+# endif
+#endif
+
+
 // Emulation dispatch supported by default
 
 #ifndef REGAL_EMULATION
@@ -192,6 +204,13 @@
 # else
 #  define REGAL_STATISTICS 1
 # endif
+#endif
+
+// Converting enum values to strings adds some footprint,
+// opt-out with -DREGAL_ENUM_TO_STRING=0
+
+#ifndef REGAL_ENUM_TO_STRING
+#define REGAL_ENUM_TO_STRING 1
 #endif
 
 // Driver dispatch supported by default
@@ -270,6 +289,10 @@
 #define REGAL_EMU_IFF 1
 #endif
 
+#ifndef REGAL_EMU_QUADS
+#define REGAL_EMU_QUADS 1
+#endif
+
 #ifndef REGAL_EMU_SO
 #define REGAL_EMU_SO 1
 #endif
@@ -338,6 +361,10 @@
 
 #ifndef REGAL_FORCE_EMU_IFF
 #define REGAL_FORCE_EMU_IFF 0
+#endif
+
+#ifndef REGAL_FORCE_EMU_QUADS
+#define REGAL_FORCE_EMU_QUADS 0
 #endif
 
 #ifndef REGAL_FORCE_EMU_SO

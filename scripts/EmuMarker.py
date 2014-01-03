@@ -10,8 +10,10 @@ formulaeGlobal = {
 
     'Insert' : {
         'entries' : [ 'glInsertEventMarkerEXT' ],
-        'cond'    : '_context->info->gl_ext_debug_marker',
-        'prefix'  : 'std::string _message = Marker::toStringEXT(length, marker);',
+        'cond'    : 'true || _context->info->gl_ext_debug_marker',
+        'prefix'  : '''
+const GLsizei maxLength = _context && _context->emuInfo ? _context->emuInfo->gl_max_debug_message_length : 1024;
+const std::string _message = Marker::toStringEXT(length,marker,maxLength);''',
         'impl'    : '''
 if (_context->marker)
   _context->marker->InsertEventMarker(*_context, _message);
@@ -20,8 +22,10 @@ RegalAssert(_context->info);'''
 
     'Push' : {
         'entries' : [ 'glPushGroupMarkerEXT' ],
-        'cond'    : '_context->info->gl_ext_debug_marker',
-        'prefix'  : [ 'std::string _message = Marker::toStringEXT(length, marker);' ],
+        'cond'    : 'true || _context->info->gl_ext_debug_marker',
+        'prefix'  : '''
+const GLsizei maxLength = _context && _context->emuInfo ? _context->emuInfo->gl_max_debug_message_length : 1024;
+const std::string _message = Marker::toStringEXT(length,marker,maxLength);''',
         'impl'    : 'RegalAssert(_context->info);',
         'suffix'  : '''
 if (_context->marker)
@@ -30,7 +34,7 @@ if (_context->marker)
 
     'Pop' : {
         'entries' : [ 'glPopGroupMarkerEXT' ],
-        'cond'    : '_context->info->gl_ext_debug_marker',
+        'cond'    : 'true || _context->info->gl_ext_debug_marker',
         'prefix'  : '''
 if (_context && _context->marker)
   _context->marker->PopGroupMarker(*_context);''',
@@ -46,15 +50,17 @@ if (_context && _context->marker)
 
     'KHR_debug Push' : {
         'entries' : [ 'glPushDebugGroup' ],
-        'cond'    : '_context->info->gl_khr_debug',
-        'prefix'  : [ 'std::string _message = Marker::toStringKHR(length, message);' ],
+        'cond'    : 'true || _context->info->gl_khr_debug',
+        'prefix'  : '''
+const GLsizei maxLength = _context && _context->emuInfo ? _context->emuInfo->gl_max_debug_message_length : 1024;
+const std::string _message = Marker::toStringKHR(length,message,maxLength);''',
         'impl'    : [ 'RegalAssert(_context->info);' ],
         'suffix'  : [ 'if (_context->marker)',
                       '  _context->marker->PushGroupMarker(*_context, _message);' ]
     },
     'KHR_debug Pop' : {
         'entries' : [ 'glPopDebugGroup' ],
-        'cond'    : '_context->info->gl_khr_debug',
+        'cond'    : 'true || _context->info->gl_khr_debug',
         'prefix'  : [ 'if (_context->marker)',
                       '  _context->marker->PopGroupMarker(*_context);' ],
         'impl'    : [ 'RegalAssert(_context->info);' ]
@@ -62,8 +68,10 @@ if (_context && _context->marker)
 
     'KHR_debug Insert' : {
         'entries' : [ 'glDebugMessageInsert' ],
-        'cond'    : '_context->info->gl_khr_debug',
-        'prefix'  : [ 'std::string _message = Marker::toStringKHR(length, buf);' ],
+        'cond'    : 'true || _context->info->gl_khr_debug',
+        'prefix'  : '''
+const GLsizei maxLength = _context && _context->emuInfo ? _context->emuInfo->gl_max_debug_message_length : 1024;
+const std::string _message = Marker::toStringKHR(length,buf,maxLength);''',
         'impl'    : [ 'if (_context->marker)',
                       '  _context->marker->InsertEventMarker(*_context, _message);',
                       'RegalAssert(_context->info);' ]
@@ -76,8 +84,10 @@ if (_context && _context->marker)
 
     'ARB_debug_output Insert' : {
         'entries' : [ 'glDebugMessageInsertARB' ],
-        'cond'    : '_context->info->gl_arb_debug_output',
-        'prefix'  : [ 'std::string _message = Marker::toStringEXT(length, buf);' ],
+        'cond'    : 'true || _context->info->gl_arb_debug_output',
+        'prefix'  : '''
+const GLsizei maxLength = _context && _context->emuInfo ? _context->emuInfo->gl_max_debug_message_length : 1024;
+const std::string _message = Marker::toStringEXT(length,buf,maxLength);''',
         'impl'    : [ 'if (_context->marker)',
                       '  _context->marker->InsertEventMarker(*_context, _message);',
                       'RegalAssert(_context->info);' ]
@@ -90,8 +100,10 @@ if (_context && _context->marker)
 
     'AMD_debug_output Insert' : {
         'entries' : [ 'glDebugMessageInsertAMD' ],
-        'cond'    : '_context->info->gl_amd_debug_output',
-        'prefix'  : [ 'std::string _message = Marker::toStringEXT(length, buf);' ],
+        'cond'    : 'true || _context->info->gl_amd_debug_output',
+        'prefix'  : '''
+const GLsizei maxLength = _context && _context->emuInfo ? _context->emuInfo->gl_max_debug_message_length : 1024;
+const std::string _message = Marker::toStringEXT(length,buf,maxLength);''',
         'impl'    : [ 'if (_context->marker)',
                       '  _context->marker->InsertEventMarker(*_context, _message);',
                       'RegalAssert(_context->info);' ]
@@ -101,8 +113,10 @@ if (_context && _context->marker)
 
     'GL_GREMEDY_string_marker' : {
         'entries' : [ 'glStringMarkerGREMEDY' ],
-        'cond'    : '_context->info->gl_gremedy_string_marker',
-        'prefix'  : [ 'std::string _message = Marker::toStringEXT(len, static_cast<const char *>(string));' ],
+        'cond'    : 'true || _context->info->gl_gremedy_string_marker',
+        'prefix'  : '''
+const GLsizei maxLength = _context && _context->emuInfo ? _context->emuInfo->gl_max_debug_message_length : 1024;
+const std::string _message = Marker::toStringEXT(len,static_cast<const char *>(string),maxLength);''',
         'impl'    : [ 'if (_context->marker)',
                       '  _context->marker->InsertEventMarker(*_context, _message);',
                       'RegalAssert(_context->info);' ]

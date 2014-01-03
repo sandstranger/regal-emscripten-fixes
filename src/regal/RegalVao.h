@@ -121,7 +121,7 @@ struct Vao
     if (max_vertex_attribs > REGAL_EMU_MAX_VERTEX_ATTRIBS)
       max_vertex_attribs = REGAL_EMU_MAX_VERTEX_ATTRIBS;
 
-    RegalContext *sharingWith = ctx.groupInitializedContext();
+    RegalContext *sharingWith = ctx.shareGroup->front();
     if (sharingWith)
       objects = sharingWith->vao->objects;
 

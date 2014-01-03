@@ -3,7 +3,7 @@
   Copyright (c) 2011-2012 Cass Everitt
   Copyright (c) 2012 Scott Nations
   Copyright (c) 2012 Mathias Schott
-  Copyright (c) 2012 Nigel Stewart
+  Copyright (c) 2012-2013 Nigel Stewart
   All rights reserved.
 
   Redistribution and use in source and binary forms, with or without modification,
@@ -115,6 +115,7 @@ Init::Init()
 #if !REGAL_NO_JSON
   if (Config::configFile.length())
   {
+    Info("Reading Regal configuration from ",Config::configFile);
     bool ok = Json::Parser::parseFile(Config::configFile);
     if (!ok)
       Warning("Failed to parse configuration from ",Config::configFile);
@@ -187,6 +188,12 @@ Init::~Init()
   th2rcMutex = NULL;
 }
 
+bool
+Init::isInitialized()
+{
+  return _init!=NULL;
+}
+
 void
 Init::init()
 {
@@ -215,12 +222,12 @@ Init::getContext(RegalSystemContext sysCtx)
   SC2RC::iterator i = sc2rc.find(sysCtx);
   if (i!=sc2rc.end())
   {
-    Internal("Init::context", "lookup for sysCtx=",sysCtx);
+    Internal("Init::context", "lookup for sysCtx=",boost::print::optional(sysCtx,Logging::pointers));
     return i->second;
   }
   else
   {
-    Internal("Init::context", "factory for sysCtx=",sysCtx);
+    Internal("Init::context", "factory for sysCtx=",boost::print::optional(sysCtx,Logging::pointers));
     RegalContext *context = new RegalContext();
     RegalAssert(context);
     sc2rc[sysCtx] = context;
@@ -234,7 +241,7 @@ Init::setContext(RegalContext *context)
 {
   Thread::Thread thread = Thread::Self();
 
-  Internal("Init::setContext","thread=",::boost::print::hex(Thread::threadId())," context=",context," ",context ? context->info->version : "");
+  Internal("Init::setContext","thread=",boost::print::optional(::boost::print::hex(Thread::threadId()),Logging::thread)," context=",boost::print::optional(context,Logging::pointers)," ",context ? context->info->version : "");
 
   // std::map lookup
 
@@ -337,7 +344,7 @@ ThreadLocalInit threadLocalInit;
 void
 Init::setContextTLS(RegalContext *context)
 {
-  Internal("Init::setContextTLS","thread=",::boost::print::hex(Thread::threadId())," context=",context);
+  Internal("Init::setContextTLS","thread=",boost::print::optional(::boost::print::hex(Thread::threadId()),Logging::thread)," context=",boost::print::optional(context,Logging::pointers));
 
   Thread::ThreadLocal &instance = Thread::ThreadLocal::instance();
   instance.currentContext = context;
@@ -389,13 +396,19 @@ Init::shareContext(RegalSystemContext a, RegalSystemContext b)
   // In principle Regal might be able to merge the shared
   // containers together, but that's not currently implemented.
 
-  if (contextA->groupInitializedContext() && contextB->groupInitializedContext())
+  if (contextA->groupInitialized() && contextB->groupInitialized())
   {
     Warning("Regal can't share initialized context groups.");
     RegalAssert(false);
     return;
   }
 
+  // If b is the initialized context, swap them, so that the uninitialized context
+  // is shared into the initialized context.
+  if( contextB->groupInitialized() ) {
+    std::swap( contextA, contextB );
+  }
+  
   // Share all the Regal contexts in b into a
 
   std::list<RegalContext *> tmp = *contextB->shareGroup;
@@ -415,7 +428,7 @@ Init::makeCurrent(RegalSystemContext sysCtx, PPB_OpenGLES2 *ppb_interface)
 Init::makeCurrent(RegalSystemContext sysCtx)
 #endif
 {
-  Internal("Init::makeCurrent","thread=",::boost::print::hex(Thread::threadId())," sysCtx=",sysCtx);
+  Internal("Init::makeCurrent","thread=",boost::print::optional(::boost::print::hex(Thread::threadId()),Logging::thread)," sysCtx=",boost::print::optional(sysCtx,Logging::pointers));
 
   if (sysCtx)
   {
@@ -426,6 +439,15 @@ Init::makeCurrent(RegalSystemContext sysCtx)
 
     if (!context->initialized)
     {
+      
+      if( context->groupInitialized() == false ) {
+        // This is the first context to be initialized in this shareGroup,
+        // so make it the head of the list.
+        context->shareGroup->remove( context );
+        context->shareGroup->push_front( context );
+      }
+      
+      
       // Set regal context TLS for initialization purposes
       // This is needed for Thread::CurrentContext on Mac OSX
 
@@ -493,8 +515,8 @@ Init::getContextListingHTML(std::string &text)
 {
   static const char *const br = "<br/>\n";
 
-  Thread::ScopedLock lock(th2rcMutex);
-  for (TH2RC::const_iterator i = th2rc.begin(); i!=th2rc.end(); ++i)
+  Thread::ScopedLock lock(sc2rcMutex);
+  for (SC2RC::const_iterator i = sc2rc.begin(); i!=sc2rc.end(); ++i)
   {
     RegalContext *ctx = i->second;
 
@@ -506,13 +528,34 @@ Init::getContextListingHTML(std::string &text)
     {
       if (ctx->info)
       {
-        text += print_string("<b>Vendor     </b>:",ctx->emuInfo->vendor,br);
-        text += print_string("<b>Renderer   </b>:",ctx->emuInfo->renderer,br);
-        text += print_string("<b>Version    </b>:",ctx->emuInfo->version,br);
-        text += print_string("<b>Extensions </b>:",ctx->emuInfo->extensions,br);
+        text += print_string("<b>Vendor     </b>: ",ctx->emuInfo->vendor,br);
+        text += print_string("<b>Renderer   </b>: ",ctx->emuInfo->renderer,br);
+        text += print_string("<b>Version    </b>: ",ctx->emuInfo->version,br);
+        text += print_string("<b>Extensions </b>: ",ctx->emuInfo->extensions,br);
         text += br;
       }
+      
+      text += print_string("<b>Number of textures</b>: ", ctx->http.texture.size(), br);
+      for( map<GLuint, HttpTextureInfo >::iterator i = ctx->http.texture.begin(); i != ctx->http.texture.end(); ++i ) {
+        text += print_string( "<a href=\"texture/", i->first, "\">", i->first, "</a>, " );
+      }
+      text += br;
+      text += br;
 
+      text += print_string("<b>Number of programs</b>: ", ctx->http.program.size(), br);
+      for( set<GLuint>::iterator i = ctx->http.program.begin(); i != ctx->http.program.end(); ++i ) {
+        text += print_string( "<a href=\"program/", *i, "\">", *i, "</a>, " );
+      }
+      text += br;
+      text += br;
+      
+      text += print_string("<b>Number of shaders</b>: ", ctx->http.shader.size(), br);
+      for( set<GLuint>::iterator i = ctx->http.shader.begin(); i != ctx->http.shader.end(); ++i ) {
+        text += print_string( "<a href=\"shader/", *i, "\">", *i, "</a>, " );
+      }
+      text += br;
+      text += br;
+      
 #if REGAL_EMULATION
       if (ctx->ppa)
       {
@@ -540,6 +583,28 @@ Init::getContextListingHTML(std::string &text)
 #endif
     }
   }
+}
+
+size_t
+Init::getNumContexts()
+{
+  Thread::ScopedLock lock(sc2rcMutex);
+  return sc2rc.size();
+}
+
+RegalContext *
+Init::getContextByIndex(size_t index)
+{
+  Thread::ScopedLock lock(sc2rcMutex);
+  size_t i = 0;
+  for (SC2RC::iterator it = sc2rc.begin(); it!=sc2rc.end(); ++it)
+  {
+    if( i == index ) {
+      return it->second;
+    }
+    i++;
+  }
+  return NULL;
 }
 
 REGAL_NAMESPACE_END

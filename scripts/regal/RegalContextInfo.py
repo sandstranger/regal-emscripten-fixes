@@ -2,7 +2,8 @@
 
 from string import Template, upper, replace
 
-from ApiUtil import outputCode
+from ApiUtil    import outputCode
+from ApiCodeGen import wrapIf
 
 cond = { 'wgl' : 'REGAL_SYS_WGL', 'glx' : 'REGAL_SYS_GLX', 'cgl' : 'REGAL_SYS_OSX', 'egl' : 'REGAL_SYS_EGL' }
 
@@ -57,6 +58,8 @@ ${VERSION_DECLARE}
 
 ${IMPL_DECLARE}
 
+private:
+  static bool stringSetFind(const std::set<std::string> &stringSet, const std::string &val);
 };
 
 REGAL_NAMESPACE_END
@@ -82,10 +85,10 @@ using namespace std;
 #include <boost/print/string_list.hpp>
 using namespace boost::print;
 
+#include "RegalEmu.h"
 #include "RegalToken.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
-#include "RegalEmu.h"
 
 REGAL_GLOBAL_END
 
@@ -115,9 +118,20 @@ inline string getString(const RegalContext &context, const GLenum e)
   return str ? string(reinterpret_cast<const char *>(str)) : string();
 }
 
+inline void warnGLError(const RegalContext &context, const char *message)
+{
+  Internal("warnGLError ",message ? message : NULL);
+  RegalAssert(context.dispatcher.driver.glGetError);
+  GLenum err = context.dispatcher.driver.glGetError();
+  if (err!=GL_NO_ERROR)
+    Warning("glGetError returned ",GLerrorToString(err)," ",message ? message : NULL);
+}
+
 void
 ContextInfo::init(const RegalContext &context)
 {
+  warnGLError(context,"before Regal context initialization.");
+
   // OpenGL Version.
 
   vendor     = getString(context, GL_VENDOR);
@@ -135,24 +149,23 @@ ContextInfo::init(const RegalContext &context)
   gles_version_minor = 0;
 
   // Detect GL context version
+  //
+  // Note: We need to detect desktop ES contexts even if REGAL_SYS_ES1 or REGAL_SYS_ES2
+  //       are disabled.
 
-  #if REGAL_SYS_ES1
   es1 = starts_with(version, "OpenGL ES-CM");
   if (es1)
   {
     sscanf(version.c_str(), "OpenGL ES-CM %d.%d", &gles_version_major, &gles_version_minor);
   }
   else
-  #endif
   {
-    #if REGAL_SYS_ES2
     es2 = starts_with(version,"OpenGL ES ");
     if (es2)
     {
       sscanf(version.c_str(), "OpenGL ES %d.%d", &gles_version_major, &gles_version_minor);
     }
     else
-    #endif
     {
       sscanf(version.c_str(), "%d.%d", &gl_version_major, &gl_version_minor);
     }
@@ -201,9 +214,9 @@ ContextInfo::init(const RegalContext &context)
   }
   #endif
 
-  // Detect core context
+  // Detect core context for GL 3.2 onwards
 
-  if (!es1 && !es2 && gl_version_major>=3)
+  if (!es1 && !es2 && (gl_version_major>3 || (gl_version_major==3 && gl_version_minor>=2)))
   {
     GLint flags = 0;
     RegalAssert(context.dispatcher.driver.glGetIntegerv);
@@ -277,10 +290,19 @@ ${VERSION_DETECT}
 ${EXT_INIT}
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
+  RegalAssert(context.dispatcher.driver.glGetBooleanv);
 ${IMPL_GET}
 
   Info("OpenGL v attribs : ",gl_max_vertex_attribs);
   Info("OpenGL varyings  : ",gl_max_varying_floats);
+
+  warnGLError(context,"querying context information.");
+}
+
+bool
+ContextInfo::stringSetFind(const std::set<std::string> &stringSet, const std::string &val)
+{
+  return stringSet.find(val)!=stringSet.end();
 }
 
 ${EXT_CODE}
@@ -348,14 +370,10 @@ def versionDeclareCode(apis, args):
       code += '\n'
 
   for api in apis:
-    name = api.name.lower()
-    if name in cond:
-      code += '#if %s\n'%cond[name]
+    tmp = ''
     for c in sorted(api.categories):
-      code += '  GLboolean %s : 1;\n' % (c.lower())
-    if name in cond:
-      code += '#endif\n'
-    code += '\n'
+      tmp += '  GLboolean %s : 1;\n' % (c.lower())
+    code += wrapIf(cond.get(api.name.lower()),tmp) + '\n'
 
   return code
 
@@ -387,13 +405,10 @@ def versionInitCode(apis, args):
       code += '  glsl_version_minor(-1),\n'
 
   for api in apis:
-    name = api.name.lower()
-    if name in cond:
-      code += '#if %s\n'%cond[name]
+    tmp = ''
     for c in sorted(api.categories):
-      code += '  %s(false),\n' % (c.lower())
-    if name in cond:
-      code += '#endif\n'
+      tmp += '  %s(false),\n' % (c.lower())
+    code += wrapIf(cond.get(api.name.lower()),tmp)
 
   return code
 
@@ -459,6 +474,8 @@ def implDeclareCode(apis, args):
 
       code += '\n'
       code += '  GLuint gl_max_varying_floats;\n'
+      code += '\n'
+      code += '  GLboolean gl_quads_follow_provoking_vertex_convention;\n'
 
   return code
 
@@ -477,11 +494,88 @@ def implInitCode(apis, args):
       for state in sorted(states):
         code += '  gl_%s(0),\n' % (state)
 
-      code += '  gl_max_varying_floats(0)\n'
+      code += '  gl_max_varying_floats(0),\n'
+      code += '  gl_quads_follow_provoking_vertex_convention(GL_FALSE)\n'
 
   return code
 
 def implGetCode(apis, args):
+
+  code = '''
+  gl_max_attrib_stack_depth = 0;
+  gl_max_client_attrib_stack_depth = 0;
+  gl_max_combined_texture_image_units = 0;
+  gl_max_debug_message_length = 1024;
+  gl_max_draw_buffers = 0;
+  gl_max_texture_coords = 0;
+  gl_max_texture_units = 0;
+  gl_max_vertex_attrib_bindings = 0;
+  gl_max_vertex_attribs = 0;
+  gl_max_viewports = 0;
+  gl_max_varying_floats = 0;
+
+  // Looking at the various specs and RegalEmu.h I came up with this table:
+  //
+  //                                        GL       Core  ES1  ES2  ES3  Regal
+  // GL_MAX_ATTRIB_STACK_DEPTH              16        rem  n/a  n/a  n/a    16
+  // GL_MAX_CLIENT_ATTRIB_STACK_DEPTH       16        rem  n/a  n/a  n/a    16
+  // GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS    96        96    -    8   32     96
+  // GL_MAX_DRAW_BUFFERS                     8         8    -    -    4      8
+  // GL_MAX_TEXTURE_COORDS                   8        rem   -    -    -     16
+  // GL_MAX_TEXTURE_UNITS                    2        rem   +    -    -      4
+  // GL_MAX_VARYING_VECTORS                 15        15    -    8   15      -
+  // GL_MAX_VARYING_FLOATS                  32 (2.0)  dep   -    -    -      -
+  // GL_MAX_VERTEX_ATTRIBS                  16        16    -    8   16     16
+  // GL_MAX_VERTEX_ATTRIB_BINDINGS          16        16    -    -    -     16
+  // GL_MAX_VIEWPORTS                       16        16    -    -    -     16
+
+  if (compat)
+  {
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>(&gl_max_attrib_stack_depth));
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_CLIENT_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>(&gl_max_client_attrib_stack_depth));
+  }
+
+  if (!es1)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, reinterpret_cast<GLint *>(&gl_max_combined_texture_image_units));
+
+  if (core || compat)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_DRAW_BUFFERS, reinterpret_cast<GLint *>(&gl_max_draw_buffers));
+
+  if (compat)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_TEXTURE_COORDS, reinterpret_cast<GLint *>(&gl_max_texture_coords));
+
+  if (es1 || compat)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_TEXTURE_UNITS, reinterpret_cast<GLint *>(&gl_max_texture_units));
+
+  if (es2 || core)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_VARYING_VECTORS, reinterpret_cast<GLint *>(&gl_max_varying_floats));
+  else if (compat)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&gl_max_varying_floats));
+
+  if (es1)
+    gl_max_vertex_attribs = 8;  //<> one of these things is not like the other...
+  else
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&gl_max_vertex_attribs));
+
+  if ((core || compat) && (gl_version_4_3 || gl_arb_vertex_attrib_binding))
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIB_BINDINGS, reinterpret_cast<GLint *>(&gl_max_vertex_attrib_bindings));
+
+  if ((core || compat) && (gl_version_4_1 || gl_arb_viewport_array))
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_VIEWPORTS, reinterpret_cast<GLint *>(&gl_max_viewports));
+
+  if (gl_arb_debug_output)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_DEBUG_MESSAGE_LENGTH_ARB, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
+  else if (gl_khr_debug)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_DEBUG_MESSAGE_LENGTH, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
+  else if (gl_amd_debug_output)
+    context.dispatcher.driver.glGetIntegerv( GL_MAX_DEBUG_MESSAGE_LENGTH_AMD, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
+
+  if ((compat) && (gl_version_3_2 || gl_arb_provoking_vertex || gl_ext_provoking_vertex))
+    context.dispatcher.driver.glGetBooleanv( GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION, &gl_quads_follow_provoking_vertex_convention);
+'''
+  return code
+
+def originalImplGetCode(apis, args):
 
   code = ''
   for api in apis:
@@ -511,7 +605,7 @@ def implGetCode(apis, args):
           code += '    context.dispatcher.driver.glGetIntegerv( GL_%s, reinterpret_cast<GLint *>(&gl_%s));\n' % (state, state.lower())
 
       code += '''
-    if (gl_version_4_3 || gl_arb_vertex_attrib_binding) 
+    if (gl_version_4_3 || gl_arb_vertex_attrib_binding)
       context.dispatcher.driver.glGetIntegerv( GL_MAX_VERTEX_ATTRIB_BINDINGS, reinterpret_cast<GLint *>(&gl_max_vertex_attrib_bindings));
     else
       gl_max_vertex_attrib_bindings = 0;
@@ -534,14 +628,13 @@ def extensionStringCode(apis, args):
   code = ''
 
   for api in apis:
-    name = api.name.lower()
-    if name in cond:
-      code += '#if %s\n'%cond[name]
+    tmp = ''
     for c in sorted(api.categories):
-      code += '  %s = e.find("%s")!=e.end();\n' % (c.lower(),c)
-    if name in cond:
-      code += '#endif\n'
-    code += '\n'
+      tmp += '  %-50s = stringSetFind(e,"%s");\n' % (c.lower(),c)
+
+    tmp = wrapIf(cond.get(api.name.lower()),tmp)
+
+    code += tmp + '\n'
 
   return code
 
@@ -556,16 +649,15 @@ def getExtensionCode(apis, args):
 
   for api in apis:
 
-    name = api.name.lower()
-    if name in cond:
-      code += '#if %s\n'%cond[name]
+    tmp = ''
     for c in sorted(api.categories):
-      code += '  if (!strcmp(ext,"%s")) return %s;\n' % (c,c.lower())
-    if name in cond:
-      code += '#endif\n'
-    code += '\n'
+      tmp += '  %-60s %s;\n'%('if (!strcmp(ext,"%s"))'%c,'return %s'%c.lower())
 
-  code += 'return false;\n'
+    tmp = wrapIf(cond.get(api.name.lower()),tmp)
+
+    code += tmp + '\n'
+
+  code += '  return false;\n'
   code += '}\n\n'
 
   return code

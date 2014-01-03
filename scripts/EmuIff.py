@@ -38,15 +38,15 @@ iffFormulae = {
     },
     'ImmShadowVao' : {
         'entries' : [ 'glBindVertexArray.*', ],
-        'prefix' : [ '_context->iff->ShadowVao( _context, ${arg0} ); ', ],
+        'prefix' : [ '_context->iff->glBindVertexArray( _context, ${arg0} ); ', ],
     },
    'IsVertexArray' : {
         'entries' : [ 'glIsVertexArray(ARB|)' ],
         'impl' : [ 'return _context->iff->IsVertexArray( _context, ${arg0} );' ],
     },
-   'DeleteVertexArrays' : {
-        'entries' : [ 'glDeleteVertexArrays(ARB|)' ],
-        'impl' : [ '_context->iff->DeleteVertexArrays( _context, ${arg0}, ${arg1} );' ],
+   'DeleteStuff' : {
+        'entries' : [ 'glDelete(Buffers|VertexArrays)(ARB|)' ],
+        'impl' : [ '_context->iff->glDelete${m1}( _context, ${arg0}, ${arg1} );' ],
     },
     'ImmShadowClientActiveTexture' : {
         'entries' : [ 'glClientActiveTexture(ARB|)', ],
@@ -111,7 +111,15 @@ iffFormulae = {
           ],
     },
     'FfnShadow' : {
-        'entries' : [ 'gl(MatrixMode|BindProgramPipeline|UseProgram|Enable|Disable)' ],
+        'entries' : [ 'gl(MatrixMode|BindProgramPipeline|Enable|Disable)' ],
+        'impl' : [
+            'if( ! _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
+            '    _context->dispatcher.emulation.gl${m1}( ${arg0plus} );',
+            '}',
+            ],
+    },
+    'FfnShadowProgram' : {
+        'entries' : [ 'gl(UseProgram)(ObjectARB|)' ],
         'impl' : [
             'if( ! _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
             '    _context->dispatcher.emulation.gl${m1}( ${arg0plus} );',
@@ -182,6 +190,15 @@ iffFormulae = {
     'FfnFog' : {
         'entries' : [ 'glFog(f|i)(v|)' ],
         'impl' : [ '_context->iff->Fog( ${arg0plus} );', ],
+    },
+    'FfnGetBoolean' : {
+        'entries' : [ 'glGetBooleanv' ],
+        'impl' : [
+            '_context->iff->RestoreVao( _context );',
+            'if ( ! _context->iff->glGetBooleanv( _context, ${arg0plus} ) ) {',
+            '    _context->dispatcher.emulation.glGetBooleanv( ${arg0plus} );',
+            '}',
+        ],
     },
     'FfnGet' : {
         'entries' : [ 'glGet(Integer|Float|Double)v' ],
@@ -262,6 +279,48 @@ iffFormulae = {
         'entries' : [ 'glCreateShader(ObjectARB)?', ],
         'impl' : [ 'return _context->iff->CreateShader( _context, ${arg0} );', ],
     },
+    'Uniform' : {
+        'entries' : [ 'glUniform(1|2|3|4)(d|f|i|ui)(ARB|)', ],
+        'impl' : [ 
+          'if( _context->iff->currinst ) {',
+          '  _context->iff->Uniform( _context, ${m1}, ${arg0}, 1, ${arg1plus} );',
+          '} else {',
+          '  _context->dispatcher.emulation.${m0}( ${arg0plus} );',
+          '}',
+        ],
+    },
+    'Uniformv' : {
+        'entries' : [ 'glUniform(1|2|3|4)(d|f|i|ui)v(ARB|)', ],
+        'impl' : [ 
+          'if( _context->iff->currinst ) {',
+          '  _context->iff->Uniform( _context, ${m1}, ${arg0plus} );',
+          '} else {',
+          '  _context->dispatcher.emulation.${m0}( ${arg0plus} );',
+          '}',
+        ],
+    },
+    'UniformMatrix' : {
+        'entries' : [ 'glUniformMatrix(2|3|4)(d|f)v(ARB|)', ],
+        'impl' : [ 
+          'if( _context->iff->currinst ) {',
+          '  _context->iff->UniformMatrix( _context, ${m1}, ${m1}, ${arg0plus} );',
+          '} else {',
+          '  _context->dispatcher.emulation.${m0}( ${arg0plus} );',
+          '}',
+        ],
+    },
+    'UniformMatrixNonSquare' : {
+        'entries' : [ 'glUniformMatrix(2|3|4)x(2|3|4)(d|f)v(ARB|)', ],
+        'impl' : [ 
+          'if( _context->iff->currinst ) {',
+          '  _context->iff->UniformMatrix( _context, ${m1}, ${m2}, ${arg0plus} );',
+          '} else {',
+          '  _context->dispatcher.emulation.${m0}( ${arg0plus} );',
+          '}',
+        ],
+    },
+    # I cannot think of a legitimate reason for 'Hint' and 'TexSubImage' entries below.
+    # They simply filter out the calls without doing anything with them.
     'Hint' : {
         'entries' : [ 'glHint' ],
         'impl' : [ ],

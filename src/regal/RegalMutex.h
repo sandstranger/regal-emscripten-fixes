@@ -82,17 +82,29 @@ namespace Thread
   //
   // Mutex
   //
-
+  
+  enum MutexType {
+    MT_Normal,
+    MT_Recursive
+  };
+  
   struct Mutex
   {
   public:
-    inline Mutex()
+    inline Mutex( MutexType mt = MT_Recursive )
     {
 #if REGAL_SYS_WIN32
       InitializeCriticalSection(&_cs);
+      if( mt == MT_Normal ) {
+        _handle = CreateSemaphore( NULL, 1, 1, NULL );
+      } else {
+        _handle = NULL;
+      }
 #else
       pthread_mutexattr_init(&_mutexattr);
-      pthread_mutexattr_settype(&_mutexattr, PTHREAD_MUTEX_RECURSIVE);
+      if( mt == MT_Recursive ) {
+        pthread_mutexattr_settype(&_mutexattr, PTHREAD_MUTEX_RECURSIVE);
+      }
       pthread_mutex_init(&_mutex, &_mutexattr);
 #endif
     }
@@ -101,6 +113,9 @@ namespace Thread
     {
 #if REGAL_SYS_WIN32
       DeleteCriticalSection(&_cs);
+      if( _handle ) {
+        CloseHandle( _handle );
+      }
 #else
       pthread_mutex_destroy(&_mutex);
       pthread_mutexattr_destroy(&_mutexattr);
@@ -110,7 +125,11 @@ namespace Thread
     inline void acquire()
     {
 #if REGAL_SYS_WIN32
-      EnterCriticalSection(&_cs);
+      if( _handle ) {
+        WaitForSingleObject( _handle, INFINITE );
+      } else {
+        EnterCriticalSection(&_cs);
+      }
 #else
       pthread_mutex_lock(&_mutex);
 #endif
@@ -119,7 +138,11 @@ namespace Thread
     inline void release()
     {
 #if REGAL_SYS_WIN32
-      LeaveCriticalSection(&_cs);
+      if( _handle ) {
+        ReleaseSemaphore( _handle, 1, NULL );
+      } else {
+        LeaveCriticalSection(&_cs);
+      }
 #else
       pthread_mutex_unlock(&_mutex);
 #endif
@@ -129,6 +152,7 @@ namespace Thread
 
 #if REGAL_SYS_WIN32
     CRITICAL_SECTION _cs;
+    HANDLE _handle;
 #else
     pthread_mutex_t _mutex;
     pthread_mutexattr_t _mutexattr;

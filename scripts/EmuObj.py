@@ -13,10 +13,6 @@ objFormulae = {
         'entries' : [ 'gl(GenTextures|DeleteTextures|BindTexture)' ],
         'impl' : [ '_context->obj->${m1}(*_context, ${arg0plus});', ],
     },
-    'Framebuffers' : {
-        'entries' : [ 'gl(GenFramebuffers|DeleteFramebuffers|BindFramebuffer)' ],
-        'impl' : [ '_context->obj->${m1}(*_context, ${arg0plus});', ],
-    },
     'FramebufferTexture' : {
         'entries' : [ 'glFramebufferTexture(1D|1DEXT|2D|2DEXT|2DOES|2DMultisampleEXT|2DMultisampleOES|3DEXT|3DOES)' ],
         'impl' : ['_dispatch.call(&_dispatch.glFramebufferTexture${m1})(${arg0}, ${arg1}, ${arg2}, _context->obj->textureNames.ToDriverName(${arg3}), ${arg4plus});', ],
@@ -35,7 +31,7 @@ objFormulae = {
         ],
     },
     'IsObj' : {
-        'entries' : [ 'glIs(Buffer|VertexArray|Texture|Framebuffer)(ARB|)' ],
+        'entries' : [ 'glIs(Buffer|VertexArray|Texture)(ARB|)' ],
         'impl' : [ 'return _context->obj->Is${m1}(*_context, ${arg0plus});', ],
     },
 }

@@ -72,8 +72,15 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
 {
   void Init(RegalContext &ctx)
   {
-    UNUSED_PARAMETER(ctx);
     activeTextureUnit = 0;
+
+    // update emu info with the limits that this layer supports
+
+    RegalAssert(ctx.emuInfo);
+    ctx.emuInfo->gl_max_attrib_stack_depth = REGAL_EMU_MAX_ATTRIB_STACK_DEPTH;
+    ctx.emuInfo->gl_max_draw_buffers       = REGAL_EMU_MAX_DRAW_BUFFERS;
+    ctx.emuInfo->gl_max_texture_units      = REGAL_EMU_MAX_TEXTURE_UNITS;
+    ctx.emuInfo->gl_max_viewports          = REGAL_EMU_MAX_VIEWPORTS;
   }
 
   void Cleanup(RegalContext &ctx)
@@ -83,6 +90,19 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
 
   void PushAttrib(RegalContext *ctx, GLbitfield mask)
   {
+    // from glspec44.compatibility.withchanges.pdf Sec. 21.6, p. 643
+    //
+    // A STACK_OVERFLOW error is generated if PushAttrib is called
+    // and the attribute stack depth is equal to the value of
+    // MAX_ATTRIB_STACK_DEPTH.
+    //
+    // TODO: set correct GL error here
+
+    RegalAssert(ctx);
+    RegalAssert(ctx->emuInfo);
+    if (maskStack.size() >= ctx->emuInfo->gl_max_attrib_stack_depth)
+      return;
+
     maskStack.push_back(mask);
 
     if (mask&GL_DEPTH_BUFFER_BIT)
@@ -354,7 +374,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Enable::set(ctx->dispatcher.emulation);
+        State::Enable::set(*ctx);
 
         mask &= ~GL_ENABLE_BIT;
       }
@@ -454,7 +474,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Multisample::set(ctx->dispatcher.emulation);
+        State::Multisample::set(*ctx);
 
         mask &= ~GL_MULTISAMPLE_BIT;
       }
@@ -588,6 +608,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
   template <typename T> bool glGetv(RegalContext *ctx, GLenum pname, T *params)
   {
     RegalAssert(ctx);
+    RegalAssert(ctx->info);
 
     if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
     {
@@ -631,7 +652,10 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
           break;
         case GL_MAX_ATTRIB_STACK_DEPTH:
           if (params)
+          {
+            RegalAssert(ctx->emuInfo);
             params[0] = static_cast<T>(ctx->emuInfo->gl_max_attrib_stack_depth);
+          }
           break;
         default:
           return false;
@@ -842,19 +866,16 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         params[0] = static_cast<T>(maskStack.size());
         break;
       case GL_MAX_ATTRIB_STACK_DEPTH:
+        RegalAssert(ctx->emuInfo);
         params[0] = static_cast<T>(ctx->emuInfo->gl_max_attrib_stack_depth);
         break;
-      case GL_MAX_VERTEX_ATTRIBS:
-        *params = static_cast<T>(ctx->emuInfo->gl_max_vertex_attribs);
-        break;
-      case GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS:
-        params[0] = static_cast<T>(ctx->emuInfo->gl_max_combined_texture_image_units);
-        break;
-      case GL_MAX_TEXTURE_COORDS:
-        params[0] = static_cast<T>(ctx->emuInfo->gl_max_texture_coords);
-        break;
       case GL_MAX_TEXTURE_UNITS:
+        RegalAssert(ctx->emuInfo);
         params[0] = static_cast<T>(ctx->emuInfo->gl_max_texture_units);
+        break;
+      case GL_MAX_VIEWPORTS:
+        RegalAssert(ctx->emuInfo);
+        params[0] = static_cast<T>(ctx->emuInfo->gl_max_viewports);
         break;
       case GL_MAP_STENCIL:
         params[0] = static_cast<T>(State::PixelMode::mapStencil);
@@ -1083,6 +1104,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         }
         break;
       case GL_COLOR_WRITEMASK:
+        RegalAssert(ctx->emuInfo);
         if (index < ctx->emuInfo->gl_max_draw_buffers)
         {
           params[0] = static_cast<T>(State::ColorBuffer::colorWritemask[index][0]);
@@ -1092,13 +1114,19 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         }
         break;
       case GL_DEPTH_RANGE:
+        RegalAssert(ctx->emuInfo);
         if (index < ctx->emuInfo->gl_max_viewports)
         {
           params[0] = static_cast<T>(State::Viewport::depthRange[index][0]);
           params[1] = static_cast<T>(State::Viewport::depthRange[index][1]);
         }
         break;
+      case GL_MAX_VIEWPORTS:
+        RegalAssert(ctx->emuInfo);
+        params[0] = static_cast<T>(ctx->emuInfo->gl_max_viewports);
+        break;
       case GL_SCISSOR_BOX:
+        RegalAssert(ctx->emuInfo);
         if (index < ctx->emuInfo->gl_max_viewports)
         {
           if (!State::Scissor::fullyDefined())
@@ -1110,6 +1138,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         }
         break;
       case GL_VIEWPORT:
+        RegalAssert(ctx->emuInfo);
         if (index < ctx->emuInfo->gl_max_viewports)
         {
           if (!State::Viewport::fullyDefined())
@@ -1366,6 +1395,63 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return glGetMultiTexEnvv(ctx, GL_TEXTURE0+activeTextureUnit, target, pname, params);
   }
 
+  template <typename T> bool glGetTexParameter( RegalContext *ctx, GLenum target, GLenum pname, T * params )
+  {
+    switch( pname ) {
+      case GL_DEPTH_STENCIL_TEXTURE_MODE:
+        if( ctx->info->es2 || ! ctx->info->gl_arb_stencil_texturing ) {
+          params[0] = GL_DEPTH_COMPONENT;
+          return true;
+        } break;
+      case GL_TEXTURE_SWIZZLE_R:
+        if( ctx->info->es2 || ! ctx->info->gl_ext_texture_swizzle ) {
+          params[0] = GL_RED;
+          return true;
+        } break;
+      case GL_TEXTURE_SWIZZLE_G:
+        if( ctx->info->es2 || ! ctx->info->gl_ext_texture_swizzle ) {
+          params[0] = GL_GREEN;
+          return true;
+        } break;
+      case GL_TEXTURE_SWIZZLE_B:
+        if( ctx->info->es2 || ! ctx->info->gl_ext_texture_swizzle ) {
+          params[0] = GL_BLUE;
+          return true;
+        } break;
+      case GL_TEXTURE_SWIZZLE_A:
+        if( ctx->info->es2 || ! ctx->info->gl_ext_texture_swizzle ) {
+          params[0] = GL_ALPHA;
+          return true;
+        } break;
+      case GL_TEXTURE_SWIZZLE_RGBA:
+        if( ctx->info->es2 || ! ctx->info->gl_ext_texture_swizzle ) {
+          params[0] = GL_RED;
+          params[1] = GL_GREEN;
+          params[2] = GL_BLUE;
+          params[3] = GL_ALPHA;
+          return true;
+        } break;
+      default:
+        break;
+    }
+    return false;
+  }
+  
+  template <typename T> bool glGetTextureParameter( RegalContext *ctx, GLuint texture, GLenum target, GLenum pname, T * params )
+  {
+    return glGetTexParameter( ctx, target, pname, params );
+  }
+
+  template <typename T> bool glGetTexLevelParameter( RegalContext *ctx, GLenum target, GLint level, GLenum pname, T * params )
+  {
+    return false;
+  }
+  
+  template <typename T> bool glGetTextureLevelParameter( RegalContext *ctx, GLuint texture, GLenum target, GLint level, GLenum pname, T * params )
+  {
+    return glGetTexLevelParameter( ctx, target, level, pname, params );
+  }
+  
   bool glIsEnabled(RegalContext *ctx, GLboolean &enabled, GLenum pname)
   {
     UNUSED_PARAMETER(ctx);

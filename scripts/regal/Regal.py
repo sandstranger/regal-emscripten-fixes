@@ -125,7 +125,7 @@ extern "C" {
 #define CurrentTime          0L
 #define NoSymbol             0L
 
-#define AllocNone            0 
+#define AllocNone            0
 #define AllocAll             1
 
 #define InputOutput          1
@@ -148,30 +148,30 @@ extern "C" {
 #define CWCursor                (1L<<14)
 
 #define NoEventMask                     0L
-#define KeyPressMask                    (1L<<0)  
-#define KeyReleaseMask                  (1L<<1)  
-#define ButtonPressMask                 (1L<<2)  
-#define ButtonReleaseMask               (1L<<3)  
-#define EnterWindowMask                 (1L<<4)  
-#define LeaveWindowMask                 (1L<<5)  
-#define PointerMotionMask               (1L<<6)  
-#define PointerMotionHintMask           (1L<<7)  
-#define Button1MotionMask               (1L<<8)  
-#define Button2MotionMask               (1L<<9)  
-#define Button3MotionMask               (1L<<10) 
-#define Button4MotionMask               (1L<<11) 
-#define Button5MotionMask               (1L<<12) 
-#define ButtonMotionMask                (1L<<13) 
+#define KeyPressMask                    (1L<<0)
+#define KeyReleaseMask                  (1L<<1)
+#define ButtonPressMask                 (1L<<2)
+#define ButtonReleaseMask               (1L<<3)
+#define EnterWindowMask                 (1L<<4)
+#define LeaveWindowMask                 (1L<<5)
+#define PointerMotionMask               (1L<<6)
+#define PointerMotionHintMask           (1L<<7)
+#define Button1MotionMask               (1L<<8)
+#define Button2MotionMask               (1L<<9)
+#define Button3MotionMask               (1L<<10)
+#define Button4MotionMask               (1L<<11)
+#define Button5MotionMask               (1L<<12)
+#define ButtonMotionMask                (1L<<13)
 #define KeymapStateMask                 (1L<<14)
-#define ExposureMask                    (1L<<15) 
-#define VisibilityChangeMask            (1L<<16) 
-#define StructureNotifyMask             (1L<<17) 
-#define ResizeRedirectMask              (1L<<18) 
-#define SubstructureNotifyMask          (1L<<19) 
-#define SubstructureRedirectMask        (1L<<20) 
-#define FocusChangeMask                 (1L<<21) 
-#define PropertyChangeMask              (1L<<22) 
-#define ColormapChangeMask              (1L<<23) 
+#define ExposureMask                    (1L<<15)
+#define VisibilityChangeMask            (1L<<16)
+#define StructureNotifyMask             (1L<<17)
+#define ResizeRedirectMask              (1L<<18)
+#define SubstructureNotifyMask          (1L<<19)
+#define SubstructureRedirectMask        (1L<<20)
+#define FocusChangeMask                 (1L<<21)
+#define PropertyChangeMask              (1L<<22)
+#define ColormapChangeMask              (1L<<23)
 #define OwnerGrabButtonMask             (1L<<24)
 
 typedef XID              Window;
@@ -195,16 +195,16 @@ typedef struct {
     unsigned long background_pixel;
     Pixmap border_pixmap;
     unsigned long border_pixel;
-    int bit_gravity; 
-    int win_gravity; 
-    int backing_store; 
+    int bit_gravity;
+    int win_gravity;
+    int backing_store;
     unsigned long backing_planes;
     unsigned long backing_pixel;
     Bool save_under;
-    long event_mask; 
+    long event_mask;
     long do_not_propagate_mask;
     Bool override_redirect;
-    Colormap colormap; 
+    Colormap colormap;
     Cursor cursor;
 } XSetWindowAttributes;
 
@@ -365,7 +365,10 @@ def apiFuncDefineCode(apis, args):
 
       if function.needsContext:
         c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
-        c += listToString(indent(emuCodeGen(emue,'prefix'),'  '))
+        c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
+        c += '  #if REGAL_HTTP\n'
+        c += '  _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+        c += '  #endif\n'
         c += '  %s\n' % logFunction( function, 'App' )
         c += '  if (!_context) return'
         if typeIsVoid(rType):
@@ -379,7 +382,7 @@ def apiFuncDefineCode(apis, args):
             else:
               c += ' (%s) 0;\n' % ( rTypes )
 
-        c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
+        c += listToString(indent(stripVertical(emuCodeGen(emue,'impl')),'  '))
 
         if getattr(function,'regalRemap',None)!=None and (isinstance(function.regalRemap, list) or isinstance(function.regalRemap, str) or isinstance(function.regalRemap, unicode)):
 
@@ -409,18 +412,18 @@ def apiFuncDefineCode(apis, args):
           else:
             c += '%s;\n'%(function.regalRemap)
         else:
-          if getattr(function,'regalOnly',False)==False:
+          if not getattr(function,'regalOnly',False):
             t = ''
             t += 'DispatchTableGL *_next = &_context->dispatcher.front();\n'
             t += 'RegalAssert(_next);\n'
 
-            t += listToString(indent(emuCodeGen(emue,'pre'),''))
+            t += listToString(indent(stripVertical(emuCodeGen(emue,'pre')),''))
 
             if not typeIsVoid(rType):
               t += 'return '
             t += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
 
-            t += listToString(indent(emuCodeGen(emue,'post'),''))
+            t += listToString(indent(stripVertical(emuCodeGen(emue,'post')),''))
 
             for i in emue:
               if i!=None and i['cond']!=None:
@@ -428,13 +431,25 @@ def apiFuncDefineCode(apis, args):
 
             c += indent(t)
 
-            c += listToString(indent(emuCodeGen(emue,'suffix'),'  '))
+            c += listToString(indent(stripVertical(emuCodeGen(emue,'suffix')),'  '))
 
       else:
+        c += '  #if REGAL_HTTP\n'
+        c += '  {\n'
+        c += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
+        c += '    if( _context ) {\n'
+        c += '      _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+        c += '      App( _context->http.callString.c_str() );\n'
+        c += '    } else {\n'
+        c += '      %s\n' % logFunction(function, 'App' )
+        c += '    }\n'
+        c += '  }\n'
+        c += '  #else\n'
         c += '  %s\n' % logFunction(function, 'App' )
-        c += listToString(indent(emuCodeGen(emue,'prefix'),'  '))
+        c += '  #endif\n'
+        c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
 
-        if getattr(function,'regalOnly',False)==False:
+        if not getattr(function,'regalOnly',False):
           c += '  DispatchTableGlobal *_next = &dispatcherGlobal.front();\n'
           c += '  RegalAssert(_next);\n'
 
@@ -447,15 +462,15 @@ def apiFuncDefineCode(apis, args):
               else:
                 c += '  %s ret = (%s) 0;\n' % ( rTypes, rTypes )
 
-          c += listToString(indent(emuCodeGen(emue,'impl'),'  '))
+          c += listToString(indent(stripVertical(emuCodeGen(emue,'impl')),'  '))
           c += '  '
           if not typeIsVoid(rType):
             c += 'ret = '
           c += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
 
-        c += listToString(indent(emuCodeGen(emue,'init'),'  '))
+        c += listToString(indent(stripVertical(emuCodeGen(emue,'init')),'  '))
 
-        c += listToString(indent(emuCodeGen(emue,'suffix'),'  '))
+        c += listToString(indent(stripVertical(emuCodeGen(emue,'suffix')),'  '))
         if not typeIsVoid(rType):
           c += '  return ret;\n'
       c += '}\n\n'
@@ -478,7 +493,7 @@ def apiTypedefCode( apis, args ):
       return 'typedef %s;' % ( re.sub( '\(\s*\*\s*\)', '(*%s)' % name, type ) )
     else:
       return'typedef %s %s;' % ( type, name )
-    
+
   code = ''
   for api in apis:
     code += '\n'
@@ -558,6 +573,13 @@ def apiFuncDeclareCode(apis, args):
     for enum in api.enums:
       if enum.name == 'defines':
         for enumerant in enum.enumerants:
+
+          # Ignore enums that match category, a workaround
+          # for EGL_VERSION_1_3 and EGL_VERSION_1_4
+
+          if enumerant.name==enumerant.category:
+            continue
+
           value = toLong(enumerant.value)
           if value==None:
             value = enumerant.value
@@ -613,6 +635,11 @@ def apiFuncDeclareCode(apis, args):
       return '#ifndef REGAL_NO_DECLARATION_%s'%(upper(category).replace(' ','_'))
 
     categories = set()
+
+    if api.name=='egl':
+      categories.add('EGL_VERSION_1_3')
+      categories.add('EGL_VERSION_1_4')
+
     categories.update([ i[0] for i in e ])
     categories.update([ i[0] for i in t ])
     categories.update([ i[0] for i in m ])
@@ -775,6 +802,7 @@ REGAL_GLOBAL_BEGIN
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
+using namespace boost::print;
 
 extern "C" {
 

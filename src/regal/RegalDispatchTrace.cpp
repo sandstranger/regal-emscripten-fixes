@@ -877,11 +877,21 @@ namespace Trace
   void  glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
   GLint  glGetFragDataIndex(GLuint program, const GLchar *name);
 
+// GL_ARB_buffer_storage
+
+  void  glBufferStorage(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+  void  glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+
 // GL_ARB_clear_buffer_object
 
   void  glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
   void  glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
   void  glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
+
+// GL_ARB_clear_texture
+
+  void  glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const GLvoid *data);
+  void  glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *data);
 
 // GL_ARB_color_buffer_float
 
@@ -1067,6 +1077,15 @@ namespace Trace
   void  glMatrixIndexubvARB(GLint size, const GLubyte *indices);
   void  glMatrixIndexuivARB(GLint size, const GLuint *indices);
   void  glMatrixIndexusvARB(GLint size, const GLushort *indices);
+
+// GL_ARB_multi_bind
+
+  void  glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint *buffers);
+  void  glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes);
+  void  glBindImageTextures(GLuint first, GLsizei count, const GLuint *textures);
+  void  glBindSamplers(GLuint first, GLsizei count, const GLuint *samplers);
+  void  glBindTextures(GLuint first, GLsizei count, const GLuint *textures);
+  void  glBindVertexBuffers(GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides);
 
 // GL_ARB_multi_draw_indirect
 
@@ -1460,6 +1479,12 @@ namespace Trace
 // GL_ARB_vertex_attrib_binding
 
   void  glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+  void  glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+  void  glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+  void  glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+  void  glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+  void  glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+  void  glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
   void  glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
   void  glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
   void  glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
@@ -11017,6 +11042,28 @@ static GLint REGAL_CALL trace_glGetFragDataIndex(GLuint program, const GLchar *n
   return ret;
 }
 
+// GL_ARB_buffer_storage
+
+static void REGAL_CALL trace_glBufferStorage(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags)
+{
+  Internal("trace_glBufferStorage","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glBufferStorage(target, size, data, flags);
+}
+
+static void REGAL_CALL trace_glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags)
+{
+  Internal("trace_glNamedBufferStorageEXT","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glNamedBufferStorageEXT(buffer, size, data, flags);
+}
+
 // GL_ARB_clear_buffer_object
 
 static void REGAL_CALL trace_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data)
@@ -11047,6 +11094,28 @@ static void REGAL_CALL trace_glClearNamedBufferDataEXT(GLuint buffer, GLenum int
   Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
   _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
   Trace::glClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
+}
+
+// GL_ARB_clear_texture
+
+static void REGAL_CALL trace_glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const GLvoid *data)
+{
+  Internal("trace_glClearTexImage","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glClearTexImage(texture, level, format, type, data);
+}
+
+static void REGAL_CALL trace_glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *data)
+{
+  Internal("trace_glClearTexSubImage","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
 }
 
 // GL_ARB_color_buffer_float
@@ -12286,6 +12355,68 @@ static void REGAL_CALL trace_glMatrixIndexusvARB(GLint size, const GLushort *ind
   Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
   _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
   Trace::glMatrixIndexusvARB(size, indices);
+}
+
+// GL_ARB_multi_bind
+
+static void REGAL_CALL trace_glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint *buffers)
+{
+  Internal("trace_glBindBuffersBase","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glBindBuffersBase(target, first, count, buffers);
+}
+
+static void REGAL_CALL trace_glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes)
+{
+  Internal("trace_glBindBuffersRange","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glBindBuffersRange(target, first, count, buffers, offsets, sizes);
+}
+
+static void REGAL_CALL trace_glBindImageTextures(GLuint first, GLsizei count, const GLuint *textures)
+{
+  Internal("trace_glBindImageTextures","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glBindImageTextures(first, count, textures);
+}
+
+static void REGAL_CALL trace_glBindSamplers(GLuint first, GLsizei count, const GLuint *samplers)
+{
+  Internal("trace_glBindSamplers","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glBindSamplers(first, count, samplers);
+}
+
+static void REGAL_CALL trace_glBindTextures(GLuint first, GLsizei count, const GLuint *textures)
+{
+  Internal("trace_glBindTextures","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glBindTextures(first, count, textures);
+}
+
+static void REGAL_CALL trace_glBindVertexBuffers(GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides)
+{
+  Internal("trace_glBindVertexBuffers","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glBindVertexBuffers(first, count, buffers, offsets, strides);
 }
 
 // GL_ARB_multi_draw_indirect
@@ -15257,6 +15388,66 @@ static void REGAL_CALL trace_glBindVertexBuffer(GLuint bindingindex, GLuint buff
   Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
   _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
   Trace::glBindVertexBuffer(bindingindex, buffer, offset, stride);
+}
+
+static void REGAL_CALL trace_glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+{
+  Internal("trace_glVertexArrayBindVertexBufferEXT","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glVertexArrayBindVertexBufferEXT(vaobj, bindingindex, buffer, offset, stride);
+}
+
+static void REGAL_CALL trace_glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex)
+{
+  Internal("trace_glVertexArrayVertexAttribBindingEXT","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glVertexArrayVertexAttribBindingEXT(vaobj, attribindex, bindingindex);
+}
+
+static void REGAL_CALL trace_glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+{
+  Internal("trace_glVertexArrayVertexAttribFormatEXT","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glVertexArrayVertexAttribFormatEXT(vaobj, attribindex, size, type, normalized, relativeoffset);
+}
+
+static void REGAL_CALL trace_glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+  Internal("trace_glVertexArrayVertexAttribIFormatEXT","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glVertexArrayVertexAttribIFormatEXT(vaobj, attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL trace_glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+{
+  Internal("trace_glVertexArrayVertexAttribLFormatEXT","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glVertexArrayVertexAttribLFormatEXT(vaobj, attribindex, size, type, relativeoffset);
+}
+
+static void REGAL_CALL trace_glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor)
+{
+  Internal("trace_glVertexArrayVertexBindingDivisorEXT","()");
+  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();
+  RegalAssert(_instance.currentContext);
+  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);
+  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();
+  Trace::glVertexArrayVertexBindingDivisorEXT(vaobj, bindingindex, divisor);
 }
 
 static void REGAL_CALL trace_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
@@ -34108,11 +34299,21 @@ void InitDispatchTableTrace(DispatchTableGL &tbl)
   tbl.glBindFragDataLocationIndexed = trace_glBindFragDataLocationIndexed;
   tbl.glGetFragDataIndex = trace_glGetFragDataIndex;
 
+  // GL_ARB_buffer_storage
+
+  tbl.glBufferStorage = trace_glBufferStorage;
+  tbl.glNamedBufferStorageEXT = trace_glNamedBufferStorageEXT;
+
   // GL_ARB_clear_buffer_object
 
   tbl.glClearBufferData = trace_glClearBufferData;
   tbl.glClearBufferSubData = trace_glClearBufferSubData;
   tbl.glClearNamedBufferDataEXT = trace_glClearNamedBufferDataEXT;
+
+  // GL_ARB_clear_texture
+
+  tbl.glClearTexImage = trace_glClearTexImage;
+  tbl.glClearTexSubImage = trace_glClearTexSubImage;
 
   // GL_ARB_color_buffer_float
 
@@ -34298,6 +34499,15 @@ void InitDispatchTableTrace(DispatchTableGL &tbl)
   tbl.glMatrixIndexubvARB = trace_glMatrixIndexubvARB;
   tbl.glMatrixIndexuivARB = trace_glMatrixIndexuivARB;
   tbl.glMatrixIndexusvARB = trace_glMatrixIndexusvARB;
+
+  // GL_ARB_multi_bind
+
+  tbl.glBindBuffersBase = trace_glBindBuffersBase;
+  tbl.glBindBuffersRange = trace_glBindBuffersRange;
+  tbl.glBindImageTextures = trace_glBindImageTextures;
+  tbl.glBindSamplers = trace_glBindSamplers;
+  tbl.glBindTextures = trace_glBindTextures;
+  tbl.glBindVertexBuffers = trace_glBindVertexBuffers;
 
   // GL_ARB_multi_draw_indirect
 
@@ -34691,6 +34901,12 @@ void InitDispatchTableTrace(DispatchTableGL &tbl)
   // GL_ARB_vertex_attrib_binding
 
   tbl.glBindVertexBuffer = trace_glBindVertexBuffer;
+  tbl.glVertexArrayBindVertexBufferEXT = trace_glVertexArrayBindVertexBufferEXT;
+  tbl.glVertexArrayVertexAttribBindingEXT = trace_glVertexArrayVertexAttribBindingEXT;
+  tbl.glVertexArrayVertexAttribFormatEXT = trace_glVertexArrayVertexAttribFormatEXT;
+  tbl.glVertexArrayVertexAttribIFormatEXT = trace_glVertexArrayVertexAttribIFormatEXT;
+  tbl.glVertexArrayVertexAttribLFormatEXT = trace_glVertexArrayVertexAttribLFormatEXT;
+  tbl.glVertexArrayVertexBindingDivisorEXT = trace_glVertexArrayVertexBindingDivisorEXT;
   tbl.glVertexAttribBinding = trace_glVertexAttribBinding;
   tbl.glVertexAttribFormat = trace_glVertexAttribFormat;
   tbl.glVertexAttribIFormat = trace_glVertexAttribIFormat;

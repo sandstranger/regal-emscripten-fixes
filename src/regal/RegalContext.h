@@ -49,7 +49,9 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
 #include "RegalDispatcherGL.h"
+#include "RegalDispatcherGlobal.h"
 #include "RegalDispatchError.h"
+#include "RegalDispatchHttp.h"
 #include "RegalScopedPtr.h"
 #include "RegalSharedList.h"
 
@@ -80,6 +82,7 @@ namespace Emu { struct TexSto; };
 namespace Emu { struct BaseVertex; };
 namespace Emu { struct Rect; };
 namespace Emu { struct Iff; };
+namespace Emu { struct Quads; };
 namespace Emu { struct So; };
 namespace Emu { struct Dsa; };
 namespace Emu { struct Vao; };
@@ -105,6 +108,7 @@ struct RegalContext
   bool                    initialized;
   DispatcherGL            dispatcher;
   DispatchErrorState      err;
+  DispatchHttpState       http;
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;
@@ -132,6 +136,7 @@ struct RegalContext
   scoped_ptr<Emu::BaseVertex   > bv;
   scoped_ptr<Emu::Rect         > rect;
   scoped_ptr<Emu::Iff          > iff;
+  scoped_ptr<Emu::Quads        > quads;
   scoped_ptr<Emu::So           > so;
   scoped_ptr<Emu::Dsa          > dsa;
   scoped_ptr<Emu::Vao          > vao;
@@ -155,6 +160,11 @@ struct RegalContext
   GLXDrawable         x11Drawable;
   #endif
 
+  #if REGAL_SYS_WGL
+  HDC                 hdc;
+  HGLRC               hglrc;
+  #endif
+
   GLLOGPROCREGAL      logCallback;
 
   //
@@ -168,10 +178,12 @@ struct RegalContext
 
   bool groupInitialized() const;
 
-  // Get any context in the share group that is
-  // already initialized
+  // The http and perhaps other threads need to be able brief, temporary access the context.
+  // parkContext() makes the calling thread release the context
+  // unparkContext() makes it current to the calling thread
 
-  RegalContext *groupInitializedContext();
+  void parkContext( DispatchTableGlobal & tbl );
+  void unparkContext( DispatchTableGlobal & tbl );
 
   // For RegalDispatchCode
 

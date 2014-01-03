@@ -101,7 +101,16 @@ namespace Logging {
   bool callback        = (REGAL_LOG_CALLBACK);
 
   bool         log          = (REGAL_LOG);
+
+  // Default log output to Android log
+  // For other platforms, standard output
+
+#if REGAL_SYS_ANDROID
+  std::string  logFilename;
+#else
   std::string  logFilename  = "stdout";
+#endif
+
   FILE        *logOutput    = NULL;
 
   bool         json         = false;
@@ -513,7 +522,24 @@ namespace Logging {
     {
       string m = message(prefix,delim,name,str);
 
-      // TODO - optional Regal source line numbers.
+      string full_prefix = string(prefix) + string(delim);
+      size_t p = m.find( full_prefix, 0 );
+      int count = 0;
+      if( m.find( full_prefix, full_prefix.size() ) != string::npos ) {
+        while( p != string::npos && count < 1000 )
+        {
+          char line[4];
+          line[0] = '0' + count/100;
+          line[1] = '0' + (count % 100)/10;
+          line[2] = '0' + (count % 10);
+          line[3] = ' ';
+          p += full_prefix.size();
+          m.insert( p, line, 4 );
+          p = m.find( full_prefix, p );
+          count++;
+        }
+      }
+      
 #if 1
       UNUSED_PARAMETER(file);
       UNUSED_PARAMETER(line);
@@ -574,6 +600,7 @@ namespace Logging {
 #if REGAL_SYS_WGL
       OutputDebugStringA(m.c_str());
 #elif REGAL_SYS_ANDROID
+      if (!logOutput)
       {
         android_LogPriority adrLog;
 

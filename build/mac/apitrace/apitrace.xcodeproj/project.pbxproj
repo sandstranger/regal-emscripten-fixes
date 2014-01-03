@@ -29,8 +29,6 @@
 		43777CF917DBF46700EA874E /* os_win32.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43777CC417DBF46700EA874E /* os_win32.cpp */; };
 		43777CFA17DBF46700EA874E /* os.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43777CC517DBF46700EA874E /* os.hpp */; };
 		43777CFB17DBF46700EA874E /* trace_api.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43777CC617DBF46700EA874E /* trace_api.hpp */; };
-		43777CFC17DBF46700EA874E /* trace_backtrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43777CC717DBF46700EA874E /* trace_backtrace.cpp */; };
-		43777CFD17DBF46700EA874E /* trace_backtrace.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43777CC817DBF46700EA874E /* trace_backtrace.hpp */; };
 		43777CFE17DBF46700EA874E /* trace_callset.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43777CC917DBF46700EA874E /* trace_callset.cpp */; };
 		43777CFF17DBF46700EA874E /* trace_callset.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43777CCA17DBF46700EA874E /* trace_callset.hpp */; };
 		43777D0017DBF46700EA874E /* trace_dump.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43777CCB17DBF46700EA874E /* trace_dump.cpp */; };
@@ -60,6 +58,8 @@
 		43777D1817DBF46700EA874E /* trace_writer_regal.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43777CE317DBF46700EA874E /* trace_writer_regal.hpp */; };
 		43777D1917DBF46700EA874E /* trace_writer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 43777CE417DBF46700EA874E /* trace_writer.cpp */; };
 		43777D1A17DBF46700EA874E /* trace_writer.hpp in Headers */ = {isa = PBXBuildFile; fileRef = 43777CE517DBF46700EA874E /* trace_writer.hpp */; };
+		BC3A59C11804695A00992687 /* os_backtrace.cpp in Sources */ = {isa = PBXBuildFile; fileRef = BC3A59BF1804695A00992687 /* os_backtrace.cpp */; };
+		BC3A59C21804695A00992687 /* os_backtrace.hpp in Headers */ = {isa = PBXBuildFile; fileRef = BC3A59C01804695A00992687 /* os_backtrace.hpp */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -86,8 +86,6 @@
 		43777CC417DBF46700EA874E /* os_win32.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = os_win32.cpp; path = ../../../src/apitrace/common/os_win32.cpp; sourceTree = "<group>"; };
 		43777CC517DBF46700EA874E /* os.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = os.hpp; path = ../../../src/apitrace/common/os.hpp; sourceTree = "<group>"; };
 		43777CC617DBF46700EA874E /* trace_api.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = trace_api.hpp; path = ../../../src/apitrace/common/trace_api.hpp; sourceTree = "<group>"; };
-		43777CC717DBF46700EA874E /* trace_backtrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trace_backtrace.cpp; path = ../../../src/apitrace/common/trace_backtrace.cpp; sourceTree = "<group>"; };
-		43777CC817DBF46700EA874E /* trace_backtrace.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = trace_backtrace.hpp; path = ../../../src/apitrace/common/trace_backtrace.hpp; sourceTree = "<group>"; };
 		43777CC917DBF46700EA874E /* trace_callset.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trace_callset.cpp; path = ../../../src/apitrace/common/trace_callset.cpp; sourceTree = "<group>"; };
 		43777CCA17DBF46700EA874E /* trace_callset.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = trace_callset.hpp; path = ../../../src/apitrace/common/trace_callset.hpp; sourceTree = "<group>"; };
 		43777CCB17DBF46700EA874E /* trace_dump.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trace_dump.cpp; path = ../../../src/apitrace/common/trace_dump.cpp; sourceTree = "<group>"; };
@@ -117,6 +115,8 @@
 		43777CE317DBF46700EA874E /* trace_writer_regal.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = trace_writer_regal.hpp; path = ../../../src/apitrace/common/trace_writer_regal.hpp; sourceTree = "<group>"; };
 		43777CE417DBF46700EA874E /* trace_writer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = trace_writer.cpp; path = ../../../src/apitrace/common/trace_writer.cpp; sourceTree = "<group>"; };
 		43777CE517DBF46700EA874E /* trace_writer.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = trace_writer.hpp; path = ../../../src/apitrace/common/trace_writer.hpp; sourceTree = "<group>"; };
+		BC3A59BF1804695A00992687 /* os_backtrace.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = os_backtrace.cpp; path = ../../../src/apitrace/common/os_backtrace.cpp; sourceTree = "<group>"; };
+		BC3A59C01804695A00992687 /* os_backtrace.hpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.h; name = os_backtrace.hpp; path = ../../../src/apitrace/common/os_backtrace.hpp; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -149,6 +149,8 @@
 		433667B017C56F4D00D45AD9 /* src */ = {
 			isa = PBXGroup;
 			children = (
+				BC3A59BF1804695A00992687 /* os_backtrace.cpp */,
+				BC3A59C01804695A00992687 /* os_backtrace.hpp */,
 				43777CB117DBF46700EA874E /* eglsize.cpp */,
 				43777CB217DBF46700EA874E /* eglsize.hpp */,
 				43777CB317DBF46700EA874E /* glsize.hpp */,
@@ -171,8 +173,6 @@
 				43777CC417DBF46700EA874E /* os_win32.cpp */,
 				43777CC517DBF46700EA874E /* os.hpp */,
 				43777CC617DBF46700EA874E /* trace_api.hpp */,
-				43777CC717DBF46700EA874E /* trace_backtrace.cpp */,
-				43777CC817DBF46700EA874E /* trace_backtrace.hpp */,
 				43777CC917DBF46700EA874E /* trace_callset.cpp */,
 				43777CCA17DBF46700EA874E /* trace_callset.hpp */,
 				43777CCB17DBF46700EA874E /* trace_dump.cpp */,
@@ -227,7 +227,6 @@
 				43777CF817DBF46700EA874E /* os_time.hpp in Headers */,
 				43777CFA17DBF46700EA874E /* os.hpp in Headers */,
 				43777CFB17DBF46700EA874E /* trace_api.hpp in Headers */,
-				43777CFD17DBF46700EA874E /* trace_backtrace.hpp in Headers */,
 				43777CFF17DBF46700EA874E /* trace_callset.hpp in Headers */,
 				43777D0117DBF46700EA874E /* trace_dump.hpp in Headers */,
 				43777D0317DBF46700EA874E /* trace_fast_callset.hpp in Headers */,
@@ -241,6 +240,7 @@
 				43777D1517DBF46700EA874E /* trace_profiler.hpp in Headers */,
 				43777D1817DBF46700EA874E /* trace_writer_regal.hpp in Headers */,
 				43777D1A17DBF46700EA874E /* trace_writer.hpp in Headers */,
+				BC3A59C21804695A00992687 /* os_backtrace.hpp in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -303,7 +303,6 @@
 				43777CEE17DBF46700EA874E /* glproc_regal.cpp in Sources */,
 				43777CF417DBF46700EA874E /* os_posix.cpp in Sources */,
 				43777CF917DBF46700EA874E /* os_win32.cpp in Sources */,
-				43777CFC17DBF46700EA874E /* trace_backtrace.cpp in Sources */,
 				43777CFE17DBF46700EA874E /* trace_callset.cpp in Sources */,
 				43777D0017DBF46700EA874E /* trace_dump.cpp in Sources */,
 				43777D0217DBF46700EA874E /* trace_fast_callset.cpp in Sources */,
@@ -320,6 +319,7 @@
 				43777D1617DBF46700EA874E /* trace_writer_model.cpp in Sources */,
 				43777D1717DBF46700EA874E /* trace_writer_regal.cpp in Sources */,
 				43777D1917DBF46700EA874E /* trace_writer.cpp in Sources */,
+				BC3A59C11804695A00992687 /* os_backtrace.cpp in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -330,9 +330,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -344,7 +344,7 @@
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"TRACE_OS_LOG=1",
+					"HAVE_EXTERNAL_OS_LOG=1",
 					"REGAL_PLUGIN=1",
 					"DEBUG=1",
 					"$(inherited)",
@@ -365,6 +365,7 @@
 					../../../src/apitrace/helpers,
 					../../../src/apitrace/wrappers,
 					../../../src/apitrace/thirdparty/khronos,
+					../../../src/regal,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				ONLY_ACTIVE_ARCH = YES;
@@ -376,9 +377,9 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
-				ARCHS = "$(ARCHS_STANDARD_64_BIT)";
-				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
-				CLANG_CXX_LIBRARY = "libc++";
+				ARCHS = "$(ARCHS_STANDARD_32_64_BIT)";
+				CLANG_CXX_LANGUAGE_STANDARD = "compiler-default";
+				CLANG_CXX_LIBRARY = "compiler-default";
 				CLANG_WARN_CONSTANT_CONVERSION = YES;
 				CLANG_WARN_EMPTY_BODY = YES;
 				CLANG_WARN_ENUM_CONVERSION = YES;
@@ -389,7 +390,7 @@
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
-					"TRACE_OS_LOG=1",
+					"HAVE_EXTERNAL_OS_LOG=1",
 					"REGAL_PLUGIN=1",
 				);
 				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
@@ -407,6 +408,7 @@
 					../../../src/apitrace/helpers,
 					../../../src/apitrace/wrappers,
 					../../../src/apitrace/thirdparty/khronos,
+					../../../src/regal,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.8;
 				SDKROOT = "";

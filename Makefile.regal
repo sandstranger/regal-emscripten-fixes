@@ -4,7 +4,7 @@ MAKEFILE_REGAL_INCLUDED := 1
 .PHONY: regal.lib regal.clean
 
 include build/common.inc
-
+include build/glslopt.inc
 include build/regal.inc
 
 #
@@ -27,6 +27,7 @@ endif
 ifdef REGAL.STATIC
 
 include Makefile.apitrace
+include Makefile.glslopt
 include Makefile.libpng
 
 all:: regal.lib
@@ -236,7 +237,7 @@ regal.lib: lib/$(SYSTEM)/$(REGAL.SHARED)
 endif
 endif
 
-lib/$(SYSTEM)/$(REGAL.STATIC): lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) $(REGAL.OBJS)
+lib/$(SYSTEM)/$(REGAL.STATIC): lib/$(SYSTEM)/$(GLSLOPT.STATIC) lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) $(REGAL.OBJS)
 	@mkdir -p $(dir $@)
 	$(LOG_AR)$(CCACHE) $(AR) cr $@ $(REGAL.OBJS)
 ifneq ($(RANLIB),)
@@ -247,7 +248,7 @@ ifneq ($(STRIP),)
 endif
 
 REGAL.SHARED.DEPEND :=  
-REGAL.SHARED.DEPEND += lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC) 
+REGAL.SHARED.DEPEND += lib/$(SYSTEM)/$(GLSLOPT.STATIC) lib/$(SYSTEM)/$(LIBPNG.STATIC) lib/$(SYSTEM)/$(ZLIB.STATIC)
 
 ifdef APITRACE.STATIC
 REGAL.SHARED.DEPEND += lib/$(SYSTEM)/$(APITRACE.STATIC) lib/$(SYSTEM)/$(SNAPPY.STATIC)
@@ -274,11 +275,11 @@ endif
 
 tmp/$(SYSTEM)/regal/static/%.o: src/regal/%.cpp $(REGAL.HEADERS)
 	@mkdir -p $(dir $@)
-	$(LOG_CXX)$(CCACHE) $(CXX) $(REGAL.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(REGAL.INCLUDE) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CXX) $(REGAL.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(GLSLOPT.INCLUDE) $(REGAL.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/regal/%.cpp $(REGAL.HEADERS)
 	@mkdir -p $(dir $@)
-	$(LOG_CXX)$(CCACHE) $(CXX) $(REGAL.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(REGAL.INCLUDE) -o $@ -c $<
+	$(LOG_CXX)$(CCACHE) $(CXX) $(REGAL.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(GLSLOPT.INCLUDE) $(REGAL.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/static/%.o: src/mongoose/%.c $(REGAL.HEADERS)
 	@mkdir -p $(dir $@)

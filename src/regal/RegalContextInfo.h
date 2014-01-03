@@ -466,6 +466,7 @@ struct ContextInfo
   GLboolean gl_nv_blend_square : 1;
   GLboolean gl_nv_compute_program5 : 1;
   GLboolean gl_nv_conditional_render : 1;
+  GLboolean gl_nv_copy_buffer : 1;
   GLboolean gl_nv_copy_depth_to_color : 1;
   GLboolean gl_nv_copy_image : 1;
   GLboolean gl_nv_coverage_sample : 1;
@@ -496,6 +497,7 @@ struct ContextInfo
   GLboolean gl_nv_light_max_exponent : 1;
   GLboolean gl_nv_multisample_coverage : 1;
   GLboolean gl_nv_multisample_filter_hint : 1;
+  GLboolean gl_nv_non_square_matrices : 1;
   GLboolean gl_nv_occlusion_query : 1;
   GLboolean gl_nv_pack_subimage : 1;
   GLboolean gl_nv_packed_depth_stencil : 1;
@@ -543,6 +545,7 @@ struct ContextInfo
   GLboolean gl_nv_vertex_program3 : 1;
   GLboolean gl_nv_vertex_program4 : 1;
   GLboolean gl_nv_video_capture : 1;
+  GLboolean gl_oes_egl_image_external : 1;
   GLboolean gl_oes_blend_equation_separate : 1;
   GLboolean gl_oes_blend_func_separate : 1;
   GLboolean gl_oes_blend_subtract : 1;
@@ -707,7 +710,7 @@ struct ContextInfo
   GLboolean wgl_nv_video_capture : 1;
   GLboolean wgl_nv_video_output : 1;
   GLboolean wgl_oml_sync_control : 1;
-#endif
+#endif /* REGAL_SYS_WGL */
 
 #if REGAL_SYS_GLX
   GLboolean glx_3dfx_multisample : 1;
@@ -767,7 +770,7 @@ struct ContextInfo
   GLboolean glx_sgi_video_sync : 1;
   GLboolean glx_sun_get_transparent_index : 1;
   GLboolean glx_sun_video_resize : 1;
-#endif
+#endif /* REGAL_SYS_GLX */
 
 #if REGAL_SYS_EGL
   GLboolean egl_angle_query_surface_pointer : 1;
@@ -798,13 +801,14 @@ struct ContextInfo
   GLboolean egl_nv_post_sub_buffer : 1;
   GLboolean egl_nv_sync : 1;
   GLboolean egl_nv_system_time : 1;
-#endif
+#endif /* REGAL_SYS_EGL */
 
   // Driver context limits
 
   GLuint gl_max_attrib_stack_depth;
   GLuint gl_max_client_attrib_stack_depth;
   GLuint gl_max_combined_texture_image_units;
+  GLuint gl_max_debug_message_length;
   GLuint gl_max_draw_buffers;
   GLuint gl_max_texture_coords;
   GLuint gl_max_texture_units;
@@ -814,6 +818,10 @@ struct ContextInfo
 
   GLuint gl_max_varying_floats;
 
+  GLboolean gl_quads_follow_provoking_vertex_convention;
+
+private:
+  static bool stringSetFind(const std::set<std::string> &stringSet, const std::string &val);
 };
 
 REGAL_NAMESPACE_END

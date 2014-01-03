@@ -283,6 +283,7 @@ typedef uint64_t GLuint64EXT;
 typedef GLintptr GLvdpauSurfaceNV;
 typedef int GLfixed;
 typedef int GLclampx;
+typedef void * eglImageOES;
 
 #if REGAL_SYS_WGL
 #ifdef  REGAL_SYS_WGL_DECLARE_WGL
@@ -2056,6 +2057,62 @@ REGAL_DECL void REGAL_CALL plugin_glVertexAttribDivisorANGLE(GLuint index, GLuin
 #define GL_TIMESTAMP_ANGLE              0x8e28     /* 36392 */
 #endif
 
+#ifndef REGAL_NO_TYPEDEF_GL_ANGLE_TIMER_QUERY
+typedef GLboolean (REGAL_CALL *PFNGLISQUERYANGLEPROC)(GLuint id);
+typedef void (REGAL_CALL *PFNGLBEGINQUERYANGLEPROC)(GLenum target, GLuint id);
+typedef void (REGAL_CALL *PFNGLDELETEQUERIESANGLEPROC)(GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *PFNGLENDQUERYANGLEPROC)(GLenum target);
+typedef void (REGAL_CALL *PFNGLGENQUERIESANGLEPROC)(GLsizei n, GLuint *ids);
+typedef void (REGAL_CALL *PFNGLGETQUERYIVANGLEPROC)(GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *PFNGLGETQUERYOBJECTI64VANGLEPROC)(GLuint id, GLenum pname, GLint64 *params);
+typedef void (REGAL_CALL *PFNGLGETQUERYOBJECTIVANGLEPROC)(GLuint id, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *PFNGLGETQUERYOBJECTUI64VANGLEPROC)(GLuint id, GLenum pname, GLuint64 *params);
+typedef void (REGAL_CALL *PFNGLGETQUERYOBJECTUIVANGLEPROC)(GLuint id, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *PFNGLQUERYCOUNTERANGLEPROC)(GLuint id, GLenum target);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_ANGLE_TIMER_QUERY
+#define glBeginQueryANGLE                   rglBeginQueryANGLE
+#define glDeleteQueriesANGLE                rglDeleteQueriesANGLE
+#define glEndQueryANGLE                     rglEndQueryANGLE
+#define glGenQueriesANGLE                   rglGenQueriesANGLE
+#define glGetQueryObjecti64vANGLE           rglGetQueryObjecti64vANGLE
+#define glGetQueryObjectivANGLE             rglGetQueryObjectivANGLE
+#define glGetQueryObjectui64vANGLE          rglGetQueryObjectui64vANGLE
+#define glGetQueryObjectuivANGLE            rglGetQueryObjectuivANGLE
+#define glGetQueryivANGLE                   rglGetQueryivANGLE
+#define glIsQueryANGLE                      rglIsQueryANGLE
+#define glQueryCounterANGLE                 rglQueryCounterANGLE
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_ANGLE_TIMER_QUERY
+REGAL_DECL GLboolean REGAL_CALL glIsQueryANGLE(GLuint id);
+REGAL_DECL void REGAL_CALL glBeginQueryANGLE(GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL glDeleteQueriesANGLE(GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL glEndQueryANGLE(GLenum target);
+REGAL_DECL void REGAL_CALL glGenQueriesANGLE(GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL glGetQueryObjecti64vANGLE(GLuint id, GLenum pname, GLint64 *params);
+REGAL_DECL void REGAL_CALL glGetQueryObjectivANGLE(GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL glGetQueryObjectui64vANGLE(GLuint id, GLenum pname, GLuint64 *params);
+REGAL_DECL void REGAL_CALL glGetQueryObjectuivANGLE(GLuint id, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL glGetQueryivANGLE(GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL glQueryCounterANGLE(GLuint id, GLenum target);
+#endif
+
+#ifndef REGAL_NO_PLUGIN_GL_ANGLE_TIMER_QUERY
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsQueryANGLE(GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBeginQueryANGLE(GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteQueriesANGLE(GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glEndQueryANGLE(GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGenQueriesANGLE(GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjecti64vANGLE(GLuint id, GLenum pname, GLint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectivANGLE(GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectui64vANGLE(GLuint id, GLenum pname, GLuint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuivANGLE(GLuint id, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryivANGLE(GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glQueryCounterANGLE(GLuint id, GLenum target);
+#endif
+
 /**
  ** GL_ANGLE_translated_shader_source
  **/
@@ -3575,18 +3632,22 @@ REGAL_DECL void REGAL_CALL plugin_glBindFragDataLocationIndexed(GLuint program, 
 
 #ifndef REGAL_NO_TYPEDEF_GL_ARB_BUFFER_STORAGE
 typedef void (REGAL_CALL *PFNGLBUFFERSTORAGEPROC)(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+typedef void (REGAL_CALL *PFNGLNAMEDBUFFERSTORAGEEXTPROC)(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
 #endif
 
 #ifndef REGAL_NO_NAMESPACE_GL_ARB_BUFFER_STORAGE
 #define glBufferStorage                     rglBufferStorage
+#define glNamedBufferStorageEXT             rglNamedBufferStorageEXT
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_BUFFER_STORAGE
 REGAL_DECL void REGAL_CALL glBufferStorage(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+REGAL_DECL void REGAL_CALL glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_BUFFER_STORAGE
 REGAL_DECL void REGAL_CALL plugin_glBufferStorage(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+REGAL_DECL void REGAL_CALL plugin_glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
 #endif
 
 /**
@@ -10138,6 +10199,12 @@ REGAL_DECL void REGAL_CALL plugin_glVertexAttribLPointer(GLuint index, GLint siz
 
 #ifndef REGAL_NO_TYPEDEF_GL_ARB_VERTEX_ATTRIB_BINDING
 typedef void (REGAL_CALL *PFNGLBINDVERTEXBUFFERPROC)(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+typedef void (REGAL_CALL *PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC)(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+typedef void (REGAL_CALL *PFNGLVERTEXARRAYVERTEXATTRIBBINDINGEXTPROC)(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+typedef void (REGAL_CALL *PFNGLVERTEXARRAYVERTEXATTRIBFORMATEXTPROC)(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+typedef void (REGAL_CALL *PFNGLVERTEXARRAYVERTEXATTRIBIFORMATEXTPROC)(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+typedef void (REGAL_CALL *PFNGLVERTEXARRAYVERTEXATTRIBLFORMATEXTPROC)(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+typedef void (REGAL_CALL *PFNGLVERTEXARRAYVERTEXBINDINGDIVISOREXTPROC)(GLuint vaobj, GLuint bindingindex, GLuint divisor);
 typedef void (REGAL_CALL *PFNGLVERTEXATTRIBBINDINGPROC)(GLuint attribindex, GLuint bindingindex);
 typedef void (REGAL_CALL *PFNGLVERTEXATTRIBFORMATPROC)(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
 typedef void (REGAL_CALL *PFNGLVERTEXATTRIBIFORMATPROC)(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
@@ -10147,6 +10214,12 @@ typedef void (REGAL_CALL *PFNGLVERTEXBINDINGDIVISORPROC)(GLuint bindingindex, GL
 
 #ifndef REGAL_NO_NAMESPACE_GL_ARB_VERTEX_ATTRIB_BINDING
 #define glBindVertexBuffer                  rglBindVertexBuffer
+#define glVertexArrayBindVertexBufferEXT    rglVertexArrayBindVertexBufferEXT
+#define glVertexArrayVertexAttribBindingEXT rglVertexArrayVertexAttribBindingEXT
+#define glVertexArrayVertexAttribFormatEXT  rglVertexArrayVertexAttribFormatEXT
+#define glVertexArrayVertexAttribIFormatEXT rglVertexArrayVertexAttribIFormatEXT
+#define glVertexArrayVertexAttribLFormatEXT rglVertexArrayVertexAttribLFormatEXT
+#define glVertexArrayVertexBindingDivisorEXT rglVertexArrayVertexBindingDivisorEXT
 #define glVertexAttribBinding               rglVertexAttribBinding
 #define glVertexAttribFormat                rglVertexAttribFormat
 #define glVertexAttribIFormat               rglVertexAttribIFormat
@@ -10156,6 +10229,12 @@ typedef void (REGAL_CALL *PFNGLVERTEXBINDINGDIVISORPROC)(GLuint bindingindex, GL
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_VERTEX_ATTRIB_BINDING
 REGAL_DECL void REGAL_CALL glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+REGAL_DECL void REGAL_CALL glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
 REGAL_DECL void REGAL_CALL glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
 REGAL_DECL void REGAL_CALL glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
 REGAL_DECL void REGAL_CALL glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
@@ -10165,6 +10244,12 @@ REGAL_DECL void REGAL_CALL glVertexBindingDivisor(GLuint bindingindex, GLuint di
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_ATTRIB_BINDING
 REGAL_DECL void REGAL_CALL plugin_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
 REGAL_DECL void REGAL_CALL plugin_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
 REGAL_DECL void REGAL_CALL plugin_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
 REGAL_DECL void REGAL_CALL plugin_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
@@ -21624,6 +21709,55 @@ REGAL_DECL void REGAL_CALL plugin_glEndConditionalRenderNV(void);
 #endif
 
 /**
+ ** GL_NV_copy_buffer
+ **/
+
+#if (defined(GL_NV_COPY_BUFFER) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_NV_COPY_BUFFER)) && !defined(REGAL_NO_ENUM_GL_NV_COPY_BUFFER)
+#define REGAL_NO_ENUM_GL_NV_COPY_BUFFER
+#endif
+
+#if (defined(GL_NV_COPY_BUFFER) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_NV_COPY_BUFFER)) && !defined(REGAL_NO_TYPEDEF_GL_NV_COPY_BUFFER)
+#define REGAL_NO_TYPEDEF_GL_NV_COPY_BUFFER
+#endif
+
+#if (defined(GL_NV_COPY_BUFFER) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_NV_COPY_BUFFER)) && !defined(REGAL_NO_NAMESPACE_GL_NV_COPY_BUFFER)
+#define REGAL_NO_NAMESPACE_GL_NV_COPY_BUFFER
+#endif
+
+#if (defined(GL_NV_COPY_BUFFER) || !defined(REGAL_PLUGIN_MODE) || defined(REGAL_NO_GL_NV_COPY_BUFFER)) && !defined(REGAL_NO_PLUGIN_GL_NV_COPY_BUFFER)
+#define REGAL_NO_PLUGIN_GL_NV_COPY_BUFFER
+#endif
+
+#if (defined(GL_NV_COPY_BUFFER) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_NV_COPY_BUFFER)) && !defined(REGAL_NO_DECLARATION_GL_NV_COPY_BUFFER)
+#define REGAL_NO_DECLARATION_GL_NV_COPY_BUFFER
+#endif
+
+#ifndef GL_NV_copy_buffer
+#define GL_NV_copy_buffer 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_NV_COPY_BUFFER
+#define GL_COPY_READ_BUFFER_NV  0x8f36     /* 36662 */
+#define GL_COPY_WRITE_BUFFER_NV 0x8f37     /* 36663 */
+#endif
+
+#ifndef REGAL_NO_TYPEDEF_GL_NV_COPY_BUFFER
+typedef void (REGAL_CALL *PFNGLCOPYBUFFERSUBDATANVPROC)(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_NV_COPY_BUFFER
+#define glCopyBufferSubDataNV               rglCopyBufferSubDataNV
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_NV_COPY_BUFFER
+REGAL_DECL void REGAL_CALL glCopyBufferSubDataNV(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+#endif
+
+#ifndef REGAL_NO_PLUGIN_GL_NV_COPY_BUFFER
+REGAL_DECL void REGAL_CALL plugin_glCopyBufferSubDataNV(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+#endif
+
+/**
  ** GL_NV_copy_depth_to_color
  **/
 
@@ -23434,6 +23568,79 @@ REGAL_DECL void REGAL_CALL plugin_glVertexWeighthvNV(const GLhalfNV *weight);
 
 #ifndef REGAL_NO_ENUM_GL_NV_MULTISAMPLE_FILTER_HINT
 #define GL_MULTISAMPLE_FILTER_HINT_NV 0x8534 /* 34100 */
+#endif
+
+/**
+ ** GL_NV_non_square_matrices
+ **/
+
+#if (defined(GL_NV_NON_SQUARE_MATRICES) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_NV_NON_SQUARE_MATRICES)) && !defined(REGAL_NO_ENUM_GL_NV_NON_SQUARE_MATRICES)
+#define REGAL_NO_ENUM_GL_NV_NON_SQUARE_MATRICES
+#endif
+
+#if (defined(GL_NV_NON_SQUARE_MATRICES) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_NV_NON_SQUARE_MATRICES)) && !defined(REGAL_NO_TYPEDEF_GL_NV_NON_SQUARE_MATRICES)
+#define REGAL_NO_TYPEDEF_GL_NV_NON_SQUARE_MATRICES
+#endif
+
+#if (defined(GL_NV_NON_SQUARE_MATRICES) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_NV_NON_SQUARE_MATRICES)) && !defined(REGAL_NO_NAMESPACE_GL_NV_NON_SQUARE_MATRICES)
+#define REGAL_NO_NAMESPACE_GL_NV_NON_SQUARE_MATRICES
+#endif
+
+#if (defined(GL_NV_NON_SQUARE_MATRICES) || !defined(REGAL_PLUGIN_MODE) || defined(REGAL_NO_GL_NV_NON_SQUARE_MATRICES)) && !defined(REGAL_NO_PLUGIN_GL_NV_NON_SQUARE_MATRICES)
+#define REGAL_NO_PLUGIN_GL_NV_NON_SQUARE_MATRICES
+#endif
+
+#if (defined(GL_NV_NON_SQUARE_MATRICES) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_NV_NON_SQUARE_MATRICES)) && !defined(REGAL_NO_DECLARATION_GL_NV_NON_SQUARE_MATRICES)
+#define REGAL_NO_DECLARATION_GL_NV_NON_SQUARE_MATRICES
+#endif
+
+#ifndef GL_NV_non_square_matrices
+#define GL_NV_non_square_matrices 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_NV_NON_SQUARE_MATRICES
+#define GL_FLOAT_MAT2x3_NV 0x8b65     /* 35685 */
+#define GL_FLOAT_MAT2x4_NV 0x8b66     /* 35686 */
+#define GL_FLOAT_MAT3x2_NV 0x8b67     /* 35687 */
+#define GL_FLOAT_MAT3x4_NV 0x8b68     /* 35688 */
+#define GL_FLOAT_MAT4x2_NV 0x8b69     /* 35689 */
+#define GL_FLOAT_MAT4x3_NV 0x8b6a     /* 35690 */
+#endif
+
+#ifndef REGAL_NO_TYPEDEF_GL_NV_NON_SQUARE_MATRICES
+typedef void (REGAL_CALL *PFNGLUNIFORMMATRIX2X3FVNVPROC)(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *PFNGLUNIFORMMATRIX2X4FVNVPROC)(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *PFNGLUNIFORMMATRIX3X2FVNVPROC)(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *PFNGLUNIFORMMATRIX3X4FVNVPROC)(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *PFNGLUNIFORMMATRIX4X2FVNVPROC)(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *PFNGLUNIFORMMATRIX4X3FVNVPROC)(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
+
+#ifndef REGAL_NO_NAMESPACE_GL_NV_NON_SQUARE_MATRICES
+#define glUniformMatrix2x3fvNV              rglUniformMatrix2x3fvNV
+#define glUniformMatrix2x4fvNV              rglUniformMatrix2x4fvNV
+#define glUniformMatrix3x2fvNV              rglUniformMatrix3x2fvNV
+#define glUniformMatrix3x4fvNV              rglUniformMatrix3x4fvNV
+#define glUniformMatrix4x2fvNV              rglUniformMatrix4x2fvNV
+#define glUniformMatrix4x3fvNV              rglUniformMatrix4x3fvNV
+#endif
+
+#ifndef REGAL_NO_DECLARATION_GL_NV_NON_SQUARE_MATRICES
+REGAL_DECL void REGAL_CALL glUniformMatrix2x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL glUniformMatrix2x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL glUniformMatrix3x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL glUniformMatrix3x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL glUniformMatrix4x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL glUniformMatrix4x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
+
+#ifndef REGAL_NO_PLUGIN_GL_NV_NON_SQUARE_MATRICES
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 #endif
 
 /**
@@ -26662,6 +26869,41 @@ REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureivNV(GLuint video_capture_slo
 REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble *params);
 REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat *params);
 REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint *params);
+#endif
+
+/**
+ ** GL_OES_EGL_image_external
+ **/
+
+#if (defined(GL_OES_EGL_IMAGE_EXTERNAL) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_OES_EGL_IMAGE_EXTERNAL)) && !defined(REGAL_NO_ENUM_GL_OES_EGL_IMAGE_EXTERNAL)
+#define REGAL_NO_ENUM_GL_OES_EGL_IMAGE_EXTERNAL
+#endif
+
+#if (defined(GL_OES_EGL_IMAGE_EXTERNAL) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_OES_EGL_IMAGE_EXTERNAL)) && !defined(REGAL_NO_TYPEDEF_GL_OES_EGL_IMAGE_EXTERNAL)
+#define REGAL_NO_TYPEDEF_GL_OES_EGL_IMAGE_EXTERNAL
+#endif
+
+#if (defined(GL_OES_EGL_IMAGE_EXTERNAL) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_OES_EGL_IMAGE_EXTERNAL)) && !defined(REGAL_NO_NAMESPACE_GL_OES_EGL_IMAGE_EXTERNAL)
+#define REGAL_NO_NAMESPACE_GL_OES_EGL_IMAGE_EXTERNAL
+#endif
+
+#if (defined(GL_OES_EGL_IMAGE_EXTERNAL) || !defined(REGAL_PLUGIN_MODE) || defined(REGAL_NO_GL_OES_EGL_IMAGE_EXTERNAL)) && !defined(REGAL_NO_PLUGIN_GL_OES_EGL_IMAGE_EXTERNAL)
+#define REGAL_NO_PLUGIN_GL_OES_EGL_IMAGE_EXTERNAL
+#endif
+
+#if (defined(GL_OES_EGL_IMAGE_EXTERNAL) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_OES_EGL_IMAGE_EXTERNAL)) && !defined(REGAL_NO_DECLARATION_GL_OES_EGL_IMAGE_EXTERNAL)
+#define REGAL_NO_DECLARATION_GL_OES_EGL_IMAGE_EXTERNAL
+#endif
+
+#ifndef GL_OES_EGL_image_external
+#define GL_OES_EGL_image_external 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_OES_EGL_IMAGE_EXTERNAL
+#define GL_TEXTURE_EXTERNAL_OES             0x8d65     /* 36197 */
+#define GL_SAMPLER_EXTERNAL_OES             0x8d66     /* 36198 */
+#define GL_TEXTURE_BINDING_EXTERNAL_OES     0x8d67     /* 36199 */
+#define GL_REQUIRED_TEXTURE_IMAGE_UNITS_OES 0x8d68     /* 36200 */
 #endif
 
 /**
@@ -36056,6 +36298,40 @@ REGAL_DECL void REGAL_CALL plugin_glBlendFunci(GLuint buf, GLenum src, GLenum ds
 #endif
 
 /**
+ ** GL_VERSION_4_4
+ **/
+
+#if (defined(GL_VERSION_4_4) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_GL_VERSION_4_4)) && !defined(REGAL_NO_ENUM_GL_VERSION_4_4)
+#define REGAL_NO_ENUM_GL_VERSION_4_4
+#endif
+
+#if (defined(GL_VERSION_4_4) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_GL_VERSION_4_4)) && !defined(REGAL_NO_TYPEDEF_GL_VERSION_4_4)
+#define REGAL_NO_TYPEDEF_GL_VERSION_4_4
+#endif
+
+#if (defined(GL_VERSION_4_4) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_GL_VERSION_4_4)) && !defined(REGAL_NO_NAMESPACE_GL_VERSION_4_4)
+#define REGAL_NO_NAMESPACE_GL_VERSION_4_4
+#endif
+
+#if (defined(GL_VERSION_4_4) || !defined(REGAL_PLUGIN_MODE) || defined(REGAL_NO_GL_VERSION_4_4)) && !defined(REGAL_NO_PLUGIN_GL_VERSION_4_4)
+#define REGAL_NO_PLUGIN_GL_VERSION_4_4
+#endif
+
+#if (defined(GL_VERSION_4_4) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_GL_VERSION_4_4)) && !defined(REGAL_NO_DECLARATION_GL_VERSION_4_4)
+#define REGAL_NO_DECLARATION_GL_VERSION_4_4
+#endif
+
+#ifndef GL_VERSION_4_4
+#define GL_VERSION_4_4 1
+#endif
+
+#ifndef REGAL_NO_ENUM_GL_VERSION_4_4
+#define GL_PRIMITIVE_RESTART_FOR_PATCHES_SUPPORTED 0x8221     /* 33313 */
+#define GL_MAX_VERTEX_ATTRIB_STRIDE                0x82e5     /* 33509 */
+#define GL_TEXTURE_BUFFER_BINDING                  0x8c2a     /* 35882 */
+#endif
+
+/**
  ** GL_VIV_shader_binary
  **/
 
@@ -42440,133 +42716,6 @@ REGAL_DECL CGLShareGroupObj REGAL_CALL plugin_CGLGetShareGroup(CGLContextObj ctx
 #endif /* REGAL_SYS_OSX */
 
 #if REGAL_SYS_EGL
-#define EGL_NO_CONTEXT                  ((EGLContext)0)
-#define EGL_NO_DISPLAY                  ((EGLDisplay)0)
-#define EGL_DEFAULT_DISPLAY             ((EGLNativeDisplayType)0)
-#define EGL_NO_SURFACE                  ((EGLSurface)0)
-#define EGL_DONT_CARE                   ((EGLint)-1)
-#define EGL_UNKNOWN                     ((EGLint)-1)
-#define EGL_FALSE                       0x0
-#define EGL_OPENGL_ES_BIT               0x1
-#define EGL_PBUFFER_BIT                 0x1
-#define EGL_TRUE                        0x1
-#define EGL_VERSION_1_3                 0x1
-#define EGL_VERSION_1_4                 0x1
-#define EGL_OPENVG_BIT                  0x2
-#define EGL_PIXMAP_BIT                  0x2
-#define EGL_VG_COLORSPACE_LINEAR_BIT    0x20                           /* 32 */
-#define EGL_MULTISAMPLE_RESOLVE_BOX_BIT 0x200                          /* 512 */
-#define EGL_DISPLAY_SCALING             0x2710                         /* 10000 */
-#define EGL_SUCCESS                     0x3000                         /* 12288 */
-#define EGL_NOT_INITIALIZED             0x3001                         /* 12289 */
-#define EGL_BAD_ACCESS                  0x3002                         /* 12290 */
-#define EGL_BAD_ALLOC                   0x3003                         /* 12291 */
-#define EGL_BAD_ATTRIBUTE               0x3004                         /* 12292 */
-#define EGL_BAD_CONFIG                  0x3005                         /* 12293 */
-#define EGL_BAD_CONTEXT                 0x3006                         /* 12294 */
-#define EGL_BAD_CURRENT_SURFACE         0x3007                         /* 12295 */
-#define EGL_BAD_DISPLAY                 0x3008                         /* 12296 */
-#define EGL_BAD_MATCH                   0x3009                         /* 12297 */
-#define EGL_BAD_NATIVE_PIXMAP           0x300a                         /* 12298 */
-#define EGL_BAD_NATIVE_WINDOW           0x300b                         /* 12299 */
-#define EGL_BAD_PARAMETER               0x300c                         /* 12300 */
-#define EGL_BAD_SURFACE                 0x300d                         /* 12301 */
-#define EGL_CONTEXT_LOST                0x300e                         /* 12302 */
-#define EGL_BUFFER_SIZE                 0x3020                         /* 12320 */
-#define EGL_ALPHA_SIZE                  0x3021                         /* 12321 */
-#define EGL_BLUE_SIZE                   0x3022                         /* 12322 */
-#define EGL_GREEN_SIZE                  0x3023                         /* 12323 */
-#define EGL_RED_SIZE                    0x3024                         /* 12324 */
-#define EGL_DEPTH_SIZE                  0x3025                         /* 12325 */
-#define EGL_STENCIL_SIZE                0x3026                         /* 12326 */
-#define EGL_CONFIG_CAVEAT               0x3027                         /* 12327 */
-#define EGL_CONFIG_ID                   0x3028                         /* 12328 */
-#define EGL_LEVEL                       0x3029                         /* 12329 */
-#define EGL_MAX_PBUFFER_HEIGHT          0x302a                         /* 12330 */
-#define EGL_MAX_PBUFFER_PIXELS          0x302b                         /* 12331 */
-#define EGL_MAX_PBUFFER_WIDTH           0x302c                         /* 12332 */
-#define EGL_NATIVE_RENDERABLE           0x302d                         /* 12333 */
-#define EGL_NATIVE_VISUAL_ID            0x302e                         /* 12334 */
-#define EGL_NATIVE_VISUAL_TYPE          0x302f                         /* 12335 */
-#define EGL_SAMPLES                     0x3031                         /* 12337 */
-#define EGL_SAMPLE_BUFFERS              0x3032                         /* 12338 */
-#define EGL_SURFACE_TYPE                0x3033                         /* 12339 */
-#define EGL_TRANSPARENT_TYPE            0x3034                         /* 12340 */
-#define EGL_TRANSPARENT_BLUE_VALUE      0x3035                         /* 12341 */
-#define EGL_TRANSPARENT_GREEN_VALUE     0x3036                         /* 12342 */
-#define EGL_TRANSPARENT_RED_VALUE       0x3037                         /* 12343 */
-#define EGL_NONE                        0x3038                         /* 12344 */
-#define EGL_BIND_TO_TEXTURE_RGB         0x3039                         /* 12345 */
-#define EGL_BIND_TO_TEXTURE_RGBA        0x303a                         /* 12346 */
-#define EGL_MIN_SWAP_INTERVAL           0x303b                         /* 12347 */
-#define EGL_MAX_SWAP_INTERVAL           0x303c                         /* 12348 */
-#define EGL_LUMINANCE_SIZE              0x303d                         /* 12349 */
-#define EGL_ALPHA_MASK_SIZE             0x303e                         /* 12350 */
-#define EGL_COLOR_BUFFER_TYPE           0x303f                         /* 12351 */
-#define EGL_RENDERABLE_TYPE             0x3040                         /* 12352 */
-#define EGL_MATCH_NATIVE_PIXMAP         0x3041                         /* 12353 */
-#define EGL_CONFORMANT                  0x3042                         /* 12354 */
-#define EGL_SLOW_CONFIG                 0x3050                         /* 12368 */
-#define EGL_NON_CONFORMANT_CONFIG       0x3051                         /* 12369 */
-#define EGL_TRANSPARENT_RGB             0x3052                         /* 12370 */
-#define EGL_VENDOR                      0x3053                         /* 12371 */
-#define EGL_VERSION                     0x3054                         /* 12372 */
-#define EGL_EXTENSIONS                  0x3055                         /* 12373 */
-#define EGL_HEIGHT                      0x3056                         /* 12374 */
-#define EGL_WIDTH                       0x3057                         /* 12375 */
-#define EGL_LARGEST_PBUFFER             0x3058                         /* 12376 */
-#define EGL_DRAW                        0x3059                         /* 12377 */
-#define EGL_READ                        0x305a                         /* 12378 */
-#define EGL_CORE_NATIVE_ENGINE          0x305b                         /* 12379 */
-#define EGL_NO_TEXTURE                  0x305c                         /* 12380 */
-#define EGL_TEXTURE_RGB                 0x305d                         /* 12381 */
-#define EGL_TEXTURE_RGBA                0x305e                         /* 12382 */
-#define EGL_TEXTURE_2D                  0x305f                         /* 12383 */
-#define EGL_TEXTURE_FORMAT              0x3080                         /* 12416 */
-#define EGL_TEXTURE_TARGET              0x3081                         /* 12417 */
-#define EGL_MIPMAP_TEXTURE              0x3082                         /* 12418 */
-#define EGL_MIPMAP_LEVEL                0x3083                         /* 12419 */
-#define EGL_BACK_BUFFER                 0x3084                         /* 12420 */
-#define EGL_SINGLE_BUFFER               0x3085                         /* 12421 */
-#define EGL_RENDER_BUFFER               0x3086                         /* 12422 */
-#define EGL_VG_COLORSPACE               0x3087                         /* 12423 */
-#define EGL_VG_ALPHA_FORMAT             0x3088                         /* 12424 */
-#define EGL_VG_COLORSPACE_sRGB          0x3089                         /* 12425 */
-#define EGL_VG_COLORSPACE_LINEAR        0x308a                         /* 12426 */
-#define EGL_VG_ALPHA_FORMAT_NONPRE      0x308b                         /* 12427 */
-#define EGL_VG_ALPHA_FORMAT_PRE         0x308c                         /* 12428 */
-#define EGL_CLIENT_APIS                 0x308d                         /* 12429 */
-#define EGL_RGB_BUFFER                  0x308e                         /* 12430 */
-#define EGL_LUMINANCE_BUFFER            0x308f                         /* 12431 */
-#define EGL_HORIZONTAL_RESOLUTION       0x3090                         /* 12432 */
-#define EGL_VERTICAL_RESOLUTION         0x3091                         /* 12433 */
-#define EGL_PIXEL_ASPECT_RATIO          0x3092                         /* 12434 */
-#define EGL_SWAP_BEHAVIOR               0x3093                         /* 12435 */
-#define EGL_BUFFER_PRESERVED            0x3094                         /* 12436 */
-#define EGL_BUFFER_DESTROYED            0x3095                         /* 12437 */
-#define EGL_OPENVG_IMAGE                0x3096                         /* 12438 */
-#define EGL_CONTEXT_CLIENT_TYPE         0x3097                         /* 12439 */
-#define EGL_CONTEXT_CLIENT_VERSION      0x3098                         /* 12440 */
-#define EGL_MULTISAMPLE_RESOLVE         0x3099                         /* 12441 */
-#define EGL_MULTISAMPLE_RESOLVE_DEFAULT 0x309a                         /* 12442 */
-#define EGL_MULTISAMPLE_RESOLVE_BOX     0x309b                         /* 12443 */
-#define EGL_OPENGL_ES_API               0x30a0                         /* 12448 */
-#define EGL_OPENVG_API                  0x30a1                         /* 12449 */
-#define EGL_OPENGL_API                  0x30a2                         /* 12450 */
-#define EGL_OPENGL_ES2_BIT              0x4
-#define EGL_WINDOW_BIT                  0x4
-#define EGL_VG_ALPHA_FORMAT_PRE_BIT     0x40                           /* 64 */
-#define EGL_SWAP_BEHAVIOR_PRESERVED_BIT 0x400                          /* 1024 */
-#define EGL_OPENGL_BIT                  0x8
-#define EGLAPIENTRYP                    EGLAPIENTRY                    *
-#define EGL_ALPHA_FORMAT                EGL_VG_ALPHA_FORMAT
-#define EGL_ALPHA_FORMAT_NONPRE         EGL_VG_ALPHA_FORMAT_NONPRE
-#define EGL_ALPHA_FORMAT_PRE            EGL_VG_ALPHA_FORMAT_PRE
-#define EGL_COLORSPACE                  EGL_VG_COLORSPACE
-#define EGL_COLORSPACE_LINEAR           EGL_VG_COLORSPACE_LINEAR
-#define EGL_COLORSPACE_sRGB             EGL_VG_COLORSPACE_sRGB
-#define EGLAPI                          KHRONOS_APICALL
-#define EGLAPIENTRY                     KHRONOS_APIENTRY
 
 /**
  ** EGL_ANGLE_query_surface_pointer
@@ -43836,6 +43985,134 @@ REGAL_DECL EGLuint64NV REGAL_CALL plugin_eglGetSystemTimeNV(void);
 #define EGL_VERSION_1_0 1
 #endif
 
+#ifndef REGAL_NO_ENUM_EGL_VERSION_1_0
+#define EGL_NO_CONTEXT                  ((EGLContext)0)
+#define EGL_NO_DISPLAY                  ((EGLDisplay)0)
+#define EGL_DEFAULT_DISPLAY             ((EGLNativeDisplayType)0)
+#define EGL_NO_SURFACE                  ((EGLSurface)0)
+#define EGL_DONT_CARE                   ((EGLint)-1)
+#define EGL_UNKNOWN                     ((EGLint)-1)
+#define EGL_FALSE                       0x0
+#define EGL_OPENGL_ES_BIT               0x1
+#define EGL_PBUFFER_BIT                 0x1
+#define EGL_TRUE                        0x1
+#define EGL_OPENVG_BIT                  0x2
+#define EGL_PIXMAP_BIT                  0x2
+#define EGL_VG_COLORSPACE_LINEAR_BIT    0x20                           /* 32 */
+#define EGL_MULTISAMPLE_RESOLVE_BOX_BIT 0x200                          /* 512 */
+#define EGL_DISPLAY_SCALING             0x2710                         /* 10000 */
+#define EGL_SUCCESS                     0x3000                         /* 12288 */
+#define EGL_NOT_INITIALIZED             0x3001                         /* 12289 */
+#define EGL_BAD_ACCESS                  0x3002                         /* 12290 */
+#define EGL_BAD_ALLOC                   0x3003                         /* 12291 */
+#define EGL_BAD_ATTRIBUTE               0x3004                         /* 12292 */
+#define EGL_BAD_CONFIG                  0x3005                         /* 12293 */
+#define EGL_BAD_CONTEXT                 0x3006                         /* 12294 */
+#define EGL_BAD_CURRENT_SURFACE         0x3007                         /* 12295 */
+#define EGL_BAD_DISPLAY                 0x3008                         /* 12296 */
+#define EGL_BAD_MATCH                   0x3009                         /* 12297 */
+#define EGL_BAD_NATIVE_PIXMAP           0x300a                         /* 12298 */
+#define EGL_BAD_NATIVE_WINDOW           0x300b                         /* 12299 */
+#define EGL_BAD_PARAMETER               0x300c                         /* 12300 */
+#define EGL_BAD_SURFACE                 0x300d                         /* 12301 */
+#define EGL_CONTEXT_LOST                0x300e                         /* 12302 */
+#define EGL_BUFFER_SIZE                 0x3020                         /* 12320 */
+#define EGL_ALPHA_SIZE                  0x3021                         /* 12321 */
+#define EGL_BLUE_SIZE                   0x3022                         /* 12322 */
+#define EGL_GREEN_SIZE                  0x3023                         /* 12323 */
+#define EGL_RED_SIZE                    0x3024                         /* 12324 */
+#define EGL_DEPTH_SIZE                  0x3025                         /* 12325 */
+#define EGL_STENCIL_SIZE                0x3026                         /* 12326 */
+#define EGL_CONFIG_CAVEAT               0x3027                         /* 12327 */
+#define EGL_CONFIG_ID                   0x3028                         /* 12328 */
+#define EGL_LEVEL                       0x3029                         /* 12329 */
+#define EGL_MAX_PBUFFER_HEIGHT          0x302a                         /* 12330 */
+#define EGL_MAX_PBUFFER_PIXELS          0x302b                         /* 12331 */
+#define EGL_MAX_PBUFFER_WIDTH           0x302c                         /* 12332 */
+#define EGL_NATIVE_RENDERABLE           0x302d                         /* 12333 */
+#define EGL_NATIVE_VISUAL_ID            0x302e                         /* 12334 */
+#define EGL_NATIVE_VISUAL_TYPE          0x302f                         /* 12335 */
+#define EGL_SAMPLES                     0x3031                         /* 12337 */
+#define EGL_SAMPLE_BUFFERS              0x3032                         /* 12338 */
+#define EGL_SURFACE_TYPE                0x3033                         /* 12339 */
+#define EGL_TRANSPARENT_TYPE            0x3034                         /* 12340 */
+#define EGL_TRANSPARENT_BLUE_VALUE      0x3035                         /* 12341 */
+#define EGL_TRANSPARENT_GREEN_VALUE     0x3036                         /* 12342 */
+#define EGL_TRANSPARENT_RED_VALUE       0x3037                         /* 12343 */
+#define EGL_NONE                        0x3038                         /* 12344 */
+#define EGL_BIND_TO_TEXTURE_RGB         0x3039                         /* 12345 */
+#define EGL_BIND_TO_TEXTURE_RGBA        0x303a                         /* 12346 */
+#define EGL_MIN_SWAP_INTERVAL           0x303b                         /* 12347 */
+#define EGL_MAX_SWAP_INTERVAL           0x303c                         /* 12348 */
+#define EGL_LUMINANCE_SIZE              0x303d                         /* 12349 */
+#define EGL_ALPHA_MASK_SIZE             0x303e                         /* 12350 */
+#define EGL_COLOR_BUFFER_TYPE           0x303f                         /* 12351 */
+#define EGL_RENDERABLE_TYPE             0x3040                         /* 12352 */
+#define EGL_MATCH_NATIVE_PIXMAP         0x3041                         /* 12353 */
+#define EGL_CONFORMANT                  0x3042                         /* 12354 */
+#define EGL_SLOW_CONFIG                 0x3050                         /* 12368 */
+#define EGL_NON_CONFORMANT_CONFIG       0x3051                         /* 12369 */
+#define EGL_TRANSPARENT_RGB             0x3052                         /* 12370 */
+#define EGL_VENDOR                      0x3053                         /* 12371 */
+#define EGL_VERSION                     0x3054                         /* 12372 */
+#define EGL_EXTENSIONS                  0x3055                         /* 12373 */
+#define EGL_HEIGHT                      0x3056                         /* 12374 */
+#define EGL_WIDTH                       0x3057                         /* 12375 */
+#define EGL_LARGEST_PBUFFER             0x3058                         /* 12376 */
+#define EGL_DRAW                        0x3059                         /* 12377 */
+#define EGL_READ                        0x305a                         /* 12378 */
+#define EGL_CORE_NATIVE_ENGINE          0x305b                         /* 12379 */
+#define EGL_NO_TEXTURE                  0x305c                         /* 12380 */
+#define EGL_TEXTURE_RGB                 0x305d                         /* 12381 */
+#define EGL_TEXTURE_RGBA                0x305e                         /* 12382 */
+#define EGL_TEXTURE_2D                  0x305f                         /* 12383 */
+#define EGL_TEXTURE_FORMAT              0x3080                         /* 12416 */
+#define EGL_TEXTURE_TARGET              0x3081                         /* 12417 */
+#define EGL_MIPMAP_TEXTURE              0x3082                         /* 12418 */
+#define EGL_MIPMAP_LEVEL                0x3083                         /* 12419 */
+#define EGL_BACK_BUFFER                 0x3084                         /* 12420 */
+#define EGL_SINGLE_BUFFER               0x3085                         /* 12421 */
+#define EGL_RENDER_BUFFER               0x3086                         /* 12422 */
+#define EGL_VG_COLORSPACE               0x3087                         /* 12423 */
+#define EGL_VG_ALPHA_FORMAT             0x3088                         /* 12424 */
+#define EGL_VG_COLORSPACE_sRGB          0x3089                         /* 12425 */
+#define EGL_VG_COLORSPACE_LINEAR        0x308a                         /* 12426 */
+#define EGL_VG_ALPHA_FORMAT_NONPRE      0x308b                         /* 12427 */
+#define EGL_VG_ALPHA_FORMAT_PRE         0x308c                         /* 12428 */
+#define EGL_CLIENT_APIS                 0x308d                         /* 12429 */
+#define EGL_RGB_BUFFER                  0x308e                         /* 12430 */
+#define EGL_LUMINANCE_BUFFER            0x308f                         /* 12431 */
+#define EGL_HORIZONTAL_RESOLUTION       0x3090                         /* 12432 */
+#define EGL_VERTICAL_RESOLUTION         0x3091                         /* 12433 */
+#define EGL_PIXEL_ASPECT_RATIO          0x3092                         /* 12434 */
+#define EGL_SWAP_BEHAVIOR               0x3093                         /* 12435 */
+#define EGL_BUFFER_PRESERVED            0x3094                         /* 12436 */
+#define EGL_BUFFER_DESTROYED            0x3095                         /* 12437 */
+#define EGL_OPENVG_IMAGE                0x3096                         /* 12438 */
+#define EGL_CONTEXT_CLIENT_TYPE         0x3097                         /* 12439 */
+#define EGL_CONTEXT_CLIENT_VERSION      0x3098                         /* 12440 */
+#define EGL_MULTISAMPLE_RESOLVE         0x3099                         /* 12441 */
+#define EGL_MULTISAMPLE_RESOLVE_DEFAULT 0x309a                         /* 12442 */
+#define EGL_MULTISAMPLE_RESOLVE_BOX     0x309b                         /* 12443 */
+#define EGL_OPENGL_ES_API               0x30a0                         /* 12448 */
+#define EGL_OPENVG_API                  0x30a1                         /* 12449 */
+#define EGL_OPENGL_API                  0x30a2                         /* 12450 */
+#define EGL_OPENGL_ES2_BIT              0x4
+#define EGL_WINDOW_BIT                  0x4
+#define EGL_VG_ALPHA_FORMAT_PRE_BIT     0x40                           /* 64 */
+#define EGL_SWAP_BEHAVIOR_PRESERVED_BIT 0x400                          /* 1024 */
+#define EGL_OPENGL_BIT                  0x8
+#define EGLAPIENTRYP                    EGLAPIENTRY                    *
+#define EGL_ALPHA_FORMAT                EGL_VG_ALPHA_FORMAT
+#define EGL_ALPHA_FORMAT_NONPRE         EGL_VG_ALPHA_FORMAT_NONPRE
+#define EGL_ALPHA_FORMAT_PRE            EGL_VG_ALPHA_FORMAT_PRE
+#define EGL_COLORSPACE                  EGL_VG_COLORSPACE
+#define EGL_COLORSPACE_LINEAR           EGL_VG_COLORSPACE_LINEAR
+#define EGL_COLORSPACE_sRGB             EGL_VG_COLORSPACE_sRGB
+#define EGLAPI                          KHRONOS_APICALL
+#define EGLAPIENTRY                     KHRONOS_APIENTRY
+#endif
+
 #ifndef REGAL_NO_TYPEDEF_EGL_VERSION_1_0
 typedef EGLBoolean (REGAL_CALL *PFNEGLCHOOSECONFIGPROC)(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config);
 typedef EGLBoolean (REGAL_CALL *PFNEGLCOPYBUFFERSPROC)(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target);
@@ -44062,6 +44339,62 @@ REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSwapInterval(EGLDisplay dpy, EGLint i
 REGAL_DECL EGLBoolean REGAL_CALL plugin_eglWaitClient(void);
 REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreatePbufferFromClientBuffer(EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list);
 REGAL_DECL EGLenum REGAL_CALL plugin_eglQueryAPI(void);
+#endif
+
+/**
+ ** EGL_VERSION_1_3
+ **/
+
+#if (defined(EGL_VERSION_1_3) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_EGL_VERSION_1_3)) && !defined(REGAL_NO_ENUM_EGL_VERSION_1_3)
+#define REGAL_NO_ENUM_EGL_VERSION_1_3
+#endif
+
+#if (defined(EGL_VERSION_1_3) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_EGL_VERSION_1_3)) && !defined(REGAL_NO_TYPEDEF_EGL_VERSION_1_3)
+#define REGAL_NO_TYPEDEF_EGL_VERSION_1_3
+#endif
+
+#if (defined(EGL_VERSION_1_3) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_EGL_VERSION_1_3)) && !defined(REGAL_NO_NAMESPACE_EGL_VERSION_1_3)
+#define REGAL_NO_NAMESPACE_EGL_VERSION_1_3
+#endif
+
+#if (defined(EGL_VERSION_1_3) || !defined(REGAL_PLUGIN_MODE) || defined(REGAL_NO_EGL_VERSION_1_3)) && !defined(REGAL_NO_PLUGIN_EGL_VERSION_1_3)
+#define REGAL_NO_PLUGIN_EGL_VERSION_1_3
+#endif
+
+#if (defined(EGL_VERSION_1_3) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_EGL_VERSION_1_3)) && !defined(REGAL_NO_DECLARATION_EGL_VERSION_1_3)
+#define REGAL_NO_DECLARATION_EGL_VERSION_1_3
+#endif
+
+#ifndef EGL_VERSION_1_3
+#define EGL_VERSION_1_3 1
+#endif
+
+/**
+ ** EGL_VERSION_1_4
+ **/
+
+#if (defined(EGL_VERSION_1_4) || defined(REGAL_NO_ENUM) || defined(REGAL_NO_EGL_VERSION_1_4)) && !defined(REGAL_NO_ENUM_EGL_VERSION_1_4)
+#define REGAL_NO_ENUM_EGL_VERSION_1_4
+#endif
+
+#if (defined(EGL_VERSION_1_4) || defined(REGAL_NO_TYPEDEF) || defined(REGAL_NO_EGL_VERSION_1_4)) && !defined(REGAL_NO_TYPEDEF_EGL_VERSION_1_4)
+#define REGAL_NO_TYPEDEF_EGL_VERSION_1_4
+#endif
+
+#if (defined(EGL_VERSION_1_4) || !defined(REGAL_NAMESPACE) || defined(REGAL_NO_EGL_VERSION_1_4)) && !defined(REGAL_NO_NAMESPACE_EGL_VERSION_1_4)
+#define REGAL_NO_NAMESPACE_EGL_VERSION_1_4
+#endif
+
+#if (defined(EGL_VERSION_1_4) || !defined(REGAL_PLUGIN_MODE) || defined(REGAL_NO_EGL_VERSION_1_4)) && !defined(REGAL_NO_PLUGIN_EGL_VERSION_1_4)
+#define REGAL_NO_PLUGIN_EGL_VERSION_1_4
+#endif
+
+#if (defined(EGL_VERSION_1_4) || defined(REGAL_NO_DECLARATION) || defined(REGAL_NO_EGL_VERSION_1_4)) && !defined(REGAL_NO_DECLARATION_EGL_VERSION_1_4)
+#define REGAL_NO_DECLARATION_EGL_VERSION_1_4
+#endif
+
+#ifndef EGL_VERSION_1_4
+#define EGL_VERSION_1_4 1
 #endif
 
 /**
