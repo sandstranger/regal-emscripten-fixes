@@ -61,7 +61,8 @@ def apiDispatchTableDefineCode(apis, args, apiNames, structName):
       if category and not (category == categoryPrev):
         code += '    // %s\n\n' % category
 
-      code += '    %s(REGAL_CALL *%s)(%s);\n' % (rType, name, params)
+      #code += '    %s(REGAL_CALL *%s)(%s);\n' % (rType, name, params)
+      code += '    PFN%sPROC %s;\n' % (name.upper(), name)
 
       categoryPrev = category
 
