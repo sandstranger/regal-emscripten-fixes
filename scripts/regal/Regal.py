@@ -396,7 +396,7 @@ def apiFuncDefineCode(apis, args):
             c += '    RegalAssert(_next);\n    '
             if not typeIsVoid(rType):
               c += 'return '
-            c += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+            c += '_next->%s(%s);\n' % ( name, callParams )
             if typeIsVoid(rType):
               c += '    return;\n'
             c += '  }\n'
@@ -421,7 +421,7 @@ def apiFuncDefineCode(apis, args):
 
             if not typeIsVoid(rType):
               t += 'return '
-            t += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+            t += '_next->%s(%s);\n' % ( name, callParams )
 
             t += listToString(indent(stripVertical(emuCodeGen(emue,'post')),''))
 
@@ -466,7 +466,7 @@ def apiFuncDefineCode(apis, args):
           c += '  '
           if not typeIsVoid(rType):
             c += 'ret = '
-          c += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+          c += '_next->%s(%s);\n' % ( name, callParams )
 
         c += listToString(indent(stripVertical(emuCodeGen(emue,'init')),'  '))
 

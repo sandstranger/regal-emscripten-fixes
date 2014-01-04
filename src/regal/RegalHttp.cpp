@@ -1433,20 +1433,20 @@ void DispatchHttpState::ContinueFromBreakpoint( RegalContext * ctx, HttpRunState
 }
 
 void DispatchHttpState::GlProcs::Initialize( DispatchTableGL * tbl ) {
-  Finish                   = tbl->call( &tbl->glFinish );
-  GetActiveUniform         = tbl->call( &tbl->glGetActiveUniform );
-  GetAttachedShaders       = tbl->call( &tbl->glGetAttachedShaders );
-  GetIntegerv              = tbl->call( &tbl->glGetIntegerv );
-  GetProgramInfoLog        = tbl->call( &tbl->glGetProgramInfoLog );
-  GetProgramiv             = tbl->call( &tbl->glGetProgramiv );
-  GetShaderInfoLog         = tbl->call( &tbl->glGetShaderInfoLog );
-  GetShaderSource          = tbl->call( &tbl->glGetShaderSource );
-  GetShaderiv              = tbl->call( &tbl->glGetShaderiv );
-  GetTextureImage          = tbl->call( &tbl->glGetTextureImageEXT );
-  GetTextureLevelParameter = tbl->call( &tbl->glGetTextureLevelParameterfvEXT );
-  GetTextureParameter      = tbl->call( &tbl->glGetTextureParameterfvEXT );
-  GetUniformLocation       = tbl->call( &tbl->glGetUniformLocation );
-  ReadPixels               = tbl->call( &tbl->glReadPixels );
+  Finish                   = tbl->glFinish ;
+  GetActiveUniform         = tbl->glGetActiveUniform ;
+  GetAttachedShaders       = tbl->glGetAttachedShaders ;
+  GetIntegerv              = tbl->glGetIntegerv ;
+  GetProgramInfoLog        = tbl->glGetProgramInfoLog ;
+  GetProgramiv             = tbl->glGetProgramiv ;
+  GetShaderInfoLog         = tbl->glGetShaderInfoLog ;
+  GetShaderSource          = tbl->glGetShaderSource ;
+  GetShaderiv              = tbl->glGetShaderiv ;
+  GetTextureImage          = tbl->glGetTextureImageEXT ;
+  GetTextureLevelParameter = tbl->glGetTextureLevelParameterfvEXT ;
+  GetTextureParameter      = tbl->glGetTextureParameterfvEXT ;
+  GetUniformLocation       = tbl->glGetUniformLocation ;
+  ReadPixels               = tbl->glReadPixels ;
 }
 
 REGAL_NAMESPACE_END

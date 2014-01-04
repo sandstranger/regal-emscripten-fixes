@@ -156,7 +156,7 @@ static void REGAL_CALL emu_glAccum(GLenum op, GLfloat value)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glAccum)(op, value);
+      _next->glAccum(op, value);
       break;
     }
 
@@ -226,7 +226,7 @@ static void REGAL_CALL emu_glAlphaFunc(GLenum func, GLclampf ref)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glAlphaFunc)(func, ref);
+      _next->glAlphaFunc(func, ref);
       break;
     }
 
@@ -299,7 +299,7 @@ static void REGAL_CALL emu_glBegin(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBegin)(mode);
+      _next->glBegin(mode);
       break;
     }
 
@@ -377,7 +377,7 @@ static void REGAL_CALL emu_glBitmap(GLsizei width, GLsizei height, GLfloat xorig
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBitmap)(width, height, xorig, yorig, xmove, ymove, bitmap);
+      _next->glBitmap(width, height, xorig, yorig, xmove, ymove, bitmap);
       break;
     }
 
@@ -412,7 +412,7 @@ static void REGAL_CALL emu_glBlendFunc(GLenum sfactor, GLenum dfactor)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendFunc)(sfactor, dfactor);
+  _next->glBlendFunc(sfactor, dfactor);
 }
 
 static void REGAL_CALL emu_glCallList(GLuint list)
@@ -485,7 +485,7 @@ static void REGAL_CALL emu_glCallList(GLuint list)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCallList)(list);
+      _next->glCallList(list);
       break;
     }
 
@@ -571,7 +571,7 @@ static void REGAL_CALL emu_glClearAccum(GLfloat red, GLfloat green, GLfloat blue
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glClearAccum)(red, green, blue, alpha);
+      _next->glClearAccum(red, green, blue, alpha);
       break;
     }
 
@@ -606,7 +606,7 @@ static void REGAL_CALL emu_glClearColor(GLclampf red, GLclampf green, GLclampf b
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glClearColor)(red, green, blue, alpha);
+  _next->glClearColor(red, green, blue, alpha);
 }
 
 static void REGAL_CALL emu_glClearDepth(GLclampd depth)
@@ -637,9 +637,9 @@ static void REGAL_CALL emu_glClearDepth(GLclampd depth)
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
   if (_context->isES2())
-    _next->call(& _next->glClearDepthf)((GLclampf)depth);
+    _next->glClearDepthf((GLclampf)depth);
    else
-     _next->call(& _next->glClearDepth)(depth);
+     _next->glClearDepth(depth);
 }
 
 static void REGAL_CALL emu_glClearIndex(GLfloat c)
@@ -669,7 +669,7 @@ static void REGAL_CALL emu_glClearIndex(GLfloat c)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glClearIndex)(c);
+  _next->glClearIndex(c);
 }
 
 static void REGAL_CALL emu_glClearStencil(GLint s)
@@ -699,7 +699,7 @@ static void REGAL_CALL emu_glClearStencil(GLint s)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glClearStencil)(s);
+  _next->glClearStencil(s);
 }
 
 static void REGAL_CALL emu_glClipPlane(GLenum plane, const GLdouble *equation)
@@ -764,7 +764,7 @@ static void REGAL_CALL emu_glClipPlane(GLenum plane, const GLdouble *equation)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glClipPlane)(plane, equation);
+      _next->glClipPlane(plane, equation);
       break;
     }
 
@@ -826,7 +826,7 @@ static void REGAL_CALL emu_glColor3b(GLbyte red, GLbyte green, GLbyte blue)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3b)(red, green, blue);
+      _next->glColor3b(red, green, blue);
       break;
     }
 
@@ -888,7 +888,7 @@ static void REGAL_CALL emu_glColor3bv(const GLbyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3bv)(v);
+      _next->glColor3bv(v);
       break;
     }
 
@@ -950,7 +950,7 @@ static void REGAL_CALL emu_glColor3d(GLdouble red, GLdouble green, GLdouble blue
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3d)(red, green, blue);
+      _next->glColor3d(red, green, blue);
       break;
     }
 
@@ -1012,7 +1012,7 @@ static void REGAL_CALL emu_glColor3dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3dv)(v);
+      _next->glColor3dv(v);
       break;
     }
 
@@ -1074,7 +1074,7 @@ static void REGAL_CALL emu_glColor3f(GLfloat red, GLfloat green, GLfloat blue)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3f)(red, green, blue);
+      _next->glColor3f(red, green, blue);
       break;
     }
 
@@ -1136,7 +1136,7 @@ static void REGAL_CALL emu_glColor3fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3fv)(v);
+      _next->glColor3fv(v);
       break;
     }
 
@@ -1198,7 +1198,7 @@ static void REGAL_CALL emu_glColor3i(GLint red, GLint green, GLint blue)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3i)(red, green, blue);
+      _next->glColor3i(red, green, blue);
       break;
     }
 
@@ -1260,7 +1260,7 @@ static void REGAL_CALL emu_glColor3iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3iv)(v);
+      _next->glColor3iv(v);
       break;
     }
 
@@ -1322,7 +1322,7 @@ static void REGAL_CALL emu_glColor3s(GLshort red, GLshort green, GLshort blue)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3s)(red, green, blue);
+      _next->glColor3s(red, green, blue);
       break;
     }
 
@@ -1384,7 +1384,7 @@ static void REGAL_CALL emu_glColor3sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3sv)(v);
+      _next->glColor3sv(v);
       break;
     }
 
@@ -1446,7 +1446,7 @@ static void REGAL_CALL emu_glColor3ub(GLubyte red, GLubyte green, GLubyte blue)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3ub)(red, green, blue);
+      _next->glColor3ub(red, green, blue);
       break;
     }
 
@@ -1508,7 +1508,7 @@ static void REGAL_CALL emu_glColor3ubv(const GLubyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3ubv)(v);
+      _next->glColor3ubv(v);
       break;
     }
 
@@ -1570,7 +1570,7 @@ static void REGAL_CALL emu_glColor3ui(GLuint red, GLuint green, GLuint blue)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3ui)(red, green, blue);
+      _next->glColor3ui(red, green, blue);
       break;
     }
 
@@ -1632,7 +1632,7 @@ static void REGAL_CALL emu_glColor3uiv(const GLuint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3uiv)(v);
+      _next->glColor3uiv(v);
       break;
     }
 
@@ -1694,7 +1694,7 @@ static void REGAL_CALL emu_glColor3us(GLushort red, GLushort green, GLushort blu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3us)(red, green, blue);
+      _next->glColor3us(red, green, blue);
       break;
     }
 
@@ -1756,7 +1756,7 @@ static void REGAL_CALL emu_glColor3usv(const GLushort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor3usv)(v);
+      _next->glColor3usv(v);
       break;
     }
 
@@ -1818,7 +1818,7 @@ static void REGAL_CALL emu_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLby
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4b)(red, green, blue, alpha);
+      _next->glColor4b(red, green, blue, alpha);
       break;
     }
 
@@ -1880,7 +1880,7 @@ static void REGAL_CALL emu_glColor4bv(const GLbyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4bv)(v);
+      _next->glColor4bv(v);
       break;
     }
 
@@ -1942,7 +1942,7 @@ static void REGAL_CALL emu_glColor4d(GLdouble red, GLdouble green, GLdouble blue
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4d)(red, green, blue, alpha);
+      _next->glColor4d(red, green, blue, alpha);
       break;
     }
 
@@ -2004,7 +2004,7 @@ static void REGAL_CALL emu_glColor4dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4dv)(v);
+      _next->glColor4dv(v);
       break;
     }
 
@@ -2066,7 +2066,7 @@ static void REGAL_CALL emu_glColor4f(GLfloat red, GLfloat green, GLfloat blue, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4f)(red, green, blue, alpha);
+      _next->glColor4f(red, green, blue, alpha);
       break;
     }
 
@@ -2128,7 +2128,7 @@ static void REGAL_CALL emu_glColor4fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4fv)(v);
+      _next->glColor4fv(v);
       break;
     }
 
@@ -2190,7 +2190,7 @@ static void REGAL_CALL emu_glColor4i(GLint red, GLint green, GLint blue, GLint a
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4i)(red, green, blue, alpha);
+      _next->glColor4i(red, green, blue, alpha);
       break;
     }
 
@@ -2252,7 +2252,7 @@ static void REGAL_CALL emu_glColor4iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4iv)(v);
+      _next->glColor4iv(v);
       break;
     }
 
@@ -2314,7 +2314,7 @@ static void REGAL_CALL emu_glColor4s(GLshort red, GLshort green, GLshort blue, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4s)(red, green, blue, alpha);
+      _next->glColor4s(red, green, blue, alpha);
       break;
     }
 
@@ -2376,7 +2376,7 @@ static void REGAL_CALL emu_glColor4sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4sv)(v);
+      _next->glColor4sv(v);
       break;
     }
 
@@ -2438,7 +2438,7 @@ static void REGAL_CALL emu_glColor4ub(GLubyte red, GLubyte green, GLubyte blue, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4ub)(red, green, blue, alpha);
+      _next->glColor4ub(red, green, blue, alpha);
       break;
     }
 
@@ -2500,7 +2500,7 @@ static void REGAL_CALL emu_glColor4ubv(const GLubyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4ubv)(v);
+      _next->glColor4ubv(v);
       break;
     }
 
@@ -2562,7 +2562,7 @@ static void REGAL_CALL emu_glColor4ui(GLuint red, GLuint green, GLuint blue, GLu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4ui)(red, green, blue, alpha);
+      _next->glColor4ui(red, green, blue, alpha);
       break;
     }
 
@@ -2624,7 +2624,7 @@ static void REGAL_CALL emu_glColor4uiv(const GLuint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4uiv)(v);
+      _next->glColor4uiv(v);
       break;
     }
 
@@ -2686,7 +2686,7 @@ static void REGAL_CALL emu_glColor4us(GLushort red, GLushort green, GLushort blu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4us)(red, green, blue, alpha);
+      _next->glColor4us(red, green, blue, alpha);
       break;
     }
 
@@ -2748,7 +2748,7 @@ static void REGAL_CALL emu_glColor4usv(const GLushort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColor4usv)(v);
+      _next->glColor4usv(v);
       break;
     }
 
@@ -2783,7 +2783,7 @@ static void REGAL_CALL emu_glColorMask(GLboolean red, GLboolean green, GLboolean
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glColorMask)(red, green, blue, alpha);
+  _next->glColorMask(red, green, blue, alpha);
 }
 
 static void REGAL_CALL emu_glColorMaterial(GLenum face, GLenum mode)
@@ -2848,7 +2848,7 @@ static void REGAL_CALL emu_glColorMaterial(GLenum face, GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColorMaterial)(face, mode);
+      _next->glColorMaterial(face, mode);
       break;
     }
 
@@ -2926,7 +2926,7 @@ static void REGAL_CALL emu_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyPixels)(x, y, width, height, type);
+      _next->glCopyPixels(x, y, width, height, type);
       break;
     }
 
@@ -2977,7 +2977,7 @@ static void REGAL_CALL emu_glCullFace(GLenum mode)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glCullFace)(mode);
+  _next->glCullFace(mode);
 }
 
 static void REGAL_CALL emu_glDeleteLists(GLuint list, GLsizei range)
@@ -3050,7 +3050,7 @@ static void REGAL_CALL emu_glDeleteLists(GLuint list, GLsizei range)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteLists)(list, range);
+      _next->glDeleteLists(list, range);
       break;
     }
 
@@ -3085,7 +3085,7 @@ static void REGAL_CALL emu_glDepthFunc(GLenum func)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDepthFunc)(func);
+  _next->glDepthFunc(func);
 }
 
 static void REGAL_CALL emu_glDepthMask(GLboolean flag)
@@ -3115,7 +3115,7 @@ static void REGAL_CALL emu_glDepthMask(GLboolean flag)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDepthMask)(flag);
+  _next->glDepthMask(flag);
 }
 
 static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
@@ -3161,9 +3161,9 @@ static void REGAL_CALL emu_glDepthRange(GLclampd zNear, GLclampd zFar)
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
   if (_context->isES2())
-    _next->call(& _next->glDepthRangef)((GLclampf)zNear,(GLclampf)zFar);
+    _next->glDepthRangef((GLclampf)zNear,(GLclampf)zFar);
    else
-     _next->call(& _next->glDepthRange)(zNear, zFar);
+     _next->glDepthRange(zNear, zFar);
 }
 
 static void REGAL_CALL emu_glDisable(GLenum cap)
@@ -3290,7 +3290,7 @@ static void REGAL_CALL emu_glDisable(GLenum cap)
          }
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisable)(cap);
+      _next->glDisable(cap);
       break;
     }
 
@@ -3374,7 +3374,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
           if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
-            return _next->call(&_next->glDrawBuffer)(mode);
+            return _next->glDrawBuffer(mode);
         }
       }
       #endif
@@ -3382,7 +3382,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawBuffer)(mode);
+      _next->glDrawBuffer(mode);
       break;
     }
 
@@ -3460,7 +3460,7 @@ static void REGAL_CALL emu_glDrawPixels(GLsizei width, GLsizei height, GLenum fo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawPixels)(width, height, format, type, pixels);
+      _next->glDrawPixels(width, height, format, type, pixels);
       break;
     }
 
@@ -3538,7 +3538,7 @@ static void REGAL_CALL emu_glEdgeFlag(GLboolean flag)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEdgeFlag)(flag);
+      _next->glEdgeFlag(flag);
       break;
     }
 
@@ -3670,7 +3670,7 @@ static void REGAL_CALL emu_glEnable(GLenum cap)
          }
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnable)(cap);
+      _next->glEnable(cap);
       break;
     }
 
@@ -3732,7 +3732,7 @@ static void REGAL_CALL emu_glEnd(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnd)();
+      _next->glEnd();
       break;
     }
 
@@ -3810,7 +3810,7 @@ static void REGAL_CALL emu_glEndList(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEndList)();
+      _next->glEndList();
       break;
     }
 
@@ -3888,7 +3888,7 @@ static void REGAL_CALL emu_glEvalCoord1d(GLdouble u)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord1d)(u);
+      _next->glEvalCoord1d(u);
       break;
     }
 
@@ -3966,7 +3966,7 @@ static void REGAL_CALL emu_glEvalCoord1dv(const GLdouble *u)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord1dv)(u);
+      _next->glEvalCoord1dv(u);
       break;
     }
 
@@ -4044,7 +4044,7 @@ static void REGAL_CALL emu_glEvalCoord1f(GLfloat u)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord1f)(u);
+      _next->glEvalCoord1f(u);
       break;
     }
 
@@ -4122,7 +4122,7 @@ static void REGAL_CALL emu_glEvalCoord1fv(const GLfloat *u)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord1fv)(u);
+      _next->glEvalCoord1fv(u);
       break;
     }
 
@@ -4200,7 +4200,7 @@ static void REGAL_CALL emu_glEvalCoord2d(GLdouble u, GLdouble v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord2d)(u, v);
+      _next->glEvalCoord2d(u, v);
       break;
     }
 
@@ -4278,7 +4278,7 @@ static void REGAL_CALL emu_glEvalCoord2dv(const GLdouble *u)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord2dv)(u);
+      _next->glEvalCoord2dv(u);
       break;
     }
 
@@ -4356,7 +4356,7 @@ static void REGAL_CALL emu_glEvalCoord2f(GLfloat u, GLfloat v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord2f)(u, v);
+      _next->glEvalCoord2f(u, v);
       break;
     }
 
@@ -4434,7 +4434,7 @@ static void REGAL_CALL emu_glEvalCoord2fv(const GLfloat *u)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalCoord2fv)(u);
+      _next->glEvalCoord2fv(u);
       break;
     }
 
@@ -4512,7 +4512,7 @@ static void REGAL_CALL emu_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalMesh1)(mode, i1, i2);
+      _next->glEvalMesh1(mode, i1, i2);
       break;
     }
 
@@ -4590,7 +4590,7 @@ static void REGAL_CALL emu_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalMesh2)(mode, i1, i2, j1, j2);
+      _next->glEvalMesh2(mode, i1, i2, j1, j2);
       break;
     }
 
@@ -4668,7 +4668,7 @@ static void REGAL_CALL emu_glEvalPoint1(GLint i)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalPoint1)(i);
+      _next->glEvalPoint1(i);
       break;
     }
 
@@ -4746,7 +4746,7 @@ static void REGAL_CALL emu_glEvalPoint2(GLint i, GLint j)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEvalPoint2)(i, j);
+      _next->glEvalPoint2(i, j);
       break;
     }
 
@@ -4808,7 +4808,7 @@ static void REGAL_CALL emu_glFogf(GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFogf)(pname, param);
+      _next->glFogf(pname, param);
       break;
     }
 
@@ -4870,7 +4870,7 @@ static void REGAL_CALL emu_glFogfv(GLenum pname, const GLfloat *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFogfv)(pname, params);
+      _next->glFogfv(pname, params);
       break;
     }
 
@@ -4932,7 +4932,7 @@ static void REGAL_CALL emu_glFogi(GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFogi)(pname, param);
+      _next->glFogi(pname, param);
       break;
     }
 
@@ -4994,7 +4994,7 @@ static void REGAL_CALL emu_glFogiv(GLenum pname, const GLint *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFogiv)(pname, params);
+      _next->glFogiv(pname, params);
       break;
     }
 
@@ -5045,7 +5045,7 @@ static void REGAL_CALL emu_glFrontFace(GLenum mode)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFrontFace)(mode);
+  _next->glFrontFace(mode);
 }
 
 static void REGAL_CALL emu_glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
@@ -5102,7 +5102,7 @@ static void REGAL_CALL emu_glFrustum(GLdouble left, GLdouble right, GLdouble bot
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFrustum)(left, right, bottom, top, zNear, zFar);
+      _next->glFrustum(left, right, bottom, top, zNear, zFar);
       break;
     }
 
@@ -5180,7 +5180,7 @@ static GLuint REGAL_CALL emu_glGenLists(GLsizei range)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glGenLists)(range);
+      return _next->glGenLists(range);
     }
 
   }
@@ -5335,7 +5335,7 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetBooleanv)(pname, params);
+      _next->glGetBooleanv(pname, params);
       break;
     }
 
@@ -5505,7 +5505,7 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetDoublev)(pname, params);
+      _next->glGetDoublev(pname, params);
       break;
     }
 
@@ -5675,7 +5675,7 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetFloatv)(pname, params);
+      _next->glGetFloatv(pname, params);
       break;
     }
 
@@ -5845,7 +5845,7 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetIntegerv)(pname, params);
+      _next->glGetIntegerv(pname, params);
       break;
     }
 
@@ -5895,7 +5895,7 @@ static void REGAL_CALL emu_glGetLightfv(GLenum light, GLenum pname, GLfloat *par
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetLightfv)(light, pname, params);
+      _next->glGetLightfv(light, pname, params);
       break;
     }
 
@@ -5945,7 +5945,7 @@ static void REGAL_CALL emu_glGetLightiv(GLenum light, GLenum pname, GLint *param
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetLightiv)(light, pname, params);
+      _next->glGetLightiv(light, pname, params);
       break;
     }
 
@@ -6021,7 +6021,7 @@ static void REGAL_CALL emu_glGetMaterialfv(GLenum face, GLenum pname, GLfloat *p
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMaterialfv)(face, pname, params);
+      _next->glGetMaterialfv(face, pname, params);
       break;
     }
 
@@ -6097,7 +6097,7 @@ static void REGAL_CALL emu_glGetMaterialiv(GLenum face, GLenum pname, GLint *par
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMaterialiv)(face, pname, params);
+      _next->glGetMaterialiv(face, pname, params);
       break;
     }
 
@@ -6147,7 +6147,7 @@ static void REGAL_CALL emu_glGetPolygonStipple(GLubyte *mask)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetPolygonStipple)(mask);
+      _next->glGetPolygonStipple(mask);
       break;
     }
 
@@ -6238,7 +6238,7 @@ static void REGAL_CALL emu_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat *p
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexEnvfv)(target, pname, params);
+      _next->glGetTexEnvfv(target, pname, params);
       break;
     }
 
@@ -6329,7 +6329,7 @@ static void REGAL_CALL emu_glGetTexEnviv(GLenum target, GLenum pname, GLint *par
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexEnviv)(target, pname, params);
+      _next->glGetTexEnviv(target, pname, params);
       break;
     }
 
@@ -6394,7 +6394,7 @@ static void REGAL_CALL emu_glGetTexGendv(GLenum coord, GLenum pname, GLdouble *p
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexGendv)(coord, pname, params);
+      _next->glGetTexGendv(coord, pname, params);
       break;
     }
 
@@ -6459,7 +6459,7 @@ static void REGAL_CALL emu_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat *pa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexGenfv)(coord, pname, params);
+      _next->glGetTexGenfv(coord, pname, params);
       break;
     }
 
@@ -6524,7 +6524,7 @@ static void REGAL_CALL emu_glGetTexGeniv(GLenum coord, GLenum pname, GLint *para
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexGeniv)(coord, pname, params);
+      _next->glGetTexGeniv(coord, pname, params);
       break;
     }
 
@@ -6602,7 +6602,7 @@ static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum form
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexImage)(target, level, format, type, pixels);
+      _next->glGetTexImage(target, level, format, type, pixels);
       break;
     }
 
@@ -6694,7 +6694,7 @@ static void REGAL_CALL emu_glGetTexLevelParameterfv(GLenum target, GLint level, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexLevelParameterfv)(target, level, pname, params);
+      _next->glGetTexLevelParameterfv(target, level, pname, params);
       break;
     }
 
@@ -6786,7 +6786,7 @@ static void REGAL_CALL emu_glGetTexLevelParameteriv(GLenum target, GLint level, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexLevelParameteriv)(target, level, pname, params);
+      _next->glGetTexLevelParameteriv(target, level, pname, params);
       break;
     }
 
@@ -6894,7 +6894,7 @@ static void REGAL_CALL emu_glGetTexParameterfv(GLenum target, GLenum pname, GLfl
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexParameterfv)(target, pname, params);
+      _next->glGetTexParameterfv(target, pname, params);
       break;
     }
 
@@ -7024,7 +7024,7 @@ static void REGAL_CALL emu_glGetTexParameteriv(GLenum target, GLenum pname, GLin
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexParameteriv)(target, pname, params);
+      _next->glGetTexParameteriv(target, pname, params);
       break;
     }
 
@@ -7091,7 +7091,7 @@ static void REGAL_CALL emu_glHint(GLenum target, GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glHint)(target, mode);
+      _next->glHint(target, mode);
       break;
     }
 
@@ -7126,7 +7126,7 @@ static void REGAL_CALL emu_glIndexMask(GLuint mask)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glIndexMask)(mask);
+  _next->glIndexMask(mask);
 }
 
 static GLboolean REGAL_CALL emu_glIsEnabled(GLenum cap)
@@ -7233,7 +7233,7 @@ static GLboolean REGAL_CALL emu_glIsEnabled(GLenum cap)
          }
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsEnabled)(cap);
+      return _next->glIsEnabled(cap);
     }
 
   }
@@ -7302,7 +7302,7 @@ static void REGAL_CALL emu_glLightModelf(GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLightModelf)(pname, param);
+      _next->glLightModelf(pname, param);
       break;
     }
 
@@ -7372,7 +7372,7 @@ static void REGAL_CALL emu_glLightModelfv(GLenum pname, const GLfloat *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLightModelfv)(pname, params);
+      _next->glLightModelfv(pname, params);
       break;
     }
 
@@ -7442,7 +7442,7 @@ static void REGAL_CALL emu_glLightModeli(GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLightModeli)(pname, param);
+      _next->glLightModeli(pname, param);
       break;
     }
 
@@ -7512,7 +7512,7 @@ static void REGAL_CALL emu_glLightModeliv(GLenum pname, const GLint *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLightModeliv)(pname, params);
+      _next->glLightModeliv(pname, params);
       break;
     }
 
@@ -7582,7 +7582,7 @@ static void REGAL_CALL emu_glLightf(GLenum light, GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLightf)(light, pname, param);
+      _next->glLightf(light, pname, param);
       break;
     }
 
@@ -7652,7 +7652,7 @@ static void REGAL_CALL emu_glLightfv(GLenum light, GLenum pname, const GLfloat *
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLightfv)(light, pname, params);
+      _next->glLightfv(light, pname, params);
       break;
     }
 
@@ -7722,7 +7722,7 @@ static void REGAL_CALL emu_glLighti(GLenum light, GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLighti)(light, pname, param);
+      _next->glLighti(light, pname, param);
       break;
     }
 
@@ -7792,7 +7792,7 @@ static void REGAL_CALL emu_glLightiv(GLenum light, GLenum pname, const GLint *pa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLightiv)(light, pname, params);
+      _next->glLightiv(light, pname, params);
       break;
     }
 
@@ -7878,7 +7878,7 @@ static void REGAL_CALL emu_glLineStipple(GLint factor, GLushort pattern)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLineStipple)(factor, pattern);
+      _next->glLineStipple(factor, pattern);
       break;
     }
 
@@ -7964,7 +7964,7 @@ static void REGAL_CALL emu_glLineWidth(GLfloat width)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLineWidth)(width);
+      _next->glLineWidth(width);
       break;
     }
 
@@ -7999,7 +7999,7 @@ static void REGAL_CALL emu_glListBase(GLuint base)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glListBase)(base);
+  _next->glListBase(base);
 }
 
 static void REGAL_CALL emu_glLoadIdentity(void)
@@ -8067,7 +8067,7 @@ static void REGAL_CALL emu_glLoadIdentity(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLoadIdentity)();
+      _next->glLoadIdentity();
       break;
     }
 
@@ -8140,7 +8140,7 @@ static void REGAL_CALL emu_glLoadMatrixd(const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLoadMatrixd)(m);
+      _next->glLoadMatrixd(m);
       break;
     }
 
@@ -8213,7 +8213,7 @@ static void REGAL_CALL emu_glLoadMatrixf(const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLoadMatrixf)(m);
+      _next->glLoadMatrixf(m);
       break;
     }
 
@@ -8248,7 +8248,7 @@ static void REGAL_CALL emu_glLogicOp(GLenum opcode)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glLogicOp)(opcode);
+  _next->glLogicOp(opcode);
 }
 
 static void REGAL_CALL emu_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
@@ -8321,7 +8321,7 @@ static void REGAL_CALL emu_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLin
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMap1d)(target, u1, u2, stride, order, points);
+      _next->glMap1d(target, u1, u2, stride, order, points);
       break;
     }
 
@@ -8399,7 +8399,7 @@ static void REGAL_CALL emu_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMap1f)(target, u1, u2, stride, order, points);
+      _next->glMap1f(target, u1, u2, stride, order, points);
       break;
     }
 
@@ -8477,7 +8477,7 @@ static void REGAL_CALL emu_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLin
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMap2d)(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+      _next->glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
       break;
     }
 
@@ -8555,7 +8555,7 @@ static void REGAL_CALL emu_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMap2f)(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
+      _next->glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
       break;
     }
 
@@ -8641,7 +8641,7 @@ static void REGAL_CALL emu_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMapGrid1d)(un, u1, u2);
+      _next->glMapGrid1d(un, u1, u2);
       break;
     }
 
@@ -8727,7 +8727,7 @@ static void REGAL_CALL emu_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMapGrid1f)(un, u1, u2);
+      _next->glMapGrid1f(un, u1, u2);
       break;
     }
 
@@ -8813,7 +8813,7 @@ static void REGAL_CALL emu_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMapGrid2d)(un, u1, u2, vn, v1, v2);
+      _next->glMapGrid2d(un, u1, u2, vn, v1, v2);
       break;
     }
 
@@ -8899,7 +8899,7 @@ static void REGAL_CALL emu_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMapGrid2f)(un, u1, u2, vn, v1, v2);
+      _next->glMapGrid2f(un, u1, u2, vn, v1, v2);
       break;
     }
 
@@ -8969,7 +8969,7 @@ static void REGAL_CALL emu_glMaterialf(GLenum face, GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMaterialf)(face, pname, param);
+      _next->glMaterialf(face, pname, param);
       break;
     }
 
@@ -9039,7 +9039,7 @@ static void REGAL_CALL emu_glMaterialfv(GLenum face, GLenum pname, const GLfloat
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMaterialfv)(face, pname, params);
+      _next->glMaterialfv(face, pname, params);
       break;
     }
 
@@ -9109,7 +9109,7 @@ static void REGAL_CALL emu_glMateriali(GLenum face, GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMateriali)(face, pname, param);
+      _next->glMateriali(face, pname, param);
       break;
     }
 
@@ -9179,7 +9179,7 @@ static void REGAL_CALL emu_glMaterialiv(GLenum face, GLenum pname, const GLint *
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMaterialiv)(face, pname, params);
+      _next->glMaterialiv(face, pname, params);
       break;
     }
 
@@ -9261,7 +9261,7 @@ static void REGAL_CALL emu_glMatrixMode(GLenum mode)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowMatrixMode(mode)) {
-          _dispatch.call(&_dispatch.glMatrixMode)(mode);
+          _dispatch.glMatrixMode(mode);
         }
         return;
       }
@@ -9271,7 +9271,7 @@ static void REGAL_CALL emu_glMatrixMode(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixMode)(mode);
+      _next->glMatrixMode(mode);
       break;
     }
 
@@ -9344,7 +9344,7 @@ static void REGAL_CALL emu_glMultMatrixd(const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultMatrixd)(m);
+      _next->glMultMatrixd(m);
       break;
     }
 
@@ -9417,7 +9417,7 @@ static void REGAL_CALL emu_glMultMatrixf(const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultMatrixf)(m);
+      _next->glMultMatrixf(m);
       break;
     }
 
@@ -9495,7 +9495,7 @@ static void REGAL_CALL emu_glNewList(GLuint list, GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNewList)(list, mode);
+      _next->glNewList(list, mode);
       break;
     }
 
@@ -9557,7 +9557,7 @@ static void REGAL_CALL emu_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3b)(nx, ny, nz);
+      _next->glNormal3b(nx, ny, nz);
       break;
     }
 
@@ -9619,7 +9619,7 @@ static void REGAL_CALL emu_glNormal3bv(const GLbyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3bv)(v);
+      _next->glNormal3bv(v);
       break;
     }
 
@@ -9681,7 +9681,7 @@ static void REGAL_CALL emu_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3d)(nx, ny, nz);
+      _next->glNormal3d(nx, ny, nz);
       break;
     }
 
@@ -9743,7 +9743,7 @@ static void REGAL_CALL emu_glNormal3dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3dv)(v);
+      _next->glNormal3dv(v);
       break;
     }
 
@@ -9805,7 +9805,7 @@ static void REGAL_CALL emu_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3f)(nx, ny, nz);
+      _next->glNormal3f(nx, ny, nz);
       break;
     }
 
@@ -9867,7 +9867,7 @@ static void REGAL_CALL emu_glNormal3fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3fv)(v);
+      _next->glNormal3fv(v);
       break;
     }
 
@@ -9929,7 +9929,7 @@ static void REGAL_CALL emu_glNormal3i(GLint nx, GLint ny, GLint nz)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3i)(nx, ny, nz);
+      _next->glNormal3i(nx, ny, nz);
       break;
     }
 
@@ -9991,7 +9991,7 @@ static void REGAL_CALL emu_glNormal3iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3iv)(v);
+      _next->glNormal3iv(v);
       break;
     }
 
@@ -10053,7 +10053,7 @@ static void REGAL_CALL emu_glNormal3s(GLshort nx, GLshort ny, GLshort nz)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3s)(nx, ny, nz);
+      _next->glNormal3s(nx, ny, nz);
       break;
     }
 
@@ -10115,7 +10115,7 @@ static void REGAL_CALL emu_glNormal3sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormal3sv)(v);
+      _next->glNormal3sv(v);
       break;
     }
 
@@ -10177,7 +10177,7 @@ static void REGAL_CALL emu_glOrtho(GLdouble left, GLdouble right, GLdouble botto
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glOrtho)(left, right, bottom, top, zNear, zFar);
+      _next->glOrtho(left, right, bottom, top, zNear, zFar);
       break;
     }
 
@@ -10271,7 +10271,7 @@ static void REGAL_CALL emu_glPixelStoref(GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPixelStoref)(pname, param);
+      _next->glPixelStoref(pname, param);
       break;
     }
 
@@ -10372,7 +10372,7 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPixelStorei)(pname, param);
+      _next->glPixelStorei(pname, param);
       break;
     }
 
@@ -10458,7 +10458,7 @@ static void REGAL_CALL emu_glPixelTransferf(GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPixelTransferf)(pname, param);
+      _next->glPixelTransferf(pname, param);
       break;
     }
 
@@ -10544,7 +10544,7 @@ static void REGAL_CALL emu_glPixelTransferi(GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPixelTransferi)(pname, param);
+      _next->glPixelTransferi(pname, param);
       break;
     }
 
@@ -10630,7 +10630,7 @@ static void REGAL_CALL emu_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPixelZoom)(xfactor, yfactor);
+      _next->glPixelZoom(xfactor, yfactor);
       break;
     }
 
@@ -10665,7 +10665,7 @@ static void REGAL_CALL emu_glPointSize(GLfloat size)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPointSize)(size);
+  _next->glPointSize(size);
 }
 
 static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
@@ -10753,7 +10753,7 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPolygonMode)(face, mode);
+      _next->glPolygonMode(face, mode);
       break;
     }
 
@@ -10788,7 +10788,7 @@ static void REGAL_CALL emu_glPolygonStipple(const GLubyte *mask)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPolygonStipple)(mask);
+  _next->glPolygonStipple(mask);
 }
 
 static void REGAL_CALL emu_glPopAttrib(void)
@@ -10831,7 +10831,7 @@ static void REGAL_CALL emu_glPopAttrib(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPopAttrib)();
+      _next->glPopAttrib();
       break;
     }
 
@@ -10904,7 +10904,7 @@ static void REGAL_CALL emu_glPopMatrix(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPopMatrix)();
+      _next->glPopMatrix();
       break;
     }
 
@@ -10952,7 +10952,7 @@ static void REGAL_CALL emu_glPushAttrib(GLbitfield mask)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPushAttrib)(mask);
+      _next->glPushAttrib(mask);
       break;
     }
 
@@ -11025,7 +11025,7 @@ static void REGAL_CALL emu_glPushMatrix(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPushMatrix)();
+      _next->glPushMatrix();
       break;
     }
 
@@ -11115,7 +11115,7 @@ static void REGAL_CALL emu_glRasterPos2d(GLdouble x, GLdouble y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2d)(x, y);
+      _next->glRasterPos2d(x, y);
       break;
     }
 
@@ -11193,7 +11193,7 @@ static void REGAL_CALL emu_glRasterPos2dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2dv)(v);
+      _next->glRasterPos2dv(v);
       break;
     }
 
@@ -11283,7 +11283,7 @@ static void REGAL_CALL emu_glRasterPos2f(GLfloat x, GLfloat y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2f)(x, y);
+      _next->glRasterPos2f(x, y);
       break;
     }
 
@@ -11361,7 +11361,7 @@ static void REGAL_CALL emu_glRasterPos2fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2fv)(v);
+      _next->glRasterPos2fv(v);
       break;
     }
 
@@ -11451,7 +11451,7 @@ static void REGAL_CALL emu_glRasterPos2i(GLint x, GLint y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2i)(x, y);
+      _next->glRasterPos2i(x, y);
       break;
     }
 
@@ -11529,7 +11529,7 @@ static void REGAL_CALL emu_glRasterPos2iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2iv)(v);
+      _next->glRasterPos2iv(v);
       break;
     }
 
@@ -11619,7 +11619,7 @@ static void REGAL_CALL emu_glRasterPos2s(GLshort x, GLshort y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2s)(x, y);
+      _next->glRasterPos2s(x, y);
       break;
     }
 
@@ -11697,7 +11697,7 @@ static void REGAL_CALL emu_glRasterPos2sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos2sv)(v);
+      _next->glRasterPos2sv(v);
       break;
     }
 
@@ -11787,7 +11787,7 @@ static void REGAL_CALL emu_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3d)(x, y, z);
+      _next->glRasterPos3d(x, y, z);
       break;
     }
 
@@ -11865,7 +11865,7 @@ static void REGAL_CALL emu_glRasterPos3dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3dv)(v);
+      _next->glRasterPos3dv(v);
       break;
     }
 
@@ -11955,7 +11955,7 @@ static void REGAL_CALL emu_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3f)(x, y, z);
+      _next->glRasterPos3f(x, y, z);
       break;
     }
 
@@ -12033,7 +12033,7 @@ static void REGAL_CALL emu_glRasterPos3fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3fv)(v);
+      _next->glRasterPos3fv(v);
       break;
     }
 
@@ -12123,7 +12123,7 @@ static void REGAL_CALL emu_glRasterPos3i(GLint x, GLint y, GLint z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3i)(x, y, z);
+      _next->glRasterPos3i(x, y, z);
       break;
     }
 
@@ -12201,7 +12201,7 @@ static void REGAL_CALL emu_glRasterPos3iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3iv)(v);
+      _next->glRasterPos3iv(v);
       break;
     }
 
@@ -12291,7 +12291,7 @@ static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3s)(x, y, z);
+      _next->glRasterPos3s(x, y, z);
       break;
     }
 
@@ -12369,7 +12369,7 @@ static void REGAL_CALL emu_glRasterPos3sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos3sv)(v);
+      _next->glRasterPos3sv(v);
       break;
     }
 
@@ -12447,7 +12447,7 @@ static void REGAL_CALL emu_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLd
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4d)(x, y, z, w);
+      _next->glRasterPos4d(x, y, z, w);
       break;
     }
 
@@ -12525,7 +12525,7 @@ static void REGAL_CALL emu_glRasterPos4dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4dv)(v);
+      _next->glRasterPos4dv(v);
       break;
     }
 
@@ -12603,7 +12603,7 @@ static void REGAL_CALL emu_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4f)(x, y, z, w);
+      _next->glRasterPos4f(x, y, z, w);
       break;
     }
 
@@ -12681,7 +12681,7 @@ static void REGAL_CALL emu_glRasterPos4fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4fv)(v);
+      _next->glRasterPos4fv(v);
       break;
     }
 
@@ -12759,7 +12759,7 @@ static void REGAL_CALL emu_glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4i)(x, y, z, w);
+      _next->glRasterPos4i(x, y, z, w);
       break;
     }
 
@@ -12837,7 +12837,7 @@ static void REGAL_CALL emu_glRasterPos4iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4iv)(v);
+      _next->glRasterPos4iv(v);
       break;
     }
 
@@ -12915,7 +12915,7 @@ static void REGAL_CALL emu_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshor
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4s)(x, y, z, w);
+      _next->glRasterPos4s(x, y, z, w);
       break;
     }
 
@@ -12993,7 +12993,7 @@ static void REGAL_CALL emu_glRasterPos4sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRasterPos4sv)(v);
+      _next->glRasterPos4sv(v);
       break;
     }
 
@@ -13075,9 +13075,9 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
           return ;
         }
         if (_context->isES2() && _context->info->gl_nv_read_buffer)
-          _next->call(&_next->glReadBufferNV)(mode);
+          _next->glReadBufferNV(mode);
         else
-          _next->call(&_next->glReadBuffer)(mode);
+          _next->glReadBuffer(mode);
         return;
       }
       #endif
@@ -13085,7 +13085,7 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glReadBuffer)(mode);
+      _next->glReadBuffer(mode);
       break;
     }
 
@@ -13175,7 +13175,7 @@ static void REGAL_CALL emu_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdoub
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRectd)(x1, y1, x2, y2);
+      _next->glRectd(x1, y1, x2, y2);
       break;
     }
 
@@ -13235,7 +13235,7 @@ static void REGAL_CALL emu_glRectdv(const GLdouble *v1, const GLdouble *v2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRectdv)(v1, v2);
+      _next->glRectdv(v1, v2);
       break;
     }
 
@@ -13325,7 +13325,7 @@ static void REGAL_CALL emu_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRectf)(x1, y1, x2, y2);
+      _next->glRectf(x1, y1, x2, y2);
       break;
     }
 
@@ -13385,7 +13385,7 @@ static void REGAL_CALL emu_glRectfv(const GLfloat *v1, const GLfloat *v2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRectfv)(v1, v2);
+      _next->glRectfv(v1, v2);
       break;
     }
 
@@ -13475,7 +13475,7 @@ static void REGAL_CALL emu_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRecti)(x1, y1, x2, y2);
+      _next->glRecti(x1, y1, x2, y2);
       break;
     }
 
@@ -13535,7 +13535,7 @@ static void REGAL_CALL emu_glRectiv(const GLint *v1, const GLint *v2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRectiv)(v1, v2);
+      _next->glRectiv(v1, v2);
       break;
     }
 
@@ -13625,7 +13625,7 @@ static void REGAL_CALL emu_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRects)(x1, y1, x2, y2);
+      _next->glRects(x1, y1, x2, y2);
       break;
     }
 
@@ -13685,7 +13685,7 @@ static void REGAL_CALL emu_glRectsv(const GLshort *v1, const GLshort *v2)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRectsv)(v1, v2);
+      _next->glRectsv(v1, v2);
       break;
     }
 
@@ -13762,7 +13762,7 @@ static GLint REGAL_CALL emu_glRenderMode(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glRenderMode)(mode);
+      return _next->glRenderMode(mode);
     }
 
   }
@@ -13834,7 +13834,7 @@ static void REGAL_CALL emu_glRotated(GLdouble angle, GLdouble x, GLdouble y, GLd
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRotated)(angle, x, y, z);
+      _next->glRotated(angle, x, y, z);
       break;
     }
 
@@ -13907,7 +13907,7 @@ static void REGAL_CALL emu_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRotatef)(angle, x, y, z);
+      _next->glRotatef(angle, x, y, z);
       break;
     }
 
@@ -13980,7 +13980,7 @@ static void REGAL_CALL emu_glScaled(GLdouble x, GLdouble y, GLdouble z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glScaled)(x, y, z);
+      _next->glScaled(x, y, z);
       break;
     }
 
@@ -14053,7 +14053,7 @@ static void REGAL_CALL emu_glScalef(GLfloat x, GLfloat y, GLfloat z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glScalef)(x, y, z);
+      _next->glScalef(x, y, z);
       break;
     }
 
@@ -14088,7 +14088,7 @@ static void REGAL_CALL emu_glScissor(GLint x, GLint y, GLsizei width, GLsizei he
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glScissor)(x, y, width, height);
+  _next->glScissor(x, y, width, height);
 }
 
 static void REGAL_CALL emu_glShadeModel(GLenum mode)
@@ -14192,7 +14192,7 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glShadeModel)(mode);
+      _next->glShadeModel(mode);
       break;
     }
 
@@ -14227,7 +14227,7 @@ static void REGAL_CALL emu_glStencilFunc(GLenum func, GLint ref, GLuint mask)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glStencilFunc)(func, ref, mask);
+  _next->glStencilFunc(func, ref, mask);
 }
 
 static void REGAL_CALL emu_glStencilMask(GLuint mask)
@@ -14257,7 +14257,7 @@ static void REGAL_CALL emu_glStencilMask(GLuint mask)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glStencilMask)(mask);
+  _next->glStencilMask(mask);
 }
 
 static void REGAL_CALL emu_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
@@ -14287,7 +14287,7 @@ static void REGAL_CALL emu_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glStencilOp)(fail, zfail, zpass);
+  _next->glStencilOp(fail, zfail, zpass);
 }
 
 static void REGAL_CALL emu_glTexCoord1d(GLdouble s)
@@ -14344,7 +14344,7 @@ static void REGAL_CALL emu_glTexCoord1d(GLdouble s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1d)(s);
+      _next->glTexCoord1d(s);
       break;
     }
 
@@ -14406,7 +14406,7 @@ static void REGAL_CALL emu_glTexCoord1dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1dv)(v);
+      _next->glTexCoord1dv(v);
       break;
     }
 
@@ -14468,7 +14468,7 @@ static void REGAL_CALL emu_glTexCoord1f(GLfloat s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1f)(s);
+      _next->glTexCoord1f(s);
       break;
     }
 
@@ -14530,7 +14530,7 @@ static void REGAL_CALL emu_glTexCoord1fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1fv)(v);
+      _next->glTexCoord1fv(v);
       break;
     }
 
@@ -14592,7 +14592,7 @@ static void REGAL_CALL emu_glTexCoord1i(GLint s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1i)(s);
+      _next->glTexCoord1i(s);
       break;
     }
 
@@ -14654,7 +14654,7 @@ static void REGAL_CALL emu_glTexCoord1iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1iv)(v);
+      _next->glTexCoord1iv(v);
       break;
     }
 
@@ -14716,7 +14716,7 @@ static void REGAL_CALL emu_glTexCoord1s(GLshort s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1s)(s);
+      _next->glTexCoord1s(s);
       break;
     }
 
@@ -14778,7 +14778,7 @@ static void REGAL_CALL emu_glTexCoord1sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord1sv)(v);
+      _next->glTexCoord1sv(v);
       break;
     }
 
@@ -14840,7 +14840,7 @@ static void REGAL_CALL emu_glTexCoord2d(GLdouble s, GLdouble t)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2d)(s, t);
+      _next->glTexCoord2d(s, t);
       break;
     }
 
@@ -14902,7 +14902,7 @@ static void REGAL_CALL emu_glTexCoord2dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2dv)(v);
+      _next->glTexCoord2dv(v);
       break;
     }
 
@@ -14964,7 +14964,7 @@ static void REGAL_CALL emu_glTexCoord2f(GLfloat s, GLfloat t)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2f)(s, t);
+      _next->glTexCoord2f(s, t);
       break;
     }
 
@@ -15026,7 +15026,7 @@ static void REGAL_CALL emu_glTexCoord2fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2fv)(v);
+      _next->glTexCoord2fv(v);
       break;
     }
 
@@ -15088,7 +15088,7 @@ static void REGAL_CALL emu_glTexCoord2i(GLint s, GLint t)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2i)(s, t);
+      _next->glTexCoord2i(s, t);
       break;
     }
 
@@ -15150,7 +15150,7 @@ static void REGAL_CALL emu_glTexCoord2iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2iv)(v);
+      _next->glTexCoord2iv(v);
       break;
     }
 
@@ -15212,7 +15212,7 @@ static void REGAL_CALL emu_glTexCoord2s(GLshort s, GLshort t)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2s)(s, t);
+      _next->glTexCoord2s(s, t);
       break;
     }
 
@@ -15274,7 +15274,7 @@ static void REGAL_CALL emu_glTexCoord2sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord2sv)(v);
+      _next->glTexCoord2sv(v);
       break;
     }
 
@@ -15336,7 +15336,7 @@ static void REGAL_CALL emu_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3d)(s, t, r);
+      _next->glTexCoord3d(s, t, r);
       break;
     }
 
@@ -15398,7 +15398,7 @@ static void REGAL_CALL emu_glTexCoord3dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3dv)(v);
+      _next->glTexCoord3dv(v);
       break;
     }
 
@@ -15460,7 +15460,7 @@ static void REGAL_CALL emu_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3f)(s, t, r);
+      _next->glTexCoord3f(s, t, r);
       break;
     }
 
@@ -15522,7 +15522,7 @@ static void REGAL_CALL emu_glTexCoord3fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3fv)(v);
+      _next->glTexCoord3fv(v);
       break;
     }
 
@@ -15584,7 +15584,7 @@ static void REGAL_CALL emu_glTexCoord3i(GLint s, GLint t, GLint r)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3i)(s, t, r);
+      _next->glTexCoord3i(s, t, r);
       break;
     }
 
@@ -15646,7 +15646,7 @@ static void REGAL_CALL emu_glTexCoord3iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3iv)(v);
+      _next->glTexCoord3iv(v);
       break;
     }
 
@@ -15708,7 +15708,7 @@ static void REGAL_CALL emu_glTexCoord3s(GLshort s, GLshort t, GLshort r)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3s)(s, t, r);
+      _next->glTexCoord3s(s, t, r);
       break;
     }
 
@@ -15770,7 +15770,7 @@ static void REGAL_CALL emu_glTexCoord3sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord3sv)(v);
+      _next->glTexCoord3sv(v);
       break;
     }
 
@@ -15832,7 +15832,7 @@ static void REGAL_CALL emu_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4d)(s, t, r, q);
+      _next->glTexCoord4d(s, t, r, q);
       break;
     }
 
@@ -15894,7 +15894,7 @@ static void REGAL_CALL emu_glTexCoord4dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4dv)(v);
+      _next->glTexCoord4dv(v);
       break;
     }
 
@@ -15956,7 +15956,7 @@ static void REGAL_CALL emu_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4f)(s, t, r, q);
+      _next->glTexCoord4f(s, t, r, q);
       break;
     }
 
@@ -16018,7 +16018,7 @@ static void REGAL_CALL emu_glTexCoord4fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4fv)(v);
+      _next->glTexCoord4fv(v);
       break;
     }
 
@@ -16080,7 +16080,7 @@ static void REGAL_CALL emu_glTexCoord4i(GLint s, GLint t, GLint r, GLint q)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4i)(s, t, r, q);
+      _next->glTexCoord4i(s, t, r, q);
       break;
     }
 
@@ -16142,7 +16142,7 @@ static void REGAL_CALL emu_glTexCoord4iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4iv)(v);
+      _next->glTexCoord4iv(v);
       break;
     }
 
@@ -16204,7 +16204,7 @@ static void REGAL_CALL emu_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4s)(s, t, r, q);
+      _next->glTexCoord4s(s, t, r, q);
       break;
     }
 
@@ -16266,7 +16266,7 @@ static void REGAL_CALL emu_glTexCoord4sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoord4sv)(v);
+      _next->glTexCoord4sv(v);
       break;
     }
 
@@ -16348,7 +16348,7 @@ static void REGAL_CALL emu_glTexEnvf(GLenum target, GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexEnvf)(target, pname, param);
+      _next->glTexEnvf(target, pname, param);
       break;
     }
 
@@ -16430,7 +16430,7 @@ static void REGAL_CALL emu_glTexEnvfv(GLenum target, GLenum pname, const GLfloat
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexEnvfv)(target, pname, params);
+      _next->glTexEnvfv(target, pname, params);
       break;
     }
 
@@ -16512,7 +16512,7 @@ static void REGAL_CALL emu_glTexEnvi(GLenum target, GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexEnvi)(target, pname, param);
+      _next->glTexEnvi(target, pname, param);
       break;
     }
 
@@ -16594,7 +16594,7 @@ static void REGAL_CALL emu_glTexEnviv(GLenum target, GLenum pname, const GLint *
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexEnviv)(target, pname, params);
+      _next->glTexEnviv(target, pname, params);
       break;
     }
 
@@ -16658,7 +16658,7 @@ static void REGAL_CALL emu_glTexGend(GLenum coord, GLenum pname, GLdouble param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexGend)(coord, pname, param);
+      _next->glTexGend(coord, pname, param);
       break;
     }
 
@@ -16722,7 +16722,7 @@ static void REGAL_CALL emu_glTexGendv(GLenum coord, GLenum pname, const GLdouble
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexGendv)(coord, pname, params);
+      _next->glTexGendv(coord, pname, params);
       break;
     }
 
@@ -16797,7 +16797,7 @@ static void REGAL_CALL emu_glTexGenf(GLenum coord, GLenum pname, GLfloat param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexGenf)(coord, pname, param);
+      _next->glTexGenf(coord, pname, param);
       break;
     }
 
@@ -16872,7 +16872,7 @@ static void REGAL_CALL emu_glTexGenfv(GLenum coord, GLenum pname, const GLfloat 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexGenfv)(coord, pname, params);
+      _next->glTexGenfv(coord, pname, params);
       break;
     }
 
@@ -16947,7 +16947,7 @@ static void REGAL_CALL emu_glTexGeni(GLenum coord, GLenum pname, GLint param)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexGeni)(coord, pname, param);
+      _next->glTexGeni(coord, pname, param);
       break;
     }
 
@@ -17022,7 +17022,7 @@ static void REGAL_CALL emu_glTexGeniv(GLenum coord, GLenum pname, const GLint *p
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexGeniv)(coord, pname, params);
+      _next->glTexGeniv(coord, pname, params);
       break;
     }
 
@@ -17108,7 +17108,7 @@ static void REGAL_CALL emu_glTexImage1D(GLenum target, GLint level, GLint intern
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexImage1D)(target, level, internalformat, width, border, format, type, pixels);
+      _next->glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
       break;
     }
 
@@ -17213,7 +17213,7 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexImage2D)(target, level, internalformat, width, height, border, format, type, pixels);
+      _next->glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
       break;
     }
 
@@ -17308,9 +17308,9 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
           return;
         GLfloat newparam;
         if (_context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(param), newparam))
-          _next->call(&_next->glTexParameterf)(target, pname, newparam);
+          _next->glTexParameterf(target, pname, newparam);
         else
-          _next->call(&_next->glTexParameterf)(target, pname, param);
+          _next->glTexParameterf(target, pname, param);
         return;
       }
       #endif
@@ -17318,7 +17318,7 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameterf)(target, pname, param);
+      _next->glTexParameterf(target, pname, param);
       break;
     }
 
@@ -17413,9 +17413,9 @@ static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const G
           return;
         GLfloat newparam;
         if (params && _context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(params[0]), newparam))
-          _next->call(&_next->glTexParameterf)(target, pname, newparam);
+          _next->glTexParameterf(target, pname, newparam);
         else
-          _next->call(&_next->glTexParameterfv)(target, pname, params);
+          _next->glTexParameterfv(target, pname, params);
         return;
       }
       #endif
@@ -17423,7 +17423,7 @@ static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameterfv)(target, pname, params);
+      _next->glTexParameterfv(target, pname, params);
       break;
     }
 
@@ -17518,9 +17518,9 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
           return;
         GLfloat newparam;
         if (_context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(param), newparam))
-          _next->call(&_next->glTexParameterf)(target, pname, newparam);
+          _next->glTexParameterf(target, pname, newparam);
         else
-          _next->call(&_next->glTexParameteri)(target, pname, param);
+          _next->glTexParameteri(target, pname, param);
         return;
       }
       #endif
@@ -17528,7 +17528,7 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameteri)(target, pname, param);
+      _next->glTexParameteri(target, pname, param);
       break;
     }
 
@@ -17623,9 +17623,9 @@ static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const G
           return;
         GLfloat newparam;
         if (params && _context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(params[0]), newparam))
-          _next->call(&_next->glTexParameterf)(target, pname, newparam);
+          _next->glTexParameterf(target, pname, newparam);
         else
-          _next->call(&_next->glTexParameteriv)(target, pname, params);
+          _next->glTexParameteriv(target, pname, params);
         return;
       }
       #endif
@@ -17633,7 +17633,7 @@ static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameteriv)(target, pname, params);
+      _next->glTexParameteriv(target, pname, params);
       break;
     }
 
@@ -17706,7 +17706,7 @@ static void REGAL_CALL emu_glTranslated(GLdouble x, GLdouble y, GLdouble z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTranslated)(x, y, z);
+      _next->glTranslated(x, y, z);
       break;
     }
 
@@ -17779,7 +17779,7 @@ static void REGAL_CALL emu_glTranslatef(GLfloat x, GLfloat y, GLfloat z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTranslatef)(x, y, z);
+      _next->glTranslatef(x, y, z);
       break;
     }
 
@@ -17841,7 +17841,7 @@ static void REGAL_CALL emu_glVertex2d(GLdouble x, GLdouble y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2d)(x, y);
+      _next->glVertex2d(x, y);
       break;
     }
 
@@ -17903,7 +17903,7 @@ static void REGAL_CALL emu_glVertex2dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2dv)(v);
+      _next->glVertex2dv(v);
       break;
     }
 
@@ -17965,7 +17965,7 @@ static void REGAL_CALL emu_glVertex2f(GLfloat x, GLfloat y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2f)(x, y);
+      _next->glVertex2f(x, y);
       break;
     }
 
@@ -18027,7 +18027,7 @@ static void REGAL_CALL emu_glVertex2fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2fv)(v);
+      _next->glVertex2fv(v);
       break;
     }
 
@@ -18089,7 +18089,7 @@ static void REGAL_CALL emu_glVertex2i(GLint x, GLint y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2i)(x, y);
+      _next->glVertex2i(x, y);
       break;
     }
 
@@ -18151,7 +18151,7 @@ static void REGAL_CALL emu_glVertex2iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2iv)(v);
+      _next->glVertex2iv(v);
       break;
     }
 
@@ -18213,7 +18213,7 @@ static void REGAL_CALL emu_glVertex2s(GLshort x, GLshort y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2s)(x, y);
+      _next->glVertex2s(x, y);
       break;
     }
 
@@ -18275,7 +18275,7 @@ static void REGAL_CALL emu_glVertex2sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex2sv)(v);
+      _next->glVertex2sv(v);
       break;
     }
 
@@ -18337,7 +18337,7 @@ static void REGAL_CALL emu_glVertex3d(GLdouble x, GLdouble y, GLdouble z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3d)(x, y, z);
+      _next->glVertex3d(x, y, z);
       break;
     }
 
@@ -18399,7 +18399,7 @@ static void REGAL_CALL emu_glVertex3dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3dv)(v);
+      _next->glVertex3dv(v);
       break;
     }
 
@@ -18461,7 +18461,7 @@ static void REGAL_CALL emu_glVertex3f(GLfloat x, GLfloat y, GLfloat z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3f)(x, y, z);
+      _next->glVertex3f(x, y, z);
       break;
     }
 
@@ -18523,7 +18523,7 @@ static void REGAL_CALL emu_glVertex3fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3fv)(v);
+      _next->glVertex3fv(v);
       break;
     }
 
@@ -18585,7 +18585,7 @@ static void REGAL_CALL emu_glVertex3i(GLint x, GLint y, GLint z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3i)(x, y, z);
+      _next->glVertex3i(x, y, z);
       break;
     }
 
@@ -18647,7 +18647,7 @@ static void REGAL_CALL emu_glVertex3iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3iv)(v);
+      _next->glVertex3iv(v);
       break;
     }
 
@@ -18709,7 +18709,7 @@ static void REGAL_CALL emu_glVertex3s(GLshort x, GLshort y, GLshort z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3s)(x, y, z);
+      _next->glVertex3s(x, y, z);
       break;
     }
 
@@ -18771,7 +18771,7 @@ static void REGAL_CALL emu_glVertex3sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex3sv)(v);
+      _next->glVertex3sv(v);
       break;
     }
 
@@ -18833,7 +18833,7 @@ static void REGAL_CALL emu_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdoub
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4d)(x, y, z, w);
+      _next->glVertex4d(x, y, z, w);
       break;
     }
 
@@ -18895,7 +18895,7 @@ static void REGAL_CALL emu_glVertex4dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4dv)(v);
+      _next->glVertex4dv(v);
       break;
     }
 
@@ -18957,7 +18957,7 @@ static void REGAL_CALL emu_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4f)(x, y, z, w);
+      _next->glVertex4f(x, y, z, w);
       break;
     }
 
@@ -19019,7 +19019,7 @@ static void REGAL_CALL emu_glVertex4fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4fv)(v);
+      _next->glVertex4fv(v);
       break;
     }
 
@@ -19081,7 +19081,7 @@ static void REGAL_CALL emu_glVertex4i(GLint x, GLint y, GLint z, GLint w)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4i)(x, y, z, w);
+      _next->glVertex4i(x, y, z, w);
       break;
     }
 
@@ -19143,7 +19143,7 @@ static void REGAL_CALL emu_glVertex4iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4iv)(v);
+      _next->glVertex4iv(v);
       break;
     }
 
@@ -19205,7 +19205,7 @@ static void REGAL_CALL emu_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4s)(x, y, z, w);
+      _next->glVertex4s(x, y, z, w);
       break;
     }
 
@@ -19267,7 +19267,7 @@ static void REGAL_CALL emu_glVertex4sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertex4sv)(v);
+      _next->glVertex4sv(v);
       break;
     }
 
@@ -19317,7 +19317,7 @@ static void REGAL_CALL emu_glViewport(GLint x, GLint y, GLsizei width, GLsizei h
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glViewport)(x, y, width, height);
+  _next->glViewport(x, y, width, height);
 }
 
 // GL_VERSION_1_1
@@ -19422,7 +19422,7 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowTexture( target, texture )) {
-            _dispatch.call(&_dispatch.glBindTexture)( target, texture );
+            _dispatch.glBindTexture( target, texture );
         }
         return;
       }
@@ -19458,7 +19458,7 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
          }
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindTexture)(target, texture);
+      _next->glBindTexture(target, texture);
       break;
     }
 
@@ -19564,7 +19564,7 @@ static void REGAL_CALL emu_glColorPointer(GLint size, GLenum type, GLsizei strid
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColorPointer)(size, type, stride, pointer);
+      _next->glColorPointer(size, type, stride, pointer);
       break;
     }
 
@@ -19606,7 +19606,7 @@ static void REGAL_CALL emu_glCopyTexImage2D(GLenum target, GLint level, GLenum i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glCopyTexImage2D)(target, level, internalformat, x, y, width, height, border);
+  _next->glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
 }
 
 static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
@@ -19693,7 +19693,7 @@ static void REGAL_CALL emu_glDeleteTextures(GLsizei n, const GLuint *textures)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteTextures)(n, textures);
+      _next->glDeleteTextures(n, textures);
       break;
     }
 
@@ -19800,7 +19800,7 @@ static void REGAL_CALL emu_glDisableClientState(GLenum cap)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableClientState)(cap);
+      _next->glDisableClientState(cap);
       break;
     }
 
@@ -19895,7 +19895,7 @@ static void REGAL_CALL emu_glDrawArrays(GLenum mode, GLint first, GLsizei count)
         if ( ! _context->quads->glDrawArrays( _context, mode, first, count ) ) {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glDrawArrays)( mode, first, count );
+          return _next->glDrawArrays( mode, first, count );
         }
 
         return;
@@ -19906,7 +19906,7 @@ static void REGAL_CALL emu_glDrawArrays(GLenum mode, GLint first, GLsizei count)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawArrays)(mode, first, count);
+      _next->glDrawArrays(mode, first, count);
       break;
     }
 
@@ -19977,7 +19977,7 @@ static void REGAL_CALL emu_glDrawElements(GLenum mode, GLsizei count, GLenum typ
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawElements)(mode, count, type, indices);
+  _next->glDrawElements(mode, count, type, indices);
 }
 
 static void REGAL_CALL emu_glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
@@ -20050,7 +20050,7 @@ static void REGAL_CALL emu_glEdgeFlagPointer(GLsizei stride, const GLvoid *point
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEdgeFlagPointer)(stride, pointer);
+      _next->glEdgeFlagPointer(stride, pointer);
       break;
     }
 
@@ -20157,7 +20157,7 @@ static void REGAL_CALL emu_glEnableClientState(GLenum cap)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableClientState)(cap);
+      _next->glEnableClientState(cap);
       break;
     }
 
@@ -20256,7 +20256,7 @@ static void REGAL_CALL emu_glGenTextures(GLsizei n, GLuint *textures)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenTextures)(n, textures);
+      _next->glGenTextures(n, textures);
       break;
     }
 
@@ -20304,7 +20304,7 @@ static void REGAL_CALL emu_glIndexPointer(GLenum type, GLsizei stride, const GLv
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glIndexPointer)(type, stride, pointer);
+  _next->glIndexPointer(type, stride, pointer);
 }
 
 static void REGAL_CALL emu_glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer)
@@ -20385,7 +20385,7 @@ static void REGAL_CALL emu_glInterleavedArrays(GLenum format, GLsizei stride, co
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glInterleavedArrays)(format, stride, pointer);
+      _next->glInterleavedArrays(format, stride, pointer);
       break;
     }
 
@@ -20428,7 +20428,7 @@ static GLboolean REGAL_CALL emu_glIsTexture(GLuint texture)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsTexture)(texture);
+      return _next->glIsTexture(texture);
     }
 
   }
@@ -20533,7 +20533,7 @@ static void REGAL_CALL emu_glNormalPointer(GLenum type, GLsizei stride, const GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormalPointer)(type, stride, pointer);
+      _next->glNormalPointer(type, stride, pointer);
       break;
     }
 
@@ -20568,7 +20568,7 @@ static void REGAL_CALL emu_glPolygonOffset(GLfloat factor, GLfloat units)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPolygonOffset)(factor, units);
+  _next->glPolygonOffset(factor, units);
 }
 
 static void REGAL_CALL emu_glPopClientAttrib(void)
@@ -20613,7 +20613,7 @@ static void REGAL_CALL emu_glPopClientAttrib(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPopClientAttrib)();
+      _next->glPopClientAttrib();
       break;
     }
 
@@ -20663,7 +20663,7 @@ static void REGAL_CALL emu_glPushClientAttrib(GLbitfield mask)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPushClientAttrib)(mask);
+      _next->glPushClientAttrib(mask);
       break;
     }
 
@@ -20770,7 +20770,7 @@ static void REGAL_CALL emu_glTexCoordPointer(GLint size, GLenum type, GLsizei st
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoordPointer)(size, type, stride, pointer);
+      _next->glTexCoordPointer(size, type, stride, pointer);
       break;
     }
 
@@ -20888,7 +20888,7 @@ static void REGAL_CALL emu_glTexSubImage2D(GLenum target, GLint level, GLint xof
          }
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexSubImage2D)(target, level, xoffset, yoffset, width, height, format, type, pixels);
+      _next->glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
       break;
     }
 
@@ -20994,7 +20994,7 @@ static void REGAL_CALL emu_glVertexPointer(GLint size, GLenum type, GLsizei stri
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexPointer)(size, type, stride, pointer);
+      _next->glVertexPointer(size, type, stride, pointer);
       break;
     }
 
@@ -21031,7 +21031,7 @@ static void REGAL_CALL emu_glBlendColor(GLclampf red, GLclampf green, GLclampf b
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendColor)(red, green, blue, alpha);
+  _next->glBlendColor(red, green, blue, alpha);
 }
 
 static void REGAL_CALL emu_glBlendEquation(GLenum mode)
@@ -21061,7 +21061,7 @@ static void REGAL_CALL emu_glBlendEquation(GLenum mode)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendEquation)(mode);
+  _next->glBlendEquation(mode);
 }
 
 static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
@@ -21141,7 +21141,7 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glDrawElements)(mode, count, type, indices);
+          return _next->glDrawElements(mode, count, type, indices);
         }
       }
       #endif
@@ -21149,7 +21149,7 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawRangeElements)(mode, start, end, count, type, indices);
+      _next->glDrawRangeElements(mode, start, end, count, type, indices);
       break;
     }
 
@@ -21235,7 +21235,7 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexImage3D)(target, level, internalformat, width, height, depth, border, format, type, pixels);
+      _next->glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
       break;
     }
 
@@ -21346,7 +21346,7 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if( false == _context->dsa->ShadowActiveTexture( texture ) ) {
-            _dispatch.call(&_dispatch.glActiveTexture)( texture );
+            _dispatch.glActiveTexture( texture );
         }
         return;
       }
@@ -21356,7 +21356,7 @@ static void REGAL_CALL emu_glActiveTexture(GLenum texture)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glActiveTexture)(texture);
+      _next->glActiveTexture(texture);
       break;
     }
 
@@ -21453,7 +21453,7 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowClientActiveTexture( texture )) {
-          _dispatch.call(&_dispatch.glClientActiveTexture)( texture );
+          _dispatch.glClientActiveTexture( texture );
         }
         return;
       }
@@ -21480,7 +21480,7 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glClientActiveTexture)(texture);
+      _next->glClientActiveTexture(texture);
       break;
     }
 
@@ -21534,7 +21534,7 @@ static void REGAL_CALL emu_glCompressedTexImage2D(GLenum target, GLint level, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTexImage2D)(target, level, internalformat, width, height, border, imageSize, data);
+      _next->glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
       break;
     }
 
@@ -21588,7 +21588,7 @@ static void REGAL_CALL emu_glCompressedTexSubImage2D(GLenum target, GLint level,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTexSubImage2D)(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+      _next->glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
       break;
     }
 
@@ -21661,7 +21661,7 @@ static void REGAL_CALL emu_glLoadTransposeMatrixd(const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLoadTransposeMatrixd)(m);
+      _next->glLoadTransposeMatrixd(m);
       break;
     }
 
@@ -21734,7 +21734,7 @@ static void REGAL_CALL emu_glLoadTransposeMatrixf(const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLoadTransposeMatrixf)(m);
+      _next->glLoadTransposeMatrixf(m);
       break;
     }
 
@@ -21807,7 +21807,7 @@ static void REGAL_CALL emu_glMultTransposeMatrixd(const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultTransposeMatrixd)(m);
+      _next->glMultTransposeMatrixd(m);
       break;
     }
 
@@ -21880,7 +21880,7 @@ static void REGAL_CALL emu_glMultTransposeMatrixf(const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultTransposeMatrixf)(m);
+      _next->glMultTransposeMatrixf(m);
       break;
     }
 
@@ -21942,7 +21942,7 @@ static void REGAL_CALL emu_glMultiTexCoord1d(GLenum target, GLdouble s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1d)(target, s);
+      _next->glMultiTexCoord1d(target, s);
       break;
     }
 
@@ -22004,7 +22004,7 @@ static void REGAL_CALL emu_glMultiTexCoord1dv(GLenum target, const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1dv)(target, v);
+      _next->glMultiTexCoord1dv(target, v);
       break;
     }
 
@@ -22066,7 +22066,7 @@ static void REGAL_CALL emu_glMultiTexCoord1f(GLenum target, GLfloat s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1f)(target, s);
+      _next->glMultiTexCoord1f(target, s);
       break;
     }
 
@@ -22128,7 +22128,7 @@ static void REGAL_CALL emu_glMultiTexCoord1fv(GLenum target, const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1fv)(target, v);
+      _next->glMultiTexCoord1fv(target, v);
       break;
     }
 
@@ -22190,7 +22190,7 @@ static void REGAL_CALL emu_glMultiTexCoord1i(GLenum target, GLint s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1i)(target, s);
+      _next->glMultiTexCoord1i(target, s);
       break;
     }
 
@@ -22252,7 +22252,7 @@ static void REGAL_CALL emu_glMultiTexCoord1iv(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1iv)(target, v);
+      _next->glMultiTexCoord1iv(target, v);
       break;
     }
 
@@ -22314,7 +22314,7 @@ static void REGAL_CALL emu_glMultiTexCoord1s(GLenum target, GLshort s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1s)(target, s);
+      _next->glMultiTexCoord1s(target, s);
       break;
     }
 
@@ -22376,7 +22376,7 @@ static void REGAL_CALL emu_glMultiTexCoord1sv(GLenum target, const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1sv)(target, v);
+      _next->glMultiTexCoord1sv(target, v);
       break;
     }
 
@@ -22438,7 +22438,7 @@ static void REGAL_CALL emu_glMultiTexCoord2d(GLenum target, GLdouble s, GLdouble
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2d)(target, s, t);
+      _next->glMultiTexCoord2d(target, s, t);
       break;
     }
 
@@ -22500,7 +22500,7 @@ static void REGAL_CALL emu_glMultiTexCoord2dv(GLenum target, const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2dv)(target, v);
+      _next->glMultiTexCoord2dv(target, v);
       break;
     }
 
@@ -22562,7 +22562,7 @@ static void REGAL_CALL emu_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2f)(target, s, t);
+      _next->glMultiTexCoord2f(target, s, t);
       break;
     }
 
@@ -22624,7 +22624,7 @@ static void REGAL_CALL emu_glMultiTexCoord2fv(GLenum target, const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2fv)(target, v);
+      _next->glMultiTexCoord2fv(target, v);
       break;
     }
 
@@ -22686,7 +22686,7 @@ static void REGAL_CALL emu_glMultiTexCoord2i(GLenum target, GLint s, GLint t)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2i)(target, s, t);
+      _next->glMultiTexCoord2i(target, s, t);
       break;
     }
 
@@ -22748,7 +22748,7 @@ static void REGAL_CALL emu_glMultiTexCoord2iv(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2iv)(target, v);
+      _next->glMultiTexCoord2iv(target, v);
       break;
     }
 
@@ -22810,7 +22810,7 @@ static void REGAL_CALL emu_glMultiTexCoord2s(GLenum target, GLshort s, GLshort t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2s)(target, s, t);
+      _next->glMultiTexCoord2s(target, s, t);
       break;
     }
 
@@ -22872,7 +22872,7 @@ static void REGAL_CALL emu_glMultiTexCoord2sv(GLenum target, const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2sv)(target, v);
+      _next->glMultiTexCoord2sv(target, v);
       break;
     }
 
@@ -22934,7 +22934,7 @@ static void REGAL_CALL emu_glMultiTexCoord3d(GLenum target, GLdouble s, GLdouble
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3d)(target, s, t, r);
+      _next->glMultiTexCoord3d(target, s, t, r);
       break;
     }
 
@@ -22996,7 +22996,7 @@ static void REGAL_CALL emu_glMultiTexCoord3dv(GLenum target, const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3dv)(target, v);
+      _next->glMultiTexCoord3dv(target, v);
       break;
     }
 
@@ -23058,7 +23058,7 @@ static void REGAL_CALL emu_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3f)(target, s, t, r);
+      _next->glMultiTexCoord3f(target, s, t, r);
       break;
     }
 
@@ -23120,7 +23120,7 @@ static void REGAL_CALL emu_glMultiTexCoord3fv(GLenum target, const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3fv)(target, v);
+      _next->glMultiTexCoord3fv(target, v);
       break;
     }
 
@@ -23182,7 +23182,7 @@ static void REGAL_CALL emu_glMultiTexCoord3i(GLenum target, GLint s, GLint t, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3i)(target, s, t, r);
+      _next->glMultiTexCoord3i(target, s, t, r);
       break;
     }
 
@@ -23244,7 +23244,7 @@ static void REGAL_CALL emu_glMultiTexCoord3iv(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3iv)(target, v);
+      _next->glMultiTexCoord3iv(target, v);
       break;
     }
 
@@ -23306,7 +23306,7 @@ static void REGAL_CALL emu_glMultiTexCoord3s(GLenum target, GLshort s, GLshort t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3s)(target, s, t, r);
+      _next->glMultiTexCoord3s(target, s, t, r);
       break;
     }
 
@@ -23368,7 +23368,7 @@ static void REGAL_CALL emu_glMultiTexCoord3sv(GLenum target, const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3sv)(target, v);
+      _next->glMultiTexCoord3sv(target, v);
       break;
     }
 
@@ -23430,7 +23430,7 @@ static void REGAL_CALL emu_glMultiTexCoord4d(GLenum target, GLdouble s, GLdouble
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4d)(target, s, t, r, q);
+      _next->glMultiTexCoord4d(target, s, t, r, q);
       break;
     }
 
@@ -23492,7 +23492,7 @@ static void REGAL_CALL emu_glMultiTexCoord4dv(GLenum target, const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4dv)(target, v);
+      _next->glMultiTexCoord4dv(target, v);
       break;
     }
 
@@ -23554,7 +23554,7 @@ static void REGAL_CALL emu_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4f)(target, s, t, r, q);
+      _next->glMultiTexCoord4f(target, s, t, r, q);
       break;
     }
 
@@ -23616,7 +23616,7 @@ static void REGAL_CALL emu_glMultiTexCoord4fv(GLenum target, const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4fv)(target, v);
+      _next->glMultiTexCoord4fv(target, v);
       break;
     }
 
@@ -23678,7 +23678,7 @@ static void REGAL_CALL emu_glMultiTexCoord4i(GLenum target, GLint s, GLint t, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4i)(target, s, t, r, q);
+      _next->glMultiTexCoord4i(target, s, t, r, q);
       break;
     }
 
@@ -23740,7 +23740,7 @@ static void REGAL_CALL emu_glMultiTexCoord4iv(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4iv)(target, v);
+      _next->glMultiTexCoord4iv(target, v);
       break;
     }
 
@@ -23802,7 +23802,7 @@ static void REGAL_CALL emu_glMultiTexCoord4s(GLenum target, GLshort s, GLshort t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4s)(target, s, t, r, q);
+      _next->glMultiTexCoord4s(target, s, t, r, q);
       break;
     }
 
@@ -23864,7 +23864,7 @@ static void REGAL_CALL emu_glMultiTexCoord4sv(GLenum target, const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4sv)(target, v);
+      _next->glMultiTexCoord4sv(target, v);
       break;
     }
 
@@ -23899,7 +23899,7 @@ static void REGAL_CALL emu_glSampleCoverage(GLclampf value, GLboolean invert)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glSampleCoverage)(value, invert);
+  _next->glSampleCoverage(value, invert);
 }
 
 // GL_VERSION_1_4
@@ -23931,7 +23931,7 @@ static void REGAL_CALL emu_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactor
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendFuncSeparate)(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+  _next->glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 }
 
 static void REGAL_CALL emu_glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -24024,7 +24024,7 @@ static void REGAL_CALL emu_glFogCoordPointer(GLenum type, GLsizei stride, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFogCoordPointer)(type, stride, pointer);
+      _next->glFogCoordPointer(type, stride, pointer);
       break;
     }
 
@@ -24095,7 +24095,7 @@ static void REGAL_CALL emu_glMultiDrawArrays(GLenum mode, const GLint *first, co
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawArrays)(mode, first, count, primcount);
+  _next->glMultiDrawArrays(mode, first, count, primcount);
 }
 
 static void REGAL_CALL emu_glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
@@ -24161,7 +24161,7 @@ static void REGAL_CALL emu_glMultiDrawElements(GLenum mode, const GLsizei *count
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawElements)(mode, count, type, indices, primcount);
+  _next->glMultiDrawElements(mode, count, type, indices, primcount);
 }
 
 static void REGAL_CALL emu_glPointParameterf(GLenum pname, GLfloat param)
@@ -24191,7 +24191,7 @@ static void REGAL_CALL emu_glPointParameterf(GLenum pname, GLfloat param)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPointParameterf)(pname, param);
+  _next->glPointParameterf(pname, param);
 }
 
 static void REGAL_CALL emu_glPointParameterfv(GLenum pname, const GLfloat *params)
@@ -24221,7 +24221,7 @@ static void REGAL_CALL emu_glPointParameterfv(GLenum pname, const GLfloat *param
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPointParameterfv)(pname, params);
+  _next->glPointParameterfv(pname, params);
 }
 
 static void REGAL_CALL emu_glPointParameteri(GLenum pname, GLint param)
@@ -24251,7 +24251,7 @@ static void REGAL_CALL emu_glPointParameteri(GLenum pname, GLint param)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPointParameteri)(pname, param);
+  _next->glPointParameteri(pname, param);
 }
 
 static void REGAL_CALL emu_glPointParameteriv(GLenum pname, const GLint *params)
@@ -24281,7 +24281,7 @@ static void REGAL_CALL emu_glPointParameteriv(GLenum pname, const GLint *params)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPointParameteriv)(pname, params);
+  _next->glPointParameteriv(pname, params);
 }
 
 static void REGAL_CALL emu_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte blue)
@@ -24338,7 +24338,7 @@ static void REGAL_CALL emu_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte b
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3b)(red, green, blue);
+      _next->glSecondaryColor3b(red, green, blue);
       break;
     }
 
@@ -24400,7 +24400,7 @@ static void REGAL_CALL emu_glSecondaryColor3bv(const GLbyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3bv)(v);
+      _next->glSecondaryColor3bv(v);
       break;
     }
 
@@ -24462,7 +24462,7 @@ static void REGAL_CALL emu_glSecondaryColor3d(GLdouble red, GLdouble green, GLdo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3d)(red, green, blue);
+      _next->glSecondaryColor3d(red, green, blue);
       break;
     }
 
@@ -24524,7 +24524,7 @@ static void REGAL_CALL emu_glSecondaryColor3dv(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3dv)(v);
+      _next->glSecondaryColor3dv(v);
       break;
     }
 
@@ -24586,7 +24586,7 @@ static void REGAL_CALL emu_glSecondaryColor3f(GLfloat red, GLfloat green, GLfloa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3f)(red, green, blue);
+      _next->glSecondaryColor3f(red, green, blue);
       break;
     }
 
@@ -24648,7 +24648,7 @@ static void REGAL_CALL emu_glSecondaryColor3fv(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3fv)(v);
+      _next->glSecondaryColor3fv(v);
       break;
     }
 
@@ -24710,7 +24710,7 @@ static void REGAL_CALL emu_glSecondaryColor3i(GLint red, GLint green, GLint blue
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3i)(red, green, blue);
+      _next->glSecondaryColor3i(red, green, blue);
       break;
     }
 
@@ -24772,7 +24772,7 @@ static void REGAL_CALL emu_glSecondaryColor3iv(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3iv)(v);
+      _next->glSecondaryColor3iv(v);
       break;
     }
 
@@ -24834,7 +24834,7 @@ static void REGAL_CALL emu_glSecondaryColor3s(GLshort red, GLshort green, GLshor
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3s)(red, green, blue);
+      _next->glSecondaryColor3s(red, green, blue);
       break;
     }
 
@@ -24896,7 +24896,7 @@ static void REGAL_CALL emu_glSecondaryColor3sv(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3sv)(v);
+      _next->glSecondaryColor3sv(v);
       break;
     }
 
@@ -24958,7 +24958,7 @@ static void REGAL_CALL emu_glSecondaryColor3ub(GLubyte red, GLubyte green, GLuby
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3ub)(red, green, blue);
+      _next->glSecondaryColor3ub(red, green, blue);
       break;
     }
 
@@ -25020,7 +25020,7 @@ static void REGAL_CALL emu_glSecondaryColor3ubv(const GLubyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3ubv)(v);
+      _next->glSecondaryColor3ubv(v);
       break;
     }
 
@@ -25082,7 +25082,7 @@ static void REGAL_CALL emu_glSecondaryColor3ui(GLuint red, GLuint green, GLuint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3ui)(red, green, blue);
+      _next->glSecondaryColor3ui(red, green, blue);
       break;
     }
 
@@ -25144,7 +25144,7 @@ static void REGAL_CALL emu_glSecondaryColor3uiv(const GLuint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3uiv)(v);
+      _next->glSecondaryColor3uiv(v);
       break;
     }
 
@@ -25206,7 +25206,7 @@ static void REGAL_CALL emu_glSecondaryColor3us(GLushort red, GLushort green, GLu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3us)(red, green, blue);
+      _next->glSecondaryColor3us(red, green, blue);
       break;
     }
 
@@ -25268,7 +25268,7 @@ static void REGAL_CALL emu_glSecondaryColor3usv(const GLushort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3usv)(v);
+      _next->glSecondaryColor3usv(v);
       break;
     }
 
@@ -25374,7 +25374,7 @@ static void REGAL_CALL emu_glSecondaryColorPointer(GLint size, GLenum type, GLsi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColorPointer)(size, type, stride, pointer);
+      _next->glSecondaryColorPointer(size, type, stride, pointer);
       break;
     }
 
@@ -25464,7 +25464,7 @@ static void REGAL_CALL emu_glWindowPos2d(GLdouble x, GLdouble y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2d)(x, y);
+      _next->glWindowPos2d(x, y);
       break;
     }
 
@@ -25542,7 +25542,7 @@ static void REGAL_CALL emu_glWindowPos2dv(const GLdouble *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2dv)(p);
+      _next->glWindowPos2dv(p);
       break;
     }
 
@@ -25632,7 +25632,7 @@ static void REGAL_CALL emu_glWindowPos2f(GLfloat x, GLfloat y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2f)(x, y);
+      _next->glWindowPos2f(x, y);
       break;
     }
 
@@ -25710,7 +25710,7 @@ static void REGAL_CALL emu_glWindowPos2fv(const GLfloat *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2fv)(p);
+      _next->glWindowPos2fv(p);
       break;
     }
 
@@ -25800,7 +25800,7 @@ static void REGAL_CALL emu_glWindowPos2i(GLint x, GLint y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2i)(x, y);
+      _next->glWindowPos2i(x, y);
       break;
     }
 
@@ -25878,7 +25878,7 @@ static void REGAL_CALL emu_glWindowPos2iv(const GLint *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2iv)(p);
+      _next->glWindowPos2iv(p);
       break;
     }
 
@@ -25968,7 +25968,7 @@ static void REGAL_CALL emu_glWindowPos2s(GLshort x, GLshort y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2s)(x, y);
+      _next->glWindowPos2s(x, y);
       break;
     }
 
@@ -26046,7 +26046,7 @@ static void REGAL_CALL emu_glWindowPos2sv(const GLshort *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos2sv)(p);
+      _next->glWindowPos2sv(p);
       break;
     }
 
@@ -26136,7 +26136,7 @@ static void REGAL_CALL emu_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3d)(x, y, z);
+      _next->glWindowPos3d(x, y, z);
       break;
     }
 
@@ -26214,7 +26214,7 @@ static void REGAL_CALL emu_glWindowPos3dv(const GLdouble *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3dv)(p);
+      _next->glWindowPos3dv(p);
       break;
     }
 
@@ -26304,7 +26304,7 @@ static void REGAL_CALL emu_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3f)(x, y, z);
+      _next->glWindowPos3f(x, y, z);
       break;
     }
 
@@ -26382,7 +26382,7 @@ static void REGAL_CALL emu_glWindowPos3fv(const GLfloat *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3fv)(p);
+      _next->glWindowPos3fv(p);
       break;
     }
 
@@ -26472,7 +26472,7 @@ static void REGAL_CALL emu_glWindowPos3i(GLint x, GLint y, GLint z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3i)(x, y, z);
+      _next->glWindowPos3i(x, y, z);
       break;
     }
 
@@ -26550,7 +26550,7 @@ static void REGAL_CALL emu_glWindowPos3iv(const GLint *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3iv)(p);
+      _next->glWindowPos3iv(p);
       break;
     }
 
@@ -26640,7 +26640,7 @@ static void REGAL_CALL emu_glWindowPos3s(GLshort x, GLshort y, GLshort z)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3s)(x, y, z);
+      _next->glWindowPos3s(x, y, z);
       break;
     }
 
@@ -26718,7 +26718,7 @@ static void REGAL_CALL emu_glWindowPos3sv(const GLshort *p)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glWindowPos3sv)(p);
+      _next->glWindowPos3sv(p);
       break;
     }
 
@@ -26833,7 +26833,7 @@ static void REGAL_CALL emu_glBindBuffer(GLenum target, GLuint buffer)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowBuffer( target, buffer ) ) {
-            _dispatch.call(&_dispatch.glBindBuffer)(target, buffer);
+            _dispatch.glBindBuffer(target, buffer);
         }
         return;
       }
@@ -26843,7 +26843,7 @@ static void REGAL_CALL emu_glBindBuffer(GLenum target, GLuint buffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindBuffer)(target, buffer);
+      _next->glBindBuffer(target, buffer);
       break;
     }
 
@@ -26888,7 +26888,7 @@ static void REGAL_CALL emu_glBufferData(GLenum target, GLsizeiptr size, const GL
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBufferData)(target, size, data, usage);
+  _next->glBufferData(target, size, data, usage);
 }
 
 static void REGAL_CALL emu_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
@@ -26928,7 +26928,7 @@ static void REGAL_CALL emu_glBufferSubData(GLenum target, GLintptr offset, GLsiz
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBufferSubData)(target, offset, size, data);
+  _next->glBufferSubData(target, offset, size, data);
 }
 
 static void REGAL_CALL emu_glDeleteBuffers(GLsizei n, const GLuint *buffers)
@@ -27016,7 +27016,7 @@ static void REGAL_CALL emu_glDeleteBuffers(GLsizei n, const GLuint *buffers)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteBuffers)(n, buffers);
+      _next->glDeleteBuffers(n, buffers);
       break;
     }
 
@@ -27060,7 +27060,7 @@ static void REGAL_CALL emu_glGenBuffers(GLsizei n, GLuint *buffers)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenBuffers)(n, buffers);
+      _next->glGenBuffers(n, buffers);
       break;
     }
 
@@ -27105,7 +27105,7 @@ static void REGAL_CALL emu_glGetBufferParameteriv(GLenum target, GLenum pname, G
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetBufferParameteriv)(target, pname, params);
+  _next->glGetBufferParameteriv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glGetBufferPointerv(GLenum target, GLenum pname, GLvoid **params)
@@ -27145,7 +27145,7 @@ static void REGAL_CALL emu_glGetBufferPointerv(GLenum target, GLenum pname, GLvo
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetBufferPointerv)(target, pname, params);
+  _next->glGetBufferPointerv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data)
@@ -27185,7 +27185,7 @@ static void REGAL_CALL emu_glGetBufferSubData(GLenum target, GLintptr offset, GL
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetBufferSubData)(target, offset, size, data);
+  _next->glGetBufferSubData(target, offset, size, data);
 }
 
 static GLboolean REGAL_CALL emu_glIsBuffer(GLuint buffer)
@@ -27223,7 +27223,7 @@ static GLboolean REGAL_CALL emu_glIsBuffer(GLuint buffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsBuffer)(buffer);
+      return _next->glIsBuffer(buffer);
     }
 
   }
@@ -27298,7 +27298,7 @@ static GLvoid *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glMapBufferOES)(target, access);
+          return _next->glMapBufferOES(target, access);
         }
       }
       #endif
@@ -27306,7 +27306,7 @@ static GLvoid *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glMapBuffer)(target, access);
+      return _next->glMapBuffer(target, access);
     }
 
   }
@@ -27381,7 +27381,7 @@ static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glUnmapBufferOES)(target);
+          return _next->glUnmapBufferOES(target);
         }
       }
       #endif
@@ -27389,7 +27389,7 @@ static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glUnmapBuffer)(target);
+      return _next->glUnmapBuffer(target);
     }
 
   }
@@ -27425,7 +27425,7 @@ static void REGAL_CALL emu_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAl
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendEquationSeparate)(modeRGB, modeAlpha);
+  _next->glBlendEquationSeparate(modeRGB, modeAlpha);
 }
 
 static GLuint REGAL_CALL emu_glCreateShader(GLenum type)
@@ -27481,7 +27481,7 @@ static GLuint REGAL_CALL emu_glCreateShader(GLenum type)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glCreateShader)(type);
+      return _next->glCreateShader(type);
     }
 
   }
@@ -27525,7 +27525,7 @@ static void REGAL_CALL emu_glDeleteProgram(GLuint program)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteProgram)(program);
+  _next->glDeleteProgram(program);
 }
 
 static void REGAL_CALL emu_glDisableVertexAttribArray(GLuint index)
@@ -27614,7 +27614,7 @@ static void REGAL_CALL emu_glDisableVertexAttribArray(GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableVertexAttribArray)(index);
+      _next->glDisableVertexAttribArray(index);
       break;
     }
 
@@ -27706,7 +27706,7 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
           RegalAssert(_next);
           if (_context->info->gl_nv_draw_buffers)
           {
-            _next->call(&_next->glDrawBuffersNV)(n, bufs);
+            _next->glDrawBuffersNV(n, bufs);
             return;
           }
         }
@@ -27716,7 +27716,7 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawBuffers)(n, bufs);
+      _next->glDrawBuffers(n, bufs);
       break;
     }
 
@@ -27810,7 +27810,7 @@ static void REGAL_CALL emu_glEnableVertexAttribArray(GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableVertexAttribArray)(index);
+      _next->glEnableVertexAttribArray(index);
       break;
     }
 
@@ -27888,7 +27888,7 @@ static void REGAL_CALL emu_glGetVertexAttribPointerv(GLuint index, GLenum pname,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribPointerv)(index, pname, pointer);
+      _next->glGetVertexAttribPointerv(index, pname, pointer);
       break;
     }
 
@@ -27966,7 +27966,7 @@ static void REGAL_CALL emu_glGetVertexAttribdv(GLuint index, GLenum pname, GLdou
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribdv)(index, pname, params);
+      _next->glGetVertexAttribdv(index, pname, params);
       break;
     }
 
@@ -28044,7 +28044,7 @@ static void REGAL_CALL emu_glGetVertexAttribfv(GLuint index, GLenum pname, GLflo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribfv)(index, pname, params);
+      _next->glGetVertexAttribfv(index, pname, params);
       break;
     }
 
@@ -28122,7 +28122,7 @@ static void REGAL_CALL emu_glGetVertexAttribiv(GLuint index, GLenum pname, GLint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribiv)(index, pname, params);
+      _next->glGetVertexAttribiv(index, pname, params);
       break;
     }
 
@@ -28184,7 +28184,7 @@ static void REGAL_CALL emu_glLinkProgram(GLuint program)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLinkProgram)(program);
+      _next->glLinkProgram(program);
       break;
     }
 
@@ -28246,7 +28246,7 @@ static void REGAL_CALL emu_glShaderSource(GLuint shader, GLsizei count, const GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glShaderSource)(shader, count, string, length);
+      _next->glShaderSource(shader, count, string, length);
       break;
     }
 
@@ -28281,7 +28281,7 @@ static void REGAL_CALL emu_glStencilFuncSeparate(GLenum face, GLenum func, GLint
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glStencilFuncSeparate)(face, func, ref, mask);
+  _next->glStencilFuncSeparate(face, func, ref, mask);
 }
 
 static void REGAL_CALL emu_glStencilMaskSeparate(GLenum face, GLuint mask)
@@ -28311,7 +28311,7 @@ static void REGAL_CALL emu_glStencilMaskSeparate(GLenum face, GLuint mask)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glStencilMaskSeparate)(face, mask);
+  _next->glStencilMaskSeparate(face, mask);
 }
 
 static void REGAL_CALL emu_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass)
@@ -28341,7 +28341,7 @@ static void REGAL_CALL emu_glStencilOpSeparate(GLenum face, GLenum fail, GLenum 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glStencilOpSeparate)(face, fail, zfail, zpass);
+  _next->glStencilOpSeparate(face, fail, zfail, zpass);
 }
 
 static void REGAL_CALL emu_glUniform1f(GLint location, GLfloat v0)
@@ -28413,7 +28413,7 @@ static void REGAL_CALL emu_glUniform1f(GLint location, GLfloat v0)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1f)(location, v0);
+      _next->glUniform1f(location, v0);
       break;
     }
 
@@ -28490,7 +28490,7 @@ static void REGAL_CALL emu_glUniform1fv(GLint location, GLsizei count, const GLf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1fv)(location, count, value);
+      _next->glUniform1fv(location, count, value);
       break;
     }
 
@@ -28567,7 +28567,7 @@ static void REGAL_CALL emu_glUniform1i(GLint location, GLint v0)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1i)(location, v0);
+      _next->glUniform1i(location, v0);
       break;
     }
 
@@ -28644,7 +28644,7 @@ static void REGAL_CALL emu_glUniform1iv(GLint location, GLsizei count, const GLi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1iv)(location, count, value);
+      _next->glUniform1iv(location, count, value);
       break;
     }
 
@@ -28721,7 +28721,7 @@ static void REGAL_CALL emu_glUniform2f(GLint location, GLfloat v0, GLfloat v1)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2f)(location, v0, v1);
+      _next->glUniform2f(location, v0, v1);
       break;
     }
 
@@ -28798,7 +28798,7 @@ static void REGAL_CALL emu_glUniform2fv(GLint location, GLsizei count, const GLf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2fv)(location, count, value);
+      _next->glUniform2fv(location, count, value);
       break;
     }
 
@@ -28875,7 +28875,7 @@ static void REGAL_CALL emu_glUniform2i(GLint location, GLint v0, GLint v1)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2i)(location, v0, v1);
+      _next->glUniform2i(location, v0, v1);
       break;
     }
 
@@ -28952,7 +28952,7 @@ static void REGAL_CALL emu_glUniform2iv(GLint location, GLsizei count, const GLi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2iv)(location, count, value);
+      _next->glUniform2iv(location, count, value);
       break;
     }
 
@@ -29029,7 +29029,7 @@ static void REGAL_CALL emu_glUniform3f(GLint location, GLfloat v0, GLfloat v1, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3f)(location, v0, v1, v2);
+      _next->glUniform3f(location, v0, v1, v2);
       break;
     }
 
@@ -29106,7 +29106,7 @@ static void REGAL_CALL emu_glUniform3fv(GLint location, GLsizei count, const GLf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3fv)(location, count, value);
+      _next->glUniform3fv(location, count, value);
       break;
     }
 
@@ -29183,7 +29183,7 @@ static void REGAL_CALL emu_glUniform3i(GLint location, GLint v0, GLint v1, GLint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3i)(location, v0, v1, v2);
+      _next->glUniform3i(location, v0, v1, v2);
       break;
     }
 
@@ -29260,7 +29260,7 @@ static void REGAL_CALL emu_glUniform3iv(GLint location, GLsizei count, const GLi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3iv)(location, count, value);
+      _next->glUniform3iv(location, count, value);
       break;
     }
 
@@ -29337,7 +29337,7 @@ static void REGAL_CALL emu_glUniform4f(GLint location, GLfloat v0, GLfloat v1, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4f)(location, v0, v1, v2, v3);
+      _next->glUniform4f(location, v0, v1, v2, v3);
       break;
     }
 
@@ -29414,7 +29414,7 @@ static void REGAL_CALL emu_glUniform4fv(GLint location, GLsizei count, const GLf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4fv)(location, count, value);
+      _next->glUniform4fv(location, count, value);
       break;
     }
 
@@ -29491,7 +29491,7 @@ static void REGAL_CALL emu_glUniform4i(GLint location, GLint v0, GLint v1, GLint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4i)(location, v0, v1, v2, v3);
+      _next->glUniform4i(location, v0, v1, v2, v3);
       break;
     }
 
@@ -29568,7 +29568,7 @@ static void REGAL_CALL emu_glUniform4iv(GLint location, GLsizei count, const GLi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4iv)(location, count, value);
+      _next->glUniform4iv(location, count, value);
       break;
     }
 
@@ -29645,7 +29645,7 @@ static void REGAL_CALL emu_glUniformMatrix2fv(GLint location, GLsizei count, GLb
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix2fv)(location, count, transpose, value);
+      _next->glUniformMatrix2fv(location, count, transpose, value);
       break;
     }
 
@@ -29722,7 +29722,7 @@ static void REGAL_CALL emu_glUniformMatrix3fv(GLint location, GLsizei count, GLb
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix3fv)(location, count, transpose, value);
+      _next->glUniformMatrix3fv(location, count, transpose, value);
       break;
     }
 
@@ -29799,7 +29799,7 @@ static void REGAL_CALL emu_glUniformMatrix4fv(GLint location, GLsizei count, GLb
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix4fv)(location, count, transpose, value);
+      _next->glUniformMatrix4fv(location, count, transpose, value);
       break;
     }
 
@@ -29873,7 +29873,7 @@ static void REGAL_CALL emu_glUseProgram(GLuint program)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if( false == _context->dsa->ShadowGlslProgram( program ) ) {
-          _dispatch.call(&_dispatch.glUseProgram)(program);
+          _dispatch.glUseProgram(program);
         }
         return;
       }
@@ -29883,7 +29883,7 @@ static void REGAL_CALL emu_glUseProgram(GLuint program)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUseProgram)(program);
+      _next->glUseProgram(program);
       break;
     }
 
@@ -29925,7 +29925,7 @@ static void REGAL_CALL emu_glVertexAttrib1d(GLuint index, GLdouble x)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1d)(index, x);
+  _next->glVertexAttrib1d(index, x);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1dv(GLuint index, const GLdouble *v)
@@ -29962,7 +29962,7 @@ static void REGAL_CALL emu_glVertexAttrib1dv(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1dv)(index, v);
+  _next->glVertexAttrib1dv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1f(GLuint index, GLfloat x)
@@ -29999,7 +29999,7 @@ static void REGAL_CALL emu_glVertexAttrib1f(GLuint index, GLfloat x)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1f)(index, x);
+  _next->glVertexAttrib1f(index, x);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1fv(GLuint index, const GLfloat *v)
@@ -30036,7 +30036,7 @@ static void REGAL_CALL emu_glVertexAttrib1fv(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1fv)(index, v);
+  _next->glVertexAttrib1fv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1s(GLuint index, GLshort x)
@@ -30073,7 +30073,7 @@ static void REGAL_CALL emu_glVertexAttrib1s(GLuint index, GLshort x)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1s)(index, x);
+  _next->glVertexAttrib1s(index, x);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1sv(GLuint index, const GLshort *v)
@@ -30110,7 +30110,7 @@ static void REGAL_CALL emu_glVertexAttrib1sv(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1sv)(index, v);
+  _next->glVertexAttrib1sv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y)
@@ -30147,7 +30147,7 @@ static void REGAL_CALL emu_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2d)(index, x, y);
+  _next->glVertexAttrib2d(index, x, y);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2dv(GLuint index, const GLdouble *v)
@@ -30184,7 +30184,7 @@ static void REGAL_CALL emu_glVertexAttrib2dv(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2dv)(index, v);
+  _next->glVertexAttrib2dv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
@@ -30221,7 +30221,7 @@ static void REGAL_CALL emu_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2f)(index, x, y);
+  _next->glVertexAttrib2f(index, x, y);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2fv(GLuint index, const GLfloat *v)
@@ -30258,7 +30258,7 @@ static void REGAL_CALL emu_glVertexAttrib2fv(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2fv)(index, v);
+  _next->glVertexAttrib2fv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2s(GLuint index, GLshort x, GLshort y)
@@ -30295,7 +30295,7 @@ static void REGAL_CALL emu_glVertexAttrib2s(GLuint index, GLshort x, GLshort y)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2s)(index, x, y);
+  _next->glVertexAttrib2s(index, x, y);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2sv(GLuint index, const GLshort *v)
@@ -30332,7 +30332,7 @@ static void REGAL_CALL emu_glVertexAttrib2sv(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2sv)(index, v);
+  _next->glVertexAttrib2sv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z)
@@ -30369,7 +30369,7 @@ static void REGAL_CALL emu_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3d)(index, x, y, z);
+  _next->glVertexAttrib3d(index, x, y, z);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3dv(GLuint index, const GLdouble *v)
@@ -30406,7 +30406,7 @@ static void REGAL_CALL emu_glVertexAttrib3dv(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3dv)(index, v);
+  _next->glVertexAttrib3dv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z)
@@ -30443,7 +30443,7 @@ static void REGAL_CALL emu_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3f)(index, x, y, z);
+  _next->glVertexAttrib3f(index, x, y, z);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3fv(GLuint index, const GLfloat *v)
@@ -30480,7 +30480,7 @@ static void REGAL_CALL emu_glVertexAttrib3fv(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3fv)(index, v);
+  _next->glVertexAttrib3fv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z)
@@ -30517,7 +30517,7 @@ static void REGAL_CALL emu_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3s)(index, x, y, z);
+  _next->glVertexAttrib3s(index, x, y, z);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3sv(GLuint index, const GLshort *v)
@@ -30554,7 +30554,7 @@ static void REGAL_CALL emu_glVertexAttrib3sv(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3sv)(index, v);
+  _next->glVertexAttrib3sv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4Nbv(GLuint index, const GLbyte *v)
@@ -30591,7 +30591,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nbv(GLuint index, const GLbyte *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4Nbv)(index, v);
+  _next->glVertexAttrib4Nbv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4Niv(GLuint index, const GLint *v)
@@ -30628,7 +30628,7 @@ static void REGAL_CALL emu_glVertexAttrib4Niv(GLuint index, const GLint *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4Niv)(index, v);
+  _next->glVertexAttrib4Niv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4Nsv(GLuint index, const GLshort *v)
@@ -30665,7 +30665,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nsv(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4Nsv)(index, v);
+  _next->glVertexAttrib4Nsv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
@@ -30702,7 +30702,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4Nub)(index, x, y, z, w);
+  _next->glVertexAttrib4Nub(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4Nubv(GLuint index, const GLubyte *v)
@@ -30739,7 +30739,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nubv(GLuint index, const GLubyte *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4Nubv)(index, v);
+  _next->glVertexAttrib4Nubv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4Nusv(GLuint index, const GLushort *v)
@@ -30776,7 +30776,7 @@ static void REGAL_CALL emu_glVertexAttrib4Nusv(GLuint index, const GLushort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4Nusv)(index, v);
+  _next->glVertexAttrib4Nusv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4bv(GLuint index, const GLbyte *v)
@@ -30813,7 +30813,7 @@ static void REGAL_CALL emu_glVertexAttrib4bv(GLuint index, const GLbyte *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4bv)(index, v);
+  _next->glVertexAttrib4bv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
@@ -30850,7 +30850,7 @@ static void REGAL_CALL emu_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4d)(index, x, y, z, w);
+  _next->glVertexAttrib4d(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4dv(GLuint index, const GLdouble *v)
@@ -30887,7 +30887,7 @@ static void REGAL_CALL emu_glVertexAttrib4dv(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4dv)(index, v);
+  _next->glVertexAttrib4dv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
@@ -30924,7 +30924,7 @@ static void REGAL_CALL emu_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4f)(index, x, y, z, w);
+  _next->glVertexAttrib4f(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4fv(GLuint index, const GLfloat *v)
@@ -30961,7 +30961,7 @@ static void REGAL_CALL emu_glVertexAttrib4fv(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4fv)(index, v);
+  _next->glVertexAttrib4fv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4iv(GLuint index, const GLint *v)
@@ -30998,7 +30998,7 @@ static void REGAL_CALL emu_glVertexAttrib4iv(GLuint index, const GLint *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4iv)(index, v);
+  _next->glVertexAttrib4iv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
@@ -31035,7 +31035,7 @@ static void REGAL_CALL emu_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4s)(index, x, y, z, w);
+  _next->glVertexAttrib4s(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4sv(GLuint index, const GLshort *v)
@@ -31072,7 +31072,7 @@ static void REGAL_CALL emu_glVertexAttrib4sv(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4sv)(index, v);
+  _next->glVertexAttrib4sv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4ubv(GLuint index, const GLubyte *v)
@@ -31109,7 +31109,7 @@ static void REGAL_CALL emu_glVertexAttrib4ubv(GLuint index, const GLubyte *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4ubv)(index, v);
+  _next->glVertexAttrib4ubv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4usv(GLuint index, const GLushort *v)
@@ -31146,7 +31146,7 @@ static void REGAL_CALL emu_glVertexAttrib4usv(GLuint index, const GLushort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4usv)(index, v);
+  _next->glVertexAttrib4usv(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
@@ -31234,7 +31234,7 @@ static void REGAL_CALL emu_glVertexAttribPointer(GLuint index, GLint size, GLenu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexAttribPointer)(index, size, type, normalized, stride, pointer);
+      _next->glVertexAttribPointer(index, size, type, normalized, stride, pointer);
       break;
     }
 
@@ -31313,7 +31313,7 @@ static void REGAL_CALL emu_glUniformMatrix2x3fv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix2x3fv)(location, count, transpose, value);
+      _next->glUniformMatrix2x3fv(location, count, transpose, value);
       break;
     }
 
@@ -31390,7 +31390,7 @@ static void REGAL_CALL emu_glUniformMatrix2x4fv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix2x4fv)(location, count, transpose, value);
+      _next->glUniformMatrix2x4fv(location, count, transpose, value);
       break;
     }
 
@@ -31467,7 +31467,7 @@ static void REGAL_CALL emu_glUniformMatrix3x2fv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix3x2fv)(location, count, transpose, value);
+      _next->glUniformMatrix3x2fv(location, count, transpose, value);
       break;
     }
 
@@ -31544,7 +31544,7 @@ static void REGAL_CALL emu_glUniformMatrix3x4fv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix3x4fv)(location, count, transpose, value);
+      _next->glUniformMatrix3x4fv(location, count, transpose, value);
       break;
     }
 
@@ -31621,7 +31621,7 @@ static void REGAL_CALL emu_glUniformMatrix4x2fv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix4x2fv)(location, count, transpose, value);
+      _next->glUniformMatrix4x2fv(location, count, transpose, value);
       break;
     }
 
@@ -31698,7 +31698,7 @@ static void REGAL_CALL emu_glUniformMatrix4x3fv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix4x3fv)(location, count, transpose, value);
+      _next->glUniformMatrix4x3fv(location, count, transpose, value);
       break;
     }
 
@@ -31735,7 +31735,7 @@ static void REGAL_CALL emu_glClampColor(GLenum target, GLenum clamp)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glClampColor)(target, clamp);
+  _next->glClampColor(target, clamp);
 }
 
 static void REGAL_CALL emu_glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
@@ -31765,7 +31765,7 @@ static void REGAL_CALL emu_glColorMaski(GLuint index, GLboolean r, GLboolean g, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glColorMaski)(index, r, g, b, a);
+  _next->glColorMaski(index, r, g, b, a);
 }
 
 static void REGAL_CALL emu_glDisablei(GLenum cap, GLuint index)
@@ -31852,7 +31852,7 @@ static void REGAL_CALL emu_glDisablei(GLenum cap, GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisablei)(cap, index);
+      _next->glDisablei(cap, index);
       break;
     }
 
@@ -31944,7 +31944,7 @@ static void REGAL_CALL emu_glEnablei(GLenum cap, GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnablei)(cap, index);
+      _next->glEnablei(cap, index);
       break;
     }
 
@@ -31994,7 +31994,7 @@ static void REGAL_CALL emu_glGetBooleani_v(GLenum target, GLuint index, GLboolea
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetBooleani_v)(target, index, data);
+      _next->glGetBooleani_v(target, index, data);
       break;
     }
 
@@ -32078,7 +32078,7 @@ static void REGAL_CALL emu_glGetTexParameterIiv(GLenum target, GLenum pname, GLi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexParameterIiv)(target, pname, params);
+      _next->glGetTexParameterIiv(target, pname, params);
       break;
     }
 
@@ -32162,7 +32162,7 @@ static void REGAL_CALL emu_glGetTexParameterIuiv(GLenum target, GLenum pname, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTexParameterIuiv)(target, pname, params);
+      _next->glGetTexParameterIuiv(target, pname, params);
       break;
     }
 
@@ -32214,7 +32214,7 @@ static GLboolean REGAL_CALL emu_glIsEnabledi(GLenum target, GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsEnabledi)(target, index);
+      return _next->glIsEnabledi(target, index);
     }
 
   }
@@ -32282,7 +32282,7 @@ static void REGAL_CALL emu_glTexParameterIiv(GLenum target, GLenum pname, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameterIiv)(target, pname, params);
+      _next->glTexParameterIiv(target, pname, params);
       break;
     }
 
@@ -32351,7 +32351,7 @@ static void REGAL_CALL emu_glTexParameterIuiv(GLenum target, GLenum pname, const
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameterIuiv)(target, pname, params);
+      _next->glTexParameterIuiv(target, pname, params);
       break;
     }
 
@@ -32428,7 +32428,7 @@ static void REGAL_CALL emu_glUniform1ui(GLint location, GLuint v0)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1ui)(location, v0);
+      _next->glUniform1ui(location, v0);
       break;
     }
 
@@ -32505,7 +32505,7 @@ static void REGAL_CALL emu_glUniform1uiv(GLint location, GLsizei count, const GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1uiv)(location, count, value);
+      _next->glUniform1uiv(location, count, value);
       break;
     }
 
@@ -32582,7 +32582,7 @@ static void REGAL_CALL emu_glUniform2ui(GLint location, GLuint v0, GLuint v1)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2ui)(location, v0, v1);
+      _next->glUniform2ui(location, v0, v1);
       break;
     }
 
@@ -32659,7 +32659,7 @@ static void REGAL_CALL emu_glUniform2uiv(GLint location, GLsizei count, const GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2uiv)(location, count, value);
+      _next->glUniform2uiv(location, count, value);
       break;
     }
 
@@ -32736,7 +32736,7 @@ static void REGAL_CALL emu_glUniform3ui(GLint location, GLuint v0, GLuint v1, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3ui)(location, v0, v1, v2);
+      _next->glUniform3ui(location, v0, v1, v2);
       break;
     }
 
@@ -32813,7 +32813,7 @@ static void REGAL_CALL emu_glUniform3uiv(GLint location, GLsizei count, const GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3uiv)(location, count, value);
+      _next->glUniform3uiv(location, count, value);
       break;
     }
 
@@ -32890,7 +32890,7 @@ static void REGAL_CALL emu_glUniform4ui(GLint location, GLuint v0, GLuint v1, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4ui)(location, v0, v1, v2, v3);
+      _next->glUniform4ui(location, v0, v1, v2, v3);
       break;
     }
 
@@ -32967,7 +32967,7 @@ static void REGAL_CALL emu_glUniform4uiv(GLint location, GLsizei count, const GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4uiv)(location, count, value);
+      _next->glUniform4uiv(location, count, value);
       break;
     }
 
@@ -33015,7 +33015,7 @@ static void REGAL_CALL emu_glVertexAttribIPointer(GLuint index, GLint size, GLen
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttribIPointer)(index, size, type, stride, pointer);
+  _next->glVertexAttribIPointer(index, size, type, stride, pointer);
 }
 
 // GL_VERSION_3_1
@@ -33083,7 +33083,7 @@ static void REGAL_CALL emu_glDrawArraysInstanced(GLenum mode, GLint start, GLsiz
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawArraysInstanced)(mode, start, count, primcount);
+  _next->glDrawArraysInstanced(mode, start, count, primcount);
 }
 
 static void REGAL_CALL emu_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
@@ -33149,7 +33149,7 @@ static void REGAL_CALL emu_glDrawElementsInstanced(GLenum mode, GLsizei count, G
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawElementsInstanced)(mode, count, type, indices, primcount);
+  _next->glDrawElementsInstanced(mode, count, type, indices, primcount);
 }
 
 static void REGAL_CALL emu_glPrimitiveRestartIndex(GLuint index)
@@ -33192,7 +33192,7 @@ static void REGAL_CALL emu_glPrimitiveRestartIndex(GLuint index)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPrimitiveRestartIndex)(index);
+  _next->glPrimitiveRestartIndex(index);
 }
 
 static void REGAL_CALL emu_glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer)
@@ -33233,7 +33233,7 @@ static void REGAL_CALL emu_glTexBuffer(GLenum target, GLenum internalformat, GLu
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexBuffer)(target, internalformat, buffer);
+  _next->glTexBuffer(target, internalformat, buffer);
 }
 
 // GL_VERSION_3_2
@@ -33275,7 +33275,7 @@ static void REGAL_CALL emu_glFramebufferTexture(GLenum target, GLenum attachment
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTexture)(target, attachment, texture, level);
+  _next->glFramebufferTexture(target, attachment, texture, level);
 }
 
 static void REGAL_CALL emu_glFramebufferTextureFace(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
@@ -33315,7 +33315,7 @@ static void REGAL_CALL emu_glFramebufferTextureFace(GLenum target, GLenum attach
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureFace)(target, attachment, texture, level, face);
+  _next->glFramebufferTextureFace(target, attachment, texture, level, face);
 }
 
 // GL_VERSION_3_3
@@ -33360,7 +33360,7 @@ static void REGAL_CALL emu_glVertexAttribDivisor(GLuint index, GLuint divisor)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttribDivisor)(index, divisor);
+  _next->glVertexAttribDivisor(index, divisor);
 }
 
 // GL_VERSION_4_0
@@ -33392,7 +33392,7 @@ static void REGAL_CALL emu_glBlendEquationSeparatei(GLuint buf, GLenum modeRGB, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendEquationSeparatei)(buf, modeRGB, modeAlpha);
+  _next->glBlendEquationSeparatei(buf, modeRGB, modeAlpha);
 }
 
 static void REGAL_CALL emu_glBlendEquationi(GLuint buf, GLenum mode)
@@ -33422,7 +33422,7 @@ static void REGAL_CALL emu_glBlendEquationi(GLuint buf, GLenum mode)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendEquationi)(buf, mode);
+  _next->glBlendEquationi(buf, mode);
 }
 
 static void REGAL_CALL emu_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
@@ -33452,7 +33452,7 @@ static void REGAL_CALL emu_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenu
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendFuncSeparatei)(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+  _next->glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
 
 static void REGAL_CALL emu_glBlendFunci(GLuint buf, GLenum src, GLenum dst)
@@ -33482,7 +33482,7 @@ static void REGAL_CALL emu_glBlendFunci(GLuint buf, GLenum src, GLenum dst)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBlendFunci)(buf, src, dst);
+  _next->glBlendFunci(buf, src, dst);
 }
 
 // GL_3DFX_tbuffer
@@ -33558,7 +33558,7 @@ static void REGAL_CALL emu_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoi
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawArraysIndirectAMD)(mode, indirect, primcount, stride);
+  _next->glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
 }
 
 static void REGAL_CALL emu_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -33624,7 +33624,7 @@ static void REGAL_CALL emu_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum ty
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawElementsIndirectAMD)(mode, type, indirect, primcount, stride);
+  _next->glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
 }
 
 // GL_AMD_name_gen_delete
@@ -33711,7 +33711,7 @@ static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBlitFramebufferANGLE)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+      _next->glBlitFramebufferANGLE(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
       break;
     }
 
@@ -33794,7 +33794,7 @@ static void REGAL_CALL emu_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLs
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawElementArrayAPPLE)(mode, first, count);
+  _next->glDrawElementArrayAPPLE(mode, first, count);
 }
 
 static void REGAL_CALL emu_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
@@ -33842,7 +33842,7 @@ static void REGAL_CALL emu_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint star
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawRangeElementArrayAPPLE)(mode, start, end, first, count);
+  _next->glDrawRangeElementArrayAPPLE(mode, start, end, first, count);
 }
 
 static void REGAL_CALL emu_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
@@ -33908,7 +33908,7 @@ static void REGAL_CALL emu_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawElementArrayAPPLE)(mode, first, count, primcount);
+  _next->glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
 }
 
 static void REGAL_CALL emu_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
@@ -33956,7 +33956,7 @@ static void REGAL_CALL emu_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawRangeElementArrayAPPLE)(mode, start, end, first, count, primcount);
+  _next->glMultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount);
 }
 
 // GL_APPLE_fence
@@ -34009,7 +34009,7 @@ static void REGAL_CALL emu_glBindVertexArrayAPPLE(GLuint array)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBindVertexArrayAPPLE)(array);
+  _next->glBindVertexArrayAPPLE(array);
 }
 
 static void REGAL_CALL emu_glDeleteVertexArraysAPPLE(GLsizei n, const GLuint *arrays)
@@ -34049,7 +34049,7 @@ static void REGAL_CALL emu_glDeleteVertexArraysAPPLE(GLsizei n, const GLuint *ar
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteVertexArraysAPPLE)(n, arrays);
+  _next->glDeleteVertexArraysAPPLE(n, arrays);
 }
 
 // GL_APPLE_vertex_array_range
@@ -34085,7 +34085,7 @@ static void REGAL_CALL emu_glClearDepthf(GLclampf d)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glClearDepthf)(d);
+  _next->glClearDepthf(d);
 }
 
 static void REGAL_CALL emu_glDepthRangef(GLclampf n, GLclampf f)
@@ -34115,7 +34115,7 @@ static void REGAL_CALL emu_glDepthRangef(GLclampf n, GLclampf f)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDepthRangef)(n, f);
+  _next->glDepthRangef(n, f);
 }
 
 static void REGAL_CALL emu_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length)
@@ -34162,7 +34162,7 @@ static void REGAL_CALL emu_glShaderBinary(GLsizei count, const GLuint *shaders, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glShaderBinary)(count, shaders, binaryformat, binary, length);
+      _next->glShaderBinary(count, shaders, binaryformat, binary, length);
       break;
     }
 
@@ -34224,7 +34224,7 @@ static void REGAL_CALL emu_glDrawElementsInstancedBaseVertexBaseInstance(GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawElementsInstancedBaseVertexBaseInstance)(mode, count, type, indices, primcount, basevertex, baseinstance);
+      _next->glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, primcount, basevertex, baseinstance);
       break;
     }
 
@@ -34289,7 +34289,7 @@ static void REGAL_CALL emu_glCopyBufferSubData(GLenum readtarget, GLenum writeta
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glCopyBufferSubData)(readtarget, writetarget, readoffset, writeoffset, size);
+  _next->glCopyBufferSubData(readtarget, writetarget, readoffset, writeoffset, size);
 }
 
 // GL_ARB_copy_image
@@ -34373,7 +34373,7 @@ static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glDrawBuffers)(n, bufs);
+          _table.glDrawBuffers(n, bufs);
           return;
         }
       }
@@ -34382,7 +34382,7 @@ static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawBuffersARB)(n, bufs);
+      _next->glDrawBuffersARB(n, bufs);
       break;
     }
 
@@ -34485,7 +34485,7 @@ static void REGAL_CALL emu_glDrawElementsBaseVertex(GLenum mode, GLsizei count, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawElementsBaseVertex)(mode, count, type, indices, basevertex);
+      _next->glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
       break;
     }
 
@@ -34584,7 +34584,7 @@ static void REGAL_CALL emu_glDrawElementsInstancedBaseVertex(GLenum mode, GLsize
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawElementsInstancedBaseVertex)(mode, count, type, indices, primcount, basevertex);
+      _next->glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
       break;
     }
 
@@ -34685,7 +34685,7 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
           {
             DispatchTableGL *_next = _context->dispatcher.emulation.next();
             RegalAssert(_next);
-            return _next->call(&_next->glDrawElements)(mode, count, type, indices);
+            return _next->glDrawElements(mode, count, type, indices);
           }
           else
           {
@@ -34699,7 +34699,7 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawRangeElementsBaseVertex)(mode, start, end, count, type, indices, basevertex);
+      _next->glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
       break;
     }
 
@@ -34798,7 +34798,7 @@ static void REGAL_CALL emu_glMultiDrawElementsBaseVertex(GLenum mode, const GLsi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiDrawElementsBaseVertex)(mode, count, type, indices, primcount, basevertex);
+      _next->glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
       break;
     }
 
@@ -34871,7 +34871,7 @@ static void REGAL_CALL emu_glDrawArraysIndirect(GLenum mode, const GLvoid *indir
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawArraysIndirect)(mode, indirect);
+  _next->glDrawArraysIndirect(mode, indirect);
 }
 
 static void REGAL_CALL emu_glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect)
@@ -34937,7 +34937,7 @@ static void REGAL_CALL emu_glDrawElementsIndirect(GLenum mode, GLenum type, cons
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawElementsIndirect)(mode, type, indirect);
+  _next->glDrawElementsIndirect(mode, type, indirect);
 }
 
 // GL_ARB_draw_instanced
@@ -35005,7 +35005,7 @@ static void REGAL_CALL emu_glDrawArraysInstancedARB(GLenum mode, GLint start, GL
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawArraysInstancedARB)(mode, start, count, primcount);
+  _next->glDrawArraysInstancedARB(mode, start, count, primcount);
 }
 
 static void REGAL_CALL emu_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
@@ -35071,7 +35071,7 @@ static void REGAL_CALL emu_glDrawElementsInstancedARB(GLenum mode, GLsizei count
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawElementsInstancedARB)(mode, count, type, indices, primcount);
+  _next->glDrawElementsInstancedARB(mode, count, type, indices, primcount);
 }
 
 // GL_ARB_framebuffer_no_attachments
@@ -35135,7 +35135,7 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowFramebuffer( target, framebuffer ) ) {
-            _dispatch.call(&_dispatch.glBindFramebuffer)( target, framebuffer );
+            _dispatch.glBindFramebuffer( target, framebuffer );
         }
         return;
       }
@@ -35166,7 +35166,7 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindFramebuffer)(target, framebuffer);
+      _next->glBindFramebuffer(target, framebuffer);
       break;
     }
 
@@ -35226,7 +35226,7 @@ static void REGAL_CALL emu_glBindRenderbuffer(GLenum target, GLuint renderbuffer
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowRenderbuffer( target, renderbuffer ) ) {
-            _dispatch.call(&_dispatch.glBindRenderbuffer)( target, renderbuffer );
+            _dispatch.glBindRenderbuffer( target, renderbuffer );
         }
         return;
       }
@@ -35236,7 +35236,7 @@ static void REGAL_CALL emu_glBindRenderbuffer(GLenum target, GLuint renderbuffer
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindRenderbuffer)(target, renderbuffer);
+      _next->glBindRenderbuffer(target, renderbuffer);
       break;
     }
 
@@ -35304,8 +35304,8 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          if (_context->info->gl_nv_framebuffer_blit)  return _next->call(&_next->glBlitFramebufferNV)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-          if (_context->info->gl_ext_framebuffer_blit) return _next->call(&_next->glBlitFramebufferEXT)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          if (_context->info->gl_nv_framebuffer_blit)  return _next->glBlitFramebufferNV(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          if (_context->info->gl_ext_framebuffer_blit) return _next->glBlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
         }
       }
       #endif
@@ -35313,7 +35313,7 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBlitFramebuffer)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+      _next->glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
       break;
     }
 
@@ -35358,7 +35358,7 @@ static void REGAL_CALL emu_glDeleteFramebuffers(GLsizei n, const GLuint *framebu
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteFramebuffers)(n, framebuffers);
+  _next->glDeleteFramebuffers(n, framebuffers);
 }
 
 static void REGAL_CALL emu_glDeleteRenderbuffers(GLsizei n, const GLuint *renderbuffers)
@@ -35398,7 +35398,7 @@ static void REGAL_CALL emu_glDeleteRenderbuffers(GLsizei n, const GLuint *render
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteRenderbuffers)(n, renderbuffers);
+  _next->glDeleteRenderbuffers(n, renderbuffers);
 }
 
 static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
@@ -35468,7 +35468,7 @@ static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attac
         DispatchTableGL *_next = _context->dispatcher.emulation.next();
         RegalAssert(_next);
         if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-          _next->call(&_next->glFramebufferRenderbuffer)(target, attachment, renderbuffertarget, renderbuffer);
+          _next->glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
         return;
       }
       #endif
@@ -35476,7 +35476,7 @@ static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attac
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferRenderbuffer)(target, attachment, renderbuffertarget, renderbuffer);
+      _next->glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
       break;
     }
 
@@ -35536,7 +35536,7 @@ static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachme
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture1D)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+        _dispatch.glFramebufferTexture1D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
         return;
       }
       #endif
@@ -35563,7 +35563,7 @@ static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachme
         DispatchTableGL *_next = _context->dispatcher.emulation.next();
         RegalAssert(_next);
         if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-          _next->call(&_next->glFramebufferTexture1D)(target, attachment, textarget, texture, level);
+          _next->glFramebufferTexture1D(target, attachment, textarget, texture, level);
         return;
       }
       #endif
@@ -35571,7 +35571,7 @@ static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachme
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture1D)(target, attachment, textarget, texture, level);
+      _next->glFramebufferTexture1D(target, attachment, textarget, texture, level);
       break;
     }
 
@@ -35631,7 +35631,7 @@ static void REGAL_CALL emu_glFramebufferTexture2D(GLenum target, GLenum attachme
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture2D)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+        _dispatch.glFramebufferTexture2D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
         return;
       }
       #endif
@@ -35668,7 +35668,7 @@ static void REGAL_CALL emu_glFramebufferTexture2D(GLenum target, GLenum attachme
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture2D)(target, attachment, textarget, texture, level);
+      _next->glFramebufferTexture2D(target, attachment, textarget, texture, level);
       break;
     }
 
@@ -35743,7 +35743,7 @@ static void REGAL_CALL emu_glFramebufferTexture3D(GLenum target, GLenum attachme
         DispatchTableGL *_next = _context->dispatcher.emulation.next();
         RegalAssert(_next);
         if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-          _next->call(&_next->glFramebufferTexture3D)(target, attachment, textarget, texture, level, layer);
+          _next->glFramebufferTexture3D(target, attachment, textarget, texture, level, layer);
         return;
       }
       #endif
@@ -35751,7 +35751,7 @@ static void REGAL_CALL emu_glFramebufferTexture3D(GLenum target, GLenum attachme
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture3D)(target, attachment, textarget, texture, level, layer);
+      _next->glFramebufferTexture3D(target, attachment, textarget, texture, level, layer);
       break;
     }
 
@@ -35796,7 +35796,7 @@ static void REGAL_CALL emu_glFramebufferTextureLayer(GLenum target, GLenum attac
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureLayer)(target, attachment, texture, level, layer);
+  _next->glFramebufferTextureLayer(target, attachment, texture, level, layer);
 }
 
 static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
@@ -35885,7 +35885,7 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenerateMipmap)(target);
+      _next->glGenerateMipmap(target);
       break;
     }
 
@@ -35937,11 +35937,11 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameteriv(GLenum target, 
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glGetFramebufferAttachmentParameteriv)(target, attachment, pname, params);
+        _dispatch.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
         if (pname == GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME)
         {
           GLint attachType = GL_RENDERBUFFER;
-          _dispatch.call(&_dispatch.glGetFramebufferAttachmentParameteriv)(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
+          _dispatch.glGetFramebufferAttachmentParameteriv(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
           if (attachType == GL_TEXTURE)
             *params = _context->obj->textureNames.ToAppName(*params);
         }
@@ -35973,7 +35973,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameteriv(GLenum target, 
         if (!_context->filt->FramebufferAttachmentSupported(*_context, attachment))
           *params = 0;
         else
-          _next->call(&_next->glGetFramebufferAttachmentParameteriv)(target, attachment, pname, params);
+          _next->glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
         return;
       }
       #endif
@@ -35981,7 +35981,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameteriv(GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetFramebufferAttachmentParameteriv)(target, attachment, pname, params);
+      _next->glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
       break;
     }
 
@@ -36026,7 +36026,7 @@ static void REGAL_CALL emu_glGetRenderbufferParameteriv(GLenum target, GLenum pn
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetRenderbufferParameteriv)(target, pname, params);
+  _next->glGetRenderbufferParameteriv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
@@ -36066,7 +36066,7 @@ static void REGAL_CALL emu_glRenderbufferStorage(GLenum target, GLenum internalf
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glRenderbufferStorage)(target, internalformat, width, height);
+  _next->glRenderbufferStorage(target, internalformat, width, height);
 }
 
 static void REGAL_CALL emu_glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
@@ -36106,7 +36106,7 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisample(GLenum target, GLsiz
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glRenderbufferStorageMultisample)(target, samples, internalformat, width, height);
+  _next->glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
 }
 
 // GL_ARB_geometry_shader4
@@ -36148,7 +36148,7 @@ static void REGAL_CALL emu_glFramebufferTextureARB(GLenum target, GLenum attachm
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureARB)(target, attachment, texture, level);
+  _next->glFramebufferTextureARB(target, attachment, texture, level);
 }
 
 static void REGAL_CALL emu_glFramebufferTextureFaceARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
@@ -36188,7 +36188,7 @@ static void REGAL_CALL emu_glFramebufferTextureFaceARB(GLenum target, GLenum att
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureFaceARB)(target, attachment, texture, level, face);
+  _next->glFramebufferTextureFaceARB(target, attachment, texture, level, face);
 }
 
 static void REGAL_CALL emu_glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
@@ -36228,7 +36228,7 @@ static void REGAL_CALL emu_glFramebufferTextureLayerARB(GLenum target, GLenum at
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureLayerARB)(target, attachment, texture, level, layer);
+  _next->glFramebufferTextureLayerARB(target, attachment, texture, level, layer);
 }
 
 // GL_ARB_get_program_binary
@@ -36304,7 +36304,7 @@ static void REGAL_CALL emu_glUniform1d(GLint location, GLdouble x)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1d)(location, x);
+      _next->glUniform1d(location, x);
       break;
     }
 
@@ -36381,7 +36381,7 @@ static void REGAL_CALL emu_glUniform1dv(GLint location, GLsizei count, const GLd
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1dv)(location, count, value);
+      _next->glUniform1dv(location, count, value);
       break;
     }
 
@@ -36458,7 +36458,7 @@ static void REGAL_CALL emu_glUniform2d(GLint location, GLdouble x, GLdouble y)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2d)(location, x, y);
+      _next->glUniform2d(location, x, y);
       break;
     }
 
@@ -36535,7 +36535,7 @@ static void REGAL_CALL emu_glUniform2dv(GLint location, GLsizei count, const GLd
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2dv)(location, count, value);
+      _next->glUniform2dv(location, count, value);
       break;
     }
 
@@ -36612,7 +36612,7 @@ static void REGAL_CALL emu_glUniform3d(GLint location, GLdouble x, GLdouble y, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3d)(location, x, y, z);
+      _next->glUniform3d(location, x, y, z);
       break;
     }
 
@@ -36689,7 +36689,7 @@ static void REGAL_CALL emu_glUniform3dv(GLint location, GLsizei count, const GLd
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3dv)(location, count, value);
+      _next->glUniform3dv(location, count, value);
       break;
     }
 
@@ -36766,7 +36766,7 @@ static void REGAL_CALL emu_glUniform4d(GLint location, GLdouble x, GLdouble y, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4d)(location, x, y, z, w);
+      _next->glUniform4d(location, x, y, z, w);
       break;
     }
 
@@ -36843,7 +36843,7 @@ static void REGAL_CALL emu_glUniform4dv(GLint location, GLsizei count, const GLd
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4dv)(location, count, value);
+      _next->glUniform4dv(location, count, value);
       break;
     }
 
@@ -36920,7 +36920,7 @@ static void REGAL_CALL emu_glUniformMatrix2dv(GLint location, GLsizei count, GLb
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix2dv)(location, count, transpose, value);
+      _next->glUniformMatrix2dv(location, count, transpose, value);
       break;
     }
 
@@ -36997,7 +36997,7 @@ static void REGAL_CALL emu_glUniformMatrix2x3dv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix2x3dv)(location, count, transpose, value);
+      _next->glUniformMatrix2x3dv(location, count, transpose, value);
       break;
     }
 
@@ -37074,7 +37074,7 @@ static void REGAL_CALL emu_glUniformMatrix2x4dv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix2x4dv)(location, count, transpose, value);
+      _next->glUniformMatrix2x4dv(location, count, transpose, value);
       break;
     }
 
@@ -37151,7 +37151,7 @@ static void REGAL_CALL emu_glUniformMatrix3dv(GLint location, GLsizei count, GLb
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix3dv)(location, count, transpose, value);
+      _next->glUniformMatrix3dv(location, count, transpose, value);
       break;
     }
 
@@ -37228,7 +37228,7 @@ static void REGAL_CALL emu_glUniformMatrix3x2dv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix3x2dv)(location, count, transpose, value);
+      _next->glUniformMatrix3x2dv(location, count, transpose, value);
       break;
     }
 
@@ -37305,7 +37305,7 @@ static void REGAL_CALL emu_glUniformMatrix3x4dv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix3x4dv)(location, count, transpose, value);
+      _next->glUniformMatrix3x4dv(location, count, transpose, value);
       break;
     }
 
@@ -37382,7 +37382,7 @@ static void REGAL_CALL emu_glUniformMatrix4dv(GLint location, GLsizei count, GLb
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix4dv)(location, count, transpose, value);
+      _next->glUniformMatrix4dv(location, count, transpose, value);
       break;
     }
 
@@ -37459,7 +37459,7 @@ static void REGAL_CALL emu_glUniformMatrix4x2dv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix4x2dv)(location, count, transpose, value);
+      _next->glUniformMatrix4x2dv(location, count, transpose, value);
       break;
     }
 
@@ -37536,7 +37536,7 @@ static void REGAL_CALL emu_glUniformMatrix4x3dv(GLint location, GLsizei count, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix4x3dv)(location, count, transpose, value);
+      _next->glUniformMatrix4x3dv(location, count, transpose, value);
       break;
     }
 
@@ -37573,7 +37573,7 @@ static void REGAL_CALL emu_glColorTableParameterfv(GLenum target, GLenum pname, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glColorTableParameterfv)(target, pname, params);
+  _next->glColorTableParameterfv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glColorTableParameteriv(GLenum target, GLenum pname, const GLint *params)
@@ -37603,7 +37603,7 @@ static void REGAL_CALL emu_glColorTableParameteriv(GLenum target, GLenum pname, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glColorTableParameteriv)(target, pname, params);
+  _next->glColorTableParameteriv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params)
@@ -37633,7 +37633,7 @@ static void REGAL_CALL emu_glConvolutionParameterf(GLenum target, GLenum pname, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glConvolutionParameterf)(target, pname, params);
+  _next->glConvolutionParameterf(target, pname, params);
 }
 
 static void REGAL_CALL emu_glConvolutionParameterfv(GLenum target, GLenum pname, const GLfloat *params)
@@ -37663,7 +37663,7 @@ static void REGAL_CALL emu_glConvolutionParameterfv(GLenum target, GLenum pname,
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glConvolutionParameterfv)(target, pname, params);
+  _next->glConvolutionParameterfv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glConvolutionParameteri(GLenum target, GLenum pname, GLint params)
@@ -37693,7 +37693,7 @@ static void REGAL_CALL emu_glConvolutionParameteri(GLenum target, GLenum pname, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glConvolutionParameteri)(target, pname, params);
+  _next->glConvolutionParameteri(target, pname, params);
 }
 
 static void REGAL_CALL emu_glConvolutionParameteriv(GLenum target, GLenum pname, const GLint *params)
@@ -37723,7 +37723,7 @@ static void REGAL_CALL emu_glConvolutionParameteriv(GLenum target, GLenum pname,
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glConvolutionParameteriv)(target, pname, params);
+  _next->glConvolutionParameteriv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glGetColorTableParameterfv(GLenum target, GLenum pname, GLfloat *params)
@@ -37768,7 +37768,7 @@ static void REGAL_CALL emu_glGetColorTableParameterfv(GLenum target, GLenum pnam
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetColorTableParameterfv)(target, pname, params);
+      _next->glGetColorTableParameterfv(target, pname, params);
       break;
     }
 
@@ -37818,7 +37818,7 @@ static void REGAL_CALL emu_glGetColorTableParameteriv(GLenum target, GLenum pnam
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetColorTableParameteriv)(target, pname, params);
+      _next->glGetColorTableParameteriv(target, pname, params);
       break;
     }
 
@@ -37868,7 +37868,7 @@ static void REGAL_CALL emu_glGetConvolutionParameterfv(GLenum target, GLenum pna
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetConvolutionParameterfv)(target, pname, params);
+      _next->glGetConvolutionParameterfv(target, pname, params);
       break;
     }
 
@@ -37918,7 +37918,7 @@ static void REGAL_CALL emu_glGetConvolutionParameteriv(GLenum target, GLenum pna
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetConvolutionParameteriv)(target, pname, params);
+      _next->glGetConvolutionParameteriv(target, pname, params);
       break;
     }
 
@@ -37975,7 +37975,7 @@ static void REGAL_CALL emu_glFlushMappedBufferRange(GLenum target, GLintptr offs
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFlushMappedBufferRange)(target, offset, length);
+  _next->glFlushMappedBufferRange(target, offset, length);
 }
 
 static GLvoid *REGAL_CALL emu_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
@@ -38015,7 +38015,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferRange(GLenum target, GLintptr offset, G
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  return _next->call(& _next->glMapBufferRange)(target, offset, length, access);
+  return _next->glMapBufferRange(target, offset, length, access);
 }
 
 // GL_ARB_matrix_palette
@@ -38050,7 +38050,7 @@ static void REGAL_CALL emu_glBindVertexBuffers(GLuint first, GLsizei count, cons
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBindVertexBuffers)(first, count, buffers, offsets, strides);
+  _next->glBindVertexBuffers(first, count, buffers, offsets, strides);
 }
 
 // GL_ARB_multi_draw_indirect
@@ -38118,7 +38118,7 @@ static void REGAL_CALL emu_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawArraysIndirect)(mode, indirect, primcount, stride);
+  _next->glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
 }
 
 static void REGAL_CALL emu_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -38184,7 +38184,7 @@ static void REGAL_CALL emu_glMultiDrawElementsIndirect(GLenum mode, GLenum type,
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawElementsIndirect)(mode, type, indirect, primcount, stride);
+  _next->glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
 }
 
 // GL_ARB_multisample
@@ -38295,7 +38295,7 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if( false == _context->dsa->ShadowActiveTexture( texture ) ) {
-            _dispatch.call(&_dispatch.glActiveTexture)( texture );
+            _dispatch.glActiveTexture( texture );
         }
         return;
       }
@@ -38312,7 +38312,7 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glActiveTexture)(texture);
+          _next->glActiveTexture(texture);
           return;
         }
       }
@@ -38321,7 +38321,7 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glActiveTextureARB)(texture);
+      _next->glActiveTextureARB(texture);
       break;
     }
 
@@ -38418,7 +38418,7 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowClientActiveTexture( texture )) {
-          _dispatch.call(&_dispatch.glClientActiveTexture)( texture );
+          _dispatch.glClientActiveTexture( texture );
         }
         return;
       }
@@ -38435,7 +38435,7 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glClientActiveTexture)(texture);
+          _table.glClientActiveTexture(texture);
           return;
         }
       }
@@ -38444,7 +38444,7 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glClientActiveTextureARB)(texture);
+      _next->glClientActiveTextureARB(texture);
       break;
     }
 
@@ -38506,7 +38506,7 @@ static void REGAL_CALL emu_glMultiTexCoord1dARB(GLenum target, GLdouble s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1dARB)(target, s);
+      _next->glMultiTexCoord1dARB(target, s);
       break;
     }
 
@@ -38568,7 +38568,7 @@ static void REGAL_CALL emu_glMultiTexCoord1dvARB(GLenum target, const GLdouble *
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1dvARB)(target, v);
+      _next->glMultiTexCoord1dvARB(target, v);
       break;
     }
 
@@ -38630,7 +38630,7 @@ static void REGAL_CALL emu_glMultiTexCoord1fARB(GLenum target, GLfloat s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1fARB)(target, s);
+      _next->glMultiTexCoord1fARB(target, s);
       break;
     }
 
@@ -38692,7 +38692,7 @@ static void REGAL_CALL emu_glMultiTexCoord1fvARB(GLenum target, const GLfloat *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1fvARB)(target, v);
+      _next->glMultiTexCoord1fvARB(target, v);
       break;
     }
 
@@ -38754,7 +38754,7 @@ static void REGAL_CALL emu_glMultiTexCoord1iARB(GLenum target, GLint s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1iARB)(target, s);
+      _next->glMultiTexCoord1iARB(target, s);
       break;
     }
 
@@ -38816,7 +38816,7 @@ static void REGAL_CALL emu_glMultiTexCoord1ivARB(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1ivARB)(target, v);
+      _next->glMultiTexCoord1ivARB(target, v);
       break;
     }
 
@@ -38878,7 +38878,7 @@ static void REGAL_CALL emu_glMultiTexCoord1sARB(GLenum target, GLshort s)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1sARB)(target, s);
+      _next->glMultiTexCoord1sARB(target, s);
       break;
     }
 
@@ -38940,7 +38940,7 @@ static void REGAL_CALL emu_glMultiTexCoord1svARB(GLenum target, const GLshort *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord1svARB)(target, v);
+      _next->glMultiTexCoord1svARB(target, v);
       break;
     }
 
@@ -39002,7 +39002,7 @@ static void REGAL_CALL emu_glMultiTexCoord2dARB(GLenum target, GLdouble s, GLdou
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2dARB)(target, s, t);
+      _next->glMultiTexCoord2dARB(target, s, t);
       break;
     }
 
@@ -39064,7 +39064,7 @@ static void REGAL_CALL emu_glMultiTexCoord2dvARB(GLenum target, const GLdouble *
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2dvARB)(target, v);
+      _next->glMultiTexCoord2dvARB(target, v);
       break;
     }
 
@@ -39126,7 +39126,7 @@ static void REGAL_CALL emu_glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfloa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2fARB)(target, s, t);
+      _next->glMultiTexCoord2fARB(target, s, t);
       break;
     }
 
@@ -39188,7 +39188,7 @@ static void REGAL_CALL emu_glMultiTexCoord2fvARB(GLenum target, const GLfloat *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2fvARB)(target, v);
+      _next->glMultiTexCoord2fvARB(target, v);
       break;
     }
 
@@ -39250,7 +39250,7 @@ static void REGAL_CALL emu_glMultiTexCoord2iARB(GLenum target, GLint s, GLint t)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2iARB)(target, s, t);
+      _next->glMultiTexCoord2iARB(target, s, t);
       break;
     }
 
@@ -39312,7 +39312,7 @@ static void REGAL_CALL emu_glMultiTexCoord2ivARB(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2ivARB)(target, v);
+      _next->glMultiTexCoord2ivARB(target, v);
       break;
     }
 
@@ -39374,7 +39374,7 @@ static void REGAL_CALL emu_glMultiTexCoord2sARB(GLenum target, GLshort s, GLshor
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2sARB)(target, s, t);
+      _next->glMultiTexCoord2sARB(target, s, t);
       break;
     }
 
@@ -39436,7 +39436,7 @@ static void REGAL_CALL emu_glMultiTexCoord2svARB(GLenum target, const GLshort *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord2svARB)(target, v);
+      _next->glMultiTexCoord2svARB(target, v);
       break;
     }
 
@@ -39498,7 +39498,7 @@ static void REGAL_CALL emu_glMultiTexCoord3dARB(GLenum target, GLdouble s, GLdou
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3dARB)(target, s, t, r);
+      _next->glMultiTexCoord3dARB(target, s, t, r);
       break;
     }
 
@@ -39560,7 +39560,7 @@ static void REGAL_CALL emu_glMultiTexCoord3dvARB(GLenum target, const GLdouble *
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3dvARB)(target, v);
+      _next->glMultiTexCoord3dvARB(target, v);
       break;
     }
 
@@ -39622,7 +39622,7 @@ static void REGAL_CALL emu_glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfloa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3fARB)(target, s, t, r);
+      _next->glMultiTexCoord3fARB(target, s, t, r);
       break;
     }
 
@@ -39684,7 +39684,7 @@ static void REGAL_CALL emu_glMultiTexCoord3fvARB(GLenum target, const GLfloat *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3fvARB)(target, v);
+      _next->glMultiTexCoord3fvARB(target, v);
       break;
     }
 
@@ -39746,7 +39746,7 @@ static void REGAL_CALL emu_glMultiTexCoord3iARB(GLenum target, GLint s, GLint t,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3iARB)(target, s, t, r);
+      _next->glMultiTexCoord3iARB(target, s, t, r);
       break;
     }
 
@@ -39808,7 +39808,7 @@ static void REGAL_CALL emu_glMultiTexCoord3ivARB(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3ivARB)(target, v);
+      _next->glMultiTexCoord3ivARB(target, v);
       break;
     }
 
@@ -39870,7 +39870,7 @@ static void REGAL_CALL emu_glMultiTexCoord3sARB(GLenum target, GLshort s, GLshor
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3sARB)(target, s, t, r);
+      _next->glMultiTexCoord3sARB(target, s, t, r);
       break;
     }
 
@@ -39932,7 +39932,7 @@ static void REGAL_CALL emu_glMultiTexCoord3svARB(GLenum target, const GLshort *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord3svARB)(target, v);
+      _next->glMultiTexCoord3svARB(target, v);
       break;
     }
 
@@ -39994,7 +39994,7 @@ static void REGAL_CALL emu_glMultiTexCoord4dARB(GLenum target, GLdouble s, GLdou
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4dARB)(target, s, t, r, q);
+      _next->glMultiTexCoord4dARB(target, s, t, r, q);
       break;
     }
 
@@ -40056,7 +40056,7 @@ static void REGAL_CALL emu_glMultiTexCoord4dvARB(GLenum target, const GLdouble *
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4dvARB)(target, v);
+      _next->glMultiTexCoord4dvARB(target, v);
       break;
     }
 
@@ -40118,7 +40118,7 @@ static void REGAL_CALL emu_glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfloa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4fARB)(target, s, t, r, q);
+      _next->glMultiTexCoord4fARB(target, s, t, r, q);
       break;
     }
 
@@ -40180,7 +40180,7 @@ static void REGAL_CALL emu_glMultiTexCoord4fvARB(GLenum target, const GLfloat *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4fvARB)(target, v);
+      _next->glMultiTexCoord4fvARB(target, v);
       break;
     }
 
@@ -40242,7 +40242,7 @@ static void REGAL_CALL emu_glMultiTexCoord4iARB(GLenum target, GLint s, GLint t,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4iARB)(target, s, t, r, q);
+      _next->glMultiTexCoord4iARB(target, s, t, r, q);
       break;
     }
 
@@ -40304,7 +40304,7 @@ static void REGAL_CALL emu_glMultiTexCoord4ivARB(GLenum target, const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4ivARB)(target, v);
+      _next->glMultiTexCoord4ivARB(target, v);
       break;
     }
 
@@ -40366,7 +40366,7 @@ static void REGAL_CALL emu_glMultiTexCoord4sARB(GLenum target, GLshort s, GLshor
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4sARB)(target, s, t, r, q);
+      _next->glMultiTexCoord4sARB(target, s, t, r, q);
       break;
     }
 
@@ -40428,7 +40428,7 @@ static void REGAL_CALL emu_glMultiTexCoord4svARB(GLenum target, const GLshort *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoord4svARB)(target, v);
+      _next->glMultiTexCoord4svARB(target, v);
       break;
     }
 
@@ -40487,7 +40487,7 @@ static void REGAL_CALL emu_glProvokingVertex(GLenum mode)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProvokingVertex)(mode);
+  _next->glProvokingVertex(mode);
 }
 
 // GL_ARB_robustness
@@ -40521,7 +40521,7 @@ static void REGAL_CALL emu_glMinSampleShading(GLclampf value)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMinSampleShading)(value);
+  _next->glMinSampleShading(value);
 }
 
 // GL_ARB_sampler_objects
@@ -40584,7 +40584,7 @@ static void REGAL_CALL emu_glBindSampler(GLuint unit, GLuint sampler)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindSampler)(unit, sampler);
+      _next->glBindSampler(unit, sampler);
       break;
     }
 
@@ -40650,7 +40650,7 @@ static void REGAL_CALL emu_glDeleteSamplers(GLsizei count, const GLuint *sampler
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteSamplers)(count, samplers);
+      _next->glDeleteSamplers(count, samplers);
       break;
     }
 
@@ -40740,7 +40740,7 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenSamplers)(count, samplers);
+      _next->glGenSamplers(count, samplers);
       break;
     }
 
@@ -40809,7 +40809,7 @@ static void REGAL_CALL emu_glGetSamplerParameterIiv(GLuint sampler, GLenum pname
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetSamplerParameterIiv)(sampler, pname, params);
+      _next->glGetSamplerParameterIiv(sampler, pname, params);
       break;
     }
 
@@ -40878,7 +40878,7 @@ static void REGAL_CALL emu_glGetSamplerParameterIuiv(GLuint sampler, GLenum pnam
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetSamplerParameterIuiv)(sampler, pname, params);
+      _next->glGetSamplerParameterIuiv(sampler, pname, params);
       break;
     }
 
@@ -40947,7 +40947,7 @@ static void REGAL_CALL emu_glGetSamplerParameterfv(GLuint sampler, GLenum pname,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetSamplerParameterfv)(sampler, pname, params);
+      _next->glGetSamplerParameterfv(sampler, pname, params);
       break;
     }
 
@@ -41016,7 +41016,7 @@ static void REGAL_CALL emu_glGetSamplerParameteriv(GLuint sampler, GLenum pname,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetSamplerParameteriv)(sampler, pname, params);
+      _next->glGetSamplerParameteriv(sampler, pname, params);
       break;
     }
 
@@ -41081,7 +41081,7 @@ static GLboolean REGAL_CALL emu_glIsSampler(GLuint sampler)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsSampler)(sampler);
+      return _next->glIsSampler(sampler);
     }
 
   }
@@ -41149,7 +41149,7 @@ static void REGAL_CALL emu_glSamplerParameterIiv(GLuint sampler, GLenum pname, c
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSamplerParameterIiv)(sampler, pname, params);
+      _next->glSamplerParameterIiv(sampler, pname, params);
       break;
     }
 
@@ -41218,7 +41218,7 @@ static void REGAL_CALL emu_glSamplerParameterIuiv(GLuint sampler, GLenum pname, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSamplerParameterIuiv)(sampler, pname, params);
+      _next->glSamplerParameterIuiv(sampler, pname, params);
       break;
     }
 
@@ -41287,7 +41287,7 @@ static void REGAL_CALL emu_glSamplerParameterf(GLuint sampler, GLenum pname, GLf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSamplerParameterf)(sampler, pname, param);
+      _next->glSamplerParameterf(sampler, pname, param);
       break;
     }
 
@@ -41356,7 +41356,7 @@ static void REGAL_CALL emu_glSamplerParameterfv(GLuint sampler, GLenum pname, co
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSamplerParameterfv)(sampler, pname, params);
+      _next->glSamplerParameterfv(sampler, pname, params);
       break;
     }
 
@@ -41425,7 +41425,7 @@ static void REGAL_CALL emu_glSamplerParameteri(GLuint sampler, GLenum pname, GLi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSamplerParameteri)(sampler, pname, param);
+      _next->glSamplerParameteri(sampler, pname, param);
       break;
     }
 
@@ -41494,7 +41494,7 @@ static void REGAL_CALL emu_glSamplerParameteriv(GLuint sampler, GLenum pname, co
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSamplerParameteriv)(sampler, pname, params);
+      _next->glSamplerParameteriv(sampler, pname, params);
       break;
     }
 
@@ -41560,7 +41560,7 @@ static void REGAL_CALL emu_glBindProgramPipeline(GLuint pipeline)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindProgramPipeline)(pipeline);
+      _next->glBindProgramPipeline(pipeline);
       break;
     }
 
@@ -41634,7 +41634,7 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glAttachShader)(containerObj, obj);
+          _next->glAttachShader(containerObj, obj);
           return;
         }
       }
@@ -41643,7 +41643,7 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glAttachObjectARB)(containerObj, obj);
+      _next->glAttachObjectARB(containerObj, obj);
       break;
     }
 
@@ -41711,7 +41711,7 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glCompileShader)(shaderObj);
+          _next->glCompileShader(shaderObj);
           return;
         }
       }
@@ -41720,7 +41720,7 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompileShaderARB)(shaderObj);
+      _next->glCompileShaderARB(shaderObj);
       break;
     }
 
@@ -41788,7 +41788,7 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glCreateProgram)();
+          return _next->glCreateProgram();
         }
       }
       #endif
@@ -41796,7 +41796,7 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glCreateProgramObjectARB)();
+      return _next->glCreateProgramObjectARB();
     }
 
   }
@@ -41856,7 +41856,7 @@ static GLhandleARB REGAL_CALL emu_glCreateShaderObjectARB(GLenum shaderType)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glCreateShaderObjectARB)(shaderType);
+      return _next->glCreateShaderObjectARB(shaderType);
     }
 
   }
@@ -41923,10 +41923,10 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          if (_next->call(&_next->glIsProgram)(obj))
-            _next->call(&_next->glGetProgramInfoLog)(obj, maxLength, length, infoLog);
+          if (_next->glIsProgram(obj))
+            _next->glGetProgramInfoLog(obj, maxLength, length, infoLog);
           else
-            _next->call(&_next->glGetShaderInfoLog)(obj, maxLength, length, infoLog);
+            _next->glGetShaderInfoLog(obj, maxLength, length, infoLog);
           return;
         }
       }
@@ -41935,7 +41935,7 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetInfoLogARB)(obj, maxLength, length, infoLog);
+      _next->glGetInfoLogARB(obj, maxLength, length, infoLog);
       break;
     }
 
@@ -42003,10 +42003,10 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          if (_next->call(&_next->glIsProgram)(obj))
-            _next->call(&_next->glGetProgramiv)(obj, pname, params);
+          if (_next->glIsProgram(obj))
+            _next->glGetProgramiv(obj, pname, params);
           else
-            _next->call(&_next->glGetShaderiv)(obj, pname, params);
+            _next->glGetShaderiv(obj, pname, params);
           return;
         }
       }
@@ -42015,7 +42015,7 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetObjectParameterivARB)(obj, pname, params);
+      _next->glGetObjectParameterivARB(obj, pname, params);
       break;
     }
 
@@ -42083,7 +42083,7 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glGetUniformLocation)(programObj, name);
+          return _next->glGetUniformLocation(programObj, name);
         }
       }
       #endif
@@ -42091,7 +42091,7 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glGetUniformLocationARB)(programObj, name);
+      return _next->glGetUniformLocationARB(programObj, name);
     }
 
   }
@@ -42152,7 +42152,7 @@ static void REGAL_CALL emu_glLinkProgramARB(GLhandleARB programObj)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLinkProgramARB)(programObj);
+      _next->glLinkProgramARB(programObj);
       break;
     }
 
@@ -42214,7 +42214,7 @@ static void REGAL_CALL emu_glShaderSourceARB(GLhandleARB shaderObj, GLsizei coun
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glShaderSourceARB)(shaderObj, count, string, length);
+      _next->glShaderSourceARB(shaderObj, count, string, length);
       break;
     }
 
@@ -42280,7 +42280,7 @@ static void REGAL_CALL emu_glUniform1fARB(GLint location, GLfloat v0)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1fARB)(location, v0);
+      _next->glUniform1fARB(location, v0);
       break;
     }
 
@@ -42346,7 +42346,7 @@ static void REGAL_CALL emu_glUniform1fvARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1fvARB)(location, count, value);
+      _next->glUniform1fvARB(location, count, value);
       break;
     }
 
@@ -42430,7 +42430,7 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glUniform1i)(location, v0);
+          _next->glUniform1i(location, v0);
           return;
         }
       }
@@ -42439,7 +42439,7 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1iARB)(location, v0);
+      _next->glUniform1iARB(location, v0);
       break;
     }
 
@@ -42505,7 +42505,7 @@ static void REGAL_CALL emu_glUniform1ivARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform1ivARB)(location, count, value);
+      _next->glUniform1ivARB(location, count, value);
       break;
     }
 
@@ -42571,7 +42571,7 @@ static void REGAL_CALL emu_glUniform2fARB(GLint location, GLfloat v0, GLfloat v1
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2fARB)(location, v0, v1);
+      _next->glUniform2fARB(location, v0, v1);
       break;
     }
 
@@ -42637,7 +42637,7 @@ static void REGAL_CALL emu_glUniform2fvARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2fvARB)(location, count, value);
+      _next->glUniform2fvARB(location, count, value);
       break;
     }
 
@@ -42703,7 +42703,7 @@ static void REGAL_CALL emu_glUniform2iARB(GLint location, GLint v0, GLint v1)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2iARB)(location, v0, v1);
+      _next->glUniform2iARB(location, v0, v1);
       break;
     }
 
@@ -42769,7 +42769,7 @@ static void REGAL_CALL emu_glUniform2ivARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform2ivARB)(location, count, value);
+      _next->glUniform2ivARB(location, count, value);
       break;
     }
 
@@ -42835,7 +42835,7 @@ static void REGAL_CALL emu_glUniform3fARB(GLint location, GLfloat v0, GLfloat v1
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3fARB)(location, v0, v1, v2);
+      _next->glUniform3fARB(location, v0, v1, v2);
       break;
     }
 
@@ -42901,7 +42901,7 @@ static void REGAL_CALL emu_glUniform3fvARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3fvARB)(location, count, value);
+      _next->glUniform3fvARB(location, count, value);
       break;
     }
 
@@ -42967,7 +42967,7 @@ static void REGAL_CALL emu_glUniform3iARB(GLint location, GLint v0, GLint v1, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3iARB)(location, v0, v1, v2);
+      _next->glUniform3iARB(location, v0, v1, v2);
       break;
     }
 
@@ -43033,7 +43033,7 @@ static void REGAL_CALL emu_glUniform3ivARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform3ivARB)(location, count, value);
+      _next->glUniform3ivARB(location, count, value);
       break;
     }
 
@@ -43099,7 +43099,7 @@ static void REGAL_CALL emu_glUniform4fARB(GLint location, GLfloat v0, GLfloat v1
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4fARB)(location, v0, v1, v2, v3);
+      _next->glUniform4fARB(location, v0, v1, v2, v3);
       break;
     }
 
@@ -43165,7 +43165,7 @@ static void REGAL_CALL emu_glUniform4fvARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4fvARB)(location, count, value);
+      _next->glUniform4fvARB(location, count, value);
       break;
     }
 
@@ -43231,7 +43231,7 @@ static void REGAL_CALL emu_glUniform4iARB(GLint location, GLint v0, GLint v1, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4iARB)(location, v0, v1, v2, v3);
+      _next->glUniform4iARB(location, v0, v1, v2, v3);
       break;
     }
 
@@ -43297,7 +43297,7 @@ static void REGAL_CALL emu_glUniform4ivARB(GLint location, GLsizei count, const 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniform4ivARB)(location, count, value);
+      _next->glUniform4ivARB(location, count, value);
       break;
     }
 
@@ -43363,7 +43363,7 @@ static void REGAL_CALL emu_glUniformMatrix2fvARB(GLint location, GLsizei count, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix2fvARB)(location, count, transpose, value);
+      _next->glUniformMatrix2fvARB(location, count, transpose, value);
       break;
     }
 
@@ -43429,7 +43429,7 @@ static void REGAL_CALL emu_glUniformMatrix3fvARB(GLint location, GLsizei count, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix3fvARB)(location, count, transpose, value);
+      _next->glUniformMatrix3fvARB(location, count, transpose, value);
       break;
     }
 
@@ -43495,7 +43495,7 @@ static void REGAL_CALL emu_glUniformMatrix4fvARB(GLint location, GLsizei count, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUniformMatrix4fvARB)(location, count, transpose, value);
+      _next->glUniformMatrix4fvARB(location, count, transpose, value);
       break;
     }
 
@@ -43559,7 +43559,7 @@ static void REGAL_CALL emu_glUseProgramObjectARB(GLhandleARB programObj)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glUseProgramObjectARB)(programObj);
+      _next->glUseProgramObjectARB(programObj);
       break;
     }
 
@@ -43674,7 +43674,7 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetInteger64v)(pname, params);
+      _next->glGetInteger64v(pname, params);
       break;
     }
 
@@ -43736,7 +43736,7 @@ static void REGAL_CALL emu_glCompressedTexImage2DARB(GLenum target, GLint level,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTexImage2DARB)(target, level, internalformat, width, height, border, imageSize, data);
+      _next->glCompressedTexImage2DARB(target, level, internalformat, width, height, border, imageSize, data);
       break;
     }
 
@@ -43790,7 +43790,7 @@ static void REGAL_CALL emu_glCompressedTexSubImage2DARB(GLenum target, GLint lev
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTexSubImage2DARB)(target, level, xoffset, yoffset, width, height, format, imageSize, data);
+      _next->glCompressedTexSubImage2DARB(target, level, xoffset, yoffset, width, height, format, imageSize, data);
       break;
     }
 
@@ -43834,7 +43834,7 @@ static void REGAL_CALL emu_glTexImage2DMultisample(GLenum target, GLsizei sample
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexImage2DMultisample)(target, samples, internalformat, width, height, fixedsamplelocations);
+  _next->glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
 }
 
 static void REGAL_CALL emu_glTexImage3DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
@@ -43871,7 +43871,7 @@ static void REGAL_CALL emu_glTexImage3DMultisample(GLenum target, GLsizei sample
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexImage3DMultisample)(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+  _next->glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
 
 // GL_ARB_texture_storage
@@ -43924,7 +43924,7 @@ static void REGAL_CALL emu_glTexStorage1D(GLenum target, GLsizei levels, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexStorage1D)(target, levels, internalformat, width);
+      _next->glTexStorage1D(target, levels, internalformat, width);
       break;
     }
 
@@ -43980,7 +43980,7 @@ static void REGAL_CALL emu_glTexStorage2D(GLenum target, GLsizei levels, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexStorage2D)(target, levels, internalformat, width, height);
+      _next->glTexStorage2D(target, levels, internalformat, width, height);
       break;
     }
 
@@ -44036,7 +44036,7 @@ static void REGAL_CALL emu_glTexStorage3D(GLenum target, GLsizei levels, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexStorage3D)(target, levels, internalformat, width, height, depth);
+      _next->glTexStorage3D(target, levels, internalformat, width, height, depth);
       break;
     }
 
@@ -44096,7 +44096,7 @@ static void REGAL_CALL emu_glTextureStorage1DEXT(GLuint texture, GLenum target, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexStorage1D)( target, levels, internalformat, width );
+        _dispatch.glTexStorage1D( target, levels, internalformat, width );
         return;
       }
       #endif
@@ -44105,7 +44105,7 @@ static void REGAL_CALL emu_glTextureStorage1DEXT(GLuint texture, GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureStorage1DEXT)(texture, target, levels, internalformat, width);
+      _next->glTextureStorage1DEXT(texture, target, levels, internalformat, width);
       break;
     }
 
@@ -44165,7 +44165,7 @@ static void REGAL_CALL emu_glTextureStorage2DEXT(GLuint texture, GLenum target, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexStorage2D)( target, levels, internalformat, width, height );
+        _dispatch.glTexStorage2D( target, levels, internalformat, width, height );
         return;
       }
       #endif
@@ -44174,7 +44174,7 @@ static void REGAL_CALL emu_glTextureStorage2DEXT(GLuint texture, GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureStorage2DEXT)(texture, target, levels, internalformat, width, height);
+      _next->glTextureStorage2DEXT(texture, target, levels, internalformat, width, height);
       break;
     }
 
@@ -44234,7 +44234,7 @@ static void REGAL_CALL emu_glTextureStorage3DEXT(GLuint texture, GLenum target, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexStorage3D)( target, levels, internalformat, width, height, depth );
+        _dispatch.glTexStorage3D( target, levels, internalformat, width, height, depth );
         return;
       }
       #endif
@@ -44243,7 +44243,7 @@ static void REGAL_CALL emu_glTextureStorage3DEXT(GLuint texture, GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureStorage3DEXT)(texture, target, levels, internalformat, width, height, depth);
+      _next->glTextureStorage3DEXT(texture, target, levels, internalformat, width, height, depth);
       break;
     }
 
@@ -44319,7 +44319,7 @@ static void REGAL_CALL emu_glLoadTransposeMatrixdARB(const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLoadTransposeMatrixdARB)(m);
+      _next->glLoadTransposeMatrixdARB(m);
       break;
     }
 
@@ -44381,7 +44381,7 @@ static void REGAL_CALL emu_glLoadTransposeMatrixfARB(const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glLoadTransposeMatrixfARB)(m);
+      _next->glLoadTransposeMatrixfARB(m);
       break;
     }
 
@@ -44443,7 +44443,7 @@ static void REGAL_CALL emu_glMultTransposeMatrixdARB(const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultTransposeMatrixdARB)(m);
+      _next->glMultTransposeMatrixdARB(m);
       break;
     }
 
@@ -44505,7 +44505,7 @@ static void REGAL_CALL emu_glMultTransposeMatrixfARB(const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultTransposeMatrixfARB)(m);
+      _next->glMultTransposeMatrixfARB(m);
       break;
     }
 
@@ -44557,7 +44557,7 @@ static void REGAL_CALL emu_glGetIntegeri_v(GLenum target, GLuint index, GLint *d
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetIntegeri_v)(target, index, data);
+      _next->glGetIntegeri_v(target, index, data);
       break;
     }
 
@@ -44659,7 +44659,7 @@ static void REGAL_CALL emu_glBindVertexArray(GLuint array)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowVao( array )) {
-            _dispatch.call(&_dispatch.glBindVertexArray)( array );
+            _dispatch.glBindVertexArray( array );
         }
         return;
       }
@@ -44679,7 +44679,7 @@ static void REGAL_CALL emu_glBindVertexArray(GLuint array)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindVertexArray)(array);
+      _next->glBindVertexArray(array);
       break;
     }
 
@@ -44789,7 +44789,7 @@ static void REGAL_CALL emu_glDeleteVertexArrays(GLsizei n, const GLuint *arrays)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteVertexArrays)(n, arrays);
+      _next->glDeleteVertexArrays(n, arrays);
       break;
     }
 
@@ -44871,7 +44871,7 @@ static void REGAL_CALL emu_glGenVertexArrays(GLsizei n, GLuint *arrays)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenVertexArrays)(n, arrays);
+      _next->glGenVertexArrays(n, arrays);
       break;
     }
 
@@ -44962,7 +44962,7 @@ static GLboolean REGAL_CALL emu_glIsVertexArray(GLuint array)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsVertexArray)(array);
+      return _next->glIsVertexArray(array);
     }
 
   }
@@ -45011,7 +45011,7 @@ static void REGAL_CALL emu_glVertexAttribLPointer(GLuint index, GLint size, GLen
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttribLPointer)(index, size, type, stride, pointer);
+  _next->glVertexAttribLPointer(index, size, type, stride, pointer);
 }
 
 // GL_ARB_vertex_attrib_binding
@@ -45056,7 +45056,7 @@ static void REGAL_CALL emu_glBindVertexBuffer(GLuint bindingindex, GLuint buffer
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBindVertexBuffer)(bindingindex, buffer, offset, stride);
+  _next->glBindVertexBuffer(bindingindex, buffer, offset, stride);
 }
 
 static void REGAL_CALL emu_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
@@ -45099,7 +45099,7 @@ static void REGAL_CALL emu_glVertexAttribBinding(GLuint attribindex, GLuint bind
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttribBinding)(attribindex, bindingindex);
+  _next->glVertexAttribBinding(attribindex, bindingindex);
 }
 
 static void REGAL_CALL emu_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
@@ -45142,7 +45142,7 @@ static void REGAL_CALL emu_glVertexAttribFormat(GLuint attribindex, GLint size, 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttribFormat)(attribindex, size, type, normalized, relativeoffset);
+  _next->glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
 }
 
 static void REGAL_CALL emu_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
@@ -45185,7 +45185,7 @@ static void REGAL_CALL emu_glVertexAttribIFormat(GLuint attribindex, GLint size,
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttribIFormat)(attribindex, size, type, relativeoffset);
+  _next->glVertexAttribIFormat(attribindex, size, type, relativeoffset);
 }
 
 static void REGAL_CALL emu_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
@@ -45228,7 +45228,7 @@ static void REGAL_CALL emu_glVertexAttribLFormat(GLuint attribindex, GLint size,
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttribLFormat)(attribindex, size, type, relativeoffset);
+  _next->glVertexAttribLFormat(attribindex, size, type, relativeoffset);
 }
 
 static void REGAL_CALL emu_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
@@ -45271,7 +45271,7 @@ static void REGAL_CALL emu_glVertexBindingDivisor(GLuint bindingindex, GLuint di
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexBindingDivisor)(bindingindex, divisor);
+  _next->glVertexBindingDivisor(bindingindex, divisor);
 }
 
 // GL_ARB_vertex_blend
@@ -45351,7 +45351,7 @@ static void REGAL_CALL emu_glBindBufferARB(GLenum target, GLuint buffer)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowBuffer( target, buffer ) ) {
-            _dispatch.call(&_dispatch.glBindBuffer)(target, buffer);
+            _dispatch.glBindBuffer(target, buffer);
         }
         return;
       }
@@ -45361,7 +45361,7 @@ static void REGAL_CALL emu_glBindBufferARB(GLenum target, GLuint buffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindBufferARB)(target, buffer);
+      _next->glBindBufferARB(target, buffer);
       break;
     }
 
@@ -45429,7 +45429,7 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glBufferData)(target, size, data, usage);
+          _next->glBufferData(target, size, data, usage);
           return;
         }
       }
@@ -45438,7 +45438,7 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBufferDataARB)(target, size, data, usage);
+      _next->glBufferDataARB(target, size, data, usage);
       break;
     }
 
@@ -45523,7 +45523,7 @@ static void REGAL_CALL emu_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteBuffersARB)(n, buffers);
+      _next->glDeleteBuffersARB(n, buffers);
       break;
     }
 
@@ -45567,7 +45567,7 @@ static void REGAL_CALL emu_glGenBuffersARB(GLsizei n, GLuint *buffers)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenBuffersARB)(n, buffers);
+      _next->glGenBuffersARB(n, buffers);
       break;
     }
 
@@ -45610,7 +45610,7 @@ static GLboolean REGAL_CALL emu_glIsBufferARB(GLuint buffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsBufferARB)(buffer);
+      return _next->glIsBufferARB(buffer);
     }
 
   }
@@ -45685,7 +45685,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glMapBufferOES)(target, access);
+          return _next->glMapBufferOES(target, access);
         }
       }
       #endif
@@ -45693,7 +45693,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glMapBufferARB)(target, access);
+      return _next->glMapBufferARB(target, access);
     }
 
   }
@@ -45768,7 +45768,7 @@ static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glUnmapBufferOES)(target);
+          return _next->glUnmapBufferOES(target);
         }
       }
       #endif
@@ -45776,7 +45776,7 @@ static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glUnmapBufferARB)(target);
+      return _next->glUnmapBufferARB(target);
     }
 
   }
@@ -45842,7 +45842,7 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowAsmProgram( target, program ) ) {
-            _dispatch.call(&_dispatch.glBindProgramARB)( target, program );
+            _dispatch.glBindProgramARB( target, program );
         }
         return;
       }
@@ -45866,7 +45866,7 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindProgramARB)(target, program);
+      _next->glBindProgramARB(target, program);
       break;
     }
 
@@ -45911,7 +45911,7 @@ static void REGAL_CALL emu_glDeleteProgramsARB(GLsizei n, const GLuint *programs
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteProgramsARB)(n, programs);
+  _next->glDeleteProgramsARB(n, programs);
 }
 
 static void REGAL_CALL emu_glDisableVertexAttribArrayARB(GLuint index)
@@ -45984,7 +45984,7 @@ static void REGAL_CALL emu_glDisableVertexAttribArrayARB(GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableVertexAttribArrayARB)(index);
+      _next->glDisableVertexAttribArrayARB(index);
       break;
     }
 
@@ -46062,7 +46062,7 @@ static void REGAL_CALL emu_glEnableVertexAttribArrayARB(GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableVertexAttribArrayARB)(index);
+      _next->glEnableVertexAttribArrayARB(index);
       break;
     }
 
@@ -46137,7 +46137,7 @@ static void REGAL_CALL emu_glGenProgramsARB(GLsizei n, GLuint *programs)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenProgramsARB)(n, programs);
+      _next->glGenProgramsARB(n, programs);
       break;
     }
 
@@ -46182,7 +46182,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterdvARB(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramEnvParameterdvARB)(target, index, params);
+  _next->glGetProgramEnvParameterdvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat *params)
@@ -46222,7 +46222,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterfvARB(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramEnvParameterfvARB)(target, index, params);
+  _next->glGetProgramEnvParameterfvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble *params)
@@ -46262,7 +46262,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterdvARB(GLenum target, GLuint
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramLocalParameterdvARB)(target, index, params);
+  _next->glGetProgramLocalParameterdvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat *params)
@@ -46302,7 +46302,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterfvARB(GLenum target, GLuint
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramLocalParameterfvARB)(target, index, params);
+  _next->glGetProgramLocalParameterfvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint *params)
@@ -46372,7 +46372,7 @@ static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetProgramivARB)(target, pname, params);
+      _next->glGetProgramivARB(target, pname, params);
       break;
     }
 
@@ -46450,7 +46450,7 @@ static void REGAL_CALL emu_glGetVertexAttribPointervARB(GLuint index, GLenum pna
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribPointervARB)(index, pname, pointer);
+      _next->glGetVertexAttribPointervARB(index, pname, pointer);
       break;
     }
 
@@ -46528,7 +46528,7 @@ static void REGAL_CALL emu_glGetVertexAttribdvARB(GLuint index, GLenum pname, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribdvARB)(index, pname, params);
+      _next->glGetVertexAttribdvARB(index, pname, params);
       break;
     }
 
@@ -46606,7 +46606,7 @@ static void REGAL_CALL emu_glGetVertexAttribfvARB(GLuint index, GLenum pname, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribfvARB)(index, pname, params);
+      _next->glGetVertexAttribfvARB(index, pname, params);
       break;
     }
 
@@ -46684,7 +46684,7 @@ static void REGAL_CALL emu_glGetVertexAttribivARB(GLuint index, GLenum pname, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetVertexAttribivARB)(index, pname, params);
+      _next->glGetVertexAttribivARB(index, pname, params);
       break;
     }
 
@@ -46729,7 +46729,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4dARB(GLenum target, GLuint inde
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameter4dARB)(target, index, x, y, z, w);
+  _next->glProgramEnvParameter4dARB(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble *params)
@@ -46769,7 +46769,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4dvARB(GLenum target, GLuint ind
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameter4dvARB)(target, index, params);
+  _next->glProgramEnvParameter4dvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
@@ -46809,7 +46809,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4fARB(GLenum target, GLuint inde
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameter4fARB)(target, index, x, y, z, w);
+  _next->glProgramEnvParameter4fARB(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat *params)
@@ -46849,7 +46849,7 @@ static void REGAL_CALL emu_glProgramEnvParameter4fvARB(GLenum target, GLuint ind
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameter4fvARB)(target, index, params);
+  _next->glProgramEnvParameter4fvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
@@ -46889,7 +46889,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4dARB(GLenum target, GLuint in
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameter4dARB)(target, index, x, y, z, w);
+  _next->glProgramLocalParameter4dARB(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble *params)
@@ -46929,7 +46929,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4dvARB(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameter4dvARB)(target, index, params);
+  _next->glProgramLocalParameter4dvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
@@ -46969,7 +46969,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4fARB(GLenum target, GLuint in
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameter4fARB)(target, index, x, y, z, w);
+  _next->glProgramLocalParameter4fARB(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat *params)
@@ -47009,7 +47009,7 @@ static void REGAL_CALL emu_glProgramLocalParameter4fvARB(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameter4fvARB)(target, index, params);
+  _next->glProgramLocalParameter4fvARB(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsizei len, const GLvoid *string)
@@ -47079,7 +47079,7 @@ static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsi
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramStringARB)(target, format, len, string);
+      _next->glProgramStringARB(target, format, len, string);
       break;
     }
 
@@ -47121,7 +47121,7 @@ static void REGAL_CALL emu_glVertexAttrib1dARB(GLuint index, GLdouble x)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1dARB)(index, x);
+  _next->glVertexAttrib1dARB(index, x);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1dvARB(GLuint index, const GLdouble *v)
@@ -47158,7 +47158,7 @@ static void REGAL_CALL emu_glVertexAttrib1dvARB(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1dvARB)(index, v);
+  _next->glVertexAttrib1dvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1fARB(GLuint index, GLfloat x)
@@ -47195,7 +47195,7 @@ static void REGAL_CALL emu_glVertexAttrib1fARB(GLuint index, GLfloat x)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1fARB)(index, x);
+  _next->glVertexAttrib1fARB(index, x);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1fvARB(GLuint index, const GLfloat *v)
@@ -47232,7 +47232,7 @@ static void REGAL_CALL emu_glVertexAttrib1fvARB(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1fvARB)(index, v);
+  _next->glVertexAttrib1fvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1sARB(GLuint index, GLshort x)
@@ -47269,7 +47269,7 @@ static void REGAL_CALL emu_glVertexAttrib1sARB(GLuint index, GLshort x)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1sARB)(index, x);
+  _next->glVertexAttrib1sARB(index, x);
 }
 
 static void REGAL_CALL emu_glVertexAttrib1svARB(GLuint index, const GLshort *v)
@@ -47306,7 +47306,7 @@ static void REGAL_CALL emu_glVertexAttrib1svARB(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib1svARB)(index, v);
+  _next->glVertexAttrib1svARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y)
@@ -47343,7 +47343,7 @@ static void REGAL_CALL emu_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdoubl
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2dARB)(index, x, y);
+  _next->glVertexAttrib2dARB(index, x, y);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2dvARB(GLuint index, const GLdouble *v)
@@ -47380,7 +47380,7 @@ static void REGAL_CALL emu_glVertexAttrib2dvARB(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2dvARB)(index, v);
+  _next->glVertexAttrib2dvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y)
@@ -47417,7 +47417,7 @@ static void REGAL_CALL emu_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2fARB)(index, x, y);
+  _next->glVertexAttrib2fARB(index, x, y);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2fvARB(GLuint index, const GLfloat *v)
@@ -47454,7 +47454,7 @@ static void REGAL_CALL emu_glVertexAttrib2fvARB(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2fvARB)(index, v);
+  _next->glVertexAttrib2fvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y)
@@ -47491,7 +47491,7 @@ static void REGAL_CALL emu_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2sARB)(index, x, y);
+  _next->glVertexAttrib2sARB(index, x, y);
 }
 
 static void REGAL_CALL emu_glVertexAttrib2svARB(GLuint index, const GLshort *v)
@@ -47528,7 +47528,7 @@ static void REGAL_CALL emu_glVertexAttrib2svARB(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib2svARB)(index, v);
+  _next->glVertexAttrib2svARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z)
@@ -47565,7 +47565,7 @@ static void REGAL_CALL emu_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdoubl
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3dARB)(index, x, y, z);
+  _next->glVertexAttrib3dARB(index, x, y, z);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3dvARB(GLuint index, const GLdouble *v)
@@ -47602,7 +47602,7 @@ static void REGAL_CALL emu_glVertexAttrib3dvARB(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3dvARB)(index, v);
+  _next->glVertexAttrib3dvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z)
@@ -47639,7 +47639,7 @@ static void REGAL_CALL emu_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3fARB)(index, x, y, z);
+  _next->glVertexAttrib3fARB(index, x, y, z);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3fvARB(GLuint index, const GLfloat *v)
@@ -47676,7 +47676,7 @@ static void REGAL_CALL emu_glVertexAttrib3fvARB(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3fvARB)(index, v);
+  _next->glVertexAttrib3fvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z)
@@ -47713,7 +47713,7 @@ static void REGAL_CALL emu_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3sARB)(index, x, y, z);
+  _next->glVertexAttrib3sARB(index, x, y, z);
 }
 
 static void REGAL_CALL emu_glVertexAttrib3svARB(GLuint index, const GLshort *v)
@@ -47750,7 +47750,7 @@ static void REGAL_CALL emu_glVertexAttrib3svARB(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib3svARB)(index, v);
+  _next->glVertexAttrib3svARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4NbvARB(GLuint index, const GLbyte *v)
@@ -47787,7 +47787,7 @@ static void REGAL_CALL emu_glVertexAttrib4NbvARB(GLuint index, const GLbyte *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4NbvARB)(index, v);
+  _next->glVertexAttrib4NbvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4NivARB(GLuint index, const GLint *v)
@@ -47824,7 +47824,7 @@ static void REGAL_CALL emu_glVertexAttrib4NivARB(GLuint index, const GLint *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4NivARB)(index, v);
+  _next->glVertexAttrib4NivARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4NsvARB(GLuint index, const GLshort *v)
@@ -47861,7 +47861,7 @@ static void REGAL_CALL emu_glVertexAttrib4NsvARB(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4NsvARB)(index, v);
+  _next->glVertexAttrib4NsvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
@@ -47898,7 +47898,7 @@ static void REGAL_CALL emu_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyt
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4NubARB)(index, x, y, z, w);
+  _next->glVertexAttrib4NubARB(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4NubvARB(GLuint index, const GLubyte *v)
@@ -47935,7 +47935,7 @@ static void REGAL_CALL emu_glVertexAttrib4NubvARB(GLuint index, const GLubyte *v
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4NubvARB)(index, v);
+  _next->glVertexAttrib4NubvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4NusvARB(GLuint index, const GLushort *v)
@@ -47972,7 +47972,7 @@ static void REGAL_CALL emu_glVertexAttrib4NusvARB(GLuint index, const GLushort *
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4NusvARB)(index, v);
+  _next->glVertexAttrib4NusvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4bvARB(GLuint index, const GLbyte *v)
@@ -48009,7 +48009,7 @@ static void REGAL_CALL emu_glVertexAttrib4bvARB(GLuint index, const GLbyte *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4bvARB)(index, v);
+  _next->glVertexAttrib4bvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
@@ -48046,7 +48046,7 @@ static void REGAL_CALL emu_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdoubl
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4dARB)(index, x, y, z, w);
+  _next->glVertexAttrib4dARB(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4dvARB(GLuint index, const GLdouble *v)
@@ -48083,7 +48083,7 @@ static void REGAL_CALL emu_glVertexAttrib4dvARB(GLuint index, const GLdouble *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4dvARB)(index, v);
+  _next->glVertexAttrib4dvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
@@ -48120,7 +48120,7 @@ static void REGAL_CALL emu_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4fARB)(index, x, y, z, w);
+  _next->glVertexAttrib4fARB(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4fvARB(GLuint index, const GLfloat *v)
@@ -48157,7 +48157,7 @@ static void REGAL_CALL emu_glVertexAttrib4fvARB(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4fvARB)(index, v);
+  _next->glVertexAttrib4fvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4ivARB(GLuint index, const GLint *v)
@@ -48194,7 +48194,7 @@ static void REGAL_CALL emu_glVertexAttrib4ivARB(GLuint index, const GLint *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4ivARB)(index, v);
+  _next->glVertexAttrib4ivARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
@@ -48231,7 +48231,7 @@ static void REGAL_CALL emu_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4sARB)(index, x, y, z, w);
+  _next->glVertexAttrib4sARB(index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4svARB(GLuint index, const GLshort *v)
@@ -48268,7 +48268,7 @@ static void REGAL_CALL emu_glVertexAttrib4svARB(GLuint index, const GLshort *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4svARB)(index, v);
+  _next->glVertexAttrib4svARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4ubvARB(GLuint index, const GLubyte *v)
@@ -48305,7 +48305,7 @@ static void REGAL_CALL emu_glVertexAttrib4ubvARB(GLuint index, const GLubyte *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4ubvARB)(index, v);
+  _next->glVertexAttrib4ubvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttrib4usvARB(GLuint index, const GLushort *v)
@@ -48342,7 +48342,7 @@ static void REGAL_CALL emu_glVertexAttrib4usvARB(GLuint index, const GLushort *v
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glVertexAttrib4usvARB)(index, v);
+  _next->glVertexAttrib4usvARB(index, v);
 }
 
 static void REGAL_CALL emu_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
@@ -48414,7 +48414,7 @@ static void REGAL_CALL emu_glVertexAttribPointerARB(GLuint index, GLint size, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexAttribPointerARB)(index, size, type, normalized, stride, pointer);
+      _next->glVertexAttribPointerARB(index, size, type, normalized, stride, pointer);
       break;
     }
 
@@ -48484,7 +48484,7 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glBindAttribLocation)(programObj, index, name);
+          _next->glBindAttribLocation(programObj, index, name);
           return;
         }
       }
@@ -48493,7 +48493,7 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindAttribLocationARB)(programObj, index, name);
+      _next->glBindAttribLocationARB(programObj, index, name);
       break;
     }
 
@@ -48532,7 +48532,7 @@ static void REGAL_CALL emu_glDepthRangeArrayv(GLuint first, GLsizei count, const
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDepthRangeArrayv)(first, count, v);
+  _next->glDepthRangeArrayv(first, count, v);
 }
 
 static void REGAL_CALL emu_glDepthRangeIndexed(GLuint index, GLclampd n, GLclampd f)
@@ -48562,7 +48562,7 @@ static void REGAL_CALL emu_glDepthRangeIndexed(GLuint index, GLclampd n, GLclamp
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDepthRangeIndexed)(index, n, f);
+  _next->glDepthRangeIndexed(index, n, f);
 }
 
 static void REGAL_CALL emu_glGetDoublei_v(GLenum target, GLuint index, GLdouble *v)
@@ -48631,7 +48631,7 @@ static void REGAL_CALL emu_glGetDoublei_v(GLenum target, GLuint index, GLdouble 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if ( ! _context->dsa->GetIndexedv( _context, target, index, v ) ) {
-          _dispatch.call(&_dispatch.glGetDoublei_v)(target, index, v);
+          _dispatch.glGetDoublei_v(target, index, v);
         }
         return;
       }
@@ -48641,7 +48641,7 @@ static void REGAL_CALL emu_glGetDoublei_v(GLenum target, GLuint index, GLdouble 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetDoublei_v)(target, index, v);
+      _next->glGetDoublei_v(target, index, v);
       break;
     }
 
@@ -48715,7 +48715,7 @@ static void REGAL_CALL emu_glGetFloati_v(GLenum target, GLuint index, GLfloat *v
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if ( ! _context->dsa->GetIndexedv( _context, target, index, v ) ) {
-          _dispatch.call(&_dispatch.glGetFloati_v)(target, index, v);
+          _dispatch.glGetFloati_v(target, index, v);
         }
         return;
       }
@@ -48725,7 +48725,7 @@ static void REGAL_CALL emu_glGetFloati_v(GLenum target, GLuint index, GLfloat *v
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetFloati_v)(target, index, v);
+      _next->glGetFloati_v(target, index, v);
       break;
     }
 
@@ -48760,7 +48760,7 @@ static void REGAL_CALL emu_glScissorArrayv(GLuint first, GLsizei count, const GL
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glScissorArrayv)(first, count, v);
+  _next->glScissorArrayv(first, count, v);
 }
 
 static void REGAL_CALL emu_glScissorIndexed(GLuint index, GLint left, GLint bottom, GLint width, GLint height)
@@ -48790,7 +48790,7 @@ static void REGAL_CALL emu_glScissorIndexed(GLuint index, GLint left, GLint bott
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glScissorIndexed)(index, left, bottom, width, height);
+  _next->glScissorIndexed(index, left, bottom, width, height);
 }
 
 static void REGAL_CALL emu_glScissorIndexedv(GLuint index, const GLint *v)
@@ -48820,7 +48820,7 @@ static void REGAL_CALL emu_glScissorIndexedv(GLuint index, const GLint *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glScissorIndexedv)(index, v);
+  _next->glScissorIndexedv(index, v);
 }
 
 static void REGAL_CALL emu_glViewportArrayv(GLuint first, GLsizei count, const GLfloat *v)
@@ -48850,7 +48850,7 @@ static void REGAL_CALL emu_glViewportArrayv(GLuint first, GLsizei count, const G
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glViewportArrayv)(first, count, v);
+  _next->glViewportArrayv(first, count, v);
 }
 
 static void REGAL_CALL emu_glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h)
@@ -48880,7 +48880,7 @@ static void REGAL_CALL emu_glViewportIndexedf(GLuint index, GLfloat x, GLfloat y
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glViewportIndexedf)(index, x, y, w, h);
+  _next->glViewportIndexedf(index, x, y, w, h);
 }
 
 static void REGAL_CALL emu_glViewportIndexedfv(GLuint index, const GLfloat *v)
@@ -48910,7 +48910,7 @@ static void REGAL_CALL emu_glViewportIndexedfv(GLuint index, const GLfloat *v)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glViewportIndexedfv)(index, v);
+  _next->glViewportIndexedfv(index, v);
 }
 
 // GL_ARB_window_pos
@@ -48977,7 +48977,7 @@ static void REGAL_CALL emu_glDrawBuffersATI(GLsizei n, const GLenum *bufs)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glDrawBuffers)(n, bufs);
+          _table.glDrawBuffers(n, bufs);
           return;
         }
       }
@@ -48986,7 +48986,7 @@ static void REGAL_CALL emu_glDrawBuffersATI(GLsizei n, const GLenum *bufs)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawBuffersATI)(n, bufs);
+      _next->glDrawBuffersATI(n, bufs);
       break;
     }
 
@@ -49059,7 +49059,7 @@ static void REGAL_CALL emu_glDrawElementArrayATI(GLenum mode, GLsizei count)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawElementArrayATI)(mode, count);
+  _next->glDrawElementArrayATI(mode, count);
 }
 
 static void REGAL_CALL emu_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count)
@@ -49107,7 +49107,7 @@ static void REGAL_CALL emu_glDrawRangeElementArrayATI(GLenum mode, GLuint start,
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawRangeElementArrayATI)(mode, start, end, count);
+  _next->glDrawRangeElementArrayATI(mode, start, end, count);
 }
 
 // GL_ATI_envmap_bumpmap
@@ -49190,7 +49190,7 @@ static void REGAL_CALL emu_glBlendColorEXT(GLclampf red, GLclampf green, GLclamp
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glBlendColor)(red, green, blue, alpha);
+          _next->glBlendColor(red, green, blue, alpha);
           return;
         }
       }
@@ -49199,7 +49199,7 @@ static void REGAL_CALL emu_glBlendColorEXT(GLclampf red, GLclampf green, GLclamp
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBlendColorEXT)(red, green, blue, alpha);
+      _next->glBlendColorEXT(red, green, blue, alpha);
       break;
     }
 
@@ -49273,7 +49273,7 @@ static void REGAL_CALL emu_glBlendEquationEXT(GLenum mode)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          _next->call(&_next->glBlendEquation)(mode);
+          _next->glBlendEquation(mode);
           return;
         }
       }
@@ -49282,7 +49282,7 @@ static void REGAL_CALL emu_glBlendEquationEXT(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBlendEquationEXT)(mode);
+      _next->glBlendEquationEXT(mode);
       break;
     }
 
@@ -49371,7 +49371,7 @@ static void REGAL_CALL emu_glBindMultiTextureEXT(GLenum texunit, GLenum target, 
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
         _context->dsa->ShadowDsaTexture( target, texture );
-        _dispatch.call(&_dispatch.glBindTexture)( target, texture );
+        _dispatch.glBindTexture( target, texture );
         return;
       }
       #endif
@@ -49380,7 +49380,7 @@ static void REGAL_CALL emu_glBindMultiTextureEXT(GLenum texunit, GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindMultiTextureEXT)(texunit, target, texture);
+      _next->glBindMultiTextureEXT(texunit, target, texture);
       break;
     }
 
@@ -49440,7 +49440,7 @@ static GLenum REGAL_CALL emu_glCheckNamedFramebufferStatusEXT(GLuint framebuffer
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        return _dispatch.call(&_dispatch.glCheckFramebufferStatus)( target );
+        return _dispatch.glCheckFramebufferStatus( target );
       }
       #endif
     case 1 :
@@ -49448,7 +49448,7 @@ static GLenum REGAL_CALL emu_glCheckNamedFramebufferStatusEXT(GLuint framebuffer
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glCheckNamedFramebufferStatusEXT)(framebuffer, target);
+      return _next->glCheckNamedFramebufferStatusEXT(framebuffer, target);
     }
 
   }
@@ -49527,7 +49527,7 @@ static void REGAL_CALL emu_glClientAttribDefaultEXT(GLbitfield mask)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glClientAttribDefaultEXT)(mask);
+      _next->glClientAttribDefaultEXT(mask);
       break;
     }
 
@@ -49587,7 +49587,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCompressedTexImage1D)( target, level, internalformat, width, border, imageSize, data );
+        _dispatch.glCompressedTexImage1D( target, level, internalformat, width, border, imageSize, data );
         return;
       }
       #endif
@@ -49596,7 +49596,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedMultiTexImage1DEXT)(texunit, target, level, internalformat, width, border, imageSize, data);
+      _next->glCompressedMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, imageSize, data);
       break;
     }
 
@@ -49656,7 +49656,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCompressedTexImage2D)( target, level, internalformat, width, height, border, imageSize, bits );
+        _dispatch.glCompressedTexImage2D( target, level, internalformat, width, height, border, imageSize, bits );
         return;
       }
       #endif
@@ -49665,7 +49665,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedMultiTexImage2DEXT)(texunit, target, level, internalformat, width, height, border, imageSize, bits);
+      _next->glCompressedMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, imageSize, bits);
       break;
     }
 
@@ -49725,7 +49725,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCompressedTexImage3D)( target, level, internalformat, width, height, depth, border, imageSize, bits );
+        _dispatch.glCompressedTexImage3D( target, level, internalformat, width, height, depth, border, imageSize, bits );
         return;
       }
       #endif
@@ -49734,7 +49734,7 @@ static void REGAL_CALL emu_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedMultiTexImage3DEXT)(texunit, target, level, internalformat, width, height, depth, border, imageSize, bits);
+      _next->glCompressedMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, imageSize, bits);
       break;
     }
 
@@ -49794,7 +49794,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCompressedTexSubImage1D)( target, level, xoffset, width, format, imageSize, data );
+        _dispatch.glCompressedTexSubImage1D( target, level, xoffset, width, format, imageSize, data );
         return;
       }
       #endif
@@ -49803,7 +49803,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedMultiTexSubImage1DEXT)(texunit, target, level, xoffset, width, format, imageSize, data);
+      _next->glCompressedMultiTexSubImage1DEXT(texunit, target, level, xoffset, width, format, imageSize, data);
       break;
     }
 
@@ -49863,7 +49863,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCompressedTexSubImage2D)( target, level, xoffset, yoffset, width, height, format, imageSize, data );
+        _dispatch.glCompressedTexSubImage2D( target, level, xoffset, yoffset, width, height, format, imageSize, data );
         return;
       }
       #endif
@@ -49872,7 +49872,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedMultiTexSubImage2DEXT)(texunit, target, level, xoffset, yoffset, width, height, format, imageSize, data);
+      _next->glCompressedMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, width, height, format, imageSize, data);
       break;
     }
 
@@ -49932,7 +49932,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCompressedTexSubImage3D)( target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
+        _dispatch.glCompressedTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
         return;
       }
       #endif
@@ -49941,7 +49941,7 @@ static void REGAL_CALL emu_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedMultiTexSubImage3DEXT)(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
+      _next->glCompressedMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
       break;
     }
 
@@ -50001,7 +50001,7 @@ static void REGAL_CALL emu_glCompressedTextureImage1DEXT(GLuint texture, GLenum 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCompressedTexImage1D)( target, level, internalformat, width, border, imageSize, bits );
+        _dispatch.glCompressedTexImage1D( target, level, internalformat, width, border, imageSize, bits );
         return;
       }
       #endif
@@ -50010,7 +50010,7 @@ static void REGAL_CALL emu_glCompressedTextureImage1DEXT(GLuint texture, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTextureImage1DEXT)(texture, target, level, internalformat, width, border, imageSize, bits);
+      _next->glCompressedTextureImage1DEXT(texture, target, level, internalformat, width, border, imageSize, bits);
       break;
     }
 
@@ -50070,7 +50070,7 @@ static void REGAL_CALL emu_glCompressedTextureImage2DEXT(GLuint texture, GLenum 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCompressedTexImage2D)( target, level, internalformat, width, height, border, imageSize, bits );
+        _dispatch.glCompressedTexImage2D( target, level, internalformat, width, height, border, imageSize, bits );
         return;
       }
       #endif
@@ -50079,7 +50079,7 @@ static void REGAL_CALL emu_glCompressedTextureImage2DEXT(GLuint texture, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTextureImage2DEXT)(texture, target, level, internalformat, width, height, border, imageSize, bits);
+      _next->glCompressedTextureImage2DEXT(texture, target, level, internalformat, width, height, border, imageSize, bits);
       break;
     }
 
@@ -50139,7 +50139,7 @@ static void REGAL_CALL emu_glCompressedTextureImage3DEXT(GLuint texture, GLenum 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCompressedTexImage3D)( target, level, internalformat, width, height, depth, border, imageSize, bits );
+        _dispatch.glCompressedTexImage3D( target, level, internalformat, width, height, depth, border, imageSize, bits );
         return;
       }
       #endif
@@ -50148,7 +50148,7 @@ static void REGAL_CALL emu_glCompressedTextureImage3DEXT(GLuint texture, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTextureImage3DEXT)(texture, target, level, internalformat, width, height, depth, border, imageSize, bits);
+      _next->glCompressedTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, imageSize, bits);
       break;
     }
 
@@ -50208,7 +50208,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage1DEXT(GLuint texture, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCompressedTexSubImage1D)( target, level, xoffset, width, format, imageSize, bits );
+        _dispatch.glCompressedTexSubImage1D( target, level, xoffset, width, format, imageSize, bits );
         return;
       }
       #endif
@@ -50217,7 +50217,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage1DEXT(GLuint texture, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTextureSubImage1DEXT)(texture, target, level, xoffset, width, format, imageSize, bits);
+      _next->glCompressedTextureSubImage1DEXT(texture, target, level, xoffset, width, format, imageSize, bits);
       break;
     }
 
@@ -50277,7 +50277,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage2DEXT(GLuint texture, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCompressedTexSubImage2D)( target, level, xoffset, yoffset, width, height, format, imageSize, bits );
+        _dispatch.glCompressedTexSubImage2D( target, level, xoffset, yoffset, width, height, format, imageSize, bits );
         return;
       }
       #endif
@@ -50286,7 +50286,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage2DEXT(GLuint texture, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTextureSubImage2DEXT)(texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits);
+      _next->glCompressedTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits);
       break;
     }
 
@@ -50346,7 +50346,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage3DEXT(GLuint texture, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCompressedTexSubImage3D)( target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
+        _dispatch.glCompressedTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
         return;
       }
       #endif
@@ -50355,7 +50355,7 @@ static void REGAL_CALL emu_glCompressedTextureSubImage3DEXT(GLuint texture, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCompressedTextureSubImage3DEXT)(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits);
+      _next->glCompressedTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits);
       break;
     }
 
@@ -50415,7 +50415,7 @@ static void REGAL_CALL emu_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum targe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCopyTexImage1D)( target, level, internalformat, x, y, width, border );
+        _dispatch.glCopyTexImage1D( target, level, internalformat, x, y, width, border );
         return;
       }
       #endif
@@ -50424,7 +50424,7 @@ static void REGAL_CALL emu_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum targe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyMultiTexImage1DEXT)(texunit, target, level, internalformat, x, y, width, border);
+      _next->glCopyMultiTexImage1DEXT(texunit, target, level, internalformat, x, y, width, border);
       break;
     }
 
@@ -50484,7 +50484,7 @@ static void REGAL_CALL emu_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum targe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCopyTexImage2D)( target, level, internalformat, x, y, width, height, border );
+        _dispatch.glCopyTexImage2D( target, level, internalformat, x, y, width, height, border );
         return;
       }
       #endif
@@ -50493,7 +50493,7 @@ static void REGAL_CALL emu_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum targe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyMultiTexImage2DEXT)(texunit, target, level, internalformat, x, y, width, height, border);
+      _next->glCopyMultiTexImage2DEXT(texunit, target, level, internalformat, x, y, width, height, border);
       break;
     }
 
@@ -50553,7 +50553,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum ta
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCopyTexSubImage1D)( target, level, xoffset, x, y, width );
+        _dispatch.glCopyTexSubImage1D( target, level, xoffset, x, y, width );
         return;
       }
       #endif
@@ -50562,7 +50562,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum ta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyMultiTexSubImage1DEXT)(texunit, target, level, xoffset, x, y, width);
+      _next->glCopyMultiTexSubImage1DEXT(texunit, target, level, xoffset, x, y, width);
       break;
     }
 
@@ -50622,7 +50622,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum ta
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCopyTexSubImage2D)( target, level, xoffset, yoffset, x, y, width, height );
+        _dispatch.glCopyTexSubImage2D( target, level, xoffset, yoffset, x, y, width, height );
         return;
       }
       #endif
@@ -50631,7 +50631,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum ta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyMultiTexSubImage2DEXT)(texunit, target, level, xoffset, yoffset, x, y, width, height);
+      _next->glCopyMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, x, y, width, height);
       break;
     }
 
@@ -50691,7 +50691,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum ta
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glCopyTexSubImage3D)( target, level, xoffset, yoffset, zoffset, x, y, width, height );
+        _dispatch.glCopyTexSubImage3D( target, level, xoffset, yoffset, zoffset, x, y, width, height );
         return;
       }
       #endif
@@ -50700,7 +50700,7 @@ static void REGAL_CALL emu_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum ta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyMultiTexSubImage3DEXT)(texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height);
+      _next->glCopyMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height);
       break;
     }
 
@@ -50760,7 +50760,7 @@ static void REGAL_CALL emu_glCopyTextureImage1DEXT(GLuint texture, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCopyTexImage1D)( target, level, internalformat, x, y, width, border );
+        _dispatch.glCopyTexImage1D( target, level, internalformat, x, y, width, border );
         return;
       }
       #endif
@@ -50769,7 +50769,7 @@ static void REGAL_CALL emu_glCopyTextureImage1DEXT(GLuint texture, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyTextureImage1DEXT)(texture, target, level, internalformat, x, y, width, border);
+      _next->glCopyTextureImage1DEXT(texture, target, level, internalformat, x, y, width, border);
       break;
     }
 
@@ -50829,7 +50829,7 @@ static void REGAL_CALL emu_glCopyTextureImage2DEXT(GLuint texture, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCopyTexImage2D)( target, level, internalformat, x, y, width, height, border );
+        _dispatch.glCopyTexImage2D( target, level, internalformat, x, y, width, height, border );
         return;
       }
       #endif
@@ -50838,7 +50838,7 @@ static void REGAL_CALL emu_glCopyTextureImage2DEXT(GLuint texture, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyTextureImage2DEXT)(texture, target, level, internalformat, x, y, width, height, border);
+      _next->glCopyTextureImage2DEXT(texture, target, level, internalformat, x, y, width, height, border);
       break;
     }
 
@@ -50898,7 +50898,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage1DEXT(GLuint texture, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCopyTexSubImage1D)( target, level, xoffset, x, y, width );
+        _dispatch.glCopyTexSubImage1D( target, level, xoffset, x, y, width );
         return;
       }
       #endif
@@ -50907,7 +50907,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage1DEXT(GLuint texture, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyTextureSubImage1DEXT)(texture, target, level, xoffset, x, y, width);
+      _next->glCopyTextureSubImage1DEXT(texture, target, level, xoffset, x, y, width);
       break;
     }
 
@@ -50967,7 +50967,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage2DEXT(GLuint texture, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCopyTexSubImage2D)( target, level, xoffset, yoffset, x, y, width, height );
+        _dispatch.glCopyTexSubImage2D( target, level, xoffset, yoffset, x, y, width, height );
         return;
       }
       #endif
@@ -50976,7 +50976,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage2DEXT(GLuint texture, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyTextureSubImage2DEXT)(texture, target, level, xoffset, yoffset, x, y, width, height);
+      _next->glCopyTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, x, y, width, height);
       break;
     }
 
@@ -51036,7 +51036,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage3DEXT(GLuint texture, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glCopyTexSubImage3D)( target, level, xoffset, yoffset, zoffset, x, y, width, height );
+        _dispatch.glCopyTexSubImage3D( target, level, xoffset, yoffset, zoffset, x, y, width, height );
         return;
       }
       #endif
@@ -51045,7 +51045,7 @@ static void REGAL_CALL emu_glCopyTextureSubImage3DEXT(GLuint texture, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glCopyTextureSubImage3DEXT)(texture, target, level, xoffset, yoffset, zoffset, x, y, width, height);
+      _next->glCopyTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, x, y, width, height);
       break;
     }
 
@@ -51121,7 +51121,7 @@ static void REGAL_CALL emu_glDisableClientStateIndexedEXT(GLenum array, GLuint i
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-        _dispatch.call(&_dispatch.glDisableClientState)( array );
+        _dispatch.glDisableClientState( array );
         return;
       }
       #endif
@@ -51130,7 +51130,7 @@ static void REGAL_CALL emu_glDisableClientStateIndexedEXT(GLenum array, GLuint i
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableClientStateIndexedEXT)(array, index);
+      _next->glDisableClientStateIndexedEXT(array, index);
       break;
     }
 
@@ -51206,7 +51206,7 @@ static void REGAL_CALL emu_glDisableClientStateiEXT(GLenum array, GLuint index)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-        _dispatch.call(&_dispatch.glDisableClientState)( array );
+        _dispatch.glDisableClientState( array );
         return;
       }
       #endif
@@ -51215,7 +51215,7 @@ static void REGAL_CALL emu_glDisableClientStateiEXT(GLenum array, GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableClientStateiEXT)(array, index);
+      _next->glDisableClientStateiEXT(array, index);
       break;
     }
 
@@ -51291,7 +51291,7 @@ static void REGAL_CALL emu_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum ar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );
-        _dispatch.call(&_dispatch.glDisableVertexAttribArray)( array );
+        _dispatch.glDisableVertexAttribArray( array );
         return;
       }
       #endif
@@ -51300,7 +51300,7 @@ static void REGAL_CALL emu_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum ar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableVertexArrayAttribEXT)(vaobj, array);
+      _next->glDisableVertexArrayAttribEXT(vaobj, array);
       break;
     }
 
@@ -51378,9 +51378,9 @@ static void REGAL_CALL emu_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
         _context->dsa->DsaVao( _context, vaobj );
         if ( array >= GL_TEXTURE0 && array <= GL_TEXTURE31) {
           _context->dsa->DsaClientActiveTexture( _context, array );
-          _dispatch.call(&_dispatch.glDisableClientState)( GL_TEXTURE_COORD_ARRAY );
+          _dispatch.glDisableClientState( GL_TEXTURE_COORD_ARRAY );
         } else {
-          _dispatch.call(&_dispatch.glDisableClientState)( array );
+          _dispatch.glDisableClientState( array );
         }
         return;
       }
@@ -51390,7 +51390,7 @@ static void REGAL_CALL emu_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableVertexArrayEXT)(vaobj, array);
+      _next->glDisableVertexArrayEXT(vaobj, array);
       break;
     }
 
@@ -51466,7 +51466,7 @@ static void REGAL_CALL emu_glEnableClientStateIndexedEXT(GLenum array, GLuint in
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-        _dispatch.call(&_dispatch.glEnableClientState)( array );
+        _dispatch.glEnableClientState( array );
         return;
       }
       #endif
@@ -51475,7 +51475,7 @@ static void REGAL_CALL emu_glEnableClientStateIndexedEXT(GLenum array, GLuint in
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableClientStateIndexedEXT)(array, index);
+      _next->glEnableClientStateIndexedEXT(array, index);
       break;
     }
 
@@ -51551,7 +51551,7 @@ static void REGAL_CALL emu_glEnableClientStateiEXT(GLenum array, GLuint index)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-        _dispatch.call(&_dispatch.glEnableClientState)( array );
+        _dispatch.glEnableClientState( array );
         return;
       }
       #endif
@@ -51560,7 +51560,7 @@ static void REGAL_CALL emu_glEnableClientStateiEXT(GLenum array, GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableClientStateiEXT)(array, index);
+      _next->glEnableClientStateiEXT(array, index);
       break;
     }
 
@@ -51636,7 +51636,7 @@ static void REGAL_CALL emu_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum arr
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );
-        _dispatch.call(&_dispatch.glEnableVertexAttribArray)( array );
+        _dispatch.glEnableVertexAttribArray( array );
         return;
       }
       #endif
@@ -51645,7 +51645,7 @@ static void REGAL_CALL emu_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum arr
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableVertexArrayAttribEXT)(vaobj, array);
+      _next->glEnableVertexArrayAttribEXT(vaobj, array);
       break;
     }
 
@@ -51723,9 +51723,9 @@ static void REGAL_CALL emu_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
         _context->dsa->DsaVao( _context, vaobj );
         if ( array >= GL_TEXTURE0 && array <= GL_TEXTURE31) {
           _context->dsa->DsaClientActiveTexture( _context, array );
-          _dispatch.call(&_dispatch.glEnableClientState)( GL_TEXTURE_COORD_ARRAY );
+          _dispatch.glEnableClientState( GL_TEXTURE_COORD_ARRAY );
         } else {
-          _dispatch.call(&_dispatch.glEnableClientState)( array );
+          _dispatch.glEnableClientState( array );
         }
         return;
       }
@@ -51735,7 +51735,7 @@ static void REGAL_CALL emu_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableVertexArrayEXT)(vaobj, array);
+      _next->glEnableVertexArrayEXT(vaobj, array);
       break;
     }
 
@@ -51795,7 +51795,7 @@ static void REGAL_CALL emu_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLint
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        _dispatch.call(&_dispatch.glFlushMappedBufferRange)( GL_ARRAY_BUFFER, offset, length );
+        _dispatch.glFlushMappedBufferRange( GL_ARRAY_BUFFER, offset, length );
         return;
       }
       #endif
@@ -51804,7 +51804,7 @@ static void REGAL_CALL emu_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFlushMappedNamedBufferRangeEXT)(buffer, offset, length);
+      _next->glFlushMappedNamedBufferRangeEXT(buffer, offset, length);
       break;
     }
 
@@ -51864,7 +51864,7 @@ static void REGAL_CALL emu_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glDrawBuffer)( mode );
+        _dispatch.glDrawBuffer( mode );
         return;
       }
       #endif
@@ -51873,7 +51873,7 @@ static void REGAL_CALL emu_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferDrawBufferEXT)(framebuffer, mode);
+      _next->glFramebufferDrawBufferEXT(framebuffer, mode);
       break;
     }
 
@@ -51933,7 +51933,7 @@ static void REGAL_CALL emu_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsiz
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glDrawBuffers)( n, bufs );
+        _dispatch.glDrawBuffers( n, bufs );
         return;
       }
       #endif
@@ -51942,7 +51942,7 @@ static void REGAL_CALL emu_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsiz
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferDrawBuffersEXT)(framebuffer, n, bufs);
+      _next->glFramebufferDrawBuffersEXT(framebuffer, n, bufs);
       break;
     }
 
@@ -52002,7 +52002,7 @@ static void REGAL_CALL emu_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glReadBuffer)( mode );
+        _dispatch.glReadBuffer( mode );
         return;
       }
       #endif
@@ -52011,7 +52011,7 @@ static void REGAL_CALL emu_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferReadBufferEXT)(framebuffer, mode);
+      _next->glFramebufferReadBufferEXT(framebuffer, mode);
       break;
     }
 
@@ -52071,7 +52071,7 @@ static void REGAL_CALL emu_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum ta
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGenerateMipmap)( target );
+        _dispatch.glGenerateMipmap( target );
         return;
       }
       #endif
@@ -52080,7 +52080,7 @@ static void REGAL_CALL emu_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum ta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenerateMultiTexMipmapEXT)(texunit, target);
+      _next->glGenerateMultiTexMipmapEXT(texunit, target);
       break;
     }
 
@@ -52140,7 +52140,7 @@ static void REGAL_CALL emu_glGenerateTextureMipmapEXT(GLuint texture, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGenerateMipmap)( target );
+        _dispatch.glGenerateMipmap( target );
         return;
       }
       #endif
@@ -52149,7 +52149,7 @@ static void REGAL_CALL emu_glGenerateTextureMipmapEXT(GLuint texture, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenerateTextureMipmapEXT)(texture, target);
+      _next->glGenerateTextureMipmapEXT(texture, target);
       break;
     }
 
@@ -52209,7 +52209,7 @@ static void REGAL_CALL emu_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetCompressedTexImage)( target, lod, img );
+        _dispatch.glGetCompressedTexImage( target, lod, img );
         return;
       }
       #endif
@@ -52218,7 +52218,7 @@ static void REGAL_CALL emu_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetCompressedMultiTexImageEXT)(texunit, target, lod, img);
+      _next->glGetCompressedMultiTexImageEXT(texunit, target, lod, img);
       break;
     }
 
@@ -52278,7 +52278,7 @@ static void REGAL_CALL emu_glGetCompressedTextureImageEXT(GLuint texture, GLenum
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetCompressedTexImage)( target, lod, img );
+        _dispatch.glGetCompressedTexImage( target, lod, img );
         return;
       }
       #endif
@@ -52287,7 +52287,7 @@ static void REGAL_CALL emu_glGetCompressedTextureImageEXT(GLuint texture, GLenum
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetCompressedTextureImageEXT)(texture, target, lod, img);
+      _next->glGetCompressedTextureImageEXT(texture, target, lod, img);
       break;
     }
 
@@ -52347,7 +52347,7 @@ static void REGAL_CALL emu_glGetDoubleIndexedvEXT(GLenum target, GLuint index, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-          _dispatch.call(&_dispatch.glGetDoubleIndexedvEXT)(target, index, data);
+          _dispatch.glGetDoubleIndexedvEXT(target, index, data);
         }
         return;
       }
@@ -52357,7 +52357,7 @@ static void REGAL_CALL emu_glGetDoubleIndexedvEXT(GLenum target, GLuint index, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetDoubleIndexedvEXT)(target, index, data);
+      _next->glGetDoubleIndexedvEXT(target, index, data);
       break;
     }
 
@@ -52431,7 +52431,7 @@ static void REGAL_CALL emu_glGetDoublei_vEXT(GLenum target, GLuint index, GLdoub
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-          _dispatch.call(&_dispatch.glGetDoublei_vEXT)(target, index, data);
+          _dispatch.glGetDoublei_vEXT(target, index, data);
         }
         return;
       }
@@ -52441,7 +52441,7 @@ static void REGAL_CALL emu_glGetDoublei_vEXT(GLenum target, GLuint index, GLdoub
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetDoublei_vEXT)(target, index, data);
+      _next->glGetDoublei_vEXT(target, index, data);
       break;
     }
 
@@ -52501,7 +52501,7 @@ static void REGAL_CALL emu_glGetFloatIndexedvEXT(GLenum target, GLuint index, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-          _dispatch.call(&_dispatch.glGetFloatIndexedvEXT)(target, index, data);
+          _dispatch.glGetFloatIndexedvEXT(target, index, data);
         }
         return;
       }
@@ -52511,7 +52511,7 @@ static void REGAL_CALL emu_glGetFloatIndexedvEXT(GLenum target, GLuint index, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetFloatIndexedvEXT)(target, index, data);
+      _next->glGetFloatIndexedvEXT(target, index, data);
       break;
     }
 
@@ -52585,7 +52585,7 @@ static void REGAL_CALL emu_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-          _dispatch.call(&_dispatch.glGetFloati_vEXT)(target, index, data);
+          _dispatch.glGetFloati_vEXT(target, index, data);
         }
         return;
       }
@@ -52595,7 +52595,7 @@ static void REGAL_CALL emu_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetFloati_vEXT)(target, index, data);
+      _next->glGetFloati_vEXT(target, index, data);
       break;
     }
 
@@ -52655,7 +52655,7 @@ static void REGAL_CALL emu_glGetFramebufferParameterivEXT(GLuint framebuffer, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer );
-        _dispatch.call(&_dispatch.glGetIntegerv)(pname, params);
+        _dispatch.glGetIntegerv(pname, params);
         return;
       }
       #endif
@@ -52664,7 +52664,7 @@ static void REGAL_CALL emu_glGetFramebufferParameterivEXT(GLuint framebuffer, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetFramebufferParameterivEXT)(framebuffer, pname, params);
+      _next->glGetFramebufferParameterivEXT(framebuffer, pname, params);
       break;
     }
 
@@ -52738,7 +52738,7 @@ static void REGAL_CALL emu_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexEnvfv)( target, pname, params );
+        _dispatch.glGetTexEnvfv( target, pname, params );
         return;
       }
       #endif
@@ -52747,7 +52747,7 @@ static void REGAL_CALL emu_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexEnvfvEXT)(texunit, target, pname, params);
+      _next->glGetMultiTexEnvfvEXT(texunit, target, pname, params);
       break;
     }
 
@@ -52821,7 +52821,7 @@ static void REGAL_CALL emu_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexEnviv)( target, pname, params );
+        _dispatch.glGetTexEnviv( target, pname, params );
         return;
       }
       #endif
@@ -52830,7 +52830,7 @@ static void REGAL_CALL emu_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexEnvivEXT)(texunit, target, pname, params);
+      _next->glGetMultiTexEnvivEXT(texunit, target, pname, params);
       break;
     }
 
@@ -52905,7 +52905,7 @@ static void REGAL_CALL emu_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexGendv)( coord, pname, params );
+        _dispatch.glGetTexGendv( coord, pname, params );
         return;
       }
       #endif
@@ -52914,7 +52914,7 @@ static void REGAL_CALL emu_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexGendvEXT)(texunit, coord, pname, params);
+      _next->glGetMultiTexGendvEXT(texunit, coord, pname, params);
       break;
     }
 
@@ -52989,7 +52989,7 @@ static void REGAL_CALL emu_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexGenfv)( coord, pname, params );
+        _dispatch.glGetTexGenfv( coord, pname, params );
         return;
       }
       #endif
@@ -52998,7 +52998,7 @@ static void REGAL_CALL emu_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexGenfvEXT)(texunit, coord, pname, params);
+      _next->glGetMultiTexGenfvEXT(texunit, coord, pname, params);
       break;
     }
 
@@ -53073,7 +53073,7 @@ static void REGAL_CALL emu_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexGeniv)( coord, pname, params );
+        _dispatch.glGetTexGeniv( coord, pname, params );
         return;
       }
       #endif
@@ -53082,7 +53082,7 @@ static void REGAL_CALL emu_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexGenivEXT)(texunit, coord, pname, params);
+      _next->glGetMultiTexGenivEXT(texunit, coord, pname, params);
       break;
     }
 
@@ -53142,7 +53142,7 @@ static void REGAL_CALL emu_glGetMultiTexImageEXT(GLenum texunit, GLenum target, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexImage)( target, level, format, type, pixels );
+        _dispatch.glGetTexImage( target, level, format, type, pixels );
         return;
       }
       #endif
@@ -53151,7 +53151,7 @@ static void REGAL_CALL emu_glGetMultiTexImageEXT(GLenum texunit, GLenum target, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexImageEXT)(texunit, target, level, format, type, pixels);
+      _next->glGetMultiTexImageEXT(texunit, target, level, format, type, pixels);
       break;
     }
 
@@ -53211,7 +53211,7 @@ static void REGAL_CALL emu_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexLevelParameterfv)( target, level, pname, params );
+        _dispatch.glGetTexLevelParameterfv( target, level, pname, params );
         return;
       }
       #endif
@@ -53220,7 +53220,7 @@ static void REGAL_CALL emu_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexLevelParameterfvEXT)(texunit, target, level, pname, params);
+      _next->glGetMultiTexLevelParameterfvEXT(texunit, target, level, pname, params);
       break;
     }
 
@@ -53280,7 +53280,7 @@ static void REGAL_CALL emu_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexLevelParameteriv)( target, level, pname, params );
+        _dispatch.glGetTexLevelParameteriv( target, level, pname, params );
         return;
       }
       #endif
@@ -53289,7 +53289,7 @@ static void REGAL_CALL emu_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexLevelParameterivEXT)(texunit, target, level, pname, params);
+      _next->glGetMultiTexLevelParameterivEXT(texunit, target, level, pname, params);
       break;
     }
 
@@ -53349,7 +53349,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum t
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexParameterIiv)( target, pname, params );
+        _dispatch.glGetTexParameterIiv( target, pname, params );
         return;
       }
       #endif
@@ -53358,7 +53358,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexParameterIivEXT)(texunit, target, pname, params);
+      _next->glGetMultiTexParameterIivEXT(texunit, target, pname, params);
       break;
     }
 
@@ -53418,7 +53418,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexParameterIuiv)( target, pname, params );
+        _dispatch.glGetTexParameterIuiv( target, pname, params );
         return;
       }
       #endif
@@ -53427,7 +53427,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexParameterIuivEXT)(texunit, target, pname, params);
+      _next->glGetMultiTexParameterIuivEXT(texunit, target, pname, params);
       break;
     }
 
@@ -53487,7 +53487,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum ta
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexParameterfv)( target, pname, params );
+        _dispatch.glGetTexParameterfv( target, pname, params );
         return;
       }
       #endif
@@ -53496,7 +53496,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum ta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexParameterfvEXT)(texunit, target, pname, params);
+      _next->glGetMultiTexParameterfvEXT(texunit, target, pname, params);
       break;
     }
 
@@ -53556,7 +53556,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterivEXT(GLenum texunit, GLenum ta
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glGetTexParameteriv)( target, pname, params );
+        _dispatch.glGetTexParameteriv( target, pname, params );
         return;
       }
       #endif
@@ -53565,7 +53565,7 @@ static void REGAL_CALL emu_glGetMultiTexParameterivEXT(GLenum texunit, GLenum ta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMultiTexParameterivEXT)(texunit, target, pname, params);
+      _next->glGetMultiTexParameterivEXT(texunit, target, pname, params);
       break;
     }
 
@@ -53625,7 +53625,7 @@ static void REGAL_CALL emu_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        _dispatch.call(&_dispatch.glGetBufferParameteriv)( GL_ARRAY_BUFFER, pname, params );
+        _dispatch.glGetBufferParameteriv( GL_ARRAY_BUFFER, pname, params );
         return;
       }
       #endif
@@ -53634,7 +53634,7 @@ static void REGAL_CALL emu_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedBufferParameterivEXT)(buffer, pname, params);
+      _next->glGetNamedBufferParameterivEXT(buffer, pname, params);
       break;
     }
 
@@ -53694,7 +53694,7 @@ static void REGAL_CALL emu_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pna
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        _dispatch.call(&_dispatch.glGetBufferPointerv)( GL_ARRAY_BUFFER, pname, params );
+        _dispatch.glGetBufferPointerv( GL_ARRAY_BUFFER, pname, params );
         return;
       }
       #endif
@@ -53703,7 +53703,7 @@ static void REGAL_CALL emu_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pna
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedBufferPointervEXT)(buffer, pname, params);
+      _next->glGetNamedBufferPointervEXT(buffer, pname, params);
       break;
     }
 
@@ -53763,7 +53763,7 @@ static void REGAL_CALL emu_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr of
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        _dispatch.call(&_dispatch.glGetBufferSubData)( GL_ARRAY_BUFFER, offset, size, data );
+        _dispatch.glGetBufferSubData( GL_ARRAY_BUFFER, offset, size, data );
         return;
       }
       #endif
@@ -53772,7 +53772,7 @@ static void REGAL_CALL emu_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr of
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedBufferSubDataEXT)(buffer, offset, size, data);
+      _next->glGetNamedBufferSubDataEXT(buffer, offset, size, data);
       break;
     }
 
@@ -53832,7 +53832,7 @@ static void REGAL_CALL emu_glGetNamedFramebufferAttachmentParameterivEXT(GLuint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glGetFramebufferAttachmentParameteriv)( GL_FRAMEBUFFER, attachment, pname, params );
+        _dispatch.glGetFramebufferAttachmentParameteriv( GL_FRAMEBUFFER, attachment, pname, params );
         return;
       }
       #endif
@@ -53841,7 +53841,7 @@ static void REGAL_CALL emu_glGetNamedFramebufferAttachmentParameterivEXT(GLuint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedFramebufferAttachmentParameterivEXT)(framebuffer, attachment, pname, params);
+      _next->glGetNamedFramebufferAttachmentParameterivEXT(framebuffer, attachment, pname, params);
       break;
     }
 
@@ -53901,7 +53901,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterIivEXT(GLuint program,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glGetProgramLocalParameterIivNV)( target, index, params );
+        _dispatch.glGetProgramLocalParameterIivNV( target, index, params );
         return;
       }
       #endif
@@ -53910,7 +53910,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterIivEXT(GLuint program,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedProgramLocalParameterIivEXT)(program, target, index, params);
+      _next->glGetNamedProgramLocalParameterIivEXT(program, target, index, params);
       break;
     }
 
@@ -53970,7 +53970,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterIuivEXT(GLuint program
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glGetProgramLocalParameterIuivNV)( target, index, params );
+        _dispatch.glGetProgramLocalParameterIuivNV( target, index, params );
         return;
       }
       #endif
@@ -53979,7 +53979,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterIuivEXT(GLuint program
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedProgramLocalParameterIuivEXT)(program, target, index, params);
+      _next->glGetNamedProgramLocalParameterIuivEXT(program, target, index, params);
       break;
     }
 
@@ -54039,7 +54039,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterdvEXT(GLuint program, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glGetProgramLocalParameterdvARB)( target, index, params );
+        _dispatch.glGetProgramLocalParameterdvARB( target, index, params );
         return;
       }
       #endif
@@ -54048,7 +54048,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterdvEXT(GLuint program, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedProgramLocalParameterdvEXT)(program, target, index, params);
+      _next->glGetNamedProgramLocalParameterdvEXT(program, target, index, params);
       break;
     }
 
@@ -54108,7 +54108,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterfvEXT(GLuint program, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glGetProgramLocalParameterfvARB)( target, index, params );
+        _dispatch.glGetProgramLocalParameterfvARB( target, index, params );
         return;
       }
       #endif
@@ -54117,7 +54117,7 @@ static void REGAL_CALL emu_glGetNamedProgramLocalParameterfvEXT(GLuint program, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedProgramLocalParameterfvEXT)(program, target, index, params);
+      _next->glGetNamedProgramLocalParameterfvEXT(program, target, index, params);
       break;
     }
 
@@ -54177,7 +54177,7 @@ static void REGAL_CALL emu_glGetNamedProgramStringEXT(GLuint program, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glGetProgramStringARB)( target, pname, string );
+        _dispatch.glGetProgramStringARB( target, pname, string );
         return;
       }
       #endif
@@ -54186,7 +54186,7 @@ static void REGAL_CALL emu_glGetNamedProgramStringEXT(GLuint program, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedProgramStringEXT)(program, target, pname, string);
+      _next->glGetNamedProgramStringEXT(program, target, pname, string);
       break;
     }
 
@@ -54246,7 +54246,7 @@ static void REGAL_CALL emu_glGetNamedProgramivEXT(GLuint program, GLenum target,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glGetProgramivARB)( target, pname, params );
+        _dispatch.glGetProgramivARB( target, pname, params );
         return;
       }
       #endif
@@ -54255,7 +54255,7 @@ static void REGAL_CALL emu_glGetNamedProgramivEXT(GLuint program, GLenum target,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedProgramivEXT)(program, target, pname, params);
+      _next->glGetNamedProgramivEXT(program, target, pname, params);
       break;
     }
 
@@ -54315,7 +54315,7 @@ static void REGAL_CALL emu_glGetNamedRenderbufferParameterivEXT(GLuint renderbuf
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-        _dispatch.call(&_dispatch.glGetRenderbufferParameteriv)( GL_RENDERBUFFER, pname, params );
+        _dispatch.glGetRenderbufferParameteriv( GL_RENDERBUFFER, pname, params );
         return;
       }
       #endif
@@ -54324,7 +54324,7 @@ static void REGAL_CALL emu_glGetNamedRenderbufferParameterivEXT(GLuint renderbuf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetNamedRenderbufferParameterivEXT)(renderbuffer, pname, params);
+      _next->glGetNamedRenderbufferParameterivEXT(renderbuffer, pname, params);
       break;
     }
 
@@ -54384,7 +54384,7 @@ static void REGAL_CALL emu_glGetPointerIndexedvEXT(GLenum target, GLuint index, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         // if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-        //     _dispatch.call(&_dispatch.glGetPointerIndexedvEXT)(target, index, data);
+        //     _dispatch.glGetPointerIndexedvEXT(target, index, data);
         // }
         return;
       }
@@ -54394,7 +54394,7 @@ static void REGAL_CALL emu_glGetPointerIndexedvEXT(GLenum target, GLuint index, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetPointerIndexedvEXT)(target, index, data);
+      _next->glGetPointerIndexedvEXT(target, index, data);
       break;
     }
 
@@ -54454,7 +54454,7 @@ static void REGAL_CALL emu_glGetTextureImageEXT(GLuint texture, GLenum target, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetTexImage)( target, level, format, type, pixels );
+        _dispatch.glGetTexImage( target, level, format, type, pixels );
         return;
       }
       #endif
@@ -54463,7 +54463,7 @@ static void REGAL_CALL emu_glGetTextureImageEXT(GLuint texture, GLenum target, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTextureImageEXT)(texture, target, level, format, type, pixels);
+      _next->glGetTextureImageEXT(texture, target, level, format, type, pixels);
       break;
     }
 
@@ -54537,7 +54537,7 @@ static void REGAL_CALL emu_glGetTextureLevelParameterfvEXT(GLuint texture, GLenu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetTexLevelParameterfv)( target, level, pname, params );
+        _dispatch.glGetTexLevelParameterfv( target, level, pname, params );
         return;
       }
       #endif
@@ -54546,7 +54546,7 @@ static void REGAL_CALL emu_glGetTextureLevelParameterfvEXT(GLuint texture, GLenu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTextureLevelParameterfvEXT)(texture, target, level, pname, params);
+      _next->glGetTextureLevelParameterfvEXT(texture, target, level, pname, params);
       break;
     }
 
@@ -54620,7 +54620,7 @@ static void REGAL_CALL emu_glGetTextureLevelParameterivEXT(GLuint texture, GLenu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetTexLevelParameteriv)( target, level, pname, params );
+        _dispatch.glGetTexLevelParameteriv( target, level, pname, params );
         return;
       }
       #endif
@@ -54629,7 +54629,7 @@ static void REGAL_CALL emu_glGetTextureLevelParameterivEXT(GLuint texture, GLenu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTextureLevelParameterivEXT)(texture, target, level, pname, params);
+      _next->glGetTextureLevelParameterivEXT(texture, target, level, pname, params);
       break;
     }
 
@@ -54689,7 +54689,7 @@ static void REGAL_CALL emu_glGetTextureParameterIivEXT(GLuint texture, GLenum ta
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetTexParameterIiv)( target, pname, params );
+        _dispatch.glGetTexParameterIiv( target, pname, params );
         return;
       }
       #endif
@@ -54698,7 +54698,7 @@ static void REGAL_CALL emu_glGetTextureParameterIivEXT(GLuint texture, GLenum ta
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTextureParameterIivEXT)(texture, target, pname, params);
+      _next->glGetTextureParameterIivEXT(texture, target, pname, params);
       break;
     }
 
@@ -54758,7 +54758,7 @@ static void REGAL_CALL emu_glGetTextureParameterIuivEXT(GLuint texture, GLenum t
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetTexParameterIuiv)( target, pname, params );
+        _dispatch.glGetTexParameterIuiv( target, pname, params );
         return;
       }
       #endif
@@ -54767,7 +54767,7 @@ static void REGAL_CALL emu_glGetTextureParameterIuivEXT(GLuint texture, GLenum t
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTextureParameterIuivEXT)(texture, target, pname, params);
+      _next->glGetTextureParameterIuivEXT(texture, target, pname, params);
       break;
     }
 
@@ -54841,7 +54841,7 @@ static void REGAL_CALL emu_glGetTextureParameterfvEXT(GLuint texture, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetTexParameterfv)( target, pname, params );
+        _dispatch.glGetTexParameterfv( target, pname, params );
         return;
       }
       #endif
@@ -54850,7 +54850,7 @@ static void REGAL_CALL emu_glGetTextureParameterfvEXT(GLuint texture, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTextureParameterfvEXT)(texture, target, pname, params);
+      _next->glGetTextureParameterfvEXT(texture, target, pname, params);
       break;
     }
 
@@ -54924,7 +54924,7 @@ static void REGAL_CALL emu_glGetTextureParameterivEXT(GLuint texture, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glGetTexParameteriv)( target, pname, params );
+        _dispatch.glGetTexParameteriv( target, pname, params );
         return;
       }
       #endif
@@ -54933,7 +54933,7 @@ static void REGAL_CALL emu_glGetTextureParameterivEXT(GLuint texture, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetTextureParameterivEXT)(texture, target, pname, params);
+      _next->glGetTextureParameterivEXT(texture, target, pname, params);
       break;
     }
 
@@ -54993,7 +54993,7 @@ static GLvoid *REGAL_CALL emu_glMapNamedBufferEXT(GLuint buffer, GLenum access)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        return _dispatch.call(&_dispatch.glMapBuffer)( GL_ARRAY_BUFFER, access );
+        return _dispatch.glMapBuffer( GL_ARRAY_BUFFER, access );
       }
       #endif
     case 1 :
@@ -55001,7 +55001,7 @@ static GLvoid *REGAL_CALL emu_glMapNamedBufferEXT(GLuint buffer, GLenum access)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glMapNamedBufferEXT)(buffer, access);
+      return _next->glMapNamedBufferEXT(buffer, access);
     }
 
   }
@@ -55060,7 +55060,7 @@ static GLvoid *REGAL_CALL emu_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr o
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        return _dispatch.call(&_dispatch.glMapBufferRange)( GL_ARRAY_BUFFER, offset, length, access );
+        return _dispatch.glMapBufferRange( GL_ARRAY_BUFFER, offset, length, access );
       }
       #endif
     case 1 :
@@ -55068,7 +55068,7 @@ static GLvoid *REGAL_CALL emu_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr o
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glMapNamedBufferRangeEXT)(buffer, offset, length, access);
+      return _next->glMapNamedBufferRangeEXT(buffer, offset, length, access);
     }
 
   }
@@ -55139,7 +55139,7 @@ static void REGAL_CALL emu_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdoub
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glFrustum)(left, right, bottom, top, zNear, zFar);
+        _dispatch.glFrustum(left, right, bottom, top, zNear, zFar);
         return;
       }
       #endif
@@ -55148,7 +55148,7 @@ static void REGAL_CALL emu_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdoub
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixFrustumEXT)(mode, left, right, bottom, top, zNear, zFar);
+      _next->glMatrixFrustumEXT(mode, left, right, bottom, top, zNear, zFar);
       break;
     }
 
@@ -55220,7 +55220,7 @@ static void REGAL_CALL emu_glMatrixLoadIdentityEXT(GLenum mode)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glLoadIdentity)();
+        _dispatch.glLoadIdentity();
         return;
       }
       #endif
@@ -55229,7 +55229,7 @@ static void REGAL_CALL emu_glMatrixLoadIdentityEXT(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixLoadIdentityEXT)(mode);
+      _next->glMatrixLoadIdentityEXT(mode);
       break;
     }
 
@@ -55301,7 +55301,7 @@ static void REGAL_CALL emu_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glLoadTransposeMatrixd)(m);
+        _dispatch.glLoadTransposeMatrixd(m);
         return;
       }
       #endif
@@ -55310,7 +55310,7 @@ static void REGAL_CALL emu_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixLoadTransposedEXT)(mode, m);
+      _next->glMatrixLoadTransposedEXT(mode, m);
       break;
     }
 
@@ -55382,7 +55382,7 @@ static void REGAL_CALL emu_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glLoadTransposeMatrixf)(m);
+        _dispatch.glLoadTransposeMatrixf(m);
         return;
       }
       #endif
@@ -55391,7 +55391,7 @@ static void REGAL_CALL emu_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixLoadTransposefEXT)(mode, m);
+      _next->glMatrixLoadTransposefEXT(mode, m);
       break;
     }
 
@@ -55463,7 +55463,7 @@ static void REGAL_CALL emu_glMatrixLoaddEXT(GLenum mode, const GLdouble *m)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glLoadMatrixd)(m);
+        _dispatch.glLoadMatrixd(m);
         return;
       }
       #endif
@@ -55472,7 +55472,7 @@ static void REGAL_CALL emu_glMatrixLoaddEXT(GLenum mode, const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixLoaddEXT)(mode, m);
+      _next->glMatrixLoaddEXT(mode, m);
       break;
     }
 
@@ -55544,7 +55544,7 @@ static void REGAL_CALL emu_glMatrixLoadfEXT(GLenum mode, const GLfloat *m)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glLoadMatrixf)(m);
+        _dispatch.glLoadMatrixf(m);
         return;
       }
       #endif
@@ -55553,7 +55553,7 @@ static void REGAL_CALL emu_glMatrixLoadfEXT(GLenum mode, const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixLoadfEXT)(mode, m);
+      _next->glMatrixLoadfEXT(mode, m);
       break;
     }
 
@@ -55625,7 +55625,7 @@ static void REGAL_CALL emu_glMatrixMultTransposedEXT(GLenum mode, const GLdouble
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glMultTransposeMatrixd)(m);
+        _dispatch.glMultTransposeMatrixd(m);
         return;
       }
       #endif
@@ -55634,7 +55634,7 @@ static void REGAL_CALL emu_glMatrixMultTransposedEXT(GLenum mode, const GLdouble
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixMultTransposedEXT)(mode, m);
+      _next->glMatrixMultTransposedEXT(mode, m);
       break;
     }
 
@@ -55706,7 +55706,7 @@ static void REGAL_CALL emu_glMatrixMultTransposefEXT(GLenum mode, const GLfloat 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glMultTransposeMatrixf)(m);
+        _dispatch.glMultTransposeMatrixf(m);
         return;
       }
       #endif
@@ -55715,7 +55715,7 @@ static void REGAL_CALL emu_glMatrixMultTransposefEXT(GLenum mode, const GLfloat 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixMultTransposefEXT)(mode, m);
+      _next->glMatrixMultTransposefEXT(mode, m);
       break;
     }
 
@@ -55787,7 +55787,7 @@ static void REGAL_CALL emu_glMatrixMultdEXT(GLenum mode, const GLdouble *m)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glMultMatrixd)(m);
+        _dispatch.glMultMatrixd(m);
         return;
       }
       #endif
@@ -55796,7 +55796,7 @@ static void REGAL_CALL emu_glMatrixMultdEXT(GLenum mode, const GLdouble *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixMultdEXT)(mode, m);
+      _next->glMatrixMultdEXT(mode, m);
       break;
     }
 
@@ -55868,7 +55868,7 @@ static void REGAL_CALL emu_glMatrixMultfEXT(GLenum mode, const GLfloat *m)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glMultMatrixf)(m);
+        _dispatch.glMultMatrixf(m);
         return;
       }
       #endif
@@ -55877,7 +55877,7 @@ static void REGAL_CALL emu_glMatrixMultfEXT(GLenum mode, const GLfloat *m)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixMultfEXT)(mode, m);
+      _next->glMatrixMultfEXT(mode, m);
       break;
     }
 
@@ -55949,7 +55949,7 @@ static void REGAL_CALL emu_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glOrtho)(left, right, bottom, top, zNear, zFar);
+        _dispatch.glOrtho(left, right, bottom, top, zNear, zFar);
         return;
       }
       #endif
@@ -55958,7 +55958,7 @@ static void REGAL_CALL emu_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixOrthoEXT)(mode, left, right, bottom, top, zNear, zFar);
+      _next->glMatrixOrthoEXT(mode, left, right, bottom, top, zNear, zFar);
       break;
     }
 
@@ -56030,7 +56030,7 @@ static void REGAL_CALL emu_glMatrixPopEXT(GLenum mode)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glPopMatrix)();
+        _dispatch.glPopMatrix();
         return;
       }
       #endif
@@ -56039,7 +56039,7 @@ static void REGAL_CALL emu_glMatrixPopEXT(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixPopEXT)(mode);
+      _next->glMatrixPopEXT(mode);
       break;
     }
 
@@ -56111,7 +56111,7 @@ static void REGAL_CALL emu_glMatrixPushEXT(GLenum mode)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glPushMatrix)();
+        _dispatch.glPushMatrix();
         return;
       }
       #endif
@@ -56120,7 +56120,7 @@ static void REGAL_CALL emu_glMatrixPushEXT(GLenum mode)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixPushEXT)(mode);
+      _next->glMatrixPushEXT(mode);
       break;
     }
 
@@ -56192,7 +56192,7 @@ static void REGAL_CALL emu_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdou
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glRotated)(angle, x, y, z);
+        _dispatch.glRotated(angle, x, y, z);
         return;
       }
       #endif
@@ -56201,7 +56201,7 @@ static void REGAL_CALL emu_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdou
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixRotatedEXT)(mode, angle, x, y, z);
+      _next->glMatrixRotatedEXT(mode, angle, x, y, z);
       break;
     }
 
@@ -56273,7 +56273,7 @@ static void REGAL_CALL emu_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloa
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glRotatef)(angle, x, y, z);
+        _dispatch.glRotatef(angle, x, y, z);
         return;
       }
       #endif
@@ -56282,7 +56282,7 @@ static void REGAL_CALL emu_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloa
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixRotatefEXT)(mode, angle, x, y, z);
+      _next->glMatrixRotatefEXT(mode, angle, x, y, z);
       break;
     }
 
@@ -56354,7 +56354,7 @@ static void REGAL_CALL emu_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glScaled)(x, y, z);
+        _dispatch.glScaled(x, y, z);
         return;
       }
       #endif
@@ -56363,7 +56363,7 @@ static void REGAL_CALL emu_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixScaledEXT)(mode, x, y, z);
+      _next->glMatrixScaledEXT(mode, x, y, z);
       break;
     }
 
@@ -56435,7 +56435,7 @@ static void REGAL_CALL emu_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glScalef)(x, y, z);
+        _dispatch.glScalef(x, y, z);
         return;
       }
       #endif
@@ -56444,7 +56444,7 @@ static void REGAL_CALL emu_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixScalefEXT)(mode, x, y, z);
+      _next->glMatrixScalefEXT(mode, x, y, z);
       break;
     }
 
@@ -56516,7 +56516,7 @@ static void REGAL_CALL emu_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdoub
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glTranslated)(x, y, z);
+        _dispatch.glTranslated(x, y, z);
         return;
       }
       #endif
@@ -56525,7 +56525,7 @@ static void REGAL_CALL emu_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdoub
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixTranslatedEXT)(mode, x, y, z);
+      _next->glMatrixTranslatedEXT(mode, x, y, z);
       break;
     }
 
@@ -56597,7 +56597,7 @@ static void REGAL_CALL emu_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaMatrixMode( _context, mode );
-        _dispatch.call(&_dispatch.glTranslatef)(x, y, z);
+        _dispatch.glTranslatef(x, y, z);
         return;
       }
       #endif
@@ -56606,7 +56606,7 @@ static void REGAL_CALL emu_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMatrixTranslatefEXT)(mode, x, y, z);
+      _next->glMatrixTranslatefEXT(mode, x, y, z);
       break;
     }
 
@@ -56666,7 +56666,7 @@ static void REGAL_CALL emu_glMultiTexBufferEXT(GLenum texunit, GLenum target, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexBuffer)( target, internalformat, buffer );
+        _dispatch.glTexBuffer( target, internalformat, buffer );
         return;
       }
       #endif
@@ -56675,7 +56675,7 @@ static void REGAL_CALL emu_glMultiTexBufferEXT(GLenum texunit, GLenum target, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexBufferEXT)(texunit, target, internalformat, buffer);
+      _next->glMultiTexBufferEXT(texunit, target, internalformat, buffer);
       break;
     }
 
@@ -56751,7 +56751,7 @@ static void REGAL_CALL emu_glMultiTexCoordPointerEXT(GLenum texunit, GLint size,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaClientActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexCoordPointer)( size, type, stride, pointer );
+        _dispatch.glTexCoordPointer( size, type, stride, pointer );
         return;
       }
       #endif
@@ -56760,7 +56760,7 @@ static void REGAL_CALL emu_glMultiTexCoordPointerEXT(GLenum texunit, GLint size,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexCoordPointerEXT)(texunit, size, type, stride, pointer);
+      _next->glMultiTexCoordPointerEXT(texunit, size, type, stride, pointer);
       break;
     }
 
@@ -56840,7 +56840,7 @@ static void REGAL_CALL emu_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexEnvf)( target, pname, param );
+        _dispatch.glTexEnvf( target, pname, param );
         return;
       }
       #endif
@@ -56849,7 +56849,7 @@ static void REGAL_CALL emu_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexEnvfEXT)(texunit, target, pname, param);
+      _next->glMultiTexEnvfEXT(texunit, target, pname, param);
       break;
     }
 
@@ -56929,7 +56929,7 @@ static void REGAL_CALL emu_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexEnvfv)( target, pname, params );
+        _dispatch.glTexEnvfv( target, pname, params );
         return;
       }
       #endif
@@ -56938,7 +56938,7 @@ static void REGAL_CALL emu_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexEnvfvEXT)(texunit, target, pname, params);
+      _next->glMultiTexEnvfvEXT(texunit, target, pname, params);
       break;
     }
 
@@ -57018,7 +57018,7 @@ static void REGAL_CALL emu_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexEnvi)( target, pname, param );
+        _dispatch.glTexEnvi( target, pname, param );
         return;
       }
       #endif
@@ -57027,7 +57027,7 @@ static void REGAL_CALL emu_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexEnviEXT)(texunit, target, pname, param);
+      _next->glMultiTexEnviEXT(texunit, target, pname, param);
       break;
     }
 
@@ -57107,7 +57107,7 @@ static void REGAL_CALL emu_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexEnviv)( target, pname, params );
+        _dispatch.glTexEnviv( target, pname, params );
         return;
       }
       #endif
@@ -57116,7 +57116,7 @@ static void REGAL_CALL emu_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexEnvivEXT)(texunit, target, pname, params);
+      _next->glMultiTexEnvivEXT(texunit, target, pname, params);
       break;
     }
 
@@ -57176,7 +57176,7 @@ static void REGAL_CALL emu_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexGend)( coord, pname, param );
+        _dispatch.glTexGend( coord, pname, param );
         return;
       }
       #endif
@@ -57185,7 +57185,7 @@ static void REGAL_CALL emu_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexGendEXT)(texunit, coord, pname, param);
+      _next->glMultiTexGendEXT(texunit, coord, pname, param);
       break;
     }
 
@@ -57245,7 +57245,7 @@ static void REGAL_CALL emu_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexGendv)( coord, pname, params );
+        _dispatch.glTexGendv( coord, pname, params );
         return;
       }
       #endif
@@ -57254,7 +57254,7 @@ static void REGAL_CALL emu_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexGendvEXT)(texunit, coord, pname, params);
+      _next->glMultiTexGendvEXT(texunit, coord, pname, params);
       break;
     }
 
@@ -57314,7 +57314,7 @@ static void REGAL_CALL emu_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexGenf)( coord, pname, param );
+        _dispatch.glTexGenf( coord, pname, param );
         return;
       }
       #endif
@@ -57323,7 +57323,7 @@ static void REGAL_CALL emu_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexGenfEXT)(texunit, coord, pname, param);
+      _next->glMultiTexGenfEXT(texunit, coord, pname, param);
       break;
     }
 
@@ -57383,7 +57383,7 @@ static void REGAL_CALL emu_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexGenfv)( coord, pname, params );
+        _dispatch.glTexGenfv( coord, pname, params );
         return;
       }
       #endif
@@ -57392,7 +57392,7 @@ static void REGAL_CALL emu_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexGenfvEXT)(texunit, coord, pname, params);
+      _next->glMultiTexGenfvEXT(texunit, coord, pname, params);
       break;
     }
 
@@ -57452,7 +57452,7 @@ static void REGAL_CALL emu_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexGeni)( coord, pname, param );
+        _dispatch.glTexGeni( coord, pname, param );
         return;
       }
       #endif
@@ -57461,7 +57461,7 @@ static void REGAL_CALL emu_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexGeniEXT)(texunit, coord, pname, param);
+      _next->glMultiTexGeniEXT(texunit, coord, pname, param);
       break;
     }
 
@@ -57521,7 +57521,7 @@ static void REGAL_CALL emu_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexGeniv)( coord, pname, params );
+        _dispatch.glTexGeniv( coord, pname, params );
         return;
       }
       #endif
@@ -57530,7 +57530,7 @@ static void REGAL_CALL emu_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexGenivEXT)(texunit, coord, pname, params);
+      _next->glMultiTexGenivEXT(texunit, coord, pname, params);
       break;
     }
 
@@ -57598,7 +57598,7 @@ static void REGAL_CALL emu_glMultiTexImage1DEXT(GLenum texunit, GLenum target, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexImage1D)( target, level, internalformat, width, border, format, type, pixels );
+        _dispatch.glTexImage1D( target, level, internalformat, width, border, format, type, pixels );
         return;
       }
       #endif
@@ -57607,7 +57607,7 @@ static void REGAL_CALL emu_glMultiTexImage1DEXT(GLenum texunit, GLenum target, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexImage1DEXT)(texunit, target, level, internalformat, width, border, format, type, pixels);
+      _next->glMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, format, type, pixels);
       break;
     }
 
@@ -57675,7 +57675,7 @@ static void REGAL_CALL emu_glMultiTexImage2DEXT(GLenum texunit, GLenum target, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexImage2D)( target, level, internalformat, width, height, border, format, type, pixels );
+        _dispatch.glTexImage2D( target, level, internalformat, width, height, border, format, type, pixels );
         return;
       }
       #endif
@@ -57684,7 +57684,7 @@ static void REGAL_CALL emu_glMultiTexImage2DEXT(GLenum texunit, GLenum target, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexImage2DEXT)(texunit, target, level, internalformat, width, height, border, format, type, pixels);
+      _next->glMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, format, type, pixels);
       break;
     }
 
@@ -57752,7 +57752,7 @@ static void REGAL_CALL emu_glMultiTexImage3DEXT(GLenum texunit, GLenum target, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexImage3D)( target, level, internalformat, width, height, depth, border, format, type, pixels );
+        _dispatch.glTexImage3D( target, level, internalformat, width, height, depth, border, format, type, pixels );
         return;
       }
       #endif
@@ -57761,7 +57761,7 @@ static void REGAL_CALL emu_glMultiTexImage3DEXT(GLenum texunit, GLenum target, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexImage3DEXT)(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels);
+      _next->glMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels);
       break;
     }
 
@@ -57821,7 +57821,7 @@ static void REGAL_CALL emu_glMultiTexParameterIivEXT(GLenum texunit, GLenum targ
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexParameterIiv)( target, pname, params );
+        _dispatch.glTexParameterIiv( target, pname, params );
         return;
       }
       #endif
@@ -57830,7 +57830,7 @@ static void REGAL_CALL emu_glMultiTexParameterIivEXT(GLenum texunit, GLenum targ
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexParameterIivEXT)(texunit, target, pname, params);
+      _next->glMultiTexParameterIivEXT(texunit, target, pname, params);
       break;
     }
 
@@ -57890,7 +57890,7 @@ static void REGAL_CALL emu_glMultiTexParameterIuivEXT(GLenum texunit, GLenum tar
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexParameterIuiv)( target, pname, params );
+        _dispatch.glTexParameterIuiv( target, pname, params );
         return;
       }
       #endif
@@ -57899,7 +57899,7 @@ static void REGAL_CALL emu_glMultiTexParameterIuivEXT(GLenum texunit, GLenum tar
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexParameterIuivEXT)(texunit, target, pname, params);
+      _next->glMultiTexParameterIuivEXT(texunit, target, pname, params);
       break;
     }
 
@@ -57959,7 +57959,7 @@ static void REGAL_CALL emu_glMultiTexParameterfEXT(GLenum texunit, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexParameterf)( target, pname, param );
+        _dispatch.glTexParameterf( target, pname, param );
         return;
       }
       #endif
@@ -57968,7 +57968,7 @@ static void REGAL_CALL emu_glMultiTexParameterfEXT(GLenum texunit, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexParameterfEXT)(texunit, target, pname, param);
+      _next->glMultiTexParameterfEXT(texunit, target, pname, param);
       break;
     }
 
@@ -58028,7 +58028,7 @@ static void REGAL_CALL emu_glMultiTexParameterfvEXT(GLenum texunit, GLenum targe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexParameterfv)( target, pname, param );
+        _dispatch.glTexParameterfv( target, pname, param );
         return;
       }
       #endif
@@ -58037,7 +58037,7 @@ static void REGAL_CALL emu_glMultiTexParameterfvEXT(GLenum texunit, GLenum targe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexParameterfvEXT)(texunit, target, pname, param);
+      _next->glMultiTexParameterfvEXT(texunit, target, pname, param);
       break;
     }
 
@@ -58097,7 +58097,7 @@ static void REGAL_CALL emu_glMultiTexParameteriEXT(GLenum texunit, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexParameteri)( target, pname, param );
+        _dispatch.glTexParameteri( target, pname, param );
         return;
       }
       #endif
@@ -58106,7 +58106,7 @@ static void REGAL_CALL emu_glMultiTexParameteriEXT(GLenum texunit, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexParameteriEXT)(texunit, target, pname, param);
+      _next->glMultiTexParameteriEXT(texunit, target, pname, param);
       break;
     }
 
@@ -58166,7 +58166,7 @@ static void REGAL_CALL emu_glMultiTexParameterivEXT(GLenum texunit, GLenum targe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexParameteriv)( target, pname, param );
+        _dispatch.glTexParameteriv( target, pname, param );
         return;
       }
       #endif
@@ -58175,7 +58175,7 @@ static void REGAL_CALL emu_glMultiTexParameterivEXT(GLenum texunit, GLenum targe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexParameterivEXT)(texunit, target, pname, param);
+      _next->glMultiTexParameterivEXT(texunit, target, pname, param);
       break;
     }
 
@@ -58235,7 +58235,7 @@ static void REGAL_CALL emu_glMultiTexRenderbufferEXT(GLenum texunit, GLenum targ
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexRenderbufferNV)( target, renderbuffer );
+        _dispatch.glTexRenderbufferNV( target, renderbuffer );
         return;
       }
       #endif
@@ -58244,7 +58244,7 @@ static void REGAL_CALL emu_glMultiTexRenderbufferEXT(GLenum texunit, GLenum targ
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexRenderbufferEXT)(texunit, target, renderbuffer);
+      _next->glMultiTexRenderbufferEXT(texunit, target, renderbuffer);
       break;
     }
 
@@ -58304,7 +58304,7 @@ static void REGAL_CALL emu_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexSubImage1D)( target, level, xoffset, width, format, type, pixels );
+        _dispatch.glTexSubImage1D( target, level, xoffset, width, format, type, pixels );
         return;
       }
       #endif
@@ -58313,7 +58313,7 @@ static void REGAL_CALL emu_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexSubImage1DEXT)(texunit, target, level, xoffset, width, format, type, pixels);
+      _next->glMultiTexSubImage1DEXT(texunit, target, level, xoffset, width, format, type, pixels);
       break;
     }
 
@@ -58373,7 +58373,7 @@ static void REGAL_CALL emu_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexSubImage2D)( target, level, xoffset, yoffset, width, height, format, type, pixels );
+        _dispatch.glTexSubImage2D( target, level, xoffset, yoffset, width, height, format, type, pixels );
         return;
       }
       #endif
@@ -58382,7 +58382,7 @@ static void REGAL_CALL emu_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexSubImage2DEXT)(texunit, target, level, xoffset, yoffset, width, height, format, type, pixels);
+      _next->glMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, width, height, format, type, pixels);
       break;
     }
 
@@ -58442,7 +58442,7 @@ static void REGAL_CALL emu_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, texunit );
-        _dispatch.call(&_dispatch.glTexSubImage3D)( target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+        _dispatch.glTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
         return;
       }
       #endif
@@ -58451,7 +58451,7 @@ static void REGAL_CALL emu_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glMultiTexSubImage3DEXT)(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+      _next->glMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
       break;
     }
 
@@ -58511,7 +58511,7 @@ static void REGAL_CALL emu_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        _dispatch.call(&_dispatch.glBufferData)( GL_ARRAY_BUFFER, size, data, usage );
+        _dispatch.glBufferData( GL_ARRAY_BUFFER, size, data, usage );
         return;
       }
       #endif
@@ -58520,7 +58520,7 @@ static void REGAL_CALL emu_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedBufferDataEXT)(buffer, size, data, usage);
+      _next->glNamedBufferDataEXT(buffer, size, data, usage);
       break;
     }
 
@@ -58580,7 +58580,7 @@ static void REGAL_CALL emu_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offse
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        _dispatch.call(&_dispatch.glBufferSubData)( GL_ARRAY_BUFFER, offset, size, data );
+        _dispatch.glBufferSubData( GL_ARRAY_BUFFER, offset, size, data );
         return;
       }
       #endif
@@ -58589,7 +58589,7 @@ static void REGAL_CALL emu_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offse
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedBufferSubDataEXT)(buffer, offset, size, data);
+      _next->glNamedBufferSubDataEXT(buffer, offset, size, data);
       break;
     }
 
@@ -58649,7 +58649,7 @@ static void REGAL_CALL emu_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, readBuffer);
-        _dispatch.call(&_dispatch.glCopyBufferSubData)( GL_ARRAY_BUFFER, writeBuffer, readOffset, writeOffset, size );
+        _dispatch.glCopyBufferSubData( GL_ARRAY_BUFFER, writeBuffer, readOffset, writeOffset, size );
         return;
       }
       #endif
@@ -58658,7 +58658,7 @@ static void REGAL_CALL emu_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedCopyBufferSubDataEXT)(readBuffer, writeBuffer, readOffset, writeOffset, size);
+      _next->glNamedCopyBufferSubDataEXT(readBuffer, writeBuffer, readOffset, writeOffset, size);
       break;
     }
 
@@ -58718,7 +58718,7 @@ static void REGAL_CALL emu_glNamedFramebufferRenderbufferEXT(GLuint framebuffer,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glFramebufferRenderbuffer)( GL_FRAMEBUFFER, attachment, renderbuffertarget, renderbuffer );
+        _dispatch.glFramebufferRenderbuffer( GL_FRAMEBUFFER, attachment, renderbuffertarget, renderbuffer );
         return;
       }
       #endif
@@ -58727,7 +58727,7 @@ static void REGAL_CALL emu_glNamedFramebufferRenderbufferEXT(GLuint framebuffer,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedFramebufferRenderbufferEXT)(framebuffer, attachment, renderbuffertarget, renderbuffer);
+      _next->glNamedFramebufferRenderbufferEXT(framebuffer, attachment, renderbuffertarget, renderbuffer);
       break;
     }
 
@@ -58787,7 +58787,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glFramebufferTexture1D)( GL_FRAMEBUFFER, attachment, textarget, texture, level );
+        _dispatch.glFramebufferTexture1D( GL_FRAMEBUFFER, attachment, textarget, texture, level );
         return;
       }
       #endif
@@ -58796,7 +58796,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedFramebufferTexture1DEXT)(framebuffer, attachment, textarget, texture, level);
+      _next->glNamedFramebufferTexture1DEXT(framebuffer, attachment, textarget, texture, level);
       break;
     }
 
@@ -58856,7 +58856,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glFramebufferTexture2D)( GL_FRAMEBUFFER, attachment, textarget, texture, level );
+        _dispatch.glFramebufferTexture2D( GL_FRAMEBUFFER, attachment, textarget, texture, level );
         return;
       }
       #endif
@@ -58865,7 +58865,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedFramebufferTexture2DEXT)(framebuffer, attachment, textarget, texture, level);
+      _next->glNamedFramebufferTexture2DEXT(framebuffer, attachment, textarget, texture, level);
       break;
     }
 
@@ -58925,7 +58925,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glFramebufferTexture3D)( GL_FRAMEBUFFER, attachment, textarget, texture, level, zoffset );
+        _dispatch.glFramebufferTexture3D( GL_FRAMEBUFFER, attachment, textarget, texture, level, zoffset );
         return;
       }
       #endif
@@ -58934,7 +58934,7 @@ static void REGAL_CALL emu_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedFramebufferTexture3DEXT)(framebuffer, attachment, textarget, texture, level, zoffset);
+      _next->glNamedFramebufferTexture3DEXT(framebuffer, attachment, textarget, texture, level, zoffset);
       break;
     }
 
@@ -58994,7 +58994,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureEXT(GLuint framebuffer, GLen
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glFramebufferTexture)( GL_FRAMEBUFFER, attachment, texture, level );
+        _dispatch.glFramebufferTexture( GL_FRAMEBUFFER, attachment, texture, level );
         return;
       }
       #endif
@@ -59003,7 +59003,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureEXT(GLuint framebuffer, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedFramebufferTextureEXT)(framebuffer, attachment, texture, level);
+      _next->glNamedFramebufferTextureEXT(framebuffer, attachment, texture, level);
       break;
     }
 
@@ -59063,7 +59063,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glFramebufferTextureFaceARB)( GL_FRAMEBUFFER, attachment, texture, level, face );
+        _dispatch.glFramebufferTextureFaceARB( GL_FRAMEBUFFER, attachment, texture, level, face );
         return;
       }
       #endif
@@ -59072,7 +59072,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedFramebufferTextureFaceEXT)(framebuffer, attachment, texture, level, face);
+      _next->glNamedFramebufferTextureFaceEXT(framebuffer, attachment, texture, level, face);
       break;
     }
 
@@ -59132,7 +59132,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureLayerEXT(GLuint framebuffer,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-        _dispatch.call(&_dispatch.glFramebufferTextureLayer)( GL_FRAMEBUFFER, attachment, texture, level, layer );
+        _dispatch.glFramebufferTextureLayer( GL_FRAMEBUFFER, attachment, texture, level, layer );
         return;
       }
       #endif
@@ -59141,7 +59141,7 @@ static void REGAL_CALL emu_glNamedFramebufferTextureLayerEXT(GLuint framebuffer,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedFramebufferTextureLayerEXT)(framebuffer, attachment, texture, level, layer);
+      _next->glNamedFramebufferTextureLayerEXT(framebuffer, attachment, texture, level, layer);
       break;
     }
 
@@ -59201,7 +59201,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4dEXT(GLuint program, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameter4dARB)( target, index, x, y, z, w );
+        _dispatch.glProgramLocalParameter4dARB( target, index, x, y, z, w );
         return;
       }
       #endif
@@ -59210,7 +59210,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4dEXT(GLuint program, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameter4dEXT)(program, target, index, x, y, z, w);
+      _next->glNamedProgramLocalParameter4dEXT(program, target, index, x, y, z, w);
       break;
     }
 
@@ -59270,7 +59270,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4dvEXT(GLuint program, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameter4dvARB)( target, index, params );
+        _dispatch.glProgramLocalParameter4dvARB( target, index, params );
         return;
       }
       #endif
@@ -59279,7 +59279,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4dvEXT(GLuint program, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameter4dvEXT)(program, target, index, params);
+      _next->glNamedProgramLocalParameter4dvEXT(program, target, index, params);
       break;
     }
 
@@ -59339,7 +59339,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4fEXT(GLuint program, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameter4fARB)( target, index, x, y, z, w );
+        _dispatch.glProgramLocalParameter4fARB( target, index, x, y, z, w );
         return;
       }
       #endif
@@ -59348,7 +59348,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4fEXT(GLuint program, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameter4fEXT)(program, target, index, x, y, z, w);
+      _next->glNamedProgramLocalParameter4fEXT(program, target, index, x, y, z, w);
       break;
     }
 
@@ -59408,7 +59408,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4fvEXT(GLuint program, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameter4fvARB)( target, index, params );
+        _dispatch.glProgramLocalParameter4fvARB( target, index, params );
         return;
       }
       #endif
@@ -59417,7 +59417,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameter4fvEXT(GLuint program, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameter4fvEXT)(program, target, index, params);
+      _next->glNamedProgramLocalParameter4fvEXT(program, target, index, params);
       break;
     }
 
@@ -59477,7 +59477,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4iEXT(GLuint program, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameterI4iNV)( target, index, x, y, z, w );
+        _dispatch.glProgramLocalParameterI4iNV( target, index, x, y, z, w );
         return;
       }
       #endif
@@ -59486,7 +59486,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4iEXT(GLuint program, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameterI4iEXT)(program, target, index, x, y, z, w);
+      _next->glNamedProgramLocalParameterI4iEXT(program, target, index, x, y, z, w);
       break;
     }
 
@@ -59546,7 +59546,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4ivEXT(GLuint program, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameterI4ivNV)( target, index, params );
+        _dispatch.glProgramLocalParameterI4ivNV( target, index, params );
         return;
       }
       #endif
@@ -59555,7 +59555,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4ivEXT(GLuint program, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameterI4ivEXT)(program, target, index, params);
+      _next->glNamedProgramLocalParameterI4ivEXT(program, target, index, params);
       break;
     }
 
@@ -59615,7 +59615,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4uiEXT(GLuint program, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameterI4uiNV)( target, index, x, y, z, w );
+        _dispatch.glProgramLocalParameterI4uiNV( target, index, x, y, z, w );
         return;
       }
       #endif
@@ -59624,7 +59624,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4uiEXT(GLuint program, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameterI4uiEXT)(program, target, index, x, y, z, w);
+      _next->glNamedProgramLocalParameterI4uiEXT(program, target, index, x, y, z, w);
       break;
     }
 
@@ -59684,7 +59684,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4uivEXT(GLuint program, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameterI4uivNV)( target, index, params );
+        _dispatch.glProgramLocalParameterI4uivNV( target, index, params );
         return;
       }
       #endif
@@ -59693,7 +59693,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameterI4uivEXT(GLuint program, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameterI4uivEXT)(program, target, index, params);
+      _next->glNamedProgramLocalParameterI4uivEXT(program, target, index, params);
       break;
     }
 
@@ -59753,7 +59753,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameters4fvEXT(GLuint program, G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParameters4fvEXT)( target, index, count, params );
+        _dispatch.glProgramLocalParameters4fvEXT( target, index, count, params );
         return;
       }
       #endif
@@ -59762,7 +59762,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParameters4fvEXT(GLuint program, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParameters4fvEXT)(program, target, index, count, params);
+      _next->glNamedProgramLocalParameters4fvEXT(program, target, index, count, params);
       break;
     }
 
@@ -59822,7 +59822,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParametersI4ivEXT(GLuint program, 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParametersI4ivNV)( target, index, count, params );
+        _dispatch.glProgramLocalParametersI4ivNV( target, index, count, params );
         return;
       }
       #endif
@@ -59831,7 +59831,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParametersI4ivEXT(GLuint program, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParametersI4ivEXT)(program, target, index, count, params);
+      _next->glNamedProgramLocalParametersI4ivEXT(program, target, index, count, params);
       break;
     }
 
@@ -59891,7 +59891,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParametersI4uivEXT(GLuint program,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramLocalParametersI4uivNV)( target, index, count, params );
+        _dispatch.glProgramLocalParametersI4uivNV( target, index, count, params );
         return;
       }
       #endif
@@ -59900,7 +59900,7 @@ static void REGAL_CALL emu_glNamedProgramLocalParametersI4uivEXT(GLuint program,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramLocalParametersI4uivEXT)(program, target, index, count, params);
+      _next->glNamedProgramLocalParametersI4uivEXT(program, target, index, count, params);
       break;
     }
 
@@ -59960,7 +59960,7 @@ static void REGAL_CALL emu_glNamedProgramStringEXT(GLuint program, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaAsmProgram( _context, target, program);
-        _dispatch.call(&_dispatch.glProgramStringARB)( target, format, len, string );
+        _dispatch.glProgramStringARB( target, format, len, string );
         return;
       }
       #endif
@@ -59969,7 +59969,7 @@ static void REGAL_CALL emu_glNamedProgramStringEXT(GLuint program, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedProgramStringEXT)(program, target, format, len, string);
+      _next->glNamedProgramStringEXT(program, target, format, len, string);
       break;
     }
 
@@ -60029,7 +60029,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-        _dispatch.call(&_dispatch.glRenderbufferStorage)( GL_RENDERBUFFER, internalformat, width, height );
+        _dispatch.glRenderbufferStorage( GL_RENDERBUFFER, internalformat, width, height );
         return;
       }
       #endif
@@ -60038,7 +60038,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedRenderbufferStorageEXT)(renderbuffer, internalformat, width, height);
+      _next->glNamedRenderbufferStorageEXT(renderbuffer, internalformat, width, height);
       break;
     }
 
@@ -60098,7 +60098,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleCoverageEXT(GLui
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-        _dispatch.call(&_dispatch.glRenderbufferStorageMultisampleCoverageNV)( GL_RENDERBUFFER, coverageSamples, colorSamples, internalformat, width, height );
+        _dispatch.glRenderbufferStorageMultisampleCoverageNV( GL_RENDERBUFFER, coverageSamples, colorSamples, internalformat, width, height );
         return;
       }
       #endif
@@ -60107,7 +60107,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleCoverageEXT(GLui
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedRenderbufferStorageMultisampleCoverageEXT)(renderbuffer, coverageSamples, colorSamples, internalformat, width, height);
+      _next->glNamedRenderbufferStorageMultisampleCoverageEXT(renderbuffer, coverageSamples, colorSamples, internalformat, width, height);
       break;
     }
 
@@ -60167,7 +60167,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleEXT(GLuint rende
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-        _dispatch.call(&_dispatch.glRenderbufferStorageMultisample)( GL_RENDERBUFFER, samples, internalformat, width, height );
+        _dispatch.glRenderbufferStorageMultisample( GL_RENDERBUFFER, samples, internalformat, width, height );
         return;
       }
       #endif
@@ -60176,7 +60176,7 @@ static void REGAL_CALL emu_glNamedRenderbufferStorageMultisampleEXT(GLuint rende
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNamedRenderbufferStorageMultisampleEXT)(renderbuffer, samples, internalformat, width, height);
+      _next->glNamedRenderbufferStorageMultisampleEXT(renderbuffer, samples, internalformat, width, height);
       break;
     }
 
@@ -60236,7 +60236,7 @@ static void REGAL_CALL emu_glProgramUniform1dEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1d)( location, x );
+        _dispatch.glUniform1d( location, x );
         return;
       }
       #endif
@@ -60245,7 +60245,7 @@ static void REGAL_CALL emu_glProgramUniform1dEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1dEXT)(program, location, x);
+      _next->glProgramUniform1dEXT(program, location, x);
       break;
     }
 
@@ -60305,7 +60305,7 @@ static void REGAL_CALL emu_glProgramUniform1dvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1dv)( location, count, value );
+        _dispatch.glUniform1dv( location, count, value );
         return;
       }
       #endif
@@ -60314,7 +60314,7 @@ static void REGAL_CALL emu_glProgramUniform1dvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1dvEXT)(program, location, count, value);
+      _next->glProgramUniform1dvEXT(program, location, count, value);
       break;
     }
 
@@ -60374,7 +60374,7 @@ static void REGAL_CALL emu_glProgramUniform1fEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1f)( location, v0 );
+        _dispatch.glUniform1f( location, v0 );
         return;
       }
       #endif
@@ -60383,7 +60383,7 @@ static void REGAL_CALL emu_glProgramUniform1fEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1fEXT)(program, location, v0);
+      _next->glProgramUniform1fEXT(program, location, v0);
       break;
     }
 
@@ -60443,7 +60443,7 @@ static void REGAL_CALL emu_glProgramUniform1fvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1fv)( location, count, value );
+        _dispatch.glUniform1fv( location, count, value );
         return;
       }
       #endif
@@ -60452,7 +60452,7 @@ static void REGAL_CALL emu_glProgramUniform1fvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1fvEXT)(program, location, count, value);
+      _next->glProgramUniform1fvEXT(program, location, count, value);
       break;
     }
 
@@ -60512,7 +60512,7 @@ static void REGAL_CALL emu_glProgramUniform1iEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1i)( location, v0 );
+        _dispatch.glUniform1i( location, v0 );
         return;
       }
       #endif
@@ -60521,7 +60521,7 @@ static void REGAL_CALL emu_glProgramUniform1iEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1iEXT)(program, location, v0);
+      _next->glProgramUniform1iEXT(program, location, v0);
       break;
     }
 
@@ -60581,7 +60581,7 @@ static void REGAL_CALL emu_glProgramUniform1ivEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1iv)( location, count, value );
+        _dispatch.glUniform1iv( location, count, value );
         return;
       }
       #endif
@@ -60590,7 +60590,7 @@ static void REGAL_CALL emu_glProgramUniform1ivEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1ivEXT)(program, location, count, value);
+      _next->glProgramUniform1ivEXT(program, location, count, value);
       break;
     }
 
@@ -60650,7 +60650,7 @@ static void REGAL_CALL emu_glProgramUniform1uiEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1ui)( location, v0 );
+        _dispatch.glUniform1ui( location, v0 );
         return;
       }
       #endif
@@ -60659,7 +60659,7 @@ static void REGAL_CALL emu_glProgramUniform1uiEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1uiEXT)(program, location, v0);
+      _next->glProgramUniform1uiEXT(program, location, v0);
       break;
     }
 
@@ -60719,7 +60719,7 @@ static void REGAL_CALL emu_glProgramUniform1uivEXT(GLuint program, GLint locatio
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform1uiv)( location, count, value );
+        _dispatch.glUniform1uiv( location, count, value );
         return;
       }
       #endif
@@ -60728,7 +60728,7 @@ static void REGAL_CALL emu_glProgramUniform1uivEXT(GLuint program, GLint locatio
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform1uivEXT)(program, location, count, value);
+      _next->glProgramUniform1uivEXT(program, location, count, value);
       break;
     }
 
@@ -60788,7 +60788,7 @@ static void REGAL_CALL emu_glProgramUniform2dEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2d)( location, x, y );
+        _dispatch.glUniform2d( location, x, y );
         return;
       }
       #endif
@@ -60797,7 +60797,7 @@ static void REGAL_CALL emu_glProgramUniform2dEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2dEXT)(program, location, x, y);
+      _next->glProgramUniform2dEXT(program, location, x, y);
       break;
     }
 
@@ -60857,7 +60857,7 @@ static void REGAL_CALL emu_glProgramUniform2dvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2dv)( location, count, value );
+        _dispatch.glUniform2dv( location, count, value );
         return;
       }
       #endif
@@ -60866,7 +60866,7 @@ static void REGAL_CALL emu_glProgramUniform2dvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2dvEXT)(program, location, count, value);
+      _next->glProgramUniform2dvEXT(program, location, count, value);
       break;
     }
 
@@ -60926,7 +60926,7 @@ static void REGAL_CALL emu_glProgramUniform2fEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2f)( location, v0, v1 );
+        _dispatch.glUniform2f( location, v0, v1 );
         return;
       }
       #endif
@@ -60935,7 +60935,7 @@ static void REGAL_CALL emu_glProgramUniform2fEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2fEXT)(program, location, v0, v1);
+      _next->glProgramUniform2fEXT(program, location, v0, v1);
       break;
     }
 
@@ -60995,7 +60995,7 @@ static void REGAL_CALL emu_glProgramUniform2fvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2fv)( location, count, value );
+        _dispatch.glUniform2fv( location, count, value );
         return;
       }
       #endif
@@ -61004,7 +61004,7 @@ static void REGAL_CALL emu_glProgramUniform2fvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2fvEXT)(program, location, count, value);
+      _next->glProgramUniform2fvEXT(program, location, count, value);
       break;
     }
 
@@ -61064,7 +61064,7 @@ static void REGAL_CALL emu_glProgramUniform2iEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2i)( location, v0, v1 );
+        _dispatch.glUniform2i( location, v0, v1 );
         return;
       }
       #endif
@@ -61073,7 +61073,7 @@ static void REGAL_CALL emu_glProgramUniform2iEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2iEXT)(program, location, v0, v1);
+      _next->glProgramUniform2iEXT(program, location, v0, v1);
       break;
     }
 
@@ -61133,7 +61133,7 @@ static void REGAL_CALL emu_glProgramUniform2ivEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2iv)( location, count, value );
+        _dispatch.glUniform2iv( location, count, value );
         return;
       }
       #endif
@@ -61142,7 +61142,7 @@ static void REGAL_CALL emu_glProgramUniform2ivEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2ivEXT)(program, location, count, value);
+      _next->glProgramUniform2ivEXT(program, location, count, value);
       break;
     }
 
@@ -61202,7 +61202,7 @@ static void REGAL_CALL emu_glProgramUniform2uiEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2ui)( location, v0, v1 );
+        _dispatch.glUniform2ui( location, v0, v1 );
         return;
       }
       #endif
@@ -61211,7 +61211,7 @@ static void REGAL_CALL emu_glProgramUniform2uiEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2uiEXT)(program, location, v0, v1);
+      _next->glProgramUniform2uiEXT(program, location, v0, v1);
       break;
     }
 
@@ -61271,7 +61271,7 @@ static void REGAL_CALL emu_glProgramUniform2uivEXT(GLuint program, GLint locatio
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform2uiv)( location, count, value );
+        _dispatch.glUniform2uiv( location, count, value );
         return;
       }
       #endif
@@ -61280,7 +61280,7 @@ static void REGAL_CALL emu_glProgramUniform2uivEXT(GLuint program, GLint locatio
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform2uivEXT)(program, location, count, value);
+      _next->glProgramUniform2uivEXT(program, location, count, value);
       break;
     }
 
@@ -61340,7 +61340,7 @@ static void REGAL_CALL emu_glProgramUniform3dEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3d)( location, x, y, z );
+        _dispatch.glUniform3d( location, x, y, z );
         return;
       }
       #endif
@@ -61349,7 +61349,7 @@ static void REGAL_CALL emu_glProgramUniform3dEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3dEXT)(program, location, x, y, z);
+      _next->glProgramUniform3dEXT(program, location, x, y, z);
       break;
     }
 
@@ -61409,7 +61409,7 @@ static void REGAL_CALL emu_glProgramUniform3dvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3dv)( location, count, value );
+        _dispatch.glUniform3dv( location, count, value );
         return;
       }
       #endif
@@ -61418,7 +61418,7 @@ static void REGAL_CALL emu_glProgramUniform3dvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3dvEXT)(program, location, count, value);
+      _next->glProgramUniform3dvEXT(program, location, count, value);
       break;
     }
 
@@ -61478,7 +61478,7 @@ static void REGAL_CALL emu_glProgramUniform3fEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3f)( location, v0, v1, v2 );
+        _dispatch.glUniform3f( location, v0, v1, v2 );
         return;
       }
       #endif
@@ -61487,7 +61487,7 @@ static void REGAL_CALL emu_glProgramUniform3fEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3fEXT)(program, location, v0, v1, v2);
+      _next->glProgramUniform3fEXT(program, location, v0, v1, v2);
       break;
     }
 
@@ -61547,7 +61547,7 @@ static void REGAL_CALL emu_glProgramUniform3fvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3fv)( location, count, value );
+        _dispatch.glUniform3fv( location, count, value );
         return;
       }
       #endif
@@ -61556,7 +61556,7 @@ static void REGAL_CALL emu_glProgramUniform3fvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3fvEXT)(program, location, count, value);
+      _next->glProgramUniform3fvEXT(program, location, count, value);
       break;
     }
 
@@ -61616,7 +61616,7 @@ static void REGAL_CALL emu_glProgramUniform3iEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3i)( location, v0, v1, v2 );
+        _dispatch.glUniform3i( location, v0, v1, v2 );
         return;
       }
       #endif
@@ -61625,7 +61625,7 @@ static void REGAL_CALL emu_glProgramUniform3iEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3iEXT)(program, location, v0, v1, v2);
+      _next->glProgramUniform3iEXT(program, location, v0, v1, v2);
       break;
     }
 
@@ -61685,7 +61685,7 @@ static void REGAL_CALL emu_glProgramUniform3ivEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3iv)( location, count, value );
+        _dispatch.glUniform3iv( location, count, value );
         return;
       }
       #endif
@@ -61694,7 +61694,7 @@ static void REGAL_CALL emu_glProgramUniform3ivEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3ivEXT)(program, location, count, value);
+      _next->glProgramUniform3ivEXT(program, location, count, value);
       break;
     }
 
@@ -61754,7 +61754,7 @@ static void REGAL_CALL emu_glProgramUniform3uiEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3ui)( location, v0, v1, v2 );
+        _dispatch.glUniform3ui( location, v0, v1, v2 );
         return;
       }
       #endif
@@ -61763,7 +61763,7 @@ static void REGAL_CALL emu_glProgramUniform3uiEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3uiEXT)(program, location, v0, v1, v2);
+      _next->glProgramUniform3uiEXT(program, location, v0, v1, v2);
       break;
     }
 
@@ -61823,7 +61823,7 @@ static void REGAL_CALL emu_glProgramUniform3uivEXT(GLuint program, GLint locatio
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform3uiv)( location, count, value );
+        _dispatch.glUniform3uiv( location, count, value );
         return;
       }
       #endif
@@ -61832,7 +61832,7 @@ static void REGAL_CALL emu_glProgramUniform3uivEXT(GLuint program, GLint locatio
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform3uivEXT)(program, location, count, value);
+      _next->glProgramUniform3uivEXT(program, location, count, value);
       break;
     }
 
@@ -61892,7 +61892,7 @@ static void REGAL_CALL emu_glProgramUniform4dEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4d)( location, x, y, z, w );
+        _dispatch.glUniform4d( location, x, y, z, w );
         return;
       }
       #endif
@@ -61901,7 +61901,7 @@ static void REGAL_CALL emu_glProgramUniform4dEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4dEXT)(program, location, x, y, z, w);
+      _next->glProgramUniform4dEXT(program, location, x, y, z, w);
       break;
     }
 
@@ -61961,7 +61961,7 @@ static void REGAL_CALL emu_glProgramUniform4dvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4dv)( location, count, value );
+        _dispatch.glUniform4dv( location, count, value );
         return;
       }
       #endif
@@ -61970,7 +61970,7 @@ static void REGAL_CALL emu_glProgramUniform4dvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4dvEXT)(program, location, count, value);
+      _next->glProgramUniform4dvEXT(program, location, count, value);
       break;
     }
 
@@ -62030,7 +62030,7 @@ static void REGAL_CALL emu_glProgramUniform4fEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4f)( location, v0, v1, v2, v3 );
+        _dispatch.glUniform4f( location, v0, v1, v2, v3 );
         return;
       }
       #endif
@@ -62039,7 +62039,7 @@ static void REGAL_CALL emu_glProgramUniform4fEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4fEXT)(program, location, v0, v1, v2, v3);
+      _next->glProgramUniform4fEXT(program, location, v0, v1, v2, v3);
       break;
     }
 
@@ -62099,7 +62099,7 @@ static void REGAL_CALL emu_glProgramUniform4fvEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4fv)( location, count, value );
+        _dispatch.glUniform4fv( location, count, value );
         return;
       }
       #endif
@@ -62108,7 +62108,7 @@ static void REGAL_CALL emu_glProgramUniform4fvEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4fvEXT)(program, location, count, value);
+      _next->glProgramUniform4fvEXT(program, location, count, value);
       break;
     }
 
@@ -62168,7 +62168,7 @@ static void REGAL_CALL emu_glProgramUniform4iEXT(GLuint program, GLint location,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4i)( location, v0, v1, v2, v3 );
+        _dispatch.glUniform4i( location, v0, v1, v2, v3 );
         return;
       }
       #endif
@@ -62177,7 +62177,7 @@ static void REGAL_CALL emu_glProgramUniform4iEXT(GLuint program, GLint location,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4iEXT)(program, location, v0, v1, v2, v3);
+      _next->glProgramUniform4iEXT(program, location, v0, v1, v2, v3);
       break;
     }
 
@@ -62237,7 +62237,7 @@ static void REGAL_CALL emu_glProgramUniform4ivEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4iv)( location, count, value );
+        _dispatch.glUniform4iv( location, count, value );
         return;
       }
       #endif
@@ -62246,7 +62246,7 @@ static void REGAL_CALL emu_glProgramUniform4ivEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4ivEXT)(program, location, count, value);
+      _next->glProgramUniform4ivEXT(program, location, count, value);
       break;
     }
 
@@ -62306,7 +62306,7 @@ static void REGAL_CALL emu_glProgramUniform4uiEXT(GLuint program, GLint location
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4ui)( location, v0, v1, v2, v3 );
+        _dispatch.glUniform4ui( location, v0, v1, v2, v3 );
         return;
       }
       #endif
@@ -62315,7 +62315,7 @@ static void REGAL_CALL emu_glProgramUniform4uiEXT(GLuint program, GLint location
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4uiEXT)(program, location, v0, v1, v2, v3);
+      _next->glProgramUniform4uiEXT(program, location, v0, v1, v2, v3);
       break;
     }
 
@@ -62375,7 +62375,7 @@ static void REGAL_CALL emu_glProgramUniform4uivEXT(GLuint program, GLint locatio
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniform4uiv)( location, count, value );
+        _dispatch.glUniform4uiv( location, count, value );
         return;
       }
       #endif
@@ -62384,7 +62384,7 @@ static void REGAL_CALL emu_glProgramUniform4uivEXT(GLuint program, GLint locatio
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniform4uivEXT)(program, location, count, value);
+      _next->glProgramUniform4uivEXT(program, location, count, value);
       break;
     }
 
@@ -62444,7 +62444,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2dvEXT(GLuint program, GLint lo
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix2dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix2dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62453,7 +62453,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2dvEXT(GLuint program, GLint lo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix2dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix2dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62513,7 +62513,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2fvEXT(GLuint program, GLint lo
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix2fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix2fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62522,7 +62522,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2fvEXT(GLuint program, GLint lo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix2fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix2fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62582,7 +62582,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix2x3dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix2x3dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62591,7 +62591,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix2x3dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix2x3dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62651,7 +62651,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix2x3fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix2x3fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62660,7 +62660,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix2x3fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix2x3fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62720,7 +62720,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix2x4dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix2x4dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62729,7 +62729,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix2x4dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix2x4dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62789,7 +62789,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix2x4fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix2x4fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62798,7 +62798,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix2x4fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix2x4fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62858,7 +62858,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3dvEXT(GLuint program, GLint lo
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix3dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix3dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62867,7 +62867,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3dvEXT(GLuint program, GLint lo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix3dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix3dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62927,7 +62927,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3fvEXT(GLuint program, GLint lo
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix3fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix3fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -62936,7 +62936,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3fvEXT(GLuint program, GLint lo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix3fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix3fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -62996,7 +62996,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix3x2dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix3x2dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63005,7 +63005,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix3x2dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix3x2dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63065,7 +63065,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix3x2fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix3x2fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63074,7 +63074,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix3x2fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix3x2fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63134,7 +63134,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix3x4dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix3x4dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63143,7 +63143,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix3x4dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix3x4dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63203,7 +63203,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix3x4fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix3x4fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63212,7 +63212,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix3x4fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix3x4fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63272,7 +63272,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4dvEXT(GLuint program, GLint lo
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix4dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix4dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63281,7 +63281,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4dvEXT(GLuint program, GLint lo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix4dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix4dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63341,7 +63341,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4fvEXT(GLuint program, GLint lo
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix4fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix4fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63350,7 +63350,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4fvEXT(GLuint program, GLint lo
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix4fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix4fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63410,7 +63410,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix4x2dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix4x2dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63419,7 +63419,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix4x2dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix4x2dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63479,7 +63479,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix4x2fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix4x2fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63488,7 +63488,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix4x2fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix4x2fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63548,7 +63548,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix4x3dv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix4x3dv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63557,7 +63557,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix4x3dvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix4x3dvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63617,7 +63617,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaGlslProgram( _context, program);
-        _dispatch.call(&_dispatch.glUniformMatrix4x3fv)( location, count, transpose, value );
+        _dispatch.glUniformMatrix4x3fv( location, count, transpose, value );
         return;
       }
       #endif
@@ -63626,7 +63626,7 @@ static void REGAL_CALL emu_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glProgramUniformMatrix4x3fvEXT)(program, location, count, transpose, value);
+      _next->glProgramUniformMatrix4x3fvEXT(program, location, count, transpose, value);
       break;
     }
 
@@ -63698,7 +63698,7 @@ static void REGAL_CALL emu_glPushClientAttribDefaultEXT(GLbitfield mask)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         DispatchTableGL &tbl = _context->dispatcher.emulation;
-        tbl.call(&tbl.glPushClientAttrib)(mask);
+        tbl.glPushClientAttrib(mask);
         _context->dsa->ClientAttribDefault(_context, mask);
         return;
       }
@@ -63708,7 +63708,7 @@ static void REGAL_CALL emu_glPushClientAttribDefaultEXT(GLbitfield mask)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glPushClientAttribDefaultEXT)(mask);
+      _next->glPushClientAttribDefaultEXT(mask);
       break;
     }
 
@@ -63768,7 +63768,7 @@ static void REGAL_CALL emu_glTextureBufferEXT(GLuint texture, GLenum target, GLe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexBuffer)( target, internalformat, buffer );
+        _dispatch.glTexBuffer( target, internalformat, buffer );
         return;
       }
       #endif
@@ -63777,7 +63777,7 @@ static void REGAL_CALL emu_glTextureBufferEXT(GLuint texture, GLenum target, GLe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureBufferEXT)(texture, target, internalformat, buffer);
+      _next->glTextureBufferEXT(texture, target, internalformat, buffer);
       break;
     }
 
@@ -63845,7 +63845,7 @@ static void REGAL_CALL emu_glTextureImage1DEXT(GLuint texture, GLenum target, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexImage1D)( target, level, internalformat, width, border, format, type, pixels );
+        _dispatch.glTexImage1D( target, level, internalformat, width, border, format, type, pixels );
         return;
       }
       #endif
@@ -63854,7 +63854,7 @@ static void REGAL_CALL emu_glTextureImage1DEXT(GLuint texture, GLenum target, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureImage1DEXT)(texture, target, level, internalformat, width, border, format, type, pixels);
+      _next->glTextureImage1DEXT(texture, target, level, internalformat, width, border, format, type, pixels);
       break;
     }
 
@@ -63922,7 +63922,7 @@ static void REGAL_CALL emu_glTextureImage2DEXT(GLuint texture, GLenum target, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexImage2D)( target, level, internalformat, width, height, border, format, type, pixels );
+        _dispatch.glTexImage2D( target, level, internalformat, width, height, border, format, type, pixels );
         return;
       }
       #endif
@@ -63931,7 +63931,7 @@ static void REGAL_CALL emu_glTextureImage2DEXT(GLuint texture, GLenum target, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureImage2DEXT)(texture, target, level, internalformat, width, height, border, format, type, pixels);
+      _next->glTextureImage2DEXT(texture, target, level, internalformat, width, height, border, format, type, pixels);
       break;
     }
 
@@ -63999,7 +63999,7 @@ static void REGAL_CALL emu_glTextureImage3DEXT(GLuint texture, GLenum target, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexImage3D)( target, level, internalformat, width, height, depth, border, format, type, pixels );
+        _dispatch.glTexImage3D( target, level, internalformat, width, height, depth, border, format, type, pixels );
         return;
       }
       #endif
@@ -64008,7 +64008,7 @@ static void REGAL_CALL emu_glTextureImage3DEXT(GLuint texture, GLenum target, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureImage3DEXT)(texture, target, level, internalformat, width, height, depth, border, format, type, pixels);
+      _next->glTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, format, type, pixels);
       break;
     }
 
@@ -64068,7 +64068,7 @@ static void REGAL_CALL emu_glTextureParameterIivEXT(GLuint texture, GLenum targe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexParameterIiv)( target, pname, params );
+        _dispatch.glTexParameterIiv( target, pname, params );
         return;
       }
       #endif
@@ -64077,7 +64077,7 @@ static void REGAL_CALL emu_glTextureParameterIivEXT(GLuint texture, GLenum targe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureParameterIivEXT)(texture, target, pname, params);
+      _next->glTextureParameterIivEXT(texture, target, pname, params);
       break;
     }
 
@@ -64137,7 +64137,7 @@ static void REGAL_CALL emu_glTextureParameterIuivEXT(GLuint texture, GLenum targ
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexParameterIuiv)( target, pname, params );
+        _dispatch.glTexParameterIuiv( target, pname, params );
         return;
       }
       #endif
@@ -64146,7 +64146,7 @@ static void REGAL_CALL emu_glTextureParameterIuivEXT(GLuint texture, GLenum targ
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureParameterIuivEXT)(texture, target, pname, params);
+      _next->glTextureParameterIuivEXT(texture, target, pname, params);
       break;
     }
 
@@ -64206,7 +64206,7 @@ static void REGAL_CALL emu_glTextureParameterfEXT(GLuint texture, GLenum target,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexParameterf)( target, pname, param );
+        _dispatch.glTexParameterf( target, pname, param );
         return;
       }
       #endif
@@ -64215,7 +64215,7 @@ static void REGAL_CALL emu_glTextureParameterfEXT(GLuint texture, GLenum target,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureParameterfEXT)(texture, target, pname, param);
+      _next->glTextureParameterfEXT(texture, target, pname, param);
       break;
     }
 
@@ -64275,7 +64275,7 @@ static void REGAL_CALL emu_glTextureParameterfvEXT(GLuint texture, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexParameterfv)( target, pname, param );
+        _dispatch.glTexParameterfv( target, pname, param );
         return;
       }
       #endif
@@ -64284,7 +64284,7 @@ static void REGAL_CALL emu_glTextureParameterfvEXT(GLuint texture, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureParameterfvEXT)(texture, target, pname, param);
+      _next->glTextureParameterfvEXT(texture, target, pname, param);
       break;
     }
 
@@ -64344,7 +64344,7 @@ static void REGAL_CALL emu_glTextureParameteriEXT(GLuint texture, GLenum target,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexParameteri)( target, pname, param );
+        _dispatch.glTexParameteri( target, pname, param );
         return;
       }
       #endif
@@ -64353,7 +64353,7 @@ static void REGAL_CALL emu_glTextureParameteriEXT(GLuint texture, GLenum target,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureParameteriEXT)(texture, target, pname, param);
+      _next->glTextureParameteriEXT(texture, target, pname, param);
       break;
     }
 
@@ -64413,7 +64413,7 @@ static void REGAL_CALL emu_glTextureParameterivEXT(GLuint texture, GLenum target
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexParameteriv)( target, pname, param );
+        _dispatch.glTexParameteriv( target, pname, param );
         return;
       }
       #endif
@@ -64422,7 +64422,7 @@ static void REGAL_CALL emu_glTextureParameterivEXT(GLuint texture, GLenum target
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureParameterivEXT)(texture, target, pname, param);
+      _next->glTextureParameterivEXT(texture, target, pname, param);
       break;
     }
 
@@ -64482,7 +64482,7 @@ static void REGAL_CALL emu_glTextureRenderbufferEXT(GLuint texture, GLenum targe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexRenderbufferNV)( target, renderbuffer );
+        _dispatch.glTexRenderbufferNV( target, renderbuffer );
         return;
       }
       #endif
@@ -64491,7 +64491,7 @@ static void REGAL_CALL emu_glTextureRenderbufferEXT(GLuint texture, GLenum targe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureRenderbufferEXT)(texture, target, renderbuffer);
+      _next->glTextureRenderbufferEXT(texture, target, renderbuffer);
       break;
     }
 
@@ -64551,7 +64551,7 @@ static void REGAL_CALL emu_glTextureSubImage1DEXT(GLuint texture, GLenum target,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexSubImage1D)( target, level, xoffset, width, format, type, pixels );
+        _dispatch.glTexSubImage1D( target, level, xoffset, width, format, type, pixels );
         return;
       }
       #endif
@@ -64560,7 +64560,7 @@ static void REGAL_CALL emu_glTextureSubImage1DEXT(GLuint texture, GLenum target,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureSubImage1DEXT)(texture, target, level, xoffset, width, format, type, pixels);
+      _next->glTextureSubImage1DEXT(texture, target, level, xoffset, width, format, type, pixels);
       break;
     }
 
@@ -64620,7 +64620,7 @@ static void REGAL_CALL emu_glTextureSubImage2DEXT(GLuint texture, GLenum target,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexSubImage2D)( target, level, xoffset, yoffset, width, height, format, type, pixels );
+        _dispatch.glTexSubImage2D( target, level, xoffset, yoffset, width, height, format, type, pixels );
         return;
       }
       #endif
@@ -64629,7 +64629,7 @@ static void REGAL_CALL emu_glTextureSubImage2DEXT(GLuint texture, GLenum target,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureSubImage2DEXT)(texture, target, level, xoffset, yoffset, width, height, format, type, pixels);
+      _next->glTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, type, pixels);
       break;
     }
 
@@ -64689,7 +64689,7 @@ static void REGAL_CALL emu_glTextureSubImage3DEXT(GLuint texture, GLenum target,
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaTexture( _context, target, texture );
-        _dispatch.call(&_dispatch.glTexSubImage3D)( target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+        _dispatch.glTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
         return;
       }
       #endif
@@ -64698,7 +64698,7 @@ static void REGAL_CALL emu_glTextureSubImage3DEXT(GLuint texture, GLenum target,
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTextureSubImage3DEXT)(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
+      _next->glTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
       break;
     }
 
@@ -64758,7 +64758,7 @@ static GLboolean REGAL_CALL emu_glUnmapNamedBufferEXT(GLuint buffer)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaBuffer( _context, buffer);
-        return _dispatch.call(&_dispatch.glUnmapBuffer)( GL_ARRAY_BUFFER );
+        return _dispatch.glUnmapBuffer( GL_ARRAY_BUFFER );
       }
       #endif
     case 1 :
@@ -64766,7 +64766,7 @@ static GLboolean REGAL_CALL emu_glUnmapNamedBufferEXT(GLuint buffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glUnmapNamedBufferEXT)(buffer);
+      return _next->glUnmapNamedBufferEXT(buffer);
     }
 
   }
@@ -64841,7 +64841,7 @@ static void REGAL_CALL emu_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buff
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glColorPointer)( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glColorPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -64850,7 +64850,7 @@ static void REGAL_CALL emu_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buff
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayColorOffsetEXT)(vaobj, buffer, size, type, stride, offset);
+      _next->glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
       break;
     }
 
@@ -64926,7 +64926,7 @@ static void REGAL_CALL emu_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint b
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glEdgeFlagPointer)( stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glEdgeFlagPointer( stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -64935,7 +64935,7 @@ static void REGAL_CALL emu_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint b
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayEdgeFlagOffsetEXT)(vaobj, buffer, stride, offset);
+      _next->glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
       break;
     }
 
@@ -65011,7 +65011,7 @@ static void REGAL_CALL emu_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint b
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glFogCoordPointer)( type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glFogCoordPointer( type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65020,7 +65020,7 @@ static void REGAL_CALL emu_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint b
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayFogCoordOffsetEXT)(vaobj, buffer, type, stride, offset);
+      _next->glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
       break;
     }
 
@@ -65096,7 +65096,7 @@ static void REGAL_CALL emu_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buff
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glIndexPointer)( type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glIndexPointer( type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65105,7 +65105,7 @@ static void REGAL_CALL emu_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buff
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayIndexOffsetEXT)(vaobj, buffer, type, stride, offset);
+      _next->glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
       break;
     }
 
@@ -65181,7 +65181,7 @@ static void REGAL_CALL emu_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glMultiTexCoordPointerEXT)( texunit, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glMultiTexCoordPointerEXT( texunit, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65190,7 +65190,7 @@ static void REGAL_CALL emu_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayMultiTexCoordOffsetEXT)(vaobj, buffer, texunit, size, type, stride, offset);
+      _next->glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
       break;
     }
 
@@ -65266,7 +65266,7 @@ static void REGAL_CALL emu_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buf
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glNormalPointer)( type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glNormalPointer( type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65275,7 +65275,7 @@ static void REGAL_CALL emu_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayNormalOffsetEXT)(vaobj, buffer, type, stride, offset);
+      _next->glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
       break;
     }
 
@@ -65351,7 +65351,7 @@ static void REGAL_CALL emu_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GL
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glSecondaryColorPointer)( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glSecondaryColorPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65360,7 +65360,7 @@ static void REGAL_CALL emu_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArraySecondaryColorOffsetEXT)(vaobj, buffer, size, type, stride, offset);
+      _next->glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
       break;
     }
 
@@ -65436,7 +65436,7 @@ static void REGAL_CALL emu_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint b
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glTexCoordPointer)( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glTexCoordPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65445,7 +65445,7 @@ static void REGAL_CALL emu_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint b
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayTexCoordOffsetEXT)(vaobj, buffer, size, type, stride, offset);
+      _next->glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
       break;
     }
 
@@ -65521,7 +65521,7 @@ static void REGAL_CALL emu_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLu
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glVertexAttribIPointer)( index, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glVertexAttribIPointer( index, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65530,7 +65530,7 @@ static void REGAL_CALL emu_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLu
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayVertexAttribIOffsetEXT)(vaobj, buffer, index, size, type, stride, offset);
+      _next->glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
       break;
     }
 
@@ -65606,7 +65606,7 @@ static void REGAL_CALL emu_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLui
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glVertexAttribPointer)( index, size, type, normalized, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glVertexAttribPointer( index, size, type, normalized, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65615,7 +65615,7 @@ static void REGAL_CALL emu_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLui
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayVertexAttribOffsetEXT)(vaobj, buffer, index, size, type, normalized, stride, offset);
+      _next->glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
       break;
     }
 
@@ -65691,7 +65691,7 @@ static void REGAL_CALL emu_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buf
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-        _dispatch.call(&_dispatch.glVertexPointer)( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+        _dispatch.glVertexPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
         return;
       }
       #endif
@@ -65700,7 +65700,7 @@ static void REGAL_CALL emu_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexArrayVertexOffsetEXT)(vaobj, buffer, size, type, stride, offset);
+      _next->glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
       break;
     }
 
@@ -65775,7 +65775,7 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
           if (!buf)  {
             DispatchTableGL *_next = _context->dispatcher.emulation.next();
             RegalAssert(_next);
-            _next->call(&_next->glColorMask)(r, g, b, a);
+            _next->glColorMask(r, g, b, a);
           }
           return;
         }
@@ -65785,7 +65785,7 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColorMaskIndexedEXT)(buf, r, g, b, a);
+      _next->glColorMaskIndexedEXT(buf, r, g, b, a);
       break;
     }
 
@@ -65878,7 +65878,7 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, index + GL_TEXTURE0 );
-        _dispatch.call(&_dispatch.glDisable)( target );
+        _dispatch.glDisable( target );
         return;
       }
       #endif
@@ -65895,7 +65895,7 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
           if (!index)  {
             DispatchTableGL *_next = _context->dispatcher.emulation.next();
             RegalAssert(_next);
-            _next->call(&_next->glDisable)(target);
+            _next->glDisable(target);
           }
           return;
         }
@@ -65905,7 +65905,7 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDisableIndexedEXT)(target, index);
+      _next->glDisableIndexedEXT(target, index);
       break;
     }
 
@@ -65998,7 +65998,7 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         _context->dsa->DsaActiveTexture( _context, index + GL_TEXTURE0 );
-        _dispatch.call(&_dispatch.glEnable)( target );
+        _dispatch.glEnable( target );
         return;
       }
       #endif
@@ -66015,7 +66015,7 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
           if (!index)  {
             DispatchTableGL *_next = _context->dispatcher.emulation.next();
             RegalAssert(_next);
-            _next->call(&_next->glEnable)(target);
+            _next->glEnable(target);
           }
           return;
         }
@@ -66025,7 +66025,7 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEnableIndexedEXT)(target, index);
+      _next->glEnableIndexedEXT(target, index);
       break;
     }
 
@@ -66094,7 +66094,7 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
           if (!index)  {
             DispatchTableGL *_next = _context->dispatcher.emulation.next();
             RegalAssert(_next);
-            _next->call(&_next->glGetBooleanv)(value,data);
+            _next->glGetBooleanv(value,data);
           }
           return;
         }
@@ -66104,7 +66104,7 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetBooleanIndexedvEXT)(value, index, data);
+      _next->glGetBooleanIndexedvEXT(value, index, data);
       break;
     }
 
@@ -66173,7 +66173,7 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
           if (!index)  {
             DispatchTableGL *_next = _context->dispatcher.emulation.next();
             RegalAssert(_next);
-            _next->call(&_next->glGetIntegerv)(value,data);
+            _next->glGetIntegerv(value,data);
           }
           return;
         }
@@ -66183,7 +66183,7 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetIntegerIndexedvEXT)(value, index, data);
+      _next->glGetIntegerIndexedvEXT(value, index, data);
       break;
     }
 
@@ -66265,7 +66265,7 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
           if (!index)  {
             DispatchTableGL *_next = _context->dispatcher.emulation.next();
             RegalAssert(_next);
-            return _next->call(&_next->glIsEnabled)(target);
+            return _next->glIsEnabled(target);
           }
           return GL_FALSE;
         }
@@ -66275,7 +66275,7 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsEnabledIndexedEXT)(target, index);
+      return _next->glIsEnabledIndexedEXT(target, index);
     }
 
   }
@@ -66347,7 +66347,7 @@ static void REGAL_CALL emu_glDrawArraysInstancedEXT(GLenum mode, GLint start, GL
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawArraysInstancedEXT)(mode, start, count, primcount);
+  _next->glDrawArraysInstancedEXT(mode, start, count, primcount);
 }
 
 static void REGAL_CALL emu_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
@@ -66413,7 +66413,7 @@ static void REGAL_CALL emu_glDrawElementsInstancedEXT(GLenum mode, GLsizei count
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawElementsInstancedEXT)(mode, count, type, indices, primcount);
+  _next->glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
 }
 
 // GL_EXT_draw_range_elements
@@ -66463,7 +66463,7 @@ static void REGAL_CALL emu_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLu
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDrawRangeElementsEXT)(mode, start, end, count, type, indices);
+  _next->glDrawRangeElementsEXT(mode, start, end, count, type, indices);
 }
 
 // GL_EXT_fog_coord
@@ -66542,7 +66542,7 @@ static void REGAL_CALL emu_glFogCoordPointerEXT(GLenum type, GLsizei stride, con
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFogCoordPointerEXT)(type, stride, pointer);
+      _next->glFogCoordPointerEXT(type, stride, pointer);
       break;
     }
 
@@ -66614,7 +66614,7 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glBlitFramebuffer)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          _table.glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
           return;
         }
       }
@@ -66623,7 +66623,7 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBlitFramebufferEXT)(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+      _next->glBlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
       break;
     }
 
@@ -66670,7 +66670,7 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisampleEXT(GLenum target, GL
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glRenderbufferStorageMultisampleEXT)(target, samples, internalformat, width, height);
+  _next->glRenderbufferStorageMultisampleEXT(target, samples, internalformat, width, height);
 }
 
 // GL_EXT_framebuffer_object
@@ -66732,7 +66732,7 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowFramebuffer( target, framebuffer ) ) {
-            _dispatch.call(&_dispatch.glBindFramebuffer)( target, framebuffer );
+            _dispatch.glBindFramebuffer( target, framebuffer );
         }
         return;
       }
@@ -66749,7 +66749,7 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glBindFramebuffer)(target, framebuffer);
+          _table.glBindFramebuffer(target, framebuffer);
           return;
         }
       }
@@ -66758,7 +66758,7 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindFramebufferEXT)(target, framebuffer);
+      _next->glBindFramebufferEXT(target, framebuffer);
       break;
     }
 
@@ -66823,7 +66823,7 @@ static void REGAL_CALL emu_glBindRenderbufferEXT(GLenum target, GLuint renderbuf
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowRenderbuffer( target, renderbuffer ) ) {
-            _dispatch.call(&_dispatch.glBindRenderbuffer)( target, renderbuffer );
+            _dispatch.glBindRenderbuffer( target, renderbuffer );
         }
         return;
       }
@@ -66840,7 +66840,7 @@ static void REGAL_CALL emu_glBindRenderbufferEXT(GLenum target, GLuint renderbuf
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glBindRenderbuffer)(target, renderbuffer);
+          _table.glBindRenderbuffer(target, renderbuffer);
           return;
         }
       }
@@ -66849,7 +66849,7 @@ static void REGAL_CALL emu_glBindRenderbufferEXT(GLenum target, GLuint renderbuf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindRenderbufferEXT)(target, renderbuffer);
+      _next->glBindRenderbufferEXT(target, renderbuffer);
       break;
     }
 
@@ -66917,7 +66917,7 @@ static GLenum REGAL_CALL emu_glCheckFramebufferStatusEXT(GLenum target)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          return _table.call(&_table.glCheckFramebufferStatus)(target);
+          return _table.glCheckFramebufferStatus(target);
         }
       }
       #endif
@@ -66925,7 +66925,7 @@ static GLenum REGAL_CALL emu_glCheckFramebufferStatusEXT(GLenum target)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glCheckFramebufferStatusEXT)(target);
+      return _next->glCheckFramebufferStatusEXT(target);
     }
 
   }
@@ -67000,7 +67000,7 @@ static void REGAL_CALL emu_glDeleteFramebuffersEXT(GLsizei n, const GLuint *fram
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glDeleteFramebuffers)(n, framebuffers);
+          _table.glDeleteFramebuffers(n, framebuffers);
           return;
         }
       }
@@ -67009,7 +67009,7 @@ static void REGAL_CALL emu_glDeleteFramebuffersEXT(GLsizei n, const GLuint *fram
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteFramebuffersEXT)(n, framebuffers);
+      _next->glDeleteFramebuffersEXT(n, framebuffers);
       break;
     }
 
@@ -67085,7 +67085,7 @@ static void REGAL_CALL emu_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *ren
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glDeleteRenderbuffers)(n, renderbuffers);
+          _table.glDeleteRenderbuffers(n, renderbuffers);
           return;
         }
       }
@@ -67094,7 +67094,7 @@ static void REGAL_CALL emu_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *ren
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDeleteRenderbuffersEXT)(n, renderbuffers);
+      _next->glDeleteRenderbuffersEXT(n, renderbuffers);
       break;
     }
 
@@ -67170,7 +67170,7 @@ static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum at
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glFramebufferRenderbuffer)(target, attachment, renderbuffertarget, renderbuffer);
+          _table.glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
           return;
         }
       }
@@ -67179,7 +67179,7 @@ static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum at
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferRenderbufferEXT)(target, attachment, renderbuffertarget, renderbuffer);
+      _next->glFramebufferRenderbufferEXT(target, attachment, renderbuffertarget, renderbuffer);
       break;
     }
 
@@ -67239,7 +67239,7 @@ static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attac
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture1DEXT)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+        _dispatch.glFramebufferTexture1DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
         return;
       }
       #endif
@@ -67267,7 +67267,7 @@ static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attac
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glFramebufferTexture1D)(target, attachment, textarget, texture, level);
+          _table.glFramebufferTexture1D(target, attachment, textarget, texture, level);
           return;
         }
       }
@@ -67276,7 +67276,7 @@ static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attac
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture1DEXT)(target, attachment, textarget, texture, level);
+      _next->glFramebufferTexture1DEXT(target, attachment, textarget, texture, level);
       break;
     }
 
@@ -67336,7 +67336,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attac
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture2DEXT)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+        _dispatch.glFramebufferTexture2DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
         return;
       }
       #endif
@@ -67364,7 +67364,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attac
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glFramebufferTexture2D)(target, attachment, textarget, texture, level);
+          _table.glFramebufferTexture2D(target, attachment, textarget, texture, level);
           return;
         }
       }
@@ -67373,7 +67373,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attac
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture2DEXT)(target, attachment, textarget, texture, level);
+      _next->glFramebufferTexture2DEXT(target, attachment, textarget, texture, level);
       break;
     }
 
@@ -67433,7 +67433,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attac
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture3DEXT)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
+        _dispatch.glFramebufferTexture3DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
         return;
       }
       #endif
@@ -67461,7 +67461,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attac
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glFramebufferTexture3D)(target, attachment, textarget, texture, level, zoffset);
+          _table.glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
           return;
         }
       }
@@ -67470,7 +67470,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attac
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture3DEXT)(target, attachment, textarget, texture, level, zoffset);
+      _next->glFramebufferTexture3DEXT(target, attachment, textarget, texture, level, zoffset);
       break;
     }
 
@@ -67538,7 +67538,7 @@ static void REGAL_CALL emu_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glGenFramebuffers)(n, framebuffers);
+          _table.glGenFramebuffers(n, framebuffers);
           return;
         }
       }
@@ -67547,7 +67547,7 @@ static void REGAL_CALL emu_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenFramebuffersEXT)(n, framebuffers);
+      _next->glGenFramebuffersEXT(n, framebuffers);
       break;
     }
 
@@ -67615,7 +67615,7 @@ static void REGAL_CALL emu_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffer
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glGenRenderbuffers)(n, renderbuffers);
+          _table.glGenRenderbuffers(n, renderbuffers);
           return;
         }
       }
@@ -67624,7 +67624,7 @@ static void REGAL_CALL emu_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffer
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenRenderbuffersEXT)(n, renderbuffers);
+      _next->glGenRenderbuffersEXT(n, renderbuffers);
       break;
     }
 
@@ -67709,7 +67709,7 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glGenerateMipmap)(target);
+          _table.glGenerateMipmap(target);
           return;
         }
       }
@@ -67718,7 +67718,7 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenerateMipmapEXT)(target);
+      _next->glGenerateMipmapEXT(target);
       break;
     }
 
@@ -67770,11 +67770,11 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameterivEXT(GLenum targe
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glGetFramebufferAttachmentParameterivEXT)(target, attachment, pname, params);
+        _dispatch.glGetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
         if (pname == GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME)
         {
           GLint attachType = GL_RENDERBUFFER;
-          _dispatch.call(&_dispatch.glGetFramebufferAttachmentParameterivEXT)(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
+          _dispatch.glGetFramebufferAttachmentParameterivEXT(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
           if (attachType == GL_TEXTURE)
             *params = _context->obj->textureNames.ToAppName(*params);
         }
@@ -67805,7 +67805,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameterivEXT(GLenum targe
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glGetFramebufferAttachmentParameteriv)(target, attachment, pname, params);
+          _table.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
           return;
         }
       }
@@ -67814,7 +67814,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameterivEXT(GLenum targe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetFramebufferAttachmentParameterivEXT)(target, attachment, pname, params);
+      _next->glGetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
       break;
     }
 
@@ -67890,7 +67890,7 @@ static void REGAL_CALL emu_glGetRenderbufferParameterivEXT(GLenum target, GLenum
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glGetRenderbufferParameteriv)(target, pname, params);
+          _table.glGetRenderbufferParameteriv(target, pname, params);
           return;
         }
       }
@@ -67899,7 +67899,7 @@ static void REGAL_CALL emu_glGetRenderbufferParameterivEXT(GLenum target, GLenum
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetRenderbufferParameterivEXT)(target, pname, params);
+      _next->glGetRenderbufferParameterivEXT(target, pname, params);
       break;
     }
 
@@ -67967,7 +67967,7 @@ static GLboolean REGAL_CALL emu_glIsFramebufferEXT(GLuint framebuffer)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          return _table.call(&_table.glIsFramebuffer)(framebuffer);
+          return _table.glIsFramebuffer(framebuffer);
         }
       }
       #endif
@@ -67975,7 +67975,7 @@ static GLboolean REGAL_CALL emu_glIsFramebufferEXT(GLuint framebuffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsFramebufferEXT)(framebuffer);
+      return _next->glIsFramebufferEXT(framebuffer);
     }
 
   }
@@ -68042,7 +68042,7 @@ static GLboolean REGAL_CALL emu_glIsRenderbufferEXT(GLuint renderbuffer)
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          return _table.call(&_table.glIsRenderbuffer)(renderbuffer);
+          return _table.glIsRenderbuffer(renderbuffer);
         }
       }
       #endif
@@ -68050,7 +68050,7 @@ static GLboolean REGAL_CALL emu_glIsRenderbufferEXT(GLuint renderbuffer)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      return _next->call(&_next->glIsRenderbufferEXT)(renderbuffer);
+      return _next->glIsRenderbufferEXT(renderbuffer);
     }
 
   }
@@ -68125,7 +68125,7 @@ static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum intern
         {
           DispatchTableGL &_table = _context->dispatcher.emulation;
           _context->emuLevel++;
-          _table.call(&_table.glRenderbufferStorage)(target, internalformat, width, height);
+          _table.glRenderbufferStorage(target, internalformat, width, height);
           return;
         }
       }
@@ -68134,7 +68134,7 @@ static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum intern
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glRenderbufferStorageEXT)(target, internalformat, width, height);
+      _next->glRenderbufferStorageEXT(target, internalformat, width, height);
       break;
     }
 
@@ -68181,7 +68181,7 @@ static void REGAL_CALL emu_glFramebufferTextureEXT(GLenum target, GLenum attachm
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureEXT)(target, attachment, texture, level);
+  _next->glFramebufferTextureEXT(target, attachment, texture, level);
 }
 
 static void REGAL_CALL emu_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
@@ -68221,7 +68221,7 @@ static void REGAL_CALL emu_glFramebufferTextureFaceEXT(GLenum target, GLenum att
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureFaceEXT)(target, attachment, texture, level, face);
+  _next->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
 }
 
 // GL_EXT_gpu_program_parameters
@@ -68275,7 +68275,7 @@ static void REGAL_CALL emu_glFlushMappedBufferRangeEXT(GLenum target, GLintptr o
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFlushMappedBufferRangeEXT)(target, offset, length);
+  _next->glFlushMappedBufferRangeEXT(target, offset, length);
 }
 
 static GLvoid *REGAL_CALL emu_glMapBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
@@ -68315,7 +68315,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferRangeEXT(GLenum target, GLintptr offset
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  return _next->call(& _next->glMapBufferRangeEXT)(target, offset, length, access);
+  return _next->glMapBufferRangeEXT(target, offset, length, access);
 }
 
 // GL_EXT_multi_draw_arrays
@@ -68383,7 +68383,7 @@ static void REGAL_CALL emu_glMultiDrawArraysEXT(GLenum mode, const GLint *first,
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawArraysEXT)(mode, first, count, primcount);
+  _next->glMultiDrawArraysEXT(mode, first, count, primcount);
 }
 
 static void REGAL_CALL emu_glMultiDrawElementsEXT(GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
@@ -68449,7 +68449,7 @@ static void REGAL_CALL emu_glMultiDrawElementsEXT(GLenum mode, const GLsizei *co
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultiDrawElementsEXT)(mode, count, type, indices, primcount);
+  _next->glMultiDrawElementsEXT(mode, count, type, indices, primcount);
 }
 
 // GL_EXT_multisample
@@ -68483,7 +68483,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DMultisampleEXT(GLenum target, G
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture2DMultisampleEXT)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, samples);
+        _dispatch.glFramebufferTexture2DMultisampleEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, samples);
         return;
       }
       #endif
@@ -68492,7 +68492,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DMultisampleEXT(GLenum target, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture2DMultisampleEXT)(target, attachment, textarget, texture, level, samples);
+      _next->glFramebufferTexture2DMultisampleEXT(target, attachment, textarget, texture, level, samples);
       break;
     }
 
@@ -68544,7 +68544,7 @@ static void REGAL_CALL emu_glGetIntegeri_vEXT(GLenum target, GLuint index, GLint
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetIntegeri_vEXT)(target, index, data);
+      _next->glGetIntegeri_vEXT(target, index, data);
       break;
     }
 
@@ -68599,7 +68599,7 @@ static void REGAL_CALL emu_glProvokingVertexEXT(GLenum mode)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProvokingVertexEXT)(mode);
+  _next->glProvokingVertexEXT(mode);
 }
 
 // GL_EXT_robustness
@@ -68662,7 +68662,7 @@ static void REGAL_CALL emu_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyt
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3bEXT)(red, green, blue);
+      _next->glSecondaryColor3bEXT(red, green, blue);
       break;
     }
 
@@ -68724,7 +68724,7 @@ static void REGAL_CALL emu_glSecondaryColor3bvEXT(const GLbyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3bvEXT)(v);
+      _next->glSecondaryColor3bvEXT(v);
       break;
     }
 
@@ -68786,7 +68786,7 @@ static void REGAL_CALL emu_glSecondaryColor3dEXT(GLdouble red, GLdouble green, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3dEXT)(red, green, blue);
+      _next->glSecondaryColor3dEXT(red, green, blue);
       break;
     }
 
@@ -68848,7 +68848,7 @@ static void REGAL_CALL emu_glSecondaryColor3dvEXT(const GLdouble *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3dvEXT)(v);
+      _next->glSecondaryColor3dvEXT(v);
       break;
     }
 
@@ -68910,7 +68910,7 @@ static void REGAL_CALL emu_glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLf
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3fEXT)(red, green, blue);
+      _next->glSecondaryColor3fEXT(red, green, blue);
       break;
     }
 
@@ -68972,7 +68972,7 @@ static void REGAL_CALL emu_glSecondaryColor3fvEXT(const GLfloat *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3fvEXT)(v);
+      _next->glSecondaryColor3fvEXT(v);
       break;
     }
 
@@ -69034,7 +69034,7 @@ static void REGAL_CALL emu_glSecondaryColor3iEXT(GLint red, GLint green, GLint b
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3iEXT)(red, green, blue);
+      _next->glSecondaryColor3iEXT(red, green, blue);
       break;
     }
 
@@ -69096,7 +69096,7 @@ static void REGAL_CALL emu_glSecondaryColor3ivEXT(const GLint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3ivEXT)(v);
+      _next->glSecondaryColor3ivEXT(v);
       break;
     }
 
@@ -69158,7 +69158,7 @@ static void REGAL_CALL emu_glSecondaryColor3sEXT(GLshort red, GLshort green, GLs
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3sEXT)(red, green, blue);
+      _next->glSecondaryColor3sEXT(red, green, blue);
       break;
     }
 
@@ -69220,7 +69220,7 @@ static void REGAL_CALL emu_glSecondaryColor3svEXT(const GLshort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3svEXT)(v);
+      _next->glSecondaryColor3svEXT(v);
       break;
     }
 
@@ -69282,7 +69282,7 @@ static void REGAL_CALL emu_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GL
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3ubEXT)(red, green, blue);
+      _next->glSecondaryColor3ubEXT(red, green, blue);
       break;
     }
 
@@ -69344,7 +69344,7 @@ static void REGAL_CALL emu_glSecondaryColor3ubvEXT(const GLubyte *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3ubvEXT)(v);
+      _next->glSecondaryColor3ubvEXT(v);
       break;
     }
 
@@ -69406,7 +69406,7 @@ static void REGAL_CALL emu_glSecondaryColor3uiEXT(GLuint red, GLuint green, GLui
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3uiEXT)(red, green, blue);
+      _next->glSecondaryColor3uiEXT(red, green, blue);
       break;
     }
 
@@ -69468,7 +69468,7 @@ static void REGAL_CALL emu_glSecondaryColor3uivEXT(const GLuint *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3uivEXT)(v);
+      _next->glSecondaryColor3uivEXT(v);
       break;
     }
 
@@ -69530,7 +69530,7 @@ static void REGAL_CALL emu_glSecondaryColor3usEXT(GLushort red, GLushort green, 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3usEXT)(red, green, blue);
+      _next->glSecondaryColor3usEXT(red, green, blue);
       break;
     }
 
@@ -69592,7 +69592,7 @@ static void REGAL_CALL emu_glSecondaryColor3usvEXT(const GLushort *v)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColor3usvEXT)(v);
+      _next->glSecondaryColor3usvEXT(v);
       break;
     }
 
@@ -69674,7 +69674,7 @@ static void REGAL_CALL emu_glSecondaryColorPointerEXT(GLint size, GLenum type, G
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glSecondaryColorPointerEXT)(size, type, stride, pointer);
+      _next->glSecondaryColorPointerEXT(size, type, stride, pointer);
       break;
     }
 
@@ -69738,7 +69738,7 @@ static void REGAL_CALL emu_glTexSubImage2DEXT(GLenum target, GLint level, GLint 
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexSubImage2DEXT)(target, level, xoffset, yoffset, width, height, format, type, pixels);
+      _next->glTexSubImage2DEXT(target, level, xoffset, yoffset, width, height, format, type, pixels);
       break;
     }
 
@@ -69782,7 +69782,7 @@ static void REGAL_CALL emu_glTexImage3DEXT(GLenum target, GLint level, GLenum in
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexImage3DEXT)(target, level, internalformat, width, height, depth, border, format, type, pixels);
+  _next->glTexImage3DEXT(target, level, internalformat, width, height, depth, border, format, type, pixels);
 }
 
 // GL_EXT_texture_array
@@ -69824,7 +69824,7 @@ static void REGAL_CALL emu_glFramebufferTextureLayerEXT(GLenum target, GLenum at
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFramebufferTextureLayerEXT)(target, attachment, texture, level, layer);
+  _next->glFramebufferTextureLayerEXT(target, attachment, texture, level, layer);
 }
 
 // GL_EXT_texture_buffer_object
@@ -69892,7 +69892,7 @@ static void REGAL_CALL emu_glTexParameterIivEXT(GLenum target, GLenum pname, con
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameterIivEXT)(target, pname, params);
+      _next->glTexParameterIivEXT(target, pname, params);
       break;
     }
 
@@ -69961,7 +69961,7 @@ static void REGAL_CALL emu_glTexParameterIuivEXT(GLenum target, GLenum pname, co
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexParameterIuivEXT)(target, pname, params);
+      _next->glTexParameterIuivEXT(target, pname, params);
       break;
     }
 
@@ -70041,7 +70041,7 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 3;
         if (!_context->dsa->ShadowTexture( target, texture )) {
-            _dispatch.call(&_dispatch.glBindTexture)( target, texture );
+            _dispatch.glBindTexture( target, texture );
         }
         return;
       }
@@ -70051,7 +70051,7 @@ static void REGAL_CALL emu_glBindTextureEXT(GLenum target, GLuint texture)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindTextureEXT)(target, texture);
+      _next->glBindTextureEXT(target, texture);
       break;
     }
 
@@ -70106,7 +70106,7 @@ static void REGAL_CALL emu_glDeleteTexturesEXT(GLsizei n, const GLuint *textures
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteTexturesEXT)(n, textures);
+  _next->glDeleteTexturesEXT(n, textures);
 }
 
 static void REGAL_CALL emu_glGenTexturesEXT(GLsizei n, GLuint *textures)
@@ -70175,7 +70175,7 @@ static void REGAL_CALL emu_glGenTexturesEXT(GLsizei n, GLuint *textures)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGenTexturesEXT)(n, textures);
+      _next->glGenTexturesEXT(n, textures);
       break;
     }
 
@@ -70235,7 +70235,7 @@ static void REGAL_CALL emu_glTexStorage1DEXT(GLenum target, GLsizei levels, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexStorage1DEXT)(target, levels, internalformat, width);
+      _next->glTexStorage1DEXT(target, levels, internalformat, width);
       break;
     }
 
@@ -70291,7 +70291,7 @@ static void REGAL_CALL emu_glTexStorage2DEXT(GLenum target, GLsizei levels, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexStorage2DEXT)(target, levels, internalformat, width, height);
+      _next->glTexStorage2DEXT(target, levels, internalformat, width, height);
       break;
     }
 
@@ -70347,7 +70347,7 @@ static void REGAL_CALL emu_glTexStorage3DEXT(GLenum target, GLsizei levels, GLen
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexStorage3DEXT)(target, levels, internalformat, width, height, depth);
+      _next->glTexStorage3DEXT(target, levels, internalformat, width, height, depth);
       break;
     }
 
@@ -70435,7 +70435,7 @@ static void REGAL_CALL emu_glColorPointerEXT(GLint size, GLenum type, GLsizei st
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glColorPointerEXT)(size, type, stride, count, pointer);
+      _next->glColorPointerEXT(size, type, stride, count, pointer);
       break;
     }
 
@@ -70530,7 +70530,7 @@ static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei cou
         if ( ! _context->quads->glDrawArrays( _context, mode, first, count ) ) {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          return _next->call(&_next->glDrawArrays)( mode, first, count );
+          return _next->glDrawArrays( mode, first, count );
         }
 
         return;
@@ -70541,7 +70541,7 @@ static void REGAL_CALL emu_glDrawArraysEXT(GLenum mode, GLint first, GLsizei cou
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawArraysEXT)(mode, first, count);
+      _next->glDrawArraysEXT(mode, first, count);
       break;
     }
 
@@ -70603,7 +70603,7 @@ static void REGAL_CALL emu_glEdgeFlagPointerEXT(GLsizei stride, GLsizei count, c
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glEdgeFlagPointerEXT)(stride, count, pointer);
+      _next->glEdgeFlagPointerEXT(stride, count, pointer);
       break;
     }
 
@@ -70685,7 +70685,7 @@ static void REGAL_CALL emu_glNormalPointerEXT(GLenum type, GLsizei stride, GLsiz
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glNormalPointerEXT)(type, stride, count, pointer);
+      _next->glNormalPointerEXT(type, stride, count, pointer);
       break;
     }
 
@@ -70767,7 +70767,7 @@ static void REGAL_CALL emu_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glTexCoordPointerEXT)(size, type, stride, count, pointer);
+      _next->glTexCoordPointerEXT(size, type, stride, count, pointer);
       break;
     }
 
@@ -70849,7 +70849,7 @@ static void REGAL_CALL emu_glVertexPointerEXT(GLint size, GLenum type, GLsizei s
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glVertexPointerEXT)(size, type, stride, count, pointer);
+      _next->glVertexPointerEXT(size, type, stride, count, pointer);
       break;
     }
 
@@ -70954,7 +70954,7 @@ static void REGAL_CALL emu_glDrawBuffersNV(GLsizei n, const GLenum *bufs)
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glDrawBuffersNV)(n, bufs);
+      _next->glDrawBuffersNV(n, bufs);
       break;
     }
 
@@ -71006,7 +71006,7 @@ static void REGAL_CALL emu_glTexRenderbufferNV(GLenum target, GLuint renderbuffe
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexRenderbufferNV)(target, renderbuffer);
+  _next->glTexRenderbufferNV(target, renderbuffer);
 }
 
 // GL_NV_fence
@@ -71054,7 +71054,7 @@ static void REGAL_CALL emu_glRenderbufferStorageMultisampleCoverageNV(GLenum tar
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glRenderbufferStorageMultisampleCoverageNV)(target, coverageSamples, colorSamples, internalformat, width, height);
+  _next->glRenderbufferStorageMultisampleCoverageNV(target, coverageSamples, colorSamples, internalformat, width, height);
 }
 
 // GL_NV_geometry_program4
@@ -71098,7 +71098,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterIivNV(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramEnvParameterIivNV)(target, index, params);
+  _next->glGetProgramEnvParameterIivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glGetProgramEnvParameterIuivNV(GLenum target, GLuint index, GLuint *params)
@@ -71138,7 +71138,7 @@ static void REGAL_CALL emu_glGetProgramEnvParameterIuivNV(GLenum target, GLuint 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramEnvParameterIuivNV)(target, index, params);
+  _next->glGetProgramEnvParameterIuivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glGetProgramLocalParameterIivNV(GLenum target, GLuint index, GLint *params)
@@ -71178,7 +71178,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterIivNV(GLenum target, GLuint
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramLocalParameterIivNV)(target, index, params);
+  _next->glGetProgramLocalParameterIivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glGetProgramLocalParameterIuivNV(GLenum target, GLuint index, GLuint *params)
@@ -71218,7 +71218,7 @@ static void REGAL_CALL emu_glGetProgramLocalParameterIuivNV(GLenum target, GLuin
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetProgramLocalParameterIuivNV)(target, index, params);
+  _next->glGetProgramLocalParameterIuivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramEnvParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
@@ -71258,7 +71258,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4iNV(GLenum target, GLuint inde
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameterI4iNV)(target, index, x, y, z, w);
+  _next->glProgramEnvParameterI4iNV(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramEnvParameterI4ivNV(GLenum target, GLuint index, const GLint *params)
@@ -71298,7 +71298,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4ivNV(GLenum target, GLuint ind
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameterI4ivNV)(target, index, params);
+  _next->glProgramEnvParameterI4ivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramEnvParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
@@ -71338,7 +71338,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4uiNV(GLenum target, GLuint ind
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameterI4uiNV)(target, index, x, y, z, w);
+  _next->glProgramEnvParameterI4uiNV(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramEnvParameterI4uivNV(GLenum target, GLuint index, const GLuint *params)
@@ -71378,7 +71378,7 @@ static void REGAL_CALL emu_glProgramEnvParameterI4uivNV(GLenum target, GLuint in
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParameterI4uivNV)(target, index, params);
+  _next->glProgramEnvParameterI4uivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramEnvParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params)
@@ -71418,7 +71418,7 @@ static void REGAL_CALL emu_glProgramEnvParametersI4ivNV(GLenum target, GLuint in
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParametersI4ivNV)(target, index, count, params);
+  _next->glProgramEnvParametersI4ivNV(target, index, count, params);
 }
 
 static void REGAL_CALL emu_glProgramEnvParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params)
@@ -71458,7 +71458,7 @@ static void REGAL_CALL emu_glProgramEnvParametersI4uivNV(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramEnvParametersI4uivNV)(target, index, count, params);
+  _next->glProgramEnvParametersI4uivNV(target, index, count, params);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
@@ -71498,7 +71498,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4iNV(GLenum target, GLuint in
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameterI4iNV)(target, index, x, y, z, w);
+  _next->glProgramLocalParameterI4iNV(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameterI4ivNV(GLenum target, GLuint index, const GLint *params)
@@ -71538,7 +71538,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4ivNV(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameterI4ivNV)(target, index, params);
+  _next->glProgramLocalParameterI4ivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
@@ -71578,7 +71578,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4uiNV(GLenum target, GLuint i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameterI4uiNV)(target, index, x, y, z, w);
+  _next->glProgramLocalParameterI4uiNV(target, index, x, y, z, w);
 }
 
 static void REGAL_CALL emu_glProgramLocalParameterI4uivNV(GLenum target, GLuint index, const GLuint *params)
@@ -71618,7 +71618,7 @@ static void REGAL_CALL emu_glProgramLocalParameterI4uivNV(GLenum target, GLuint 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParameterI4uivNV)(target, index, params);
+  _next->glProgramLocalParameterI4uivNV(target, index, params);
 }
 
 static void REGAL_CALL emu_glProgramLocalParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params)
@@ -71658,7 +71658,7 @@ static void REGAL_CALL emu_glProgramLocalParametersI4ivNV(GLenum target, GLuint 
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParametersI4ivNV)(target, index, count, params);
+  _next->glProgramLocalParametersI4ivNV(target, index, count, params);
 }
 
 static void REGAL_CALL emu_glProgramLocalParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params)
@@ -71698,7 +71698,7 @@ static void REGAL_CALL emu_glProgramLocalParametersI4uivNV(GLenum target, GLuint
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glProgramLocalParametersI4uivNV)(target, index, count, params);
+  _next->glProgramLocalParametersI4uivNV(target, index, count, params);
 }
 
 // GL_NV_gpu_shader5
@@ -71767,7 +71767,7 @@ static void REGAL_CALL emu_glTexImage2DMultisampleCoverageNV(GLenum target, GLsi
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexImage2DMultisampleCoverageNV)(target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
+  _next->glTexImage2DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
 }
 
 static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
@@ -71804,7 +71804,7 @@ static void REGAL_CALL emu_glTexImage3DMultisampleCoverageNV(GLenum target, GLsi
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexImage3DMultisampleCoverageNV)(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
+  _next->glTexImage3DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
 }
 
 // GL_NV_transform_feedback
@@ -71858,7 +71858,7 @@ static void REGAL_CALL emu_glDeleteProgramsNV(GLsizei n, const GLuint *programs)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteProgramsNV)(n, programs);
+  _next->glDeleteProgramsNV(n, programs);
 }
 
 // GL_NV_video_capture
@@ -71945,7 +71945,7 @@ static void REGAL_CALL emu_glBindFramebufferOES(GLenum target, GLuint framebuffe
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glBindFramebufferOES)(target, framebuffer);
+      _next->glBindFramebufferOES(target, framebuffer);
       break;
     }
 
@@ -71990,7 +71990,7 @@ static void REGAL_CALL emu_glDeleteFramebuffersOES(GLsizei n, const GLuint *fram
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteFramebuffersOES)(n, framebuffers);
+  _next->glDeleteFramebuffersOES(n, framebuffers);
 }
 
 static void REGAL_CALL emu_glDeleteRenderbuffersOES(GLsizei n, const GLuint *renderbuffers)
@@ -72030,7 +72030,7 @@ static void REGAL_CALL emu_glDeleteRenderbuffersOES(GLsizei n, const GLuint *ren
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteRenderbuffersOES)(n, renderbuffers);
+  _next->glDeleteRenderbuffersOES(n, renderbuffers);
 }
 
 static void REGAL_CALL emu_glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
@@ -72060,7 +72060,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DOES(GLenum target, GLenum attac
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture2DOES)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+        _dispatch.glFramebufferTexture2DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
         return;
       }
       #endif
@@ -72069,7 +72069,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DOES(GLenum target, GLenum attac
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture2DOES)(target, attachment, textarget, texture, level);
+      _next->glFramebufferTexture2DOES(target, attachment, textarget, texture, level);
       break;
     }
 
@@ -72114,7 +72114,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DOES(GLenum target, GLenum attac
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 15;
-        _dispatch.call(&_dispatch.glFramebufferTexture3DOES)(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
+        _dispatch.glFramebufferTexture3DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
         return;
       }
       #endif
@@ -72123,7 +72123,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DOES(GLenum target, GLenum attac
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glFramebufferTexture3DOES)(target, attachment, textarget, texture, level, zoffset);
+      _next->glFramebufferTexture3DOES(target, attachment, textarget, texture, level, zoffset);
       break;
     }
 
@@ -72169,7 +72169,7 @@ static void REGAL_CALL emu_glBindVertexArrayOES(GLuint array)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glBindVertexArrayOES)(array);
+  _next->glBindVertexArrayOES(array);
 }
 
 static void REGAL_CALL emu_glDeleteVertexArraysOES(GLsizei n, const GLuint *arrays)
@@ -72209,7 +72209,7 @@ static void REGAL_CALL emu_glDeleteVertexArraysOES(GLsizei n, const GLuint *arra
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glDeleteVertexArraysOES)(n, arrays);
+  _next->glDeleteVertexArraysOES(n, arrays);
 }
 
 // GL_PGI_misc_hints
@@ -72234,7 +72234,7 @@ static void REGAL_CALL emu_glFogxv(GLenum pname, const GLfixed *params)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glFogxv)(pname, params);
+  _next->glFogxv(pname, params);
 }
 
 static void REGAL_CALL emu_glLightModelxv(GLenum pname, const GLfixed *params)
@@ -72245,7 +72245,7 @@ static void REGAL_CALL emu_glLightModelxv(GLenum pname, const GLfixed *params)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glLightModelxv)(pname, params);
+  _next->glLightModelxv(pname, params);
 }
 
 static void REGAL_CALL emu_glLightxv(GLenum light, GLenum pname, const GLfixed *params)
@@ -72256,7 +72256,7 @@ static void REGAL_CALL emu_glLightxv(GLenum light, GLenum pname, const GLfixed *
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glLightxv)(light, pname, params);
+  _next->glLightxv(light, pname, params);
 }
 
 static void REGAL_CALL emu_glLoadMatrixx(const GLfixed *m)
@@ -72267,7 +72267,7 @@ static void REGAL_CALL emu_glLoadMatrixx(const GLfixed *m)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glLoadMatrixx)(m);
+  _next->glLoadMatrixx(m);
 }
 
 static void REGAL_CALL emu_glMaterialxv(GLenum face, GLenum pname, const GLfixed *params)
@@ -72278,7 +72278,7 @@ static void REGAL_CALL emu_glMaterialxv(GLenum face, GLenum pname, const GLfixed
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMaterialxv)(face, pname, params);
+  _next->glMaterialxv(face, pname, params);
 }
 
 static void REGAL_CALL emu_glMultMatrixx(const GLfixed *m)
@@ -72289,7 +72289,7 @@ static void REGAL_CALL emu_glMultMatrixx(const GLfixed *m)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glMultMatrixx)(m);
+  _next->glMultMatrixx(m);
 }
 
 static void REGAL_CALL emu_glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params)
@@ -72300,7 +72300,7 @@ static void REGAL_CALL emu_glTexEnvxv(GLenum target, GLenum pname, const GLfixed
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexEnvxv)(target, pname, params);
+  _next->glTexEnvxv(target, pname, params);
 }
 
 // GL_REGAL_ES1_1_compatibility
@@ -72313,7 +72313,7 @@ static void REGAL_CALL emu_glClipPlanef(GLenum plane, const GLfloat *equation)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glClipPlanef)(plane, equation);
+  _next->glClipPlanef(plane, equation);
 }
 
 static void REGAL_CALL emu_glClipPlanex(GLenum plane, const GLfixed *equation)
@@ -72324,7 +72324,7 @@ static void REGAL_CALL emu_glClipPlanex(GLenum plane, const GLfixed *equation)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glClipPlanex)(plane, equation);
+  _next->glClipPlanex(plane, equation);
 }
 
 static void REGAL_CALL emu_glGetClipPlanef(GLenum pname, GLfloat *eqn)
@@ -72335,7 +72335,7 @@ static void REGAL_CALL emu_glGetClipPlanef(GLenum pname, GLfloat *eqn)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetClipPlanef)(pname, eqn);
+  _next->glGetClipPlanef(pname, eqn);
 }
 
 static void REGAL_CALL emu_glGetClipPlanex(GLenum pname, GLfixed *eqn)
@@ -72346,7 +72346,7 @@ static void REGAL_CALL emu_glGetClipPlanex(GLenum pname, GLfixed *eqn)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetClipPlanex)(pname, eqn);
+  _next->glGetClipPlanex(pname, eqn);
 }
 
 static void REGAL_CALL emu_glGetFixedv(GLenum pname, GLfixed *params)
@@ -72357,7 +72357,7 @@ static void REGAL_CALL emu_glGetFixedv(GLenum pname, GLfixed *params)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetFixedv)(pname, params);
+  _next->glGetFixedv(pname, params);
 }
 
 static void REGAL_CALL emu_glGetLightxv(GLenum light, GLenum pname, GLfixed *params)
@@ -72402,7 +72402,7 @@ static void REGAL_CALL emu_glGetLightxv(GLenum light, GLenum pname, GLfixed *par
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetLightxv)(light, pname, params);
+      _next->glGetLightxv(light, pname, params);
       break;
     }
 
@@ -72452,7 +72452,7 @@ static void REGAL_CALL emu_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *p
     {
       DispatchTableGL *_next = _dispatch.next();
       RegalAssert(_next);
-      _next->call(&_next->glGetMaterialxv)(face, pname, params);
+      _next->glGetMaterialxv(face, pname, params);
       break;
     }
 
@@ -72468,7 +72468,7 @@ static void REGAL_CALL emu_glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *para
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetTexEnvxv)(env, pname, params);
+  _next->glGetTexEnvxv(env, pname, params);
 }
 
 static void REGAL_CALL emu_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params)
@@ -72479,7 +72479,7 @@ static void REGAL_CALL emu_glGetTexParameterxv(GLenum target, GLenum pname, GLfi
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glGetTexParameterxv)(target, pname, params);
+  _next->glGetTexParameterxv(target, pname, params);
 }
 
 static void REGAL_CALL emu_glPointParameterx(GLenum pname, GLfixed param)
@@ -72490,7 +72490,7 @@ static void REGAL_CALL emu_glPointParameterx(GLenum pname, GLfixed param)
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPointParameterx)(pname, param);
+  _next->glPointParameterx(pname, param);
 }
 
 static void REGAL_CALL emu_glPointParameterxv(GLenum pname, const GLfixed *params)
@@ -72501,7 +72501,7 @@ static void REGAL_CALL emu_glPointParameterxv(GLenum pname, const GLfixed *param
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glPointParameterxv)(pname, params);
+  _next->glPointParameterxv(pname, params);
 }
 
 static void REGAL_CALL emu_glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params)
@@ -72512,7 +72512,7 @@ static void REGAL_CALL emu_glTexParameterxv(GLenum target, GLenum pname, const G
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexParameterxv)(target, pname, params);
+  _next->glTexParameterxv(target, pname, params);
 }
 
 // GL_REGAL_log
@@ -72565,7 +72565,7 @@ static void REGAL_CALL emu_glTexImage4DSGIS(GLenum target, GLint level, GLenum i
 
   DispatchTableGL *_next = _dispatch.next();
   RegalAssert(_next);
-  _next->call(& _next->glTexImage4DSGIS)(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
+  _next->glTexImage4DSGIS(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
 }
 
 // GL_SGIS_texture_color_mask

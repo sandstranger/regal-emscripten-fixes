@@ -502,8 +502,8 @@ struct Dsa
 
         if (mask&GL_CLIENT_PIXEL_STORE_BIT)
         {
-            PFNGLPIXELSTOREIPROC pixelStorei = tbl.call(&tbl.glPixelStorei);
-            PFNGLPIXELSTOREFPROC pixelStoref = tbl.call(&tbl.glPixelStoref);
+            PFNGLPIXELSTOREIPROC pixelStorei = tbl.glPixelStorei;
+            PFNGLPIXELSTOREFPROC pixelStoref = tbl.glPixelStoref;
 
             RegalAssert(pixelStorei);
             RegalAssert(pixelStoref);
@@ -548,26 +548,26 @@ struct Dsa
             // FIXME: need number of texture units
             int maxTextureUnit = 7;
             for( int i = maxTextureUnit; i >= 0; i-- ) {
-                tbl.call(&tbl.glClientActiveTexture)( GL_TEXTURE0 + i );
-                tbl.call(&tbl.glDisableClientState) ( GL_TEXTURE_COORD_ARRAY );
+                tbl.glClientActiveTexture( GL_TEXTURE0 + i );
+                tbl.glDisableClientState( GL_TEXTURE_COORD_ARRAY );
             }
             for( int i = 0; i < 16; i++ ) {
-                tbl.call(&tbl.glDisableVertexAttribArray)( i );
-                tbl.call(&tbl.glVertexAttribPointer)     ( i, 4, GL_FLOAT, GL_FALSE, 0, NULL );
+                tbl.glDisableVertexAttribArray( i );
+                tbl.glVertexAttribPointer( i, 4, GL_FLOAT, GL_FALSE, 0, NULL );
             }
-            tbl.call(&tbl.glDisableClientState)   ( GL_VERTEX_ARRAY );
-            tbl.call(&tbl.glDisableClientState)   ( GL_NORMAL_ARRAY );
-            tbl.call(&tbl.glDisableClientState)   ( GL_FOG_COORD_ARRAY );
-            tbl.call(&tbl.glDisableClientState)   ( GL_COLOR_ARRAY );
-            tbl.call(&tbl.glDisableClientState)   ( GL_SECONDARY_COLOR_ARRAY );
-            tbl.call(&tbl.glDisableClientState)   ( GL_INDEX_ARRAY );
-            tbl.call(&tbl.glDisableClientState)   ( GL_EDGE_FLAG_ARRAY );
-            tbl.call(&tbl.glVertexPointer)        ( 4, GL_FLOAT, 0, NULL );
-            tbl.call(&tbl.glNormalPointer)        ( GL_FLOAT, 0, NULL );
-            tbl.call(&tbl.glFogCoordPointer)      ( GL_FLOAT, 0, NULL );
-            tbl.call(&tbl.glColorPointer)         ( 4, GL_FLOAT, 0, NULL );
-            tbl.call(&tbl.glSecondaryColorPointer)( 3, GL_FLOAT, 0, NULL );
-            tbl.call(&tbl.glIndexPointer)         ( GL_FLOAT, 0, NULL );
+            tbl.glDisableClientState( GL_VERTEX_ARRAY );
+            tbl.glDisableClientState( GL_NORMAL_ARRAY );
+            tbl.glDisableClientState( GL_FOG_COORD_ARRAY );
+            tbl.glDisableClientState( GL_COLOR_ARRAY );
+            tbl.glDisableClientState( GL_SECONDARY_COLOR_ARRAY );
+            tbl.glDisableClientState( GL_INDEX_ARRAY );
+            tbl.glDisableClientState( GL_EDGE_FLAG_ARRAY );
+            tbl.glVertexPointer( 4, GL_FLOAT, 0, NULL );
+            tbl.glNormalPointer( GL_FLOAT, 0, NULL );
+            tbl.glFogCoordPointer( GL_FLOAT, 0, NULL );
+            tbl.glColorPointer( 4, GL_FLOAT, 0, NULL );
+            tbl.glSecondaryColorPointer( 3, GL_FLOAT, 0, NULL );
+            tbl.glIndexPointer( GL_FLOAT, 0, NULL );
         }
     }
 

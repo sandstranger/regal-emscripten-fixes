@@ -23,7 +23,7 @@ formulae = {
 // TODO - we need to query ContextInfo and
 //        EmulationInfo here instead.
 
-ret = _next->call(&_next->${m1}${m2})(${arg0});
+ret = _next->${m1}${m2}(${arg0});
 if (!ret)
   return NULL;
 

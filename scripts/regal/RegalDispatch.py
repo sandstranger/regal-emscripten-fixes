@@ -105,7 +105,7 @@ ${API_DISPATCH_TABLE_DEFINE}
   // or deeper in the stack as necessary.
 
   template<typename T, typename F>
-  F call(T &table, F *func)
+  F getProc(T &table, F *func)
   {
     RegalAssert(func);
     if (table._enabled && *func)
@@ -149,11 +149,11 @@ struct DispatchTable
 struct DispatchTableGL : public DispatchTable, Dispatch::GL
 {
 public:
-  template<typename T> T call(T *func) { return reinterpret_cast<T>(doCall(reinterpret_cast<void **>(func))); }
+  template<typename T> T getProc(T *func) { return reinterpret_cast<T>(doCall(reinterpret_cast<void **>(func))); }
   inline DispatchTableGL *next()       { return reinterpret_cast<DispatchTableGL *>(DispatchTable::_next);    }
 
 private:
-  void *doCall(void **func);  // inlined Dispatch::call consolidated to one instance for DispatchTableGL
+  void *doCall(void **func);  // inlined Dispatch::getProc consolidated to one instance for DispatchTableGL
 };
 
 struct DispatchTableGlobal : public DispatchTable, Dispatch::Global
@@ -161,11 +161,11 @@ struct DispatchTableGlobal : public DispatchTable, Dispatch::Global
   DispatchTableGlobal();
   ~DispatchTableGlobal();
 
-  template<typename T> T call(T *func) { return reinterpret_cast<T>(doCall(reinterpret_cast<void **>(func)));  }
+  template<typename T> T getProc(T *func) { return reinterpret_cast<T>(doCall(reinterpret_cast<void **>(func)));  }
   inline DispatchTableGlobal *next()   { return reinterpret_cast<DispatchTableGlobal *>(DispatchTable::_next); }
 
 private:
-  void *doCall(void **func);  // inlined Dispatch::call consolidated to one instance for DispatchTableGlobal
+  void *doCall(void **func);  // inlined Dispatch::getProc consolidated to one instance for DispatchTableGlobal
 };
 
 extern DispatchTableGlobal dispatchTableGlobal;

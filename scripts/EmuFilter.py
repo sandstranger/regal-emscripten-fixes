@@ -136,9 +136,9 @@ if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
   return;
 GLfloat newparam;
 if (_context->filt->FilterTexParameter(*_context, ${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}), newparam))
-  _next->call(&_next->glTexParameterf)(${arg0}, ${arg1}, newparam);
+  _next->glTexParameterf(${arg0}, ${arg1}, newparam);
 else
-  _next->call(&_next->glTexParameter${m1})(${arg0plus});
+  _next->glTexParameter${m1}(${arg0plus});
 return;'''
   },
 
@@ -153,9 +153,9 @@ if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
   return;
 GLfloat newparam;
 if (${arg2} && _context->filt->FilterTexParameter(*_context, ${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}[0]), newparam))
-  _next->call(&_next->glTexParameterf)(${arg0}, ${arg1}, newparam);
+  _next->glTexParameterf(${arg0}, ${arg1}, newparam);
 else
-  _next->call(&_next->glTexParameter${m1}v)(${arg0plus});
+  _next->glTexParameter${m1}v(${arg0plus});
 return;'''
   },
 
@@ -169,8 +169,8 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  if (_context->info->gl_nv_framebuffer_blit)  return _next->call(&_next->${m0}NV)(${arg0plus});',
-       '  if (_context->info->gl_ext_framebuffer_blit) return _next->call(&_next->${m0}EXT)(${arg0plus});',
+       '  if (_context->info->gl_nv_framebuffer_blit)  return _next->${m0}NV(${arg0plus});',
+       '  if (_context->info->gl_ext_framebuffer_blit) return _next->${m0}EXT(${arg0plus});',
        '}'
      ]
   },
@@ -186,7 +186,7 @@ return;'''
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
        '  if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)',
-       '    return _next->call(&_next->${m0})(${arg0plus});',
+       '    return _next->${m0}(${arg0plus});',
        '}'
      ]
   },
@@ -200,7 +200,7 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  return _next->call(&_next->glDrawElements)(${arg0}, ${arg3plus});',
+       '  return _next->glDrawElements(${arg0}, ${arg3plus});',
        '}'
      ]
   },
@@ -218,7 +218,7 @@ return;'''
        '  {',
        '    DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '    RegalAssert(_next);',
-       '    return _next->call(&_next->glDrawElements)(${arg0}, ${arg3}, ${arg4}, ${arg5});',
+       '    return _next->glDrawElements(${arg0}, ${arg3}, ${arg4}, ${arg5});',
        '  }',
        '  else',
        '  {',
@@ -245,7 +245,7 @@ return;'''
        '  RegalAssert(_next);',
        '  if (_context->info->gl_nv_draw_buffers)',
        '  {',
-       '    _next->call(&_next->${name}NV)(${arg0plus});',
+       '    _next->${name}NV(${arg0plus});',
        '    return;',
        '  }',
        '}'
@@ -260,7 +260,7 @@ return;'''
        '{',
        '  DispatchTableGL &_table = _context->dispatcher.emulation;',
        '  _context->emuLevel++;',
-       '  _table.call(&_table.glDrawBuffers)(${arg0plus});',
+       '  _table.glDrawBuffers(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -274,7 +274,7 @@ return;'''
        '{',
        '  DispatchTableGL &_table = _context->dispatcher.emulation;',
        '  _context->emuLevel++;',
-       '  _table.call(&_table.glDrawBuffers)(${arg0plus});',
+       '  _table.glDrawBuffers(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -308,7 +308,7 @@ return;'''
 #           '{',
 #           '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
 #           '  RegalAssert(_next);',
-#           '  return _next->call(&_next->glCreateShader)(${arg0plus});',
+#           '  return _next->glCreateShader(${arg0plus});',
 #           '}'
 #         ]
 #    },
@@ -320,7 +320,7 @@ return;'''
       '{',
       '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
       '  RegalAssert(_next);',
-      '  return _next->call(&_next->glCreateProgram)(${arg0plus});',
+      '  return _next->glCreateProgram(${arg0plus});',
       '}'
     ]
   },
@@ -334,7 +334,7 @@ return;'''
 #           '{',
 #           '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
 #           '  RegalAssert(_next);',
-#           '  _next->call(&_next->glShaderSource)(${arg0plus});',
+#           '  _next->glShaderSource(${arg0plus});',
 #           '  return;',
 #           '}'
 #         ]
@@ -347,7 +347,7 @@ return;'''
       '{',
       '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
       '  RegalAssert(_next);',
-      '  _next->call(&_next->glCompileShader)(${arg0plus});',
+      '  _next->glCompileShader(${arg0plus});',
       '  return;',
       '}'
     ]
@@ -360,7 +360,7 @@ return;'''
       '{',
       '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
       '  RegalAssert(_next);',
-      '  _next->call(&_next->glActiveTexture)(${arg0plus});',
+      '  _next->glActiveTexture(${arg0plus});',
       '  return;',
       '}'
     ]
@@ -373,7 +373,7 @@ return;'''
       '{',
       '  DispatchTableGL &_table = _context->dispatcher.emulation;',
       '  _context->emuLevel++;',
-      '  _table.call(&_table.glClientActiveTexture)(${arg0plus});',
+      '  _table.glClientActiveTexture(${arg0plus});',
       '  return;',
       '}'
     ]
@@ -386,7 +386,7 @@ return;'''
       '{',
       '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
       '  RegalAssert(_next);',
-      '  _next->call(&_next->glAttachShader)(${arg0plus});',
+      '  _next->glAttachShader(${arg0plus});',
       '  return;',
       '}'
     ]
@@ -399,7 +399,7 @@ return;'''
       '{',
       '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
       '  RegalAssert(_next);',
-      '  _next->call(&_next->glBindAttribLocation)(${arg0plus});',
+      '  _next->glBindAttribLocation(${arg0plus});',
       '  return;',
       '}'
     ]
@@ -412,7 +412,7 @@ return;'''
       '{',
       '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
       '  RegalAssert(_next);',
-      '  return _next->call(&_next->glGetUniformLocation)(${arg0plus});',
+      '  return _next->glGetUniformLocation(${arg0plus});',
       '}'
     ]
   },
@@ -424,7 +424,7 @@ return;'''
       '{',
       '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
       '  RegalAssert(_next);',
-      '  _next->call(&_next->glUniform1i)(${arg0plus});',
+      '  _next->glUniform1i(${arg0plus});',
       '  return;',
       '}'
     ]
@@ -437,10 +437,10 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  if (_next->call(&_next->glIsProgram)(obj))',
-       '    _next->call(&_next->glGetProgramiv)(${arg0plus});',
+       '  if (_next->glIsProgram(obj))',
+       '    _next->glGetProgramiv(${arg0plus});',
        '  else',
-       '    _next->call(&_next->glGetShaderiv)(${arg0plus});',
+       '    _next->glGetShaderiv(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -453,10 +453,10 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  if (_next->call(&_next->glIsProgram)(obj))',
-       '    _next->call(&_next->glGetProgramInfoLog)(${arg0plus});',
+       '  if (_next->glIsProgram(obj))',
+       '    _next->glGetProgramInfoLog(${arg0plus});',
        '  else',
-       '    _next->call(&_next->glGetShaderInfoLog)(${arg0plus});',
+       '    _next->glGetShaderInfoLog(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -471,7 +471,7 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  _next->call(&_next->glBlendEquation)(${arg0plus});',
+       '  _next->glBlendEquation(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -486,7 +486,7 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  _next->call(&_next->glBlendColor)(${arg0plus});',
+       '  _next->glBlendColor(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -502,7 +502,7 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  return _next->call(&_next->gl${m1}BufferOES)(${arg0plus});',
+       '  return _next->gl${m1}BufferOES(${arg0plus});',
        '}'
      ]
   },
@@ -514,7 +514,7 @@ return;'''
        '{',
        '  DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '  RegalAssert(_next);',
-       '  _next->call(&_next->glBufferData)(${arg0plus});',
+       '  _next->glBufferData(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -549,7 +549,7 @@ return;'''
        'DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        'RegalAssert(_next);',
        'if (_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
-       '  _next->call(&_next->glFramebuffer${m1})(${arg0plus});',
+       '  _next->glFramebuffer${m1}(${arg0plus});',
        'return;'
      ]
   },
@@ -565,7 +565,7 @@ return;'''
        'if (!_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
        '  *${arg3} = 0;',
        'else',
-       '  _next->call(&_next->glGetFramebufferAttachmentParameteriv)(${arg0plus});',
+       '  _next->glGetFramebufferAttachmentParameteriv(${arg0plus});',
        'return;'
      ]
   },
@@ -589,7 +589,7 @@ return;'''
        '{',
        '  DispatchTableGL &_table = _context->dispatcher.emulation;',
        '  _context->emuLevel++;',
-       '  _table.call(&_table.gl${m1})(${arg0plus});',
+       '  _table.gl${m1}(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -602,7 +602,7 @@ return;'''
        '{',
        '  DispatchTableGL &_table = _context->dispatcher.emulation;',
        '  _context->emuLevel++;',
-       '  return _table.call(&_table.gl${m1})(${arg0plus});',
+       '  return _table.gl${m1}(${arg0plus});',
        '}'
      ]
   },
@@ -616,7 +616,7 @@ return;'''
        '{',
        '  DispatchTableGL &_table = _context->dispatcher.emulation;',
        '  _context->emuLevel++;',
-       '  _table.call(&_table.glBlitFramebuffer)(${arg0plus});',
+       '  _table.glBlitFramebuffer(${arg0plus});',
        '  return;',
        '}'
      ]
@@ -637,9 +637,9 @@ return;'''
        '  return ${dummyretval};',
        '}',
        'if (_context->isES2() && _context->info->gl_nv_read_buffer)',
-       '  _next->call(&_next->glReadBufferNV)(${arg0plus});',
+       '  _next->glReadBufferNV(${arg0plus});',
        'else',
-       '  _next->call(&_next->glReadBuffer)(${arg0plus});',
+       '  _next->glReadBuffer(${arg0plus});',
        'return;'
      ]
   },
@@ -662,7 +662,7 @@ return;'''
        '  {',
        '    DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '    RegalAssert(_next);',
-       '    _next->call(&_next->glColorMask)(${arg1plus});',
+       '    _next->glColorMask(${arg1plus});',
        '  }',
        '  return;',
        '}'
@@ -678,7 +678,7 @@ return;'''
        '  {',
        '    DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '    RegalAssert(_next);',
-       '    _next->call(&_next->glGetBooleanv)(${arg0},${arg2});',
+       '    _next->glGetBooleanv(${arg0},${arg2});',
        '  }',
        '  return;',
        '}'
@@ -694,7 +694,7 @@ return;'''
        '  {',
        '    DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '    RegalAssert(_next);',
-       '    _next->call(&_next->glGetIntegerv)(${arg0},${arg2});',
+       '    _next->glGetIntegerv(${arg0},${arg2});',
        '  }',
        '  return;',
        '}'
@@ -710,7 +710,7 @@ return;'''
        '  {',
        '    DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '    RegalAssert(_next);',
-       '    _next->call(&_next->glEnable)(${arg0});',
+       '    _next->glEnable(${arg0});',
        '  }',
        '  return;',
        '}'
@@ -726,7 +726,7 @@ return;'''
        '  {',
        '    DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '    RegalAssert(_next);',
-       '    _next->call(&_next->glDisable)(${arg0});',
+       '    _next->glDisable(${arg0});',
        '  }',
        '  return;',
        '}'
@@ -742,7 +742,7 @@ return;'''
        '  {',
        '    DispatchTableGL *_next = _context->dispatcher.emulation.next();',
        '    RegalAssert(_next);',
-       '    return _next->call(&_next->glIsEnabled)(${arg0});',
+       '    return _next->glIsEnabled(${arg0});',
        '  }',
        '  return GL_FALSE;',
        '}'

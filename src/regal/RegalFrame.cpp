@@ -105,7 +105,7 @@ void Frame::capture(RegalContext &context,const bool frameTerminator)
 
     GLint viewport[4];
     memset(viewport,0,sizeof(viewport));
-    _next->call(&_next->glGetIntegerv)(GL_VIEWPORT, viewport);
+    _next->glGetIntegerv(GL_VIEWPORT, viewport);
 
     const GLint &width  = viewport[2];
     const GLint &height = viewport[3];
@@ -120,7 +120,7 @@ void Frame::capture(RegalContext &context,const bool frameTerminator)
         GLbyte *buffer = (GLbyte *) calloc(bufferSize,1);
 
 //       _next->call(&_next->glReadBuffer)(GL_FRONT);
-       _next->call(&_next->glReadPixels)(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
+       _next->glReadPixels(0, 0, width, height, GL_RGBA, GL_UNSIGNED_BYTE, buffer);
 
         // Do once we have the pixels, could we do the rest in another
         // thread?

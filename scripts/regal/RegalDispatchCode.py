@@ -131,7 +131,7 @@ def generateDispatchCode(apis, args):
 
         if not typeIsVoid(rType):
           code += '%s _ret = '%(rType)
-        code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+        code += '_next->%s(%s);\n' % ( name, callParams )
 
         # comment-out calls to functions flagged as trace = False
 

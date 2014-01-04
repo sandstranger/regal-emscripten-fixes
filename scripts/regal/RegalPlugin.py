@@ -107,7 +107,7 @@ def generatePluginSource(apis, args):
         c += '  return '
       else:
         c += '  '
-      c += '_next->call(&_next->%s)(%s);\n}\n' % ( name, callParams )
+      c += '_next->%s(%s);\n}\n' % ( name, callParams )
 
       tmp.append( (category, indent(c,'  ') ) )
 

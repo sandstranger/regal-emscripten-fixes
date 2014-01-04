@@ -63,18 +63,18 @@ def apiErrorFuncDefineCode(apis, args):
       if name != 'glGetError':
         code += '  GLenum _error = GL_NO_ERROR;\n'
         code += '  if (!_context->err.inBeginEnd)\n'
-        code += '    _error = _next->call(&_next->glGetError)();\n'
+        code += '    _error = _next->glGetError();\n'
         code += '  RegalAssert(_error==GL_NO_ERROR);\n'
         code += '  '
         if name == 'glBegin':
           code += '_context->err.inBeginEnd = true;\n'
         if not typeIsVoid(rType):
           code += '%s ret = ' % rType
-        code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+        code += '_next->%s(%s);\n' % ( name, callParams )
         if name == 'glEnd':
           code += '_context->err.inBeginEnd = false;\n'
         code += '  if (!_context->err.inBeginEnd) {\n'
-        code += '    _error = _next->call(&_next->glGetError)();\n'
+        code += '    _error = _next->glGetError();\n'
         code += '    if (_error!=GL_NO_ERROR) {\n'
         code += '      Error("%s : ",Token::GLerrorToString(_error));\n'%(name)
         code += '      #if REGAL_BREAK\n'
@@ -87,7 +87,7 @@ def apiErrorFuncDefineCode(apis, args):
         if not typeIsVoid(rType):
           code += 'return ret;\n'
       else:
-        code += '  GLenum error = _next->call(&_next->glGetError)();\n'
+        code += '  GLenum error = _next->glGetError();\n'
         code += '  return error;\n'
       code += '}\n\n'
 

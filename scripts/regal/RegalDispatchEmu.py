@@ -229,13 +229,13 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '        '
                 if not typeIsVoid(rType):
                     code += 'return '
-                code += '_next->call(&_next->%s)(%s);\n' % ( es2Name, es2Params )
+                code += '_next->%s(%s);\n' % ( es2Name, es2Params )
                 code += '      else\n  '
 
               code += '      '
               if not typeIsVoid(rType):
                   code += 'return '
-              code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+              code += '_next->%s(%s);\n' % ( name, callParams )
 
               code += '      break;\n'
               code += '    }\n\n'
@@ -280,12 +280,12 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '    '
                 if not typeIsVoid(rType):
                     code += 'return '
-                code += '_next->call(& _next->%s)(%s);\n' % ( es2Name, es2Params )
+                code += '_next->%s(%s);\n' % ( es2Name, es2Params )
                 code += '   else\n     '
 
               if not typeIsVoid(rType):
                   code += 'return '
-              code += '_next->call(& _next->%s)(%s);\n' % ( name, callParams )
+              code += '_next->%s(%s);\n' % ( name, callParams )
             code += '}\n\n'
 
         if api.name in cond:

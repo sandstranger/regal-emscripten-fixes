@@ -97,17 +97,17 @@ typedef ::boost::print::string_list<std::string> string_list;
 inline static void setEnable(DispatchTableGL &dt, const GLenum cap, const GLboolean enable)
 {
   if (enable)
-    dt.call(&dt.glEnable)(cap);
+    dt.glEnable(cap);
   else
-    dt.call(&dt.glDisable)(cap);
+    dt.glDisable(cap);
 }
 
 inline static void setEnablei(DispatchTableGL &dt, const GLenum cap, const GLuint index, const GLboolean enable)
 {
   if (enable)
-    dt.call(&dt.glEnablei)(cap,index);
+    dt.glEnablei(cap,index);
   else
-    dt.call(&dt.glDisablei)(cap,index);
+    dt.glDisablei(cap,index);
 }
 
 inline static void enableToString(string_list &tmp, const GLboolean b, const char *bEnum, const char *delim = "\n")
@@ -399,90 +399,90 @@ struct Enable
   inline Enable &get(RegalContext &ctx)
   {
     DispatchTableGL &dt = ctx.dispatcher.emulation;
-    alphaTest = dt.call(&dt.glIsEnabled)(GL_ALPHA_TEST);
-    autoNormal = dt.call(&dt.glIsEnabled)(GL_AUTO_NORMAL);
+    alphaTest = dt.glIsEnabled(GL_ALPHA_TEST);
+    autoNormal = dt.glIsEnabled(GL_AUTO_NORMAL);
     size_t n = array_size( blend );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( blend, ii );
-      blend[ii] = dt.call(&dt.glIsEnabledi)(GL_BLEND, static_cast<GLuint>(ii));
+      blend[ii] = dt.glIsEnabledi(GL_BLEND, static_cast<GLuint>(ii));
     }
-    dt.call(&dt.glGetIntegerv)(GL_CLAMP_FRAGMENT_COLOR,reinterpret_cast<GLint *>(&clampFragmentColor));
-    dt.call(&dt.glGetIntegerv)(GL_CLAMP_READ_COLOR,reinterpret_cast<GLint *>(&clampReadColor));
-    dt.call(&dt.glGetIntegerv)(GL_CLAMP_VERTEX_COLOR,reinterpret_cast<GLint *>(&clampVertexColor));
+    dt.glGetIntegerv(GL_CLAMP_FRAGMENT_COLOR,reinterpret_cast<GLint *>(&clampFragmentColor));
+    dt.glGetIntegerv(GL_CLAMP_READ_COLOR,reinterpret_cast<GLint *>(&clampReadColor));
+    dt.glGetIntegerv(GL_CLAMP_VERTEX_COLOR,reinterpret_cast<GLint *>(&clampVertexColor));
     n = array_size( clipDistance );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( clipDistance, ii );
-      clipDistance[ii] = dt.call(&dt.glIsEnabled)(static_cast<GLenum>(GL_CLIP_DISTANCE0+ii));
+      clipDistance[ii] = dt.glIsEnabled(static_cast<GLenum>(GL_CLIP_DISTANCE0+ii));
     }
-    colorLogicOp  = dt.call(&dt.glIsEnabled)(GL_COLOR_LOGIC_OP);
-    colorMaterial = dt.call(&dt.glIsEnabled)(GL_COLOR_MATERIAL);
-    colorSum = dt.call(&dt.glIsEnabled)(GL_COLOR_SUM);
-    colorTable = dt.call(&dt.glIsEnabled)(GL_COLOR_TABLE);
-    convolution1d = dt.call(&dt.glIsEnabled)(GL_CONVOLUTION_1D);
-    convolution2d = dt.call(&dt.glIsEnabled)(GL_CONVOLUTION_2D);
-    cullFace = dt.call(&dt.glIsEnabled)(GL_CULL_FACE);
-    depthClamp = dt.call(&dt.glIsEnabled)(GL_DEPTH_CLAMP);
-    depthTest = dt.call(&dt.glIsEnabled)(GL_DEPTH_TEST);
-    dither = dt.call(&dt.glIsEnabled)(GL_DITHER);
-    fog = dt.call(&dt.glIsEnabled)(GL_FOG);
-    framebufferSRGB = dt.call(&dt.glIsEnabled)(GL_FRAMEBUFFER_SRGB);
-    histogram = dt.call(&dt.glIsEnabled)(GL_HISTOGRAM);
-    indexLogicOp = dt.call(&dt.glIsEnabled)(GL_INDEX_LOGIC_OP);
+    colorLogicOp  = dt.glIsEnabled(GL_COLOR_LOGIC_OP);
+    colorMaterial = dt.glIsEnabled(GL_COLOR_MATERIAL);
+    colorSum = dt.glIsEnabled(GL_COLOR_SUM);
+    colorTable = dt.glIsEnabled(GL_COLOR_TABLE);
+    convolution1d = dt.glIsEnabled(GL_CONVOLUTION_1D);
+    convolution2d = dt.glIsEnabled(GL_CONVOLUTION_2D);
+    cullFace = dt.glIsEnabled(GL_CULL_FACE);
+    depthClamp = dt.glIsEnabled(GL_DEPTH_CLAMP);
+    depthTest = dt.glIsEnabled(GL_DEPTH_TEST);
+    dither = dt.glIsEnabled(GL_DITHER);
+    fog = dt.glIsEnabled(GL_FOG);
+    framebufferSRGB = dt.glIsEnabled(GL_FRAMEBUFFER_SRGB);
+    histogram = dt.glIsEnabled(GL_HISTOGRAM);
+    indexLogicOp = dt.glIsEnabled(GL_INDEX_LOGIC_OP);
     n = array_size( light );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( light, ii );
-      light[ii] = dt.call(&dt.glIsEnabled)(static_cast<GLenum>(GL_LIGHT0+ii));
+      light[ii] = dt.glIsEnabled(static_cast<GLenum>(GL_LIGHT0+ii));
     }
-    lighting = dt.call(&dt.glIsEnabled)(GL_LIGHTING);
-    lineSmooth = dt.call(&dt.glIsEnabled)(GL_LINE_SMOOTH);
-    lineStipple = dt.call(&dt.glIsEnabled)(GL_LINE_STIPPLE);
-    map1Color4 = dt.call(&dt.glIsEnabled)(GL_MAP1_COLOR_4);
-    map1Index = dt.call(&dt.glIsEnabled)(GL_MAP1_INDEX);
-    map1Normal = dt.call(&dt.glIsEnabled)(GL_MAP1_NORMAL);
-    map1TextureCoord1 = dt.call(&dt.glIsEnabled)(GL_MAP1_TEXTURE_COORD_1);
-    map1TextureCoord2 = dt.call(&dt.glIsEnabled)(GL_MAP1_TEXTURE_COORD_2);
-    map1TextureCoord3 = dt.call(&dt.glIsEnabled)(GL_MAP1_TEXTURE_COORD_3);
-    map1TextureCoord4 = dt.call(&dt.glIsEnabled)(GL_MAP1_TEXTURE_COORD_4);
-    map1Vertex3 = dt.call(&dt.glIsEnabled)(GL_MAP1_VERTEX_3);
-    map1Vertex4 = dt.call(&dt.glIsEnabled)(GL_MAP1_VERTEX_4);
-    map2Color4 = dt.call(&dt.glIsEnabled)(GL_MAP2_COLOR_4);
-    map2Index = dt.call(&dt.glIsEnabled)(GL_MAP2_INDEX);
-    map2Normal = dt.call(&dt.glIsEnabled)(GL_MAP2_NORMAL);
-    map2TextureCoord1 = dt.call(&dt.glIsEnabled)(GL_MAP2_TEXTURE_COORD_1);
-    map2TextureCoord2 = dt.call(&dt.glIsEnabled)(GL_MAP2_TEXTURE_COORD_2);
-    map2TextureCoord3 = dt.call(&dt.glIsEnabled)(GL_MAP2_TEXTURE_COORD_3);
-    map2TextureCoord4 = dt.call(&dt.glIsEnabled)(GL_MAP2_TEXTURE_COORD_4);
-    map2Vertex3 = dt.call(&dt.glIsEnabled)(GL_MAP2_VERTEX_3);
-    map2Vertex4 = dt.call(&dt.glIsEnabled)(GL_MAP2_VERTEX_4);
-    minmax = dt.call(&dt.glIsEnabled)(GL_MINMAX);
-    multisample = dt.call(&dt.glIsEnabled)(GL_MULTISAMPLE);
-    normalize = dt.call(&dt.glIsEnabled)(GL_NORMALIZE);
-    pointSmooth = dt.call(&dt.glIsEnabled)(GL_POINT_SMOOTH);
-    pointSprite = dt.call(&dt.glIsEnabled)(GL_POINT_SPRITE);
-    polygonOffsetFill = dt.call(&dt.glIsEnabled)(GL_POLYGON_OFFSET_FILL);
-    polygonOffsetLine = dt.call(&dt.glIsEnabled)(GL_POLYGON_OFFSET_LINE);
-    polygonOffsetPoint = dt.call(&dt.glIsEnabled)(GL_POLYGON_OFFSET_POINT);
-    polygonSmooth = dt.call(&dt.glIsEnabled)(GL_POLYGON_SMOOTH);
-    polygonStipple = dt.call(&dt.glIsEnabled)(GL_POLYGON_STIPPLE);
-    postColorMatrixColorTable = dt.call(&dt.glIsEnabled)(GL_POST_COLOR_MATRIX_COLOR_TABLE);
-    postConvolutionColorTable = dt.call(&dt.glIsEnabled)(GL_POST_CONVOLUTION_COLOR_TABLE);
-    programPointSize = dt.call(&dt.glIsEnabled)(GL_PROGRAM_POINT_SIZE);
-    rescaleNormal = dt.call(&dt.glIsEnabled)(GL_RESCALE_NORMAL);
-    sampleAlphaToCoverage = dt.call(&dt.glIsEnabled)(GL_SAMPLE_ALPHA_TO_COVERAGE);
-    sampleAlphaToOne = dt.call(&dt.glIsEnabled)(GL_SAMPLE_ALPHA_TO_ONE);
-    sampleCoverage = dt.call(&dt.glIsEnabled)(GL_SAMPLE_COVERAGE);
+    lighting = dt.glIsEnabled(GL_LIGHTING);
+    lineSmooth = dt.glIsEnabled(GL_LINE_SMOOTH);
+    lineStipple = dt.glIsEnabled(GL_LINE_STIPPLE);
+    map1Color4 = dt.glIsEnabled(GL_MAP1_COLOR_4);
+    map1Index = dt.glIsEnabled(GL_MAP1_INDEX);
+    map1Normal = dt.glIsEnabled(GL_MAP1_NORMAL);
+    map1TextureCoord1 = dt.glIsEnabled(GL_MAP1_TEXTURE_COORD_1);
+    map1TextureCoord2 = dt.glIsEnabled(GL_MAP1_TEXTURE_COORD_2);
+    map1TextureCoord3 = dt.glIsEnabled(GL_MAP1_TEXTURE_COORD_3);
+    map1TextureCoord4 = dt.glIsEnabled(GL_MAP1_TEXTURE_COORD_4);
+    map1Vertex3 = dt.glIsEnabled(GL_MAP1_VERTEX_3);
+    map1Vertex4 = dt.glIsEnabled(GL_MAP1_VERTEX_4);
+    map2Color4 = dt.glIsEnabled(GL_MAP2_COLOR_4);
+    map2Index = dt.glIsEnabled(GL_MAP2_INDEX);
+    map2Normal = dt.glIsEnabled(GL_MAP2_NORMAL);
+    map2TextureCoord1 = dt.glIsEnabled(GL_MAP2_TEXTURE_COORD_1);
+    map2TextureCoord2 = dt.glIsEnabled(GL_MAP2_TEXTURE_COORD_2);
+    map2TextureCoord3 = dt.glIsEnabled(GL_MAP2_TEXTURE_COORD_3);
+    map2TextureCoord4 = dt.glIsEnabled(GL_MAP2_TEXTURE_COORD_4);
+    map2Vertex3 = dt.glIsEnabled(GL_MAP2_VERTEX_3);
+    map2Vertex4 = dt.glIsEnabled(GL_MAP2_VERTEX_4);
+    minmax = dt.glIsEnabled(GL_MINMAX);
+    multisample = dt.glIsEnabled(GL_MULTISAMPLE);
+    normalize = dt.glIsEnabled(GL_NORMALIZE);
+    pointSmooth = dt.glIsEnabled(GL_POINT_SMOOTH);
+    pointSprite = dt.glIsEnabled(GL_POINT_SPRITE);
+    polygonOffsetFill = dt.glIsEnabled(GL_POLYGON_OFFSET_FILL);
+    polygonOffsetLine = dt.glIsEnabled(GL_POLYGON_OFFSET_LINE);
+    polygonOffsetPoint = dt.glIsEnabled(GL_POLYGON_OFFSET_POINT);
+    polygonSmooth = dt.glIsEnabled(GL_POLYGON_SMOOTH);
+    polygonStipple = dt.glIsEnabled(GL_POLYGON_STIPPLE);
+    postColorMatrixColorTable = dt.glIsEnabled(GL_POST_COLOR_MATRIX_COLOR_TABLE);
+    postConvolutionColorTable = dt.glIsEnabled(GL_POST_CONVOLUTION_COLOR_TABLE);
+    programPointSize = dt.glIsEnabled(GL_PROGRAM_POINT_SIZE);
+    rescaleNormal = dt.glIsEnabled(GL_RESCALE_NORMAL);
+    sampleAlphaToCoverage = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_COVERAGE);
+    sampleAlphaToOne = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_ONE);
+    sampleCoverage = dt.glIsEnabled(GL_SAMPLE_COVERAGE);
     if (ctx.info->gl_version_4_0 || ctx.info->gl_arb_sample_shading)
-      sampleShading = dt.call(&dt.glIsEnabled)(GL_SAMPLE_SHADING);
-    separable2d = dt.call(&dt.glIsEnabled)(GL_SEPARABLE_2D);
-    stencilTest = dt.call(&dt.glIsEnabled)(GL_STENCIL_TEST);
+      sampleShading = dt.glIsEnabled(GL_SAMPLE_SHADING);
+    separable2d = dt.glIsEnabled(GL_SEPARABLE_2D);
+    stencilTest = dt.glIsEnabled(GL_STENCIL_TEST);
     n = array_size( scissorTest );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( scissorTest, ii );
-      scissorTest[ii] = dt.call(&dt.glIsEnabledi)(GL_SCISSOR_TEST,static_cast<GLuint>(ii));
+      scissorTest[ii] = dt.glIsEnabledi(GL_SCISSOR_TEST,static_cast<GLuint>(ii));
     }
     n = array_size( texture1d );
     RegalAssert( array_size( texture2d ) == n );
@@ -495,17 +495,17 @@ struct Enable
     RegalAssert( array_size( textureGenQ ) == n );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
-      texture1d[ii]      = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_1D,ii);
-      texture2d[ii]      = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_2D,ii);
-      texture3d[ii]      = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_3D,ii);
-      textureCubeMap[ii] = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_CUBE_MAP,ii);
-      textureRectangle[ii] = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_RECTANGLE,ii);
-      textureGenS[ii]    = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_GEN_S,ii);
-      textureGenT[ii]    = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_GEN_T,ii);
-      textureGenR[ii]    = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_GEN_R,ii);
-      textureGenQ[ii]    = dt.call(&dt.glIsEnabledi)(GL_TEXTURE_GEN_Q,ii);
+      texture1d[ii]      = dt.glIsEnabledi(GL_TEXTURE_1D,ii);
+      texture2d[ii]      = dt.glIsEnabledi(GL_TEXTURE_2D,ii);
+      texture3d[ii]      = dt.glIsEnabledi(GL_TEXTURE_3D,ii);
+      textureCubeMap[ii] = dt.glIsEnabledi(GL_TEXTURE_CUBE_MAP,ii);
+      textureRectangle[ii] = dt.glIsEnabledi(GL_TEXTURE_RECTANGLE,ii);
+      textureGenS[ii]    = dt.glIsEnabledi(GL_TEXTURE_GEN_S,ii);
+      textureGenT[ii]    = dt.glIsEnabledi(GL_TEXTURE_GEN_T,ii);
+      textureGenR[ii]    = dt.glIsEnabledi(GL_TEXTURE_GEN_R,ii);
+      textureGenQ[ii]    = dt.glIsEnabledi(GL_TEXTURE_GEN_Q,ii);
     }
-    vertexProgramTwoSide = dt.call(&dt.glIsEnabled)(GL_VERTEX_PROGRAM_TWO_SIDE);
+    vertexProgramTwoSide = dt.glIsEnabled(GL_VERTEX_PROGRAM_TWO_SIDE);
     return *this;
   }
 
@@ -521,9 +521,9 @@ struct Enable
       setEnablei(dt,GL_BLEND,static_cast<GLuint>(ii),blend[ii]);
     }
     setEnable(dt,GL_COLOR_LOGIC_OP,colorLogicOp);
-    dt.call(&dt.glClampColor)(GL_CLAMP_FRAGMENT_COLOR,clampFragmentColor);
-    dt.call(&dt.glClampColor)(GL_CLAMP_READ_COLOR,clampReadColor);
-    dt.call(&dt.glClampColor)(GL_CLAMP_VERTEX_COLOR,clampVertexColor);
+    dt.glClampColor(GL_CLAMP_FRAGMENT_COLOR,clampFragmentColor);
+    dt.glClampColor(GL_CLAMP_READ_COLOR,clampReadColor);
+    dt.glClampColor(GL_CLAMP_VERTEX_COLOR,clampVertexColor);
     n = array_size( clipDistance );
     for (size_t ii=0; ii<n; ii++)
     {
@@ -763,19 +763,19 @@ struct Depth
 
   inline Depth &get(DispatchTableGL &dt)
   {
-    enable = dt.call(&dt.glIsEnabled)(GL_DEPTH_TEST);
-    dt.call(&dt.glGetIntegerv)(GL_DEPTH_FUNC,reinterpret_cast<GLint *>(&func));
-    dt.call(&dt.glGetFloatv)(GL_DEPTH_CLEAR_VALUE,reinterpret_cast<GLfloat *>(&clear));
-    dt.call(&dt.glGetBooleanv)(GL_DEPTH_WRITEMASK,&mask);
+    enable = dt.glIsEnabled(GL_DEPTH_TEST);
+    dt.glGetIntegerv(GL_DEPTH_FUNC,reinterpret_cast<GLint *>(&func));
+    dt.glGetFloatv(GL_DEPTH_CLEAR_VALUE,reinterpret_cast<GLfloat *>(&clear));
+    dt.glGetBooleanv(GL_DEPTH_WRITEMASK,&mask);
     return *this;
   }
 
   inline const Depth &set(DispatchTableGL &dt) const
   {
     setEnable(dt,GL_DEPTH_TEST,enable);
-    dt.call(&dt.glDepthFunc)(func);
-    dt.call(&dt.glClearDepth)(clear);
-    dt.call(&dt.glDepthMask)(mask);
+    dt.glDepthFunc(func);
+    dt.glClearDepth(clear);
+    dt.glDepthMask(mask);
     return *this;
   }
 
@@ -840,21 +840,21 @@ struct StencilFace
 
   inline StencilFace &get(DispatchTableGL &dt, GLenum face)
   {
-    dt.call(&dt.glGetIntegerv)(face==GL_FRONT ? GL_STENCIL_FUNC            : GL_STENCIL_BACK_FUNC,            reinterpret_cast<GLint *>(&func)     );
-    dt.call(&dt.glGetIntegerv)(face==GL_FRONT ? GL_STENCIL_REF             : GL_STENCIL_BACK_REF,             &ref                                 );
-    dt.call(&dt.glGetIntegerv)(face==GL_FRONT ? GL_STENCIL_VALUE_MASK      : GL_STENCIL_BACK_VALUE_MASK,      reinterpret_cast<GLint *>(&valueMask));
-    dt.call(&dt.glGetIntegerv)(face==GL_FRONT ? GL_STENCIL_WRITEMASK       : GL_STENCIL_BACK_WRITEMASK,       reinterpret_cast<GLint *>(&writeMask));
-    dt.call(&dt.glGetIntegerv)(face==GL_FRONT ? GL_STENCIL_FAIL            : GL_STENCIL_BACK_FAIL,            reinterpret_cast<GLint *>(&fail)     );
-    dt.call(&dt.glGetIntegerv)(face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_FAIL : GL_STENCIL_BACK_PASS_DEPTH_FAIL, reinterpret_cast<GLint *>(&zfail)    );
-    dt.call(&dt.glGetIntegerv)(face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_PASS : GL_STENCIL_BACK_PASS_DEPTH_PASS, reinterpret_cast<GLint *>(&zpass)    );
+    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_FUNC            : GL_STENCIL_BACK_FUNC,            reinterpret_cast<GLint *>(&func)     );
+    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_REF             : GL_STENCIL_BACK_REF,             &ref                                 );
+    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_VALUE_MASK      : GL_STENCIL_BACK_VALUE_MASK,      reinterpret_cast<GLint *>(&valueMask));
+    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_WRITEMASK       : GL_STENCIL_BACK_WRITEMASK,       reinterpret_cast<GLint *>(&writeMask));
+    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_FAIL            : GL_STENCIL_BACK_FAIL,            reinterpret_cast<GLint *>(&fail)     );
+    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_FAIL : GL_STENCIL_BACK_PASS_DEPTH_FAIL, reinterpret_cast<GLint *>(&zfail)    );
+    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_PASS : GL_STENCIL_BACK_PASS_DEPTH_PASS, reinterpret_cast<GLint *>(&zpass)    );
     return *this;
   }
 
   inline const StencilFace &set(DispatchTableGL &dt, GLenum face) const
   {
-    dt.call(&dt.glStencilFuncSeparate)(face,func,ref,valueMask);
-    dt.call(&dt.glStencilMaskSeparate)(face,writeMask);
-    dt.call(&dt.glStencilOpSeparate)(face,fail,zfail,zpass);
+    dt.glStencilFuncSeparate(face,func,ref,valueMask);
+    dt.glStencilMaskSeparate(face,writeMask);
+    dt.glStencilOpSeparate(face,fail,zfail,zpass);
     return *this;
   }
 
@@ -895,8 +895,8 @@ struct Stencil
 
   inline Stencil &get(DispatchTableGL &dt)
   {
-    enable = dt.call(&dt.glIsEnabled)(GL_STENCIL_TEST);
-    dt.call(&dt.glGetIntegerv)(GL_STENCIL_CLEAR_VALUE,&clear);
+    enable = dt.glIsEnabled(GL_STENCIL_TEST);
+    dt.glGetIntegerv(GL_STENCIL_CLEAR_VALUE,&clear);
     front.get(dt,GL_FRONT);
     back.get(dt,GL_BACK );   // What about GL < 2.0 ?
     return *this;
@@ -905,7 +905,7 @@ struct Stencil
   inline const Stencil &set(DispatchTableGL &dt) const
   {
     setEnable(dt,GL_STENCIL_TEST,enable);
-    dt.call(&dt.glClearStencil)(clear);
+    dt.glClearStencil(clear);
     front.set(dt,GL_FRONT);
     back.set(dt,GL_BACK);
     return *this;
@@ -1066,34 +1066,34 @@ struct Polygon
 
   inline Polygon &get(DispatchTableGL &dt)
   {
-    cullEnable = dt.call(&dt.glIsEnabled)(GL_CULL_FACE);
-    dt.call(&dt.glGetIntegerv)(GL_CULL_FACE_MODE,reinterpret_cast<GLint *>(&cullFaceMode));
-    dt.call(&dt.glGetIntegerv)(GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
-    dt.call(&dt.glGetIntegerv)(GL_POLYGON_MODE,reinterpret_cast<GLint *>(mode));
-    dt.call(&dt.glGetIntegerv)(GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
-    smoothEnable  = dt.call(&dt.glIsEnabled)(GL_POLYGON_SMOOTH);
-    stippleEnable = dt.call(&dt.glIsEnabled)(GL_POLYGON_STIPPLE);
-    offsetFill    = dt.call(&dt.glIsEnabled)(GL_POLYGON_OFFSET_FILL);
-    offsetLine    = dt.call(&dt.glIsEnabled)(GL_POLYGON_OFFSET_LINE);
-    offsetPoint   = dt.call(&dt.glIsEnabled)(GL_POLYGON_OFFSET_POINT);
-    dt.call(&dt.glGetFloatv)(GL_POLYGON_OFFSET_FACTOR,&factor);
-    dt.call(&dt.glGetFloatv)(GL_POLYGON_OFFSET_UNITS,&units);
+    cullEnable = dt.glIsEnabled(GL_CULL_FACE);
+    dt.glGetIntegerv(GL_CULL_FACE_MODE,reinterpret_cast<GLint *>(&cullFaceMode));
+    dt.glGetIntegerv(GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
+    dt.glGetIntegerv(GL_POLYGON_MODE,reinterpret_cast<GLint *>(mode));
+    dt.glGetIntegerv(GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
+    smoothEnable  = dt.glIsEnabled(GL_POLYGON_SMOOTH);
+    stippleEnable = dt.glIsEnabled(GL_POLYGON_STIPPLE);
+    offsetFill    = dt.glIsEnabled(GL_POLYGON_OFFSET_FILL);
+    offsetLine    = dt.glIsEnabled(GL_POLYGON_OFFSET_LINE);
+    offsetPoint   = dt.glIsEnabled(GL_POLYGON_OFFSET_POINT);
+    dt.glGetFloatv(GL_POLYGON_OFFSET_FACTOR,&factor);
+    dt.glGetFloatv(GL_POLYGON_OFFSET_UNITS,&units);
     return *this;
   }
 
   inline const Polygon &set(DispatchTableGL &dt) const
   {
     setEnable(dt,GL_CULL_FACE,cullEnable);
-    dt.call(&dt.glCullFace)(cullFaceMode);
-    dt.call(&dt.glFrontFace)(frontFace);
-    dt.call(&dt.glPolygonMode)(GL_FRONT,mode[0]);
-    dt.call(&dt.glPolygonMode)(GL_BACK,mode[1]);
+    dt.glCullFace(cullFaceMode);
+    dt.glFrontFace(frontFace);
+    dt.glPolygonMode(GL_FRONT,mode[0]);
+    dt.glPolygonMode(GL_BACK,mode[1]);
     setEnable(dt,GL_POLYGON_SMOOTH,smoothEnable);
     setEnable(dt,GL_POLYGON_STIPPLE,stippleEnable);
     setEnable(dt,GL_POLYGON_OFFSET_FILL,offsetFill);
     setEnable(dt,GL_POLYGON_OFFSET_LINE,offsetLine);
     setEnable(dt,GL_POLYGON_OFFSET_POINT,offsetPoint);
-    dt.call(&dt.glPolygonOffset)(factor,units);
+    dt.glPolygonOffset(factor,units);
     return *this;
   }
 
@@ -1233,11 +1233,11 @@ struct Transform
         setEnable(dt, static_cast<GLenum>(GL_CLIP_PLANE0 + i), clipPlane[i].enabled);
 
       if (current.clipPlane[i].equation != clipPlane[i].equation)
-        dt.call(&dt.glClipPlane)(static_cast<GLenum>(GL_CLIP_PLANE0 + i), clipPlane[i].equation.data);
+        dt.glClipPlane(static_cast<GLenum>(GL_CLIP_PLANE0 + i), clipPlane[i].equation.data);
     }
 
     if (current.matrixMode != matrixMode)
-      dt.call(&dt.glMatrixMode)(matrixMode);
+      dt.glMatrixMode(matrixMode);
 
     if (current.normalize != normalize)
       setEnable(dt, GL_NORMALIZE, normalize);
@@ -1334,27 +1334,27 @@ struct Hint
 
   inline Hint &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetIntegerv)(GL_PERSPECTIVE_CORRECTION_HINT,reinterpret_cast<GLint *>(&perspectiveCorrection));
-    dt.call(&dt.glGetIntegerv)(GL_POINT_SMOOTH_HINT,reinterpret_cast<GLint *>(&pointSmooth));
-    dt.call(&dt.glGetIntegerv)(GL_LINE_SMOOTH_HINT,reinterpret_cast<GLint *>(&lineSmooth));
-    dt.call(&dt.glGetIntegerv)(GL_POLYGON_SMOOTH_HINT,reinterpret_cast<GLint *>(&polygonSmooth));
-    dt.call(&dt.glGetIntegerv)(GL_FOG_HINT,reinterpret_cast<GLint *>(&fog));
-    dt.call(&dt.glGetIntegerv)(GL_GENERATE_MIPMAP_HINT,reinterpret_cast<GLint *>(&generateMipmap));
-    dt.call(&dt.glGetIntegerv)(GL_TEXTURE_COMPRESSION_HINT,reinterpret_cast<GLint *>(&textureCompression));
-    dt.call(&dt.glGetIntegerv)(GL_FRAGMENT_SHADER_DERIVATIVE_HINT,reinterpret_cast<GLint *>(&fragmentShaderDerivative));
+    dt.glGetIntegerv(GL_PERSPECTIVE_CORRECTION_HINT,reinterpret_cast<GLint *>(&perspectiveCorrection));
+    dt.glGetIntegerv(GL_POINT_SMOOTH_HINT,reinterpret_cast<GLint *>(&pointSmooth));
+    dt.glGetIntegerv(GL_LINE_SMOOTH_HINT,reinterpret_cast<GLint *>(&lineSmooth));
+    dt.glGetIntegerv(GL_POLYGON_SMOOTH_HINT,reinterpret_cast<GLint *>(&polygonSmooth));
+    dt.glGetIntegerv(GL_FOG_HINT,reinterpret_cast<GLint *>(&fog));
+    dt.glGetIntegerv(GL_GENERATE_MIPMAP_HINT,reinterpret_cast<GLint *>(&generateMipmap));
+    dt.glGetIntegerv(GL_TEXTURE_COMPRESSION_HINT,reinterpret_cast<GLint *>(&textureCompression));
+    dt.glGetIntegerv(GL_FRAGMENT_SHADER_DERIVATIVE_HINT,reinterpret_cast<GLint *>(&fragmentShaderDerivative));
     return *this;
   }
 
   inline const Hint &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glHint)(GL_PERSPECTIVE_CORRECTION_HINT, perspectiveCorrection);
-    dt.call(&dt.glHint)(GL_POINT_SMOOTH_HINT, pointSmooth);
-    dt.call(&dt.glHint)(GL_LINE_SMOOTH_HINT, lineSmooth);
-    dt.call(&dt.glHint)(GL_POLYGON_SMOOTH_HINT, polygonSmooth);
-    dt.call(&dt.glHint)(GL_FOG_HINT, fog);
-    dt.call(&dt.glHint)(GL_GENERATE_MIPMAP_HINT, generateMipmap);
-    dt.call(&dt.glHint)(GL_TEXTURE_COMPRESSION_HINT, textureCompression);
-    dt.call(&dt.glHint)(GL_FRAGMENT_SHADER_DERIVATIVE_HINT, fragmentShaderDerivative);
+    dt.glHint(GL_PERSPECTIVE_CORRECTION_HINT, perspectiveCorrection);
+    dt.glHint(GL_POINT_SMOOTH_HINT, pointSmooth);
+    dt.glHint(GL_LINE_SMOOTH_HINT, lineSmooth);
+    dt.glHint(GL_POLYGON_SMOOTH_HINT, polygonSmooth);
+    dt.glHint(GL_FOG_HINT, fog);
+    dt.glHint(GL_GENERATE_MIPMAP_HINT, generateMipmap);
+    dt.glHint(GL_TEXTURE_COMPRESSION_HINT, textureCompression);
+    dt.glHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT, fragmentShaderDerivative);
     return *this;
   }
 
@@ -1427,13 +1427,13 @@ struct List
 
   inline List &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetIntegerv)(GL_LIST_BASE,reinterpret_cast<GLint *>(&base));
+    dt.glGetIntegerv(GL_LIST_BASE,reinterpret_cast<GLint *>(&base));
     return *this;
   }
 
   inline const List &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glListBase)(base);
+    dt.glListBase(base);
     return *this;
   }
 
@@ -1471,13 +1471,13 @@ struct AccumBuffer
 
   inline AccumBuffer &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetFloatv)(GL_ACCUM_CLEAR_VALUE,&(clear[0]));
+    dt.glGetFloatv(GL_ACCUM_CLEAR_VALUE,&(clear[0]));
     return *this;
   }
 
   inline const AccumBuffer &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glClearAccum)(clear[0],clear[1],clear[2],clear[3]);
+    dt.glClearAccum(clear[0],clear[1],clear[2],clear[3]);
     return *this;
   }
 
@@ -1550,7 +1550,7 @@ struct Scissor
       RegalAssertArrayIndex( valid, ii );
       if (!valid[ii])
       {
-        dt.call(&dt.glGetIntegeri_v)(GL_SCISSOR_BOX, static_cast<GLuint>(ii), &scissorBox[ii][0]);
+        dt.glGetIntegeri_v(GL_SCISSOR_BOX, static_cast<GLuint>(ii), &scissorBox[ii][0]);
         valid[ii] = true;
       }
     }
@@ -1572,8 +1572,8 @@ struct Scissor
     {
       RegalAssertArrayIndex( scissorTest, ii );
       RegalAssertArrayIndex( valid, ii );
-      scissorTest[ii] = dt.call(&dt.glIsEnabledi)(GL_SCISSOR_TEST,static_cast<GLuint>(ii));
-      dt.call(&dt.glGetIntegeri_v)(GL_SCISSOR_BOX, static_cast<GLuint>(ii), &scissorBox[ii][0]);
+      scissorTest[ii] = dt.glIsEnabledi(GL_SCISSOR_TEST,static_cast<GLuint>(ii));
+      dt.glGetIntegeri_v(GL_SCISSOR_BOX, static_cast<GLuint>(ii), &scissorBox[ii][0]);
       valid[ii] = true;
     }
     return *this;
@@ -1589,7 +1589,7 @@ struct Scissor
       RegalAssertArrayIndex( valid, ii );
       setEnablei(dt,GL_SCISSOR_TEST,static_cast<GLuint>(ii),scissorTest[ii]);
       if (valid[ii])
-        dt.call(&dt.glScissorIndexedv)(static_cast<GLuint>(ii), &scissorBox[ii][0]);
+        dt.glScissorIndexedv(static_cast<GLuint>(ii), &scissorBox[ii][0]);
     }
     return *this;
   }
@@ -1719,7 +1719,7 @@ struct Viewport
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( valid, ii );
-      dt.call(&dt.glGetFloati_v)(GL_VIEWPORT, static_cast<GLuint>(ii), &viewport[ii][0]);
+      dt.glGetFloati_v(GL_VIEWPORT, static_cast<GLuint>(ii), &viewport[ii][0]);
       valid[ii] = true;
     }
   }
@@ -1738,8 +1738,8 @@ struct Viewport
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( valid, ii );
-      dt.call(&dt.glGetFloati_v)(GL_VIEWPORT, static_cast<GLuint>(ii), &viewport[ii][0]);
-      dt.call(&dt.glGetDoublei_v)(GL_DEPTH_RANGE, static_cast<GLuint>(ii), &depthRange[ii][0]);
+      dt.glGetFloati_v(GL_VIEWPORT, static_cast<GLuint>(ii), &viewport[ii][0]);
+      dt.glGetDoublei_v(GL_DEPTH_RANGE, static_cast<GLuint>(ii), &depthRange[ii][0]);
       valid[ii] = true;
     }
     return *this;
@@ -1747,13 +1747,13 @@ struct Viewport
 
   inline const Viewport &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glDepthRangeArrayv)(0, REGAL_EMU_MAX_VIEWPORTS, &depthRange[0][0] );
+    dt.glDepthRangeArrayv(0, REGAL_EMU_MAX_VIEWPORTS, &depthRange[0][0] );
     size_t n = array_size( valid );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( valid, ii );
       if (valid[ii])
-        dt.call(&dt.glViewportIndexedfv)(static_cast<GLuint>(ii), &viewport[ii][0] );
+        dt.glViewportIndexedfv(static_cast<GLuint>(ii), &viewport[ii][0] );
     }
     return *this;
   }
@@ -1898,21 +1898,21 @@ struct Line
 
   inline Line &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetFloatv)(GL_LINE_WIDTH,&width);
-    smooth = dt.call(&dt.glIsEnabled)(GL_LINE_SMOOTH);
-    stipple = dt.call(&dt.glIsEnabled)(GL_LINE_STIPPLE);
-    dt.call(&dt.glGetIntegerv)(GL_LINE_STIPPLE_PATTERN,&stippleRepeat);
+    dt.glGetFloatv(GL_LINE_WIDTH,&width);
+    smooth = dt.glIsEnabled(GL_LINE_SMOOTH);
+    stipple = dt.glIsEnabled(GL_LINE_STIPPLE);
+    dt.glGetIntegerv(GL_LINE_STIPPLE_PATTERN,&stippleRepeat);
     stipplePattern = static_cast<GLushort>(stippleRepeat);
-    dt.call(&dt.glGetIntegerv)(GL_LINE_STIPPLE_REPEAT,&stippleRepeat);
+    dt.glGetIntegerv(GL_LINE_STIPPLE_REPEAT,&stippleRepeat);
     return *this;
   }
 
   inline const Line &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glLineWidth)(width);
+    dt.glLineWidth(width);
     setEnable(dt,GL_LINE_SMOOTH,smooth);
     setEnable(dt,GL_LINE_STIPPLE,stipple);
-    dt.call(&dt.glLineStipple)(stippleRepeat, stipplePattern);
+    dt.glLineStipple(stippleRepeat, stipplePattern);
     return *this;
   }
 
@@ -1981,15 +1981,15 @@ struct Multisample
   inline Multisample &get(RegalContext &ctx)
   {
     DispatchTableGL &dt = ctx.dispatcher.emulation;
-    multisample = dt.call(&dt.glIsEnabled)(GL_MULTISAMPLE);
-    sampleAlphaToCoverage = dt.call(&dt.glIsEnabled)(GL_SAMPLE_ALPHA_TO_COVERAGE);
-    sampleAlphaToOne = dt.call(&dt.glIsEnabled)(GL_SAMPLE_ALPHA_TO_ONE);
-    sampleCoverage = dt.call(&dt.glIsEnabled)(GL_SAMPLE_COVERAGE);
-    dt.call(&dt.glGetFloatv)(GL_SAMPLE_COVERAGE_VALUE,&sampleCoverageValue);
-    dt.call(&dt.glGetBooleanv)(GL_SAMPLE_COVERAGE_INVERT,&sampleCoverageInvert);
+    multisample = dt.glIsEnabled(GL_MULTISAMPLE);
+    sampleAlphaToCoverage = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_COVERAGE);
+    sampleAlphaToOne = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_ONE);
+    sampleCoverage = dt.glIsEnabled(GL_SAMPLE_COVERAGE);
+    dt.glGetFloatv(GL_SAMPLE_COVERAGE_VALUE,&sampleCoverageValue);
+    dt.glGetBooleanv(GL_SAMPLE_COVERAGE_INVERT,&sampleCoverageInvert);
     if (ctx.info->gl_version_4_0 || ctx.info->gl_arb_sample_shading)
-      sampleShading = dt.call(&dt.glIsEnabled)(GL_SAMPLE_SHADING);
-    dt.call(&dt.glGetFloatv)(GL_MIN_SAMPLE_SHADING_VALUE,&minSampleShadingValue);
+      sampleShading = dt.glIsEnabled(GL_SAMPLE_SHADING);
+    dt.glGetFloatv(GL_MIN_SAMPLE_SHADING_VALUE,&minSampleShadingValue);
     return *this;
   }
 
@@ -2000,10 +2000,10 @@ struct Multisample
     setEnable(dt,GL_SAMPLE_ALPHA_TO_COVERAGE,sampleAlphaToCoverage);
     setEnable(dt,GL_SAMPLE_ALPHA_TO_ONE,sampleAlphaToOne);
     setEnable(dt,GL_SAMPLE_COVERAGE,sampleCoverage);
-    dt.call(&dt.glSampleCoverage)(sampleCoverageValue, sampleCoverageInvert);
+    dt.glSampleCoverage(sampleCoverageValue, sampleCoverageInvert);
     if (ctx.info->gl_version_4_0 || ctx.info->gl_arb_sample_shading)
       setEnable(dt,GL_SAMPLE_SHADING,sampleShading);
-    dt.call(&dt.glMinSampleShading)(minSampleShadingValue);
+    dt.glMinSampleShading(minSampleShadingValue);
     return *this;
   }
 
@@ -2081,15 +2081,15 @@ struct Eval
 
   inline Eval &get(DispatchTableGL &dt)
   {
-    autoNormal = dt.call(&dt.glIsEnabled)(GL_AUTO_NORMAL);
+    autoNormal = dt.glIsEnabled(GL_AUTO_NORMAL);
     for (size_t ii=0; ii<9; ii++)
-      map1dEnables[ii] = dt.call(&dt.glIsEnabled)(static_cast<GLenum>(GL_MAP1_COLOR_4+ii));
+      map1dEnables[ii] = dt.glIsEnabled(static_cast<GLenum>(GL_MAP1_COLOR_4+ii));
     for (size_t ii=0; ii<9; ii++)
-      map2dEnables[ii] = dt.call(&dt.glIsEnabled)(static_cast<GLenum>(GL_MAP2_COLOR_4+ii));
-    dt.call(&dt.glGetDoublev)(GL_MAP1_GRID_DOMAIN, map1GridDomain);
-    dt.call(&dt.glGetDoublev)(GL_MAP2_GRID_DOMAIN, map2GridDomain);
-    dt.call(&dt.glGetIntegerv)(GL_MAP1_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map1GridSegments));
-    dt.call(&dt.glGetIntegerv)(GL_MAP2_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map2GridSegments));
+      map2dEnables[ii] = dt.glIsEnabled(static_cast<GLenum>(GL_MAP2_COLOR_4+ii));
+    dt.glGetDoublev(GL_MAP1_GRID_DOMAIN, map1GridDomain);
+    dt.glGetDoublev(GL_MAP2_GRID_DOMAIN, map2GridDomain);
+    dt.glGetIntegerv(GL_MAP1_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map1GridSegments));
+    dt.glGetIntegerv(GL_MAP2_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map2GridSegments));
     return *this;
   }
 
@@ -2100,8 +2100,8 @@ struct Eval
       setEnable(dt,static_cast<GLenum>(GL_MAP1_COLOR_4+ii),map1dEnables[ii]);
     for (size_t ii=0; ii<9; ii++)
       setEnable(dt,static_cast<GLenum>(GL_MAP2_COLOR_4+ii),map2dEnables[ii]);
-    dt.call(&dt.glMapGrid1d)(map1GridSegments, map1GridDomain[0], map1GridDomain[1]);
-    dt.call(&dt.glMapGrid2d)(map2GridSegments[0], map2GridDomain[0], map2GridDomain[1],
+    dt.glMapGrid1d(map1GridSegments, map1GridDomain[0], map1GridDomain[1]);
+    dt.glMapGrid2d(map2GridSegments[0], map2GridDomain[0], map2GridDomain[1],
                              map2GridSegments[1], map2GridDomain[2], map2GridDomain[3]);
     return *this;
   }
@@ -2186,28 +2186,28 @@ struct Fog
 
   inline Fog &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetFloatv)(GL_FOG_COLOR,color);
-    dt.call(&dt.glGetFloatv)(GL_FOG_INDEX,&index);
-    dt.call(&dt.glGetFloatv)(GL_FOG_DENSITY,&density);
-    dt.call(&dt.glGetFloatv)(GL_FOG_START,&start);
-    dt.call(&dt.glGetFloatv)(GL_FOG_END,&end);
-    dt.call(&dt.glGetIntegerv)(GL_FOG_MODE,reinterpret_cast<GLint *>(&mode));
-    enable = dt.call(&dt.glIsEnabled)(GL_FOG);
-    dt.call(&dt.glGetIntegerv)(GL_FOG_COORD_SRC,reinterpret_cast<GLint *>(&coordSrc));
-    colorSum = dt.call(&dt.glIsEnabled)(GL_COLOR_SUM);
+    dt.glGetFloatv(GL_FOG_COLOR,color);
+    dt.glGetFloatv(GL_FOG_INDEX,&index);
+    dt.glGetFloatv(GL_FOG_DENSITY,&density);
+    dt.glGetFloatv(GL_FOG_START,&start);
+    dt.glGetFloatv(GL_FOG_END,&end);
+    dt.glGetIntegerv(GL_FOG_MODE,reinterpret_cast<GLint *>(&mode));
+    enable = dt.glIsEnabled(GL_FOG);
+    dt.glGetIntegerv(GL_FOG_COORD_SRC,reinterpret_cast<GLint *>(&coordSrc));
+    colorSum = dt.glIsEnabled(GL_COLOR_SUM);
     return *this;
   }
 
   inline const Fog &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glFogfv)(GL_FOG_COLOR,color);
-    dt.call(&dt.glFogf)(GL_FOG_INDEX,index);
-    dt.call(&dt.glFogf)(GL_FOG_DENSITY,density);
-    dt.call(&dt.glFogf)(GL_FOG_START,start);
-    dt.call(&dt.glFogf)(GL_FOG_END,end);
-    dt.call(&dt.glFogi)(GL_FOG_MODE,mode);
+    dt.glFogfv(GL_FOG_COLOR,color);
+    dt.glFogf(GL_FOG_INDEX,index);
+    dt.glFogf(GL_FOG_DENSITY,density);
+    dt.glFogf(GL_FOG_START,start);
+    dt.glFogf(GL_FOG_END,end);
+    dt.glFogi(GL_FOG_MODE,mode);
     setEnable(dt,GL_FOG,enable);
-    dt.call(&dt.glFogi)(GL_FOG_COORD_SRC,coordSrc);
+    dt.glFogi(GL_FOG_COORD_SRC,coordSrc);
     setEnable(dt,GL_COLOR_SUM,colorSum);
     return *this;
   }
@@ -2280,19 +2280,19 @@ struct Point
 
   inline Point &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetFloatv)(GL_POINT_SIZE,&size);
-    smooth = dt.call(&dt.glIsEnabled)(GL_POINT_SMOOTH);
-    sprite = dt.call(&dt.glIsEnabled)(GL_POINT_SPRITE);
-    dt.call(&dt.glGetFloatv)(GL_POINT_SIZE_MIN,&sizeMin);
-    dt.call(&dt.glGetFloatv)(GL_POINT_SIZE_MAX,&sizeMin);
-    dt.call(&dt.glGetFloatv)(GL_POINT_FADE_THRESHOLD_SIZE,&fadeThresholdSize);
-    dt.call(&dt.glGetFloatv)(GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
-    dt.call(&dt.glGetIntegerv)(GL_POINT_SPRITE_COORD_ORIGIN,reinterpret_cast<GLint *>(&spriteCoordOrigin));
+    dt.glGetFloatv(GL_POINT_SIZE,&size);
+    smooth = dt.glIsEnabled(GL_POINT_SMOOTH);
+    sprite = dt.glIsEnabled(GL_POINT_SPRITE);
+    dt.glGetFloatv(GL_POINT_SIZE_MIN,&sizeMin);
+    dt.glGetFloatv(GL_POINT_SIZE_MAX,&sizeMin);
+    dt.glGetFloatv(GL_POINT_FADE_THRESHOLD_SIZE,&fadeThresholdSize);
+    dt.glGetFloatv(GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
+    dt.glGetIntegerv(GL_POINT_SPRITE_COORD_ORIGIN,reinterpret_cast<GLint *>(&spriteCoordOrigin));
     size_t n = array_size( coordReplace );
     for (size_t ii=0; ii<n; ii++)
     {
       GLint coord;
-      dt.call(&dt.glGetMultiTexEnvivEXT)(static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,&coord);
+      dt.glGetMultiTexEnvivEXT(static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,&coord);
       RegalAssertArrayIndex( coordReplace, ii );
       coordReplace[ii] = static_cast<GLboolean>(coord);
     }
@@ -2301,19 +2301,19 @@ struct Point
 
   inline const Point &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glPointSize)(size);
+    dt.glPointSize(size);
     setEnable(dt,GL_POINT_SMOOTH,smooth);
     setEnable(dt,GL_POINT_SPRITE,sprite);
-    dt.call(&dt.glPointParameterf)(GL_POINT_SIZE_MIN,sizeMin);
-    dt.call(&dt.glPointParameterf)(GL_POINT_SIZE_MAX,sizeMax);
-    dt.call(&dt.glPointParameterf)(GL_POINT_FADE_THRESHOLD_SIZE,fadeThresholdSize);
-    dt.call(&dt.glPointParameterfv)(GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
-    dt.call(&dt.glPointParameteri)(GL_POINT_SPRITE_COORD_ORIGIN,spriteCoordOrigin);
+    dt.glPointParameterf(GL_POINT_SIZE_MIN,sizeMin);
+    dt.glPointParameterf(GL_POINT_SIZE_MAX,sizeMax);
+    dt.glPointParameterf(GL_POINT_FADE_THRESHOLD_SIZE,fadeThresholdSize);
+    dt.glPointParameterfv(GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
+    dt.glPointParameteri(GL_POINT_SPRITE_COORD_ORIGIN,spriteCoordOrigin);
     size_t n = array_size( coordReplace );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( coordReplace, ii );
-      dt.call(&dt.glMultiTexEnviEXT)(static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,coordReplace[ii]);
+      dt.glMultiTexEnviEXT(static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,coordReplace[ii]);
     }
     return *this;
   }
@@ -2420,13 +2420,13 @@ struct PolygonStipple
 
   inline PolygonStipple &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetPolygonStipple)(pattern);
+    dt.glGetPolygonStipple(pattern);
     return *this;
   }
 
   inline const PolygonStipple &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glPolygonStipple)(pattern);
+    dt.glPolygonStipple(pattern);
     return *this;
   }
 
@@ -2542,7 +2542,7 @@ struct ColorBuffer
       for (size_t ii=0; ii<n; ii++)
       {
         RegalAssertArrayIndex( drawBuffers, ii );
-        dt.call(&dt.glGetIntegerv)(static_cast<GLenum>(GL_DRAW_BUFFER0+ii), reinterpret_cast<GLint *>(&drawBuffers[ii]));
+        dt.glGetIntegerv(static_cast<GLenum>(GL_DRAW_BUFFER0+ii), reinterpret_cast<GLint *>(&drawBuffers[ii]));
       }
       valid = true;
     }
@@ -2578,79 +2578,79 @@ struct ColorBuffer
 
   inline ColorBuffer &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetIntegerv)(GL_CLAMP_FRAGMENT_COLOR,reinterpret_cast<GLint *>(&clampFragmentColor));
-    dt.call(&dt.glGetIntegerv)(GL_CLAMP_READ_COLOR,reinterpret_cast<GLint *>(&clampReadColor));
-    alphaTest = dt.call(&dt.glIsEnabled)(GL_ALPHA_TEST);
-    dt.call(&dt.glGetIntegerv)(GL_ALPHA_TEST_FUNC,reinterpret_cast<GLint *>(&alphaTestFunc));
-    dt.call(&dt.glGetFloatv)(GL_ALPHA_TEST_REF,&alphaTestRef);
+    dt.glGetIntegerv(GL_CLAMP_FRAGMENT_COLOR,reinterpret_cast<GLint *>(&clampFragmentColor));
+    dt.glGetIntegerv(GL_CLAMP_READ_COLOR,reinterpret_cast<GLint *>(&clampReadColor));
+    alphaTest = dt.glIsEnabled(GL_ALPHA_TEST);
+    dt.glGetIntegerv(GL_ALPHA_TEST_FUNC,reinterpret_cast<GLint *>(&alphaTestFunc));
+    dt.glGetFloatv(GL_ALPHA_TEST_REF,&alphaTestRef);
     size_t n = array_size( blend );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blend, ii );
-      blend[ii] = dt.call(&dt.glIsEnabledi)(GL_BLEND, ii);
+      blend[ii] = dt.glIsEnabledi(GL_BLEND, ii);
     }
     n = array_size( blendSrcRgb );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendSrcRgb, ii );
-      dt.call(&dt.glGetIntegeri_v)(GL_BLEND_SRC_RGB, ii, reinterpret_cast<GLint *>(&blendSrcRgb[ii]));
+      dt.glGetIntegeri_v(GL_BLEND_SRC_RGB, ii, reinterpret_cast<GLint *>(&blendSrcRgb[ii]));
     }
     n = array_size( blendSrcAlpha );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendSrcAlpha, ii );
-      dt.call(&dt.glGetIntegeri_v)(GL_BLEND_SRC_ALPHA, ii, reinterpret_cast<GLint *>(&blendSrcAlpha[ii]));
+      dt.glGetIntegeri_v(GL_BLEND_SRC_ALPHA, ii, reinterpret_cast<GLint *>(&blendSrcAlpha[ii]));
     }
     n = array_size( blendDstRgb );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendDstRgb, ii );
-      dt.call(&dt.glGetIntegeri_v)(GL_BLEND_DST_RGB, ii, reinterpret_cast<GLint *>(&blendDstRgb[ii]));
+      dt.glGetIntegeri_v(GL_BLEND_DST_RGB, ii, reinterpret_cast<GLint *>(&blendDstRgb[ii]));
     }
     n = array_size( blendDstAlpha );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendDstAlpha, ii );
-      dt.call(&dt.glGetIntegeri_v)(GL_BLEND_DST_ALPHA, ii, reinterpret_cast<GLint *>(&blendDstAlpha[ii]));
+      dt.glGetIntegeri_v(GL_BLEND_DST_ALPHA, ii, reinterpret_cast<GLint *>(&blendDstAlpha[ii]));
     }
     n = array_size( blendEquationRgb );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendEquationRgb, ii );
-      dt.call(&dt.glGetIntegeri_v)(GL_BLEND_EQUATION_RGB, ii, reinterpret_cast<GLint *>(&blendEquationRgb[ii]));
+      dt.glGetIntegeri_v(GL_BLEND_EQUATION_RGB, ii, reinterpret_cast<GLint *>(&blendEquationRgb[ii]));
     }
     n = array_size( blendEquationAlpha );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendEquationAlpha, ii );
-      dt.call(&dt.glGetIntegeri_v)(GL_BLEND_EQUATION_ALPHA, ii, reinterpret_cast<GLint *>(&blendEquationAlpha[ii]));
+      dt.glGetIntegeri_v(GL_BLEND_EQUATION_ALPHA, ii, reinterpret_cast<GLint *>(&blendEquationAlpha[ii]));
     }
-    dt.call(&dt.glGetFloatv)(GL_BLEND_COLOR,blendColor);
-    framebufferSRGB = dt.call(&dt.glIsEnabled)(GL_FRAMEBUFFER_SRGB);
-    dither = dt.call(&dt.glIsEnabled)(GL_DITHER);
-    indexLogicOp = dt.call(&dt.glIsEnabled)(GL_INDEX_LOGIC_OP);
-    colorLogicOp  = dt.call(&dt.glIsEnabled)(GL_COLOR_LOGIC_OP);
-    dt.call(&dt.glGetIntegerv)(GL_LOGIC_OP_MODE, reinterpret_cast<GLint *>(&logicOpMode));
-    dt.call(&dt.glGetIntegerv)(GL_INDEX_WRITEMASK, reinterpret_cast<GLint *>(&indexWritemask));
+    dt.glGetFloatv(GL_BLEND_COLOR,blendColor);
+    framebufferSRGB = dt.glIsEnabled(GL_FRAMEBUFFER_SRGB);
+    dither = dt.glIsEnabled(GL_DITHER);
+    indexLogicOp = dt.glIsEnabled(GL_INDEX_LOGIC_OP);
+    colorLogicOp  = dt.glIsEnabled(GL_COLOR_LOGIC_OP);
+    dt.glGetIntegerv(GL_LOGIC_OP_MODE, reinterpret_cast<GLint *>(&logicOpMode));
+    dt.glGetIntegerv(GL_INDEX_WRITEMASK, reinterpret_cast<GLint *>(&indexWritemask));
     for (GLuint ii=0; ii<REGAL_EMU_MAX_DRAW_BUFFERS; ii++)
-      dt.call(&dt.glGetBooleani_v)(GL_COLOR_WRITEMASK, ii, &colorWritemask[ii][0]);
-    dt.call(&dt.glGetFloatv)(GL_COLOR_CLEAR_VALUE,colorClearValue);
-    dt.call(&dt.glGetFloatv)(GL_INDEX_CLEAR_VALUE,&indexClearValue);
+      dt.glGetBooleani_v(GL_COLOR_WRITEMASK, ii, &colorWritemask[ii][0]);
+    dt.glGetFloatv(GL_COLOR_CLEAR_VALUE,colorClearValue);
+    dt.glGetFloatv(GL_INDEX_CLEAR_VALUE,&indexClearValue);
     n = array_size( drawBuffers );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( drawBuffers, ii );
-      dt.call(&dt.glGetIntegerv)(static_cast<GLenum>(GL_DRAW_BUFFER0+ii), reinterpret_cast<GLint *>(&drawBuffers[ii]));
+      dt.glGetIntegerv(static_cast<GLenum>(GL_DRAW_BUFFER0+ii), reinterpret_cast<GLint *>(&drawBuffers[ii]));
     }
     return *this;
   }
 
   inline const ColorBuffer &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glClampColor)(GL_CLAMP_FRAGMENT_COLOR,clampFragmentColor);
-    dt.call(&dt.glClampColor)(GL_CLAMP_READ_COLOR,clampReadColor);
+    dt.glClampColor(GL_CLAMP_FRAGMENT_COLOR,clampFragmentColor);
+    dt.glClampColor(GL_CLAMP_READ_COLOR,clampReadColor);
     setEnable(dt,GL_ALPHA_TEST,alphaTest);
-    dt.call(&dt.glAlphaFunc)(alphaTestFunc,alphaTestRef);
+    dt.glAlphaFunc(alphaTestFunc,alphaTestRef);
     size_t n = array_size( blend );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
@@ -2664,30 +2664,30 @@ struct ColorBuffer
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendSrcRgb, ii );
-      dt.call(&dt.glBlendFuncSeparatei)(ii,blendSrcRgb[ii],blendSrcAlpha[ii],blendDstRgb[ii],blendDstAlpha[ii]);
+      dt.glBlendFuncSeparatei(ii,blendSrcRgb[ii],blendSrcAlpha[ii],blendDstRgb[ii],blendDstAlpha[ii]);
     }
     n = array_size( blendEquationRgb );
     RegalAssert(array_size( blendEquationAlpha ) == n);
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendEquationRgb, ii );
-      dt.call(&dt.glBlendEquationSeparatei)(ii,blendEquationRgb[ii],blendEquationAlpha[ii]);
+      dt.glBlendEquationSeparatei(ii,blendEquationRgb[ii],blendEquationAlpha[ii]);
     }
-    dt.call(&dt.glBlendColor)(blendColor[0],blendColor[1],blendColor[2],blendColor[3]);
+    dt.glBlendColor(blendColor[0],blendColor[1],blendColor[2],blendColor[3]);
     setEnable(dt,GL_FRAMEBUFFER_SRGB,framebufferSRGB);
     setEnable(dt,GL_DITHER,dither);
     setEnable(dt,GL_INDEX_LOGIC_OP,indexLogicOp);
     setEnable(dt,GL_COLOR_LOGIC_OP,colorLogicOp);
-    dt.call(&dt.glLogicOp)(logicOpMode);
-    dt.call(&dt.glIndexMask)(indexWritemask);
+    dt.glLogicOp(logicOpMode);
+    dt.glIndexMask(indexWritemask);
     for (GLuint ii=0; ii<REGAL_EMU_MAX_DRAW_BUFFERS; ii++)
-      dt.call(&dt.glColorMaski)(ii, colorWritemask[ii][0], colorWritemask[ii][1], colorWritemask[ii][2], colorWritemask[ii][3]);
-    dt.call(&dt.glClearColor)(colorClearValue[0],colorClearValue[1],colorClearValue[2],colorClearValue[3]);
-    dt.call(&dt.glClearIndex)(indexClearValue);
+      dt.glColorMaski(ii, colorWritemask[ii][0], colorWritemask[ii][1], colorWritemask[ii][2], colorWritemask[ii][3]);
+    dt.glClearColor(colorClearValue[0],colorClearValue[1],colorClearValue[2],colorClearValue[3]);
+    dt.glClearIndex(indexClearValue);
     if (valid)
     {
       RegalAssert(array_size( drawBuffers ) >= REGAL_EMU_MAX_DRAW_BUFFERS);
-      dt.call(&dt.glDrawBuffers)(REGAL_EMU_MAX_DRAW_BUFFERS, drawBuffers);
+      dt.glDrawBuffers(REGAL_EMU_MAX_DRAW_BUFFERS, drawBuffers);
     }
     return *this;
   }
@@ -3046,7 +3046,7 @@ struct PixelMode
   {
     if (!valid)
     {
-      dt.call(&dt.glGetIntegerv)(GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
+      dt.glGetIntegerv(GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
       valid = true;
     }
   }
@@ -3103,125 +3103,125 @@ struct PixelMode
 
   inline PixelMode &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetIntegerv)(GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
-    dt.call(&dt.glGetBooleanv)(GL_MAP_COLOR,&mapColor);
-    dt.call(&dt.glGetBooleanv)(GL_MAP_STENCIL,&mapStencil);
-    dt.call(&dt.glGetIntegerv)(GL_INDEX_SHIFT,&indexShift);
-    dt.call(&dt.glGetIntegerv)(GL_INDEX_OFFSET,&indexOffset);
-    dt.call(&dt.glGetFloatv)(GL_RED_SCALE,&redScale);
-    dt.call(&dt.glGetFloatv)(GL_RED_BIAS,&redBias);
-    dt.call(&dt.glGetFloatv)(GL_GREEN_SCALE,&greenScale);
-    dt.call(&dt.glGetFloatv)(GL_GREEN_BIAS,&greenBias);
-    dt.call(&dt.glGetFloatv)(GL_BLUE_SCALE,&blueScale);
-    dt.call(&dt.glGetFloatv)(GL_BLUE_BIAS,&blueBias);
-    dt.call(&dt.glGetFloatv)(GL_ALPHA_SCALE,&alphaScale);
-    dt.call(&dt.glGetFloatv)(GL_ALPHA_BIAS,&alphaBias);
-    colorTable = dt.call(&dt.glIsEnabled)(GL_COLOR_TABLE);
-    postConvolutionColorTable = dt.call(&dt.glIsEnabled)(GL_POST_CONVOLUTION_COLOR_TABLE);
-    postColorMatrixColorTable = dt.call(&dt.glIsEnabled)(GL_POST_COLOR_MATRIX_COLOR_TABLE);
-    dt.call(&dt.glGetColorTableParameterfv)(GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
-    dt.call(&dt.glGetColorTableParameterfv)(GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
-    dt.call(&dt.glGetColorTableParameterfv)(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
-    dt.call(&dt.glGetColorTableParameterfv)(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
-    dt.call(&dt.glGetColorTableParameterfv)(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
-    dt.call(&dt.glGetColorTableParameterfv)(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
-    convolution1d = dt.call(&dt.glIsEnabled)(GL_CONVOLUTION_1D);
-    convolution2d = dt.call(&dt.glIsEnabled)(GL_CONVOLUTION_2D);
-    separable2d = dt.call(&dt.glIsEnabled)(GL_SEPARABLE_2D);
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
-    dt.call(&dt.glGetConvolutionParameteriv)(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[0]));
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
-    dt.call(&dt.glGetConvolutionParameteriv)(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[1]));
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
-    dt.call(&dt.glGetConvolutionParameteriv)(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[2]));
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
-    dt.call(&dt.glGetConvolutionParameterfv)(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_RED_SCALE,&postConvolutionRedScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_RED_BIAS,&postConvolutionRedBias);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_GREEN_SCALE,&postConvolutionGreenScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_GREEN_BIAS,&postConvolutionGreenBias);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_BLUE_SCALE,&postConvolutionBlueScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_BLUE_BIAS,&postConvolutionBlueBias);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_ALPHA_SCALE,&postConvolutionAlphaScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_CONVOLUTION_ALPHA_BIAS,&postConvolutionAlphaBias);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_RED_SCALE,&postColorMatrixRedScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_RED_BIAS,&postColorMatrixRedBias);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_GREEN_SCALE,&postColorMatrixGreenScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_GREEN_BIAS,&postColorMatrixGreenBias);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_BLUE_SCALE,&postColorMatrixBlueScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_BLUE_BIAS,&postColorMatrixBlueBias);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_ALPHA_SCALE,&postColorMatrixAlphaScale);
-    dt.call(&dt.glGetFloatv)(GL_POST_COLOR_MATRIX_ALPHA_BIAS,&postColorMatrixAlphaBias);
-    histogram = dt.call(&dt.glIsEnabled)(GL_HISTOGRAM);
-    minmax = dt.call(&dt.glIsEnabled)(GL_MINMAX);
-    dt.call(&dt.glGetFloatv)(GL_ZOOM_X,&zoomX);
-    dt.call(&dt.glGetFloatv)(GL_ZOOM_Y,&zoomY);
+    dt.glGetIntegerv(GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
+    dt.glGetBooleanv(GL_MAP_COLOR,&mapColor);
+    dt.glGetBooleanv(GL_MAP_STENCIL,&mapStencil);
+    dt.glGetIntegerv(GL_INDEX_SHIFT,&indexShift);
+    dt.glGetIntegerv(GL_INDEX_OFFSET,&indexOffset);
+    dt.glGetFloatv(GL_RED_SCALE,&redScale);
+    dt.glGetFloatv(GL_RED_BIAS,&redBias);
+    dt.glGetFloatv(GL_GREEN_SCALE,&greenScale);
+    dt.glGetFloatv(GL_GREEN_BIAS,&greenBias);
+    dt.glGetFloatv(GL_BLUE_SCALE,&blueScale);
+    dt.glGetFloatv(GL_BLUE_BIAS,&blueBias);
+    dt.glGetFloatv(GL_ALPHA_SCALE,&alphaScale);
+    dt.glGetFloatv(GL_ALPHA_BIAS,&alphaBias);
+    colorTable = dt.glIsEnabled(GL_COLOR_TABLE);
+    postConvolutionColorTable = dt.glIsEnabled(GL_POST_CONVOLUTION_COLOR_TABLE);
+    postColorMatrixColorTable = dt.glIsEnabled(GL_POST_COLOR_MATRIX_COLOR_TABLE);
+    dt.glGetColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
+    dt.glGetColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
+    dt.glGetColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
+    dt.glGetColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
+    dt.glGetColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
+    dt.glGetColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
+    convolution1d = dt.glIsEnabled(GL_CONVOLUTION_1D);
+    convolution2d = dt.glIsEnabled(GL_CONVOLUTION_2D);
+    separable2d = dt.glIsEnabled(GL_SEPARABLE_2D);
+    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
+    dt.glGetConvolutionParameteriv(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[0]));
+    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
+    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
+    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
+    dt.glGetConvolutionParameteriv(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[1]));
+    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
+    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
+    dt.glGetConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
+    dt.glGetConvolutionParameteriv(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[2]));
+    dt.glGetConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
+    dt.glGetConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_RED_SCALE,&postConvolutionRedScale);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_RED_BIAS,&postConvolutionRedBias);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_GREEN_SCALE,&postConvolutionGreenScale);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_GREEN_BIAS,&postConvolutionGreenBias);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_BLUE_SCALE,&postConvolutionBlueScale);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_BLUE_BIAS,&postConvolutionBlueBias);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_ALPHA_SCALE,&postConvolutionAlphaScale);
+    dt.glGetFloatv(GL_POST_CONVOLUTION_ALPHA_BIAS,&postConvolutionAlphaBias);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_RED_SCALE,&postColorMatrixRedScale);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_RED_BIAS,&postColorMatrixRedBias);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_GREEN_SCALE,&postColorMatrixGreenScale);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_GREEN_BIAS,&postColorMatrixGreenBias);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_BLUE_SCALE,&postColorMatrixBlueScale);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_BLUE_BIAS,&postColorMatrixBlueBias);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_ALPHA_SCALE,&postColorMatrixAlphaScale);
+    dt.glGetFloatv(GL_POST_COLOR_MATRIX_ALPHA_BIAS,&postColorMatrixAlphaBias);
+    histogram = dt.glIsEnabled(GL_HISTOGRAM);
+    minmax = dt.glIsEnabled(GL_MINMAX);
+    dt.glGetFloatv(GL_ZOOM_X,&zoomX);
+    dt.glGetFloatv(GL_ZOOM_Y,&zoomY);
     return *this;
   }
 
   inline const PixelMode &set(DispatchTableGL &dt) const
   {
     if (valid)
-      dt.call(&dt.glReadBuffer)(readBuffer);
-    dt.call(&dt.glPixelTransferi)(GL_MAP_COLOR, mapColor);
-    dt.call(&dt.glPixelTransferi)(GL_MAP_STENCIL,mapStencil);
-    dt.call(&dt.glPixelTransferi)(GL_INDEX_SHIFT,indexShift);
-    dt.call(&dt.glPixelTransferi)(GL_INDEX_OFFSET,indexOffset);
-    dt.call(&dt.glPixelTransferf)(GL_RED_SCALE,redScale);
-    dt.call(&dt.glPixelTransferf)(GL_RED_BIAS,redBias);
-    dt.call(&dt.glPixelTransferf)(GL_GREEN_SCALE,greenScale);
-    dt.call(&dt.glPixelTransferf)(GL_GREEN_BIAS,greenBias);
-    dt.call(&dt.glPixelTransferf)(GL_BLUE_SCALE,blueScale);
-    dt.call(&dt.glPixelTransferf)(GL_BLUE_BIAS,blueBias);
-    dt.call(&dt.glPixelTransferf)(GL_ALPHA_SCALE,alphaScale);
-    dt.call(&dt.glPixelTransferf)(GL_ALPHA_BIAS,alphaBias);
+      dt.glReadBuffer(readBuffer);
+    dt.glPixelTransferi(GL_MAP_COLOR, mapColor);
+    dt.glPixelTransferi(GL_MAP_STENCIL,mapStencil);
+    dt.glPixelTransferi(GL_INDEX_SHIFT,indexShift);
+    dt.glPixelTransferi(GL_INDEX_OFFSET,indexOffset);
+    dt.glPixelTransferf(GL_RED_SCALE,redScale);
+    dt.glPixelTransferf(GL_RED_BIAS,redBias);
+    dt.glPixelTransferf(GL_GREEN_SCALE,greenScale);
+    dt.glPixelTransferf(GL_GREEN_BIAS,greenBias);
+    dt.glPixelTransferf(GL_BLUE_SCALE,blueScale);
+    dt.glPixelTransferf(GL_BLUE_BIAS,blueBias);
+    dt.glPixelTransferf(GL_ALPHA_SCALE,alphaScale);
+    dt.glPixelTransferf(GL_ALPHA_BIAS,alphaBias);
     setEnable(dt,GL_COLOR_TABLE,colorTable);
     setEnable(dt,GL_POST_CONVOLUTION_COLOR_TABLE,postConvolutionColorTable);
     setEnable(dt,GL_POST_COLOR_MATRIX_COLOR_TABLE,postColorMatrixColorTable);
-    dt.call(&dt.glColorTableParameterfv)(GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
-    dt.call(&dt.glColorTableParameterfv)(GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
-    dt.call(&dt.glColorTableParameterfv)(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
-    dt.call(&dt.glColorTableParameterfv)(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
-    dt.call(&dt.glColorTableParameterfv)(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
-    dt.call(&dt.glColorTableParameterfv)(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
+    dt.glColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
+    dt.glColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
+    dt.glColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
+    dt.glColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
+    dt.glColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
+    dt.glColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
     setEnable(dt,GL_CONVOLUTION_1D,convolution1d);
     setEnable(dt,GL_CONVOLUTION_2D,convolution2d);
     setEnable(dt,GL_SEPARABLE_2D,separable2d);
-    dt.call(&dt.glConvolutionParameterfv)(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
-    dt.call(&dt.glConvolutionParameteri) (GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [0]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
-    dt.call(&dt.glConvolutionParameteri) (GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [1]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
-    dt.call(&dt.glConvolutionParameteri) (GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [2]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
-    dt.call(&dt.glConvolutionParameterfv)(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_RED_SCALE,   postConvolutionRedScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_RED_BIAS,    postConvolutionRedBias);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_GREEN_SCALE, postConvolutionGreenScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_GREEN_BIAS,  postConvolutionGreenBias);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_BLUE_SCALE,  postConvolutionBlueScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_BLUE_BIAS,   postConvolutionBlueBias);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_ALPHA_SCALE, postConvolutionAlphaScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_CONVOLUTION_ALPHA_BIAS,  postConvolutionAlphaBias);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_RED_SCALE,  postColorMatrixRedScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_RED_BIAS,   postColorMatrixRedBias);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_GREEN_SCALE,postColorMatrixGreenScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_GREEN_BIAS, postColorMatrixGreenBias);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_BLUE_SCALE, postColorMatrixBlueScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_BLUE_BIAS,  postColorMatrixBlueBias);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_ALPHA_SCALE,postColorMatrixAlphaScale);
-    dt.call(&dt.glPixelTransferf)(GL_POST_COLOR_MATRIX_ALPHA_BIAS, postColorMatrixAlphaBias);
+    dt.glConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
+    dt.glConvolutionParameteri(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [0]);
+    dt.glConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
+    dt.glConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
+    dt.glConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
+    dt.glConvolutionParameteri(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [1]);
+    dt.glConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
+    dt.glConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
+    dt.glConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
+    dt.glConvolutionParameteri(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [2]);
+    dt.glConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
+    dt.glConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_RED_SCALE,   postConvolutionRedScale);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_RED_BIAS,    postConvolutionRedBias);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_GREEN_SCALE, postConvolutionGreenScale);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_GREEN_BIAS,  postConvolutionGreenBias);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_BLUE_SCALE,  postConvolutionBlueScale);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_BLUE_BIAS,   postConvolutionBlueBias);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_ALPHA_SCALE, postConvolutionAlphaScale);
+    dt.glPixelTransferf(GL_POST_CONVOLUTION_ALPHA_BIAS,  postConvolutionAlphaBias);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_RED_SCALE,  postColorMatrixRedScale);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_RED_BIAS,   postColorMatrixRedBias);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_GREEN_SCALE,postColorMatrixGreenScale);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_GREEN_BIAS, postColorMatrixGreenBias);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_BLUE_SCALE, postColorMatrixBlueScale);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_BLUE_BIAS,  postColorMatrixBlueBias);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_ALPHA_SCALE,postColorMatrixAlphaScale);
+    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_ALPHA_BIAS, postColorMatrixAlphaBias);
     setEnable(dt,GL_HISTOGRAM,histogram);
     setEnable(dt,GL_MINMAX,minmax);
-    dt.call(&dt.glPixelZoom)(zoomX,zoomY);
+    dt.glPixelZoom(zoomX,zoomY);
     return *this;
   }
 
@@ -3573,23 +3573,23 @@ struct LightingFace
 
   inline LightingFace &get(DispatchTableGL &dt, GLenum face)
   {
-    dt.call(&dt.glGetMaterialfv)(face, GL_AMBIENT,       ambient);
-    dt.call(&dt.glGetMaterialfv)(face, GL_DIFFUSE,       diffuse);
-    dt.call(&dt.glGetMaterialfv)(face, GL_SPECULAR,      specular);
-    dt.call(&dt.glGetMaterialfv)(face, GL_EMISSION,      emission);
-    dt.call(&dt.glGetMaterialfv)(face, GL_SHININESS,     &shininess);
-    dt.call(&dt.glGetMaterialfv)(face, GL_COLOR_INDEXES, colorIndexes);
+    dt.glGetMaterialfv(face, GL_AMBIENT,       ambient);
+    dt.glGetMaterialfv(face, GL_DIFFUSE,       diffuse);
+    dt.glGetMaterialfv(face, GL_SPECULAR,      specular);
+    dt.glGetMaterialfv(face, GL_EMISSION,      emission);
+    dt.glGetMaterialfv(face, GL_SHININESS,     &shininess);
+    dt.glGetMaterialfv(face, GL_COLOR_INDEXES, colorIndexes);
     return *this;
   }
 
   inline const LightingFace &set(DispatchTableGL &dt, GLenum face) const
   {
-    dt.call(&dt.glMaterialfv)(face, GL_AMBIENT,       ambient);
-    dt.call(&dt.glMaterialfv)(face, GL_DIFFUSE,       diffuse);
-    dt.call(&dt.glMaterialfv)(face, GL_SPECULAR,      specular);
-    dt.call(&dt.glMaterialfv)(face, GL_EMISSION,      emission);
-    dt.call(&dt.glMaterialf )(face, GL_SHININESS,     shininess);
-    dt.call(&dt.glMaterialfv)(face, GL_COLOR_INDEXES, colorIndexes);
+    dt.glMaterialfv(face, GL_AMBIENT,       ambient);
+    dt.glMaterialfv(face, GL_DIFFUSE,       diffuse);
+    dt.glMaterialfv(face, GL_SPECULAR,      specular);
+    dt.glMaterialfv(face, GL_EMISSION,      emission);
+    dt.glMaterialf (face, GL_SHININESS,     shininess);
+    dt.glMaterialfv(face, GL_COLOR_INDEXES, colorIndexes);
     return *this;
   }
 
@@ -3676,33 +3676,33 @@ struct LightingLight
 
   inline LightingLight &get(DispatchTableGL &dt, GLenum light)
   {
-    enabled = dt.call(&dt.glIsEnabled)(light);
-    dt.call(&dt.glGetLightfv)(light, GL_AMBIENT,               ambient);
-    dt.call(&dt.glGetLightfv)(light, GL_DIFFUSE,               diffuse);
-    dt.call(&dt.glGetLightfv)(light, GL_SPECULAR,              specular);
-    dt.call(&dt.glGetLightfv)(light, GL_POSITION,              position);
-    dt.call(&dt.glGetLightfv)(light, GL_CONSTANT_ATTENUATION,  &constantAttenuation);
-    dt.call(&dt.glGetLightfv)(light, GL_LINEAR_ATTENUATION,    &linearAttenuation);
-    dt.call(&dt.glGetLightfv)(light, GL_QUADRATIC_ATTENUATION, &quadraticAttenuation);
-    dt.call(&dt.glGetLightfv)(light, GL_SPOT_DIRECTION,        spotDirection);
-    dt.call(&dt.glGetLightfv)(light, GL_SPOT_EXPONENT,         &spotExponent);
-    dt.call(&dt.glGetLightfv)(light, GL_SPOT_CUTOFF,           &spotCutoff);
+    enabled = dt.glIsEnabled(light);
+    dt.glGetLightfv(light, GL_AMBIENT,               ambient);
+    dt.glGetLightfv(light, GL_DIFFUSE,               diffuse);
+    dt.glGetLightfv(light, GL_SPECULAR,              specular);
+    dt.glGetLightfv(light, GL_POSITION,              position);
+    dt.glGetLightfv(light, GL_CONSTANT_ATTENUATION,  &constantAttenuation);
+    dt.glGetLightfv(light, GL_LINEAR_ATTENUATION,    &linearAttenuation);
+    dt.glGetLightfv(light, GL_QUADRATIC_ATTENUATION, &quadraticAttenuation);
+    dt.glGetLightfv(light, GL_SPOT_DIRECTION,        spotDirection);
+    dt.glGetLightfv(light, GL_SPOT_EXPONENT,         &spotExponent);
+    dt.glGetLightfv(light, GL_SPOT_CUTOFF,           &spotCutoff);
     return *this;
   }
 
   inline const LightingLight &set(DispatchTableGL &dt, GLenum light) const
   {
     setEnable(dt,light,enabled);
-    dt.call(&dt.glLightfv)(light, GL_AMBIENT,               ambient);
-    dt.call(&dt.glLightfv)(light, GL_DIFFUSE,               diffuse);
-    dt.call(&dt.glLightfv)(light, GL_SPECULAR,              specular);
-    dt.call(&dt.glLightfv)(light, GL_POSITION,              position);
-    dt.call(&dt.glLightf )(light, GL_CONSTANT_ATTENUATION,  constantAttenuation);
-    dt.call(&dt.glLightf )(light, GL_LINEAR_ATTENUATION,    linearAttenuation);
-    dt.call(&dt.glLightf )(light, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
-    dt.call(&dt.glLightfv)(light, GL_SPOT_DIRECTION,        spotDirection);
-    dt.call(&dt.glLightf )(light, GL_SPOT_EXPONENT,         spotExponent);
-    dt.call(&dt.glLightf )(light, GL_SPOT_CUTOFF,           spotCutoff);
+    dt.glLightfv(light, GL_AMBIENT,               ambient);
+    dt.glLightfv(light, GL_DIFFUSE,               diffuse);
+    dt.glLightfv(light, GL_SPECULAR,              specular);
+    dt.glLightfv(light, GL_POSITION,              position);
+    dt.glLightf (light, GL_CONSTANT_ATTENUATION,  constantAttenuation);
+    dt.glLightf (light, GL_LINEAR_ATTENUATION,    linearAttenuation);
+    dt.glLightf (light, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
+    dt.glLightfv(light, GL_SPOT_DIRECTION,        spotDirection);
+    dt.glLightf (light, GL_SPOT_EXPONENT,         spotExponent);
+    dt.glLightf (light, GL_SPOT_CUTOFF,           spotCutoff);
     return *this;
   }
 
@@ -3803,19 +3803,19 @@ struct Lighting
 
   Lighting &get(DispatchTableGL &dt)
   {
-    dt.call(&dt.glGetIntegerv)(GL_SHADE_MODEL,reinterpret_cast<GLint *>(&shadeModel));
-    dt.call(&dt.glGetIntegerv)(GL_CLAMP_VERTEX_COLOR,reinterpret_cast<GLint *>(&clampVertexColor));
-    dt.call(&dt.glGetIntegerv)(GL_PROVOKING_VERTEX,reinterpret_cast<GLint *>(&provokingVertex));
-    lighting = dt.call(&dt.glIsEnabled)(GL_LIGHTING);
-    colorMaterial = dt.call(&dt.glIsEnabled)(GL_COLOR_MATERIAL);
-    dt.call(&dt.glGetIntegerv)(GL_COLOR_MATERIAL_PARAMETER,reinterpret_cast<GLint *>(&colorMaterialParameter));
-    dt.call(&dt.glGetIntegerv)(GL_COLOR_MATERIAL_FACE,reinterpret_cast<GLint *>(&colorMaterialFace));
+    dt.glGetIntegerv(GL_SHADE_MODEL,reinterpret_cast<GLint *>(&shadeModel));
+    dt.glGetIntegerv(GL_CLAMP_VERTEX_COLOR,reinterpret_cast<GLint *>(&clampVertexColor));
+    dt.glGetIntegerv(GL_PROVOKING_VERTEX,reinterpret_cast<GLint *>(&provokingVertex));
+    lighting = dt.glIsEnabled(GL_LIGHTING);
+    colorMaterial = dt.glIsEnabled(GL_COLOR_MATERIAL);
+    dt.glGetIntegerv(GL_COLOR_MATERIAL_PARAMETER,reinterpret_cast<GLint *>(&colorMaterialParameter));
+    dt.glGetIntegerv(GL_COLOR_MATERIAL_FACE,reinterpret_cast<GLint *>(&colorMaterialFace));
     front.get(dt,GL_FRONT);
     back.get(dt,GL_BACK);
-    dt.call(&dt.glGetFloatv)(GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
-    dt.call(&dt.glGetBooleanv)(GL_LIGHT_MODEL_LOCAL_VIEWER,&lightModelLocalViewer);
-    dt.call(&dt.glGetBooleanv)(GL_LIGHT_MODEL_TWO_SIDE,&lightModelTwoSide);
-    dt.call(&dt.glGetIntegerv)(GL_LIGHT_MODEL_COLOR_CONTROL,reinterpret_cast<GLint *>(&lightModelColorControl));
+    dt.glGetFloatv(GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
+    dt.glGetBooleanv(GL_LIGHT_MODEL_LOCAL_VIEWER,&lightModelLocalViewer);
+    dt.glGetBooleanv(GL_LIGHT_MODEL_TWO_SIDE,&lightModelTwoSide);
+    dt.glGetIntegerv(GL_LIGHT_MODEL_COLOR_CONTROL,reinterpret_cast<GLint *>(&lightModelColorControl));
     size_t n = array_size( lights );
     for (size_t ii=0; ii<n; ii++)
     {
@@ -3827,18 +3827,18 @@ struct Lighting
 
   const Lighting &set(DispatchTableGL &dt) const
   {
-    dt.call(&dt.glShadeModel)(shadeModel);
-    dt.call(&dt.glClampColor)(GL_CLAMP_VERTEX_COLOR,clampVertexColor);
-    dt.call(&dt.glProvokingVertex)(provokingVertex);
+    dt.glShadeModel(shadeModel);
+    dt.glClampColor(GL_CLAMP_VERTEX_COLOR,clampVertexColor);
+    dt.glProvokingVertex(provokingVertex);
     setEnable(dt,GL_LIGHTING,lighting);
     setEnable(dt,GL_COLOR_MATERIAL,colorMaterial);
-    dt.call(&dt.glColorMaterial)(colorMaterialFace,colorMaterialParameter);
+    dt.glColorMaterial(colorMaterialFace,colorMaterialParameter);
     front.set(dt,GL_FRONT);
     back.set(dt,GL_BACK);
-    dt.call(&dt.glLightModelfv)(GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
-    dt.call(&dt.glLightModeli)(GL_LIGHT_MODEL_LOCAL_VIEWER,lightModelLocalViewer);
-    dt.call(&dt.glLightModeli)(GL_LIGHT_MODEL_TWO_SIDE,lightModelTwoSide);
-    dt.call(&dt.glLightModeli)(GL_LIGHT_MODEL_COLOR_CONTROL,lightModelColorControl);
+    dt.glLightModelfv(GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
+    dt.glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER,lightModelLocalViewer);
+    dt.glLightModeli(GL_LIGHT_MODEL_TWO_SIDE,lightModelTwoSide);
+    dt.glLightModeli(GL_LIGHT_MODEL_COLOR_CONTROL,lightModelColorControl);
     size_t n = array_size( lights );
     for (size_t ii=0; ii<n; ii++)
     {

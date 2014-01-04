@@ -333,7 +333,7 @@ def generateDispatchHttp(apis, args):
 
       if not typeIsVoid(rType):
         code += 'ret = '
-      code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+      code += '_next->%s(%s);\n' % ( name, callParams )
 
       
       if generated and 'post' in generated:

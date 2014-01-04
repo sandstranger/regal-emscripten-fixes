@@ -1820,29 +1820,29 @@ void Program::Init( RegalContext * ctx, const Store & sstore, GLuint vshd, GLuin
   RegalAssert(ctx);
   DispatchTableGL & tbl = ctx->dispatcher.emulation;
   store = sstore;
-  pg = tbl.call(&tbl.glCreateProgram)();
+  pg = tbl.glCreateProgram();
   vs = vshd;
-  tbl.call(&tbl.glAttachShader)(pg, vs );
+  tbl.glAttachShader(pg, vs );
   fs = fshd;
-  tbl.call(&tbl.glAttachShader)(pg, fs );
+  tbl.glAttachShader(pg, fs );
   Attribs( ctx );
-  tbl.call(&tbl.glLinkProgram)( pg );
+  tbl.glLinkProgram( pg );
 
 #ifndef NDEBUG
   GLint status = 0;
-  tbl.call(&tbl.glGetProgramiv)( pg, GL_LINK_STATUS, &status );
+  tbl.glGetProgramiv( pg, GL_LINK_STATUS, &status );
   if (!status)
   {
     std::string log;
-    if (helper::getInfoLog(log,tbl.call(&tbl.glGetProgramInfoLog),tbl.call(&tbl.glGetProgramiv),pg))
+    if (helper::getInfoLog( log, tbl.glGetProgramInfoLog, tbl.glGetProgramiv, pg ))
       Warning( "Regal::Program::Init", log);
   }
 #endif
 
-  tbl.call(&tbl.glUseProgram)( pg );
+  tbl.glUseProgram( pg );
   Samplers( ctx, tbl );
   Uniforms( ctx, tbl );
-  tbl.call(&tbl.glUseProgram)( ctx->iff->program );
+  tbl.glUseProgram( ctx->iff->program );
 }
 
 void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GLuint & shader, const GLchar *src )
@@ -1854,17 +1854,17 @@ void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GL
   const GLchar *srcs[] = { src };
   GLint len[] = { 0 };
   len[0] = (GLint)strlen( src );
-  shader = tbl.call(&tbl.glCreateShader)(type);
-  tbl.call(&tbl.glShaderSource)( shader, 1, srcs, len );
-  tbl.call(&tbl.glCompileShader)( shader );
+  shader = tbl.glCreateShader(type);
+  tbl.glShaderSource( shader, 1, srcs, len );
+  tbl.glCompileShader( shader );
 
 #ifndef NDEBUG
   GLint status = 0;
-  tbl.call(&tbl.glGetShaderiv)( shader, GL_COMPILE_STATUS, &status );
+  tbl.glGetShaderiv( shader, GL_COMPILE_STATUS, &status );
   if (!status)
   {
     std::string log;
-    if (helper::getInfoLog(log,tbl.call(&tbl.glGetShaderInfoLog),tbl.call(&tbl.glGetShaderiv),shader))
+    if ( helper::getInfoLog( log, tbl.glGetShaderInfoLog, tbl.glGetShaderiv, shader ) )
       Warning("Regal::Program::Shader", log);
   }
 #endif
@@ -1878,28 +1878,28 @@ void Program::Attribs( RegalContext * ctx )
   DispatchTableGL & tbl = ctx->dispatcher.emulation;
 
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Vertex );
-  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
-  //tbl.call(&tbl.glBindAttribLocation)( pg, 1, "rglWeight" );
+  tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
+  //tbl.glBindAttribLocation( pg, 1, "rglWeight" );
   if ( store.lighting )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Normal );
-    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
+    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
   }
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Color );
   if ( store.attrArrayFlags & ( 1 << ctx->iff->ffAttrMap[ RFF2A_Color ] ) && ( store.lighting == false || store.colorMaterial ) )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Color );
-    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
+    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
   }
   if ( store.colorSum  && store.lighting == false )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_SecondaryColor );
-    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
+    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
   }
   if ( store.fog.enable && store.fog.useDepth == false )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_FogCoord );
-    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
+    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
   }
   GLuint units = std::min( (GLuint)ctx->iff->ffAttrNumTex, (GLuint)REGAL_EMU_MAX_TEXTURE_UNITS );
   for ( GLuint i = 0; i < units; i++ )
@@ -1913,7 +1913,7 @@ void Program::Attribs( RegalContext * ctx )
 #endif
     string_list ss;
     ss << "rglMultiTexCoord" << i;
-    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
+    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
   }
 }
 
@@ -1930,14 +1930,14 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_SecondaryColor );
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_FogCoord );
 
-  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
-  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
-  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
+  tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
+  tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
+  tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
   if ( ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ] != RFF2A_Invalid )
   {
-    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
+    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
   }
-  tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
+  tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
   GLuint units = std::min( /*(GLuint)ctx->iff->ffAttrNumTex*/(GLuint)16, (GLuint)REGAL_EMU_MAX_TEXTURE_UNITS );
   for ( GLuint i = 0; i < units; i++ )
   {
@@ -1945,7 +1945,7 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
     string s( "rglMultiTexCoord" );
     const char *nums = "0123456789abcdefghijklmnop";
     s += string( nums + i, 1 );
-    tbl.call(&tbl.glBindAttribLocation)( pg, ctx->iff->ffAttrTexBegin + i, s.c_str() );
+    tbl.glBindAttribLocation( pg, ctx->iff->ffAttrTexBegin + i, s.c_str() );
   }
 }
 
@@ -1959,9 +1959,9 @@ void Program::Samplers( RegalContext * ctx, DispatchTableGL & tbl )
   for ( GLint ii = 0; ii < REGAL_EMU_MAX_TEXTURE_UNITS; ii++ )
   {
     std::string samplerName = boost::print::print_string("rglSampler",ii);
-    GLint slot = tbl.call(&tbl.glGetUniformLocation)( pg, samplerName.c_str() );
+    GLint slot = tbl.glGetUniformLocation( pg, samplerName.c_str() );
     if ( slot >= 0 )
-      tbl.call(&tbl.glUniform1i)( slot, ii );
+      tbl.glUniform1i( slot, ii );
   }
 }
 
@@ -1975,7 +1975,7 @@ void Iff::UserProgramInstance::LocateUniforms( RegalContext * ctx, DispatchTable
   {
     RegalAssertArrayIndex( regalFFUniformInfo, i );
     const RegalFFUniformInfo & ri = regalFFUniformInfo[i];
-    GLint slot = tbl.call(&tbl.glGetUniformLocation)( inst.prog, ri.name );
+    GLint slot = tbl.glGetUniformLocation( inst.prog, ri.name );
     if (slot > -1)
       ffuniforms[ ri.val ] = UniformInfo(~GLuint64(0), slot);
   }
@@ -1992,7 +1992,7 @@ void Program::Uniforms( RegalContext * ctx, DispatchTableGL & tbl )
   {
     RegalAssertArrayIndex( regalFFUniformInfo, i );
     const RegalFFUniformInfo & ri = regalFFUniformInfo[i];
-    GLint slot = tbl.call(&tbl.glGetUniformLocation)( pg, ri.name );
+    GLint slot = tbl.glGetUniformLocation( pg, ri.name );
     if (slot > -1)
       uniforms[ ri.val ] = UniformInfo(~GLuint64(0), slot);
   }
@@ -2056,8 +2056,8 @@ void Iff::Cleanup( RegalContext &ctx )
   RestoreVao(&ctx);
   DispatchTableGL &tbl = ctx.dispatcher.emulation;
 
-  tbl.call(&tbl.glDeleteBuffers)(1, &immVbo);
-  tbl.call(&tbl.glDeleteVertexArrays)(1, &immVao);
+  tbl.glDeleteBuffers(1, &immVbo);
+  tbl.glDeleteVertexArrays(1, &immVao);
 
   size_t n = array_size( ffprogs );
   for (size_t i = 0; i < n; ++i)
@@ -2068,12 +2068,12 @@ void Iff::Cleanup( RegalContext &ctx )
     {
       if (&pgm == currprog)
       {
-        tbl.call(&tbl.glUseProgram)(0);
+        tbl.glUseProgram(0);
         currprog = NULL;
       }
-      tbl.call(&tbl.glDeleteShader)(pgm.vs);
-      tbl.call(&tbl.glDeleteShader)(pgm.fs);
-      tbl.call(&tbl.glDeleteProgram)(pgm.pg);
+      tbl.glDeleteShader(pgm.vs);
+      tbl.glDeleteShader(pgm.fs);
+      tbl.glDeleteProgram(pgm.pg);
     }
   }
 
@@ -4097,9 +4097,9 @@ void Iff::UseFixedFunctionProgram( RegalContext * ctx )
     if ( p->pg != 0 )
     {
       DispatchTableGL & tbl = ctx->dispatcher.emulation;
-      tbl.call(&tbl.glDeleteShader)( p->vs );
-      tbl.call(&tbl.glDeleteShader)( p->fs );
-      tbl.call(&tbl.glDeleteProgram)( p->pg );
+      tbl.glDeleteShader( p->vs );
+      tbl.glDeleteShader( p->fs );
+      tbl.glDeleteProgram( p->pg );
       *p = Program();
     }
     GLuint vs = CreateFixedFunctionVertexShader( ctx );
@@ -4184,7 +4184,7 @@ void Iff::UseShaderProgram( RegalContext * ctx )
       currinst->prevKey = k;
       currinst->prevInstance = & currinst->instances[ k ];
       if( currinst->prevInstance->inst.prog != 0 ) {
-        tbl.call(&tbl.glUseProgram)( currinst->prevInstance->inst.prog );
+        tbl.glUseProgram( currinst->prevInstance->inst.prog );
       }
     }
     UserProgramInstance & upi = * currinst->prevInstance;
@@ -4207,7 +4207,7 @@ void Iff::UseShaderProgram( RegalContext * ctx )
 
       ShaderInstance::CreateProgramInstance( tbl, currinst->program, sources, upi.inst );
       upi.LocateUniforms( ctx, tbl );
-      tbl.call(&tbl.glUseProgram)( upi.inst.prog );
+      tbl.glUseProgram( upi.inst.prog );
     }
 
     if( upi.inst.ver != currinst->program.ver ) {
@@ -4504,11 +4504,11 @@ void Iff::LinkProgram( RegalContext *ctx, GLuint program )
   tbl.glLinkProgram( program );
   Program & p = shprogmap[ program ];
   
-  tbl.call(&tbl.glUseProgram)( program );
+  tbl.glUseProgram( program );
   p.Samplers( ctx, tbl );
   p.Uniforms( ctx, tbl );
   if( this->program != 0 ) {
-    tbl.call(&tbl.glUseProgram)( this->program );
+    tbl.glUseProgram( this->program );
   }
   
 }

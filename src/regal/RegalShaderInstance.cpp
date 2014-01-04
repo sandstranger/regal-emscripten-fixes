@@ -350,23 +350,23 @@ namespace ShaderInstance {
       case UAT_Double:
       case UAT_DoubleMatrix: {
         for( int j = 0; j < count; j++ ) {
-          tbl.call(&tbl.glGetUniformdv)( program, location + j, reinterpret_cast<GLdouble *>( val + j * size ) );
+          tbl.glGetUniformdv( program, location + j, reinterpret_cast<GLdouble *>( val + j * size ) );
         }
       } break;
       case UAT_Float:
       case UAT_FloatMatrix: {
         for( int j = 0; j < count; j++ ) {
-          tbl.call(&tbl.glGetUniformfv)( program, location + j, reinterpret_cast<GLfloat *>( val + j * size ) );
+          tbl.glGetUniformfv( program, location + j, reinterpret_cast<GLfloat *>( val + j * size ) );
         }
       } break;
       case UAT_Int: {
         for( int j = 0; j < count; j++ ) {
-          tbl.call(&tbl.glGetUniformiv)( program, location + j, reinterpret_cast<GLint *>( val + j * size ) );
+          tbl.glGetUniformiv( program, location + j, reinterpret_cast<GLint *>( val + j * size ) );
         }
       } break;
       case UAT_UnsignedInt: {
         for( int j = 0; j < count; j++ ) {
-          tbl.call(&tbl.glGetUniformuiv)( program, location + j, reinterpret_cast<GLuint *>( val + j * size ) );
+          tbl.glGetUniformuiv( program, location + j, reinterpret_cast<GLuint *>( val + j * size ) );
         }
       } break;
       default:
@@ -382,28 +382,28 @@ namespace ShaderInstance {
       case UAT_Double: {
         typedef GLdouble Type;
         typedef void (REGAL_CALL *Uniform)( GLint, GLsizei, const Type *);
-        Uniform uniformv[] = { tbl.call(&tbl.glUniform1dv), tbl.call(&tbl.glUniform2dv), tbl.call(&tbl.glUniform3dv), tbl.call(&tbl.glUniform4dv) };
+        Uniform uniformv[] = { tbl.glUniform1dv, tbl.glUniform2dv, tbl.glUniform3dv, tbl.glUniform4dv };
         int idx = ( size / sizeof(Type) ) - 1;
         uniformv[idx]( location, count, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_Float: {
         typedef GLfloat Type;
         typedef void (REGAL_CALL *Uniform)( GLint, GLsizei, const Type *);
-        Uniform uniformv[] = { tbl.call(&tbl.glUniform1fv), tbl.call(&tbl.glUniform2fv), tbl.call(&tbl.glUniform3fv), tbl.call(&tbl.glUniform4fv) };
+        Uniform uniformv[] = { tbl.glUniform1fv, tbl.glUniform2fv, tbl.glUniform3fv, tbl.glUniform4fv };
         int idx = ( size / sizeof(Type) ) - 1;
         uniformv[idx]( location, count, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_Int: {
         typedef GLint Type;
         typedef void (REGAL_CALL *Uniform)( GLint, GLsizei, const Type *);
-        Uniform uniformv[] = { tbl.call(&tbl.glUniform1iv), tbl.call(&tbl.glUniform2iv), tbl.call(&tbl.glUniform3iv), tbl.call(&tbl.glUniform4iv) };
+        Uniform uniformv[] = { tbl.glUniform1iv, tbl.glUniform2iv, tbl.glUniform3iv, tbl.glUniform4iv };
         int idx = ( size / sizeof(Type) ) - 1;
         uniformv[idx]( location, count, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_UnsignedInt: {
         typedef GLuint Type;
         typedef void (REGAL_CALL *Uniform)( GLint, GLsizei, const Type *);
-        Uniform uniformv[] = { tbl.call(&tbl.glUniform1uiv), tbl.call(&tbl.glUniform2uiv), tbl.call(&tbl.glUniform3uiv), tbl.call(&tbl.glUniform4uiv) };
+        Uniform uniformv[] = { tbl.glUniform1uiv, tbl.glUniform2uiv, tbl.glUniform3uiv, tbl.glUniform4uiv };
         int idx = ( size / sizeof(Type) ) - 1;
         uniformv[idx]( location, count, reinterpret_cast<const Type *>(val) );
       } break;
@@ -411,9 +411,9 @@ namespace ShaderInstance {
         typedef GLdouble Type;
         typedef void (REGAL_CALL *Uniform)( GLint, GLsizei, GLboolean, const Type *);
         Uniform uniformv[3][3] = {
-          { tbl.call(&tbl.glUniformMatrix2dv),   tbl.call(&tbl.glUniformMatrix2x3dv), tbl.call(&tbl.glUniformMatrix2x4dv) },
-          { tbl.call(&tbl.glUniformMatrix3x2dv), tbl.call(&tbl.glUniformMatrix3dv),   tbl.call(&tbl.glUniformMatrix3x4dv) },
-          { tbl.call(&tbl.glUniformMatrix4x2dv), tbl.call(&tbl.glUniformMatrix4x3dv), tbl.call(&tbl.glUniformMatrix4dv)   }
+          { tbl.glUniformMatrix2dv,   tbl.glUniformMatrix2x3dv, tbl.glUniformMatrix2x4dv },
+          { tbl.glUniformMatrix3x2dv, tbl.glUniformMatrix3dv,   tbl.glUniformMatrix3x4dv },
+          { tbl.glUniformMatrix4x2dv, tbl.glUniformMatrix4x3dv, tbl.glUniformMatrix4dv   }
         };
         MatrixDims md = GetMatrixDims( type );
         uniformv[ md.rows - 2 ][ md.cols - 2 ]( location, count, GL_TRUE, reinterpret_cast<const Type *>(val) );
@@ -422,9 +422,9 @@ namespace ShaderInstance {
         typedef GLfloat Type;
         typedef void (REGAL_CALL *Uniform)( GLint, GLsizei, GLboolean, const Type *);
         Uniform uniformv[3][3] = {
-          { tbl.call(&tbl.glUniformMatrix2fv),   tbl.call(&tbl.glUniformMatrix2x3fv), tbl.call(&tbl.glUniformMatrix2x4fv) },
-          { tbl.call(&tbl.glUniformMatrix3x2fv), tbl.call(&tbl.glUniformMatrix3fv),   tbl.call(&tbl.glUniformMatrix3x4fv) },
-          { tbl.call(&tbl.glUniformMatrix4x2fv), tbl.call(&tbl.glUniformMatrix4x3fv), tbl.call(&tbl.glUniformMatrix4fv)   }
+          { tbl.glUniformMatrix2fv,   tbl.glUniformMatrix2x3fv, tbl.glUniformMatrix2x4fv },
+          { tbl.glUniformMatrix3x2fv, tbl.glUniformMatrix3fv,   tbl.glUniformMatrix3x4fv },
+          { tbl.glUniformMatrix4x2fv, tbl.glUniformMatrix4x3fv, tbl.glUniformMatrix4fv   }
         };
         MatrixDims md = GetMatrixDims( type );
         uniformv[ md.rows - 2 ][ md.cols - 2 ]( location, count, GL_TRUE, reinterpret_cast<const Type *>(val) );
@@ -471,7 +471,7 @@ namespace ShaderInstance {
       const Uniform & u = it->second;
       UniformInstance ui;
       ui.location = u.loc;
-      ui.instanceLocation = tbl.call(&tbl.glGetUniformLocation)( prog, u.name.c_str() );
+      ui.instanceLocation = tbl.glGetUniformLocation( prog, u.name.c_str() );
       ui.ver = ~ GLuint64(0);
       
       uniforms.push_back( ui );
@@ -495,12 +495,12 @@ namespace ShaderInstance {
 
   
   void GetShaderSource( DispatchTableGL & tbl, GLuint shader, ShaderSource & ss ) {
-    tbl.call(&tbl.glGetShaderiv)( shader, GL_SHADER_TYPE, reinterpret_cast<GLint *>(&ss.type) );
+    tbl.glGetShaderiv( shader, GL_SHADER_TYPE, reinterpret_cast<GLint *>(&ss.type) );
     GLint sz = 0;
-    tbl.call(&tbl.glGetShaderiv)( shader, GL_SHADER_SOURCE_LENGTH, &sz );
+    tbl.glGetShaderiv( shader, GL_SHADER_SOURCE_LENGTH, &sz );
     GLchar *src = new GLchar[ sz + 1 ];
     GLsizei sz1 = 0;
-    tbl.call(&tbl.glGetShaderSource)( shader, sz + 1, &sz1, src );
+    tbl.glGetShaderSource( shader, sz + 1, &sz1, src );
     src[sz] = 0;
     ss.src = src;
     delete [] src;
@@ -510,7 +510,7 @@ namespace ShaderInstance {
     sources.clear();
     GLuint shaders[8];
     GLsizei numShaders = 0;
-    tbl.call(&tbl.glGetAttachedShaders)( prog, (GLsizei)array_size(shaders), &numShaders, shaders );
+    tbl.glGetAttachedShaders( prog, (GLsizei)array_size(shaders), &numShaders, shaders );
     
     for( int i = 0; i < numShaders; i++ ) {
       sources.push_back( ShaderSource() );
@@ -520,14 +520,14 @@ namespace ShaderInstance {
   }
 
   GLuint CreateShader( DispatchTableGL & tbl, const ShaderSource & ss ) {
-    GLuint s = tbl.call(&tbl.glCreateShader)( ss.type );
+    GLuint s = tbl.glCreateShader( ss.type );
     const GLchar *dumb[] =  { ss.src.c_str(), NULL };
     GLsizei sizes[] = { (GLsizei)ss.src.size(), 0 };
-    tbl.call(&tbl.glShaderSource)( s, 1, dumb, sizes );
-    tbl.call(&tbl.glCompileShader)( s );
+    tbl.glShaderSource( s, 1, dumb, sizes );
+    tbl.glCompileShader( s );
     char dbgLog[1<<15];
     int dbgLogLen = 0;
-    tbl.call(&tbl.glGetShaderInfoLog)( s, (1<<15) - 2, &dbgLogLen, dbgLog );
+    tbl.glGetShaderInfoLog( s, (1<<15) - 2, &dbgLogLen, dbgLog );
     dbgLog[ dbgLogLen ] = 0;
     return s;
   }
@@ -535,8 +535,8 @@ namespace ShaderInstance {
 
   void InitProgram( DispatchTableGL & tbl, GLuint prog, Program & p ) {
     GLint activeUniforms = 0;
-    tbl.call(&tbl.glGetProgramiv)( prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
-    tbl.call(&tbl.glGetError)();
+    tbl.glGetProgramiv( prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
+    tbl.glGetError();
     p = Program();
     p.prog = prog;
     p.ver = 0;
@@ -545,12 +545,12 @@ namespace ShaderInstance {
       GLsizei nameLen = 0;
       GLint count;
       GLenum type;
-      tbl.call(&tbl.glGetActiveUniform)( prog, i, 80, &nameLen, &count, &type, name );
+      tbl.glGetActiveUniform( prog, i, 80, &nameLen, &count, &type, name );
       name[nameLen] = 0;
       if( strncmp( name, "rgl", 3 ) == 0 ) {
         continue; // rgl namespace is reserved
       }
-      GLint loc = tbl.call(&tbl.glGetUniformLocation)( prog, name );
+      GLint loc = tbl.glGetUniformLocation( prog, name );
       p.AddUniform( name, loc, count, type );
       char buf[4096];
       GetUniform( tbl, prog, loc, count, type, buf );
@@ -562,27 +562,27 @@ namespace ShaderInstance {
     
     pi.prog = inst;
     
-    tbl.call(&tbl.glLinkProgram)( pi.prog );
+    tbl.glLinkProgram( pi.prog );
     
     GLint activeAttributes = 0;
-    tbl.call(&tbl.glGetProgramiv)( p.prog, GL_ACTIVE_ATTRIBUTES, &activeAttributes );
+    tbl.glGetProgramiv( p.prog, GL_ACTIVE_ATTRIBUTES, &activeAttributes );
     
     for( int i = 0; i < activeAttributes; i++ ) {
       GLchar name[80];
       GLsizei nameLen = 0;
       GLint size;
       GLenum type;
-      tbl.call(&tbl.glGetActiveAttrib)( p.prog, i, 80, &nameLen, &size, &type, name );
+      tbl.glGetActiveAttrib( p.prog, i, 80, &nameLen, &size, &type, name );
       name[nameLen] = 0;
-      GLint loc = tbl.call(&tbl.glGetAttribLocation)( p.prog, name );
-      tbl.call(&tbl.glBindAttribLocation)( pi.prog, loc, name );
+      GLint loc = tbl.glGetAttribLocation( p.prog, name );
+      tbl.glBindAttribLocation( pi.prog, loc, name );
     }
     
-    tbl.call(&tbl.glLinkProgram)( pi.prog );
+    tbl.glLinkProgram( pi.prog );
     {
       char dbgLog[1<<15];
       int dbgLogLen = 0;
-      tbl.call(&tbl.glGetProgramInfoLog)( pi.prog, (1<<15) - 2, &dbgLogLen, dbgLog );
+      tbl.glGetProgramInfoLog( pi.prog, (1<<15) - 2, &dbgLogLen, dbgLog );
       dbgLog[ dbgLogLen ] = 0;
     }
     
@@ -591,10 +591,10 @@ namespace ShaderInstance {
   }
   
   void CreateProgramInstance( DispatchTableGL & tbl, const Program & p, const std::vector<ShaderSource> & sources, ProgramInstance &pi ) {
-    GLuint inst = tbl.call(&tbl.glCreateProgram)();
+    GLuint inst = tbl.glCreateProgram();
     for( int i = 0; i < (int)sources.size(); i++ ) {
       GLuint si = CreateShader( tbl, sources[i] );
-      tbl.call(&tbl.glAttachShader)( inst, si );
+      tbl.glAttachShader( inst, si );
     }
     InitProgramInstance( tbl, p, inst, pi );
   }

@@ -132,7 +132,7 @@ def apiLoaderFuncDefineCode(apis, args):
       code += '    '
       if not typeIsVoid(rType):
         code += 'return '
-      code += '_driver.call(&_driver.%s)(%s);\n'%(name, callParams)
+      code += '_driver.%s(%s);\n'%(name, callParams)
       code += '  }\n\n'
 
     if api.name in cond:

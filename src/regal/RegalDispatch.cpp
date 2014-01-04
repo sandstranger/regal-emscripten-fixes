@@ -46,7 +46,8 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+/*
 void *DispatchTableGL::doCall    (void **func) { return reinterpret_cast<void *>(Dispatch::call(*this,reinterpret_cast<void (**)()>(func))); }
 void *DispatchTableGlobal::doCall(void **func) { return reinterpret_cast<void *>(Dispatch::call(*this,reinterpret_cast<void (**)()>(func))); }
-
+*/
 REGAL_NAMESPACE_END

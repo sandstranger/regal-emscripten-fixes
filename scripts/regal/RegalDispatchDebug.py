@@ -70,7 +70,7 @@ def apiDebugFuncDefineCode(apis, args):
       code += '  '
       if not typeIsVoid(rType):
         code += '%s ret = ' % rType
-      code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+      code += '_next->%s(%s);\n' % ( name, callParams )
       if not typeIsVoid(rType):
         code += '  return ret;\n'
       code += '}\n\n'

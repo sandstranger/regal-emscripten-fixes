@@ -94,17 +94,17 @@ namespace ClientState
   inline static void enable(DispatchTableGL &dt, const GLenum cap, const GLboolean enable)
   {
     if (enable)
-      dt.call(&dt.glEnableClientState)(cap);
+      dt.glEnableClientState(cap);
     else
-      dt.call(&dt.glDisableClientState)(cap);
+      dt.glDisableClientState(cap);
   }
 
   inline static void enablei(DispatchTableGL &dt, const GLenum cap, const GLuint index, const GLboolean enable)
   {
     if (enable)
-      dt.call(&dt.glEnableClientStateiEXT)(cap,index);
+      dt.glEnableClientStateiEXT(cap,index);
     else
-      dt.call(&dt.glDisableClientStateiEXT)(cap,index);
+      dt.glDisableClientStateiEXT(cap,index);
   }
 
   inline static void enableToString(string_list& tmp, const GLboolean b, const char* bEnum, const char *delim = "\n")
@@ -190,24 +190,24 @@ namespace ClientState
       {
         if (vaInt < 7)
         {
-          enabled = dt.call(&dt.glIsEnabled)(vaEnum[vaInt][0]);
-          dt.call(&dt.glGetPointerv)(vaEnum[vaInt][1],const_cast<GLvoid**>(&pointer));
-          dt.call(&dt.glGetIntegerv)(vaEnum[vaInt][2],reinterpret_cast<GLint*>(&buffer));
+          enabled = dt.glIsEnabled(vaEnum[vaInt][0]);
+          dt.glGetPointerv(vaEnum[vaInt][1],const_cast<GLvoid**>(&pointer));
+          dt.glGetIntegerv(vaEnum[vaInt][2],reinterpret_cast<GLint*>(&buffer));
           if (vaEnum[vaInt][3] != GL_ZERO)
-            dt.call(&dt.glGetIntegerv)(vaEnum[vaInt][3],&size);
+            dt.glGetIntegerv(vaEnum[vaInt][3],&size);
           if (vaEnum[vaInt][4] != GL_ZERO)
-            dt.call(&dt.glGetIntegerv)(vaEnum[vaInt][4],reinterpret_cast<GLint*>(&type));
-          dt.call(&dt.glGetIntegerv)(vaEnum[vaInt][5],&stride);
+            dt.glGetIntegerv(vaEnum[vaInt][4],reinterpret_cast<GLint*>(&type));
+          dt.glGetIntegerv(vaEnum[vaInt][5],&stride);
         }
         else
         {
           GLuint index = static_cast<GLuint>(vaInt - 7);
-          enabled = dt.call(&dt.glIsEnabledi)(vaEnum[7][0],index);
-          dt.call(&dt.glGetPointeri_vEXT)(vaEnum[7][1],index,const_cast<GLvoid**>(&pointer));
-          dt.call(&dt.glGetIntegeri_v)(vaEnum[7][2],index,reinterpret_cast<GLint*>(&buffer));
-          dt.call(&dt.glGetIntegeri_v)(vaEnum[7][3],index,&size);
-          dt.call(&dt.glGetIntegeri_v)(vaEnum[7][4],index,reinterpret_cast<GLint*>(&type));
-          dt.call(&dt.glGetIntegeri_v)(vaEnum[7][5],index,&stride);
+          enabled = dt.glIsEnabledi(vaEnum[7][0],index);
+          dt.glGetPointeri_vEXT(vaEnum[7][1],index,const_cast<GLvoid**>(&pointer));
+          dt.glGetIntegeri_v(vaEnum[7][2],index,reinterpret_cast<GLint*>(&buffer));
+          dt.glGetIntegeri_v(vaEnum[7][3],index,&size);
+          dt.glGetIntegeri_v(vaEnum[7][4],index,reinterpret_cast<GLint*>(&type));
+          dt.glGetIntegeri_v(vaEnum[7][5],index,&stride);
         }
       }
       return *this;
@@ -224,29 +224,29 @@ namespace ClientState
           if (vaInt < 7)
           {
             enable(dt,vaEnum[vaInt][0],enabled);
-            dt.call(&dt.glBindBuffer)(GL_ARRAY_BUFFER,buffer);
+            dt.glBindBuffer(GL_ARRAY_BUFFER,buffer);
             switch (vaInt)
             {
               case VERTEX:
-                dt.call(&dt.glVertexPointer)(size,type,stride,pointer);
+                dt.glVertexPointer(size,type,stride,pointer);
                 break;
               case NORMAL:
-                dt.call(&dt.glNormalPointer)(type,stride,pointer);
+                dt.glNormalPointer(type,stride,pointer);
                 break;
               case FOG_COORD:
-                dt.call(&dt.glFogCoordPointer)(type,stride,pointer);
+                dt.glFogCoordPointer(type,stride,pointer);
                 break;
               case COLOR:
-                dt.call(&dt.glColorPointer)(size,type,stride,pointer);
+                dt.glColorPointer(size,type,stride,pointer);
                 break;
               case SECONDARY_COLOR:
-                dt.call(&dt.glSecondaryColorPointer)(size,type,stride,pointer);
+                dt.glSecondaryColorPointer(size,type,stride,pointer);
                 break;
               case INDEX:
-                dt.call(&dt.glIndexPointer)(type,stride,pointer);
+                dt.glIndexPointer(type,stride,pointer);
                 break;
               case EDGE_FLAG:
-                dt.call(&dt.glEdgeFlagPointer)(stride,pointer);
+                dt.glEdgeFlagPointer(stride,pointer);
                 break;
               default:
                 break;
@@ -256,8 +256,8 @@ namespace ClientState
           {
             GLuint index = static_cast<GLuint>(vaInt - 7);
             enablei(dt,vaEnum[7][0],index,enabled);
-            dt.call(&dt.glBindBuffer)(GL_ARRAY_BUFFER,buffer);
-            dt.call(&dt.glMultiTexCoordPointerEXT)(GL_TEXTURE0+index,size,type,stride,pointer);
+            dt.glBindBuffer(GL_ARRAY_BUFFER,buffer);
+            dt.glMultiTexCoordPointerEXT(GL_TEXTURE0+index,size,type,stride,pointer);
           }
         }
       }
@@ -282,7 +282,7 @@ namespace ClientState
             if (buffer != to.buffer)
             {
               buffer = to.buffer;
-              dt.call(&dt.glBindBuffer)(GL_ARRAY_BUFFER,buffer);
+              dt.glBindBuffer(GL_ARRAY_BUFFER,buffer);
             }
             if (size != to.size ||
                 type != to.type ||
@@ -296,25 +296,25 @@ namespace ClientState
               switch (vaInt)
               {
                 case VERTEX:
-                  dt.call(&dt.glVertexPointer)(size,type,stride,pointer);
+                  dt.glVertexPointer(size,type,stride,pointer);
                   break;
                 case NORMAL:
-                  dt.call(&dt.glNormalPointer)(type,stride,pointer);
+                  dt.glNormalPointer(type,stride,pointer);
                   break;
                 case FOG_COORD:
-                  dt.call(&dt.glFogCoordPointer)(type,stride,pointer);
+                  dt.glFogCoordPointer(type,stride,pointer);
                   break;
                 case COLOR:
-                  dt.call(&dt.glColorPointer)(size,type,stride,pointer);
+                  dt.glColorPointer(size,type,stride,pointer);
                   break;
                 case SECONDARY_COLOR:
-                  dt.call(&dt.glSecondaryColorPointer)(size,type,stride,pointer);
+                  dt.glSecondaryColorPointer(size,type,stride,pointer);
                   break;
                 case INDEX:
-                  dt.call(&dt.glIndexPointer)(type,stride,pointer);
+                  dt.glIndexPointer(type,stride,pointer);
                   break;
                 case EDGE_FLAG:
-                  dt.call(&dt.glEdgeFlagPointer)(stride,pointer);
+                  dt.glEdgeFlagPointer(stride,pointer);
                   break;
                 default:
                   break;
@@ -332,7 +332,7 @@ namespace ClientState
             if (buffer != to.buffer)
             {
               buffer = to.buffer;
-              dt.call(&dt.glBindBuffer)(GL_ARRAY_BUFFER,buffer);
+              dt.glBindBuffer(GL_ARRAY_BUFFER,buffer);
             }
             if (size != to.size ||
                 type != to.type ||
@@ -343,7 +343,7 @@ namespace ClientState
               type = to.type;
               stride = to.stride;
               pointer = to.pointer;
-              dt.call(&dt.glMultiTexCoordPointerEXT)(GL_TEXTURE0+index,size,type,stride,pointer);
+              dt.glMultiTexCoordPointerEXT(GL_TEXTURE0+index,size,type,stride,pointer);
             }
           }
         }
@@ -435,10 +435,10 @@ namespace ClientState
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
       {
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&buffer));
-        dt.call(&dt.glGetVertexAttribPointerv)(index,GL_VERTEX_ATTRIB_ARRAY_POINTER,reinterpret_cast<GLvoid **>(&offset));
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_STRIDE,reinterpret_cast<GLint*>(&stride));
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_DIVISOR,reinterpret_cast<GLint*>(&divisor));
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&buffer));
+        dt.glGetVertexAttribPointerv(index,GL_VERTEX_ATTRIB_ARRAY_POINTER,reinterpret_cast<GLvoid **>(&offset));
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_STRIDE,reinterpret_cast<GLint*>(&stride));
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_DIVISOR,reinterpret_cast<GLint*>(&divisor));
       }
       return *this;
     }
@@ -448,8 +448,8 @@ namespace ClientState
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
       {
-        dt.call(&dt.glBindVertexBuffer)(index,buffer,offset,stride);
-        dt.call(&dt.glVertexBindingDivisor)(index,divisor);
+        dt.glBindVertexBuffer(index,buffer,offset,stride);
+        dt.glVertexBindingDivisor(index,divisor);
       }
       return *this;
     }
@@ -466,12 +466,12 @@ namespace ClientState
           buffer = to.buffer;
           offset = to.offset;
           stride = to.stride;
-          dt.call(&dt.glBindVertexBuffer)(index,buffer,offset,stride);
+          dt.glBindVertexBuffer(index,buffer,offset,stride);
         }
         if (divisor != to.divisor)
         {
           divisor = to.divisor;
-          dt.call(&dt.glVertexBindingDivisor)(index,divisor);
+          dt.glVertexBindingDivisor(index,divisor);
         }
       }
     }
@@ -537,18 +537,18 @@ namespace ClientState
       {
         GLint val;
 
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_ENABLED,&val);
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_ENABLED,&val);
         enabled = static_cast<GLboolean>(val);
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_SIZE,reinterpret_cast<GLint*>(&size));
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_TYPE,reinterpret_cast<GLint*>(&type));
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_RELATIVE_OFFSET,reinterpret_cast<GLint*>(&relativeOffset));
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_NORMALIZED,&val);
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_SIZE,reinterpret_cast<GLint*>(&size));
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_TYPE,reinterpret_cast<GLint*>(&type));
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_RELATIVE_OFFSET,reinterpret_cast<GLint*>(&relativeOffset));
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_NORMALIZED,&val);
         normalized = static_cast<GLboolean>(val);
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_INTEGER,&val);
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_INTEGER,&val);
         isInteger = static_cast<GLboolean>(val);
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_LONG,&val);
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_LONG,&val);
         isLong = static_cast<GLboolean>(val);
-        dt.call(&dt.glGetVertexAttribiv)(index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&bindingIndex));
+        dt.glGetVertexAttribiv(index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&bindingIndex));
       }
       return *this;
     }
@@ -559,16 +559,16 @@ namespace ClientState
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
       {
         if (enabled)
-          dt.call(&dt.glEnableVertexAttribArray)(index);
+          dt.glEnableVertexAttribArray(index);
         else
-          dt.call(&dt.glDisableVertexAttribArray)(index);
+          dt.glDisableVertexAttribArray(index);
         if (isInteger)
-          dt.call(&dt.glVertexAttribIFormat)(index,size,type,relativeOffset);
+          dt.glVertexAttribIFormat(index,size,type,relativeOffset);
         else if (isLong)
-          dt.call(&dt.glVertexAttribLFormat)(index,size,type,relativeOffset);
+          dt.glVertexAttribLFormat(index,size,type,relativeOffset);
         else
-          dt.call(&dt.glVertexAttribFormat)(index,size,type,normalized,relativeOffset);
-        dt.call(&dt.glVertexAttribBinding)(index,bindingIndex);
+          dt.glVertexAttribFormat(index,size,type,normalized,relativeOffset);
+        dt.glVertexAttribBinding(index,bindingIndex);
       }
       return *this;
     }
@@ -582,9 +582,9 @@ namespace ClientState
         {
           enabled = to.enabled;
           if (enabled)
-            dt.call(&dt.glEnableVertexAttribArray)(index);
+            dt.glEnableVertexAttribArray(index);
           else
-            dt.call(&dt.glDisableVertexAttribArray)(index);
+            dt.glDisableVertexAttribArray(index);
         }
         if (isInteger != to.isInteger ||
             isLong != to.isLong ||
@@ -601,16 +601,16 @@ namespace ClientState
           relativeOffset = to.relativeOffset;
 
           if (isInteger)
-            dt.call(&dt.glVertexAttribIFormat)(index,size,type,relativeOffset);
+            dt.glVertexAttribIFormat(index,size,type,relativeOffset);
           else if (isLong)
-            dt.call(&dt.glVertexAttribLFormat)(index,size,type,relativeOffset);
+            dt.glVertexAttribLFormat(index,size,type,relativeOffset);
           else
-            dt.call(&dt.glVertexAttribFormat)(index,size,type,normalized,relativeOffset);
+            dt.glVertexAttribFormat(index,size,type,normalized,relativeOffset);
         }
         if (bindingIndex != to.bindingIndex)
         {
           bindingIndex = to.bindingIndex;
-          dt.call(&dt.glVertexAttribBinding)(index,bindingIndex);
+          dt.glVertexAttribBinding(index,bindingIndex);
         }
       }
     }
@@ -721,9 +721,9 @@ namespace ClientState
 
     VertexArray &get(DispatchTableGL &dt)
     {
-      dt.call(&dt.glGetIntegerv)(GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
+      dt.glGetIntegerv(GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
       if (vertexArrayBinding)
-        dt.call(&dt.glBindVertexArray)(0);
+        dt.glBindVertexArray(0);
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
         named[ii].get(dt,static_cast<vaName>(ii));
@@ -733,20 +733,20 @@ namespace ClientState
       n = array_size( generic );
       for (size_t ii=0; ii<n; ii++)
         generic[ii].get(dt,static_cast<GLuint>(ii));
-      dt.call(&dt.glGetIntegerv)(GL_ELEMENT_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&elementArrayBufferBinding));
-      dt.call(&dt.glGetIntegerv)(GL_CLIENT_ACTIVE_TEXTURE,reinterpret_cast<GLint*>(&clientActiveTexture));
-      primitiveRestartFixedIndex = dt.call(&dt.glIsEnabled)(GL_PRIMITIVE_RESTART_FIXED_INDEX);
-      primitiveRestart = dt.call(&dt.glIsEnabled)(GL_PRIMITIVE_RESTART);
-      dt.call(&dt.glGetIntegerv)(GL_PRIMITIVE_RESTART_INDEX,reinterpret_cast<GLint*>(&primitiveRestartIndex));
-      dt.call(&dt.glGetIntegerv)(GL_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&arrayBufferBinding));
+      dt.glGetIntegerv(GL_ELEMENT_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&elementArrayBufferBinding));
+      dt.glGetIntegerv(GL_CLIENT_ACTIVE_TEXTURE,reinterpret_cast<GLint*>(&clientActiveTexture));
+      primitiveRestartFixedIndex = dt.glIsEnabled(GL_PRIMITIVE_RESTART_FIXED_INDEX);
+      primitiveRestart = dt.glIsEnabled(GL_PRIMITIVE_RESTART);
+      dt.glGetIntegerv(GL_PRIMITIVE_RESTART_INDEX,reinterpret_cast<GLint*>(&primitiveRestartIndex));
+      dt.glGetIntegerv(GL_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&arrayBufferBinding));
       if (vertexArrayBinding)
-        dt.call(&dt.glBindVertexArray)(vertexArrayBinding);
+        dt.glBindVertexArray(vertexArrayBinding);
       return *this;
     }
 
     const VertexArray &set(DispatchTableGL &dt, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
-      dt.call(&dt.glBindVertexArray)(0);
+      dt.glBindVertexArray(0);
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
         named[n-ii-1].set(dt,static_cast<vaName>(n-ii-1),driverAllowsVertexAttributeArraysWithoutBoundBuffer);
@@ -756,19 +756,19 @@ namespace ClientState
       n = array_size( generic );
       for (size_t ii=0; ii<n; ii++)
         generic[n-ii-1].set(dt,static_cast<GLuint>(n-ii-1));
-      dt.call(&dt.glBindBuffer)(GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
-      dt.call(&dt.glClientActiveTexture)(clientActiveTexture);
+      dt.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
+      dt.glClientActiveTexture(clientActiveTexture);
       if (primitiveRestartFixedIndex)
-        dt.call(&dt.glEnable)(GL_PRIMITIVE_RESTART_FIXED_INDEX);
+        dt.glEnable(GL_PRIMITIVE_RESTART_FIXED_INDEX);
       else
-        dt.call(&dt.glDisable)(GL_PRIMITIVE_RESTART_FIXED_INDEX);
+        dt.glDisable(GL_PRIMITIVE_RESTART_FIXED_INDEX);
       if (primitiveRestart)
-        dt.call(&dt.glEnable)(GL_PRIMITIVE_RESTART);
+        dt.glEnable(GL_PRIMITIVE_RESTART);
       else
-        dt.call(&dt.glDisable)(GL_PRIMITIVE_RESTART);
-      dt.call(&dt.glPrimitiveRestartIndex)(primitiveRestartIndex);
-      dt.call(&dt.glBindBuffer)(GL_ARRAY_BUFFER,arrayBufferBinding);
-      dt.call(&dt.glBindVertexArray)(vertexArrayBinding);
+        dt.glDisable(GL_PRIMITIVE_RESTART);
+      dt.glPrimitiveRestartIndex(primitiveRestartIndex);
+      dt.glBindBuffer(GL_ARRAY_BUFFER,arrayBufferBinding);
+      dt.glBindVertexArray(vertexArrayBinding);
       return *this;
     }
 
@@ -777,7 +777,7 @@ namespace ClientState
       GLuint tmpVertexArrayBinding = to.vertexArrayBinding;
       if (vertexArrayBinding) {
         vertexArrayBinding = 0;
-        dt.call(&dt.glBindVertexArray)(vertexArrayBinding);
+        dt.glBindVertexArray(vertexArrayBinding);
       }
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
@@ -790,37 +790,37 @@ namespace ClientState
         generic[n-ii-1].transition(dt,to.generic[n-ii-1],static_cast<GLuint>(n-ii-1));
       if (elementArrayBufferBinding != to.elementArrayBufferBinding) {
         elementArrayBufferBinding = to.elementArrayBufferBinding;
-        dt.call(&dt.glBindBuffer)(GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
+        dt.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
       }
       if (clientActiveTexture != to.clientActiveTexture) {
         clientActiveTexture = to.clientActiveTexture;
-        dt.call(&dt.glClientActiveTexture)(clientActiveTexture);
+        dt.glClientActiveTexture(clientActiveTexture);
       }
       if (primitiveRestartFixedIndex != to.primitiveRestartFixedIndex) {
         primitiveRestartFixedIndex = to.primitiveRestartFixedIndex;
         if (primitiveRestartFixedIndex)
-          dt.call(&dt.glEnable)(GL_PRIMITIVE_RESTART_FIXED_INDEX);
+          dt.glEnable(GL_PRIMITIVE_RESTART_FIXED_INDEX);
         else
-          dt.call(&dt.glDisable)(GL_PRIMITIVE_RESTART_FIXED_INDEX);
+          dt.glDisable(GL_PRIMITIVE_RESTART_FIXED_INDEX);
       }
       if (primitiveRestart != to.primitiveRestart) {
         primitiveRestart = to.primitiveRestart;
         if (primitiveRestart)
-          dt.call(&dt.glEnable)(GL_PRIMITIVE_RESTART);
+          dt.glEnable(GL_PRIMITIVE_RESTART);
         else
-          dt.call(&dt.glDisable)(GL_PRIMITIVE_RESTART);
+          dt.glDisable(GL_PRIMITIVE_RESTART);
       }
       if (primitiveRestartIndex != to.primitiveRestartIndex) {
         primitiveRestartIndex = to.primitiveRestartIndex;
-        dt.call(&dt.glPrimitiveRestartIndex)(primitiveRestartIndex);
+        dt.glPrimitiveRestartIndex(primitiveRestartIndex);
       }
       if (arrayBufferBinding != to.arrayBufferBinding) {
         arrayBufferBinding = to.arrayBufferBinding;
-        dt.call(&dt.glBindBuffer)(GL_ARRAY_BUFFER,arrayBufferBinding);
+        dt.glBindBuffer(GL_ARRAY_BUFFER,arrayBufferBinding);
       }
       if (vertexArrayBinding != tmpVertexArrayBinding) {
         vertexArrayBinding = tmpVertexArrayBinding;
-        dt.call(&dt.glBindVertexArray)(vertexArrayBinding);
+        dt.glBindVertexArray(vertexArrayBinding);
       }
     }
 
@@ -1788,47 +1788,47 @@ namespace ClientState
 
     PixelStore &get(DispatchTableGL &dt)
     {
-      dt.call(&dt.glGetBooleanv)(GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
-      dt.call(&dt.glGetBooleanv)(GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
-      dt.call(&dt.glGetIntegerv)(GL_UNPACK_IMAGE_HEIGHT,&unpackImageHeight);
-      dt.call(&dt.glGetIntegerv)(GL_UNPACK_SKIP_IMAGES,&unpackSkipImages);
-      dt.call(&dt.glGetIntegerv)(GL_UNPACK_ROW_LENGTH,&unpackRowLength);
-      dt.call(&dt.glGetIntegerv)(GL_UNPACK_SKIP_ROWS,&unpackSkipRows);
-      dt.call(&dt.glGetIntegerv)(GL_UNPACK_SKIP_PIXELS,&unpackSkipPixels);
-      dt.call(&dt.glGetIntegerv)(GL_UNPACK_ALIGNMENT,&unpackAlignment);
-      dt.call(&dt.glGetBooleanv)(GL_PACK_SWAP_BYTES,&packSwapBytes);
-      dt.call(&dt.glGetBooleanv)(GL_PACK_LSB_FIRST,&packLsbFirst);
-      dt.call(&dt.glGetIntegerv)(GL_PACK_IMAGE_HEIGHT,&packImageHeight);
-      dt.call(&dt.glGetIntegerv)(GL_PACK_SKIP_IMAGES,&packSkipImages);
-      dt.call(&dt.glGetIntegerv)(GL_PACK_ROW_LENGTH,&packRowLength);
-      dt.call(&dt.glGetIntegerv)(GL_PACK_SKIP_ROWS,&packSkipRows);
-      dt.call(&dt.glGetIntegerv)(GL_PACK_SKIP_PIXELS,&packSkipPixels);
-      dt.call(&dt.glGetIntegerv)(GL_PACK_ALIGNMENT,&packAlignment);
-      dt.call(&dt.glGetIntegerv)(GL_PIXEL_UNPACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelUnpackBufferBinding));
-      dt.call(&dt.glGetIntegerv)(GL_PIXEL_PACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelPackBufferBinding));
+      dt.glGetBooleanv(GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
+      dt.glGetBooleanv(GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
+      dt.glGetIntegerv(GL_UNPACK_IMAGE_HEIGHT,&unpackImageHeight);
+      dt.glGetIntegerv(GL_UNPACK_SKIP_IMAGES,&unpackSkipImages);
+      dt.glGetIntegerv(GL_UNPACK_ROW_LENGTH,&unpackRowLength);
+      dt.glGetIntegerv(GL_UNPACK_SKIP_ROWS,&unpackSkipRows);
+      dt.glGetIntegerv(GL_UNPACK_SKIP_PIXELS,&unpackSkipPixels);
+      dt.glGetIntegerv(GL_UNPACK_ALIGNMENT,&unpackAlignment);
+      dt.glGetBooleanv(GL_PACK_SWAP_BYTES,&packSwapBytes);
+      dt.glGetBooleanv(GL_PACK_LSB_FIRST,&packLsbFirst);
+      dt.glGetIntegerv(GL_PACK_IMAGE_HEIGHT,&packImageHeight);
+      dt.glGetIntegerv(GL_PACK_SKIP_IMAGES,&packSkipImages);
+      dt.glGetIntegerv(GL_PACK_ROW_LENGTH,&packRowLength);
+      dt.glGetIntegerv(GL_PACK_SKIP_ROWS,&packSkipRows);
+      dt.glGetIntegerv(GL_PACK_SKIP_PIXELS,&packSkipPixels);
+      dt.glGetIntegerv(GL_PACK_ALIGNMENT,&packAlignment);
+      dt.glGetIntegerv(GL_PIXEL_UNPACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelUnpackBufferBinding));
+      dt.glGetIntegerv(GL_PIXEL_PACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelPackBufferBinding));
       return *this;
     }
 
     const PixelStore &set(DispatchTableGL &dt) const
     {
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_LSB_FIRST,unpackLsbFirst);
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_ROW_LENGTH,unpackRowLength);
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_ROWS,unpackSkipRows);
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
-      dt.call(&dt.glPixelStorei)(GL_UNPACK_ALIGNMENT,unpackAlignment);
-      dt.call(&dt.glPixelStorei)(GL_PACK_SWAP_BYTES,packSwapBytes);
-      dt.call(&dt.glPixelStorei)(GL_PACK_LSB_FIRST,packLsbFirst);
-      dt.call(&dt.glPixelStorei)(GL_PACK_IMAGE_HEIGHT,packImageHeight);
-      dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_IMAGES,packSkipImages);
-      dt.call(&dt.glPixelStorei)(GL_PACK_ROW_LENGTH,packRowLength);
-      dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_ROWS,packSkipRows);
-      dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_PIXELS,packSkipPixels);
-      dt.call(&dt.glPixelStorei)(GL_PACK_ALIGNMENT,packAlignment);
-      dt.call(&dt.glBindBuffer)(GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
-      dt.call(&dt.glBindBuffer)(GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
+      dt.glPixelStorei(GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
+      dt.glPixelStorei(GL_UNPACK_LSB_FIRST,unpackLsbFirst);
+      dt.glPixelStorei(GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
+      dt.glPixelStorei(GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
+      dt.glPixelStorei(GL_UNPACK_ROW_LENGTH,unpackRowLength);
+      dt.glPixelStorei(GL_UNPACK_SKIP_ROWS,unpackSkipRows);
+      dt.glPixelStorei(GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
+      dt.glPixelStorei(GL_UNPACK_ALIGNMENT,unpackAlignment);
+      dt.glPixelStorei(GL_PACK_SWAP_BYTES,packSwapBytes);
+      dt.glPixelStorei(GL_PACK_LSB_FIRST,packLsbFirst);
+      dt.glPixelStorei(GL_PACK_IMAGE_HEIGHT,packImageHeight);
+      dt.glPixelStorei(GL_PACK_SKIP_IMAGES,packSkipImages);
+      dt.glPixelStorei(GL_PACK_ROW_LENGTH,packRowLength);
+      dt.glPixelStorei(GL_PACK_SKIP_ROWS,packSkipRows);
+      dt.glPixelStorei(GL_PACK_SKIP_PIXELS,packSkipPixels);
+      dt.glPixelStorei(GL_PACK_ALIGNMENT,packAlignment);
+      dt.glBindBuffer(GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
+      dt.glBindBuffer(GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
       return *this;
     }
 
@@ -1836,75 +1836,75 @@ namespace ClientState
     {
       if (unpackSwapBytes != to.unpackSwapBytes) {
         unpackSwapBytes = to.unpackSwapBytes;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
+        dt.glPixelStorei(GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
       }
       if (unpackLsbFirst != to.unpackLsbFirst) {
         unpackLsbFirst = to.unpackLsbFirst;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_LSB_FIRST,unpackLsbFirst);
+        dt.glPixelStorei(GL_UNPACK_LSB_FIRST,unpackLsbFirst);
       }
       if (unpackImageHeight != to.unpackImageHeight) {
         unpackImageHeight = to.unpackImageHeight;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
+        dt.glPixelStorei(GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
       }
       if (unpackSkipImages != to.unpackSkipImages) {
         unpackSkipImages = to.unpackSkipImages;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
+        dt.glPixelStorei(GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
       }
       if (unpackRowLength != to.unpackRowLength) {
         unpackRowLength = to.unpackRowLength;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_ROW_LENGTH,unpackRowLength);
+        dt.glPixelStorei(GL_UNPACK_ROW_LENGTH,unpackRowLength);
       }
       if (unpackSkipRows != to.unpackSkipRows) {
         unpackSkipRows = to.unpackSkipRows;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_ROWS,unpackSkipRows);
+        dt.glPixelStorei(GL_UNPACK_SKIP_ROWS,unpackSkipRows);
       }
       if (unpackSkipPixels != to.unpackSkipPixels) {
         unpackSkipPixels = to.unpackSkipPixels;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
+        dt.glPixelStorei(GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
       }
       if (unpackAlignment != to.unpackAlignment) {
         unpackAlignment = to.unpackAlignment;
-        dt.call(&dt.glPixelStorei)(GL_UNPACK_ALIGNMENT,unpackAlignment);
+        dt.glPixelStorei(GL_UNPACK_ALIGNMENT,unpackAlignment);
       }
       if (packSwapBytes != to.packSwapBytes) {
         packSwapBytes = to.packSwapBytes;
-        dt.call(&dt.glPixelStorei)(GL_PACK_SWAP_BYTES,packSwapBytes);
+        dt.glPixelStorei(GL_PACK_SWAP_BYTES,packSwapBytes);
       }
       if (packLsbFirst != to.packLsbFirst) {
         packLsbFirst = to.packLsbFirst;
-        dt.call(&dt.glPixelStorei)(GL_PACK_LSB_FIRST,packLsbFirst);
+        dt.glPixelStorei(GL_PACK_LSB_FIRST,packLsbFirst);
       }
       if (packImageHeight != to.packImageHeight) {
         packImageHeight = to.packImageHeight;
-        dt.call(&dt.glPixelStorei)(GL_PACK_IMAGE_HEIGHT,packImageHeight);
+        dt.glPixelStorei(GL_PACK_IMAGE_HEIGHT,packImageHeight);
       }
       if (packSkipImages != to.packSkipImages) {
         packSkipImages = to.packSkipImages;
-        dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_IMAGES,packSkipImages);
+        dt.glPixelStorei(GL_PACK_SKIP_IMAGES,packSkipImages);
       }
       if (packRowLength != to.packRowLength) {
         packRowLength = to.packRowLength;
-        dt.call(&dt.glPixelStorei)(GL_PACK_ROW_LENGTH,packRowLength);
+        dt.glPixelStorei(GL_PACK_ROW_LENGTH,packRowLength);
       }
       if (packSkipRows != to.packSkipRows) {
         packSkipRows = to.packSkipRows;
-        dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_ROWS,packSkipRows);
+        dt.glPixelStorei(GL_PACK_SKIP_ROWS,packSkipRows);
       }
       if (packSkipPixels != to.packSkipPixels) {
         packSkipPixels = to.packSkipPixels;
-        dt.call(&dt.glPixelStorei)(GL_PACK_SKIP_PIXELS,packSkipPixels);
+        dt.glPixelStorei(GL_PACK_SKIP_PIXELS,packSkipPixels);
       }
       if (packAlignment != to.packAlignment) {
         packAlignment = to.packAlignment;
-        dt.call(&dt.glPixelStorei)(GL_PACK_ALIGNMENT,packAlignment);
+        dt.glPixelStorei(GL_PACK_ALIGNMENT,packAlignment);
       }
       if (pixelUnpackBufferBinding != to.pixelUnpackBufferBinding) {
         pixelUnpackBufferBinding = to.pixelUnpackBufferBinding;
-        dt.call(&dt.glBindBuffer)(GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
+        dt.glBindBuffer(GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
       }
       if (pixelPackBufferBinding != to.pixelPackBufferBinding) {
         pixelPackBufferBinding = to.pixelPackBufferBinding;
-        dt.call(&dt.glBindBuffer)(GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
+        dt.glBindBuffer(GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
       }
     }
 

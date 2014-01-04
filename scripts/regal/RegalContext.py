@@ -420,7 +420,7 @@ RegalContext::groupInitialized() const
 void RegalContext::parkContext( DispatchTableGlobal & tbl )
 {
   #if REGAL_SYS_OSX
-  tbl.call(&tbl.CGLSetCurrentContext)( NULL );
+  tbl.CGLSetCurrentContext( NULL );
   #else
   # error "Implement me!"
   #endif
@@ -430,7 +430,7 @@ void RegalContext::parkContext( DispatchTableGlobal & tbl )
 void RegalContext::unparkContext( DispatchTableGlobal & tbl )
 {
   #if REGAL_SYS_OSX
-  tbl.call(&tbl.CGLSetCurrentContext)( reinterpret_cast<CGLContextObj>(sysCtx) );
+  tbl.CGLSetCurrentContext( reinterpret_cast<CGLContextObj>(sysCtx) );
   #else
   # error "Implement me!"
   #endif

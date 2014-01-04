@@ -60,27 +60,27 @@ namespace Emu {
 
 template <typename T> inline void glVertex2(DispatchTableGL &dt, T x1, T y1)
 {
-  dt.call(&dt.glVertex2f)(static_cast<GLfloat>(x1), static_cast<GLfloat>(y1));
+  dt.glVertex2f(static_cast<GLfloat>(x1), static_cast<GLfloat>(y1));
 }
 
 template <> inline void glVertex2(DispatchTableGL &dt, GLfloat x1, GLfloat y1)
 {
-  dt.call(&dt.glVertex2f)(x1, y1);
+  dt.glVertex2f(x1, y1);
 }
 
 template <> inline void glVertex2(DispatchTableGL &dt, GLdouble x1, GLdouble y1)
 {
-  dt.call(&dt.glVertex2d)(x1, y1);
+  dt.glVertex2d(x1, y1);
 }
 
 template <> inline void glVertex2(DispatchTableGL &dt, GLint x1, GLint y1)
 {
-  dt.call(&dt.glVertex2i)(x1, y1);
+  dt.glVertex2i(x1, y1);
 }
 
 template <> inline void glVertex2(DispatchTableGL &dt, GLshort x1, GLshort y1)
 {
-  dt.call(&dt.glVertex2s)(x1, y1);
+  dt.glVertex2s(x1, y1);
 }
 
 struct Rect
@@ -109,7 +109,7 @@ struct Rect
 
     ctx->depthBeginEnd++;
 
-    dt.call(&dt.glBegin)(GL_POLYGON);
+    dt.glBegin(GL_POLYGON);
 
       Emu::glVertex2(dt, x1, y1);
       Emu::glVertex2(dt, x2, y1);
@@ -120,7 +120,7 @@ struct Rect
 
     ctx->depthBeginEnd--;
 
-    dt.call(&dt.glEnd)();
+    dt.glEnd();
   }
 
   template <typename T> inline void glRectv(RegalContext *ctx, const T *v1, const T *v2)

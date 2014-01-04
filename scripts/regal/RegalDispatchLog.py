@@ -137,7 +137,7 @@ def generateDispatchLog(apis, args):
       code += '    '
       if not typeIsVoid(rType):
         code += '%s ret = '%(rType)
-      code += '_next->call(&_next->%s)(%s);\n' % ( name, callParams )
+      code += '_next->%s(%s);\n' % ( name, callParams )
 
       if typeIsVoid(rType):
         code += '    %s\n' % logFunction( function, 'Driver', True, True )
