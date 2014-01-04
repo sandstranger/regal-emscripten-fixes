@@ -36,13 +36,14 @@
 
 REGAL_GLOBAL_BEGIN
 
+#include <vector>
 #include "RegalDispatcher.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct DispatcherGL : public Dispatcher
+struct DispatcherGL
 {
 public:
 
@@ -92,27 +93,9 @@ public:
   DispatcherGL();
   ~DispatcherGL();
 
-  inline void push_back(DispatchTableGL &table, bool enable)
-  {
-    // Disabling the missing table would be bad!
-    #if REGAL_MISSING
-    RegalAssert(&table!=&missing || enable==true);
-    #endif
-
-    Dispatcher::push_back(table,enable);
-  }
-
-  inline bool erase    (DispatchTableGL &table)                         { return Dispatcher::erase(table); }
-  inline bool insert   (DispatchTableGL &other, DispatchTableGL &table) { return Dispatcher::insert(other,table); }
-
-  inline void enable (DispatchTableGL &table)             { Dispatcher::enable (table); }
-  inline void disable(DispatchTableGL &table)             { Dispatcher::disable(table); }
-
-  inline bool isEnabled(DispatchTableGL &table) const     { return Dispatcher::isEnabled(table); }
-
-  inline DispatchTableGL &operator[](const std::size_t i) { return reinterpret_cast<DispatchTableGL &>(Dispatcher::operator[](i)); }
-  inline DispatchTableGL &front()                         { return reinterpret_cast<DispatchTableGL &>(Dispatcher::front());       }
-  inline DispatchTableGL &back()                          { return reinterpret_cast<DispatchTableGL &>(Dispatcher::back());        }
+  DispatchTableGL & front() { return *tables.front(); }
+  
+  std::vector<DispatchTableGL *> tables;
 };
 
 // regaltest needs these declarations too
