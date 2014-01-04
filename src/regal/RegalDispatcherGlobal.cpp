@@ -49,7 +49,7 @@ REGAL_NAMESPACE_BEGIN
 Dispatch::Global dispatchGlobal;
 
 void InitDispatchGlobal() {
-  
+  /*
   // initialize in reverse order, starting with the driver
 
   Loader::Init( dispatchGlobal );     // CGL/GLX/WGL/EGL loader
@@ -80,7 +80,7 @@ void InitDispatchGlobal() {
   }
 #endif
 
-
+*/
 }
 
 

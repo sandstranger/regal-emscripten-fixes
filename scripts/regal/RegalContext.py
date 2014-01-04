@@ -338,6 +338,16 @@ RegalContext::Init()
 
   RegalAssert(!initialized);
 
+  // Regal context init requires staged dispatch update, starting with the driver/loader
+      
+  memset( &dispatchGL, 0, sizeof( Dispatch::GL ) );
+  memset( &dispatchGlobal, 0, sizeof( Dispatch::Global ) );
+            
+  void InitDispatchGLLoader( Dispatch::GL & );
+  InitDispatchGLLoader( dispatchGL );
+  void InitDispatchGlobalLoader( Dispatch::Global & );
+  InitDispatchGlobalLoader( dispatchGlobal );
+
   RegalAssert(this);
   if (!info)
   {

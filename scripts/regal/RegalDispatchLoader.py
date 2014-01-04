@@ -42,9 +42,6 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-namespace Loader
-{
-
 ${LOCAL_CODE}
 
 ${API_DISPATCH_FUNC_DEFINE}
@@ -58,14 +55,12 @@ ${API_DISPATCH_FUNC_DEFINE}
       func = NULL;
   }
 
-  void Init( Dispatch::GL & dt )
+  void InitDispatchGLLoader( Dispatch::GL & dt )
   {
 ${API_DISPATCH_FUNC_INIT}
   }
 
 ${API_DISPATCH_GLOBAL_FUNC_INIT}
-
-} // namespace Loader
 
 REGAL_NAMESPACE_END
 
@@ -207,7 +202,7 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
     cond = condDefault
 
   categoryPrev = None
-  code = ' void Init(Dispatch::Global &dt) {\n'
+  code = ' void InitDispatchGlobalLoader(Dispatch::Global &dt) {\n'
 
   for api in apis:
 

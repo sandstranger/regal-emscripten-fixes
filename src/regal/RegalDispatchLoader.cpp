@@ -66,9 +66,6 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-namespace Loader
-{
-
 // GL_VERSION_1_0
 
   static void REGAL_CALL missing_glAccum(GLenum op, GLfloat value)
@@ -26454,7 +26451,7 @@ namespace Loader
       func = NULL;
   }
 
-  void Init( Dispatch::GL & dt )
+  void InitDispatchGLLoader( Dispatch::GL & dt )
   {
 
     // GL_VERSION_1_0
@@ -38141,7 +38138,7 @@ namespace Loader
 
   }
 
- void Init(Dispatch::Global &dt) {
+ void InitDispatchGlobalLoader(Dispatch::Global &dt) {
 
   #if REGAL_SYS_WGL
     // WGL_3DL_stereo_control
@@ -39939,8 +39936,6 @@ namespace Loader
   #endif // REGAL_SYS_EGL
 
 }
-
-} // namespace Loader
 
 REGAL_NAMESPACE_END
 
