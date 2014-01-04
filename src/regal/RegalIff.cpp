@@ -1818,7 +1818,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, GLuint vshd, GLuin
   ver = ::std::numeric_limits<GLuint64>::max();
   progcount = 0;
   RegalAssert(ctx);
-  DispatchTableGL & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatchGL;
   store = sstore;
   pg = tbl.glCreateProgram();
   vs = vshd;
@@ -1875,7 +1875,7 @@ void Program::Attribs( RegalContext * ctx )
 {
   Internal("Regal::Iff::Program::Attribs","()");
 
-  DispatchTableGL & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatchGL;
 
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Vertex );
   tbl.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
@@ -1922,7 +1922,7 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
 {
   Internal("Regal::Iff::Program::UserShaderModeAttribs","()");
 
-  DispatchTableGL & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatchGL;
 
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Vertex );
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Normal );
@@ -2054,7 +2054,7 @@ void Iff::Cleanup( RegalContext &ctx )
   Internal("Regal::Iff::Cleanup","()");
 
   RestoreVao(&ctx);
-  DispatchTableGL &tbl = ctx.dispatcher.emulation;
+  DispatchTableGL &tbl = ctx.dispatchGL;
 
   tbl.glDeleteBuffers(1, &immVbo);
   tbl.glDeleteVertexArrays(1, &immVao);
@@ -2165,7 +2165,7 @@ void Iff::EnableClientState( RegalContext * ctx, GLenum state )
   RegalAssert( idx < max_vertex_attribs );
   if ( idx < max_vertex_attribs )
   {
-    ctx->dispatcher.emulation.glEnableVertexAttribArray( idx );
+    ctx->dispatchGL.glEnableVertexAttribArray( idx );
     EnableArray( ctx, idx ); // keep ffn up to date
   }
 }
@@ -2179,7 +2179,7 @@ void Iff::DisableClientState( RegalContext * ctx, GLenum state )
   RegalAssert( idx < max_vertex_attribs );
   if ( idx < max_vertex_attribs )
   {
-    ctx->dispatcher.emulation.glDisableVertexAttribArray( idx );
+    ctx->dispatchGL.glDisableVertexAttribArray( idx );
     DisableArray( ctx, idx ); // keep ffn up to date
   }
 }
@@ -2211,34 +2211,34 @@ void Iff::VertexPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei st
     return;
 
   RestoreVao( ctx );
-  ctx->dispatcher.emulation.glVertexAttribPointer( ffAttrMap[ RFF2A_Vertex ], size, type, GL_FALSE, stride, pointer );
+  ctx->dispatchGL.glVertexAttribPointer( ffAttrMap[ RFF2A_Vertex ], size, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::NormalPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  ctx->dispatcher.emulation.glVertexAttribPointer( ffAttrMap[ RFF2A_Normal ], 3, type, n, stride, pointer );
+  ctx->dispatchGL.glVertexAttribPointer( ffAttrMap[ RFF2A_Normal ], 3, type, n, stride, pointer );
 }
 
 void Iff::ColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  ctx->dispatcher.emulation.glVertexAttribPointer( ffAttrMap[ RFF2A_Color ], size, type, n, stride, pointer );
+  ctx->dispatchGL.glVertexAttribPointer( ffAttrMap[ RFF2A_Color ], size, type, n, stride, pointer );
 }
 
 void Iff::SecondaryColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  ctx->dispatcher.emulation.glVertexAttribPointer( ffAttrMap[ RFF2A_SecondaryColor ], size, type, n, stride, pointer );
+  ctx->dispatchGL.glVertexAttribPointer( ffAttrMap[ RFF2A_SecondaryColor ], size, type, n, stride, pointer );
 }
 
 void Iff::FogCoordPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
-  ctx->dispatcher.emulation.glVertexAttribPointer( ffAttrMap[ RFF2A_FogCoord ], 1, type, GL_FALSE, stride, pointer );
+  ctx->dispatchGL.glVertexAttribPointer( ffAttrMap[ RFF2A_FogCoord ], 1, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::EdgeFlagPointer( RegalContext * ctx, GLsizei stride, const GLvoid *pointer )
@@ -2247,7 +2247,7 @@ void Iff::EdgeFlagPointer( RegalContext * ctx, GLsizei stride, const GLvoid *poi
   GLuint index = ffAttrMap[ RFF2A_EdgeFlag ];
   if (index == RFF2A_Invalid)
     return;
-  ctx->dispatcher.emulation.glVertexAttribPointer( index, 1, GL_UNSIGNED_BYTE, GL_FALSE, stride, pointer );
+  ctx->dispatchGL.glVertexAttribPointer( index, 1, GL_UNSIGNED_BYTE, GL_FALSE, stride, pointer );
 }
 
 void Iff::TexCoordPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
@@ -2258,22 +2258,22 @@ void Iff::TexCoordPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei 
     return;
   }
   RestoreVao( ctx );
-  ctx->dispatcher.emulation.glVertexAttribPointer( ffAttrTexBegin + catIndex, size, type, GL_FALSE, stride, pointer );
+  ctx->dispatchGL.glVertexAttribPointer( ffAttrTexBegin + catIndex, size, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLdouble * d )
 {
-  ctx->dispatcher.emulation.glGetVertexAttribdv( index, pname, d );
+  ctx->dispatchGL.glGetVertexAttribdv( index, pname, d );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLfloat * f )
 {
-  ctx->dispatcher.emulation.glGetVertexAttribfv( index, pname, f );
+  ctx->dispatchGL.glGetVertexAttribfv( index, pname, f );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLint * i )
 {
-  ctx->dispatcher.emulation.glGetVertexAttribiv( index, pname, i );
+  ctx->dispatchGL.glGetVertexAttribiv( index, pname, i );
 }
 
 bool Iff::IsEnabled( RegalContext * ctx, GLenum pname, GLboolean &enabled )
@@ -2364,7 +2364,7 @@ bool Iff::IsEnabled( RegalContext * ctx, GLenum pname, GLboolean &enabled )
 
 void Iff::InitImmediate(RegalContext &ctx)
 {
-  DispatchTableGL &tbl = ctx.dispatcher.emulation;
+  DispatchTableGL &tbl = ctx.dispatchGL;
   tbl.glGenVertexArrays( 1, & immVao );
   tbl.glBindVertexArray( immVao );
   BindVertexArray( &ctx, immVao ); // to keep ffn current
@@ -2420,7 +2420,7 @@ void Iff::glDeleteVertexArrays( RegalContext * ctx, GLsizei n, const GLuint * ar
   {
     GLuint name = arrays[ i ];
     if (name != immVao)
-      ctx->dispatcher.emulation.glDeleteVertexArrays( 1, &name );
+      ctx->dispatchGL.glDeleteVertexArrays( 1, &name );
   }
 }
 
@@ -2431,7 +2431,7 @@ void Iff::glDeleteBuffers( RegalContext * ctx, GLsizei n, const GLuint * buffers
   {
     GLuint name = buffers[ i ];
     if (name != immVbo)
-      ctx->dispatcher.emulation.glDeleteBuffers( 1, &name );
+      ctx->dispatchGL.glDeleteBuffers( 1, &name );
   }
 }
 
@@ -2440,7 +2440,7 @@ GLboolean Iff::IsVertexArray( RegalContext * ctx, GLuint name )
   RegalAssert( ctx != NULL );
   if (name == immVao )
     return GL_FALSE;
-  return ctx->dispatcher.emulation.glIsVertexArray( name );
+  return ctx->dispatchGL.glIsVertexArray( name );
 }
 
 void Iff::glBindVertexArray( RegalContext *ctx, GLuint vao )
@@ -2467,7 +2467,7 @@ void Iff::Begin( RegalContext * ctx, GLenum mode )
   if (immActive == false)
   {
     immActive = true;
-    ctx->dispatcher.emulation.glBindVertexArray( immVao );
+    ctx->dispatchGL.glBindVertexArray( immVao );
     BindVertexArray( ctx, immVao );  // keep ffn current
   }
   PreDraw( ctx );
@@ -2484,7 +2484,7 @@ void Iff::RestoreVao( RegalContext * ctx )
 {
   if (immActive)
   {
-    ctx->dispatcher.emulation.glBindVertexArray( immShadowVao );
+    ctx->dispatchGL.glBindVertexArray( immShadowVao );
     BindVertexArray( ctx, immShadowVao );
     immActive = false;
   }
@@ -2494,7 +2494,7 @@ void Iff::Flush( RegalContext * ctx )
 {
   if (immCurrent>0)   // Do nothing for empty buffer
   {
-    DispatchTableGL &tbl = ctx->dispatcher.emulation;
+    DispatchTableGL &tbl = ctx->dispatchGL;
     tbl.glBufferData( GL_ARRAY_BUFFER, immCurrent * max_vertex_attribs * sizeof(Float4), immArray, GL_DYNAMIC_DRAW );
 
     GLenum derivedPrim = immPrim;
@@ -3412,7 +3412,7 @@ void Iff::WindowPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z )
     // todo - cache rasterpos and implement glDrawPixels and glBitmap
     return;
   }
-  ctx->dispatcher.emulation.glWindowPos3d( x, y, z );
+  ctx->dispatchGL.glWindowPos3d( x, y, z );
 }
 
 void Iff::BindVertexArray( RegalContext * ctx, GLuint vao )
@@ -3440,7 +3440,7 @@ void Iff::DisableArray( RegalContext * ctx, GLuint index )
 
 GLuint Iff::CreateShader( RegalContext *ctx, GLenum shaderType )
 {
-  GLuint sh = ctx->dispatcher.emulation.glCreateShader( shaderType );
+  GLuint sh = ctx->dispatchGL.glCreateShader( shaderType );
   shaderTypeMap[ sh ] = shaderType;
   return sh;
 }
@@ -3563,7 +3563,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
 {
   Internal("Regal::Iff::UpdateUniforms", boost::print::optional(ctx,Logging::pointers));
 
-  DispatchTableGL & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatchGL;
   UniformMap * umap = NULL;
   if( currinst ) {
     if( currinst->prevInstance == NULL ) {
@@ -4096,7 +4096,7 @@ void Iff::UseFixedFunctionProgram( RegalContext * ctx )
     // delete this program
     if ( p->pg != 0 )
     {
-      DispatchTableGL & tbl = ctx->dispatcher.emulation;
+      DispatchTableGL & tbl = ctx->dispatchGL;
       tbl.glDeleteShader( p->vs );
       tbl.glDeleteShader( p->fs );
       tbl.glDeleteProgram( p->pg );
@@ -4109,7 +4109,7 @@ void Iff::UseFixedFunctionProgram( RegalContext * ctx )
   }
   RegalAssertArrayIndex( ffprogs, base + match );
   currprog = & ffprogs[ base + match ];
-  ctx->dispatcher.emulation.glUseProgram( currprog->pg );
+  ctx->dispatchGL.glUseProgram( currprog->pg );
   UpdateUniforms( ctx );
 }
   
@@ -4118,7 +4118,7 @@ GLuint Iff::CreateFixedFunctionVertexShader( RegalContext * ctx ) {
   string_list vsSrc;
   GenerateVertexShaderSource( this, ffstate, vsSrc );
   GLuint vs;
-  Program::Shader( ctx, ctx->dispatcher.emulation, GL_VERTEX_SHADER, vs, vsSrc.str().c_str() );
+  Program::Shader( ctx, ctx->dispatchGL, GL_VERTEX_SHADER, vs, vsSrc.str().c_str() );
   return vs;
 }
   
@@ -4127,7 +4127,7 @@ GLuint Iff::CreateFixedFunctionFragmentShader( RegalContext * ctx ) {
   string_list fsSrc;
   GenerateFragmentShaderSource( this, fsSrc );
   GLuint fs;
-  Program::Shader( ctx, ctx->dispatcher.emulation, GL_FRAGMENT_SHADER, fs, fsSrc.str().c_str() );
+  Program::Shader( ctx, ctx->dispatchGL, GL_FRAGMENT_SHADER, fs, fsSrc.str().c_str() );
   return fs;
 }
 
@@ -4163,7 +4163,7 @@ void Iff::UseShaderProgram( RegalContext * ctx )
   }
 
   // if instanced, update per-instance uniforms if necessary
-  DispatchTableGL & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatchGL;
   if( currprog->instanced ) {
     if( currinst == NULL ) {
       currinst = & inst[ currprog->pg ];
@@ -4483,7 +4483,7 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
 
   const GLchar * dumb = static_cast<const GLchar *>( src.c_str() );
   const GLchar ** dumber = & dumb;
-  ctx->dispatcher.emulation.glShaderSource( shader, 1, dumber, NULL );
+  ctx->dispatchGL.glShaderSource( shader, 1, dumber, NULL );
 }
 
 void Iff::LinkProgram( RegalContext *ctx, GLuint program )
@@ -4500,7 +4500,7 @@ void Iff::LinkProgram( RegalContext *ctx, GLuint program )
       p.UserShaderModeAttribs(ctx);
     }
   }
-  DispatchTableGL & tbl = ctx->dispatcher.emulation;
+  DispatchTableGL & tbl = ctx->dispatchGL;
   tbl.glLinkProgram( program );
   Program & p = shprogmap[ program ];
   

@@ -65,7 +65,7 @@ def apiEmuFuncDefineCode(apis, args):
             code += '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emu_', name, params)
             code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
             code += '  RegalAssert(_context);\n'
-            code += '  DispatchTableGL &_dispatch = _context->dispatcher.emulation;\n'
+            code += '  Dispatch::GL &_dispatch = _context->dispatchGL;\n'
             code += '\n'
 
             level = [ (emu[i], emuFindEntry( function, emu[i]['formulae'], emu[i]['member'] )) for i in range( len( emue ) - 1 ) ]
@@ -92,8 +92,8 @@ def apiEmuFuncDefineCode(apis, args):
                       if l['plugin']:
                         code += '        #if REGAL_PLUGIN\n'
                         code += '        Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();\n'
-                        code += '        Push<DispatchTableGL *> pushDispatchTable(_instance.nextDispatchTable);\n'
-                        code += '        _instance.nextDispatchTable = &_context->dispatcher.emulation;\n'
+                        code += '        Push<Dispatch::GL *> pushDispatchTable(_instance.nextDispatchTable);\n'
+                        code += '        _instance.nextDispatchTable = &_context->dispatchGL;\n'
                         code += '        #endif\n'
 
                       code += listToString(indent(e['prefix'],'        '))
@@ -141,8 +141,8 @@ def apiEmuFuncDefineCode(apis, args):
                       if l['plugin']:
                         code += '        #if REGAL_PLUGIN\n'
                         code += '        Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();\n'
-                        code += '        Push<DispatchTableGL *> pushDispatchTable(_instance.nextDispatchTable);\n'
-                        code += '        _instance.nextDispatchTable = &_context->dispatcher.emulation;\n'
+                        code += '        Push<Dispatch::GL *> pushDispatchTable(_instance.nextDispatchTable);\n'
+                        code += '        _instance.nextDispatchTable = &_context->dispatchGL;\n'
                         code += '        #endif\n'
 
                       code += listToString(indent(e['impl'],'        '))
@@ -220,7 +220,7 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '             return;\n'
                 code += '         }\n'
 
-              code += '      DispatchTableGL *_next = _dispatch.next();\n'
+              code += '      Dispatch::GL *_next = _dispatch.next();\n'
               code += '      RegalAssert(_next);\n'
 
               if es2Name != None:
@@ -271,7 +271,7 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '    }\n'
                 code += '  }\n'
 
-              code += '  DispatchTableGL *_next = _dispatch.next();\n'
+              code += '  Dispatch::GL *_next = _dispatch.next();\n'
               code += '  RegalAssert(_next);\n'
               code += '  '
 

@@ -95,7 +95,7 @@ namespace Emu
 void Quads::Init(RegalContext &ctx)
 {
   elementArrayBuffer = 0;
-  DispatchTableGL & dt = *ctx.dispatcher.emulation.next();
+  DispatchTableGL & dt = *ctx.dispatchGL.next();
   dt.glGenBuffers(1, &quadIndexBuffer);
   windingMode = GL_CCW;
   frontFaceMode = backFaceMode = GL_FILL;
@@ -178,7 +178,7 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
   Internal("Regal::Emu::Quads: drawLines     =", drawLines);
   Internal("Regal::Emu::Quads: drawPoints    =", drawPoints);
 
-  DispatchTableGL &dt = ctx->dispatcher.emulation;
+  DispatchTableGL &dt = ctx->dispatchGL;
 
 #define EMU_QUADS_BUFFER_SIZE 1024
 

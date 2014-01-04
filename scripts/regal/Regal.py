@@ -392,7 +392,7 @@ def apiFuncDefineCode(apis, args):
             c += '  #if REGAL_SYS_ES1\n'
             c += '  if (_context->isES1()) // Pass-through for ES1 only\n'
             c += '  {\n'
-            c += '    DispatchTableGL *_next = &_context->dispatcher.front();\n'
+            c += '    Dispatch::GL *_next = &_context->dispatchGL;\n'
             c += '    RegalAssert(_next);\n    '
             if not typeIsVoid(rType):
               c += 'return '
@@ -414,7 +414,7 @@ def apiFuncDefineCode(apis, args):
         else:
           if not getattr(function,'regalOnly',False):
             t = ''
-            t += 'DispatchTableGL *_next = &_context->dispatcher.front();\n'
+            t += 'Dispatch::GL *_next = &_context->dispatchGL;\n'
             t += 'RegalAssert(_next);\n'
 
             t += listToString(indent(stripVertical(emuCodeGen(emue,'pre')),''))
@@ -450,7 +450,7 @@ def apiFuncDefineCode(apis, args):
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
 
         if not getattr(function,'regalOnly',False):
-          c += '  DispatchTableGlobal *_next = &dispatcherGlobal.front();\n'
+          c += '  Dispatch::Global *_next = &dispatchGlobal;\n'
           c += '  RegalAssert(_next);\n'
 
           if not typeIsVoid(rType):

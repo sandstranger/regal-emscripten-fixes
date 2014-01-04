@@ -58,7 +58,7 @@ def apiErrorFuncDefineCode(apis, args):
       code += '  Internal("error_%s","()");\n' % name
       code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
-      code += '  DispatchTableGL *_next = _context->dispatcher.error.next();\n'
+      code += '  Dispatch::GL *_next = _context->dispatcher.error.next();\n'
       code += '  RegalAssert(_next);\n'
       if name != 'glGetError':
         code += '  GLenum _error = GL_NO_ERROR;\n'

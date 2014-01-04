@@ -121,7 +121,7 @@ So::BindSampler(GLuint unit, GLuint so)
 void
 So::GenTextures(RegalContext &ctx, GLsizei count, GLuint *textures)
 {
-    ctx.dispatcher.emulation.glGenTextures(count, textures);
+    ctx.dispatchGL.glGenTextures(count, textures);
 
     for (GLsizei ii=0; ii<count; ii++)
     {
@@ -215,7 +215,7 @@ So::BindTexture(RegalContext &ctx, GLuint unit, GLenum target, GLuint to)
       }
     }
 
-    DispatchTableGL &tbl = ctx.dispatcher.emulation;
+    DispatchTableGL &tbl = ctx.dispatchGL;
 
     GLuint originallyActiveUnit = activeTextureUnit;
 
@@ -240,7 +240,7 @@ So::ActiveTexture( RegalContext &ctx, GLenum texture )
     return false;
 
   activeTextureUnit = texture - GL_TEXTURE0;
-  ctx.dispatcher.emulation.glActiveTexture( texture );
+  ctx.dispatchGL.glActiveTexture( texture );
   return true;
 }
 
@@ -329,7 +329,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     }
   }
 
-  DispatchTableGL &tbl = ctx.dispatcher.emulation;
+  DispatchTableGL &tbl = ctx.dispatchGL;
 
   if (newState.BorderColor[0] != drv.BorderColor[0] ||
       newState.BorderColor[1] != drv.BorderColor[1] ||
