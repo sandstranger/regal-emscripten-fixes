@@ -42,74 +42,23 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct DispatcherGlobal : public Dispatcher
-{
-public:
+void InitDispatchGlobal();
 
-  #if REGAL_HTTP
-  DispatchTableGlobal http;
-  #endif
-  
-  #if REGAL_LOG
-  DispatchTableGlobal logging;
-  #endif
-
-  #if REGAL_SYS_GLX && !REGAL_SYS_X11
-  DispatchTableGlobal glx;
-  #endif
-
-  #if REGAL_TRACE
-  DispatchTableGlobal trace;
-  #endif
-
-  DispatchTableGlobal driver;      // Underlying GLX/WGL/EGL implementation
-
-  #if REGAL_MISSING
-  DispatchTableGlobal missing;     // Must have this last
-  #endif
-
-public:
-  DispatcherGlobal();
-  ~DispatcherGlobal();
-
-  inline void push_back(DispatchTableGlobal &table, bool enable)
-  {
-    // Disabling the missing table would be bad!
-    #if REGAL_MISSING
-    RegalAssert(&table!=&missing || enable==true);
-    #endif
-
-    Dispatcher::push_back(table,enable);
-  }
-
-  inline bool erase    (DispatchTableGlobal &table)                             { return Dispatcher::erase(table); }
-  inline bool insert   (DispatchTableGlobal &other, DispatchTableGlobal &table) { return Dispatcher::insert(other,table); }
-
-  inline void enable (DispatchTableGlobal &table)             { Dispatcher::enable (table); }
-  inline void disable(DispatchTableGlobal &table)             { Dispatcher::disable(table); }
-
-  inline bool isEnabled(DispatchTableGlobal &table) const     { return Dispatcher::isEnabled(table); }
-
-  inline DispatchTableGlobal &operator[](const std::size_t i) { return reinterpret_cast<DispatchTableGlobal &>(Dispatcher::operator[](i)); }
-  inline DispatchTableGlobal &front()                         { return reinterpret_cast<DispatchTableGlobal &>(Dispatcher::front());       }
-  inline DispatchTableGlobal &back()                          { return reinterpret_cast<DispatchTableGlobal &>(Dispatcher::back());        }
-};
-
-extern DispatcherGlobal dispatcherGlobal;
+extern Dispatch::Global dispatchGlobal;
 
 // regaltest needs these declarations too
 
 #if REGAL_SYS_EGL && REGAL_STATIC_EGL
-extern void InitDispatchTableStaticEGL      (DispatchTableGlobal &tbl);
+extern void InitDispatchTableStaticEGL      (Dispatch::Global &tbl);
 #endif
 
-extern void InitDispatchTableGlobalHttp      (DispatchTableGlobal &tbl);
-extern void InitDispatchTableGlobalLog       (DispatchTableGlobal &tbl);
-extern void InitDispatchTableGlobalGLX       (DispatchTableGlobal &tbl);
-extern void InitDispatchTableGlobalTrace     (DispatchTableGlobal &tbl);
+extern void InitDispatchTableGlobalHttp      (Dispatch::Global &tbl);
+extern void InitDispatchTableGlobalLog       (Dispatch::Global &tbl);
+extern void InitDispatchTableGlobalGLX       (Dispatch::Global &tbl);
+extern void InitDispatchTableGlobalTrace     (Dispatch::Global &tbl);
 
-namespace Loader  { extern void Init(DispatchTableGlobal &tbl); }
-namespace Missing { extern void Init(DispatchTableGlobal &tbl); }
+namespace Loader  { extern void Init(Dispatch::Global &tbl); }
+namespace Missing { extern void Init(Dispatch::Global &tbl); }
 
 REGAL_NAMESPACE_END
 

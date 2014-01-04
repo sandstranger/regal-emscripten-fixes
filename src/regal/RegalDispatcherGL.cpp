@@ -46,135 +46,99 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-DispatcherGL::DispatcherGL()
-{
-  #if REGAL_TRACE
-  if( Config::enableTrace) {
-    ::memset(&trace,0,sizeof(DispatchTableGL));
-    InitDispatchTableTrace(trace);
-    tables.push_back(&trace);
-  }
-  #endif
+void InitDispatchGL() {
 
-  #if REGAL_HTTP
-  if( Config::enableHttp ) {
-    ::memset(&http,0,sizeof(DispatchTableGL));
-    InitDispatchTableHttp(http);
-    tables.push_back(&http);
+  // start building the dispatch up from the bottom (driver)
+  // each dispatch layer needs to:
+  //     1. grab all the function pointers it needs to be able to call
+  //     2. replace all the function pointers it wants to override
+
+  RegalContext *ctx = REGAL_GET_CONTEXT();
+  RegalAssert( ctx );
+
+  if( ctx == NULL ) {
+    return; // can't initialize without a context
   }
-  #endif
+  
+  Loader::Init( ctx );                    // Desktop/ES2.0 loader
+  
+#if 0  // Need to add back support for restricted driver subsets
+#if REGAL_STATIC_ES2
+  InitDispatchTableStaticES2(ctx);           // ES 2.0 functions only
+#elif REGAL_SYS_PPAPI
+  InitDispatchTablePpapi(ctx);               // ES 2.0 functions only
+#endif
+#endif
   
   
-  #if REGAL_DEBUG
-  if( Config::enableDebug ) {
-    ::memset(&debug,0,sizeof(DispatchTableGL));
-    InitDispatchTableDebug(debug);
-    tables.push_back(&debug);
-  }
-  #endif
-
-  #if REGAL_EMULATION
-  if( Config::enableEmulation || Config::forceEmulation ) {
-    ::memset(&emulation,0,sizeof(DispatchTableGL));
-    InitDispatchTableEmu(emulation);               // emulated functions only
-    tables.push_back(&emulation);
-  }
-  #endif
-
-  #if REGAL_ERROR
-  if( Config::enableError ) {
-    ::memset(&error,0,sizeof(DispatchTableGL));
-    InitDispatchTableError(error);
-    tables.push_back(&error);
-  }
-  #endif
-  
-  #if REGAL_CACHE
-  if( true ) {
-    ::memset(&cache,0,sizeof(DispatchTableGL));
-    InitDispatchTableCache(cache);
-    tables.push_back(&cache);
-  }
-  #endif
-
-  #if REGAL_CODE
-  if( Config::enableCode ) {
-    ::memset(&code,0,sizeof(DispatchTableGL));
-    InitDispatchTableCode(code);
-    tables.push_back(&code);
-  }
-  #endif
-
-  #if REGAL_STATISTICS
-  if( Config::enableStatistics ) {
-    ::memset(&statistics,0,sizeof(DispatchTableGL));
-    InitDispatchTableStatistics(statistics);
-    tables.push_back(&statistics);
-  }
-  #endif
-
-  #if REGAL_LOG
+#if REGAL_LOG
   if( Config::enableLog ) {
-    ::memset(&logging,0,sizeof(DispatchTableGL));
-    InitDispatchTableLog(logging);
-    tables.push_back(&logging);
+    InitDispatchTableLog( ctx );
   }
-  #endif
-
-  #if REGAL_DRIVER
-  if( Config::enableDriver ) {
-    ::memset(&driver,0,sizeof(DispatchTableGL));
-  #if REGAL_STATIC_ES2
-    InitDispatchTableStaticES2(driver);           // ES 2.0 functions only
-  #elif REGAL_SYS_PPAPI
-    InitDispatchTablePpapi(driver);               // ES 2.0 functions only
-  #else
-    Loader::Init(driver);                         // Desktop/ES2.0 lazy loader
-  #endif
-    tables.push_back(&driver);
+#endif
+  
+#if REGAL_STATISTICS
+  if( Config::enableStatistics ) {
+    InitDispatchTableStatistics( ctx );
   }
-  #endif
-
-  #if REGAL_MISSING
-  if( Config::enableMissing ) {
-    ::memset(&missing,0,sizeof(DispatchTableGL));
-    Missing::Init(missing);
-    tables.push_back(&missing);
+#endif
+  
+#if REGAL_CODE
+  if( Config::enableCode ) {
+    InitDispatchTableCode( ctx );
   }
-  #endif
+#endif
+  
+#if REGAL_CACHE
+  if( true ) {
+    InitDispatchTableCache( ctx );
+  }
+#endif
 
   // Optionally move the error checking dispatch to downstream of emulation.
   // This can be helpful for debugging Regal emulation
+#if REGAL_ERROR_POST_EMU
+#if REGAL_ERROR
+  if( Config::enableError ) {
+    InitDispatchTableError( ctx );
+  }
+#endif
+#endif
+  
+#if REGAL_EMULATION
+  if( Config::enableEmulation || Config::forceEmulation ) {
+    InitDispatchTableEmu( ctx );               // emulated functions only
+  }
+#endif
+  
+#if ! REGAL_ERROR_POST_EMU
+#if REGAL_DEBUG
+  if( Config::enableDebug ) {
+    InitDispatchTableDebug( ctx );
+  }
+#endif
+#endif
+  
+#if REGAL_HTTP
+  if( Config::enableHttp ) {
+    InitDispatchTableHttp( ctx );
+  }
+#endif
+  
+#if REGAL_TRACE
+  if( Config::enableTrace) {
+    InitDispatchTableTrace( ctx );
+  }
+#endif
+  
+  
+  
+  
+  
+  
 
-  #if defined(REGAL_ERROR_POST_EMU)
-  if ( Config::error && Config::emulation ) {
-    for( size_t i = 0; i < tables.size(); i++ ) {
-      if( tables[i] == &error ) {
-        tables.erase( tables.begin() + i );
-        break;
-      }
-    }
-    for( size_t i = 0; i < tables.size(); i++ ) {
-      if( tables[i] == &emulation ) {
-        tables.insert( tables.begin() + i, &error );
-        break;
-      }
-    }
-  }
-  #endif
+
   
-  
-  // from the bottom up, replace any null function pointers with
-  // non-null ones from the lower level - this means the lazy loader has to be clever
-  for( size_t i = tables.size() - 1; i == 0; i-- ) {
-    void ** lower = reinterpret_cast<void **>( tables[i] );
-    void ** upper = reinterpret_cast<void **>( tables[i-1] );
-    for( int j = 0; j < sizeof( DispatchTableGL ) / sizeof( void *); j++ ) {
-      if( upper[j] == NULL ) {
-        upper[j] = lower[j];
-      }
-    }
-  }
   
   
 }

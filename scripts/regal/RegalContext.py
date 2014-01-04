@@ -138,7 +138,7 @@ struct RegalContext
   inline bool isCompat() const { RegalAssert(info); return REGAL_SYS_GL  &&                               info->compat; }
 
   bool                    initialized;
-  DispatcherGL            dispatcher;
+  Dispatch::GL            dispatchGL;
   DispatchErrorState      err;
   DispatchHttpState       http;
   scoped_ptr<DebugInfo>   dbg;
@@ -193,8 +193,34 @@ ${EMU_MEMBER_DECLARE}
   // parkContext() makes the calling thread release the context
   // unparkContext() makes it current to the calling thread
           
-  void parkContext( DispatchTableGlobal & tbl );
-  void unparkContext( DispatchTableGlobal & tbl );
+  struct ParkProcs {
+    void init( Dispatch::Global & dispatchGlobal ) {
+      #if REGAL_SYS_OSX
+        CGLSetCurrentContext = dispatchGlobal.CGLSetCurrentContext;
+      #else if REGAL_SYS_EGL
+        eglMakeCurrent = dispatchGlobal.eglMakeCurrent;
+      #else if REGAL_SYS_GLX
+        glXMakeCurrent = dispatchGlobal.glXMakeCurrent;
+      #else if REGAL_SYS_WGL
+        wglMakeCurrent = dispatchGlobal.wglMakeCurrent;
+      #else
+        # error "Implement me!"
+      #endif
+    }
+    #if REGAL_SYS_OSX
+      PFNCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
+    #else if REGAL_SYS_EGL
+      PFNEGLMAKECURRENTPROC eglMakeCurrent;
+    #else if REGAL_SYS_GLX
+      PFNGLXMAKECURRENTPROC glXMakeCurrent;
+    #else if REGAL_SYS_WGL
+      PFNWGLMAKECURRENTPROC wglMakeCurrent;
+    #else
+      # error "Implement me!"
+    #endif
+  };
+  void parkContext( ParkProcs & pp );
+  void unparkContext( ParkProcs & pp );
 
 
   // For RegalDispatchCode

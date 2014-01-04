@@ -4,12 +4,11 @@ from string import Template, upper, replace
 
 from ApiUtil import outputCode
 from ApiUtil import typeIsVoid
+from ApiUtil import typeIsVoidPointer
 
 from ApiCodeGen import *
 
-from RegalContextInfo import cond
-
-from RegalDispatchShared import apiDispatchFuncInitCode, apiDispatchGlobalFuncInitCode
+from RegalContextInfo import cond as condDefault
 
 ############################################################################
 
@@ -48,11 +47,13 @@ namespace Loader
 
 ${LOCAL_CODE}
 
+${API_DISPATCH_FUNC_DEFINE}
+
   static DispatchTableGL &_getDispatchGL()
   {
     RegalContext * _context = REGAL_GET_CONTEXT();
     RegalAssert(_context);
-    return _context->dispatcher.driver;
+    return _context->dispatchGL;
   }
 
   static void _getProcAddress(void (**func)(), void (*funcRegal)(), const char *name)
@@ -63,10 +64,10 @@ ${LOCAL_CODE}
       *func = NULL;
   }
 
-${API_DISPATCH_FUNC_DEFINE}
-
-  void Init(DispatchTableGL &tbl)
+  void Init( RegalContext * ctx )
   {
+    Dispatch::GL & tbl = ctx->dispatchGL;
+
 ${API_DISPATCH_FUNC_INIT}
   }
 
@@ -78,13 +79,14 @@ REGAL_NAMESPACE_END
 
 ${ENDIF}''')
 
-##############################################################################################
+# CodeGen for missing dispatch functions
 
-# CodeGen for API loader function definition.
+def apiMissingFuncDefineCode(apis, args):
 
-def apiLoaderFuncDefineCode(apis, args):
-  categoryPrev = None
   code = ''
+  categoryPrev = None
+
+  cond = condDefault
 
   for api in apis:
 
@@ -93,7 +95,81 @@ def apiLoaderFuncDefineCode(apis, args):
       code += '#if %s\n' % cond[api.name]
 
     for function in api.functions:
+
       if getattr(function,'regalOnly',False)==True:
+        continue
+
+      name   = function.name
+      params = paramsDefaultCode(function.parameters, True)
+      callParams = paramsNameCode(function.parameters)
+      rType     = typeCode(function.ret.type)
+      rTypes    = rType.strip()
+      category  = getattr(function, 'category', None)
+      version   = getattr(function, 'version', None)
+
+      if category:
+        category = category.replace('_DEPRECATED', '')
+      elif version:
+        category = version.replace('.', '_')
+        category = 'GL_VERSION_' + category
+
+      # Close prev category block.
+      if categoryPrev and not (category == categoryPrev):
+        code += '\n'
+
+      # Begin new category block.
+      if category and not (category == categoryPrev):
+        code += '// %s\n\n' % category
+
+      categoryPrev = category
+
+      code += '  static %sREGAL_CALL missing_%s(%s) \n  {\n' % (rType, name, params)
+      for param in function.parameters:
+        code += '    UNUSED_PARAMETER(%s);\n' % param.name
+      code += '    Warning( "%s", " not available." );\n' % name
+
+      if not typeIsVoid(rType):
+        if rTypes in api.defaults:
+          code += '    return %s;\n' % ( api.defaults[rTypes] )
+        else:
+          if rType[-1]=='*' or typeIsVoidPointer(rType):
+            code += '    return NULL;\n'
+          else:
+            code += '    return (%s) 0;\n' % ( rTypes )
+
+      code += '  }\n\n'
+
+    if api.name in cond:
+      code += '#endif // %s\n' % cond[api.name]
+    code += '\n'
+
+  return code
+
+def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambda x : True, cond = None):
+
+  if not cond:
+    cond = condDefault
+
+  categoryPrev = None
+  code = ''
+  code += '    Dispatch::GL &dt = _getDispatchGL();\n'
+
+  for api in apis:
+
+    code += '\n'
+
+    for function in api.functions:
+
+      if not function.needsContext:
+        continue
+
+      if not filter(function):
+        continue
+
+      if getattr(function,'regalOnly',False)==True:
+        continue
+
+      if function.name in exclude or function.category in exclude:
         continue
 
       name   = function.name
@@ -115,28 +191,17 @@ def apiLoaderFuncDefineCode(apis, args):
 
       # Begin new category block.
       if category and not (category == categoryPrev):
-        code += '// %s\n\n' % category
+        code += '    // %s\n\n' % category
 
       categoryPrev = category
 
-      code += '  static %sREGAL_CALL %s(%s) \n  {\n' % (rType, name, params)
-
       # Get a reference to the appropriate dispatch table and attempt GetProcAddress
 
-      if function.needsContext:
-        code += '    DispatchTableGL &_driver = _getDispatchGL();\n'
-      else:
-        code += '    DispatchTableGlobal &_driver = dispatcherGlobal.driver;\n'
+      code += '    _getProcAddress(reinterpret_cast<PFN%sPROC>(&dt.%s),reinterpret_cast<void (*)()>(%s),"%s");\n'%(name.upper(),name,name,name)
+      code += '    if( dt.%s == NULL ) {\n' % name
+      code += '      dt.%s = missing_%s;\n' % (name,name)
+      code += '    }\n'
 
-      code += '    _getProcAddress(reinterpret_cast<void (**)()>(&_driver.%s),reinterpret_cast<void (*)()>(%s),"%s");\n'%(name,name,name)
-      code += '    '
-      if not typeIsVoid(rType):
-        code += 'return '
-      code += '_driver.%s(%s);\n'%(name, callParams)
-      code += '  }\n\n'
-
-    if api.name in cond:
-      code += '#endif // %s\n' % cond[api.name]
     code += '\n'
 
   # Close pending if block.
@@ -145,9 +210,81 @@ def apiLoaderFuncDefineCode(apis, args):
 
   return code
 
+def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambda x : True, cond = None):
+
+  if not cond:
+    cond = condDefault
+
+  categoryPrev = None
+  code = ' void Init(DispatchTableGlobal &tbl) {\n'
+  code += '  Dispatch::Global &dt = dispatchGlobal;\n'
+
+  for api in apis:
+
+    code += '\n'
+    if api.name in cond:
+      code += '  #if %s\n' % cond[api.name]
+
+    for function in api.functions:
+
+      if function.needsContext:
+        continue
+
+      if not filter(function):
+        continue
+
+      if getattr(function,'regalOnly',False)==True:
+        continue
+
+      if function.name in exclude or function.category in exclude:
+        continue
+
+      name   = function.name
+      params = paramsDefaultCode(function.parameters, True)
+      callParams = paramsNameCode(function.parameters)
+      rType  = typeCode(function.ret.type)
+      category  = getattr(function, 'category', None)
+      version   = getattr(function, 'version', None)
+
+      if category:
+        category = category.replace('_DEPRECATED', '')
+      elif version:
+        category = version.replace('.', '_')
+        category = 'GL_VERSION_' + category
+
+      # Close prev category block.
+      if categoryPrev and not (category == categoryPrev):
+        code += '\n'
+
+      # Begin new category block.
+      if category and not (category == categoryPrev):
+        code += '    // %s\n\n' % category
+
+      categoryPrev = category
+
+
+      code += '    _getProcAddress(reinterpret_cast<PFN%sPROC>(&dt.%s),reinterpret_cast<void (*)()>(%s),"%s");\n'%(name.upper(),name,name,name)
+      code += '    if( dt.%s == NULL ) {\n' % name
+      code += '      dt.%s = missing_%s;\n' % (name,name)
+      code += '    }\n'
+
+    if api.name in cond:
+      code += '  #endif // %s\n' % cond[api.name]
+    code += '\n'
+
+  # Close pending if block.
+  if categoryPrev:
+    code += '\n'
+
+  code += '}\n'
+
+  return code
+
+
+
 def generateLoaderSource(apis, args):
 
-  funcDefine = apiLoaderFuncDefineCode( apis, args )
+  funcDefine   = apiMissingFuncDefineCode(apis, args)
   funcInit   = apiDispatchFuncInitCode( apis, args, None )
   globalFuncInit   = apiDispatchGlobalFuncInitCode( apis, args, None )
 

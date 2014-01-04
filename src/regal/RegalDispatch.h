@@ -45,6 +45,7 @@
 
 REGAL_GLOBAL_BEGIN
 
+#include <vector>
 #include <GL/Regal.h>
 
 REGAL_GLOBAL_END
@@ -4317,74 +4318,7 @@ namespace Dispatch
 
   };
 
-  // Lookup a function pointer from the table,
-  // or deeper in the stack as necessary.
-
-  template<typename T, typename F>
-  F getProc(T &table, F *func)
-  {
-    RegalAssert(func);
-    if (table._enabled && *func)
-      return *func;
-
-    T *i = &table;
-    RegalAssert(i);
-
-    RegalAssert(reinterpret_cast<void *>(func)>=reinterpret_cast<void *>(i));
-    RegalAssert(reinterpret_cast<void *>(func)< reinterpret_cast<void *>(i+1));
-
-    const std::size_t offset = reinterpret_cast<char *>(func) - reinterpret_cast<char *>(i);
-
-    F f = *func;
-
-    // Step down the stack for the first available function in an enabled table
-
-    while (!f || !i->_enabled)
-    {
-      // Find the next enabled dispatch table
-      for (i = i->next(); !i->_enabled; i = i->next()) { RegalAssert(i); }
-
-      // Get the function pointer; extra cast through void* is to avoid -Wcast-align spew
-      RegalAssert(i);
-      RegalAssert(i->_enabled);
-      f = *reinterpret_cast<F *>(reinterpret_cast<void *>(reinterpret_cast<char *>(i)+offset));
-    }
-
-    return f;
-  }
-
-}
-
-struct DispatchTable
-{
-  bool           _enabled;
-  DispatchTable *_prev;
-  DispatchTable *_next;
-};
-
-struct DispatchTableGL : public DispatchTable, Dispatch::GL
-{
-public:
-  template<typename T> T getProc(T *func) { return reinterpret_cast<T>(doCall(reinterpret_cast<void **>(func))); }
-  inline DispatchTableGL *next()       { return reinterpret_cast<DispatchTableGL *>(DispatchTable::_next);    }
-
-private:
-  void *doCall(void **func);  // inlined Dispatch::getProc consolidated to one instance for DispatchTableGL
-};
-
-struct DispatchTableGlobal : public DispatchTable, Dispatch::Global
-{
-  DispatchTableGlobal();
-  ~DispatchTableGlobal();
-
-  template<typename T> T getProc(T *func) { return reinterpret_cast<T>(doCall(reinterpret_cast<void **>(func)));  }
-  inline DispatchTableGlobal *next()   { return reinterpret_cast<DispatchTableGlobal *>(DispatchTable::_next); }
-
-private:
-  void *doCall(void **func);  // inlined Dispatch::getProc consolidated to one instance for DispatchTableGlobal
-};
-
-extern DispatchTableGlobal dispatchTableGlobal;
+extern Dispatch::Global dispatchGlobal;
 
 REGAL_NAMESPACE_END
 

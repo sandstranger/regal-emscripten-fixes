@@ -47,7 +47,6 @@
 REGAL_GLOBAL_BEGIN
 
 #include <string>
-using namespace std;
 
 #include "RegalLog.h"
 #include "RegalBreak.h"
@@ -80,6 +79,8 @@ using namespace std;
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
+
+using namespace std;
 
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;

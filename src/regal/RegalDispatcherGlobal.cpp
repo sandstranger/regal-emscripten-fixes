@@ -46,59 +46,42 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-DispatcherGlobal dispatcherGlobal;
+Dispatch::Global dispatchGlobal;
 
-DispatcherGlobal::DispatcherGlobal()
-: Dispatcher()
-{
-  #if REGAL_HTTP
-  InitDispatchTableGlobalHttp(http);
-  push_back(http,Config::enableHttp);
-  #endif
+void InitDispatchGlobal() {
   
-  #if REGAL_LOG
-  InitDispatchTableGlobalLog(logging);
-  push_back(logging,Config::enableLog);
-  #endif
+  // initialize in reverse order, starting with the driver
 
-  #if REGAL_SYS_GLX && !REGAL_SYS_X11
-  memset(&glx,0,sizeof(glx));
-  InitDispatchTableGlobalGLX(glx);
-  push_back(glx,true);
-  #endif
+  Loader::Init( dispatchGlobal );     // CGL/GLX/WGL/EGL loader
 
-  // have to check this early for the global dispatches, otherwise we'd use Config
+#if 0 && REGAL_SYS_EGL && REGAL_STATIC_EGL
+  InitDispatchTableStaticEGL( dispatchGlobal );
+#endif
 
-  #if REGAL_TRACE
+#if REGAL_LOG
+  InitDispatchTableGlobalLog( dispatchGlobal );
+#endif
+
+#if REGAL_SYS_GLX && !REGAL_SYS_X11
+  InitDispatchTableGlobalGLX( dispatchGlobal );
+#endif
+  
+
+#if REGAL_HTTP
+  InitDispatchTableGlobalHttp( dispatchGlobal );
+#endif
+  
+  
+#if REGAL_TRACE
   {
+    // have to check this early for the global dispatches, otherwise we'd use Config
     getEnv( "REGAL_TRACE", Config::enableTrace);
-    ::memset(&trace, 0, sizeof(trace) );
-    InitDispatchTableGlobalTrace(trace);
-    push_back(trace,Config::enableTrace);
+    InitDispatchTableGlobalTrace( dispatchGlobal );
   }
-  #endif
+#endif
 
-  #if REGAL_DRIVER
-  memset(&driver,0,sizeof(driver));
 
-  #if REGAL_SYS_EGL && REGAL_STATIC_EGL
-  InitDispatchTableStaticEGL(driver);
-  #else
-  Loader::Init(driver);     // GLX/WGL/EGL lazy loader
-  #endif
-
-  push_back(driver,Config::enableDriver);
-  #endif
-
-  #if REGAL_MISSING
-  memset(&missing,0,sizeof(missing));
-  Missing::Init(missing);
-  push_back(missing,Config::enableMissing);
-  #endif
 }
 
-DispatcherGlobal::~DispatcherGlobal()
-{
-}
 
 REGAL_NAMESPACE_END

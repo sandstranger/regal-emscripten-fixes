@@ -44,62 +44,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct Dispatcher
-{
-public:
-  Dispatcher();
-  ~Dispatcher();
-
-  inline std::size_t size() const
-  {
-    return _size;
-  }
-
-protected:
-  void push_back(DispatchTable &table, bool enable);           // Push to the back of the stack
-  bool erase    (DispatchTable &table);                        // Remove from dispatch stack
-  bool insert   (DispatchTable &other, DispatchTable &table);  // Insert before the other
-
-  inline void
-  enable(DispatchTable &table)
-  {
-    table._enabled = true;
-  }
-
-  inline void
-  disable(DispatchTable &table)
-  {
-    table._enabled = false;
-  }
-
-  inline bool isEnabled(DispatchTable &table) const
-  {
-    return table._enabled;
-  }
-
-  inline DispatchTable &operator[](const std::size_t i)
-  {
-    RegalAssert(i<size());
-    return *_table[i];
-  }
-
-  inline DispatchTable &front()
-  {
-    RegalAssert(size());
-    return *_front;
-  }
-
-  inline DispatchTable &back()
-  {
-    RegalAssert(size());
-    return *_table.back();
-  }
-
-private:
-  std::vector<DispatchTable *>  _table;
-  DispatchTable                *_front;
-  std::size_t                   _size;
-};
+// class removed
 
 REGAL_NAMESPACE_END
 

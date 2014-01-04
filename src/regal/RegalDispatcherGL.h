@@ -37,83 +37,31 @@
 REGAL_GLOBAL_BEGIN
 
 #include <vector>
-#include "RegalDispatcher.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct DispatcherGL
-{
-public:
+struct RegalContext;
 
-#if REGAL_HTTP
-  DispatchTableGL http;
-#endif
-  
-#if REGAL_DEBUG
-   DispatchTableGL debug;
-#endif
-
-#if REGAL_ERROR
-   DispatchTableGL error;
-#endif
-
-#if REGAL_EMULATION
-   DispatchTableGL emulation;
-#endif
-
-#if REGAL_CACHE
-   DispatchTableGL cache;
-#endif
-
-#if REGAL_CODE
-   DispatchTableGL code;
-#endif
-
-#if REGAL_STATISTICS
-   DispatchTableGL statistics;
-#endif
-
-#if REGAL_LOG
-   DispatchTableGL logging;
-#endif
-
-#if REGAL_TRACE
-   DispatchTableGL trace;
-#endif
-
-   DispatchTableGL driver;      // Underlying OpenGL/ES implementation
-
-#if REGAL_MISSING
-   DispatchTableGL missing;     // Must have this last
-#endif
-
-public:
-  DispatcherGL();
-  ~DispatcherGL();
-
-  DispatchTableGL & front() { return *tables.front(); }
-  
-  std::vector<DispatchTableGL *> tables;
-};
+void InitDispatchGL();
 
 // regaltest needs these declarations too
 
-extern void InitDispatchTableCode      (DispatchTableGL &tbl);
-extern void InitDispatchTableDebug     (DispatchTableGL &tbl);
-extern void InitDispatchTableError     (DispatchTableGL &tbl);
-extern void InitDispatchTableEmu       (DispatchTableGL &tbl);
-extern void InitDispatchTableLog       (DispatchTableGL &tbl);
-extern void InitDispatchTablePpapi     (DispatchTableGL &tbl);
-extern void InitDispatchTableStatistics(DispatchTableGL &tbl);
-extern void InitDispatchTableStaticES2 (DispatchTableGL &tbl);
-extern void InitDispatchTableCache     (DispatchTableGL &tbl);
-extern void InitDispatchTableTrace     (DispatchTableGL &tbl);
-extern void InitDispatchTableHttp     (DispatchTableGL &tbl);
+extern void InitDispatchTableCode      (RegalContext *ctx);
+extern void InitDispatchTableDebug     (RegalContext *ctx);
+extern void InitDispatchTableError     (RegalContext *ctx);
+extern void InitDispatchTableEmu       (RegalContext *ctx);
+extern void InitDispatchTableLog       (RegalContext *ctx);
+extern void InitDispatchTablePpapi     (RegalContext *ctx);
+extern void InitDispatchTableStatistics(RegalContext *ctx);
+extern void InitDispatchTableStaticES2 (RegalContext *ctx);
+extern void InitDispatchTableCache     (RegalContext *ctx);
+extern void InitDispatchTableTrace     (RegalContext *ctx);
+extern void InitDispatchTableHttp     (RegalContext *ctx);
 
-namespace Loader  { extern void Init(DispatchTableGL &tbl); }
-namespace Missing { extern void Init(DispatchTableGL &tbl); }
+namespace Loader  { extern void Init(RegalContext *ctx); }
+namespace Missing { extern void Init(RegalContext *ctx); }
 
 REGAL_NAMESPACE_END
 

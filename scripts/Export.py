@@ -47,7 +47,6 @@ from RegalDispatchGLX        import *
 from RegalDispatchLog        import *
 from RegalDispatchHttp       import *
 from RegalDispatchLoader     import *
-from RegalDispatchMissing    import *
 from RegalDispatchPpapi      import *
 from RegalDispatchStatistics import *
 from RegalDispatchStaticEGL  import *
@@ -208,7 +207,6 @@ def generate(apis, args):
 
   traverse(apis, args)
   generateLoaderSource( apis, args )
-  generateMissingSource( apis, args )
   generateContextHeader(apis, args)
   generateContextSource(apis, args)
   generateContextInfoHeader(apis, args)
