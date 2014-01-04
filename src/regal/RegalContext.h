@@ -108,9 +108,9 @@ struct RegalContext
 
   bool                    initialized;
   Dispatch::GL            dispatchGL;
-  DispatchErrorState      err;
+  Err                     err;
   Debug                   debug;
-  DispatchHttpState       http;
+  Http                    http;
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;

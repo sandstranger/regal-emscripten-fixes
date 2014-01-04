@@ -39,6 +39,7 @@ REGAL_GLOBAL_BEGIN
 
 #include "pcre.h"
 
+#include "RegalDispatch.h"
 #include "RegalMutex.h"
 
 REGAL_GLOBAL_END
@@ -101,14 +102,17 @@ enum HttpRunState {
   RS_StepOutOfGroup,
 };
 
-struct Dispatch::GL;
+//struct Dispatch::GL;
 
-struct DispatchHttpState
+struct RegalContext;
+
+struct Http
 {
 public:
-  DispatchHttpState();
-  ~DispatchHttpState();
+  Http();
+  ~Http();
   void Init( RegalContext * ctx );
+  static void Init();
 
   std::map<GLuint, HttpFboInfo> fbo;
   std::set<GLuint> vao;
@@ -177,9 +181,14 @@ public:
     PFNGLGETUNIFORMLOCATIONPROC GetUniformLocation;
     PFNGLREADPIXELSPROC ReadPixels;
   };
+
+  static void Start();
+  static void Stop();
   
   GlProcs gl;
-  
+  static bool enabled;
+  static int  port;
+
 };
 
 REGAL_NAMESPACE_END

@@ -65,7 +65,6 @@ def apiEmuFuncDefineCode(apis, args):
             code += '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emu_', name, params)
             code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
             code += '  RegalAssert(_context);\n'
-            code += '  Dispatch::GL &_dispatch = _context->dispatchGL;\n'
             code += '\n'
 
             level = [ (emu[i], emuFindEntry( function, emu[i]['formulae'], emu[i]['member'] )) for i in range( len( emue ) - 1 ) ]
@@ -220,7 +219,7 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '             return;\n'
                 code += '         }\n'
 
-              code += '      Dispatch::GL *_next = _dispatch.next();\n'
+              code += '      Dispatch::GL *_next = &_context->dispatchGL;\n'
               code += '      RegalAssert(_next);\n'
 
               if es2Name != None:
@@ -271,7 +270,7 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '    }\n'
                 code += '  }\n'
 
-              code += '  Dispatch::GL *_next = _dispatch.next();\n'
+              code += '  Dispatch::GL *_next = &_context->dispatchGL;;\n'
               code += '  RegalAssert(_next);\n'
               code += '  '
 

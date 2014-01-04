@@ -103,9 +103,9 @@ def apiStatisticsFuncDefineCode(apis, args):
         code += '  }\n\n'
 
       if function.needsContext:
-        code += '  DispatchTableGL *_next = _context->dispatcher.statistics.next();\n'
+        code += '  Dispatch::GL *_next = &_context->dispatchGL;\n'
       else:
-        code += '  DispatchTableGlobal *_next = dispatcherGlobal.statistics.next();\n'
+        code += '  DispatchTableGlobal *_next = &dispatcherGlobal;\n'
       code += '  RegalAssert(_next);\n'
 
       code += '  '

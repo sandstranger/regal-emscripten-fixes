@@ -35,6 +35,7 @@ are permitted provided that the following conditions are met:
 REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+#include "RegalDispatch.h"
 
 REGAL_GLOBAL_END
 
@@ -42,21 +43,22 @@ REGAL_NAMESPACE_BEGIN
 
 struct RegalContext;
 
-struct DispatchErrorState
+struct Err
 {
 public:
-  DispatchErrorState()
+  Err()
   : callback(NULL),
     inBeginEnd(false)
-  {
-  }
+  {}
 
-  ~DispatchErrorState()
-  {
-  }
+  ~Err() {}
+  
+  void Init( RegalContext * ctx );
+  
 
   ::RegalErrorCallback callback;
   bool inBeginEnd;
+  Dispatch::GL next;
 };
 
 REGAL_NAMESPACE_END

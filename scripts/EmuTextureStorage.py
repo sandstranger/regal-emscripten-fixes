@@ -10,7 +10,7 @@ texstoFormulae = {
         'impl' : [
             'RegalAssert(_context);',
             'if ( !_context->texsto->GetTexParameterv( _context, ${arg0plus} ) ) {',
-            '   _context->dispatcher.emulation.glGetTexParameter${m1}${m2}${m3}v( ${arg0plus} );',
+            '   _context->dispatchGL.glGetTexParameter${m1}${m2}${m3}v( ${arg0plus} );',
             '}',
         ]
     },

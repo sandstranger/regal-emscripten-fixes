@@ -31,7 +31,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct DispatchTableGL;
+struct Dispatch::GL;
 
 struct RegalGMockInterface
 {
@@ -42,7 +42,7 @@ struct RegalGMockInterface
 ${API_DISPATCH_MOCK_DEFINE}
 };
 
-void InitDispatchTable${DISPATCH_NAME}(DispatchTableGL &tbl);
+void InitDispatchTable${DISPATCH_NAME}(Dispatch::GL &tbl);
 
 REGAL_NAMESPACE_END
 
@@ -92,7 +92,7 @@ RegalGMockInterface::~RegalGMockInterface()
 
 RegalGMockInterface* RegalGMockInterface::current;
 
-void InitDispatchTable${DISPATCH_NAME}(DispatchTableGL &tbl)
+void InitDispatchTable${DISPATCH_NAME}(Dispatch::GL &tbl)
 {
 ${API_DISPATCH_FUNC_INIT}
 }

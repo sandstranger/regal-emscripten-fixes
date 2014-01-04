@@ -58,23 +58,21 @@ def apiErrorFuncDefineCode(apis, args):
       code += '  Internal("error_%s","()");\n' % name
       code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
-      code += '  Dispatch::GL *_next = _context->dispatcher.error.next();\n'
-      code += '  RegalAssert(_next);\n'
       if name != 'glGetError':
         code += '  GLenum _error = GL_NO_ERROR;\n'
         code += '  if (!_context->err.inBeginEnd)\n'
-        code += '    _error = _next->glGetError();\n'
+        code += '    _error = _context->err.next.glGetError();\n'
         code += '  RegalAssert(_error==GL_NO_ERROR);\n'
         code += '  '
         if name == 'glBegin':
           code += '_context->err.inBeginEnd = true;\n'
         if not typeIsVoid(rType):
           code += '%s ret = ' % rType
-        code += '_next->%s(%s);\n' % ( name, callParams )
+        code += '_context->err.next.%s(%s);\n' % ( name, callParams )
         if name == 'glEnd':
           code += '_context->err.inBeginEnd = false;\n'
         code += '  if (!_context->err.inBeginEnd) {\n'
-        code += '    _error = _next->glGetError();\n'
+        code += '    _error = _context->err.next.glGetError();\n'
         code += '    if (_error!=GL_NO_ERROR) {\n'
         code += '      Error("%s : ",Token::GLerrorToString(_error));\n'%(name)
         code += '      #if REGAL_BREAK\n'
@@ -87,7 +85,7 @@ def apiErrorFuncDefineCode(apis, args):
         if not typeIsVoid(rType):
           code += 'return ret;\n'
       else:
-        code += '  GLenum error = _next->glGetError();\n'
+        code += '  GLenum error = _context->err.next.glGetError();\n'
         code += '  return error;\n'
       code += '}\n\n'
 
@@ -100,6 +98,25 @@ def apiErrorFuncDefineCode(apis, args):
     code += '\n'
 
   return code
+
+localInclude = '''
+#include "RegalContext.h"
+#include "RegalDispatchError.h"
+'''
+
+localCode = '''
+static Dispatch::Global nextGlobal;
+
+void Err::Init( RegalContext * ctx ) {
+  void InitDispatchGLError( Dispatch::GL & tbl );
+  next = ctx->dispatchGL;
+  InitDispatchGLError( ctx->dispatchGL );
+  nextGlobal = dispatchGlobal;
+  void InitDispatchGlobal( Dispatch::Global & tbl );
+  InitDispatchGlobal( dispatchGlobal );
+}
+
+'''
 
 def generateErrorSource(apis, args):
 

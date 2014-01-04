@@ -62,17 +62,8 @@ REGAL_NAMESPACE_BEGIN
 #define REGAL_HTTP_PORT 8080
 #endif
 
-namespace Http
-{
-  void Init();
 
-  void Start();
-  void Stop();
   
-  extern bool enabled;
-  extern int  port;
-  
-}
 
 REGAL_NAMESPACE_END
 

@@ -43,7 +43,7 @@ REGAL_NAMESPACE_BEGIN
 
 ${API_FUNC_DEFINE}
 
-void InitDispatchTableLog(DispatchTableGL &tbl)
+void InitDispatchTableLog(Dispatch::GL &tbl)
 {
 ${API_GL_DISPATCH_INIT}
 }
@@ -129,9 +129,9 @@ def generateDispatchLog(apis, args):
         code += '    _context->depthNewList--;\n'
 
       if function.needsContext:
-        code += '    DispatchTableGL *_next = _context->dispatcher.logging.next();\n'
+        code += '    Dispatch::GL *_next = &_context->dispatchGL;\n'
       else:
-        code += '    DispatchTableGlobal *_next = dispatcherGlobal.logging.next();\n'
+        code += '    Dispatch::Global *_next = &dispatchGlobal;\n'
 
       code += '    RegalAssert(_next);\n'
       code += '    '

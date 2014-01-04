@@ -5,7 +5,7 @@ baseVertexFormulae = {
     'entries' : [ 'gl(Multi|)Draw(Range|)Elements(Instanced|)BaseVertex(BaseInstance|)' ],
     'impl'    : [
       'if( ! _context->bv->gl${m1}Draw${m2}Elements${m3}BaseVertex${m4}( *_context, ${arg0plus} ) ) {',
-      '  _context->dispatcher.emulation.gl${m1}Draw${m2}Elements${m3}BaseVertex${m4}( ${arg0plus} );',
+      '  _context->dispatchGL.gl${m1}Draw${m2}Elements${m3}BaseVertex${m4}( ${arg0plus} );',
       '}',
     ],
   },

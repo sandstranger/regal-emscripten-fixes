@@ -46,7 +46,7 @@ REGAL_NAMESPACE_BEGIN
 
 ${API_FUNC_DEFINE}
 
-void InitDispatchTableGLX(DispatchTableGL &tbl)
+void InitDispatch::GLX(Dispatch::GL &tbl)
 {
 ${API_GL_DISPATCH_INIT}
 }

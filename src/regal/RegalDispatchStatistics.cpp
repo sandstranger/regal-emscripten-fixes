@@ -76,7 +76,7 @@ static void REGAL_CALL statistics_glAccum(GLenum op, GLfloat value)
   Statistics &statistics = *_context->statistics;
   statistics.glAccum++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAccum(op, value);
 }
@@ -90,7 +90,7 @@ static void REGAL_CALL statistics_glAlphaFunc(GLenum func, GLclampf ref)
   Statistics &statistics = *_context->statistics;
   statistics.glAlphaFunc++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAlphaFunc(func, ref);
 }
@@ -104,7 +104,7 @@ static void REGAL_CALL statistics_glBegin(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glBegin++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBegin(mode);
 }
@@ -118,7 +118,7 @@ static void REGAL_CALL statistics_glBitmap(GLsizei width, GLsizei height, GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glBitmap++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBitmap(width, height, xorig, yorig, xmove, ymove, bitmap);
 }
@@ -132,7 +132,7 @@ static void REGAL_CALL statistics_glBlendFunc(GLenum sfactor, GLenum dfactor)
   Statistics &statistics = *_context->statistics;
   statistics.glBlendFunc++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFunc(sfactor, dfactor);
 }
@@ -146,7 +146,7 @@ static void REGAL_CALL statistics_glCallList(GLuint list)
   Statistics &statistics = *_context->statistics;
   statistics.glCallList++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCallList(list);
 }
@@ -160,7 +160,7 @@ static void REGAL_CALL statistics_glCallLists(GLsizei n, GLenum type, const GLvo
   Statistics &statistics = *_context->statistics;
   statistics.glCallLists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCallLists(n, type, lists);
 }
@@ -174,7 +174,7 @@ static void REGAL_CALL statistics_glClear(GLbitfield mask)
   Statistics &statistics = *_context->statistics;
   statistics.glClear++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClear(mask);
 }
@@ -188,7 +188,7 @@ static void REGAL_CALL statistics_glClearAccum(GLfloat red, GLfloat green, GLflo
   Statistics &statistics = *_context->statistics;
   statistics.glClearAccum++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearAccum(red, green, blue, alpha);
 }
@@ -202,7 +202,7 @@ static void REGAL_CALL statistics_glClearColor(GLclampf red, GLclampf green, GLc
   Statistics &statistics = *_context->statistics;
   statistics.glClearColor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearColor(red, green, blue, alpha);
 }
@@ -216,7 +216,7 @@ static void REGAL_CALL statistics_glClearDepth(GLclampd depth)
   Statistics &statistics = *_context->statistics;
   statistics.glClearDepth++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearDepth(depth);
 }
@@ -230,7 +230,7 @@ static void REGAL_CALL statistics_glClearIndex(GLfloat c)
   Statistics &statistics = *_context->statistics;
   statistics.glClearIndex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearIndex(c);
 }
@@ -244,7 +244,7 @@ static void REGAL_CALL statistics_glClearStencil(GLint s)
   Statistics &statistics = *_context->statistics;
   statistics.glClearStencil++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearStencil(s);
 }
@@ -258,7 +258,7 @@ static void REGAL_CALL statistics_glClipPlane(GLenum plane, const GLdouble *equa
   Statistics &statistics = *_context->statistics;
   statistics.glClipPlane++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClipPlane(plane, equation);
 }
@@ -272,7 +272,7 @@ static void REGAL_CALL statistics_glColor3b(GLbyte red, GLbyte green, GLbyte blu
   Statistics &statistics = *_context->statistics;
   statistics.glColor3b++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3b(red, green, blue);
 }
@@ -286,7 +286,7 @@ static void REGAL_CALL statistics_glColor3bv(const GLbyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3bv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3bv(v);
 }
@@ -300,7 +300,7 @@ static void REGAL_CALL statistics_glColor3d(GLdouble red, GLdouble green, GLdoub
   Statistics &statistics = *_context->statistics;
   statistics.glColor3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3d(red, green, blue);
 }
@@ -314,7 +314,7 @@ static void REGAL_CALL statistics_glColor3dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3dv(v);
 }
@@ -328,7 +328,7 @@ static void REGAL_CALL statistics_glColor3f(GLfloat red, GLfloat green, GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glColor3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3f(red, green, blue);
 }
@@ -342,7 +342,7 @@ static void REGAL_CALL statistics_glColor3fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3fv(v);
 }
@@ -356,7 +356,7 @@ static void REGAL_CALL statistics_glColor3i(GLint red, GLint green, GLint blue)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3i(red, green, blue);
 }
@@ -370,7 +370,7 @@ static void REGAL_CALL statistics_glColor3iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3iv(v);
 }
@@ -384,7 +384,7 @@ static void REGAL_CALL statistics_glColor3s(GLshort red, GLshort green, GLshort 
   Statistics &statistics = *_context->statistics;
   statistics.glColor3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3s(red, green, blue);
 }
@@ -398,7 +398,7 @@ static void REGAL_CALL statistics_glColor3sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3sv(v);
 }
@@ -412,7 +412,7 @@ static void REGAL_CALL statistics_glColor3ub(GLubyte red, GLubyte green, GLubyte
   Statistics &statistics = *_context->statistics;
   statistics.glColor3ub++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3ub(red, green, blue);
 }
@@ -426,7 +426,7 @@ static void REGAL_CALL statistics_glColor3ubv(const GLubyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3ubv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3ubv(v);
 }
@@ -440,7 +440,7 @@ static void REGAL_CALL statistics_glColor3ui(GLuint red, GLuint green, GLuint bl
   Statistics &statistics = *_context->statistics;
   statistics.glColor3ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3ui(red, green, blue);
 }
@@ -454,7 +454,7 @@ static void REGAL_CALL statistics_glColor3uiv(const GLuint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3uiv(v);
 }
@@ -468,7 +468,7 @@ static void REGAL_CALL statistics_glColor3us(GLushort red, GLushort green, GLush
   Statistics &statistics = *_context->statistics;
   statistics.glColor3us++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3us(red, green, blue);
 }
@@ -482,7 +482,7 @@ static void REGAL_CALL statistics_glColor3usv(const GLushort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor3usv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3usv(v);
 }
@@ -496,7 +496,7 @@ static void REGAL_CALL statistics_glColor4b(GLbyte red, GLbyte green, GLbyte blu
   Statistics &statistics = *_context->statistics;
   statistics.glColor4b++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4b(red, green, blue, alpha);
 }
@@ -510,7 +510,7 @@ static void REGAL_CALL statistics_glColor4bv(const GLbyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4bv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4bv(v);
 }
@@ -524,7 +524,7 @@ static void REGAL_CALL statistics_glColor4d(GLdouble red, GLdouble green, GLdoub
   Statistics &statistics = *_context->statistics;
   statistics.glColor4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4d(red, green, blue, alpha);
 }
@@ -538,7 +538,7 @@ static void REGAL_CALL statistics_glColor4dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4dv(v);
 }
@@ -552,7 +552,7 @@ static void REGAL_CALL statistics_glColor4f(GLfloat red, GLfloat green, GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glColor4f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4f(red, green, blue, alpha);
 }
@@ -566,7 +566,7 @@ static void REGAL_CALL statistics_glColor4fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4fv(v);
 }
@@ -580,7 +580,7 @@ static void REGAL_CALL statistics_glColor4i(GLint red, GLint green, GLint blue, 
   Statistics &statistics = *_context->statistics;
   statistics.glColor4i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4i(red, green, blue, alpha);
 }
@@ -594,7 +594,7 @@ static void REGAL_CALL statistics_glColor4iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4iv(v);
 }
@@ -608,7 +608,7 @@ static void REGAL_CALL statistics_glColor4s(GLshort red, GLshort green, GLshort 
   Statistics &statistics = *_context->statistics;
   statistics.glColor4s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4s(red, green, blue, alpha);
 }
@@ -622,7 +622,7 @@ static void REGAL_CALL statistics_glColor4sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4sv(v);
 }
@@ -636,7 +636,7 @@ static void REGAL_CALL statistics_glColor4ub(GLubyte red, GLubyte green, GLubyte
   Statistics &statistics = *_context->statistics;
   statistics.glColor4ub++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4ub(red, green, blue, alpha);
 }
@@ -650,7 +650,7 @@ static void REGAL_CALL statistics_glColor4ubv(const GLubyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4ubv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4ubv(v);
 }
@@ -664,7 +664,7 @@ static void REGAL_CALL statistics_glColor4ui(GLuint red, GLuint green, GLuint bl
   Statistics &statistics = *_context->statistics;
   statistics.glColor4ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4ui(red, green, blue, alpha);
 }
@@ -678,7 +678,7 @@ static void REGAL_CALL statistics_glColor4uiv(const GLuint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4uiv(v);
 }
@@ -692,7 +692,7 @@ static void REGAL_CALL statistics_glColor4us(GLushort red, GLushort green, GLush
   Statistics &statistics = *_context->statistics;
   statistics.glColor4us++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4us(red, green, blue, alpha);
 }
@@ -706,7 +706,7 @@ static void REGAL_CALL statistics_glColor4usv(const GLushort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glColor4usv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4usv(v);
 }
@@ -720,7 +720,7 @@ static void REGAL_CALL statistics_glColorMask(GLboolean red, GLboolean green, GL
   Statistics &statistics = *_context->statistics;
   statistics.glColorMask++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorMask(red, green, blue, alpha);
 }
@@ -734,7 +734,7 @@ static void REGAL_CALL statistics_glColorMaterial(GLenum face, GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glColorMaterial++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorMaterial(face, mode);
 }
@@ -748,7 +748,7 @@ static void REGAL_CALL statistics_glCopyPixels(GLint x, GLint y, GLsizei width, 
   Statistics &statistics = *_context->statistics;
   statistics.glCopyPixels++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyPixels(x, y, width, height, type);
 }
@@ -762,7 +762,7 @@ static void REGAL_CALL statistics_glCullFace(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glCullFace++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCullFace(mode);
 }
@@ -776,7 +776,7 @@ static void REGAL_CALL statistics_glDeleteLists(GLuint list, GLsizei range)
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteLists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteLists(list, range);
 }
@@ -790,7 +790,7 @@ static void REGAL_CALL statistics_glDepthFunc(GLenum func)
   Statistics &statistics = *_context->statistics;
   statistics.glDepthFunc++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthFunc(func);
 }
@@ -804,7 +804,7 @@ static void REGAL_CALL statistics_glDepthMask(GLboolean flag)
   Statistics &statistics = *_context->statistics;
   statistics.glDepthMask++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthMask(flag);
 }
@@ -818,7 +818,7 @@ static void REGAL_CALL statistics_glDepthRange(GLclampd zNear, GLclampd zFar)
   Statistics &statistics = *_context->statistics;
   statistics.glDepthRange++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthRange(zNear, zFar);
 }
@@ -872,7 +872,7 @@ static void REGAL_CALL statistics_glDisable(GLenum cap)
     default: break;
   }
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisable(cap);
 }
@@ -886,7 +886,7 @@ static void REGAL_CALL statistics_glDrawBuffer(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glDrawBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawBuffer(mode);
 }
@@ -900,7 +900,7 @@ static void REGAL_CALL statistics_glDrawPixels(GLsizei width, GLsizei height, GL
   Statistics &statistics = *_context->statistics;
   statistics.glDrawPixels++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawPixels(width, height, format, type, pixels);
 }
@@ -914,7 +914,7 @@ static void REGAL_CALL statistics_glEdgeFlag(GLboolean flag)
   Statistics &statistics = *_context->statistics;
   statistics.glEdgeFlag++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEdgeFlag(flag);
 }
@@ -928,7 +928,7 @@ static void REGAL_CALL statistics_glEdgeFlagv(const GLboolean *flag)
   Statistics &statistics = *_context->statistics;
   statistics.glEdgeFlagv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEdgeFlagv(flag);
 }
@@ -982,7 +982,7 @@ static void REGAL_CALL statistics_glEnable(GLenum cap)
     default: break;
   }
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnable(cap);
 }
@@ -996,7 +996,7 @@ static void REGAL_CALL statistics_glEnd(void)
   Statistics &statistics = *_context->statistics;
   statistics.glEnd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnd();
 }
@@ -1010,7 +1010,7 @@ static void REGAL_CALL statistics_glEndList(void)
   Statistics &statistics = *_context->statistics;
   statistics.glEndList++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndList();
 }
@@ -1024,7 +1024,7 @@ static void REGAL_CALL statistics_glEvalCoord1d(GLdouble u)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord1d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord1d(u);
 }
@@ -1038,7 +1038,7 @@ static void REGAL_CALL statistics_glEvalCoord1dv(const GLdouble *u)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord1dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord1dv(u);
 }
@@ -1052,7 +1052,7 @@ static void REGAL_CALL statistics_glEvalCoord1f(GLfloat u)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord1f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord1f(u);
 }
@@ -1066,7 +1066,7 @@ static void REGAL_CALL statistics_glEvalCoord1fv(const GLfloat *u)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord1fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord1fv(u);
 }
@@ -1080,7 +1080,7 @@ static void REGAL_CALL statistics_glEvalCoord2d(GLdouble u, GLdouble v)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord2d(u, v);
 }
@@ -1094,7 +1094,7 @@ static void REGAL_CALL statistics_glEvalCoord2dv(const GLdouble *u)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord2dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord2dv(u);
 }
@@ -1108,7 +1108,7 @@ static void REGAL_CALL statistics_glEvalCoord2f(GLfloat u, GLfloat v)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord2f(u, v);
 }
@@ -1122,7 +1122,7 @@ static void REGAL_CALL statistics_glEvalCoord2fv(const GLfloat *u)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalCoord2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalCoord2fv(u);
 }
@@ -1136,7 +1136,7 @@ static void REGAL_CALL statistics_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalMesh1++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalMesh1(mode, i1, i2);
 }
@@ -1150,7 +1150,7 @@ static void REGAL_CALL statistics_glEvalMesh2(GLenum mode, GLint i1, GLint i2, G
   Statistics &statistics = *_context->statistics;
   statistics.glEvalMesh2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalMesh2(mode, i1, i2, j1, j2);
 }
@@ -1164,7 +1164,7 @@ static void REGAL_CALL statistics_glEvalPoint1(GLint i)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalPoint1++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalPoint1(i);
 }
@@ -1178,7 +1178,7 @@ static void REGAL_CALL statistics_glEvalPoint2(GLint i, GLint j)
   Statistics &statistics = *_context->statistics;
   statistics.glEvalPoint2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalPoint2(i, j);
 }
@@ -1192,7 +1192,7 @@ static void REGAL_CALL statistics_glFeedbackBuffer(GLsizei size, GLenum type, GL
   Statistics &statistics = *_context->statistics;
   statistics.glFeedbackBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFeedbackBuffer(size, type, buffer);
 }
@@ -1206,7 +1206,7 @@ static void REGAL_CALL statistics_glFinish(void)
   Statistics &statistics = *_context->statistics;
   statistics.glFinish++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFinish();
 }
@@ -1220,7 +1220,7 @@ static void REGAL_CALL statistics_glFlush(void)
   Statistics &statistics = *_context->statistics;
   statistics.glFlush++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlush();
 }
@@ -1234,7 +1234,7 @@ static void REGAL_CALL statistics_glFogf(GLenum pname, GLfloat param)
   Statistics &statistics = *_context->statistics;
   statistics.glFogf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogf(pname, param);
 }
@@ -1248,7 +1248,7 @@ static void REGAL_CALL statistics_glFogfv(GLenum pname, const GLfloat *params)
   Statistics &statistics = *_context->statistics;
   statistics.glFogfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogfv(pname, params);
 }
@@ -1262,7 +1262,7 @@ static void REGAL_CALL statistics_glFogi(GLenum pname, GLint param)
   Statistics &statistics = *_context->statistics;
   statistics.glFogi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogi(pname, param);
 }
@@ -1276,7 +1276,7 @@ static void REGAL_CALL statistics_glFogiv(GLenum pname, const GLint *params)
   Statistics &statistics = *_context->statistics;
   statistics.glFogiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogiv(pname, params);
 }
@@ -1290,7 +1290,7 @@ static void REGAL_CALL statistics_glFrontFace(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glFrontFace++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFrontFace(mode);
 }
@@ -1304,7 +1304,7 @@ static void REGAL_CALL statistics_glFrustum(GLdouble left, GLdouble right, GLdou
   Statistics &statistics = *_context->statistics;
   statistics.glFrustum++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFrustum(left, right, bottom, top, zNear, zFar);
 }
@@ -1318,7 +1318,7 @@ static GLuint REGAL_CALL statistics_glGenLists(GLsizei range)
   Statistics &statistics = *_context->statistics;
   statistics.glGenLists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGenLists(range);
   return ret;
@@ -1333,7 +1333,7 @@ static void REGAL_CALL statistics_glGetBooleanv(GLenum pname, GLboolean *params)
   Statistics &statistics = *_context->statistics;
   statistics.glGetBooleanv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBooleanv(pname, params);
 }
@@ -1347,7 +1347,7 @@ static void REGAL_CALL statistics_glGetClipPlane(GLenum plane, GLdouble *equatio
   Statistics &statistics = *_context->statistics;
   statistics.glGetClipPlane++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetClipPlane(plane, equation);
 }
@@ -1361,7 +1361,7 @@ static void REGAL_CALL statistics_glGetDoublev(GLenum pname, GLdouble *params)
   Statistics &statistics = *_context->statistics;
   statistics.glGetDoublev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetDoublev(pname, params);
 }
@@ -1375,7 +1375,7 @@ static GLenum REGAL_CALL statistics_glGetError(void)
   Statistics &statistics = *_context->statistics;
   statistics.glGetError++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glGetError();
   return ret;
@@ -1390,7 +1390,7 @@ static void REGAL_CALL statistics_glGetFloatv(GLenum pname, GLfloat *params)
   Statistics &statistics = *_context->statistics;
   statistics.glGetFloatv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFloatv(pname, params);
 }
@@ -1404,7 +1404,7 @@ static void REGAL_CALL statistics_glGetIntegerv(GLenum pname, GLint *params)
   Statistics &statistics = *_context->statistics;
   statistics.glGetIntegerv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetIntegerv(pname, params);
 }
@@ -1418,7 +1418,7 @@ static void REGAL_CALL statistics_glGetLightfv(GLenum light, GLenum pname, GLflo
   Statistics &statistics = *_context->statistics;
   statistics.glGetLightfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetLightfv(light, pname, params);
 }
@@ -1432,7 +1432,7 @@ static void REGAL_CALL statistics_glGetLightiv(GLenum light, GLenum pname, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glGetLightiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetLightiv(light, pname, params);
 }
@@ -1446,7 +1446,7 @@ static void REGAL_CALL statistics_glGetMapdv(GLenum target, GLenum query, GLdoub
   Statistics &statistics = *_context->statistics;
   statistics.glGetMapdv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapdv(target, query, v);
 }
@@ -1460,7 +1460,7 @@ static void REGAL_CALL statistics_glGetMapfv(GLenum target, GLenum query, GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glGetMapfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapfv(target, query, v);
 }
@@ -1474,7 +1474,7 @@ static void REGAL_CALL statistics_glGetMapiv(GLenum target, GLenum query, GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glGetMapiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapiv(target, query, v);
 }
@@ -1488,7 +1488,7 @@ static void REGAL_CALL statistics_glGetMaterialfv(GLenum face, GLenum pname, GLf
   Statistics &statistics = *_context->statistics;
   statistics.glGetMaterialfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMaterialfv(face, pname, params);
 }
@@ -1502,7 +1502,7 @@ static void REGAL_CALL statistics_glGetMaterialiv(GLenum face, GLenum pname, GLi
   Statistics &statistics = *_context->statistics;
   statistics.glGetMaterialiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMaterialiv(face, pname, params);
 }
@@ -1516,7 +1516,7 @@ static void REGAL_CALL statistics_glGetPixelMapfv(GLenum map, GLfloat *values)
   Statistics &statistics = *_context->statistics;
   statistics.glGetPixelMapfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPixelMapfv(map, values);
 }
@@ -1530,7 +1530,7 @@ static void REGAL_CALL statistics_glGetPixelMapuiv(GLenum map, GLuint *values)
   Statistics &statistics = *_context->statistics;
   statistics.glGetPixelMapuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPixelMapuiv(map, values);
 }
@@ -1544,7 +1544,7 @@ static void REGAL_CALL statistics_glGetPixelMapusv(GLenum map, GLushort *values)
   Statistics &statistics = *_context->statistics;
   statistics.glGetPixelMapusv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPixelMapusv(map, values);
 }
@@ -1558,7 +1558,7 @@ static void REGAL_CALL statistics_glGetPolygonStipple(GLubyte *mask)
   Statistics &statistics = *_context->statistics;
   statistics.glGetPolygonStipple++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPolygonStipple(mask);
 }
@@ -1572,7 +1572,7 @@ static const GLubyte *REGAL_CALL statistics_glGetString(GLenum name)
   Statistics &statistics = *_context->statistics;
   statistics.glGetString++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   const GLubyte * ret = _next->glGetString(name);
   return ret;
@@ -1587,7 +1587,7 @@ static void REGAL_CALL statistics_glGetTexEnvfv(GLenum target, GLenum pname, GLf
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexEnvfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexEnvfv(target, pname, params);
 }
@@ -1601,7 +1601,7 @@ static void REGAL_CALL statistics_glGetTexEnviv(GLenum target, GLenum pname, GLi
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexEnviv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexEnviv(target, pname, params);
 }
@@ -1615,7 +1615,7 @@ static void REGAL_CALL statistics_glGetTexGendv(GLenum coord, GLenum pname, GLdo
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexGendv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexGendv(coord, pname, params);
 }
@@ -1629,7 +1629,7 @@ static void REGAL_CALL statistics_glGetTexGenfv(GLenum coord, GLenum pname, GLfl
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexGenfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexGenfv(coord, pname, params);
 }
@@ -1643,7 +1643,7 @@ static void REGAL_CALL statistics_glGetTexGeniv(GLenum coord, GLenum pname, GLin
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexGeniv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexGeniv(coord, pname, params);
 }
@@ -1657,7 +1657,7 @@ static void REGAL_CALL statistics_glGetTexImage(GLenum target, GLint level, GLen
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexImage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexImage(target, level, format, type, pixels);
 }
@@ -1671,7 +1671,7 @@ static void REGAL_CALL statistics_glGetTexLevelParameterfv(GLenum target, GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexLevelParameterfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexLevelParameterfv(target, level, pname, params);
 }
@@ -1685,7 +1685,7 @@ static void REGAL_CALL statistics_glGetTexLevelParameteriv(GLenum target, GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexLevelParameteriv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexLevelParameteriv(target, level, pname, params);
 }
@@ -1699,7 +1699,7 @@ static void REGAL_CALL statistics_glGetTexParameterfv(GLenum target, GLenum pnam
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexParameterfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameterfv(target, pname, params);
 }
@@ -1713,7 +1713,7 @@ static void REGAL_CALL statistics_glGetTexParameteriv(GLenum target, GLenum pnam
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexParameteriv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameteriv(target, pname, params);
 }
@@ -1727,7 +1727,7 @@ static void REGAL_CALL statistics_glHint(GLenum target, GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glHint++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glHint(target, mode);
 }
@@ -1741,7 +1741,7 @@ static void REGAL_CALL statistics_glIndexMask(GLuint mask)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexMask++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexMask(mask);
 }
@@ -1755,7 +1755,7 @@ static void REGAL_CALL statistics_glIndexd(GLdouble c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexd(c);
 }
@@ -1769,7 +1769,7 @@ static void REGAL_CALL statistics_glIndexdv(const GLdouble *c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexdv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexdv(c);
 }
@@ -1783,7 +1783,7 @@ static void REGAL_CALL statistics_glIndexf(GLfloat c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexf(c);
 }
@@ -1797,7 +1797,7 @@ static void REGAL_CALL statistics_glIndexfv(const GLfloat *c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexfv(c);
 }
@@ -1811,7 +1811,7 @@ static void REGAL_CALL statistics_glIndexi(GLint c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexi(c);
 }
@@ -1825,7 +1825,7 @@ static void REGAL_CALL statistics_glIndexiv(const GLint *c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexiv(c);
 }
@@ -1839,7 +1839,7 @@ static void REGAL_CALL statistics_glIndexs(GLshort c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexs++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexs(c);
 }
@@ -1853,7 +1853,7 @@ static void REGAL_CALL statistics_glIndexsv(const GLshort *c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexsv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexsv(c);
 }
@@ -1867,7 +1867,7 @@ static void REGAL_CALL statistics_glInitNames(void)
   Statistics &statistics = *_context->statistics;
   statistics.glInitNames++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInitNames();
 }
@@ -1881,7 +1881,7 @@ static GLboolean REGAL_CALL statistics_glIsEnabled(GLenum cap)
   Statistics &statistics = *_context->statistics;
   statistics.glIsEnabled++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsEnabled(cap);
   return ret;
@@ -1896,7 +1896,7 @@ static GLboolean REGAL_CALL statistics_glIsList(GLuint list)
   Statistics &statistics = *_context->statistics;
   statistics.glIsList++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsList(list);
   return ret;
@@ -1911,7 +1911,7 @@ static void REGAL_CALL statistics_glLightModelf(GLenum pname, GLfloat param)
   Statistics &statistics = *_context->statistics;
   statistics.glLightModelf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightModelf(pname, param);
 }
@@ -1925,7 +1925,7 @@ static void REGAL_CALL statistics_glLightModelfv(GLenum pname, const GLfloat *pa
   Statistics &statistics = *_context->statistics;
   statistics.glLightModelfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightModelfv(pname, params);
 }
@@ -1939,7 +1939,7 @@ static void REGAL_CALL statistics_glLightModeli(GLenum pname, GLint param)
   Statistics &statistics = *_context->statistics;
   statistics.glLightModeli++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightModeli(pname, param);
 }
@@ -1953,7 +1953,7 @@ static void REGAL_CALL statistics_glLightModeliv(GLenum pname, const GLint *para
   Statistics &statistics = *_context->statistics;
   statistics.glLightModeliv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightModeliv(pname, params);
 }
@@ -1967,7 +1967,7 @@ static void REGAL_CALL statistics_glLightf(GLenum light, GLenum pname, GLfloat p
   Statistics &statistics = *_context->statistics;
   statistics.glLightf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightf(light, pname, param);
 }
@@ -1981,7 +1981,7 @@ static void REGAL_CALL statistics_glLightfv(GLenum light, GLenum pname, const GL
   Statistics &statistics = *_context->statistics;
   statistics.glLightfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightfv(light, pname, params);
 }
@@ -1995,7 +1995,7 @@ static void REGAL_CALL statistics_glLighti(GLenum light, GLenum pname, GLint par
   Statistics &statistics = *_context->statistics;
   statistics.glLighti++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLighti(light, pname, param);
 }
@@ -2009,7 +2009,7 @@ static void REGAL_CALL statistics_glLightiv(GLenum light, GLenum pname, const GL
   Statistics &statistics = *_context->statistics;
   statistics.glLightiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightiv(light, pname, params);
 }
@@ -2023,7 +2023,7 @@ static void REGAL_CALL statistics_glLineStipple(GLint factor, GLushort pattern)
   Statistics &statistics = *_context->statistics;
   statistics.glLineStipple++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLineStipple(factor, pattern);
 }
@@ -2037,7 +2037,7 @@ static void REGAL_CALL statistics_glLineWidth(GLfloat width)
   Statistics &statistics = *_context->statistics;
   statistics.glLineWidth++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLineWidth(width);
 }
@@ -2051,7 +2051,7 @@ static void REGAL_CALL statistics_glListBase(GLuint base)
   Statistics &statistics = *_context->statistics;
   statistics.glListBase++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glListBase(base);
 }
@@ -2065,7 +2065,7 @@ static void REGAL_CALL statistics_glLoadIdentity(void)
   Statistics &statistics = *_context->statistics;
   statistics.glLoadIdentity++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadIdentity();
 }
@@ -2079,7 +2079,7 @@ static void REGAL_CALL statistics_glLoadMatrixd(const GLdouble *m)
   Statistics &statistics = *_context->statistics;
   statistics.glLoadMatrixd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadMatrixd(m);
 }
@@ -2093,7 +2093,7 @@ static void REGAL_CALL statistics_glLoadMatrixf(const GLfloat *m)
   Statistics &statistics = *_context->statistics;
   statistics.glLoadMatrixf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadMatrixf(m);
 }
@@ -2107,7 +2107,7 @@ static void REGAL_CALL statistics_glLoadName(GLuint name)
   Statistics &statistics = *_context->statistics;
   statistics.glLoadName++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadName(name);
 }
@@ -2121,7 +2121,7 @@ static void REGAL_CALL statistics_glLogicOp(GLenum opcode)
   Statistics &statistics = *_context->statistics;
   statistics.glLogicOp++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLogicOp(opcode);
 }
@@ -2135,7 +2135,7 @@ static void REGAL_CALL statistics_glMap1d(GLenum target, GLdouble u1, GLdouble u
   Statistics &statistics = *_context->statistics;
   statistics.glMap1d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMap1d(target, u1, u2, stride, order, points);
 }
@@ -2149,7 +2149,7 @@ static void REGAL_CALL statistics_glMap1f(GLenum target, GLfloat u1, GLfloat u2,
   Statistics &statistics = *_context->statistics;
   statistics.glMap1f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMap1f(target, u1, u2, stride, order, points);
 }
@@ -2163,7 +2163,7 @@ static void REGAL_CALL statistics_glMap2d(GLenum target, GLdouble u1, GLdouble u
   Statistics &statistics = *_context->statistics;
   statistics.glMap2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMap2d(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
@@ -2177,7 +2177,7 @@ static void REGAL_CALL statistics_glMap2f(GLenum target, GLfloat u1, GLfloat u2,
   Statistics &statistics = *_context->statistics;
   statistics.glMap2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMap2f(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
@@ -2191,7 +2191,7 @@ static void REGAL_CALL statistics_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2
   Statistics &statistics = *_context->statistics;
   statistics.glMapGrid1d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapGrid1d(un, u1, u2);
 }
@@ -2205,7 +2205,7 @@ static void REGAL_CALL statistics_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
   Statistics &statistics = *_context->statistics;
   statistics.glMapGrid1f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapGrid1f(un, u1, u2);
 }
@@ -2219,7 +2219,7 @@ static void REGAL_CALL statistics_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2
   Statistics &statistics = *_context->statistics;
   statistics.glMapGrid2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapGrid2d(un, u1, u2, vn, v1, v2);
 }
@@ -2233,7 +2233,7 @@ static void REGAL_CALL statistics_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, 
   Statistics &statistics = *_context->statistics;
   statistics.glMapGrid2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapGrid2f(un, u1, u2, vn, v1, v2);
 }
@@ -2247,7 +2247,7 @@ static void REGAL_CALL statistics_glMaterialf(GLenum face, GLenum pname, GLfloat
   Statistics &statistics = *_context->statistics;
   statistics.glMaterialf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMaterialf(face, pname, param);
 }
@@ -2261,7 +2261,7 @@ static void REGAL_CALL statistics_glMaterialfv(GLenum face, GLenum pname, const 
   Statistics &statistics = *_context->statistics;
   statistics.glMaterialfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMaterialfv(face, pname, params);
 }
@@ -2275,7 +2275,7 @@ static void REGAL_CALL statistics_glMateriali(GLenum face, GLenum pname, GLint p
   Statistics &statistics = *_context->statistics;
   statistics.glMateriali++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMateriali(face, pname, param);
 }
@@ -2289,7 +2289,7 @@ static void REGAL_CALL statistics_glMaterialiv(GLenum face, GLenum pname, const 
   Statistics &statistics = *_context->statistics;
   statistics.glMaterialiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMaterialiv(face, pname, params);
 }
@@ -2303,7 +2303,7 @@ static void REGAL_CALL statistics_glMatrixMode(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glMatrixMode++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixMode(mode);
 }
@@ -2317,7 +2317,7 @@ static void REGAL_CALL statistics_glMultMatrixd(const GLdouble *m)
   Statistics &statistics = *_context->statistics;
   statistics.glMultMatrixd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultMatrixd(m);
 }
@@ -2331,7 +2331,7 @@ static void REGAL_CALL statistics_glMultMatrixf(const GLfloat *m)
   Statistics &statistics = *_context->statistics;
   statistics.glMultMatrixf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultMatrixf(m);
 }
@@ -2345,7 +2345,7 @@ static void REGAL_CALL statistics_glNewList(GLuint list, GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glNewList++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNewList(list, mode);
 }
@@ -2359,7 +2359,7 @@ static void REGAL_CALL statistics_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3b++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3b(nx, ny, nz);
 }
@@ -2373,7 +2373,7 @@ static void REGAL_CALL statistics_glNormal3bv(const GLbyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3bv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3bv(v);
 }
@@ -2387,7 +2387,7 @@ static void REGAL_CALL statistics_glNormal3d(GLdouble nx, GLdouble ny, GLdouble 
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3d(nx, ny, nz);
 }
@@ -2401,7 +2401,7 @@ static void REGAL_CALL statistics_glNormal3dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3dv(v);
 }
@@ -2415,7 +2415,7 @@ static void REGAL_CALL statistics_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3f(nx, ny, nz);
 }
@@ -2429,7 +2429,7 @@ static void REGAL_CALL statistics_glNormal3fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3fv(v);
 }
@@ -2443,7 +2443,7 @@ static void REGAL_CALL statistics_glNormal3i(GLint nx, GLint ny, GLint nz)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3i(nx, ny, nz);
 }
@@ -2457,7 +2457,7 @@ static void REGAL_CALL statistics_glNormal3iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3iv(v);
 }
@@ -2471,7 +2471,7 @@ static void REGAL_CALL statistics_glNormal3s(GLshort nx, GLshort ny, GLshort nz)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3s(nx, ny, nz);
 }
@@ -2485,7 +2485,7 @@ static void REGAL_CALL statistics_glNormal3sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glNormal3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3sv(v);
 }
@@ -2499,7 +2499,7 @@ static void REGAL_CALL statistics_glOrtho(GLdouble left, GLdouble right, GLdoubl
   Statistics &statistics = *_context->statistics;
   statistics.glOrtho++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glOrtho(left, right, bottom, top, zNear, zFar);
 }
@@ -2513,7 +2513,7 @@ static void REGAL_CALL statistics_glPassThrough(GLfloat token)
   Statistics &statistics = *_context->statistics;
   statistics.glPassThrough++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPassThrough(token);
 }
@@ -2527,7 +2527,7 @@ static void REGAL_CALL statistics_glPixelMapfv(GLenum map, GLsizei mapsize, cons
   Statistics &statistics = *_context->statistics;
   statistics.glPixelMapfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelMapfv(map, mapsize, values);
 }
@@ -2541,7 +2541,7 @@ static void REGAL_CALL statistics_glPixelMapuiv(GLenum map, GLsizei mapsize, con
   Statistics &statistics = *_context->statistics;
   statistics.glPixelMapuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelMapuiv(map, mapsize, values);
 }
@@ -2555,7 +2555,7 @@ static void REGAL_CALL statistics_glPixelMapusv(GLenum map, GLsizei mapsize, con
   Statistics &statistics = *_context->statistics;
   statistics.glPixelMapusv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelMapusv(map, mapsize, values);
 }
@@ -2569,7 +2569,7 @@ static void REGAL_CALL statistics_glPixelStoref(GLenum pname, GLfloat param)
   Statistics &statistics = *_context->statistics;
   statistics.glPixelStoref++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelStoref(pname, param);
 }
@@ -2583,7 +2583,7 @@ static void REGAL_CALL statistics_glPixelStorei(GLenum pname, GLint param)
   Statistics &statistics = *_context->statistics;
   statistics.glPixelStorei++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelStorei(pname, param);
 }
@@ -2597,7 +2597,7 @@ static void REGAL_CALL statistics_glPixelTransferf(GLenum pname, GLfloat param)
   Statistics &statistics = *_context->statistics;
   statistics.glPixelTransferf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTransferf(pname, param);
 }
@@ -2611,7 +2611,7 @@ static void REGAL_CALL statistics_glPixelTransferi(GLenum pname, GLint param)
   Statistics &statistics = *_context->statistics;
   statistics.glPixelTransferi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTransferi(pname, param);
 }
@@ -2625,7 +2625,7 @@ static void REGAL_CALL statistics_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
   Statistics &statistics = *_context->statistics;
   statistics.glPixelZoom++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelZoom(xfactor, yfactor);
 }
@@ -2639,7 +2639,7 @@ static void REGAL_CALL statistics_glPointSize(GLfloat size)
   Statistics &statistics = *_context->statistics;
   statistics.glPointSize++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointSize(size);
 }
@@ -2653,7 +2653,7 @@ static void REGAL_CALL statistics_glPolygonMode(GLenum face, GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glPolygonMode++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPolygonMode(face, mode);
 }
@@ -2667,7 +2667,7 @@ static void REGAL_CALL statistics_glPolygonStipple(const GLubyte *mask)
   Statistics &statistics = *_context->statistics;
   statistics.glPolygonStipple++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPolygonStipple(mask);
 }
@@ -2681,7 +2681,7 @@ static void REGAL_CALL statistics_glPopAttrib(void)
   Statistics &statistics = *_context->statistics;
   statistics.glPopAttrib++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPopAttrib();
 }
@@ -2695,7 +2695,7 @@ static void REGAL_CALL statistics_glPopMatrix(void)
   Statistics &statistics = *_context->statistics;
   statistics.glPopMatrix++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPopMatrix();
 }
@@ -2709,7 +2709,7 @@ static void REGAL_CALL statistics_glPopName(void)
   Statistics &statistics = *_context->statistics;
   statistics.glPopName++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPopName();
 }
@@ -2723,7 +2723,7 @@ static void REGAL_CALL statistics_glPushAttrib(GLbitfield mask)
   Statistics &statistics = *_context->statistics;
   statistics.glPushAttrib++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPushAttrib(mask);
 }
@@ -2737,7 +2737,7 @@ static void REGAL_CALL statistics_glPushMatrix(void)
   Statistics &statistics = *_context->statistics;
   statistics.glPushMatrix++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPushMatrix();
 }
@@ -2751,7 +2751,7 @@ static void REGAL_CALL statistics_glPushName(GLuint name)
   Statistics &statistics = *_context->statistics;
   statistics.glPushName++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPushName(name);
 }
@@ -2765,7 +2765,7 @@ static void REGAL_CALL statistics_glRasterPos2d(GLdouble x, GLdouble y)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2d(x, y);
 }
@@ -2779,7 +2779,7 @@ static void REGAL_CALL statistics_glRasterPos2dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2dv(v);
 }
@@ -2793,7 +2793,7 @@ static void REGAL_CALL statistics_glRasterPos2f(GLfloat x, GLfloat y)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2f(x, y);
 }
@@ -2807,7 +2807,7 @@ static void REGAL_CALL statistics_glRasterPos2fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2fv(v);
 }
@@ -2821,7 +2821,7 @@ static void REGAL_CALL statistics_glRasterPos2i(GLint x, GLint y)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2i(x, y);
 }
@@ -2835,7 +2835,7 @@ static void REGAL_CALL statistics_glRasterPos2iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2iv(v);
 }
@@ -2849,7 +2849,7 @@ static void REGAL_CALL statistics_glRasterPos2s(GLshort x, GLshort y)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2s(x, y);
 }
@@ -2863,7 +2863,7 @@ static void REGAL_CALL statistics_glRasterPos2sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos2sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos2sv(v);
 }
@@ -2877,7 +2877,7 @@ static void REGAL_CALL statistics_glRasterPos3d(GLdouble x, GLdouble y, GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3d(x, y, z);
 }
@@ -2891,7 +2891,7 @@ static void REGAL_CALL statistics_glRasterPos3dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3dv(v);
 }
@@ -2905,7 +2905,7 @@ static void REGAL_CALL statistics_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3f(x, y, z);
 }
@@ -2919,7 +2919,7 @@ static void REGAL_CALL statistics_glRasterPos3fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3fv(v);
 }
@@ -2933,7 +2933,7 @@ static void REGAL_CALL statistics_glRasterPos3i(GLint x, GLint y, GLint z)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3i(x, y, z);
 }
@@ -2947,7 +2947,7 @@ static void REGAL_CALL statistics_glRasterPos3iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3iv(v);
 }
@@ -2961,7 +2961,7 @@ static void REGAL_CALL statistics_glRasterPos3s(GLshort x, GLshort y, GLshort z)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3s(x, y, z);
 }
@@ -2975,7 +2975,7 @@ static void REGAL_CALL statistics_glRasterPos3sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos3sv(v);
 }
@@ -2989,7 +2989,7 @@ static void REGAL_CALL statistics_glRasterPos4d(GLdouble x, GLdouble y, GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4d(x, y, z, w);
 }
@@ -3003,7 +3003,7 @@ static void REGAL_CALL statistics_glRasterPos4dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4dv(v);
 }
@@ -3017,7 +3017,7 @@ static void REGAL_CALL statistics_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z,
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4f(x, y, z, w);
 }
@@ -3031,7 +3031,7 @@ static void REGAL_CALL statistics_glRasterPos4fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4fv(v);
 }
@@ -3045,7 +3045,7 @@ static void REGAL_CALL statistics_glRasterPos4i(GLint x, GLint y, GLint z, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4i(x, y, z, w);
 }
@@ -3059,7 +3059,7 @@ static void REGAL_CALL statistics_glRasterPos4iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4iv(v);
 }
@@ -3073,7 +3073,7 @@ static void REGAL_CALL statistics_glRasterPos4s(GLshort x, GLshort y, GLshort z,
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4s(x, y, z, w);
 }
@@ -3087,7 +3087,7 @@ static void REGAL_CALL statistics_glRasterPos4sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glRasterPos4sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRasterPos4sv(v);
 }
@@ -3101,7 +3101,7 @@ static void REGAL_CALL statistics_glReadBuffer(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glReadBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadBuffer(mode);
 }
@@ -3115,7 +3115,7 @@ static void REGAL_CALL statistics_glReadPixels(GLint x, GLint y, GLsizei width, 
   Statistics &statistics = *_context->statistics;
   statistics.glReadPixels++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadPixels(x, y, width, height, format, type, pixels);
 }
@@ -3129,7 +3129,7 @@ static void REGAL_CALL statistics_glRectd(GLdouble x1, GLdouble y1, GLdouble x2,
   Statistics &statistics = *_context->statistics;
   statistics.glRectd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRectd(x1, y1, x2, y2);
 }
@@ -3143,7 +3143,7 @@ static void REGAL_CALL statistics_glRectdv(const GLdouble *v1, const GLdouble *v
   Statistics &statistics = *_context->statistics;
   statistics.glRectdv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRectdv(v1, v2);
 }
@@ -3157,7 +3157,7 @@ static void REGAL_CALL statistics_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GL
   Statistics &statistics = *_context->statistics;
   statistics.glRectf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRectf(x1, y1, x2, y2);
 }
@@ -3171,7 +3171,7 @@ static void REGAL_CALL statistics_glRectfv(const GLfloat *v1, const GLfloat *v2)
   Statistics &statistics = *_context->statistics;
   statistics.glRectfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRectfv(v1, v2);
 }
@@ -3185,7 +3185,7 @@ static void REGAL_CALL statistics_glRecti(GLint x1, GLint y1, GLint x2, GLint y2
   Statistics &statistics = *_context->statistics;
   statistics.glRecti++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRecti(x1, y1, x2, y2);
 }
@@ -3199,7 +3199,7 @@ static void REGAL_CALL statistics_glRectiv(const GLint *v1, const GLint *v2)
   Statistics &statistics = *_context->statistics;
   statistics.glRectiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRectiv(v1, v2);
 }
@@ -3213,7 +3213,7 @@ static void REGAL_CALL statistics_glRects(GLshort x1, GLshort y1, GLshort x2, GL
   Statistics &statistics = *_context->statistics;
   statistics.glRects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRects(x1, y1, x2, y2);
 }
@@ -3227,7 +3227,7 @@ static void REGAL_CALL statistics_glRectsv(const GLshort *v1, const GLshort *v2)
   Statistics &statistics = *_context->statistics;
   statistics.glRectsv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRectsv(v1, v2);
 }
@@ -3241,7 +3241,7 @@ static GLint REGAL_CALL statistics_glRenderMode(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glRenderMode++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glRenderMode(mode);
   return ret;
@@ -3256,7 +3256,7 @@ static void REGAL_CALL statistics_glRotated(GLdouble angle, GLdouble x, GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glRotated++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRotated(angle, x, y, z);
 }
@@ -3270,7 +3270,7 @@ static void REGAL_CALL statistics_glRotatef(GLfloat angle, GLfloat x, GLfloat y,
   Statistics &statistics = *_context->statistics;
   statistics.glRotatef++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRotatef(angle, x, y, z);
 }
@@ -3284,7 +3284,7 @@ static void REGAL_CALL statistics_glScaled(GLdouble x, GLdouble y, GLdouble z)
   Statistics &statistics = *_context->statistics;
   statistics.glScaled++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glScaled(x, y, z);
 }
@@ -3298,7 +3298,7 @@ static void REGAL_CALL statistics_glScalef(GLfloat x, GLfloat y, GLfloat z)
   Statistics &statistics = *_context->statistics;
   statistics.glScalef++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glScalef(x, y, z);
 }
@@ -3312,7 +3312,7 @@ static void REGAL_CALL statistics_glScissor(GLint x, GLint y, GLsizei width, GLs
   Statistics &statistics = *_context->statistics;
   statistics.glScissor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glScissor(x, y, width, height);
 }
@@ -3326,7 +3326,7 @@ static void REGAL_CALL statistics_glSelectBuffer(GLsizei size, GLuint *buffer)
   Statistics &statistics = *_context->statistics;
   statistics.glSelectBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSelectBuffer(size, buffer);
 }
@@ -3340,7 +3340,7 @@ static void REGAL_CALL statistics_glShadeModel(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glShadeModel++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShadeModel(mode);
 }
@@ -3354,7 +3354,7 @@ static void REGAL_CALL statistics_glStencilFunc(GLenum func, GLint ref, GLuint m
   Statistics &statistics = *_context->statistics;
   statistics.glStencilFunc++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilFunc(func, ref, mask);
 }
@@ -3368,7 +3368,7 @@ static void REGAL_CALL statistics_glStencilMask(GLuint mask)
   Statistics &statistics = *_context->statistics;
   statistics.glStencilMask++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilMask(mask);
 }
@@ -3382,7 +3382,7 @@ static void REGAL_CALL statistics_glStencilOp(GLenum fail, GLenum zfail, GLenum 
   Statistics &statistics = *_context->statistics;
   statistics.glStencilOp++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilOp(fail, zfail, zpass);
 }
@@ -3396,7 +3396,7 @@ static void REGAL_CALL statistics_glTexCoord1d(GLdouble s)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1d(s);
 }
@@ -3410,7 +3410,7 @@ static void REGAL_CALL statistics_glTexCoord1dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1dv(v);
 }
@@ -3424,7 +3424,7 @@ static void REGAL_CALL statistics_glTexCoord1f(GLfloat s)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1f(s);
 }
@@ -3438,7 +3438,7 @@ static void REGAL_CALL statistics_glTexCoord1fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1fv(v);
 }
@@ -3452,7 +3452,7 @@ static void REGAL_CALL statistics_glTexCoord1i(GLint s)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1i(s);
 }
@@ -3466,7 +3466,7 @@ static void REGAL_CALL statistics_glTexCoord1iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1iv(v);
 }
@@ -3480,7 +3480,7 @@ static void REGAL_CALL statistics_glTexCoord1s(GLshort s)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1s(s);
 }
@@ -3494,7 +3494,7 @@ static void REGAL_CALL statistics_glTexCoord1sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord1sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1sv(v);
 }
@@ -3508,7 +3508,7 @@ static void REGAL_CALL statistics_glTexCoord2d(GLdouble s, GLdouble t)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2d(s, t);
 }
@@ -3522,7 +3522,7 @@ static void REGAL_CALL statistics_glTexCoord2dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2dv(v);
 }
@@ -3536,7 +3536,7 @@ static void REGAL_CALL statistics_glTexCoord2f(GLfloat s, GLfloat t)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2f(s, t);
 }
@@ -3550,7 +3550,7 @@ static void REGAL_CALL statistics_glTexCoord2fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fv(v);
 }
@@ -3564,7 +3564,7 @@ static void REGAL_CALL statistics_glTexCoord2i(GLint s, GLint t)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2i(s, t);
 }
@@ -3578,7 +3578,7 @@ static void REGAL_CALL statistics_glTexCoord2iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2iv(v);
 }
@@ -3592,7 +3592,7 @@ static void REGAL_CALL statistics_glTexCoord2s(GLshort s, GLshort t)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2s(s, t);
 }
@@ -3606,7 +3606,7 @@ static void REGAL_CALL statistics_glTexCoord2sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord2sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2sv(v);
 }
@@ -3620,7 +3620,7 @@ static void REGAL_CALL statistics_glTexCoord3d(GLdouble s, GLdouble t, GLdouble 
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3d(s, t, r);
 }
@@ -3634,7 +3634,7 @@ static void REGAL_CALL statistics_glTexCoord3dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3dv(v);
 }
@@ -3648,7 +3648,7 @@ static void REGAL_CALL statistics_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3f(s, t, r);
 }
@@ -3662,7 +3662,7 @@ static void REGAL_CALL statistics_glTexCoord3fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3fv(v);
 }
@@ -3676,7 +3676,7 @@ static void REGAL_CALL statistics_glTexCoord3i(GLint s, GLint t, GLint r)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3i(s, t, r);
 }
@@ -3690,7 +3690,7 @@ static void REGAL_CALL statistics_glTexCoord3iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3iv(v);
 }
@@ -3704,7 +3704,7 @@ static void REGAL_CALL statistics_glTexCoord3s(GLshort s, GLshort t, GLshort r)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3s(s, t, r);
 }
@@ -3718,7 +3718,7 @@ static void REGAL_CALL statistics_glTexCoord3sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3sv(v);
 }
@@ -3732,7 +3732,7 @@ static void REGAL_CALL statistics_glTexCoord4d(GLdouble s, GLdouble t, GLdouble 
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4d(s, t, r, q);
 }
@@ -3746,7 +3746,7 @@ static void REGAL_CALL statistics_glTexCoord4dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4dv(v);
 }
@@ -3760,7 +3760,7 @@ static void REGAL_CALL statistics_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, 
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4f(s, t, r, q);
 }
@@ -3774,7 +3774,7 @@ static void REGAL_CALL statistics_glTexCoord4fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4fv(v);
 }
@@ -3788,7 +3788,7 @@ static void REGAL_CALL statistics_glTexCoord4i(GLint s, GLint t, GLint r, GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4i(s, t, r, q);
 }
@@ -3802,7 +3802,7 @@ static void REGAL_CALL statistics_glTexCoord4iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4iv(v);
 }
@@ -3816,7 +3816,7 @@ static void REGAL_CALL statistics_glTexCoord4s(GLshort s, GLshort t, GLshort r, 
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4s(s, t, r, q);
 }
@@ -3830,7 +3830,7 @@ static void REGAL_CALL statistics_glTexCoord4sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoord4sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4sv(v);
 }
@@ -3844,7 +3844,7 @@ static void REGAL_CALL statistics_glTexEnvf(GLenum target, GLenum pname, GLfloat
   Statistics &statistics = *_context->statistics;
   statistics.glTexEnvf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexEnvf(target, pname, param);
 }
@@ -3858,7 +3858,7 @@ static void REGAL_CALL statistics_glTexEnvfv(GLenum target, GLenum pname, const 
   Statistics &statistics = *_context->statistics;
   statistics.glTexEnvfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexEnvfv(target, pname, params);
 }
@@ -3872,7 +3872,7 @@ static void REGAL_CALL statistics_glTexEnvi(GLenum target, GLenum pname, GLint p
   Statistics &statistics = *_context->statistics;
   statistics.glTexEnvi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexEnvi(target, pname, param);
 }
@@ -3886,7 +3886,7 @@ static void REGAL_CALL statistics_glTexEnviv(GLenum target, GLenum pname, const 
   Statistics &statistics = *_context->statistics;
   statistics.glTexEnviv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexEnviv(target, pname, params);
 }
@@ -3900,7 +3900,7 @@ static void REGAL_CALL statistics_glTexGend(GLenum coord, GLenum pname, GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glTexGend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGend(coord, pname, param);
 }
@@ -3914,7 +3914,7 @@ static void REGAL_CALL statistics_glTexGendv(GLenum coord, GLenum pname, const G
   Statistics &statistics = *_context->statistics;
   statistics.glTexGendv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGendv(coord, pname, params);
 }
@@ -3928,7 +3928,7 @@ static void REGAL_CALL statistics_glTexGenf(GLenum coord, GLenum pname, GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glTexGenf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGenf(coord, pname, param);
 }
@@ -3942,7 +3942,7 @@ static void REGAL_CALL statistics_glTexGenfv(GLenum coord, GLenum pname, const G
   Statistics &statistics = *_context->statistics;
   statistics.glTexGenfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGenfv(coord, pname, params);
 }
@@ -3956,7 +3956,7 @@ static void REGAL_CALL statistics_glTexGeni(GLenum coord, GLenum pname, GLint pa
   Statistics &statistics = *_context->statistics;
   statistics.glTexGeni++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGeni(coord, pname, param);
 }
@@ -3970,7 +3970,7 @@ static void REGAL_CALL statistics_glTexGeniv(GLenum coord, GLenum pname, const G
   Statistics &statistics = *_context->statistics;
   statistics.glTexGeniv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGeniv(coord, pname, params);
 }
@@ -3984,7 +3984,7 @@ static void REGAL_CALL statistics_glTexImage1D(GLenum target, GLint level, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glTexImage1D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
 }
@@ -3998,7 +3998,7 @@ static void REGAL_CALL statistics_glTexImage2D(GLenum target, GLint level, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glTexImage2D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 }
@@ -4012,7 +4012,7 @@ static void REGAL_CALL statistics_glTexParameterf(GLenum target, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glTexParameterf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterf(target, pname, param);
 }
@@ -4026,7 +4026,7 @@ static void REGAL_CALL statistics_glTexParameterfv(GLenum target, GLenum pname, 
   Statistics &statistics = *_context->statistics;
   statistics.glTexParameterfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterfv(target, pname, params);
 }
@@ -4040,7 +4040,7 @@ static void REGAL_CALL statistics_glTexParameteri(GLenum target, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glTexParameteri++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameteri(target, pname, param);
 }
@@ -4054,7 +4054,7 @@ static void REGAL_CALL statistics_glTexParameteriv(GLenum target, GLenum pname, 
   Statistics &statistics = *_context->statistics;
   statistics.glTexParameteriv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameteriv(target, pname, params);
 }
@@ -4068,7 +4068,7 @@ static void REGAL_CALL statistics_glTranslated(GLdouble x, GLdouble y, GLdouble 
   Statistics &statistics = *_context->statistics;
   statistics.glTranslated++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTranslated(x, y, z);
 }
@@ -4082,7 +4082,7 @@ static void REGAL_CALL statistics_glTranslatef(GLfloat x, GLfloat y, GLfloat z)
   Statistics &statistics = *_context->statistics;
   statistics.glTranslatef++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTranslatef(x, y, z);
 }
@@ -4096,7 +4096,7 @@ static void REGAL_CALL statistics_glVertex2d(GLdouble x, GLdouble y)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2d(x, y);
 }
@@ -4110,7 +4110,7 @@ static void REGAL_CALL statistics_glVertex2dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2dv(v);
 }
@@ -4124,7 +4124,7 @@ static void REGAL_CALL statistics_glVertex2f(GLfloat x, GLfloat y)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2f(x, y);
 }
@@ -4138,7 +4138,7 @@ static void REGAL_CALL statistics_glVertex2fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2fv(v);
 }
@@ -4152,7 +4152,7 @@ static void REGAL_CALL statistics_glVertex2i(GLint x, GLint y)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2i(x, y);
 }
@@ -4166,7 +4166,7 @@ static void REGAL_CALL statistics_glVertex2iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2iv(v);
 }
@@ -4180,7 +4180,7 @@ static void REGAL_CALL statistics_glVertex2s(GLshort x, GLshort y)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2s(x, y);
 }
@@ -4194,7 +4194,7 @@ static void REGAL_CALL statistics_glVertex2sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex2sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2sv(v);
 }
@@ -4208,7 +4208,7 @@ static void REGAL_CALL statistics_glVertex3d(GLdouble x, GLdouble y, GLdouble z)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3d(x, y, z);
 }
@@ -4222,7 +4222,7 @@ static void REGAL_CALL statistics_glVertex3dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3dv(v);
 }
@@ -4236,7 +4236,7 @@ static void REGAL_CALL statistics_glVertex3f(GLfloat x, GLfloat y, GLfloat z)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3f(x, y, z);
 }
@@ -4250,7 +4250,7 @@ static void REGAL_CALL statistics_glVertex3fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3fv(v);
 }
@@ -4264,7 +4264,7 @@ static void REGAL_CALL statistics_glVertex3i(GLint x, GLint y, GLint z)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3i(x, y, z);
 }
@@ -4278,7 +4278,7 @@ static void REGAL_CALL statistics_glVertex3iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3iv(v);
 }
@@ -4292,7 +4292,7 @@ static void REGAL_CALL statistics_glVertex3s(GLshort x, GLshort y, GLshort z)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3s(x, y, z);
 }
@@ -4306,7 +4306,7 @@ static void REGAL_CALL statistics_glVertex3sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3sv(v);
 }
@@ -4320,7 +4320,7 @@ static void REGAL_CALL statistics_glVertex4d(GLdouble x, GLdouble y, GLdouble z,
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4d(x, y, z, w);
 }
@@ -4334,7 +4334,7 @@ static void REGAL_CALL statistics_glVertex4dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4dv(v);
 }
@@ -4348,7 +4348,7 @@ static void REGAL_CALL statistics_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GL
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4f(x, y, z, w);
 }
@@ -4362,7 +4362,7 @@ static void REGAL_CALL statistics_glVertex4fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4fv(v);
 }
@@ -4376,7 +4376,7 @@ static void REGAL_CALL statistics_glVertex4i(GLint x, GLint y, GLint z, GLint w)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4i(x, y, z, w);
 }
@@ -4390,7 +4390,7 @@ static void REGAL_CALL statistics_glVertex4iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4iv(v);
 }
@@ -4404,7 +4404,7 @@ static void REGAL_CALL statistics_glVertex4s(GLshort x, GLshort y, GLshort z, GL
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4s(x, y, z, w);
 }
@@ -4418,7 +4418,7 @@ static void REGAL_CALL statistics_glVertex4sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glVertex4sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4sv(v);
 }
@@ -4432,7 +4432,7 @@ static void REGAL_CALL statistics_glViewport(GLint x, GLint y, GLsizei width, GL
   Statistics &statistics = *_context->statistics;
   statistics.glViewport++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glViewport(x, y, width, height);
 }
@@ -4448,7 +4448,7 @@ static GLboolean REGAL_CALL statistics_glAreTexturesResident(GLsizei n, const GL
   Statistics &statistics = *_context->statistics;
   statistics.glAreTexturesResident++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glAreTexturesResident(n, textures, residences);
   return ret;
@@ -4463,7 +4463,7 @@ static void REGAL_CALL statistics_glArrayElement(GLint index)
   Statistics &statistics = *_context->statistics;
   statistics.glArrayElement++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glArrayElement(index);
 }
@@ -4477,7 +4477,7 @@ static void REGAL_CALL statistics_glBindTexture(GLenum target, GLuint texture)
   Statistics &statistics = *_context->statistics;
   statistics.glBindTexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindTexture(target, texture);
 }
@@ -4491,7 +4491,7 @@ static void REGAL_CALL statistics_glColorPointer(GLint size, GLenum type, GLsize
   Statistics &statistics = *_context->statistics;
   statistics.glColorPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorPointer(size, type, stride, pointer);
 }
@@ -4505,7 +4505,7 @@ static void REGAL_CALL statistics_glCopyTexImage1D(GLenum target, GLint level, G
   Statistics &statistics = *_context->statistics;
   statistics.glCopyTexImage1D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexImage1D(target, level, internalformat, x, y, width, border);
 }
@@ -4519,7 +4519,7 @@ static void REGAL_CALL statistics_glCopyTexImage2D(GLenum target, GLint level, G
   Statistics &statistics = *_context->statistics;
   statistics.glCopyTexImage2D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
 }
@@ -4533,7 +4533,7 @@ static void REGAL_CALL statistics_glCopyTexSubImage1D(GLenum target, GLint level
   Statistics &statistics = *_context->statistics;
   statistics.glCopyTexSubImage1D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexSubImage1D(target, level, xoffset, x, y, width);
 }
@@ -4547,7 +4547,7 @@ static void REGAL_CALL statistics_glCopyTexSubImage2D(GLenum target, GLint level
   Statistics &statistics = *_context->statistics;
   statistics.glCopyTexSubImage2D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexSubImage2D(target, level, xoffset, yoffset, x, y, width, height);
 }
@@ -4561,7 +4561,7 @@ static void REGAL_CALL statistics_glDeleteTextures(GLsizei n, const GLuint *text
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteTextures++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteTextures(n, textures);
 }
@@ -4575,7 +4575,7 @@ static void REGAL_CALL statistics_glDisableClientState(GLenum cap)
   Statistics &statistics = *_context->statistics;
   statistics.glDisableClientState++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableClientState(cap);
 }
@@ -4589,7 +4589,7 @@ static void REGAL_CALL statistics_glDrawArrays(GLenum mode, GLint first, GLsizei
   Statistics &statistics = *_context->statistics;
   statistics.glDrawArrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArrays(mode, first, count);
 }
@@ -4603,7 +4603,7 @@ static void REGAL_CALL statistics_glDrawElements(GLenum mode, GLsizei count, GLe
   Statistics &statistics = *_context->statistics;
   statistics.glDrawElements++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElements(mode, count, type, indices);
 }
@@ -4617,7 +4617,7 @@ static void REGAL_CALL statistics_glEdgeFlagPointer(GLsizei stride, const GLvoid
   Statistics &statistics = *_context->statistics;
   statistics.glEdgeFlagPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEdgeFlagPointer(stride, pointer);
 }
@@ -4631,7 +4631,7 @@ static void REGAL_CALL statistics_glEnableClientState(GLenum cap)
   Statistics &statistics = *_context->statistics;
   statistics.glEnableClientState++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableClientState(cap);
 }
@@ -4645,7 +4645,7 @@ static void REGAL_CALL statistics_glGenTextures(GLsizei n, GLuint *textures)
   Statistics &statistics = *_context->statistics;
   statistics.glGenTextures++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenTextures(n, textures);
 }
@@ -4659,7 +4659,7 @@ static void REGAL_CALL statistics_glGetPointerv(GLenum pname, GLvoid **params)
   Statistics &statistics = *_context->statistics;
   statistics.glGetPointerv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPointerv(pname, params);
 }
@@ -4673,7 +4673,7 @@ static void REGAL_CALL statistics_glIndexPointer(GLenum type, GLsizei stride, co
   Statistics &statistics = *_context->statistics;
   statistics.glIndexPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexPointer(type, stride, pointer);
 }
@@ -4687,7 +4687,7 @@ static void REGAL_CALL statistics_glIndexub(GLubyte c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexub++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexub(c);
 }
@@ -4701,7 +4701,7 @@ static void REGAL_CALL statistics_glIndexubv(const GLubyte *c)
   Statistics &statistics = *_context->statistics;
   statistics.glIndexubv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexubv(c);
 }
@@ -4715,7 +4715,7 @@ static void REGAL_CALL statistics_glInterleavedArrays(GLenum format, GLsizei str
   Statistics &statistics = *_context->statistics;
   statistics.glInterleavedArrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInterleavedArrays(format, stride, pointer);
 }
@@ -4729,7 +4729,7 @@ static GLboolean REGAL_CALL statistics_glIsTexture(GLuint texture)
   Statistics &statistics = *_context->statistics;
   statistics.glIsTexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsTexture(texture);
   return ret;
@@ -4744,7 +4744,7 @@ static void REGAL_CALL statistics_glNormalPointer(GLenum type, GLsizei stride, c
   Statistics &statistics = *_context->statistics;
   statistics.glNormalPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalPointer(type, stride, pointer);
 }
@@ -4758,7 +4758,7 @@ static void REGAL_CALL statistics_glPolygonOffset(GLfloat factor, GLfloat units)
   Statistics &statistics = *_context->statistics;
   statistics.glPolygonOffset++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPolygonOffset(factor, units);
 }
@@ -4772,7 +4772,7 @@ static void REGAL_CALL statistics_glPopClientAttrib(void)
   Statistics &statistics = *_context->statistics;
   statistics.glPopClientAttrib++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPopClientAttrib();
 }
@@ -4786,7 +4786,7 @@ static void REGAL_CALL statistics_glPrioritizeTextures(GLsizei n, const GLuint *
   Statistics &statistics = *_context->statistics;
   statistics.glPrioritizeTextures++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPrioritizeTextures(n, textures, priorities);
 }
@@ -4800,7 +4800,7 @@ static void REGAL_CALL statistics_glPushClientAttrib(GLbitfield mask)
   Statistics &statistics = *_context->statistics;
   statistics.glPushClientAttrib++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPushClientAttrib(mask);
 }
@@ -4814,7 +4814,7 @@ static void REGAL_CALL statistics_glTexCoordPointer(GLint size, GLenum type, GLs
   Statistics &statistics = *_context->statistics;
   statistics.glTexCoordPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordPointer(size, type, stride, pointer);
 }
@@ -4828,7 +4828,7 @@ static void REGAL_CALL statistics_glTexSubImage1D(GLenum target, GLint level, GL
   Statistics &statistics = *_context->statistics;
   statistics.glTexSubImage1D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage1D(target, level, xoffset, width, format, type, pixels);
 }
@@ -4842,7 +4842,7 @@ static void REGAL_CALL statistics_glTexSubImage2D(GLenum target, GLint level, GL
   Statistics &statistics = *_context->statistics;
   statistics.glTexSubImage2D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
@@ -4856,7 +4856,7 @@ static void REGAL_CALL statistics_glVertexPointer(GLint size, GLenum type, GLsiz
   Statistics &statistics = *_context->statistics;
   statistics.glVertexPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexPointer(size, type, stride, pointer);
 }
@@ -4872,7 +4872,7 @@ static void REGAL_CALL statistics_glBlendColor(GLclampf red, GLclampf green, GLc
   Statistics &statistics = *_context->statistics;
   statistics.glBlendColor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendColor(red, green, blue, alpha);
 }
@@ -4886,7 +4886,7 @@ static void REGAL_CALL statistics_glBlendEquation(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glBlendEquation++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquation(mode);
 }
@@ -4900,7 +4900,7 @@ static void REGAL_CALL statistics_glCopyTexSubImage3D(GLenum target, GLint level
   Statistics &statistics = *_context->statistics;
   statistics.glCopyTexSubImage3D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexSubImage3D(target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
@@ -4914,7 +4914,7 @@ static void REGAL_CALL statistics_glDrawRangeElements(GLenum mode, GLuint start,
   Statistics &statistics = *_context->statistics;
   statistics.glDrawRangeElements++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawRangeElements(mode, start, end, count, type, indices);
 }
@@ -4928,7 +4928,7 @@ static void REGAL_CALL statistics_glTexImage3D(GLenum target, GLint level, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glTexImage3D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
 }
@@ -4942,7 +4942,7 @@ static void REGAL_CALL statistics_glTexSubImage3D(GLenum target, GLint level, GL
   Statistics &statistics = *_context->statistics;
   statistics.glTexSubImage3D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
@@ -4958,7 +4958,7 @@ static void REGAL_CALL statistics_glActiveTexture(GLenum texture)
   Statistics &statistics = *_context->statistics;
   statistics.glActiveTexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glActiveTexture(texture);
 }
@@ -4972,7 +4972,7 @@ static void REGAL_CALL statistics_glClientActiveTexture(GLenum texture)
   Statistics &statistics = *_context->statistics;
   statistics.glClientActiveTexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClientActiveTexture(texture);
 }
@@ -4986,7 +4986,7 @@ static void REGAL_CALL statistics_glCompressedTexImage1D(GLenum target, GLint le
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexImage1D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexImage1D(target, level, internalformat, width, border, imageSize, data);
 }
@@ -5000,7 +5000,7 @@ static void REGAL_CALL statistics_glCompressedTexImage2D(GLenum target, GLint le
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexImage2D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data);
 }
@@ -5014,7 +5014,7 @@ static void REGAL_CALL statistics_glCompressedTexImage3D(GLenum target, GLint le
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexImage3D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexImage3D(target, level, internalformat, width, height, depth, border, imageSize, data);
 }
@@ -5028,7 +5028,7 @@ static void REGAL_CALL statistics_glCompressedTexSubImage1D(GLenum target, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexSubImage1D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexSubImage1D(target, level, xoffset, width, format, imageSize, data);
 }
@@ -5042,7 +5042,7 @@ static void REGAL_CALL statistics_glCompressedTexSubImage2D(GLenum target, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexSubImage2D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data);
 }
@@ -5056,7 +5056,7 @@ static void REGAL_CALL statistics_glCompressedTexSubImage3D(GLenum target, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexSubImage3D++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexSubImage3D(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 }
@@ -5070,7 +5070,7 @@ static void REGAL_CALL statistics_glGetCompressedTexImage(GLenum target, GLint l
   Statistics &statistics = *_context->statistics;
   statistics.glGetCompressedTexImage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCompressedTexImage(target, lod, img);
 }
@@ -5084,7 +5084,7 @@ static void REGAL_CALL statistics_glLoadTransposeMatrixd(const GLdouble *m)
   Statistics &statistics = *_context->statistics;
   statistics.glLoadTransposeMatrixd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadTransposeMatrixd(m);
 }
@@ -5098,7 +5098,7 @@ static void REGAL_CALL statistics_glLoadTransposeMatrixf(const GLfloat *m)
   Statistics &statistics = *_context->statistics;
   statistics.glLoadTransposeMatrixf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadTransposeMatrixf(m);
 }
@@ -5112,7 +5112,7 @@ static void REGAL_CALL statistics_glMultTransposeMatrixd(const GLdouble *m)
   Statistics &statistics = *_context->statistics;
   statistics.glMultTransposeMatrixd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultTransposeMatrixd(m);
 }
@@ -5126,7 +5126,7 @@ static void REGAL_CALL statistics_glMultTransposeMatrixf(const GLfloat *m)
   Statistics &statistics = *_context->statistics;
   statistics.glMultTransposeMatrixf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultTransposeMatrixf(m);
 }
@@ -5140,7 +5140,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1d(GLenum target, GLdouble s)
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1d(target, s);
 }
@@ -5154,7 +5154,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1dv(GLenum target, const GLdoub
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1dv(target, v);
 }
@@ -5168,7 +5168,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1f(GLenum target, GLfloat s)
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1f(target, s);
 }
@@ -5182,7 +5182,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1fv(GLenum target, const GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1fv(target, v);
 }
@@ -5196,7 +5196,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1i(GLenum target, GLint s)
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1i(target, s);
 }
@@ -5210,7 +5210,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1iv(GLenum target, const GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1iv(target, v);
 }
@@ -5224,7 +5224,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1s(GLenum target, GLshort s)
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1s(target, s);
 }
@@ -5238,7 +5238,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1sv(GLenum target, const GLshor
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord1sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1sv(target, v);
 }
@@ -5252,7 +5252,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2d(GLenum target, GLdouble s, G
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2d(target, s, t);
 }
@@ -5266,7 +5266,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2dv(GLenum target, const GLdoub
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2dv(target, v);
 }
@@ -5280,7 +5280,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2f(GLenum target, GLfloat s, GL
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2f(target, s, t);
 }
@@ -5294,7 +5294,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2fv(GLenum target, const GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2fv(target, v);
 }
@@ -5308,7 +5308,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2i(GLenum target, GLint s, GLin
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2i(target, s, t);
 }
@@ -5322,7 +5322,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2iv(GLenum target, const GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2iv(target, v);
 }
@@ -5336,7 +5336,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2s(GLenum target, GLshort s, GL
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2s(target, s, t);
 }
@@ -5350,7 +5350,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2sv(GLenum target, const GLshor
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord2sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2sv(target, v);
 }
@@ -5364,7 +5364,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3d(GLenum target, GLdouble s, G
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3d(target, s, t, r);
 }
@@ -5378,7 +5378,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3dv(GLenum target, const GLdoub
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3dv(target, v);
 }
@@ -5392,7 +5392,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3f(GLenum target, GLfloat s, GL
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3f(target, s, t, r);
 }
@@ -5406,7 +5406,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3fv(GLenum target, const GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3fv(target, v);
 }
@@ -5420,7 +5420,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3i(GLenum target, GLint s, GLin
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3i(target, s, t, r);
 }
@@ -5434,7 +5434,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3iv(GLenum target, const GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3iv(target, v);
 }
@@ -5448,7 +5448,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3s(GLenum target, GLshort s, GL
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3s(target, s, t, r);
 }
@@ -5462,7 +5462,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3sv(GLenum target, const GLshor
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3sv(target, v);
 }
@@ -5476,7 +5476,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4d(GLenum target, GLdouble s, G
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4d(target, s, t, r, q);
 }
@@ -5490,7 +5490,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4dv(GLenum target, const GLdoub
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4dv(target, v);
 }
@@ -5504,7 +5504,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4f(GLenum target, GLfloat s, GL
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4f(target, s, t, r, q);
 }
@@ -5518,7 +5518,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4fv(GLenum target, const GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4fv(target, v);
 }
@@ -5532,7 +5532,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4i(GLenum target, GLint s, GLin
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4i(target, s, t, r, q);
 }
@@ -5546,7 +5546,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4iv(GLenum target, const GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4iv(target, v);
 }
@@ -5560,7 +5560,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4s(GLenum target, GLshort s, GL
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4s(target, s, t, r, q);
 }
@@ -5574,7 +5574,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4sv(GLenum target, const GLshor
   Statistics &statistics = *_context->statistics;
   statistics.glMultiTexCoord4sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4sv(target, v);
 }
@@ -5588,7 +5588,7 @@ static void REGAL_CALL statistics_glSampleCoverage(GLclampf value, GLboolean inv
   Statistics &statistics = *_context->statistics;
   statistics.glSampleCoverage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleCoverage(value, invert);
 }
@@ -5604,7 +5604,7 @@ static void REGAL_CALL statistics_glBlendFuncSeparate(GLenum sfactorRGB, GLenum 
   Statistics &statistics = *_context->statistics;
   statistics.glBlendFuncSeparate++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 }
@@ -5618,7 +5618,7 @@ static void REGAL_CALL statistics_glFogCoordPointer(GLenum type, GLsizei stride,
   Statistics &statistics = *_context->statistics;
   statistics.glFogCoordPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordPointer(type, stride, pointer);
 }
@@ -5632,7 +5632,7 @@ static void REGAL_CALL statistics_glFogCoordd(GLdouble coord)
   Statistics &statistics = *_context->statistics;
   statistics.glFogCoordd++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordd(coord);
 }
@@ -5646,7 +5646,7 @@ static void REGAL_CALL statistics_glFogCoorddv(const GLdouble *coord)
   Statistics &statistics = *_context->statistics;
   statistics.glFogCoorddv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoorddv(coord);
 }
@@ -5660,7 +5660,7 @@ static void REGAL_CALL statistics_glFogCoordf(GLfloat coord)
   Statistics &statistics = *_context->statistics;
   statistics.glFogCoordf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordf(coord);
 }
@@ -5674,7 +5674,7 @@ static void REGAL_CALL statistics_glFogCoordfv(const GLfloat *coord)
   Statistics &statistics = *_context->statistics;
   statistics.glFogCoordfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordfv(coord);
 }
@@ -5688,7 +5688,7 @@ static void REGAL_CALL statistics_glMultiDrawArrays(GLenum mode, const GLint *fi
   Statistics &statistics = *_context->statistics;
   statistics.glMultiDrawArrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawArrays(mode, first, count, primcount);
 }
@@ -5702,7 +5702,7 @@ static void REGAL_CALL statistics_glMultiDrawElements(GLenum mode, const GLsizei
   Statistics &statistics = *_context->statistics;
   statistics.glMultiDrawElements++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawElements(mode, count, type, indices, primcount);
 }
@@ -5716,7 +5716,7 @@ static void REGAL_CALL statistics_glPointParameterf(GLenum pname, GLfloat param)
   Statistics &statistics = *_context->statistics;
   statistics.glPointParameterf++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterf(pname, param);
 }
@@ -5730,7 +5730,7 @@ static void REGAL_CALL statistics_glPointParameterfv(GLenum pname, const GLfloat
   Statistics &statistics = *_context->statistics;
   statistics.glPointParameterfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterfv(pname, params);
 }
@@ -5744,7 +5744,7 @@ static void REGAL_CALL statistics_glPointParameteri(GLenum pname, GLint param)
   Statistics &statistics = *_context->statistics;
   statistics.glPointParameteri++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameteri(pname, param);
 }
@@ -5758,7 +5758,7 @@ static void REGAL_CALL statistics_glPointParameteriv(GLenum pname, const GLint *
   Statistics &statistics = *_context->statistics;
   statistics.glPointParameteriv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameteriv(pname, params);
 }
@@ -5772,7 +5772,7 @@ static void REGAL_CALL statistics_glSecondaryColor3b(GLbyte red, GLbyte green, G
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3b++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3b(red, green, blue);
 }
@@ -5786,7 +5786,7 @@ static void REGAL_CALL statistics_glSecondaryColor3bv(const GLbyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3bv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3bv(v);
 }
@@ -5800,7 +5800,7 @@ static void REGAL_CALL statistics_glSecondaryColor3d(GLdouble red, GLdouble gree
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3d(red, green, blue);
 }
@@ -5814,7 +5814,7 @@ static void REGAL_CALL statistics_glSecondaryColor3dv(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3dv(v);
 }
@@ -5828,7 +5828,7 @@ static void REGAL_CALL statistics_glSecondaryColor3f(GLfloat red, GLfloat green,
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3f(red, green, blue);
 }
@@ -5842,7 +5842,7 @@ static void REGAL_CALL statistics_glSecondaryColor3fv(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3fv(v);
 }
@@ -5856,7 +5856,7 @@ static void REGAL_CALL statistics_glSecondaryColor3i(GLint red, GLint green, GLi
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3i(red, green, blue);
 }
@@ -5870,7 +5870,7 @@ static void REGAL_CALL statistics_glSecondaryColor3iv(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3iv(v);
 }
@@ -5884,7 +5884,7 @@ static void REGAL_CALL statistics_glSecondaryColor3s(GLshort red, GLshort green,
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3s(red, green, blue);
 }
@@ -5898,7 +5898,7 @@ static void REGAL_CALL statistics_glSecondaryColor3sv(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3sv(v);
 }
@@ -5912,7 +5912,7 @@ static void REGAL_CALL statistics_glSecondaryColor3ub(GLubyte red, GLubyte green
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3ub++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3ub(red, green, blue);
 }
@@ -5926,7 +5926,7 @@ static void REGAL_CALL statistics_glSecondaryColor3ubv(const GLubyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3ubv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3ubv(v);
 }
@@ -5940,7 +5940,7 @@ static void REGAL_CALL statistics_glSecondaryColor3ui(GLuint red, GLuint green, 
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3ui(red, green, blue);
 }
@@ -5954,7 +5954,7 @@ static void REGAL_CALL statistics_glSecondaryColor3uiv(const GLuint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3uiv(v);
 }
@@ -5968,7 +5968,7 @@ static void REGAL_CALL statistics_glSecondaryColor3us(GLushort red, GLushort gre
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3us++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3us(red, green, blue);
 }
@@ -5982,7 +5982,7 @@ static void REGAL_CALL statistics_glSecondaryColor3usv(const GLushort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColor3usv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3usv(v);
 }
@@ -5996,7 +5996,7 @@ static void REGAL_CALL statistics_glSecondaryColorPointer(GLint size, GLenum typ
   Statistics &statistics = *_context->statistics;
   statistics.glSecondaryColorPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColorPointer(size, type, stride, pointer);
 }
@@ -6010,7 +6010,7 @@ static void REGAL_CALL statistics_glWindowPos2d(GLdouble x, GLdouble y)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2d(x, y);
 }
@@ -6024,7 +6024,7 @@ static void REGAL_CALL statistics_glWindowPos2dv(const GLdouble *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2dv(p);
 }
@@ -6038,7 +6038,7 @@ static void REGAL_CALL statistics_glWindowPos2f(GLfloat x, GLfloat y)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2f(x, y);
 }
@@ -6052,7 +6052,7 @@ static void REGAL_CALL statistics_glWindowPos2fv(const GLfloat *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2fv(p);
 }
@@ -6066,7 +6066,7 @@ static void REGAL_CALL statistics_glWindowPos2i(GLint x, GLint y)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2i(x, y);
 }
@@ -6080,7 +6080,7 @@ static void REGAL_CALL statistics_glWindowPos2iv(const GLint *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2iv(p);
 }
@@ -6094,7 +6094,7 @@ static void REGAL_CALL statistics_glWindowPos2s(GLshort x, GLshort y)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2s(x, y);
 }
@@ -6108,7 +6108,7 @@ static void REGAL_CALL statistics_glWindowPos2sv(const GLshort *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos2sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2sv(p);
 }
@@ -6122,7 +6122,7 @@ static void REGAL_CALL statistics_glWindowPos3d(GLdouble x, GLdouble y, GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3d(x, y, z);
 }
@@ -6136,7 +6136,7 @@ static void REGAL_CALL statistics_glWindowPos3dv(const GLdouble *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3dv(p);
 }
@@ -6150,7 +6150,7 @@ static void REGAL_CALL statistics_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3f(x, y, z);
 }
@@ -6164,7 +6164,7 @@ static void REGAL_CALL statistics_glWindowPos3fv(const GLfloat *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3fv(p);
 }
@@ -6178,7 +6178,7 @@ static void REGAL_CALL statistics_glWindowPos3i(GLint x, GLint y, GLint z)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3i(x, y, z);
 }
@@ -6192,7 +6192,7 @@ static void REGAL_CALL statistics_glWindowPos3iv(const GLint *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3iv(p);
 }
@@ -6206,7 +6206,7 @@ static void REGAL_CALL statistics_glWindowPos3s(GLshort x, GLshort y, GLshort z)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3s(x, y, z);
 }
@@ -6220,7 +6220,7 @@ static void REGAL_CALL statistics_glWindowPos3sv(const GLshort *p)
   Statistics &statistics = *_context->statistics;
   statistics.glWindowPos3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3sv(p);
 }
@@ -6236,7 +6236,7 @@ static void REGAL_CALL statistics_glBeginQuery(GLenum target, GLuint id)
   Statistics &statistics = *_context->statistics;
   statistics.glBeginQuery++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginQuery(target, id);
 }
@@ -6250,7 +6250,7 @@ static void REGAL_CALL statistics_glBindBuffer(GLenum target, GLuint buffer)
   Statistics &statistics = *_context->statistics;
   statistics.glBindBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBuffer(target, buffer);
 }
@@ -6264,7 +6264,7 @@ static void REGAL_CALL statistics_glBufferData(GLenum target, GLsizeiptr size, c
   Statistics &statistics = *_context->statistics;
   statistics.glBufferData++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBufferData(target, size, data, usage);
 }
@@ -6278,7 +6278,7 @@ static void REGAL_CALL statistics_glBufferSubData(GLenum target, GLintptr offset
   Statistics &statistics = *_context->statistics;
   statistics.glBufferSubData++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBufferSubData(target, offset, size, data);
 }
@@ -6292,7 +6292,7 @@ static void REGAL_CALL statistics_glDeleteBuffers(GLsizei n, const GLuint *buffe
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteBuffers++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteBuffers(n, buffers);
 }
@@ -6306,7 +6306,7 @@ static void REGAL_CALL statistics_glDeleteQueries(GLsizei n, const GLuint *ids)
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteQueries++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteQueries(n, ids);
 }
@@ -6320,7 +6320,7 @@ static void REGAL_CALL statistics_glEndQuery(GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glEndQuery++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndQuery(target);
 }
@@ -6334,7 +6334,7 @@ static void REGAL_CALL statistics_glGenBuffers(GLsizei n, GLuint *buffers)
   Statistics &statistics = *_context->statistics;
   statistics.glGenBuffers++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenBuffers(n, buffers);
 }
@@ -6348,7 +6348,7 @@ static void REGAL_CALL statistics_glGenQueries(GLsizei n, GLuint *ids)
   Statistics &statistics = *_context->statistics;
   statistics.glGenQueries++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenQueries(n, ids);
 }
@@ -6362,7 +6362,7 @@ static void REGAL_CALL statistics_glGetBufferParameteriv(GLenum target, GLenum p
   Statistics &statistics = *_context->statistics;
   statistics.glGetBufferParameteriv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferParameteriv(target, pname, params);
 }
@@ -6376,7 +6376,7 @@ static void REGAL_CALL statistics_glGetBufferPointerv(GLenum target, GLenum pnam
   Statistics &statistics = *_context->statistics;
   statistics.glGetBufferPointerv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferPointerv(target, pname, params);
 }
@@ -6390,7 +6390,7 @@ static void REGAL_CALL statistics_glGetBufferSubData(GLenum target, GLintptr off
   Statistics &statistics = *_context->statistics;
   statistics.glGetBufferSubData++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferSubData(target, offset, size, data);
 }
@@ -6404,7 +6404,7 @@ static void REGAL_CALL statistics_glGetQueryObjectiv(GLuint id, GLenum pname, GL
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjectiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectiv(id, pname, params);
 }
@@ -6418,7 +6418,7 @@ static void REGAL_CALL statistics_glGetQueryObjectuiv(GLuint id, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjectuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectuiv(id, pname, params);
 }
@@ -6432,7 +6432,7 @@ static void REGAL_CALL statistics_glGetQueryiv(GLenum target, GLenum pname, GLin
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryiv(target, pname, params);
 }
@@ -6446,7 +6446,7 @@ static GLboolean REGAL_CALL statistics_glIsBuffer(GLuint buffer)
   Statistics &statistics = *_context->statistics;
   statistics.glIsBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsBuffer(buffer);
   return ret;
@@ -6461,7 +6461,7 @@ static GLboolean REGAL_CALL statistics_glIsQuery(GLuint id)
   Statistics &statistics = *_context->statistics;
   statistics.glIsQuery++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsQuery(id);
   return ret;
@@ -6476,7 +6476,7 @@ static GLvoid *REGAL_CALL statistics_glMapBuffer(GLenum target, GLenum access)
   Statistics &statistics = *_context->statistics;
   statistics.glMapBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapBuffer(target, access);
   return ret;
@@ -6491,7 +6491,7 @@ static GLboolean REGAL_CALL statistics_glUnmapBuffer(GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glUnmapBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glUnmapBuffer(target);
   return ret;
@@ -6508,7 +6508,7 @@ static void REGAL_CALL statistics_glAttachShader(GLuint program, GLuint shader)
   Statistics &statistics = *_context->statistics;
   statistics.glAttachShader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAttachShader(program, shader);
 }
@@ -6522,7 +6522,7 @@ static void REGAL_CALL statistics_glBindAttribLocation(GLuint program, GLuint in
   Statistics &statistics = *_context->statistics;
   statistics.glBindAttribLocation++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindAttribLocation(program, index, name);
 }
@@ -6536,7 +6536,7 @@ static void REGAL_CALL statistics_glBlendEquationSeparate(GLenum modeRGB, GLenum
   Statistics &statistics = *_context->statistics;
   statistics.glBlendEquationSeparate++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationSeparate(modeRGB, modeAlpha);
 }
@@ -6550,7 +6550,7 @@ static void REGAL_CALL statistics_glCompileShader(GLuint shader)
   Statistics &statistics = *_context->statistics;
   statistics.glCompileShader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompileShader(shader);
 }
@@ -6564,7 +6564,7 @@ static GLuint REGAL_CALL statistics_glCreateProgram(void)
   Statistics &statistics = *_context->statistics;
   statistics.glCreateProgram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glCreateProgram();
   return ret;
@@ -6579,7 +6579,7 @@ static GLuint REGAL_CALL statistics_glCreateShader(GLenum type)
   Statistics &statistics = *_context->statistics;
   statistics.glCreateShader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glCreateShader(type);
   return ret;
@@ -6594,7 +6594,7 @@ static void REGAL_CALL statistics_glDeleteProgram(GLuint program)
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteProgram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteProgram(program);
 }
@@ -6608,7 +6608,7 @@ static void REGAL_CALL statistics_glDeleteShader(GLuint shader)
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteShader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteShader(shader);
 }
@@ -6622,7 +6622,7 @@ static void REGAL_CALL statistics_glDetachShader(GLuint program, GLuint shader)
   Statistics &statistics = *_context->statistics;
   statistics.glDetachShader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDetachShader(program, shader);
 }
@@ -6636,7 +6636,7 @@ static void REGAL_CALL statistics_glDisableVertexAttribArray(GLuint index)
   Statistics &statistics = *_context->statistics;
   statistics.glDisableVertexAttribArray++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableVertexAttribArray(index);
 }
@@ -6650,7 +6650,7 @@ static void REGAL_CALL statistics_glDrawBuffers(GLsizei n, const GLenum *bufs)
   Statistics &statistics = *_context->statistics;
   statistics.glDrawBuffers++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawBuffers(n, bufs);
 }
@@ -6664,7 +6664,7 @@ static void REGAL_CALL statistics_glEnableVertexAttribArray(GLuint index)
   Statistics &statistics = *_context->statistics;
   statistics.glEnableVertexAttribArray++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableVertexAttribArray(index);
 }
@@ -6678,7 +6678,7 @@ static void REGAL_CALL statistics_glGetActiveAttrib(GLuint program, GLuint index
   Statistics &statistics = *_context->statistics;
   statistics.glGetActiveAttrib++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveAttrib(program, index, bufSize, length, size, type, name);
 }
@@ -6692,7 +6692,7 @@ static void REGAL_CALL statistics_glGetActiveUniform(GLuint program, GLuint inde
   Statistics &statistics = *_context->statistics;
   statistics.glGetActiveUniform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveUniform(program, index, bufSize, length, size, type, name);
 }
@@ -6706,7 +6706,7 @@ static void REGAL_CALL statistics_glGetAttachedShaders(GLuint program, GLsizei m
   Statistics &statistics = *_context->statistics;
   statistics.glGetAttachedShaders++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetAttachedShaders(program, maxCount, count, shaders);
 }
@@ -6720,7 +6720,7 @@ static GLint REGAL_CALL statistics_glGetAttribLocation(GLuint program, const GLc
   Statistics &statistics = *_context->statistics;
   statistics.glGetAttribLocation++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetAttribLocation(program, name);
   return ret;
@@ -6735,7 +6735,7 @@ static void REGAL_CALL statistics_glGetProgramInfoLog(GLuint program, GLsizei bu
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramInfoLog++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramInfoLog(program, bufSize, length, infoLog);
 }
@@ -6749,7 +6749,7 @@ static void REGAL_CALL statistics_glGetProgramiv(GLuint program, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramiv(program, pname, params);
 }
@@ -6763,7 +6763,7 @@ static void REGAL_CALL statistics_glGetShaderInfoLog(GLuint shader, GLsizei bufS
   Statistics &statistics = *_context->statistics;
   statistics.glGetShaderInfoLog++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetShaderInfoLog(shader, bufSize, length, infoLog);
 }
@@ -6777,7 +6777,7 @@ static void REGAL_CALL statistics_glGetShaderSource(GLuint shader, GLsizei bufSi
   Statistics &statistics = *_context->statistics;
   statistics.glGetShaderSource++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetShaderSource(shader, bufSize, length, source);
 }
@@ -6791,7 +6791,7 @@ static void REGAL_CALL statistics_glGetShaderiv(GLuint shader, GLenum pname, GLi
   Statistics &statistics = *_context->statistics;
   statistics.glGetShaderiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetShaderiv(shader, pname, params);
 }
@@ -6805,7 +6805,7 @@ static GLint REGAL_CALL statistics_glGetUniformLocation(GLuint program, const GL
   Statistics &statistics = *_context->statistics;
   statistics.glGetUniformLocation++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetUniformLocation(program, name);
   return ret;
@@ -6820,7 +6820,7 @@ static void REGAL_CALL statistics_glGetUniformfv(GLuint program, GLint location,
   Statistics &statistics = *_context->statistics;
   statistics.glGetUniformfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformfv(program, location, params);
 }
@@ -6834,7 +6834,7 @@ static void REGAL_CALL statistics_glGetUniformiv(GLuint program, GLint location,
   Statistics &statistics = *_context->statistics;
   statistics.glGetUniformiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformiv(program, location, params);
 }
@@ -6848,7 +6848,7 @@ static void REGAL_CALL statistics_glGetVertexAttribPointerv(GLuint index, GLenum
   Statistics &statistics = *_context->statistics;
   statistics.glGetVertexAttribPointerv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribPointerv(index, pname, pointer);
 }
@@ -6862,7 +6862,7 @@ static void REGAL_CALL statistics_glGetVertexAttribdv(GLuint index, GLenum pname
   Statistics &statistics = *_context->statistics;
   statistics.glGetVertexAttribdv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribdv(index, pname, params);
 }
@@ -6876,7 +6876,7 @@ static void REGAL_CALL statistics_glGetVertexAttribfv(GLuint index, GLenum pname
   Statistics &statistics = *_context->statistics;
   statistics.glGetVertexAttribfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribfv(index, pname, params);
 }
@@ -6890,7 +6890,7 @@ static void REGAL_CALL statistics_glGetVertexAttribiv(GLuint index, GLenum pname
   Statistics &statistics = *_context->statistics;
   statistics.glGetVertexAttribiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribiv(index, pname, params);
 }
@@ -6904,7 +6904,7 @@ static GLboolean REGAL_CALL statistics_glIsProgram(GLuint program)
   Statistics &statistics = *_context->statistics;
   statistics.glIsProgram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsProgram(program);
   return ret;
@@ -6919,7 +6919,7 @@ static GLboolean REGAL_CALL statistics_glIsShader(GLuint shader)
   Statistics &statistics = *_context->statistics;
   statistics.glIsShader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsShader(shader);
   return ret;
@@ -6934,7 +6934,7 @@ static void REGAL_CALL statistics_glLinkProgram(GLuint program)
   Statistics &statistics = *_context->statistics;
   statistics.glLinkProgram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLinkProgram(program);
 }
@@ -6948,7 +6948,7 @@ static void REGAL_CALL statistics_glShaderSource(GLuint shader, GLsizei count, c
   Statistics &statistics = *_context->statistics;
   statistics.glShaderSource++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShaderSource(shader, count, string, length);
 }
@@ -6962,7 +6962,7 @@ static void REGAL_CALL statistics_glStencilFuncSeparate(GLenum face, GLenum func
   Statistics &statistics = *_context->statistics;
   statistics.glStencilFuncSeparate++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilFuncSeparate(face, func, ref, mask);
 }
@@ -6976,7 +6976,7 @@ static void REGAL_CALL statistics_glStencilMaskSeparate(GLenum face, GLuint mask
   Statistics &statistics = *_context->statistics;
   statistics.glStencilMaskSeparate++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilMaskSeparate(face, mask);
 }
@@ -6990,7 +6990,7 @@ static void REGAL_CALL statistics_glStencilOpSeparate(GLenum face, GLenum fail, 
   Statistics &statistics = *_context->statistics;
   statistics.glStencilOpSeparate++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilOpSeparate(face, fail, zfail, zpass);
 }
@@ -7004,7 +7004,7 @@ static void REGAL_CALL statistics_glUniform1f(GLint location, GLfloat v0)
   Statistics &statistics = *_context->statistics;
   statistics.glUniform1f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1f(location, v0);
 }
@@ -7018,7 +7018,7 @@ static void REGAL_CALL statistics_glUniform1fv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform1fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1fv(location, count, value);
 }
@@ -7032,7 +7032,7 @@ static void REGAL_CALL statistics_glUniform1i(GLint location, GLint v0)
   Statistics &statistics = *_context->statistics;
   statistics.glUniform1i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1i(location, v0);
 }
@@ -7046,7 +7046,7 @@ static void REGAL_CALL statistics_glUniform1iv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform1iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1iv(location, count, value);
 }
@@ -7060,7 +7060,7 @@ static void REGAL_CALL statistics_glUniform2f(GLint location, GLfloat v0, GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glUniform2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2f(location, v0, v1);
 }
@@ -7074,7 +7074,7 @@ static void REGAL_CALL statistics_glUniform2fv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2fv(location, count, value);
 }
@@ -7088,7 +7088,7 @@ static void REGAL_CALL statistics_glUniform2i(GLint location, GLint v0, GLint v1
   Statistics &statistics = *_context->statistics;
   statistics.glUniform2i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2i(location, v0, v1);
 }
@@ -7102,7 +7102,7 @@ static void REGAL_CALL statistics_glUniform2iv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform2iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2iv(location, count, value);
 }
@@ -7116,7 +7116,7 @@ static void REGAL_CALL statistics_glUniform3f(GLint location, GLfloat v0, GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glUniform3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3f(location, v0, v1, v2);
 }
@@ -7130,7 +7130,7 @@ static void REGAL_CALL statistics_glUniform3fv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3fv(location, count, value);
 }
@@ -7144,7 +7144,7 @@ static void REGAL_CALL statistics_glUniform3i(GLint location, GLint v0, GLint v1
   Statistics &statistics = *_context->statistics;
   statistics.glUniform3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3i(location, v0, v1, v2);
 }
@@ -7158,7 +7158,7 @@ static void REGAL_CALL statistics_glUniform3iv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3iv(location, count, value);
 }
@@ -7172,7 +7172,7 @@ static void REGAL_CALL statistics_glUniform4f(GLint location, GLfloat v0, GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glUniform4f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4f(location, v0, v1, v2, v3);
 }
@@ -7186,7 +7186,7 @@ static void REGAL_CALL statistics_glUniform4fv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4fv(location, count, value);
 }
@@ -7200,7 +7200,7 @@ static void REGAL_CALL statistics_glUniform4i(GLint location, GLint v0, GLint v1
   Statistics &statistics = *_context->statistics;
   statistics.glUniform4i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4i(location, v0, v1, v2, v3);
 }
@@ -7214,7 +7214,7 @@ static void REGAL_CALL statistics_glUniform4iv(GLint location, GLsizei count, co
   Statistics &statistics = *_context->statistics;
   statistics.glUniform4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4iv(location, count, value);
 }
@@ -7228,7 +7228,7 @@ static void REGAL_CALL statistics_glUniformMatrix2fv(GLint location, GLsizei cou
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2fv(location, count, transpose, value);
 }
@@ -7242,7 +7242,7 @@ static void REGAL_CALL statistics_glUniformMatrix3fv(GLint location, GLsizei cou
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3fv(location, count, transpose, value);
 }
@@ -7256,7 +7256,7 @@ static void REGAL_CALL statistics_glUniformMatrix4fv(GLint location, GLsizei cou
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4fv(location, count, transpose, value);
 }
@@ -7270,7 +7270,7 @@ static void REGAL_CALL statistics_glUseProgram(GLuint program)
   Statistics &statistics = *_context->statistics;
   statistics.glUseProgram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUseProgram(program);
 }
@@ -7284,7 +7284,7 @@ static void REGAL_CALL statistics_glValidateProgram(GLuint program)
   Statistics &statistics = *_context->statistics;
   statistics.glValidateProgram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glValidateProgram(program);
 }
@@ -7298,7 +7298,7 @@ static void REGAL_CALL statistics_glVertexAttrib1d(GLuint index, GLdouble x)
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib1d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1d(index, x);
 }
@@ -7312,7 +7312,7 @@ static void REGAL_CALL statistics_glVertexAttrib1dv(GLuint index, const GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib1dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1dv(index, v);
 }
@@ -7326,7 +7326,7 @@ static void REGAL_CALL statistics_glVertexAttrib1f(GLuint index, GLfloat x)
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib1f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1f(index, x);
 }
@@ -7340,7 +7340,7 @@ static void REGAL_CALL statistics_glVertexAttrib1fv(GLuint index, const GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib1fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1fv(index, v);
 }
@@ -7354,7 +7354,7 @@ static void REGAL_CALL statistics_glVertexAttrib1s(GLuint index, GLshort x)
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib1s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1s(index, x);
 }
@@ -7368,7 +7368,7 @@ static void REGAL_CALL statistics_glVertexAttrib1sv(GLuint index, const GLshort 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib1sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1sv(index, v);
 }
@@ -7382,7 +7382,7 @@ static void REGAL_CALL statistics_glVertexAttrib2d(GLuint index, GLdouble x, GLd
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib2d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2d(index, x, y);
 }
@@ -7396,7 +7396,7 @@ static void REGAL_CALL statistics_glVertexAttrib2dv(GLuint index, const GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib2dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2dv(index, v);
 }
@@ -7410,7 +7410,7 @@ static void REGAL_CALL statistics_glVertexAttrib2f(GLuint index, GLfloat x, GLfl
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib2f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2f(index, x, y);
 }
@@ -7424,7 +7424,7 @@ static void REGAL_CALL statistics_glVertexAttrib2fv(GLuint index, const GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2fv(index, v);
 }
@@ -7438,7 +7438,7 @@ static void REGAL_CALL statistics_glVertexAttrib2s(GLuint index, GLshort x, GLsh
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib2s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2s(index, x, y);
 }
@@ -7452,7 +7452,7 @@ static void REGAL_CALL statistics_glVertexAttrib2sv(GLuint index, const GLshort 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib2sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2sv(index, v);
 }
@@ -7466,7 +7466,7 @@ static void REGAL_CALL statistics_glVertexAttrib3d(GLuint index, GLdouble x, GLd
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3d(index, x, y, z);
 }
@@ -7480,7 +7480,7 @@ static void REGAL_CALL statistics_glVertexAttrib3dv(GLuint index, const GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib3dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3dv(index, v);
 }
@@ -7494,7 +7494,7 @@ static void REGAL_CALL statistics_glVertexAttrib3f(GLuint index, GLfloat x, GLfl
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib3f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3f(index, x, y, z);
 }
@@ -7508,7 +7508,7 @@ static void REGAL_CALL statistics_glVertexAttrib3fv(GLuint index, const GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3fv(index, v);
 }
@@ -7522,7 +7522,7 @@ static void REGAL_CALL statistics_glVertexAttrib3s(GLuint index, GLshort x, GLsh
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib3s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3s(index, x, y, z);
 }
@@ -7536,7 +7536,7 @@ static void REGAL_CALL statistics_glVertexAttrib3sv(GLuint index, const GLshort 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib3sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3sv(index, v);
 }
@@ -7550,7 +7550,7 @@ static void REGAL_CALL statistics_glVertexAttrib4Nbv(GLuint index, const GLbyte 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4Nbv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4Nbv(index, v);
 }
@@ -7564,7 +7564,7 @@ static void REGAL_CALL statistics_glVertexAttrib4Niv(GLuint index, const GLint *
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4Niv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4Niv(index, v);
 }
@@ -7578,7 +7578,7 @@ static void REGAL_CALL statistics_glVertexAttrib4Nsv(GLuint index, const GLshort
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4Nsv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4Nsv(index, v);
 }
@@ -7592,7 +7592,7 @@ static void REGAL_CALL statistics_glVertexAttrib4Nub(GLuint index, GLubyte x, GL
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4Nub++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4Nub(index, x, y, z, w);
 }
@@ -7606,7 +7606,7 @@ static void REGAL_CALL statistics_glVertexAttrib4Nubv(GLuint index, const GLubyt
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4Nubv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4Nubv(index, v);
 }
@@ -7620,7 +7620,7 @@ static void REGAL_CALL statistics_glVertexAttrib4Nuiv(GLuint index, const GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4Nuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4Nuiv(index, v);
 }
@@ -7634,7 +7634,7 @@ static void REGAL_CALL statistics_glVertexAttrib4Nusv(GLuint index, const GLusho
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4Nusv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4Nusv(index, v);
 }
@@ -7648,7 +7648,7 @@ static void REGAL_CALL statistics_glVertexAttrib4bv(GLuint index, const GLbyte *
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4bv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4bv(index, v);
 }
@@ -7662,7 +7662,7 @@ static void REGAL_CALL statistics_glVertexAttrib4d(GLuint index, GLdouble x, GLd
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4d(index, x, y, z, w);
 }
@@ -7676,7 +7676,7 @@ static void REGAL_CALL statistics_glVertexAttrib4dv(GLuint index, const GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4dv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4dv(index, v);
 }
@@ -7690,7 +7690,7 @@ static void REGAL_CALL statistics_glVertexAttrib4f(GLuint index, GLfloat x, GLfl
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4f++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4f(index, x, y, z, w);
 }
@@ -7704,7 +7704,7 @@ static void REGAL_CALL statistics_glVertexAttrib4fv(GLuint index, const GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4fv(index, v);
 }
@@ -7718,7 +7718,7 @@ static void REGAL_CALL statistics_glVertexAttrib4iv(GLuint index, const GLint *v
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4iv(index, v);
 }
@@ -7732,7 +7732,7 @@ static void REGAL_CALL statistics_glVertexAttrib4s(GLuint index, GLshort x, GLsh
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4s++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4s(index, x, y, z, w);
 }
@@ -7746,7 +7746,7 @@ static void REGAL_CALL statistics_glVertexAttrib4sv(GLuint index, const GLshort 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4sv(index, v);
 }
@@ -7760,7 +7760,7 @@ static void REGAL_CALL statistics_glVertexAttrib4ubv(GLuint index, const GLubyte
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4ubv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4ubv(index, v);
 }
@@ -7774,7 +7774,7 @@ static void REGAL_CALL statistics_glVertexAttrib4uiv(GLuint index, const GLuint 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4uiv(index, v);
 }
@@ -7788,7 +7788,7 @@ static void REGAL_CALL statistics_glVertexAttrib4usv(GLuint index, const GLushor
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttrib4usv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4usv(index, v);
 }
@@ -7802,7 +7802,7 @@ static void REGAL_CALL statistics_glVertexAttribPointer(GLuint index, GLint size
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 }
@@ -7818,7 +7818,7 @@ static void REGAL_CALL statistics_glUniformMatrix2x3fv(GLint location, GLsizei c
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix2x3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2x3fv(location, count, transpose, value);
 }
@@ -7832,7 +7832,7 @@ static void REGAL_CALL statistics_glUniformMatrix2x4fv(GLint location, GLsizei c
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix2x4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2x4fv(location, count, transpose, value);
 }
@@ -7846,7 +7846,7 @@ static void REGAL_CALL statistics_glUniformMatrix3x2fv(GLint location, GLsizei c
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix3x2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3x2fv(location, count, transpose, value);
 }
@@ -7860,7 +7860,7 @@ static void REGAL_CALL statistics_glUniformMatrix3x4fv(GLint location, GLsizei c
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix3x4fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3x4fv(location, count, transpose, value);
 }
@@ -7874,7 +7874,7 @@ static void REGAL_CALL statistics_glUniformMatrix4x2fv(GLint location, GLsizei c
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix4x2fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4x2fv(location, count, transpose, value);
 }
@@ -7888,7 +7888,7 @@ static void REGAL_CALL statistics_glUniformMatrix4x3fv(GLint location, GLsizei c
   Statistics &statistics = *_context->statistics;
   statistics.glUniformMatrix4x3fv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4x3fv(location, count, transpose, value);
 }
@@ -7904,7 +7904,7 @@ static void REGAL_CALL statistics_glBeginConditionalRender(GLuint id, GLenum mod
   Statistics &statistics = *_context->statistics;
   statistics.glBeginConditionalRender++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginConditionalRender(id, mode);
 }
@@ -7918,7 +7918,7 @@ static void REGAL_CALL statistics_glBeginTransformFeedback(GLenum primitiveMode)
   Statistics &statistics = *_context->statistics;
   statistics.glBeginTransformFeedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginTransformFeedback(primitiveMode);
 }
@@ -7932,7 +7932,7 @@ static void REGAL_CALL statistics_glBindFragDataLocation(GLuint program, GLuint 
   Statistics &statistics = *_context->statistics;
   statistics.glBindFragDataLocation++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindFragDataLocation(program, color, name);
 }
@@ -7946,7 +7946,7 @@ static void REGAL_CALL statistics_glClampColor(GLenum target, GLenum clamp)
   Statistics &statistics = *_context->statistics;
   statistics.glClampColor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClampColor(target, clamp);
 }
@@ -7960,7 +7960,7 @@ static void REGAL_CALL statistics_glClearBufferfi(GLenum buffer, GLint drawbuffe
   Statistics &statistics = *_context->statistics;
   statistics.glClearBufferfi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearBufferfi(buffer, drawbuffer, depth, stencil);
 }
@@ -7974,7 +7974,7 @@ static void REGAL_CALL statistics_glClearBufferfv(GLenum buffer, GLint drawbuffe
   Statistics &statistics = *_context->statistics;
   statistics.glClearBufferfv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearBufferfv(buffer, drawbuffer, value);
 }
@@ -7988,7 +7988,7 @@ static void REGAL_CALL statistics_glClearBufferiv(GLenum buffer, GLint drawbuffe
   Statistics &statistics = *_context->statistics;
   statistics.glClearBufferiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearBufferiv(buffer, drawbuffer, value);
 }
@@ -8002,7 +8002,7 @@ static void REGAL_CALL statistics_glClearBufferuiv(GLenum buffer, GLint drawbuff
   Statistics &statistics = *_context->statistics;
   statistics.glClearBufferuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearBufferuiv(buffer, drawbuffer, value);
 }
@@ -8016,7 +8016,7 @@ static void REGAL_CALL statistics_glColorMaski(GLuint index, GLboolean r, GLbool
   Statistics &statistics = *_context->statistics;
   statistics.glColorMaski++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorMaski(index, r, g, b, a);
 }
@@ -8030,7 +8030,7 @@ static void REGAL_CALL statistics_glDisablei(GLenum cap, GLuint index)
   Statistics &statistics = *_context->statistics;
   statistics.glDisablei++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisablei(cap, index);
 }
@@ -8044,7 +8044,7 @@ static void REGAL_CALL statistics_glEnablei(GLenum cap, GLuint index)
   Statistics &statistics = *_context->statistics;
   statistics.glEnablei++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnablei(cap, index);
 }
@@ -8058,7 +8058,7 @@ static void REGAL_CALL statistics_glEndConditionalRender(void)
   Statistics &statistics = *_context->statistics;
   statistics.glEndConditionalRender++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndConditionalRender();
 }
@@ -8072,7 +8072,7 @@ static void REGAL_CALL statistics_glEndTransformFeedback(void)
   Statistics &statistics = *_context->statistics;
   statistics.glEndTransformFeedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndTransformFeedback();
 }
@@ -8086,7 +8086,7 @@ static void REGAL_CALL statistics_glGetBooleani_v(GLenum target, GLuint index, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetBooleani_v++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBooleani_v(target, index, data);
 }
@@ -8100,7 +8100,7 @@ static GLint REGAL_CALL statistics_glGetFragDataLocation(GLuint program, const G
   Statistics &statistics = *_context->statistics;
   statistics.glGetFragDataLocation++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetFragDataLocation(program, name);
   return ret;
@@ -8115,7 +8115,7 @@ static const GLubyte *REGAL_CALL statistics_glGetStringi(GLenum name, GLuint ind
   Statistics &statistics = *_context->statistics;
   statistics.glGetStringi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   const GLubyte * ret = _next->glGetStringi(name, index);
   return ret;
@@ -8130,7 +8130,7 @@ static void REGAL_CALL statistics_glGetTexParameterIiv(GLenum target, GLenum pna
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexParameterIiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameterIiv(target, pname, params);
 }
@@ -8144,7 +8144,7 @@ static void REGAL_CALL statistics_glGetTexParameterIuiv(GLenum target, GLenum pn
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexParameterIuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameterIuiv(target, pname, params);
 }
@@ -8158,7 +8158,7 @@ static void REGAL_CALL statistics_glGetTransformFeedbackVarying(GLuint program, 
   Statistics &statistics = *_context->statistics;
   statistics.glGetTransformFeedbackVarying++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTransformFeedbackVarying(program, index, bufSize, length, size, type, name);
 }
@@ -8172,7 +8172,7 @@ static void REGAL_CALL statistics_glGetUniformuiv(GLuint program, GLint location
   Statistics &statistics = *_context->statistics;
   statistics.glGetUniformuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformuiv(program, location, params);
 }
@@ -8186,7 +8186,7 @@ static void REGAL_CALL statistics_glGetVertexAttribIiv(GLuint index, GLenum pnam
   Statistics &statistics = *_context->statistics;
   statistics.glGetVertexAttribIiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribIiv(index, pname, params);
 }
@@ -8200,7 +8200,7 @@ static void REGAL_CALL statistics_glGetVertexAttribIuiv(GLuint index, GLenum pna
   Statistics &statistics = *_context->statistics;
   statistics.glGetVertexAttribIuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribIuiv(index, pname, params);
 }
@@ -8214,7 +8214,7 @@ static GLboolean REGAL_CALL statistics_glIsEnabledi(GLenum target, GLuint index)
   Statistics &statistics = *_context->statistics;
   statistics.glIsEnabledi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsEnabledi(target, index);
   return ret;
@@ -8229,7 +8229,7 @@ static void REGAL_CALL statistics_glTexParameterIiv(GLenum target, GLenum pname,
   Statistics &statistics = *_context->statistics;
   statistics.glTexParameterIiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterIiv(target, pname, params);
 }
@@ -8243,7 +8243,7 @@ static void REGAL_CALL statistics_glTexParameterIuiv(GLenum target, GLenum pname
   Statistics &statistics = *_context->statistics;
   statistics.glTexParameterIuiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterIuiv(target, pname, params);
 }
@@ -8257,7 +8257,7 @@ static void REGAL_CALL statistics_glTransformFeedbackVaryings(GLuint program, GL
   Statistics &statistics = *_context->statistics;
   statistics.glTransformFeedbackVaryings++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTransformFeedbackVaryings(program, count, varyings, bufferMode);
 }
@@ -8271,7 +8271,7 @@ static void REGAL_CALL statistics_glUniform1ui(GLint location, GLuint v0)
   Statistics &statistics = *_context->statistics;
   statistics.glUniform1ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1ui(location, v0);
 }
@@ -8285,7 +8285,7 @@ static void REGAL_CALL statistics_glUniform1uiv(GLint location, GLsizei count, c
   Statistics &statistics = *_context->statistics;
   statistics.glUniform1uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1uiv(location, count, value);
 }
@@ -8299,7 +8299,7 @@ static void REGAL_CALL statistics_glUniform2ui(GLint location, GLuint v0, GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glUniform2ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2ui(location, v0, v1);
 }
@@ -8313,7 +8313,7 @@ static void REGAL_CALL statistics_glUniform2uiv(GLint location, GLsizei count, c
   Statistics &statistics = *_context->statistics;
   statistics.glUniform2uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2uiv(location, count, value);
 }
@@ -8327,7 +8327,7 @@ static void REGAL_CALL statistics_glUniform3ui(GLint location, GLuint v0, GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glUniform3ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3ui(location, v0, v1, v2);
 }
@@ -8341,7 +8341,7 @@ static void REGAL_CALL statistics_glUniform3uiv(GLint location, GLsizei count, c
   Statistics &statistics = *_context->statistics;
   statistics.glUniform3uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3uiv(location, count, value);
 }
@@ -8355,7 +8355,7 @@ static void REGAL_CALL statistics_glUniform4ui(GLint location, GLuint v0, GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glUniform4ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4ui(location, v0, v1, v2, v3);
 }
@@ -8369,7 +8369,7 @@ static void REGAL_CALL statistics_glUniform4uiv(GLint location, GLsizei count, c
   Statistics &statistics = *_context->statistics;
   statistics.glUniform4uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4uiv(location, count, value);
 }
@@ -8383,7 +8383,7 @@ static void REGAL_CALL statistics_glVertexAttribI1i(GLuint index, GLint x)
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI1i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1i(index, x);
 }
@@ -8397,7 +8397,7 @@ static void REGAL_CALL statistics_glVertexAttribI1iv(GLuint index, const GLint *
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI1iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1iv(index, v);
 }
@@ -8411,7 +8411,7 @@ static void REGAL_CALL statistics_glVertexAttribI1ui(GLuint index, GLuint x)
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI1ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1ui(index, x);
 }
@@ -8425,7 +8425,7 @@ static void REGAL_CALL statistics_glVertexAttribI1uiv(GLuint index, const GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI1uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1uiv(index, v);
 }
@@ -8439,7 +8439,7 @@ static void REGAL_CALL statistics_glVertexAttribI2i(GLuint index, GLint x, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI2i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2i(index, x, y);
 }
@@ -8453,7 +8453,7 @@ static void REGAL_CALL statistics_glVertexAttribI2iv(GLuint index, const GLint *
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI2iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2iv(index, v);
 }
@@ -8467,7 +8467,7 @@ static void REGAL_CALL statistics_glVertexAttribI2ui(GLuint index, GLuint x, GLu
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI2ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2ui(index, x, y);
 }
@@ -8481,7 +8481,7 @@ static void REGAL_CALL statistics_glVertexAttribI2uiv(GLuint index, const GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI2uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2uiv(index, v);
 }
@@ -8495,7 +8495,7 @@ static void REGAL_CALL statistics_glVertexAttribI3i(GLuint index, GLint x, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI3i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3i(index, x, y, z);
 }
@@ -8509,7 +8509,7 @@ static void REGAL_CALL statistics_glVertexAttribI3iv(GLuint index, const GLint *
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI3iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3iv(index, v);
 }
@@ -8523,7 +8523,7 @@ static void REGAL_CALL statistics_glVertexAttribI3ui(GLuint index, GLuint x, GLu
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI3ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3ui(index, x, y, z);
 }
@@ -8537,7 +8537,7 @@ static void REGAL_CALL statistics_glVertexAttribI3uiv(GLuint index, const GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI3uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3uiv(index, v);
 }
@@ -8551,7 +8551,7 @@ static void REGAL_CALL statistics_glVertexAttribI4bv(GLuint index, const GLbyte 
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4bv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4bv(index, v);
 }
@@ -8565,7 +8565,7 @@ static void REGAL_CALL statistics_glVertexAttribI4i(GLuint index, GLint x, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4i++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4i(index, x, y, z, w);
 }
@@ -8579,7 +8579,7 @@ static void REGAL_CALL statistics_glVertexAttribI4iv(GLuint index, const GLint *
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4iv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4iv(index, v);
 }
@@ -8593,7 +8593,7 @@ static void REGAL_CALL statistics_glVertexAttribI4sv(GLuint index, const GLshort
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4sv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4sv(index, v);
 }
@@ -8607,7 +8607,7 @@ static void REGAL_CALL statistics_glVertexAttribI4ubv(GLuint index, const GLubyt
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4ubv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4ubv(index, v);
 }
@@ -8621,7 +8621,7 @@ static void REGAL_CALL statistics_glVertexAttribI4ui(GLuint index, GLuint x, GLu
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4ui++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4ui(index, x, y, z, w);
 }
@@ -8635,7 +8635,7 @@ static void REGAL_CALL statistics_glVertexAttribI4uiv(GLuint index, const GLuint
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4uiv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4uiv(index, v);
 }
@@ -8649,7 +8649,7 @@ static void REGAL_CALL statistics_glVertexAttribI4usv(GLuint index, const GLusho
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribI4usv++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4usv(index, v);
 }
@@ -8663,7 +8663,7 @@ static void REGAL_CALL statistics_glVertexAttribIPointer(GLuint index, GLint siz
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribIPointer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribIPointer(index, size, type, stride, pointer);
 }
@@ -8679,7 +8679,7 @@ static void REGAL_CALL statistics_glDrawArraysInstanced(GLenum mode, GLint start
   Statistics &statistics = *_context->statistics;
   statistics.glDrawArraysInstanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArraysInstanced(mode, start, count, primcount);
 }
@@ -8693,7 +8693,7 @@ static void REGAL_CALL statistics_glDrawElementsInstanced(GLenum mode, GLsizei c
   Statistics &statistics = *_context->statistics;
   statistics.glDrawElementsInstanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsInstanced(mode, count, type, indices, primcount);
 }
@@ -8707,7 +8707,7 @@ static void REGAL_CALL statistics_glPrimitiveRestartIndex(GLuint index)
   Statistics &statistics = *_context->statistics;
   statistics.glPrimitiveRestartIndex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPrimitiveRestartIndex(index);
 }
@@ -8721,7 +8721,7 @@ static void REGAL_CALL statistics_glTexBuffer(GLenum target, GLenum internalform
   Statistics &statistics = *_context->statistics;
   statistics.glTexBuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexBuffer(target, internalformat, buffer);
 }
@@ -8737,7 +8737,7 @@ static void REGAL_CALL statistics_glFramebufferTexture(GLenum target, GLenum att
   Statistics &statistics = *_context->statistics;
   statistics.glFramebufferTexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture(target, attachment, texture, level);
 }
@@ -8751,7 +8751,7 @@ static void REGAL_CALL statistics_glFramebufferTextureFace(GLenum target, GLenum
   Statistics &statistics = *_context->statistics;
   statistics.glFramebufferTextureFace++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureFace(target, attachment, texture, level, face);
 }
@@ -8765,7 +8765,7 @@ static void REGAL_CALL statistics_glGetBufferParameteri64v(GLenum target, GLenum
   Statistics &statistics = *_context->statistics;
   statistics.glGetBufferParameteri64v++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferParameteri64v(target, pname, params);
 }
@@ -8779,7 +8779,7 @@ static void REGAL_CALL statistics_glGetInteger64i_v(GLenum target, GLuint index,
   Statistics &statistics = *_context->statistics;
   statistics.glGetInteger64i_v++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInteger64i_v(target, index, data);
 }
@@ -8795,7 +8795,7 @@ static void REGAL_CALL statistics_glVertexAttribDivisor(GLuint index, GLuint div
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribDivisor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribDivisor(index, divisor);
 }
@@ -8811,7 +8811,7 @@ static void REGAL_CALL statistics_glBlendEquationSeparatei(GLuint buf, GLenum mo
   Statistics &statistics = *_context->statistics;
   statistics.glBlendEquationSeparatei++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationSeparatei(buf, modeRGB, modeAlpha);
 }
@@ -8825,7 +8825,7 @@ static void REGAL_CALL statistics_glBlendEquationi(GLuint buf, GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glBlendEquationi++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationi(buf, mode);
 }
@@ -8839,7 +8839,7 @@ static void REGAL_CALL statistics_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB
   Statistics &statistics = *_context->statistics;
   statistics.glBlendFuncSeparatei++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
@@ -8853,7 +8853,7 @@ static void REGAL_CALL statistics_glBlendFunci(GLuint buf, GLenum src, GLenum ds
   Statistics &statistics = *_context->statistics;
   statistics.glBlendFunci++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFunci(buf, src, dst);
 }
@@ -8871,7 +8871,7 @@ static void REGAL_CALL statistics_glTbufferMask3DFX(GLuint mask)
 
   statistics.gl_3dfx_tbuffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTbufferMask3DFX(mask);
 }
@@ -8889,7 +8889,7 @@ static void REGAL_CALL statistics_glDebugMessageCallbackAMD(GLDEBUGPROCAMD callb
 
   statistics.gl_amd_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageCallbackAMD(callback, userParam);
 }
@@ -8905,7 +8905,7 @@ static void REGAL_CALL statistics_glDebugMessageEnableAMD(GLenum category, GLenu
 
   statistics.gl_amd_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageEnableAMD(category, severity, count, ids, enabled);
 }
@@ -8921,7 +8921,7 @@ static void REGAL_CALL statistics_glDebugMessageInsertAMD(GLenum category, GLenu
 
   statistics.gl_amd_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageInsertAMD(category, severity, id, length, buf);
 }
@@ -8937,7 +8937,7 @@ static GLuint REGAL_CALL statistics_glGetDebugMessageLogAMD(GLuint count, GLsize
 
   statistics.gl_amd_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGetDebugMessageLogAMD(count, bufsize, categories, severities, ids, lengths, message);
   return ret;
@@ -8956,7 +8956,7 @@ static void REGAL_CALL statistics_glBlendEquationIndexedAMD(GLuint buf, GLenum m
 
   statistics.gl_amd_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationIndexedAMD(buf, mode);
 }
@@ -8972,7 +8972,7 @@ static void REGAL_CALL statistics_glBlendEquationSeparateIndexedAMD(GLuint buf, 
 
   statistics.gl_amd_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationSeparateIndexedAMD(buf, modeRGB, modeAlpha);
 }
@@ -8988,7 +8988,7 @@ static void REGAL_CALL statistics_glBlendFuncIndexedAMD(GLuint buf, GLenum src, 
 
   statistics.gl_amd_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncIndexedAMD(buf, src, dst);
 }
@@ -9004,7 +9004,7 @@ static void REGAL_CALL statistics_glBlendFuncSeparateIndexedAMD(GLuint buf, GLen
 
   statistics.gl_amd_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncSeparateIndexedAMD(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
@@ -9022,7 +9022,7 @@ static void REGAL_CALL statistics_glVertexAttribParameteriAMD(GLuint index, GLen
 
   statistics.gl_amd_interleaved_elements++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribParameteriAMD(index, pname, param);
 }
@@ -9040,7 +9040,7 @@ static void REGAL_CALL statistics_glMultiDrawArraysIndirectAMD(GLenum mode, cons
 
   statistics.gl_amd_multi_draw_indirect++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
 }
@@ -9056,7 +9056,7 @@ static void REGAL_CALL statistics_glMultiDrawElementsIndirectAMD(GLenum mode, GL
 
   statistics.gl_amd_multi_draw_indirect++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
 }
@@ -9074,7 +9074,7 @@ static void REGAL_CALL statistics_glDeleteNamesAMD(GLenum identifier, GLuint num
 
   statistics.gl_amd_name_gen_delete++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteNamesAMD(identifier, num, names);
 }
@@ -9090,7 +9090,7 @@ static void REGAL_CALL statistics_glGenNamesAMD(GLenum identifier, GLuint num, G
 
   statistics.gl_amd_name_gen_delete++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenNamesAMD(identifier, num, names);
 }
@@ -9106,7 +9106,7 @@ static GLboolean REGAL_CALL statistics_glIsNameAMD(GLenum identifier, GLuint nam
 
   statistics.gl_amd_name_gen_delete++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsNameAMD(identifier, name);
   return ret;
@@ -9125,7 +9125,7 @@ static void REGAL_CALL statistics_glBeginPerfMonitorAMD(GLuint monitor)
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginPerfMonitorAMD(monitor);
 }
@@ -9141,7 +9141,7 @@ static void REGAL_CALL statistics_glDeletePerfMonitorsAMD(GLsizei n, GLuint *mon
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeletePerfMonitorsAMD(n, monitors);
 }
@@ -9157,7 +9157,7 @@ static void REGAL_CALL statistics_glEndPerfMonitorAMD(GLuint monitor)
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndPerfMonitorAMD(monitor);
 }
@@ -9173,7 +9173,7 @@ static void REGAL_CALL statistics_glGenPerfMonitorsAMD(GLsizei n, GLuint *monito
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenPerfMonitorsAMD(n, monitors);
 }
@@ -9189,7 +9189,7 @@ static void REGAL_CALL statistics_glGetPerfMonitorCounterDataAMD(GLuint monitor,
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPerfMonitorCounterDataAMD(monitor, pname, dataSize, data, bytesWritten);
 }
@@ -9205,7 +9205,7 @@ static void REGAL_CALL statistics_glGetPerfMonitorCounterInfoAMD(GLuint group, G
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPerfMonitorCounterInfoAMD(group, counter, pname, data);
 }
@@ -9221,7 +9221,7 @@ static void REGAL_CALL statistics_glGetPerfMonitorCounterStringAMD(GLuint group,
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPerfMonitorCounterStringAMD(group, counter, bufSize, length, counterString);
 }
@@ -9237,7 +9237,7 @@ static void REGAL_CALL statistics_glGetPerfMonitorCountersAMD(GLuint group, GLin
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPerfMonitorCountersAMD(group, numCounters, maxActiveCounters, countersSize, counters);
 }
@@ -9253,7 +9253,7 @@ static void REGAL_CALL statistics_glGetPerfMonitorGroupStringAMD(GLuint group, G
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPerfMonitorGroupStringAMD(group, bufSize, length, groupString);
 }
@@ -9269,7 +9269,7 @@ static void REGAL_CALL statistics_glGetPerfMonitorGroupsAMD(GLint *numGroups, GL
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPerfMonitorGroupsAMD(numGroups, groupsSize, groups);
 }
@@ -9285,7 +9285,7 @@ static void REGAL_CALL statistics_glSelectPerfMonitorCountersAMD(GLuint monitor,
 
   statistics.gl_amd_performance_monitor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSelectPerfMonitorCountersAMD(monitor, enable, group, numCounters, counterList);
 }
@@ -9303,7 +9303,7 @@ static void REGAL_CALL statistics_glSetMultisamplefvAMD(GLenum pname, GLuint ind
 
   statistics.gl_amd_sample_positions++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSetMultisamplefvAMD(pname, index, val);
 }
@@ -9321,7 +9321,7 @@ static void REGAL_CALL statistics_glTexStorageSparseAMD(GLenum target, GLenum in
 
   statistics.gl_amd_sparse_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorageSparseAMD(target, internalFormat, width, height, depth, layers, flags);
 }
@@ -9337,7 +9337,7 @@ static void REGAL_CALL statistics_glTextureStorageSparseAMD(GLuint texture, GLen
 
   statistics.gl_amd_sparse_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureStorageSparseAMD(texture, target, internalFormat, width, height, depth, layers, flags);
 }
@@ -9355,7 +9355,7 @@ static void REGAL_CALL statistics_glStencilOpValueAMD(GLenum face, GLuint value)
 
   statistics.gl_amd_stencil_operation_extended++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilOpValueAMD(face, value);
 }
@@ -9373,7 +9373,7 @@ static void REGAL_CALL statistics_glTessellationFactorAMD(GLfloat factor)
 
   statistics.gl_amd_vertex_shader_tessellator++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTessellationFactorAMD(factor);
 }
@@ -9389,7 +9389,7 @@ static void REGAL_CALL statistics_glTessellationModeAMD(GLenum mode)
 
   statistics.gl_amd_vertex_shader_tessellator++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTessellationModeAMD(mode);
 }
@@ -9405,7 +9405,7 @@ static void REGAL_CALL statistics_glBlitFramebufferANGLE(GLint srcX0, GLint srcY
   Statistics &statistics = *_context->statistics;
   statistics.glBlitFramebufferANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlitFramebufferANGLE(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
@@ -9421,7 +9421,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageMultisampleANGLE(GLenum t
   Statistics &statistics = *_context->statistics;
   statistics.glRenderbufferStorageMultisampleANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageMultisampleANGLE(target, samples, internalformat, width, height);
 }
@@ -9437,7 +9437,7 @@ static void REGAL_CALL statistics_glDrawArraysInstancedANGLE(GLenum mode, GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glDrawArraysInstancedANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArraysInstancedANGLE(mode, first, count, primcount);
 }
@@ -9451,7 +9451,7 @@ static void REGAL_CALL statistics_glDrawElementsInstancedANGLE(GLenum mode, GLsi
   Statistics &statistics = *_context->statistics;
   statistics.glDrawElementsInstancedANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsInstancedANGLE(mode, count, type, indices, primcount);
 }
@@ -9465,7 +9465,7 @@ static void REGAL_CALL statistics_glVertexAttribDivisorANGLE(GLuint index, GLuin
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribDivisorANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribDivisorANGLE(index, divisor);
 }
@@ -9481,7 +9481,7 @@ static void REGAL_CALL statistics_glBeginQueryANGLE(GLenum target, GLuint id)
   Statistics &statistics = *_context->statistics;
   statistics.glBeginQueryANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginQueryANGLE(target, id);
 }
@@ -9495,7 +9495,7 @@ static void REGAL_CALL statistics_glDeleteQueriesANGLE(GLsizei n, const GLuint *
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteQueriesANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteQueriesANGLE(n, ids);
 }
@@ -9509,7 +9509,7 @@ static void REGAL_CALL statistics_glEndQueryANGLE(GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glEndQueryANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndQueryANGLE(target);
 }
@@ -9523,7 +9523,7 @@ static void REGAL_CALL statistics_glGenQueriesANGLE(GLsizei n, GLuint *ids)
   Statistics &statistics = *_context->statistics;
   statistics.glGenQueriesANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenQueriesANGLE(n, ids);
 }
@@ -9537,7 +9537,7 @@ static void REGAL_CALL statistics_glGetQueryObjecti64vANGLE(GLuint id, GLenum pn
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjecti64vANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjecti64vANGLE(id, pname, params);
 }
@@ -9551,7 +9551,7 @@ static void REGAL_CALL statistics_glGetQueryObjectivANGLE(GLuint id, GLenum pnam
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjectivANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectivANGLE(id, pname, params);
 }
@@ -9565,7 +9565,7 @@ static void REGAL_CALL statistics_glGetQueryObjectui64vANGLE(GLuint id, GLenum p
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjectui64vANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectui64vANGLE(id, pname, params);
 }
@@ -9579,7 +9579,7 @@ static void REGAL_CALL statistics_glGetQueryObjectuivANGLE(GLuint id, GLenum pna
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjectuivANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectuivANGLE(id, pname, params);
 }
@@ -9593,7 +9593,7 @@ static void REGAL_CALL statistics_glGetQueryivANGLE(GLenum target, GLenum pname,
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryivANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryivANGLE(target, pname, params);
 }
@@ -9607,7 +9607,7 @@ static GLboolean REGAL_CALL statistics_glIsQueryANGLE(GLuint id)
   Statistics &statistics = *_context->statistics;
   statistics.glIsQueryANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsQueryANGLE(id);
   return ret;
@@ -9622,7 +9622,7 @@ static void REGAL_CALL statistics_glQueryCounterANGLE(GLuint id, GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glQueryCounterANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glQueryCounterANGLE(id, target);
 }
@@ -9638,7 +9638,7 @@ static void REGAL_CALL statistics_glGetTranslatedShaderSourceANGLE(GLuint shader
   Statistics &statistics = *_context->statistics;
   statistics.glGetTranslatedShaderSourceANGLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTranslatedShaderSourceANGLE(shader, bufsize, length, source);
 }
@@ -9654,7 +9654,7 @@ static void REGAL_CALL statistics_glCopyTextureLevelsAPPLE(GLuint destinationTex
   Statistics &statistics = *_context->statistics;
   statistics.glCopyTextureLevelsAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTextureLevelsAPPLE(destinationTexture, sourceTexture, sourceBaseLevel, sourceLevelCount);
 }
@@ -9672,7 +9672,7 @@ static void REGAL_CALL statistics_glDrawElementArrayAPPLE(GLenum mode, GLint fir
 
   statistics.gl_apple_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementArrayAPPLE(mode, first, count);
 }
@@ -9688,7 +9688,7 @@ static void REGAL_CALL statistics_glDrawRangeElementArrayAPPLE(GLenum mode, GLui
 
   statistics.gl_apple_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawRangeElementArrayAPPLE(mode, start, end, first, count);
 }
@@ -9704,7 +9704,7 @@ static void REGAL_CALL statistics_glElementPointerAPPLE(GLenum type, const GLvoi
 
   statistics.gl_apple_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glElementPointerAPPLE(type, pointer);
 }
@@ -9720,7 +9720,7 @@ static void REGAL_CALL statistics_glMultiDrawElementArrayAPPLE(GLenum mode, cons
 
   statistics.gl_apple_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
 }
@@ -9736,7 +9736,7 @@ static void REGAL_CALL statistics_glMultiDrawRangeElementArrayAPPLE(GLenum mode,
 
   statistics.gl_apple_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount);
 }
@@ -9754,7 +9754,7 @@ static void REGAL_CALL statistics_glDeleteFencesAPPLE(GLsizei n, const GLuint *f
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteFencesAPPLE(n, fences);
 }
@@ -9770,7 +9770,7 @@ static void REGAL_CALL statistics_glFinishFenceAPPLE(GLuint fence)
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFinishFenceAPPLE(fence);
 }
@@ -9786,7 +9786,7 @@ static void REGAL_CALL statistics_glFinishObjectAPPLE(GLenum object, GLint name)
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFinishObjectAPPLE(object, name);
 }
@@ -9802,7 +9802,7 @@ static void REGAL_CALL statistics_glGenFencesAPPLE(GLsizei n, GLuint *fences)
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenFencesAPPLE(n, fences);
 }
@@ -9818,7 +9818,7 @@ static GLboolean REGAL_CALL statistics_glIsFenceAPPLE(GLuint fence)
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsFenceAPPLE(fence);
   return ret;
@@ -9835,7 +9835,7 @@ static void REGAL_CALL statistics_glSetFenceAPPLE(GLuint fence)
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSetFenceAPPLE(fence);
 }
@@ -9851,7 +9851,7 @@ static GLboolean REGAL_CALL statistics_glTestFenceAPPLE(GLuint fence)
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glTestFenceAPPLE(fence);
   return ret;
@@ -9868,7 +9868,7 @@ static GLboolean REGAL_CALL statistics_glTestObjectAPPLE(GLenum object, GLuint n
 
   statistics.gl_apple_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glTestObjectAPPLE(object, name);
   return ret;
@@ -9887,7 +9887,7 @@ static void REGAL_CALL statistics_glBufferParameteriAPPLE(GLenum target, GLenum 
 
   statistics.gl_apple_flush_buffer_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBufferParameteriAPPLE(target, pname, param);
 }
@@ -9903,7 +9903,7 @@ static void REGAL_CALL statistics_glFlushMappedBufferRangeAPPLE(GLenum target, G
 
   statistics.gl_apple_flush_buffer_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushMappedBufferRangeAPPLE(target, offset, size);
 }
@@ -9919,7 +9919,7 @@ static void REGAL_CALL statistics_glFinishRenderAPPLE(void)
   Statistics &statistics = *_context->statistics;
   statistics.glFinishRenderAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFinishRenderAPPLE();
 }
@@ -9933,7 +9933,7 @@ static void REGAL_CALL statistics_glFlushRenderAPPLE(void)
   Statistics &statistics = *_context->statistics;
   statistics.glFlushRenderAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushRenderAPPLE();
 }
@@ -9947,7 +9947,7 @@ static void REGAL_CALL statistics_glSwapAPPLE(void)
   Statistics &statistics = *_context->statistics;
   statistics.glSwapAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSwapAPPLE();
 }
@@ -9963,7 +9963,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageMultisampleAPPLE(GLenum t
   Statistics &statistics = *_context->statistics;
   statistics.glRenderbufferStorageMultisampleAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageMultisampleAPPLE(target, samples, internalformat, width, height);
 }
@@ -9977,7 +9977,7 @@ static void REGAL_CALL statistics_glResolveMultisampleFramebufferAPPLE(void)
   Statistics &statistics = *_context->statistics;
   statistics.glResolveMultisampleFramebufferAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResolveMultisampleFramebufferAPPLE();
 }
@@ -9995,7 +9995,7 @@ static void REGAL_CALL statistics_glGetObjectParameterivAPPLE(GLenum objectType,
 
   statistics.gl_apple_object_purgeable++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectParameterivAPPLE(objectType, name, pname, params);
 }
@@ -10011,7 +10011,7 @@ static GLenum REGAL_CALL statistics_glObjectPurgeableAPPLE(GLenum objectType, GL
 
   statistics.gl_apple_object_purgeable++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glObjectPurgeableAPPLE(objectType, name, option);
   return ret;
@@ -10028,7 +10028,7 @@ static GLenum REGAL_CALL statistics_glObjectUnpurgeableAPPLE(GLenum objectType, 
 
   statistics.gl_apple_object_purgeable++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glObjectUnpurgeableAPPLE(objectType, name, option);
   return ret;
@@ -10045,7 +10045,7 @@ static GLenum REGAL_CALL statistics_glClientWaitSyncAPPLE(GLsync sync, GLbitfiel
   Statistics &statistics = *_context->statistics;
   statistics.glClientWaitSyncAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glClientWaitSyncAPPLE(sync, flags, timeout);
   return ret;
@@ -10060,7 +10060,7 @@ static void REGAL_CALL statistics_glDeleteSyncAPPLE(GLsync sync)
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteSyncAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteSyncAPPLE(sync);
 }
@@ -10074,7 +10074,7 @@ static GLsync REGAL_CALL statistics_glFenceSyncAPPLE(GLenum condition, GLbitfiel
   Statistics &statistics = *_context->statistics;
   statistics.glFenceSyncAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLsync  ret = _next->glFenceSyncAPPLE(condition, flags);
   return ret;
@@ -10089,7 +10089,7 @@ static void REGAL_CALL statistics_glGetInteger64vAPPLE(GLenum pname, GLint64 *pa
   Statistics &statistics = *_context->statistics;
   statistics.glGetInteger64vAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInteger64vAPPLE(pname, params);
 }
@@ -10103,7 +10103,7 @@ static void REGAL_CALL statistics_glGetSyncivAPPLE(GLsync sync, GLenum pname, GL
   Statistics &statistics = *_context->statistics;
   statistics.glGetSyncivAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSyncivAPPLE(sync, pname, bufSize, length, values);
 }
@@ -10117,7 +10117,7 @@ static GLboolean REGAL_CALL statistics_glIsSyncAPPLE(GLsync sync)
   Statistics &statistics = *_context->statistics;
   statistics.glIsSyncAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsSyncAPPLE(sync);
   return ret;
@@ -10132,7 +10132,7 @@ static void REGAL_CALL statistics_glWaitSyncAPPLE(GLsync sync, GLbitfield flags,
   Statistics &statistics = *_context->statistics;
   statistics.glWaitSyncAPPLE++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWaitSyncAPPLE(sync, flags, timeout);
 }
@@ -10150,7 +10150,7 @@ static void REGAL_CALL statistics_glGetTexParameterPointervAPPLE(GLenum target, 
 
   statistics.gl_apple_texture_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameterPointervAPPLE(target, pname, params);
 }
@@ -10166,7 +10166,7 @@ static void REGAL_CALL statistics_glTextureRangeAPPLE(GLenum target, GLsizei len
 
   statistics.gl_apple_texture_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureRangeAPPLE(target, length, pointer);
 }
@@ -10184,7 +10184,7 @@ static void REGAL_CALL statistics_glBindVertexArrayAPPLE(GLuint array)
 
   statistics.gl_apple_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVertexArrayAPPLE(array);
 }
@@ -10200,7 +10200,7 @@ static void REGAL_CALL statistics_glDeleteVertexArraysAPPLE(GLsizei n, const GLu
 
   statistics.gl_apple_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteVertexArraysAPPLE(n, arrays);
 }
@@ -10216,7 +10216,7 @@ static void REGAL_CALL statistics_glGenVertexArraysAPPLE(GLsizei n, GLuint *arra
 
   statistics.gl_apple_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenVertexArraysAPPLE(n, arrays);
 }
@@ -10232,7 +10232,7 @@ static GLboolean REGAL_CALL statistics_glIsVertexArrayAPPLE(GLuint array)
 
   statistics.gl_apple_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsVertexArrayAPPLE(array);
   return ret;
@@ -10251,7 +10251,7 @@ static void REGAL_CALL statistics_glFlushVertexArrayRangeAPPLE(GLsizei length, G
 
   statistics.gl_apple_vertex_array_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushVertexArrayRangeAPPLE(length, pointer);
 }
@@ -10267,7 +10267,7 @@ static void REGAL_CALL statistics_glVertexArrayParameteriAPPLE(GLenum pname, GLi
 
   statistics.gl_apple_vertex_array_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayParameteriAPPLE(pname, param);
 }
@@ -10283,7 +10283,7 @@ static void REGAL_CALL statistics_glVertexArrayRangeAPPLE(GLsizei length, GLvoid
 
   statistics.gl_apple_vertex_array_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayRangeAPPLE(length, pointer);
 }
@@ -10301,7 +10301,7 @@ static void REGAL_CALL statistics_glDisableVertexAttribAPPLE(GLuint index, GLenu
 
   statistics.gl_apple_vertex_program_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableVertexAttribAPPLE(index, pname);
 }
@@ -10317,7 +10317,7 @@ static void REGAL_CALL statistics_glEnableVertexAttribAPPLE(GLuint index, GLenum
 
   statistics.gl_apple_vertex_program_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableVertexAttribAPPLE(index, pname);
 }
@@ -10333,7 +10333,7 @@ static GLboolean REGAL_CALL statistics_glIsVertexAttribEnabledAPPLE(GLuint index
 
   statistics.gl_apple_vertex_program_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsVertexAttribEnabledAPPLE(index, pname);
   return ret;
@@ -10350,7 +10350,7 @@ static void REGAL_CALL statistics_glMapVertexAttrib1dAPPLE(GLuint index, GLuint 
 
   statistics.gl_apple_vertex_program_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapVertexAttrib1dAPPLE(index, size, u1, u2, stride, order, points);
 }
@@ -10366,7 +10366,7 @@ static void REGAL_CALL statistics_glMapVertexAttrib1fAPPLE(GLuint index, GLuint 
 
   statistics.gl_apple_vertex_program_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapVertexAttrib1fAPPLE(index, size, u1, u2, stride, order, points);
 }
@@ -10382,7 +10382,7 @@ static void REGAL_CALL statistics_glMapVertexAttrib2dAPPLE(GLuint index, GLuint 
 
   statistics.gl_apple_vertex_program_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapVertexAttrib2dAPPLE(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
@@ -10398,7 +10398,7 @@ static void REGAL_CALL statistics_glMapVertexAttrib2fAPPLE(GLuint index, GLuint 
 
   statistics.gl_apple_vertex_program_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapVertexAttrib2fAPPLE(index, size, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points);
 }
@@ -10416,7 +10416,7 @@ static void REGAL_CALL statistics_glClearDepthf(GLclampf d)
 
   statistics.gl_arb_es2_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearDepthf(d);
 }
@@ -10432,7 +10432,7 @@ static void REGAL_CALL statistics_glDepthRangef(GLclampf n, GLclampf f)
 
   statistics.gl_arb_es2_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthRangef(n, f);
 }
@@ -10448,7 +10448,7 @@ static void REGAL_CALL statistics_glGetShaderPrecisionFormat(GLenum shadertype, 
 
   statistics.gl_arb_es2_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetShaderPrecisionFormat(shadertype, precisiontype, range, precision);
 }
@@ -10464,7 +10464,7 @@ static void REGAL_CALL statistics_glReleaseShaderCompiler(void)
 
   statistics.gl_arb_es2_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReleaseShaderCompiler();
 }
@@ -10480,7 +10480,7 @@ static void REGAL_CALL statistics_glShaderBinary(GLsizei count, const GLuint *sh
 
   statistics.gl_arb_es2_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShaderBinary(count, shaders, binaryformat, binary, length);
 }
@@ -10498,7 +10498,7 @@ static void REGAL_CALL statistics_glDrawArraysInstancedBaseInstance(GLenum mode,
 
   statistics.gl_arb_base_instance++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArraysInstancedBaseInstance(mode, first, count, primcount, baseinstance);
 }
@@ -10514,7 +10514,7 @@ static void REGAL_CALL statistics_glDrawElementsInstancedBaseInstance(GLenum mod
 
   statistics.gl_arb_base_instance++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsInstancedBaseInstance(mode, count, type, indices, primcount, baseinstance);
 }
@@ -10530,7 +10530,7 @@ static void REGAL_CALL statistics_glDrawElementsInstancedBaseVertexBaseInstance(
 
   statistics.gl_arb_base_instance++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsInstancedBaseVertexBaseInstance(mode, count, type, indices, primcount, basevertex, baseinstance);
 }
@@ -10546,7 +10546,7 @@ static GLuint64 REGAL_CALL statistics_glGetImageHandleARB(GLuint texture, GLint 
   Statistics &statistics = *_context->statistics;
   statistics.glGetImageHandleARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint64  ret = _next->glGetImageHandleARB(texture, level, layered, layer, format);
   return ret;
@@ -10561,7 +10561,7 @@ static GLuint64 REGAL_CALL statistics_glGetTextureHandleARB(GLuint texture)
   Statistics &statistics = *_context->statistics;
   statistics.glGetTextureHandleARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint64  ret = _next->glGetTextureHandleARB(texture);
   return ret;
@@ -10576,7 +10576,7 @@ static GLuint64 REGAL_CALL statistics_glGetTextureSamplerHandleARB(GLuint textur
   Statistics &statistics = *_context->statistics;
   statistics.glGetTextureSamplerHandleARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint64  ret = _next->glGetTextureSamplerHandleARB(texture, sampler);
   return ret;
@@ -10591,7 +10591,7 @@ static void REGAL_CALL statistics_glGetVertexAttribLui64vARB(GLuint index, GLenu
   Statistics &statistics = *_context->statistics;
   statistics.glGetVertexAttribLui64vARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribLui64vARB(index, pname, params);
 }
@@ -10605,7 +10605,7 @@ static GLboolean REGAL_CALL statistics_glIsImageHandleResidentARB(GLuint64 handl
   Statistics &statistics = *_context->statistics;
   statistics.glIsImageHandleResidentARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsImageHandleResidentARB(handle);
   return ret;
@@ -10620,7 +10620,7 @@ static GLboolean REGAL_CALL statistics_glIsTextureHandleResidentARB(GLuint64 han
   Statistics &statistics = *_context->statistics;
   statistics.glIsTextureHandleResidentARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsTextureHandleResidentARB(handle);
   return ret;
@@ -10635,7 +10635,7 @@ static void REGAL_CALL statistics_glMakeImageHandleNonResidentARB(GLuint64 handl
   Statistics &statistics = *_context->statistics;
   statistics.glMakeImageHandleNonResidentARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeImageHandleNonResidentARB(handle);
 }
@@ -10649,7 +10649,7 @@ static void REGAL_CALL statistics_glMakeImageHandleResidentARB(GLuint64 handle, 
   Statistics &statistics = *_context->statistics;
   statistics.glMakeImageHandleResidentARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeImageHandleResidentARB(handle, access);
 }
@@ -10663,7 +10663,7 @@ static void REGAL_CALL statistics_glMakeTextureHandleNonResidentARB(GLuint64 han
   Statistics &statistics = *_context->statistics;
   statistics.glMakeTextureHandleNonResidentARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeTextureHandleNonResidentARB(handle);
 }
@@ -10677,7 +10677,7 @@ static void REGAL_CALL statistics_glMakeTextureHandleResidentARB(GLuint64 handle
   Statistics &statistics = *_context->statistics;
   statistics.glMakeTextureHandleResidentARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeTextureHandleResidentARB(handle);
 }
@@ -10691,7 +10691,7 @@ static void REGAL_CALL statistics_glProgramUniformHandleui64ARB(GLuint program, 
   Statistics &statistics = *_context->statistics;
   statistics.glProgramUniformHandleui64ARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformHandleui64ARB(program, location, value);
 }
@@ -10705,7 +10705,7 @@ static void REGAL_CALL statistics_glProgramUniformHandleui64vARB(GLuint program,
   Statistics &statistics = *_context->statistics;
   statistics.glProgramUniformHandleui64vARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformHandleui64vARB(program, location, count, values);
 }
@@ -10719,7 +10719,7 @@ static void REGAL_CALL statistics_glUniformHandleui64ARB(GLint location, GLuint6
   Statistics &statistics = *_context->statistics;
   statistics.glUniformHandleui64ARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformHandleui64ARB(location, value);
 }
@@ -10733,7 +10733,7 @@ static void REGAL_CALL statistics_glUniformHandleui64vARB(GLint location, GLsize
   Statistics &statistics = *_context->statistics;
   statistics.glUniformHandleui64vARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformHandleui64vARB(location, count, value);
 }
@@ -10747,7 +10747,7 @@ static void REGAL_CALL statistics_glVertexAttribL1ui64ARB(GLuint index, GLuint64
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribL1ui64ARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1ui64ARB(index, x);
 }
@@ -10761,7 +10761,7 @@ static void REGAL_CALL statistics_glVertexAttribL1ui64vARB(GLuint index, const G
   Statistics &statistics = *_context->statistics;
   statistics.glVertexAttribL1ui64vARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1ui64vARB(index, v);
 }
@@ -10779,7 +10779,7 @@ static void REGAL_CALL statistics_glBindFragDataLocationIndexed(GLuint program, 
 
   statistics.gl_arb_blend_func_extended++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindFragDataLocationIndexed(program, colorNumber, index, name);
 }
@@ -10795,7 +10795,7 @@ static GLint REGAL_CALL statistics_glGetFragDataIndex(GLuint program, const GLch
 
   statistics.gl_arb_blend_func_extended++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetFragDataIndex(program, name);
   return ret;
@@ -10812,7 +10812,7 @@ static void REGAL_CALL statistics_glBufferStorage(GLenum target, GLsizeiptr size
   Statistics &statistics = *_context->statistics;
   statistics.glBufferStorage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBufferStorage(target, size, data, flags);
 }
@@ -10826,7 +10826,7 @@ static void REGAL_CALL statistics_glNamedBufferStorageEXT(GLuint buffer, GLsizei
   Statistics &statistics = *_context->statistics;
   statistics.glNamedBufferStorageEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedBufferStorageEXT(buffer, size, data, flags);
 }
@@ -10844,7 +10844,7 @@ static GLsync REGAL_CALL statistics_glCreateSyncFromCLeventARB(cl_context contex
 
   statistics.gl_arb_cl_event++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLsync  ret = _next->glCreateSyncFromCLeventARB(context, event, flags);
   return ret;
@@ -10863,7 +10863,7 @@ static void REGAL_CALL statistics_glClearBufferData(GLenum target, GLenum intern
 
   statistics.gl_arb_clear_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearBufferData(target, internalformat, format, type, data);
 }
@@ -10879,7 +10879,7 @@ static void REGAL_CALL statistics_glClearBufferSubData(GLenum target, GLenum int
 
   statistics.gl_arb_clear_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearBufferSubData(target, internalformat, offset, size, format, type, data);
 }
@@ -10895,7 +10895,7 @@ static void REGAL_CALL statistics_glClearNamedBufferDataEXT(GLuint buffer, GLenu
 
   statistics.gl_arb_clear_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearNamedBufferDataEXT(buffer, internalformat, format, type, data);
 }
@@ -10911,7 +10911,7 @@ static void REGAL_CALL statistics_glClearNamedBufferSubDataEXT(GLuint buffer, GL
 
   statistics.gl_arb_clear_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearNamedBufferSubDataEXT(buffer, internalformat, offset, size, format, type, data);
 }
@@ -10929,7 +10929,7 @@ static void REGAL_CALL statistics_glClearTexImage(GLuint texture, GLint level, G
 
   statistics.gl_arb_clear_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearTexImage(texture, level, format, type, data);
 }
@@ -10945,7 +10945,7 @@ static void REGAL_CALL statistics_glClearTexSubImage(GLuint texture, GLint level
 
   statistics.gl_arb_clear_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth, format, type, data);
 }
@@ -10963,7 +10963,7 @@ static void REGAL_CALL statistics_glClampColorARB(GLenum target, GLenum clamp)
 
   statistics.gl_arb_color_buffer_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClampColorARB(target, clamp);
 }
@@ -10981,7 +10981,7 @@ static void REGAL_CALL statistics_glDispatchCompute(GLuint num_groups_x, GLuint 
 
   statistics.gl_arb_compute_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDispatchCompute(num_groups_x, num_groups_y, num_groups_z);
 }
@@ -10997,7 +10997,7 @@ static void REGAL_CALL statistics_glDispatchComputeIndirect(GLintptr indirect)
 
   statistics.gl_arb_compute_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDispatchComputeIndirect(indirect);
 }
@@ -11013,7 +11013,7 @@ static void REGAL_CALL statistics_glDispatchComputeGroupSizeARB(GLuint num_group
   Statistics &statistics = *_context->statistics;
   statistics.glDispatchComputeGroupSizeARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDispatchComputeGroupSizeARB(num_groups_x, num_groups_y, num_groups_z, group_size_x, group_size_y, group_size_z);
 }
@@ -11031,7 +11031,7 @@ static void REGAL_CALL statistics_glCopyBufferSubData(GLenum readtarget, GLenum 
 
   statistics.gl_arb_copy_buffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyBufferSubData(readtarget, writetarget, readoffset, writeoffset, size);
 }
@@ -11049,7 +11049,7 @@ static void REGAL_CALL statistics_glCopyImageSubData(GLuint srcName, GLenum srcT
 
   statistics.gl_arb_copy_image++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyImageSubData(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, srcWidth, srcHeight, srcDepth);
 }
@@ -11067,7 +11067,7 @@ static void REGAL_CALL statistics_glDebugMessageCallbackARB(GLDEBUGPROCARB callb
 
   statistics.gl_arb_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageCallbackARB(callback, userParam);
 }
@@ -11083,7 +11083,7 @@ static void REGAL_CALL statistics_glDebugMessageControlARB(GLenum source, GLenum
 
   statistics.gl_arb_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageControlARB(source, type, severity, count, ids, enabled);
 }
@@ -11099,7 +11099,7 @@ static void REGAL_CALL statistics_glDebugMessageInsertARB(GLenum source, GLenum 
 
   statistics.gl_arb_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageInsertARB(source, type, id, severity, length, buf);
 }
@@ -11115,7 +11115,7 @@ static GLuint REGAL_CALL statistics_glGetDebugMessageLogARB(GLuint count, GLsize
 
   statistics.gl_arb_debug_output++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGetDebugMessageLogARB(count, bufsize, sources, types, ids, severities, lengths, messageLog);
   return ret;
@@ -11134,7 +11134,7 @@ static void REGAL_CALL statistics_glDrawBuffersARB(GLsizei n, const GLenum *bufs
 
   statistics.gl_arb_draw_buffers++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawBuffersARB(n, bufs);
 }
@@ -11152,7 +11152,7 @@ static void REGAL_CALL statistics_glBlendEquationSeparateiARB(GLuint buf, GLenum
 
   statistics.gl_arb_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationSeparateiARB(buf, modeRGB, modeAlpha);
 }
@@ -11168,7 +11168,7 @@ static void REGAL_CALL statistics_glBlendEquationiARB(GLuint buf, GLenum mode)
 
   statistics.gl_arb_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationiARB(buf, mode);
 }
@@ -11184,7 +11184,7 @@ static void REGAL_CALL statistics_glBlendFuncSeparateiARB(GLuint buf, GLenum src
 
   statistics.gl_arb_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncSeparateiARB(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
 }
@@ -11200,7 +11200,7 @@ static void REGAL_CALL statistics_glBlendFunciARB(GLuint buf, GLenum src, GLenum
 
   statistics.gl_arb_draw_buffers_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFunciARB(buf, src, dst);
 }
@@ -11218,7 +11218,7 @@ static void REGAL_CALL statistics_glDrawElementsBaseVertex(GLenum mode, GLsizei 
 
   statistics.gl_arb_draw_elements_base_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
 }
@@ -11234,7 +11234,7 @@ static void REGAL_CALL statistics_glDrawElementsInstancedBaseVertex(GLenum mode,
 
   statistics.gl_arb_draw_elements_base_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
 }
@@ -11250,7 +11250,7 @@ static void REGAL_CALL statistics_glDrawRangeElementsBaseVertex(GLenum mode, GLu
 
   statistics.gl_arb_draw_elements_base_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
 }
@@ -11266,7 +11266,7 @@ static void REGAL_CALL statistics_glMultiDrawElementsBaseVertex(GLenum mode, con
 
   statistics.gl_arb_draw_elements_base_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
 }
@@ -11284,7 +11284,7 @@ static void REGAL_CALL statistics_glDrawArraysIndirect(GLenum mode, const GLvoid
 
   statistics.gl_arb_draw_indirect++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArraysIndirect(mode, indirect);
 }
@@ -11300,7 +11300,7 @@ static void REGAL_CALL statistics_glDrawElementsIndirect(GLenum mode, GLenum typ
 
   statistics.gl_arb_draw_indirect++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsIndirect(mode, type, indirect);
 }
@@ -11318,7 +11318,7 @@ static void REGAL_CALL statistics_glDrawArraysInstancedARB(GLenum mode, GLint st
 
   statistics.gl_arb_instanced_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArraysInstancedARB(mode, start, count, primcount);
 }
@@ -11334,7 +11334,7 @@ static void REGAL_CALL statistics_glDrawElementsInstancedARB(GLenum mode, GLsize
 
   statistics.gl_arb_instanced_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsInstancedARB(mode, count, type, indices, primcount);
 }
@@ -11352,7 +11352,7 @@ static void REGAL_CALL statistics_glFramebufferParameteri(GLenum target, GLenum 
 
   statistics.gl_arb_framebuffer_no_attachments++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferParameteri(target, pname, param);
 }
@@ -11368,7 +11368,7 @@ static void REGAL_CALL statistics_glGetFramebufferParameteriv(GLenum target, GLe
 
   statistics.gl_arb_framebuffer_no_attachments++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFramebufferParameteriv(target, pname, params);
 }
@@ -11384,7 +11384,7 @@ static void REGAL_CALL statistics_glGetNamedFramebufferParameterivEXT(GLuint fra
 
   statistics.gl_arb_framebuffer_no_attachments++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedFramebufferParameterivEXT(framebuffer, pname, params);
 }
@@ -11400,7 +11400,7 @@ static void REGAL_CALL statistics_glNamedFramebufferParameteriEXT(GLuint framebu
 
   statistics.gl_arb_framebuffer_no_attachments++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferParameteriEXT(framebuffer, pname, param);
 }
@@ -11418,7 +11418,7 @@ static void REGAL_CALL statistics_glBindFramebuffer(GLenum target, GLuint frameb
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindFramebuffer(target, framebuffer);
 }
@@ -11434,7 +11434,7 @@ static void REGAL_CALL statistics_glBindRenderbuffer(GLenum target, GLuint rende
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindRenderbuffer(target, renderbuffer);
 }
@@ -11450,7 +11450,7 @@ static void REGAL_CALL statistics_glBlitFramebuffer(GLint srcX0, GLint srcY0, GL
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
@@ -11466,7 +11466,7 @@ static GLenum REGAL_CALL statistics_glCheckFramebufferStatus(GLenum target)
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glCheckFramebufferStatus(target);
   return ret;
@@ -11483,7 +11483,7 @@ static void REGAL_CALL statistics_glDeleteFramebuffers(GLsizei n, const GLuint *
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteFramebuffers(n, framebuffers);
 }
@@ -11499,7 +11499,7 @@ static void REGAL_CALL statistics_glDeleteRenderbuffers(GLsizei n, const GLuint 
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteRenderbuffers(n, renderbuffers);
 }
@@ -11515,7 +11515,7 @@ static void REGAL_CALL statistics_glFramebufferRenderbuffer(GLenum target, GLenu
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
 }
@@ -11531,7 +11531,7 @@ static void REGAL_CALL statistics_glFramebufferTexture1D(GLenum target, GLenum a
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture1D(target, attachment, textarget, texture, level);
 }
@@ -11547,7 +11547,7 @@ static void REGAL_CALL statistics_glFramebufferTexture2D(GLenum target, GLenum a
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture2D(target, attachment, textarget, texture, level);
 }
@@ -11563,7 +11563,7 @@ static void REGAL_CALL statistics_glFramebufferTexture3D(GLenum target, GLenum a
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture3D(target, attachment, textarget, texture, level, layer);
 }
@@ -11579,7 +11579,7 @@ static void REGAL_CALL statistics_glFramebufferTextureLayer(GLenum target, GLenu
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureLayer(target, attachment, texture, level, layer);
 }
@@ -11595,7 +11595,7 @@ static void REGAL_CALL statistics_glGenFramebuffers(GLsizei n, GLuint *framebuff
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenFramebuffers(n, framebuffers);
 }
@@ -11611,7 +11611,7 @@ static void REGAL_CALL statistics_glGenRenderbuffers(GLsizei n, GLuint *renderbu
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenRenderbuffers(n, renderbuffers);
 }
@@ -11627,7 +11627,7 @@ static void REGAL_CALL statistics_glGenerateMipmap(GLenum target)
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenerateMipmap(target);
 }
@@ -11643,7 +11643,7 @@ static void REGAL_CALL statistics_glGetFramebufferAttachmentParameteriv(GLenum t
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
 }
@@ -11659,7 +11659,7 @@ static void REGAL_CALL statistics_glGetRenderbufferParameteriv(GLenum target, GL
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetRenderbufferParameteriv(target, pname, params);
 }
@@ -11675,7 +11675,7 @@ static GLboolean REGAL_CALL statistics_glIsFramebuffer(GLuint framebuffer)
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsFramebuffer(framebuffer);
   return ret;
@@ -11692,7 +11692,7 @@ static GLboolean REGAL_CALL statistics_glIsRenderbuffer(GLuint renderbuffer)
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsRenderbuffer(renderbuffer);
   return ret;
@@ -11709,7 +11709,7 @@ static void REGAL_CALL statistics_glRenderbufferStorage(GLenum target, GLenum in
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorage(target, internalformat, width, height);
 }
@@ -11725,7 +11725,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageMultisample(GLenum target
 
   statistics.gl_arb_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageMultisample(target, samples, internalformat, width, height);
 }
@@ -11743,7 +11743,7 @@ static void REGAL_CALL statistics_glFramebufferTextureARB(GLenum target, GLenum 
 
   statistics.gl_arb_geometry_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureARB(target, attachment, texture, level);
 }
@@ -11759,7 +11759,7 @@ static void REGAL_CALL statistics_glFramebufferTextureFaceARB(GLenum target, GLe
 
   statistics.gl_arb_geometry_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureFaceARB(target, attachment, texture, level, face);
 }
@@ -11775,7 +11775,7 @@ static void REGAL_CALL statistics_glFramebufferTextureLayerARB(GLenum target, GL
 
   statistics.gl_arb_geometry_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureLayerARB(target, attachment, texture, level, layer);
 }
@@ -11791,7 +11791,7 @@ static void REGAL_CALL statistics_glProgramParameteriARB(GLuint program, GLenum 
 
   statistics.gl_arb_geometry_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameteriARB(program, pname, value);
 }
@@ -11809,7 +11809,7 @@ static void REGAL_CALL statistics_glGetProgramBinary(GLuint program, GLsizei buf
 
   statistics.gl_arb_get_program_binary++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramBinary(program, bufSize, length, binaryFormat, binary);
 }
@@ -11825,7 +11825,7 @@ static void REGAL_CALL statistics_glProgramBinary(GLuint program, GLenum binaryF
 
   statistics.gl_arb_get_program_binary++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramBinary(program, binaryFormat, binary, length);
 }
@@ -11841,7 +11841,7 @@ static void REGAL_CALL statistics_glProgramParameteri(GLuint program, GLenum pna
 
   statistics.gl_arb_get_program_binary++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameteri(program, pname, value);
 }
@@ -11859,7 +11859,7 @@ static void REGAL_CALL statistics_glGetUniformdv(GLuint program, GLint location,
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformdv(program, location, params);
 }
@@ -11875,7 +11875,7 @@ static void REGAL_CALL statistics_glUniform1d(GLint location, GLdouble x)
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1d(location, x);
 }
@@ -11891,7 +11891,7 @@ static void REGAL_CALL statistics_glUniform1dv(GLint location, GLsizei count, co
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1dv(location, count, value);
 }
@@ -11907,7 +11907,7 @@ static void REGAL_CALL statistics_glUniform2d(GLint location, GLdouble x, GLdoub
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2d(location, x, y);
 }
@@ -11923,7 +11923,7 @@ static void REGAL_CALL statistics_glUniform2dv(GLint location, GLsizei count, co
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2dv(location, count, value);
 }
@@ -11939,7 +11939,7 @@ static void REGAL_CALL statistics_glUniform3d(GLint location, GLdouble x, GLdoub
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3d(location, x, y, z);
 }
@@ -11955,7 +11955,7 @@ static void REGAL_CALL statistics_glUniform3dv(GLint location, GLsizei count, co
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3dv(location, count, value);
 }
@@ -11971,7 +11971,7 @@ static void REGAL_CALL statistics_glUniform4d(GLint location, GLdouble x, GLdoub
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4d(location, x, y, z, w);
 }
@@ -11987,7 +11987,7 @@ static void REGAL_CALL statistics_glUniform4dv(GLint location, GLsizei count, co
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4dv(location, count, value);
 }
@@ -12003,7 +12003,7 @@ static void REGAL_CALL statistics_glUniformMatrix2dv(GLint location, GLsizei cou
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2dv(location, count, transpose, value);
 }
@@ -12019,7 +12019,7 @@ static void REGAL_CALL statistics_glUniformMatrix2x3dv(GLint location, GLsizei c
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2x3dv(location, count, transpose, value);
 }
@@ -12035,7 +12035,7 @@ static void REGAL_CALL statistics_glUniformMatrix2x4dv(GLint location, GLsizei c
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2x4dv(location, count, transpose, value);
 }
@@ -12051,7 +12051,7 @@ static void REGAL_CALL statistics_glUniformMatrix3dv(GLint location, GLsizei cou
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3dv(location, count, transpose, value);
 }
@@ -12067,7 +12067,7 @@ static void REGAL_CALL statistics_glUniformMatrix3x2dv(GLint location, GLsizei c
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3x2dv(location, count, transpose, value);
 }
@@ -12083,7 +12083,7 @@ static void REGAL_CALL statistics_glUniformMatrix3x4dv(GLint location, GLsizei c
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3x4dv(location, count, transpose, value);
 }
@@ -12099,7 +12099,7 @@ static void REGAL_CALL statistics_glUniformMatrix4dv(GLint location, GLsizei cou
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4dv(location, count, transpose, value);
 }
@@ -12115,7 +12115,7 @@ static void REGAL_CALL statistics_glUniformMatrix4x2dv(GLint location, GLsizei c
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4x2dv(location, count, transpose, value);
 }
@@ -12131,7 +12131,7 @@ static void REGAL_CALL statistics_glUniformMatrix4x3dv(GLint location, GLsizei c
 
   statistics.gl_arb_gpu_shader_fp64++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4x3dv(location, count, transpose, value);
 }
@@ -12149,7 +12149,7 @@ static void REGAL_CALL statistics_glColorSubTable(GLenum target, GLsizei start, 
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorSubTable(target, start, count, format, type, data);
 }
@@ -12165,7 +12165,7 @@ static void REGAL_CALL statistics_glColorTable(GLenum target, GLenum internalfor
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorTable(target, internalformat, width, format, type, table);
 }
@@ -12181,7 +12181,7 @@ static void REGAL_CALL statistics_glColorTableParameterfv(GLenum target, GLenum 
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorTableParameterfv(target, pname, params);
 }
@@ -12197,7 +12197,7 @@ static void REGAL_CALL statistics_glColorTableParameteriv(GLenum target, GLenum 
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorTableParameteriv(target, pname, params);
 }
@@ -12213,7 +12213,7 @@ static void REGAL_CALL statistics_glConvolutionFilter1D(GLenum target, GLenum in
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionFilter1D(target, internalformat, width, format, type, image);
 }
@@ -12229,7 +12229,7 @@ static void REGAL_CALL statistics_glConvolutionFilter2D(GLenum target, GLenum in
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionFilter2D(target, internalformat, width, height, format, type, image);
 }
@@ -12245,7 +12245,7 @@ static void REGAL_CALL statistics_glConvolutionParameterf(GLenum target, GLenum 
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameterf(target, pname, params);
 }
@@ -12261,7 +12261,7 @@ static void REGAL_CALL statistics_glConvolutionParameterfv(GLenum target, GLenum
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameterfv(target, pname, params);
 }
@@ -12277,7 +12277,7 @@ static void REGAL_CALL statistics_glConvolutionParameteri(GLenum target, GLenum 
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameteri(target, pname, params);
 }
@@ -12293,7 +12293,7 @@ static void REGAL_CALL statistics_glConvolutionParameteriv(GLenum target, GLenum
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameteriv(target, pname, params);
 }
@@ -12309,7 +12309,7 @@ static void REGAL_CALL statistics_glCopyColorSubTable(GLenum target, GLsizei sta
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyColorSubTable(target, start, x, y, width);
 }
@@ -12325,7 +12325,7 @@ static void REGAL_CALL statistics_glCopyColorTable(GLenum target, GLenum interna
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyColorTable(target, internalformat, x, y, width);
 }
@@ -12341,7 +12341,7 @@ static void REGAL_CALL statistics_glCopyConvolutionFilter1D(GLenum target, GLenu
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyConvolutionFilter1D(target, internalformat, x, y, width);
 }
@@ -12357,7 +12357,7 @@ static void REGAL_CALL statistics_glCopyConvolutionFilter2D(GLenum target, GLenu
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyConvolutionFilter2D(target, internalformat, x, y, width, height);
 }
@@ -12373,7 +12373,7 @@ static void REGAL_CALL statistics_glGetColorTable(GLenum target, GLenum format, 
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTable(target, format, type, table);
 }
@@ -12389,7 +12389,7 @@ static void REGAL_CALL statistics_glGetColorTableParameterfv(GLenum target, GLen
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableParameterfv(target, pname, params);
 }
@@ -12405,7 +12405,7 @@ static void REGAL_CALL statistics_glGetColorTableParameteriv(GLenum target, GLen
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableParameteriv(target, pname, params);
 }
@@ -12421,7 +12421,7 @@ static void REGAL_CALL statistics_glGetConvolutionFilter(GLenum target, GLenum f
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetConvolutionFilter(target, format, type, image);
 }
@@ -12437,7 +12437,7 @@ static void REGAL_CALL statistics_glGetConvolutionParameterfv(GLenum target, GLe
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetConvolutionParameterfv(target, pname, params);
 }
@@ -12453,7 +12453,7 @@ static void REGAL_CALL statistics_glGetConvolutionParameteriv(GLenum target, GLe
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetConvolutionParameteriv(target, pname, params);
 }
@@ -12469,7 +12469,7 @@ static void REGAL_CALL statistics_glGetHistogram(GLenum target, GLboolean reset,
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetHistogram(target, reset, format, type, values);
 }
@@ -12485,7 +12485,7 @@ static void REGAL_CALL statistics_glGetHistogramParameterfv(GLenum target, GLenu
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetHistogramParameterfv(target, pname, params);
 }
@@ -12501,7 +12501,7 @@ static void REGAL_CALL statistics_glGetHistogramParameteriv(GLenum target, GLenu
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetHistogramParameteriv(target, pname, params);
 }
@@ -12517,7 +12517,7 @@ static void REGAL_CALL statistics_glGetMinmax(GLenum target, GLboolean reset, GL
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMinmax(target, reset, format, types, values);
 }
@@ -12533,7 +12533,7 @@ static void REGAL_CALL statistics_glGetMinmaxParameterfv(GLenum target, GLenum p
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMinmaxParameterfv(target, pname, params);
 }
@@ -12549,7 +12549,7 @@ static void REGAL_CALL statistics_glGetMinmaxParameteriv(GLenum target, GLenum p
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMinmaxParameteriv(target, pname, params);
 }
@@ -12565,7 +12565,7 @@ static void REGAL_CALL statistics_glGetSeparableFilter(GLenum target, GLenum for
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSeparableFilter(target, format, type, row, column, span);
 }
@@ -12581,7 +12581,7 @@ static void REGAL_CALL statistics_glHistogram(GLenum target, GLsizei width, GLen
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glHistogram(target, width, internalformat, sink);
 }
@@ -12597,7 +12597,7 @@ static void REGAL_CALL statistics_glMinmax(GLenum target, GLenum internalformat,
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMinmax(target, internalformat, sink);
 }
@@ -12613,7 +12613,7 @@ static void REGAL_CALL statistics_glResetHistogram(GLenum target)
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResetHistogram(target);
 }
@@ -12629,7 +12629,7 @@ static void REGAL_CALL statistics_glResetMinmax(GLenum target)
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResetMinmax(target);
 }
@@ -12645,7 +12645,7 @@ static void REGAL_CALL statistics_glSeparableFilter2D(GLenum target, GLenum inte
 
   statistics.gl_arb_imaging++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSeparableFilter2D(target, internalformat, width, height, format, type, row, column);
 }
@@ -12663,7 +12663,7 @@ static void REGAL_CALL statistics_glMultiDrawArraysIndirectCountARB(GLenum mode,
 
   statistics.gl_arb_indirect_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawArraysIndirectCountARB(mode, indirect, drawcount, maxdrawcount, stride);
 }
@@ -12679,7 +12679,7 @@ static void REGAL_CALL statistics_glMultiDrawElementsIndirectCountARB(GLenum mod
 
   statistics.gl_arb_indirect_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawElementsIndirectCountARB(mode, type, indirect, drawcount, maxdrawcount, stride);
 }
@@ -12697,7 +12697,7 @@ static void REGAL_CALL statistics_glVertexAttribDivisorARB(GLuint index, GLuint 
 
   statistics.gl_arb_instanced_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribDivisorARB(index, divisor);
 }
@@ -12715,7 +12715,7 @@ static void REGAL_CALL statistics_glGetInternalformativ(GLenum target, GLenum in
 
   statistics.gl_arb_internalformat_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInternalformativ(target, internalformat, pname, bufSize, params);
 }
@@ -12733,7 +12733,7 @@ static void REGAL_CALL statistics_glGetInternalformati64v(GLenum target, GLenum 
 
   statistics.gl_arb_internalformat_query2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInternalformati64v(target, internalformat, pname, bufSize, params);
 }
@@ -12751,7 +12751,7 @@ static void REGAL_CALL statistics_glInvalidateBufferData(GLuint buffer)
 
   statistics.gl_arb_invalidate_subdata++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInvalidateBufferData(buffer);
 }
@@ -12767,7 +12767,7 @@ static void REGAL_CALL statistics_glInvalidateBufferSubData(GLuint buffer, GLint
 
   statistics.gl_arb_invalidate_subdata++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInvalidateBufferSubData(buffer, offset, length);
 }
@@ -12783,7 +12783,7 @@ static void REGAL_CALL statistics_glInvalidateFramebuffer(GLenum target, GLsizei
 
   statistics.gl_arb_invalidate_subdata++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInvalidateFramebuffer(target, numAttachments, attachments);
 }
@@ -12799,7 +12799,7 @@ static void REGAL_CALL statistics_glInvalidateSubFramebuffer(GLenum target, GLsi
 
   statistics.gl_arb_invalidate_subdata++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInvalidateSubFramebuffer(target, numAttachments, attachments, x, y, width, height);
 }
@@ -12815,7 +12815,7 @@ static void REGAL_CALL statistics_glInvalidateTexImage(GLuint texture, GLint lev
 
   statistics.gl_arb_invalidate_subdata++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInvalidateTexImage(texture, level);
 }
@@ -12831,7 +12831,7 @@ static void REGAL_CALL statistics_glInvalidateTexSubImage(GLuint texture, GLint 
 
   statistics.gl_arb_invalidate_subdata++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInvalidateTexSubImage(texture, level, xoffset, yoffset, zoffset, width, height, depth);
 }
@@ -12849,7 +12849,7 @@ static void REGAL_CALL statistics_glFlushMappedBufferRange(GLenum target, GLintp
 
   statistics.gl_arb_map_buffer_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushMappedBufferRange(target, offset, length);
 }
@@ -12863,7 +12863,7 @@ static GLvoid *REGAL_CALL statistics_glMapBufferRange(GLenum target, GLintptr of
   Statistics &statistics = *_context->statistics;
   statistics.glMapBufferRange++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapBufferRange(target, offset, length, access);
   return ret;
@@ -12882,7 +12882,7 @@ static void REGAL_CALL statistics_glCurrentPaletteMatrixARB(GLint index)
 
   statistics.gl_arb_matrix_palette++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCurrentPaletteMatrixARB(index);
 }
@@ -12898,7 +12898,7 @@ static void REGAL_CALL statistics_glMatrixIndexPointerARB(GLint size, GLenum typ
 
   statistics.gl_arb_matrix_palette++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixIndexPointerARB(size, type, stride, pointer);
 }
@@ -12914,7 +12914,7 @@ static void REGAL_CALL statistics_glMatrixIndexubvARB(GLint size, const GLubyte 
 
   statistics.gl_arb_matrix_palette++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixIndexubvARB(size, indices);
 }
@@ -12930,7 +12930,7 @@ static void REGAL_CALL statistics_glMatrixIndexuivARB(GLint size, const GLuint *
 
   statistics.gl_arb_matrix_palette++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixIndexuivARB(size, indices);
 }
@@ -12946,7 +12946,7 @@ static void REGAL_CALL statistics_glMatrixIndexusvARB(GLint size, const GLushort
 
   statistics.gl_arb_matrix_palette++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixIndexusvARB(size, indices);
 }
@@ -12964,7 +12964,7 @@ static void REGAL_CALL statistics_glBindBuffersBase(GLenum target, GLuint first,
 
   statistics.gl_arb_multi_bind++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBuffersBase(target, first, count, buffers);
 }
@@ -12980,7 +12980,7 @@ static void REGAL_CALL statistics_glBindBuffersRange(GLenum target, GLuint first
 
   statistics.gl_arb_multi_bind++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBuffersRange(target, first, count, buffers, offsets, sizes);
 }
@@ -12996,7 +12996,7 @@ static void REGAL_CALL statistics_glBindImageTextures(GLuint first, GLsizei coun
 
   statistics.gl_arb_multi_bind++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindImageTextures(first, count, textures);
 }
@@ -13012,7 +13012,7 @@ static void REGAL_CALL statistics_glBindSamplers(GLuint first, GLsizei count, co
 
   statistics.gl_arb_multi_bind++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindSamplers(first, count, samplers);
 }
@@ -13028,7 +13028,7 @@ static void REGAL_CALL statistics_glBindTextures(GLuint first, GLsizei count, co
 
   statistics.gl_arb_multi_bind++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindTextures(first, count, textures);
 }
@@ -13044,7 +13044,7 @@ static void REGAL_CALL statistics_glBindVertexBuffers(GLuint first, GLsizei coun
 
   statistics.gl_arb_multi_bind++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVertexBuffers(first, count, buffers, offsets, strides);
 }
@@ -13062,7 +13062,7 @@ static void REGAL_CALL statistics_glMultiDrawArraysIndirect(GLenum mode, const G
 
   statistics.gl_arb_multi_draw_indirect++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
 }
@@ -13078,7 +13078,7 @@ static void REGAL_CALL statistics_glMultiDrawElementsIndirect(GLenum mode, GLenu
 
   statistics.gl_arb_multi_draw_indirect++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
 }
@@ -13096,7 +13096,7 @@ static void REGAL_CALL statistics_glSampleCoverageARB(GLclampf value, GLboolean 
 
   statistics.gl_arb_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleCoverageARB(value, invert);
 }
@@ -13114,7 +13114,7 @@ static void REGAL_CALL statistics_glActiveTextureARB(GLenum texture)
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glActiveTextureARB(texture);
 }
@@ -13130,7 +13130,7 @@ static void REGAL_CALL statistics_glClientActiveTextureARB(GLenum texture)
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClientActiveTextureARB(texture);
 }
@@ -13146,7 +13146,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1dARB(GLenum target, GLdouble s
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1dARB(target, s);
 }
@@ -13162,7 +13162,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1dvARB(GLenum target, const GLd
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1dvARB(target, v);
 }
@@ -13178,7 +13178,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1fARB(GLenum target, GLfloat s)
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1fARB(target, s);
 }
@@ -13194,7 +13194,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1fvARB(GLenum target, const GLf
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1fvARB(target, v);
 }
@@ -13210,7 +13210,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1iARB(GLenum target, GLint s)
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1iARB(target, s);
 }
@@ -13226,7 +13226,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1ivARB(GLenum target, const GLi
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1ivARB(target, v);
 }
@@ -13242,7 +13242,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1sARB(GLenum target, GLshort s)
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1sARB(target, s);
 }
@@ -13258,7 +13258,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1svARB(GLenum target, const GLs
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1svARB(target, v);
 }
@@ -13274,7 +13274,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2dARB(GLenum target, GLdouble s
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2dARB(target, s, t);
 }
@@ -13290,7 +13290,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2dvARB(GLenum target, const GLd
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2dvARB(target, v);
 }
@@ -13306,7 +13306,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2fARB(GLenum target, GLfloat s,
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2fARB(target, s, t);
 }
@@ -13322,7 +13322,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2fvARB(GLenum target, const GLf
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2fvARB(target, v);
 }
@@ -13338,7 +13338,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2iARB(GLenum target, GLint s, G
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2iARB(target, s, t);
 }
@@ -13354,7 +13354,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2ivARB(GLenum target, const GLi
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2ivARB(target, v);
 }
@@ -13370,7 +13370,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2sARB(GLenum target, GLshort s,
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2sARB(target, s, t);
 }
@@ -13386,7 +13386,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2svARB(GLenum target, const GLs
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2svARB(target, v);
 }
@@ -13402,7 +13402,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3dARB(GLenum target, GLdouble s
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3dARB(target, s, t, r);
 }
@@ -13418,7 +13418,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3dvARB(GLenum target, const GLd
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3dvARB(target, v);
 }
@@ -13434,7 +13434,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3fARB(GLenum target, GLfloat s,
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3fARB(target, s, t, r);
 }
@@ -13450,7 +13450,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3fvARB(GLenum target, const GLf
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3fvARB(target, v);
 }
@@ -13466,7 +13466,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3iARB(GLenum target, GLint s, G
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3iARB(target, s, t, r);
 }
@@ -13482,7 +13482,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3ivARB(GLenum target, const GLi
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3ivARB(target, v);
 }
@@ -13498,7 +13498,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3sARB(GLenum target, GLshort s,
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3sARB(target, s, t, r);
 }
@@ -13514,7 +13514,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3svARB(GLenum target, const GLs
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3svARB(target, v);
 }
@@ -13530,7 +13530,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4dARB(GLenum target, GLdouble s
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4dARB(target, s, t, r, q);
 }
@@ -13546,7 +13546,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4dvARB(GLenum target, const GLd
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4dvARB(target, v);
 }
@@ -13562,7 +13562,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4fARB(GLenum target, GLfloat s,
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4fARB(target, s, t, r, q);
 }
@@ -13578,7 +13578,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4fvARB(GLenum target, const GLf
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4fvARB(target, v);
 }
@@ -13594,7 +13594,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4iARB(GLenum target, GLint s, G
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4iARB(target, s, t, r, q);
 }
@@ -13610,7 +13610,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4ivARB(GLenum target, const GLi
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4ivARB(target, v);
 }
@@ -13626,7 +13626,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4sARB(GLenum target, GLshort s,
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4sARB(target, s, t, r, q);
 }
@@ -13642,7 +13642,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4svARB(GLenum target, const GLs
 
   statistics.gl_arb_multitexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4svARB(target, v);
 }
@@ -13660,7 +13660,7 @@ static void REGAL_CALL statistics_glBeginQueryARB(GLenum target, GLuint id)
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginQueryARB(target, id);
 }
@@ -13676,7 +13676,7 @@ static void REGAL_CALL statistics_glDeleteQueriesARB(GLsizei n, const GLuint *id
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteQueriesARB(n, ids);
 }
@@ -13692,7 +13692,7 @@ static void REGAL_CALL statistics_glEndQueryARB(GLenum target)
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndQueryARB(target);
 }
@@ -13708,7 +13708,7 @@ static void REGAL_CALL statistics_glGenQueriesARB(GLsizei n, GLuint *ids)
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenQueriesARB(n, ids);
 }
@@ -13724,7 +13724,7 @@ static void REGAL_CALL statistics_glGetQueryObjectivARB(GLuint id, GLenum pname,
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectivARB(id, pname, params);
 }
@@ -13740,7 +13740,7 @@ static void REGAL_CALL statistics_glGetQueryObjectuivARB(GLuint id, GLenum pname
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectuivARB(id, pname, params);
 }
@@ -13756,7 +13756,7 @@ static void REGAL_CALL statistics_glGetQueryivARB(GLenum target, GLenum pname, G
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryivARB(target, pname, params);
 }
@@ -13772,7 +13772,7 @@ static GLboolean REGAL_CALL statistics_glIsQueryARB(GLuint id)
 
   statistics.gl_arb_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsQueryARB(id);
   return ret;
@@ -13791,7 +13791,7 @@ static void REGAL_CALL statistics_glPointParameterfARB(GLenum pname, GLfloat par
 
   statistics.gl_arb_point_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterfARB(pname, param);
 }
@@ -13807,7 +13807,7 @@ static void REGAL_CALL statistics_glPointParameterfvARB(GLenum pname, const GLfl
 
   statistics.gl_arb_point_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterfvARB(pname, params);
 }
@@ -13825,7 +13825,7 @@ static void REGAL_CALL statistics_glGetProgramInterfaceiv(GLuint program, GLenum
 
   statistics.gl_arb_program_interface_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramInterfaceiv(program, programInterface, pname, params);
 }
@@ -13841,7 +13841,7 @@ static GLuint REGAL_CALL statistics_glGetProgramResourceIndex(GLuint program, GL
 
   statistics.gl_arb_program_interface_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGetProgramResourceIndex(program, programInterface, name);
   return ret;
@@ -13858,7 +13858,7 @@ static GLint REGAL_CALL statistics_glGetProgramResourceLocation(GLuint program, 
 
   statistics.gl_arb_program_interface_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetProgramResourceLocation(program, programInterface, name);
   return ret;
@@ -13875,7 +13875,7 @@ static GLint REGAL_CALL statistics_glGetProgramResourceLocationIndex(GLuint prog
 
   statistics.gl_arb_program_interface_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetProgramResourceLocationIndex(program, programInterface, name);
   return ret;
@@ -13892,7 +13892,7 @@ static void REGAL_CALL statistics_glGetProgramResourceName(GLuint program, GLenu
 
   statistics.gl_arb_program_interface_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramResourceName(program, programInterface, index, bufSize, length, name);
 }
@@ -13908,7 +13908,7 @@ static void REGAL_CALL statistics_glGetProgramResourceiv(GLuint program, GLenum 
 
   statistics.gl_arb_program_interface_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramResourceiv(program, programInterface, index, propCount, props, bufSize, length, params);
 }
@@ -13926,7 +13926,7 @@ static void REGAL_CALL statistics_glProvokingVertex(GLenum mode)
 
   statistics.gl_arb_provoking_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProvokingVertex(mode);
 }
@@ -13944,7 +13944,7 @@ static GLenum REGAL_CALL statistics_glGetGraphicsResetStatusARB(void)
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glGetGraphicsResetStatusARB();
   return ret;
@@ -13961,7 +13961,7 @@ static void REGAL_CALL statistics_glGetnColorTableARB(GLenum target, GLenum form
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnColorTableARB(target, format, type, bufSize, table);
 }
@@ -13977,7 +13977,7 @@ static void REGAL_CALL statistics_glGetnCompressedTexImageARB(GLenum target, GLi
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnCompressedTexImageARB(target, lod, bufSize, img);
 }
@@ -13993,7 +13993,7 @@ static void REGAL_CALL statistics_glGetnConvolutionFilterARB(GLenum target, GLen
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnConvolutionFilterARB(target, format, type, bufSize, image);
 }
@@ -14009,7 +14009,7 @@ static void REGAL_CALL statistics_glGetnHistogramARB(GLenum target, GLboolean re
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnHistogramARB(target, reset, format, type, bufSize, values);
 }
@@ -14025,7 +14025,7 @@ static void REGAL_CALL statistics_glGetnMapdvARB(GLenum target, GLenum query, GL
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnMapdvARB(target, query, bufSize, v);
 }
@@ -14041,7 +14041,7 @@ static void REGAL_CALL statistics_glGetnMapfvARB(GLenum target, GLenum query, GL
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnMapfvARB(target, query, bufSize, v);
 }
@@ -14057,7 +14057,7 @@ static void REGAL_CALL statistics_glGetnMapivARB(GLenum target, GLenum query, GL
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnMapivARB(target, query, bufSize, v);
 }
@@ -14073,7 +14073,7 @@ static void REGAL_CALL statistics_glGetnMinmaxARB(GLenum target, GLboolean reset
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnMinmaxARB(target, reset, format, type, bufSize, values);
 }
@@ -14089,7 +14089,7 @@ static void REGAL_CALL statistics_glGetnPixelMapfvARB(GLenum map, GLsizei bufSiz
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnPixelMapfvARB(map, bufSize, values);
 }
@@ -14105,7 +14105,7 @@ static void REGAL_CALL statistics_glGetnPixelMapuivARB(GLenum map, GLsizei bufSi
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnPixelMapuivARB(map, bufSize, values);
 }
@@ -14121,7 +14121,7 @@ static void REGAL_CALL statistics_glGetnPixelMapusvARB(GLenum map, GLsizei bufSi
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnPixelMapusvARB(map, bufSize, values);
 }
@@ -14137,7 +14137,7 @@ static void REGAL_CALL statistics_glGetnPolygonStippleARB(GLsizei bufSize, GLuby
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnPolygonStippleARB(bufSize, pattern);
 }
@@ -14153,7 +14153,7 @@ static void REGAL_CALL statistics_glGetnSeparableFilterARB(GLenum target, GLenum
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnSeparableFilterARB(target, format, type, rowBufSize, row, columnBufSize, column, span);
 }
@@ -14169,7 +14169,7 @@ static void REGAL_CALL statistics_glGetnTexImageARB(GLenum target, GLint level, 
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnTexImageARB(target, level, format, type, bufSize, img);
 }
@@ -14185,7 +14185,7 @@ static void REGAL_CALL statistics_glGetnUniformdvARB(GLuint program, GLint locat
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnUniformdvARB(program, location, bufSize, params);
 }
@@ -14201,7 +14201,7 @@ static void REGAL_CALL statistics_glGetnUniformfvARB(GLuint program, GLint locat
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnUniformfvARB(program, location, bufSize, params);
 }
@@ -14217,7 +14217,7 @@ static void REGAL_CALL statistics_glGetnUniformivARB(GLuint program, GLint locat
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnUniformivARB(program, location, bufSize, params);
 }
@@ -14233,7 +14233,7 @@ static void REGAL_CALL statistics_glGetnUniformuivARB(GLuint program, GLint loca
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnUniformuivARB(program, location, bufSize, params);
 }
@@ -14249,7 +14249,7 @@ static void REGAL_CALL statistics_glReadnPixelsARB(GLint x, GLint y, GLsizei wid
 
   statistics.gl_arb_robustness++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadnPixelsARB(x, y, width, height, format, type, bufSize, data);
 }
@@ -14265,7 +14265,7 @@ static void REGAL_CALL statistics_glMinSampleShading(GLclampf value)
   Statistics &statistics = *_context->statistics;
   statistics.glMinSampleShading++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMinSampleShading(value);
 }
@@ -14281,7 +14281,7 @@ static void REGAL_CALL statistics_glMinSampleShadingARB(GLclampf value)
 
   statistics.gl_arb_sample_shading++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMinSampleShadingARB(value);
 }
@@ -14299,7 +14299,7 @@ static void REGAL_CALL statistics_glBindSampler(GLuint unit, GLuint sampler)
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindSampler(unit, sampler);
 }
@@ -14315,7 +14315,7 @@ static void REGAL_CALL statistics_glDeleteSamplers(GLsizei count, const GLuint *
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteSamplers(count, samplers);
 }
@@ -14331,7 +14331,7 @@ static void REGAL_CALL statistics_glGenSamplers(GLsizei count, GLuint *samplers)
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenSamplers(count, samplers);
 }
@@ -14347,7 +14347,7 @@ static void REGAL_CALL statistics_glGetSamplerParameterIiv(GLuint sampler, GLenu
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSamplerParameterIiv(sampler, pname, params);
 }
@@ -14363,7 +14363,7 @@ static void REGAL_CALL statistics_glGetSamplerParameterIuiv(GLuint sampler, GLen
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSamplerParameterIuiv(sampler, pname, params);
 }
@@ -14379,7 +14379,7 @@ static void REGAL_CALL statistics_glGetSamplerParameterfv(GLuint sampler, GLenum
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSamplerParameterfv(sampler, pname, params);
 }
@@ -14395,7 +14395,7 @@ static void REGAL_CALL statistics_glGetSamplerParameteriv(GLuint sampler, GLenum
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSamplerParameteriv(sampler, pname, params);
 }
@@ -14411,7 +14411,7 @@ static GLboolean REGAL_CALL statistics_glIsSampler(GLuint sampler)
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsSampler(sampler);
   return ret;
@@ -14428,7 +14428,7 @@ static void REGAL_CALL statistics_glSamplerParameterIiv(GLuint sampler, GLenum p
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplerParameterIiv(sampler, pname, params);
 }
@@ -14444,7 +14444,7 @@ static void REGAL_CALL statistics_glSamplerParameterIuiv(GLuint sampler, GLenum 
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplerParameterIuiv(sampler, pname, params);
 }
@@ -14460,7 +14460,7 @@ static void REGAL_CALL statistics_glSamplerParameterf(GLuint sampler, GLenum pna
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplerParameterf(sampler, pname, param);
 }
@@ -14476,7 +14476,7 @@ static void REGAL_CALL statistics_glSamplerParameterfv(GLuint sampler, GLenum pn
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplerParameterfv(sampler, pname, params);
 }
@@ -14492,7 +14492,7 @@ static void REGAL_CALL statistics_glSamplerParameteri(GLuint sampler, GLenum pna
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplerParameteri(sampler, pname, param);
 }
@@ -14508,7 +14508,7 @@ static void REGAL_CALL statistics_glSamplerParameteriv(GLuint sampler, GLenum pn
 
   statistics.gl_arb_sampler_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplerParameteriv(sampler, pname, params);
 }
@@ -14526,7 +14526,7 @@ static void REGAL_CALL statistics_glActiveShaderProgram(GLuint pipeline, GLuint 
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glActiveShaderProgram(pipeline, program);
 }
@@ -14542,7 +14542,7 @@ static void REGAL_CALL statistics_glBindProgramPipeline(GLuint pipeline)
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindProgramPipeline(pipeline);
 }
@@ -14558,7 +14558,7 @@ static GLuint REGAL_CALL statistics_glCreateShaderProgramv(GLenum type, GLsizei 
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glCreateShaderProgramv(type, count, strings);
   return ret;
@@ -14575,7 +14575,7 @@ static void REGAL_CALL statistics_glDeleteProgramPipelines(GLsizei n, const GLui
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteProgramPipelines(n, pipelines);
 }
@@ -14591,7 +14591,7 @@ static void REGAL_CALL statistics_glGenProgramPipelines(GLsizei n, GLuint *pipel
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenProgramPipelines(n, pipelines);
 }
@@ -14607,7 +14607,7 @@ static void REGAL_CALL statistics_glGetProgramPipelineInfoLog(GLuint pipeline, G
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramPipelineInfoLog(pipeline, bufSize, length, infoLog);
 }
@@ -14623,7 +14623,7 @@ static void REGAL_CALL statistics_glGetProgramPipelineiv(GLuint pipeline, GLenum
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramPipelineiv(pipeline, pname, params);
 }
@@ -14639,7 +14639,7 @@ static GLboolean REGAL_CALL statistics_glIsProgramPipeline(GLuint pipeline)
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsProgramPipeline(pipeline);
   return ret;
@@ -14656,7 +14656,7 @@ static void REGAL_CALL statistics_glProgramUniform1d(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1d(program, location, x);
 }
@@ -14672,7 +14672,7 @@ static void REGAL_CALL statistics_glProgramUniform1dv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1dv(program, location, count, value);
 }
@@ -14688,7 +14688,7 @@ static void REGAL_CALL statistics_glProgramUniform1f(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1f(program, location, x);
 }
@@ -14704,7 +14704,7 @@ static void REGAL_CALL statistics_glProgramUniform1fv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1fv(program, location, count, value);
 }
@@ -14720,7 +14720,7 @@ static void REGAL_CALL statistics_glProgramUniform1i(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1i(program, location, x);
 }
@@ -14736,7 +14736,7 @@ static void REGAL_CALL statistics_glProgramUniform1iv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1iv(program, location, count, value);
 }
@@ -14752,7 +14752,7 @@ static void REGAL_CALL statistics_glProgramUniform1ui(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1ui(program, location, v0);
 }
@@ -14768,7 +14768,7 @@ static void REGAL_CALL statistics_glProgramUniform1uiv(GLuint program, GLint loc
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1uiv(program, location, count, value);
 }
@@ -14784,7 +14784,7 @@ static void REGAL_CALL statistics_glProgramUniform2d(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2d(program, location, x, y);
 }
@@ -14800,7 +14800,7 @@ static void REGAL_CALL statistics_glProgramUniform2dv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2dv(program, location, count, value);
 }
@@ -14816,7 +14816,7 @@ static void REGAL_CALL statistics_glProgramUniform2f(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2f(program, location, x, y);
 }
@@ -14832,7 +14832,7 @@ static void REGAL_CALL statistics_glProgramUniform2fv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2fv(program, location, count, value);
 }
@@ -14848,7 +14848,7 @@ static void REGAL_CALL statistics_glProgramUniform2i(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2i(program, location, x, y);
 }
@@ -14864,7 +14864,7 @@ static void REGAL_CALL statistics_glProgramUniform2iv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2iv(program, location, count, value);
 }
@@ -14880,7 +14880,7 @@ static void REGAL_CALL statistics_glProgramUniform2ui(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2ui(program, location, x, y);
 }
@@ -14896,7 +14896,7 @@ static void REGAL_CALL statistics_glProgramUniform2uiv(GLuint program, GLint loc
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2uiv(program, location, count, value);
 }
@@ -14912,7 +14912,7 @@ static void REGAL_CALL statistics_glProgramUniform3d(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3d(program, location, x, y, z);
 }
@@ -14928,7 +14928,7 @@ static void REGAL_CALL statistics_glProgramUniform3dv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3dv(program, location, count, value);
 }
@@ -14944,7 +14944,7 @@ static void REGAL_CALL statistics_glProgramUniform3f(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3f(program, location, x, y, z);
 }
@@ -14960,7 +14960,7 @@ static void REGAL_CALL statistics_glProgramUniform3fv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3fv(program, location, count, value);
 }
@@ -14976,7 +14976,7 @@ static void REGAL_CALL statistics_glProgramUniform3i(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3i(program, location, x, y, z);
 }
@@ -14992,7 +14992,7 @@ static void REGAL_CALL statistics_glProgramUniform3iv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3iv(program, location, count, value);
 }
@@ -15008,7 +15008,7 @@ static void REGAL_CALL statistics_glProgramUniform3ui(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3ui(program, location, x, y, z);
 }
@@ -15024,7 +15024,7 @@ static void REGAL_CALL statistics_glProgramUniform3uiv(GLuint program, GLint loc
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3uiv(program, location, count, value);
 }
@@ -15040,7 +15040,7 @@ static void REGAL_CALL statistics_glProgramUniform4d(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4d(program, location, x, y, z, w);
 }
@@ -15056,7 +15056,7 @@ static void REGAL_CALL statistics_glProgramUniform4dv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4dv(program, location, count, value);
 }
@@ -15072,7 +15072,7 @@ static void REGAL_CALL statistics_glProgramUniform4f(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4f(program, location, x, y, z, w);
 }
@@ -15088,7 +15088,7 @@ static void REGAL_CALL statistics_glProgramUniform4fv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4fv(program, location, count, value);
 }
@@ -15104,7 +15104,7 @@ static void REGAL_CALL statistics_glProgramUniform4i(GLuint program, GLint locat
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4i(program, location, x, y, z, w);
 }
@@ -15120,7 +15120,7 @@ static void REGAL_CALL statistics_glProgramUniform4iv(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4iv(program, location, count, value);
 }
@@ -15136,7 +15136,7 @@ static void REGAL_CALL statistics_glProgramUniform4ui(GLuint program, GLint loca
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4ui(program, location, x, y, z, w);
 }
@@ -15152,7 +15152,7 @@ static void REGAL_CALL statistics_glProgramUniform4uiv(GLuint program, GLint loc
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4uiv(program, location, count, value);
 }
@@ -15168,7 +15168,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2dv(GLuint program, GLin
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2dv(program, location, count, transpose, value);
 }
@@ -15184,7 +15184,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2fv(GLuint program, GLin
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2fv(program, location, count, transpose, value);
 }
@@ -15200,7 +15200,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x3dv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x3dv(program, location, count, transpose, value);
 }
@@ -15216,7 +15216,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x3fv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x3fv(program, location, count, transpose, value);
 }
@@ -15232,7 +15232,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x4dv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x4dv(program, location, count, transpose, value);
 }
@@ -15248,7 +15248,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x4fv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x4fv(program, location, count, transpose, value);
 }
@@ -15264,7 +15264,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3dv(GLuint program, GLin
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3dv(program, location, count, transpose, value);
 }
@@ -15280,7 +15280,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3fv(GLuint program, GLin
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3fv(program, location, count, transpose, value);
 }
@@ -15296,7 +15296,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x2dv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x2dv(program, location, count, transpose, value);
 }
@@ -15312,7 +15312,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x2fv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x2fv(program, location, count, transpose, value);
 }
@@ -15328,7 +15328,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x4dv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x4dv(program, location, count, transpose, value);
 }
@@ -15344,7 +15344,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x4fv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x4fv(program, location, count, transpose, value);
 }
@@ -15360,7 +15360,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4dv(GLuint program, GLin
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4dv(program, location, count, transpose, value);
 }
@@ -15376,7 +15376,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4fv(GLuint program, GLin
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4fv(program, location, count, transpose, value);
 }
@@ -15392,7 +15392,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x2dv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x2dv(program, location, count, transpose, value);
 }
@@ -15408,7 +15408,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x2fv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x2fv(program, location, count, transpose, value);
 }
@@ -15424,7 +15424,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x3dv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x3dv(program, location, count, transpose, value);
 }
@@ -15440,7 +15440,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x3fv(GLuint program, GL
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x3fv(program, location, count, transpose, value);
 }
@@ -15456,7 +15456,7 @@ static void REGAL_CALL statistics_glUseProgramStages(GLuint pipeline, GLbitfield
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUseProgramStages(pipeline, stages, program);
 }
@@ -15472,7 +15472,7 @@ static void REGAL_CALL statistics_glValidateProgramPipeline(GLuint pipeline)
 
   statistics.gl_arb_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glValidateProgramPipeline(pipeline);
 }
@@ -15490,7 +15490,7 @@ static void REGAL_CALL statistics_glGetActiveAtomicCounterBufferiv(GLuint progra
 
   statistics.gl_arb_shader_atomic_counters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveAtomicCounterBufferiv(program, bufferIndex, pname, params);
 }
@@ -15508,7 +15508,7 @@ static void REGAL_CALL statistics_glBindImageTexture(GLuint unit, GLuint texture
 
   statistics.gl_arb_shader_image_load_store++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindImageTexture(unit, texture, level, layered, layer, access, format);
 }
@@ -15524,7 +15524,7 @@ static void REGAL_CALL statistics_glMemoryBarrier(GLbitfield barriers)
 
   statistics.gl_arb_shader_image_load_store++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMemoryBarrier(barriers);
 }
@@ -15542,7 +15542,7 @@ static void REGAL_CALL statistics_glAttachObjectARB(GLhandleARB containerObj, GL
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAttachObjectARB(containerObj, obj);
 }
@@ -15558,7 +15558,7 @@ static void REGAL_CALL statistics_glCompileShaderARB(GLhandleARB shaderObj)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompileShaderARB(shaderObj);
 }
@@ -15574,7 +15574,7 @@ static GLhandleARB REGAL_CALL statistics_glCreateProgramObjectARB(void)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLhandleARB  ret = _next->glCreateProgramObjectARB();
   return ret;
@@ -15591,7 +15591,7 @@ static GLhandleARB REGAL_CALL statistics_glCreateShaderObjectARB(GLenum shaderTy
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLhandleARB  ret = _next->glCreateShaderObjectARB(shaderType);
   return ret;
@@ -15608,7 +15608,7 @@ static void REGAL_CALL statistics_glDeleteObjectARB(GLhandleARB obj)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteObjectARB(obj);
 }
@@ -15624,7 +15624,7 @@ static void REGAL_CALL statistics_glDetachObjectARB(GLhandleARB containerObj, GL
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDetachObjectARB(containerObj, attachedObj);
 }
@@ -15640,7 +15640,7 @@ static void REGAL_CALL statistics_glGetActiveUniformARB(GLhandleARB programObj, 
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveUniformARB(programObj, index, maxLength, length, size, type, name);
 }
@@ -15656,7 +15656,7 @@ static void REGAL_CALL statistics_glGetAttachedObjectsARB(GLhandleARB containerO
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetAttachedObjectsARB(containerObj, maxCount, count, obj);
 }
@@ -15672,7 +15672,7 @@ static GLhandleARB REGAL_CALL statistics_glGetHandleARB(GLenum pname)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLhandleARB  ret = _next->glGetHandleARB(pname);
   return ret;
@@ -15689,7 +15689,7 @@ static void REGAL_CALL statistics_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLe
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInfoLogARB(obj, maxLength, length, infoLog);
 }
@@ -15705,7 +15705,7 @@ static void REGAL_CALL statistics_glGetObjectParameterfvARB(GLhandleARB obj, GLe
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectParameterfvARB(obj, pname, params);
 }
@@ -15721,7 +15721,7 @@ static void REGAL_CALL statistics_glGetObjectParameterivARB(GLhandleARB obj, GLe
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectParameterivARB(obj, pname, params);
 }
@@ -15737,7 +15737,7 @@ static void REGAL_CALL statistics_glGetShaderSourceARB(GLhandleARB obj, GLsizei 
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetShaderSourceARB(obj, maxLength, length, source);
 }
@@ -15753,7 +15753,7 @@ static GLint REGAL_CALL statistics_glGetUniformLocationARB(GLhandleARB programOb
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetUniformLocationARB(programObj, name);
   return ret;
@@ -15770,7 +15770,7 @@ static void REGAL_CALL statistics_glGetUniformfvARB(GLhandleARB programObj, GLin
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformfvARB(programObj, location, params);
 }
@@ -15786,7 +15786,7 @@ static void REGAL_CALL statistics_glGetUniformivARB(GLhandleARB programObj, GLin
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformivARB(programObj, location, params);
 }
@@ -15802,7 +15802,7 @@ static void REGAL_CALL statistics_glLinkProgramARB(GLhandleARB programObj)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLinkProgramARB(programObj);
 }
@@ -15818,7 +15818,7 @@ static void REGAL_CALL statistics_glShaderSourceARB(GLhandleARB shaderObj, GLsiz
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShaderSourceARB(shaderObj, count, string, length);
 }
@@ -15834,7 +15834,7 @@ static void REGAL_CALL statistics_glUniform1fARB(GLint location, GLfloat v0)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1fARB(location, v0);
 }
@@ -15850,7 +15850,7 @@ static void REGAL_CALL statistics_glUniform1fvARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1fvARB(location, count, value);
 }
@@ -15866,7 +15866,7 @@ static void REGAL_CALL statistics_glUniform1iARB(GLint location, GLint v0)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1iARB(location, v0);
 }
@@ -15882,7 +15882,7 @@ static void REGAL_CALL statistics_glUniform1ivARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1ivARB(location, count, value);
 }
@@ -15898,7 +15898,7 @@ static void REGAL_CALL statistics_glUniform2fARB(GLint location, GLfloat v0, GLf
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2fARB(location, v0, v1);
 }
@@ -15914,7 +15914,7 @@ static void REGAL_CALL statistics_glUniform2fvARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2fvARB(location, count, value);
 }
@@ -15930,7 +15930,7 @@ static void REGAL_CALL statistics_glUniform2iARB(GLint location, GLint v0, GLint
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2iARB(location, v0, v1);
 }
@@ -15946,7 +15946,7 @@ static void REGAL_CALL statistics_glUniform2ivARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2ivARB(location, count, value);
 }
@@ -15962,7 +15962,7 @@ static void REGAL_CALL statistics_glUniform3fARB(GLint location, GLfloat v0, GLf
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3fARB(location, v0, v1, v2);
 }
@@ -15978,7 +15978,7 @@ static void REGAL_CALL statistics_glUniform3fvARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3fvARB(location, count, value);
 }
@@ -15994,7 +15994,7 @@ static void REGAL_CALL statistics_glUniform3iARB(GLint location, GLint v0, GLint
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3iARB(location, v0, v1, v2);
 }
@@ -16010,7 +16010,7 @@ static void REGAL_CALL statistics_glUniform3ivARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3ivARB(location, count, value);
 }
@@ -16026,7 +16026,7 @@ static void REGAL_CALL statistics_glUniform4fARB(GLint location, GLfloat v0, GLf
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4fARB(location, v0, v1, v2, v3);
 }
@@ -16042,7 +16042,7 @@ static void REGAL_CALL statistics_glUniform4fvARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4fvARB(location, count, value);
 }
@@ -16058,7 +16058,7 @@ static void REGAL_CALL statistics_glUniform4iARB(GLint location, GLint v0, GLint
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4iARB(location, v0, v1, v2, v3);
 }
@@ -16074,7 +16074,7 @@ static void REGAL_CALL statistics_glUniform4ivARB(GLint location, GLsizei count,
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4ivARB(location, count, value);
 }
@@ -16090,7 +16090,7 @@ static void REGAL_CALL statistics_glUniformMatrix2fvARB(GLint location, GLsizei 
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2fvARB(location, count, transpose, value);
 }
@@ -16106,7 +16106,7 @@ static void REGAL_CALL statistics_glUniformMatrix3fvARB(GLint location, GLsizei 
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3fvARB(location, count, transpose, value);
 }
@@ -16122,7 +16122,7 @@ static void REGAL_CALL statistics_glUniformMatrix4fvARB(GLint location, GLsizei 
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4fvARB(location, count, transpose, value);
 }
@@ -16138,7 +16138,7 @@ static void REGAL_CALL statistics_glUseProgramObjectARB(GLhandleARB programObj)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUseProgramObjectARB(programObj);
 }
@@ -16154,7 +16154,7 @@ static void REGAL_CALL statistics_glValidateProgramARB(GLhandleARB programObj)
 
   statistics.gl_arb_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glValidateProgramARB(programObj);
 }
@@ -16172,7 +16172,7 @@ static void REGAL_CALL statistics_glShaderStorageBlockBinding(GLuint program, GL
 
   statistics.gl_arb_shader_storage_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShaderStorageBlockBinding(program, storageBlockIndex, storageBlockBinding);
 }
@@ -16190,7 +16190,7 @@ static void REGAL_CALL statistics_glGetActiveSubroutineName(GLuint program, GLen
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveSubroutineName(program, shaderType, index, bufSize, length, name);
 }
@@ -16206,7 +16206,7 @@ static void REGAL_CALL statistics_glGetActiveSubroutineUniformName(GLuint progra
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveSubroutineUniformName(program, shaderType, index, bufSize, length, name);
 }
@@ -16222,7 +16222,7 @@ static void REGAL_CALL statistics_glGetActiveSubroutineUniformiv(GLuint program,
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveSubroutineUniformiv(program, shaderType, index, pname, values);
 }
@@ -16238,7 +16238,7 @@ static void REGAL_CALL statistics_glGetProgramStageiv(GLuint program, GLenum sha
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramStageiv(program, shaderType, pname, values);
 }
@@ -16252,7 +16252,7 @@ static void REGAL_CALL statistics_glGetProgramSubroutineParameteruivNV(GLenum ta
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramSubroutineParameteruivNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramSubroutineParameteruivNV(target, index, params);
 }
@@ -16268,7 +16268,7 @@ static GLuint REGAL_CALL statistics_glGetSubroutineIndex(GLuint program, GLenum 
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGetSubroutineIndex(program, shaderType, name);
   return ret;
@@ -16285,7 +16285,7 @@ static GLint REGAL_CALL statistics_glGetSubroutineUniformLocation(GLuint program
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetSubroutineUniformLocation(program, shaderType, name);
   return ret;
@@ -16302,7 +16302,7 @@ static void REGAL_CALL statistics_glGetUniformSubroutineuiv(GLenum shaderType, G
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformSubroutineuiv(shaderType, location, params);
 }
@@ -16316,7 +16316,7 @@ static void REGAL_CALL statistics_glProgramSubroutineParametersuivNV(GLenum targ
   Statistics &statistics = *_context->statistics;
   statistics.glProgramSubroutineParametersuivNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramSubroutineParametersuivNV(target, count, params);
 }
@@ -16332,7 +16332,7 @@ static void REGAL_CALL statistics_glUniformSubroutinesuiv(GLenum shaderType, GLs
 
   statistics.gl_arb_shader_subroutine++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformSubroutinesuiv(shaderType, count, indices);
 }
@@ -16350,7 +16350,7 @@ static void REGAL_CALL statistics_glCompileShaderIncludeARB(GLuint shader, GLsiz
 
   statistics.gl_arb_shading_language_include++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompileShaderIncludeARB(shader, count, path, length);
 }
@@ -16366,7 +16366,7 @@ static void REGAL_CALL statistics_glDeleteNamedStringARB(GLint namelen, const GL
 
   statistics.gl_arb_shading_language_include++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteNamedStringARB(namelen, name);
 }
@@ -16382,7 +16382,7 @@ static void REGAL_CALL statistics_glGetNamedStringARB(GLint namelen, const GLcha
 
   statistics.gl_arb_shading_language_include++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedStringARB(namelen, name, bufSize, stringlen, string);
 }
@@ -16398,7 +16398,7 @@ static void REGAL_CALL statistics_glGetNamedStringivARB(GLint namelen, const GLc
 
   statistics.gl_arb_shading_language_include++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedStringivARB(namelen, name, pname, params);
 }
@@ -16414,7 +16414,7 @@ static GLboolean REGAL_CALL statistics_glIsNamedStringARB(GLint namelen, const G
 
   statistics.gl_arb_shading_language_include++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsNamedStringARB(namelen, name);
   return ret;
@@ -16431,7 +16431,7 @@ static void REGAL_CALL statistics_glNamedStringARB(GLenum type, GLint namelen, c
 
   statistics.gl_arb_shading_language_include++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedStringARB(type, namelen, name, stringlen, string);
 }
@@ -16449,7 +16449,7 @@ static void REGAL_CALL statistics_glTexPageCommitmentARB(GLenum target, GLint le
 
   statistics.gl_arb_sparse_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexPageCommitmentARB(target, level, xoffset, yoffset, zoffset, width, height, depth, commit);
 }
@@ -16465,7 +16465,7 @@ static void REGAL_CALL statistics_glTexturePageCommitmentEXT(GLuint texture, GLe
 
   statistics.gl_arb_sparse_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexturePageCommitmentEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, commit);
 }
@@ -16483,7 +16483,7 @@ static GLenum REGAL_CALL statistics_glClientWaitSync(GLsync sync, GLbitfield fla
 
   statistics.gl_arb_sync++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glClientWaitSync(sync, flags, timeout);
   return ret;
@@ -16500,7 +16500,7 @@ static void REGAL_CALL statistics_glDeleteSync(GLsync sync)
 
   statistics.gl_arb_sync++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteSync(sync);
 }
@@ -16516,7 +16516,7 @@ static GLsync REGAL_CALL statistics_glFenceSync(GLenum condition, GLbitfield fla
 
   statistics.gl_arb_sync++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLsync  ret = _next->glFenceSync(condition, flags);
   return ret;
@@ -16533,7 +16533,7 @@ static void REGAL_CALL statistics_glGetInteger64v(GLenum pname, GLint64 *params)
 
   statistics.gl_arb_sync++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInteger64v(pname, params);
 }
@@ -16549,7 +16549,7 @@ static void REGAL_CALL statistics_glGetSynciv(GLsync sync, GLenum pname, GLsizei
 
   statistics.gl_arb_sync++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSynciv(sync, pname, bufSize, length, values);
 }
@@ -16565,7 +16565,7 @@ static GLboolean REGAL_CALL statistics_glIsSync(GLsync sync)
 
   statistics.gl_arb_sync++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsSync(sync);
   return ret;
@@ -16582,7 +16582,7 @@ static void REGAL_CALL statistics_glWaitSync(GLsync sync, GLbitfield flags, GLui
 
   statistics.gl_arb_sync++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWaitSync(sync, flags, timeout);
 }
@@ -16600,7 +16600,7 @@ static void REGAL_CALL statistics_glPatchParameterfv(GLenum pname, const GLfloat
 
   statistics.gl_arb_tessellation_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPatchParameterfv(pname, values);
 }
@@ -16616,7 +16616,7 @@ static void REGAL_CALL statistics_glPatchParameteri(GLenum pname, GLint value)
 
   statistics.gl_arb_tessellation_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPatchParameteri(pname, value);
 }
@@ -16634,7 +16634,7 @@ static void REGAL_CALL statistics_glTexBufferARB(GLenum target, GLenum internalf
 
   statistics.gl_arb_texture_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexBufferARB(target, internalformat, buffer);
 }
@@ -16652,7 +16652,7 @@ static void REGAL_CALL statistics_glTexBufferRange(GLenum target, GLenum interna
 
   statistics.gl_arb_texture_buffer_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexBufferRange(target, internalformat, buffer, offset, size);
 }
@@ -16668,7 +16668,7 @@ static void REGAL_CALL statistics_glTextureBufferRangeEXT(GLuint texture, GLenum
 
   statistics.gl_arb_texture_buffer_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureBufferRangeEXT(texture, target, internalformat, buffer, offset, size);
 }
@@ -16686,7 +16686,7 @@ static void REGAL_CALL statistics_glCompressedTexImage1DARB(GLenum target, GLint
 
   statistics.gl_arb_texture_compression++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexImage1DARB(target, level, internalformat, width, border, imageSize, data);
 }
@@ -16702,7 +16702,7 @@ static void REGAL_CALL statistics_glCompressedTexImage2DARB(GLenum target, GLint
 
   statistics.gl_arb_texture_compression++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexImage2DARB(target, level, internalformat, width, height, border, imageSize, data);
 }
@@ -16718,7 +16718,7 @@ static void REGAL_CALL statistics_glCompressedTexImage3DARB(GLenum target, GLint
 
   statistics.gl_arb_texture_compression++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexImage3DARB(target, level, internalformat, width, height, depth, border, imageSize, data);
 }
@@ -16734,7 +16734,7 @@ static void REGAL_CALL statistics_glCompressedTexSubImage1DARB(GLenum target, GL
 
   statistics.gl_arb_texture_compression++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexSubImage1DARB(target, level, xoffset, width, format, imageSize, data);
 }
@@ -16750,7 +16750,7 @@ static void REGAL_CALL statistics_glCompressedTexSubImage2DARB(GLenum target, GL
 
   statistics.gl_arb_texture_compression++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexSubImage2DARB(target, level, xoffset, yoffset, width, height, format, imageSize, data);
 }
@@ -16766,7 +16766,7 @@ static void REGAL_CALL statistics_glCompressedTexSubImage3DARB(GLenum target, GL
 
   statistics.gl_arb_texture_compression++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexSubImage3DARB(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 }
@@ -16782,7 +16782,7 @@ static void REGAL_CALL statistics_glGetCompressedTexImageARB(GLenum target, GLin
 
   statistics.gl_arb_texture_compression++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCompressedTexImageARB(target, lod, img);
 }
@@ -16800,7 +16800,7 @@ static void REGAL_CALL statistics_glGetMultisamplefv(GLenum pname, GLuint index,
 
   statistics.gl_arb_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultisamplefv(pname, index, val);
 }
@@ -16816,7 +16816,7 @@ static void REGAL_CALL statistics_glSampleMaski(GLuint index, GLbitfield mask)
 
   statistics.gl_arb_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleMaski(index, mask);
 }
@@ -16832,7 +16832,7 @@ static void REGAL_CALL statistics_glTexImage2DMultisample(GLenum target, GLsizei
 
   statistics.gl_arb_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
 }
@@ -16848,7 +16848,7 @@ static void REGAL_CALL statistics_glTexImage3DMultisample(GLenum target, GLsizei
 
   statistics.gl_arb_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
@@ -16866,7 +16866,7 @@ static void REGAL_CALL statistics_glTexStorage1D(GLenum target, GLsizei levels, 
 
   statistics.gl_arb_texture_storage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage1D(target, levels, internalformat, width);
 }
@@ -16882,7 +16882,7 @@ static void REGAL_CALL statistics_glTexStorage2D(GLenum target, GLsizei levels, 
 
   statistics.gl_arb_texture_storage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage2D(target, levels, internalformat, width, height);
 }
@@ -16898,7 +16898,7 @@ static void REGAL_CALL statistics_glTexStorage3D(GLenum target, GLsizei levels, 
 
   statistics.gl_arb_texture_storage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage3D(target, levels, internalformat, width, height, depth);
 }
@@ -16914,7 +16914,7 @@ static void REGAL_CALL statistics_glTextureStorage1DEXT(GLuint texture, GLenum t
 
   statistics.gl_arb_texture_storage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureStorage1DEXT(texture, target, levels, internalformat, width);
 }
@@ -16930,7 +16930,7 @@ static void REGAL_CALL statistics_glTextureStorage2DEXT(GLuint texture, GLenum t
 
   statistics.gl_arb_texture_storage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureStorage2DEXT(texture, target, levels, internalformat, width, height);
 }
@@ -16946,7 +16946,7 @@ static void REGAL_CALL statistics_glTextureStorage3DEXT(GLuint texture, GLenum t
 
   statistics.gl_arb_texture_storage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureStorage3DEXT(texture, target, levels, internalformat, width, height, depth);
 }
@@ -16964,7 +16964,7 @@ static void REGAL_CALL statistics_glTexStorage2DMultisample(GLenum target, GLsiz
 
   statistics.gl_arb_texture_storage_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
 }
@@ -16980,7 +16980,7 @@ static void REGAL_CALL statistics_glTexStorage3DMultisample(GLenum target, GLsiz
 
   statistics.gl_arb_texture_storage_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
@@ -16996,7 +16996,7 @@ static void REGAL_CALL statistics_glTextureStorage2DMultisampleEXT(GLuint textur
 
   statistics.gl_arb_texture_storage_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureStorage2DMultisampleEXT(texture, target, samples, internalformat, width, height, fixedsamplelocations);
 }
@@ -17012,7 +17012,7 @@ static void REGAL_CALL statistics_glTextureStorage3DMultisampleEXT(GLuint textur
 
   statistics.gl_arb_texture_storage_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureStorage3DMultisampleEXT(texture, target, samples, internalformat, width, height, depth, fixedsamplelocations);
 }
@@ -17030,7 +17030,7 @@ static void REGAL_CALL statistics_glTextureView(GLuint texture, GLenum target, G
 
   statistics.gl_arb_texture_view++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureView(texture, target, origtexture, internalformat, minlevel, numlevels, minlayer, numlayers);
 }
@@ -17048,7 +17048,7 @@ static void REGAL_CALL statistics_glGetQueryObjecti64v(GLuint id, GLenum pname, 
 
   statistics.gl_arb_timer_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjecti64v(id, pname, params);
 }
@@ -17064,7 +17064,7 @@ static void REGAL_CALL statistics_glGetQueryObjectui64v(GLuint id, GLenum pname,
 
   statistics.gl_arb_timer_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectui64v(id, pname, params);
 }
@@ -17080,7 +17080,7 @@ static void REGAL_CALL statistics_glQueryCounter(GLuint id, GLenum target)
 
   statistics.gl_arb_timer_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glQueryCounter(id, target);
 }
@@ -17098,7 +17098,7 @@ static void REGAL_CALL statistics_glBindTransformFeedback(GLenum target, GLuint 
 
   statistics.gl_arb_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindTransformFeedback(target, id);
 }
@@ -17114,7 +17114,7 @@ static void REGAL_CALL statistics_glDeleteTransformFeedbacks(GLsizei n, const GL
 
   statistics.gl_arb_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteTransformFeedbacks(n, ids);
 }
@@ -17130,7 +17130,7 @@ static void REGAL_CALL statistics_glDrawTransformFeedback(GLenum mode, GLuint na
 
   statistics.gl_arb_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawTransformFeedback(mode, name);
 }
@@ -17146,7 +17146,7 @@ static void REGAL_CALL statistics_glGenTransformFeedbacks(GLsizei n, GLuint *ids
 
   statistics.gl_arb_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenTransformFeedbacks(n, ids);
 }
@@ -17162,7 +17162,7 @@ static GLboolean REGAL_CALL statistics_glIsTransformFeedback(GLuint id)
 
   statistics.gl_arb_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsTransformFeedback(id);
   return ret;
@@ -17179,7 +17179,7 @@ static void REGAL_CALL statistics_glPauseTransformFeedback(void)
 
   statistics.gl_arb_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPauseTransformFeedback();
 }
@@ -17195,7 +17195,7 @@ static void REGAL_CALL statistics_glResumeTransformFeedback(void)
 
   statistics.gl_arb_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResumeTransformFeedback();
 }
@@ -17213,7 +17213,7 @@ static void REGAL_CALL statistics_glBeginQueryIndexed(GLenum target, GLuint inde
 
   statistics.gl_arb_transform_feedback3++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginQueryIndexed(target, index, id);
 }
@@ -17229,7 +17229,7 @@ static void REGAL_CALL statistics_glDrawTransformFeedbackStream(GLenum mode, GLu
 
   statistics.gl_arb_transform_feedback3++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawTransformFeedbackStream(mode, id, stream);
 }
@@ -17245,7 +17245,7 @@ static void REGAL_CALL statistics_glEndQueryIndexed(GLenum target, GLuint index)
 
   statistics.gl_arb_transform_feedback3++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndQueryIndexed(target, index);
 }
@@ -17261,7 +17261,7 @@ static void REGAL_CALL statistics_glGetQueryIndexediv(GLenum target, GLuint inde
 
   statistics.gl_arb_transform_feedback3++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryIndexediv(target, index, pname, params);
 }
@@ -17279,7 +17279,7 @@ static void REGAL_CALL statistics_glDrawTransformFeedbackInstanced(GLenum mode, 
 
   statistics.gl_arb_transform_feedback_instanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawTransformFeedbackInstanced(mode, id, primcount);
 }
@@ -17295,7 +17295,7 @@ static void REGAL_CALL statistics_glDrawTransformFeedbackStreamInstanced(GLenum 
 
   statistics.gl_arb_transform_feedback_instanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawTransformFeedbackStreamInstanced(mode, id, stream, primcount);
 }
@@ -17313,7 +17313,7 @@ static void REGAL_CALL statistics_glLoadTransposeMatrixdARB(const GLdouble *m)
 
   statistics.gl_arb_transpose_matrix++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadTransposeMatrixdARB(m);
 }
@@ -17329,7 +17329,7 @@ static void REGAL_CALL statistics_glLoadTransposeMatrixfARB(const GLfloat *m)
 
   statistics.gl_arb_transpose_matrix++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadTransposeMatrixfARB(m);
 }
@@ -17345,7 +17345,7 @@ static void REGAL_CALL statistics_glMultTransposeMatrixdARB(const GLdouble *m)
 
   statistics.gl_arb_transpose_matrix++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultTransposeMatrixdARB(m);
 }
@@ -17361,7 +17361,7 @@ static void REGAL_CALL statistics_glMultTransposeMatrixfARB(const GLfloat *m)
 
   statistics.gl_arb_transpose_matrix++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultTransposeMatrixfARB(m);
 }
@@ -17379,7 +17379,7 @@ static void REGAL_CALL statistics_glBindBufferBase(GLenum target, GLuint index, 
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferBase(target, index, buffer);
 }
@@ -17395,7 +17395,7 @@ static void REGAL_CALL statistics_glBindBufferRange(GLenum target, GLuint index,
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferRange(target, index, buffer, offset, size);
 }
@@ -17411,7 +17411,7 @@ static void REGAL_CALL statistics_glGetActiveUniformBlockName(GLuint program, GL
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveUniformBlockName(program, uniformBlockIndex, bufSize, length, uniformBlockName);
 }
@@ -17427,7 +17427,7 @@ static void REGAL_CALL statistics_glGetActiveUniformBlockiv(GLuint program, GLui
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveUniformBlockiv(program, uniformBlockIndex, pname, params);
 }
@@ -17443,7 +17443,7 @@ static void REGAL_CALL statistics_glGetActiveUniformName(GLuint program, GLuint 
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveUniformName(program, uniformIndex, bufSize, length, uniformName);
 }
@@ -17459,7 +17459,7 @@ static void REGAL_CALL statistics_glGetActiveUniformsiv(GLuint program, GLsizei 
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveUniformsiv(program, uniformCount, uniformIndices, pname, params);
 }
@@ -17475,7 +17475,7 @@ static void REGAL_CALL statistics_glGetIntegeri_v(GLenum target, GLuint index, G
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetIntegeri_v(target, index, data);
 }
@@ -17491,7 +17491,7 @@ static GLuint REGAL_CALL statistics_glGetUniformBlockIndex(GLuint program, const
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGetUniformBlockIndex(program, uniformBlockName);
   return ret;
@@ -17508,7 +17508,7 @@ static void REGAL_CALL statistics_glGetUniformIndices(GLuint program, GLsizei un
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformIndices(program, uniformCount, uniformNames, uniformIndices);
 }
@@ -17524,7 +17524,7 @@ static void REGAL_CALL statistics_glUniformBlockBinding(GLuint program, GLuint u
 
   statistics.gl_arb_uniform_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformBlockBinding(program, uniformBlockIndex, uniformBlockBinding);
 }
@@ -17542,7 +17542,7 @@ static void REGAL_CALL statistics_glBindVertexArray(GLuint array)
 
   statistics.gl_arb_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVertexArray(array);
 }
@@ -17558,7 +17558,7 @@ static void REGAL_CALL statistics_glDeleteVertexArrays(GLsizei n, const GLuint *
 
   statistics.gl_arb_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteVertexArrays(n, arrays);
 }
@@ -17574,7 +17574,7 @@ static void REGAL_CALL statistics_glGenVertexArrays(GLsizei n, GLuint *arrays)
 
   statistics.gl_arb_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenVertexArrays(n, arrays);
 }
@@ -17590,7 +17590,7 @@ static GLboolean REGAL_CALL statistics_glIsVertexArray(GLuint array)
 
   statistics.gl_arb_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsVertexArray(array);
   return ret;
@@ -17609,7 +17609,7 @@ static void REGAL_CALL statistics_glGetVertexAttribLdv(GLuint index, GLenum pnam
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribLdv(index, pname, params);
 }
@@ -17625,7 +17625,7 @@ static void REGAL_CALL statistics_glVertexAttribL1d(GLuint index, GLdouble x)
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1d(index, x);
 }
@@ -17641,7 +17641,7 @@ static void REGAL_CALL statistics_glVertexAttribL1dv(GLuint index, const GLdoubl
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1dv(index, v);
 }
@@ -17657,7 +17657,7 @@ static void REGAL_CALL statistics_glVertexAttribL2d(GLuint index, GLdouble x, GL
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2d(index, x, y);
 }
@@ -17673,7 +17673,7 @@ static void REGAL_CALL statistics_glVertexAttribL2dv(GLuint index, const GLdoubl
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2dv(index, v);
 }
@@ -17689,7 +17689,7 @@ static void REGAL_CALL statistics_glVertexAttribL3d(GLuint index, GLdouble x, GL
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3d(index, x, y, z);
 }
@@ -17705,7 +17705,7 @@ static void REGAL_CALL statistics_glVertexAttribL3dv(GLuint index, const GLdoubl
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3dv(index, v);
 }
@@ -17721,7 +17721,7 @@ static void REGAL_CALL statistics_glVertexAttribL4d(GLuint index, GLdouble x, GL
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4d(index, x, y, z, w);
 }
@@ -17737,7 +17737,7 @@ static void REGAL_CALL statistics_glVertexAttribL4dv(GLuint index, const GLdoubl
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4dv(index, v);
 }
@@ -17753,7 +17753,7 @@ static void REGAL_CALL statistics_glVertexAttribLPointer(GLuint index, GLint siz
 
   statistics.gl_arb_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribLPointer(index, size, type, stride, pointer);
 }
@@ -17771,7 +17771,7 @@ static void REGAL_CALL statistics_glBindVertexBuffer(GLuint bindingindex, GLuint
 
   statistics.gl_arb_vertex_attrib_binding++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVertexBuffer(bindingindex, buffer, offset, stride);
 }
@@ -17785,7 +17785,7 @@ static void REGAL_CALL statistics_glVertexArrayBindVertexBufferEXT(GLuint vaobj,
   Statistics &statistics = *_context->statistics;
   statistics.glVertexArrayBindVertexBufferEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayBindVertexBufferEXT(vaobj, bindingindex, buffer, offset, stride);
 }
@@ -17799,7 +17799,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexAttribBindingEXT(GLuint vao
   Statistics &statistics = *_context->statistics;
   statistics.glVertexArrayVertexAttribBindingEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexAttribBindingEXT(vaobj, attribindex, bindingindex);
 }
@@ -17813,7 +17813,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexAttribFormatEXT(GLuint vaob
   Statistics &statistics = *_context->statistics;
   statistics.glVertexArrayVertexAttribFormatEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexAttribFormatEXT(vaobj, attribindex, size, type, normalized, relativeoffset);
 }
@@ -17827,7 +17827,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexAttribIFormatEXT(GLuint vao
   Statistics &statistics = *_context->statistics;
   statistics.glVertexArrayVertexAttribIFormatEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexAttribIFormatEXT(vaobj, attribindex, size, type, relativeoffset);
 }
@@ -17841,7 +17841,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexAttribLFormatEXT(GLuint vao
   Statistics &statistics = *_context->statistics;
   statistics.glVertexArrayVertexAttribLFormatEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexAttribLFormatEXT(vaobj, attribindex, size, type, relativeoffset);
 }
@@ -17855,7 +17855,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexBindingDivisorEXT(GLuint va
   Statistics &statistics = *_context->statistics;
   statistics.glVertexArrayVertexBindingDivisorEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexBindingDivisorEXT(vaobj, bindingindex, divisor);
 }
@@ -17871,7 +17871,7 @@ static void REGAL_CALL statistics_glVertexAttribBinding(GLuint attribindex, GLui
 
   statistics.gl_arb_vertex_attrib_binding++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribBinding(attribindex, bindingindex);
 }
@@ -17887,7 +17887,7 @@ static void REGAL_CALL statistics_glVertexAttribFormat(GLuint attribindex, GLint
 
   statistics.gl_arb_vertex_attrib_binding++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
 }
@@ -17903,7 +17903,7 @@ static void REGAL_CALL statistics_glVertexAttribIFormat(GLuint attribindex, GLin
 
   statistics.gl_arb_vertex_attrib_binding++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribIFormat(attribindex, size, type, relativeoffset);
 }
@@ -17919,7 +17919,7 @@ static void REGAL_CALL statistics_glVertexAttribLFormat(GLuint attribindex, GLin
 
   statistics.gl_arb_vertex_attrib_binding++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribLFormat(attribindex, size, type, relativeoffset);
 }
@@ -17935,7 +17935,7 @@ static void REGAL_CALL statistics_glVertexBindingDivisor(GLuint bindingindex, GL
 
   statistics.gl_arb_vertex_attrib_binding++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexBindingDivisor(bindingindex, divisor);
 }
@@ -17953,7 +17953,7 @@ static void REGAL_CALL statistics_glVertexBlendARB(GLint count)
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexBlendARB(count);
 }
@@ -17969,7 +17969,7 @@ static void REGAL_CALL statistics_glWeightPointerARB(GLint size, GLenum type, GL
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightPointerARB(size, type, stride, pointer);
 }
@@ -17985,7 +17985,7 @@ static void REGAL_CALL statistics_glWeightbvARB(GLint size, const GLbyte *weight
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightbvARB(size, weights);
 }
@@ -18001,7 +18001,7 @@ static void REGAL_CALL statistics_glWeightdvARB(GLint size, const GLdouble *weig
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightdvARB(size, weights);
 }
@@ -18017,7 +18017,7 @@ static void REGAL_CALL statistics_glWeightfvARB(GLint size, const GLfloat *weigh
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightfvARB(size, weights);
 }
@@ -18033,7 +18033,7 @@ static void REGAL_CALL statistics_glWeightivARB(GLint size, const GLint *weights
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightivARB(size, weights);
 }
@@ -18049,7 +18049,7 @@ static void REGAL_CALL statistics_glWeightsvARB(GLint size, const GLshort *weigh
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightsvARB(size, weights);
 }
@@ -18065,7 +18065,7 @@ static void REGAL_CALL statistics_glWeightubvARB(GLint size, const GLubyte *weig
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightubvARB(size, weights);
 }
@@ -18081,7 +18081,7 @@ static void REGAL_CALL statistics_glWeightuivARB(GLint size, const GLuint *weigh
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightuivARB(size, weights);
 }
@@ -18097,7 +18097,7 @@ static void REGAL_CALL statistics_glWeightusvARB(GLint size, const GLushort *wei
 
   statistics.gl_arb_vertex_blend++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightusvARB(size, weights);
 }
@@ -18115,7 +18115,7 @@ static void REGAL_CALL statistics_glBindBufferARB(GLenum target, GLuint buffer)
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferARB(target, buffer);
 }
@@ -18131,7 +18131,7 @@ static void REGAL_CALL statistics_glBufferDataARB(GLenum target, GLsizeiptrARB s
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBufferDataARB(target, size, data, usage);
 }
@@ -18147,7 +18147,7 @@ static void REGAL_CALL statistics_glBufferSubDataARB(GLenum target, GLintptrARB 
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBufferSubDataARB(target, offset, size, data);
 }
@@ -18163,7 +18163,7 @@ static void REGAL_CALL statistics_glDeleteBuffersARB(GLsizei n, const GLuint *bu
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteBuffersARB(n, buffers);
 }
@@ -18179,7 +18179,7 @@ static void REGAL_CALL statistics_glGenBuffersARB(GLsizei n, GLuint *buffers)
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenBuffersARB(n, buffers);
 }
@@ -18195,7 +18195,7 @@ static void REGAL_CALL statistics_glGetBufferParameterivARB(GLenum target, GLenu
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferParameterivARB(target, pname, params);
 }
@@ -18211,7 +18211,7 @@ static void REGAL_CALL statistics_glGetBufferPointervARB(GLenum target, GLenum p
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferPointervARB(target, pname, params);
 }
@@ -18227,7 +18227,7 @@ static void REGAL_CALL statistics_glGetBufferSubDataARB(GLenum target, GLintptrA
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferSubDataARB(target, offset, size, data);
 }
@@ -18243,7 +18243,7 @@ static GLboolean REGAL_CALL statistics_glIsBufferARB(GLuint buffer)
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsBufferARB(buffer);
   return ret;
@@ -18258,7 +18258,7 @@ static GLvoid *REGAL_CALL statistics_glMapBufferARB(GLenum target, GLenum access
   Statistics &statistics = *_context->statistics;
   statistics.glMapBufferARB++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapBufferARB(target, access);
   return ret;
@@ -18275,7 +18275,7 @@ static GLboolean REGAL_CALL statistics_glUnmapBufferARB(GLenum target)
 
   statistics.gl_arb_vertex_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glUnmapBufferARB(target);
   return ret;
@@ -18294,7 +18294,7 @@ static void REGAL_CALL statistics_glBindProgramARB(GLenum target, GLuint program
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindProgramARB(target, program);
 }
@@ -18310,7 +18310,7 @@ static void REGAL_CALL statistics_glDeleteProgramsARB(GLsizei n, const GLuint *p
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteProgramsARB(n, programs);
 }
@@ -18326,7 +18326,7 @@ static void REGAL_CALL statistics_glDisableVertexAttribArrayARB(GLuint index)
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableVertexAttribArrayARB(index);
 }
@@ -18342,7 +18342,7 @@ static void REGAL_CALL statistics_glEnableVertexAttribArrayARB(GLuint index)
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableVertexAttribArrayARB(index);
 }
@@ -18358,7 +18358,7 @@ static void REGAL_CALL statistics_glGenProgramsARB(GLsizei n, GLuint *programs)
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenProgramsARB(n, programs);
 }
@@ -18374,7 +18374,7 @@ static void REGAL_CALL statistics_glGetProgramEnvParameterdvARB(GLenum target, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramEnvParameterdvARB(target, index, params);
 }
@@ -18390,7 +18390,7 @@ static void REGAL_CALL statistics_glGetProgramEnvParameterfvARB(GLenum target, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramEnvParameterfvARB(target, index, params);
 }
@@ -18406,7 +18406,7 @@ static void REGAL_CALL statistics_glGetProgramLocalParameterdvARB(GLenum target,
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramLocalParameterdvARB(target, index, params);
 }
@@ -18422,7 +18422,7 @@ static void REGAL_CALL statistics_glGetProgramLocalParameterfvARB(GLenum target,
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramLocalParameterfvARB(target, index, params);
 }
@@ -18438,7 +18438,7 @@ static void REGAL_CALL statistics_glGetProgramStringARB(GLenum target, GLenum pn
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramStringARB(target, pname, string);
 }
@@ -18454,7 +18454,7 @@ static void REGAL_CALL statistics_glGetProgramivARB(GLenum target, GLenum pname,
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramivARB(target, pname, params);
 }
@@ -18470,7 +18470,7 @@ static void REGAL_CALL statistics_glGetVertexAttribPointervARB(GLuint index, GLe
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribPointervARB(index, pname, pointer);
 }
@@ -18486,7 +18486,7 @@ static void REGAL_CALL statistics_glGetVertexAttribdvARB(GLuint index, GLenum pn
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribdvARB(index, pname, params);
 }
@@ -18502,7 +18502,7 @@ static void REGAL_CALL statistics_glGetVertexAttribfvARB(GLuint index, GLenum pn
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribfvARB(index, pname, params);
 }
@@ -18518,7 +18518,7 @@ static void REGAL_CALL statistics_glGetVertexAttribivARB(GLuint index, GLenum pn
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribivARB(index, pname, params);
 }
@@ -18534,7 +18534,7 @@ static GLboolean REGAL_CALL statistics_glIsProgramARB(GLuint program)
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsProgramARB(program);
   return ret;
@@ -18551,7 +18551,7 @@ static void REGAL_CALL statistics_glProgramEnvParameter4dARB(GLenum target, GLui
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameter4dARB(target, index, x, y, z, w);
 }
@@ -18567,7 +18567,7 @@ static void REGAL_CALL statistics_glProgramEnvParameter4dvARB(GLenum target, GLu
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameter4dvARB(target, index, params);
 }
@@ -18583,7 +18583,7 @@ static void REGAL_CALL statistics_glProgramEnvParameter4fARB(GLenum target, GLui
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameter4fARB(target, index, x, y, z, w);
 }
@@ -18599,7 +18599,7 @@ static void REGAL_CALL statistics_glProgramEnvParameter4fvARB(GLenum target, GLu
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameter4fvARB(target, index, params);
 }
@@ -18615,7 +18615,7 @@ static void REGAL_CALL statistics_glProgramLocalParameter4dARB(GLenum target, GL
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameter4dARB(target, index, x, y, z, w);
 }
@@ -18631,7 +18631,7 @@ static void REGAL_CALL statistics_glProgramLocalParameter4dvARB(GLenum target, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameter4dvARB(target, index, params);
 }
@@ -18647,7 +18647,7 @@ static void REGAL_CALL statistics_glProgramLocalParameter4fARB(GLenum target, GL
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameter4fARB(target, index, x, y, z, w);
 }
@@ -18663,7 +18663,7 @@ static void REGAL_CALL statistics_glProgramLocalParameter4fvARB(GLenum target, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameter4fvARB(target, index, params);
 }
@@ -18679,7 +18679,7 @@ static void REGAL_CALL statistics_glProgramStringARB(GLenum target, GLenum forma
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramStringARB(target, format, len, string);
 }
@@ -18695,7 +18695,7 @@ static void REGAL_CALL statistics_glVertexAttrib1dARB(GLuint index, GLdouble x)
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1dARB(index, x);
 }
@@ -18711,7 +18711,7 @@ static void REGAL_CALL statistics_glVertexAttrib1dvARB(GLuint index, const GLdou
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1dvARB(index, v);
 }
@@ -18727,7 +18727,7 @@ static void REGAL_CALL statistics_glVertexAttrib1fARB(GLuint index, GLfloat x)
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1fARB(index, x);
 }
@@ -18743,7 +18743,7 @@ static void REGAL_CALL statistics_glVertexAttrib1fvARB(GLuint index, const GLflo
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1fvARB(index, v);
 }
@@ -18759,7 +18759,7 @@ static void REGAL_CALL statistics_glVertexAttrib1sARB(GLuint index, GLshort x)
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1sARB(index, x);
 }
@@ -18775,7 +18775,7 @@ static void REGAL_CALL statistics_glVertexAttrib1svARB(GLuint index, const GLsho
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1svARB(index, v);
 }
@@ -18791,7 +18791,7 @@ static void REGAL_CALL statistics_glVertexAttrib2dARB(GLuint index, GLdouble x, 
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2dARB(index, x, y);
 }
@@ -18807,7 +18807,7 @@ static void REGAL_CALL statistics_glVertexAttrib2dvARB(GLuint index, const GLdou
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2dvARB(index, v);
 }
@@ -18823,7 +18823,7 @@ static void REGAL_CALL statistics_glVertexAttrib2fARB(GLuint index, GLfloat x, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2fARB(index, x, y);
 }
@@ -18839,7 +18839,7 @@ static void REGAL_CALL statistics_glVertexAttrib2fvARB(GLuint index, const GLflo
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2fvARB(index, v);
 }
@@ -18855,7 +18855,7 @@ static void REGAL_CALL statistics_glVertexAttrib2sARB(GLuint index, GLshort x, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2sARB(index, x, y);
 }
@@ -18871,7 +18871,7 @@ static void REGAL_CALL statistics_glVertexAttrib2svARB(GLuint index, const GLsho
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2svARB(index, v);
 }
@@ -18887,7 +18887,7 @@ static void REGAL_CALL statistics_glVertexAttrib3dARB(GLuint index, GLdouble x, 
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3dARB(index, x, y, z);
 }
@@ -18903,7 +18903,7 @@ static void REGAL_CALL statistics_glVertexAttrib3dvARB(GLuint index, const GLdou
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3dvARB(index, v);
 }
@@ -18919,7 +18919,7 @@ static void REGAL_CALL statistics_glVertexAttrib3fARB(GLuint index, GLfloat x, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3fARB(index, x, y, z);
 }
@@ -18935,7 +18935,7 @@ static void REGAL_CALL statistics_glVertexAttrib3fvARB(GLuint index, const GLflo
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3fvARB(index, v);
 }
@@ -18951,7 +18951,7 @@ static void REGAL_CALL statistics_glVertexAttrib3sARB(GLuint index, GLshort x, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3sARB(index, x, y, z);
 }
@@ -18967,7 +18967,7 @@ static void REGAL_CALL statistics_glVertexAttrib3svARB(GLuint index, const GLsho
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3svARB(index, v);
 }
@@ -18983,7 +18983,7 @@ static void REGAL_CALL statistics_glVertexAttrib4NbvARB(GLuint index, const GLby
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4NbvARB(index, v);
 }
@@ -18999,7 +18999,7 @@ static void REGAL_CALL statistics_glVertexAttrib4NivARB(GLuint index, const GLin
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4NivARB(index, v);
 }
@@ -19015,7 +19015,7 @@ static void REGAL_CALL statistics_glVertexAttrib4NsvARB(GLuint index, const GLsh
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4NsvARB(index, v);
 }
@@ -19031,7 +19031,7 @@ static void REGAL_CALL statistics_glVertexAttrib4NubARB(GLuint index, GLubyte x,
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4NubARB(index, x, y, z, w);
 }
@@ -19047,7 +19047,7 @@ static void REGAL_CALL statistics_glVertexAttrib4NubvARB(GLuint index, const GLu
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4NubvARB(index, v);
 }
@@ -19063,7 +19063,7 @@ static void REGAL_CALL statistics_glVertexAttrib4NuivARB(GLuint index, const GLu
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4NuivARB(index, v);
 }
@@ -19079,7 +19079,7 @@ static void REGAL_CALL statistics_glVertexAttrib4NusvARB(GLuint index, const GLu
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4NusvARB(index, v);
 }
@@ -19095,7 +19095,7 @@ static void REGAL_CALL statistics_glVertexAttrib4bvARB(GLuint index, const GLbyt
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4bvARB(index, v);
 }
@@ -19111,7 +19111,7 @@ static void REGAL_CALL statistics_glVertexAttrib4dARB(GLuint index, GLdouble x, 
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4dARB(index, x, y, z, w);
 }
@@ -19127,7 +19127,7 @@ static void REGAL_CALL statistics_glVertexAttrib4dvARB(GLuint index, const GLdou
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4dvARB(index, v);
 }
@@ -19143,7 +19143,7 @@ static void REGAL_CALL statistics_glVertexAttrib4fARB(GLuint index, GLfloat x, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4fARB(index, x, y, z, w);
 }
@@ -19159,7 +19159,7 @@ static void REGAL_CALL statistics_glVertexAttrib4fvARB(GLuint index, const GLflo
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4fvARB(index, v);
 }
@@ -19175,7 +19175,7 @@ static void REGAL_CALL statistics_glVertexAttrib4ivARB(GLuint index, const GLint
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4ivARB(index, v);
 }
@@ -19191,7 +19191,7 @@ static void REGAL_CALL statistics_glVertexAttrib4sARB(GLuint index, GLshort x, G
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4sARB(index, x, y, z, w);
 }
@@ -19207,7 +19207,7 @@ static void REGAL_CALL statistics_glVertexAttrib4svARB(GLuint index, const GLsho
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4svARB(index, v);
 }
@@ -19223,7 +19223,7 @@ static void REGAL_CALL statistics_glVertexAttrib4ubvARB(GLuint index, const GLub
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4ubvARB(index, v);
 }
@@ -19239,7 +19239,7 @@ static void REGAL_CALL statistics_glVertexAttrib4uivARB(GLuint index, const GLui
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4uivARB(index, v);
 }
@@ -19255,7 +19255,7 @@ static void REGAL_CALL statistics_glVertexAttrib4usvARB(GLuint index, const GLus
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4usvARB(index, v);
 }
@@ -19271,7 +19271,7 @@ static void REGAL_CALL statistics_glVertexAttribPointerARB(GLuint index, GLint s
 
   statistics.gl_arb_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribPointerARB(index, size, type, normalized, stride, pointer);
 }
@@ -19289,7 +19289,7 @@ static void REGAL_CALL statistics_glBindAttribLocationARB(GLhandleARB programObj
 
   statistics.gl_arb_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindAttribLocationARB(programObj, index, name);
 }
@@ -19305,7 +19305,7 @@ static void REGAL_CALL statistics_glGetActiveAttribARB(GLhandleARB programObj, G
 
   statistics.gl_arb_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveAttribARB(programObj, index, maxLength, length, size, type, name);
 }
@@ -19321,7 +19321,7 @@ static GLint REGAL_CALL statistics_glGetAttribLocationARB(GLhandleARB programObj
 
   statistics.gl_arb_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetAttribLocationARB(programObj, name);
   return ret;
@@ -19340,7 +19340,7 @@ static void REGAL_CALL statistics_glColorP3ui(GLenum type, GLuint color)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorP3ui(type, color);
 }
@@ -19356,7 +19356,7 @@ static void REGAL_CALL statistics_glColorP3uiv(GLenum type, const GLuint *color)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorP3uiv(type, color);
 }
@@ -19372,7 +19372,7 @@ static void REGAL_CALL statistics_glColorP4ui(GLenum type, GLuint color)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorP4ui(type, color);
 }
@@ -19388,7 +19388,7 @@ static void REGAL_CALL statistics_glColorP4uiv(GLenum type, const GLuint *color)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorP4uiv(type, color);
 }
@@ -19404,7 +19404,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP1ui(GLenum texture, GLenum typ
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP1ui(texture, type, coords);
 }
@@ -19420,7 +19420,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP1uiv(GLenum texture, GLenum ty
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP1uiv(texture, type, coords);
 }
@@ -19436,7 +19436,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP2ui(GLenum texture, GLenum typ
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP2ui(texture, type, coords);
 }
@@ -19452,7 +19452,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP2uiv(GLenum texture, GLenum ty
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP2uiv(texture, type, coords);
 }
@@ -19468,7 +19468,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP3ui(GLenum texture, GLenum typ
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP3ui(texture, type, coords);
 }
@@ -19484,7 +19484,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP3uiv(GLenum texture, GLenum ty
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP3uiv(texture, type, coords);
 }
@@ -19500,7 +19500,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP4ui(GLenum texture, GLenum typ
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP4ui(texture, type, coords);
 }
@@ -19516,7 +19516,7 @@ static void REGAL_CALL statistics_glMultiTexCoordP4uiv(GLenum texture, GLenum ty
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordP4uiv(texture, type, coords);
 }
@@ -19532,7 +19532,7 @@ static void REGAL_CALL statistics_glNormalP3ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalP3ui(type, coords);
 }
@@ -19548,7 +19548,7 @@ static void REGAL_CALL statistics_glNormalP3uiv(GLenum type, const GLuint *coord
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalP3uiv(type, coords);
 }
@@ -19564,7 +19564,7 @@ static void REGAL_CALL statistics_glSecondaryColorP3ui(GLenum type, GLuint color
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColorP3ui(type, color);
 }
@@ -19580,7 +19580,7 @@ static void REGAL_CALL statistics_glSecondaryColorP3uiv(GLenum type, const GLuin
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColorP3uiv(type, color);
 }
@@ -19596,7 +19596,7 @@ static void REGAL_CALL statistics_glTexCoordP1ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP1ui(type, coords);
 }
@@ -19612,7 +19612,7 @@ static void REGAL_CALL statistics_glTexCoordP1uiv(GLenum type, const GLuint *coo
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP1uiv(type, coords);
 }
@@ -19628,7 +19628,7 @@ static void REGAL_CALL statistics_glTexCoordP2ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP2ui(type, coords);
 }
@@ -19644,7 +19644,7 @@ static void REGAL_CALL statistics_glTexCoordP2uiv(GLenum type, const GLuint *coo
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP2uiv(type, coords);
 }
@@ -19660,7 +19660,7 @@ static void REGAL_CALL statistics_glTexCoordP3ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP3ui(type, coords);
 }
@@ -19676,7 +19676,7 @@ static void REGAL_CALL statistics_glTexCoordP3uiv(GLenum type, const GLuint *coo
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP3uiv(type, coords);
 }
@@ -19692,7 +19692,7 @@ static void REGAL_CALL statistics_glTexCoordP4ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP4ui(type, coords);
 }
@@ -19708,7 +19708,7 @@ static void REGAL_CALL statistics_glTexCoordP4uiv(GLenum type, const GLuint *coo
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordP4uiv(type, coords);
 }
@@ -19724,7 +19724,7 @@ static void REGAL_CALL statistics_glVertexAttribP1ui(GLuint index, GLenum type, 
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP1ui(index, type, normalized, value);
 }
@@ -19740,7 +19740,7 @@ static void REGAL_CALL statistics_glVertexAttribP1uiv(GLuint index, GLenum type,
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP1uiv(index, type, normalized, value);
 }
@@ -19756,7 +19756,7 @@ static void REGAL_CALL statistics_glVertexAttribP2ui(GLuint index, GLenum type, 
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP2ui(index, type, normalized, value);
 }
@@ -19772,7 +19772,7 @@ static void REGAL_CALL statistics_glVertexAttribP2uiv(GLuint index, GLenum type,
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP2uiv(index, type, normalized, value);
 }
@@ -19788,7 +19788,7 @@ static void REGAL_CALL statistics_glVertexAttribP3ui(GLuint index, GLenum type, 
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP3ui(index, type, normalized, value);
 }
@@ -19804,7 +19804,7 @@ static void REGAL_CALL statistics_glVertexAttribP3uiv(GLuint index, GLenum type,
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP3uiv(index, type, normalized, value);
 }
@@ -19820,7 +19820,7 @@ static void REGAL_CALL statistics_glVertexAttribP4ui(GLuint index, GLenum type, 
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP4ui(index, type, normalized, value);
 }
@@ -19836,7 +19836,7 @@ static void REGAL_CALL statistics_glVertexAttribP4uiv(GLuint index, GLenum type,
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribP4uiv(index, type, normalized, value);
 }
@@ -19852,7 +19852,7 @@ static void REGAL_CALL statistics_glVertexP2ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexP2ui(type, coords);
 }
@@ -19868,7 +19868,7 @@ static void REGAL_CALL statistics_glVertexP2uiv(GLenum type, const GLuint *coord
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexP2uiv(type, coords);
 }
@@ -19884,7 +19884,7 @@ static void REGAL_CALL statistics_glVertexP3ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexP3ui(type, coords);
 }
@@ -19900,7 +19900,7 @@ static void REGAL_CALL statistics_glVertexP3uiv(GLenum type, const GLuint *coord
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexP3uiv(type, coords);
 }
@@ -19916,7 +19916,7 @@ static void REGAL_CALL statistics_glVertexP4ui(GLenum type, GLuint coords)
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexP4ui(type, coords);
 }
@@ -19932,7 +19932,7 @@ static void REGAL_CALL statistics_glVertexP4uiv(GLenum type, const GLuint *coord
 
   statistics.gl_arb_vertex_type_2_10_10_10_rev++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexP4uiv(type, coords);
 }
@@ -19950,7 +19950,7 @@ static void REGAL_CALL statistics_glDepthRangeArrayv(GLuint first, GLsizei count
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthRangeArrayv(first, count, v);
 }
@@ -19966,7 +19966,7 @@ static void REGAL_CALL statistics_glDepthRangeIndexed(GLuint index, GLclampd n, 
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthRangeIndexed(index, n, f);
 }
@@ -19982,7 +19982,7 @@ static void REGAL_CALL statistics_glGetDoublei_v(GLenum target, GLuint index, GL
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetDoublei_v(target, index, v);
 }
@@ -19998,7 +19998,7 @@ static void REGAL_CALL statistics_glGetFloati_v(GLenum target, GLuint index, GLf
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFloati_v(target, index, v);
 }
@@ -20014,7 +20014,7 @@ static void REGAL_CALL statistics_glScissorArrayv(GLuint first, GLsizei count, c
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glScissorArrayv(first, count, v);
 }
@@ -20030,7 +20030,7 @@ static void REGAL_CALL statistics_glScissorIndexed(GLuint index, GLint left, GLi
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glScissorIndexed(index, left, bottom, width, height);
 }
@@ -20046,7 +20046,7 @@ static void REGAL_CALL statistics_glScissorIndexedv(GLuint index, const GLint *v
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glScissorIndexedv(index, v);
 }
@@ -20062,7 +20062,7 @@ static void REGAL_CALL statistics_glViewportArrayv(GLuint first, GLsizei count, 
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glViewportArrayv(first, count, v);
 }
@@ -20078,7 +20078,7 @@ static void REGAL_CALL statistics_glViewportIndexedf(GLuint index, GLfloat x, GL
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glViewportIndexedf(index, x, y, w, h);
 }
@@ -20094,7 +20094,7 @@ static void REGAL_CALL statistics_glViewportIndexedfv(GLuint index, const GLfloa
 
   statistics.gl_arb_viewport_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glViewportIndexedfv(index, v);
 }
@@ -20112,7 +20112,7 @@ static void REGAL_CALL statistics_glWindowPos2dARB(GLdouble x, GLdouble y)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2dARB(x, y);
 }
@@ -20128,7 +20128,7 @@ static void REGAL_CALL statistics_glWindowPos2dvARB(const GLdouble *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2dvARB(p);
 }
@@ -20144,7 +20144,7 @@ static void REGAL_CALL statistics_glWindowPos2fARB(GLfloat x, GLfloat y)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2fARB(x, y);
 }
@@ -20160,7 +20160,7 @@ static void REGAL_CALL statistics_glWindowPos2fvARB(const GLfloat *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2fvARB(p);
 }
@@ -20176,7 +20176,7 @@ static void REGAL_CALL statistics_glWindowPos2iARB(GLint x, GLint y)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2iARB(x, y);
 }
@@ -20192,7 +20192,7 @@ static void REGAL_CALL statistics_glWindowPos2ivARB(const GLint *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2ivARB(p);
 }
@@ -20208,7 +20208,7 @@ static void REGAL_CALL statistics_glWindowPos2sARB(GLshort x, GLshort y)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2sARB(x, y);
 }
@@ -20224,7 +20224,7 @@ static void REGAL_CALL statistics_glWindowPos2svARB(const GLshort *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2svARB(p);
 }
@@ -20240,7 +20240,7 @@ static void REGAL_CALL statistics_glWindowPos3dARB(GLdouble x, GLdouble y, GLdou
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3dARB(x, y, z);
 }
@@ -20256,7 +20256,7 @@ static void REGAL_CALL statistics_glWindowPos3dvARB(const GLdouble *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3dvARB(p);
 }
@@ -20272,7 +20272,7 @@ static void REGAL_CALL statistics_glWindowPos3fARB(GLfloat x, GLfloat y, GLfloat
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3fARB(x, y, z);
 }
@@ -20288,7 +20288,7 @@ static void REGAL_CALL statistics_glWindowPos3fvARB(const GLfloat *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3fvARB(p);
 }
@@ -20304,7 +20304,7 @@ static void REGAL_CALL statistics_glWindowPos3iARB(GLint x, GLint y, GLint z)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3iARB(x, y, z);
 }
@@ -20320,7 +20320,7 @@ static void REGAL_CALL statistics_glWindowPos3ivARB(const GLint *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3ivARB(p);
 }
@@ -20336,7 +20336,7 @@ static void REGAL_CALL statistics_glWindowPos3sARB(GLshort x, GLshort y, GLshort
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3sARB(x, y, z);
 }
@@ -20352,7 +20352,7 @@ static void REGAL_CALL statistics_glWindowPos3svARB(const GLshort *p)
 
   statistics.gl_arb_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3svARB(p);
 }
@@ -20370,7 +20370,7 @@ static void REGAL_CALL statistics_glDrawBuffersATI(GLsizei n, const GLenum *bufs
 
   statistics.gl_ati_draw_buffers++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawBuffersATI(n, bufs);
 }
@@ -20388,7 +20388,7 @@ static void REGAL_CALL statistics_glDrawElementArrayATI(GLenum mode, GLsizei cou
 
   statistics.gl_ati_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementArrayATI(mode, count);
 }
@@ -20404,7 +20404,7 @@ static void REGAL_CALL statistics_glDrawRangeElementArrayATI(GLenum mode, GLuint
 
   statistics.gl_ati_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawRangeElementArrayATI(mode, start, end, count);
 }
@@ -20420,7 +20420,7 @@ static void REGAL_CALL statistics_glElementPointerATI(GLenum type, const GLvoid 
 
   statistics.gl_ati_element_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glElementPointerATI(type, pointer);
 }
@@ -20438,7 +20438,7 @@ static void REGAL_CALL statistics_glGetTexBumpParameterfvATI(GLenum pname, GLflo
 
   statistics.gl_ati_envmap_bumpmap++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexBumpParameterfvATI(pname, param);
 }
@@ -20454,7 +20454,7 @@ static void REGAL_CALL statistics_glGetTexBumpParameterivATI(GLenum pname, GLint
 
   statistics.gl_ati_envmap_bumpmap++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexBumpParameterivATI(pname, param);
 }
@@ -20470,7 +20470,7 @@ static void REGAL_CALL statistics_glTexBumpParameterfvATI(GLenum pname, const GL
 
   statistics.gl_ati_envmap_bumpmap++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexBumpParameterfvATI(pname, param);
 }
@@ -20486,7 +20486,7 @@ static void REGAL_CALL statistics_glTexBumpParameterivATI(GLenum pname, const GL
 
   statistics.gl_ati_envmap_bumpmap++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexBumpParameterivATI(pname, param);
 }
@@ -20504,7 +20504,7 @@ static void REGAL_CALL statistics_glAlphaFragmentOp1ATI(GLenum op, GLuint dst, G
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAlphaFragmentOp1ATI(op, dst, dstMod, arg1, arg1Rep, arg1Mod);
 }
@@ -20520,7 +20520,7 @@ static void REGAL_CALL statistics_glAlphaFragmentOp2ATI(GLenum op, GLuint dst, G
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAlphaFragmentOp2ATI(op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod);
 }
@@ -20536,7 +20536,7 @@ static void REGAL_CALL statistics_glAlphaFragmentOp3ATI(GLenum op, GLuint dst, G
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAlphaFragmentOp3ATI(op, dst, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod);
 }
@@ -20552,7 +20552,7 @@ static void REGAL_CALL statistics_glBeginFragmentShaderATI(void)
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginFragmentShaderATI();
 }
@@ -20568,7 +20568,7 @@ static void REGAL_CALL statistics_glBindFragmentShaderATI(GLuint id)
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindFragmentShaderATI(id);
 }
@@ -20584,7 +20584,7 @@ static void REGAL_CALL statistics_glColorFragmentOp1ATI(GLenum op, GLuint dst, G
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorFragmentOp1ATI(op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod);
 }
@@ -20600,7 +20600,7 @@ static void REGAL_CALL statistics_glColorFragmentOp2ATI(GLenum op, GLuint dst, G
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorFragmentOp2ATI(op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod);
 }
@@ -20616,7 +20616,7 @@ static void REGAL_CALL statistics_glColorFragmentOp3ATI(GLenum op, GLuint dst, G
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorFragmentOp3ATI(op, dst, dstMask, dstMod, arg1, arg1Rep, arg1Mod, arg2, arg2Rep, arg2Mod, arg3, arg3Rep, arg3Mod);
 }
@@ -20632,7 +20632,7 @@ static void REGAL_CALL statistics_glDeleteFragmentShaderATI(GLuint id)
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteFragmentShaderATI(id);
 }
@@ -20648,7 +20648,7 @@ static void REGAL_CALL statistics_glEndFragmentShaderATI(void)
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndFragmentShaderATI();
 }
@@ -20664,7 +20664,7 @@ static GLuint REGAL_CALL statistics_glGenFragmentShadersATI(GLuint range)
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGenFragmentShadersATI(range);
   return ret;
@@ -20681,7 +20681,7 @@ static void REGAL_CALL statistics_glPassTexCoordATI(GLuint dst, GLuint coord, GL
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPassTexCoordATI(dst, coord, swizzle);
 }
@@ -20697,7 +20697,7 @@ static void REGAL_CALL statistics_glSampleMapATI(GLuint dst, GLuint interp, GLen
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleMapATI(dst, interp, swizzle);
 }
@@ -20713,7 +20713,7 @@ static void REGAL_CALL statistics_glSetFragmentShaderConstantATI(GLuint dst, con
 
   statistics.gl_ati_fragment_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSetFragmentShaderConstantATI(dst, value);
 }
@@ -20729,7 +20729,7 @@ static GLvoid *REGAL_CALL statistics_glMapObjectBufferATI(GLuint buffer)
   Statistics &statistics = *_context->statistics;
   statistics.glMapObjectBufferATI++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapObjectBufferATI(buffer);
   return ret;
@@ -20746,7 +20746,7 @@ static void REGAL_CALL statistics_glUnmapObjectBufferATI(GLuint buffer)
 
   statistics.gl_ati_map_object_buffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUnmapObjectBufferATI(buffer);
 }
@@ -20764,7 +20764,7 @@ static void REGAL_CALL statistics_glPNTrianglesfATI(GLenum pname, GLfloat param)
 
   statistics.gl_ati_pn_triangles++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPNTrianglesfATI(pname, param);
 }
@@ -20780,7 +20780,7 @@ static void REGAL_CALL statistics_glPNTrianglesiATI(GLenum pname, GLint param)
 
   statistics.gl_ati_pn_triangles++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPNTrianglesiATI(pname, param);
 }
@@ -20798,7 +20798,7 @@ static void REGAL_CALL statistics_glStencilFuncSeparateATI(GLenum frontfunc, GLe
 
   statistics.gl_ati_separate_stencil++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilFuncSeparateATI(frontfunc, backfunc, ref, mask);
 }
@@ -20814,7 +20814,7 @@ static void REGAL_CALL statistics_glStencilOpSeparateATI(GLenum face, GLenum sfa
 
   statistics.gl_ati_separate_stencil++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilOpSeparateATI(face, sfail, dpfail, dppass);
 }
@@ -20832,7 +20832,7 @@ static void REGAL_CALL statistics_glArrayObjectATI(GLenum array, GLint size, GLe
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glArrayObjectATI(array, size, type, stride, buffer, offset);
 }
@@ -20848,7 +20848,7 @@ static void REGAL_CALL statistics_glFreeObjectBufferATI(GLuint buffer)
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFreeObjectBufferATI(buffer);
 }
@@ -20864,7 +20864,7 @@ static void REGAL_CALL statistics_glGetArrayObjectfvATI(GLenum array, GLenum pna
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetArrayObjectfvATI(array, pname, params);
 }
@@ -20880,7 +20880,7 @@ static void REGAL_CALL statistics_glGetArrayObjectivATI(GLenum array, GLenum pna
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetArrayObjectivATI(array, pname, params);
 }
@@ -20896,7 +20896,7 @@ static void REGAL_CALL statistics_glGetObjectBufferfvATI(GLuint buffer, GLenum p
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectBufferfvATI(buffer, pname, params);
 }
@@ -20912,7 +20912,7 @@ static void REGAL_CALL statistics_glGetObjectBufferivATI(GLuint buffer, GLenum p
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectBufferivATI(buffer, pname, params);
 }
@@ -20928,7 +20928,7 @@ static void REGAL_CALL statistics_glGetVariantArrayObjectfvATI(GLuint id, GLenum
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVariantArrayObjectfvATI(id, pname, params);
 }
@@ -20944,7 +20944,7 @@ static void REGAL_CALL statistics_glGetVariantArrayObjectivATI(GLuint id, GLenum
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVariantArrayObjectivATI(id, pname, params);
 }
@@ -20960,7 +20960,7 @@ static GLboolean REGAL_CALL statistics_glIsObjectBufferATI(GLuint buffer)
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsObjectBufferATI(buffer);
   return ret;
@@ -20977,7 +20977,7 @@ static GLuint REGAL_CALL statistics_glNewObjectBufferATI(GLsizei size, const GLv
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glNewObjectBufferATI(size, pointer, usage);
   return ret;
@@ -20994,7 +20994,7 @@ static void REGAL_CALL statistics_glUpdateObjectBufferATI(GLuint buffer, GLuint 
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUpdateObjectBufferATI(buffer, offset, size, pointer, preserve);
 }
@@ -21010,7 +21010,7 @@ static void REGAL_CALL statistics_glVariantArrayObjectATI(GLuint id, GLenum type
 
   statistics.gl_ati_vertex_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantArrayObjectATI(id, type, stride, buffer, offset);
 }
@@ -21028,7 +21028,7 @@ static void REGAL_CALL statistics_glGetVertexAttribArrayObjectfvATI(GLuint index
 
   statistics.gl_ati_vertex_attrib_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribArrayObjectfvATI(index, pname, params);
 }
@@ -21044,7 +21044,7 @@ static void REGAL_CALL statistics_glGetVertexAttribArrayObjectivATI(GLuint index
 
   statistics.gl_ati_vertex_attrib_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribArrayObjectivATI(index, pname, params);
 }
@@ -21060,7 +21060,7 @@ static void REGAL_CALL statistics_glVertexAttribArrayObjectATI(GLuint index, GLi
 
   statistics.gl_ati_vertex_attrib_array_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribArrayObjectATI(index, size, type, normalized, stride, buffer, offset);
 }
@@ -21078,7 +21078,7 @@ static void REGAL_CALL statistics_glClientActiveVertexStreamATI(GLenum stream)
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClientActiveVertexStreamATI(stream);
 }
@@ -21094,7 +21094,7 @@ static void REGAL_CALL statistics_glNormalStream3bATI(GLenum stream, GLbyte x, G
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3bATI(stream, x, y, z);
 }
@@ -21110,7 +21110,7 @@ static void REGAL_CALL statistics_glNormalStream3bvATI(GLenum stream, const GLby
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3bvATI(stream, coords);
 }
@@ -21126,7 +21126,7 @@ static void REGAL_CALL statistics_glNormalStream3dATI(GLenum stream, GLdouble x,
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3dATI(stream, x, y, z);
 }
@@ -21142,7 +21142,7 @@ static void REGAL_CALL statistics_glNormalStream3dvATI(GLenum stream, const GLdo
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3dvATI(stream, coords);
 }
@@ -21158,7 +21158,7 @@ static void REGAL_CALL statistics_glNormalStream3fATI(GLenum stream, GLfloat x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3fATI(stream, x, y, z);
 }
@@ -21174,7 +21174,7 @@ static void REGAL_CALL statistics_glNormalStream3fvATI(GLenum stream, const GLfl
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3fvATI(stream, coords);
 }
@@ -21190,7 +21190,7 @@ static void REGAL_CALL statistics_glNormalStream3iATI(GLenum stream, GLint x, GL
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3iATI(stream, x, y, z);
 }
@@ -21206,7 +21206,7 @@ static void REGAL_CALL statistics_glNormalStream3ivATI(GLenum stream, const GLin
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3ivATI(stream, coords);
 }
@@ -21222,7 +21222,7 @@ static void REGAL_CALL statistics_glNormalStream3sATI(GLenum stream, GLshort x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3sATI(stream, x, y, z);
 }
@@ -21238,7 +21238,7 @@ static void REGAL_CALL statistics_glNormalStream3svATI(GLenum stream, const GLsh
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalStream3svATI(stream, coords);
 }
@@ -21254,7 +21254,7 @@ static void REGAL_CALL statistics_glVertexBlendEnvfATI(GLenum pname, GLfloat par
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexBlendEnvfATI(pname, param);
 }
@@ -21270,7 +21270,7 @@ static void REGAL_CALL statistics_glVertexBlendEnviATI(GLenum pname, GLint param
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexBlendEnviATI(pname, param);
 }
@@ -21286,7 +21286,7 @@ static void REGAL_CALL statistics_glVertexStream1dATI(GLenum stream, GLdouble x)
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1dATI(stream, x);
 }
@@ -21302,7 +21302,7 @@ static void REGAL_CALL statistics_glVertexStream1dvATI(GLenum stream, const GLdo
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1dvATI(stream, coords);
 }
@@ -21318,7 +21318,7 @@ static void REGAL_CALL statistics_glVertexStream1fATI(GLenum stream, GLfloat x)
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1fATI(stream, x);
 }
@@ -21334,7 +21334,7 @@ static void REGAL_CALL statistics_glVertexStream1fvATI(GLenum stream, const GLfl
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1fvATI(stream, coords);
 }
@@ -21350,7 +21350,7 @@ static void REGAL_CALL statistics_glVertexStream1iATI(GLenum stream, GLint x)
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1iATI(stream, x);
 }
@@ -21366,7 +21366,7 @@ static void REGAL_CALL statistics_glVertexStream1ivATI(GLenum stream, const GLin
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1ivATI(stream, coords);
 }
@@ -21382,7 +21382,7 @@ static void REGAL_CALL statistics_glVertexStream1sATI(GLenum stream, GLshort x)
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1sATI(stream, x);
 }
@@ -21398,7 +21398,7 @@ static void REGAL_CALL statistics_glVertexStream1svATI(GLenum stream, const GLsh
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream1svATI(stream, coords);
 }
@@ -21414,7 +21414,7 @@ static void REGAL_CALL statistics_glVertexStream2dATI(GLenum stream, GLdouble x,
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2dATI(stream, x, y);
 }
@@ -21430,7 +21430,7 @@ static void REGAL_CALL statistics_glVertexStream2dvATI(GLenum stream, const GLdo
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2dvATI(stream, coords);
 }
@@ -21446,7 +21446,7 @@ static void REGAL_CALL statistics_glVertexStream2fATI(GLenum stream, GLfloat x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2fATI(stream, x, y);
 }
@@ -21462,7 +21462,7 @@ static void REGAL_CALL statistics_glVertexStream2fvATI(GLenum stream, const GLfl
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2fvATI(stream, coords);
 }
@@ -21478,7 +21478,7 @@ static void REGAL_CALL statistics_glVertexStream2iATI(GLenum stream, GLint x, GL
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2iATI(stream, x, y);
 }
@@ -21494,7 +21494,7 @@ static void REGAL_CALL statistics_glVertexStream2ivATI(GLenum stream, const GLin
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2ivATI(stream, coords);
 }
@@ -21510,7 +21510,7 @@ static void REGAL_CALL statistics_glVertexStream2sATI(GLenum stream, GLshort x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2sATI(stream, x, y);
 }
@@ -21526,7 +21526,7 @@ static void REGAL_CALL statistics_glVertexStream2svATI(GLenum stream, const GLsh
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream2svATI(stream, coords);
 }
@@ -21542,7 +21542,7 @@ static void REGAL_CALL statistics_glVertexStream3dATI(GLenum stream, GLdouble x,
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3dATI(stream, x, y, z);
 }
@@ -21558,7 +21558,7 @@ static void REGAL_CALL statistics_glVertexStream3dvATI(GLenum stream, const GLdo
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3dvATI(stream, coords);
 }
@@ -21574,7 +21574,7 @@ static void REGAL_CALL statistics_glVertexStream3fATI(GLenum stream, GLfloat x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3fATI(stream, x, y, z);
 }
@@ -21590,7 +21590,7 @@ static void REGAL_CALL statistics_glVertexStream3fvATI(GLenum stream, const GLfl
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3fvATI(stream, coords);
 }
@@ -21606,7 +21606,7 @@ static void REGAL_CALL statistics_glVertexStream3iATI(GLenum stream, GLint x, GL
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3iATI(stream, x, y, z);
 }
@@ -21622,7 +21622,7 @@ static void REGAL_CALL statistics_glVertexStream3ivATI(GLenum stream, const GLin
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3ivATI(stream, coords);
 }
@@ -21638,7 +21638,7 @@ static void REGAL_CALL statistics_glVertexStream3sATI(GLenum stream, GLshort x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3sATI(stream, x, y, z);
 }
@@ -21654,7 +21654,7 @@ static void REGAL_CALL statistics_glVertexStream3svATI(GLenum stream, const GLsh
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream3svATI(stream, coords);
 }
@@ -21670,7 +21670,7 @@ static void REGAL_CALL statistics_glVertexStream4dATI(GLenum stream, GLdouble x,
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4dATI(stream, x, y, z, w);
 }
@@ -21686,7 +21686,7 @@ static void REGAL_CALL statistics_glVertexStream4dvATI(GLenum stream, const GLdo
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4dvATI(stream, coords);
 }
@@ -21702,7 +21702,7 @@ static void REGAL_CALL statistics_glVertexStream4fATI(GLenum stream, GLfloat x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4fATI(stream, x, y, z, w);
 }
@@ -21718,7 +21718,7 @@ static void REGAL_CALL statistics_glVertexStream4fvATI(GLenum stream, const GLfl
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4fvATI(stream, coords);
 }
@@ -21734,7 +21734,7 @@ static void REGAL_CALL statistics_glVertexStream4iATI(GLenum stream, GLint x, GL
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4iATI(stream, x, y, z, w);
 }
@@ -21750,7 +21750,7 @@ static void REGAL_CALL statistics_glVertexStream4ivATI(GLenum stream, const GLin
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4ivATI(stream, coords);
 }
@@ -21766,7 +21766,7 @@ static void REGAL_CALL statistics_glVertexStream4sATI(GLenum stream, GLshort x, 
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4sATI(stream, x, y, z, w);
 }
@@ -21782,7 +21782,7 @@ static void REGAL_CALL statistics_glVertexStream4svATI(GLenum stream, const GLsh
 
   statistics.gl_ati_vertex_streams++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexStream4svATI(stream, coords);
 }
@@ -21800,7 +21800,7 @@ static GLint REGAL_CALL statistics_glGetUniformBufferSizeEXT(GLuint program, GLi
 
   statistics.gl_ext_bindable_uniform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetUniformBufferSizeEXT(program, location);
   return ret;
@@ -21817,7 +21817,7 @@ static GLintptr REGAL_CALL statistics_glGetUniformOffsetEXT(GLuint program, GLin
 
   statistics.gl_ext_bindable_uniform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLintptr  ret = _next->glGetUniformOffsetEXT(program, location);
   return ret;
@@ -21834,7 +21834,7 @@ static void REGAL_CALL statistics_glUniformBufferEXT(GLuint program, GLint locat
 
   statistics.gl_ext_bindable_uniform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformBufferEXT(program, location, buffer);
 }
@@ -21852,7 +21852,7 @@ static void REGAL_CALL statistics_glBlendColorEXT(GLclampf red, GLclampf green, 
 
   statistics.gl_ext_blend_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendColorEXT(red, green, blue, alpha);
 }
@@ -21870,7 +21870,7 @@ static void REGAL_CALL statistics_glBlendEquationSeparateEXT(GLenum modeRGB, GLe
 
   statistics.gl_ext_blend_equation_separate++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationSeparateEXT(modeRGB, modeAlpha);
 }
@@ -21888,7 +21888,7 @@ static void REGAL_CALL statistics_glBlendFuncSeparateEXT(GLenum sfactorRGB, GLen
 
   statistics.gl_ext_blend_func_separate++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncSeparateEXT(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 }
@@ -21906,7 +21906,7 @@ static void REGAL_CALL statistics_glBlendEquationEXT(GLenum mode)
 
   statistics.gl_ext_blend_minmax++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationEXT(mode);
 }
@@ -21924,7 +21924,7 @@ static void REGAL_CALL statistics_glColorSubTableEXT(GLenum target, GLsizei star
 
   statistics.gl_ext_color_subtable++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorSubTableEXT(target, start, count, format, type, table);
 }
@@ -21940,7 +21940,7 @@ static void REGAL_CALL statistics_glCopyColorSubTableEXT(GLenum target, GLsizei 
 
   statistics.gl_ext_color_subtable++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyColorSubTableEXT(target, start, x, y, width);
 }
@@ -21958,7 +21958,7 @@ static void REGAL_CALL statistics_glLockArraysEXT(GLint first, GLsizei count)
 
   statistics.gl_ext_compiled_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLockArraysEXT(first, count);
 }
@@ -21974,7 +21974,7 @@ static void REGAL_CALL statistics_glUnlockArraysEXT(void)
 
   statistics.gl_ext_compiled_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUnlockArraysEXT();
 }
@@ -21992,7 +21992,7 @@ static void REGAL_CALL statistics_glConvolutionFilter1DEXT(GLenum target, GLenum
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionFilter1DEXT(target, internalformat, width, format, type, image);
 }
@@ -22008,7 +22008,7 @@ static void REGAL_CALL statistics_glConvolutionFilter2DEXT(GLenum target, GLenum
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionFilter2DEXT(target, internalformat, width, height, format, type, image);
 }
@@ -22024,7 +22024,7 @@ static void REGAL_CALL statistics_glConvolutionParameterfEXT(GLenum target, GLen
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameterfEXT(target, pname, param);
 }
@@ -22040,7 +22040,7 @@ static void REGAL_CALL statistics_glConvolutionParameterfvEXT(GLenum target, GLe
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameterfvEXT(target, pname, params);
 }
@@ -22056,7 +22056,7 @@ static void REGAL_CALL statistics_glConvolutionParameteriEXT(GLenum target, GLen
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameteriEXT(target, pname, param);
 }
@@ -22072,7 +22072,7 @@ static void REGAL_CALL statistics_glConvolutionParameterivEXT(GLenum target, GLe
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glConvolutionParameterivEXT(target, pname, params);
 }
@@ -22088,7 +22088,7 @@ static void REGAL_CALL statistics_glCopyConvolutionFilter1DEXT(GLenum target, GL
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyConvolutionFilter1DEXT(target, internalformat, x, y, width);
 }
@@ -22104,7 +22104,7 @@ static void REGAL_CALL statistics_glCopyConvolutionFilter2DEXT(GLenum target, GL
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyConvolutionFilter2DEXT(target, internalformat, x, y, width, height);
 }
@@ -22120,7 +22120,7 @@ static void REGAL_CALL statistics_glGetConvolutionFilterEXT(GLenum target, GLenu
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetConvolutionFilterEXT(target, format, type, image);
 }
@@ -22136,7 +22136,7 @@ static void REGAL_CALL statistics_glGetConvolutionParameterfvEXT(GLenum target, 
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetConvolutionParameterfvEXT(target, pname, params);
 }
@@ -22152,7 +22152,7 @@ static void REGAL_CALL statistics_glGetConvolutionParameterivEXT(GLenum target, 
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetConvolutionParameterivEXT(target, pname, params);
 }
@@ -22168,7 +22168,7 @@ static void REGAL_CALL statistics_glGetSeparableFilterEXT(GLenum target, GLenum 
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSeparableFilterEXT(target, format, type, row, column, span);
 }
@@ -22184,7 +22184,7 @@ static void REGAL_CALL statistics_glSeparableFilter2DEXT(GLenum target, GLenum i
 
   statistics.gl_ext_convolution++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSeparableFilter2DEXT(target, internalformat, width, height, format, type, row, column);
 }
@@ -22200,7 +22200,7 @@ static void REGAL_CALL statistics_glBinormal3bEXT(GLbyte bx, GLbyte by, GLbyte b
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3bEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3bEXT(bx, by, bz);
 }
@@ -22214,7 +22214,7 @@ static void REGAL_CALL statistics_glBinormal3bvEXT(const GLbyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3bvEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3bvEXT(v);
 }
@@ -22228,7 +22228,7 @@ static void REGAL_CALL statistics_glBinormal3dEXT(GLdouble bx, GLdouble by, GLdo
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3dEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3dEXT(bx, by, bz);
 }
@@ -22242,7 +22242,7 @@ static void REGAL_CALL statistics_glBinormal3dvEXT(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3dvEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3dvEXT(v);
 }
@@ -22256,7 +22256,7 @@ static void REGAL_CALL statistics_glBinormal3fEXT(GLfloat bx, GLfloat by, GLfloa
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3fEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3fEXT(bx, by, bz);
 }
@@ -22270,7 +22270,7 @@ static void REGAL_CALL statistics_glBinormal3fvEXT(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3fvEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3fvEXT(v);
 }
@@ -22284,7 +22284,7 @@ static void REGAL_CALL statistics_glBinormal3iEXT(GLint bx, GLint by, GLint bz)
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3iEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3iEXT(bx, by, bz);
 }
@@ -22298,7 +22298,7 @@ static void REGAL_CALL statistics_glBinormal3ivEXT(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3ivEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3ivEXT(v);
 }
@@ -22312,7 +22312,7 @@ static void REGAL_CALL statistics_glBinormal3sEXT(GLshort bx, GLshort by, GLshor
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3sEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3sEXT(bx, by, bz);
 }
@@ -22326,7 +22326,7 @@ static void REGAL_CALL statistics_glBinormal3svEXT(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glBinormal3svEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormal3svEXT(v);
 }
@@ -22342,7 +22342,7 @@ static void REGAL_CALL statistics_glBinormalPointerEXT(GLenum type, GLsizei stri
 
   statistics.gl_ext_coordinate_frame++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBinormalPointerEXT(type, stride, pointer);
 }
@@ -22356,7 +22356,7 @@ static void REGAL_CALL statistics_glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3bEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3bEXT(tx, ty, tz);
 }
@@ -22370,7 +22370,7 @@ static void REGAL_CALL statistics_glTangent3bvEXT(const GLbyte *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3bvEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3bvEXT(v);
 }
@@ -22384,7 +22384,7 @@ static void REGAL_CALL statistics_glTangent3dEXT(GLdouble tx, GLdouble ty, GLdou
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3dEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3dEXT(tx, ty, tz);
 }
@@ -22398,7 +22398,7 @@ static void REGAL_CALL statistics_glTangent3dvEXT(const GLdouble *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3dvEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3dvEXT(v);
 }
@@ -22412,7 +22412,7 @@ static void REGAL_CALL statistics_glTangent3fEXT(GLfloat tx, GLfloat ty, GLfloat
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3fEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3fEXT(tx, ty, tz);
 }
@@ -22426,7 +22426,7 @@ static void REGAL_CALL statistics_glTangent3fvEXT(const GLfloat *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3fvEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3fvEXT(v);
 }
@@ -22440,7 +22440,7 @@ static void REGAL_CALL statistics_glTangent3iEXT(GLint tx, GLint ty, GLint tz)
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3iEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3iEXT(tx, ty, tz);
 }
@@ -22454,7 +22454,7 @@ static void REGAL_CALL statistics_glTangent3ivEXT(const GLint *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3ivEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3ivEXT(v);
 }
@@ -22468,7 +22468,7 @@ static void REGAL_CALL statistics_glTangent3sEXT(GLshort tx, GLshort ty, GLshort
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3sEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3sEXT(tx, ty, tz);
 }
@@ -22482,7 +22482,7 @@ static void REGAL_CALL statistics_glTangent3svEXT(const GLshort *v)
   Statistics &statistics = *_context->statistics;
   statistics.glTangent3svEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangent3svEXT(v);
 }
@@ -22498,7 +22498,7 @@ static void REGAL_CALL statistics_glTangentPointerEXT(GLenum type, GLsizei strid
 
   statistics.gl_ext_coordinate_frame++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTangentPointerEXT(type, stride, pointer);
 }
@@ -22516,7 +22516,7 @@ static void REGAL_CALL statistics_glCopyTexImage1DEXT(GLenum target, GLint level
 
   statistics.gl_ext_copy_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexImage1DEXT(target, level, internalformat, x, y, width, border);
 }
@@ -22532,7 +22532,7 @@ static void REGAL_CALL statistics_glCopyTexImage2DEXT(GLenum target, GLint level
 
   statistics.gl_ext_copy_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexImage2DEXT(target, level, internalformat, x, y, width, height, border);
 }
@@ -22548,7 +22548,7 @@ static void REGAL_CALL statistics_glCopyTexSubImage1DEXT(GLenum target, GLint le
 
   statistics.gl_ext_copy_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexSubImage1DEXT(target, level, xoffset, x, y, width);
 }
@@ -22564,7 +22564,7 @@ static void REGAL_CALL statistics_glCopyTexSubImage2DEXT(GLenum target, GLint le
 
   statistics.gl_ext_copy_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexSubImage2DEXT(target, level, xoffset, yoffset, x, y, width, height);
 }
@@ -22580,7 +22580,7 @@ static void REGAL_CALL statistics_glCopyTexSubImage3DEXT(GLenum target, GLint le
 
   statistics.gl_ext_copy_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexSubImage3DEXT(target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
@@ -22598,7 +22598,7 @@ static void REGAL_CALL statistics_glCullParameterdvEXT(GLenum pname, GLdouble *p
 
   statistics.gl_ext_cull_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCullParameterdvEXT(pname, params);
 }
@@ -22614,7 +22614,7 @@ static void REGAL_CALL statistics_glCullParameterfvEXT(GLenum pname, GLfloat *pa
 
   statistics.gl_ext_cull_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCullParameterfvEXT(pname, params);
 }
@@ -22630,7 +22630,7 @@ static void REGAL_CALL statistics_glGetObjectLabelEXT(GLenum type, GLuint object
   Statistics &statistics = *_context->statistics;
   statistics.glGetObjectLabelEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectLabelEXT(type, object, bufSize, length, label);
 }
@@ -22644,7 +22644,7 @@ static void REGAL_CALL statistics_glLabelObjectEXT(GLenum type, GLuint object, G
   Statistics &statistics = *_context->statistics;
   statistics.glLabelObjectEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLabelObjectEXT(type, object, length, label);
 }
@@ -22662,7 +22662,7 @@ static void REGAL_CALL statistics_glInsertEventMarkerEXT(GLsizei length, const G
 
   statistics.gl_ext_debug_marker++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInsertEventMarkerEXT(length, marker);
 }
@@ -22678,7 +22678,7 @@ static void REGAL_CALL statistics_glPopGroupMarkerEXT(void)
 
   statistics.gl_ext_debug_marker++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPopGroupMarkerEXT();
 }
@@ -22694,7 +22694,7 @@ static void REGAL_CALL statistics_glPushGroupMarkerEXT(GLsizei length, const GLc
 
   statistics.gl_ext_debug_marker++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPushGroupMarkerEXT(length, marker);
 }
@@ -22712,7 +22712,7 @@ static void REGAL_CALL statistics_glDepthBoundsEXT(GLclampd zmin, GLclampd zmax)
 
   statistics.gl_ext_depth_bounds_test++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthBoundsEXT(zmin, zmax);
 }
@@ -22730,7 +22730,7 @@ static void REGAL_CALL statistics_glBindMultiTextureEXT(GLenum texunit, GLenum t
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindMultiTextureEXT(texunit, target, texture);
 }
@@ -22746,7 +22746,7 @@ static GLenum REGAL_CALL statistics_glCheckNamedFramebufferStatusEXT(GLuint fram
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glCheckNamedFramebufferStatusEXT(framebuffer, target);
   return ret;
@@ -22763,7 +22763,7 @@ static void REGAL_CALL statistics_glClientAttribDefaultEXT(GLbitfield mask)
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClientAttribDefaultEXT(mask);
 }
@@ -22779,7 +22779,7 @@ static void REGAL_CALL statistics_glCompressedMultiTexImage1DEXT(GLenum texunit,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, imageSize, data);
 }
@@ -22795,7 +22795,7 @@ static void REGAL_CALL statistics_glCompressedMultiTexImage2DEXT(GLenum texunit,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, imageSize, bits);
 }
@@ -22811,7 +22811,7 @@ static void REGAL_CALL statistics_glCompressedMultiTexImage3DEXT(GLenum texunit,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, imageSize, bits);
 }
@@ -22827,7 +22827,7 @@ static void REGAL_CALL statistics_glCompressedMultiTexSubImage1DEXT(GLenum texun
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedMultiTexSubImage1DEXT(texunit, target, level, xoffset, width, format, imageSize, data);
 }
@@ -22843,7 +22843,7 @@ static void REGAL_CALL statistics_glCompressedMultiTexSubImage2DEXT(GLenum texun
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, width, height, format, imageSize, data);
 }
@@ -22859,7 +22859,7 @@ static void REGAL_CALL statistics_glCompressedMultiTexSubImage3DEXT(GLenum texun
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 }
@@ -22875,7 +22875,7 @@ static void REGAL_CALL statistics_glCompressedTextureImage1DEXT(GLuint texture, 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTextureImage1DEXT(texture, target, level, internalformat, width, border, imageSize, bits);
 }
@@ -22891,7 +22891,7 @@ static void REGAL_CALL statistics_glCompressedTextureImage2DEXT(GLuint texture, 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTextureImage2DEXT(texture, target, level, internalformat, width, height, border, imageSize, bits);
 }
@@ -22907,7 +22907,7 @@ static void REGAL_CALL statistics_glCompressedTextureImage3DEXT(GLuint texture, 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, imageSize, bits);
 }
@@ -22923,7 +22923,7 @@ static void REGAL_CALL statistics_glCompressedTextureSubImage1DEXT(GLuint textur
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTextureSubImage1DEXT(texture, target, level, xoffset, width, format, imageSize, bits);
 }
@@ -22939,7 +22939,7 @@ static void REGAL_CALL statistics_glCompressedTextureSubImage2DEXT(GLuint textur
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits);
 }
@@ -22955,7 +22955,7 @@ static void REGAL_CALL statistics_glCompressedTextureSubImage3DEXT(GLuint textur
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits);
 }
@@ -22971,7 +22971,7 @@ static void REGAL_CALL statistics_glCopyMultiTexImage1DEXT(GLenum texunit, GLenu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyMultiTexImage1DEXT(texunit, target, level, internalformat, x, y, width, border);
 }
@@ -22987,7 +22987,7 @@ static void REGAL_CALL statistics_glCopyMultiTexImage2DEXT(GLenum texunit, GLenu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyMultiTexImage2DEXT(texunit, target, level, internalformat, x, y, width, height, border);
 }
@@ -23003,7 +23003,7 @@ static void REGAL_CALL statistics_glCopyMultiTexSubImage1DEXT(GLenum texunit, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyMultiTexSubImage1DEXT(texunit, target, level, xoffset, x, y, width);
 }
@@ -23019,7 +23019,7 @@ static void REGAL_CALL statistics_glCopyMultiTexSubImage2DEXT(GLenum texunit, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, x, y, width, height);
 }
@@ -23035,7 +23035,7 @@ static void REGAL_CALL statistics_glCopyMultiTexSubImage3DEXT(GLenum texunit, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
@@ -23051,7 +23051,7 @@ static void REGAL_CALL statistics_glCopyTextureImage1DEXT(GLuint texture, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTextureImage1DEXT(texture, target, level, internalformat, x, y, width, border);
 }
@@ -23067,7 +23067,7 @@ static void REGAL_CALL statistics_glCopyTextureImage2DEXT(GLuint texture, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTextureImage2DEXT(texture, target, level, internalformat, x, y, width, height, border);
 }
@@ -23083,7 +23083,7 @@ static void REGAL_CALL statistics_glCopyTextureSubImage1DEXT(GLuint texture, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTextureSubImage1DEXT(texture, target, level, xoffset, x, y, width);
 }
@@ -23099,7 +23099,7 @@ static void REGAL_CALL statistics_glCopyTextureSubImage2DEXT(GLuint texture, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, x, y, width, height);
 }
@@ -23115,7 +23115,7 @@ static void REGAL_CALL statistics_glCopyTextureSubImage3DEXT(GLuint texture, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
@@ -23131,7 +23131,7 @@ static void REGAL_CALL statistics_glDisableClientStateIndexedEXT(GLenum array, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableClientStateIndexedEXT(array, index);
 }
@@ -23147,7 +23147,7 @@ static void REGAL_CALL statistics_glDisableClientStateiEXT(GLenum array, GLuint 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableClientStateiEXT(array, index);
 }
@@ -23163,7 +23163,7 @@ static void REGAL_CALL statistics_glDisableVertexArrayAttribEXT(GLuint vaobj, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableVertexArrayAttribEXT(vaobj, array);
 }
@@ -23179,7 +23179,7 @@ static void REGAL_CALL statistics_glDisableVertexArrayEXT(GLuint vaobj, GLenum a
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableVertexArrayEXT(vaobj, array);
 }
@@ -23195,7 +23195,7 @@ static void REGAL_CALL statistics_glEnableClientStateIndexedEXT(GLenum array, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableClientStateIndexedEXT(array, index);
 }
@@ -23211,7 +23211,7 @@ static void REGAL_CALL statistics_glEnableClientStateiEXT(GLenum array, GLuint i
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableClientStateiEXT(array, index);
 }
@@ -23227,7 +23227,7 @@ static void REGAL_CALL statistics_glEnableVertexArrayAttribEXT(GLuint vaobj, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableVertexArrayAttribEXT(vaobj, array);
 }
@@ -23243,7 +23243,7 @@ static void REGAL_CALL statistics_glEnableVertexArrayEXT(GLuint vaobj, GLenum ar
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableVertexArrayEXT(vaobj, array);
 }
@@ -23259,7 +23259,7 @@ static void REGAL_CALL statistics_glFlushMappedNamedBufferRangeEXT(GLuint buffer
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushMappedNamedBufferRangeEXT(buffer, offset, length);
 }
@@ -23275,7 +23275,7 @@ static void REGAL_CALL statistics_glFramebufferDrawBufferEXT(GLuint framebuffer,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferDrawBufferEXT(framebuffer, mode);
 }
@@ -23291,7 +23291,7 @@ static void REGAL_CALL statistics_glFramebufferDrawBuffersEXT(GLuint framebuffer
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferDrawBuffersEXT(framebuffer, n, bufs);
 }
@@ -23307,7 +23307,7 @@ static void REGAL_CALL statistics_glFramebufferReadBufferEXT(GLuint framebuffer,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferReadBufferEXT(framebuffer, mode);
 }
@@ -23323,7 +23323,7 @@ static void REGAL_CALL statistics_glGenerateMultiTexMipmapEXT(GLenum texunit, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenerateMultiTexMipmapEXT(texunit, target);
 }
@@ -23339,7 +23339,7 @@ static void REGAL_CALL statistics_glGenerateTextureMipmapEXT(GLuint texture, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenerateTextureMipmapEXT(texture, target);
 }
@@ -23355,7 +23355,7 @@ static void REGAL_CALL statistics_glGetCompressedMultiTexImageEXT(GLenum texunit
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCompressedMultiTexImageEXT(texunit, target, lod, img);
 }
@@ -23371,7 +23371,7 @@ static void REGAL_CALL statistics_glGetCompressedTextureImageEXT(GLuint texture,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCompressedTextureImageEXT(texture, target, lod, img);
 }
@@ -23387,7 +23387,7 @@ static void REGAL_CALL statistics_glGetDoubleIndexedvEXT(GLenum target, GLuint i
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetDoubleIndexedvEXT(target, index, data);
 }
@@ -23403,7 +23403,7 @@ static void REGAL_CALL statistics_glGetDoublei_vEXT(GLenum target, GLuint index,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetDoublei_vEXT(target, index, data);
 }
@@ -23419,7 +23419,7 @@ static void REGAL_CALL statistics_glGetFloatIndexedvEXT(GLenum target, GLuint in
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFloatIndexedvEXT(target, index, data);
 }
@@ -23435,7 +23435,7 @@ static void REGAL_CALL statistics_glGetFloati_vEXT(GLenum target, GLuint index, 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFloati_vEXT(target, index, data);
 }
@@ -23451,7 +23451,7 @@ static void REGAL_CALL statistics_glGetFramebufferParameterivEXT(GLuint framebuf
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFramebufferParameterivEXT(framebuffer, pname, params);
 }
@@ -23467,7 +23467,7 @@ static void REGAL_CALL statistics_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum t
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexEnvfvEXT(texunit, target, pname, params);
 }
@@ -23483,7 +23483,7 @@ static void REGAL_CALL statistics_glGetMultiTexEnvivEXT(GLenum texunit, GLenum t
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexEnvivEXT(texunit, target, pname, params);
 }
@@ -23499,7 +23499,7 @@ static void REGAL_CALL statistics_glGetMultiTexGendvEXT(GLenum texunit, GLenum c
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexGendvEXT(texunit, coord, pname, params);
 }
@@ -23515,7 +23515,7 @@ static void REGAL_CALL statistics_glGetMultiTexGenfvEXT(GLenum texunit, GLenum c
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexGenfvEXT(texunit, coord, pname, params);
 }
@@ -23531,7 +23531,7 @@ static void REGAL_CALL statistics_glGetMultiTexGenivEXT(GLenum texunit, GLenum c
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexGenivEXT(texunit, coord, pname, params);
 }
@@ -23547,7 +23547,7 @@ static void REGAL_CALL statistics_glGetMultiTexImageEXT(GLenum texunit, GLenum t
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexImageEXT(texunit, target, level, format, type, pixels);
 }
@@ -23563,7 +23563,7 @@ static void REGAL_CALL statistics_glGetMultiTexLevelParameterfvEXT(GLenum texuni
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexLevelParameterfvEXT(texunit, target, level, pname, params);
 }
@@ -23579,7 +23579,7 @@ static void REGAL_CALL statistics_glGetMultiTexLevelParameterivEXT(GLenum texuni
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexLevelParameterivEXT(texunit, target, level, pname, params);
 }
@@ -23595,7 +23595,7 @@ static void REGAL_CALL statistics_glGetMultiTexParameterIivEXT(GLenum texunit, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexParameterIivEXT(texunit, target, pname, params);
 }
@@ -23611,7 +23611,7 @@ static void REGAL_CALL statistics_glGetMultiTexParameterIuivEXT(GLenum texunit, 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexParameterIuivEXT(texunit, target, pname, params);
 }
@@ -23627,7 +23627,7 @@ static void REGAL_CALL statistics_glGetMultiTexParameterfvEXT(GLenum texunit, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexParameterfvEXT(texunit, target, pname, params);
 }
@@ -23643,7 +23643,7 @@ static void REGAL_CALL statistics_glGetMultiTexParameterivEXT(GLenum texunit, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultiTexParameterivEXT(texunit, target, pname, params);
 }
@@ -23659,7 +23659,7 @@ static void REGAL_CALL statistics_glGetNamedBufferParameterivEXT(GLuint buffer, 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedBufferParameterivEXT(buffer, pname, params);
 }
@@ -23675,7 +23675,7 @@ static void REGAL_CALL statistics_glGetNamedBufferPointervEXT(GLuint buffer, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedBufferPointervEXT(buffer, pname, params);
 }
@@ -23691,7 +23691,7 @@ static void REGAL_CALL statistics_glGetNamedBufferSubDataEXT(GLuint buffer, GLin
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedBufferSubDataEXT(buffer, offset, size, data);
 }
@@ -23707,7 +23707,7 @@ static void REGAL_CALL statistics_glGetNamedFramebufferAttachmentParameterivEXT(
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedFramebufferAttachmentParameterivEXT(framebuffer, attachment, pname, params);
 }
@@ -23723,7 +23723,7 @@ static void REGAL_CALL statistics_glGetNamedProgramLocalParameterIivEXT(GLuint p
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedProgramLocalParameterIivEXT(program, target, index, params);
 }
@@ -23739,7 +23739,7 @@ static void REGAL_CALL statistics_glGetNamedProgramLocalParameterIuivEXT(GLuint 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedProgramLocalParameterIuivEXT(program, target, index, params);
 }
@@ -23755,7 +23755,7 @@ static void REGAL_CALL statistics_glGetNamedProgramLocalParameterdvEXT(GLuint pr
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedProgramLocalParameterdvEXT(program, target, index, params);
 }
@@ -23771,7 +23771,7 @@ static void REGAL_CALL statistics_glGetNamedProgramLocalParameterfvEXT(GLuint pr
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedProgramLocalParameterfvEXT(program, target, index, params);
 }
@@ -23787,7 +23787,7 @@ static void REGAL_CALL statistics_glGetNamedProgramStringEXT(GLuint program, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedProgramStringEXT(program, target, pname, string);
 }
@@ -23803,7 +23803,7 @@ static void REGAL_CALL statistics_glGetNamedProgramivEXT(GLuint program, GLenum 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedProgramivEXT(program, target, pname, params);
 }
@@ -23819,7 +23819,7 @@ static void REGAL_CALL statistics_glGetNamedRenderbufferParameterivEXT(GLuint re
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedRenderbufferParameterivEXT(renderbuffer, pname, params);
 }
@@ -23835,7 +23835,7 @@ static void REGAL_CALL statistics_glGetPointerIndexedvEXT(GLenum target, GLuint 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPointerIndexedvEXT(target, index, data);
 }
@@ -23851,7 +23851,7 @@ static void REGAL_CALL statistics_glGetPointeri_vEXT(GLenum pname, GLuint index,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPointeri_vEXT(pname, index, params);
 }
@@ -23867,7 +23867,7 @@ static void REGAL_CALL statistics_glGetTextureImageEXT(GLuint texture, GLenum ta
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTextureImageEXT(texture, target, level, format, type, pixels);
 }
@@ -23883,7 +23883,7 @@ static void REGAL_CALL statistics_glGetTextureLevelParameterfvEXT(GLuint texture
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTextureLevelParameterfvEXT(texture, target, level, pname, params);
 }
@@ -23899,7 +23899,7 @@ static void REGAL_CALL statistics_glGetTextureLevelParameterivEXT(GLuint texture
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTextureLevelParameterivEXT(texture, target, level, pname, params);
 }
@@ -23915,7 +23915,7 @@ static void REGAL_CALL statistics_glGetTextureParameterIivEXT(GLuint texture, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTextureParameterIivEXT(texture, target, pname, params);
 }
@@ -23931,7 +23931,7 @@ static void REGAL_CALL statistics_glGetTextureParameterIuivEXT(GLuint texture, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTextureParameterIuivEXT(texture, target, pname, params);
 }
@@ -23947,7 +23947,7 @@ static void REGAL_CALL statistics_glGetTextureParameterfvEXT(GLuint texture, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTextureParameterfvEXT(texture, target, pname, params);
 }
@@ -23963,7 +23963,7 @@ static void REGAL_CALL statistics_glGetTextureParameterivEXT(GLuint texture, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTextureParameterivEXT(texture, target, pname, params);
 }
@@ -23979,7 +23979,7 @@ static void REGAL_CALL statistics_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexArrayIntegeri_vEXT(vaobj, index, pname, param);
 }
@@ -23995,7 +23995,7 @@ static void REGAL_CALL statistics_glGetVertexArrayIntegervEXT(GLuint vaobj, GLen
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexArrayIntegervEXT(vaobj, pname, param);
 }
@@ -24011,7 +24011,7 @@ static void REGAL_CALL statistics_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GL
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexArrayPointeri_vEXT(vaobj, index, pname, param);
 }
@@ -24027,7 +24027,7 @@ static void REGAL_CALL statistics_glGetVertexArrayPointervEXT(GLuint vaobj, GLen
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexArrayPointervEXT(vaobj, pname, param);
 }
@@ -24041,7 +24041,7 @@ static GLvoid *REGAL_CALL statistics_glMapNamedBufferEXT(GLuint buffer, GLenum a
   Statistics &statistics = *_context->statistics;
   statistics.glMapNamedBufferEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapNamedBufferEXT(buffer, access);
   return ret;
@@ -24056,7 +24056,7 @@ static GLvoid *REGAL_CALL statistics_glMapNamedBufferRangeEXT(GLuint buffer, GLi
   Statistics &statistics = *_context->statistics;
   statistics.glMapNamedBufferRangeEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapNamedBufferRangeEXT(buffer, offset, length, access);
   return ret;
@@ -24073,7 +24073,7 @@ static void REGAL_CALL statistics_glMatrixFrustumEXT(GLenum mode, GLdouble left,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixFrustumEXT(mode, left, right, bottom, top, zNear, zFar);
 }
@@ -24089,7 +24089,7 @@ static void REGAL_CALL statistics_glMatrixLoadIdentityEXT(GLenum mode)
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixLoadIdentityEXT(mode);
 }
@@ -24105,7 +24105,7 @@ static void REGAL_CALL statistics_glMatrixLoadTransposedEXT(GLenum mode, const G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixLoadTransposedEXT(mode, m);
 }
@@ -24121,7 +24121,7 @@ static void REGAL_CALL statistics_glMatrixLoadTransposefEXT(GLenum mode, const G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixLoadTransposefEXT(mode, m);
 }
@@ -24137,7 +24137,7 @@ static void REGAL_CALL statistics_glMatrixLoaddEXT(GLenum mode, const GLdouble *
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixLoaddEXT(mode, m);
 }
@@ -24153,7 +24153,7 @@ static void REGAL_CALL statistics_glMatrixLoadfEXT(GLenum mode, const GLfloat *m
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixLoadfEXT(mode, m);
 }
@@ -24169,7 +24169,7 @@ static void REGAL_CALL statistics_glMatrixMultTransposedEXT(GLenum mode, const G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixMultTransposedEXT(mode, m);
 }
@@ -24185,7 +24185,7 @@ static void REGAL_CALL statistics_glMatrixMultTransposefEXT(GLenum mode, const G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixMultTransposefEXT(mode, m);
 }
@@ -24201,7 +24201,7 @@ static void REGAL_CALL statistics_glMatrixMultdEXT(GLenum mode, const GLdouble *
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixMultdEXT(mode, m);
 }
@@ -24217,7 +24217,7 @@ static void REGAL_CALL statistics_glMatrixMultfEXT(GLenum mode, const GLfloat *m
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixMultfEXT(mode, m);
 }
@@ -24233,7 +24233,7 @@ static void REGAL_CALL statistics_glMatrixOrthoEXT(GLenum mode, GLdouble left, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixOrthoEXT(mode, left, right, bottom, top, zNear, zFar);
 }
@@ -24249,7 +24249,7 @@ static void REGAL_CALL statistics_glMatrixPopEXT(GLenum mode)
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixPopEXT(mode);
 }
@@ -24265,7 +24265,7 @@ static void REGAL_CALL statistics_glMatrixPushEXT(GLenum mode)
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixPushEXT(mode);
 }
@@ -24281,7 +24281,7 @@ static void REGAL_CALL statistics_glMatrixRotatedEXT(GLenum mode, GLdouble angle
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixRotatedEXT(mode, angle, x, y, z);
 }
@@ -24297,7 +24297,7 @@ static void REGAL_CALL statistics_glMatrixRotatefEXT(GLenum mode, GLfloat angle,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixRotatefEXT(mode, angle, x, y, z);
 }
@@ -24313,7 +24313,7 @@ static void REGAL_CALL statistics_glMatrixScaledEXT(GLenum mode, GLdouble x, GLd
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixScaledEXT(mode, x, y, z);
 }
@@ -24329,7 +24329,7 @@ static void REGAL_CALL statistics_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfl
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixScalefEXT(mode, x, y, z);
 }
@@ -24345,7 +24345,7 @@ static void REGAL_CALL statistics_glMatrixTranslatedEXT(GLenum mode, GLdouble x,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixTranslatedEXT(mode, x, y, z);
 }
@@ -24361,7 +24361,7 @@ static void REGAL_CALL statistics_glMatrixTranslatefEXT(GLenum mode, GLfloat x, 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixTranslatefEXT(mode, x, y, z);
 }
@@ -24377,7 +24377,7 @@ static void REGAL_CALL statistics_glMultiTexBufferEXT(GLenum texunit, GLenum tar
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexBufferEXT(texunit, target, internalformat, buffer);
 }
@@ -24393,7 +24393,7 @@ static void REGAL_CALL statistics_glMultiTexCoordPointerEXT(GLenum texunit, GLin
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoordPointerEXT(texunit, size, type, stride, pointer);
 }
@@ -24409,7 +24409,7 @@ static void REGAL_CALL statistics_glMultiTexEnvfEXT(GLenum texunit, GLenum targe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexEnvfEXT(texunit, target, pname, param);
 }
@@ -24425,7 +24425,7 @@ static void REGAL_CALL statistics_glMultiTexEnvfvEXT(GLenum texunit, GLenum targ
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexEnvfvEXT(texunit, target, pname, params);
 }
@@ -24441,7 +24441,7 @@ static void REGAL_CALL statistics_glMultiTexEnviEXT(GLenum texunit, GLenum targe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexEnviEXT(texunit, target, pname, param);
 }
@@ -24457,7 +24457,7 @@ static void REGAL_CALL statistics_glMultiTexEnvivEXT(GLenum texunit, GLenum targ
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexEnvivEXT(texunit, target, pname, params);
 }
@@ -24473,7 +24473,7 @@ static void REGAL_CALL statistics_glMultiTexGendEXT(GLenum texunit, GLenum coord
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexGendEXT(texunit, coord, pname, param);
 }
@@ -24489,7 +24489,7 @@ static void REGAL_CALL statistics_glMultiTexGendvEXT(GLenum texunit, GLenum coor
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexGendvEXT(texunit, coord, pname, params);
 }
@@ -24505,7 +24505,7 @@ static void REGAL_CALL statistics_glMultiTexGenfEXT(GLenum texunit, GLenum coord
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexGenfEXT(texunit, coord, pname, param);
 }
@@ -24521,7 +24521,7 @@ static void REGAL_CALL statistics_glMultiTexGenfvEXT(GLenum texunit, GLenum coor
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexGenfvEXT(texunit, coord, pname, params);
 }
@@ -24537,7 +24537,7 @@ static void REGAL_CALL statistics_glMultiTexGeniEXT(GLenum texunit, GLenum coord
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexGeniEXT(texunit, coord, pname, param);
 }
@@ -24553,7 +24553,7 @@ static void REGAL_CALL statistics_glMultiTexGenivEXT(GLenum texunit, GLenum coor
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexGenivEXT(texunit, coord, pname, params);
 }
@@ -24569,7 +24569,7 @@ static void REGAL_CALL statistics_glMultiTexImage1DEXT(GLenum texunit, GLenum ta
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, format, type, pixels);
 }
@@ -24585,7 +24585,7 @@ static void REGAL_CALL statistics_glMultiTexImage2DEXT(GLenum texunit, GLenum ta
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, format, type, pixels);
 }
@@ -24601,7 +24601,7 @@ static void REGAL_CALL statistics_glMultiTexImage3DEXT(GLenum texunit, GLenum ta
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels);
 }
@@ -24617,7 +24617,7 @@ static void REGAL_CALL statistics_glMultiTexParameterIivEXT(GLenum texunit, GLen
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexParameterIivEXT(texunit, target, pname, params);
 }
@@ -24633,7 +24633,7 @@ static void REGAL_CALL statistics_glMultiTexParameterIuivEXT(GLenum texunit, GLe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexParameterIuivEXT(texunit, target, pname, params);
 }
@@ -24649,7 +24649,7 @@ static void REGAL_CALL statistics_glMultiTexParameterfEXT(GLenum texunit, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexParameterfEXT(texunit, target, pname, param);
 }
@@ -24665,7 +24665,7 @@ static void REGAL_CALL statistics_glMultiTexParameterfvEXT(GLenum texunit, GLenu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexParameterfvEXT(texunit, target, pname, param);
 }
@@ -24681,7 +24681,7 @@ static void REGAL_CALL statistics_glMultiTexParameteriEXT(GLenum texunit, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexParameteriEXT(texunit, target, pname, param);
 }
@@ -24697,7 +24697,7 @@ static void REGAL_CALL statistics_glMultiTexParameterivEXT(GLenum texunit, GLenu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexParameterivEXT(texunit, target, pname, param);
 }
@@ -24713,7 +24713,7 @@ static void REGAL_CALL statistics_glMultiTexRenderbufferEXT(GLenum texunit, GLen
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexRenderbufferEXT(texunit, target, renderbuffer);
 }
@@ -24729,7 +24729,7 @@ static void REGAL_CALL statistics_glMultiTexSubImage1DEXT(GLenum texunit, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexSubImage1DEXT(texunit, target, level, xoffset, width, format, type, pixels);
 }
@@ -24745,7 +24745,7 @@ static void REGAL_CALL statistics_glMultiTexSubImage2DEXT(GLenum texunit, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexSubImage2DEXT(texunit, target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
@@ -24761,7 +24761,7 @@ static void REGAL_CALL statistics_glMultiTexSubImage3DEXT(GLenum texunit, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexSubImage3DEXT(texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
@@ -24777,7 +24777,7 @@ static void REGAL_CALL statistics_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedBufferDataEXT(buffer, size, data, usage);
 }
@@ -24793,7 +24793,7 @@ static void REGAL_CALL statistics_glNamedBufferSubDataEXT(GLuint buffer, GLintpt
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedBufferSubDataEXT(buffer, offset, size, data);
 }
@@ -24809,7 +24809,7 @@ static void REGAL_CALL statistics_glNamedCopyBufferSubDataEXT(GLuint readBuffer,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedCopyBufferSubDataEXT(readBuffer, writeBuffer, readOffset, writeOffset, size);
 }
@@ -24825,7 +24825,7 @@ static void REGAL_CALL statistics_glNamedFramebufferRenderbufferEXT(GLuint frame
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferRenderbufferEXT(framebuffer, attachment, renderbuffertarget, renderbuffer);
 }
@@ -24841,7 +24841,7 @@ static void REGAL_CALL statistics_glNamedFramebufferTexture1DEXT(GLuint framebuf
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferTexture1DEXT(framebuffer, attachment, textarget, texture, level);
 }
@@ -24857,7 +24857,7 @@ static void REGAL_CALL statistics_glNamedFramebufferTexture2DEXT(GLuint framebuf
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferTexture2DEXT(framebuffer, attachment, textarget, texture, level);
 }
@@ -24873,7 +24873,7 @@ static void REGAL_CALL statistics_glNamedFramebufferTexture3DEXT(GLuint framebuf
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferTexture3DEXT(framebuffer, attachment, textarget, texture, level, zoffset);
 }
@@ -24889,7 +24889,7 @@ static void REGAL_CALL statistics_glNamedFramebufferTextureEXT(GLuint framebuffe
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferTextureEXT(framebuffer, attachment, texture, level);
 }
@@ -24905,7 +24905,7 @@ static void REGAL_CALL statistics_glNamedFramebufferTextureFaceEXT(GLuint frameb
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferTextureFaceEXT(framebuffer, attachment, texture, level, face);
 }
@@ -24921,7 +24921,7 @@ static void REGAL_CALL statistics_glNamedFramebufferTextureLayerEXT(GLuint frame
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedFramebufferTextureLayerEXT(framebuffer, attachment, texture, level, layer);
 }
@@ -24937,7 +24937,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameter4dEXT(GLuint progr
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameter4dEXT(program, target, index, x, y, z, w);
 }
@@ -24953,7 +24953,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameter4dvEXT(GLuint prog
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameter4dvEXT(program, target, index, params);
 }
@@ -24969,7 +24969,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameter4fEXT(GLuint progr
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameter4fEXT(program, target, index, x, y, z, w);
 }
@@ -24985,7 +24985,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameter4fvEXT(GLuint prog
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameter4fvEXT(program, target, index, params);
 }
@@ -25001,7 +25001,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameterI4iEXT(GLuint prog
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameterI4iEXT(program, target, index, x, y, z, w);
 }
@@ -25017,7 +25017,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameterI4ivEXT(GLuint pro
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameterI4ivEXT(program, target, index, params);
 }
@@ -25033,7 +25033,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameterI4uiEXT(GLuint pro
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameterI4uiEXT(program, target, index, x, y, z, w);
 }
@@ -25049,7 +25049,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameterI4uivEXT(GLuint pr
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameterI4uivEXT(program, target, index, params);
 }
@@ -25065,7 +25065,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParameters4fvEXT(GLuint pro
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParameters4fvEXT(program, target, index, count, params);
 }
@@ -25081,7 +25081,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParametersI4ivEXT(GLuint pr
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParametersI4ivEXT(program, target, index, count, params);
 }
@@ -25097,7 +25097,7 @@ static void REGAL_CALL statistics_glNamedProgramLocalParametersI4uivEXT(GLuint p
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramLocalParametersI4uivEXT(program, target, index, count, params);
 }
@@ -25113,7 +25113,7 @@ static void REGAL_CALL statistics_glNamedProgramStringEXT(GLuint program, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedProgramStringEXT(program, target, format, len, string);
 }
@@ -25129,7 +25129,7 @@ static void REGAL_CALL statistics_glNamedRenderbufferStorageEXT(GLuint renderbuf
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedRenderbufferStorageEXT(renderbuffer, internalformat, width, height);
 }
@@ -25145,7 +25145,7 @@ static void REGAL_CALL statistics_glNamedRenderbufferStorageMultisampleCoverageE
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedRenderbufferStorageMultisampleCoverageEXT(renderbuffer, coverageSamples, colorSamples, internalformat, width, height);
 }
@@ -25161,7 +25161,7 @@ static void REGAL_CALL statistics_glNamedRenderbufferStorageMultisampleEXT(GLuin
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNamedRenderbufferStorageMultisampleEXT(renderbuffer, samples, internalformat, width, height);
 }
@@ -25177,7 +25177,7 @@ static void REGAL_CALL statistics_glProgramUniform1dEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1dEXT(program, location, x);
 }
@@ -25193,7 +25193,7 @@ static void REGAL_CALL statistics_glProgramUniform1dvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1dvEXT(program, location, count, value);
 }
@@ -25209,7 +25209,7 @@ static void REGAL_CALL statistics_glProgramUniform1fEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1fEXT(program, location, v0);
 }
@@ -25225,7 +25225,7 @@ static void REGAL_CALL statistics_glProgramUniform1fvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1fvEXT(program, location, count, value);
 }
@@ -25241,7 +25241,7 @@ static void REGAL_CALL statistics_glProgramUniform1iEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1iEXT(program, location, v0);
 }
@@ -25257,7 +25257,7 @@ static void REGAL_CALL statistics_glProgramUniform1ivEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1ivEXT(program, location, count, value);
 }
@@ -25273,7 +25273,7 @@ static void REGAL_CALL statistics_glProgramUniform1uiEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1uiEXT(program, location, v0);
 }
@@ -25289,7 +25289,7 @@ static void REGAL_CALL statistics_glProgramUniform1uivEXT(GLuint program, GLint 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1uivEXT(program, location, count, value);
 }
@@ -25305,7 +25305,7 @@ static void REGAL_CALL statistics_glProgramUniform2dEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2dEXT(program, location, x, y);
 }
@@ -25321,7 +25321,7 @@ static void REGAL_CALL statistics_glProgramUniform2dvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2dvEXT(program, location, count, value);
 }
@@ -25337,7 +25337,7 @@ static void REGAL_CALL statistics_glProgramUniform2fEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2fEXT(program, location, v0, v1);
 }
@@ -25353,7 +25353,7 @@ static void REGAL_CALL statistics_glProgramUniform2fvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2fvEXT(program, location, count, value);
 }
@@ -25369,7 +25369,7 @@ static void REGAL_CALL statistics_glProgramUniform2iEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2iEXT(program, location, v0, v1);
 }
@@ -25385,7 +25385,7 @@ static void REGAL_CALL statistics_glProgramUniform2ivEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2ivEXT(program, location, count, value);
 }
@@ -25401,7 +25401,7 @@ static void REGAL_CALL statistics_glProgramUniform2uiEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2uiEXT(program, location, v0, v1);
 }
@@ -25417,7 +25417,7 @@ static void REGAL_CALL statistics_glProgramUniform2uivEXT(GLuint program, GLint 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2uivEXT(program, location, count, value);
 }
@@ -25433,7 +25433,7 @@ static void REGAL_CALL statistics_glProgramUniform3dEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3dEXT(program, location, x, y, z);
 }
@@ -25449,7 +25449,7 @@ static void REGAL_CALL statistics_glProgramUniform3dvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3dvEXT(program, location, count, value);
 }
@@ -25465,7 +25465,7 @@ static void REGAL_CALL statistics_glProgramUniform3fEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3fEXT(program, location, v0, v1, v2);
 }
@@ -25481,7 +25481,7 @@ static void REGAL_CALL statistics_glProgramUniform3fvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3fvEXT(program, location, count, value);
 }
@@ -25497,7 +25497,7 @@ static void REGAL_CALL statistics_glProgramUniform3iEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3iEXT(program, location, v0, v1, v2);
 }
@@ -25513,7 +25513,7 @@ static void REGAL_CALL statistics_glProgramUniform3ivEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3ivEXT(program, location, count, value);
 }
@@ -25529,7 +25529,7 @@ static void REGAL_CALL statistics_glProgramUniform3uiEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3uiEXT(program, location, v0, v1, v2);
 }
@@ -25545,7 +25545,7 @@ static void REGAL_CALL statistics_glProgramUniform3uivEXT(GLuint program, GLint 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3uivEXT(program, location, count, value);
 }
@@ -25561,7 +25561,7 @@ static void REGAL_CALL statistics_glProgramUniform4dEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4dEXT(program, location, x, y, z, w);
 }
@@ -25577,7 +25577,7 @@ static void REGAL_CALL statistics_glProgramUniform4dvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4dvEXT(program, location, count, value);
 }
@@ -25593,7 +25593,7 @@ static void REGAL_CALL statistics_glProgramUniform4fEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4fEXT(program, location, v0, v1, v2, v3);
 }
@@ -25609,7 +25609,7 @@ static void REGAL_CALL statistics_glProgramUniform4fvEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4fvEXT(program, location, count, value);
 }
@@ -25625,7 +25625,7 @@ static void REGAL_CALL statistics_glProgramUniform4iEXT(GLuint program, GLint lo
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4iEXT(program, location, v0, v1, v2, v3);
 }
@@ -25641,7 +25641,7 @@ static void REGAL_CALL statistics_glProgramUniform4ivEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4ivEXT(program, location, count, value);
 }
@@ -25657,7 +25657,7 @@ static void REGAL_CALL statistics_glProgramUniform4uiEXT(GLuint program, GLint l
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4uiEXT(program, location, v0, v1, v2, v3);
 }
@@ -25673,7 +25673,7 @@ static void REGAL_CALL statistics_glProgramUniform4uivEXT(GLuint program, GLint 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4uivEXT(program, location, count, value);
 }
@@ -25689,7 +25689,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2dvEXT(GLuint program, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2dvEXT(program, location, count, transpose, value);
 }
@@ -25705,7 +25705,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2fvEXT(GLuint program, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2fvEXT(program, location, count, transpose, value);
 }
@@ -25721,7 +25721,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x3dvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x3dvEXT(program, location, count, transpose, value);
 }
@@ -25737,7 +25737,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x3fvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x3fvEXT(program, location, count, transpose, value);
 }
@@ -25753,7 +25753,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x4dvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x4dvEXT(program, location, count, transpose, value);
 }
@@ -25769,7 +25769,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix2x4fvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix2x4fvEXT(program, location, count, transpose, value);
 }
@@ -25785,7 +25785,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3dvEXT(GLuint program, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3dvEXT(program, location, count, transpose, value);
 }
@@ -25801,7 +25801,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3fvEXT(GLuint program, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3fvEXT(program, location, count, transpose, value);
 }
@@ -25817,7 +25817,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x2dvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x2dvEXT(program, location, count, transpose, value);
 }
@@ -25833,7 +25833,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x2fvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x2fvEXT(program, location, count, transpose, value);
 }
@@ -25849,7 +25849,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x4dvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x4dvEXT(program, location, count, transpose, value);
 }
@@ -25865,7 +25865,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix3x4fvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix3x4fvEXT(program, location, count, transpose, value);
 }
@@ -25881,7 +25881,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4dvEXT(GLuint program, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4dvEXT(program, location, count, transpose, value);
 }
@@ -25897,7 +25897,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4fvEXT(GLuint program, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4fvEXT(program, location, count, transpose, value);
 }
@@ -25913,7 +25913,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x2dvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x2dvEXT(program, location, count, transpose, value);
 }
@@ -25929,7 +25929,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x2fvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x2fvEXT(program, location, count, transpose, value);
 }
@@ -25945,7 +25945,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x3dvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x3dvEXT(program, location, count, transpose, value);
 }
@@ -25961,7 +25961,7 @@ static void REGAL_CALL statistics_glProgramUniformMatrix4x3fvEXT(GLuint program,
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformMatrix4x3fvEXT(program, location, count, transpose, value);
 }
@@ -25977,7 +25977,7 @@ static void REGAL_CALL statistics_glPushClientAttribDefaultEXT(GLbitfield mask)
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPushClientAttribDefaultEXT(mask);
 }
@@ -25993,7 +25993,7 @@ static void REGAL_CALL statistics_glTextureBufferEXT(GLuint texture, GLenum targ
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureBufferEXT(texture, target, internalformat, buffer);
 }
@@ -26009,7 +26009,7 @@ static void REGAL_CALL statistics_glTextureImage1DEXT(GLuint texture, GLenum tar
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureImage1DEXT(texture, target, level, internalformat, width, border, format, type, pixels);
 }
@@ -26025,7 +26025,7 @@ static void REGAL_CALL statistics_glTextureImage2DEXT(GLuint texture, GLenum tar
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureImage2DEXT(texture, target, level, internalformat, width, height, border, format, type, pixels);
 }
@@ -26041,7 +26041,7 @@ static void REGAL_CALL statistics_glTextureImage3DEXT(GLuint texture, GLenum tar
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, format, type, pixels);
 }
@@ -26057,7 +26057,7 @@ static void REGAL_CALL statistics_glTextureParameterIivEXT(GLuint texture, GLenu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureParameterIivEXT(texture, target, pname, params);
 }
@@ -26073,7 +26073,7 @@ static void REGAL_CALL statistics_glTextureParameterIuivEXT(GLuint texture, GLen
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureParameterIuivEXT(texture, target, pname, params);
 }
@@ -26089,7 +26089,7 @@ static void REGAL_CALL statistics_glTextureParameterfEXT(GLuint texture, GLenum 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureParameterfEXT(texture, target, pname, param);
 }
@@ -26105,7 +26105,7 @@ static void REGAL_CALL statistics_glTextureParameterfvEXT(GLuint texture, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureParameterfvEXT(texture, target, pname, param);
 }
@@ -26121,7 +26121,7 @@ static void REGAL_CALL statistics_glTextureParameteriEXT(GLuint texture, GLenum 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureParameteriEXT(texture, target, pname, param);
 }
@@ -26137,7 +26137,7 @@ static void REGAL_CALL statistics_glTextureParameterivEXT(GLuint texture, GLenum
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureParameterivEXT(texture, target, pname, param);
 }
@@ -26153,7 +26153,7 @@ static void REGAL_CALL statistics_glTextureRenderbufferEXT(GLuint texture, GLenu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureRenderbufferEXT(texture, target, renderbuffer);
 }
@@ -26169,7 +26169,7 @@ static void REGAL_CALL statistics_glTextureSubImage1DEXT(GLuint texture, GLenum 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureSubImage1DEXT(texture, target, level, xoffset, width, format, type, pixels);
 }
@@ -26185,7 +26185,7 @@ static void REGAL_CALL statistics_glTextureSubImage2DEXT(GLuint texture, GLenum 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureSubImage2DEXT(texture, target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
@@ -26201,7 +26201,7 @@ static void REGAL_CALL statistics_glTextureSubImage3DEXT(GLuint texture, GLenum 
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureSubImage3DEXT(texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
@@ -26217,7 +26217,7 @@ static GLboolean REGAL_CALL statistics_glUnmapNamedBufferEXT(GLuint buffer)
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glUnmapNamedBufferEXT(buffer);
   return ret;
@@ -26234,7 +26234,7 @@ static void REGAL_CALL statistics_glVertexArrayColorOffsetEXT(GLuint vaobj, GLui
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
 }
@@ -26250,7 +26250,7 @@ static void REGAL_CALL statistics_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
 }
@@ -26266,7 +26266,7 @@ static void REGAL_CALL statistics_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
 }
@@ -26282,7 +26282,7 @@ static void REGAL_CALL statistics_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLui
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
 }
@@ -26298,7 +26298,7 @@ static void REGAL_CALL statistics_glVertexArrayMultiTexCoordOffsetEXT(GLuint vao
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
 }
@@ -26314,7 +26314,7 @@ static void REGAL_CALL statistics_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
 }
@@ -26330,7 +26330,7 @@ static void REGAL_CALL statistics_glVertexArraySecondaryColorOffsetEXT(GLuint va
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
 }
@@ -26346,7 +26346,7 @@ static void REGAL_CALL statistics_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, G
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
 }
@@ -26362,7 +26362,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexAttribIOffsetEXT(GLuint vao
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
 }
@@ -26378,7 +26378,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexAttribOffsetEXT(GLuint vaob
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
 }
@@ -26394,7 +26394,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLu
 
   statistics.gl_ext_direct_state_access++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
 }
@@ -26410,7 +26410,7 @@ static void REGAL_CALL statistics_glDiscardFramebufferEXT(GLenum target, GLsizei
   Statistics &statistics = *_context->statistics;
   statistics.glDiscardFramebufferEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDiscardFramebufferEXT(target, numAttachments, attachments);
 }
@@ -26426,7 +26426,7 @@ static void REGAL_CALL statistics_glGetQueryObjectivEXT(GLuint id, GLenum pname,
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjectivEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectivEXT(id, pname, params);
 }
@@ -26440,7 +26440,7 @@ static void REGAL_CALL statistics_glQueryCounterEXT(GLuint id, GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glQueryCounterEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glQueryCounterEXT(id, target);
 }
@@ -26458,7 +26458,7 @@ static void REGAL_CALL statistics_glColorMaskIndexedEXT(GLuint buf, GLboolean r,
 
   statistics.gl_ext_draw_buffers2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorMaskIndexedEXT(buf, r, g, b, a);
 }
@@ -26474,7 +26474,7 @@ static void REGAL_CALL statistics_glDisableIndexedEXT(GLenum target, GLuint inde
 
   statistics.gl_ext_draw_buffers2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableIndexedEXT(target, index);
 }
@@ -26490,7 +26490,7 @@ static void REGAL_CALL statistics_glEnableIndexedEXT(GLenum target, GLuint index
 
   statistics.gl_ext_draw_buffers2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableIndexedEXT(target, index);
 }
@@ -26506,7 +26506,7 @@ static void REGAL_CALL statistics_glGetBooleanIndexedvEXT(GLenum value, GLuint i
 
   statistics.gl_ext_draw_buffers2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBooleanIndexedvEXT(value, index, data);
 }
@@ -26522,7 +26522,7 @@ static void REGAL_CALL statistics_glGetIntegerIndexedvEXT(GLenum value, GLuint i
 
   statistics.gl_ext_draw_buffers2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetIntegerIndexedvEXT(value, index, data);
 }
@@ -26538,7 +26538,7 @@ static GLboolean REGAL_CALL statistics_glIsEnabledIndexedEXT(GLenum target, GLui
 
   statistics.gl_ext_draw_buffers2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsEnabledIndexedEXT(target, index);
   return ret;
@@ -26557,7 +26557,7 @@ static void REGAL_CALL statistics_glDrawArraysInstancedEXT(GLenum mode, GLint st
 
   statistics.gl_ext_draw_instanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArraysInstancedEXT(mode, start, count, primcount);
 }
@@ -26573,7 +26573,7 @@ static void REGAL_CALL statistics_glDrawElementsInstancedEXT(GLenum mode, GLsize
 
   statistics.gl_ext_draw_instanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
 }
@@ -26591,7 +26591,7 @@ static void REGAL_CALL statistics_glDrawRangeElementsEXT(GLenum mode, GLuint sta
 
   statistics.gl_ext_draw_range_elements++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawRangeElementsEXT(mode, start, end, count, type, indices);
 }
@@ -26609,7 +26609,7 @@ static void REGAL_CALL statistics_glFogCoordPointerEXT(GLenum type, GLsizei stri
 
   statistics.gl_ext_fog_coord++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordPointerEXT(type, stride, pointer);
 }
@@ -26625,7 +26625,7 @@ static void REGAL_CALL statistics_glFogCoorddEXT(GLdouble coord)
 
   statistics.gl_ext_fog_coord++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoorddEXT(coord);
 }
@@ -26641,7 +26641,7 @@ static void REGAL_CALL statistics_glFogCoorddvEXT(const GLdouble *coord)
 
   statistics.gl_ext_fog_coord++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoorddvEXT(coord);
 }
@@ -26657,7 +26657,7 @@ static void REGAL_CALL statistics_glFogCoordfEXT(GLfloat coord)
 
   statistics.gl_ext_fog_coord++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordfEXT(coord);
 }
@@ -26673,7 +26673,7 @@ static void REGAL_CALL statistics_glFogCoordfvEXT(const GLfloat *coord)
 
   statistics.gl_ext_fog_coord++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordfvEXT(coord);
 }
@@ -26691,7 +26691,7 @@ static void REGAL_CALL statistics_glFragmentColorMaterialEXT(GLenum face, GLenum
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentColorMaterialEXT(face, mode);
 }
@@ -26707,7 +26707,7 @@ static void REGAL_CALL statistics_glFragmentLightModelfEXT(GLenum pname, GLfloat
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModelfEXT(pname, param);
 }
@@ -26723,7 +26723,7 @@ static void REGAL_CALL statistics_glFragmentLightModelfvEXT(GLenum pname, GLfloa
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModelfvEXT(pname, params);
 }
@@ -26739,7 +26739,7 @@ static void REGAL_CALL statistics_glFragmentLightModeliEXT(GLenum pname, GLint p
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModeliEXT(pname, param);
 }
@@ -26755,7 +26755,7 @@ static void REGAL_CALL statistics_glFragmentLightModelivEXT(GLenum pname, GLint 
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModelivEXT(pname, params);
 }
@@ -26771,7 +26771,7 @@ static void REGAL_CALL statistics_glFragmentLightfEXT(GLenum light, GLenum pname
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightfEXT(light, pname, param);
 }
@@ -26787,7 +26787,7 @@ static void REGAL_CALL statistics_glFragmentLightfvEXT(GLenum light, GLenum pnam
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightfvEXT(light, pname, params);
 }
@@ -26803,7 +26803,7 @@ static void REGAL_CALL statistics_glFragmentLightiEXT(GLenum light, GLenum pname
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightiEXT(light, pname, param);
 }
@@ -26819,7 +26819,7 @@ static void REGAL_CALL statistics_glFragmentLightivEXT(GLenum light, GLenum pnam
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightivEXT(light, pname, params);
 }
@@ -26835,7 +26835,7 @@ static void REGAL_CALL statistics_glFragmentMaterialfEXT(GLenum face, GLenum pna
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialfEXT(face, pname, param);
 }
@@ -26851,7 +26851,7 @@ static void REGAL_CALL statistics_glFragmentMaterialfvEXT(GLenum face, GLenum pn
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialfvEXT(face, pname, params);
 }
@@ -26867,7 +26867,7 @@ static void REGAL_CALL statistics_glFragmentMaterialiEXT(GLenum face, GLenum pna
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialiEXT(face, pname, param);
 }
@@ -26883,7 +26883,7 @@ static void REGAL_CALL statistics_glFragmentMaterialivEXT(GLenum face, GLenum pn
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialivEXT(face, pname, params);
 }
@@ -26899,7 +26899,7 @@ static void REGAL_CALL statistics_glGetFragmentLightfvEXT(GLenum light, GLenum p
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentLightfvEXT(light, pname, params);
 }
@@ -26915,7 +26915,7 @@ static void REGAL_CALL statistics_glGetFragmentLightivEXT(GLenum light, GLenum p
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentLightivEXT(light, pname, params);
 }
@@ -26931,7 +26931,7 @@ static void REGAL_CALL statistics_glGetFragmentMaterialfvEXT(GLenum face, GLenum
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentMaterialfvEXT(face, pname, params);
 }
@@ -26947,7 +26947,7 @@ static void REGAL_CALL statistics_glGetFragmentMaterialivEXT(GLenum face, GLenum
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentMaterialivEXT(face, pname, params);
 }
@@ -26963,7 +26963,7 @@ static void REGAL_CALL statistics_glLightEnviEXT(GLenum pname, GLint param)
 
   statistics.gl_ext_fragment_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightEnviEXT(pname, param);
 }
@@ -26981,7 +26981,7 @@ static void REGAL_CALL statistics_glBlitFramebufferEXT(GLint srcX0, GLint srcY0,
 
   statistics.gl_ext_framebuffer_blit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
@@ -26999,7 +26999,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageMultisampleEXT(GLenum tar
 
   statistics.gl_ext_framebuffer_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageMultisampleEXT(target, samples, internalformat, width, height);
 }
@@ -27017,7 +27017,7 @@ static void REGAL_CALL statistics_glBindFramebufferEXT(GLenum target, GLuint fra
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindFramebufferEXT(target, framebuffer);
 }
@@ -27033,7 +27033,7 @@ static void REGAL_CALL statistics_glBindRenderbufferEXT(GLenum target, GLuint re
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindRenderbufferEXT(target, renderbuffer);
 }
@@ -27049,7 +27049,7 @@ static GLenum REGAL_CALL statistics_glCheckFramebufferStatusEXT(GLenum target)
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glCheckFramebufferStatusEXT(target);
   return ret;
@@ -27066,7 +27066,7 @@ static void REGAL_CALL statistics_glDeleteFramebuffersEXT(GLsizei n, const GLuin
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteFramebuffersEXT(n, framebuffers);
 }
@@ -27082,7 +27082,7 @@ static void REGAL_CALL statistics_glDeleteRenderbuffersEXT(GLsizei n, const GLui
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteRenderbuffersEXT(n, renderbuffers);
 }
@@ -27098,7 +27098,7 @@ static void REGAL_CALL statistics_glFramebufferRenderbufferEXT(GLenum target, GL
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferRenderbufferEXT(target, attachment, renderbuffertarget, renderbuffer);
 }
@@ -27114,7 +27114,7 @@ static void REGAL_CALL statistics_glFramebufferTexture1DEXT(GLenum target, GLenu
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture1DEXT(target, attachment, textarget, texture, level);
 }
@@ -27130,7 +27130,7 @@ static void REGAL_CALL statistics_glFramebufferTexture2DEXT(GLenum target, GLenu
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture2DEXT(target, attachment, textarget, texture, level);
 }
@@ -27146,7 +27146,7 @@ static void REGAL_CALL statistics_glFramebufferTexture3DEXT(GLenum target, GLenu
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture3DEXT(target, attachment, textarget, texture, level, zoffset);
 }
@@ -27162,7 +27162,7 @@ static void REGAL_CALL statistics_glGenFramebuffersEXT(GLsizei n, GLuint *frameb
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenFramebuffersEXT(n, framebuffers);
 }
@@ -27178,7 +27178,7 @@ static void REGAL_CALL statistics_glGenRenderbuffersEXT(GLsizei n, GLuint *rende
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenRenderbuffersEXT(n, renderbuffers);
 }
@@ -27194,7 +27194,7 @@ static void REGAL_CALL statistics_glGenerateMipmapEXT(GLenum target)
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenerateMipmapEXT(target);
 }
@@ -27210,7 +27210,7 @@ static void REGAL_CALL statistics_glGetFramebufferAttachmentParameterivEXT(GLenu
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
 }
@@ -27226,7 +27226,7 @@ static void REGAL_CALL statistics_glGetRenderbufferParameterivEXT(GLenum target,
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetRenderbufferParameterivEXT(target, pname, params);
 }
@@ -27242,7 +27242,7 @@ static GLboolean REGAL_CALL statistics_glIsFramebufferEXT(GLuint framebuffer)
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsFramebufferEXT(framebuffer);
   return ret;
@@ -27259,7 +27259,7 @@ static GLboolean REGAL_CALL statistics_glIsRenderbufferEXT(GLuint renderbuffer)
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsRenderbufferEXT(renderbuffer);
   return ret;
@@ -27276,7 +27276,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageEXT(GLenum target, GLenum
 
   statistics.gl_ext_framebuffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageEXT(target, internalformat, width, height);
 }
@@ -27294,7 +27294,7 @@ static void REGAL_CALL statistics_glFramebufferTextureEXT(GLenum target, GLenum 
 
   statistics.gl_ext_geometry_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureEXT(target, attachment, texture, level);
 }
@@ -27310,7 +27310,7 @@ static void REGAL_CALL statistics_glFramebufferTextureFaceEXT(GLenum target, GLe
 
   statistics.gl_ext_geometry_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureFaceEXT(target, attachment, texture, level, face);
 }
@@ -27326,7 +27326,7 @@ static void REGAL_CALL statistics_glProgramParameteriEXT(GLuint program, GLenum 
 
   statistics.gl_ext_geometry_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameteriEXT(program, pname, value);
 }
@@ -27344,7 +27344,7 @@ static void REGAL_CALL statistics_glProgramEnvParameters4fvEXT(GLenum target, GL
 
   statistics.gl_ext_gpu_program_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameters4fvEXT(target, index, count, params);
 }
@@ -27360,7 +27360,7 @@ static void REGAL_CALL statistics_glProgramLocalParameters4fvEXT(GLenum target, 
 
   statistics.gl_ext_gpu_program_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameters4fvEXT(target, index, count, params);
 }
@@ -27378,7 +27378,7 @@ static void REGAL_CALL statistics_glBindFragDataLocationEXT(GLuint program, GLui
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindFragDataLocationEXT(program, color, name);
 }
@@ -27394,7 +27394,7 @@ static GLint REGAL_CALL statistics_glGetFragDataLocationEXT(GLuint program, cons
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetFragDataLocationEXT(program, name);
   return ret;
@@ -27411,7 +27411,7 @@ static void REGAL_CALL statistics_glGetUniformuivEXT(GLuint program, GLint locat
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformuivEXT(program, location, params);
 }
@@ -27427,7 +27427,7 @@ static void REGAL_CALL statistics_glGetVertexAttribIivEXT(GLuint index, GLenum p
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribIivEXT(index, pname, params);
 }
@@ -27443,7 +27443,7 @@ static void REGAL_CALL statistics_glGetVertexAttribIuivEXT(GLuint index, GLenum 
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribIuivEXT(index, pname, params);
 }
@@ -27459,7 +27459,7 @@ static void REGAL_CALL statistics_glUniform1uiEXT(GLint location, GLuint v0)
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1uiEXT(location, v0);
 }
@@ -27475,7 +27475,7 @@ static void REGAL_CALL statistics_glUniform1uivEXT(GLint location, GLsizei count
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1uivEXT(location, count, value);
 }
@@ -27491,7 +27491,7 @@ static void REGAL_CALL statistics_glUniform2uiEXT(GLint location, GLuint v0, GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2uiEXT(location, v0, v1);
 }
@@ -27507,7 +27507,7 @@ static void REGAL_CALL statistics_glUniform2uivEXT(GLint location, GLsizei count
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2uivEXT(location, count, value);
 }
@@ -27523,7 +27523,7 @@ static void REGAL_CALL statistics_glUniform3uiEXT(GLint location, GLuint v0, GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3uiEXT(location, v0, v1, v2);
 }
@@ -27539,7 +27539,7 @@ static void REGAL_CALL statistics_glUniform3uivEXT(GLint location, GLsizei count
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3uivEXT(location, count, value);
 }
@@ -27555,7 +27555,7 @@ static void REGAL_CALL statistics_glUniform4uiEXT(GLint location, GLuint v0, GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4uiEXT(location, v0, v1, v2, v3);
 }
@@ -27571,7 +27571,7 @@ static void REGAL_CALL statistics_glUniform4uivEXT(GLint location, GLsizei count
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4uivEXT(location, count, value);
 }
@@ -27587,7 +27587,7 @@ static void REGAL_CALL statistics_glVertexAttribI1iEXT(GLuint index, GLint x)
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1iEXT(index, x);
 }
@@ -27603,7 +27603,7 @@ static void REGAL_CALL statistics_glVertexAttribI1ivEXT(GLuint index, const GLin
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1ivEXT(index, v);
 }
@@ -27619,7 +27619,7 @@ static void REGAL_CALL statistics_glVertexAttribI1uiEXT(GLuint index, GLuint x)
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1uiEXT(index, x);
 }
@@ -27635,7 +27635,7 @@ static void REGAL_CALL statistics_glVertexAttribI1uivEXT(GLuint index, const GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI1uivEXT(index, v);
 }
@@ -27651,7 +27651,7 @@ static void REGAL_CALL statistics_glVertexAttribI2iEXT(GLuint index, GLint x, GL
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2iEXT(index, x, y);
 }
@@ -27667,7 +27667,7 @@ static void REGAL_CALL statistics_glVertexAttribI2ivEXT(GLuint index, const GLin
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2ivEXT(index, v);
 }
@@ -27683,7 +27683,7 @@ static void REGAL_CALL statistics_glVertexAttribI2uiEXT(GLuint index, GLuint x, 
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2uiEXT(index, x, y);
 }
@@ -27699,7 +27699,7 @@ static void REGAL_CALL statistics_glVertexAttribI2uivEXT(GLuint index, const GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI2uivEXT(index, v);
 }
@@ -27715,7 +27715,7 @@ static void REGAL_CALL statistics_glVertexAttribI3iEXT(GLuint index, GLint x, GL
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3iEXT(index, x, y, z);
 }
@@ -27731,7 +27731,7 @@ static void REGAL_CALL statistics_glVertexAttribI3ivEXT(GLuint index, const GLin
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3ivEXT(index, v);
 }
@@ -27747,7 +27747,7 @@ static void REGAL_CALL statistics_glVertexAttribI3uiEXT(GLuint index, GLuint x, 
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3uiEXT(index, x, y, z);
 }
@@ -27763,7 +27763,7 @@ static void REGAL_CALL statistics_glVertexAttribI3uivEXT(GLuint index, const GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI3uivEXT(index, v);
 }
@@ -27779,7 +27779,7 @@ static void REGAL_CALL statistics_glVertexAttribI4bvEXT(GLuint index, const GLby
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4bvEXT(index, v);
 }
@@ -27795,7 +27795,7 @@ static void REGAL_CALL statistics_glVertexAttribI4iEXT(GLuint index, GLint x, GL
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4iEXT(index, x, y, z, w);
 }
@@ -27811,7 +27811,7 @@ static void REGAL_CALL statistics_glVertexAttribI4ivEXT(GLuint index, const GLin
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4ivEXT(index, v);
 }
@@ -27827,7 +27827,7 @@ static void REGAL_CALL statistics_glVertexAttribI4svEXT(GLuint index, const GLsh
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4svEXT(index, v);
 }
@@ -27843,7 +27843,7 @@ static void REGAL_CALL statistics_glVertexAttribI4ubvEXT(GLuint index, const GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4ubvEXT(index, v);
 }
@@ -27859,7 +27859,7 @@ static void REGAL_CALL statistics_glVertexAttribI4uiEXT(GLuint index, GLuint x, 
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4uiEXT(index, x, y, z, w);
 }
@@ -27875,7 +27875,7 @@ static void REGAL_CALL statistics_glVertexAttribI4uivEXT(GLuint index, const GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4uivEXT(index, v);
 }
@@ -27891,7 +27891,7 @@ static void REGAL_CALL statistics_glVertexAttribI4usvEXT(GLuint index, const GLu
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribI4usvEXT(index, v);
 }
@@ -27907,7 +27907,7 @@ static void REGAL_CALL statistics_glVertexAttribIPointerEXT(GLuint index, GLint 
 
   statistics.gl_ext_gpu_shader4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribIPointerEXT(index, size, type, stride, pointer);
 }
@@ -27925,7 +27925,7 @@ static void REGAL_CALL statistics_glGetHistogramEXT(GLenum target, GLboolean res
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetHistogramEXT(target, reset, format, type, values);
 }
@@ -27941,7 +27941,7 @@ static void REGAL_CALL statistics_glGetHistogramParameterfvEXT(GLenum target, GL
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetHistogramParameterfvEXT(target, pname, params);
 }
@@ -27957,7 +27957,7 @@ static void REGAL_CALL statistics_glGetHistogramParameterivEXT(GLenum target, GL
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetHistogramParameterivEXT(target, pname, params);
 }
@@ -27973,7 +27973,7 @@ static void REGAL_CALL statistics_glGetMinmaxEXT(GLenum target, GLboolean reset,
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMinmaxEXT(target, reset, format, type, values);
 }
@@ -27989,7 +27989,7 @@ static void REGAL_CALL statistics_glGetMinmaxParameterfvEXT(GLenum target, GLenu
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMinmaxParameterfvEXT(target, pname, params);
 }
@@ -28005,7 +28005,7 @@ static void REGAL_CALL statistics_glGetMinmaxParameterivEXT(GLenum target, GLenu
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMinmaxParameterivEXT(target, pname, params);
 }
@@ -28021,7 +28021,7 @@ static void REGAL_CALL statistics_glHistogramEXT(GLenum target, GLsizei width, G
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glHistogramEXT(target, width, internalformat, sink);
 }
@@ -28037,7 +28037,7 @@ static void REGAL_CALL statistics_glMinmaxEXT(GLenum target, GLenum internalform
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMinmaxEXT(target, internalformat, sink);
 }
@@ -28053,7 +28053,7 @@ static void REGAL_CALL statistics_glResetHistogramEXT(GLenum target)
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResetHistogramEXT(target);
 }
@@ -28069,7 +28069,7 @@ static void REGAL_CALL statistics_glResetMinmaxEXT(GLenum target)
 
   statistics.gl_ext_histogram++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResetMinmaxEXT(target);
 }
@@ -28087,7 +28087,7 @@ static void REGAL_CALL statistics_glIndexFuncEXT(GLenum func, GLfloat ref)
 
   statistics.gl_ext_index_func++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexFuncEXT(func, ref);
 }
@@ -28105,7 +28105,7 @@ static void REGAL_CALL statistics_glIndexMaterialEXT(GLenum face, GLenum mode)
 
   statistics.gl_ext_index_material++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexMaterialEXT(face, mode);
 }
@@ -28123,7 +28123,7 @@ static void REGAL_CALL statistics_glApplyTextureEXT(GLenum mode)
 
   statistics.gl_ext_light_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glApplyTextureEXT(mode);
 }
@@ -28139,7 +28139,7 @@ static void REGAL_CALL statistics_glTextureLightEXT(GLenum pname)
 
   statistics.gl_ext_light_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureLightEXT(pname);
 }
@@ -28155,7 +28155,7 @@ static void REGAL_CALL statistics_glTextureMaterialEXT(GLenum face, GLenum mode)
 
   statistics.gl_ext_light_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureMaterialEXT(face, mode);
 }
@@ -28171,7 +28171,7 @@ static void REGAL_CALL statistics_glFlushMappedBufferRangeEXT(GLenum target, GLi
   Statistics &statistics = *_context->statistics;
   statistics.glFlushMappedBufferRangeEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushMappedBufferRangeEXT(target, offset, length);
 }
@@ -28185,7 +28185,7 @@ static GLvoid *REGAL_CALL statistics_glMapBufferRangeEXT(GLenum target, GLintptr
   Statistics &statistics = *_context->statistics;
   statistics.glMapBufferRangeEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapBufferRangeEXT(target, offset, length, access);
   return ret;
@@ -28204,7 +28204,7 @@ static void REGAL_CALL statistics_glMultiDrawArraysEXT(GLenum mode, const GLint 
 
   statistics.gl_ext_multi_draw_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawArraysEXT(mode, first, count, primcount);
 }
@@ -28220,7 +28220,7 @@ static void REGAL_CALL statistics_glMultiDrawElementsEXT(GLenum mode, const GLsi
 
   statistics.gl_ext_multi_draw_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiDrawElementsEXT(mode, count, type, indices, primcount);
 }
@@ -28238,7 +28238,7 @@ static void REGAL_CALL statistics_glSampleMaskEXT(GLclampf value, GLboolean inve
 
   statistics.gl_ext_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleMaskEXT(value, invert);
 }
@@ -28254,7 +28254,7 @@ static void REGAL_CALL statistics_glSamplePatternEXT(GLenum pattern)
 
   statistics.gl_ext_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplePatternEXT(pattern);
 }
@@ -28270,7 +28270,7 @@ static void REGAL_CALL statistics_glFramebufferTexture2DMultisampleEXT(GLenum ta
   Statistics &statistics = *_context->statistics;
   statistics.glFramebufferTexture2DMultisampleEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture2DMultisampleEXT(target, attachment, textarget, texture, level, samples);
 }
@@ -28286,7 +28286,7 @@ static void REGAL_CALL statistics_glDrawBuffersIndexedEXT(GLint n, const GLenum 
   Statistics &statistics = *_context->statistics;
   statistics.glDrawBuffersIndexedEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawBuffersIndexedEXT(n, location, indices);
 }
@@ -28300,7 +28300,7 @@ static void REGAL_CALL statistics_glGetIntegeri_vEXT(GLenum target, GLuint index
   Statistics &statistics = *_context->statistics;
   statistics.glGetIntegeri_vEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetIntegeri_vEXT(target, index, data);
 }
@@ -28314,7 +28314,7 @@ static void REGAL_CALL statistics_glReadBufferIndexedEXT(GLenum src, GLint index
   Statistics &statistics = *_context->statistics;
   statistics.glReadBufferIndexedEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadBufferIndexedEXT(src, index);
 }
@@ -28330,7 +28330,7 @@ static void REGAL_CALL statistics_glBeginQueryEXT(GLenum target, GLuint id)
   Statistics &statistics = *_context->statistics;
   statistics.glBeginQueryEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginQueryEXT(target, id);
 }
@@ -28344,7 +28344,7 @@ static void REGAL_CALL statistics_glDeleteQueriesEXT(GLsizei n, const GLuint *id
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteQueriesEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteQueriesEXT(n, ids);
 }
@@ -28358,7 +28358,7 @@ static void REGAL_CALL statistics_glEndQueryEXT(GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glEndQueryEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndQueryEXT(target);
 }
@@ -28372,7 +28372,7 @@ static void REGAL_CALL statistics_glGenQueriesEXT(GLsizei n, GLuint *ids)
   Statistics &statistics = *_context->statistics;
   statistics.glGenQueriesEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenQueriesEXT(n, ids);
 }
@@ -28386,7 +28386,7 @@ static void REGAL_CALL statistics_glGetQueryObjectuivEXT(GLuint id, GLenum pname
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryObjectuivEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectuivEXT(id, pname, params);
 }
@@ -28400,7 +28400,7 @@ static void REGAL_CALL statistics_glGetQueryivEXT(GLenum target, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetQueryivEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryivEXT(target, pname, params);
 }
@@ -28414,7 +28414,7 @@ static GLboolean REGAL_CALL statistics_glIsQueryEXT(GLuint id)
   Statistics &statistics = *_context->statistics;
   statistics.glIsQueryEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsQueryEXT(id);
   return ret;
@@ -28433,7 +28433,7 @@ static void REGAL_CALL statistics_glColorTableEXT(GLenum target, GLenum internal
 
   statistics.gl_ext_paletted_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorTableEXT(target, internalFormat, width, format, type, table);
 }
@@ -28449,7 +28449,7 @@ static void REGAL_CALL statistics_glGetColorTableEXT(GLenum target, GLenum forma
 
   statistics.gl_ext_paletted_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableEXT(target, format, type, data);
 }
@@ -28465,7 +28465,7 @@ static void REGAL_CALL statistics_glGetColorTableParameterfvEXT(GLenum target, G
 
   statistics.gl_ext_paletted_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableParameterfvEXT(target, pname, params);
 }
@@ -28481,7 +28481,7 @@ static void REGAL_CALL statistics_glGetColorTableParameterivEXT(GLenum target, G
 
   statistics.gl_ext_paletted_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableParameterivEXT(target, pname, params);
 }
@@ -28499,7 +28499,7 @@ static void REGAL_CALL statistics_glGetPixelTransformParameterfvEXT(GLenum targe
 
   statistics.gl_ext_pixel_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPixelTransformParameterfvEXT(target, pname, params);
 }
@@ -28515,7 +28515,7 @@ static void REGAL_CALL statistics_glGetPixelTransformParameterivEXT(GLenum targe
 
   statistics.gl_ext_pixel_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPixelTransformParameterivEXT(target, pname, params);
 }
@@ -28531,7 +28531,7 @@ static void REGAL_CALL statistics_glPixelTransformParameterfEXT(GLenum target, G
 
   statistics.gl_ext_pixel_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTransformParameterfEXT(target, pname, param);
 }
@@ -28547,7 +28547,7 @@ static void REGAL_CALL statistics_glPixelTransformParameterfvEXT(GLenum target, 
 
   statistics.gl_ext_pixel_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTransformParameterfvEXT(target, pname, params);
 }
@@ -28563,7 +28563,7 @@ static void REGAL_CALL statistics_glPixelTransformParameteriEXT(GLenum target, G
 
   statistics.gl_ext_pixel_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTransformParameteriEXT(target, pname, param);
 }
@@ -28579,7 +28579,7 @@ static void REGAL_CALL statistics_glPixelTransformParameterivEXT(GLenum target, 
 
   statistics.gl_ext_pixel_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTransformParameterivEXT(target, pname, params);
 }
@@ -28597,7 +28597,7 @@ static void REGAL_CALL statistics_glPointParameterfEXT(GLenum pname, GLfloat par
 
   statistics.gl_ext_point_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterfEXT(pname, param);
 }
@@ -28613,7 +28613,7 @@ static void REGAL_CALL statistics_glPointParameterfvEXT(GLenum pname, const GLfl
 
   statistics.gl_ext_point_parameters++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterfvEXT(pname, params);
 }
@@ -28631,7 +28631,7 @@ static void REGAL_CALL statistics_glPolygonOffsetEXT(GLfloat factor, GLfloat bia
 
   statistics.gl_ext_polygon_offset++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPolygonOffsetEXT(factor, bias);
 }
@@ -28649,7 +28649,7 @@ static void REGAL_CALL statistics_glProvokingVertexEXT(GLenum mode)
 
   statistics.gl_ext_provoking_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProvokingVertexEXT(mode);
 }
@@ -28665,7 +28665,7 @@ static void REGAL_CALL statistics_glGetnUniformfvEXT(GLuint program, GLint locat
   Statistics &statistics = *_context->statistics;
   statistics.glGetnUniformfvEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnUniformfvEXT(program, location, bufSize, params);
 }
@@ -28679,7 +28679,7 @@ static void REGAL_CALL statistics_glGetnUniformivEXT(GLuint program, GLint locat
   Statistics &statistics = *_context->statistics;
   statistics.glGetnUniformivEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetnUniformivEXT(program, location, bufSize, params);
 }
@@ -28693,7 +28693,7 @@ static void REGAL_CALL statistics_glReadnPixelsEXT(GLint x, GLint y, GLsizei wid
   Statistics &statistics = *_context->statistics;
   statistics.glReadnPixelsEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadnPixelsEXT(x, y, width, height, format, type, bufSize, data);
 }
@@ -28711,7 +28711,7 @@ static void REGAL_CALL statistics_glBeginSceneEXT(void)
 
   statistics.gl_ext_scene_marker++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginSceneEXT();
 }
@@ -28727,7 +28727,7 @@ static void REGAL_CALL statistics_glEndSceneEXT(void)
 
   statistics.gl_ext_scene_marker++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndSceneEXT();
 }
@@ -28745,7 +28745,7 @@ static void REGAL_CALL statistics_glSecondaryColor3bEXT(GLbyte red, GLbyte green
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3bEXT(red, green, blue);
 }
@@ -28761,7 +28761,7 @@ static void REGAL_CALL statistics_glSecondaryColor3bvEXT(const GLbyte *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3bvEXT(v);
 }
@@ -28777,7 +28777,7 @@ static void REGAL_CALL statistics_glSecondaryColor3dEXT(GLdouble red, GLdouble g
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3dEXT(red, green, blue);
 }
@@ -28793,7 +28793,7 @@ static void REGAL_CALL statistics_glSecondaryColor3dvEXT(const GLdouble *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3dvEXT(v);
 }
@@ -28809,7 +28809,7 @@ static void REGAL_CALL statistics_glSecondaryColor3fEXT(GLfloat red, GLfloat gre
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3fEXT(red, green, blue);
 }
@@ -28825,7 +28825,7 @@ static void REGAL_CALL statistics_glSecondaryColor3fvEXT(const GLfloat *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3fvEXT(v);
 }
@@ -28841,7 +28841,7 @@ static void REGAL_CALL statistics_glSecondaryColor3iEXT(GLint red, GLint green, 
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3iEXT(red, green, blue);
 }
@@ -28857,7 +28857,7 @@ static void REGAL_CALL statistics_glSecondaryColor3ivEXT(const GLint *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3ivEXT(v);
 }
@@ -28873,7 +28873,7 @@ static void REGAL_CALL statistics_glSecondaryColor3sEXT(GLshort red, GLshort gre
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3sEXT(red, green, blue);
 }
@@ -28889,7 +28889,7 @@ static void REGAL_CALL statistics_glSecondaryColor3svEXT(const GLshort *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3svEXT(v);
 }
@@ -28905,7 +28905,7 @@ static void REGAL_CALL statistics_glSecondaryColor3ubEXT(GLubyte red, GLubyte gr
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3ubEXT(red, green, blue);
 }
@@ -28921,7 +28921,7 @@ static void REGAL_CALL statistics_glSecondaryColor3ubvEXT(const GLubyte *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3ubvEXT(v);
 }
@@ -28937,7 +28937,7 @@ static void REGAL_CALL statistics_glSecondaryColor3uiEXT(GLuint red, GLuint gree
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3uiEXT(red, green, blue);
 }
@@ -28953,7 +28953,7 @@ static void REGAL_CALL statistics_glSecondaryColor3uivEXT(const GLuint *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3uivEXT(v);
 }
@@ -28969,7 +28969,7 @@ static void REGAL_CALL statistics_glSecondaryColor3usEXT(GLushort red, GLushort 
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3usEXT(red, green, blue);
 }
@@ -28985,7 +28985,7 @@ static void REGAL_CALL statistics_glSecondaryColor3usvEXT(const GLushort *v)
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3usvEXT(v);
 }
@@ -29001,7 +29001,7 @@ static void REGAL_CALL statistics_glSecondaryColorPointerEXT(GLint size, GLenum 
 
   statistics.gl_ext_secondary_color++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColorPointerEXT(size, type, stride, pointer);
 }
@@ -29019,7 +29019,7 @@ static void REGAL_CALL statistics_glActiveProgramEXT(GLuint program)
 
   statistics.gl_ext_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glActiveProgramEXT(program);
 }
@@ -29035,7 +29035,7 @@ static GLuint REGAL_CALL statistics_glCreateShaderProgramEXT(GLenum type, const 
 
   statistics.gl_ext_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glCreateShaderProgramEXT(type, string);
   return ret;
@@ -29052,7 +29052,7 @@ static void REGAL_CALL statistics_glUseShaderProgramEXT(GLenum type, GLuint prog
 
   statistics.gl_ext_separate_shader_objects++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUseShaderProgramEXT(type, program);
 }
@@ -29070,7 +29070,7 @@ static void REGAL_CALL statistics_glBindImageTextureEXT(GLuint index, GLuint tex
 
   statistics.gl_ext_shader_image_load_store++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindImageTextureEXT(index, texture, level, layered, layer, access, format);
 }
@@ -29086,7 +29086,7 @@ static void REGAL_CALL statistics_glMemoryBarrierEXT(GLbitfield barriers)
 
   statistics.gl_ext_shader_image_load_store++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMemoryBarrierEXT(barriers);
 }
@@ -29102,7 +29102,7 @@ static void REGAL_CALL statistics_glStencilClearTagEXT(GLsizei stencilTagBits, G
   Statistics &statistics = *_context->statistics;
   statistics.glStencilClearTagEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilClearTagEXT(stencilTagBits, stencilClearTag);
 }
@@ -29120,7 +29120,7 @@ static void REGAL_CALL statistics_glActiveStencilFaceEXT(GLenum face)
 
   statistics.gl_ext_stencil_two_side++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glActiveStencilFaceEXT(face);
 }
@@ -29138,7 +29138,7 @@ static void REGAL_CALL statistics_glTexSubImage1DEXT(GLenum target, GLint level,
 
   statistics.gl_ext_subtexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage1DEXT(target, level, xoffset, width, format, type, pixels);
 }
@@ -29154,7 +29154,7 @@ static void REGAL_CALL statistics_glTexSubImage2DEXT(GLenum target, GLint level,
 
   statistics.gl_ext_subtexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage2DEXT(target, level, xoffset, yoffset, width, height, format, type, pixels);
 }
@@ -29170,7 +29170,7 @@ static void REGAL_CALL statistics_glTexSubImage3DEXT(GLenum target, GLint level,
 
   statistics.gl_ext_subtexture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage3DEXT(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
@@ -29188,7 +29188,7 @@ static void REGAL_CALL statistics_glTexImage3DEXT(GLenum target, GLint level, GL
 
   statistics.gl_ext_texture3d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage3DEXT(target, level, internalformat, width, height, depth, border, format, type, pixels);
 }
@@ -29206,7 +29206,7 @@ static void REGAL_CALL statistics_glFramebufferTextureLayerEXT(GLenum target, GL
 
   statistics.gl_ext_texture_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTextureLayerEXT(target, attachment, texture, level, layer);
 }
@@ -29224,7 +29224,7 @@ static void REGAL_CALL statistics_glTexBufferEXT(GLenum target, GLenum internalf
 
   statistics.gl_ext_texture_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexBufferEXT(target, internalformat, buffer);
 }
@@ -29242,7 +29242,7 @@ static void REGAL_CALL statistics_glClearColorIiEXT(GLint red, GLint green, GLin
 
   statistics.gl_ext_texture_integer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearColorIiEXT(red, green, blue, alpha);
 }
@@ -29258,7 +29258,7 @@ static void REGAL_CALL statistics_glClearColorIuiEXT(GLuint red, GLuint green, G
 
   statistics.gl_ext_texture_integer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearColorIuiEXT(red, green, blue, alpha);
 }
@@ -29274,7 +29274,7 @@ static void REGAL_CALL statistics_glGetTexParameterIivEXT(GLenum target, GLenum 
 
   statistics.gl_ext_texture_integer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameterIivEXT(target, pname, params);
 }
@@ -29290,7 +29290,7 @@ static void REGAL_CALL statistics_glGetTexParameterIuivEXT(GLenum target, GLenum
 
   statistics.gl_ext_texture_integer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameterIuivEXT(target, pname, params);
 }
@@ -29306,7 +29306,7 @@ static void REGAL_CALL statistics_glTexParameterIivEXT(GLenum target, GLenum pna
 
   statistics.gl_ext_texture_integer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterIivEXT(target, pname, params);
 }
@@ -29322,7 +29322,7 @@ static void REGAL_CALL statistics_glTexParameterIuivEXT(GLenum target, GLenum pn
 
   statistics.gl_ext_texture_integer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterIuivEXT(target, pname, params);
 }
@@ -29340,7 +29340,7 @@ static GLboolean REGAL_CALL statistics_glAreTexturesResidentEXT(GLsizei n, const
 
   statistics.gl_ext_texture_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glAreTexturesResidentEXT(n, textures, residences);
   return ret;
@@ -29357,7 +29357,7 @@ static void REGAL_CALL statistics_glBindTextureEXT(GLenum target, GLuint texture
 
   statistics.gl_ext_texture_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindTextureEXT(target, texture);
 }
@@ -29373,7 +29373,7 @@ static void REGAL_CALL statistics_glDeleteTexturesEXT(GLsizei n, const GLuint *t
 
   statistics.gl_ext_texture_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteTexturesEXT(n, textures);
 }
@@ -29389,7 +29389,7 @@ static void REGAL_CALL statistics_glGenTexturesEXT(GLsizei n, GLuint *textures)
 
   statistics.gl_ext_texture_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenTexturesEXT(n, textures);
 }
@@ -29405,7 +29405,7 @@ static GLboolean REGAL_CALL statistics_glIsTextureEXT(GLuint texture)
 
   statistics.gl_ext_texture_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsTextureEXT(texture);
   return ret;
@@ -29422,7 +29422,7 @@ static void REGAL_CALL statistics_glPrioritizeTexturesEXT(GLsizei n, const GLuin
 
   statistics.gl_ext_texture_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPrioritizeTexturesEXT(n, textures, priorities);
 }
@@ -29440,7 +29440,7 @@ static void REGAL_CALL statistics_glTextureNormalEXT(GLenum mode)
 
   statistics.gl_ext_texture_perturb_normal++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureNormalEXT(mode);
 }
@@ -29456,7 +29456,7 @@ static void REGAL_CALL statistics_glTexStorage1DEXT(GLenum target, GLsizei level
   Statistics &statistics = *_context->statistics;
   statistics.glTexStorage1DEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage1DEXT(target, levels, internalformat, width);
 }
@@ -29470,7 +29470,7 @@ static void REGAL_CALL statistics_glTexStorage2DEXT(GLenum target, GLsizei level
   Statistics &statistics = *_context->statistics;
   statistics.glTexStorage2DEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage2DEXT(target, levels, internalformat, width, height);
 }
@@ -29484,7 +29484,7 @@ static void REGAL_CALL statistics_glTexStorage3DEXT(GLenum target, GLsizei level
   Statistics &statistics = *_context->statistics;
   statistics.glTexStorage3DEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexStorage3DEXT(target, levels, internalformat, width, height, depth);
 }
@@ -29502,7 +29502,7 @@ static void REGAL_CALL statistics_glGetQueryObjecti64vEXT(GLuint id, GLenum pnam
 
   statistics.gl_ext_timer_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjecti64vEXT(id, pname, params);
 }
@@ -29518,7 +29518,7 @@ static void REGAL_CALL statistics_glGetQueryObjectui64vEXT(GLuint id, GLenum pna
 
   statistics.gl_ext_timer_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetQueryObjectui64vEXT(id, pname, params);
 }
@@ -29536,7 +29536,7 @@ static void REGAL_CALL statistics_glBeginTransformFeedbackEXT(GLenum primitiveMo
 
   statistics.gl_ext_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginTransformFeedbackEXT(primitiveMode);
 }
@@ -29552,7 +29552,7 @@ static void REGAL_CALL statistics_glBindBufferBaseEXT(GLenum target, GLuint inde
 
   statistics.gl_ext_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferBaseEXT(target, index, buffer);
 }
@@ -29568,7 +29568,7 @@ static void REGAL_CALL statistics_glBindBufferOffsetEXT(GLenum target, GLuint in
 
   statistics.gl_ext_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferOffsetEXT(target, index, buffer, offset);
 }
@@ -29584,7 +29584,7 @@ static void REGAL_CALL statistics_glBindBufferRangeEXT(GLenum target, GLuint ind
 
   statistics.gl_ext_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferRangeEXT(target, index, buffer, offset, size);
 }
@@ -29600,7 +29600,7 @@ static void REGAL_CALL statistics_glEndTransformFeedbackEXT(void)
 
   statistics.gl_ext_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndTransformFeedbackEXT();
 }
@@ -29616,7 +29616,7 @@ static void REGAL_CALL statistics_glGetTransformFeedbackVaryingEXT(GLuint progra
 
   statistics.gl_ext_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTransformFeedbackVaryingEXT(program, index, bufSize, length, size, type, name);
 }
@@ -29632,7 +29632,7 @@ static void REGAL_CALL statistics_glTransformFeedbackVaryingsEXT(GLuint program,
 
   statistics.gl_ext_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTransformFeedbackVaryingsEXT(program, count, varyings, bufferMode);
 }
@@ -29650,7 +29650,7 @@ static void REGAL_CALL statistics_glArrayElementEXT(GLint i)
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glArrayElementEXT(i);
 }
@@ -29666,7 +29666,7 @@ static void REGAL_CALL statistics_glColorPointerEXT(GLint size, GLenum type, GLs
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorPointerEXT(size, type, stride, count, pointer);
 }
@@ -29682,7 +29682,7 @@ static void REGAL_CALL statistics_glDrawArraysEXT(GLenum mode, GLint first, GLsi
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawArraysEXT(mode, first, count);
 }
@@ -29698,7 +29698,7 @@ static void REGAL_CALL statistics_glEdgeFlagPointerEXT(GLsizei stride, GLsizei c
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEdgeFlagPointerEXT(stride, count, pointer);
 }
@@ -29712,7 +29712,7 @@ static void REGAL_CALL statistics_glGetPointervEXT(GLenum pname, GLvoid **params
   Statistics &statistics = *_context->statistics;
   statistics.glGetPointervEXT++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPointervEXT(pname, params);
 }
@@ -29728,7 +29728,7 @@ static void REGAL_CALL statistics_glIndexPointerEXT(GLenum type, GLsizei stride,
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexPointerEXT(type, stride, count, pointer);
 }
@@ -29744,7 +29744,7 @@ static void REGAL_CALL statistics_glNormalPointerEXT(GLenum type, GLsizei stride
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalPointerEXT(type, stride, count, pointer);
 }
@@ -29760,7 +29760,7 @@ static void REGAL_CALL statistics_glTexCoordPointerEXT(GLint size, GLenum type, 
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordPointerEXT(size, type, stride, count, pointer);
 }
@@ -29776,7 +29776,7 @@ static void REGAL_CALL statistics_glVertexPointerEXT(GLint size, GLenum type, GL
 
   statistics.gl_ext_vertex_array++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexPointerEXT(size, type, stride, count, pointer);
 }
@@ -29794,7 +29794,7 @@ static void REGAL_CALL statistics_glGetVertexAttribLdvEXT(GLuint index, GLenum p
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribLdvEXT(index, pname, params);
 }
@@ -29810,7 +29810,7 @@ static void REGAL_CALL statistics_glVertexArrayVertexAttribLOffsetEXT(GLuint vao
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayVertexAttribLOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
 }
@@ -29826,7 +29826,7 @@ static void REGAL_CALL statistics_glVertexAttribL1dEXT(GLuint index, GLdouble x)
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1dEXT(index, x);
 }
@@ -29842,7 +29842,7 @@ static void REGAL_CALL statistics_glVertexAttribL1dvEXT(GLuint index, const GLdo
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1dvEXT(index, v);
 }
@@ -29858,7 +29858,7 @@ static void REGAL_CALL statistics_glVertexAttribL2dEXT(GLuint index, GLdouble x,
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2dEXT(index, x, y);
 }
@@ -29874,7 +29874,7 @@ static void REGAL_CALL statistics_glVertexAttribL2dvEXT(GLuint index, const GLdo
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2dvEXT(index, v);
 }
@@ -29890,7 +29890,7 @@ static void REGAL_CALL statistics_glVertexAttribL3dEXT(GLuint index, GLdouble x,
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3dEXT(index, x, y, z);
 }
@@ -29906,7 +29906,7 @@ static void REGAL_CALL statistics_glVertexAttribL3dvEXT(GLuint index, const GLdo
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3dvEXT(index, v);
 }
@@ -29922,7 +29922,7 @@ static void REGAL_CALL statistics_glVertexAttribL4dEXT(GLuint index, GLdouble x,
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4dEXT(index, x, y, z, w);
 }
@@ -29938,7 +29938,7 @@ static void REGAL_CALL statistics_glVertexAttribL4dvEXT(GLuint index, const GLdo
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4dvEXT(index, v);
 }
@@ -29954,7 +29954,7 @@ static void REGAL_CALL statistics_glVertexAttribLPointerEXT(GLuint index, GLint 
 
   statistics.gl_ext_vertex_attrib_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribLPointerEXT(index, size, type, stride, pointer);
 }
@@ -29972,7 +29972,7 @@ static void REGAL_CALL statistics_glBeginVertexShaderEXT(void)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginVertexShaderEXT();
 }
@@ -29988,7 +29988,7 @@ static GLuint REGAL_CALL statistics_glBindLightParameterEXT(GLenum light, GLenum
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glBindLightParameterEXT(light, value);
   return ret;
@@ -30005,7 +30005,7 @@ static GLuint REGAL_CALL statistics_glBindMaterialParameterEXT(GLenum face, GLen
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glBindMaterialParameterEXT(face, value);
   return ret;
@@ -30022,7 +30022,7 @@ static GLuint REGAL_CALL statistics_glBindParameterEXT(GLenum value)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glBindParameterEXT(value);
   return ret;
@@ -30039,7 +30039,7 @@ static GLuint REGAL_CALL statistics_glBindTexGenParameterEXT(GLenum unit, GLenum
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glBindTexGenParameterEXT(unit, coord, value);
   return ret;
@@ -30056,7 +30056,7 @@ static GLuint REGAL_CALL statistics_glBindTextureUnitParameterEXT(GLenum unit, G
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glBindTextureUnitParameterEXT(unit, value);
   return ret;
@@ -30073,7 +30073,7 @@ static void REGAL_CALL statistics_glBindVertexShaderEXT(GLuint id)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVertexShaderEXT(id);
 }
@@ -30089,7 +30089,7 @@ static void REGAL_CALL statistics_glDeleteVertexShaderEXT(GLuint id)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteVertexShaderEXT(id);
 }
@@ -30105,7 +30105,7 @@ static void REGAL_CALL statistics_glDisableVariantClientStateEXT(GLuint id)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableVariantClientStateEXT(id);
 }
@@ -30121,7 +30121,7 @@ static void REGAL_CALL statistics_glEnableVariantClientStateEXT(GLuint id)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableVariantClientStateEXT(id);
 }
@@ -30137,7 +30137,7 @@ static void REGAL_CALL statistics_glEndVertexShaderEXT(void)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndVertexShaderEXT();
 }
@@ -30153,7 +30153,7 @@ static void REGAL_CALL statistics_glExtractComponentEXT(GLuint res, GLuint src, 
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtractComponentEXT(res, src, num);
 }
@@ -30169,7 +30169,7 @@ static GLuint REGAL_CALL statistics_glGenSymbolsEXT(GLenum datatype, GLenum stor
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGenSymbolsEXT(datatype, storagetype, range, components);
   return ret;
@@ -30186,7 +30186,7 @@ static GLuint REGAL_CALL statistics_glGenVertexShadersEXT(GLuint range)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGenVertexShadersEXT(range);
   return ret;
@@ -30203,7 +30203,7 @@ static void REGAL_CALL statistics_glGetInvariantBooleanvEXT(GLuint id, GLenum va
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInvariantBooleanvEXT(id, value, data);
 }
@@ -30219,7 +30219,7 @@ static void REGAL_CALL statistics_glGetInvariantFloatvEXT(GLuint id, GLenum valu
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInvariantFloatvEXT(id, value, data);
 }
@@ -30235,7 +30235,7 @@ static void REGAL_CALL statistics_glGetInvariantIntegervEXT(GLuint id, GLenum va
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetInvariantIntegervEXT(id, value, data);
 }
@@ -30251,7 +30251,7 @@ static void REGAL_CALL statistics_glGetLocalConstantBooleanvEXT(GLuint id, GLenu
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetLocalConstantBooleanvEXT(id, value, data);
 }
@@ -30267,7 +30267,7 @@ static void REGAL_CALL statistics_glGetLocalConstantFloatvEXT(GLuint id, GLenum 
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetLocalConstantFloatvEXT(id, value, data);
 }
@@ -30283,7 +30283,7 @@ static void REGAL_CALL statistics_glGetLocalConstantIntegervEXT(GLuint id, GLenu
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetLocalConstantIntegervEXT(id, value, data);
 }
@@ -30299,7 +30299,7 @@ static void REGAL_CALL statistics_glGetVariantBooleanvEXT(GLuint id, GLenum valu
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVariantBooleanvEXT(id, value, data);
 }
@@ -30315,7 +30315,7 @@ static void REGAL_CALL statistics_glGetVariantFloatvEXT(GLuint id, GLenum value,
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVariantFloatvEXT(id, value, data);
 }
@@ -30331,7 +30331,7 @@ static void REGAL_CALL statistics_glGetVariantIntegervEXT(GLuint id, GLenum valu
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVariantIntegervEXT(id, value, data);
 }
@@ -30347,7 +30347,7 @@ static void REGAL_CALL statistics_glGetVariantPointervEXT(GLuint id, GLenum valu
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVariantPointervEXT(id, value, data);
 }
@@ -30363,7 +30363,7 @@ static void REGAL_CALL statistics_glInsertComponentEXT(GLuint res, GLuint src, G
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInsertComponentEXT(res, src, num);
 }
@@ -30379,7 +30379,7 @@ static GLboolean REGAL_CALL statistics_glIsVariantEnabledEXT(GLuint id, GLenum c
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsVariantEnabledEXT(id, cap);
   return ret;
@@ -30396,7 +30396,7 @@ static void REGAL_CALL statistics_glSetInvariantEXT(GLuint id, GLenum type, cons
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSetInvariantEXT(id, type, addr);
 }
@@ -30412,7 +30412,7 @@ static void REGAL_CALL statistics_glSetLocalConstantEXT(GLuint id, GLenum type, 
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSetLocalConstantEXT(id, type, addr);
 }
@@ -30428,7 +30428,7 @@ static void REGAL_CALL statistics_glShaderOp1EXT(GLenum op, GLuint res, GLuint a
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShaderOp1EXT(op, res, arg1);
 }
@@ -30444,7 +30444,7 @@ static void REGAL_CALL statistics_glShaderOp2EXT(GLenum op, GLuint res, GLuint a
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShaderOp2EXT(op, res, arg1, arg2);
 }
@@ -30460,7 +30460,7 @@ static void REGAL_CALL statistics_glShaderOp3EXT(GLenum op, GLuint res, GLuint a
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glShaderOp3EXT(op, res, arg1, arg2, arg3);
 }
@@ -30476,7 +30476,7 @@ static void REGAL_CALL statistics_glSwizzleEXT(GLuint res, GLuint in, GLenum out
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSwizzleEXT(res, in, outX, outY, outZ, outW);
 }
@@ -30492,7 +30492,7 @@ static void REGAL_CALL statistics_glVariantPointerEXT(GLuint id, GLenum type, GL
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantPointerEXT(id, type, stride, addr);
 }
@@ -30508,7 +30508,7 @@ static void REGAL_CALL statistics_glVariantbvEXT(GLuint id, const GLbyte *addr)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantbvEXT(id, addr);
 }
@@ -30524,7 +30524,7 @@ static void REGAL_CALL statistics_glVariantdvEXT(GLuint id, const GLdouble *addr
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantdvEXT(id, addr);
 }
@@ -30540,7 +30540,7 @@ static void REGAL_CALL statistics_glVariantfvEXT(GLuint id, const GLfloat *addr)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantfvEXT(id, addr);
 }
@@ -30556,7 +30556,7 @@ static void REGAL_CALL statistics_glVariantivEXT(GLuint id, const GLint *addr)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantivEXT(id, addr);
 }
@@ -30572,7 +30572,7 @@ static void REGAL_CALL statistics_glVariantsvEXT(GLuint id, const GLshort *addr)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantsvEXT(id, addr);
 }
@@ -30588,7 +30588,7 @@ static void REGAL_CALL statistics_glVariantubvEXT(GLuint id, const GLubyte *addr
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantubvEXT(id, addr);
 }
@@ -30604,7 +30604,7 @@ static void REGAL_CALL statistics_glVariantuivEXT(GLuint id, const GLuint *addr)
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantuivEXT(id, addr);
 }
@@ -30620,7 +30620,7 @@ static void REGAL_CALL statistics_glVariantusvEXT(GLuint id, const GLushort *add
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVariantusvEXT(id, addr);
 }
@@ -30636,7 +30636,7 @@ static void REGAL_CALL statistics_glWriteMaskEXT(GLuint res, GLuint in, GLenum o
 
   statistics.gl_ext_vertex_shader++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWriteMaskEXT(res, in, outX, outY, outZ, outW);
 }
@@ -30654,7 +30654,7 @@ static void REGAL_CALL statistics_glVertexWeightPointerEXT(GLsizei size, GLenum 
 
   statistics.gl_ext_vertex_weighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexWeightPointerEXT(size, type, stride, pointer);
 }
@@ -30670,7 +30670,7 @@ static void REGAL_CALL statistics_glVertexWeightfEXT(GLfloat weight)
 
   statistics.gl_ext_vertex_weighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexWeightfEXT(weight);
 }
@@ -30686,7 +30686,7 @@ static void REGAL_CALL statistics_glVertexWeightfvEXT(const GLfloat *weight)
 
   statistics.gl_ext_vertex_weighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexWeightfvEXT(weight);
 }
@@ -30704,7 +30704,7 @@ static GLsync REGAL_CALL statistics_glImportSyncEXT(GLenum external_sync_type, G
 
   statistics.gl_ext_x11_sync_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLsync  ret = _next->glImportSyncEXT(external_sync_type, external_sync, flags);
   return ret;
@@ -30723,7 +30723,7 @@ static void REGAL_CALL statistics_glFrameTerminatorGREMEDY(void)
 
   statistics.gl_gremedy_frame_terminator++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFrameTerminatorGREMEDY();
 }
@@ -30741,7 +30741,7 @@ static void REGAL_CALL statistics_glStringMarkerGREMEDY(GLsizei len, const GLvoi
 
   statistics.gl_gremedy_string_marker++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStringMarkerGREMEDY(len, string);
 }
@@ -30759,7 +30759,7 @@ static void REGAL_CALL statistics_glGetImageTransformParameterfvHP(GLenum target
 
   statistics.gl_hp_image_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetImageTransformParameterfvHP(target, pname, params);
 }
@@ -30775,7 +30775,7 @@ static void REGAL_CALL statistics_glGetImageTransformParameterivHP(GLenum target
 
   statistics.gl_hp_image_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetImageTransformParameterivHP(target, pname, params);
 }
@@ -30791,7 +30791,7 @@ static void REGAL_CALL statistics_glImageTransformParameterfHP(GLenum target, GL
 
   statistics.gl_hp_image_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glImageTransformParameterfHP(target, pname, param);
 }
@@ -30807,7 +30807,7 @@ static void REGAL_CALL statistics_glImageTransformParameterfvHP(GLenum target, G
 
   statistics.gl_hp_image_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glImageTransformParameterfvHP(target, pname, params);
 }
@@ -30823,7 +30823,7 @@ static void REGAL_CALL statistics_glImageTransformParameteriHP(GLenum target, GL
 
   statistics.gl_hp_image_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glImageTransformParameteriHP(target, pname, param);
 }
@@ -30839,7 +30839,7 @@ static void REGAL_CALL statistics_glImageTransformParameterivHP(GLenum target, G
 
   statistics.gl_hp_image_transform++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glImageTransformParameterivHP(target, pname, params);
 }
@@ -30857,7 +30857,7 @@ static void REGAL_CALL statistics_glMultiModeDrawArraysIBM(const GLenum *mode, c
 
   statistics.gl_ibm_multimode_draw_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiModeDrawArraysIBM(mode, first, count, primcount, modestride);
 }
@@ -30873,7 +30873,7 @@ static void REGAL_CALL statistics_glMultiModeDrawElementsIBM(const GLenum *mode,
 
   statistics.gl_ibm_multimode_draw_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiModeDrawElementsIBM(mode, count, type, indices, primcount, modestride);
 }
@@ -30891,7 +30891,7 @@ static void REGAL_CALL statistics_glColorPointerListIBM(GLint size, GLenum type,
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorPointerListIBM(size, type, stride, pointer, ptrstride);
 }
@@ -30907,7 +30907,7 @@ static void REGAL_CALL statistics_glEdgeFlagPointerListIBM(GLint stride, const G
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEdgeFlagPointerListIBM(stride, pointer, ptrstride);
 }
@@ -30923,7 +30923,7 @@ static void REGAL_CALL statistics_glFogCoordPointerListIBM(GLenum type, GLint st
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordPointerListIBM(type, stride, pointer, ptrstride);
 }
@@ -30939,7 +30939,7 @@ static void REGAL_CALL statistics_glIndexPointerListIBM(GLenum type, GLint strid
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexPointerListIBM(type, stride, pointer, ptrstride);
 }
@@ -30955,7 +30955,7 @@ static void REGAL_CALL statistics_glNormalPointerListIBM(GLenum type, GLint stri
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalPointerListIBM(type, stride, pointer, ptrstride);
 }
@@ -30971,7 +30971,7 @@ static void REGAL_CALL statistics_glSecondaryColorPointerListIBM(GLint size, GLe
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColorPointerListIBM(size, type, stride, pointer, ptrstride);
 }
@@ -30987,7 +30987,7 @@ static void REGAL_CALL statistics_glTexCoordPointerListIBM(GLint size, GLenum ty
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordPointerListIBM(size, type, stride, pointer, ptrstride);
 }
@@ -31003,7 +31003,7 @@ static void REGAL_CALL statistics_glVertexPointerListIBM(GLint size, GLenum type
 
   statistics.gl_ibm_vertex_array_lists++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexPointerListIBM(size, type, stride, pointer, ptrstride);
 }
@@ -31019,7 +31019,7 @@ static void REGAL_CALL statistics_glFramebufferTexture2DMultisampleIMG(GLenum ta
   Statistics &statistics = *_context->statistics;
   statistics.glFramebufferTexture2DMultisampleIMG++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture2DMultisampleIMG(target, attachment, textarget, texture, level, samples);
 }
@@ -31033,7 +31033,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageMultisampleIMG(GLenum tar
   Statistics &statistics = *_context->statistics;
   statistics.glRenderbufferStorageMultisampleIMG++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageMultisampleIMG(target, samples, internalformat, width, height);
 }
@@ -31049,7 +31049,7 @@ static void REGAL_CALL statistics_glBlendFuncSeparateINGR(GLenum sfactorRGB, GLe
   Statistics &statistics = *_context->statistics;
   statistics.glBlendFuncSeparateINGR++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncSeparateINGR(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 }
@@ -31067,7 +31067,7 @@ static GLvoid *REGAL_CALL statistics_glMapTexture2DINTEL(GLuint texture, GLint l
 
   statistics.gl_intel_map_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapTexture2DINTEL(texture, level, access, stride, layout);
   return ret;
@@ -31086,7 +31086,7 @@ static void REGAL_CALL statistics_glSyncTextureINTEL(GLuint texture)
 
   statistics.gl_intel_map_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSyncTextureINTEL(texture);
 }
@@ -31104,7 +31104,7 @@ static void REGAL_CALL statistics_glUnmapTexture2DINTEL(GLuint texture, GLint le
 
   statistics.gl_intel_map_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUnmapTexture2DINTEL(texture, level);
 }
@@ -31122,7 +31122,7 @@ static void REGAL_CALL statistics_glColorPointervINTEL(GLint size, GLenum type, 
 
   statistics.gl_intel_parallel_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorPointervINTEL(size, type, pointer);
 }
@@ -31138,7 +31138,7 @@ static void REGAL_CALL statistics_glNormalPointervINTEL(GLenum type, const GLvoi
 
   statistics.gl_intel_parallel_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalPointervINTEL(type, pointer);
 }
@@ -31154,7 +31154,7 @@ static void REGAL_CALL statistics_glTexCoordPointervINTEL(GLint size, GLenum typ
 
   statistics.gl_intel_parallel_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordPointervINTEL(size, type, pointer);
 }
@@ -31170,7 +31170,7 @@ static void REGAL_CALL statistics_glVertexPointervINTEL(GLint size, GLenum type,
 
   statistics.gl_intel_parallel_arrays++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexPointervINTEL(size, type, pointer);
 }
@@ -31188,7 +31188,7 @@ static void REGAL_CALL statistics_glTexScissorFuncINTEL(GLenum target, GLenum lf
 
   statistics.gl_intel_texture_scissor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexScissorFuncINTEL(target, lfunc, hfunc);
 }
@@ -31204,7 +31204,7 @@ static void REGAL_CALL statistics_glTexScissorINTEL(GLenum target, GLclampf tlow
 
   statistics.gl_intel_texture_scissor++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexScissorINTEL(target, tlow, thigh);
 }
@@ -31222,7 +31222,7 @@ static void REGAL_CALL statistics_glDebugMessageCallback(GLDEBUGPROC callback, c
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageCallback(callback, userParam);
 }
@@ -31238,7 +31238,7 @@ static void REGAL_CALL statistics_glDebugMessageControl(GLenum source, GLenum ty
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageControl(source, type, severity, count, ids, enabled);
 }
@@ -31254,7 +31254,7 @@ static void REGAL_CALL statistics_glDebugMessageInsert(GLenum source, GLenum typ
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDebugMessageInsert(source, type, id, severity, length, buf);
 }
@@ -31270,7 +31270,7 @@ static GLuint REGAL_CALL statistics_glGetDebugMessageLog(GLuint count, GLsizei b
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGetDebugMessageLog(count, bufsize, sources, types, ids, severities, lengths, messageLog);
   return ret;
@@ -31287,7 +31287,7 @@ static void REGAL_CALL statistics_glGetObjectLabel(GLenum identifier, GLuint nam
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectLabel(identifier, name, bufSize, length, label);
 }
@@ -31303,7 +31303,7 @@ static void REGAL_CALL statistics_glGetObjectPtrLabel(const GLvoid *ptr, GLsizei
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetObjectPtrLabel(ptr, bufSize, length, label);
 }
@@ -31319,7 +31319,7 @@ static void REGAL_CALL statistics_glObjectLabel(GLenum identifier, GLuint name, 
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glObjectLabel(identifier, name, length, label);
 }
@@ -31335,7 +31335,7 @@ static void REGAL_CALL statistics_glObjectPtrLabel(const GLvoid *ptr, GLsizei le
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glObjectPtrLabel(ptr, length, label);
 }
@@ -31351,7 +31351,7 @@ static void REGAL_CALL statistics_glPopDebugGroup(void)
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPopDebugGroup();
 }
@@ -31367,7 +31367,7 @@ static void REGAL_CALL statistics_glPushDebugGroup(GLenum source, GLuint id, GLs
 
   statistics.gl_khr_debug++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPushDebugGroup(source, id, length, message);
 }
@@ -31385,7 +31385,7 @@ static GLuint REGAL_CALL statistics_glBufferRegionEnabled(void)
 
   statistics.gl_ktx_buffer_region++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glBufferRegionEnabled();
   return ret;
@@ -31402,7 +31402,7 @@ static void REGAL_CALL statistics_glDeleteBufferRegion(GLenum region)
 
   statistics.gl_ktx_buffer_region++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteBufferRegion(region);
 }
@@ -31418,7 +31418,7 @@ static void REGAL_CALL statistics_glDrawBufferRegion(GLuint region, GLint x, GLi
 
   statistics.gl_ktx_buffer_region++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawBufferRegion(region, x, y, width, height, xDest, yDest);
 }
@@ -31434,7 +31434,7 @@ static GLuint REGAL_CALL statistics_glNewBufferRegion(GLenum region)
 
   statistics.gl_ktx_buffer_region++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glNewBufferRegion(region);
   return ret;
@@ -31451,7 +31451,7 @@ static void REGAL_CALL statistics_glReadBufferRegion(GLuint region, GLint x, GLi
 
   statistics.gl_ktx_buffer_region++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadBufferRegion(region, x, y, width, height);
 }
@@ -31469,7 +31469,7 @@ static void REGAL_CALL statistics_glResizeBuffersMESA(void)
 
   statistics.gl_mesa_resize_buffers++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResizeBuffersMESA();
 }
@@ -31487,7 +31487,7 @@ static void REGAL_CALL statistics_glWindowPos2dMESA(GLdouble x, GLdouble y)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2dMESA(x, y);
 }
@@ -31503,7 +31503,7 @@ static void REGAL_CALL statistics_glWindowPos2dvMESA(const GLdouble *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2dvMESA(v);
 }
@@ -31519,7 +31519,7 @@ static void REGAL_CALL statistics_glWindowPos2fMESA(GLfloat x, GLfloat y)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2fMESA(x, y);
 }
@@ -31535,7 +31535,7 @@ static void REGAL_CALL statistics_glWindowPos2fvMESA(const GLfloat *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2fvMESA(v);
 }
@@ -31551,7 +31551,7 @@ static void REGAL_CALL statistics_glWindowPos2iMESA(GLint x, GLint y)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2iMESA(x, y);
 }
@@ -31567,7 +31567,7 @@ static void REGAL_CALL statistics_glWindowPos2ivMESA(const GLint *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2ivMESA(v);
 }
@@ -31583,7 +31583,7 @@ static void REGAL_CALL statistics_glWindowPos2sMESA(GLshort x, GLshort y)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2sMESA(x, y);
 }
@@ -31599,7 +31599,7 @@ static void REGAL_CALL statistics_glWindowPos2svMESA(const GLshort *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos2svMESA(v);
 }
@@ -31615,7 +31615,7 @@ static void REGAL_CALL statistics_glWindowPos3dMESA(GLdouble x, GLdouble y, GLdo
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3dMESA(x, y, z);
 }
@@ -31631,7 +31631,7 @@ static void REGAL_CALL statistics_glWindowPos3dvMESA(const GLdouble *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3dvMESA(v);
 }
@@ -31647,7 +31647,7 @@ static void REGAL_CALL statistics_glWindowPos3fMESA(GLfloat x, GLfloat y, GLfloa
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3fMESA(x, y, z);
 }
@@ -31663,7 +31663,7 @@ static void REGAL_CALL statistics_glWindowPos3fvMESA(const GLfloat *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3fvMESA(v);
 }
@@ -31679,7 +31679,7 @@ static void REGAL_CALL statistics_glWindowPos3iMESA(GLint x, GLint y, GLint z)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3iMESA(x, y, z);
 }
@@ -31695,7 +31695,7 @@ static void REGAL_CALL statistics_glWindowPos3ivMESA(const GLint *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3ivMESA(v);
 }
@@ -31711,7 +31711,7 @@ static void REGAL_CALL statistics_glWindowPos3sMESA(GLshort x, GLshort y, GLshor
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3sMESA(x, y, z);
 }
@@ -31727,7 +31727,7 @@ static void REGAL_CALL statistics_glWindowPos3svMESA(const GLshort *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos3svMESA(v);
 }
@@ -31743,7 +31743,7 @@ static void REGAL_CALL statistics_glWindowPos4dMESA(GLdouble x, GLdouble y, GLdo
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4dMESA(x, y, z, w);
 }
@@ -31759,7 +31759,7 @@ static void REGAL_CALL statistics_glWindowPos4dvMESA(const GLdouble *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4dvMESA(v);
 }
@@ -31775,7 +31775,7 @@ static void REGAL_CALL statistics_glWindowPos4fMESA(GLfloat x, GLfloat y, GLfloa
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4fMESA(x, y, z, w);
 }
@@ -31791,7 +31791,7 @@ static void REGAL_CALL statistics_glWindowPos4fvMESA(const GLfloat *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4fvMESA(v);
 }
@@ -31807,7 +31807,7 @@ static void REGAL_CALL statistics_glWindowPos4iMESA(GLint x, GLint y, GLint z, G
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4iMESA(x, y, z, w);
 }
@@ -31823,7 +31823,7 @@ static void REGAL_CALL statistics_glWindowPos4ivMESA(const GLint *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4ivMESA(v);
 }
@@ -31839,7 +31839,7 @@ static void REGAL_CALL statistics_glWindowPos4sMESA(GLshort x, GLshort y, GLshor
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4sMESA(x, y, z, w);
 }
@@ -31855,7 +31855,7 @@ static void REGAL_CALL statistics_glWindowPos4svMESA(const GLshort *v)
 
   statistics.gl_mesa_window_pos++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWindowPos4svMESA(v);
 }
@@ -31873,7 +31873,7 @@ static void REGAL_CALL statistics_glBeginConditionalRenderNVX(GLuint id)
 
   statistics.gl_nvx_conditional_render++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginConditionalRenderNVX(id);
 }
@@ -31889,7 +31889,7 @@ static void REGAL_CALL statistics_glEndConditionalRenderNVX(void)
 
   statistics.gl_nvx_conditional_render++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndConditionalRenderNVX();
 }
@@ -31907,7 +31907,7 @@ static GLuint64 REGAL_CALL statistics_glGetImageHandleNV(GLuint texture, GLint l
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint64  ret = _next->glGetImageHandleNV(texture, level, layered, layer, format);
   return ret;
@@ -31924,7 +31924,7 @@ static GLuint64 REGAL_CALL statistics_glGetTextureHandleNV(GLuint texture)
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint64  ret = _next->glGetTextureHandleNV(texture);
   return ret;
@@ -31941,7 +31941,7 @@ static GLuint64 REGAL_CALL statistics_glGetTextureSamplerHandleNV(GLuint texture
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint64  ret = _next->glGetTextureSamplerHandleNV(texture, sampler);
   return ret;
@@ -31958,7 +31958,7 @@ static GLboolean REGAL_CALL statistics_glIsImageHandleResidentNV(GLuint64 handle
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsImageHandleResidentNV(handle);
   return ret;
@@ -31975,7 +31975,7 @@ static GLboolean REGAL_CALL statistics_glIsTextureHandleResidentNV(GLuint64 hand
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsTextureHandleResidentNV(handle);
   return ret;
@@ -31992,7 +31992,7 @@ static void REGAL_CALL statistics_glMakeImageHandleNonResidentNV(GLuint64 handle
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeImageHandleNonResidentNV(handle);
 }
@@ -32008,7 +32008,7 @@ static void REGAL_CALL statistics_glMakeImageHandleResidentNV(GLuint64 handle, G
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeImageHandleResidentNV(handle, access);
 }
@@ -32024,7 +32024,7 @@ static void REGAL_CALL statistics_glMakeTextureHandleNonResidentNV(GLuint64 hand
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeTextureHandleNonResidentNV(handle);
 }
@@ -32040,7 +32040,7 @@ static void REGAL_CALL statistics_glMakeTextureHandleResidentNV(GLuint64 handle)
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeTextureHandleResidentNV(handle);
 }
@@ -32056,7 +32056,7 @@ static void REGAL_CALL statistics_glProgramUniformHandleui64NV(GLuint program, G
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformHandleui64NV(program, location, value);
 }
@@ -32072,7 +32072,7 @@ static void REGAL_CALL statistics_glProgramUniformHandleui64vNV(GLuint program, 
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformHandleui64vNV(program, location, count, values);
 }
@@ -32088,7 +32088,7 @@ static void REGAL_CALL statistics_glUniformHandleui64NV(GLint location, GLuint64
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformHandleui64NV(location, value);
 }
@@ -32104,7 +32104,7 @@ static void REGAL_CALL statistics_glUniformHandleui64vNV(GLint location, GLsizei
 
   statistics.gl_nv_bindless_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformHandleui64vNV(location, count, value);
 }
@@ -32122,7 +32122,7 @@ static void REGAL_CALL statistics_glBlendBarrierNV(void)
 
   statistics.gl_nv_blend_equation_advanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendBarrierNV();
 }
@@ -32138,7 +32138,7 @@ static void REGAL_CALL statistics_glBlendParameteriNV(GLenum pname, GLint value)
 
   statistics.gl_nv_blend_equation_advanced++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendParameteriNV(pname, value);
 }
@@ -32156,7 +32156,7 @@ static void REGAL_CALL statistics_glBeginConditionalRenderNV(GLuint id, GLenum m
 
   statistics.gl_nv_conditional_render++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginConditionalRenderNV(id, mode);
 }
@@ -32172,7 +32172,7 @@ static void REGAL_CALL statistics_glEndConditionalRenderNV(void)
 
   statistics.gl_nv_conditional_render++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndConditionalRenderNV();
 }
@@ -32190,7 +32190,7 @@ static void REGAL_CALL statistics_glCopyBufferSubDataNV(GLenum readtarget, GLenu
 
   statistics.gl_nv_copy_buffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyBufferSubDataNV(readtarget, writetarget, readoffset, writeoffset, size);
 }
@@ -32208,7 +32208,7 @@ static void REGAL_CALL statistics_glCopyImageSubDataNV(GLuint srcName, GLenum sr
 
   statistics.gl_nv_copy_image++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyImageSubDataNV(srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
 }
@@ -32224,7 +32224,7 @@ static void REGAL_CALL statistics_glCoverageMaskNV(GLboolean mask)
   Statistics &statistics = *_context->statistics;
   statistics.glCoverageMaskNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCoverageMaskNV(mask);
 }
@@ -32238,7 +32238,7 @@ static void REGAL_CALL statistics_glCoverageOperationNV(GLenum operation)
   Statistics &statistics = *_context->statistics;
   statistics.glCoverageOperationNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCoverageOperationNV(operation);
 }
@@ -32256,7 +32256,7 @@ static void REGAL_CALL statistics_glClearDepthdNV(GLdouble depth)
 
   statistics.gl_nv_depth_buffer_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearDepthdNV(depth);
 }
@@ -32272,7 +32272,7 @@ static void REGAL_CALL statistics_glDepthBoundsdNV(GLdouble zmin, GLdouble zmax)
 
   statistics.gl_nv_depth_buffer_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthBoundsdNV(zmin, zmax);
 }
@@ -32288,7 +32288,7 @@ static void REGAL_CALL statistics_glDepthRangedNV(GLdouble zNear, GLdouble zFar)
 
   statistics.gl_nv_depth_buffer_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthRangedNV(zNear, zFar);
 }
@@ -32304,7 +32304,7 @@ static void REGAL_CALL statistics_glDrawBuffersNV(GLsizei n, const GLenum *bufs)
   Statistics &statistics = *_context->statistics;
   statistics.glDrawBuffersNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawBuffersNV(n, bufs);
 }
@@ -32322,7 +32322,7 @@ static void REGAL_CALL statistics_glDrawTextureNV(GLuint texture, GLuint sampler
 
   statistics.gl_nv_draw_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawTextureNV(texture, sampler, x0, y0, x1, y1, z, s0, t0, s1, t1);
 }
@@ -32340,7 +32340,7 @@ static void REGAL_CALL statistics_glEvalMapsNV(GLenum target, GLenum mode)
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEvalMapsNV(target, mode);
 }
@@ -32356,7 +32356,7 @@ static void REGAL_CALL statistics_glGetMapAttribParameterfvNV(GLenum target, GLu
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapAttribParameterfvNV(target, index, pname, params);
 }
@@ -32372,7 +32372,7 @@ static void REGAL_CALL statistics_glGetMapAttribParameterivNV(GLenum target, GLu
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapAttribParameterivNV(target, index, pname, params);
 }
@@ -32388,7 +32388,7 @@ static void REGAL_CALL statistics_glGetMapControlPointsNV(GLenum target, GLuint 
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapControlPointsNV(target, index, type, ustride, vstride, packed, points);
 }
@@ -32404,7 +32404,7 @@ static void REGAL_CALL statistics_glGetMapParameterfvNV(GLenum target, GLenum pn
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapParameterfvNV(target, pname, params);
 }
@@ -32420,7 +32420,7 @@ static void REGAL_CALL statistics_glGetMapParameterivNV(GLenum target, GLenum pn
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMapParameterivNV(target, pname, params);
 }
@@ -32436,7 +32436,7 @@ static void REGAL_CALL statistics_glMapControlPointsNV(GLenum target, GLuint ind
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapControlPointsNV(target, index, type, ustride, vstride, uorder, vorder, packed, points);
 }
@@ -32452,7 +32452,7 @@ static void REGAL_CALL statistics_glMapParameterfvNV(GLenum target, GLenum pname
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapParameterfvNV(target, pname, params);
 }
@@ -32468,7 +32468,7 @@ static void REGAL_CALL statistics_glMapParameterivNV(GLenum target, GLenum pname
 
   statistics.gl_nv_evaluators++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMapParameterivNV(target, pname, params);
 }
@@ -32486,7 +32486,7 @@ static void REGAL_CALL statistics_glGetMultisamplefvNV(GLenum pname, GLuint inde
 
   statistics.gl_nv_explicit_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMultisamplefvNV(pname, index, val);
 }
@@ -32502,7 +32502,7 @@ static void REGAL_CALL statistics_glSampleMaskIndexedNV(GLuint index, GLbitfield
 
   statistics.gl_nv_explicit_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleMaskIndexedNV(index, mask);
 }
@@ -32518,7 +32518,7 @@ static void REGAL_CALL statistics_glTexRenderbufferNV(GLenum target, GLuint rend
 
   statistics.gl_nv_explicit_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexRenderbufferNV(target, renderbuffer);
 }
@@ -32536,7 +32536,7 @@ static void REGAL_CALL statistics_glDeleteFencesNV(GLsizei n, const GLuint *fenc
 
   statistics.gl_nv_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteFencesNV(n, fences);
 }
@@ -32552,7 +32552,7 @@ static void REGAL_CALL statistics_glFinishFenceNV(GLuint fence)
 
   statistics.gl_nv_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFinishFenceNV(fence);
 }
@@ -32568,7 +32568,7 @@ static void REGAL_CALL statistics_glGenFencesNV(GLsizei n, GLuint *fences)
 
   statistics.gl_nv_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenFencesNV(n, fences);
 }
@@ -32584,7 +32584,7 @@ static void REGAL_CALL statistics_glGetFenceivNV(GLuint fence, GLenum pname, GLi
 
   statistics.gl_nv_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFenceivNV(fence, pname, params);
 }
@@ -32600,7 +32600,7 @@ static GLboolean REGAL_CALL statistics_glIsFenceNV(GLuint fence)
 
   statistics.gl_nv_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsFenceNV(fence);
   return ret;
@@ -32617,7 +32617,7 @@ static void REGAL_CALL statistics_glSetFenceNV(GLuint fence, GLenum condition)
 
   statistics.gl_nv_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSetFenceNV(fence, condition);
 }
@@ -32633,7 +32633,7 @@ static GLboolean REGAL_CALL statistics_glTestFenceNV(GLuint fence)
 
   statistics.gl_nv_fence++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glTestFenceNV(fence);
   return ret;
@@ -32652,7 +32652,7 @@ static void REGAL_CALL statistics_glGetProgramNamedParameterdvNV(GLuint id, GLsi
 
   statistics.gl_nv_fragment_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramNamedParameterdvNV(id, len, name, params);
 }
@@ -32668,7 +32668,7 @@ static void REGAL_CALL statistics_glGetProgramNamedParameterfvNV(GLuint id, GLsi
 
   statistics.gl_nv_fragment_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramNamedParameterfvNV(id, len, name, params);
 }
@@ -32684,7 +32684,7 @@ static void REGAL_CALL statistics_glProgramNamedParameter4dNV(GLuint id, GLsizei
 
   statistics.gl_nv_fragment_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramNamedParameter4dNV(id, len, name, x, y, z, w);
 }
@@ -32700,7 +32700,7 @@ static void REGAL_CALL statistics_glProgramNamedParameter4dvNV(GLuint id, GLsize
 
   statistics.gl_nv_fragment_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramNamedParameter4dvNV(id, len, name, v);
 }
@@ -32716,7 +32716,7 @@ static void REGAL_CALL statistics_glProgramNamedParameter4fNV(GLuint id, GLsizei
 
   statistics.gl_nv_fragment_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramNamedParameter4fNV(id, len, name, x, y, z, w);
 }
@@ -32732,7 +32732,7 @@ static void REGAL_CALL statistics_glProgramNamedParameter4fvNV(GLuint id, GLsize
 
   statistics.gl_nv_fragment_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramNamedParameter4fvNV(id, len, name, v);
 }
@@ -32748,7 +32748,7 @@ static void REGAL_CALL statistics_glBlitFramebufferNV(GLint srcX0, GLint srcY0, 
   Statistics &statistics = *_context->statistics;
   statistics.glBlitFramebufferNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlitFramebufferNV(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
@@ -32766,7 +32766,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageMultisampleCoverageNV(GLe
 
   statistics.gl_nv_framebuffer_multisample_coverage++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageMultisampleCoverageNV(target, coverageSamples, colorSamples, internalformat, width, height);
 }
@@ -32784,7 +32784,7 @@ static void REGAL_CALL statistics_glProgramVertexLimitNV(GLenum target, GLint li
 
   statistics.gl_nv_geometry_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramVertexLimitNV(target, limit);
 }
@@ -32800,7 +32800,7 @@ static void REGAL_CALL statistics_glGetProgramEnvParameterIivNV(GLenum target, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramEnvParameterIivNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramEnvParameterIivNV(target, index, params);
 }
@@ -32814,7 +32814,7 @@ static void REGAL_CALL statistics_glGetProgramEnvParameterIuivNV(GLenum target, 
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramEnvParameterIuivNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramEnvParameterIuivNV(target, index, params);
 }
@@ -32828,7 +32828,7 @@ static void REGAL_CALL statistics_glGetProgramLocalParameterIivNV(GLenum target,
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramLocalParameterIivNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramLocalParameterIivNV(target, index, params);
 }
@@ -32842,7 +32842,7 @@ static void REGAL_CALL statistics_glGetProgramLocalParameterIuivNV(GLenum target
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramLocalParameterIuivNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramLocalParameterIuivNV(target, index, params);
 }
@@ -32858,7 +32858,7 @@ static void REGAL_CALL statistics_glProgramEnvParameterI4iNV(GLenum target, GLui
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameterI4iNV(target, index, x, y, z, w);
 }
@@ -32874,7 +32874,7 @@ static void REGAL_CALL statistics_glProgramEnvParameterI4ivNV(GLenum target, GLu
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameterI4ivNV(target, index, params);
 }
@@ -32890,7 +32890,7 @@ static void REGAL_CALL statistics_glProgramEnvParameterI4uiNV(GLenum target, GLu
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameterI4uiNV(target, index, x, y, z, w);
 }
@@ -32906,7 +32906,7 @@ static void REGAL_CALL statistics_glProgramEnvParameterI4uivNV(GLenum target, GL
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParameterI4uivNV(target, index, params);
 }
@@ -32922,7 +32922,7 @@ static void REGAL_CALL statistics_glProgramEnvParametersI4ivNV(GLenum target, GL
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParametersI4ivNV(target, index, count, params);
 }
@@ -32938,7 +32938,7 @@ static void REGAL_CALL statistics_glProgramEnvParametersI4uivNV(GLenum target, G
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramEnvParametersI4uivNV(target, index, count, params);
 }
@@ -32954,7 +32954,7 @@ static void REGAL_CALL statistics_glProgramLocalParameterI4iNV(GLenum target, GL
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameterI4iNV(target, index, x, y, z, w);
 }
@@ -32970,7 +32970,7 @@ static void REGAL_CALL statistics_glProgramLocalParameterI4ivNV(GLenum target, G
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameterI4ivNV(target, index, params);
 }
@@ -32986,7 +32986,7 @@ static void REGAL_CALL statistics_glProgramLocalParameterI4uiNV(GLenum target, G
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameterI4uiNV(target, index, x, y, z, w);
 }
@@ -33002,7 +33002,7 @@ static void REGAL_CALL statistics_glProgramLocalParameterI4uivNV(GLenum target, 
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParameterI4uivNV(target, index, params);
 }
@@ -33018,7 +33018,7 @@ static void REGAL_CALL statistics_glProgramLocalParametersI4ivNV(GLenum target, 
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParametersI4ivNV(target, index, count, params);
 }
@@ -33034,7 +33034,7 @@ static void REGAL_CALL statistics_glProgramLocalParametersI4uivNV(GLenum target,
 
   statistics.gl_nv_gpu_program4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramLocalParametersI4uivNV(target, index, count, params);
 }
@@ -33052,7 +33052,7 @@ static void REGAL_CALL statistics_glGetUniformi64vNV(GLuint program, GLint locat
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformi64vNV(program, location, params);
 }
@@ -33068,7 +33068,7 @@ static void REGAL_CALL statistics_glProgramUniform1i64NV(GLuint program, GLint l
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1i64NV(program, location, x);
 }
@@ -33084,7 +33084,7 @@ static void REGAL_CALL statistics_glProgramUniform1i64vNV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1i64vNV(program, location, count, value);
 }
@@ -33100,7 +33100,7 @@ static void REGAL_CALL statistics_glProgramUniform1ui64NV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1ui64NV(program, location, x);
 }
@@ -33116,7 +33116,7 @@ static void REGAL_CALL statistics_glProgramUniform1ui64vNV(GLuint program, GLint
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform1ui64vNV(program, location, count, value);
 }
@@ -33132,7 +33132,7 @@ static void REGAL_CALL statistics_glProgramUniform2i64NV(GLuint program, GLint l
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2i64NV(program, location, x, y);
 }
@@ -33148,7 +33148,7 @@ static void REGAL_CALL statistics_glProgramUniform2i64vNV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2i64vNV(program, location, count, value);
 }
@@ -33164,7 +33164,7 @@ static void REGAL_CALL statistics_glProgramUniform2ui64NV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2ui64NV(program, location, x, y);
 }
@@ -33180,7 +33180,7 @@ static void REGAL_CALL statistics_glProgramUniform2ui64vNV(GLuint program, GLint
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform2ui64vNV(program, location, count, value);
 }
@@ -33196,7 +33196,7 @@ static void REGAL_CALL statistics_glProgramUniform3i64NV(GLuint program, GLint l
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3i64NV(program, location, x, y, z);
 }
@@ -33212,7 +33212,7 @@ static void REGAL_CALL statistics_glProgramUniform3i64vNV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3i64vNV(program, location, count, value);
 }
@@ -33228,7 +33228,7 @@ static void REGAL_CALL statistics_glProgramUniform3ui64NV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3ui64NV(program, location, x, y, z);
 }
@@ -33244,7 +33244,7 @@ static void REGAL_CALL statistics_glProgramUniform3ui64vNV(GLuint program, GLint
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform3ui64vNV(program, location, count, value);
 }
@@ -33260,7 +33260,7 @@ static void REGAL_CALL statistics_glProgramUniform4i64NV(GLuint program, GLint l
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4i64NV(program, location, x, y, z, w);
 }
@@ -33276,7 +33276,7 @@ static void REGAL_CALL statistics_glProgramUniform4i64vNV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4i64vNV(program, location, count, value);
 }
@@ -33292,7 +33292,7 @@ static void REGAL_CALL statistics_glProgramUniform4ui64NV(GLuint program, GLint 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4ui64NV(program, location, x, y, z, w);
 }
@@ -33308,7 +33308,7 @@ static void REGAL_CALL statistics_glProgramUniform4ui64vNV(GLuint program, GLint
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniform4ui64vNV(program, location, count, value);
 }
@@ -33324,7 +33324,7 @@ static void REGAL_CALL statistics_glUniform1i64NV(GLint location, GLint64EXT x)
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1i64NV(location, x);
 }
@@ -33340,7 +33340,7 @@ static void REGAL_CALL statistics_glUniform1i64vNV(GLint location, GLsizei count
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1i64vNV(location, count, value);
 }
@@ -33356,7 +33356,7 @@ static void REGAL_CALL statistics_glUniform1ui64NV(GLint location, GLuint64EXT x
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1ui64NV(location, x);
 }
@@ -33372,7 +33372,7 @@ static void REGAL_CALL statistics_glUniform1ui64vNV(GLint location, GLsizei coun
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform1ui64vNV(location, count, value);
 }
@@ -33388,7 +33388,7 @@ static void REGAL_CALL statistics_glUniform2i64NV(GLint location, GLint64EXT x, 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2i64NV(location, x, y);
 }
@@ -33404,7 +33404,7 @@ static void REGAL_CALL statistics_glUniform2i64vNV(GLint location, GLsizei count
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2i64vNV(location, count, value);
 }
@@ -33420,7 +33420,7 @@ static void REGAL_CALL statistics_glUniform2ui64NV(GLint location, GLuint64EXT x
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2ui64NV(location, x, y);
 }
@@ -33436,7 +33436,7 @@ static void REGAL_CALL statistics_glUniform2ui64vNV(GLint location, GLsizei coun
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform2ui64vNV(location, count, value);
 }
@@ -33452,7 +33452,7 @@ static void REGAL_CALL statistics_glUniform3i64NV(GLint location, GLint64EXT x, 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3i64NV(location, x, y, z);
 }
@@ -33468,7 +33468,7 @@ static void REGAL_CALL statistics_glUniform3i64vNV(GLint location, GLsizei count
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3i64vNV(location, count, value);
 }
@@ -33484,7 +33484,7 @@ static void REGAL_CALL statistics_glUniform3ui64NV(GLint location, GLuint64EXT x
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3ui64NV(location, x, y, z);
 }
@@ -33500,7 +33500,7 @@ static void REGAL_CALL statistics_glUniform3ui64vNV(GLint location, GLsizei coun
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform3ui64vNV(location, count, value);
 }
@@ -33516,7 +33516,7 @@ static void REGAL_CALL statistics_glUniform4i64NV(GLint location, GLint64EXT x, 
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4i64NV(location, x, y, z, w);
 }
@@ -33532,7 +33532,7 @@ static void REGAL_CALL statistics_glUniform4i64vNV(GLint location, GLsizei count
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4i64vNV(location, count, value);
 }
@@ -33548,7 +33548,7 @@ static void REGAL_CALL statistics_glUniform4ui64NV(GLint location, GLuint64EXT x
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4ui64NV(location, x, y, z, w);
 }
@@ -33564,7 +33564,7 @@ static void REGAL_CALL statistics_glUniform4ui64vNV(GLint location, GLsizei coun
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniform4ui64vNV(location, count, value);
 }
@@ -33582,7 +33582,7 @@ static void REGAL_CALL statistics_glColor3hNV(GLhalfNV red, GLhalfNV green, GLha
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3hNV(red, green, blue);
 }
@@ -33598,7 +33598,7 @@ static void REGAL_CALL statistics_glColor3hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3hvNV(v);
 }
@@ -33614,7 +33614,7 @@ static void REGAL_CALL statistics_glColor4hNV(GLhalfNV red, GLhalfNV green, GLha
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4hNV(red, green, blue, alpha);
 }
@@ -33630,7 +33630,7 @@ static void REGAL_CALL statistics_glColor4hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4hvNV(v);
 }
@@ -33646,7 +33646,7 @@ static void REGAL_CALL statistics_glFogCoordhNV(GLhalfNV coord)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordhNV(coord);
 }
@@ -33662,7 +33662,7 @@ static void REGAL_CALL statistics_glFogCoordhvNV(const GLhalfNV *coord)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordhvNV(coord);
 }
@@ -33678,7 +33678,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1hNV(GLenum target, GLhalfNV s)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1hNV(target, s);
 }
@@ -33694,7 +33694,7 @@ static void REGAL_CALL statistics_glMultiTexCoord1hvNV(GLenum target, const GLha
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord1hvNV(target, v);
 }
@@ -33710,7 +33710,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2hNV(GLenum target, GLhalfNV s,
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2hNV(target, s, t);
 }
@@ -33726,7 +33726,7 @@ static void REGAL_CALL statistics_glMultiTexCoord2hvNV(GLenum target, const GLha
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord2hvNV(target, v);
 }
@@ -33742,7 +33742,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3hNV(GLenum target, GLhalfNV s,
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3hNV(target, s, t, r);
 }
@@ -33758,7 +33758,7 @@ static void REGAL_CALL statistics_glMultiTexCoord3hvNV(GLenum target, const GLha
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord3hvNV(target, v);
 }
@@ -33774,7 +33774,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4hNV(GLenum target, GLhalfNV s,
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4hNV(target, s, t, r, q);
 }
@@ -33790,7 +33790,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4hvNV(GLenum target, const GLha
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4hvNV(target, v);
 }
@@ -33806,7 +33806,7 @@ static void REGAL_CALL statistics_glNormal3hNV(GLhalfNV nx, GLhalfNV ny, GLhalfN
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3hNV(nx, ny, nz);
 }
@@ -33822,7 +33822,7 @@ static void REGAL_CALL statistics_glNormal3hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3hvNV(v);
 }
@@ -33838,7 +33838,7 @@ static void REGAL_CALL statistics_glSecondaryColor3hNV(GLhalfNV red, GLhalfNV gr
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3hNV(red, green, blue);
 }
@@ -33854,7 +33854,7 @@ static void REGAL_CALL statistics_glSecondaryColor3hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColor3hvNV(v);
 }
@@ -33870,7 +33870,7 @@ static void REGAL_CALL statistics_glTexCoord1hNV(GLhalfNV s)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1hNV(s);
 }
@@ -33886,7 +33886,7 @@ static void REGAL_CALL statistics_glTexCoord1hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord1hvNV(v);
 }
@@ -33902,7 +33902,7 @@ static void REGAL_CALL statistics_glTexCoord2hNV(GLhalfNV s, GLhalfNV t)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2hNV(s, t);
 }
@@ -33918,7 +33918,7 @@ static void REGAL_CALL statistics_glTexCoord2hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2hvNV(v);
 }
@@ -33934,7 +33934,7 @@ static void REGAL_CALL statistics_glTexCoord3hNV(GLhalfNV s, GLhalfNV t, GLhalfN
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3hNV(s, t, r);
 }
@@ -33950,7 +33950,7 @@ static void REGAL_CALL statistics_glTexCoord3hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord3hvNV(v);
 }
@@ -33966,7 +33966,7 @@ static void REGAL_CALL statistics_glTexCoord4hNV(GLhalfNV s, GLhalfNV t, GLhalfN
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4hNV(s, t, r, q);
 }
@@ -33982,7 +33982,7 @@ static void REGAL_CALL statistics_glTexCoord4hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4hvNV(v);
 }
@@ -33998,7 +33998,7 @@ static void REGAL_CALL statistics_glVertex2hNV(GLhalfNV x, GLhalfNV y)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2hNV(x, y);
 }
@@ -34014,7 +34014,7 @@ static void REGAL_CALL statistics_glVertex2hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex2hvNV(v);
 }
@@ -34030,7 +34030,7 @@ static void REGAL_CALL statistics_glVertex3hNV(GLhalfNV x, GLhalfNV y, GLhalfNV 
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3hNV(x, y, z);
 }
@@ -34046,7 +34046,7 @@ static void REGAL_CALL statistics_glVertex3hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex3hvNV(v);
 }
@@ -34062,7 +34062,7 @@ static void REGAL_CALL statistics_glVertex4hNV(GLhalfNV x, GLhalfNV y, GLhalfNV 
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4hNV(x, y, z, w);
 }
@@ -34078,7 +34078,7 @@ static void REGAL_CALL statistics_glVertex4hvNV(const GLhalfNV *v)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertex4hvNV(v);
 }
@@ -34094,7 +34094,7 @@ static void REGAL_CALL statistics_glVertexAttrib1hNV(GLuint index, GLhalfNV x)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1hNV(index, x);
 }
@@ -34110,7 +34110,7 @@ static void REGAL_CALL statistics_glVertexAttrib1hvNV(GLuint index, const GLhalf
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1hvNV(index, v);
 }
@@ -34126,7 +34126,7 @@ static void REGAL_CALL statistics_glVertexAttrib2hNV(GLuint index, GLhalfNV x, G
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2hNV(index, x, y);
 }
@@ -34142,7 +34142,7 @@ static void REGAL_CALL statistics_glVertexAttrib2hvNV(GLuint index, const GLhalf
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2hvNV(index, v);
 }
@@ -34158,7 +34158,7 @@ static void REGAL_CALL statistics_glVertexAttrib3hNV(GLuint index, GLhalfNV x, G
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3hNV(index, x, y, z);
 }
@@ -34174,7 +34174,7 @@ static void REGAL_CALL statistics_glVertexAttrib3hvNV(GLuint index, const GLhalf
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3hvNV(index, v);
 }
@@ -34190,7 +34190,7 @@ static void REGAL_CALL statistics_glVertexAttrib4hNV(GLuint index, GLhalfNV x, G
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4hNV(index, x, y, z, w);
 }
@@ -34206,7 +34206,7 @@ static void REGAL_CALL statistics_glVertexAttrib4hvNV(GLuint index, const GLhalf
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4hvNV(index, v);
 }
@@ -34222,7 +34222,7 @@ static void REGAL_CALL statistics_glVertexAttribs1hvNV(GLuint index, GLsizei cou
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs1hvNV(index, count, v);
 }
@@ -34238,7 +34238,7 @@ static void REGAL_CALL statistics_glVertexAttribs2hvNV(GLuint index, GLsizei cou
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs2hvNV(index, count, v);
 }
@@ -34254,7 +34254,7 @@ static void REGAL_CALL statistics_glVertexAttribs3hvNV(GLuint index, GLsizei cou
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs3hvNV(index, count, v);
 }
@@ -34270,7 +34270,7 @@ static void REGAL_CALL statistics_glVertexAttribs4hvNV(GLuint index, GLsizei cou
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs4hvNV(index, count, v);
 }
@@ -34286,7 +34286,7 @@ static void REGAL_CALL statistics_glVertexWeighthNV(GLhalfNV weight)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexWeighthNV(weight);
 }
@@ -34302,7 +34302,7 @@ static void REGAL_CALL statistics_glVertexWeighthvNV(const GLhalfNV *weight)
 
   statistics.gl_nv_half_float++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexWeighthvNV(weight);
 }
@@ -34320,7 +34320,7 @@ static void REGAL_CALL statistics_glUniformMatrix2x3fvNV(GLint location, GLsizei
 
   statistics.gl_nv_non_square_matrices++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2x3fvNV(location, count, transpose, value);
 }
@@ -34336,7 +34336,7 @@ static void REGAL_CALL statistics_glUniformMatrix2x4fvNV(GLint location, GLsizei
 
   statistics.gl_nv_non_square_matrices++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix2x4fvNV(location, count, transpose, value);
 }
@@ -34352,7 +34352,7 @@ static void REGAL_CALL statistics_glUniformMatrix3x2fvNV(GLint location, GLsizei
 
   statistics.gl_nv_non_square_matrices++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3x2fvNV(location, count, transpose, value);
 }
@@ -34368,7 +34368,7 @@ static void REGAL_CALL statistics_glUniformMatrix3x4fvNV(GLint location, GLsizei
 
   statistics.gl_nv_non_square_matrices++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix3x4fvNV(location, count, transpose, value);
 }
@@ -34384,7 +34384,7 @@ static void REGAL_CALL statistics_glUniformMatrix4x2fvNV(GLint location, GLsizei
 
   statistics.gl_nv_non_square_matrices++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4x2fvNV(location, count, transpose, value);
 }
@@ -34400,7 +34400,7 @@ static void REGAL_CALL statistics_glUniformMatrix4x3fvNV(GLint location, GLsizei
 
   statistics.gl_nv_non_square_matrices++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformMatrix4x3fvNV(location, count, transpose, value);
 }
@@ -34418,7 +34418,7 @@ static void REGAL_CALL statistics_glBeginOcclusionQueryNV(GLuint id)
 
   statistics.gl_nv_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginOcclusionQueryNV(id);
 }
@@ -34434,7 +34434,7 @@ static void REGAL_CALL statistics_glDeleteOcclusionQueriesNV(GLsizei n, const GL
 
   statistics.gl_nv_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteOcclusionQueriesNV(n, ids);
 }
@@ -34450,7 +34450,7 @@ static void REGAL_CALL statistics_glEndOcclusionQueryNV(void)
 
   statistics.gl_nv_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndOcclusionQueryNV();
 }
@@ -34466,7 +34466,7 @@ static void REGAL_CALL statistics_glGenOcclusionQueriesNV(GLsizei n, GLuint *ids
 
   statistics.gl_nv_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenOcclusionQueriesNV(n, ids);
 }
@@ -34482,7 +34482,7 @@ static void REGAL_CALL statistics_glGetOcclusionQueryivNV(GLuint id, GLenum pnam
 
   statistics.gl_nv_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetOcclusionQueryivNV(id, pname, params);
 }
@@ -34498,7 +34498,7 @@ static void REGAL_CALL statistics_glGetOcclusionQueryuivNV(GLuint id, GLenum pna
 
   statistics.gl_nv_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetOcclusionQueryuivNV(id, pname, params);
 }
@@ -34514,7 +34514,7 @@ static GLboolean REGAL_CALL statistics_glIsOcclusionQueryNV(GLuint id)
 
   statistics.gl_nv_occlusion_query++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsOcclusionQueryNV(id);
   return ret;
@@ -34533,7 +34533,7 @@ static void REGAL_CALL statistics_glProgramBufferParametersIivNV(GLenum target, 
 
   statistics.gl_nv_parameter_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramBufferParametersIivNV(target, buffer, index, count, params);
 }
@@ -34549,7 +34549,7 @@ static void REGAL_CALL statistics_glProgramBufferParametersIuivNV(GLenum target,
 
   statistics.gl_nv_parameter_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramBufferParametersIuivNV(target, buffer, index, count, params);
 }
@@ -34565,7 +34565,7 @@ static void REGAL_CALL statistics_glProgramBufferParametersfvNV(GLenum target, G
 
   statistics.gl_nv_parameter_buffer_object++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramBufferParametersfvNV(target, buffer, index, count, params);
 }
@@ -34583,7 +34583,7 @@ static void REGAL_CALL statistics_glCopyPathNV(GLuint resultPath, GLuint srcPath
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyPathNV(resultPath, srcPath);
 }
@@ -34599,7 +34599,7 @@ static void REGAL_CALL statistics_glCoverFillPathInstancedNV(GLsizei numPaths, G
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCoverFillPathInstancedNV(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues);
 }
@@ -34615,7 +34615,7 @@ static void REGAL_CALL statistics_glCoverFillPathNV(GLuint path, GLenum coverMod
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCoverFillPathNV(path, coverMode);
 }
@@ -34631,7 +34631,7 @@ static void REGAL_CALL statistics_glCoverStrokePathInstancedNV(GLsizei numPaths,
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCoverStrokePathInstancedNV(numPaths, pathNameType, paths, pathBase, coverMode, transformType, transformValues);
 }
@@ -34647,7 +34647,7 @@ static void REGAL_CALL statistics_glCoverStrokePathNV(GLuint name, GLenum coverM
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCoverStrokePathNV(name, coverMode);
 }
@@ -34663,7 +34663,7 @@ static void REGAL_CALL statistics_glDeletePathsNV(GLuint path, GLsizei range)
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeletePathsNV(path, range);
 }
@@ -34679,7 +34679,7 @@ static GLuint REGAL_CALL statistics_glGenPathsNV(GLsizei range)
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGenPathsNV(range);
   return ret;
@@ -34696,7 +34696,7 @@ static void REGAL_CALL statistics_glGetPathColorGenfvNV(GLenum color, GLenum pna
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathColorGenfvNV(color, pname, value);
 }
@@ -34712,7 +34712,7 @@ static void REGAL_CALL statistics_glGetPathColorGenivNV(GLenum color, GLenum pna
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathColorGenivNV(color, pname, value);
 }
@@ -34728,7 +34728,7 @@ static void REGAL_CALL statistics_glGetPathCommandsNV(GLuint name, GLubyte *comm
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathCommandsNV(name, commands);
 }
@@ -34744,7 +34744,7 @@ static void REGAL_CALL statistics_glGetPathCoordsNV(GLuint name, GLfloat *coords
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathCoordsNV(name, coords);
 }
@@ -34760,7 +34760,7 @@ static void REGAL_CALL statistics_glGetPathDashArrayNV(GLuint name, GLfloat *das
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathDashArrayNV(name, dashArray);
 }
@@ -34776,7 +34776,7 @@ static GLfloat REGAL_CALL statistics_glGetPathLengthNV(GLuint path, GLsizei star
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLfloat  ret = _next->glGetPathLengthNV(path, startSegment, numSegments);
   return ret;
@@ -34793,7 +34793,7 @@ static void REGAL_CALL statistics_glGetPathMetricRangeNV(GLbitfield metricQueryM
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathMetricRangeNV(metricQueryMask, fistPathName, numPaths, stride, metrics);
 }
@@ -34809,7 +34809,7 @@ static void REGAL_CALL statistics_glGetPathMetricsNV(GLbitfield metricQueryMask,
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathMetricsNV(metricQueryMask, numPaths, pathNameType, paths, pathBase, stride, metrics);
 }
@@ -34825,7 +34825,7 @@ static void REGAL_CALL statistics_glGetPathParameterfvNV(GLuint name, GLenum par
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathParameterfvNV(name, param, value);
 }
@@ -34841,7 +34841,7 @@ static void REGAL_CALL statistics_glGetPathParameterivNV(GLuint name, GLenum par
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathParameterivNV(name, param, value);
 }
@@ -34857,7 +34857,7 @@ static void REGAL_CALL statistics_glGetPathSpacingNV(GLenum pathListMode, GLsize
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathSpacingNV(pathListMode, numPaths, pathNameType, paths, pathBase, advanceScale, kerningScale, transformType, returnedSpacing);
 }
@@ -34873,7 +34873,7 @@ static void REGAL_CALL statistics_glGetPathTexGenfvNV(GLenum texCoordSet, GLenum
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathTexGenfvNV(texCoordSet, pname, value);
 }
@@ -34889,7 +34889,7 @@ static void REGAL_CALL statistics_glGetPathTexGenivNV(GLenum texCoordSet, GLenum
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPathTexGenivNV(texCoordSet, pname, value);
 }
@@ -34905,7 +34905,7 @@ static void REGAL_CALL statistics_glInterpolatePathsNV(GLuint resultPath, GLuint
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInterpolatePathsNV(resultPath, pathA, pathB, weight);
 }
@@ -34921,7 +34921,7 @@ static GLboolean REGAL_CALL statistics_glIsPathNV(GLuint path)
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsPathNV(path);
   return ret;
@@ -34938,7 +34938,7 @@ static GLboolean REGAL_CALL statistics_glIsPointInFillPathNV(GLuint path, GLuint
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsPointInFillPathNV(path, mask, x, y);
   return ret;
@@ -34955,7 +34955,7 @@ static GLboolean REGAL_CALL statistics_glIsPointInStrokePathNV(GLuint path, GLfl
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsPointInStrokePathNV(path, x, y);
   return ret;
@@ -34972,7 +34972,7 @@ static void REGAL_CALL statistics_glPathColorGenNV(GLenum color, GLenum genMode,
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathColorGenNV(color, genMode, colorFormat, coeffs);
 }
@@ -34988,7 +34988,7 @@ static void REGAL_CALL statistics_glPathCommandsNV(GLuint path, GLsizei numComma
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathCommandsNV(path, numCommands, commands, numCoords, coordType, coords);
 }
@@ -35004,7 +35004,7 @@ static void REGAL_CALL statistics_glPathCoordsNV(GLuint path, GLsizei numCoords,
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathCoordsNV(path, numCoords, coordType, coords);
 }
@@ -35020,7 +35020,7 @@ static void REGAL_CALL statistics_glPathCoverDepthFuncNV(GLenum zfunc)
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathCoverDepthFuncNV(zfunc);
 }
@@ -35036,7 +35036,7 @@ static void REGAL_CALL statistics_glPathDashArrayNV(GLuint path, GLsizei dashCou
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathDashArrayNV(path, dashCount, dashArray);
 }
@@ -35052,7 +35052,7 @@ static void REGAL_CALL statistics_glPathFogGenNV(GLenum genMode)
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathFogGenNV(genMode);
 }
@@ -35068,7 +35068,7 @@ static void REGAL_CALL statistics_glPathGlyphRangeNV(GLuint firstPathName, GLenu
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathGlyphRangeNV(firstPathName, fontTarget, fontName, fontStyle, firstGlyph, numGlyphs, handleMissingGlyphs, pathParameterTemplate, emScale);
 }
@@ -35084,7 +35084,7 @@ static void REGAL_CALL statistics_glPathGlyphsNV(GLuint firstPathName, GLenum fo
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathGlyphsNV(firstPathName, fontTarget, fontName, fontStyle, numGlyphs, type, charcodes, handleMissingGlyphs, pathParameterTemplate, emScale);
 }
@@ -35100,7 +35100,7 @@ static void REGAL_CALL statistics_glPathParameterfNV(GLuint path, GLenum pname, 
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathParameterfNV(path, pname, value);
 }
@@ -35116,7 +35116,7 @@ static void REGAL_CALL statistics_glPathParameterfvNV(GLuint path, GLenum pname,
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathParameterfvNV(path, pname, value);
 }
@@ -35132,7 +35132,7 @@ static void REGAL_CALL statistics_glPathParameteriNV(GLuint path, GLenum pname, 
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathParameteriNV(path, pname, value);
 }
@@ -35148,7 +35148,7 @@ static void REGAL_CALL statistics_glPathParameterivNV(GLuint path, GLenum pname,
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathParameterivNV(path, pname, value);
 }
@@ -35164,7 +35164,7 @@ static void REGAL_CALL statistics_glPathStencilDepthOffsetNV(GLfloat factor, GLf
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathStencilDepthOffsetNV(factor, units);
 }
@@ -35180,7 +35180,7 @@ static void REGAL_CALL statistics_glPathStencilFuncNV(GLenum func, GLint ref, GL
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathStencilFuncNV(func, ref, mask);
 }
@@ -35196,7 +35196,7 @@ static void REGAL_CALL statistics_glPathStringNV(GLuint path, GLenum format, GLs
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathStringNV(path, format, length, pathString);
 }
@@ -35212,7 +35212,7 @@ static void REGAL_CALL statistics_glPathSubCommandsNV(GLuint path, GLsizei comma
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathSubCommandsNV(path, commandStart, commandsToDelete, numCommands, commands, numCoords, coordType, coords);
 }
@@ -35228,7 +35228,7 @@ static void REGAL_CALL statistics_glPathSubCoordsNV(GLuint path, GLsizei coordSt
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathSubCoordsNV(path, coordStart, numCoords, coordType, coords);
 }
@@ -35244,7 +35244,7 @@ static void REGAL_CALL statistics_glPathTexGenNV(GLenum texCoordSet, GLenum genM
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPathTexGenNV(texCoordSet, genMode, components, coeffs);
 }
@@ -35260,7 +35260,7 @@ static GLboolean REGAL_CALL statistics_glPointAlongPathNV(GLuint path, GLsizei s
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glPointAlongPathNV(path, startSegment, numSegments, distance, x, y, tangentX, tangentY);
   return ret;
@@ -35277,7 +35277,7 @@ static void REGAL_CALL statistics_glStencilFillPathInstancedNV(GLsizei numPaths,
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilFillPathInstancedNV(numPaths, pathNameType, paths, pathBase, fillMode, mask, transformType, transformValues);
 }
@@ -35293,7 +35293,7 @@ static void REGAL_CALL statistics_glStencilFillPathNV(GLuint path, GLenum fillMo
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilFillPathNV(path, fillMode, mask);
 }
@@ -35309,7 +35309,7 @@ static void REGAL_CALL statistics_glStencilStrokePathInstancedNV(GLsizei numPath
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilStrokePathInstancedNV(numPaths, pathNameType, paths, pathBase, reference, mask, transformType, transformValues);
 }
@@ -35325,7 +35325,7 @@ static void REGAL_CALL statistics_glStencilStrokePathNV(GLuint path, GLint refer
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStencilStrokePathNV(path, reference, mask);
 }
@@ -35341,7 +35341,7 @@ static void REGAL_CALL statistics_glTransformPathNV(GLuint resultPath, GLuint sr
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTransformPathNV(resultPath, srcPath, transformType, transformValues);
 }
@@ -35357,7 +35357,7 @@ static void REGAL_CALL statistics_glWeightPathsNV(GLuint resultPath, GLsizei num
 
   statistics.gl_nv_path_rendering++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightPathsNV(resultPath, numPaths, paths, weights);
 }
@@ -35375,7 +35375,7 @@ static void REGAL_CALL statistics_glFlushPixelDataRangeNV(GLenum target)
 
   statistics.gl_nv_pixel_data_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushPixelDataRangeNV(target);
 }
@@ -35391,7 +35391,7 @@ static void REGAL_CALL statistics_glPixelDataRangeNV(GLenum target, GLsizei size
 
   statistics.gl_nv_pixel_data_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelDataRangeNV(target, size, pointer);
 }
@@ -35409,7 +35409,7 @@ static void REGAL_CALL statistics_glPointParameteriNV(GLenum pname, GLint param)
 
   statistics.gl_nv_point_sprite++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameteriNV(pname, param);
 }
@@ -35425,7 +35425,7 @@ static void REGAL_CALL statistics_glPointParameterivNV(GLenum pname, const GLint
 
   statistics.gl_nv_point_sprite++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterivNV(pname, params);
 }
@@ -35443,7 +35443,7 @@ static void REGAL_CALL statistics_glGetVideoi64vNV(GLuint video_slot, GLenum pna
 
   statistics.gl_nv_present_video++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideoi64vNV(video_slot, pname, params);
 }
@@ -35459,7 +35459,7 @@ static void REGAL_CALL statistics_glGetVideoivNV(GLuint video_slot, GLenum pname
 
   statistics.gl_nv_present_video++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideoivNV(video_slot, pname, params);
 }
@@ -35475,7 +35475,7 @@ static void REGAL_CALL statistics_glGetVideoui64vNV(GLuint video_slot, GLenum pn
 
   statistics.gl_nv_present_video++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideoui64vNV(video_slot, pname, params);
 }
@@ -35491,7 +35491,7 @@ static void REGAL_CALL statistics_glGetVideouivNV(GLuint video_slot, GLenum pnam
 
   statistics.gl_nv_present_video++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideouivNV(video_slot, pname, params);
 }
@@ -35507,7 +35507,7 @@ static void REGAL_CALL statistics_glPresentFrameDualFillNV(GLuint video_slot, GL
 
   statistics.gl_nv_present_video++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPresentFrameDualFillNV(video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, target1, fill1, target2, fill2, target3, fill3);
 }
@@ -35523,7 +35523,7 @@ static void REGAL_CALL statistics_glPresentFrameKeyedNV(GLuint video_slot, GLuin
 
   statistics.gl_nv_present_video++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPresentFrameKeyedNV(video_slot, minPresentTime, beginPresentTimeId, presentDurationId, type, target0, fill0, key0, target1, fill1, key1);
 }
@@ -35541,7 +35541,7 @@ static void REGAL_CALL statistics_glPrimitiveRestartIndexNV(GLuint index)
 
   statistics.gl_nv_primitive_restart++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPrimitiveRestartIndexNV(index);
 }
@@ -35557,7 +35557,7 @@ static void REGAL_CALL statistics_glPrimitiveRestartNV(void)
 
   statistics.gl_nv_primitive_restart++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPrimitiveRestartNV();
 }
@@ -35573,7 +35573,7 @@ static void REGAL_CALL statistics_glReadBufferNV(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glReadBufferNV++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadBufferNV(mode);
 }
@@ -35591,7 +35591,7 @@ static void REGAL_CALL statistics_glCombinerInputNV(GLenum stage, GLenum portion
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCombinerInputNV(stage, portion, variable, input, mapping, componentUsage);
 }
@@ -35607,7 +35607,7 @@ static void REGAL_CALL statistics_glCombinerOutputNV(GLenum stage, GLenum portio
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCombinerOutputNV(stage, portion, abOutput, cdOutput, sumOutput, scale, bias, abDotProduct, cdDotProduct, muxSum);
 }
@@ -35623,7 +35623,7 @@ static void REGAL_CALL statistics_glCombinerParameterfNV(GLenum pname, GLfloat p
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCombinerParameterfNV(pname, param);
 }
@@ -35639,7 +35639,7 @@ static void REGAL_CALL statistics_glCombinerParameterfvNV(GLenum pname, const GL
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCombinerParameterfvNV(pname, params);
 }
@@ -35655,7 +35655,7 @@ static void REGAL_CALL statistics_glCombinerParameteriNV(GLenum pname, GLint par
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCombinerParameteriNV(pname, param);
 }
@@ -35671,7 +35671,7 @@ static void REGAL_CALL statistics_glCombinerParameterivNV(GLenum pname, const GL
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCombinerParameterivNV(pname, params);
 }
@@ -35687,7 +35687,7 @@ static void REGAL_CALL statistics_glFinalCombinerInputNV(GLenum variable, GLenum
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFinalCombinerInputNV(variable, input, mapping, componentUsage);
 }
@@ -35703,7 +35703,7 @@ static void REGAL_CALL statistics_glGetCombinerInputParameterfvNV(GLenum stage, 
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCombinerInputParameterfvNV(stage, portion, variable, pname, params);
 }
@@ -35719,7 +35719,7 @@ static void REGAL_CALL statistics_glGetCombinerInputParameterivNV(GLenum stage, 
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCombinerInputParameterivNV(stage, portion, variable, pname, params);
 }
@@ -35735,7 +35735,7 @@ static void REGAL_CALL statistics_glGetCombinerOutputParameterfvNV(GLenum stage,
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCombinerOutputParameterfvNV(stage, portion, pname, params);
 }
@@ -35751,7 +35751,7 @@ static void REGAL_CALL statistics_glGetCombinerOutputParameterivNV(GLenum stage,
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCombinerOutputParameterivNV(stage, portion, pname, params);
 }
@@ -35767,7 +35767,7 @@ static void REGAL_CALL statistics_glGetFinalCombinerInputParameterfvNV(GLenum va
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFinalCombinerInputParameterfvNV(variable, pname, params);
 }
@@ -35783,7 +35783,7 @@ static void REGAL_CALL statistics_glGetFinalCombinerInputParameterivNV(GLenum va
 
   statistics.gl_nv_register_combiners++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFinalCombinerInputParameterivNV(variable, pname, params);
 }
@@ -35801,7 +35801,7 @@ static void REGAL_CALL statistics_glCombinerStageParameterfvNV(GLenum stage, GLe
 
   statistics.gl_nv_register_combiners2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCombinerStageParameterfvNV(stage, pname, params);
 }
@@ -35817,7 +35817,7 @@ static void REGAL_CALL statistics_glGetCombinerStageParameterfvNV(GLenum stage, 
 
   statistics.gl_nv_register_combiners2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetCombinerStageParameterfvNV(stage, pname, params);
 }
@@ -35835,7 +35835,7 @@ static void REGAL_CALL statistics_glGetBufferParameterui64vNV(GLenum target, GLe
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferParameterui64vNV(target, pname, params);
 }
@@ -35851,7 +35851,7 @@ static void REGAL_CALL statistics_glGetIntegerui64vNV(GLenum target, GLuint64EXT
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetIntegerui64vNV(target, data);
 }
@@ -35867,7 +35867,7 @@ static void REGAL_CALL statistics_glGetNamedBufferParameterui64vNV(GLuint buffer
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetNamedBufferParameterui64vNV(buffer, pname, params);
 }
@@ -35883,7 +35883,7 @@ static void REGAL_CALL statistics_glGetUniformui64vNV(GLuint program, GLint loca
 
   statistics.gl_nv_gpu_shader5++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetUniformui64vNV(program, location, params);
 }
@@ -35899,7 +35899,7 @@ static GLboolean REGAL_CALL statistics_glIsBufferResidentNV(GLenum target)
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsBufferResidentNV(target);
   return ret;
@@ -35916,7 +35916,7 @@ static GLboolean REGAL_CALL statistics_glIsNamedBufferResidentNV(GLuint buffer)
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsNamedBufferResidentNV(buffer);
   return ret;
@@ -35933,7 +35933,7 @@ static void REGAL_CALL statistics_glMakeBufferNonResidentNV(GLenum target)
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeBufferNonResidentNV(target);
 }
@@ -35949,7 +35949,7 @@ static void REGAL_CALL statistics_glMakeBufferResidentNV(GLenum target, GLenum a
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeBufferResidentNV(target, access);
 }
@@ -35965,7 +35965,7 @@ static void REGAL_CALL statistics_glMakeNamedBufferNonResidentNV(GLuint buffer)
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeNamedBufferNonResidentNV(buffer);
 }
@@ -35981,7 +35981,7 @@ static void REGAL_CALL statistics_glMakeNamedBufferResidentNV(GLuint buffer, GLe
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMakeNamedBufferResidentNV(buffer, access);
 }
@@ -35997,7 +35997,7 @@ static void REGAL_CALL statistics_glProgramUniformui64NV(GLuint program, GLint l
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformui64NV(program, location, v0);
 }
@@ -36013,7 +36013,7 @@ static void REGAL_CALL statistics_glProgramUniformui64vNV(GLuint program, GLint 
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramUniformui64vNV(program, location, count, value);
 }
@@ -36029,7 +36029,7 @@ static void REGAL_CALL statistics_glUniformui64NV(GLint location, GLuint64EXT v0
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformui64NV(location, v0);
 }
@@ -36045,7 +36045,7 @@ static void REGAL_CALL statistics_glUniformui64vNV(GLint location, GLsizei count
 
   statistics.gl_nv_shader_buffer_load++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glUniformui64vNV(location, count, value);
 }
@@ -36063,7 +36063,7 @@ static void REGAL_CALL statistics_glTextureBarrierNV(void)
 
   statistics.gl_nv_texture_barrier++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureBarrierNV();
 }
@@ -36081,7 +36081,7 @@ static void REGAL_CALL statistics_glTexImage2DMultisampleCoverageNV(GLenum targe
 
   statistics.gl_nv_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage2DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
 }
@@ -36097,7 +36097,7 @@ static void REGAL_CALL statistics_glTexImage3DMultisampleCoverageNV(GLenum targe
 
   statistics.gl_nv_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage3DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
 }
@@ -36113,7 +36113,7 @@ static void REGAL_CALL statistics_glTextureImage2DMultisampleCoverageNV(GLuint t
 
   statistics.gl_nv_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureImage2DMultisampleCoverageNV(texture, target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
 }
@@ -36129,7 +36129,7 @@ static void REGAL_CALL statistics_glTextureImage2DMultisampleNV(GLuint texture, 
 
   statistics.gl_nv_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureImage2DMultisampleNV(texture, target, samples, internalFormat, width, height, fixedSampleLocations);
 }
@@ -36145,7 +36145,7 @@ static void REGAL_CALL statistics_glTextureImage3DMultisampleCoverageNV(GLuint t
 
   statistics.gl_nv_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureImage3DMultisampleCoverageNV(texture, target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
 }
@@ -36161,7 +36161,7 @@ static void REGAL_CALL statistics_glTextureImage3DMultisampleNV(GLuint texture, 
 
   statistics.gl_nv_texture_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureImage3DMultisampleNV(texture, target, samples, internalFormat, width, height, depth, fixedSampleLocations);
 }
@@ -36179,7 +36179,7 @@ static void REGAL_CALL statistics_glActiveVaryingNV(GLuint program, const GLchar
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glActiveVaryingNV(program, name);
 }
@@ -36195,7 +36195,7 @@ static void REGAL_CALL statistics_glBeginTransformFeedbackNV(GLenum primitiveMod
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginTransformFeedbackNV(primitiveMode);
 }
@@ -36211,7 +36211,7 @@ static void REGAL_CALL statistics_glBindBufferBaseNV(GLenum target, GLuint index
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferBaseNV(target, index, buffer);
 }
@@ -36227,7 +36227,7 @@ static void REGAL_CALL statistics_glBindBufferOffsetNV(GLenum target, GLuint ind
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferOffsetNV(target, index, buffer, offset);
 }
@@ -36243,7 +36243,7 @@ static void REGAL_CALL statistics_glBindBufferRangeNV(GLenum target, GLuint inde
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindBufferRangeNV(target, index, buffer, offset, size);
 }
@@ -36259,7 +36259,7 @@ static void REGAL_CALL statistics_glEndTransformFeedbackNV(void)
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndTransformFeedbackNV();
 }
@@ -36275,7 +36275,7 @@ static void REGAL_CALL statistics_glGetActiveVaryingNV(GLuint program, GLuint in
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetActiveVaryingNV(program, index, bufSize, length, size, type, name);
 }
@@ -36291,7 +36291,7 @@ static void REGAL_CALL statistics_glGetTransformFeedbackVaryingNV(GLuint program
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTransformFeedbackVaryingNV(program, index, location);
 }
@@ -36307,7 +36307,7 @@ static GLint REGAL_CALL statistics_glGetVaryingLocationNV(GLuint program, const 
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetVaryingLocationNV(program, name);
   return ret;
@@ -36324,7 +36324,7 @@ static void REGAL_CALL statistics_glTransformFeedbackAttribsNV(GLuint count, con
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTransformFeedbackAttribsNV(count, attribs, bufferMode);
 }
@@ -36340,7 +36340,7 @@ static void REGAL_CALL statistics_glTransformFeedbackVaryingsNV(GLuint program, 
 
   statistics.gl_nv_transform_feedback++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTransformFeedbackVaryingsNV(program, count, locations, bufferMode);
 }
@@ -36358,7 +36358,7 @@ static void REGAL_CALL statistics_glBindTransformFeedbackNV(GLenum target, GLuin
 
   statistics.gl_nv_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindTransformFeedbackNV(target, id);
 }
@@ -36374,7 +36374,7 @@ static void REGAL_CALL statistics_glDeleteTransformFeedbacksNV(GLsizei n, const 
 
   statistics.gl_nv_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteTransformFeedbacksNV(n, ids);
 }
@@ -36390,7 +36390,7 @@ static void REGAL_CALL statistics_glDrawTransformFeedbackNV(GLenum mode, GLuint 
 
   statistics.gl_nv_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawTransformFeedbackNV(mode, name);
 }
@@ -36406,7 +36406,7 @@ static void REGAL_CALL statistics_glGenTransformFeedbacksNV(GLsizei n, GLuint *i
 
   statistics.gl_nv_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenTransformFeedbacksNV(n, ids);
 }
@@ -36422,7 +36422,7 @@ static GLboolean REGAL_CALL statistics_glIsTransformFeedbackNV(GLuint id)
 
   statistics.gl_nv_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsTransformFeedbackNV(id);
   return ret;
@@ -36439,7 +36439,7 @@ static void REGAL_CALL statistics_glPauseTransformFeedbackNV(void)
 
   statistics.gl_nv_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPauseTransformFeedbackNV();
 }
@@ -36455,7 +36455,7 @@ static void REGAL_CALL statistics_glResumeTransformFeedbackNV(void)
 
   statistics.gl_nv_transform_feedback2++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glResumeTransformFeedbackNV();
 }
@@ -36473,7 +36473,7 @@ static void REGAL_CALL statistics_glVDPAUFiniNV(void)
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVDPAUFiniNV();
 }
@@ -36489,7 +36489,7 @@ static void REGAL_CALL statistics_glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVDPAUGetSurfaceivNV(surface, pname, bufSize, length, values);
 }
@@ -36505,7 +36505,7 @@ static void REGAL_CALL statistics_glVDPAUInitNV(const GLvoid *vdpDevice, const G
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVDPAUInitNV(vdpDevice, getProcAddress);
 }
@@ -36521,7 +36521,7 @@ static GLboolean REGAL_CALL statistics_glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surfa
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glVDPAUIsSurfaceNV(surface);
   return ret;
@@ -36538,7 +36538,7 @@ static void REGAL_CALL statistics_glVDPAUMapSurfacesNV(GLsizei numSurfaces, cons
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVDPAUMapSurfacesNV(numSurfaces, surfaces);
 }
@@ -36554,7 +36554,7 @@ static GLvdpauSurfaceNV REGAL_CALL statistics_glVDPAURegisterOutputSurfaceNV(con
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvdpauSurfaceNV  ret = _next->glVDPAURegisterOutputSurfaceNV(vdpSurface, target, numTextureNames, textureNames);
   return ret;
@@ -36571,7 +36571,7 @@ static GLvdpauSurfaceNV REGAL_CALL statistics_glVDPAURegisterVideoSurfaceNV(cons
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvdpauSurfaceNV  ret = _next->glVDPAURegisterVideoSurfaceNV(vdpSurface, target, numTextureNames, textureNames);
   return ret;
@@ -36588,7 +36588,7 @@ static void REGAL_CALL statistics_glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surfac
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVDPAUSurfaceAccessNV(surface, access);
 }
@@ -36604,7 +36604,7 @@ static void REGAL_CALL statistics_glVDPAUUnmapSurfacesNV(GLsizei numSurfaces, co
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVDPAUUnmapSurfacesNV(numSurfaces, surfaces);
 }
@@ -36620,7 +36620,7 @@ static void REGAL_CALL statistics_glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV su
 
   statistics.gl_nv_vdpau_interop++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVDPAUUnregisterSurfaceNV(surface);
 }
@@ -36638,7 +36638,7 @@ static void REGAL_CALL statistics_glFlushVertexArrayRangeNV(void)
 
   statistics.gl_nv_vertex_array_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushVertexArrayRangeNV();
 }
@@ -36654,7 +36654,7 @@ static void REGAL_CALL statistics_glVertexArrayRangeNV(GLsizei size, const GLvoi
 
   statistics.gl_nv_vertex_array_range++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexArrayRangeNV(size, pointer);
 }
@@ -36672,7 +36672,7 @@ static void REGAL_CALL statistics_glGetVertexAttribLi64vNV(GLuint index, GLenum 
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribLi64vNV(index, pname, params);
 }
@@ -36688,7 +36688,7 @@ static void REGAL_CALL statistics_glGetVertexAttribLui64vNV(GLuint index, GLenum
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribLui64vNV(index, pname, params);
 }
@@ -36704,7 +36704,7 @@ static void REGAL_CALL statistics_glVertexAttribL1i64NV(GLuint index, GLint64EXT
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1i64NV(index, x);
 }
@@ -36720,7 +36720,7 @@ static void REGAL_CALL statistics_glVertexAttribL1i64vNV(GLuint index, const GLi
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1i64vNV(index, v);
 }
@@ -36736,7 +36736,7 @@ static void REGAL_CALL statistics_glVertexAttribL1ui64NV(GLuint index, GLuint64E
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1ui64NV(index, x);
 }
@@ -36752,7 +36752,7 @@ static void REGAL_CALL statistics_glVertexAttribL1ui64vNV(GLuint index, const GL
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL1ui64vNV(index, v);
 }
@@ -36768,7 +36768,7 @@ static void REGAL_CALL statistics_glVertexAttribL2i64NV(GLuint index, GLint64EXT
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2i64NV(index, x, y);
 }
@@ -36784,7 +36784,7 @@ static void REGAL_CALL statistics_glVertexAttribL2i64vNV(GLuint index, const GLi
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2i64vNV(index, v);
 }
@@ -36800,7 +36800,7 @@ static void REGAL_CALL statistics_glVertexAttribL2ui64NV(GLuint index, GLuint64E
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2ui64NV(index, x, y);
 }
@@ -36816,7 +36816,7 @@ static void REGAL_CALL statistics_glVertexAttribL2ui64vNV(GLuint index, const GL
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL2ui64vNV(index, v);
 }
@@ -36832,7 +36832,7 @@ static void REGAL_CALL statistics_glVertexAttribL3i64NV(GLuint index, GLint64EXT
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3i64NV(index, x, y, z);
 }
@@ -36848,7 +36848,7 @@ static void REGAL_CALL statistics_glVertexAttribL3i64vNV(GLuint index, const GLi
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3i64vNV(index, v);
 }
@@ -36864,7 +36864,7 @@ static void REGAL_CALL statistics_glVertexAttribL3ui64NV(GLuint index, GLuint64E
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3ui64NV(index, x, y, z);
 }
@@ -36880,7 +36880,7 @@ static void REGAL_CALL statistics_glVertexAttribL3ui64vNV(GLuint index, const GL
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL3ui64vNV(index, v);
 }
@@ -36896,7 +36896,7 @@ static void REGAL_CALL statistics_glVertexAttribL4i64NV(GLuint index, GLint64EXT
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4i64NV(index, x, y, z, w);
 }
@@ -36912,7 +36912,7 @@ static void REGAL_CALL statistics_glVertexAttribL4i64vNV(GLuint index, const GLi
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4i64vNV(index, v);
 }
@@ -36928,7 +36928,7 @@ static void REGAL_CALL statistics_glVertexAttribL4ui64NV(GLuint index, GLuint64E
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4ui64NV(index, x, y, z, w);
 }
@@ -36944,7 +36944,7 @@ static void REGAL_CALL statistics_glVertexAttribL4ui64vNV(GLuint index, const GL
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribL4ui64vNV(index, v);
 }
@@ -36960,7 +36960,7 @@ static void REGAL_CALL statistics_glVertexAttribLFormatNV(GLuint index, GLint si
 
   statistics.gl_nv_vertex_attrib_integer_64bit++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribLFormatNV(index, size, type, stride);
 }
@@ -36978,7 +36978,7 @@ static void REGAL_CALL statistics_glBufferAddressRangeNV(GLenum pname, GLuint in
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBufferAddressRangeNV(pname, index, address, length);
 }
@@ -36994,7 +36994,7 @@ static void REGAL_CALL statistics_glColorFormatNV(GLint size, GLenum type, GLsiz
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorFormatNV(size, type, stride);
 }
@@ -37010,7 +37010,7 @@ static void REGAL_CALL statistics_glEdgeFlagFormatNV(GLsizei stride)
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEdgeFlagFormatNV(stride);
 }
@@ -37026,7 +37026,7 @@ static void REGAL_CALL statistics_glFogCoordFormatNV(GLenum type, GLsizei stride
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogCoordFormatNV(type, stride);
 }
@@ -37042,7 +37042,7 @@ static void REGAL_CALL statistics_glGetIntegerui64i_vNV(GLenum target, GLuint in
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetIntegerui64i_vNV(target, index, data);
 }
@@ -37058,7 +37058,7 @@ static void REGAL_CALL statistics_glIndexFormatNV(GLenum type, GLsizei stride)
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIndexFormatNV(type, stride);
 }
@@ -37074,7 +37074,7 @@ static void REGAL_CALL statistics_glNormalFormatNV(GLenum type, GLsizei stride)
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormalFormatNV(type, stride);
 }
@@ -37090,7 +37090,7 @@ static void REGAL_CALL statistics_glSecondaryColorFormatNV(GLint size, GLenum ty
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSecondaryColorFormatNV(size, type, stride);
 }
@@ -37106,7 +37106,7 @@ static void REGAL_CALL statistics_glTexCoordFormatNV(GLint size, GLenum type, GL
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoordFormatNV(size, type, stride);
 }
@@ -37122,7 +37122,7 @@ static void REGAL_CALL statistics_glVertexAttribFormatNV(GLuint index, GLint siz
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribFormatNV(index, size, type, normalized, stride);
 }
@@ -37138,7 +37138,7 @@ static void REGAL_CALL statistics_glVertexAttribIFormatNV(GLuint index, GLint si
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribIFormatNV(index, size, type, stride);
 }
@@ -37154,7 +37154,7 @@ static void REGAL_CALL statistics_glVertexFormatNV(GLint size, GLenum type, GLsi
 
   statistics.gl_nv_vertex_buffer_unified_memory++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexFormatNV(size, type, stride);
 }
@@ -37172,7 +37172,7 @@ static GLboolean REGAL_CALL statistics_glAreProgramsResidentNV(GLsizei n, const 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glAreProgramsResidentNV(n, programs, residences);
   return ret;
@@ -37189,7 +37189,7 @@ static void REGAL_CALL statistics_glBindProgramNV(GLenum target, GLuint id)
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindProgramNV(target, id);
 }
@@ -37205,7 +37205,7 @@ static void REGAL_CALL statistics_glDeleteProgramsNV(GLsizei n, const GLuint *pr
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteProgramsNV(n, programs);
 }
@@ -37221,7 +37221,7 @@ static void REGAL_CALL statistics_glExecuteProgramNV(GLenum target, GLuint id, c
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExecuteProgramNV(target, id, params);
 }
@@ -37237,7 +37237,7 @@ static void REGAL_CALL statistics_glGenProgramsNV(GLsizei n, GLuint *programs)
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenProgramsNV(n, programs);
 }
@@ -37253,7 +37253,7 @@ static void REGAL_CALL statistics_glGetProgramParameterdvNV(GLenum target, GLuin
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramParameterdvNV(target, index, pname, params);
 }
@@ -37269,7 +37269,7 @@ static void REGAL_CALL statistics_glGetProgramParameterfvNV(GLenum target, GLuin
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramParameterfvNV(target, index, pname, params);
 }
@@ -37285,7 +37285,7 @@ static void REGAL_CALL statistics_glGetProgramStringNV(GLuint id, GLenum pname, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramStringNV(id, pname, program);
 }
@@ -37301,7 +37301,7 @@ static void REGAL_CALL statistics_glGetProgramivNV(GLuint id, GLenum pname, GLin
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramivNV(id, pname, params);
 }
@@ -37317,7 +37317,7 @@ static void REGAL_CALL statistics_glGetTrackMatrixivNV(GLenum target, GLuint add
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTrackMatrixivNV(target, address, pname, params);
 }
@@ -37333,7 +37333,7 @@ static void REGAL_CALL statistics_glGetVertexAttribPointervNV(GLuint index, GLen
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribPointervNV(index, pname, pointer);
 }
@@ -37349,7 +37349,7 @@ static void REGAL_CALL statistics_glGetVertexAttribdvNV(GLuint index, GLenum pna
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribdvNV(index, pname, params);
 }
@@ -37365,7 +37365,7 @@ static void REGAL_CALL statistics_glGetVertexAttribfvNV(GLuint index, GLenum pna
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribfvNV(index, pname, params);
 }
@@ -37381,7 +37381,7 @@ static void REGAL_CALL statistics_glGetVertexAttribivNV(GLuint index, GLenum pna
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVertexAttribivNV(index, pname, params);
 }
@@ -37397,7 +37397,7 @@ static GLboolean REGAL_CALL statistics_glIsProgramNV(GLuint id)
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsProgramNV(id);
   return ret;
@@ -37414,7 +37414,7 @@ static void REGAL_CALL statistics_glLoadProgramNV(GLenum target, GLuint id, GLsi
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadProgramNV(target, id, len, program);
 }
@@ -37430,7 +37430,7 @@ static void REGAL_CALL statistics_glProgramParameter4dNV(GLenum target, GLuint i
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameter4dNV(target, index, x, y, z, w);
 }
@@ -37446,7 +37446,7 @@ static void REGAL_CALL statistics_glProgramParameter4dvNV(GLenum target, GLuint 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameter4dvNV(target, index, v);
 }
@@ -37462,7 +37462,7 @@ static void REGAL_CALL statistics_glProgramParameter4fNV(GLenum target, GLuint i
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameter4fNV(target, index, x, y, z, w);
 }
@@ -37478,7 +37478,7 @@ static void REGAL_CALL statistics_glProgramParameter4fvNV(GLenum target, GLuint 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameter4fvNV(target, index, v);
 }
@@ -37494,7 +37494,7 @@ static void REGAL_CALL statistics_glProgramParameters4dvNV(GLenum target, GLuint
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameters4dvNV(target, index, count, v);
 }
@@ -37510,7 +37510,7 @@ static void REGAL_CALL statistics_glProgramParameters4fvNV(GLenum target, GLuint
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramParameters4fvNV(target, index, count, v);
 }
@@ -37526,7 +37526,7 @@ static void REGAL_CALL statistics_glRequestResidentProgramsNV(GLsizei n, const G
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRequestResidentProgramsNV(n, programs);
 }
@@ -37542,7 +37542,7 @@ static void REGAL_CALL statistics_glTrackMatrixNV(GLenum target, GLuint address,
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTrackMatrixNV(target, address, matrix, transform);
 }
@@ -37558,7 +37558,7 @@ static void REGAL_CALL statistics_glVertexAttrib1dNV(GLuint index, GLdouble x)
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1dNV(index, x);
 }
@@ -37574,7 +37574,7 @@ static void REGAL_CALL statistics_glVertexAttrib1dvNV(GLuint index, const GLdoub
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1dvNV(index, v);
 }
@@ -37590,7 +37590,7 @@ static void REGAL_CALL statistics_glVertexAttrib1fNV(GLuint index, GLfloat x)
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1fNV(index, x);
 }
@@ -37606,7 +37606,7 @@ static void REGAL_CALL statistics_glVertexAttrib1fvNV(GLuint index, const GLfloa
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1fvNV(index, v);
 }
@@ -37622,7 +37622,7 @@ static void REGAL_CALL statistics_glVertexAttrib1sNV(GLuint index, GLshort x)
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1sNV(index, x);
 }
@@ -37638,7 +37638,7 @@ static void REGAL_CALL statistics_glVertexAttrib1svNV(GLuint index, const GLshor
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib1svNV(index, v);
 }
@@ -37654,7 +37654,7 @@ static void REGAL_CALL statistics_glVertexAttrib2dNV(GLuint index, GLdouble x, G
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2dNV(index, x, y);
 }
@@ -37670,7 +37670,7 @@ static void REGAL_CALL statistics_glVertexAttrib2dvNV(GLuint index, const GLdoub
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2dvNV(index, v);
 }
@@ -37686,7 +37686,7 @@ static void REGAL_CALL statistics_glVertexAttrib2fNV(GLuint index, GLfloat x, GL
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2fNV(index, x, y);
 }
@@ -37702,7 +37702,7 @@ static void REGAL_CALL statistics_glVertexAttrib2fvNV(GLuint index, const GLfloa
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2fvNV(index, v);
 }
@@ -37718,7 +37718,7 @@ static void REGAL_CALL statistics_glVertexAttrib2sNV(GLuint index, GLshort x, GL
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2sNV(index, x, y);
 }
@@ -37734,7 +37734,7 @@ static void REGAL_CALL statistics_glVertexAttrib2svNV(GLuint index, const GLshor
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib2svNV(index, v);
 }
@@ -37750,7 +37750,7 @@ static void REGAL_CALL statistics_glVertexAttrib3dNV(GLuint index, GLdouble x, G
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3dNV(index, x, y, z);
 }
@@ -37766,7 +37766,7 @@ static void REGAL_CALL statistics_glVertexAttrib3dvNV(GLuint index, const GLdoub
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3dvNV(index, v);
 }
@@ -37782,7 +37782,7 @@ static void REGAL_CALL statistics_glVertexAttrib3fNV(GLuint index, GLfloat x, GL
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3fNV(index, x, y, z);
 }
@@ -37798,7 +37798,7 @@ static void REGAL_CALL statistics_glVertexAttrib3fvNV(GLuint index, const GLfloa
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3fvNV(index, v);
 }
@@ -37814,7 +37814,7 @@ static void REGAL_CALL statistics_glVertexAttrib3sNV(GLuint index, GLshort x, GL
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3sNV(index, x, y, z);
 }
@@ -37830,7 +37830,7 @@ static void REGAL_CALL statistics_glVertexAttrib3svNV(GLuint index, const GLshor
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib3svNV(index, v);
 }
@@ -37846,7 +37846,7 @@ static void REGAL_CALL statistics_glVertexAttrib4dNV(GLuint index, GLdouble x, G
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4dNV(index, x, y, z, w);
 }
@@ -37862,7 +37862,7 @@ static void REGAL_CALL statistics_glVertexAttrib4dvNV(GLuint index, const GLdoub
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4dvNV(index, v);
 }
@@ -37878,7 +37878,7 @@ static void REGAL_CALL statistics_glVertexAttrib4fNV(GLuint index, GLfloat x, GL
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4fNV(index, x, y, z, w);
 }
@@ -37894,7 +37894,7 @@ static void REGAL_CALL statistics_glVertexAttrib4fvNV(GLuint index, const GLfloa
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4fvNV(index, v);
 }
@@ -37910,7 +37910,7 @@ static void REGAL_CALL statistics_glVertexAttrib4sNV(GLuint index, GLshort x, GL
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4sNV(index, x, y, z, w);
 }
@@ -37926,7 +37926,7 @@ static void REGAL_CALL statistics_glVertexAttrib4svNV(GLuint index, const GLshor
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4svNV(index, v);
 }
@@ -37942,7 +37942,7 @@ static void REGAL_CALL statistics_glVertexAttrib4ubNV(GLuint index, GLubyte x, G
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4ubNV(index, x, y, z, w);
 }
@@ -37958,7 +37958,7 @@ static void REGAL_CALL statistics_glVertexAttrib4ubvNV(GLuint index, const GLuby
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttrib4ubvNV(index, v);
 }
@@ -37974,7 +37974,7 @@ static void REGAL_CALL statistics_glVertexAttribPointerNV(GLuint index, GLint fs
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribPointerNV(index, fsize, type, stride, pointer);
 }
@@ -37990,7 +37990,7 @@ static void REGAL_CALL statistics_glVertexAttribs1dvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs1dvNV(index, n, v);
 }
@@ -38006,7 +38006,7 @@ static void REGAL_CALL statistics_glVertexAttribs1fvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs1fvNV(index, n, v);
 }
@@ -38022,7 +38022,7 @@ static void REGAL_CALL statistics_glVertexAttribs1svNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs1svNV(index, n, v);
 }
@@ -38038,7 +38038,7 @@ static void REGAL_CALL statistics_glVertexAttribs2dvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs2dvNV(index, n, v);
 }
@@ -38054,7 +38054,7 @@ static void REGAL_CALL statistics_glVertexAttribs2fvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs2fvNV(index, n, v);
 }
@@ -38070,7 +38070,7 @@ static void REGAL_CALL statistics_glVertexAttribs2svNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs2svNV(index, n, v);
 }
@@ -38086,7 +38086,7 @@ static void REGAL_CALL statistics_glVertexAttribs3dvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs3dvNV(index, n, v);
 }
@@ -38102,7 +38102,7 @@ static void REGAL_CALL statistics_glVertexAttribs3fvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs3fvNV(index, n, v);
 }
@@ -38118,7 +38118,7 @@ static void REGAL_CALL statistics_glVertexAttribs3svNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs3svNV(index, n, v);
 }
@@ -38134,7 +38134,7 @@ static void REGAL_CALL statistics_glVertexAttribs4dvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs4dvNV(index, n, v);
 }
@@ -38150,7 +38150,7 @@ static void REGAL_CALL statistics_glVertexAttribs4fvNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs4fvNV(index, n, v);
 }
@@ -38166,7 +38166,7 @@ static void REGAL_CALL statistics_glVertexAttribs4svNV(GLuint index, GLsizei n, 
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs4svNV(index, n, v);
 }
@@ -38182,7 +38182,7 @@ static void REGAL_CALL statistics_glVertexAttribs4ubvNV(GLuint index, GLsizei n,
 
   statistics.gl_nv_vertex_program++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVertexAttribs4ubvNV(index, n, v);
 }
@@ -38200,7 +38200,7 @@ static void REGAL_CALL statistics_glBeginVideoCaptureNV(GLuint video_capture_slo
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBeginVideoCaptureNV(video_capture_slot);
 }
@@ -38216,7 +38216,7 @@ static void REGAL_CALL statistics_glBindVideoCaptureStreamBufferNV(GLuint video_
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVideoCaptureStreamBufferNV(video_capture_slot, stream, frame_region, offset);
 }
@@ -38232,7 +38232,7 @@ static void REGAL_CALL statistics_glBindVideoCaptureStreamTextureNV(GLuint video
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVideoCaptureStreamTextureNV(video_capture_slot, stream, frame_region, target, texture);
 }
@@ -38248,7 +38248,7 @@ static void REGAL_CALL statistics_glEndVideoCaptureNV(GLuint video_capture_slot)
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndVideoCaptureNV(video_capture_slot);
 }
@@ -38264,7 +38264,7 @@ static void REGAL_CALL statistics_glGetVideoCaptureStreamdvNV(GLuint video_captu
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideoCaptureStreamdvNV(video_capture_slot, stream, pname, params);
 }
@@ -38280,7 +38280,7 @@ static void REGAL_CALL statistics_glGetVideoCaptureStreamfvNV(GLuint video_captu
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideoCaptureStreamfvNV(video_capture_slot, stream, pname, params);
 }
@@ -38296,7 +38296,7 @@ static void REGAL_CALL statistics_glGetVideoCaptureStreamivNV(GLuint video_captu
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideoCaptureStreamivNV(video_capture_slot, stream, pname, params);
 }
@@ -38312,7 +38312,7 @@ static void REGAL_CALL statistics_glGetVideoCaptureivNV(GLuint video_capture_slo
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetVideoCaptureivNV(video_capture_slot, pname, params);
 }
@@ -38328,7 +38328,7 @@ static GLenum REGAL_CALL statistics_glVideoCaptureNV(GLuint video_capture_slot, 
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glVideoCaptureNV(video_capture_slot, sequence_num, capture_time);
   return ret;
@@ -38345,7 +38345,7 @@ static void REGAL_CALL statistics_glVideoCaptureStreamParameterdvNV(GLuint video
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVideoCaptureStreamParameterdvNV(video_capture_slot, stream, pname, params);
 }
@@ -38361,7 +38361,7 @@ static void REGAL_CALL statistics_glVideoCaptureStreamParameterfvNV(GLuint video
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVideoCaptureStreamParameterfvNV(video_capture_slot, stream, pname, params);
 }
@@ -38377,7 +38377,7 @@ static void REGAL_CALL statistics_glVideoCaptureStreamParameterivNV(GLuint video
 
   statistics.gl_nv_video_capture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glVideoCaptureStreamParameterivNV(video_capture_slot, stream, pname, params);
 }
@@ -38393,7 +38393,7 @@ static void REGAL_CALL statistics_glBlendEquationSeparateOES(GLenum modeRGB, GLe
   Statistics &statistics = *_context->statistics;
   statistics.glBlendEquationSeparateOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationSeparateOES(modeRGB, modeAlpha);
 }
@@ -38409,7 +38409,7 @@ static void REGAL_CALL statistics_glBlendFuncSeparateOES(GLenum sfactorRGB, GLen
   Statistics &statistics = *_context->statistics;
   statistics.glBlendFuncSeparateOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendFuncSeparateOES(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 }
@@ -38425,7 +38425,7 @@ static void REGAL_CALL statistics_glBlendEquationOES(GLenum mode)
   Statistics &statistics = *_context->statistics;
   statistics.glBlendEquationOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBlendEquationOES(mode);
 }
@@ -38441,7 +38441,7 @@ static void REGAL_CALL statistics_glBindFramebufferOES(GLenum target, GLuint fra
   Statistics &statistics = *_context->statistics;
   statistics.glBindFramebufferOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindFramebufferOES(target, framebuffer);
 }
@@ -38455,7 +38455,7 @@ static void REGAL_CALL statistics_glBindRenderbufferOES(GLenum target, GLuint re
   Statistics &statistics = *_context->statistics;
   statistics.glBindRenderbufferOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindRenderbufferOES(target, renderbuffer);
 }
@@ -38469,7 +38469,7 @@ static GLenum REGAL_CALL statistics_glCheckFramebufferStatusOES(GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glCheckFramebufferStatusOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLenum  ret = _next->glCheckFramebufferStatusOES(target);
   return ret;
@@ -38484,7 +38484,7 @@ static void REGAL_CALL statistics_glDeleteFramebuffersOES(GLsizei n, const GLuin
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteFramebuffersOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteFramebuffersOES(n, framebuffers);
 }
@@ -38498,7 +38498,7 @@ static void REGAL_CALL statistics_glDeleteRenderbuffersOES(GLsizei n, const GLui
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteRenderbuffersOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteRenderbuffersOES(n, renderbuffers);
 }
@@ -38512,7 +38512,7 @@ static void REGAL_CALL statistics_glFramebufferRenderbufferOES(GLenum target, GL
   Statistics &statistics = *_context->statistics;
   statistics.glFramebufferRenderbufferOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferRenderbufferOES(target, attachment, renderbuffertarget, renderbuffer);
 }
@@ -38526,7 +38526,7 @@ static void REGAL_CALL statistics_glFramebufferTexture2DOES(GLenum target, GLenu
   Statistics &statistics = *_context->statistics;
   statistics.glFramebufferTexture2DOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture2DOES(target, attachment, textarget, texture, level);
 }
@@ -38540,7 +38540,7 @@ static void REGAL_CALL statistics_glGenFramebuffersOES(GLsizei n, GLuint *frameb
   Statistics &statistics = *_context->statistics;
   statistics.glGenFramebuffersOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenFramebuffersOES(n, framebuffers);
 }
@@ -38554,7 +38554,7 @@ static void REGAL_CALL statistics_glGenRenderbuffersOES(GLsizei n, GLuint *rende
   Statistics &statistics = *_context->statistics;
   statistics.glGenRenderbuffersOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenRenderbuffersOES(n, renderbuffers);
 }
@@ -38568,7 +38568,7 @@ static void REGAL_CALL statistics_glGenerateMipmapOES(GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glGenerateMipmapOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenerateMipmapOES(target);
 }
@@ -38582,7 +38582,7 @@ static void REGAL_CALL statistics_glGetFramebufferAttachmentParameterivOES(GLenu
   Statistics &statistics = *_context->statistics;
   statistics.glGetFramebufferAttachmentParameterivOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFramebufferAttachmentParameterivOES(target, attachment, pname, params);
 }
@@ -38596,7 +38596,7 @@ static void REGAL_CALL statistics_glGetRenderbufferParameterivOES(GLenum target,
   Statistics &statistics = *_context->statistics;
   statistics.glGetRenderbufferParameterivOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetRenderbufferParameterivOES(target, pname, params);
 }
@@ -38610,7 +38610,7 @@ static GLboolean REGAL_CALL statistics_glIsFramebufferOES(GLuint framebuffer)
   Statistics &statistics = *_context->statistics;
   statistics.glIsFramebufferOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsFramebufferOES(framebuffer);
   return ret;
@@ -38625,7 +38625,7 @@ static GLboolean REGAL_CALL statistics_glIsRenderbufferOES(GLuint renderbuffer)
   Statistics &statistics = *_context->statistics;
   statistics.glIsRenderbufferOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsRenderbufferOES(renderbuffer);
   return ret;
@@ -38640,7 +38640,7 @@ static void REGAL_CALL statistics_glRenderbufferStorageOES(GLenum target, GLenum
   Statistics &statistics = *_context->statistics;
   statistics.glRenderbufferStorageOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRenderbufferStorageOES(target, internalformat, width, height);
 }
@@ -38656,7 +38656,7 @@ static void REGAL_CALL statistics_glGetProgramBinaryOES(GLuint program, GLsizei 
   Statistics &statistics = *_context->statistics;
   statistics.glGetProgramBinaryOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetProgramBinaryOES(program, bufSize, length, binaryFormat, binary);
 }
@@ -38670,7 +38670,7 @@ static void REGAL_CALL statistics_glProgramBinaryOES(GLuint program, GLenum bina
   Statistics &statistics = *_context->statistics;
   statistics.glProgramBinaryOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glProgramBinaryOES(program, binaryFormat, binary, length);
 }
@@ -38686,7 +38686,7 @@ static void REGAL_CALL statistics_glGetBufferPointervOES(GLenum target, GLenum p
   Statistics &statistics = *_context->statistics;
   statistics.glGetBufferPointervOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetBufferPointervOES(target, pname, params);
 }
@@ -38700,7 +38700,7 @@ static GLvoid *REGAL_CALL statistics_glMapBufferOES(GLenum target, GLenum access
   Statistics &statistics = *_context->statistics;
   statistics.glMapBufferOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLvoid * ret = _next->glMapBufferOES(target, access);
   return ret;
@@ -38715,7 +38715,7 @@ static GLboolean REGAL_CALL statistics_glUnmapBufferOES(GLenum target)
   Statistics &statistics = *_context->statistics;
   statistics.glUnmapBufferOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glUnmapBufferOES(target);
   return ret;
@@ -38732,7 +38732,7 @@ static void REGAL_CALL statistics_glCurrentPaletteMatrixOES(GLuint index)
   Statistics &statistics = *_context->statistics;
   statistics.glCurrentPaletteMatrixOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCurrentPaletteMatrixOES(index);
 }
@@ -38746,7 +38746,7 @@ static void REGAL_CALL statistics_glMatrixIndexPointerOES(GLint size, GLenum typ
   Statistics &statistics = *_context->statistics;
   statistics.glMatrixIndexPointerOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMatrixIndexPointerOES(size, type, stride, pointer);
 }
@@ -38760,7 +38760,7 @@ static void REGAL_CALL statistics_glWeightPointerOES(GLint size, GLenum type, GL
   Statistics &statistics = *_context->statistics;
   statistics.glWeightPointerOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glWeightPointerOES(size, type, stride, pointer);
 }
@@ -38778,7 +38778,7 @@ static void REGAL_CALL statistics_glClearDepthfOES(GLclampd depth)
 
   statistics.gl_oes_single_precision++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearDepthfOES(depth);
 }
@@ -38794,7 +38794,7 @@ static void REGAL_CALL statistics_glClipPlanefOES(GLenum plane, const GLfloat *e
 
   statistics.gl_oes_single_precision++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClipPlanefOES(plane, equation);
 }
@@ -38810,7 +38810,7 @@ static void REGAL_CALL statistics_glDepthRangefOES(GLclampf n, GLclampf f)
 
   statistics.gl_oes_single_precision++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthRangefOES(n, f);
 }
@@ -38826,7 +38826,7 @@ static void REGAL_CALL statistics_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b,
 
   statistics.gl_oes_single_precision++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFrustumfOES(l, r, b, t, n, f);
 }
@@ -38842,7 +38842,7 @@ static void REGAL_CALL statistics_glGetClipPlanefOES(GLenum plane, GLfloat *equa
 
   statistics.gl_oes_single_precision++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetClipPlanefOES(plane, equation);
 }
@@ -38858,7 +38858,7 @@ static void REGAL_CALL statistics_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, G
 
   statistics.gl_oes_single_precision++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glOrthofOES(l, r, b, t, n, f);
 }
@@ -38874,7 +38874,7 @@ static void REGAL_CALL statistics_glCompressedTexImage3DOES(GLenum target, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexImage3DOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexImage3DOES(target, level, internalformat, width, height, depth, border, imageSize, data);
 }
@@ -38888,7 +38888,7 @@ static void REGAL_CALL statistics_glCompressedTexSubImage3DOES(GLenum target, GL
   Statistics &statistics = *_context->statistics;
   statistics.glCompressedTexSubImage3DOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCompressedTexSubImage3DOES(target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data);
 }
@@ -38902,7 +38902,7 @@ static void REGAL_CALL statistics_glCopyTexSubImage3DOES(GLenum target, GLint le
   Statistics &statistics = *_context->statistics;
   statistics.glCopyTexSubImage3DOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyTexSubImage3DOES(target, level, xoffset, yoffset, zoffset, x, y, width, height);
 }
@@ -38916,7 +38916,7 @@ static void REGAL_CALL statistics_glFramebufferTexture3DOES(GLenum target, GLenu
   Statistics &statistics = *_context->statistics;
   statistics.glFramebufferTexture3DOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFramebufferTexture3DOES(target, attachment, textarget, texture, level, zoffset);
 }
@@ -38930,7 +38930,7 @@ static void REGAL_CALL statistics_glTexImage3DOES(GLenum target, GLint level, GL
   Statistics &statistics = *_context->statistics;
   statistics.glTexImage3DOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage3DOES(target, level, internalFormat, width, height, depth, border, format, type, pixels);
 }
@@ -38944,7 +38944,7 @@ static void REGAL_CALL statistics_glTexSubImage3DOES(GLenum target, GLint level,
   Statistics &statistics = *_context->statistics;
   statistics.glTexSubImage3DOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage3DOES(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels);
 }
@@ -38960,7 +38960,7 @@ static void REGAL_CALL statistics_glGetTexGenfvOES(GLenum coord, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexGenfvOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexGenfvOES(coord, pname, params);
 }
@@ -38974,7 +38974,7 @@ static void REGAL_CALL statistics_glGetTexGenivOES(GLenum coord, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexGenivOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexGenivOES(coord, pname, params);
 }
@@ -38988,7 +38988,7 @@ static void REGAL_CALL statistics_glGetTexGenxvOES(GLenum coord, GLenum pname, G
   Statistics &statistics = *_context->statistics;
   statistics.glGetTexGenxvOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexGenxvOES(coord, pname, params);
 }
@@ -39002,7 +39002,7 @@ static void REGAL_CALL statistics_glTexGenfOES(GLenum coord, GLenum pname, GLflo
   Statistics &statistics = *_context->statistics;
   statistics.glTexGenfOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGenfOES(coord, pname, param);
 }
@@ -39016,7 +39016,7 @@ static void REGAL_CALL statistics_glTexGenfvOES(GLenum coord, GLenum pname, cons
   Statistics &statistics = *_context->statistics;
   statistics.glTexGenfvOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGenfvOES(coord, pname, params);
 }
@@ -39030,7 +39030,7 @@ static void REGAL_CALL statistics_glTexGeniOES(GLenum coord, GLenum pname, GLint
   Statistics &statistics = *_context->statistics;
   statistics.glTexGeniOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGeniOES(coord, pname, param);
 }
@@ -39044,7 +39044,7 @@ static void REGAL_CALL statistics_glTexGenivOES(GLenum coord, GLenum pname, cons
   Statistics &statistics = *_context->statistics;
   statistics.glTexGenivOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGenivOES(coord, pname, params);
 }
@@ -39058,7 +39058,7 @@ static void REGAL_CALL statistics_glTexGenxOES(GLenum coord, GLenum pname, GLfix
   Statistics &statistics = *_context->statistics;
   statistics.glTexGenxOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGenxOES(coord, pname, param);
 }
@@ -39072,7 +39072,7 @@ static void REGAL_CALL statistics_glTexGenxvOES(GLenum coord, GLenum pname, cons
   Statistics &statistics = *_context->statistics;
   statistics.glTexGenxvOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexGenxvOES(coord, pname, params);
 }
@@ -39088,7 +39088,7 @@ static void REGAL_CALL statistics_glBindVertexArrayOES(GLuint array)
   Statistics &statistics = *_context->statistics;
   statistics.glBindVertexArrayOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glBindVertexArrayOES(array);
 }
@@ -39102,7 +39102,7 @@ static void REGAL_CALL statistics_glDeleteVertexArraysOES(GLsizei n, const GLuin
   Statistics &statistics = *_context->statistics;
   statistics.glDeleteVertexArraysOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteVertexArraysOES(n, arrays);
 }
@@ -39116,7 +39116,7 @@ static void REGAL_CALL statistics_glGenVertexArraysOES(GLsizei n, GLuint *arrays
   Statistics &statistics = *_context->statistics;
   statistics.glGenVertexArraysOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGenVertexArraysOES(n, arrays);
 }
@@ -39130,7 +39130,7 @@ static GLboolean REGAL_CALL statistics_glIsVertexArrayOES(GLuint array)
   Statistics &statistics = *_context->statistics;
   statistics.glIsVertexArrayOES++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsVertexArrayOES(array);
   return ret;
@@ -39147,7 +39147,7 @@ static void REGAL_CALL statistics_glHintPGI(GLenum target, GLint mode)
   Statistics &statistics = *_context->statistics;
   statistics.glHintPGI++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glHintPGI(target, mode);
 }
@@ -39163,7 +39163,7 @@ static void REGAL_CALL statistics_glAlphaFuncQCOM(GLenum func, GLclampf ref)
   Statistics &statistics = *_context->statistics;
   statistics.glAlphaFuncQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAlphaFuncQCOM(func, ref);
 }
@@ -39179,7 +39179,7 @@ static void REGAL_CALL statistics_glDisableDriverControlQCOM(GLuint driverContro
   Statistics &statistics = *_context->statistics;
   statistics.glDisableDriverControlQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDisableDriverControlQCOM(driverControl);
 }
@@ -39193,7 +39193,7 @@ static void REGAL_CALL statistics_glEnableDriverControlQCOM(GLuint driverControl
   Statistics &statistics = *_context->statistics;
   statistics.glEnableDriverControlQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEnableDriverControlQCOM(driverControl);
 }
@@ -39207,7 +39207,7 @@ static void REGAL_CALL statistics_glGetDriverControlStringQCOM(GLuint driverCont
   Statistics &statistics = *_context->statistics;
   statistics.glGetDriverControlStringQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetDriverControlStringQCOM(driverControl, bufSize, length, driverControlString);
 }
@@ -39221,7 +39221,7 @@ static void REGAL_CALL statistics_glGetDriverControlsQCOM(GLint *num, GLsizei si
   Statistics &statistics = *_context->statistics;
   statistics.glGetDriverControlsQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetDriverControlsQCOM(num, size, driverControls);
 }
@@ -39237,7 +39237,7 @@ static void REGAL_CALL statistics_glExtGetBufferPointervQCOM(GLenum target, GLvo
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetBufferPointervQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetBufferPointervQCOM(target, params);
 }
@@ -39251,7 +39251,7 @@ static void REGAL_CALL statistics_glExtGetBuffersQCOM(GLuint *buffers, GLint max
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetBuffersQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetBuffersQCOM(buffers, maxBuffers, numBuffers);
 }
@@ -39265,7 +39265,7 @@ static void REGAL_CALL statistics_glExtGetFramebuffersQCOM(GLuint *framebuffers,
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetFramebuffersQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetFramebuffersQCOM(framebuffers, maxFramebuffers, numFramebuffers);
 }
@@ -39279,7 +39279,7 @@ static void REGAL_CALL statistics_glExtGetRenderbuffersQCOM(GLuint *renderbuffer
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetRenderbuffersQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetRenderbuffersQCOM(renderbuffers, maxRenderbuffers, numRenderbuffers);
 }
@@ -39293,7 +39293,7 @@ static void REGAL_CALL statistics_glExtGetTexLevelParameterivQCOM(GLuint texture
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetTexLevelParameterivQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetTexLevelParameterivQCOM(texture, face, level, pname, params);
 }
@@ -39307,7 +39307,7 @@ static void REGAL_CALL statistics_glExtGetTexSubImageQCOM(GLenum target, GLint l
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetTexSubImageQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetTexSubImageQCOM(target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, texels);
 }
@@ -39321,7 +39321,7 @@ static void REGAL_CALL statistics_glExtGetTexturesQCOM(GLuint *textures, GLint m
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetTexturesQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetTexturesQCOM(textures, maxTextures, numTextures);
 }
@@ -39335,7 +39335,7 @@ static void REGAL_CALL statistics_glExtTexObjectStateOverrideiQCOM(GLenum target
   Statistics &statistics = *_context->statistics;
   statistics.glExtTexObjectStateOverrideiQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtTexObjectStateOverrideiQCOM(target, pname, param);
 }
@@ -39351,7 +39351,7 @@ static void REGAL_CALL statistics_glExtGetProgramBinarySourceQCOM(GLuint program
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetProgramBinarySourceQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetProgramBinarySourceQCOM(program, shadertype, source, length);
 }
@@ -39365,7 +39365,7 @@ static void REGAL_CALL statistics_glExtGetProgramsQCOM(GLuint *programs, GLint m
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetProgramsQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetProgramsQCOM(programs, maxPrograms, numPrograms);
 }
@@ -39379,7 +39379,7 @@ static void REGAL_CALL statistics_glExtGetShadersQCOM(GLuint *shaders, GLint max
   Statistics &statistics = *_context->statistics;
   statistics.glExtGetShadersQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glExtGetShadersQCOM(shaders, maxShaders, numShaders);
 }
@@ -39393,7 +39393,7 @@ static GLboolean REGAL_CALL statistics_glExtIsProgramBinaryQCOM(GLuint program)
   Statistics &statistics = *_context->statistics;
   statistics.glExtIsProgramBinaryQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glExtIsProgramBinaryQCOM(program);
   return ret;
@@ -39410,7 +39410,7 @@ static void REGAL_CALL statistics_glEndTilingQCOM(GLbitfield preserveMask)
   Statistics &statistics = *_context->statistics;
   statistics.glEndTilingQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glEndTilingQCOM(preserveMask);
 }
@@ -39424,7 +39424,7 @@ static void REGAL_CALL statistics_glStartTilingQCOM(GLuint x, GLuint y, GLuint w
   Statistics &statistics = *_context->statistics;
   statistics.glStartTilingQCOM++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStartTilingQCOM(x, y, width, height, preserveMask);
 }
@@ -39442,7 +39442,7 @@ static void REGAL_CALL statistics_glAlphaFuncx(GLenum func, GLclampx ref)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAlphaFuncx(func, ref);
 }
@@ -39458,7 +39458,7 @@ static void REGAL_CALL statistics_glClearColorx(GLclampx red, GLclampx green, GL
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearColorx(red, green, blue, alpha);
 }
@@ -39474,7 +39474,7 @@ static void REGAL_CALL statistics_glClearDepthx(GLclampx depth)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClearDepthx(depth);
 }
@@ -39490,7 +39490,7 @@ static void REGAL_CALL statistics_glColor4x(GLfixed red, GLfixed green, GLfixed 
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4x(red, green, blue, alpha);
 }
@@ -39506,7 +39506,7 @@ static void REGAL_CALL statistics_glDepthRangex(GLclampx zNear, GLclampx zFar)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDepthRangex(zNear, zFar);
 }
@@ -39522,7 +39522,7 @@ static void REGAL_CALL statistics_glFogx(GLenum pname, GLfixed param)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogx(pname, param);
 }
@@ -39538,7 +39538,7 @@ static void REGAL_CALL statistics_glFogxv(GLenum pname, const GLfixed *params)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogxv(pname, params);
 }
@@ -39554,7 +39554,7 @@ static void REGAL_CALL statistics_glFrustumf(GLfloat left, GLfloat right, GLfloa
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFrustumf(left, right, bottom, top, zNear, zFar);
 }
@@ -39570,7 +39570,7 @@ static void REGAL_CALL statistics_glFrustumx(GLfixed left, GLfixed right, GLfixe
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFrustumx(left, right, bottom, top, zNear, zFar);
 }
@@ -39586,7 +39586,7 @@ static void REGAL_CALL statistics_glLightModelx(GLenum pname, GLfixed param)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightModelx(pname, param);
 }
@@ -39602,7 +39602,7 @@ static void REGAL_CALL statistics_glLightModelxv(GLenum pname, const GLfixed *pa
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightModelxv(pname, params);
 }
@@ -39618,7 +39618,7 @@ static void REGAL_CALL statistics_glLightx(GLenum light, GLenum pname, GLfixed p
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightx(light, pname, param);
 }
@@ -39634,7 +39634,7 @@ static void REGAL_CALL statistics_glLightxv(GLenum light, GLenum pname, const GL
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightxv(light, pname, params);
 }
@@ -39650,7 +39650,7 @@ static void REGAL_CALL statistics_glLineWidthx(GLfixed width)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLineWidthx(width);
 }
@@ -39666,7 +39666,7 @@ static void REGAL_CALL statistics_glLoadMatrixx(const GLfixed *m)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadMatrixx(m);
 }
@@ -39682,7 +39682,7 @@ static void REGAL_CALL statistics_glMaterialx(GLenum face, GLenum pname, GLfixed
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMaterialx(face, pname, param);
 }
@@ -39698,7 +39698,7 @@ static void REGAL_CALL statistics_glMaterialxv(GLenum face, GLenum pname, const 
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMaterialxv(face, pname, params);
 }
@@ -39714,7 +39714,7 @@ static void REGAL_CALL statistics_glMultMatrixx(const GLfixed *m)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultMatrixx(m);
 }
@@ -39730,7 +39730,7 @@ static void REGAL_CALL statistics_glMultiTexCoord4x(GLenum target, GLfixed s, GL
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glMultiTexCoord4x(target, s, t, r, q);
 }
@@ -39746,7 +39746,7 @@ static void REGAL_CALL statistics_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3x(nx, ny, nz);
 }
@@ -39762,7 +39762,7 @@ static void REGAL_CALL statistics_glOrthof(GLfloat left, GLfloat right, GLfloat 
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glOrthof(left, right, bottom, top, zNear, zFar);
 }
@@ -39778,7 +39778,7 @@ static void REGAL_CALL statistics_glOrthox(GLfixed left, GLfixed right, GLfixed 
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glOrthox(left, right, bottom, top, zNear, zFar);
 }
@@ -39794,7 +39794,7 @@ static void REGAL_CALL statistics_glPointSizex(GLfixed size)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointSizex(size);
 }
@@ -39810,7 +39810,7 @@ static void REGAL_CALL statistics_glPolygonOffsetx(GLfixed factor, GLfixed units
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPolygonOffsetx(factor, units);
 }
@@ -39826,7 +39826,7 @@ static void REGAL_CALL statistics_glRotatex(GLfixed angle, GLfixed x, GLfixed y,
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glRotatex(angle, x, y, z);
 }
@@ -39842,7 +39842,7 @@ static void REGAL_CALL statistics_glSampleCoveragex(GLclampx value, GLboolean in
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleCoveragex(value, invert);
 }
@@ -39858,7 +39858,7 @@ static void REGAL_CALL statistics_glScalex(GLfixed x, GLfixed y, GLfixed z)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glScalex(x, y, z);
 }
@@ -39874,7 +39874,7 @@ static void REGAL_CALL statistics_glTexEnvx(GLenum target, GLenum pname, GLfixed
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexEnvx(target, pname, param);
 }
@@ -39890,7 +39890,7 @@ static void REGAL_CALL statistics_glTexEnvxv(GLenum target, GLenum pname, const 
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexEnvxv(target, pname, params);
 }
@@ -39906,7 +39906,7 @@ static void REGAL_CALL statistics_glTexParameterx(GLenum target, GLenum pname, G
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterx(target, pname, param);
 }
@@ -39922,7 +39922,7 @@ static void REGAL_CALL statistics_glTranslatex(GLfixed x, GLfixed y, GLfixed z)
 
   statistics.gl_regal_es1_0_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTranslatex(x, y, z);
 }
@@ -39940,7 +39940,7 @@ static void REGAL_CALL statistics_glClipPlanef(GLenum plane, const GLfloat *equa
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClipPlanef(plane, equation);
 }
@@ -39956,7 +39956,7 @@ static void REGAL_CALL statistics_glClipPlanex(GLenum plane, const GLfixed *equa
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glClipPlanex(plane, equation);
 }
@@ -39972,7 +39972,7 @@ static void REGAL_CALL statistics_glGetClipPlanef(GLenum pname, GLfloat *eqn)
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetClipPlanef(pname, eqn);
 }
@@ -39988,7 +39988,7 @@ static void REGAL_CALL statistics_glGetClipPlanex(GLenum pname, GLfixed *eqn)
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetClipPlanex(pname, eqn);
 }
@@ -40004,7 +40004,7 @@ static void REGAL_CALL statistics_glGetFixedv(GLenum pname, GLfixed *params)
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFixedv(pname, params);
 }
@@ -40020,7 +40020,7 @@ static void REGAL_CALL statistics_glGetLightxv(GLenum light, GLenum pname, GLfix
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetLightxv(light, pname, params);
 }
@@ -40036,7 +40036,7 @@ static void REGAL_CALL statistics_glGetMaterialxv(GLenum face, GLenum pname, GLf
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetMaterialxv(face, pname, params);
 }
@@ -40052,7 +40052,7 @@ static void REGAL_CALL statistics_glGetTexEnvxv(GLenum env, GLenum pname, GLfixe
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexEnvxv(env, pname, params);
 }
@@ -40068,7 +40068,7 @@ static void REGAL_CALL statistics_glGetTexParameterxv(GLenum target, GLenum pnam
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexParameterxv(target, pname, params);
 }
@@ -40084,7 +40084,7 @@ static void REGAL_CALL statistics_glPointParameterx(GLenum pname, GLfixed param)
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterx(pname, param);
 }
@@ -40100,7 +40100,7 @@ static void REGAL_CALL statistics_glPointParameterxv(GLenum pname, const GLfixed
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterxv(pname, params);
 }
@@ -40116,7 +40116,7 @@ static void REGAL_CALL statistics_glPointSizePointerOES(GLenum type, GLsizei str
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointSizePointerOES(type, stride, pointer);
 }
@@ -40132,7 +40132,7 @@ static void REGAL_CALL statistics_glTexParameterxv(GLenum target, GLenum pname, 
 
   statistics.gl_regal_es1_1_compatibility++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexParameterxv(target, pname, params);
 }
@@ -40150,7 +40150,7 @@ static void REGAL_CALL statistics_glLogMessageCallbackREGAL(GLLOGPROCREGAL callb
 
   statistics.gl_regal_log++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLogMessageCallbackREGAL(callback);
 }
@@ -40168,7 +40168,7 @@ static void REGAL_CALL statistics_glDetailTexFuncSGIS(GLenum target, GLsizei n, 
 
   statistics.gl_sgis_detail_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDetailTexFuncSGIS(target, n, points);
 }
@@ -40184,7 +40184,7 @@ static void REGAL_CALL statistics_glGetDetailTexFuncSGIS(GLenum target, GLfloat 
 
   statistics.gl_sgis_detail_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetDetailTexFuncSGIS(target, points);
 }
@@ -40202,7 +40202,7 @@ static void REGAL_CALL statistics_glFogFuncSGIS(GLsizei n, const GLfloat *points
 
   statistics.gl_sgis_fog_function++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFogFuncSGIS(n, points);
 }
@@ -40218,7 +40218,7 @@ static void REGAL_CALL statistics_glGetFogFuncSGIS(GLfloat *points)
 
   statistics.gl_sgis_fog_function++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFogFuncSGIS(points);
 }
@@ -40236,7 +40236,7 @@ static void REGAL_CALL statistics_glSampleMaskSGIS(GLclampf value, GLboolean inv
 
   statistics.gl_sgis_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSampleMaskSGIS(value, invert);
 }
@@ -40252,7 +40252,7 @@ static void REGAL_CALL statistics_glSamplePatternSGIS(GLenum pattern)
 
   statistics.gl_sgis_multisample++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSamplePatternSGIS(pattern);
 }
@@ -40268,7 +40268,7 @@ static void REGAL_CALL statistics_glGetPixelTexGenParameterfvSGIS(GLenum pname, 
   Statistics &statistics = *_context->statistics;
   statistics.glGetPixelTexGenParameterfvSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPixelTexGenParameterfvSGIS(pname, params);
 }
@@ -40282,7 +40282,7 @@ static void REGAL_CALL statistics_glGetPixelTexGenParameterivSGIS(GLenum pname, 
   Statistics &statistics = *_context->statistics;
   statistics.glGetPixelTexGenParameterivSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetPixelTexGenParameterivSGIS(pname, params);
 }
@@ -40296,7 +40296,7 @@ static void REGAL_CALL statistics_glPixelTexGenParameterfSGIS(GLenum pname, GLfl
   Statistics &statistics = *_context->statistics;
   statistics.glPixelTexGenParameterfSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTexGenParameterfSGIS(pname, param);
 }
@@ -40310,7 +40310,7 @@ static void REGAL_CALL statistics_glPixelTexGenParameterfvSGIS(GLenum pname, con
   Statistics &statistics = *_context->statistics;
   statistics.glPixelTexGenParameterfvSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTexGenParameterfvSGIS(pname, params);
 }
@@ -40324,7 +40324,7 @@ static void REGAL_CALL statistics_glPixelTexGenParameteriSGIS(GLenum pname, GLin
   Statistics &statistics = *_context->statistics;
   statistics.glPixelTexGenParameteriSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTexGenParameteriSGIS(pname, param);
 }
@@ -40338,7 +40338,7 @@ static void REGAL_CALL statistics_glPixelTexGenParameterivSGIS(GLenum pname, con
   Statistics &statistics = *_context->statistics;
   statistics.glPixelTexGenParameterivSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTexGenParameterivSGIS(pname, params);
 }
@@ -40354,7 +40354,7 @@ static void REGAL_CALL statistics_glPointParameterfSGIS(GLenum pname, GLfloat pa
   Statistics &statistics = *_context->statistics;
   statistics.glPointParameterfSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterfSGIS(pname, param);
 }
@@ -40368,7 +40368,7 @@ static void REGAL_CALL statistics_glPointParameterfvSGIS(GLenum pname, const GLf
   Statistics &statistics = *_context->statistics;
   statistics.glPointParameterfvSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPointParameterfvSGIS(pname, params);
 }
@@ -40386,7 +40386,7 @@ static void REGAL_CALL statistics_glGetSharpenTexFuncSGIS(GLenum target, GLfloat
 
   statistics.gl_sgis_sharpen_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetSharpenTexFuncSGIS(target, points);
 }
@@ -40402,7 +40402,7 @@ static void REGAL_CALL statistics_glSharpenTexFuncSGIS(GLenum target, GLsizei n,
 
   statistics.gl_sgis_sharpen_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSharpenTexFuncSGIS(target, n, points);
 }
@@ -40420,7 +40420,7 @@ static void REGAL_CALL statistics_glTexImage4DSGIS(GLenum target, GLint level, G
 
   statistics.gl_sgis_texture4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexImage4DSGIS(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
 }
@@ -40436,7 +40436,7 @@ static void REGAL_CALL statistics_glTexSubImage4DSGIS(GLenum target, GLint level
 
   statistics.gl_sgis_texture4d++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexSubImage4DSGIS(target, level, xoffset, yoffset, zoffset, woffset, width, height, depth, size4d, format, type, pixels);
 }
@@ -40452,7 +40452,7 @@ static void REGAL_CALL statistics_glTextureColorMaskSGIS(GLboolean red, GLboolea
   Statistics &statistics = *_context->statistics;
   statistics.glTextureColorMaskSGIS++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureColorMaskSGIS(red, green, blue, alpha);
 }
@@ -40470,7 +40470,7 @@ static void REGAL_CALL statistics_glGetTexFilterFuncSGIS(GLenum target, GLenum f
 
   statistics.gl_sgis_texture_filter4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetTexFilterFuncSGIS(target, filter, weights);
 }
@@ -40486,7 +40486,7 @@ static void REGAL_CALL statistics_glTexFilterFuncSGIS(GLenum target, GLenum filt
 
   statistics.gl_sgis_texture_filter4++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexFilterFuncSGIS(target, filter, n, weights);
 }
@@ -40504,7 +40504,7 @@ static void REGAL_CALL statistics_glAsyncMarkerSGIX(GLuint marker)
 
   statistics.gl_sgix_async++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAsyncMarkerSGIX(marker);
 }
@@ -40520,7 +40520,7 @@ static void REGAL_CALL statistics_glDeleteAsyncMarkersSGIX(GLuint marker, GLsize
 
   statistics.gl_sgix_async++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeleteAsyncMarkersSGIX(marker, range);
 }
@@ -40536,7 +40536,7 @@ static GLint REGAL_CALL statistics_glFinishAsyncSGIX(GLuint *markerp)
 
   statistics.gl_sgix_async++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glFinishAsyncSGIX(markerp);
   return ret;
@@ -40553,7 +40553,7 @@ static GLuint REGAL_CALL statistics_glGenAsyncMarkersSGIX(GLsizei range)
 
   statistics.gl_sgix_async++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLuint  ret = _next->glGenAsyncMarkersSGIX(range);
   return ret;
@@ -40570,7 +40570,7 @@ static GLboolean REGAL_CALL statistics_glIsAsyncMarkerSGIX(GLuint marker)
 
   statistics.gl_sgix_async++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLboolean  ret = _next->glIsAsyncMarkerSGIX(marker);
   return ret;
@@ -40587,7 +40587,7 @@ static GLint REGAL_CALL statistics_glPollAsyncSGIX(GLuint *markerp)
 
   statistics.gl_sgix_async++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glPollAsyncSGIX(markerp);
   return ret;
@@ -40606,7 +40606,7 @@ static void REGAL_CALL statistics_glFlushRasterSGIX(void)
 
   statistics.gl_sgix_flush_raster++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFlushRasterSGIX();
 }
@@ -40624,7 +40624,7 @@ static void REGAL_CALL statistics_glTextureFogSGIX(GLenum pname)
 
   statistics.gl_sgix_fog_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTextureFogSGIX(pname);
 }
@@ -40642,7 +40642,7 @@ static void REGAL_CALL statistics_glFragmentColorMaterialSGIX(GLenum face, GLenu
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentColorMaterialSGIX(face, mode);
 }
@@ -40658,7 +40658,7 @@ static void REGAL_CALL statistics_glFragmentLightModelfSGIX(GLenum pname, GLfloa
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModelfSGIX(pname, param);
 }
@@ -40674,7 +40674,7 @@ static void REGAL_CALL statistics_glFragmentLightModelfvSGIX(GLenum pname, const
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModelfvSGIX(pname, params);
 }
@@ -40690,7 +40690,7 @@ static void REGAL_CALL statistics_glFragmentLightModeliSGIX(GLenum pname, GLint 
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModeliSGIX(pname, param);
 }
@@ -40706,7 +40706,7 @@ static void REGAL_CALL statistics_glFragmentLightModelivSGIX(GLenum pname, const
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightModelivSGIX(pname, params);
 }
@@ -40722,7 +40722,7 @@ static void REGAL_CALL statistics_glFragmentLightfSGIX(GLenum light, GLenum pnam
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightfSGIX(light, pname, param);
 }
@@ -40738,7 +40738,7 @@ static void REGAL_CALL statistics_glFragmentLightfvSGIX(GLenum light, GLenum pna
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightfvSGIX(light, pname, params);
 }
@@ -40754,7 +40754,7 @@ static void REGAL_CALL statistics_glFragmentLightiSGIX(GLenum light, GLenum pnam
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightiSGIX(light, pname, param);
 }
@@ -40770,7 +40770,7 @@ static void REGAL_CALL statistics_glFragmentLightivSGIX(GLenum light, GLenum pna
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentLightivSGIX(light, pname, params);
 }
@@ -40786,7 +40786,7 @@ static void REGAL_CALL statistics_glFragmentMaterialfSGIX(GLenum face, GLenum pn
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialfSGIX(face, pname, param);
 }
@@ -40802,7 +40802,7 @@ static void REGAL_CALL statistics_glFragmentMaterialfvSGIX(GLenum face, GLenum p
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialfvSGIX(face, pname, params);
 }
@@ -40818,7 +40818,7 @@ static void REGAL_CALL statistics_glFragmentMaterialiSGIX(GLenum face, GLenum pn
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialiSGIX(face, pname, param);
 }
@@ -40834,7 +40834,7 @@ static void REGAL_CALL statistics_glFragmentMaterialivSGIX(GLenum face, GLenum p
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFragmentMaterialivSGIX(face, pname, params);
 }
@@ -40850,7 +40850,7 @@ static void REGAL_CALL statistics_glGetFragmentLightfvSGIX(GLenum light, GLenum 
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentLightfvSGIX(light, pname, params);
 }
@@ -40866,7 +40866,7 @@ static void REGAL_CALL statistics_glGetFragmentLightivSGIX(GLenum light, GLenum 
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentLightivSGIX(light, pname, params);
 }
@@ -40882,7 +40882,7 @@ static void REGAL_CALL statistics_glGetFragmentMaterialfvSGIX(GLenum face, GLenu
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentMaterialfvSGIX(face, pname, params);
 }
@@ -40898,7 +40898,7 @@ static void REGAL_CALL statistics_glGetFragmentMaterialivSGIX(GLenum face, GLenu
 
   statistics.gl_sgix_fragment_specular_lighting++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetFragmentMaterialivSGIX(face, pname, params);
 }
@@ -40912,7 +40912,7 @@ static void REGAL_CALL statistics_glLightEnviSGIX(GLenum pname, GLint param)
   Statistics &statistics = *_context->statistics;
   statistics.glLightEnviSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLightEnviSGIX(pname, param);
 }
@@ -40930,7 +40930,7 @@ static void REGAL_CALL statistics_glFrameZoomSGIX(GLint factor)
 
   statistics.gl_sgix_framezoom++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFrameZoomSGIX(factor);
 }
@@ -40946,7 +40946,7 @@ static void REGAL_CALL statistics_glIglooInterfaceSGIX(GLenum pname, const GLvoi
   Statistics &statistics = *_context->statistics;
   statistics.glIglooInterfaceSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glIglooInterfaceSGIX(pname, params);
 }
@@ -40962,7 +40962,7 @@ static GLint REGAL_CALL statistics_glGetInstrumentsSGIX(void)
   Statistics &statistics = *_context->statistics;
   statistics.glGetInstrumentsSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glGetInstrumentsSGIX();
   return ret;
@@ -40977,7 +40977,7 @@ static void REGAL_CALL statistics_glInstrumentsBufferSGIX(GLsizei size, GLint *b
   Statistics &statistics = *_context->statistics;
   statistics.glInstrumentsBufferSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glInstrumentsBufferSGIX(size, buffer);
 }
@@ -40991,7 +40991,7 @@ static GLint REGAL_CALL statistics_glPollInstrumentsSGIX(GLint *marker_p)
   Statistics &statistics = *_context->statistics;
   statistics.glPollInstrumentsSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   GLint  ret = _next->glPollInstrumentsSGIX(marker_p);
   return ret;
@@ -41006,7 +41006,7 @@ static void REGAL_CALL statistics_glReadInstrumentsSGIX(GLint marker)
   Statistics &statistics = *_context->statistics;
   statistics.glReadInstrumentsSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadInstrumentsSGIX(marker);
 }
@@ -41020,7 +41020,7 @@ static void REGAL_CALL statistics_glStartInstrumentsSGIX(void)
   Statistics &statistics = *_context->statistics;
   statistics.glStartInstrumentsSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStartInstrumentsSGIX();
 }
@@ -41034,7 +41034,7 @@ static void REGAL_CALL statistics_glStopInstrumentsSGIX(GLint marker)
   Statistics &statistics = *_context->statistics;
   statistics.glStopInstrumentsSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glStopInstrumentsSGIX(marker);
 }
@@ -41050,7 +41050,7 @@ static void REGAL_CALL statistics_glGetListParameterfvSGIX(GLuint list, GLenum p
   Statistics &statistics = *_context->statistics;
   statistics.glGetListParameterfvSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetListParameterfvSGIX(list, pname, params);
 }
@@ -41064,7 +41064,7 @@ static void REGAL_CALL statistics_glGetListParameterivSGIX(GLuint list, GLenum p
   Statistics &statistics = *_context->statistics;
   statistics.glGetListParameterivSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetListParameterivSGIX(list, pname, params);
 }
@@ -41078,7 +41078,7 @@ static void REGAL_CALL statistics_glListParameterfSGIX(GLuint list, GLenum pname
   Statistics &statistics = *_context->statistics;
   statistics.glListParameterfSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glListParameterfSGIX(list, pname, param);
 }
@@ -41092,7 +41092,7 @@ static void REGAL_CALL statistics_glListParameterfvSGIX(GLuint list, GLenum pnam
   Statistics &statistics = *_context->statistics;
   statistics.glListParameterfvSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glListParameterfvSGIX(list, pname, params);
 }
@@ -41106,7 +41106,7 @@ static void REGAL_CALL statistics_glListParameteriSGIX(GLuint list, GLenum pname
   Statistics &statistics = *_context->statistics;
   statistics.glListParameteriSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glListParameteriSGIX(list, pname, param);
 }
@@ -41120,7 +41120,7 @@ static void REGAL_CALL statistics_glListParameterivSGIX(GLuint list, GLenum pnam
   Statistics &statistics = *_context->statistics;
   statistics.glListParameterivSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glListParameterivSGIX(list, pname, params);
 }
@@ -41138,7 +41138,7 @@ static void REGAL_CALL statistics_glPixelTexGenSGIX(GLenum mode)
 
   statistics.gl_sgix_pixel_texture++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glPixelTexGenSGIX(mode);
 }
@@ -41154,7 +41154,7 @@ static void REGAL_CALL statistics_glDeformSGIX(GLbitfield mask)
   Statistics &statistics = *_context->statistics;
   statistics.glDeformSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeformSGIX(mask);
 }
@@ -41168,7 +41168,7 @@ static void REGAL_CALL statistics_glDeformationMap3dSGIX(GLenum target, GLdouble
   Statistics &statistics = *_context->statistics;
   statistics.glDeformationMap3dSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeformationMap3dSGIX(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points);
 }
@@ -41182,7 +41182,7 @@ static void REGAL_CALL statistics_glDeformationMap3fSGIX(GLenum target, GLfloat 
   Statistics &statistics = *_context->statistics;
   statistics.glDeformationMap3fSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDeformationMap3fSGIX(target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, w1, w2, wstride, worder, points);
 }
@@ -41196,7 +41196,7 @@ static void REGAL_CALL statistics_glLoadIdentityDeformationMapSGIX(GLbitfield ma
   Statistics &statistics = *_context->statistics;
   statistics.glLoadIdentityDeformationMapSGIX++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glLoadIdentityDeformationMapSGIX(mask);
 }
@@ -41214,7 +41214,7 @@ static void REGAL_CALL statistics_glReferencePlaneSGIX(const GLdouble *equation)
 
   statistics.gl_sgix_reference_plane++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReferencePlaneSGIX(equation);
 }
@@ -41232,7 +41232,7 @@ static void REGAL_CALL statistics_glSpriteParameterfSGIX(GLenum pname, GLfloat p
 
   statistics.gl_sgix_sprite++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSpriteParameterfSGIX(pname, param);
 }
@@ -41248,7 +41248,7 @@ static void REGAL_CALL statistics_glSpriteParameterfvSGIX(GLenum pname, const GL
 
   statistics.gl_sgix_sprite++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSpriteParameterfvSGIX(pname, params);
 }
@@ -41264,7 +41264,7 @@ static void REGAL_CALL statistics_glSpriteParameteriSGIX(GLenum pname, GLint par
 
   statistics.gl_sgix_sprite++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSpriteParameteriSGIX(pname, param);
 }
@@ -41280,7 +41280,7 @@ static void REGAL_CALL statistics_glSpriteParameterivSGIX(GLenum pname, const GL
 
   statistics.gl_sgix_sprite++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glSpriteParameterivSGIX(pname, params);
 }
@@ -41298,7 +41298,7 @@ static void REGAL_CALL statistics_glTagSampleBufferSGIX(void)
 
   statistics.gl_sgix_tag_sample_buffer++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTagSampleBufferSGIX();
 }
@@ -41316,7 +41316,7 @@ static void REGAL_CALL statistics_glColorTableParameterfvSGI(GLenum target, GLen
 
   statistics.gl_sgi_color_table++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorTableParameterfvSGI(target, pname, params);
 }
@@ -41332,7 +41332,7 @@ static void REGAL_CALL statistics_glColorTableParameterivSGI(GLenum target, GLen
 
   statistics.gl_sgi_color_table++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorTableParameterivSGI(target, pname, params);
 }
@@ -41348,7 +41348,7 @@ static void REGAL_CALL statistics_glColorTableSGI(GLenum target, GLenum internal
 
   statistics.gl_sgi_color_table++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColorTableSGI(target, internalformat, width, format, type, table);
 }
@@ -41364,7 +41364,7 @@ static void REGAL_CALL statistics_glCopyColorTableSGI(GLenum target, GLenum inte
 
   statistics.gl_sgi_color_table++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glCopyColorTableSGI(target, internalformat, x, y, width);
 }
@@ -41380,7 +41380,7 @@ static void REGAL_CALL statistics_glGetColorTableParameterfvSGI(GLenum target, G
 
   statistics.gl_sgi_color_table++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableParameterfvSGI(target, pname, params);
 }
@@ -41396,7 +41396,7 @@ static void REGAL_CALL statistics_glGetColorTableParameterivSGI(GLenum target, G
 
   statistics.gl_sgi_color_table++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableParameterivSGI(target, pname, params);
 }
@@ -41412,7 +41412,7 @@ static void REGAL_CALL statistics_glGetColorTableSGI(GLenum target, GLenum forma
 
   statistics.gl_sgi_color_table++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGetColorTableSGI(target, format, type, table);
 }
@@ -41430,7 +41430,7 @@ static void REGAL_CALL statistics_glFinishTextureSUNX(void)
 
   statistics.gl_sunx_constant_data++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glFinishTextureSUNX();
 }
@@ -41448,7 +41448,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactorbSUN(GLbyte factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactorbSUN(factor);
 }
@@ -41464,7 +41464,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactordSUN(GLdouble factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactordSUN(factor);
 }
@@ -41480,7 +41480,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactorfSUN(GLfloat factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactorfSUN(factor);
 }
@@ -41496,7 +41496,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactoriSUN(GLint factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactoriSUN(factor);
 }
@@ -41512,7 +41512,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactorsSUN(GLshort factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactorsSUN(factor);
 }
@@ -41528,7 +41528,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactorubSUN(GLubyte factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactorubSUN(factor);
 }
@@ -41544,7 +41544,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactoruiSUN(GLuint factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactoruiSUN(factor);
 }
@@ -41560,7 +41560,7 @@ static void REGAL_CALL statistics_glGlobalAlphaFactorusSUN(GLushort factor)
 
   statistics.gl_sun_global_alpha++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glGlobalAlphaFactorusSUN(factor);
 }
@@ -41576,7 +41576,7 @@ static void REGAL_CALL statistics_glDrawMeshArraysSUN(GLenum mode, GLint first, 
   Statistics &statistics = *_context->statistics;
   statistics.glDrawMeshArraysSUN++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glDrawMeshArraysSUN(mode, first, count, width);
 }
@@ -41594,7 +41594,7 @@ static void REGAL_CALL statistics_glReadVideoPixelsSUN(GLint x, GLint y, GLsizei
 
   statistics.gl_sun_read_video_pixels++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReadVideoPixelsSUN(x, y, width, height, format, type, pixels);
 }
@@ -41612,7 +41612,7 @@ static void REGAL_CALL statistics_glReplacementCodePointerSUN(GLenum type, GLsiz
 
   statistics.gl_sun_triangle_list++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodePointerSUN(type, stride, pointer);
 }
@@ -41628,7 +41628,7 @@ static void REGAL_CALL statistics_glReplacementCodeubSUN(GLubyte code)
 
   statistics.gl_sun_triangle_list++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeubSUN(code);
 }
@@ -41644,7 +41644,7 @@ static void REGAL_CALL statistics_glReplacementCodeubvSUN(const GLubyte *code)
 
   statistics.gl_sun_triangle_list++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeubvSUN(code);
 }
@@ -41660,7 +41660,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiSUN(GLuint code)
 
   statistics.gl_sun_triangle_list++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiSUN(code);
 }
@@ -41676,7 +41676,7 @@ static void REGAL_CALL statistics_glReplacementCodeuivSUN(const GLuint *code)
 
   statistics.gl_sun_triangle_list++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuivSUN(code);
 }
@@ -41692,7 +41692,7 @@ static void REGAL_CALL statistics_glReplacementCodeusSUN(GLushort code)
 
   statistics.gl_sun_triangle_list++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeusSUN(code);
 }
@@ -41708,7 +41708,7 @@ static void REGAL_CALL statistics_glReplacementCodeusvSUN(const GLushort *code)
 
   statistics.gl_sun_triangle_list++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeusvSUN(code);
 }
@@ -41726,7 +41726,7 @@ static void REGAL_CALL statistics_glColor3fVertex3fSUN(GLfloat r, GLfloat g, GLf
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3fVertex3fSUN(r, g, b, x, y, z);
 }
@@ -41742,7 +41742,7 @@ static void REGAL_CALL statistics_glColor3fVertex3fvSUN(const GLfloat *c, const 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor3fVertex3fvSUN(c, v);
 }
@@ -41758,7 +41758,7 @@ static void REGAL_CALL statistics_glColor4fNormal3fVertex3fSUN(GLfloat r, GLfloa
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4fNormal3fVertex3fSUN(r, g, b, a, nx, ny, nz, x, y, z);
 }
@@ -41774,7 +41774,7 @@ static void REGAL_CALL statistics_glColor4fNormal3fVertex3fvSUN(const GLfloat *c
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4fNormal3fVertex3fvSUN(c, n, v);
 }
@@ -41790,7 +41790,7 @@ static void REGAL_CALL statistics_glColor4ubVertex2fSUN(GLubyte r, GLubyte g, GL
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4ubVertex2fSUN(r, g, b, a, x, y);
 }
@@ -41806,7 +41806,7 @@ static void REGAL_CALL statistics_glColor4ubVertex2fvSUN(const GLubyte *c, const
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4ubVertex2fvSUN(c, v);
 }
@@ -41822,7 +41822,7 @@ static void REGAL_CALL statistics_glColor4ubVertex3fSUN(GLubyte r, GLubyte g, GL
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4ubVertex3fSUN(r, g, b, a, x, y, z);
 }
@@ -41838,7 +41838,7 @@ static void REGAL_CALL statistics_glColor4ubVertex3fvSUN(const GLubyte *c, const
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glColor4ubVertex3fvSUN(c, v);
 }
@@ -41854,7 +41854,7 @@ static void REGAL_CALL statistics_glNormal3fVertex3fSUN(GLfloat nx, GLfloat ny, 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3fVertex3fSUN(nx, ny, nz, x, y, z);
 }
@@ -41870,7 +41870,7 @@ static void REGAL_CALL statistics_glNormal3fVertex3fvSUN(const GLfloat *n, const
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glNormal3fVertex3fvSUN(n, v);
 }
@@ -41886,7 +41886,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiColor3fVertex3fSUN(GLuint r
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiColor3fVertex3fSUN(rc, r, g, b, x, y, z);
 }
@@ -41902,7 +41902,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiColor3fVertex3fvSUN(const G
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiColor3fVertex3fvSUN(rc, c, v);
 }
@@ -41918,7 +41918,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiColor4fNormal3fVertex3fSUN(
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiColor4fNormal3fVertex3fSUN(rc, r, g, b, a, nx, ny, nz, x, y, z);
 }
@@ -41934,7 +41934,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiColor4fNormal3fVertex3fvSUN
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiColor4fNormal3fVertex3fvSUN(rc, c, n, v);
 }
@@ -41950,7 +41950,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiColor4ubVertex3fSUN(GLuint 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiColor4ubVertex3fSUN(rc, r, g, b, a, x, y, z);
 }
@@ -41966,7 +41966,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiColor4ubVertex3fvSUN(const 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiColor4ubVertex3fvSUN(rc, c, v);
 }
@@ -41982,7 +41982,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiNormal3fVertex3fSUN(GLuint 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiNormal3fVertex3fSUN(rc, nx, ny, nz, x, y, z);
 }
@@ -41998,7 +41998,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiNormal3fVertex3fvSUN(const 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiNormal3fVertex3fvSUN(rc, n, v);
 }
@@ -42014,7 +42014,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiTexCoord2fColor4fNormal3fVe
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(rc, s, t, r, g, b, a, nx, ny, nz, x, y, z);
 }
@@ -42030,7 +42030,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiTexCoord2fColor4fNormal3fVe
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(rc, tc, c, n, v);
 }
@@ -42046,7 +42046,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiTexCoord2fNormal3fVertex3fS
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(rc, s, t, nx, ny, nz, x, y, z);
 }
@@ -42062,7 +42062,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiTexCoord2fNormal3fVertex3fv
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(rc, tc, n, v);
 }
@@ -42078,7 +42078,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiTexCoord2fVertex3fSUN(GLuin
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiTexCoord2fVertex3fSUN(rc, s, t, x, y, z);
 }
@@ -42094,7 +42094,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiTexCoord2fVertex3fvSUN(cons
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiTexCoord2fVertex3fvSUN(rc, tc, v);
 }
@@ -42110,7 +42110,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiVertex3fSUN(GLuint rc, GLfl
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiVertex3fSUN(rc, x, y, z);
 }
@@ -42126,7 +42126,7 @@ static void REGAL_CALL statistics_glReplacementCodeuiVertex3fvSUN(const GLuint *
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glReplacementCodeuiVertex3fvSUN(rc, v);
 }
@@ -42142,7 +42142,7 @@ static void REGAL_CALL statistics_glTexCoord2fColor3fVertex3fSUN(GLfloat s, GLfl
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fColor3fVertex3fSUN(s, t, r, g, b, x, y, z);
 }
@@ -42158,7 +42158,7 @@ static void REGAL_CALL statistics_glTexCoord2fColor3fVertex3fvSUN(const GLfloat 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fColor3fVertex3fvSUN(tc, c, v);
 }
@@ -42174,7 +42174,7 @@ static void REGAL_CALL statistics_glTexCoord2fColor4fNormal3fVertex3fSUN(GLfloat
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fColor4fNormal3fVertex3fSUN(s, t, r, g, b, a, nx, ny, nz, x, y, z);
 }
@@ -42190,7 +42190,7 @@ static void REGAL_CALL statistics_glTexCoord2fColor4fNormal3fVertex3fvSUN(const 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fColor4fNormal3fVertex3fvSUN(tc, c, n, v);
 }
@@ -42206,7 +42206,7 @@ static void REGAL_CALL statistics_glTexCoord2fColor4ubVertex3fSUN(GLfloat s, GLf
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fColor4ubVertex3fSUN(s, t, r, g, b, a, x, y, z);
 }
@@ -42222,7 +42222,7 @@ static void REGAL_CALL statistics_glTexCoord2fColor4ubVertex3fvSUN(const GLfloat
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fColor4ubVertex3fvSUN(tc, c, v);
 }
@@ -42238,7 +42238,7 @@ static void REGAL_CALL statistics_glTexCoord2fNormal3fVertex3fSUN(GLfloat s, GLf
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fNormal3fVertex3fSUN(s, t, nx, ny, nz, x, y, z);
 }
@@ -42254,7 +42254,7 @@ static void REGAL_CALL statistics_glTexCoord2fNormal3fVertex3fvSUN(const GLfloat
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fNormal3fVertex3fvSUN(tc, n, v);
 }
@@ -42270,7 +42270,7 @@ static void REGAL_CALL statistics_glTexCoord2fVertex3fSUN(GLfloat s, GLfloat t, 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fVertex3fSUN(s, t, x, y, z);
 }
@@ -42286,7 +42286,7 @@ static void REGAL_CALL statistics_glTexCoord2fVertex3fvSUN(const GLfloat *tc, co
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord2fVertex3fvSUN(tc, v);
 }
@@ -42302,7 +42302,7 @@ static void REGAL_CALL statistics_glTexCoord4fColor4fNormal3fVertex4fSUN(GLfloat
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4fColor4fNormal3fVertex4fSUN(s, t, p, q, r, g, b, a, nx, ny, nz, x, y, z, w);
 }
@@ -42318,7 +42318,7 @@ static void REGAL_CALL statistics_glTexCoord4fColor4fNormal3fVertex4fvSUN(const 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4fColor4fNormal3fVertex4fvSUN(tc, c, n, v);
 }
@@ -42334,7 +42334,7 @@ static void REGAL_CALL statistics_glTexCoord4fVertex4fSUN(GLfloat s, GLfloat t, 
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4fVertex4fSUN(s, t, p, q, x, y, z, w);
 }
@@ -42350,7 +42350,7 @@ static void REGAL_CALL statistics_glTexCoord4fVertex4fvSUN(const GLfloat *tc, co
 
   statistics.gl_sun_vertex++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glTexCoord4fVertex4fvSUN(tc, v);
 }
@@ -42368,7 +42368,7 @@ static void REGAL_CALL statistics_glAddSwapHintRectWIN(GLint x, GLint y, GLsizei
 
   statistics.gl_win_swap_hint++;
 
-  DispatchTableGL *_next = _context->dispatcher.statistics.next();
+  Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   _next->glAddSwapHintRectWIN(x, y, width, height);
 }

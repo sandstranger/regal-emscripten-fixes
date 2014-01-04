@@ -95,7 +95,7 @@ namespace Emu
 void Quads::Init(RegalContext &ctx)
 {
   elementArrayBuffer = 0;
-  Dispatch::GL & dt = *ctx.dispatchGL.next();
+  Dispatch::GL & dt = ctx.dispatchGL;
   dt.glGenBuffers(1, &quadIndexBuffer);
   windingMode = GL_CCW;
   frontFaceMode = backFaceMode = GL_FILL;

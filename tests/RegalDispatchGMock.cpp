@@ -1845,7 +1845,7 @@ RegalGMockInterface::~RegalGMockInterface()
 
 RegalGMockInterface* RegalGMockInterface::current;
 
-void InitDispatchTableGMock(DispatchTableGL &tbl)
+void InitDispatchTableGMock(Dispatch::GL &tbl)
 {
   tbl.glAccum = gmock_glAccum;
   tbl.glAlphaFunc = gmock_glAlphaFunc;

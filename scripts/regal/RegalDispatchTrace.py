@@ -115,11 +115,11 @@ def apiTraceFuncDefineCode(apis, args):
       code += '  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();\n'
       if function.needsContext:
         code += '  RegalAssert(_instance.currentContext);\n'
-        code += '  Push<DispatchTableGL *> _push(_instance.nextDispatchTable);\n'
-        code += '  _instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();\n'
+        code += '  //Push<Dispatch::GL *> _push(_instance.nextDispatchTable);\n'
+        code += '  //_instance.nextDispatchTable = _instance.currentContext->dispatcher.trace.next();\n'
       else:
-        code += '  Push<DispatchTableGlobal *> _push(_instance.nextDispatchTableGlobal);\n'
-        code += '  _instance.nextDispatchTableGlobal = dispatcherGlobal.trace.next();\n'
+        code += '  //Push<DispatchTableGlobal *> _push(_instance.nextDispatchTableGlobal);\n'
+        code += '  //_instance.nextDispatchTableGlobal = dispatcherGlobal.trace.next();\n'
       code += '  '
       if not typeIsVoid(rType):
         code += '%s ret = ' % rType

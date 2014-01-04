@@ -98,7 +98,7 @@ void Frame::capture(RegalContext &context,const bool frameTerminator)
     Config::frameSaveDepth
   )
   {
-    Dispatch::GL *_next = &context.dispatcher.front();
+    Dispatch::GL *_next = &context.dispatchGL;
     RegalAssert(_next);
 
     // Get the current viewport

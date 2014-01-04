@@ -138,7 +138,7 @@ formulae = {
   'popdebuggroup' : {
     'entries' : [ 'glPopDebugGroup', 'glPopGroupMarkerEXT' ],
     'post' : [
-      'DispatchHttpState &h = _context->http;',
+      'Http &h = _context->http;',
       'if( h.runState == RS_StepOutOfGroup || h.runState == RS_NextGroup ) {',
       '  h.runState = RS_Pause;',
       '}',
@@ -234,7 +234,7 @@ REGAL_NAMESPACE_BEGIN
 
 ${API_FUNC_DEFINE}
 
-void InitDispatchTableHttp(DispatchTableGL &tbl)
+void InitDispatchTableHttp(Dispatch::GL &tbl)
 {
 ${API_GL_DISPATCH_INIT}
 }
@@ -323,9 +323,9 @@ def generateDispatchHttp(apis, args):
       
 
       if function.needsContext:
-        code += '    DispatchTableGL *_next = _context ? _context->dispatcher.http.next() : NULL;\n'
+        code += '    Dispatch::GL *_next = _context ? &_context->dispatchGL : NULL;\n'
       else:
-        code += '    DispatchTableGlobal *_next = dispatcherGlobal.http.next();\n'
+        code += '    Dispatch::Global *_next = &dispatchGlobal;\n'
 
       code += '    RegalAssert(_next);\n'
 

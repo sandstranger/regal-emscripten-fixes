@@ -42,23 +42,5 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-DispatchTableGlobal dispatchTableGlobal;
-
-#if REGAL_SYS_EGL && REGAL_STATIC_EGL
-extern void InitDispatchTableStaticEGL(DispatchTableGlobal &tbl);
-#endif
-
-DispatchTableGlobal::DispatchTableGlobal()
-{
-  memset(this,0,sizeof(DispatchTableGlobal));
-
-#if REGAL_SYS_EGL && REGAL_STATIC_EGL
-  InitDispatchTableStaticEGL(*this);
-#endif
-}
-
-DispatchTableGlobal::~DispatchTableGlobal()
-{
-}
 
 REGAL_NAMESPACE_END

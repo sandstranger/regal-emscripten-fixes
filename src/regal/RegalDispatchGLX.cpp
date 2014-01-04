@@ -1089,7 +1089,7 @@ static int REGAL_CALL GLX_glXVideoResizeSUN(Display *display, GLXDrawable window
     return ret;
 }
 
-void InitDispatchTableGLX(DispatchTableGL &tbl)
+void InitDispatch::GLX(Dispatch::GL &tbl)
 {
 
 }

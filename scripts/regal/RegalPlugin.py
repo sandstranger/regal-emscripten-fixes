@@ -34,7 +34,7 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalContext.h"
 #include "RegalLookup.h"
-#include "RegalDispatcher.h"
+#include "RegalDispatch.h"
 
 extern "C" {
 
@@ -99,9 +99,11 @@ def generatePluginSource(apis, args):
 
       c += '  ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal &_instance = ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal::instance();\n'
       if function.needsContext:
-        c += '  ::REGAL_NAMESPACE_INTERNAL::DispatchTableGL *_next = _instance.nextDispatchTable;\n'
+        c += '  //::REGAL_NAMESPACE_INTERNAL::Dispatch::GL *_next = _instance.nextDispatchTable;\n'
+        c += '  ::REGAL_NAMESPACE_INTERNAL::Dispatch::GL *_next = &_instance.currentContext->dispatchGL;\n'
       else:
-        c += '  ::REGAL_NAMESPACE_INTERNAL::DispatchTableGlobal *_next = _instance.nextDispatchTableGlobal;\n'
+        c += '  //::REGAL_NAMESPACE_INTERNAL::DispatchGlobal *_next = _instance.nextDispatchTableGlobal;\n'
+        c += '  ::REGAL_NAMESPACE_INTERNAL::Dispatch::Global *_next = &::REGAL_NAMESPACE_INTERNAL::dispatchGlobal;\n'
       c += '  RegalAssert(_next);\n'
       if not typeIsVoid(rType):
         c += '  return '

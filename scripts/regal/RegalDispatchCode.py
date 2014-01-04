@@ -125,7 +125,7 @@ def generateDispatchCode(apis, args):
 
         code += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
         code += '    RegalAssert(_context);\n'
-        code += '    Dispatch::GL *_next = _context->dispatcher.code.next();\n'
+        code += '    Dispatch::GL *_next = &_context->dispatchGL;\n'
         code += '    RegalAssert(_next);\n'
         code += '    '
 

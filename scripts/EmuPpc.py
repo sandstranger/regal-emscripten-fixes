@@ -81,7 +81,7 @@ ppcFormulae = {
         'entries' : [ 'glGet(Boolean|Double|Float|Integer|Integer64)v' ],
         'impl' : [
             'if ( !rCtx->ppc->Get( ${arg0plus} ) ) {',
-            '   rCtx->dispatcher.emulation.glGet${m1}v( ${arg0plus} );',
+            '   rCtx->dispatchGL.glGet${m1}v( ${arg0plus} );',
             '}',
         ]
     },
@@ -89,7 +89,7 @@ ppcFormulae = {
         'entries' : [ 'glGet(Boolean|Double|Float|Integer|Integer64)i_v(EXT|)' ],
         'impl' : [
             'if ( !rCtx->ppc->GetIndexed( ${arg0plus} ) ) {',
-            '   rCtx->dispatcher.emulation.glGet${m1}i_v( ${arg0plus} );',
+            '   rCtx->dispatchGL.glGet${m1}i_v( ${arg0plus} );',
             '}',
         ]
     },
@@ -97,7 +97,7 @@ ppcFormulae = {
         'entries' : [ 'glGetPointerv' ],
         'impl' : [
             'if ( !rCtx->ppc->GetPointerv( ${arg0plus} ) ) {',
-            '   rCtx->dispatcher.emulation.glGetPointerv( ${arg0plus} );',
+            '   rCtx->dispatchGL.glGetPointerv( ${arg0plus} );',
             '}',
         ]
     },
@@ -107,7 +107,7 @@ ppcFormulae = {
             '{',
             '    GLboolean enabled;',
             '    if ( !rCtx->ppc->IsEnabled( ${arg0plus}, enabled ) )',
-            '        return rCtx->dispatcher.emulation.glIsEnabled( ${arg0plus} );',
+            '        return rCtx->dispatchGL.glIsEnabled( ${arg0plus} );',
             '    return enabled;',
             '}',
         ]
@@ -118,7 +118,7 @@ ppcFormulae = {
             '//{',
             '    GLboolean enabled;',
             '    if ( !rCtx->ppc->IsEnabledIndexed( ${arg0plus}, enabled ) )',
-            '        return rCtx->dispatcher.emulation.glIsEnabledi( ${arg0plus} );',
+            '        return rCtx->dispatchGL.glIsEnabledi( ${arg0plus} );',
             '    return enabled;',
             '//}',
         ]
@@ -127,7 +127,7 @@ ppcFormulae = {
         'entries' : [ 'glGetVertexAttribPointerv(ARB|EXT|)' ],
         'impl' : [
             'if ( !rCtx->ppc->GetVertexAttribPointerv( ${arg0plus} ) ) {',
-            '   rCtx->dispatcher.emulation.glGetVertexAttribPointerv${m1}( ${arg0plus} );',
+            '   rCtx->dispatchGL.glGetVertexAttribPointerv${m1}( ${arg0plus} );',
             '}',
         ]
     },
@@ -135,7 +135,7 @@ ppcFormulae = {
         'entries' : [ 'glGetVertexAttrib(d|f|i)v(ARB|)' ],
         'impl' : [
             'if ( !rCtx->ppc->GetVertexAttribv( ${arg0plus} ) ) {',
-            '   rCtx->dispatcher.emulation.glGetVertexAttrib${m1}v${m2}( ${arg0plus} );',
+            '   rCtx->dispatchGL.glGetVertexAttrib${m1}v${m2}( ${arg0plus} );',
             '}',
         ]
     },

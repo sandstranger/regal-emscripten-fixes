@@ -47,7 +47,7 @@ REGAL_GLOBAL_END
 REGAL_NAMESPACE_BEGIN
 
 void InitDispatchGL() {
-
+/*
   // start building the dispatch up from the bottom (driver)
   // each dispatch layer needs to:
   //     1. grab all the function pointers it needs to be able to call
@@ -132,7 +132,7 @@ void InitDispatchGL() {
 #endif
   
   
-  
+  */
   
   
   

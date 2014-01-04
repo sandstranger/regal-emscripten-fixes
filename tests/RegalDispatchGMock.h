@@ -53,7 +53,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct DispatchTableGL;
+struct Dispatch::GL;
 
 struct RegalGMockInterface
 {
@@ -507,7 +507,7 @@ struct RegalGMockInterface
   MOCK_METHOD5(glMultiTexCoordPointerEXT, void(GLenum, GLint, GLenum, GLsizei, const GLvoid *));
 };
 
-void InitDispatchTableGMock(DispatchTableGL &tbl);
+void InitDispatchTableGMock(Dispatch::GL &tbl);
 
 REGAL_NAMESPACE_END
 
