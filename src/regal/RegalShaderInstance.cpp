@@ -342,7 +342,7 @@ namespace ShaderInstance {
     return 0;
   }
   
-  void GetUniform( DispatchTableGL & tbl, GLuint program, GLint location, GLsizei count, GLenum type, void *value ) {
+  void GetUniform( Dispatch::GL & tbl, GLuint program, GLint location, GLsizei count, GLenum type, void *value ) {
     GLint size = GetTypeSize( type );
     UniformApiType uat = GetUniformApiType( type );
     char * val = reinterpret_cast<char *>( value );
@@ -374,7 +374,7 @@ namespace ShaderInstance {
     }
   }
   
-  void SetUniform( DispatchTableGL & tbl, GLint location, GLsizei count, GLenum type, const void *value ) {
+  void SetUniform( Dispatch::GL & tbl, GLint location, GLsizei count, GLenum type, const void *value ) {
     GLint size = GetTypeSize( type );
     UniformApiType uat = GetUniformApiType( type );
     const char * val = reinterpret_cast<const char *>( value );
@@ -465,7 +465,7 @@ namespace ShaderInstance {
     u.ver = ++ver;
   }
   
-  void ProgramInstance::InitializeUniforms( DispatchTableGL & tbl, const Program & p ) {
+  void ProgramInstance::InitializeUniforms( Dispatch::GL & tbl, const Program & p ) {
     uniforms.clear();
     for( Program::Map::const_reverse_iterator it = p.uniforms.rbegin(); it != p.uniforms.rend(); ++it ) {
       const Uniform & u = it->second;
@@ -478,7 +478,7 @@ namespace ShaderInstance {
     }
   }
   
-  void ProgramInstance::UpdateUniforms( DispatchTableGL & tbl, const Program & p ) {
+  void ProgramInstance::UpdateUniforms( Dispatch::GL & tbl, const Program & p ) {
     if( ver == p.ver ) {
       return;
     }
@@ -494,7 +494,7 @@ namespace ShaderInstance {
   }
 
   
-  void GetShaderSource( DispatchTableGL & tbl, GLuint shader, ShaderSource & ss ) {
+  void GetShaderSource( Dispatch::GL & tbl, GLuint shader, ShaderSource & ss ) {
     tbl.glGetShaderiv( shader, GL_SHADER_TYPE, reinterpret_cast<GLint *>(&ss.type) );
     GLint sz = 0;
     tbl.glGetShaderiv( shader, GL_SHADER_SOURCE_LENGTH, &sz );
@@ -506,7 +506,7 @@ namespace ShaderInstance {
     delete [] src;
   }
   
-  void GetProgramSources( DispatchTableGL & tbl, GLuint prog, std::vector<ShaderSource> & sources ) {
+  void GetProgramSources( Dispatch::GL & tbl, GLuint prog, std::vector<ShaderSource> & sources ) {
     sources.clear();
     GLuint shaders[8];
     GLsizei numShaders = 0;
@@ -519,7 +519,7 @@ namespace ShaderInstance {
     }
   }
 
-  GLuint CreateShader( DispatchTableGL & tbl, const ShaderSource & ss ) {
+  GLuint CreateShader( Dispatch::GL & tbl, const ShaderSource & ss ) {
     GLuint s = tbl.glCreateShader( ss.type );
     const GLchar *dumb[] =  { ss.src.c_str(), NULL };
     GLsizei sizes[] = { (GLsizei)ss.src.size(), 0 };
@@ -533,7 +533,7 @@ namespace ShaderInstance {
   }
   
 
-  void InitProgram( DispatchTableGL & tbl, GLuint prog, Program & p ) {
+  void InitProgram( Dispatch::GL & tbl, GLuint prog, Program & p ) {
     GLint activeUniforms = 0;
     tbl.glGetProgramiv( prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
     tbl.glGetError();
@@ -558,7 +558,7 @@ namespace ShaderInstance {
     }
   }
   
-  void InitProgramInstance( DispatchTableGL & tbl, const Program & p, GLuint inst, ProgramInstance &pi ) {
+  void InitProgramInstance( Dispatch::GL & tbl, const Program & p, GLuint inst, ProgramInstance &pi ) {
     
     pi.prog = inst;
     
@@ -590,7 +590,7 @@ namespace ShaderInstance {
     // now the uniforms only need to be updated for the instance to be used
   }
   
-  void CreateProgramInstance( DispatchTableGL & tbl, const Program & p, const std::vector<ShaderSource> & sources, ProgramInstance &pi ) {
+  void CreateProgramInstance( Dispatch::GL & tbl, const Program & p, const std::vector<ShaderSource> & sources, ProgramInstance &pi ) {
     GLuint inst = tbl.glCreateProgram();
     for( int i = 0; i < (int)sources.size(); i++ ) {
       GLuint si = CreateShader( tbl, sources[i] );

@@ -86,7 +86,7 @@ namespace Emu {
 
     void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width )
     {
-      DispatchTableGL & tbl = ctx->dispatchGL;
+      Dispatch::GL & tbl = ctx->dispatchGL;
       for (GLsizei i = 0; i < levels; i++)
       {
         tbl.glTexImage1D( target, i, internalformat, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
@@ -105,7 +105,7 @@ namespace Emu {
 
     void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height )
     {
-      DispatchTableGL & tbl = ctx->dispatchGL;
+      Dispatch::GL & tbl = ctx->dispatchGL;
       for (GLsizei i = 0; i < levels; i++)
       {
         if (target == GL_TEXTURE_CUBE_MAP)
@@ -131,7 +131,7 @@ namespace Emu {
 
     void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth )
     {
-      DispatchTableGL & tbl = ctx->dispatchGL;
+      Dispatch::GL & tbl = ctx->dispatchGL;
       for (GLsizei i = 0; i < levels; i++)
       {
         tbl.glTexImage3D( target, i, internalformat, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
@@ -152,7 +152,7 @@ namespace Emu {
       if (pname != GL_TEXTURE_IMMUTABLE_FORMAT)
         return false;
 
-      DispatchTableGL & tbl = ctx->dispatchGL;
+      Dispatch::GL & tbl = ctx->dispatchGL;
 
       GLint id;
       tbl.glGetIntegerv( BindingFromTarget(target), &id );

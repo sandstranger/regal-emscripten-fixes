@@ -215,7 +215,7 @@ So::BindTexture(RegalContext &ctx, GLuint unit, GLenum target, GLuint to)
       }
     }
 
-    DispatchTableGL &tbl = ctx.dispatchGL;
+    Dispatch::GL &tbl = ctx.dispatchGL;
 
     GLuint originallyActiveUnit = activeTextureUnit;
 
@@ -329,7 +329,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     }
   }
 
-  DispatchTableGL &tbl = ctx.dispatchGL;
+  Dispatch::GL &tbl = ctx.dispatchGL;
 
   if (newState.BorderColor[0] != drv.BorderColor[0] ||
       newState.BorderColor[1] != drv.BorderColor[1] ||

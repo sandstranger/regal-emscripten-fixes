@@ -168,9 +168,9 @@ struct Vao
     if( ctx.info->core )
     {
       maxName = 1;
-      ctx.dispatcher.driver.glGenVertexArrays( 1, & coreVao );
+      ctx.dispatchGL.glGenVertexArrays( 1, & coreVao );
       RegalAssert( coreVao != 0 );
-      ctx.dispatcher.driver.glBindVertexArray( coreVao );
+      ctx.dispatchGL.glBindVertexArray( coreVao );
     }
     else
       coreVao = 0;
@@ -213,7 +213,7 @@ struct Vao
     {
       maxName = current;
     }
-    DispatchTableGL &tbl = ctx.dispatchGL;
+    Dispatch::GL &tbl = ctx.dispatchGL;
     tbl.glBindBuffer( GL_ARRAY_BUFFER, vao.vertexBuffer );
     tbl.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, vao.indexBuffer );
     GLuint lastBuffer = vao.vertexBuffer;
@@ -289,7 +289,7 @@ struct Vao
     if (index >= max_vertex_attribs || index >= REGAL_EMU_MAX_VERTEX_ATTRIBS)
       return;
 
-    DispatchTableGL &tbl = ctx.dispatchGL;
+    Dispatch::GL &tbl = ctx.dispatchGL;
     Array &a = objects[current].a[index];
     a.enabled = enable;
     if( a.enabled == GL_TRUE )

@@ -75,7 +75,7 @@ struct BaseVertex : public ClientState::VertexArray
     UNUSED_PARAMETER(ctx);
   }
 
-  void adjust(RegalContext &ctx, DispatchTableGL &dt, GLint basevertex)
+  void adjust(RegalContext &ctx, Dispatch::GL &dt, GLint basevertex)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -164,7 +164,7 @@ struct BaseVertex : public ClientState::VertexArray
 
   bool glDrawElementsBaseVertex(RegalContext &ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
   {
-    DispatchTableGL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.dispatchGL;
     if (basevertex)
       adjust(ctx, dt, basevertex);
     dt.glDrawElements(mode, count, type, indices);
@@ -175,7 +175,7 @@ struct BaseVertex : public ClientState::VertexArray
 
   bool glDrawRangeElementsBaseVertex(RegalContext &ctx, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
   {
-    DispatchTableGL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.dispatchGL;
     if (basevertex)
       adjust(ctx, dt, basevertex);
     dt.glDrawRangeElements(mode, start, end, count, type, indices);
@@ -186,7 +186,7 @@ struct BaseVertex : public ClientState::VertexArray
 
   bool glDrawElementsInstancedBaseVertex(RegalContext &ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
   {
-    DispatchTableGL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.dispatchGL;
     if (basevertex)
       adjust(ctx, dt, basevertex);
     dt.glDrawElementsInstanced(mode, count, type, indices, primcount);
@@ -197,7 +197,7 @@ struct BaseVertex : public ClientState::VertexArray
 
   bool glDrawElementsInstancedBaseVertexBaseInstance(RegalContext &ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance)
   {
-    DispatchTableGL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.dispatchGL;
     if (basevertex)
       adjust(ctx, dt, basevertex);
     dt.glDrawElementsInstancedBaseInstance(mode, count, type, indices, primcount, baseinstance);
@@ -208,7 +208,7 @@ struct BaseVertex : public ClientState::VertexArray
 
   bool glMultiDrawElementsBaseVertex(RegalContext &ctx, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const* indices, GLsizei primcount, const GLint *basevertex)
   {
-    DispatchTableGL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.dispatchGL;
     for (GLsizei ii=0; ii<primcount; ii++)
     {
       if (basevertex[ii])

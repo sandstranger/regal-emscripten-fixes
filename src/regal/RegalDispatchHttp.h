@@ -101,7 +101,7 @@ enum HttpRunState {
   RS_StepOutOfGroup,
 };
 
-struct DispatchTableGL;
+struct Dispatch::GL;
 
 struct DispatchHttpState
 {
@@ -160,7 +160,7 @@ public:
       memset( this, 0, sizeof( *this ) );
     }
     
-    void Initialize( DispatchTableGL * tbl );
+    void Initialize( Dispatch::GL * tbl );
 
     PFNGLFINISHPROC Finish;
     PFNGLGETACTIVEUNIFORMPROC GetActiveUniform;

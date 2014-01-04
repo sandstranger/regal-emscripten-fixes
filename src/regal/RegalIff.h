@@ -1483,7 +1483,7 @@ struct Iff
     ShaderInstance::ProgramInstance inst;
     GLuint64 ffver;
     UniformMap ffuniforms;
-    void LocateUniforms( RegalContext * ctx, DispatchTableGL & tbl );
+    void LocateUniforms( RegalContext * ctx, Dispatch::GL & tbl );
   };
   
   struct UserProgramInstanceInfo {
@@ -1523,11 +1523,11 @@ struct Iff
     State::Store store;
 
     void Init( RegalContext * ctx, const State::Store & sstore, GLuint vshd, GLuint fshd );
-    static void Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GLuint & shader, const GLchar *src );
+    static void Shader( RegalContext * ctx, Dispatch::GL & tbl, GLenum type, GLuint & shader, const GLchar *src );
     void Attribs( RegalContext * ctx );
     void UserShaderModeAttribs( RegalContext * ctx );
-    void Samplers( RegalContext * ctx, DispatchTableGL & tbl );
-    void Uniforms( RegalContext * ctx, DispatchTableGL & tbl );
+    void Samplers( RegalContext * ctx, Dispatch::GL & tbl );
+    void Uniforms( RegalContext * ctx, Dispatch::GL & tbl );
   };
 
   MatrixStack modelview;

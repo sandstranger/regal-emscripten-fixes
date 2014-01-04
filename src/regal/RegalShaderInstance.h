@@ -92,19 +92,19 @@ namespace ShaderInstance {
     GLint prog;
     GLuint64 ver;
     std::vector<UniformInstance> uniforms;
-    void InitializeUniforms( DispatchTableGL & tbl, const Program & p );
-    void UpdateUniforms( DispatchTableGL & tbl, const Program & p );
+    void InitializeUniforms( Dispatch::GL & tbl, const Program & p );
+    void UpdateUniforms( Dispatch::GL & tbl, const Program & p );
   };
 
-  void GetShaderSource( DispatchTableGL & tbl, GLuint shader, ShaderSource & ss );
-  void GetProgramSources( DispatchTableGL & tbl, GLuint prog, std::vector<ShaderSource> & sources );
-  void InitProgram( DispatchTableGL & tbl, GLuint prog, Program & p );
-  void InitProgramInstance( DispatchTableGL & tbl, const Program & p, GLuint inst, ProgramInstance & pi );
-  void CreateProgramInstance( DispatchTableGL & tbl, const Program & p, const std::vector<ShaderSource> & sources, ProgramInstance & pi );
+  void GetShaderSource( Dispatch::GL & tbl, GLuint shader, ShaderSource & ss );
+  void GetProgramSources( Dispatch::GL & tbl, GLuint prog, std::vector<ShaderSource> & sources );
+  void InitProgram( Dispatch::GL & tbl, GLuint prog, Program & p );
+  void InitProgramInstance( Dispatch::GL & tbl, const Program & p, GLuint inst, ProgramInstance & pi );
+  void CreateProgramInstance( Dispatch::GL & tbl, const Program & p, const std::vector<ShaderSource> & sources, ProgramInstance & pi );
 
   int GetTypeSize( GLenum type );
-  void GetUniform( DispatchTableGL & tbl, GLuint program, GLint location, GLsizei count, GLenum type, void *value );
-  void SetUniform( DispatchTableGL & tbl, GLint location, GLsizei count, GLenum type, const void *value );
+  void GetUniform( Dispatch::GL & tbl, GLuint program, GLint location, GLsizei count, GLenum type, void *value );
+  void SetUniform( Dispatch::GL & tbl, GLint location, GLsizei count, GLenum type, const void *value );
 }
 
 REGAL_NAMESPACE_END

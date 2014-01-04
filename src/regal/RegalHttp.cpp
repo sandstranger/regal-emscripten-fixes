@@ -782,7 +782,7 @@ namespace Http
     return el;
   }
   
-  string PrintUniformValue( DispatchTableGL & tbl, GLuint program, GLint location, GLsizei count, GLenum type, int indent ) {
+  string PrintUniformValue( Dispatch::GL & tbl, GLuint program, GLint location, GLsizei count, GLenum type, int indent ) {
     char buf[1<<14];
     int sz = ShaderInstance::GetTypeSize( type );
     if( (count * sz) > sizeof(buf) ) {
@@ -1432,7 +1432,7 @@ void DispatchHttpState::ContinueFromBreakpoint( RegalContext * ctx, HttpRunState
   runState = rs;
 }
 
-void DispatchHttpState::GlProcs::Initialize( DispatchTableGL * tbl ) {
+void DispatchHttpState::GlProcs::Initialize( Dispatch::GL * tbl ) {
   Finish                   = tbl->glFinish ;
   GetActiveUniform         = tbl->glGetActiveUniform ;
   GetAttachedShaders       = tbl->glGetAttachedShaders ;

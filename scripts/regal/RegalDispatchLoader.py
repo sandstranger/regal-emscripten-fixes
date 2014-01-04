@@ -49,25 +49,17 @@ ${LOCAL_CODE}
 
 ${API_DISPATCH_FUNC_DEFINE}
 
-  static DispatchTableGL &_getDispatchGL()
+  template <typename T>
+  void _getProcAddress( T & func, T funcRegal, const char *name)
   {
-    RegalContext * _context = REGAL_GET_CONTEXT();
-    RegalAssert(_context);
-    return _context->dispatchGL;
+    GetProcAddress(func, name);
+    RegalAssert(func!=funcRegal);
+    if (func==funcRegal)
+      func = NULL;
   }
 
-  static void _getProcAddress(void (**func)(), void (*funcRegal)(), const char *name)
+  void Init( Dispatch::GL & dt )
   {
-    GetProcAddress(*func, name);
-    RegalAssert(*func!=funcRegal);
-    if (*func==funcRegal)
-      *func = NULL;
-  }
-
-  void Init( RegalContext * ctx )
-  {
-    Dispatch::GL & tbl = ctx->dispatchGL;
-
 ${API_DISPATCH_FUNC_INIT}
   }
 
@@ -152,7 +144,6 @@ def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambd
 
   categoryPrev = None
   code = ''
-  code += '    Dispatch::GL &dt = _getDispatchGL();\n'
 
   for api in apis:
 
@@ -197,7 +188,7 @@ def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambd
 
       # Get a reference to the appropriate dispatch table and attempt GetProcAddress
 
-      code += '    _getProcAddress(reinterpret_cast<PFN%sPROC>(&dt.%s),reinterpret_cast<void (*)()>(%s),"%s");\n'%(name.upper(),name,name,name)
+      code += '    _getProcAddress( dt.%s, %s, "%s" );\n'%(name,name,name)
       code += '    if( dt.%s == NULL ) {\n' % name
       code += '      dt.%s = missing_%s;\n' % (name,name)
       code += '    }\n'
@@ -216,8 +207,7 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
     cond = condDefault
 
   categoryPrev = None
-  code = ' void Init(DispatchTableGlobal &tbl) {\n'
-  code += '  Dispatch::Global &dt = dispatchGlobal;\n'
+  code = ' void Init(Dispatch::Global &dt) {\n'
 
   for api in apis:
 
@@ -263,7 +253,7 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
       categoryPrev = category
 
 
-      code += '    _getProcAddress(reinterpret_cast<PFN%sPROC>(&dt.%s),reinterpret_cast<void (*)()>(%s),"%s");\n'%(name.upper(),name,name,name)
+      code += '    _getProcAddress( dt.%s, %s, "%s" );\n'%(name,name,name)
       code += '    if( dt.%s == NULL ) {\n' % name
       code += '      dt.%s = missing_%s;\n' % (name,name)
       code += '    }\n'

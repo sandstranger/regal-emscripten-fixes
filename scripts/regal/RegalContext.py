@@ -279,7 +279,7 @@ using namespace Logging;
 
 RegalContext::RegalContext()
 : initialized(false),
-  dispatcher(),
+  dispatchGL(),
   dbg(NULL),
   info(NULL),
 #if REGAL_STATISTICS
@@ -445,20 +445,20 @@ RegalContext::groupInitialized() const
   return shareGroup->front()->initialized;
 }
 
-void RegalContext::parkContext( DispatchTableGlobal & tbl )
+void RegalContext::parkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
-  tbl.CGLSetCurrentContext( NULL );
+  pp.CGLSetCurrentContext( NULL );
   #else
   # error "Implement me!"
   #endif
   RegalMakeCurrent(NULL);
 }
 
-void RegalContext::unparkContext( DispatchTableGlobal & tbl )
+void RegalContext::unparkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
-  tbl.CGLSetCurrentContext( reinterpret_cast<CGLContextObj>(sysCtx) );
+  pp.CGLSetCurrentContext( reinterpret_cast<CGLContextObj>(sysCtx) );
   #else
   # error "Implement me!"
   #endif

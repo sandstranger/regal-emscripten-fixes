@@ -55,7 +55,7 @@ static void REGAL_CALL cache_glShaderSource(GLuint shader, GLsizei count, const 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
-  DispatchTableGL *_next = _context->dispatcher.cache.next();
+  Dispatch::GL *_next = _context->dispatcher.cache.next();
   RegalAssert(_next);
   if (Config::cache && Config::cacheShader)
     Cache::shaderSource(_next->glShaderSource, shader, count, string, length);
@@ -63,7 +63,7 @@ static void REGAL_CALL cache_glShaderSource(GLuint shader, GLsizei count, const 
     _next->glShaderSource(shader, count, string, length);
 }
 
-void InitDispatchTableCache(DispatchTableGL &tbl)
+void InitDispatchTableCache(Dispatch::GL &tbl)
 {
   tbl.glShaderSource = cache_glShaderSource;
 }
