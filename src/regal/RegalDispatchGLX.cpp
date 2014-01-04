@@ -1094,7 +1094,7 @@ void InitDispatchTableGLX(DispatchTableGL &tbl)
 
 }
 
-void InitDispatchTableGlobalGLX(DispatchTableGlobal &tbl)
+void InitDispatchGlobalGLX(Dispatch::Global &tbl)
 {
 
 #if REGAL_SYS_GLX

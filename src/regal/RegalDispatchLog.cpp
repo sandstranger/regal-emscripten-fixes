@@ -34952,7 +34952,7 @@ void InitDispatchTableLog(DispatchTableGL &tbl)
 
 }
 
-void InitDispatchTableGlobalLog(DispatchTableGlobal &tbl)
+void InitDispatchGlobalLog(Dispatch::Global &tbl)
 {
 
 #if REGAL_SYS_WGL

@@ -41,7 +41,7 @@ ${LOCAL_CODE}
 
 ${API_DISPATCH_FUNC_DEFINE}
 
-void InitDispatchTable${DISPATCH_NAME}(DispatchTableGL &tbl)
+void InitDispatch${DISPATCH_NAME}(Dispatch::GL &tbl)
 {
   ${API_DISPATCH_FUNC_INIT}
 }
@@ -126,12 +126,12 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
   categoryPrev = None
   if dispatchName!= None:
     code = '''
-void InitDispatchTableGlobal%s%s(DispatchTableGlobal &tbl)
+void InitDispatchGlobal%s%s(Dispatch::Global &tbl)
 {
 '''%(dispatchName[0:1].upper(),dispatchName[1:])
   else:
     code = '''
-void Init(DispatchTableGlobal &tbl)
+void Init(Dispatch::Global &tbl)
 {
 '''
 

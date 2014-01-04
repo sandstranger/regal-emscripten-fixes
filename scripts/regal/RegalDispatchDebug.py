@@ -61,8 +61,6 @@ def apiDebugFuncDefineCode(apis, args):
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'debug_', name, params)
       code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
-      code += '  DispatchTableGL *_next = _context->dispatcher.debug.next();\n'
-      code += '  RegalAssert(_next);\n'
       e = emuFindEntry( function, debugDispatchFormulae, '' )
       if e != None and 'prefix' in e :
         for l in e['prefix'] :
@@ -70,7 +68,7 @@ def apiDebugFuncDefineCode(apis, args):
       code += '  '
       if not typeIsVoid(rType):
         code += '%s ret = ' % rType
-      code += '_next->%s(%s);\n' % ( name, callParams )
+      code += '_context->debug.next.%s(%s);\n' % ( name, callParams )
       if not typeIsVoid(rType):
         code += '  return ret;\n'
       code += '}\n\n'
@@ -86,10 +84,23 @@ def apiDebugFuncDefineCode(apis, args):
   return code
 
 debugGlobalCode = '''
+#include "RegalContext.h"
+#include "RegalDispatchDebug.h"
 #include "RegalDebugInfo.h"
 '''
 
 debugLocalCode = '''
+
+static Dispatch::Global nextGlobal;
+
+void Debug::Init( RegalContext * ctx ) {
+  void InitDispatchGLDebug( Dispatch::GL & tbl );
+  next = ctx->dispatchGL;
+  InitDispatchGLDebug( ctx->dispatchGL );
+  nextGlobal = dispatchGlobal;
+  void InitDispatchGlobal( Dispatch::Global & tbl );
+  InitDispatchGlobal( dispatchGlobal );
+}
 '''
 
 def generateDebugSource(apis, args):

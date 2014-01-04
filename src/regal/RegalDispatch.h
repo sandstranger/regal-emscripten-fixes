@@ -4318,6 +4318,7 @@ namespace Dispatch
 
   };
 
+}
 extern Dispatch::Global dispatchGlobal;
 
 REGAL_NAMESPACE_END

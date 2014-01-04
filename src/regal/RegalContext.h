@@ -50,8 +50,9 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContextInfo.h"
 #include "RegalDispatcherGL.h"
 #include "RegalDispatcherGlobal.h"
+#include "RegalDispatchDebug.h"
 #include "RegalDispatchError.h"
-//#include "RegalDispatchHttp.h"
+#include "RegalDispatchHttp.h"
 #include "RegalScopedPtr.h"
 #include "RegalSharedList.h"
 
@@ -108,7 +109,8 @@ struct RegalContext
   bool                    initialized;
   Dispatch::GL            dispatchGL;
   DispatchErrorState      err;
-  //DispatchHttpState       http;
+  Debug                   debug;
+  DispatchHttpState       http;
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;

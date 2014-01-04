@@ -143,8 +143,4 @@ void InitDispatchGL() {
   
 }
 
-DispatcherGL::~DispatcherGL()
-{
-}
-
 REGAL_NAMESPACE_END

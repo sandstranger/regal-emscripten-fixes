@@ -100,7 +100,7 @@ namespace Dispatch
 ${API_GLOBAL_DISPATCH_TABLE_DEFINE}
 
 ${API_DISPATCH_TABLE_DEFINE}
-
+}
 extern Dispatch::Global dispatchGlobal;
 
 REGAL_NAMESPACE_END

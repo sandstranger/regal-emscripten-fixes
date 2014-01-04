@@ -101,6 +101,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContextInfo.h"
 #include "RegalDispatcherGL.h"
 #include "RegalDispatcherGlobal.h"
+#include "RegalDispatchDebug.h"
 #include "RegalDispatchError.h"
 #include "RegalDispatchHttp.h"
 #include "RegalScopedPtr.h"
@@ -140,6 +141,7 @@ struct RegalContext
   bool                    initialized;
   Dispatch::GL            dispatchGL;
   DispatchErrorState      err;
+  Debug                   debug;
   DispatchHttpState       http;
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
@@ -197,11 +199,11 @@ ${EMU_MEMBER_DECLARE}
     void init( Dispatch::Global & dispatchGlobal ) {
       #if REGAL_SYS_OSX
         CGLSetCurrentContext = dispatchGlobal.CGLSetCurrentContext;
-      #else if REGAL_SYS_EGL
+      #elif REGAL_SYS_EGL
         eglMakeCurrent = dispatchGlobal.eglMakeCurrent;
-      #else if REGAL_SYS_GLX
+      #elif REGAL_SYS_GLX
         glXMakeCurrent = dispatchGlobal.glXMakeCurrent;
-      #else if REGAL_SYS_WGL
+      #elif REGAL_SYS_WGL
         wglMakeCurrent = dispatchGlobal.wglMakeCurrent;
       #else
         # error "Implement me!"
@@ -209,11 +211,11 @@ ${EMU_MEMBER_DECLARE}
     }
     #if REGAL_SYS_OSX
       PFNCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
-    #else if REGAL_SYS_EGL
+    #elif REGAL_SYS_EGL
       PFNEGLMAKECURRENTPROC eglMakeCurrent;
-    #else if REGAL_SYS_GLX
+    #elif REGAL_SYS_GLX
       PFNGLXMAKECURRENTPROC glXMakeCurrent;
-    #else if REGAL_SYS_WGL
+    #elif REGAL_SYS_WGL
       PFNWGLMAKECURRENTPROC wglMakeCurrent;
     #else
       # error "Implement me!"

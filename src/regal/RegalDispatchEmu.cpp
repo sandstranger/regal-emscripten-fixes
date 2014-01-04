@@ -47,6 +47,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include <string>
+using namespace std;
 
 #include "RegalLog.h"
 #include "RegalBreak.h"
@@ -79,8 +80,6 @@ REGAL_GLOBAL_BEGIN
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
-
-using namespace std;
 
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
@@ -72615,7 +72614,7 @@ static void REGAL_CALL emu_glTexImage4DSGIS(GLenum target, GLint level, GLenum i
 
 // GL_WIN_swap_hint
 
-void InitDispatchTableEmu(DispatchTableGL &tbl)
+void InitDispatchEmu(Dispatch::GL &tbl)
 {
 
 // GL_VERSION_1_0

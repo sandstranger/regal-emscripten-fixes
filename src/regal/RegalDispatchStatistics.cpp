@@ -42373,7 +42373,7 @@ static void REGAL_CALL statistics_glAddSwapHintRectWIN(GLint x, GLint y, GLsizei
   _next->glAddSwapHintRectWIN(x, y, width, height);
 }
 
-void InitDispatchTableStatistics(DispatchTableGL &tbl)
+void InitDispatchStatistics(Dispatch::GL &tbl)
 {
 
   // GL_VERSION_1_0

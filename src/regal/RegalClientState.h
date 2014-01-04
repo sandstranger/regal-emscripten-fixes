@@ -91,7 +91,7 @@ namespace ClientState
   using   ::boost::print::print_string;
   typedef ::boost::print::string_list<std::string> string_list;
 
-  inline static void enable(DispatchTableGL &dt, const GLenum cap, const GLboolean enable)
+  inline static void enable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)
   {
     if (enable)
       dt.glEnableClientState(cap);
@@ -99,7 +99,7 @@ namespace ClientState
       dt.glDisableClientState(cap);
   }
 
-  inline static void enablei(DispatchTableGL &dt, const GLenum cap, const GLuint index, const GLboolean enable)
+  inline static void enablei(Dispatch::GL &dt, const GLenum cap, const GLuint index, const GLboolean enable)
   {
     if (enable)
       dt.glEnableClientStateiEXT(cap,index);
@@ -182,7 +182,7 @@ namespace ClientState
       return *this;
     }
 
-    NamedVertexArray &get(DispatchTableGL &dt, vaName va)
+    NamedVertexArray &get(Dispatch::GL &dt, vaName va)
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -213,7 +213,7 @@ namespace ClientState
       return *this;
     }
 
-    const NamedVertexArray &set(DispatchTableGL &dt, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
+    const NamedVertexArray &set(Dispatch::GL &dt, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -264,7 +264,7 @@ namespace ClientState
       return *this;
     }
 
-    void transition(DispatchTableGL &dt, NamedVertexArray &to, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
+    void transition(Dispatch::GL &dt, NamedVertexArray &to, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -430,7 +430,7 @@ namespace ClientState
       return *this;
     }
 
-    VertexBufferBindPoint &get(DispatchTableGL &dt, GLuint index)
+    VertexBufferBindPoint &get(Dispatch::GL &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -443,7 +443,7 @@ namespace ClientState
       return *this;
     }
 
-    const VertexBufferBindPoint &set(DispatchTableGL &dt, GLuint index) const
+    const VertexBufferBindPoint &set(Dispatch::GL &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -454,7 +454,7 @@ namespace ClientState
       return *this;
     }
 
-    void transition(DispatchTableGL &dt, VertexBufferBindPoint &to, GLuint index)
+    void transition(Dispatch::GL &dt, VertexBufferBindPoint &to, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -530,7 +530,7 @@ namespace ClientState
       return *this;
     }
 
-    GenericVertexArray &get(DispatchTableGL &dt, GLuint index)
+    GenericVertexArray &get(Dispatch::GL &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -553,7 +553,7 @@ namespace ClientState
       return *this;
     }
 
-    const GenericVertexArray &set(DispatchTableGL &dt, GLuint index) const
+    const GenericVertexArray &set(Dispatch::GL &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -573,7 +573,7 @@ namespace ClientState
       return *this;
     }
 
-    void transition(DispatchTableGL &dt, GenericVertexArray &to, GLuint index)
+    void transition(Dispatch::GL &dt, GenericVertexArray &to, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -719,7 +719,7 @@ namespace ClientState
       return *this;
     }
 
-    VertexArray &get(DispatchTableGL &dt)
+    VertexArray &get(Dispatch::GL &dt)
     {
       dt.glGetIntegerv(GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
       if (vertexArrayBinding)
@@ -744,7 +744,7 @@ namespace ClientState
       return *this;
     }
 
-    const VertexArray &set(DispatchTableGL &dt, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
+    const VertexArray &set(Dispatch::GL &dt, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
       dt.glBindVertexArray(0);
       size_t n = array_size( named );
@@ -772,7 +772,7 @@ namespace ClientState
       return *this;
     }
 
-    void transition(DispatchTableGL &dt, VertexArray &to, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
+    void transition(Dispatch::GL &dt, VertexArray &to, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
     {
       GLuint tmpVertexArrayBinding = to.vertexArrayBinding;
       if (vertexArrayBinding) {
@@ -1786,7 +1786,7 @@ namespace ClientState
       return *this;
     }
 
-    PixelStore &get(DispatchTableGL &dt)
+    PixelStore &get(Dispatch::GL &dt)
     {
       dt.glGetBooleanv(GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
       dt.glGetBooleanv(GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
@@ -1809,7 +1809,7 @@ namespace ClientState
       return *this;
     }
 
-    const PixelStore &set(DispatchTableGL &dt) const
+    const PixelStore &set(Dispatch::GL &dt) const
     {
       dt.glPixelStorei(GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
       dt.glPixelStorei(GL_UNPACK_LSB_FIRST,unpackLsbFirst);
@@ -1832,7 +1832,7 @@ namespace ClientState
       return *this;
     }
 
-    void transition(DispatchTableGL &dt, PixelStore &to)
+    void transition(Dispatch::GL &dt, PixelStore &to)
     {
       if (unpackSwapBytes != to.unpackSwapBytes) {
         unpackSwapBytes = to.unpackSwapBytes;

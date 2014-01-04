@@ -68214,7 +68214,7 @@ static void REGAL_CALL error_glAddSwapHintRectWIN(GLint x, GLint y, GLsizei widt
   }
 }
 
-void InitDispatchTableError(DispatchTableGL &tbl)
+void InitDispatchError(Dispatch::GL &tbl)
 {
 
   // GL_VERSION_1_0

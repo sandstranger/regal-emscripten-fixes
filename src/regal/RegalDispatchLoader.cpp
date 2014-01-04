@@ -26460,8 +26460,10 @@ namespace Loader
       *func = NULL;
   }
 
-  void Init(Dispatch::GL &tbl)
+  void Init( RegalContext * ctx )
   {
+    Dispatch::GL & tbl = ctx->dispatchGL;
+
     Dispatch::GL &dt = _getDispatchGL();
 
     // GL_VERSION_1_0

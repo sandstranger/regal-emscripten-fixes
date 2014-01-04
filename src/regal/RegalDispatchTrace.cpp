@@ -33491,7 +33491,7 @@ static EGLBoolean REGAL_CALL trace_eglWaitClient(void)
 
 #endif // REGAL_SYS_EGL
 
-void InitDispatchTableTrace(DispatchTableGL &tbl)
+void InitDispatchTrace(Dispatch::GL &tbl)
 {
 
   // GL_VERSION_1_0
@@ -36798,7 +36798,7 @@ void InitDispatchTableTrace(DispatchTableGL &tbl)
 
 }
 
-void InitDispatchTableGlobalTrace(DispatchTableGlobal &tbl)
+void InitDispatchGlobalTrace(Dispatch::Global &tbl)
 {
 
 #if REGAL_SYS_WGL

@@ -152,12 +152,12 @@ struct Obj
       textureNames.drv2app = sharingWith->obj->textureNames.drv2app;
     }
 
-    bufferNames.gen  = ctx.dispatcher.emulation.glGenBuffers;
-    bufferNames.del  = ctx.dispatcher.emulation.glDeleteBuffers;
-    vaoNames.gen     = ctx.dispatcher.emulation.glGenVertexArrays;
-    vaoNames.del     = ctx.dispatcher.emulation.glDeleteVertexArrays;
-    textureNames.gen = ctx.dispatcher.emulation.glGenTextures;
-    textureNames.del = ctx.dispatcher.emulation.glDeleteTextures;
+    bufferNames.gen  = ctx.dispatchGL.glGenBuffers;
+    bufferNames.del  = ctx.dispatchGL.glDeleteBuffers;
+    vaoNames.gen     = ctx.dispatchGL.glGenVertexArrays;
+    vaoNames.del     = ctx.dispatchGL.glDeleteVertexArrays;
+    textureNames.gen = ctx.dispatchGL.glGenTextures;
+    textureNames.del = ctx.dispatchGL.glDeleteTextures;
   }
 
   void Cleanup(RegalContext &ctx)
@@ -167,7 +167,7 @@ struct Obj
 
   void BindBuffer(RegalContext &ctx, GLenum target, GLuint bufferBinding)
   {
-    DispatchTableGL &tbl = ctx.dispatcher.emulation;
+    Dispatch::GL &tbl = ctx.dispatchGL;
     tbl.glBindBuffer( target, bufferNames.ToDriverName( bufferBinding ) );
   }
 
@@ -195,7 +195,7 @@ struct Obj
 
   void BindVertexArray(RegalContext &ctx, GLuint vao)
   {
-    DispatchTableGL &tbl = ctx.dispatcher.emulation;
+    Dispatch::GL &tbl = ctx.dispatchGL;
     tbl.glBindVertexArray( vaoNames.ToDriverName( vao ) );
   }
 
@@ -223,7 +223,7 @@ struct Obj
 
   void BindTexture(RegalContext &ctx, GLenum target, GLuint name)
   {
-    DispatchTableGL &tbl = ctx.dispatcher.emulation;
+    Dispatch::GL &tbl = ctx.dispatchGL;
     tbl.glBindTexture( target, textureNames.ToDriverName( name ) );
   }
 
