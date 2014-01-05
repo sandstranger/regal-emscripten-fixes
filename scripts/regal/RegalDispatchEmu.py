@@ -92,7 +92,7 @@ def apiEmuFuncDefineCode(apis, args):
                         code += '        #if REGAL_PLUGIN\n'
                         code += '        Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();\n'
                         code += '        Push<Dispatch::GL *> pushDispatchTable(_instance.nextDispatchTable);\n'
-                        code += '        _instance.nextDispatchTable = &_context->dispatchGL;\n'
+                        code += '        _instance.nextDispatchTable = &_context->emu.curr;\n'
                         code += '        #endif\n'
 
                       code += listToString(indent(e['prefix'],'        '))
@@ -141,7 +141,7 @@ def apiEmuFuncDefineCode(apis, args):
                         code += '        #if REGAL_PLUGIN\n'
                         code += '        Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();\n'
                         code += '        Push<Dispatch::GL *> pushDispatchTable(_instance.nextDispatchTable);\n'
-                        code += '        _instance.nextDispatchTable = &_context->dispatchGL;\n'
+                        code += '        _instance.nextDispatchTable = &_context->emu.curr;\n'
                         code += '        #endif\n'
 
                       code += listToString(indent(e['impl'],'        '))
@@ -219,7 +219,7 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '             return;\n'
                 code += '         }\n'
 
-              code += '      Dispatch::GL *_next = &_context->dispatchGL;\n'
+              code += '      Dispatch::GL *_next = &_context->emu.next;\n'
               code += '      RegalAssert(_next);\n'
 
               if es2Name != None:
@@ -270,7 +270,7 @@ def apiEmuFuncDefineCode(apis, args):
                 code += '    }\n'
                 code += '  }\n'
 
-              code += '  Dispatch::GL *_next = &_context->dispatchGL;;\n'
+              code += '  Dispatch::GL *_next = &_context->emu.next;;\n'
               code += '  RegalAssert(_next);\n'
               code += '  '
 
@@ -361,6 +361,17 @@ def apiEmuDispatchFuncInitCode(apis, args):
 
 emuLocalCode = '''
 
+//Dispatch::Global nextGlobal;
+
+void Emulation::Init( RegalContext * ctx ) {
+  ctx->emu.next = ctx->dispatchGL;
+  void InitDispatchEmu( Dispatch::GL & dt );
+  InitDispatchEmu( ctx->dispatchGL );
+  ctx->emu.curr = ctx->dispatchGL;
+  //nextGlobal = dispatchGlobal;
+  //InitDispatchGlobalEmu( Dispatch::Global & dt );
+  //InitDispatchGlobalEmu( dispatchGlobal );
+}
 
 '''
 
@@ -372,6 +383,7 @@ def generateEmuSource(apis, args):
   funcInit   = apiEmuDispatchFuncInitCode( apis, args )
 
   emuLocalInclude = '''
+#include "RegalDispatchEmu.h"
 
 #include "RegalBreak.h"
 #include "RegalBin.h"

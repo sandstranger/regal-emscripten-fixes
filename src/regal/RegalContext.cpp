@@ -192,6 +192,8 @@ RegalContext::Init()
 
 #if REGAL_EMULATION
 
+  emu.Init( this );
+
 #if !REGAL_FORCE_EMULATION
   if (Config::enableEmulation || Config::forceEmulation)
 #endif

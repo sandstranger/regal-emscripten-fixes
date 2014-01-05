@@ -130,7 +130,7 @@ formulae = {
       'glTexParameter(i|f)',
       ],
     'impl' : '''
-Dispatch::GL *_next = &_context->dispatchGL;
+Dispatch::GL *_next = &_context->emu.curr;
 RegalAssert(_next);
 if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
   return;
@@ -147,7 +147,7 @@ return;'''
       'glTexParameter(i|f)v',
       ],
     'impl' : '''
-Dispatch::GL *_next = &_context->dispatchGL;
+Dispatch::GL *_next = &_context->emu.curr;
 RegalAssert(_next);
 if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
   return;
@@ -167,7 +167,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  if (_context->info->gl_nv_framebuffer_blit)  return _next->${m0}NV(${arg0plus});',
        '  if (_context->info->gl_ext_framebuffer_blit) return _next->${m0}EXT(${arg0plus});',
@@ -183,7 +183,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)',
        '    return _next->${m0}(${arg0plus});',
@@ -198,7 +198,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  return _next->glDrawElements(${arg0}, ${arg3plus});',
        '}'
@@ -216,7 +216,7 @@ return;'''
        '{',
        '  if (basevertex==0)',
        '  {',
-       '    Dispatch::GL *_next = &_context->dispatchGL;',
+       '    Dispatch::GL *_next = &_context->emu.curr;',
        '    RegalAssert(_next);',
        '    return _next->glDrawElements(${arg0}, ${arg3}, ${arg4}, ${arg5});',
        '  }',
@@ -241,7 +241,7 @@ return;'''
        '}',
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  if (_context->info->gl_nv_draw_buffers)',
        '  {',
@@ -258,7 +258,7 @@ return;'''
     'impl' : [
        'if (!_context->info->gl_ati_draw_buffers)',
        '{',
-       '  Dispatch::GL &_table = _context->dispatchGL;',
+       '  Dispatch::GL &_table = _context->emu.curr;',
        '  _context->emuLevel++;',
        '  _table.glDrawBuffers(${arg0plus});',
        '  return;',
@@ -272,7 +272,7 @@ return;'''
     'impl' : [
        'if (!_context->info->gl_arb_draw_buffers)',
        '{',
-       '  Dispatch::GL &_table = _context->dispatchGL;',
+       '  Dispatch::GL &_table = _context->emu.curr;',
        '  _context->emuLevel++;',
        '  _table.glDrawBuffers(${arg0plus});',
        '  return;',
@@ -306,7 +306,7 @@ return;'''
 #           'if (_context->info->es2)',
 #           '#endif',
 #           '{',
-#           '  Dispatch::GL *_next = &_context->dispatchGL;',
+#           '  Dispatch::GL *_next = &_context->emu.curr;',
 #           '  RegalAssert(_next);',
 #           '  return _next->glCreateShader(${arg0plus});',
 #           '}'
@@ -318,7 +318,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  Dispatch::GL *_next = &_context->dispatchGL;',
+      '  Dispatch::GL *_next = &_context->emu.curr;',
       '  RegalAssert(_next);',
       '  return _next->glCreateProgram(${arg0plus});',
       '}'
@@ -332,7 +332,7 @@ return;'''
 #           'if (_context->info->es2)',
 #           '#endif',
 #           '{',
-#           '  Dispatch::GL *_next = &_context->dispatchGL;',
+#           '  Dispatch::GL *_next = &_context->emu.curr;',
 #           '  RegalAssert(_next);',
 #           '  _next->glShaderSource(${arg0plus});',
 #           '  return;',
@@ -345,7 +345,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  Dispatch::GL *_next = &_context->dispatchGL;',
+      '  Dispatch::GL *_next = &_context->emu.curr;',
       '  RegalAssert(_next);',
       '  _next->glCompileShader(${arg0plus});',
       '  return;',
@@ -358,7 +358,7 @@ return;'''
     'impl' : [
       'if (!_context->info->gl_arb_multitexture)',
       '{',
-      '  Dispatch::GL *_next = &_context->dispatchGL;',
+      '  Dispatch::GL *_next = &_context->emu.curr;',
       '  RegalAssert(_next);',
       '  _next->glActiveTexture(${arg0plus});',
       '  return;',
@@ -371,7 +371,7 @@ return;'''
     'impl' : [
       'if (!_context->info->gl_arb_multitexture)',
       '{',
-      '  Dispatch::GL &_table = _context->dispatchGL;',
+      '  Dispatch::GL &_table = _context->emu.curr;',
       '  _context->emuLevel++;',
       '  _table.glClientActiveTexture(${arg0plus});',
       '  return;',
@@ -384,7 +384,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  Dispatch::GL *_next = &_context->dispatchGL;',
+      '  Dispatch::GL *_next = &_context->emu.curr;',
       '  RegalAssert(_next);',
       '  _next->glAttachShader(${arg0plus});',
       '  return;',
@@ -397,7 +397,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  Dispatch::GL *_next = &_context->dispatchGL;',
+      '  Dispatch::GL *_next = &_context->emu.curr;',
       '  RegalAssert(_next);',
       '  _next->glBindAttribLocation(${arg0plus});',
       '  return;',
@@ -410,7 +410,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  Dispatch::GL *_next = &_context->dispatchGL;',
+      '  Dispatch::GL *_next = &_context->emu.curr;',
       '  RegalAssert(_next);',
       '  return _next->glGetUniformLocation(${arg0plus});',
       '}'
@@ -422,7 +422,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  Dispatch::GL *_next = &_context->dispatchGL;',
+      '  Dispatch::GL *_next = &_context->emu.curr;',
       '  RegalAssert(_next);',
       '  _next->glUniform1i(${arg0plus});',
       '  return;',
@@ -435,7 +435,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  if (_next->glIsProgram(obj))',
        '    _next->glGetProgramiv(${arg0plus});',
@@ -451,7 +451,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  if (_next->glIsProgram(obj))',
        '    _next->glGetProgramInfoLog(${arg0plus});',
@@ -469,7 +469,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  _next->glBlendEquation(${arg0plus});',
        '  return;',
@@ -484,7 +484,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  _next->glBlendColor(${arg0plus});',
        '  return;',
@@ -500,7 +500,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  return _next->gl${m1}BufferOES(${arg0plus});',
        '}'
@@ -512,7 +512,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  Dispatch::GL *_next = &_context->dispatchGL;',
+       '  Dispatch::GL *_next = &_context->emu.curr;',
        '  RegalAssert(_next);',
        '  _next->glBufferData(${arg0plus});',
        '  return;',
@@ -546,7 +546,7 @@ return;'''
   'framebuffer_object_attachment' : {
     'entries' : [ 'glFramebuffer(Texture1D|Texture3D|Renderbuffer)' ],
     'impl' : [
-       'Dispatch::GL *_next = &_context->dispatchGL;',
+       'Dispatch::GL *_next = &_context->emu.curr;',
        'RegalAssert(_next);',
        'if (_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
        '  _next->glFramebuffer${m1}(${arg0plus});',
@@ -560,7 +560,7 @@ return;'''
   'glGetFramebufferAttachmentParameteriv' : {
     'entries' : [ 'glGetFramebufferAttachmentParameteriv' ],
     'impl' : [
-       'Dispatch::GL *_next = &_context->dispatchGL;',
+       'Dispatch::GL *_next = &_context->emu.curr;',
        'RegalAssert(_next);',
        'if (!_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
        '  *${arg3} = 0;',
@@ -587,7 +587,7 @@ return;'''
     'impl' : [
        'if (!_context->info->gl_ext_framebuffer_object)',
        '{',
-       '  Dispatch::GL &_table = _context->dispatchGL;',
+       '  Dispatch::GL &_table = _context->emu.curr;',
        '  _context->emuLevel++;',
        '  _table.gl${m1}(${arg0plus});',
        '  return;',
@@ -600,7 +600,7 @@ return;'''
     'impl' : [
        'if (!_context->info->gl_ext_framebuffer_object)',
        '{',
-       '  Dispatch::GL &_table = _context->dispatchGL;',
+       '  Dispatch::GL &_table = _context->emu.curr;',
        '  _context->emuLevel++;',
        '  return _table.gl${m1}(${arg0plus});',
        '}'
@@ -614,7 +614,7 @@ return;'''
     'impl' : [
        'if (!_context->info->gl_ext_framebuffer_blit)',
        '{',
-       '  Dispatch::GL &_table = _context->dispatchGL;',
+       '  Dispatch::GL &_table = _context->emu.curr;',
        '  _context->emuLevel++;',
        '  _table.glBlitFramebuffer(${arg0plus});',
        '  return;',
@@ -627,7 +627,7 @@ return;'''
   'glReadBuffer' : {
     'entries' : [ 'glReadBuffer' ],
     'impl' : [
-       'Dispatch::GL *_next = &_context->dispatchGL;',
+       'Dispatch::GL *_next = &_context->emu.curr;',
        'RegalAssert(_next);',
        'if (_context->filt->ReadBuffer(*_context, ${arg0plus}))',
        '{',
@@ -660,7 +660,7 @@ return;'''
        '{',
        '  if (!buf)'
        '  {',
-       '    Dispatch::GL *_next = &_context->dispatchGL;',
+       '    Dispatch::GL *_next = &_context->emu.curr;',
        '    RegalAssert(_next);',
        '    _next->glColorMask(${arg1plus});',
        '  }',
@@ -676,7 +676,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    Dispatch::GL *_next = &_context->dispatchGL;',
+       '    Dispatch::GL *_next = &_context->emu.curr;',
        '    RegalAssert(_next);',
        '    _next->glGetBooleanv(${arg0},${arg2});',
        '  }',
@@ -692,7 +692,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    Dispatch::GL *_next = &_context->dispatchGL;',
+       '    Dispatch::GL *_next = &_context->emu.curr;',
        '    RegalAssert(_next);',
        '    _next->glGetIntegerv(${arg0},${arg2});',
        '  }',
@@ -708,7 +708,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    Dispatch::GL *_next = &_context->dispatchGL;',
+       '    Dispatch::GL *_next = &_context->emu.curr;',
        '    RegalAssert(_next);',
        '    _next->glEnable(${arg0});',
        '  }',
@@ -724,7 +724,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    Dispatch::GL *_next = &_context->dispatchGL;',
+       '    Dispatch::GL *_next = &_context->emu.curr;',
        '    RegalAssert(_next);',
        '    _next->glDisable(${arg0});',
        '  }',
@@ -740,7 +740,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    Dispatch::GL *_next = &_context->dispatchGL;',
+       '    Dispatch::GL *_next = &_context->emu.curr;',
        '    RegalAssert(_next);',
        '    return _next->glIsEnabled(${arg0});',
        '  }',

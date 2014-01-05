@@ -24,8 +24,8 @@
  OF THE POSSIBILITY OF SUCH DAMAGE.
  */
 
-#ifndef __REGAL_DISPATCH_DEBUG_H__
-#define __REGAL_DISPATCH_DEBUG_H__
+#ifndef __REGAL_DISPATCH_EMU_H__
+#define __REGAL_DISPATCH_EMU_H__
 
 #include "RegalUtil.h"
 
@@ -39,11 +39,11 @@ REGAL_NAMESPACE_BEGIN
 
 struct RegalContext;
 
-struct Debug
+struct Emulation
 {
 public:
-  Debug() {}
-  ~Debug() {}
+  Emulation() {}
+  ~Emulation() {}
   void Init( RegalContext * ctx );
 
   Dispatch::GL curr;
@@ -52,4 +52,4 @@ public:
 
 REGAL_NAMESPACE_END
 
-#endif // __REGAL_DISPATCH_DEBUG_H__
+#endif // __REGAL_DISPATCH_EMU_H__

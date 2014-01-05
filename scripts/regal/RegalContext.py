@@ -102,6 +102,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatcherGL.h"
 #include "RegalDispatcherGlobal.h"
 #include "RegalDispatchDebug.h"
+#include "RegalDispatchEmu.h"
 #include "RegalDispatchError.h"
 #include "RegalDispatchHttp.h"
 #include "RegalScopedPtr.h"
@@ -142,6 +143,7 @@ struct RegalContext
   Dispatch::GL            dispatchGL;
   Err                     err;
   Debug                   debug;
+  Emulation               emu;
   Http                    http;
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
@@ -341,12 +343,9 @@ RegalContext::Init()
   // Regal context init requires staged dispatch update, starting with the driver/loader
       
   memset( &dispatchGL, 0, sizeof( Dispatch::GL ) );
-  memset( &dispatchGlobal, 0, sizeof( Dispatch::Global ) );
             
   void InitDispatchGLLoader( Dispatch::GL & );
   InitDispatchGLLoader( dispatchGL );
-  void InitDispatchGlobalLoader( Dispatch::Global & );
-  InitDispatchGlobalLoader( dispatchGlobal );
 
   RegalAssert(this);
   if (!info)
@@ -366,6 +365,8 @@ RegalContext::Init()
 ${MEMBER_INIT}
 
 #if REGAL_EMULATION
+
+  emu.Init( this );
 
 ${EMULATION_ENABLED}
 
