@@ -216,6 +216,7 @@ REGAL.INCLUDE   += -Isrc/mongoose
 REGAL.INCLUDE   += -Isrc/md5/include
 REGAL.INCLUDE   += -Isrc/lookup3
 REGAL.INCLUDE   += -Isrc/jsonsl
+REGAL.INCLUDE   += -Isrc/pcre
 REGAL.INCLUDE   += -Isrc/boost
 
 REGAL.STATIC    ?= libRegallib.a

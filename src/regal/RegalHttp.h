@@ -63,9 +63,11 @@ REGAL_NAMESPACE_BEGIN
 #endif
 
 
-  
 
 REGAL_NAMESPACE_END
+
+#include "RegalDispatchHttp.h"
+
 
 #endif
 

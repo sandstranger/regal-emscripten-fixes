@@ -34,13 +34,18 @@
 
 #if ! REGAL_HTTP
 
+REGAL_GLOBAL_BEGIN
+#include "RegalHttp.h"
+
+REGAL_GLOBAL_END
+
 REGAL_NAMESPACE_BEGIN
 
-struct Http {
-  void Init( RegalContext * ctx ) {}
-  void Start() {}
-  void Stop() {}
-};
+Http::Http() {}
+Http::~Http() {}
+void Http::Init() {}
+void Http::Start() {}
+void Http::Stop() {}
 
 REGAL_NAMESPACE_END
 
