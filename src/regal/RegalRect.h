@@ -102,7 +102,7 @@ struct Rect
     if (ctx->depthBeginEnd)
       return;
 
-    Dispatch::GL &dt = ctx->dispatchGL;
+    Dispatch::GL &dt = ctx->emu.curr;
 
     // incrementing context->depthBeginEnd here avoids an assert in log_glBegin and
     // also keeps the log indentation as it should be

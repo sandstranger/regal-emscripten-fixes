@@ -41,7 +41,7 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-Dispatch::Global nextGlobal;
+static Dispatch::Global nextGlobal;
 
 void Log::Init( RegalContext * ctx ) {
   ctx->log.next = ctx->dispatchGL;

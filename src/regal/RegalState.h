@@ -398,7 +398,7 @@ struct Enable
 
   inline Enable &get(RegalContext &ctx)
   {
-    Dispatch::GL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.emu.curr;
     alphaTest = dt.glIsEnabled(GL_ALPHA_TEST);
     autoNormal = dt.glIsEnabled(GL_AUTO_NORMAL);
     size_t n = array_size( blend );
@@ -511,7 +511,7 @@ struct Enable
 
   inline const Enable &set(RegalContext &ctx) const
   {
-    Dispatch::GL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.emu.curr;
     setEnable(dt,GL_ALPHA_TEST,alphaTest);
     setEnable(dt,GL_AUTO_NORMAL,autoNormal);
     size_t n = array_size( blend );
@@ -1980,7 +1980,7 @@ struct Multisample
 
   inline Multisample &get(RegalContext &ctx)
   {
-    Dispatch::GL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.emu.curr;
     multisample = dt.glIsEnabled(GL_MULTISAMPLE);
     sampleAlphaToCoverage = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_COVERAGE);
     sampleAlphaToOne = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_ONE);
@@ -1995,7 +1995,7 @@ struct Multisample
 
   inline const Multisample &set(RegalContext &ctx) const
   {
-    Dispatch::GL &dt = ctx.dispatchGL;
+    Dispatch::GL &dt = ctx.emu.curr;
     setEnable(dt,GL_MULTISAMPLE,multisample);
     setEnable(dt,GL_SAMPLE_ALPHA_TO_COVERAGE,sampleAlphaToCoverage);
     setEnable(dt,GL_SAMPLE_ALPHA_TO_ONE,sampleAlphaToOne);

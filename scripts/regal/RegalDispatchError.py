@@ -105,15 +105,11 @@ localInclude = '''
 '''
 
 localCode = '''
-static Dispatch::Global nextGlobal;
 
 void Err::Init( RegalContext * ctx ) {
-  void InitDispatchGLError( Dispatch::GL & tbl );
+  void InitDispatchError( Dispatch::GL & tbl );
   next = ctx->dispatchGL;
-  InitDispatchGLError( ctx->dispatchGL );
-  nextGlobal = dispatchGlobal;
-  void InitDispatchGlobal( Dispatch::Global & tbl );
-  InitDispatchGlobal( dispatchGlobal );
+  InitDispatchError( ctx->dispatchGL );
 }
 
 '''
@@ -129,7 +125,7 @@ def generateErrorSource(apis, args):
   substitute['COPYRIGHT']       = args.copyright
   substitute['DISPATCH_NAME'] = 'Error'
   substitute['LOCAL_INCLUDE'] = ''
-  substitute['LOCAL_CODE']    = ''
+  substitute['LOCAL_CODE']    = localCode
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit
   substitute['API_DISPATCH_GLOBAL_FUNC_INIT'] = ''

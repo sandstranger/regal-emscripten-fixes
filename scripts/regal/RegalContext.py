@@ -370,9 +370,26 @@ ${MEMBER_INIT}
   log.Init( this );
 #endif
 
-#if REGAL_EMULATION
 
-  emu.Init( this );
+
+#if REGAL_STATISTICS // todo
+#endif
+          
+#if REGAL_CODE // todo
+#endif
+                    
+#if REGAL_CACHE // todo
+#endif
+
+#if REGAL_ERROR_POST_EMU
+#if REGAL_ERROR
+  if( Config::enableError ) {
+    err.Init( this );
+  }
+#endif
+#endif
+
+#if REGAL_EMULATION
 
 ${EMULATION_ENABLED}
 
@@ -380,29 +397,18 @@ ${EMULATION_ENABLED}
   if (Config::enableEmulation || Config::forceEmulation)
 #endif
   {
+  emu.Init( this );
+
 ${EMU_MEMBER_INIT}
   }
 #endif
 
-#if REGAL_CODE
-  if (Config::enableCode && !codeSource && !codeHeader)
-  {
-    if (Config::codeSourceFile.length())
-    {
-      codeSource = fopen(Config::codeSourceFile.c_str(),"wt");
-      if (!codeSource)
-        Warning("Failed to open file ",Config::codeSourceFile," for writing code source.");
-    }
-    if (Config::codeHeaderFile.length())
-    {
-      if (Config::codeHeaderFile==Config::codeSourceFile)
-        codeHeader = codeSource;
-      else
-        codeHeader = fopen(Config::codeHeaderFile.c_str(),"wt");
-      if (!codeHeader)
-        Warning("Failed to open file ",Config::codeHeaderFile," for writing code header.");
-    }
+#if ! REGAL_ERROR_POST_EMU
+#if REGAL_ERROR
+  if( Config::enableError ) {
+    err.Init( this );
   }
+#endif
 #endif
 
 #if REGAL_HTTP

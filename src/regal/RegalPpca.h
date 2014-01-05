@@ -143,7 +143,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
       return;
 
     if (mask)
-      ctx.dispatchGL.glPushClientAttrib(mask);
+      ctx.emu.curr.glPushClientAttrib(mask);
   }
 
   void glPopClientAttrib(RegalContext &ctx)
@@ -164,7 +164,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     if (mask&GL_CLIENT_VERTEX_ARRAY_BIT)
     {
       RegalAssert(vertexArrayStack.size());
-      ClientState::VertexArray::transition(ctx.dispatchGL, vertexArrayStack.back(), driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+      ClientState::VertexArray::transition(ctx.emu.curr, vertexArrayStack.back(), driverAllowsVertexAttributeArraysWithoutBoundBuffer);
       vertexArrayStack.pop_back();
 
       Internal("Regal::Ppca::PopClientAttrib GL_CLIENT_VERTEX_ARRAY_BIT ",ClientState::VertexArray::toString());
@@ -175,7 +175,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     if (mask&GL_CLIENT_PIXEL_STORE_BIT)
     {
       RegalAssert(pixelStoreStack.size());
-      ClientState::PixelStore::transition(ctx.dispatchGL, pixelStoreStack.back());
+      ClientState::PixelStore::transition(ctx.emu.curr, pixelStoreStack.back());
       pixelStoreStack.pop_back();
 
       Internal("Regal::Ppca::PopClientAttrib GL_CLIENT_PIXEL_STORE_BIT ",ClientState::PixelStore::toString());
@@ -189,7 +189,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
       return;
 
     if (mask)
-      ctx.dispatchGL.glPopClientAttrib();
+      ctx.emu.curr.glPopClientAttrib();
   }
 
   void glClientAttribDefaultEXT(RegalContext &ctx, GLbitfield mask)
@@ -202,7 +202,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
       // Ideally we'd only set the state that has changed - revisit
 
-      ClientState::VertexArray::set(ctx.dispatchGL,driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+      ClientState::VertexArray::set(ctx.emu.curr,driverAllowsVertexAttributeArraysWithoutBoundBuffer);
 
       mask &= ~GL_CLIENT_VERTEX_ARRAY_BIT;
     }
@@ -215,7 +215,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
       // Ideally we'd only set the state that has changed - revisit
 
-      ClientState::PixelStore::set(ctx.dispatchGL);
+      ClientState::PixelStore::set(ctx.emu.curr);
 
       mask &= ~GL_CLIENT_PIXEL_STORE_BIT;
     }
@@ -226,7 +226,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
       return;
 
     if (mask)
-      ctx.dispatchGL.glClientAttribDefaultEXT(mask);
+      ctx.emu.curr.glClientAttribDefaultEXT(mask);
   }
 
   void glPushClientAttribDefaultEXT(RegalContext &ctx, GLbitfield mask)

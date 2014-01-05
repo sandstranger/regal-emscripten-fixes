@@ -186,6 +186,7 @@ public:
   static void Stop();
   
   GlProcs gl;
+  Dispatch::GL next;
   static bool enabled;
   static int  port;
 

@@ -64,6 +64,12 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
+void Err::Init( RegalContext * ctx ) {
+  void InitDispatchError( Dispatch::GL & tbl );
+  next = ctx->dispatchGL;
+  InitDispatchError( ctx->dispatchGL );
+}
+
 // GL_VERSION_1_0
 
 static void REGAL_CALL error_glAccum(GLenum op, GLfloat value)

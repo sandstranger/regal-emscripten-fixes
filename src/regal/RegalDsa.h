@@ -160,12 +160,12 @@ struct Dsa
                     dsa.matrixMode = GL_TEXTURE;
                     break;
             }
-            ctx->dispatchGL.glMatrixMode( dsa.matrixMode );
+            ctx->emu.curr.glMatrixMode( dsa.matrixMode );
         }
     }
     void RestoreMatrixMode( RegalContext * ctx ) {
         if( dsa.matrixMode != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glMatrixMode( drv.matrixMode );
+            ctx->emu.curr.glMatrixMode( drv.matrixMode );
             RestoreActiveTexture( ctx );
             dsa.matrixMode = REGAL_DSA_INVALID;
         }
@@ -187,12 +187,12 @@ struct Dsa
             return;
         if( NotActiveTexture( tex ) ) {
             dsa.activeTexture = tex;
-            ctx->dispatchGL.glActiveTexture( dsa.activeTexture );
+            ctx->emu.curr.glActiveTexture( dsa.activeTexture );
         }
     }
     void RestoreActiveTexture( RegalContext * ctx ) {
         if( dsa.activeTexture != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glActiveTexture( drv.activeTexture );
+            ctx->emu.curr.glActiveTexture( drv.activeTexture );
             dsa.activeTexture = REGAL_DSA_INVALID;
         }
     }
@@ -208,12 +208,12 @@ struct Dsa
     void DsaClientActiveTexture( RegalContext * ctx, GLenum tex ) {
         if( NotClientActiveTexture( tex ) ) {
             dsa.clientActiveTexture = tex;
-            ctx->dispatchGL.glClientActiveTexture( dsa.clientActiveTexture );
+            ctx->emu.curr.glClientActiveTexture( dsa.clientActiveTexture );
         }
     }
     void RestoreClientActiveTexture( RegalContext * ctx ) {
         if( dsa.clientActiveTexture != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glClientActiveTexture( drv.clientActiveTexture );
+            ctx->emu.curr.glClientActiveTexture( drv.clientActiveTexture );
             dsa.clientActiveTexture = REGAL_DSA_INVALID;
         }
     }
@@ -229,12 +229,12 @@ struct Dsa
     void DsaGlslProgram( RegalContext * ctx, GLuint program ) {
         if( NotGlslProgram( program ) ) {
             dsa.glslProgram = program;
-            ctx->dispatchGL.glUseProgram( dsa.glslProgram );
+            ctx->emu.curr.glUseProgram( dsa.glslProgram );
         }
     }
     void RestoreGlslProgram( RegalContext * ctx ) {
         if( dsa.glslProgram != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glUseProgram( drv.glslProgram );
+            ctx->emu.curr.glUseProgram( drv.glslProgram );
             dsa.glslProgram = REGAL_DSA_INVALID;
         }
     }
@@ -261,12 +261,12 @@ struct Dsa
         if( NotFramebuffer( target, framebuffer ) ) {
             dsa.framebufferTarget = target;
             dsa.framebuffer = framebuffer;
-            ctx->dispatchGL.glBindFramebuffer( dsa.framebufferTarget, dsa.framebuffer );
+            ctx->emu.curr.glBindFramebuffer( dsa.framebufferTarget, dsa.framebuffer );
         }
     }
     void RestoreFramebuffer( RegalContext * ctx ) {
         if( dsa.framebuffer != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glBindFramebuffer( drv.framebufferTarget, drv.framebuffer );
+            ctx->emu.curr.glBindFramebuffer( drv.framebufferTarget, drv.framebuffer );
             dsa.framebufferTarget = REGAL_DSA_INVALID;
             dsa.framebuffer = REGAL_DSA_INVALID;
         }
@@ -295,12 +295,12 @@ struct Dsa
         if( NotRenderbuffer( target, renderbuffer ) ) {
             dsa.renderbufferTarget = target;
             dsa.renderbuffer = renderbuffer;
-            ctx->dispatchGL.glBindRenderbuffer( dsa.renderbufferTarget, dsa.renderbuffer );
+            ctx->emu.curr.glBindRenderbuffer( dsa.renderbufferTarget, dsa.renderbuffer );
         }
     }
     void RestoreRenderbuffer( RegalContext * ctx ) {
         if( dsa.renderbuffer != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glBindRenderbuffer( drv.renderbufferTarget, drv.renderbuffer );
+            ctx->emu.curr.glBindRenderbuffer( drv.renderbufferTarget, drv.renderbuffer );
             dsa.renderbufferTarget = REGAL_DSA_INVALID;
             dsa.renderbuffer = REGAL_DSA_INVALID;
         }
@@ -353,13 +353,13 @@ struct Dsa
         int idx = AsmTargetIndex( target );
         if( NotAsmProgram( target, prog ) ) {
             dsa.asmProgram[idx] = prog;
-            ctx->dispatchGL.glBindProgramARB( target, dsa.asmProgram[idx] );
+            ctx->emu.curr.glBindProgramARB( target, dsa.asmProgram[idx] );
         }
     }
     void RestoreAsmProgram( RegalContext * ctx, GLenum target ) {
         int idx = AsmTargetIndex( target );
         if( dsa.asmProgram[idx] != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glBindProgramARB( target, drv.asmProgram[idx] );
+            ctx->emu.curr.glBindProgramARB( target, drv.asmProgram[idx] );
             dsa.asmProgram[idx] = REGAL_DSA_INVALID;
         }
     }
@@ -386,12 +386,12 @@ struct Dsa
     void DsaVao( RegalContext * ctx, GLuint vao ) {
         if( NotVao( vao ) ) {
             dsa.vao = vao;
-            ctx->dispatchGL.glBindVertexArray( dsa.vao );
+            ctx->emu.curr.glBindVertexArray( dsa.vao );
         }
     }
     void RestoreVao( RegalContext * ctx ) {
         if( dsa.vao != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glBindVertexArray( drv.vao );
+            ctx->emu.curr.glBindVertexArray( drv.vao );
             dsa.vao = REGAL_DSA_INVALID;
         }
     }
@@ -420,12 +420,12 @@ struct Dsa
     void DsaBuffer( RegalContext * ctx, GLuint buf ) {
         if( NotBuffer( buf ) ) {
             dsa.buffer = buf;
-            ctx->dispatchGL.glBindBuffer( GL_ARRAY_BUFFER, dsa.buffer );
+            ctx->emu.curr.glBindBuffer( GL_ARRAY_BUFFER, dsa.buffer );
         }
     }
     void RestoreBuffer( RegalContext * ctx ) {
         if( dsa.buffer != REGAL_DSA_INVALID ) {
-            ctx->dispatchGL.glBindBuffer( GL_ARRAY_BUFFER, drv.buffer );
+            ctx->emu.curr.glBindBuffer( GL_ARRAY_BUFFER, drv.buffer );
             dsa.buffer = REGAL_DSA_INVALID;
         }
     }
@@ -475,13 +475,13 @@ struct Dsa
             dsa.textureTarget = target;
             dsa.texture = texture;
             DsaActiveTexture( ctx, GL_TEXTURE0 );
-            ctx->dispatchGL.glBindTexture( dsa.textureTarget, dsa.texture );
+            ctx->emu.curr.glBindTexture( dsa.textureTarget, dsa.texture );
         }
     }
     void RestoreTexture( RegalContext * ctx ) {
         if( dsa.texture != REGAL_DSA_INVALID ) {
             DsaActiveTexture( ctx, GL_TEXTURE0 );
-            ctx->dispatchGL.glBindTexture( drv.textureTarget, drv.texture );
+            ctx->emu.curr.glBindTexture( drv.textureTarget, drv.texture );
             dsa.textureTarget = REGAL_DSA_INVALID;
             dsa.texture = REGAL_DSA_INVALID;
         }
@@ -498,7 +498,7 @@ struct Dsa
 
     void ClientAttribDefault( RegalContext * ctx, GLbitfield mask )
     {
-        Dispatch::GL &tbl = ctx->dispatchGL;
+        Dispatch::GL &tbl = ctx->emu.curr;
 
         if (mask&GL_CLIENT_PIXEL_STORE_BIT)
         {
@@ -573,7 +573,7 @@ struct Dsa
 
     template< typename T >
     bool GetIndexedv( RegalContext * ctx, GLenum pname, GLuint index, T * params ) {
-        Dispatch::GL &tbl = ctx->dispatchGL;
+        Dispatch::GL &tbl = ctx->emu.curr;
         switch( pname ) {
             case GL_PROGRAM_MATRIX_EXT:
                 ctx->dsa->DsaMatrixMode( ctx, GL_MATRIX0_ARB + index );
@@ -710,7 +710,7 @@ struct Dsa
     }
 
     GLboolean IsEnabledIndexed( RegalContext * ctx, GLenum pname, GLuint index ) {
-        Dispatch::GL &tbl = ctx->dispatchGL;
+        Dispatch::GL &tbl = ctx->emu.curr;
         switch( pname ) {
             case GL_TEXTURE_1D:
             case GL_TEXTURE_2D:

@@ -887,7 +887,7 @@ struct ProgramHandler : public RequestHandler {
           if( count > 1 ) {
             json +=string( indent, ' ' ) + print_string( "\"count\" :", count, ",\n" );
           }
-          json +=string( indent, ' ' ) + print_string( "\"value\": ", PrintUniformValue( ctx->dispatchGL, prog, loc, count, type, indent ), ",\n" );
+          json +=string( indent, ' ' ) + print_string( "\"value\": ", PrintUniformValue( ctx->http.next, prog, loc, count, type, indent ), ",\n" );
           EraseLastComma( json );
           indent -= 2;
           json += string( indent, ' ' ) + "},\n";
@@ -1308,11 +1308,6 @@ Http::Http() : runState( RS_Run ), debugGroupStackDepth( -1 ), stepOverGroupDept
    breakpoint.push_back( b );
    currentBreakpoint = -1;
    */
-}
-
-void Http::Init( RegalContext * ctx )
-{
-  gl.Initialize( & ctx->dispatchGL );
 }
 
 bool Http::enabled = REGAL_HTTP;

@@ -232,9 +232,24 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static Dispatch::Global nextGlobal;
+
+void Http::Init( RegalContext * ctx ) {
+
+  ctx->http.next = ctx->dispatchGL;
+  void InitDispatchHttp( Dispatch::GL & );
+  InitDispatchHttp( ctx->dispatchGL );
+
+  gl.Initialize( & ctx->http.next );
+
+  nextGlobal = dispatchGlobal;
+  void InitDispatchHttp( Dispatch::Global & );
+  InitDispatchHttp( dispatchGlobal );
+}
+
 ${API_FUNC_DEFINE}
 
-void InitDispatchTableHttp(Dispatch::GL &tbl)
+void InitDispatchHttp(Dispatch::GL &tbl)
 {
 ${API_GL_DISPATCH_INIT}
 }
@@ -323,9 +338,9 @@ def generateDispatchHttp(apis, args):
       
 
       if function.needsContext:
-        code += '    Dispatch::GL *_next = _context ? &_context->dispatchGL : NULL;\n'
+        code += '    Dispatch::GL *_next = _context ? &_context->http.next : NULL;\n'
       else:
-        code += '    Dispatch::Global *_next = &dispatchGlobal;\n'
+        code += '    Dispatch::Global *_next = &nextGlobal;\n'
 
       code += '    RegalAssert(_next);\n'
 
