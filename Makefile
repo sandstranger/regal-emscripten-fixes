@@ -20,27 +20,27 @@
 
 include build/common.inc
 
-include Makefile.zlib
-include Makefile.libpng
-include Makefile.snappy
-include Makefile.apitrace
-include Makefile.glslopt
-include Makefile.regal
-include Makefile.glu
-include Makefile.glut
-include Makefile.glew
-include Makefile.glewinfo
+include make/Makefile.zlib
+include make/Makefile.libpng
+include make/Makefile.snappy
+include make/Makefile.apitrace
+include make/Makefile.glslopt
+include make/Makefile.regal
+include make/Makefile.glu
+include make/Makefile.glut
+include make/Makefile.glew
+include make/Makefile.glewinfo
 
 # Examples
 
-include Makefile.dreamtorus
-include Makefile.dreamtorus_static
-include Makefile.tiger
+include make/Makefile.dreamtorus
+include make/Makefile.dreamtorus_static
+include make/Makefile.tiger
 
 # Testing
 
-include Makefile.gtest
-include Makefile.regaltest
+include make/Makefile.gtest
+include make/Makefile.regaltest
 
 # Misc
 

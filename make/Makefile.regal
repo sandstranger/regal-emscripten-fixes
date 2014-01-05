@@ -26,9 +26,9 @@ endif
 
 ifdef REGAL.STATIC
 
-include Makefile.apitrace
-include Makefile.glslopt
-include Makefile.libpng
+include make/Makefile.apitrace
+include make/Makefile.glslopt
+include make/Makefile.libpng
 
 all:: regal.lib
 

@@ -15,8 +15,8 @@ include build/regaltest.inc
 # regaltest
 #
 
-include Makefile.regal
-include Makefile.gtest
+include make/Makefile.regal
+include make/Makefile.gtest
 
 ifndef REGAL.STATIC
 $(error regaltest needs Regal.)

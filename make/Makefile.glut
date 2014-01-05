@@ -20,7 +20,7 @@ endif
 
 ifdef GLUT.STATIC
 
-include Makefile.regal
+include make/Makefile.regal
 
 ifndef REGAL.STATIC
 $(error RegalGLUT needs Regal.)

@@ -15,7 +15,7 @@ include build/common.inc
 # NaCl example
 #
 
-include Makefile.regal
+include make/Makefile.regal
 
 ifndef REGAL.STATIC
 $(error nacl example needs Regal.)

@@ -17,7 +17,8 @@ import sys
 scripts = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, scripts+'/api')
 sys.path.insert(0, scripts+'/regal')
-sys.path.insert(0, scripts+'/emu')
+sys.path.insert(0, scripts+'/regal/emu')
+sys.path.insert(0, scripts+'/regal/dispatch')
 
 from ApiUtil import validVersion
 from ApiUtil import outputCode

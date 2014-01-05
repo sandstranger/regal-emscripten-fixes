@@ -65856,7 +65856,7 @@ static GLenum REGAL_CALL emu_glCheckFramebufferStatusEXT(GLenum target)
         if (!_context->info->gl_ext_framebuffer_object)
         {
           _context->emuLevel++;
-          return context->emu.curr.glCheckFramebufferStatus(target);
+          return _context->emu.curr.glCheckFramebufferStatus(target);
         }
       }
       #endif
@@ -66882,7 +66882,7 @@ static GLboolean REGAL_CALL emu_glIsFramebufferEXT(GLuint framebuffer)
         if (!_context->info->gl_ext_framebuffer_object)
         {
           _context->emuLevel++;
-          return context->emu.curr.glIsFramebuffer(framebuffer);
+          return _context->emu.curr.glIsFramebuffer(framebuffer);
         }
       }
       #endif
@@ -66955,7 +66955,7 @@ static GLboolean REGAL_CALL emu_glIsRenderbufferEXT(GLuint renderbuffer)
         if (!_context->info->gl_ext_framebuffer_object)
         {
           _context->emuLevel++;
-          return context->emu.curr.glIsRenderbuffer(renderbuffer);
+          return _context->emu.curr.glIsRenderbuffer(renderbuffer);
         }
       }
       #endif

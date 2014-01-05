@@ -11,7 +11,7 @@ include build/libpng.inc
 
 ifdef LIBPNG.STATIC
 
-include Makefile.zlib
+include make/Makefile.zlib
 
 ifndef ZLIB.STATIC
 $(error libpng needs zlib.)

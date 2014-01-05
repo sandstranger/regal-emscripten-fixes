@@ -13,8 +13,8 @@ ifeq ($(filter nacl% emscripten%,$(SYSTEM)),)
 # RegalGLEW glewinfo
 #
 
-include Makefile.regal
-include Makefile.glew
+include make/Makefile.regal
+include make/Makefile.glew
 
 ifndef REGAL.STATIC
 $(error glewinfo needs Regal.)

@@ -549,7 +549,7 @@ return;'''
        'if (!_context->info->gl_ext_framebuffer_object)',
        '{',
        '  _context->emuLevel++;',
-       '  return context->emu.curr.gl${m1}(${arg0plus});',
+       '  return _context->emu.curr.gl${m1}(${arg0plus});',
        '}'
      ]
   },

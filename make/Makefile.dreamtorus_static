@@ -21,8 +21,8 @@ ifdef DREAMTORUS_STATIC.EXE
 # dreamtorus
 #
 
-include Makefile.regal
-include Makefile.glut
+include make/Makefile.regal
+include make/Makefile.glut
 
 ifndef REGAL.STATIC
 $(error dreamtorus needs Regal.)

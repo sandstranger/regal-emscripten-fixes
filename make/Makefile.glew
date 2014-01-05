@@ -20,7 +20,7 @@ endif
 
 ifdef GLEW.STATIC
 
-include Makefile.regal
+include make/Makefile.regal
 
 ifndef REGAL.STATIC
 $(error RegalGLEW needs Regal.)

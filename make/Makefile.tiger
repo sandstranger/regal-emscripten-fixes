@@ -13,9 +13,9 @@ ifeq ($(filter nacl% emscripten%,$(SYSTEM)),)
 # tiger
 #
 
-include Makefile.regal
-include Makefile.glut
-include Makefile.glew
+include make/Makefile.regal
+include make/Makefile.glut
+include make/Makefile.glew
 
 ifndef REGAL.SHARED
 $(error tiger needs Regal.)

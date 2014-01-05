@@ -20,7 +20,7 @@ endif
 
 ifdef APITRACE.STATIC
 
-include Makefile.snappy
+include make/Makefile.snappy
 
 ifndef SNAPPY.STATIC
 $(error apitrace needs snappy.)
