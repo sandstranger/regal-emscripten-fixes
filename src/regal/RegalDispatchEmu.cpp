@@ -3331,10 +3331,8 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
           if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
-            return _next->glDrawBuffer(mode);
+            return _context->emu.curr.glDrawBuffer(mode);
         }
       }
       #endif
@@ -12900,8 +12898,6 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->ReadBuffer(*_context, mode))
         {
           #if REGAL_BREAK
@@ -12910,9 +12906,9 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
           return ;
         }
         if (_context->isES2() && _context->info->gl_nv_read_buffer)
-          _next->glReadBufferNV(mode);
+          _context->emu.curr.glReadBufferNV(mode);
         else
-          _next->glReadBuffer(mode);
+          _context->emu.curr.glReadBuffer(mode);
         return;
       }
       #endif
@@ -17074,15 +17070,13 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
 
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->TexParameter(*_context, target, pname))
           return;
         GLfloat newparam;
         if (_context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(param), newparam))
-          _next->glTexParameterf(target, pname, newparam);
+          _context->emu.curr.glTexParameterf(target, pname, newparam);
         else
-          _next->glTexParameterf(target, pname, param);
+          _context->emu.curr.glTexParameterf(target, pname, param);
         return;
       }
       #endif
@@ -17178,15 +17172,13 @@ static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
 
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->TexParameter(*_context, target, pname))
           return;
         GLfloat newparam;
         if (params && _context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(params[0]), newparam))
-          _next->glTexParameterf(target, pname, newparam);
+          _context->emu.curr.glTexParameterf(target, pname, newparam);
         else
-          _next->glTexParameterfv(target, pname, params);
+          _context->emu.curr.glTexParameterfv(target, pname, params);
         return;
       }
       #endif
@@ -17282,15 +17274,13 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
 
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->TexParameter(*_context, target, pname))
           return;
         GLfloat newparam;
         if (_context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(param), newparam))
-          _next->glTexParameterf(target, pname, newparam);
+          _context->emu.curr.glTexParameterf(target, pname, newparam);
         else
-          _next->glTexParameteri(target, pname, param);
+          _context->emu.curr.glTexParameteri(target, pname, param);
         return;
       }
       #endif
@@ -17386,15 +17376,13 @@ static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const G
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
 
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->TexParameter(*_context, target, pname))
           return;
         GLfloat newparam;
         if (params && _context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(params[0]), newparam))
-          _next->glTexParameterf(target, pname, newparam);
+          _context->emu.curr.glTexParameterf(target, pname, newparam);
         else
-          _next->glTexParameteriv(target, pname, params);
+          _context->emu.curr.glTexParameteriv(target, pname, params);
         return;
       }
       #endif
@@ -20858,9 +20846,7 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          return _next->glDrawElements(mode, count, type, indices);
+          return _context->emu.curr.glDrawElements(mode, count, type, indices);
         }
       }
       #endif
@@ -26922,9 +26908,7 @@ static GLvoid *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          return _next->glMapBufferOES(target, access);
+          return _context->emu.curr.glMapBufferOES(target, access);
         }
       }
       #endif
@@ -27004,9 +26988,7 @@ static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          return _next->glUnmapBufferOES(target);
+          return _context->emu.curr.glUnmapBufferOES(target);
         }
       }
       #endif
@@ -27322,11 +27304,9 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
         }
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
           if (_context->info->gl_nv_draw_buffers)
           {
-            _next->glDrawBuffersNV(n, bufs);
+            _context->emu.curr.glDrawBuffersNV(n, bufs);
             return;
           }
         }
@@ -33875,9 +33855,8 @@ static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
         _context->emuLevel = 0;
         if (!_context->info->gl_arb_draw_buffers)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glDrawBuffers(n, bufs);
+          _context->emu.curr.glDrawBuffers(n, bufs);
           return;
         }
       }
@@ -34184,9 +34163,7 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
         {
           if (basevertex==0)
           {
-            Dispatch::GL *_next = &_context->emu.curr;
-            RegalAssert(_next);
-            return _next->glDrawElements(mode, count, type, indices);
+            return _context->emu.curr.glDrawElements(mode, count, type, indices);
           }
           else
           {
@@ -34795,10 +34772,8 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          if (_context->info->gl_nv_framebuffer_blit)  return _next->glBlitFramebufferNV(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-          if (_context->info->gl_ext_framebuffer_blit) return _next->glBlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          if (_context->info->gl_nv_framebuffer_blit)  return _context->emu.curr.glBlitFramebufferNV(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          if (_context->info->gl_ext_framebuffer_blit) return _context->emu.curr.glBlitFramebufferEXT(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
         }
       }
       #endif
@@ -34955,10 +34930,8 @@ static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attac
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-          _next->glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
+          _context->emu.curr.glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
         return;
       }
       #endif
@@ -35049,10 +35022,8 @@ static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachme
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-          _next->glFramebufferTexture1D(target, attachment, textarget, texture, level);
+          _context->emu.curr.glFramebufferTexture1D(target, attachment, textarget, texture, level);
         return;
       }
       #endif
@@ -35227,10 +35198,8 @@ static void REGAL_CALL emu_glFramebufferTexture3D(GLenum target, GLenum attachme
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-          _next->glFramebufferTexture3D(target, attachment, textarget, texture, level, layer);
+          _context->emu.curr.glFramebufferTexture3D(target, attachment, textarget, texture, level, layer);
         return;
       }
       #endif
@@ -35452,12 +35421,10 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameteriv(GLenum target, 
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        Dispatch::GL *_next = &_context->emu.curr;
-        RegalAssert(_next);
         if (!_context->filt->FramebufferAttachmentSupported(*_context, attachment))
           *params = 0;
         else
-          _next->glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
+          _context->emu.curr.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
         return;
       }
       #endif
@@ -37755,9 +37722,7 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
         _context->emuLevel = 0;
         if (!_context->info->gl_arb_multitexture)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glActiveTexture(texture);
+          _context->emu.curr.glActiveTexture(texture);
           return;
         }
       }
@@ -37877,9 +37842,8 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
         _context->emuLevel = 0;
         if (!_context->info->gl_arb_multitexture)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glClientActiveTexture(texture);
+          _context->emu.curr.glClientActiveTexture(texture);
           return;
         }
       }
@@ -41026,9 +40990,7 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glAttachShader(containerObj, obj);
+          _context->emu.curr.glAttachShader(containerObj, obj);
           return;
         }
       }
@@ -41102,9 +41064,7 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glCompileShader(shaderObj);
+          _context->emu.curr.glCompileShader(shaderObj);
           return;
         }
       }
@@ -41178,9 +41138,7 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          return _next->glCreateProgram();
+          return _context->emu.curr.glCreateProgram();
         }
       }
       #endif
@@ -41311,12 +41269,10 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          if (_next->glIsProgram(obj))
-            _next->glGetProgramInfoLog(obj, maxLength, length, infoLog);
+          if (_context->emu.curr.glIsProgram(obj))
+            _context->emu.curr.glGetProgramInfoLog(obj, maxLength, length, infoLog);
           else
-            _next->glGetShaderInfoLog(obj, maxLength, length, infoLog);
+            _context->emu.curr.glGetShaderInfoLog(obj, maxLength, length, infoLog);
           return;
         }
       }
@@ -41390,12 +41346,10 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          if (_next->glIsProgram(obj))
-            _next->glGetProgramiv(obj, pname, params);
+          if (_context->emu.curr.glIsProgram(obj))
+            _context->emu.curr.glGetProgramiv(obj, pname, params);
           else
-            _next->glGetShaderiv(obj, pname, params);
+            _context->emu.curr.glGetShaderiv(obj, pname, params);
           return;
         }
       }
@@ -41469,9 +41423,7 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          return _next->glGetUniformLocation(programObj, name);
+          return _context->emu.curr.glGetUniformLocation(programObj, name);
         }
       }
       #endif
@@ -41811,9 +41763,7 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glUniform1i(location, v0);
+          _context->emu.curr.glUniform1i(location, v0);
           return;
         }
       }
@@ -44764,9 +44714,7 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glBufferData(target, size, data, usage);
+          _context->emu.curr.glBufferData(target, size, data, usage);
           return;
         }
       }
@@ -45016,9 +44964,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          return _next->glMapBufferOES(target, access);
+          return _context->emu.curr.glMapBufferOES(target, access);
         }
       }
       #endif
@@ -45098,9 +45044,7 @@ static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          return _next->glUnmapBufferOES(target);
+          return _context->emu.curr.glUnmapBufferOES(target);
         }
       }
       #endif
@@ -47755,9 +47699,7 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
         _context->emuLevel = 0;
         if (_context->isES2() || !_context->info->gl_arb_shader_objects)
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glBindAttribLocation(programObj, index, name);
+          _context->emu.curr.glBindAttribLocation(programObj, index, name);
           return;
         }
       }
@@ -48237,9 +48179,8 @@ static void REGAL_CALL emu_glDrawBuffersATI(GLsizei n, const GLenum *bufs)
         _context->emuLevel = 0;
         if (!_context->info->gl_ati_draw_buffers)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glDrawBuffers(n, bufs);
+          _context->emu.curr.glDrawBuffers(n, bufs);
           return;
         }
       }
@@ -48447,9 +48388,7 @@ static void REGAL_CALL emu_glBlendColorEXT(GLclampf red, GLclampf green, GLclamp
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glBlendColor(red, green, blue, alpha);
+          _context->emu.curr.glBlendColor(red, green, blue, alpha);
           return;
         }
       }
@@ -48529,9 +48468,7 @@ static void REGAL_CALL emu_glBlendEquationEXT(GLenum mode)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-          Dispatch::GL *_next = &_context->emu.curr;
-          RegalAssert(_next);
-          _next->glBlendEquation(mode);
+          _context->emu.curr.glBlendEquation(mode);
           return;
         }
       }
@@ -64805,9 +64742,7 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
         if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
         {
           if (!buf)  {
-            Dispatch::GL *_next = &_context->emu.curr;
-            RegalAssert(_next);
-            _next->glColorMask(r, g, b, a);
+            _context->emu.curr.glColorMask(r, g, b, a);
           }
           return;
         }
@@ -64924,9 +64859,7 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
         if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
         {
           if (!index)  {
-            Dispatch::GL *_next = &_context->emu.curr;
-            RegalAssert(_next);
-            _next->glDisable(target);
+            _context->emu.curr.glDisable(target);
           }
           return;
         }
@@ -65043,9 +64976,7 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
         if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
         {
           if (!index)  {
-            Dispatch::GL *_next = &_context->emu.curr;
-            RegalAssert(_next);
-            _next->glEnable(target);
+            _context->emu.curr.glEnable(target);
           }
           return;
         }
@@ -65121,9 +65052,7 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
         if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
         {
           if (!index)  {
-            Dispatch::GL *_next = &_context->emu.curr;
-            RegalAssert(_next);
-            _next->glGetBooleanv(value,data);
+            _context->emu.curr.glGetBooleanv(value,data);
           }
           return;
         }
@@ -65199,9 +65128,7 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
         if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
         {
           if (!index)  {
-            Dispatch::GL *_next = &_context->emu.curr;
-            RegalAssert(_next);
-            _next->glGetIntegerv(value,data);
+            _context->emu.curr.glGetIntegerv(value,data);
           }
           return;
         }
@@ -65290,9 +65217,7 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
         if (target==GL_BLEND && !_context->info->gl_ext_draw_buffers2)
         {
           if (!index)  {
-            Dispatch::GL *_next = &_context->emu.curr;
-            RegalAssert(_next);
-            return _next->glIsEnabled(target);
+            return _context->emu.curr.glIsEnabled(target);
           }
           return GL_FALSE;
         }
@@ -65634,9 +65559,8 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_blit)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+          _context->emu.curr.glBlitFramebuffer(srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
           return;
         }
       }
@@ -65767,9 +65691,8 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glBindFramebuffer(target, framebuffer);
+          _context->emu.curr.glBindFramebuffer(target, framebuffer);
           return;
         }
       }
@@ -65857,9 +65780,8 @@ static void REGAL_CALL emu_glBindRenderbufferEXT(GLenum target, GLuint renderbuf
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glBindRenderbuffer(target, renderbuffer);
+          _context->emu.curr.glBindRenderbuffer(target, renderbuffer);
           return;
         }
       }
@@ -65933,9 +65855,8 @@ static GLenum REGAL_CALL emu_glCheckFramebufferStatusEXT(GLenum target)
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          return _table.glCheckFramebufferStatus(target);
+          return context->emu.curr.glCheckFramebufferStatus(target);
         }
       }
       #endif
@@ -66015,9 +65936,8 @@ static void REGAL_CALL emu_glDeleteFramebuffersEXT(GLsizei n, const GLuint *fram
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glDeleteFramebuffers(n, framebuffers);
+          _context->emu.curr.glDeleteFramebuffers(n, framebuffers);
           return;
         }
       }
@@ -66099,9 +66019,8 @@ static void REGAL_CALL emu_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *ren
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glDeleteRenderbuffers(n, renderbuffers);
+          _context->emu.curr.glDeleteRenderbuffers(n, renderbuffers);
           return;
         }
       }
@@ -66183,9 +66102,8 @@ static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum at
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
+          _context->emu.curr.glFramebufferRenderbuffer(target, attachment, renderbuffertarget, renderbuffer);
           return;
         }
       }
@@ -66279,9 +66197,8 @@ static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attac
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glFramebufferTexture1D(target, attachment, textarget, texture, level);
+          _context->emu.curr.glFramebufferTexture1D(target, attachment, textarget, texture, level);
           return;
         }
       }
@@ -66375,9 +66292,8 @@ static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attac
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glFramebufferTexture2D(target, attachment, textarget, texture, level);
+          _context->emu.curr.glFramebufferTexture2D(target, attachment, textarget, texture, level);
           return;
         }
       }
@@ -66471,9 +66387,8 @@ static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attac
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
+          _context->emu.curr.glFramebufferTexture3D(target, attachment, textarget, texture, level, zoffset);
           return;
         }
       }
@@ -66547,9 +66462,8 @@ static void REGAL_CALL emu_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glGenFramebuffers(n, framebuffers);
+          _context->emu.curr.glGenFramebuffers(n, framebuffers);
           return;
         }
       }
@@ -66623,9 +66537,8 @@ static void REGAL_CALL emu_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffer
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glGenRenderbuffers(n, renderbuffers);
+          _context->emu.curr.glGenRenderbuffers(n, renderbuffers);
           return;
         }
       }
@@ -66716,9 +66629,8 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glGenerateMipmap(target);
+          _context->emu.curr.glGenerateMipmap(target);
           return;
         }
       }
@@ -66811,9 +66723,8 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameterivEXT(GLenum targe
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
+          _context->emu.curr.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
           return;
         }
       }
@@ -66895,9 +66806,8 @@ static void REGAL_CALL emu_glGetRenderbufferParameterivEXT(GLenum target, GLenum
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glGetRenderbufferParameteriv(target, pname, params);
+          _context->emu.curr.glGetRenderbufferParameteriv(target, pname, params);
           return;
         }
       }
@@ -66971,9 +66881,8 @@ static GLboolean REGAL_CALL emu_glIsFramebufferEXT(GLuint framebuffer)
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          return _table.glIsFramebuffer(framebuffer);
+          return context->emu.curr.glIsFramebuffer(framebuffer);
         }
       }
       #endif
@@ -67045,9 +66954,8 @@ static GLboolean REGAL_CALL emu_glIsRenderbufferEXT(GLuint renderbuffer)
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          return _table.glIsRenderbuffer(renderbuffer);
+          return context->emu.curr.glIsRenderbuffer(renderbuffer);
         }
       }
       #endif
@@ -67127,9 +67035,8 @@ static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum intern
         _context->emuLevel = 0;
         if (!_context->info->gl_ext_framebuffer_object)
         {
-          Dispatch::GL &_table = _context->emu.curr;
           _context->emuLevel++;
-          _table.glRenderbufferStorage(target, internalformat, width, height);
+          _context->emu.curr.glRenderbufferStorage(target, internalformat, width, height);
           return;
         }
       }
