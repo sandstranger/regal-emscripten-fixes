@@ -38995,6 +38995,7 @@ extern "C" {
     App("wglSetStereoEmitterState3DL","(", boost::print::optional(hDC,Logging::pointers), ", ", uState, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39020,6 +39021,7 @@ extern "C" {
     App("wglBlitContextFramebufferAMD","(", boost::print::optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ", ", GLblitFramebufferToString(mask), ", ", toString(filter), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->wglBlitContextFramebufferAMD(dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
@@ -39041,6 +39043,7 @@ extern "C" {
     App("wglCreateAssociatedContextAMD","(", id, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HGLRC ret = NULL;
@@ -39064,6 +39067,7 @@ extern "C" {
     App("wglCreateAssociatedContextAttribsAMD","(", id, ", ", boost::print::optional(hShareContext,Logging::pointers), ", ", boost::print::optional(attribList,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HGLRC ret = NULL;
@@ -39087,6 +39091,7 @@ extern "C" {
     App("wglDeleteAssociatedContextAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39110,6 +39115,7 @@ extern "C" {
     App("wglGetContextGPUIDAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     UINT ret = 0;
@@ -39133,6 +39139,7 @@ extern "C" {
     App("wglGetCurrentAssociatedContextAMD","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HGLRC ret = NULL;
@@ -39156,6 +39163,7 @@ extern "C" {
     App("wglGetGPUIDsAMD","(", maxCount, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     UINT ret = 0;
@@ -39179,6 +39187,7 @@ extern "C" {
     App("wglGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     INT ret = 0;
@@ -39202,6 +39211,7 @@ extern "C" {
     App("wglMakeAssociatedContextCurrentAMD","(", boost::print::optional(hglrc,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39227,6 +39237,7 @@ extern "C" {
     App("wglCreateBufferRegionARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", uType, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HANDLE ret = 0;
@@ -39250,6 +39261,7 @@ extern "C" {
     App("wglDeleteBufferRegionARB","(", hRegion, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->wglDeleteBufferRegionARB(hRegion);
@@ -39271,6 +39283,7 @@ extern "C" {
     App("wglRestoreBufferRegionARB","(", hRegion, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xSrc, ", ", ySrc, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39294,6 +39307,7 @@ extern "C" {
     App("wglSaveBufferRegionARB","(", hRegion, ", ", x, ", ", y, ", ", width, ", ", height, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39319,6 +39333,7 @@ extern "C" {
     App("wglCreateContextAttribsARB","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hShareContext,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HGLRC ret = NULL;
@@ -39346,6 +39361,7 @@ extern "C" {
     App("wglGetExtensionsStringARB","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     const char * ret = NULL;
@@ -39371,6 +39387,7 @@ extern "C" {
     App("wglGetCurrentReadDCARB","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HDC ret = NULL;
@@ -39419,6 +39436,7 @@ extern "C" {
     App("wglCreatePbufferARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HPBUFFERARB ret = (HPBUFFERARB) 0;
@@ -39442,6 +39460,7 @@ extern "C" {
     App("wglDestroyPbufferARB","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39465,6 +39484,7 @@ extern "C" {
     App("wglGetPbufferDCARB","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HDC ret = NULL;
@@ -39488,6 +39508,7 @@ extern "C" {
     App("wglQueryPbufferARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iAttribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39511,6 +39532,7 @@ extern "C" {
     App("wglReleasePbufferDCARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -39536,6 +39558,7 @@ extern "C" {
     App("wglChoosePixelFormatARB","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39559,6 +39582,7 @@ extern "C" {
     App("wglGetPixelFormatAttribfvARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39582,6 +39606,7 @@ extern "C" {
     App("wglGetPixelFormatAttribivARB","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39607,6 +39632,7 @@ extern "C" {
     App("wglBindTexImageARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39630,6 +39656,7 @@ extern "C" {
     App("wglReleaseTexImageARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39653,6 +39680,7 @@ extern "C" {
     App("wglSetPbufferAttribARB","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39678,6 +39706,7 @@ extern "C" {
     App("wglBindDisplayColorTableEXT","(", id, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLboolean ret = GL_FALSE;
@@ -39701,6 +39730,7 @@ extern "C" {
     App("wglCreateDisplayColorTableEXT","(", id, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLboolean ret = GL_FALSE;
@@ -39724,6 +39754,7 @@ extern "C" {
     App("wglDestroyDisplayColorTableEXT","(", id, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->wglDestroyDisplayColorTableEXT(id);
@@ -39745,6 +39776,7 @@ extern "C" {
     App("wglLoadDisplayColorTableEXT","(", boost::print::array(table,length), ", ", length, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLboolean ret = GL_FALSE;
@@ -39770,6 +39802,7 @@ extern "C" {
     App("wglGetExtensionsStringEXT","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     const char * ret = NULL;
@@ -39795,6 +39828,7 @@ extern "C" {
     App("wglGetCurrentReadDCEXT","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HDC ret = NULL;
@@ -39843,6 +39877,7 @@ extern "C" {
     App("wglCreatePbufferEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HPBUFFEREXT ret = (HPBUFFEREXT) 0;
@@ -39866,6 +39901,7 @@ extern "C" {
     App("wglDestroyPbufferEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39889,6 +39925,7 @@ extern "C" {
     App("wglGetPbufferDCEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HDC ret = NULL;
@@ -39912,6 +39949,7 @@ extern "C" {
     App("wglQueryPbufferEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iAttribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39935,6 +39973,7 @@ extern "C" {
     App("wglReleasePbufferDCEXT","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -39960,6 +39999,7 @@ extern "C" {
     App("wglChoosePixelFormatEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -39983,6 +40023,7 @@ extern "C" {
     App("wglGetPixelFormatAttribfvEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40006,6 +40047,7 @@ extern "C" {
     App("wglGetPixelFormatAttribivEXT","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", boost::print::array(piAttributes,nAttributes), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40031,6 +40073,7 @@ extern "C" {
     App("wglGetSwapIntervalEXT","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -40054,6 +40097,7 @@ extern "C" {
     App("wglSwapIntervalEXT","(", interval, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40079,6 +40123,7 @@ extern "C" {
     App("wglChoosePixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(ppfd,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -40102,6 +40147,7 @@ extern "C" {
     App("wglDescribePixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", nBytes, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -40125,6 +40171,7 @@ extern "C" {
     App("wglGetPixelFormat","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -40148,6 +40195,7 @@ extern "C" {
     App("wglSetPixelFormat","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", boost::print::optional(ppfd,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40171,6 +40219,7 @@ extern "C" {
     App("wglSwapBuffers","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40200,6 +40249,7 @@ extern "C" {
     App("wglGetDigitalVideoParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40223,6 +40273,7 @@ extern "C" {
     App("wglSetDigitalVideoParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40248,6 +40299,7 @@ extern "C" {
     App("wglGetGammaTableI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40271,6 +40323,7 @@ extern "C" {
     App("wglGetGammaTableParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40294,6 +40347,7 @@ extern "C" {
     App("wglSetGammaTableI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iEntries, ", ", boost::print::array(puRed,iEntries), ", ", boost::print::array(puGreen,iEntries), ", ", boost::print::array(puBlue,iEntries), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40317,6 +40371,7 @@ extern "C" {
     App("wglSetGammaTableParametersI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", iAttribute, ", ", boost::print::optional(piValue,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40342,6 +40397,7 @@ extern "C" {
     App("wglDisableGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40365,6 +40421,7 @@ extern "C" {
     App("wglEnableGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40388,6 +40445,7 @@ extern "C" {
     App("wglGenlockSampleRateI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uRate, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40411,6 +40469,7 @@ extern "C" {
     App("wglGenlockSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uDelay, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40434,6 +40493,7 @@ extern "C" {
     App("wglGenlockSourceEdgeI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uEdge, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40457,6 +40517,7 @@ extern "C" {
     App("wglGenlockSourceI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", uSource, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40480,6 +40541,7 @@ extern "C" {
     App("wglGetGenlockSampleRateI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40503,6 +40565,7 @@ extern "C" {
     App("wglGetGenlockSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40526,6 +40589,7 @@ extern "C" {
     App("wglGetGenlockSourceEdgeI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40549,6 +40613,7 @@ extern "C" {
     App("wglGetGenlockSourceI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40572,6 +40637,7 @@ extern "C" {
     App("wglIsEnabledGenlockI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40595,6 +40661,7 @@ extern "C" {
     App("wglQueryGenlockMaxSourceDelayI3D","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40620,6 +40687,7 @@ extern "C" {
     App("wglAssociateImageBufferEventsI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::array(pEvent,count), ", ", boost::print::array(pAddress,count), ", ", boost::print::array(pSize,count), ", ", count, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40643,6 +40711,7 @@ extern "C" {
     App("wglCreateImageBufferI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", dwSize, ", ", uFlags, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     LPVOID ret = 0;
@@ -40666,6 +40735,7 @@ extern "C" {
     App("wglDestroyImageBufferI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(pAddress,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40689,6 +40759,7 @@ extern "C" {
     App("wglReleaseImageBufferEventsI3D","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::array(pAddress,count), ", ", count, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40714,6 +40785,7 @@ extern "C" {
     App("wglDisableFrameLockI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40737,6 +40809,7 @@ extern "C" {
     App("wglEnableFrameLockI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40760,6 +40833,7 @@ extern "C" {
     App("wglIsEnabledFrameLockI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40783,6 +40857,7 @@ extern "C" {
     App("wglQueryFrameLockMasterI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40808,6 +40883,7 @@ extern "C" {
     App("wglBeginFrameTrackingI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40831,6 +40907,7 @@ extern "C" {
     App("wglEndFrameTrackingI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40854,6 +40931,7 @@ extern "C" {
     App("wglGetFrameUsageI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40877,6 +40955,7 @@ extern "C" {
     App("wglQueryFrameTrackingI3D","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40902,6 +40981,7 @@ extern "C" {
     App("wglDXCloseDeviceNV","(", hDevice, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40925,6 +41005,7 @@ extern "C" {
     App("wglDXLockObjectsNV","(", hDevice, ", ", count, ", ", hObjects, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40948,6 +41029,7 @@ extern "C" {
     App("wglDXObjectAccessNV","(", hObject, ", ", toString(access), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -40971,6 +41053,7 @@ extern "C" {
     App("wglDXOpenDeviceNV","(", boost::print::optional(dxDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HANDLE ret = 0;
@@ -40994,6 +41077,7 @@ extern "C" {
     App("wglDXRegisterObjectNV","(", hDevice, ", ", boost::print::optional(dxObject,Logging::pointers), ", ", name, ", ", toString(type), ", ", toString(access), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HANDLE ret = 0;
@@ -41017,6 +41101,7 @@ extern "C" {
     App("wglDXSetResourceShareHandleNV","(", boost::print::optional(dxObject,Logging::pointers), ", ", shareHandle, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41040,6 +41125,7 @@ extern "C" {
     App("wglDXUnlockObjectsNV","(", hDevice, ", ", count, ", ", hObjects, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41063,6 +41149,7 @@ extern "C" {
     App("wglDXUnregisterObjectNV","(", hDevice, ", ", hObject, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41088,6 +41175,7 @@ extern "C" {
     App("wglCopyImageSubDataNV","(", boost::print::optional(hSrcRC,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", boost::print::optional(hDstRC,Logging::pointers), ", ", dstName, ", ", toString(dstTarget), ", ", dstLevel, ", ", dstX, ", ", dstY, ", ", dstZ, ", ", width, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41113,6 +41201,7 @@ extern "C" {
     App("wglCreateAffinityDCNV","(", phGpuList, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HDC ret = NULL;
@@ -41136,6 +41225,7 @@ extern "C" {
     App("wglDeleteDCNV","(", boost::print::optional(hAffinityDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41159,6 +41249,7 @@ extern "C" {
     App("wglEnumGpuDevicesNV","(", boost::print::optional(hGpu,Logging::pointers), ", ", iDeviceIndex, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41182,6 +41273,7 @@ extern "C" {
     App("wglEnumGpusFromAffinityDCNV","(", boost::print::optional(hAffinityDC,Logging::pointers), ", ", iGpuIndex, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41205,6 +41297,7 @@ extern "C" {
     App("wglEnumGpusNV","(", iGpuIndex, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41230,6 +41323,7 @@ extern "C" {
     App("wglBindVideoDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", uVideoSlot, ", ", boost::print::optional(hVideoDevice,Logging::pointers), ", ", boost::print::optional(piAttribList,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41253,6 +41347,7 @@ extern "C" {
     App("wglEnumerateVideoDevicesNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -41276,6 +41371,7 @@ extern "C" {
     App("wglQueryCurrentContextNV","(", iAttribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41301,6 +41397,7 @@ extern "C" {
     App("wglBindSwapBarrierNV","(", group, ", ", barrier, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41324,6 +41421,7 @@ extern "C" {
     App("wglJoinSwapGroupNV","(", boost::print::optional(hDC,Logging::pointers), ", ", group, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41347,6 +41445,7 @@ extern "C" {
     App("wglQueryFrameCountNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41370,6 +41469,7 @@ extern "C" {
     App("wglQueryMaxSwapGroupsNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41393,6 +41493,7 @@ extern "C" {
     App("wglQuerySwapGroupNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41416,6 +41517,7 @@ extern "C" {
     App("wglResetFrameCountNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41441,6 +41543,7 @@ extern "C" {
     App("wglAllocateMemoryNV","(", size, ", ", readfreq, ", ", writefreq, ", ", priority, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     void * ret = NULL;
@@ -41464,6 +41567,7 @@ extern "C" {
     App("wglFreeMemoryNV","(", boost::print::optional(pointer,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->wglFreeMemoryNV(pointer);
@@ -41487,6 +41591,7 @@ extern "C" {
     App("wglBindVideoCaptureDeviceNV","(", uVideoSlot, ", ", boost::print::optional(hDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41510,6 +41615,7 @@ extern "C" {
     App("wglEnumerateVideoCaptureDevicesNV","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     UINT ret = 0;
@@ -41533,6 +41639,7 @@ extern "C" {
     App("wglLockVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41556,6 +41663,7 @@ extern "C" {
     App("wglQueryVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ", ", iAttribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41579,6 +41687,7 @@ extern "C" {
     App("wglReleaseVideoCaptureDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", boost::print::optional(hDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41604,6 +41713,7 @@ extern "C" {
     App("wglBindVideoImageNV","(", boost::print::optional(hVideoDevice,Logging::pointers), ", ", boost::print::optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41627,6 +41737,7 @@ extern "C" {
     App("wglGetVideoDeviceNV","(", boost::print::optional(hDC,Logging::pointers), ", ", numDevices, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41650,6 +41761,7 @@ extern "C" {
     App("wglGetVideoInfoNV","(", boost::print::optional(hpVideoDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41673,6 +41785,7 @@ extern "C" {
     App("wglReleaseVideoDeviceNV","(", boost::print::optional(hVideoDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41696,6 +41809,7 @@ extern "C" {
     App("wglReleaseVideoImageNV","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41719,6 +41833,7 @@ extern "C" {
     App("wglSendPbufferToVideoNV","(", boost::print::optional(hPbuffer,Logging::pointers), ", ", iBufferType, ", ", bBlock, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41744,6 +41859,7 @@ extern "C" {
     App("wglGetMscRateOML","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41767,6 +41883,7 @@ extern "C" {
     App("wglGetSyncValuesOML","(", boost::print::optional(hDC,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41790,6 +41907,7 @@ extern "C" {
     App("wglSwapBuffersMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     INT64 ret = 0;
@@ -41813,6 +41931,7 @@ extern "C" {
     App("wglSwapLayerBuffersMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", fuPlanes, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     INT64 ret = 0;
@@ -41836,6 +41955,7 @@ extern "C" {
     App("wglWaitForMscOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41859,6 +41979,7 @@ extern "C" {
     App("wglWaitForSbcOML","(", boost::print::optional(hDC,Logging::pointers), ", ", target_sbc, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41884,6 +42005,7 @@ extern "C" {
     App("wglCopyContext","(", boost::print::optional(hglrcSrc,Logging::pointers), ", ", boost::print::optional(hglrcDst,Logging::pointers), ", ", mask, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -41931,6 +42053,7 @@ extern "C" {
     App("wglCreateLayerContext","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HGLRC ret = NULL;
@@ -41978,6 +42101,7 @@ extern "C" {
     App("wglDescribeLayerPlane","(", boost::print::optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nBytes, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42025,6 +42149,7 @@ extern "C" {
     App("wglGetCurrentDC","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     HDC ret = NULL;
@@ -42048,6 +42173,7 @@ extern "C" {
     App("wglGetDefaultProcAddress","(", boost::print::quote(lpszProc,'"'), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     PROC ret = NULL;
@@ -42071,6 +42197,7 @@ extern "C" {
     App("wglGetLayerPaletteEntries","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -42186,6 +42313,7 @@ extern "C" {
     App("wglRealizeLayerPalette","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", bRealize, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42209,6 +42337,7 @@ extern "C" {
     App("wglSetLayerPaletteEntries","(", boost::print::optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ", ", boost::print::array(pcr,nEntries), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -42232,6 +42361,7 @@ extern "C" {
     App("wglShareLists","(", boost::print::optional(hglrcShare,Logging::pointers), ", ", boost::print::optional(hglrcSrc,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42257,6 +42387,7 @@ extern "C" {
     App("wglSwapLayerBuffers","(", boost::print::optional(hDC,Logging::pointers), ", ", fuPlanes, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42280,6 +42411,7 @@ extern "C" {
     App("wglSwapMultipleBuffers","(", n, ", ", ps, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     DWORD ret = 0;
@@ -42303,6 +42435,7 @@ extern "C" {
     App("wglUseFontBitmapsA","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42326,6 +42459,7 @@ extern "C" {
     App("wglUseFontBitmapsW","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42349,6 +42483,7 @@ extern "C" {
     App("wglUseFontOutlinesA","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42372,6 +42507,7 @@ extern "C" {
     App("wglUseFontOutlinesW","(", boost::print::optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
@@ -42424,6 +42560,7 @@ extern "C" {
     App("glXCopyContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(src,Logging::pointers), ", ", boost::print::optional(dst,Logging::pointers), ", ", mask, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXCopyContext(dpy, src, dst, mask);
@@ -42445,6 +42582,7 @@ extern "C" {
     App("glXCreateContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(vis,Logging::pointers), ", ", boost::print::optional(shareList,Logging::pointers), ", ", direct, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -42470,6 +42608,7 @@ extern "C" {
     App("glXCreateGLXPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(vis,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXPixmap ret = 0;
@@ -42515,6 +42654,7 @@ extern "C" {
     App("glXDestroyGLXPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pix,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXDestroyGLXPixmap(dpy, pix);
@@ -42536,6 +42676,7 @@ extern "C" {
     App("glXGetConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(vis,Logging::pointers), ", ", attrib, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -42559,6 +42700,7 @@ extern "C" {
     App("glXGetCurrentContext","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -42582,6 +42724,7 @@ extern "C" {
     App("glXGetCurrentDrawable","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXDrawable ret = 0;
@@ -42605,6 +42748,7 @@ extern "C" {
     App("glXIsDirect","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -42686,6 +42830,7 @@ extern "C" {
     App("glXQueryVersion","(", boost::print::optional(dpy,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -42709,6 +42854,7 @@ extern "C" {
     App("glXSwapBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     // Keep track of X11 Display and GLXDrawable for logging purposes.
@@ -42742,6 +42888,7 @@ extern "C" {
     App("glXUseXFont","(", boost::print::optional(font,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXUseXFont(font, first, count, listBase);
@@ -42763,6 +42910,7 @@ extern "C" {
     App("glXWaitGL","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXWaitGL();
@@ -42784,6 +42932,7 @@ extern "C" {
     App("glXWaitX","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXWaitX();
@@ -42807,6 +42956,7 @@ extern "C" {
     App("glXGetClientString","(", boost::print::optional(dpy,Logging::pointers), ", ", name, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     const char * ret = NULL;
@@ -42830,6 +42980,7 @@ extern "C" {
     App("glXQueryExtensionsString","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     const char * ret = NULL;
@@ -42853,6 +43004,7 @@ extern "C" {
     App("glXQueryServerString","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", name, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     const char * ret = NULL;
@@ -42878,6 +43030,7 @@ extern "C" {
     App("glXGetCurrentDisplay","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Display * ret = NULL;
@@ -42903,6 +43056,7 @@ extern "C" {
     App("glXChooseFBConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXFBConfig * ret = NULL;
@@ -42926,6 +43080,7 @@ extern "C" {
     App("glXCreateNewContext","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", boost::print::optional(share_list,Logging::pointers), ", ", direct, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -42951,6 +43106,7 @@ extern "C" {
     App("glXCreatePbuffer","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXPbuffer ret = 0;
@@ -42974,6 +43130,7 @@ extern "C" {
     App("glXCreatePixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(pixmap,Logging::pointers), ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXPixmap ret = 0;
@@ -42997,6 +43154,7 @@ extern "C" {
     App("glXCreateWindow","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", win, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXWindow ret = 0;
@@ -43020,6 +43178,7 @@ extern "C" {
     App("glXDestroyPbuffer","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXDestroyPbuffer(dpy, pbuf);
@@ -43041,6 +43200,7 @@ extern "C" {
     App("glXDestroyPixmap","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXDestroyPixmap(dpy, pixmap);
@@ -43062,6 +43222,7 @@ extern "C" {
     App("glXDestroyWindow","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(win,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXDestroyWindow(dpy, win);
@@ -43083,6 +43244,7 @@ extern "C" {
     App("glXGetCurrentReadDrawable","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXDrawable ret = 0;
@@ -43106,6 +43268,7 @@ extern "C" {
     App("glXGetFBConfigAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -43129,6 +43292,7 @@ extern "C" {
     App("glXGetFBConfigs","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXFBConfig * ret = NULL;
@@ -43152,6 +43316,7 @@ extern "C" {
     App("glXGetSelectedEvent","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXGetSelectedEvent(dpy, draw, event_mask);
@@ -43173,6 +43338,7 @@ extern "C" {
     App("glXGetVisualFromFBConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     XVisualInfo * ret = NULL;
@@ -43224,6 +43390,7 @@ extern "C" {
     App("glXQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", GLXenumToString(attribute), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -43247,6 +43414,7 @@ extern "C" {
     App("glXQueryDrawable","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", attribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXQueryDrawable(dpy, draw, attribute, value);
@@ -43268,6 +43436,7 @@ extern "C" {
     App("glXSelectEvent","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", event_mask, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXSelectEvent(dpy, draw, event_mask);
@@ -43323,6 +43492,7 @@ extern "C" {
     App("glXBlitContextFramebufferAMD","(", boost::print::optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ", ", GLblitFramebufferToString(mask), ", ", toString(filter), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXBlitContextFramebufferAMD(dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
@@ -43344,6 +43514,7 @@ extern "C" {
     App("glXCreateAssociatedContextAMD","(", id, ", ", boost::print::optional(share_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -43367,6 +43538,7 @@ extern "C" {
     App("glXCreateAssociatedContextAttribsAMD","(", id, ", ", boost::print::optional(share_context,Logging::pointers), ", ", boost::print::optional(attribList,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -43390,6 +43562,7 @@ extern "C" {
     App("glXDeleteAssociatedContextAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -43413,6 +43586,7 @@ extern "C" {
     App("glXGetContextGPUIDAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     unsigned int ret = (unsigned int) 0;
@@ -43436,6 +43610,7 @@ extern "C" {
     App("glXGetCurrentAssociatedContextAMD","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -43459,6 +43634,7 @@ extern "C" {
     App("glXGetGPUIDsAMD","(", maxCount, ", ", ids, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     unsigned int ret = (unsigned int) 0;
@@ -43482,6 +43658,7 @@ extern "C" {
     App("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", boost::print::optional(data,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -43505,6 +43682,7 @@ extern "C" {
     App("glXMakeAssociatedContextCurrentAMD","(", boost::print::optional(ctx,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -43530,6 +43708,7 @@ extern "C" {
     App("glXCreateContextAttribsARB","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(share_context,Logging::pointers), ", ", direct, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -43589,6 +43768,7 @@ extern "C" {
     App("glXBindTexImageATI","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", buffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXBindTexImageATI(dpy, pbuf, buffer);
@@ -43610,6 +43790,7 @@ extern "C" {
     App("glXDrawableAttribATI","(", boost::print::optional(dpy,Logging::pointers), ", ", draw, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXDrawableAttribATI(dpy, draw, attrib_list);
@@ -43631,6 +43812,7 @@ extern "C" {
     App("glXReleaseTexImageATI","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", buffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXReleaseTexImageATI(dpy, pbuf, buffer);
@@ -43654,6 +43836,7 @@ extern "C" {
     App("glXFreeContextEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(context,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXFreeContextEXT(dpy, context);
@@ -43675,6 +43858,7 @@ extern "C" {
     App("glXGetContextIDEXT","(", context, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContextID ret = 0;
@@ -43698,6 +43882,7 @@ extern "C" {
     App("glXImportContextEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", contextID, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -43721,6 +43906,7 @@ extern "C" {
     App("glXQueryContextInfoEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(context,Logging::pointers), ", ", attribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -43746,6 +43932,7 @@ extern "C" {
     App("glXSwapIntervalEXT","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", interval, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXSwapIntervalEXT(dpy, drawable, interval);
@@ -43769,6 +43956,7 @@ extern "C" {
     App("glXBindTexImageEXT","(", boost::print::optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXBindTexImageEXT(display, drawable, buffer, attrib_list);
@@ -43790,6 +43978,7 @@ extern "C" {
     App("glXReleaseTexImageEXT","(", boost::print::optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXReleaseTexImageEXT(display, drawable, buffer);
@@ -43813,6 +44002,7 @@ extern "C" {
     App("glXGetAGPOffsetMESA","(", boost::print::optional(pointer,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     unsigned int ret = (unsigned int) 0;
@@ -43838,6 +44028,7 @@ extern "C" {
     App("glXCopySubBufferMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", x, ", ", y, ", ", width, ", ", height, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXCopySubBufferMESA(dpy, drawable, x, y, width, height);
@@ -43861,6 +44052,7 @@ extern "C" {
     App("glXCreateGLXPixmapMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(visual,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ", ", cmap, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXPixmap ret = 0;
@@ -43886,6 +44078,7 @@ extern "C" {
     App("glXReleaseBuffersMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", d, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -43911,6 +44104,7 @@ extern "C" {
     App("glXSet3DfxModeMESA","(", mode, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLboolean ret = GL_FALSE;
@@ -43936,6 +44130,7 @@ extern "C" {
     App("glXGetSwapIntervalMESA","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -43959,6 +44154,7 @@ extern "C" {
     App("glXSwapIntervalMESA","(", interval, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -43984,6 +44180,7 @@ extern "C" {
     App("glXCopyImageSubDataNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(srcCtx,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", boost::print::optional(dstCtx,Logging::pointers), ", ", dstName, ", ", toString(dstTarget), ", ", dstLevel, ", ", dstX, ", ", dstY, ", ", dstZ, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXCopyImageSubDataNV(dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
@@ -44007,6 +44204,7 @@ extern "C" {
     App("glXBindVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", video_slot, ", ", video_device, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44030,6 +44228,7 @@ extern "C" {
     App("glXEnumerateVideoDevicesNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     unsigned int * ret = NULL;
@@ -44055,6 +44254,7 @@ extern "C" {
     App("glXBindSwapBarrierNV","(", boost::print::optional(dpy,Logging::pointers), ", ", group, ", ", barrier, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44078,6 +44278,7 @@ extern "C" {
     App("glXJoinSwapGroupNV","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", group, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44101,6 +44302,7 @@ extern "C" {
     App("glXQueryFrameCountNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44124,6 +44326,7 @@ extern "C" {
     App("glXQueryMaxSwapGroupsNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44147,6 +44350,7 @@ extern "C" {
     App("glXQuerySwapGroupNV","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44170,6 +44374,7 @@ extern "C" {
     App("glXResetFrameCountNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44195,6 +44400,7 @@ extern "C" {
     App("glXAllocateMemoryNV","(", size, ", ", readFrequency, ", ", writeFrequency, ", ", priority, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     void * ret = NULL;
@@ -44218,6 +44424,7 @@ extern "C" {
     App("glXFreeMemoryNV","(", boost::print::optional(pointer,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXFreeMemoryNV(pointer);
@@ -44241,6 +44448,7 @@ extern "C" {
     App("glXBindVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", video_capture_slot, ", ", device, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44264,6 +44472,7 @@ extern "C" {
     App("glXEnumerateVideoCaptureDevicesNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(nelements,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXVideoCaptureDeviceNV * ret = NULL;
@@ -44287,6 +44496,7 @@ extern "C" {
     App("glXLockVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXLockVideoCaptureDeviceNV(dpy, device);
@@ -44308,6 +44518,7 @@ extern "C" {
     App("glXQueryVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ", ", attribute, ", ", boost::print::optional(value,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44331,6 +44542,7 @@ extern "C" {
     App("glXReleaseVideoCaptureDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", device, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXReleaseVideoCaptureDeviceNV(dpy, device);
@@ -44354,6 +44566,7 @@ extern "C" {
     App("glXBindVideoImageNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(VideoDevice,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", iVideoBuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44377,6 +44590,7 @@ extern "C" {
     App("glXGetVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", numVideoDevices, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44400,6 +44614,7 @@ extern "C" {
     App("glXGetVideoInfoNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(VideoDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44423,6 +44638,7 @@ extern "C" {
     App("glXReleaseVideoDeviceNV","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(VideoDevice,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44446,6 +44662,7 @@ extern "C" {
     App("glXReleaseVideoImageNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44469,6 +44686,7 @@ extern "C" {
     App("glXSendPbufferToVideoNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", iBufferType, ", ", toString(bBlock), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44494,6 +44712,7 @@ extern "C" {
     App("glXGetMscRateOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44517,6 +44736,7 @@ extern "C" {
     App("glXGetSyncValuesOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44540,6 +44760,7 @@ extern "C" {
     App("glXSwapBuffersMscOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int64_t ret = (int64_t) 0;
@@ -44563,6 +44784,7 @@ extern "C" {
     App("glXWaitForMscOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44586,6 +44808,7 @@ extern "C" {
     App("glXWaitForSbcOML","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", target_sbc, ", ", boost::print::array(ust,1), ", ", boost::print::array(msc,1), ", ", boost::print::array(sbc,1), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44611,6 +44834,7 @@ extern "C" {
     App("glXChooseFBConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ", ", boost::print::optional(attrib_list,Logging::pointers), ", ", boost::print::optional(nelements,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXFBConfigSGIX * ret = NULL;
@@ -44634,6 +44858,7 @@ extern "C" {
     App("glXCreateContextWithConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", boost::print::optional(share_list,Logging::pointers), ", ", direct, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXContext ret = 0;
@@ -44657,6 +44882,7 @@ extern "C" {
     App("glXCreateGLXPixmapWithConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", boost::print::optional(pixmap,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXPixmap ret = 0;
@@ -44680,6 +44906,7 @@ extern "C" {
     App("glXGetFBConfigAttribSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ", ", boost::print::array(value,1), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44703,6 +44930,7 @@ extern "C" {
     App("glXGetFBConfigFromVisualSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(vis,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXFBConfigSGIX ret = 0;
@@ -44726,6 +44954,7 @@ extern "C" {
     App("glXGetVisualFromFBConfigSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     XVisualInfo * ret = NULL;
@@ -44751,6 +44980,7 @@ extern "C" {
     App("glXCreateGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", config, ", ", width, ", ", height, ", ", boost::print::optional(attrib_list,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXPbuffer ret = 0;
@@ -44774,6 +45004,7 @@ extern "C" {
     App("glXDestroyGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXDestroyGLXPbufferSGIX(dpy, pbuf);
@@ -44795,6 +45026,7 @@ extern "C" {
     App("glXGetSelectedEventSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", boost::print::array(mask,1), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXGetSelectedEventSGIX(dpy, drawable, mask);
@@ -44816,6 +45048,7 @@ extern "C" {
     App("glXQueryGLXPbufferSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(pbuf,Logging::pointers), ", ", attribute, ", ", boost::print::array(value,1), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXQueryGLXPbufferSGIX(dpy, pbuf, attribute, value);
@@ -44837,6 +45070,7 @@ extern "C" {
     App("glXSelectEventSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", mask, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXSelectEventSGIX(dpy, drawable, mask);
@@ -44860,6 +45094,7 @@ extern "C" {
     App("glXBindSwapBarrierSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", barrier, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXBindSwapBarrierSGIX(dpy, drawable, barrier);
@@ -44881,6 +45116,7 @@ extern "C" {
     App("glXQueryMaxSwapBarriersSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
@@ -44906,6 +45142,7 @@ extern "C" {
     App("glXJoinSwapGroupSGIX","(", boost::print::optional(dpy,Logging::pointers), ", ", drawable, ", ", member, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXJoinSwapGroupSGIX(dpy, drawable, member);
@@ -44929,6 +45166,7 @@ extern "C" {
     App("glXBindChannelToWindowSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", window, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44952,6 +45190,7 @@ extern "C" {
     App("glXChannelRectSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", x, ", ", y, ", ", w, ", ", h, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44975,6 +45214,7 @@ extern "C" {
     App("glXChannelRectSyncSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", toString(synctype), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -44998,6 +45238,7 @@ extern "C" {
     App("glXQueryChannelDeltasSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", boost::print::array(x,1), ", ", boost::print::array(y,1), ", ", boost::print::array(w,1), ", ", boost::print::array(h,1), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -45021,6 +45262,7 @@ extern "C" {
     App("glXQueryChannelRectSGIX","(", boost::print::optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", boost::print::array(dx,1), ", ", boost::print::array(dy,1), ", ", boost::print::array(dw,1), ", ", boost::print::array(dh,1), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -45046,6 +45288,7 @@ extern "C" {
     App("glXCushionSGI","(", boost::print::optional(dpy,Logging::pointers), ", ", window, ", ", cushion, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->glXCushionSGI(dpy, window, cushion);
@@ -45069,6 +45312,7 @@ extern "C" {
     App("glXGetCurrentReadDrawableSGI","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLXDrawable ret = 0;
@@ -45117,6 +45361,7 @@ extern "C" {
     App("glXSwapIntervalSGI","(", interval, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -45142,6 +45387,7 @@ extern "C" {
     App("glXGetVideoSyncSGI","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -45165,6 +45411,7 @@ extern "C" {
     App("glXWaitVideoSyncSGI","(", divisor, ", ", remainder, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -45190,6 +45437,7 @@ extern "C" {
     App("glXGetTransparentIndexSUN","(", boost::print::optional(dpy,Logging::pointers), ", ", overlay, ", ", underlay, ", ", boost::print::array(pTransparentIndex,1), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Status ret = (Status) 0;
@@ -45215,6 +45463,7 @@ extern "C" {
     App("glXGetVideoResizeSUN","(", boost::print::optional(display,Logging::pointers), ", ", window, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -45238,6 +45487,7 @@ extern "C" {
     App("glXVideoResizeSUN","(", boost::print::optional(display,Logging::pointers), ", ", window, ", ", factor, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     int ret = 0;
@@ -45293,6 +45543,7 @@ extern "C" {
     App("CGLClearDrawable","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45316,6 +45567,7 @@ extern "C" {
     App("CGLCopyContext","(", src, ", ", dst, ", ", GLpushAttribToString(mask), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45339,6 +45591,7 @@ extern "C" {
     App("CGLCreateContext","(", pix, ", ", share, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45362,6 +45615,7 @@ extern "C" {
     App("CGLDescribePixelFormat","(", pix, ", ", pix_num, ", ", attrib, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45385,6 +45639,7 @@ extern "C" {
     App("CGLDescribeRenderer","(", rend, ", ", rend_num, ", ", prop, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45432,6 +45687,7 @@ extern "C" {
     App("CGLDestroyPixelFormat","(", pix, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45455,6 +45711,7 @@ extern "C" {
     App("CGLDestroyRendererInfo","(", rend, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45478,6 +45735,7 @@ extern "C" {
     App("CGLDisable","(", ctx, ", ", pname, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45501,6 +45759,7 @@ extern "C" {
     App("CGLEnable","(", ctx, ", ", pname, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45524,6 +45783,7 @@ extern "C" {
     App("CGLErrorString","(", error, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     const char * ret = NULL;
@@ -45547,6 +45807,7 @@ extern "C" {
     App("CGLFlushDrawable","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45574,6 +45835,7 @@ extern "C" {
     App("CGLGetOffScreen","(", ctx, ", ", boost::print::optional(width,Logging::pointers), ", ", boost::print::optional(height,Logging::pointers), ", ", boost::print::optional(rowbytes,Logging::pointers), ", ", boost::print::optional(baseaddr,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45597,6 +45859,7 @@ extern "C" {
     App("CGLGetOption","(", pname, ", ", boost::print::optional(param,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45620,6 +45883,7 @@ extern "C" {
     App("CGLGetParameter","(", ctx, ", ", pname, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45643,6 +45907,7 @@ extern "C" {
     App("CGLGetVersion","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->CGLGetVersion(majorvers, minorvers);
@@ -45664,6 +45929,7 @@ extern "C" {
     App("CGLGetVirtualScreen","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45687,6 +45953,7 @@ extern "C" {
     App("CGLIsEnabled","(", ctx, ", ", pname, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45710,6 +45977,7 @@ extern "C" {
     App("CGLQueryRendererInfo","(", display_mask, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45733,6 +46001,7 @@ extern "C" {
     App("CGLSetFullScreen","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45756,6 +46025,7 @@ extern "C" {
     App("CGLSetOffScreen","(", ctx, ", ", width, ", ", height, ", ", rowbytes, ", ", boost::print::optional(baseaddr,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45779,6 +46049,7 @@ extern "C" {
     App("CGLSetOption","(", pname, ", ", param, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45802,6 +46073,7 @@ extern "C" {
     App("CGLSetParameter","(", ctx, ", ", pname, ", ", boost::print::optional(params,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45825,6 +46097,7 @@ extern "C" {
     App("CGLSetVirtualScreen","(", ctx, ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45850,6 +46123,7 @@ extern "C" {
     App("CGLCreatePBuffer","(", width, ", ", height, ", ", toString(target), ", ", toString(internalFormat), ", ", max_level, ", ", pbuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45873,6 +46147,7 @@ extern "C" {
     App("CGLDescribePBuffer","(", pbuffer, ", ", boost::print::optional(width,Logging::pointers), ", ", boost::print::optional(height,Logging::pointers), ", ", boost::print::optional(target,Logging::pointers), ", ", boost::print::optional(internalFormat,Logging::pointers), ", ", boost::print::optional(mipmap,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45896,6 +46171,7 @@ extern "C" {
     App("CGLDestroyPBuffer","(", pbuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45919,6 +46195,7 @@ extern "C" {
     App("CGLGetPBuffer","(", ctx, ", ", pbuffer, ", ", boost::print::optional(face,Logging::pointers), ", ", boost::print::optional(level,Logging::pointers), ", ", boost::print::optional(screen,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45942,6 +46219,7 @@ extern "C" {
     App("CGLSetPBuffer","(", ctx, ", ", pbuffer, ", ", toString(face), ", ", level, ", ", screen, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45965,6 +46243,7 @@ extern "C" {
     App("CGLTexImagePBuffer","(", ctx, ", ", pbuffer, ", ", toString(source), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -45990,6 +46269,7 @@ extern "C" {
     App("CGLGetContextRetainCount","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLuint ret = 0;
@@ -46013,6 +46293,7 @@ extern "C" {
     App("CGLGetGlobalOption","(", pname, ", ", boost::print::optional(params,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46036,6 +46317,7 @@ extern "C" {
     App("CGLGetPBufferRetainCount","(", pbuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLuint ret = 0;
@@ -46059,6 +46341,7 @@ extern "C" {
     App("CGLGetPixelFormat","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLPixelFormatObj ret = 0;
@@ -46082,6 +46365,7 @@ extern "C" {
     App("CGLGetPixelFormatRetainCount","(", pix, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     GLuint ret = 0;
@@ -46105,6 +46389,7 @@ extern "C" {
     App("CGLLockContext","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46128,6 +46413,7 @@ extern "C" {
     App("CGLReleaseContext","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->CGLReleaseContext(ctx);
@@ -46149,6 +46435,7 @@ extern "C" {
     App("CGLReleasePBuffer","(", pbuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->CGLReleasePBuffer(pbuffer);
@@ -46170,6 +46457,7 @@ extern "C" {
     App("CGLReleasePixelFormat","(", pix, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->CGLReleasePixelFormat(pix);
@@ -46191,6 +46479,7 @@ extern "C" {
     App("CGLRetainContext","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLContextObj ret = 0;
@@ -46214,6 +46503,7 @@ extern "C" {
     App("CGLRetainPBuffer","(", pbuffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLPBufferObj ret = 0;
@@ -46237,6 +46527,7 @@ extern "C" {
     App("CGLRetainPixelFormat","(", pix, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLPixelFormatObj ret = 0;
@@ -46260,6 +46551,7 @@ extern "C" {
     App("CGLSetGlobalOption","(", pname, ", ", boost::print::optional(params,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46283,6 +46575,7 @@ extern "C" {
     App("CGLUnlockContext","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46332,6 +46625,7 @@ extern "C" {
     App("CGLGetShareGroup","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLShareGroupObj ret = 0;
@@ -46355,6 +46649,7 @@ extern "C" {
     App("CGLGetSurface","(", ctx, ", ", conn, ", ", win, ", ", srf, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46406,6 +46701,7 @@ extern "C" {
     App("CGLSetSurface","(", ctx, ", ", conn, ", ", win, ", ", srf, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46429,6 +46725,7 @@ extern "C" {
     App("CGLTexImageIOSurface2D","(", ctx, ", ", toString(target), ", ", toString(internal_format), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", ioSurface, ", ", plane, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46452,6 +46749,7 @@ extern "C" {
     App("CGLUpdateContext","(", ctx, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
@@ -46480,6 +46778,7 @@ extern "C" {
     App("eglQuerySurfacePointerANGLE","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", boost::print::optional(value,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46505,6 +46804,7 @@ extern "C" {
     App("eglClientWaitSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLint ret = 0;
@@ -46528,6 +46828,7 @@ extern "C" {
     App("eglCreateSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(type), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSyncKHR ret = 0;
@@ -46551,6 +46852,7 @@ extern "C" {
     App("eglDestroySyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46574,6 +46876,7 @@ extern "C" {
     App("eglGetSyncAttribKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46599,6 +46902,7 @@ extern "C" {
     App("eglCreateImageKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", EGLenumToString(target), ", ", boost::print::optional(buffer,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLImageKHR ret = 0;
@@ -46622,6 +46926,7 @@ extern "C" {
     App("eglDestroyImageKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(image,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46647,6 +46952,7 @@ extern "C" {
     App("eglLockSurfaceKHR","(", boost::print::optional(display,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46670,6 +46976,7 @@ extern "C" {
     App("eglUnlockSurfaceKHR","(", boost::print::optional(display,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46695,6 +47002,7 @@ extern "C" {
     App("eglStreamConsumerAcquireKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46718,6 +47026,7 @@ extern "C" {
     App("eglStreamConsumerGLTextureExternalKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46741,6 +47050,7 @@ extern "C" {
     App("eglStreamConsumerReleaseKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46766,6 +47076,7 @@ extern "C" {
     App("eglCreateStreamFromFileDescriptorKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", file_descriptor, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLStreamKHR ret = 0;
@@ -46789,6 +47100,7 @@ extern "C" {
     App("eglGetStreamFileDescriptorKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLNativeFileDescriptorKHR ret = 0;
@@ -46814,6 +47126,7 @@ extern "C" {
     App("eglCreateStreamProducerSurfaceKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(stream,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSurface ret = 0;
@@ -46839,6 +47152,7 @@ extern "C" {
     App("eglWaitSyncKHR","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLint ret = 0;
@@ -46864,6 +47178,7 @@ extern "C" {
     App("eglCreateDRMImageMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLImageKHR ret = 0;
@@ -46887,6 +47202,7 @@ extern "C" {
     App("eglExportDRMImageMESA","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(image,Logging::pointers), ", ", name, ", ", handle, ", ", stride, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46912,6 +47228,7 @@ extern "C" {
     App("eglCoverageMaskNV","(", toString(mask), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->eglCoverageMaskNV(mask);
@@ -46933,6 +47250,7 @@ extern "C" {
     App("eglCoverageOperationNV","(", toString(operation), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     _next->eglCoverageOperationNV(operation);
@@ -46956,6 +47274,7 @@ extern "C" {
     App("eglPostSubBufferNV","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", x, ", ", y, ", ", width, ", ", height, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -46981,6 +47300,7 @@ extern "C" {
     App("eglClientWaitSyncNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLint ret = 0;
@@ -47004,6 +47324,7 @@ extern "C" {
     App("eglCreateFenceSyncNV","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(condition), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSyncNV ret = 0;
@@ -47027,6 +47348,7 @@ extern "C" {
     App("eglDestroySyncNV","(", boost::print::optional(GLsync,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47050,6 +47372,7 @@ extern "C" {
     App("eglFenceNV","(", boost::print::optional(GLsync,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47073,6 +47396,7 @@ extern "C" {
     App("eglGetSyncAttribNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47096,6 +47420,7 @@ extern "C" {
     App("eglSignalSyncNV","(", boost::print::optional(GLsync,Logging::pointers), ", ", EGLenumToString(mode), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47121,6 +47446,7 @@ extern "C" {
     App("eglGetSystemTimeFrequencyNV","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLuint64NV ret = 0;
@@ -47144,6 +47470,7 @@ extern "C" {
     App("eglGetSystemTimeNV","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLuint64NV ret = 0;
@@ -47169,6 +47496,7 @@ extern "C" {
     App("eglChooseConfig","(", boost::print::optional(dpy,Logging::pointers), ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47192,6 +47520,7 @@ extern "C" {
     App("eglCopyBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", boost::print::optional(target,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47215,6 +47544,7 @@ extern "C" {
     App("eglCreateContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(share_context,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLContext ret = 0;
@@ -47238,6 +47568,7 @@ extern "C" {
     App("eglCreatePbufferSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSurface ret = 0;
@@ -47261,6 +47592,7 @@ extern "C" {
     App("eglCreatePixmapSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(pixmap,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSurface ret = 0;
@@ -47284,6 +47616,7 @@ extern "C" {
     App("eglCreateWindowSurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", boost::print::optional(win,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSurface ret = 0;
@@ -47331,6 +47664,7 @@ extern "C" {
     App("eglDestroySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47354,6 +47688,7 @@ extern "C" {
     App("eglGetConfigAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attribute, ", ", value, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47377,6 +47712,7 @@ extern "C" {
     App("eglGetConfigs","(", boost::print::optional(dpy,Logging::pointers), ", ", configs, ", ", config_size, ", ", num_config, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47424,6 +47760,7 @@ extern "C" {
     App("eglGetCurrentDisplay","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLDisplay ret = 0;
@@ -47447,6 +47784,7 @@ extern "C" {
     App("eglGetCurrentSurface","(", readdraw, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSurface ret = 0;
@@ -47494,6 +47832,7 @@ extern "C" {
     App("eglGetError","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLint ret = 0;
@@ -47517,6 +47856,7 @@ extern "C" {
     App("eglGetProcAddress","(", boost::print::quote(procname,'"'), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     __eglMustCastToProperFunctionPointerType ret = 0;
@@ -47546,6 +47886,7 @@ extern "C" {
     App("eglInitialize","(", boost::print::optional(dpy,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47599,6 +47940,7 @@ extern "C" {
     App("eglQueryContext","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(ctx,Logging::pointers), ", ", attribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47622,6 +47964,7 @@ extern "C" {
     App("eglQueryString","(", boost::print::optional(dpy,Logging::pointers), ", ", EGLenumToString(name), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     const char * ret = NULL;
@@ -47645,6 +47988,7 @@ extern "C" {
     App("eglQuerySurface","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47668,6 +48012,7 @@ extern "C" {
     App("eglSwapBuffers","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47695,6 +48040,7 @@ extern "C" {
     App("eglTerminate","(", boost::print::optional(dpy,Logging::pointers), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47718,6 +48064,7 @@ extern "C" {
     App("eglWaitGL","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47741,6 +48088,7 @@ extern "C" {
     App("eglWaitNative","(", engine, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47766,6 +48114,7 @@ extern "C" {
     App("eglBindTexImage","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", buffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47789,6 +48138,7 @@ extern "C" {
     App("eglReleaseTexImage","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", buffer, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47814,6 +48164,7 @@ extern "C" {
     App("eglBindAPI","(", EGLenumToString(api), ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47837,6 +48188,7 @@ extern "C" {
     App("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", boost::print::optional(buffer,Logging::pointers), ", ", boost::print::optional(config,Logging::pointers), ", ", attrib_list, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLSurface ret = 0;
@@ -47860,6 +48212,7 @@ extern "C" {
     App("eglQueryAPI","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLenum ret = 0;
@@ -47883,6 +48236,7 @@ extern "C" {
     App("eglReleaseThread","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47906,6 +48260,7 @@ extern "C" {
     App("eglSurfaceAttrib","(", boost::print::optional(dpy,Logging::pointers), ", ", boost::print::optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47929,6 +48284,7 @@ extern "C" {
     App("eglSwapInterval","(", boost::print::optional(dpy,Logging::pointers), ", ", interval, ")");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
@@ -47952,6 +48308,7 @@ extern "C" {
     App("eglWaitClient","()");
     #endif
     RegalAssert(Init::isInitialized());
+    Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;

@@ -265,8 +265,6 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
 
   return code
 
-
-
 def generateLoaderSource(apis, args):
 
   funcDefine   = apiMissingFuncDefineCode(apis, args)

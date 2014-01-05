@@ -35,10 +35,8 @@ formulaeGlobal = {
   'init' : 
   {
     'entries' : [
-      'CGLChoosePixelFormat', 'CGLGetCurrentContext',
-      'eglGetDisplay', 'eglGetCurrentContext',
-      'glXChooseVisual', 'glXGetProcAddress', 'glXQueryExtension', 'glXGetProcAddressARB',
-      'wglCreateContext', 'wglGetCurrentContext', 'wglGetProcAddress'
+      'CGL((?!SetCurrentContext|DestroyContext)).*',
+      '(egl|glX|wgl)((?!MakeCurrent|MakeContextCurrent|DeleteContext|DestroyContext)).*'
     ],
     'prefix'  : 'Init::init();'
   },

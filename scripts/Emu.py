@@ -152,7 +152,7 @@ def emuFindEntry(func, emuFormulae, member):
   m = [ [j.match(name),k,i] for k,i in emuFormulae.iteritems() for j in i['entries_re'] ]
   m = [ j for j in m if j[0] ]
 
-  assert len(m)<=1, 'Ambiguous match (%s) for %s - giving up.'%(', '.join([j[1] for j in m]),name)
+  assert len(m)<=1, 'Ambiguous match (%s) for %s - giving up.' % (', '.join([j[1] for j in m]),name)
 
   if len(m):
     match   = m[0][0]
