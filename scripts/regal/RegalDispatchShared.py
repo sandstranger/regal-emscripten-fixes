@@ -124,16 +124,10 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
     cond = condDefault
 
   categoryPrev = None
-  if dispatchName!= None:
-    code = '''
-void InitDispatchGlobal%s%s(Dispatch::Global &tbl)
+  code = '''
+void InitDispatch%s%s(Dispatch::Global &tbl)
 {
 '''%(dispatchName[0:1].upper(),dispatchName[1:])
-  else:
-    code = '''
-void Init(Dispatch::Global &tbl)
-{
-'''
 
   for api in apis:
 

@@ -190,6 +190,10 @@ RegalContext::Init()
     frame = new Frame;
   }
 
+#if REGAL_LOG
+  log.Init( this );
+#endif
+
 #if REGAL_EMULATION
 
   emu.Init( this );

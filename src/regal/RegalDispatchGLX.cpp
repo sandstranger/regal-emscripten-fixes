@@ -1094,7 +1094,7 @@ void InitDispatch::GLX(Dispatch::GL &tbl)
 
 }
 
-void InitDispatchGlobalGLX(Dispatch::Global &tbl)
+void InitDispatchGLX(Dispatch::Global &tbl)
 {
 
 #if REGAL_SYS_GLX

@@ -36798,7 +36798,7 @@ void InitDispatchTrace(Dispatch::GL &tbl)
 
 }
 
-void InitDispatchGlobalTrace(Dispatch::Global &tbl)
+void InitDispatchTrace(Dispatch::Global &tbl)
 {
 
 #if REGAL_SYS_WGL

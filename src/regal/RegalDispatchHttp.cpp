@@ -51539,7 +51539,7 @@ void InitDispatchTableHttp(Dispatch::GL &tbl)
 
 }
 
-void InitDispatchGlobalHttp(Dispatch::Global &tbl)
+void InitDispatchHttp(Dispatch::Global &tbl)
 {
 
 #if REGAL_SYS_WGL

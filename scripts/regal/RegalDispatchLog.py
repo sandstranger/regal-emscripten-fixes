@@ -41,9 +41,22 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+Dispatch::Global nextGlobal;
+
+void Log::Init( RegalContext * ctx ) {
+  ctx->log.next = ctx->dispatchGL;
+  void InitDispatchLog( Dispatch::GL & );
+  InitDispatchLog( ctx->dispatchGL );
+
+  nextGlobal = dispatchGlobal;
+  void InitDispatchLog( Dispatch::Global & );
+  InitDispatchLog( dispatchGlobal );
+}
+
+
 ${API_FUNC_DEFINE}
 
-void InitDispatchTableLog(Dispatch::GL &tbl)
+void InitDispatchLog(Dispatch::GL &tbl)
 {
 ${API_GL_DISPATCH_INIT}
 }
@@ -129,9 +142,9 @@ def generateDispatchLog(apis, args):
         code += '    _context->depthNewList--;\n'
 
       if function.needsContext:
-        code += '    Dispatch::GL *_next = &_context->dispatchGL;\n'
+        code += '    Dispatch::GL *_next = &_context->log.next;\n'
       else:
-        code += '    Dispatch::Global *_next = &dispatchGlobal;\n'
+        code += '    Dispatch::Global *_next = &nextGlobal;\n'
 
       code += '    RegalAssert(_next);\n'
       code += '    '
