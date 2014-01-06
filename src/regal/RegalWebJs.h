@@ -440,7 +440,7 @@ namespace {
     "  fetch( \"/shader\", function( d ) {\n"
     "    var spans = new Array();\n"
     "    d.forEach( function( t ) { spans.push(  \"<span>\" + t + \"</span>\" ); } );\n"
-    "    list.html( \"Programs: \" + spans.join( \",&nbsp; \" ) );\n"
+    "    list.html( \"Shaders: \" + spans.join( \",&nbsp; \" ) );\n"
     "    var spans = $(\"#shaders #list span\");\n"
     "    spans.click( function( ev ) {\n"
     "      fetch( \"/shader/\" + $(this).text(), function ( shd ) {\n"

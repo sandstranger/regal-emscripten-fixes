@@ -436,7 +436,7 @@ function createShaders() {
   fetch( "/shader", function( d ) {
     var spans = new Array();
     d.forEach( function( t ) { spans.push(  "<span>" + t + "</span>" ); } );
-    list.html( "Programs: " + spans.join( ",&nbsp; " ) );
+    list.html( "Shaders: " + spans.join( ",&nbsp; " ) );
     var spans = $("#shaders #list span");
     spans.click( function( ev ) {
       fetch( "/shader/" + $(this).text(), function ( shd ) {
