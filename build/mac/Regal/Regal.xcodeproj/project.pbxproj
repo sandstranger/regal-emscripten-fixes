@@ -15,6 +15,70 @@
 		431D3C0E15C9B6F0009DD04F /* RegalFavicon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 431D3C0A15C9B6F0009DD04F /* RegalFavicon.cpp */; };
 		431D3C0F15C9B6F0009DD04F /* RegalFavicon.h in Headers */ = {isa = PBXBuildFile; fileRef = 431D3C0B15C9B6F0009DD04F /* RegalFavicon.h */; };
 		431D3C1015C9B6F0009DD04F /* RegalMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 431D3C0C15C9B6F0009DD04F /* RegalMac.cpp */; };
+		433EC12918788E72007304B6 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12218788E72007304B6 /* error.c */; };
+		433EC12A18788E72007304B6 /* error.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12218788E72007304B6 /* error.c */; };
+		433EC12B18788E72007304B6 /* glue.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12318788E72007304B6 /* glue.c */; };
+		433EC12C18788E72007304B6 /* glue.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12318788E72007304B6 /* glue.c */; };
+		433EC12D18788E72007304B6 /* gluint.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC12418788E72007304B6 /* gluint.h */; };
+		433EC12E18788E72007304B6 /* gluint.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC12418788E72007304B6 /* gluint.h */; };
+		433EC12F18788E72007304B6 /* mipmap.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12518788E72007304B6 /* mipmap.c */; };
+		433EC13018788E72007304B6 /* mipmap.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12518788E72007304B6 /* mipmap.c */; };
+		433EC13118788E72007304B6 /* project.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12618788E72007304B6 /* project.c */; };
+		433EC13218788E72007304B6 /* project.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12618788E72007304B6 /* project.c */; };
+		433EC13318788E72007304B6 /* quad.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12718788E72007304B6 /* quad.c */; };
+		433EC13418788E72007304B6 /* quad.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12718788E72007304B6 /* quad.c */; };
+		433EC13518788E72007304B6 /* registry.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12818788E72007304B6 /* registry.c */; };
+		433EC13618788E72007304B6 /* registry.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC12818788E72007304B6 /* registry.c */; };
+		433EC14E18788EC9007304B6 /* dict-list.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13718788EC9007304B6 /* dict-list.h */; };
+		433EC14F18788EC9007304B6 /* dict-list.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13718788EC9007304B6 /* dict-list.h */; };
+		433EC15018788EC9007304B6 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13818788EC9007304B6 /* dict.c */; };
+		433EC15118788EC9007304B6 /* dict.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13818788EC9007304B6 /* dict.c */; };
+		433EC15218788EC9007304B6 /* dict.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13918788EC9007304B6 /* dict.h */; };
+		433EC15318788EC9007304B6 /* dict.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13918788EC9007304B6 /* dict.h */; };
+		433EC15418788EC9007304B6 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13A18788EC9007304B6 /* geom.c */; };
+		433EC15518788EC9007304B6 /* geom.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13A18788EC9007304B6 /* geom.c */; };
+		433EC15618788EC9007304B6 /* geom.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13B18788EC9007304B6 /* geom.h */; };
+		433EC15718788EC9007304B6 /* geom.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13B18788EC9007304B6 /* geom.h */; };
+		433EC15818788EC9007304B6 /* memalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13C18788EC9007304B6 /* memalloc.c */; };
+		433EC15918788EC9007304B6 /* memalloc.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13C18788EC9007304B6 /* memalloc.c */; };
+		433EC15A18788EC9007304B6 /* memalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13D18788EC9007304B6 /* memalloc.h */; };
+		433EC15B18788EC9007304B6 /* memalloc.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13D18788EC9007304B6 /* memalloc.h */; };
+		433EC15C18788EC9007304B6 /* mesh.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13E18788EC9007304B6 /* mesh.c */; };
+		433EC15D18788EC9007304B6 /* mesh.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC13E18788EC9007304B6 /* mesh.c */; };
+		433EC15E18788EC9007304B6 /* mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13F18788EC9007304B6 /* mesh.h */; };
+		433EC15F18788EC9007304B6 /* mesh.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC13F18788EC9007304B6 /* mesh.h */; };
+		433EC16018788EC9007304B6 /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14018788EC9007304B6 /* normal.c */; };
+		433EC16118788EC9007304B6 /* normal.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14018788EC9007304B6 /* normal.c */; };
+		433EC16218788EC9007304B6 /* normal.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14118788EC9007304B6 /* normal.h */; };
+		433EC16318788EC9007304B6 /* normal.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14118788EC9007304B6 /* normal.h */; };
+		433EC16418788EC9007304B6 /* priorityq-heap.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14218788EC9007304B6 /* priorityq-heap.h */; };
+		433EC16518788EC9007304B6 /* priorityq-heap.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14218788EC9007304B6 /* priorityq-heap.h */; };
+		433EC16618788EC9007304B6 /* priorityq-sort.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14318788EC9007304B6 /* priorityq-sort.h */; };
+		433EC16718788EC9007304B6 /* priorityq-sort.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14318788EC9007304B6 /* priorityq-sort.h */; };
+		433EC16818788EC9007304B6 /* priorityq.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14418788EC9007304B6 /* priorityq.c */; };
+		433EC16918788EC9007304B6 /* priorityq.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14418788EC9007304B6 /* priorityq.c */; };
+		433EC16A18788EC9007304B6 /* priorityq.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14518788EC9007304B6 /* priorityq.h */; };
+		433EC16B18788EC9007304B6 /* priorityq.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14518788EC9007304B6 /* priorityq.h */; };
+		433EC16C18788EC9007304B6 /* render.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14618788EC9007304B6 /* render.c */; };
+		433EC16D18788EC9007304B6 /* render.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14618788EC9007304B6 /* render.c */; };
+		433EC16E18788EC9007304B6 /* render.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14718788EC9007304B6 /* render.h */; };
+		433EC16F18788EC9007304B6 /* render.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14718788EC9007304B6 /* render.h */; };
+		433EC17018788EC9007304B6 /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14818788EC9007304B6 /* sweep.c */; };
+		433EC17118788EC9007304B6 /* sweep.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14818788EC9007304B6 /* sweep.c */; };
+		433EC17218788EC9007304B6 /* sweep.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14918788EC9007304B6 /* sweep.h */; };
+		433EC17318788EC9007304B6 /* sweep.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14918788EC9007304B6 /* sweep.h */; };
+		433EC17418788EC9007304B6 /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14A18788EC9007304B6 /* tess.c */; };
+		433EC17518788EC9007304B6 /* tess.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14A18788EC9007304B6 /* tess.c */; };
+		433EC17618788EC9007304B6 /* tess.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14B18788EC9007304B6 /* tess.h */; };
+		433EC17718788EC9007304B6 /* tess.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14B18788EC9007304B6 /* tess.h */; };
+		433EC17818788EC9007304B6 /* tessmono.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14C18788EC9007304B6 /* tessmono.c */; };
+		433EC17918788EC9007304B6 /* tessmono.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC14C18788EC9007304B6 /* tessmono.c */; };
+		433EC17A18788EC9007304B6 /* tessmono.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14D18788EC9007304B6 /* tessmono.h */; };
+		433EC17B18788EC9007304B6 /* tessmono.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC14D18788EC9007304B6 /* tessmono.h */; };
+		433EC17F187891D2007304B6 /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 433EC17D187891D2007304B6 /* misc.cpp */; };
+		433EC180187891D2007304B6 /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 433EC17D187891D2007304B6 /* misc.cpp */; };
+		433EC181187891D2007304B6 /* othersyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC17E187891D2007304B6 /* othersyms.c */; };
+		433EC182187891D2007304B6 /* othersyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC17E187891D2007304B6 /* othersyms.c */; };
 		4359147D18293B32002CB92C /* libapitrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4359144B18293A5C002CB92C /* libapitrace.a */; };
 		4359147E18293B32002CB92C /* libjsonsl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4359145118293A68002CB92C /* libjsonsl.a */; };
 		4359147F18293B32002CB92C /* libmd5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4359145718293A74002CB92C /* libmd5.a */; };
@@ -847,6 +911,38 @@
 		431D3C0A15C9B6F0009DD04F /* RegalFavicon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalFavicon.cpp; path = ../../../src/regal/RegalFavicon.cpp; sourceTree = "<group>"; };
 		431D3C0B15C9B6F0009DD04F /* RegalFavicon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalFavicon.h; path = ../../../src/regal/RegalFavicon.h; sourceTree = "<group>"; };
 		431D3C0C15C9B6F0009DD04F /* RegalMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalMac.cpp; path = ../../../src/regal/RegalMac.cpp; sourceTree = "<group>"; };
+		433EC12218788E72007304B6 /* error.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = error.c; path = ../../../src/glu/libutil/error.c; sourceTree = "<group>"; };
+		433EC12318788E72007304B6 /* glue.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = glue.c; path = ../../../src/glu/libutil/glue.c; sourceTree = "<group>"; };
+		433EC12418788E72007304B6 /* gluint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = gluint.h; path = ../../../src/glu/libutil/gluint.h; sourceTree = "<group>"; };
+		433EC12518788E72007304B6 /* mipmap.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mipmap.c; path = ../../../src/glu/libutil/mipmap.c; sourceTree = "<group>"; };
+		433EC12618788E72007304B6 /* project.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = project.c; path = ../../../src/glu/libutil/project.c; sourceTree = "<group>"; };
+		433EC12718788E72007304B6 /* quad.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = quad.c; path = ../../../src/glu/libutil/quad.c; sourceTree = "<group>"; };
+		433EC12818788E72007304B6 /* registry.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = registry.c; path = ../../../src/glu/libutil/registry.c; sourceTree = "<group>"; };
+		433EC13718788EC9007304B6 /* dict-list.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "dict-list.h"; path = "../../../src/glu/libtess/dict-list.h"; sourceTree = "<group>"; };
+		433EC13818788EC9007304B6 /* dict.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = dict.c; path = ../../../src/glu/libtess/dict.c; sourceTree = "<group>"; };
+		433EC13918788EC9007304B6 /* dict.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = dict.h; path = ../../../src/glu/libtess/dict.h; sourceTree = "<group>"; };
+		433EC13A18788EC9007304B6 /* geom.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = geom.c; path = ../../../src/glu/libtess/geom.c; sourceTree = "<group>"; };
+		433EC13B18788EC9007304B6 /* geom.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = geom.h; path = ../../../src/glu/libtess/geom.h; sourceTree = "<group>"; };
+		433EC13C18788EC9007304B6 /* memalloc.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = memalloc.c; path = ../../../src/glu/libtess/memalloc.c; sourceTree = "<group>"; };
+		433EC13D18788EC9007304B6 /* memalloc.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = memalloc.h; path = ../../../src/glu/libtess/memalloc.h; sourceTree = "<group>"; };
+		433EC13E18788EC9007304B6 /* mesh.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = mesh.c; path = ../../../src/glu/libtess/mesh.c; sourceTree = "<group>"; };
+		433EC13F18788EC9007304B6 /* mesh.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = mesh.h; path = ../../../src/glu/libtess/mesh.h; sourceTree = "<group>"; };
+		433EC14018788EC9007304B6 /* normal.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = normal.c; path = ../../../src/glu/libtess/normal.c; sourceTree = "<group>"; };
+		433EC14118788EC9007304B6 /* normal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = normal.h; path = ../../../src/glu/libtess/normal.h; sourceTree = "<group>"; };
+		433EC14218788EC9007304B6 /* priorityq-heap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "priorityq-heap.h"; path = "../../../src/glu/libtess/priorityq-heap.h"; sourceTree = "<group>"; };
+		433EC14318788EC9007304B6 /* priorityq-sort.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = "priorityq-sort.h"; path = "../../../src/glu/libtess/priorityq-sort.h"; sourceTree = "<group>"; };
+		433EC14418788EC9007304B6 /* priorityq.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = priorityq.c; path = ../../../src/glu/libtess/priorityq.c; sourceTree = "<group>"; };
+		433EC14518788EC9007304B6 /* priorityq.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = priorityq.h; path = ../../../src/glu/libtess/priorityq.h; sourceTree = "<group>"; };
+		433EC14618788EC9007304B6 /* render.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = render.c; path = ../../../src/glu/libtess/render.c; sourceTree = "<group>"; };
+		433EC14718788EC9007304B6 /* render.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = render.h; path = ../../../src/glu/libtess/render.h; sourceTree = "<group>"; };
+		433EC14818788EC9007304B6 /* sweep.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = sweep.c; path = ../../../src/glu/libtess/sweep.c; sourceTree = "<group>"; };
+		433EC14918788EC9007304B6 /* sweep.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = sweep.h; path = ../../../src/glu/libtess/sweep.h; sourceTree = "<group>"; };
+		433EC14A18788EC9007304B6 /* tess.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tess.c; path = ../../../src/glu/libtess/tess.c; sourceTree = "<group>"; };
+		433EC14B18788EC9007304B6 /* tess.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tess.h; path = ../../../src/glu/libtess/tess.h; sourceTree = "<group>"; };
+		433EC14C18788EC9007304B6 /* tessmono.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; name = tessmono.c; path = ../../../src/glu/libtess/tessmono.c; sourceTree = "<group>"; };
+		433EC14D18788EC9007304B6 /* tessmono.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tessmono.h; path = ../../../src/glu/libtess/tessmono.h; sourceTree = "<group>"; };
+		433EC17D187891D2007304B6 /* misc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = misc.cpp; sourceTree = "<group>"; };
+		433EC17E187891D2007304B6 /* othersyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = othersyms.c; sourceTree = "<group>"; };
 		4359144618293A5B002CB92C /* apitrace.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apitrace.xcodeproj; path = ../apitrace/apitrace.xcodeproj; sourceTree = "<group>"; };
 		4359144C18293A68002CB92C /* jsonsl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = jsonsl.xcodeproj; path = ../jsonsl/jsonsl.xcodeproj; sourceTree = "<group>"; };
 		4359145218293A73002CB92C /* md5.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = md5.xcodeproj; path = ../md5/md5.xcodeproj; sourceTree = "<group>"; };
@@ -1052,6 +1148,52 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		433EC11518788DE5007304B6 /* glu */ = {
+			isa = PBXGroup;
+			children = (
+				433EC13718788EC9007304B6 /* dict-list.h */,
+				433EC13818788EC9007304B6 /* dict.c */,
+				433EC13918788EC9007304B6 /* dict.h */,
+				433EC13A18788EC9007304B6 /* geom.c */,
+				433EC13B18788EC9007304B6 /* geom.h */,
+				433EC13C18788EC9007304B6 /* memalloc.c */,
+				433EC13D18788EC9007304B6 /* memalloc.h */,
+				433EC13E18788EC9007304B6 /* mesh.c */,
+				433EC13F18788EC9007304B6 /* mesh.h */,
+				433EC14018788EC9007304B6 /* normal.c */,
+				433EC14118788EC9007304B6 /* normal.h */,
+				433EC14218788EC9007304B6 /* priorityq-heap.h */,
+				433EC14318788EC9007304B6 /* priorityq-sort.h */,
+				433EC14418788EC9007304B6 /* priorityq.c */,
+				433EC14518788EC9007304B6 /* priorityq.h */,
+				433EC14618788EC9007304B6 /* render.c */,
+				433EC14718788EC9007304B6 /* render.h */,
+				433EC14818788EC9007304B6 /* sweep.c */,
+				433EC14918788EC9007304B6 /* sweep.h */,
+				433EC14A18788EC9007304B6 /* tess.c */,
+				433EC14B18788EC9007304B6 /* tess.h */,
+				433EC14C18788EC9007304B6 /* tessmono.c */,
+				433EC14D18788EC9007304B6 /* tessmono.h */,
+				433EC12218788E72007304B6 /* error.c */,
+				433EC12318788E72007304B6 /* glue.c */,
+				433EC12418788E72007304B6 /* gluint.h */,
+				433EC12518788E72007304B6 /* mipmap.c */,
+				433EC12618788E72007304B6 /* project.c */,
+				433EC12718788E72007304B6 /* quad.c */,
+				433EC12818788E72007304B6 /* registry.c */,
+			);
+			name = glu;
+			sourceTree = "<group>";
+		};
+		433EC17C187891BE007304B6 /* dylibmisc */ = {
+			isa = PBXGroup;
+			children = (
+				433EC17D187891D2007304B6 /* misc.cpp */,
+				433EC17E187891D2007304B6 /* othersyms.c */,
+			);
+			name = dylibmisc;
+			sourceTree = "<group>";
+		};
 		4359144718293A5B002CB92C /* Products */ = {
 			isa = PBXGroup;
 			children = (
@@ -1153,6 +1295,8 @@
 		43A6C1BB15C48CD90063667E = {
 			isa = PBXGroup;
 			children = (
+				433EC17C187891BE007304B6 /* dylibmisc */,
+				433EC11518788DE5007304B6 /* glu */,
 				43A6C1D015C48CFA0063667E /* Regal */,
 				43A6C1C715C48CD90063667E /* Products */,
 				4359147C18293AF6002CB92C /* subprojects */,
@@ -1344,6 +1488,21 @@
 				437B7CB6187A8BF700C863BB /* RegalOrigDsa.h in Headers */,
 				43C7583C184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
 				437B7CC2187A8BF700C863BB /* RegalOrigIff.h in Headers */,
+				433EC15618788EC9007304B6 /* geom.h in Headers */,
+				433EC15218788EC9007304B6 /* dict.h in Headers */,
+				433EC16E18788EC9007304B6 /* render.h in Headers */,
+				433EC17A18788EC9007304B6 /* tessmono.h in Headers */,
+				433EC17618788EC9007304B6 /* tess.h in Headers */,
+				43C7583C184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
+				433EC12D18788E72007304B6 /* gluint.h in Headers */,
+				433EC16A18788EC9007304B6 /* priorityq.h in Headers */,
+				433EC16618788EC9007304B6 /* priorityq-sort.h in Headers */,
+				433EC15A18788EC9007304B6 /* memalloc.h in Headers */,
+				433EC14E18788EC9007304B6 /* dict-list.h in Headers */,
+				433EC15E18788EC9007304B6 /* mesh.h in Headers */,
+				433EC16418788EC9007304B6 /* priorityq-heap.h in Headers */,
+				433EC17218788EC9007304B6 /* sweep.h in Headers */,
+				433EC16218788EC9007304B6 /* normal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1461,6 +1620,21 @@
 				437B7CB8187A8BF700C863BB /* RegalOrigDsa.h in Headers */,
 				43C7583E184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
 				437B7CC4187A8BF700C863BB /* RegalOrigIff.h in Headers */,
+				433EC15718788EC9007304B6 /* geom.h in Headers */,
+				433EC15318788EC9007304B6 /* dict.h in Headers */,
+				433EC16F18788EC9007304B6 /* render.h in Headers */,
+				433EC17B18788EC9007304B6 /* tessmono.h in Headers */,
+				433EC17718788EC9007304B6 /* tess.h in Headers */,
+				43C7583E184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
+				433EC12E18788E72007304B6 /* gluint.h in Headers */,
+				433EC16B18788EC9007304B6 /* priorityq.h in Headers */,
+				433EC16718788EC9007304B6 /* priorityq-sort.h in Headers */,
+				433EC15B18788EC9007304B6 /* memalloc.h in Headers */,
+				433EC14F18788EC9007304B6 /* dict-list.h in Headers */,
+				433EC15F18788EC9007304B6 /* mesh.h in Headers */,
+				433EC16518788EC9007304B6 /* priorityq-heap.h in Headers */,
+				433EC17318788EC9007304B6 /* sweep.h in Headers */,
+				433EC16318788EC9007304B6 /* normal.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1818,9 +1992,11 @@
 				4359159A1836766E002CB92C /* RegalCacheShader.h in Sources */,
 				4359159B1836766E002CB92C /* RegalCacheTexture.cpp in Sources */,
 				4359159C1836766E002CB92C /* RegalCacheTexture.h in Sources */,
+				433EC13118788E72007304B6 /* project.c in Sources */,
 				4359159D1836766E002CB92C /* RegalClientState.h in Sources */,
 				4359159E1836766E002CB92C /* RegalConfig.cpp in Sources */,
 				4359159F1836766E002CB92C /* RegalConfig.h in Sources */,
+				433EC15818788EC9007304B6 /* memalloc.c in Sources */,
 				435915A01836766E002CB92C /* RegalContext.cpp in Sources */,
 				435915A11836766E002CB92C /* RegalContext.h in Sources */,
 				435915A21836766E002CB92C /* RegalContextInfo.cpp in Sources */,
@@ -1829,14 +2005,17 @@
 				435915A51836766E002CB92C /* RegalDispatch.cpp in Sources */,
 				435915A61836766E002CB92C /* RegalDispatch.h in Sources */,
 				435915A71836766E002CB92C /* RegalDispatchCache.cpp in Sources */,
+				433EC17018788EC9007304B6 /* sweep.c in Sources */,
 				435915A81836766E002CB92C /* RegalDispatchCode.cpp in Sources */,
 				435915A91836766E002CB92C /* RegalDispatchDebug.cpp in Sources */,
 				435915AA1836766E002CB92C /* RegalDispatchEmu.cpp in Sources */,
+				433EC16818788EC9007304B6 /* priorityq.c in Sources */,
 				435915AB1836766E002CB92C /* RegalDispatcher.cpp in Sources */,
 				435915AC1836766E002CB92C /* RegalDispatcher.h in Sources */,
 				435915AD1836766E002CB92C /* RegalDispatcherGL.cpp in Sources */,
 				435915AE1836766E002CB92C /* RegalDispatcherGL.h in Sources */,
 				435915AF1836766E002CB92C /* RegalDispatcherGlobal.cpp in Sources */,
+				433EC12B18788E72007304B6 /* glue.c in Sources */,
 				435915B01836766E002CB92C /* RegalDispatcherGlobal.h in Sources */,
 				435915B11836766E002CB92C /* RegalDispatchError.cpp in Sources */,
 				435915B21836766E002CB92C /* RegalDispatchError.h in Sources */,
@@ -1844,11 +2023,13 @@
 				435915B41836766E002CB92C /* RegalDispatchGLX.cpp in Sources */,
 				435915B51836766E002CB92C /* RegalDispatchLoader.cpp in Sources */,
 				435915B61836766E002CB92C /* RegalDispatchLog.cpp in Sources */,
+				433EC17818788EC9007304B6 /* tessmono.c in Sources */,
 				435915B71836766E002CB92C /* RegalDispatchMissing.cpp in Sources */,
 				435915B81836766E002CB92C /* RegalDispatchPpapi.cpp in Sources */,
 				435915B91836766E002CB92C /* RegalDispatchStaticEGL.cpp in Sources */,
 				435915BA1836766E002CB92C /* RegalDispatchStaticES2.cpp in Sources */,
 				435915BB1836766E002CB92C /* RegalDispatchStatistics.cpp in Sources */,
+				433EC15418788EC9007304B6 /* geom.c in Sources */,
 				435915BC1836766E002CB92C /* RegalDispatchTrace.cpp in Sources */,
 				435915BD1836766E002CB92C /* RegalDllMain.cpp in Sources */,
 				435915BE1836766E002CB92C /* RegalDsa.h in Sources */,
@@ -1859,6 +2040,8 @@
 				435915C31836766E002CB92C /* RegalEnum.h in Sources */,
 				435915C41836766E002CB92C /* RegalFavicon.cpp in Sources */,
 				435915C51836766E002CB92C /* RegalFavicon.h in Sources */,
+				433EC17F187891D2007304B6 /* misc.cpp in Sources */,
+				433EC16C18788EC9007304B6 /* render.c in Sources */,
 				435915C61836766E002CB92C /* RegalFilt.cpp in Sources */,
 				435915C71836766E002CB92C /* RegalFilt.h in Sources */,
 				435915C81836766E002CB92C /* RegalFloat4.h in Sources */,
@@ -1901,18 +2084,24 @@
 				435915ED1836766E002CB92C /* RegalQuads.h in Sources */,
 				435915EE1836766E002CB92C /* RegalRect.h in Sources */,
 				435915EF1836766E002CB92C /* RegalScopedPtr.h in Sources */,
+				433EC13518788E72007304B6 /* registry.c in Sources */,
+				433EC17418788EC9007304B6 /* tess.c in Sources */,
 				435915F01836766E002CB92C /* RegalShader.cpp in Sources */,
+				433EC15C18788EC9007304B6 /* mesh.c in Sources */,
+				433EC181187891D2007304B6 /* othersyms.c in Sources */,
 				435915F11836766E002CB92C /* RegalShader.h in Sources */,
 				435915F21836766E002CB92C /* RegalShaderInstance.cpp in Sources */,
 				435915F31836766E002CB92C /* RegalShaderInstance.h in Sources */,
 				435915F41836766E002CB92C /* RegalSharedList.h in Sources */,
 				435915F51836766E002CB92C /* RegalSharedMap.h in Sources */,
+				433EC13318788E72007304B6 /* quad.c in Sources */,
 				435915F61836766E002CB92C /* RegalSharedPtr.h in Sources */,
 				435915F71836766E002CB92C /* RegalSo.cpp in Sources */,
 				435915F81836766E002CB92C /* RegalSo.h in Sources */,
 				435915F91836766E002CB92C /* RegalState.h in Sources */,
 				435915FA1836766E002CB92C /* RegalStatistics.cpp in Sources */,
 				435915FB1836766E002CB92C /* RegalStatistics.h in Sources */,
+				433EC12918788E72007304B6 /* error.c in Sources */,
 				435915FC1836766E002CB92C /* RegalSystem.h in Sources */,
 				435915FD1836766E002CB92C /* RegalTexC.cpp in Sources */,
 				435915FE1836766E002CB92C /* RegalTexC.h in Sources */,
@@ -1922,8 +2111,11 @@
 				435916021836766E002CB92C /* RegalToken.cpp in Sources */,
 				435916031836766E002CB92C /* RegalToken.h in Sources */,
 				435916041836766E002CB92C /* RegalUtil.cpp in Sources */,
+				433EC12F18788E72007304B6 /* mipmap.c in Sources */,
 				435916051836766E002CB92C /* RegalUtil.h in Sources */,
 				435916061836766E002CB92C /* RegalVao.h in Sources */,
+				433EC16018788EC9007304B6 /* normal.c in Sources */,
+				433EC15018788EC9007304B6 /* dict.c in Sources */,
 				435916071836766E002CB92C /* RegalX11.cpp in Sources */,
 				435916081836766E002CB92C /* RegalXfer.cpp in Sources */,
 				435916091836766E002CB92C /* RegalXfer.h in Sources */,
@@ -2007,9 +2199,11 @@
 				435916F018367E05002CB92C /* RegalCacheShader.h in Sources */,
 				435916F118367E05002CB92C /* RegalCacheTexture.cpp in Sources */,
 				435916F218367E05002CB92C /* RegalCacheTexture.h in Sources */,
+				433EC13218788E72007304B6 /* project.c in Sources */,
 				435916F318367E05002CB92C /* RegalClientState.h in Sources */,
 				435916F418367E05002CB92C /* RegalConfig.cpp in Sources */,
 				435916F518367E05002CB92C /* RegalConfig.h in Sources */,
+				433EC15918788EC9007304B6 /* memalloc.c in Sources */,
 				435916F618367E05002CB92C /* RegalContext.cpp in Sources */,
 				435916F718367E05002CB92C /* RegalContext.h in Sources */,
 				435916F818367E05002CB92C /* RegalContextInfo.cpp in Sources */,
@@ -2018,14 +2212,17 @@
 				435916FB18367E05002CB92C /* RegalDispatch.cpp in Sources */,
 				435916FC18367E05002CB92C /* RegalDispatch.h in Sources */,
 				435916FD18367E05002CB92C /* RegalDispatchCache.cpp in Sources */,
+				433EC17118788EC9007304B6 /* sweep.c in Sources */,
 				435916FE18367E05002CB92C /* RegalDispatchCode.cpp in Sources */,
 				435916FF18367E05002CB92C /* RegalDispatchDebug.cpp in Sources */,
 				4359170018367E05002CB92C /* RegalDispatchEmu.cpp in Sources */,
+				433EC16918788EC9007304B6 /* priorityq.c in Sources */,
 				4359170118367E05002CB92C /* RegalDispatcher.cpp in Sources */,
 				4359170218367E05002CB92C /* RegalDispatcher.h in Sources */,
 				4359170318367E05002CB92C /* RegalDispatcherGL.cpp in Sources */,
 				4359170418367E05002CB92C /* RegalDispatcherGL.h in Sources */,
 				4359170518367E05002CB92C /* RegalDispatcherGlobal.cpp in Sources */,
+				433EC12C18788E72007304B6 /* glue.c in Sources */,
 				4359170618367E05002CB92C /* RegalDispatcherGlobal.h in Sources */,
 				4359170718367E05002CB92C /* RegalDispatchError.cpp in Sources */,
 				4359170818367E05002CB92C /* RegalDispatchError.h in Sources */,
@@ -2033,11 +2230,13 @@
 				4359170A18367E05002CB92C /* RegalDispatchGLX.cpp in Sources */,
 				4359170B18367E05002CB92C /* RegalDispatchLoader.cpp in Sources */,
 				4359170C18367E05002CB92C /* RegalDispatchLog.cpp in Sources */,
+				433EC17918788EC9007304B6 /* tessmono.c in Sources */,
 				4359170D18367E05002CB92C /* RegalDispatchMissing.cpp in Sources */,
 				4359170E18367E05002CB92C /* RegalDispatchPpapi.cpp in Sources */,
 				4359170F18367E05002CB92C /* RegalDispatchStaticEGL.cpp in Sources */,
 				4359171018367E05002CB92C /* RegalDispatchStaticES2.cpp in Sources */,
 				4359171118367E05002CB92C /* RegalDispatchStatistics.cpp in Sources */,
+				433EC15518788EC9007304B6 /* geom.c in Sources */,
 				4359171218367E05002CB92C /* RegalDispatchTrace.cpp in Sources */,
 				4359171318367E05002CB92C /* RegalDllMain.cpp in Sources */,
 				4359171418367E05002CB92C /* RegalDsa.h in Sources */,
@@ -2048,6 +2247,8 @@
 				4359171918367E05002CB92C /* RegalEnum.h in Sources */,
 				4359171A18367E05002CB92C /* RegalFavicon.cpp in Sources */,
 				4359171B18367E05002CB92C /* RegalFavicon.h in Sources */,
+				433EC180187891D2007304B6 /* misc.cpp in Sources */,
+				433EC16D18788EC9007304B6 /* render.c in Sources */,
 				4359171C18367E05002CB92C /* RegalFilt.cpp in Sources */,
 				4359171D18367E05002CB92C /* RegalFilt.h in Sources */,
 				4359171E18367E05002CB92C /* RegalFloat4.h in Sources */,
@@ -2090,18 +2291,24 @@
 				4359174318367E05002CB92C /* RegalQuads.h in Sources */,
 				4359174418367E05002CB92C /* RegalRect.h in Sources */,
 				4359174518367E05002CB92C /* RegalScopedPtr.h in Sources */,
+				433EC13618788E72007304B6 /* registry.c in Sources */,
+				433EC17518788EC9007304B6 /* tess.c in Sources */,
 				4359174618367E05002CB92C /* RegalShader.cpp in Sources */,
+				433EC15D18788EC9007304B6 /* mesh.c in Sources */,
+				433EC182187891D2007304B6 /* othersyms.c in Sources */,
 				4359174718367E05002CB92C /* RegalShader.h in Sources */,
 				4359174818367E05002CB92C /* RegalShaderInstance.cpp in Sources */,
 				4359174918367E05002CB92C /* RegalShaderInstance.h in Sources */,
 				4359174A18367E05002CB92C /* RegalSharedList.h in Sources */,
 				4359174B18367E05002CB92C /* RegalSharedMap.h in Sources */,
+				433EC13418788E72007304B6 /* quad.c in Sources */,
 				4359174C18367E05002CB92C /* RegalSharedPtr.h in Sources */,
 				4359174D18367E05002CB92C /* RegalSo.cpp in Sources */,
 				4359174E18367E05002CB92C /* RegalSo.h in Sources */,
 				4359174F18367E05002CB92C /* RegalState.h in Sources */,
 				4359175018367E05002CB92C /* RegalStatistics.cpp in Sources */,
 				4359175118367E05002CB92C /* RegalStatistics.h in Sources */,
+				433EC12A18788E72007304B6 /* error.c in Sources */,
 				4359175218367E05002CB92C /* RegalSystem.h in Sources */,
 				4359175318367E05002CB92C /* RegalTexC.cpp in Sources */,
 				4359175418367E05002CB92C /* RegalTexC.h in Sources */,
@@ -2111,8 +2318,11 @@
 				4359175818367E05002CB92C /* RegalToken.cpp in Sources */,
 				4359175918367E05002CB92C /* RegalToken.h in Sources */,
 				4359175A18367E05002CB92C /* RegalUtil.cpp in Sources */,
+				433EC13018788E72007304B6 /* mipmap.c in Sources */,
 				4359175B18367E05002CB92C /* RegalUtil.h in Sources */,
 				4359175C18367E05002CB92C /* RegalVao.h in Sources */,
+				433EC16118788EC9007304B6 /* normal.c in Sources */,
+				433EC15118788EC9007304B6 /* dict.c in Sources */,
 				4359175D18367E05002CB92C /* RegalX11.cpp in Sources */,
 				4359175E18367E05002CB92C /* RegalXfer.cpp in Sources */,
 				4359175F18367E05002CB92C /* RegalXfer.h in Sources */,
@@ -2404,6 +2614,7 @@
 				CLANG_WARN_INT_CONVERSION = YES;
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = NO;
+				EXPORTED_SYMBOLS_FILE = export_list.txt;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_DYNAMIC_NO_PIC = NO;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
@@ -2440,6 +2651,7 @@
 					../../../src/glsl/src/mesa,
 					../../../src/glsl/include,
 					../../../src/pcre,
+					../../../src/glu/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				ONLY_ACTIVE_ARCH = YES;
@@ -2460,6 +2672,7 @@
 				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
 				COPY_PHASE_STRIP = YES;
 				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				EXPORTED_SYMBOLS_FILE = export_list.txt;
 				GCC_C_LANGUAGE_STANDARD = gnu99;
 				GCC_ENABLE_OBJC_EXCEPTIONS = YES;
 				GCC_PREPROCESSOR_DEFINITIONS = (
@@ -2491,6 +2704,7 @@
 					../../../src/glsl/src/mesa,
 					../../../src/glsl/include,
 					../../../src/pcre,
+					../../../src/glu/include,
 				);
 				MACOSX_DEPLOYMENT_TARGET = 10.7;
 				SDKROOT = macosx;

@@ -1,0 +1,9 @@
+_gluCheckExtension
+_gluNewQuadric
+_gluQuadricDrawStyle
+_gluQuadricNormals
+_gluSphere
+_gluLookAt
+_gluOrtho2DCTX
+_CGLOpenCLMuxLockDown
+
