@@ -1,34 +1,5 @@
 #!/usr/bin/python -B
 
-#
-#  When tracing the driver side, all loader functions must have their proc addresses finalized
-#  so we can hijack the loadedTbl.
-#
-#  void driver_entry( arg0, arg1, ... ) {
-#     if( layer_1 && layer_1_inactive ) {
-#        layer_1_activate
-#        layer_1_prefix
-#        layer_1_deactivate
-#     }
-#     if( layer_0 && layer_0_inactive ) {
-#        layer_0_activate
-#        layer_0_prefix
-#        layer_0_deactivate
-#     }
-#
-#     if( layer_1 && layer_1_inactive ) {
-#        layer_1_activate
-#        layer_1_impl
-#        layer_1_deactivate
-#     } else if( layer_0 && layer_0_inactive ) {
-#        layer_0_activate
-#        layer_0_impl
-#        layer_0_deactivate
-#     } else {
-#        loaded.entry(...)
-#     }
-#  }
-
 from ApiCodeGen import typeCode, wrapCIf
 from ApiUtil import typeIsVoid
 import re
@@ -134,12 +105,18 @@ def emuFindEntry(func, emuFormulae, member):
     else :
       arg[label] = ''
 
+  formulae = {}
+  for k,i in emuFormulae.iteritems():
+    if k == 'options':
+      continue
+    formulae[k] = emuFormulae[k]
+
   # Iterator over the formulae
   #
   # k is the key
   # i is the formula
 
-  for k,i in emuFormulae.iteritems():
+  for k,i in formulae.iteritems():
 
     # Cache the compiled regular expressions, as needed
 
@@ -149,7 +126,7 @@ def emuFindEntry(func, emuFormulae, member):
   # A list of matches containing (match object, formula name, formula)
   # Look for matches, ideally only one
 
-  m = [ [j.match(name),k,i] for k,i in emuFormulae.iteritems() for j in i['entries_re'] ]
+  m = [ [j.match(name),k,i] for k,i in formulae.iteritems() for j in i['entries_re'] ]
   m = [ j for j in m if j[0] ]
 
   assert len(m)<=1, 'Ambiguous match (%s) for %s - giving up.' % (', '.join([j[1] for j in m]),name)
@@ -190,6 +167,31 @@ def emuFindEntry(func, emuFormulae, member):
 
   return None
 
+#
+# return list of originate entry points
+#
+
+def emuGetOriginateList( emuFormulae, apis ):
+
+  originate = []
+
+  if emuFormulae and 'options' in emuFormulae:
+    opt = emuFormulae['options']
+    if 'originate' in opt:
+      originate.extend( opt['originate'] )
+    if 'originateAllEntries' in opt:
+      if opt['originateAllEntries'] == True:
+        for api in apis:
+
+          for function in api.functions:
+            e = emuFindEntry( function, emuFormulae, 'foo' )
+            if e == None:
+              continue
+            if function.name not in originate:
+              originate.append( function.name )
+
+  return originate
+            
 #
 # Generate code for prefix, init, cond, impl or suffix
 #

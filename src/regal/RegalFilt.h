@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
+#include "RegalOrigFilter.h"
 
 REGAL_GLOBAL_END
 
@@ -64,7 +65,7 @@ namespace Emu {
     void
     Init(RegalContext &ctx)
     {
-      UNUSED_PARAMETER(ctx);
+      orig.Initialize( ctx.dispatchGL );
     }
 
     void
@@ -102,6 +103,8 @@ namespace Emu {
 
     bool TexImage2D  (const RegalContext &ctx, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data);
 
+    EmuOriginateProcFilter orig;
+    
   private:
     GLuint fboID;
   };
