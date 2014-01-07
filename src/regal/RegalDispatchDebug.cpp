@@ -68,15 +68,11 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-static Dispatch::Global nextGlobal;
+void InitDispatchDebug( Dispatch::GL & tbl );
 
 void Debug::Init( RegalContext * ctx ) {
-  void InitDispatchDebug( Dispatch::GL & tbl );
   next = ctx->dispatchGL;
   InitDispatchDebug( ctx->dispatchGL );
-  nextGlobal = dispatchGlobal;
-  void InitDispatchDebug( Dispatch::Global & tbl );
-  InitDispatchDebug( dispatchGlobal );
 }
 
 // GL_VERSION_1_0

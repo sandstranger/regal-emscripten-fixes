@@ -38138,7 +38138,7 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
   }
 
- void InitDispatchGlobalLoader(Dispatch::Global &dt) {
+ void InitDispatchLoader(Dispatch::Global &dt) {
 
   #if REGAL_SYS_WGL
     // WGL_3DL_stereo_control

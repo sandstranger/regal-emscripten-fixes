@@ -202,7 +202,7 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
     cond = condDefault
 
   categoryPrev = None
-  code = ' void InitDispatchGlobalLoader(Dispatch::Global &dt) {\n'
+  code = ' void InitDispatchLoader(Dispatch::Global &dt) {\n'
 
   for api in apis:
 

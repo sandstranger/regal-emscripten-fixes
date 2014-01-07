@@ -42,14 +42,14 @@ REGAL_GLOBAL_END
 REGAL_NAMESPACE_BEGIN
 
 static Dispatch::Global nextGlobal;
+void InitDispatchLog( Dispatch::GL & );
+void InitDispatchLog( Dispatch::Global & );
 
 void Log::Init( RegalContext * ctx ) {
   ctx->log.next = ctx->dispatchGL;
-  void InitDispatchLog( Dispatch::GL & );
   InitDispatchLog( ctx->dispatchGL );
 
   nextGlobal = dispatchGlobal;
-  void InitDispatchLog( Dispatch::Global & );
   InitDispatchLog( dispatchGlobal );
 }
 

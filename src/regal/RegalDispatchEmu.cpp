@@ -86,16 +86,12 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-//Dispatch::Global nextGlobal;
+void InitDispatchEmu( Dispatch::GL & dt );
 
 void Emulation::Init( RegalContext * ctx ) {
   ctx->emu.next = ctx->dispatchGL;
-  void InitDispatchEmu( Dispatch::GL & dt );
   InitDispatchEmu( ctx->dispatchGL );
   ctx->emu.curr = ctx->dispatchGL;
-  //nextGlobal = dispatchGlobal;
-  //InitDispatchGlobalEmu( Dispatch::Global & dt );
-  //InitDispatchGlobalEmu( dispatchGlobal );
 }
 
 // GL_VERSION_1_0

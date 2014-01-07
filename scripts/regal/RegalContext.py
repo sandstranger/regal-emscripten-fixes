@@ -335,6 +335,8 @@ ${EMU_MEMBER_CONSTRUCT}#endif
   shareGroup.push_back(this);
 }
 
+void InitDispatchLoader( Dispatch::GL & );
+
 void
 RegalContext::Init()
 {
@@ -346,7 +348,6 @@ RegalContext::Init()
       
   memset( &dispatchGL, 0, sizeof( Dispatch::GL ) );
             
-  void InitDispatchLoader( Dispatch::GL & );
   InitDispatchLoader( dispatchGL );
 
   RegalAssert(this);
