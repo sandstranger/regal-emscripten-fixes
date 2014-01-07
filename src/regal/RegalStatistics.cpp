@@ -5105,7 +5105,7 @@ void
 Statistics::log(const char *name, const GLuint count)
 {
   if (count)
-    Info("Statistics ",left(name,30,' '),right(count,6,' '));
+    Info("Statistics ",print_left(name,30,' '),print_right(count,6,' '));
 }
 
 REGAL_NAMESPACE_END

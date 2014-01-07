@@ -182,7 +182,12 @@ EmuInfo::init(const ContextInfo &contextInfo)
 
   // Form Regal extension string from the set
 
-  extensions = ::print_detail::join(extensionsSet,string(" "));
+  extensions = "";
+  for( std::set<std::string>::iterator i = extensionsSet.begin(); i != extensionsSet.end(); ++i ) {
+    extensions += *i;
+    extensions += " ";
+  }
+  extensions.erase( extensions.rfind( " " ) );
 
   Info("Regal vendor     : ",vendor);
   Info("Regal renderer   : ",renderer);

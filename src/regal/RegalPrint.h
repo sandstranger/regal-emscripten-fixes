@@ -85,7 +85,7 @@ T print_hex( const T & t, const U & u ) {
 #define print_array( ... ) std::string(" implement print_array() ")
 #define print_optional( ... ) std::string(" implement print_optional() ")
 #define print_raw( ... ) std::string( " implement print_raw() " )
-#define print_trim( ... ) std::string( " implement trim() " )
+#define print_trim( a, ... ) (a)
 #define print_right( a, ... ) (a)
 #define print_left( a, ... ) (a)
 
