@@ -96,9 +96,9 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>mongooselib.lib;md5lib.lib;jsonsllib.lib;squishlib.lib;apitracelib.lib;snappylib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mongooselib.lib;md5lib.lib;jsonsllib.lib;squishlib.lib;apitracelib.lib;snappylib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;glsl_optimizer_lib-win32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>Release\Win32\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>Release\Win32\;$(SolutionDir)\..\..\..\..\src\glsl\projects\vs2010\build\glsl_optimizer_lib\Release;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>../../../../src/regal/Regal.def</ModuleDefinitionFile>
       <ProgramDatabaseFile>Release\Win32\regal32.pdb</ProgramDatabaseFile>
       <SubSystem>Console</SubSystem>
@@ -158,7 +158,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>../../../../src/boost;../../../../include;../../../../src/mongoose;../../../../src/lookup3;../../../../src/md5/include;../../../../src/libpng/include;../../../../src/zlib/include;../../../../src/squish;../../../../src/jsonsl;../../../../src/pcre;../../../../src/glsl/src/glsl;../../../../src/glsl/src/mesa;../../../../src/glsl/include;../../../../src/glsl/include/c99;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>REGAL_NO_SQUISH=1;REGAL_SYS_WGL_DECLARE_WGL;REGAL_WIN_TLS=1;_ITERATOR_DEBUG_LEVEL=0;_CRT_SECURE_NO_WARNINGS=1;WIN32;_WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>REGAL_NO_SQUISH=1;REGAL_SYS_WGL_DECLARE_WGL;REGAL_WIN_TLS=1;_ITERATOR_DEBUG_LEVEL=2;_CRT_SECURE_NO_WARNINGS=1;WIN32;_WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>
@@ -175,9 +175,9 @@
       <MultiProcessorCompilation>true</MultiProcessorCompilation>
     </ClCompile>
     <Link>
-      <AdditionalDependencies>mongooselib.lib;md5lib.lib;jsonsllib.lib;squishlib.lib;apitracelib.lib;snappylib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;%(AdditionalDependencies)</AdditionalDependencies>
+      <AdditionalDependencies>mongooselib.lib;md5lib.lib;jsonsllib.lib;squishlib.lib;apitracelib.lib;snappylib.lib;pnglib.lib;zlib.lib;advapi32.lib;gdi32.lib;user32.lib;ws2_32.lib;glsl_optimizer_lib-win32.lib;%(AdditionalDependencies)</AdditionalDependencies>
       <SuppressStartupBanner>true</SuppressStartupBanner>
-      <AdditionalLibraryDirectories>Debug\Win32\;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
+      <AdditionalLibraryDirectories>Debug\Win32\;$(SolutionDir)\..\..\..\..\src\glsl\projects\vs2010\build\glsl_optimizer_lib\Debug;%(AdditionalLibraryDirectories)</AdditionalLibraryDirectories>
       <ModuleDefinitionFile>../../../../src/regal/Regal.def</ModuleDefinitionFile>
       <GenerateDebugInformation>true</GenerateDebugInformation>
       <ProgramDatabaseFile>Debug\Win32\regal32.pdb</ProgramDatabaseFile>
@@ -320,7 +320,10 @@
     <ClCompile Include="..\..\..\..\src\regal\RegalQuads.cpp" />
     <ClInclude Include="..\..\..\..\src\regal\RegalQuads.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalScopedPtr.h" />
+    <ClCompile Include="..\..\..\..\src\regal\RegalShader.cpp" />
     <ClCompile Include="..\..\..\..\src\regal\RegalShaderInstance.cpp" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalShader.h" />
+    <ClInclude Include="..\..\..\..\src\regal\RegalShaderInstance.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedList.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedMap.h" />
     <ClInclude Include="..\..\..\..\src\regal\RegalSharedPtr.h" />
