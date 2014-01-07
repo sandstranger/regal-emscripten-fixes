@@ -75,8 +75,8 @@ struct Breakpoint {
     //if( re ) {
       //pcre_free( re );
     //}
-    const char *errStr = NULL;
-    int offset;
+    //const char *errStr = NULL;
+    //int offset;
     //re = pcre_compile( reString.c_str(), 0, &errStr, &offset, NULL );
     //if( re == NULL ) {
      // Error( "Could not compile breakpoint regular expression '", reString, "' - ", offset, " - ", errStr );

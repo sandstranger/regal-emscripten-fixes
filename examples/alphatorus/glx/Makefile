@@ -7,7 +7,7 @@ clean:
 
 REGAL_DIR := ../../../../regal
 REGAL_SRC := $(wildcard $(REGAL_DIR)/gen/*.cpp $(REGAL_DIR)/src/*.cpp)
-REGAL_INC := $(REGAL_DIR)/gen $(REGAL_DIR)/src
+REGAL_INC := $(REGAL_DIR)/include
 
 SHARED_DIR := ../src
 SHARED_SRC := $(wildcard $(SHARED_DIR)/*.cpp)
@@ -32,5 +32,5 @@ obj$(CURDIR)/%.o: %.cpp
 	@echo $@ ---- $<
 
 alphatorus: $(MY_OBJ)
-	g++ -g -o $@ $(MY_OBJ) -lX11 -lpthread
+	g++ -g -o $@ $(MY_OBJ) -L$(REGAL_DIR)/lib/linux -lRegal -lX11 -lpthread
 
