@@ -48,7 +48,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 
 #include <boost/print/string_list.hpp>
-#include <boost/print/print_string.hpp>
+#include "RegalPrint.h"
 
 using namespace ::boost::print;
 

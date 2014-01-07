@@ -46,6 +46,8 @@ using std::string;
 #include <boost/print/string_list.hpp>
 typedef boost::print::string_list<string> string_list;
 
+#include "RegalPrint.h"
+
 #include "RegalIff.h"
 #include "RegalLog.h"
 #include "RegalToken.h"
@@ -1958,7 +1960,7 @@ void Program::Samplers( RegalContext * ctx, Dispatch::GL & tbl )
 
   for ( GLint ii = 0; ii < REGAL_EMU_MAX_TEXTURE_UNITS; ii++ )
   {
-    std::string samplerName = boost::print::print_string("rglSampler",ii);
+    std::string samplerName = print_string("rglSampler",ii);
     GLint slot = tbl.glGetUniformLocation( pg, samplerName.c_str() );
     if ( slot >= 0 )
       tbl.glUniform1i( slot, ii );

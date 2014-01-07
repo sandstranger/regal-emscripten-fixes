@@ -39,7 +39,7 @@ REGAL_GLOBAL_BEGIN
 #include <list>
 #include <set>
 
-#include <boost/print/print_string.hpp>
+#include "RegalPrint.h"
 
 REGAL_GLOBAL_END
 
@@ -231,7 +231,7 @@ namespace Logging
 #if REGAL_LOG_ERROR
 #define Error(...)   { \
   if (::REGAL_NAMESPACE_INTERNAL::Logging::enableError) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_ERROR, __FILE__, __LINE__, "error   ", " | ", NULL, ::boost::print::print_string( __VA_ARGS__) ); }
+    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_ERROR, __FILE__, __LINE__, "error   ", " | ", NULL, print_string( __VA_ARGS__) ); }
 #else
 #define Error(...) {}
 #endif
@@ -239,7 +239,7 @@ namespace Logging
 #if REGAL_LOG_WARNING
 #define Warning(...) { \
   if (::REGAL_NAMESPACE_INTERNAL::Logging::enableWarning) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_WARNING, __FILE__, __LINE__, "warning ", " | ", NULL, ::boost::print::print_string( __VA_ARGS__) ); }
+    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_WARNING, __FILE__, __LINE__, "warning ", " | ", NULL, print_string( __VA_ARGS__) ); }
 #else
 #define Warning(...) {}
 #endif
@@ -247,7 +247,7 @@ namespace Logging
 #if REGAL_LOG_INFO
 #define Info(...) { \
   if (::REGAL_NAMESPACE_INTERNAL::Logging::enableInfo) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_INFO, __FILE__, __LINE__, "info    ", " | ", NULL, ::boost::print::print_string( __VA_ARGS__) ); }
+    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_INFO, __FILE__, __LINE__, "info    ", " | ", NULL, print_string( __VA_ARGS__) ); }
 #else
 #define Info(...) {}
 #endif
@@ -255,7 +255,7 @@ namespace Logging
 #if REGAL_LOG_APP
 #define App(name,...) { \
   if (::REGAL_NAMESPACE_INTERNAL::Logging::enableApp) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_APP, __FILE__, __LINE__, "app     ", " | ", name, ::boost::print::print_string( __VA_ARGS__) ); }
+    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_APP, __FILE__, __LINE__, "app     ", " | ", name, print_string( __VA_ARGS__) ); }
 #else
 #define App(...) {}
 #endif
@@ -263,7 +263,7 @@ namespace Logging
 #if REGAL_LOG_DRIVER
 #define Driver(name,...) { \
   if (::REGAL_NAMESPACE_INTERNAL::Logging::enableDriver) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_DRIVER, __FILE__, __LINE__, "driver  ", " | ", name, ::boost::print::print_string( __VA_ARGS__) ); }
+    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_DRIVER, __FILE__, __LINE__, "driver  ", " | ", name, print_string( __VA_ARGS__) ); }
 #else
 #define Driver(...) {}
 #endif
@@ -271,7 +271,7 @@ namespace Logging
 #if REGAL_LOG_INTERNAL
 #define Internal(name,...) { \
   if (::REGAL_NAMESPACE_INTERNAL::Logging::enableInternal) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_INTERNAL, __FILE__, __LINE__, "internal", " | ", name, ::boost::print::print_string( __VA_ARGS__) ); }
+    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_INTERNAL, __FILE__, __LINE__, "internal", " | ", name, print_string( __VA_ARGS__) ); }
 #else
 #define Internal(...) {}
 #endif
@@ -279,7 +279,7 @@ namespace Logging
 #if REGAL_LOG_HTTP
 #define HTrace(...) { \
   if (::REGAL_NAMESPACE_INTERNAL::Logging::enableHttp) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_HTTP, __FILE__, __LINE__, "http    ", " | ", NULL, ::boost::print::print_string( __VA_ARGS__) ); }
+    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_HTTP, __FILE__, __LINE__, "http    ", " | ", NULL, print_string( __VA_ARGS__) ); }
 #else
 #define HTrace(...) {}
 #endif

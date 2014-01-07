@@ -87,8 +87,8 @@ REGAL_GLOBAL_BEGIN
 #include <cstdarg>
 using namespace std;
 
-#include <boost/print/print_string.hpp>
-using boost::print::print_string;
+#include "RegalPrint.h"
+
 
 #include "mongoose.h"
 

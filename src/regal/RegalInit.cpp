@@ -35,8 +35,8 @@
 REGAL_GLOBAL_BEGIN
 
 #include <boost/print/json.hpp>
-#include <boost/print/print_string.hpp>
-using boost::print::print_string;
+#include "RegalPrint.h"
+
 
 #include <map>
 using namespace std;

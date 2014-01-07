@@ -374,7 +374,7 @@ TexC::GetTexture_( GLuint texture )
   if ( tfti == mapTextureToTextureState.end() ) {
     GenTexture_( texture );
     tfti = mapTextureToTextureState.find( texture );
-    assert( tfti != mapTextureToTextureState.end() );
+    RegalAssert( tfti != mapTextureToTextureState.end() );
   }
 
   return &tfti->second;

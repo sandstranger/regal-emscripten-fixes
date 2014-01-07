@@ -73,7 +73,7 @@ REGAL_NAMESPACE_BEGIN
 using ::std::string;
 using ::std::list;
 using ::boost::print::trim;
-using ::boost::print::print_string;
+
 
 using namespace ::boost::print;
 

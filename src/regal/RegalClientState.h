@@ -42,7 +42,7 @@ REGAL_GLOBAL_BEGIN
 #include <string>
 #include <algorithm>  // For std::swap
 
-#include <boost/print/print_string.hpp>
+#include "RegalPrint.h"
 #include <boost/print/string_list.hpp>
 
 #include "RegalEmu.h"
@@ -88,7 +88,7 @@ namespace ClientState
 {
 
   using   ::boost::print::hex;
-  using   ::boost::print::print_string;
+  
   typedef ::boost::print::string_list<std::string> string_list;
 
   inline static void enable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)

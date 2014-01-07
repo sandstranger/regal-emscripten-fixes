@@ -41,10 +41,10 @@ REGAL_GLOBAL_BEGIN
 
 #include <vector>
 #include <string>
-#include <boost/print/print_string.hpp>
+#include "RegalPrint.h"
 
 using namespace ::std;
-using ::boost::print::print_string;
+
 
 REGAL_GLOBAL_END
 

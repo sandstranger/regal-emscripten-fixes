@@ -79,6 +79,10 @@
 		433EC180187891D2007304B6 /* misc.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 433EC17D187891D2007304B6 /* misc.cpp */; };
 		433EC181187891D2007304B6 /* othersyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC17E187891D2007304B6 /* othersyms.c */; };
 		433EC182187891D2007304B6 /* othersyms.c in Sources */ = {isa = PBXBuildFile; fileRef = 433EC17E187891D2007304B6 /* othersyms.c */; };
+		433EC1CF187C51F0007304B6 /* RegalPrint.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC1CE187C51F0007304B6 /* RegalPrint.h */; };
+		433EC1D0187C51F0007304B6 /* RegalPrint.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC1CE187C51F0007304B6 /* RegalPrint.h */; };
+		433EC1D1187C51F0007304B6 /* RegalPrint.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC1CE187C51F0007304B6 /* RegalPrint.h */; };
+		433EC1D2187C51F0007304B6 /* RegalPrint.h in Headers */ = {isa = PBXBuildFile; fileRef = 433EC1CE187C51F0007304B6 /* RegalPrint.h */; };
 		4359147D18293B32002CB92C /* libapitrace.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4359144B18293A5C002CB92C /* libapitrace.a */; };
 		4359147E18293B32002CB92C /* libjsonsl.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4359145118293A68002CB92C /* libjsonsl.a */; };
 		4359147F18293B32002CB92C /* libmd5.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 4359145718293A74002CB92C /* libmd5.a */; };
@@ -943,6 +947,7 @@
 		433EC14D18788EC9007304B6 /* tessmono.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = tessmono.h; path = ../../../src/glu/libtess/tessmono.h; sourceTree = "<group>"; };
 		433EC17D187891D2007304B6 /* misc.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = misc.cpp; sourceTree = "<group>"; };
 		433EC17E187891D2007304B6 /* othersyms.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = othersyms.c; sourceTree = "<group>"; };
+		433EC1CE187C51F0007304B6 /* RegalPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalPrint.h; path = ../../../src/regal/RegalPrint.h; sourceTree = "<group>"; };
 		4359144618293A5B002CB92C /* apitrace.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = apitrace.xcodeproj; path = ../apitrace/apitrace.xcodeproj; sourceTree = "<group>"; };
 		4359144C18293A68002CB92C /* jsonsl.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = jsonsl.xcodeproj; path = ../jsonsl/jsonsl.xcodeproj; sourceTree = "<group>"; };
 		4359145218293A73002CB92C /* md5.xcodeproj */ = {isa = PBXFileReference; lastKnownFileType = "wrapper.pb-project"; name = md5.xcodeproj; path = ../md5/md5.xcodeproj; sourceTree = "<group>"; };
@@ -1426,6 +1431,7 @@
 				43A6C1F515C48D200063667E /* RegalPpa.h */,
 				438D2C2516DE668A005E03F6 /* RegalPpca.h */,
 				43A6C1F715C48D200063667E /* RegalPrecompile.h */,
+				433EC1CE187C51F0007304B6 /* RegalPrint.h */,
 				43A6C1F815C48D200063667E /* RegalPrivate.h */,
 				BCBEC6FF167AD72700B38E16 /* RegalPush.h */,
 				BC4DBEC11804FB0600F6D226 /* RegalQuads.cpp */,
@@ -1497,6 +1503,7 @@
 				433EC12D18788E72007304B6 /* gluint.h in Headers */,
 				433EC16A18788EC9007304B6 /* priorityq.h in Headers */,
 				433EC16618788EC9007304B6 /* priorityq-sort.h in Headers */,
+				433EC1D0187C51F0007304B6 /* RegalPrint.h in Headers */,
 				433EC15A18788EC9007304B6 /* memalloc.h in Headers */,
 				433EC14E18788EC9007304B6 /* dict-list.h in Headers */,
 				433EC15E18788EC9007304B6 /* mesh.h in Headers */,
@@ -1588,6 +1595,7 @@
 				435916D018367DEE002CB92C /* RegalNamespace.h in Headers */,
 				435916D118367DEE002CB92C /* RegalTexSto.h in Headers */,
 				435916D218367DEE002CB92C /* RegalEmuInfo.h in Headers */,
+				433EC1D1187C51F0007304B6 /* RegalPrint.h in Headers */,
 				435916D318367DEE002CB92C /* RegalQuads.h in Headers */,
 				437B7CC3187A8BF700C863BB /* RegalOrigIff.h in Headers */,
 				435916D418367DEE002CB92C /* RegalLayerInfo.h in Headers */,
@@ -1629,6 +1637,7 @@
 				433EC12E18788E72007304B6 /* gluint.h in Headers */,
 				433EC16B18788EC9007304B6 /* priorityq.h in Headers */,
 				433EC16718788EC9007304B6 /* priorityq-sort.h in Headers */,
+				433EC1D2187C51F0007304B6 /* RegalPrint.h in Headers */,
 				433EC15B18788EC9007304B6 /* memalloc.h in Headers */,
 				433EC14F18788EC9007304B6 /* dict-list.h in Headers */,
 				433EC15F18788EC9007304B6 /* mesh.h in Headers */,
@@ -1668,6 +1677,7 @@
 				43A6C22215C48D200063667E /* RegalPpa.h in Headers */,
 				437B7CB9187A8BF700C863BB /* RegalOrigFilter.h in Headers */,
 				43A6C22415C48D200063667E /* RegalPrecompile.h in Headers */,
+				433EC1CF187C51F0007304B6 /* RegalPrint.h in Headers */,
 				43A6C22515C48D200063667E /* RegalPrivate.h in Headers */,
 				437B7CE5187A8BF700C863BB /* RegalOrigVao.h in Headers */,
 				43A6C22615C48D200063667E /* RegalState.h in Headers */,

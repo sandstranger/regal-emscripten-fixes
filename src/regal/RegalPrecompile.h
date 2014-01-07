@@ -45,7 +45,7 @@ REGAL_GLOBAL_BEGIN
 #include <vector>
 
 #include <boost/print.hpp>
-#include <boost/print/print_string.hpp>
+#include "RegalPrint.h"
 
 #include "linear.h"
 #include "RegalLog.h"

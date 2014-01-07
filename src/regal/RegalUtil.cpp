@@ -41,10 +41,10 @@ REGAL_GLOBAL_BEGIN
 #include <string>
 using namespace std;
 
-#include <boost/print/print_string.hpp>
+#include "RegalPrint.h"
 #include <boost/print/string_list.hpp>
 
-using boost::print::print_string;
+
 using boost::print::string_list;
 
 #include "RegalConfig.h"

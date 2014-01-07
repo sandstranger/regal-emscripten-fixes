@@ -49,7 +49,7 @@ REGAL_GLOBAL_BEGIN
 #include <lookup3.h>           // 32-bit memory hashing function
 
 #include <string>
-#include <boost/print/print_string.hpp>
+#include "RegalPrint.h"
 
 #if !REGAL_NO_PNG
 #include <zlib.h>
@@ -57,7 +57,7 @@ REGAL_GLOBAL_BEGIN
 #endif
 
 using namespace ::std;
-using ::boost::print::print_string;
+
 
 REGAL_GLOBAL_END
 
