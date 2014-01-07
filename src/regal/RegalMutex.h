@@ -81,7 +81,7 @@ typedef struct _SECURITY_ATTRIBUTES {
 
 typedef LONG * LPLONG;
 
-extern "C" { HANDLE __stdcall CreateSemaphore(LPSECURITY_ATTRIBUTES,LONG,LONG,LPCSTR); }
+extern "C" { HANDLE __stdcall CreateSemaphoreA(LPSECURITY_ATTRIBUTES,LONG,LONG,LPCSTR); }
 extern "C" { BOOL __stdcall CloseHandle(HANDLE); }
 extern "C" { DWORD __stdcall WaitForSingleObject(HANDLE,DWORD); }
 extern "C" { BOOL __stdcall ReleaseSemaphore(HANDLE,LONG,LPLONG); }
@@ -113,7 +113,7 @@ namespace Thread
 #if REGAL_SYS_WIN32
       InitializeCriticalSection(&_cs);
       if( mt == MT_Normal ) {
-        _handle = CreateSemaphore( NULL, 1, 1, NULL );
+        _handle = CreateSemaphoreA( NULL, 1, 1, NULL );
       } else {
         _handle = NULL;
       }

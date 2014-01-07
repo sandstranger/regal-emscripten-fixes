@@ -65,16 +65,17 @@ REGAL_NAMESPACE_BEGIN
 
 static Dispatch::Global nextGlobal;
 
+void InitDispatchHttp( Dispatch::GL & );
+void InitDispatchHttp( Dispatch::Global & );
+
 void Http::Init( RegalContext * ctx ) {
 
   ctx->http.next = ctx->dispatchGL;
-  void InitDispatchHttp( Dispatch::GL & );
   InitDispatchHttp( ctx->dispatchGL );
 
   gl.Initialize( & ctx->http.next );
 
   nextGlobal = dispatchGlobal;
-  void InitDispatchHttp( Dispatch::Global & );
   InitDispatchHttp( dispatchGlobal );
 }
 
