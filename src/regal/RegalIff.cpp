@@ -115,7 +115,7 @@ static Iff::TextureTargetBitfield TargetToBitfield( GLenum target )
 
 static void GenerateVertexShaderSource( const Iff * rff, const Iff::State & state, string_list & src )
 {
-  Internal("Regal::Iff::GenerateVertexShaderSource", boost::print::optional(rff,Logging::pointers));
+  Internal("Regal::Iff::GenerateVertexShaderSource", print_optional(rff,Logging::pointers));
 
   const bool gles = rff->gles;
   const bool legacy = rff->legacy;
@@ -1089,7 +1089,7 @@ static string TextureFetchSwizzle( bool es, bool legacy, Iff::TextureTargetBitfi
 
 static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
 {
-  Internal("Regal::Iff::GenerateFragmentShaderSource", boost::print::optional(rff,Logging::pointers));
+  Internal("Regal::Iff::GenerateFragmentShaderSource", print_optional(rff,Logging::pointers));
 
   const Store & st = rff->ffstate.processed;
   if ( rff->gles )
@@ -1717,7 +1717,7 @@ void State::GetMaterial( Iff * ffn, GLenum face, GLenum pname, GLfloat * params 
 
 void State::SetTexgen( Iff * ffn, int coord, GLenum space, const GLfloat * params )
 {
-  Internal("Regal::Iff::State::SetTexgen",ffn,coord,toString(space),boost::print::array(params,4));
+  Internal("Regal::Iff::State::SetTexgen",ffn,coord,toString(space), print_array(params,4));
 
   r3::Matrix4f ident;
   RegalAssertArrayIndex( uniform.tex, ffn->activeTextureIndex );
@@ -1742,7 +1742,7 @@ void State::SetTexgen( Iff * ffn, int coord, GLenum space, const GLfloat * param
 
 void State::GetTexgen( Iff * ffn, int coord, GLenum space, GLfloat * params )
 {
-  Internal("Regal::Iff::State::GetTexgen", boost::print::optional(ffn,Logging::pointers)," ",coord," ",toString(space));
+  Internal("Regal::Iff::State::GetTexgen", print_optional(ffn,Logging::pointers)," ",coord," ",toString(space));
 
   RegalAssertArrayIndex( uniform.tex, ffn->activeTextureIndex );
   RegalAssertArrayIndex( uniform.tex[ ffn->activeTextureIndex ].texgen, coord );
@@ -3563,7 +3563,7 @@ void Iff::State::Process( Iff * ffn )
   
 void Iff::UpdateUniforms( RegalContext * ctx )
 {
-  Internal("Regal::Iff::UpdateUniforms", boost::print::optional(ctx,Logging::pointers));
+  Internal("Regal::Iff::UpdateUniforms", print_optional(ctx,Logging::pointers));
 
   Dispatch::GL & tbl = ctx->emu.curr;
   UniformMap * umap = NULL;
@@ -3880,7 +3880,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
 // a debug routine for forcing instanced program's uniforms to be updated
 void Iff::ClearVersionsForProgram( RegalContext * ctx )
 {
-  Internal("Regal::Iff::UpdateUniforms", boost::print::optional(ctx,Logging::pointers));
+  Internal("Regal::Iff::UpdateUniforms", print_optional(ctx,Logging::pointers));
 
   UniformMap * umap = NULL;
   if( currinst && currinst->prevInstance) {
@@ -4058,7 +4058,7 @@ GLuint Iff::GetFixedFunctionStateHash() {
   
 void Iff::UseFixedFunctionProgram( RegalContext * ctx )
 {
-  Internal("Regal::Iff::UseFixedFunctionProgram", boost::print::optional(ctx,Logging::pointers));
+  Internal("Regal::Iff::UseFixedFunctionProgram", print_optional(ctx,Logging::pointers));
 
   if ( currprog != NULL && currprog->ver == ver.Current() )
   {
@@ -4139,7 +4139,7 @@ bool NeedsUserShaderProgramInstance( State::Store & st ) {
   
 void Iff::UseShaderProgram( RegalContext * ctx )
 {
-  Internal("Regal::Iff::UseShaderProgram", boost::print::optional(ctx,Logging::pointers));
+  Internal("Regal::Iff::UseShaderProgram", print_optional(ctx,Logging::pointers));
 
   ffstate.Process( this );
 

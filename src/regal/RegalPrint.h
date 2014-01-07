@@ -31,12 +31,19 @@
 
 REGAL_GLOBAL_BEGIN
 
-#define REGAL_USE_BOOST 0
+#define REGAL_USE_BOOST 1
 
 #if REGAL_USE_BOOST
 
 #include <boost/print/print_string.hpp>
 using boost::print::print_string;
+
+#define print_hex( ... ) boost::print::hex( __VA_ARGS__ )
+#define print_quote( ... ) boost::print::quote( __VA_ARGS__ )
+#define print_array( ... ) boost::print::array( __VA_ARGS__ )
+#define print_optional( ... ) boost::print::optional( __VA_ARGS__ )
+#define print_raw( ... ) boost::print::raw( __VA_ARGS__ )
+#define print_trim( ... ) boost::print::trim( __VA_ARGS__ )
 
 #else
 
@@ -50,6 +57,27 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+#if ! REGAL_USE_BOOST
+
+template <typename T>
+T print_hex( const T & t ) {
+  T r = t;
+  return r;
+}
+
+template <typename T, typename U>
+T print_hex( const T & t, const U & u ) {
+  UNUSED_PARAMETER( u );
+  T r = t;
+  return r;
+}
+
+#define print_quote( a, ... ) (a)
+#define print_array( ... ) std::string(" implement print_array() ")
+#define print_optional( ... ) std::string(" implement print_optional() ")
+#define print_raw( ... ) std::string( " implement print_raw() " )
+#define print_trim( ... ) std::string( " implement trim() " )
+
 struct PrintString {
   
   template <typename T>
@@ -62,7 +90,12 @@ struct PrintString {
   std::ostringstream stream;
 };
 
+#endif // ! REGAL_USE_BOOST
 
 REGAL_NAMESPACE_END
+
+#if ! REGAL_USE_BOOST
+using Regal::PrintString;
+#endif
 
 #endif // __REGAL_PRINT_H__

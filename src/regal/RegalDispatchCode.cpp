@@ -4049,8 +4049,8 @@ static void REGAL_CALL code_glStencilFunc(GLenum func, GLint ref, GLuint mask)
     string_list< ::std::string > _code;
     _code << indent << "glStencilFunc(";
                    _code << toString(func);
-    _code << ", "; _code << "0x" << boost::print::hex(ref);
-    _code << ", "; _code << "0x" << boost::print::hex(mask);
+    _code << ", "; _code << "0x" << print_hex(ref);
+    _code << ", "; _code << "0x" << print_hex(mask);
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -4066,7 +4066,7 @@ static void REGAL_CALL code_glStencilMask(GLuint mask)
     std::string indent((_context->depthBeginEnd + _context->depthPushAttrib + 1)*2,' ');
     string_list< ::std::string > _code;
     _code << indent << "glStencilMask(";
-    _code << "0x" << boost::print::hex(mask);
+    _code << "0x" << print_hex(mask);
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8234,7 +8234,7 @@ static void REGAL_CALL code_glBindAttribLocation(GLuint program, GLuint index, c
     _code << indent << "glBindAttribLocation(";
                    _code << program;
     _code << ", "; _code << index;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8429,7 +8429,7 @@ static void REGAL_CALL code_glGetActiveAttrib(GLuint program, GLuint index, GLsi
     _code << ", "; _code << "o" << _lengthIndex;
     _code << ", "; _code << "o" << _sizeIndex;
     _code << ", "; _code << "o" << _typeIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8457,7 +8457,7 @@ static void REGAL_CALL code_glGetActiveUniform(GLuint program, GLuint index, GLs
     _code << ", "; _code << "o" << _lengthIndex;
     _code << ", "; _code << "o" << _sizeIndex;
     _code << ", "; _code << "o" << _typeIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8498,7 +8498,7 @@ static GLint REGAL_CALL code_glGetAttribLocation(GLuint program, const GLchar *n
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetAttribLocation(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8540,7 +8540,7 @@ static void REGAL_CALL code_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, G
                    _code << shader;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(infoLog,'"');
+    _code << ", "; _code << print_quote(infoLog,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8561,7 +8561,7 @@ static void REGAL_CALL code_glGetShaderSource(GLuint shader, GLsizei bufSize, GL
                    _code << shader;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(source,'"');
+    _code << ", "; _code << print_quote(source,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8599,7 +8599,7 @@ static GLint REGAL_CALL code_glGetUniformLocation(GLuint program, const GLchar *
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetUniformLocation(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(reinterpret_cast<const char *>(name),'"');
+    _code << ", "; _code << print_quote(reinterpret_cast<const char *>(name),'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8803,8 +8803,8 @@ static void REGAL_CALL code_glStencilFuncSeparate(GLenum face, GLenum func, GLin
     _code << indent << "glStencilFuncSeparate(";
                    _code << toString(face);
     _code << ", "; _code << toString(func);
-    _code << ", "; _code << "0x" << boost::print::hex(ref);
-    _code << ", "; _code << "0x" << boost::print::hex(mask);
+    _code << ", "; _code << "0x" << print_hex(ref);
+    _code << ", "; _code << "0x" << print_hex(mask);
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -8821,7 +8821,7 @@ static void REGAL_CALL code_glStencilMaskSeparate(GLenum face, GLuint mask)
     string_list< ::std::string > _code;
     _code << indent << "glStencilMaskSeparate(";
                    _code << toString(face);
-    _code << ", "; _code << "0x" << boost::print::hex(mask);
+    _code << ", "; _code << "0x" << print_hex(mask);
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -10120,7 +10120,7 @@ static void REGAL_CALL code_glBindFragDataLocation(GLuint program, GLuint color,
     _code << indent << "glBindFragDataLocation(";
                    _code << program;
     _code << ", "; _code << color;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -10328,7 +10328,7 @@ static GLint REGAL_CALL code_glGetFragDataLocation(GLuint program, const GLchar 
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetFragDataLocation(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -10412,7 +10412,7 @@ static void REGAL_CALL code_glGetTransformFeedbackVarying(GLuint program, GLuint
     _code << ", "; _code << "o" << _lengthIndex;
     _code << ", "; _code << "o" << _sizeIndex;
     _code << ", "; _code << "o" << _typeIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -11405,7 +11405,7 @@ static void REGAL_CALL code_glDebugMessageInsertAMD(GLenum category, GLenum seve
     _code << ", "; _code << toString(severity);
     _code << ", "; _code << id;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(buf,'"');
+    _code << ", "; _code << print_quote(buf,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -11428,7 +11428,7 @@ static GLuint REGAL_CALL code_glGetDebugMessageLogAMD(GLuint count, GLsizei bufs
     _code << ", "; _code << severities;
     _code << ", "; _code << ids;
     _code << ", "; _code << lengths;
-    _code << ", "; _code << boost::print::quote(message,'"');
+    _code << ", "; _code << print_quote(message,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -11743,7 +11743,7 @@ static void REGAL_CALL code_glGetPerfMonitorCounterStringAMD(GLuint group, GLuin
     _code << ", "; _code << counter;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(counterString,'"');
+    _code << ", "; _code << print_quote(counterString,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -11788,7 +11788,7 @@ static void REGAL_CALL code_glGetPerfMonitorGroupStringAMD(GLuint group, GLsizei
                    _code << group;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(groupString,'"');
+    _code << ", "; _code << print_quote(groupString,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -12252,7 +12252,7 @@ static void REGAL_CALL code_glGetTranslatedShaderSourceANGLE(GLuint shader, GLsi
                    _code << shader;
     _code << ", "; _code << bufsize;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(source,'"');
+    _code << ", "; _code << print_quote(source,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -13565,7 +13565,7 @@ static void REGAL_CALL code_glBindFragDataLocationIndexed(GLuint program, GLuint
                    _code << program;
     _code << ", "; _code << colorNumber;
     _code << ", "; _code << index;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -13583,7 +13583,7 @@ static GLint REGAL_CALL code_glGetFragDataIndex(GLuint program, const GLchar *na
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetFragDataIndex(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -13955,7 +13955,7 @@ static void REGAL_CALL code_glDebugMessageInsertARB(GLenum source, GLenum type, 
     _code << ", "; _code << id;
     _code << ", "; _code << toString(severity);
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(buf,'"');
+    _code << ", "; _code << print_quote(buf,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -13989,7 +13989,7 @@ static GLuint REGAL_CALL code_glGetDebugMessageLogARB(GLuint count, GLsizei bufs
     _code << ", "; _code << "o" << _idsIndex;
     _code << ", "; _code << "o" << _severitiesIndex;
     _code << ", "; _code << "o" << _lengthsIndex;
-    _code << ", "; _code << boost::print::quote(messageLog,'"');
+    _code << ", "; _code << print_quote(messageLog,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -17159,7 +17159,7 @@ static GLuint REGAL_CALL code_glGetProgramResourceIndex(GLuint program, GLenum p
     _code << indent << "const GLuint o" << _retIndex << " = glGetProgramResourceIndex(";
                    _code << program;
     _code << ", "; _code << toString(programInterface);
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -17179,7 +17179,7 @@ static GLint REGAL_CALL code_glGetProgramResourceLocation(GLuint program, GLenum
     _code << indent << "const GLint o" << _retIndex << " = glGetProgramResourceLocation(";
                    _code << program;
     _code << ", "; _code << toString(programInterface);
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -17199,7 +17199,7 @@ static GLint REGAL_CALL code_glGetProgramResourceLocationIndex(GLuint program, G
     _code << indent << "const GLint o" << _retIndex << " = glGetProgramResourceLocationIndex(";
                    _code << program;
     _code << ", "; _code << toString(programInterface);
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -17221,7 +17221,7 @@ static void REGAL_CALL code_glGetProgramResourceName(GLuint program, GLenum prog
     _code << ", "; _code << index;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -18029,7 +18029,7 @@ static void REGAL_CALL code_glGetProgramPipelineInfoLog(GLuint pipeline, GLsizei
                    _code << pipeline;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(infoLog,'"');
+    _code << ", "; _code << print_quote(infoLog,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -19328,7 +19328,7 @@ static void REGAL_CALL code_glGetActiveUniformARB(GLhandleARB programObj, GLuint
     _code << ", "; _code << "o" << _lengthIndex;
     _code << ", "; _code << "o" << _sizeIndex;
     _code << ", "; _code << "o" << _typeIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -19388,7 +19388,7 @@ static void REGAL_CALL code_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, 
                    _code << obj;
     _code << ", "; _code << maxLength;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(infoLog,'"');
+    _code << ", "; _code << print_quote(infoLog,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -19445,7 +19445,7 @@ static void REGAL_CALL code_glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLen
                    _code << obj;
     _code << ", "; _code << maxLength;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(source,'"');
+    _code << ", "; _code << print_quote(source,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -19463,7 +19463,7 @@ static GLint REGAL_CALL code_glGetUniformLocationARB(GLhandleARB programObj, con
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetUniformLocationARB(";
                    _code << programObj;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -19963,7 +19963,7 @@ static void REGAL_CALL code_glGetActiveSubroutineName(GLuint program, GLenum sha
     _code << ", "; _code << index;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -19986,7 +19986,7 @@ static void REGAL_CALL code_glGetActiveSubroutineUniformName(GLuint program, GLe
     _code << ", "; _code << index;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -20066,7 +20066,7 @@ static GLuint REGAL_CALL code_glGetSubroutineIndex(GLuint program, GLenum shader
     _code << indent << "const GLuint o" << _retIndex << " = glGetSubroutineIndex(";
                    _code << program;
     _code << ", "; _code << toString(shaderType);
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -20086,7 +20086,7 @@ static GLint REGAL_CALL code_glGetSubroutineUniformLocation(GLuint program, GLen
     _code << indent << "const GLint o" << _retIndex << " = glGetSubroutineUniformLocation(";
                    _code << program;
     _code << ", "; _code << toString(shaderType);
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -20185,7 +20185,7 @@ static void REGAL_CALL code_glDeleteNamedStringARB(GLint namelen, const GLchar *
     string_list< ::std::string > _code;
     _code << indent << "glDeleteNamedStringARB(";
                    _code << namelen;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -20204,10 +20204,10 @@ static void REGAL_CALL code_glGetNamedStringARB(GLint namelen, const GLchar *nam
     _code << indent << "GLint o" << _stringlenIndex << "[" << 1 << "];\n";
     _code << indent << "glGetNamedStringARB(";
                    _code << namelen;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _stringlenIndex;
-    _code << ", "; _code << boost::print::quote(string,'"');
+    _code << ", "; _code << print_quote(string,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -20224,7 +20224,7 @@ static void REGAL_CALL code_glGetNamedStringivARB(GLint namelen, const GLchar *n
     string_list< ::std::string > _code;
     _code << indent << "glGetNamedStringivARB(";
                    _code << namelen;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ", "; _code << toString(pname);
     _code << ", "; _code << "/* params = ?? */";
     _code << ");\n";
@@ -20244,7 +20244,7 @@ static GLboolean REGAL_CALL code_glIsNamedStringARB(GLint namelen, const GLchar 
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLboolean o" << _retIndex << " = glIsNamedStringARB(";
                    _code << namelen;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -20263,9 +20263,9 @@ static void REGAL_CALL code_glNamedStringARB(GLenum type, GLint namelen, const G
     _code << indent << "glNamedStringARB(";
                    _code << toString(type);
     _code << ", "; _code << namelen;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ", "; _code << stringlen;
-    _code << ", "; _code << boost::print::quote(string,'"');
+    _code << ", "; _code << print_quote(string,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -21424,7 +21424,7 @@ static void REGAL_CALL code_glGetActiveUniformBlockName(GLuint program, GLuint u
     _code << ", "; _code << uniformBlockIndex;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(uniformBlockName,'"');
+    _code << ", "; _code << print_quote(uniformBlockName,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -21465,7 +21465,7 @@ static void REGAL_CALL code_glGetActiveUniformName(GLuint program, GLuint unifor
     _code << ", "; _code << uniformIndex;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << "o" << _lengthIndex;
-    _code << ", "; _code << boost::print::quote(uniformName,'"');
+    _code << ", "; _code << print_quote(uniformName,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -21521,7 +21521,7 @@ static GLuint REGAL_CALL code_glGetUniformBlockIndex(GLuint program, const GLcha
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLuint o" << _retIndex << " = glGetUniformBlockIndex(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(uniformBlockName,'"');
+    _code << ", "; _code << print_quote(uniformBlockName,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -22907,7 +22907,7 @@ static void REGAL_CALL code_glProgramStringARB(GLenum target, GLenum format, GLs
                    _code << toString(target);
     _code << ", "; _code << toString(format);
     _code << ", "; _code << len;
-    _code << ", "; _code << boost::print::quote(reinterpret_cast<const char *>(string),'"');
+    _code << ", "; _code << print_quote(reinterpret_cast<const char *>(string),'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -23625,7 +23625,7 @@ static void REGAL_CALL code_glBindAttribLocationARB(GLhandleARB programObj, GLui
     _code << indent << "glBindAttribLocationARB(";
                    _code << programObj;
     _code << ", "; _code << index;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -23653,7 +23653,7 @@ static void REGAL_CALL code_glGetActiveAttribARB(GLhandleARB programObj, GLuint 
     _code << ", "; _code << "o" << _lengthIndex;
     _code << ", "; _code << "o" << _sizeIndex;
     _code << ", "; _code << "o" << _typeIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -23671,7 +23671,7 @@ static GLint REGAL_CALL code_glGetAttribLocationARB(GLhandleARB programObj, cons
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetAttribLocationARB(";
                    _code << programObj;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -25362,8 +25362,8 @@ static void REGAL_CALL code_glStencilFuncSeparateATI(GLenum frontfunc, GLenum ba
     _code << indent << "glStencilFuncSeparateATI(";
                    _code << toString(frontfunc);
     _code << ", "; _code << toString(backfunc);
-    _code << ", "; _code << "0x" << boost::print::hex(ref);
-    _code << ", "; _code << "0x" << boost::print::hex(mask);
+    _code << ", "; _code << "0x" << print_hex(ref);
+    _code << ", "; _code << "0x" << print_hex(mask);
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -27536,7 +27536,7 @@ static void REGAL_CALL code_glGetObjectLabelEXT(GLenum type, GLuint object, GLsi
     _code << ", "; _code << object;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(label,'"');
+    _code << ", "; _code << print_quote(label,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -27555,7 +27555,7 @@ static void REGAL_CALL code_glLabelObjectEXT(GLenum type, GLuint object, GLsizei
                    _code << toString(type);
     _code << ", "; _code << object;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(label,'"');
+    _code << ", "; _code << print_quote(label,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -27572,7 +27572,7 @@ static void REGAL_CALL code_glInsertEventMarkerEXT(GLsizei length, const GLchar 
     string_list< ::std::string > _code;
     _code << indent << "glInsertEventMarkerEXT(";
                    _code << length;
-    _code << ", "; _code << boost::print::quote(marker,'"');
+    _code << ", "; _code << print_quote(marker,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -27603,7 +27603,7 @@ static void REGAL_CALL code_glPushGroupMarkerEXT(GLsizei length, const GLchar *m
     string_list< ::std::string > _code;
     _code << indent << "glPushGroupMarkerEXT(";
                    _code << length;
-    _code << ", "; _code << boost::print::quote(marker,'"');
+    _code << ", "; _code << print_quote(marker,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -30634,7 +30634,7 @@ static void REGAL_CALL code_glNamedProgramStringEXT(GLuint program, GLenum targe
     _code << ", "; _code << toString(target);
     _code << ", "; _code << toString(format);
     _code << ", "; _code << len;
-    _code << ", "; _code << boost::print::quote(reinterpret_cast<const char *>(string),'"');
+    _code << ", "; _code << print_quote(reinterpret_cast<const char *>(string),'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -33407,7 +33407,7 @@ static void REGAL_CALL code_glBindFragDataLocationEXT(GLuint program, GLuint col
     _code << indent << "glBindFragDataLocationEXT(";
                    _code << program;
     _code << ", "; _code << color;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -33425,7 +33425,7 @@ static GLint REGAL_CALL code_glGetFragDataLocationEXT(GLuint program, const GLch
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetFragDataLocationEXT(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -35295,7 +35295,7 @@ static GLuint REGAL_CALL code_glCreateShaderProgramEXT(GLenum type, const GLchar
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLuint o" << _retIndex << " = glCreateShaderProgramEXT(";
                    _code << toString(type);
-    _code << ", "; _code << boost::print::quote(string,'"');
+    _code << ", "; _code << print_quote(string,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -35995,7 +35995,7 @@ static void REGAL_CALL code_glGetTransformFeedbackVaryingEXT(GLuint program, GLu
     _code << ", "; _code << "o" << _lengthIndex;
     _code << ", "; _code << "o" << _sizeIndex;
     _code << ", "; _code << "o" << _typeIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -37833,7 +37833,7 @@ static void REGAL_CALL code_glDebugMessageInsert(GLenum source, GLenum type, GLu
     _code << ", "; _code << id;
     _code << ", "; _code << toString(severity);
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(buf,'"');
+    _code << ", "; _code << print_quote(buf,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -37857,7 +37857,7 @@ static GLuint REGAL_CALL code_glGetDebugMessageLog(GLuint count, GLsizei bufsize
     _code << ", "; _code << ids;
     _code << ", "; _code << severities;
     _code << ", "; _code << lengths;
-    _code << ", "; _code << boost::print::quote(messageLog,'"');
+    _code << ", "; _code << print_quote(messageLog,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -37878,7 +37878,7 @@ static void REGAL_CALL code_glGetObjectLabel(GLenum identifier, GLuint name, GLs
     _code << ", "; _code << name;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(label,'"');
+    _code << ", "; _code << print_quote(label,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -37897,7 +37897,7 @@ static void REGAL_CALL code_glGetObjectPtrLabel(const GLvoid *ptr, GLsizei bufSi
                    _code << ptr;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(label,'"');
+    _code << ", "; _code << print_quote(label,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -37916,7 +37916,7 @@ static void REGAL_CALL code_glObjectLabel(GLenum identifier, GLuint name, GLsize
                    _code << toString(identifier);
     _code << ", "; _code << name;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(label,'"');
+    _code << ", "; _code << print_quote(label,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -37934,7 +37934,7 @@ static void REGAL_CALL code_glObjectPtrLabel(const GLvoid *ptr, GLsizei length, 
     _code << indent << "glObjectPtrLabel(";
                    _code << ptr;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(label,'"');
+    _code << ", "; _code << print_quote(label,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -37967,7 +37967,7 @@ static void REGAL_CALL code_glPushDebugGroup(GLenum source, GLuint id, GLsizei l
                    _code << toString(source);
     _code << ", "; _code << id;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(message,'"');
+    _code << ", "; _code << print_quote(message,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -42262,7 +42262,7 @@ static void REGAL_CALL code_glPathGlyphRangeNV(GLuint firstPathName, GLenum font
     _code << indent << "glPathGlyphRangeNV(";
                    _code << firstPathName;
     _code << ", "; _code << toString(fontTarget);
-    _code << ", "; _code << boost::print::quote(reinterpret_cast<const char *>(fontName),'"');
+    _code << ", "; _code << print_quote(reinterpret_cast<const char *>(fontName),'"');
     _code << ", "; _code << GLpathGlyphsNVToString(fontStyle);
     _code << ", "; _code << firstGlyph;
     _code << ", "; _code << numGlyphs;
@@ -42286,7 +42286,7 @@ static void REGAL_CALL code_glPathGlyphsNV(GLuint firstPathName, GLenum fontTarg
     _code << indent << "glPathGlyphsNV(";
                    _code << firstPathName;
     _code << ", "; _code << toString(fontTarget);
-    _code << ", "; _code << boost::print::quote(reinterpret_cast<const char *>(fontName),'"');
+    _code << ", "; _code << print_quote(reinterpret_cast<const char *>(fontName),'"');
     _code << ", "; _code << GLpathGlyphsNVToString(fontStyle);
     _code << ", "; _code << numGlyphs;
     _code << ", "; _code << toString(type);
@@ -42399,8 +42399,8 @@ static void REGAL_CALL code_glPathStencilFuncNV(GLenum func, GLint ref, GLuint m
     string_list< ::std::string > _code;
     _code << indent << "glPathStencilFuncNV(";
                    _code << toString(func);
-    _code << ", "; _code << "0x" << boost::print::hex(ref);
-    _code << ", "; _code << "0x" << boost::print::hex(mask);
+    _code << ", "; _code << "0x" << print_hex(ref);
+    _code << ", "; _code << "0x" << print_hex(mask);
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -43566,7 +43566,7 @@ static void REGAL_CALL code_glActiveVaryingNV(GLuint program, const GLchar *name
     string_list< ::std::string > _code;
     _code << indent << "glActiveVaryingNV(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -43681,7 +43681,7 @@ static void REGAL_CALL code_glGetActiveVaryingNV(GLuint program, GLuint index, G
     _code << ", "; _code << "o" << _lengthIndex;
     _code << ", "; _code << "o" << _sizeIndex;
     _code << ", "; _code << "o" << _typeIndex;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -43719,7 +43719,7 @@ static GLint REGAL_CALL code_glGetVaryingLocationNV(GLuint program, const GLchar
     size_t _retIndex = _context->codeOutputNext++;
     _code << indent << "const GLint o" << _retIndex << " = glGetVaryingLocationNV(";
                    _code << program;
-    _code << ", "; _code << boost::print::quote(name,'"');
+    _code << ", "; _code << print_quote(name,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -47184,7 +47184,7 @@ static void REGAL_CALL code_glGetDriverControlStringQCOM(GLuint driverControl, G
                    _code << driverControl;
     _code << ", "; _code << bufSize;
     _code << ", "; _code << length;
-    _code << ", "; _code << boost::print::quote(driverControlString,'"');
+    _code << ", "; _code << print_quote(driverControlString,'"');
     _code << ");\n";
     if (_context->codeSource)
       fprintf(_context->codeSource,"%s",_code.str().c_str());
@@ -47373,7 +47373,7 @@ static void REGAL_CALL code_glExtGetProgramBinarySourceQCOM(GLuint program, GLen
     _code << indent << "glExtGetProgramBinarySourceQCOM(";
                    _code << program;
     _code << ", "; _code << toString(shadertype);
-    _code << ", "; _code << boost::print::quote(source,'"');
+    _code << ", "; _code << print_quote(source,'"');
     _code << ", "; _code << length;
     _code << ");\n";
     if (_context->codeSource)

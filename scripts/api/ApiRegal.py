@@ -71,23 +71,23 @@ def logParameter(function, parameter):
   elif t == 'GLboolean' or t == 'const GLboolean':
     return 'toString(%s)'%n
   elif t in [ 'char *','const char *','GLchar *' ,'const GLchar *','GLcharARB *','const GLcharARB *','LPCSTR']:
-    return 'boost::print::quote(%s,\'"\')'%n
+    return 'print_quote(%s,\'"\')'%n
   elif parameter.size!=None and (isinstance(parameter.size,int) or isinstance(parameter.size, long)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and t.find('LAYERPLANEDESCRIPTOR')==-1 and t.find('GLYPHMETRICSFLOAT')==-1:
-    return 'boost::print::array(%s,%s)'%(n,parameter.size)
+    return 'print_array(%s,%s)'%(n,parameter.size)
   elif parameter.size!=None and (isinstance(parameter.size, str) or isinstance(parameter.size, unicode)) and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and t.find('LAYERPLANEDESCRIPTOR')==-1 and t.find('GLYPHMETRICSFLOAT')==-1 and parameter.size.find('helper')==-1:
-    return 'boost::print::array(%s,%s%s)'%(n,parameter.size,quote)
+    return 'print_array(%s,%s%s)'%(n,parameter.size,quote)
 #   elif parameter.size!=None and (isinstance(parameter.size,int) or isinstance(parameter.size, long) or isinstance(parameter.size, str) or isinstance(parameter.size, unicode)) and t=='const GLvoid *':
-#     return 'boost::print::raw(%s,%s)'%(n,parameter.size)
+#     return 'print_raw(%s,%s)'%(n,parameter.size)
   elif parameter.size!=None and h!=None and t.find('void')==-1 and t.find('PIXELFORMATDESCRIPTOR')==-1 and t.find('LAYERPLANEDESCRIPTOR')==-1 and t.find('GLYPHMETRICSFLOAT')==-1:
-    return 'boost::print::array(%s,%s(%s%s)'%(n,h,parameter.size.split('(',1)[1],quote)
+    return 'print_array(%s,%s(%s%s)'%(n,h,parameter.size.split('(',1)[1],quote)
   elif t.startswith('GLDEBUG'):
     return None
   elif t.startswith('GLLOGPROC'):
     return None
   elif n=='data' and (function.name=='glBufferData' or function.name=='glBufferDataARB'):
-    return 'boost::print::raw(data,Logging::rawLimit(data ? size : 0))'
+    return 'print_raw(data,Logging::rawLimit(data ? size : 0))'
   elif n=='data' and (function.name=='glBufferSubData' or function.name=='glBufferSubDataARB'):
-    return 'boost::print::raw(data,Logging::rawLimit(data ? size : 0))'
+    return 'print_raw(data,Logging::rawLimit(data ? size : 0))'
   elif \
     t in [ 'GLvoid *', 'const GLvoid *', 'void *', 'const void *'] or \
     t in [ 'GLvoid **', 'const GLvoid **', 'void **', 'const void **'] or \
@@ -111,7 +111,7 @@ def logParameter(function, parameter):
     t in [ 'LPPIXELFORMATDESCRIPTOR', 'LPLAYERPLANEDESCRIPTOR', 'LPGLYPHMETRICSFLOAT' ] or \
     t in [ 'PROC', 'const PIXELFORMATDESCRIPTOR *' ] or \
     t in [ 'EGLNativeWindowType', 'EGLNativePixmapType', 'EGLNativeDisplayType', 'EGLConfig', 'EGLContext', 'EGLDisplay', 'EGLSurface', 'EGLClientBuffer', 'EGLSyncKHR', 'EGLImageKHR', 'EGLStreamKHR', 'EGLSyncNV']:
-    return 'boost::print::optional(%s,Logging::pointers)'%n
+    return 'print_optional(%s,Logging::pointers)'%n
 
   return n
 

@@ -644,7 +644,7 @@ def getExtensionCode(apis, args):
   code += 'bool\n'
   code += 'ContextInfo::getExtension(const char *ext) const\n'
   code += '{\n'
-  code += '  Internal("ContextInfo::getExtension ",boost::print::quote(ext,\'"\'));\n'
+  code += '  Internal("ContextInfo::getExtension ",print_quote(ext,\'"\'));\n'
   code += '\n'
 
   for api in apis:

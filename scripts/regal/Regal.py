@@ -367,11 +367,7 @@ def apiFuncDefineCode(apis, args):
         c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
         c += '  #if REGAL_HTTP\n'
-	c += '    #if REGAL_SYS_WGL // printing the string is so slow on Windows!\n'
-        c += '  _context->http.callString = \"%s\";\n' % function.name
-	c += '    #else\n'
         c += '  _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
-	c += '    #endif\n'
         c += '  #endif\n'
         c += '  %s\n' % logFunction( function, 'App' )
         c += '  if (!_context) return'
@@ -441,16 +437,10 @@ def apiFuncDefineCode(apis, args):
         c += '  #if REGAL_HTTP\n'
         c += '  {\n'
         c += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
-        c += '    if( _context ) {\n'
-        c += '      _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
-        c += '      App( _context->http.callString.c_str() );\n'
-        c += '    } else {\n'
-        c += '      %s\n' % logFunction(function, 'App' )
-        c += '    }\n'
+        c += '    if( _context ) { _context->http.callString = %s; }\n' % logFunction( function, 'print_string' )
         c += '  }\n'
-        c += '  #else\n'
-        c += '  %s\n' % logFunction(function, 'App' )
         c += '  #endif\n'
+        c += '  %s\n' % logFunction(function, 'App' )
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
 
         if not getattr(function,'regalOnly',False):

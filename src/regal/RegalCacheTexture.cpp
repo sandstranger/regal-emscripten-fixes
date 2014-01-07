@@ -102,9 +102,9 @@ cacheTextureTarget(PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXI
     uint32_t hash = 0;
     hash = Lookup3::hashlittle(buffer.get(), bytes, hash);
 
-    string filename = makePath(Config::cacheDirectory,print_string(boost::print::hex(hash),".png"));
+    string filename = makePath(Config::cacheDirectory,print_string(print_hex(hash),".png"));
 
-    Info("glBindTexture(",Token::GLenumToString(target),") width=",width," height=",height," hash=",boost::print::hex(hash));
+    Info("glBindTexture(",Token::GLenumToString(target),") width=",width," height=",height," hash=",print_hex(hash));
 
     // Cache it to disk, iff it's not there yet
     // export REGAL_CACHE_TEXTURE_WRITE=1
@@ -143,7 +143,7 @@ cacheTextureTarget(PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXI
         }
         fclose(fp);
 
-        Internal("Regal::CacheTexture::texture"," hash=",boost::print::hex(hash)," filename=",filename," written.");
+        Internal("Regal::CacheTexture::texture"," hash=",print_hex(hash)," filename=",filename," written.");
         Info("Cached texture written: ",filename);
       }
       else

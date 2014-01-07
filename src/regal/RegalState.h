@@ -90,8 +90,6 @@ REGAL_NAMESPACE_BEGIN
 namespace State
 {
 
-using   ::boost::print::hex;
-
 typedef ::boost::print::string_list<std::string> string_list;
 
 inline static void setEnable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)
@@ -861,8 +859,8 @@ struct StencilFace
   inline std::string toString(GLenum face,const char *delim = "\n") const
   {
     string_list tmp;
-    tmp << print_string("glStencilFuncSeparate(",Token::toString(face),",",Token::toString(func),",",ref,",0x",hex(valueMask),");",delim);
-    tmp << print_string("glStencilMaskSeparate(",Token::toString(face),",0x",hex(writeMask),");",delim);
+    tmp << print_string("glStencilFuncSeparate(",Token::toString(face),",",Token::toString(func),",",ref,",0x",print_hex(valueMask),");",delim);
+    tmp << print_string("glStencilMaskSeparate(",Token::toString(face),",0x",print_hex(writeMask),");",delim);
     tmp << print_string("glStencilOpSeparate(",Token::toString(face),",",Token::toString(fail),",",Token::toString(zfail),",",Token::toString(zpass),");",delim);
     return tmp;
   }
@@ -1922,7 +1920,7 @@ struct Line
     tmp << print_string("glLineWidth(",width,");",delim);
     enableToString(tmp, smooth, "GL_LINE_SMOOTH", delim);
     enableToString(tmp, stipple, "GL_LINE_STIPPLE", delim);
-    tmp << print_string("glLineStipple(",stippleRepeat,",0x",hex(stipplePattern),");",delim);
+    tmp << print_string("glLineStipple(",stippleRepeat,",0x",print_hex(stipplePattern),");",delim);
     return tmp;
   }
 
@@ -2435,8 +2433,8 @@ struct PolygonStipple
     string_list tmp;
     tmp << print_string("glPolygonStipple([");
     for (size_t ii=0; ii<(32*4)-1; ii++)
-      tmp << print_string(" 0x",hex(pattern[ii]),",");
-    tmp << print_string(" 0x",hex(pattern[(32*4)-1]),"]);",delim);
+      tmp << print_string(" 0x",print_hex(pattern[ii]),",");
+    tmp << print_string(" 0x",print_hex(pattern[(32*4)-1]),"]);",delim);
     return tmp;
   }
 
@@ -2727,7 +2725,7 @@ struct ColorBuffer
     enableToString(tmp, indexLogicOp, "GL_INDEX_LOGIC_OP",delim);
     enableToString(tmp, colorLogicOp, "GL_COLOR_LOGIC_OP",delim);
     tmp << print_string("glLogicOp(",Token::toString(logicOpMode),");",delim);
-    tmp << print_string("glIndexMask(0x",hex(indexWritemask),");",delim);
+    tmp << print_string("glIndexMask(0x",print_hex(indexWritemask),");",delim);
     for (size_t ii=0; ii<REGAL_EMU_MAX_DRAW_BUFFERS; ii++)
       tmp << print_string("glColorMaski(",ii,",", colorWritemask[ii][0],",",colorWritemask[ii][1],",",colorWritemask[ii][2],",",colorWritemask[ii][3],");",delim);
     tmp << print_string("glClearColor(",colorClearValue[0],",",colorClearValue[1],",",colorClearValue[2],",",colorClearValue[3],");",delim);

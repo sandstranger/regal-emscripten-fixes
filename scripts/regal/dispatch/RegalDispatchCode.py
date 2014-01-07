@@ -190,7 +190,7 @@ def generateDispatchCode(apis, args):
 
               # Special handling for input or output arrays
 
-              elif p.startswith('boost::print::array'):
+              elif p.startswith('print_array'):
                   type = typeStrip(i.type)
                   size = i.size
                   if i.maxSize != None:
@@ -222,7 +222,7 @@ def generateDispatchCode(apis, args):
                 h = True
                 body += '_code << \"texture\" << _%sIndex;\n'%(i.name)
 
-              elif p.startswith('boost::print::optional'):
+              elif p.startswith('print_optional'):
                 if i.cast != None:
                   body += '_code << reinterpret_cast<%s>(%s);\n'%(i.cast,i.name)
                 else:
@@ -230,10 +230,10 @@ def generateDispatchCode(apis, args):
 
               # 0x prefix for hex output
 
-              elif p.startswith('boost::print::hex'):
+              elif p.startswith('print_hex'):
                 body += '_code << \"0x\" << %s;\n'%(p)
 
-              elif p.startswith('boost::print::raw'):   # Buffer data needs better handling, revisit
+              elif p.startswith('print_raw'):   # Buffer data needs better handling, revisit
                   body += '_code << "NULL";\n'
 
               else:

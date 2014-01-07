@@ -564,7 +564,7 @@ def addEmulatedExtensions(extensions, emuLayer):
         str += wrapCIf(supportStr, emuStr)
 
     if str != '':
-      str += 'emuInfo->extensions = ::boost::print::detail::join(emuInfo->extensionsSet,std::string(" "));\n'
+      str += 'emuInfo->extensions = ::print_detail::join(emuInfo->extensionsSet,std::string(" "));\n'
 
     return str
 

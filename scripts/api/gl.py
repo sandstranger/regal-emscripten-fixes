@@ -14510,8 +14510,8 @@ gl.add(glShadeModel)
 glStencilFunc = Function('glStencilFunc')
 glStencilFunc.ret = Return('void')
 glStencilFunc.add( Input( 'func','GLenum' ))
-glStencilFunc.add( Input( 'ref','GLint' ,regalLog = 'boost::print::hex(ref)' ))
-glStencilFunc.add( Input( 'mask','GLuint' ,regalLog = 'boost::print::hex(mask)' ))
+glStencilFunc.add( Input( 'ref','GLint' ,regalLog = 'print_hex(ref)' ))
+glStencilFunc.add( Input( 'mask','GLuint' ,regalLog = 'print_hex(mask)' ))
 glStencilFunc.version = '1.0'
 glStencilFunc.category = 'GL_VERSION_1_0'
 glStencilFunc.esVersions = [1.0, 1.1, 2.0]
@@ -14521,7 +14521,7 @@ gl.add(glStencilFunc)
 
 glStencilMask = Function('glStencilMask')
 glStencilMask.ret = Return('void')
-glStencilMask.add( Input( 'mask','GLuint' ,regalLog = 'boost::print::hex(mask)' ))
+glStencilMask.add( Input( 'mask','GLuint' ,regalLog = 'print_hex(mask)' ))
 glStencilMask.version = '1.0'
 glStencilMask.category = 'GL_VERSION_1_0'
 glStencilMask.esVersions = [1.0, 1.1, 2.0]
@@ -17327,8 +17327,8 @@ glStencilFuncSeparate = Function('glStencilFuncSeparate')
 glStencilFuncSeparate.ret = Return('void')
 glStencilFuncSeparate.add( Input( 'face','GLenum' ))
 glStencilFuncSeparate.add( Input( 'func','GLenum' ))
-glStencilFuncSeparate.add( Input( 'ref','GLint' ,regalLog = 'boost::print::hex(ref)' ))
-glStencilFuncSeparate.add( Input( 'mask','GLuint' ,regalLog = 'boost::print::hex(mask)' ))
+glStencilFuncSeparate.add( Input( 'ref','GLint' ,regalLog = 'print_hex(ref)' ))
+glStencilFuncSeparate.add( Input( 'mask','GLuint' ,regalLog = 'print_hex(mask)' ))
 glStencilFuncSeparate.version = '2.0'
 glStencilFuncSeparate.category = 'GL_VERSION_2_0'
 glStencilFuncSeparate.esVersions = [2.0]
@@ -17339,7 +17339,7 @@ gl.add(glStencilFuncSeparate)
 glStencilMaskSeparate = Function('glStencilMaskSeparate')
 glStencilMaskSeparate.ret = Return('void')
 glStencilMaskSeparate.add( Input( 'face','GLenum' ))
-glStencilMaskSeparate.add( Input( 'mask','GLuint' ,regalLog = 'boost::print::hex(mask)' ))
+glStencilMaskSeparate.add( Input( 'mask','GLuint' ,regalLog = 'print_hex(mask)' ))
 glStencilMaskSeparate.version = '2.0'
 glStencilMaskSeparate.category = 'GL_VERSION_2_0'
 glStencilMaskSeparate.esVersions = [2.0]
@@ -27474,8 +27474,8 @@ glStencilFuncSeparateATI = Function('glStencilFuncSeparateATI')
 glStencilFuncSeparateATI.ret = Return('void')
 glStencilFuncSeparateATI.add( Input( 'frontfunc','GLenum' ))
 glStencilFuncSeparateATI.add( Input( 'backfunc','GLenum' ))
-glStencilFuncSeparateATI.add( Input( 'ref','GLint' ,regalLog = 'boost::print::hex(ref)' ))
-glStencilFuncSeparateATI.add( Input( 'mask','GLuint' ,regalLog = 'boost::print::hex(mask)' ))
+glStencilFuncSeparateATI.add( Input( 'ref','GLint' ,regalLog = 'print_hex(ref)' ))
+glStencilFuncSeparateATI.add( Input( 'mask','GLuint' ,regalLog = 'print_hex(mask)' ))
 glStencilFuncSeparateATI.version = '1.2'
 glStencilFuncSeparateATI.category = 'GL_ATI_separate_stencil'
 glStencilFuncSeparateATI.trace = True
@@ -37938,8 +37938,8 @@ gl.add(glPathStencilDepthOffsetNV)
 glPathStencilFuncNV = Function('glPathStencilFuncNV')
 glPathStencilFuncNV.ret = Return('void')
 glPathStencilFuncNV.add( Input( 'func','GLenum' ))
-glPathStencilFuncNV.add( Input( 'ref','GLint' ,regalLog = 'boost::print::hex(ref)' ))
-glPathStencilFuncNV.add( Input( 'mask','GLuint' ,regalLog = 'boost::print::hex(mask)' ))
+glPathStencilFuncNV.add( Input( 'ref','GLint' ,regalLog = 'print_hex(ref)' ))
+glPathStencilFuncNV.add( Input( 'mask','GLuint' ,regalLog = 'print_hex(mask)' ))
 glPathStencilFuncNV.version = ''
 glPathStencilFuncNV.category = 'GL_NV_path_rendering'
 glPathStencilFuncNV.trace = True

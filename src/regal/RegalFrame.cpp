@@ -54,7 +54,7 @@ REGAL_NAMESPACE_BEGIN
 
 void Frame::capture(RegalContext &context,const bool frameTerminator)
 {
-  Internal("Regal::Frame::capture context=",boost::print::optional(&context,Logging::pointers));
+  Internal("Regal::Frame::capture context=",print_optional(&context,Logging::pointers));
 
   if (frameTerminator)
   {

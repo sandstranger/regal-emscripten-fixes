@@ -37,7 +37,6 @@ REGAL_GLOBAL_BEGIN
 #include <boost/print/json.hpp>
 #include "RegalPrint.h"
 
-
 #include <map>
 using namespace std;
 
@@ -226,12 +225,12 @@ Init::getContext(RegalSystemContext sysCtx)
   SC2RC::iterator i = sc2rc.find(sysCtx);
   if (i!=sc2rc.end())
   {
-    Internal("Init::context", "lookup for sysCtx=",boost::print::optional(sysCtx,Logging::pointers));
+    Internal("Init::context", "lookup for sysCtx=",print_optional(sysCtx,Logging::pointers));
     return i->second;
   }
   else
   {
-    Internal("Init::context", "factory for sysCtx=",boost::print::optional(sysCtx,Logging::pointers));
+    Internal("Init::context", "factory for sysCtx=",print_optional(sysCtx,Logging::pointers));
     RegalContext *context = new RegalContext();
     RegalAssert(context);
     sc2rc[sysCtx] = context;
@@ -245,7 +244,7 @@ Init::setContext(RegalContext *context)
 {
   Thread::Thread thread = Thread::Self();
 
-  Internal("Init::setContext","thread=",boost::print::optional(::boost::print::hex(Thread::threadId()),Logging::thread)," context=",boost::print::optional(context,Logging::pointers)," ",context ? context->info->version : "");
+  Internal("Init::setContext","thread=",print_optional(::print_hex(Thread::threadId()),Logging::thread)," context=",print_optional(context,Logging::pointers)," ",context ? context->info->version : "");
 
   // std::map lookup
 
@@ -348,7 +347,7 @@ ThreadLocalInit threadLocalInit;
 void
 Init::setContextTLS(RegalContext *context)
 {
-  Internal("Init::setContextTLS","thread=",boost::print::optional(::boost::print::hex(Thread::threadId()),Logging::thread)," context=",boost::print::optional(context,Logging::pointers));
+  Internal("Init::setContextTLS","thread=",print_optional(::print_hex(Thread::threadId()),Logging::thread)," context=",print_optional(context,Logging::pointers));
 
   Thread::ThreadLocal &instance = Thread::ThreadLocal::instance();
   instance.currentContext = context;
@@ -432,7 +431,7 @@ Init::makeCurrent(RegalSystemContext sysCtx, PPB_OpenGLES2 *ppb_interface)
 Init::makeCurrent(RegalSystemContext sysCtx)
 #endif
 {
-  Internal("Init::makeCurrent","thread=",boost::print::optional(::boost::print::hex(Thread::threadId()),Logging::thread)," sysCtx=",boost::print::optional(sysCtx,Logging::pointers));
+  Internal("Init::makeCurrent","thread=",print_optional(::print_hex(Thread::threadId()),Logging::thread)," sysCtx=",print_optional(sysCtx,Logging::pointers));
 
   if (sysCtx)
   {
@@ -633,7 +632,7 @@ RegalErrorCallback RegalSetErrorCallback(RegalErrorCallback callback)
 void RegalConfigure(const char *json)
 {
   ::REGAL_NAMESPACE_INTERNAL::Init::init();
-  App("RegalConfigure", "(", boost::print::quote(json,'"'), ")");
+  App("RegalConfigure", "(", print_quote(json,'"'), ")");
   ::REGAL_NAMESPACE_INTERNAL::Init::configure(json);
 }
 

@@ -182,7 +182,7 @@ EmuInfo::init(const ContextInfo &contextInfo)
 
   // Form Regal extension string from the set
 
-  extensions = ::boost::print::detail::join(extensionsSet,string(" "));
+  extensions = ::print_detail::join(extensionsSet,string(" "));
 
   Info("Regal vendor     : ",vendor);
   Info("Regal renderer   : ",renderer);
@@ -281,7 +281,7 @@ def emuInfoGetExtensionCode(apis, args):
 bool
 EmuInfo::getExtension(const ContextInfo &contextInfo, const char *ext) const
 {
-  Internal("EmuInfo::getExtension ",boost::print::quote(ext,\'"\'));
+  Internal("EmuInfo::getExtension ",print_quote(ext,\'"\'));
 
   // If the context supports it, we're done.
 
@@ -315,7 +315,7 @@ EmuInfo::getExtension(const ContextInfo &contextInfo, const char *ext) const
 bool
 EmuInfo::isSupported(const ContextInfo &contextInfo, const char *ext) const
 {
-  Internal("EmuInfo::isSupported ",boost::print::quote(ext,\'"\'));
+  Internal("EmuInfo::isSupported ",print_quote(ext,\'"\'));
 
   string_list<string> e;
   e.split(ext,\' \');

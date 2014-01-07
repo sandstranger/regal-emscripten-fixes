@@ -48,6 +48,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalThread.h"
 #include "RegalContext.h"
 #include "RegalMutex.h"
+#include "RegalPrint.h"
 
 #if !REGAL_SYS_WIN32
 #include <pthread.h>
@@ -72,7 +73,6 @@ REGAL_NAMESPACE_BEGIN
 
 using ::std::string;
 using ::std::list;
-using ::boost::print::trim;
 
 
 using namespace ::boost::print;
@@ -363,11 +363,11 @@ namespace Logging {
     string_list trimPrefix;
     trimPrefix << print_string(prefix ? prefix : "",delim ? delim : "");
     if (process)
-      trimPrefix << print_string(hex(Thread::procId()),delim ? delim : "");
+      trimPrefix << print_string(print_hex(Thread::procId()),delim ? delim : "");
     if (thread)
-      trimPrefix << print_string(hex(Thread::threadId()),delim ? delim : "");
+      trimPrefix << print_string(print_hex(Thread::threadId()),delim ? delim : "");
     trimPrefix << print_string(string(indent(),' '),name ? name : "",name ? " " : "");
-    return print_string(trim(str.c_str(),'\n',maxLines>0 ? maxLines : ~0,trimPrefix.str().c_str(),trimSuffix), '\n');
+    return print_string(print_trim(str.c_str(),'\n',maxLines>0 ? maxLines : ~0,trimPrefix.str().c_str(),trimSuffix), '\n');
   }
 
   inline string jsonObject(const char *prefix, const char *name, const string &str)

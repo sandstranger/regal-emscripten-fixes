@@ -75,7 +75,7 @@ namespace Token {
     if (v>=GL_TEXTURE0 && v<=GL_TEXTURE31)
       return GLenumToString(v);
 
-    return print_string("0x",hex(v));
+    return print_string("0x",print_hex(v));
   }
 
   std::string
@@ -209,7 +209,7 @@ namespace Token {
       case GL_LINES:                    return "GL_LINES";
       case GL_LOGIC_OP:                 return "GL_LOGIC_OP";
 
-      default:                          return print_string("0x",hex(primitive));
+      default:                          return print_string("0x",print_hex(primitive));
     }
   }
 

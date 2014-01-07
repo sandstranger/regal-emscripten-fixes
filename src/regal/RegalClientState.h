@@ -87,8 +87,6 @@ REGAL_NAMESPACE_BEGIN
 namespace ClientState
 {
 
-  using   ::boost::print::hex;
-  
   typedef ::boost::print::string_list<std::string> string_list;
 
   inline static void enable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)
@@ -1672,7 +1670,7 @@ namespace ClientState
           s  = 15 * f;
           break;
         default:
-          Warning( "Unhandled format value. format = 0x", hex(format), " (", Token::GLenumToString(format), ")");
+          Warning( "Unhandled format value. format = 0x", print_hex(format), " (", Token::GLenumToString(format), ")");
           return;
       }
 

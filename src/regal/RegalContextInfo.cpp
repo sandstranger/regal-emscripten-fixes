@@ -1769,7 +1769,7 @@ ContextInfo::stringSetFind(const std::set<std::string> &stringSet, const std::st
 bool
 ContextInfo::getExtension(const char *ext) const
 {
-  Internal("ContextInfo::getExtension ",boost::print::quote(ext,'"'));
+  Internal("ContextInfo::getExtension ",print_quote(ext,'"'));
 
   if (!strcmp(ext,"GL_3DFX_multisample"))                      return gl_3dfx_multisample;
   if (!strcmp(ext,"GL_3DFX_tbuffer"))                          return gl_3dfx_tbuffer;

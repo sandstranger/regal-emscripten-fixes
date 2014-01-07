@@ -109,7 +109,7 @@ extern "C" {
   XOpenDisplay(char *display_name)
   {
     ::REGAL_NAMESPACE_INTERNAL::Init::init();
-    Internal("Regal::XOpenDisplay","display_name=",boost::print::optional(display_name,display_name));
+    Internal("Regal::XOpenDisplay","display_name=",print_optional(display_name,display_name));
     return reinterpret_cast<Display *>(1);
   }
 
