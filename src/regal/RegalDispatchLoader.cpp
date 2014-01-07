@@ -66,11 +66,6 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-#if REGAL_SYS_WGL
-#undef Warning
-#define Warning(...)
-#endif
-
 // GL_VERSION_1_0
 
   static void REGAL_CALL missing_glAccum(GLenum op, GLfloat value)
