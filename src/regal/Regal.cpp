@@ -68,7 +68,6 @@ REGAL_GLOBAL_BEGIN
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
-using namespace boost::print;
 
 extern "C" {
 

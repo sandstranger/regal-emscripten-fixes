@@ -31,7 +31,7 @@
 
 REGAL_GLOBAL_BEGIN
 
-#define REGAL_USE_BOOST 1
+#define REGAL_USE_BOOST 0
 
 #if REGAL_USE_BOOST
 
@@ -44,8 +44,15 @@ using boost::print::print_string;
 #define print_optional( ... ) boost::print::optional( __VA_ARGS__ )
 #define print_raw( ... ) boost::print::raw( __VA_ARGS__ )
 #define print_trim( ... ) boost::print::trim( __VA_ARGS__ )
+#define print_right( ... ) boost::print::right( __VA_ARGS__ )
+#define print_left( ... ) boost::print::left( __VA_ARGS__ )
+
+#define PRINT_STREAM_TYPE int
 
 #else
+
+#define PRINT_STREAM_TYPE std::ostringstream
+
 
 #include <sstream>
 
@@ -56,6 +63,8 @@ using boost::print::print_string;
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
+
+extern PRINT_STREAM_TYPE printStream;
 
 #if ! REGAL_USE_BOOST
 
@@ -77,17 +86,20 @@ T print_hex( const T & t, const U & u ) {
 #define print_optional( ... ) std::string(" implement print_optional() ")
 #define print_raw( ... ) std::string( " implement print_raw() " )
 #define print_trim( ... ) std::string( " implement trim() " )
+#define print_right( a, ... ) (a)
+#define print_left( a, ... ) (a)
 
 struct PrintString {
-  
+
+  PrintString() { printStream.str(""); }
+
   template <typename T>
   PrintString & operator, ( const T & t ) {
-	  this->stream << t;
+	  printStream << t;
 	  return *this;
   }
 
-  std::string toString() { return stream.str(); }
-  std::ostringstream stream;
+  std::string toString() { return printStream.str(); }
 };
 
 #endif // ! REGAL_USE_BOOST

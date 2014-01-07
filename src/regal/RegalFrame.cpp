@@ -130,7 +130,7 @@ void Frame::capture(RegalContext &context,const bool frameTerminator)
         {
           static png_color_8 pngSBIT = {8, 8, 8, 0, 8};
 
-          string filename = print_string(Config::frameSaveColorPrefix,boost::print::right(frame,3,'0'),".png");
+          string filename = print_string(Config::frameSaveColorPrefix,print_right(frame,3,'0'),".png");
           FILE *fp = fopen(filename.c_str(), "wb");
           if (fp)
           {
