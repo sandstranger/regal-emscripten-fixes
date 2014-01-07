@@ -33,11 +33,11 @@ REGAL_GLOBAL_BEGIN
 
 #include <string>
 
-#define REGAL_USE_BOOST 1
+#define REGAL_USE_BOOST 0
 
 #if REGAL_USE_BOOST
-#include <boost/print/print_string.hpp>
 
+#include <boost/print/print_string.hpp>
 using boost::print::print_string;
 
 #else

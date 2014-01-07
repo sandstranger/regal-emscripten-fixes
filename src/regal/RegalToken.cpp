@@ -47,9 +47,9 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalToken.h"
 
-#include <boost/print/string_list.hpp>
 #include "RegalPrint.h"
 
+#include <boost/print/string_list.hpp>
 using namespace ::boost::print;
 
 REGAL_GLOBAL_END
