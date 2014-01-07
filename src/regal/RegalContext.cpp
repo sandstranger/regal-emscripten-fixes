@@ -163,8 +163,8 @@ RegalContext::Init()
 
   memset( &dispatchGL, 0, sizeof( Dispatch::GL ) );
 
-  void InitDispatchGLLoader( Dispatch::GL & );
-  InitDispatchGLLoader( dispatchGL );
+  void InitDispatchLoader( Dispatch::GL & );
+  InitDispatchLoader( dispatchGL );
 
   RegalAssert(this);
   if (!info)
@@ -687,6 +687,8 @@ void RegalContext::parkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
   pp.CGLSetCurrentContext( NULL );
+  #elif REGAL_SYS_WGL
+  pp.wglMakeCurrent( NULL, NULL );
   #else
   # error "Implement me!"
   #endif
@@ -697,6 +699,8 @@ void RegalContext::unparkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
   pp.CGLSetCurrentContext( reinterpret_cast<CGLContextObj>(sysCtx) );
+  #elif REGAL_SYS_WGL
+  pp.wglMakeCurrent( hdc, hglrc );
   #else
   # error "Implement me!"
   #endif

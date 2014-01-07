@@ -55,7 +55,7 @@ ${API_DISPATCH_FUNC_DEFINE}
       func = NULL;
   }
 
-  void InitDispatchGLLoader( Dispatch::GL & dt )
+  void InitDispatchLoader( Dispatch::GL & dt )
   {
 ${API_DISPATCH_FUNC_INIT}
   }

@@ -53,7 +53,7 @@ if (ret)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   _context->hglrc = hglrc;
-  _context->hdc = hdc;
+  _context->hdc = hDC;
 }'''
     },
 

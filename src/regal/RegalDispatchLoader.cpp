@@ -26451,7 +26451,7 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
       func = NULL;
   }
 
-  void InitDispatchGLLoader( Dispatch::GL & dt )
+  void InitDispatchLoader( Dispatch::GL & dt )
   {
 
     // GL_VERSION_1_0

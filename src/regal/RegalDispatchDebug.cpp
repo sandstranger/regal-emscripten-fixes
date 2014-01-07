@@ -71,12 +71,12 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 static Dispatch::Global nextGlobal;
 
 void Debug::Init( RegalContext * ctx ) {
-  void InitDispatchGLDebug( Dispatch::GL & tbl );
+  void InitDispatchDebug( Dispatch::GL & tbl );
   next = ctx->dispatchGL;
-  InitDispatchGLDebug( ctx->dispatchGL );
+  InitDispatchDebug( ctx->dispatchGL );
   nextGlobal = dispatchGlobal;
-  void InitDispatchGlobal( Dispatch::Global & tbl );
-  InitDispatchGlobal( dispatchGlobal );
+  void InitDispatchDebug( Dispatch::Global & tbl );
+  InitDispatchDebug( dispatchGlobal );
 }
 
 // GL_VERSION_1_0
