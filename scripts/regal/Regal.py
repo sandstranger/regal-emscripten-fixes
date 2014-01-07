@@ -367,7 +367,11 @@ def apiFuncDefineCode(apis, args):
         c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
         c += '  #if REGAL_HTTP\n'
+	c += '    #if REGAL_SYS_WGL // printing the string is so slow on Windows!\n'
+        c += '  _context->http.callString = \"%s\";\n' % function.name
+	c += '    #else\n'
         c += '  _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+	c += '    #endif\n'
         c += '  #endif\n'
         c += '  %s\n' % logFunction( function, 'App' )
         c += '  if (!_context) return'
