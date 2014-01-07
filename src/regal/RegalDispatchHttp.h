@@ -37,7 +37,7 @@ REGAL_GLOBAL_BEGIN
 #include <deque>
 #include <string>
 
-#include "pcre.h"
+//#include "pcre.h"
 
 #include "RegalDispatch.h"
 #include "RegalMutex.h"
@@ -62,32 +62,32 @@ struct HttpFboInfo {
 
 struct Breakpoint {
   
-  Breakpoint() : enabled(true), count(0), stopAfterCount(0), re(NULL) {}
+	Breakpoint() : enabled(true), count(0), stopAfterCount(0) {} //, re(NULL) {}
   
   ~Breakpoint() {
-    if( re ) {
-      pcre_free( re );
-    }
+    //if( re ) {
+      //pcre_free( re );
+    //}
   }
   
   void SetRegularExpression( const std::string & newRe ) {
 	UNUSED_PARAMETER(newRe);
-    if( re ) {
-      pcre_free( re );
-    }
+    //if( re ) {
+      //pcre_free( re );
+    //}
     const char *errStr = NULL;
     int offset;
-    re = pcre_compile( reString.c_str(), 0, &errStr, &offset, NULL );
-    if( re == NULL ) {
-      Error( "Could not compile breakpoint regular expression '", reString, "' - ", offset, " - ", errStr );
-    }
+    //re = pcre_compile( reString.c_str(), 0, &errStr, &offset, NULL );
+    //if( re == NULL ) {
+     // Error( "Could not compile breakpoint regular expression '", reString, "' - ", offset, " - ", errStr );
+    //}
   }
   
   bool enabled;
   int count;
   int stopAfterCount;
   std::string reString;
-  pcre *re;
+  //pcre *re;
 };
 
 enum HttpRunState {

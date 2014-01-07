@@ -106,8 +106,9 @@ localInclude = '''
 
 localCode = '''
 
+void InitDispatchError( Dispatch::GL & tbl );
+
 void Err::Init( RegalContext * ctx ) {
-  void InitDispatchError( Dispatch::GL & tbl );
   next = ctx->dispatchGL;
   InitDispatchError( ctx->dispatchGL );
 }

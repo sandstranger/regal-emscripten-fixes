@@ -64,8 +64,9 @@ REGAL_NAMESPACE_BEGIN
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
+void InitDispatchError( Dispatch::GL & tbl );
+
 void Err::Init( RegalContext * ctx ) {
-  void InitDispatchError( Dispatch::GL & tbl );
   next = ctx->dispatchGL;
   InitDispatchError( ctx->dispatchGL );
 }

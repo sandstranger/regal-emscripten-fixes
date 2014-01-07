@@ -63,7 +63,7 @@ REGAL_NAMESPACE_END
 
 REGAL_GLOBAL_BEGIN
 
-#include "pcre.h"
+//#include "pcre.h"
 
 #include "RegalHttp.h"
 #include "RegalDispatchHttp.h"
