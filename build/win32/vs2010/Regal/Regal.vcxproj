@@ -79,7 +79,7 @@
       <Optimization>MaxSpeed</Optimization>
       <InlineFunctionExpansion>OnlyExplicitInline</InlineFunctionExpansion>
       <AdditionalIncludeDirectories>../../../../src/boost;../../../../include;../../../../src/mongoose;../../../../src/lookup3;../../../../src/md5/include;../../../../src/libpng/include;../../../../src/zlib/include;../../../../src/squish;../../../../src/jsonsl;../../../../src/pcre;../../../../src/glsl/src/glsl;../../../../src/glsl/src/mesa;../../../../src/glsl/include;../../../../src/glsl/include/c99;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>REGAL_NO_SQUISH=1;REGAL_SYS_WGL_DECLARE_WGL;REGAL_WIN_TLS=1;_ITERATOR_DEBUG_LEVEL=0;_CRT_SECURE_NO_WARNINGS=1;WIN32;_WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>REGAL_NO_SQUISH=1;REGAL_SYS_WGL_DECLARE_WGL;REGAL_WIN_TLS=1;REGAL_HTTP=1;REGAL_EMULATION=0;_ITERATOR_DEBUG_LEVEL=0;_CRT_SECURE_NO_WARNINGS=1;WIN32;_WIN32;NDEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <StringPooling>true</StringPooling>
       <RuntimeLibrary>MultiThreaded</RuntimeLibrary>
       <FunctionLevelLinking>true</FunctionLevelLinking>
@@ -158,7 +158,7 @@
     <ClCompile>
       <Optimization>Disabled</Optimization>
       <AdditionalIncludeDirectories>../../../../src/boost;../../../../include;../../../../src/mongoose;../../../../src/lookup3;../../../../src/md5/include;../../../../src/libpng/include;../../../../src/zlib/include;../../../../src/squish;../../../../src/jsonsl;../../../../src/pcre;../../../../src/glsl/src/glsl;../../../../src/glsl/src/mesa;../../../../src/glsl/include;../../../../src/glsl/include/c99;%(AdditionalIncludeDirectories)</AdditionalIncludeDirectories>
-      <PreprocessorDefinitions>REGAL_NO_SQUISH=1;REGAL_SYS_WGL_DECLARE_WGL;REGAL_WIN_TLS=1;_ITERATOR_DEBUG_LEVEL=2;_CRT_SECURE_NO_WARNINGS=1;WIN32;_WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
+      <PreprocessorDefinitions>REGAL_NO_SQUISH=1;REGAL_SYS_WGL_DECLARE_WGL;REGAL_WIN_TLS=1;REGAL_HTTP=1;REGAL_EMULATION=0;_ITERATOR_DEBUG_LEVEL=2;_CRT_SECURE_NO_WARNINGS=1;WIN32;_WIN32;_DEBUG;_CONSOLE;%(PreprocessorDefinitions)</PreprocessorDefinitions>
       <BasicRuntimeChecks>EnableFastChecks</BasicRuntimeChecks>
       <RuntimeLibrary>MultiThreadedDebug</RuntimeLibrary>
       <PrecompiledHeader>

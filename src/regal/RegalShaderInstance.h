@@ -33,8 +33,6 @@
 #ifndef __REGAL_SHADER_INSTANCE_H__
 #define __REGAL_SHADER_INSTANCE_H__
 
-#if REGAL_EMULATION
-
 #include "RegalUtil.h"
 
 REGAL_GLOBAL_BEGIN
@@ -108,7 +106,5 @@ namespace ShaderInstance {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION
 
 #endif // ! __REGAL_SHADER_INSTANCE_H__

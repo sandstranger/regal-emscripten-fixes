@@ -34,8 +34,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include <stdio.h>
@@ -602,8 +600,6 @@ namespace ShaderInstance {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION
 
 
 
