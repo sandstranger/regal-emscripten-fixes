@@ -85,6 +85,7 @@ namespace Emu
   }
 
   inline void SetBinEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -111,6 +112,7 @@ namespace Emu
   }
 
   inline void SetFilterEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -124,6 +126,7 @@ namespace Emu
   }
 
   inline void SetHintEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -139,6 +142,7 @@ namespace Emu
   }
 
   inline void SetIffEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -156,6 +160,7 @@ namespace Emu
   }
 
   inline void SetObjEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -173,6 +178,7 @@ namespace Emu
 
   // FIXME: set correctly
   inline void GetPpaLayerInfo( RegalContext &ctx, LayerInfo &layer ) {
+	UNUSED_PARAMETER(ctx);
     layer = LayerInfo();
     // Need ppca layer with core to track fixed function state
     // layer.emulationNeeded = ctx.info->es1 || ctx.info->es2 || ctx.info->core;
@@ -181,6 +187,7 @@ namespace Emu
   }
 
   inline void SetPpaEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -195,6 +202,7 @@ namespace Emu
   }
 
   inline void SetPpcaEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -209,6 +217,7 @@ namespace Emu
   }
 
   inline void SetQuadsEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -222,6 +231,7 @@ namespace Emu
   }
 
   inline void SetRectEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -248,6 +258,7 @@ namespace Emu
   }
 
   inline void SetTexCEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -262,6 +273,7 @@ namespace Emu
   }
 
   inline void SetTexStoEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }
@@ -290,6 +302,7 @@ namespace Emu
   }
 
   inline void SetXferEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable
     }

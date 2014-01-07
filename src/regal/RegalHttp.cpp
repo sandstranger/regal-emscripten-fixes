@@ -92,6 +92,10 @@ using boost::print::print_string;
 
 #include "mongoose.h"
 
+#if REGAL_SYS_WGL
+extern "C" { BOOL __stdcall Sleep(DWORD); }
+#endif
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -481,8 +485,8 @@ struct TextureHandler : public RequestHandler {
             const TextureObjectParameter & p = top[i];
             h.gl.GetTextureParameter( texname, GL_TEXTURE_2D, p.pname, fval );
             switch( p.pname ) {
-              case GL_TEXTURE_BASE_LEVEL: baseLevel = fval[0]; break;
-              case GL_TEXTURE_MAX_LEVEL: maxLevel = fval[0]; break;
+              case GL_TEXTURE_BASE_LEVEL: baseLevel = GLint(fval[0]); break;
+              case GL_TEXTURE_MAX_LEVEL: maxLevel = GLint(fval[0]); break;
               default: break;
             }
             if( fval[0] != p.initVal[0] ) {
@@ -531,8 +535,8 @@ struct TextureHandler : public RequestHandler {
           h.gl.GetTextureLevelParameter( texname, texinfo.target, 0, GL_TEXTURE_WIDTH, &fwidth );
           h.gl.GetTextureLevelParameter( texname, texinfo.target, 0, GL_TEXTURE_HEIGHT, &fheight );
           
-          int width = fwidth;
-          int height = fheight;
+          int width = int(fwidth);
+          int height = int(fheight);
           
           if( width <= 0 || height <= 0 ) {
             // evil
@@ -1136,7 +1140,7 @@ struct LogHandler : public RequestHandler {
       
       json += string( indent, ' ' ) + "\"log\": [\n";
       indent += 2;
-      size_t base = startLine - front;
+      size_t base = size_t(startLine - front);
       for( size_t i = 0; i < numLines; i++ ) {
         string esc = EscapeJson( h.callLog[ base + i ] );
         json += string( indent, ' ' ) + print_string( "\"", esc, "\",\n");
@@ -1254,7 +1258,11 @@ struct DebugHandler : public RequestHandler {
         if( ctx->http.runState == RS_Pause ) {
           break;
         }
+#if ! REGAL_SYS_WGL
         usleep( 1000 );
+#else
+		Sleep(1);
+#endif
       }
     }
     
@@ -1359,7 +1367,7 @@ void Http::YieldToHttpServer( RegalContext * ctx, bool log )
     static GLuint64 sz = 0;
     sz = max( sz, ( count.call - count.lastFrame + 1 ) );
     if( callLog.size() > sz ) {
-      callLog.erase( callLog.begin(), callLog.begin() + ( callLog.size() - sz  ) );
+      callLog.erase( callLog.begin(), callLog.begin() + size_t( callLog.size() - sz  ) );
     }
   }
   
@@ -1428,7 +1436,8 @@ void Http::ReleaseAppContext( RegalContext * ctx )
 
 void Http::ContinueFromBreakpoint( RegalContext * ctx, HttpRunState rs )
 {
-  if( runState == RS_Pause ) {
+	UNUSED_PARAMETER(ctx);
+	if( runState == RS_Pause ) {
     breakpointMutex->release();
     breakpointMutex->acquire();
   }

@@ -71,6 +71,7 @@ struct Breakpoint {
   }
   
   void SetRegularExpression( const std::string & newRe ) {
+	UNUSED_PARAMETER(newRe);
     if( re ) {
       pcre_free( re );
     }

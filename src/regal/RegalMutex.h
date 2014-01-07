@@ -71,6 +71,23 @@ extern "C" { void __stdcall DeleteCriticalSection(LPCRITICAL_SECTION);     }
 extern "C" { void __stdcall EnterCriticalSection(LPCRITICAL_SECTION);      }
 extern "C" { void __stdcall LeaveCriticalSection(LPCRITICAL_SECTION);      }
 
+#define INFINITE 0xffffffffL
+
+typedef struct _SECURITY_ATTRIBUTES {
+  DWORD  nLength;
+  LPVOID lpSecurityDescriptor;
+  BOOL   bInheritHandle;
+} SECURITY_ATTRIBUTES, *PSECURITY_ATTRIBUTES, *LPSECURITY_ATTRIBUTES;
+
+typedef LONG * LPLONG;
+
+extern "C" { HANDLE __stdcall CreateSemaphore(LPSECURITY_ATTRIBUTES,LONG,LONG,LPCSTR); }
+extern "C" { BOOL __stdcall CloseHandle(HANDLE); }
+extern "C" { DWORD __stdcall WaitForSingleObject(HANDLE,DWORD); }
+extern "C" { BOOL __stdcall ReleaseSemaphore(HANDLE,LONG,LPLONG); }
+
+
+
 #endif
 
 REGAL_GLOBAL_END
