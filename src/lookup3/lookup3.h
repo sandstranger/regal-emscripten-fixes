@@ -45,9 +45,9 @@ on 1 byte), but shoehorning those bytes into integers efficiently is messy.
 #include <time.h>       /* defines time_t for timings in the test */
 
 #ifdef _WIN32
-# if defined(_MSC_VER) && _MSC_VER>=1600
+# if defined(_MSC_VER) && _MSC_VER>1600
 #else
-typedef          __int8  int8_t;
+//typedef          __int8  int8_t;
 typedef unsigned __int8  uint8_t;
 typedef          __int16 int16_t;
 typedef unsigned __int16 uint16_t;

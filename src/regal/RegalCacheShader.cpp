@@ -37,11 +37,12 @@ REGAL_GLOBAL_BEGIN
 #include "RegalConfig.h"
 #include "RegalCacheShader.h"
 
-#include <lookup3.h>
-
 #include <vector>
 #include <string>
 #include "RegalPrint.h"
+
+#include <lookup3.h>
+
 
 using namespace ::std;
 

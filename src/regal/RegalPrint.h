@@ -31,8 +31,6 @@
 
 REGAL_GLOBAL_BEGIN
 
-#include <string>
-
 #define REGAL_USE_BOOST 0
 
 #if REGAL_USE_BOOST
@@ -42,13 +40,27 @@ using boost::print::print_string;
 
 #else
 
-#define print_string( ... ) std::string("x")
+#include <sstream>
+
+#define print_string( ... ) ( PrintString(), __VA_ARGS__ ).toString()
 
 #endif
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
+
+struct PrintString {
+  
+  template <typename T>
+  PrintString & operator, ( const T & t ) {
+	  this->stream << t;
+	  return *this;
+  }
+
+  std::string toString() { return stream.str(); }
+  std::ostringstream stream;
+};
 
 
 REGAL_NAMESPACE_END
