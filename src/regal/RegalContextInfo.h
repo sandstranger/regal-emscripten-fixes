@@ -46,6 +46,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+#include "RegalPrint.h"
 
 #include <set>
 #include <string>

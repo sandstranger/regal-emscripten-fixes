@@ -43,10 +43,9 @@ REGAL_GLOBAL_BEGIN
 #include <string>
 using std::string;
 
-#include <boost/print/string_list.hpp>
-typedef boost::print::string_list<string> string_list;
-
 #include "RegalPrint.h"
+typedef Regal::StringList string_list;
+
 
 #include "RegalIff.h"
 #include "RegalLog.h"

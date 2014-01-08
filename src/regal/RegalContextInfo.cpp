@@ -946,7 +946,7 @@ ContextInfo::init(const RegalContext &context)
 
   // Detect driver extensions
 
-  string_list<string> driverExtensions;
+  StringList driverExtensions;
 
   if (core)
   {

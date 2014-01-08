@@ -38,6 +38,8 @@ REGAL_GLOBAL_BEGIN
 #include <boost/print/print_string.hpp>
 using boost::print::print_string;
 
+typedef boost::print::string_list<stxring> StringList;
+
 #define print_hex( ... ) boost::print::hex( __VA_ARGS__ )
 #define print_quote( ... ) boost::print::quote( __VA_ARGS__ )
 #define print_array( ... ) boost::print::array( __VA_ARGS__ )
@@ -59,6 +61,8 @@ using boost::print::print_string;
 #define print_string( ... ) ( PrintString(), __VA_ARGS__ ).toString()
 
 #endif
+
+#include <vector>
 
 REGAL_GLOBAL_END
 
@@ -101,6 +105,40 @@ struct PrintString {
 
   std::string toString() { return printStream.str(); }
 };
+
+struct StringList {
+  
+  std::string join( std::string j ) const {
+    std::string s;
+    for( size_t i = 0; i < v.size() - 1; i++ ) {
+      s += v[i];
+    }
+    s += v.back();
+    return s;
+  }
+  
+  void split( std::string s, char j ) {
+    size_t p;
+    while( ( p = s.find( j ) ) != std::string::npos ) {
+      v.push_back( s.substr( 0, p ) );
+      s.erase( 0, p + 1 );
+    }
+    if( s.size() ) {
+      v.push_back( s );
+    }
+  }
+  
+  template <typename T>
+  StringList & operator << ( const T & t ) { push_back( print_string( t ) ); return *this; }
+  
+  void push_back( std::string s ) { v.push_back( s ); }
+  std::vector<std::string>::iterator begin() { return v.begin(); }
+  std::vector<std::string>::iterator end() { return v.end(); }
+  size_t size() const { return v.size(); }
+  std::string str() const { return join( "" ); }
+  std::vector<std::string> v;
+};
+
 
 #endif // ! REGAL_USE_BOOST
 

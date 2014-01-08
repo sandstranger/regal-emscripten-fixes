@@ -47,8 +47,8 @@ using std::string;
 using std::max;
 using std::min;
 
-#include <boost/print/string_list.hpp>
-typedef boost::print::string_list<string> string_list;
+#include "RegalPrint.h"
+typedef Regal::StringList string_list;
 
 #if !REGAL_NO_SQUISH
 #include <squish.h>

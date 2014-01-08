@@ -761,7 +761,7 @@ string fileRead(FILE *file)
 {
   const size_t bufferSize = 4*1024;
   char *buffer = static_cast<char *>(alloca(bufferSize+1));
-  string_list<string> tmp;
+  StringList tmp;
 
   while (true)
   {

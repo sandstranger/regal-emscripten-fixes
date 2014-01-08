@@ -77,7 +77,7 @@ using ::std::list;
 
 using namespace ::boost::print;
 
-typedef string_list<string> string_list;
+typedef StringList string_list;
 
 namespace Json { struct Output : public ::boost::print::json::output<std::string> {}; }
 

@@ -18,6 +18,7 @@ ${LICENSE}
 REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+#include "RegalPrint.h"
 
 #include <set>
 #include <string>
@@ -256,7 +257,7 @@ ContextInfo::init(const RegalContext &context)
 
   // Detect driver extensions
 
-  string_list<string> driverExtensions;
+  StringList driverExtensions;
 
   if (core)
   {
