@@ -72,6 +72,19 @@ extern PRINT_STREAM_TYPE printStream;
 
 #if ! REGAL_USE_BOOST
 
+struct PrintString {
+
+  PrintString() { printStream.str(""); }
+
+  template <typename T>
+  PrintString & operator, ( const T & t ) {
+	  printStream << t;
+	  return *this;
+  }
+
+  std::string toString() { return printStream.str(); }
+};
+
 template <typename T>
 T print_hex( const T & t ) {
   T r = t;
@@ -85,26 +98,44 @@ T print_hex( const T & t, const U & u ) {
   return r;
 }
 
-#define print_quote( a, ... ) (a)
-#define print_array( ... ) std::string(" implement print_array() ")
+template <typename T, typename U>
+std::string print_quote( const T & t, const U u ) {
+  return print_string( u, t, u );
+}
+
+template <typename T>
+std::string print_array( const T * t, int num, const char *quote = "\"", const char *open = "[ ", const char *close = " ]", const char *delim = ", " ) {
+  std::string s = open;
+  for( int i = 0; i < num - 1; i++ ) {
+    s += print_string( t[i], delim );
+  }
+  if( num > 0 ) {
+    s += print_string( t[num-1], close );
+  } else {
+    s += close;
+  }
+  return s;
+}
+
+// doesn't actually trim yet
+template <typename T>
+std::string print_trim( const T * t, char delim, int num, const char *prefix, const char *suffix ) {
+  std::string s = prefix;
+  s += t;
+  // can skip the suffix if I'm not actually trimming
+  // s += suffix;
+  return s;
+}
+
+
+
 #define print_optional( ... ) std::string(" implement print_optional() ")
 #define print_raw( ... ) std::string( " implement print_raw() " )
-#define print_trim( a, ... ) (a)
 #define print_right( a, ... ) (a)
 #define print_left( a, ... ) (a)
 
-struct PrintString {
 
-  PrintString() { printStream.str(""); }
 
-  template <typename T>
-  PrintString & operator, ( const T & t ) {
-	  printStream << t;
-	  return *this;
-  }
-
-  std::string toString() { return printStream.str(); }
-};
 
 struct StringList {
   
@@ -150,6 +181,10 @@ REGAL_NAMESPACE_END
 
 #if ! REGAL_USE_BOOST
 using Regal::PrintString;
+using Regal::print_hex;
+using Regal::print_quote;
+using Regal::print_array;
+using Regal::print_trim;
 #endif
 
 #endif // __REGAL_PRINT_H__
