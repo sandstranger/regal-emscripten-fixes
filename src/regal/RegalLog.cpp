@@ -37,10 +37,6 @@ REGAL_GLOBAL_BEGIN
 #include <cstdio>
 #include <cstdarg>
 
-#include <boost/print/json.hpp>
-#include <boost/print/printf.hpp>
-#include <boost/print/string_list.hpp>
-
 #include "RegalLog.h"
 #include "RegalTimer.h"
 #include "RegalBreak.h"
@@ -74,12 +70,7 @@ REGAL_NAMESPACE_BEGIN
 using ::std::string;
 using ::std::list;
 
-
-using namespace ::boost::print;
-
 typedef StringList string_list;
-
-namespace Json { struct Output : public ::boost::print::json::output<std::string> {}; }
 
 namespace Logging {
 
@@ -287,43 +278,6 @@ namespace Logging {
     bufferMutex = NULL;
   }
 
-  void
-  writeJSON(Json::Output &jo)
-  {
-#if !REGAL_NO_JSON
-    jo.object("logging");
-
-      jo.object("enable");
-        jo.member("error",     enableError);
-        jo.member("warning",   enableWarning);
-        jo.member("info",      enableInfo);
-        jo.member("app",       enableApp);
-        jo.member("driver",    enableDriver);
-        jo.member("internal",  enableInternal);
-        jo.member("http",      enableHttp);
-      jo.end();
-
-      jo.member("maxLines",  maxLines);
-      jo.member("maxBytes",  maxBytes);
-
-      jo.member("once",            once);
-      jo.member("frameTime",       frameTime);
-      jo.member("frameStatistics", frameStatistics);
-      jo.member("pointers",        pointers);
-      jo.member("thread",          thread);
-      jo.member("process",         process);
-
-      jo.member("callback",    callback);
-      jo.member("log",         log);
-      jo.member("filename",    logFilename);
-      jo.member("json",        json);
-      jo.member("jsonFile",    jsonFilename);
-      jo.member("bufferLimit", bufferLimit);
-
-    jo.end();
-#endif
-  }
-
   inline size_t indent()
   {
     // For OSX we need avoid REGAL_GET_CONTEXT implicitly
@@ -368,107 +322,6 @@ namespace Logging {
       trimPrefix << print_string(print_hex(Thread::threadId()),delim ? delim : "");
     trimPrefix << print_string(string(indent(),' '),name ? name : "",name ? " " : "");
     return print_string(print_trim(str.c_str(),'\n',maxLines>0 ? maxLines : ~0,trimPrefix.str().c_str(),trimSuffix), '\n');
-  }
-
-  inline string jsonObject(const char *prefix, const char *name, const string &str)
-  {
-#if REGAL_NO_JSON
-    return string();
-#else
-    //
-    // http://www.altdevblogaday.com/2012/08/21/using-chrometracing-to-view-your-inline-profiling-data/
-    //
-    // object {
-    // "cat": "MY_SUBSYSTEM",       // catagory
-    // "pid": 4260,                 // process ID
-    // "tid": 4776,                 // thread ID
-    // "ts": 2168627922668,         // time-stamp of this event
-    // "ph": "B",                   // Begin sample
-    // "name": "doSomethingCostly", // name of this event
-    // "args": { }                  //arguments associated with this event.
-    // }
-    //
-
-    Json::Output jo;
-
-    jo.object();
-    jo.member("cat",prefix);
-    jo.member("pid",Thread::procId());
-    jo.member("tid",Thread::threadId()%(1<<16));
-    jo.member("ts", timer.now());
-
-    // Unnamed logging events such as error, warning and info ones
-
-    if (!name)
-    {
-      jo.member("ph",  "I");
-      jo.member("name",str);
-      jo.object("args");
-      jo.end();
-    }
-
-    // begin/end groupings
-
-    else if (!strcmp(name,"glBegin"))
-    {
-      jo.member("ph",  "B");
-      jo.member("name","glBegin");
-      jo.object("args");
-        jo.member("inputs",str);
-      jo.end();
-    }
-    else if (!strcmp(name,"glEnd"))
-    {
-      jo.member("ph",  "E");
-      jo.member("name","glBegin");
-      jo.object("args");
-      jo.end();
-    }
-    else if (!strcmp(name,"glPushMatrix"))
-    {
-      jo.member("ph",  "B");
-      jo.member("name","glPushMatrix");
-      jo.object("args");
-        jo.member("inputs",str);
-      jo.end();
-    }
-    else if (!strcmp(name,"glPopMatrix"))
-    {
-      jo.member("ph",  "E");
-      jo.member("name","glPushMatrix");
-      jo.object("args");
-      jo.end();
-    }
-    else if (!strcmp(name,"glPushGroupMarkerEXT"))
-    {
-      jo.member("ph",  "B");
-      jo.member("name","glPushGroupMarkerExt");
-      jo.object("args");
-        jo.member("inputs",str);
-      jo.end();
-    }
-    else if (!strcmp(name,"glPopGroupMarkerEXT"))
-    {
-      jo.member("ph",  "E");
-      jo.member("name","glPushGroupMarkerExt");
-      jo.object("args");
-      jo.end();
-    }
-
-    // Generic named events
-
-    else
-    {
-      jo.member("ph",  "I");
-      jo.member("name",name ? name : "");
-      jo.object("args");
-        jo.member("inputs",str);
-      jo.end();
-    }
-
-    jo.end();
-    return jo.str();
-#endif // REGAL_NO_JSON
   }
 
   void getLogMessagesHTML(std::string &text)
@@ -616,14 +469,6 @@ namespace Logging {
       }
 #endif
 
-#if REGAL_LOG_JSON && !REGAL_NO_JSON
-      if (json && jsonOutput)
-      {
-        string m = jsonObject(prefix,name,str) + ",\n";
-        fwrite(m.c_str(),m.length(),1,jsonOutput);
-      }
-#endif
-
 #if REGAL_LOG
       if (log && logOutput)
       {
@@ -653,7 +498,7 @@ namespace os {
     va_start(args,format);
 
     std::string message;
-    boost::print::printf(message,format,args);
+    //boost::print::printf(message,format,args);
 
     Info(message);
   }

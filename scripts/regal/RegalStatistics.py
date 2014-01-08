@@ -67,12 +67,9 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalStatistics.h"
 
-#include <boost/print/interface.hpp>
-#include <boost/print/string_list.hpp>
-using namespace boost::print;
-
 #include "RegalToken.h"
 #include "RegalContext.h"
+#include "RegalPrint.h"
 
 REGAL_GLOBAL_END
 

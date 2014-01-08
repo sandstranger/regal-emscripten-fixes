@@ -83,9 +83,6 @@ REGAL_GLOBAL_BEGIN
 #include <set>
 using namespace std;
 
-#include <boost/print/string_list.hpp>
-using namespace boost::print;
-
 #include "RegalEmu.h"
 #include "RegalToken.h"
 #include "RegalContext.h"

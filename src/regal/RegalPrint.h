@@ -132,8 +132,12 @@ struct StringList {
   StringList & operator << ( const T & t ) { push_back( print_string( t ) ); return *this; }
   
   void push_back( std::string s ) { v.push_back( s ); }
-  std::vector<std::string>::iterator begin() { return v.begin(); }
-  std::vector<std::string>::iterator end() { return v.end(); }
+  typedef std::vector<std::string>::const_iterator const_iterator;
+  const_iterator begin() const { return v.begin(); }
+  const_iterator end() const { return v.end(); }
+  typedef std::vector<std::string>::iterator iterator;
+  iterator begin() { return v.begin(); }
+  iterator end() { return v.end(); }
   size_t size() const { return v.size(); }
   std::string str() const { return join( "" ); }
   std::vector<std::string> v;

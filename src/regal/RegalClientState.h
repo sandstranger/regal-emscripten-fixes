@@ -43,7 +43,6 @@ REGAL_GLOBAL_BEGIN
 #include <algorithm>  // For std::swap
 
 #include "RegalPrint.h"
-#include <boost/print/string_list.hpp>
 
 #include "RegalEmu.h"
 #include "RegalToken.h"
@@ -87,7 +86,7 @@ REGAL_NAMESPACE_BEGIN
 namespace ClientState
 {
 
-  typedef ::boost::print::string_list<std::string> string_list;
+  typedef StringList string_list;
 
   inline static void enable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)
   {
@@ -395,7 +394,7 @@ namespace ClientState
           tmp << print_string("glMultiTexCoordPointerEXT(",Token::toString(GL_TEXTURE0+index),",",size,",",type,",",stride,",0x",pointer,");",delim);
         }
       }
-      return tmp;
+      return tmp.str();
     }
   };
 
@@ -483,7 +482,7 @@ namespace ClientState
         tmp << print_string("glBindVertexBuffer(",index,",",buffer,",",offset,",",stride,");",delim);
         tmp << print_string("glVertexBindingDivisor(",index,",",divisor,");",delim);
       }
-      return tmp;
+      return tmp.str();
     }
   };
 
@@ -632,7 +631,7 @@ namespace ClientState
           tmp << print_string("glVertexAttribFormat(",index,",",size,",",type,",",normalized,",",relativeOffset,");",delim);
         tmp << print_string("glVertexAttribBinding(",index,",",bindingIndex,");",delim);
       }
-      return tmp;
+      return tmp.str();
     }
   };
 
@@ -849,7 +848,7 @@ namespace ClientState
       tmp << print_string("glPrimitiveRestartIndex(",primitiveRestartIndex,");",delim);
       tmp << print_string("glBindBuffer(GL_ARRAY_BUFFER,",arrayBufferBinding,");",delim);
       tmp << print_string("glBindVertexArray(",vertexArrayBinding,");",delim);
-      return tmp;
+      return tmp.str();
     }
 
     void SetEnablei(GLenum cap, GLuint index, GLboolean enabled)
@@ -1927,7 +1926,7 @@ namespace ClientState
       tmp << print_string("glPixelStorei(GL_PACK_ALIGNMENT,",packAlignment,");",delim);
       tmp << print_string("glBindBuffer(GL_PIXEL_UNPACK_BUFFER,",pixelUnpackBufferBinding,");",delim);
       tmp << print_string("glBindBuffer(GL_PIXEL_PACK_BUFFER,",pixelPackBufferBinding,");",delim);
-      return tmp;
+      return tmp.str();
     }
 
     template <typename T> void glPixelStore( GLenum pname, T param )

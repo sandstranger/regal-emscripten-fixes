@@ -20,9 +20,6 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalPrint.h"
 
-#include <boost/print/string_list.hpp>
-using namespace ::boost::print;
-
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -188,13 +185,13 @@ namespace Token {
   {
     const GLbitfield other = v & ~(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_COLOR_BUFFER_BIT)   { if (tmp.size()) tmp += " | "; tmp += "GL_COLOR_BUFFER_BIT"; }
     if (v & GL_DEPTH_BUFFER_BIT)   { if (tmp.size()) tmp += " | "; tmp += "GL_DEPTH_BUFFER_BIT"; }
     if (v & GL_STENCIL_BUFFER_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_STENCIL_BUFFER_BIT"; }
-    if (other || v==0)             { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)             { if (tmp.size()) tmp += " | "; tmp += print_string( size_t(other) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   // http://www.opengl.org/sdk/docs/man3/xhtml/glMapBufferRange.xml
@@ -203,83 +200,83 @@ namespace Token {
   {
     const GLbitfield other = v & ~(GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_INVALIDATE_RANGE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT | GL_MAP_FLUSH_EXPLICIT_BIT | GL_MAP_UNSYNCHRONIZED_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_MAP_READ_BIT)              { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_READ_BIT"; }
     if (v & GL_MAP_WRITE_BIT)             { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_WRITE_BIT"; }
     if (v & GL_MAP_INVALIDATE_RANGE_BIT)  { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_INVALIDATE_RANGE_BIT"; }
     if (v & GL_MAP_INVALIDATE_BUFFER_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_INVALIDATE_BUFFER_BIT"; }
     if (v & GL_MAP_FLUSH_EXPLICIT_BIT)    { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_FLUSH_EXPLICIT_BIT"; }
     if (v & GL_MAP_UNSYNCHRONIZED_BIT)    { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_UNSYNCHRONIZED_BIT"; }
-    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += print_string( size_t(other) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLbufferStorageToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_DYNAMIC_STORAGE_BIT | GL_MAP_READ_BIT | GL_MAP_WRITE_BIT | GL_MAP_PERSISTENT_BIT | GL_MAP_COHERENT_BIT | GL_CLIENT_STORAGE_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_DYNAMIC_STORAGE_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_DYNAMIC_STORAGE_BIT"; }
     if (v & GL_MAP_READ_BIT)        { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_READ_BIT"; }
     if (v & GL_MAP_WRITE_BIT)       { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_WRITE_BIT"; }
     if (v & GL_MAP_PERSISTENT_BIT)  { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_PERSISTENT_BIT"; }
     if (v & GL_MAP_COHERENT_BIT)    { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_COHERENT_BIT"; }
     if (v & GL_CLIENT_STORAGE_BIT)  { if (tmp.size()) tmp += " | "; tmp += "GL_CLIENT_STORAGE_BIT"; }
-    if (other || v==0)              { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)              { if (tmp.size()) tmp += " | "; tmp += print_string( size_t(other) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLclearToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT | GL_STENCIL_BUFFER_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_COLOR_BUFFER_BIT)   { if (tmp.size()) tmp += " | "; tmp += "GL_COLOR_BUFFER_BIT"; }
     if (v & GL_DEPTH_BUFFER_BIT)   { if (tmp.size()) tmp += " | "; tmp += "GL_DEPTH_BUFFER_BIT"; }
     if (v & GL_STENCIL_BUFFER_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_STENCIL_BUFFER_BIT"; }
-    if (other || v==0)             { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)             { if (tmp.size()) tmp += " | "; tmp += print_string( size_t(other) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLclientWaitSyncToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_SYNC_FLUSH_COMMANDS_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v &  GL_SYNC_FLUSH_COMMANDS_BIT) { if (tmp.size()) tmp += " | "; tmp += " GL_SYNC_FLUSH_COMMANDS_BIT"; }
-    if (other || v==0)                   { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                   { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLfenceSyncToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_ZERO);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_ZERO)   { if (tmp.size()) tmp += " | "; tmp += "GL_ZERO"; }
-    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLmapBufferRangeToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_MAP_READ_BIT | GL_MAP_WRITE_BIT  | GL_MAP_INVALIDATE_RANGE_BIT | GL_MAP_INVALIDATE_BUFFER_BIT | GL_MAP_FLUSH_EXPLICIT_BIT | GL_MAP_UNSYNCHRONIZED_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_MAP_READ_BIT)              { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_READ_BIT"; }
     if (v & GL_MAP_WRITE_BIT)             { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_WRITE_BIT"; }
     if (v & GL_MAP_INVALIDATE_RANGE_BIT)  { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_INVALIDATE_RANGE_BIT"; }
     if (v & GL_MAP_INVALIDATE_BUFFER_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_INVALIDATE_BUFFER_BIT"; }
     if (v & GL_MAP_FLUSH_EXPLICIT_BIT)    { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_FLUSH_EXPLICIT_BIT"; }
     if (v & GL_MAP_UNSYNCHRONIZED_BIT)    { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_UNSYNCHRONIZED_BIT"; }
-    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLmemoryBarrierToString(GLbitfield v)
@@ -293,7 +290,7 @@ namespace Token {
                                    GL_BUFFER_UPDATE_BARRIER_BIT | GL_FRAMEBUFFER_BARRIER_BIT | GL_TRANSFORM_FEEDBACK_BARRIER_BIT |
                                    GL_ATOMIC_COUNTER_BARRIER_BIT | GL_SHADER_STORAGE_BARRIER_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_VERTEX_ATTRIB_ARRAY_BARRIER_BIT"; }
     if (v & GL_ELEMENT_ARRAY_BARRIER_BIT)       { if (tmp.size()) tmp += " | "; tmp += "GL_ELEMENT_ARRAY_BARRIER_BIT"; }
     if (v & GL_UNIFORM_BARRIER_BIT)             { if (tmp.size()) tmp += " | "; tmp += "GL_UNIFORM_BARRIER_BIT"; }
@@ -307,9 +304,9 @@ namespace Token {
     if (v & GL_TRANSFORM_FEEDBACK_BARRIER_BIT)  { if (tmp.size()) tmp += " | "; tmp += "GL_TRANSFORM_FEEDBACK_BARRIER_BIT"; }
     if (v & GL_ATOMIC_COUNTER_BARRIER_BIT)      { if (tmp.size()) tmp += " | "; tmp += "GL_ATOMIC_COUNTER_BARRIER_BIT"; }
     if (v & GL_SHADER_STORAGE_BARRIER_BIT)      { if (tmp.size()) tmp += " | "; tmp += "GL_SHADER_STORAGE_BARRIER_BIT"; }
-    if (other || v==0)                          { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                          { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   // http://www.opengl.org/sdk/docs/man2/xhtml/glPushAttrib.xml
@@ -321,7 +318,7 @@ namespace Token {
 
     const GLbitfield other = v & ~(GL_ACCUM_BUFFER_BIT | GL_COLOR_BUFFER_BIT | GL_CURRENT_BIT | GL_DEPTH_BUFFER_BIT | GL_ENABLE_BIT | GL_EVAL_BIT | GL_FOG_BIT | GL_HINT_BIT | GL_LIGHTING_BIT | GL_LINE_BIT | GL_LIST_BIT | GL_MULTISAMPLE_BIT | GL_PIXEL_MODE_BIT | GL_POINT_BIT | GL_POLYGON_BIT | GL_POLYGON_STIPPLE_BIT | GL_SCISSOR_BIT | GL_STENCIL_BUFFER_BIT | GL_TEXTURE_BIT | GL_TRANSFORM_BIT | GL_VIEWPORT_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_ACCUM_BUFFER_BIT)          { if (tmp.size()) tmp += " | "; tmp += "GL_ACCUM_BUFFER_BIT"; }
     if (v & GL_COLOR_BUFFER_BIT)          { if (tmp.size()) tmp += " | "; tmp += "GL_COLOR_BUFFER_BIT"; }
     if (v & GL_CURRENT_BIT)               { if (tmp.size()) tmp += " | "; tmp += "GL_CURRENT_BIT"; }
@@ -343,9 +340,9 @@ namespace Token {
     if (v & GL_TEXTURE_BIT)               { if (tmp.size()) tmp += " | "; tmp += "GL_TEXTURE_BIT"; }
     if (v & GL_TRANSFORM_BIT)             { if (tmp.size()) tmp += " | "; tmp += "GL_TRANSFORM_BIT"; }
     if (v & GL_VIEWPORT_BIT)              { if (tmp.size()) tmp += " | "; tmp += "GL_VIEWPORT_BIT"; }
-    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLpushClientAttribToString(GLbitfield v)
@@ -355,12 +352,12 @@ namespace Token {
 
     const GLbitfield other = v & ~(GL_CLIENT_PIXEL_STORE_BIT | GL_CLIENT_VERTEX_ARRAY_BIT );
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_CLIENT_PIXEL_STORE_BIT)    { if (tmp.size()) tmp += " | "; tmp += "GL_CLIENT_PIXEL_STORE_BIT"; }
     if (v & GL_CLIENT_VERTEX_ARRAY_BIT)   { if (tmp.size()) tmp += " | "; tmp += "GL_CLIENT_VERTEX_ARRAY_BIT"; }
-    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                    { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLuseProgramStagesToString(GLbitfield v)
@@ -370,49 +367,49 @@ namespace Token {
 
     const GLbitfield other = v & ~(GL_VERTEX_SHADER_BIT | GL_TESS_CONTROL_SHADER_BIT | GL_TESS_EVALUATION_SHADER_BIT | GL_GEOMETRY_SHADER_BIT | GL_FRAGMENT_SHADER_BIT | GL_COMPUTE_SHADER_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_VERTEX_SHADER_BIT)          { if (tmp.size()) tmp += " | "; tmp += "GL_VERTEX_SHADER_BIT"; }
     if (v & GL_TESS_CONTROL_SHADER_BIT)    { if (tmp.size()) tmp += " | "; tmp += "GL_TESS_CONTROL_SHADER_BIT"; }
     if (v & GL_TESS_EVALUATION_SHADER_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_TESS_EVALUATION_SHADER_BIT"; }
     if (v & GL_GEOMETRY_SHADER_BIT)        { if (tmp.size()) tmp += " | "; tmp += "GL_GEOMETRY_SHADER_BIT"; }
     if (v & GL_FRAGMENT_SHADER_BIT)        { if (tmp.size()) tmp += " | "; tmp += "GL_FRAGMENT_SHADER_BIT"; }
     if (v & GL_COMPUTE_SHADER_BIT)         { if (tmp.size()) tmp += " | "; tmp += "GL_COMPUTE_SHADER_BIT"; }
-    if (other || v==0)                     { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                     { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLwaitSyncToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_ZERO);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_ZERO)   { if (tmp.size()) tmp += " | "; tmp += "GL_ZERO"; }
-    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLcreateSyncFromCLeventARBToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_ZERO);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_ZERO)   { if (tmp.size()) tmp += " | "; tmp += "GL_ZERO"; }
-    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLimportSyncEXTToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_ZERO);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_ZERO)   { if (tmp.size()) tmp += " | "; tmp += "GL_ZERO"; }
-    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0) { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLgetPathMetricsNVToString(GLbitfield v)
@@ -426,7 +423,7 @@ namespace Token {
                                    GL_FONT_MAX_ADVANCE_WIDTH_BIT_NV | GL_FONT_MAX_ADVANCE_HEIGHT_BIT_NV | GL_FONT_UNDERLINE_POSITION_BIT_NV |
                                    GL_FONT_UNDERLINE_THICKNESS_BIT_NV | GL_FONT_HAS_KERNING_BIT_NV);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_GLYPH_WIDTH_BIT_NV)                      { if (tmp.size()) tmp += " | "; tmp += "GL_GLYPH_WIDTH_BIT_NV"; }
     if (v & GL_GLYPH_HEIGHT_BIT_NV)                     { if (tmp.size()) tmp += " | "; tmp += "GL_GLYPH_HEIGHT_BIT_NV"; }
     if (v & GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV)       { if (tmp.size()) tmp += " | "; tmp += "GL_GLYPH_HORIZONTAL_BEARING_X_BIT_NV"; }
@@ -449,9 +446,9 @@ namespace Token {
     if (v & GL_FONT_UNDERLINE_POSITION_BIT_NV)          { if (tmp.size()) tmp += " | "; tmp += "GL_FONT_UNDERLINE_POSITION_BIT_NV"; }
     if (v & GL_FONT_UNDERLINE_THICKNESS_BIT_NV)         { if (tmp.size()) tmp += " | "; tmp += "GL_FONT_UNDERLINE_THICKNESS_BIT_NV"; }
     if (v & GL_FONT_HAS_KERNING_BIT_NV)                 { if (tmp.size()) tmp += " | "; tmp += "GL_FONT_HAS_KERNING_BIT_NV"; }
-    if (other || v==0)                                  { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                                  { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLpathGlyphsNVToString(GLbitfield v)
@@ -461,35 +458,35 @@ namespace Token {
 
     const GLbitfield other = v & ~(GL_BOLD_BIT_NV | GL_ITALIC_BIT_NV);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_BOLD_BIT_NV)   { if (tmp.size()) tmp += " | "; tmp += "GL_BOLD_BIT_NV"; }
     if (v & GL_ITALIC_BIT_NV) { if (tmp.size()) tmp += " | "; tmp += "GL_ITALIC_BIT_NV"; }
-    if (other || v==0)        { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)        { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLtexStorageSparseAMDToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_TEXTURE_STORAGE_SPARSE_BIT_AMD);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_TEXTURE_STORAGE_SPARSE_BIT_AMD) { if (tmp.size()) tmp += " | "; tmp += "GL_TEXTURE_STORAGE_SPARSE_BIT_AMD"; }
-    if (other || v==0)                         { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)                         { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLmapTexture2DINTELToString(GLbitfield v)
   {
     const GLbitfield other = v & ~(GL_MAP_READ_BIT | GL_MAP_WRITE_BIT);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_MAP_READ_BIT)  { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_READ_BIT"; }
     if (v & GL_MAP_WRITE_BIT) { if (tmp.size()) tmp += " | "; tmp += "GL_MAP_WRITE_BIT"; }
-    if (other || v==0)        { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)        { if (tmp.size()) tmp += " | "; tmp += print_string( size_t( other ) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLstartTilingQCOMToString(GLbitfield v)
@@ -506,7 +503,7 @@ namespace Token {
                                    GL_MULTISAMPLE_BUFFER_BIT3_QCOM | GL_MULTISAMPLE_BUFFER_BIT4_QCOM | GL_MULTISAMPLE_BUFFER_BIT5_QCOM |
                                    GL_MULTISAMPLE_BUFFER_BIT6_QCOM | GL_MULTISAMPLE_BUFFER_BIT7_QCOM);
 
-    string_list<std::string> tmp;
+    std::string tmp;
     if (v & GL_COLOR_BUFFER_BIT0_QCOM)  { if (tmp.size()) tmp += " | "; tmp += "GL_COLOR_BUFFER_BIT0_QCOM"; }
     if (v & GL_COLOR_BUFFER_BIT1_QCOM)  { if (tmp.size()) tmp += " | "; tmp += "GL_COLOR_BUFFER_BIT1_QCOM"; }
     if (v & GL_COLOR_BUFFER_BIT2_QCOM)  { if (tmp.size()) tmp += " | "; tmp += "GL_COLOR_BUFFER_BIT2_QCOM"; }
@@ -539,9 +536,9 @@ namespace Token {
     if (v & GL_MULTISAMPLE_BUFFER_BIT5_QCOM)  { if (tmp.size()) tmp += " | "; tmp += "GL_MULTISAMPLE_BUFFER_BIT5_QCOM"; }
     if (v & GL_MULTISAMPLE_BUFFER_BIT6_QCOM)  { if (tmp.size()) tmp += " | "; tmp += "GL_MULTISAMPLE_BUFFER_BIT6_QCOM"; }
     if (v & GL_MULTISAMPLE_BUFFER_BIT7_QCOM)  { if (tmp.size()) tmp += " | "; tmp += "GL_MULTISAMPLE_BUFFER_BIT7_QCOM"; }
-    if (other || v==0)        { if (tmp.size()) tmp += " | "; tmp += size_t(other); }
+    if (other || v==0)        { if (tmp.size()) tmp += " | "; tmp += print_string( size_t(other) ); }
 
-    return tmp.str();
+    return tmp;
   }
 
   std::string GLTexParameterToString(GLenum pname, const GLfloat param)

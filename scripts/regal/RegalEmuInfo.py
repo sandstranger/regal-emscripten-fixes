@@ -90,13 +90,11 @@ REGAL_GLOBAL_BEGIN
 
 using namespace std;
 
-#include <boost/print/string_list.hpp>
-using namespace boost::print;
-
 #include "RegalToken.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
 #include "RegalEmu.h"
+#include "RegalPrint.h"
 
 REGAL_GLOBAL_END
 
@@ -142,7 +140,7 @@ EmuInfo::init(const ContextInfo &contextInfo)
 
 #ifdef REGAL_GL_EXTENSIONS
   {
-    string_list<string> extList;
+    StringList extList;
     extList.split(REGAL_EQUOTE(REGAL_GL_EXTENSIONS),' ');
     extensionsSet.clear();
     extensionsSet.insert(extList.begin(),extList.end());
@@ -172,7 +170,7 @@ EmuInfo::init(const ContextInfo &contextInfo)
     const char *extensionsEnv = getEnv("REGAL_GL_EXTENSIONS");
     if (extensionsEnv)
     {
-      string_list<string> extList;
+      StringList extList;
       extList.split(extensionsEnv,' ');
       extensionsSet.clear();
       extensionsSet.insert(extList.begin(),extList.end());
@@ -322,9 +320,9 @@ EmuInfo::isSupported(const ContextInfo &contextInfo, const char *ext) const
 {
   Internal("EmuInfo::isSupported ",print_quote(ext,\'"\'));
 
-  string_list<string> e;
+  StringList e;
   e.split(ext,\' \');
-  for (string_list<string>::const_iterator i=e.begin(); i!=e.end(); ++i)
+  for (StringList::const_iterator i=e.begin(); i!=e.end(); ++i)
     if (i->length() && !getExtension(contextInfo, i->c_str())) return false;
   return true;
 }'''

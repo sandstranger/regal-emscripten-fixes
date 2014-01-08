@@ -47,12 +47,6 @@ REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
 
-#include <boost/cstdint.hpp>
-
-using ::boost::uint8_t;
-using ::boost::uint16_t;
-using ::boost::uint32_t;
-
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN

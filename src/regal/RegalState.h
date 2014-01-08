@@ -43,7 +43,6 @@ REGAL_GLOBAL_BEGIN
 #include <algorithm>  // For std::swap
 
 #include "RegalPrint.h"
-#include <boost/print/string_list.hpp>
 
 #include "RegalEmu.h"
 #include "RegalIff.h"
@@ -90,7 +89,7 @@ REGAL_NAMESPACE_BEGIN
 namespace State
 {
 
-typedef ::boost::print::string_list<std::string> string_list;
+typedef StringList string_list;
 
 inline static void setEnable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)
 {
@@ -730,7 +729,7 @@ struct Enable
       enableiToString(tmp, textureGenQ[ii], "GL_TEXTURE_GEN_Q", ii, delim);
     }
     enableToString(tmp, vertexProgramTwoSide, "GL_VERTEX_PROGRAM_TWO_SIDE",delim);
-    return tmp;
+    return tmp.str();
   }
 };
 
@@ -784,7 +783,7 @@ struct Depth
     tmp << print_string("glDepthfunc(",Token::toString(func),");",delim);
     tmp << print_string("glClearDepth(",clear,");",delim);
     tmp << print_string("glDepthMask(",mask ? "GL_TRUE" : "GL_FALSE",");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   template <typename T> inline void glClearDepth(T depth)
@@ -862,7 +861,7 @@ struct StencilFace
     tmp << print_string("glStencilFuncSeparate(",Token::toString(face),",",Token::toString(func),",",ref,",0x",print_hex(valueMask),");",delim);
     tmp << print_string("glStencilMaskSeparate(",Token::toString(face),",0x",print_hex(writeMask),");",delim);
     tmp << print_string("glStencilOpSeparate(",Token::toString(face),",",Token::toString(fail),",",Token::toString(zfail),",",Token::toString(zpass),");",delim);
-    return tmp;
+    return tmp.str();
   }
 };
 
@@ -916,7 +915,7 @@ struct Stencil
     tmp << print_string("glClearStencil(",clear,");",delim);
     tmp << front.toString(GL_FRONT,delim);
     tmp << front.toString(GL_BACK,delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glClearStencil(GLint s)
@@ -1109,7 +1108,7 @@ struct Polygon
     enableToString(tmp, offsetLine, "GL_POLYGON_OFFSET_LINE", delim);
     enableToString(tmp, offsetPoint, "GL_POLYGON_OFFSET_POINT", delim);
     tmp << print_string("glPolygonOffset(",factor,",",units,");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glCullFace(GLenum mode)
@@ -1267,7 +1266,7 @@ struct Transform
     enableToString(tmp, normalize, "GL_NORMALIZE", delim);
     enableToString(tmp, rescaleNormal, "GL_RESCALE_NORMAL", delim);
     enableToString(tmp, depthClamp, "GL_DEPTH_CLAMP", delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glClipPlane(GLenum plane, const GLdouble *equation)
@@ -1367,7 +1366,7 @@ struct Hint
     tmp << print_string("glHint(GL_GENERATE_MIPMAP_HINT,",Token::toString(generateMipmap),");",delim);
     tmp << print_string("glHint(GL_TEXTURE_COMPRESSION_HINT,",Token::toString(textureCompression),");",delim);
     tmp << print_string("glHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT,",Token::toString(fragmentShaderDerivative),");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   void glHint(GLenum target, GLenum mode)
@@ -1439,7 +1438,7 @@ struct List
   {
     string_list tmp;
     tmp << print_string("glListBase(",base,");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glListBase( GLuint b )
@@ -1483,7 +1482,7 @@ struct AccumBuffer
   {
     string_list tmp;
     tmp << print_string("glClearAccum(",clear[0],",",clear[1],",",clear[2],",",clear[3],");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glClearAccum(GLfloat r, GLfloat g, GLfloat b, GLfloat a)
@@ -1610,7 +1609,7 @@ struct Scissor
       else
         tmp << print_string("glScissorIndexedv(",ii,", [ *not valid* ] );",delim);
     }
-    return tmp;
+    return tmp.str();
   }
 
   void glScissor( GLint left, GLint bottom, GLsizei width, GLsizei height )
@@ -1770,7 +1769,7 @@ struct Viewport
     }
     for (size_t ii=0; ii<REGAL_EMU_MAX_VIEWPORTS; ii++)
       tmp << print_string("glDepthRangeIndexed(",ii,",",depthRange[ii][0],",",depthRange[ii][1],");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   template <typename T> void glDepthRange( T n, T f )
@@ -1921,7 +1920,7 @@ struct Line
     enableToString(tmp, smooth, "GL_LINE_SMOOTH", delim);
     enableToString(tmp, stipple, "GL_LINE_STIPPLE", delim);
     tmp << print_string("glLineStipple(",stippleRepeat,",0x",print_hex(stipplePattern),");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glLineStipple( GLint repeat, GLushort pattern )
@@ -2015,7 +2014,7 @@ struct Multisample
     tmp << print_string("glSampleCoverage(",sampleCoverageValue,",",sampleCoverageInvert,");",delim);
     enableToString(tmp, sampleShading, "GL_SAMPLE_SHADING", delim);
     tmp << print_string("glMinSampleShading(",minSampleShadingValue,");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glMinSampleShading( GLfloat value )
@@ -2115,7 +2114,7 @@ struct Eval
     tmp << print_string("glMapGrid1d(",map1GridSegments,",",map1GridDomain[0],",",map1GridDomain[1],");",delim);
     tmp << print_string("glMapGrid2d(",map2GridSegments[0],",",map2GridDomain[0],",",map2GridDomain[1],
                         map2GridSegments[1],",",map2GridDomain[2],",",map2GridDomain[3],");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   template <typename T> inline void glMapGrid1( GLint n, T u1, T u2 )
@@ -2222,7 +2221,7 @@ struct Fog
     enableToString(tmp, enable, "GL_FOG",delim);
     tmp << print_string("glFogi(GL_FOG_COORD_SRC,",Token::toString(coordSrc),");",delim);
     enableToString(tmp, colorSum, "GL_COLOR_SUM",delim);
-    return tmp;
+    return tmp.str();
   }
 };
 
@@ -2335,7 +2334,7 @@ struct Point
       RegalAssertArrayIndex( coordReplace, ii );
       tmp << print_string("glMultiTexEnviEXT(",Token::toString(static_cast<GLenum>(GL_TEXTURE0+ii)),",GL_POINT_SPRITE,GL_COORD_REPLACE,",coordReplace[ii],");",delim);
     }
-    return tmp;
+    return tmp.str();
   }
 
   template <typename T> void glMultiTexEnv(GLenum texunit, GLenum target, GLenum pname, T param)
@@ -2435,7 +2434,7 @@ struct PolygonStipple
     for (size_t ii=0; ii<(32*4)-1; ii++)
       tmp << print_string(" 0x",print_hex(pattern[ii]),",");
     tmp << print_string(" 0x",print_hex(pattern[(32*4)-1]),"]);",delim);
-    return tmp;
+    return tmp.str();
   }
 
   void glPolygonStipple( const GLubyte *p )
@@ -2744,7 +2743,7 @@ struct ColorBuffer
     }
     else
       tmp << print_string("glDrawBuffers(",REGAL_EMU_MAX_DRAW_BUFFERS,", [ *not valid* ]);",delim);
-    return tmp;
+    return tmp.str();
   }
 
   inline void glAlphaFunc(GLenum func, GLclampf ref)
@@ -3318,7 +3317,7 @@ struct PixelMode
     enableToString(tmp, histogram, "GL_HISTOGRAM",delim);
     enableToString(tmp, minmax, "GL_MINMAX",delim);
     tmp << print_string("glPixelZoom(",zoomX,",",zoomY,");",delim);
-    return tmp;
+    return tmp.str();
   }
 
   template <typename T> void glColorTableParameterv( GLenum target, GLenum pname, const T *params )
@@ -3605,7 +3604,7 @@ struct LightingFace
     tmp << print_string("glMaterialf(",Token::toString(face),",GL_SHININESS,",shininess,");",delim);
     tmp << print_string("glMaterialfv(",Token::toString(face),",GL_COLOR_INDEXES,[",
                         colorIndexes[0],",", colorIndexes[1],",", colorIndexes[2],"]);",delim);
-    return tmp;
+    return tmp.str();
   }
 };
 
@@ -3869,7 +3868,7 @@ struct Lighting
       RegalAssertArrayIndex( lights, ii );
       lights[ii].toString(tmp,static_cast<GLenum>(GL_LIGHT0+ii),delim);
     }
-    return tmp;
+    return tmp.str();
   }
 
   inline void glColorMaterial( GLenum face, GLenum mode )

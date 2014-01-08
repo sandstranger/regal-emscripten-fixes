@@ -48,15 +48,9 @@ REGAL_GLOBAL_BEGIN
 
 #include <vector>
 
-#include <boost/cstdint.hpp>
-
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalSharedMap.h"
-
-using ::boost::uint8_t;
-using ::boost::uint16_t;
-using ::boost::uint32_t;
 
 REGAL_GLOBAL_END
 

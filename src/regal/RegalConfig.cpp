@@ -37,8 +37,6 @@ REGAL_GLOBAL_BEGIN
 
 #include <limits>
 
-#include <boost/print/json.hpp>
-
 #include "RegalLog.h"
 #include "RegalConfig.h"
 #include "RegalSystem.h"
@@ -46,8 +44,6 @@ REGAL_GLOBAL_BEGIN
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
-
-namespace Json { struct Output : public ::boost::print::json::output<std::string> {}; }
 
 namespace Config {
 
@@ -450,145 +446,6 @@ namespace Config {
     Info("REGAL_THREAD_LOCKING      ", enableThreadLocking ? "enabled" : "disabled");
   }
 
-  void
-  writeJSON(Json::Output &jo)
-  {
-#if !REGAL_NO_JSON
-    jo.object("config");
-
-      jo.member("configFile", configFile);
-
-      jo.object("load");
-        jo.member("GL",  loadGL);
-        jo.member("ES2", loadES2);
-//      jo.member("GLX", loadGLX);
-//      jo.member("WGL", loadWGL);
-        jo.member("EGL", loadEGL);
-      jo.end();
-
-      jo.object("system");
-        jo.member("ES1", sysES1);
-        jo.member("ES2", sysES2);
-        jo.member("GL",  sysGL);
-        jo.member("GLX", sysGLX);
-        jo.member("EGL", sysEGL);
-      jo.end();
-
-      jo.object("force");
-        jo.member("ES1",  forceES1Profile);
-        jo.member("ES2",  forceES2Profile);
-        jo.member("Core", forceCoreProfile);
-      jo.end();
-
-      jo.object("dispatch");
-
-        jo.object("enable");
-          jo.member("debug",      enableDebug);
-          jo.member("error",      enableError);
-          jo.member("code",       enableCode);
-          jo.member("statistics", enableStatistics);
-          jo.member("emulation",  enableEmulation);
-          jo.member("trace",      enableTrace);
-          jo.member("http",       enableHttp);
-          jo.member("log",        enableLog);
-          jo.member("driver",     enableDriver);
-          jo.member("missing",    enableMissing);
-        jo.end();
-
-        jo.object("force");
-          jo.member("emulation", forceEmulation);
-        jo.end();
-
-        jo.object("emulation");
-
-          jo.object("enable");
-            jo.member("hint",   enableEmuHint);
-            jo.member("ppa",    enableEmuPpa);
-            jo.member("ppca",   enableEmuPpca);
-            jo.member("obj",    enableEmuObj);
-            jo.member("bin",    enableEmuBin);
-            jo.member("texsto", enableEmuTexSto);
-            jo.member("xfer",   enableEmuXfer);
-            jo.member("dsa",    enableEmuDsa);
-            jo.member("path",   enableEmuPath);
-            jo.member("rect",   enableEmuRect);
-            jo.member("bv",     enableEmuBaseVertex);
-            jo.member("iff",    enableEmuIff);
-            jo.member("quads",  enableEmuQuads);
-            jo.member("so",     enableEmuSo);
-            jo.member("vao",    enableEmuVao);
-            jo.member("texc",   enableEmuTexC);
-            jo.member("filter", enableEmuFilter);
-          jo.end();
-
-          jo.object("force");
-            jo.member("hint",   forceEmuHint);
-            jo.member("ppa",    forceEmuPpa);
-            jo.member("ppca",   forceEmuPpca);
-            jo.member("obj",    forceEmuObj);
-            jo.member("bin",    forceEmuBin);
-            jo.member("texsto", forceEmuTexSto);
-            jo.member("xfer",   forceEmuXfer);
-            jo.member("dsa",    forceEmuDsa);
-            jo.member("path",   forceEmuPath);
-            jo.member("rect",   forceEmuRect);
-            jo.member("bv",     forceEmuBaseVertex);
-            jo.member("iff",    forceEmuIff);
-            jo.member("quads",  forceEmuQuads);
-            jo.member("so",     forceEmuSo);
-            jo.member("vao",    forceEmuVao);
-            jo.member("texc",   forceEmuTexC);
-            jo.member("filter", forceEmuFilter);
-          jo.end();
-
-        jo.end();
-
-      jo.end();
-
-      jo.object("frame");
-        jo.member("limit",     frameLimit);
-        jo.object("md5");
-          jo.member("color",   frameMd5Color);
-          jo.member("stencil", frameMd5Stencil);
-          jo.member("depth",   frameMd5Depth);
-          jo.object("mask");
-            jo.member("color",   frameMd5ColorMask);
-            jo.member("stencil", frameMd5StencilMask);
-            jo.member("depth",   frameMd5DepthMask);
-          jo.end();
-        jo.end();
-        jo.object("save");
-          jo.object("enable");
-            jo.member("color",   frameSaveColor);
-            jo.member("stencil", frameSaveStencil);
-            jo.member("depth",   frameSaveDepth);
-          jo.end();
-          jo.object("prefix");
-            jo.member("color",   frameSaveColorPrefix);
-            jo.member("stencil", frameSaveStencilPrefix);
-            jo.member("depth",   frameSaveDepthPrefix);
-          jo.end();
-        jo.end();
-      jo.end();
-
-      jo.object("cache");
-        jo.member("enable",       cache);
-        jo.member("shader",       cacheShader);
-        jo.member("shaderWrite",  cacheShaderWrite);
-        jo.member("shaderRead",   cacheShaderRead);
-        jo.member("texture",      cacheShader);
-        jo.member("textureWrite", cacheShaderWrite);
-        jo.member("textureRead",  cacheShaderRead);
-        jo.member("directory",    cacheDirectory);
-      jo.end();
-
-      jo.object("trace");
-        jo.member("file",         traceFile);
-      jo.end();
-
-    jo.end();
-#endif // !REGAL_NO_JSON
-  }
 }
 
 REGAL_NAMESPACE_END

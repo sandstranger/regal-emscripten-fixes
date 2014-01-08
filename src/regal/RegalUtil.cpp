@@ -42,10 +42,6 @@ REGAL_GLOBAL_BEGIN
 using namespace std;
 
 #include "RegalPrint.h"
-#include <boost/print/string_list.hpp>
-
-
-using boost::print::string_list;
 
 #include "RegalConfig.h"
 
