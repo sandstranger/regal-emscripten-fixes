@@ -41,7 +41,7 @@
 // StaticLZC<12>::value == 3, StaticLZC<256>::value == 8, etc.
 // ===========================================================================
 
-template <uint32_t V> struct StaticLZC { enum Value { value = ( V & 1 ) == 0 ? 1 + StaticLZC<V/2>::value : 0 }; };
+template <GLuint V> struct StaticLZC { enum Value { value = ( V & 1 ) == 0 ? 1 + StaticLZC<V/2>::value : 0 }; };
 template <> struct StaticLZC<0> { enum Value { value = 0 }; };
 
 // ===========================================================================
@@ -49,7 +49,7 @@ template <> struct StaticLZC<0> { enum Value { value = 0 }; };
 // StaticIsPow2<4>::value == 1, StaticIsPow2<5>::value == 0, etc.
 // ===========================================================================
 
-template <uint32_t V> struct StaticIsPow2 { enum Value { value = ( V & ( V - 1 ) ) == 0 }; };
+template <GLuint V> struct StaticIsPow2 { enum Value { value = ( V & ( V - 1 ) ) == 0 }; };
 
 // ===========================================================================
 // 24 bit RGB is a bit special, but is otherwise treated like any other
@@ -69,7 +69,7 @@ struct uint24_t;
 // form, though represented as a 32 bit value for efficiency.
 // ===========================================================================
 
-template <uint32_t CM_ > struct Component
+template <GLuint CM_ > struct Component
 {
   enum Value
   {
@@ -84,7 +84,7 @@ template <uint32_t CM_ > struct Component
   // becomes 0x55, and 0xf becomes 0xff.
 
   template <size_t OUTPUT_BITS>
-  static inline uint32_t expand_( uint32_t v )
+  static inline GLuint expand_( GLuint v )
   {
     v |= v >> ( ( ( COMPONENT_BIT_COUNT *  1 ) < OUTPUT_BITS ) ? ( COMPONENT_BIT_COUNT *  1 ) : 0 );
     v |= v >> ( ( ( COMPONENT_BIT_COUNT *  2 ) < OUTPUT_BITS ) ? ( COMPONENT_BIT_COUNT *  2 ) : 0 );
@@ -95,14 +95,14 @@ template <uint32_t CM_ > struct Component
     return v;
   }
 
-  static inline uint32_t u8( uint32_t v )
+  static inline GLuint u8( GLuint v )
   {
     v = ( v & COMPONENT_MASK ) >> LEADING_BIT_COUNT;
     v <<= 8 - COMPONENT_BIT_COUNT;
     return expand_<8>( v );
   }
 
-  static inline uint32_t p8( uint32_t v )
+  static inline GLuint p8( GLuint v )
   {
     return ( v >> ( 8 - COMPONENT_BIT_COUNT ) ) << LEADING_BIT_COUNT;
   }
@@ -114,8 +114,8 @@ template <uint32_t CM_ > struct Component
 // ===========================================================================
 
 template <> struct Component<0> {
-  static uint32_t u8( uint32_t v ) { UNUSED_PARAMETER(v); return 0; }
-  static uint32_t p8( uint32_t v ) { UNUSED_PARAMETER(v); return 0; }
+  static GLuint u8( GLuint v ) { UNUSED_PARAMETER(v); return 0; }
+  static GLuint p8( GLuint v ) { UNUSED_PARAMETER(v); return 0; }
 };
 
 // ===========================================================================
@@ -123,11 +123,11 @@ template <> struct Component<0> {
 // These functions are used if the data is not aligned.
 // ===========================================================================
 
-template <typename P_> uint32_t Read ( const uint8_t* src );
-template <typename P_> void     Write( uint8_t* dst, uint32_t v );
+template <typename P_> GLuint Read ( const GLubyte* src );
+template <typename P_> void     Write( GLubyte* dst, GLuint v );
 
-template <> uint32_t Read<uint32_t>( const uint8_t* src ) {
-  uint32_t v = 0;
+template <> GLuint Read<GLuint>( const GLubyte* src ) {
+  GLuint v = 0;
   v |= src[ 0 ] << 0;
   v |= src[ 1 ] << 8;
   v |= src[ 2 ] << 16;
@@ -135,45 +135,45 @@ template <> uint32_t Read<uint32_t>( const uint8_t* src ) {
   return v;
 }
 
-template <> uint32_t Read<uint24_t>( const uint8_t* src ) {
-  uint32_t v = 0;
+template <> GLuint Read<uint24_t>( const GLubyte* src ) {
+  GLuint v = 0;
   v |= src[ 0 ] << 0;
   v |= src[ 1 ] << 8;
   v |= src[ 2 ] << 16;
   return v;
 }
 
-template <> uint32_t Read<uint16_t>( const uint8_t* src ) {
-  uint32_t v = 0;
+template <> GLuint Read<GLushort>( const GLubyte* src ) {
+  GLuint v = 0;
   v |= src[ 0 ] << 0;
   v |= src[ 1 ] << 8;
   return v;
 }
 
-template <> uint32_t Read<uint8_t>( const uint8_t* src ) {
+template <> GLuint Read<GLubyte>( const GLubyte* src ) {
   return src[ 0 ] << 0;
 }
 
-template <> void Write<uint32_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = static_cast<uint8_t>(( v >>  0 ) & 255);
-  dst[ 1 ] = static_cast<uint8_t>(( v >>  8 ) & 255);
-  dst[ 2 ] = static_cast<uint8_t>(( v >> 16 ) & 255);
-  dst[ 3 ] = static_cast<uint8_t>(( v >> 24 ) & 255);
+template <> void Write<GLuint>( GLubyte* dst, GLuint v ) {
+  dst[ 0 ] = static_cast<GLubyte>(( v >>  0 ) & 255);
+  dst[ 1 ] = static_cast<GLubyte>(( v >>  8 ) & 255);
+  dst[ 2 ] = static_cast<GLubyte>(( v >> 16 ) & 255);
+  dst[ 3 ] = static_cast<GLubyte>(( v >> 24 ) & 255);
 }
 
-template <> void Write<uint24_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = static_cast<uint8_t>(( v >>  0 ) & 255);
-  dst[ 1 ] = static_cast<uint8_t>(( v >>  8 ) & 255);
-  dst[ 2 ] = static_cast<uint8_t>(( v >> 16 ) & 255);
+template <> void Write<uint24_t>( GLubyte* dst, GLuint v ) {
+  dst[ 0 ] = static_cast<GLubyte>(( v >>  0 ) & 255);
+  dst[ 1 ] = static_cast<GLubyte>(( v >>  8 ) & 255);
+  dst[ 2 ] = static_cast<GLubyte>(( v >> 16 ) & 255);
 }
 
-template <> void Write<uint16_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = static_cast<uint8_t>(( v >> 0 ) & 255);
-  dst[ 1 ] = static_cast<uint8_t>(( v >> 8 ) & 255);
+template <> void Write<GLushort>( GLubyte* dst, GLuint v ) {
+  dst[ 0 ] = static_cast<GLubyte>(( v >> 0 ) & 255);
+  dst[ 1 ] = static_cast<GLubyte>(( v >> 8 ) & 255);
 }
 
-template <> void Write<uint8_t>( uint8_t* dst, uint32_t v ) {
-  dst[ 0 ] = static_cast<uint8_t>(( v >> 0 ) & 255);
+template <> void Write<GLubyte>( GLubyte* dst, GLuint v ) {
+  dst[ 0 ] = static_cast<GLubyte>(( v >> 0 ) & 255);
 }
 
 // ===========================================================================
@@ -181,7 +181,7 @@ template <> void Write<uint8_t>( uint8_t* dst, uint32_t v ) {
 // continuous pixel data in memory.
 // ===========================================================================
 
-template <typename PT_, uint32_t PBS_, uint32_t RM_, uint32_t GM_, uint32_t BM_, uint32_t AM_>
+template <typename PT_, GLuint PBS_, GLuint RM_, GLuint GM_, GLuint BM_, GLuint AM_>
 struct PixelAny
 {
   typedef PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_> SelfType;
@@ -199,23 +199,23 @@ struct PixelAny
 
   // Pack/unpack for each component.
 
-  static uint32_t ur8( uint32_t v ) { return Component<RED_MASK>::u8( v ); }
-  static uint32_t ug8( uint32_t v ) { return Component<GRN_MASK>::u8( v ); }
-  static uint32_t ub8( uint32_t v ) { return Component<BLU_MASK>::u8( v ); }
-  static uint32_t ua8( uint32_t v ) { return Component<ALP_MASK>::u8( v ); }
+  static GLuint ur8( GLuint v ) { return Component<RED_MASK>::u8( v ); }
+  static GLuint ug8( GLuint v ) { return Component<GRN_MASK>::u8( v ); }
+  static GLuint ub8( GLuint v ) { return Component<BLU_MASK>::u8( v ); }
+  static GLuint ua8( GLuint v ) { return Component<ALP_MASK>::u8( v ); }
 
-  static uint32_t pr8( uint32_t v ) { return Component<RED_MASK>::p8( v ); }
-  static uint32_t pg8( uint32_t v ) { return Component<GRN_MASK>::p8( v ); }
-  static uint32_t pb8( uint32_t v ) { return Component<BLU_MASK>::p8( v ); }
-  static uint32_t pa8( uint32_t v ) { return Component<ALP_MASK>::p8( v ); }
+  static GLuint pr8( GLuint v ) { return Component<RED_MASK>::p8( v ); }
+  static GLuint pg8( GLuint v ) { return Component<GRN_MASK>::p8( v ); }
+  static GLuint pb8( GLuint v ) { return Component<BLU_MASK>::p8( v ); }
+  static GLuint pa8( GLuint v ) { return Component<ALP_MASK>::p8( v ); }
 
   // Pack/unpack for a whole pixel.
 
-  static uint32_t urgba32( uint32_t v ) {
+  static GLuint urgba32( GLuint v ) {
     return ( ua8( v ) << 24 ) | ( ub8( v ) << 16 ) | ( ug8( v ) <<  8 ) | ( ur8( v ) <<  0 );
   }
 
-  static uint32_t prgba32( uint32_t v ) {
+  static GLuint prgba32( GLuint v ) {
     return pa8( ( v & 0xff000000 ) >> 24 ) | pb8( ( v & 0x00ff0000 ) >> 16 ) | pg8( ( v & 0x0000ff00 ) >> 8 ) | pr8( ( v & 0x000000ff ) >> 0 );
   }
 
@@ -223,26 +223,26 @@ struct PixelAny
   // The "slow" functions read data a byte at a time from memory, and are meant
   // for unaligned reads and writes.
 
-  static void Unpack32( const uint8_t* src, uint32_t* dst, size_t cnt )  {
+  static void Unpack32( const GLubyte* src, GLuint* dst, size_t cnt )  {
     while ( cnt-- ) {
       *dst++ = urgba32( Read<PixelType>( src ) );
       src += PACKED_BYTES;
     }
   }
 
-  static void Pack32( const uint32_t* src, uint8_t* dst, size_t cnt )  {
+  static void Pack32( const GLuint* src, GLubyte* dst, size_t cnt )  {
     while ( cnt-- ) {
       Write<PixelType>( dst, prgba32 ( *src++ ) );
       dst += PACKED_BYTES;
     }
   }
 
-  static void Unpack32( const void* src, uint32_t* dst, size_t cnt ) {
-    Unpack32( static_cast<const uint8_t*>( src ), dst, cnt );
+  static void Unpack32( const void* src, GLuint* dst, size_t cnt ) {
+    Unpack32( static_cast<const GLubyte*>( src ), dst, cnt );
   }
 
-  static void Pack32( const uint32_t* src, void* dst, size_t cnt ) {
-    Pack32( src, static_cast<uint8_t*>( dst ), cnt );
+  static void Pack32( const GLuint* src, void* dst, size_t cnt ) {
+    Pack32( src, static_cast<GLubyte*>( dst ), cnt );
   }
 };
 
@@ -254,7 +254,7 @@ struct PixelAny
 //  - BM_   blue bit mask
 //  - AM_   alpha bit mask
 
-template <typename PT_, uint32_t PBS_, uint32_t RM_, uint32_t GM_, uint32_t BM_, uint32_t AM_>
+template <typename PT_, GLuint PBS_, GLuint RM_, GLuint GM_, GLuint BM_, GLuint AM_>
 struct Pixel : public PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_>
 {
   typedef PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_> BaseType;
@@ -267,33 +267,33 @@ struct Pixel : public PixelAny<PT_, PBS_, RM_, GM_, BM_, AM_>
 
   static SelfType singleton;
 
-  static void Unpack32( const PixelType* src, uint32_t* dst, size_t cnt )  {
+  static void Unpack32( const PixelType* src, GLuint* dst, size_t cnt )  {
     while ( cnt-- ) {
-      *dst++ = urgba32( static_cast<uint32_t>( *src++ ) );
+      *dst++ = urgba32( static_cast<GLuint>( *src++ ) );
     }
   }
 
-  static void Pack32( const uint32_t* src, PixelType* dst, size_t cnt )  {
+  static void Pack32( const GLuint* src, PixelType* dst, size_t cnt )  {
     while ( cnt-- ) {
       *dst++ = static_cast<PixelType> ( prgba32 ( *src++ ) );
     }
   }
 
-  static void Unpack32( const void* src, uint32_t* dst, size_t cnt ) {
+  static void Unpack32( const void* src, GLuint* dst, size_t cnt ) {
     bool aligned = ( reinterpret_cast<intptr_t>( src ) & ( PACKED_BYTES - 1 ) ) == 0;
     if ( aligned ) {
       Unpack32( static_cast<const PixelType*>( src ), dst, cnt );
     } else {
-      BaseType::Unpack32( static_cast<const uint8_t*>( src ), dst, cnt );
+      BaseType::Unpack32( static_cast<const GLubyte*>( src ), dst, cnt );
     }
   }
 
-  static void Pack32( const uint32_t* src, void* dst, size_t cnt ) {
+  static void Pack32( const GLuint* src, void* dst, size_t cnt ) {
     bool aligned = ( reinterpret_cast<intptr_t>( dst ) & ( PACKED_BYTES - 1 ) ) == 0;
     if ( aligned ) {
       Pack32( src, static_cast<PixelType*>( dst ), cnt );
     } else {
-      BaseType::Pack32( src, static_cast<uint8_t*>( dst ), cnt );
+      BaseType::Pack32( src, static_cast<GLubyte*>( dst ), cnt );
     }
   }
 };

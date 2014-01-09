@@ -90,12 +90,12 @@ struct Registry : public RegistryBase, public IConversion
     conversionMap[ std::make_pair( format, type ) ] = this;
   }
 
-  virtual void Unpack32( const void* src, uint32_t* dst, size_t cnt ) const
+  virtual void Unpack32( const void* src, GLuint* dst, size_t cnt ) const
   {
     return T::Unpack32( src, dst, cnt );
   }
 
-  virtual void Pack32( const uint32_t* src, void* dst, size_t cnt ) const
+  virtual void Pack32( const GLuint* src, void* dst, size_t cnt ) const
   {
     return T::Pack32( src, dst, cnt );
   }
@@ -141,23 +141,23 @@ struct Registry : public RegistryBase, public IConversion
 // ===========================================================================
 
 // 8bpp
-Registry<GL_ALPHA,           GL_UNSIGNED_BYTE,          Pixel<uint8_t,  1,      0,      0,      0,   0xff>     > a_8_;
-Registry<GL_LUMINANCE,       GL_UNSIGNED_BYTE,          Pixel<uint8_t,  1,   0xff,      0,      0,      0>     > l_8_;
+Registry<GL_ALPHA,           GL_UNSIGNED_BYTE,          Pixel<GLubyte,  1,      0,      0,      0,   0xff>     > a_8_;
+Registry<GL_LUMINANCE,       GL_UNSIGNED_BYTE,          Pixel<GLubyte,  1,   0xff,      0,      0,      0>     > l_8_;
 
 // 15bpp
-Registry<GL_RGBA,            GL_RGB5,                   Pixel<uint16_t, 2, 0x001f, 0x03e0, 0x7c00,      0>     > rgb_555_;
+Registry<GL_RGBA,            GL_RGB5,                   Pixel<GLushort, 2, 0x001f, 0x03e0, 0x7c00,      0>     > rgb_555_;
 
 // 16bpp
-Registry<GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE,          Pixel<uint16_t, 2, 0x00ff,      0,      0, 0xff00>     > la_88_;
-Registry<GL_RGB,             GL_UNSIGNED_SHORT_5_6_5,   Pixel<uint16_t, 2, 0xf800, 0x07e0, 0x001f,      0>     > rgb_565_;
-Registry<GL_RGBA,            GL_UNSIGNED_SHORT_4_4_4_4, Pixel<uint16_t, 2, 0xf000, 0x0f00, 0x00f0, 0x000f>     > rgba_4444_;
-Registry<GL_RGBA,            GL_UNSIGNED_SHORT_5_5_5_1, Pixel<uint16_t, 2, 0xf800, 0x07c0, 0x003e, 0x0001>     > rgba_5551_;
+Registry<GL_LUMINANCE_ALPHA, GL_UNSIGNED_BYTE,          Pixel<GLushort, 2, 0x00ff,      0,      0, 0xff00>     > la_88_;
+Registry<GL_RGB,             GL_UNSIGNED_SHORT_5_6_5,   Pixel<GLushort, 2, 0xf800, 0x07e0, 0x001f,      0>     > rgb_565_;
+Registry<GL_RGBA,            GL_UNSIGNED_SHORT_4_4_4_4, Pixel<GLushort, 2, 0xf000, 0x0f00, 0x00f0, 0x000f>     > rgba_4444_;
+Registry<GL_RGBA,            GL_UNSIGNED_SHORT_5_5_5_1, Pixel<GLushort, 2, 0xf800, 0x07c0, 0x003e, 0x0001>     > rgba_5551_;
 
 // 24bpp (needs some special handling)
 Registry<GL_RGB,             GL_UNSIGNED_BYTE,          PixelAny<uint24_t, 3, 0x0000ff, 0x00ff00, 0xff0000, 0> > rgb_888_;
 
 // 32bpp
-Registry<GL_RGBA,            GL_UNSIGNED_BYTE,          Pixel<uint32_t, 4, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000> > rgba_8888_;
+Registry<GL_RGBA,            GL_UNSIGNED_BYTE,          Pixel<GLuint, 4, 0x000000ff, 0x0000ff00, 0x00ff0000, 0xff000000> > rgba_8888_;
 
 }  // namespace
 

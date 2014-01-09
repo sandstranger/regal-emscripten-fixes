@@ -724,6 +724,15 @@ return;'''
        '  return GL_FALSE;',
        '}'
      ]
-  }
+  },
+
+  'GroupMarker' : {
+    'entries' : [ 'gl(Push|Pop)GroupMarkerEXT', ],
+    'impl' : [
+      'if( ! _context->info->gl_ext_debug_marker ) {',
+      '  return;',
+      '}',
+     ],
+  },
 
 }

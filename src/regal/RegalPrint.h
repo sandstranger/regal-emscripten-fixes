@@ -55,7 +55,7 @@ typedef boost::print::string_list<stxring> StringList;
 
 #define PRINT_STREAM_TYPE std::ostringstream
 
-
+#include <cstring>
 #include <sstream>
 
 #define print_string( ... ) ( PrintString(), __VA_ARGS__ ).toString()
@@ -74,15 +74,63 @@ extern PRINT_STREAM_TYPE printStream;
 
 struct PrintString {
 
-  PrintString() { printStream.str(""); }
+  PrintString() : sz(0) {}
+
+  bool full() { return ( sz + 1 ) >= sizeof( buf ); }
 
   template <typename T>
   PrintString & operator, ( const T & t ) {
-	  printStream << t;
+	  if( ! full() ) {
+		printStream.str("");
+		printStream << t;
+		return operator,( printStream.str().c_str() );
+	  }
+	  return *this;
+  }
+  template <>
+  PrintString & operator, ( const std::string & s ) {
+	  if( ! full() ) {
+		return operator,( reinterpret_cast<const char *>( s.c_str() ) );
+	  }
+	  return *this;
+  }
+  template <>
+  PrintString & operator,( const char * const & s ) {
+	  if( ! full() ) {
+	    append( s, strlen(s) );
+	  }
+	  return *this;
+  }
+  template <>
+  PrintString & operator, ( const int & i ) {
+	  if( ! full() ) {
+		char nb[80];
+		int len = sprintf( nb, "%d", i );
+		append( nb, len );
+	  }
 	  return *this;
   }
 
-  std::string toString() { return printStream.str(); }
+  template <>
+  PrintString & operator, ( const float & f ) {
+	  if( ! full() ) {
+		char nb[80];
+		int len = sprintf( nb, "%f", f );
+		append( nb, len );
+	  }
+	  return *this;
+  }
+
+  void append( const char * s, int len ) {
+	  int n = std::min( len, int(sizeof(buf) - sz - 1) );
+	  memcpy( buf + sz, s, n );
+	  sz += n;
+	  buf[sz] = 0;
+  }
+
+  int sz;
+  char buf[1024];
+  std::string toString() { return buf; }
 };
 
 template <typename T>

@@ -58,11 +58,11 @@ class IConversion
  public:
   // Unpacks pixel data from an arbitrary format into a destination RGBA_8888
   // format.
-  virtual void Unpack32 ( const void*     src, uint32_t* dst, size_t cnt ) const = 0;
+  virtual void Unpack32 ( const void*     src, GLuint* dst, size_t cnt ) const = 0;
 
   // Packs the pixel data from a source RGBA_8888 format into an arbitary
   // format.
-  virtual void Pack32   ( const uint32_t* src, void*     dst, size_t cnt ) const = 0;
+  virtual void Pack32   ( const GLuint* src, void*     dst, size_t cnt ) const = 0;
 
   // Utility function. Gets the size in bytes of a packed pixel in the format
   // the interface deals with.

@@ -48497,6 +48497,150 @@ static void REGAL_CALL emu_glBlendEquationEXT(GLenum mode)
 
 // GL_EXT_debug_marker
 
+static void REGAL_CALL emu_glPopGroupMarkerEXT(void)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 16 :
+    case 15 :
+    case 14 :
+    case 13 :
+    case 12 :
+    case 11 :
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 16 :
+    case 15 :
+    case 14 :
+    case 13 :
+    case 12 :
+    case 11 :
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if( ! _context->info->gl_ext_debug_marker ) {
+          return;
+        }
+      }
+      #endif
+    default:
+    {
+      Dispatch::GL *_next = &_context->emu.next;
+      RegalAssert(_next);
+      _next->glPopGroupMarkerEXT();
+      break;
+    }
+
+  }
+
+}
+
+static void REGAL_CALL emu_glPushGroupMarkerEXT(GLsizei length, const GLchar *marker)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  // prefix
+  switch( _context->emuLevel )
+  {
+    case 16 :
+    case 15 :
+    case 14 :
+    case 13 :
+    case 12 :
+    case 11 :
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt) break;
+      #endif
+    default:
+      break;
+  }
+
+  // impl
+  switch( _context->emuLevel )
+  {
+    case 16 :
+    case 15 :
+    case 14 :
+    case 13 :
+    case 12 :
+    case 11 :
+    case 10 :
+    case 9 :
+    case 8 :
+    case 7 :
+    case 6 :
+    case 5 :
+    case 4 :
+    case 3 :
+    case 2 :
+    case 1 :
+      #if REGAL_EMU_FILTER
+      if (_context->filt)
+      {
+        Push<int> pushLevel(_context->emuLevel);
+        _context->emuLevel = 0;
+        if( ! _context->info->gl_ext_debug_marker ) {
+          return;
+        }
+      }
+      #endif
+    default:
+    {
+      Dispatch::GL *_next = &_context->emu.next;
+      RegalAssert(_next);
+      _next->glPushGroupMarkerEXT(length, marker);
+      break;
+    }
+
+  }
+
+}
+
 // GL_EXT_depth_bounds_test
 
 // GL_EXT_direct_state_access
@@ -72349,6 +72493,11 @@ void InitDispatchEmu(Dispatch::GL &tbl)
 // GL_EXT_blend_minmax
 
    tbl.glBlendEquationEXT = emu_glBlendEquationEXT;
+
+// GL_EXT_debug_marker
+
+   tbl.glPopGroupMarkerEXT = emu_glPopGroupMarkerEXT;
+   tbl.glPushGroupMarkerEXT = emu_glPushGroupMarkerEXT;
 
 // GL_EXT_direct_state_access
 

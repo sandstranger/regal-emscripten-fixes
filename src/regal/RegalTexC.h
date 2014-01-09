@@ -79,7 +79,7 @@ struct ConvertedBuffer
   }
 
   const PixelStorageStateGLES20& pss_;
-  std::vector<uint8_t> targetBuffer_;
+  std::vector<GLubyte> targetBuffer_;
   GLenum targetFormat_;
   GLenum targetType_;
 

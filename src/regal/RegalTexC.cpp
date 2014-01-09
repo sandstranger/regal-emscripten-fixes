@@ -116,12 +116,12 @@ ConvertedBuffer::ConvertFrom( GLsizei width, GLsizei height, GLenum sourceFormat
   const size_t sourcePixelsPerRow  = width;
   const size_t sourceStride        = ( sourcePixelsPerRow * sourcePixelSize + sourceAlignment - 1 ) & ~( sourceAlignment - 1 );
 
-  std::vector<uint32_t> rowBuffer;
+  std::vector<GLuint> rowBuffer;
   targetBuffer_ .resize( targetStride * height );
-  rowBuffer.resize( width * sizeof( uint32_t ) );
+  rowBuffer.resize( width * sizeof( GLuint ) );
 
-  const uint8_t* sourceRowData = static_cast<const uint8_t*>( sourcePixels );
-  uint8_t*       targetRowData = &targetBuffer_[ 0 ];
+  const GLubyte* sourceRowData = static_cast<const GLubyte*>( sourcePixels );
+  GLubyte*       targetRowData = &targetBuffer_[ 0 ];
 
   // Perform the conversion
   while ( height-- ) {

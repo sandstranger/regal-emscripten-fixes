@@ -182,7 +182,7 @@ namespace Emu
     layer = LayerInfo();
     // Need ppca layer with core to track fixed function state
     // layer.emulationNeeded = ctx.info->es1 || ctx.info->es2 || ctx.info->core;
-    layer.emulationNeeded = true; // because we need to honor glGet for all known state
+    layer.emulationNeeded = ctx.info->compat == false; // because we need to honor glGet for all known state
     layer.emulationSupported = true;
   }
 

@@ -46,6 +46,8 @@ Http::~Http() {}
 void Http::Init() {}
 void Http::Start() {}
 void Http::Stop() {}
+void Http::YieldToHttpServer( RegalContext *, bool ) {}
+void Regal::Http::GlProcs::Initialize( Regal::Dispatch::GL * ) {}
 
 REGAL_NAMESPACE_END
 

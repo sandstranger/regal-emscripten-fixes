@@ -367,7 +367,9 @@ def apiFuncDefineCode(apis, args):
         c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
         c += '  #if REGAL_HTTP\n'
-        c += '  _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+	c += '  if( _context->http.inBeginEnd == 0 ) {\n'
+        c += '    _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+	c += '  }\n'
         c += '  #endif\n'
         c += '  %s\n' % logFunction( function, 'App' )
         c += '  if (!_context) return'

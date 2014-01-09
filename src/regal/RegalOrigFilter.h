@@ -237,6 +237,8 @@ struct EmuOriginateProcFilter {
   PFNGLDRAWBUFFERSATIPROC glDrawBuffersATI;
   PFNGLBLENDCOLOREXTPROC glBlendColorEXT;
   PFNGLBLENDEQUATIONEXTPROC glBlendEquationEXT;
+  PFNGLPOPGROUPMARKEREXTPROC glPopGroupMarkerEXT;
+  PFNGLPUSHGROUPMARKEREXTPROC glPushGroupMarkerEXT;
   PFNGLCOLORMASKINDEXEDEXTPROC glColorMaskIndexedEXT;
   PFNGLDISABLEINDEXEDEXTPROC glDisableIndexedEXT;
   PFNGLENABLEINDEXEDEXTPROC glEnableIndexedEXT;
@@ -440,6 +442,8 @@ struct EmuOriginateProcFilter {
     glDrawBuffersATI = dt.glDrawBuffersATI;
     glBlendColorEXT = dt.glBlendColorEXT;
     glBlendEquationEXT = dt.glBlendEquationEXT;
+    glPopGroupMarkerEXT = dt.glPopGroupMarkerEXT;
+    glPushGroupMarkerEXT = dt.glPushGroupMarkerEXT;
     glColorMaskIndexedEXT = dt.glColorMaskIndexedEXT;
     glDisableIndexedEXT = dt.glDisableIndexedEXT;
     glEnableIndexedEXT = dt.glEnableIndexedEXT;
