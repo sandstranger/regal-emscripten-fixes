@@ -267,8 +267,8 @@ void SendText( Connection & conn, const string & contentType, const string & str
                              "HTTP/1.1 200 OK\r\n"
                              "Content-Type: ", contentType, "\r\n"
                              "Content-Length: ", str.length(), "\r\n"
-                             "\r\n",
-                             str);
+                             "\r\n" );
+  http += str;
   
   mg_write( conn.connection, http.c_str(), http.length() );
 }
@@ -276,8 +276,9 @@ void SendText( Connection & conn, const string & contentType, const string & str
 void SendHTML( Connection & conn, const string & body, const string & head = string() ) {
   string html = print_string(
                              "<html><head>\n", head,
-                             "</head><body>\n", body,
-                             "</body></html>\n");
+                             "</head><body>\n" );
+  html += body;
+  html += "</body></html>\n";
   SendText( conn, "text/html", html );
 }
 
