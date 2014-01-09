@@ -7119,10 +7119,10 @@ extern "C" {
     RegalAssert(Init::isInitialized());
     #if REGAL_HTTP
     if( _context->http.inBeginEnd == 0 ) {
-      _context->http.callString = print_string("glBufferData","(", toString(target), ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");;
+      _context->http.callString = print_string("glBufferData","(", toString(target), ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");;
     }
     #endif
-    App("glBufferData","(", toString(target), ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
+    App("glBufferData","(", toString(target), ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
     if (!_context) return;
     Dispatch::GL *_next = &_context->dispatchGL;
     RegalAssert(_next);
@@ -7135,10 +7135,10 @@ extern "C" {
     RegalAssert(Init::isInitialized());
     #if REGAL_HTTP
     if( _context->http.inBeginEnd == 0 ) {
-      _context->http.callString = print_string("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ")");;
+      _context->http.callString = print_string("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ")");;
     }
     #endif
-    App("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ")");
+    App("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ")");
     if (!_context) return;
     Dispatch::GL *_next = &_context->dispatchGL;
     RegalAssert(_next);
@@ -19434,10 +19434,10 @@ extern "C" {
     RegalAssert(Init::isInitialized());
     #if REGAL_HTTP
     if( _context->http.inBeginEnd == 0 ) {
-      _context->http.callString = print_string("glBufferDataARB","(", toString(target), ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");;
+      _context->http.callString = print_string("glBufferDataARB","(", toString(target), ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");;
     }
     #endif
-    App("glBufferDataARB","(", toString(target), ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
+    App("glBufferDataARB","(", toString(target), ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
     if (!_context) return;
     Dispatch::GL *_next = &_context->dispatchGL;
     RegalAssert(_next);
@@ -19450,10 +19450,10 @@ extern "C" {
     RegalAssert(Init::isInitialized());
     #if REGAL_HTTP
     if( _context->http.inBeginEnd == 0 ) {
-      _context->http.callString = print_string("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ")");;
+      _context->http.callString = print_string("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ")");;
     }
     #endif
-    App("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ")");
+    App("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ")");
     if (!_context) return;
     Dispatch::GL *_next = &_context->dispatchGL;
     RegalAssert(_next);

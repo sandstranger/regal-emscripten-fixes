@@ -103,7 +103,7 @@ inline void AppendString( char const (&s)[N], char * buf, int capacity, int & sz
   if( (capacity - sz) <= 1 ) {
     return;
   }
-  return AppendBytes( &s[0], N, buf, capacity, sz );
+  return AppendBytes( &s[0], N-1, buf, capacity, sz );
 }
 
 template <>
@@ -189,46 +189,52 @@ std::string print_array( const T * t, int num, const char *quote = "\"", const c
   return s;
 }
 
-// doesn't actually trim yet
 template <typename T>
-std::string print_trim( const T * t, char delim, unsigned int num, const char *prefix, const char *suffix ) {
-  std::string s = prefix;
+inline std::string print_trim( const T * t, char delim, unsigned int num, const char *prefix, const char *suffix ) {
+  std::string trimmed = prefix;
   while( num ) {
     const T * t2 = t;
     while( *t2 != delim && *t2 != 0 ) {
       t2++;
     }
-    if( t2 != 0 ) { // include delim if t2 is delim
+    if( *t2 != 0 ) { // include delim if t2 is delim
       t2++;
     }
-    s += std::string( t, t2 - t );
+    std::string el( t, size_t(t2 - t) );
+    trimmed += el;
     if( *t2 == 0 ) {
       break;
     }
     num--;
     t = t2 + 1;
   }
-  s += t;
-  // can skip the suffix if I'm not actually trimming
-  // s += suffix;
-  return s;
+  if ( num == 0 ) {
+    trimmed += delim;
+    trimmed += suffix;
+  }
+  return trimmed;
 }
 
-inline std::string print_raw( const void * p, const size_t size ) {
+inline std::string print_raw( const void * p, const size_t size, const size_t size_limit ) {
   char h[] = { '0', '1', '2', '3', '4', '5', '6', '7', '8', '9', 'a', 'b', 'c', 'd', 'e', 'f' };
   const char *cp = reinterpret_cast< const char * >( p );
   std::string s;
-  s.reserve( size * 2 + size / 4 );
-  for( int i = 0; i < size; i++ ) {
+  s.reserve( size_limit * 2 + size_limit / 4 + 4);
+  s += "[ ";
+  for( int i = 0; i < size_limit; i++ ) {
     s += h[ (cp[i] >> 4) & 0xf ];
     s += h[ (cp[i] >> 0) & 0xf ];
-    if( (i & 0xf) == 0xf ) {
+    if( (i & 0x3) == 0x3 ) {
       s += ' ';
     }
   }
-  if( ( size & 0x3 ) == 0x3 ) {
+  if( ( size_limit & 0x3 ) == 0x3 ) {
     s.erase( s.end()-- );
   }
+  if( size_limit < size ) {
+    s += " ...";
+  }
+  s += " ]";
   return s;
 }
 

@@ -85,9 +85,9 @@ def logParameter(function, parameter):
   elif t.startswith('GLLOGPROC'):
     return None
   elif n=='data' and (function.name=='glBufferData' or function.name=='glBufferDataARB'):
-    return 'print_raw(data,Logging::rawLimit(data ? size : 0))'
+    return 'print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0))'
   elif n=='data' and (function.name=='glBufferSubData' or function.name=='glBufferSubDataARB'):
-    return 'print_raw(data,Logging::rawLimit(data ? size : 0))'
+    return 'print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0))'
   elif \
     t in [ 'GLvoid *', 'const GLvoid *', 'void *', 'const void *'] or \
     t in [ 'GLvoid **', 'const GLvoid **', 'void **', 'const void **'] or \

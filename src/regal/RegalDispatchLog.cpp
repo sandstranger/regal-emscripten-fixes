@@ -4460,7 +4460,7 @@ static void REGAL_CALL log_glBufferData(GLenum target, GLsizeiptr size, const GL
     Dispatch::GL *_next = &_context->log.next;
     RegalAssert(_next);
     _next->glBufferData(target, size, data, usage);
-    Driver("glBufferData","(", toString(target), ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
+    Driver("glBufferData","(", toString(target), ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
 }
 
 static void REGAL_CALL log_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
@@ -4470,7 +4470,7 @@ static void REGAL_CALL log_glBufferSubData(GLenum target, GLintptr offset, GLsiz
     Dispatch::GL *_next = &_context->log.next;
     RegalAssert(_next);
     _next->glBufferSubData(target, offset, size, data);
-    Driver("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ")");
+    Driver("glBufferSubData","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ")");
 }
 
 static void REGAL_CALL log_glDeleteBuffers(GLsizei n, const GLuint *buffers)
@@ -12289,7 +12289,7 @@ static void REGAL_CALL log_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     Dispatch::GL *_next = &_context->log.next;
     RegalAssert(_next);
     _next->glBufferDataARB(target, size, data, usage);
-    Driver("glBufferDataARB","(", toString(target), ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
+    Driver("glBufferDataARB","(", toString(target), ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ", ", toString(usage), ")");
 }
 
 static void REGAL_CALL log_glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data)
@@ -12299,7 +12299,7 @@ static void REGAL_CALL log_glBufferSubDataARB(GLenum target, GLintptrARB offset,
     Dispatch::GL *_next = &_context->log.next;
     RegalAssert(_next);
     _next->glBufferSubDataARB(target, offset, size, data);
-    Driver("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data,Logging::rawLimit(data ? size : 0)), ")");
+    Driver("glBufferSubDataARB","(", toString(target), ", ", offset, ", ", size, ", ", print_raw(data, data ? size : 0, Logging::rawLimit(data ? size : 0)), ")");
 }
 
 static void REGAL_CALL log_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)

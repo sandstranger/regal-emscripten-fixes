@@ -98,7 +98,7 @@ namespace Json { struct Output; }
 #endif
 
 #ifndef REGAL_LOG_MAX_BYTES
-# define REGAL_LOG_MAX_BYTES -1 // unlimited by default
+# define REGAL_LOG_MAX_BYTES 64 
 #endif
 
 #ifndef REGAL_LOG_POINTERS
