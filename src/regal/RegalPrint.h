@@ -72,62 +72,70 @@ extern PRINT_STREAM_TYPE printStream;
 
 #if ! REGAL_USE_BOOST
 
+inline void AppendBytes( const char * s, int len, char * buf, int capacity, int & sz ) {
+  int n = std::min( len, capacity - sz - 1 );
+  memcpy( buf + sz, s, n );
+  sz += n;
+  buf[sz] = 0;
+}
+
+template <typename T>
+inline void AppendString( const T & t, char * buf, int capacity, int & sz ) {
+  if( (capacity - sz) <= 1 ) {
+    return;
+  }
+  printStream.str("");
+  printStream << t;
+  const std::string & s = printStream.str();
+  AppendBytes( s.c_str(), int(s.size()), buf, capacity, sz );
+}
+
+template <>
+inline void AppendString( const std::string & s, char * buf, int capacity, int & sz ) {
+  if( (capacity - sz) <= 1 ) {
+    return;
+  }
+  return AppendBytes( s.c_str(), int(s.size()), buf, capacity, sz );
+}
+
+template <>
+inline void AppendString( const char * const & s, char * buf, int capacity, int & sz ) {
+  if( (capacity - sz) <= 1 ) {
+    return;
+  }
+  AppendBytes( s, int(strlen(s)), buf, capacity, sz );
+}
+
+template <>
+inline void AppendString( const int & i, char * buf, int capacity, int & sz ) {
+  if( (capacity - sz) <= 1 ) {
+    return;
+  }
+  char nb[80];
+	int len = sprintf( nb, "%d", i );
+	AppendBytes( nb, len, buf, capacity, sz );
+}
+
+template <>
+inline void AppendString( const float & f, char * buf, int capacity, int & sz ) {
+  if( (capacity - sz) <= 1 ) {
+    return;
+  }
+	char nb[80];
+	int len = sprintf( nb, "%f", f );
+	AppendBytes( nb, len, buf, capacity, sz );
+}
+
+
 struct PrintString {
 
-  PrintString() : sz(0) {}
-
-  bool full() { return ( sz + 1 ) >= sizeof( buf ); }
+  PrintString() : sz(0) { buf[0] = 0; }
 
   template <typename T>
   PrintString & operator, ( const T & t ) {
-	  if( ! full() ) {
-		printStream.str("");
-		printStream << t;
-		return operator,( printStream.str().c_str() );
-	  }
+    AppendString( t, buf, sizeof( buf ), sz );
 	  return *this;
   }
-  template <>
-  PrintString & operator, ( const std::string & s ) {
-	  if( ! full() ) {
-		return operator,( reinterpret_cast<const char *>( s.c_str() ) );
-	  }
-	  return *this;
-  }
-  template <>
-  PrintString & operator,( const char * const & s ) {
-	  if( ! full() ) {
-	    append( s, strlen(s) );
-	  }
-	  return *this;
-  }
-  template <>
-  PrintString & operator, ( const int & i ) {
-	  if( ! full() ) {
-		char nb[80];
-		int len = sprintf( nb, "%d", i );
-		append( nb, len );
-	  }
-	  return *this;
-  }
-
-  template <>
-  PrintString & operator, ( const float & f ) {
-	  if( ! full() ) {
-		char nb[80];
-		int len = sprintf( nb, "%f", f );
-		append( nb, len );
-	  }
-	  return *this;
-  }
-
-  void append( const char * s, int len ) {
-	  int n = std::min( len, int(sizeof(buf) - sz - 1) );
-	  memcpy( buf + sz, s, n );
-	  sz += n;
-	  buf[sz] = 0;
-  }
-
   int sz;
   char buf[1024];
   std::string toString() { return buf; }
