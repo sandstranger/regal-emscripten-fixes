@@ -381,13 +381,12 @@ namespace Logging {
       if( m.find( full_prefix, full_prefix.size() ) != string::npos ) {
         while( p != string::npos && count < 1000 )
         {
-          char line[4];
+          char line[3];
           line[0] = '0' + count/100;
           line[1] = '0' + (count % 100)/10;
           line[2] = '0' + (count % 10);
-          line[3] = ' ';
           p += full_prefix.size();
-          m.insert( p, line, 4 );
+          m.replace( p, 3, line, 3 );
           p = m.find( full_prefix, p );
           count++;
         }

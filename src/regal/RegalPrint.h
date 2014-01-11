@@ -163,7 +163,7 @@ struct PrintString {
 	  return *this;
   }
   int sz;
-  char buf[1024];
+  char buf[8192];
   std::string toString() { return buf; }
 };
 
@@ -218,7 +218,7 @@ inline std::string print_trim( const T * t, char delim, unsigned int num, const 
       break;
     }
     num--;
-    t = t2 + 1;
+    t = t2;
   }
   if ( num == 0 ) {
     trimmed += delim;
