@@ -47,7 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
-#include "RegalOrigFilter.h"
+#include "RegalEmuProcsFilter.h"
 
 REGAL_GLOBAL_END
 
