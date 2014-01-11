@@ -14,8 +14,6 @@ from EmuForceCore      import formulae       as forceCoreFormulae
 from EmuLookup         import formulae       as lookupFormulae
 from EmuMarker         import formulae       as markerFormulae
 from EmuMarker         import formulaeGlobal as markerFormulaeGlobal
-from EmuFrame          import formulae       as frameFormulae
-from EmuFrame          import formulaeGlobal as frameFormulaeGlobal
 from EmuExtensionQuery import formulae       as extensionQueryFormulae
 from EmuErrorString    import formulae       as errorStringFormulae
 from EmuEnable         import formulae       as enableFormulae
@@ -54,8 +52,6 @@ emuRegal = [
     { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : lookupFormulae },
     { 'type' : 'Marker',   'include' : 'RegalMarker.h', 'member' : 'marker', 'suffix' : None,  'ifdef' : None,  'formulae' : markerFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : markerFormulaeGlobal },
-    { 'type' : 'Frame',    'include' : 'RegalFrame.h',  'member' : 'frame',  'suffix' : None,  'ifdef' : None,  'formulae' : frameFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : frameFormulaeGlobal },
     { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : extensionQueryFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : errorStringFormulae },
     { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : logFormulae    },
@@ -119,7 +115,6 @@ REGAL_NAMESPACE_BEGIN
 
 struct EmuInfo;
 struct DebugInfo;
-struct Statistics;
 
 ${EMU_FORWARD_DECLARE}
 
@@ -148,10 +143,6 @@ struct RegalContext
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;
-
-#if REGAL_STATISTICS
-  scoped_ptr<Statistics>  statistics;
-#endif
 
   //
   // Emulation
@@ -227,18 +218,6 @@ ${EMU_MEMBER_DECLARE}
   void unparkContext( ParkProcs & pp );
 
 
-  // For RegalDispatchCode
-
-#if REGAL_CODE
-  FILE               *codeSource;
-  FILE               *codeHeader;
-  size_t              codeInputNext;
-  size_t              codeOutputNext;
-  size_t              codeShaderNext;  // glCreateShader/glCreateShaderObjectARB
-  size_t              codeProgramNext; // glCreateProgram/glCreateProgramObjectARB
-  size_t              codeTextureNext; // glTexImage2D etc.
-#endif
-
   // State tracked via EmuContextState.py / Regal.cpp
 
   size_t              depthBeginEnd;   // Normally zero or one
@@ -267,7 +246,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalLayerInfo.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
-#include "RegalStatistics.h"
 
 
 ${INCLUDES}#if REGAL_EMULATION
@@ -284,9 +262,6 @@ RegalContext::RegalContext()
   dispatchGL(),
   dbg(NULL),
   info(NULL),
-#if REGAL_STATISTICS
-  statistics(new Statistics()),
-#endif
 ${MEMBER_CONSTRUCT}#if REGAL_EMULATION
 ${EMU_MEMBER_CONSTRUCT}#endif
 #if REGAL_SYS_PPAPI
@@ -308,15 +283,6 @@ ${EMU_MEMBER_CONSTRUCT}#endif
   hglrc(0),
 #endif
   logCallback(NULL),
-#if REGAL_CODE
-  codeSource(NULL),
-  codeHeader(NULL),
-  codeInputNext(0),
-  codeOutputNext(0),
-  codeShaderNext(0),
-  codeProgramNext(0),
-  codeTextureNext(0),
-#endif
   depthBeginEnd(0),
   depthPushMatrix(0),
   depthPushAttrib(0),
@@ -369,14 +335,6 @@ ${MEMBER_INIT}
   log.Init( this );
 #endif
 
-
-
-#if REGAL_STATISTICS // todo
-#endif
-          
-#if REGAL_CODE // todo
-#endif
-                    
 #if REGAL_CACHE // todo
 #endif
 
@@ -422,25 +380,9 @@ RegalContext::~RegalContext()
 {
   Internal("RegalContext::~RegalContext","()");
 
-  #if REGAL_STATISTICS
-  if (statistics && !Logging::frameStatistics)
-  {
-    statistics->log();
-    statistics->reset();
-  }
-  #endif
-
   // Remove this context from the share group.
 
   shareGroup->remove(this);
-
-#if REGAL_CODE
-  if (codeSource)
-    fclose(codeSource);
-
-  if (codeHeader)
-    fclose(codeHeader);
-#endif
 }
 
 // Called prior to deletion, if this context is still set for this thread.

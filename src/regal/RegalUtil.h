@@ -508,10 +508,6 @@
 #  define REGAL_NO_TLS 0
 #endif
 
-#ifndef REGAL_NO_JSON
-#  define REGAL_NO_JSON 0
-#endif
-
 #ifndef REGAL_THREAD_LOCKING
 #  define REGAL_THREAD_LOCKING 1
 #endif

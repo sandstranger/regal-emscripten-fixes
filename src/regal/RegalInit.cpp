@@ -42,7 +42,6 @@ using namespace std;
 #include "RegalLog.h"
 #include "RegalInit.h"
 #include "RegalHttp.h"
-#include "RegalJson.h"
 #include "RegalToken.h"
 #include "RegalConfig.h"
 #include "RegalContext.h"
@@ -109,16 +108,6 @@ Init::Init()
 
 #ifdef REGAL_CONFIG_FILE
   Config::configFile = REGAL_EQUOTE(REGAL_CONFIG_FILE);
-#endif
-
-#if !REGAL_NO_JSON
-  if (Config::configFile.length())
-  {
-    Info("Reading Regal configuration from ",Config::configFile);
-    bool ok = Json::Parser::parseFile(Config::configFile);
-    if (!ok)
-      Warning("Failed to parse configuration from ",Config::configFile);
-  }
 #endif
 
   //
@@ -341,16 +330,6 @@ Init::setErrorCallback(RegalErrorCallback callback)
   RegalContext *context = REGAL_GET_CONTEXT();
   RegalAssert(context);
   return context ? context->err.callback = callback : NULL;
-}
-
-void
-Init::configure(const char *json)
-{
-#if !REGAL_NO_JSON
-  bool ok = Json::Parser::parseString(json);
-  if (!ok)
-    Warning("Failed to parse configuration from RegalConfigure call.");
-#endif
 }
 
 void
@@ -594,13 +573,6 @@ RegalErrorCallback RegalSetErrorCallback(RegalErrorCallback callback)
   App("RegalSetErrorCallback", "(", reinterpret_cast<void *>(callback), ")");
 #endif
   return ::REGAL_NAMESPACE_INTERNAL::Init::setErrorCallback(callback);
-}
-
-void RegalConfigure(const char *json)
-{
-  ::REGAL_NAMESPACE_INTERNAL::Init::init();
-  App("RegalConfigure", "(", print_quote(json,'"'), ")");
-  ::REGAL_NAMESPACE_INTERNAL::Init::configure(json);
 }
 
 REGAL_DECL void RegalShareContext(RegalSystemContext a, RegalSystemContext b)

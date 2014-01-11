@@ -40,7 +40,6 @@ from RegalLookup             import *
 from RegalPlugin             import *
 from RegalToken              import *
 from RegalDispatch           import *
-from RegalDispatchCode       import *
 from RegalDispatchDebug      import *
 from RegalDispatchError      import *
 from RegalDispatchEmu        import *
@@ -50,7 +49,6 @@ from RegalDispatchLog        import *
 from RegalDispatchHttp       import *
 from RegalDispatchLoader     import *
 from RegalDispatchPpapi      import *
-from RegalDispatchStatistics import *
 from RegalDispatchStaticEGL  import *
 from RegalDispatchStaticES2  import *
 from RegalDispatchTrace      import *
@@ -219,15 +217,11 @@ def generate(apis, args):
   generateTraceSource( apis, args )
   generatePublicHeader(apis, args)
   generatePluginSource(apis,args)
-  generateDispatchStatistics( apis, args )
-  generateStatisticsHeader(apis, args)
-  generateStatisticsSource(apis, args)
   generateSource(apis, args)
   generateSystemHeader(apis, args)
   generateEmuSource( apis, args )
   generateDispatchLog( apis, args )
   generateDispatchHttp( apis, args )
-  generateDispatchCode( apis, args )
   generateErrorSource( apis, args )
   generateDebugSource( apis, args )
   generatePpapiSource( apis, args )

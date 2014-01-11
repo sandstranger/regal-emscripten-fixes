@@ -50,10 +50,8 @@ REGAL_GLOBAL_BEGIN
 #include "RegalLayerInfo.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
-#include "RegalStatistics.h"
 
 #include "RegalMarker.h"
-#include "RegalFrame.h"
 #if REGAL_EMULATION
 #include "RegalObj.h"
 #include "RegalHint.h"
@@ -84,11 +82,7 @@ RegalContext::RegalContext()
   dispatchGL(),
   dbg(NULL),
   info(NULL),
-#if REGAL_STATISTICS
-  statistics(new Statistics()),
-#endif
   marker(NULL),
-  frame(NULL),
 #if REGAL_EMULATION
   emuLevel(0),
   obj(NULL),
@@ -127,15 +121,6 @@ RegalContext::RegalContext()
   hglrc(0),
 #endif
   logCallback(NULL),
-#if REGAL_CODE
-  codeSource(NULL),
-  codeHeader(NULL),
-  codeInputNext(0),
-  codeOutputNext(0),
-  codeShaderNext(0),
-  codeProgramNext(0),
-  codeTextureNext(0),
-#endif
   depthBeginEnd(0),
   depthPushMatrix(0),
   depthPushAttrib(0),
@@ -185,10 +170,6 @@ RegalContext::Init()
   if (!marker)
   {
     marker = new Marker;
-  }
-  if (!frame)
-  {
-    frame = new Frame;
   }
 
 #if REGAL_LOG
@@ -510,25 +491,9 @@ RegalContext::~RegalContext()
 {
   Internal("RegalContext::~RegalContext","()");
 
-  #if REGAL_STATISTICS
-  if (statistics && !Logging::frameStatistics)
-  {
-    statistics->log();
-    statistics->reset();
-  }
-  #endif
-
   // Remove this context from the share group.
 
   shareGroup->remove(this);
-
-#if REGAL_CODE
-  if (codeSource)
-    fclose(codeSource);
-
-  if (codeHeader)
-    fclose(codeHeader);
-#endif
 }
 
 // Called prior to deletion, if this context is still set for this thread.

@@ -68,10 +68,8 @@ REGAL_NAMESPACE_BEGIN
 
 struct EmuInfo;
 struct DebugInfo;
-struct Statistics;
 
 struct Marker;
-struct Frame;
 #if REGAL_EMULATION
 namespace Emu { struct Obj; };
 namespace Emu { struct Hint; };
@@ -117,16 +115,11 @@ struct RegalContext
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;
 
-#if REGAL_STATISTICS
-  scoped_ptr<Statistics>  statistics;
-#endif
-
   //
   // Emulation
   //
 
   scoped_ptr<Marker            > marker;
-  scoped_ptr<Frame             > frame;
 #if REGAL_EMULATION
   // Fixed function emulation
   int emuLevel;
@@ -214,18 +207,6 @@ struct RegalContext
   };
   void parkContext( ParkProcs & pp );
   void unparkContext( ParkProcs & pp );
-
-  // For RegalDispatchCode
-
-#if REGAL_CODE
-  FILE               *codeSource;
-  FILE               *codeHeader;
-  size_t              codeInputNext;
-  size_t              codeOutputNext;
-  size_t              codeShaderNext;  // glCreateShader/glCreateShaderObjectARB
-  size_t              codeProgramNext; // glCreateProgram/glCreateProgramObjectARB
-  size_t              codeTextureNext; // glTexImage2D etc.
-#endif
 
   // State tracked via EmuContextState.py / Regal.cpp
 

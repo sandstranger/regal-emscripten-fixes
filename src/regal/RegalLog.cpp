@@ -162,8 +162,6 @@ namespace Logging {
     getEnv("REGAL_LOG_CALLBACK",   callback);
     getEnv("REGAL_LOG",            log);
     getEnv("REGAL_LOG_FILE",       logFilename);
-    getEnv("REGAL_LOG_JSON",       json);
-    getEnv("REGAL_LOG_JSON_FILE",  jsonFilename);
     getEnv("REGAL_HTTP_LOG_LIMIT", bufferLimit);
 #endif
 
@@ -222,10 +220,6 @@ namespace Logging {
     Info("REGAL_LOG_HTTP            ", enableHttp      ? "enabled" : "disabled");
 #endif
 
-#if REGAL_LOG_JSON
-    Info("REGAL_LOG_JSON            ", json            ? "enabled" : "disabled");
-#endif
-
 #if REGAL_LOG_CALLBACK
     Info("REGAL_LOG_CALLBACK        ", callback        ? "enabled" : "disabled");
 #endif
@@ -258,14 +252,6 @@ namespace Logging {
 
     if (logOutput)
       fileClose(&logOutput);
-
-#if !REGAL_NO_JSON
-    if (jsonOutput)
-    {
-      fprintf(jsonOutput,"%s","{} ] }\n");
-      fileClose(&jsonOutput);
-    }
-#endif
 
 #if REGAL_LOG_ONCE
     delete uniqueMutex;

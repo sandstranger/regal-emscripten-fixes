@@ -146,17 +146,16 @@ std::string print_quote( const T & t, const U u ) {
 }
 
 template <typename T>
-std::string print_array( const T * t, int num, const char *quote = "\"", const char *open = "[ ", const char *close = " ]", const char *delim = ", " ) {
+std::string print_array( const T * t, size_t num, const char *quote = "\"", const char *open = "[ ", const char *close = " ]", const char *delim = ", " ) {
   UNUSED_PARAMETER(quote);
+  if( num == 0 ) {
+    return "[ ]";
+  }
   std::string s = open;
-  for( int i = 0; i < num - 1; i++ ) {
+  for( size_t i = 0; i < num - 1; i++ ) {
     s += print_string( t[i], delim );
   }
-  if( num > 0 ) {
-    s += print_string( t[num-1], close );
-  } else {
-    s += close;
-  }
+  s += print_string( t[num-1], close );
   return s;
 }
 

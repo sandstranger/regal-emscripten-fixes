@@ -117,14 +117,6 @@ namespace Json { struct Output; }
 # define REGAL_LOG_ONCE 1
 #endif
 
-#ifndef REGAL_LOG_JSON
-# if REGAL_WRANGLER
-#  define REGAL_LOG_JSON 0
-# else
-#  define REGAL_LOG_JSON 1
-# endif
-#endif
-
 #ifndef REGAL_LOG_CALLBACK
 # define REGAL_LOG_CALLBACK 1
 #endif

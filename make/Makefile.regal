@@ -53,9 +53,6 @@ ifeq ($(filter -DREGAL_NO_MD5%,$(CFLAGS)),)
 REGAL.SRCS           += src/md5/src/md5.c
 endif
 
-REGAL.SRCS           += src/jsonsl/jsonsl.c
-
-
 # Optional flags
 
 # REGAL_SYS_ES1 for ES1 back-end support, disabled by default
@@ -294,14 +291,6 @@ tmp/$(SYSTEM)/regal/static/%.o: src/md5/src/%.c $(REGAL.HEADERS)
 	$(LOG_CC)$(CCACHE) $(CC) $(REGAL.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(REGAL.INCLUDE) -o $@ -c $<
 
 tmp/$(SYSTEM)/regal/shared/%.o: src/md5/src/%.c $(REGAL.HEADERS)
-	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(REGAL.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(REGAL.INCLUDE) -o $@ -c $<
-
-tmp/$(SYSTEM)/regal/static/%.o: src/jsonsl/%.c $(REGAL.HEADERS)
-	@mkdir -p $(dir $@)
-	$(LOG_CC)$(CCACHE) $(CC) $(REGAL.CFLAGS) $(CFLAGS) $(CFLAGS.SO) $(REGAL.INCLUDE) -o $@ -c $<
-
-tmp/$(SYSTEM)/regal/shared/%.o: src/jsonsl/%.c $(REGAL.HEADERS)
 	@mkdir -p $(dir $@)
 	$(LOG_CC)$(CCACHE) $(CC) $(REGAL.CFLAGS) $(CFLAGS) $(PICFLAG) $(CFLAGS.SO) $(REGAL.INCLUDE) -o $@ -c $<
 

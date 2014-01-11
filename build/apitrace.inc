@@ -40,7 +40,7 @@ APITRACE.CXX += src/apitrace/wrappers/regaltrace.cpp
 
 APITRACE.CFLAGS     := -Isrc/apitrace/common -Isrc/apitrace/dispatch -Isrc/apitrace/helpers -Isrc/apitrace/wrappers -Isrc/apitrace
 APITRACE.CFLAGS     += -Isrc/apitrace/thirdparty/khronos
-APITRACE.CFLAGS     += -Isrc/regal -Isrc/snappy -Isrc/zlib/include -Isrc/zlib/src -Isrc/boost
+APITRACE.CFLAGS     += -Isrc/regal -Isrc/snappy -Isrc/zlib/include -Isrc/zlib/src
 APITRACE.CFLAGS     += -DHAVE_EXTERNAL_OS_LOG=1 -DHAVE_BACKTRACE=0 -DTRACE_ENABLED_CHECK=0
 
 APITRACE.STATIC     := libapitrace.a

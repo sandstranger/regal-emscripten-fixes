@@ -60,7 +60,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalCacheShader.h"
 #include "RegalCacheTexture.h"
 #include "RegalScopedPtr.h"
-#include "RegalFrame.h"
 #include "RegalMarker.h"
 
 using namespace REGAL_NAMESPACE_INTERNAL;
@@ -1313,11 +1312,6 @@ extern "C" {
     Dispatch::GL *_next = &_context->dispatchGL;
     RegalAssert(_next);
     _next->glFinish();
-    if (_context->frame)
-    {
-      // Notify Regal::Frame about the glFinish() event
-      _context->frame->glFinish(*_context);
-    }
   }
 
   REGAL_DECL void REGAL_CALL glFlush(void)
@@ -32124,12 +32118,6 @@ extern "C" {
     #endif
     App("glFrameTerminatorGREMEDY","()");
     if (!_context) return;
-    // Notify Regal::Frame about the frame terminator event.
-    if (_context && _context->frame)
-      _context->frame->glFrameTerminatorGREMEDY(*_context);
-    RegalAssert(_context->info);
-    // Return to application unless GL_GREMEDY_frame_terminator is supported by the driver.
-    if (!_context->info->gl_gremedy_frame_terminator) return;
     Dispatch::GL *_next = &_context->dispatchGL;
     RegalAssert(_next);
     _next->glFrameTerminatorGREMEDY();
@@ -45331,10 +45319,6 @@ extern "C" {
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     BOOL ret = 0;
-    RegalContext *_context = REGAL_GET_CONTEXT();
-    // Notify Regal::Frame about the swap buffers event.
-    if (_context && _context->frame)
-        _context->frame->wglSwapBuffers(*_context);
     ret = _next->wglSwapBuffers(hDC);
     return ret;
   }
@@ -47265,15 +47249,6 @@ extern "C" {
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     Bool ret = (Bool) 0;
-    // Keep track of X11 Display and GLXDrawable for logging purposes.
-    RegalContext *_context = REGAL_GET_CONTEXT();
-    if (_context)
-    {
-        #if REGAL_SYS_X11
-        _context->x11Display  = dpy;
-        #endif
-        _context->x11Drawable = drawable;
-    }
     ret = _next->glXMakeCurrent(dpy, drawable, ctx);
     if (ret)
         Init::makeCurrent(RegalSystemContext(ctx));
@@ -47329,18 +47304,6 @@ extern "C" {
     Init::init();
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
-    // Keep track of X11 Display and GLXDrawable for logging purposes.
-    RegalContext *_context = REGAL_GET_CONTEXT();
-    if (_context)
-    {
-        #if REGAL_SYS_X11
-        _context->x11Display  = dpy;
-        #endif
-        _context->x11Drawable = drawable;
-    }
-    // Notify Regal::Frame about the swap buffers event.
-    if (_context && _context->frame)
-        _context->frame->glXSwapBuffers(*_context);
     _next->glXSwapBuffers(dpy, drawable);
   }
 
@@ -49557,10 +49520,6 @@ extern "C" {
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     CGLError ret = (CGLError) 0;
-    RegalContext *_context = REGAL_GET_CONTEXT();
-    // Notify Regal::Frame about the flush drawable event.
-    if (_context && _context->frame)
-        _context->frame->CGLFlushDrawable(*_context);
     ret = _next->CGLFlushDrawable(ctx);
     return ret;
   }
@@ -51222,10 +51181,6 @@ extern "C" {
     Dispatch::Global *_next = &dispatchGlobal;
     RegalAssert(_next);
     EGLBoolean ret = 0;
-    RegalContext *_context = REGAL_GET_CONTEXT();
-    // Notify Regal::Frame about the swap buffers event.
-    if (_context && _context->frame)
-        _context->frame->eglSwapBuffers(*_context);
     ret = _next->eglSwapBuffers(dpy, surface);
     return ret;
   }
