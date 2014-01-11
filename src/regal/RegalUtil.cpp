@@ -49,8 +49,6 @@ using namespace std;
 #include <X11/Xatom.h>
 #endif
 
-PRINT_STREAM_TYPE Regal::printStream;
-
 // alloca for VC8
 
 #ifdef _MSC_VER

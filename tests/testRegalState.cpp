@@ -72,9 +72,8 @@ TEST( RegalStateDepth, SetDispatchesCorrectly )
 
   RegalGMockInterface mock;
 
-  DispatchTableGL dt;
-  ::memset(&dt,0,sizeof(DispatchTableGL));
-  dt._enabled = true;
+  Dispatch::GL dt;
+  ::memset(&dt,0,sizeof(Dispatch::GL));
   InitDispatchTableGMock( dt );
 
   State::Depth depth;
@@ -182,9 +181,8 @@ TEST( RegalStateTransform, TransitionSetsStateCorrectly )
 {
   RegalGMockInterface mock;
 
-  DispatchTableGL dt;
-  ::memset(&dt,0,sizeof(DispatchTableGL));
-  dt._enabled = true;
+  Dispatch::GL dt;
+  ::memset(&dt,0,sizeof(Dispatch::GL));
   InitDispatchTableGMock( dt );
 
   // No state difference means no calls are made.

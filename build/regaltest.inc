@@ -8,7 +8,6 @@
 REGALTEST.CXX += tests/test_main.cpp
 REGALTEST.CXX += tests/testRegalTexC.cpp
 REGALTEST.CXX += tests/testRegalPixelConversions.cpp
-REGALTEST.CXX += tests/testStringList.cpp
 REGALTEST.CXX += tests/testRegalState.cpp
 REGALTEST.CXX += tests/testRegalPpa.cpp
 REGALTEST.CXX += tests/testRegalPpca.cpp

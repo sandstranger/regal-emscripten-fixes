@@ -62,8 +62,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalScopedPtr.h"
 #include "RegalFrame.h"
 #include "RegalMarker.h"
-#include "RegalDispatcherGL.h"
-#include "RegalDispatcherGlobal.h"
 
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;

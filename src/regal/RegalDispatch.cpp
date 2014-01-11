@@ -46,6 +46,6 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-// removed
+Dispatch::Global dispatchGlobal;
 
 REGAL_NAMESPACE_END

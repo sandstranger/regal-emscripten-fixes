@@ -53,7 +53,9 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct Dispatch::GL;
+namespace Dispatch {
+  struct GL;
+}
 
 struct RegalGMockInterface
 {

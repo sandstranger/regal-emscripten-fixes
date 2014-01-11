@@ -31,36 +31,10 @@
 
 REGAL_GLOBAL_BEGIN
 
-#define REGAL_USE_BOOST 0
-
-#if REGAL_USE_BOOST
-
-#include <boost/print/print_string.hpp>
-using boost::print::print_string;
-
-typedef boost::print::string_list<stxring> StringList;
-
-#define print_hex( ... ) boost::print::hex( __VA_ARGS__ )
-#define print_quote( ... ) boost::print::quote( __VA_ARGS__ )
-#define print_array( ... ) boost::print::array( __VA_ARGS__ )
-#define print_optional( ... ) boost::print::optional( __VA_ARGS__ )
-#define print_raw( ... ) boost::print::raw( __VA_ARGS__ )
-#define print_trim( ... ) boost::print::trim( __VA_ARGS__ )
-#define print_right( ... ) boost::print::right( __VA_ARGS__ )
-#define print_left( ... ) boost::print::left( __VA_ARGS__ )
-
-#define PRINT_STREAM_TYPE int
-
-#else
-
-#define PRINT_STREAM_TYPE std::ostringstream
-
 #include <cstring>
 #include <sstream>
 
 #define print_string( ... ) ( PrintString(), __VA_ARGS__ ).toString()
-
-#endif
 
 #include <vector>
 
@@ -68,81 +42,50 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-extern PRINT_STREAM_TYPE printStream;
-
-#if ! REGAL_USE_BOOST
-
-inline void AppendBytes( const char * s, int len, char * buf, int capacity, int & sz ) {
-  int n = std::min( len, capacity - sz - 1 );
-  memcpy( buf + sz, s, n );
-  sz += n;
+inline bool AppendBytes( const char * s, int len, char * buf, int capacity, int & sz ) {
+  //int n = std::min( len, capacity - sz - 1 );
+  if( len > capacity - sz - 1 ) {
+    return false;
+  }
+  memcpy( buf + sz, s, len );
+  sz += len;
   buf[sz] = 0;
+  return true;
 }
 
 template <typename T>
-inline void AppendString( const T & t, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
-  std::ostringstream ps;
-  ps << t;
-  const std::string & s = ps.str();
-  AppendBytes( s.c_str(), int(s.size()), buf, capacity, sz );
+inline bool AppendString( const T & t, char * buf, int capacity, int & sz ) {
+  return false; // punt to ostringstream
 }
 
 template <typename T>
-inline void AppendString( T * const t, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
+inline bool AppendString( T * const t, char * buf, int capacity, int & sz ) {
   char nb[80];
 	int len = sprintf( nb, "%p", t );
-	AppendBytes( nb, len, buf, capacity, sz ); \
+	return AppendBytes( nb, len, buf, capacity, sz );
 }
 
 template <>
-inline void AppendString( const char * const s, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
-  AppendBytes( s, int(strlen(s)), buf, capacity, sz );
+inline bool AppendString( const char * const s, char * buf, int capacity, int & sz ) {
+  return AppendBytes( s, int(strlen(s)), buf, capacity, sz );
 }
 
 template <>
-inline void AppendString( const std::string & s, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
+inline bool AppendString( const std::string & s, char * buf, int capacity, int & sz ) {
   return AppendBytes( s.c_str(), int(s.size()), buf, capacity, sz );
 }
 
-/*
-template < int N >
-inline void AppendString( char const (&s)[N], char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
-  return AppendBytes( &s[0], N-1, buf, capacity, sz );
-}
-*/
-
 template <>
-inline void AppendString( const char & s, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
-  AppendBytes( &s, 1, buf, capacity, sz );
+inline bool AppendString( const char & s, char * buf, int capacity, int & sz ) {
+  return AppendBytes( &s, 1, buf, capacity, sz );
 }
 
 #define AppendNumber( type, fmt ) \
 template <> \
-inline void AppendString( const type & n, char * buf, int capacity, int & sz ) { \
-  if( (capacity - sz) <= 1 ) { \
-    return; \
-  } \
+inline bool AppendString( const type & n, char * buf, int capacity, int & sz ) { \
   char nb[80]; \
 	int len = sprintf( nb, fmt, n ); \
-	AppendBytes( nb, len, buf, capacity, sz ); \
+  return AppendBytes( nb, len, buf, capacity, sz ); \
 }
 
 AppendNumber( int, "%d" )
@@ -152,19 +95,36 @@ AppendNumber( unsigned long, "%lu" )
 AppendNumber( float, "%f" )
 AppendNumber( double, "%lf" )
 
+template <>
+inline bool AppendString( const bool & b, char * buf, int capacity, int & sz ) {
+  return AppendBytes( b ? "1" : "0", 1, buf, capacity, sz );
+}
+
+
+
 
 struct PrintString {
 
-  PrintString() : sz(0) { buf[0] = 0; }
+  PrintString() : useBuf( true ), sz(0) { buf[0] = 0; }
 
   template <typename T>
   PrintString & operator, ( const T & t ) {
-    AppendString( t, buf, sizeof( buf ), sz );
+    if( useBuf ) {
+      useBuf = AppendString( t, buf, sizeof( buf ), sz );
+      if( ! useBuf ) {
+        ps << buf << t;
+      }
+    } else {
+      ps << t;
+    }
 	  return *this;
   }
+  
+  bool useBuf;
   int sz;
-  char buf[8192];
-  std::string toString() { return buf; }
+  char buf[256];
+  std::ostringstream ps;
+  std::string toString() { return useBuf ? buf : ps.str(); }
 };
 
 template <typename T>
@@ -263,6 +223,11 @@ inline std::string print_optional( const T & t, bool enable ) {
 
 
 struct StringList {
+
+  StringList() {}
+  StringList( const std::string & s, char j ) {
+    split( s, j );
+  }
   
   std::string join( std::string j ) const {
     std::string s;
@@ -299,17 +264,12 @@ struct StringList {
   std::vector<std::string> v;
 };
 
-
-#endif // ! REGAL_USE_BOOST
-
 REGAL_NAMESPACE_END
 
-#if ! REGAL_USE_BOOST
 using Regal::PrintString;
 using Regal::print_hex;
 using Regal::print_quote;
 using Regal::print_array;
 using Regal::print_trim;
-#endif
 
 #endif // __REGAL_PRINT_H__

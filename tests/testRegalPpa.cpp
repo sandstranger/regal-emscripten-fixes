@@ -102,8 +102,7 @@ TEST( RegalPpa, PushPopAttrib )
   ctx.emuInfo->init(*ctx.info.get());
   ctx.emuInfo->gl_max_attrib_stack_depth = 16;
 
-  Missing::Init( ctx.dispatcher.emulation );
-  InitDispatchTableGMock( ctx.dispatcher.emulation );
+  //InitDispatchTableGMock( ctx.dispatcher.emulation );
 
   Emu::Ppa ppa;
 
@@ -215,8 +214,9 @@ TEST( RegalPpa, PushPopDepthBufferBit )
   ctx.emuInfo->init(*ctx.info.get());
   ctx.emuInfo->gl_max_attrib_stack_depth = 16;
 
-  Missing::Init( ctx.dispatcher.emulation );
-  InitDispatchTableGMock( ctx.dispatcher.emulation );
+  // need to initialize dispatch differently now
+  //Missing::Init( ctx.dispatcher.emulation );
+  //InitDispatchTableGMock( ctx.dispatcher.emulation );
 
   Emu::Ppa ppa;
 

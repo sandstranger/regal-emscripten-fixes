@@ -222,8 +222,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalHelper.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalDispatcherGL.h"
-#include "RegalDispatcherGlobal.h"
 
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;

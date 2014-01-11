@@ -47,7 +47,6 @@ using namespace std;
 #include "RegalConfig.h"
 #include "RegalContext.h"
 #include "RegalThread.h"
-#include "RegalDispatcher.h"
 #include "RegalContextInfo.h"
 #include "RegalEmuInfo.h"
 #include "RegalPpa.h"

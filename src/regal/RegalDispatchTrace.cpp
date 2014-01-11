@@ -60,7 +60,6 @@ using namespace std;
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
 #include "RegalContext.h"
-#include "RegalDispatcherGlobal.h"
 
 REGAL_GLOBAL_END
 

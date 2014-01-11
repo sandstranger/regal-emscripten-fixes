@@ -44,7 +44,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalConfig.h"
 #include "RegalThread.h"
 #include "RegalContext.h"
-#include "RegalDispatcher.h"
 #include "RegalCacheShader.h"
 
 REGAL_GLOBAL_END

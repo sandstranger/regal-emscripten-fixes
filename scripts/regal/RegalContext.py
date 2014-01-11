@@ -99,8 +99,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalThread.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
-#include "RegalDispatcherGL.h"
-#include "RegalDispatcherGlobal.h"
 #include "RegalDispatchDebug.h"
 #include "RegalDispatchEmu.h"
 #include "RegalDispatchLog.h"
