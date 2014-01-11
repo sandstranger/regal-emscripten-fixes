@@ -1313,7 +1313,8 @@ void Redirect( Connection & conn, const string & redirect_to ) {
 
 Http::Http() : runState( RS_Run ), debugGroupStackDepth( -1 ), stepOverGroupDepth( -1 ), inBeginEnd( 0 )
 {
-  contextMutex = new Thread::Mutex();
+  contextMutex = new Thread::Mutex( Thread::MT_Normal );
+  contextMutex->acquire();
   breakpointMutex = new Thread::Mutex( Thread::MT_Normal );
   breakpointMutex->acquire();
   httpServerWantsContext = false;
@@ -1333,6 +1334,12 @@ void Http::Init()
   {
 #if REGAL_SYS_OSX
   pp.CGLSetCurrentContext = dispatchGlobal.CGLSetCurrentContext;
+#elif REGAL_SYS_WGL
+  pp.wglMakeCurrent = dispatchGlobal.wglMakeCurrent;
+#elif REGAL_SYS_GLX
+  pp.glXMakeCurrent = dispatchGlobal.glxMakeCurrent;
+#elif REGAL_SYS_EGL
+  pp.eglMakeCurrent = dispatchGlobal.eglMakeCurrent;
 #endif
   
   Internal("Http::Init","()");

@@ -25371,6 +25371,15 @@ extern "C" {
 
   /* WGL_GDI */
 
+  BOOL REGAL_CALL plugin_SwapBuffers(HDC hDC)
+  {
+    ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal &_instance = ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal::instance();
+    //::REGAL_NAMESPACE_INTERNAL::DispatchGlobal *_next = _instance.nextDispatchTableGlobal;
+    ::REGAL_NAMESPACE_INTERNAL::Dispatch::Global *_next = &::REGAL_NAMESPACE_INTERNAL::dispatchGlobal;
+    RegalAssert(_next);
+    return _next->SwapBuffers(hDC);
+  }
+
   int REGAL_CALL plugin_wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd)
   {
     ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal &_instance = ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal::instance();
@@ -33943,7 +33952,8 @@ namespace Plugin {
   };
 
   #if REGAL_SYS_WGL
-  const char * const lookup_wgl_Name[144] = {
+  const char * const lookup_wgl_Name[145] = {
+    "SwapBuffers",
     "wglAllocateMemoryNV",
     "wglAssociateImageBufferEventsI3D",
     "wglBeginFrameTrackingI3D",
@@ -34090,7 +34100,8 @@ namespace Plugin {
     NULL
   };
 
-  const void *lookup_wgl_Value[144] = {
+  const void *lookup_wgl_Value[145] = {
+    (void *)(plugin_SwapBuffers),
     (void *)(plugin_wglAllocateMemoryNV),
     (void *)(plugin_wglAssociateImageBufferEventsI3D),
     (void *)(plugin_wglBeginFrameTrackingI3D),
@@ -34762,7 +34773,7 @@ extern "C" {
     if (res) return const_cast<void *>(lookup_gl_Value[(size_t) (res - lookup_gl_Name)]);
 
 #if REGAL_SYS_WGL
-    res = (const char **) std::bsearch(&name, lookup_wgl_Name, 142, sizeof(const char *), NameCmp);
+    res = (const char **) std::bsearch(&name, lookup_wgl_Name, 143, sizeof(const char *), NameCmp);
     if (res) return const_cast<void *>(lookup_wgl_Value[(size_t) (res - lookup_wgl_Name)]);
 #endif /* REGAL_SYS_WGL */
 

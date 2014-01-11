@@ -1365,6 +1365,15 @@ wglSwapBuffers.trace = True
 wglSwapBuffers.play = True
 wgl.add(wglSwapBuffers)
 
+SwapBuffers = Function('SwapBuffers')
+SwapBuffers.ret = Return('BOOL')
+SwapBuffers.add( Input( 'hDC','HDC' ))
+SwapBuffers.version = ''
+SwapBuffers.category = 'WGL_GDI'
+SwapBuffers.trace = True
+SwapBuffers.play = True
+wgl.add(SwapBuffers)
+
 # WGL_I3D_digital_video_control
 
 wglGetDigitalVideoParametersI3D = Function('wglGetDigitalVideoParametersI3D')

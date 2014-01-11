@@ -37948,6 +37948,7 @@ REGAL_DECL int REGAL_CALL plugin_wglGetSwapIntervalEXT(void);
 #endif
 
 #ifndef REGAL_NO_TYPEDEF_WGL_GDI
+typedef BOOL (REGAL_CALL *PFNSWAPBUFFERSPROC)(HDC hDC);
 typedef BOOL (REGAL_CALL *PFNWGLSETPIXELFORMATPROC)(HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd);
 typedef BOOL (REGAL_CALL *PFNWGLSWAPBUFFERSPROC)(HDC hDC);
 typedef int (REGAL_CALL *PFNWGLCHOOSEPIXELFORMATPROC)(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd);
@@ -37956,6 +37957,7 @@ typedef int (REGAL_CALL *PFNWGLGETPIXELFORMATPROC)(HDC hDC);
 #endif
 
 #ifndef REGAL_NO_NAMESPACE_WGL_GDI
+#define SwapBuffers                         rSwapBuffers
 #define wglChoosePixelFormat                rwglChoosePixelFormat
 #define wglDescribePixelFormat              rwglDescribePixelFormat
 #define wglGetPixelFormat                   rwglGetPixelFormat
@@ -37964,6 +37966,7 @@ typedef int (REGAL_CALL *PFNWGLGETPIXELFORMATPROC)(HDC hDC);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_WGL_GDI
+REGAL_DECL BOOL REGAL_CALL SwapBuffers(HDC hDC);
 REGAL_DECL BOOL REGAL_CALL wglSetPixelFormat(HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd);
 REGAL_DECL BOOL REGAL_CALL wglSwapBuffers(HDC hDC);
 REGAL_DECL int REGAL_CALL wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd);
@@ -37972,6 +37975,7 @@ REGAL_DECL int REGAL_CALL wglGetPixelFormat(HDC hDC);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_GDI
+REGAL_DECL BOOL REGAL_CALL plugin_SwapBuffers(HDC hDC);
 REGAL_DECL BOOL REGAL_CALL plugin_wglSetPixelFormat(HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd);
 REGAL_DECL BOOL REGAL_CALL plugin_wglSwapBuffers(HDC hDC);
 REGAL_DECL int REGAL_CALL plugin_wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd);

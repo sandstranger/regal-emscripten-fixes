@@ -185,7 +185,7 @@ formulae = {
   },
 
   'swap' : {
-    'entries' : [ '(glX|wgl|egl)SwapBuffers', 'CGLFlushDrawable' ],
+    'entries' : [ '(glX|wgl|egl|)SwapBuffers', 'CGLFlushDrawable' ],
     'pre' : [
       '_context->http.count.frame++;',
       'switch( _context->http.runState ) {',

@@ -28244,6 +28244,15 @@ static BOOL REGAL_CALL log_wglSwapIntervalEXT(int interval)
 
 // WGL_GDI
 
+static BOOL REGAL_CALL log_SwapBuffers(HDC hDC)
+{
+    Dispatch::Global *_next = &nextGlobal;
+    RegalAssert(_next);
+    BOOL  ret = _next->SwapBuffers(hDC);
+    Driver("SwapBuffers","(", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
+    return ret;
+}
+
 static int REGAL_CALL log_wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd)
 {
     Dispatch::Global *_next = &nextGlobal;
@@ -35061,6 +35070,7 @@ void InitDispatchLog(Dispatch::Global &tbl)
 
   // WGL_GDI
 
+  tbl.SwapBuffers = log_SwapBuffers;
   tbl.wglChoosePixelFormat = log_wglChoosePixelFormat;
   tbl.wglDescribePixelFormat = log_wglDescribePixelFormat;
   tbl.wglGetPixelFormat = log_wglGetPixelFormat;

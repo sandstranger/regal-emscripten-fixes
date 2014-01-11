@@ -4451,6 +4451,7 @@ struct Statistics
 
   /* WGL_GDI */
 
+  GLuint SwapBuffers;
   GLuint wglChoosePixelFormat;
   GLuint wglDescribePixelFormat;
   GLuint wglGetPixelFormat;

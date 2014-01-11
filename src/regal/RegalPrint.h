@@ -177,6 +177,7 @@ std::string print_quote( const T & t, const U u ) {
 
 template <typename T>
 std::string print_array( const T * t, int num, const char *quote = "\"", const char *open = "[ ", const char *close = " ]", const char *delim = ", " ) {
+  UNUSED_PARAMETER(quote);
   std::string s = open;
   for( int i = 0; i < num - 1; i++ ) {
     s += print_string( t[i], delim );
@@ -221,7 +222,7 @@ inline std::string print_raw( const void * p, const size_t size, const size_t si
   std::string s;
   s.reserve( size_limit * 2 + size_limit / 4 + 4);
   s += "[ ";
-  for( int i = 0; i < size_limit; i++ ) {
+  for( size_t i = 0; i < size_limit; i++ ) {
     s += h[ (cp[i] >> 4) & 0xf ];
     s += h[ (cp[i] >> 0) & 0xf ];
     if( (i & 0x3) == 0x3 ) {

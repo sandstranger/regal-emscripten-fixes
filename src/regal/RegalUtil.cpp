@@ -676,7 +676,19 @@ void *GetProcAddress( const char * entry )
       wglGetProcAddress = (PROC (__stdcall *)(LPCSTR)) ::GetProcAddress( lib_GL, "wglGetProcAddress");
 
     if (wglGetProcAddress)
-      return wglGetProcAddress(entry);
+      sym = wglGetProcAddress(entry);
+	if (sym)
+		return sym;
+  }
+
+  // GLUT (and presumably other apps/libraries) use SwapBuffers instead of wglSwapBuffers
+  if( strcmp( "SwapBuffers", entry ) == 0 )
+  {
+	  HMODULE gdi = 0;
+	  gdi = LoadLibraryA("gdi32.dll");
+	  void * sym = ::GetProcAddress( gdi, "SwapBuffers" );
+	  if( sym ) 
+		return sym;
   }
 
   return NULL;

@@ -157,6 +157,7 @@ namespace Dispatch
 
     // WGL_GDI
 
+    PFNSWAPBUFFERSPROC SwapBuffers;
     PFNWGLCHOOSEPIXELFORMATPROC wglChoosePixelFormat;
     PFNWGLDESCRIBEPIXELFORMATPROC wglDescribePixelFormat;
     PFNWGLGETPIXELFORMATPROC wglGetPixelFormat;

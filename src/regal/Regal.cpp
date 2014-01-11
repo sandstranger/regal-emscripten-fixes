@@ -45230,6 +45230,23 @@ extern "C" {
 
   /* WGL_GDI */
 
+  REGAL_DECL BOOL REGAL_CALL SwapBuffers(HDC hDC)
+  {
+    #if REGAL_HTTP
+    {
+      RegalContext *_context = REGAL_GET_CONTEXT();
+      if( _context ) { _context->http.callString = print_string("SwapBuffers","(", print_optional(hDC,Logging::pointers), ")");; }
+    }
+    #endif
+    App("SwapBuffers","(", print_optional(hDC,Logging::pointers), ")");
+    RegalAssert(Init::isInitialized());
+    Dispatch::Global *_next = &dispatchGlobal;
+    RegalAssert(_next);
+    BOOL ret = 0;
+    ret = _next->SwapBuffers(hDC);
+    return ret;
+  }
+
   REGAL_DECL int REGAL_CALL wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd)
   {
     #if REGAL_HTTP

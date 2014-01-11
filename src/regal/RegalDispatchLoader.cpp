@@ -23399,6 +23399,13 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
 // WGL_GDI
 
+  static BOOL REGAL_CALL missing_SwapBuffers(HDC hDC)
+  {
+    UNUSED_PARAMETER(hDC);
+    Warning( "SwapBuffers", " not available." );
+    return 0;
+  }
+
   static int REGAL_CALL missing_wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd)
   {
     UNUSED_PARAMETER(hDC);
@@ -38372,6 +38379,10 @@ using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
     // WGL_GDI
 
+    _getProcAddress( dt.SwapBuffers, SwapBuffers, "SwapBuffers" );
+    if( dt.SwapBuffers == NULL ) {
+      dt.SwapBuffers = missing_SwapBuffers;
+    }
     _getProcAddress( dt.wglChoosePixelFormat, wglChoosePixelFormat, "wglChoosePixelFormat" );
     if( dt.wglChoosePixelFormat == NULL ) {
       dt.wglChoosePixelFormat = missing_wglChoosePixelFormat;

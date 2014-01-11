@@ -42497,6 +42497,32 @@ static BOOL REGAL_CALL http_wglSwapIntervalEXT(int interval)
 
 // WGL_GDI
 
+static BOOL REGAL_CALL http_SwapBuffers(HDC hDC)
+{
+    BOOL  ret = 0;
+    RegalContext *_context = REGAL_GET_CONTEXT();
+    if( _context ) {
+      _context->http.count.frame++;
+      switch( _context->http.runState ) {
+         case RS_Run:
+           break;
+         default:
+          _context->http.runState = RS_Pause;
+      }
+      if( _context->http.runState == RS_Next ) {
+        _context->http.runState = RS_Pause;
+      }
+      _context->http.YieldToHttpServer( _context );
+    }
+    Dispatch::Global *_next = &nextGlobal;
+    RegalAssert(_next);
+    ret = _next->SwapBuffers(hDC);
+    if( _context ) {
+      _context->http.count.lastFrame = _context->http.count.call;
+    }
+    return ret;
+}
+
 static int REGAL_CALL http_wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd)
 {
     int  ret = 0;
@@ -51652,6 +51678,7 @@ void InitDispatchHttp(Dispatch::Global &tbl)
 
   // WGL_GDI
 
+  tbl.SwapBuffers = http_SwapBuffers;
   tbl.wglChoosePixelFormat = http_wglChoosePixelFormat;
   tbl.wglDescribePixelFormat = http_wglDescribePixelFormat;
   tbl.wglGetPixelFormat = http_wglGetPixelFormat;

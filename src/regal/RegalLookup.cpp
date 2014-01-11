@@ -8166,7 +8166,8 @@ const size_t gl_Offset[2701] = {
 };
 
 #if REGAL_SYS_WGL
-const char * const wgl_Name[144] = {
+const char * const wgl_Name[145] = {
+  "SwapBuffers",
   "wglAllocateMemoryNV",
   "wglAssociateImageBufferEventsI3D",
   "wglBeginFrameTrackingI3D",
@@ -8313,7 +8314,8 @@ const char * const wgl_Name[144] = {
   NULL
 };
 
-const void *wgl_Value[144] = {
+const void *wgl_Value[145] = {
+  (void *)(SwapBuffers),
   (void *)(wglAllocateMemoryNV),
   (void *)(wglAssociateImageBufferEventsI3D),
   (void *)(wglBeginFrameTrackingI3D),
@@ -8460,7 +8462,8 @@ const void *wgl_Value[144] = {
   NULL
 };
 
-const size_t wgl_Offset[144] = {
+const size_t wgl_Offset[145] = {
+  offsetof(Dispatch::Global,SwapBuffers)/sizeof(void *),
   offsetof(Dispatch::Global,wglAllocateMemoryNV)/sizeof(void *),
   offsetof(Dispatch::Global,wglAssociateImageBufferEventsI3D)/sizeof(void *),
   offsetof(Dispatch::Global,wglBeginFrameTrackingI3D)/sizeof(void *),

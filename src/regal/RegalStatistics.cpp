@@ -4463,6 +4463,7 @@ Statistics::log() const
 
 /* WGL_GDI */
 
+  log("SwapBuffers",SwapBuffers);
   log("wglChoosePixelFormat",wglChoosePixelFormat);
   log("wglDescribePixelFormat",wglDescribePixelFormat);
   log("wglGetPixelFormat",wglGetPixelFormat);

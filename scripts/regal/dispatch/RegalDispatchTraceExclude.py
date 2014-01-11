@@ -1,5 +1,8 @@
 # we need to exclude these functions from the dispatch becuse they do not exist in apitrace
 exclude = [
+
+  'SwapBuffers',
+
   'glFramebufferTextureFace',
   'glClearNamedBufferSubDataEXT',
 
