@@ -84,10 +84,28 @@ inline void AppendString( const T & t, char * buf, int capacity, int & sz ) {
   if( (capacity - sz) <= 1 ) {
     return;
   }
-  printStream.str("");
-  printStream << t;
-  const std::string & s = printStream.str();
+  std::ostringstream ps;
+  ps << t;
+  const std::string & s = ps.str();
   AppendBytes( s.c_str(), int(s.size()), buf, capacity, sz );
+}
+
+template <typename T>
+inline void AppendString( T * const t, char * buf, int capacity, int & sz ) {
+  if( (capacity - sz) <= 1 ) {
+    return;
+  }
+  char nb[80];
+	int len = sprintf( nb, "%p", t );
+	AppendBytes( nb, len, buf, capacity, sz ); \
+}
+
+template <>
+inline void AppendString( const char * const s, char * buf, int capacity, int & sz ) {
+  if( (capacity - sz) <= 1 ) {
+    return;
+  }
+  AppendBytes( s, int(strlen(s)), buf, capacity, sz );
 }
 
 template <>
@@ -98,6 +116,7 @@ inline void AppendString( const std::string & s, char * buf, int capacity, int &
   return AppendBytes( s.c_str(), int(s.size()), buf, capacity, sz );
 }
 
+/*
 template < int N >
 inline void AppendString( char const (&s)[N], char * buf, int capacity, int & sz ) {
   if( (capacity - sz) <= 1 ) {
@@ -105,14 +124,7 @@ inline void AppendString( char const (&s)[N], char * buf, int capacity, int & sz
   }
   return AppendBytes( &s[0], N-1, buf, capacity, sz );
 }
-
-template <>
-inline void AppendString( const char * const & s, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
-  AppendBytes( s, int(strlen(s)), buf, capacity, sz );
-}
+*/
 
 template <>
 inline void AppendString( const char & s, char * buf, int capacity, int & sz ) {
@@ -122,25 +134,23 @@ inline void AppendString( const char & s, char * buf, int capacity, int & sz ) {
   AppendBytes( &s, 1, buf, capacity, sz );
 }
 
-template <>
-inline void AppendString( const int & i, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
-  char nb[80];
-	int len = sprintf( nb, "%d", i );
-	AppendBytes( nb, len, buf, capacity, sz );
+#define AppendNumber( type, fmt ) \
+template <> \
+inline void AppendString( const type & n, char * buf, int capacity, int & sz ) { \
+  if( (capacity - sz) <= 1 ) { \
+    return; \
+  } \
+  char nb[80]; \
+	int len = sprintf( nb, fmt, n ); \
+	AppendBytes( nb, len, buf, capacity, sz ); \
 }
 
-template <>
-inline void AppendString( const float & f, char * buf, int capacity, int & sz ) {
-  if( (capacity - sz) <= 1 ) {
-    return;
-  }
-	char nb[80];
-	int len = sprintf( nb, "%f", f );
-	AppendBytes( nb, len, buf, capacity, sz );
-}
+AppendNumber( int, "%d" )
+AppendNumber( long, "%ld" )
+AppendNumber( unsigned int, "%d" )
+AppendNumber( unsigned long, "%lu" )
+AppendNumber( float, "%f" )
+AppendNumber( double, "%lf" )
 
 
 struct PrintString {
@@ -192,7 +202,7 @@ std::string print_array( const T * t, int num, const char *quote = "\"", const c
 
 template <typename T>
 inline std::string print_trim( const T * t, char delim, unsigned int num, const char *prefix, const char *suffix ) {
-  std::string trimmed = prefix;
+  std::string trimmed;
   while( num ) {
     const T * t2 = t;
     while( *t2 != delim && *t2 != 0 ) {
@@ -202,6 +212,7 @@ inline std::string print_trim( const T * t, char delim, unsigned int num, const 
       t2++;
     }
     std::string el( t, size_t(t2 - t) );
+    trimmed += prefix;
     trimmed += el;
     if( *t2 == 0 ) {
       break;
@@ -239,8 +250,12 @@ inline std::string print_raw( const void * p, const size_t size, const size_t si
   return s;
 }
 
+template <typename T>
+inline std::string print_optional( const T & t, bool enable ) {
+  return enable ? print_string( t ) : "";
+}
 
-#define print_optional( ... ) print_string(" implement print_optional() ")
+//#define print_optional( ... ) print_string(" implement print_optional() ")
 #define print_right( a, ... ) print_string(a)
 #define print_left( a, ... ) print_string(a)
 
