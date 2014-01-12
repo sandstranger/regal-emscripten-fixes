@@ -57,6 +57,69 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptObj( Dispatch::GL & dt );
 
+struct EmuProcsOriginateObj {
+
+  EmuProcsOriginateObj() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLBINDTEXTUREPROC glBindTexture;
+  PFNGLDELETETEXTURESPROC glDeleteTextures;
+  PFNGLGENTEXTURESPROC glGenTextures;
+  PFNGLISTEXTUREPROC glIsTexture;
+  PFNGLBINDBUFFERPROC glBindBuffer;
+  PFNGLDELETEBUFFERSPROC glDeleteBuffers;
+  PFNGLGENBUFFERSPROC glGenBuffers;
+  PFNGLISBUFFERPROC glIsBuffer;
+  PFNGLFRAMEBUFFERTEXTURE1DPROC glFramebufferTexture1D;
+  PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
+  PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC glGetFramebufferAttachmentParameteriv;
+  PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
+  PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
+  PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
+  PFNGLISVERTEXARRAYPROC glIsVertexArray;
+  PFNGLBINDBUFFERARBPROC glBindBufferARB;
+  PFNGLDELETEBUFFERSARBPROC glDeleteBuffersARB;
+  PFNGLGENBUFFERSARBPROC glGenBuffersARB;
+  PFNGLISBUFFERARBPROC glIsBufferARB;
+  PFNGLFRAMEBUFFERTEXTURE1DEXTPROC glFramebufferTexture1DEXT;
+  PFNGLFRAMEBUFFERTEXTURE2DEXTPROC glFramebufferTexture2DEXT;
+  PFNGLFRAMEBUFFERTEXTURE3DEXTPROC glFramebufferTexture3DEXT;
+  PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC glGetFramebufferAttachmentParameterivEXT;
+  PFNGLFRAMEBUFFERTEXTURE2DMULTISAMPLEEXTPROC glFramebufferTexture2DMultisampleEXT;
+  PFNGLFRAMEBUFFERTEXTURE2DOESPROC glFramebufferTexture2DOES;
+  PFNGLFRAMEBUFFERTEXTURE3DOESPROC glFramebufferTexture3DOES;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glBindTexture = dt.glBindTexture;
+    glDeleteTextures = dt.glDeleteTextures;
+    glGenTextures = dt.glGenTextures;
+    glIsTexture = dt.glIsTexture;
+    glBindBuffer = dt.glBindBuffer;
+    glDeleteBuffers = dt.glDeleteBuffers;
+    glGenBuffers = dt.glGenBuffers;
+    glIsBuffer = dt.glIsBuffer;
+    glFramebufferTexture1D = dt.glFramebufferTexture1D;
+    glFramebufferTexture2D = dt.glFramebufferTexture2D;
+    glGetFramebufferAttachmentParameteriv = dt.glGetFramebufferAttachmentParameteriv;
+    glBindVertexArray = dt.glBindVertexArray;
+    glDeleteVertexArrays = dt.glDeleteVertexArrays;
+    glGenVertexArrays = dt.glGenVertexArrays;
+    glIsVertexArray = dt.glIsVertexArray;
+    glBindBufferARB = dt.glBindBufferARB;
+    glDeleteBuffersARB = dt.glDeleteBuffersARB;
+    glGenBuffersARB = dt.glGenBuffersARB;
+    glIsBufferARB = dt.glIsBufferARB;
+    glFramebufferTexture1DEXT = dt.glFramebufferTexture1DEXT;
+    glFramebufferTexture2DEXT = dt.glFramebufferTexture2DEXT;
+    glFramebufferTexture3DEXT = dt.glFramebufferTexture3DEXT;
+    glGetFramebufferAttachmentParameterivEXT = dt.glGetFramebufferAttachmentParameterivEXT;
+    glFramebufferTexture2DMultisampleEXT = dt.glFramebufferTexture2DMultisampleEXT;
+    glFramebufferTexture2DOES = dt.glFramebufferTexture2DOES;
+    glFramebufferTexture3DOES = dt.glFramebufferTexture3DOES;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

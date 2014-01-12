@@ -57,6 +57,19 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptBin( Dispatch::GL & dt );
 
+struct EmuProcsOriginateBin {
+
+  EmuProcsOriginateBin() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLSHADERBINARYPROC glShaderBinary;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glShaderBinary = dt.glShaderBinary;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

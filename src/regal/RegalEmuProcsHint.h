@@ -57,6 +57,27 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptHint( Dispatch::GL & dt );
 
+struct EmuProcsOriginateHint {
+
+  EmuProcsOriginateHint() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLGETBOOLEANVPROC glGetBooleanv;
+  PFNGLGETDOUBLEVPROC glGetDoublev;
+  PFNGLGETFLOATVPROC glGetFloatv;
+  PFNGLGETINTEGERVPROC glGetIntegerv;
+  PFNGLHINTPROC glHint;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glGetBooleanv = dt.glGetBooleanv;
+    glGetDoublev = dt.glGetDoublev;
+    glGetFloatv = dt.glGetFloatv;
+    glGetIntegerv = dt.glGetIntegerv;
+    glHint = dt.glHint;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

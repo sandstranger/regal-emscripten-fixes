@@ -62,6 +62,8 @@ static void REGAL_CALL emuProcInterceptXfer_glActiveTexture(GLenum texture)
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
 
+  _context->xfer->orig.glActiveTexture(texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glActiveTextureARB(GLenum texture)
@@ -71,6 +73,8 @@ static void REGAL_CALL emuProcInterceptXfer_glActiveTextureARB(GLenum texture)
 
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
+
+  _context->xfer->orig.glActiveTextureARB(texture);
 
 }
 
@@ -122,6 +126,8 @@ static void REGAL_CALL emuProcInterceptXfer_glPixelStoref(GLenum pname, GLfloat 
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
 
+  _context->xfer->orig.glPixelStoref(pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glPixelStorei(GLenum pname, GLint param)
@@ -131,6 +137,8 @@ static void REGAL_CALL emuProcInterceptXfer_glPixelStorei(GLenum pname, GLint pa
 
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
+
+  _context->xfer->orig.glPixelStorei(pname, param);
 
 }
 

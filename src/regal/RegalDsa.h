@@ -43,6 +43,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
+#include "RegalEmuProcsDsa.h"
 
 REGAL_GLOBAL_END
 
@@ -79,10 +80,11 @@ struct Dsa
     };
     Cache drv;
     Cache dsa;
-
+    EmuProcsOriginateDsa orig;
+  
     void Init( RegalContext &ctx )
     {
-        UNUSED_PARAMETER(ctx);
+        orig.Initialize( ctx.dispatchGL );
 
         callDepth = 0;
         drv.matrixMode = GL_MODELVIEW;

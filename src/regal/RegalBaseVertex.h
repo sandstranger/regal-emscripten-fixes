@@ -56,6 +56,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
+#include "RegalEmuProcsBaseVertex.h"
 
 REGAL_GLOBAL_END
 
@@ -65,9 +66,11 @@ namespace Emu {
 
 struct BaseVertex : public ClientState::VertexArray
 {
+  EmuProcsOriginateBaseVertex orig;
+  
   void Init(RegalContext &ctx)
   {
-    UNUSED_PARAMETER(ctx);
+    orig.Initialize( ctx.dispatchGL );
   }
 
   void Cleanup(RegalContext &ctx)

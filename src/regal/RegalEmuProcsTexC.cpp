@@ -62,6 +62,8 @@ static void REGAL_CALL emuProcInterceptTexC_glActiveTexture(GLenum texture)
   // prefix
   _context->texc->ShadowActiveTexture( texture );
 
+  _context->texc->orig.glActiveTexture(texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glActiveTextureARB(GLenum texture)
@@ -71,6 +73,8 @@ static void REGAL_CALL emuProcInterceptTexC_glActiveTextureARB(GLenum texture)
 
   // prefix
   _context->texc->ShadowActiveTexture( texture );
+
+  _context->texc->orig.glActiveTextureARB(texture);
 
 }
 
@@ -82,6 +86,8 @@ static void REGAL_CALL emuProcInterceptTexC_glBindTexture(GLenum target, GLuint 
   // prefix
   _context->texc->ShadowBindTexture( target, texture );
 
+  _context->texc->orig.glBindTexture(target, texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glBindTextureEXT(GLenum target, GLuint texture)
@@ -91,6 +97,8 @@ static void REGAL_CALL emuProcInterceptTexC_glBindTextureEXT(GLenum target, GLui
 
   // prefix
   _context->texc->ShadowBindTexture( target, texture );
+
+  _context->texc->orig.glBindTextureEXT(target, texture);
 
 }
 
@@ -102,6 +110,8 @@ static void REGAL_CALL emuProcInterceptTexC_glDeleteTextures(GLsizei n, const GL
   // prefix
   _context->texc->ShadowDeleteTextures( n, textures );
 
+  _context->texc->orig.glDeleteTextures(n, textures);
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glDeleteTexturesEXT(GLsizei n, const GLuint *textures)
@@ -111,6 +121,8 @@ static void REGAL_CALL emuProcInterceptTexC_glDeleteTexturesEXT(GLsizei n, const
 
   // prefix
   _context->texc->ShadowDeleteTextures( n, textures );
+
+  _context->texc->orig.glDeleteTexturesEXT(n, textures);
 
 }
 
@@ -146,6 +158,8 @@ static void REGAL_CALL emuProcInterceptTexC_glGenerateMipmap(GLenum target)
   // prefix
   _context->texc->ShadowGenerateMipmap( target );
 
+  _context->texc->orig.glGenerateMipmap(target);
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glGenerateMipmapEXT(GLenum target)
@@ -155,6 +169,8 @@ static void REGAL_CALL emuProcInterceptTexC_glGenerateMipmapEXT(GLenum target)
 
   // prefix
   _context->texc->ShadowGenerateMipmap( target );
+
+  _context->texc->orig.glGenerateMipmapEXT(target);
 
 }
 
@@ -166,6 +182,8 @@ static void REGAL_CALL emuProcInterceptTexC_glPixelStorei(GLenum pname, GLint pa
   // prefix
   _context->texc->ShadowPixelStore( pname, param );
 
+  _context->texc->orig.glPixelStorei(pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -175,6 +193,8 @@ static void REGAL_CALL emuProcInterceptTexC_glTexImage2D(GLenum target, GLint le
 
   // prefix
   _context->texc->ShadowTexImage2D( target, level, format, type );
+
+  _context->texc->orig.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 
 }
 

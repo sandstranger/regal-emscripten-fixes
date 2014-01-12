@@ -62,6 +62,8 @@ static void REGAL_CALL emuProcInterceptPpca_glBindBuffer(GLenum target, GLuint b
   // prefix
   _context->ppca->glBindBuffer( target, buffer );
 
+  _context->ppca->orig.glBindBuffer(target, buffer);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glBindVertexArray(GLuint array)
@@ -71,6 +73,8 @@ static void REGAL_CALL emuProcInterceptPpca_glBindVertexArray(GLuint array)
 
   // prefix
   _context->ppca->glBindVertexArray( array );
+
+  _context->ppca->orig.glBindVertexArray(array);
 
 }
 
@@ -82,6 +86,8 @@ static void REGAL_CALL emuProcInterceptPpca_glBindVertexBuffer(GLuint bindingind
   // prefix
   _context->ppca->glBindVertexBuffer( bindingindex, buffer, offset, stride );
 
+  _context->ppca->orig.glBindVertexBuffer(bindingindex, buffer, offset, stride);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glBindVertexBuffers(GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides)
@@ -91,6 +97,8 @@ static void REGAL_CALL emuProcInterceptPpca_glBindVertexBuffers(GLuint first, GL
 
   // prefix
   _context->ppca->glBindVertexBuffers( first, count, buffers, offsets, strides );
+
+  _context->ppca->orig.glBindVertexBuffers(first, count, buffers, offsets, strides);
 
 }
 
@@ -102,6 +110,8 @@ static void REGAL_CALL emuProcInterceptPpca_glClientActiveTexture(GLenum texture
   // prefix
   _context->ppca->glClientActiveTexture( texture );
 
+  _context->ppca->orig.glClientActiveTexture(texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glClientActiveTextureARB(GLenum texture)
@@ -111,6 +121,8 @@ static void REGAL_CALL emuProcInterceptPpca_glClientActiveTextureARB(GLenum text
 
   // prefix
   _context->ppca->glClientActiveTexture( texture );
+
+  _context->ppca->orig.glClientActiveTextureARB(texture);
 
 }
 
@@ -132,6 +144,8 @@ static void REGAL_CALL emuProcInterceptPpca_glColorPointer(GLint size, GLenum ty
   // prefix
   _context->ppca->glColorPointer( size, type, stride, pointer );
 
+  _context->ppca->orig.glColorPointer(size, type, stride, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glDeleteBuffers(GLsizei n, const GLuint *buffers)
@@ -141,6 +155,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDeleteBuffers(GLsizei n, const GLu
 
   // prefix
   _context->ppca->glDeleteBuffers( n, buffers );
+
+  _context->ppca->orig.glDeleteBuffers(n, buffers);
 
 }
 
@@ -152,6 +168,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDeleteVertexArrays(GLsizei n, cons
   // prefix
   _context->ppca->glDeleteVertexArrays( n, arrays );
 
+  _context->ppca->orig.glDeleteVertexArrays(n, arrays);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glDisable(GLenum cap)
@@ -161,6 +179,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisable(GLenum cap)
 
   // prefix
   _context->ppca->glDisable( cap );
+
+  _context->ppca->orig.glDisable(cap);
 
 }
 
@@ -172,6 +192,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableClientState(GLenum cap)
   // prefix
   _context->ppca->glDisableClientState( cap );
 
+  _context->ppca->orig.glDisableClientState(cap);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glDisableClientStateIndexedEXT(GLenum array, GLuint index)
@@ -181,6 +203,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableClientStateIndexedEXT(GLenu
 
   // prefix
   _context->ppca->glDisableClientStateIndexedEXT( array, index );
+
+  _context->ppca->orig.glDisableClientStateIndexedEXT(array, index);
 
 }
 
@@ -192,6 +216,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableClientStateiEXT(GLenum arra
   // prefix
   _context->ppca->glDisableClientStateiEXT( array, index );
 
+  _context->ppca->orig.glDisableClientStateiEXT(array, index);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glDisableIndexedEXT(GLenum target, GLuint index)
@@ -201,6 +227,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableIndexedEXT(GLenum target, G
 
   // prefix
   _context->ppca->glDisableIndexedEXT( target, index );
+
+  _context->ppca->orig.glDisableIndexedEXT(target, index);
 
 }
 
@@ -212,6 +240,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableVertexArrayAttribEXT(GLuint
   // prefix
   _context->ppca->glDisableVertexArrayAttribEXT( vaobj, array );
 
+  _context->ppca->orig.glDisableVertexArrayAttribEXT(vaobj, array);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glDisableVertexArrayEXT(GLuint vaobj, GLenum array)
@@ -221,6 +251,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableVertexArrayEXT(GLuint vaobj
 
   // prefix
   _context->ppca->glDisableVertexArrayEXT( vaobj, array );
+
+  _context->ppca->orig.glDisableVertexArrayEXT(vaobj, array);
 
 }
 
@@ -232,6 +264,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableVertexAttribArray(GLuint in
   // prefix
   _context->ppca->glDisableVertexAttribArray( index );
 
+  _context->ppca->orig.glDisableVertexAttribArray(index);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glDisablei(GLenum cap, GLuint index)
@@ -241,6 +275,8 @@ static void REGAL_CALL emuProcInterceptPpca_glDisablei(GLenum cap, GLuint index)
 
   // prefix
   _context->ppca->glDisablei( cap, index );
+
+  _context->ppca->orig.glDisablei(cap, index);
 
 }
 
@@ -252,6 +288,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEdgeFlagPointer(GLsizei stride, co
   // prefix
   _context->ppca->glEdgeFlagPointer( stride, pointer );
 
+  _context->ppca->orig.glEdgeFlagPointer(stride, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glEnable(GLenum cap)
@@ -261,6 +299,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnable(GLenum cap)
 
   // prefix
   _context->ppca->glEnable( cap );
+
+  _context->ppca->orig.glEnable(cap);
 
 }
 
@@ -272,6 +312,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableClientState(GLenum cap)
   // prefix
   _context->ppca->glEnableClientState( cap );
 
+  _context->ppca->orig.glEnableClientState(cap);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glEnableClientStateIndexedEXT(GLenum array, GLuint index)
@@ -281,6 +323,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableClientStateIndexedEXT(GLenum
 
   // prefix
   _context->ppca->glEnableClientStateIndexedEXT( array, index );
+
+  _context->ppca->orig.glEnableClientStateIndexedEXT(array, index);
 
 }
 
@@ -292,6 +336,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableClientStateiEXT(GLenum array
   // prefix
   _context->ppca->glEnableClientStateiEXT( array, index );
 
+  _context->ppca->orig.glEnableClientStateiEXT(array, index);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glEnableIndexedEXT(GLenum target, GLuint index)
@@ -301,6 +347,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableIndexedEXT(GLenum target, GL
 
   // prefix
   _context->ppca->glEnableIndexedEXT( target, index );
+
+  _context->ppca->orig.glEnableIndexedEXT(target, index);
 
 }
 
@@ -312,6 +360,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableVertexArrayAttribEXT(GLuint 
   // prefix
   _context->ppca->glEnableVertexArrayAttribEXT( vaobj, array );
 
+  _context->ppca->orig.glEnableVertexArrayAttribEXT(vaobj, array);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glEnableVertexArrayEXT(GLuint vaobj, GLenum array)
@@ -321,6 +371,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableVertexArrayEXT(GLuint vaobj,
 
   // prefix
   _context->ppca->glEnableVertexArrayEXT( vaobj, array );
+
+  _context->ppca->orig.glEnableVertexArrayEXT(vaobj, array);
 
 }
 
@@ -332,6 +384,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableVertexAttribArray(GLuint ind
   // prefix
   _context->ppca->glEnableVertexAttribArray( index );
 
+  _context->ppca->orig.glEnableVertexAttribArray(index);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glEnablei(GLenum cap, GLuint index)
@@ -342,6 +396,8 @@ static void REGAL_CALL emuProcInterceptPpca_glEnablei(GLenum cap, GLuint index)
   // prefix
   _context->ppca->glEnablei( cap, index );
 
+  _context->ppca->orig.glEnablei(cap, index);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -351,6 +407,8 @@ static void REGAL_CALL emuProcInterceptPpca_glFogCoordPointer(GLenum type, GLsiz
 
   // prefix
   _context->ppca->glFogCoordPointer( type, stride, pointer );
+
+  _context->ppca->orig.glFogCoordPointer(type, stride, pointer);
 
 }
 
@@ -410,6 +468,8 @@ static void REGAL_CALL emuProcInterceptPpca_glIndexPointer(GLenum type, GLsizei 
   // prefix
   _context->ppca->glIndexPointer( type, stride, pointer );
 
+  _context->ppca->orig.glIndexPointer(type, stride, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer)
@@ -419,6 +479,8 @@ static void REGAL_CALL emuProcInterceptPpca_glInterleavedArrays(GLenum format, G
 
   // prefix
   _context->ppca->glInterleavedArrays( format, stride, pointer );
+
+  _context->ppca->orig.glInterleavedArrays(format, stride, pointer);
 
 }
 
@@ -430,6 +492,8 @@ static void REGAL_CALL emuProcInterceptPpca_glMultiTexCoordPointerEXT(GLenum tex
   // prefix
   _context->ppca->glMultiTexCoordPointerEXT( texunit, size, type, stride, pointer );
 
+  _context->ppca->orig.glMultiTexCoordPointerEXT(texunit, size, type, stride, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glNormalPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -439,6 +503,8 @@ static void REGAL_CALL emuProcInterceptPpca_glNormalPointer(GLenum type, GLsizei
 
   // prefix
   _context->ppca->glNormalPointer( type, stride, pointer );
+
+  _context->ppca->orig.glNormalPointer(type, stride, pointer);
 
 }
 
@@ -450,6 +516,8 @@ static void REGAL_CALL emuProcInterceptPpca_glPixelStoref(GLenum pname, GLfloat 
   // prefix
   _context->ppca->glPixelStore( pname, param );
 
+  _context->ppca->orig.glPixelStoref(pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glPixelStorei(GLenum pname, GLint param)
@@ -459,6 +527,8 @@ static void REGAL_CALL emuProcInterceptPpca_glPixelStorei(GLenum pname, GLint pa
 
   // prefix
   _context->ppca->glPixelStore( pname, param );
+
+  _context->ppca->orig.glPixelStorei(pname, param);
 
 }
 
@@ -479,6 +549,8 @@ static void REGAL_CALL emuProcInterceptPpca_glPrimitiveRestartIndex(GLuint index
 
   // prefix
   _context->ppca->glPrimitiveRestartIndex( index );
+
+  _context->ppca->orig.glPrimitiveRestartIndex(index);
 
 }
 
@@ -510,6 +582,8 @@ static void REGAL_CALL emuProcInterceptPpca_glSecondaryColorPointer(GLint size, 
   // prefix
   _context->ppca->glSecondaryColorPointer( size, type, stride, pointer );
 
+  _context->ppca->orig.glSecondaryColorPointer(size, type, stride, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -519,6 +593,8 @@ static void REGAL_CALL emuProcInterceptPpca_glTexCoordPointer(GLint size, GLenum
 
   // prefix
   _context->ppca->glTexCoordPointer( size, type, stride, pointer );
+
+  _context->ppca->orig.glTexCoordPointer(size, type, stride, pointer);
 
 }
 
@@ -530,6 +606,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayColorOffsetEXT(GLuint v
   // prefix
   _context->ppca->glVertexArrayColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
+  _context->ppca->orig.glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
@@ -539,6 +617,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayEdgeFlagOffsetEXT(GLuin
 
   // prefix
   _context->ppca->glVertexArrayEdgeFlagOffsetEXT( vaobj, buffer, stride, offset );
+
+  _context->ppca->orig.glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
 
 }
 
@@ -550,6 +630,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayFogCoordOffsetEXT(GLuin
   // prefix
   _context->ppca->glVertexArrayFogCoordOffsetEXT( vaobj, buffer, type, stride, offset );
 
+  _context->ppca->orig.glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
@@ -559,6 +641,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayIndexOffsetEXT(GLuint v
 
   // prefix
   _context->ppca->glVertexArrayIndexOffsetEXT( vaobj, buffer, type, stride, offset );
+
+  _context->ppca->orig.glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
 
 }
 
@@ -570,6 +654,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayMultiTexCoordOffsetEXT(
   // prefix
   _context->ppca->glVertexArrayMultiTexCoordOffsetEXT( vaobj, buffer, texunit, size, type, stride, offset );
 
+  _context->ppca->orig.glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
@@ -579,6 +665,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayNormalOffsetEXT(GLuint 
 
   // prefix
   _context->ppca->glVertexArrayNormalOffsetEXT( vaobj, buffer, type, stride, offset );
+
+  _context->ppca->orig.glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
 
 }
 
@@ -590,6 +678,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArraySecondaryColorOffsetEXT
   // prefix
   _context->ppca->glVertexArraySecondaryColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
+  _context->ppca->orig.glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
@@ -599,6 +689,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayTexCoordOffsetEXT(GLuin
 
   // prefix
   _context->ppca->glVertexArrayTexCoordOffsetEXT( vaobj, buffer, size, type, stride, offset );
+
+  _context->ppca->orig.glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
 
 }
 
@@ -610,6 +702,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayVertexAttribIOffsetEXT(
   // prefix
   _context->ppca->glVertexArrayVertexAttribIOffsetEXT( vaobj, buffer, index, size, type, stride, offset );
 
+  _context->ppca->orig.glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
@@ -619,6 +713,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayVertexAttribOffsetEXT(G
 
   // prefix
   _context->ppca->glVertexArrayVertexAttribOffsetEXT( vaobj, buffer, index, size, type, normalized, stride, offset );
+
+  _context->ppca->orig.glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
 
 }
 
@@ -630,6 +726,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayVertexOffsetEXT(GLuint 
   // prefix
   _context->ppca->glVertexArrayVertexOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
+  _context->ppca->orig.glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
@@ -639,6 +737,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribBinding(GLuint attribi
 
   // prefix
   _context->ppca->glVertexAttribBinding( attribindex, bindingindex );
+
+  _context->ppca->orig.glVertexAttribBinding(attribindex, bindingindex);
 
 }
 
@@ -650,6 +750,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribDivisor(GLuint index, 
   // prefix
   _context->ppca->glVertexAttribDivisor( index, divisor );
 
+  _context->ppca->orig.glVertexAttribDivisor(index, divisor);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
@@ -659,6 +761,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribFormat(GLuint attribin
 
   // prefix
   _context->ppca->glVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
+
+  _context->ppca->orig.glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
 
 }
 
@@ -670,6 +774,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribIFormat(GLuint attribi
   // prefix
   _context->ppca->glVertexAttribIFormat( attribindex, size, type, relativeoffset );
 
+  _context->ppca->orig.glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -679,6 +785,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribIPointer(GLuint index,
 
   // prefix
   _context->ppca->glVertexAttribIPointer( index, size, type, stride, pointer );
+
+  _context->ppca->orig.glVertexAttribIPointer(index, size, type, stride, pointer);
 
 }
 
@@ -690,6 +798,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribLFormat(GLuint attribi
   // prefix
   _context->ppca->glVertexAttribLFormat( attribindex, size, type, relativeoffset );
 
+  _context->ppca->orig.glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -699,6 +809,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribLPointer(GLuint index,
 
   // prefix
   _context->ppca->glVertexAttribLPointer( index, size, type, stride, pointer );
+
+  _context->ppca->orig.glVertexAttribLPointer(index, size, type, stride, pointer);
 
 }
 
@@ -710,6 +822,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribPointer(GLuint index, 
   // prefix
   _context->ppca->glVertexAttribPointer( index, size, type, normalized, stride, pointer );
 
+  _context->ppca->orig.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
@@ -720,6 +834,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexBindingDivisor(GLuint bindin
   // prefix
   _context->ppca->glVertexBindingDivisor( bindingindex, divisor );
 
+  _context->ppca->orig.glVertexBindingDivisor(bindingindex, divisor);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpca_glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
@@ -729,6 +845,8 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexPointer(GLint size, GLenum t
 
   // prefix
   _context->ppca->glVertexPointer( size, type, stride, pointer );
+
+  _context->ppca->orig.glVertexPointer(size, type, stride, pointer);
 
 }
 

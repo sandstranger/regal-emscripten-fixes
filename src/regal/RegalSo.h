@@ -51,6 +51,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
 #include "RegalToken.h"
+#include "RegalEmuProcsSo.h"
 
 REGAL_GLOBAL_END
 
@@ -75,6 +76,7 @@ struct So
 
     void Init( RegalContext &ctx )
     {
+        orig.Initialize( ctx.dispatchGL );
         activeTextureUnit = 0;
         nextSamplerObjectId = 1;
 
@@ -723,6 +725,7 @@ struct So
     std::map<GLuint, SamplingState*> samplerObjects;
     std::map<GLuint, TextureState*> textureObjects;
     static const GLenum index2Enum[REGAL_NUM_TEXTURE_TARGETS];
+    EmuProcsOriginateSo orig;
 };
 
 }

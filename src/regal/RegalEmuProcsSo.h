@@ -57,6 +57,149 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptSo( Dispatch::GL & dt );
 
+struct EmuProcsOriginateSo {
+
+  EmuProcsOriginateSo() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLGETDOUBLEVPROC glGetDoublev;
+  PFNGLGETFLOATVPROC glGetFloatv;
+  PFNGLGETINTEGERVPROC glGetIntegerv;
+  PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
+  PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
+  PFNGLTEXPARAMETERFPROC glTexParameterf;
+  PFNGLTEXPARAMETERFVPROC glTexParameterfv;
+  PFNGLTEXPARAMETERIPROC glTexParameteri;
+  PFNGLTEXPARAMETERIVPROC glTexParameteriv;
+  PFNGLBINDTEXTUREPROC glBindTexture;
+  PFNGLDELETETEXTURESPROC glDeleteTextures;
+  PFNGLDRAWARRAYSPROC glDrawArrays;
+  PFNGLDRAWELEMENTSPROC glDrawElements;
+  PFNGLGENTEXTURESPROC glGenTextures;
+  PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
+  PFNGLACTIVETEXTUREPROC glActiveTexture;
+  PFNGLMULTIDRAWARRAYSPROC glMultiDrawArrays;
+  PFNGLMULTIDRAWELEMENTSPROC glMultiDrawElements;
+  PFNGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
+  PFNGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
+  PFNGLTEXPARAMETERIIVPROC glTexParameterIiv;
+  PFNGLTEXPARAMETERIUIVPROC glTexParameterIuiv;
+  PFNGLDRAWARRAYSINSTANCEDPROC glDrawArraysInstanced;
+  PFNGLDRAWELEMENTSINSTANCEDPROC glDrawElementsInstanced;
+  PFNGLMULTIDRAWARRAYSINDIRECTAMDPROC glMultiDrawArraysIndirectAMD;
+  PFNGLMULTIDRAWELEMENTSINDIRECTAMDPROC glMultiDrawElementsIndirectAMD;
+  PFNGLDRAWELEMENTARRAYAPPLEPROC glDrawElementArrayAPPLE;
+  PFNGLDRAWRANGEELEMENTARRAYAPPLEPROC glDrawRangeElementArrayAPPLE;
+  PFNGLMULTIDRAWELEMENTARRAYAPPLEPROC glMultiDrawElementArrayAPPLE;
+  PFNGLMULTIDRAWRANGEELEMENTARRAYAPPLEPROC glMultiDrawRangeElementArrayAPPLE;
+  PFNGLDRAWELEMENTSBASEVERTEXPROC glDrawElementsBaseVertex;
+  PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC glDrawElementsInstancedBaseVertex;
+  PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC glDrawRangeElementsBaseVertex;
+  PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC glMultiDrawElementsBaseVertex;
+  PFNGLDRAWARRAYSINDIRECTPROC glDrawArraysIndirect;
+  PFNGLDRAWELEMENTSINDIRECTPROC glDrawElementsIndirect;
+  PFNGLDRAWARRAYSINSTANCEDARBPROC glDrawArraysInstancedARB;
+  PFNGLDRAWELEMENTSINSTANCEDARBPROC glDrawElementsInstancedARB;
+  PFNGLMULTIDRAWARRAYSINDIRECTPROC glMultiDrawArraysIndirect;
+  PFNGLMULTIDRAWELEMENTSINDIRECTPROC glMultiDrawElementsIndirect;
+  PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
+  PFNGLBINDSAMPLERPROC glBindSampler;
+  PFNGLDELETESAMPLERSPROC glDeleteSamplers;
+  PFNGLGENSAMPLERSPROC glGenSamplers;
+  PFNGLGETSAMPLERPARAMETERIIVPROC glGetSamplerParameterIiv;
+  PFNGLGETSAMPLERPARAMETERIUIVPROC glGetSamplerParameterIuiv;
+  PFNGLGETSAMPLERPARAMETERFVPROC glGetSamplerParameterfv;
+  PFNGLGETSAMPLERPARAMETERIVPROC glGetSamplerParameteriv;
+  PFNGLISSAMPLERPROC glIsSampler;
+  PFNGLSAMPLERPARAMETERIIVPROC glSamplerParameterIiv;
+  PFNGLSAMPLERPARAMETERIUIVPROC glSamplerParameterIuiv;
+  PFNGLSAMPLERPARAMETERFPROC glSamplerParameterf;
+  PFNGLSAMPLERPARAMETERFVPROC glSamplerParameterfv;
+  PFNGLSAMPLERPARAMETERIPROC glSamplerParameteri;
+  PFNGLSAMPLERPARAMETERIVPROC glSamplerParameteriv;
+  PFNGLGETINTEGER64VPROC glGetInteger64v;
+  PFNGLDRAWELEMENTARRAYATIPROC glDrawElementArrayATI;
+  PFNGLDRAWRANGEELEMENTARRAYATIPROC glDrawRangeElementArrayATI;
+  PFNGLDRAWARRAYSINSTANCEDEXTPROC glDrawArraysInstancedEXT;
+  PFNGLDRAWELEMENTSINSTANCEDEXTPROC glDrawElementsInstancedEXT;
+  PFNGLDRAWRANGEELEMENTSEXTPROC glDrawRangeElementsEXT;
+  PFNGLMULTIDRAWARRAYSEXTPROC glMultiDrawArraysEXT;
+  PFNGLMULTIDRAWELEMENTSEXTPROC glMultiDrawElementsEXT;
+  PFNGLTEXPARAMETERIIVEXTPROC glTexParameterIivEXT;
+  PFNGLTEXPARAMETERIUIVEXTPROC glTexParameterIuivEXT;
+  PFNGLDRAWARRAYSEXTPROC glDrawArraysEXT;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glGetDoublev = dt.glGetDoublev;
+    glGetFloatv = dt.glGetFloatv;
+    glGetIntegerv = dt.glGetIntegerv;
+    glGetTexParameterfv = dt.glGetTexParameterfv;
+    glGetTexParameteriv = dt.glGetTexParameteriv;
+    glTexParameterf = dt.glTexParameterf;
+    glTexParameterfv = dt.glTexParameterfv;
+    glTexParameteri = dt.glTexParameteri;
+    glTexParameteriv = dt.glTexParameteriv;
+    glBindTexture = dt.glBindTexture;
+    glDeleteTextures = dt.glDeleteTextures;
+    glDrawArrays = dt.glDrawArrays;
+    glDrawElements = dt.glDrawElements;
+    glGenTextures = dt.glGenTextures;
+    glDrawRangeElements = dt.glDrawRangeElements;
+    glActiveTexture = dt.glActiveTexture;
+    glMultiDrawArrays = dt.glMultiDrawArrays;
+    glMultiDrawElements = dt.glMultiDrawElements;
+    glGetTexParameterIiv = dt.glGetTexParameterIiv;
+    glGetTexParameterIuiv = dt.glGetTexParameterIuiv;
+    glTexParameterIiv = dt.glTexParameterIiv;
+    glTexParameterIuiv = dt.glTexParameterIuiv;
+    glDrawArraysInstanced = dt.glDrawArraysInstanced;
+    glDrawElementsInstanced = dt.glDrawElementsInstanced;
+    glMultiDrawArraysIndirectAMD = dt.glMultiDrawArraysIndirectAMD;
+    glMultiDrawElementsIndirectAMD = dt.glMultiDrawElementsIndirectAMD;
+    glDrawElementArrayAPPLE = dt.glDrawElementArrayAPPLE;
+    glDrawRangeElementArrayAPPLE = dt.glDrawRangeElementArrayAPPLE;
+    glMultiDrawElementArrayAPPLE = dt.glMultiDrawElementArrayAPPLE;
+    glMultiDrawRangeElementArrayAPPLE = dt.glMultiDrawRangeElementArrayAPPLE;
+    glDrawElementsBaseVertex = dt.glDrawElementsBaseVertex;
+    glDrawElementsInstancedBaseVertex = dt.glDrawElementsInstancedBaseVertex;
+    glDrawRangeElementsBaseVertex = dt.glDrawRangeElementsBaseVertex;
+    glMultiDrawElementsBaseVertex = dt.glMultiDrawElementsBaseVertex;
+    glDrawArraysIndirect = dt.glDrawArraysIndirect;
+    glDrawElementsIndirect = dt.glDrawElementsIndirect;
+    glDrawArraysInstancedARB = dt.glDrawArraysInstancedARB;
+    glDrawElementsInstancedARB = dt.glDrawElementsInstancedARB;
+    glMultiDrawArraysIndirect = dt.glMultiDrawArraysIndirect;
+    glMultiDrawElementsIndirect = dt.glMultiDrawElementsIndirect;
+    glActiveTextureARB = dt.glActiveTextureARB;
+    glBindSampler = dt.glBindSampler;
+    glDeleteSamplers = dt.glDeleteSamplers;
+    glGenSamplers = dt.glGenSamplers;
+    glGetSamplerParameterIiv = dt.glGetSamplerParameterIiv;
+    glGetSamplerParameterIuiv = dt.glGetSamplerParameterIuiv;
+    glGetSamplerParameterfv = dt.glGetSamplerParameterfv;
+    glGetSamplerParameteriv = dt.glGetSamplerParameteriv;
+    glIsSampler = dt.glIsSampler;
+    glSamplerParameterIiv = dt.glSamplerParameterIiv;
+    glSamplerParameterIuiv = dt.glSamplerParameterIuiv;
+    glSamplerParameterf = dt.glSamplerParameterf;
+    glSamplerParameterfv = dt.glSamplerParameterfv;
+    glSamplerParameteri = dt.glSamplerParameteri;
+    glSamplerParameteriv = dt.glSamplerParameteriv;
+    glGetInteger64v = dt.glGetInteger64v;
+    glDrawElementArrayATI = dt.glDrawElementArrayATI;
+    glDrawRangeElementArrayATI = dt.glDrawRangeElementArrayATI;
+    glDrawArraysInstancedEXT = dt.glDrawArraysInstancedEXT;
+    glDrawElementsInstancedEXT = dt.glDrawElementsInstancedEXT;
+    glDrawRangeElementsEXT = dt.glDrawRangeElementsEXT;
+    glMultiDrawArraysEXT = dt.glMultiDrawArraysEXT;
+    glMultiDrawElementsEXT = dt.glMultiDrawElementsEXT;
+    glTexParameterIivEXT = dt.glTexParameterIivEXT;
+    glTexParameterIuivEXT = dt.glTexParameterIuivEXT;
+    glDrawArraysEXT = dt.glDrawArraysEXT;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

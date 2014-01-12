@@ -57,6 +57,39 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptXfer( Dispatch::GL & dt );
 
+struct EmuProcsOriginateXfer {
+
+  EmuProcsOriginateXfer() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLPIXELSTOREFPROC glPixelStoref;
+  PFNGLPIXELSTOREIPROC glPixelStorei;
+  PFNGLTEXIMAGE2DPROC glTexImage2D;
+  PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
+  PFNGLACTIVETEXTUREPROC glActiveTexture;
+  PFNGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
+  PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
+  PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
+  PFNGLCOMPRESSEDTEXIMAGE2DARBPROC glCompressedTexImage2DARB;
+  PFNGLCOMPRESSEDTEXSUBIMAGE2DARBPROC glCompressedTexSubImage2DARB;
+  PFNGLTEXSUBIMAGE2DEXTPROC glTexSubImage2DEXT;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glPixelStoref = dt.glPixelStoref;
+    glPixelStorei = dt.glPixelStorei;
+    glTexImage2D = dt.glTexImage2D;
+    glTexSubImage2D = dt.glTexSubImage2D;
+    glActiveTexture = dt.glActiveTexture;
+    glCompressedTexImage2D = dt.glCompressedTexImage2D;
+    glCompressedTexSubImage2D = dt.glCompressedTexSubImage2D;
+    glActiveTextureARB = dt.glActiveTextureARB;
+    glCompressedTexImage2DARB = dt.glCompressedTexImage2DARB;
+    glCompressedTexSubImage2DARB = dt.glCompressedTexSubImage2DARB;
+    glTexSubImage2DEXT = dt.glTexSubImage2DEXT;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

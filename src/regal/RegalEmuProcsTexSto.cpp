@@ -63,6 +63,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(GLsizei n, const 
   RegalAssert(_context);
   _context->texsto->DeleteTextures( _context, n, textures );
 
+  _context->texsto->orig.glDeleteTextures(n, textures);
+
 }
 
 static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params)

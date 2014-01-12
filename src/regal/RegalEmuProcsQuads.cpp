@@ -62,6 +62,8 @@ static void REGAL_CALL emuProcInterceptQuads_glBindBuffer(GLenum target, GLuint 
   // prefix
   _context->quads->glBindBuffer( target, buffer );
 
+  _context->quads->orig.glBindBuffer(target, buffer);
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glCullFace(GLenum mode)
@@ -72,6 +74,8 @@ static void REGAL_CALL emuProcInterceptQuads_glCullFace(GLenum mode)
   // prefix
   _context->quads->glCullFace( mode );
 
+  _context->quads->orig.glCullFace(mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glDisable(GLenum cap)
@@ -81,6 +85,8 @@ static void REGAL_CALL emuProcInterceptQuads_glDisable(GLenum cap)
 
   // prefix
   _context->quads->glDisable( cap );
+
+  _context->quads->orig.glDisable(cap);
 
 }
 
@@ -122,6 +128,8 @@ static void REGAL_CALL emuProcInterceptQuads_glEnable(GLenum cap)
   // prefix
   _context->quads->glEnable( cap );
 
+  _context->quads->orig.glEnable(cap);
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glFrontFace(GLenum mode)
@@ -131,6 +139,8 @@ static void REGAL_CALL emuProcInterceptQuads_glFrontFace(GLenum mode)
 
   // prefix
   _context->quads->glFrontFace( mode );
+
+  _context->quads->orig.glFrontFace(mode);
 
 }
 
@@ -142,6 +152,8 @@ static void REGAL_CALL emuProcInterceptQuads_glPolygonMode(GLenum face, GLenum m
   // prefix
   _context->quads->glPolygonMode( face, mode );
 
+  _context->quads->orig.glPolygonMode(face, mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glProvokingVertex(GLenum mode)
@@ -151,6 +163,8 @@ static void REGAL_CALL emuProcInterceptQuads_glProvokingVertex(GLenum mode)
 
   // prefix
   _context->quads->glProvokingVertex( mode );
+
+  _context->quads->orig.glProvokingVertex(mode);
 
 }
 
@@ -162,6 +176,8 @@ static void REGAL_CALL emuProcInterceptQuads_glProvokingVertexEXT(GLenum mode)
   // prefix
   _context->quads->glProvokingVertex( mode );
 
+  _context->quads->orig.glProvokingVertexEXT(mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glShadeModel(GLenum mode)
@@ -171,6 +187,8 @@ static void REGAL_CALL emuProcInterceptQuads_glShadeModel(GLenum mode)
 
   // prefix
   _context->quads->glShadeModel( mode );
+
+  _context->quads->orig.glShadeModel(mode);
 
 }
 

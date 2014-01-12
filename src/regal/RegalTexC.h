@@ -51,6 +51,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalSharedMap.h"
+#include "RegalEmuProcsTexC.h"
 
 REGAL_GLOBAL_END
 
@@ -215,6 +216,7 @@ struct TexC
   GLuint currentTextureUnit;
   TextureUnitState textureUnitArrayState[ REGAL_EMU_MAX_COMBINED_TEXTURE_IMAGE_UNITS ];
   TextureState textureZero;
+  EmuProcsOriginateTexC orig;
 };
 
 }

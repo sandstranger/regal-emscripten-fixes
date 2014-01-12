@@ -94,6 +94,19 @@ def apiEmuProcsHeaderCode( e, apis ):
 
   return code
 
+def callAndReturn( e, function ):
+  code = ''
+  
+  name   = function.name
+  callParams = paramsNameCode(function.parameters)
+  rType  = typeCode(function.ret.type)
+
+  if not typeIsVoid(rType):
+    code += 'return '
+  code += '_context->%s->orig.%s(%s);\n' % ( e['member'], name, callParams )
+  
+  return code
+
 def apiEmuProcsSourceCode( e, apis ):
   code = ''
 
@@ -131,8 +144,10 @@ def apiEmuProcsSourceCode( e, apis ):
       if emue != None and 'prefix' in emue and len(emue['prefix']):
         code +=    '  // prefix\n'
         code += listToString( indent( emue['prefix'], '  ' ) )
+        code +=    '\n'
+        code +=    '  ' + callAndReturn( e, function )
 
-      if emue != None and 'impl' in emue and len( emue['impl'] ):
+      elif emue != None and 'impl' in emue and len( emue['impl'] ):
         code +=    '  // impl\n'
         code += listToString( indent( emue['impl'], '  ' ) )
 

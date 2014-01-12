@@ -57,6 +57,43 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptTexC( Dispatch::GL & dt );
 
+struct EmuProcsOriginateTexC {
+
+  EmuProcsOriginateTexC() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLPIXELSTOREIPROC glPixelStorei;
+  PFNGLTEXIMAGE2DPROC glTexImage2D;
+  PFNGLBINDTEXTUREPROC glBindTexture;
+  PFNGLDELETETEXTURESPROC glDeleteTextures;
+  PFNGLGENTEXTURESPROC glGenTextures;
+  PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
+  PFNGLACTIVETEXTUREPROC glActiveTexture;
+  PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
+  PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
+  PFNGLGENERATEMIPMAPEXTPROC glGenerateMipmapEXT;
+  PFNGLBINDTEXTUREEXTPROC glBindTextureEXT;
+  PFNGLDELETETEXTURESEXTPROC glDeleteTexturesEXT;
+  PFNGLGENTEXTURESEXTPROC glGenTexturesEXT;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glPixelStorei = dt.glPixelStorei;
+    glTexImage2D = dt.glTexImage2D;
+    glBindTexture = dt.glBindTexture;
+    glDeleteTextures = dt.glDeleteTextures;
+    glGenTextures = dt.glGenTextures;
+    glTexSubImage2D = dt.glTexSubImage2D;
+    glActiveTexture = dt.glActiveTexture;
+    glGenerateMipmap = dt.glGenerateMipmap;
+    glActiveTextureARB = dt.glActiveTextureARB;
+    glGenerateMipmapEXT = dt.glGenerateMipmapEXT;
+    glBindTextureEXT = dt.glBindTextureEXT;
+    glDeleteTexturesEXT = dt.glDeleteTexturesEXT;
+    glGenTexturesEXT = dt.glGenTexturesEXT;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

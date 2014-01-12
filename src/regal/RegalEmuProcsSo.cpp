@@ -122,6 +122,8 @@ static void REGAL_CALL emuProcInterceptSo_glDeleteTextures(GLsizei n, const GLui
   RegalAssert(_context);
   _context->so->DeleteTextures( *_context, n, textures );
 
+  _context->so->orig.glDeleteTextures(n, textures);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawArrays(GLenum mode, GLint first, GLsizei count)
@@ -132,6 +134,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawArrays(GLenum mode, GLint first,
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawArrays(mode, first, count);
 
 }
 
@@ -144,6 +148,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawArraysEXT(GLenum mode, GLint fir
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawArraysEXT(mode, first, count);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawArraysIndirect(GLenum mode, const GLvoid *indirect)
@@ -154,6 +160,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawArraysIndirect(GLenum mode, cons
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawArraysIndirect(mode, indirect);
 
 }
 
@@ -166,6 +174,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawArraysInstanced(GLenum mode, GLi
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawArraysInstanced(mode, start, count, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawArraysInstancedARB(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
@@ -176,6 +186,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawArraysInstancedARB(GLenum mode, 
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawArraysInstancedARB(mode, start, count, primcount);
 
 }
 
@@ -188,6 +200,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawArraysInstancedEXT(GLenum mode, 
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawArraysInstancedEXT(mode, start, count, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count)
@@ -198,6 +212,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementArrayAPPLE(GLenum mode, G
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawElementArrayAPPLE(mode, first, count);
 
 }
 
@@ -210,6 +226,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementArrayATI(GLenum mode, GLs
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawElementArrayATI(mode, count);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
@@ -220,6 +238,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElements(GLenum mode, GLsizei co
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawElements(mode, count, type, indices);
 
 }
 
@@ -232,6 +252,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementsBaseVertex(GLenum mode, 
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect)
@@ -242,6 +264,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementsIndirect(GLenum mode, GL
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawElementsIndirect(mode, type, indirect);
 
 }
 
@@ -254,6 +278,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstanced(GLenum mode, G
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawElementsInstanced(mode, count, type, indices, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
@@ -264,6 +290,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedARB(GLenum mode
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
 
 }
 
@@ -276,6 +304,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedBaseVertex(GLen
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
@@ -286,6 +316,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedEXT(GLenum mode
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
 
 }
 
@@ -298,6 +330,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementArrayAPPLE(GLenum mo
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawRangeElementArrayAPPLE(mode, start, end, first, count);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count)
@@ -308,6 +342,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementArrayATI(GLenum mode
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawRangeElementArrayATI(mode, start, end, count);
 
 }
 
@@ -320,6 +356,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawRangeElements(GLenum mode, GLuin
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawRangeElements(mode, start, end, count, type, indices);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
@@ -331,6 +369,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementsBaseVertex(GLenum m
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
@@ -341,6 +381,8 @@ static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementsEXT(GLenum mode, GL
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glDrawRangeElementsEXT(mode, start, end, count, type, indices);
 
 }
 
@@ -536,6 +578,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawArrays(GLenum mode, const G
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glMultiDrawArrays(mode, first, count, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysEXT(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
@@ -546,6 +590,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysEXT(GLenum mode, cons
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glMultiDrawArraysEXT(mode, first, count, primcount);
 
 }
 
@@ -558,6 +604,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysIndirect(GLenum mode,
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -568,6 +616,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysIndirectAMD(GLenum mo
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
 
 }
 
@@ -580,6 +630,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementArrayAPPLE(GLenum mo
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
@@ -590,6 +642,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawElements(GLenum mode, const
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glMultiDrawElements(mode, count, type, indices, primcount);
 
 }
 
@@ -602,6 +656,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsBaseVertex(GLenum m
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsEXT(GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
@@ -612,6 +668,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsEXT(GLenum mode, co
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glMultiDrawElementsEXT(mode, count, type, indices, primcount);
 
 }
 
@@ -624,6 +682,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsIndirect(GLenum mod
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -635,6 +695,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsIndirectAMD(GLenum 
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
 
+  _context->so->orig.glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
+
 }
 
 static void REGAL_CALL emuProcInterceptSo_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
@@ -645,6 +707,8 @@ static void REGAL_CALL emuProcInterceptSo_glMultiDrawRangeElementArrayAPPLE(GLen
   // prefix
   RegalAssert(_context);
   _context->so->PreDraw( *_context );
+
+  _context->so->orig.glMultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount);
 
 }
 

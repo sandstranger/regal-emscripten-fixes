@@ -46,6 +46,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
+#include "RegalEmuProcsTexSto.h"
 
 #include <cmath>
 
@@ -62,7 +63,7 @@ namespace Emu {
   {
     void Init( RegalContext &ctx )
     {
-      UNUSED_PARAMETER(ctx);
+      orig.Initialize( ctx.dispatchGL );
     }
 
     GLenum BindingFromTarget(GLenum target)
@@ -180,6 +181,7 @@ namespace Emu {
     }
 
     std::set<GLuint> immutableTextures;
+    EmuProcsOriginateTexSto orig;
   };
 
 }

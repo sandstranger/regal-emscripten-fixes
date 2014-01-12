@@ -57,6 +57,135 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptBaseVertex( Dispatch::GL & dt );
 
+struct EmuProcsOriginateBaseVertex {
+
+  EmuProcsOriginateBaseVertex() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLDISABLEPROC glDisable;
+  PFNGLENABLEPROC glEnable;
+  PFNGLCOLORPOINTERPROC glColorPointer;
+  PFNGLDISABLECLIENTSTATEPROC glDisableClientState;
+  PFNGLEDGEFLAGPOINTERPROC glEdgeFlagPointer;
+  PFNGLENABLECLIENTSTATEPROC glEnableClientState;
+  PFNGLINDEXPOINTERPROC glIndexPointer;
+  PFNGLINTERLEAVEDARRAYSPROC glInterleavedArrays;
+  PFNGLNORMALPOINTERPROC glNormalPointer;
+  PFNGLTEXCOORDPOINTERPROC glTexCoordPointer;
+  PFNGLVERTEXPOINTERPROC glVertexPointer;
+  PFNGLCLIENTACTIVETEXTUREPROC glClientActiveTexture;
+  PFNGLFOGCOORDPOINTERPROC glFogCoordPointer;
+  PFNGLSECONDARYCOLORPOINTERPROC glSecondaryColorPointer;
+  PFNGLBINDBUFFERPROC glBindBuffer;
+  PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
+  PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
+  PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
+  PFNGLDISABLEIPROC glDisablei;
+  PFNGLENABLEIPROC glEnablei;
+  PFNGLVERTEXATTRIBIPOINTERPROC glVertexAttribIPointer;
+  PFNGLPRIMITIVERESTARTINDEXPROC glPrimitiveRestartIndex;
+  PFNGLVERTEXATTRIBDIVISORPROC glVertexAttribDivisor;
+  PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXBASEINSTANCEPROC glDrawElementsInstancedBaseVertexBaseInstance;
+  PFNGLDRAWELEMENTSBASEVERTEXPROC glDrawElementsBaseVertex;
+  PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC glDrawElementsInstancedBaseVertex;
+  PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC glDrawRangeElementsBaseVertex;
+  PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC glMultiDrawElementsBaseVertex;
+  PFNGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
+  PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
+  PFNGLVERTEXATTRIBLPOINTERPROC glVertexAttribLPointer;
+  PFNGLBINDVERTEXBUFFERPROC glBindVertexBuffer;
+  PFNGLVERTEXATTRIBBINDINGPROC glVertexAttribBinding;
+  PFNGLVERTEXATTRIBFORMATPROC glVertexAttribFormat;
+  PFNGLVERTEXATTRIBIFORMATPROC glVertexAttribIFormat;
+  PFNGLVERTEXATTRIBLFORMATPROC glVertexAttribLFormat;
+  PFNGLVERTEXBINDINGDIVISORPROC glVertexBindingDivisor;
+  PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC glDisableClientStateIndexedEXT;
+  PFNGLDISABLECLIENTSTATEIEXTPROC glDisableClientStateiEXT;
+  PFNGLDISABLEVERTEXARRAYATTRIBEXTPROC glDisableVertexArrayAttribEXT;
+  PFNGLDISABLEVERTEXARRAYEXTPROC glDisableVertexArrayEXT;
+  PFNGLENABLECLIENTSTATEINDEXEDEXTPROC glEnableClientStateIndexedEXT;
+  PFNGLENABLECLIENTSTATEIEXTPROC glEnableClientStateiEXT;
+  PFNGLENABLEVERTEXARRAYATTRIBEXTPROC glEnableVertexArrayAttribEXT;
+  PFNGLENABLEVERTEXARRAYEXTPROC glEnableVertexArrayEXT;
+  PFNGLMULTITEXCOORDPOINTEREXTPROC glMultiTexCoordPointerEXT;
+  PFNGLVERTEXARRAYCOLOROFFSETEXTPROC glVertexArrayColorOffsetEXT;
+  PFNGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC glVertexArrayEdgeFlagOffsetEXT;
+  PFNGLVERTEXARRAYFOGCOORDOFFSETEXTPROC glVertexArrayFogCoordOffsetEXT;
+  PFNGLVERTEXARRAYINDEXOFFSETEXTPROC glVertexArrayIndexOffsetEXT;
+  PFNGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC glVertexArrayMultiTexCoordOffsetEXT;
+  PFNGLVERTEXARRAYNORMALOFFSETEXTPROC glVertexArrayNormalOffsetEXT;
+  PFNGLVERTEXARRAYSECONDARYCOLOROFFSETEXTPROC glVertexArraySecondaryColorOffsetEXT;
+  PFNGLVERTEXARRAYTEXCOORDOFFSETEXTPROC glVertexArrayTexCoordOffsetEXT;
+  PFNGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC glVertexArrayVertexAttribIOffsetEXT;
+  PFNGLVERTEXARRAYVERTEXATTRIBOFFSETEXTPROC glVertexArrayVertexAttribOffsetEXT;
+  PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC glVertexArrayVertexOffsetEXT;
+  PFNGLDISABLEINDEXEDEXTPROC glDisableIndexedEXT;
+  PFNGLENABLEINDEXEDEXTPROC glEnableIndexedEXT;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glDisable = dt.glDisable;
+    glEnable = dt.glEnable;
+    glColorPointer = dt.glColorPointer;
+    glDisableClientState = dt.glDisableClientState;
+    glEdgeFlagPointer = dt.glEdgeFlagPointer;
+    glEnableClientState = dt.glEnableClientState;
+    glIndexPointer = dt.glIndexPointer;
+    glInterleavedArrays = dt.glInterleavedArrays;
+    glNormalPointer = dt.glNormalPointer;
+    glTexCoordPointer = dt.glTexCoordPointer;
+    glVertexPointer = dt.glVertexPointer;
+    glClientActiveTexture = dt.glClientActiveTexture;
+    glFogCoordPointer = dt.glFogCoordPointer;
+    glSecondaryColorPointer = dt.glSecondaryColorPointer;
+    glBindBuffer = dt.glBindBuffer;
+    glDisableVertexAttribArray = dt.glDisableVertexAttribArray;
+    glEnableVertexAttribArray = dt.glEnableVertexAttribArray;
+    glVertexAttribPointer = dt.glVertexAttribPointer;
+    glDisablei = dt.glDisablei;
+    glEnablei = dt.glEnablei;
+    glVertexAttribIPointer = dt.glVertexAttribIPointer;
+    glPrimitiveRestartIndex = dt.glPrimitiveRestartIndex;
+    glVertexAttribDivisor = dt.glVertexAttribDivisor;
+    glDrawElementsInstancedBaseVertexBaseInstance = dt.glDrawElementsInstancedBaseVertexBaseInstance;
+    glDrawElementsBaseVertex = dt.glDrawElementsBaseVertex;
+    glDrawElementsInstancedBaseVertex = dt.glDrawElementsInstancedBaseVertex;
+    glDrawRangeElementsBaseVertex = dt.glDrawRangeElementsBaseVertex;
+    glMultiDrawElementsBaseVertex = dt.glMultiDrawElementsBaseVertex;
+    glClientActiveTextureARB = dt.glClientActiveTextureARB;
+    glBindVertexArray = dt.glBindVertexArray;
+    glVertexAttribLPointer = dt.glVertexAttribLPointer;
+    glBindVertexBuffer = dt.glBindVertexBuffer;
+    glVertexAttribBinding = dt.glVertexAttribBinding;
+    glVertexAttribFormat = dt.glVertexAttribFormat;
+    glVertexAttribIFormat = dt.glVertexAttribIFormat;
+    glVertexAttribLFormat = dt.glVertexAttribLFormat;
+    glVertexBindingDivisor = dt.glVertexBindingDivisor;
+    glDisableClientStateIndexedEXT = dt.glDisableClientStateIndexedEXT;
+    glDisableClientStateiEXT = dt.glDisableClientStateiEXT;
+    glDisableVertexArrayAttribEXT = dt.glDisableVertexArrayAttribEXT;
+    glDisableVertexArrayEXT = dt.glDisableVertexArrayEXT;
+    glEnableClientStateIndexedEXT = dt.glEnableClientStateIndexedEXT;
+    glEnableClientStateiEXT = dt.glEnableClientStateiEXT;
+    glEnableVertexArrayAttribEXT = dt.glEnableVertexArrayAttribEXT;
+    glEnableVertexArrayEXT = dt.glEnableVertexArrayEXT;
+    glMultiTexCoordPointerEXT = dt.glMultiTexCoordPointerEXT;
+    glVertexArrayColorOffsetEXT = dt.glVertexArrayColorOffsetEXT;
+    glVertexArrayEdgeFlagOffsetEXT = dt.glVertexArrayEdgeFlagOffsetEXT;
+    glVertexArrayFogCoordOffsetEXT = dt.glVertexArrayFogCoordOffsetEXT;
+    glVertexArrayIndexOffsetEXT = dt.glVertexArrayIndexOffsetEXT;
+    glVertexArrayMultiTexCoordOffsetEXT = dt.glVertexArrayMultiTexCoordOffsetEXT;
+    glVertexArrayNormalOffsetEXT = dt.glVertexArrayNormalOffsetEXT;
+    glVertexArraySecondaryColorOffsetEXT = dt.glVertexArraySecondaryColorOffsetEXT;
+    glVertexArrayTexCoordOffsetEXT = dt.glVertexArrayTexCoordOffsetEXT;
+    glVertexArrayVertexAttribIOffsetEXT = dt.glVertexArrayVertexAttribIOffsetEXT;
+    glVertexArrayVertexAttribOffsetEXT = dt.glVertexArrayVertexAttribOffsetEXT;
+    glVertexArrayVertexOffsetEXT = dt.glVertexArrayVertexOffsetEXT;
+    glDisableIndexedEXT = dt.glDisableIndexedEXT;
+    glEnableIndexedEXT = dt.glEnableIndexedEXT;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

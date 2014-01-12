@@ -94,6 +94,7 @@ namespace Emu
 
 void Quads::Init(RegalContext &ctx)
 {
+  orig.Initialize( ctx.dispatchGL );
   elementArrayBuffer = 0;
   Dispatch::GL & dt = ctx.emu.curr;
   dt.glGenBuffers(1, &quadIndexBuffer);

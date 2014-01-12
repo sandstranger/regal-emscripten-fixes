@@ -57,6 +57,39 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptQuads( Dispatch::GL & dt );
 
+struct EmuProcsOriginateQuads {
+
+  EmuProcsOriginateQuads() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLCULLFACEPROC glCullFace;
+  PFNGLDISABLEPROC glDisable;
+  PFNGLENABLEPROC glEnable;
+  PFNGLFRONTFACEPROC glFrontFace;
+  PFNGLPOLYGONMODEPROC glPolygonMode;
+  PFNGLSHADEMODELPROC glShadeModel;
+  PFNGLDRAWARRAYSPROC glDrawArrays;
+  PFNGLBINDBUFFERPROC glBindBuffer;
+  PFNGLPROVOKINGVERTEXPROC glProvokingVertex;
+  PFNGLPROVOKINGVERTEXEXTPROC glProvokingVertexEXT;
+  PFNGLDRAWARRAYSEXTPROC glDrawArraysEXT;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glCullFace = dt.glCullFace;
+    glDisable = dt.glDisable;
+    glEnable = dt.glEnable;
+    glFrontFace = dt.glFrontFace;
+    glPolygonMode = dt.glPolygonMode;
+    glShadeModel = dt.glShadeModel;
+    glDrawArrays = dt.glDrawArrays;
+    glBindBuffer = dt.glBindBuffer;
+    glProvokingVertex = dt.glProvokingVertex;
+    glProvokingVertexEXT = dt.glProvokingVertexEXT;
+    glDrawArraysEXT = dt.glDrawArraysEXT;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

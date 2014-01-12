@@ -26,8 +26,6 @@ formulae = {
 
   # options that aren't part of the normal formulae
   'options' : {
-    'originateAllEntries' : True,
-
     'originate' : [
       'glReadBufferNV',
       'glDrawElements',

@@ -3448,6 +3448,8 @@ GLuint Iff::CreateShader( RegalContext *ctx, GLenum shaderType )
 
 void Iff::Init( RegalContext &ctx )
 {
+  orig.Initialize( ctx.dispatchGL );
+  
   shadowMatrixMode = GL_MODELVIEW;
   shadowActiveTextureIndex = 0;
   activeTextureIndex = 0;

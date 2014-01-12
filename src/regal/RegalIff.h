@@ -77,6 +77,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalSharedMap.h"
 #include "RegalFloat4.h"
 #include "RegalShaderInstance.h"
+#include "RegalEmuProcsIff.h"
 #include "linear.h"
 
 REGAL_GLOBAL_END
@@ -822,6 +823,7 @@ struct Iff
   GLuint  immVbo;
   GLuint  immVao;
   GLuint  immShadowVao;
+  EmuProcsOriginateIff orig;
 
   void InitImmediate(RegalContext &ctx);
   void glDeleteVertexArrays( RegalContext * ctx, GLsizei n, const GLuint * arrays );

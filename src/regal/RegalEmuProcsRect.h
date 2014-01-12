@@ -57,6 +57,33 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptRect( Dispatch::GL & dt );
 
+struct EmuProcsOriginateRect {
+
+  EmuProcsOriginateRect() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLRECTDPROC glRectd;
+  PFNGLRECTDVPROC glRectdv;
+  PFNGLRECTFPROC glRectf;
+  PFNGLRECTFVPROC glRectfv;
+  PFNGLRECTIPROC glRecti;
+  PFNGLRECTIVPROC glRectiv;
+  PFNGLRECTSPROC glRects;
+  PFNGLRECTSVPROC glRectsv;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glRectd = dt.glRectd;
+    glRectdv = dt.glRectdv;
+    glRectf = dt.glRectf;
+    glRectfv = dt.glRectfv;
+    glRecti = dt.glRecti;
+    glRectiv = dt.glRectiv;
+    glRects = dt.glRects;
+    glRectsv = dt.glRectsv;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

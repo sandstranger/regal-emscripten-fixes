@@ -175,20 +175,26 @@ def emuGetOriginateList( emuFormulae, apis ):
 
   originate = []
 
+  originateImpls = True
+
   if emuFormulae and 'options' in emuFormulae:
     opt = emuFormulae['options']
     if 'originate' in opt:
-      originate.extend( opt['originate'] )
-    if 'originateAllEntries' in opt:
-      if opt['originateAllEntries'] == True:
-        for api in apis:
+      originate.extend( opt['originate'] )    
+    if 'originateImpls' in opt:
+      originateImpls = opt['originateImpls']
 
-          for function in api.functions:
-            e = emuFindEntry( function, emuFormulae, 'foo' )
-            if e == None:
-              continue
-            if function.name not in originate:
-              originate.append( function.name )
+  for api in apis:
+    for function in api.functions:
+      e = emuFindEntry( function, emuFormulae, 'foo' )
+      if e == None:
+        continue
+      if 'impl' in e:
+        if not originateImpls:
+          continue
+  
+      if function.name not in originate:
+        originate.append( function.name )
 
   return originate
 

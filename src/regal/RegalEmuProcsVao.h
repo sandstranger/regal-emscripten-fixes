@@ -57,6 +57,151 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptVao( Dispatch::GL & dt );
 
+struct EmuProcsOriginateVao {
+
+  EmuProcsOriginateVao() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLGETBOOLEANVPROC glGetBooleanv;
+  PFNGLGETDOUBLEVPROC glGetDoublev;
+  PFNGLGETFLOATVPROC glGetFloatv;
+  PFNGLGETINTEGERVPROC glGetIntegerv;
+  PFNGLCOLORPOINTERPROC glColorPointer;
+  PFNGLDISABLECLIENTSTATEPROC glDisableClientState;
+  PFNGLDRAWARRAYSPROC glDrawArrays;
+  PFNGLDRAWELEMENTSPROC glDrawElements;
+  PFNGLENABLECLIENTSTATEPROC glEnableClientState;
+  PFNGLINTERLEAVEDARRAYSPROC glInterleavedArrays;
+  PFNGLNORMALPOINTERPROC glNormalPointer;
+  PFNGLTEXCOORDPOINTERPROC glTexCoordPointer;
+  PFNGLVERTEXPOINTERPROC glVertexPointer;
+  PFNGLCLIENTACTIVETEXTUREPROC glClientActiveTexture;
+  PFNGLFOGCOORDPOINTERPROC glFogCoordPointer;
+  PFNGLMULTIDRAWARRAYSPROC glMultiDrawArrays;
+  PFNGLMULTIDRAWELEMENTSPROC glMultiDrawElements;
+  PFNGLSECONDARYCOLORPOINTERPROC glSecondaryColorPointer;
+  PFNGLBINDBUFFERPROC glBindBuffer;
+  PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
+  PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
+  PFNGLGETVERTEXATTRIBPOINTERVPROC glGetVertexAttribPointerv;
+  PFNGLGETVERTEXATTRIBDVPROC glGetVertexAttribdv;
+  PFNGLGETVERTEXATTRIBFVPROC glGetVertexAttribfv;
+  PFNGLGETVERTEXATTRIBIVPROC glGetVertexAttribiv;
+  PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
+  PFNGLDRAWARRAYSINSTANCEDPROC glDrawArraysInstanced;
+  PFNGLDRAWELEMENTSINSTANCEDPROC glDrawElementsInstanced;
+  PFNGLMULTIDRAWARRAYSINDIRECTAMDPROC glMultiDrawArraysIndirectAMD;
+  PFNGLMULTIDRAWELEMENTSINDIRECTAMDPROC glMultiDrawElementsIndirectAMD;
+  PFNGLDRAWELEMENTARRAYAPPLEPROC glDrawElementArrayAPPLE;
+  PFNGLMULTIDRAWELEMENTARRAYAPPLEPROC glMultiDrawElementArrayAPPLE;
+  PFNGLDRAWELEMENTSBASEVERTEXPROC glDrawElementsBaseVertex;
+  PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC glDrawElementsInstancedBaseVertex;
+  PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC glMultiDrawElementsBaseVertex;
+  PFNGLDRAWARRAYSINDIRECTPROC glDrawArraysIndirect;
+  PFNGLDRAWELEMENTSINDIRECTPROC glDrawElementsIndirect;
+  PFNGLDRAWARRAYSINSTANCEDARBPROC glDrawArraysInstancedARB;
+  PFNGLDRAWELEMENTSINSTANCEDARBPROC glDrawElementsInstancedARB;
+  PFNGLMULTIDRAWARRAYSINDIRECTPROC glMultiDrawArraysIndirect;
+  PFNGLMULTIDRAWELEMENTSINDIRECTPROC glMultiDrawElementsIndirect;
+  PFNGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
+  PFNGLGETINTEGER64VPROC glGetInteger64v;
+  PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
+  PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
+  PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
+  PFNGLISVERTEXARRAYPROC glIsVertexArray;
+  PFNGLBINDBUFFERARBPROC glBindBufferARB;
+  PFNGLDISABLEVERTEXATTRIBARRAYARBPROC glDisableVertexAttribArrayARB;
+  PFNGLENABLEVERTEXATTRIBARRAYARBPROC glEnableVertexAttribArrayARB;
+  PFNGLGETVERTEXATTRIBPOINTERVARBPROC glGetVertexAttribPointervARB;
+  PFNGLGETVERTEXATTRIBDVARBPROC glGetVertexAttribdvARB;
+  PFNGLGETVERTEXATTRIBFVARBPROC glGetVertexAttribfvARB;
+  PFNGLGETVERTEXATTRIBIVARBPROC glGetVertexAttribivARB;
+  PFNGLVERTEXATTRIBPOINTERARBPROC glVertexAttribPointerARB;
+  PFNGLDRAWELEMENTARRAYATIPROC glDrawElementArrayATI;
+  PFNGLDRAWARRAYSINSTANCEDEXTPROC glDrawArraysInstancedEXT;
+  PFNGLDRAWELEMENTSINSTANCEDEXTPROC glDrawElementsInstancedEXT;
+  PFNGLFOGCOORDPOINTEREXTPROC glFogCoordPointerEXT;
+  PFNGLMULTIDRAWARRAYSEXTPROC glMultiDrawArraysEXT;
+  PFNGLMULTIDRAWELEMENTSEXTPROC glMultiDrawElementsEXT;
+  PFNGLSECONDARYCOLORPOINTEREXTPROC glSecondaryColorPointerEXT;
+  PFNGLCOLORPOINTEREXTPROC glColorPointerEXT;
+  PFNGLDRAWARRAYSEXTPROC glDrawArraysEXT;
+  PFNGLNORMALPOINTEREXTPROC glNormalPointerEXT;
+  PFNGLTEXCOORDPOINTEREXTPROC glTexCoordPointerEXT;
+  PFNGLVERTEXPOINTEREXTPROC glVertexPointerEXT;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glGetBooleanv = dt.glGetBooleanv;
+    glGetDoublev = dt.glGetDoublev;
+    glGetFloatv = dt.glGetFloatv;
+    glGetIntegerv = dt.glGetIntegerv;
+    glColorPointer = dt.glColorPointer;
+    glDisableClientState = dt.glDisableClientState;
+    glDrawArrays = dt.glDrawArrays;
+    glDrawElements = dt.glDrawElements;
+    glEnableClientState = dt.glEnableClientState;
+    glInterleavedArrays = dt.glInterleavedArrays;
+    glNormalPointer = dt.glNormalPointer;
+    glTexCoordPointer = dt.glTexCoordPointer;
+    glVertexPointer = dt.glVertexPointer;
+    glClientActiveTexture = dt.glClientActiveTexture;
+    glFogCoordPointer = dt.glFogCoordPointer;
+    glMultiDrawArrays = dt.glMultiDrawArrays;
+    glMultiDrawElements = dt.glMultiDrawElements;
+    glSecondaryColorPointer = dt.glSecondaryColorPointer;
+    glBindBuffer = dt.glBindBuffer;
+    glDisableVertexAttribArray = dt.glDisableVertexAttribArray;
+    glEnableVertexAttribArray = dt.glEnableVertexAttribArray;
+    glGetVertexAttribPointerv = dt.glGetVertexAttribPointerv;
+    glGetVertexAttribdv = dt.glGetVertexAttribdv;
+    glGetVertexAttribfv = dt.glGetVertexAttribfv;
+    glGetVertexAttribiv = dt.glGetVertexAttribiv;
+    glVertexAttribPointer = dt.glVertexAttribPointer;
+    glDrawArraysInstanced = dt.glDrawArraysInstanced;
+    glDrawElementsInstanced = dt.glDrawElementsInstanced;
+    glMultiDrawArraysIndirectAMD = dt.glMultiDrawArraysIndirectAMD;
+    glMultiDrawElementsIndirectAMD = dt.glMultiDrawElementsIndirectAMD;
+    glDrawElementArrayAPPLE = dt.glDrawElementArrayAPPLE;
+    glMultiDrawElementArrayAPPLE = dt.glMultiDrawElementArrayAPPLE;
+    glDrawElementsBaseVertex = dt.glDrawElementsBaseVertex;
+    glDrawElementsInstancedBaseVertex = dt.glDrawElementsInstancedBaseVertex;
+    glMultiDrawElementsBaseVertex = dt.glMultiDrawElementsBaseVertex;
+    glDrawArraysIndirect = dt.glDrawArraysIndirect;
+    glDrawElementsIndirect = dt.glDrawElementsIndirect;
+    glDrawArraysInstancedARB = dt.glDrawArraysInstancedARB;
+    glDrawElementsInstancedARB = dt.glDrawElementsInstancedARB;
+    glMultiDrawArraysIndirect = dt.glMultiDrawArraysIndirect;
+    glMultiDrawElementsIndirect = dt.glMultiDrawElementsIndirect;
+    glClientActiveTextureARB = dt.glClientActiveTextureARB;
+    glGetInteger64v = dt.glGetInteger64v;
+    glBindVertexArray = dt.glBindVertexArray;
+    glDeleteVertexArrays = dt.glDeleteVertexArrays;
+    glGenVertexArrays = dt.glGenVertexArrays;
+    glIsVertexArray = dt.glIsVertexArray;
+    glBindBufferARB = dt.glBindBufferARB;
+    glDisableVertexAttribArrayARB = dt.glDisableVertexAttribArrayARB;
+    glEnableVertexAttribArrayARB = dt.glEnableVertexAttribArrayARB;
+    glGetVertexAttribPointervARB = dt.glGetVertexAttribPointervARB;
+    glGetVertexAttribdvARB = dt.glGetVertexAttribdvARB;
+    glGetVertexAttribfvARB = dt.glGetVertexAttribfvARB;
+    glGetVertexAttribivARB = dt.glGetVertexAttribivARB;
+    glVertexAttribPointerARB = dt.glVertexAttribPointerARB;
+    glDrawElementArrayATI = dt.glDrawElementArrayATI;
+    glDrawArraysInstancedEXT = dt.glDrawArraysInstancedEXT;
+    glDrawElementsInstancedEXT = dt.glDrawElementsInstancedEXT;
+    glFogCoordPointerEXT = dt.glFogCoordPointerEXT;
+    glMultiDrawArraysEXT = dt.glMultiDrawArraysEXT;
+    glMultiDrawElementsEXT = dt.glMultiDrawElementsEXT;
+    glSecondaryColorPointerEXT = dt.glSecondaryColorPointerEXT;
+    glColorPointerEXT = dt.glColorPointerEXT;
+    glDrawArraysEXT = dt.glDrawArraysEXT;
+    glNormalPointerEXT = dt.glNormalPointerEXT;
+    glTexCoordPointerEXT = dt.glTexCoordPointerEXT;
+    glVertexPointerEXT = dt.glVertexPointerEXT;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

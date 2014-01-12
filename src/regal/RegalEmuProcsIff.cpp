@@ -62,6 +62,8 @@ static void REGAL_CALL emuProcInterceptIff_glActiveTexture(GLenum texture)
   // prefix
   _context->iff->ShadowActiveTexture( texture );
 
+  _context->iff->orig.glActiveTexture(texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glActiveTextureARB(GLenum texture)
@@ -71,6 +73,8 @@ static void REGAL_CALL emuProcInterceptIff_glActiveTextureARB(GLenum texture)
 
   // prefix
   _context->iff->ShadowActiveTexture( texture );
+
+  _context->iff->orig.glActiveTextureARB(texture);
 
 }
 
@@ -102,6 +106,8 @@ static void REGAL_CALL emuProcInterceptIff_glBindBuffer(GLenum target, GLuint bu
   // prefix
   _context->iff->RestoreVao( _context );
 
+  _context->iff->orig.glBindBuffer(target, buffer);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glBindMultiTextureEXT(GLenum texunit, GLenum target, GLuint texture)
@@ -111,6 +117,8 @@ static void REGAL_CALL emuProcInterceptIff_glBindMultiTextureEXT(GLenum texunit,
 
   // prefix
   _context->iff->ShadowMultiTexBinding( texunit, target, texture );
+
+  _context->iff->orig.glBindMultiTextureEXT(texunit, target, texture);
 
 }
 
@@ -134,6 +142,8 @@ static void REGAL_CALL emuProcInterceptIff_glBindTexture(GLenum target, GLuint t
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
 
+  _context->iff->orig.glBindTexture(target, texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glBindTextureEXT(GLenum target, GLuint texture)
@@ -143,6 +153,8 @@ static void REGAL_CALL emuProcInterceptIff_glBindTextureEXT(GLenum target, GLuin
 
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
+
+  _context->iff->orig.glBindTextureEXT(target, texture);
 
 }
 
@@ -154,6 +166,8 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArray(GLuint array)
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
+  _context->iff->orig.glBindVertexArray(array);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glBindVertexArrayAPPLE(GLuint array)
@@ -163,6 +177,8 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArrayAPPLE(GLuint array)
 
   // prefix
   _context->iff->glBindVertexArray( _context, array );
+
+  _context->iff->orig.glBindVertexArrayAPPLE(array);
 
 }
 
@@ -174,6 +190,8 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArrayOES(GLuint array)
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
+  _context->iff->orig.glBindVertexArrayOES(array);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glClientActiveTexture(GLenum texture)
@@ -184,6 +202,8 @@ static void REGAL_CALL emuProcInterceptIff_glClientActiveTexture(GLenum texture)
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
 
+  _context->iff->orig.glClientActiveTexture(texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glClientActiveTextureARB(GLenum texture)
@@ -193,6 +213,8 @@ static void REGAL_CALL emuProcInterceptIff_glClientActiveTextureARB(GLenum textu
 
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
+
+  _context->iff->orig.glClientActiveTextureARB(texture);
 
 }
 
@@ -564,6 +586,8 @@ static void REGAL_CALL emuProcInterceptIff_glCopyTexImage2D(GLenum target, GLint
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
+  _context->iff->orig.glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+
 }
 
 static GLuint REGAL_CALL emuProcInterceptIff_glCreateShader(GLenum type)
@@ -624,6 +648,8 @@ static void REGAL_CALL emuProcInterceptIff_glDepthRange(GLclampd zNear, GLclampd
   // prefix
   _context->iff->DepthRange( GLfloat(zNear), GLfloat(zFar) );
 
+  _context->iff->orig.glDepthRange(zNear, zFar);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDisable(GLenum cap)
@@ -667,6 +693,8 @@ static void REGAL_CALL emuProcInterceptIff_glDisableVertexAttribArray(GLuint ind
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
 
+  _context->iff->orig.glDisableVertexAttribArray(index);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDisableVertexAttribArrayARB(GLuint index)
@@ -677,6 +705,8 @@ static void REGAL_CALL emuProcInterceptIff_glDisableVertexAttribArrayARB(GLuint 
   // prefix
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
+
+  _context->iff->orig.glDisableVertexAttribArrayARB(index);
 
 }
 
@@ -698,6 +728,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArrays(GLenum mode, GLint first
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawArrays(mode, first, count);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count)
@@ -707,6 +739,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysEXT(GLenum mode, GLint fi
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawArraysEXT(mode, first, count);
 
 }
 
@@ -718,6 +752,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysIndirect(GLenum mode, con
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawArraysIndirect(mode, indirect);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstanced(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
@@ -727,6 +763,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstanced(GLenum mode, GL
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawArraysInstanced(mode, start, count, primcount);
 
 }
 
@@ -738,6 +776,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstancedARB(GLenum mode,
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawArraysInstancedARB(mode, start, count, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
@@ -747,6 +787,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstancedEXT(GLenum mode,
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawArraysInstancedEXT(mode, start, count, primcount);
 
 }
 
@@ -758,6 +800,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementArrayAPPLE(GLenum mode, 
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawElementArrayAPPLE(mode, first, count);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawElementArrayATI(GLenum mode, GLsizei count)
@@ -767,6 +811,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementArrayATI(GLenum mode, GL
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawElementArrayATI(mode, count);
 
 }
 
@@ -778,6 +824,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElements(GLenum mode, GLsizei c
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawElements(mode, count, type, indices);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
@@ -787,6 +835,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsBaseVertex(GLenum mode,
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
 
 }
 
@@ -798,6 +848,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsIndirect(GLenum mode, G
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawElementsIndirect(mode, type, indirect);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
@@ -807,6 +859,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstanced(GLenum mode, 
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawElementsInstanced(mode, count, type, indices, primcount);
 
 }
 
@@ -818,6 +872,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedARB(GLenum mod
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
@@ -827,6 +883,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedBaseVertex(GLe
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
 
 }
 
@@ -838,6 +896,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedEXT(GLenum mod
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
@@ -847,6 +907,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementArrayAPPLE(GLenum m
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawRangeElementArrayAPPLE(mode, start, end, first, count);
 
 }
 
@@ -858,6 +920,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementArrayATI(GLenum mod
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawRangeElementArrayATI(mode, start, end, count);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
@@ -867,6 +931,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElements(GLenum mode, GLui
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawRangeElements(mode, start, end, count, type, indices);
 
 }
 
@@ -878,6 +944,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementsBaseVertex(GLenum 
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
@@ -887,6 +955,8 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementsEXT(GLenum mode, G
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glDrawRangeElementsEXT(mode, start, end, count, type, indices);
 
 }
 
@@ -951,6 +1021,8 @@ static void REGAL_CALL emuProcInterceptIff_glEnableVertexAttribArray(GLuint inde
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
 
+  _context->iff->orig.glEnableVertexAttribArray(index);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glEnableVertexAttribArrayARB(GLuint index)
@@ -961,6 +1033,8 @@ static void REGAL_CALL emuProcInterceptIff_glEnableVertexAttribArrayARB(GLuint i
   // prefix
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
+
+  _context->iff->orig.glEnableVertexAttribArrayARB(index);
 
 }
 
@@ -1238,6 +1312,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribPointerv(GLuint inde
   // prefix
   _context->iff->RestoreVao( _context );
 
+  _context->iff->orig.glGetVertexAttribPointerv(index, pname, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribPointervARB(GLuint index, GLenum pname, GLvoid **pointer)
@@ -1247,6 +1323,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribPointervARB(GLuint i
 
   // prefix
   _context->iff->RestoreVao( _context );
+
+  _context->iff->orig.glGetVertexAttribPointervARB(index, pname, pointer);
 
 }
 
@@ -1258,6 +1336,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribdv(GLuint index, GLe
   // prefix
   _context->iff->RestoreVao( _context );
 
+  _context->iff->orig.glGetVertexAttribdv(index, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribdvARB(GLuint index, GLenum pname, GLdouble *params)
@@ -1267,6 +1347,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribdvARB(GLuint index, 
 
   // prefix
   _context->iff->RestoreVao( _context );
+
+  _context->iff->orig.glGetVertexAttribdvARB(index, pname, params);
 
 }
 
@@ -1278,6 +1360,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribfv(GLuint index, GLe
   // prefix
   _context->iff->RestoreVao( _context );
 
+  _context->iff->orig.glGetVertexAttribfv(index, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribfvARB(GLuint index, GLenum pname, GLfloat *params)
@@ -1287,6 +1371,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribfvARB(GLuint index, 
 
   // prefix
   _context->iff->RestoreVao( _context );
+
+  _context->iff->orig.glGetVertexAttribfvARB(index, pname, params);
 
 }
 
@@ -1298,6 +1384,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribiv(GLuint index, GLe
   // prefix
   _context->iff->RestoreVao( _context );
 
+  _context->iff->orig.glGetVertexAttribiv(index, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribivARB(GLuint index, GLenum pname, GLint *params)
@@ -1307,6 +1395,8 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribivARB(GLuint index, 
 
   // prefix
   _context->iff->RestoreVao( _context );
+
+  _context->iff->orig.glGetVertexAttribivARB(index, pname, params);
 
 }
 
@@ -1822,6 +1912,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArrays(GLenum mode, const 
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glMultiDrawArrays(mode, first, count, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysEXT(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
@@ -1831,6 +1923,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysEXT(GLenum mode, con
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glMultiDrawArraysEXT(mode, first, count, primcount);
 
 }
 
@@ -1842,6 +1936,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysIndirect(GLenum mode
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -1851,6 +1947,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysIndirectAMD(GLenum m
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
 
 }
 
@@ -1862,6 +1960,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementArrayAPPLE(GLenum m
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
@@ -1871,6 +1971,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElements(GLenum mode, cons
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glMultiDrawElements(mode, count, type, indices, primcount);
 
 }
 
@@ -1882,6 +1984,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsBaseVertex(GLenum 
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsEXT(GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
@@ -1891,6 +1995,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsEXT(GLenum mode, c
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glMultiDrawElementsEXT(mode, count, type, indices, primcount);
 
 }
 
@@ -1902,6 +2008,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsIndirect(GLenum mo
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
@@ -1912,6 +2020,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsIndirectAMD(GLenum
   // prefix
   _context->iff->PreDraw( _context );
 
+  _context->iff->orig.glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
@@ -1921,6 +2031,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawRangeElementArrayAPPLE(GLe
 
   // prefix
   _context->iff->PreDraw( _context );
+
+  _context->iff->orig.glMultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount);
 
 }
 
@@ -2612,6 +2724,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage1DEXT(GLenum texunit, 
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
+  _context->iff->orig.glMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, format, type, pixels);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -2622,6 +2736,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage2DEXT(GLenum texunit, 
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
+  _context->iff->orig.glMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, format, type, pixels);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -2631,6 +2747,8 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage3DEXT(GLenum texunit, 
 
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
+
+  _context->iff->orig.glMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels);
 
 }
 
@@ -3737,6 +3855,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage1D(GLenum target, GLint lev
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
+  _context->iff->orig.glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3746,6 +3866,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2D(GLenum target, GLint lev
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
+
+  _context->iff->orig.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 
 }
 
@@ -3757,6 +3879,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2DMultisample(GLenum target
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
+  _context->iff->orig.glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glTexImage2DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations)
@@ -3766,6 +3890,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2DMultisampleCoverageNV(GLe
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
+
+  _context->iff->orig.glTexImage2DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
 
 }
 
@@ -3777,6 +3903,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3D(GLenum target, GLint lev
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
+  _context->iff->orig.glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glTexImage3DEXT(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3786,6 +3914,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DEXT(GLenum target, GLint 
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
+
+  _context->iff->orig.glTexImage3DEXT(target, level, internalformat, width, height, depth, border, format, type, pixels);
 
 }
 
@@ -3797,6 +3927,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DMultisample(GLenum target
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
+  _context->iff->orig.glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
@@ -3807,6 +3939,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DMultisampleCoverageNV(GLe
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
 
+  _context->iff->orig.glTexImage3DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3816,6 +3950,8 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage4DSGIS(GLenum target, GLint
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
+
+  _context->iff->orig.glTexImage4DSGIS(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
 
 }
 
@@ -3834,6 +3970,8 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage1DEXT(GLuint texture, G
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
+  _context->iff->orig.glTextureImage1DEXT(texture, target, level, internalformat, width, border, format, type, pixels);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3844,6 +3982,8 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage2DEXT(GLuint texture, G
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
+  _context->iff->orig.glTextureImage2DEXT(texture, target, level, internalformat, width, height, border, format, type, pixels);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -3853,6 +3993,8 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage3DEXT(GLuint texture, G
 
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
+
+  _context->iff->orig.glTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, format, type, pixels);
 
 }
 
@@ -5114,6 +5256,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1d(GLuint index, GLdoub
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
+  _context->iff->orig.glVertexAttrib1d(index, x);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dARB(GLuint index, GLdouble x)
@@ -5123,6 +5267,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dARB(GLuint index, GLd
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
+
+  _context->iff->orig.glVertexAttrib1dARB(index, x);
 
 }
 
@@ -5134,6 +5280,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dv(GLuint index, const
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib1dv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dvARB(GLuint index, const GLdouble *v)
@@ -5143,6 +5291,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib1dvARB(index, v);
 
 }
 
@@ -5154,6 +5304,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1f(GLuint index, GLfloa
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
+  _context->iff->orig.glVertexAttrib1f(index, x);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fARB(GLuint index, GLfloat x)
@@ -5163,6 +5315,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fARB(GLuint index, GLf
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
+
+  _context->iff->orig.glVertexAttrib1fARB(index, x);
 
 }
 
@@ -5174,6 +5328,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fv(GLuint index, const
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib1fv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fvARB(GLuint index, const GLfloat *v)
@@ -5183,6 +5339,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib1fvARB(index, v);
 
 }
 
@@ -5194,6 +5352,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1s(GLuint index, GLshor
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
+  _context->iff->orig.glVertexAttrib1s(index, x);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1sARB(GLuint index, GLshort x)
@@ -5203,6 +5363,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1sARB(GLuint index, GLs
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
+
+  _context->iff->orig.glVertexAttrib1sARB(index, x);
 
 }
 
@@ -5214,6 +5376,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1sv(GLuint index, const
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib1sv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1svARB(GLuint index, const GLshort *v)
@@ -5223,6 +5387,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1svARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib1svARB(index, v);
 
 }
 
@@ -5234,6 +5400,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2d(GLuint index, GLdoub
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
+  _context->iff->orig.glVertexAttrib2d(index, x, y);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y)
@@ -5243,6 +5411,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dARB(GLuint index, GLd
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
+
+  _context->iff->orig.glVertexAttrib2dARB(index, x, y);
 
 }
 
@@ -5254,6 +5424,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dv(GLuint index, const
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib2dv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dvARB(GLuint index, const GLdouble *v)
@@ -5263,6 +5435,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib2dvARB(index, v);
 
 }
 
@@ -5274,6 +5448,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2f(GLuint index, GLfloa
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
+  _context->iff->orig.glVertexAttrib2f(index, x, y);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y)
@@ -5283,6 +5459,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fARB(GLuint index, GLf
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
+
+  _context->iff->orig.glVertexAttrib2fARB(index, x, y);
 
 }
 
@@ -5294,6 +5472,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fv(GLuint index, const
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib2fv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fvARB(GLuint index, const GLfloat *v)
@@ -5303,6 +5483,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib2fvARB(index, v);
 
 }
 
@@ -5314,6 +5496,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2s(GLuint index, GLshor
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
+  _context->iff->orig.glVertexAttrib2s(index, x, y);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y)
@@ -5323,6 +5507,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2sARB(GLuint index, GLs
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
+
+  _context->iff->orig.glVertexAttrib2sARB(index, x, y);
 
 }
 
@@ -5334,6 +5520,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2sv(GLuint index, const
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib2sv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2svARB(GLuint index, const GLshort *v)
@@ -5343,6 +5531,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2svARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib2svARB(index, v);
 
 }
 
@@ -5354,6 +5544,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3d(GLuint index, GLdoub
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
+  _context->iff->orig.glVertexAttrib3d(index, x, y, z);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z)
@@ -5363,6 +5555,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dARB(GLuint index, GLd
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
+
+  _context->iff->orig.glVertexAttrib3dARB(index, x, y, z);
 
 }
 
@@ -5374,6 +5568,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dv(GLuint index, const
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib3dv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dvARB(GLuint index, const GLdouble *v)
@@ -5383,6 +5579,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib3dvARB(index, v);
 
 }
 
@@ -5394,6 +5592,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3f(GLuint index, GLfloa
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
+  _context->iff->orig.glVertexAttrib3f(index, x, y, z);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z)
@@ -5403,6 +5603,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fARB(GLuint index, GLf
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
+
+  _context->iff->orig.glVertexAttrib3fARB(index, x, y, z);
 
 }
 
@@ -5414,6 +5616,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fv(GLuint index, const
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib3fv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fvARB(GLuint index, const GLfloat *v)
@@ -5423,6 +5627,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib3fvARB(index, v);
 
 }
 
@@ -5434,6 +5640,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3s(GLuint index, GLshor
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
+  _context->iff->orig.glVertexAttrib3s(index, x, y, z);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z)
@@ -5443,6 +5651,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3sARB(GLuint index, GLs
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
+
+  _context->iff->orig.glVertexAttrib3sARB(index, x, y, z);
 
 }
 
@@ -5454,6 +5664,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3sv(GLuint index, const
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib3sv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3svARB(GLuint index, const GLshort *v)
@@ -5463,6 +5675,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3svARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib3svARB(index, v);
 
 }
 
@@ -5474,6 +5688,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nbv(GLuint index, cons
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4Nbv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NbvARB(GLuint index, const GLbyte *v)
@@ -5483,6 +5699,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NbvARB(GLuint index, c
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4NbvARB(index, v);
 
 }
 
@@ -5494,6 +5712,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Niv(GLuint index, cons
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4Niv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NivARB(GLuint index, const GLint *v)
@@ -5503,6 +5723,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NivARB(GLuint index, c
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4NivARB(index, v);
 
 }
 
@@ -5514,6 +5736,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nsv(GLuint index, cons
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4Nsv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NsvARB(GLuint index, const GLshort *v)
@@ -5523,6 +5747,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NsvARB(GLuint index, c
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4NsvARB(index, v);
 
 }
 
@@ -5534,6 +5760,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nub(GLuint index, GLub
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
 
+  _context->iff->orig.glVertexAttrib4Nub(index, x, y, z, w);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
@@ -5543,6 +5771,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubARB(GLuint index, G
 
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
+
+  _context->iff->orig.glVertexAttrib4NubARB(index, x, y, z, w);
 
 }
 
@@ -5554,6 +5784,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nubv(GLuint index, con
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4Nubv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubvARB(GLuint index, const GLubyte *v)
@@ -5563,6 +5795,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubvARB(GLuint index, 
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4NubvARB(index, v);
 
 }
 
@@ -5574,6 +5808,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nusv(GLuint index, con
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4Nusv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NusvARB(GLuint index, const GLushort *v)
@@ -5583,6 +5819,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NusvARB(GLuint index, 
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4NusvARB(index, v);
 
 }
 
@@ -5594,6 +5832,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4bv(GLuint index, const
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4bv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4bvARB(GLuint index, const GLbyte *v)
@@ -5603,6 +5843,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4bvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4bvARB(index, v);
 
 }
 
@@ -5614,6 +5856,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4d(GLuint index, GLdoub
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
+  _context->iff->orig.glVertexAttrib4d(index, x, y, z, w);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
@@ -5623,6 +5867,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dARB(GLuint index, GLd
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
+
+  _context->iff->orig.glVertexAttrib4dARB(index, x, y, z, w);
 
 }
 
@@ -5634,6 +5880,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dv(GLuint index, const
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4dv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dvARB(GLuint index, const GLdouble *v)
@@ -5643,6 +5891,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4dvARB(index, v);
 
 }
 
@@ -5654,6 +5904,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4f(GLuint index, GLfloa
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
+  _context->iff->orig.glVertexAttrib4f(index, x, y, z, w);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
@@ -5663,6 +5915,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fARB(GLuint index, GLf
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
+
+  _context->iff->orig.glVertexAttrib4fARB(index, x, y, z, w);
 
 }
 
@@ -5674,6 +5928,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fv(GLuint index, const
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4fv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fvARB(GLuint index, const GLfloat *v)
@@ -5683,6 +5939,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fvARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4fvARB(index, v);
 
 }
 
@@ -5694,6 +5952,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4iv(GLuint index, const
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4iv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ivARB(GLuint index, const GLint *v)
@@ -5703,6 +5963,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ivARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4ivARB(index, v);
 
 }
 
@@ -5714,6 +5976,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4s(GLuint index, GLshor
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
+  _context->iff->orig.glVertexAttrib4s(index, x, y, z, w);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
@@ -5723,6 +5987,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4sARB(GLuint index, GLs
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
+
+  _context->iff->orig.glVertexAttrib4sARB(index, x, y, z, w);
 
 }
 
@@ -5734,6 +6000,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4sv(GLuint index, const
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4sv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4svARB(GLuint index, const GLshort *v)
@@ -5743,6 +6011,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4svARB(GLuint index, co
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4svARB(index, v);
 
 }
 
@@ -5754,6 +6024,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ubv(GLuint index, cons
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4ubv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ubvARB(GLuint index, const GLubyte *v)
@@ -5763,6 +6035,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ubvARB(GLuint index, c
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4ubvARB(index, v);
 
 }
 
@@ -5774,6 +6048,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4usv(GLuint index, cons
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
+  _context->iff->orig.glVertexAttrib4usv(index, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4usvARB(GLuint index, const GLushort *v)
@@ -5783,6 +6059,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4usvARB(GLuint index, c
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
+
+  _context->iff->orig.glVertexAttrib4usvARB(index, v);
 
 }
 
@@ -5794,6 +6072,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttribPointer(GLuint index, G
   // prefix
   _context->iff->RestoreVao( _context );
 
+  _context->iff->orig.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+
 }
 
 static void REGAL_CALL emuProcInterceptIff_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
@@ -5803,6 +6083,8 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttribPointerARB(GLuint index
 
   // prefix
   _context->iff->RestoreVao( _context );
+
+  _context->iff->orig.glVertexAttribPointerARB(index, size, type, normalized, stride, pointer);
 
 }
 
@@ -5833,6 +6115,8 @@ static void REGAL_CALL emuProcInterceptIff_glViewport(GLint x, GLint y, GLsizei 
 
   // prefix
   _context->iff->Viewport( x, y, width, height );
+
+  _context->iff->orig.glViewport(x, y, width, height);
 
 }
 

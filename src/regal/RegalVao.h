@@ -49,6 +49,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
 #include "RegalSharedMap.h"
+#include "RegalEmuProcsVao.h"
 
 REGAL_GLOBAL_END
 
@@ -110,11 +111,13 @@ struct Vao
   GLuint ffAttrTexEnd;
   GLuint ffAttrNumTex;
   GLuint max_vertex_attribs;
+  EmuProcsOriginateVao orig;
 
   void Init( RegalContext &ctx )
   {
     maxName = 0;
     clientActiveTexture = GL_TEXTURE0;
+    orig.Initialize( ctx.dispatchGL );
 
     max_vertex_attribs = ctx.emuInfo->gl_max_vertex_attribs;
     RegalAssert( max_vertex_attribs <= REGAL_EMU_MAX_VERTEX_ATTRIBS );

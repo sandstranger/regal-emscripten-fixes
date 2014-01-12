@@ -57,6 +57,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
+#include "RegalEmuProcsPpca.h"
 
 REGAL_GLOBAL_END
 
@@ -74,6 +75,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
   void Init(RegalContext &ctx)
   {
+    orig.Initialize( ctx.dispatchGL );
     Reset(ctx);
   }
 
@@ -316,6 +318,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
   std::vector<GLbitfield>                maskStack;
   std::vector<ClientState::VertexArray>  vertexArrayStack;
   std::vector<ClientState::PixelStore>   pixelStoreStack;
+  EmuProcsOriginatePpca orig;
 };
 
 }

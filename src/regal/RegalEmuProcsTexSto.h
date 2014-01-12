@@ -57,6 +57,39 @@ REGAL_NAMESPACE_BEGIN
 
 void EmuProcsInterceptTexSto( Dispatch::GL & dt );
 
+struct EmuProcsOriginateTexSto {
+
+  EmuProcsOriginateTexSto() {
+    memset(this, 0, sizeof( *this ) );
+  }
+
+  PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
+  PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
+  PFNGLDELETETEXTURESPROC glDeleteTextures;
+  PFNGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
+  PFNGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
+  PFNGLTEXSTORAGE1DPROC glTexStorage1D;
+  PFNGLTEXSTORAGE2DPROC glTexStorage2D;
+  PFNGLTEXSTORAGE3DPROC glTexStorage3D;
+  PFNGLTEXSTORAGE1DEXTPROC glTexStorage1DEXT;
+  PFNGLTEXSTORAGE2DEXTPROC glTexStorage2DEXT;
+  PFNGLTEXSTORAGE3DEXTPROC glTexStorage3DEXT;
+
+  void Initialize( Dispatch::GL & dt ) {
+    glGetTexParameterfv = dt.glGetTexParameterfv;
+    glGetTexParameteriv = dt.glGetTexParameteriv;
+    glDeleteTextures = dt.glDeleteTextures;
+    glGetTexParameterIiv = dt.glGetTexParameterIiv;
+    glGetTexParameterIuiv = dt.glGetTexParameterIuiv;
+    glTexStorage1D = dt.glTexStorage1D;
+    glTexStorage2D = dt.glTexStorage2D;
+    glTexStorage3D = dt.glTexStorage3D;
+    glTexStorage1DEXT = dt.glTexStorage1DEXT;
+    glTexStorage2DEXT = dt.glTexStorage2DEXT;
+    glTexStorage3DEXT = dt.glTexStorage3DEXT;
+  }
+};
+
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION

@@ -62,6 +62,8 @@ static void REGAL_CALL emuProcInterceptPpa_glActiveTexture(GLenum texture)
   // prefix
   _context->ppa->glActiveTexture( texture );
 
+  _context->ppa->orig.glActiveTexture(texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glActiveTextureARB(GLenum texture)
@@ -71,6 +73,8 @@ static void REGAL_CALL emuProcInterceptPpa_glActiveTextureARB(GLenum texture)
 
   // prefix
   _context->ppa->glActiveTexture( texture );
+
+  _context->ppa->orig.glActiveTextureARB(texture);
 
 }
 
@@ -82,6 +86,8 @@ static void REGAL_CALL emuProcInterceptPpa_glAlphaFunc(GLenum func, GLclampf ref
   // prefix
   _context->ppa->glAlphaFunc( func, ref );
 
+  _context->ppa->orig.glAlphaFunc(func, ref);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
@@ -91,6 +97,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendColor(GLclampf red, GLclampf g
 
   // prefix
   _context->ppa->glBlendColor( red, green, blue, alpha );
+
+  _context->ppa->orig.glBlendColor(red, green, blue, alpha);
 
 }
 
@@ -102,6 +110,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquation(GLenum mode)
   // prefix
   _context->ppa->glBlendEquation( mode );
 
+  _context->ppa->orig.glBlendEquation(mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha)
@@ -111,6 +121,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquationSeparate(GLenum modeRG
 
   // prefix
   _context->ppa->glBlendEquationSeparate( modeRGB, modeAlpha );
+
+  _context->ppa->orig.glBlendEquationSeparate(modeRGB, modeAlpha);
 
 }
 
@@ -122,6 +134,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquationSeparatei(GLuint buf, 
   // prefix
   _context->ppa->glBlendEquationSeparatei( buf, modeRGB, modeAlpha );
 
+  _context->ppa->orig.glBlendEquationSeparatei(buf, modeRGB, modeAlpha);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendEquationi(GLuint buf, GLenum mode)
@@ -131,6 +145,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquationi(GLuint buf, GLenum m
 
   // prefix
   _context->ppa->glBlendEquationi( buf, mode );
+
+  _context->ppa->orig.glBlendEquationi(buf, mode);
 
 }
 
@@ -142,6 +158,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFunc(GLenum sfactor, GLenum df
   // prefix
   _context->ppa->glBlendFunc( sfactor, dfactor );
 
+  _context->ppa->orig.glBlendFunc(sfactor, dfactor);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
@@ -151,6 +169,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFuncSeparate(GLenum sfactorRGB
 
   // prefix
   _context->ppa->glBlendFuncSeparate( sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
+
+  _context->ppa->orig.glBlendFuncSeparate(sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
 
 }
 
@@ -162,6 +182,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFuncSeparatei(GLuint buf, GLen
   // prefix
   _context->ppa->glBlendFuncSeparatei( buf, srcRGB, dstRGB, srcAlpha, dstAlpha );
 
+  _context->ppa->orig.glBlendFuncSeparatei(buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendFunci(GLuint buf, GLenum src, GLenum dst)
@@ -171,6 +193,8 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFunci(GLuint buf, GLenum src, 
 
   // prefix
   _context->ppa->glBlendFunci( buf, src, dst );
+
+  _context->ppa->orig.glBlendFunci(buf, src, dst);
 
 }
 
@@ -182,6 +206,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClampColor(GLenum target, GLenum cl
   // prefix
   _context->ppa->glClampColor( target, clamp );
 
+  _context->ppa->orig.glClampColor(target, clamp);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
@@ -191,6 +217,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClearAccum(GLfloat red, GLfloat gre
 
   // prefix
   _context->ppa->glClearAccum( red, green, blue, alpha );
+
+  _context->ppa->orig.glClearAccum(red, green, blue, alpha);
 
 }
 
@@ -202,6 +230,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClearColor(GLclampf red, GLclampf g
   // prefix
   _context->ppa->glClearColor( red, green, blue, alpha );
 
+  _context->ppa->orig.glClearColor(red, green, blue, alpha);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClearDepth(GLclampd depth)
@@ -211,6 +241,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClearDepth(GLclampd depth)
 
   // prefix
   _context->ppa->glClearDepth( depth );
+
+  _context->ppa->orig.glClearDepth(depth);
 
 }
 
@@ -222,6 +254,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClearDepthf(GLclampf d)
   // prefix
   _context->ppa->glClearDepth( d );
 
+  _context->ppa->orig.glClearDepthf(d);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClearIndex(GLfloat c)
@@ -231,6 +265,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClearIndex(GLfloat c)
 
   // prefix
   _context->ppa->glClearIndex( c );
+
+  _context->ppa->orig.glClearIndex(c);
 
 }
 
@@ -242,6 +278,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClearStencil(GLint s)
   // prefix
   _context->ppa->glClearStencil( s );
 
+  _context->ppa->orig.glClearStencil(s);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClipPlane(GLenum plane, const GLdouble *equation)
@@ -251,6 +289,8 @@ static void REGAL_CALL emuProcInterceptPpa_glClipPlane(GLenum plane, const GLdou
 
   // prefix
   _context->ppa->glClipPlane( plane, equation );
+
+  _context->ppa->orig.glClipPlane(plane, equation);
 
 }
 
@@ -262,6 +302,8 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMask(GLboolean red, GLboolean 
   // prefix
   _context->ppa->glColorMask( red, green, blue, alpha );
 
+  _context->ppa->orig.glColorMask(red, green, blue, alpha);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
@@ -271,6 +313,8 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMaski(GLuint index, GLboolean 
 
   // prefix
   _context->ppa->glColorMaski( index, r, g, b, a );
+
+  _context->ppa->orig.glColorMaski(index, r, g, b, a);
 
 }
 
@@ -282,6 +326,8 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMaterial(GLenum face, GLenum m
   // prefix
   _context->ppa->glColorMaterial( face, mode );
 
+  _context->ppa->orig.glColorMaterial(face, mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glColorTableParameterfv(GLenum target, GLenum pname, const GLfloat *params)
@@ -291,6 +337,8 @@ static void REGAL_CALL emuProcInterceptPpa_glColorTableParameterfv(GLenum target
 
   // prefix
   _context->ppa->glColorTableParameterv( target, pname, params );
+
+  _context->ppa->orig.glColorTableParameterfv(target, pname, params);
 
 }
 
@@ -302,6 +350,8 @@ static void REGAL_CALL emuProcInterceptPpa_glColorTableParameteriv(GLenum target
   // prefix
   _context->ppa->glColorTableParameterv( target, pname, params );
 
+  _context->ppa->orig.glColorTableParameteriv(target, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params)
@@ -311,6 +361,8 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameterf(GLenum target
 
   // prefix
   _context->ppa->glConvolutionParameter( target, pname, params );
+
+  _context->ppa->orig.glConvolutionParameterf(target, pname, params);
 
 }
 
@@ -322,6 +374,8 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameterfv(GLenum targe
   // prefix
   _context->ppa->glConvolutionParameterv( target, pname, params );
 
+  _context->ppa->orig.glConvolutionParameterfv(target, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameteri(GLenum target, GLenum pname, GLint params)
@@ -331,6 +385,8 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameteri(GLenum target
 
   // prefix
   _context->ppa->glConvolutionParameter( target, pname, params );
+
+  _context->ppa->orig.glConvolutionParameteri(target, pname, params);
 
 }
 
@@ -342,6 +398,8 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameteriv(GLenum targe
   // prefix
   _context->ppa->glConvolutionParameterv( target, pname, params );
 
+  _context->ppa->orig.glConvolutionParameteriv(target, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glCullFace(GLenum mode)
@@ -351,6 +409,8 @@ static void REGAL_CALL emuProcInterceptPpa_glCullFace(GLenum mode)
 
   // prefix
   _context->ppa->glCullFace( mode );
+
+  _context->ppa->orig.glCullFace(mode);
 
 }
 
@@ -362,6 +422,8 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthFunc(GLenum func)
   // prefix
   _context->ppa->glDepthFunc( func );
 
+  _context->ppa->orig.glDepthFunc(func);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDepthMask(GLboolean flag)
@@ -371,6 +433,8 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthMask(GLboolean flag)
 
   // prefix
   _context->ppa->glDepthMask( flag );
+
+  _context->ppa->orig.glDepthMask(flag);
 
 }
 
@@ -382,6 +446,8 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRange(GLclampd zNear, GLclampd
   // prefix
   _context->ppa->glDepthRange( zNear, zFar );
 
+  _context->ppa->orig.glDepthRange(zNear, zFar);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDepthRangeArrayv(GLuint first, GLsizei count, const GLclampd *v)
@@ -391,6 +457,8 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRangeArrayv(GLuint first, GLsi
 
   // prefix
   _context->ppa->glDepthRangeArrayv( first, count, v );
+
+  _context->ppa->orig.glDepthRangeArrayv(first, count, v);
 
 }
 
@@ -402,6 +470,8 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRangeIndexed(GLuint index, GLc
   // prefix
   _context->ppa->glDepthRangeIndexed( index, n, f );
 
+  _context->ppa->orig.glDepthRangeIndexed(index, n, f);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDepthRangef(GLclampf n, GLclampf f)
@@ -411,6 +481,8 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRangef(GLclampf n, GLclampf f)
 
   // prefix
   _context->ppa->glDepthRange( n, f );
+
+  _context->ppa->orig.glDepthRangef(n, f);
 
 }
 
@@ -521,6 +593,8 @@ static void REGAL_CALL emuProcInterceptPpa_glFrontFace(GLenum mode)
 
   // prefix
   _context->ppa->glFrontFace( mode );
+
+  _context->ppa->orig.glFrontFace(mode);
 
 }
 
@@ -940,6 +1014,8 @@ static void REGAL_CALL emuProcInterceptPpa_glHint(GLenum target, GLenum mode)
   // prefix
   _context->ppa->glHint( target, mode );
 
+  _context->ppa->orig.glHint(target, mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glIndexMask(GLuint mask)
@@ -949,6 +1025,8 @@ static void REGAL_CALL emuProcInterceptPpa_glIndexMask(GLuint mask)
 
   // prefix
   _context->ppa->glIndexMask( mask );
+
+  _context->ppa->orig.glIndexMask(mask);
 
 }
 
@@ -990,6 +1068,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModelf(GLenum pname, GLfloat p
   // prefix
   _context->ppa->glLightModel( pname, param );
 
+  _context->ppa->orig.glLightModelf(pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLightModelfv(GLenum pname, const GLfloat *params)
@@ -999,6 +1079,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModelfv(GLenum pname, const GL
 
   // prefix
   _context->ppa->glLightModelv( pname, params );
+
+  _context->ppa->orig.glLightModelfv(pname, params);
 
 }
 
@@ -1010,6 +1092,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModeli(GLenum pname, GLint par
   // prefix
   _context->ppa->glLightModel( pname, param );
 
+  _context->ppa->orig.glLightModeli(pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLightModeliv(GLenum pname, const GLint *params)
@@ -1019,6 +1103,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModeliv(GLenum pname, const GL
 
   // prefix
   _context->ppa->glLightModelv( pname, params );
+
+  _context->ppa->orig.glLightModeliv(pname, params);
 
 }
 
@@ -1030,6 +1116,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLightf(GLenum light, GLenum pname, 
   // prefix
   _context->ppa->glLight( light, pname, param );
 
+  _context->ppa->orig.glLightf(light, pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLightfv(GLenum light, GLenum pname, const GLfloat *params)
@@ -1039,6 +1127,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLightfv(GLenum light, GLenum pname,
 
   // prefix
   _context->ppa->glLightv( light, pname, params );
+
+  _context->ppa->orig.glLightfv(light, pname, params);
 
 }
 
@@ -1050,6 +1140,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLighti(GLenum light, GLenum pname, 
   // prefix
   _context->ppa->glLight( light, pname, param );
 
+  _context->ppa->orig.glLighti(light, pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLightiv(GLenum light, GLenum pname, const GLint *params)
@@ -1059,6 +1151,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLightiv(GLenum light, GLenum pname,
 
   // prefix
   _context->ppa->glLightv( light, pname, params );
+
+  _context->ppa->orig.glLightiv(light, pname, params);
 
 }
 
@@ -1070,6 +1164,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLineStipple(GLint factor, GLushort 
   // prefix
   _context->ppa->glLineStipple( factor, pattern );
 
+  _context->ppa->orig.glLineStipple(factor, pattern);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLineWidth(GLfloat width)
@@ -1079,6 +1175,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLineWidth(GLfloat width)
 
   // prefix
   _context->ppa->glLineWidth( width );
+
+  _context->ppa->orig.glLineWidth(width);
 
 }
 
@@ -1090,6 +1188,8 @@ static void REGAL_CALL emuProcInterceptPpa_glListBase(GLuint base)
   // prefix
   _context->ppa->glListBase( base );
 
+  _context->ppa->orig.glListBase(base);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLogicOp(GLenum opcode)
@@ -1099,6 +1199,8 @@ static void REGAL_CALL emuProcInterceptPpa_glLogicOp(GLenum opcode)
 
   // prefix
   _context->ppa->glLogicOp( opcode );
+
+  _context->ppa->orig.glLogicOp(opcode);
 
 }
 
@@ -1110,6 +1212,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid1d(GLint un, GLdouble u1, GL
   // prefix
   _context->ppa->glMapGrid1( un, u1, u2 );
 
+  _context->ppa->orig.glMapGrid1d(un, u1, u2);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
@@ -1119,6 +1223,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid1f(GLint un, GLfloat u1, GLf
 
   // prefix
   _context->ppa->glMapGrid1( un, u1, u2 );
+
+  _context->ppa->orig.glMapGrid1f(un, u1, u2);
 
 }
 
@@ -1130,6 +1236,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid2d(GLint un, GLdouble u1, GL
   // prefix
   _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
 
+  _context->ppa->orig.glMapGrid2d(un, u1, u2, vn, v1, v2);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
@@ -1139,6 +1247,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid2f(GLint un, GLfloat u1, GLf
 
   // prefix
   _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
+
+  _context->ppa->orig.glMapGrid2f(un, u1, u2, vn, v1, v2);
 
 }
 
@@ -1150,6 +1260,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialf(GLenum face, GLenum pname
   // prefix
   _context->ppa->glMaterial( face, pname, param );
 
+  _context->ppa->orig.glMaterialf(face, pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMaterialfv(GLenum face, GLenum pname, const GLfloat *params)
@@ -1159,6 +1271,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialfv(GLenum face, GLenum pnam
 
   // prefix
   _context->ppa->glMaterialv( face, pname, params );
+
+  _context->ppa->orig.glMaterialfv(face, pname, params);
 
 }
 
@@ -1170,6 +1284,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMateriali(GLenum face, GLenum pname
   // prefix
   _context->ppa->glMaterial( face, pname, param );
 
+  _context->ppa->orig.glMateriali(face, pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMaterialiv(GLenum face, GLenum pname, const GLint *params)
@@ -1179,6 +1295,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialiv(GLenum face, GLenum pnam
 
   // prefix
   _context->ppa->glMaterialv( face, pname, params );
+
+  _context->ppa->orig.glMaterialiv(face, pname, params);
 
 }
 
@@ -1190,6 +1308,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMatrixMode(GLenum mode)
   // prefix
   _context->ppa->glMatrixMode( mode );
 
+  _context->ppa->orig.glMatrixMode(mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMinSampleShading(GLclampf value)
@@ -1199,6 +1319,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMinSampleShading(GLclampf value)
 
   // prefix
   _context->ppa->glMinSampleShading( value );
+
+  _context->ppa->orig.glMinSampleShading(value);
 
 }
 
@@ -1210,6 +1332,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvfEXT(GLenum texunit, GLe
   // prefix
   _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
+  _context->ppa->orig.glMultiTexEnvfEXT(texunit, target, pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
@@ -1219,6 +1343,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvfvEXT(GLenum texunit, GL
 
   // prefix
   _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
+
+  _context->ppa->orig.glMultiTexEnvfvEXT(texunit, target, pname, params);
 
 }
 
@@ -1230,6 +1356,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnviEXT(GLenum texunit, GLe
   // prefix
   _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
+  _context->ppa->orig.glMultiTexEnviEXT(texunit, target, pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *params)
@@ -1239,6 +1367,8 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvivEXT(GLenum texunit, GL
 
   // prefix
   _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
+
+  _context->ppa->orig.glMultiTexEnvivEXT(texunit, target, pname, params);
 
 }
 
@@ -1250,6 +1380,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPixelTransferf(GLenum pname, GLfloa
   // prefix
   _context->ppa->glPixelTransfer( pname, param );
 
+  _context->ppa->orig.glPixelTransferf(pname, param);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPixelTransferi(GLenum pname, GLint param)
@@ -1259,6 +1391,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPixelTransferi(GLenum pname, GLint 
 
   // prefix
   _context->ppa->glPixelTransfer( pname, param );
+
+  _context->ppa->orig.glPixelTransferi(pname, param);
 
 }
 
@@ -1270,6 +1404,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPixelZoom(GLfloat xfactor, GLfloat 
   // prefix
   _context->ppa->glPixelZoom( xfactor, yfactor );
 
+  _context->ppa->orig.glPixelZoom(xfactor, yfactor);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPointParameterf(GLenum pname, GLfloat param)
@@ -1279,6 +1415,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameterf(GLenum pname, GLflo
 
   // prefix
   _context->ppa->glPointParameter( pname, param );
+
+  _context->ppa->orig.glPointParameterf(pname, param);
 
 }
 
@@ -1290,6 +1428,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameterfv(GLenum pname, cons
   // prefix
   _context->ppa->glPointParameterv( pname, params );
 
+  _context->ppa->orig.glPointParameterfv(pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPointParameteri(GLenum pname, GLint param)
@@ -1299,6 +1439,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameteri(GLenum pname, GLint
 
   // prefix
   _context->ppa->glPointParameter( pname, param );
+
+  _context->ppa->orig.glPointParameteri(pname, param);
 
 }
 
@@ -1310,6 +1452,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameteriv(GLenum pname, cons
   // prefix
   _context->ppa->glPointParameterv( pname, params );
 
+  _context->ppa->orig.glPointParameteriv(pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPointSize(GLfloat size)
@@ -1319,6 +1463,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPointSize(GLfloat size)
 
   // prefix
   _context->ppa->glPointSize( size );
+
+  _context->ppa->orig.glPointSize(size);
 
 }
 
@@ -1330,6 +1476,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPolygonMode(GLenum face, GLenum mod
   // prefix
   _context->ppa->glPolygonMode( face, mode );
 
+  _context->ppa->orig.glPolygonMode(face, mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPolygonOffset(GLfloat factor, GLfloat units)
@@ -1340,6 +1488,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPolygonOffset(GLfloat factor, GLflo
   // prefix
   _context->ppa->glPolygonOffset( factor, units );
 
+  _context->ppa->orig.glPolygonOffset(factor, units);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPolygonStipple(const GLubyte *mask)
@@ -1349,6 +1499,8 @@ static void REGAL_CALL emuProcInterceptPpa_glPolygonStipple(const GLubyte *mask)
 
   // prefix
   _context->ppa->glPolygonStipple( mask );
+
+  _context->ppa->orig.glPolygonStipple(mask);
 
 }
 
@@ -1370,6 +1522,8 @@ static void REGAL_CALL emuProcInterceptPpa_glProvokingVertex(GLenum mode)
   // prefix
   _context->ppa->glProvokingVertex( mode );
 
+  _context->ppa->orig.glProvokingVertex(mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPushAttrib(GLbitfield mask)
@@ -1390,6 +1544,8 @@ static void REGAL_CALL emuProcInterceptPpa_glReadBuffer(GLenum mode)
   // prefix
   _context->ppa->glReadBuffer( mode );
 
+  _context->ppa->orig.glReadBuffer(mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glSampleCoverage(GLclampf value, GLboolean invert)
@@ -1399,6 +1555,8 @@ static void REGAL_CALL emuProcInterceptPpa_glSampleCoverage(GLclampf value, GLbo
 
   // prefix
   _context->ppa->glSampleCoverage( value, invert );
+
+  _context->ppa->orig.glSampleCoverage(value, invert);
 
 }
 
@@ -1410,6 +1568,8 @@ static void REGAL_CALL emuProcInterceptPpa_glScissor(GLint x, GLint y, GLsizei w
   // prefix
   _context->ppa->glScissor( x, y, width, height );
 
+  _context->ppa->orig.glScissor(x, y, width, height);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glScissorArrayv(GLuint first, GLsizei count, const GLint *v)
@@ -1419,6 +1579,8 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorArrayv(GLuint first, GLsizei
 
   // prefix
   _context->ppa->glScissorArrayv( first, count, v );
+
+  _context->ppa->orig.glScissorArrayv(first, count, v);
 
 }
 
@@ -1430,6 +1592,8 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorIndexed(GLuint index, GLint 
   // prefix
   _context->ppa->glScissorIndexed( index, left, bottom, width, height );
 
+  _context->ppa->orig.glScissorIndexed(index, left, bottom, width, height);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glScissorIndexedv(GLuint index, const GLint *v)
@@ -1439,6 +1603,8 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorIndexedv(GLuint index, const
 
   // prefix
   _context->ppa->glScissorIndexedv( index, v );
+
+  _context->ppa->orig.glScissorIndexedv(index, v);
 
 }
 
@@ -1450,6 +1616,8 @@ static void REGAL_CALL emuProcInterceptPpa_glShadeModel(GLenum mode)
   // prefix
   _context->ppa->glShadeModel( mode );
 
+  _context->ppa->orig.glShadeModel(mode);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glStencilFunc(GLenum func, GLint ref, GLuint mask)
@@ -1459,6 +1627,8 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilFunc(GLenum func, GLint ref,
 
   // prefix
   _context->ppa->glStencilFunc( func, ref, mask );
+
+  _context->ppa->orig.glStencilFunc(func, ref, mask);
 
 }
 
@@ -1470,6 +1640,8 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilFuncSeparate(GLenum face, GL
   // prefix
   _context->ppa->glStencilFuncSeparate( face, func, ref, mask );
 
+  _context->ppa->orig.glStencilFuncSeparate(face, func, ref, mask);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glStencilMask(GLuint mask)
@@ -1479,6 +1651,8 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilMask(GLuint mask)
 
   // prefix
   _context->ppa->glStencilMask( mask );
+
+  _context->ppa->orig.glStencilMask(mask);
 
 }
 
@@ -1490,6 +1664,8 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilMaskSeparate(GLenum face, GL
   // prefix
   _context->ppa->glStencilMaskSeparate( face, mask );
 
+  _context->ppa->orig.glStencilMaskSeparate(face, mask);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass)
@@ -1499,6 +1675,8 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilOp(GLenum fail, GLenum zfail
 
   // prefix
   _context->ppa->glStencilOp( fail, zfail, zpass );
+
+  _context->ppa->orig.glStencilOp(fail, zfail, zpass);
 
 }
 
@@ -1510,6 +1688,8 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilOpSeparate(GLenum face, GLen
   // prefix
   _context->ppa->glStencilOpSeparate( face, fail, zfail, zpass );
 
+  _context->ppa->orig.glStencilOpSeparate(face, fail, zfail, zpass);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glTexEnvf(GLenum target, GLenum pname, GLfloat param)
@@ -1519,6 +1699,8 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvf(GLenum target, GLenum pname
 
   // prefix
   _context->ppa->glTexEnv( target, pname, param );
+
+  _context->ppa->orig.glTexEnvf(target, pname, param);
 
 }
 
@@ -1530,6 +1712,8 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvfv(GLenum target, GLenum pnam
   // prefix
   _context->ppa->glTexEnvv( target, pname, params );
 
+  _context->ppa->orig.glTexEnvfv(target, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glTexEnvi(GLenum target, GLenum pname, GLint param)
@@ -1539,6 +1723,8 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvi(GLenum target, GLenum pname
 
   // prefix
   _context->ppa->glTexEnv( target, pname, param );
+
+  _context->ppa->orig.glTexEnvi(target, pname, param);
 
 }
 
@@ -1550,6 +1736,8 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnviv(GLenum target, GLenum pnam
   // prefix
   _context->ppa->glTexEnvv( target, pname, params );
 
+  _context->ppa->orig.glTexEnviv(target, pname, params);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glViewport(GLint x, GLint y, GLsizei width, GLsizei height)
@@ -1559,6 +1747,8 @@ static void REGAL_CALL emuProcInterceptPpa_glViewport(GLint x, GLint y, GLsizei 
 
   // prefix
   _context->ppa->glViewport( x, y, width, height );
+
+  _context->ppa->orig.glViewport(x, y, width, height);
 
 }
 
@@ -1570,6 +1760,8 @@ static void REGAL_CALL emuProcInterceptPpa_glViewportArrayv(GLuint first, GLsize
   // prefix
   _context->ppa->glViewportArrayv( first, count, v );
 
+  _context->ppa->orig.glViewportArrayv(first, count, v);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h)
@@ -1580,6 +1772,8 @@ static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedf(GLuint index, GLfl
   // prefix
   _context->ppa->glViewportIndexedf( index, x, y, w, h );
 
+  _context->ppa->orig.glViewportIndexedf(index, x, y, w, h);
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedfv(GLuint index, const GLfloat *v)
@@ -1589,6 +1783,8 @@ static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedfv(GLuint index, con
 
   // prefix
   _context->ppa->glViewportIndexedfv( index, v );
+
+  _context->ppa->orig.glViewportIndexedfv(index, v);
 
 }
 

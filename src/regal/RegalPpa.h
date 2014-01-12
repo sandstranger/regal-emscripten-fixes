@@ -55,6 +55,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
+#include "RegalEmuProcsPpa.h"
 
 REGAL_GLOBAL_END
 
@@ -72,6 +73,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
 {
   void Init(RegalContext &ctx)
   {
+    orig.Initialize( ctx.dispatchGL );
     activeTextureUnit = 0;
 
     // update emu info with the limits that this layer supports
@@ -2286,6 +2288,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
   std::vector<State::Lighting>       lightingStack;
 
   GLuint activeTextureUnit;
+  EmuProcsOriginatePpa orig;
 };
 
 }
