@@ -47,7 +47,8 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
-#include "RegalEmuProcsFilter.h"
+#include "RegalEmuProcsFilt.h"
+#include "RegalBreak.h"
 
 REGAL_GLOBAL_END
 
@@ -103,7 +104,7 @@ namespace Emu {
 
     bool TexImage2D  (const RegalContext &ctx, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data);
 
-    EmuProcsOriginateFilter orig;
+    EmuProcsOriginateFilt orig;
     
   private:
     GLuint fboID;

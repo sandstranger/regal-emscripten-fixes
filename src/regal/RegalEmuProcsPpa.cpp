@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalPpa.h"
 #include "RegalEmuProcsPpa.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,18 @@ static void REGAL_CALL emuProcInterceptPpa_glActiveTexture(GLenum texture)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glActiveTexture( texture );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glActiveTextureARB(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glActiveTexture( texture );
 
 }
 
@@ -72,12 +79,18 @@ static void REGAL_CALL emuProcInterceptPpa_glAlphaFunc(GLenum func, GLclampf ref
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glAlphaFunc( func, ref );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glBlendColor( red, green, blue, alpha );
 
 }
 
@@ -86,12 +99,18 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquation(GLenum mode)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glBlendEquation( mode );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glBlendEquationSeparate( modeRGB, modeAlpha );
 
 }
 
@@ -100,12 +119,18 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquationSeparatei(GLuint buf, 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glBlendEquationSeparatei( buf, modeRGB, modeAlpha );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendEquationi(GLuint buf, GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glBlendEquationi( buf, mode );
 
 }
 
@@ -114,12 +139,18 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFunc(GLenum sfactor, GLenum df
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glBlendFunc( sfactor, dfactor );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glBlendFuncSeparate( sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
 
 }
 
@@ -128,12 +159,18 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFuncSeparatei(GLuint buf, GLen
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glBlendFuncSeparatei( buf, srcRGB, dstRGB, srcAlpha, dstAlpha );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glBlendFunci(GLuint buf, GLenum src, GLenum dst)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glBlendFunci( buf, src, dst );
 
 }
 
@@ -142,12 +179,18 @@ static void REGAL_CALL emuProcInterceptPpa_glClampColor(GLenum target, GLenum cl
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glClampColor( target, clamp );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glClearAccum( red, green, blue, alpha );
 
 }
 
@@ -156,12 +199,18 @@ static void REGAL_CALL emuProcInterceptPpa_glClearColor(GLclampf red, GLclampf g
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glClearColor( red, green, blue, alpha );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClearDepth(GLclampd depth)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glClearDepth( depth );
 
 }
 
@@ -170,12 +219,18 @@ static void REGAL_CALL emuProcInterceptPpa_glClearDepthf(GLclampf d)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glClearDepth( d );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClearIndex(GLfloat c)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glClearIndex( c );
 
 }
 
@@ -184,12 +239,18 @@ static void REGAL_CALL emuProcInterceptPpa_glClearStencil(GLint s)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glClearStencil( s );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glClipPlane(GLenum plane, const GLdouble *equation)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glClipPlane( plane, equation );
 
 }
 
@@ -198,12 +259,18 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMask(GLboolean red, GLboolean 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glColorMask( red, green, blue, alpha );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glColorMaski( index, r, g, b, a );
 
 }
 
@@ -212,12 +279,18 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMaterial(GLenum face, GLenum m
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glColorMaterial( face, mode );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glColorTableParameterfv(GLenum target, GLenum pname, const GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glColorTableParameterv( target, pname, params );
 
 }
 
@@ -226,12 +299,18 @@ static void REGAL_CALL emuProcInterceptPpa_glColorTableParameteriv(GLenum target
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glColorTableParameterv( target, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glConvolutionParameter( target, pname, params );
 
 }
 
@@ -240,12 +319,18 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameterfv(GLenum targe
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glConvolutionParameterv( target, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameteri(GLenum target, GLenum pname, GLint params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glConvolutionParameter( target, pname, params );
 
 }
 
@@ -254,12 +339,18 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameteriv(GLenum targe
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glConvolutionParameterv( target, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glCullFace(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glCullFace( mode );
 
 }
 
@@ -268,12 +359,18 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthFunc(GLenum func)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glDepthFunc( func );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDepthMask(GLboolean flag)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glDepthMask( flag );
 
 }
 
@@ -282,12 +379,18 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRange(GLclampd zNear, GLclampd
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glDepthRange( zNear, zFar );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDepthRangeArrayv(GLuint first, GLsizei count, const GLclampd *v)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glDepthRangeArrayv( first, count, v );
 
 }
 
@@ -296,12 +399,18 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRangeIndexed(GLuint index, GLc
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glDepthRangeIndexed( index, n, f );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDepthRangef(GLclampf n, GLclampf f)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glDepthRange( n, f );
 
 }
 
@@ -310,12 +419,22 @@ static void REGAL_CALL emuProcInterceptPpa_glDisable(GLenum cap)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->Disable( _context, cap ) ) {
+    _context->emu.curr.glDisable( cap );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDisablei(GLenum cap, GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->Disablei( _context, cap, index ) ) {
+    _context->emu.curr.glDisablei( cap, index );
+  }
 
 }
 
@@ -324,12 +443,24 @@ static void REGAL_CALL emuProcInterceptPpa_glDrawBuffer(GLenum mode)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( !_context->isES2() ) {
+    _context->ppa->glDrawBuffer( mode );
+    _context->emu.curr.glDrawBuffer( mode );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDrawBuffers(GLsizei n, const GLenum *bufs)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( !_context->isES2() ) {
+    _context->ppa->glDrawBuffers( n, bufs );
+    _context->emu.curr.glDrawBuffers( n, bufs );
+  }
 
 }
 
@@ -338,12 +469,24 @@ static void REGAL_CALL emuProcInterceptPpa_glDrawBuffersARB(GLsizei n, const GLe
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( !_context->isES2() ) {
+    _context->ppa->glDrawBuffers( n, bufs );
+    _context->emu.curr.glDrawBuffers( n, bufs );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glDrawBuffersNV(GLsizei n, const GLenum *bufs)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( !_context->isES2() ) {
+    _context->ppa->glDrawBuffers( n, bufs );
+    _context->emu.curr.glDrawBuffers( n, bufs );
+  }
 
 }
 
@@ -352,12 +495,22 @@ static void REGAL_CALL emuProcInterceptPpa_glEnable(GLenum cap)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->Enable( _context, cap ) ) {
+    _context->emu.curr.glEnable( cap );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glEnablei(GLenum cap, GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->Enablei( _context, cap, index ) ) {
+    _context->emu.curr.glEnablei( cap, index );
+  }
 
 }
 
@@ -366,12 +519,20 @@ static void REGAL_CALL emuProcInterceptPpa_glFrontFace(GLenum mode)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glFrontFace( mode );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetBooleani_v(GLenum target, GLuint index, GLboolean *data)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
+    _context->emu.curr.glGetBooleani_v( target, index, data );
+  }
 
 }
 
@@ -380,12 +541,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetBooleanv(GLenum pname, GLboolean
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetv( _context, pname, params ) ) {
+    _context->emu.curr.glGetBooleanv( pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetColorTableParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetColorTableParameterv( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetColorTableParameterfv( target, pname, params );
+  }
 
 }
 
@@ -394,12 +565,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetColorTableParameteriv(GLenum tar
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetColorTableParameterv( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetColorTableParameteriv( target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetConvolutionParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetConvolutionParameterv( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetConvolutionParameterfv( target, pname, params );
+  }
 
 }
 
@@ -408,12 +589,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetConvolutionParameteriv(GLenum ta
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetConvolutionParameterv( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetConvolutionParameteriv( target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetDoublei_v(GLenum target, GLuint index, GLdouble *v)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGeti_v( _context, target, index, v ) ) {
+    _context->emu.curr.glGetDoublei_v( target, index, v );
+  }
 
 }
 
@@ -422,12 +613,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetDoublei_vEXT(GLenum target, GLui
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
+    _context->emu.curr.glGetDoublei_vEXT( target, index, data );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetDoublev(GLenum pname, GLdouble *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetv( _context, pname, params ) ) {
+    _context->emu.curr.glGetDoublev( pname, params );
+  }
 
 }
 
@@ -436,12 +637,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetFloati_v(GLenum target, GLuint i
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGeti_v( _context, target, index, v ) ) {
+    _context->emu.curr.glGetFloati_v( target, index, v );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
+    _context->emu.curr.glGetFloati_vEXT( target, index, data );
+  }
 
 }
 
@@ -450,12 +661,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetFloatv(GLenum pname, GLfloat *pa
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetv( _context, pname, params ) ) {
+    _context->emu.curr.glGetFloatv( pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetIntegeri_v(GLenum target, GLuint index, GLint *data)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
+    _context->emu.curr.glGetIntegeri_v( target, index, data );
+  }
 
 }
 
@@ -464,12 +685,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetIntegeri_vEXT(GLenum target, GLu
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
+    _context->emu.curr.glGetIntegeri_vEXT( target, index, data );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetIntegerv(GLenum pname, GLint *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetv( _context, pname, params ) ) {
+    _context->emu.curr.glGetIntegerv( pname, params );
+  }
 
 }
 
@@ -478,12 +709,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetLightfv(GLenum light, GLenum pna
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetLightv( _context, light, pname, params ) ) {
+    _context->emu.curr.glGetLightfv( light, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetLightiv(GLenum light, GLenum pname, GLint *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetLightv( _context, light, pname, params ) ) {
+    _context->emu.curr.glGetLightiv( light, pname, params );
+  }
 
 }
 
@@ -492,12 +733,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetLightxv(GLenum light, GLenum pna
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetLightv( _context, light, pname, params ) ) {
+    _context->emu.curr.glGetLightxv( light, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetMaterialfv(GLenum face, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetMaterialv( _context, face, pname, params ) ) {
+    _context->emu.curr.glGetMaterialfv( face, pname, params );
+  }
 
 }
 
@@ -506,12 +757,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetMaterialiv(GLenum face, GLenum p
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetMaterialv( _context, face, pname, params ) ) {
+    _context->emu.curr.glGetMaterialiv( face, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetMaterialv( _context, face, pname, params ) ) {
+    _context->emu.curr.glGetMaterialxv( face, pname, params );
+  }
 
 }
 
@@ -520,12 +781,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetMultiTexEnvfvEXT(GLenum texunit,
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetMultiTexEnvv( _context, texunit, target, pname, params ) ) {
+    _context->emu.curr.glGetMultiTexEnvfvEXT( texunit, target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetMultiTexEnvv( _context, texunit, target, pname, params ) ) {
+    _context->emu.curr.glGetMultiTexEnvivEXT( texunit, target, pname, params );
+  }
 
 }
 
@@ -534,12 +805,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetPolygonStipple(GLubyte *mask)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetPolygonStipple( _context, mask ) ) {
+    _context->emu.curr.glGetPolygonStipple( mask );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetTexEnvv( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetTexEnvfv( target, pname, params );
+  }
 
 }
 
@@ -548,12 +829,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexEnviv(GLenum target, GLenum p
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetTexEnvv( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetTexEnviv( target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetTexLevelParameter( _context, target, level, pname, params ) ) {
+    _context->emu.curr.glGetTexLevelParameterfv( target, level, pname, params );
+  }
 
 }
 
@@ -562,12 +853,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexLevelParameteriv(GLenum targe
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetTexLevelParameter( _context, target, level, pname, params ) ) {
+    _context->emu.curr.glGetTexLevelParameteriv( target, level, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetTexParameter( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetTexParameterfv( target, pname, params );
+  }
 
 }
 
@@ -576,12 +877,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexParameteriv(GLenum target, GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetTexParameter( _context, target, pname, params ) ) {
+    _context->emu.curr.glGetTexParameteriv( target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetTextureLevelParameter( _context, texture, target, level, pname, params ) ) {
+    _context->emu.curr.glGetTextureLevelParameterfvEXT( texture, target, level, pname, params );
+  }
 
 }
 
@@ -590,12 +901,22 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTextureLevelParameterivEXT(GLuin
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetTextureLevelParameter( _context, texture, target, level, pname, params ) ) {
+    _context->emu.curr.glGetTextureLevelParameterivEXT( texture, target, level, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->ppa->glGetTextureParameter( _context, texture, target, pname, params ) ) {
+    _context->emu.curr.glGetTextureParameterfvEXT( texture, target, pname, params );
+  }
 
 }
 
@@ -604,12 +925,20 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTextureParameterivEXT(GLuint tex
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->ppa->glGetTextureParameter( _context, texture, target, pname, params ) ) {
+    _context->emu.curr.glGetTextureParameterivEXT( texture, target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glHint(GLenum target, GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glHint( target, mode );
 
 }
 
@@ -618,6 +947,9 @@ static void REGAL_CALL emuProcInterceptPpa_glIndexMask(GLuint mask)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glIndexMask( mask );
+
 }
 
 static GLboolean REGAL_CALL emuProcInterceptPpa_glIsEnabled(GLenum cap)
@@ -625,8 +957,14 @@ static GLboolean REGAL_CALL emuProcInterceptPpa_glIsEnabled(GLenum cap)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
-  GLboolean  ret = GL_FALSE;
-  return ret;
+  // impl
+  {
+    GLboolean enabled;
+    if( ! _context->ppa->glIsEnabled( _context, enabled, cap ) )
+      return _context->emu.curr.glIsEnabled( cap );
+    return enabled;
+  }
+
 }
 
 static GLboolean REGAL_CALL emuProcInterceptPpa_glIsEnabledi(GLenum target, GLuint index)
@@ -634,14 +972,23 @@ static GLboolean REGAL_CALL emuProcInterceptPpa_glIsEnabledi(GLenum target, GLui
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
-  GLboolean  ret = GL_FALSE;
-  return ret;
+  // impl
+  {
+    GLboolean enabled;
+    if( ! _context->ppa->glIsEnabledi( _context, enabled, target, index ) )
+      return _context->emu.curr.glIsEnabledi( target, index );
+    return enabled;
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLightModelf(GLenum pname, GLfloat param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glLightModel( pname, param );
 
 }
 
@@ -650,12 +997,18 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModelfv(GLenum pname, const GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glLightModelv( pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLightModeli(GLenum pname, GLint param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glLightModel( pname, param );
 
 }
 
@@ -664,12 +1017,18 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModeliv(GLenum pname, const GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glLightModelv( pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLightf(GLenum light, GLenum pname, GLfloat param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glLight( light, pname, param );
 
 }
 
@@ -678,12 +1037,18 @@ static void REGAL_CALL emuProcInterceptPpa_glLightfv(GLenum light, GLenum pname,
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glLightv( light, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLighti(GLenum light, GLenum pname, GLint param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glLight( light, pname, param );
 
 }
 
@@ -692,12 +1057,18 @@ static void REGAL_CALL emuProcInterceptPpa_glLightiv(GLenum light, GLenum pname,
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glLightv( light, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glLineStipple(GLint factor, GLushort pattern)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glLineStipple( factor, pattern );
 
 }
 
@@ -706,12 +1077,18 @@ static void REGAL_CALL emuProcInterceptPpa_glLineWidth(GLfloat width)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glLineWidth( width );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glListBase(GLuint base)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glListBase( base );
 
 }
 
@@ -720,12 +1097,18 @@ static void REGAL_CALL emuProcInterceptPpa_glLogicOp(GLenum opcode)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glLogicOp( opcode );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glMapGrid1( un, u1, u2 );
 
 }
 
@@ -734,12 +1117,18 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid1f(GLint un, GLfloat u1, GLf
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glMapGrid1( un, u1, u2 );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
 
 }
 
@@ -748,12 +1137,18 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid2f(GLint un, GLfloat u1, GLf
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMaterialf(GLenum face, GLenum pname, GLfloat param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glMaterial( face, pname, param );
 
 }
 
@@ -762,12 +1157,18 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialfv(GLenum face, GLenum pnam
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glMaterialv( face, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMateriali(GLenum face, GLenum pname, GLint param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glMaterial( face, pname, param );
 
 }
 
@@ -776,12 +1177,18 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialiv(GLenum face, GLenum pnam
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glMaterialv( face, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMatrixMode(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glMatrixMode( mode );
 
 }
 
@@ -790,12 +1197,18 @@ static void REGAL_CALL emuProcInterceptPpa_glMinSampleShading(GLclampf value)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glMinSampleShading( value );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
 }
 
@@ -804,12 +1217,18 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvfvEXT(GLenum texunit, GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
 }
 
@@ -818,12 +1237,18 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvivEXT(GLenum texunit, GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPixelTransferf(GLenum pname, GLfloat param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glPixelTransfer( pname, param );
 
 }
 
@@ -832,12 +1257,18 @@ static void REGAL_CALL emuProcInterceptPpa_glPixelTransferi(GLenum pname, GLint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glPixelTransfer( pname, param );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glPixelZoom( xfactor, yfactor );
 
 }
 
@@ -846,12 +1277,18 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameterf(GLenum pname, GLflo
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glPointParameter( pname, param );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPointParameterfv(GLenum pname, const GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glPointParameterv( pname, params );
 
 }
 
@@ -860,12 +1297,18 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameteri(GLenum pname, GLint
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glPointParameter( pname, param );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPointParameteriv(GLenum pname, const GLint *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glPointParameterv( pname, params );
 
 }
 
@@ -874,12 +1317,18 @@ static void REGAL_CALL emuProcInterceptPpa_glPointSize(GLfloat size)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glPointSize( size );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPolygonMode(GLenum face, GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glPolygonMode( face, mode );
 
 }
 
@@ -888,12 +1337,18 @@ static void REGAL_CALL emuProcInterceptPpa_glPolygonOffset(GLfloat factor, GLflo
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glPolygonOffset( factor, units );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glPolygonStipple(const GLubyte *mask)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glPolygonStipple( mask );
 
 }
 
@@ -902,12 +1357,18 @@ static void REGAL_CALL emuProcInterceptPpa_glPopAttrib(void)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->ppa->PopAttrib( _context );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glProvokingVertex(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glProvokingVertex( mode );
 
 }
 
@@ -916,12 +1377,18 @@ static void REGAL_CALL emuProcInterceptPpa_glPushAttrib(GLbitfield mask)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->ppa->PushAttrib( _context, mask );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glReadBuffer(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glReadBuffer( mode );
 
 }
 
@@ -930,12 +1397,18 @@ static void REGAL_CALL emuProcInterceptPpa_glSampleCoverage(GLclampf value, GLbo
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glSampleCoverage( value, invert );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glScissor(GLint x, GLint y, GLsizei width, GLsizei height)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glScissor( x, y, width, height );
 
 }
 
@@ -944,12 +1417,18 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorArrayv(GLuint first, GLsizei
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glScissorArrayv( first, count, v );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glScissorIndexed(GLuint index, GLint left, GLint bottom, GLint width, GLint height)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glScissorIndexed( index, left, bottom, width, height );
 
 }
 
@@ -958,12 +1437,18 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorIndexedv(GLuint index, const
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glScissorIndexedv( index, v );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glShadeModel(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glShadeModel( mode );
 
 }
 
@@ -972,12 +1457,18 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilFunc(GLenum func, GLint ref,
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glStencilFunc( func, ref, mask );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glStencilFuncSeparate( face, func, ref, mask );
 
 }
 
@@ -986,12 +1477,18 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilMask(GLuint mask)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glStencilMask( mask );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glStencilMaskSeparate(GLenum face, GLuint mask)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glStencilMaskSeparate( face, mask );
 
 }
 
@@ -1000,12 +1497,18 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilOp(GLenum fail, GLenum zfail
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glStencilOp( fail, zfail, zpass );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glStencilOpSeparate( face, fail, zfail, zpass );
 
 }
 
@@ -1014,12 +1517,18 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvf(GLenum target, GLenum pname
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glTexEnv( target, pname, param );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glTexEnvfv(GLenum target, GLenum pname, const GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glTexEnvv( target, pname, params );
 
 }
 
@@ -1028,12 +1537,18 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvi(GLenum target, GLenum pname
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glTexEnv( target, pname, param );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glTexEnviv(GLenum target, GLenum pname, const GLint *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glTexEnvv( target, pname, params );
 
 }
 
@@ -1042,12 +1557,18 @@ static void REGAL_CALL emuProcInterceptPpa_glViewport(GLint x, GLint y, GLsizei 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glViewport( x, y, width, height );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glViewportArrayv(GLuint first, GLsizei count, const GLfloat *v)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glViewportArrayv( first, count, v );
 
 }
 
@@ -1056,12 +1577,18 @@ static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedf(GLuint index, GLfl
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->ppa->glViewportIndexedf( index, x, y, w, h );
+
 }
 
 static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedfv(GLuint index, const GLfloat *v)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->ppa->glViewportIndexedfv( index, v );
 
 }
 

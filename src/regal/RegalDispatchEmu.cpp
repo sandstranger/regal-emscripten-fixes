@@ -120,7 +120,7 @@ static void REGAL_CALL emu_glAccum(GLenum op, GLfloat value)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -146,7 +146,7 @@ static void REGAL_CALL emu_glAccum(GLenum op, GLfloat value)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -338,7 +338,7 @@ static void REGAL_CALL emu_glBitmap(GLsizei width, GLsizei height, GLfloat xorig
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -364,7 +364,7 @@ static void REGAL_CALL emu_glBitmap(GLsizei width, GLsizei height, GLfloat xorig
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -444,7 +444,7 @@ static void REGAL_CALL emu_glCallList(GLuint list)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -470,7 +470,7 @@ static void REGAL_CALL emu_glCallList(GLuint list)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -529,7 +529,7 @@ static void REGAL_CALL emu_glClearAccum(GLfloat red, GLfloat green, GLfloat blue
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -555,7 +555,7 @@ static void REGAL_CALL emu_glClearAccum(GLfloat red, GLfloat green, GLfloat blue
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -2844,7 +2844,7 @@ static void REGAL_CALL emu_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -2870,7 +2870,7 @@ static void REGAL_CALL emu_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -2966,7 +2966,7 @@ static void REGAL_CALL emu_glDeleteLists(GLuint list, GLsizei range)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -2992,7 +2992,7 @@ static void REGAL_CALL emu_glDeleteLists(GLuint list, GLsizei range)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -3282,7 +3282,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -3320,7 +3320,7 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -3368,7 +3368,7 @@ static void REGAL_CALL emu_glDrawPixels(GLsizei width, GLsizei height, GLenum fo
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -3394,7 +3394,7 @@ static void REGAL_CALL emu_glDrawPixels(GLsizei width, GLsizei height, GLenum fo
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -3445,7 +3445,7 @@ static void REGAL_CALL emu_glEdgeFlag(GLboolean flag)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -3471,7 +3471,7 @@ static void REGAL_CALL emu_glEdgeFlag(GLboolean flag)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -3714,7 +3714,7 @@ static void REGAL_CALL emu_glEndList(void)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -3740,7 +3740,7 @@ static void REGAL_CALL emu_glEndList(void)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -3791,7 +3791,7 @@ static void REGAL_CALL emu_glEvalCoord1d(GLdouble u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -3817,7 +3817,7 @@ static void REGAL_CALL emu_glEvalCoord1d(GLdouble u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -3868,7 +3868,7 @@ static void REGAL_CALL emu_glEvalCoord1dv(const GLdouble *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -3894,7 +3894,7 @@ static void REGAL_CALL emu_glEvalCoord1dv(const GLdouble *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -3945,7 +3945,7 @@ static void REGAL_CALL emu_glEvalCoord1f(GLfloat u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -3971,7 +3971,7 @@ static void REGAL_CALL emu_glEvalCoord1f(GLfloat u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4022,7 +4022,7 @@ static void REGAL_CALL emu_glEvalCoord1fv(const GLfloat *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4048,7 +4048,7 @@ static void REGAL_CALL emu_glEvalCoord1fv(const GLfloat *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4099,7 +4099,7 @@ static void REGAL_CALL emu_glEvalCoord2d(GLdouble u, GLdouble v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4125,7 +4125,7 @@ static void REGAL_CALL emu_glEvalCoord2d(GLdouble u, GLdouble v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4176,7 +4176,7 @@ static void REGAL_CALL emu_glEvalCoord2dv(const GLdouble *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4202,7 +4202,7 @@ static void REGAL_CALL emu_glEvalCoord2dv(const GLdouble *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4253,7 +4253,7 @@ static void REGAL_CALL emu_glEvalCoord2f(GLfloat u, GLfloat v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4279,7 +4279,7 @@ static void REGAL_CALL emu_glEvalCoord2f(GLfloat u, GLfloat v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4330,7 +4330,7 @@ static void REGAL_CALL emu_glEvalCoord2fv(const GLfloat *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4356,7 +4356,7 @@ static void REGAL_CALL emu_glEvalCoord2fv(const GLfloat *u)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4407,7 +4407,7 @@ static void REGAL_CALL emu_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4433,7 +4433,7 @@ static void REGAL_CALL emu_glEvalMesh1(GLenum mode, GLint i1, GLint i2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4484,7 +4484,7 @@ static void REGAL_CALL emu_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4510,7 +4510,7 @@ static void REGAL_CALL emu_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4561,7 +4561,7 @@ static void REGAL_CALL emu_glEvalPoint1(GLint i)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4587,7 +4587,7 @@ static void REGAL_CALL emu_glEvalPoint1(GLint i)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -4638,7 +4638,7 @@ static void REGAL_CALL emu_glEvalPoint2(GLint i, GLint j)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -4664,7 +4664,7 @@ static void REGAL_CALL emu_glEvalPoint2(GLint i, GLint j)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -5065,7 +5065,7 @@ static GLuint REGAL_CALL emu_glGenLists(GLsizei range)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -5091,7 +5091,7 @@ static GLuint REGAL_CALL emu_glGenLists(GLsizei range)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -5164,7 +5164,7 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -5246,7 +5246,7 @@ static void REGAL_CALL emu_glGetBooleanv(GLenum pname, GLboolean *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -5322,7 +5322,7 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -5415,7 +5415,7 @@ static void REGAL_CALL emu_glGetDoublev(GLenum pname, GLdouble *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -5491,7 +5491,7 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -5584,7 +5584,7 @@ static void REGAL_CALL emu_glGetFloatv(GLenum pname, GLfloat *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -5660,7 +5660,7 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -5753,7 +5753,7 @@ static void REGAL_CALL emu_glGetIntegerv(GLenum pname, GLint *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -6472,7 +6472,7 @@ static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum form
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -6498,7 +6498,7 @@ static void REGAL_CALL emu_glGetTexImage(GLenum target, GLint level, GLenum form
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -6552,7 +6552,7 @@ static void REGAL_CALL emu_glGetTexLevelParameterfv(GLenum target, GLint level, 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -6589,7 +6589,7 @@ static void REGAL_CALL emu_glGetTexLevelParameterfv(GLenum target, GLint level, 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -6643,7 +6643,7 @@ static void REGAL_CALL emu_glGetTexLevelParameteriv(GLenum target, GLint level, 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -6680,7 +6680,7 @@ static void REGAL_CALL emu_glGetTexLevelParameteriv(GLenum target, GLint level, 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -6856,7 +6856,7 @@ static void REGAL_CALL emu_glGetTexParameteriv(GLenum target, GLenum pname, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -6917,7 +6917,7 @@ static void REGAL_CALL emu_glGetTexParameteriv(GLenum target, GLenum pname, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -7732,7 +7732,7 @@ static void REGAL_CALL emu_glLineStipple(GLint factor, GLushort pattern)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -7758,7 +7758,7 @@ static void REGAL_CALL emu_glLineStipple(GLint factor, GLushort pattern)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -7817,7 +7817,7 @@ static void REGAL_CALL emu_glLineWidth(GLfloat width)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -7843,7 +7843,7 @@ static void REGAL_CALL emu_glLineWidth(GLfloat width)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8168,7 +8168,7 @@ static void REGAL_CALL emu_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8194,7 +8194,7 @@ static void REGAL_CALL emu_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8245,7 +8245,7 @@ static void REGAL_CALL emu_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8271,7 +8271,7 @@ static void REGAL_CALL emu_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8322,7 +8322,7 @@ static void REGAL_CALL emu_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8348,7 +8348,7 @@ static void REGAL_CALL emu_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8399,7 +8399,7 @@ static void REGAL_CALL emu_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8425,7 +8425,7 @@ static void REGAL_CALL emu_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8484,7 +8484,7 @@ static void REGAL_CALL emu_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8510,7 +8510,7 @@ static void REGAL_CALL emu_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8569,7 +8569,7 @@ static void REGAL_CALL emu_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8595,7 +8595,7 @@ static void REGAL_CALL emu_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8654,7 +8654,7 @@ static void REGAL_CALL emu_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8680,7 +8680,7 @@ static void REGAL_CALL emu_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -8739,7 +8739,7 @@ static void REGAL_CALL emu_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint v
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -8765,7 +8765,7 @@ static void REGAL_CALL emu_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint v
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -9327,7 +9327,7 @@ static void REGAL_CALL emu_glNewList(GLuint list, GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -9353,7 +9353,7 @@ static void REGAL_CALL emu_glNewList(GLuint list, GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -10091,7 +10091,7 @@ static void REGAL_CALL emu_glPixelStoref(GLenum pname, GLfloat param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -10117,7 +10117,7 @@ static void REGAL_CALL emu_glPixelStoref(GLenum pname, GLfloat param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -10192,7 +10192,7 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
       }
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -10218,7 +10218,7 @@ static void REGAL_CALL emu_glPixelStorei(GLenum pname, GLint param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -10276,7 +10276,7 @@ static void REGAL_CALL emu_glPixelTransferf(GLenum pname, GLfloat param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -10302,7 +10302,7 @@ static void REGAL_CALL emu_glPixelTransferf(GLenum pname, GLfloat param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -10361,7 +10361,7 @@ static void REGAL_CALL emu_glPixelTransferi(GLenum pname, GLint param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -10387,7 +10387,7 @@ static void REGAL_CALL emu_glPixelTransferi(GLenum pname, GLint param)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -10446,7 +10446,7 @@ static void REGAL_CALL emu_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -10472,7 +10472,7 @@ static void REGAL_CALL emu_glPixelZoom(GLfloat xfactor, GLfloat yfactor)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -10568,7 +10568,7 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -10594,7 +10594,7 @@ static void REGAL_CALL emu_glPolygonMode(GLenum face, GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -10914,7 +10914,7 @@ static void REGAL_CALL emu_glRasterPos2d(GLdouble x, GLdouble y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -10949,7 +10949,7 @@ static void REGAL_CALL emu_glRasterPos2d(GLdouble x, GLdouble y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11000,7 +11000,7 @@ static void REGAL_CALL emu_glRasterPos2dv(const GLdouble *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11026,7 +11026,7 @@ static void REGAL_CALL emu_glRasterPos2dv(const GLdouble *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11080,7 +11080,7 @@ static void REGAL_CALL emu_glRasterPos2f(GLfloat x, GLfloat y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11115,7 +11115,7 @@ static void REGAL_CALL emu_glRasterPos2f(GLfloat x, GLfloat y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11166,7 +11166,7 @@ static void REGAL_CALL emu_glRasterPos2fv(const GLfloat *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11192,7 +11192,7 @@ static void REGAL_CALL emu_glRasterPos2fv(const GLfloat *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11246,7 +11246,7 @@ static void REGAL_CALL emu_glRasterPos2i(GLint x, GLint y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11281,7 +11281,7 @@ static void REGAL_CALL emu_glRasterPos2i(GLint x, GLint y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11332,7 +11332,7 @@ static void REGAL_CALL emu_glRasterPos2iv(const GLint *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11358,7 +11358,7 @@ static void REGAL_CALL emu_glRasterPos2iv(const GLint *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11412,7 +11412,7 @@ static void REGAL_CALL emu_glRasterPos2s(GLshort x, GLshort y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11447,7 +11447,7 @@ static void REGAL_CALL emu_glRasterPos2s(GLshort x, GLshort y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11498,7 +11498,7 @@ static void REGAL_CALL emu_glRasterPos2sv(const GLshort *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11524,7 +11524,7 @@ static void REGAL_CALL emu_glRasterPos2sv(const GLshort *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11578,7 +11578,7 @@ static void REGAL_CALL emu_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11613,7 +11613,7 @@ static void REGAL_CALL emu_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11664,7 +11664,7 @@ static void REGAL_CALL emu_glRasterPos3dv(const GLdouble *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11690,7 +11690,7 @@ static void REGAL_CALL emu_glRasterPos3dv(const GLdouble *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11744,7 +11744,7 @@ static void REGAL_CALL emu_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11779,7 +11779,7 @@ static void REGAL_CALL emu_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11830,7 +11830,7 @@ static void REGAL_CALL emu_glRasterPos3fv(const GLfloat *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11856,7 +11856,7 @@ static void REGAL_CALL emu_glRasterPos3fv(const GLfloat *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11910,7 +11910,7 @@ static void REGAL_CALL emu_glRasterPos3i(GLint x, GLint y, GLint z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -11945,7 +11945,7 @@ static void REGAL_CALL emu_glRasterPos3i(GLint x, GLint y, GLint z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -11996,7 +11996,7 @@ static void REGAL_CALL emu_glRasterPos3iv(const GLint *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12022,7 +12022,7 @@ static void REGAL_CALL emu_glRasterPos3iv(const GLint *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12076,7 +12076,7 @@ static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12111,7 +12111,7 @@ static void REGAL_CALL emu_glRasterPos3s(GLshort x, GLshort y, GLshort z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12162,7 +12162,7 @@ static void REGAL_CALL emu_glRasterPos3sv(const GLshort *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12188,7 +12188,7 @@ static void REGAL_CALL emu_glRasterPos3sv(const GLshort *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12239,7 +12239,7 @@ static void REGAL_CALL emu_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLd
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12265,7 +12265,7 @@ static void REGAL_CALL emu_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLd
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12316,7 +12316,7 @@ static void REGAL_CALL emu_glRasterPos4dv(const GLdouble *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12342,7 +12342,7 @@ static void REGAL_CALL emu_glRasterPos4dv(const GLdouble *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12393,7 +12393,7 @@ static void REGAL_CALL emu_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloa
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12419,7 +12419,7 @@ static void REGAL_CALL emu_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloa
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12470,7 +12470,7 @@ static void REGAL_CALL emu_glRasterPos4fv(const GLfloat *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12496,7 +12496,7 @@ static void REGAL_CALL emu_glRasterPos4fv(const GLfloat *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12547,7 +12547,7 @@ static void REGAL_CALL emu_glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12573,7 +12573,7 @@ static void REGAL_CALL emu_glRasterPos4i(GLint x, GLint y, GLint z, GLint w)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12624,7 +12624,7 @@ static void REGAL_CALL emu_glRasterPos4iv(const GLint *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12650,7 +12650,7 @@ static void REGAL_CALL emu_glRasterPos4iv(const GLint *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12701,7 +12701,7 @@ static void REGAL_CALL emu_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshor
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12727,7 +12727,7 @@ static void REGAL_CALL emu_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshor
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12778,7 +12778,7 @@ static void REGAL_CALL emu_glRasterPos4sv(const GLshort *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12804,7 +12804,7 @@ static void REGAL_CALL emu_glRasterPos4sv(const GLshort *v)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12863,7 +12863,7 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12889,7 +12889,7 @@ static void REGAL_CALL emu_glReadBuffer(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -12947,7 +12947,7 @@ static void REGAL_CALL emu_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdoub
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -12982,7 +12982,7 @@ static void REGAL_CALL emu_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdoub
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -13095,7 +13095,7 @@ static void REGAL_CALL emu_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -13130,7 +13130,7 @@ static void REGAL_CALL emu_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -13243,7 +13243,7 @@ static void REGAL_CALL emu_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -13278,7 +13278,7 @@ static void REGAL_CALL emu_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -13391,7 +13391,7 @@ static void REGAL_CALL emu_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -13426,7 +13426,7 @@ static void REGAL_CALL emu_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -13536,7 +13536,7 @@ static GLint REGAL_CALL emu_glRenderMode(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -13562,7 +13562,7 @@ static GLint REGAL_CALL emu_glRenderMode(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -13947,7 +13947,7 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -13985,7 +13985,7 @@ static void REGAL_CALL emu_glShadeModel(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -16829,7 +16829,7 @@ static void REGAL_CALL emu_glTexImage1D(GLenum target, GLint level, GLint intern
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -16855,7 +16855,7 @@ static void REGAL_CALL emu_glTexImage1D(GLenum target, GLint level, GLint intern
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -16925,7 +16925,7 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
       }
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -16960,7 +16960,7 @@ static void REGAL_CALL emu_glTexImage2D(GLenum target, GLint level, GLint intern
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -17022,7 +17022,7 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -17060,7 +17060,7 @@ static void REGAL_CALL emu_glTexParameterf(GLenum target, GLenum pname, GLfloat 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -17124,7 +17124,7 @@ static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -17162,7 +17162,7 @@ static void REGAL_CALL emu_glTexParameterfv(GLenum target, GLenum pname, const G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -17226,7 +17226,7 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -17264,7 +17264,7 @@ static void REGAL_CALL emu_glTexParameteri(GLenum target, GLenum pname, GLint pa
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -17328,7 +17328,7 @@ static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -17366,7 +17366,7 @@ static void REGAL_CALL emu_glTexParameteriv(GLenum target, GLenum pname, const G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -19097,7 +19097,7 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
       }
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -19155,7 +19155,7 @@ static void REGAL_CALL emu_glBindTexture(GLenum target, GLuint texture)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -20809,7 +20809,7 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -20835,7 +20835,7 @@ static void REGAL_CALL emu_glDrawRangeElements(GLenum mode, GLuint start, GLuint
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -20890,7 +20890,7 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -20916,7 +20916,7 @@ static void REGAL_CALL emu_glTexImage3D(GLenum target, GLint level, GLint intern
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -21122,7 +21122,7 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -21159,7 +21159,7 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25043,7 +25043,7 @@ static void REGAL_CALL emu_glWindowPos2d(GLdouble x, GLdouble y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25078,7 +25078,7 @@ static void REGAL_CALL emu_glWindowPos2d(GLdouble x, GLdouble y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25129,7 +25129,7 @@ static void REGAL_CALL emu_glWindowPos2dv(const GLdouble *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25155,7 +25155,7 @@ static void REGAL_CALL emu_glWindowPos2dv(const GLdouble *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25209,7 +25209,7 @@ static void REGAL_CALL emu_glWindowPos2f(GLfloat x, GLfloat y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25244,7 +25244,7 @@ static void REGAL_CALL emu_glWindowPos2f(GLfloat x, GLfloat y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25295,7 +25295,7 @@ static void REGAL_CALL emu_glWindowPos2fv(const GLfloat *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25321,7 +25321,7 @@ static void REGAL_CALL emu_glWindowPos2fv(const GLfloat *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25375,7 +25375,7 @@ static void REGAL_CALL emu_glWindowPos2i(GLint x, GLint y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25410,7 +25410,7 @@ static void REGAL_CALL emu_glWindowPos2i(GLint x, GLint y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25461,7 +25461,7 @@ static void REGAL_CALL emu_glWindowPos2iv(const GLint *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25487,7 +25487,7 @@ static void REGAL_CALL emu_glWindowPos2iv(const GLint *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25541,7 +25541,7 @@ static void REGAL_CALL emu_glWindowPos2s(GLshort x, GLshort y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25576,7 +25576,7 @@ static void REGAL_CALL emu_glWindowPos2s(GLshort x, GLshort y)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25627,7 +25627,7 @@ static void REGAL_CALL emu_glWindowPos2sv(const GLshort *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25653,7 +25653,7 @@ static void REGAL_CALL emu_glWindowPos2sv(const GLshort *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25707,7 +25707,7 @@ static void REGAL_CALL emu_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25742,7 +25742,7 @@ static void REGAL_CALL emu_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25793,7 +25793,7 @@ static void REGAL_CALL emu_glWindowPos3dv(const GLdouble *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25819,7 +25819,7 @@ static void REGAL_CALL emu_glWindowPos3dv(const GLdouble *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25873,7 +25873,7 @@ static void REGAL_CALL emu_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25908,7 +25908,7 @@ static void REGAL_CALL emu_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -25959,7 +25959,7 @@ static void REGAL_CALL emu_glWindowPos3fv(const GLfloat *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -25985,7 +25985,7 @@ static void REGAL_CALL emu_glWindowPos3fv(const GLfloat *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -26039,7 +26039,7 @@ static void REGAL_CALL emu_glWindowPos3i(GLint x, GLint y, GLint z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -26074,7 +26074,7 @@ static void REGAL_CALL emu_glWindowPos3i(GLint x, GLint y, GLint z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -26125,7 +26125,7 @@ static void REGAL_CALL emu_glWindowPos3iv(const GLint *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -26151,7 +26151,7 @@ static void REGAL_CALL emu_glWindowPos3iv(const GLint *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -26205,7 +26205,7 @@ static void REGAL_CALL emu_glWindowPos3s(GLshort x, GLshort y, GLshort z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -26240,7 +26240,7 @@ static void REGAL_CALL emu_glWindowPos3s(GLshort x, GLshort y, GLshort z)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -26291,7 +26291,7 @@ static void REGAL_CALL emu_glWindowPos3sv(const GLshort *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -26317,7 +26317,7 @@ static void REGAL_CALL emu_glWindowPos3sv(const GLshort *p)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -26871,7 +26871,7 @@ static GLvoid *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -26897,7 +26897,7 @@ static GLvoid *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -26951,7 +26951,7 @@ static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -26977,7 +26977,7 @@ static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -27248,7 +27248,7 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -27286,7 +27286,7 @@ static void REGAL_CALL emu_glDrawBuffers(GLsizei n, const GLenum *bufs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -33158,7 +33158,7 @@ static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -33184,7 +33184,7 @@ static void REGAL_CALL emu_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -33806,7 +33806,7 @@ static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -33844,7 +33844,7 @@ static void REGAL_CALL emu_glDrawBuffersARB(GLsizei n, const GLenum *bufs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -34113,7 +34113,7 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -34150,7 +34150,7 @@ static void REGAL_CALL emu_glDrawRangeElementsBaseVertex(GLenum mode, GLuint sta
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -34574,7 +34574,7 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -34611,7 +34611,7 @@ static void REGAL_CALL emu_glBindFramebuffer(GLenum target, GLuint framebuffer)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -34735,7 +34735,7 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -34761,7 +34761,7 @@ static void REGAL_CALL emu_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint src
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -34895,7 +34895,7 @@ static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -34921,7 +34921,7 @@ static void REGAL_CALL emu_glFramebufferRenderbuffer(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -34978,7 +34978,7 @@ static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachme
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -35013,7 +35013,7 @@ static void REGAL_CALL emu_glFramebufferTexture1D(GLenum target, GLenum attachme
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -35070,7 +35070,7 @@ static void REGAL_CALL emu_glFramebufferTexture2D(GLenum target, GLenum attachme
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -35105,7 +35105,7 @@ static void REGAL_CALL emu_glFramebufferTexture2D(GLenum target, GLenum attachme
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -35163,7 +35163,7 @@ static void REGAL_CALL emu_glFramebufferTexture3D(GLenum target, GLenum attachme
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -35189,7 +35189,7 @@ static void REGAL_CALL emu_glFramebufferTexture3D(GLenum target, GLenum attachme
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -35291,7 +35291,7 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
       }
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -35317,7 +35317,7 @@ static void REGAL_CALL emu_glGenerateMipmap(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -35370,7 +35370,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameteriv(GLenum target, 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -35412,7 +35412,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameteriv(GLenum target, 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -37662,7 +37662,7 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
       }
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -37711,7 +37711,7 @@ static void REGAL_CALL emu_glActiveTextureARB(GLenum texture)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -37794,7 +37794,7 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -37831,7 +37831,7 @@ static void REGAL_CALL emu_glClientActiveTextureARB(GLenum texture)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -40053,7 +40053,7 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -40088,7 +40088,7 @@ static void REGAL_CALL emu_glGenSamplers(GLsizei count, GLuint *samplers)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -40953,7 +40953,7 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -40979,7 +40979,7 @@ static void REGAL_CALL emu_glAttachObjectARB(GLhandleARB containerObj, GLhandleA
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -41027,7 +41027,7 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -41053,7 +41053,7 @@ static void REGAL_CALL emu_glCompileShaderARB(GLhandleARB shaderObj)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -41101,7 +41101,7 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -41127,7 +41127,7 @@ static GLhandleARB REGAL_CALL emu_glCreateProgramObjectARB(void)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -41232,7 +41232,7 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -41258,7 +41258,7 @@ static void REGAL_CALL emu_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -41309,7 +41309,7 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -41335,7 +41335,7 @@ static void REGAL_CALL emu_glGetObjectParameterivARB(GLhandleARB obj, GLenum pna
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -41386,7 +41386,7 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -41412,7 +41412,7 @@ static GLint REGAL_CALL emu_glGetUniformLocationARB(GLhandleARB programObj, cons
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -41713,7 +41713,7 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -41752,7 +41752,7 @@ static void REGAL_CALL emu_glUniform1iARB(GLint location, GLint v0)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -42919,7 +42919,7 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -42967,7 +42967,7 @@ static void REGAL_CALL emu_glGetInteger64v(GLenum pname, GLint64 *params)
       #endif
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -44677,7 +44677,7 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -44703,7 +44703,7 @@ static void REGAL_CALL emu_glBufferDataARB(GLenum target, GLsizeiptrARB size, co
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -44927,7 +44927,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -44953,7 +44953,7 @@ static GLvoid *REGAL_CALL emu_glMapBufferARB(GLenum target, GLenum access)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -45007,7 +45007,7 @@ static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -45033,7 +45033,7 @@ static GLboolean REGAL_CALL emu_glUnmapBufferARB(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -45084,7 +45084,7 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -45121,7 +45121,7 @@ static void REGAL_CALL emu_glBindProgramARB(GLenum target, GLuint program)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -45362,7 +45362,7 @@ static void REGAL_CALL emu_glGenProgramsARB(GLsizei n, GLuint *programs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -45388,7 +45388,7 @@ static void REGAL_CALL emu_glGenProgramsARB(GLsizei n, GLuint *programs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -45592,7 +45592,7 @@ static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -45618,7 +45618,7 @@ static void REGAL_CALL emu_glGetProgramivARB(GLenum target, GLenum pname, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -46286,7 +46286,7 @@ static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsi
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -46312,7 +46312,7 @@ static void REGAL_CALL emu_glProgramStringARB(GLenum target, GLenum format, GLsi
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -47662,7 +47662,7 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -47688,7 +47688,7 @@ static void REGAL_CALL emu_glBindAttribLocationARB(GLhandleARB programObj, GLuin
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -48142,7 +48142,7 @@ static void REGAL_CALL emu_glDrawBuffersATI(GLsizei n, const GLenum *bufs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -48168,7 +48168,7 @@ static void REGAL_CALL emu_glDrawBuffersATI(GLsizei n, const GLenum *bufs)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -48351,7 +48351,7 @@ static void REGAL_CALL emu_glBlendColorEXT(GLclampf red, GLclampf green, GLclamp
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -48377,7 +48377,7 @@ static void REGAL_CALL emu_glBlendColorEXT(GLclampf red, GLclampf green, GLclamp
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -48431,7 +48431,7 @@ static void REGAL_CALL emu_glBlendEquationEXT(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -48457,7 +48457,7 @@ static void REGAL_CALL emu_glBlendEquationEXT(GLenum mode)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -48521,7 +48521,7 @@ static void REGAL_CALL emu_glPopGroupMarkerEXT(void)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -48547,7 +48547,7 @@ static void REGAL_CALL emu_glPopGroupMarkerEXT(void)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -48593,7 +48593,7 @@ static void REGAL_CALL emu_glPushGroupMarkerEXT(GLsizei length, const GLchar *ma
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -48619,7 +48619,7 @@ static void REGAL_CALL emu_glPushGroupMarkerEXT(GLsizei length, const GLchar *ma
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -64848,7 +64848,7 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -64874,7 +64874,7 @@ static void REGAL_CALL emu_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLbool
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -64946,7 +64946,7 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -64991,7 +64991,7 @@ static void REGAL_CALL emu_glDisableIndexedEXT(GLenum target, GLuint index)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65063,7 +65063,7 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65108,7 +65108,7 @@ static void REGAL_CALL emu_glEnableIndexedEXT(GLenum target, GLuint index)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65158,7 +65158,7 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65184,7 +65184,7 @@ static void REGAL_CALL emu_glGetBooleanIndexedvEXT(GLenum value, GLuint index, G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65234,7 +65234,7 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65260,7 +65260,7 @@ static void REGAL_CALL emu_glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65313,7 +65313,7 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65349,7 +65349,7 @@ static GLboolean REGAL_CALL emu_glIsEnabledIndexedEXT(GLenum target, GLuint inde
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65666,7 +65666,7 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65692,7 +65692,7 @@ static void REGAL_CALL emu_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65787,7 +65787,7 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65824,7 +65824,7 @@ static void REGAL_CALL emu_glBindFramebufferEXT(GLenum target, GLuint framebuffe
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65876,7 +65876,7 @@ static void REGAL_CALL emu_glBindRenderbufferEXT(GLenum target, GLuint renderbuf
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65913,7 +65913,7 @@ static void REGAL_CALL emu_glBindRenderbufferEXT(GLenum target, GLuint renderbuf
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -65962,7 +65962,7 @@ static GLenum REGAL_CALL emu_glCheckFramebufferStatusEXT(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -65988,7 +65988,7 @@ static GLenum REGAL_CALL emu_glCheckFramebufferStatusEXT(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66043,7 +66043,7 @@ static void REGAL_CALL emu_glDeleteFramebuffersEXT(GLsizei n, const GLuint *fram
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66069,7 +66069,7 @@ static void REGAL_CALL emu_glDeleteFramebuffersEXT(GLsizei n, const GLuint *fram
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66126,7 +66126,7 @@ static void REGAL_CALL emu_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *ren
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66152,7 +66152,7 @@ static void REGAL_CALL emu_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *ren
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66209,7 +66209,7 @@ static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum at
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66235,7 +66235,7 @@ static void REGAL_CALL emu_glFramebufferRenderbufferEXT(GLenum target, GLenum at
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66295,7 +66295,7 @@ static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66330,7 +66330,7 @@ static void REGAL_CALL emu_glFramebufferTexture1DEXT(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66390,7 +66390,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66425,7 +66425,7 @@ static void REGAL_CALL emu_glFramebufferTexture2DEXT(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66485,7 +66485,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66520,7 +66520,7 @@ static void REGAL_CALL emu_glFramebufferTexture3DEXT(GLenum target, GLenum attac
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66569,7 +66569,7 @@ static void REGAL_CALL emu_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66595,7 +66595,7 @@ static void REGAL_CALL emu_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffers)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66644,7 +66644,7 @@ static void REGAL_CALL emu_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffer
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66670,7 +66670,7 @@ static void REGAL_CALL emu_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffer
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66736,7 +66736,7 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
       }
       #endif
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66762,7 +66762,7 @@ static void REGAL_CALL emu_glGenerateMipmapEXT(GLenum target)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66814,7 +66814,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameterivEXT(GLenum targe
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66856,7 +66856,7 @@ static void REGAL_CALL emu_glGetFramebufferAttachmentParameterivEXT(GLenum targe
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66913,7 +66913,7 @@ static void REGAL_CALL emu_glGetRenderbufferParameterivEXT(GLenum target, GLenum
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -66939,7 +66939,7 @@ static void REGAL_CALL emu_glGetRenderbufferParameterivEXT(GLenum target, GLenum
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -66988,7 +66988,7 @@ static GLboolean REGAL_CALL emu_glIsFramebufferEXT(GLuint framebuffer)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -67014,7 +67014,7 @@ static GLboolean REGAL_CALL emu_glIsFramebufferEXT(GLuint framebuffer)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -67061,7 +67061,7 @@ static GLboolean REGAL_CALL emu_glIsRenderbufferEXT(GLuint renderbuffer)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -67087,7 +67087,7 @@ static GLboolean REGAL_CALL emu_glIsRenderbufferEXT(GLuint renderbuffer)
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -67142,7 +67142,7 @@ static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum intern
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -67168,7 +67168,7 @@ static void REGAL_CALL emu_glRenderbufferStorageEXT(GLenum target, GLenum intern
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);
@@ -70881,7 +70881,7 @@ static void REGAL_CALL emu_glBindFramebufferOES(GLenum target, GLuint framebuffe
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt) break;
       #endif
     default:
@@ -70907,7 +70907,7 @@ static void REGAL_CALL emu_glBindFramebufferOES(GLenum target, GLuint framebuffe
     case 3 :
     case 2 :
     case 1 :
-      #if REGAL_EMU_FILTER
+      #if REGAL_EMU_FILT
       if (_context->filt)
       {
         Push<int> pushLevel(_context->emuLevel);

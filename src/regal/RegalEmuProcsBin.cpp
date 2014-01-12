@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalBin.h"
 #include "RegalEmuProcsBin.h"
 
 REGAL_GLOBAL_END
@@ -57,6 +58,9 @@ static void REGAL_CALL emuProcInterceptBin_glShaderBinary(GLsizei count, const G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->bin->ShaderBinary( _context, count, shaders, binaryformat, binary, length );
 
 }
 

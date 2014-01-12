@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalTexC.h"
 #include "RegalEmuProcsTexC.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,18 @@ static void REGAL_CALL emuProcInterceptTexC_glActiveTexture(GLenum texture)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->texc->ShadowActiveTexture( texture );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glActiveTextureARB(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->texc->ShadowActiveTexture( texture );
 
 }
 
@@ -72,12 +79,18 @@ static void REGAL_CALL emuProcInterceptTexC_glBindTexture(GLenum target, GLuint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->texc->ShadowBindTexture( target, texture );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glBindTextureEXT(GLenum target, GLuint texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->texc->ShadowBindTexture( target, texture );
 
 }
 
@@ -86,12 +99,18 @@ static void REGAL_CALL emuProcInterceptTexC_glDeleteTextures(GLsizei n, const GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->texc->ShadowDeleteTextures( n, textures );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glDeleteTexturesEXT(GLsizei n, const GLuint *textures)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->texc->ShadowDeleteTextures( n, textures );
 
 }
 
@@ -100,12 +119,22 @@ static void REGAL_CALL emuProcInterceptTexC_glGenTextures(GLsizei n, GLuint *tex
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+
+  _context->emu.curr.glGenTextures( n, textures );
+  _context->texc->ShadowGenTextures( n, textures );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glGenTexturesEXT(GLsizei n, GLuint *textures)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+
+  _context->emu.curr.glGenTextures( n, textures );
+  _context->texc->ShadowGenTextures( n, textures );
 
 }
 
@@ -114,12 +143,18 @@ static void REGAL_CALL emuProcInterceptTexC_glGenerateMipmap(GLenum target)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->texc->ShadowGenerateMipmap( target );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glGenerateMipmapEXT(GLenum target)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->texc->ShadowGenerateMipmap( target );
 
 }
 
@@ -128,6 +163,9 @@ static void REGAL_CALL emuProcInterceptTexC_glPixelStorei(GLenum pname, GLint pa
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->texc->ShadowPixelStore( pname, param );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
@@ -135,12 +173,34 @@ static void REGAL_CALL emuProcInterceptTexC_glTexImage2D(GLenum target, GLint le
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->texc->ShadowTexImage2D( target, level, format, type );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexC_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+
+  GLenum targetFormat;
+  GLenum targetType;
+  _context->texc->GetFormatAndType( target, level, &targetFormat, &targetType );
+  Emu::ConvertedBuffer _buffer( _context->texc->unpackPSS, targetFormat, targetType );
+  if ( _buffer.ConvertFrom( width, height, format, type, pixels ) )
+  {
+    if (_context->texc->unpackPSS.alignment != 4)
+      _context->emu.curr.glPixelStorei( GL_UNPACK_ALIGNMENT, 4 );
+    _context->emu.curr.glTexSubImage2D( target, level, xoffset, yoffset, width, height, targetFormat, targetType, _buffer.Get() );
+    if (_context->texc->unpackPSS.alignment != 4)
+      _context->emu.curr.glPixelStorei( GL_UNPACK_ALIGNMENT, _context->texc->unpackPSS.alignment );
+  }
+  else
+  {
+    _context->emu.curr.glTexSubImage2D( target, level, xoffset, yoffset, width, height, format, type, pixels );
+  }
 
 }
 

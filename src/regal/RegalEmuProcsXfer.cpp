@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalXfer.h"
 #include "RegalEmuProcsXfer.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,18 @@ static void REGAL_CALL emuProcInterceptXfer_glActiveTexture(GLenum texture)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->xfer->ShadowActiveTexture( texture );
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glActiveTextureARB(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->xfer->ShadowActiveTexture( texture );
 
 }
 
@@ -72,12 +79,18 @@ static void REGAL_CALL emuProcInterceptXfer_glCompressedTexImage2D(GLenum target
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data );
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data );
 
 }
 
@@ -86,12 +99,18 @@ static void REGAL_CALL emuProcInterceptXfer_glCompressedTexSubImage2D(GLenum tar
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data );
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
@@ -100,12 +119,18 @@ static void REGAL_CALL emuProcInterceptXfer_glPixelStoref(GLenum pname, GLfloat 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->xfer->PixelStore( _context, pname, param );
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glPixelStorei(GLenum pname, GLint param)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->xfer->PixelStore( _context, pname, param );
 
 }
 
@@ -114,6 +139,9 @@ static void REGAL_CALL emuProcInterceptXfer_glTexImage2D(GLenum target, GLint le
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->xfer->TexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
@@ -121,12 +149,18 @@ static void REGAL_CALL emuProcInterceptXfer_glTexSubImage2D(GLenum target, GLint
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
+
 }
 
 static void REGAL_CALL emuProcInterceptXfer_glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 

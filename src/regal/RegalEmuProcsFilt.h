@@ -38,8 +38,8 @@
   $ astyle --style=allman --indent=spaces=2 --indent-switches
 */
 
-#ifndef REGAL_EMU_PROCS_FILTER_H
-#define REGAL_EMU_PROCS_FILTER_H
+#ifndef REGAL_EMU_PROCS_FILT_H
+#define REGAL_EMU_PROCS_FILT_H
 
 #include "RegalUtil.h"
 
@@ -55,11 +55,11 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void EmuProcsInterceptFilter( Dispatch::GL & dt );
+void EmuProcsInterceptFilt( Dispatch::GL & dt );
 
-struct EmuProcsOriginateFilter {
+struct EmuProcsOriginateFilt {
 
-  EmuProcsOriginateFilter() {
+  EmuProcsOriginateFilt() {
     memset(this, 0, sizeof( *this ) );
   }
 
@@ -478,4 +478,4 @@ REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION
 
-#endif // REGAL_EMU_PROCS_FILTER_H
+#endif // REGAL_EMU_PROCS_FILT_H

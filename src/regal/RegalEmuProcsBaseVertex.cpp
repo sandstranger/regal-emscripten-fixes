@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalBaseVertex.h"
 #include "RegalEmuProcsBaseVertex.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glBindBuffer(GLenum target, GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glBindBuffer( target, buffer );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glBindVertexArray(GLuint array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glBindVertexArray( array );
 
 }
 
@@ -72,12 +79,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glBindVertexBuffer(GLuint bind
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glBindVertexBuffer( bindingindex, buffer, offset, stride );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glClientActiveTexture(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glClientActiveTexture( texture );
 
 }
 
@@ -86,12 +99,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glClientActiveTextureARB(GLenu
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glClientActiveTexture( texture );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glColorPointer( size, type, stride, pointer );
 
 }
 
@@ -100,12 +119,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glDisable(GLenum cap)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glDisable( cap );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glDisableClientState(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glDisableClientState( cap );
 
 }
 
@@ -114,12 +139,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glDisableClientStateIndexedEXT
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glDisableClientStateIndexedEXT( array, index );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glDisableClientStateiEXT(GLenum array, GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glDisableClientStateiEXT( array, index );
 
 }
 
@@ -128,12 +159,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glDisableIndexedEXT(GLenum tar
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glDisableIndexedEXT( target, index );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glDisableVertexArrayAttribEXT( vaobj, array );
 
 }
 
@@ -142,12 +179,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glDisableVertexArrayEXT(GLuint
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glDisableVertexArrayEXT( vaobj, array );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glDisableVertexAttribArray(GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glDisableVertexAttribArray( index );
 
 }
 
@@ -156,12 +199,20 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glDisablei(GLenum cap, GLuint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glDisablei( cap, index );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->bv->glDrawElementsBaseVertex( *_context, mode, count, type, indices, basevertex ) ) {
+    _context->emu.curr.glDrawElementsBaseVertex( mode, count, type, indices, basevertex );
+  }
 
 }
 
@@ -170,12 +221,22 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glDrawElementsInstancedBaseVer
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->bv->glDrawElementsInstancedBaseVertex( *_context, mode, count, type, indices, primcount, basevertex ) ) {
+    _context->emu.curr.glDrawElementsInstancedBaseVertex( mode, count, type, indices, primcount, basevertex );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->bv->glDrawElementsInstancedBaseVertexBaseInstance( *_context, mode, count, type, indices, primcount, basevertex, baseinstance ) ) {
+    _context->emu.curr.glDrawElementsInstancedBaseVertexBaseInstance( mode, count, type, indices, primcount, basevertex, baseinstance );
+  }
 
 }
 
@@ -184,12 +245,20 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glDrawRangeElementsBaseVertex(
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->bv->glDrawRangeElementsBaseVertex( *_context, mode, start, end, count, type, indices, basevertex ) ) {
+    _context->emu.curr.glDrawRangeElementsBaseVertex( mode, start, end, count, type, indices, basevertex );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glEdgeFlagPointer( stride, pointer );
 
 }
 
@@ -198,12 +267,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glEnable(GLenum cap)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glEnable( cap );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glEnableClientState(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glEnableClientState( cap );
 
 }
 
@@ -212,12 +287,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glEnableClientStateIndexedEXT(
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glEnableClientStateIndexedEXT( array, index );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glEnableClientStateiEXT(GLenum array, GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glEnableClientStateiEXT( array, index );
 
 }
 
@@ -226,12 +307,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glEnableIndexedEXT(GLenum targ
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glEnableIndexedEXT( target, index );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glEnableVertexArrayAttribEXT( vaobj, array );
 
 }
 
@@ -240,12 +327,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glEnableVertexArrayEXT(GLuint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glEnableVertexArrayEXT( vaobj, array );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glEnableVertexAttribArray(GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glEnableVertexAttribArray( index );
 
 }
 
@@ -254,12 +347,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glEnablei(GLenum cap, GLuint i
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glEnablei( cap, index );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glFogCoordPointer( type, stride, pointer );
 
 }
 
@@ -268,12 +367,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glIndexPointer(GLenum type, GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glIndexPointer( type, stride, pointer );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glInterleavedArrays( format, stride, pointer );
 
 }
 
@@ -282,12 +387,20 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glMultiDrawElementsBaseVertex(
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->bv->glMultiDrawElementsBaseVertex( *_context, mode, count, type, indices, primcount, basevertex ) ) {
+    _context->emu.curr.glMultiDrawElementsBaseVertex( mode, count, type, indices, primcount, basevertex );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glMultiTexCoordPointerEXT( texunit, size, type, stride, pointer );
 
 }
 
@@ -296,12 +409,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glNormalPointer(GLenum type, G
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glNormalPointer( type, stride, pointer );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glPrimitiveRestartIndex(GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glPrimitiveRestartIndex( index );
 
 }
 
@@ -310,12 +429,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glSecondaryColorPointer(GLint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glSecondaryColorPointer( size, type, stride, pointer );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glTexCoordPointer( size, type, stride, pointer );
 
 }
 
@@ -324,12 +449,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayColorOffsetEXT(GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexArrayColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexArrayEdgeFlagOffsetEXT( vaobj, buffer, stride, offset );
 
 }
 
@@ -338,12 +469,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayFogCoordOffsetEXT
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexArrayFogCoordOffsetEXT( vaobj, buffer, type, stride, offset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexArrayIndexOffsetEXT( vaobj, buffer, type, stride, offset );
 
 }
 
@@ -352,12 +489,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayMultiTexCoordOffs
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexArrayMultiTexCoordOffsetEXT( vaobj, buffer, texunit, size, type, stride, offset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexArrayNormalOffsetEXT( vaobj, buffer, type, stride, offset );
 
 }
 
@@ -366,12 +509,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArraySecondaryColorOff
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexArraySecondaryColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexArrayTexCoordOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
 }
 
@@ -380,12 +529,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayVertexAttribIOffs
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexArrayVertexAttribIOffsetEXT( vaobj, buffer, index, size, type, stride, offset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexArrayVertexAttribOffsetEXT( vaobj, buffer, index, size, type, normalized, stride, offset );
 
 }
 
@@ -394,12 +549,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexArrayVertexOffsetEXT(G
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexArrayVertexOffsetEXT( vaobj, buffer, size, type, stride, offset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexAttribBinding( attribindex, bindingindex );
 
 }
 
@@ -408,12 +569,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribDivisor(GLuint i
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexAttribDivisor( index, divisor );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
 
 }
 
@@ -422,12 +589,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribIFormat(GLuint a
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexAttribIFormat( attribindex, size, type, relativeoffset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexAttribIPointer( index, size, type, stride, pointer );
 
 }
 
@@ -436,12 +609,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribLFormat(GLuint a
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexAttribLFormat( attribindex, size, type, relativeoffset );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexAttribLPointer( index, size, type, stride, pointer );
 
 }
 
@@ -450,6 +629,9 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexAttribPointer(GLuint i
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexAttribPointer( index, size, type, normalized, stride, pointer );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor)
@@ -457,12 +639,18 @@ static void REGAL_CALL emuProcInterceptBaseVertex_glVertexBindingDivisor(GLuint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->bv->glVertexBindingDivisor( bindingindex, divisor );
+
 }
 
 static void REGAL_CALL emuProcInterceptBaseVertex_glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->bv->glVertexPointer( size, type, stride, pointer );
 
 }
 

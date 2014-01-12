@@ -104,14 +104,14 @@ namespace Emu
     }
   }
 
-  inline void GetFilterLayerInfo( RegalContext &ctx, LayerInfo &layer ) {
+  inline void GetFiltLayerInfo( RegalContext &ctx, LayerInfo &layer ) {
     UNUSED_PARAMETER( ctx );
     layer = LayerInfo();
     layer.emulationNeeded = true;
     layer.emulationSupported = true;
   }
 
-  inline void SetFilterEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
+  inline void SetFiltEmuInfo( bool enable, EmuInfo *emuInfo, LayerInfo &layer ) {
 	UNUSED_PARAMETER(emuInfo);
     if( enable || layer.emulationNeeded == false ) {
       // set some sort of enable

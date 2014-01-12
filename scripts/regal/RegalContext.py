@@ -31,7 +31,7 @@ from EmuIff    import iffFormulae
 from EmuQuads  import quadsFormulae
 from EmuBin    import binFormulae
 from EmuObj    import objFormulae
-from EmuFilter import formulae as filterFormulae
+from EmuFilt   import formulae as filtFormulae
 from EmuTexC   import texCFormulae
 from EmuTextureStorage import texstoFormulae
 from EmuBaseVertex import baseVertexFormulae
@@ -78,7 +78,7 @@ emu = [
     { 'type' : 'Emu::Dsa',        'include' : 'RegalDsa.h',        'member' : 'dsa',    'plugin' : False, 'suffix' : 'Dsa',        'ifdef' : 'REGAL_EMU_DSA',        'formulae' : dsaFormulae        },
     { 'type' : 'Emu::Vao',        'include' : 'RegalVao.h',        'member' : 'vao',    'plugin' : False, 'suffix' : 'Vao',        'ifdef' : 'REGAL_EMU_VAO',        'formulae' : vaoFormulae        },
     { 'type' : 'Emu::TexC',       'include' : 'RegalTexC.h',       'member' : 'texc',   'plugin' : False, 'suffix' : 'TexC',       'ifdef' : 'REGAL_EMU_TEXC',       'formulae' : texCFormulae       },
-    { 'type' : 'Emu::Filt',       'include' : 'RegalFilt.h',       'member' : 'filt',   'plugin' : False, 'suffix' : 'Filter',     'ifdef' : 'REGAL_EMU_FILTER',     'formulae' : filterFormulae     },
+    { 'type' : 'Emu::Filt',       'include' : 'RegalFilt.h',       'member' : 'filt',   'plugin' : False, 'suffix' : 'Filt',     'ifdef' : 'REGAL_EMU_FILT',     'formulae' : filtFormulae     },
     { 'type' : 'void',            'include' : None,                'member' : None,     'plugin' : False, 'suffix' : None,         'ifdef' : None,                   'formulae' : None               }
 ]
 

@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalRect.h"
 #include "RegalEmuProcsRect.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,18 @@ static void REGAL_CALL emuProcInterceptRect_glRectd(GLdouble x1, GLdouble y1, GL
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->rect->glRect( _context, x1, y1, x2, y2 );
+
 }
 
 static void REGAL_CALL emuProcInterceptRect_glRectdv(const GLdouble *v1, const GLdouble *v2)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->rect->glRectv( _context, v1, v2 );
 
 }
 
@@ -72,12 +79,18 @@ static void REGAL_CALL emuProcInterceptRect_glRectf(GLfloat x1, GLfloat y1, GLfl
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->rect->glRect( _context, x1, y1, x2, y2 );
+
 }
 
 static void REGAL_CALL emuProcInterceptRect_glRectfv(const GLfloat *v1, const GLfloat *v2)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->rect->glRectv( _context, v1, v2 );
 
 }
 
@@ -86,12 +99,18 @@ static void REGAL_CALL emuProcInterceptRect_glRecti(GLint x1, GLint y1, GLint x2
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->rect->glRect( _context, x1, y1, x2, y2 );
+
 }
 
 static void REGAL_CALL emuProcInterceptRect_glRectiv(const GLint *v1, const GLint *v2)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->rect->glRectv( _context, v1, v2 );
 
 }
 
@@ -100,12 +119,18 @@ static void REGAL_CALL emuProcInterceptRect_glRects(GLshort x1, GLshort y1, GLsh
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->rect->glRect( _context, x1, y1, x2, y2 );
+
 }
 
 static void REGAL_CALL emuProcInterceptRect_glRectsv(const GLshort *v1, const GLshort *v2)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->rect->glRectv( _context, v1, v2 );
 
 }
 

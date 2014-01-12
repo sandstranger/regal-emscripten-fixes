@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalQuads.h"
 #include "RegalEmuProcsQuads.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,18 @@ static void REGAL_CALL emuProcInterceptQuads_glBindBuffer(GLenum target, GLuint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->quads->glBindBuffer( target, buffer );
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glCullFace(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->quads->glCullFace( mode );
 
 }
 
@@ -72,12 +79,23 @@ static void REGAL_CALL emuProcInterceptQuads_glDisable(GLenum cap)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->quads->glDisable( cap );
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glDrawArrays(GLenum mode, GLint first, GLsizei count)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+
+  if ( ! _context->quads->glDrawArrays( _context, mode, first, count ) ) {
+    Dispatch::GL *_next = &_context->emu.curr;
+    RegalAssert(_next);
+    return _next->glDrawArrays( mode, first, count );
+  }
 
 }
 
@@ -86,12 +104,23 @@ static void REGAL_CALL emuProcInterceptQuads_glDrawArraysEXT(GLenum mode, GLint 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+
+  if ( ! _context->quads->glDrawArrays( _context, mode, first, count ) ) {
+    Dispatch::GL *_next = &_context->emu.curr;
+    RegalAssert(_next);
+    return _next->glDrawArrays( mode, first, count );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glEnable(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->quads->glEnable( cap );
 
 }
 
@@ -100,12 +129,18 @@ static void REGAL_CALL emuProcInterceptQuads_glFrontFace(GLenum mode)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->quads->glFrontFace( mode );
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glPolygonMode(GLenum face, GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->quads->glPolygonMode( face, mode );
 
 }
 
@@ -114,6 +149,9 @@ static void REGAL_CALL emuProcInterceptQuads_glProvokingVertex(GLenum mode)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->quads->glProvokingVertex( mode );
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glProvokingVertexEXT(GLenum mode)
@@ -121,12 +159,18 @@ static void REGAL_CALL emuProcInterceptQuads_glProvokingVertexEXT(GLenum mode)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  _context->quads->glProvokingVertex( mode );
+
 }
 
 static void REGAL_CALL emuProcInterceptQuads_glShadeModel(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // prefix
+  _context->quads->glShadeModel( mode );
 
 }
 

@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalHint.h"
 #include "RegalEmuProcsHint.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,22 @@ static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(GLenum pname, GLboolea
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->hint->glGetv( *_context, pname, params ) ) {
+    _context->emu.curr.glGetBooleanv( pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptHint_glGetDoublev(GLenum pname, GLdouble *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->hint->glGetv( *_context, pname, params ) ) {
+    _context->emu.curr.glGetDoublev( pname, params );
+  }
 
 }
 
@@ -72,6 +83,11 @@ static void REGAL_CALL emuProcInterceptHint_glGetFloatv(GLenum pname, GLfloat *p
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->hint->glGetv( *_context, pname, params ) ) {
+    _context->emu.curr.glGetFloatv( pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(GLenum pname, GLint *params)
@@ -79,12 +95,22 @@ static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(GLenum pname, GLint *p
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  if( ! _context->hint->glGetv( *_context, pname, params ) ) {
+    _context->emu.curr.glGetIntegerv( pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptHint_glHint(GLenum target, GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  if( ! _context->hint->glHint( *_context, target, mode ) ) {
+    _context->emu.curr.glHint( target, mode );
+  }
 
 }
 

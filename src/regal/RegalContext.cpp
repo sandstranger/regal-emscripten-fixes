@@ -196,20 +196,20 @@ RegalContext::Init()
     emuLevel = 16;
     {
       Emu::LayerInfo layer;
-      Emu::GetFilterLayerInfo( *this, layer );
+      Emu::GetFiltLayerInfo( *this, layer );
       bool enable = false;
-      #if REGAL_EMU_FILTER
-      if( Config::enableEmuFilter ) {
-        enable = layer.emulationSupported && ( layer.emulationNeeded || Config::forceEmuFilter );
+      #if REGAL_EMU_FILT
+      if( Config::enableEmuFilt ) {
+        enable = layer.emulationSupported && ( layer.emulationNeeded || Config::forceEmuFilt );
         if( enable ) {
-          Info("Activating emulation layer REGAL_EMU_FILTER");
+          Info("Activating emulation layer REGAL_EMU_FILT");
           filt = new Emu::Filt;
           emuLevel = 0;
           filt->Init(*this);
         }
       }
-      #endif /* REGAL_EMU_FILTER */
-      Emu::SetFilterEmuInfo( enable, this->emuInfo, layer );
+      #endif /* REGAL_EMU_FILT */
+      Emu::SetFiltEmuInfo( enable, this->emuInfo, layer );
     }
     {
       Emu::LayerInfo layer;
@@ -627,14 +627,14 @@ RegalContext::Cleanup()
     texc.reset(NULL);
   }
   #endif /* REGAL_EMU_TEXC */
-  #if REGAL_EMU_FILTER
+  #if REGAL_EMU_FILT
   if (filt)
   {
     emuLevel = 0;
     filt->Cleanup(*this);
     filt.reset(NULL);
   }
-  #endif /* REGAL_EMU_FILTER */
+  #endif /* REGAL_EMU_FILT */
 #endif
 
   initialized = false;

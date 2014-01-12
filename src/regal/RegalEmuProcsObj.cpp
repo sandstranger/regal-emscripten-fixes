@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalObj.h"
 #include "RegalEmuProcsObj.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,18 @@ static void REGAL_CALL emuProcInterceptObj_glBindBuffer(GLenum target, GLuint bu
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->obj->BindBuffer(*_context, target, buffer);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glBindBufferARB(GLenum target, GLuint buffer)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->obj->BindBuffer(*_context, target, buffer);
 
 }
 
@@ -72,12 +79,18 @@ static void REGAL_CALL emuProcInterceptObj_glBindTexture(GLenum target, GLuint t
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->obj->BindTexture(*_context, target, texture);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glBindVertexArray(GLuint array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->obj->BindVertexArray(*_context, array);
 
 }
 
@@ -86,12 +99,18 @@ static void REGAL_CALL emuProcInterceptObj_glDeleteBuffers(GLsizei n, const GLui
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->obj->DeleteBuffers(*_context, n, buffers);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->obj->DeleteBuffers(*_context, n, buffers);
 
 }
 
@@ -100,12 +119,18 @@ static void REGAL_CALL emuProcInterceptObj_glDeleteTextures(GLsizei n, const GLu
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->obj->DeleteTextures(*_context, n, textures);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glDeleteVertexArrays(GLsizei n, const GLuint *arrays)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->obj->DeleteVertexArrays(*_context, n, arrays);
 
 }
 
@@ -114,12 +139,18 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture1D(GLenum target,
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->emu.curr.glFramebufferTexture1D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture1DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->emu.curr.glFramebufferTexture1DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -128,12 +159,18 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2D(GLenum target,
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->emu.curr.glFramebufferTexture2D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->emu.curr.glFramebufferTexture2DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -142,12 +179,18 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DMultisampleEXT(
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->emu.curr.glFramebufferTexture2DMultisampleEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, samples);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->emu.curr.glFramebufferTexture2DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -156,12 +199,18 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture3DEXT(GLenum targ
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->emu.curr.glFramebufferTexture3DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture3DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->emu.curr.glFramebufferTexture3DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
 
 }
 
@@ -170,12 +219,18 @@ static void REGAL_CALL emuProcInterceptObj_glGenBuffers(GLsizei n, GLuint *buffe
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->obj->GenBuffers(*_context, n, buffers);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glGenBuffersARB(GLsizei n, GLuint *buffers)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->obj->GenBuffers(*_context, n, buffers);
 
 }
 
@@ -184,12 +239,18 @@ static void REGAL_CALL emuProcInterceptObj_glGenTextures(GLsizei n, GLuint *text
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->obj->GenTextures(*_context, n, textures);
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glGenVertexArrays(GLsizei n, GLuint *arrays)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->obj->GenVertexArrays(*_context, n, arrays);
 
 }
 
@@ -198,12 +259,32 @@ static void REGAL_CALL emuProcInterceptObj_glGetFramebufferAttachmentParameteriv
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->emu.curr.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
+  if (pname == GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME)
+  {
+    GLint attachType = GL_RENDERBUFFER;
+    _context->emu.curr.glGetFramebufferAttachmentParameteriv(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
+    if (attachType == GL_TEXTURE)
+      *params = _context->obj->textureNames.ToAppName(*params);
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptObj_glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->emu.curr.glGetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
+  if (pname == GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME)
+  {
+    GLint attachType = GL_RENDERBUFFER;
+    _context->emu.curr.glGetFramebufferAttachmentParameterivEXT(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
+    if (attachType == GL_TEXTURE)
+      *params = _context->obj->textureNames.ToAppName(*params);
+  }
 
 }
 
@@ -212,8 +293,9 @@ static GLboolean REGAL_CALL emuProcInterceptObj_glIsBuffer(GLuint buffer)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
-  GLboolean  ret = GL_FALSE;
-  return ret;
+  // impl
+  return _context->obj->IsBuffer(*_context, buffer);
+
 }
 
 static GLboolean REGAL_CALL emuProcInterceptObj_glIsBufferARB(GLuint buffer)
@@ -221,8 +303,9 @@ static GLboolean REGAL_CALL emuProcInterceptObj_glIsBufferARB(GLuint buffer)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
-  GLboolean  ret = GL_FALSE;
-  return ret;
+  // impl
+  return _context->obj->IsBuffer(*_context, buffer);
+
 }
 
 static GLboolean REGAL_CALL emuProcInterceptObj_glIsTexture(GLuint texture)
@@ -230,8 +313,9 @@ static GLboolean REGAL_CALL emuProcInterceptObj_glIsTexture(GLuint texture)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
-  GLboolean  ret = GL_FALSE;
-  return ret;
+  // impl
+  return _context->obj->IsTexture(*_context, texture);
+
 }
 
 static GLboolean REGAL_CALL emuProcInterceptObj_glIsVertexArray(GLuint array)
@@ -239,8 +323,9 @@ static GLboolean REGAL_CALL emuProcInterceptObj_glIsVertexArray(GLuint array)
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
-  GLboolean  ret = GL_FALSE;
-  return ret;
+  // impl
+  return _context->obj->IsVertexArray(*_context, array);
+
 }
 
 void EmuProcsInterceptObj( Dispatch::GL & dt ) {

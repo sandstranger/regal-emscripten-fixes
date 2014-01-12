@@ -47,6 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalTexSto.h"
 #include "RegalEmuProcsTexSto.h"
 
 REGAL_GLOBAL_END
@@ -58,12 +59,22 @@ static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(GLsizei n, const 
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // prefix
+  RegalAssert(_context);
+  _context->texsto->DeleteTextures( _context, n, textures );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  RegalAssert(_context);
+  if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+     _context->emu.curr.glGetTexParameterIiv( target, pname, params );
+  }
 
 }
 
@@ -72,12 +83,24 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIuiv(GLenum targe
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  RegalAssert(_context);
+  if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+     _context->emu.curr.glGetTexParameterIuiv( target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  RegalAssert(_context);
+  if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+     _context->emu.curr.glGetTexParameterfv( target, pname, params );
+  }
 
 }
 
@@ -86,12 +109,21 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameteriv(GLenum target,
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  RegalAssert(_context);
+  if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+     _context->emu.curr.glGetTexParameteriv( target, pname, params );
+  }
+
 }
 
 static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->texsto->TextureStorage( _context, target, levels, internalformat, width );
 
 }
 
@@ -100,12 +132,18 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1DEXT(GLenum target, G
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->texsto->TextureStorage( _context, target, levels, internalformat, width );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height );
 
 }
 
@@ -114,6 +152,9 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2DEXT(GLenum target, G
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
@@ -121,12 +162,18 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3D(GLenum target, GLsi
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
+  // impl
+  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height, depth );
+
 }
 
 static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+
+  // impl
+  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height, depth );
 
 }
 
