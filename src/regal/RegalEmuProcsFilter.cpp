@@ -38,9 +38,6 @@
   $ astyle --style=allman --indent=spaces=2 --indent-switches
 */
 
-#ifndef REGAL_EMU_PROCS_VAO_H
-#define REGAL_EMU_PROCS_VAO_H
-
 #include "RegalUtil.h"
 
 #if REGAL_EMULATION
@@ -50,15 +47,15 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "RegalEmuProcsFilter.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void EmuProcsInterceptVao( Dispatch::GL & dt );
+void EmuProcsInterceptFilter( Dispatch::GL & dt ) {
+}
 
 REGAL_NAMESPACE_END
 
 #endif // REGAL_EMULATION
-
-#endif // REGAL_EMU_PROCS_VAO_H

@@ -422,70 +422,134 @@
 		437B7CAA187A8BF700C863BB /* RegalDispatchLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C98187A8BF700C863BB /* RegalDispatchLog.h */; };
 		437B7CAB187A8BF700C863BB /* RegalDispatchLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C98187A8BF700C863BB /* RegalDispatchLog.h */; };
 		437B7CAC187A8BF700C863BB /* RegalDispatchLog.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C98187A8BF700C863BB /* RegalDispatchLog.h */; };
-		437B7CAD187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C99187A8BF700C863BB /* RegalOrigBaseVertex.h */; };
-		437B7CAE187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C99187A8BF700C863BB /* RegalOrigBaseVertex.h */; };
-		437B7CAF187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C99187A8BF700C863BB /* RegalOrigBaseVertex.h */; };
-		437B7CB0187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C99187A8BF700C863BB /* RegalOrigBaseVertex.h */; };
-		437B7CB1187A8BF700C863BB /* RegalOrigBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9A187A8BF700C863BB /* RegalOrigBin.h */; };
-		437B7CB2187A8BF700C863BB /* RegalOrigBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9A187A8BF700C863BB /* RegalOrigBin.h */; };
-		437B7CB3187A8BF700C863BB /* RegalOrigBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9A187A8BF700C863BB /* RegalOrigBin.h */; };
-		437B7CB4187A8BF700C863BB /* RegalOrigBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9A187A8BF700C863BB /* RegalOrigBin.h */; };
-		437B7CB5187A8BF700C863BB /* RegalOrigDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9B187A8BF700C863BB /* RegalOrigDsa.h */; };
-		437B7CB6187A8BF700C863BB /* RegalOrigDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9B187A8BF700C863BB /* RegalOrigDsa.h */; };
-		437B7CB7187A8BF700C863BB /* RegalOrigDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9B187A8BF700C863BB /* RegalOrigDsa.h */; };
-		437B7CB8187A8BF700C863BB /* RegalOrigDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9B187A8BF700C863BB /* RegalOrigDsa.h */; };
-		437B7CB9187A8BF700C863BB /* RegalOrigFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9C187A8BF700C863BB /* RegalOrigFilter.h */; };
-		437B7CBA187A8BF700C863BB /* RegalOrigFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9C187A8BF700C863BB /* RegalOrigFilter.h */; };
-		437B7CBB187A8BF700C863BB /* RegalOrigFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9C187A8BF700C863BB /* RegalOrigFilter.h */; };
-		437B7CBC187A8BF700C863BB /* RegalOrigFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9C187A8BF700C863BB /* RegalOrigFilter.h */; };
-		437B7CBD187A8BF700C863BB /* RegalOrigHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9D187A8BF700C863BB /* RegalOrigHint.h */; };
-		437B7CBE187A8BF700C863BB /* RegalOrigHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9D187A8BF700C863BB /* RegalOrigHint.h */; };
-		437B7CBF187A8BF700C863BB /* RegalOrigHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9D187A8BF700C863BB /* RegalOrigHint.h */; };
-		437B7CC0187A8BF700C863BB /* RegalOrigHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9D187A8BF700C863BB /* RegalOrigHint.h */; };
-		437B7CC1187A8BF700C863BB /* RegalOrigIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9E187A8BF700C863BB /* RegalOrigIff.h */; };
-		437B7CC2187A8BF700C863BB /* RegalOrigIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9E187A8BF700C863BB /* RegalOrigIff.h */; };
-		437B7CC3187A8BF700C863BB /* RegalOrigIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9E187A8BF700C863BB /* RegalOrigIff.h */; };
-		437B7CC4187A8BF700C863BB /* RegalOrigIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9E187A8BF700C863BB /* RegalOrigIff.h */; };
-		437B7CC5187A8BF700C863BB /* RegalOrigObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9F187A8BF700C863BB /* RegalOrigObj.h */; };
-		437B7CC6187A8BF700C863BB /* RegalOrigObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9F187A8BF700C863BB /* RegalOrigObj.h */; };
-		437B7CC7187A8BF700C863BB /* RegalOrigObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9F187A8BF700C863BB /* RegalOrigObj.h */; };
-		437B7CC8187A8BF700C863BB /* RegalOrigObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7C9F187A8BF700C863BB /* RegalOrigObj.h */; };
-		437B7CC9187A8BF700C863BB /* RegalOrigPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA0187A8BF700C863BB /* RegalOrigPpa.h */; };
-		437B7CCA187A8BF700C863BB /* RegalOrigPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA0187A8BF700C863BB /* RegalOrigPpa.h */; };
-		437B7CCB187A8BF700C863BB /* RegalOrigPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA0187A8BF700C863BB /* RegalOrigPpa.h */; };
-		437B7CCC187A8BF700C863BB /* RegalOrigPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA0187A8BF700C863BB /* RegalOrigPpa.h */; };
-		437B7CCD187A8BF700C863BB /* RegalOrigPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA1187A8BF700C863BB /* RegalOrigPpca.h */; };
-		437B7CCE187A8BF700C863BB /* RegalOrigPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA1187A8BF700C863BB /* RegalOrigPpca.h */; };
-		437B7CCF187A8BF700C863BB /* RegalOrigPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA1187A8BF700C863BB /* RegalOrigPpca.h */; };
-		437B7CD0187A8BF700C863BB /* RegalOrigPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA1187A8BF700C863BB /* RegalOrigPpca.h */; };
-		437B7CD1187A8BF700C863BB /* RegalOrigQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA2187A8BF700C863BB /* RegalOrigQuads.h */; };
-		437B7CD2187A8BF700C863BB /* RegalOrigQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA2187A8BF700C863BB /* RegalOrigQuads.h */; };
-		437B7CD3187A8BF700C863BB /* RegalOrigQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA2187A8BF700C863BB /* RegalOrigQuads.h */; };
-		437B7CD4187A8BF700C863BB /* RegalOrigQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA2187A8BF700C863BB /* RegalOrigQuads.h */; };
-		437B7CD5187A8BF700C863BB /* RegalOrigRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA3187A8BF700C863BB /* RegalOrigRect.h */; };
-		437B7CD6187A8BF700C863BB /* RegalOrigRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA3187A8BF700C863BB /* RegalOrigRect.h */; };
-		437B7CD7187A8BF700C863BB /* RegalOrigRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA3187A8BF700C863BB /* RegalOrigRect.h */; };
-		437B7CD8187A8BF700C863BB /* RegalOrigRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA3187A8BF700C863BB /* RegalOrigRect.h */; };
-		437B7CD9187A8BF700C863BB /* RegalOrigSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA4187A8BF700C863BB /* RegalOrigSo.h */; };
-		437B7CDA187A8BF700C863BB /* RegalOrigSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA4187A8BF700C863BB /* RegalOrigSo.h */; };
-		437B7CDB187A8BF700C863BB /* RegalOrigSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA4187A8BF700C863BB /* RegalOrigSo.h */; };
-		437B7CDC187A8BF700C863BB /* RegalOrigSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA4187A8BF700C863BB /* RegalOrigSo.h */; };
-		437B7CDD187A8BF700C863BB /* RegalOrigTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA5187A8BF700C863BB /* RegalOrigTexC.h */; };
-		437B7CDE187A8BF700C863BB /* RegalOrigTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA5187A8BF700C863BB /* RegalOrigTexC.h */; };
-		437B7CDF187A8BF700C863BB /* RegalOrigTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA5187A8BF700C863BB /* RegalOrigTexC.h */; };
-		437B7CE0187A8BF700C863BB /* RegalOrigTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA5187A8BF700C863BB /* RegalOrigTexC.h */; };
-		437B7CE1187A8BF700C863BB /* RegalOrigTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA6187A8BF700C863BB /* RegalOrigTexSto.h */; };
-		437B7CE2187A8BF700C863BB /* RegalOrigTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA6187A8BF700C863BB /* RegalOrigTexSto.h */; };
-		437B7CE3187A8BF700C863BB /* RegalOrigTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA6187A8BF700C863BB /* RegalOrigTexSto.h */; };
-		437B7CE4187A8BF700C863BB /* RegalOrigTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA6187A8BF700C863BB /* RegalOrigTexSto.h */; };
-		437B7CE5187A8BF700C863BB /* RegalOrigVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA7187A8BF700C863BB /* RegalOrigVao.h */; };
-		437B7CE6187A8BF700C863BB /* RegalOrigVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA7187A8BF700C863BB /* RegalOrigVao.h */; };
-		437B7CE7187A8BF700C863BB /* RegalOrigVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA7187A8BF700C863BB /* RegalOrigVao.h */; };
-		437B7CE8187A8BF700C863BB /* RegalOrigVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA7187A8BF700C863BB /* RegalOrigVao.h */; };
-		437B7CE9187A8BF700C863BB /* RegalOrigXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA8187A8BF700C863BB /* RegalOrigXfer.h */; };
-		437B7CEA187A8BF700C863BB /* RegalOrigXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA8187A8BF700C863BB /* RegalOrigXfer.h */; };
-		437B7CEB187A8BF700C863BB /* RegalOrigXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA8187A8BF700C863BB /* RegalOrigXfer.h */; };
-		437B7CEC187A8BF700C863BB /* RegalOrigXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7CA8187A8BF700C863BB /* RegalOrigXfer.h */; };
+		437B7DAF18821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D8F18821D3000C863BB /* RegalEmuProcsBaseVertex.cpp */; };
+		437B7DB018821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D8F18821D3000C863BB /* RegalEmuProcsBaseVertex.cpp */; };
+		437B7DB118821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D8F18821D3000C863BB /* RegalEmuProcsBaseVertex.cpp */; };
+		437B7DB218821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D8F18821D3000C863BB /* RegalEmuProcsBaseVertex.cpp */; };
+		437B7DB318821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9018821D3000C863BB /* RegalEmuProcsBaseVertex.h */; };
+		437B7DB418821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9018821D3000C863BB /* RegalEmuProcsBaseVertex.h */; };
+		437B7DB518821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9018821D3000C863BB /* RegalEmuProcsBaseVertex.h */; };
+		437B7DB618821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9018821D3000C863BB /* RegalEmuProcsBaseVertex.h */; };
+		437B7DB718821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9118821D3000C863BB /* RegalEmuProcsBin.cpp */; };
+		437B7DB818821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9118821D3000C863BB /* RegalEmuProcsBin.cpp */; };
+		437B7DB918821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9118821D3000C863BB /* RegalEmuProcsBin.cpp */; };
+		437B7DBA18821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9118821D3000C863BB /* RegalEmuProcsBin.cpp */; };
+		437B7DBB18821D3100C863BB /* RegalEmuProcsBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9218821D3000C863BB /* RegalEmuProcsBin.h */; };
+		437B7DBC18821D3100C863BB /* RegalEmuProcsBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9218821D3000C863BB /* RegalEmuProcsBin.h */; };
+		437B7DBD18821D3100C863BB /* RegalEmuProcsBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9218821D3000C863BB /* RegalEmuProcsBin.h */; };
+		437B7DBE18821D3100C863BB /* RegalEmuProcsBin.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9218821D3000C863BB /* RegalEmuProcsBin.h */; };
+		437B7DBF18821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9318821D3000C863BB /* RegalEmuProcsDsa.cpp */; };
+		437B7DC018821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9318821D3000C863BB /* RegalEmuProcsDsa.cpp */; };
+		437B7DC118821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9318821D3000C863BB /* RegalEmuProcsDsa.cpp */; };
+		437B7DC218821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9318821D3000C863BB /* RegalEmuProcsDsa.cpp */; };
+		437B7DC318821D3100C863BB /* RegalEmuProcsDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9418821D3000C863BB /* RegalEmuProcsDsa.h */; };
+		437B7DC418821D3100C863BB /* RegalEmuProcsDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9418821D3000C863BB /* RegalEmuProcsDsa.h */; };
+		437B7DC518821D3100C863BB /* RegalEmuProcsDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9418821D3000C863BB /* RegalEmuProcsDsa.h */; };
+		437B7DC618821D3100C863BB /* RegalEmuProcsDsa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9418821D3000C863BB /* RegalEmuProcsDsa.h */; };
+		437B7DC718821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9518821D3000C863BB /* RegalEmuProcsFilter.cpp */; };
+		437B7DC818821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9518821D3000C863BB /* RegalEmuProcsFilter.cpp */; };
+		437B7DC918821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9518821D3000C863BB /* RegalEmuProcsFilter.cpp */; };
+		437B7DCA18821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9518821D3000C863BB /* RegalEmuProcsFilter.cpp */; };
+		437B7DCB18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9618821D3000C863BB /* RegalEmuProcsFilter.h */; };
+		437B7DCC18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9618821D3000C863BB /* RegalEmuProcsFilter.h */; };
+		437B7DCD18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9618821D3000C863BB /* RegalEmuProcsFilter.h */; };
+		437B7DCE18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9618821D3000C863BB /* RegalEmuProcsFilter.h */; };
+		437B7DCF18821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9718821D3000C863BB /* RegalEmuProcsHint.cpp */; };
+		437B7DD018821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9718821D3000C863BB /* RegalEmuProcsHint.cpp */; };
+		437B7DD118821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9718821D3000C863BB /* RegalEmuProcsHint.cpp */; };
+		437B7DD218821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9718821D3000C863BB /* RegalEmuProcsHint.cpp */; };
+		437B7DD318821D3100C863BB /* RegalEmuProcsHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9818821D3000C863BB /* RegalEmuProcsHint.h */; };
+		437B7DD418821D3100C863BB /* RegalEmuProcsHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9818821D3000C863BB /* RegalEmuProcsHint.h */; };
+		437B7DD518821D3100C863BB /* RegalEmuProcsHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9818821D3000C863BB /* RegalEmuProcsHint.h */; };
+		437B7DD618821D3100C863BB /* RegalEmuProcsHint.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9818821D3000C863BB /* RegalEmuProcsHint.h */; };
+		437B7DD718821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9918821D3000C863BB /* RegalEmuProcsIff.cpp */; };
+		437B7DD818821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9918821D3000C863BB /* RegalEmuProcsIff.cpp */; };
+		437B7DD918821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9918821D3000C863BB /* RegalEmuProcsIff.cpp */; };
+		437B7DDA18821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9918821D3000C863BB /* RegalEmuProcsIff.cpp */; };
+		437B7DDB18821D3100C863BB /* RegalEmuProcsIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9A18821D3100C863BB /* RegalEmuProcsIff.h */; };
+		437B7DDC18821D3100C863BB /* RegalEmuProcsIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9A18821D3100C863BB /* RegalEmuProcsIff.h */; };
+		437B7DDD18821D3100C863BB /* RegalEmuProcsIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9A18821D3100C863BB /* RegalEmuProcsIff.h */; };
+		437B7DDE18821D3100C863BB /* RegalEmuProcsIff.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9A18821D3100C863BB /* RegalEmuProcsIff.h */; };
+		437B7DDF18821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9B18821D3100C863BB /* RegalEmuProcsObj.cpp */; };
+		437B7DE018821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9B18821D3100C863BB /* RegalEmuProcsObj.cpp */; };
+		437B7DE118821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9B18821D3100C863BB /* RegalEmuProcsObj.cpp */; };
+		437B7DE218821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9B18821D3100C863BB /* RegalEmuProcsObj.cpp */; };
+		437B7DE318821D3100C863BB /* RegalEmuProcsObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9C18821D3100C863BB /* RegalEmuProcsObj.h */; };
+		437B7DE418821D3100C863BB /* RegalEmuProcsObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9C18821D3100C863BB /* RegalEmuProcsObj.h */; };
+		437B7DE518821D3100C863BB /* RegalEmuProcsObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9C18821D3100C863BB /* RegalEmuProcsObj.h */; };
+		437B7DE618821D3100C863BB /* RegalEmuProcsObj.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9C18821D3100C863BB /* RegalEmuProcsObj.h */; };
+		437B7DE718821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9D18821D3100C863BB /* RegalEmuProcsPpa.cpp */; };
+		437B7DE818821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9D18821D3100C863BB /* RegalEmuProcsPpa.cpp */; };
+		437B7DE918821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9D18821D3100C863BB /* RegalEmuProcsPpa.cpp */; };
+		437B7DEA18821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9D18821D3100C863BB /* RegalEmuProcsPpa.cpp */; };
+		437B7DEB18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9E18821D3100C863BB /* RegalEmuProcsPpa.h */; };
+		437B7DEC18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9E18821D3100C863BB /* RegalEmuProcsPpa.h */; };
+		437B7DED18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9E18821D3100C863BB /* RegalEmuProcsPpa.h */; };
+		437B7DEE18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7D9E18821D3100C863BB /* RegalEmuProcsPpa.h */; };
+		437B7DEF18821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9F18821D3100C863BB /* RegalEmuProcsPpca.cpp */; };
+		437B7DF018821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9F18821D3100C863BB /* RegalEmuProcsPpca.cpp */; };
+		437B7DF118821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9F18821D3100C863BB /* RegalEmuProcsPpca.cpp */; };
+		437B7DF218821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7D9F18821D3100C863BB /* RegalEmuProcsPpca.cpp */; };
+		437B7DF318821D3100C863BB /* RegalEmuProcsPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA018821D3100C863BB /* RegalEmuProcsPpca.h */; };
+		437B7DF418821D3100C863BB /* RegalEmuProcsPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA018821D3100C863BB /* RegalEmuProcsPpca.h */; };
+		437B7DF518821D3100C863BB /* RegalEmuProcsPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA018821D3100C863BB /* RegalEmuProcsPpca.h */; };
+		437B7DF618821D3100C863BB /* RegalEmuProcsPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA018821D3100C863BB /* RegalEmuProcsPpca.h */; };
+		437B7DF718821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA118821D3100C863BB /* RegalEmuProcsQuads.cpp */; };
+		437B7DF818821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA118821D3100C863BB /* RegalEmuProcsQuads.cpp */; };
+		437B7DF918821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA118821D3100C863BB /* RegalEmuProcsQuads.cpp */; };
+		437B7DFA18821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA118821D3100C863BB /* RegalEmuProcsQuads.cpp */; };
+		437B7DFB18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA218821D3100C863BB /* RegalEmuProcsQuads.h */; };
+		437B7DFC18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA218821D3100C863BB /* RegalEmuProcsQuads.h */; };
+		437B7DFD18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA218821D3100C863BB /* RegalEmuProcsQuads.h */; };
+		437B7DFE18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA218821D3100C863BB /* RegalEmuProcsQuads.h */; };
+		437B7DFF18821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA318821D3100C863BB /* RegalEmuProcsRect.cpp */; };
+		437B7E0018821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA318821D3100C863BB /* RegalEmuProcsRect.cpp */; };
+		437B7E0118821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA318821D3100C863BB /* RegalEmuProcsRect.cpp */; };
+		437B7E0218821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA318821D3100C863BB /* RegalEmuProcsRect.cpp */; };
+		437B7E0318821D3100C863BB /* RegalEmuProcsRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA418821D3100C863BB /* RegalEmuProcsRect.h */; };
+		437B7E0418821D3100C863BB /* RegalEmuProcsRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA418821D3100C863BB /* RegalEmuProcsRect.h */; };
+		437B7E0518821D3100C863BB /* RegalEmuProcsRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA418821D3100C863BB /* RegalEmuProcsRect.h */; };
+		437B7E0618821D3100C863BB /* RegalEmuProcsRect.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA418821D3100C863BB /* RegalEmuProcsRect.h */; };
+		437B7E0718821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA518821D3100C863BB /* RegalEmuProcsSo.cpp */; };
+		437B7E0818821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA518821D3100C863BB /* RegalEmuProcsSo.cpp */; };
+		437B7E0918821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA518821D3100C863BB /* RegalEmuProcsSo.cpp */; };
+		437B7E0A18821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA518821D3100C863BB /* RegalEmuProcsSo.cpp */; };
+		437B7E0B18821D3100C863BB /* RegalEmuProcsSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA618821D3100C863BB /* RegalEmuProcsSo.h */; };
+		437B7E0C18821D3100C863BB /* RegalEmuProcsSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA618821D3100C863BB /* RegalEmuProcsSo.h */; };
+		437B7E0D18821D3100C863BB /* RegalEmuProcsSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA618821D3100C863BB /* RegalEmuProcsSo.h */; };
+		437B7E0E18821D3100C863BB /* RegalEmuProcsSo.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA618821D3100C863BB /* RegalEmuProcsSo.h */; };
+		437B7E0F18821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA718821D3100C863BB /* RegalEmuProcsTexC.cpp */; };
+		437B7E1018821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA718821D3100C863BB /* RegalEmuProcsTexC.cpp */; };
+		437B7E1118821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA718821D3100C863BB /* RegalEmuProcsTexC.cpp */; };
+		437B7E1218821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA718821D3100C863BB /* RegalEmuProcsTexC.cpp */; };
+		437B7E1318821D3100C863BB /* RegalEmuProcsTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA818821D3100C863BB /* RegalEmuProcsTexC.h */; };
+		437B7E1418821D3100C863BB /* RegalEmuProcsTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA818821D3100C863BB /* RegalEmuProcsTexC.h */; };
+		437B7E1518821D3100C863BB /* RegalEmuProcsTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA818821D3100C863BB /* RegalEmuProcsTexC.h */; };
+		437B7E1618821D3100C863BB /* RegalEmuProcsTexC.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DA818821D3100C863BB /* RegalEmuProcsTexC.h */; };
+		437B7E1718821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA918821D3100C863BB /* RegalEmuProcsTexSto.cpp */; };
+		437B7E1818821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA918821D3100C863BB /* RegalEmuProcsTexSto.cpp */; };
+		437B7E1918821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA918821D3100C863BB /* RegalEmuProcsTexSto.cpp */; };
+		437B7E1A18821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DA918821D3100C863BB /* RegalEmuProcsTexSto.cpp */; };
+		437B7E1B18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAA18821D3100C863BB /* RegalEmuProcsTexSto.h */; };
+		437B7E1C18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAA18821D3100C863BB /* RegalEmuProcsTexSto.h */; };
+		437B7E1D18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAA18821D3100C863BB /* RegalEmuProcsTexSto.h */; };
+		437B7E1E18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAA18821D3100C863BB /* RegalEmuProcsTexSto.h */; };
+		437B7E1F18821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAB18821D3100C863BB /* RegalEmuProcsVao.cpp */; };
+		437B7E2018821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAB18821D3100C863BB /* RegalEmuProcsVao.cpp */; };
+		437B7E2118821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAB18821D3100C863BB /* RegalEmuProcsVao.cpp */; };
+		437B7E2218821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAB18821D3100C863BB /* RegalEmuProcsVao.cpp */; };
+		437B7E2318821D3100C863BB /* RegalEmuProcsVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAC18821D3100C863BB /* RegalEmuProcsVao.h */; };
+		437B7E2418821D3100C863BB /* RegalEmuProcsVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAC18821D3100C863BB /* RegalEmuProcsVao.h */; };
+		437B7E2518821D3100C863BB /* RegalEmuProcsVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAC18821D3100C863BB /* RegalEmuProcsVao.h */; };
+		437B7E2618821D3100C863BB /* RegalEmuProcsVao.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAC18821D3100C863BB /* RegalEmuProcsVao.h */; };
+		437B7E2718821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAD18821D3100C863BB /* RegalEmuProcsXfer.cpp */; };
+		437B7E2818821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAD18821D3100C863BB /* RegalEmuProcsXfer.cpp */; };
+		437B7E2918821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAD18821D3100C863BB /* RegalEmuProcsXfer.cpp */; };
+		437B7E2A18821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 437B7DAD18821D3100C863BB /* RegalEmuProcsXfer.cpp */; };
+		437B7E2B18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAE18821D3100C863BB /* RegalEmuProcsXfer.h */; };
+		437B7E2C18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAE18821D3100C863BB /* RegalEmuProcsXfer.h */; };
+		437B7E2D18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAE18821D3100C863BB /* RegalEmuProcsXfer.h */; };
+		437B7E2E18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */ = {isa = PBXBuildFile; fileRef = 437B7DAE18821D3100C863BB /* RegalEmuProcsXfer.h */; };
 		438D2C2D16DE668A005E03F6 /* RegalPixelConversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 438D2C2116DE668A005E03F6 /* RegalPixelConversions.cpp */; };
 		438D2C2E16DE668A005E03F6 /* RegalPixelConversions.h in Headers */ = {isa = PBXBuildFile; fileRef = 438D2C2216DE668A005E03F6 /* RegalPixelConversions.h */; };
 		438D2C3016DE668A005E03F6 /* RegalPpca.h in Headers */ = {isa = PBXBuildFile; fileRef = 438D2C2516DE668A005E03F6 /* RegalPpca.h */; };
@@ -819,22 +883,38 @@
 		437B7C8318787E2D00C863BB /* RegalDispatchDebug.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalDispatchDebug.h; path = ../../../src/regal/RegalDispatchDebug.h; sourceTree = "<group>"; };
 		437B7C8618790DFA00C863BB /* RegalDispatchEmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalDispatchEmu.h; path = ../../../src/regal/RegalDispatchEmu.h; sourceTree = "<group>"; };
 		437B7C98187A8BF700C863BB /* RegalDispatchLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalDispatchLog.h; path = ../../../src/regal/RegalDispatchLog.h; sourceTree = "<group>"; };
-		437B7C99187A8BF700C863BB /* RegalOrigBaseVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigBaseVertex.h; path = ../../../src/regal/RegalOrigBaseVertex.h; sourceTree = "<group>"; };
-		437B7C9A187A8BF700C863BB /* RegalOrigBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigBin.h; path = ../../../src/regal/RegalOrigBin.h; sourceTree = "<group>"; };
-		437B7C9B187A8BF700C863BB /* RegalOrigDsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigDsa.h; path = ../../../src/regal/RegalOrigDsa.h; sourceTree = "<group>"; };
-		437B7C9C187A8BF700C863BB /* RegalOrigFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigFilter.h; path = ../../../src/regal/RegalOrigFilter.h; sourceTree = "<group>"; };
-		437B7C9D187A8BF700C863BB /* RegalOrigHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigHint.h; path = ../../../src/regal/RegalOrigHint.h; sourceTree = "<group>"; };
-		437B7C9E187A8BF700C863BB /* RegalOrigIff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigIff.h; path = ../../../src/regal/RegalOrigIff.h; sourceTree = "<group>"; };
-		437B7C9F187A8BF700C863BB /* RegalOrigObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigObj.h; path = ../../../src/regal/RegalOrigObj.h; sourceTree = "<group>"; };
-		437B7CA0187A8BF700C863BB /* RegalOrigPpa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigPpa.h; path = ../../../src/regal/RegalOrigPpa.h; sourceTree = "<group>"; };
-		437B7CA1187A8BF700C863BB /* RegalOrigPpca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigPpca.h; path = ../../../src/regal/RegalOrigPpca.h; sourceTree = "<group>"; };
-		437B7CA2187A8BF700C863BB /* RegalOrigQuads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigQuads.h; path = ../../../src/regal/RegalOrigQuads.h; sourceTree = "<group>"; };
-		437B7CA3187A8BF700C863BB /* RegalOrigRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigRect.h; path = ../../../src/regal/RegalOrigRect.h; sourceTree = "<group>"; };
-		437B7CA4187A8BF700C863BB /* RegalOrigSo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigSo.h; path = ../../../src/regal/RegalOrigSo.h; sourceTree = "<group>"; };
-		437B7CA5187A8BF700C863BB /* RegalOrigTexC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigTexC.h; path = ../../../src/regal/RegalOrigTexC.h; sourceTree = "<group>"; };
-		437B7CA6187A8BF700C863BB /* RegalOrigTexSto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigTexSto.h; path = ../../../src/regal/RegalOrigTexSto.h; sourceTree = "<group>"; };
-		437B7CA7187A8BF700C863BB /* RegalOrigVao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigVao.h; path = ../../../src/regal/RegalOrigVao.h; sourceTree = "<group>"; };
-		437B7CA8187A8BF700C863BB /* RegalOrigXfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalOrigXfer.h; path = ../../../src/regal/RegalOrigXfer.h; sourceTree = "<group>"; };
+		437B7D8F18821D3000C863BB /* RegalEmuProcsBaseVertex.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsBaseVertex.cpp; path = ../../../src/regal/RegalEmuProcsBaseVertex.cpp; sourceTree = "<group>"; };
+		437B7D9018821D3000C863BB /* RegalEmuProcsBaseVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsBaseVertex.h; path = ../../../src/regal/RegalEmuProcsBaseVertex.h; sourceTree = "<group>"; };
+		437B7D9118821D3000C863BB /* RegalEmuProcsBin.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsBin.cpp; path = ../../../src/regal/RegalEmuProcsBin.cpp; sourceTree = "<group>"; };
+		437B7D9218821D3000C863BB /* RegalEmuProcsBin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsBin.h; path = ../../../src/regal/RegalEmuProcsBin.h; sourceTree = "<group>"; };
+		437B7D9318821D3000C863BB /* RegalEmuProcsDsa.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsDsa.cpp; path = ../../../src/regal/RegalEmuProcsDsa.cpp; sourceTree = "<group>"; };
+		437B7D9418821D3000C863BB /* RegalEmuProcsDsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsDsa.h; path = ../../../src/regal/RegalEmuProcsDsa.h; sourceTree = "<group>"; };
+		437B7D9518821D3000C863BB /* RegalEmuProcsFilter.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsFilter.cpp; path = ../../../src/regal/RegalEmuProcsFilter.cpp; sourceTree = "<group>"; };
+		437B7D9618821D3000C863BB /* RegalEmuProcsFilter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsFilter.h; path = ../../../src/regal/RegalEmuProcsFilter.h; sourceTree = "<group>"; };
+		437B7D9718821D3000C863BB /* RegalEmuProcsHint.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsHint.cpp; path = ../../../src/regal/RegalEmuProcsHint.cpp; sourceTree = "<group>"; };
+		437B7D9818821D3000C863BB /* RegalEmuProcsHint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsHint.h; path = ../../../src/regal/RegalEmuProcsHint.h; sourceTree = "<group>"; };
+		437B7D9918821D3000C863BB /* RegalEmuProcsIff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsIff.cpp; path = ../../../src/regal/RegalEmuProcsIff.cpp; sourceTree = "<group>"; };
+		437B7D9A18821D3100C863BB /* RegalEmuProcsIff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsIff.h; path = ../../../src/regal/RegalEmuProcsIff.h; sourceTree = "<group>"; };
+		437B7D9B18821D3100C863BB /* RegalEmuProcsObj.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsObj.cpp; path = ../../../src/regal/RegalEmuProcsObj.cpp; sourceTree = "<group>"; };
+		437B7D9C18821D3100C863BB /* RegalEmuProcsObj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsObj.h; path = ../../../src/regal/RegalEmuProcsObj.h; sourceTree = "<group>"; };
+		437B7D9D18821D3100C863BB /* RegalEmuProcsPpa.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsPpa.cpp; path = ../../../src/regal/RegalEmuProcsPpa.cpp; sourceTree = "<group>"; };
+		437B7D9E18821D3100C863BB /* RegalEmuProcsPpa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsPpa.h; path = ../../../src/regal/RegalEmuProcsPpa.h; sourceTree = "<group>"; };
+		437B7D9F18821D3100C863BB /* RegalEmuProcsPpca.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsPpca.cpp; path = ../../../src/regal/RegalEmuProcsPpca.cpp; sourceTree = "<group>"; };
+		437B7DA018821D3100C863BB /* RegalEmuProcsPpca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsPpca.h; path = ../../../src/regal/RegalEmuProcsPpca.h; sourceTree = "<group>"; };
+		437B7DA118821D3100C863BB /* RegalEmuProcsQuads.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsQuads.cpp; path = ../../../src/regal/RegalEmuProcsQuads.cpp; sourceTree = "<group>"; };
+		437B7DA218821D3100C863BB /* RegalEmuProcsQuads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsQuads.h; path = ../../../src/regal/RegalEmuProcsQuads.h; sourceTree = "<group>"; };
+		437B7DA318821D3100C863BB /* RegalEmuProcsRect.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsRect.cpp; path = ../../../src/regal/RegalEmuProcsRect.cpp; sourceTree = "<group>"; };
+		437B7DA418821D3100C863BB /* RegalEmuProcsRect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsRect.h; path = ../../../src/regal/RegalEmuProcsRect.h; sourceTree = "<group>"; };
+		437B7DA518821D3100C863BB /* RegalEmuProcsSo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsSo.cpp; path = ../../../src/regal/RegalEmuProcsSo.cpp; sourceTree = "<group>"; };
+		437B7DA618821D3100C863BB /* RegalEmuProcsSo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsSo.h; path = ../../../src/regal/RegalEmuProcsSo.h; sourceTree = "<group>"; };
+		437B7DA718821D3100C863BB /* RegalEmuProcsTexC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsTexC.cpp; path = ../../../src/regal/RegalEmuProcsTexC.cpp; sourceTree = "<group>"; };
+		437B7DA818821D3100C863BB /* RegalEmuProcsTexC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsTexC.h; path = ../../../src/regal/RegalEmuProcsTexC.h; sourceTree = "<group>"; };
+		437B7DA918821D3100C863BB /* RegalEmuProcsTexSto.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsTexSto.cpp; path = ../../../src/regal/RegalEmuProcsTexSto.cpp; sourceTree = "<group>"; };
+		437B7DAA18821D3100C863BB /* RegalEmuProcsTexSto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsTexSto.h; path = ../../../src/regal/RegalEmuProcsTexSto.h; sourceTree = "<group>"; };
+		437B7DAB18821D3100C863BB /* RegalEmuProcsVao.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsVao.cpp; path = ../../../src/regal/RegalEmuProcsVao.cpp; sourceTree = "<group>"; };
+		437B7DAC18821D3100C863BB /* RegalEmuProcsVao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsVao.h; path = ../../../src/regal/RegalEmuProcsVao.h; sourceTree = "<group>"; };
+		437B7DAD18821D3100C863BB /* RegalEmuProcsXfer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuProcsXfer.cpp; path = ../../../src/regal/RegalEmuProcsXfer.cpp; sourceTree = "<group>"; };
+		437B7DAE18821D3100C863BB /* RegalEmuProcsXfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuProcsXfer.h; path = ../../../src/regal/RegalEmuProcsXfer.h; sourceTree = "<group>"; };
 		438D2C2116DE668A005E03F6 /* RegalPixelConversions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalPixelConversions.cpp; path = ../../../src/regal/RegalPixelConversions.cpp; sourceTree = "<group>"; };
 		438D2C2216DE668A005E03F6 /* RegalPixelConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalPixelConversions.h; path = ../../../src/regal/RegalPixelConversions.h; sourceTree = "<group>"; };
 		438D2C2316DE668A005E03F6 /* RegalPixelConversions.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RegalPixelConversions.inl; path = ../../../src/regal/RegalPixelConversions.inl; sourceTree = "<group>"; };
@@ -1166,6 +1246,38 @@
 				43A6C1E615C48D200063667E /* RegalEmu.h */,
 				BCBA1FC717DF836700CB6E19 /* RegalEmuInfo.cpp */,
 				BCBA1FC817DF836700CB6E19 /* RegalEmuInfo.h */,
+				437B7D8F18821D3000C863BB /* RegalEmuProcsBaseVertex.cpp */,
+				437B7D9018821D3000C863BB /* RegalEmuProcsBaseVertex.h */,
+				437B7D9118821D3000C863BB /* RegalEmuProcsBin.cpp */,
+				437B7D9218821D3000C863BB /* RegalEmuProcsBin.h */,
+				437B7D9318821D3000C863BB /* RegalEmuProcsDsa.cpp */,
+				437B7D9418821D3000C863BB /* RegalEmuProcsDsa.h */,
+				437B7D9518821D3000C863BB /* RegalEmuProcsFilter.cpp */,
+				437B7D9618821D3000C863BB /* RegalEmuProcsFilter.h */,
+				437B7D9718821D3000C863BB /* RegalEmuProcsHint.cpp */,
+				437B7D9818821D3000C863BB /* RegalEmuProcsHint.h */,
+				437B7D9918821D3000C863BB /* RegalEmuProcsIff.cpp */,
+				437B7D9A18821D3100C863BB /* RegalEmuProcsIff.h */,
+				437B7D9B18821D3100C863BB /* RegalEmuProcsObj.cpp */,
+				437B7D9C18821D3100C863BB /* RegalEmuProcsObj.h */,
+				437B7D9D18821D3100C863BB /* RegalEmuProcsPpa.cpp */,
+				437B7D9E18821D3100C863BB /* RegalEmuProcsPpa.h */,
+				437B7D9F18821D3100C863BB /* RegalEmuProcsPpca.cpp */,
+				437B7DA018821D3100C863BB /* RegalEmuProcsPpca.h */,
+				437B7DA118821D3100C863BB /* RegalEmuProcsQuads.cpp */,
+				437B7DA218821D3100C863BB /* RegalEmuProcsQuads.h */,
+				437B7DA318821D3100C863BB /* RegalEmuProcsRect.cpp */,
+				437B7DA418821D3100C863BB /* RegalEmuProcsRect.h */,
+				437B7DA518821D3100C863BB /* RegalEmuProcsSo.cpp */,
+				437B7DA618821D3100C863BB /* RegalEmuProcsSo.h */,
+				437B7DA718821D3100C863BB /* RegalEmuProcsTexC.cpp */,
+				437B7DA818821D3100C863BB /* RegalEmuProcsTexC.h */,
+				437B7DA918821D3100C863BB /* RegalEmuProcsTexSto.cpp */,
+				437B7DAA18821D3100C863BB /* RegalEmuProcsTexSto.h */,
+				437B7DAB18821D3100C863BB /* RegalEmuProcsVao.cpp */,
+				437B7DAC18821D3100C863BB /* RegalEmuProcsVao.h */,
+				437B7DAD18821D3100C863BB /* RegalEmuProcsXfer.cpp */,
+				437B7DAE18821D3100C863BB /* RegalEmuProcsXfer.h */,
 				431D3C0915C9B6F0009DD04F /* RegalEnum.h */,
 				431D3C0A15C9B6F0009DD04F /* RegalFavicon.cpp */,
 				431D3C0B15C9B6F0009DD04F /* RegalFavicon.h */,
@@ -1193,22 +1305,6 @@
 				BCBF1834175EB49D00CB653A /* RegalMutex.h */,
 				BC8E9CBB17C5AF880005C418 /* RegalNamespace.h */,
 				43A6C1F415C48D200063667E /* RegalObj.h */,
-				437B7C99187A8BF700C863BB /* RegalOrigBaseVertex.h */,
-				437B7C9A187A8BF700C863BB /* RegalOrigBin.h */,
-				437B7C9B187A8BF700C863BB /* RegalOrigDsa.h */,
-				437B7C9C187A8BF700C863BB /* RegalOrigFilter.h */,
-				437B7C9D187A8BF700C863BB /* RegalOrigHint.h */,
-				437B7C9E187A8BF700C863BB /* RegalOrigIff.h */,
-				437B7C9F187A8BF700C863BB /* RegalOrigObj.h */,
-				437B7CA0187A8BF700C863BB /* RegalOrigPpa.h */,
-				437B7CA1187A8BF700C863BB /* RegalOrigPpca.h */,
-				437B7CA2187A8BF700C863BB /* RegalOrigQuads.h */,
-				437B7CA3187A8BF700C863BB /* RegalOrigRect.h */,
-				437B7CA4187A8BF700C863BB /* RegalOrigSo.h */,
-				437B7CA5187A8BF700C863BB /* RegalOrigTexC.h */,
-				437B7CA6187A8BF700C863BB /* RegalOrigTexSto.h */,
-				437B7CA7187A8BF700C863BB /* RegalOrigVao.h */,
-				437B7CA8187A8BF700C863BB /* RegalOrigXfer.h */,
 				438D2C2116DE668A005E03F6 /* RegalPixelConversions.cpp */,
 				438D2C2216DE668A005E03F6 /* RegalPixelConversions.h */,
 				438D2C2316DE668A005E03F6 /* RegalPixelConversions.inl */,
@@ -1258,39 +1354,39 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				437B7CAE187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */,
-				437B7CDA187A8BF700C863BB /* RegalOrigSo.h in Headers */,
-				437B7CCA187A8BF700C863BB /* RegalOrigPpa.h in Headers */,
-				437B7CE2187A8BF700C863BB /* RegalOrigTexSto.h in Headers */,
+				437B7E2C18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */,
 				437B7CAA187A8BF700C863BB /* RegalDispatchLog.h in Headers */,
 				437B7C8818790DFA00C863BB /* RegalDispatchEmu.h in Headers */,
-				437B7CDE187A8BF700C863BB /* RegalOrigTexC.h in Headers */,
-				437B7CD2187A8BF700C863BB /* RegalOrigQuads.h in Headers */,
-				437B7CD6187A8BF700C863BB /* RegalOrigRect.h in Headers */,
-				437B7CC6187A8BF700C863BB /* RegalOrigObj.h in Headers */,
-				437B7CCE187A8BF700C863BB /* RegalOrigPpca.h in Headers */,
-				437B7CBA187A8BF700C863BB /* RegalOrigFilter.h in Headers */,
-				437B7CBE187A8BF700C863BB /* RegalOrigHint.h in Headers */,
-				437B7CB2187A8BF700C863BB /* RegalOrigBin.h in Headers */,
-				437B7CE6187A8BF700C863BB /* RegalOrigVao.h in Headers */,
-				437B7CEA187A8BF700C863BB /* RegalOrigXfer.h in Headers */,
-				437B7CB6187A8BF700C863BB /* RegalOrigDsa.h in Headers */,
+				437B7DDC18821D3100C863BB /* RegalEmuProcsIff.h in Headers */,
+				437B7DEC18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */,
 				43C7583C184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
-				437B7CC2187A8BF700C863BB /* RegalOrigIff.h in Headers */,
+				437B7E2418821D3100C863BB /* RegalEmuProcsVao.h in Headers */,
 				433EC15618788EC9007304B6 /* geom.h in Headers */,
 				433EC15218788EC9007304B6 /* dict.h in Headers */,
+				437B7DD418821D3100C863BB /* RegalEmuProcsHint.h in Headers */,
+				437B7DCC18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */,
+				437B7DE418821D3100C863BB /* RegalEmuProcsObj.h in Headers */,
 				433EC16E18788EC9007304B6 /* render.h in Headers */,
 				433EC17A18788EC9007304B6 /* tessmono.h in Headers */,
 				433EC17618788EC9007304B6 /* tess.h in Headers */,
 				43C7583C184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
+				437B7DF418821D3100C863BB /* RegalEmuProcsPpca.h in Headers */,
 				433EC12D18788E72007304B6 /* gluint.h in Headers */,
+				437B7E0418821D3100C863BB /* RegalEmuProcsRect.h in Headers */,
 				433EC16A18788EC9007304B6 /* priorityq.h in Headers */,
 				433EC16618788EC9007304B6 /* priorityq-sort.h in Headers */,
+				437B7E1C18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */,
+				437B7DBC18821D3100C863BB /* RegalEmuProcsBin.h in Headers */,
+				437B7E0C18821D3100C863BB /* RegalEmuProcsSo.h in Headers */,
 				433EC1D0187C51F0007304B6 /* RegalPrint.h in Headers */,
+				437B7E1418821D3100C863BB /* RegalEmuProcsTexC.h in Headers */,
 				433EC15A18788EC9007304B6 /* memalloc.h in Headers */,
+				437B7DC418821D3100C863BB /* RegalEmuProcsDsa.h in Headers */,
+				437B7DFC18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */,
 				433EC14E18788EC9007304B6 /* dict-list.h in Headers */,
 				433EC15E18788EC9007304B6 /* mesh.h in Headers */,
 				433EC16418788EC9007304B6 /* priorityq-heap.h in Headers */,
+				437B7DB418821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */,
 				433EC17218788EC9007304B6 /* sweep.h in Headers */,
 				433EC16218788EC9007304B6 /* normal.h in Headers */,
 			);
@@ -1301,82 +1397,82 @@
 			buildActionMask = 2147483647;
 			files = (
 				4359169618367DEE002CB92C /* linear.h in Headers */,
-				437B7CDB187A8BF700C863BB /* RegalOrigSo.h in Headers */,
-				437B7CCB187A8BF700C863BB /* RegalOrigPpa.h in Headers */,
+				437B7DB518821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */,
+				437B7E1518821D3100C863BB /* RegalEmuProcsTexC.h in Headers */,
 				4359169718367DEE002CB92C /* RegalBin.h in Headers */,
 				4359169818367DEE002CB92C /* RegalConfig.h in Headers */,
 				4359169918367DEE002CB92C /* RegalContext.h in Headers */,
-				437B7CE7187A8BF700C863BB /* RegalOrigVao.h in Headers */,
 				4359169A18367DEE002CB92C /* RegalContextInfo.h in Headers */,
 				4359169B18367DEE002CB92C /* RegalDebugInfo.h in Headers */,
 				4359169C18367DEE002CB92C /* RegalDispatch.h in Headers */,
 				4359169D18367DEE002CB92C /* RegalDispatchError.h in Headers */,
 				437B7C8918790DFA00C863BB /* RegalDispatchEmu.h in Headers */,
 				437B7CAB187A8BF700C863BB /* RegalDispatchLog.h in Headers */,
-				437B7CCF187A8BF700C863BB /* RegalOrigPpca.h in Headers */,
 				4359169E18367DEE002CB92C /* RegalDsa.h in Headers */,
-				437B7CBF187A8BF700C863BB /* RegalOrigHint.h in Headers */,
 				4359169F18367DEE002CB92C /* RegalEmu.h in Headers */,
+				437B7DD518821D3100C863BB /* RegalEmuProcsHint.h in Headers */,
 				435916A018367DEE002CB92C /* RegalHelper.h in Headers */,
 				435916A118367DEE002CB92C /* RegalHttp.h in Headers */,
+				437B7DDD18821D3100C863BB /* RegalEmuProcsIff.h in Headers */,
+				437B7DC518821D3100C863BB /* RegalEmuProcsDsa.h in Headers */,
 				435916A218367DEE002CB92C /* RegalIff.h in Headers */,
 				435916A318367DEE002CB92C /* RegalInit.h in Headers */,
 				435916A418367DEE002CB92C /* RegalLog.h in Headers */,
-				437B7CC7187A8BF700C863BB /* RegalOrigObj.h in Headers */,
-				437B7CE3187A8BF700C863BB /* RegalOrigTexSto.h in Headers */,
 				435916A518367DEE002CB92C /* RegalLookup.h in Headers */,
+				437B7DF518821D3100C863BB /* RegalEmuProcsPpca.h in Headers */,
 				435916A618367DEE002CB92C /* RegalMarker.h in Headers */,
 				435916A718367DEE002CB92C /* RegalObj.h in Headers */,
 				435916A818367DEE002CB92C /* RegalPpa.h in Headers */,
-				437B7CDF187A8BF700C863BB /* RegalOrigTexC.h in Headers */,
 				435916A918367DEE002CB92C /* RegalPrecompile.h in Headers */,
 				435916AA18367DEE002CB92C /* RegalPrivate.h in Headers */,
 				435916AB18367DEE002CB92C /* RegalState.h in Headers */,
+				437B7E1D18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */,
 				435916AC18367DEE002CB92C /* RegalToken.h in Headers */,
-				437B7CBB187A8BF700C863BB /* RegalOrigFilter.h in Headers */,
+				437B7DCD18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */,
+				437B7DFD18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */,
+				437B7E0D18821D3100C863BB /* RegalEmuProcsSo.h in Headers */,
 				435916AD18367DEE002CB92C /* RegalUtil.h in Headers */,
 				435916AE18367DEE002CB92C /* RegalVao.h in Headers */,
+				437B7DE518821D3100C863BB /* RegalEmuProcsObj.h in Headers */,
 				435916AF18367DEE002CB92C /* RegalEnum.h in Headers */,
 				435916B018367DEE002CB92C /* RegalFavicon.h in Headers */,
 				435916B318367DEE002CB92C /* RegalPush.h in Headers */,
 				435916B418367DEE002CB92C /* RegalSharedList.h in Headers */,
 				435916B518367DEE002CB92C /* RegalSharedMap.h in Headers */,
 				435916B618367DEE002CB92C /* RegalSharedPtr.h in Headers */,
-				437B7CAF187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */,
 				435916B718367DEE002CB92C /* RegalSo.h in Headers */,
 				435916B818367DEE002CB92C /* RegalPixelConversions.h in Headers */,
 				435916B918367DEE002CB92C /* RegalPpca.h in Headers */,
 				435916BA18367DEE002CB92C /* RegalSystem.h in Headers */,
 				435916BB18367DEE002CB92C /* RegalTexC.h in Headers */,
 				435916BC18367DEE002CB92C /* RegalThread.h in Headers */,
-				437B7CD7187A8BF700C863BB /* RegalOrigRect.h in Headers */,
 				435916BD18367DEE002CB92C /* RegalTimer.h in Headers */,
 				435916BE18367DEE002CB92C /* Regal.h in Headers */,
-				437B7CB7187A8BF700C863BB /* RegalOrigDsa.h in Headers */,
 				435916BF18367DEE002CB92C /* RegalBreak.h in Headers */,
 				435916C018367DEE002CB92C /* RegalFilt.h in Headers */,
 				435916C118367DEE002CB92C /* RegalXfer.h in Headers */,
 				435916C218367DEE002CB92C /* RegalMac.h in Headers */,
 				435916C318367DEE002CB92C /* RegalScopedPtr.h in Headers */,
+				437B7E0518821D3100C863BB /* RegalEmuProcsRect.h in Headers */,
+				437B7DBD18821D3100C863BB /* RegalEmuProcsBin.h in Headers */,
 				435916C418367DEE002CB92C /* RegalCacheShader.h in Headers */,
-				437B7CD3187A8BF700C863BB /* RegalOrigQuads.h in Headers */,
 				435916C518367DEE002CB92C /* RegalCacheTexture.h in Headers */,
-				437B7CB3187A8BF700C863BB /* RegalOrigBin.h in Headers */,
 				435916CA18367DEE002CB92C /* RegalBaseVertex.h in Headers */,
 				435916CB18367DEE002CB92C /* RegalClientState.h in Headers */,
 				435916CC18367DEE002CB92C /* RegalFloat4.h in Headers */,
 				435916CD18367DEE002CB92C /* RegalMutex.h in Headers */,
 				435916CE18367DEE002CB92C /* RegalRect.h in Headers */,
 				435916CF18367DEE002CB92C /* RegalHint.h in Headers */,
-				437B7CEB187A8BF700C863BB /* RegalOrigXfer.h in Headers */,
 				435916D018367DEE002CB92C /* RegalNamespace.h in Headers */,
 				435916D118367DEE002CB92C /* RegalTexSto.h in Headers */,
 				435916D218367DEE002CB92C /* RegalEmuInfo.h in Headers */,
+				437B7E2D18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */,
 				433EC1D1187C51F0007304B6 /* RegalPrint.h in Headers */,
 				435916D318367DEE002CB92C /* RegalQuads.h in Headers */,
-				437B7CC3187A8BF700C863BB /* RegalOrigIff.h in Headers */,
 				435916D418367DEE002CB92C /* RegalLayerInfo.h in Headers */,
+				437B7E2518821D3100C863BB /* RegalEmuProcsVao.h in Headers */,
 				435916D518367DEE002CB92C /* RegalShader.h in Headers */,
+				437B7DED18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */,
 				435916D618367DEE002CB92C /* RegalShaderInstance.h in Headers */,
 				43C7583D184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
 			);
@@ -1386,39 +1482,39 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				437B7CB0187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */,
-				437B7CDC187A8BF700C863BB /* RegalOrigSo.h in Headers */,
-				437B7CCC187A8BF700C863BB /* RegalOrigPpa.h in Headers */,
-				437B7CE4187A8BF700C863BB /* RegalOrigTexSto.h in Headers */,
+				437B7E2E18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */,
 				437B7CAC187A8BF700C863BB /* RegalDispatchLog.h in Headers */,
 				437B7C8A18790DFA00C863BB /* RegalDispatchEmu.h in Headers */,
-				437B7CE0187A8BF700C863BB /* RegalOrigTexC.h in Headers */,
-				437B7CD4187A8BF700C863BB /* RegalOrigQuads.h in Headers */,
-				437B7CD8187A8BF700C863BB /* RegalOrigRect.h in Headers */,
-				437B7CC8187A8BF700C863BB /* RegalOrigObj.h in Headers */,
-				437B7CD0187A8BF700C863BB /* RegalOrigPpca.h in Headers */,
-				437B7CBC187A8BF700C863BB /* RegalOrigFilter.h in Headers */,
-				437B7CC0187A8BF700C863BB /* RegalOrigHint.h in Headers */,
-				437B7CB4187A8BF700C863BB /* RegalOrigBin.h in Headers */,
-				437B7CE8187A8BF700C863BB /* RegalOrigVao.h in Headers */,
-				437B7CEC187A8BF700C863BB /* RegalOrigXfer.h in Headers */,
-				437B7CB8187A8BF700C863BB /* RegalOrigDsa.h in Headers */,
+				437B7DDE18821D3100C863BB /* RegalEmuProcsIff.h in Headers */,
+				437B7DEE18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */,
 				43C7583E184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
-				437B7CC4187A8BF700C863BB /* RegalOrigIff.h in Headers */,
+				437B7E2618821D3100C863BB /* RegalEmuProcsVao.h in Headers */,
 				433EC15718788EC9007304B6 /* geom.h in Headers */,
 				433EC15318788EC9007304B6 /* dict.h in Headers */,
+				437B7DD618821D3100C863BB /* RegalEmuProcsHint.h in Headers */,
+				437B7DCE18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */,
+				437B7DE618821D3100C863BB /* RegalEmuProcsObj.h in Headers */,
 				433EC16F18788EC9007304B6 /* render.h in Headers */,
 				433EC17B18788EC9007304B6 /* tessmono.h in Headers */,
 				433EC17718788EC9007304B6 /* tess.h in Headers */,
 				43C7583E184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
+				437B7DF618821D3100C863BB /* RegalEmuProcsPpca.h in Headers */,
 				433EC12E18788E72007304B6 /* gluint.h in Headers */,
+				437B7E0618821D3100C863BB /* RegalEmuProcsRect.h in Headers */,
 				433EC16B18788EC9007304B6 /* priorityq.h in Headers */,
 				433EC16718788EC9007304B6 /* priorityq-sort.h in Headers */,
+				437B7E1E18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */,
+				437B7DBE18821D3100C863BB /* RegalEmuProcsBin.h in Headers */,
+				437B7E0E18821D3100C863BB /* RegalEmuProcsSo.h in Headers */,
 				433EC1D2187C51F0007304B6 /* RegalPrint.h in Headers */,
+				437B7E1618821D3100C863BB /* RegalEmuProcsTexC.h in Headers */,
 				433EC15B18788EC9007304B6 /* memalloc.h in Headers */,
+				437B7DC618821D3100C863BB /* RegalEmuProcsDsa.h in Headers */,
+				437B7DFE18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */,
 				433EC14F18788EC9007304B6 /* dict-list.h in Headers */,
 				433EC15F18788EC9007304B6 /* mesh.h in Headers */,
 				433EC16518788EC9007304B6 /* priorityq-heap.h in Headers */,
+				437B7DB618821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */,
 				433EC17318788EC9007304B6 /* sweep.h in Headers */,
 				433EC16318788EC9007304B6 /* normal.h in Headers */,
 			);
@@ -1440,36 +1536,36 @@
 				43A6C21215C48D200063667E /* RegalDsa.h in Headers */,
 				43A6C21315C48D200063667E /* RegalEmu.h in Headers */,
 				43A6C21515C48D200063667E /* RegalHelper.h in Headers */,
+				437B7E2318821D3100C863BB /* RegalEmuProcsVao.h in Headers */,
+				437B7DBB18821D3100C863BB /* RegalEmuProcsBin.h in Headers */,
+				437B7DE318821D3100C863BB /* RegalEmuProcsObj.h in Headers */,
 				43A6C21715C48D200063667E /* RegalHttp.h in Headers */,
 				43A6C21915C48D200063667E /* RegalIff.h in Headers */,
 				43A6C21B15C48D200063667E /* RegalInit.h in Headers */,
-				437B7CD5187A8BF700C863BB /* RegalOrigRect.h in Headers */,
-				437B7CD9187A8BF700C863BB /* RegalOrigSo.h in Headers */,
 				43A6C21D15C48D200063667E /* RegalLog.h in Headers */,
 				43A6C21F15C48D200063667E /* RegalLookup.h in Headers */,
-				437B7CE9187A8BF700C863BB /* RegalOrigXfer.h in Headers */,
-				437B7CD1187A8BF700C863BB /* RegalOrigQuads.h in Headers */,
 				43A6C22015C48D200063667E /* RegalMarker.h in Headers */,
 				43A6C22115C48D200063667E /* RegalObj.h in Headers */,
 				43A6C22215C48D200063667E /* RegalPpa.h in Headers */,
-				437B7CB9187A8BF700C863BB /* RegalOrigFilter.h in Headers */,
 				43A6C22415C48D200063667E /* RegalPrecompile.h in Headers */,
 				433EC1CF187C51F0007304B6 /* RegalPrint.h in Headers */,
+				437B7DD318821D3100C863BB /* RegalEmuProcsHint.h in Headers */,
+				437B7DB318821D3100C863BB /* RegalEmuProcsBaseVertex.h in Headers */,
 				43A6C22515C48D200063667E /* RegalPrivate.h in Headers */,
-				437B7CE5187A8BF700C863BB /* RegalOrigVao.h in Headers */,
 				43A6C22615C48D200063667E /* RegalState.h in Headers */,
 				43A6C22815C48D200063667E /* RegalToken.h in Headers */,
-				437B7CAD187A8BF700C863BB /* RegalOrigBaseVertex.h in Headers */,
+				437B7DC318821D3100C863BB /* RegalEmuProcsDsa.h in Headers */,
 				437B7CA9187A8BF700C863BB /* RegalDispatchLog.h in Headers */,
 				43A6C22A15C48D200063667E /* RegalUtil.h in Headers */,
-				437B7CDD187A8BF700C863BB /* RegalOrigTexC.h in Headers */,
 				43A6C22B15C48D200063667E /* RegalVao.h in Headers */,
 				431D3C0D15C9B6F0009DD04F /* RegalEnum.h in Headers */,
 				431D3C0F15C9B6F0009DD04F /* RegalFavicon.h in Headers */,
+				437B7DFB18821D3100C863BB /* RegalEmuProcsQuads.h in Headers */,
 				437B7C8418787E2D00C863BB /* RegalDispatchDebug.h in Headers */,
 				BCBEC707167AD72700B38E16 /* RegalPush.h in Headers */,
 				BCBEC70A167AD72700B38E16 /* RegalSharedList.h in Headers */,
 				BCBEC70B167AD72700B38E16 /* RegalSharedMap.h in Headers */,
+				437B7DF318821D3100C863BB /* RegalEmuProcsPpca.h in Headers */,
 				BCBEC70C167AD72700B38E16 /* RegalSharedPtr.h in Headers */,
 				BCBEC70E167AD72700B38E16 /* RegalSo.h in Headers */,
 				438D2C2E16DE668A005E03F6 /* RegalPixelConversions.h in Headers */,
@@ -1477,36 +1573,36 @@
 				438D2C3116DE668A005E03F6 /* RegalSystem.h in Headers */,
 				438D2C3316DE668A005E03F6 /* RegalTexC.h in Headers */,
 				438D2C3416DE668A005E03F6 /* RegalThread.h in Headers */,
-				437B7CB1187A8BF700C863BB /* RegalOrigBin.h in Headers */,
-				437B7CE1187A8BF700C863BB /* RegalOrigTexSto.h in Headers */,
-				437B7CC9187A8BF700C863BB /* RegalOrigPpa.h in Headers */,
 				438D2C3516DE668A005E03F6 /* RegalTimer.h in Headers */,
+				437B7E1B18821D3100C863BB /* RegalEmuProcsTexSto.h in Headers */,
 				438D2C3716DE6699005E03F6 /* Regal.h in Headers */,
+				437B7DCB18821D3100C863BB /* RegalEmuProcsFilter.h in Headers */,
 				BC94B98C16DFDC6200116D55 /* RegalBreak.h in Headers */,
 				BC94B99816DFDF1F00116D55 /* RegalFilt.h in Headers */,
+				437B7E2B18821D3100C863BB /* RegalEmuProcsXfer.h in Headers */,
 				430443F116F1656A0078C0F9 /* RegalXfer.h in Headers */,
 				430443F416F1658F0078C0F9 /* RegalMac.h in Headers */,
+				437B7DDB18821D3100C863BB /* RegalEmuProcsIff.h in Headers */,
 				430443F516F1658F0078C0F9 /* RegalScopedPtr.h in Headers */,
 				BC3209DD16F3A28900D1A9E0 /* RegalCacheShader.h in Headers */,
 				BC3209DF16F3A28900D1A9E0 /* RegalCacheTexture.h in Headers */,
 				BCBF1837175EB49D00CB653A /* RegalBaseVertex.h in Headers */,
 				BCBF1838175EB49D00CB653A /* RegalClientState.h in Headers */,
+				437B7E0318821D3100C863BB /* RegalEmuProcsRect.h in Headers */,
 				BCBF183B175EB49D00CB653A /* RegalFloat4.h in Headers */,
 				BCBF183C175EB49D00CB653A /* RegalMutex.h in Headers */,
 				BCBF183E175EB49D00CB653A /* RegalRect.h in Headers */,
 				BC8E9CC017C5AF880005C418 /* RegalHint.h in Headers */,
+				437B7E0B18821D3100C863BB /* RegalEmuProcsSo.h in Headers */,
 				BC8E9CC117C5AF880005C418 /* RegalNamespace.h in Headers */,
-				437B7CB5187A8BF700C863BB /* RegalOrigDsa.h in Headers */,
 				BC8E9CC217C5AF880005C418 /* RegalTexSto.h in Headers */,
-				437B7CC5187A8BF700C863BB /* RegalOrigObj.h in Headers */,
 				BCBA1FCB17DF836700CB6E19 /* RegalEmuInfo.h in Headers */,
-				437B7CC1187A8BF700C863BB /* RegalOrigIff.h in Headers */,
-				437B7CCD187A8BF700C863BB /* RegalOrigPpca.h in Headers */,
+				437B7DEB18821D3100C863BB /* RegalEmuProcsPpa.h in Headers */,
 				BC4DBEC41804FB0600F6D226 /* RegalQuads.h in Headers */,
+				437B7E1318821D3100C863BB /* RegalEmuProcsTexC.h in Headers */,
 				435914DB182BF69F002CB92C /* RegalLayerInfo.h in Headers */,
 				435914DD182BF69F002CB92C /* RegalShader.h in Headers */,
 				435914EB182BFBDB002CB92C /* RegalShaderInstance.h in Headers */,
-				437B7CBD187A8BF700C863BB /* RegalOrigHint.h in Headers */,
 				43C7583B184DB9C0007E765F /* RegalDispatchHttp.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -1723,6 +1819,7 @@
 			files = (
 				435915921836766E002CB92C /* linear.h in Sources */,
 				435915931836766E002CB92C /* Regal.cpp in Sources */,
+				437B7DB018821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */,
 				435915941836766E002CB92C /* Regal.h in Sources */,
 				435915951836766E002CB92C /* RegalBaseVertex.h in Sources */,
 				435915961836766E002CB92C /* RegalBin.h in Sources */,
@@ -1736,6 +1833,7 @@
 				4359159D1836766E002CB92C /* RegalClientState.h in Sources */,
 				4359159E1836766E002CB92C /* RegalConfig.cpp in Sources */,
 				4359159F1836766E002CB92C /* RegalConfig.h in Sources */,
+				437B7E2018821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */,
 				433EC15818788EC9007304B6 /* memalloc.c in Sources */,
 				435915A01836766E002CB92C /* RegalContext.cpp in Sources */,
 				435915A11836766E002CB92C /* RegalContext.h in Sources */,
@@ -1744,12 +1842,14 @@
 				435915A41836766E002CB92C /* RegalDebugInfo.h in Sources */,
 				435915A51836766E002CB92C /* RegalDispatch.cpp in Sources */,
 				435915A61836766E002CB92C /* RegalDispatch.h in Sources */,
+				437B7DC018821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */,
 				435915A71836766E002CB92C /* RegalDispatchCache.cpp in Sources */,
 				433EC17018788EC9007304B6 /* sweep.c in Sources */,
 				435915A91836766E002CB92C /* RegalDispatchDebug.cpp in Sources */,
 				435915AA1836766E002CB92C /* RegalDispatchEmu.cpp in Sources */,
 				433EC16818788EC9007304B6 /* priorityq.c in Sources */,
 				433EC12B18788E72007304B6 /* glue.c in Sources */,
+				437B7DF818821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */,
 				435915B11836766E002CB92C /* RegalDispatchError.cpp in Sources */,
 				435915B21836766E002CB92C /* RegalDispatchError.h in Sources */,
 				435915B31836766E002CB92C /* RegalDispatchGlobal.cpp in Sources */,
@@ -1762,16 +1862,23 @@
 				435915BA1836766E002CB92C /* RegalDispatchStaticES2.cpp in Sources */,
 				433EC15418788EC9007304B6 /* geom.c in Sources */,
 				435915BC1836766E002CB92C /* RegalDispatchTrace.cpp in Sources */,
+				437B7DE818821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */,
 				435915BD1836766E002CB92C /* RegalDllMain.cpp in Sources */,
+				437B7E0818821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */,
+				437B7DD818821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */,
 				435915BE1836766E002CB92C /* RegalDsa.h in Sources */,
 				435915BF1836766E002CB92C /* RegalEmu.cpp in Sources */,
 				435915C01836766E002CB92C /* RegalEmu.h in Sources */,
+				437B7E1018821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */,
 				435915C11836766E002CB92C /* RegalEmuInfo.cpp in Sources */,
 				435915C21836766E002CB92C /* RegalEmuInfo.h in Sources */,
 				435915C31836766E002CB92C /* RegalEnum.h in Sources */,
+				437B7DD018821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */,
+				437B7DB818821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */,
 				435915C41836766E002CB92C /* RegalFavicon.cpp in Sources */,
 				435915C51836766E002CB92C /* RegalFavicon.h in Sources */,
 				433EC17F187891D2007304B6 /* misc.cpp in Sources */,
+				437B7DC818821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */,
 				433EC16C18788EC9007304B6 /* render.c in Sources */,
 				435915C61836766E002CB92C /* RegalFilt.cpp in Sources */,
 				435915C71836766E002CB92C /* RegalFilt.h in Sources */,
@@ -1786,6 +1893,7 @@
 				435915D21836766E002CB92C /* RegalInit.cpp in Sources */,
 				435915D31836766E002CB92C /* RegalInit.h in Sources */,
 				435915D71836766E002CB92C /* RegalLayerInfo.h in Sources */,
+				437B7DE018821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */,
 				435915D81836766E002CB92C /* RegalLog.cpp in Sources */,
 				435915D91836766E002CB92C /* RegalLog.h in Sources */,
 				435915DA1836766E002CB92C /* RegalLookup.cpp in Sources */,
@@ -1797,6 +1905,7 @@
 				435915E01836766E002CB92C /* RegalMutex.h in Sources */,
 				435915E11836766E002CB92C /* RegalNamespace.h in Sources */,
 				435915E21836766E002CB92C /* RegalObj.h in Sources */,
+				437B7E1818821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */,
 				435915E31836766E002CB92C /* RegalPixelConversions.cpp in Sources */,
 				435915E41836766E002CB92C /* RegalPixelConversions.h in Sources */,
 				435915E51836766E002CB92C /* RegalPixelConversions.inl in Sources */,
@@ -1812,6 +1921,7 @@
 				435915EF1836766E002CB92C /* RegalScopedPtr.h in Sources */,
 				433EC13518788E72007304B6 /* registry.c in Sources */,
 				433EC17418788EC9007304B6 /* tess.c in Sources */,
+				437B7DF018821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */,
 				435915F01836766E002CB92C /* RegalShader.cpp in Sources */,
 				433EC15C18788EC9007304B6 /* mesh.c in Sources */,
 				433EC181187891D2007304B6 /* othersyms.c in Sources */,
@@ -1819,6 +1929,7 @@
 				435915F21836766E002CB92C /* RegalShaderInstance.cpp in Sources */,
 				435915F31836766E002CB92C /* RegalShaderInstance.h in Sources */,
 				435915F41836766E002CB92C /* RegalSharedList.h in Sources */,
+				437B7E2818821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */,
 				435915F51836766E002CB92C /* RegalSharedMap.h in Sources */,
 				433EC13318788E72007304B6 /* quad.c in Sources */,
 				435915F61836766E002CB92C /* RegalSharedPtr.h in Sources */,
@@ -1832,6 +1943,7 @@
 				435915FF1836766E002CB92C /* RegalTexSto.h in Sources */,
 				435916001836766E002CB92C /* RegalThread.h in Sources */,
 				435916011836766E002CB92C /* RegalTimer.h in Sources */,
+				437B7E0018821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */,
 				435916021836766E002CB92C /* RegalToken.cpp in Sources */,
 				435916031836766E002CB92C /* RegalToken.h in Sources */,
 				435916041836766E002CB92C /* RegalUtil.cpp in Sources */,
@@ -1855,15 +1967,19 @@
 				4359165618367DEE002CB92C /* RegalConfig.cpp in Sources */,
 				4359165718367DEE002CB92C /* RegalContext.cpp in Sources */,
 				4359165818367DEE002CB92C /* RegalContextInfo.cpp in Sources */,
+				437B7E2118821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */,
 				4359165918367DEE002CB92C /* RegalDispatchDebug.cpp in Sources */,
 				4359165A18367DEE002CB92C /* RegalDispatchEmu.cpp in Sources */,
+				437B7DC118821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */,
 				4359165B18367DEE002CB92C /* RegalDispatchError.cpp in Sources */,
 				4359165C18367DEE002CB92C /* RegalDispatchLoader.cpp in Sources */,
+				437B7E1118821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */,
 				4359165D18367DEE002CB92C /* RegalDispatchLog.cpp in Sources */,
 				4359165E18367DEE002CB92C /* RegalDllMain.cpp in Sources */,
 				4359165F18367DEE002CB92C /* RegalHelper.cpp in Sources */,
 				4359166018367DEE002CB92C /* RegalHttp.cpp in Sources */,
 				4359166118367DEE002CB92C /* RegalIff.cpp in Sources */,
+				437B7DD918821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */,
 				4359166218367DEE002CB92C /* RegalInit.cpp in Sources */,
 				4359166318367DEE002CB92C /* RegalLog.cpp in Sources */,
 				4359166418367DEE002CB92C /* RegalLookup.cpp in Sources */,
@@ -1872,11 +1988,15 @@
 				4359166718367DEE002CB92C /* RegalFavicon.cpp in Sources */,
 				4359166818367DEE002CB92C /* RegalMac.cpp in Sources */,
 				4359166A18367DEE002CB92C /* RegalDispatchPpapi.cpp in Sources */,
+				437B7DB918821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */,
 				4359166C18367DEE002CB92C /* RegalDispatchStaticES2.cpp in Sources */,
 				4359166D18367DEE002CB92C /* RegalDispatchGlobal.cpp in Sources */,
 				4359166E18367DEE002CB92C /* RegalMarker.cpp in Sources */,
 				4359167018367DEE002CB92C /* RegalSo.cpp in Sources */,
 				4359167118367DEE002CB92C /* RegalDispatchCache.cpp in Sources */,
+				437B7E0118821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */,
+				437B7DB118821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */,
+				437B7E0918821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */,
 				4359167418367DEE002CB92C /* RegalPixelConversions.cpp in Sources */,
 				4359167518367DEE002CB92C /* RegalTexC.cpp in Sources */,
 				4359167618367DEE002CB92C /* RegalBreak.cpp in Sources */,
@@ -1888,12 +2008,20 @@
 				4359168018367DEE002CB92C /* RegalPlugin.cpp in Sources */,
 				4359168118367DEE002CB92C /* RegalDispatchGLX.cpp in Sources */,
 				4359168218367DEE002CB92C /* RegalX11.cpp in Sources */,
+				437B7E1918821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */,
 				4359168318367DEE002CB92C /* RegalDispatchStaticEGL.cpp in Sources */,
 				4359168418367DEE002CB92C /* RegalEmuInfo.cpp in Sources */,
+				437B7E2918821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */,
+				437B7DF918821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */,
+				437B7DD118821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */,
+				437B7DE918821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */,
 				4359168518367DEE002CB92C /* RegalEmu.cpp in Sources */,
+				437B7DE118821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */,
 				4359168618367DEE002CB92C /* RegalDispatch.cpp in Sources */,
+				437B7DC918821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */,
 				4359168718367DEE002CB92C /* RegalQuads.cpp in Sources */,
 				4359168818367DEE002CB92C /* RegalShader.cpp in Sources */,
+				437B7DF118821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */,
 				4359168918367DEE002CB92C /* RegalShaderInstance.cpp in Sources */,
 				43C7580E184B69E2007E765F /* RegalDispatchHttp.cpp in Sources */,
 			);
@@ -1905,6 +2033,7 @@
 			files = (
 				435916E818367E05002CB92C /* linear.h in Sources */,
 				435916E918367E05002CB92C /* Regal.cpp in Sources */,
+				437B7DB218821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */,
 				435916EA18367E05002CB92C /* Regal.h in Sources */,
 				435916EB18367E05002CB92C /* RegalBaseVertex.h in Sources */,
 				435916EC18367E05002CB92C /* RegalBin.h in Sources */,
@@ -1918,6 +2047,7 @@
 				435916F318367E05002CB92C /* RegalClientState.h in Sources */,
 				435916F418367E05002CB92C /* RegalConfig.cpp in Sources */,
 				435916F518367E05002CB92C /* RegalConfig.h in Sources */,
+				437B7E2218821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */,
 				433EC15918788EC9007304B6 /* memalloc.c in Sources */,
 				435916F618367E05002CB92C /* RegalContext.cpp in Sources */,
 				435916F718367E05002CB92C /* RegalContext.h in Sources */,
@@ -1926,12 +2056,14 @@
 				435916FA18367E05002CB92C /* RegalDebugInfo.h in Sources */,
 				435916FB18367E05002CB92C /* RegalDispatch.cpp in Sources */,
 				435916FC18367E05002CB92C /* RegalDispatch.h in Sources */,
+				437B7DC218821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */,
 				435916FD18367E05002CB92C /* RegalDispatchCache.cpp in Sources */,
 				433EC17118788EC9007304B6 /* sweep.c in Sources */,
 				435916FF18367E05002CB92C /* RegalDispatchDebug.cpp in Sources */,
 				4359170018367E05002CB92C /* RegalDispatchEmu.cpp in Sources */,
 				433EC16918788EC9007304B6 /* priorityq.c in Sources */,
 				433EC12C18788E72007304B6 /* glue.c in Sources */,
+				437B7DFA18821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */,
 				4359170718367E05002CB92C /* RegalDispatchError.cpp in Sources */,
 				4359170818367E05002CB92C /* RegalDispatchError.h in Sources */,
 				4359170918367E05002CB92C /* RegalDispatchGlobal.cpp in Sources */,
@@ -1944,16 +2076,23 @@
 				4359171018367E05002CB92C /* RegalDispatchStaticES2.cpp in Sources */,
 				433EC15518788EC9007304B6 /* geom.c in Sources */,
 				4359171218367E05002CB92C /* RegalDispatchTrace.cpp in Sources */,
+				437B7DEA18821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */,
 				4359171318367E05002CB92C /* RegalDllMain.cpp in Sources */,
+				437B7E0A18821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */,
+				437B7DDA18821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */,
 				4359171418367E05002CB92C /* RegalDsa.h in Sources */,
 				4359171518367E05002CB92C /* RegalEmu.cpp in Sources */,
 				4359171618367E05002CB92C /* RegalEmu.h in Sources */,
+				437B7E1218821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */,
 				4359171718367E05002CB92C /* RegalEmuInfo.cpp in Sources */,
 				4359171818367E05002CB92C /* RegalEmuInfo.h in Sources */,
 				4359171918367E05002CB92C /* RegalEnum.h in Sources */,
+				437B7DD218821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */,
+				437B7DBA18821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */,
 				4359171A18367E05002CB92C /* RegalFavicon.cpp in Sources */,
 				4359171B18367E05002CB92C /* RegalFavicon.h in Sources */,
 				433EC180187891D2007304B6 /* misc.cpp in Sources */,
+				437B7DCA18821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */,
 				433EC16D18788EC9007304B6 /* render.c in Sources */,
 				4359171C18367E05002CB92C /* RegalFilt.cpp in Sources */,
 				4359171D18367E05002CB92C /* RegalFilt.h in Sources */,
@@ -1968,6 +2107,7 @@
 				4359172818367E05002CB92C /* RegalInit.cpp in Sources */,
 				4359172918367E05002CB92C /* RegalInit.h in Sources */,
 				4359172D18367E05002CB92C /* RegalLayerInfo.h in Sources */,
+				437B7DE218821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */,
 				4359172E18367E05002CB92C /* RegalLog.cpp in Sources */,
 				4359172F18367E05002CB92C /* RegalLog.h in Sources */,
 				4359173018367E05002CB92C /* RegalLookup.cpp in Sources */,
@@ -1979,6 +2119,7 @@
 				4359173618367E05002CB92C /* RegalMutex.h in Sources */,
 				4359173718367E05002CB92C /* RegalNamespace.h in Sources */,
 				4359173818367E05002CB92C /* RegalObj.h in Sources */,
+				437B7E1A18821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */,
 				4359173918367E05002CB92C /* RegalPixelConversions.cpp in Sources */,
 				4359173A18367E05002CB92C /* RegalPixelConversions.h in Sources */,
 				4359173B18367E05002CB92C /* RegalPixelConversions.inl in Sources */,
@@ -1994,6 +2135,7 @@
 				4359174518367E05002CB92C /* RegalScopedPtr.h in Sources */,
 				433EC13618788E72007304B6 /* registry.c in Sources */,
 				433EC17518788EC9007304B6 /* tess.c in Sources */,
+				437B7DF218821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */,
 				4359174618367E05002CB92C /* RegalShader.cpp in Sources */,
 				433EC15D18788EC9007304B6 /* mesh.c in Sources */,
 				433EC182187891D2007304B6 /* othersyms.c in Sources */,
@@ -2001,6 +2143,7 @@
 				4359174818367E05002CB92C /* RegalShaderInstance.cpp in Sources */,
 				4359174918367E05002CB92C /* RegalShaderInstance.h in Sources */,
 				4359174A18367E05002CB92C /* RegalSharedList.h in Sources */,
+				437B7E2A18821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */,
 				4359174B18367E05002CB92C /* RegalSharedMap.h in Sources */,
 				433EC13418788E72007304B6 /* quad.c in Sources */,
 				4359174C18367E05002CB92C /* RegalSharedPtr.h in Sources */,
@@ -2014,6 +2157,7 @@
 				4359175518367E05002CB92C /* RegalTexSto.h in Sources */,
 				4359175618367E05002CB92C /* RegalThread.h in Sources */,
 				4359175718367E05002CB92C /* RegalTimer.h in Sources */,
+				437B7E0218821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */,
 				4359175818367E05002CB92C /* RegalToken.cpp in Sources */,
 				4359175918367E05002CB92C /* RegalToken.h in Sources */,
 				4359175A18367E05002CB92C /* RegalUtil.cpp in Sources */,
@@ -2037,15 +2181,19 @@
 				43A6C20215C48D200063667E /* RegalConfig.cpp in Sources */,
 				43A6C20415C48D200063667E /* RegalContext.cpp in Sources */,
 				43A6C20615C48D200063667E /* RegalContextInfo.cpp in Sources */,
+				437B7E1F18821D3100C863BB /* RegalEmuProcsVao.cpp in Sources */,
 				43A6C20A15C48D200063667E /* RegalDispatchDebug.cpp in Sources */,
 				43A6C20B15C48D200063667E /* RegalDispatchEmu.cpp in Sources */,
+				437B7DBF18821D3100C863BB /* RegalEmuProcsDsa.cpp in Sources */,
 				43A6C20C15C48D200063667E /* RegalDispatchError.cpp in Sources */,
 				43A6C20E15C48D200063667E /* RegalDispatchLoader.cpp in Sources */,
+				437B7E0F18821D3100C863BB /* RegalEmuProcsTexC.cpp in Sources */,
 				43A6C20F15C48D200063667E /* RegalDispatchLog.cpp in Sources */,
 				43A6C21115C48D200063667E /* RegalDllMain.cpp in Sources */,
 				43A6C21415C48D200063667E /* RegalHelper.cpp in Sources */,
 				43A6C21615C48D200063667E /* RegalHttp.cpp in Sources */,
 				43A6C21815C48D200063667E /* RegalIff.cpp in Sources */,
+				437B7DD718821D3100C863BB /* RegalEmuProcsIff.cpp in Sources */,
 				43A6C21A15C48D200063667E /* RegalInit.cpp in Sources */,
 				43A6C21C15C48D200063667E /* RegalLog.cpp in Sources */,
 				43A6C21E15C48D200063667E /* RegalLookup.cpp in Sources */,
@@ -2054,11 +2202,15 @@
 				431D3C0E15C9B6F0009DD04F /* RegalFavicon.cpp in Sources */,
 				431D3C1015C9B6F0009DD04F /* RegalMac.cpp in Sources */,
 				BC456F1315D55F8E0080B420 /* RegalDispatchPpapi.cpp in Sources */,
+				437B7DB718821D3100C863BB /* RegalEmuProcsBin.cpp in Sources */,
 				BCF889AA15E079D80093B7D5 /* RegalDispatchStaticES2.cpp in Sources */,
 				BC6C911D15EE3CDF0056E4F7 /* RegalDispatchGlobal.cpp in Sources */,
 				BC02094E160D1BA3003FAB99 /* RegalMarker.cpp in Sources */,
 				BCBEC70D167AD72700B38E16 /* RegalSo.cpp in Sources */,
 				BCBEC712167AD74400B38E16 /* RegalDispatchCache.cpp in Sources */,
+				437B7DFF18821D3100C863BB /* RegalEmuProcsRect.cpp in Sources */,
+				437B7DAF18821D3100C863BB /* RegalEmuProcsBaseVertex.cpp in Sources */,
+				437B7E0718821D3100C863BB /* RegalEmuProcsSo.cpp in Sources */,
 				438D2C2D16DE668A005E03F6 /* RegalPixelConversions.cpp in Sources */,
 				438D2C3216DE668A005E03F6 /* RegalTexC.cpp in Sources */,
 				BC94B98B16DFDC6200116D55 /* RegalBreak.cpp in Sources */,
@@ -2070,12 +2222,20 @@
 				BCBF183D175EB49D00CB653A /* RegalPlugin.cpp in Sources */,
 				BC8E9CBD17C5AF880005C418 /* RegalDispatchGLX.cpp in Sources */,
 				BC8E9CBE17C5AF880005C418 /* RegalX11.cpp in Sources */,
+				437B7E1718821D3100C863BB /* RegalEmuProcsTexSto.cpp in Sources */,
 				BC8E9CBF17C5AF880005C418 /* RegalDispatchStaticEGL.cpp in Sources */,
 				BCBA1FCA17DF836700CB6E19 /* RegalEmuInfo.cpp in Sources */,
+				437B7E2718821D3100C863BB /* RegalEmuProcsXfer.cpp in Sources */,
+				437B7DF718821D3100C863BB /* RegalEmuProcsQuads.cpp in Sources */,
+				437B7DCF18821D3100C863BB /* RegalEmuProcsHint.cpp in Sources */,
+				437B7DE718821D3100C863BB /* RegalEmuProcsPpa.cpp in Sources */,
 				BCBA1FCC17DF836700CB6E19 /* RegalEmu.cpp in Sources */,
+				437B7DDF18821D3100C863BB /* RegalEmuProcsObj.cpp in Sources */,
 				BCB6107117F21E6500BA0A06 /* RegalDispatch.cpp in Sources */,
+				437B7DC718821D3100C863BB /* RegalEmuProcsFilter.cpp in Sources */,
 				BC4DBEC31804FB0600F6D226 /* RegalQuads.cpp in Sources */,
 				435914DC182BF69F002CB92C /* RegalShader.cpp in Sources */,
+				437B7DEF18821D3100C863BB /* RegalEmuProcsPpca.cpp in Sources */,
 				435914DE182BF69F002CB92C /* RegalShaderInstance.cpp in Sources */,
 				43C7580C184B69E2007E765F /* RegalDispatchHttp.cpp in Sources */,
 			);

@@ -55,8 +55,10 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+void EmuProcsInterceptRect( Dispatch::GL & dt );
+
 REGAL_NAMESPACE_END
 
-#endif
+#endif // REGAL_EMULATION
 
 #endif // REGAL_EMU_PROCS_RECT_H

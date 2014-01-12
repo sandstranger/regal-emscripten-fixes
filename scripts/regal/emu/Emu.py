@@ -191,6 +191,16 @@ def emuGetOriginateList( emuFormulae, apis ):
               originate.append( function.name )
 
   return originate
+
+#
+# return list of intercept entry points
+#
+
+def emuGetInterceptList( emuFormulae, apis ):
+
+  intercept = []
+
+  return intercept
             
 #
 # Generate code for prefix, init, cond, impl or suffix

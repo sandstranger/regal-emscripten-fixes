@@ -103,7 +103,7 @@ namespace Emu {
 
     bool TexImage2D  (const RegalContext &ctx, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data);
 
-    EmuOriginateProcFilter orig;
+    EmuProcsOriginateFilter orig;
     
   private:
     GLuint fboID;

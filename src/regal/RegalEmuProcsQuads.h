@@ -55,8 +55,10 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+void EmuProcsInterceptQuads( Dispatch::GL & dt );
+
 REGAL_NAMESPACE_END
 
-#endif
+#endif // REGAL_EMULATION
 
 #endif // REGAL_EMU_PROCS_QUADS_H

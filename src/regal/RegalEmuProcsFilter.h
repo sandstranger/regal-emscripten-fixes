@@ -55,9 +55,11 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-struct EmuOriginateProcFilter {
+void EmuProcsInterceptFilter( Dispatch::GL & dt );
 
-  EmuOriginateProcFilter() {
+struct EmuProcsOriginateFilter {
+
+  EmuProcsOriginateFilter() {
     memset(this, 0, sizeof( *this ) );
   }
 
@@ -474,6 +476,6 @@ struct EmuOriginateProcFilter {
 
 REGAL_NAMESPACE_END
 
-#endif
+#endif // REGAL_EMULATION
 
 #endif // REGAL_EMU_PROCS_FILTER_H
