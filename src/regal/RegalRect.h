@@ -51,6 +51,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
+#include "RegalEmuProcsRect.h"
 
 REGAL_GLOBAL_END
 
@@ -58,36 +59,36 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-template <typename T> inline void glVertex2(Dispatch::GL &dt, T x1, T y1)
+template <typename T> inline void glVertex2(EmuProcsOriginateRect & orig, T x1, T y1)
 {
-  dt.glVertex2f(static_cast<GLfloat>(x1), static_cast<GLfloat>(y1));
+  orig.glVertex2f(static_cast<GLfloat>(x1), static_cast<GLfloat>(y1));
 }
 
-template <> inline void glVertex2(Dispatch::GL &dt, GLfloat x1, GLfloat y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLfloat x1, GLfloat y1)
 {
-  dt.glVertex2f(x1, y1);
+  orig.glVertex2f(x1, y1);
 }
 
-template <> inline void glVertex2(Dispatch::GL &dt, GLdouble x1, GLdouble y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLdouble x1, GLdouble y1)
 {
-  dt.glVertex2d(x1, y1);
+  orig.glVertex2d(x1, y1);
 }
 
-template <> inline void glVertex2(Dispatch::GL &dt, GLint x1, GLint y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLint x1, GLint y1)
 {
-  dt.glVertex2i(x1, y1);
+  orig.glVertex2i(x1, y1);
 }
 
-template <> inline void glVertex2(Dispatch::GL &dt, GLshort x1, GLshort y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLshort x1, GLshort y1)
 {
-  dt.glVertex2s(x1, y1);
+  orig.glVertex2s(x1, y1);
 }
 
 struct Rect
 {
   void Init(RegalContext &ctx)
   {
-    UNUSED_PARAMETER(ctx);
+    orig.Initialize( ctx.dispatchGL );
   }
 
   void Cleanup(RegalContext &ctx)
@@ -102,31 +103,31 @@ struct Rect
     if (ctx->depthBeginEnd)
       return;
 
-    Dispatch::GL &dt = ctx->emu.curr;
-
     // incrementing context->depthBeginEnd here avoids an assert in log_glBegin and
     // also keeps the log indentation as it should be
 
     ctx->depthBeginEnd++;
 
-    dt.glBegin(GL_POLYGON);
+    orig.glBegin(GL_POLYGON);
 
-      Emu::glVertex2(dt, x1, y1);
-      Emu::glVertex2(dt, x2, y1);
-      Emu::glVertex2(dt, x2, y2);
-      Emu::glVertex2(dt, x1, y2);
+      Emu::glVertex2(orig, x1, y1);
+      Emu::glVertex2(orig, x2, y1);
+      Emu::glVertex2(orig, x2, y2);
+      Emu::glVertex2(orig, x1, y2);
 
     // undo the above "artificial" increment
 
     ctx->depthBeginEnd--;
 
-    dt.glEnd();
+    orig.glEnd();
   }
 
   template <typename T> inline void glRectv(RegalContext *ctx, const T *v1, const T *v2)
   {
     return glRect(ctx, v1[0], v1[1], v2[0], v2[1]);
   }
+  
+  EmuProcsOriginateRect orig;
 };
 
 }

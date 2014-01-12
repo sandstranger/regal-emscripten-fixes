@@ -63,6 +63,27 @@ struct EmuProcsOriginateIff {
     memset(this, 0, sizeof( *this ) );
   }
 
+  PFNGLCREATEPROGRAMPROC glCreateProgram;
+  PFNGLDELETEPROGRAMPROC glDeleteProgram;
+  PFNGLATTACHSHADERPROC glAttachShader;
+  PFNGLCREATESHADERPROC glCreateShader;
+  PFNGLDELETESHADERPROC glDeleteShader;
+  PFNGLCOMPILESHADERPROC glCompileShader;
+  PFNGLSHADERSOURCEPROC glShaderSource;
+  PFNGLGETPROGRAMIVPROC glGetProgramiv;
+  PFNGLGETSHADERIVPROC glGetShaderiv;
+  PFNGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
+  PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
+  PFNGLBINDATTRIBLOCATIONPROC glBindAttribLocation;
+  PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
+  PFNGLUNIFORM4FVPROC glUniform4fv;
+  PFNGLUNIFORM2FPROC glUniform2f;
+  PFNGLUNIFORM1IPROC glUniform1i;
+  PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
+  PFNGLUNIFORMMATRIX3FVPROC glUniformMatrix3fv;
+  PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
+  PFNGLGENBUFFERSPROC glGenBuffers;
+  PFNGLBUFFERDATAPROC glBufferData;
   PFNGLALPHAFUNCPROC glAlphaFunc;
   PFNGLBEGINPROC glBegin;
   PFNGLCLIPPLANEPROC glClipPlane;
@@ -318,7 +339,6 @@ struct EmuProcsOriginateIff {
   PFNGLWINDOWPOS3SPROC glWindowPos3s;
   PFNGLBINDBUFFERPROC glBindBuffer;
   PFNGLDELETEBUFFERSPROC glDeleteBuffers;
-  PFNGLCREATESHADERPROC glCreateShader;
   PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
   PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
   PFNGLGETVERTEXATTRIBPOINTERVPROC glGetVertexAttribPointerv;
@@ -326,12 +346,9 @@ struct EmuProcsOriginateIff {
   PFNGLGETVERTEXATTRIBFVPROC glGetVertexAttribfv;
   PFNGLGETVERTEXATTRIBIVPROC glGetVertexAttribiv;
   PFNGLLINKPROGRAMPROC glLinkProgram;
-  PFNGLSHADERSOURCEPROC glShaderSource;
   PFNGLUNIFORM1FPROC glUniform1f;
   PFNGLUNIFORM1FVPROC glUniform1fv;
-  PFNGLUNIFORM1IPROC glUniform1i;
   PFNGLUNIFORM1IVPROC glUniform1iv;
-  PFNGLUNIFORM2FPROC glUniform2f;
   PFNGLUNIFORM2FVPROC glUniform2fv;
   PFNGLUNIFORM2IPROC glUniform2i;
   PFNGLUNIFORM2IVPROC glUniform2iv;
@@ -340,12 +357,9 @@ struct EmuProcsOriginateIff {
   PFNGLUNIFORM3IPROC glUniform3i;
   PFNGLUNIFORM3IVPROC glUniform3iv;
   PFNGLUNIFORM4FPROC glUniform4f;
-  PFNGLUNIFORM4FVPROC glUniform4fv;
   PFNGLUNIFORM4IPROC glUniform4i;
   PFNGLUNIFORM4IVPROC glUniform4iv;
   PFNGLUNIFORMMATRIX2FVPROC glUniformMatrix2fv;
-  PFNGLUNIFORMMATRIX3FVPROC glUniformMatrix3fv;
-  PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
   PFNGLUSEPROGRAMPROC glUseProgram;
   PFNGLVERTEXATTRIB1DPROC glVertexAttrib1d;
   PFNGLVERTEXATTRIB1DVPROC glVertexAttrib1dv;
@@ -617,6 +631,27 @@ struct EmuProcsOriginateIff {
   PFNGLTEXIMAGE4DSGISPROC glTexImage4DSGIS;
 
   void Initialize( Dispatch::GL & dt ) {
+    glCreateProgram = dt.glCreateProgram;
+    glDeleteProgram = dt.glDeleteProgram;
+    glAttachShader = dt.glAttachShader;
+    glCreateShader = dt.glCreateShader;
+    glDeleteShader = dt.glDeleteShader;
+    glCompileShader = dt.glCompileShader;
+    glShaderSource = dt.glShaderSource;
+    glGetProgramiv = dt.glGetProgramiv;
+    glGetShaderiv = dt.glGetShaderiv;
+    glGetShaderInfoLog = dt.glGetShaderInfoLog;
+    glGetProgramInfoLog = dt.glGetProgramInfoLog;
+    glBindAttribLocation = dt.glBindAttribLocation;
+    glGetUniformLocation = dt.glGetUniformLocation;
+    glUniform4fv = dt.glUniform4fv;
+    glUniform2f = dt.glUniform2f;
+    glUniform1i = dt.glUniform1i;
+    glUniformMatrix4fv = dt.glUniformMatrix4fv;
+    glUniformMatrix3fv = dt.glUniformMatrix3fv;
+    glGenVertexArrays = dt.glGenVertexArrays;
+    glGenBuffers = dt.glGenBuffers;
+    glBufferData = dt.glBufferData;
     glAlphaFunc = dt.glAlphaFunc;
     glBegin = dt.glBegin;
     glClipPlane = dt.glClipPlane;
@@ -872,7 +907,6 @@ struct EmuProcsOriginateIff {
     glWindowPos3s = dt.glWindowPos3s;
     glBindBuffer = dt.glBindBuffer;
     glDeleteBuffers = dt.glDeleteBuffers;
-    glCreateShader = dt.glCreateShader;
     glDisableVertexAttribArray = dt.glDisableVertexAttribArray;
     glEnableVertexAttribArray = dt.glEnableVertexAttribArray;
     glGetVertexAttribPointerv = dt.glGetVertexAttribPointerv;
@@ -880,12 +914,9 @@ struct EmuProcsOriginateIff {
     glGetVertexAttribfv = dt.glGetVertexAttribfv;
     glGetVertexAttribiv = dt.glGetVertexAttribiv;
     glLinkProgram = dt.glLinkProgram;
-    glShaderSource = dt.glShaderSource;
     glUniform1f = dt.glUniform1f;
     glUniform1fv = dt.glUniform1fv;
-    glUniform1i = dt.glUniform1i;
     glUniform1iv = dt.glUniform1iv;
-    glUniform2f = dt.glUniform2f;
     glUniform2fv = dt.glUniform2fv;
     glUniform2i = dt.glUniform2i;
     glUniform2iv = dt.glUniform2iv;
@@ -894,12 +925,9 @@ struct EmuProcsOriginateIff {
     glUniform3i = dt.glUniform3i;
     glUniform3iv = dt.glUniform3iv;
     glUniform4f = dt.glUniform4f;
-    glUniform4fv = dt.glUniform4fv;
     glUniform4i = dt.glUniform4i;
     glUniform4iv = dt.glUniform4iv;
     glUniformMatrix2fv = dt.glUniformMatrix2fv;
-    glUniformMatrix3fv = dt.glUniformMatrix3fv;
-    glUniformMatrix4fv = dt.glUniformMatrix4fv;
     glUseProgram = dt.glUseProgram;
     glVertexAttrib1d = dt.glVertexAttrib1d;
     glVertexAttrib1dv = dt.glVertexAttrib1dv;

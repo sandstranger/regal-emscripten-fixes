@@ -1,6 +1,31 @@
 #!/usr/bin/python -B
 
 iffFormulae = {
+    'options' : {
+      'originate' : [
+        'glCreateProgram',
+        'glDeleteProgram',
+        'glAttachShader',
+        'glCreateShader',
+        'glDeleteShader',
+        'glCompileShader',
+        'glShaderSource',
+        'glGetProgramiv',
+        'glGetShaderiv',
+        'glGetShaderInfoLog',
+        'glGetProgramInfoLog',
+        'glBindAttribLocation',
+        'glGetUniformLocation',
+        'glUniform4fv',
+        'glUniform2f',
+        'glUniform1i',
+        'glUniformMatrix4fv',
+        'glUniformMatrix3fv',
+        'glGenVertexArrays',
+        'glGenBuffers',
+        'glBufferData',
+      ],
+    },
     'VaPointer4EXTOverride' : {
         'entries' : [ 'gl(Vertex|Color|TexCoord)PointerEXT' ],
         'impl' : [ '_context->iff->${m1}Pointer( _context, ${arg0}, ${arg1}, ${arg2}, ${arg4} );' ],

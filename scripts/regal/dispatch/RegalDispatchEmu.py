@@ -139,6 +139,7 @@ def apiEmuProcsSourceCode( e, apis ):
       code +=      '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emuProcIntercept%s_' % e['suffix'], name, params)
       code +=      '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code +=      '  RegalAssert(_context);\n'
+      #code +=      '  EmuProcsOriginate%s & orig = _context->%s->orig;\n' % ( e['suffix'], e['member'] )
       code +=      '\n'
 
       if emue != None and 'prefix' in emue and len(emue['prefix']):

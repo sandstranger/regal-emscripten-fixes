@@ -52,6 +52,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
 #include "RegalToken.h"
+#include "RegalEmuProcsHint.h"
 
 REGAL_GLOBAL_END
 
@@ -69,10 +70,11 @@ struct Hint
   GLenum pointSmooth;
   GLenum fog;
   GLenum generateMipmap;
+  EmuProcsOriginateHint orig;
 
   void Init(RegalContext &ctx)
   {
-    UNUSED_PARAMETER(ctx);
+    orig.Initialize( ctx.dispatchGL );
 
     lineSmooth               = GL_DONT_CARE;
     polygonSmooth            = GL_DONT_CARE;
