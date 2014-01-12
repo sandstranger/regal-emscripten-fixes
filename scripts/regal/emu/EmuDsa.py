@@ -1,6 +1,16 @@
 #!/usr/bin/python -B
 
 dsaFormulae = {
+    'options' : {
+      'originate' : [
+        'glPixelStorei',
+        'glPixelStoref',
+        'glDisableVertexAttribArray',
+        'glVertexAttribPointer',
+        'glFogCoordPointer',
+        'glIndexPointer',
+      ],
+    },
     'SelectorGetCommands' : {
         'entries' : [ 'glGet(Boolean|Integer|Float|Double)v' ],
         'prefix' : [ '_context->dsa->RestoreGet( _context, ${arg0} );' ],

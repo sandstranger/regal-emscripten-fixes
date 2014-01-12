@@ -1,6 +1,14 @@
 #!/usr/bin/python -B
 
 baseVertexFormulae = {
+  'options' : {
+    'originate' : [
+      'glDrawElements',
+      'glDrawRangeElements',
+      'glDrawElementsInstanced',
+      'glDrawElementsInstancedBaseInstance',
+    ],
+  },
   'DrawElements'       : {
     'entries' : [ 'gl(Multi|)Draw(Range|)Elements(Instanced|)BaseVertex(BaseInstance|)' ],
     'impl'    : [

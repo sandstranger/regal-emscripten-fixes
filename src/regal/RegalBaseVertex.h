@@ -78,7 +78,7 @@ struct BaseVertex : public ClientState::VertexArray
     UNUSED_PARAMETER(ctx);
   }
 
-  void adjust(RegalContext &ctx, Dispatch::GL &dt, GLint basevertex)
+  void adjust(RegalContext &ctx, EmuProcsOriginateBaseVertex &orig, GLint basevertex)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -94,7 +94,7 @@ struct BaseVertex : public ClientState::VertexArray
         if (currentVBO != n.buffer)
         {
           currentVBO = n.buffer;
-          dt.glBindBuffer(GL_ARRAY_BUFFER, currentVBO);
+          orig.glBindBuffer(GL_ARRAY_BUFFER, currentVBO);
         }
 
         if (ii < 7)
@@ -102,25 +102,25 @@ struct BaseVertex : public ClientState::VertexArray
           switch (ii)
           {
             case ClientState::VERTEX:
-              dt.glVertexPointer(n.size, n.type, n.stride, n.pointer);
+              orig.glVertexPointer(n.size, n.type, n.stride, n.pointer);
               break;
             case ClientState::NORMAL:
-              dt.glNormalPointer(n.type, n.stride, n.pointer);
+              orig.glNormalPointer(n.type, n.stride, n.pointer);
               break;
             case ClientState::FOG_COORD:
-              dt.glFogCoordPointer(n.type, n.stride, n.pointer);
+              orig.glFogCoordPointer(n.type, n.stride, n.pointer);
               break;
             case ClientState::COLOR:
-              dt.glColorPointer(n.size, n.type, n.stride, n.pointer);
+              orig.glColorPointer(n.size, n.type, n.stride, n.pointer);
               break;
             case ClientState::SECONDARY_COLOR:
-              dt.glSecondaryColorPointer(n.size, n.type, n.stride, n.pointer);
+              orig.glSecondaryColorPointer(n.size, n.type, n.stride, n.pointer);
               break;
             case ClientState::INDEX:
-              dt.glIndexPointer(n.type, n.stride, n.pointer);
+              orig.glIndexPointer(n.type, n.stride, n.pointer);
               break;
             case ClientState::EDGE_FLAG:
-              dt.glEdgeFlagPointer(n.stride, n.pointer);
+              orig.glEdgeFlagPointer(n.stride, n.pointer);
               break;
             default:
               break;
@@ -129,7 +129,7 @@ struct BaseVertex : public ClientState::VertexArray
         else
         {
           GLuint index = static_cast<GLuint>(ii - 7);
-          dt.glMultiTexCoordPointerEXT(GL_TEXTURE0+index, n.size, n.type, n.stride, n.pointer);
+          orig.glMultiTexCoordPointerEXT(GL_TEXTURE0+index, n.size, n.type, n.stride, n.pointer);
         }
       }
     }
@@ -148,77 +148,72 @@ struct BaseVertex : public ClientState::VertexArray
         if (currentVBO != b.buffer)
         {
           currentVBO = b.buffer;
-          dt.glBindBuffer(GL_ARRAY_BUFFER, currentVBO);
+          orig.glBindBuffer(GL_ARRAY_BUFFER, currentVBO);
         }
 
         GLsizei index = static_cast<GLsizei>(ii);
         if (g.isInteger)
-          dt.glVertexAttribIPointer(index, g.size, g.type, b.stride, p);
+          orig.glVertexAttribIPointer(index, g.size, g.type, b.stride, p);
         else if (g.isLong)
-          dt.glVertexAttribLPointer(index, g.size, g.type, b.stride, p);
+          orig.glVertexAttribLPointer(index, g.size, g.type, b.stride, p);
         else
-          dt.glVertexAttribPointer(index, g.size, g.type, g.normalized, b.stride, p);
+          orig.glVertexAttribPointer(index, g.size, g.type, g.normalized, b.stride, p);
       }
     }
 
     if (currentVBO != ClientState::VertexArray::arrayBufferBinding)
-      dt.glBindBuffer(GL_ARRAY_BUFFER, ClientState::VertexArray::arrayBufferBinding);
+      orig.glBindBuffer(GL_ARRAY_BUFFER, ClientState::VertexArray::arrayBufferBinding);
   }
 
   bool glDrawElementsBaseVertex(RegalContext &ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     if (basevertex)
-      adjust(ctx, dt, basevertex);
-    dt.glDrawElements(mode, count, type, indices);
+      adjust(ctx, orig, basevertex);
+    orig.glDrawElements(mode, count, type, indices);
     if (basevertex)
-      adjust(ctx, dt, 0);
+      adjust(ctx, orig, 0);
     return true;
   }
 
   bool glDrawRangeElementsBaseVertex(RegalContext &ctx, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     if (basevertex)
-      adjust(ctx, dt, basevertex);
-    dt.glDrawRangeElements(mode, start, end, count, type, indices);
+      adjust(ctx, orig, basevertex);
+    orig.glDrawRangeElements(mode, start, end, count, type, indices);
     if (basevertex)
-      adjust(ctx, dt, 0);
+      adjust(ctx, orig, 0);
     return true;
   }
 
   bool glDrawElementsInstancedBaseVertex(RegalContext &ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     if (basevertex)
-      adjust(ctx, dt, basevertex);
-    dt.glDrawElementsInstanced(mode, count, type, indices, primcount);
+      adjust(ctx, orig, basevertex);
+    orig.glDrawElementsInstanced(mode, count, type, indices, primcount);
     if (basevertex)
-      adjust(ctx, dt, 0);
+      adjust(ctx, orig, 0);
     return true;
   }
 
   bool glDrawElementsInstancedBaseVertexBaseInstance(RegalContext &ctx, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance)
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     if (basevertex)
-      adjust(ctx, dt, basevertex);
-    dt.glDrawElementsInstancedBaseInstance(mode, count, type, indices, primcount, baseinstance);
+      adjust(ctx, orig, basevertex);
+    orig.glDrawElementsInstancedBaseInstance(mode, count, type, indices, primcount, baseinstance);
     if (basevertex)
-      adjust(ctx, dt, 0);
+      adjust(ctx, orig, 0);
     return true;
   }
 
   bool glMultiDrawElementsBaseVertex(RegalContext &ctx, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const* indices, GLsizei primcount, const GLint *basevertex)
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     for (GLsizei ii=0; ii<primcount; ii++)
     {
       if (basevertex[ii])
-        adjust(ctx, dt, basevertex[ii]);
-      dt.glDrawElements(mode, count[ii], type, indices[ii]);
+        adjust(ctx, orig, basevertex[ii]);
+      orig.glDrawElements(mode, count[ii], type, indices[ii]);
       if (basevertex[ii])
-        adjust(ctx, dt, 0);
+        adjust(ctx, orig, 0);
     }
     return true;
   }

@@ -43,6 +43,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
+#include "RegalEmuProcsBin.h"
 
 REGAL_GLOBAL_END
 
@@ -53,9 +54,11 @@ namespace Emu
 
 struct Bin
 {
+  EmuProcsOriginateBin orig;
+  
   void Init( RegalContext &ctx )
   {
-    UNUSED_PARAMETER(ctx);
+    orig.Initialize( ctx.dispatchGL );
   }
 
   void Cleanup( RegalContext &ctx )
@@ -65,8 +68,7 @@ struct Bin
 
   void ShaderBinary( RegalContext *ctx, GLsizei count, const GLuint *shaders, GLenum binaryFormat, const void *binary, GLsizei length)
   {
-    Dispatch::GL &tbl = ctx->emu.curr;
-    tbl.glShaderBinary( count, shaders, binaryFormat, binary, length );
+    orig.glShaderBinary( count, shaders, binaryFormat, binary, length );
   }
 };
 

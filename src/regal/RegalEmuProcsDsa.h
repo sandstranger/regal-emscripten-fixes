@@ -63,6 +63,12 @@ struct EmuProcsOriginateDsa {
     memset(this, 0, sizeof( *this ) );
   }
 
+  PFNGLPIXELSTOREIPROC glPixelStorei;
+  PFNGLPIXELSTOREFPROC glPixelStoref;
+  PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
+  PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
+  PFNGLFOGCOORDPOINTERPROC glFogCoordPointer;
+  PFNGLINDEXPOINTERPROC glIndexPointer;
   PFNGLBEGINPROC glBegin;
   PFNGLDISABLEPROC glDisable;
   PFNGLENABLEPROC glEnable;
@@ -523,6 +529,12 @@ struct EmuProcsOriginateDsa {
   PFNGLDELETEVERTEXARRAYSOESPROC glDeleteVertexArraysOES;
 
   void Initialize( Dispatch::GL & dt ) {
+    glPixelStorei = dt.glPixelStorei;
+    glPixelStoref = dt.glPixelStoref;
+    glDisableVertexAttribArray = dt.glDisableVertexAttribArray;
+    glVertexAttribPointer = dt.glVertexAttribPointer;
+    glFogCoordPointer = dt.glFogCoordPointer;
+    glIndexPointer = dt.glIndexPointer;
     glBegin = dt.glBegin;
     glDisable = dt.glDisable;
     glEnable = dt.glEnable;

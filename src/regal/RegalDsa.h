@@ -55,9 +55,9 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-template<typename T> inline void DsaGetv( Dispatch::GL & tbl, GLenum pname, T * params ) { UNUSED_PARAMETER(tbl); UNUSED_PARAMETER(pname); UNUSED_PARAMETER(params);}
-template<> inline void DsaGetv( Dispatch::GL & tbl, GLenum pname, GLfloat * params ) { tbl.glGetFloatv( pname, params ); }
-template<> inline void DsaGetv( Dispatch::GL & tbl, GLenum pname, GLdouble * params ) { tbl.glGetDoublev( pname, params ); }
+template<typename T> inline void DsaGetv( EmuProcsOriginateDsa & orig, GLenum pname, T * params ) { UNUSED_PARAMETER(orig); UNUSED_PARAMETER(pname); UNUSED_PARAMETER(params);}
+template<> inline void DsaGetv( EmuProcsOriginateDsa & orig, GLenum pname, GLfloat * params ) { orig.glGetFloatv( pname, params ); }
+template<> inline void DsaGetv( EmuProcsOriginateDsa & orig, GLenum pname, GLdouble * params ) { orig.glGetDoublev( pname, params ); }
 
 
 struct Dsa
@@ -162,12 +162,12 @@ struct Dsa
                     dsa.matrixMode = GL_TEXTURE;
                     break;
             }
-            ctx->emu.curr.glMatrixMode( dsa.matrixMode );
+            orig.glMatrixMode( dsa.matrixMode );
         }
     }
     void RestoreMatrixMode( RegalContext * ctx ) {
         if( dsa.matrixMode != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glMatrixMode( drv.matrixMode );
+            orig.glMatrixMode( drv.matrixMode );
             RestoreActiveTexture( ctx );
             dsa.matrixMode = REGAL_DSA_INVALID;
         }
@@ -189,12 +189,12 @@ struct Dsa
             return;
         if( NotActiveTexture( tex ) ) {
             dsa.activeTexture = tex;
-            ctx->emu.curr.glActiveTexture( dsa.activeTexture );
+            orig.glActiveTexture( dsa.activeTexture );
         }
     }
     void RestoreActiveTexture( RegalContext * ctx ) {
         if( dsa.activeTexture != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glActiveTexture( drv.activeTexture );
+            orig.glActiveTexture( drv.activeTexture );
             dsa.activeTexture = REGAL_DSA_INVALID;
         }
     }
@@ -210,12 +210,12 @@ struct Dsa
     void DsaClientActiveTexture( RegalContext * ctx, GLenum tex ) {
         if( NotClientActiveTexture( tex ) ) {
             dsa.clientActiveTexture = tex;
-            ctx->emu.curr.glClientActiveTexture( dsa.clientActiveTexture );
+            orig.glClientActiveTexture( dsa.clientActiveTexture );
         }
     }
     void RestoreClientActiveTexture( RegalContext * ctx ) {
         if( dsa.clientActiveTexture != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glClientActiveTexture( drv.clientActiveTexture );
+            orig.glClientActiveTexture( drv.clientActiveTexture );
             dsa.clientActiveTexture = REGAL_DSA_INVALID;
         }
     }
@@ -231,12 +231,12 @@ struct Dsa
     void DsaGlslProgram( RegalContext * ctx, GLuint program ) {
         if( NotGlslProgram( program ) ) {
             dsa.glslProgram = program;
-            ctx->emu.curr.glUseProgram( dsa.glslProgram );
+            orig.glUseProgram( dsa.glslProgram );
         }
     }
     void RestoreGlslProgram( RegalContext * ctx ) {
         if( dsa.glslProgram != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glUseProgram( drv.glslProgram );
+            orig.glUseProgram( drv.glslProgram );
             dsa.glslProgram = REGAL_DSA_INVALID;
         }
     }
@@ -263,12 +263,12 @@ struct Dsa
         if( NotFramebuffer( target, framebuffer ) ) {
             dsa.framebufferTarget = target;
             dsa.framebuffer = framebuffer;
-            ctx->emu.curr.glBindFramebuffer( dsa.framebufferTarget, dsa.framebuffer );
+            orig.glBindFramebuffer( dsa.framebufferTarget, dsa.framebuffer );
         }
     }
     void RestoreFramebuffer( RegalContext * ctx ) {
         if( dsa.framebuffer != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glBindFramebuffer( drv.framebufferTarget, drv.framebuffer );
+            orig.glBindFramebuffer( drv.framebufferTarget, drv.framebuffer );
             dsa.framebufferTarget = REGAL_DSA_INVALID;
             dsa.framebuffer = REGAL_DSA_INVALID;
         }
@@ -297,12 +297,12 @@ struct Dsa
         if( NotRenderbuffer( target, renderbuffer ) ) {
             dsa.renderbufferTarget = target;
             dsa.renderbuffer = renderbuffer;
-            ctx->emu.curr.glBindRenderbuffer( dsa.renderbufferTarget, dsa.renderbuffer );
+            orig.glBindRenderbuffer( dsa.renderbufferTarget, dsa.renderbuffer );
         }
     }
     void RestoreRenderbuffer( RegalContext * ctx ) {
         if( dsa.renderbuffer != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glBindRenderbuffer( drv.renderbufferTarget, drv.renderbuffer );
+            orig.glBindRenderbuffer( drv.renderbufferTarget, drv.renderbuffer );
             dsa.renderbufferTarget = REGAL_DSA_INVALID;
             dsa.renderbuffer = REGAL_DSA_INVALID;
         }
@@ -355,13 +355,13 @@ struct Dsa
         int idx = AsmTargetIndex( target );
         if( NotAsmProgram( target, prog ) ) {
             dsa.asmProgram[idx] = prog;
-            ctx->emu.curr.glBindProgramARB( target, dsa.asmProgram[idx] );
+            orig.glBindProgramARB( target, dsa.asmProgram[idx] );
         }
     }
     void RestoreAsmProgram( RegalContext * ctx, GLenum target ) {
         int idx = AsmTargetIndex( target );
         if( dsa.asmProgram[idx] != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glBindProgramARB( target, drv.asmProgram[idx] );
+            orig.glBindProgramARB( target, drv.asmProgram[idx] );
             dsa.asmProgram[idx] = REGAL_DSA_INVALID;
         }
     }
@@ -388,12 +388,12 @@ struct Dsa
     void DsaVao( RegalContext * ctx, GLuint vao ) {
         if( NotVao( vao ) ) {
             dsa.vao = vao;
-            ctx->emu.curr.glBindVertexArray( dsa.vao );
+            orig.glBindVertexArray( dsa.vao );
         }
     }
     void RestoreVao( RegalContext * ctx ) {
         if( dsa.vao != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glBindVertexArray( drv.vao );
+            orig.glBindVertexArray( drv.vao );
             dsa.vao = REGAL_DSA_INVALID;
         }
     }
@@ -422,12 +422,12 @@ struct Dsa
     void DsaBuffer( RegalContext * ctx, GLuint buf ) {
         if( NotBuffer( buf ) ) {
             dsa.buffer = buf;
-            ctx->emu.curr.glBindBuffer( GL_ARRAY_BUFFER, dsa.buffer );
+            orig.glBindBuffer( GL_ARRAY_BUFFER, dsa.buffer );
         }
     }
     void RestoreBuffer( RegalContext * ctx ) {
         if( dsa.buffer != REGAL_DSA_INVALID ) {
-            ctx->emu.curr.glBindBuffer( GL_ARRAY_BUFFER, drv.buffer );
+            orig.glBindBuffer( GL_ARRAY_BUFFER, drv.buffer );
             dsa.buffer = REGAL_DSA_INVALID;
         }
     }
@@ -477,13 +477,13 @@ struct Dsa
             dsa.textureTarget = target;
             dsa.texture = texture;
             DsaActiveTexture( ctx, GL_TEXTURE0 );
-            ctx->emu.curr.glBindTexture( dsa.textureTarget, dsa.texture );
+            orig.glBindTexture( dsa.textureTarget, dsa.texture );
         }
     }
     void RestoreTexture( RegalContext * ctx ) {
         if( dsa.texture != REGAL_DSA_INVALID ) {
             DsaActiveTexture( ctx, GL_TEXTURE0 );
-            ctx->emu.curr.glBindTexture( drv.textureTarget, drv.texture );
+            orig.glBindTexture( drv.textureTarget, drv.texture );
             dsa.textureTarget = REGAL_DSA_INVALID;
             dsa.texture = REGAL_DSA_INVALID;
         }
@@ -500,12 +500,10 @@ struct Dsa
 
     void ClientAttribDefault( RegalContext * ctx, GLbitfield mask )
     {
-        Dispatch::GL &tbl = ctx->emu.curr;
-
         if (mask&GL_CLIENT_PIXEL_STORE_BIT)
         {
-            PFNGLPIXELSTOREIPROC pixelStorei = tbl.glPixelStorei;
-            PFNGLPIXELSTOREFPROC pixelStoref = tbl.glPixelStoref;
+            PFNGLPIXELSTOREIPROC pixelStorei = orig.glPixelStorei;
+            PFNGLPIXELSTOREFPROC pixelStoref = orig.glPixelStoref;
 
             RegalAssert(pixelStorei);
             RegalAssert(pixelStoref);
@@ -550,44 +548,43 @@ struct Dsa
             // FIXME: need number of texture units
             int maxTextureUnit = 7;
             for( int i = maxTextureUnit; i >= 0; i-- ) {
-                tbl.glClientActiveTexture( GL_TEXTURE0 + i );
-                tbl.glDisableClientState( GL_TEXTURE_COORD_ARRAY );
+                orig.glClientActiveTexture( GL_TEXTURE0 + i );
+                orig.glDisableClientState( GL_TEXTURE_COORD_ARRAY );
             }
             for( int i = 0; i < 16; i++ ) {
-                tbl.glDisableVertexAttribArray( i );
-                tbl.glVertexAttribPointer( i, 4, GL_FLOAT, GL_FALSE, 0, NULL );
+                orig.glDisableVertexAttribArray( i );
+                orig.glVertexAttribPointer( i, 4, GL_FLOAT, GL_FALSE, 0, NULL );
             }
-            tbl.glDisableClientState( GL_VERTEX_ARRAY );
-            tbl.glDisableClientState( GL_NORMAL_ARRAY );
-            tbl.glDisableClientState( GL_FOG_COORD_ARRAY );
-            tbl.glDisableClientState( GL_COLOR_ARRAY );
-            tbl.glDisableClientState( GL_SECONDARY_COLOR_ARRAY );
-            tbl.glDisableClientState( GL_INDEX_ARRAY );
-            tbl.glDisableClientState( GL_EDGE_FLAG_ARRAY );
-            tbl.glVertexPointer( 4, GL_FLOAT, 0, NULL );
-            tbl.glNormalPointer( GL_FLOAT, 0, NULL );
-            tbl.glFogCoordPointer( GL_FLOAT, 0, NULL );
-            tbl.glColorPointer( 4, GL_FLOAT, 0, NULL );
-            tbl.glSecondaryColorPointer( 3, GL_FLOAT, 0, NULL );
-            tbl.glIndexPointer( GL_FLOAT, 0, NULL );
+            orig.glDisableClientState( GL_VERTEX_ARRAY );
+            orig.glDisableClientState( GL_NORMAL_ARRAY );
+            orig.glDisableClientState( GL_FOG_COORD_ARRAY );
+            orig.glDisableClientState( GL_COLOR_ARRAY );
+            orig.glDisableClientState( GL_SECONDARY_COLOR_ARRAY );
+            orig.glDisableClientState( GL_INDEX_ARRAY );
+            orig.glDisableClientState( GL_EDGE_FLAG_ARRAY );
+            orig.glVertexPointer( 4, GL_FLOAT, 0, NULL );
+            orig.glNormalPointer( GL_FLOAT, 0, NULL );
+            orig.glFogCoordPointer( GL_FLOAT, 0, NULL );
+            orig.glColorPointer( 4, GL_FLOAT, 0, NULL );
+            orig.glSecondaryColorPointer( 3, GL_FLOAT, 0, NULL );
+            orig.glIndexPointer( GL_FLOAT, 0, NULL );
         }
     }
 
     template< typename T >
     bool GetIndexedv( RegalContext * ctx, GLenum pname, GLuint index, T * params ) {
-        Dispatch::GL &tbl = ctx->emu.curr;
         switch( pname ) {
             case GL_PROGRAM_MATRIX_EXT:
                 ctx->dsa->DsaMatrixMode( ctx, GL_MATRIX0_ARB + index );
-                DsaGetv( tbl, GL_CURRENT_MATRIX_ARB, params );
+                DsaGetv( orig, GL_CURRENT_MATRIX_ARB, params );
                 break;
             case GL_TRANSPOSE_PROGRAM_MATRIX_EXT:
                 ctx->dsa->DsaMatrixMode( ctx, GL_MATRIX0_ARB + index );
-                DsaGetv( tbl, GL_TRANSPOSE_CURRENT_MATRIX_ARB, params );
+                DsaGetv( orig, GL_TRANSPOSE_CURRENT_MATRIX_ARB, params );
                 break;
             case GL_PROGRAM_MATRIX_STACK_DEPTH_EXT:
                 ctx->dsa->DsaMatrixMode( ctx, GL_MATRIX0_ARB + index );
-                DsaGetv( tbl, GL_CURRENT_MATRIX_STACK_DEPTH_ARB, params );
+                DsaGetv( orig, GL_CURRENT_MATRIX_STACK_DEPTH_ARB, params );
                 break;
             case GL_CURRENT_MATRIX_NV:
             case GL_CURRENT_MATRIX_STACK_DEPTH_NV:
@@ -618,7 +615,7 @@ struct Dsa
             case GL_TEXTURE_CUBE_MAP:
             case GL_TEXTURE_RECTANGLE_ARB:
                 ctx->dsa->DsaActiveTexture( ctx, GL_TEXTURE0 + index );
-                DsaGetv( tbl, pname, params );
+                DsaGetv( orig, pname, params );
                 break;
             case GL_TEXTURE_COORD_ARRAY:
             case GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING:
@@ -627,7 +624,7 @@ struct Dsa
             case GL_TEXTURE_COORD_ARRAY_STRIDE:
             case GL_TEXTURE_COORD_ARRAY_TYPE:
                 ctx->dsa->DsaClientActiveTexture( ctx, GL_TEXTURE0 + index );
-                DsaGetv( tbl, pname, params );
+                DsaGetv( orig, pname, params );
                 break;
             default:
                 return false;
@@ -712,7 +709,6 @@ struct Dsa
     }
 
     GLboolean IsEnabledIndexed( RegalContext * ctx, GLenum pname, GLuint index ) {
-        Dispatch::GL &tbl = ctx->emu.curr;
         switch( pname ) {
             case GL_TEXTURE_1D:
             case GL_TEXTURE_2D:
@@ -724,11 +720,11 @@ struct Dsa
             case GL_TEXTURE_GEN_R:
             case GL_TEXTURE_GEN_Q:
                 ctx->dsa->DsaActiveTexture( ctx, GL_TEXTURE0 + index );
-                return tbl.glIsEnabled( pname );
+                return orig.glIsEnabled( pname );
                 break;
             case GL_TEXTURE_COORD_ARRAY:
                 ctx->dsa->DsaClientActiveTexture( ctx, GL_TEXTURE0 + index );
-                return tbl.glIsEnabled( pname );
+                return orig.glIsEnabled( pname );
             default:
                 break;
         }

@@ -63,6 +63,10 @@ struct EmuProcsOriginateBaseVertex {
     memset(this, 0, sizeof( *this ) );
   }
 
+  PFNGLDRAWELEMENTSPROC glDrawElements;
+  PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
+  PFNGLDRAWELEMENTSINSTANCEDPROC glDrawElementsInstanced;
+  PFNGLDRAWELEMENTSINSTANCEDBASEINSTANCEPROC glDrawElementsInstancedBaseInstance;
   PFNGLDISABLEPROC glDisable;
   PFNGLENABLEPROC glEnable;
   PFNGLCOLORPOINTERPROC glColorPointer;
@@ -124,6 +128,10 @@ struct EmuProcsOriginateBaseVertex {
   PFNGLENABLEINDEXEDEXTPROC glEnableIndexedEXT;
 
   void Initialize( Dispatch::GL & dt ) {
+    glDrawElements = dt.glDrawElements;
+    glDrawRangeElements = dt.glDrawRangeElements;
+    glDrawElementsInstanced = dt.glDrawElementsInstanced;
+    glDrawElementsInstancedBaseInstance = dt.glDrawElementsInstancedBaseInstance;
     glDisable = dt.glDisable;
     glEnable = dt.glEnable;
     glColorPointer = dt.glColorPointer;
