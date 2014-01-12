@@ -53,7 +53,95 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static void REGAL_CALL emuProcInterceptQuads_glBindBuffer(GLenum target, GLuint buffer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glCullFace(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glDisable(GLenum cap)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glDrawArrays(GLenum mode, GLint first, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glEnable(GLenum cap)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glFrontFace(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glPolygonMode(GLenum face, GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glProvokingVertex(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glProvokingVertexEXT(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptQuads_glShadeModel(GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
 void EmuProcsInterceptQuads( Dispatch::GL & dt ) {
+  dt.glBindBuffer         = emuProcInterceptQuads_glBindBuffer;
+  dt.glCullFace           = emuProcInterceptQuads_glCullFace;
+  dt.glDisable            = emuProcInterceptQuads_glDisable;
+  dt.glDrawArrays         = emuProcInterceptQuads_glDrawArrays;
+  dt.glDrawArraysEXT      = emuProcInterceptQuads_glDrawArraysEXT;
+  dt.glEnable             = emuProcInterceptQuads_glEnable;
+  dt.glFrontFace          = emuProcInterceptQuads_glFrontFace;
+  dt.glPolygonMode        = emuProcInterceptQuads_glPolygonMode;
+  dt.glProvokingVertex    = emuProcInterceptQuads_glProvokingVertex;
+  dt.glProvokingVertexEXT = emuProcInterceptQuads_glProvokingVertexEXT;
+  dt.glShadeModel         = emuProcInterceptQuads_glShadeModel;
 }
 
 REGAL_NAMESPACE_END

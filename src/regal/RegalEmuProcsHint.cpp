@@ -53,7 +53,47 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(GLenum pname, GLboolean *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptHint_glGetDoublev(GLenum pname, GLdouble *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptHint_glGetFloatv(GLenum pname, GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptHint_glHint(GLenum target, GLenum mode)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
 void EmuProcsInterceptHint( Dispatch::GL & dt ) {
+  dt.glGetBooleanv = emuProcInterceptHint_glGetBooleanv;
+  dt.glGetDoublev  = emuProcInterceptHint_glGetDoublev;
+  dt.glGetFloatv   = emuProcInterceptHint_glGetFloatv;
+  dt.glGetIntegerv = emuProcInterceptHint_glGetIntegerv;
+  dt.glHint        = emuProcInterceptHint_glHint;
 }
 
 REGAL_NAMESPACE_END

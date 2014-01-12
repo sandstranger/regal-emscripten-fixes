@@ -53,7 +53,71 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static void REGAL_CALL emuProcInterceptRect_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptRect_glRectdv(const GLdouble *v1, const GLdouble *v2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptRect_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptRect_glRectfv(const GLfloat *v1, const GLfloat *v2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptRect_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptRect_glRectiv(const GLint *v1, const GLint *v2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptRect_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptRect_glRectsv(const GLshort *v1, const GLshort *v2)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
 void EmuProcsInterceptRect( Dispatch::GL & dt ) {
+  dt.glRectd  = emuProcInterceptRect_glRectd;
+  dt.glRectdv = emuProcInterceptRect_glRectdv;
+  dt.glRectf  = emuProcInterceptRect_glRectf;
+  dt.glRectfv = emuProcInterceptRect_glRectfv;
+  dt.glRecti  = emuProcInterceptRect_glRecti;
+  dt.glRectiv = emuProcInterceptRect_glRectiv;
+  dt.glRects  = emuProcInterceptRect_glRects;
+  dt.glRectsv = emuProcInterceptRect_glRectsv;
 }
 
 REGAL_NAMESPACE_END

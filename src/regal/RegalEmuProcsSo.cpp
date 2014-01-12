@@ -53,7 +53,537 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static void REGAL_CALL emuProcInterceptSo_glActiveTexture(GLenum texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glActiveTextureARB(GLenum texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glBindSampler(GLuint unit, GLuint sampler)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glBindTexture(GLenum target, GLuint texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDeleteSamplers(GLsizei count, const GLuint *samplers)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDeleteTextures(GLsizei n, const GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawArrays(GLenum mode, GLint first, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawArraysIndirect(GLenum mode, const GLvoid *indirect)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawArraysInstanced(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawArraysInstancedARB(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementArrayATI(GLenum mode, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGenSamplers(GLsizei count, GLuint *samplers)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGenTextures(GLsizei n, GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetDoublev(GLenum pname, GLdouble *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetFloatv(GLenum pname, GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetInteger64v(GLenum pname, GLint64 *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetIntegerv(GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glGetTexParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static GLboolean REGAL_CALL emuProcInterceptSo_glIsSampler(GLuint sampler)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  GLboolean  ret = GL_FALSE;
+  return ret;
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawArrays(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysEXT(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsEXT(GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glSamplerParameteri(GLuint sampler, GLenum pname, GLint param)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameterIiv(GLenum target, GLenum pname, const GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameterIivEXT(GLenum target, GLenum pname, const GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameterIuiv(GLenum target, GLenum pname, const GLuint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameterf(GLenum target, GLenum pname, GLfloat param)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameteri(GLenum target, GLenum pname, GLint param)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptSo_glTexParameteriv(GLenum target, GLenum pname, const GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
 void EmuProcsInterceptSo( Dispatch::GL & dt ) {
+  dt.glActiveTexture                   = emuProcInterceptSo_glActiveTexture;
+  dt.glActiveTextureARB                = emuProcInterceptSo_glActiveTextureARB;
+  dt.glBindSampler                     = emuProcInterceptSo_glBindSampler;
+  dt.glBindTexture                     = emuProcInterceptSo_glBindTexture;
+  dt.glDeleteSamplers                  = emuProcInterceptSo_glDeleteSamplers;
+  dt.glDeleteTextures                  = emuProcInterceptSo_glDeleteTextures;
+  dt.glDrawArrays                      = emuProcInterceptSo_glDrawArrays;
+  dt.glDrawArraysEXT                   = emuProcInterceptSo_glDrawArraysEXT;
+  dt.glDrawArraysIndirect              = emuProcInterceptSo_glDrawArraysIndirect;
+  dt.glDrawArraysInstanced             = emuProcInterceptSo_glDrawArraysInstanced;
+  dt.glDrawArraysInstancedARB          = emuProcInterceptSo_glDrawArraysInstancedARB;
+  dt.glDrawArraysInstancedEXT          = emuProcInterceptSo_glDrawArraysInstancedEXT;
+  dt.glDrawElementArrayAPPLE           = emuProcInterceptSo_glDrawElementArrayAPPLE;
+  dt.glDrawElementArrayATI             = emuProcInterceptSo_glDrawElementArrayATI;
+  dt.glDrawElements                    = emuProcInterceptSo_glDrawElements;
+  dt.glDrawElementsBaseVertex          = emuProcInterceptSo_glDrawElementsBaseVertex;
+  dt.glDrawElementsIndirect            = emuProcInterceptSo_glDrawElementsIndirect;
+  dt.glDrawElementsInstanced           = emuProcInterceptSo_glDrawElementsInstanced;
+  dt.glDrawElementsInstancedARB        = emuProcInterceptSo_glDrawElementsInstancedARB;
+  dt.glDrawElementsInstancedBaseVertex = emuProcInterceptSo_glDrawElementsInstancedBaseVertex;
+  dt.glDrawElementsInstancedEXT        = emuProcInterceptSo_glDrawElementsInstancedEXT;
+  dt.glDrawRangeElementArrayAPPLE      = emuProcInterceptSo_glDrawRangeElementArrayAPPLE;
+  dt.glDrawRangeElementArrayATI        = emuProcInterceptSo_glDrawRangeElementArrayATI;
+  dt.glDrawRangeElements               = emuProcInterceptSo_glDrawRangeElements;
+  dt.glDrawRangeElementsBaseVertex     = emuProcInterceptSo_glDrawRangeElementsBaseVertex;
+  dt.glDrawRangeElementsEXT            = emuProcInterceptSo_glDrawRangeElementsEXT;
+  dt.glGenSamplers                     = emuProcInterceptSo_glGenSamplers;
+  dt.glGenTextures                     = emuProcInterceptSo_glGenTextures;
+  dt.glGetDoublev                      = emuProcInterceptSo_glGetDoublev;
+  dt.glGetFloatv                       = emuProcInterceptSo_glGetFloatv;
+  dt.glGetInteger64v                   = emuProcInterceptSo_glGetInteger64v;
+  dt.glGetIntegerv                     = emuProcInterceptSo_glGetIntegerv;
+  dt.glGetSamplerParameterIiv          = emuProcInterceptSo_glGetSamplerParameterIiv;
+  dt.glGetSamplerParameterIuiv         = emuProcInterceptSo_glGetSamplerParameterIuiv;
+  dt.glGetSamplerParameterfv           = emuProcInterceptSo_glGetSamplerParameterfv;
+  dt.glGetSamplerParameteriv           = emuProcInterceptSo_glGetSamplerParameteriv;
+  dt.glGetTexParameterIiv              = emuProcInterceptSo_glGetTexParameterIiv;
+  dt.glGetTexParameterIuiv             = emuProcInterceptSo_glGetTexParameterIuiv;
+  dt.glGetTexParameterfv               = emuProcInterceptSo_glGetTexParameterfv;
+  dt.glGetTexParameteriv               = emuProcInterceptSo_glGetTexParameteriv;
+  dt.glIsSampler                       = emuProcInterceptSo_glIsSampler;
+  dt.glMultiDrawArrays                 = emuProcInterceptSo_glMultiDrawArrays;
+  dt.glMultiDrawArraysEXT              = emuProcInterceptSo_glMultiDrawArraysEXT;
+  dt.glMultiDrawArraysIndirect         = emuProcInterceptSo_glMultiDrawArraysIndirect;
+  dt.glMultiDrawArraysIndirectAMD      = emuProcInterceptSo_glMultiDrawArraysIndirectAMD;
+  dt.glMultiDrawElementArrayAPPLE      = emuProcInterceptSo_glMultiDrawElementArrayAPPLE;
+  dt.glMultiDrawElements               = emuProcInterceptSo_glMultiDrawElements;
+  dt.glMultiDrawElementsBaseVertex     = emuProcInterceptSo_glMultiDrawElementsBaseVertex;
+  dt.glMultiDrawElementsEXT            = emuProcInterceptSo_glMultiDrawElementsEXT;
+  dt.glMultiDrawElementsIndirect       = emuProcInterceptSo_glMultiDrawElementsIndirect;
+  dt.glMultiDrawElementsIndirectAMD    = emuProcInterceptSo_glMultiDrawElementsIndirectAMD;
+  dt.glMultiDrawRangeElementArrayAPPLE = emuProcInterceptSo_glMultiDrawRangeElementArrayAPPLE;
+  dt.glSamplerParameterIiv             = emuProcInterceptSo_glSamplerParameterIiv;
+  dt.glSamplerParameterIuiv            = emuProcInterceptSo_glSamplerParameterIuiv;
+  dt.glSamplerParameterf               = emuProcInterceptSo_glSamplerParameterf;
+  dt.glSamplerParameterfv              = emuProcInterceptSo_glSamplerParameterfv;
+  dt.glSamplerParameteri               = emuProcInterceptSo_glSamplerParameteri;
+  dt.glSamplerParameteriv              = emuProcInterceptSo_glSamplerParameteriv;
+  dt.glTexParameterIiv                 = emuProcInterceptSo_glTexParameterIiv;
+  dt.glTexParameterIivEXT              = emuProcInterceptSo_glTexParameterIivEXT;
+  dt.glTexParameterIuiv                = emuProcInterceptSo_glTexParameterIuiv;
+  dt.glTexParameterIuivEXT             = emuProcInterceptSo_glTexParameterIuivEXT;
+  dt.glTexParameterf                   = emuProcInterceptSo_glTexParameterf;
+  dt.glTexParameterfv                  = emuProcInterceptSo_glTexParameterfv;
+  dt.glTexParameteri                   = emuProcInterceptSo_glTexParameteri;
+  dt.glTexParameteriv                  = emuProcInterceptSo_glTexParameteriv;
 }
 
 REGAL_NAMESPACE_END

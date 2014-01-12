@@ -53,7 +53,111 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static void REGAL_CALL emuProcInterceptTexC_glActiveTexture(GLenum texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glActiveTextureARB(GLenum texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glBindTexture(GLenum target, GLuint texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glBindTextureEXT(GLenum target, GLuint texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glDeleteTextures(GLsizei n, const GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glDeleteTexturesEXT(GLsizei n, const GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glGenTextures(GLsizei n, GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glGenTexturesEXT(GLsizei n, GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glGenerateMipmap(GLenum target)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glGenerateMipmapEXT(GLenum target)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glPixelStorei(GLenum pname, GLint param)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexC_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
 void EmuProcsInterceptTexC( Dispatch::GL & dt ) {
+  dt.glActiveTexture     = emuProcInterceptTexC_glActiveTexture;
+  dt.glActiveTextureARB  = emuProcInterceptTexC_glActiveTextureARB;
+  dt.glBindTexture       = emuProcInterceptTexC_glBindTexture;
+  dt.glBindTextureEXT    = emuProcInterceptTexC_glBindTextureEXT;
+  dt.glDeleteTextures    = emuProcInterceptTexC_glDeleteTextures;
+  dt.glDeleteTexturesEXT = emuProcInterceptTexC_glDeleteTexturesEXT;
+  dt.glGenTextures       = emuProcInterceptTexC_glGenTextures;
+  dt.glGenTexturesEXT    = emuProcInterceptTexC_glGenTexturesEXT;
+  dt.glGenerateMipmap    = emuProcInterceptTexC_glGenerateMipmap;
+  dt.glGenerateMipmapEXT = emuProcInterceptTexC_glGenerateMipmapEXT;
+  dt.glPixelStorei       = emuProcInterceptTexC_glPixelStorei;
+  dt.glTexImage2D        = emuProcInterceptTexC_glTexImage2D;
+  dt.glTexSubImage2D     = emuProcInterceptTexC_glTexSubImage2D;
 }
 
 REGAL_NAMESPACE_END

@@ -53,7 +53,223 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static void REGAL_CALL emuProcInterceptObj_glBindBuffer(GLenum target, GLuint buffer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glBindBufferARB(GLenum target, GLuint buffer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glBindTexture(GLenum target, GLuint texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glBindVertexArray(GLuint array)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glDeleteBuffers(GLsizei n, const GLuint *buffers)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glDeleteBuffersARB(GLsizei n, const GLuint *buffers)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glDeleteTextures(GLsizei n, const GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glDeleteVertexArrays(GLsizei n, const GLuint *arrays)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture1DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DMultisampleEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture3DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture3DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glGenBuffers(GLsizei n, GLuint *buffers)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glGenBuffersARB(GLsizei n, GLuint *buffers)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glGenTextures(GLsizei n, GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glGenVertexArrays(GLsizei n, GLuint *arrays)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptObj_glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static GLboolean REGAL_CALL emuProcInterceptObj_glIsBuffer(GLuint buffer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  GLboolean  ret = GL_FALSE;
+  return ret;
+}
+
+static GLboolean REGAL_CALL emuProcInterceptObj_glIsBufferARB(GLuint buffer)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  GLboolean  ret = GL_FALSE;
+  return ret;
+}
+
+static GLboolean REGAL_CALL emuProcInterceptObj_glIsTexture(GLuint texture)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  GLboolean  ret = GL_FALSE;
+  return ret;
+}
+
+static GLboolean REGAL_CALL emuProcInterceptObj_glIsVertexArray(GLuint array)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+  GLboolean  ret = GL_FALSE;
+  return ret;
+}
+
 void EmuProcsInterceptObj( Dispatch::GL & dt ) {
+  dt.glBindBuffer                             = emuProcInterceptObj_glBindBuffer;
+  dt.glBindBufferARB                          = emuProcInterceptObj_glBindBufferARB;
+  dt.glBindTexture                            = emuProcInterceptObj_glBindTexture;
+  dt.glBindVertexArray                        = emuProcInterceptObj_glBindVertexArray;
+  dt.glDeleteBuffers                          = emuProcInterceptObj_glDeleteBuffers;
+  dt.glDeleteBuffersARB                       = emuProcInterceptObj_glDeleteBuffersARB;
+  dt.glDeleteTextures                         = emuProcInterceptObj_glDeleteTextures;
+  dt.glDeleteVertexArrays                     = emuProcInterceptObj_glDeleteVertexArrays;
+  dt.glFramebufferTexture1D                   = emuProcInterceptObj_glFramebufferTexture1D;
+  dt.glFramebufferTexture1DEXT                = emuProcInterceptObj_glFramebufferTexture1DEXT;
+  dt.glFramebufferTexture2D                   = emuProcInterceptObj_glFramebufferTexture2D;
+  dt.glFramebufferTexture2DEXT                = emuProcInterceptObj_glFramebufferTexture2DEXT;
+  dt.glFramebufferTexture2DMultisampleEXT     = emuProcInterceptObj_glFramebufferTexture2DMultisampleEXT;
+  dt.glFramebufferTexture2DOES                = emuProcInterceptObj_glFramebufferTexture2DOES;
+  dt.glFramebufferTexture3DEXT                = emuProcInterceptObj_glFramebufferTexture3DEXT;
+  dt.glFramebufferTexture3DOES                = emuProcInterceptObj_glFramebufferTexture3DOES;
+  dt.glGenBuffers                             = emuProcInterceptObj_glGenBuffers;
+  dt.glGenBuffersARB                          = emuProcInterceptObj_glGenBuffersARB;
+  dt.glGenTextures                            = emuProcInterceptObj_glGenTextures;
+  dt.glGenVertexArrays                        = emuProcInterceptObj_glGenVertexArrays;
+  dt.glGetFramebufferAttachmentParameteriv    = emuProcInterceptObj_glGetFramebufferAttachmentParameteriv;
+  dt.glGetFramebufferAttachmentParameterivEXT = emuProcInterceptObj_glGetFramebufferAttachmentParameterivEXT;
+  dt.glIsBuffer                               = emuProcInterceptObj_glIsBuffer;
+  dt.glIsBufferARB                            = emuProcInterceptObj_glIsBufferARB;
+  dt.glIsTexture                              = emuProcInterceptObj_glIsTexture;
+  dt.glIsVertexArray                          = emuProcInterceptObj_glIsVertexArray;
 }
 
 REGAL_NAMESPACE_END

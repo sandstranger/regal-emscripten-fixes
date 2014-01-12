@@ -97,14 +97,65 @@ def apiEmuProcsHeaderCode( e, apis ):
 def apiEmuProcsSourceCode( e, apis ):
   code = ''
 
-  o = emuGetInterceptList( e['formulae'], apis )
+  intercept = []
+
+  for api in apis:
+
+    code += '\n'
+    if api.name in cond:
+      code += '#if %s\n' % cond[api.name]
+
+    for function in sorted( api.functions, key = lambda function: function.name):
+      if not function.needsContext:
+        continue
+      if getattr(function,'regalOnly',False)==True:
+        continue
+
+      name   = function.name
+      params = paramsDefaultCode(function.parameters, True)
+      callParams = paramsNameCode(function.parameters)
+      rType  = typeCode(function.ret.type)
+      category  = getattr(function, 'category', None)
+      version   = getattr(function, 'version', None)
+
+      emue = emuFindEntry( function, e['formulae'], e['member'] )
+
+      if not emue:
+        continue
+
+      intercept.append( name )
+
+      code +=      '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emuProcIntercept%s_' % e['suffix'], name, params)
+      code +=      '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
+      code +=      '  RegalAssert(_context);\n'
+      code +=      '\n'
+
+      retInit = ''
+      rTypes    = rType.strip()
+      if not typeIsVoid(rType):
+        if rTypes in api.defaults:
+          retInit += '%s' % ( api.defaults[rTypes] )
+        else:
+          if rType[-1]=='*' or typeIsVoidPointer(rType):
+            retInit += 'NULL'
+          else:
+            retInit += '(%s) 0' % ( rTypes )
+
+      if not typeIsVoid(rType):
+        code +=    '  %s ret = %s;\n' % (rType, retInit)
+        code +=    '  return ret;\n'
+      code +=      '}\n'
+
+    if api.name in cond:
+      code += '#endif // %s\n' % cond[api.name]
 
   code +=     'void EmuProcsIntercept%s( Dispatch::GL & dt ) {\n' % e['suffix']
-
-  if len(o) == 0:
-    code +=   '}\n'
-    return code
-
+  maxf = 0
+  for f in intercept:
+    maxf = max( maxf, len(f) )
+  for f in sorted(intercept):
+    spc = ' ' * ( maxf - len(f) )
+    code +=     '  dt.%s%s = emuProcIntercept%s_%s;\n' % ( f, spc, e['suffix'], f )
   code +=     '}\n'
   return code
 

@@ -53,7 +53,95 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
+static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(GLsizei n, const GLuint *textures)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameteriv(GLenum target, GLenum pname, GLint *params)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+{
+  RegalContext *_context = REGAL_GET_CONTEXT();
+  RegalAssert(_context);
+
+}
+
 void EmuProcsInterceptTexSto( Dispatch::GL & dt ) {
+  dt.glDeleteTextures      = emuProcInterceptTexSto_glDeleteTextures;
+  dt.glGetTexParameterIiv  = emuProcInterceptTexSto_glGetTexParameterIiv;
+  dt.glGetTexParameterIuiv = emuProcInterceptTexSto_glGetTexParameterIuiv;
+  dt.glGetTexParameterfv   = emuProcInterceptTexSto_glGetTexParameterfv;
+  dt.glGetTexParameteriv   = emuProcInterceptTexSto_glGetTexParameteriv;
+  dt.glTexStorage1D        = emuProcInterceptTexSto_glTexStorage1D;
+  dt.glTexStorage1DEXT     = emuProcInterceptTexSto_glTexStorage1DEXT;
+  dt.glTexStorage2D        = emuProcInterceptTexSto_glTexStorage2D;
+  dt.glTexStorage2DEXT     = emuProcInterceptTexSto_glTexStorage2DEXT;
+  dt.glTexStorage3D        = emuProcInterceptTexSto_glTexStorage3D;
+  dt.glTexStorage3DEXT     = emuProcInterceptTexSto_glTexStorage3DEXT;
 }
 
 REGAL_NAMESPACE_END
