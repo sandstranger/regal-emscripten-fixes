@@ -88,7 +88,8 @@ namespace ClientState
 
   typedef StringList string_list;
 
-  inline static void enable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)
+  template <typename Procs>
+  inline static void enable(Procs &dt, const GLenum cap, const GLboolean enable)
   {
     if (enable)
       dt.glEnableClientState(cap);
@@ -96,7 +97,8 @@ namespace ClientState
       dt.glDisableClientState(cap);
   }
 
-  inline static void enablei(Dispatch::GL &dt, const GLenum cap, const GLuint index, const GLboolean enable)
+  template <typename Procs>
+  inline static void enablei(Procs &dt, const GLenum cap, const GLuint index, const GLboolean enable)
   {
     if (enable)
       dt.glEnableClientStateiEXT(cap,index);
@@ -179,7 +181,8 @@ namespace ClientState
       return *this;
     }
 
-    NamedVertexArray &get(Dispatch::GL &dt, vaName va)
+    template <typename Procs>
+    NamedVertexArray &get(Procs &dt, vaName va)
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -210,7 +213,8 @@ namespace ClientState
       return *this;
     }
 
-    const NamedVertexArray &set(Dispatch::GL &dt, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
+    template <typename Procs>
+    const NamedVertexArray &set(Procs &dt, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -261,7 +265,8 @@ namespace ClientState
       return *this;
     }
 
-    void transition(Dispatch::GL &dt, NamedVertexArray &to, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
+    template <typename Procs>
+    void transition(Procs &dt, NamedVertexArray &to, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -427,7 +432,8 @@ namespace ClientState
       return *this;
     }
 
-    VertexBufferBindPoint &get(Dispatch::GL &dt, GLuint index)
+    template <typename Procs>
+    VertexBufferBindPoint &get(Procs &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -440,7 +446,8 @@ namespace ClientState
       return *this;
     }
 
-    const VertexBufferBindPoint &set(Dispatch::GL &dt, GLuint index) const
+    template <typename Procs>
+    const VertexBufferBindPoint &set(Procs &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -451,7 +458,8 @@ namespace ClientState
       return *this;
     }
 
-    void transition(Dispatch::GL &dt, VertexBufferBindPoint &to, GLuint index)
+    template <typename Procs>
+    void transition(Procs &dt, VertexBufferBindPoint &to, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -527,7 +535,8 @@ namespace ClientState
       return *this;
     }
 
-    GenericVertexArray &get(Dispatch::GL &dt, GLuint index)
+    template <typename Procs>
+    GenericVertexArray &get(Procs &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -550,7 +559,8 @@ namespace ClientState
       return *this;
     }
 
-    const GenericVertexArray &set(Dispatch::GL &dt, GLuint index) const
+    template <typename Procs>
+    const GenericVertexArray &set(Procs &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -570,7 +580,8 @@ namespace ClientState
       return *this;
     }
 
-    void transition(Dispatch::GL &dt, GenericVertexArray &to, GLuint index)
+    template <typename Procs>
+    void transition(Procs &dt, GenericVertexArray &to, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -716,7 +727,8 @@ namespace ClientState
       return *this;
     }
 
-    VertexArray &get(Dispatch::GL &dt)
+    template <typename Procs>
+    VertexArray &get(Procs &dt)
     {
       dt.glGetIntegerv(GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
       if (vertexArrayBinding)
@@ -741,7 +753,8 @@ namespace ClientState
       return *this;
     }
 
-    const VertexArray &set(Dispatch::GL &dt, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
+    template <typename Procs>
+    const VertexArray &set(Procs &dt, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
       dt.glBindVertexArray(0);
       size_t n = array_size( named );
@@ -769,7 +782,8 @@ namespace ClientState
       return *this;
     }
 
-    void transition(Dispatch::GL &dt, VertexArray &to, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
+    template <typename Procs>
+    void transition(Procs &dt, VertexArray &to, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
     {
       GLuint tmpVertexArrayBinding = to.vertexArrayBinding;
       if (vertexArrayBinding) {
@@ -1783,7 +1797,8 @@ namespace ClientState
       return *this;
     }
 
-    PixelStore &get(Dispatch::GL &dt)
+    template <typename Procs>
+    PixelStore &get(Procs &dt)
     {
       dt.glGetBooleanv(GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
       dt.glGetBooleanv(GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
@@ -1806,7 +1821,8 @@ namespace ClientState
       return *this;
     }
 
-    const PixelStore &set(Dispatch::GL &dt) const
+    template <typename Procs>
+    const PixelStore &set(Procs &dt) const
     {
       dt.glPixelStorei(GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
       dt.glPixelStorei(GL_UNPACK_LSB_FIRST,unpackLsbFirst);
@@ -1829,7 +1845,8 @@ namespace ClientState
       return *this;
     }
 
-    void transition(Dispatch::GL &dt, PixelStore &to)
+    template <typename Procs>
+    void transition(Procs &dt, PixelStore &to)
     {
       if (unpackSwapBytes != to.unpackSwapBytes) {
         unpackSwapBytes = to.unpackSwapBytes;
