@@ -770,7 +770,7 @@ template <typename T> string PrintArrayElement( int sz, const T *p ) {
   return el;
 }
 
-string PrintUniformValue( Dispatch::GL & tbl, GLuint program, GLint location, GLsizei count, GLenum type, int indent ) {
+string PrintUniformValue( ShaderInstance::Procs & tbl, GLuint program, GLint location, GLsizei count, GLenum type, int indent ) {
   char buf[1<<14];
   int sz = ShaderInstance::GetTypeSize( type );
   if( (count * sz) > sizeof(buf) ) {
@@ -884,6 +884,8 @@ struct ProgramHandler : public RequestHandler {
         json += string( indent, ' ' ) + "\"GL_ACTIVE_UNIFORMS\": " + print_string( activeUniforms, ",\n" );
         json += string( indent, ' ' ) + "\"uniforms\": {\n";
         indent += 2;
+        ShaderInstance::Procs sip;
+        sip.Initialize( ctx->http.next );
         for( int i = 0; i < activeUniforms; i++ ) {
           GLchar name[80];
           GLsizei nameLen = 0;
@@ -899,7 +901,7 @@ struct ProgramHandler : public RequestHandler {
           if( count > 1 ) {
             json +=string( indent, ' ' ) + print_string( "\"count\" :", count, ",\n" );
           }
-          json +=string( indent, ' ' ) + print_string( "\"value\": ", PrintUniformValue( ctx->http.next, prog, loc, count, type, indent ), ",\n" );
+          json +=string( indent, ' ' ) + print_string( "\"value\": ", PrintUniformValue( sip, prog, loc, count, type, indent ), ",\n" );
           EraseLastComma( json );
           indent -= 2;
           json += string( indent, ' ' ) + "},\n";

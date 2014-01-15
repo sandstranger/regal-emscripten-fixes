@@ -3446,6 +3446,7 @@ GLuint Iff::CreateShader( RegalContext *ctx, GLenum shaderType )
 void Iff::Init( RegalContext &ctx )
 {
   orig.Initialize( ctx.dispatchGL );
+  instProcs.Initialize( ctx.dispatchGL );
   
   shadowMatrixMode = GL_MODELVIEW;
   shadowActiveTextureIndex = 0;
@@ -4168,9 +4169,9 @@ void Iff::UseShaderProgram( RegalContext * ctx )
     
     // create the primary program object, and make it the "vanilla" version the first instance
     if( currinst->instances.size() == 0 ) {
-      ShaderInstance::InitProgram( ctx->emu.curr, currprog->pg, currinst->program );
+      ShaderInstance::InitProgram( instProcs, currprog->pg, currinst->program );
       UserProgramInstanceKey k;
-      ShaderInstance::InitProgramInstance( ctx->emu.curr, currinst->program, currprog->pg, currinst->instances[ k ].inst );
+      ShaderInstance::InitProgramInstance( instProcs, currinst->program, currprog->pg, currinst->instances[ k ].inst );
       currinst->prevKey = k;
       currinst->prevInstance = &currinst->instances[ k ];
       currinst->prevInstance->LocateUniforms( ctx, orig );
@@ -4190,7 +4191,7 @@ void Iff::UseShaderProgram( RegalContext * ctx )
     if( upi.inst.prog == 0 ) {
       std::vector<ShaderInstance::ShaderSource> sources;
       // alter the original sources as necessary, use a fetched or cached copy as preferred
-      ShaderInstance::GetProgramSources( ctx->emu.curr, currinst->program.prog, sources);
+      ShaderInstance::GetProgramSources( instProcs, currinst->program.prog, sources);
       for( size_t i = 0; i < sources.size(); i++ ) {
         ShaderInstance::ShaderSource & ss = sources[i];
         string output_src;
@@ -4202,13 +4203,13 @@ void Iff::UseShaderProgram( RegalContext * ctx )
         }
       }
 
-      ShaderInstance::CreateProgramInstance( ctx->emu.curr, currinst->program, sources, upi.inst );
+      ShaderInstance::CreateProgramInstance( instProcs, currinst->program, sources, upi.inst );
       upi.LocateUniforms( ctx, orig );
       orig.glUseProgram( upi.inst.prog );
     }
 
     if( upi.inst.ver != currinst->program.ver ) {
-      upi.inst.UpdateUniforms( ctx->emu.curr, currinst->program );
+      upi.inst.UpdateUniforms( instProcs, currinst->program );
       upi.inst.ver = currinst->program.ver;
     }
   }

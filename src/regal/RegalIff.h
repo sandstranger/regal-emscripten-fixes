@@ -1529,7 +1529,7 @@ struct Iff
     void Attribs( RegalContext * ctx );
     void UserShaderModeAttribs( RegalContext * ctx );
     void Samplers( RegalContext * ctx, EmuProcsOriginateIff & orig );
-    void Uniforms( RegalContext * ctx, EmuProcsOriginateIff & orig );
+    void Uniforms( RegalContext * ctx, EmuProcsOriginateIff & origS );
   };
 
   MatrixStack modelview;
@@ -2394,6 +2394,7 @@ struct Iff
   };
 
   Viewport viewport;
+  ShaderInstance::Procs instProcs;
 
   void Viewport( GLint x, GLint y, GLsizei w, GLsizei h );
   void DepthRange( GLfloat znear, GLfloat zfar );
