@@ -98,6 +98,7 @@ def generatePluginSource(apis, args):
       c += '%sREGAL_CALL plugin_%s(%s) \n{\n' % (rType, name, params)
 
       c += '  ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal &_instance = ::REGAL_NAMESPACE_INTERNAL::Thread::ThreadLocal::instance();\n'
+      c += '  UNUSED_PARAMETER( _instance );\n'
       if function.needsContext:
         c += '  //::REGAL_NAMESPACE_INTERNAL::Dispatch::GL *_next = _instance.nextDispatchTable;\n'
         c += '  ::REGAL_NAMESPACE_INTERNAL::Dispatch::GL *_next = &_instance.currentContext->dispatchGL;\n'

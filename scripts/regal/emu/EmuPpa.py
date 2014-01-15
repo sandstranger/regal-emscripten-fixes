@@ -1,6 +1,11 @@
 #!/usr/bin/python -B
 
+from RegalStateProcs import stateProcs
+
 ppaFormulae = {
+  'options' : {
+    'originate' : stateProcs,
+  },
   'PushAtrrib' : {
     'entries'  : [ 'glPushAttrib' ],
     'impl'     : [ '_context->ppa->PushAttrib( _context, ${arg0} );', ],

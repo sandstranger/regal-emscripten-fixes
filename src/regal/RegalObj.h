@@ -45,6 +45,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalPrivate.h"
 #include "RegalSharedMap.h"
+#include "RegalEmuProcsObj.h"
 
 REGAL_GLOBAL_END
 
@@ -138,9 +139,11 @@ struct Obj
   NameTranslator bufferNames;
   NameTranslator vaoNames;
   NameTranslator textureNames;
+  EmuProcsOriginateObj orig;
 
   void Init( RegalContext &ctx )
   {
+    orig.Initialize( ctx.dispatchGL );
     RegalContext *sharingWith = ctx.shareGroup->front();
     if (sharingWith)
     {
@@ -152,12 +155,12 @@ struct Obj
       textureNames.drv2app = sharingWith->obj->textureNames.drv2app;
     }
 
-    bufferNames.gen  = ctx.emu.curr.glGenBuffers;
-    bufferNames.del  = ctx.emu.curr.glDeleteBuffers;
-    vaoNames.gen     = ctx.emu.curr.glGenVertexArrays;
-    vaoNames.del     = ctx.emu.curr.glDeleteVertexArrays;
-    textureNames.gen = ctx.emu.curr.glGenTextures;
-    textureNames.del = ctx.emu.curr.glDeleteTextures;
+    bufferNames.gen  = orig.glGenBuffers;
+    bufferNames.del  = orig.glDeleteBuffers;
+    vaoNames.gen     = orig.glGenVertexArrays;
+    vaoNames.del     = orig.glDeleteVertexArrays;
+    textureNames.gen = orig.glGenTextures;
+    textureNames.del = orig.glDeleteTextures;
   }
 
   void Cleanup(RegalContext &ctx)
@@ -167,8 +170,7 @@ struct Obj
 
   void BindBuffer(RegalContext &ctx, GLenum target, GLuint bufferBinding)
   {
-    Dispatch::GL &tbl = ctx.emu.curr;
-    tbl.glBindBuffer( target, bufferNames.ToDriverName( bufferBinding ) );
+    orig.glBindBuffer( target, bufferNames.ToDriverName( bufferBinding ) );
   }
 
   void GenBuffers(RegalContext &ctx, GLsizei n, GLuint *buffers)
@@ -195,8 +197,7 @@ struct Obj
 
   void BindVertexArray(RegalContext &ctx, GLuint vao)
   {
-    Dispatch::GL &tbl = ctx.emu.curr;
-    tbl.glBindVertexArray( vaoNames.ToDriverName( vao ) );
+    orig.glBindVertexArray( vaoNames.ToDriverName( vao ) );
   }
 
   void GenVertexArrays(RegalContext &ctx, GLsizei n, GLuint *vaos)
@@ -223,8 +224,7 @@ struct Obj
 
   void BindTexture(RegalContext &ctx, GLenum target, GLuint name)
   {
-    Dispatch::GL &tbl = ctx.emu.curr;
-    tbl.glBindTexture( target, textureNames.ToDriverName( name ) );
+    orig.glBindTexture( target, textureNames.ToDriverName( name ) );
   }
 
   void GenTextures(RegalContext &ctx, GLsizei n, GLuint *names)

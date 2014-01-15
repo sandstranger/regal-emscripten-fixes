@@ -113,6 +113,7 @@ def apiTraceFuncDefineCode(apis, args):
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'trace_', name, params)
       code += '  Internal("trace_%s","()");\n' % name
       code += '  Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();\n'
+      code += '  UNUSED_PARAMETER( instance );\n'
       if function.needsContext:
         code += '  RegalAssert(_instance.currentContext);\n'
         code += '  //Push<Dispatch::GL *> _push(_instance.nextDispatchTable);\n'

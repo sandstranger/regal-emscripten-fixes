@@ -175,7 +175,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_SCISSOR_BIT ",State::Scissor::toString());
       if (!State::Scissor::fullyDefined())
-        State::Scissor::getUndefined(ctx->emu.curr);
+        State::Scissor::getUndefined(orig);
       scissorStack.push_back(State::Scissor());
       scissorStack.back() = *this;
       mask &= ~GL_SCISSOR_BIT;
@@ -185,7 +185,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_VIEWPORT_BIT ",State::Viewport::toString());
       if (!State::Viewport::fullyDefined())
-        State::Viewport::getUndefined(ctx->emu.curr);
+        State::Viewport::getUndefined(orig);
       viewportStack.push_back(State::Viewport());
       viewportStack.back() = *this;
       mask &= ~GL_VIEWPORT_BIT;
@@ -243,7 +243,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_COLOR_BUFFER_BIT ",State::ColorBuffer::toString());
       if (!State::ColorBuffer::fullyDefined())
-        State::ColorBuffer::getUndefined(ctx->emu.curr);
+        State::ColorBuffer::getUndefined(orig);
       colorBufferStack.push_back(State::ColorBuffer());
       colorBufferStack.back() = *this;
       mask &= ~GL_COLOR_BUFFER_BIT;
@@ -253,7 +253,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_PIXEL_MODE_BIT ",State::PixelMode::toString());
       if (!State::PixelMode::fullyDefined())
-        State::PixelMode::getUndefined(ctx->emu.curr);
+        State::PixelMode::getUndefined(orig);
       pixelModeStack.push_back(State::PixelMode());
       pixelModeStack.back() = *this;
       mask &= ~GL_PIXEL_MODE_BIT;
@@ -275,7 +275,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
       return;
 
     if (mask)
-      ctx->emu.curr.glPushAttrib(mask);
+      orig.glPushAttrib(mask);
   }
 
   void PopAttrib(RegalContext *ctx)
@@ -299,7 +299,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Depth::set(ctx->emu.curr);
+        State::Depth::set(orig);
 
         mask &= ~GL_DEPTH_BUFFER_BIT;
       }
@@ -315,7 +315,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Stencil::set(ctx->emu.curr);
+        State::Stencil::set(orig);
 
         mask &= ~GL_STENCIL_BUFFER_BIT;
       }
@@ -331,7 +331,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Polygon::set(ctx->emu.curr);
+        State::Polygon::set(orig);
 
         mask &= ~GL_POLYGON_BIT;
       }
@@ -343,7 +343,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
 
         Internal("Regal::Ppa::PopAttrib GL_TRANSFORM_BIT ",State::Transform::toString());
 
-        State::Transform::transition(ctx->emu.curr, transformStack.back());
+        State::Transform::transition(orig, transformStack.back());
         transformStack.pop_back();
 
         mask &= ~GL_TRANSFORM_BIT;
@@ -360,7 +360,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Hint::set(ctx->emu.curr);
+        State::Hint::set(orig);
 
         mask &= ~GL_HINT_BIT;
       }
@@ -376,7 +376,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Enable::set(*ctx);
+        State::Enable::set(*ctx, orig);
 
         mask &= ~GL_ENABLE_BIT;
       }
@@ -392,7 +392,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::List::set(ctx->emu.curr);
+        State::List::set(orig);
 
         mask &= ~GL_LIST_BIT;
       }
@@ -408,7 +408,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::AccumBuffer::set(ctx->emu.curr);
+        State::AccumBuffer::set(orig);
 
         mask &= ~GL_ACCUM_BUFFER_BIT;
       }
@@ -425,8 +425,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::Scissor::fullyDefined())
-          State::Scissor::getUndefined(ctx->emu.curr);
-        State::Scissor::set(ctx->emu.curr);
+          State::Scissor::getUndefined(orig);
+        State::Scissor::set(orig);
 
         mask &= ~GL_SCISSOR_BIT;
       }
@@ -443,8 +443,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::Viewport::fullyDefined())
-          State::Viewport::getUndefined(ctx->emu.curr);
-        State::Viewport::set(ctx->emu.curr);
+          State::Viewport::getUndefined(orig);
+        State::Viewport::set(orig);
 
         mask &= ~GL_VIEWPORT_BIT;
       }
@@ -460,7 +460,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Line::set(ctx->emu.curr);
+        State::Line::set(orig);
 
         mask &= ~GL_LINE_BIT;
       }
@@ -476,7 +476,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Multisample::set(*ctx);
+        State::Multisample::set(*ctx, orig);
 
         mask &= ~GL_MULTISAMPLE_BIT;
       }
@@ -492,7 +492,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Eval::set(ctx->emu.curr);
+        State::Eval::set(orig);
 
         mask &= ~GL_EVAL_BIT;
       }
@@ -508,7 +508,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Fog::set(ctx->emu.curr);
+        State::Fog::set(orig);
 
         mask &= ~GL_FOG_BIT;
       }
@@ -524,7 +524,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Point::set(ctx->emu.curr);
+        State::Point::set(orig);
 
         mask &= ~GL_POINT_BIT;
       }
@@ -540,7 +540,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::PolygonStipple::set(ctx->emu.curr);
+        State::PolygonStipple::set(orig);
 
         mask &= ~GL_POLYGON_STIPPLE_BIT;
       }
@@ -557,8 +557,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::ColorBuffer::fullyDefined())
-          State::ColorBuffer::getUndefined(ctx->emu.curr);
-        State::ColorBuffer::set(ctx->emu.curr);
+          State::ColorBuffer::getUndefined(orig);
+        State::ColorBuffer::set(orig);
 
         mask &= ~GL_COLOR_BUFFER_BIT;
       }
@@ -575,8 +575,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::PixelMode::fullyDefined())
-          State::PixelMode::getUndefined(ctx->emu.curr);
-        State::PixelMode::set(ctx->emu.curr);
+          State::PixelMode::getUndefined(orig);
+        State::PixelMode::set(orig);
 
         mask &= ~GL_PIXEL_MODE_BIT;
       }
@@ -592,7 +592,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Lighting::set(ctx->emu.curr);
+        State::Lighting::set(orig);
 
         mask &= ~GL_LIGHTING_BIT;
       }
@@ -603,7 +603,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         return;
 
       if (mask)
-        ctx->emu.curr.glPopAttrib();
+        orig.glPopAttrib();
     }
   }
 
@@ -751,7 +751,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         if ( index < array_size( State::ColorBuffer::drawBuffers ))
         {
           if (!State::ColorBuffer::fullyDefined())
-            State::ColorBuffer::getUndefined(ctx->emu.curr);
+            State::ColorBuffer::getUndefined(orig);
           RegalAssertArrayIndex( State::ColorBuffer::drawBuffers, index );
           params[0] = static_cast<T>(State::ColorBuffer::drawBuffers[index]);
         }
@@ -978,7 +978,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
       case GL_READ_BUFFER:
       {
         if (!State::PixelMode::fullyDefined())
-          State::PixelMode::getUndefined(ctx->emu.curr);
+          State::PixelMode::getUndefined(orig);
         params[0] = static_cast<T>(State::PixelMode::readBuffer);
       }
       break;
@@ -1132,7 +1132,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         if (index < ctx->emuInfo->gl_max_viewports)
         {
           if (!State::Scissor::fullyDefined())
-            State::Scissor::getUndefined(ctx->emu.curr);
+            State::Scissor::getUndefined(orig);
           params[0] = static_cast<T>(State::Scissor::scissorBox[index][0]);
           params[1] = static_cast<T>(State::Scissor::scissorBox[index][1]);
           params[2] = static_cast<T>(State::Scissor::scissorBox[index][2]);
@@ -1144,7 +1144,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         if (index < ctx->emuInfo->gl_max_viewports)
         {
           if (!State::Viewport::fullyDefined())
-            State::Viewport::getUndefined(ctx->emu.curr);
+            State::Viewport::getUndefined(orig);
           params[0] = static_cast<T>(State::Viewport::viewport[index][0]);
           params[1] = static_cast<T>(State::Viewport::viewport[index][1]);
           params[2] = static_cast<T>(State::Viewport::viewport[index][2]);

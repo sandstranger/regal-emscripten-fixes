@@ -91,7 +91,8 @@ namespace State
 
 typedef StringList string_list;
 
-inline static void setEnable(Dispatch::GL &dt, const GLenum cap, const GLboolean enable)
+  template <typename Procs>
+inline static void setEnable(Procs &dt, const GLenum cap, const GLboolean enable)
 {
   if (enable)
     dt.glEnable(cap);
@@ -99,7 +100,8 @@ inline static void setEnable(Dispatch::GL &dt, const GLenum cap, const GLboolean
     dt.glDisable(cap);
 }
 
-inline static void setEnablei(Dispatch::GL &dt, const GLenum cap, const GLuint index, const GLboolean enable)
+  template <typename Procs>
+inline static void setEnablei(Procs &dt, const GLenum cap, const GLuint index, const GLboolean enable)
 {
   if (enable)
     dt.glEnablei(cap,index);
@@ -393,9 +395,9 @@ struct Enable
     return *this;
   }
 
-  inline Enable &get(RegalContext &ctx)
+  template <typename Procs>
+  inline Enable &get(RegalContext & ctx, Procs & dt)
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     alphaTest = dt.glIsEnabled(GL_ALPHA_TEST);
     autoNormal = dt.glIsEnabled(GL_AUTO_NORMAL);
     size_t n = array_size( blend );
@@ -506,9 +508,9 @@ struct Enable
     return *this;
   }
 
-  inline const Enable &set(RegalContext &ctx) const
+  template <typename Procs>
+  inline const Enable &set(RegalContext & ctx, Procs & dt) const
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     setEnable(dt,GL_ALPHA_TEST,alphaTest);
     setEnable(dt,GL_AUTO_NORMAL,autoNormal);
     size_t n = array_size( blend );
@@ -758,7 +760,8 @@ struct Depth
     return *this;
   }
 
-  inline Depth &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Depth &get(Procs &dt)
   {
     enable = dt.glIsEnabled(GL_DEPTH_TEST);
     dt.glGetIntegerv(GL_DEPTH_FUNC,reinterpret_cast<GLint *>(&func));
@@ -767,7 +770,8 @@ struct Depth
     return *this;
   }
 
-  inline const Depth &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Depth &set(Procs &dt) const
   {
     setEnable(dt,GL_DEPTH_TEST,enable);
     dt.glDepthFunc(func);
@@ -835,7 +839,8 @@ struct StencilFace
     return *this;
   }
 
-  inline StencilFace &get(Dispatch::GL &dt, GLenum face)
+  template <typename Procs>
+  inline StencilFace &get(Procs &dt, GLenum face)
   {
     dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_FUNC            : GL_STENCIL_BACK_FUNC,            reinterpret_cast<GLint *>(&func)     );
     dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_REF             : GL_STENCIL_BACK_REF,             &ref                                 );
@@ -847,7 +852,8 @@ struct StencilFace
     return *this;
   }
 
-  inline const StencilFace &set(Dispatch::GL &dt, GLenum face) const
+  template <typename Procs>
+  inline const StencilFace &set(Procs &dt, GLenum face) const
   {
     dt.glStencilFuncSeparate(face,func,ref,valueMask);
     dt.glStencilMaskSeparate(face,writeMask);
@@ -890,7 +896,8 @@ struct Stencil
     return *this;
   }
 
-  inline Stencil &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Stencil &get(Procs &dt)
   {
     enable = dt.glIsEnabled(GL_STENCIL_TEST);
     dt.glGetIntegerv(GL_STENCIL_CLEAR_VALUE,&clear);
@@ -899,7 +906,8 @@ struct Stencil
     return *this;
   }
 
-  inline const Stencil &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Stencil &set(Procs &dt) const
   {
     setEnable(dt,GL_STENCIL_TEST,enable);
     dt.glClearStencil(clear);
@@ -1061,7 +1069,8 @@ struct Polygon
     return *this;
   }
 
-  inline Polygon &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Polygon &get(Procs &dt)
   {
     cullEnable = dt.glIsEnabled(GL_CULL_FACE);
     dt.glGetIntegerv(GL_CULL_FACE_MODE,reinterpret_cast<GLint *>(&cullFaceMode));
@@ -1078,7 +1087,8 @@ struct Polygon
     return *this;
   }
 
-  inline const Polygon &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Polygon &set(Procs &dt) const
   {
     setEnable(dt,GL_CULL_FACE,cullEnable);
     dt.glCullFace(cullFaceMode);
@@ -1220,7 +1230,8 @@ struct Transform
     return *this;
   }
 
-  inline const Transform &transition(Dispatch::GL &dt, Transform &current) const
+  template <typename Procs>
+  inline const Transform &transition(Procs &dt, Transform &current) const
   {
     size_t n = array_size( clipPlane );
     for (size_t i = 0; i < n; i++)
@@ -1329,7 +1340,8 @@ struct Hint
     return *this;
   }
 
-  inline Hint &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Hint &get(Procs &dt)
   {
     dt.glGetIntegerv(GL_PERSPECTIVE_CORRECTION_HINT,reinterpret_cast<GLint *>(&perspectiveCorrection));
     dt.glGetIntegerv(GL_POINT_SMOOTH_HINT,reinterpret_cast<GLint *>(&pointSmooth));
@@ -1342,7 +1354,8 @@ struct Hint
     return *this;
   }
 
-  inline const Hint &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Hint &set(Procs &dt) const
   {
     dt.glHint(GL_PERSPECTIVE_CORRECTION_HINT, perspectiveCorrection);
     dt.glHint(GL_POINT_SMOOTH_HINT, pointSmooth);
@@ -1422,13 +1435,15 @@ struct List
     return *this;
   }
 
-  inline List &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline List &get(Procs &dt)
   {
     dt.glGetIntegerv(GL_LIST_BASE,reinterpret_cast<GLint *>(&base));
     return *this;
   }
 
-  inline const List &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const List &set(Procs &dt) const
   {
     dt.glListBase(base);
     return *this;
@@ -1466,13 +1481,15 @@ struct AccumBuffer
     return *this;
   }
 
-  inline AccumBuffer &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline AccumBuffer &get(Procs &dt)
   {
     dt.glGetFloatv(GL_ACCUM_CLEAR_VALUE,&(clear[0]));
     return *this;
   }
 
-  inline const AccumBuffer &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const AccumBuffer &set(Procs &dt) const
   {
     dt.glClearAccum(clear[0],clear[1],clear[2],clear[3]);
     return *this;
@@ -1539,7 +1556,8 @@ struct Scissor
     return true;
   }
 
-  void getUndefined(Dispatch::GL &dt)
+  template <typename Procs>
+  void getUndefined(Procs &dt)
   {
     size_t n = array_size( valid );
     for (size_t ii=0; ii<n; ii++)
@@ -1561,7 +1579,8 @@ struct Scissor
     return *this;
   }
 
-  inline Scissor &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Scissor &get(Procs &dt)
   {
     size_t n = array_size( scissorTest );
     RegalAssert(array_size( valid ) == n);
@@ -1576,7 +1595,8 @@ struct Scissor
     return *this;
   }
 
-  inline const Scissor &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Scissor &set(Procs &dt) const
   {
     size_t n = array_size( scissorTest );
     RegalAssert(array_size( valid ) == n);
@@ -1710,7 +1730,8 @@ struct Viewport
     return true;
   }
 
-  inline void getUndefined(Dispatch::GL &dt)
+  template <typename Procs>
+  inline void getUndefined(Procs &dt)
   {
     size_t n = array_size( valid );
     for (size_t ii=0; ii<n; ii++)
@@ -1729,7 +1750,8 @@ struct Viewport
     return *this;
   }
 
-  inline Viewport &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Viewport &get(Procs &dt)
   {
     size_t n = array_size( valid );
     for (size_t ii=0; ii<n; ii++)
@@ -1742,7 +1764,8 @@ struct Viewport
     return *this;
   }
 
-  inline const Viewport &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Viewport &set(Procs &dt) const
   {
     dt.glDepthRangeArrayv(0, REGAL_EMU_MAX_VIEWPORTS, &depthRange[0][0] );
     size_t n = array_size( valid );
@@ -1893,7 +1916,8 @@ struct Line
     return *this;
   }
 
-  inline Line &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Line &get(Procs &dt)
   {
     dt.glGetFloatv(GL_LINE_WIDTH,&width);
     smooth = dt.glIsEnabled(GL_LINE_SMOOTH);
@@ -1904,7 +1928,8 @@ struct Line
     return *this;
   }
 
-  inline const Line &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Line &set(Procs &dt) const
   {
     dt.glLineWidth(width);
     setEnable(dt,GL_LINE_SMOOTH,smooth);
@@ -1975,9 +2000,9 @@ struct Multisample
     return *this;
   }
 
-  inline Multisample &get(RegalContext &ctx)
+  template <typename Procs>
+  inline Multisample &get( RegalContext & ctx, Procs & dt)
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     multisample = dt.glIsEnabled(GL_MULTISAMPLE);
     sampleAlphaToCoverage = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_COVERAGE);
     sampleAlphaToOne = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_ONE);
@@ -1990,9 +2015,9 @@ struct Multisample
     return *this;
   }
 
-  inline const Multisample &set(RegalContext &ctx) const
+  template <typename Procs>
+  inline const Multisample &set(RegalContext & ctx, Procs & dt) const
   {
-    Dispatch::GL &dt = ctx.emu.curr;
     setEnable(dt,GL_MULTISAMPLE,multisample);
     setEnable(dt,GL_SAMPLE_ALPHA_TO_COVERAGE,sampleAlphaToCoverage);
     setEnable(dt,GL_SAMPLE_ALPHA_TO_ONE,sampleAlphaToOne);
@@ -2076,7 +2101,8 @@ struct Eval
     return *this;
   }
 
-  inline Eval &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Eval &get(Procs &dt)
   {
     autoNormal = dt.glIsEnabled(GL_AUTO_NORMAL);
     for (size_t ii=0; ii<9; ii++)
@@ -2090,7 +2116,8 @@ struct Eval
     return *this;
   }
 
-  inline const Eval &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Eval &set(Procs &dt) const
   {
     setEnable(dt,GL_AUTO_NORMAL,autoNormal);
     for (size_t ii=0; ii<9; ii++)
@@ -2181,7 +2208,8 @@ struct Fog
     return *this;
   }
 
-  inline Fog &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Fog &get(Procs &dt)
   {
     dt.glGetFloatv(GL_FOG_COLOR,color);
     dt.glGetFloatv(GL_FOG_INDEX,&index);
@@ -2195,7 +2223,8 @@ struct Fog
     return *this;
   }
 
-  inline const Fog &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Fog &set(Procs &dt) const
   {
     dt.glFogfv(GL_FOG_COLOR,color);
     dt.glFogf(GL_FOG_INDEX,index);
@@ -2275,7 +2304,8 @@ struct Point
     return *this;
   }
 
-  inline Point &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline Point &get(Procs &dt)
   {
     dt.glGetFloatv(GL_POINT_SIZE,&size);
     smooth = dt.glIsEnabled(GL_POINT_SMOOTH);
@@ -2296,7 +2326,8 @@ struct Point
     return *this;
   }
 
-  inline const Point &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const Point &set(Procs &dt) const
   {
     dt.glPointSize(size);
     setEnable(dt,GL_POINT_SMOOTH,smooth);
@@ -2415,13 +2446,15 @@ struct PolygonStipple
     return *this;
   }
 
-  inline PolygonStipple &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline PolygonStipple &get(Procs &dt)
   {
     dt.glGetPolygonStipple(pattern);
     return *this;
   }
 
-  inline const PolygonStipple &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const PolygonStipple &set(Procs &dt) const
   {
     dt.glPolygonStipple(pattern);
     return *this;
@@ -2531,7 +2564,8 @@ struct ColorBuffer
     return valid;
   }
 
-  void getUndefined(Dispatch::GL &dt)
+  template <typename Procs>
+  void getUndefined(Procs &dt)
   {
     if (!valid)
     {
@@ -2573,7 +2607,8 @@ struct ColorBuffer
     return *this;
   }
 
-  inline ColorBuffer &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline ColorBuffer &get(Procs &dt)
   {
     dt.glGetIntegerv(GL_CLAMP_FRAGMENT_COLOR,reinterpret_cast<GLint *>(&clampFragmentColor));
     dt.glGetIntegerv(GL_CLAMP_READ_COLOR,reinterpret_cast<GLint *>(&clampReadColor));
@@ -2642,7 +2677,8 @@ struct ColorBuffer
     return *this;
   }
 
-  inline const ColorBuffer &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const ColorBuffer &set(Procs &dt) const
   {
     dt.glClampColor(GL_CLAMP_FRAGMENT_COLOR,clampFragmentColor);
     dt.glClampColor(GL_CLAMP_READ_COLOR,clampReadColor);
@@ -3039,7 +3075,8 @@ struct PixelMode
     return valid;
   }
 
-  void getUndefined(Dispatch::GL &dt)
+  template <typename Procs>
+  void getUndefined(Procs &dt)
   {
     if (!valid)
     {
@@ -3098,7 +3135,8 @@ struct PixelMode
     return *this;
   }
 
-  inline PixelMode &get(Dispatch::GL &dt)
+  template <typename Procs>
+  inline PixelMode &get(Procs &dt)
   {
     dt.glGetIntegerv(GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
     dt.glGetBooleanv(GL_MAP_COLOR,&mapColor);
@@ -3160,7 +3198,8 @@ struct PixelMode
     return *this;
   }
 
-  inline const PixelMode &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  inline const PixelMode &set(Procs &dt) const
   {
     if (valid)
       dt.glReadBuffer(readBuffer);
@@ -3568,7 +3607,8 @@ struct LightingFace
     return *this;
   }
 
-  inline LightingFace &get(Dispatch::GL &dt, GLenum face)
+  template <typename Procs>
+  inline LightingFace &get(Procs &dt, GLenum face)
   {
     dt.glGetMaterialfv(face, GL_AMBIENT,       ambient);
     dt.glGetMaterialfv(face, GL_DIFFUSE,       diffuse);
@@ -3579,7 +3619,8 @@ struct LightingFace
     return *this;
   }
 
-  inline const LightingFace &set(Dispatch::GL &dt, GLenum face) const
+  template <typename Procs>
+  inline const LightingFace &set(Procs &dt, GLenum face) const
   {
     dt.glMaterialfv(face, GL_AMBIENT,       ambient);
     dt.glMaterialfv(face, GL_DIFFUSE,       diffuse);
@@ -3671,7 +3712,8 @@ struct LightingLight
     return *this;
   }
 
-  inline LightingLight &get(Dispatch::GL &dt, GLenum light)
+  template <typename Procs>
+  inline LightingLight &get(Procs &dt, GLenum light)
   {
     enabled = dt.glIsEnabled(light);
     dt.glGetLightfv(light, GL_AMBIENT,               ambient);
@@ -3687,7 +3729,8 @@ struct LightingLight
     return *this;
   }
 
-  inline const LightingLight &set(Dispatch::GL &dt, GLenum light) const
+  template <typename Procs>
+  inline const LightingLight &set(Procs &dt, GLenum light) const
   {
     setEnable(dt,light,enabled);
     dt.glLightfv(light, GL_AMBIENT,               ambient);
@@ -3798,7 +3841,8 @@ struct Lighting
     return *this;
   }
 
-  Lighting &get(Dispatch::GL &dt)
+  template <typename Procs>
+  Lighting &get(Procs &dt)
   {
     dt.glGetIntegerv(GL_SHADE_MODEL,reinterpret_cast<GLint *>(&shadeModel));
     dt.glGetIntegerv(GL_CLAMP_VERTEX_COLOR,reinterpret_cast<GLint *>(&clampVertexColor));
@@ -3822,7 +3866,8 @@ struct Lighting
     return *this;
   }
 
-  const Lighting &set(Dispatch::GL &dt) const
+  template <typename Procs>
+  const Lighting &set(Procs &dt) const
   {
     dt.glShadeModel(shadeModel);
     dt.glClampColor(GL_CLAMP_VERTEX_COLOR,clampVertexColor);

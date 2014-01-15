@@ -2165,7 +2165,7 @@ void Iff::EnableClientState( RegalContext * ctx, GLenum state )
   RegalAssert( idx < max_vertex_attribs );
   if ( idx < max_vertex_attribs )
   {
-    ctx->emu.curr.glEnableVertexAttribArray( idx );
+    orig.glEnableVertexAttribArray( idx );
     EnableArray( ctx, idx ); // keep ffn up to date
   }
 }
@@ -2179,7 +2179,7 @@ void Iff::DisableClientState( RegalContext * ctx, GLenum state )
   RegalAssert( idx < max_vertex_attribs );
   if ( idx < max_vertex_attribs )
   {
-    ctx->emu.curr.glDisableVertexAttribArray( idx );
+    orig.glDisableVertexAttribArray( idx );
     DisableArray( ctx, idx ); // keep ffn up to date
   }
 }
@@ -2211,34 +2211,34 @@ void Iff::VertexPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei st
     return;
 
   RestoreVao( ctx );
-  ctx->emu.curr.glVertexAttribPointer( ffAttrMap[ RFF2A_Vertex ], size, type, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_Vertex ], size, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::NormalPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  ctx->emu.curr.glVertexAttribPointer( ffAttrMap[ RFF2A_Normal ], 3, type, n, stride, pointer );
+  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_Normal ], 3, type, n, stride, pointer );
 }
 
 void Iff::ColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  ctx->emu.curr.glVertexAttribPointer( ffAttrMap[ RFF2A_Color ], size, type, n, stride, pointer );
+  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_Color ], size, type, n, stride, pointer );
 }
 
 void Iff::SecondaryColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  ctx->emu.curr.glVertexAttribPointer( ffAttrMap[ RFF2A_SecondaryColor ], size, type, n, stride, pointer );
+  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_SecondaryColor ], size, type, n, stride, pointer );
 }
 
 void Iff::FogCoordPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
-  ctx->emu.curr.glVertexAttribPointer( ffAttrMap[ RFF2A_FogCoord ], 1, type, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_FogCoord ], 1, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::EdgeFlagPointer( RegalContext * ctx, GLsizei stride, const GLvoid *pointer )
@@ -2247,7 +2247,7 @@ void Iff::EdgeFlagPointer( RegalContext * ctx, GLsizei stride, const GLvoid *poi
   GLuint index = ffAttrMap[ RFF2A_EdgeFlag ];
   if (index == RFF2A_Invalid)
     return;
-  ctx->emu.curr.glVertexAttribPointer( index, 1, GL_UNSIGNED_BYTE, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( index, 1, GL_UNSIGNED_BYTE, GL_FALSE, stride, pointer );
 }
 
 void Iff::TexCoordPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
@@ -2258,22 +2258,22 @@ void Iff::TexCoordPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei 
     return;
   }
   RestoreVao( ctx );
-  ctx->emu.curr.glVertexAttribPointer( ffAttrTexBegin + catIndex, size, type, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( ffAttrTexBegin + catIndex, size, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLdouble * d )
 {
-  ctx->emu.curr.glGetVertexAttribdv( index, pname, d );
+  orig.glGetVertexAttribdv( index, pname, d );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLfloat * f )
 {
-  ctx->emu.curr.glGetVertexAttribfv( index, pname, f );
+  orig.glGetVertexAttribfv( index, pname, f );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLint * i )
 {
-  ctx->emu.curr.glGetVertexAttribiv( index, pname, i );
+  orig.glGetVertexAttribiv( index, pname, i );
 }
 
 bool Iff::IsEnabled( RegalContext * ctx, GLenum pname, GLboolean &enabled )
@@ -2419,7 +2419,7 @@ void Iff::glDeleteVertexArrays( RegalContext * ctx, GLsizei n, const GLuint * ar
   {
     GLuint name = arrays[ i ];
     if (name != immVao)
-      ctx->emu.curr.glDeleteVertexArrays( 1, &name );
+      orig.glDeleteVertexArrays( 1, &name );
   }
 }
 
@@ -2430,7 +2430,7 @@ void Iff::glDeleteBuffers( RegalContext * ctx, GLsizei n, const GLuint * buffers
   {
     GLuint name = buffers[ i ];
     if (name != immVbo)
-      ctx->emu.curr.glDeleteBuffers( 1, &name );
+      orig.glDeleteBuffers( 1, &name );
   }
 }
 
@@ -2439,7 +2439,7 @@ GLboolean Iff::IsVertexArray( RegalContext * ctx, GLuint name )
   RegalAssert( ctx != NULL );
   if (name == immVao )
     return GL_FALSE;
-  return ctx->emu.curr.glIsVertexArray( name );
+  return orig.glIsVertexArray( name );
 }
 
 void Iff::glBindVertexArray( RegalContext *ctx, GLuint vao )
@@ -2466,7 +2466,7 @@ void Iff::Begin( RegalContext * ctx, GLenum mode )
   if (immActive == false)
   {
     immActive = true;
-    ctx->emu.curr.glBindVertexArray( immVao );
+    orig.glBindVertexArray( immVao );
     BindVertexArray( ctx, immVao );  // keep ffn current
   }
   PreDraw( ctx );
@@ -2483,7 +2483,7 @@ void Iff::RestoreVao( RegalContext * ctx )
 {
   if (immActive)
   {
-    ctx->emu.curr.glBindVertexArray( immShadowVao );
+    orig.glBindVertexArray( immShadowVao );
     BindVertexArray( ctx, immShadowVao );
     immActive = false;
   }
@@ -3410,7 +3410,7 @@ void Iff::WindowPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z )
     // todo - cache rasterpos and implement glDrawPixels and glBitmap
     return;
   }
-  ctx->emu.curr.glWindowPos3d( x, y, z );
+  orig.glWindowPos3d( x, y, z );
 }
 
 void Iff::BindVertexArray( RegalContext * ctx, GLuint vao )
@@ -3438,7 +3438,7 @@ void Iff::DisableArray( RegalContext * ctx, GLuint index )
 
 GLuint Iff::CreateShader( RegalContext *ctx, GLenum shaderType )
 {
-  GLuint sh = ctx->emu.curr.glCreateShader( shaderType );
+  GLuint sh = orig.glCreateShader( shaderType );
   shaderTypeMap[ sh ] = shaderType;
   return sh;
 }
@@ -4108,7 +4108,7 @@ void Iff::UseFixedFunctionProgram( RegalContext * ctx )
   }
   RegalAssertArrayIndex( ffprogs, base + match );
   currprog = & ffprogs[ base + match ];
-  ctx->emu.curr.glUseProgram( currprog->pg );
+  orig.glUseProgram( currprog->pg );
   UpdateUniforms( ctx );
 }
   
@@ -4481,7 +4481,7 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
 
   const GLchar * dumb = static_cast<const GLchar *>( src.c_str() );
   const GLchar ** dumber = & dumb;
-  ctx->emu.curr.glShaderSource( shader, 1, dumber, NULL );
+  orig.glShaderSource( shader, 1, dumber, NULL );
 }
 
 void Iff::LinkProgram( RegalContext *ctx, GLuint program )

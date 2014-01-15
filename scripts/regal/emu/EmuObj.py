@@ -1,6 +1,16 @@
 #!/usr/bin/python -B
 
 objFormulae = {
+    'options' : {
+      'originate' : [
+        'glGenBuffers',
+        'glDeleteBuffers',
+        'glGenVertexArrays',
+        'glDeleteVertexArrays',
+        'glGenTextures',
+        'glDeleteTextures',
+      ],
+    },
     'Buffers' : {
         'entries' : [ 'gl(GenBuffers|DeleteBuffers|BindBuffer)(ARB|)' ],
         'impl' : [ '_context->obj->${m1}(*_context, ${arg0plus});', ],

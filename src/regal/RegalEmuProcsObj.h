@@ -63,20 +63,20 @@ struct EmuProcsOriginateObj {
     memset(this, 0, sizeof( *this ) );
   }
 
-  PFNGLBINDTEXTUREPROC glBindTexture;
-  PFNGLDELETETEXTURESPROC glDeleteTextures;
+  PFNGLGENBUFFERSPROC glGenBuffers;
+  PFNGLDELETEBUFFERSPROC glDeleteBuffers;
+  PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
+  PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
   PFNGLGENTEXTURESPROC glGenTextures;
+  PFNGLDELETETEXTURESPROC glDeleteTextures;
+  PFNGLBINDTEXTUREPROC glBindTexture;
   PFNGLISTEXTUREPROC glIsTexture;
   PFNGLBINDBUFFERPROC glBindBuffer;
-  PFNGLDELETEBUFFERSPROC glDeleteBuffers;
-  PFNGLGENBUFFERSPROC glGenBuffers;
   PFNGLISBUFFERPROC glIsBuffer;
   PFNGLFRAMEBUFFERTEXTURE1DPROC glFramebufferTexture1D;
   PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
   PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC glGetFramebufferAttachmentParameteriv;
   PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
-  PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
-  PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
   PFNGLISVERTEXARRAYPROC glIsVertexArray;
   PFNGLBINDBUFFERARBPROC glBindBufferARB;
   PFNGLDELETEBUFFERSARBPROC glDeleteBuffersARB;
@@ -91,20 +91,20 @@ struct EmuProcsOriginateObj {
   PFNGLFRAMEBUFFERTEXTURE3DOESPROC glFramebufferTexture3DOES;
 
   void Initialize( Dispatch::GL & dt ) {
-    glBindTexture = dt.glBindTexture;
-    glDeleteTextures = dt.glDeleteTextures;
+    glGenBuffers = dt.glGenBuffers;
+    glDeleteBuffers = dt.glDeleteBuffers;
+    glGenVertexArrays = dt.glGenVertexArrays;
+    glDeleteVertexArrays = dt.glDeleteVertexArrays;
     glGenTextures = dt.glGenTextures;
+    glDeleteTextures = dt.glDeleteTextures;
+    glBindTexture = dt.glBindTexture;
     glIsTexture = dt.glIsTexture;
     glBindBuffer = dt.glBindBuffer;
-    glDeleteBuffers = dt.glDeleteBuffers;
-    glGenBuffers = dt.glGenBuffers;
     glIsBuffer = dt.glIsBuffer;
     glFramebufferTexture1D = dt.glFramebufferTexture1D;
     glFramebufferTexture2D = dt.glFramebufferTexture2D;
     glGetFramebufferAttachmentParameteriv = dt.glGetFramebufferAttachmentParameteriv;
     glBindVertexArray = dt.glBindVertexArray;
-    glDeleteVertexArrays = dt.glDeleteVertexArrays;
-    glGenVertexArrays = dt.glGenVertexArrays;
     glIsVertexArray = dt.glIsVertexArray;
     glBindBufferARB = dt.glBindBufferARB;
     glDeleteBuffersARB = dt.glDeleteBuffersARB;
