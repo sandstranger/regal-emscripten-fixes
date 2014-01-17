@@ -140,8 +140,8 @@ void alphaTorusInitProgram() {
   GLuint vs = glCreateShader( GL_VERTEX_SHADER );
   {
     char vshader[] =
-    "varying vec4 ocol;\n"
-    "varying vec2 tc;\n"
+    "out vec4 ocol;\n"
+    "out vec2 tc;\n"
     "\n"
     "void main() {\n"
     "  gl_Position = gl_ModelViewProjectionMatrix * gl_Vertex;\n"
@@ -163,8 +163,8 @@ void alphaTorusInitProgram() {
   {
     char fshader[] =
     "uniform sampler2D tex;\n"
-    "varying vec4 ocol;\n"
-    "varying vec2 tc;\n"
+    "in vec4 ocol;\n"
+    "in vec2 tc;\n"
     "\n"
     "void main() {\n"
     "  gl_FragColor.xyz = texture2D(tex, tc).xyz;\n"

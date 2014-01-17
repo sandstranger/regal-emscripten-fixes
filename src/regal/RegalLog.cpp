@@ -372,7 +372,7 @@ namespace Logging {
           line[1] = '0' + (count % 100)/10;
           line[2] = '0' + (count % 10);
           p += full_prefix.size();
-          m.replace( p, 3, line, 3 );
+          m.replace( p, 0, line, 3 );
           p = m.find( full_prefix, p );
           count++;
         }
