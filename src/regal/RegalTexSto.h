@@ -64,6 +64,7 @@ namespace Emu {
     void Init( RegalContext &ctx )
     {
       orig.Initialize( ctx.dispatchGL );
+      EmuProcsInterceptTexSto( ctx.dispatchGL );
     }
 
     GLenum BindingFromTarget(GLenum target)

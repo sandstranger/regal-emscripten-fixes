@@ -108,7 +108,6 @@ struct RegalContext
   Dispatch::GL            dispatchGL;
   Err                     err;
   Debug                   debug;
-  Emulation               emu;
   Log                     log;
   Http                    http;
   scoped_ptr<DebugInfo>   dbg;

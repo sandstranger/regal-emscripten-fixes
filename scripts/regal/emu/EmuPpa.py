@@ -18,7 +18,7 @@ ppaFormulae = {
     'entries' : [ 'glGet(Integer|Float|Double|Boolean)(i_|)v(EXT|)' ],
     'impl'    : [
       'if( ! _context->ppa->glGet${m2}v( _context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGet${m1}${m2}v${m3}( ${arg0plus} );',
+      '  orig.glGet${m1}${m2}v${m3}( ${arg0plus} );',
       '}',
     ],
   },
@@ -26,7 +26,7 @@ ppaFormulae = {
     'entries' : [ 'glGetPolygonStipple' ],
     'impl'    : [
       'if( ! _context->ppa->glGetPolygonStipple( _context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGetPolygonStipple( ${arg0plus} );',
+      '  orig.glGetPolygonStipple( ${arg0plus} );',
       '}',
     ],
   },
@@ -34,7 +34,7 @@ ppaFormulae = {
     'entries' : [ 'glGet(ColorTable|Convolution)Parameter(i|f)v' ],
     'impl'    : [
       'if( ! _context->ppa->glGet${m1}Parameterv( _context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGet${m1}Parameter${m2}v( ${arg0plus} );',
+      '  orig.glGet${m1}Parameter${m2}v( ${arg0plus} );',
       '}',
     ],
   },
@@ -42,7 +42,7 @@ ppaFormulae = {
     'entries' : [ 'glGet(Light|Material)(f|i|x)v' ],
     'impl'    : [
       'if( ! _context->ppa->glGet${m1}v( _context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGet${m1}${m2}v( ${arg0plus} );',
+      '  orig.glGet${m1}${m2}v( ${arg0plus} );',
       '}',
     ],
   },
@@ -50,7 +50,7 @@ ppaFormulae = {
     'entries' : [ 'glGet(Multi|)TexEnv(f|i)v(EXT|)' ],
     'impl'    : [
       'if( ! _context->ppa->glGet${m1}TexEnvv( _context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGet${m1}TexEnv${m2}v${m3}( ${arg0plus} );',
+      '  orig.glGet${m1}TexEnv${m2}v${m3}( ${arg0plus} );',
       '}',
     ],
   },
@@ -58,7 +58,7 @@ ppaFormulae = {
     'entries' : [ 'glGet(Tex|Texture)(Level|)Parameter(f|i)v(EXT|)' ],
     'impl'    : [
       'if( ! _context->ppa->glGet${m1}${m2}Parameter( _context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGet${m1}${m2}Parameter${m3}v${m4}( ${arg0plus} );',
+      '  orig.glGet${m1}${m2}Parameter${m3}v${m4}( ${arg0plus} );',
       '}',
     ],
   },
@@ -68,7 +68,7 @@ ppaFormulae = {
       '{',
       '  GLboolean enabled;',
       '  if( ! _context->ppa->glIsEnabled${m1}( _context, enabled, ${arg0plus} ) )',
-      '    return _context->emu.curr.glIsEnabled${m1}( ${arg0plus} );',
+      '    return orig.glIsEnabled${m1}( ${arg0plus} );',
       '  return enabled;',
       '}',
     ],
@@ -77,7 +77,7 @@ ppaFormulae = {
     'entries' : [ 'gl(Enable|Disable)(i|)' ],
     'impl'    : [
       'if( ! _context->ppa->${m1}${m2}( _context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.gl${m1}${m2}( ${arg0plus} );',
+      '  orig.gl${m1}${m2}( ${arg0plus} );',
       '}',
     ],
   },
@@ -98,7 +98,7 @@ ppaFormulae = {
     'impl'    : [
       'if( !_context->isES2() ) {',
       '  _context->ppa->glDrawBuffer${m1}( ${arg0plus} );',
-      '  _context->emu.curr.glDrawBuffer${m1}( ${arg0plus} );',
+      '  orig.glDrawBuffer${m1}( ${arg0plus} );',
       '}',
     ],
   },

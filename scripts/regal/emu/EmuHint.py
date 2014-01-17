@@ -5,7 +5,7 @@ hintFormulae = {
     'entries' : [ 'glHint' ],
     'impl'    : [
       'if( ! _context->hint->glHint( *_context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glHint( ${arg0plus} );',
+      '  orig.glHint( ${arg0plus} );',
       '}',
     ],
   },
@@ -13,7 +13,7 @@ hintFormulae = {
     'entries' : [ 'glGet(Integer|Float|Double|Boolean)v(EXT|)' ],
     'impl'    : [
       'if( ! _context->hint->glGet${m2}v( *_context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGet${m1}v${m2}( ${arg0plus} );',
+      '  orig.glGet${m1}v${m2}( ${arg0plus} );',
       '}',
     ],
   },

@@ -58,11 +58,12 @@ static void REGAL_CALL emuProcInterceptIff_glActiveTexture(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowActiveTexture( texture );
 
-  _context->iff->orig.glActiveTexture(texture);
+  orig.glActiveTexture(texture);
 
 }
 
@@ -70,11 +71,12 @@ static void REGAL_CALL emuProcInterceptIff_glActiveTextureARB(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowActiveTexture( texture );
 
-  _context->iff->orig.glActiveTextureARB(texture);
+  orig.glActiveTextureARB(texture);
 
 }
 
@@ -102,11 +104,12 @@ static void REGAL_CALL emuProcInterceptIff_glBindBuffer(GLenum target, GLuint bu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glBindBuffer(target, buffer);
+  orig.glBindBuffer(target, buffer);
 
 }
 
@@ -114,11 +117,12 @@ static void REGAL_CALL emuProcInterceptIff_glBindMultiTextureEXT(GLenum texunit,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowMultiTexBinding( texunit, target, texture );
 
-  _context->iff->orig.glBindMultiTextureEXT(texunit, target, texture);
+  orig.glBindMultiTextureEXT(texunit, target, texture);
 
 }
 
@@ -126,10 +130,11 @@ static void REGAL_CALL emuProcInterceptIff_glBindProgramPipeline(GLuint pipeline
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( ! _context->iff->ShadowBindProgramPipeline( pipeline ) ) {
-      _context->emu.curr.glBindProgramPipeline( pipeline );
+      orig.glBindProgramPipeline( pipeline );
   }
 
 }
@@ -138,11 +143,12 @@ static void REGAL_CALL emuProcInterceptIff_glBindTexture(GLenum target, GLuint t
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
 
-  _context->iff->orig.glBindTexture(target, texture);
+  orig.glBindTexture(target, texture);
 
 }
 
@@ -150,11 +156,12 @@ static void REGAL_CALL emuProcInterceptIff_glBindTextureEXT(GLenum target, GLuin
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
 
-  _context->iff->orig.glBindTextureEXT(target, texture);
+  orig.glBindTextureEXT(target, texture);
 
 }
 
@@ -162,11 +169,12 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArray(GLuint array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  _context->iff->orig.glBindVertexArray(array);
+  orig.glBindVertexArray(array);
 
 }
 
@@ -174,11 +182,12 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArrayAPPLE(GLuint array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  _context->iff->orig.glBindVertexArrayAPPLE(array);
+  orig.glBindVertexArrayAPPLE(array);
 
 }
 
@@ -186,11 +195,12 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArrayOES(GLuint array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  _context->iff->orig.glBindVertexArrayOES(array);
+  orig.glBindVertexArrayOES(array);
 
 }
 
@@ -198,11 +208,12 @@ static void REGAL_CALL emuProcInterceptIff_glClientActiveTexture(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
 
-  _context->iff->orig.glClientActiveTexture(texture);
+  orig.glClientActiveTexture(texture);
 
 }
 
@@ -210,11 +221,12 @@ static void REGAL_CALL emuProcInterceptIff_glClientActiveTextureARB(GLenum textu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
 
-  _context->iff->orig.glClientActiveTextureARB(texture);
+  orig.glClientActiveTextureARB(texture);
 
 }
 
@@ -582,11 +594,12 @@ static void REGAL_CALL emuProcInterceptIff_glCopyTexImage2D(GLenum target, GLint
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
+  orig.glCopyTexImage2D(target, level, internalformat, x, y, width, height, border);
 
 }
 
@@ -644,11 +657,12 @@ static void REGAL_CALL emuProcInterceptIff_glDepthRange(GLclampd zNear, GLclampd
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->DepthRange( GLfloat(zNear), GLfloat(zFar) );
 
-  _context->iff->orig.glDepthRange(zNear, zFar);
+  orig.glDepthRange(zNear, zFar);
 
 }
 
@@ -656,10 +670,11 @@ static void REGAL_CALL emuProcInterceptIff_glDisable(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( ! _context->iff->ShadowDisable( cap ) ) {
-      _context->emu.curr.glDisable( cap );
+      orig.glDisable( cap );
   }
 
 }
@@ -688,12 +703,13 @@ static void REGAL_CALL emuProcInterceptIff_glDisableVertexAttribArray(GLuint ind
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
 
-  _context->iff->orig.glDisableVertexAttribArray(index);
+  orig.glDisableVertexAttribArray(index);
 
 }
 
@@ -701,12 +717,13 @@ static void REGAL_CALL emuProcInterceptIff_glDisableVertexAttribArrayARB(GLuint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
 
-  _context->iff->orig.glDisableVertexAttribArrayARB(index);
+  orig.glDisableVertexAttribArrayARB(index);
 
 }
 
@@ -724,11 +741,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArrays(GLenum mode, GLint first
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawArrays(mode, first, count);
+  orig.glDrawArrays(mode, first, count);
 
 }
 
@@ -736,11 +754,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysEXT(GLenum mode, GLint fi
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawArraysEXT(mode, first, count);
+  orig.glDrawArraysEXT(mode, first, count);
 
 }
 
@@ -748,11 +767,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysIndirect(GLenum mode, con
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawArraysIndirect(mode, indirect);
+  orig.glDrawArraysIndirect(mode, indirect);
 
 }
 
@@ -760,11 +780,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstanced(GLenum mode, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawArraysInstanced(mode, start, count, primcount);
+  orig.glDrawArraysInstanced(mode, start, count, primcount);
 
 }
 
@@ -772,11 +793,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstancedARB(GLenum mode,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawArraysInstancedARB(mode, start, count, primcount);
+  orig.glDrawArraysInstancedARB(mode, start, count, primcount);
 
 }
 
@@ -784,11 +806,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstancedEXT(GLenum mode,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawArraysInstancedEXT(mode, start, count, primcount);
+  orig.glDrawArraysInstancedEXT(mode, start, count, primcount);
 
 }
 
@@ -796,11 +819,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementArrayAPPLE(GLenum mode, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementArrayAPPLE(mode, first, count);
+  orig.glDrawElementArrayAPPLE(mode, first, count);
 
 }
 
@@ -808,11 +832,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementArrayATI(GLenum mode, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementArrayATI(mode, count);
+  orig.glDrawElementArrayATI(mode, count);
 
 }
 
@@ -820,11 +845,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElements(GLenum mode, GLsizei c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElements(mode, count, type, indices);
+  orig.glDrawElements(mode, count, type, indices);
 
 }
 
@@ -832,11 +858,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsBaseVertex(GLenum mode,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
+  orig.glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
 
 }
 
@@ -844,11 +871,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsIndirect(GLenum mode, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementsIndirect(mode, type, indirect);
+  orig.glDrawElementsIndirect(mode, type, indirect);
 
 }
 
@@ -856,11 +884,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstanced(GLenum mode, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementsInstanced(mode, count, type, indices, primcount);
+  orig.glDrawElementsInstanced(mode, count, type, indices, primcount);
 
 }
 
@@ -868,11 +897,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedARB(GLenum mod
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
 
 }
 
@@ -880,11 +910,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedBaseVertex(GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
+  orig.glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
 
 }
 
@@ -892,11 +923,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedEXT(GLenum mod
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
 
 }
 
@@ -904,11 +936,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementArrayAPPLE(GLenum m
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawRangeElementArrayAPPLE(mode, start, end, first, count);
+  orig.glDrawRangeElementArrayAPPLE(mode, start, end, first, count);
 
 }
 
@@ -916,11 +949,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementArrayATI(GLenum mod
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawRangeElementArrayATI(mode, start, end, count);
+  orig.glDrawRangeElementArrayATI(mode, start, end, count);
 
 }
 
@@ -928,11 +962,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElements(GLenum mode, GLui
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawRangeElements(mode, start, end, count, type, indices);
+  orig.glDrawRangeElements(mode, start, end, count, type, indices);
 
 }
 
@@ -940,11 +975,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementsBaseVertex(GLenum 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
+  orig.glDrawRangeElementsBaseVertex(mode, start, end, count, type, indices, basevertex);
 
 }
 
@@ -952,11 +988,12 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementsEXT(GLenum mode, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glDrawRangeElementsEXT(mode, start, end, count, type, indices);
+  orig.glDrawRangeElementsEXT(mode, start, end, count, type, indices);
 
 }
 
@@ -984,10 +1021,11 @@ static void REGAL_CALL emuProcInterceptIff_glEnable(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( ! _context->iff->ShadowEnable( cap ) ) {
-      _context->emu.curr.glEnable( cap );
+      orig.glEnable( cap );
   }
 
 }
@@ -1016,12 +1054,13 @@ static void REGAL_CALL emuProcInterceptIff_glEnableVertexAttribArray(GLuint inde
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
 
-  _context->iff->orig.glEnableVertexAttribArray(index);
+  orig.glEnableVertexAttribArray(index);
 
 }
 
@@ -1029,12 +1068,13 @@ static void REGAL_CALL emuProcInterceptIff_glEnableVertexAttribArrayARB(GLuint i
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
 
-  _context->iff->orig.glEnableVertexAttribArrayARB(index);
+  orig.glEnableVertexAttribArrayARB(index);
 
 }
 
@@ -1132,11 +1172,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetBooleanv(GLenum pname, GLboolean
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->glGetBooleanv( _context, pname, params ) ) {
-      _context->emu.curr.glGetBooleanv( pname, params );
+      orig.glGetBooleanv( pname, params );
   }
 
 }
@@ -1145,11 +1186,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetDoublev(GLenum pname, GLdouble *
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->Get( _context, pname, params ) ) {
-      _context->emu.curr.glGetDoublev( pname, params );
+      orig.glGetDoublev( pname, params );
   }
 
 }
@@ -1158,11 +1200,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetFloatv(GLenum pname, GLfloat *pa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->Get( _context, pname, params ) ) {
-      _context->emu.curr.glGetFloatv( pname, params );
+      orig.glGetFloatv( pname, params );
   }
 
 }
@@ -1171,11 +1214,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetIntegerv(GLenum pname, GLint *pa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->Get( _context, pname, params ) ) {
-      _context->emu.curr.glGetIntegerv( pname, params );
+      orig.glGetIntegerv( pname, params );
   }
 
 }
@@ -1204,11 +1248,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetMultiTexGendvEXT(GLenum texunit,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetMultiTexGenv( _context, texunit, coord, pname, params ) ) {
-      _context->emu.curr.glGetMultiTexGendvEXT( texunit, coord, pname, params );
+      orig.glGetMultiTexGendvEXT( texunit, coord, pname, params );
   }
 
 }
@@ -1217,11 +1262,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetMultiTexGenfvEXT(GLenum texunit,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetMultiTexGenv( _context, texunit, coord, pname, params ) ) {
-      _context->emu.curr.glGetMultiTexGenfvEXT( texunit, coord, pname, params );
+      orig.glGetMultiTexGenfvEXT( texunit, coord, pname, params );
   }
 
 }
@@ -1230,11 +1276,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetMultiTexGenivEXT(GLenum texunit,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetMultiTexGenv( _context, texunit, coord, pname, params ) ) {
-      _context->emu.curr.glGetMultiTexGenivEXT( texunit, coord, pname, params );
+      orig.glGetMultiTexGenivEXT( texunit, coord, pname, params );
   }
 
 }
@@ -1243,11 +1290,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexEnvfv(GLenum target, GLenum p
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexEnv( target, pname, params ) ) {
-      _context->emu.curr.glGetTexEnvfv( target, pname, params );
+      orig.glGetTexEnvfv( target, pname, params );
   }
 
 }
@@ -1256,11 +1304,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexEnviv(GLenum target, GLenum p
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexEnv( target, pname, params ) ) {
-      _context->emu.curr.glGetTexEnviv( target, pname, params );
+      orig.glGetTexEnviv( target, pname, params );
   }
 
 }
@@ -1269,11 +1318,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexGendv(GLenum coord, GLenum pn
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexGenv( _context, coord, pname, params ) ) {
-      _context->emu.curr.glGetTexGendv( coord, pname, params );
+      orig.glGetTexGendv( coord, pname, params );
   }
 
 }
@@ -1282,11 +1332,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexGenfv(GLenum coord, GLenum pn
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexGenv( _context, coord, pname, params ) ) {
-      _context->emu.curr.glGetTexGenfv( coord, pname, params );
+      orig.glGetTexGenfv( coord, pname, params );
   }
 
 }
@@ -1295,11 +1346,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexGeniv(GLenum coord, GLenum pn
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexGenv( _context, coord, pname, params ) ) {
-      _context->emu.curr.glGetTexGeniv( coord, pname, params );
+      orig.glGetTexGeniv( coord, pname, params );
   }
 
 }
@@ -1308,11 +1360,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribPointerv(GLuint inde
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribPointerv(index, pname, pointer);
+  orig.glGetVertexAttribPointerv(index, pname, pointer);
 
 }
 
@@ -1320,11 +1373,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribPointervARB(GLuint i
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribPointervARB(index, pname, pointer);
+  orig.glGetVertexAttribPointervARB(index, pname, pointer);
 
 }
 
@@ -1332,11 +1386,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribdv(GLuint index, GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribdv(index, pname, params);
+  orig.glGetVertexAttribdv(index, pname, params);
 
 }
 
@@ -1344,11 +1399,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribdvARB(GLuint index, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribdvARB(index, pname, params);
+  orig.glGetVertexAttribdvARB(index, pname, params);
 
 }
 
@@ -1356,11 +1412,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribfv(GLuint index, GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribfv(index, pname, params);
+  orig.glGetVertexAttribfv(index, pname, params);
 
 }
 
@@ -1368,11 +1425,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribfvARB(GLuint index, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribfvARB(index, pname, params);
+  orig.glGetVertexAttribfvARB(index, pname, params);
 
 }
 
@@ -1380,11 +1438,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribiv(GLuint index, GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribiv(index, pname, params);
+  orig.glGetVertexAttribiv(index, pname, params);
 
 }
 
@@ -1392,11 +1451,12 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribivARB(GLuint index, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glGetVertexAttribivARB(index, pname, params);
+  orig.glGetVertexAttribivARB(index, pname, params);
 
 }
 
@@ -1411,12 +1471,13 @@ static GLboolean REGAL_CALL emuProcInterceptIff_glIsEnabled(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   {
       GLboolean enabled;
       if ( !_context->iff->IsEnabled( _context, cap, enabled ) )
-          return _context->emu.curr.glIsEnabled( cap );
+          return orig.glIsEnabled( cap );
       return enabled;
   }
 
@@ -1706,10 +1767,11 @@ static void REGAL_CALL emuProcInterceptIff_glMatrixMode(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( ! _context->iff->ShadowMatrixMode( mode ) ) {
-      _context->emu.curr.glMatrixMode( mode );
+      orig.glMatrixMode( mode );
   }
 
 }
@@ -1908,11 +1970,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArrays(GLenum mode, const 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawArrays(mode, first, count, primcount);
+  orig.glMultiDrawArrays(mode, first, count, primcount);
 
 }
 
@@ -1920,11 +1983,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysEXT(GLenum mode, con
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawArraysEXT(mode, first, count, primcount);
+  orig.glMultiDrawArraysEXT(mode, first, count, primcount);
 
 }
 
@@ -1932,11 +1996,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysIndirect(GLenum mode
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
 
 }
 
@@ -1944,11 +2009,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysIndirectAMD(GLenum m
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
 
 }
 
@@ -1956,11 +2022,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementArrayAPPLE(GLenum m
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
+  orig.glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
 
 }
 
@@ -1968,11 +2035,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElements(GLenum mode, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawElements(mode, count, type, indices, primcount);
+  orig.glMultiDrawElements(mode, count, type, indices, primcount);
 
 }
 
@@ -1980,11 +2048,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsBaseVertex(GLenum 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
+  orig.glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
 
 }
 
@@ -1992,11 +2061,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsEXT(GLenum mode, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawElementsEXT(mode, count, type, indices, primcount);
+  orig.glMultiDrawElementsEXT(mode, count, type, indices, primcount);
 
 }
 
@@ -2004,11 +2074,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsIndirect(GLenum mo
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
 
 }
 
@@ -2016,11 +2087,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsIndirectAMD(GLenum
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
 
 }
 
@@ -2028,11 +2100,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawRangeElementArrayAPPLE(GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->PreDraw( _context );
 
-  _context->iff->orig.glMultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount);
+  orig.glMultiDrawRangeElementArrayAPPLE(mode, start, end, first, count, primcount);
 
 }
 
@@ -2720,11 +2793,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage1DEXT(GLenum texunit, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  _context->iff->orig.glMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, format, type, pixels);
+  orig.glMultiTexImage1DEXT(texunit, target, level, internalformat, width, border, format, type, pixels);
 
 }
 
@@ -2732,11 +2806,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage2DEXT(GLenum texunit, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  _context->iff->orig.glMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, format, type, pixels);
+  orig.glMultiTexImage2DEXT(texunit, target, level, internalformat, width, height, border, format, type, pixels);
 
 }
 
@@ -2744,11 +2819,12 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage3DEXT(GLenum texunit, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  _context->iff->orig.glMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glMultiTexImage3DEXT(texunit, target, level, internalformat, width, height, depth, border, format, type, pixels);
 
 }
 
@@ -3366,11 +3442,12 @@ static void REGAL_CALL emuProcInterceptIff_glShadeModel(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   _context->iff->ShadeModel( mode );
   if( !_context->isCore() && !_context->isES2() ) {
-    _context->emu.curr.glShadeModel(mode);
+    orig.glShadeModel(mode);
   }
 
 }
@@ -3779,10 +3856,11 @@ static void REGAL_CALL emuProcInterceptIff_glTexGend(GLenum coord, GLenum pname,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, param ) ) {
-      _context->emu.curr.glTexGend( coord, pname, param );
+      orig.glTexGend( coord, pname, param );
   }
 
 }
@@ -3791,10 +3869,11 @@ static void REGAL_CALL emuProcInterceptIff_glTexGendv(GLenum coord, GLenum pname
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, params ) ) {
-      _context->emu.curr.glTexGendv( coord, pname, params );
+      orig.glTexGendv( coord, pname, params );
   }
 
 }
@@ -3803,10 +3882,11 @@ static void REGAL_CALL emuProcInterceptIff_glTexGenf(GLenum coord, GLenum pname,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, param ) ) {
-      _context->emu.curr.glTexGenf( coord, pname, param );
+      orig.glTexGenf( coord, pname, param );
   }
 
 }
@@ -3815,10 +3895,11 @@ static void REGAL_CALL emuProcInterceptIff_glTexGenfv(GLenum coord, GLenum pname
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, params ) ) {
-      _context->emu.curr.glTexGenfv( coord, pname, params );
+      orig.glTexGenfv( coord, pname, params );
   }
 
 }
@@ -3827,10 +3908,11 @@ static void REGAL_CALL emuProcInterceptIff_glTexGeni(GLenum coord, GLenum pname,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, param ) ) {
-      _context->emu.curr.glTexGeni( coord, pname, param );
+      orig.glTexGeni( coord, pname, param );
   }
 
 }
@@ -3839,10 +3921,11 @@ static void REGAL_CALL emuProcInterceptIff_glTexGeniv(GLenum coord, GLenum pname
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, params ) ) {
-      _context->emu.curr.glTexGeniv( coord, pname, params );
+      orig.glTexGeniv( coord, pname, params );
   }
 
 }
@@ -3851,11 +3934,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage1D(GLenum target, GLint lev
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
+  orig.glTexImage1D(target, level, internalformat, width, border, format, type, pixels);
 
 }
 
@@ -3863,11 +3947,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2D(GLenum target, GLint lev
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
+  orig.glTexImage2D(target, level, internalformat, width, height, border, format, type, pixels);
 
 }
 
@@ -3875,11 +3960,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2DMultisample(GLenum target
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
+  orig.glTexImage2DMultisample(target, samples, internalformat, width, height, fixedsamplelocations);
 
 }
 
@@ -3887,11 +3973,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2DMultisampleCoverageNV(GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
 
-  _context->iff->orig.glTexImage2DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
+  orig.glTexImage2DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
 
 }
 
@@ -3899,11 +3986,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3D(GLenum target, GLint lev
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glTexImage3D(target, level, internalformat, width, height, depth, border, format, type, pixels);
 
 }
 
@@ -3911,11 +3999,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DEXT(GLenum target, GLint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glTexImage3DEXT(target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glTexImage3DEXT(target, level, internalformat, width, height, depth, border, format, type, pixels);
 
 }
 
@@ -3923,11 +4012,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DMultisample(GLenum target
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
+  orig.glTexImage3DMultisample(target, samples, internalformat, width, height, depth, fixedsamplelocations);
 
 }
 
@@ -3935,11 +4025,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DMultisampleCoverageNV(GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
 
-  _context->iff->orig.glTexImage3DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
+  orig.glTexImage3DMultisampleCoverageNV(target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
 
 }
 
@@ -3947,11 +4038,12 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage4DSGIS(GLenum target, GLint
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  _context->iff->orig.glTexImage4DSGIS(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
+  orig.glTexImage4DSGIS(target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
 
 }
 
@@ -3966,11 +4058,12 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage1DEXT(GLuint texture, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  _context->iff->orig.glTextureImage1DEXT(texture, target, level, internalformat, width, border, format, type, pixels);
+  orig.glTextureImage1DEXT(texture, target, level, internalformat, width, border, format, type, pixels);
 
 }
 
@@ -3978,11 +4071,12 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage2DEXT(GLuint texture, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  _context->iff->orig.glTextureImage2DEXT(texture, target, level, internalformat, width, height, border, format, type, pixels);
+  orig.glTextureImage2DEXT(texture, target, level, internalformat, width, height, border, format, type, pixels);
 
 }
 
@@ -3990,11 +4084,12 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage3DEXT(GLuint texture, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  _context->iff->orig.glTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glTextureImage3DEXT(texture, target, level, internalformat, width, height, depth, border, format, type, pixels);
 
 }
 
@@ -4022,12 +4117,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1d(GLint location, GLdouble 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, x );
   } else {
-    _context->emu.curr.glUniform1d( location, x );
+    orig.glUniform1d( location, x );
   }
 
 }
@@ -4036,12 +4132,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1dv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    _context->emu.curr.glUniform1dv( location, count, value );
+    orig.glUniform1dv( location, count, value );
   }
 
 }
@@ -4050,12 +4147,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1f(GLint location, GLfloat v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    _context->emu.curr.glUniform1f( location, v0 );
+    orig.glUniform1f( location, v0 );
   }
 
 }
@@ -4064,12 +4162,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1fARB(GLint location, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    _context->emu.curr.glUniform1fARB( location, v0 );
+    orig.glUniform1fARB( location, v0 );
   }
 
 }
@@ -4078,12 +4177,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1fv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    _context->emu.curr.glUniform1fv( location, count, value );
+    orig.glUniform1fv( location, count, value );
   }
 
 }
@@ -4092,12 +4192,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1fvARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    _context->emu.curr.glUniform1fvARB( location, count, value );
+    orig.glUniform1fvARB( location, count, value );
   }
 
 }
@@ -4106,12 +4207,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1i(GLint location, GLint v0)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    _context->emu.curr.glUniform1i( location, v0 );
+    orig.glUniform1i( location, v0 );
   }
 
 }
@@ -4120,12 +4222,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1iARB(GLint location, GLint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    _context->emu.curr.glUniform1iARB( location, v0 );
+    orig.glUniform1iARB( location, v0 );
   }
 
 }
@@ -4134,12 +4237,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1iv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    _context->emu.curr.glUniform1iv( location, count, value );
+    orig.glUniform1iv( location, count, value );
   }
 
 }
@@ -4148,12 +4252,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1ivARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    _context->emu.curr.glUniform1ivARB( location, count, value );
+    orig.glUniform1ivARB( location, count, value );
   }
 
 }
@@ -4162,12 +4267,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1ui(GLint location, GLuint v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    _context->emu.curr.glUniform1ui( location, v0 );
+    orig.glUniform1ui( location, v0 );
   }
 
 }
@@ -4176,12 +4282,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1uiv(GLint location, GLsizei
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    _context->emu.curr.glUniform1uiv( location, count, value );
+    orig.glUniform1uiv( location, count, value );
   }
 
 }
@@ -4190,12 +4297,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2d(GLint location, GLdouble 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, x, y );
   } else {
-    _context->emu.curr.glUniform2d( location, x, y );
+    orig.glUniform2d( location, x, y );
   }
 
 }
@@ -4204,12 +4312,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2dv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    _context->emu.curr.glUniform2dv( location, count, value );
+    orig.glUniform2dv( location, count, value );
   }
 
 }
@@ -4218,12 +4327,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2f(GLint location, GLfloat v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    _context->emu.curr.glUniform2f( location, v0, v1 );
+    orig.glUniform2f( location, v0, v1 );
   }
 
 }
@@ -4232,12 +4342,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2fARB(GLint location, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    _context->emu.curr.glUniform2fARB( location, v0, v1 );
+    orig.glUniform2fARB( location, v0, v1 );
   }
 
 }
@@ -4246,12 +4357,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2fv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    _context->emu.curr.glUniform2fv( location, count, value );
+    orig.glUniform2fv( location, count, value );
   }
 
 }
@@ -4260,12 +4372,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2fvARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    _context->emu.curr.glUniform2fvARB( location, count, value );
+    orig.glUniform2fvARB( location, count, value );
   }
 
 }
@@ -4274,12 +4387,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2i(GLint location, GLint v0,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    _context->emu.curr.glUniform2i( location, v0, v1 );
+    orig.glUniform2i( location, v0, v1 );
   }
 
 }
@@ -4288,12 +4402,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2iARB(GLint location, GLint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    _context->emu.curr.glUniform2iARB( location, v0, v1 );
+    orig.glUniform2iARB( location, v0, v1 );
   }
 
 }
@@ -4302,12 +4417,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2iv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    _context->emu.curr.glUniform2iv( location, count, value );
+    orig.glUniform2iv( location, count, value );
   }
 
 }
@@ -4316,12 +4432,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2ivARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    _context->emu.curr.glUniform2ivARB( location, count, value );
+    orig.glUniform2ivARB( location, count, value );
   }
 
 }
@@ -4330,12 +4447,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2ui(GLint location, GLuint v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    _context->emu.curr.glUniform2ui( location, v0, v1 );
+    orig.glUniform2ui( location, v0, v1 );
   }
 
 }
@@ -4344,12 +4462,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2uiv(GLint location, GLsizei
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    _context->emu.curr.glUniform2uiv( location, count, value );
+    orig.glUniform2uiv( location, count, value );
   }
 
 }
@@ -4358,12 +4477,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3d(GLint location, GLdouble 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, x, y, z );
   } else {
-    _context->emu.curr.glUniform3d( location, x, y, z );
+    orig.glUniform3d( location, x, y, z );
   }
 
 }
@@ -4372,12 +4492,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3dv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    _context->emu.curr.glUniform3dv( location, count, value );
+    orig.glUniform3dv( location, count, value );
   }
 
 }
@@ -4386,12 +4507,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3f(GLint location, GLfloat v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    _context->emu.curr.glUniform3f( location, v0, v1, v2 );
+    orig.glUniform3f( location, v0, v1, v2 );
   }
 
 }
@@ -4400,12 +4522,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3fARB(GLint location, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    _context->emu.curr.glUniform3fARB( location, v0, v1, v2 );
+    orig.glUniform3fARB( location, v0, v1, v2 );
   }
 
 }
@@ -4414,12 +4537,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3fv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    _context->emu.curr.glUniform3fv( location, count, value );
+    orig.glUniform3fv( location, count, value );
   }
 
 }
@@ -4428,12 +4552,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3fvARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    _context->emu.curr.glUniform3fvARB( location, count, value );
+    orig.glUniform3fvARB( location, count, value );
   }
 
 }
@@ -4442,12 +4567,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3i(GLint location, GLint v0,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    _context->emu.curr.glUniform3i( location, v0, v1, v2 );
+    orig.glUniform3i( location, v0, v1, v2 );
   }
 
 }
@@ -4456,12 +4582,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3iARB(GLint location, GLint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    _context->emu.curr.glUniform3iARB( location, v0, v1, v2 );
+    orig.glUniform3iARB( location, v0, v1, v2 );
   }
 
 }
@@ -4470,12 +4597,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3iv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    _context->emu.curr.glUniform3iv( location, count, value );
+    orig.glUniform3iv( location, count, value );
   }
 
 }
@@ -4484,12 +4612,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3ivARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    _context->emu.curr.glUniform3ivARB( location, count, value );
+    orig.glUniform3ivARB( location, count, value );
   }
 
 }
@@ -4498,12 +4627,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3ui(GLint location, GLuint v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    _context->emu.curr.glUniform3ui( location, v0, v1, v2 );
+    orig.glUniform3ui( location, v0, v1, v2 );
   }
 
 }
@@ -4512,12 +4642,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3uiv(GLint location, GLsizei
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    _context->emu.curr.glUniform3uiv( location, count, value );
+    orig.glUniform3uiv( location, count, value );
   }
 
 }
@@ -4526,12 +4657,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4d(GLint location, GLdouble 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, x, y, z, w );
   } else {
-    _context->emu.curr.glUniform4d( location, x, y, z, w );
+    orig.glUniform4d( location, x, y, z, w );
   }
 
 }
@@ -4540,12 +4672,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4dv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    _context->emu.curr.glUniform4dv( location, count, value );
+    orig.glUniform4dv( location, count, value );
   }
 
 }
@@ -4554,12 +4687,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4f(GLint location, GLfloat v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    _context->emu.curr.glUniform4f( location, v0, v1, v2, v3 );
+    orig.glUniform4f( location, v0, v1, v2, v3 );
   }
 
 }
@@ -4568,12 +4702,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4fARB(GLint location, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    _context->emu.curr.glUniform4fARB( location, v0, v1, v2, v3 );
+    orig.glUniform4fARB( location, v0, v1, v2, v3 );
   }
 
 }
@@ -4582,12 +4717,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4fv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    _context->emu.curr.glUniform4fv( location, count, value );
+    orig.glUniform4fv( location, count, value );
   }
 
 }
@@ -4596,12 +4732,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4fvARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    _context->emu.curr.glUniform4fvARB( location, count, value );
+    orig.glUniform4fvARB( location, count, value );
   }
 
 }
@@ -4610,12 +4747,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4i(GLint location, GLint v0,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    _context->emu.curr.glUniform4i( location, v0, v1, v2, v3 );
+    orig.glUniform4i( location, v0, v1, v2, v3 );
   }
 
 }
@@ -4624,12 +4762,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4iARB(GLint location, GLint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    _context->emu.curr.glUniform4iARB( location, v0, v1, v2, v3 );
+    orig.glUniform4iARB( location, v0, v1, v2, v3 );
   }
 
 }
@@ -4638,12 +4777,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4iv(GLint location, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    _context->emu.curr.glUniform4iv( location, count, value );
+    orig.glUniform4iv( location, count, value );
   }
 
 }
@@ -4652,12 +4792,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4ivARB(GLint location, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    _context->emu.curr.glUniform4ivARB( location, count, value );
+    orig.glUniform4ivARB( location, count, value );
   }
 
 }
@@ -4666,12 +4807,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4ui(GLint location, GLuint v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    _context->emu.curr.glUniform4ui( location, v0, v1, v2, v3 );
+    orig.glUniform4ui( location, v0, v1, v2, v3 );
   }
 
 }
@@ -4680,12 +4822,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4uiv(GLint location, GLsizei
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    _context->emu.curr.glUniform4uiv( location, count, value );
+    orig.glUniform4uiv( location, count, value );
   }
 
 }
@@ -4694,12 +4837,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2dv(GLint location, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 2, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix2dv( location, count, transpose, value );
+    orig.glUniformMatrix2dv( location, count, transpose, value );
   }
 
 }
@@ -4708,12 +4852,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2fv(GLint location, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 2, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix2fv( location, count, transpose, value );
+    orig.glUniformMatrix2fv( location, count, transpose, value );
   }
 
 }
@@ -4722,12 +4867,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2fvARB(GLint location,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 2, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix2fvARB( location, count, transpose, value );
+    orig.glUniformMatrix2fvARB( location, count, transpose, value );
   }
 
 }
@@ -4736,12 +4882,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x3dv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 3, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix2x3dv( location, count, transpose, value );
+    orig.glUniformMatrix2x3dv( location, count, transpose, value );
   }
 
 }
@@ -4750,12 +4897,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x3fv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 3, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix2x3fv( location, count, transpose, value );
+    orig.glUniformMatrix2x3fv( location, count, transpose, value );
   }
 
 }
@@ -4764,12 +4912,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x4dv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 4, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix2x4dv( location, count, transpose, value );
+    orig.glUniformMatrix2x4dv( location, count, transpose, value );
   }
 
 }
@@ -4778,12 +4927,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x4fv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 4, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix2x4fv( location, count, transpose, value );
+    orig.glUniformMatrix2x4fv( location, count, transpose, value );
   }
 
 }
@@ -4792,12 +4942,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3dv(GLint location, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 3, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix3dv( location, count, transpose, value );
+    orig.glUniformMatrix3dv( location, count, transpose, value );
   }
 
 }
@@ -4806,12 +4957,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3fv(GLint location, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 3, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix3fv( location, count, transpose, value );
+    orig.glUniformMatrix3fv( location, count, transpose, value );
   }
 
 }
@@ -4820,12 +4972,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3fvARB(GLint location,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 3, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix3fvARB( location, count, transpose, value );
+    orig.glUniformMatrix3fvARB( location, count, transpose, value );
   }
 
 }
@@ -4834,12 +4987,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x2dv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 2, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix3x2dv( location, count, transpose, value );
+    orig.glUniformMatrix3x2dv( location, count, transpose, value );
   }
 
 }
@@ -4848,12 +5002,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x2fv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 2, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix3x2fv( location, count, transpose, value );
+    orig.glUniformMatrix3x2fv( location, count, transpose, value );
   }
 
 }
@@ -4862,12 +5017,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x4dv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 4, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix3x4dv( location, count, transpose, value );
+    orig.glUniformMatrix3x4dv( location, count, transpose, value );
   }
 
 }
@@ -4876,12 +5032,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x4fv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 4, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix3x4fv( location, count, transpose, value );
+    orig.glUniformMatrix3x4fv( location, count, transpose, value );
   }
 
 }
@@ -4890,12 +5047,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4dv(GLint location, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 4, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix4dv( location, count, transpose, value );
+    orig.glUniformMatrix4dv( location, count, transpose, value );
   }
 
 }
@@ -4904,12 +5062,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4fv(GLint location, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 4, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix4fv( location, count, transpose, value );
+    orig.glUniformMatrix4fv( location, count, transpose, value );
   }
 
 }
@@ -4918,12 +5077,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4fvARB(GLint location,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 4, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix4fvARB( location, count, transpose, value );
+    orig.glUniformMatrix4fvARB( location, count, transpose, value );
   }
 
 }
@@ -4932,12 +5092,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x2dv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 2, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix4x2dv( location, count, transpose, value );
+    orig.glUniformMatrix4x2dv( location, count, transpose, value );
   }
 
 }
@@ -4946,12 +5107,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x2fv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 2, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix4x2fv( location, count, transpose, value );
+    orig.glUniformMatrix4x2fv( location, count, transpose, value );
   }
 
 }
@@ -4960,12 +5122,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x3dv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 3, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix4x3dv( location, count, transpose, value );
+    orig.glUniformMatrix4x3dv( location, count, transpose, value );
   }
 
 }
@@ -4974,12 +5137,13 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x3fv(GLint location, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 3, location, count, transpose, value );
   } else {
-    _context->emu.curr.glUniformMatrix4x3fv( location, count, transpose, value );
+    orig.glUniformMatrix4x3fv( location, count, transpose, value );
   }
 
 }
@@ -4988,10 +5152,11 @@ static void REGAL_CALL emuProcInterceptIff_glUseProgram(GLuint program)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( ! _context->iff->ShadowUseProgram( program ) ) {
-      _context->emu.curr.glUseProgram( program );
+      orig.glUseProgram( program );
   }
 
 }
@@ -5000,10 +5165,11 @@ static void REGAL_CALL emuProcInterceptIff_glUseProgramObjectARB(GLhandleARB pro
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // impl
   if( ! _context->iff->ShadowUseProgram( programObj ) ) {
-      _context->emu.curr.glUseProgram( programObj );
+      orig.glUseProgram( programObj );
   }
 
 }
@@ -5252,11 +5418,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1d(GLuint index, GLdoub
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  _context->iff->orig.glVertexAttrib1d(index, x);
+  orig.glVertexAttrib1d(index, x);
 
 }
 
@@ -5264,11 +5431,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dARB(GLuint index, GLd
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  _context->iff->orig.glVertexAttrib1dARB(index, x);
+  orig.glVertexAttrib1dARB(index, x);
 
 }
 
@@ -5276,11 +5444,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib1dv(index, v);
+  orig.glVertexAttrib1dv(index, v);
 
 }
 
@@ -5288,11 +5457,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib1dvARB(index, v);
+  orig.glVertexAttrib1dvARB(index, v);
 
 }
 
@@ -5300,11 +5470,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1f(GLuint index, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  _context->iff->orig.glVertexAttrib1f(index, x);
+  orig.glVertexAttrib1f(index, x);
 
 }
 
@@ -5312,11 +5483,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fARB(GLuint index, GLf
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  _context->iff->orig.glVertexAttrib1fARB(index, x);
+  orig.glVertexAttrib1fARB(index, x);
 
 }
 
@@ -5324,11 +5496,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib1fv(index, v);
+  orig.glVertexAttrib1fv(index, v);
 
 }
 
@@ -5336,11 +5509,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib1fvARB(index, v);
+  orig.glVertexAttrib1fvARB(index, v);
 
 }
 
@@ -5348,11 +5522,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1s(GLuint index, GLshor
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  _context->iff->orig.glVertexAttrib1s(index, x);
+  orig.glVertexAttrib1s(index, x);
 
 }
 
@@ -5360,11 +5535,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1sARB(GLuint index, GLs
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  _context->iff->orig.glVertexAttrib1sARB(index, x);
+  orig.glVertexAttrib1sARB(index, x);
 
 }
 
@@ -5372,11 +5548,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1sv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib1sv(index, v);
+  orig.glVertexAttrib1sv(index, v);
 
 }
 
@@ -5384,11 +5561,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1svARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib1svARB(index, v);
+  orig.glVertexAttrib1svARB(index, v);
 
 }
 
@@ -5396,11 +5574,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2d(GLuint index, GLdoub
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  _context->iff->orig.glVertexAttrib2d(index, x, y);
+  orig.glVertexAttrib2d(index, x, y);
 
 }
 
@@ -5408,11 +5587,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dARB(GLuint index, GLd
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  _context->iff->orig.glVertexAttrib2dARB(index, x, y);
+  orig.glVertexAttrib2dARB(index, x, y);
 
 }
 
@@ -5420,11 +5600,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib2dv(index, v);
+  orig.glVertexAttrib2dv(index, v);
 
 }
 
@@ -5432,11 +5613,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib2dvARB(index, v);
+  orig.glVertexAttrib2dvARB(index, v);
 
 }
 
@@ -5444,11 +5626,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2f(GLuint index, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  _context->iff->orig.glVertexAttrib2f(index, x, y);
+  orig.glVertexAttrib2f(index, x, y);
 
 }
 
@@ -5456,11 +5639,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fARB(GLuint index, GLf
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  _context->iff->orig.glVertexAttrib2fARB(index, x, y);
+  orig.glVertexAttrib2fARB(index, x, y);
 
 }
 
@@ -5468,11 +5652,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib2fv(index, v);
+  orig.glVertexAttrib2fv(index, v);
 
 }
 
@@ -5480,11 +5665,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib2fvARB(index, v);
+  orig.glVertexAttrib2fvARB(index, v);
 
 }
 
@@ -5492,11 +5678,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2s(GLuint index, GLshor
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  _context->iff->orig.glVertexAttrib2s(index, x, y);
+  orig.glVertexAttrib2s(index, x, y);
 
 }
 
@@ -5504,11 +5691,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2sARB(GLuint index, GLs
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  _context->iff->orig.glVertexAttrib2sARB(index, x, y);
+  orig.glVertexAttrib2sARB(index, x, y);
 
 }
 
@@ -5516,11 +5704,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2sv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib2sv(index, v);
+  orig.glVertexAttrib2sv(index, v);
 
 }
 
@@ -5528,11 +5717,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2svARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib2svARB(index, v);
+  orig.glVertexAttrib2svARB(index, v);
 
 }
 
@@ -5540,11 +5730,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3d(GLuint index, GLdoub
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  _context->iff->orig.glVertexAttrib3d(index, x, y, z);
+  orig.glVertexAttrib3d(index, x, y, z);
 
 }
 
@@ -5552,11 +5743,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dARB(GLuint index, GLd
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  _context->iff->orig.glVertexAttrib3dARB(index, x, y, z);
+  orig.glVertexAttrib3dARB(index, x, y, z);
 
 }
 
@@ -5564,11 +5756,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib3dv(index, v);
+  orig.glVertexAttrib3dv(index, v);
 
 }
 
@@ -5576,11 +5769,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib3dvARB(index, v);
+  orig.glVertexAttrib3dvARB(index, v);
 
 }
 
@@ -5588,11 +5782,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3f(GLuint index, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  _context->iff->orig.glVertexAttrib3f(index, x, y, z);
+  orig.glVertexAttrib3f(index, x, y, z);
 
 }
 
@@ -5600,11 +5795,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fARB(GLuint index, GLf
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  _context->iff->orig.glVertexAttrib3fARB(index, x, y, z);
+  orig.glVertexAttrib3fARB(index, x, y, z);
 
 }
 
@@ -5612,11 +5808,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib3fv(index, v);
+  orig.glVertexAttrib3fv(index, v);
 
 }
 
@@ -5624,11 +5821,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib3fvARB(index, v);
+  orig.glVertexAttrib3fvARB(index, v);
 
 }
 
@@ -5636,11 +5834,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3s(GLuint index, GLshor
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  _context->iff->orig.glVertexAttrib3s(index, x, y, z);
+  orig.glVertexAttrib3s(index, x, y, z);
 
 }
 
@@ -5648,11 +5847,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3sARB(GLuint index, GLs
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  _context->iff->orig.glVertexAttrib3sARB(index, x, y, z);
+  orig.glVertexAttrib3sARB(index, x, y, z);
 
 }
 
@@ -5660,11 +5860,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3sv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib3sv(index, v);
+  orig.glVertexAttrib3sv(index, v);
 
 }
 
@@ -5672,11 +5873,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3svARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib3svARB(index, v);
+  orig.glVertexAttrib3svARB(index, v);
 
 }
 
@@ -5684,11 +5886,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nbv(GLuint index, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4Nbv(index, v);
+  orig.glVertexAttrib4Nbv(index, v);
 
 }
 
@@ -5696,11 +5899,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NbvARB(GLuint index, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4NbvARB(index, v);
+  orig.glVertexAttrib4NbvARB(index, v);
 
 }
 
@@ -5708,11 +5912,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Niv(GLuint index, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4Niv(index, v);
+  orig.glVertexAttrib4Niv(index, v);
 
 }
 
@@ -5720,11 +5925,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NivARB(GLuint index, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4NivARB(index, v);
+  orig.glVertexAttrib4NivARB(index, v);
 
 }
 
@@ -5732,11 +5938,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nsv(GLuint index, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4Nsv(index, v);
+  orig.glVertexAttrib4Nsv(index, v);
 
 }
 
@@ -5744,11 +5951,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NsvARB(GLuint index, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4NsvARB(index, v);
+  orig.glVertexAttrib4NsvARB(index, v);
 
 }
 
@@ -5756,11 +5964,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nub(GLuint index, GLub
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4Nub(index, x, y, z, w);
+  orig.glVertexAttrib4Nub(index, x, y, z, w);
 
 }
 
@@ -5768,11 +5977,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubARB(GLuint index, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4NubARB(index, x, y, z, w);
+  orig.glVertexAttrib4NubARB(index, x, y, z, w);
 
 }
 
@@ -5780,11 +5990,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nubv(GLuint index, con
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4Nubv(index, v);
+  orig.glVertexAttrib4Nubv(index, v);
 
 }
 
@@ -5792,11 +6003,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubvARB(GLuint index, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4NubvARB(index, v);
+  orig.glVertexAttrib4NubvARB(index, v);
 
 }
 
@@ -5804,11 +6016,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nusv(GLuint index, con
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4Nusv(index, v);
+  orig.glVertexAttrib4Nusv(index, v);
 
 }
 
@@ -5816,11 +6029,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NusvARB(GLuint index, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4NusvARB(index, v);
+  orig.glVertexAttrib4NusvARB(index, v);
 
 }
 
@@ -5828,11 +6042,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4bv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4bv(index, v);
+  orig.glVertexAttrib4bv(index, v);
 
 }
 
@@ -5840,11 +6055,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4bvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4bvARB(index, v);
+  orig.glVertexAttrib4bvARB(index, v);
 
 }
 
@@ -5852,11 +6068,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4d(GLuint index, GLdoub
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4d(index, x, y, z, w);
+  orig.glVertexAttrib4d(index, x, y, z, w);
 
 }
 
@@ -5864,11 +6081,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dARB(GLuint index, GLd
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4dARB(index, x, y, z, w);
+  orig.glVertexAttrib4dARB(index, x, y, z, w);
 
 }
 
@@ -5876,11 +6094,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4dv(index, v);
+  orig.glVertexAttrib4dv(index, v);
 
 }
 
@@ -5888,11 +6107,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4dvARB(index, v);
+  orig.glVertexAttrib4dvARB(index, v);
 
 }
 
@@ -5900,11 +6120,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4f(GLuint index, GLfloa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4f(index, x, y, z, w);
+  orig.glVertexAttrib4f(index, x, y, z, w);
 
 }
 
@@ -5912,11 +6133,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fARB(GLuint index, GLf
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4fARB(index, x, y, z, w);
+  orig.glVertexAttrib4fARB(index, x, y, z, w);
 
 }
 
@@ -5924,11 +6146,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4fv(index, v);
+  orig.glVertexAttrib4fv(index, v);
 
 }
 
@@ -5936,11 +6159,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fvARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4fvARB(index, v);
+  orig.glVertexAttrib4fvARB(index, v);
 
 }
 
@@ -5948,11 +6172,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4iv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4iv(index, v);
+  orig.glVertexAttrib4iv(index, v);
 
 }
 
@@ -5960,11 +6185,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ivARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4ivARB(index, v);
+  orig.glVertexAttrib4ivARB(index, v);
 
 }
 
@@ -5972,11 +6198,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4s(GLuint index, GLshor
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4s(index, x, y, z, w);
+  orig.glVertexAttrib4s(index, x, y, z, w);
 
 }
 
@@ -5984,11 +6211,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4sARB(GLuint index, GLs
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  _context->iff->orig.glVertexAttrib4sARB(index, x, y, z, w);
+  orig.glVertexAttrib4sARB(index, x, y, z, w);
 
 }
 
@@ -5996,11 +6224,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4sv(GLuint index, const
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4sv(index, v);
+  orig.glVertexAttrib4sv(index, v);
 
 }
 
@@ -6008,11 +6237,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4svARB(GLuint index, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4svARB(index, v);
+  orig.glVertexAttrib4svARB(index, v);
 
 }
 
@@ -6020,11 +6250,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ubv(GLuint index, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4ubv(index, v);
+  orig.glVertexAttrib4ubv(index, v);
 
 }
 
@@ -6032,11 +6263,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ubvARB(GLuint index, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4ubvARB(index, v);
+  orig.glVertexAttrib4ubvARB(index, v);
 
 }
 
@@ -6044,11 +6276,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4usv(GLuint index, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4usv(index, v);
+  orig.glVertexAttrib4usv(index, v);
 
 }
 
@@ -6056,11 +6289,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4usvARB(GLuint index, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  _context->iff->orig.glVertexAttrib4usvARB(index, v);
+  orig.glVertexAttrib4usvARB(index, v);
 
 }
 
@@ -6068,11 +6302,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttribPointer(GLuint index, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+  orig.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 
 }
 
@@ -6080,11 +6315,12 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttribPointerARB(GLuint index
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  _context->iff->orig.glVertexAttribPointerARB(index, size, type, normalized, stride, pointer);
+  orig.glVertexAttribPointerARB(index, size, type, normalized, stride, pointer);
 
 }
 
@@ -6112,11 +6348,12 @@ static void REGAL_CALL emuProcInterceptIff_glViewport(GLint x, GLint y, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateIff & orig = _context->iff->orig;
 
   // prefix
   _context->iff->Viewport( x, y, width, height );
 
-  _context->iff->orig.glViewport(x, y, width, height);
+  orig.glViewport(x, y, width, height);
 
 }
 

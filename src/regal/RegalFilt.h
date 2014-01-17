@@ -67,6 +67,7 @@ namespace Emu {
     Init(RegalContext &ctx)
     {
       orig.Initialize( ctx.dispatchGL );
+      EmuProcsInterceptFilt( ctx.dispatchGL );
     }
 
     void

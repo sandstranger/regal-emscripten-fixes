@@ -58,11 +58,12 @@ static void REGAL_CALL emuProcInterceptVao_glBindBuffer(GLenum target, GLuint bu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   _context->vao->ShadowBufferBinding( target, buffer );
 
-  _context->vao->orig.glBindBuffer(target, buffer);
+  orig.glBindBuffer(target, buffer);
 
 }
 
@@ -70,11 +71,12 @@ static void REGAL_CALL emuProcInterceptVao_glBindBufferARB(GLenum target, GLuint
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   _context->vao->ShadowBufferBinding( target, buffer );
 
-  _context->vao->orig.glBindBufferARB(target, buffer);
+  orig.glBindBufferARB(target, buffer);
 
 }
 
@@ -92,11 +94,12 @@ static void REGAL_CALL emuProcInterceptVao_glClientActiveTexture(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   _context->vao->ClientActiveTexture(*_context, texture );
 
-  _context->vao->orig.glClientActiveTexture(texture);
+  orig.glClientActiveTexture(texture);
 
 }
 
@@ -104,11 +107,12 @@ static void REGAL_CALL emuProcInterceptVao_glClientActiveTextureARB(GLenum textu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   _context->vao->ClientActiveTexture(*_context, texture );
 
-  _context->vao->orig.glClientActiveTextureARB(texture);
+  orig.glClientActiveTextureARB(texture);
 
 }
 
@@ -176,11 +180,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArrays(GLenum mode, GLint first
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawArrays(mode, first, count);
+  orig.glDrawArrays(mode, first, count);
 
 }
 
@@ -188,11 +193,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysEXT(GLenum mode, GLint fi
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawArraysEXT(mode, first, count);
+  orig.glDrawArraysEXT(mode, first, count);
 
 }
 
@@ -200,11 +206,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysIndirect(GLenum mode, con
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawArraysIndirect(mode, indirect);
+  orig.glDrawArraysIndirect(mode, indirect);
 
 }
 
@@ -212,11 +219,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysInstanced(GLenum mode, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawArraysInstanced(mode, start, count, primcount);
+  orig.glDrawArraysInstanced(mode, start, count, primcount);
 
 }
 
@@ -224,11 +232,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysInstancedARB(GLenum mode,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawArraysInstancedARB(mode, start, count, primcount);
+  orig.glDrawArraysInstancedARB(mode, start, count, primcount);
 
 }
 
@@ -236,11 +245,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysInstancedEXT(GLenum mode,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawArraysInstancedEXT(mode, start, count, primcount);
+  orig.glDrawArraysInstancedEXT(mode, start, count, primcount);
 
 }
 
@@ -248,11 +258,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementArrayAPPLE(GLenum mode, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementArrayAPPLE(mode, first, count);
+  orig.glDrawElementArrayAPPLE(mode, first, count);
 
 }
 
@@ -260,11 +271,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementArrayATI(GLenum mode, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementArrayATI(mode, count);
+  orig.glDrawElementArrayATI(mode, count);
 
 }
 
@@ -272,11 +284,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElements(GLenum mode, GLsizei c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElements(mode, count, type, indices);
+  orig.glDrawElements(mode, count, type, indices);
 
 }
 
@@ -284,11 +297,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsBaseVertex(GLenum mode,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
+  orig.glDrawElementsBaseVertex(mode, count, type, indices, basevertex);
 
 }
 
@@ -296,11 +310,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsIndirect(GLenum mode, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementsIndirect(mode, type, indirect);
+  orig.glDrawElementsIndirect(mode, type, indirect);
 
 }
 
@@ -308,11 +323,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstanced(GLenum mode, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementsInstanced(mode, count, type, indices, primcount);
+  orig.glDrawElementsInstanced(mode, count, type, indices, primcount);
 
 }
 
@@ -320,11 +336,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstancedARB(GLenum mod
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedARB(mode, count, type, indices, primcount);
 
 }
 
@@ -332,11 +349,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstancedBaseVertex(GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
+  orig.glDrawElementsInstancedBaseVertex(mode, count, type, indices, primcount, basevertex);
 
 }
 
@@ -344,11 +362,12 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstancedEXT(GLenum mod
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedEXT(mode, count, type, indices, primcount);
 
 }
 
@@ -416,10 +435,11 @@ static void REGAL_CALL emuProcInterceptVao_glGetBooleanv(GLenum pname, GLboolean
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     _context->emu.curr.glGetBooleanv( pname, params );
+     orig.glGetBooleanv( pname, params );
   }
 
 }
@@ -428,10 +448,11 @@ static void REGAL_CALL emuProcInterceptVao_glGetDoublev(GLenum pname, GLdouble *
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     _context->emu.curr.glGetDoublev( pname, params );
+     orig.glGetDoublev( pname, params );
   }
 
 }
@@ -440,10 +461,11 @@ static void REGAL_CALL emuProcInterceptVao_glGetFloatv(GLenum pname, GLfloat *pa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     _context->emu.curr.glGetFloatv( pname, params );
+     orig.glGetFloatv( pname, params );
   }
 
 }
@@ -452,10 +474,11 @@ static void REGAL_CALL emuProcInterceptVao_glGetInteger64v(GLenum pname, GLint64
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     _context->emu.curr.glGetInteger64v( pname, params );
+     orig.glGetInteger64v( pname, params );
   }
 
 }
@@ -464,10 +487,11 @@ static void REGAL_CALL emuProcInterceptVao_glGetIntegerv(GLenum pname, GLint *pa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     _context->emu.curr.glGetIntegerv( pname, params );
+     orig.glGetIntegerv( pname, params );
   }
 
 }
@@ -576,11 +600,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArrays(GLenum mode, const 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawArrays(mode, first, count, primcount);
+  orig.glMultiDrawArrays(mode, first, count, primcount);
 
 }
 
@@ -588,11 +613,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArraysEXT(GLenum mode, con
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawArraysEXT(mode, first, count, primcount);
+  orig.glMultiDrawArraysEXT(mode, first, count, primcount);
 
 }
 
@@ -600,11 +626,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArraysIndirect(GLenum mode
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirect(mode, indirect, primcount, stride);
 
 }
 
@@ -612,11 +639,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArraysIndirectAMD(GLenum m
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirectAMD(mode, indirect, primcount, stride);
 
 }
 
@@ -624,11 +652,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementArrayAPPLE(GLenum m
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
+  orig.glMultiDrawElementArrayAPPLE(mode, first, count, primcount);
 
 }
 
@@ -636,11 +665,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElements(GLenum mode, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawElements(mode, count, type, indices, primcount);
+  orig.glMultiDrawElements(mode, count, type, indices, primcount);
 
 }
 
@@ -648,11 +678,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsBaseVertex(GLenum 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
+  orig.glMultiDrawElementsBaseVertex(mode, count, type, indices, primcount, basevertex);
 
 }
 
@@ -660,11 +691,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsEXT(GLenum mode, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawElementsEXT(mode, count, type, indices, primcount);
+  orig.glMultiDrawElementsEXT(mode, count, type, indices, primcount);
 
 }
 
@@ -672,11 +704,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsIndirect(GLenum mo
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirect(mode, type, indirect, primcount, stride);
 
 }
 
@@ -684,11 +717,12 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsIndirectAMD(GLenum
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateVao & orig = _context->vao->orig;
 
   // prefix
   // _context->vao->Validate(*_context );
 
-  _context->vao->orig.glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirectAMD(mode, type, indirect, primcount, stride);
 
 }
 

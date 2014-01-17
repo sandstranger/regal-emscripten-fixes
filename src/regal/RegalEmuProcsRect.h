@@ -65,10 +65,6 @@ struct EmuProcsOriginateRect {
 
   PFNGLBEGINPROC glBegin;
   PFNGLENDPROC glEnd;
-  PFNGLVERTEX2DPROC glVertex2d;
-  PFNGLVERTEX2FPROC glVertex2f;
-  PFNGLVERTEX2IPROC glVertex2i;
-  PFNGLVERTEX2SPROC glVertex2s;
   PFNGLRECTDPROC glRectd;
   PFNGLRECTDVPROC glRectdv;
   PFNGLRECTFPROC glRectf;
@@ -77,14 +73,14 @@ struct EmuProcsOriginateRect {
   PFNGLRECTIVPROC glRectiv;
   PFNGLRECTSPROC glRects;
   PFNGLRECTSVPROC glRectsv;
+  PFNGLVERTEX2DPROC glVertex2d;
+  PFNGLVERTEX2FPROC glVertex2f;
+  PFNGLVERTEX2IPROC glVertex2i;
+  PFNGLVERTEX2SPROC glVertex2s;
 
   void Initialize( Dispatch::GL & dt ) {
     glBegin = dt.glBegin;
     glEnd = dt.glEnd;
-    glVertex2d = dt.glVertex2d;
-    glVertex2f = dt.glVertex2f;
-    glVertex2i = dt.glVertex2i;
-    glVertex2s = dt.glVertex2s;
     glRectd = dt.glRectd;
     glRectdv = dt.glRectdv;
     glRectf = dt.glRectf;
@@ -93,6 +89,10 @@ struct EmuProcsOriginateRect {
     glRectiv = dt.glRectiv;
     glRects = dt.glRects;
     glRectsv = dt.glRectsv;
+    glVertex2d = dt.glVertex2d;
+    glVertex2f = dt.glVertex2f;
+    glVertex2i = dt.glVertex2i;
+    glVertex2s = dt.glVertex2s;
   }
 };
 

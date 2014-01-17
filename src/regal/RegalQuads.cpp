@@ -96,6 +96,7 @@ namespace Emu
 void Quads::Init(RegalContext &ctx)
 {
   orig.Initialize( ctx.dispatchGL );
+  EmuProcsInterceptQuads( ctx.dispatchGL );
   elementArrayBuffer = 0;
   orig.glGenBuffers(1, &quadIndexBuffer);
   windingMode = GL_CCW;

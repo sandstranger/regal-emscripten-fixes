@@ -75,6 +75,7 @@ static void REGAL_CALL emuProcInterceptFilt_glActiveTextureARB(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_arb_multitexture)
@@ -89,6 +90,7 @@ static void REGAL_CALL emuProcInterceptFilt_glAttachObjectARB(GLhandleARB contai
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -103,6 +105,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBindAttribLocationARB(GLhandleARB 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -138,6 +141,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBindFramebufferEXT(GLenum target, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -188,6 +192,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBindRenderbufferEXT(GLenum target,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -236,6 +241,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBlendColorEXT(GLclampf red, GLclam
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -250,6 +256,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBlendEquationEXT(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -264,6 +271,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBlitFramebuffer(GLint srcX0, GLint
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -295,6 +303,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBlitFramebufferEXT(GLint srcX0, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_blit)
@@ -310,6 +319,7 @@ static void REGAL_CALL emuProcInterceptFilt_glBufferDataARB(GLenum target, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -341,6 +351,7 @@ static GLenum REGAL_CALL emuProcInterceptFilt_glCheckFramebufferStatusEXT(GLenum
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -389,6 +400,7 @@ static void REGAL_CALL emuProcInterceptFilt_glClientActiveTextureARB(GLenum text
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_arb_multitexture)
@@ -404,6 +416,7 @@ static void REGAL_CALL emuProcInterceptFilt_glColorMaskIndexedEXT(GLuint buf, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
@@ -420,6 +433,7 @@ static void REGAL_CALL emuProcInterceptFilt_glCompileShaderARB(GLhandleARB shade
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -451,6 +465,7 @@ static GLhandleARB REGAL_CALL emuProcInterceptFilt_glCreateProgramObjectARB(void
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -464,6 +479,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDeleteFramebuffersEXT(GLsizei n, c
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -496,6 +512,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDeleteRenderbuffersEXT(GLsizei n, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -511,6 +528,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDisableIndexedEXT(GLenum target, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
@@ -527,6 +545,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffer(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -541,6 +560,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffers(GLsizei n, const GLenu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->filt->DrawBuffers(*_context, n, bufs))
@@ -565,6 +585,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffersARB(GLsizei n, const GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_arb_draw_buffers)
@@ -580,6 +601,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffersATI(GLsizei n, const GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ati_draw_buffers)
@@ -612,6 +634,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawRangeElements(GLenum mode, GLu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -625,6 +648,7 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawRangeElementsBaseVertex(GLenum
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_arb_draw_elements_base_vertex)
@@ -663,6 +687,7 @@ static void REGAL_CALL emuProcInterceptFilt_glEnableIndexedEXT(GLenum target, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
@@ -900,6 +925,7 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferRenderbuffer(GLenum tar
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
@@ -912,6 +938,7 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferRenderbufferEXT(GLenum 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -927,6 +954,7 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture1D(GLenum target
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
@@ -939,6 +967,7 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture1DEXT(GLenum tar
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -970,6 +999,7 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture2DEXT(GLenum tar
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -985,6 +1015,7 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture3D(GLenum target
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
@@ -997,6 +1028,7 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture3DEXT(GLenum tar
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1012,6 +1044,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGenFramebuffersEXT(GLsizei n, GLui
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1058,6 +1091,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGenRenderbuffersEXT(GLsizei n, GLu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1106,6 +1140,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGenerateMipmapEXT(GLenum target)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1121,6 +1156,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGetBooleanIndexedvEXT(GLenum value
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
@@ -1185,6 +1221,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGetFramebufferAttachmentParameteri
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->filt->FramebufferAttachmentSupported(*_context, attachment))
@@ -1199,6 +1236,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGetFramebufferAttachmentParameteri
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1214,6 +1252,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGetInfoLogARB(GLhandleARB obj, GLs
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -1247,6 +1286,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGetIntegerIndexedvEXT(GLenum value
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
@@ -1279,6 +1319,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGetObjectParameterivARB(GLhandleAR
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -1310,6 +1351,7 @@ static void REGAL_CALL emuProcInterceptFilt_glGetRenderbufferParameterivEXT(GLen
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1392,6 +1434,7 @@ static GLint REGAL_CALL emuProcInterceptFilt_glGetUniformLocationARB(GLhandleARB
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -1405,6 +1448,7 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glIsEnabledIndexedEXT(GLenum ta
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (target==GL_BLEND && !_context->info->gl_ext_draw_buffers2)
@@ -1421,6 +1465,7 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glIsFramebufferEXT(GLuint frame
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1435,6 +1480,7 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glIsRenderbufferEXT(GLuint rend
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1551,6 +1597,7 @@ static GLvoid *REGAL_CALL emuProcInterceptFilt_glMapBuffer(GLenum target, GLenum
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -1564,6 +1611,7 @@ static GLvoid *REGAL_CALL emuProcInterceptFilt_glMapBufferARB(GLenum target, GLe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -2208,6 +2256,7 @@ static void REGAL_CALL emuProcInterceptFilt_glReadBuffer(GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->filt->ReadBuffer(*_context, mode))
@@ -2313,6 +2362,7 @@ static void REGAL_CALL emuProcInterceptFilt_glRenderbufferStorageEXT(GLenum targ
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -2395,6 +2445,7 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameterf(GLenum target, GLenu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
 
@@ -2413,6 +2464,7 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameterfv(GLenum target, GLen
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
 
@@ -2431,6 +2483,7 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameteri(GLenum target, GLenu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
 
@@ -2449,6 +2502,7 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameteriv(GLenum target, GLen
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
 
@@ -2467,6 +2521,7 @@ static void REGAL_CALL emuProcInterceptFilt_glUniform1iARB(GLint location, GLint
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -2481,6 +2536,7 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glUnmapBuffer(GLenum target)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())
@@ -2494,6 +2550,7 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glUnmapBufferARB(GLenum target)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateFilt & orig = _context->filt->orig;
 
   // impl
   if (_context->isES2())

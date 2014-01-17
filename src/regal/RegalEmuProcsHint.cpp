@@ -58,10 +58,11 @@ static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(GLenum pname, GLboolea
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateHint & orig = _context->hint->orig;
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetBooleanv( pname, params );
+    orig.glGetBooleanv( pname, params );
   }
 
 }
@@ -70,10 +71,11 @@ static void REGAL_CALL emuProcInterceptHint_glGetDoublev(GLenum pname, GLdouble 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateHint & orig = _context->hint->orig;
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetDoublev( pname, params );
+    orig.glGetDoublev( pname, params );
   }
 
 }
@@ -82,10 +84,11 @@ static void REGAL_CALL emuProcInterceptHint_glGetFloatv(GLenum pname, GLfloat *p
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateHint & orig = _context->hint->orig;
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetFloatv( pname, params );
+    orig.glGetFloatv( pname, params );
   }
 
 }
@@ -94,10 +97,11 @@ static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(GLenum pname, GLint *p
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateHint & orig = _context->hint->orig;
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetIntegerv( pname, params );
+    orig.glGetIntegerv( pname, params );
   }
 
 }
@@ -106,10 +110,11 @@ static void REGAL_CALL emuProcInterceptHint_glHint(GLenum target, GLenum mode)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateHint & orig = _context->hint->orig;
 
   // impl
   if( ! _context->hint->glHint( *_context, target, mode ) ) {
-    _context->emu.curr.glHint( target, mode );
+    orig.glHint( target, mode );
   }
 
 }

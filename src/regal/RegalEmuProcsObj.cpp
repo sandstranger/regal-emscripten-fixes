@@ -138,9 +138,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture1D(GLenum target,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture1D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+  orig.glFramebufferTexture1D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -148,9 +149,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture1DEXT(GLenum targ
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture1DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+  orig.glFramebufferTexture1DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -158,9 +160,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2D(GLenum target,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture2D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+  orig.glFramebufferTexture2D(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -168,9 +171,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DEXT(GLenum targ
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture2DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+  orig.glFramebufferTexture2DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -178,9 +182,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DMultisampleEXT(
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture2DMultisampleEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, samples);
+  orig.glFramebufferTexture2DMultisampleEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, samples);
 
 }
 
@@ -188,9 +193,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture2DOES(GLenum targ
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture2DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
+  orig.glFramebufferTexture2DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level);
 
 }
 
@@ -198,9 +204,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture3DEXT(GLenum targ
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture3DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
+  orig.glFramebufferTexture3DEXT(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
 
 }
 
@@ -208,9 +215,10 @@ static void REGAL_CALL emuProcInterceptObj_glFramebufferTexture3DOES(GLenum targ
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glFramebufferTexture3DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
+  orig.glFramebufferTexture3DOES(target, attachment, textarget, _context->obj->textureNames.ToDriverName(texture), level, zoffset);
 
 }
 
@@ -258,13 +266,14 @@ static void REGAL_CALL emuProcInterceptObj_glGetFramebufferAttachmentParameteriv
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
+  orig.glGetFramebufferAttachmentParameteriv(target, attachment, pname, params);
   if (pname == GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME)
   {
     GLint attachType = GL_RENDERBUFFER;
-    _context->emu.curr.glGetFramebufferAttachmentParameteriv(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
+    orig.glGetFramebufferAttachmentParameteriv(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
     if (attachType == GL_TEXTURE)
       *params = _context->obj->textureNames.ToAppName(*params);
   }
@@ -275,13 +284,14 @@ static void REGAL_CALL emuProcInterceptObj_glGetFramebufferAttachmentParameteriv
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateObj & orig = _context->obj->orig;
 
   // impl
-  _context->emu.curr.glGetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
+  orig.glGetFramebufferAttachmentParameterivEXT(target, attachment, pname, params);
   if (pname == GL_FRAMEBUFFER_ATTACHMENT_OBJECT_NAME)
   {
     GLint attachType = GL_RENDERBUFFER;
-    _context->emu.curr.glGetFramebufferAttachmentParameterivEXT(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
+    orig.glGetFramebufferAttachmentParameterivEXT(target, attachment, GL_FRAMEBUFFER_ATTACHMENT_OBJECT_TYPE, &attachType);
     if (attachType == GL_TEXTURE)
       *params = _context->obj->textureNames.ToAppName(*params);
   }

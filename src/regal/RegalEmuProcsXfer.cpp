@@ -58,11 +58,12 @@ static void REGAL_CALL emuProcInterceptXfer_glActiveTexture(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateXfer & orig = _context->xfer->orig;
 
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
 
-  _context->xfer->orig.glActiveTexture(texture);
+  orig.glActiveTexture(texture);
 
 }
 
@@ -70,11 +71,12 @@ static void REGAL_CALL emuProcInterceptXfer_glActiveTextureARB(GLenum texture)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateXfer & orig = _context->xfer->orig;
 
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
 
-  _context->xfer->orig.glActiveTextureARB(texture);
+  orig.glActiveTextureARB(texture);
 
 }
 
@@ -122,11 +124,12 @@ static void REGAL_CALL emuProcInterceptXfer_glPixelStoref(GLenum pname, GLfloat 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateXfer & orig = _context->xfer->orig;
 
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
 
-  _context->xfer->orig.glPixelStoref(pname, param);
+  orig.glPixelStoref(pname, param);
 
 }
 
@@ -134,11 +137,12 @@ static void REGAL_CALL emuProcInterceptXfer_glPixelStorei(GLenum pname, GLint pa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateXfer & orig = _context->xfer->orig;
 
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
 
-  _context->xfer->orig.glPixelStorei(pname, param);
+  orig.glPixelStorei(pname, param);
 
 }
 

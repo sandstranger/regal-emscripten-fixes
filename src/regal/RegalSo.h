@@ -77,6 +77,7 @@ struct So
     void Init( RegalContext &ctx )
     {
         orig.Initialize( ctx.dispatchGL );
+        EmuProcsInterceptSo( ctx.dispatchGL );
         activeTextureUnit = 0;
         nextSamplerObjectId = 1;
 

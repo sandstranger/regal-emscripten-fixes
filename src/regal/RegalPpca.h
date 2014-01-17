@@ -76,6 +76,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
   void Init(RegalContext &ctx)
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptPpca( ctx.dispatchGL );
     Reset(ctx);
   }
 

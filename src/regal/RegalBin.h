@@ -59,6 +59,7 @@ struct Bin
   void Init( RegalContext &ctx )
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptBin( ctx.dispatchGL );
   }
 
   void Cleanup( RegalContext &ctx )

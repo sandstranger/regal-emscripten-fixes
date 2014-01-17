@@ -89,6 +89,7 @@ struct Rect
   void Init(RegalContext &ctx)
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptRect( ctx.dispatchGL );
   }
 
   void Cleanup(RegalContext &ctx)

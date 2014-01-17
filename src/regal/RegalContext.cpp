@@ -190,7 +190,6 @@ RegalContext::Init()
   if (Config::enableEmulation || Config::forceEmulation)
 #endif
   {
-  emu.Init( this );
 
     // emu
     emuLevel = 16;

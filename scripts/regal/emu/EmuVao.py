@@ -46,7 +46,7 @@ vaoFormulae = {
 #        'entries' : [ 'glGetVertexAttribPointerv(ARB|)' ],
 #        'impl' : [
 #            'if ( !_context->vao->GetVertexAttribPointerv( ${arg0}, ${arg1plus} ) ) {',
-#            '   _context->emu.curr.glGetVertexAttribPointerv${m1}( ${arg0}, ${arg1plus} );',
+#            '   orig.glGetVertexAttribPointerv${m1}( ${arg0}, ${arg1plus} );',
 #            '}',
 #        ]
 #    },
@@ -54,7 +54,7 @@ vaoFormulae = {
         'entries' : [ 'glGet(Boolean|Double|Float|Integer|Integer64)v' ],
         'impl' : [
             'if( !_context->vao->Get( ${arg0}, ${arg1} ) ) {',
-            '   _context->emu.curr.glGet${m1}v( ${arg0}, ${arg1} );',
+            '   orig.glGet${m1}v( ${arg0}, ${arg1} );',
             '}',
         ]
     },

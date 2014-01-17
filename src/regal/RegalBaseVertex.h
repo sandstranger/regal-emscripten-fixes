@@ -71,6 +71,7 @@ struct BaseVertex : public ClientState::VertexArray
   void Init(RegalContext &ctx)
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptBaseVertex( ctx.dispatchGL );
   }
 
   void Cleanup(RegalContext &ctx)

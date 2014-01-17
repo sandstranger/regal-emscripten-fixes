@@ -63,37 +63,37 @@ struct EmuProcsOriginateTexSto {
     memset(this, 0, sizeof( *this ) );
   }
 
+  PFNGLDELETETEXTURESPROC glDeleteTextures;
   PFNGLGETINTEGERVPROC glGetIntegerv;
+  PFNGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
+  PFNGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
+  PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
+  PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
   PFNGLTEXIMAGE1DPROC glTexImage1D;
   PFNGLTEXIMAGE2DPROC glTexImage2D;
   PFNGLTEXIMAGE3DPROC glTexImage3D;
-  PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
-  PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
-  PFNGLDELETETEXTURESPROC glDeleteTextures;
-  PFNGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
-  PFNGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
   PFNGLTEXSTORAGE1DPROC glTexStorage1D;
-  PFNGLTEXSTORAGE2DPROC glTexStorage2D;
-  PFNGLTEXSTORAGE3DPROC glTexStorage3D;
   PFNGLTEXSTORAGE1DEXTPROC glTexStorage1DEXT;
+  PFNGLTEXSTORAGE2DPROC glTexStorage2D;
   PFNGLTEXSTORAGE2DEXTPROC glTexStorage2DEXT;
+  PFNGLTEXSTORAGE3DPROC glTexStorage3D;
   PFNGLTEXSTORAGE3DEXTPROC glTexStorage3DEXT;
 
   void Initialize( Dispatch::GL & dt ) {
+    glDeleteTextures = dt.glDeleteTextures;
     glGetIntegerv = dt.glGetIntegerv;
+    glGetTexParameterIiv = dt.glGetTexParameterIiv;
+    glGetTexParameterIuiv = dt.glGetTexParameterIuiv;
+    glGetTexParameterfv = dt.glGetTexParameterfv;
+    glGetTexParameteriv = dt.glGetTexParameteriv;
     glTexImage1D = dt.glTexImage1D;
     glTexImage2D = dt.glTexImage2D;
     glTexImage3D = dt.glTexImage3D;
-    glGetTexParameterfv = dt.glGetTexParameterfv;
-    glGetTexParameteriv = dt.glGetTexParameteriv;
-    glDeleteTextures = dt.glDeleteTextures;
-    glGetTexParameterIiv = dt.glGetTexParameterIiv;
-    glGetTexParameterIuiv = dt.glGetTexParameterIuiv;
     glTexStorage1D = dt.glTexStorage1D;
-    glTexStorage2D = dt.glTexStorage2D;
-    glTexStorage3D = dt.glTexStorage3D;
     glTexStorage1DEXT = dt.glTexStorage1DEXT;
+    glTexStorage2D = dt.glTexStorage2D;
     glTexStorage2DEXT = dt.glTexStorage2DEXT;
+    glTexStorage3D = dt.glTexStorage3D;
     glTexStorage3DEXT = dt.glTexStorage3DEXT;
   }
 };

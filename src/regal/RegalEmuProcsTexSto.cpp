@@ -58,12 +58,13 @@ static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(GLsizei n, const 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
   // prefix
   RegalAssert(_context);
   _context->texsto->DeleteTextures( _context, n, textures );
 
-  _context->texsto->orig.glDeleteTextures(n, textures);
+  orig.glDeleteTextures(n, textures);
 
 }
 
@@ -71,11 +72,12 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(GLenum target
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     _context->emu.curr.glGetTexParameterIiv( target, pname, params );
+     orig.glGetTexParameterIiv( target, pname, params );
   }
 
 }
@@ -84,11 +86,12 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIuiv(GLenum targe
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     _context->emu.curr.glGetTexParameterIuiv( target, pname, params );
+     orig.glGetTexParameterIuiv( target, pname, params );
   }
 
 }
@@ -97,11 +100,12 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterfv(GLenum target,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     _context->emu.curr.glGetTexParameterfv( target, pname, params );
+     orig.glGetTexParameterfv( target, pname, params );
   }
 
 }
@@ -110,11 +114,12 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameteriv(GLenum target,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     _context->emu.curr.glGetTexParameteriv( target, pname, params );
+     orig.glGetTexParameteriv( target, pname, params );
   }
 
 }

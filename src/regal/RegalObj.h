@@ -144,6 +144,7 @@ struct Obj
   void Init( RegalContext &ctx )
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptObj( ctx.dispatchGL );
     RegalContext *sharingWith = ctx.shareGroup->front();
     if (sharingWith)
     {

@@ -63,34 +63,34 @@ struct EmuProcsOriginateTexC {
     memset(this, 0, sizeof( *this ) );
   }
 
+  PFNGLACTIVETEXTUREPROC glActiveTexture;
+  PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
+  PFNGLBINDTEXTUREPROC glBindTexture;
+  PFNGLBINDTEXTUREEXTPROC glBindTextureEXT;
+  PFNGLDELETETEXTURESPROC glDeleteTextures;
+  PFNGLDELETETEXTURESEXTPROC glDeleteTexturesEXT;
+  PFNGLGENTEXTURESPROC glGenTextures;
+  PFNGLGENTEXTURESEXTPROC glGenTexturesEXT;
+  PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
+  PFNGLGENERATEMIPMAPEXTPROC glGenerateMipmapEXT;
   PFNGLPIXELSTOREIPROC glPixelStorei;
   PFNGLTEXIMAGE2DPROC glTexImage2D;
-  PFNGLBINDTEXTUREPROC glBindTexture;
-  PFNGLDELETETEXTURESPROC glDeleteTextures;
-  PFNGLGENTEXTURESPROC glGenTextures;
   PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
-  PFNGLACTIVETEXTUREPROC glActiveTexture;
-  PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
-  PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
-  PFNGLGENERATEMIPMAPEXTPROC glGenerateMipmapEXT;
-  PFNGLBINDTEXTUREEXTPROC glBindTextureEXT;
-  PFNGLDELETETEXTURESEXTPROC glDeleteTexturesEXT;
-  PFNGLGENTEXTURESEXTPROC glGenTexturesEXT;
 
   void Initialize( Dispatch::GL & dt ) {
+    glActiveTexture = dt.glActiveTexture;
+    glActiveTextureARB = dt.glActiveTextureARB;
+    glBindTexture = dt.glBindTexture;
+    glBindTextureEXT = dt.glBindTextureEXT;
+    glDeleteTextures = dt.glDeleteTextures;
+    glDeleteTexturesEXT = dt.glDeleteTexturesEXT;
+    glGenTextures = dt.glGenTextures;
+    glGenTexturesEXT = dt.glGenTexturesEXT;
+    glGenerateMipmap = dt.glGenerateMipmap;
+    glGenerateMipmapEXT = dt.glGenerateMipmapEXT;
     glPixelStorei = dt.glPixelStorei;
     glTexImage2D = dt.glTexImage2D;
-    glBindTexture = dt.glBindTexture;
-    glDeleteTextures = dt.glDeleteTextures;
-    glGenTextures = dt.glGenTextures;
     glTexSubImage2D = dt.glTexSubImage2D;
-    glActiveTexture = dt.glActiveTexture;
-    glGenerateMipmap = dt.glGenerateMipmap;
-    glActiveTextureARB = dt.glActiveTextureARB;
-    glGenerateMipmapEXT = dt.glGenerateMipmapEXT;
-    glBindTextureEXT = dt.glBindTextureEXT;
-    glDeleteTexturesEXT = dt.glDeleteTexturesEXT;
-    glGenTexturesEXT = dt.glGenTexturesEXT;
   }
 };
 

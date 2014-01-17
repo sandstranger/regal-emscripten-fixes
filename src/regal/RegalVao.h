@@ -118,6 +118,7 @@ struct Vao
     maxName = 0;
     clientActiveTexture = GL_TEXTURE0;
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptVao( ctx.dispatchGL );
 
     max_vertex_attribs = ctx.emuInfo->gl_max_vertex_attribs;
     RegalAssert( max_vertex_attribs <= REGAL_EMU_MAX_VERTEX_ATTRIBS );

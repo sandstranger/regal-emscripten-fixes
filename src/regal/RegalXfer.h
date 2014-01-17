@@ -65,6 +65,7 @@ struct Xfer
   void Init( RegalContext &ctx )
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptXfer( ctx.dispatchGL );
     
     // update emu info with the limits that this layer supports
     RegalAssert(ctx.emuInfo);

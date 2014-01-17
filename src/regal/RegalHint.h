@@ -75,6 +75,7 @@ struct Hint
   void Init(RegalContext &ctx)
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptHint( ctx.dispatchGL );
 
     lineSmooth               = GL_DONT_CARE;
     polygonSmooth            = GL_DONT_CARE;

@@ -25,7 +25,7 @@ soFormulae = {
         'impl' : [
             'RegalAssert(_context);',
             'if ( !_context->so->GetSamplerParameterv( *_context, ${arg0plus} )) {',
-            '   _context->emu.curr.glGetSamplerParameter${m1}${m2}${m3}v( ${arg0plus} );',
+            '   orig.glGetSamplerParameter${m1}${m2}${m3}v( ${arg0plus} );',
             '}',
         ]
     },
@@ -34,7 +34,7 @@ soFormulae = {
         'impl' : [
             'RegalAssert(_context);',
             'if ( !_context->so->SamplerParameter${m4}( *_context, ${arg0plus} )) {',
-            '   _context->emu.curr.glSamplerParameter${m1}${m2}${m3}${m4}( ${arg0plus} );',
+            '   orig.glSamplerParameter${m1}${m2}${m3}${m4}( ${arg0plus} );',
             '}',
         ]
     },
@@ -43,7 +43,7 @@ soFormulae = {
         'impl' : [
             'RegalAssert(_context);',
             'if ( !_context->so->ActiveTexture( *_context, ${arg0plus} ) ) {',
-            '   _context->emu.curr.glActiveTexture( ${arg0plus} );',
+            '   orig.glActiveTexture( ${arg0plus} );',
             '}',
         ]
     },
@@ -66,7 +66,7 @@ soFormulae = {
         'impl' : [
           'RegalAssert(_context);',
           'if ( !_context->so->BindTexture( *_context, ${arg0plus} ) ) {',
-          '   _context->emu.curr.glBindTexture( ${arg0plus} );',
+          '   orig.glBindTexture( ${arg0plus} );',
           '}',
       ]
     },
@@ -75,7 +75,7 @@ soFormulae = {
         'impl' : [
             'RegalAssert(_context);',
             'if ( !_context->so->TexParameter${m4}( *_context, ${arg0plus} ) ) {',
-            '   _context->emu.curr.glTexParameter${m1}${m2}${m3}${m4}( ${arg0plus} );',
+            '   orig.glTexParameter${m1}${m2}${m3}${m4}( ${arg0plus} );',
             '}',
         ]
     },
@@ -84,7 +84,7 @@ soFormulae = {
         'impl' : [
             'RegalAssert(_context);',
             'if ( !_context->so->GetTexParameterv( *_context, ${arg0plus} ) ) {',
-            '   _context->emu.curr.glGetTexParameter${m1}${m2}${m3}v( ${arg0plus} );',
+            '   orig.glGetTexParameter${m1}${m2}${m3}v( ${arg0plus} );',
             '}',
         ]
     },
@@ -92,7 +92,7 @@ soFormulae = {
         'entries' : [ 'glGet(Double|Float|Integer|Integer64)v' ],
         'impl' : [
             'if ( !_context->so->Get( ${arg0plus} ) ) {',
-            '   _context->emu.curr.glGet${m1}v( ${arg0plus} );',
+            '   orig.glGet${m1}v( ${arg0plus} );',
             '}',
         ]
     },

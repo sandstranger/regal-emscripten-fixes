@@ -23,7 +23,7 @@ ppcaFormulae = {
     'entries' : [ 'glGet(Integer|Float|Double|Boolean)v(EXT|)' ],
     'impl'    : [
       'if ( ! _context->ppca->glGetv( *_context, ${arg0plus} ) ) {',
-      '  _context->emu.curr.glGet${m1}v${m2}( ${arg0plus} );',
+      '  orig.glGet${m1}v${m2}( ${arg0plus} );',
       '}',
     ],
   },

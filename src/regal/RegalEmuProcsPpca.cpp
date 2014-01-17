@@ -58,11 +58,12 @@ static void REGAL_CALL emuProcInterceptPpca_glBindBuffer(GLenum target, GLuint b
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glBindBuffer( target, buffer );
 
-  _context->ppca->orig.glBindBuffer(target, buffer);
+  orig.glBindBuffer(target, buffer);
 
 }
 
@@ -70,11 +71,12 @@ static void REGAL_CALL emuProcInterceptPpca_glBindVertexArray(GLuint array)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glBindVertexArray( array );
 
-  _context->ppca->orig.glBindVertexArray(array);
+  orig.glBindVertexArray(array);
 
 }
 
@@ -82,11 +84,12 @@ static void REGAL_CALL emuProcInterceptPpca_glBindVertexBuffer(GLuint bindingind
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glBindVertexBuffer( bindingindex, buffer, offset, stride );
 
-  _context->ppca->orig.glBindVertexBuffer(bindingindex, buffer, offset, stride);
+  orig.glBindVertexBuffer(bindingindex, buffer, offset, stride);
 
 }
 
@@ -94,11 +97,12 @@ static void REGAL_CALL emuProcInterceptPpca_glBindVertexBuffers(GLuint first, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glBindVertexBuffers( first, count, buffers, offsets, strides );
 
-  _context->ppca->orig.glBindVertexBuffers(first, count, buffers, offsets, strides);
+  orig.glBindVertexBuffers(first, count, buffers, offsets, strides);
 
 }
 
@@ -106,11 +110,12 @@ static void REGAL_CALL emuProcInterceptPpca_glClientActiveTexture(GLenum texture
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glClientActiveTexture( texture );
 
-  _context->ppca->orig.glClientActiveTexture(texture);
+  orig.glClientActiveTexture(texture);
 
 }
 
@@ -118,11 +123,12 @@ static void REGAL_CALL emuProcInterceptPpca_glClientActiveTextureARB(GLenum text
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glClientActiveTexture( texture );
 
-  _context->ppca->orig.glClientActiveTextureARB(texture);
+  orig.glClientActiveTextureARB(texture);
 
 }
 
@@ -140,11 +146,12 @@ static void REGAL_CALL emuProcInterceptPpca_glColorPointer(GLint size, GLenum ty
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glColorPointer( size, type, stride, pointer );
 
-  _context->ppca->orig.glColorPointer(size, type, stride, pointer);
+  orig.glColorPointer(size, type, stride, pointer);
 
 }
 
@@ -152,11 +159,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDeleteBuffers(GLsizei n, const GLu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDeleteBuffers( n, buffers );
 
-  _context->ppca->orig.glDeleteBuffers(n, buffers);
+  orig.glDeleteBuffers(n, buffers);
 
 }
 
@@ -164,11 +172,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDeleteVertexArrays(GLsizei n, cons
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDeleteVertexArrays( n, arrays );
 
-  _context->ppca->orig.glDeleteVertexArrays(n, arrays);
+  orig.glDeleteVertexArrays(n, arrays);
 
 }
 
@@ -176,11 +185,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisable(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisable( cap );
 
-  _context->ppca->orig.glDisable(cap);
+  orig.glDisable(cap);
 
 }
 
@@ -188,11 +198,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableClientState(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisableClientState( cap );
 
-  _context->ppca->orig.glDisableClientState(cap);
+  orig.glDisableClientState(cap);
 
 }
 
@@ -200,11 +211,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableClientStateIndexedEXT(GLenu
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisableClientStateIndexedEXT( array, index );
 
-  _context->ppca->orig.glDisableClientStateIndexedEXT(array, index);
+  orig.glDisableClientStateIndexedEXT(array, index);
 
 }
 
@@ -212,11 +224,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableClientStateiEXT(GLenum arra
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisableClientStateiEXT( array, index );
 
-  _context->ppca->orig.glDisableClientStateiEXT(array, index);
+  orig.glDisableClientStateiEXT(array, index);
 
 }
 
@@ -224,11 +237,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableIndexedEXT(GLenum target, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisableIndexedEXT( target, index );
 
-  _context->ppca->orig.glDisableIndexedEXT(target, index);
+  orig.glDisableIndexedEXT(target, index);
 
 }
 
@@ -236,11 +250,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableVertexArrayAttribEXT(GLuint
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisableVertexArrayAttribEXT( vaobj, array );
 
-  _context->ppca->orig.glDisableVertexArrayAttribEXT(vaobj, array);
+  orig.glDisableVertexArrayAttribEXT(vaobj, array);
 
 }
 
@@ -248,11 +263,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableVertexArrayEXT(GLuint vaobj
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisableVertexArrayEXT( vaobj, array );
 
-  _context->ppca->orig.glDisableVertexArrayEXT(vaobj, array);
+  orig.glDisableVertexArrayEXT(vaobj, array);
 
 }
 
@@ -260,11 +276,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisableVertexAttribArray(GLuint in
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisableVertexAttribArray( index );
 
-  _context->ppca->orig.glDisableVertexAttribArray(index);
+  orig.glDisableVertexAttribArray(index);
 
 }
 
@@ -272,11 +289,12 @@ static void REGAL_CALL emuProcInterceptPpca_glDisablei(GLenum cap, GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glDisablei( cap, index );
 
-  _context->ppca->orig.glDisablei(cap, index);
+  orig.glDisablei(cap, index);
 
 }
 
@@ -284,11 +302,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEdgeFlagPointer(GLsizei stride, co
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEdgeFlagPointer( stride, pointer );
 
-  _context->ppca->orig.glEdgeFlagPointer(stride, pointer);
+  orig.glEdgeFlagPointer(stride, pointer);
 
 }
 
@@ -296,11 +315,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnable(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnable( cap );
 
-  _context->ppca->orig.glEnable(cap);
+  orig.glEnable(cap);
 
 }
 
@@ -308,11 +328,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableClientState(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnableClientState( cap );
 
-  _context->ppca->orig.glEnableClientState(cap);
+  orig.glEnableClientState(cap);
 
 }
 
@@ -320,11 +341,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableClientStateIndexedEXT(GLenum
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnableClientStateIndexedEXT( array, index );
 
-  _context->ppca->orig.glEnableClientStateIndexedEXT(array, index);
+  orig.glEnableClientStateIndexedEXT(array, index);
 
 }
 
@@ -332,11 +354,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableClientStateiEXT(GLenum array
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnableClientStateiEXT( array, index );
 
-  _context->ppca->orig.glEnableClientStateiEXT(array, index);
+  orig.glEnableClientStateiEXT(array, index);
 
 }
 
@@ -344,11 +367,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableIndexedEXT(GLenum target, GL
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnableIndexedEXT( target, index );
 
-  _context->ppca->orig.glEnableIndexedEXT(target, index);
+  orig.glEnableIndexedEXT(target, index);
 
 }
 
@@ -356,11 +380,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableVertexArrayAttribEXT(GLuint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnableVertexArrayAttribEXT( vaobj, array );
 
-  _context->ppca->orig.glEnableVertexArrayAttribEXT(vaobj, array);
+  orig.glEnableVertexArrayAttribEXT(vaobj, array);
 
 }
 
@@ -368,11 +393,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableVertexArrayEXT(GLuint vaobj,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnableVertexArrayEXT( vaobj, array );
 
-  _context->ppca->orig.glEnableVertexArrayEXT(vaobj, array);
+  orig.glEnableVertexArrayEXT(vaobj, array);
 
 }
 
@@ -380,11 +406,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnableVertexAttribArray(GLuint ind
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnableVertexAttribArray( index );
 
-  _context->ppca->orig.glEnableVertexAttribArray(index);
+  orig.glEnableVertexAttribArray(index);
 
 }
 
@@ -392,11 +419,12 @@ static void REGAL_CALL emuProcInterceptPpca_glEnablei(GLenum cap, GLuint index)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glEnablei( cap, index );
 
-  _context->ppca->orig.glEnablei(cap, index);
+  orig.glEnablei(cap, index);
 
 }
 
@@ -404,11 +432,12 @@ static void REGAL_CALL emuProcInterceptPpca_glFogCoordPointer(GLenum type, GLsiz
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glFogCoordPointer( type, stride, pointer );
 
-  _context->ppca->orig.glFogCoordPointer(type, stride, pointer);
+  orig.glFogCoordPointer(type, stride, pointer);
 
 }
 
@@ -416,10 +445,11 @@ static void REGAL_CALL emuProcInterceptPpca_glGetBooleanv(GLenum pname, GLboolea
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // impl
   if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetBooleanv( pname, params );
+    orig.glGetBooleanv( pname, params );
   }
 
 }
@@ -428,10 +458,11 @@ static void REGAL_CALL emuProcInterceptPpca_glGetDoublev(GLenum pname, GLdouble 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // impl
   if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetDoublev( pname, params );
+    orig.glGetDoublev( pname, params );
   }
 
 }
@@ -440,10 +471,11 @@ static void REGAL_CALL emuProcInterceptPpca_glGetFloatv(GLenum pname, GLfloat *p
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // impl
   if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetFloatv( pname, params );
+    orig.glGetFloatv( pname, params );
   }
 
 }
@@ -452,10 +484,11 @@ static void REGAL_CALL emuProcInterceptPpca_glGetIntegerv(GLenum pname, GLint *p
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // impl
   if ( ! _context->ppca->glGetv( *_context, pname, params ) ) {
-    _context->emu.curr.glGetIntegerv( pname, params );
+    orig.glGetIntegerv( pname, params );
   }
 
 }
@@ -464,11 +497,12 @@ static void REGAL_CALL emuProcInterceptPpca_glIndexPointer(GLenum type, GLsizei 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glIndexPointer( type, stride, pointer );
 
-  _context->ppca->orig.glIndexPointer(type, stride, pointer);
+  orig.glIndexPointer(type, stride, pointer);
 
 }
 
@@ -476,11 +510,12 @@ static void REGAL_CALL emuProcInterceptPpca_glInterleavedArrays(GLenum format, G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glInterleavedArrays( format, stride, pointer );
 
-  _context->ppca->orig.glInterleavedArrays(format, stride, pointer);
+  orig.glInterleavedArrays(format, stride, pointer);
 
 }
 
@@ -488,11 +523,12 @@ static void REGAL_CALL emuProcInterceptPpca_glMultiTexCoordPointerEXT(GLenum tex
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glMultiTexCoordPointerEXT( texunit, size, type, stride, pointer );
 
-  _context->ppca->orig.glMultiTexCoordPointerEXT(texunit, size, type, stride, pointer);
+  orig.glMultiTexCoordPointerEXT(texunit, size, type, stride, pointer);
 
 }
 
@@ -500,11 +536,12 @@ static void REGAL_CALL emuProcInterceptPpca_glNormalPointer(GLenum type, GLsizei
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glNormalPointer( type, stride, pointer );
 
-  _context->ppca->orig.glNormalPointer(type, stride, pointer);
+  orig.glNormalPointer(type, stride, pointer);
 
 }
 
@@ -512,11 +549,12 @@ static void REGAL_CALL emuProcInterceptPpca_glPixelStoref(GLenum pname, GLfloat 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glPixelStore( pname, param );
 
-  _context->ppca->orig.glPixelStoref(pname, param);
+  orig.glPixelStoref(pname, param);
 
 }
 
@@ -524,11 +562,12 @@ static void REGAL_CALL emuProcInterceptPpca_glPixelStorei(GLenum pname, GLint pa
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glPixelStore( pname, param );
 
-  _context->ppca->orig.glPixelStorei(pname, param);
+  orig.glPixelStorei(pname, param);
 
 }
 
@@ -546,11 +585,12 @@ static void REGAL_CALL emuProcInterceptPpca_glPrimitiveRestartIndex(GLuint index
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glPrimitiveRestartIndex( index );
 
-  _context->ppca->orig.glPrimitiveRestartIndex(index);
+  orig.glPrimitiveRestartIndex(index);
 
 }
 
@@ -578,11 +618,12 @@ static void REGAL_CALL emuProcInterceptPpca_glSecondaryColorPointer(GLint size, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glSecondaryColorPointer( size, type, stride, pointer );
 
-  _context->ppca->orig.glSecondaryColorPointer(size, type, stride, pointer);
+  orig.glSecondaryColorPointer(size, type, stride, pointer);
 
 }
 
@@ -590,11 +631,12 @@ static void REGAL_CALL emuProcInterceptPpca_glTexCoordPointer(GLint size, GLenum
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glTexCoordPointer( size, type, stride, pointer );
 
-  _context->ppca->orig.glTexCoordPointer(size, type, stride, pointer);
+  orig.glTexCoordPointer(size, type, stride, pointer);
 
 }
 
@@ -602,11 +644,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayColorOffsetEXT(GLuint v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+  orig.glVertexArrayColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
 
 }
 
@@ -614,11 +657,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayEdgeFlagOffsetEXT(GLuin
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayEdgeFlagOffsetEXT( vaobj, buffer, stride, offset );
 
-  _context->ppca->orig.glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
+  orig.glVertexArrayEdgeFlagOffsetEXT(vaobj, buffer, stride, offset);
 
 }
 
@@ -626,11 +670,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayFogCoordOffsetEXT(GLuin
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayFogCoordOffsetEXT( vaobj, buffer, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
+  orig.glVertexArrayFogCoordOffsetEXT(vaobj, buffer, type, stride, offset);
 
 }
 
@@ -638,11 +683,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayIndexOffsetEXT(GLuint v
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayIndexOffsetEXT( vaobj, buffer, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
+  orig.glVertexArrayIndexOffsetEXT(vaobj, buffer, type, stride, offset);
 
 }
 
@@ -650,11 +696,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayMultiTexCoordOffsetEXT(
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayMultiTexCoordOffsetEXT( vaobj, buffer, texunit, size, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
+  orig.glVertexArrayMultiTexCoordOffsetEXT(vaobj, buffer, texunit, size, type, stride, offset);
 
 }
 
@@ -662,11 +709,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayNormalOffsetEXT(GLuint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayNormalOffsetEXT( vaobj, buffer, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
+  orig.glVertexArrayNormalOffsetEXT(vaobj, buffer, type, stride, offset);
 
 }
 
@@ -674,11 +722,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArraySecondaryColorOffsetEXT
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArraySecondaryColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  _context->ppca->orig.glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
+  orig.glVertexArraySecondaryColorOffsetEXT(vaobj, buffer, size, type, stride, offset);
 
 }
 
@@ -686,11 +735,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayTexCoordOffsetEXT(GLuin
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayTexCoordOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
+  orig.glVertexArrayTexCoordOffsetEXT(vaobj, buffer, size, type, stride, offset);
 
 }
 
@@ -698,11 +748,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayVertexAttribIOffsetEXT(
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayVertexAttribIOffsetEXT( vaobj, buffer, index, size, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
+  orig.glVertexArrayVertexAttribIOffsetEXT(vaobj, buffer, index, size, type, stride, offset);
 
 }
 
@@ -710,11 +761,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayVertexAttribOffsetEXT(G
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayVertexAttribOffsetEXT( vaobj, buffer, index, size, type, normalized, stride, offset );
 
-  _context->ppca->orig.glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
+  orig.glVertexArrayVertexAttribOffsetEXT(vaobj, buffer, index, size, type, normalized, stride, offset);
 
 }
 
@@ -722,11 +774,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexArrayVertexOffsetEXT(GLuint 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexArrayVertexOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  _context->ppca->orig.glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
+  orig.glVertexArrayVertexOffsetEXT(vaobj, buffer, size, type, stride, offset);
 
 }
 
@@ -734,11 +787,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribBinding(GLuint attribi
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribBinding( attribindex, bindingindex );
 
-  _context->ppca->orig.glVertexAttribBinding(attribindex, bindingindex);
+  orig.glVertexAttribBinding(attribindex, bindingindex);
 
 }
 
@@ -746,11 +800,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribDivisor(GLuint index, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribDivisor( index, divisor );
 
-  _context->ppca->orig.glVertexAttribDivisor(index, divisor);
+  orig.glVertexAttribDivisor(index, divisor);
 
 }
 
@@ -758,11 +813,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribFormat(GLuint attribin
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
 
-  _context->ppca->orig.glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
+  orig.glVertexAttribFormat(attribindex, size, type, normalized, relativeoffset);
 
 }
 
@@ -770,11 +826,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribIFormat(GLuint attribi
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribIFormat( attribindex, size, type, relativeoffset );
 
-  _context->ppca->orig.glVertexAttribIFormat(attribindex, size, type, relativeoffset);
+  orig.glVertexAttribIFormat(attribindex, size, type, relativeoffset);
 
 }
 
@@ -782,11 +839,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribIPointer(GLuint index,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribIPointer( index, size, type, stride, pointer );
 
-  _context->ppca->orig.glVertexAttribIPointer(index, size, type, stride, pointer);
+  orig.glVertexAttribIPointer(index, size, type, stride, pointer);
 
 }
 
@@ -794,11 +852,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribLFormat(GLuint attribi
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribLFormat( attribindex, size, type, relativeoffset );
 
-  _context->ppca->orig.glVertexAttribLFormat(attribindex, size, type, relativeoffset);
+  orig.glVertexAttribLFormat(attribindex, size, type, relativeoffset);
 
 }
 
@@ -806,11 +865,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribLPointer(GLuint index,
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribLPointer( index, size, type, stride, pointer );
 
-  _context->ppca->orig.glVertexAttribLPointer(index, size, type, stride, pointer);
+  orig.glVertexAttribLPointer(index, size, type, stride, pointer);
 
 }
 
@@ -818,11 +878,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexAttribPointer(GLuint index, 
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexAttribPointer( index, size, type, normalized, stride, pointer );
 
-  _context->ppca->orig.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
+  orig.glVertexAttribPointer(index, size, type, normalized, stride, pointer);
 
 }
 
@@ -830,11 +891,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexBindingDivisor(GLuint bindin
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexBindingDivisor( bindingindex, divisor );
 
-  _context->ppca->orig.glVertexBindingDivisor(bindingindex, divisor);
+  orig.glVertexBindingDivisor(bindingindex, divisor);
 
 }
 
@@ -842,11 +904,12 @@ static void REGAL_CALL emuProcInterceptPpca_glVertexPointer(GLint size, GLenum t
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
+  EmuProcsOriginatePpca & orig = _context->ppca->orig;
 
   // prefix
   _context->ppca->glVertexPointer( size, type, stride, pointer );
 
-  _context->ppca->orig.glVertexPointer(size, type, stride, pointer);
+  orig.glVertexPointer(size, type, stride, pointer);
 
 }
 

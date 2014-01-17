@@ -74,6 +74,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
   void Init(RegalContext &ctx)
   {
     orig.Initialize( ctx.dispatchGL );
+    EmuProcsInterceptPpa( ctx.dispatchGL );
     activeTextureUnit = 0;
 
     // update emu info with the limits that this layer supports

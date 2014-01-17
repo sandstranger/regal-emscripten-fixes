@@ -85,6 +85,7 @@ struct Dsa
     void Init( RegalContext &ctx )
     {
         orig.Initialize( ctx.dispatchGL );
+        EmuProcsInterceptDsa( ctx.dispatchGL );
 
         callDepth = 0;
         drv.matrixMode = GL_MODELVIEW;

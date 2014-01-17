@@ -320,6 +320,7 @@ TexC::Init( RegalContext& ctx )
   ctx.emuInfo->gl_max_combined_texture_image_units = REGAL_EMU_MAX_COMBINED_TEXTURE_IMAGE_UNITS;
 
   orig.Initialize( ctx.dispatchGL );
+  EmuProcsInterceptTexC( ctx.dispatchGL );
   
   RegalContext* sharingWith = ctx.shareGroup->front();
   if ( sharingWith != NULL ) {
