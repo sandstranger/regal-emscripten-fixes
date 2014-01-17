@@ -87,15 +87,14 @@ namespace Emu {
 
     void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width )
     {
-      Dispatch::GL & tbl = ctx->emu.curr;
       for (GLsizei i = 0; i < levels; i++)
       {
-        tbl.glTexImage1D( target, i, internalformat, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        orig.glTexImage1D( target, i, internalformat, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
         width = std::max<GLsizei>(1, width/2);
       }
 
       GLint id;
-      tbl.glGetIntegerv( BindingFromTarget(target), &id );
+      orig.glGetIntegerv( BindingFromTarget(target), &id );
       immutableTextures.insert( id );
     }
 
@@ -106,7 +105,6 @@ namespace Emu {
 
     void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height )
     {
-      Dispatch::GL & tbl = ctx->emu.curr;
       for (GLsizei i = 0; i < levels; i++)
       {
         if (target == GL_TEXTURE_CUBE_MAP)
@@ -114,11 +112,11 @@ namespace Emu {
           for (int f = 0; f < 6; f++)
           {
             GLenum face = GL_TEXTURE_CUBE_MAP_POSITIVE_X + f;
-            tbl.glTexImage2D( face, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+            orig.glTexImage2D( face, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
           }
         }
         else
-          tbl.glTexImage2D( target, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+          orig.glTexImage2D( target, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
 
         width = std::max<GLsizei>(1, width/2);
         if (target != GL_TEXTURE_1D_ARRAY)
@@ -126,16 +124,15 @@ namespace Emu {
       }
 
       GLint id;
-      tbl.glGetIntegerv( BindingFromTarget(target), &id );
+      orig.glGetIntegerv( BindingFromTarget(target), &id );
       immutableTextures.insert( id );
     }
 
     void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth )
     {
-      Dispatch::GL & tbl = ctx->emu.curr;
       for (GLsizei i = 0; i < levels; i++)
       {
-        tbl.glTexImage3D( target, i, internalformat, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        orig.glTexImage3D( target, i, internalformat, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
         width = std::max<GLsizei>(1, width/2);
         height = std::max<GLsizei>(1, height/2);
         if (target != GL_TEXTURE_2D_ARRAY && target != GL_TEXTURE_CUBE_MAP_ARRAY)
@@ -143,7 +140,7 @@ namespace Emu {
       }
 
       GLint id;
-      tbl.glGetIntegerv( BindingFromTarget(target), &id );
+      orig.glGetIntegerv( BindingFromTarget(target), &id );
       immutableTextures.insert( id );
     }
 
@@ -153,10 +150,8 @@ namespace Emu {
       if (pname != GL_TEXTURE_IMMUTABLE_FORMAT)
         return false;
 
-      Dispatch::GL & tbl = ctx->emu.curr;
-
       GLint id;
-      tbl.glGetIntegerv( BindingFromTarget(target), &id );
+      orig.glGetIntegerv( BindingFromTarget(target), &id );
 
       if (immutableTextures.find( id ) != immutableTextures.end())
         *params = static_cast<T>(GL_TRUE);

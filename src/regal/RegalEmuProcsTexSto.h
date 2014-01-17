@@ -63,6 +63,10 @@ struct EmuProcsOriginateTexSto {
     memset(this, 0, sizeof( *this ) );
   }
 
+  PFNGLGETINTEGERVPROC glGetIntegerv;
+  PFNGLTEXIMAGE1DPROC glTexImage1D;
+  PFNGLTEXIMAGE2DPROC glTexImage2D;
+  PFNGLTEXIMAGE3DPROC glTexImage3D;
   PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
   PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
   PFNGLDELETETEXTURESPROC glDeleteTextures;
@@ -76,6 +80,10 @@ struct EmuProcsOriginateTexSto {
   PFNGLTEXSTORAGE3DEXTPROC glTexStorage3DEXT;
 
   void Initialize( Dispatch::GL & dt ) {
+    glGetIntegerv = dt.glGetIntegerv;
+    glTexImage1D = dt.glTexImage1D;
+    glTexImage2D = dt.glTexImage2D;
+    glTexImage3D = dt.glTexImage3D;
     glGetTexParameterfv = dt.glGetTexParameterfv;
     glGetTexParameteriv = dt.glGetTexParameteriv;
     glDeleteTextures = dt.glDeleteTextures;

@@ -78,6 +78,7 @@ the number of vertices drawn.
 #include "RegalQuads.h"
 #include "RegalContextInfo.h"
 #include "RegalToken.h"
+#include "RegalEmuProcsQuads.h"
 
 REGAL_GLOBAL_BEGIN
 
@@ -96,8 +97,7 @@ void Quads::Init(RegalContext &ctx)
 {
   orig.Initialize( ctx.dispatchGL );
   elementArrayBuffer = 0;
-  Dispatch::GL & dt = ctx.emu.curr;
-  dt.glGenBuffers(1, &quadIndexBuffer);
+  orig.glGenBuffers(1, &quadIndexBuffer);
   windingMode = GL_CCW;
   frontFaceMode = backFaceMode = GL_FILL;
   shadeMode = GL_SMOOTH;
@@ -179,14 +179,12 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
   Internal("Regal::Emu::Quads: drawLines     =", drawLines);
   Internal("Regal::Emu::Quads: drawPoints    =", drawPoints);
 
-  Dispatch::GL &dt = ctx->emu.curr;
-
 #define EMU_QUADS_BUFFER_SIZE 1024
 
   if (drawQuads)
   {
     if (frontFaceMode != GL_FILL || backFaceMode != GL_FILL)
-      dt.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
+      orig.glPolygonMode(GL_FRONT_AND_BACK, GL_FILL);
 
     GLsizei myCount = count &= (( mode == GL_QUADS ) ? (~0x3) : (~0x1));
 
@@ -266,7 +264,7 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
       while (myCount >= 2)
       {
         Internal("Regal::Emu::Quads::glDrawArrays","glDrawElements(GL_TRIANGLES,",n*6,",GL_UNSIGNED_INT, [])");
-        dt.glDrawElements(GL_TRIANGLES, n*6, GL_UNSIGNED_INT, indices);
+        orig.glDrawElements(GL_TRIANGLES, n*6, GL_UNSIGNED_INT, indices);
         myCount -= (EMU_QUADS_BUFFER_SIZE * 2);
 
         if (myCount >= 2)
@@ -324,12 +322,12 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
       }
 
 
-      dt.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, quadIndexBuffer);
+      orig.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, quadIndexBuffer);
       while (myCount >= 4)
       {
-        dt.glBufferData( GL_ELEMENT_ARRAY_BUFFER, n * 6 * sizeof( GLuint ), indices, GL_STATIC_DRAW );
+        orig.glBufferData( GL_ELEMENT_ARRAY_BUFFER, n * 6 * sizeof( GLuint ), indices, GL_STATIC_DRAW );
         Internal("Regal::Emu::Quads::glDrawArrays","glDrawElements(GL_TRIANGLES,",n*6,",GL_UNSIGNED_INT, [])");
-        dt.glDrawElements(GL_TRIANGLES, n*6, GL_UNSIGNED_INT, 0);
+        orig.glDrawElements(GL_TRIANGLES, n*6, GL_UNSIGNED_INT, 0);
         myCount -= (EMU_QUADS_BUFFER_SIZE * 4);
 
         if (myCount >= 4)
@@ -339,19 +337,19 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
             indices[ii] += (EMU_QUADS_BUFFER_SIZE * 4);
         }
       }
-      dt.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, elementArrayBuffer );
+      orig.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, elementArrayBuffer );
       
     }
 
     if (frontFaceMode != GL_FILL)
-      dt.glPolygonMode(GL_FRONT, frontFaceMode);
+      orig.glPolygonMode(GL_FRONT, frontFaceMode);
     if (backFaceMode != GL_FILL)
-      dt.glPolygonMode(GL_BACK, backFaceMode);
+      orig.glPolygonMode(GL_BACK, backFaceMode);
   }
   else if (drawLines)
   {
     if (frontFaceMode != GL_LINE || backFaceMode != GL_LINE)
-      dt.glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
+      orig.glPolygonMode(GL_FRONT_AND_BACK, GL_LINE);
 
     GLsizei myCount = count &= (( mode == GL_QUADS ) ? (~0x3) : (~0x1));
 
@@ -394,7 +392,7 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
       while (myCount >= 2)
       {
         Internal("Regal::Emu::Quads::glDrawArrays","glDrawElements(GL_LINES,",n*6+2,",GL_UNSIGNED_INT, [])");
-        dt.glDrawElements(GL_LINES, n*6+2, GL_UNSIGNED_INT, indices);
+        orig.glDrawElements(GL_LINES, n*6+2, GL_UNSIGNED_INT, indices);
         myCount -= (EMU_QUADS_BUFFER_SIZE * 2);
 
         if (myCount >= 2)
@@ -443,7 +441,7 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
       while (myCount >= 4)
       {
         Internal("Regal::Emu::Quads::glDrawArrays","glDrawElements(GL_LINES,",n*8,",GL_UNSIGNED_INT, [])");
-        dt.glDrawElements(GL_LINES, n*8, GL_UNSIGNED_INT, indices);
+        orig.glDrawElements(GL_LINES, n*8, GL_UNSIGNED_INT, indices);
         myCount -= (EMU_QUADS_BUFFER_SIZE * 4);
 
         if (myCount >= 4)
@@ -456,25 +454,25 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
     }
 
     if (frontFaceMode != GL_LINE)
-      dt.glPolygonMode(GL_FRONT, frontFaceMode);
+      orig.glPolygonMode(GL_FRONT, frontFaceMode);
     if (backFaceMode != GL_LINE)
-      dt.glPolygonMode(GL_BACK, backFaceMode);
+      orig.glPolygonMode(GL_BACK, backFaceMode);
   }
   else if (drawPoints)
   {
     // convert quad strips or quads into points
 
     if (frontFaceMode != GL_POINT || backFaceMode != GL_POINT)
-      dt.glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
+      orig.glPolygonMode(GL_FRONT_AND_BACK, GL_POINT);
 
     GLsizei myCount = count &= (( mode == GL_QUADS ) ? (~0x3) : (~0x1));
 
-    dt.glDrawArrays(GL_POINTS, first, myCount);
+    orig.glDrawArrays(GL_POINTS, first, myCount);
 
     if (frontFaceMode != GL_POINT)
-      dt.glPolygonMode(GL_FRONT, frontFaceMode);
+      orig.glPolygonMode(GL_FRONT, frontFaceMode);
     if (backFaceMode != GL_POINT)
-      dt.glPolygonMode(GL_BACK, backFaceMode);
+      orig.glPolygonMode(GL_BACK, backFaceMode);
   }
 
   return true;

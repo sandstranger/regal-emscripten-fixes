@@ -1,6 +1,16 @@
 #!/usr/bin/python -B
 
 quadsFormulae = {
+  'options' : {
+    'originate' : [
+      'glBindBuffer',
+      'glBufferData',
+      'glDrawArrays',
+      'glDrawElements',
+      'glGenBuffers',
+      'glPolygonMode',
+    ],
+  },
   'EnableDisable' : {
     'entries' : [ 'gl(En|Dis)able' ],
     'prefix'  : [ '_context->quads->gl${m1}able( ${arg0plus} );', ],

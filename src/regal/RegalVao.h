@@ -171,9 +171,9 @@ struct Vao
     if( ctx.info->core )
     {
       maxName = 1;
-      ctx.emu.curr.glGenVertexArrays( 1, & coreVao );
+      orig.glGenVertexArrays( 1, & coreVao );
       RegalAssert( coreVao != 0 );
-      ctx.emu.curr.glBindVertexArray( coreVao );
+      orig.glBindVertexArray( coreVao );
     }
     else
       coreVao = 0;
@@ -216,9 +216,8 @@ struct Vao
     {
       maxName = current;
     }
-    Dispatch::GL &tbl = ctx.emu.curr;
-    tbl.glBindBuffer( GL_ARRAY_BUFFER, vao.vertexBuffer );
-    tbl.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, vao.indexBuffer );
+    orig.glBindBuffer( GL_ARRAY_BUFFER, vao.vertexBuffer );
+    orig.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, vao.indexBuffer );
     GLuint lastBuffer = vao.vertexBuffer;
     RegalAssert( max_vertex_attribs <= REGAL_EMU_MAX_VERTEX_ATTRIBS );
     for( GLuint i = 0; i < max_vertex_attribs; i++ )
@@ -226,19 +225,19 @@ struct Vao
       Array &a = vao.a[ i ];
       if( a.buffer != lastBuffer )
       {
-        tbl.glBindBuffer( GL_ARRAY_BUFFER, a.buffer );
+        orig.glBindBuffer( GL_ARRAY_BUFFER, a.buffer );
         lastBuffer = a.buffer;
       }
 
       EnableDisableVertexAttribArray( ctx, a.enabled, i );
       if( a.pointer || a.buffer )
       {
-        tbl.glVertexAttribPointer( i, a.size, a.type, a.normalized, a.stride, a.pointer );
+        orig.glVertexAttribPointer( i, a.size, a.type, a.normalized, a.stride, a.pointer );
       }
     }
     if( lastBuffer != vao.vertexBuffer )
     {
-      tbl.glBindBuffer( GL_ARRAY_BUFFER, vao.vertexBuffer );
+      orig.glBindBuffer( GL_ARRAY_BUFFER, vao.vertexBuffer );
     }
   }
 
@@ -292,17 +291,16 @@ struct Vao
     if (index >= max_vertex_attribs || index >= REGAL_EMU_MAX_VERTEX_ATTRIBS)
       return;
 
-    Dispatch::GL &tbl = ctx.emu.curr;
     Array &a = objects[current].a[index];
     a.enabled = enable;
     if( a.enabled == GL_TRUE )
     {
-      tbl.glEnableVertexAttribArray( index );
+      orig.glEnableVertexAttribArray( index );
       enables |= 1 << index;
     }
     else
     {
-      tbl.glDisableVertexAttribArray( index );
+      orig.glDisableVertexAttribArray( index );
       enables &= ~( 1 << index );
     }
   }
@@ -403,7 +401,7 @@ struct Vao
 
     RegalAssert( a.buffer == 0 || GLuint64( a.pointer ) < ( 1 << 22 ) );
 
-    ctx.emu.curr.glVertexAttribPointer( index, size, type, normalized, stride, pointer );
+    orig.glVertexAttribPointer( index, size, type, normalized, stride, pointer );
   }
 
   void Validate( RegalContext &ctx )

@@ -1,6 +1,14 @@
 #!/usr/bin/python -B
 
 texstoFormulae = {
+    'options' : {
+      'originate' : [
+        'glGetIntegerv',
+        'glTexImage1D',
+        'glTexImage2D',
+        'glTexImage3D',
+      ],
+    },
     'TextureStorage' : {
         'entries' : [ 'glTexStorage(1|2|3)D(EXT|)' ],
         'impl' : [ '_context->texsto->TextureStorage( _context, ${arg0plus} );', ],

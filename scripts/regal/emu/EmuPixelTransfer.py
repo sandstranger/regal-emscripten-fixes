@@ -1,6 +1,15 @@
 #!/usr/bin/python -B
 
 xferFormulae = {
+    'options' : {
+      'originate' : [
+        'glCompressedTexImage2D',
+        'glCompressedTexSubImage2D',
+        'glPixelStorei',
+        'glTexImage2D',
+        'glTexSubImage2D',
+      ],
+    },
     'PixelStore' : {
         'entries' : [ 'glPixelStore(i|f)' ],
         'prefix' : [ '_context->xfer->PixelStore( _context, ${arg0plus} );', ],

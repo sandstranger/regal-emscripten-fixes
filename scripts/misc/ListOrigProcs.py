@@ -1,6 +1,8 @@
 import re
+import sys
 
-f = open("src/regal/RegalState.h", "r" )
+#f = open("src/regal/RegalState.h", "r" )
+f = open( sys.argv[1], "r" )
 count = 0
 pre = re.compile( ".*\.gl([A-Za-z0-9_]+).*" );
 calls = []

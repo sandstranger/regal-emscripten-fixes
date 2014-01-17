@@ -63,27 +63,33 @@ struct EmuProcsOriginateQuads {
     memset(this, 0, sizeof( *this ) );
   }
 
+  PFNGLBINDBUFFERPROC glBindBuffer;
+  PFNGLBUFFERDATAPROC glBufferData;
+  PFNGLDRAWARRAYSPROC glDrawArrays;
+  PFNGLDRAWELEMENTSPROC glDrawElements;
+  PFNGLGENBUFFERSPROC glGenBuffers;
+  PFNGLPOLYGONMODEPROC glPolygonMode;
   PFNGLCULLFACEPROC glCullFace;
   PFNGLDISABLEPROC glDisable;
   PFNGLENABLEPROC glEnable;
   PFNGLFRONTFACEPROC glFrontFace;
-  PFNGLPOLYGONMODEPROC glPolygonMode;
   PFNGLSHADEMODELPROC glShadeModel;
-  PFNGLDRAWARRAYSPROC glDrawArrays;
-  PFNGLBINDBUFFERPROC glBindBuffer;
   PFNGLPROVOKINGVERTEXPROC glProvokingVertex;
   PFNGLPROVOKINGVERTEXEXTPROC glProvokingVertexEXT;
   PFNGLDRAWARRAYSEXTPROC glDrawArraysEXT;
 
   void Initialize( Dispatch::GL & dt ) {
+    glBindBuffer = dt.glBindBuffer;
+    glBufferData = dt.glBufferData;
+    glDrawArrays = dt.glDrawArrays;
+    glDrawElements = dt.glDrawElements;
+    glGenBuffers = dt.glGenBuffers;
+    glPolygonMode = dt.glPolygonMode;
     glCullFace = dt.glCullFace;
     glDisable = dt.glDisable;
     glEnable = dt.glEnable;
     glFrontFace = dt.glFrontFace;
-    glPolygonMode = dt.glPolygonMode;
     glShadeModel = dt.glShadeModel;
-    glDrawArrays = dt.glDrawArrays;
-    glBindBuffer = dt.glBindBuffer;
     glProvokingVertex = dt.glProvokingVertex;
     glProvokingVertexEXT = dt.glProvokingVertexEXT;
     glDrawArraysEXT = dt.glDrawArraysEXT;

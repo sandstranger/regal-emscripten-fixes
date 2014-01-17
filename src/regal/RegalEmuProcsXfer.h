@@ -63,26 +63,26 @@ struct EmuProcsOriginateXfer {
     memset(this, 0, sizeof( *this ) );
   }
 
-  PFNGLPIXELSTOREFPROC glPixelStoref;
+  PFNGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
+  PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
   PFNGLPIXELSTOREIPROC glPixelStorei;
   PFNGLTEXIMAGE2DPROC glTexImage2D;
   PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
+  PFNGLPIXELSTOREFPROC glPixelStoref;
   PFNGLACTIVETEXTUREPROC glActiveTexture;
-  PFNGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
-  PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
   PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
   PFNGLCOMPRESSEDTEXIMAGE2DARBPROC glCompressedTexImage2DARB;
   PFNGLCOMPRESSEDTEXSUBIMAGE2DARBPROC glCompressedTexSubImage2DARB;
   PFNGLTEXSUBIMAGE2DEXTPROC glTexSubImage2DEXT;
 
   void Initialize( Dispatch::GL & dt ) {
-    glPixelStoref = dt.glPixelStoref;
+    glCompressedTexImage2D = dt.glCompressedTexImage2D;
+    glCompressedTexSubImage2D = dt.glCompressedTexSubImage2D;
     glPixelStorei = dt.glPixelStorei;
     glTexImage2D = dt.glTexImage2D;
     glTexSubImage2D = dt.glTexSubImage2D;
+    glPixelStoref = dt.glPixelStoref;
     glActiveTexture = dt.glActiveTexture;
-    glCompressedTexImage2D = dt.glCompressedTexImage2D;
-    glCompressedTexSubImage2D = dt.glCompressedTexSubImage2D;
     glActiveTextureARB = dt.glActiveTextureARB;
     glCompressedTexImage2DARB = dt.glCompressedTexImage2DARB;
     glCompressedTexSubImage2DARB = dt.glCompressedTexSubImage2DARB;

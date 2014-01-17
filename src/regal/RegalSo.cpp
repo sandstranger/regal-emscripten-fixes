@@ -121,7 +121,7 @@ So::BindSampler(GLuint unit, GLuint so)
 void
 So::GenTextures(RegalContext &ctx, GLsizei count, GLuint *textures)
 {
-    ctx.emu.curr.glGenTextures(count, textures);
+    orig.glGenTextures(count, textures);
 
     for (GLsizei ii=0; ii<count; ii++)
     {
@@ -215,14 +215,12 @@ So::BindTexture(RegalContext &ctx, GLuint unit, GLenum target, GLuint to)
       }
     }
 
-    Dispatch::GL &tbl = ctx.emu.curr;
-
     GLuint originallyActiveUnit = activeTextureUnit;
 
     if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
 
-    tbl.glBindTexture(target, to);
+    orig.glBindTexture(target, to);
 
     if (activeTextureUnit != originallyActiveUnit)
         ActiveTexture(ctx, GL_TEXTURE0 + originallyActiveUnit );
@@ -240,7 +238,7 @@ So::ActiveTexture( RegalContext &ctx, GLenum texture )
     return false;
 
   activeTextureUnit = texture - GL_TEXTURE0;
-  ctx.emu.curr.glActiveTexture( texture );
+  orig.glActiveTexture( texture );
   return true;
 }
 
@@ -329,8 +327,6 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     }
   }
 
-  Dispatch::GL &tbl = ctx.emu.curr;
-
   if (newState.BorderColor[0] != drv.BorderColor[0] ||
       newState.BorderColor[1] != drv.BorderColor[1] ||
       newState.BorderColor[2] != drv.BorderColor[2] ||
@@ -338,7 +334,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
   {
     if (activeTextureUnit != unit)
       ActiveTexture(ctx, GL_TEXTURE0 + unit );
-    tbl.glTexParameterfv( target, GL_TEXTURE_BORDER_COLOR, newState.BorderColor);
+    orig.glTexParameterfv( target, GL_TEXTURE_BORDER_COLOR, newState.BorderColor);
     drv.BorderColor[0] = newState.BorderColor[0];
     drv.BorderColor[1] = newState.BorderColor[1];
     drv.BorderColor[2] = newState.BorderColor[2];
@@ -352,7 +348,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     {
       if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
-      tbl.glTexParameteri( target, GL_TEXTURE_MIN_FILTER, newState.MinFilter);
+      orig.glTexParameteri( target, GL_TEXTURE_MIN_FILTER, newState.MinFilter);
       drv.MinFilter = newState.MinFilter;
       sent = true;
     }
@@ -361,7 +357,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     {
       if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
-      tbl.glTexParameteri( target, GL_TEXTURE_MAG_FILTER, newState.MagFilter);
+      orig.glTexParameteri( target, GL_TEXTURE_MAG_FILTER, newState.MagFilter);
       drv.MagFilter = newState.MagFilter;
       sent = true;
     }
@@ -370,7 +366,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     {
       if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
-      tbl.glTexParameteri( target, GL_TEXTURE_WRAP_S, newState.WrapS);
+      orig.glTexParameteri( target, GL_TEXTURE_WRAP_S, newState.WrapS);
       drv.WrapS = newState.WrapS;
       sent = true;
     }
@@ -384,7 +380,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     {
       if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
-      tbl.glTexParameteri( target, GL_TEXTURE_WRAP_T, newState.WrapT);
+      orig.glTexParameteri( target, GL_TEXTURE_WRAP_T, newState.WrapT);
       drv.WrapT = newState.WrapT;
       sent = true;
     }
@@ -396,7 +392,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     {
       if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
-      tbl.glTexParameteri( target, GL_TEXTURE_WRAP_R, newState.WrapR);
+      orig.glTexParameteri( target, GL_TEXTURE_WRAP_R, newState.WrapR);
       drv.WrapR = newState.WrapR;
       sent = true;
     }
@@ -406,7 +402,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
   {
     if (activeTextureUnit != unit)
       ActiveTexture(ctx, GL_TEXTURE0 + unit );
-    tbl.glTexParameterf( target, GL_TEXTURE_MIN_LOD, newState.MinLod);
+    orig.glTexParameterf( target, GL_TEXTURE_MIN_LOD, newState.MinLod);
     drv.MinLod = newState.MinLod;
     sent = true;
   }
@@ -415,7 +411,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
   {
     if (activeTextureUnit != unit)
       ActiveTexture(ctx, GL_TEXTURE0 + unit );
-    tbl.glTexParameterf( target, GL_TEXTURE_MAX_LOD, newState.MaxLod);
+    orig.glTexParameterf( target, GL_TEXTURE_MAX_LOD, newState.MaxLod);
     drv.MaxLod = newState.MaxLod;
     sent = true;
   }
@@ -424,7 +420,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
   {
     if (activeTextureUnit != unit)
       ActiveTexture(ctx, GL_TEXTURE0 + unit );
-    tbl.glTexParameterf( target, GL_TEXTURE_LOD_BIAS, newState.LodBias);
+    orig.glTexParameterf( target, GL_TEXTURE_LOD_BIAS, newState.LodBias);
     drv.LodBias = newState.LodBias;
     sent = true;
   }
@@ -433,7 +429,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
   {
     if (activeTextureUnit != unit)
       ActiveTexture(ctx, GL_TEXTURE0 + unit );
-    tbl.glTexParameteri( target, GL_TEXTURE_COMPARE_MODE, newState.CompareMode);
+    orig.glTexParameteri( target, GL_TEXTURE_COMPARE_MODE, newState.CompareMode);
     drv.CompareMode = newState.CompareMode;
     sent = true;
   }
@@ -442,7 +438,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
   {
     if (activeTextureUnit != unit)
       ActiveTexture(ctx, GL_TEXTURE0 + unit );
-    tbl.glTexParameteri( target, GL_TEXTURE_COMPARE_FUNC, newState.CompareFunc);
+    orig.glTexParameteri( target, GL_TEXTURE_COMPARE_FUNC, newState.CompareFunc);
     drv.CompareFunc = newState.CompareFunc;
     sent = true;
   }
@@ -453,7 +449,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     {
       if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
-      tbl.glTexParameteri( target, GL_TEXTURE_SRGB_DECODE_EXT, newState.SrgbDecodeExt);
+      orig.glTexParameteri( target, GL_TEXTURE_SRGB_DECODE_EXT, newState.SrgbDecodeExt);
       drv.SrgbDecodeExt = newState.SrgbDecodeExt;
       sent = true;
     }
@@ -465,7 +461,7 @@ So::SendStateToDriver(RegalContext &ctx, GLuint unit, GLenum target, SamplingSta
     {
       if (activeTextureUnit != unit)
         ActiveTexture(ctx, GL_TEXTURE0 + unit );
-      tbl.glTexParameterf( target, GL_TEXTURE_MAX_ANISOTROPY_EXT, newState.MaxAnisotropyExt);
+      orig.glTexParameterf( target, GL_TEXTURE_MAX_ANISOTROPY_EXT, newState.MaxAnisotropyExt);
       drv.MaxAnisotropyExt = newState.MaxAnisotropyExt;
       sent = true;
     }
