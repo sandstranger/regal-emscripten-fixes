@@ -198,7 +198,6 @@ struct EmuProcsOriginateIff {
   PFNGLGETVERTEXATTRIBFVARBPROC glGetVertexAttribfvARB;
   PFNGLGETVERTEXATTRIBIVPROC glGetVertexAttribiv;
   PFNGLGETVERTEXATTRIBIVARBPROC glGetVertexAttribivARB;
-  PFNGLHINTPROC glHint;
   PFNGLISENABLEDPROC glIsEnabled;
   PFNGLISVERTEXARRAYPROC glIsVertexArray;
   PFNGLLIGHTMODELFPROC glLightModelf;
@@ -447,7 +446,6 @@ struct EmuProcsOriginateIff {
   PFNGLTEXIMAGE3DMULTISAMPLEPROC glTexImage3DMultisample;
   PFNGLTEXIMAGE3DMULTISAMPLECOVERAGENVPROC glTexImage3DMultisampleCoverageNV;
   PFNGLTEXIMAGE4DSGISPROC glTexImage4DSGIS;
-  PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
   PFNGLTEXTUREIMAGE1DEXTPROC glTextureImage1DEXT;
   PFNGLTEXTUREIMAGE2DEXTPROC glTextureImage2DEXT;
   PFNGLTEXTUREIMAGE3DEXTPROC glTextureImage3DEXT;
@@ -766,7 +764,6 @@ struct EmuProcsOriginateIff {
     glGetVertexAttribfvARB = dt.glGetVertexAttribfvARB;
     glGetVertexAttribiv = dt.glGetVertexAttribiv;
     glGetVertexAttribivARB = dt.glGetVertexAttribivARB;
-    glHint = dt.glHint;
     glIsEnabled = dt.glIsEnabled;
     glIsVertexArray = dt.glIsVertexArray;
     glLightModelf = dt.glLightModelf;
@@ -1015,7 +1012,6 @@ struct EmuProcsOriginateIff {
     glTexImage3DMultisample = dt.glTexImage3DMultisample;
     glTexImage3DMultisampleCoverageNV = dt.glTexImage3DMultisampleCoverageNV;
     glTexImage4DSGIS = dt.glTexImage4DSGIS;
-    glTexSubImage2D = dt.glTexSubImage2D;
     glTextureImage1DEXT = dt.glTextureImage1DEXT;
     glTextureImage2DEXT = dt.glTextureImage2DEXT;
     glTextureImage3DEXT = dt.glTextureImage3DEXT;

@@ -1460,13 +1460,6 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribivARB(GLuint index, 
 
 }
 
-static void REGAL_CALL emuProcInterceptIff_glHint(GLenum target, GLenum mode)
-{
-  RegalContext *_context = REGAL_GET_CONTEXT();
-  RegalAssert(_context);
-
-}
-
 static GLboolean REGAL_CALL emuProcInterceptIff_glIsEnabled(GLenum cap)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -4047,13 +4040,6 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage4DSGIS(GLenum target, GLint
 
 }
 
-static void REGAL_CALL emuProcInterceptIff_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
-{
-  RegalContext *_context = REGAL_GET_CONTEXT();
-  RegalAssert(_context);
-
-}
-
 static void REGAL_CALL emuProcInterceptIff_glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
@@ -6559,7 +6545,6 @@ void EmuProcsInterceptIff( Dispatch::GL & dt ) {
   dt.glGetVertexAttribfvARB            = emuProcInterceptIff_glGetVertexAttribfvARB;
   dt.glGetVertexAttribiv               = emuProcInterceptIff_glGetVertexAttribiv;
   dt.glGetVertexAttribivARB            = emuProcInterceptIff_glGetVertexAttribivARB;
-  dt.glHint                            = emuProcInterceptIff_glHint;
   dt.glIsEnabled                       = emuProcInterceptIff_glIsEnabled;
   dt.glIsVertexArray                   = emuProcInterceptIff_glIsVertexArray;
   dt.glLightModelf                     = emuProcInterceptIff_glLightModelf;
@@ -6808,7 +6793,6 @@ void EmuProcsInterceptIff( Dispatch::GL & dt ) {
   dt.glTexImage3DMultisample           = emuProcInterceptIff_glTexImage3DMultisample;
   dt.glTexImage3DMultisampleCoverageNV = emuProcInterceptIff_glTexImage3DMultisampleCoverageNV;
   dt.glTexImage4DSGIS                  = emuProcInterceptIff_glTexImage4DSGIS;
-  dt.glTexSubImage2D                   = emuProcInterceptIff_glTexSubImage2D;
   dt.glTextureImage1DEXT               = emuProcInterceptIff_glTextureImage1DEXT;
   dt.glTextureImage2DEXT               = emuProcInterceptIff_glTextureImage2DEXT;
   dt.glTextureImage3DEXT               = emuProcInterceptIff_glTextureImage3DEXT;

@@ -344,15 +344,5 @@ iffFormulae = {
           '}',
         ],
     },
-    # I cannot think of a legitimate reason for 'Hint' and 'TexSubImage' entries below.
-    # They simply filter out the calls without doing anything with them.
-    'Hint' : {
-        'entries' : [ 'glHint' ],
-        'impl' : [ ],
-    },
-    'TexSubImage' : {
-        'entries' : [ 'glTexSubImage2D' ],
-        'impl' : [ ],
-    }
 }
 
