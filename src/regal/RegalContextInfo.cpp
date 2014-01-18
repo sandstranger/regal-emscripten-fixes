@@ -797,25 +797,25 @@ ContextInfo::~ContextInfo()
    Internal("ContextInfo::~ContextInfo","()");
 }
 
-inline string getString(const RegalContext &context, const GLenum e)
+inline string getString(RegalContext &context, const GLenum e)
 {
   Internal("getString ",toString(e));
   RegalAssert(context.dispatchGL.glGetString);
-  const GLubyte *str = context.dispatchGL.glGetString(e);
+  const GLubyte *str = context.dispatchGL.glGetString( &context, e);
   return str ? string(reinterpret_cast<const char *>(str)) : string();
 }
 
-inline void warnGLError(const RegalContext &context, const char *message)
+inline void warnGLError(RegalContext &context, const char *message)
 {
   Internal("warnGLError ",message ? message : NULL);
   RegalAssert(context.dispatchGL.glGetError);
-  GLenum err = context.dispatchGL.glGetError();
+  GLenum err = context.dispatchGL.glGetError( &context );
   if (err!=GL_NO_ERROR)
     Warning("glGetError returned ",GLerrorToString(err)," ",message ? message : NULL);
 }
 
 void
-ContextInfo::init(const RegalContext &context)
+ContextInfo::init(RegalContext &context)
 {
   warnGLError(context,"before Regal context initialization.");
 
@@ -907,7 +907,7 @@ ContextInfo::init(const RegalContext &context)
   {
     GLint flags = 0;
     RegalAssert(context.dispatchGL.glGetIntegerv);
-    context.dispatchGL.glGetIntegerv(GL_CONTEXT_PROFILE_MASK, &flags);
+    context.dispatchGL.glGetIntegerv( &context, GL_CONTEXT_PROFILE_MASK, &flags);
     core = flags & GL_CONTEXT_CORE_PROFILE_BIT ? GL_TRUE : GL_FALSE;
   }
 
@@ -951,10 +951,10 @@ ContextInfo::init(const RegalContext &context)
     RegalAssert(context.dispatchGL.glGetIntegerv);
 
     GLint n = 0;
-    context.dispatchGL.glGetIntegerv(GL_NUM_EXTENSIONS, &n);
+    context.dispatchGL.glGetIntegerv( &context, GL_NUM_EXTENSIONS, &n);
 
     for (GLint i=0; i<n; ++i)
-      driverExtensions.push_back(reinterpret_cast<const char *>(context.dispatchGL.glGetStringi(GL_EXTENSIONS,i)));
+      driverExtensions.push_back(reinterpret_cast<const char *>(context.dispatchGL.glGetStringi( &context, GL_EXTENSIONS,i)));
     extensions = driverExtensions.join(" ");
   }
   else
@@ -1709,47 +1709,47 @@ ContextInfo::init(const RegalContext &context)
 
   if (compat)
   {
-    context.dispatchGL.glGetIntegerv( GL_MAX_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>(&gl_max_attrib_stack_depth));
-    context.dispatchGL.glGetIntegerv( GL_MAX_CLIENT_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>(&gl_max_client_attrib_stack_depth));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>(&gl_max_attrib_stack_depth));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_CLIENT_ATTRIB_STACK_DEPTH, reinterpret_cast<GLint *>(&gl_max_client_attrib_stack_depth));
   }
 
   if (!es1)
-    context.dispatchGL.glGetIntegerv( GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, reinterpret_cast<GLint *>(&gl_max_combined_texture_image_units));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_COMBINED_TEXTURE_IMAGE_UNITS, reinterpret_cast<GLint *>(&gl_max_combined_texture_image_units));
 
   if (core || compat)
-    context.dispatchGL.glGetIntegerv( GL_MAX_DRAW_BUFFERS, reinterpret_cast<GLint *>(&gl_max_draw_buffers));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_DRAW_BUFFERS, reinterpret_cast<GLint *>(&gl_max_draw_buffers));
 
   if (compat)
-    context.dispatchGL.glGetIntegerv( GL_MAX_TEXTURE_COORDS, reinterpret_cast<GLint *>(&gl_max_texture_coords));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_TEXTURE_COORDS, reinterpret_cast<GLint *>(&gl_max_texture_coords));
 
   if (es1 || compat)
-    context.dispatchGL.glGetIntegerv( GL_MAX_TEXTURE_UNITS, reinterpret_cast<GLint *>(&gl_max_texture_units));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_TEXTURE_UNITS, reinterpret_cast<GLint *>(&gl_max_texture_units));
 
   if (es2 || core)
-    context.dispatchGL.glGetIntegerv( GL_MAX_VARYING_VECTORS, reinterpret_cast<GLint *>(&gl_max_varying_floats));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_VARYING_VECTORS, reinterpret_cast<GLint *>(&gl_max_varying_floats));
   else if (compat)
-    context.dispatchGL.glGetIntegerv( GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&gl_max_varying_floats));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_VARYING_FLOATS, reinterpret_cast<GLint *>(&gl_max_varying_floats));
 
   if (es1)
     gl_max_vertex_attribs = 8;  //<> one of these things is not like the other...
   else
-    context.dispatchGL.glGetIntegerv( GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&gl_max_vertex_attribs));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_VERTEX_ATTRIBS, reinterpret_cast<GLint *>(&gl_max_vertex_attribs));
 
   if ((core || compat) && (gl_version_4_3 || gl_arb_vertex_attrib_binding))
-    context.dispatchGL.glGetIntegerv( GL_MAX_VERTEX_ATTRIB_BINDINGS, reinterpret_cast<GLint *>(&gl_max_vertex_attrib_bindings));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_VERTEX_ATTRIB_BINDINGS, reinterpret_cast<GLint *>(&gl_max_vertex_attrib_bindings));
 
   if ((core || compat) && (gl_version_4_1 || gl_arb_viewport_array))
-    context.dispatchGL.glGetIntegerv( GL_MAX_VIEWPORTS, reinterpret_cast<GLint *>(&gl_max_viewports));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_VIEWPORTS, reinterpret_cast<GLint *>(&gl_max_viewports));
 
   if (gl_arb_debug_output)
-    context.dispatchGL.glGetIntegerv( GL_MAX_DEBUG_MESSAGE_LENGTH_ARB, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_DEBUG_MESSAGE_LENGTH_ARB, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
   else if (gl_khr_debug)
-    context.dispatchGL.glGetIntegerv( GL_MAX_DEBUG_MESSAGE_LENGTH, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_DEBUG_MESSAGE_LENGTH, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
   else if (gl_amd_debug_output)
-    context.dispatchGL.glGetIntegerv( GL_MAX_DEBUG_MESSAGE_LENGTH_AMD, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
+    context.dispatchGL.glGetIntegerv( &context, GL_MAX_DEBUG_MESSAGE_LENGTH_AMD, reinterpret_cast<GLint *>(&gl_max_debug_message_length));
 
   if ((compat) && (gl_version_3_2 || gl_arb_provoking_vertex || gl_ext_provoking_vertex))
-    context.dispatchGL.glGetBooleanv( GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION, &gl_quads_follow_provoking_vertex_convention);
+    context.dispatchGL.glGetBooleanv( &context, GL_QUADS_FOLLOW_PROVOKING_VERTEX_CONVENTION, &gl_quads_follow_provoking_vertex_convention);
 
   Info("OpenGL v attribs : ",gl_max_vertex_attribs);
   Info("OpenGL varyings  : ",gl_max_varying_floats);

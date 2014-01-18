@@ -13,7 +13,7 @@ baseVertexFormulae = {
     'entries' : [ 'gl(Multi|)Draw(Range|)Elements(Instanced|)BaseVertex(BaseInstance|)' ],
     'impl'    : [
       'if( ! _context->bv->gl${m1}Draw${m2}Elements${m3}BaseVertex${m4}( *_context, ${arg0plus} ) ) {',
-      '  orig.gl${m1}Draw${m2}Elements${m3}BaseVertex${m4}( ${arg0plus} );',
+      '  orig.gl${m1}Draw${m2}Elements${m3}BaseVertex${m4}( _context, ${arg0plus} );',
       '}',
     ],
   },

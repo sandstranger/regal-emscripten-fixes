@@ -62,7 +62,7 @@ static void REGAL_CALL emuProcInterceptVao_glBindBuffer(RegalContext *_context, 
   // prefix
   _context->vao->ShadowBufferBinding( target, buffer );
 
-  orig.glBindBuffer( _context, target, buffer);
+  orig.glBindBuffer( _context, target, buffer );
 
 }
 
@@ -74,7 +74,7 @@ static void REGAL_CALL emuProcInterceptVao_glBindBufferARB(RegalContext *_contex
   // prefix
   _context->vao->ShadowBufferBinding( target, buffer );
 
-  orig.glBindBufferARB( _context, target, buffer);
+  orig.glBindBufferARB( _context, target, buffer );
 
 }
 
@@ -95,7 +95,7 @@ static void REGAL_CALL emuProcInterceptVao_glClientActiveTexture(RegalContext *_
   // prefix
   _context->vao->ClientActiveTexture(*_context, texture );
 
-  orig.glClientActiveTexture( _context, texture);
+  orig.glClientActiveTexture( _context, texture );
 
 }
 
@@ -107,7 +107,7 @@ static void REGAL_CALL emuProcInterceptVao_glClientActiveTextureARB(RegalContext
   // prefix
   _context->vao->ClientActiveTexture(*_context, texture );
 
-  orig.glClientActiveTextureARB( _context, texture);
+  orig.glClientActiveTextureARB( _context, texture );
 
 }
 
@@ -173,7 +173,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArrays(RegalContext *_context, 
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArrays( _context, mode, first, count);
+  orig.glDrawArrays( _context, mode, first, count );
 
 }
 
@@ -185,7 +185,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysEXT(RegalContext *_contex
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysEXT( _context, mode, first, count);
+  orig.glDrawArraysEXT( _context, mode, first, count );
 
 }
 
@@ -197,7 +197,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysIndirect(RegalContext *_c
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysIndirect( _context, mode, indirect);
+  orig.glDrawArraysIndirect( _context, mode, indirect );
 
 }
 
@@ -209,7 +209,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysInstanced(RegalContext *_
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysInstanced( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstanced( _context, mode, start, count, primcount );
 
 }
 
@@ -221,7 +221,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysInstancedARB(RegalContext
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysInstancedARB( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstancedARB( _context, mode, start, count, primcount );
 
 }
 
@@ -233,7 +233,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawArraysInstancedEXT(RegalContext
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysInstancedEXT( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstancedEXT( _context, mode, start, count, primcount );
 
 }
 
@@ -245,7 +245,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementArrayAPPLE(RegalContext 
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementArrayAPPLE( _context, mode, first, count);
+  orig.glDrawElementArrayAPPLE( _context, mode, first, count );
 
 }
 
@@ -257,7 +257,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementArrayATI(RegalContext *_
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementArrayATI( _context, mode, count);
+  orig.glDrawElementArrayATI( _context, mode, count );
 
 }
 
@@ -269,7 +269,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElements(RegalContext *_context
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElements( _context, mode, count, type, indices);
+  orig.glDrawElements( _context, mode, count, type, indices );
 
 }
 
@@ -281,7 +281,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsBaseVertex(RegalContext
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsBaseVertex( _context, mode, count, type, indices, basevertex);
+  orig.glDrawElementsBaseVertex( _context, mode, count, type, indices, basevertex );
 
 }
 
@@ -293,7 +293,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsIndirect(RegalContext *
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsIndirect( _context, mode, type, indirect);
+  orig.glDrawElementsIndirect( _context, mode, type, indirect );
 
 }
 
@@ -305,7 +305,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstanced(RegalContext 
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstanced( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstanced( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -317,7 +317,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstancedARB(RegalConte
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstancedARB( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedARB( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -329,7 +329,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstancedBaseVertex(Reg
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstancedBaseVertex( _context, mode, count, type, indices, primcount, basevertex);
+  orig.glDrawElementsInstancedBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
 
 }
 
@@ -341,7 +341,7 @@ static void REGAL_CALL emuProcInterceptVao_glDrawElementsInstancedEXT(RegalConte
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstancedEXT( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedEXT( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -406,7 +406,7 @@ static void REGAL_CALL emuProcInterceptVao_glGetBooleanv(RegalContext *_context,
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     orig.glGetBooleanv( pname, params );
+     orig.glGetBooleanv( _context, pname, params );
   }
 
 }
@@ -418,7 +418,7 @@ static void REGAL_CALL emuProcInterceptVao_glGetDoublev(RegalContext *_context, 
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     orig.glGetDoublev( pname, params );
+     orig.glGetDoublev( _context, pname, params );
   }
 
 }
@@ -430,7 +430,7 @@ static void REGAL_CALL emuProcInterceptVao_glGetFloatv(RegalContext *_context, G
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     orig.glGetFloatv( pname, params );
+     orig.glGetFloatv( _context, pname, params );
   }
 
 }
@@ -442,7 +442,7 @@ static void REGAL_CALL emuProcInterceptVao_glGetInteger64v(RegalContext *_contex
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     orig.glGetInteger64v( pname, params );
+     orig.glGetInteger64v( _context, pname, params );
   }
 
 }
@@ -454,7 +454,7 @@ static void REGAL_CALL emuProcInterceptVao_glGetIntegerv(RegalContext *_context,
 
   // impl
   if( !_context->vao->Get( pname, params ) ) {
-     orig.glGetIntegerv( pname, params );
+     orig.glGetIntegerv( _context, pname, params );
   }
 
 }
@@ -557,7 +557,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArrays(RegalContext *_cont
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArrays( _context, mode, first, count, primcount);
+  orig.glMultiDrawArrays( _context, mode, first, count, primcount );
 
 }
 
@@ -569,7 +569,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArraysEXT(RegalContext *_c
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArraysEXT( _context, mode, first, count, primcount);
+  orig.glMultiDrawArraysEXT( _context, mode, first, count, primcount );
 
 }
 
@@ -581,7 +581,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArraysIndirect(RegalContex
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArraysIndirect( _context, mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirect( _context, mode, indirect, primcount, stride );
 
 }
 
@@ -593,7 +593,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawArraysIndirectAMD(RegalCon
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArraysIndirectAMD( _context, mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirectAMD( _context, mode, indirect, primcount, stride );
 
 }
 
@@ -605,7 +605,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementArrayAPPLE(RegalCon
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementArrayAPPLE( _context, mode, first, count, primcount);
+  orig.glMultiDrawElementArrayAPPLE( _context, mode, first, count, primcount );
 
 }
 
@@ -617,7 +617,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElements(RegalContext *_co
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElements( _context, mode, count, type, indices, primcount);
+  orig.glMultiDrawElements( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -629,7 +629,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsBaseVertex(RegalCo
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsBaseVertex( _context, mode, count, type, indices, primcount, basevertex);
+  orig.glMultiDrawElementsBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
 
 }
 
@@ -641,7 +641,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsEXT(RegalContext *
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsEXT( _context, mode, count, type, indices, primcount);
+  orig.glMultiDrawElementsEXT( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -653,7 +653,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsIndirect(RegalCont
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsIndirect( _context, mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirect( _context, mode, type, indirect, primcount, stride );
 
 }
 
@@ -665,7 +665,7 @@ static void REGAL_CALL emuProcInterceptVao_glMultiDrawElementsIndirectAMD(RegalC
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsIndirectAMD( _context, mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirectAMD( _context, mode, type, indirect, primcount, stride );
 
 }
 

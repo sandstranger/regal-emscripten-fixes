@@ -55,9 +55,9 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-template<typename T> inline void DsaGetv( EmuProcsOriginateDsa & orig, GLenum pname, T * params ) { UNUSED_PARAMETER(orig); UNUSED_PARAMETER(pname); UNUSED_PARAMETER(params);}
-template<> inline void DsaGetv( EmuProcsOriginateDsa & orig, GLenum pname, GLfloat * params ) { orig.glGetFloatv( pname, params ); }
-template<> inline void DsaGetv( EmuProcsOriginateDsa & orig, GLenum pname, GLdouble * params ) { orig.glGetDoublev( pname, params ); }
+template<typename T> inline void DsaGetv( EmuProcsOriginateDsa & orig, RegalContext * ctx, GLenum pname, T * params ) { UNUSED_PARAMETER(orig); UNUSED_PARAMETER(ctx); UNUSED_PARAMETER(pname); UNUSED_PARAMETER(params);}
+template<> inline void DsaGetv( EmuProcsOriginateDsa & orig, RegalContext * ctx, GLenum pname, GLfloat * params ) { orig.glGetFloatv( ctx, pname, params ); }
+template<> inline void DsaGetv( EmuProcsOriginateDsa & orig, RegalContext * ctx, GLenum pname, GLdouble * params ) { orig.glGetDoublev( ctx, pname, params ); }
 
 
 struct Dsa
@@ -163,12 +163,12 @@ struct Dsa
                     dsa.matrixMode = GL_TEXTURE;
                     break;
             }
-            orig.glMatrixMode( dsa.matrixMode );
+            orig.glMatrixMode( ctx, dsa.matrixMode );
         }
     }
     void RestoreMatrixMode( RegalContext * ctx ) {
         if( dsa.matrixMode != REGAL_DSA_INVALID ) {
-            orig.glMatrixMode( drv.matrixMode );
+            orig.glMatrixMode( ctx, drv.matrixMode );
             RestoreActiveTexture( ctx );
             dsa.matrixMode = REGAL_DSA_INVALID;
         }
@@ -190,12 +190,12 @@ struct Dsa
             return;
         if( NotActiveTexture( tex ) ) {
             dsa.activeTexture = tex;
-            orig.glActiveTexture( dsa.activeTexture );
+            orig.glActiveTexture( ctx, dsa.activeTexture );
         }
     }
     void RestoreActiveTexture( RegalContext * ctx ) {
         if( dsa.activeTexture != REGAL_DSA_INVALID ) {
-            orig.glActiveTexture( drv.activeTexture );
+            orig.glActiveTexture( ctx, drv.activeTexture );
             dsa.activeTexture = REGAL_DSA_INVALID;
         }
     }
@@ -211,12 +211,12 @@ struct Dsa
     void DsaClientActiveTexture( RegalContext * ctx, GLenum tex ) {
         if( NotClientActiveTexture( tex ) ) {
             dsa.clientActiveTexture = tex;
-            orig.glClientActiveTexture( dsa.clientActiveTexture );
+            orig.glClientActiveTexture( ctx, dsa.clientActiveTexture );
         }
     }
     void RestoreClientActiveTexture( RegalContext * ctx ) {
         if( dsa.clientActiveTexture != REGAL_DSA_INVALID ) {
-            orig.glClientActiveTexture( drv.clientActiveTexture );
+            orig.glClientActiveTexture( ctx, drv.clientActiveTexture );
             dsa.clientActiveTexture = REGAL_DSA_INVALID;
         }
     }
@@ -232,12 +232,12 @@ struct Dsa
     void DsaGlslProgram( RegalContext * ctx, GLuint program ) {
         if( NotGlslProgram( program ) ) {
             dsa.glslProgram = program;
-            orig.glUseProgram( dsa.glslProgram );
+            orig.glUseProgram( ctx, dsa.glslProgram );
         }
     }
     void RestoreGlslProgram( RegalContext * ctx ) {
         if( dsa.glslProgram != REGAL_DSA_INVALID ) {
-            orig.glUseProgram( drv.glslProgram );
+            orig.glUseProgram( ctx, drv.glslProgram );
             dsa.glslProgram = REGAL_DSA_INVALID;
         }
     }
@@ -264,12 +264,12 @@ struct Dsa
         if( NotFramebuffer( target, framebuffer ) ) {
             dsa.framebufferTarget = target;
             dsa.framebuffer = framebuffer;
-            orig.glBindFramebuffer( dsa.framebufferTarget, dsa.framebuffer );
+            orig.glBindFramebuffer( ctx, dsa.framebufferTarget, dsa.framebuffer );
         }
     }
     void RestoreFramebuffer( RegalContext * ctx ) {
         if( dsa.framebuffer != REGAL_DSA_INVALID ) {
-            orig.glBindFramebuffer( drv.framebufferTarget, drv.framebuffer );
+            orig.glBindFramebuffer( ctx, drv.framebufferTarget, drv.framebuffer );
             dsa.framebufferTarget = REGAL_DSA_INVALID;
             dsa.framebuffer = REGAL_DSA_INVALID;
         }
@@ -298,12 +298,12 @@ struct Dsa
         if( NotRenderbuffer( target, renderbuffer ) ) {
             dsa.renderbufferTarget = target;
             dsa.renderbuffer = renderbuffer;
-            orig.glBindRenderbuffer( dsa.renderbufferTarget, dsa.renderbuffer );
+            orig.glBindRenderbuffer( ctx, dsa.renderbufferTarget, dsa.renderbuffer );
         }
     }
     void RestoreRenderbuffer( RegalContext * ctx ) {
         if( dsa.renderbuffer != REGAL_DSA_INVALID ) {
-            orig.glBindRenderbuffer( drv.renderbufferTarget, drv.renderbuffer );
+            orig.glBindRenderbuffer( ctx, drv.renderbufferTarget, drv.renderbuffer );
             dsa.renderbufferTarget = REGAL_DSA_INVALID;
             dsa.renderbuffer = REGAL_DSA_INVALID;
         }
@@ -356,13 +356,13 @@ struct Dsa
         int idx = AsmTargetIndex( target );
         if( NotAsmProgram( target, prog ) ) {
             dsa.asmProgram[idx] = prog;
-            orig.glBindProgramARB( target, dsa.asmProgram[idx] );
+            orig.glBindProgramARB( ctx, target, dsa.asmProgram[idx] );
         }
     }
     void RestoreAsmProgram( RegalContext * ctx, GLenum target ) {
         int idx = AsmTargetIndex( target );
         if( dsa.asmProgram[idx] != REGAL_DSA_INVALID ) {
-            orig.glBindProgramARB( target, drv.asmProgram[idx] );
+            orig.glBindProgramARB( ctx, target, drv.asmProgram[idx] );
             dsa.asmProgram[idx] = REGAL_DSA_INVALID;
         }
     }
@@ -389,12 +389,12 @@ struct Dsa
     void DsaVao( RegalContext * ctx, GLuint vao ) {
         if( NotVao( vao ) ) {
             dsa.vao = vao;
-            orig.glBindVertexArray( dsa.vao );
+            orig.glBindVertexArray( ctx, dsa.vao );
         }
     }
     void RestoreVao( RegalContext * ctx ) {
         if( dsa.vao != REGAL_DSA_INVALID ) {
-            orig.glBindVertexArray( drv.vao );
+            orig.glBindVertexArray( ctx, drv.vao );
             dsa.vao = REGAL_DSA_INVALID;
         }
     }
@@ -423,12 +423,12 @@ struct Dsa
     void DsaBuffer( RegalContext * ctx, GLuint buf ) {
         if( NotBuffer( buf ) ) {
             dsa.buffer = buf;
-            orig.glBindBuffer( GL_ARRAY_BUFFER, dsa.buffer );
+            orig.glBindBuffer( ctx, GL_ARRAY_BUFFER, dsa.buffer );
         }
     }
     void RestoreBuffer( RegalContext * ctx ) {
         if( dsa.buffer != REGAL_DSA_INVALID ) {
-            orig.glBindBuffer( GL_ARRAY_BUFFER, drv.buffer );
+            orig.glBindBuffer( ctx, GL_ARRAY_BUFFER, drv.buffer );
             dsa.buffer = REGAL_DSA_INVALID;
         }
     }
@@ -478,13 +478,13 @@ struct Dsa
             dsa.textureTarget = target;
             dsa.texture = texture;
             DsaActiveTexture( ctx, GL_TEXTURE0 );
-            orig.glBindTexture( dsa.textureTarget, dsa.texture );
+            orig.glBindTexture( ctx, dsa.textureTarget, dsa.texture );
         }
     }
     void RestoreTexture( RegalContext * ctx ) {
         if( dsa.texture != REGAL_DSA_INVALID ) {
             DsaActiveTexture( ctx, GL_TEXTURE0 );
-            orig.glBindTexture( drv.textureTarget, drv.texture );
+            orig.glBindTexture( ctx, drv.textureTarget, drv.texture );
             dsa.textureTarget = REGAL_DSA_INVALID;
             dsa.texture = REGAL_DSA_INVALID;
         }
@@ -503,45 +503,45 @@ struct Dsa
     {
         if (mask&GL_CLIENT_PIXEL_STORE_BIT)
         {
-            PFNGLPIXELSTOREIPROC pixelStorei = orig.glPixelStorei;
-            PFNGLPIXELSTOREFPROC pixelStoref = orig.glPixelStoref;
+            REGALGLPIXELSTOREIPROC pixelStorei = orig.glPixelStorei;
+            REGALGLPIXELSTOREFPROC pixelStoref = orig.glPixelStoref;
 
             RegalAssert(pixelStorei);
             RegalAssert(pixelStoref);
 
-            pixelStorei( GL_UNPACK_SWAP_BYTES, 0 );
-            pixelStorei( GL_UNPACK_LSB_FIRST, 0 );
-            pixelStorei( GL_UNPACK_ROW_LENGTH, 0 );
-            pixelStorei( GL_UNPACK_SKIP_ROWS, 0 );
-            pixelStorei( GL_UNPACK_SKIP_PIXELS, 0 );
-            pixelStorei( GL_UNPACK_ALIGNMENT, 4 );
-            pixelStorei( GL_UNPACK_IMAGE_HEIGHT, 0 );
-            pixelStorei( GL_UNPACK_SKIP_IMAGES, 0 );
-            pixelStorei( GL_PACK_SWAP_BYTES, 0 );
-            pixelStorei( GL_PACK_LSB_FIRST, 0 );
-            pixelStorei( GL_PACK_IMAGE_HEIGHT, 0 );
-            pixelStorei( GL_PACK_SKIP_IMAGES, 0 );
-            pixelStorei( GL_PACK_ROW_LENGTH, 0 );
-            pixelStorei( GL_PACK_SKIP_ROWS, 0 );
-            pixelStorei( GL_PACK_SKIP_PIXELS, 0 );
-            pixelStorei( GL_PACK_ALIGNMENT, 4 );
-            pixelStorei( GL_PIXEL_PACK_BUFFER_BINDING, 0 );
-            pixelStorei( GL_PIXEL_UNPACK_BUFFER_BINDING, 0 );
-            pixelStorei( GL_MAP_COLOR, 0 );
-            pixelStorei( GL_MAP_STENCIL, 0 );
-            pixelStorei( GL_INDEX_SHIFT, 0 );
-            pixelStorei( GL_INDEX_OFFSET, 0 );
+            pixelStorei( ctx, GL_UNPACK_SWAP_BYTES, 0 );
+            pixelStorei( ctx, GL_UNPACK_LSB_FIRST, 0 );
+            pixelStorei( ctx, GL_UNPACK_ROW_LENGTH, 0 );
+            pixelStorei( ctx, GL_UNPACK_SKIP_ROWS, 0 );
+            pixelStorei( ctx, GL_UNPACK_SKIP_PIXELS, 0 );
+            pixelStorei( ctx, GL_UNPACK_ALIGNMENT, 4 );
+            pixelStorei( ctx, GL_UNPACK_IMAGE_HEIGHT, 0 );
+            pixelStorei( ctx, GL_UNPACK_SKIP_IMAGES, 0 );
+            pixelStorei( ctx, GL_PACK_SWAP_BYTES, 0 );
+            pixelStorei( ctx, GL_PACK_LSB_FIRST, 0 );
+            pixelStorei( ctx, GL_PACK_IMAGE_HEIGHT, 0 );
+            pixelStorei( ctx, GL_PACK_SKIP_IMAGES, 0 );
+            pixelStorei( ctx, GL_PACK_ROW_LENGTH, 0 );
+            pixelStorei( ctx, GL_PACK_SKIP_ROWS, 0 );
+            pixelStorei( ctx, GL_PACK_SKIP_PIXELS, 0 );
+            pixelStorei( ctx, GL_PACK_ALIGNMENT, 4 );
+            pixelStorei( ctx, GL_PIXEL_PACK_BUFFER_BINDING, 0 );
+            pixelStorei( ctx, GL_PIXEL_UNPACK_BUFFER_BINDING, 0 );
+            pixelStorei( ctx, GL_MAP_COLOR, 0 );
+            pixelStorei( ctx, GL_MAP_STENCIL, 0 );
+            pixelStorei( ctx, GL_INDEX_SHIFT, 0 );
+            pixelStorei( ctx, GL_INDEX_OFFSET, 0 );
 
-            pixelStoref( GL_RED_SCALE, 1.0f );
-            pixelStoref( GL_GREEN_SCALE, 1.0f );
-            pixelStoref( GL_BLUE_SCALE, 1.0f );
-            pixelStoref( GL_ALPHA_SCALE, 1.0f );
-            pixelStoref( GL_DEPTH_SCALE, 1.0f );
-            pixelStoref( GL_RED_BIAS, 0.0f );
-            pixelStoref( GL_GREEN_BIAS, 0.0f );
-            pixelStoref( GL_BLUE_BIAS, 0.0f );
-            pixelStoref( GL_ALPHA_BIAS, 0.0f );
-            pixelStoref( GL_DEPTH_BIAS, 0.0f );
+            pixelStoref( ctx, GL_RED_SCALE, 1.0f );
+            pixelStoref( ctx, GL_GREEN_SCALE, 1.0f );
+            pixelStoref( ctx, GL_BLUE_SCALE, 1.0f );
+            pixelStoref( ctx, GL_ALPHA_SCALE, 1.0f );
+            pixelStoref( ctx, GL_DEPTH_SCALE, 1.0f );
+            pixelStoref( ctx, GL_RED_BIAS, 0.0f );
+            pixelStoref( ctx, GL_GREEN_BIAS, 0.0f );
+            pixelStoref( ctx, GL_BLUE_BIAS, 0.0f );
+            pixelStoref( ctx, GL_ALPHA_BIAS, 0.0f );
+            pixelStoref( ctx, GL_DEPTH_BIAS, 0.0f );
         }
 
         if (mask&GL_CLIENT_VERTEX_ARRAY_BIT)
@@ -549,26 +549,26 @@ struct Dsa
             // FIXME: need number of texture units
             int maxTextureUnit = 7;
             for( int i = maxTextureUnit; i >= 0; i-- ) {
-                orig.glClientActiveTexture( GL_TEXTURE0 + i );
-                orig.glDisableClientState( GL_TEXTURE_COORD_ARRAY );
+                orig.glClientActiveTexture( ctx, GL_TEXTURE0 + i );
+                orig.glDisableClientState( ctx, GL_TEXTURE_COORD_ARRAY );
             }
             for( int i = 0; i < 16; i++ ) {
-                orig.glDisableVertexAttribArray( i );
-                orig.glVertexAttribPointer( i, 4, GL_FLOAT, GL_FALSE, 0, NULL );
+                orig.glDisableVertexAttribArray( ctx, i );
+                orig.glVertexAttribPointer( ctx, i, 4, GL_FLOAT, GL_FALSE, 0, NULL );
             }
-            orig.glDisableClientState( GL_VERTEX_ARRAY );
-            orig.glDisableClientState( GL_NORMAL_ARRAY );
-            orig.glDisableClientState( GL_FOG_COORD_ARRAY );
-            orig.glDisableClientState( GL_COLOR_ARRAY );
-            orig.glDisableClientState( GL_SECONDARY_COLOR_ARRAY );
-            orig.glDisableClientState( GL_INDEX_ARRAY );
-            orig.glDisableClientState( GL_EDGE_FLAG_ARRAY );
-            orig.glVertexPointer( 4, GL_FLOAT, 0, NULL );
-            orig.glNormalPointer( GL_FLOAT, 0, NULL );
-            orig.glFogCoordPointer( GL_FLOAT, 0, NULL );
-            orig.glColorPointer( 4, GL_FLOAT, 0, NULL );
-            orig.glSecondaryColorPointer( 3, GL_FLOAT, 0, NULL );
-            orig.glIndexPointer( GL_FLOAT, 0, NULL );
+            orig.glDisableClientState( ctx, GL_VERTEX_ARRAY );
+            orig.glDisableClientState( ctx, GL_NORMAL_ARRAY );
+            orig.glDisableClientState( ctx, GL_FOG_COORD_ARRAY );
+            orig.glDisableClientState( ctx, GL_COLOR_ARRAY );
+            orig.glDisableClientState( ctx, GL_SECONDARY_COLOR_ARRAY );
+            orig.glDisableClientState( ctx, GL_INDEX_ARRAY );
+            orig.glDisableClientState( ctx, GL_EDGE_FLAG_ARRAY );
+            orig.glVertexPointer( ctx, 4, GL_FLOAT, 0, NULL );
+            orig.glNormalPointer( ctx, GL_FLOAT, 0, NULL );
+            orig.glFogCoordPointer( ctx, GL_FLOAT, 0, NULL );
+            orig.glColorPointer( ctx, 4, GL_FLOAT, 0, NULL );
+            orig.glSecondaryColorPointer( ctx, 3, GL_FLOAT, 0, NULL );
+            orig.glIndexPointer( ctx, GL_FLOAT, 0, NULL );
         }
     }
 
@@ -577,15 +577,15 @@ struct Dsa
         switch( pname ) {
             case GL_PROGRAM_MATRIX_EXT:
                 ctx->dsa->DsaMatrixMode( ctx, GL_MATRIX0_ARB + index );
-                DsaGetv( orig, GL_CURRENT_MATRIX_ARB, params );
+                DsaGetv( orig, ctx, GL_CURRENT_MATRIX_ARB, params );
                 break;
             case GL_TRANSPOSE_PROGRAM_MATRIX_EXT:
                 ctx->dsa->DsaMatrixMode( ctx, GL_MATRIX0_ARB + index );
-                DsaGetv( orig, GL_TRANSPOSE_CURRENT_MATRIX_ARB, params );
+                DsaGetv( orig, ctx, GL_TRANSPOSE_CURRENT_MATRIX_ARB, params );
                 break;
             case GL_PROGRAM_MATRIX_STACK_DEPTH_EXT:
                 ctx->dsa->DsaMatrixMode( ctx, GL_MATRIX0_ARB + index );
-                DsaGetv( orig, GL_CURRENT_MATRIX_STACK_DEPTH_ARB, params );
+                DsaGetv( orig, ctx, GL_CURRENT_MATRIX_STACK_DEPTH_ARB, params );
                 break;
             case GL_CURRENT_MATRIX_NV:
             case GL_CURRENT_MATRIX_STACK_DEPTH_NV:
@@ -616,7 +616,7 @@ struct Dsa
             case GL_TEXTURE_CUBE_MAP:
             case GL_TEXTURE_RECTANGLE_ARB:
                 ctx->dsa->DsaActiveTexture( ctx, GL_TEXTURE0 + index );
-                DsaGetv( orig, pname, params );
+                DsaGetv( orig, ctx, pname, params );
                 break;
             case GL_TEXTURE_COORD_ARRAY:
             case GL_TEXTURE_COORD_ARRAY_BUFFER_BINDING:
@@ -625,7 +625,7 @@ struct Dsa
             case GL_TEXTURE_COORD_ARRAY_STRIDE:
             case GL_TEXTURE_COORD_ARRAY_TYPE:
                 ctx->dsa->DsaClientActiveTexture( ctx, GL_TEXTURE0 + index );
-                DsaGetv( orig, pname, params );
+                DsaGetv( orig, ctx, pname, params );
                 break;
             default:
                 return false;
@@ -721,11 +721,11 @@ struct Dsa
             case GL_TEXTURE_GEN_R:
             case GL_TEXTURE_GEN_Q:
                 ctx->dsa->DsaActiveTexture( ctx, GL_TEXTURE0 + index );
-                return orig.glIsEnabled( pname );
+                return orig.glIsEnabled( ctx, pname );
                 break;
             case GL_TEXTURE_COORD_ARRAY:
                 ctx->dsa->DsaClientActiveTexture( ctx, GL_TEXTURE0 + index );
-                return orig.glIsEnabled( pname );
+                return orig.glIsEnabled( ctx, pname );
             default:
                 break;
         }

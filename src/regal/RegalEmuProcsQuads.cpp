@@ -62,7 +62,7 @@ static void REGAL_CALL emuProcInterceptQuads_glBindBuffer(RegalContext *_context
   // prefix
   _context->quads->glBindBuffer( target, buffer );
 
-  orig.glBindBuffer( _context, target, buffer);
+  orig.glBindBuffer( _context, target, buffer );
 
 }
 
@@ -74,7 +74,7 @@ static void REGAL_CALL emuProcInterceptQuads_glCullFace(RegalContext *_context, 
   // prefix
   _context->quads->glCullFace( mode );
 
-  orig.glCullFace( _context, mode);
+  orig.glCullFace( _context, mode );
 
 }
 
@@ -86,7 +86,7 @@ static void REGAL_CALL emuProcInterceptQuads_glDisable(RegalContext *_context, G
   // prefix
   _context->quads->glDisable( cap );
 
-  orig.glDisable( _context, cap);
+  orig.glDisable( _context, cap );
 
 }
 
@@ -98,7 +98,7 @@ static void REGAL_CALL emuProcInterceptQuads_glDrawArrays(RegalContext *_context
   // impl
 
   if ( ! _context->quads->glDrawArrays( _context, mode, first, count ) ) {
-    return orig.glDrawArrays( mode, first, count );
+    return orig.glDrawArrays( _context, mode, first, count );
   }
 
 }
@@ -111,7 +111,7 @@ static void REGAL_CALL emuProcInterceptQuads_glDrawArraysEXT(RegalContext *_cont
   // impl
 
   if ( ! _context->quads->glDrawArrays( _context, mode, first, count ) ) {
-    return orig.glDrawArrays( mode, first, count );
+    return orig.glDrawArrays( _context, mode, first, count );
   }
 
 }
@@ -124,7 +124,7 @@ static void REGAL_CALL emuProcInterceptQuads_glEnable(RegalContext *_context, GL
   // prefix
   _context->quads->glEnable( cap );
 
-  orig.glEnable( _context, cap);
+  orig.glEnable( _context, cap );
 
 }
 
@@ -136,7 +136,7 @@ static void REGAL_CALL emuProcInterceptQuads_glFrontFace(RegalContext *_context,
   // prefix
   _context->quads->glFrontFace( mode );
 
-  orig.glFrontFace( _context, mode);
+  orig.glFrontFace( _context, mode );
 
 }
 
@@ -148,7 +148,7 @@ static void REGAL_CALL emuProcInterceptQuads_glPolygonMode(RegalContext *_contex
   // prefix
   _context->quads->glPolygonMode( face, mode );
 
-  orig.glPolygonMode( _context, face, mode);
+  orig.glPolygonMode( _context, face, mode );
 
 }
 
@@ -160,7 +160,7 @@ static void REGAL_CALL emuProcInterceptQuads_glProvokingVertex(RegalContext *_co
   // prefix
   _context->quads->glProvokingVertex( mode );
 
-  orig.glProvokingVertex( _context, mode);
+  orig.glProvokingVertex( _context, mode );
 
 }
 
@@ -172,7 +172,7 @@ static void REGAL_CALL emuProcInterceptQuads_glProvokingVertexEXT(RegalContext *
   // prefix
   _context->quads->glProvokingVertex( mode );
 
-  orig.glProvokingVertexEXT( _context, mode);
+  orig.glProvokingVertexEXT( _context, mode );
 
 }
 
@@ -184,7 +184,7 @@ static void REGAL_CALL emuProcInterceptQuads_glShadeModel(RegalContext *_context
   // prefix
   _context->quads->glShadeModel( mode );
 
-  orig.glShadeModel( _context, mode);
+  orig.glShadeModel( _context, mode );
 
 }
 

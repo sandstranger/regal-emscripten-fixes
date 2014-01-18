@@ -81,7 +81,7 @@ ppcFormulae = {
         'entries' : [ 'glGet(Boolean|Double|Float|Integer|Integer64)v' ],
         'impl' : [
             'if ( !rCtx->ppc->Get( ${arg0plus} ) ) {',
-            '   orig.glGet${m1}v( ${arg0plus} );',
+            '   orig.glGet${m1}v( _context, ${arg0plus} );',
             '}',
         ]
     },
@@ -97,7 +97,7 @@ ppcFormulae = {
         'entries' : [ 'glGetPointerv' ],
         'impl' : [
             'if ( !rCtx->ppc->GetPointerv( ${arg0plus} ) ) {',
-            '   orig.glGetPointerv( ${arg0plus} );',
+            '   orig.glGetPointerv( _context, ${arg0plus} );',
             '}',
         ]
     },
@@ -107,7 +107,7 @@ ppcFormulae = {
             '{',
             '    GLboolean enabled;',
             '    if ( !rCtx->ppc->IsEnabled( ${arg0plus}, enabled ) )',
-            '        return orig.glIsEnabled( ${arg0plus} );',
+            '        return orig.glIsEnabled( _context, ${arg0plus} );',
             '    return enabled;',
             '}',
         ]
@@ -118,7 +118,7 @@ ppcFormulae = {
             '//{',
             '    GLboolean enabled;',
             '    if ( !rCtx->ppc->IsEnabledIndexed( ${arg0plus}, enabled ) )',
-            '        return orig.glIsEnabledi( ${arg0plus} );',
+            '        return orig.glIsEnabledi( _context, ${arg0plus} );',
             '    return enabled;',
             '//}',
         ]
@@ -127,7 +127,7 @@ ppcFormulae = {
         'entries' : [ 'glGetVertexAttribPointerv(ARB|EXT|)' ],
         'impl' : [
             'if ( !rCtx->ppc->GetVertexAttribPointerv( ${arg0plus} ) ) {',
-            '   orig.glGetVertexAttribPointerv${m1}( ${arg0plus} );',
+            '   orig.glGetVertexAttribPointerv${m1}( _context, ${arg0plus} );',
             '}',
         ]
     },
@@ -135,7 +135,7 @@ ppcFormulae = {
         'entries' : [ 'glGetVertexAttrib(d|f|i)v(ARB|)' ],
         'impl' : [
             'if ( !rCtx->ppc->GetVertexAttribv( ${arg0plus} ) ) {',
-            '   orig.glGetVertexAttrib${m1}v${m2}( ${arg0plus} );',
+            '   orig.glGetVertexAttrib${m1}v${m2}( _context, ${arg0plus} );',
             '}',
         ]
     },

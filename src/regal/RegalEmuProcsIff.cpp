@@ -62,7 +62,7 @@ static void REGAL_CALL emuProcInterceptIff_glActiveTexture(RegalContext *_contex
   // prefix
   _context->iff->ShadowActiveTexture( texture );
 
-  orig.glActiveTexture( _context, texture);
+  orig.glActiveTexture( _context, texture );
 
 }
 
@@ -74,7 +74,7 @@ static void REGAL_CALL emuProcInterceptIff_glActiveTextureARB(RegalContext *_con
   // prefix
   _context->iff->ShadowActiveTexture( texture );
 
-  orig.glActiveTextureARB( _context, texture);
+  orig.glActiveTextureARB( _context, texture );
 
 }
 
@@ -104,7 +104,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindBuffer(RegalContext *_context, 
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glBindBuffer( _context, target, buffer);
+  orig.glBindBuffer( _context, target, buffer );
 
 }
 
@@ -116,7 +116,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindMultiTextureEXT(RegalContext *_
   // prefix
   _context->iff->ShadowMultiTexBinding( texunit, target, texture );
 
-  orig.glBindMultiTextureEXT( _context, texunit, target, texture);
+  orig.glBindMultiTextureEXT( _context, texunit, target, texture );
 
 }
 
@@ -127,7 +127,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindProgramPipeline(RegalContext *_
 
   // impl
   if( ! _context->iff->ShadowBindProgramPipeline( pipeline ) ) {
-      orig.glBindProgramPipeline( pipeline );
+      orig.glBindProgramPipeline( _context, pipeline );
   }
 
 }
@@ -140,7 +140,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindTexture(RegalContext *_context,
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
 
-  orig.glBindTexture( _context, target, texture);
+  orig.glBindTexture( _context, target, texture );
 
 }
 
@@ -152,7 +152,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindTextureEXT(RegalContext *_conte
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
 
-  orig.glBindTextureEXT( _context, target, texture);
+  orig.glBindTextureEXT( _context, target, texture );
 
 }
 
@@ -164,7 +164,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArray(RegalContext *_cont
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  orig.glBindVertexArray( _context, array);
+  orig.glBindVertexArray( _context, array );
 
 }
 
@@ -176,7 +176,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArrayAPPLE(RegalContext *
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  orig.glBindVertexArrayAPPLE( _context, array);
+  orig.glBindVertexArrayAPPLE( _context, array );
 
 }
 
@@ -188,7 +188,7 @@ static void REGAL_CALL emuProcInterceptIff_glBindVertexArrayOES(RegalContext *_c
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  orig.glBindVertexArrayOES( _context, array);
+  orig.glBindVertexArrayOES( _context, array );
 
 }
 
@@ -200,7 +200,7 @@ static void REGAL_CALL emuProcInterceptIff_glClientActiveTexture(RegalContext *_
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
 
-  orig.glClientActiveTexture( _context, texture);
+  orig.glClientActiveTexture( _context, texture );
 
 }
 
@@ -212,7 +212,7 @@ static void REGAL_CALL emuProcInterceptIff_glClientActiveTextureARB(RegalContext
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
 
-  orig.glClientActiveTextureARB( _context, texture);
+  orig.glClientActiveTextureARB( _context, texture );
 
 }
 
@@ -548,7 +548,7 @@ static void REGAL_CALL emuProcInterceptIff_glCopyTexImage2D(RegalContext *_conte
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border);
+  orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border );
 
 }
 
@@ -605,7 +605,7 @@ static void REGAL_CALL emuProcInterceptIff_glDepthRange(RegalContext *_context, 
   // prefix
   _context->iff->DepthRange( GLfloat(zNear), GLfloat(zFar) );
 
-  orig.glDepthRange( _context, zNear, zFar);
+  orig.glDepthRange( _context, zNear, zFar );
 
 }
 
@@ -616,7 +616,7 @@ static void REGAL_CALL emuProcInterceptIff_glDisable(RegalContext *_context, GLe
 
   // impl
   if( ! _context->iff->ShadowDisable( cap ) ) {
-      orig.glDisable( cap );
+      orig.glDisable( _context, cap );
   }
 
 }
@@ -648,7 +648,7 @@ static void REGAL_CALL emuProcInterceptIff_glDisableVertexAttribArray(RegalConte
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
 
-  orig.glDisableVertexAttribArray( _context, index);
+  orig.glDisableVertexAttribArray( _context, index );
 
 }
 
@@ -661,7 +661,7 @@ static void REGAL_CALL emuProcInterceptIff_glDisableVertexAttribArrayARB(RegalCo
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
 
-  orig.glDisableVertexAttribArrayARB( _context, index);
+  orig.glDisableVertexAttribArrayARB( _context, index );
 
 }
 
@@ -682,7 +682,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArrays(RegalContext *_context, 
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArrays( _context, mode, first, count);
+  orig.glDrawArrays( _context, mode, first, count );
 
 }
 
@@ -694,7 +694,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysEXT(RegalContext *_contex
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysEXT( _context, mode, first, count);
+  orig.glDrawArraysEXT( _context, mode, first, count );
 
 }
 
@@ -706,7 +706,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysIndirect(RegalContext *_c
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysIndirect( _context, mode, indirect);
+  orig.glDrawArraysIndirect( _context, mode, indirect );
 
 }
 
@@ -718,7 +718,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstanced(RegalContext *_
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysInstanced( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstanced( _context, mode, start, count, primcount );
 
 }
 
@@ -730,7 +730,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstancedARB(RegalContext
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysInstancedARB( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstancedARB( _context, mode, start, count, primcount );
 
 }
 
@@ -742,7 +742,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawArraysInstancedEXT(RegalContext
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysInstancedEXT( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstancedEXT( _context, mode, start, count, primcount );
 
 }
 
@@ -754,7 +754,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementArrayAPPLE(RegalContext 
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementArrayAPPLE( _context, mode, first, count);
+  orig.glDrawElementArrayAPPLE( _context, mode, first, count );
 
 }
 
@@ -766,7 +766,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementArrayATI(RegalContext *_
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementArrayATI( _context, mode, count);
+  orig.glDrawElementArrayATI( _context, mode, count );
 
 }
 
@@ -778,7 +778,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElements(RegalContext *_context
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElements( _context, mode, count, type, indices);
+  orig.glDrawElements( _context, mode, count, type, indices );
 
 }
 
@@ -790,7 +790,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsBaseVertex(RegalContext
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsBaseVertex( _context, mode, count, type, indices, basevertex);
+  orig.glDrawElementsBaseVertex( _context, mode, count, type, indices, basevertex );
 
 }
 
@@ -802,7 +802,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsIndirect(RegalContext *
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsIndirect( _context, mode, type, indirect);
+  orig.glDrawElementsIndirect( _context, mode, type, indirect );
 
 }
 
@@ -814,7 +814,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstanced(RegalContext 
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstanced( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstanced( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -826,7 +826,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedARB(RegalConte
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstancedARB( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedARB( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -838,7 +838,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedBaseVertex(Reg
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstancedBaseVertex( _context, mode, count, type, indices, primcount, basevertex);
+  orig.glDrawElementsInstancedBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
 
 }
 
@@ -850,7 +850,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawElementsInstancedEXT(RegalConte
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstancedEXT( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedEXT( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -862,7 +862,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementArrayAPPLE(RegalCon
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementArrayAPPLE( _context, mode, start, end, first, count);
+  orig.glDrawRangeElementArrayAPPLE( _context, mode, start, end, first, count );
 
 }
 
@@ -874,7 +874,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementArrayATI(RegalConte
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementArrayATI( _context, mode, start, end, count);
+  orig.glDrawRangeElementArrayATI( _context, mode, start, end, count );
 
 }
 
@@ -886,7 +886,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElements(RegalContext *_co
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElements( _context, mode, start, end, count, type, indices);
+  orig.glDrawRangeElements( _context, mode, start, end, count, type, indices );
 
 }
 
@@ -898,7 +898,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementsBaseVertex(RegalCo
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementsBaseVertex( _context, mode, start, end, count, type, indices, basevertex);
+  orig.glDrawRangeElementsBaseVertex( _context, mode, start, end, count, type, indices, basevertex );
 
 }
 
@@ -910,7 +910,7 @@ static void REGAL_CALL emuProcInterceptIff_glDrawRangeElementsEXT(RegalContext *
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementsEXT( _context, mode, start, end, count, type, indices);
+  orig.glDrawRangeElementsEXT( _context, mode, start, end, count, type, indices );
 
 }
 
@@ -939,7 +939,7 @@ static void REGAL_CALL emuProcInterceptIff_glEnable(RegalContext *_context, GLen
 
   // impl
   if( ! _context->iff->ShadowEnable( cap ) ) {
-      orig.glEnable( cap );
+      orig.glEnable( _context, cap );
   }
 
 }
@@ -971,7 +971,7 @@ static void REGAL_CALL emuProcInterceptIff_glEnableVertexAttribArray(RegalContex
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
 
-  orig.glEnableVertexAttribArray( _context, index);
+  orig.glEnableVertexAttribArray( _context, index );
 
 }
 
@@ -984,7 +984,7 @@ static void REGAL_CALL emuProcInterceptIff_glEnableVertexAttribArrayARB(RegalCon
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
 
-  orig.glEnableVertexAttribArrayARB( _context, index);
+  orig.glEnableVertexAttribArrayARB( _context, index );
 
 }
 
@@ -1077,7 +1077,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetBooleanv(RegalContext *_context,
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->glGetBooleanv( _context, pname, params ) ) {
-      orig.glGetBooleanv( pname, params );
+      orig.glGetBooleanv( _context, pname, params );
   }
 
 }
@@ -1090,7 +1090,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetDoublev(RegalContext *_context, 
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->Get( _context, pname, params ) ) {
-      orig.glGetDoublev( pname, params );
+      orig.glGetDoublev( _context, pname, params );
   }
 
 }
@@ -1103,7 +1103,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetFloatv(RegalContext *_context, G
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->Get( _context, pname, params ) ) {
-      orig.glGetFloatv( pname, params );
+      orig.glGetFloatv( _context, pname, params );
   }
 
 }
@@ -1116,7 +1116,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetIntegerv(RegalContext *_context,
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->Get( _context, pname, params ) ) {
-      orig.glGetIntegerv( pname, params );
+      orig.glGetIntegerv( _context, pname, params );
   }
 
 }
@@ -1147,7 +1147,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetMultiTexGendvEXT(RegalContext *_
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetMultiTexGenv( _context, texunit, coord, pname, params ) ) {
-      orig.glGetMultiTexGendvEXT( texunit, coord, pname, params );
+      orig.glGetMultiTexGendvEXT( _context, texunit, coord, pname, params );
   }
 
 }
@@ -1160,7 +1160,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetMultiTexGenfvEXT(RegalContext *_
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetMultiTexGenv( _context, texunit, coord, pname, params ) ) {
-      orig.glGetMultiTexGenfvEXT( texunit, coord, pname, params );
+      orig.glGetMultiTexGenfvEXT( _context, texunit, coord, pname, params );
   }
 
 }
@@ -1173,7 +1173,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetMultiTexGenivEXT(RegalContext *_
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetMultiTexGenv( _context, texunit, coord, pname, params ) ) {
-      orig.glGetMultiTexGenivEXT( texunit, coord, pname, params );
+      orig.glGetMultiTexGenivEXT( _context, texunit, coord, pname, params );
   }
 
 }
@@ -1186,7 +1186,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexEnvfv(RegalContext *_context,
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexEnv( target, pname, params ) ) {
-      orig.glGetTexEnvfv( target, pname, params );
+      orig.glGetTexEnvfv( _context, target, pname, params );
   }
 
 }
@@ -1199,7 +1199,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexEnviv(RegalContext *_context,
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexEnv( target, pname, params ) ) {
-      orig.glGetTexEnviv( target, pname, params );
+      orig.glGetTexEnviv( _context, target, pname, params );
   }
 
 }
@@ -1212,7 +1212,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexGendv(RegalContext *_context,
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexGenv( _context, coord, pname, params ) ) {
-      orig.glGetTexGendv( coord, pname, params );
+      orig.glGetTexGendv( _context, coord, pname, params );
   }
 
 }
@@ -1225,7 +1225,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexGenfv(RegalContext *_context,
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexGenv( _context, coord, pname, params ) ) {
-      orig.glGetTexGenfv( coord, pname, params );
+      orig.glGetTexGenfv( _context, coord, pname, params );
   }
 
 }
@@ -1238,7 +1238,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetTexGeniv(RegalContext *_context,
   // impl
   _context->iff->RestoreVao( _context );
   if ( ! _context->iff->GetTexGenv( _context, coord, pname, params ) ) {
-      orig.glGetTexGeniv( coord, pname, params );
+      orig.glGetTexGeniv( _context, coord, pname, params );
   }
 
 }
@@ -1251,7 +1251,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribPointerv(RegalContex
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribPointerv( _context, index, pname, pointer);
+  orig.glGetVertexAttribPointerv( _context, index, pname, pointer );
 
 }
 
@@ -1263,7 +1263,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribPointervARB(RegalCon
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribPointervARB( _context, index, pname, pointer);
+  orig.glGetVertexAttribPointervARB( _context, index, pname, pointer );
 
 }
 
@@ -1275,7 +1275,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribdv(RegalContext *_co
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribdv( _context, index, pname, params);
+  orig.glGetVertexAttribdv( _context, index, pname, params );
 
 }
 
@@ -1287,7 +1287,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribdvARB(RegalContext *
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribdvARB( _context, index, pname, params);
+  orig.glGetVertexAttribdvARB( _context, index, pname, params );
 
 }
 
@@ -1299,7 +1299,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribfv(RegalContext *_co
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribfv( _context, index, pname, params);
+  orig.glGetVertexAttribfv( _context, index, pname, params );
 
 }
 
@@ -1311,7 +1311,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribfvARB(RegalContext *
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribfvARB( _context, index, pname, params);
+  orig.glGetVertexAttribfvARB( _context, index, pname, params );
 
 }
 
@@ -1323,7 +1323,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribiv(RegalContext *_co
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribiv( _context, index, pname, params);
+  orig.glGetVertexAttribiv( _context, index, pname, params );
 
 }
 
@@ -1335,7 +1335,7 @@ static void REGAL_CALL emuProcInterceptIff_glGetVertexAttribivARB(RegalContext *
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribivARB( _context, index, pname, params);
+  orig.glGetVertexAttribivARB( _context, index, pname, params );
 
 }
 
@@ -1348,7 +1348,7 @@ static GLboolean REGAL_CALL emuProcInterceptIff_glIsEnabled(RegalContext *_conte
   {
       GLboolean enabled;
       if ( !_context->iff->IsEnabled( _context, cap, enabled ) )
-          return orig.glIsEnabled( cap );
+          return orig.glIsEnabled( _context, cap );
       return enabled;
   }
 
@@ -1613,7 +1613,7 @@ static void REGAL_CALL emuProcInterceptIff_glMatrixMode(RegalContext *_context, 
 
   // impl
   if( ! _context->iff->ShadowMatrixMode( mode ) ) {
-      orig.glMatrixMode( mode );
+      orig.glMatrixMode( _context, mode );
   }
 
 }
@@ -1797,7 +1797,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArrays(RegalContext *_cont
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArrays( _context, mode, first, count, primcount);
+  orig.glMultiDrawArrays( _context, mode, first, count, primcount );
 
 }
 
@@ -1809,7 +1809,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysEXT(RegalContext *_c
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArraysEXT( _context, mode, first, count, primcount);
+  orig.glMultiDrawArraysEXT( _context, mode, first, count, primcount );
 
 }
 
@@ -1821,7 +1821,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysIndirect(RegalContex
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArraysIndirect( _context, mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirect( _context, mode, indirect, primcount, stride );
 
 }
 
@@ -1833,7 +1833,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawArraysIndirectAMD(RegalCon
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArraysIndirectAMD( _context, mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirectAMD( _context, mode, indirect, primcount, stride );
 
 }
 
@@ -1845,7 +1845,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementArrayAPPLE(RegalCon
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementArrayAPPLE( _context, mode, first, count, primcount);
+  orig.glMultiDrawElementArrayAPPLE( _context, mode, first, count, primcount );
 
 }
 
@@ -1857,7 +1857,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElements(RegalContext *_co
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElements( _context, mode, count, type, indices, primcount);
+  orig.glMultiDrawElements( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -1869,7 +1869,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsBaseVertex(RegalCo
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsBaseVertex( _context, mode, count, type, indices, primcount, basevertex);
+  orig.glMultiDrawElementsBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
 
 }
 
@@ -1881,7 +1881,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsEXT(RegalContext *
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsEXT( _context, mode, count, type, indices, primcount);
+  orig.glMultiDrawElementsEXT( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -1893,7 +1893,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsIndirect(RegalCont
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsIndirect( _context, mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirect( _context, mode, type, indirect, primcount, stride );
 
 }
 
@@ -1905,7 +1905,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawElementsIndirectAMD(RegalC
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsIndirectAMD( _context, mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirectAMD( _context, mode, type, indirect, primcount, stride );
 
 }
 
@@ -1917,7 +1917,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiDrawRangeElementArrayAPPLE(Reg
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawRangeElementArrayAPPLE( _context, mode, start, end, first, count, primcount);
+  orig.glMultiDrawRangeElementArrayAPPLE( _context, mode, start, end, first, count, primcount );
 
 }
 
@@ -2541,7 +2541,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage1DEXT(RegalContext *_c
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  orig.glMultiTexImage1DEXT( _context, texunit, target, level, internalformat, width, border, format, type, pixels);
+  orig.glMultiTexImage1DEXT( _context, texunit, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
@@ -2553,7 +2553,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage2DEXT(RegalContext *_c
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  orig.glMultiTexImage2DEXT( _context, texunit, target, level, internalformat, width, height, border, format, type, pixels);
+  orig.glMultiTexImage2DEXT( _context, texunit, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
@@ -2565,7 +2565,7 @@ static void REGAL_CALL emuProcInterceptIff_glMultiTexImage3DEXT(RegalContext *_c
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  orig.glMultiTexImage3DEXT( _context, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glMultiTexImage3DEXT( _context, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
@@ -3126,7 +3126,7 @@ static void REGAL_CALL emuProcInterceptIff_glShadeModel(RegalContext *_context, 
   // impl
   _context->iff->ShadeModel( mode );
   if( !_context->isCore() && !_context->isES2() ) {
-    orig.glShadeModel(mode);
+    orig.glShadeModel( _context,mode);
   }
 
 }
@@ -3498,7 +3498,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexGend(RegalContext *_context, GLe
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, param ) ) {
-      orig.glTexGend( coord, pname, param );
+      orig.glTexGend( _context, coord, pname, param );
   }
 
 }
@@ -3510,7 +3510,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexGendv(RegalContext *_context, GL
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, params ) ) {
-      orig.glTexGendv( coord, pname, params );
+      orig.glTexGendv( _context, coord, pname, params );
   }
 
 }
@@ -3522,7 +3522,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexGenf(RegalContext *_context, GLe
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, param ) ) {
-      orig.glTexGenf( coord, pname, param );
+      orig.glTexGenf( _context, coord, pname, param );
   }
 
 }
@@ -3534,7 +3534,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexGenfv(RegalContext *_context, GL
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, params ) ) {
-      orig.glTexGenfv( coord, pname, params );
+      orig.glTexGenfv( _context, coord, pname, params );
   }
 
 }
@@ -3546,7 +3546,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexGeni(RegalContext *_context, GLe
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, param ) ) {
-      orig.glTexGeni( coord, pname, param );
+      orig.glTexGeni( _context, coord, pname, param );
   }
 
 }
@@ -3558,7 +3558,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexGeniv(RegalContext *_context, GL
 
   // impl
   if ( ! _context->iff->TexGen( coord, pname, params ) ) {
-      orig.glTexGeniv( coord, pname, params );
+      orig.glTexGeniv( _context, coord, pname, params );
   }
 
 }
@@ -3571,7 +3571,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage1D(RegalContext *_context, 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels);
+  orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
@@ -3583,7 +3583,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2D(RegalContext *_context, 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels);
+  orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
@@ -3595,7 +3595,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2DMultisample(RegalContext 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage2DMultisample( _context, target, samples, internalformat, width, height, fixedsamplelocations);
+  orig.glTexImage2DMultisample( _context, target, samples, internalformat, width, height, fixedsamplelocations );
 
 }
 
@@ -3607,7 +3607,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage2DMultisampleCoverageNV(Reg
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
 
-  orig.glTexImage2DMultisampleCoverageNV( _context, target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations);
+  orig.glTexImage2DMultisampleCoverageNV( _context, target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations );
 
 }
 
@@ -3619,7 +3619,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3D(RegalContext *_context, 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
@@ -3631,7 +3631,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DEXT(RegalContext *_contex
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage3DEXT( _context, target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glTexImage3DEXT( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
@@ -3643,7 +3643,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DMultisample(RegalContext 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage3DMultisample( _context, target, samples, internalformat, width, height, depth, fixedsamplelocations);
+  orig.glTexImage3DMultisample( _context, target, samples, internalformat, width, height, depth, fixedsamplelocations );
 
 }
 
@@ -3655,7 +3655,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage3DMultisampleCoverageNV(Reg
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
 
-  orig.glTexImage3DMultisampleCoverageNV( _context, target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations);
+  orig.glTexImage3DMultisampleCoverageNV( _context, target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations );
 
 }
 
@@ -3667,7 +3667,7 @@ static void REGAL_CALL emuProcInterceptIff_glTexImage4DSGIS(RegalContext *_conte
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage4DSGIS( _context, target, level, internalformat, width, height, depth, size4d, border, format, type, pixels);
+  orig.glTexImage4DSGIS( _context, target, level, internalformat, width, height, depth, size4d, border, format, type, pixels );
 
 }
 
@@ -3679,7 +3679,7 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage1DEXT(RegalContext *_co
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  orig.glTextureImage1DEXT( _context, texture, target, level, internalformat, width, border, format, type, pixels);
+  orig.glTextureImage1DEXT( _context, texture, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
@@ -3691,7 +3691,7 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage2DEXT(RegalContext *_co
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  orig.glTextureImage2DEXT( _context, texture, target, level, internalformat, width, height, border, format, type, pixels);
+  orig.glTextureImage2DEXT( _context, texture, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
@@ -3703,7 +3703,7 @@ static void REGAL_CALL emuProcInterceptIff_glTextureImage3DEXT(RegalContext *_co
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  orig.glTextureImage3DEXT( _context, texture, target, level, internalformat, width, height, depth, border, format, type, pixels);
+  orig.glTextureImage3DEXT( _context, texture, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
@@ -4698,7 +4698,7 @@ static void REGAL_CALL emuProcInterceptIff_glUseProgram(RegalContext *_context, 
 
   // impl
   if( ! _context->iff->ShadowUseProgram( program ) ) {
-      orig.glUseProgram( program );
+      orig.glUseProgram( _context, program );
   }
 
 }
@@ -4710,7 +4710,7 @@ static void REGAL_CALL emuProcInterceptIff_glUseProgramObjectARB(RegalContext *_
 
   // impl
   if( ! _context->iff->ShadowUseProgram( programObj ) ) {
-      orig.glUseProgram( programObj );
+      orig.glUseProgram( _context, programObj );
   }
 
 }
@@ -4939,7 +4939,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1d(RegalContext *_conte
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1d( _context, index, x);
+  orig.glVertexAttrib1d( _context, index, x );
 
 }
 
@@ -4951,7 +4951,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dARB(RegalContext *_co
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1dARB( _context, index, x);
+  orig.glVertexAttrib1dARB( _context, index, x );
 
 }
 
@@ -4963,7 +4963,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dv(RegalContext *_cont
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1dv( _context, index, v);
+  orig.glVertexAttrib1dv( _context, index, v );
 
 }
 
@@ -4975,7 +4975,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1dvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1dvARB( _context, index, v);
+  orig.glVertexAttrib1dvARB( _context, index, v );
 
 }
 
@@ -4987,7 +4987,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1f(RegalContext *_conte
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1f( _context, index, x);
+  orig.glVertexAttrib1f( _context, index, x );
 
 }
 
@@ -4999,7 +4999,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fARB(RegalContext *_co
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1fARB( _context, index, x);
+  orig.glVertexAttrib1fARB( _context, index, x );
 
 }
 
@@ -5011,7 +5011,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fv(RegalContext *_cont
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1fv( _context, index, v);
+  orig.glVertexAttrib1fv( _context, index, v );
 
 }
 
@@ -5023,7 +5023,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1fvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1fvARB( _context, index, v);
+  orig.glVertexAttrib1fvARB( _context, index, v );
 
 }
 
@@ -5035,7 +5035,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1s(RegalContext *_conte
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1s( _context, index, x);
+  orig.glVertexAttrib1s( _context, index, x );
 
 }
 
@@ -5047,7 +5047,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1sARB(RegalContext *_co
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1sARB( _context, index, x);
+  orig.glVertexAttrib1sARB( _context, index, x );
 
 }
 
@@ -5059,7 +5059,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1sv(RegalContext *_cont
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1sv( _context, index, v);
+  orig.glVertexAttrib1sv( _context, index, v );
 
 }
 
@@ -5071,7 +5071,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib1svARB(RegalContext *_c
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1svARB( _context, index, v);
+  orig.glVertexAttrib1svARB( _context, index, v );
 
 }
 
@@ -5083,7 +5083,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2d(RegalContext *_conte
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2d( _context, index, x, y);
+  orig.glVertexAttrib2d( _context, index, x, y );
 
 }
 
@@ -5095,7 +5095,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dARB(RegalContext *_co
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2dARB( _context, index, x, y);
+  orig.glVertexAttrib2dARB( _context, index, x, y );
 
 }
 
@@ -5107,7 +5107,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dv(RegalContext *_cont
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2dv( _context, index, v);
+  orig.glVertexAttrib2dv( _context, index, v );
 
 }
 
@@ -5119,7 +5119,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2dvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2dvARB( _context, index, v);
+  orig.glVertexAttrib2dvARB( _context, index, v );
 
 }
 
@@ -5131,7 +5131,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2f(RegalContext *_conte
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2f( _context, index, x, y);
+  orig.glVertexAttrib2f( _context, index, x, y );
 
 }
 
@@ -5143,7 +5143,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fARB(RegalContext *_co
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2fARB( _context, index, x, y);
+  orig.glVertexAttrib2fARB( _context, index, x, y );
 
 }
 
@@ -5155,7 +5155,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fv(RegalContext *_cont
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2fv( _context, index, v);
+  orig.glVertexAttrib2fv( _context, index, v );
 
 }
 
@@ -5167,7 +5167,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2fvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2fvARB( _context, index, v);
+  orig.glVertexAttrib2fvARB( _context, index, v );
 
 }
 
@@ -5179,7 +5179,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2s(RegalContext *_conte
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2s( _context, index, x, y);
+  orig.glVertexAttrib2s( _context, index, x, y );
 
 }
 
@@ -5191,7 +5191,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2sARB(RegalContext *_co
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2sARB( _context, index, x, y);
+  orig.glVertexAttrib2sARB( _context, index, x, y );
 
 }
 
@@ -5203,7 +5203,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2sv(RegalContext *_cont
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2sv( _context, index, v);
+  orig.glVertexAttrib2sv( _context, index, v );
 
 }
 
@@ -5215,7 +5215,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib2svARB(RegalContext *_c
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2svARB( _context, index, v);
+  orig.glVertexAttrib2svARB( _context, index, v );
 
 }
 
@@ -5227,7 +5227,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3d(RegalContext *_conte
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3d( _context, index, x, y, z);
+  orig.glVertexAttrib3d( _context, index, x, y, z );
 
 }
 
@@ -5239,7 +5239,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dARB(RegalContext *_co
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3dARB( _context, index, x, y, z);
+  orig.glVertexAttrib3dARB( _context, index, x, y, z );
 
 }
 
@@ -5251,7 +5251,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dv(RegalContext *_cont
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3dv( _context, index, v);
+  orig.glVertexAttrib3dv( _context, index, v );
 
 }
 
@@ -5263,7 +5263,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3dvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3dvARB( _context, index, v);
+  orig.glVertexAttrib3dvARB( _context, index, v );
 
 }
 
@@ -5275,7 +5275,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3f(RegalContext *_conte
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3f( _context, index, x, y, z);
+  orig.glVertexAttrib3f( _context, index, x, y, z );
 
 }
 
@@ -5287,7 +5287,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fARB(RegalContext *_co
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3fARB( _context, index, x, y, z);
+  orig.glVertexAttrib3fARB( _context, index, x, y, z );
 
 }
 
@@ -5299,7 +5299,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fv(RegalContext *_cont
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3fv( _context, index, v);
+  orig.glVertexAttrib3fv( _context, index, v );
 
 }
 
@@ -5311,7 +5311,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3fvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3fvARB( _context, index, v);
+  orig.glVertexAttrib3fvARB( _context, index, v );
 
 }
 
@@ -5323,7 +5323,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3s(RegalContext *_conte
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3s( _context, index, x, y, z);
+  orig.glVertexAttrib3s( _context, index, x, y, z );
 
 }
 
@@ -5335,7 +5335,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3sARB(RegalContext *_co
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3sARB( _context, index, x, y, z);
+  orig.glVertexAttrib3sARB( _context, index, x, y, z );
 
 }
 
@@ -5347,7 +5347,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3sv(RegalContext *_cont
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3sv( _context, index, v);
+  orig.glVertexAttrib3sv( _context, index, v );
 
 }
 
@@ -5359,7 +5359,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib3svARB(RegalContext *_c
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3svARB( _context, index, v);
+  orig.glVertexAttrib3svARB( _context, index, v );
 
 }
 
@@ -5371,7 +5371,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nbv(RegalContext *_con
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nbv( _context, index, v);
+  orig.glVertexAttrib4Nbv( _context, index, v );
 
 }
 
@@ -5383,7 +5383,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NbvARB(RegalContext *_
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NbvARB( _context, index, v);
+  orig.glVertexAttrib4NbvARB( _context, index, v );
 
 }
 
@@ -5395,7 +5395,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Niv(RegalContext *_con
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Niv( _context, index, v);
+  orig.glVertexAttrib4Niv( _context, index, v );
 
 }
 
@@ -5407,7 +5407,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NivARB(RegalContext *_
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NivARB( _context, index, v);
+  orig.glVertexAttrib4NivARB( _context, index, v );
 
 }
 
@@ -5419,7 +5419,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nsv(RegalContext *_con
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nsv( _context, index, v);
+  orig.glVertexAttrib4Nsv( _context, index, v );
 
 }
 
@@ -5431,7 +5431,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NsvARB(RegalContext *_
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NsvARB( _context, index, v);
+  orig.glVertexAttrib4NsvARB( _context, index, v );
 
 }
 
@@ -5443,7 +5443,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nub(RegalContext *_con
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4Nub( _context, index, x, y, z, w);
+  orig.glVertexAttrib4Nub( _context, index, x, y, z, w );
 
 }
 
@@ -5455,7 +5455,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubARB(RegalContext *_
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4NubARB( _context, index, x, y, z, w);
+  orig.glVertexAttrib4NubARB( _context, index, x, y, z, w );
 
 }
 
@@ -5467,7 +5467,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nubv(RegalContext *_co
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nubv( _context, index, v);
+  orig.glVertexAttrib4Nubv( _context, index, v );
 
 }
 
@@ -5479,7 +5479,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NubvARB(RegalContext *
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NubvARB( _context, index, v);
+  orig.glVertexAttrib4NubvARB( _context, index, v );
 
 }
 
@@ -5491,7 +5491,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4Nusv(RegalContext *_co
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nusv( _context, index, v);
+  orig.glVertexAttrib4Nusv( _context, index, v );
 
 }
 
@@ -5503,7 +5503,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4NusvARB(RegalContext *
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NusvARB( _context, index, v);
+  orig.glVertexAttrib4NusvARB( _context, index, v );
 
 }
 
@@ -5515,7 +5515,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4bv(RegalContext *_cont
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4bv( _context, index, v);
+  orig.glVertexAttrib4bv( _context, index, v );
 
 }
 
@@ -5527,7 +5527,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4bvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4bvARB( _context, index, v);
+  orig.glVertexAttrib4bvARB( _context, index, v );
 
 }
 
@@ -5539,7 +5539,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4d(RegalContext *_conte
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4d( _context, index, x, y, z, w);
+  orig.glVertexAttrib4d( _context, index, x, y, z, w );
 
 }
 
@@ -5551,7 +5551,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dARB(RegalContext *_co
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4dARB( _context, index, x, y, z, w);
+  orig.glVertexAttrib4dARB( _context, index, x, y, z, w );
 
 }
 
@@ -5563,7 +5563,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dv(RegalContext *_cont
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4dv( _context, index, v);
+  orig.glVertexAttrib4dv( _context, index, v );
 
 }
 
@@ -5575,7 +5575,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4dvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4dvARB( _context, index, v);
+  orig.glVertexAttrib4dvARB( _context, index, v );
 
 }
 
@@ -5587,7 +5587,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4f(RegalContext *_conte
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4f( _context, index, x, y, z, w);
+  orig.glVertexAttrib4f( _context, index, x, y, z, w );
 
 }
 
@@ -5599,7 +5599,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fARB(RegalContext *_co
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4fARB( _context, index, x, y, z, w);
+  orig.glVertexAttrib4fARB( _context, index, x, y, z, w );
 
 }
 
@@ -5611,7 +5611,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fv(RegalContext *_cont
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4fv( _context, index, v);
+  orig.glVertexAttrib4fv( _context, index, v );
 
 }
 
@@ -5623,7 +5623,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4fvARB(RegalContext *_c
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4fvARB( _context, index, v);
+  orig.glVertexAttrib4fvARB( _context, index, v );
 
 }
 
@@ -5635,7 +5635,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4iv(RegalContext *_cont
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4iv( _context, index, v);
+  orig.glVertexAttrib4iv( _context, index, v );
 
 }
 
@@ -5647,7 +5647,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ivARB(RegalContext *_c
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4ivARB( _context, index, v);
+  orig.glVertexAttrib4ivARB( _context, index, v );
 
 }
 
@@ -5659,7 +5659,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4s(RegalContext *_conte
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4s( _context, index, x, y, z, w);
+  orig.glVertexAttrib4s( _context, index, x, y, z, w );
 
 }
 
@@ -5671,7 +5671,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4sARB(RegalContext *_co
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4sARB( _context, index, x, y, z, w);
+  orig.glVertexAttrib4sARB( _context, index, x, y, z, w );
 
 }
 
@@ -5683,7 +5683,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4sv(RegalContext *_cont
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4sv( _context, index, v);
+  orig.glVertexAttrib4sv( _context, index, v );
 
 }
 
@@ -5695,7 +5695,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4svARB(RegalContext *_c
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4svARB( _context, index, v);
+  orig.glVertexAttrib4svARB( _context, index, v );
 
 }
 
@@ -5707,7 +5707,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ubv(RegalContext *_con
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4ubv( _context, index, v);
+  orig.glVertexAttrib4ubv( _context, index, v );
 
 }
 
@@ -5719,7 +5719,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4ubvARB(RegalContext *_
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4ubvARB( _context, index, v);
+  orig.glVertexAttrib4ubvARB( _context, index, v );
 
 }
 
@@ -5731,7 +5731,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4usv(RegalContext *_con
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4usv( _context, index, v);
+  orig.glVertexAttrib4usv( _context, index, v );
 
 }
 
@@ -5743,7 +5743,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttrib4usvARB(RegalContext *_
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4usvARB( _context, index, v);
+  orig.glVertexAttrib4usvARB( _context, index, v );
 
 }
 
@@ -5755,7 +5755,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttribPointer(RegalContext *_
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glVertexAttribPointer( _context, index, size, type, normalized, stride, pointer);
+  orig.glVertexAttribPointer( _context, index, size, type, normalized, stride, pointer );
 
 }
 
@@ -5767,7 +5767,7 @@ static void REGAL_CALL emuProcInterceptIff_glVertexAttribPointerARB(RegalContext
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glVertexAttribPointerARB( _context, index, size, type, normalized, stride, pointer);
+  orig.glVertexAttribPointerARB( _context, index, size, type, normalized, stride, pointer );
 
 }
 
@@ -5797,7 +5797,7 @@ static void REGAL_CALL emuProcInterceptIff_glViewport(RegalContext *_context, GL
   // prefix
   _context->iff->Viewport( x, y, width, height );
 
-  orig.glViewport( _context, x, y, width, height);
+  orig.glViewport( _context, x, y, width, height );
 
 }
 

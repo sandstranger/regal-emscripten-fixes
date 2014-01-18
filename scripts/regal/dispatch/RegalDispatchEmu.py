@@ -108,7 +108,11 @@ def callAndReturn( e, function ):
 
   if not typeIsVoid(rType):
     code += 'return '
-  code += 'orig.%s( _context, %s);\n' % ( name, callParams )
+  if len(callParams) == 0:
+    callParams = "_context"
+  else:
+    callParams = "_context, %s" % callParams
+  code += 'orig.%s( %s );\n' % ( name, callParams )
   
   return code
 
@@ -142,7 +146,7 @@ def apiEmuProcsSourceCode( e, apis, orig ):
 
       intercept.append( name )
 
-      if params == "void" or params == "":
+      if params == "void" or len(params) is 0:
         params = "RegalContext *_context"
       else:
         params = "RegalContext *_context, %s" % params

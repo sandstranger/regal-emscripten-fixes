@@ -61,7 +61,7 @@ static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(RegalContext *_context
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    orig.glGetBooleanv( pname, params );
+    orig.glGetBooleanv( _context, pname, params );
   }
 
 }
@@ -73,7 +73,7 @@ static void REGAL_CALL emuProcInterceptHint_glGetDoublev(RegalContext *_context,
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    orig.glGetDoublev( pname, params );
+    orig.glGetDoublev( _context, pname, params );
   }
 
 }
@@ -85,7 +85,7 @@ static void REGAL_CALL emuProcInterceptHint_glGetFloatv(RegalContext *_context, 
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    orig.glGetFloatv( pname, params );
+    orig.glGetFloatv( _context, pname, params );
   }
 
 }
@@ -97,7 +97,7 @@ static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(RegalContext *_context
 
   // impl
   if( ! _context->hint->glGetv( *_context, pname, params ) ) {
-    orig.glGetIntegerv( pname, params );
+    orig.glGetIntegerv( _context, pname, params );
   }
 
 }
@@ -109,7 +109,7 @@ static void REGAL_CALL emuProcInterceptHint_glHint(RegalContext *_context, GLenu
 
   // impl
   if( ! _context->hint->glHint( *_context, target, mode ) ) {
-    orig.glHint( target, mode );
+    orig.glHint( _context, target, mode );
   }
 
 }

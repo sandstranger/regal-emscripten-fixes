@@ -62,7 +62,7 @@ static void REGAL_CALL emuProcInterceptPpa_glActiveTexture(RegalContext *_contex
   // prefix
   _context->ppa->glActiveTexture( texture );
 
-  orig.glActiveTexture( _context, texture);
+  orig.glActiveTexture( _context, texture );
 
 }
 
@@ -74,7 +74,7 @@ static void REGAL_CALL emuProcInterceptPpa_glActiveTextureARB(RegalContext *_con
   // prefix
   _context->ppa->glActiveTexture( texture );
 
-  orig.glActiveTextureARB( _context, texture);
+  orig.glActiveTextureARB( _context, texture );
 
 }
 
@@ -86,7 +86,7 @@ static void REGAL_CALL emuProcInterceptPpa_glAlphaFunc(RegalContext *_context, G
   // prefix
   _context->ppa->glAlphaFunc( func, ref );
 
-  orig.glAlphaFunc( _context, func, ref);
+  orig.glAlphaFunc( _context, func, ref );
 
 }
 
@@ -98,7 +98,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendColor(RegalContext *_context, 
   // prefix
   _context->ppa->glBlendColor( red, green, blue, alpha );
 
-  orig.glBlendColor( _context, red, green, blue, alpha);
+  orig.glBlendColor( _context, red, green, blue, alpha );
 
 }
 
@@ -110,7 +110,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquation(RegalContext *_contex
   // prefix
   _context->ppa->glBlendEquation( mode );
 
-  orig.glBlendEquation( _context, mode);
+  orig.glBlendEquation( _context, mode );
 
 }
 
@@ -122,7 +122,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquationSeparate(RegalContext 
   // prefix
   _context->ppa->glBlendEquationSeparate( modeRGB, modeAlpha );
 
-  orig.glBlendEquationSeparate( _context, modeRGB, modeAlpha);
+  orig.glBlendEquationSeparate( _context, modeRGB, modeAlpha );
 
 }
 
@@ -134,7 +134,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquationSeparatei(RegalContext
   // prefix
   _context->ppa->glBlendEquationSeparatei( buf, modeRGB, modeAlpha );
 
-  orig.glBlendEquationSeparatei( _context, buf, modeRGB, modeAlpha);
+  orig.glBlendEquationSeparatei( _context, buf, modeRGB, modeAlpha );
 
 }
 
@@ -146,7 +146,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendEquationi(RegalContext *_conte
   // prefix
   _context->ppa->glBlendEquationi( buf, mode );
 
-  orig.glBlendEquationi( _context, buf, mode);
+  orig.glBlendEquationi( _context, buf, mode );
 
 }
 
@@ -158,7 +158,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFunc(RegalContext *_context, G
   // prefix
   _context->ppa->glBlendFunc( sfactor, dfactor );
 
-  orig.glBlendFunc( _context, sfactor, dfactor);
+  orig.glBlendFunc( _context, sfactor, dfactor );
 
 }
 
@@ -170,7 +170,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFuncSeparate(RegalContext *_co
   // prefix
   _context->ppa->glBlendFuncSeparate( sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
 
-  orig.glBlendFuncSeparate( _context, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha);
+  orig.glBlendFuncSeparate( _context, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
 
 }
 
@@ -182,7 +182,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFuncSeparatei(RegalContext *_c
   // prefix
   _context->ppa->glBlendFuncSeparatei( buf, srcRGB, dstRGB, srcAlpha, dstAlpha );
 
-  orig.glBlendFuncSeparatei( _context, buf, srcRGB, dstRGB, srcAlpha, dstAlpha);
+  orig.glBlendFuncSeparatei( _context, buf, srcRGB, dstRGB, srcAlpha, dstAlpha );
 
 }
 
@@ -194,7 +194,7 @@ static void REGAL_CALL emuProcInterceptPpa_glBlendFunci(RegalContext *_context, 
   // prefix
   _context->ppa->glBlendFunci( buf, src, dst );
 
-  orig.glBlendFunci( _context, buf, src, dst);
+  orig.glBlendFunci( _context, buf, src, dst );
 
 }
 
@@ -206,7 +206,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClampColor(RegalContext *_context, 
   // prefix
   _context->ppa->glClampColor( target, clamp );
 
-  orig.glClampColor( _context, target, clamp);
+  orig.glClampColor( _context, target, clamp );
 
 }
 
@@ -218,7 +218,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClearAccum(RegalContext *_context, 
   // prefix
   _context->ppa->glClearAccum( red, green, blue, alpha );
 
-  orig.glClearAccum( _context, red, green, blue, alpha);
+  orig.glClearAccum( _context, red, green, blue, alpha );
 
 }
 
@@ -230,7 +230,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClearColor(RegalContext *_context, 
   // prefix
   _context->ppa->glClearColor( red, green, blue, alpha );
 
-  orig.glClearColor( _context, red, green, blue, alpha);
+  orig.glClearColor( _context, red, green, blue, alpha );
 
 }
 
@@ -242,7 +242,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClearDepth(RegalContext *_context, 
   // prefix
   _context->ppa->glClearDepth( depth );
 
-  orig.glClearDepth( _context, depth);
+  orig.glClearDepth( _context, depth );
 
 }
 
@@ -254,7 +254,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClearDepthf(RegalContext *_context,
   // prefix
   _context->ppa->glClearDepth( d );
 
-  orig.glClearDepthf( _context, d);
+  orig.glClearDepthf( _context, d );
 
 }
 
@@ -266,7 +266,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClearIndex(RegalContext *_context, 
   // prefix
   _context->ppa->glClearIndex( c );
 
-  orig.glClearIndex( _context, c);
+  orig.glClearIndex( _context, c );
 
 }
 
@@ -278,7 +278,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClearStencil(RegalContext *_context
   // prefix
   _context->ppa->glClearStencil( s );
 
-  orig.glClearStencil( _context, s);
+  orig.glClearStencil( _context, s );
 
 }
 
@@ -290,7 +290,7 @@ static void REGAL_CALL emuProcInterceptPpa_glClipPlane(RegalContext *_context, G
   // prefix
   _context->ppa->glClipPlane( plane, equation );
 
-  orig.glClipPlane( _context, plane, equation);
+  orig.glClipPlane( _context, plane, equation );
 
 }
 
@@ -302,7 +302,7 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMask(RegalContext *_context, G
   // prefix
   _context->ppa->glColorMask( red, green, blue, alpha );
 
-  orig.glColorMask( _context, red, green, blue, alpha);
+  orig.glColorMask( _context, red, green, blue, alpha );
 
 }
 
@@ -314,7 +314,7 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMaski(RegalContext *_context, 
   // prefix
   _context->ppa->glColorMaski( index, r, g, b, a );
 
-  orig.glColorMaski( _context, index, r, g, b, a);
+  orig.glColorMaski( _context, index, r, g, b, a );
 
 }
 
@@ -326,7 +326,7 @@ static void REGAL_CALL emuProcInterceptPpa_glColorMaterial(RegalContext *_contex
   // prefix
   _context->ppa->glColorMaterial( face, mode );
 
-  orig.glColorMaterial( _context, face, mode);
+  orig.glColorMaterial( _context, face, mode );
 
 }
 
@@ -338,7 +338,7 @@ static void REGAL_CALL emuProcInterceptPpa_glColorTableParameterfv(RegalContext 
   // prefix
   _context->ppa->glColorTableParameterv( target, pname, params );
 
-  orig.glColorTableParameterfv( _context, target, pname, params);
+  orig.glColorTableParameterfv( _context, target, pname, params );
 
 }
 
@@ -350,7 +350,7 @@ static void REGAL_CALL emuProcInterceptPpa_glColorTableParameteriv(RegalContext 
   // prefix
   _context->ppa->glColorTableParameterv( target, pname, params );
 
-  orig.glColorTableParameteriv( _context, target, pname, params);
+  orig.glColorTableParameteriv( _context, target, pname, params );
 
 }
 
@@ -362,7 +362,7 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameterf(RegalContext 
   // prefix
   _context->ppa->glConvolutionParameter( target, pname, params );
 
-  orig.glConvolutionParameterf( _context, target, pname, params);
+  orig.glConvolutionParameterf( _context, target, pname, params );
 
 }
 
@@ -374,7 +374,7 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameterfv(RegalContext
   // prefix
   _context->ppa->glConvolutionParameterv( target, pname, params );
 
-  orig.glConvolutionParameterfv( _context, target, pname, params);
+  orig.glConvolutionParameterfv( _context, target, pname, params );
 
 }
 
@@ -386,7 +386,7 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameteri(RegalContext 
   // prefix
   _context->ppa->glConvolutionParameter( target, pname, params );
 
-  orig.glConvolutionParameteri( _context, target, pname, params);
+  orig.glConvolutionParameteri( _context, target, pname, params );
 
 }
 
@@ -398,7 +398,7 @@ static void REGAL_CALL emuProcInterceptPpa_glConvolutionParameteriv(RegalContext
   // prefix
   _context->ppa->glConvolutionParameterv( target, pname, params );
 
-  orig.glConvolutionParameteriv( _context, target, pname, params);
+  orig.glConvolutionParameteriv( _context, target, pname, params );
 
 }
 
@@ -410,7 +410,7 @@ static void REGAL_CALL emuProcInterceptPpa_glCullFace(RegalContext *_context, GL
   // prefix
   _context->ppa->glCullFace( mode );
 
-  orig.glCullFace( _context, mode);
+  orig.glCullFace( _context, mode );
 
 }
 
@@ -422,7 +422,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthFunc(RegalContext *_context, G
   // prefix
   _context->ppa->glDepthFunc( func );
 
-  orig.glDepthFunc( _context, func);
+  orig.glDepthFunc( _context, func );
 
 }
 
@@ -434,7 +434,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthMask(RegalContext *_context, G
   // prefix
   _context->ppa->glDepthMask( flag );
 
-  orig.glDepthMask( _context, flag);
+  orig.glDepthMask( _context, flag );
 
 }
 
@@ -446,7 +446,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRange(RegalContext *_context, 
   // prefix
   _context->ppa->glDepthRange( zNear, zFar );
 
-  orig.glDepthRange( _context, zNear, zFar);
+  orig.glDepthRange( _context, zNear, zFar );
 
 }
 
@@ -458,7 +458,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRangeArrayv(RegalContext *_con
   // prefix
   _context->ppa->glDepthRangeArrayv( first, count, v );
 
-  orig.glDepthRangeArrayv( _context, first, count, v);
+  orig.glDepthRangeArrayv( _context, first, count, v );
 
 }
 
@@ -470,7 +470,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRangeIndexed(RegalContext *_co
   // prefix
   _context->ppa->glDepthRangeIndexed( index, n, f );
 
-  orig.glDepthRangeIndexed( _context, index, n, f);
+  orig.glDepthRangeIndexed( _context, index, n, f );
 
 }
 
@@ -482,7 +482,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDepthRangef(RegalContext *_context,
   // prefix
   _context->ppa->glDepthRange( n, f );
 
-  orig.glDepthRangef( _context, n, f);
+  orig.glDepthRangef( _context, n, f );
 
 }
 
@@ -493,7 +493,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDisable(RegalContext *_context, GLe
 
   // impl
   if( ! _context->ppa->Disable( _context, cap ) ) {
-    orig.glDisable( cap );
+    orig.glDisable( _context, cap );
   }
 
 }
@@ -505,7 +505,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDisablei(RegalContext *_context, GL
 
   // impl
   if( ! _context->ppa->Disablei( _context, cap, index ) ) {
-    orig.glDisablei( cap, index );
+    orig.glDisablei( _context, cap, index );
   }
 
 }
@@ -518,7 +518,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDrawBuffer(RegalContext *_context, 
   // impl
   if( !_context->isES2() ) {
     _context->ppa->glDrawBuffer( mode );
-    orig.glDrawBuffer( mode );
+    orig.glDrawBuffer( _context, mode );
   }
 
 }
@@ -531,7 +531,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDrawBuffers(RegalContext *_context,
   // impl
   if( !_context->isES2() ) {
     _context->ppa->glDrawBuffers( n, bufs );
-    orig.glDrawBuffers( n, bufs );
+    orig.glDrawBuffers( _context, n, bufs );
   }
 
 }
@@ -544,7 +544,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDrawBuffersARB(RegalContext *_conte
   // impl
   if( !_context->isES2() ) {
     _context->ppa->glDrawBuffers( n, bufs );
-    orig.glDrawBuffers( n, bufs );
+    orig.glDrawBuffers( _context, n, bufs );
   }
 
 }
@@ -557,7 +557,7 @@ static void REGAL_CALL emuProcInterceptPpa_glDrawBuffersNV(RegalContext *_contex
   // impl
   if( !_context->isES2() ) {
     _context->ppa->glDrawBuffers( n, bufs );
-    orig.glDrawBuffers( n, bufs );
+    orig.glDrawBuffers( _context, n, bufs );
   }
 
 }
@@ -569,7 +569,7 @@ static void REGAL_CALL emuProcInterceptPpa_glEnable(RegalContext *_context, GLen
 
   // impl
   if( ! _context->ppa->Enable( _context, cap ) ) {
-    orig.glEnable( cap );
+    orig.glEnable( _context, cap );
   }
 
 }
@@ -581,7 +581,7 @@ static void REGAL_CALL emuProcInterceptPpa_glEnablei(RegalContext *_context, GLe
 
   // impl
   if( ! _context->ppa->Enablei( _context, cap, index ) ) {
-    orig.glEnablei( cap, index );
+    orig.glEnablei( _context, cap, index );
   }
 
 }
@@ -594,7 +594,7 @@ static void REGAL_CALL emuProcInterceptPpa_glFrontFace(RegalContext *_context, G
   // prefix
   _context->ppa->glFrontFace( mode );
 
-  orig.glFrontFace( _context, mode);
+  orig.glFrontFace( _context, mode );
 
 }
 
@@ -605,7 +605,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetBooleani_v(RegalContext *_contex
 
   // impl
   if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
-    orig.glGetBooleani_v( target, index, data );
+    orig.glGetBooleani_v( _context, target, index, data );
   }
 
 }
@@ -617,7 +617,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetBooleanv(RegalContext *_context,
 
   // impl
   if( ! _context->ppa->glGetv( _context, pname, params ) ) {
-    orig.glGetBooleanv( pname, params );
+    orig.glGetBooleanv( _context, pname, params );
   }
 
 }
@@ -629,7 +629,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetColorTableParameterfv(RegalConte
 
   // impl
   if( ! _context->ppa->glGetColorTableParameterv( _context, target, pname, params ) ) {
-    orig.glGetColorTableParameterfv( target, pname, params );
+    orig.glGetColorTableParameterfv( _context, target, pname, params );
   }
 
 }
@@ -641,7 +641,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetColorTableParameteriv(RegalConte
 
   // impl
   if( ! _context->ppa->glGetColorTableParameterv( _context, target, pname, params ) ) {
-    orig.glGetColorTableParameteriv( target, pname, params );
+    orig.glGetColorTableParameteriv( _context, target, pname, params );
   }
 
 }
@@ -653,7 +653,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetConvolutionParameterfv(RegalCont
 
   // impl
   if( ! _context->ppa->glGetConvolutionParameterv( _context, target, pname, params ) ) {
-    orig.glGetConvolutionParameterfv( target, pname, params );
+    orig.glGetConvolutionParameterfv( _context, target, pname, params );
   }
 
 }
@@ -665,7 +665,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetConvolutionParameteriv(RegalCont
 
   // impl
   if( ! _context->ppa->glGetConvolutionParameterv( _context, target, pname, params ) ) {
-    orig.glGetConvolutionParameteriv( target, pname, params );
+    orig.glGetConvolutionParameteriv( _context, target, pname, params );
   }
 
 }
@@ -677,7 +677,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetDoublei_v(RegalContext *_context
 
   // impl
   if( ! _context->ppa->glGeti_v( _context, target, index, v ) ) {
-    orig.glGetDoublei_v( target, index, v );
+    orig.glGetDoublei_v( _context, target, index, v );
   }
 
 }
@@ -689,7 +689,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetDoublei_vEXT(RegalContext *_cont
 
   // impl
   if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
-    orig.glGetDoublei_vEXT( target, index, data );
+    orig.glGetDoublei_vEXT( _context, target, index, data );
   }
 
 }
@@ -701,7 +701,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetDoublev(RegalContext *_context, 
 
   // impl
   if( ! _context->ppa->glGetv( _context, pname, params ) ) {
-    orig.glGetDoublev( pname, params );
+    orig.glGetDoublev( _context, pname, params );
   }
 
 }
@@ -713,7 +713,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetFloati_v(RegalContext *_context,
 
   // impl
   if( ! _context->ppa->glGeti_v( _context, target, index, v ) ) {
-    orig.glGetFloati_v( target, index, v );
+    orig.glGetFloati_v( _context, target, index, v );
   }
 
 }
@@ -725,7 +725,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetFloati_vEXT(RegalContext *_conte
 
   // impl
   if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
-    orig.glGetFloati_vEXT( target, index, data );
+    orig.glGetFloati_vEXT( _context, target, index, data );
   }
 
 }
@@ -737,7 +737,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetFloatv(RegalContext *_context, G
 
   // impl
   if( ! _context->ppa->glGetv( _context, pname, params ) ) {
-    orig.glGetFloatv( pname, params );
+    orig.glGetFloatv( _context, pname, params );
   }
 
 }
@@ -749,7 +749,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetIntegeri_v(RegalContext *_contex
 
   // impl
   if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
-    orig.glGetIntegeri_v( target, index, data );
+    orig.glGetIntegeri_v( _context, target, index, data );
   }
 
 }
@@ -761,7 +761,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetIntegeri_vEXT(RegalContext *_con
 
   // impl
   if( ! _context->ppa->glGeti_v( _context, target, index, data ) ) {
-    orig.glGetIntegeri_vEXT( target, index, data );
+    orig.glGetIntegeri_vEXT( _context, target, index, data );
   }
 
 }
@@ -773,7 +773,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetIntegerv(RegalContext *_context,
 
   // impl
   if( ! _context->ppa->glGetv( _context, pname, params ) ) {
-    orig.glGetIntegerv( pname, params );
+    orig.glGetIntegerv( _context, pname, params );
   }
 
 }
@@ -785,7 +785,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetLightfv(RegalContext *_context, 
 
   // impl
   if( ! _context->ppa->glGetLightv( _context, light, pname, params ) ) {
-    orig.glGetLightfv( light, pname, params );
+    orig.glGetLightfv( _context, light, pname, params );
   }
 
 }
@@ -797,7 +797,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetLightiv(RegalContext *_context, 
 
   // impl
   if( ! _context->ppa->glGetLightv( _context, light, pname, params ) ) {
-    orig.glGetLightiv( light, pname, params );
+    orig.glGetLightiv( _context, light, pname, params );
   }
 
 }
@@ -809,7 +809,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetLightxv(RegalContext *_context, 
 
   // impl
   if( ! _context->ppa->glGetLightv( _context, light, pname, params ) ) {
-    orig.glGetLightxv( light, pname, params );
+    orig.glGetLightxv( _context, light, pname, params );
   }
 
 }
@@ -821,7 +821,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetMaterialfv(RegalContext *_contex
 
   // impl
   if( ! _context->ppa->glGetMaterialv( _context, face, pname, params ) ) {
-    orig.glGetMaterialfv( face, pname, params );
+    orig.glGetMaterialfv( _context, face, pname, params );
   }
 
 }
@@ -833,7 +833,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetMaterialiv(RegalContext *_contex
 
   // impl
   if( ! _context->ppa->glGetMaterialv( _context, face, pname, params ) ) {
-    orig.glGetMaterialiv( face, pname, params );
+    orig.glGetMaterialiv( _context, face, pname, params );
   }
 
 }
@@ -845,7 +845,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetMaterialxv(RegalContext *_contex
 
   // impl
   if( ! _context->ppa->glGetMaterialv( _context, face, pname, params ) ) {
-    orig.glGetMaterialxv( face, pname, params );
+    orig.glGetMaterialxv( _context, face, pname, params );
   }
 
 }
@@ -857,7 +857,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetMultiTexEnvfvEXT(RegalContext *_
 
   // impl
   if( ! _context->ppa->glGetMultiTexEnvv( _context, texunit, target, pname, params ) ) {
-    orig.glGetMultiTexEnvfvEXT( texunit, target, pname, params );
+    orig.glGetMultiTexEnvfvEXT( _context, texunit, target, pname, params );
   }
 
 }
@@ -869,7 +869,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetMultiTexEnvivEXT(RegalContext *_
 
   // impl
   if( ! _context->ppa->glGetMultiTexEnvv( _context, texunit, target, pname, params ) ) {
-    orig.glGetMultiTexEnvivEXT( texunit, target, pname, params );
+    orig.glGetMultiTexEnvivEXT( _context, texunit, target, pname, params );
   }
 
 }
@@ -881,7 +881,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetPolygonStipple(RegalContext *_co
 
   // impl
   if( ! _context->ppa->glGetPolygonStipple( _context, mask ) ) {
-    orig.glGetPolygonStipple( mask );
+    orig.glGetPolygonStipple( _context, mask );
   }
 
 }
@@ -893,7 +893,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexEnvfv(RegalContext *_context,
 
   // impl
   if( ! _context->ppa->glGetTexEnvv( _context, target, pname, params ) ) {
-    orig.glGetTexEnvfv( target, pname, params );
+    orig.glGetTexEnvfv( _context, target, pname, params );
   }
 
 }
@@ -905,7 +905,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexEnviv(RegalContext *_context,
 
   // impl
   if( ! _context->ppa->glGetTexEnvv( _context, target, pname, params ) ) {
-    orig.glGetTexEnviv( target, pname, params );
+    orig.glGetTexEnviv( _context, target, pname, params );
   }
 
 }
@@ -917,7 +917,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexLevelParameterfv(RegalContext
 
   // impl
   if( ! _context->ppa->glGetTexLevelParameter( _context, target, level, pname, params ) ) {
-    orig.glGetTexLevelParameterfv( target, level, pname, params );
+    orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
   }
 
 }
@@ -929,7 +929,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexLevelParameteriv(RegalContext
 
   // impl
   if( ! _context->ppa->glGetTexLevelParameter( _context, target, level, pname, params ) ) {
-    orig.glGetTexLevelParameteriv( target, level, pname, params );
+    orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
   }
 
 }
@@ -941,7 +941,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexParameterfv(RegalContext *_co
 
   // impl
   if( ! _context->ppa->glGetTexParameter( _context, target, pname, params ) ) {
-    orig.glGetTexParameterfv( target, pname, params );
+    orig.glGetTexParameterfv( _context, target, pname, params );
   }
 
 }
@@ -953,7 +953,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTexParameteriv(RegalContext *_co
 
   // impl
   if( ! _context->ppa->glGetTexParameter( _context, target, pname, params ) ) {
-    orig.glGetTexParameteriv( target, pname, params );
+    orig.glGetTexParameteriv( _context, target, pname, params );
   }
 
 }
@@ -965,7 +965,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTextureLevelParameterfvEXT(Regal
 
   // impl
   if( ! _context->ppa->glGetTextureLevelParameter( _context, texture, target, level, pname, params ) ) {
-    orig.glGetTextureLevelParameterfvEXT( texture, target, level, pname, params );
+    orig.glGetTextureLevelParameterfvEXT( _context, texture, target, level, pname, params );
   }
 
 }
@@ -977,7 +977,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTextureLevelParameterivEXT(Regal
 
   // impl
   if( ! _context->ppa->glGetTextureLevelParameter( _context, texture, target, level, pname, params ) ) {
-    orig.glGetTextureLevelParameterivEXT( texture, target, level, pname, params );
+    orig.glGetTextureLevelParameterivEXT( _context, texture, target, level, pname, params );
   }
 
 }
@@ -989,7 +989,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTextureParameterfvEXT(RegalConte
 
   // impl
   if( ! _context->ppa->glGetTextureParameter( _context, texture, target, pname, params ) ) {
-    orig.glGetTextureParameterfvEXT( texture, target, pname, params );
+    orig.glGetTextureParameterfvEXT( _context, texture, target, pname, params );
   }
 
 }
@@ -1001,7 +1001,7 @@ static void REGAL_CALL emuProcInterceptPpa_glGetTextureParameterivEXT(RegalConte
 
   // impl
   if( ! _context->ppa->glGetTextureParameter( _context, texture, target, pname, params ) ) {
-    orig.glGetTextureParameterivEXT( texture, target, pname, params );
+    orig.glGetTextureParameterivEXT( _context, texture, target, pname, params );
   }
 
 }
@@ -1014,7 +1014,7 @@ static void REGAL_CALL emuProcInterceptPpa_glHint(RegalContext *_context, GLenum
   // prefix
   _context->ppa->glHint( target, mode );
 
-  orig.glHint( _context, target, mode);
+  orig.glHint( _context, target, mode );
 
 }
 
@@ -1026,7 +1026,7 @@ static void REGAL_CALL emuProcInterceptPpa_glIndexMask(RegalContext *_context, G
   // prefix
   _context->ppa->glIndexMask( mask );
 
-  orig.glIndexMask( _context, mask);
+  orig.glIndexMask( _context, mask );
 
 }
 
@@ -1039,7 +1039,7 @@ static GLboolean REGAL_CALL emuProcInterceptPpa_glIsEnabled(RegalContext *_conte
   {
     GLboolean enabled;
     if( ! _context->ppa->glIsEnabled( _context, enabled, cap ) )
-      return orig.glIsEnabled( cap );
+      return orig.glIsEnabled( _context, cap );
     return enabled;
   }
 
@@ -1054,7 +1054,7 @@ static GLboolean REGAL_CALL emuProcInterceptPpa_glIsEnabledi(RegalContext *_cont
   {
     GLboolean enabled;
     if( ! _context->ppa->glIsEnabledi( _context, enabled, target, index ) )
-      return orig.glIsEnabledi( target, index );
+      return orig.glIsEnabledi( _context, target, index );
     return enabled;
   }
 
@@ -1068,7 +1068,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModelf(RegalContext *_context,
   // prefix
   _context->ppa->glLightModel( pname, param );
 
-  orig.glLightModelf( _context, pname, param);
+  orig.glLightModelf( _context, pname, param );
 
 }
 
@@ -1080,7 +1080,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModelfv(RegalContext *_context
   // prefix
   _context->ppa->glLightModelv( pname, params );
 
-  orig.glLightModelfv( _context, pname, params);
+  orig.glLightModelfv( _context, pname, params );
 
 }
 
@@ -1092,7 +1092,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModeli(RegalContext *_context,
   // prefix
   _context->ppa->glLightModel( pname, param );
 
-  orig.glLightModeli( _context, pname, param);
+  orig.glLightModeli( _context, pname, param );
 
 }
 
@@ -1104,7 +1104,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLightModeliv(RegalContext *_context
   // prefix
   _context->ppa->glLightModelv( pname, params );
 
-  orig.glLightModeliv( _context, pname, params);
+  orig.glLightModeliv( _context, pname, params );
 
 }
 
@@ -1116,7 +1116,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLightf(RegalContext *_context, GLen
   // prefix
   _context->ppa->glLight( light, pname, param );
 
-  orig.glLightf( _context, light, pname, param);
+  orig.glLightf( _context, light, pname, param );
 
 }
 
@@ -1128,7 +1128,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLightfv(RegalContext *_context, GLe
   // prefix
   _context->ppa->glLightv( light, pname, params );
 
-  orig.glLightfv( _context, light, pname, params);
+  orig.glLightfv( _context, light, pname, params );
 
 }
 
@@ -1140,7 +1140,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLighti(RegalContext *_context, GLen
   // prefix
   _context->ppa->glLight( light, pname, param );
 
-  orig.glLighti( _context, light, pname, param);
+  orig.glLighti( _context, light, pname, param );
 
 }
 
@@ -1152,7 +1152,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLightiv(RegalContext *_context, GLe
   // prefix
   _context->ppa->glLightv( light, pname, params );
 
-  orig.glLightiv( _context, light, pname, params);
+  orig.glLightiv( _context, light, pname, params );
 
 }
 
@@ -1164,7 +1164,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLineStipple(RegalContext *_context,
   // prefix
   _context->ppa->glLineStipple( factor, pattern );
 
-  orig.glLineStipple( _context, factor, pattern);
+  orig.glLineStipple( _context, factor, pattern );
 
 }
 
@@ -1176,7 +1176,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLineWidth(RegalContext *_context, G
   // prefix
   _context->ppa->glLineWidth( width );
 
-  orig.glLineWidth( _context, width);
+  orig.glLineWidth( _context, width );
 
 }
 
@@ -1188,7 +1188,7 @@ static void REGAL_CALL emuProcInterceptPpa_glListBase(RegalContext *_context, GL
   // prefix
   _context->ppa->glListBase( base );
 
-  orig.glListBase( _context, base);
+  orig.glListBase( _context, base );
 
 }
 
@@ -1200,7 +1200,7 @@ static void REGAL_CALL emuProcInterceptPpa_glLogicOp(RegalContext *_context, GLe
   // prefix
   _context->ppa->glLogicOp( opcode );
 
-  orig.glLogicOp( _context, opcode);
+  orig.glLogicOp( _context, opcode );
 
 }
 
@@ -1212,7 +1212,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid1d(RegalContext *_context, G
   // prefix
   _context->ppa->glMapGrid1( un, u1, u2 );
 
-  orig.glMapGrid1d( _context, un, u1, u2);
+  orig.glMapGrid1d( _context, un, u1, u2 );
 
 }
 
@@ -1224,7 +1224,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid1f(RegalContext *_context, G
   // prefix
   _context->ppa->glMapGrid1( un, u1, u2 );
 
-  orig.glMapGrid1f( _context, un, u1, u2);
+  orig.glMapGrid1f( _context, un, u1, u2 );
 
 }
 
@@ -1236,7 +1236,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid2d(RegalContext *_context, G
   // prefix
   _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
 
-  orig.glMapGrid2d( _context, un, u1, u2, vn, v1, v2);
+  orig.glMapGrid2d( _context, un, u1, u2, vn, v1, v2 );
 
 }
 
@@ -1248,7 +1248,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMapGrid2f(RegalContext *_context, G
   // prefix
   _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
 
-  orig.glMapGrid2f( _context, un, u1, u2, vn, v1, v2);
+  orig.glMapGrid2f( _context, un, u1, u2, vn, v1, v2 );
 
 }
 
@@ -1260,7 +1260,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialf(RegalContext *_context, G
   // prefix
   _context->ppa->glMaterial( face, pname, param );
 
-  orig.glMaterialf( _context, face, pname, param);
+  orig.glMaterialf( _context, face, pname, param );
 
 }
 
@@ -1272,7 +1272,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialfv(RegalContext *_context, 
   // prefix
   _context->ppa->glMaterialv( face, pname, params );
 
-  orig.glMaterialfv( _context, face, pname, params);
+  orig.glMaterialfv( _context, face, pname, params );
 
 }
 
@@ -1284,7 +1284,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMateriali(RegalContext *_context, G
   // prefix
   _context->ppa->glMaterial( face, pname, param );
 
-  orig.glMateriali( _context, face, pname, param);
+  orig.glMateriali( _context, face, pname, param );
 
 }
 
@@ -1296,7 +1296,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMaterialiv(RegalContext *_context, 
   // prefix
   _context->ppa->glMaterialv( face, pname, params );
 
-  orig.glMaterialiv( _context, face, pname, params);
+  orig.glMaterialiv( _context, face, pname, params );
 
 }
 
@@ -1308,7 +1308,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMatrixMode(RegalContext *_context, 
   // prefix
   _context->ppa->glMatrixMode( mode );
 
-  orig.glMatrixMode( _context, mode);
+  orig.glMatrixMode( _context, mode );
 
 }
 
@@ -1320,7 +1320,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMinSampleShading(RegalContext *_con
   // prefix
   _context->ppa->glMinSampleShading( value );
 
-  orig.glMinSampleShading( _context, value);
+  orig.glMinSampleShading( _context, value );
 
 }
 
@@ -1332,7 +1332,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvfEXT(RegalContext *_cont
   // prefix
   _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
-  orig.glMultiTexEnvfEXT( _context, texunit, target, pname, param);
+  orig.glMultiTexEnvfEXT( _context, texunit, target, pname, param );
 
 }
 
@@ -1344,7 +1344,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvfvEXT(RegalContext *_con
   // prefix
   _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
 
-  orig.glMultiTexEnvfvEXT( _context, texunit, target, pname, params);
+  orig.glMultiTexEnvfvEXT( _context, texunit, target, pname, params );
 
 }
 
@@ -1356,7 +1356,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnviEXT(RegalContext *_cont
   // prefix
   _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
-  orig.glMultiTexEnviEXT( _context, texunit, target, pname, param);
+  orig.glMultiTexEnviEXT( _context, texunit, target, pname, param );
 
 }
 
@@ -1368,7 +1368,7 @@ static void REGAL_CALL emuProcInterceptPpa_glMultiTexEnvivEXT(RegalContext *_con
   // prefix
   _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
 
-  orig.glMultiTexEnvivEXT( _context, texunit, target, pname, params);
+  orig.glMultiTexEnvivEXT( _context, texunit, target, pname, params );
 
 }
 
@@ -1380,7 +1380,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPixelTransferf(RegalContext *_conte
   // prefix
   _context->ppa->glPixelTransfer( pname, param );
 
-  orig.glPixelTransferf( _context, pname, param);
+  orig.glPixelTransferf( _context, pname, param );
 
 }
 
@@ -1392,7 +1392,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPixelTransferi(RegalContext *_conte
   // prefix
   _context->ppa->glPixelTransfer( pname, param );
 
-  orig.glPixelTransferi( _context, pname, param);
+  orig.glPixelTransferi( _context, pname, param );
 
 }
 
@@ -1404,7 +1404,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPixelZoom(RegalContext *_context, G
   // prefix
   _context->ppa->glPixelZoom( xfactor, yfactor );
 
-  orig.glPixelZoom( _context, xfactor, yfactor);
+  orig.glPixelZoom( _context, xfactor, yfactor );
 
 }
 
@@ -1416,7 +1416,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameterf(RegalContext *_cont
   // prefix
   _context->ppa->glPointParameter( pname, param );
 
-  orig.glPointParameterf( _context, pname, param);
+  orig.glPointParameterf( _context, pname, param );
 
 }
 
@@ -1428,7 +1428,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameterfv(RegalContext *_con
   // prefix
   _context->ppa->glPointParameterv( pname, params );
 
-  orig.glPointParameterfv( _context, pname, params);
+  orig.glPointParameterfv( _context, pname, params );
 
 }
 
@@ -1440,7 +1440,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameteri(RegalContext *_cont
   // prefix
   _context->ppa->glPointParameter( pname, param );
 
-  orig.glPointParameteri( _context, pname, param);
+  orig.glPointParameteri( _context, pname, param );
 
 }
 
@@ -1452,7 +1452,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPointParameteriv(RegalContext *_con
   // prefix
   _context->ppa->glPointParameterv( pname, params );
 
-  orig.glPointParameteriv( _context, pname, params);
+  orig.glPointParameteriv( _context, pname, params );
 
 }
 
@@ -1464,7 +1464,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPointSize(RegalContext *_context, G
   // prefix
   _context->ppa->glPointSize( size );
 
-  orig.glPointSize( _context, size);
+  orig.glPointSize( _context, size );
 
 }
 
@@ -1476,7 +1476,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPolygonMode(RegalContext *_context,
   // prefix
   _context->ppa->glPolygonMode( face, mode );
 
-  orig.glPolygonMode( _context, face, mode);
+  orig.glPolygonMode( _context, face, mode );
 
 }
 
@@ -1488,7 +1488,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPolygonOffset(RegalContext *_contex
   // prefix
   _context->ppa->glPolygonOffset( factor, units );
 
-  orig.glPolygonOffset( _context, factor, units);
+  orig.glPolygonOffset( _context, factor, units );
 
 }
 
@@ -1500,7 +1500,7 @@ static void REGAL_CALL emuProcInterceptPpa_glPolygonStipple(RegalContext *_conte
   // prefix
   _context->ppa->glPolygonStipple( mask );
 
-  orig.glPolygonStipple( _context, mask);
+  orig.glPolygonStipple( _context, mask );
 
 }
 
@@ -1521,7 +1521,7 @@ static void REGAL_CALL emuProcInterceptPpa_glProvokingVertex(RegalContext *_cont
   // prefix
   _context->ppa->glProvokingVertex( mode );
 
-  orig.glProvokingVertex( _context, mode);
+  orig.glProvokingVertex( _context, mode );
 
 }
 
@@ -1542,7 +1542,7 @@ static void REGAL_CALL emuProcInterceptPpa_glReadBuffer(RegalContext *_context, 
   // prefix
   _context->ppa->glReadBuffer( mode );
 
-  orig.glReadBuffer( _context, mode);
+  orig.glReadBuffer( _context, mode );
 
 }
 
@@ -1554,7 +1554,7 @@ static void REGAL_CALL emuProcInterceptPpa_glSampleCoverage(RegalContext *_conte
   // prefix
   _context->ppa->glSampleCoverage( value, invert );
 
-  orig.glSampleCoverage( _context, value, invert);
+  orig.glSampleCoverage( _context, value, invert );
 
 }
 
@@ -1566,7 +1566,7 @@ static void REGAL_CALL emuProcInterceptPpa_glScissor(RegalContext *_context, GLi
   // prefix
   _context->ppa->glScissor( x, y, width, height );
 
-  orig.glScissor( _context, x, y, width, height);
+  orig.glScissor( _context, x, y, width, height );
 
 }
 
@@ -1578,7 +1578,7 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorArrayv(RegalContext *_contex
   // prefix
   _context->ppa->glScissorArrayv( first, count, v );
 
-  orig.glScissorArrayv( _context, first, count, v);
+  orig.glScissorArrayv( _context, first, count, v );
 
 }
 
@@ -1590,7 +1590,7 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorIndexed(RegalContext *_conte
   // prefix
   _context->ppa->glScissorIndexed( index, left, bottom, width, height );
 
-  orig.glScissorIndexed( _context, index, left, bottom, width, height);
+  orig.glScissorIndexed( _context, index, left, bottom, width, height );
 
 }
 
@@ -1602,7 +1602,7 @@ static void REGAL_CALL emuProcInterceptPpa_glScissorIndexedv(RegalContext *_cont
   // prefix
   _context->ppa->glScissorIndexedv( index, v );
 
-  orig.glScissorIndexedv( _context, index, v);
+  orig.glScissorIndexedv( _context, index, v );
 
 }
 
@@ -1614,7 +1614,7 @@ static void REGAL_CALL emuProcInterceptPpa_glShadeModel(RegalContext *_context, 
   // prefix
   _context->ppa->glShadeModel( mode );
 
-  orig.glShadeModel( _context, mode);
+  orig.glShadeModel( _context, mode );
 
 }
 
@@ -1626,7 +1626,7 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilFunc(RegalContext *_context,
   // prefix
   _context->ppa->glStencilFunc( func, ref, mask );
 
-  orig.glStencilFunc( _context, func, ref, mask);
+  orig.glStencilFunc( _context, func, ref, mask );
 
 }
 
@@ -1638,7 +1638,7 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilFuncSeparate(RegalContext *_
   // prefix
   _context->ppa->glStencilFuncSeparate( face, func, ref, mask );
 
-  orig.glStencilFuncSeparate( _context, face, func, ref, mask);
+  orig.glStencilFuncSeparate( _context, face, func, ref, mask );
 
 }
 
@@ -1650,7 +1650,7 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilMask(RegalContext *_context,
   // prefix
   _context->ppa->glStencilMask( mask );
 
-  orig.glStencilMask( _context, mask);
+  orig.glStencilMask( _context, mask );
 
 }
 
@@ -1662,7 +1662,7 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilMaskSeparate(RegalContext *_
   // prefix
   _context->ppa->glStencilMaskSeparate( face, mask );
 
-  orig.glStencilMaskSeparate( _context, face, mask);
+  orig.glStencilMaskSeparate( _context, face, mask );
 
 }
 
@@ -1674,7 +1674,7 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilOp(RegalContext *_context, G
   // prefix
   _context->ppa->glStencilOp( fail, zfail, zpass );
 
-  orig.glStencilOp( _context, fail, zfail, zpass);
+  orig.glStencilOp( _context, fail, zfail, zpass );
 
 }
 
@@ -1686,7 +1686,7 @@ static void REGAL_CALL emuProcInterceptPpa_glStencilOpSeparate(RegalContext *_co
   // prefix
   _context->ppa->glStencilOpSeparate( face, fail, zfail, zpass );
 
-  orig.glStencilOpSeparate( _context, face, fail, zfail, zpass);
+  orig.glStencilOpSeparate( _context, face, fail, zfail, zpass );
 
 }
 
@@ -1698,7 +1698,7 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvf(RegalContext *_context, GLe
   // prefix
   _context->ppa->glTexEnv( target, pname, param );
 
-  orig.glTexEnvf( _context, target, pname, param);
+  orig.glTexEnvf( _context, target, pname, param );
 
 }
 
@@ -1710,7 +1710,7 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvfv(RegalContext *_context, GL
   // prefix
   _context->ppa->glTexEnvv( target, pname, params );
 
-  orig.glTexEnvfv( _context, target, pname, params);
+  orig.glTexEnvfv( _context, target, pname, params );
 
 }
 
@@ -1722,7 +1722,7 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnvi(RegalContext *_context, GLe
   // prefix
   _context->ppa->glTexEnv( target, pname, param );
 
-  orig.glTexEnvi( _context, target, pname, param);
+  orig.glTexEnvi( _context, target, pname, param );
 
 }
 
@@ -1734,7 +1734,7 @@ static void REGAL_CALL emuProcInterceptPpa_glTexEnviv(RegalContext *_context, GL
   // prefix
   _context->ppa->glTexEnvv( target, pname, params );
 
-  orig.glTexEnviv( _context, target, pname, params);
+  orig.glTexEnviv( _context, target, pname, params );
 
 }
 
@@ -1746,7 +1746,7 @@ static void REGAL_CALL emuProcInterceptPpa_glViewport(RegalContext *_context, GL
   // prefix
   _context->ppa->glViewport( x, y, width, height );
 
-  orig.glViewport( _context, x, y, width, height);
+  orig.glViewport( _context, x, y, width, height );
 
 }
 
@@ -1758,7 +1758,7 @@ static void REGAL_CALL emuProcInterceptPpa_glViewportArrayv(RegalContext *_conte
   // prefix
   _context->ppa->glViewportArrayv( first, count, v );
 
-  orig.glViewportArrayv( _context, first, count, v);
+  orig.glViewportArrayv( _context, first, count, v );
 
 }
 
@@ -1770,7 +1770,7 @@ static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedf(RegalContext *_con
   // prefix
   _context->ppa->glViewportIndexedf( index, x, y, w, h );
 
-  orig.glViewportIndexedf( _context, index, x, y, w, h);
+  orig.glViewportIndexedf( _context, index, x, y, w, h );
 
 }
 
@@ -1782,7 +1782,7 @@ static void REGAL_CALL emuProcInterceptPpa_glViewportIndexedfv(RegalContext *_co
   // prefix
   _context->ppa->glViewportIndexedfv( index, v );
 
-  orig.glViewportIndexedfv( _context, index, v);
+  orig.glViewportIndexedfv( _context, index, v );
 
 }
 

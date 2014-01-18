@@ -62,7 +62,7 @@ struct ContextInfo
   ContextInfo();
   ~ContextInfo();
 
-  void init(const RegalContext &context);
+  void init(RegalContext &context);
 
   // glewGetExtension
 

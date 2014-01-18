@@ -18,7 +18,7 @@ texstoFormulae = {
         'impl' : [
             'RegalAssert(_context);',
             'if ( !_context->texsto->GetTexParameterv( _context, ${arg0plus} ) ) {',
-            '   orig.glGetTexParameter${m1}${m2}${m3}v( ${arg0plus} );',
+            '   orig.glGetTexParameter${m1}${m2}${m3}v( _context, ${arg0plus} );',
             '}',
         ]
     },

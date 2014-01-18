@@ -61,7 +61,7 @@ static void REGAL_CALL emuProcInterceptDsa_glActiveTexture(RegalContext *_contex
 
   // impl
   if( false == _context->dsa->ShadowActiveTexture( texture ) ) {
-      orig.glActiveTexture( texture );
+      orig.glActiveTexture( _context, texture );
   }
 
 }
@@ -73,7 +73,7 @@ static void REGAL_CALL emuProcInterceptDsa_glActiveTextureARB(RegalContext *_con
 
   // impl
   if( false == _context->dsa->ShadowActiveTexture( texture ) ) {
-      orig.glActiveTexture( texture );
+      orig.glActiveTexture( _context, texture );
   }
 
 }
@@ -86,7 +86,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBegin(RegalContext *_context, GLenu
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glBegin( _context, mode);
+  orig.glBegin( _context, mode );
 
 }
 
@@ -97,7 +97,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindBuffer(RegalContext *_context, 
 
   // impl
   if (!_context->dsa->ShadowBuffer( target, buffer ) ) {
-      orig.glBindBuffer(target, buffer);
+      orig.glBindBuffer( _context, target, buffer);
   }
 
 }
@@ -109,7 +109,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindBufferARB(RegalContext *_contex
 
   // impl
   if (!_context->dsa->ShadowBuffer( target, buffer ) ) {
-      orig.glBindBuffer(target, buffer);
+      orig.glBindBuffer( _context, target, buffer);
   }
 
 }
@@ -121,7 +121,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindFramebuffer(RegalContext *_cont
 
   // impl
   if (!_context->dsa->ShadowFramebuffer( target, framebuffer ) ) {
-      orig.glBindFramebuffer( target, framebuffer );
+      orig.glBindFramebuffer( _context, target, framebuffer );
   }
 
 }
@@ -133,7 +133,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindFramebufferEXT(RegalContext *_c
 
   // impl
   if (!_context->dsa->ShadowFramebuffer( target, framebuffer ) ) {
-      orig.glBindFramebuffer( target, framebuffer );
+      orig.glBindFramebuffer( _context, target, framebuffer );
   }
 
 }
@@ -146,7 +146,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindMultiTextureEXT(RegalContext *_
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   _context->dsa->ShadowDsaTexture( target, texture );
-  orig.glBindTexture( target, texture );
+  orig.glBindTexture( _context, target, texture );
 
 }
 
@@ -157,7 +157,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindProgramARB(RegalContext *_conte
 
   // impl
   if (!_context->dsa->ShadowAsmProgram( target, program ) ) {
-      orig.glBindProgramARB( target, program );
+      orig.glBindProgramARB( _context, target, program );
   }
 
 }
@@ -169,7 +169,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindRenderbuffer(RegalContext *_con
 
   // impl
   if (!_context->dsa->ShadowRenderbuffer( target, renderbuffer ) ) {
-      orig.glBindRenderbuffer( target, renderbuffer );
+      orig.glBindRenderbuffer( _context, target, renderbuffer );
   }
 
 }
@@ -181,7 +181,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindRenderbufferEXT(RegalContext *_
 
   // impl
   if (!_context->dsa->ShadowRenderbuffer( target, renderbuffer ) ) {
-      orig.glBindRenderbuffer( target, renderbuffer );
+      orig.glBindRenderbuffer( _context, target, renderbuffer );
   }
 
 }
@@ -193,7 +193,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindTexture(RegalContext *_context,
 
   // impl
   if (!_context->dsa->ShadowTexture( target, texture )) {
-      orig.glBindTexture( target, texture );
+      orig.glBindTexture( _context, target, texture );
   }
 
 }
@@ -205,7 +205,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindTextureEXT(RegalContext *_conte
 
   // impl
   if (!_context->dsa->ShadowTexture( target, texture )) {
-      orig.glBindTexture( target, texture );
+      orig.glBindTexture( _context, target, texture );
   }
 
 }
@@ -217,7 +217,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBindVertexArray(RegalContext *_cont
 
   // impl
   if (!_context->dsa->ShadowVao( array )) {
-      orig.glBindVertexArray( array );
+      orig.glBindVertexArray( _context, array );
   }
 
 }
@@ -230,7 +230,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBufferData(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glBufferData( _context, target, size, data, usage);
+  orig.glBufferData( _context, target, size, data, usage );
 
 }
 
@@ -242,7 +242,7 @@ static void REGAL_CALL emuProcInterceptDsa_glBufferSubData(RegalContext *_contex
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glBufferSubData( _context, target, offset, size, data);
+  orig.glBufferSubData( _context, target, offset, size, data );
 
 }
 
@@ -253,7 +253,7 @@ static GLenum REGAL_CALL emuProcInterceptDsa_glCheckNamedFramebufferStatusEXT(Re
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  return orig.glCheckFramebufferStatus( target );
+  return orig.glCheckFramebufferStatus( _context, target );
 
 }
 
@@ -264,7 +264,7 @@ static void REGAL_CALL emuProcInterceptDsa_glClientActiveTexture(RegalContext *_
 
   // impl
   if (!_context->dsa->ShadowClientActiveTexture( texture )) {
-    orig.glClientActiveTexture( texture );
+    orig.glClientActiveTexture( _context, texture );
   }
 
 }
@@ -276,7 +276,7 @@ static void REGAL_CALL emuProcInterceptDsa_glClientActiveTextureARB(RegalContext
 
   // impl
   if (!_context->dsa->ShadowClientActiveTexture( texture )) {
-    orig.glClientActiveTexture( texture );
+    orig.glClientActiveTexture( _context, texture );
   }
 
 }
@@ -298,7 +298,7 @@ static void REGAL_CALL emuProcInterceptDsa_glColorPointer(RegalContext *_context
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glColorPointer( _context, size, type, stride, pointer);
+  orig.glColorPointer( _context, size, type, stride, pointer );
 
 }
 
@@ -309,7 +309,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexImage1DEXT(RegalC
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCompressedTexImage1D( target, level, internalformat, width, border, imageSize, data );
+  orig.glCompressedTexImage1D( _context, target, level, internalformat, width, border, imageSize, data );
 
 }
 
@@ -320,7 +320,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexImage2DEXT(RegalC
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCompressedTexImage2D( target, level, internalformat, width, height, border, imageSize, bits );
+  orig.glCompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, bits );
 
 }
 
@@ -331,7 +331,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexImage3DEXT(RegalC
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCompressedTexImage3D( target, level, internalformat, width, height, depth, border, imageSize, bits );
+  orig.glCompressedTexImage3D( _context, target, level, internalformat, width, height, depth, border, imageSize, bits );
 
 }
 
@@ -342,7 +342,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexSubImage1DEXT(Reg
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCompressedTexSubImage1D( target, level, xoffset, width, format, imageSize, data );
+  orig.glCompressedTexSubImage1D( _context, target, level, xoffset, width, format, imageSize, data );
 
 }
 
@@ -353,7 +353,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexSubImage2DEXT(Reg
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCompressedTexSubImage2D( target, level, xoffset, yoffset, width, height, format, imageSize, data );
+  orig.glCompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
@@ -364,7 +364,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexSubImage3DEXT(Reg
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCompressedTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
+  orig.glCompressedTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
 
 }
 
@@ -375,7 +375,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureImage1DEXT(RegalCo
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCompressedTexImage1D( target, level, internalformat, width, border, imageSize, bits );
+  orig.glCompressedTexImage1D( _context, target, level, internalformat, width, border, imageSize, bits );
 
 }
 
@@ -386,7 +386,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureImage2DEXT(RegalCo
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCompressedTexImage2D( target, level, internalformat, width, height, border, imageSize, bits );
+  orig.glCompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, bits );
 
 }
 
@@ -397,7 +397,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureImage3DEXT(RegalCo
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCompressedTexImage3D( target, level, internalformat, width, height, depth, border, imageSize, bits );
+  orig.glCompressedTexImage3D( _context, target, level, internalformat, width, height, depth, border, imageSize, bits );
 
 }
 
@@ -408,7 +408,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureSubImage1DEXT(Rega
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCompressedTexSubImage1D( target, level, xoffset, width, format, imageSize, bits );
+  orig.glCompressedTexSubImage1D( _context, target, level, xoffset, width, format, imageSize, bits );
 
 }
 
@@ -419,7 +419,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureSubImage2DEXT(Rega
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCompressedTexSubImage2D( target, level, xoffset, yoffset, width, height, format, imageSize, bits );
+  orig.glCompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, bits );
 
 }
 
@@ -430,7 +430,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureSubImage3DEXT(Rega
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCompressedTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
+  orig.glCompressedTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
 
 }
 
@@ -442,7 +442,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyBufferSubData(RegalContext *_co
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glCopyBufferSubData( _context, readtarget, writetarget, readoffset, writeoffset, size);
+  orig.glCopyBufferSubData( _context, readtarget, writetarget, readoffset, writeoffset, size );
 
 }
 
@@ -453,7 +453,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexImage1DEXT(RegalContext
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCopyTexImage1D( target, level, internalformat, x, y, width, border );
+  orig.glCopyTexImage1D( _context, target, level, internalformat, x, y, width, border );
 
 }
 
@@ -464,7 +464,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexImage2DEXT(RegalContext
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCopyTexImage2D( target, level, internalformat, x, y, width, height, border );
+  orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border );
 
 }
 
@@ -475,7 +475,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexSubImage1DEXT(RegalCont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCopyTexSubImage1D( target, level, xoffset, x, y, width );
+  orig.glCopyTexSubImage1D( _context, target, level, xoffset, x, y, width );
 
 }
 
@@ -486,7 +486,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexSubImage2DEXT(RegalCont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCopyTexSubImage2D( target, level, xoffset, yoffset, x, y, width, height );
+  orig.glCopyTexSubImage2D( _context, target, level, xoffset, yoffset, x, y, width, height );
 
 }
 
@@ -497,7 +497,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexSubImage3DEXT(RegalCont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glCopyTexSubImage3D( target, level, xoffset, yoffset, zoffset, x, y, width, height );
+  orig.glCopyTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, x, y, width, height );
 
 }
 
@@ -508,7 +508,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyTextureImage1DEXT(RegalContext 
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCopyTexImage1D( target, level, internalformat, x, y, width, border );
+  orig.glCopyTexImage1D( _context, target, level, internalformat, x, y, width, border );
 
 }
 
@@ -519,7 +519,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyTextureImage2DEXT(RegalContext 
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCopyTexImage2D( target, level, internalformat, x, y, width, height, border );
+  orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border );
 
 }
 
@@ -530,7 +530,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyTextureSubImage1DEXT(RegalConte
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCopyTexSubImage1D( target, level, xoffset, x, y, width );
+  orig.glCopyTexSubImage1D( _context, target, level, xoffset, x, y, width );
 
 }
 
@@ -541,7 +541,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyTextureSubImage2DEXT(RegalConte
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCopyTexSubImage2D( target, level, xoffset, yoffset, x, y, width, height );
+  orig.glCopyTexSubImage2D( _context, target, level, xoffset, yoffset, x, y, width, height );
 
 }
 
@@ -552,7 +552,7 @@ static void REGAL_CALL emuProcInterceptDsa_glCopyTextureSubImage3DEXT(RegalConte
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glCopyTexSubImage3D( target, level, xoffset, yoffset, zoffset, x, y, width, height );
+  orig.glCopyTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, x, y, width, height );
 
 }
 
@@ -564,7 +564,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteBuffers(RegalContext *_contex
   // prefix
   _context->dsa->DeleteBuffers( _context, n, buffers );
 
-  orig.glDeleteBuffers( _context, n, buffers);
+  orig.glDeleteBuffers( _context, n, buffers );
 
 }
 
@@ -576,7 +576,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteBuffersARB(RegalContext *_con
   // prefix
   _context->dsa->DeleteBuffers( _context, n, buffers );
 
-  orig.glDeleteBuffersARB( _context, n, buffers);
+  orig.glDeleteBuffersARB( _context, n, buffers );
 
 }
 
@@ -588,7 +588,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteFramebuffers(RegalContext *_c
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffers( _context, n, framebuffers);
+  orig.glDeleteFramebuffers( _context, n, framebuffers );
 
 }
 
@@ -600,7 +600,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteFramebuffersEXT(RegalContext 
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffersEXT( _context, n, framebuffers);
+  orig.glDeleteFramebuffersEXT( _context, n, framebuffers );
 
 }
 
@@ -612,7 +612,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteFramebuffersOES(RegalContext 
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffersOES( _context, n, framebuffers);
+  orig.glDeleteFramebuffersOES( _context, n, framebuffers );
 
 }
 
@@ -624,7 +624,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteProgram(RegalContext *_contex
   // prefix
   _context->dsa->DeleteGlslProgram( _context, program );
 
-  orig.glDeleteProgram( _context, program);
+  orig.glDeleteProgram( _context, program );
 
 }
 
@@ -636,7 +636,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteProgramsARB(RegalContext *_co
   // prefix
   _context->dsa->DeleteAsmPrograms( _context, n, programs );
 
-  orig.glDeleteProgramsARB( _context, n, programs);
+  orig.glDeleteProgramsARB( _context, n, programs );
 
 }
 
@@ -648,7 +648,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteProgramsNV(RegalContext *_con
   // prefix
   _context->dsa->DeleteAsmPrograms( _context, n, programs );
 
-  orig.glDeleteProgramsNV( _context, n, programs);
+  orig.glDeleteProgramsNV( _context, n, programs );
 
 }
 
@@ -660,7 +660,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteRenderbuffers(RegalContext *_
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffers( _context, n, renderbuffers);
+  orig.glDeleteRenderbuffers( _context, n, renderbuffers );
 
 }
 
@@ -672,7 +672,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteRenderbuffersEXT(RegalContext
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffersEXT( _context, n, renderbuffers);
+  orig.glDeleteRenderbuffersEXT( _context, n, renderbuffers );
 
 }
 
@@ -684,7 +684,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteRenderbuffersOES(RegalContext
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffersOES( _context, n, renderbuffers);
+  orig.glDeleteRenderbuffersOES( _context, n, renderbuffers );
 
 }
 
@@ -696,7 +696,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteTextures(RegalContext *_conte
   // prefix
   _context->dsa->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTextures( _context, n, textures);
+  orig.glDeleteTextures( _context, n, textures );
 
 }
 
@@ -708,7 +708,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteTexturesEXT(RegalContext *_co
   // prefix
   _context->dsa->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTexturesEXT( _context, n, textures);
+  orig.glDeleteTexturesEXT( _context, n, textures );
 
 }
 
@@ -720,7 +720,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteVertexArrays(RegalContext *_c
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArrays( _context, n, arrays);
+  orig.glDeleteVertexArrays( _context, n, arrays );
 
 }
 
@@ -732,7 +732,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteVertexArraysAPPLE(RegalContex
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArraysAPPLE( _context, n, arrays);
+  orig.glDeleteVertexArraysAPPLE( _context, n, arrays );
 
 }
 
@@ -744,7 +744,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDeleteVertexArraysOES(RegalContext 
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArraysOES( _context, n, arrays);
+  orig.glDeleteVertexArraysOES( _context, n, arrays );
 
 }
 
@@ -756,7 +756,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDisable(RegalContext *_context, GLe
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glDisable( _context, cap);
+  orig.glDisable( _context, cap );
 
 }
 
@@ -769,7 +769,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDisableClientState(RegalContext *_c
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glDisableClientState( _context, cap);
+  orig.glDisableClientState( _context, cap );
 
 }
 
@@ -780,7 +780,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDisableClientStateIndexedEXT(RegalC
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-  orig.glDisableClientState( array );
+  orig.glDisableClientState( _context, array );
 
 }
 
@@ -791,7 +791,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDisableClientStateiEXT(RegalContext
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-  orig.glDisableClientState( array );
+  orig.glDisableClientState( _context, array );
 
 }
 
@@ -802,7 +802,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDisableIndexedEXT(RegalContext *_co
 
   // impl
   _context->dsa->DsaActiveTexture( _context, index + GL_TEXTURE0 );
-  orig.glDisable( target );
+  orig.glDisable( _context, target );
 
 }
 
@@ -813,7 +813,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDisableVertexArrayAttribEXT(RegalCo
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );
-  orig.glDisableVertexAttribArray( array );
+  orig.glDisableVertexAttribArray( _context, array );
 
 }
 
@@ -826,9 +826,9 @@ static void REGAL_CALL emuProcInterceptDsa_glDisableVertexArrayEXT(RegalContext 
   _context->dsa->DsaVao( _context, vaobj );
   if ( array >= GL_TEXTURE0 && array <= GL_TEXTURE31) {
     _context->dsa->DsaClientActiveTexture( _context, array );
-    orig.glDisableClientState( GL_TEXTURE_COORD_ARRAY );
+    orig.glDisableClientState( _context, GL_TEXTURE_COORD_ARRAY );
   } else {
-    orig.glDisableClientState( array );
+    orig.glDisableClientState( _context, array );
   }
 
 }
@@ -841,7 +841,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawArrays(RegalContext *_context, 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArrays( _context, mode, first, count);
+  orig.glDrawArrays( _context, mode, first, count );
 
 }
 
@@ -853,7 +853,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawArraysEXT(RegalContext *_contex
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysEXT( _context, mode, first, count);
+  orig.glDrawArraysEXT( _context, mode, first, count );
 
 }
 
@@ -865,7 +865,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawArraysIndirect(RegalContext *_c
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysIndirect( _context, mode, indirect);
+  orig.glDrawArraysIndirect( _context, mode, indirect );
 
 }
 
@@ -877,7 +877,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawArraysInstanced(RegalContext *_
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstanced( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstanced( _context, mode, start, count, primcount );
 
 }
 
@@ -889,7 +889,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawArraysInstancedARB(RegalContext
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstancedARB( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstancedARB( _context, mode, start, count, primcount );
 
 }
 
@@ -901,7 +901,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawArraysInstancedEXT(RegalContext
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstancedEXT( _context, mode, start, count, primcount);
+  orig.glDrawArraysInstancedEXT( _context, mode, start, count, primcount );
 
 }
 
@@ -913,7 +913,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementArrayAPPLE(RegalContext 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementArrayAPPLE( _context, mode, first, count);
+  orig.glDrawElementArrayAPPLE( _context, mode, first, count );
 
 }
 
@@ -925,7 +925,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementArrayATI(RegalContext *_
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementArrayATI( _context, mode, count);
+  orig.glDrawElementArrayATI( _context, mode, count );
 
 }
 
@@ -937,7 +937,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElements(RegalContext *_context
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElements( _context, mode, count, type, indices);
+  orig.glDrawElements( _context, mode, count, type, indices );
 
 }
 
@@ -949,7 +949,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementsBaseVertex(RegalContext
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsBaseVertex( _context, mode, count, type, indices, basevertex);
+  orig.glDrawElementsBaseVertex( _context, mode, count, type, indices, basevertex );
 
 }
 
@@ -961,7 +961,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementsIndirect(RegalContext *
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsIndirect( _context, mode, type, indirect);
+  orig.glDrawElementsIndirect( _context, mode, type, indirect );
 
 }
 
@@ -973,7 +973,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstanced(RegalContext 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstanced( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstanced( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -985,7 +985,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstancedARB(RegalConte
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedARB( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedARB( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -997,7 +997,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstancedBaseVertex(Reg
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedBaseVertex( _context, mode, count, type, indices, primcount, basevertex);
+  orig.glDrawElementsInstancedBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
 
 }
 
@@ -1009,7 +1009,7 @@ static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstancedEXT(RegalConte
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedEXT( _context, mode, count, type, indices, primcount);
+  orig.glDrawElementsInstancedEXT( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -1021,7 +1021,7 @@ static void REGAL_CALL emuProcInterceptDsa_glEnable(RegalContext *_context, GLen
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glEnable( _context, cap);
+  orig.glEnable( _context, cap );
 
 }
 
@@ -1034,7 +1034,7 @@ static void REGAL_CALL emuProcInterceptDsa_glEnableClientState(RegalContext *_co
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glEnableClientState( _context, cap);
+  orig.glEnableClientState( _context, cap );
 
 }
 
@@ -1045,7 +1045,7 @@ static void REGAL_CALL emuProcInterceptDsa_glEnableClientStateIndexedEXT(RegalCo
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-  orig.glEnableClientState( array );
+  orig.glEnableClientState( _context, array );
 
 }
 
@@ -1056,7 +1056,7 @@ static void REGAL_CALL emuProcInterceptDsa_glEnableClientStateiEXT(RegalContext 
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
-  orig.glEnableClientState( array );
+  orig.glEnableClientState( _context, array );
 
 }
 
@@ -1067,7 +1067,7 @@ static void REGAL_CALL emuProcInterceptDsa_glEnableIndexedEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaActiveTexture( _context, index + GL_TEXTURE0 );
-  orig.glEnable( target );
+  orig.glEnable( _context, target );
 
 }
 
@@ -1078,7 +1078,7 @@ static void REGAL_CALL emuProcInterceptDsa_glEnableVertexArrayAttribEXT(RegalCon
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );
-  orig.glEnableVertexAttribArray( array );
+  orig.glEnableVertexAttribArray( _context, array );
 
 }
 
@@ -1091,9 +1091,9 @@ static void REGAL_CALL emuProcInterceptDsa_glEnableVertexArrayEXT(RegalContext *
   _context->dsa->DsaVao( _context, vaobj );
   if ( array >= GL_TEXTURE0 && array <= GL_TEXTURE31) {
     _context->dsa->DsaClientActiveTexture( _context, array );
-    orig.glEnableClientState( GL_TEXTURE_COORD_ARRAY );
+    orig.glEnableClientState( _context, GL_TEXTURE_COORD_ARRAY );
   } else {
-    orig.glEnableClientState( array );
+    orig.glEnableClientState( _context, array );
   }
 
 }
@@ -1106,7 +1106,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFlushMappedBufferRange(RegalContext
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glFlushMappedBufferRange( _context, target, offset, length);
+  orig.glFlushMappedBufferRange( _context, target, offset, length );
 
 }
 
@@ -1118,7 +1118,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFlushMappedBufferRangeEXT(RegalCont
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glFlushMappedBufferRangeEXT( _context, target, offset, length);
+  orig.glFlushMappedBufferRangeEXT( _context, target, offset, length );
 
 }
 
@@ -1129,7 +1129,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFlushMappedNamedBufferRangeEXT(Rega
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  orig.glFlushMappedBufferRange( GL_ARRAY_BUFFER, offset, length );
+  orig.glFlushMappedBufferRange( _context, GL_ARRAY_BUFFER, offset, length );
 
 }
 
@@ -1140,7 +1140,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferDrawBufferEXT(RegalConte
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glDrawBuffer( mode );
+  orig.glDrawBuffer( _context, mode );
 
 }
 
@@ -1151,7 +1151,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferDrawBuffersEXT(RegalCont
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glDrawBuffers( n, bufs );
+  orig.glDrawBuffers( _context, n, bufs );
 
 }
 
@@ -1162,7 +1162,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferReadBufferEXT(RegalConte
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glReadBuffer( mode );
+  orig.glReadBuffer( _context, mode );
 
 }
 
@@ -1174,7 +1174,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferRenderbuffer(RegalContex
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferRenderbuffer( _context, target, attachment, renderbuffertarget, renderbuffer);
+  orig.glFramebufferRenderbuffer( _context, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
@@ -1186,7 +1186,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferRenderbufferEXT(RegalCon
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferRenderbufferEXT( _context, target, attachment, renderbuffertarget, renderbuffer);
+  orig.glFramebufferRenderbufferEXT( _context, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
@@ -1198,7 +1198,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture(RegalContext *_c
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture( _context, target, attachment, texture, level);
+  orig.glFramebufferTexture( _context, target, attachment, texture, level );
 
 }
 
@@ -1210,7 +1210,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture1D(RegalContext *
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture1D( _context, target, attachment, textarget, texture, level);
+  orig.glFramebufferTexture1D( _context, target, attachment, textarget, texture, level );
 
 }
 
@@ -1222,7 +1222,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture1DEXT(RegalContex
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture1DEXT( _context, target, attachment, textarget, texture, level);
+  orig.glFramebufferTexture1DEXT( _context, target, attachment, textarget, texture, level );
 
 }
 
@@ -1234,7 +1234,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture2D(RegalContext *
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture2D( _context, target, attachment, textarget, texture, level);
+  orig.glFramebufferTexture2D( _context, target, attachment, textarget, texture, level );
 
 }
 
@@ -1246,7 +1246,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture2DEXT(RegalContex
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture2DEXT( _context, target, attachment, textarget, texture, level);
+  orig.glFramebufferTexture2DEXT( _context, target, attachment, textarget, texture, level );
 
 }
 
@@ -1258,7 +1258,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture3D(RegalContext *
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture3D( _context, target, attachment, textarget, texture, level, layer);
+  orig.glFramebufferTexture3D( _context, target, attachment, textarget, texture, level, layer );
 
 }
 
@@ -1270,7 +1270,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture3DEXT(RegalContex
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture3DEXT( _context, target, attachment, textarget, texture, level, zoffset);
+  orig.glFramebufferTexture3DEXT( _context, target, attachment, textarget, texture, level, zoffset );
 
 }
 
@@ -1282,7 +1282,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureARB(RegalContext 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureARB( _context, target, attachment, texture, level);
+  orig.glFramebufferTextureARB( _context, target, attachment, texture, level );
 
 }
 
@@ -1294,7 +1294,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureEXT(RegalContext 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureEXT( _context, target, attachment, texture, level);
+  orig.glFramebufferTextureEXT( _context, target, attachment, texture, level );
 
 }
 
@@ -1306,7 +1306,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureFace(RegalContext
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFace( _context, target, attachment, texture, level, face);
+  orig.glFramebufferTextureFace( _context, target, attachment, texture, level, face );
 
 }
 
@@ -1318,7 +1318,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureFaceARB(RegalCont
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFaceARB( _context, target, attachment, texture, level, face);
+  orig.glFramebufferTextureFaceARB( _context, target, attachment, texture, level, face );
 
 }
 
@@ -1330,7 +1330,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureFaceEXT(RegalCont
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFaceEXT( _context, target, attachment, texture, level, face);
+  orig.glFramebufferTextureFaceEXT( _context, target, attachment, texture, level, face );
 
 }
 
@@ -1342,7 +1342,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureLayer(RegalContex
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayer( _context, target, attachment, texture, level, layer);
+  orig.glFramebufferTextureLayer( _context, target, attachment, texture, level, layer );
 
 }
 
@@ -1354,7 +1354,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureLayerARB(RegalCon
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayerARB( _context, target, attachment, texture, level, layer);
+  orig.glFramebufferTextureLayerARB( _context, target, attachment, texture, level, layer );
 
 }
 
@@ -1366,7 +1366,7 @@ static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureLayerEXT(RegalCon
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayerEXT( _context, target, attachment, texture, level, layer);
+  orig.glFramebufferTextureLayerEXT( _context, target, attachment, texture, level, layer );
 
 }
 
@@ -1379,7 +1379,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGenerateMipmap(RegalContext *_conte
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGenerateMipmap( _context, target);
+  orig.glGenerateMipmap( _context, target );
 
 }
 
@@ -1392,7 +1392,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGenerateMipmapEXT(RegalContext *_co
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGenerateMipmapEXT( _context, target);
+  orig.glGenerateMipmapEXT( _context, target );
 
 }
 
@@ -1403,7 +1403,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGenerateMultiTexMipmapEXT(RegalCont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGenerateMipmap( target );
+  orig.glGenerateMipmap( _context, target );
 
 }
 
@@ -1414,7 +1414,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGenerateTextureMipmapEXT(RegalConte
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGenerateMipmap( target );
+  orig.glGenerateMipmap( _context, target );
 
 }
 
@@ -1426,7 +1426,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetBooleanv(RegalContext *_context,
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetBooleanv( _context, pname, params);
+  orig.glGetBooleanv( _context, pname, params );
 
 }
 
@@ -1438,7 +1438,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetBufferParameteriv(RegalContext *
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferParameteriv( _context, target, pname, params);
+  orig.glGetBufferParameteriv( _context, target, pname, params );
 
 }
 
@@ -1450,7 +1450,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetBufferPointerv(RegalContext *_co
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferPointerv( _context, target, pname, params);
+  orig.glGetBufferPointerv( _context, target, pname, params );
 
 }
 
@@ -1462,7 +1462,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetBufferSubData(RegalContext *_con
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferSubData( _context, target, offset, size, data);
+  orig.glGetBufferSubData( _context, target, offset, size, data );
 
 }
 
@@ -1473,7 +1473,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetCompressedMultiTexImageEXT(Regal
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetCompressedTexImage( target, lod, img );
+  orig.glGetCompressedTexImage( _context, target, lod, img );
 
 }
 
@@ -1484,7 +1484,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetCompressedTextureImageEXT(RegalC
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetCompressedTexImage( target, lod, img );
+  orig.glGetCompressedTexImage( _context, target, lod, img );
 
 }
 
@@ -1495,7 +1495,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetDoubleIndexedvEXT(RegalContext *
 
   // impl
   if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-    orig.glGetDoubleIndexedvEXT(target, index, data);
+    orig.glGetDoubleIndexedvEXT( _context, target, index, data);
   }
 
 }
@@ -1507,7 +1507,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetDoublei_v(RegalContext *_context
 
   // impl
   if ( ! _context->dsa->GetIndexedv( _context, target, index, v ) ) {
-    orig.glGetDoublei_v(target, index, v);
+    orig.glGetDoublei_v( _context, target, index, v);
   }
 
 }
@@ -1519,7 +1519,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetDoublei_vEXT(RegalContext *_cont
 
   // impl
   if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-    orig.glGetDoublei_vEXT(target, index, data);
+    orig.glGetDoublei_vEXT( _context, target, index, data);
   }
 
 }
@@ -1532,7 +1532,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetDoublev(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetDoublev( _context, pname, params);
+  orig.glGetDoublev( _context, pname, params );
 
 }
 
@@ -1543,7 +1543,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetFloatIndexedvEXT(RegalContext *_
 
   // impl
   if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-    orig.glGetFloatIndexedvEXT(target, index, data);
+    orig.glGetFloatIndexedvEXT( _context, target, index, data);
   }
 
 }
@@ -1555,7 +1555,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetFloati_v(RegalContext *_context,
 
   // impl
   if ( ! _context->dsa->GetIndexedv( _context, target, index, v ) ) {
-    orig.glGetFloati_v(target, index, v);
+    orig.glGetFloati_v( _context, target, index, v);
   }
 
 }
@@ -1567,7 +1567,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetFloati_vEXT(RegalContext *_conte
 
   // impl
   if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-    orig.glGetFloati_vEXT(target, index, data);
+    orig.glGetFloati_vEXT( _context, target, index, data);
   }
 
 }
@@ -1580,7 +1580,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetFloatv(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetFloatv( _context, pname, params);
+  orig.glGetFloatv( _context, pname, params );
 
 }
 
@@ -1591,7 +1591,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetFramebufferParameterivEXT(RegalC
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer );
-  orig.glGetIntegerv(pname, params);
+  orig.glGetIntegerv( _context, pname, params);
 
 }
 
@@ -1603,7 +1603,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetIntegerv(RegalContext *_context,
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetIntegerv( _context, pname, params);
+  orig.glGetIntegerv( _context, pname, params );
 
 }
 
@@ -1614,7 +1614,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexEnvfvEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexEnvfv( target, pname, params );
+  orig.glGetTexEnvfv( _context, target, pname, params );
 
 }
 
@@ -1625,7 +1625,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexEnvivEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexEnviv( target, pname, params );
+  orig.glGetTexEnviv( _context, target, pname, params );
 
 }
 
@@ -1636,7 +1636,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexGendvEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexGendv( coord, pname, params );
+  orig.glGetTexGendv( _context, coord, pname, params );
 
 }
 
@@ -1647,7 +1647,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexGenfvEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexGenfv( coord, pname, params );
+  orig.glGetTexGenfv( _context, coord, pname, params );
 
 }
 
@@ -1658,7 +1658,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexGenivEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexGeniv( coord, pname, params );
+  orig.glGetTexGeniv( _context, coord, pname, params );
 
 }
 
@@ -1669,7 +1669,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexImageEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexImage( target, level, format, type, pixels );
+  orig.glGetTexImage( _context, target, level, format, type, pixels );
 
 }
 
@@ -1680,7 +1680,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexLevelParameterfvEXT(Rega
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexLevelParameterfv( target, level, pname, params );
+  orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
 
 }
 
@@ -1691,7 +1691,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexLevelParameterivEXT(Rega
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexLevelParameteriv( target, level, pname, params );
+  orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
 
 }
 
@@ -1702,7 +1702,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterIivEXT(RegalCon
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexParameterIiv( target, pname, params );
+  orig.glGetTexParameterIiv( _context, target, pname, params );
 
 }
 
@@ -1713,7 +1713,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterIuivEXT(RegalCo
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexParameterIuiv( target, pname, params );
+  orig.glGetTexParameterIuiv( _context, target, pname, params );
 
 }
 
@@ -1724,7 +1724,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterfvEXT(RegalCont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexParameterfv( target, pname, params );
+  orig.glGetTexParameterfv( _context, target, pname, params );
 
 }
 
@@ -1735,7 +1735,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterivEXT(RegalCont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glGetTexParameteriv( target, pname, params );
+  orig.glGetTexParameteriv( _context, target, pname, params );
 
 }
 
@@ -1746,7 +1746,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedBufferParameterivEXT(RegalC
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  orig.glGetBufferParameteriv( GL_ARRAY_BUFFER, pname, params );
+  orig.glGetBufferParameteriv( _context, GL_ARRAY_BUFFER, pname, params );
 
 }
 
@@ -1757,7 +1757,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedBufferPointervEXT(RegalCont
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  orig.glGetBufferPointerv( GL_ARRAY_BUFFER, pname, params );
+  orig.glGetBufferPointerv( _context, GL_ARRAY_BUFFER, pname, params );
 
 }
 
@@ -1768,7 +1768,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedBufferSubDataEXT(RegalConte
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  orig.glGetBufferSubData( GL_ARRAY_BUFFER, offset, size, data );
+  orig.glGetBufferSubData( _context, GL_ARRAY_BUFFER, offset, size, data );
 
 }
 
@@ -1779,7 +1779,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedFramebufferAttachmentParame
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glGetFramebufferAttachmentParameteriv( GL_FRAMEBUFFER, attachment, pname, params );
+  orig.glGetFramebufferAttachmentParameteriv( _context, GL_FRAMEBUFFER, attachment, pname, params );
 
 }
 
@@ -1790,7 +1790,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterIivEXT
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glGetProgramLocalParameterIivNV( target, index, params );
+  orig.glGetProgramLocalParameterIivNV( _context, target, index, params );
 
 }
 
@@ -1801,7 +1801,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterIuivEX
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glGetProgramLocalParameterIuivNV( target, index, params );
+  orig.glGetProgramLocalParameterIuivNV( _context, target, index, params );
 
 }
 
@@ -1812,7 +1812,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterdvEXT(
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glGetProgramLocalParameterdvARB( target, index, params );
+  orig.glGetProgramLocalParameterdvARB( _context, target, index, params );
 
 }
 
@@ -1823,7 +1823,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterfvEXT(
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glGetProgramLocalParameterfvARB( target, index, params );
+  orig.glGetProgramLocalParameterfvARB( _context, target, index, params );
 
 }
 
@@ -1834,7 +1834,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramStringEXT(RegalConte
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glGetProgramStringARB( target, pname, string );
+  orig.glGetProgramStringARB( _context, target, pname, string );
 
 }
 
@@ -1845,7 +1845,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramivEXT(RegalContext *
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glGetProgramivARB( target, pname, params );
+  orig.glGetProgramivARB( _context, target, pname, params );
 
 }
 
@@ -1856,7 +1856,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetNamedRenderbufferParameterivEXT(
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-  orig.glGetRenderbufferParameteriv( GL_RENDERBUFFER, pname, params );
+  orig.glGetRenderbufferParameteriv( _context, GL_RENDERBUFFER, pname, params );
 
 }
 
@@ -1867,7 +1867,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetPointerIndexedvEXT(RegalContext 
 
   // impl
   // if ( ! _context->dsa->GetIndexedv( _context, target, index, data ) ) {
-  //     orig.glGetPointerIndexedvEXT(target, index, data);
+  //     orig.glGetPointerIndexedvEXT( _context, target, index, data);
   // }
 
 }
@@ -1880,7 +1880,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterIivNV(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterIivNV( _context, target, index, params);
+  orig.glGetProgramEnvParameterIivNV( _context, target, index, params );
 
 }
 
@@ -1892,7 +1892,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterIuivNV(RegalC
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterIuivNV( _context, target, index, params);
+  orig.glGetProgramEnvParameterIuivNV( _context, target, index, params );
 
 }
 
@@ -1904,7 +1904,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterdvARB(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterdvARB( _context, target, index, params);
+  orig.glGetProgramEnvParameterdvARB( _context, target, index, params );
 
 }
 
@@ -1916,7 +1916,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterfvARB(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterfvARB( _context, target, index, params);
+  orig.glGetProgramEnvParameterfvARB( _context, target, index, params );
 
 }
 
@@ -1928,7 +1928,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterIivNV(Regal
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterIivNV( _context, target, index, params);
+  orig.glGetProgramLocalParameterIivNV( _context, target, index, params );
 
 }
 
@@ -1940,7 +1940,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterIuivNV(Rega
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterIuivNV( _context, target, index, params);
+  orig.glGetProgramLocalParameterIuivNV( _context, target, index, params );
 
 }
 
@@ -1952,7 +1952,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterdvARB(Regal
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterdvARB( _context, target, index, params);
+  orig.glGetProgramLocalParameterdvARB( _context, target, index, params );
 
 }
 
@@ -1964,7 +1964,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterfvARB(Regal
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterfvARB( _context, target, index, params);
+  orig.glGetProgramLocalParameterfvARB( _context, target, index, params );
 
 }
 
@@ -1976,7 +1976,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetRenderbufferParameteriv(RegalCon
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glGetRenderbufferParameteriv( _context, target, pname, params);
+  orig.glGetRenderbufferParameteriv( _context, target, pname, params );
 
 }
 
@@ -1988,7 +1988,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetRenderbufferParameterivEXT(Regal
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glGetRenderbufferParameterivEXT( _context, target, pname, params);
+  orig.glGetRenderbufferParameterivEXT( _context, target, pname, params );
 
 }
 
@@ -2001,7 +2001,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTexEnvfv(RegalContext *_context,
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexEnvfv( _context, target, pname, params);
+  orig.glGetTexEnvfv( _context, target, pname, params );
 
 }
 
@@ -2014,7 +2014,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTexEnviv(RegalContext *_context,
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexEnviv( _context, target, pname, params);
+  orig.glGetTexEnviv( _context, target, pname, params );
 
 }
 
@@ -2027,7 +2027,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTexParameterfv(RegalContext *_co
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexParameterfv( _context, target, pname, params);
+  orig.glGetTexParameterfv( _context, target, pname, params );
 
 }
 
@@ -2040,7 +2040,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTexParameteriv(RegalContext *_co
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexParameteriv( _context, target, pname, params);
+  orig.glGetTexParameteriv( _context, target, pname, params );
 
 }
 
@@ -2051,7 +2051,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTextureImageEXT(RegalContext *_c
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetTexImage( target, level, format, type, pixels );
+  orig.glGetTexImage( _context, target, level, format, type, pixels );
 
 }
 
@@ -2062,7 +2062,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTextureLevelParameterfvEXT(Regal
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetTexLevelParameterfv( target, level, pname, params );
+  orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
 
 }
 
@@ -2073,7 +2073,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTextureLevelParameterivEXT(Regal
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetTexLevelParameteriv( target, level, pname, params );
+  orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
 
 }
 
@@ -2084,7 +2084,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterIivEXT(RegalCont
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetTexParameterIiv( target, pname, params );
+  orig.glGetTexParameterIiv( _context, target, pname, params );
 
 }
 
@@ -2095,7 +2095,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterIuivEXT(RegalCon
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetTexParameterIuiv( target, pname, params );
+  orig.glGetTexParameterIuiv( _context, target, pname, params );
 
 }
 
@@ -2106,7 +2106,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterfvEXT(RegalConte
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetTexParameterfv( target, pname, params );
+  orig.glGetTexParameterfv( _context, target, pname, params );
 
 }
 
@@ -2117,7 +2117,7 @@ static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterivEXT(RegalConte
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glGetTexParameteriv( target, pname, params );
+  orig.glGetTexParameteriv( _context, target, pname, params );
 
 }
 
@@ -2129,7 +2129,7 @@ static GLboolean REGAL_CALL emuProcInterceptDsa_glIsEnabled(RegalContext *_conte
   // prefix
   _context->dsa->RestoreIsEnabled( _context, cap );
 
-  return orig.glIsEnabled( _context, cap);
+  return orig.glIsEnabled( _context, cap );
 
 }
 
@@ -2152,7 +2152,7 @@ static void REGAL_CALL emuProcInterceptDsa_glLoadIdentity(RegalContext *_context
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadIdentity( _context, );
+  orig.glLoadIdentity( _context );
 
 }
 
@@ -2164,7 +2164,7 @@ static void REGAL_CALL emuProcInterceptDsa_glLoadMatrixd(RegalContext *_context,
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadMatrixd( _context, m);
+  orig.glLoadMatrixd( _context, m );
 
 }
 
@@ -2176,7 +2176,7 @@ static void REGAL_CALL emuProcInterceptDsa_glLoadMatrixf(RegalContext *_context,
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadMatrixf( _context, m);
+  orig.glLoadMatrixf( _context, m );
 
 }
 
@@ -2188,7 +2188,7 @@ static void REGAL_CALL emuProcInterceptDsa_glLoadTransposeMatrixd(RegalContext *
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadTransposeMatrixd( _context, m);
+  orig.glLoadTransposeMatrixd( _context, m );
 
 }
 
@@ -2200,7 +2200,7 @@ static void REGAL_CALL emuProcInterceptDsa_glLoadTransposeMatrixf(RegalContext *
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadTransposeMatrixf( _context, m);
+  orig.glLoadTransposeMatrixf( _context, m );
 
 }
 
@@ -2212,7 +2212,7 @@ static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBuffer(RegalContext *_context
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBuffer( _context, target, access);
+  return orig.glMapBuffer( _context, target, access );
 
 }
 
@@ -2224,7 +2224,7 @@ static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBufferARB(RegalContext *_cont
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferARB( _context, target, access);
+  return orig.glMapBufferARB( _context, target, access );
 
 }
 
@@ -2236,7 +2236,7 @@ static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBufferRange(RegalContext *_co
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferRange( _context, target, offset, length, access);
+  return orig.glMapBufferRange( _context, target, offset, length, access );
 
 }
 
@@ -2248,7 +2248,7 @@ static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBufferRangeEXT(RegalContext *
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferRangeEXT( _context, target, offset, length, access);
+  return orig.glMapBufferRangeEXT( _context, target, offset, length, access );
 
 }
 
@@ -2259,7 +2259,7 @@ static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapNamedBufferEXT(RegalContext *
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  return orig.glMapBuffer( GL_ARRAY_BUFFER, access );
+  return orig.glMapBuffer( _context, GL_ARRAY_BUFFER, access );
 
 }
 
@@ -2270,7 +2270,7 @@ static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapNamedBufferRangeEXT(RegalCont
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  return orig.glMapBufferRange( GL_ARRAY_BUFFER, offset, length, access );
+  return orig.glMapBufferRange( _context, GL_ARRAY_BUFFER, offset, length, access );
 
 }
 
@@ -2281,7 +2281,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixFrustumEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glFrustum(left, right, bottom, top, zNear, zFar);
+  orig.glFrustum( _context, left, right, bottom, top, zNear, zFar);
 
 }
 
@@ -2292,7 +2292,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadIdentityEXT(RegalContext 
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glLoadIdentity();
+  orig.glLoadIdentity( _context, );
 
 }
 
@@ -2303,7 +2303,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadTransposedEXT(RegalContex
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glLoadTransposeMatrixd(m);
+  orig.glLoadTransposeMatrixd( _context, m);
 
 }
 
@@ -2314,7 +2314,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadTransposefEXT(RegalContex
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glLoadTransposeMatrixf(m);
+  orig.glLoadTransposeMatrixf( _context, m);
 
 }
 
@@ -2325,7 +2325,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixLoaddEXT(RegalContext *_conte
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glLoadMatrixd(m);
+  orig.glLoadMatrixd( _context, m);
 
 }
 
@@ -2336,7 +2336,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadfEXT(RegalContext *_conte
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glLoadMatrixf(m);
+  orig.glLoadMatrixf( _context, m);
 
 }
 
@@ -2347,7 +2347,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixMode(RegalContext *_context, 
 
   // impl
   if (!_context->dsa->ShadowMatrixMode(mode)) {
-    orig.glMatrixMode(mode);
+    orig.glMatrixMode( _context, mode);
   }
 
 }
@@ -2359,7 +2359,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixMultTransposedEXT(RegalContex
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glMultTransposeMatrixd(m);
+  orig.glMultTransposeMatrixd( _context, m);
 
 }
 
@@ -2370,7 +2370,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixMultTransposefEXT(RegalContex
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glMultTransposeMatrixf(m);
+  orig.glMultTransposeMatrixf( _context, m);
 
 }
 
@@ -2381,7 +2381,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixMultdEXT(RegalContext *_conte
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glMultMatrixd(m);
+  orig.glMultMatrixd( _context, m);
 
 }
 
@@ -2392,7 +2392,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixMultfEXT(RegalContext *_conte
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glMultMatrixf(m);
+  orig.glMultMatrixf( _context, m);
 
 }
 
@@ -2403,7 +2403,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixOrthoEXT(RegalContext *_conte
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glOrtho(left, right, bottom, top, zNear, zFar);
+  orig.glOrtho( _context, left, right, bottom, top, zNear, zFar);
 
 }
 
@@ -2414,7 +2414,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixPopEXT(RegalContext *_context
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glPopMatrix();
+  orig.glPopMatrix( _context, );
 
 }
 
@@ -2425,7 +2425,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixPushEXT(RegalContext *_contex
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glPushMatrix();
+  orig.glPushMatrix( _context, );
 
 }
 
@@ -2436,7 +2436,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixRotatedEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glRotated(angle, x, y, z);
+  orig.glRotated( _context, angle, x, y, z);
 
 }
 
@@ -2447,7 +2447,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixRotatefEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glRotatef(angle, x, y, z);
+  orig.glRotatef( _context, angle, x, y, z);
 
 }
 
@@ -2458,7 +2458,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixScaledEXT(RegalContext *_cont
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glScaled(x, y, z);
+  orig.glScaled( _context, x, y, z);
 
 }
 
@@ -2469,7 +2469,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixScalefEXT(RegalContext *_cont
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glScalef(x, y, z);
+  orig.glScalef( _context, x, y, z);
 
 }
 
@@ -2480,7 +2480,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixTranslatedEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glTranslated(x, y, z);
+  orig.glTranslated( _context, x, y, z);
 
 }
 
@@ -2491,7 +2491,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixTranslatefEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glTranslatef(x, y, z);
+  orig.glTranslatef( _context, x, y, z);
 
 }
 
@@ -2503,7 +2503,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultMatrixd(RegalContext *_context,
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultMatrixd( _context, m);
+  orig.glMultMatrixd( _context, m );
 
 }
 
@@ -2515,7 +2515,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultMatrixf(RegalContext *_context,
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultMatrixf( _context, m);
+  orig.glMultMatrixf( _context, m );
 
 }
 
@@ -2527,7 +2527,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultTransposeMatrixd(RegalContext *
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultTransposeMatrixd( _context, m);
+  orig.glMultTransposeMatrixd( _context, m );
 
 }
 
@@ -2539,7 +2539,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultTransposeMatrixf(RegalContext *
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultTransposeMatrixf( _context, m);
+  orig.glMultTransposeMatrixf( _context, m );
 
 }
 
@@ -2551,7 +2551,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArrays(RegalContext *_cont
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArrays( _context, mode, first, count, primcount);
+  orig.glMultiDrawArrays( _context, mode, first, count, primcount );
 
 }
 
@@ -2563,7 +2563,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArraysEXT(RegalContext *_c
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysEXT( _context, mode, first, count, primcount);
+  orig.glMultiDrawArraysEXT( _context, mode, first, count, primcount );
 
 }
 
@@ -2575,7 +2575,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArraysIndirect(RegalContex
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysIndirect( _context, mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirect( _context, mode, indirect, primcount, stride );
 
 }
 
@@ -2587,7 +2587,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArraysIndirectAMD(RegalCon
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysIndirectAMD( _context, mode, indirect, primcount, stride);
+  orig.glMultiDrawArraysIndirectAMD( _context, mode, indirect, primcount, stride );
 
 }
 
@@ -2599,7 +2599,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementArrayAPPLE(RegalCon
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementArrayAPPLE( _context, mode, first, count, primcount);
+  orig.glMultiDrawElementArrayAPPLE( _context, mode, first, count, primcount );
 
 }
 
@@ -2611,7 +2611,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElements(RegalContext *_co
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElements( _context, mode, count, type, indices, primcount);
+  orig.glMultiDrawElements( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -2623,7 +2623,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsBaseVertex(RegalCo
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsBaseVertex( _context, mode, count, type, indices, primcount, basevertex);
+  orig.glMultiDrawElementsBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
 
 }
 
@@ -2635,7 +2635,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsEXT(RegalContext *
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsEXT( _context, mode, count, type, indices, primcount);
+  orig.glMultiDrawElementsEXT( _context, mode, count, type, indices, primcount );
 
 }
 
@@ -2647,7 +2647,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsIndirect(RegalCont
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsIndirect( _context, mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirect( _context, mode, type, indirect, primcount, stride );
 
 }
 
@@ -2659,7 +2659,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsIndirectAMD(RegalC
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsIndirectAMD( _context, mode, type, indirect, primcount, stride);
+  orig.glMultiDrawElementsIndirectAMD( _context, mode, type, indirect, primcount, stride );
 
 }
 
@@ -2670,7 +2670,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexBufferEXT(RegalContext *_co
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexBuffer( target, internalformat, buffer );
+  orig.glTexBuffer( _context, target, internalformat, buffer );
 
 }
 
@@ -2681,7 +2681,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexCoordPointerEXT(RegalContex
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, texunit );
-  orig.glTexCoordPointer( size, type, stride, pointer );
+  orig.glTexCoordPointer( _context, size, type, stride, pointer );
 
 }
 
@@ -2692,7 +2692,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnvfEXT(RegalContext *_cont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexEnvf( target, pname, param );
+  orig.glTexEnvf( _context, target, pname, param );
 
 }
 
@@ -2703,7 +2703,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnvfvEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexEnvfv( target, pname, params );
+  orig.glTexEnvfv( _context, target, pname, params );
 
 }
 
@@ -2714,7 +2714,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnviEXT(RegalContext *_cont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexEnvi( target, pname, param );
+  orig.glTexEnvi( _context, target, pname, param );
 
 }
 
@@ -2725,7 +2725,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnvivEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexEnviv( target, pname, params );
+  orig.glTexEnviv( _context, target, pname, params );
 
 }
 
@@ -2736,7 +2736,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexGendEXT(RegalContext *_cont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexGend( coord, pname, param );
+  orig.glTexGend( _context, coord, pname, param );
 
 }
 
@@ -2747,7 +2747,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexGendvEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexGendv( coord, pname, params );
+  orig.glTexGendv( _context, coord, pname, params );
 
 }
 
@@ -2758,7 +2758,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexGenfEXT(RegalContext *_cont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexGenf( coord, pname, param );
+  orig.glTexGenf( _context, coord, pname, param );
 
 }
 
@@ -2769,7 +2769,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexGenfvEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexGenfv( coord, pname, params );
+  orig.glTexGenfv( _context, coord, pname, params );
 
 }
 
@@ -2780,7 +2780,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexGeniEXT(RegalContext *_cont
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexGeni( coord, pname, param );
+  orig.glTexGeni( _context, coord, pname, param );
 
 }
 
@@ -2791,7 +2791,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexGenivEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexGeniv( coord, pname, params );
+  orig.glTexGeniv( _context, coord, pname, params );
 
 }
 
@@ -2802,7 +2802,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexImage1DEXT(RegalContext *_c
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexImage1D( target, level, internalformat, width, border, format, type, pixels );
+  orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
@@ -2813,7 +2813,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexImage2DEXT(RegalContext *_c
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexImage2D( target, level, internalformat, width, height, border, format, type, pixels );
+  orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
@@ -2824,7 +2824,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexImage3DEXT(RegalContext *_c
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexImage3D( target, level, internalformat, width, height, depth, border, format, type, pixels );
+  orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
@@ -2835,7 +2835,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterIivEXT(RegalContex
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexParameterIiv( target, pname, params );
+  orig.glTexParameterIiv( _context, target, pname, params );
 
 }
 
@@ -2846,7 +2846,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterIuivEXT(RegalConte
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexParameterIuiv( target, pname, params );
+  orig.glTexParameterIuiv( _context, target, pname, params );
 
 }
 
@@ -2857,7 +2857,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterfEXT(RegalContext 
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexParameterf( target, pname, param );
+  orig.glTexParameterf( _context, target, pname, param );
 
 }
 
@@ -2868,7 +2868,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterfvEXT(RegalContext
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexParameterfv( target, pname, param );
+  orig.glTexParameterfv( _context, target, pname, param );
 
 }
 
@@ -2879,7 +2879,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameteriEXT(RegalContext 
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexParameteri( target, pname, param );
+  orig.glTexParameteri( _context, target, pname, param );
 
 }
 
@@ -2890,7 +2890,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterivEXT(RegalContext
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexParameteriv( target, pname, param );
+  orig.glTexParameteriv( _context, target, pname, param );
 
 }
 
@@ -2901,7 +2901,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexRenderbufferEXT(RegalContex
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexRenderbufferNV( target, renderbuffer );
+  orig.glTexRenderbufferNV( _context, target, renderbuffer );
 
 }
 
@@ -2912,7 +2912,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexSubImage1DEXT(RegalContext 
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexSubImage1D( target, level, xoffset, width, format, type, pixels );
+  orig.glTexSubImage1D( _context, target, level, xoffset, width, format, type, pixels );
 
 }
 
@@ -2923,7 +2923,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexSubImage2DEXT(RegalContext 
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexSubImage2D( target, level, xoffset, yoffset, width, height, format, type, pixels );
+  orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
@@ -2934,7 +2934,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMultiTexSubImage3DEXT(RegalContext 
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
-  orig.glTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+  orig.glTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
 
 }
 
@@ -2945,7 +2945,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedBufferDataEXT(RegalContext *_c
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  orig.glBufferData( GL_ARRAY_BUFFER, size, data, usage );
+  orig.glBufferData( _context, GL_ARRAY_BUFFER, size, data, usage );
 
 }
 
@@ -2956,7 +2956,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedBufferSubDataEXT(RegalContext 
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  orig.glBufferSubData( GL_ARRAY_BUFFER, offset, size, data );
+  orig.glBufferSubData( _context, GL_ARRAY_BUFFER, offset, size, data );
 
 }
 
@@ -2967,7 +2967,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedCopyBufferSubDataEXT(RegalCont
 
   // impl
   _context->dsa->DsaBuffer( _context, readBuffer);
-  orig.glCopyBufferSubData( GL_ARRAY_BUFFER, writeBuffer, readOffset, writeOffset, size );
+  orig.glCopyBufferSubData( _context, GL_ARRAY_BUFFER, writeBuffer, readOffset, writeOffset, size );
 
 }
 
@@ -2978,7 +2978,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferRenderbufferEXT(Reg
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glFramebufferRenderbuffer( GL_FRAMEBUFFER, attachment, renderbuffertarget, renderbuffer );
+  orig.glFramebufferRenderbuffer( _context, GL_FRAMEBUFFER, attachment, renderbuffertarget, renderbuffer );
 
 }
 
@@ -2989,7 +2989,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTexture1DEXT(RegalC
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glFramebufferTexture1D( GL_FRAMEBUFFER, attachment, textarget, texture, level );
+  orig.glFramebufferTexture1D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level );
 
 }
 
@@ -3000,7 +3000,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTexture2DEXT(RegalC
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glFramebufferTexture2D( GL_FRAMEBUFFER, attachment, textarget, texture, level );
+  orig.glFramebufferTexture2D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level );
 
 }
 
@@ -3011,7 +3011,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTexture3DEXT(RegalC
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glFramebufferTexture3D( GL_FRAMEBUFFER, attachment, textarget, texture, level, zoffset );
+  orig.glFramebufferTexture3D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level, zoffset );
 
 }
 
@@ -3022,7 +3022,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTextureEXT(RegalCon
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glFramebufferTexture( GL_FRAMEBUFFER, attachment, texture, level );
+  orig.glFramebufferTexture( _context, GL_FRAMEBUFFER, attachment, texture, level );
 
 }
 
@@ -3033,7 +3033,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTextureFaceEXT(Rega
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glFramebufferTextureFaceARB( GL_FRAMEBUFFER, attachment, texture, level, face );
+  orig.glFramebufferTextureFaceARB( _context, GL_FRAMEBUFFER, attachment, texture, level, face );
 
 }
 
@@ -3044,7 +3044,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTextureLayerEXT(Reg
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
-  orig.glFramebufferTextureLayer( GL_FRAMEBUFFER, attachment, texture, level, layer );
+  orig.glFramebufferTextureLayer( _context, GL_FRAMEBUFFER, attachment, texture, level, layer );
 
 }
 
@@ -3055,7 +3055,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4dEXT(Reg
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameter4dARB( target, index, x, y, z, w );
+  orig.glProgramLocalParameter4dARB( _context, target, index, x, y, z, w );
 
 }
 
@@ -3066,7 +3066,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4dvEXT(Re
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameter4dvARB( target, index, params );
+  orig.glProgramLocalParameter4dvARB( _context, target, index, params );
 
 }
 
@@ -3077,7 +3077,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4fEXT(Reg
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameter4fARB( target, index, x, y, z, w );
+  orig.glProgramLocalParameter4fARB( _context, target, index, x, y, z, w );
 
 }
 
@@ -3088,7 +3088,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4fvEXT(Re
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameter4fvARB( target, index, params );
+  orig.glProgramLocalParameter4fvARB( _context, target, index, params );
 
 }
 
@@ -3099,7 +3099,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4iEXT(Re
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameterI4iNV( target, index, x, y, z, w );
+  orig.glProgramLocalParameterI4iNV( _context, target, index, x, y, z, w );
 
 }
 
@@ -3110,7 +3110,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4ivEXT(R
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameterI4ivNV( target, index, params );
+  orig.glProgramLocalParameterI4ivNV( _context, target, index, params );
 
 }
 
@@ -3121,7 +3121,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4uiEXT(R
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameterI4uiNV( target, index, x, y, z, w );
+  orig.glProgramLocalParameterI4uiNV( _context, target, index, x, y, z, w );
 
 }
 
@@ -3132,7 +3132,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4uivEXT(
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameterI4uivNV( target, index, params );
+  orig.glProgramLocalParameterI4uivNV( _context, target, index, params );
 
 }
 
@@ -3143,7 +3143,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameters4fvEXT(R
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParameters4fvEXT( target, index, count, params );
+  orig.glProgramLocalParameters4fvEXT( _context, target, index, count, params );
 
 }
 
@@ -3154,7 +3154,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParametersI4ivEXT(
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParametersI4ivNV( target, index, count, params );
+  orig.glProgramLocalParametersI4ivNV( _context, target, index, count, params );
 
 }
 
@@ -3165,7 +3165,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParametersI4uivEXT
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramLocalParametersI4uivNV( target, index, count, params );
+  orig.glProgramLocalParametersI4uivNV( _context, target, index, count, params );
 
 }
 
@@ -3176,7 +3176,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedProgramStringEXT(RegalContext 
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
-  orig.glProgramStringARB( target, format, len, string );
+  orig.glProgramStringARB( _context, target, format, len, string );
 
 }
 
@@ -3187,7 +3187,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedRenderbufferStorageEXT(RegalCo
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-  orig.glRenderbufferStorage( GL_RENDERBUFFER, internalformat, width, height );
+  orig.glRenderbufferStorage( _context, GL_RENDERBUFFER, internalformat, width, height );
 
 }
 
@@ -3198,7 +3198,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedRenderbufferStorageMultisample
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-  orig.glRenderbufferStorageMultisampleCoverageNV( GL_RENDERBUFFER, coverageSamples, colorSamples, internalformat, width, height );
+  orig.glRenderbufferStorageMultisampleCoverageNV( _context, GL_RENDERBUFFER, coverageSamples, colorSamples, internalformat, width, height );
 
 }
 
@@ -3209,7 +3209,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNamedRenderbufferStorageMultisample
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
-  orig.glRenderbufferStorageMultisample( GL_RENDERBUFFER, samples, internalformat, width, height );
+  orig.glRenderbufferStorageMultisample( _context, GL_RENDERBUFFER, samples, internalformat, width, height );
 
 }
 
@@ -3221,7 +3221,7 @@ static void REGAL_CALL emuProcInterceptDsa_glNormalPointer(RegalContext *_contex
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glNormalPointer( _context, type, stride, pointer);
+  orig.glNormalPointer( _context, type, stride, pointer );
 
 }
 
@@ -3233,7 +3233,7 @@ static void REGAL_CALL emuProcInterceptDsa_glPopMatrix(RegalContext *_context)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glPopMatrix( _context, );
+  orig.glPopMatrix( _context );
 
 }
 
@@ -3245,7 +3245,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4dARB(RegalConte
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4dARB( _context, target, index, x, y, z, w);
+  orig.glProgramEnvParameter4dARB( _context, target, index, x, y, z, w );
 
 }
 
@@ -3257,7 +3257,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4dvARB(RegalCont
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4dvARB( _context, target, index, params);
+  orig.glProgramEnvParameter4dvARB( _context, target, index, params );
 
 }
 
@@ -3269,7 +3269,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4fARB(RegalConte
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4fARB( _context, target, index, x, y, z, w);
+  orig.glProgramEnvParameter4fARB( _context, target, index, x, y, z, w );
 
 }
 
@@ -3281,7 +3281,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4fvARB(RegalCont
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4fvARB( _context, target, index, params);
+  orig.glProgramEnvParameter4fvARB( _context, target, index, params );
 
 }
 
@@ -3293,7 +3293,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4iNV(RegalConte
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4iNV( _context, target, index, x, y, z, w);
+  orig.glProgramEnvParameterI4iNV( _context, target, index, x, y, z, w );
 
 }
 
@@ -3305,7 +3305,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4ivNV(RegalCont
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4ivNV( _context, target, index, params);
+  orig.glProgramEnvParameterI4ivNV( _context, target, index, params );
 
 }
 
@@ -3317,7 +3317,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4uiNV(RegalCont
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4uiNV( _context, target, index, x, y, z, w);
+  orig.glProgramEnvParameterI4uiNV( _context, target, index, x, y, z, w );
 
 }
 
@@ -3329,7 +3329,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4uivNV(RegalCon
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4uivNV( _context, target, index, params);
+  orig.glProgramEnvParameterI4uivNV( _context, target, index, params );
 
 }
 
@@ -3341,7 +3341,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParametersI4ivNV(RegalCon
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParametersI4ivNV( _context, target, index, count, params);
+  orig.glProgramEnvParametersI4ivNV( _context, target, index, count, params );
 
 }
 
@@ -3353,7 +3353,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParametersI4uivNV(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParametersI4uivNV( _context, target, index, count, params);
+  orig.glProgramEnvParametersI4uivNV( _context, target, index, count, params );
 
 }
 
@@ -3365,7 +3365,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4dARB(RegalCon
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4dARB( _context, target, index, x, y, z, w);
+  orig.glProgramLocalParameter4dARB( _context, target, index, x, y, z, w );
 
 }
 
@@ -3377,7 +3377,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4dvARB(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4dvARB( _context, target, index, params);
+  orig.glProgramLocalParameter4dvARB( _context, target, index, params );
 
 }
 
@@ -3389,7 +3389,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4fARB(RegalCon
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4fARB( _context, target, index, x, y, z, w);
+  orig.glProgramLocalParameter4fARB( _context, target, index, x, y, z, w );
 
 }
 
@@ -3401,7 +3401,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4fvARB(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4fvARB( _context, target, index, params);
+  orig.glProgramLocalParameter4fvARB( _context, target, index, params );
 
 }
 
@@ -3413,7 +3413,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4iNV(RegalCon
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4iNV( _context, target, index, x, y, z, w);
+  orig.glProgramLocalParameterI4iNV( _context, target, index, x, y, z, w );
 
 }
 
@@ -3425,7 +3425,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4ivNV(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4ivNV( _context, target, index, params);
+  orig.glProgramLocalParameterI4ivNV( _context, target, index, params );
 
 }
 
@@ -3437,7 +3437,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4uiNV(RegalCo
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4uiNV( _context, target, index, x, y, z, w);
+  orig.glProgramLocalParameterI4uiNV( _context, target, index, x, y, z, w );
 
 }
 
@@ -3449,7 +3449,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4uivNV(RegalC
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4uivNV( _context, target, index, params);
+  orig.glProgramLocalParameterI4uivNV( _context, target, index, params );
 
 }
 
@@ -3461,7 +3461,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParametersI4ivNV(RegalC
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParametersI4ivNV( _context, target, index, count, params);
+  orig.glProgramLocalParametersI4ivNV( _context, target, index, count, params );
 
 }
 
@@ -3473,7 +3473,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParametersI4uivNV(Regal
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParametersI4uivNV( _context, target, index, count, params);
+  orig.glProgramLocalParametersI4uivNV( _context, target, index, count, params );
 
 }
 
@@ -3484,7 +3484,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1dEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1d( location, x );
+  orig.glUniform1d( _context, location, x );
 
 }
 
@@ -3495,7 +3495,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1dvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1dv( location, count, value );
+  orig.glUniform1dv( _context, location, count, value );
 
 }
 
@@ -3506,7 +3506,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1fEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1f( location, v0 );
+  orig.glUniform1f( _context, location, v0 );
 
 }
 
@@ -3517,7 +3517,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1fvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1fv( location, count, value );
+  orig.glUniform1fv( _context, location, count, value );
 
 }
 
@@ -3528,7 +3528,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1iEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1i( location, v0 );
+  orig.glUniform1i( _context, location, v0 );
 
 }
 
@@ -3539,7 +3539,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1ivEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1iv( location, count, value );
+  orig.glUniform1iv( _context, location, count, value );
 
 }
 
@@ -3550,7 +3550,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1uiEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1ui( location, v0 );
+  orig.glUniform1ui( _context, location, v0 );
 
 }
 
@@ -3561,7 +3561,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1uivEXT(RegalContext 
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform1uiv( location, count, value );
+  orig.glUniform1uiv( _context, location, count, value );
 
 }
 
@@ -3572,7 +3572,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2dEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2d( location, x, y );
+  orig.glUniform2d( _context, location, x, y );
 
 }
 
@@ -3583,7 +3583,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2dvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2dv( location, count, value );
+  orig.glUniform2dv( _context, location, count, value );
 
 }
 
@@ -3594,7 +3594,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2fEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2f( location, v0, v1 );
+  orig.glUniform2f( _context, location, v0, v1 );
 
 }
 
@@ -3605,7 +3605,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2fvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2fv( location, count, value );
+  orig.glUniform2fv( _context, location, count, value );
 
 }
 
@@ -3616,7 +3616,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2iEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2i( location, v0, v1 );
+  orig.glUniform2i( _context, location, v0, v1 );
 
 }
 
@@ -3627,7 +3627,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2ivEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2iv( location, count, value );
+  orig.glUniform2iv( _context, location, count, value );
 
 }
 
@@ -3638,7 +3638,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2uiEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2ui( location, v0, v1 );
+  orig.glUniform2ui( _context, location, v0, v1 );
 
 }
 
@@ -3649,7 +3649,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2uivEXT(RegalContext 
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform2uiv( location, count, value );
+  orig.glUniform2uiv( _context, location, count, value );
 
 }
 
@@ -3660,7 +3660,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3dEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3d( location, x, y, z );
+  orig.glUniform3d( _context, location, x, y, z );
 
 }
 
@@ -3671,7 +3671,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3dvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3dv( location, count, value );
+  orig.glUniform3dv( _context, location, count, value );
 
 }
 
@@ -3682,7 +3682,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3fEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3f( location, v0, v1, v2 );
+  orig.glUniform3f( _context, location, v0, v1, v2 );
 
 }
 
@@ -3693,7 +3693,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3fvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3fv( location, count, value );
+  orig.glUniform3fv( _context, location, count, value );
 
 }
 
@@ -3704,7 +3704,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3iEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3i( location, v0, v1, v2 );
+  orig.glUniform3i( _context, location, v0, v1, v2 );
 
 }
 
@@ -3715,7 +3715,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3ivEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3iv( location, count, value );
+  orig.glUniform3iv( _context, location, count, value );
 
 }
 
@@ -3726,7 +3726,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3uiEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3ui( location, v0, v1, v2 );
+  orig.glUniform3ui( _context, location, v0, v1, v2 );
 
 }
 
@@ -3737,7 +3737,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3uivEXT(RegalContext 
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform3uiv( location, count, value );
+  orig.glUniform3uiv( _context, location, count, value );
 
 }
 
@@ -3748,7 +3748,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4dEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4d( location, x, y, z, w );
+  orig.glUniform4d( _context, location, x, y, z, w );
 
 }
 
@@ -3759,7 +3759,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4dvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4dv( location, count, value );
+  orig.glUniform4dv( _context, location, count, value );
 
 }
 
@@ -3770,7 +3770,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4fEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4f( location, v0, v1, v2, v3 );
+  orig.glUniform4f( _context, location, v0, v1, v2, v3 );
 
 }
 
@@ -3781,7 +3781,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4fvEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4fv( location, count, value );
+  orig.glUniform4fv( _context, location, count, value );
 
 }
 
@@ -3792,7 +3792,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4iEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4i( location, v0, v1, v2, v3 );
+  orig.glUniform4i( _context, location, v0, v1, v2, v3 );
 
 }
 
@@ -3803,7 +3803,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4ivEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4iv( location, count, value );
+  orig.glUniform4iv( _context, location, count, value );
 
 }
 
@@ -3814,7 +3814,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4uiEXT(RegalContext *
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4ui( location, v0, v1, v2, v3 );
+  orig.glUniform4ui( _context, location, v0, v1, v2, v3 );
 
 }
 
@@ -3825,7 +3825,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4uivEXT(RegalContext 
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniform4uiv( location, count, value );
+  orig.glUniform4uiv( _context, location, count, value );
 
 }
 
@@ -3836,7 +3836,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2dvEXT(RegalCon
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix2dv( location, count, transpose, value );
+  orig.glUniformMatrix2dv( _context, location, count, transpose, value );
 
 }
 
@@ -3847,7 +3847,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2fvEXT(RegalCon
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix2fv( location, count, transpose, value );
+  orig.glUniformMatrix2fv( _context, location, count, transpose, value );
 
 }
 
@@ -3858,7 +3858,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x3dvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix2x3dv( location, count, transpose, value );
+  orig.glUniformMatrix2x3dv( _context, location, count, transpose, value );
 
 }
 
@@ -3869,7 +3869,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x3fvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix2x3fv( location, count, transpose, value );
+  orig.glUniformMatrix2x3fv( _context, location, count, transpose, value );
 
 }
 
@@ -3880,7 +3880,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x4dvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix2x4dv( location, count, transpose, value );
+  orig.glUniformMatrix2x4dv( _context, location, count, transpose, value );
 
 }
 
@@ -3891,7 +3891,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x4fvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix2x4fv( location, count, transpose, value );
+  orig.glUniformMatrix2x4fv( _context, location, count, transpose, value );
 
 }
 
@@ -3902,7 +3902,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3dvEXT(RegalCon
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix3dv( location, count, transpose, value );
+  orig.glUniformMatrix3dv( _context, location, count, transpose, value );
 
 }
 
@@ -3913,7 +3913,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3fvEXT(RegalCon
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix3fv( location, count, transpose, value );
+  orig.glUniformMatrix3fv( _context, location, count, transpose, value );
 
 }
 
@@ -3924,7 +3924,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x2dvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix3x2dv( location, count, transpose, value );
+  orig.glUniformMatrix3x2dv( _context, location, count, transpose, value );
 
 }
 
@@ -3935,7 +3935,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x2fvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix3x2fv( location, count, transpose, value );
+  orig.glUniformMatrix3x2fv( _context, location, count, transpose, value );
 
 }
 
@@ -3946,7 +3946,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x4dvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix3x4dv( location, count, transpose, value );
+  orig.glUniformMatrix3x4dv( _context, location, count, transpose, value );
 
 }
 
@@ -3957,7 +3957,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x4fvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix3x4fv( location, count, transpose, value );
+  orig.glUniformMatrix3x4fv( _context, location, count, transpose, value );
 
 }
 
@@ -3968,7 +3968,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4dvEXT(RegalCon
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix4dv( location, count, transpose, value );
+  orig.glUniformMatrix4dv( _context, location, count, transpose, value );
 
 }
 
@@ -3979,7 +3979,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4fvEXT(RegalCon
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix4fv( location, count, transpose, value );
+  orig.glUniformMatrix4fv( _context, location, count, transpose, value );
 
 }
 
@@ -3990,7 +3990,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x2dvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix4x2dv( location, count, transpose, value );
+  orig.glUniformMatrix4x2dv( _context, location, count, transpose, value );
 
 }
 
@@ -4001,7 +4001,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x2fvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix4x2fv( location, count, transpose, value );
+  orig.glUniformMatrix4x2fv( _context, location, count, transpose, value );
 
 }
 
@@ -4012,7 +4012,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x3dvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix4x3dv( location, count, transpose, value );
+  orig.glUniformMatrix4x3dv( _context, location, count, transpose, value );
 
 }
 
@@ -4023,7 +4023,7 @@ static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x3fvEXT(RegalC
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
-  orig.glUniformMatrix4x3fv( location, count, transpose, value );
+  orig.glUniformMatrix4x3fv( _context, location, count, transpose, value );
 
 }
 
@@ -4033,7 +4033,7 @@ static void REGAL_CALL emuProcInterceptDsa_glPushClientAttribDefaultEXT(RegalCon
   EmuProcsOriginateDsa & orig = _context->dsa->orig;
 
   // impl
-  orig.glPushClientAttrib(mask);
+  orig.glPushClientAttrib( _context, mask);
   _context->dsa->ClientAttribDefault(_context, mask);
 
 }
@@ -4046,7 +4046,7 @@ static void REGAL_CALL emuProcInterceptDsa_glPushMatrix(RegalContext *_context)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glPushMatrix( _context, );
+  orig.glPushMatrix( _context );
 
 }
 
@@ -4058,7 +4058,7 @@ static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorage(RegalContext *_
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorage( _context, target, internalformat, width, height);
+  orig.glRenderbufferStorage( _context, target, internalformat, width, height );
 
 }
 
@@ -4070,7 +4070,7 @@ static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageEXT(RegalContext
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageEXT( _context, target, internalformat, width, height);
+  orig.glRenderbufferStorageEXT( _context, target, internalformat, width, height );
 
 }
 
@@ -4082,7 +4082,7 @@ static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageMultisample(Rega
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisample( _context, target, samples, internalformat, width, height);
+  orig.glRenderbufferStorageMultisample( _context, target, samples, internalformat, width, height );
 
 }
 
@@ -4094,7 +4094,7 @@ static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageMultisampleCover
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisampleCoverageNV( _context, target, coverageSamples, colorSamples, internalformat, width, height);
+  orig.glRenderbufferStorageMultisampleCoverageNV( _context, target, coverageSamples, colorSamples, internalformat, width, height );
 
 }
 
@@ -4106,7 +4106,7 @@ static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageMultisampleEXT(R
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisampleEXT( _context, target, samples, internalformat, width, height);
+  orig.glRenderbufferStorageMultisampleEXT( _context, target, samples, internalformat, width, height );
 
 }
 
@@ -4118,7 +4118,7 @@ static void REGAL_CALL emuProcInterceptDsa_glRotated(RegalContext *_context, GLd
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glRotated( _context, angle, x, y, z);
+  orig.glRotated( _context, angle, x, y, z );
 
 }
 
@@ -4130,7 +4130,7 @@ static void REGAL_CALL emuProcInterceptDsa_glRotatef(RegalContext *_context, GLf
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glRotatef( _context, angle, x, y, z);
+  orig.glRotatef( _context, angle, x, y, z );
 
 }
 
@@ -4142,7 +4142,7 @@ static void REGAL_CALL emuProcInterceptDsa_glScaled(RegalContext *_context, GLdo
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glScaled( _context, x, y, z);
+  orig.glScaled( _context, x, y, z );
 
 }
 
@@ -4154,7 +4154,7 @@ static void REGAL_CALL emuProcInterceptDsa_glScalef(RegalContext *_context, GLfl
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glScalef( _context, x, y, z);
+  orig.glScalef( _context, x, y, z );
 
 }
 
@@ -4166,7 +4166,7 @@ static void REGAL_CALL emuProcInterceptDsa_glSecondaryColorPointer(RegalContext 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glSecondaryColorPointer( _context, size, type, stride, pointer);
+  orig.glSecondaryColorPointer( _context, size, type, stride, pointer );
 
 }
 
@@ -4179,7 +4179,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexBuffer(RegalContext *_context, G
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexBuffer( _context, target, internalformat, buffer);
+  orig.glTexBuffer( _context, target, internalformat, buffer );
 
 }
 
@@ -4192,7 +4192,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexCoordPointer(RegalContext *_cont
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glTexCoordPointer( _context, size, type, stride, pointer);
+  orig.glTexCoordPointer( _context, size, type, stride, pointer );
 
 }
 
@@ -4205,7 +4205,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexEnvf(RegalContext *_context, GLe
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvf( _context, target, pname, param);
+  orig.glTexEnvf( _context, target, pname, param );
 
 }
 
@@ -4218,7 +4218,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexEnvfv(RegalContext *_context, GL
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvfv( _context, target, pname, params);
+  orig.glTexEnvfv( _context, target, pname, params );
 
 }
 
@@ -4231,7 +4231,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexEnvi(RegalContext *_context, GLe
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvi( _context, target, pname, param);
+  orig.glTexEnvi( _context, target, pname, param );
 
 }
 
@@ -4244,7 +4244,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexEnviv(RegalContext *_context, GL
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnviv( _context, target, pname, params);
+  orig.glTexEnviv( _context, target, pname, params );
 
 }
 
@@ -4256,7 +4256,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexGenf(RegalContext *_context, GLe
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGenf( _context, coord, pname, param);
+  orig.glTexGenf( _context, coord, pname, param );
 
 }
 
@@ -4268,7 +4268,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexGenfv(RegalContext *_context, GL
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGenfv( _context, coord, pname, params);
+  orig.glTexGenfv( _context, coord, pname, params );
 
 }
 
@@ -4280,7 +4280,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexGeni(RegalContext *_context, GLe
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGeni( _context, coord, pname, param);
+  orig.glTexGeni( _context, coord, pname, param );
 
 }
 
@@ -4292,7 +4292,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexGeniv(RegalContext *_context, GL
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGeniv( _context, coord, pname, params);
+  orig.glTexGeniv( _context, coord, pname, params );
 
 }
 
@@ -4305,7 +4305,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexParameterf(RegalContext *_contex
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameterf( _context, target, pname, param);
+  orig.glTexParameterf( _context, target, pname, param );
 
 }
 
@@ -4318,7 +4318,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexParameterfv(RegalContext *_conte
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameterfv( _context, target, pname, params);
+  orig.glTexParameterfv( _context, target, pname, params );
 
 }
 
@@ -4331,7 +4331,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexParameteri(RegalContext *_contex
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameteri( _context, target, pname, param);
+  orig.glTexParameteri( _context, target, pname, param );
 
 }
 
@@ -4344,7 +4344,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexParameteriv(RegalContext *_conte
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameteriv( _context, target, pname, params);
+  orig.glTexParameteriv( _context, target, pname, params );
 
 }
 
@@ -4357,7 +4357,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTexRenderbufferNV(RegalContext *_co
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexRenderbufferNV( _context, target, renderbuffer);
+  orig.glTexRenderbufferNV( _context, target, renderbuffer );
 
 }
 
@@ -4368,7 +4368,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureBufferEXT(RegalContext *_con
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexBuffer( target, internalformat, buffer );
+  orig.glTexBuffer( _context, target, internalformat, buffer );
 
 }
 
@@ -4379,7 +4379,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureImage1DEXT(RegalContext *_co
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexImage1D( target, level, internalformat, width, border, format, type, pixels );
+  orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
@@ -4390,7 +4390,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureImage2DEXT(RegalContext *_co
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexImage2D( target, level, internalformat, width, height, border, format, type, pixels );
+  orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
@@ -4401,7 +4401,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureImage3DEXT(RegalContext *_co
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexImage3D( target, level, internalformat, width, height, depth, border, format, type, pixels );
+  orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
@@ -4412,7 +4412,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureParameterIivEXT(RegalContext
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexParameterIiv( target, pname, params );
+  orig.glTexParameterIiv( _context, target, pname, params );
 
 }
 
@@ -4423,7 +4423,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureParameterIuivEXT(RegalContex
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexParameterIuiv( target, pname, params );
+  orig.glTexParameterIuiv( _context, target, pname, params );
 
 }
 
@@ -4434,7 +4434,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureParameterfEXT(RegalContext *
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexParameterf( target, pname, param );
+  orig.glTexParameterf( _context, target, pname, param );
 
 }
 
@@ -4445,7 +4445,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureParameterfvEXT(RegalContext 
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexParameterfv( target, pname, param );
+  orig.glTexParameterfv( _context, target, pname, param );
 
 }
 
@@ -4456,7 +4456,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureParameteriEXT(RegalContext *
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexParameteri( target, pname, param );
+  orig.glTexParameteri( _context, target, pname, param );
 
 }
 
@@ -4467,7 +4467,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureParameterivEXT(RegalContext 
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexParameteriv( target, pname, param );
+  orig.glTexParameteriv( _context, target, pname, param );
 
 }
 
@@ -4478,7 +4478,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureRenderbufferEXT(RegalContext
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexRenderbufferNV( target, renderbuffer );
+  orig.glTexRenderbufferNV( _context, target, renderbuffer );
 
 }
 
@@ -4489,7 +4489,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureStorage1DEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexStorage1D( target, levels, internalformat, width );
+  orig.glTexStorage1D( _context, target, levels, internalformat, width );
 
 }
 
@@ -4500,7 +4500,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureStorage2DEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexStorage2D( target, levels, internalformat, width, height );
+  orig.glTexStorage2D( _context, target, levels, internalformat, width, height );
 
 }
 
@@ -4511,7 +4511,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureStorage3DEXT(RegalContext *_
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexStorage3D( target, levels, internalformat, width, height, depth );
+  orig.glTexStorage3D( _context, target, levels, internalformat, width, height, depth );
 
 }
 
@@ -4522,7 +4522,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureSubImage1DEXT(RegalContext *
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexSubImage1D( target, level, xoffset, width, format, type, pixels );
+  orig.glTexSubImage1D( _context, target, level, xoffset, width, format, type, pixels );
 
 }
 
@@ -4533,7 +4533,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureSubImage2DEXT(RegalContext *
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexSubImage2D( target, level, xoffset, yoffset, width, height, format, type, pixels );
+  orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
@@ -4544,7 +4544,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTextureSubImage3DEXT(RegalContext *
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
-  orig.glTexSubImage3D( target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+  orig.glTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
 
 }
 
@@ -4556,7 +4556,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTranslated(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glTranslated( _context, x, y, z);
+  orig.glTranslated( _context, x, y, z );
 
 }
 
@@ -4568,7 +4568,7 @@ static void REGAL_CALL emuProcInterceptDsa_glTranslatef(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glTranslatef( _context, x, y, z);
+  orig.glTranslatef( _context, x, y, z );
 
 }
 
@@ -4580,7 +4580,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1d(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1d( _context, location, x);
+  orig.glUniform1d( _context, location, x );
 
 }
 
@@ -4592,7 +4592,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1dv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1dv( _context, location, count, value);
+  orig.glUniform1dv( _context, location, count, value );
 
 }
 
@@ -4604,7 +4604,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1f(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1f( _context, location, v0);
+  orig.glUniform1f( _context, location, v0 );
 
 }
 
@@ -4616,7 +4616,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1fv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1fv( _context, location, count, value);
+  orig.glUniform1fv( _context, location, count, value );
 
 }
 
@@ -4628,7 +4628,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1i(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1i( _context, location, v0);
+  orig.glUniform1i( _context, location, v0 );
 
 }
 
@@ -4640,7 +4640,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1iv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1iv( _context, location, count, value);
+  orig.glUniform1iv( _context, location, count, value );
 
 }
 
@@ -4652,7 +4652,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1ui(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1ui( _context, location, v0);
+  orig.glUniform1ui( _context, location, v0 );
 
 }
 
@@ -4664,7 +4664,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform1uiv(RegalContext *_context,
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1uiv( _context, location, count, value);
+  orig.glUniform1uiv( _context, location, count, value );
 
 }
 
@@ -4676,7 +4676,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2d(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2d( _context, location, x, y);
+  orig.glUniform2d( _context, location, x, y );
 
 }
 
@@ -4688,7 +4688,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2dv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2dv( _context, location, count, value);
+  orig.glUniform2dv( _context, location, count, value );
 
 }
 
@@ -4700,7 +4700,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2f(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2f( _context, location, v0, v1);
+  orig.glUniform2f( _context, location, v0, v1 );
 
 }
 
@@ -4712,7 +4712,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2fv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2fv( _context, location, count, value);
+  orig.glUniform2fv( _context, location, count, value );
 
 }
 
@@ -4724,7 +4724,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2i(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2i( _context, location, v0, v1);
+  orig.glUniform2i( _context, location, v0, v1 );
 
 }
 
@@ -4736,7 +4736,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2iv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2iv( _context, location, count, value);
+  orig.glUniform2iv( _context, location, count, value );
 
 }
 
@@ -4748,7 +4748,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2ui(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2ui( _context, location, v0, v1);
+  orig.glUniform2ui( _context, location, v0, v1 );
 
 }
 
@@ -4760,7 +4760,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform2uiv(RegalContext *_context,
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2uiv( _context, location, count, value);
+  orig.glUniform2uiv( _context, location, count, value );
 
 }
 
@@ -4772,7 +4772,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3d(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3d( _context, location, x, y, z);
+  orig.glUniform3d( _context, location, x, y, z );
 
 }
 
@@ -4784,7 +4784,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3dv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3dv( _context, location, count, value);
+  orig.glUniform3dv( _context, location, count, value );
 
 }
 
@@ -4796,7 +4796,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3f(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3f( _context, location, v0, v1, v2);
+  orig.glUniform3f( _context, location, v0, v1, v2 );
 
 }
 
@@ -4808,7 +4808,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3fv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3fv( _context, location, count, value);
+  orig.glUniform3fv( _context, location, count, value );
 
 }
 
@@ -4820,7 +4820,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3i(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3i( _context, location, v0, v1, v2);
+  orig.glUniform3i( _context, location, v0, v1, v2 );
 
 }
 
@@ -4832,7 +4832,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3iv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3iv( _context, location, count, value);
+  orig.glUniform3iv( _context, location, count, value );
 
 }
 
@@ -4844,7 +4844,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3ui(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3ui( _context, location, v0, v1, v2);
+  orig.glUniform3ui( _context, location, v0, v1, v2 );
 
 }
 
@@ -4856,7 +4856,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform3uiv(RegalContext *_context,
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3uiv( _context, location, count, value);
+  orig.glUniform3uiv( _context, location, count, value );
 
 }
 
@@ -4868,7 +4868,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4d(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4d( _context, location, x, y, z, w);
+  orig.glUniform4d( _context, location, x, y, z, w );
 
 }
 
@@ -4880,7 +4880,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4dv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4dv( _context, location, count, value);
+  orig.glUniform4dv( _context, location, count, value );
 
 }
 
@@ -4892,7 +4892,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4f(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4f( _context, location, v0, v1, v2, v3);
+  orig.glUniform4f( _context, location, v0, v1, v2, v3 );
 
 }
 
@@ -4904,7 +4904,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4fv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4fv( _context, location, count, value);
+  orig.glUniform4fv( _context, location, count, value );
 
 }
 
@@ -4916,7 +4916,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4i(RegalContext *_context, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4i( _context, location, v0, v1, v2, v3);
+  orig.glUniform4i( _context, location, v0, v1, v2, v3 );
 
 }
 
@@ -4928,7 +4928,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4iv(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4iv( _context, location, count, value);
+  orig.glUniform4iv( _context, location, count, value );
 
 }
 
@@ -4940,7 +4940,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4ui(RegalContext *_context, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4ui( _context, location, v0, v1, v2, v3);
+  orig.glUniform4ui( _context, location, v0, v1, v2, v3 );
 
 }
 
@@ -4952,7 +4952,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniform4uiv(RegalContext *_context,
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4uiv( _context, location, count, value);
+  orig.glUniform4uiv( _context, location, count, value );
 
 }
 
@@ -4964,7 +4964,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2dv(RegalContext *_con
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix2dv( _context, location, count, transpose, value );
 
 }
 
@@ -4976,7 +4976,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2fv(RegalContext *_con
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix2fv( _context, location, count, transpose, value );
 
 }
 
@@ -4988,7 +4988,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x3dv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x3dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix2x3dv( _context, location, count, transpose, value );
 
 }
 
@@ -5000,7 +5000,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x3fv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x3fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix2x3fv( _context, location, count, transpose, value );
 
 }
 
@@ -5012,7 +5012,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x4dv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x4dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix2x4dv( _context, location, count, transpose, value );
 
 }
 
@@ -5024,7 +5024,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x4fv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x4fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix2x4fv( _context, location, count, transpose, value );
 
 }
 
@@ -5036,7 +5036,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3dv(RegalContext *_con
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix3dv( _context, location, count, transpose, value );
 
 }
 
@@ -5048,7 +5048,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3fv(RegalContext *_con
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix3fv( _context, location, count, transpose, value );
 
 }
 
@@ -5060,7 +5060,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x2dv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x2dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix3x2dv( _context, location, count, transpose, value );
 
 }
 
@@ -5072,7 +5072,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x2fv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x2fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix3x2fv( _context, location, count, transpose, value );
 
 }
 
@@ -5084,7 +5084,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x4dv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x4dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix3x4dv( _context, location, count, transpose, value );
 
 }
 
@@ -5096,7 +5096,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x4fv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x4fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix3x4fv( _context, location, count, transpose, value );
 
 }
 
@@ -5108,7 +5108,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4dv(RegalContext *_con
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix4dv( _context, location, count, transpose, value );
 
 }
 
@@ -5120,7 +5120,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4fv(RegalContext *_con
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix4fv( _context, location, count, transpose, value );
 
 }
 
@@ -5132,7 +5132,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x2dv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x2dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix4x2dv( _context, location, count, transpose, value );
 
 }
 
@@ -5144,7 +5144,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x2fv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x2fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix4x2fv( _context, location, count, transpose, value );
 
 }
 
@@ -5156,7 +5156,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x3dv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x3dv( _context, location, count, transpose, value);
+  orig.glUniformMatrix4x3dv( _context, location, count, transpose, value );
 
 }
 
@@ -5168,7 +5168,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x3fv(RegalContext *_c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x3fv( _context, location, count, transpose, value);
+  orig.glUniformMatrix4x3fv( _context, location, count, transpose, value );
 
 }
 
@@ -5180,7 +5180,7 @@ static GLboolean REGAL_CALL emuProcInterceptDsa_glUnmapBuffer(RegalContext *_con
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glUnmapBuffer( _context, target);
+  return orig.glUnmapBuffer( _context, target );
 
 }
 
@@ -5192,7 +5192,7 @@ static GLboolean REGAL_CALL emuProcInterceptDsa_glUnmapBufferARB(RegalContext *_
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glUnmapBufferARB( _context, target);
+  return orig.glUnmapBufferARB( _context, target );
 
 }
 
@@ -5203,7 +5203,7 @@ static GLboolean REGAL_CALL emuProcInterceptDsa_glUnmapNamedBufferEXT(RegalConte
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
-  return orig.glUnmapBuffer( GL_ARRAY_BUFFER );
+  return orig.glUnmapBuffer( _context, GL_ARRAY_BUFFER );
 
 }
 
@@ -5214,7 +5214,7 @@ static void REGAL_CALL emuProcInterceptDsa_glUseProgram(RegalContext *_context, 
 
   // impl
   if( false == _context->dsa->ShadowGlslProgram( program ) ) {
-    orig.glUseProgram(program);
+    orig.glUseProgram( _context, program);
   }
 
 }
@@ -5226,7 +5226,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayColorOffsetEXT(RegalCont
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glColorPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glColorPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5237,7 +5237,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayEdgeFlagOffsetEXT(RegalC
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glEdgeFlagPointer( stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glEdgeFlagPointer( _context, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5248,7 +5248,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayFogCoordOffsetEXT(RegalC
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glFogCoordPointer( type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glFogCoordPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5259,7 +5259,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayIndexOffsetEXT(RegalCont
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glIndexPointer( type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glIndexPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5270,7 +5270,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayMultiTexCoordOffsetEXT(R
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glMultiTexCoordPointerEXT( texunit, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glMultiTexCoordPointerEXT( _context, texunit, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5281,7 +5281,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayNormalOffsetEXT(RegalCon
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glNormalPointer( type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glNormalPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5292,7 +5292,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArraySecondaryColorOffsetEXT(
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glSecondaryColorPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glSecondaryColorPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5303,7 +5303,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayTexCoordOffsetEXT(RegalC
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glTexCoordPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glTexCoordPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5314,7 +5314,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayVertexAttribIOffsetEXT(R
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glVertexAttribIPointer( index, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glVertexAttribIPointer( _context, index, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5325,7 +5325,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayVertexAttribOffsetEXT(Re
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glVertexAttribPointer( index, size, type, normalized, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glVertexAttribPointer( _context, index, size, type, normalized, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5336,7 +5336,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexArrayVertexOffsetEXT(RegalCon
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
-  orig.glVertexPointer( size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
+  orig.glVertexPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
 
 }
 
@@ -5348,7 +5348,7 @@ static void REGAL_CALL emuProcInterceptDsa_glVertexPointer(RegalContext *_contex
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glVertexPointer( _context, size, type, stride, pointer);
+  orig.glVertexPointer( _context, size, type, stride, pointer );
 
 }
 

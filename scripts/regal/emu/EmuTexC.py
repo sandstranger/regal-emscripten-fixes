@@ -61,7 +61,7 @@ texCFormulae = {
         'entries' : [ 'glGenTextures(EXT|)' ],
         'impl' :
 '''
-orig.glGenTextures( ${arg0plus} );
+orig.glGenTextures( _context, ${arg0plus} );
 _context->texc->ShadowGenTextures( ${arg0}, ${arg1} );'''
     },
 
@@ -91,14 +91,14 @@ Emu::ConvertedBuffer _buffer( _context->texc->unpackPSS, targetFormat, targetTyp
 if ( _buffer.ConvertFrom( ${arg4}, ${arg5}, ${arg6}, ${arg7}, ${arg8} ) )
 {
   if (_context->texc->unpackPSS.alignment != 4)
-    orig.glPixelStorei( GL_UNPACK_ALIGNMENT, 4 );
-  orig.glTexSubImage2D( ${arg0}, ${arg1}, ${arg2}, ${arg3}, ${arg4}, ${arg5}, targetFormat, targetType, _buffer.Get() );
+    orig.glPixelStorei( _context, GL_UNPACK_ALIGNMENT, 4 );
+  orig.glTexSubImage2D( _context, ${arg0}, ${arg1}, ${arg2}, ${arg3}, ${arg4}, ${arg5}, targetFormat, targetType, _buffer.Get() );
   if (_context->texc->unpackPSS.alignment != 4)
-    orig.glPixelStorei( GL_UNPACK_ALIGNMENT, _context->texc->unpackPSS.alignment );
+    orig.glPixelStorei( _context, GL_UNPACK_ALIGNMENT, _context->texc->unpackPSS.alignment );
 }
 else
 {
-  orig.glTexSubImage2D( ${arg0plus} );
+  orig.glTexSubImage2D( _context, ${arg0plus} );
 }'''
     },
 }

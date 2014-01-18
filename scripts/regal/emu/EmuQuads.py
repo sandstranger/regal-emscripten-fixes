@@ -40,7 +40,7 @@ quadsFormulae = {
     'impl'    : [
 '''
 if ( ! _context->quads->glDrawArrays( _context, ${arg0plus} ) ) {
-  return orig.glDrawArrays( ${arg0plus} );
+  return orig.glDrawArrays( _context, ${arg0plus} );
 }
 '''
     ],

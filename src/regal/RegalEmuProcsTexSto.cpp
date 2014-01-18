@@ -63,7 +63,7 @@ static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(RegalContext *_co
   RegalAssert(_context);
   _context->texsto->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTextures( _context, n, textures);
+  orig.glDeleteTextures( _context, n, textures );
 
 }
 
@@ -75,7 +75,7 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(RegalContext 
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     orig.glGetTexParameterIiv( target, pname, params );
+     orig.glGetTexParameterIiv( _context, target, pname, params );
   }
 
 }
@@ -88,7 +88,7 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIuiv(RegalContext
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     orig.glGetTexParameterIuiv( target, pname, params );
+     orig.glGetTexParameterIuiv( _context, target, pname, params );
   }
 
 }
@@ -101,7 +101,7 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterfv(RegalContext *
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     orig.glGetTexParameterfv( target, pname, params );
+     orig.glGetTexParameterfv( _context, target, pname, params );
   }
 
 }
@@ -114,7 +114,7 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameteriv(RegalContext *
   // impl
   RegalAssert(_context);
   if ( !_context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
-     orig.glGetTexParameteriv( target, pname, params );
+     orig.glGetTexParameteriv( _context, target, pname, params );
   }
 
 }

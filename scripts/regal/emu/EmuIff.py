@@ -56,7 +56,7 @@ iffFormulae = {
             '{',
             '    GLboolean enabled;',
             '    if ( !_context->iff->IsEnabled( _context, ${arg0plus}, enabled ) )',
-            '        return orig.glIsEnabled( ${arg0plus} );',
+            '        return orig.glIsEnabled( _context, ${arg0plus} );',
             '    return enabled;',
             '}',
         ]
@@ -131,7 +131,7 @@ iffFormulae = {
         'impl' : [
           '_context->iff->ShadeModel( ${arg0plus} );',
           'if( !_context->isCore() && !_context->isES2() ) {',
-          '  orig.glShadeModel(${arg0plus});',
+          '  orig.glShadeModel( _context,${arg0plus});',
           '}',
           ],
     },
@@ -139,7 +139,7 @@ iffFormulae = {
         'entries' : [ 'gl(MatrixMode|BindProgramPipeline|Enable|Disable)' ],
         'impl' : [
             'if( ! _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
-            '    orig.gl${m1}( ${arg0plus} );',
+            '    orig.gl${m1}( _context, ${arg0plus} );',
             '}',
             ],
     },
@@ -147,7 +147,7 @@ iffFormulae = {
         'entries' : [ 'gl(UseProgram)(ObjectARB|)' ],
         'impl' : [
             'if( ! _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
-            '    orig.gl${m1}( ${arg0plus} );',
+            '    orig.gl${m1}( _context, ${arg0plus} );',
             '}',
             ],
     },
@@ -184,7 +184,7 @@ iffFormulae = {
         'impl' : [
             '_context->iff->RestoreVao( _context );',
             'if ( ! _context->iff->GetTexEnv( ${arg0plus} ) ) {',
-            '    orig.glGetTexEnv${m1}${m2}${m3}( ${arg0plus} );',
+            '    orig.glGetTexEnv${m1}${m2}${m3}( _context, ${arg0plus} );',
             '}',
         ],
     },
@@ -200,7 +200,7 @@ iffFormulae = {
         'entries' : [ 'glTexGen(i|f|d)(v|)' ],
         'impl' : [
             'if ( ! _context->iff->TexGen( ${arg0plus} ) ) {',
-            '    orig.glTexGen${m1}${m2}( ${arg0plus} );',
+            '    orig.glTexGen${m1}${m2}( _context, ${arg0plus} );',
             '}',
         ],
     },
@@ -221,7 +221,7 @@ iffFormulae = {
         'impl' : [
             '_context->iff->RestoreVao( _context );',
             'if ( ! _context->iff->glGetBooleanv( _context, ${arg0plus} ) ) {',
-            '    orig.glGetBooleanv( ${arg0plus} );',
+            '    orig.glGetBooleanv( _context, ${arg0plus} );',
             '}',
         ],
     },
@@ -230,7 +230,7 @@ iffFormulae = {
         'impl' : [
             '_context->iff->RestoreVao( _context );',
             'if ( ! _context->iff->Get( _context, ${arg0plus} ) ) {',
-            '    orig.glGet${m1}v( ${arg0plus} );',
+            '    orig.glGet${m1}v( _context, ${arg0plus} );',
             '}',
         ],
     },
@@ -239,7 +239,7 @@ iffFormulae = {
         'impl' : [
             '_context->iff->RestoreVao( _context );',
             'if ( ! _context->iff->GetMultiTexGenv( _context, ${arg0plus} ) ) {',
-            '    orig.glGetMultiTexGen${m1}vEXT( ${arg0plus} );',
+            '    orig.glGetMultiTexGen${m1}vEXT( _context, ${arg0plus} );',
             '}',
         ],
     },
@@ -248,7 +248,7 @@ iffFormulae = {
         'impl' : [
             '_context->iff->RestoreVao( _context );',
             'if ( ! _context->iff->GetTexGenv( _context, ${arg0plus} ) ) {',
-            '    orig.glGetTexGen${m1}v( ${arg0plus} );',
+            '    orig.glGetTexGen${m1}v( _context, ${arg0plus} );',
             '}',
         ],
     },

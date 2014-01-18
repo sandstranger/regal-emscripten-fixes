@@ -62,13 +62,14 @@ struct Name
 
 struct NameTranslator
 {
+  RegalContext * context;
   shared_map< GLuint, Name > app2drv;
   shared_map< GLuint, Name * > drv2app;
 
-  void (REGAL_CALL *gen)( GLsizei n, GLuint * objs );
-  void (REGAL_CALL *del)( GLsizei n, const GLuint * objs );
+  void (REGAL_CALL *gen)( RegalContext *ctx, GLsizei n, GLuint * objs );
+  void (REGAL_CALL *del)( RegalContext *ctx, GLsizei n, const GLuint * objs );
 
-  NameTranslator() : gen( NULL ), del ( NULL )
+  NameTranslator(RegalContext *ctx) : context(ctx), gen( NULL ), del ( NULL )
   {
     drv2app[ 0 ] = & app2drv[ 0 ];  // special case 0
   }
@@ -81,7 +82,7 @@ struct NameTranslator
   GLuint Gen()
   {
     Name name;
-    gen( 1, & name.drv );
+    gen( context, 1, & name.drv );
     // could be more clever here, and this could fail...
     name.app = name.drv;
     const GLuint searchLimit = 1000000000;
@@ -105,7 +106,7 @@ struct NameTranslator
     {
         Name & name = app2drv[ appName ];
         name.app = appName;
-        gen( 1, & name.drv );
+        gen( context, 1, & name.drv );
         drv2app[ name.drv ] = &name;
     }
     return app2drv[ appName ].drv;
@@ -130,7 +131,7 @@ struct NameTranslator
     app2drv.erase( n.app );
     RegalAssert( drv2app.count( n.drv ) != 0 );
     drv2app.erase( n.drv );
-    del( 1, & n.drv );
+    del( context, 1, & n.drv );
   }
 };
 
@@ -171,7 +172,7 @@ struct Obj
 
   void BindBuffer(RegalContext &ctx, GLenum target, GLuint bufferBinding)
   {
-    orig.glBindBuffer( target, bufferNames.ToDriverName( bufferBinding ) );
+    orig.glBindBuffer( &ctx, target, bufferNames.ToDriverName( bufferBinding ) );
   }
 
   void GenBuffers(RegalContext &ctx, GLsizei n, GLuint *buffers)
@@ -198,7 +199,7 @@ struct Obj
 
   void BindVertexArray(RegalContext &ctx, GLuint vao)
   {
-    orig.glBindVertexArray( vaoNames.ToDriverName( vao ) );
+    orig.glBindVertexArray( &ctx, vaoNames.ToDriverName( vao ) );
   }
 
   void GenVertexArrays(RegalContext &ctx, GLsizei n, GLuint *vaos)
@@ -225,7 +226,7 @@ struct Obj
 
   void BindTexture(RegalContext &ctx, GLenum target, GLuint name)
   {
-    orig.glBindTexture( target, textureNames.ToDriverName( name ) );
+    orig.glBindTexture( &ctx, target, textureNames.ToDriverName( name ) );
   }
 
   void GenTextures(RegalContext &ctx, GLsizei n, GLuint *names)
