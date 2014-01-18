@@ -124,6 +124,17 @@ def apiMissingFuncDefineCode(apis, args):
 
       code += '  }\n\n'
 
+      code += '  PFN%sPROC driver_%s = NULL;\n' % ( name.upper(), name )
+      code += '\n'
+
+      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context" )
+
+      code += '  static %sREGAL_CALL loader_%s(%s)\n  {\n' % ( rType, name, params )
+      code += '    driver_%s(%s);\n' % ( name, callParams )
+      code += '  }\n'
+      code += '\n'
+
+
     if api.name in cond:
       code += '#endif // %s\n' % cond[api.name]
     code += '\n'
@@ -181,9 +192,9 @@ def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambd
 
       # Get a reference to the appropriate dispatch table and attempt GetProcAddress
 
-      code += '    _getProcAddress( dt.%s, %s, "%s" );\n'%(name,name,name)
-      code += '    if( dt.%s == NULL ) {\n' % name
-      code += '      dt.%s = missing_%s;\n' % (name,name)
+      code += '    _getProcAddress( driver_%s, %s, "%s" );\n'%(name,name,name)
+      code += '    if( driver_%s == NULL ) {\n' % name
+      code += '      driver_%s = missing_%s;\n' % (name,name)
       code += '    }\n'
 
     code += '\n'

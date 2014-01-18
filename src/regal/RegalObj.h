@@ -69,7 +69,7 @@ struct NameTranslator
   void (REGAL_CALL *gen)( RegalContext *ctx, GLsizei n, GLuint * objs );
   void (REGAL_CALL *del)( RegalContext *ctx, GLsizei n, const GLuint * objs );
 
-  NameTranslator(RegalContext *ctx) : context(ctx), gen( NULL ), del ( NULL )
+  NameTranslator() : gen( NULL ), del ( NULL )
   {
     drv2app[ 0 ] = & app2drv[ 0 ];  // special case 0
   }
@@ -149,10 +149,13 @@ struct Obj
     RegalContext *sharingWith = ctx.shareGroup->front();
     if (sharingWith)
     {
+      bufferNames.context  = &ctx;
       bufferNames.app2drv  = sharingWith->obj->bufferNames.app2drv;
       bufferNames.drv2app  = sharingWith->obj->bufferNames.drv2app;
+      vaoNames.context     = &ctx;
       vaoNames.app2drv     = sharingWith->obj->vaoNames.app2drv;
       vaoNames.drv2app     = sharingWith->obj->vaoNames.drv2app;
+      textureNames.context = &ctx;
       textureNames.app2drv = sharingWith->obj->textureNames.app2drv;
       textureNames.drv2app = sharingWith->obj->textureNames.drv2app;
     }

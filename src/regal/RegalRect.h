@@ -59,29 +59,29 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-template <typename T> inline void glVertex2(EmuProcsOriginateRect & orig, T x1, T y1)
+template <typename T> inline void glVertex2(EmuProcsOriginateRect & orig, RegalContext *ctx, T x1, T y1)
 {
-  orig.glVertex2f(static_cast<GLfloat>(x1), static_cast<GLfloat>(y1));
+  orig.glVertex2f(ctx, static_cast<GLfloat>(x1), static_cast<GLfloat>(y1));
 }
 
-template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLfloat x1, GLfloat y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, RegalContext *ctx, GLfloat x1, GLfloat y1)
 {
-  orig.glVertex2f(x1, y1);
+  orig.glVertex2f(ctx, x1, y1);
 }
 
-template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLdouble x1, GLdouble y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, RegalContext *ctx, GLdouble x1, GLdouble y1)
 {
-  orig.glVertex2d(x1, y1);
+  orig.glVertex2d(ctx, x1, y1);
 }
 
-template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLint x1, GLint y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, RegalContext *ctx, GLint x1, GLint y1)
 {
-  orig.glVertex2i(x1, y1);
+  orig.glVertex2i(ctx, x1, y1);
 }
 
-template <> inline void glVertex2(EmuProcsOriginateRect & orig, GLshort x1, GLshort y1)
+template <> inline void glVertex2(EmuProcsOriginateRect & orig, RegalContext *ctx, GLshort x1, GLshort y1)
 {
-  orig.glVertex2s(x1, y1);
+  orig.glVertex2s(ctx, x1, y1);
 }
 
 struct Rect
@@ -109,7 +109,7 @@ struct Rect
 
     ctx->depthBeginEnd++;
 
-    orig.glBegin(GL_POLYGON);
+    orig.glBegin(ctx, GL_POLYGON);
 
       Emu::glVertex2(orig, x1, y1);
       Emu::glVertex2(orig, x2, y1);
@@ -120,7 +120,7 @@ struct Rect
 
     ctx->depthBeginEnd--;
 
-    orig.glEnd();
+    orig.glEnd(ctx);
   }
 
   template <typename T> inline void glRectv(RegalContext *ctx, const T *v1, const T *v2)
