@@ -52,4270 +52,8501 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-namespace Dispatch
-{
+    // GL_VERSION_1_0
 
-  struct Global
-  {
-    inline void setFunction(const size_t offset, void *func)
-    {
-      RegalAssert((offset*sizeof(void *))<sizeof(*this));
-      ((void **)(this))[offset] = func;
-    }
+typedef void (REGAL_CALL *REGALGLACCUMPROC)(RegalContext *_context, GLenum op, GLfloat value);
+typedef void (REGAL_CALL *REGALGLALPHAFUNCPROC)(RegalContext *_context, GLenum func, GLclampf ref);
+typedef void (REGAL_CALL *REGALGLBEGINPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLBITMAPPROC)(RegalContext *_context, GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap);
+typedef void (REGAL_CALL *REGALGLBLENDFUNCPROC)(RegalContext *_context, GLenum sfactor, GLenum dfactor);
+typedef void (REGAL_CALL *REGALGLCALLLISTPROC)(RegalContext *_context, GLuint list);
+typedef void (REGAL_CALL *REGALGLCALLLISTSPROC)(RegalContext *_context, GLsizei n, GLenum type, const GLvoid *lists);
+typedef void (REGAL_CALL *REGALGLCLEARPROC)(RegalContext *_context, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLCLEARACCUMPROC)(RegalContext *_context, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+typedef void (REGAL_CALL *REGALGLCLEARCOLORPROC)(RegalContext *_context, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+typedef void (REGAL_CALL *REGALGLCLEARDEPTHPROC)(RegalContext *_context, GLclampd depth);
+typedef void (REGAL_CALL *REGALGLCLEARINDEXPROC)(RegalContext *_context, GLfloat c);
+typedef void (REGAL_CALL *REGALGLCLEARSTENCILPROC)(RegalContext *_context, GLint s);
+typedef void (REGAL_CALL *REGALGLCLIPPLANEPROC)(RegalContext *_context, GLenum plane, const GLdouble *equation);
+typedef void (REGAL_CALL *REGALGLCOLOR3BPROC)(RegalContext *_context, GLbyte red, GLbyte green, GLbyte blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3BVPROC)(RegalContext *_context, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLCOLOR3DPROC)(RegalContext *_context, GLdouble red, GLdouble green, GLdouble blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLCOLOR3FPROC)(RegalContext *_context, GLfloat red, GLfloat green, GLfloat blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLCOLOR3IPROC)(RegalContext *_context, GLint red, GLint green, GLint blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLCOLOR3SPROC)(RegalContext *_context, GLshort red, GLshort green, GLshort blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLCOLOR3UBPROC)(RegalContext *_context, GLubyte red, GLubyte green, GLubyte blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3UBVPROC)(RegalContext *_context, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLCOLOR3UIPROC)(RegalContext *_context, GLuint red, GLuint green, GLuint blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3UIVPROC)(RegalContext *_context, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLCOLOR3USPROC)(RegalContext *_context, GLushort red, GLushort green, GLushort blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3USVPROC)(RegalContext *_context, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4BPROC)(RegalContext *_context, GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4BVPROC)(RegalContext *_context, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4DPROC)(RegalContext *_context, GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4FPROC)(RegalContext *_context, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4IPROC)(RegalContext *_context, GLint red, GLint green, GLint blue, GLint alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4SPROC)(RegalContext *_context, GLshort red, GLshort green, GLshort blue, GLshort alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4UBPROC)(RegalContext *_context, GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4UBVPROC)(RegalContext *_context, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4UIPROC)(RegalContext *_context, GLuint red, GLuint green, GLuint blue, GLuint alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4UIVPROC)(RegalContext *_context, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4USPROC)(RegalContext *_context, GLushort red, GLushort green, GLushort blue, GLushort alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4USVPROC)(RegalContext *_context, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLCOLORMASKPROC)(RegalContext *_context, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+typedef void (REGAL_CALL *REGALGLCOLORMATERIALPROC)(RegalContext *_context, GLenum face, GLenum mode);
+typedef void (REGAL_CALL *REGALGLCOPYPIXELSPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum type);
+typedef void (REGAL_CALL *REGALGLCULLFACEPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLDELETELISTSPROC)(RegalContext *_context, GLuint list, GLsizei range);
+typedef void (REGAL_CALL *REGALGLDEPTHFUNCPROC)(RegalContext *_context, GLenum func);
+typedef void (REGAL_CALL *REGALGLDEPTHMASKPROC)(RegalContext *_context, GLboolean flag);
+typedef void (REGAL_CALL *REGALGLDEPTHRANGEPROC)(RegalContext *_context, GLclampd zNear, GLclampd zFar);
+typedef void (REGAL_CALL *REGALGLDISABLEPROC)(RegalContext *_context, GLenum cap);
+typedef void (REGAL_CALL *REGALGLDRAWBUFFERPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLDRAWPIXELSPROC)(RegalContext *_context, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLEDGEFLAGPROC)(RegalContext *_context, GLboolean flag);
+typedef void (REGAL_CALL *REGALGLEDGEFLAGVPROC)(RegalContext *_context, const GLboolean *flag);
+typedef void (REGAL_CALL *REGALGLENABLEPROC)(RegalContext *_context, GLenum cap);
+typedef void (REGAL_CALL *REGALGLENDPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLENDLISTPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLEVALCOORD1DPROC)(RegalContext *_context, GLdouble u);
+typedef void (REGAL_CALL *REGALGLEVALCOORD1DVPROC)(RegalContext *_context, const GLdouble *u);
+typedef void (REGAL_CALL *REGALGLEVALCOORD1FPROC)(RegalContext *_context, GLfloat u);
+typedef void (REGAL_CALL *REGALGLEVALCOORD1FVPROC)(RegalContext *_context, const GLfloat *u);
+typedef void (REGAL_CALL *REGALGLEVALCOORD2DPROC)(RegalContext *_context, GLdouble u, GLdouble v);
+typedef void (REGAL_CALL *REGALGLEVALCOORD2DVPROC)(RegalContext *_context, const GLdouble *u);
+typedef void (REGAL_CALL *REGALGLEVALCOORD2FPROC)(RegalContext *_context, GLfloat u, GLfloat v);
+typedef void (REGAL_CALL *REGALGLEVALCOORD2FVPROC)(RegalContext *_context, const GLfloat *u);
+typedef void (REGAL_CALL *REGALGLEVALMESH1PROC)(RegalContext *_context, GLenum mode, GLint i1, GLint i2);
+typedef void (REGAL_CALL *REGALGLEVALMESH2PROC)(RegalContext *_context, GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2);
+typedef void (REGAL_CALL *REGALGLEVALPOINT1PROC)(RegalContext *_context, GLint i);
+typedef void (REGAL_CALL *REGALGLEVALPOINT2PROC)(RegalContext *_context, GLint i, GLint j);
+typedef void (REGAL_CALL *REGALGLFEEDBACKBUFFERPROC)(RegalContext *_context, GLsizei size, GLenum type, GLfloat *buffer);
+typedef void (REGAL_CALL *REGALGLFINISHPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLFLUSHPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLFOGFPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLFOGFVPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLFOGIPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLFOGIVPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLFRONTFACEPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLFRUSTUMPROC)(RegalContext *_context, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+typedef GLuint (REGAL_CALL *REGALGLGENLISTSPROC)(RegalContext *_context, GLsizei range);
+typedef void (REGAL_CALL *REGALGLGETBOOLEANVPROC)(RegalContext *_context, GLenum pname, GLboolean *params);
+typedef void (REGAL_CALL *REGALGLGETCLIPPLANEPROC)(RegalContext *_context, GLenum plane, GLdouble *equation);
+typedef void (REGAL_CALL *REGALGLGETDOUBLEVPROC)(RegalContext *_context, GLenum pname, GLdouble *params);
+typedef GLenum (REGAL_CALL *REGALGLGETERRORPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLGETFLOATVPROC)(RegalContext *_context, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETINTEGERVPROC)(RegalContext *_context, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETLIGHTFVPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETLIGHTIVPROC)(RegalContext *_context, GLenum light, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMAPDVPROC)(RegalContext *_context, GLenum target, GLenum query, GLdouble *v);
+typedef void (REGAL_CALL *REGALGLGETMAPFVPROC)(RegalContext *_context, GLenum target, GLenum query, GLfloat *v);
+typedef void (REGAL_CALL *REGALGLGETMAPIVPROC)(RegalContext *_context, GLenum target, GLenum query, GLint *v);
+typedef void (REGAL_CALL *REGALGLGETMATERIALFVPROC)(RegalContext *_context, GLenum face, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMATERIALIVPROC)(RegalContext *_context, GLenum face, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETPIXELMAPFVPROC)(RegalContext *_context, GLenum map, GLfloat *values);
+typedef void (REGAL_CALL *REGALGLGETPIXELMAPUIVPROC)(RegalContext *_context, GLenum map, GLuint *values);
+typedef void (REGAL_CALL *REGALGLGETPIXELMAPUSVPROC)(RegalContext *_context, GLenum map, GLushort *values);
+typedef void (REGAL_CALL *REGALGLGETPOLYGONSTIPPLEPROC)(RegalContext *_context, GLubyte *mask);
+typedef const GLubyte *(REGAL_CALL *REGALGLGETSTRINGPROC)(RegalContext *_context, GLenum name);
+typedef void (REGAL_CALL *REGALGLGETTEXENVFVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETTEXENVIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXGENDVPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETTEXGENFVPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETTEXGENIVPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXIMAGEPROC)(RegalContext *_context, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLGETTEXLEVELPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLint level, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETTEXLEVELPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLint level, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLHINTPROC)(RegalContext *_context, GLenum target, GLenum mode);
+typedef void (REGAL_CALL *REGALGLINDEXMASKPROC)(RegalContext *_context, GLuint mask);
+typedef void (REGAL_CALL *REGALGLINDEXDPROC)(RegalContext *_context, GLdouble c);
+typedef void (REGAL_CALL *REGALGLINDEXDVPROC)(RegalContext *_context, const GLdouble *c);
+typedef void (REGAL_CALL *REGALGLINDEXFPROC)(RegalContext *_context, GLfloat c);
+typedef void (REGAL_CALL *REGALGLINDEXFVPROC)(RegalContext *_context, const GLfloat *c);
+typedef void (REGAL_CALL *REGALGLINDEXIPROC)(RegalContext *_context, GLint c);
+typedef void (REGAL_CALL *REGALGLINDEXIVPROC)(RegalContext *_context, const GLint *c);
+typedef void (REGAL_CALL *REGALGLINDEXSPROC)(RegalContext *_context, GLshort c);
+typedef void (REGAL_CALL *REGALGLINDEXSVPROC)(RegalContext *_context, const GLshort *c);
+typedef void (REGAL_CALL *REGALGLINITNAMESPROC)(RegalContext *_context);
+typedef GLboolean (REGAL_CALL *REGALGLISENABLEDPROC)(RegalContext *_context, GLenum cap);
+typedef GLboolean (REGAL_CALL *REGALGLISLISTPROC)(RegalContext *_context, GLuint list);
+typedef void (REGAL_CALL *REGALGLLIGHTMODELFPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLLIGHTMODELFVPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLLIGHTMODELIPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLLIGHTMODELIVPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLLIGHTFPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLLIGHTFVPROC)(RegalContext *_context, GLenum light, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLLIGHTIPROC)(RegalContext *_context, GLenum light, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLLIGHTIVPROC)(RegalContext *_context, GLenum light, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLLINESTIPPLEPROC)(RegalContext *_context, GLint factor, GLushort pattern);
+typedef void (REGAL_CALL *REGALGLLINEWIDTHPROC)(RegalContext *_context, GLfloat width);
+typedef void (REGAL_CALL *REGALGLLISTBASEPROC)(RegalContext *_context, GLuint base);
+typedef void (REGAL_CALL *REGALGLLOADIDENTITYPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLLOADMATRIXDPROC)(RegalContext *_context, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLLOADMATRIXFPROC)(RegalContext *_context, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLLOADNAMEPROC)(RegalContext *_context, GLuint name);
+typedef void (REGAL_CALL *REGALGLLOGICOPPROC)(RegalContext *_context, GLenum opcode);
+typedef void (REGAL_CALL *REGALGLMAP1DPROC)(RegalContext *_context, GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points);
+typedef void (REGAL_CALL *REGALGLMAP1FPROC)(RegalContext *_context, GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points);
+typedef void (REGAL_CALL *REGALGLMAP2DPROC)(RegalContext *_context, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points);
+typedef void (REGAL_CALL *REGALGLMAP2FPROC)(RegalContext *_context, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points);
+typedef void (REGAL_CALL *REGALGLMAPGRID1DPROC)(RegalContext *_context, GLint un, GLdouble u1, GLdouble u2);
+typedef void (REGAL_CALL *REGALGLMAPGRID1FPROC)(RegalContext *_context, GLint un, GLfloat u1, GLfloat u2);
+typedef void (REGAL_CALL *REGALGLMAPGRID2DPROC)(RegalContext *_context, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2);
+typedef void (REGAL_CALL *REGALGLMAPGRID2FPROC)(RegalContext *_context, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2);
+typedef void (REGAL_CALL *REGALGLMATERIALFPROC)(RegalContext *_context, GLenum face, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLMATERIALFVPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLMATERIALIPROC)(RegalContext *_context, GLenum face, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLMATERIALIVPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLMATRIXMODEPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLMULTMATRIXDPROC)(RegalContext *_context, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLMULTMATRIXFPROC)(RegalContext *_context, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLNEWLISTPROC)(RegalContext *_context, GLuint list, GLenum mode);
+typedef void (REGAL_CALL *REGALGLNORMAL3BPROC)(RegalContext *_context, GLbyte nx, GLbyte ny, GLbyte nz);
+typedef void (REGAL_CALL *REGALGLNORMAL3BVPROC)(RegalContext *_context, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLNORMAL3DPROC)(RegalContext *_context, GLdouble nx, GLdouble ny, GLdouble nz);
+typedef void (REGAL_CALL *REGALGLNORMAL3DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLNORMAL3FPROC)(RegalContext *_context, GLfloat nx, GLfloat ny, GLfloat nz);
+typedef void (REGAL_CALL *REGALGLNORMAL3FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLNORMAL3IPROC)(RegalContext *_context, GLint nx, GLint ny, GLint nz);
+typedef void (REGAL_CALL *REGALGLNORMAL3IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLNORMAL3SPROC)(RegalContext *_context, GLshort nx, GLshort ny, GLshort nz);
+typedef void (REGAL_CALL *REGALGLNORMAL3SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLORTHOPROC)(RegalContext *_context, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+typedef void (REGAL_CALL *REGALGLPASSTHROUGHPROC)(RegalContext *_context, GLfloat token);
+typedef void (REGAL_CALL *REGALGLPIXELMAPFVPROC)(RegalContext *_context, GLenum map, GLsizei mapsize, const GLfloat *values);
+typedef void (REGAL_CALL *REGALGLPIXELMAPUIVPROC)(RegalContext *_context, GLenum map, GLsizei mapsize, const GLuint *values);
+typedef void (REGAL_CALL *REGALGLPIXELMAPUSVPROC)(RegalContext *_context, GLenum map, GLsizei mapsize, const GLushort *values);
+typedef void (REGAL_CALL *REGALGLPIXELSTOREFPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPIXELSTOREIPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLPIXELTRANSFERFPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPIXELTRANSFERIPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLPIXELZOOMPROC)(RegalContext *_context, GLfloat xfactor, GLfloat yfactor);
+typedef void (REGAL_CALL *REGALGLPOINTSIZEPROC)(RegalContext *_context, GLfloat size);
+typedef void (REGAL_CALL *REGALGLPOLYGONMODEPROC)(RegalContext *_context, GLenum face, GLenum mode);
+typedef void (REGAL_CALL *REGALGLPOLYGONSTIPPLEPROC)(RegalContext *_context, const GLubyte *mask);
+typedef void (REGAL_CALL *REGALGLPOPATTRIBPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLPOPMATRIXPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLPOPNAMEPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLPUSHATTRIBPROC)(RegalContext *_context, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLPUSHMATRIXPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLPUSHNAMEPROC)(RegalContext *_context, GLuint name);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2DPROC)(RegalContext *_context, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2FPROC)(RegalContext *_context, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2IPROC)(RegalContext *_context, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2SPROC)(RegalContext *_context, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLRASTERPOS2SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3DPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3FPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3IPROC)(RegalContext *_context, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3SPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLRASTERPOS3SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4DPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4FPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4IPROC)(RegalContext *_context, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4SPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z, GLshort w);
+typedef void (REGAL_CALL *REGALGLRASTERPOS4SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLREADBUFFERPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLREADPIXELSPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLRECTDPROC)(RegalContext *_context, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2);
+typedef void (REGAL_CALL *REGALGLRECTDVPROC)(RegalContext *_context, const GLdouble *v1, const GLdouble *v2);
+typedef void (REGAL_CALL *REGALGLRECTFPROC)(RegalContext *_context, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2);
+typedef void (REGAL_CALL *REGALGLRECTFVPROC)(RegalContext *_context, const GLfloat *v1, const GLfloat *v2);
+typedef void (REGAL_CALL *REGALGLRECTIPROC)(RegalContext *_context, GLint x1, GLint y1, GLint x2, GLint y2);
+typedef void (REGAL_CALL *REGALGLRECTIVPROC)(RegalContext *_context, const GLint *v1, const GLint *v2);
+typedef void (REGAL_CALL *REGALGLRECTSPROC)(RegalContext *_context, GLshort x1, GLshort y1, GLshort x2, GLshort y2);
+typedef void (REGAL_CALL *REGALGLRECTSVPROC)(RegalContext *_context, const GLshort *v1, const GLshort *v2);
+typedef GLint (REGAL_CALL *REGALGLRENDERMODEPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLROTATEDPROC)(RegalContext *_context, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLROTATEFPROC)(RegalContext *_context, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLSCALEDPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLSCALEFPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLSCISSORPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLSELECTBUFFERPROC)(RegalContext *_context, GLsizei size, GLuint *buffer);
+typedef void (REGAL_CALL *REGALGLSHADEMODELPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLSTENCILFUNCPROC)(RegalContext *_context, GLenum func, GLint ref, GLuint mask);
+typedef void (REGAL_CALL *REGALGLSTENCILMASKPROC)(RegalContext *_context, GLuint mask);
+typedef void (REGAL_CALL *REGALGLSTENCILOPPROC)(RegalContext *_context, GLenum fail, GLenum zfail, GLenum zpass);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1DPROC)(RegalContext *_context, GLdouble s);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1FPROC)(RegalContext *_context, GLfloat s);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1IPROC)(RegalContext *_context, GLint s);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1SPROC)(RegalContext *_context, GLshort s);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2DPROC)(RegalContext *_context, GLdouble s, GLdouble t);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FPROC)(RegalContext *_context, GLfloat s, GLfloat t);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2IPROC)(RegalContext *_context, GLint s, GLint t);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2SPROC)(RegalContext *_context, GLshort s, GLshort t);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3DPROC)(RegalContext *_context, GLdouble s, GLdouble t, GLdouble r);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3FPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat r);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3IPROC)(RegalContext *_context, GLint s, GLint t, GLint r);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3SPROC)(RegalContext *_context, GLshort s, GLshort t, GLshort r);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4DPROC)(RegalContext *_context, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4FPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4IPROC)(RegalContext *_context, GLint s, GLint t, GLint r, GLint q);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4SPROC)(RegalContext *_context, GLshort s, GLshort t, GLshort r, GLshort q);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLTEXENVFPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLTEXENVFVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLTEXENVIPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLTEXENVIVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLTEXGENDPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLdouble param);
+typedef void (REGAL_CALL *REGALGLTEXGENDVPROC)(RegalContext *_context, GLenum coord, GLenum pname, const GLdouble *params);
+typedef void (REGAL_CALL *REGALGLTEXGENFPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLTEXGENFVPROC)(RegalContext *_context, GLenum coord, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLTEXGENIPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLTEXGENIVPROC)(RegalContext *_context, GLenum coord, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLTEXIMAGE1DPROC)(RegalContext *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXIMAGE2DPROC)(RegalContext *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERFPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERIPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLTRANSLATEDPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLTRANSLATEFPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLVERTEX2DPROC)(RegalContext *_context, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLVERTEX2DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEX2FPROC)(RegalContext *_context, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLVERTEX2FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEX2IPROC)(RegalContext *_context, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLVERTEX2IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEX2SPROC)(RegalContext *_context, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLVERTEX2SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEX3DPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLVERTEX3DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEX3FPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLVERTEX3FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEX3IPROC)(RegalContext *_context, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLVERTEX3IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEX3SPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLVERTEX3SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEX4DPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLVERTEX4DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEX4FPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLVERTEX4FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEX4IPROC)(RegalContext *_context, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLVERTEX4IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEX4SPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z, GLshort w);
+typedef void (REGAL_CALL *REGALGLVERTEX4SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVIEWPORTPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height);
+
+    // GL_VERSION_1_1
+
+typedef GLboolean (REGAL_CALL *REGALGLARETEXTURESRESIDENTPROC)(RegalContext *_context, GLsizei n, const GLuint *textures, GLboolean *residences);
+typedef void (REGAL_CALL *REGALGLARRAYELEMENTPROC)(RegalContext *_context, GLint index);
+typedef void (REGAL_CALL *REGALGLBINDTEXTUREPROC)(RegalContext *_context, GLenum target, GLuint texture);
+typedef void (REGAL_CALL *REGALGLCOLORPOINTERPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLCOPYTEXIMAGE1DPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYTEXIMAGE2DPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYTEXSUBIMAGE1DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYTEXSUBIMAGE2DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLDELETETEXTURESPROC)(RegalContext *_context, GLsizei n, const GLuint *textures);
+typedef void (REGAL_CALL *REGALGLDISABLECLIENTSTATEPROC)(RegalContext *_context, GLenum cap);
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSPROC)(RegalContext *_context, GLenum mode, GLint first, GLsizei count);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices);
+typedef void (REGAL_CALL *REGALGLEDGEFLAGPOINTERPROC)(RegalContext *_context, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLENABLECLIENTSTATEPROC)(RegalContext *_context, GLenum cap);
+typedef void (REGAL_CALL *REGALGLGENTEXTURESPROC)(RegalContext *_context, GLsizei n, GLuint *textures);
+typedef void (REGAL_CALL *REGALGLGETPOINTERVPROC)(RegalContext *_context, GLenum pname, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLINDEXPOINTERPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLINDEXUBPROC)(RegalContext *_context, GLubyte c);
+typedef void (REGAL_CALL *REGALGLINDEXUBVPROC)(RegalContext *_context, const GLubyte *c);
+typedef void (REGAL_CALL *REGALGLINTERLEAVEDARRAYSPROC)(RegalContext *_context, GLenum format, GLsizei stride, const GLvoid *pointer);
+typedef GLboolean (REGAL_CALL *REGALGLISTEXTUREPROC)(RegalContext *_context, GLuint texture);
+typedef void (REGAL_CALL *REGALGLNORMALPOINTERPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLPOLYGONOFFSETPROC)(RegalContext *_context, GLfloat factor, GLfloat units);
+typedef void (REGAL_CALL *REGALGLPOPCLIENTATTRIBPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLPRIORITIZETEXTURESPROC)(RegalContext *_context, GLsizei n, const GLuint *textures, const GLclampf *priorities);
+typedef void (REGAL_CALL *REGALGLPUSHCLIENTATTRIBPROC)(RegalContext *_context, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLTEXCOORDPOINTERPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE1DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE2DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLVERTEXPOINTERPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+
+    // GL_VERSION_1_2
+
+typedef void (REGAL_CALL *REGALGLBLENDCOLORPROC)(RegalContext *_context, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLCOPYTEXSUBIMAGE3DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLDRAWRANGEELEMENTSPROC)(RegalContext *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices);
+typedef void (REGAL_CALL *REGALGLTEXIMAGE3DPROC)(RegalContext *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE3DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+
+    // GL_VERSION_1_3
+
+typedef void (REGAL_CALL *REGALGLACTIVETEXTUREPROC)(RegalContext *_context, GLenum texture);
+typedef void (REGAL_CALL *REGALGLCLIENTACTIVETEXTUREPROC)(RegalContext *_context, GLenum texture);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXIMAGE1DPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXIMAGE2DPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXIMAGE3DPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXSUBIMAGE1DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXSUBIMAGE2DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXSUBIMAGE3DPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLGETCOMPRESSEDTEXIMAGEPROC)(RegalContext *_context, GLenum target, GLint lod, GLvoid *img);
+typedef void (REGAL_CALL *REGALGLLOADTRANSPOSEMATRIXDPROC)(RegalContext *_context, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLLOADTRANSPOSEMATRIXFPROC)(RegalContext *_context, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLMULTTRANSPOSEMATRIXDPROC)(RegalContext *_context, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLMULTTRANSPOSEMATRIXFPROC)(RegalContext *_context, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1DPROC)(RegalContext *_context, GLenum target, GLdouble s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1DVPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1FPROC)(RegalContext *_context, GLenum target, GLfloat s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1FVPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1IPROC)(RegalContext *_context, GLenum target, GLint s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1IVPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1SPROC)(RegalContext *_context, GLenum target, GLshort s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1SVPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2DPROC)(RegalContext *_context, GLenum target, GLdouble s, GLdouble t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2DVPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2FPROC)(RegalContext *_context, GLenum target, GLfloat s, GLfloat t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2FVPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2IPROC)(RegalContext *_context, GLenum target, GLint s, GLint t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2IVPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2SPROC)(RegalContext *_context, GLenum target, GLshort s, GLshort t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2SVPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3DPROC)(RegalContext *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3DVPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3FPROC)(RegalContext *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3FVPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3IPROC)(RegalContext *_context, GLenum target, GLint s, GLint t, GLint r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3IVPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3SPROC)(RegalContext *_context, GLenum target, GLshort s, GLshort t, GLshort r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3SVPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4DPROC)(RegalContext *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4DVPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4FPROC)(RegalContext *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4FVPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4IPROC)(RegalContext *_context, GLenum target, GLint s, GLint t, GLint r, GLint q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4IVPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4SPROC)(RegalContext *_context, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4SVPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLSAMPLECOVERAGEPROC)(RegalContext *_context, GLclampf value, GLboolean invert);
+
+    // GL_VERSION_1_4
+
+typedef void (REGAL_CALL *REGALGLBLENDFUNCSEPARATEPROC)(RegalContext *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+typedef void (REGAL_CALL *REGALGLFOGCOORDPOINTERPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLFOGCOORDDPROC)(RegalContext *_context, GLdouble coord);
+typedef void (REGAL_CALL *REGALGLFOGCOORDDVPROC)(RegalContext *_context, const GLdouble *coord);
+typedef void (REGAL_CALL *REGALGLFOGCOORDFPROC)(RegalContext *_context, GLfloat coord);
+typedef void (REGAL_CALL *REGALGLFOGCOORDFVPROC)(RegalContext *_context, const GLfloat *coord);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWARRAYSPROC)(RegalContext *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWELEMENTSPROC)(RegalContext *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFVPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERIPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERIVPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3BPROC)(RegalContext *_context, GLbyte red, GLbyte green, GLbyte blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3BVPROC)(RegalContext *_context, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3DPROC)(RegalContext *_context, GLdouble red, GLdouble green, GLdouble blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3DVPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3FPROC)(RegalContext *_context, GLfloat red, GLfloat green, GLfloat blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3FVPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3IPROC)(RegalContext *_context, GLint red, GLint green, GLint blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3IVPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3SPROC)(RegalContext *_context, GLshort red, GLshort green, GLshort blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3SVPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UBPROC)(RegalContext *_context, GLubyte red, GLubyte green, GLubyte blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UBVPROC)(RegalContext *_context, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UIPROC)(RegalContext *_context, GLuint red, GLuint green, GLuint blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UIVPROC)(RegalContext *_context, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3USPROC)(RegalContext *_context, GLushort red, GLushort green, GLushort blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3USVPROC)(RegalContext *_context, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLORPOINTERPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2DPROC)(RegalContext *_context, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2DVPROC)(RegalContext *_context, const GLdouble *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2FPROC)(RegalContext *_context, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2FVPROC)(RegalContext *_context, const GLfloat *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2IPROC)(RegalContext *_context, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2IVPROC)(RegalContext *_context, const GLint *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2SPROC)(RegalContext *_context, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2SVPROC)(RegalContext *_context, const GLshort *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3DPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3DVPROC)(RegalContext *_context, const GLdouble *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3FPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3FVPROC)(RegalContext *_context, const GLfloat *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3IPROC)(RegalContext *_context, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3IVPROC)(RegalContext *_context, const GLint *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3SPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3SVPROC)(RegalContext *_context, const GLshort *p);
+
+    // GL_VERSION_1_5
+
+typedef void (REGAL_CALL *REGALGLBEGINQUERYPROC)(RegalContext *_context, GLenum target, GLuint id);
+typedef void (REGAL_CALL *REGALGLBINDBUFFERPROC)(RegalContext *_context, GLenum target, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLBUFFERDATAPROC)(RegalContext *_context, GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage);
+typedef void (REGAL_CALL *REGALGLBUFFERSUBDATAPROC)(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLDELETEBUFFERSPROC)(RegalContext *_context, GLsizei n, const GLuint *buffers);
+typedef void (REGAL_CALL *REGALGLDELETEQUERIESPROC)(RegalContext *_context, GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *REGALGLENDQUERYPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLGENBUFFERSPROC)(RegalContext *_context, GLsizei n, GLuint *buffers);
+typedef void (REGAL_CALL *REGALGLGENQUERIESPROC)(RegalContext *_context, GLsizei n, GLuint *ids);
+typedef void (REGAL_CALL *REGALGLGETBUFFERPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETBUFFERPOINTERVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLGETBUFFERSUBDATAPROC)(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTIVPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTUIVPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISBUFFERPROC)(RegalContext *_context, GLuint buffer);
+typedef GLboolean (REGAL_CALL *REGALGLISQUERYPROC)(RegalContext *_context, GLuint id);
+typedef GLvoid *(REGAL_CALL *REGALGLMAPBUFFERPROC)(RegalContext *_context, GLenum target, GLenum access);
+typedef GLboolean (REGAL_CALL *REGALGLUNMAPBUFFERPROC)(RegalContext *_context, GLenum target);
+
+    // GL_VERSION_2_0
+
+typedef void (REGAL_CALL *REGALGLATTACHSHADERPROC)(RegalContext *_context, GLuint program, GLuint shader);
+typedef void (REGAL_CALL *REGALGLBINDATTRIBLOCATIONPROC)(RegalContext *_context, GLuint program, GLuint index, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONSEPARATEPROC)(RegalContext *_context, GLenum modeRGB, GLenum modeAlpha);
+typedef void (REGAL_CALL *REGALGLCOMPILESHADERPROC)(RegalContext *_context, GLuint shader);
+typedef GLuint (REGAL_CALL *REGALGLCREATEPROGRAMPROC)(RegalContext *_context);
+typedef GLuint (REGAL_CALL *REGALGLCREATESHADERPROC)(RegalContext *_context, GLenum type);
+typedef void (REGAL_CALL *REGALGLDELETEPROGRAMPROC)(RegalContext *_context, GLuint program);
+typedef void (REGAL_CALL *REGALGLDELETESHADERPROC)(RegalContext *_context, GLuint shader);
+typedef void (REGAL_CALL *REGALGLDETACHSHADERPROC)(RegalContext *_context, GLuint program, GLuint shader);
+typedef void (REGAL_CALL *REGALGLDISABLEVERTEXATTRIBARRAYPROC)(RegalContext *_context, GLuint index);
+typedef void (REGAL_CALL *REGALGLDRAWBUFFERSPROC)(RegalContext *_context, GLsizei n, const GLenum *bufs);
+typedef void (REGAL_CALL *REGALGLENABLEVERTEXATTRIBARRAYPROC)(RegalContext *_context, GLuint index);
+typedef void (REGAL_CALL *REGALGLGETACTIVEATTRIBPROC)(RegalContext *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETACTIVEUNIFORMPROC)(RegalContext *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETATTACHEDSHADERSPROC)(RegalContext *_context, GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);
+typedef GLint (REGAL_CALL *REGALGLGETATTRIBLOCATIONPROC)(RegalContext *_context, GLuint program, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMINFOLOGPROC)(RegalContext *_context, GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMIVPROC)(RegalContext *_context, GLuint program, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETSHADERINFOLOGPROC)(RegalContext *_context, GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+typedef void (REGAL_CALL *REGALGLGETSHADERSOURCEPROC)(RegalContext *_context, GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
+typedef void (REGAL_CALL *REGALGLGETSHADERIVPROC)(RegalContext *_context, GLuint shader, GLenum pname, GLint *params);
+typedef GLint (REGAL_CALL *REGALGLGETUNIFORMLOCATIONPROC)(RegalContext *_context, GLuint program, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMFVPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMIVPROC)(RegalContext *_context, GLuint program, GLint location, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBPOINTERVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLvoid **pointer);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBDVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBFVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBIVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISPROGRAMPROC)(RegalContext *_context, GLuint program);
+typedef GLboolean (REGAL_CALL *REGALGLISSHADERPROC)(RegalContext *_context, GLuint shader);
+typedef void (REGAL_CALL *REGALGLLINKPROGRAMPROC)(RegalContext *_context, GLuint program);
+typedef void (REGAL_CALL *REGALGLSHADERSOURCEPROC)(RegalContext *_context, GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length);
+typedef void (REGAL_CALL *REGALGLSTENCILFUNCSEPARATEPROC)(RegalContext *_context, GLenum face, GLenum func, GLint ref, GLuint mask);
+typedef void (REGAL_CALL *REGALGLSTENCILMASKSEPARATEPROC)(RegalContext *_context, GLenum face, GLuint mask);
+typedef void (REGAL_CALL *REGALGLSTENCILOPSEPARATEPROC)(RegalContext *_context, GLenum face, GLenum fail, GLenum zfail, GLenum zpass);
+typedef void (REGAL_CALL *REGALGLUNIFORM1FPROC)(RegalContext *_context, GLint location, GLfloat v0);
+typedef void (REGAL_CALL *REGALGLUNIFORM1FVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM1IPROC)(RegalContext *_context, GLint location, GLint v0);
+typedef void (REGAL_CALL *REGALGLUNIFORM1IVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2FPROC)(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1);
+typedef void (REGAL_CALL *REGALGLUNIFORM2FVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2IPROC)(RegalContext *_context, GLint location, GLint v0, GLint v1);
+typedef void (REGAL_CALL *REGALGLUNIFORM2IVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3FPROC)(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+typedef void (REGAL_CALL *REGALGLUNIFORM3FVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3IPROC)(RegalContext *_context, GLint location, GLint v0, GLint v1, GLint v2);
+typedef void (REGAL_CALL *REGALGLUNIFORM3IVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4FPROC)(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+typedef void (REGAL_CALL *REGALGLUNIFORM4FVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4IPROC)(RegalContext *_context, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+typedef void (REGAL_CALL *REGALGLUNIFORM4IVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUSEPROGRAMPROC)(RegalContext *_context, GLuint program);
+typedef void (REGAL_CALL *REGALGLVALIDATEPROGRAMPROC)(RegalContext *_context, GLuint program);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1DPROC)(RegalContext *_context, GLuint index, GLdouble x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1FPROC)(RegalContext *_context, GLuint index, GLfloat x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1FVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1SPROC)(RegalContext *_context, GLuint index, GLshort x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1SVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2DPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2FPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2FVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2SPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2SVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3DPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3FPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3FVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3SPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3SVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NBVPROC)(RegalContext *_context, GLuint index, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NIVPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NSVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUBPROC)(RegalContext *_context, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUBVPROC)(RegalContext *_context, GLuint index, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUIVPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUSVPROC)(RegalContext *_context, GLuint index, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4BVPROC)(RegalContext *_context, GLuint index, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4DPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4FPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4FVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4IVPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4SPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4SVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4UBVPROC)(RegalContext *_context, GLuint index, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4UIVPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4USVPROC)(RegalContext *_context, GLuint index, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBPOINTERPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
+
+    // GL_VERSION_2_1
+
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2X3FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2X4FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3X2FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3X4FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4X2FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4X3FVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+
+    // GL_VERSION_3_0
+
+typedef void (REGAL_CALL *REGALGLBEGINCONDITIONALRENDERPROC)(RegalContext *_context, GLuint id, GLenum mode);
+typedef void (REGAL_CALL *REGALGLBEGINTRANSFORMFEEDBACKPROC)(RegalContext *_context, GLenum primitiveMode);
+typedef void (REGAL_CALL *REGALGLBINDFRAGDATALOCATIONPROC)(RegalContext *_context, GLuint program, GLuint color, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLCLAMPCOLORPROC)(RegalContext *_context, GLenum target, GLenum clamp);
+typedef void (REGAL_CALL *REGALGLCLEARBUFFERFIPROC)(RegalContext *_context, GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
+typedef void (REGAL_CALL *REGALGLCLEARBUFFERFVPROC)(RegalContext *_context, GLenum buffer, GLint drawbuffer, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLCLEARBUFFERIVPROC)(RegalContext *_context, GLenum buffer, GLint drawbuffer, const GLint *value);
+typedef void (REGAL_CALL *REGALGLCLEARBUFFERUIVPROC)(RegalContext *_context, GLenum buffer, GLint drawbuffer, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLCOLORMASKIPROC)(RegalContext *_context, GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+typedef void (REGAL_CALL *REGALGLDISABLEIPROC)(RegalContext *_context, GLenum cap, GLuint index);
+typedef void (REGAL_CALL *REGALGLENABLEIPROC)(RegalContext *_context, GLenum cap, GLuint index);
+typedef void (REGAL_CALL *REGALGLENDCONDITIONALRENDERPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLENDTRANSFORMFEEDBACKPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLGETBOOLEANI_VPROC)(RegalContext *_context, GLenum target, GLuint index, GLboolean *data);
+typedef GLint (REGAL_CALL *REGALGLGETFRAGDATALOCATIONPROC)(RegalContext *_context, GLuint program, const GLchar *name);
+typedef const GLubyte *(REGAL_CALL *REGALGLGETSTRINGIPROC)(RegalContext *_context, GLenum name, GLuint index);
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERIIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERIUIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETTRANSFORMFEEDBACKVARYINGPROC)(RegalContext *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMUIVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBIIVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBIUIVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLuint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISENABLEDIPROC)(RegalContext *_context, GLenum target, GLuint index);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERIIVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERIUIVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLTRANSFORMFEEDBACKVARYINGSPROC)(RegalContext *_context, GLuint program, GLsizei count, const GLchar * const *varyings, GLenum bufferMode);
+typedef void (REGAL_CALL *REGALGLUNIFORM1UIPROC)(RegalContext *_context, GLint location, GLuint v0);
+typedef void (REGAL_CALL *REGALGLUNIFORM1UIVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2UIPROC)(RegalContext *_context, GLint location, GLuint v0, GLuint v1);
+typedef void (REGAL_CALL *REGALGLUNIFORM2UIVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3UIPROC)(RegalContext *_context, GLint location, GLuint v0, GLuint v1, GLuint v2);
+typedef void (REGAL_CALL *REGALGLUNIFORM3UIVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4UIPROC)(RegalContext *_context, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+typedef void (REGAL_CALL *REGALGLUNIFORM4UIVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1IPROC)(RegalContext *_context, GLuint index, GLint x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1IVPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1UIPROC)(RegalContext *_context, GLuint index, GLuint x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1UIVPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2IPROC)(RegalContext *_context, GLuint index, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2IVPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2UIPROC)(RegalContext *_context, GLuint index, GLuint x, GLuint y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2UIVPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3IPROC)(RegalContext *_context, GLuint index, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3IVPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3UIPROC)(RegalContext *_context, GLuint index, GLuint x, GLuint y, GLuint z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3UIVPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4BVPROC)(RegalContext *_context, GLuint index, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4IPROC)(RegalContext *_context, GLuint index, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4IVPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4SVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4UBVPROC)(RegalContext *_context, GLuint index, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4UIPROC)(RegalContext *_context, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4UIVPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4USVPROC)(RegalContext *_context, GLuint index, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBIPOINTERPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+
+    // GL_VERSION_3_1
+
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSINSTANCEDPROC)(RegalContext *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINSTANCEDPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLPRIMITIVERESTARTINDEXPROC)(RegalContext *_context, GLuint index);
+typedef void (REGAL_CALL *REGALGLTEXBUFFERPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLuint buffer);
+
+    // GL_VERSION_3_2
+
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTUREPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTUREFACEPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+typedef void (REGAL_CALL *REGALGLGETBUFFERPARAMETERI64VPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint64 *params);
+typedef void (REGAL_CALL *REGALGLGETINTEGER64I_VPROC)(RegalContext *_context, GLenum target, GLuint index, GLint64 *data);
+
+    // GL_VERSION_3_3
+
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBDIVISORPROC)(RegalContext *_context, GLuint index, GLuint divisor);
+
+    // GL_VERSION_4_0
+
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONSEPARATEIPROC)(RegalContext *_context, GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONIPROC)(RegalContext *_context, GLuint buf, GLenum mode);
+typedef void (REGAL_CALL *REGALGLBLENDFUNCSEPARATEIPROC)(RegalContext *_context, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+typedef void (REGAL_CALL *REGALGLBLENDFUNCIPROC)(RegalContext *_context, GLuint buf, GLenum src, GLenum dst);
+
+    // GL_3DFX_tbuffer
+
+typedef void (REGAL_CALL *REGALGLTBUFFERMASK3DFXPROC)(RegalContext *_context, GLuint mask);
+
+    // GL_AMD_debug_output
+
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGECALLBACKAMDPROC)(RegalContext *_context, GLDEBUGPROCAMD callback, GLvoid *userParam);
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGEENABLEAMDPROC)(RegalContext *_context, GLenum category, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGEINSERTAMDPROC)(RegalContext *_context, GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar *buf);
+typedef GLuint (REGAL_CALL *REGALGLGETDEBUGMESSAGELOGAMDPROC)(RegalContext *_context, GLuint count, GLsizei bufsize, GLenum *categories, GLuint *severities, GLuint *ids, GLsizei *lengths, GLchar *message);
+
+    // GL_AMD_draw_buffers_blend
+
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONINDEXEDAMDPROC)(RegalContext *_context, GLuint buf, GLenum mode);
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONSEPARATEINDEXEDAMDPROC)(RegalContext *_context, GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+typedef void (REGAL_CALL *REGALGLBLENDFUNCINDEXEDAMDPROC)(RegalContext *_context, GLuint buf, GLenum src, GLenum dst);
+typedef void (REGAL_CALL *REGALGLBLENDFUNCSEPARATEINDEXEDAMDPROC)(RegalContext *_context, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+
+    // GL_AMD_interleaved_elements
+
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBPARAMETERIAMDPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint param);
+
+    // GL_AMD_multi_draw_indirect
+
+typedef void (REGAL_CALL *REGALGLMULTIDRAWARRAYSINDIRECTAMDPROC)(RegalContext *_context, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWELEMENTSINDIRECTAMDPROC)(RegalContext *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+
+    // GL_AMD_name_gen_delete
+
+typedef void (REGAL_CALL *REGALGLDELETENAMESAMDPROC)(RegalContext *_context, GLenum identifier, GLuint num, const GLuint *names);
+typedef void (REGAL_CALL *REGALGLGENNAMESAMDPROC)(RegalContext *_context, GLenum identifier, GLuint num, GLuint *names);
+typedef GLboolean (REGAL_CALL *REGALGLISNAMEAMDPROC)(RegalContext *_context, GLenum identifier, GLuint name);
+
+    // GL_AMD_performance_monitor
+
+typedef void (REGAL_CALL *REGALGLBEGINPERFMONITORAMDPROC)(RegalContext *_context, GLuint monitor);
+typedef void (REGAL_CALL *REGALGLDELETEPERFMONITORSAMDPROC)(RegalContext *_context, GLsizei n, GLuint *monitors);
+typedef void (REGAL_CALL *REGALGLENDPERFMONITORAMDPROC)(RegalContext *_context, GLuint monitor);
+typedef void (REGAL_CALL *REGALGLGENPERFMONITORSAMDPROC)(RegalContext *_context, GLsizei n, GLuint *monitors);
+typedef void (REGAL_CALL *REGALGLGETPERFMONITORCOUNTERDATAAMDPROC)(RegalContext *_context, GLuint monitor, GLenum pname, GLsizei dataSize, GLuint *data, GLint *bytesWritten);
+typedef void (REGAL_CALL *REGALGLGETPERFMONITORCOUNTERINFOAMDPROC)(RegalContext *_context, GLuint group, GLuint counter, GLenum pname, GLvoid *data);
+typedef void (REGAL_CALL *REGALGLGETPERFMONITORCOUNTERSTRINGAMDPROC)(RegalContext *_context, GLuint group, GLuint counter, GLsizei bufSize, GLsizei *length, GLchar *counterString);
+typedef void (REGAL_CALL *REGALGLGETPERFMONITORCOUNTERSAMDPROC)(RegalContext *_context, GLuint group, GLint *numCounters, GLint *maxActiveCounters, GLsizei countersSize, GLuint *counters);
+typedef void (REGAL_CALL *REGALGLGETPERFMONITORGROUPSTRINGAMDPROC)(RegalContext *_context, GLuint group, GLsizei bufSize, GLsizei *length, GLchar *groupString);
+typedef void (REGAL_CALL *REGALGLGETPERFMONITORGROUPSAMDPROC)(RegalContext *_context, GLint *numGroups, GLsizei groupsSize, GLuint *groups);
+typedef void (REGAL_CALL *REGALGLSELECTPERFMONITORCOUNTERSAMDPROC)(RegalContext *_context, GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint *counterList);
+
+    // GL_AMD_sample_positions
+
+typedef void (REGAL_CALL *REGALGLSETMULTISAMPLEFVAMDPROC)(RegalContext *_context, GLenum pname, GLuint index, const GLfloat *val);
+
+    // GL_AMD_sparse_texture
+
+typedef void (REGAL_CALL *REGALGLTEXSTORAGESPARSEAMDPROC)(RegalContext *_context, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+typedef void (REGAL_CALL *REGALGLTEXTURESTORAGESPARSEAMDPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+
+    // GL_AMD_stencil_operation_extended
+
+typedef void (REGAL_CALL *REGALGLSTENCILOPVALUEAMDPROC)(RegalContext *_context, GLenum face, GLuint value);
+
+    // GL_AMD_vertex_shader_tessellator
+
+typedef void (REGAL_CALL *REGALGLTESSELLATIONFACTORAMDPROC)(RegalContext *_context, GLfloat factor);
+typedef void (REGAL_CALL *REGALGLTESSELLATIONMODEAMDPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_ANGLE_framebuffer_blit
+
+typedef void (REGAL_CALL *REGALGLBLITFRAMEBUFFERANGLEPROC)(RegalContext *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+
+    // GL_ANGLE_framebuffer_multisample
+
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEMULTISAMPLEANGLEPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+
+    // GL_ANGLE_instanced_arrays
+
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSINSTANCEDANGLEPROC)(RegalContext *_context, GLenum mode, GLint first, GLsizei count, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINSTANCEDANGLEPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBDIVISORANGLEPROC)(RegalContext *_context, GLuint index, GLuint divisor);
+
+    // GL_ANGLE_timer_query
+
+typedef void (REGAL_CALL *REGALGLBEGINQUERYANGLEPROC)(RegalContext *_context, GLenum target, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETEQUERIESANGLEPROC)(RegalContext *_context, GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *REGALGLENDQUERYANGLEPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLGENQUERIESANGLEPROC)(RegalContext *_context, GLsizei n, GLuint *ids);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTI64VANGLEPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint64 *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTIVANGLEPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTUI64VANGLEPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint64 *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTUIVANGLEPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYIVANGLEPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISQUERYANGLEPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLQUERYCOUNTERANGLEPROC)(RegalContext *_context, GLuint id, GLenum target);
+
+    // GL_ANGLE_translated_shader_source
+
+typedef void (REGAL_CALL *REGALGLGETTRANSLATEDSHADERSOURCEANGLEPROC)(RegalContext *_context, GLuint shader, GLsizei bufsize, GLsizei *length, GLchar *source);
+
+    // GL_APPLE_copy_texture_levels
+
+typedef void (REGAL_CALL *REGALGLCOPYTEXTURELEVELSAPPLEPROC)(RegalContext *_context, GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount);
+
+    // GL_APPLE_element_array
+
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTARRAYAPPLEPROC)(RegalContext *_context, GLenum mode, GLint first, GLsizei count);
+typedef void (REGAL_CALL *REGALGLDRAWRANGEELEMENTARRAYAPPLEPROC)(RegalContext *_context, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count);
+typedef void (REGAL_CALL *REGALGLELEMENTPOINTERAPPLEPROC)(RegalContext *_context, GLenum type, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWELEMENTARRAYAPPLEPROC)(RegalContext *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWRANGEELEMENTARRAYAPPLEPROC)(RegalContext *_context, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount);
+
+    // GL_APPLE_fence
+
+typedef void (REGAL_CALL *REGALGLDELETEFENCESAPPLEPROC)(RegalContext *_context, GLsizei n, const GLuint *fences);
+typedef void (REGAL_CALL *REGALGLFINISHFENCEAPPLEPROC)(RegalContext *_context, GLuint fence);
+typedef void (REGAL_CALL *REGALGLFINISHOBJECTAPPLEPROC)(RegalContext *_context, GLenum object, GLint name);
+typedef void (REGAL_CALL *REGALGLGENFENCESAPPLEPROC)(RegalContext *_context, GLsizei n, GLuint *fences);
+typedef GLboolean (REGAL_CALL *REGALGLISFENCEAPPLEPROC)(RegalContext *_context, GLuint fence);
+typedef void (REGAL_CALL *REGALGLSETFENCEAPPLEPROC)(RegalContext *_context, GLuint fence);
+typedef GLboolean (REGAL_CALL *REGALGLTESTFENCEAPPLEPROC)(RegalContext *_context, GLuint fence);
+typedef GLboolean (REGAL_CALL *REGALGLTESTOBJECTAPPLEPROC)(RegalContext *_context, GLenum object, GLuint name);
+
+    // GL_APPLE_flush_buffer_range
+
+typedef void (REGAL_CALL *REGALGLBUFFERPARAMETERIAPPLEPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLFLUSHMAPPEDBUFFERRANGEAPPLEPROC)(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr size);
+
+    // GL_APPLE_flush_render
+
+typedef void (REGAL_CALL *REGALGLFINISHRENDERAPPLEPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLFLUSHRENDERAPPLEPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLSWAPAPPLEPROC)(RegalContext *_context);
+
+    // GL_APPLE_framebuffer_multisample
+
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEMULTISAMPLEAPPLEPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLRESOLVEMULTISAMPLEFRAMEBUFFERAPPLEPROC)(RegalContext *_context);
+
+    // GL_APPLE_object_purgeable
+
+typedef void (REGAL_CALL *REGALGLGETOBJECTPARAMETERIVAPPLEPROC)(RegalContext *_context, GLenum objectType, GLuint name, GLenum pname, GLint *params);
+typedef GLenum (REGAL_CALL *REGALGLOBJECTPURGEABLEAPPLEPROC)(RegalContext *_context, GLenum objectType, GLuint name, GLenum option);
+typedef GLenum (REGAL_CALL *REGALGLOBJECTUNPURGEABLEAPPLEPROC)(RegalContext *_context, GLenum objectType, GLuint name, GLenum option);
+
+    // GL_APPLE_sync
+
+typedef GLenum (REGAL_CALL *REGALGLCLIENTWAITSYNCAPPLEPROC)(RegalContext *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
+typedef void (REGAL_CALL *REGALGLDELETESYNCAPPLEPROC)(RegalContext *_context, GLsync sync);
+typedef GLsync (REGAL_CALL *REGALGLFENCESYNCAPPLEPROC)(RegalContext *_context, GLenum condition, GLbitfield flags);
+typedef void (REGAL_CALL *REGALGLGETINTEGER64VAPPLEPROC)(RegalContext *_context, GLenum pname, GLint64 *params);
+typedef void (REGAL_CALL *REGALGLGETSYNCIVAPPLEPROC)(RegalContext *_context, GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+typedef GLboolean (REGAL_CALL *REGALGLISSYNCAPPLEPROC)(RegalContext *_context, GLsync sync);
+typedef void (REGAL_CALL *REGALGLWAITSYNCAPPLEPROC)(RegalContext *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
+
+    // GL_APPLE_texture_range
+
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERPOINTERVAPPLEPROC)(RegalContext *_context, GLenum target, GLenum pname, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLTEXTURERANGEAPPLEPROC)(RegalContext *_context, GLenum target, GLsizei length, const GLvoid *pointer);
+
+    // GL_APPLE_vertex_array_object
+
+typedef void (REGAL_CALL *REGALGLBINDVERTEXARRAYAPPLEPROC)(RegalContext *_context, GLuint array);
+typedef void (REGAL_CALL *REGALGLDELETEVERTEXARRAYSAPPLEPROC)(RegalContext *_context, GLsizei n, const GLuint *arrays);
+typedef void (REGAL_CALL *REGALGLGENVERTEXARRAYSAPPLEPROC)(RegalContext *_context, GLsizei n, GLuint *arrays);
+typedef GLboolean (REGAL_CALL *REGALGLISVERTEXARRAYAPPLEPROC)(RegalContext *_context, GLuint array);
+
+    // GL_APPLE_vertex_array_range
+
+typedef void (REGAL_CALL *REGALGLFLUSHVERTEXARRAYRANGEAPPLEPROC)(RegalContext *_context, GLsizei length, GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYPARAMETERIAPPLEPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYRANGEAPPLEPROC)(RegalContext *_context, GLsizei length, GLvoid *pointer);
+
+    // GL_APPLE_vertex_program_evaluators
+
+typedef void (REGAL_CALL *REGALGLDISABLEVERTEXATTRIBAPPLEPROC)(RegalContext *_context, GLuint index, GLenum pname);
+typedef void (REGAL_CALL *REGALGLENABLEVERTEXATTRIBAPPLEPROC)(RegalContext *_context, GLuint index, GLenum pname);
+typedef GLboolean (REGAL_CALL *REGALGLISVERTEXATTRIBENABLEDAPPLEPROC)(RegalContext *_context, GLuint index, GLenum pname);
+typedef void (REGAL_CALL *REGALGLMAPVERTEXATTRIB1DAPPLEPROC)(RegalContext *_context, GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points);
+typedef void (REGAL_CALL *REGALGLMAPVERTEXATTRIB1FAPPLEPROC)(RegalContext *_context, GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points);
+typedef void (REGAL_CALL *REGALGLMAPVERTEXATTRIB2DAPPLEPROC)(RegalContext *_context, GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points);
+typedef void (REGAL_CALL *REGALGLMAPVERTEXATTRIB2FAPPLEPROC)(RegalContext *_context, GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points);
+
+    // GL_ARB_ES2_compatibility
+
+typedef void (REGAL_CALL *REGALGLCLEARDEPTHFPROC)(RegalContext *_context, GLclampf d);
+typedef void (REGAL_CALL *REGALGLDEPTHRANGEFPROC)(RegalContext *_context, GLclampf n, GLclampf f);
+typedef void (REGAL_CALL *REGALGLGETSHADERPRECISIONFORMATPROC)(RegalContext *_context, GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision);
+typedef void (REGAL_CALL *REGALGLRELEASESHADERCOMPILERPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLSHADERBINARYPROC)(RegalContext *_context, GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length);
+
+    // GL_ARB_base_instance
+
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSINSTANCEDBASEINSTANCEPROC)(RegalContext *_context, GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINSTANCEDBASEINSTANCEPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLuint baseinstance);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINSTANCEDBASEVERTEXBASEINSTANCEPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance);
+
+    // GL_ARB_bindless_texture
+
+typedef GLuint64 (REGAL_CALL *REGALGLGETIMAGEHANDLEARBPROC)(RegalContext *_context, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+typedef GLuint64 (REGAL_CALL *REGALGLGETTEXTUREHANDLEARBPROC)(RegalContext *_context, GLuint texture);
+typedef GLuint64 (REGAL_CALL *REGALGLGETTEXTURESAMPLERHANDLEARBPROC)(RegalContext *_context, GLuint texture, GLuint sampler);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBLUI64VARBPROC)(RegalContext *_context, GLuint index, GLenum pname, GLuint64EXT *params);
+typedef GLboolean (REGAL_CALL *REGALGLISIMAGEHANDLERESIDENTARBPROC)(RegalContext *_context, GLuint64 handle);
+typedef GLboolean (REGAL_CALL *REGALGLISTEXTUREHANDLERESIDENTARBPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLMAKEIMAGEHANDLENONRESIDENTARBPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLMAKEIMAGEHANDLERESIDENTARBPROC)(RegalContext *_context, GLuint64 handle, GLenum access);
+typedef void (REGAL_CALL *REGALGLMAKETEXTUREHANDLENONRESIDENTARBPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLMAKETEXTUREHANDLERESIDENTARBPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMHANDLEUI64ARBPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64 value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMHANDLEUI64VARBPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint64 *values);
+typedef void (REGAL_CALL *REGALGLUNIFORMHANDLEUI64ARBPROC)(RegalContext *_context, GLint location, GLuint64 value);
+typedef void (REGAL_CALL *REGALGLUNIFORMHANDLEUI64VARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint64 *value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1UI64ARBPROC)(RegalContext *_context, GLuint index, GLuint64EXT x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1UI64VARBPROC)(RegalContext *_context, GLuint index, const GLuint64EXT *v);
+
+    // GL_ARB_blend_func_extended
+
+typedef void (REGAL_CALL *REGALGLBINDFRAGDATALOCATIONINDEXEDPROC)(RegalContext *_context, GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
+typedef GLint (REGAL_CALL *REGALGLGETFRAGDATAINDEXPROC)(RegalContext *_context, GLuint program, const GLchar *name);
+
+    // GL_ARB_buffer_storage
+
+typedef void (REGAL_CALL *REGALGLBUFFERSTORAGEPROC)(RegalContext *_context, GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+typedef void (REGAL_CALL *REGALGLNAMEDBUFFERSTORAGEEXTPROC)(RegalContext *_context, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+
+    // GL_ARB_cl_event
+
+typedef GLsync (REGAL_CALL *REGALGLCREATESYNCFROMCLEVENTARBPROC)(RegalContext *_context, cl_context context, cl_event event, GLbitfield flags);
+
+    // GL_ARB_clear_buffer_object
+
+typedef void (REGAL_CALL *REGALGLCLEARBUFFERDATAPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCLEARBUFFERSUBDATAPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCLEARNAMEDBUFFERDATAEXTPROC)(RegalContext *_context, GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCLEARNAMEDBUFFERSUBDATAEXTPROC)(RegalContext *_context, GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
+
+    // GL_ARB_clear_texture
+
+typedef void (REGAL_CALL *REGALGLCLEARTEXIMAGEPROC)(RegalContext *_context, GLuint texture, GLint level, GLenum format, GLenum type, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCLEARTEXSUBIMAGEPROC)(RegalContext *_context, GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *data);
+
+    // GL_ARB_color_buffer_float
+
+typedef void (REGAL_CALL *REGALGLCLAMPCOLORARBPROC)(RegalContext *_context, GLenum target, GLenum clamp);
+
+    // GL_ARB_compute_shader
+
+typedef void (REGAL_CALL *REGALGLDISPATCHCOMPUTEPROC)(RegalContext *_context, GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+typedef void (REGAL_CALL *REGALGLDISPATCHCOMPUTEINDIRECTPROC)(RegalContext *_context, GLintptr indirect);
+
+    // GL_ARB_compute_variable_group_size
+
+typedef void (REGAL_CALL *REGALGLDISPATCHCOMPUTEGROUPSIZEARBPROC)(RegalContext *_context, GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
+
+    // GL_ARB_copy_buffer
+
+typedef void (REGAL_CALL *REGALGLCOPYBUFFERSUBDATAPROC)(RegalContext *_context, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+
+    // GL_ARB_copy_image
+
+typedef void (REGAL_CALL *REGALGLCOPYIMAGESUBDATAPROC)(RegalContext *_context, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+
+    // GL_ARB_debug_output
+
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGECALLBACKARBPROC)(RegalContext *_context, GLDEBUGPROCARB callback, const GLvoid *userParam);
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGECONTROLARBPROC)(RegalContext *_context, GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGEINSERTARBPROC)(RegalContext *_context, GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+typedef GLuint (REGAL_CALL *REGALGLGETDEBUGMESSAGELOGARBPROC)(RegalContext *_context, GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+
+    // GL_ARB_draw_buffers
+
+typedef void (REGAL_CALL *REGALGLDRAWBUFFERSARBPROC)(RegalContext *_context, GLsizei n, const GLenum *bufs);
+
+    // GL_ARB_draw_buffers_blend
+
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONSEPARATEIARBPROC)(RegalContext *_context, GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONIARBPROC)(RegalContext *_context, GLuint buf, GLenum mode);
+typedef void (REGAL_CALL *REGALGLBLENDFUNCSEPARATEIARBPROC)(RegalContext *_context, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+typedef void (REGAL_CALL *REGALGLBLENDFUNCIARBPROC)(RegalContext *_context, GLuint buf, GLenum src, GLenum dst);
+
+    // GL_ARB_draw_elements_base_vertex
+
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSBASEVERTEXPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex);
+typedef void (REGAL_CALL *REGALGLDRAWRANGEELEMENTSBASEVERTEXPROC)(RegalContext *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWELEMENTSBASEVERTEXPROC)(RegalContext *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex);
+
+    // GL_ARB_draw_indirect
+
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSINDIRECTPROC)(RegalContext *_context, GLenum mode, const GLvoid *indirect);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINDIRECTPROC)(RegalContext *_context, GLenum mode, GLenum type, const GLvoid *indirect);
+
+    // GL_ARB_draw_instanced
+
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSINSTANCEDARBPROC)(RegalContext *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINSTANCEDARBPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+
+    // GL_ARB_framebuffer_no_attachments
+
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERPARAMETERIPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLGETFRAMEBUFFERPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDFRAMEBUFFERPARAMETERIVEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERPARAMETERIEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum pname, GLint param);
+
+    // GL_ARB_framebuffer_object
+
+typedef void (REGAL_CALL *REGALGLBINDFRAMEBUFFERPROC)(RegalContext *_context, GLenum target, GLuint framebuffer);
+typedef void (REGAL_CALL *REGALGLBINDRENDERBUFFERPROC)(RegalContext *_context, GLenum target, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLBLITFRAMEBUFFERPROC)(RegalContext *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+typedef GLenum (REGAL_CALL *REGALGLCHECKFRAMEBUFFERSTATUSPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLDELETEFRAMEBUFFERSPROC)(RegalContext *_context, GLsizei n, const GLuint *framebuffers);
+typedef void (REGAL_CALL *REGALGLDELETERENDERBUFFERSPROC)(RegalContext *_context, GLsizei n, const GLuint *renderbuffers);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERRENDERBUFFERPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE1DPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE2DPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE3DPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURELAYERPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+typedef void (REGAL_CALL *REGALGLGENFRAMEBUFFERSPROC)(RegalContext *_context, GLsizei n, GLuint *framebuffers);
+typedef void (REGAL_CALL *REGALGLGENRENDERBUFFERSPROC)(RegalContext *_context, GLsizei n, GLuint *renderbuffers);
+typedef void (REGAL_CALL *REGALGLGENERATEMIPMAPPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETRENDERBUFFERPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISFRAMEBUFFERPROC)(RegalContext *_context, GLuint framebuffer);
+typedef GLboolean (REGAL_CALL *REGALGLISRENDERBUFFERPROC)(RegalContext *_context, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEMULTISAMPLEPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+
+    // GL_ARB_geometry_shader4
+
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTUREARBPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTUREFACEARBPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURELAYERARBPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETERIARBPROC)(RegalContext *_context, GLuint program, GLenum pname, GLint value);
+
+    // GL_ARB_get_program_binary
+
+typedef void (REGAL_CALL *REGALGLGETPROGRAMBINARYPROC)(RegalContext *_context, GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary);
+typedef void (REGAL_CALL *REGALGLPROGRAMBINARYPROC)(RegalContext *_context, GLuint program, GLenum binaryFormat, const GLvoid *binary, GLsizei length);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETERIPROC)(RegalContext *_context, GLuint program, GLenum pname, GLint value);
+
+    // GL_ARB_gpu_shader_fp64
+
+typedef void (REGAL_CALL *REGALGLGETUNIFORMDVPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLUNIFORM1DPROC)(RegalContext *_context, GLint location, GLdouble x);
+typedef void (REGAL_CALL *REGALGLUNIFORM1DVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2DPROC)(RegalContext *_context, GLint location, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLUNIFORM2DVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3DPROC)(RegalContext *_context, GLint location, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLUNIFORM3DVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4DPROC)(RegalContext *_context, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLUNIFORM4DVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2X3DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2X4DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3X2DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3X4DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4X2DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4X3DVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+
+    // GL_ARB_imaging
+
+typedef void (REGAL_CALL *REGALGLCOLORSUBTABLEPROC)(RegalContext *_context, GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOLORTABLEPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
+typedef void (REGAL_CALL *REGALGLCOLORTABLEPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLCOLORTABLEPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONFILTER1DPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONFILTER2DPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERFPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat params);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERIPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint params);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLCOPYCOLORSUBTABLEPROC)(RegalContext *_context, GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYCOLORTABLEPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYCONVOLUTIONFILTER1DPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYCONVOLUTIONFILTER2DPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLvoid *table);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETCONVOLUTIONFILTERPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLvoid *image);
+typedef void (REGAL_CALL *REGALGLGETCONVOLUTIONPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCONVOLUTIONPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETHISTOGRAMPROC)(RegalContext *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
+typedef void (REGAL_CALL *REGALGLGETHISTOGRAMPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETHISTOGRAMPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMINMAXPROC)(RegalContext *_context, GLenum target, GLboolean reset, GLenum format, GLenum types, GLvoid *values);
+typedef void (REGAL_CALL *REGALGLGETMINMAXPARAMETERFVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMINMAXPARAMETERIVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETSEPARABLEFILTERPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span);
+typedef void (REGAL_CALL *REGALGLHISTOGRAMPROC)(RegalContext *_context, GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
+typedef void (REGAL_CALL *REGALGLMINMAXPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLboolean sink);
+typedef void (REGAL_CALL *REGALGLRESETHISTOGRAMPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLRESETMINMAXPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLSEPARABLEFILTER2DPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column);
+
+    // GL_ARB_indirect_parameters
+
+typedef void (REGAL_CALL *REGALGLMULTIDRAWARRAYSINDIRECTCOUNTARBPROC)(RegalContext *_context, GLenum mode, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWELEMENTSINDIRECTCOUNTARBPROC)(RegalContext *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+
+    // GL_ARB_instanced_arrays
+
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBDIVISORARBPROC)(RegalContext *_context, GLuint index, GLuint divisor);
+
+    // GL_ARB_internalformat_query
+
+typedef void (REGAL_CALL *REGALGLGETINTERNALFORMATIVPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params);
+
+    // GL_ARB_internalformat_query2
+
+typedef void (REGAL_CALL *REGALGLGETINTERNALFORMATI64VPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params);
+
+    // GL_ARB_invalidate_subdata
+
+typedef void (REGAL_CALL *REGALGLINVALIDATEBUFFERDATAPROC)(RegalContext *_context, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLINVALIDATEBUFFERSUBDATAPROC)(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr length);
+typedef void (REGAL_CALL *REGALGLINVALIDATEFRAMEBUFFERPROC)(RegalContext *_context, GLenum target, GLsizei numAttachments, const GLenum *attachments);
+typedef void (REGAL_CALL *REGALGLINVALIDATESUBFRAMEBUFFERPROC)(RegalContext *_context, GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLINVALIDATETEXIMAGEPROC)(RegalContext *_context, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLINVALIDATETEXSUBIMAGEPROC)(RegalContext *_context, GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+
+    // GL_ARB_map_buffer_range
+
+typedef void (REGAL_CALL *REGALGLFLUSHMAPPEDBUFFERRANGEPROC)(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length);
+typedef GLvoid *(REGAL_CALL *REGALGLMAPBUFFERRANGEPROC)(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+
+    // GL_ARB_matrix_palette
+
+typedef void (REGAL_CALL *REGALGLCURRENTPALETTEMATRIXARBPROC)(RegalContext *_context, GLint index);
+typedef void (REGAL_CALL *REGALGLMATRIXINDEXPOINTERARBPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLMATRIXINDEXUBVARBPROC)(RegalContext *_context, GLint size, const GLubyte *indices);
+typedef void (REGAL_CALL *REGALGLMATRIXINDEXUIVARBPROC)(RegalContext *_context, GLint size, const GLuint *indices);
+typedef void (REGAL_CALL *REGALGLMATRIXINDEXUSVARBPROC)(RegalContext *_context, GLint size, const GLushort *indices);
+
+    // GL_ARB_multi_bind
+
+typedef void (REGAL_CALL *REGALGLBINDBUFFERSBASEPROC)(RegalContext *_context, GLenum target, GLuint first, GLsizei count, const GLuint *buffers);
+typedef void (REGAL_CALL *REGALGLBINDBUFFERSRANGEPROC)(RegalContext *_context, GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes);
+typedef void (REGAL_CALL *REGALGLBINDIMAGETEXTURESPROC)(RegalContext *_context, GLuint first, GLsizei count, const GLuint *textures);
+typedef void (REGAL_CALL *REGALGLBINDSAMPLERSPROC)(RegalContext *_context, GLuint first, GLsizei count, const GLuint *samplers);
+typedef void (REGAL_CALL *REGALGLBINDTEXTURESPROC)(RegalContext *_context, GLuint first, GLsizei count, const GLuint *textures);
+typedef void (REGAL_CALL *REGALGLBINDVERTEXBUFFERSPROC)(RegalContext *_context, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides);
+
+    // GL_ARB_multi_draw_indirect
+
+typedef void (REGAL_CALL *REGALGLMULTIDRAWARRAYSINDIRECTPROC)(RegalContext *_context, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWELEMENTSINDIRECTPROC)(RegalContext *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+
+    // GL_ARB_multisample
+
+typedef void (REGAL_CALL *REGALGLSAMPLECOVERAGEARBPROC)(RegalContext *_context, GLclampf value, GLboolean invert);
+
+    // GL_ARB_multitexture
+
+typedef void (REGAL_CALL *REGALGLACTIVETEXTUREARBPROC)(RegalContext *_context, GLenum texture);
+typedef void (REGAL_CALL *REGALGLCLIENTACTIVETEXTUREARBPROC)(RegalContext *_context, GLenum texture);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1DARBPROC)(RegalContext *_context, GLenum target, GLdouble s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1DVARBPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1FARBPROC)(RegalContext *_context, GLenum target, GLfloat s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1FVARBPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1IARBPROC)(RegalContext *_context, GLenum target, GLint s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1IVARBPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1SARBPROC)(RegalContext *_context, GLenum target, GLshort s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1SVARBPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2DARBPROC)(RegalContext *_context, GLenum target, GLdouble s, GLdouble t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2DVARBPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2FARBPROC)(RegalContext *_context, GLenum target, GLfloat s, GLfloat t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2FVARBPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2IARBPROC)(RegalContext *_context, GLenum target, GLint s, GLint t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2IVARBPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2SARBPROC)(RegalContext *_context, GLenum target, GLshort s, GLshort t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2SVARBPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3DARBPROC)(RegalContext *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3DVARBPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3FARBPROC)(RegalContext *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3FVARBPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3IARBPROC)(RegalContext *_context, GLenum target, GLint s, GLint t, GLint r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3IVARBPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3SARBPROC)(RegalContext *_context, GLenum target, GLshort s, GLshort t, GLshort r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3SVARBPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4DARBPROC)(RegalContext *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4DVARBPROC)(RegalContext *_context, GLenum target, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4FARBPROC)(RegalContext *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4FVARBPROC)(RegalContext *_context, GLenum target, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4IARBPROC)(RegalContext *_context, GLenum target, GLint s, GLint t, GLint r, GLint q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4IVARBPROC)(RegalContext *_context, GLenum target, const GLint *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4SARBPROC)(RegalContext *_context, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4SVARBPROC)(RegalContext *_context, GLenum target, const GLshort *v);
+
+    // GL_ARB_occlusion_query
+
+typedef void (REGAL_CALL *REGALGLBEGINQUERYARBPROC)(RegalContext *_context, GLenum target, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETEQUERIESARBPROC)(RegalContext *_context, GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *REGALGLENDQUERYARBPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLGENQUERIESARBPROC)(RegalContext *_context, GLsizei n, GLuint *ids);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTIVARBPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTUIVARBPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYIVARBPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISQUERYARBPROC)(RegalContext *_context, GLuint id);
+
+    // GL_ARB_point_parameters
+
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFARBPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFVARBPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+
+    // GL_ARB_program_interface_query
+
+typedef void (REGAL_CALL *REGALGLGETPROGRAMINTERFACEIVPROC)(RegalContext *_context, GLuint program, GLenum programInterface, GLenum pname, GLint *params);
+typedef GLuint (REGAL_CALL *REGALGLGETPROGRAMRESOURCEINDEXPROC)(RegalContext *_context, GLuint program, GLenum programInterface, const GLchar *name);
+typedef GLint (REGAL_CALL *REGALGLGETPROGRAMRESOURCELOCATIONPROC)(RegalContext *_context, GLuint program, GLenum programInterface, const GLchar *name);
+typedef GLint (REGAL_CALL *REGALGLGETPROGRAMRESOURCELOCATIONINDEXPROC)(RegalContext *_context, GLuint program, GLenum programInterface, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMRESOURCENAMEPROC)(RegalContext *_context, GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMRESOURCEIVPROC)(RegalContext *_context, GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params);
+
+    // GL_ARB_provoking_vertex
+
+typedef void (REGAL_CALL *REGALGLPROVOKINGVERTEXPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_ARB_robustness
+
+typedef GLenum (REGAL_CALL *REGALGLGETGRAPHICSRESETSTATUSARBPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLGETNCOLORTABLEARBPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *table);
+typedef void (REGAL_CALL *REGALGLGETNCOMPRESSEDTEXIMAGEARBPROC)(RegalContext *_context, GLenum target, GLint lod, GLsizei bufSize, GLvoid *img);
+typedef void (REGAL_CALL *REGALGLGETNCONVOLUTIONFILTERARBPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *image);
+typedef void (REGAL_CALL *REGALGLGETNHISTOGRAMARBPROC)(RegalContext *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values);
+typedef void (REGAL_CALL *REGALGLGETNMAPDVARBPROC)(RegalContext *_context, GLenum target, GLenum query, GLsizei bufSize, GLdouble *v);
+typedef void (REGAL_CALL *REGALGLGETNMAPFVARBPROC)(RegalContext *_context, GLenum target, GLenum query, GLsizei bufSize, GLfloat *v);
+typedef void (REGAL_CALL *REGALGLGETNMAPIVARBPROC)(RegalContext *_context, GLenum target, GLenum query, GLsizei bufSize, GLint *v);
+typedef void (REGAL_CALL *REGALGLGETNMINMAXARBPROC)(RegalContext *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values);
+typedef void (REGAL_CALL *REGALGLGETNPIXELMAPFVARBPROC)(RegalContext *_context, GLenum map, GLsizei bufSize, GLfloat *values);
+typedef void (REGAL_CALL *REGALGLGETNPIXELMAPUIVARBPROC)(RegalContext *_context, GLenum map, GLsizei bufSize, GLuint *values);
+typedef void (REGAL_CALL *REGALGLGETNPIXELMAPUSVARBPROC)(RegalContext *_context, GLenum map, GLsizei bufSize, GLushort *values);
+typedef void (REGAL_CALL *REGALGLGETNPOLYGONSTIPPLEARBPROC)(RegalContext *_context, GLsizei bufSize, GLubyte *pattern);
+typedef void (REGAL_CALL *REGALGLGETNSEPARABLEFILTERARBPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, GLvoid *row, GLsizei columnBufSize, GLvoid *column, GLvoid *span);
+typedef void (REGAL_CALL *REGALGLGETNTEXIMAGEARBPROC)(RegalContext *_context, GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, GLvoid *img);
+typedef void (REGAL_CALL *REGALGLGETNUNIFORMDVARBPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei bufSize, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETNUNIFORMFVARBPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETNUNIFORMIVARBPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei bufSize, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETNUNIFORMUIVARBPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei bufSize, GLuint *params);
+typedef void (REGAL_CALL *REGALGLREADNPIXELSARBPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data);
+
+    // GL_ARB_sample_shading
+
+typedef void (REGAL_CALL *REGALGLMINSAMPLESHADINGPROC)(RegalContext *_context, GLclampf value);
+typedef void (REGAL_CALL *REGALGLMINSAMPLESHADINGARBPROC)(RegalContext *_context, GLclampf value);
+
+    // GL_ARB_sampler_objects
+
+typedef void (REGAL_CALL *REGALGLBINDSAMPLERPROC)(RegalContext *_context, GLuint unit, GLuint sampler);
+typedef void (REGAL_CALL *REGALGLDELETESAMPLERSPROC)(RegalContext *_context, GLsizei count, const GLuint *samplers);
+typedef void (REGAL_CALL *REGALGLGENSAMPLERSPROC)(RegalContext *_context, GLsizei count, GLuint *samplers);
+typedef void (REGAL_CALL *REGALGLGETSAMPLERPARAMETERIIVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETSAMPLERPARAMETERIUIVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETSAMPLERPARAMETERFVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETSAMPLERPARAMETERIVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISSAMPLERPROC)(RegalContext *_context, GLuint sampler);
+typedef void (REGAL_CALL *REGALGLSAMPLERPARAMETERIIVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLSAMPLERPARAMETERIUIVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLSAMPLERPARAMETERFPROC)(RegalContext *_context, GLuint sampler, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLSAMPLERPARAMETERFVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLSAMPLERPARAMETERIPROC)(RegalContext *_context, GLuint sampler, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLSAMPLERPARAMETERIVPROC)(RegalContext *_context, GLuint sampler, GLenum pname, const GLint *params);
+
+    // GL_ARB_separate_shader_objects
+
+typedef void (REGAL_CALL *REGALGLACTIVESHADERPROGRAMPROC)(RegalContext *_context, GLuint pipeline, GLuint program);
+typedef void (REGAL_CALL *REGALGLBINDPROGRAMPIPELINEPROC)(RegalContext *_context, GLuint pipeline);
+typedef GLuint (REGAL_CALL *REGALGLCREATESHADERPROGRAMVPROC)(RegalContext *_context, GLenum type, GLsizei count, const GLchar * const *strings);
+typedef void (REGAL_CALL *REGALGLDELETEPROGRAMPIPELINESPROC)(RegalContext *_context, GLsizei n, const GLuint *pipelines);
+typedef void (REGAL_CALL *REGALGLGENPROGRAMPIPELINESPROC)(RegalContext *_context, GLsizei n, GLuint *pipelines);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMPIPELINEINFOLOGPROC)(RegalContext *_context, GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMPIPELINEIVPROC)(RegalContext *_context, GLuint pipeline, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISPROGRAMPIPELINEPROC)(RegalContext *_context, GLuint pipeline);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1DPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1FPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat x);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1IPROC)(RegalContext *_context, GLuint program, GLint location, GLint x);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1IVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1UIPROC)(RegalContext *_context, GLuint program, GLint location, GLuint v0);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1UIVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2DPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2FPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2IPROC)(RegalContext *_context, GLuint program, GLint location, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2IVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2UIPROC)(RegalContext *_context, GLuint program, GLint location, GLuint x, GLuint y);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2UIVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3DPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3FPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3IPROC)(RegalContext *_context, GLuint program, GLint location, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3IVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3UIPROC)(RegalContext *_context, GLuint program, GLint location, GLuint x, GLuint y, GLuint z);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3UIVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4DPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4FPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4IPROC)(RegalContext *_context, GLuint program, GLint location, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4IVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4UIPROC)(RegalContext *_context, GLuint program, GLint location, GLuint x, GLuint y, GLuint z, GLuint w);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4UIVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X3DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X3FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X4DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X4FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X2DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X2FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X4DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X4FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X2DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X2FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X3DVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X3FVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUSEPROGRAMSTAGESPROC)(RegalContext *_context, GLuint pipeline, GLbitfield stages, GLuint program);
+typedef void (REGAL_CALL *REGALGLVALIDATEPROGRAMPIPELINEPROC)(RegalContext *_context, GLuint pipeline);
+
+    // GL_ARB_shader_atomic_counters
+
+typedef void (REGAL_CALL *REGALGLGETACTIVEATOMICCOUNTERBUFFERIVPROC)(RegalContext *_context, GLuint program, GLuint bufferIndex, GLenum pname, GLint *params);
+
+    // GL_ARB_shader_image_load_store
+
+typedef void (REGAL_CALL *REGALGLBINDIMAGETEXTUREPROC)(RegalContext *_context, GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
+typedef void (REGAL_CALL *REGALGLMEMORYBARRIERPROC)(RegalContext *_context, GLbitfield barriers);
+
+    // GL_ARB_shader_objects
+
+typedef void (REGAL_CALL *REGALGLATTACHOBJECTARBPROC)(RegalContext *_context, GLhandleARB containerObj, GLhandleARB obj);
+typedef void (REGAL_CALL *REGALGLCOMPILESHADERARBPROC)(RegalContext *_context, GLhandleARB shaderObj);
+typedef GLhandleARB (REGAL_CALL *REGALGLCREATEPROGRAMOBJECTARBPROC)(RegalContext *_context);
+typedef GLhandleARB (REGAL_CALL *REGALGLCREATESHADEROBJECTARBPROC)(RegalContext *_context, GLenum shaderType);
+typedef void (REGAL_CALL *REGALGLDELETEOBJECTARBPROC)(RegalContext *_context, GLhandleARB obj);
+typedef void (REGAL_CALL *REGALGLDETACHOBJECTARBPROC)(RegalContext *_context, GLhandleARB containerObj, GLhandleARB attachedObj);
+typedef void (REGAL_CALL *REGALGLGETACTIVEUNIFORMARBPROC)(RegalContext *_context, GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
+typedef void (REGAL_CALL *REGALGLGETATTACHEDOBJECTSARBPROC)(RegalContext *_context, GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
+typedef GLhandleARB (REGAL_CALL *REGALGLGETHANDLEARBPROC)(RegalContext *_context, GLenum pname);
+typedef void (REGAL_CALL *REGALGLGETINFOLOGARBPROC)(RegalContext *_context, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
+typedef void (REGAL_CALL *REGALGLGETOBJECTPARAMETERFVARBPROC)(RegalContext *_context, GLhandleARB obj, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETOBJECTPARAMETERIVARBPROC)(RegalContext *_context, GLhandleARB obj, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETSHADERSOURCEARBPROC)(RegalContext *_context, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *source);
+typedef GLint (REGAL_CALL *REGALGLGETUNIFORMLOCATIONARBPROC)(RegalContext *_context, GLhandleARB programObj, const GLcharARB *name);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMFVARBPROC)(RegalContext *_context, GLhandleARB programObj, GLint location, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMIVARBPROC)(RegalContext *_context, GLhandleARB programObj, GLint location, GLint *params);
+typedef void (REGAL_CALL *REGALGLLINKPROGRAMARBPROC)(RegalContext *_context, GLhandleARB programObj);
+typedef void (REGAL_CALL *REGALGLSHADERSOURCEARBPROC)(RegalContext *_context, GLhandleARB shaderObj, GLsizei count, const GLcharARB ** const string, const GLint *length);
+typedef void (REGAL_CALL *REGALGLUNIFORM1FARBPROC)(RegalContext *_context, GLint location, GLfloat v0);
+typedef void (REGAL_CALL *REGALGLUNIFORM1FVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM1IARBPROC)(RegalContext *_context, GLint location, GLint v0);
+typedef void (REGAL_CALL *REGALGLUNIFORM1IVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2FARBPROC)(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1);
+typedef void (REGAL_CALL *REGALGLUNIFORM2FVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2IARBPROC)(RegalContext *_context, GLint location, GLint v0, GLint v1);
+typedef void (REGAL_CALL *REGALGLUNIFORM2IVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3FARBPROC)(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+typedef void (REGAL_CALL *REGALGLUNIFORM3FVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3IARBPROC)(RegalContext *_context, GLint location, GLint v0, GLint v1, GLint v2);
+typedef void (REGAL_CALL *REGALGLUNIFORM3IVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4FARBPROC)(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+typedef void (REGAL_CALL *REGALGLUNIFORM4FVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4IARBPROC)(RegalContext *_context, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+typedef void (REGAL_CALL *REGALGLUNIFORM4IVARBPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2FVARBPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3FVARBPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4FVARBPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUSEPROGRAMOBJECTARBPROC)(RegalContext *_context, GLhandleARB programObj);
+typedef void (REGAL_CALL *REGALGLVALIDATEPROGRAMARBPROC)(RegalContext *_context, GLhandleARB programObj);
+
+    // GL_ARB_shader_storage_buffer_object
+
+typedef void (REGAL_CALL *REGALGLSHADERSTORAGEBLOCKBINDINGPROC)(RegalContext *_context, GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+
+    // GL_ARB_shader_subroutine
+
+typedef void (REGAL_CALL *REGALGLGETACTIVESUBROUTINENAMEPROC)(RegalContext *_context, GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETACTIVESUBROUTINEUNIFORMNAMEPROC)(RegalContext *_context, GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETACTIVESUBROUTINEUNIFORMIVPROC)(RegalContext *_context, GLuint program, GLenum shaderType, GLuint index, GLenum pname, GLint *values);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMSTAGEIVPROC)(RegalContext *_context, GLuint program, GLenum shaderType, GLenum pname, GLint *values);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMSUBROUTINEPARAMETERUIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint *params);
+typedef GLuint (REGAL_CALL *REGALGLGETSUBROUTINEINDEXPROC)(RegalContext *_context, GLuint program, GLenum shaderType, const GLchar *name);
+typedef GLint (REGAL_CALL *REGALGLGETSUBROUTINEUNIFORMLOCATIONPROC)(RegalContext *_context, GLuint program, GLenum shaderType, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMSUBROUTINEUIVPROC)(RegalContext *_context, GLenum shaderType, GLint location, GLuint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMSUBROUTINEPARAMETERSUIVNVPROC)(RegalContext *_context, GLenum target, GLsizei count, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLUNIFORMSUBROUTINESUIVPROC)(RegalContext *_context, GLenum shaderType, GLsizei count, const GLuint *indices);
+
+    // GL_ARB_shading_language_include
+
+typedef void (REGAL_CALL *REGALGLCOMPILESHADERINCLUDEARBPROC)(RegalContext *_context, GLuint shader, GLsizei count, const GLchar **path, const GLint *length);
+typedef void (REGAL_CALL *REGALGLDELETENAMEDSTRINGARBPROC)(RegalContext *_context, GLint namelen, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETNAMEDSTRINGARBPROC)(RegalContext *_context, GLint namelen, const GLchar *name, GLsizei bufSize, GLint *stringlen, GLchar *string);
+typedef void (REGAL_CALL *REGALGLGETNAMEDSTRINGIVARBPROC)(RegalContext *_context, GLint namelen, const GLchar *name, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISNAMEDSTRINGARBPROC)(RegalContext *_context, GLint namelen, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLNAMEDSTRINGARBPROC)(RegalContext *_context, GLenum type, GLint namelen, const GLchar *name, GLint stringlen, const GLchar *string);
+
+    // GL_ARB_sparse_texture
+
+typedef void (REGAL_CALL *REGALGLTEXPAGECOMMITMENTARBPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+typedef void (REGAL_CALL *REGALGLTEXTUREPAGECOMMITMENTEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+
+    // GL_ARB_sync
+
+typedef GLenum (REGAL_CALL *REGALGLCLIENTWAITSYNCPROC)(RegalContext *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
+typedef void (REGAL_CALL *REGALGLDELETESYNCPROC)(RegalContext *_context, GLsync sync);
+typedef GLsync (REGAL_CALL *REGALGLFENCESYNCPROC)(RegalContext *_context, GLenum condition, GLbitfield flags);
+typedef void (REGAL_CALL *REGALGLGETINTEGER64VPROC)(RegalContext *_context, GLenum pname, GLint64 *params);
+typedef void (REGAL_CALL *REGALGLGETSYNCIVPROC)(RegalContext *_context, GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+typedef GLboolean (REGAL_CALL *REGALGLISSYNCPROC)(RegalContext *_context, GLsync sync);
+typedef void (REGAL_CALL *REGALGLWAITSYNCPROC)(RegalContext *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
+
+    // GL_ARB_tessellation_shader
+
+typedef void (REGAL_CALL *REGALGLPATCHPARAMETERFVPROC)(RegalContext *_context, GLenum pname, const GLfloat *values);
+typedef void (REGAL_CALL *REGALGLPATCHPARAMETERIPROC)(RegalContext *_context, GLenum pname, GLint value);
+
+    // GL_ARB_texture_buffer_object
+
+typedef void (REGAL_CALL *REGALGLTEXBUFFERARBPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLuint buffer);
+
+    // GL_ARB_texture_buffer_range
+
+typedef void (REGAL_CALL *REGALGLTEXBUFFERRANGEPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+typedef void (REGAL_CALL *REGALGLTEXTUREBUFFERRANGEEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+
+    // GL_ARB_texture_compression
+
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXIMAGE1DARBPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXIMAGE2DARBPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXIMAGE3DARBPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXSUBIMAGE1DARBPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXSUBIMAGE2DARBPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXSUBIMAGE3DARBPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLGETCOMPRESSEDTEXIMAGEARBPROC)(RegalContext *_context, GLenum target, GLint lod, GLvoid *img);
+
+    // GL_ARB_texture_multisample
+
+typedef void (REGAL_CALL *REGALGLGETMULTISAMPLEFVPROC)(RegalContext *_context, GLenum pname, GLuint index, GLfloat *val);
+typedef void (REGAL_CALL *REGALGLSAMPLEMASKIPROC)(RegalContext *_context, GLuint index, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLTEXIMAGE2DMULTISAMPLEPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+typedef void (REGAL_CALL *REGALGLTEXIMAGE3DMULTISAMPLEPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+
+    // GL_ARB_texture_storage
+
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE1DPROC)(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE2DPROC)(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE3DPROC)(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+typedef void (REGAL_CALL *REGALGLTEXTURESTORAGE1DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+typedef void (REGAL_CALL *REGALGLTEXTURESTORAGE2DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLTEXTURESTORAGE3DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+
+    // GL_ARB_texture_storage_multisample
+
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE2DMULTISAMPLEPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE3DMULTISAMPLEPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+typedef void (REGAL_CALL *REGALGLTEXTURESTORAGE2DMULTISAMPLEEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+typedef void (REGAL_CALL *REGALGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+
+    // GL_ARB_texture_view
+
+typedef void (REGAL_CALL *REGALGLTEXTUREVIEWPROC)(RegalContext *_context, GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+
+    // GL_ARB_timer_query
+
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTI64VPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint64 *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTUI64VPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint64 *params);
+typedef void (REGAL_CALL *REGALGLQUERYCOUNTERPROC)(RegalContext *_context, GLuint id, GLenum target);
+
+    // GL_ARB_transform_feedback2
+
+typedef void (REGAL_CALL *REGALGLBINDTRANSFORMFEEDBACKPROC)(RegalContext *_context, GLenum target, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETETRANSFORMFEEDBACKSPROC)(RegalContext *_context, GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *REGALGLDRAWTRANSFORMFEEDBACKPROC)(RegalContext *_context, GLenum mode, GLuint name);
+typedef void (REGAL_CALL *REGALGLGENTRANSFORMFEEDBACKSPROC)(RegalContext *_context, GLsizei n, GLuint *ids);
+typedef GLboolean (REGAL_CALL *REGALGLISTRANSFORMFEEDBACKPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLPAUSETRANSFORMFEEDBACKPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLRESUMETRANSFORMFEEDBACKPROC)(RegalContext *_context);
+
+    // GL_ARB_transform_feedback3
+
+typedef void (REGAL_CALL *REGALGLBEGINQUERYINDEXEDPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint id);
+typedef void (REGAL_CALL *REGALGLDRAWTRANSFORMFEEDBACKSTREAMPROC)(RegalContext *_context, GLenum mode, GLuint id, GLuint stream);
+typedef void (REGAL_CALL *REGALGLENDQUERYINDEXEDPROC)(RegalContext *_context, GLenum target, GLuint index);
+typedef void (REGAL_CALL *REGALGLGETQUERYINDEXEDIVPROC)(RegalContext *_context, GLenum target, GLuint index, GLenum pname, GLint *params);
+
+    // GL_ARB_transform_feedback_instanced
+
+typedef void (REGAL_CALL *REGALGLDRAWTRANSFORMFEEDBACKINSTANCEDPROC)(RegalContext *_context, GLenum mode, GLuint id, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLDRAWTRANSFORMFEEDBACKSTREAMINSTANCEDPROC)(RegalContext *_context, GLenum mode, GLuint id, GLuint stream, GLsizei primcount);
+
+    // GL_ARB_transpose_matrix
+
+typedef void (REGAL_CALL *REGALGLLOADTRANSPOSEMATRIXDARBPROC)(RegalContext *_context, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLLOADTRANSPOSEMATRIXFARBPROC)(RegalContext *_context, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLMULTTRANSPOSEMATRIXDARBPROC)(RegalContext *_context, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLMULTTRANSPOSEMATRIXFARBPROC)(RegalContext *_context, const GLfloat *m);
+
+    // GL_ARB_uniform_buffer_object
+
+typedef void (REGAL_CALL *REGALGLBINDBUFFERBASEPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLBINDBUFFERRANGEPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+typedef void (REGAL_CALL *REGALGLGETACTIVEUNIFORMBLOCKNAMEPROC)(RegalContext *_context, GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName);
+typedef void (REGAL_CALL *REGALGLGETACTIVEUNIFORMBLOCKIVPROC)(RegalContext *_context, GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETACTIVEUNIFORMNAMEPROC)(RegalContext *_context, GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName);
+typedef void (REGAL_CALL *REGALGLGETACTIVEUNIFORMSIVPROC)(RegalContext *_context, GLuint program, GLsizei uniformCount, const GLuint *uniformIndices, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETINTEGERI_VPROC)(RegalContext *_context, GLenum target, GLuint index, GLint *data);
+typedef GLuint (REGAL_CALL *REGALGLGETUNIFORMBLOCKINDEXPROC)(RegalContext *_context, GLuint program, const GLchar *uniformBlockName);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMINDICESPROC)(RegalContext *_context, GLuint program, GLsizei uniformCount, const GLchar * const *uniformNames, GLuint *uniformIndices);
+typedef void (REGAL_CALL *REGALGLUNIFORMBLOCKBINDINGPROC)(RegalContext *_context, GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
+
+    // GL_ARB_vertex_array_object
+
+typedef void (REGAL_CALL *REGALGLBINDVERTEXARRAYPROC)(RegalContext *_context, GLuint array);
+typedef void (REGAL_CALL *REGALGLDELETEVERTEXARRAYSPROC)(RegalContext *_context, GLsizei n, const GLuint *arrays);
+typedef void (REGAL_CALL *REGALGLGENVERTEXARRAYSPROC)(RegalContext *_context, GLsizei n, GLuint *arrays);
+typedef GLboolean (REGAL_CALL *REGALGLISVERTEXARRAYPROC)(RegalContext *_context, GLuint array);
+
+    // GL_ARB_vertex_attrib_64bit
+
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBLDVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1DPROC)(RegalContext *_context, GLuint index, GLdouble x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2DPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3DPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4DPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4DVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBLPOINTERPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+
+    // GL_ARB_vertex_attrib_binding
+
+typedef void (REGAL_CALL *REGALGLBINDVERTEXBUFFERPROC)(RegalContext *_context, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC)(RegalContext *_context, GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXATTRIBBINDINGEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXATTRIBFORMATEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXATTRIBIFORMATEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXATTRIBLFORMATEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXBINDINGDIVISOREXTPROC)(RegalContext *_context, GLuint vaobj, GLuint bindingindex, GLuint divisor);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBBINDINGPROC)(RegalContext *_context, GLuint attribindex, GLuint bindingindex);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBFORMATPROC)(RegalContext *_context, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBIFORMATPROC)(RegalContext *_context, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBLFORMATPROC)(RegalContext *_context, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+typedef void (REGAL_CALL *REGALGLVERTEXBINDINGDIVISORPROC)(RegalContext *_context, GLuint bindingindex, GLuint divisor);
+
+    // GL_ARB_vertex_blend
+
+typedef void (REGAL_CALL *REGALGLVERTEXBLENDARBPROC)(RegalContext *_context, GLint count);
+typedef void (REGAL_CALL *REGALGLWEIGHTPOINTERARBPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLWEIGHTBVARBPROC)(RegalContext *_context, GLint size, const GLbyte *weights);
+typedef void (REGAL_CALL *REGALGLWEIGHTDVARBPROC)(RegalContext *_context, GLint size, const GLdouble *weights);
+typedef void (REGAL_CALL *REGALGLWEIGHTFVARBPROC)(RegalContext *_context, GLint size, const GLfloat *weights);
+typedef void (REGAL_CALL *REGALGLWEIGHTIVARBPROC)(RegalContext *_context, GLint size, const GLint *weights);
+typedef void (REGAL_CALL *REGALGLWEIGHTSVARBPROC)(RegalContext *_context, GLint size, const GLshort *weights);
+typedef void (REGAL_CALL *REGALGLWEIGHTUBVARBPROC)(RegalContext *_context, GLint size, const GLubyte *weights);
+typedef void (REGAL_CALL *REGALGLWEIGHTUIVARBPROC)(RegalContext *_context, GLint size, const GLuint *weights);
+typedef void (REGAL_CALL *REGALGLWEIGHTUSVARBPROC)(RegalContext *_context, GLint size, const GLushort *weights);
+
+    // GL_ARB_vertex_buffer_object
+
+typedef void (REGAL_CALL *REGALGLBINDBUFFERARBPROC)(RegalContext *_context, GLenum target, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLBUFFERDATAARBPROC)(RegalContext *_context, GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage);
+typedef void (REGAL_CALL *REGALGLBUFFERSUBDATAARBPROC)(RegalContext *_context, GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLDELETEBUFFERSARBPROC)(RegalContext *_context, GLsizei n, const GLuint *buffers);
+typedef void (REGAL_CALL *REGALGLGENBUFFERSARBPROC)(RegalContext *_context, GLsizei n, GLuint *buffers);
+typedef void (REGAL_CALL *REGALGLGETBUFFERPARAMETERIVARBPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETBUFFERPOINTERVARBPROC)(RegalContext *_context, GLenum target, GLenum pname, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLGETBUFFERSUBDATAARBPROC)(RegalContext *_context, GLenum target, GLintptrARB offset, GLsizeiptrARB size, GLvoid *data);
+typedef GLboolean (REGAL_CALL *REGALGLISBUFFERARBPROC)(RegalContext *_context, GLuint buffer);
+typedef GLvoid *(REGAL_CALL *REGALGLMAPBUFFERARBPROC)(RegalContext *_context, GLenum target, GLenum access);
+typedef GLboolean (REGAL_CALL *REGALGLUNMAPBUFFERARBPROC)(RegalContext *_context, GLenum target);
+
+    // GL_ARB_vertex_program
+
+typedef void (REGAL_CALL *REGALGLBINDPROGRAMARBPROC)(RegalContext *_context, GLenum target, GLuint program);
+typedef void (REGAL_CALL *REGALGLDELETEPROGRAMSARBPROC)(RegalContext *_context, GLsizei n, const GLuint *programs);
+typedef void (REGAL_CALL *REGALGLDISABLEVERTEXATTRIBARRAYARBPROC)(RegalContext *_context, GLuint index);
+typedef void (REGAL_CALL *REGALGLENABLEVERTEXATTRIBARRAYARBPROC)(RegalContext *_context, GLuint index);
+typedef void (REGAL_CALL *REGALGLGENPROGRAMSARBPROC)(RegalContext *_context, GLsizei n, GLuint *programs);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMENVPARAMETERDVARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMENVPARAMETERFVARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMLOCALPARAMETERDVARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMLOCALPARAMETERFVARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMSTRINGARBPROC)(RegalContext *_context, GLenum target, GLenum pname, GLvoid *string);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMIVARBPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBPOINTERVARBPROC)(RegalContext *_context, GLuint index, GLenum pname, GLvoid **pointer);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBDVARBPROC)(RegalContext *_context, GLuint index, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBFVARBPROC)(RegalContext *_context, GLuint index, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBIVARBPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISPROGRAMARBPROC)(RegalContext *_context, GLuint program);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETER4DARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETER4DVARBPROC)(RegalContext *_context, GLenum target, GLuint index, const GLdouble *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETER4FARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETER4FVARBPROC)(RegalContext *_context, GLenum target, GLuint index, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETER4DARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETER4DVARBPROC)(RegalContext *_context, GLenum target, GLuint index, const GLdouble *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETER4FARBPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETER4FVARBPROC)(RegalContext *_context, GLenum target, GLuint index, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMSTRINGARBPROC)(RegalContext *_context, GLenum target, GLenum format, GLsizei len, const GLvoid *string);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1DARBPROC)(RegalContext *_context, GLuint index, GLdouble x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1DVARBPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1FARBPROC)(RegalContext *_context, GLuint index, GLfloat x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1FVARBPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1SARBPROC)(RegalContext *_context, GLuint index, GLshort x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1SVARBPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2DARBPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2DVARBPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2FARBPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2FVARBPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2SARBPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2SVARBPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3DARBPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3DVARBPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3FARBPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3FVARBPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3SARBPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3SVARBPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NBVARBPROC)(RegalContext *_context, GLuint index, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NIVARBPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NSVARBPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUBARBPROC)(RegalContext *_context, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUBVARBPROC)(RegalContext *_context, GLuint index, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUIVARBPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4NUSVARBPROC)(RegalContext *_context, GLuint index, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4BVARBPROC)(RegalContext *_context, GLuint index, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4DARBPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4DVARBPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4FARBPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4FVARBPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4IVARBPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4SARBPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4SVARBPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4UBVARBPROC)(RegalContext *_context, GLuint index, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4UIVARBPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4USVARBPROC)(RegalContext *_context, GLuint index, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBPOINTERARBPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
+
+    // GL_ARB_vertex_shader
+
+typedef void (REGAL_CALL *REGALGLBINDATTRIBLOCATIONARBPROC)(RegalContext *_context, GLhandleARB programObj, GLuint index, const GLcharARB *name);
+typedef void (REGAL_CALL *REGALGLGETACTIVEATTRIBARBPROC)(RegalContext *_context, GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
+typedef GLint (REGAL_CALL *REGALGLGETATTRIBLOCATIONARBPROC)(RegalContext *_context, GLhandleARB programObj, const GLcharARB *name);
+
+    // GL_ARB_vertex_type_2_10_10_10_rev
+
+typedef void (REGAL_CALL *REGALGLCOLORP3UIPROC)(RegalContext *_context, GLenum type, GLuint color);
+typedef void (REGAL_CALL *REGALGLCOLORP3UIVPROC)(RegalContext *_context, GLenum type, const GLuint *color);
+typedef void (REGAL_CALL *REGALGLCOLORP4UIPROC)(RegalContext *_context, GLenum type, GLuint color);
+typedef void (REGAL_CALL *REGALGLCOLORP4UIVPROC)(RegalContext *_context, GLenum type, const GLuint *color);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP1UIPROC)(RegalContext *_context, GLenum texture, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP1UIVPROC)(RegalContext *_context, GLenum texture, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP2UIPROC)(RegalContext *_context, GLenum texture, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP2UIVPROC)(RegalContext *_context, GLenum texture, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP3UIPROC)(RegalContext *_context, GLenum texture, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP3UIVPROC)(RegalContext *_context, GLenum texture, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP4UIPROC)(RegalContext *_context, GLenum texture, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDP4UIVPROC)(RegalContext *_context, GLenum texture, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLNORMALP3UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLNORMALP3UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLORP3UIPROC)(RegalContext *_context, GLenum type, GLuint color);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLORP3UIVPROC)(RegalContext *_context, GLenum type, const GLuint *color);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP1UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP1UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP2UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP2UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP3UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP3UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP4UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLTEXCOORDP4UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP1UIPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP1UIVPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP2UIPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP2UIVPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP3UIPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP3UIVPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP4UIPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBP4UIVPROC)(RegalContext *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLVERTEXP2UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLVERTEXP2UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXP3UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLVERTEXP3UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXP4UIPROC)(RegalContext *_context, GLenum type, GLuint coords);
+typedef void (REGAL_CALL *REGALGLVERTEXP4UIVPROC)(RegalContext *_context, GLenum type, const GLuint *coords);
+
+    // GL_ARB_viewport_array
+
+typedef void (REGAL_CALL *REGALGLDEPTHRANGEARRAYVPROC)(RegalContext *_context, GLuint first, GLsizei count, const GLclampd *v);
+typedef void (REGAL_CALL *REGALGLDEPTHRANGEINDEXEDPROC)(RegalContext *_context, GLuint index, GLclampd n, GLclampd f);
+typedef void (REGAL_CALL *REGALGLGETDOUBLEI_VPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble *v);
+typedef void (REGAL_CALL *REGALGLGETFLOATI_VPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat *v);
+typedef void (REGAL_CALL *REGALGLSCISSORARRAYVPROC)(RegalContext *_context, GLuint first, GLsizei count, const GLint *v);
+typedef void (REGAL_CALL *REGALGLSCISSORINDEXEDPROC)(RegalContext *_context, GLuint index, GLint left, GLint bottom, GLint width, GLint height);
+typedef void (REGAL_CALL *REGALGLSCISSORINDEXEDVPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVIEWPORTARRAYVPROC)(RegalContext *_context, GLuint first, GLsizei count, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVIEWPORTINDEXEDFPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
+typedef void (REGAL_CALL *REGALGLVIEWPORTINDEXEDFVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+
+    // GL_ARB_window_pos
+
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2DARBPROC)(RegalContext *_context, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2DVARBPROC)(RegalContext *_context, const GLdouble *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2FARBPROC)(RegalContext *_context, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2FVARBPROC)(RegalContext *_context, const GLfloat *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2IARBPROC)(RegalContext *_context, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2IVARBPROC)(RegalContext *_context, const GLint *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2SARBPROC)(RegalContext *_context, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2SVARBPROC)(RegalContext *_context, const GLshort *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3DARBPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3DVARBPROC)(RegalContext *_context, const GLdouble *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3FARBPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3FVARBPROC)(RegalContext *_context, const GLfloat *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3IARBPROC)(RegalContext *_context, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3IVARBPROC)(RegalContext *_context, const GLint *p);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3SARBPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3SVARBPROC)(RegalContext *_context, const GLshort *p);
+
+    // GL_ATI_draw_buffers
+
+typedef void (REGAL_CALL *REGALGLDRAWBUFFERSATIPROC)(RegalContext *_context, GLsizei n, const GLenum *bufs);
+
+    // GL_ATI_element_array
+
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTARRAYATIPROC)(RegalContext *_context, GLenum mode, GLsizei count);
+typedef void (REGAL_CALL *REGALGLDRAWRANGEELEMENTARRAYATIPROC)(RegalContext *_context, GLenum mode, GLuint start, GLuint end, GLsizei count);
+typedef void (REGAL_CALL *REGALGLELEMENTPOINTERATIPROC)(RegalContext *_context, GLenum type, const GLvoid *pointer);
+
+    // GL_ATI_envmap_bumpmap
+
+typedef void (REGAL_CALL *REGALGLGETTEXBUMPPARAMETERFVATIPROC)(RegalContext *_context, GLenum pname, GLfloat *param);
+typedef void (REGAL_CALL *REGALGLGETTEXBUMPPARAMETERIVATIPROC)(RegalContext *_context, GLenum pname, GLint *param);
+typedef void (REGAL_CALL *REGALGLTEXBUMPPARAMETERFVATIPROC)(RegalContext *_context, GLenum pname, const GLfloat *param);
+typedef void (REGAL_CALL *REGALGLTEXBUMPPARAMETERIVATIPROC)(RegalContext *_context, GLenum pname, const GLint *param);
+
+    // GL_ATI_fragment_shader
+
+typedef void (REGAL_CALL *REGALGLALPHAFRAGMENTOP1ATIPROC)(RegalContext *_context, GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+typedef void (REGAL_CALL *REGALGLALPHAFRAGMENTOP2ATIPROC)(RegalContext *_context, GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+typedef void (REGAL_CALL *REGALGLALPHAFRAGMENTOP3ATIPROC)(RegalContext *_context, GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+typedef void (REGAL_CALL *REGALGLBEGINFRAGMENTSHADERATIPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLBINDFRAGMENTSHADERATIPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLCOLORFRAGMENTOP1ATIPROC)(RegalContext *_context, GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+typedef void (REGAL_CALL *REGALGLCOLORFRAGMENTOP2ATIPROC)(RegalContext *_context, GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+typedef void (REGAL_CALL *REGALGLCOLORFRAGMENTOP3ATIPROC)(RegalContext *_context, GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+typedef void (REGAL_CALL *REGALGLDELETEFRAGMENTSHADERATIPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLENDFRAGMENTSHADERATIPROC)(RegalContext *_context);
+typedef GLuint (REGAL_CALL *REGALGLGENFRAGMENTSHADERSATIPROC)(RegalContext *_context, GLuint range);
+typedef void (REGAL_CALL *REGALGLPASSTEXCOORDATIPROC)(RegalContext *_context, GLuint dst, GLuint coord, GLenum swizzle);
+typedef void (REGAL_CALL *REGALGLSAMPLEMAPATIPROC)(RegalContext *_context, GLuint dst, GLuint interp, GLenum swizzle);
+typedef void (REGAL_CALL *REGALGLSETFRAGMENTSHADERCONSTANTATIPROC)(RegalContext *_context, GLuint dst, const GLfloat *value);
+
+    // GL_ATI_map_object_buffer
+
+typedef GLvoid *(REGAL_CALL *REGALGLMAPOBJECTBUFFERATIPROC)(RegalContext *_context, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLUNMAPOBJECTBUFFERATIPROC)(RegalContext *_context, GLuint buffer);
+
+    // GL_ATI_pn_triangles
+
+typedef void (REGAL_CALL *REGALGLPNTRIANGLESFATIPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPNTRIANGLESIATIPROC)(RegalContext *_context, GLenum pname, GLint param);
+
+    // GL_ATI_separate_stencil
+
+typedef void (REGAL_CALL *REGALGLSTENCILFUNCSEPARATEATIPROC)(RegalContext *_context, GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask);
+typedef void (REGAL_CALL *REGALGLSTENCILOPSEPARATEATIPROC)(RegalContext *_context, GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
+
+    // GL_ATI_vertex_array_object
+
+typedef void (REGAL_CALL *REGALGLARRAYOBJECTATIPROC)(RegalContext *_context, GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
+typedef void (REGAL_CALL *REGALGLFREEOBJECTBUFFERATIPROC)(RegalContext *_context, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLGETARRAYOBJECTFVATIPROC)(RegalContext *_context, GLenum array, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETARRAYOBJECTIVATIPROC)(RegalContext *_context, GLenum array, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETOBJECTBUFFERFVATIPROC)(RegalContext *_context, GLuint buffer, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETOBJECTBUFFERIVATIPROC)(RegalContext *_context, GLuint buffer, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVARIANTARRAYOBJECTFVATIPROC)(RegalContext *_context, GLuint id, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETVARIANTARRAYOBJECTIVATIPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISOBJECTBUFFERATIPROC)(RegalContext *_context, GLuint buffer);
+typedef GLuint (REGAL_CALL *REGALGLNEWOBJECTBUFFERATIPROC)(RegalContext *_context, GLsizei size, const GLvoid *pointer, GLenum usage);
+typedef void (REGAL_CALL *REGALGLUPDATEOBJECTBUFFERATIPROC)(RegalContext *_context, GLuint buffer, GLuint offset, GLsizei size, const GLvoid *pointer, GLenum preserve);
+typedef void (REGAL_CALL *REGALGLVARIANTARRAYOBJECTATIPROC)(RegalContext *_context, GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
+
+    // GL_ATI_vertex_attrib_array_object
+
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBARRAYOBJECTFVATIPROC)(RegalContext *_context, GLuint index, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBARRAYOBJECTIVATIPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBARRAYOBJECTATIPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLuint buffer, GLuint offset);
+
+    // GL_ATI_vertex_streams
+
+typedef void (REGAL_CALL *REGALGLCLIENTACTIVEVERTEXSTREAMATIPROC)(RegalContext *_context, GLenum stream);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3BATIPROC)(RegalContext *_context, GLenum stream, GLbyte x, GLbyte y, GLbyte z);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3BVATIPROC)(RegalContext *_context, GLenum stream, const GLbyte *coords);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3DATIPROC)(RegalContext *_context, GLenum stream, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3DVATIPROC)(RegalContext *_context, GLenum stream, const GLdouble *coords);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3FATIPROC)(RegalContext *_context, GLenum stream, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3FVATIPROC)(RegalContext *_context, GLenum stream, const GLfloat *coords);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3IATIPROC)(RegalContext *_context, GLenum stream, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3IVATIPROC)(RegalContext *_context, GLenum stream, const GLint *coords);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3SATIPROC)(RegalContext *_context, GLenum stream, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLNORMALSTREAM3SVATIPROC)(RegalContext *_context, GLenum stream, const GLshort *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXBLENDENVFATIPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLVERTEXBLENDENVIATIPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1DATIPROC)(RegalContext *_context, GLenum stream, GLdouble x);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1DVATIPROC)(RegalContext *_context, GLenum stream, const GLdouble *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1FATIPROC)(RegalContext *_context, GLenum stream, GLfloat x);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1FVATIPROC)(RegalContext *_context, GLenum stream, const GLfloat *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1IATIPROC)(RegalContext *_context, GLenum stream, GLint x);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1IVATIPROC)(RegalContext *_context, GLenum stream, const GLint *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1SATIPROC)(RegalContext *_context, GLenum stream, GLshort x);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM1SVATIPROC)(RegalContext *_context, GLenum stream, const GLshort *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2DATIPROC)(RegalContext *_context, GLenum stream, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2DVATIPROC)(RegalContext *_context, GLenum stream, const GLdouble *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2FATIPROC)(RegalContext *_context, GLenum stream, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2FVATIPROC)(RegalContext *_context, GLenum stream, const GLfloat *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2IATIPROC)(RegalContext *_context, GLenum stream, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2IVATIPROC)(RegalContext *_context, GLenum stream, const GLint *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2SATIPROC)(RegalContext *_context, GLenum stream, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM2SVATIPROC)(RegalContext *_context, GLenum stream, const GLshort *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3DATIPROC)(RegalContext *_context, GLenum stream, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3DVATIPROC)(RegalContext *_context, GLenum stream, const GLdouble *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3FATIPROC)(RegalContext *_context, GLenum stream, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3FVATIPROC)(RegalContext *_context, GLenum stream, const GLfloat *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3IATIPROC)(RegalContext *_context, GLenum stream, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3IVATIPROC)(RegalContext *_context, GLenum stream, const GLint *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3SATIPROC)(RegalContext *_context, GLenum stream, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM3SVATIPROC)(RegalContext *_context, GLenum stream, const GLshort *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4DATIPROC)(RegalContext *_context, GLenum stream, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4DVATIPROC)(RegalContext *_context, GLenum stream, const GLdouble *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4FATIPROC)(RegalContext *_context, GLenum stream, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4FVATIPROC)(RegalContext *_context, GLenum stream, const GLfloat *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4IATIPROC)(RegalContext *_context, GLenum stream, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4IVATIPROC)(RegalContext *_context, GLenum stream, const GLint *coords);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4SATIPROC)(RegalContext *_context, GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w);
+typedef void (REGAL_CALL *REGALGLVERTEXSTREAM4SVATIPROC)(RegalContext *_context, GLenum stream, const GLshort *coords);
+
+    // GL_EXT_bindable_uniform
+
+typedef GLint (REGAL_CALL *REGALGLGETUNIFORMBUFFERSIZEEXTPROC)(RegalContext *_context, GLuint program, GLint location);
+typedef GLintptr (REGAL_CALL *REGALGLGETUNIFORMOFFSETEXTPROC)(RegalContext *_context, GLuint program, GLint location);
+typedef void (REGAL_CALL *REGALGLUNIFORMBUFFEREXTPROC)(RegalContext *_context, GLuint program, GLint location, GLuint buffer);
+
+    // GL_EXT_blend_color
+
+typedef void (REGAL_CALL *REGALGLBLENDCOLOREXTPROC)(RegalContext *_context, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+
+    // GL_EXT_blend_equation_separate
+
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONSEPARATEEXTPROC)(RegalContext *_context, GLenum modeRGB, GLenum modeAlpha);
+
+    // GL_EXT_blend_func_separate
+
+typedef void (REGAL_CALL *REGALGLBLENDFUNCSEPARATEEXTPROC)(RegalContext *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+
+    // GL_EXT_blend_minmax
+
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONEXTPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_EXT_color_subtable
+
+typedef void (REGAL_CALL *REGALGLCOLORSUBTABLEEXTPROC)(RegalContext *_context, GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *table);
+typedef void (REGAL_CALL *REGALGLCOPYCOLORSUBTABLEEXTPROC)(RegalContext *_context, GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
+
+    // GL_EXT_compiled_vertex_array
+
+typedef void (REGAL_CALL *REGALGLLOCKARRAYSEXTPROC)(RegalContext *_context, GLint first, GLsizei count);
+typedef void (REGAL_CALL *REGALGLUNLOCKARRAYSEXTPROC)(RegalContext *_context);
+
+    // GL_EXT_convolution
+
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONFILTER1DEXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONFILTER2DEXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERFEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERFVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERIEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLCONVOLUTIONPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLCOPYCONVOLUTIONFILTER1DEXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYCONVOLUTIONFILTER2DEXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLGETCONVOLUTIONFILTEREXTPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLvoid *image);
+typedef void (REGAL_CALL *REGALGLGETCONVOLUTIONPARAMETERFVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCONVOLUTIONPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETSEPARABLEFILTEREXTPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span);
+typedef void (REGAL_CALL *REGALGLSEPARABLEFILTER2DEXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column);
+
+    // GL_EXT_coordinate_frame
+
+typedef void (REGAL_CALL *REGALGLBINORMAL3BEXTPROC)(RegalContext *_context, GLbyte bx, GLbyte by, GLbyte bz);
+typedef void (REGAL_CALL *REGALGLBINORMAL3BVEXTPROC)(RegalContext *_context, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLBINORMAL3DEXTPROC)(RegalContext *_context, GLdouble bx, GLdouble by, GLdouble bz);
+typedef void (REGAL_CALL *REGALGLBINORMAL3DVEXTPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLBINORMAL3FEXTPROC)(RegalContext *_context, GLfloat bx, GLfloat by, GLfloat bz);
+typedef void (REGAL_CALL *REGALGLBINORMAL3FVEXTPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLBINORMAL3IEXTPROC)(RegalContext *_context, GLint bx, GLint by, GLint bz);
+typedef void (REGAL_CALL *REGALGLBINORMAL3IVEXTPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLBINORMAL3SEXTPROC)(RegalContext *_context, GLshort bx, GLshort by, GLshort bz);
+typedef void (REGAL_CALL *REGALGLBINORMAL3SVEXTPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLBINORMALPOINTEREXTPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLTANGENT3BEXTPROC)(RegalContext *_context, GLbyte tx, GLbyte ty, GLbyte tz);
+typedef void (REGAL_CALL *REGALGLTANGENT3BVEXTPROC)(RegalContext *_context, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLTANGENT3DEXTPROC)(RegalContext *_context, GLdouble tx, GLdouble ty, GLdouble tz);
+typedef void (REGAL_CALL *REGALGLTANGENT3DVEXTPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLTANGENT3FEXTPROC)(RegalContext *_context, GLfloat tx, GLfloat ty, GLfloat tz);
+typedef void (REGAL_CALL *REGALGLTANGENT3FVEXTPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTANGENT3IEXTPROC)(RegalContext *_context, GLint tx, GLint ty, GLint tz);
+typedef void (REGAL_CALL *REGALGLTANGENT3IVEXTPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLTANGENT3SEXTPROC)(RegalContext *_context, GLshort tx, GLshort ty, GLshort tz);
+typedef void (REGAL_CALL *REGALGLTANGENT3SVEXTPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLTANGENTPOINTEREXTPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+
+    // GL_EXT_copy_texture
+
+typedef void (REGAL_CALL *REGALGLCOPYTEXIMAGE1DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYTEXIMAGE2DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYTEXSUBIMAGE1DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYTEXSUBIMAGE2DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLCOPYTEXSUBIMAGE3DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+
+    // GL_EXT_cull_vertex
+
+typedef void (REGAL_CALL *REGALGLCULLPARAMETERDVEXTPROC)(RegalContext *_context, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLCULLPARAMETERFVEXTPROC)(RegalContext *_context, GLenum pname, GLfloat *params);
+
+    // GL_EXT_debug_label
+
+typedef void (REGAL_CALL *REGALGLGETOBJECTLABELEXTPROC)(RegalContext *_context, GLenum type, GLuint object, GLsizei bufSize, GLsizei *length, GLchar *label);
+typedef void (REGAL_CALL *REGALGLLABELOBJECTEXTPROC)(RegalContext *_context, GLenum type, GLuint object, GLsizei length, const GLchar *label);
+
+    // GL_EXT_debug_marker
+
+typedef void (REGAL_CALL *REGALGLINSERTEVENTMARKEREXTPROC)(RegalContext *_context, GLsizei length, const GLchar *marker);
+typedef void (REGAL_CALL *REGALGLPOPGROUPMARKEREXTPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLPUSHGROUPMARKEREXTPROC)(RegalContext *_context, GLsizei length, const GLchar *marker);
+
+    // GL_EXT_depth_bounds_test
+
+typedef void (REGAL_CALL *REGALGLDEPTHBOUNDSEXTPROC)(RegalContext *_context, GLclampd zmin, GLclampd zmax);
+
+    // GL_EXT_direct_state_access
+
+typedef void (REGAL_CALL *REGALGLBINDMULTITEXTUREEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLuint texture);
+typedef GLenum (REGAL_CALL *REGALGLCHECKNAMEDFRAMEBUFFERSTATUSEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum target);
+typedef void (REGAL_CALL *REGALGLCLIENTATTRIBDEFAULTEXTPROC)(RegalContext *_context, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDMULTITEXIMAGE1DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDMULTITEXIMAGE2DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDMULTITEXIMAGE3DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDMULTITEXSUBIMAGE1DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDMULTITEXSUBIMAGE2DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDMULTITEXSUBIMAGE3DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXTUREIMAGE1DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXTUREIMAGE2DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXTUREIMAGE3DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXTURESUBIMAGE1DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXTURESUBIMAGE2DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXTURESUBIMAGE3DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits);
+typedef void (REGAL_CALL *REGALGLCOPYMULTITEXIMAGE1DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYMULTITEXIMAGE2DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYMULTITEXSUBIMAGE1DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYMULTITEXSUBIMAGE2DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLCOPYMULTITEXSUBIMAGE3DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLCOPYTEXTUREIMAGE1DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYTEXTUREIMAGE2DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+typedef void (REGAL_CALL *REGALGLCOPYTEXTURESUBIMAGE1DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLCOPYTEXTURESUBIMAGE2DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLCOPYTEXTURESUBIMAGE3DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLDISABLECLIENTSTATEINDEXEDEXTPROC)(RegalContext *_context, GLenum array, GLuint index);
+typedef void (REGAL_CALL *REGALGLDISABLECLIENTSTATEIEXTPROC)(RegalContext *_context, GLenum array, GLuint index);
+typedef void (REGAL_CALL *REGALGLDISABLEVERTEXARRAYATTRIBEXTPROC)(RegalContext *_context, GLuint vaobj, GLenum array);
+typedef void (REGAL_CALL *REGALGLDISABLEVERTEXARRAYEXTPROC)(RegalContext *_context, GLuint vaobj, GLenum array);
+typedef void (REGAL_CALL *REGALGLENABLECLIENTSTATEINDEXEDEXTPROC)(RegalContext *_context, GLenum array, GLuint index);
+typedef void (REGAL_CALL *REGALGLENABLECLIENTSTATEIEXTPROC)(RegalContext *_context, GLenum array, GLuint index);
+typedef void (REGAL_CALL *REGALGLENABLEVERTEXARRAYATTRIBEXTPROC)(RegalContext *_context, GLuint vaobj, GLenum array);
+typedef void (REGAL_CALL *REGALGLENABLEVERTEXARRAYEXTPROC)(RegalContext *_context, GLuint vaobj, GLenum array);
+typedef void (REGAL_CALL *REGALGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC)(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr length);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERDRAWBUFFEREXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum mode);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERDRAWBUFFERSEXTPROC)(RegalContext *_context, GLuint framebuffer, GLsizei n, const GLenum *bufs);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERREADBUFFEREXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum mode);
+typedef void (REGAL_CALL *REGALGLGENERATEMULTITEXMIPMAPEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target);
+typedef void (REGAL_CALL *REGALGLGENERATETEXTUREMIPMAPEXTPROC)(RegalContext *_context, GLuint texture, GLenum target);
+typedef void (REGAL_CALL *REGALGLGETCOMPRESSEDMULTITEXIMAGEEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint lod, GLvoid *img);
+typedef void (REGAL_CALL *REGALGLGETCOMPRESSEDTEXTUREIMAGEEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint lod, GLvoid *img);
+typedef void (REGAL_CALL *REGALGLGETDOUBLEINDEXEDVEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble *data);
+typedef void (REGAL_CALL *REGALGLGETDOUBLEI_VEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble *data);
+typedef void (REGAL_CALL *REGALGLGETFLOATINDEXEDVEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat *data);
+typedef void (REGAL_CALL *REGALGLGETFLOATI_VEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat *data);
+typedef void (REGAL_CALL *REGALGLGETFRAMEBUFFERPARAMETERIVEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXENVFVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXENVIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXGENDVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXGENFVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXGENIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXIMAGEEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXLEVELPARAMETERFVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXLEVELPARAMETERIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXPARAMETERIIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXPARAMETERIUIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXPARAMETERFVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMULTITEXPARAMETERIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDBUFFERPARAMETERIVEXTPROC)(RegalContext *_context, GLuint buffer, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDBUFFERPOINTERVEXTPROC)(RegalContext *_context, GLuint buffer, GLenum pname, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDBUFFERSUBDATAEXTPROC)(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data);
+typedef void (REGAL_CALL *REGALGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDPROGRAMLOCALPARAMETERIIVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDPROGRAMLOCALPARAMETERFVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDPROGRAMSTRINGEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLenum pname, GLvoid *string);
+typedef void (REGAL_CALL *REGALGLGETNAMEDPROGRAMIVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETNAMEDRENDERBUFFERPARAMETERIVEXTPROC)(RegalContext *_context, GLuint renderbuffer, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETPOINTERINDEXEDVEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLvoid **data);
+typedef void (REGAL_CALL *REGALGLGETPOINTERI_VEXTPROC)(RegalContext *_context, GLenum pname, GLuint index, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLGETTEXTUREIMAGEEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLGETTEXTURELEVELPARAMETERFVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETTEXTURELEVELPARAMETERIVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXTUREPARAMETERIIVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXTUREPARAMETERIUIVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXTUREPARAMETERFVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETTEXTUREPARAMETERIVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXARRAYINTEGERI_VEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint index, GLenum pname, GLint *param);
+typedef void (REGAL_CALL *REGALGLGETVERTEXARRAYINTEGERVEXTPROC)(RegalContext *_context, GLuint vaobj, GLenum pname, GLint *param);
+typedef void (REGAL_CALL *REGALGLGETVERTEXARRAYPOINTERI_VEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint index, GLenum pname, GLvoid **param);
+typedef void (REGAL_CALL *REGALGLGETVERTEXARRAYPOINTERVEXTPROC)(RegalContext *_context, GLuint vaobj, GLenum pname, GLvoid **param);
+typedef GLvoid *(REGAL_CALL *REGALGLMAPNAMEDBUFFEREXTPROC)(RegalContext *_context, GLuint buffer, GLenum access);
+typedef GLvoid *(REGAL_CALL *REGALGLMAPNAMEDBUFFERRANGEEXTPROC)(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
+typedef void (REGAL_CALL *REGALGLMATRIXFRUSTUMEXTPROC)(RegalContext *_context, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+typedef void (REGAL_CALL *REGALGLMATRIXLOADIDENTITYEXTPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLMATRIXLOADTRANSPOSEDEXTPROC)(RegalContext *_context, GLenum mode, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLMATRIXLOADTRANSPOSEFEXTPROC)(RegalContext *_context, GLenum mode, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLMATRIXLOADDEXTPROC)(RegalContext *_context, GLenum mode, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLMATRIXLOADFEXTPROC)(RegalContext *_context, GLenum mode, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLMATRIXMULTTRANSPOSEDEXTPROC)(RegalContext *_context, GLenum mode, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLMATRIXMULTTRANSPOSEFEXTPROC)(RegalContext *_context, GLenum mode, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLMATRIXMULTDEXTPROC)(RegalContext *_context, GLenum mode, const GLdouble *m);
+typedef void (REGAL_CALL *REGALGLMATRIXMULTFEXTPROC)(RegalContext *_context, GLenum mode, const GLfloat *m);
+typedef void (REGAL_CALL *REGALGLMATRIXORTHOEXTPROC)(RegalContext *_context, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+typedef void (REGAL_CALL *REGALGLMATRIXPOPEXTPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLMATRIXPUSHEXTPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLMATRIXROTATEDEXTPROC)(RegalContext *_context, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLMATRIXROTATEFEXTPROC)(RegalContext *_context, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLMATRIXSCALEDEXTPROC)(RegalContext *_context, GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLMATRIXSCALEFEXTPROC)(RegalContext *_context, GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLMATRIXTRANSLATEDEXTPROC)(RegalContext *_context, GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLMATRIXTRANSLATEFEXTPROC)(RegalContext *_context, GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLMULTITEXBUFFEREXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORDPOINTEREXTPROC)(RegalContext *_context, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLMULTITEXENVFEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLMULTITEXENVFVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLMULTITEXENVIEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLMULTITEXENVIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLMULTITEXGENDEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLdouble param);
+typedef void (REGAL_CALL *REGALGLMULTITEXGENDVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params);
+typedef void (REGAL_CALL *REGALGLMULTITEXGENFEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLMULTITEXGENFVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLMULTITEXGENIEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLMULTITEXGENIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLMULTITEXIMAGE1DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLMULTITEXIMAGE2DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLMULTITEXIMAGE3DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLMULTITEXPARAMETERIIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLMULTITEXPARAMETERIUIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLMULTITEXPARAMETERFEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLMULTITEXPARAMETERFVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLfloat *param);
+typedef void (REGAL_CALL *REGALGLMULTITEXPARAMETERIEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLMULTITEXPARAMETERIVEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *param);
+typedef void (REGAL_CALL *REGALGLMULTITEXRENDERBUFFEREXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLMULTITEXSUBIMAGE1DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLMULTITEXSUBIMAGE2DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLMULTITEXSUBIMAGE3DEXTPROC)(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLNAMEDBUFFERDATAEXTPROC)(RegalContext *_context, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage);
+typedef void (REGAL_CALL *REGALGLNAMEDBUFFERSUBDATAEXTPROC)(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLNAMEDCOPYBUFFERSUBDATAEXTPROC)(RegalContext *_context, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERRENDERBUFFEREXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERTEXTURE1DEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERTEXTURE3DEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERTEXTUREEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERTEXTUREFACEEXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face);
+typedef void (REGAL_CALL *REGALGLNAMEDFRAMEBUFFERTEXTURELAYEREXTPROC)(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETER4DEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETER4DVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLdouble *params);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETER4FVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETERI4IEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETERI4IVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLint *params);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETERS4FVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETERSI4IVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLNAMEDPROGRAMSTRINGEXTPROC)(RegalContext *_context, GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string);
+typedef void (REGAL_CALL *REGALGLNAMEDRENDERBUFFERSTORAGEEXTPROC)(RegalContext *_context, GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLECOVERAGEEXTPROC)(RegalContext *_context, GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC)(RegalContext *_context, GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1DEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1FEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat v0);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1IEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLint v0);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1IVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1UIEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLuint v0);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1UIVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2DEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2FEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2IEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLint v0, GLint v1);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2IVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2UIEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLuint v0, GLuint v1);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2UIVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3DEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3FEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3IEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3IVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3UIEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3UIVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4DEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4FEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4IEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4IVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4UIEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4UIVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X3DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X3FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X4DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX2X4FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X2DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X2FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X4DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX3X4FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X2DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X2FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X3DVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMMATRIX4X3FVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPUSHCLIENTATTRIBDEFAULTEXTPROC)(RegalContext *_context, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLTEXTUREBUFFEREXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLTEXTUREIMAGE1DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXTUREIMAGE2DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXTUREIMAGE3DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXTUREPARAMETERIIVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLTEXTUREPARAMETERIUIVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLTEXTUREPARAMETERFEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLTEXTUREPARAMETERFVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLfloat *param);
+typedef void (REGAL_CALL *REGALGLTEXTUREPARAMETERIEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLTEXTUREPARAMETERIVEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLint *param);
+typedef void (REGAL_CALL *REGALGLTEXTURERENDERBUFFEREXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLTEXTURESUBIMAGE1DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXTURESUBIMAGE2DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXTURESUBIMAGE3DEXTPROC)(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+typedef GLboolean (REGAL_CALL *REGALGLUNMAPNAMEDBUFFEREXTPROC)(RegalContext *_context, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYCOLOROFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYFOGCOORDOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYINDEXOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYNORMALOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYSECONDARYCOLOROFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYTEXCOORDOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXATTRIBOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+
+    // GL_EXT_discard_framebuffer
+
+typedef void (REGAL_CALL *REGALGLDISCARDFRAMEBUFFEREXTPROC)(RegalContext *_context, GLenum target, GLsizei numAttachments, const GLenum *attachments);
+
+    // GL_EXT_disjoint_timer_query
+
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTIVEXTPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLQUERYCOUNTEREXTPROC)(RegalContext *_context, GLuint id, GLenum target);
+
+    // GL_EXT_draw_buffers2
+
+typedef void (REGAL_CALL *REGALGLCOLORMASKINDEXEDEXTPROC)(RegalContext *_context, GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+typedef void (REGAL_CALL *REGALGLDISABLEINDEXEDEXTPROC)(RegalContext *_context, GLenum target, GLuint index);
+typedef void (REGAL_CALL *REGALGLENABLEINDEXEDEXTPROC)(RegalContext *_context, GLenum target, GLuint index);
+typedef void (REGAL_CALL *REGALGLGETBOOLEANINDEXEDVEXTPROC)(RegalContext *_context, GLenum value, GLuint index, GLboolean *data);
+typedef void (REGAL_CALL *REGALGLGETINTEGERINDEXEDVEXTPROC)(RegalContext *_context, GLenum value, GLuint index, GLint *data);
+typedef GLboolean (REGAL_CALL *REGALGLISENABLEDINDEXEDEXTPROC)(RegalContext *_context, GLenum target, GLuint index);
+
+    // GL_EXT_draw_instanced
+
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSINSTANCEDEXTPROC)(RegalContext *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLDRAWELEMENTSINSTANCEDEXTPROC)(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+
+    // GL_EXT_draw_range_elements
+
+typedef void (REGAL_CALL *REGALGLDRAWRANGEELEMENTSEXTPROC)(RegalContext *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices);
+
+    // GL_EXT_fog_coord
+
+typedef void (REGAL_CALL *REGALGLFOGCOORDPOINTEREXTPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLFOGCOORDDEXTPROC)(RegalContext *_context, GLdouble coord);
+typedef void (REGAL_CALL *REGALGLFOGCOORDDVEXTPROC)(RegalContext *_context, const GLdouble *coord);
+typedef void (REGAL_CALL *REGALGLFOGCOORDFEXTPROC)(RegalContext *_context, GLfloat coord);
+typedef void (REGAL_CALL *REGALGLFOGCOORDFVEXTPROC)(RegalContext *_context, const GLfloat *coord);
+
+    // GL_EXT_fragment_lighting
+
+typedef void (REGAL_CALL *REGALGLFRAGMENTCOLORMATERIALEXTPROC)(RegalContext *_context, GLenum face, GLenum mode);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELFEXTPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELFVEXTPROC)(RegalContext *_context, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELIEXTPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELIVEXTPROC)(RegalContext *_context, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTFEXTPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTFVEXTPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTIEXTPROC)(RegalContext *_context, GLenum light, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTIVEXTPROC)(RegalContext *_context, GLenum light, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALFEXTPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLfloat param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALFVEXTPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALIEXTPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLint param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALIVEXTPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTLIGHTFVEXTPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTLIGHTIVEXTPROC)(RegalContext *_context, GLenum light, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTMATERIALFVEXTPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTMATERIALIVEXTPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLLIGHTENVIEXTPROC)(RegalContext *_context, GLenum pname, GLint param);
+
+    // GL_EXT_framebuffer_blit
+
+typedef void (REGAL_CALL *REGALGLBLITFRAMEBUFFEREXTPROC)(RegalContext *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+
+    // GL_EXT_framebuffer_multisample
+
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+
+    // GL_EXT_framebuffer_object
+
+typedef void (REGAL_CALL *REGALGLBINDFRAMEBUFFEREXTPROC)(RegalContext *_context, GLenum target, GLuint framebuffer);
+typedef void (REGAL_CALL *REGALGLBINDRENDERBUFFEREXTPROC)(RegalContext *_context, GLenum target, GLuint renderbuffer);
+typedef GLenum (REGAL_CALL *REGALGLCHECKFRAMEBUFFERSTATUSEXTPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLDELETEFRAMEBUFFERSEXTPROC)(RegalContext *_context, GLsizei n, const GLuint *framebuffers);
+typedef void (REGAL_CALL *REGALGLDELETERENDERBUFFERSEXTPROC)(RegalContext *_context, GLsizei n, const GLuint *renderbuffers);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERRENDERBUFFEREXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE1DEXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE2DEXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE3DEXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+typedef void (REGAL_CALL *REGALGLGENFRAMEBUFFERSEXTPROC)(RegalContext *_context, GLsizei n, GLuint *framebuffers);
+typedef void (REGAL_CALL *REGALGLGENRENDERBUFFERSEXTPROC)(RegalContext *_context, GLsizei n, GLuint *renderbuffers);
+typedef void (REGAL_CALL *REGALGLGENERATEMIPMAPEXTPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLGETFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETRENDERBUFFERPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISFRAMEBUFFEREXTPROC)(RegalContext *_context, GLuint framebuffer);
+typedef GLboolean (REGAL_CALL *REGALGLISRENDERBUFFEREXTPROC)(RegalContext *_context, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEEXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+
+    // GL_EXT_geometry_shader4
+
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTUREEXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTUREFACEEXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETERIEXTPROC)(RegalContext *_context, GLuint program, GLenum pname, GLint value);
+
+    // GL_EXT_gpu_program_parameters
+
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETERS4FVEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETERS4FVEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+
+    // GL_EXT_gpu_shader4
+
+typedef void (REGAL_CALL *REGALGLBINDFRAGDATALOCATIONEXTPROC)(RegalContext *_context, GLuint program, GLuint color, const GLchar *name);
+typedef GLint (REGAL_CALL *REGALGLGETFRAGDATALOCATIONEXTPROC)(RegalContext *_context, GLuint program, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMUIVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBIIVEXTPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBIUIVEXTPROC)(RegalContext *_context, GLuint index, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLUNIFORM1UIEXTPROC)(RegalContext *_context, GLint location, GLuint v0);
+typedef void (REGAL_CALL *REGALGLUNIFORM1UIVEXTPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2UIEXTPROC)(RegalContext *_context, GLint location, GLuint v0, GLuint v1);
+typedef void (REGAL_CALL *REGALGLUNIFORM2UIVEXTPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3UIEXTPROC)(RegalContext *_context, GLint location, GLuint v0, GLuint v1, GLuint v2);
+typedef void (REGAL_CALL *REGALGLUNIFORM3UIVEXTPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4UIEXTPROC)(RegalContext *_context, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+typedef void (REGAL_CALL *REGALGLUNIFORM4UIVEXTPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint *value);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1IEXTPROC)(RegalContext *_context, GLuint index, GLint x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1IVEXTPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1UIEXTPROC)(RegalContext *_context, GLuint index, GLuint x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI1UIVEXTPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2IEXTPROC)(RegalContext *_context, GLuint index, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2IVEXTPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2UIEXTPROC)(RegalContext *_context, GLuint index, GLuint x, GLuint y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI2UIVEXTPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3IEXTPROC)(RegalContext *_context, GLuint index, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3IVEXTPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3UIEXTPROC)(RegalContext *_context, GLuint index, GLuint x, GLuint y, GLuint z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI3UIVEXTPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4BVEXTPROC)(RegalContext *_context, GLuint index, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4IEXTPROC)(RegalContext *_context, GLuint index, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4IVEXTPROC)(RegalContext *_context, GLuint index, const GLint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4SVEXTPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4UBVEXTPROC)(RegalContext *_context, GLuint index, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4UIEXTPROC)(RegalContext *_context, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4UIVEXTPROC)(RegalContext *_context, GLuint index, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBI4USVEXTPROC)(RegalContext *_context, GLuint index, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBIPOINTEREXTPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+
+    // GL_EXT_histogram
+
+typedef void (REGAL_CALL *REGALGLGETHISTOGRAMEXTPROC)(RegalContext *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
+typedef void (REGAL_CALL *REGALGLGETHISTOGRAMPARAMETERFVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETHISTOGRAMPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMINMAXEXTPROC)(RegalContext *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
+typedef void (REGAL_CALL *REGALGLGETMINMAXPARAMETERFVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMINMAXPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLHISTOGRAMEXTPROC)(RegalContext *_context, GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
+typedef void (REGAL_CALL *REGALGLMINMAXEXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLboolean sink);
+typedef void (REGAL_CALL *REGALGLRESETHISTOGRAMEXTPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLRESETMINMAXEXTPROC)(RegalContext *_context, GLenum target);
+
+    // GL_EXT_index_func
+
+typedef void (REGAL_CALL *REGALGLINDEXFUNCEXTPROC)(RegalContext *_context, GLenum func, GLfloat ref);
+
+    // GL_EXT_index_material
+
+typedef void (REGAL_CALL *REGALGLINDEXMATERIALEXTPROC)(RegalContext *_context, GLenum face, GLenum mode);
+
+    // GL_EXT_light_texture
+
+typedef void (REGAL_CALL *REGALGLAPPLYTEXTUREEXTPROC)(RegalContext *_context, GLenum mode);
+typedef void (REGAL_CALL *REGALGLTEXTURELIGHTEXTPROC)(RegalContext *_context, GLenum pname);
+typedef void (REGAL_CALL *REGALGLTEXTUREMATERIALEXTPROC)(RegalContext *_context, GLenum face, GLenum mode);
+
+    // GL_EXT_map_buffer_range
+
+typedef void (REGAL_CALL *REGALGLFLUSHMAPPEDBUFFERRANGEEXTPROC)(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length);
+typedef GLvoid *(REGAL_CALL *REGALGLMAPBUFFERRANGEEXTPROC)(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+
+    // GL_EXT_multi_draw_arrays
+
+typedef void (REGAL_CALL *REGALGLMULTIDRAWARRAYSEXTPROC)(RegalContext *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
+typedef void (REGAL_CALL *REGALGLMULTIDRAWELEMENTSEXTPROC)(RegalContext *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount);
+
+    // GL_EXT_multisample
+
+typedef void (REGAL_CALL *REGALGLSAMPLEMASKEXTPROC)(RegalContext *_context, GLclampf value, GLboolean invert);
+typedef void (REGAL_CALL *REGALGLSAMPLEPATTERNEXTPROC)(RegalContext *_context, GLenum pattern);
+
+    // GL_EXT_multisampled_render_to_texture
+
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE2DMULTISAMPLEEXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+
+    // GL_EXT_multiview_draw_buffers
+
+typedef void (REGAL_CALL *REGALGLDRAWBUFFERSINDEXEDEXTPROC)(RegalContext *_context, GLint n, const GLenum *location, const GLint *indices);
+typedef void (REGAL_CALL *REGALGLGETINTEGERI_VEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLint *data);
+typedef void (REGAL_CALL *REGALGLREADBUFFERINDEXEDEXTPROC)(RegalContext *_context, GLenum src, GLint index);
+
+    // GL_EXT_occlusion_query_boolean
+
+typedef void (REGAL_CALL *REGALGLBEGINQUERYEXTPROC)(RegalContext *_context, GLenum target, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETEQUERIESEXTPROC)(RegalContext *_context, GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *REGALGLENDQUERYEXTPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLGENQUERIESEXTPROC)(RegalContext *_context, GLsizei n, GLuint *ids);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTUIVEXTPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISQUERYEXTPROC)(RegalContext *_context, GLuint id);
+
+    // GL_EXT_paletted_texture
+
+typedef void (REGAL_CALL *REGALGLCOLORTABLEEXTPROC)(RegalContext *_context, GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEEXTPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLvoid *data);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEPARAMETERFVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+
+    // GL_EXT_pixel_transform
+
+typedef void (REGAL_CALL *REGALGLGETPIXELTRANSFORMPARAMETERFVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETPIXELTRANSFORMPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLPIXELTRANSFORMPARAMETERFEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat param);
+typedef void (REGAL_CALL *REGALGLPIXELTRANSFORMPARAMETERFVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLPIXELTRANSFORMPARAMETERIEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint param);
+typedef void (REGAL_CALL *REGALGLPIXELTRANSFORMPARAMETERIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+
+    // GL_EXT_point_parameters
+
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFEXTPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFVEXTPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+
+    // GL_EXT_polygon_offset
+
+typedef void (REGAL_CALL *REGALGLPOLYGONOFFSETEXTPROC)(RegalContext *_context, GLfloat factor, GLfloat bias);
+
+    // GL_EXT_provoking_vertex
+
+typedef void (REGAL_CALL *REGALGLPROVOKINGVERTEXEXTPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_EXT_robustness
+
+typedef void (REGAL_CALL *REGALGLGETNUNIFORMFVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETNUNIFORMIVEXTPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei bufSize, GLint *params);
+typedef void (REGAL_CALL *REGALGLREADNPIXELSEXTPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data);
+
+    // GL_EXT_scene_marker
+
+typedef void (REGAL_CALL *REGALGLBEGINSCENEEXTPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLENDSCENEEXTPROC)(RegalContext *_context);
+
+    // GL_EXT_secondary_color
+
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3BEXTPROC)(RegalContext *_context, GLbyte red, GLbyte green, GLbyte blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3BVEXTPROC)(RegalContext *_context, const GLbyte *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3DEXTPROC)(RegalContext *_context, GLdouble red, GLdouble green, GLdouble blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3DVEXTPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3FEXTPROC)(RegalContext *_context, GLfloat red, GLfloat green, GLfloat blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3FVEXTPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3IEXTPROC)(RegalContext *_context, GLint red, GLint green, GLint blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3IVEXTPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3SEXTPROC)(RegalContext *_context, GLshort red, GLshort green, GLshort blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3SVEXTPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UBEXTPROC)(RegalContext *_context, GLubyte red, GLubyte green, GLubyte blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UBVEXTPROC)(RegalContext *_context, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UIEXTPROC)(RegalContext *_context, GLuint red, GLuint green, GLuint blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3UIVEXTPROC)(RegalContext *_context, const GLuint *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3USEXTPROC)(RegalContext *_context, GLushort red, GLushort green, GLushort blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3USVEXTPROC)(RegalContext *_context, const GLushort *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLORPOINTEREXTPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+
+    // GL_EXT_separate_shader_objects
+
+typedef void (REGAL_CALL *REGALGLACTIVEPROGRAMEXTPROC)(RegalContext *_context, GLuint program);
+typedef GLuint (REGAL_CALL *REGALGLCREATESHADERPROGRAMEXTPROC)(RegalContext *_context, GLenum type, const GLchar *string);
+typedef void (REGAL_CALL *REGALGLUSESHADERPROGRAMEXTPROC)(RegalContext *_context, GLenum type, GLuint program);
+
+    // GL_EXT_shader_image_load_store
+
+typedef void (REGAL_CALL *REGALGLBINDIMAGETEXTUREEXTPROC)(RegalContext *_context, GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format);
+typedef void (REGAL_CALL *REGALGLMEMORYBARRIEREXTPROC)(RegalContext *_context, GLbitfield barriers);
+
+    // GL_EXT_stencil_clear_tag
+
+typedef void (REGAL_CALL *REGALGLSTENCILCLEARTAGEXTPROC)(RegalContext *_context, GLsizei stencilTagBits, GLuint stencilClearTag);
+
+    // GL_EXT_stencil_two_side
+
+typedef void (REGAL_CALL *REGALGLACTIVESTENCILFACEEXTPROC)(RegalContext *_context, GLenum face);
+
+    // GL_EXT_subtexture
+
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE1DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE2DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE3DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+
+    // GL_EXT_texture3D
+
+typedef void (REGAL_CALL *REGALGLTEXIMAGE3DEXTPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+
+    // GL_EXT_texture_array
+
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURELAYEREXTPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+
+    // GL_EXT_texture_buffer_object
+
+typedef void (REGAL_CALL *REGALGLTEXBUFFEREXTPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLuint buffer);
+
+    // GL_EXT_texture_integer
+
+typedef void (REGAL_CALL *REGALGLCLEARCOLORIIEXTPROC)(RegalContext *_context, GLint red, GLint green, GLint blue, GLint alpha);
+typedef void (REGAL_CALL *REGALGLCLEARCOLORIUIEXTPROC)(RegalContext *_context, GLuint red, GLuint green, GLuint blue, GLuint alpha);
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERIIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERIUIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERIIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERIUIVEXTPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLuint *params);
+
+    // GL_EXT_texture_object
+
+typedef GLboolean (REGAL_CALL *REGALGLARETEXTURESRESIDENTEXTPROC)(RegalContext *_context, GLsizei n, const GLuint *textures, GLboolean *residences);
+typedef void (REGAL_CALL *REGALGLBINDTEXTUREEXTPROC)(RegalContext *_context, GLenum target, GLuint texture);
+typedef void (REGAL_CALL *REGALGLDELETETEXTURESEXTPROC)(RegalContext *_context, GLsizei n, const GLuint *textures);
+typedef void (REGAL_CALL *REGALGLGENTEXTURESEXTPROC)(RegalContext *_context, GLsizei n, GLuint *textures);
+typedef GLboolean (REGAL_CALL *REGALGLISTEXTUREEXTPROC)(RegalContext *_context, GLuint texture);
+typedef void (REGAL_CALL *REGALGLPRIORITIZETEXTURESEXTPROC)(RegalContext *_context, GLsizei n, const GLuint *textures, const GLclampf *priorities);
+
+    // GL_EXT_texture_perturb_normal
+
+typedef void (REGAL_CALL *REGALGLTEXTURENORMALEXTPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_EXT_texture_storage
+
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE1DEXTPROC)(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE2DEXTPROC)(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLTEXSTORAGE3DEXTPROC)(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+
+    // GL_EXT_timer_query
+
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTI64VEXTPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint64EXT *params);
+typedef void (REGAL_CALL *REGALGLGETQUERYOBJECTUI64VEXTPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint64EXT *params);
+
+    // GL_EXT_transform_feedback
+
+typedef void (REGAL_CALL *REGALGLBEGINTRANSFORMFEEDBACKEXTPROC)(RegalContext *_context, GLenum primitiveMode);
+typedef void (REGAL_CALL *REGALGLBINDBUFFERBASEEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLBINDBUFFEROFFSETEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+typedef void (REGAL_CALL *REGALGLBINDBUFFERRANGEEXTPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+typedef void (REGAL_CALL *REGALGLENDTRANSFORMFEEDBACKEXTPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLGETTRANSFORMFEEDBACKVARYINGEXTPROC)(RegalContext *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
+typedef void (REGAL_CALL *REGALGLTRANSFORMFEEDBACKVARYINGSEXTPROC)(RegalContext *_context, GLuint program, GLsizei count, const GLchar ** const varyings, GLenum bufferMode);
+
+    // GL_EXT_vertex_array
+
+typedef void (REGAL_CALL *REGALGLARRAYELEMENTEXTPROC)(RegalContext *_context, GLint i);
+typedef void (REGAL_CALL *REGALGLCOLORPOINTEREXTPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLDRAWARRAYSEXTPROC)(RegalContext *_context, GLenum mode, GLint first, GLsizei count);
+typedef void (REGAL_CALL *REGALGLEDGEFLAGPOINTEREXTPROC)(RegalContext *_context, GLsizei stride, GLsizei count, const GLboolean *pointer);
+typedef void (REGAL_CALL *REGALGLGETPOINTERVEXTPROC)(RegalContext *_context, GLenum pname, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLINDEXPOINTEREXTPROC)(RegalContext *_context, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLNORMALPOINTEREXTPROC)(RegalContext *_context, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLTEXCOORDPOINTEREXTPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLVERTEXPOINTEREXTPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+
+    // GL_EXT_vertex_attrib_64bit
+
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBLDVEXTPROC)(RegalContext *_context, GLuint index, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYVERTEXATTRIBLOFFSETEXTPROC)(RegalContext *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1DEXTPROC)(RegalContext *_context, GLuint index, GLdouble x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1DVEXTPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2DEXTPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2DVEXTPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3DEXTPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3DVEXTPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4DEXTPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4DVEXTPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBLPOINTEREXTPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+
+    // GL_EXT_vertex_shader
+
+typedef void (REGAL_CALL *REGALGLBEGINVERTEXSHADEREXTPROC)(RegalContext *_context);
+typedef GLuint (REGAL_CALL *REGALGLBINDLIGHTPARAMETEREXTPROC)(RegalContext *_context, GLenum light, GLenum value);
+typedef GLuint (REGAL_CALL *REGALGLBINDMATERIALPARAMETEREXTPROC)(RegalContext *_context, GLenum face, GLenum value);
+typedef GLuint (REGAL_CALL *REGALGLBINDPARAMETEREXTPROC)(RegalContext *_context, GLenum value);
+typedef GLuint (REGAL_CALL *REGALGLBINDTEXGENPARAMETEREXTPROC)(RegalContext *_context, GLenum unit, GLenum coord, GLenum value);
+typedef GLuint (REGAL_CALL *REGALGLBINDTEXTUREUNITPARAMETEREXTPROC)(RegalContext *_context, GLenum unit, GLenum value);
+typedef void (REGAL_CALL *REGALGLBINDVERTEXSHADEREXTPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETEVERTEXSHADEREXTPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLDISABLEVARIANTCLIENTSTATEEXTPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLENABLEVARIANTCLIENTSTATEEXTPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLENDVERTEXSHADEREXTPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLEXTRACTCOMPONENTEXTPROC)(RegalContext *_context, GLuint res, GLuint src, GLuint num);
+typedef GLuint (REGAL_CALL *REGALGLGENSYMBOLSEXTPROC)(RegalContext *_context, GLenum datatype, GLenum storagetype, GLenum range, GLuint components);
+typedef GLuint (REGAL_CALL *REGALGLGENVERTEXSHADERSEXTPROC)(RegalContext *_context, GLuint range);
+typedef void (REGAL_CALL *REGALGLGETINVARIANTBOOLEANVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLboolean *data);
+typedef void (REGAL_CALL *REGALGLGETINVARIANTFLOATVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLfloat *data);
+typedef void (REGAL_CALL *REGALGLGETINVARIANTINTEGERVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLint *data);
+typedef void (REGAL_CALL *REGALGLGETLOCALCONSTANTBOOLEANVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLboolean *data);
+typedef void (REGAL_CALL *REGALGLGETLOCALCONSTANTFLOATVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLfloat *data);
+typedef void (REGAL_CALL *REGALGLGETLOCALCONSTANTINTEGERVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLint *data);
+typedef void (REGAL_CALL *REGALGLGETVARIANTBOOLEANVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLboolean *data);
+typedef void (REGAL_CALL *REGALGLGETVARIANTFLOATVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLfloat *data);
+typedef void (REGAL_CALL *REGALGLGETVARIANTINTEGERVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLint *data);
+typedef void (REGAL_CALL *REGALGLGETVARIANTPOINTERVEXTPROC)(RegalContext *_context, GLuint id, GLenum value, GLvoid **data);
+typedef void (REGAL_CALL *REGALGLINSERTCOMPONENTEXTPROC)(RegalContext *_context, GLuint res, GLuint src, GLuint num);
+typedef GLboolean (REGAL_CALL *REGALGLISVARIANTENABLEDEXTPROC)(RegalContext *_context, GLuint id, GLenum cap);
+typedef void (REGAL_CALL *REGALGLSETINVARIANTEXTPROC)(RegalContext *_context, GLuint id, GLenum type, const GLvoid *addr);
+typedef void (REGAL_CALL *REGALGLSETLOCALCONSTANTEXTPROC)(RegalContext *_context, GLuint id, GLenum type, const GLvoid *addr);
+typedef void (REGAL_CALL *REGALGLSHADEROP1EXTPROC)(RegalContext *_context, GLenum op, GLuint res, GLuint arg1);
+typedef void (REGAL_CALL *REGALGLSHADEROP2EXTPROC)(RegalContext *_context, GLenum op, GLuint res, GLuint arg1, GLuint arg2);
+typedef void (REGAL_CALL *REGALGLSHADEROP3EXTPROC)(RegalContext *_context, GLenum op, GLuint res, GLuint arg1, GLuint arg2, GLuint arg3);
+typedef void (REGAL_CALL *REGALGLSWIZZLEEXTPROC)(RegalContext *_context, GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+typedef void (REGAL_CALL *REGALGLVARIANTPOINTEREXTPROC)(RegalContext *_context, GLuint id, GLenum type, GLuint stride, const GLvoid *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTBVEXTPROC)(RegalContext *_context, GLuint id, const GLbyte *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTDVEXTPROC)(RegalContext *_context, GLuint id, const GLdouble *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTFVEXTPROC)(RegalContext *_context, GLuint id, const GLfloat *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTIVEXTPROC)(RegalContext *_context, GLuint id, const GLint *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTSVEXTPROC)(RegalContext *_context, GLuint id, const GLshort *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTUBVEXTPROC)(RegalContext *_context, GLuint id, const GLubyte *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTUIVEXTPROC)(RegalContext *_context, GLuint id, const GLuint *addr);
+typedef void (REGAL_CALL *REGALGLVARIANTUSVEXTPROC)(RegalContext *_context, GLuint id, const GLushort *addr);
+typedef void (REGAL_CALL *REGALGLWRITEMASKEXTPROC)(RegalContext *_context, GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+
+    // GL_EXT_vertex_weighting
+
+typedef void (REGAL_CALL *REGALGLVERTEXWEIGHTPOINTEREXTPROC)(RegalContext *_context, GLsizei size, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLVERTEXWEIGHTFEXTPROC)(RegalContext *_context, GLfloat weight);
+typedef void (REGAL_CALL *REGALGLVERTEXWEIGHTFVEXTPROC)(RegalContext *_context, const GLfloat *weight);
+
+    // GL_EXT_x11_sync_object
+
+typedef GLsync (REGAL_CALL *REGALGLIMPORTSYNCEXTPROC)(RegalContext *_context, GLenum external_sync_type, GLintptr external_sync, GLbitfield flags);
+
+    // GL_GREMEDY_frame_terminator
+
+typedef void (REGAL_CALL *REGALGLFRAMETERMINATORGREMEDYPROC)(RegalContext *_context);
+
+    // GL_GREMEDY_string_marker
+
+typedef void (REGAL_CALL *REGALGLSTRINGMARKERGREMEDYPROC)(RegalContext *_context, GLsizei len, const GLvoid *string);
+
+    // GL_HP_image_transform
+
+typedef void (REGAL_CALL *REGALGLGETIMAGETRANSFORMPARAMETERFVHPPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETIMAGETRANSFORMPARAMETERIVHPPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLIMAGETRANSFORMPARAMETERFHPPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLIMAGETRANSFORMPARAMETERFVHPPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLIMAGETRANSFORMPARAMETERIHPPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLIMAGETRANSFORMPARAMETERIVHPPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+
+    // GL_IBM_multimode_draw_arrays
+
+typedef void (REGAL_CALL *REGALGLMULTIMODEDRAWARRAYSIBMPROC)(RegalContext *_context, const GLenum *mode, const GLint *first, const GLsizei *count, GLsizei primcount, GLint modestride);
+typedef void (REGAL_CALL *REGALGLMULTIMODEDRAWELEMENTSIBMPROC)(RegalContext *_context, const GLenum *mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, GLint modestride);
+
+    // GL_IBM_vertex_array_lists
+
+typedef void (REGAL_CALL *REGALGLCOLORPOINTERLISTIBMPROC)(RegalContext *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+typedef void (REGAL_CALL *REGALGLEDGEFLAGPOINTERLISTIBMPROC)(RegalContext *_context, GLint stride, const GLboolean **pointer, GLint ptrstride);
+typedef void (REGAL_CALL *REGALGLFOGCOORDPOINTERLISTIBMPROC)(RegalContext *_context, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+typedef void (REGAL_CALL *REGALGLINDEXPOINTERLISTIBMPROC)(RegalContext *_context, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+typedef void (REGAL_CALL *REGALGLNORMALPOINTERLISTIBMPROC)(RegalContext *_context, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLORPOINTERLISTIBMPROC)(RegalContext *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+typedef void (REGAL_CALL *REGALGLTEXCOORDPOINTERLISTIBMPROC)(RegalContext *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+typedef void (REGAL_CALL *REGALGLVERTEXPOINTERLISTIBMPROC)(RegalContext *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+
+    // GL_IMG_multisampled_render_to_texture
+
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE2DMULTISAMPLEIMGPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEMULTISAMPLEIMGPROC)(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+
+    // GL_INGR_blend_func_separate
+
+typedef void (REGAL_CALL *REGALGLBLENDFUNCSEPARATEINGRPROC)(RegalContext *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+
+    // GL_INTEL_map_texture
+
+typedef GLvoid *(REGAL_CALL *REGALGLMAPTEXTURE2DINTELPROC)(RegalContext *_context, GLuint texture, GLint level, GLbitfield access, GLint *stride, GLenum *layout);
+typedef void (REGAL_CALL *REGALGLSYNCTEXTUREINTELPROC)(RegalContext *_context, GLuint texture);
+typedef void (REGAL_CALL *REGALGLUNMAPTEXTURE2DINTELPROC)(RegalContext *_context, GLuint texture, GLint level);
+
+    // GL_INTEL_parallel_arrays
+
+typedef void (REGAL_CALL *REGALGLCOLORPOINTERVINTELPROC)(RegalContext *_context, GLint size, GLenum type, const GLvoid **pointer);
+typedef void (REGAL_CALL *REGALGLNORMALPOINTERVINTELPROC)(RegalContext *_context, GLenum type, const GLvoid **pointer);
+typedef void (REGAL_CALL *REGALGLTEXCOORDPOINTERVINTELPROC)(RegalContext *_context, GLint size, GLenum type, const GLvoid **pointer);
+typedef void (REGAL_CALL *REGALGLVERTEXPOINTERVINTELPROC)(RegalContext *_context, GLint size, GLenum type, const GLvoid **pointer);
+
+    // GL_INTEL_texture_scissor
+
+typedef void (REGAL_CALL *REGALGLTEXSCISSORFUNCINTELPROC)(RegalContext *_context, GLenum target, GLenum lfunc, GLenum hfunc);
+typedef void (REGAL_CALL *REGALGLTEXSCISSORINTELPROC)(RegalContext *_context, GLenum target, GLclampf tlow, GLclampf thigh);
+
+    // GL_KHR_debug
+
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGECALLBACKPROC)(RegalContext *_context, GLDEBUGPROC callback, const GLvoid *userParam);
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGECONTROLPROC)(RegalContext *_context, GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+typedef void (REGAL_CALL *REGALGLDEBUGMESSAGEINSERTPROC)(RegalContext *_context, GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+typedef GLuint (REGAL_CALL *REGALGLGETDEBUGMESSAGELOGPROC)(RegalContext *_context, GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+typedef void (REGAL_CALL *REGALGLGETOBJECTLABELPROC)(RegalContext *_context, GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label);
+typedef void (REGAL_CALL *REGALGLGETOBJECTPTRLABELPROC)(RegalContext *_context, const GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
+typedef void (REGAL_CALL *REGALGLOBJECTLABELPROC)(RegalContext *_context, GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
+typedef void (REGAL_CALL *REGALGLOBJECTPTRLABELPROC)(RegalContext *_context, const GLvoid *ptr, GLsizei length, const GLchar *label);
+typedef void (REGAL_CALL *REGALGLPOPDEBUGGROUPPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLPUSHDEBUGGROUPPROC)(RegalContext *_context, GLenum source, GLuint id, GLsizei length, const GLchar *message);
+
+    // GL_KTX_buffer_region
+
+typedef GLuint (REGAL_CALL *REGALGLBUFFERREGIONENABLEDPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLDELETEBUFFERREGIONPROC)(RegalContext *_context, GLenum region);
+typedef void (REGAL_CALL *REGALGLDRAWBUFFERREGIONPROC)(RegalContext *_context, GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
+typedef GLuint (REGAL_CALL *REGALGLNEWBUFFERREGIONPROC)(RegalContext *_context, GLenum region);
+typedef void (REGAL_CALL *REGALGLREADBUFFERREGIONPROC)(RegalContext *_context, GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
+
+    // GL_MESA_resize_buffers
+
+typedef void (REGAL_CALL *REGALGLRESIZEBUFFERSMESAPROC)(RegalContext *_context);
+
+    // GL_MESA_window_pos
+
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2DMESAPROC)(RegalContext *_context, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2DVMESAPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2FMESAPROC)(RegalContext *_context, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2FVMESAPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2IMESAPROC)(RegalContext *_context, GLint x, GLint y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2IVMESAPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2SMESAPROC)(RegalContext *_context, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS2SVMESAPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3DMESAPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3DVMESAPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3FMESAPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3FVMESAPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3IMESAPROC)(RegalContext *_context, GLint x, GLint y, GLint z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3IVMESAPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3SMESAPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS3SVMESAPROC)(RegalContext *_context, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4DMESAPROC)(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4DVMESAPROC)(RegalContext *_context, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4FMESAPROC)(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4FVMESAPROC)(RegalContext *_context, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4IMESAPROC)(RegalContext *_context, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4IVMESAPROC)(RegalContext *_context, const GLint *v);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4SMESAPROC)(RegalContext *_context, GLshort x, GLshort y, GLshort z, GLshort w);
+typedef void (REGAL_CALL *REGALGLWINDOWPOS4SVMESAPROC)(RegalContext *_context, const GLshort *v);
+
+    // GL_NVX_conditional_render
+
+typedef void (REGAL_CALL *REGALGLBEGINCONDITIONALRENDERNVXPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLENDCONDITIONALRENDERNVXPROC)(RegalContext *_context);
+
+    // GL_NV_bindless_texture
+
+typedef GLuint64 (REGAL_CALL *REGALGLGETIMAGEHANDLENVPROC)(RegalContext *_context, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+typedef GLuint64 (REGAL_CALL *REGALGLGETTEXTUREHANDLENVPROC)(RegalContext *_context, GLuint texture);
+typedef GLuint64 (REGAL_CALL *REGALGLGETTEXTURESAMPLERHANDLENVPROC)(RegalContext *_context, GLuint texture, GLuint sampler);
+typedef GLboolean (REGAL_CALL *REGALGLISIMAGEHANDLERESIDENTNVPROC)(RegalContext *_context, GLuint64 handle);
+typedef GLboolean (REGAL_CALL *REGALGLISTEXTUREHANDLERESIDENTNVPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLMAKEIMAGEHANDLENONRESIDENTNVPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLMAKEIMAGEHANDLERESIDENTNVPROC)(RegalContext *_context, GLuint64 handle, GLenum access);
+typedef void (REGAL_CALL *REGALGLMAKETEXTUREHANDLENONRESIDENTNVPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLMAKETEXTUREHANDLERESIDENTNVPROC)(RegalContext *_context, GLuint64 handle);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMHANDLEUI64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64 value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMHANDLEUI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint64 *values);
+typedef void (REGAL_CALL *REGALGLUNIFORMHANDLEUI64NVPROC)(RegalContext *_context, GLint location, GLuint64 value);
+typedef void (REGAL_CALL *REGALGLUNIFORMHANDLEUI64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint64 *value);
+
+    // GL_NV_blend_equation_advanced
+
+typedef void (REGAL_CALL *REGALGLBLENDBARRIERNVPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLBLENDPARAMETERINVPROC)(RegalContext *_context, GLenum pname, GLint value);
+
+    // GL_NV_conditional_render
+
+typedef void (REGAL_CALL *REGALGLBEGINCONDITIONALRENDERNVPROC)(RegalContext *_context, GLuint id, GLenum mode);
+typedef void (REGAL_CALL *REGALGLENDCONDITIONALRENDERNVPROC)(RegalContext *_context);
+
+    // GL_NV_copy_buffer
+
+typedef void (REGAL_CALL *REGALGLCOPYBUFFERSUBDATANVPROC)(RegalContext *_context, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+
+    // GL_NV_copy_image
+
+typedef void (REGAL_CALL *REGALGLCOPYIMAGESUBDATANVPROC)(RegalContext *_context, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+
+    // GL_NV_coverage_sample
+
+typedef void (REGAL_CALL *REGALGLCOVERAGEMASKNVPROC)(RegalContext *_context, GLboolean mask);
+typedef void (REGAL_CALL *REGALGLCOVERAGEOPERATIONNVPROC)(RegalContext *_context, GLenum operation);
+
+    // GL_NV_depth_buffer_float
+
+typedef void (REGAL_CALL *REGALGLCLEARDEPTHDNVPROC)(RegalContext *_context, GLdouble depth);
+typedef void (REGAL_CALL *REGALGLDEPTHBOUNDSDNVPROC)(RegalContext *_context, GLdouble zmin, GLdouble zmax);
+typedef void (REGAL_CALL *REGALGLDEPTHRANGEDNVPROC)(RegalContext *_context, GLdouble zNear, GLdouble zFar);
+
+    // GL_NV_draw_buffers
+
+typedef void (REGAL_CALL *REGALGLDRAWBUFFERSNVPROC)(RegalContext *_context, GLsizei n, const GLenum *bufs);
+
+    // GL_NV_draw_texture
+
+typedef void (REGAL_CALL *REGALGLDRAWTEXTURENVPROC)(RegalContext *_context, GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
+
+    // GL_NV_evaluators
+
+typedef void (REGAL_CALL *REGALGLEVALMAPSNVPROC)(RegalContext *_context, GLenum target, GLenum mode);
+typedef void (REGAL_CALL *REGALGLGETMAPATTRIBPARAMETERFVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMAPATTRIBPARAMETERIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETMAPCONTROLPOINTSNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLboolean packed, GLvoid *points);
+typedef void (REGAL_CALL *REGALGLGETMAPPARAMETERFVNVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETMAPPARAMETERIVNVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLMAPCONTROLPOINTSNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const GLvoid *points);
+typedef void (REGAL_CALL *REGALGLMAPPARAMETERFVNVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLMAPPARAMETERIVNVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+
+    // GL_NV_explicit_multisample
+
+typedef void (REGAL_CALL *REGALGLGETMULTISAMPLEFVNVPROC)(RegalContext *_context, GLenum pname, GLuint index, GLfloat *val);
+typedef void (REGAL_CALL *REGALGLSAMPLEMASKINDEXEDNVPROC)(RegalContext *_context, GLuint index, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLTEXRENDERBUFFERNVPROC)(RegalContext *_context, GLenum target, GLuint renderbuffer);
+
+    // GL_NV_fence
+
+typedef void (REGAL_CALL *REGALGLDELETEFENCESNVPROC)(RegalContext *_context, GLsizei n, const GLuint *fences);
+typedef void (REGAL_CALL *REGALGLFINISHFENCENVPROC)(RegalContext *_context, GLuint fence);
+typedef void (REGAL_CALL *REGALGLGENFENCESNVPROC)(RegalContext *_context, GLsizei n, GLuint *fences);
+typedef void (REGAL_CALL *REGALGLGETFENCEIVNVPROC)(RegalContext *_context, GLuint fence, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISFENCENVPROC)(RegalContext *_context, GLuint fence);
+typedef void (REGAL_CALL *REGALGLSETFENCENVPROC)(RegalContext *_context, GLuint fence, GLenum condition);
+typedef GLboolean (REGAL_CALL *REGALGLTESTFENCENVPROC)(RegalContext *_context, GLuint fence);
+
+    // GL_NV_fragment_program
+
+typedef void (REGAL_CALL *REGALGLGETPROGRAMNAMEDPARAMETERDVNVPROC)(RegalContext *_context, GLuint id, GLsizei len, const GLubyte *name, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMNAMEDPARAMETERFVNVPROC)(RegalContext *_context, GLuint id, GLsizei len, const GLubyte *name, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMNAMEDPARAMETER4DNVPROC)(RegalContext *_context, GLuint id, GLsizei len, const GLubyte *name, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLPROGRAMNAMEDPARAMETER4DVNVPROC)(RegalContext *_context, GLuint id, GLsizei len, const GLubyte *name, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLPROGRAMNAMEDPARAMETER4FNVPROC)(RegalContext *_context, GLuint id, GLsizei len, const GLubyte *name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLPROGRAMNAMEDPARAMETER4FVNVPROC)(RegalContext *_context, GLuint id, GLsizei len, const GLubyte *name, const GLfloat *v);
+
+    // GL_NV_framebuffer_blit
+
+typedef void (REGAL_CALL *REGALGLBLITFRAMEBUFFERNVPROC)(RegalContext *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+
+    // GL_NV_framebuffer_multisample_coverage
+
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEMULTISAMPLECOVERAGENVPROC)(RegalContext *_context, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+
+    // GL_NV_geometry_program4
+
+typedef void (REGAL_CALL *REGALGLPROGRAMVERTEXLIMITNVPROC)(RegalContext *_context, GLenum target, GLint limit);
+
+    // GL_NV_gpu_program4
+
+typedef void (REGAL_CALL *REGALGLGETPROGRAMENVPARAMETERIIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMENVPARAMETERIUIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMLOCALPARAMETERIIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMLOCALPARAMETERIUIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETERI4INVPROC)(RegalContext *_context, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETERI4IVNVPROC)(RegalContext *_context, GLenum target, GLuint index, const GLint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETERI4UINVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETERI4UIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETERSI4IVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMENVPARAMETERSI4UIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETERI4INVPROC)(RegalContext *_context, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETERI4IVNVPROC)(RegalContext *_context, GLenum target, GLuint index, const GLint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETERI4UINVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETERI4UIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETERSI4IVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMLOCALPARAMETERSI4UIVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLuint *params);
+
+    // GL_NV_gpu_shader5
+
+typedef void (REGAL_CALL *REGALGLGETUNIFORMI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLint64EXT *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1I64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLint64EXT x);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1I64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1UI64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64EXT x);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM1UI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2I64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLint64EXT x, GLint64EXT y);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2I64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2UI64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM2UI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3I64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3I64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3UI64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM3UI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4I64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4I64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4UI64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORM4UI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM1I64NVPROC)(RegalContext *_context, GLint location, GLint64EXT x);
+typedef void (REGAL_CALL *REGALGLUNIFORM1I64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM1UI64NVPROC)(RegalContext *_context, GLint location, GLuint64EXT x);
+typedef void (REGAL_CALL *REGALGLUNIFORM1UI64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2I64NVPROC)(RegalContext *_context, GLint location, GLint64EXT x, GLint64EXT y);
+typedef void (REGAL_CALL *REGALGLUNIFORM2I64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM2UI64NVPROC)(RegalContext *_context, GLint location, GLuint64EXT x, GLuint64EXT y);
+typedef void (REGAL_CALL *REGALGLUNIFORM2UI64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3I64NVPROC)(RegalContext *_context, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+typedef void (REGAL_CALL *REGALGLUNIFORM3I64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM3UI64NVPROC)(RegalContext *_context, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+typedef void (REGAL_CALL *REGALGLUNIFORM3UI64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4I64NVPROC)(RegalContext *_context, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+typedef void (REGAL_CALL *REGALGLUNIFORM4I64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORM4UI64NVPROC)(RegalContext *_context, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+typedef void (REGAL_CALL *REGALGLUNIFORM4UI64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+
+    // GL_NV_half_float
+
+typedef void (REGAL_CALL *REGALGLCOLOR3HNVPROC)(RegalContext *_context, GLhalfNV red, GLhalfNV green, GLhalfNV blue);
+typedef void (REGAL_CALL *REGALGLCOLOR3HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4HNVPROC)(RegalContext *_context, GLhalfNV red, GLhalfNV green, GLhalfNV blue, GLhalfNV alpha);
+typedef void (REGAL_CALL *REGALGLCOLOR4HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLFOGCOORDHNVPROC)(RegalContext *_context, GLhalfNV coord);
+typedef void (REGAL_CALL *REGALGLFOGCOORDHVNVPROC)(RegalContext *_context, const GLhalfNV *coord);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1HNVPROC)(RegalContext *_context, GLenum target, GLhalfNV s);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD1HVNVPROC)(RegalContext *_context, GLenum target, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2HNVPROC)(RegalContext *_context, GLenum target, GLhalfNV s, GLhalfNV t);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD2HVNVPROC)(RegalContext *_context, GLenum target, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3HNVPROC)(RegalContext *_context, GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD3HVNVPROC)(RegalContext *_context, GLenum target, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4HNVPROC)(RegalContext *_context, GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4HVNVPROC)(RegalContext *_context, GLenum target, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLNORMAL3HNVPROC)(RegalContext *_context, GLhalfNV nx, GLhalfNV ny, GLhalfNV nz);
+typedef void (REGAL_CALL *REGALGLNORMAL3HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3HNVPROC)(RegalContext *_context, GLhalfNV red, GLhalfNV green, GLhalfNV blue);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLOR3HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1HNVPROC)(RegalContext *_context, GLhalfNV s);
+typedef void (REGAL_CALL *REGALGLTEXCOORD1HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2HNVPROC)(RegalContext *_context, GLhalfNV s, GLhalfNV t);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3HNVPROC)(RegalContext *_context, GLhalfNV s, GLhalfNV t, GLhalfNV r);
+typedef void (REGAL_CALL *REGALGLTEXCOORD3HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4HNVPROC)(RegalContext *_context, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEX2HNVPROC)(RegalContext *_context, GLhalfNV x, GLhalfNV y);
+typedef void (REGAL_CALL *REGALGLVERTEX2HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEX3HNVPROC)(RegalContext *_context, GLhalfNV x, GLhalfNV y, GLhalfNV z);
+typedef void (REGAL_CALL *REGALGLVERTEX3HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEX4HNVPROC)(RegalContext *_context, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
+typedef void (REGAL_CALL *REGALGLVERTEX4HVNVPROC)(RegalContext *_context, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1HNVPROC)(RegalContext *_context, GLuint index, GLhalfNV x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1HVNVPROC)(RegalContext *_context, GLuint index, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2HNVPROC)(RegalContext *_context, GLuint index, GLhalfNV x, GLhalfNV y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2HVNVPROC)(RegalContext *_context, GLuint index, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3HNVPROC)(RegalContext *_context, GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3HVNVPROC)(RegalContext *_context, GLuint index, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4HNVPROC)(RegalContext *_context, GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4HVNVPROC)(RegalContext *_context, GLuint index, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS1HVNVPROC)(RegalContext *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS2HVNVPROC)(RegalContext *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS3HVNVPROC)(RegalContext *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS4HVNVPROC)(RegalContext *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+typedef void (REGAL_CALL *REGALGLVERTEXWEIGHTHNVPROC)(RegalContext *_context, GLhalfNV weight);
+typedef void (REGAL_CALL *REGALGLVERTEXWEIGHTHVNVPROC)(RegalContext *_context, const GLhalfNV *weight);
+
+    // GL_NV_non_square_matrices
+
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2X3FVNVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX2X4FVNVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3X2FVNVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX3X4FVNVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4X2FVNVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMMATRIX4X3FVNVPROC)(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+
+    // GL_NV_occlusion_query
+
+typedef void (REGAL_CALL *REGALGLBEGINOCCLUSIONQUERYNVPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETEOCCLUSIONQUERIESNVPROC)(RegalContext *_context, GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *REGALGLENDOCCLUSIONQUERYNVPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLGENOCCLUSIONQUERIESNVPROC)(RegalContext *_context, GLsizei n, GLuint *ids);
+typedef void (REGAL_CALL *REGALGLGETOCCLUSIONQUERYIVNVPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETOCCLUSIONQUERYUIVNVPROC)(RegalContext *_context, GLuint id, GLenum pname, GLuint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISOCCLUSIONQUERYNVPROC)(RegalContext *_context, GLuint id);
+
+    // GL_NV_parameter_buffer_object
+
+typedef void (REGAL_CALL *REGALGLPROGRAMBUFFERPARAMETERSIIVNVPROC)(RegalContext *_context, GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMBUFFERPARAMETERSIUIVNVPROC)(RegalContext *_context, GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLuint *params);
+typedef void (REGAL_CALL *REGALGLPROGRAMBUFFERPARAMETERSFVNVPROC)(RegalContext *_context, GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLfloat *params);
+
+    // GL_NV_path_rendering
+
+typedef void (REGAL_CALL *REGALGLCOPYPATHNVPROC)(RegalContext *_context, GLuint resultPath, GLuint srcPath);
+typedef void (REGAL_CALL *REGALGLCOVERFILLPATHINSTANCEDNVPROC)(RegalContext *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
+typedef void (REGAL_CALL *REGALGLCOVERFILLPATHNVPROC)(RegalContext *_context, GLuint path, GLenum coverMode);
+typedef void (REGAL_CALL *REGALGLCOVERSTROKEPATHINSTANCEDNVPROC)(RegalContext *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
+typedef void (REGAL_CALL *REGALGLCOVERSTROKEPATHNVPROC)(RegalContext *_context, GLuint name, GLenum coverMode);
+typedef void (REGAL_CALL *REGALGLDELETEPATHSNVPROC)(RegalContext *_context, GLuint path, GLsizei range);
+typedef GLuint (REGAL_CALL *REGALGLGENPATHSNVPROC)(RegalContext *_context, GLsizei range);
+typedef void (REGAL_CALL *REGALGLGETPATHCOLORGENFVNVPROC)(RegalContext *_context, GLenum color, GLenum pname, GLfloat *value);
+typedef void (REGAL_CALL *REGALGLGETPATHCOLORGENIVNVPROC)(RegalContext *_context, GLenum color, GLenum pname, GLint *value);
+typedef void (REGAL_CALL *REGALGLGETPATHCOMMANDSNVPROC)(RegalContext *_context, GLuint name, GLubyte *commands);
+typedef void (REGAL_CALL *REGALGLGETPATHCOORDSNVPROC)(RegalContext *_context, GLuint name, GLfloat *coords);
+typedef void (REGAL_CALL *REGALGLGETPATHDASHARRAYNVPROC)(RegalContext *_context, GLuint name, GLfloat *dashArray);
+typedef GLfloat (REGAL_CALL *REGALGLGETPATHLENGTHNVPROC)(RegalContext *_context, GLuint path, GLsizei startSegment, GLsizei numSegments);
+typedef void (REGAL_CALL *REGALGLGETPATHMETRICRANGENVPROC)(RegalContext *_context, GLbitfield metricQueryMask, GLuint fistPathName, GLsizei numPaths, GLsizei stride, GLfloat *metrics);
+typedef void (REGAL_CALL *REGALGLGETPATHMETRICSNVPROC)(RegalContext *_context, GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLsizei stride, GLfloat *metrics);
+typedef void (REGAL_CALL *REGALGLGETPATHPARAMETERFVNVPROC)(RegalContext *_context, GLuint name, GLenum param, GLfloat *value);
+typedef void (REGAL_CALL *REGALGLGETPATHPARAMETERIVNVPROC)(RegalContext *_context, GLuint name, GLenum param, GLint *value);
+typedef void (REGAL_CALL *REGALGLGETPATHSPACINGNVPROC)(RegalContext *_context, GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat *returnedSpacing);
+typedef void (REGAL_CALL *REGALGLGETPATHTEXGENFVNVPROC)(RegalContext *_context, GLenum texCoordSet, GLenum pname, GLfloat *value);
+typedef void (REGAL_CALL *REGALGLGETPATHTEXGENIVNVPROC)(RegalContext *_context, GLenum texCoordSet, GLenum pname, GLint *value);
+typedef void (REGAL_CALL *REGALGLINTERPOLATEPATHSNVPROC)(RegalContext *_context, GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight);
+typedef GLboolean (REGAL_CALL *REGALGLISPATHNVPROC)(RegalContext *_context, GLuint path);
+typedef GLboolean (REGAL_CALL *REGALGLISPOINTINFILLPATHNVPROC)(RegalContext *_context, GLuint path, GLuint mask, GLfloat x, GLfloat y);
+typedef GLboolean (REGAL_CALL *REGALGLISPOINTINSTROKEPATHNVPROC)(RegalContext *_context, GLuint path, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLPATHCOLORGENNVPROC)(RegalContext *_context, GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat *coeffs);
+typedef void (REGAL_CALL *REGALGLPATHCOMMANDSNVPROC)(RegalContext *_context, GLuint path, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+typedef void (REGAL_CALL *REGALGLPATHCOORDSNVPROC)(RegalContext *_context, GLuint path, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+typedef void (REGAL_CALL *REGALGLPATHCOVERDEPTHFUNCNVPROC)(RegalContext *_context, GLenum zfunc);
+typedef void (REGAL_CALL *REGALGLPATHDASHARRAYNVPROC)(RegalContext *_context, GLuint path, GLsizei dashCount, const GLfloat *dashArray);
+typedef void (REGAL_CALL *REGALGLPATHFOGGENNVPROC)(RegalContext *_context, GLenum genMode);
+typedef void (REGAL_CALL *REGALGLPATHGLYPHRANGENVPROC)(RegalContext *_context, GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+typedef void (REGAL_CALL *REGALGLPATHGLYPHSNVPROC)(RegalContext *_context, GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const GLvoid *charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+typedef void (REGAL_CALL *REGALGLPATHPARAMETERFNVPROC)(RegalContext *_context, GLuint path, GLenum pname, GLfloat value);
+typedef void (REGAL_CALL *REGALGLPATHPARAMETERFVNVPROC)(RegalContext *_context, GLuint path, GLenum pname, const GLfloat *value);
+typedef void (REGAL_CALL *REGALGLPATHPARAMETERINVPROC)(RegalContext *_context, GLuint path, GLenum pname, GLint value);
+typedef void (REGAL_CALL *REGALGLPATHPARAMETERIVNVPROC)(RegalContext *_context, GLuint path, GLenum pname, const GLint *value);
+typedef void (REGAL_CALL *REGALGLPATHSTENCILDEPTHOFFSETNVPROC)(RegalContext *_context, GLfloat factor, GLfloat units);
+typedef void (REGAL_CALL *REGALGLPATHSTENCILFUNCNVPROC)(RegalContext *_context, GLenum func, GLint ref, GLuint mask);
+typedef void (REGAL_CALL *REGALGLPATHSTRINGNVPROC)(RegalContext *_context, GLuint path, GLenum format, GLsizei length, const GLvoid *pathString);
+typedef void (REGAL_CALL *REGALGLPATHSUBCOMMANDSNVPROC)(RegalContext *_context, GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+typedef void (REGAL_CALL *REGALGLPATHSUBCOORDSNVPROC)(RegalContext *_context, GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+typedef void (REGAL_CALL *REGALGLPATHTEXGENNVPROC)(RegalContext *_context, GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat *coeffs);
+typedef GLboolean (REGAL_CALL *REGALGLPOINTALONGPATHNVPROC)(RegalContext *_context, GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat *x, GLfloat *y, GLfloat *tangentX, GLfloat *tangentY);
+typedef void (REGAL_CALL *REGALGLSTENCILFILLPATHINSTANCEDNVPROC)(RegalContext *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat *transformValues);
+typedef void (REGAL_CALL *REGALGLSTENCILFILLPATHNVPROC)(RegalContext *_context, GLuint path, GLenum fillMode, GLuint mask);
+typedef void (REGAL_CALL *REGALGLSTENCILSTROKEPATHINSTANCEDNVPROC)(RegalContext *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat *transformValues);
+typedef void (REGAL_CALL *REGALGLSTENCILSTROKEPATHNVPROC)(RegalContext *_context, GLuint path, GLint reference, GLuint mask);
+typedef void (REGAL_CALL *REGALGLTRANSFORMPATHNVPROC)(RegalContext *_context, GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat *transformValues);
+typedef void (REGAL_CALL *REGALGLWEIGHTPATHSNVPROC)(RegalContext *_context, GLuint resultPath, GLsizei numPaths, const GLuint *paths, const GLfloat *weights);
+
+    // GL_NV_pixel_data_range
+
+typedef void (REGAL_CALL *REGALGLFLUSHPIXELDATARANGENVPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLPIXELDATARANGENVPROC)(RegalContext *_context, GLenum target, GLsizei size, const GLvoid *pointer);
+
+    // GL_NV_point_sprite
+
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERINVPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERIVNVPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+
+    // GL_NV_present_video
+
+typedef void (REGAL_CALL *REGALGLGETVIDEOI64VNVPROC)(RegalContext *_context, GLuint video_slot, GLenum pname, GLint64EXT *params);
+typedef void (REGAL_CALL *REGALGLGETVIDEOIVNVPROC)(RegalContext *_context, GLuint video_slot, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVIDEOUI64VNVPROC)(RegalContext *_context, GLuint video_slot, GLenum pname, GLuint64EXT *params);
+typedef void (REGAL_CALL *REGALGLGETVIDEOUIVNVPROC)(RegalContext *_context, GLuint video_slot, GLenum pname, GLuint *params);
+typedef void (REGAL_CALL *REGALGLPRESENTFRAMEDUALFILLNVPROC)(RegalContext *_context, GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3);
+typedef void (REGAL_CALL *REGALGLPRESENTFRAMEKEYEDNVPROC)(RegalContext *_context, GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1);
+
+    // GL_NV_primitive_restart
+
+typedef void (REGAL_CALL *REGALGLPRIMITIVERESTARTINDEXNVPROC)(RegalContext *_context, GLuint index);
+typedef void (REGAL_CALL *REGALGLPRIMITIVERESTARTNVPROC)(RegalContext *_context);
+
+    // GL_NV_read_buffer
+
+typedef void (REGAL_CALL *REGALGLREADBUFFERNVPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_NV_register_combiners
+
+typedef void (REGAL_CALL *REGALGLCOMBINERINPUTNVPROC)(RegalContext *_context, GLenum stage, GLenum portion, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
+typedef void (REGAL_CALL *REGALGLCOMBINEROUTPUTNVPROC)(RegalContext *_context, GLenum stage, GLenum portion, GLenum abOutput, GLenum cdOutput, GLenum sumOutput, GLenum scale, GLenum bias, GLboolean abDotProduct, GLboolean cdDotProduct, GLboolean muxSum);
+typedef void (REGAL_CALL *REGALGLCOMBINERPARAMETERFNVPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLCOMBINERPARAMETERFVNVPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLCOMBINERPARAMETERINVPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLCOMBINERPARAMETERIVNVPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLFINALCOMBINERINPUTNVPROC)(RegalContext *_context, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
+typedef void (REGAL_CALL *REGALGLGETCOMBINERINPUTPARAMETERFVNVPROC)(RegalContext *_context, GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCOMBINERINPUTPARAMETERIVNVPROC)(RegalContext *_context, GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETCOMBINEROUTPUTPARAMETERFVNVPROC)(RegalContext *_context, GLenum stage, GLenum portion, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCOMBINEROUTPUTPARAMETERIVNVPROC)(RegalContext *_context, GLenum stage, GLenum portion, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETFINALCOMBINERINPUTPARAMETERFVNVPROC)(RegalContext *_context, GLenum variable, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETFINALCOMBINERINPUTPARAMETERIVNVPROC)(RegalContext *_context, GLenum variable, GLenum pname, GLint *params);
+
+    // GL_NV_register_combiners2
+
+typedef void (REGAL_CALL *REGALGLCOMBINERSTAGEPARAMETERFVNVPROC)(RegalContext *_context, GLenum stage, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCOMBINERSTAGEPARAMETERFVNVPROC)(RegalContext *_context, GLenum stage, GLenum pname, GLfloat *params);
+
+    // GL_NV_shader_buffer_load
+
+typedef void (REGAL_CALL *REGALGLGETBUFFERPARAMETERUI64VNVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLuint64EXT *params);
+typedef void (REGAL_CALL *REGALGLGETINTEGERUI64VNVPROC)(RegalContext *_context, GLenum target, GLuint64EXT *data);
+typedef void (REGAL_CALL *REGALGLGETNAMEDBUFFERPARAMETERUI64VNVPROC)(RegalContext *_context, GLuint buffer, GLenum pname, GLuint64EXT *params);
+typedef void (REGAL_CALL *REGALGLGETUNIFORMUI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64EXT *params);
+typedef GLboolean (REGAL_CALL *REGALGLISBUFFERRESIDENTNVPROC)(RegalContext *_context, GLenum target);
+typedef GLboolean (REGAL_CALL *REGALGLISNAMEDBUFFERRESIDENTNVPROC)(RegalContext *_context, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLMAKEBUFFERNONRESIDENTNVPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLMAKEBUFFERRESIDENTNVPROC)(RegalContext *_context, GLenum target, GLenum access);
+typedef void (REGAL_CALL *REGALGLMAKENAMEDBUFFERNONRESIDENTNVPROC)(RegalContext *_context, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLMAKENAMEDBUFFERRESIDENTNVPROC)(RegalContext *_context, GLuint buffer, GLenum access);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMUI64NVPROC)(RegalContext *_context, GLuint program, GLint location, GLuint64EXT v0);
+typedef void (REGAL_CALL *REGALGLPROGRAMUNIFORMUI64VNVPROC)(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+typedef void (REGAL_CALL *REGALGLUNIFORMUI64NVPROC)(RegalContext *_context, GLint location, GLuint64EXT v0);
+typedef void (REGAL_CALL *REGALGLUNIFORMUI64VNVPROC)(RegalContext *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+
+    // GL_NV_texture_barrier
+
+typedef void (REGAL_CALL *REGALGLTEXTUREBARRIERNVPROC)(RegalContext *_context);
+
+    // GL_NV_texture_multisample
+
+typedef void (REGAL_CALL *REGALGLTEXIMAGE2DMULTISAMPLECOVERAGENVPROC)(RegalContext *_context, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+typedef void (REGAL_CALL *REGALGLTEXIMAGE3DMULTISAMPLECOVERAGENVPROC)(RegalContext *_context, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+typedef void (REGAL_CALL *REGALGLTEXTUREIMAGE2DMULTISAMPLECOVERAGENVPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+typedef void (REGAL_CALL *REGALGLTEXTUREIMAGE2DMULTISAMPLENVPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+typedef void (REGAL_CALL *REGALGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+typedef void (REGAL_CALL *REGALGLTEXTUREIMAGE3DMULTISAMPLENVPROC)(RegalContext *_context, GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+
+    // GL_NV_transform_feedback
+
+typedef void (REGAL_CALL *REGALGLACTIVEVARYINGNVPROC)(RegalContext *_context, GLuint program, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLBEGINTRANSFORMFEEDBACKNVPROC)(RegalContext *_context, GLenum primitiveMode);
+typedef void (REGAL_CALL *REGALGLBINDBUFFERBASENVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer);
+typedef void (REGAL_CALL *REGALGLBINDBUFFEROFFSETNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+typedef void (REGAL_CALL *REGALGLBINDBUFFERRANGENVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+typedef void (REGAL_CALL *REGALGLENDTRANSFORMFEEDBACKNVPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLGETACTIVEVARYINGNVPROC)(RegalContext *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
+typedef void (REGAL_CALL *REGALGLGETTRANSFORMFEEDBACKVARYINGNVPROC)(RegalContext *_context, GLuint program, GLuint index, GLint *location);
+typedef GLint (REGAL_CALL *REGALGLGETVARYINGLOCATIONNVPROC)(RegalContext *_context, GLuint program, const GLchar *name);
+typedef void (REGAL_CALL *REGALGLTRANSFORMFEEDBACKATTRIBSNVPROC)(RegalContext *_context, GLuint count, const GLint *attribs, GLenum bufferMode);
+typedef void (REGAL_CALL *REGALGLTRANSFORMFEEDBACKVARYINGSNVPROC)(RegalContext *_context, GLuint program, GLsizei count, const GLint *locations, GLenum bufferMode);
+
+    // GL_NV_transform_feedback2
+
+typedef void (REGAL_CALL *REGALGLBINDTRANSFORMFEEDBACKNVPROC)(RegalContext *_context, GLenum target, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETETRANSFORMFEEDBACKSNVPROC)(RegalContext *_context, GLsizei n, const GLuint *ids);
+typedef void (REGAL_CALL *REGALGLDRAWTRANSFORMFEEDBACKNVPROC)(RegalContext *_context, GLenum mode, GLuint name);
+typedef void (REGAL_CALL *REGALGLGENTRANSFORMFEEDBACKSNVPROC)(RegalContext *_context, GLsizei n, GLuint *ids);
+typedef GLboolean (REGAL_CALL *REGALGLISTRANSFORMFEEDBACKNVPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLPAUSETRANSFORMFEEDBACKNVPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLRESUMETRANSFORMFEEDBACKNVPROC)(RegalContext *_context);
+
+    // GL_NV_vdpau_interop
+
+typedef void (REGAL_CALL *REGALGLVDPAUFININVPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLVDPAUGETSURFACEIVNVPROC)(RegalContext *_context, GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+typedef void (REGAL_CALL *REGALGLVDPAUINITNVPROC)(RegalContext *_context, const GLvoid *vdpDevice, const GLvoid *getProcAddress);
+typedef GLboolean (REGAL_CALL *REGALGLVDPAUISSURFACENVPROC)(RegalContext *_context, GLvdpauSurfaceNV surface);
+typedef void (REGAL_CALL *REGALGLVDPAUMAPSURFACESNVPROC)(RegalContext *_context, GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces);
+typedef GLvdpauSurfaceNV (REGAL_CALL *REGALGLVDPAUREGISTEROUTPUTSURFACENVPROC)(RegalContext *_context, const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
+typedef GLvdpauSurfaceNV (REGAL_CALL *REGALGLVDPAUREGISTERVIDEOSURFACENVPROC)(RegalContext *_context, const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
+typedef void (REGAL_CALL *REGALGLVDPAUSURFACEACCESSNVPROC)(RegalContext *_context, GLvdpauSurfaceNV surface, GLenum access);
+typedef void (REGAL_CALL *REGALGLVDPAUUNMAPSURFACESNVPROC)(RegalContext *_context, GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces);
+typedef void (REGAL_CALL *REGALGLVDPAUUNREGISTERSURFACENVPROC)(RegalContext *_context, GLvdpauSurfaceNV surface);
+
+    // GL_NV_vertex_array_range
+
+typedef void (REGAL_CALL *REGALGLFLUSHVERTEXARRAYRANGENVPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLVERTEXARRAYRANGENVPROC)(RegalContext *_context, GLsizei size, const GLvoid *pointer);
+
+    // GL_NV_vertex_attrib_integer_64bit
+
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBLI64VNVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint64EXT *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBLUI64VNVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLuint64EXT *params);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1I64NVPROC)(RegalContext *_context, GLuint index, GLint64EXT x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1I64VNVPROC)(RegalContext *_context, GLuint index, const GLint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1UI64NVPROC)(RegalContext *_context, GLuint index, GLuint64EXT x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL1UI64VNVPROC)(RegalContext *_context, GLuint index, const GLuint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2I64NVPROC)(RegalContext *_context, GLuint index, GLint64EXT x, GLint64EXT y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2I64VNVPROC)(RegalContext *_context, GLuint index, const GLint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2UI64NVPROC)(RegalContext *_context, GLuint index, GLuint64EXT x, GLuint64EXT y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL2UI64VNVPROC)(RegalContext *_context, GLuint index, const GLuint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3I64NVPROC)(RegalContext *_context, GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3I64VNVPROC)(RegalContext *_context, GLuint index, const GLint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3UI64NVPROC)(RegalContext *_context, GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL3UI64VNVPROC)(RegalContext *_context, GLuint index, const GLuint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4I64NVPROC)(RegalContext *_context, GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4I64VNVPROC)(RegalContext *_context, GLuint index, const GLint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4UI64NVPROC)(RegalContext *_context, GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBL4UI64VNVPROC)(RegalContext *_context, GLuint index, const GLuint64EXT *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBLFORMATNVPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLsizei stride);
+
+    // GL_NV_vertex_buffer_unified_memory
+
+typedef void (REGAL_CALL *REGALGLBUFFERADDRESSRANGENVPROC)(RegalContext *_context, GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length);
+typedef void (REGAL_CALL *REGALGLCOLORFORMATNVPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLEDGEFLAGFORMATNVPROC)(RegalContext *_context, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLFOGCOORDFORMATNVPROC)(RegalContext *_context, GLenum type, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLGETINTEGERUI64I_VNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLuint64EXT *data);
+typedef void (REGAL_CALL *REGALGLINDEXFORMATNVPROC)(RegalContext *_context, GLenum type, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLNORMALFORMATNVPROC)(RegalContext *_context, GLenum type, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLSECONDARYCOLORFORMATNVPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLTEXCOORDFORMATNVPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBFORMATNVPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBIFORMATNVPROC)(RegalContext *_context, GLuint index, GLint size, GLenum type, GLsizei stride);
+typedef void (REGAL_CALL *REGALGLVERTEXFORMATNVPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride);
+
+    // GL_NV_vertex_program
+
+typedef GLboolean (REGAL_CALL *REGALGLAREPROGRAMSRESIDENTNVPROC)(RegalContext *_context, GLsizei n, const GLuint *programs, GLboolean *residences);
+typedef void (REGAL_CALL *REGALGLBINDPROGRAMNVPROC)(RegalContext *_context, GLenum target, GLuint id);
+typedef void (REGAL_CALL *REGALGLDELETEPROGRAMSNVPROC)(RegalContext *_context, GLsizei n, const GLuint *programs);
+typedef void (REGAL_CALL *REGALGLEXECUTEPROGRAMNVPROC)(RegalContext *_context, GLenum target, GLuint id, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGENPROGRAMSNVPROC)(RegalContext *_context, GLsizei n, GLuint *programs);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMPARAMETERDVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMPARAMETERFVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMSTRINGNVPROC)(RegalContext *_context, GLuint id, GLenum pname, GLubyte *program);
+typedef void (REGAL_CALL *REGALGLGETPROGRAMIVNVPROC)(RegalContext *_context, GLuint id, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTRACKMATRIXIVNVPROC)(RegalContext *_context, GLenum target, GLuint address, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBPOINTERVNVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLvoid **pointer);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBDVNVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBFVNVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETVERTEXATTRIBIVNVPROC)(RegalContext *_context, GLuint index, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISPROGRAMNVPROC)(RegalContext *_context, GLuint id);
+typedef void (REGAL_CALL *REGALGLLOADPROGRAMNVPROC)(RegalContext *_context, GLenum target, GLuint id, GLsizei len, const GLubyte *program);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETER4DNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETER4DVNVPROC)(RegalContext *_context, GLenum target, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETER4FNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETER4FVNVPROC)(RegalContext *_context, GLenum target, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETERS4DVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLPROGRAMPARAMETERS4FVNVPROC)(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREQUESTRESIDENTPROGRAMSNVPROC)(RegalContext *_context, GLsizei n, const GLuint *programs);
+typedef void (REGAL_CALL *REGALGLTRACKMATRIXNVPROC)(RegalContext *_context, GLenum target, GLuint address, GLenum matrix, GLenum transform);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1DNVPROC)(RegalContext *_context, GLuint index, GLdouble x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1DVNVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1FNVPROC)(RegalContext *_context, GLuint index, GLfloat x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1FVNVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1SNVPROC)(RegalContext *_context, GLuint index, GLshort x);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB1SVNVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2DNVPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2DVNVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2FNVPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2FVNVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2SNVPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB2SVNVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3DNVPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3DVNVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3FNVPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3FVNVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3SNVPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y, GLshort z);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB3SVNVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4DNVPROC)(RegalContext *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4DVNVPROC)(RegalContext *_context, GLuint index, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4FNVPROC)(RegalContext *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4FVNVPROC)(RegalContext *_context, GLuint index, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4SNVPROC)(RegalContext *_context, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4SVNVPROC)(RegalContext *_context, GLuint index, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4UBNVPROC)(RegalContext *_context, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIB4UBVNVPROC)(RegalContext *_context, GLuint index, const GLubyte *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBPOINTERNVPROC)(RegalContext *_context, GLuint index, GLint fsize, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS1DVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS1FVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS1SVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS2DVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS2FVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS2SVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS3DVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS3FVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS3SVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS4DVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLdouble *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS4FVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS4SVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLshort *v);
+typedef void (REGAL_CALL *REGALGLVERTEXATTRIBS4UBVNVPROC)(RegalContext *_context, GLuint index, GLsizei n, const GLubyte *v);
+
+    // GL_NV_video_capture
+
+typedef void (REGAL_CALL *REGALGLBEGINVIDEOCAPTURENVPROC)(RegalContext *_context, GLuint video_capture_slot);
+typedef void (REGAL_CALL *REGALGLBINDVIDEOCAPTURESTREAMBUFFERNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLintptr offset);
+typedef void (REGAL_CALL *REGALGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLenum target, GLuint texture);
+typedef void (REGAL_CALL *REGALGLENDVIDEOCAPTURENVPROC)(RegalContext *_context, GLuint video_capture_slot);
+typedef void (REGAL_CALL *REGALGLGETVIDEOCAPTURESTREAMDVNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, GLdouble *params);
+typedef void (REGAL_CALL *REGALGLGETVIDEOCAPTURESTREAMFVNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETVIDEOCAPTURESTREAMIVNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETVIDEOCAPTUREIVNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLenum pname, GLint *params);
+typedef GLenum (REGAL_CALL *REGALGLVIDEOCAPTURENVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint *sequence_num, GLuint64EXT *capture_time);
+typedef void (REGAL_CALL *REGALGLVIDEOCAPTURESTREAMPARAMETERDVNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble *params);
+typedef void (REGAL_CALL *REGALGLVIDEOCAPTURESTREAMPARAMETERFVNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLVIDEOCAPTURESTREAMPARAMETERIVNVPROC)(RegalContext *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint *params);
+
+    // GL_OES_blend_equation_separate
+
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONSEPARATEOESPROC)(RegalContext *_context, GLenum modeRGB, GLenum modeAlpha);
+
+    // GL_OES_blend_func_separate
+
+typedef void (REGAL_CALL *REGALGLBLENDFUNCSEPARATEOESPROC)(RegalContext *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+
+    // GL_OES_blend_subtract
+
+typedef void (REGAL_CALL *REGALGLBLENDEQUATIONOESPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_OES_framebuffer_object
+
+typedef void (REGAL_CALL *REGALGLBINDFRAMEBUFFEROESPROC)(RegalContext *_context, GLenum target, GLuint framebuffer);
+typedef void (REGAL_CALL *REGALGLBINDRENDERBUFFEROESPROC)(RegalContext *_context, GLenum target, GLuint renderbuffer);
+typedef GLenum (REGAL_CALL *REGALGLCHECKFRAMEBUFFERSTATUSOESPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLDELETEFRAMEBUFFERSOESPROC)(RegalContext *_context, GLsizei n, const GLuint *framebuffers);
+typedef void (REGAL_CALL *REGALGLDELETERENDERBUFFERSOESPROC)(RegalContext *_context, GLsizei n, const GLuint *renderbuffers);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERRENDERBUFFEROESPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE2DOESPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+typedef void (REGAL_CALL *REGALGLGENFRAMEBUFFERSOESPROC)(RegalContext *_context, GLsizei n, GLuint *framebuffers);
+typedef void (REGAL_CALL *REGALGLGENRENDERBUFFERSOESPROC)(RegalContext *_context, GLsizei n, GLuint *renderbuffers);
+typedef void (REGAL_CALL *REGALGLGENERATEMIPMAPOESPROC)(RegalContext *_context, GLenum target);
+typedef void (REGAL_CALL *REGALGLGETFRAMEBUFFERATTACHMENTPARAMETERIVOESPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETRENDERBUFFERPARAMETERIVOESPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef GLboolean (REGAL_CALL *REGALGLISFRAMEBUFFEROESPROC)(RegalContext *_context, GLuint framebuffer);
+typedef GLboolean (REGAL_CALL *REGALGLISRENDERBUFFEROESPROC)(RegalContext *_context, GLuint renderbuffer);
+typedef void (REGAL_CALL *REGALGLRENDERBUFFERSTORAGEOESPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+
+    // GL_OES_get_program_binary
+
+typedef void (REGAL_CALL *REGALGLGETPROGRAMBINARYOESPROC)(RegalContext *_context, GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary);
+typedef void (REGAL_CALL *REGALGLPROGRAMBINARYOESPROC)(RegalContext *_context, GLuint program, GLenum binaryFormat, const GLvoid *binary, GLint length);
+
+    // GL_OES_mapbuffer
+
+typedef void (REGAL_CALL *REGALGLGETBUFFERPOINTERVOESPROC)(RegalContext *_context, GLenum target, GLenum pname, GLvoid **params);
+typedef GLvoid *(REGAL_CALL *REGALGLMAPBUFFEROESPROC)(RegalContext *_context, GLenum target, GLenum access);
+typedef GLboolean (REGAL_CALL *REGALGLUNMAPBUFFEROESPROC)(RegalContext *_context, GLenum target);
+
+    // GL_OES_matrix_palette
+
+typedef void (REGAL_CALL *REGALGLCURRENTPALETTEMATRIXOESPROC)(RegalContext *_context, GLuint index);
+typedef void (REGAL_CALL *REGALGLMATRIXINDEXPOINTEROESPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLWEIGHTPOINTEROESPROC)(RegalContext *_context, GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
+
+    // GL_OES_single_precision
+
+typedef void (REGAL_CALL *REGALGLCLEARDEPTHFOESPROC)(RegalContext *_context, GLclampd depth);
+typedef void (REGAL_CALL *REGALGLCLIPPLANEFOESPROC)(RegalContext *_context, GLenum plane, const GLfloat *equation);
+typedef void (REGAL_CALL *REGALGLDEPTHRANGEFOESPROC)(RegalContext *_context, GLclampf n, GLclampf f);
+typedef void (REGAL_CALL *REGALGLFRUSTUMFOESPROC)(RegalContext *_context, GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+typedef void (REGAL_CALL *REGALGLGETCLIPPLANEFOESPROC)(RegalContext *_context, GLenum plane, GLfloat *equation);
+typedef void (REGAL_CALL *REGALGLORTHOFOESPROC)(RegalContext *_context, GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+
+    // GL_OES_texture_3D
+
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXIMAGE3DOESPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOMPRESSEDTEXSUBIMAGE3DOESPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+typedef void (REGAL_CALL *REGALGLCOPYTEXSUBIMAGE3DOESPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+typedef void (REGAL_CALL *REGALGLFRAMEBUFFERTEXTURE3DOESPROC)(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+typedef void (REGAL_CALL *REGALGLTEXIMAGE3DOESPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE3DOESPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+
+    // GL_OES_texture_cube_map
+
+typedef void (REGAL_CALL *REGALGLGETTEXGENFVOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETTEXGENIVOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETTEXGENXVOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *REGALGLTEXGENFOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLTEXGENFVOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLTEXGENIOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLTEXGENIVOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLTEXGENXOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLTEXGENXVOESPROC)(RegalContext *_context, GLenum coord, GLenum pname, const GLfixed *params);
+
+    // GL_OES_vertex_array_object
+
+typedef void (REGAL_CALL *REGALGLBINDVERTEXARRAYOESPROC)(RegalContext *_context, GLuint array);
+typedef void (REGAL_CALL *REGALGLDELETEVERTEXARRAYSOESPROC)(RegalContext *_context, GLsizei n, const GLuint *arrays);
+typedef void (REGAL_CALL *REGALGLGENVERTEXARRAYSOESPROC)(RegalContext *_context, GLsizei n, GLuint *arrays);
+typedef GLboolean (REGAL_CALL *REGALGLISVERTEXARRAYOESPROC)(RegalContext *_context, GLuint array);
+
+    // GL_PGI_misc_hints
+
+typedef void (REGAL_CALL *REGALGLHINTPGIPROC)(RegalContext *_context, GLenum target, GLint mode);
+
+    // GL_QCOM_alpha_test
+
+typedef void (REGAL_CALL *REGALGLALPHAFUNCQCOMPROC)(RegalContext *_context, GLenum func, GLclampf ref);
+
+    // GL_QCOM_driver_control
+
+typedef void (REGAL_CALL *REGALGLDISABLEDRIVERCONTROLQCOMPROC)(RegalContext *_context, GLuint driverControl);
+typedef void (REGAL_CALL *REGALGLENABLEDRIVERCONTROLQCOMPROC)(RegalContext *_context, GLuint driverControl);
+typedef void (REGAL_CALL *REGALGLGETDRIVERCONTROLSTRINGQCOMPROC)(RegalContext *_context, GLuint driverControl, GLsizei bufSize, GLsizei *length, GLchar *driverControlString);
+typedef void (REGAL_CALL *REGALGLGETDRIVERCONTROLSQCOMPROC)(RegalContext *_context, GLint *num, GLsizei size, GLuint *driverControls);
+
+    // GL_QCOM_extended_get
+
+typedef void (REGAL_CALL *REGALGLEXTGETBUFFERPOINTERVQCOMPROC)(RegalContext *_context, GLenum target, GLvoid **params);
+typedef void (REGAL_CALL *REGALGLEXTGETBUFFERSQCOMPROC)(RegalContext *_context, GLuint *buffers, GLint maxBuffers, GLint *numBuffers);
+typedef void (REGAL_CALL *REGALGLEXTGETFRAMEBUFFERSQCOMPROC)(RegalContext *_context, GLuint *framebuffers, GLint maxFramebuffers, GLint *numFramebuffers);
+typedef void (REGAL_CALL *REGALGLEXTGETRENDERBUFFERSQCOMPROC)(RegalContext *_context, GLuint *renderbuffers, GLint maxRenderbuffers, GLint *numRenderbuffers);
+typedef void (REGAL_CALL *REGALGLEXTGETTEXLEVELPARAMETERIVQCOMPROC)(RegalContext *_context, GLuint texture, GLenum face, GLint level, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLEXTGETTEXSUBIMAGEQCOMPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLvoid *texels);
+typedef void (REGAL_CALL *REGALGLEXTGETTEXTURESQCOMPROC)(RegalContext *_context, GLuint *textures, GLint maxTextures, GLint *numTextures);
+typedef void (REGAL_CALL *REGALGLEXTTEXOBJECTSTATEOVERRIDEIQCOMPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint param);
+
+    // GL_QCOM_extended_get2
+
+typedef void (REGAL_CALL *REGALGLEXTGETPROGRAMBINARYSOURCEQCOMPROC)(RegalContext *_context, GLuint program, GLenum shadertype, GLchar *source, GLint *length);
+typedef void (REGAL_CALL *REGALGLEXTGETPROGRAMSQCOMPROC)(RegalContext *_context, GLuint *programs, GLint maxPrograms, GLint *numPrograms);
+typedef void (REGAL_CALL *REGALGLEXTGETSHADERSQCOMPROC)(RegalContext *_context, GLuint *shaders, GLint maxShaders, GLint *numShaders);
+typedef GLboolean (REGAL_CALL *REGALGLEXTISPROGRAMBINARYQCOMPROC)(RegalContext *_context, GLuint program);
+
+    // GL_QCOM_tiled_rendering
+
+typedef void (REGAL_CALL *REGALGLENDTILINGQCOMPROC)(RegalContext *_context, GLbitfield preserveMask);
+typedef void (REGAL_CALL *REGALGLSTARTTILINGQCOMPROC)(RegalContext *_context, GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask);
+
+    // GL_REGAL_ES1_0_compatibility
+
+typedef void (REGAL_CALL *REGALGLALPHAFUNCXPROC)(RegalContext *_context, GLenum func, GLclampx ref);
+typedef void (REGAL_CALL *REGALGLCLEARCOLORXPROC)(RegalContext *_context, GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha);
+typedef void (REGAL_CALL *REGALGLCLEARDEPTHXPROC)(RegalContext *_context, GLclampx depth);
+typedef void (REGAL_CALL *REGALGLCOLOR4XPROC)(RegalContext *_context, GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+typedef void (REGAL_CALL *REGALGLDEPTHRANGEXPROC)(RegalContext *_context, GLclampx zNear, GLclampx zFar);
+typedef void (REGAL_CALL *REGALGLFOGXPROC)(RegalContext *_context, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLFOGXVPROC)(RegalContext *_context, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *REGALGLFRUSTUMFPROC)(RegalContext *_context, GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+typedef void (REGAL_CALL *REGALGLFRUSTUMXPROC)(RegalContext *_context, GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+typedef void (REGAL_CALL *REGALGLLIGHTMODELXPROC)(RegalContext *_context, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLLIGHTMODELXVPROC)(RegalContext *_context, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *REGALGLLIGHTXPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLLIGHTXVPROC)(RegalContext *_context, GLenum light, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *REGALGLLINEWIDTHXPROC)(RegalContext *_context, GLfixed width);
+typedef void (REGAL_CALL *REGALGLLOADMATRIXXPROC)(RegalContext *_context, const GLfixed *m);
+typedef void (REGAL_CALL *REGALGLMATERIALXPROC)(RegalContext *_context, GLenum face, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLMATERIALXVPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *REGALGLMULTMATRIXXPROC)(RegalContext *_context, const GLfixed *m);
+typedef void (REGAL_CALL *REGALGLMULTITEXCOORD4XPROC)(RegalContext *_context, GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+typedef void (REGAL_CALL *REGALGLNORMAL3XPROC)(RegalContext *_context, GLfixed nx, GLfixed ny, GLfixed nz);
+typedef void (REGAL_CALL *REGALGLORTHOFPROC)(RegalContext *_context, GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+typedef void (REGAL_CALL *REGALGLORTHOXPROC)(RegalContext *_context, GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+typedef void (REGAL_CALL *REGALGLPOINTSIZEXPROC)(RegalContext *_context, GLfixed size);
+typedef void (REGAL_CALL *REGALGLPOLYGONOFFSETXPROC)(RegalContext *_context, GLfixed factor, GLfixed units);
+typedef void (REGAL_CALL *REGALGLROTATEXPROC)(RegalContext *_context, GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+typedef void (REGAL_CALL *REGALGLSAMPLECOVERAGEXPROC)(RegalContext *_context, GLclampx value, GLboolean invert);
+typedef void (REGAL_CALL *REGALGLSCALEXPROC)(RegalContext *_context, GLfixed x, GLfixed y, GLfixed z);
+typedef void (REGAL_CALL *REGALGLTEXENVXPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLTEXENVXVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERXPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLTRANSLATEXPROC)(RegalContext *_context, GLfixed x, GLfixed y, GLfixed z);
+
+    // GL_REGAL_ES1_1_compatibility
+
+typedef void (REGAL_CALL *REGALGLCLIPPLANEFPROC)(RegalContext *_context, GLenum plane, const GLfloat *equation);
+typedef void (REGAL_CALL *REGALGLCLIPPLANEXPROC)(RegalContext *_context, GLenum plane, const GLfixed *equation);
+typedef void (REGAL_CALL *REGALGLGETCLIPPLANEFPROC)(RegalContext *_context, GLenum pname, GLfloat *eqn);
+typedef void (REGAL_CALL *REGALGLGETCLIPPLANEXPROC)(RegalContext *_context, GLenum pname, GLfixed *eqn);
+typedef void (REGAL_CALL *REGALGLGETFIXEDVPROC)(RegalContext *_context, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *REGALGLGETLIGHTXVPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *REGALGLGETMATERIALXVPROC)(RegalContext *_context, GLenum face, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *REGALGLGETTEXENVXVPROC)(RegalContext *_context, GLenum env, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *REGALGLGETTEXPARAMETERXVPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfixed *params);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERXPROC)(RegalContext *_context, GLenum pname, GLfixed param);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERXVPROC)(RegalContext *_context, GLenum pname, const GLfixed *params);
+typedef void (REGAL_CALL *REGALGLPOINTSIZEPOINTEROESPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+typedef void (REGAL_CALL *REGALGLTEXPARAMETERXVPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfixed *params);
+
+    // GL_REGAL_log
+
+typedef void (REGAL_CALL *REGALGLLOGMESSAGECALLBACKREGALPROC)(RegalContext *_context, GLLOGPROCREGAL callback);
+
+    // GL_SGIS_detail_texture
+
+typedef void (REGAL_CALL *REGALGLDETAILTEXFUNCSGISPROC)(RegalContext *_context, GLenum target, GLsizei n, const GLfloat *points);
+typedef void (REGAL_CALL *REGALGLGETDETAILTEXFUNCSGISPROC)(RegalContext *_context, GLenum target, GLfloat *points);
+
+    // GL_SGIS_fog_function
+
+typedef void (REGAL_CALL *REGALGLFOGFUNCSGISPROC)(RegalContext *_context, GLsizei n, const GLfloat *points);
+typedef void (REGAL_CALL *REGALGLGETFOGFUNCSGISPROC)(RegalContext *_context, GLfloat *points);
+
+    // GL_SGIS_multisample
+
+typedef void (REGAL_CALL *REGALGLSAMPLEMASKSGISPROC)(RegalContext *_context, GLclampf value, GLboolean invert);
+typedef void (REGAL_CALL *REGALGLSAMPLEPATTERNSGISPROC)(RegalContext *_context, GLenum pattern);
+
+    // GL_SGIS_pixel_texture
+
+typedef void (REGAL_CALL *REGALGLGETPIXELTEXGENPARAMETERFVSGISPROC)(RegalContext *_context, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETPIXELTEXGENPARAMETERIVSGISPROC)(RegalContext *_context, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLPIXELTEXGENPARAMETERFSGISPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPIXELTEXGENPARAMETERFVSGISPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLPIXELTEXGENPARAMETERISGISPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLPIXELTEXGENPARAMETERIVSGISPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+
+    // GL_SGIS_point_parameters
+
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFSGISPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLPOINTPARAMETERFVSGISPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+
+    // GL_SGIS_sharpen_texture
+
+typedef void (REGAL_CALL *REGALGLGETSHARPENTEXFUNCSGISPROC)(RegalContext *_context, GLenum target, GLfloat *points);
+typedef void (REGAL_CALL *REGALGLSHARPENTEXFUNCSGISPROC)(RegalContext *_context, GLenum target, GLsizei n, const GLfloat *points);
+
+    // GL_SGIS_texture4D
+
+typedef void (REGAL_CALL *REGALGLTEXIMAGE4DSGISPROC)(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+typedef void (REGAL_CALL *REGALGLTEXSUBIMAGE4DSGISPROC)(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const GLvoid *pixels);
+
+    // GL_SGIS_texture_color_mask
+
+typedef void (REGAL_CALL *REGALGLTEXTURECOLORMASKSGISPROC)(RegalContext *_context, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+
+    // GL_SGIS_texture_filter4
+
+typedef void (REGAL_CALL *REGALGLGETTEXFILTERFUNCSGISPROC)(RegalContext *_context, GLenum target, GLenum filter, GLfloat *weights);
+typedef void (REGAL_CALL *REGALGLTEXFILTERFUNCSGISPROC)(RegalContext *_context, GLenum target, GLenum filter, GLsizei n, const GLfloat *weights);
+
+    // GL_SGIX_async
+
+typedef void (REGAL_CALL *REGALGLASYNCMARKERSGIXPROC)(RegalContext *_context, GLuint marker);
+typedef void (REGAL_CALL *REGALGLDELETEASYNCMARKERSSGIXPROC)(RegalContext *_context, GLuint marker, GLsizei range);
+typedef GLint (REGAL_CALL *REGALGLFINISHASYNCSGIXPROC)(RegalContext *_context, GLuint *markerp);
+typedef GLuint (REGAL_CALL *REGALGLGENASYNCMARKERSSGIXPROC)(RegalContext *_context, GLsizei range);
+typedef GLboolean (REGAL_CALL *REGALGLISASYNCMARKERSGIXPROC)(RegalContext *_context, GLuint marker);
+typedef GLint (REGAL_CALL *REGALGLPOLLASYNCSGIXPROC)(RegalContext *_context, GLuint *markerp);
+
+    // GL_SGIX_flush_raster
+
+typedef void (REGAL_CALL *REGALGLFLUSHRASTERSGIXPROC)(RegalContext *_context);
+
+    // GL_SGIX_fog_texture
+
+typedef void (REGAL_CALL *REGALGLTEXTUREFOGSGIXPROC)(RegalContext *_context, GLenum pname);
+
+    // GL_SGIX_fragment_lighting
+
+typedef void (REGAL_CALL *REGALGLFRAGMENTCOLORMATERIALSGIXPROC)(RegalContext *_context, GLenum face, GLenum mode);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELFSGIXPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELFVSGIXPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELISGIXPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTMODELIVSGIXPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTFSGIXPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTFVSGIXPROC)(RegalContext *_context, GLenum light, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTISGIXPROC)(RegalContext *_context, GLenum light, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTLIGHTIVSGIXPROC)(RegalContext *_context, GLenum light, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALFSGIXPROC)(RegalContext *_context, GLenum face, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALFVSGIXPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALISGIXPROC)(RegalContext *_context, GLenum face, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLFRAGMENTMATERIALIVSGIXPROC)(RegalContext *_context, GLenum face, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTLIGHTFVSGIXPROC)(RegalContext *_context, GLenum light, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTLIGHTIVSGIXPROC)(RegalContext *_context, GLenum light, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTMATERIALFVSGIXPROC)(RegalContext *_context, GLenum face, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETFRAGMENTMATERIALIVSGIXPROC)(RegalContext *_context, GLenum face, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLLIGHTENVISGIXPROC)(RegalContext *_context, GLenum pname, GLint param);
+
+    // GL_SGIX_framezoom
+
+typedef void (REGAL_CALL *REGALGLFRAMEZOOMSGIXPROC)(RegalContext *_context, GLint factor);
+
+    // GL_SGIX_igloo_interface
+
+typedef void (REGAL_CALL *REGALGLIGLOOINTERFACESGIXPROC)(RegalContext *_context, GLenum pname, const GLvoid *params);
+
+    // GL_SGIX_instruments
+
+typedef GLint (REGAL_CALL *REGALGLGETINSTRUMENTSSGIXPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLINSTRUMENTSBUFFERSGIXPROC)(RegalContext *_context, GLsizei size, GLint *buffer);
+typedef GLint (REGAL_CALL *REGALGLPOLLINSTRUMENTSSGIXPROC)(RegalContext *_context, GLint *marker_p);
+typedef void (REGAL_CALL *REGALGLREADINSTRUMENTSSGIXPROC)(RegalContext *_context, GLint marker);
+typedef void (REGAL_CALL *REGALGLSTARTINSTRUMENTSSGIXPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLSTOPINSTRUMENTSSGIXPROC)(RegalContext *_context, GLint marker);
+
+    // GL_SGIX_list_priority
+
+typedef void (REGAL_CALL *REGALGLGETLISTPARAMETERFVSGIXPROC)(RegalContext *_context, GLuint list, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETLISTPARAMETERIVSGIXPROC)(RegalContext *_context, GLuint list, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLLISTPARAMETERFSGIXPROC)(RegalContext *_context, GLuint list, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLLISTPARAMETERFVSGIXPROC)(RegalContext *_context, GLuint list, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLLISTPARAMETERISGIXPROC)(RegalContext *_context, GLuint list, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLLISTPARAMETERIVSGIXPROC)(RegalContext *_context, GLuint list, GLenum pname, const GLint *params);
+
+    // GL_SGIX_pixel_texture
+
+typedef void (REGAL_CALL *REGALGLPIXELTEXGENSGIXPROC)(RegalContext *_context, GLenum mode);
+
+    // GL_SGIX_polynomial_ffd
+
+typedef void (REGAL_CALL *REGALGLDEFORMSGIXPROC)(RegalContext *_context, GLbitfield mask);
+typedef void (REGAL_CALL *REGALGLDEFORMATIONMAP3DSGIXPROC)(RegalContext *_context, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, GLdouble w1, GLdouble w2, GLint wstride, GLint worder, const GLdouble *points);
+typedef void (REGAL_CALL *REGALGLDEFORMATIONMAP3FSGIXPROC)(RegalContext *_context, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, GLfloat w1, GLfloat w2, GLint wstride, GLint worder, const GLfloat *points);
+typedef void (REGAL_CALL *REGALGLLOADIDENTITYDEFORMATIONMAPSGIXPROC)(RegalContext *_context, GLbitfield mask);
+
+    // GL_SGIX_reference_plane
+
+typedef void (REGAL_CALL *REGALGLREFERENCEPLANESGIXPROC)(RegalContext *_context, const GLdouble *equation);
+
+    // GL_SGIX_sprite
+
+typedef void (REGAL_CALL *REGALGLSPRITEPARAMETERFSGIXPROC)(RegalContext *_context, GLenum pname, GLfloat param);
+typedef void (REGAL_CALL *REGALGLSPRITEPARAMETERFVSGIXPROC)(RegalContext *_context, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLSPRITEPARAMETERISGIXPROC)(RegalContext *_context, GLenum pname, GLint param);
+typedef void (REGAL_CALL *REGALGLSPRITEPARAMETERIVSGIXPROC)(RegalContext *_context, GLenum pname, const GLint *params);
+
+    // GL_SGIX_tag_sample_buffer
+
+typedef void (REGAL_CALL *REGALGLTAGSAMPLEBUFFERSGIXPROC)(RegalContext *_context);
+
+    // GL_SGI_color_table
+
+typedef void (REGAL_CALL *REGALGLCOLORTABLEPARAMETERFVSGIPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params);
+typedef void (REGAL_CALL *REGALGLCOLORTABLEPARAMETERIVSGIPROC)(RegalContext *_context, GLenum target, GLenum pname, const GLint *params);
+typedef void (REGAL_CALL *REGALGLCOLORTABLESGIPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
+typedef void (REGAL_CALL *REGALGLCOPYCOLORTABLESGIPROC)(RegalContext *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEPARAMETERFVSGIPROC)(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLEPARAMETERIVSGIPROC)(RegalContext *_context, GLenum target, GLenum pname, GLint *params);
+typedef void (REGAL_CALL *REGALGLGETCOLORTABLESGIPROC)(RegalContext *_context, GLenum target, GLenum format, GLenum type, GLvoid *table);
+
+    // GL_SUNX_constant_data
+
+typedef void (REGAL_CALL *REGALGLFINISHTEXTURESUNXPROC)(RegalContext *_context);
+
+    // GL_SUN_global_alpha
+
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORBSUNPROC)(RegalContext *_context, GLbyte factor);
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORDSUNPROC)(RegalContext *_context, GLdouble factor);
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORFSUNPROC)(RegalContext *_context, GLfloat factor);
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORISUNPROC)(RegalContext *_context, GLint factor);
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORSSUNPROC)(RegalContext *_context, GLshort factor);
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORUBSUNPROC)(RegalContext *_context, GLubyte factor);
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORUISUNPROC)(RegalContext *_context, GLuint factor);
+typedef void (REGAL_CALL *REGALGLGLOBALALPHAFACTORUSSUNPROC)(RegalContext *_context, GLushort factor);
+
+    // GL_SUN_mesh_array
+
+typedef void (REGAL_CALL *REGALGLDRAWMESHARRAYSSUNPROC)(RegalContext *_context, GLenum mode, GLint first, GLsizei count, GLsizei width);
+
+    // GL_SUN_read_video_pixels
+
+typedef void (REGAL_CALL *REGALGLREADVIDEOPIXELSSUNPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
+
+    // GL_SUN_triangle_list
+
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEPOINTERSUNPROC)(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid **pointer);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUBSUNPROC)(RegalContext *_context, GLubyte code);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUBVSUNPROC)(RegalContext *_context, const GLubyte *code);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUISUNPROC)(RegalContext *_context, GLuint code);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUIVSUNPROC)(RegalContext *_context, const GLuint *code);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUSSUNPROC)(RegalContext *_context, GLushort code);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUSVSUNPROC)(RegalContext *_context, const GLushort *code);
+
+    // GL_SUN_vertex
+
+typedef void (REGAL_CALL *REGALGLCOLOR3FVERTEX3FSUNPROC)(RegalContext *_context, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLCOLOR3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *c, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4FNORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLCOLOR4FNORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4UBVERTEX2FSUNPROC)(RegalContext *_context, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y);
+typedef void (REGAL_CALL *REGALGLCOLOR4UBVERTEX2FVSUNPROC)(RegalContext *_context, const GLubyte *c, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLCOLOR4UBVERTEX3FSUNPROC)(RegalContext *_context, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLCOLOR4UBVERTEX3FVSUNPROC)(RegalContext *_context, const GLubyte *c, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLNORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLNORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUICOLOR3FVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUICOLOR3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLfloat *c, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUICOLOR4FNORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUICOLOR4FNORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUICOLOR4UBVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUICOLOR4UBVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLubyte *c, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUINORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUINORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUITEXCOORD2FCOLOR4FNORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUITEXCOORD2FCOLOR4FNORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUITEXCOORD2FNORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUITEXCOORD2FNORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLfloat *tc, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUITEXCOORD2FVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUITEXCOORD2FVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLfloat *tc, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUIVERTEX3FSUNPROC)(RegalContext *_context, GLuint rc, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLREPLACEMENTCODEUIVERTEX3FVSUNPROC)(RegalContext *_context, const GLuint *rc, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FCOLOR3FVERTEX3FSUNPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FCOLOR3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *tc, const GLfloat *c, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FCOLOR4FNORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FCOLOR4FNORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FCOLOR4UBVERTEX3FSUNPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FCOLOR4UBVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *tc, const GLubyte *c, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FNORMAL3FVERTEX3FSUNPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FNORMAL3FVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *tc, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FVERTEX3FSUNPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
+typedef void (REGAL_CALL *REGALGLTEXCOORD2FVERTEX3FVSUNPROC)(RegalContext *_context, const GLfloat *tc, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FVSUNPROC)(RegalContext *_context, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4FVERTEX4FSUNPROC)(RegalContext *_context, GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+typedef void (REGAL_CALL *REGALGLTEXCOORD4FVERTEX4FVSUNPROC)(RegalContext *_context, const GLfloat *tc, const GLfloat *v);
+
+    // GL_WIN_swap_hint
+
+typedef void (REGAL_CALL *REGALGLADDSWAPHINTRECTWINPROC)(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height);
 
 #if REGAL_SYS_WGL
     // WGL_3DL_stereo_control
 
-    PFNWGLSETSTEREOEMITTERSTATE3DLPROC wglSetStereoEmitterState3DL;
+typedef BOOL (REGAL_CALL *REGALWGLSETSTEREOEMITTERSTATE3DLPROC)(RegalContext *_context, HDC hDC, UINT uState);
 
     // WGL_AMD_gpu_association
 
-    PFNWGLBLITCONTEXTFRAMEBUFFERAMDPROC wglBlitContextFramebufferAMD;
-    PFNWGLCREATEASSOCIATEDCONTEXTAMDPROC wglCreateAssociatedContextAMD;
-    PFNWGLCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC wglCreateAssociatedContextAttribsAMD;
-    PFNWGLDELETEASSOCIATEDCONTEXTAMDPROC wglDeleteAssociatedContextAMD;
-    PFNWGLGETCONTEXTGPUIDAMDPROC wglGetContextGPUIDAMD;
-    PFNWGLGETCURRENTASSOCIATEDCONTEXTAMDPROC wglGetCurrentAssociatedContextAMD;
-    PFNWGLGETGPUIDSAMDPROC wglGetGPUIDsAMD;
-    PFNWGLGETGPUINFOAMDPROC wglGetGPUInfoAMD;
-    PFNWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC wglMakeAssociatedContextCurrentAMD;
+typedef VOID (REGAL_CALL *REGALWGLBLITCONTEXTFRAMEBUFFERAMDPROC)(RegalContext *_context, HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+typedef HGLRC (REGAL_CALL *REGALWGLCREATEASSOCIATEDCONTEXTAMDPROC)(RegalContext *_context, UINT id);
+typedef HGLRC (REGAL_CALL *REGALWGLCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC)(RegalContext *_context, UINT id, HGLRC hShareContext, const int *attribList);
+typedef BOOL (REGAL_CALL *REGALWGLDELETEASSOCIATEDCONTEXTAMDPROC)(RegalContext *_context, HGLRC hglrc);
+typedef UINT (REGAL_CALL *REGALWGLGETCONTEXTGPUIDAMDPROC)(RegalContext *_context, HGLRC hglrc);
+typedef HGLRC (REGAL_CALL *REGALWGLGETCURRENTASSOCIATEDCONTEXTAMDPROC)(RegalContext *_context);
+typedef UINT (REGAL_CALL *REGALWGLGETGPUIDSAMDPROC)(RegalContext *_context, UINT maxCount, UINT *ids);
+typedef INT (REGAL_CALL *REGALWGLGETGPUINFOAMDPROC)(RegalContext *_context, UINT id, int property, GLenum dataType, UINT size, void *data);
+typedef BOOL (REGAL_CALL *REGALWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC)(RegalContext *_context, HGLRC hglrc);
 
     // WGL_ARB_buffer_region
 
-    PFNWGLCREATEBUFFERREGIONARBPROC wglCreateBufferRegionARB;
-    PFNWGLDELETEBUFFERREGIONARBPROC wglDeleteBufferRegionARB;
-    PFNWGLRESTOREBUFFERREGIONARBPROC wglRestoreBufferRegionARB;
-    PFNWGLSAVEBUFFERREGIONARBPROC wglSaveBufferRegionARB;
+typedef HANDLE (REGAL_CALL *REGALWGLCREATEBUFFERREGIONARBPROC)(RegalContext *_context, HDC hDC, int iLayerPlane, UINT uType);
+typedef VOID (REGAL_CALL *REGALWGLDELETEBUFFERREGIONARBPROC)(RegalContext *_context, HANDLE hRegion);
+typedef BOOL (REGAL_CALL *REGALWGLRESTOREBUFFERREGIONARBPROC)(RegalContext *_context, HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
+typedef BOOL (REGAL_CALL *REGALWGLSAVEBUFFERREGIONARBPROC)(RegalContext *_context, HANDLE hRegion, int x, int y, int width, int height);
 
     // WGL_ARB_create_context
 
-    PFNWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB;
+typedef HGLRC (REGAL_CALL *REGALWGLCREATECONTEXTATTRIBSARBPROC)(RegalContext *_context, HDC hDC, HGLRC hShareContext, const int *piAttribList);
 
     // WGL_ARB_extensions_string
 
-    PFNWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB;
+typedef const char *(REGAL_CALL *REGALWGLGETEXTENSIONSSTRINGARBPROC)(RegalContext *_context, HDC hDC);
 
     // WGL_ARB_make_current_read
 
-    PFNWGLGETCURRENTREADDCARBPROC wglGetCurrentReadDCARB;
-    PFNWGLMAKECONTEXTCURRENTARBPROC wglMakeContextCurrentARB;
+typedef HDC (REGAL_CALL *REGALWGLGETCURRENTREADDCARBPROC)(RegalContext *_context);
+typedef BOOL (REGAL_CALL *REGALWGLMAKECONTEXTCURRENTARBPROC)(RegalContext *_context, HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 
     // WGL_ARB_pbuffer
 
-    PFNWGLCREATEPBUFFERARBPROC wglCreatePbufferARB;
-    PFNWGLDESTROYPBUFFERARBPROC wglDestroyPbufferARB;
-    PFNWGLGETPBUFFERDCARBPROC wglGetPbufferDCARB;
-    PFNWGLQUERYPBUFFERARBPROC wglQueryPbufferARB;
-    PFNWGLRELEASEPBUFFERDCARBPROC wglReleasePbufferDCARB;
+typedef HPBUFFERARB (REGAL_CALL *REGALWGLCREATEPBUFFERARBPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
+typedef BOOL (REGAL_CALL *REGALWGLDESTROYPBUFFERARBPROC)(RegalContext *_context, HPBUFFERARB hPbuffer);
+typedef HDC (REGAL_CALL *REGALWGLGETPBUFFERDCARBPROC)(RegalContext *_context, HPBUFFERARB hPbuffer);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYPBUFFERARBPROC)(RegalContext *_context, HPBUFFERARB hPbuffer, int iAttribute, int *piValue);
+typedef int (REGAL_CALL *REGALWGLRELEASEPBUFFERDCARBPROC)(RegalContext *_context, HPBUFFERARB hPbuffer, HDC hDC);
 
     // WGL_ARB_pixel_format
 
-    PFNWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB;
-    PFNWGLGETPIXELFORMATATTRIBFVARBPROC wglGetPixelFormatAttribfvARB;
-    PFNWGLGETPIXELFORMATATTRIBIVARBPROC wglGetPixelFormatAttribivARB;
+typedef BOOL (REGAL_CALL *REGALWGLCHOOSEPIXELFORMATARBPROC)(RegalContext *_context, HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
+typedef BOOL (REGAL_CALL *REGALWGLGETPIXELFORMATATTRIBFVARBPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
+typedef BOOL (REGAL_CALL *REGALWGLGETPIXELFORMATATTRIBIVARBPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
 
     // WGL_ARB_render_texture
 
-    PFNWGLBINDTEXIMAGEARBPROC wglBindTexImageARB;
-    PFNWGLRELEASETEXIMAGEARBPROC wglReleaseTexImageARB;
-    PFNWGLSETPBUFFERATTRIBARBPROC wglSetPbufferAttribARB;
+typedef BOOL (REGAL_CALL *REGALWGLBINDTEXIMAGEARBPROC)(RegalContext *_context, HPBUFFERARB hPbuffer, int iBuffer);
+typedef BOOL (REGAL_CALL *REGALWGLRELEASETEXIMAGEARBPROC)(RegalContext *_context, HPBUFFERARB hPbuffer, int iBuffer);
+typedef BOOL (REGAL_CALL *REGALWGLSETPBUFFERATTRIBARBPROC)(RegalContext *_context, HPBUFFERARB hPbuffer, const int *piAttribList);
 
     // WGL_EXT_display_color_table
 
-    PFNWGLBINDDISPLAYCOLORTABLEEXTPROC wglBindDisplayColorTableEXT;
-    PFNWGLCREATEDISPLAYCOLORTABLEEXTPROC wglCreateDisplayColorTableEXT;
-    PFNWGLDESTROYDISPLAYCOLORTABLEEXTPROC wglDestroyDisplayColorTableEXT;
-    PFNWGLLOADDISPLAYCOLORTABLEEXTPROC wglLoadDisplayColorTableEXT;
+typedef GLboolean (REGAL_CALL *REGALWGLBINDDISPLAYCOLORTABLEEXTPROC)(RegalContext *_context, GLushort id);
+typedef GLboolean (REGAL_CALL *REGALWGLCREATEDISPLAYCOLORTABLEEXTPROC)(RegalContext *_context, GLushort id);
+typedef VOID (REGAL_CALL *REGALWGLDESTROYDISPLAYCOLORTABLEEXTPROC)(RegalContext *_context, GLushort id);
+typedef GLboolean (REGAL_CALL *REGALWGLLOADDISPLAYCOLORTABLEEXTPROC)(RegalContext *_context, const GLushort *table, GLuint length);
 
     // WGL_EXT_extensions_string
 
-    PFNWGLGETEXTENSIONSSTRINGEXTPROC wglGetExtensionsStringEXT;
+typedef const char *(REGAL_CALL *REGALWGLGETEXTENSIONSSTRINGEXTPROC)(RegalContext *_context);
 
     // WGL_EXT_make_current_read
 
-    PFNWGLGETCURRENTREADDCEXTPROC wglGetCurrentReadDCEXT;
-    PFNWGLMAKECONTEXTCURRENTEXTPROC wglMakeContextCurrentEXT;
+typedef HDC (REGAL_CALL *REGALWGLGETCURRENTREADDCEXTPROC)(RegalContext *_context);
+typedef BOOL (REGAL_CALL *REGALWGLMAKECONTEXTCURRENTEXTPROC)(RegalContext *_context, HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
 
     // WGL_EXT_pbuffer
 
-    PFNWGLCREATEPBUFFEREXTPROC wglCreatePbufferEXT;
-    PFNWGLDESTROYPBUFFEREXTPROC wglDestroyPbufferEXT;
-    PFNWGLGETPBUFFERDCEXTPROC wglGetPbufferDCEXT;
-    PFNWGLQUERYPBUFFEREXTPROC wglQueryPbufferEXT;
-    PFNWGLRELEASEPBUFFERDCEXTPROC wglReleasePbufferDCEXT;
+typedef HPBUFFEREXT (REGAL_CALL *REGALWGLCREATEPBUFFEREXTPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
+typedef BOOL (REGAL_CALL *REGALWGLDESTROYPBUFFEREXTPROC)(RegalContext *_context, HPBUFFEREXT hPbuffer);
+typedef HDC (REGAL_CALL *REGALWGLGETPBUFFERDCEXTPROC)(RegalContext *_context, HPBUFFEREXT hPbuffer);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYPBUFFEREXTPROC)(RegalContext *_context, HPBUFFEREXT hPbuffer, int iAttribute, int *piValue);
+typedef int (REGAL_CALL *REGALWGLRELEASEPBUFFERDCEXTPROC)(RegalContext *_context, HPBUFFEREXT hPbuffer, HDC hDC);
 
     // WGL_EXT_pixel_format
 
-    PFNWGLCHOOSEPIXELFORMATEXTPROC wglChoosePixelFormatEXT;
-    PFNWGLGETPIXELFORMATATTRIBFVEXTPROC wglGetPixelFormatAttribfvEXT;
-    PFNWGLGETPIXELFORMATATTRIBIVEXTPROC wglGetPixelFormatAttribivEXT;
+typedef BOOL (REGAL_CALL *REGALWGLCHOOSEPIXELFORMATEXTPROC)(RegalContext *_context, HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
+typedef BOOL (REGAL_CALL *REGALWGLGETPIXELFORMATATTRIBFVEXTPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
+typedef BOOL (REGAL_CALL *REGALWGLGETPIXELFORMATATTRIBIVEXTPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
 
     // WGL_EXT_swap_control
 
-    PFNWGLGETSWAPINTERVALEXTPROC wglGetSwapIntervalEXT;
-    PFNWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT;
+typedef int (REGAL_CALL *REGALWGLGETSWAPINTERVALEXTPROC)(RegalContext *_context);
+typedef BOOL (REGAL_CALL *REGALWGLSWAPINTERVALEXTPROC)(RegalContext *_context, int interval);
 
     // WGL_GDI
 
-    PFNSWAPBUFFERSPROC SwapBuffers;
-    PFNWGLCHOOSEPIXELFORMATPROC wglChoosePixelFormat;
-    PFNWGLDESCRIBEPIXELFORMATPROC wglDescribePixelFormat;
-    PFNWGLGETPIXELFORMATPROC wglGetPixelFormat;
-    PFNWGLSETPIXELFORMATPROC wglSetPixelFormat;
-    PFNWGLSWAPBUFFERSPROC wglSwapBuffers;
+typedef BOOL (REGAL_CALL *REGALSWAPBUFFERSPROC)(RegalContext *_context, HDC hDC);
+typedef int (REGAL_CALL *REGALWGLCHOOSEPIXELFORMATPROC)(RegalContext *_context, HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd);
+typedef int (REGAL_CALL *REGALWGLDESCRIBEPIXELFORMATPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, UINT nBytes, LPPIXELFORMATDESCRIPTOR ppfd);
+typedef int (REGAL_CALL *REGALWGLGETPIXELFORMATPROC)(RegalContext *_context, HDC hDC);
+typedef BOOL (REGAL_CALL *REGALWGLSETPIXELFORMATPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd);
+typedef BOOL (REGAL_CALL *REGALWGLSWAPBUFFERSPROC)(RegalContext *_context, HDC hDC);
 
     // WGL_I3D_digital_video_control
 
-    PFNWGLGETDIGITALVIDEOPARAMETERSI3DPROC wglGetDigitalVideoParametersI3D;
-    PFNWGLSETDIGITALVIDEOPARAMETERSI3DPROC wglSetDigitalVideoParametersI3D;
+typedef BOOL (REGAL_CALL *REGALWGLGETDIGITALVIDEOPARAMETERSI3DPROC)(RegalContext *_context, HDC hDC, int iAttribute, int *piValue);
+typedef BOOL (REGAL_CALL *REGALWGLSETDIGITALVIDEOPARAMETERSI3DPROC)(RegalContext *_context, HDC hDC, int iAttribute, const int *piValue);
 
     // WGL_I3D_gamma
 
-    PFNWGLGETGAMMATABLEI3DPROC wglGetGammaTableI3D;
-    PFNWGLGETGAMMATABLEPARAMETERSI3DPROC wglGetGammaTableParametersI3D;
-    PFNWGLSETGAMMATABLEI3DPROC wglSetGammaTableI3D;
-    PFNWGLSETGAMMATABLEPARAMETERSI3DPROC wglSetGammaTableParametersI3D;
+typedef BOOL (REGAL_CALL *REGALWGLGETGAMMATABLEI3DPROC)(RegalContext *_context, HDC hDC, int iEntries, USHORT *puRed, USHORT *puGreen, USHORT *puBlue);
+typedef BOOL (REGAL_CALL *REGALWGLGETGAMMATABLEPARAMETERSI3DPROC)(RegalContext *_context, HDC hDC, int iAttribute, int *piValue);
+typedef BOOL (REGAL_CALL *REGALWGLSETGAMMATABLEI3DPROC)(RegalContext *_context, HDC hDC, int iEntries, const USHORT *puRed, const USHORT *puGreen, const USHORT *puBlue);
+typedef BOOL (REGAL_CALL *REGALWGLSETGAMMATABLEPARAMETERSI3DPROC)(RegalContext *_context, HDC hDC, int iAttribute, const int *piValue);
 
     // WGL_I3D_genlock
 
-    PFNWGLDISABLEGENLOCKI3DPROC wglDisableGenlockI3D;
-    PFNWGLENABLEGENLOCKI3DPROC wglEnableGenlockI3D;
-    PFNWGLGENLOCKSAMPLERATEI3DPROC wglGenlockSampleRateI3D;
-    PFNWGLGENLOCKSOURCEDELAYI3DPROC wglGenlockSourceDelayI3D;
-    PFNWGLGENLOCKSOURCEEDGEI3DPROC wglGenlockSourceEdgeI3D;
-    PFNWGLGENLOCKSOURCEI3DPROC wglGenlockSourceI3D;
-    PFNWGLGETGENLOCKSAMPLERATEI3DPROC wglGetGenlockSampleRateI3D;
-    PFNWGLGETGENLOCKSOURCEDELAYI3DPROC wglGetGenlockSourceDelayI3D;
-    PFNWGLGETGENLOCKSOURCEEDGEI3DPROC wglGetGenlockSourceEdgeI3D;
-    PFNWGLGETGENLOCKSOURCEI3DPROC wglGetGenlockSourceI3D;
-    PFNWGLISENABLEDGENLOCKI3DPROC wglIsEnabledGenlockI3D;
-    PFNWGLQUERYGENLOCKMAXSOURCEDELAYI3DPROC wglQueryGenlockMaxSourceDelayI3D;
+typedef BOOL (REGAL_CALL *REGALWGLDISABLEGENLOCKI3DPROC)(RegalContext *_context, HDC hDC);
+typedef BOOL (REGAL_CALL *REGALWGLENABLEGENLOCKI3DPROC)(RegalContext *_context, HDC hDC);
+typedef BOOL (REGAL_CALL *REGALWGLGENLOCKSAMPLERATEI3DPROC)(RegalContext *_context, HDC hDC, UINT uRate);
+typedef BOOL (REGAL_CALL *REGALWGLGENLOCKSOURCEDELAYI3DPROC)(RegalContext *_context, HDC hDC, UINT uDelay);
+typedef BOOL (REGAL_CALL *REGALWGLGENLOCKSOURCEEDGEI3DPROC)(RegalContext *_context, HDC hDC, UINT uEdge);
+typedef BOOL (REGAL_CALL *REGALWGLGENLOCKSOURCEI3DPROC)(RegalContext *_context, HDC hDC, UINT uSource);
+typedef BOOL (REGAL_CALL *REGALWGLGETGENLOCKSAMPLERATEI3DPROC)(RegalContext *_context, HDC hDC, UINT *uRate);
+typedef BOOL (REGAL_CALL *REGALWGLGETGENLOCKSOURCEDELAYI3DPROC)(RegalContext *_context, HDC hDC, UINT *uDelay);
+typedef BOOL (REGAL_CALL *REGALWGLGETGENLOCKSOURCEEDGEI3DPROC)(RegalContext *_context, HDC hDC, UINT *uEdge);
+typedef BOOL (REGAL_CALL *REGALWGLGETGENLOCKSOURCEI3DPROC)(RegalContext *_context, HDC hDC, UINT *uSource);
+typedef BOOL (REGAL_CALL *REGALWGLISENABLEDGENLOCKI3DPROC)(RegalContext *_context, HDC hDC, BOOL *pFlag);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYGENLOCKMAXSOURCEDELAYI3DPROC)(RegalContext *_context, HDC hDC, UINT *uMaxLineDelay, UINT *uMaxPixelDelay);
 
     // WGL_I3D_image_buffer
 
-    PFNWGLASSOCIATEIMAGEBUFFEREVENTSI3DPROC wglAssociateImageBufferEventsI3D;
-    PFNWGLCREATEIMAGEBUFFERI3DPROC wglCreateImageBufferI3D;
-    PFNWGLDESTROYIMAGEBUFFERI3DPROC wglDestroyImageBufferI3D;
-    PFNWGLRELEASEIMAGEBUFFEREVENTSI3DPROC wglReleaseImageBufferEventsI3D;
+typedef BOOL (REGAL_CALL *REGALWGLASSOCIATEIMAGEBUFFEREVENTSI3DPROC)(RegalContext *_context, HDC hDC, const HANDLE *pEvent, const LPVOID *pAddress, const DWORD *pSize, UINT count);
+typedef LPVOID (REGAL_CALL *REGALWGLCREATEIMAGEBUFFERI3DPROC)(RegalContext *_context, HDC hDC, DWORD dwSize, UINT uFlags);
+typedef BOOL (REGAL_CALL *REGALWGLDESTROYIMAGEBUFFERI3DPROC)(RegalContext *_context, HDC hDC, LPVOID pAddress);
+typedef BOOL (REGAL_CALL *REGALWGLRELEASEIMAGEBUFFEREVENTSI3DPROC)(RegalContext *_context, HDC hDC, const LPVOID *pAddress, UINT count);
 
     // WGL_I3D_swap_frame_lock
 
-    PFNWGLDISABLEFRAMELOCKI3DPROC wglDisableFrameLockI3D;
-    PFNWGLENABLEFRAMELOCKI3DPROC wglEnableFrameLockI3D;
-    PFNWGLISENABLEDFRAMELOCKI3DPROC wglIsEnabledFrameLockI3D;
-    PFNWGLQUERYFRAMELOCKMASTERI3DPROC wglQueryFrameLockMasterI3D;
+typedef BOOL (REGAL_CALL *REGALWGLDISABLEFRAMELOCKI3DPROC)(RegalContext *_context);
+typedef BOOL (REGAL_CALL *REGALWGLENABLEFRAMELOCKI3DPROC)(RegalContext *_context);
+typedef BOOL (REGAL_CALL *REGALWGLISENABLEDFRAMELOCKI3DPROC)(RegalContext *_context, BOOL *pFlag);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYFRAMELOCKMASTERI3DPROC)(RegalContext *_context, BOOL *pFlag);
 
     // WGL_I3D_swap_frame_usage
 
-    PFNWGLBEGINFRAMETRACKINGI3DPROC wglBeginFrameTrackingI3D;
-    PFNWGLENDFRAMETRACKINGI3DPROC wglEndFrameTrackingI3D;
-    PFNWGLGETFRAMEUSAGEI3DPROC wglGetFrameUsageI3D;
-    PFNWGLQUERYFRAMETRACKINGI3DPROC wglQueryFrameTrackingI3D;
+typedef BOOL (REGAL_CALL *REGALWGLBEGINFRAMETRACKINGI3DPROC)(RegalContext *_context);
+typedef BOOL (REGAL_CALL *REGALWGLENDFRAMETRACKINGI3DPROC)(RegalContext *_context);
+typedef BOOL (REGAL_CALL *REGALWGLGETFRAMEUSAGEI3DPROC)(RegalContext *_context, float *pUsage);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYFRAMETRACKINGI3DPROC)(RegalContext *_context, DWORD *pFrameCount, DWORD *pMissedFrames, float *pLastMissedUsage);
 
     // WGL_NV_DX_interop
 
-    PFNWGLDXCLOSEDEVICENVPROC wglDXCloseDeviceNV;
-    PFNWGLDXLOCKOBJECTSNVPROC wglDXLockObjectsNV;
-    PFNWGLDXOBJECTACCESSNVPROC wglDXObjectAccessNV;
-    PFNWGLDXOPENDEVICENVPROC wglDXOpenDeviceNV;
-    PFNWGLDXREGISTEROBJECTNVPROC wglDXRegisterObjectNV;
-    PFNWGLDXSETRESOURCESHAREHANDLENVPROC wglDXSetResourceShareHandleNV;
-    PFNWGLDXUNLOCKOBJECTSNVPROC wglDXUnlockObjectsNV;
-    PFNWGLDXUNREGISTEROBJECTNVPROC wglDXUnregisterObjectNV;
+typedef BOOL (REGAL_CALL *REGALWGLDXCLOSEDEVICENVPROC)(RegalContext *_context, HANDLE hDevice);
+typedef BOOL (REGAL_CALL *REGALWGLDXLOCKOBJECTSNVPROC)(RegalContext *_context, HANDLE hDevice, GLint count, HANDLE *hObjects);
+typedef BOOL (REGAL_CALL *REGALWGLDXOBJECTACCESSNVPROC)(RegalContext *_context, HANDLE hObject, GLenum access);
+typedef HANDLE (REGAL_CALL *REGALWGLDXOPENDEVICENVPROC)(RegalContext *_context, GLvoid *dxDevice);
+typedef HANDLE (REGAL_CALL *REGALWGLDXREGISTEROBJECTNVPROC)(RegalContext *_context, HANDLE hDevice, GLvoid *dxObject, GLuint name, GLenum type, GLenum access);
+typedef BOOL (REGAL_CALL *REGALWGLDXSETRESOURCESHAREHANDLENVPROC)(RegalContext *_context, GLvoid *dxObject, HANDLE shareHandle);
+typedef BOOL (REGAL_CALL *REGALWGLDXUNLOCKOBJECTSNVPROC)(RegalContext *_context, HANDLE hDevice, GLint count, HANDLE *hObjects);
+typedef BOOL (REGAL_CALL *REGALWGLDXUNREGISTEROBJECTNVPROC)(RegalContext *_context, HANDLE hDevice, HANDLE hObject);
 
     // WGL_NV_copy_image
 
-    PFNWGLCOPYIMAGESUBDATANVPROC wglCopyImageSubDataNV;
+typedef BOOL (REGAL_CALL *REGALWGLCOPYIMAGESUBDATANVPROC)(RegalContext *_context, HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 
     // WGL_NV_gpu_affinity
 
-    PFNWGLCREATEAFFINITYDCNVPROC wglCreateAffinityDCNV;
-    PFNWGLDELETEDCNVPROC wglDeleteDCNV;
-    PFNWGLENUMGPUDEVICESNVPROC wglEnumGpuDevicesNV;
-    PFNWGLENUMGPUSFROMAFFINITYDCNVPROC wglEnumGpusFromAffinityDCNV;
-    PFNWGLENUMGPUSNVPROC wglEnumGpusNV;
+typedef HDC (REGAL_CALL *REGALWGLCREATEAFFINITYDCNVPROC)(RegalContext *_context, const HGPUNV *phGpuList);
+typedef BOOL (REGAL_CALL *REGALWGLDELETEDCNVPROC)(RegalContext *_context, HDC hAffinityDC);
+typedef BOOL (REGAL_CALL *REGALWGLENUMGPUDEVICESNVPROC)(RegalContext *_context, HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice);
+typedef BOOL (REGAL_CALL *REGALWGLENUMGPUSFROMAFFINITYDCNVPROC)(RegalContext *_context, HDC hAffinityDC, UINT iGpuIndex, HGPUNV *hGpu);
+typedef BOOL (REGAL_CALL *REGALWGLENUMGPUSNVPROC)(RegalContext *_context, UINT iGpuIndex, HGPUNV *phGpu);
 
     // WGL_NV_present_video
 
-    PFNWGLBINDVIDEODEVICENVPROC wglBindVideoDeviceNV;
-    PFNWGLENUMERATEVIDEODEVICESNVPROC wglEnumerateVideoDevicesNV;
-    PFNWGLQUERYCURRENTCONTEXTNVPROC wglQueryCurrentContextNV;
+typedef BOOL (REGAL_CALL *REGALWGLBINDVIDEODEVICENVPROC)(RegalContext *_context, HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int *piAttribList);
+typedef int (REGAL_CALL *REGALWGLENUMERATEVIDEODEVICESNVPROC)(RegalContext *_context, HDC hDC, HVIDEOOUTPUTDEVICENV *phDeviceList);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYCURRENTCONTEXTNVPROC)(RegalContext *_context, int iAttribute, int *piValue);
 
     // WGL_NV_swap_group
 
-    PFNWGLBINDSWAPBARRIERNVPROC wglBindSwapBarrierNV;
-    PFNWGLJOINSWAPGROUPNVPROC wglJoinSwapGroupNV;
-    PFNWGLQUERYFRAMECOUNTNVPROC wglQueryFrameCountNV;
-    PFNWGLQUERYMAXSWAPGROUPSNVPROC wglQueryMaxSwapGroupsNV;
-    PFNWGLQUERYSWAPGROUPNVPROC wglQuerySwapGroupNV;
-    PFNWGLRESETFRAMECOUNTNVPROC wglResetFrameCountNV;
+typedef BOOL (REGAL_CALL *REGALWGLBINDSWAPBARRIERNVPROC)(RegalContext *_context, GLuint group, GLuint barrier);
+typedef BOOL (REGAL_CALL *REGALWGLJOINSWAPGROUPNVPROC)(RegalContext *_context, HDC hDC, GLuint group);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYFRAMECOUNTNVPROC)(RegalContext *_context, HDC hDC, GLuint *count);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYMAXSWAPGROUPSNVPROC)(RegalContext *_context, HDC hDC, GLuint *maxGroups, GLuint *maxBarriers);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYSWAPGROUPNVPROC)(RegalContext *_context, HDC hDC, GLuint *group, GLuint *barrier);
+typedef BOOL (REGAL_CALL *REGALWGLRESETFRAMECOUNTNVPROC)(RegalContext *_context, HDC hDC);
 
     // WGL_NV_vertex_array_range
 
-    PFNWGLALLOCATEMEMORYNVPROC wglAllocateMemoryNV;
-    PFNWGLFREEMEMORYNVPROC wglFreeMemoryNV;
+typedef void *(REGAL_CALL *REGALWGLALLOCATEMEMORYNVPROC)(RegalContext *_context, GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
+typedef void (REGAL_CALL *REGALWGLFREEMEMORYNVPROC)(RegalContext *_context, void *pointer);
 
     // WGL_NV_video_capture
 
-    PFNWGLBINDVIDEOCAPTUREDEVICENVPROC wglBindVideoCaptureDeviceNV;
-    PFNWGLENUMERATEVIDEOCAPTUREDEVICESNVPROC wglEnumerateVideoCaptureDevicesNV;
-    PFNWGLLOCKVIDEOCAPTUREDEVICENVPROC wglLockVideoCaptureDeviceNV;
-    PFNWGLQUERYVIDEOCAPTUREDEVICENVPROC wglQueryVideoCaptureDeviceNV;
-    PFNWGLRELEASEVIDEOCAPTUREDEVICENVPROC wglReleaseVideoCaptureDeviceNV;
+typedef BOOL (REGAL_CALL *REGALWGLBINDVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice);
+typedef UINT (REGAL_CALL *REGALWGLENUMERATEVIDEOCAPTUREDEVICESNVPROC)(RegalContext *_context, HDC hDC, HVIDEOINPUTDEVICENV *phDeviceList);
+typedef BOOL (REGAL_CALL *REGALWGLLOCKVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, HDC hDC, HVIDEOINPUTDEVICENV hDevice);
+typedef BOOL (REGAL_CALL *REGALWGLQUERYVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, HDC hDC, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int *piValue);
+typedef BOOL (REGAL_CALL *REGALWGLRELEASEVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, HDC hDC, HVIDEOINPUTDEVICENV hDevice);
 
     // WGL_NV_video_output
 
-    PFNWGLBINDVIDEOIMAGENVPROC wglBindVideoImageNV;
-    PFNWGLGETVIDEODEVICENVPROC wglGetVideoDeviceNV;
-    PFNWGLGETVIDEOINFONVPROC wglGetVideoInfoNV;
-    PFNWGLRELEASEVIDEODEVICENVPROC wglReleaseVideoDeviceNV;
-    PFNWGLRELEASEVIDEOIMAGENVPROC wglReleaseVideoImageNV;
-    PFNWGLSENDPBUFFERTOVIDEONVPROC wglSendPbufferToVideoNV;
+typedef BOOL (REGAL_CALL *REGALWGLBINDVIDEOIMAGENVPROC)(RegalContext *_context, HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
+typedef BOOL (REGAL_CALL *REGALWGLGETVIDEODEVICENVPROC)(RegalContext *_context, HDC hDC, int numDevices, HPVIDEODEV *hVideoDevice);
+typedef BOOL (REGAL_CALL *REGALWGLGETVIDEOINFONVPROC)(RegalContext *_context, HPVIDEODEV hpVideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
+typedef BOOL (REGAL_CALL *REGALWGLRELEASEVIDEODEVICENVPROC)(RegalContext *_context, HPVIDEODEV hVideoDevice);
+typedef BOOL (REGAL_CALL *REGALWGLRELEASEVIDEOIMAGENVPROC)(RegalContext *_context, HPBUFFERARB hPbuffer, int iVideoBuffer);
+typedef BOOL (REGAL_CALL *REGALWGLSENDPBUFFERTOVIDEONVPROC)(RegalContext *_context, HPBUFFERARB hPbuffer, int iBufferType, unsigned long *pulCounterPbuffer, BOOL bBlock);
 
     // WGL_OML_sync_control
 
-    PFNWGLGETMSCRATEOMLPROC wglGetMscRateOML;
-    PFNWGLGETSYNCVALUESOMLPROC wglGetSyncValuesOML;
-    PFNWGLSWAPBUFFERSMSCOMLPROC wglSwapBuffersMscOML;
-    PFNWGLSWAPLAYERBUFFERSMSCOMLPROC wglSwapLayerBuffersMscOML;
-    PFNWGLWAITFORMSCOMLPROC wglWaitForMscOML;
-    PFNWGLWAITFORSBCOMLPROC wglWaitForSbcOML;
+typedef BOOL (REGAL_CALL *REGALWGLGETMSCRATEOMLPROC)(RegalContext *_context, HDC hDC, INT32 *numerator, INT32 *denominator);
+typedef BOOL (REGAL_CALL *REGALWGLGETSYNCVALUESOMLPROC)(RegalContext *_context, HDC hDC, INT64 *ust, INT64 *msc, INT64 *sbc);
+typedef INT64 (REGAL_CALL *REGALWGLSWAPBUFFERSMSCOMLPROC)(RegalContext *_context, HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder);
+typedef INT64 (REGAL_CALL *REGALWGLSWAPLAYERBUFFERSMSCOMLPROC)(RegalContext *_context, HDC hDC, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder);
+typedef BOOL (REGAL_CALL *REGALWGLWAITFORMSCOMLPROC)(RegalContext *_context, HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 *ust, INT64 *msc, INT64 *sbc);
+typedef BOOL (REGAL_CALL *REGALWGLWAITFORSBCOMLPROC)(RegalContext *_context, HDC hDC, INT64 target_sbc, INT64 *ust, INT64 *msc, INT64 *sbc);
 
     // WGL_core
 
-    PFNWGLCOPYCONTEXTPROC wglCopyContext;
-    PFNWGLCREATECONTEXTPROC wglCreateContext;
-    PFNWGLCREATELAYERCONTEXTPROC wglCreateLayerContext;
-    PFNWGLDELETECONTEXTPROC wglDeleteContext;
-    PFNWGLDESCRIBELAYERPLANEPROC wglDescribeLayerPlane;
-    PFNWGLGETCURRENTCONTEXTPROC wglGetCurrentContext;
-    PFNWGLGETCURRENTDCPROC wglGetCurrentDC;
-    PFNWGLGETDEFAULTPROCADDRESSPROC wglGetDefaultProcAddress;
-    PFNWGLGETLAYERPALETTEENTRIESPROC wglGetLayerPaletteEntries;
-    PFNWGLGETPROCADDRESSPROC wglGetProcAddress;
-    PFNWGLMAKECURRENTPROC wglMakeCurrent;
-    PFNWGLREALIZELAYERPALETTEPROC wglRealizeLayerPalette;
-    PFNWGLSETLAYERPALETTEENTRIESPROC wglSetLayerPaletteEntries;
-    PFNWGLSHARELISTSPROC wglShareLists;
-    PFNWGLSWAPLAYERBUFFERSPROC wglSwapLayerBuffers;
-    PFNWGLSWAPMULTIPLEBUFFERSPROC wglSwapMultipleBuffers;
-    PFNWGLUSEFONTBITMAPSAPROC wglUseFontBitmapsA;
-    PFNWGLUSEFONTBITMAPSWPROC wglUseFontBitmapsW;
-    PFNWGLUSEFONTOUTLINESAPROC wglUseFontOutlinesA;
-    PFNWGLUSEFONTOUTLINESWPROC wglUseFontOutlinesW;
+typedef BOOL (REGAL_CALL *REGALWGLCOPYCONTEXTPROC)(RegalContext *_context, HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask);
+typedef HGLRC (REGAL_CALL *REGALWGLCREATECONTEXTPROC)(RegalContext *_context, HDC hDC);
+typedef HGLRC (REGAL_CALL *REGALWGLCREATELAYERCONTEXTPROC)(RegalContext *_context, HDC hDC, int iLayerPlane);
+typedef BOOL (REGAL_CALL *REGALWGLDELETECONTEXTPROC)(RegalContext *_context, HGLRC hglrc);
+typedef BOOL (REGAL_CALL *REGALWGLDESCRIBELAYERPLANEPROC)(RegalContext *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nBytes, LPLAYERPLANEDESCRIPTOR plpd);
+typedef HGLRC (REGAL_CALL *REGALWGLGETCURRENTCONTEXTPROC)(RegalContext *_context);
+typedef HDC (REGAL_CALL *REGALWGLGETCURRENTDCPROC)(RegalContext *_context);
+typedef PROC (REGAL_CALL *REGALWGLGETDEFAULTPROCADDRESSPROC)(RegalContext *_context, LPCSTR lpszProc);
+typedef int (REGAL_CALL *REGALWGLGETLAYERPALETTEENTRIESPROC)(RegalContext *_context, HDC hDC, int iLayerPlane, int iStart, int nEntries, COLORREF *pcr);
+typedef PROC (REGAL_CALL *REGALWGLGETPROCADDRESSPROC)(RegalContext *_context, LPCSTR lpszProc);
+typedef BOOL (REGAL_CALL *REGALWGLMAKECURRENTPROC)(RegalContext *_context, HDC hDC, HGLRC hglrc);
+typedef BOOL (REGAL_CALL *REGALWGLREALIZELAYERPALETTEPROC)(RegalContext *_context, HDC hDC, int iLayerPlane, BOOL bRealize);
+typedef int (REGAL_CALL *REGALWGLSETLAYERPALETTEENTRIESPROC)(RegalContext *_context, HDC hDC, int iLayerPlane, int iStart, int nEntries, const COLORREF *pcr);
+typedef BOOL (REGAL_CALL *REGALWGLSHARELISTSPROC)(RegalContext *_context, HGLRC hglrcShare, HGLRC hglrcSrc);
+typedef BOOL (REGAL_CALL *REGALWGLSWAPLAYERBUFFERSPROC)(RegalContext *_context, HDC hDC, UINT fuPlanes);
+typedef DWORD (REGAL_CALL *REGALWGLSWAPMULTIPLEBUFFERSPROC)(RegalContext *_context, UINT n, const WGLSWAP *ps);
+typedef BOOL (REGAL_CALL *REGALWGLUSEFONTBITMAPSAPROC)(RegalContext *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase);
+typedef BOOL (REGAL_CALL *REGALWGLUSEFONTBITMAPSWPROC)(RegalContext *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase);
+typedef BOOL (REGAL_CALL *REGALWGLUSEFONTOUTLINESAPROC)(RegalContext *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+typedef BOOL (REGAL_CALL *REGALWGLUSEFONTOUTLINESWPROC)(RegalContext *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
 #endif // REGAL_SYS_WGL
 
 #if REGAL_SYS_GLX
     // GLX_VERSION_1_0
 
-    PFNGLXCHOOSEVISUALPROC glXChooseVisual;
-    PFNGLXCOPYCONTEXTPROC glXCopyContext;
-    PFNGLXCREATECONTEXTPROC glXCreateContext;
-    PFNGLXCREATEGLXPIXMAPPROC glXCreateGLXPixmap;
-    PFNGLXDESTROYCONTEXTPROC glXDestroyContext;
-    PFNGLXDESTROYGLXPIXMAPPROC glXDestroyGLXPixmap;
-    PFNGLXGETCONFIGPROC glXGetConfig;
-    PFNGLXGETCURRENTCONTEXTPROC glXGetCurrentContext;
-    PFNGLXGETCURRENTDRAWABLEPROC glXGetCurrentDrawable;
-    PFNGLXISDIRECTPROC glXIsDirect;
-    PFNGLXMAKECURRENTPROC glXMakeCurrent;
-    PFNGLXQUERYEXTENSIONPROC glXQueryExtension;
-    PFNGLXQUERYVERSIONPROC glXQueryVersion;
-    PFNGLXSWAPBUFFERSPROC glXSwapBuffers;
-    PFNGLXUSEXFONTPROC glXUseXFont;
-    PFNGLXWAITGLPROC glXWaitGL;
-    PFNGLXWAITXPROC glXWaitX;
+typedef XVisualInfo *(REGAL_CALL *REGALGLXCHOOSEVISUALPROC)(RegalContext *_context, Display *dpy, int screen, int *attribList);
+typedef void (REGAL_CALL *REGALGLXCOPYCONTEXTPROC)(RegalContext *_context, Display *dpy, GLXContext src, GLXContext dst, unsigned long mask);
+typedef GLXContext (REGAL_CALL *REGALGLXCREATECONTEXTPROC)(RegalContext *_context, Display *dpy, XVisualInfo *vis, GLXContext shareList, Bool direct);
+typedef GLXPixmap (REGAL_CALL *REGALGLXCREATEGLXPIXMAPPROC)(RegalContext *_context, Display *dpy, XVisualInfo *vis, Pixmap pixmap);
+typedef void (REGAL_CALL *REGALGLXDESTROYCONTEXTPROC)(RegalContext *_context, Display *dpy, GLXContext ctx);
+typedef void (REGAL_CALL *REGALGLXDESTROYGLXPIXMAPPROC)(RegalContext *_context, Display *dpy, GLXPixmap pix);
+typedef int (REGAL_CALL *REGALGLXGETCONFIGPROC)(RegalContext *_context, Display *dpy, XVisualInfo *vis, int attrib, int *value);
+typedef GLXContext (REGAL_CALL *REGALGLXGETCURRENTCONTEXTPROC)(RegalContext *_context);
+typedef GLXDrawable (REGAL_CALL *REGALGLXGETCURRENTDRAWABLEPROC)(RegalContext *_context);
+typedef Bool (REGAL_CALL *REGALGLXISDIRECTPROC)(RegalContext *_context, Display *dpy, GLXContext ctx);
+typedef Bool (REGAL_CALL *REGALGLXMAKECURRENTPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, GLXContext ctx);
+typedef Bool (REGAL_CALL *REGALGLXQUERYEXTENSIONPROC)(RegalContext *_context, Display *dpy, int *errorBase, int *eventBase);
+typedef Bool (REGAL_CALL *REGALGLXQUERYVERSIONPROC)(RegalContext *_context, Display *dpy, int *major, int *minor);
+typedef void (REGAL_CALL *REGALGLXSWAPBUFFERSPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable);
+typedef void (REGAL_CALL *REGALGLXUSEXFONTPROC)(RegalContext *_context, Font font, int first, int count, int listBase);
+typedef void (REGAL_CALL *REGALGLXWAITGLPROC)(RegalContext *_context);
+typedef void (REGAL_CALL *REGALGLXWAITXPROC)(RegalContext *_context);
 
     // GLX_VERSION_1_1
 
-    PFNGLXGETCLIENTSTRINGPROC glXGetClientString;
-    PFNGLXQUERYEXTENSIONSSTRINGPROC glXQueryExtensionsString;
-    PFNGLXQUERYSERVERSTRINGPROC glXQueryServerString;
+typedef const char *(REGAL_CALL *REGALGLXGETCLIENTSTRINGPROC)(RegalContext *_context, Display *dpy, int name);
+typedef const char *(REGAL_CALL *REGALGLXQUERYEXTENSIONSSTRINGPROC)(RegalContext *_context, Display *dpy, int screen);
+typedef const char *(REGAL_CALL *REGALGLXQUERYSERVERSTRINGPROC)(RegalContext *_context, Display *dpy, int screen, int name);
 
     // GLX_VERSION_1_2
 
-    PFNGLXGETCURRENTDISPLAYPROC glXGetCurrentDisplay;
+typedef Display *(REGAL_CALL *REGALGLXGETCURRENTDISPLAYPROC)(RegalContext *_context);
 
     // GLX_VERSION_1_3
 
-    PFNGLXCHOOSEFBCONFIGPROC glXChooseFBConfig;
-    PFNGLXCREATENEWCONTEXTPROC glXCreateNewContext;
-    PFNGLXCREATEPBUFFERPROC glXCreatePbuffer;
-    PFNGLXCREATEPIXMAPPROC glXCreatePixmap;
-    PFNGLXCREATEWINDOWPROC glXCreateWindow;
-    PFNGLXDESTROYPBUFFERPROC glXDestroyPbuffer;
-    PFNGLXDESTROYPIXMAPPROC glXDestroyPixmap;
-    PFNGLXDESTROYWINDOWPROC glXDestroyWindow;
-    PFNGLXGETCURRENTREADDRAWABLEPROC glXGetCurrentReadDrawable;
-    PFNGLXGETFBCONFIGATTRIBPROC glXGetFBConfigAttrib;
-    PFNGLXGETFBCONFIGSPROC glXGetFBConfigs;
-    PFNGLXGETSELECTEDEVENTPROC glXGetSelectedEvent;
-    PFNGLXGETVISUALFROMFBCONFIGPROC glXGetVisualFromFBConfig;
-    PFNGLXMAKECONTEXTCURRENTPROC glXMakeContextCurrent;
-    PFNGLXQUERYCONTEXTPROC glXQueryContext;
-    PFNGLXQUERYDRAWABLEPROC glXQueryDrawable;
-    PFNGLXSELECTEVENTPROC glXSelectEvent;
+typedef GLXFBConfig *(REGAL_CALL *REGALGLXCHOOSEFBCONFIGPROC)(RegalContext *_context, Display *dpy, int screen, const int *attrib_list, int *nelements);
+typedef GLXContext (REGAL_CALL *REGALGLXCREATENEWCONTEXTPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
+typedef GLXPbuffer (REGAL_CALL *REGALGLXCREATEPBUFFERPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, const int *attrib_list);
+typedef GLXPixmap (REGAL_CALL *REGALGLXCREATEPIXMAPPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
+typedef GLXWindow (REGAL_CALL *REGALGLXCREATEWINDOWPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
+typedef void (REGAL_CALL *REGALGLXDESTROYPBUFFERPROC)(RegalContext *_context, Display *dpy, GLXPbuffer pbuf);
+typedef void (REGAL_CALL *REGALGLXDESTROYPIXMAPPROC)(RegalContext *_context, Display *dpy, GLXPixmap pixmap);
+typedef void (REGAL_CALL *REGALGLXDESTROYWINDOWPROC)(RegalContext *_context, Display *dpy, GLXWindow win);
+typedef GLXDrawable (REGAL_CALL *REGALGLXGETCURRENTREADDRAWABLEPROC)(RegalContext *_context);
+typedef int (REGAL_CALL *REGALGLXGETFBCONFIGATTRIBPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, int attribute, int *value);
+typedef GLXFBConfig *(REGAL_CALL *REGALGLXGETFBCONFIGSPROC)(RegalContext *_context, Display *dpy, int screen, int *nelements);
+typedef void (REGAL_CALL *REGALGLXGETSELECTEDEVENTPROC)(RegalContext *_context, Display *dpy, GLXDrawable draw, unsigned long *event_mask);
+typedef XVisualInfo *(REGAL_CALL *REGALGLXGETVISUALFROMFBCONFIGPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config);
+typedef Bool (REGAL_CALL *REGALGLXMAKECONTEXTCURRENTPROC)(RegalContext *_context, Display *display, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+typedef int (REGAL_CALL *REGALGLXQUERYCONTEXTPROC)(RegalContext *_context, Display *dpy, GLXContext ctx, int attribute, int *value);
+typedef void (REGAL_CALL *REGALGLXQUERYDRAWABLEPROC)(RegalContext *_context, Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
+typedef void (REGAL_CALL *REGALGLXSELECTEVENTPROC)(RegalContext *_context, Display *dpy, GLXDrawable draw, unsigned long event_mask);
 
     // GLX_VERSION_1_4
 
-    PFNGLXGETPROCADDRESSPROC glXGetProcAddress;
+typedef __GLXextFuncPtr (REGAL_CALL *REGALGLXGETPROCADDRESSPROC)(RegalContext *_context, const GLubyte *procName);
 
     // GLX_AMD_gpu_association
 
-    PFNGLXBLITCONTEXTFRAMEBUFFERAMDPROC glXBlitContextFramebufferAMD;
-    PFNGLXCREATEASSOCIATEDCONTEXTAMDPROC glXCreateAssociatedContextAMD;
-    PFNGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC glXCreateAssociatedContextAttribsAMD;
-    PFNGLXDELETEASSOCIATEDCONTEXTAMDPROC glXDeleteAssociatedContextAMD;
-    PFNGLXGETCONTEXTGPUIDAMDPROC glXGetContextGPUIDAMD;
-    PFNGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC glXGetCurrentAssociatedContextAMD;
-    PFNGLXGETGPUIDSAMDPROC glXGetGPUIDsAMD;
-    PFNGLXGETGPUINFOAMDPROC glXGetGPUInfoAMD;
-    PFNGLXMAKEASSOCIATEDCONTEXTCURRENTAMDPROC glXMakeAssociatedContextCurrentAMD;
+typedef void (REGAL_CALL *REGALGLXBLITCONTEXTFRAMEBUFFERAMDPROC)(RegalContext *_context, GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+typedef GLXContext (REGAL_CALL *REGALGLXCREATEASSOCIATEDCONTEXTAMDPROC)(RegalContext *_context, unsigned int id, GLXContext share_list);
+typedef GLXContext (REGAL_CALL *REGALGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC)(RegalContext *_context, unsigned int id, GLXContext share_context, const int *attribList);
+typedef Bool (REGAL_CALL *REGALGLXDELETEASSOCIATEDCONTEXTAMDPROC)(RegalContext *_context, GLXContext ctx);
+typedef unsigned int (REGAL_CALL *REGALGLXGETCONTEXTGPUIDAMDPROC)(RegalContext *_context, GLXContext ctx);
+typedef GLXContext (REGAL_CALL *REGALGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC)(RegalContext *_context);
+typedef unsigned int (REGAL_CALL *REGALGLXGETGPUIDSAMDPROC)(RegalContext *_context, unsigned int maxCount, unsigned int *ids);
+typedef int (REGAL_CALL *REGALGLXGETGPUINFOAMDPROC)(RegalContext *_context, unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data);
+typedef Bool (REGAL_CALL *REGALGLXMAKEASSOCIATEDCONTEXTCURRENTAMDPROC)(RegalContext *_context, GLXContext ctx);
 
     // GLX_ARB_create_context
 
-    PFNGLXCREATECONTEXTATTRIBSARBPROC glXCreateContextAttribsARB;
+typedef GLXContext (REGAL_CALL *REGALGLXCREATECONTEXTATTRIBSARBPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list);
 
     // GLX_ARB_get_proc_address
 
-    PFNGLXGETPROCADDRESSARBPROC glXGetProcAddressARB;
+typedef __GLXextFuncPtr (REGAL_CALL *REGALGLXGETPROCADDRESSARBPROC)(RegalContext *_context, const GLubyte *procName);
 
     // GLX_ATI_render_texture
 
-    PFNGLXBINDTEXIMAGEATIPROC glXBindTexImageATI;
-    PFNGLXDRAWABLEATTRIBATIPROC glXDrawableAttribATI;
-    PFNGLXRELEASETEXIMAGEATIPROC glXReleaseTexImageATI;
+typedef void (REGAL_CALL *REGALGLXBINDTEXIMAGEATIPROC)(RegalContext *_context, Display *dpy, GLXPbuffer pbuf, int buffer);
+typedef void (REGAL_CALL *REGALGLXDRAWABLEATTRIBATIPROC)(RegalContext *_context, Display *dpy, GLXDrawable draw, const int *attrib_list);
+typedef void (REGAL_CALL *REGALGLXRELEASETEXIMAGEATIPROC)(RegalContext *_context, Display *dpy, GLXPbuffer pbuf, int buffer);
 
     // GLX_EXT_import_context
 
-    PFNGLXFREECONTEXTEXTPROC glXFreeContextEXT;
-    PFNGLXGETCONTEXTIDEXTPROC glXGetContextIDEXT;
-    PFNGLXIMPORTCONTEXTEXTPROC glXImportContextEXT;
-    PFNGLXQUERYCONTEXTINFOEXTPROC glXQueryContextInfoEXT;
+typedef void (REGAL_CALL *REGALGLXFREECONTEXTEXTPROC)(RegalContext *_context, Display *dpy, GLXContext context);
+typedef GLXContextID (REGAL_CALL *REGALGLXGETCONTEXTIDEXTPROC)(RegalContext *_context, const GLXContext context);
+typedef GLXContext (REGAL_CALL *REGALGLXIMPORTCONTEXTEXTPROC)(RegalContext *_context, Display *dpy, GLXContextID contextID);
+typedef int (REGAL_CALL *REGALGLXQUERYCONTEXTINFOEXTPROC)(RegalContext *_context, Display *dpy, GLXContext context, int attribute, int *value);
 
     // GLX_EXT_swap_control
 
-    PFNGLXSWAPINTERVALEXTPROC glXSwapIntervalEXT;
+typedef void (REGAL_CALL *REGALGLXSWAPINTERVALEXTPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int interval);
 
     // GLX_EXT_texture_from_pixmap
 
-    PFNGLXBINDTEXIMAGEEXTPROC glXBindTexImageEXT;
-    PFNGLXRELEASETEXIMAGEEXTPROC glXReleaseTexImageEXT;
+typedef void (REGAL_CALL *REGALGLXBINDTEXIMAGEEXTPROC)(RegalContext *_context, Display *display, GLXDrawable drawable, int buffer, const int *attrib_list);
+typedef void (REGAL_CALL *REGALGLXRELEASETEXIMAGEEXTPROC)(RegalContext *_context, Display *display, GLXDrawable drawable, int buffer);
 
     // GLX_MESA_agp_offset
 
-    PFNGLXGETAGPOFFSETMESAPROC glXGetAGPOffsetMESA;
+typedef unsigned int (REGAL_CALL *REGALGLXGETAGPOFFSETMESAPROC)(RegalContext *_context, const void *pointer);
 
     // GLX_MESA_copy_sub_buffer
 
-    PFNGLXCOPYSUBBUFFERMESAPROC glXCopySubBufferMESA;
+typedef void (REGAL_CALL *REGALGLXCOPYSUBBUFFERMESAPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
 
     // GLX_MESA_pixmap_colormap
 
-    PFNGLXCREATEGLXPIXMAPMESAPROC glXCreateGLXPixmapMESA;
+typedef GLXPixmap (REGAL_CALL *REGALGLXCREATEGLXPIXMAPMESAPROC)(RegalContext *_context, Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
 
     // GLX_MESA_release_buffers
 
-    PFNGLXRELEASEBUFFERSMESAPROC glXReleaseBuffersMESA;
+typedef Bool (REGAL_CALL *REGALGLXRELEASEBUFFERSMESAPROC)(RegalContext *_context, Display *dpy, GLXDrawable d);
 
     // GLX_MESA_set_3dfx_mode
 
-    PFNGLXSET3DFXMODEMESAPROC glXSet3DfxModeMESA;
+typedef GLboolean (REGAL_CALL *REGALGLXSET3DFXMODEMESAPROC)(RegalContext *_context, GLint mode);
 
     // GLX_MESA_swap_control
 
-    PFNGLXGETSWAPINTERVALMESAPROC glXGetSwapIntervalMESA;
-    PFNGLXSWAPINTERVALMESAPROC glXSwapIntervalMESA;
+typedef int (REGAL_CALL *REGALGLXGETSWAPINTERVALMESAPROC)(RegalContext *_context);
+typedef int (REGAL_CALL *REGALGLXSWAPINTERVALMESAPROC)(RegalContext *_context, unsigned int interval);
 
     // GLX_NV_copy_image
 
-    PFNGLXCOPYIMAGESUBDATANVPROC glXCopyImageSubDataNV;
+typedef void (REGAL_CALL *REGALGLXCOPYIMAGESUBDATANVPROC)(RegalContext *_context, Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 
     // GLX_NV_present_video
 
-    PFNGLXBINDVIDEODEVICENVPROC glXBindVideoDeviceNV;
-    PFNGLXENUMERATEVIDEODEVICESNVPROC glXEnumerateVideoDevicesNV;
+typedef int (REGAL_CALL *REGALGLXBINDVIDEODEVICENVPROC)(RegalContext *_context, Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list);
+typedef unsigned int *(REGAL_CALL *REGALGLXENUMERATEVIDEODEVICESNVPROC)(RegalContext *_context, Display *dpy, int screen, int *nelements);
 
     // GLX_NV_swap_group
 
-    PFNGLXBINDSWAPBARRIERNVPROC glXBindSwapBarrierNV;
-    PFNGLXJOINSWAPGROUPNVPROC glXJoinSwapGroupNV;
-    PFNGLXQUERYFRAMECOUNTNVPROC glXQueryFrameCountNV;
-    PFNGLXQUERYMAXSWAPGROUPSNVPROC glXQueryMaxSwapGroupsNV;
-    PFNGLXQUERYSWAPGROUPNVPROC glXQuerySwapGroupNV;
-    PFNGLXRESETFRAMECOUNTNVPROC glXResetFrameCountNV;
+typedef Bool (REGAL_CALL *REGALGLXBINDSWAPBARRIERNVPROC)(RegalContext *_context, Display *dpy, GLuint group, GLuint barrier);
+typedef Bool (REGAL_CALL *REGALGLXJOINSWAPGROUPNVPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, GLuint group);
+typedef Bool (REGAL_CALL *REGALGLXQUERYFRAMECOUNTNVPROC)(RegalContext *_context, Display *dpy, int screen, GLuint *count);
+typedef Bool (REGAL_CALL *REGALGLXQUERYMAXSWAPGROUPSNVPROC)(RegalContext *_context, Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers);
+typedef Bool (REGAL_CALL *REGALGLXQUERYSWAPGROUPNVPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier);
+typedef Bool (REGAL_CALL *REGALGLXRESETFRAMECOUNTNVPROC)(RegalContext *_context, Display *dpy, int screen);
 
     // GLX_NV_vertex_array_range
 
-    PFNGLXALLOCATEMEMORYNVPROC glXAllocateMemoryNV;
-    PFNGLXFREEMEMORYNVPROC glXFreeMemoryNV;
+typedef void *(REGAL_CALL *REGALGLXALLOCATEMEMORYNVPROC)(RegalContext *_context, GLsizei size, GLfloat readFrequency, GLfloat writeFrequency, GLfloat priority);
+typedef void (REGAL_CALL *REGALGLXFREEMEMORYNVPROC)(RegalContext *_context, void *pointer);
 
     // GLX_NV_video_capture
 
-    PFNGLXBINDVIDEOCAPTUREDEVICENVPROC glXBindVideoCaptureDeviceNV;
-    PFNGLXENUMERATEVIDEOCAPTUREDEVICESNVPROC glXEnumerateVideoCaptureDevicesNV;
-    PFNGLXLOCKVIDEOCAPTUREDEVICENVPROC glXLockVideoCaptureDeviceNV;
-    PFNGLXQUERYVIDEOCAPTUREDEVICENVPROC glXQueryVideoCaptureDeviceNV;
-    PFNGLXRELEASEVIDEOCAPTUREDEVICENVPROC glXReleaseVideoCaptureDeviceNV;
+typedef int (REGAL_CALL *REGALGLXBINDVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
+typedef GLXVideoCaptureDeviceNV *(REGAL_CALL *REGALGLXENUMERATEVIDEOCAPTUREDEVICESNVPROC)(RegalContext *_context, Display *dpy, int screen, int *nelements);
+typedef void (REGAL_CALL *REGALGLXLOCKVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, Display *dpy, GLXVideoCaptureDeviceNV device);
+typedef int (REGAL_CALL *REGALGLXQUERYVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value);
+typedef void (REGAL_CALL *REGALGLXRELEASEVIDEOCAPTUREDEVICENVPROC)(RegalContext *_context, Display *dpy, GLXVideoCaptureDeviceNV device);
 
     // GLX_NV_video_output
 
-    PFNGLXBINDVIDEOIMAGENVPROC glXBindVideoImageNV;
-    PFNGLXGETVIDEODEVICENVPROC glXGetVideoDeviceNV;
-    PFNGLXGETVIDEOINFONVPROC glXGetVideoInfoNV;
-    PFNGLXRELEASEVIDEODEVICENVPROC glXReleaseVideoDeviceNV;
-    PFNGLXRELEASEVIDEOIMAGENVPROC glXReleaseVideoImageNV;
-    PFNGLXSENDPBUFFERTOVIDEONVPROC glXSendPbufferToVideoNV;
+typedef int (REGAL_CALL *REGALGLXBINDVIDEOIMAGENVPROC)(RegalContext *_context, Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
+typedef int (REGAL_CALL *REGALGLXGETVIDEODEVICENVPROC)(RegalContext *_context, Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
+typedef int (REGAL_CALL *REGALGLXGETVIDEOINFONVPROC)(RegalContext *_context, Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
+typedef int (REGAL_CALL *REGALGLXRELEASEVIDEODEVICENVPROC)(RegalContext *_context, Display *dpy, int screen, GLXVideoDeviceNV VideoDevice);
+typedef int (REGAL_CALL *REGALGLXRELEASEVIDEOIMAGENVPROC)(RegalContext *_context, Display *dpy, GLXPbuffer pbuf);
+typedef int (REGAL_CALL *REGALGLXSENDPBUFFERTOVIDEONVPROC)(RegalContext *_context, Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock);
 
     // GLX_OML_sync_control
 
-    PFNGLXGETMSCRATEOMLPROC glXGetMscRateOML;
-    PFNGLXGETSYNCVALUESOMLPROC glXGetSyncValuesOML;
-    PFNGLXSWAPBUFFERSMSCOMLPROC glXSwapBuffersMscOML;
-    PFNGLXWAITFORMSCOMLPROC glXWaitForMscOML;
-    PFNGLXWAITFORSBCOMLPROC glXWaitForSbcOML;
+typedef Bool (REGAL_CALL *REGALGLXGETMSCRATEOMLPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
+typedef Bool (REGAL_CALL *REGALGLXGETSYNCVALUESOMLPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
+typedef int64_t (REGAL_CALL *REGALGLXSWAPBUFFERSMSCOMLPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
+typedef Bool (REGAL_CALL *REGALGLXWAITFORMSCOMLPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
+typedef Bool (REGAL_CALL *REGALGLXWAITFORSBCOMLPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
 
     // GLX_SGIX_fbconfig
 
-    PFNGLXCHOOSEFBCONFIGSGIXPROC glXChooseFBConfigSGIX;
-    PFNGLXCREATECONTEXTWITHCONFIGSGIXPROC glXCreateContextWithConfigSGIX;
-    PFNGLXCREATEGLXPIXMAPWITHCONFIGSGIXPROC glXCreateGLXPixmapWithConfigSGIX;
-    PFNGLXGETFBCONFIGATTRIBSGIXPROC glXGetFBConfigAttribSGIX;
-    PFNGLXGETFBCONFIGFROMVISUALSGIXPROC glXGetFBConfigFromVisualSGIX;
-    PFNGLXGETVISUALFROMFBCONFIGSGIXPROC glXGetVisualFromFBConfigSGIX;
+typedef GLXFBConfigSGIX *(REGAL_CALL *REGALGLXCHOOSEFBCONFIGSGIXPROC)(RegalContext *_context, Display *dpy, int screen, const int *attrib_list, int *nelements);
+typedef GLXContext (REGAL_CALL *REGALGLXCREATECONTEXTWITHCONFIGSGIXPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
+typedef GLXPixmap (REGAL_CALL *REGALGLXCREATEGLXPIXMAPWITHCONFIGSGIXPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, Pixmap pixmap);
+typedef int (REGAL_CALL *REGALGLXGETFBCONFIGATTRIBSGIXPROC)(RegalContext *_context, Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
+typedef GLXFBConfigSGIX (REGAL_CALL *REGALGLXGETFBCONFIGFROMVISUALSGIXPROC)(RegalContext *_context, Display *dpy, XVisualInfo *vis);
+typedef XVisualInfo *(REGAL_CALL *REGALGLXGETVISUALFROMFBCONFIGSGIXPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config);
 
     // GLX_SGIX_pbuffer
 
-    PFNGLXCREATEGLXPBUFFERSGIXPROC glXCreateGLXPbufferSGIX;
-    PFNGLXDESTROYGLXPBUFFERSGIXPROC glXDestroyGLXPbufferSGIX;
-    PFNGLXGETSELECTEDEVENTSGIXPROC glXGetSelectedEventSGIX;
-    PFNGLXQUERYGLXPBUFFERSGIXPROC glXQueryGLXPbufferSGIX;
-    PFNGLXSELECTEVENTSGIXPROC glXSelectEventSGIX;
+typedef GLXPbuffer (REGAL_CALL *REGALGLXCREATEGLXPBUFFERSGIXPROC)(RegalContext *_context, Display *dpy, GLXFBConfig config, unsigned int width, unsigned int height, int *attrib_list);
+typedef void (REGAL_CALL *REGALGLXDESTROYGLXPBUFFERSGIXPROC)(RegalContext *_context, Display *dpy, GLXPbuffer pbuf);
+typedef void (REGAL_CALL *REGALGLXGETSELECTEDEVENTSGIXPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, unsigned long *mask);
+typedef void (REGAL_CALL *REGALGLXQUERYGLXPBUFFERSGIXPROC)(RegalContext *_context, Display *dpy, GLXPbuffer pbuf, int attribute, unsigned int *value);
+typedef void (REGAL_CALL *REGALGLXSELECTEVENTSGIXPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, unsigned long mask);
 
     // GLX_SGIX_swap_barrier
 
-    PFNGLXBINDSWAPBARRIERSGIXPROC glXBindSwapBarrierSGIX;
-    PFNGLXQUERYMAXSWAPBARRIERSSGIXPROC glXQueryMaxSwapBarriersSGIX;
+typedef void (REGAL_CALL *REGALGLXBINDSWAPBARRIERSGIXPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, int barrier);
+typedef Bool (REGAL_CALL *REGALGLXQUERYMAXSWAPBARRIERSSGIXPROC)(RegalContext *_context, Display *dpy, int screen, int *max);
 
     // GLX_SGIX_swap_group
 
-    PFNGLXJOINSWAPGROUPSGIXPROC glXJoinSwapGroupSGIX;
+typedef void (REGAL_CALL *REGALGLXJOINSWAPGROUPSGIXPROC)(RegalContext *_context, Display *dpy, GLXDrawable drawable, GLXDrawable member);
 
     // GLX_SGIX_video_resize
 
-    PFNGLXBINDCHANNELTOWINDOWSGIXPROC glXBindChannelToWindowSGIX;
-    PFNGLXCHANNELRECTSGIXPROC glXChannelRectSGIX;
-    PFNGLXCHANNELRECTSYNCSGIXPROC glXChannelRectSyncSGIX;
-    PFNGLXQUERYCHANNELDELTASSGIXPROC glXQueryChannelDeltasSGIX;
-    PFNGLXQUERYCHANNELRECTSGIXPROC glXQueryChannelRectSGIX;
+typedef int (REGAL_CALL *REGALGLXBINDCHANNELTOWINDOWSGIXPROC)(RegalContext *_context, Display *display, int screen, int channel, Window window);
+typedef int (REGAL_CALL *REGALGLXCHANNELRECTSGIXPROC)(RegalContext *_context, Display *display, int screen, int channel, int x, int y, int w, int h);
+typedef int (REGAL_CALL *REGALGLXCHANNELRECTSYNCSGIXPROC)(RegalContext *_context, Display *display, int screen, int channel, GLenum synctype);
+typedef int (REGAL_CALL *REGALGLXQUERYCHANNELDELTASSGIXPROC)(RegalContext *_context, Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
+typedef int (REGAL_CALL *REGALGLXQUERYCHANNELRECTSGIXPROC)(RegalContext *_context, Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
 
     // GLX_SGI_cushion
 
-    PFNGLXCUSHIONSGIPROC glXCushionSGI;
+typedef void (REGAL_CALL *REGALGLXCUSHIONSGIPROC)(RegalContext *_context, Display *dpy, Window window, float cushion);
 
     // GLX_SGI_make_current_read
 
-    PFNGLXGETCURRENTREADDRAWABLESGIPROC glXGetCurrentReadDrawableSGI;
-    PFNGLXMAKECURRENTREADSGIPROC glXMakeCurrentReadSGI;
+typedef GLXDrawable (REGAL_CALL *REGALGLXGETCURRENTREADDRAWABLESGIPROC)(RegalContext *_context);
+typedef Bool (REGAL_CALL *REGALGLXMAKECURRENTREADSGIPROC)(RegalContext *_context, Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
 
     // GLX_SGI_swap_control
 
-    PFNGLXSWAPINTERVALSGIPROC glXSwapIntervalSGI;
+typedef int (REGAL_CALL *REGALGLXSWAPINTERVALSGIPROC)(RegalContext *_context, int interval);
 
     // GLX_SGI_video_sync
 
-    PFNGLXGETVIDEOSYNCSGIPROC glXGetVideoSyncSGI;
-    PFNGLXWAITVIDEOSYNCSGIPROC glXWaitVideoSyncSGI;
+typedef int (REGAL_CALL *REGALGLXGETVIDEOSYNCSGIPROC)(RegalContext *_context, unsigned int *count);
+typedef int (REGAL_CALL *REGALGLXWAITVIDEOSYNCSGIPROC)(RegalContext *_context, int divisor, int remainder, unsigned int *count);
 
     // GLX_SUN_get_transparent_index
 
-    PFNGLXGETTRANSPARENTINDEXSUNPROC glXGetTransparentIndexSUN;
+typedef Status (REGAL_CALL *REGALGLXGETTRANSPARENTINDEXSUNPROC)(RegalContext *_context, Display *dpy, Window overlay, Window underlay, unsigned long *pTransparentIndex);
 
     // GLX_SUN_video_resize
 
-    PFNGLXGETVIDEORESIZESUNPROC glXGetVideoResizeSUN;
-    PFNGLXVIDEORESIZESUNPROC glXVideoResizeSUN;
+typedef int (REGAL_CALL *REGALGLXGETVIDEORESIZESUNPROC)(RegalContext *_context, Display *display, GLXDrawable window, float *factor);
+typedef int (REGAL_CALL *REGALGLXVIDEORESIZESUNPROC)(RegalContext *_context, Display *display, GLXDrawable window, float factor);
 #endif // REGAL_SYS_GLX
 
 #if REGAL_SYS_OSX
     // CGL_VERSION_1_0
 
-    PFNCGLCHOOSEPIXELFORMATPROC CGLChoosePixelFormat;
-    PFNCGLCLEARDRAWABLEPROC CGLClearDrawable;
-    PFNCGLCOPYCONTEXTPROC CGLCopyContext;
-    PFNCGLCREATECONTEXTPROC CGLCreateContext;
-    PFNCGLDESCRIBEPIXELFORMATPROC CGLDescribePixelFormat;
-    PFNCGLDESCRIBERENDERERPROC CGLDescribeRenderer;
-    PFNCGLDESTROYCONTEXTPROC CGLDestroyContext;
-    PFNCGLDESTROYPIXELFORMATPROC CGLDestroyPixelFormat;
-    PFNCGLDESTROYRENDERERINFOPROC CGLDestroyRendererInfo;
-    PFNCGLDISABLEPROC CGLDisable;
-    PFNCGLENABLEPROC CGLEnable;
-    PFNCGLERRORSTRINGPROC CGLErrorString;
-    PFNCGLFLUSHDRAWABLEPROC CGLFlushDrawable;
-    PFNCGLGETOFFSCREENPROC CGLGetOffScreen;
-    PFNCGLGETOPTIONPROC CGLGetOption;
-    PFNCGLGETPARAMETERPROC CGLGetParameter;
-    PFNCGLGETVERSIONPROC CGLGetVersion;
-    PFNCGLGETVIRTUALSCREENPROC CGLGetVirtualScreen;
-    PFNCGLISENABLEDPROC CGLIsEnabled;
-    PFNCGLQUERYRENDERERINFOPROC CGLQueryRendererInfo;
-    PFNCGLSETFULLSCREENPROC CGLSetFullScreen;
-    PFNCGLSETOFFSCREENPROC CGLSetOffScreen;
-    PFNCGLSETOPTIONPROC CGLSetOption;
-    PFNCGLSETPARAMETERPROC CGLSetParameter;
-    PFNCGLSETVIRTUALSCREENPROC CGLSetVirtualScreen;
+typedef CGLError (REGAL_CALL *REGALCGLCHOOSEPIXELFORMATPROC)(RegalContext *_context, const CGLPixelFormatAttribute *attribs, CGLPixelFormatObj *pix, GLint *npix);
+typedef CGLError (REGAL_CALL *REGALCGLCLEARDRAWABLEPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLError (REGAL_CALL *REGALCGLCOPYCONTEXTPROC)(RegalContext *_context, CGLContextObj src, CGLContextObj dst, GLbitfield mask);
+typedef CGLError (REGAL_CALL *REGALCGLCREATECONTEXTPROC)(RegalContext *_context, CGLPixelFormatObj pix, CGLContextObj share, CGLContextObj *ctx);
+typedef CGLError (REGAL_CALL *REGALCGLDESCRIBEPIXELFORMATPROC)(RegalContext *_context, CGLPixelFormatObj pix, GLint pix_num, CGLPixelFormatAttribute attrib, GLint *value);
+typedef CGLError (REGAL_CALL *REGALCGLDESCRIBERENDERERPROC)(RegalContext *_context, CGLRendererInfoObj rend, GLint rend_num, CGLRendererProperty prop, GLint *value);
+typedef CGLError (REGAL_CALL *REGALCGLDESTROYCONTEXTPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLError (REGAL_CALL *REGALCGLDESTROYPIXELFORMATPROC)(RegalContext *_context, CGLPixelFormatObj pix);
+typedef CGLError (REGAL_CALL *REGALCGLDESTROYRENDERERINFOPROC)(RegalContext *_context, CGLRendererInfoObj rend);
+typedef CGLError (REGAL_CALL *REGALCGLDISABLEPROC)(RegalContext *_context, CGLContextObj ctx, CGLContextEnable pname);
+typedef CGLError (REGAL_CALL *REGALCGLENABLEPROC)(RegalContext *_context, CGLContextObj ctx, CGLContextEnable pname);
+typedef const char *(REGAL_CALL *REGALCGLERRORSTRINGPROC)(RegalContext *_context, CGLError error);
+typedef CGLError (REGAL_CALL *REGALCGLFLUSHDRAWABLEPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLError (REGAL_CALL *REGALCGLGETOFFSCREENPROC)(RegalContext *_context, CGLContextObj ctx, GLsizei *width, GLsizei *height, GLsizei *rowbytes, void **baseaddr);
+typedef CGLError (REGAL_CALL *REGALCGLGETOPTIONPROC)(RegalContext *_context, CGLGlobalOption pname, GLint *param);
+typedef CGLError (REGAL_CALL *REGALCGLGETPARAMETERPROC)(RegalContext *_context, CGLContextObj ctx, CGLContextParameter pname, GLint *params);
+typedef void (REGAL_CALL *REGALCGLGETVERSIONPROC)(RegalContext *_context, GLint *majorvers, GLint *minorvers);
+typedef CGLError (REGAL_CALL *REGALCGLGETVIRTUALSCREENPROC)(RegalContext *_context, CGLContextObj ctx, GLint *screen);
+typedef CGLError (REGAL_CALL *REGALCGLISENABLEDPROC)(RegalContext *_context, CGLContextObj ctx, CGLContextEnable pname, GLint *enable);
+typedef CGLError (REGAL_CALL *REGALCGLQUERYRENDERERINFOPROC)(RegalContext *_context, GLuint display_mask, CGLRendererInfoObj *rend, GLint *nrend);
+typedef CGLError (REGAL_CALL *REGALCGLSETFULLSCREENPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLError (REGAL_CALL *REGALCGLSETOFFSCREENPROC)(RegalContext *_context, CGLContextObj ctx, GLsizei width, GLsizei height, GLsizei rowbytes, void *baseaddr);
+typedef CGLError (REGAL_CALL *REGALCGLSETOPTIONPROC)(RegalContext *_context, CGLGlobalOption pname, GLint param);
+typedef CGLError (REGAL_CALL *REGALCGLSETPARAMETERPROC)(RegalContext *_context, CGLContextObj ctx, CGLContextParameter pname, const GLint *params);
+typedef CGLError (REGAL_CALL *REGALCGLSETVIRTUALSCREENPROC)(RegalContext *_context, CGLContextObj ctx, GLint screen);
 
     // CGL_VERSION_1_1
 
-    PFNCGLCREATEPBUFFERPROC CGLCreatePBuffer;
-    PFNCGLDESCRIBEPBUFFERPROC CGLDescribePBuffer;
-    PFNCGLDESTROYPBUFFERPROC CGLDestroyPBuffer;
-    PFNCGLGETPBUFFERPROC CGLGetPBuffer;
-    PFNCGLSETPBUFFERPROC CGLSetPBuffer;
-    PFNCGLTEXIMAGEPBUFFERPROC CGLTexImagePBuffer;
+typedef CGLError (REGAL_CALL *REGALCGLCREATEPBUFFERPROC)(RegalContext *_context, GLsizei width, GLsizei height, GLenum target, GLenum internalFormat, GLint max_level, CGLPBufferObj *pbuffer);
+typedef CGLError (REGAL_CALL *REGALCGLDESCRIBEPBUFFERPROC)(RegalContext *_context, CGLPBufferObj pbuffer, GLsizei *width, GLsizei *height, GLenum *target, GLenum *internalFormat, GLint *mipmap);
+typedef CGLError (REGAL_CALL *REGALCGLDESTROYPBUFFERPROC)(RegalContext *_context, CGLPBufferObj pbuffer);
+typedef CGLError (REGAL_CALL *REGALCGLGETPBUFFERPROC)(RegalContext *_context, CGLContextObj ctx, CGLPBufferObj *pbuffer, GLenum *face, GLint *level, GLint *screen);
+typedef CGLError (REGAL_CALL *REGALCGLSETPBUFFERPROC)(RegalContext *_context, CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum face, GLint level, GLint screen);
+typedef CGLError (REGAL_CALL *REGALCGLTEXIMAGEPBUFFERPROC)(RegalContext *_context, CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum source);
 
     // CGL_VERSION_1_2
 
-    PFNCGLGETCONTEXTRETAINCOUNTPROC CGLGetContextRetainCount;
-    PFNCGLGETGLOBALOPTIONPROC CGLGetGlobalOption;
-    PFNCGLGETPBUFFERRETAINCOUNTPROC CGLGetPBufferRetainCount;
-    PFNCGLGETPIXELFORMATPROC CGLGetPixelFormat;
-    PFNCGLGETPIXELFORMATRETAINCOUNTPROC CGLGetPixelFormatRetainCount;
-    PFNCGLLOCKCONTEXTPROC CGLLockContext;
-    PFNCGLRELEASECONTEXTPROC CGLReleaseContext;
-    PFNCGLRELEASEPBUFFERPROC CGLReleasePBuffer;
-    PFNCGLRELEASEPIXELFORMATPROC CGLReleasePixelFormat;
-    PFNCGLRETAINCONTEXTPROC CGLRetainContext;
-    PFNCGLRETAINPBUFFERPROC CGLRetainPBuffer;
-    PFNCGLRETAINPIXELFORMATPROC CGLRetainPixelFormat;
-    PFNCGLSETGLOBALOPTIONPROC CGLSetGlobalOption;
-    PFNCGLUNLOCKCONTEXTPROC CGLUnlockContext;
+typedef GLuint (REGAL_CALL *REGALCGLGETCONTEXTRETAINCOUNTPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLError (REGAL_CALL *REGALCGLGETGLOBALOPTIONPROC)(RegalContext *_context, CGLGlobalOption pname, GLint *params);
+typedef GLuint (REGAL_CALL *REGALCGLGETPBUFFERRETAINCOUNTPROC)(RegalContext *_context, CGLPBufferObj pbuffer);
+typedef CGLPixelFormatObj (REGAL_CALL *REGALCGLGETPIXELFORMATPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef GLuint (REGAL_CALL *REGALCGLGETPIXELFORMATRETAINCOUNTPROC)(RegalContext *_context, CGLPixelFormatObj pix);
+typedef CGLError (REGAL_CALL *REGALCGLLOCKCONTEXTPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef void (REGAL_CALL *REGALCGLRELEASECONTEXTPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef void (REGAL_CALL *REGALCGLRELEASEPBUFFERPROC)(RegalContext *_context, CGLPBufferObj pbuffer);
+typedef void (REGAL_CALL *REGALCGLRELEASEPIXELFORMATPROC)(RegalContext *_context, CGLPixelFormatObj pix);
+typedef CGLContextObj (REGAL_CALL *REGALCGLRETAINCONTEXTPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLPBufferObj (REGAL_CALL *REGALCGLRETAINPBUFFERPROC)(RegalContext *_context, CGLPBufferObj pbuffer);
+typedef CGLPixelFormatObj (REGAL_CALL *REGALCGLRETAINPIXELFORMATPROC)(RegalContext *_context, CGLPixelFormatObj pix);
+typedef CGLError (REGAL_CALL *REGALCGLSETGLOBALOPTIONPROC)(RegalContext *_context, CGLGlobalOption pname, const GLint *params);
+typedef CGLError (REGAL_CALL *REGALCGLUNLOCKCONTEXTPROC)(RegalContext *_context, CGLContextObj ctx);
 
     // CGL_VERSION_1_3
 
-    PFNCGLGETCURRENTCONTEXTPROC CGLGetCurrentContext;
-    PFNCGLGETSHAREGROUPPROC CGLGetShareGroup;
-    PFNCGLGETSURFACEPROC CGLGetSurface;
-    PFNCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
-    PFNCGLSETSURFACEPROC CGLSetSurface;
-    PFNCGLTEXIMAGEIOSURFACE2DPROC CGLTexImageIOSurface2D;
-    PFNCGLUPDATECONTEXTPROC CGLUpdateContext;
+typedef CGLContextObj (REGAL_CALL *REGALCGLGETCURRENTCONTEXTPROC)(RegalContext *_context);
+typedef CGLShareGroupObj (REGAL_CALL *REGALCGLGETSHAREGROUPPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLError (REGAL_CALL *REGALCGLGETSURFACEPROC)(RegalContext *_context, CGLContextObj ctx, CGSConnectionID *conn, CGSWindowID *win, CGSSurfaceID *srf);
+typedef CGLError (REGAL_CALL *REGALCGLSETCURRENTCONTEXTPROC)(RegalContext *_context, CGLContextObj ctx);
+typedef CGLError (REGAL_CALL *REGALCGLSETSURFACEPROC)(RegalContext *_context, CGLContextObj ctx, CGSConnectionID conn, CGSWindowID win, CGSSurfaceID srf);
+typedef CGLError (REGAL_CALL *REGALCGLTEXIMAGEIOSURFACE2DPROC)(RegalContext *_context, CGLContextObj ctx, GLenum target, GLenum internal_format, GLsizei width, GLsizei height, GLenum format, GLenum type, IOSurfaceRef ioSurface, GLuint plane);
+typedef CGLError (REGAL_CALL *REGALCGLUPDATECONTEXTPROC)(RegalContext *_context, CGLContextObj ctx);
 #endif // REGAL_SYS_OSX
 
 #if REGAL_SYS_EGL
     // EGL_ANGLE_query_surface_pointer
 
-    PFNEGLQUERYSURFACEPOINTERANGLEPROC eglQuerySurfacePointerANGLE;
+typedef EGLBoolean (REGAL_CALL *REGALEGLQUERYSURFACEPOINTERANGLEPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface, EGLint attribute, GLvoid **value);
 
     // EGL_KHR_fence_sync
 
-    PFNEGLCLIENTWAITSYNCKHRPROC eglClientWaitSyncKHR;
-    PFNEGLCREATESYNCKHRPROC eglCreateSyncKHR;
-    PFNEGLDESTROYSYNCKHRPROC eglDestroySyncKHR;
-    PFNEGLGETSYNCATTRIBKHRPROC eglGetSyncAttribKHR;
+typedef EGLint (REGAL_CALL *REGALEGLCLIENTWAITSYNCKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags, EGLTimeKHR timeout);
+typedef EGLSyncKHR (REGAL_CALL *REGALEGLCREATESYNCKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLenum type, const EGLint *attrib_list);
+typedef EGLBoolean (REGAL_CALL *REGALEGLDESTROYSYNCKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLSyncKHR GLsync);
+typedef EGLBoolean (REGAL_CALL *REGALEGLGETSYNCATTRIBKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint attribute, EGLint *value);
 
     // EGL_KHR_image_base
 
-    PFNEGLCREATEIMAGEKHRPROC eglCreateImageKHR;
-    PFNEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR;
+typedef EGLImageKHR (REGAL_CALL *REGALEGLCREATEIMAGEKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list);
+typedef EGLBoolean (REGAL_CALL *REGALEGLDESTROYIMAGEKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLImageKHR image);
 
     // EGL_KHR_lock_surface
 
-    PFNEGLLOCKSURFACEKHRPROC eglLockSurfaceKHR;
-    PFNEGLUNLOCKSURFACEKHRPROC eglUnlockSurfaceKHR;
+typedef EGLBoolean (REGAL_CALL *REGALEGLLOCKSURFACEKHRPROC)(RegalContext *_context, EGLDisplay display, EGLSurface surface, const EGLint *attrib_list);
+typedef EGLBoolean (REGAL_CALL *REGALEGLUNLOCKSURFACEKHRPROC)(RegalContext *_context, EGLDisplay display, EGLSurface surface);
 
     // EGL_KHR_stream_consumer_gltexture
 
-    PFNEGLSTREAMCONSUMERACQUIREKHRPROC eglStreamConsumerAcquireKHR;
-    PFNEGLSTREAMCONSUMERGLTEXTUREEXTERNALKHRPROC eglStreamConsumerGLTextureExternalKHR;
-    PFNEGLSTREAMCONSUMERRELEASEKHRPROC eglStreamConsumerReleaseKHR;
+typedef EGLBoolean (REGAL_CALL *REGALEGLSTREAMCONSUMERACQUIREKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLStreamKHR stream);
+typedef EGLBoolean (REGAL_CALL *REGALEGLSTREAMCONSUMERGLTEXTUREEXTERNALKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLStreamKHR stream);
+typedef EGLBoolean (REGAL_CALL *REGALEGLSTREAMCONSUMERRELEASEKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLStreamKHR stream);
 
     // EGL_KHR_stream_cross_process_fd
 
-    PFNEGLCREATESTREAMFROMFILEDESCRIPTORKHRPROC eglCreateStreamFromFileDescriptorKHR;
-    PFNEGLGETSTREAMFILEDESCRIPTORKHRPROC eglGetStreamFileDescriptorKHR;
+typedef EGLStreamKHR (REGAL_CALL *REGALEGLCREATESTREAMFROMFILEDESCRIPTORKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor);
+typedef EGLNativeFileDescriptorKHR (REGAL_CALL *REGALEGLGETSTREAMFILEDESCRIPTORKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLStreamKHR stream);
 
     // EGL_KHR_stream_producer_eglsurface
 
-    PFNEGLCREATESTREAMPRODUCERSURFACEKHRPROC eglCreateStreamProducerSurfaceKHR;
+typedef EGLSurface (REGAL_CALL *REGALEGLCREATESTREAMPRODUCERSURFACEKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint *attrib_list);
 
     // EGL_KHR_wait_sync
 
-    PFNEGLWAITSYNCKHRPROC eglWaitSyncKHR;
+typedef EGLint (REGAL_CALL *REGALEGLWAITSYNCKHRPROC)(RegalContext *_context, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags);
 
     // EGL_MESA_drm_image
 
-    PFNEGLCREATEDRMIMAGEMESAPROC eglCreateDRMImageMESA;
-    PFNEGLEXPORTDRMIMAGEMESAPROC eglExportDRMImageMESA;
+typedef EGLImageKHR (REGAL_CALL *REGALEGLCREATEDRMIMAGEMESAPROC)(RegalContext *_context, EGLDisplay dpy, const EGLint *attrib_list);
+typedef EGLBoolean (REGAL_CALL *REGALEGLEXPORTDRMIMAGEMESAPROC)(RegalContext *_context, EGLDisplay dpy, EGLImageKHR image, EGLint *name, EGLint *handle, EGLint *stride);
 
     // EGL_NV_coverage_sample
 
-    PFNEGLCOVERAGEMASKNVPROC eglCoverageMaskNV;
-    PFNEGLCOVERAGEOPERATIONNVPROC eglCoverageOperationNV;
+typedef void (REGAL_CALL *REGALEGLCOVERAGEMASKNVPROC)(RegalContext *_context, GLboolean mask);
+typedef void (REGAL_CALL *REGALEGLCOVERAGEOPERATIONNVPROC)(RegalContext *_context, GLenum operation);
 
     // EGL_NV_post_sub_buffer
 
-    PFNEGLPOSTSUBBUFFERNVPROC eglPostSubBufferNV;
+typedef EGLBoolean (REGAL_CALL *REGALEGLPOSTSUBBUFFERNVPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height);
 
     // EGL_NV_sync
 
-    PFNEGLCLIENTWAITSYNCNVPROC eglClientWaitSyncNV;
-    PFNEGLCREATEFENCESYNCNVPROC eglCreateFenceSyncNV;
-    PFNEGLDESTROYSYNCNVPROC eglDestroySyncNV;
-    PFNEGLFENCENVPROC eglFenceNV;
-    PFNEGLGETSYNCATTRIBNVPROC eglGetSyncAttribNV;
-    PFNEGLSIGNALSYNCNVPROC eglSignalSyncNV;
+typedef EGLint (REGAL_CALL *REGALEGLCLIENTWAITSYNCNVPROC)(RegalContext *_context, EGLSyncNV GLsync, EGLint flags, EGLTimeNV timeout);
+typedef EGLSyncNV (REGAL_CALL *REGALEGLCREATEFENCESYNCNVPROC)(RegalContext *_context, EGLDisplay dpy, EGLenum condition, const EGLint *attrib_list);
+typedef EGLBoolean (REGAL_CALL *REGALEGLDESTROYSYNCNVPROC)(RegalContext *_context, EGLSyncNV GLsync);
+typedef EGLBoolean (REGAL_CALL *REGALEGLFENCENVPROC)(RegalContext *_context, EGLSyncNV GLsync);
+typedef EGLBoolean (REGAL_CALL *REGALEGLGETSYNCATTRIBNVPROC)(RegalContext *_context, EGLSyncNV GLsync, EGLint attribute, EGLint *value);
+typedef EGLBoolean (REGAL_CALL *REGALEGLSIGNALSYNCNVPROC)(RegalContext *_context, EGLSyncNV GLsync, EGLenum mode);
 
     // EGL_NV_system_time
 
-    PFNEGLGETSYSTEMTIMEFREQUENCYNVPROC eglGetSystemTimeFrequencyNV;
-    PFNEGLGETSYSTEMTIMENVPROC eglGetSystemTimeNV;
+typedef EGLuint64NV (REGAL_CALL *REGALEGLGETSYSTEMTIMEFREQUENCYNVPROC)(RegalContext *_context);
+typedef EGLuint64NV (REGAL_CALL *REGALEGLGETSYSTEMTIMENVPROC)(RegalContext *_context);
 
     // EGL_VERSION_1_0
 
-    PFNEGLCHOOSECONFIGPROC eglChooseConfig;
-    PFNEGLCOPYBUFFERSPROC eglCopyBuffers;
-    PFNEGLCREATECONTEXTPROC eglCreateContext;
-    PFNEGLCREATEPBUFFERSURFACEPROC eglCreatePbufferSurface;
-    PFNEGLCREATEPIXMAPSURFACEPROC eglCreatePixmapSurface;
-    PFNEGLCREATEWINDOWSURFACEPROC eglCreateWindowSurface;
-    PFNEGLDESTROYCONTEXTPROC eglDestroyContext;
-    PFNEGLDESTROYSURFACEPROC eglDestroySurface;
-    PFNEGLGETCONFIGATTRIBPROC eglGetConfigAttrib;
-    PFNEGLGETCONFIGSPROC eglGetConfigs;
-    PFNEGLGETCURRENTCONTEXTPROC eglGetCurrentContext;
-    PFNEGLGETCURRENTDISPLAYPROC eglGetCurrentDisplay;
-    PFNEGLGETCURRENTSURFACEPROC eglGetCurrentSurface;
-    PFNEGLGETDISPLAYPROC eglGetDisplay;
-    PFNEGLGETERRORPROC eglGetError;
-    PFNEGLGETPROCADDRESSPROC eglGetProcAddress;
-    PFNEGLINITIALIZEPROC eglInitialize;
-    PFNEGLMAKECURRENTPROC eglMakeCurrent;
-    PFNEGLQUERYCONTEXTPROC eglQueryContext;
-    PFNEGLQUERYSTRINGPROC eglQueryString;
-    PFNEGLQUERYSURFACEPROC eglQuerySurface;
-    PFNEGLSWAPBUFFERSPROC eglSwapBuffers;
-    PFNEGLTERMINATEPROC eglTerminate;
-    PFNEGLWAITGLPROC eglWaitGL;
-    PFNEGLWAITNATIVEPROC eglWaitNative;
+typedef EGLBoolean (REGAL_CALL *REGALEGLCHOOSECONFIGPROC)(RegalContext *_context, EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config);
+typedef EGLBoolean (REGAL_CALL *REGALEGLCOPYBUFFERSPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target);
+typedef EGLContext (REGAL_CALL *REGALEGLCREATECONTEXTPROC)(RegalContext *_context, EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list);
+typedef EGLSurface (REGAL_CALL *REGALEGLCREATEPBUFFERSURFACEPROC)(RegalContext *_context, EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list);
+typedef EGLSurface (REGAL_CALL *REGALEGLCREATEPIXMAPSURFACEPROC)(RegalContext *_context, EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint *attrib_list);
+typedef EGLSurface (REGAL_CALL *REGALEGLCREATEWINDOWSURFACEPROC)(RegalContext *_context, EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list);
+typedef EGLBoolean (REGAL_CALL *REGALEGLDESTROYCONTEXTPROC)(RegalContext *_context, EGLDisplay dpy, EGLContext ctx);
+typedef EGLBoolean (REGAL_CALL *REGALEGLDESTROYSURFACEPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface);
+typedef EGLBoolean (REGAL_CALL *REGALEGLGETCONFIGATTRIBPROC)(RegalContext *_context, EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value);
+typedef EGLBoolean (REGAL_CALL *REGALEGLGETCONFIGSPROC)(RegalContext *_context, EGLDisplay dpy, EGLConfig *configs, EGLint config_size, EGLint *num_config);
+typedef EGLContext (REGAL_CALL *REGALEGLGETCURRENTCONTEXTPROC)(RegalContext *_context);
+typedef EGLDisplay (REGAL_CALL *REGALEGLGETCURRENTDISPLAYPROC)(RegalContext *_context);
+typedef EGLSurface (REGAL_CALL *REGALEGLGETCURRENTSURFACEPROC)(RegalContext *_context, EGLint readdraw);
+typedef EGLDisplay (REGAL_CALL *REGALEGLGETDISPLAYPROC)(RegalContext *_context, EGLNativeDisplayType display_id);
+typedef EGLint (REGAL_CALL *REGALEGLGETERRORPROC)(RegalContext *_context);
+typedef __eglMustCastToProperFunctionPointerType (REGAL_CALL *REGALEGLGETPROCADDRESSPROC)(RegalContext *_context, const char *procname);
+typedef EGLBoolean (REGAL_CALL *REGALEGLINITIALIZEPROC)(RegalContext *_context, EGLDisplay dpy, EGLint *major, EGLint *minor);
+typedef EGLBoolean (REGAL_CALL *REGALEGLMAKECURRENTPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx);
+typedef EGLBoolean (REGAL_CALL *REGALEGLQUERYCONTEXTPROC)(RegalContext *_context, EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint *value);
+typedef const char *(REGAL_CALL *REGALEGLQUERYSTRINGPROC)(RegalContext *_context, EGLDisplay dpy, EGLint name);
+typedef EGLBoolean (REGAL_CALL *REGALEGLQUERYSURFACEPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value);
+typedef EGLBoolean (REGAL_CALL *REGALEGLSWAPBUFFERSPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface);
+typedef EGLBoolean (REGAL_CALL *REGALEGLTERMINATEPROC)(RegalContext *_context, EGLDisplay dpy);
+typedef EGLBoolean (REGAL_CALL *REGALEGLWAITGLPROC)(RegalContext *_context);
+typedef EGLBoolean (REGAL_CALL *REGALEGLWAITNATIVEPROC)(RegalContext *_context, EGLint engine);
 
     // EGL_VERSION_1_1
 
-    PFNEGLBINDTEXIMAGEPROC eglBindTexImage;
-    PFNEGLRELEASETEXIMAGEPROC eglReleaseTexImage;
+typedef EGLBoolean (REGAL_CALL *REGALEGLBINDTEXIMAGEPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface, EGLint buffer);
+typedef EGLBoolean (REGAL_CALL *REGALEGLRELEASETEXIMAGEPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface, EGLint buffer);
 
     // EGL_VERSION_1_2
 
-    PFNEGLBINDAPIPROC eglBindAPI;
-    PFNEGLCREATEPBUFFERFROMCLIENTBUFFERPROC eglCreatePbufferFromClientBuffer;
-    PFNEGLQUERYAPIPROC eglQueryAPI;
-    PFNEGLRELEASETHREADPROC eglReleaseThread;
-    PFNEGLSURFACEATTRIBPROC eglSurfaceAttrib;
-    PFNEGLSWAPINTERVALPROC eglSwapInterval;
-    PFNEGLWAITCLIENTPROC eglWaitClient;
+typedef EGLBoolean (REGAL_CALL *REGALEGLBINDAPIPROC)(RegalContext *_context, EGLenum api);
+typedef EGLSurface (REGAL_CALL *REGALEGLCREATEPBUFFERFROMCLIENTBUFFERPROC)(RegalContext *_context, EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list);
+typedef EGLenum (REGAL_CALL *REGALEGLQUERYAPIPROC)(RegalContext *_context);
+typedef EGLBoolean (REGAL_CALL *REGALEGLRELEASETHREADPROC)(RegalContext *_context);
+typedef EGLBoolean (REGAL_CALL *REGALEGLSURFACEATTRIBPROC)(RegalContext *_context, EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value);
+typedef EGLBoolean (REGAL_CALL *REGALEGLSWAPINTERVALPROC)(RegalContext *_context, EGLDisplay dpy, EGLint interval);
+typedef EGLBoolean (REGAL_CALL *REGALEGLWAITCLIENTPROC)(RegalContext *_context);
+#endif // REGAL_SYS_EGL
+
+namespace Dispatch
+{
+  struct Global {
+
+#if REGAL_SYS_WGL
+    // WGL_3DL_stereo_control
+
+    REGALWGLSETSTEREOEMITTERSTATE3DLPROC wglSetStereoEmitterState3DL;
+
+    // WGL_AMD_gpu_association
+
+    REGALWGLBLITCONTEXTFRAMEBUFFERAMDPROC wglBlitContextFramebufferAMD;
+    REGALWGLCREATEASSOCIATEDCONTEXTAMDPROC wglCreateAssociatedContextAMD;
+    REGALWGLCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC wglCreateAssociatedContextAttribsAMD;
+    REGALWGLDELETEASSOCIATEDCONTEXTAMDPROC wglDeleteAssociatedContextAMD;
+    REGALWGLGETCONTEXTGPUIDAMDPROC wglGetContextGPUIDAMD;
+    REGALWGLGETCURRENTASSOCIATEDCONTEXTAMDPROC wglGetCurrentAssociatedContextAMD;
+    REGALWGLGETGPUIDSAMDPROC wglGetGPUIDsAMD;
+    REGALWGLGETGPUINFOAMDPROC wglGetGPUInfoAMD;
+    REGALWGLMAKEASSOCIATEDCONTEXTCURRENTAMDPROC wglMakeAssociatedContextCurrentAMD;
+
+    // WGL_ARB_buffer_region
+
+    REGALWGLCREATEBUFFERREGIONARBPROC wglCreateBufferRegionARB;
+    REGALWGLDELETEBUFFERREGIONARBPROC wglDeleteBufferRegionARB;
+    REGALWGLRESTOREBUFFERREGIONARBPROC wglRestoreBufferRegionARB;
+    REGALWGLSAVEBUFFERREGIONARBPROC wglSaveBufferRegionARB;
+
+    // WGL_ARB_create_context
+
+    REGALWGLCREATECONTEXTATTRIBSARBPROC wglCreateContextAttribsARB;
+
+    // WGL_ARB_extensions_string
+
+    REGALWGLGETEXTENSIONSSTRINGARBPROC wglGetExtensionsStringARB;
+
+    // WGL_ARB_make_current_read
+
+    REGALWGLGETCURRENTREADDCARBPROC wglGetCurrentReadDCARB;
+    REGALWGLMAKECONTEXTCURRENTARBPROC wglMakeContextCurrentARB;
+
+    // WGL_ARB_pbuffer
+
+    REGALWGLCREATEPBUFFERARBPROC wglCreatePbufferARB;
+    REGALWGLDESTROYPBUFFERARBPROC wglDestroyPbufferARB;
+    REGALWGLGETPBUFFERDCARBPROC wglGetPbufferDCARB;
+    REGALWGLQUERYPBUFFERARBPROC wglQueryPbufferARB;
+    REGALWGLRELEASEPBUFFERDCARBPROC wglReleasePbufferDCARB;
+
+    // WGL_ARB_pixel_format
+
+    REGALWGLCHOOSEPIXELFORMATARBPROC wglChoosePixelFormatARB;
+    REGALWGLGETPIXELFORMATATTRIBFVARBPROC wglGetPixelFormatAttribfvARB;
+    REGALWGLGETPIXELFORMATATTRIBIVARBPROC wglGetPixelFormatAttribivARB;
+
+    // WGL_ARB_render_texture
+
+    REGALWGLBINDTEXIMAGEARBPROC wglBindTexImageARB;
+    REGALWGLRELEASETEXIMAGEARBPROC wglReleaseTexImageARB;
+    REGALWGLSETPBUFFERATTRIBARBPROC wglSetPbufferAttribARB;
+
+    // WGL_EXT_display_color_table
+
+    REGALWGLBINDDISPLAYCOLORTABLEEXTPROC wglBindDisplayColorTableEXT;
+    REGALWGLCREATEDISPLAYCOLORTABLEEXTPROC wglCreateDisplayColorTableEXT;
+    REGALWGLDESTROYDISPLAYCOLORTABLEEXTPROC wglDestroyDisplayColorTableEXT;
+    REGALWGLLOADDISPLAYCOLORTABLEEXTPROC wglLoadDisplayColorTableEXT;
+
+    // WGL_EXT_extensions_string
+
+    REGALWGLGETEXTENSIONSSTRINGEXTPROC wglGetExtensionsStringEXT;
+
+    // WGL_EXT_make_current_read
+
+    REGALWGLGETCURRENTREADDCEXTPROC wglGetCurrentReadDCEXT;
+    REGALWGLMAKECONTEXTCURRENTEXTPROC wglMakeContextCurrentEXT;
+
+    // WGL_EXT_pbuffer
+
+    REGALWGLCREATEPBUFFEREXTPROC wglCreatePbufferEXT;
+    REGALWGLDESTROYPBUFFEREXTPROC wglDestroyPbufferEXT;
+    REGALWGLGETPBUFFERDCEXTPROC wglGetPbufferDCEXT;
+    REGALWGLQUERYPBUFFEREXTPROC wglQueryPbufferEXT;
+    REGALWGLRELEASEPBUFFERDCEXTPROC wglReleasePbufferDCEXT;
+
+    // WGL_EXT_pixel_format
+
+    REGALWGLCHOOSEPIXELFORMATEXTPROC wglChoosePixelFormatEXT;
+    REGALWGLGETPIXELFORMATATTRIBFVEXTPROC wglGetPixelFormatAttribfvEXT;
+    REGALWGLGETPIXELFORMATATTRIBIVEXTPROC wglGetPixelFormatAttribivEXT;
+
+    // WGL_EXT_swap_control
+
+    REGALWGLGETSWAPINTERVALEXTPROC wglGetSwapIntervalEXT;
+    REGALWGLSWAPINTERVALEXTPROC wglSwapIntervalEXT;
+
+    // WGL_GDI
+
+    REGALSWAPBUFFERSPROC SwapBuffers;
+    REGALWGLCHOOSEPIXELFORMATPROC wglChoosePixelFormat;
+    REGALWGLDESCRIBEPIXELFORMATPROC wglDescribePixelFormat;
+    REGALWGLGETPIXELFORMATPROC wglGetPixelFormat;
+    REGALWGLSETPIXELFORMATPROC wglSetPixelFormat;
+    REGALWGLSWAPBUFFERSPROC wglSwapBuffers;
+
+    // WGL_I3D_digital_video_control
+
+    REGALWGLGETDIGITALVIDEOPARAMETERSI3DPROC wglGetDigitalVideoParametersI3D;
+    REGALWGLSETDIGITALVIDEOPARAMETERSI3DPROC wglSetDigitalVideoParametersI3D;
+
+    // WGL_I3D_gamma
+
+    REGALWGLGETGAMMATABLEI3DPROC wglGetGammaTableI3D;
+    REGALWGLGETGAMMATABLEPARAMETERSI3DPROC wglGetGammaTableParametersI3D;
+    REGALWGLSETGAMMATABLEI3DPROC wglSetGammaTableI3D;
+    REGALWGLSETGAMMATABLEPARAMETERSI3DPROC wglSetGammaTableParametersI3D;
+
+    // WGL_I3D_genlock
+
+    REGALWGLDISABLEGENLOCKI3DPROC wglDisableGenlockI3D;
+    REGALWGLENABLEGENLOCKI3DPROC wglEnableGenlockI3D;
+    REGALWGLGENLOCKSAMPLERATEI3DPROC wglGenlockSampleRateI3D;
+    REGALWGLGENLOCKSOURCEDELAYI3DPROC wglGenlockSourceDelayI3D;
+    REGALWGLGENLOCKSOURCEEDGEI3DPROC wglGenlockSourceEdgeI3D;
+    REGALWGLGENLOCKSOURCEI3DPROC wglGenlockSourceI3D;
+    REGALWGLGETGENLOCKSAMPLERATEI3DPROC wglGetGenlockSampleRateI3D;
+    REGALWGLGETGENLOCKSOURCEDELAYI3DPROC wglGetGenlockSourceDelayI3D;
+    REGALWGLGETGENLOCKSOURCEEDGEI3DPROC wglGetGenlockSourceEdgeI3D;
+    REGALWGLGETGENLOCKSOURCEI3DPROC wglGetGenlockSourceI3D;
+    REGALWGLISENABLEDGENLOCKI3DPROC wglIsEnabledGenlockI3D;
+    REGALWGLQUERYGENLOCKMAXSOURCEDELAYI3DPROC wglQueryGenlockMaxSourceDelayI3D;
+
+    // WGL_I3D_image_buffer
+
+    REGALWGLASSOCIATEIMAGEBUFFEREVENTSI3DPROC wglAssociateImageBufferEventsI3D;
+    REGALWGLCREATEIMAGEBUFFERI3DPROC wglCreateImageBufferI3D;
+    REGALWGLDESTROYIMAGEBUFFERI3DPROC wglDestroyImageBufferI3D;
+    REGALWGLRELEASEIMAGEBUFFEREVENTSI3DPROC wglReleaseImageBufferEventsI3D;
+
+    // WGL_I3D_swap_frame_lock
+
+    REGALWGLDISABLEFRAMELOCKI3DPROC wglDisableFrameLockI3D;
+    REGALWGLENABLEFRAMELOCKI3DPROC wglEnableFrameLockI3D;
+    REGALWGLISENABLEDFRAMELOCKI3DPROC wglIsEnabledFrameLockI3D;
+    REGALWGLQUERYFRAMELOCKMASTERI3DPROC wglQueryFrameLockMasterI3D;
+
+    // WGL_I3D_swap_frame_usage
+
+    REGALWGLBEGINFRAMETRACKINGI3DPROC wglBeginFrameTrackingI3D;
+    REGALWGLENDFRAMETRACKINGI3DPROC wglEndFrameTrackingI3D;
+    REGALWGLGETFRAMEUSAGEI3DPROC wglGetFrameUsageI3D;
+    REGALWGLQUERYFRAMETRACKINGI3DPROC wglQueryFrameTrackingI3D;
+
+    // WGL_NV_DX_interop
+
+    REGALWGLDXCLOSEDEVICENVPROC wglDXCloseDeviceNV;
+    REGALWGLDXLOCKOBJECTSNVPROC wglDXLockObjectsNV;
+    REGALWGLDXOBJECTACCESSNVPROC wglDXObjectAccessNV;
+    REGALWGLDXOPENDEVICENVPROC wglDXOpenDeviceNV;
+    REGALWGLDXREGISTEROBJECTNVPROC wglDXRegisterObjectNV;
+    REGALWGLDXSETRESOURCESHAREHANDLENVPROC wglDXSetResourceShareHandleNV;
+    REGALWGLDXUNLOCKOBJECTSNVPROC wglDXUnlockObjectsNV;
+    REGALWGLDXUNREGISTEROBJECTNVPROC wglDXUnregisterObjectNV;
+
+    // WGL_NV_copy_image
+
+    REGALWGLCOPYIMAGESUBDATANVPROC wglCopyImageSubDataNV;
+
+    // WGL_NV_gpu_affinity
+
+    REGALWGLCREATEAFFINITYDCNVPROC wglCreateAffinityDCNV;
+    REGALWGLDELETEDCNVPROC wglDeleteDCNV;
+    REGALWGLENUMGPUDEVICESNVPROC wglEnumGpuDevicesNV;
+    REGALWGLENUMGPUSFROMAFFINITYDCNVPROC wglEnumGpusFromAffinityDCNV;
+    REGALWGLENUMGPUSNVPROC wglEnumGpusNV;
+
+    // WGL_NV_present_video
+
+    REGALWGLBINDVIDEODEVICENVPROC wglBindVideoDeviceNV;
+    REGALWGLENUMERATEVIDEODEVICESNVPROC wglEnumerateVideoDevicesNV;
+    REGALWGLQUERYCURRENTCONTEXTNVPROC wglQueryCurrentContextNV;
+
+    // WGL_NV_swap_group
+
+    REGALWGLBINDSWAPBARRIERNVPROC wglBindSwapBarrierNV;
+    REGALWGLJOINSWAPGROUPNVPROC wglJoinSwapGroupNV;
+    REGALWGLQUERYFRAMECOUNTNVPROC wglQueryFrameCountNV;
+    REGALWGLQUERYMAXSWAPGROUPSNVPROC wglQueryMaxSwapGroupsNV;
+    REGALWGLQUERYSWAPGROUPNVPROC wglQuerySwapGroupNV;
+    REGALWGLRESETFRAMECOUNTNVPROC wglResetFrameCountNV;
+
+    // WGL_NV_vertex_array_range
+
+    REGALWGLALLOCATEMEMORYNVPROC wglAllocateMemoryNV;
+    REGALWGLFREEMEMORYNVPROC wglFreeMemoryNV;
+
+    // WGL_NV_video_capture
+
+    REGALWGLBINDVIDEOCAPTUREDEVICENVPROC wglBindVideoCaptureDeviceNV;
+    REGALWGLENUMERATEVIDEOCAPTUREDEVICESNVPROC wglEnumerateVideoCaptureDevicesNV;
+    REGALWGLLOCKVIDEOCAPTUREDEVICENVPROC wglLockVideoCaptureDeviceNV;
+    REGALWGLQUERYVIDEOCAPTUREDEVICENVPROC wglQueryVideoCaptureDeviceNV;
+    REGALWGLRELEASEVIDEOCAPTUREDEVICENVPROC wglReleaseVideoCaptureDeviceNV;
+
+    // WGL_NV_video_output
+
+    REGALWGLBINDVIDEOIMAGENVPROC wglBindVideoImageNV;
+    REGALWGLGETVIDEODEVICENVPROC wglGetVideoDeviceNV;
+    REGALWGLGETVIDEOINFONVPROC wglGetVideoInfoNV;
+    REGALWGLRELEASEVIDEODEVICENVPROC wglReleaseVideoDeviceNV;
+    REGALWGLRELEASEVIDEOIMAGENVPROC wglReleaseVideoImageNV;
+    REGALWGLSENDPBUFFERTOVIDEONVPROC wglSendPbufferToVideoNV;
+
+    // WGL_OML_sync_control
+
+    REGALWGLGETMSCRATEOMLPROC wglGetMscRateOML;
+    REGALWGLGETSYNCVALUESOMLPROC wglGetSyncValuesOML;
+    REGALWGLSWAPBUFFERSMSCOMLPROC wglSwapBuffersMscOML;
+    REGALWGLSWAPLAYERBUFFERSMSCOMLPROC wglSwapLayerBuffersMscOML;
+    REGALWGLWAITFORMSCOMLPROC wglWaitForMscOML;
+    REGALWGLWAITFORSBCOMLPROC wglWaitForSbcOML;
+
+    // WGL_core
+
+    REGALWGLCOPYCONTEXTPROC wglCopyContext;
+    REGALWGLCREATECONTEXTPROC wglCreateContext;
+    REGALWGLCREATELAYERCONTEXTPROC wglCreateLayerContext;
+    REGALWGLDELETECONTEXTPROC wglDeleteContext;
+    REGALWGLDESCRIBELAYERPLANEPROC wglDescribeLayerPlane;
+    REGALWGLGETCURRENTCONTEXTPROC wglGetCurrentContext;
+    REGALWGLGETCURRENTDCPROC wglGetCurrentDC;
+    REGALWGLGETDEFAULTPROCADDRESSPROC wglGetDefaultProcAddress;
+    REGALWGLGETLAYERPALETTEENTRIESPROC wglGetLayerPaletteEntries;
+    REGALWGLGETPROCADDRESSPROC wglGetProcAddress;
+    REGALWGLMAKECURRENTPROC wglMakeCurrent;
+    REGALWGLREALIZELAYERPALETTEPROC wglRealizeLayerPalette;
+    REGALWGLSETLAYERPALETTEENTRIESPROC wglSetLayerPaletteEntries;
+    REGALWGLSHARELISTSPROC wglShareLists;
+    REGALWGLSWAPLAYERBUFFERSPROC wglSwapLayerBuffers;
+    REGALWGLSWAPMULTIPLEBUFFERSPROC wglSwapMultipleBuffers;
+    REGALWGLUSEFONTBITMAPSAPROC wglUseFontBitmapsA;
+    REGALWGLUSEFONTBITMAPSWPROC wglUseFontBitmapsW;
+    REGALWGLUSEFONTOUTLINESAPROC wglUseFontOutlinesA;
+    REGALWGLUSEFONTOUTLINESWPROC wglUseFontOutlinesW;
+#endif // REGAL_SYS_WGL
+
+#if REGAL_SYS_GLX
+    // GLX_VERSION_1_0
+
+    REGALGLXCHOOSEVISUALPROC glXChooseVisual;
+    REGALGLXCOPYCONTEXTPROC glXCopyContext;
+    REGALGLXCREATECONTEXTPROC glXCreateContext;
+    REGALGLXCREATEGLXPIXMAPPROC glXCreateGLXPixmap;
+    REGALGLXDESTROYCONTEXTPROC glXDestroyContext;
+    REGALGLXDESTROYGLXPIXMAPPROC glXDestroyGLXPixmap;
+    REGALGLXGETCONFIGPROC glXGetConfig;
+    REGALGLXGETCURRENTCONTEXTPROC glXGetCurrentContext;
+    REGALGLXGETCURRENTDRAWABLEPROC glXGetCurrentDrawable;
+    REGALGLXISDIRECTPROC glXIsDirect;
+    REGALGLXMAKECURRENTPROC glXMakeCurrent;
+    REGALGLXQUERYEXTENSIONPROC glXQueryExtension;
+    REGALGLXQUERYVERSIONPROC glXQueryVersion;
+    REGALGLXSWAPBUFFERSPROC glXSwapBuffers;
+    REGALGLXUSEXFONTPROC glXUseXFont;
+    REGALGLXWAITGLPROC glXWaitGL;
+    REGALGLXWAITXPROC glXWaitX;
+
+    // GLX_VERSION_1_1
+
+    REGALGLXGETCLIENTSTRINGPROC glXGetClientString;
+    REGALGLXQUERYEXTENSIONSSTRINGPROC glXQueryExtensionsString;
+    REGALGLXQUERYSERVERSTRINGPROC glXQueryServerString;
+
+    // GLX_VERSION_1_2
+
+    REGALGLXGETCURRENTDISPLAYPROC glXGetCurrentDisplay;
+
+    // GLX_VERSION_1_3
+
+    REGALGLXCHOOSEFBCONFIGPROC glXChooseFBConfig;
+    REGALGLXCREATENEWCONTEXTPROC glXCreateNewContext;
+    REGALGLXCREATEPBUFFERPROC glXCreatePbuffer;
+    REGALGLXCREATEPIXMAPPROC glXCreatePixmap;
+    REGALGLXCREATEWINDOWPROC glXCreateWindow;
+    REGALGLXDESTROYPBUFFERPROC glXDestroyPbuffer;
+    REGALGLXDESTROYPIXMAPPROC glXDestroyPixmap;
+    REGALGLXDESTROYWINDOWPROC glXDestroyWindow;
+    REGALGLXGETCURRENTREADDRAWABLEPROC glXGetCurrentReadDrawable;
+    REGALGLXGETFBCONFIGATTRIBPROC glXGetFBConfigAttrib;
+    REGALGLXGETFBCONFIGSPROC glXGetFBConfigs;
+    REGALGLXGETSELECTEDEVENTPROC glXGetSelectedEvent;
+    REGALGLXGETVISUALFROMFBCONFIGPROC glXGetVisualFromFBConfig;
+    REGALGLXMAKECONTEXTCURRENTPROC glXMakeContextCurrent;
+    REGALGLXQUERYCONTEXTPROC glXQueryContext;
+    REGALGLXQUERYDRAWABLEPROC glXQueryDrawable;
+    REGALGLXSELECTEVENTPROC glXSelectEvent;
+
+    // GLX_VERSION_1_4
+
+    REGALGLXGETPROCADDRESSPROC glXGetProcAddress;
+
+    // GLX_AMD_gpu_association
+
+    REGALGLXBLITCONTEXTFRAMEBUFFERAMDPROC glXBlitContextFramebufferAMD;
+    REGALGLXCREATEASSOCIATEDCONTEXTAMDPROC glXCreateAssociatedContextAMD;
+    REGALGLXCREATEASSOCIATEDCONTEXTATTRIBSAMDPROC glXCreateAssociatedContextAttribsAMD;
+    REGALGLXDELETEASSOCIATEDCONTEXTAMDPROC glXDeleteAssociatedContextAMD;
+    REGALGLXGETCONTEXTGPUIDAMDPROC glXGetContextGPUIDAMD;
+    REGALGLXGETCURRENTASSOCIATEDCONTEXTAMDPROC glXGetCurrentAssociatedContextAMD;
+    REGALGLXGETGPUIDSAMDPROC glXGetGPUIDsAMD;
+    REGALGLXGETGPUINFOAMDPROC glXGetGPUInfoAMD;
+    REGALGLXMAKEASSOCIATEDCONTEXTCURRENTAMDPROC glXMakeAssociatedContextCurrentAMD;
+
+    // GLX_ARB_create_context
+
+    REGALGLXCREATECONTEXTATTRIBSARBPROC glXCreateContextAttribsARB;
+
+    // GLX_ARB_get_proc_address
+
+    REGALGLXGETPROCADDRESSARBPROC glXGetProcAddressARB;
+
+    // GLX_ATI_render_texture
+
+    REGALGLXBINDTEXIMAGEATIPROC glXBindTexImageATI;
+    REGALGLXDRAWABLEATTRIBATIPROC glXDrawableAttribATI;
+    REGALGLXRELEASETEXIMAGEATIPROC glXReleaseTexImageATI;
+
+    // GLX_EXT_import_context
+
+    REGALGLXFREECONTEXTEXTPROC glXFreeContextEXT;
+    REGALGLXGETCONTEXTIDEXTPROC glXGetContextIDEXT;
+    REGALGLXIMPORTCONTEXTEXTPROC glXImportContextEXT;
+    REGALGLXQUERYCONTEXTINFOEXTPROC glXQueryContextInfoEXT;
+
+    // GLX_EXT_swap_control
+
+    REGALGLXSWAPINTERVALEXTPROC glXSwapIntervalEXT;
+
+    // GLX_EXT_texture_from_pixmap
+
+    REGALGLXBINDTEXIMAGEEXTPROC glXBindTexImageEXT;
+    REGALGLXRELEASETEXIMAGEEXTPROC glXReleaseTexImageEXT;
+
+    // GLX_MESA_agp_offset
+
+    REGALGLXGETAGPOFFSETMESAPROC glXGetAGPOffsetMESA;
+
+    // GLX_MESA_copy_sub_buffer
+
+    REGALGLXCOPYSUBBUFFERMESAPROC glXCopySubBufferMESA;
+
+    // GLX_MESA_pixmap_colormap
+
+    REGALGLXCREATEGLXPIXMAPMESAPROC glXCreateGLXPixmapMESA;
+
+    // GLX_MESA_release_buffers
+
+    REGALGLXRELEASEBUFFERSMESAPROC glXReleaseBuffersMESA;
+
+    // GLX_MESA_set_3dfx_mode
+
+    REGALGLXSET3DFXMODEMESAPROC glXSet3DfxModeMESA;
+
+    // GLX_MESA_swap_control
+
+    REGALGLXGETSWAPINTERVALMESAPROC glXGetSwapIntervalMESA;
+    REGALGLXSWAPINTERVALMESAPROC glXSwapIntervalMESA;
+
+    // GLX_NV_copy_image
+
+    REGALGLXCOPYIMAGESUBDATANVPROC glXCopyImageSubDataNV;
+
+    // GLX_NV_present_video
+
+    REGALGLXBINDVIDEODEVICENVPROC glXBindVideoDeviceNV;
+    REGALGLXENUMERATEVIDEODEVICESNVPROC glXEnumerateVideoDevicesNV;
+
+    // GLX_NV_swap_group
+
+    REGALGLXBINDSWAPBARRIERNVPROC glXBindSwapBarrierNV;
+    REGALGLXJOINSWAPGROUPNVPROC glXJoinSwapGroupNV;
+    REGALGLXQUERYFRAMECOUNTNVPROC glXQueryFrameCountNV;
+    REGALGLXQUERYMAXSWAPGROUPSNVPROC glXQueryMaxSwapGroupsNV;
+    REGALGLXQUERYSWAPGROUPNVPROC glXQuerySwapGroupNV;
+    REGALGLXRESETFRAMECOUNTNVPROC glXResetFrameCountNV;
+
+    // GLX_NV_vertex_array_range
+
+    REGALGLXALLOCATEMEMORYNVPROC glXAllocateMemoryNV;
+    REGALGLXFREEMEMORYNVPROC glXFreeMemoryNV;
+
+    // GLX_NV_video_capture
+
+    REGALGLXBINDVIDEOCAPTUREDEVICENVPROC glXBindVideoCaptureDeviceNV;
+    REGALGLXENUMERATEVIDEOCAPTUREDEVICESNVPROC glXEnumerateVideoCaptureDevicesNV;
+    REGALGLXLOCKVIDEOCAPTUREDEVICENVPROC glXLockVideoCaptureDeviceNV;
+    REGALGLXQUERYVIDEOCAPTUREDEVICENVPROC glXQueryVideoCaptureDeviceNV;
+    REGALGLXRELEASEVIDEOCAPTUREDEVICENVPROC glXReleaseVideoCaptureDeviceNV;
+
+    // GLX_NV_video_output
+
+    REGALGLXBINDVIDEOIMAGENVPROC glXBindVideoImageNV;
+    REGALGLXGETVIDEODEVICENVPROC glXGetVideoDeviceNV;
+    REGALGLXGETVIDEOINFONVPROC glXGetVideoInfoNV;
+    REGALGLXRELEASEVIDEODEVICENVPROC glXReleaseVideoDeviceNV;
+    REGALGLXRELEASEVIDEOIMAGENVPROC glXReleaseVideoImageNV;
+    REGALGLXSENDPBUFFERTOVIDEONVPROC glXSendPbufferToVideoNV;
+
+    // GLX_OML_sync_control
+
+    REGALGLXGETMSCRATEOMLPROC glXGetMscRateOML;
+    REGALGLXGETSYNCVALUESOMLPROC glXGetSyncValuesOML;
+    REGALGLXSWAPBUFFERSMSCOMLPROC glXSwapBuffersMscOML;
+    REGALGLXWAITFORMSCOMLPROC glXWaitForMscOML;
+    REGALGLXWAITFORSBCOMLPROC glXWaitForSbcOML;
+
+    // GLX_SGIX_fbconfig
+
+    REGALGLXCHOOSEFBCONFIGSGIXPROC glXChooseFBConfigSGIX;
+    REGALGLXCREATECONTEXTWITHCONFIGSGIXPROC glXCreateContextWithConfigSGIX;
+    REGALGLXCREATEGLXPIXMAPWITHCONFIGSGIXPROC glXCreateGLXPixmapWithConfigSGIX;
+    REGALGLXGETFBCONFIGATTRIBSGIXPROC glXGetFBConfigAttribSGIX;
+    REGALGLXGETFBCONFIGFROMVISUALSGIXPROC glXGetFBConfigFromVisualSGIX;
+    REGALGLXGETVISUALFROMFBCONFIGSGIXPROC glXGetVisualFromFBConfigSGIX;
+
+    // GLX_SGIX_pbuffer
+
+    REGALGLXCREATEGLXPBUFFERSGIXPROC glXCreateGLXPbufferSGIX;
+    REGALGLXDESTROYGLXPBUFFERSGIXPROC glXDestroyGLXPbufferSGIX;
+    REGALGLXGETSELECTEDEVENTSGIXPROC glXGetSelectedEventSGIX;
+    REGALGLXQUERYGLXPBUFFERSGIXPROC glXQueryGLXPbufferSGIX;
+    REGALGLXSELECTEVENTSGIXPROC glXSelectEventSGIX;
+
+    // GLX_SGIX_swap_barrier
+
+    REGALGLXBINDSWAPBARRIERSGIXPROC glXBindSwapBarrierSGIX;
+    REGALGLXQUERYMAXSWAPBARRIERSSGIXPROC glXQueryMaxSwapBarriersSGIX;
+
+    // GLX_SGIX_swap_group
+
+    REGALGLXJOINSWAPGROUPSGIXPROC glXJoinSwapGroupSGIX;
+
+    // GLX_SGIX_video_resize
+
+    REGALGLXBINDCHANNELTOWINDOWSGIXPROC glXBindChannelToWindowSGIX;
+    REGALGLXCHANNELRECTSGIXPROC glXChannelRectSGIX;
+    REGALGLXCHANNELRECTSYNCSGIXPROC glXChannelRectSyncSGIX;
+    REGALGLXQUERYCHANNELDELTASSGIXPROC glXQueryChannelDeltasSGIX;
+    REGALGLXQUERYCHANNELRECTSGIXPROC glXQueryChannelRectSGIX;
+
+    // GLX_SGI_cushion
+
+    REGALGLXCUSHIONSGIPROC glXCushionSGI;
+
+    // GLX_SGI_make_current_read
+
+    REGALGLXGETCURRENTREADDRAWABLESGIPROC glXGetCurrentReadDrawableSGI;
+    REGALGLXMAKECURRENTREADSGIPROC glXMakeCurrentReadSGI;
+
+    // GLX_SGI_swap_control
+
+    REGALGLXSWAPINTERVALSGIPROC glXSwapIntervalSGI;
+
+    // GLX_SGI_video_sync
+
+    REGALGLXGETVIDEOSYNCSGIPROC glXGetVideoSyncSGI;
+    REGALGLXWAITVIDEOSYNCSGIPROC glXWaitVideoSyncSGI;
+
+    // GLX_SUN_get_transparent_index
+
+    REGALGLXGETTRANSPARENTINDEXSUNPROC glXGetTransparentIndexSUN;
+
+    // GLX_SUN_video_resize
+
+    REGALGLXGETVIDEORESIZESUNPROC glXGetVideoResizeSUN;
+    REGALGLXVIDEORESIZESUNPROC glXVideoResizeSUN;
+#endif // REGAL_SYS_GLX
+
+#if REGAL_SYS_OSX
+    // CGL_VERSION_1_0
+
+    REGALCGLCHOOSEPIXELFORMATPROC CGLChoosePixelFormat;
+    REGALCGLCLEARDRAWABLEPROC CGLClearDrawable;
+    REGALCGLCOPYCONTEXTPROC CGLCopyContext;
+    REGALCGLCREATECONTEXTPROC CGLCreateContext;
+    REGALCGLDESCRIBEPIXELFORMATPROC CGLDescribePixelFormat;
+    REGALCGLDESCRIBERENDERERPROC CGLDescribeRenderer;
+    REGALCGLDESTROYCONTEXTPROC CGLDestroyContext;
+    REGALCGLDESTROYPIXELFORMATPROC CGLDestroyPixelFormat;
+    REGALCGLDESTROYRENDERERINFOPROC CGLDestroyRendererInfo;
+    REGALCGLDISABLEPROC CGLDisable;
+    REGALCGLENABLEPROC CGLEnable;
+    REGALCGLERRORSTRINGPROC CGLErrorString;
+    REGALCGLFLUSHDRAWABLEPROC CGLFlushDrawable;
+    REGALCGLGETOFFSCREENPROC CGLGetOffScreen;
+    REGALCGLGETOPTIONPROC CGLGetOption;
+    REGALCGLGETPARAMETERPROC CGLGetParameter;
+    REGALCGLGETVERSIONPROC CGLGetVersion;
+    REGALCGLGETVIRTUALSCREENPROC CGLGetVirtualScreen;
+    REGALCGLISENABLEDPROC CGLIsEnabled;
+    REGALCGLQUERYRENDERERINFOPROC CGLQueryRendererInfo;
+    REGALCGLSETFULLSCREENPROC CGLSetFullScreen;
+    REGALCGLSETOFFSCREENPROC CGLSetOffScreen;
+    REGALCGLSETOPTIONPROC CGLSetOption;
+    REGALCGLSETPARAMETERPROC CGLSetParameter;
+    REGALCGLSETVIRTUALSCREENPROC CGLSetVirtualScreen;
+
+    // CGL_VERSION_1_1
+
+    REGALCGLCREATEPBUFFERPROC CGLCreatePBuffer;
+    REGALCGLDESCRIBEPBUFFERPROC CGLDescribePBuffer;
+    REGALCGLDESTROYPBUFFERPROC CGLDestroyPBuffer;
+    REGALCGLGETPBUFFERPROC CGLGetPBuffer;
+    REGALCGLSETPBUFFERPROC CGLSetPBuffer;
+    REGALCGLTEXIMAGEPBUFFERPROC CGLTexImagePBuffer;
+
+    // CGL_VERSION_1_2
+
+    REGALCGLGETCONTEXTRETAINCOUNTPROC CGLGetContextRetainCount;
+    REGALCGLGETGLOBALOPTIONPROC CGLGetGlobalOption;
+    REGALCGLGETPBUFFERRETAINCOUNTPROC CGLGetPBufferRetainCount;
+    REGALCGLGETPIXELFORMATPROC CGLGetPixelFormat;
+    REGALCGLGETPIXELFORMATRETAINCOUNTPROC CGLGetPixelFormatRetainCount;
+    REGALCGLLOCKCONTEXTPROC CGLLockContext;
+    REGALCGLRELEASECONTEXTPROC CGLReleaseContext;
+    REGALCGLRELEASEPBUFFERPROC CGLReleasePBuffer;
+    REGALCGLRELEASEPIXELFORMATPROC CGLReleasePixelFormat;
+    REGALCGLRETAINCONTEXTPROC CGLRetainContext;
+    REGALCGLRETAINPBUFFERPROC CGLRetainPBuffer;
+    REGALCGLRETAINPIXELFORMATPROC CGLRetainPixelFormat;
+    REGALCGLSETGLOBALOPTIONPROC CGLSetGlobalOption;
+    REGALCGLUNLOCKCONTEXTPROC CGLUnlockContext;
+
+    // CGL_VERSION_1_3
+
+    REGALCGLGETCURRENTCONTEXTPROC CGLGetCurrentContext;
+    REGALCGLGETSHAREGROUPPROC CGLGetShareGroup;
+    REGALCGLGETSURFACEPROC CGLGetSurface;
+    REGALCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
+    REGALCGLSETSURFACEPROC CGLSetSurface;
+    REGALCGLTEXIMAGEIOSURFACE2DPROC CGLTexImageIOSurface2D;
+    REGALCGLUPDATECONTEXTPROC CGLUpdateContext;
+#endif // REGAL_SYS_OSX
+
+#if REGAL_SYS_EGL
+    // EGL_ANGLE_query_surface_pointer
+
+    REGALEGLQUERYSURFACEPOINTERANGLEPROC eglQuerySurfacePointerANGLE;
+
+    // EGL_KHR_fence_sync
+
+    REGALEGLCLIENTWAITSYNCKHRPROC eglClientWaitSyncKHR;
+    REGALEGLCREATESYNCKHRPROC eglCreateSyncKHR;
+    REGALEGLDESTROYSYNCKHRPROC eglDestroySyncKHR;
+    REGALEGLGETSYNCATTRIBKHRPROC eglGetSyncAttribKHR;
+
+    // EGL_KHR_image_base
+
+    REGALEGLCREATEIMAGEKHRPROC eglCreateImageKHR;
+    REGALEGLDESTROYIMAGEKHRPROC eglDestroyImageKHR;
+
+    // EGL_KHR_lock_surface
+
+    REGALEGLLOCKSURFACEKHRPROC eglLockSurfaceKHR;
+    REGALEGLUNLOCKSURFACEKHRPROC eglUnlockSurfaceKHR;
+
+    // EGL_KHR_stream_consumer_gltexture
+
+    REGALEGLSTREAMCONSUMERACQUIREKHRPROC eglStreamConsumerAcquireKHR;
+    REGALEGLSTREAMCONSUMERGLTEXTUREEXTERNALKHRPROC eglStreamConsumerGLTextureExternalKHR;
+    REGALEGLSTREAMCONSUMERRELEASEKHRPROC eglStreamConsumerReleaseKHR;
+
+    // EGL_KHR_stream_cross_process_fd
+
+    REGALEGLCREATESTREAMFROMFILEDESCRIPTORKHRPROC eglCreateStreamFromFileDescriptorKHR;
+    REGALEGLGETSTREAMFILEDESCRIPTORKHRPROC eglGetStreamFileDescriptorKHR;
+
+    // EGL_KHR_stream_producer_eglsurface
+
+    REGALEGLCREATESTREAMPRODUCERSURFACEKHRPROC eglCreateStreamProducerSurfaceKHR;
+
+    // EGL_KHR_wait_sync
+
+    REGALEGLWAITSYNCKHRPROC eglWaitSyncKHR;
+
+    // EGL_MESA_drm_image
+
+    REGALEGLCREATEDRMIMAGEMESAPROC eglCreateDRMImageMESA;
+    REGALEGLEXPORTDRMIMAGEMESAPROC eglExportDRMImageMESA;
+
+    // EGL_NV_coverage_sample
+
+    REGALEGLCOVERAGEMASKNVPROC eglCoverageMaskNV;
+    REGALEGLCOVERAGEOPERATIONNVPROC eglCoverageOperationNV;
+
+    // EGL_NV_post_sub_buffer
+
+    REGALEGLPOSTSUBBUFFERNVPROC eglPostSubBufferNV;
+
+    // EGL_NV_sync
+
+    REGALEGLCLIENTWAITSYNCNVPROC eglClientWaitSyncNV;
+    REGALEGLCREATEFENCESYNCNVPROC eglCreateFenceSyncNV;
+    REGALEGLDESTROYSYNCNVPROC eglDestroySyncNV;
+    REGALEGLFENCENVPROC eglFenceNV;
+    REGALEGLGETSYNCATTRIBNVPROC eglGetSyncAttribNV;
+    REGALEGLSIGNALSYNCNVPROC eglSignalSyncNV;
+
+    // EGL_NV_system_time
+
+    REGALEGLGETSYSTEMTIMEFREQUENCYNVPROC eglGetSystemTimeFrequencyNV;
+    REGALEGLGETSYSTEMTIMENVPROC eglGetSystemTimeNV;
+
+    // EGL_VERSION_1_0
+
+    REGALEGLCHOOSECONFIGPROC eglChooseConfig;
+    REGALEGLCOPYBUFFERSPROC eglCopyBuffers;
+    REGALEGLCREATECONTEXTPROC eglCreateContext;
+    REGALEGLCREATEPBUFFERSURFACEPROC eglCreatePbufferSurface;
+    REGALEGLCREATEPIXMAPSURFACEPROC eglCreatePixmapSurface;
+    REGALEGLCREATEWINDOWSURFACEPROC eglCreateWindowSurface;
+    REGALEGLDESTROYCONTEXTPROC eglDestroyContext;
+    REGALEGLDESTROYSURFACEPROC eglDestroySurface;
+    REGALEGLGETCONFIGATTRIBPROC eglGetConfigAttrib;
+    REGALEGLGETCONFIGSPROC eglGetConfigs;
+    REGALEGLGETCURRENTCONTEXTPROC eglGetCurrentContext;
+    REGALEGLGETCURRENTDISPLAYPROC eglGetCurrentDisplay;
+    REGALEGLGETCURRENTSURFACEPROC eglGetCurrentSurface;
+    REGALEGLGETDISPLAYPROC eglGetDisplay;
+    REGALEGLGETERRORPROC eglGetError;
+    REGALEGLGETPROCADDRESSPROC eglGetProcAddress;
+    REGALEGLINITIALIZEPROC eglInitialize;
+    REGALEGLMAKECURRENTPROC eglMakeCurrent;
+    REGALEGLQUERYCONTEXTPROC eglQueryContext;
+    REGALEGLQUERYSTRINGPROC eglQueryString;
+    REGALEGLQUERYSURFACEPROC eglQuerySurface;
+    REGALEGLSWAPBUFFERSPROC eglSwapBuffers;
+    REGALEGLTERMINATEPROC eglTerminate;
+    REGALEGLWAITGLPROC eglWaitGL;
+    REGALEGLWAITNATIVEPROC eglWaitNative;
+
+    // EGL_VERSION_1_1
+
+    REGALEGLBINDTEXIMAGEPROC eglBindTexImage;
+    REGALEGLRELEASETEXIMAGEPROC eglReleaseTexImage;
+
+    // EGL_VERSION_1_2
+
+    REGALEGLBINDAPIPROC eglBindAPI;
+    REGALEGLCREATEPBUFFERFROMCLIENTBUFFERPROC eglCreatePbufferFromClientBuffer;
+    REGALEGLQUERYAPIPROC eglQueryAPI;
+    REGALEGLRELEASETHREADPROC eglReleaseThread;
+    REGALEGLSURFACEATTRIBPROC eglSurfaceAttrib;
+    REGALEGLSWAPINTERVALPROC eglSwapInterval;
+    REGALEGLWAITCLIENTPROC eglWaitClient;
 #endif // REGAL_SYS_EGL
 
   };
 
-  struct GL
-  {
-    inline void setFunction(const size_t offset, void *func)
-    {
-      RegalAssert((offset*sizeof(void *))<sizeof(*this));
-      ((void **)(this))[offset] = func;
-    }
+  struct GL {
 
     // GL_VERSION_1_0
 
-    PFNGLACCUMPROC glAccum;
-    PFNGLALPHAFUNCPROC glAlphaFunc;
-    PFNGLBEGINPROC glBegin;
-    PFNGLBITMAPPROC glBitmap;
-    PFNGLBLENDFUNCPROC glBlendFunc;
-    PFNGLCALLLISTPROC glCallList;
-    PFNGLCALLLISTSPROC glCallLists;
-    PFNGLCLEARPROC glClear;
-    PFNGLCLEARACCUMPROC glClearAccum;
-    PFNGLCLEARCOLORPROC glClearColor;
-    PFNGLCLEARDEPTHPROC glClearDepth;
-    PFNGLCLEARINDEXPROC glClearIndex;
-    PFNGLCLEARSTENCILPROC glClearStencil;
-    PFNGLCLIPPLANEPROC glClipPlane;
-    PFNGLCOLOR3BPROC glColor3b;
-    PFNGLCOLOR3BVPROC glColor3bv;
-    PFNGLCOLOR3DPROC glColor3d;
-    PFNGLCOLOR3DVPROC glColor3dv;
-    PFNGLCOLOR3FPROC glColor3f;
-    PFNGLCOLOR3FVPROC glColor3fv;
-    PFNGLCOLOR3IPROC glColor3i;
-    PFNGLCOLOR3IVPROC glColor3iv;
-    PFNGLCOLOR3SPROC glColor3s;
-    PFNGLCOLOR3SVPROC glColor3sv;
-    PFNGLCOLOR3UBPROC glColor3ub;
-    PFNGLCOLOR3UBVPROC glColor3ubv;
-    PFNGLCOLOR3UIPROC glColor3ui;
-    PFNGLCOLOR3UIVPROC glColor3uiv;
-    PFNGLCOLOR3USPROC glColor3us;
-    PFNGLCOLOR3USVPROC glColor3usv;
-    PFNGLCOLOR4BPROC glColor4b;
-    PFNGLCOLOR4BVPROC glColor4bv;
-    PFNGLCOLOR4DPROC glColor4d;
-    PFNGLCOLOR4DVPROC glColor4dv;
-    PFNGLCOLOR4FPROC glColor4f;
-    PFNGLCOLOR4FVPROC glColor4fv;
-    PFNGLCOLOR4IPROC glColor4i;
-    PFNGLCOLOR4IVPROC glColor4iv;
-    PFNGLCOLOR4SPROC glColor4s;
-    PFNGLCOLOR4SVPROC glColor4sv;
-    PFNGLCOLOR4UBPROC glColor4ub;
-    PFNGLCOLOR4UBVPROC glColor4ubv;
-    PFNGLCOLOR4UIPROC glColor4ui;
-    PFNGLCOLOR4UIVPROC glColor4uiv;
-    PFNGLCOLOR4USPROC glColor4us;
-    PFNGLCOLOR4USVPROC glColor4usv;
-    PFNGLCOLORMASKPROC glColorMask;
-    PFNGLCOLORMATERIALPROC glColorMaterial;
-    PFNGLCOPYPIXELSPROC glCopyPixels;
-    PFNGLCULLFACEPROC glCullFace;
-    PFNGLDELETELISTSPROC glDeleteLists;
-    PFNGLDEPTHFUNCPROC glDepthFunc;
-    PFNGLDEPTHMASKPROC glDepthMask;
-    PFNGLDEPTHRANGEPROC glDepthRange;
-    PFNGLDISABLEPROC glDisable;
-    PFNGLDRAWBUFFERPROC glDrawBuffer;
-    PFNGLDRAWPIXELSPROC glDrawPixels;
-    PFNGLEDGEFLAGPROC glEdgeFlag;
-    PFNGLEDGEFLAGVPROC glEdgeFlagv;
-    PFNGLENABLEPROC glEnable;
-    PFNGLENDPROC glEnd;
-    PFNGLENDLISTPROC glEndList;
-    PFNGLEVALCOORD1DPROC glEvalCoord1d;
-    PFNGLEVALCOORD1DVPROC glEvalCoord1dv;
-    PFNGLEVALCOORD1FPROC glEvalCoord1f;
-    PFNGLEVALCOORD1FVPROC glEvalCoord1fv;
-    PFNGLEVALCOORD2DPROC glEvalCoord2d;
-    PFNGLEVALCOORD2DVPROC glEvalCoord2dv;
-    PFNGLEVALCOORD2FPROC glEvalCoord2f;
-    PFNGLEVALCOORD2FVPROC glEvalCoord2fv;
-    PFNGLEVALMESH1PROC glEvalMesh1;
-    PFNGLEVALMESH2PROC glEvalMesh2;
-    PFNGLEVALPOINT1PROC glEvalPoint1;
-    PFNGLEVALPOINT2PROC glEvalPoint2;
-    PFNGLFEEDBACKBUFFERPROC glFeedbackBuffer;
-    PFNGLFINISHPROC glFinish;
-    PFNGLFLUSHPROC glFlush;
-    PFNGLFOGFPROC glFogf;
-    PFNGLFOGFVPROC glFogfv;
-    PFNGLFOGIPROC glFogi;
-    PFNGLFOGIVPROC glFogiv;
-    PFNGLFRONTFACEPROC glFrontFace;
-    PFNGLFRUSTUMPROC glFrustum;
-    PFNGLGENLISTSPROC glGenLists;
-    PFNGLGETBOOLEANVPROC glGetBooleanv;
-    PFNGLGETCLIPPLANEPROC glGetClipPlane;
-    PFNGLGETDOUBLEVPROC glGetDoublev;
-    PFNGLGETERRORPROC glGetError;
-    PFNGLGETFLOATVPROC glGetFloatv;
-    PFNGLGETINTEGERVPROC glGetIntegerv;
-    PFNGLGETLIGHTFVPROC glGetLightfv;
-    PFNGLGETLIGHTIVPROC glGetLightiv;
-    PFNGLGETMAPDVPROC glGetMapdv;
-    PFNGLGETMAPFVPROC glGetMapfv;
-    PFNGLGETMAPIVPROC glGetMapiv;
-    PFNGLGETMATERIALFVPROC glGetMaterialfv;
-    PFNGLGETMATERIALIVPROC glGetMaterialiv;
-    PFNGLGETPIXELMAPFVPROC glGetPixelMapfv;
-    PFNGLGETPIXELMAPUIVPROC glGetPixelMapuiv;
-    PFNGLGETPIXELMAPUSVPROC glGetPixelMapusv;
-    PFNGLGETPOLYGONSTIPPLEPROC glGetPolygonStipple;
-    PFNGLGETSTRINGPROC glGetString;
-    PFNGLGETTEXENVFVPROC glGetTexEnvfv;
-    PFNGLGETTEXENVIVPROC glGetTexEnviv;
-    PFNGLGETTEXGENDVPROC glGetTexGendv;
-    PFNGLGETTEXGENFVPROC glGetTexGenfv;
-    PFNGLGETTEXGENIVPROC glGetTexGeniv;
-    PFNGLGETTEXIMAGEPROC glGetTexImage;
-    PFNGLGETTEXLEVELPARAMETERFVPROC glGetTexLevelParameterfv;
-    PFNGLGETTEXLEVELPARAMETERIVPROC glGetTexLevelParameteriv;
-    PFNGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
-    PFNGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
-    PFNGLHINTPROC glHint;
-    PFNGLINDEXMASKPROC glIndexMask;
-    PFNGLINDEXDPROC glIndexd;
-    PFNGLINDEXDVPROC glIndexdv;
-    PFNGLINDEXFPROC glIndexf;
-    PFNGLINDEXFVPROC glIndexfv;
-    PFNGLINDEXIPROC glIndexi;
-    PFNGLINDEXIVPROC glIndexiv;
-    PFNGLINDEXSPROC glIndexs;
-    PFNGLINDEXSVPROC glIndexsv;
-    PFNGLINITNAMESPROC glInitNames;
-    PFNGLISENABLEDPROC glIsEnabled;
-    PFNGLISLISTPROC glIsList;
-    PFNGLLIGHTMODELFPROC glLightModelf;
-    PFNGLLIGHTMODELFVPROC glLightModelfv;
-    PFNGLLIGHTMODELIPROC glLightModeli;
-    PFNGLLIGHTMODELIVPROC glLightModeliv;
-    PFNGLLIGHTFPROC glLightf;
-    PFNGLLIGHTFVPROC glLightfv;
-    PFNGLLIGHTIPROC glLighti;
-    PFNGLLIGHTIVPROC glLightiv;
-    PFNGLLINESTIPPLEPROC glLineStipple;
-    PFNGLLINEWIDTHPROC glLineWidth;
-    PFNGLLISTBASEPROC glListBase;
-    PFNGLLOADIDENTITYPROC glLoadIdentity;
-    PFNGLLOADMATRIXDPROC glLoadMatrixd;
-    PFNGLLOADMATRIXFPROC glLoadMatrixf;
-    PFNGLLOADNAMEPROC glLoadName;
-    PFNGLLOGICOPPROC glLogicOp;
-    PFNGLMAP1DPROC glMap1d;
-    PFNGLMAP1FPROC glMap1f;
-    PFNGLMAP2DPROC glMap2d;
-    PFNGLMAP2FPROC glMap2f;
-    PFNGLMAPGRID1DPROC glMapGrid1d;
-    PFNGLMAPGRID1FPROC glMapGrid1f;
-    PFNGLMAPGRID2DPROC glMapGrid2d;
-    PFNGLMAPGRID2FPROC glMapGrid2f;
-    PFNGLMATERIALFPROC glMaterialf;
-    PFNGLMATERIALFVPROC glMaterialfv;
-    PFNGLMATERIALIPROC glMateriali;
-    PFNGLMATERIALIVPROC glMaterialiv;
-    PFNGLMATRIXMODEPROC glMatrixMode;
-    PFNGLMULTMATRIXDPROC glMultMatrixd;
-    PFNGLMULTMATRIXFPROC glMultMatrixf;
-    PFNGLNEWLISTPROC glNewList;
-    PFNGLNORMAL3BPROC glNormal3b;
-    PFNGLNORMAL3BVPROC glNormal3bv;
-    PFNGLNORMAL3DPROC glNormal3d;
-    PFNGLNORMAL3DVPROC glNormal3dv;
-    PFNGLNORMAL3FPROC glNormal3f;
-    PFNGLNORMAL3FVPROC glNormal3fv;
-    PFNGLNORMAL3IPROC glNormal3i;
-    PFNGLNORMAL3IVPROC glNormal3iv;
-    PFNGLNORMAL3SPROC glNormal3s;
-    PFNGLNORMAL3SVPROC glNormal3sv;
-    PFNGLORTHOPROC glOrtho;
-    PFNGLPASSTHROUGHPROC glPassThrough;
-    PFNGLPIXELMAPFVPROC glPixelMapfv;
-    PFNGLPIXELMAPUIVPROC glPixelMapuiv;
-    PFNGLPIXELMAPUSVPROC glPixelMapusv;
-    PFNGLPIXELSTOREFPROC glPixelStoref;
-    PFNGLPIXELSTOREIPROC glPixelStorei;
-    PFNGLPIXELTRANSFERFPROC glPixelTransferf;
-    PFNGLPIXELTRANSFERIPROC glPixelTransferi;
-    PFNGLPIXELZOOMPROC glPixelZoom;
-    PFNGLPOINTSIZEPROC glPointSize;
-    PFNGLPOLYGONMODEPROC glPolygonMode;
-    PFNGLPOLYGONSTIPPLEPROC glPolygonStipple;
-    PFNGLPOPATTRIBPROC glPopAttrib;
-    PFNGLPOPMATRIXPROC glPopMatrix;
-    PFNGLPOPNAMEPROC glPopName;
-    PFNGLPUSHATTRIBPROC glPushAttrib;
-    PFNGLPUSHMATRIXPROC glPushMatrix;
-    PFNGLPUSHNAMEPROC glPushName;
-    PFNGLRASTERPOS2DPROC glRasterPos2d;
-    PFNGLRASTERPOS2DVPROC glRasterPos2dv;
-    PFNGLRASTERPOS2FPROC glRasterPos2f;
-    PFNGLRASTERPOS2FVPROC glRasterPos2fv;
-    PFNGLRASTERPOS2IPROC glRasterPos2i;
-    PFNGLRASTERPOS2IVPROC glRasterPos2iv;
-    PFNGLRASTERPOS2SPROC glRasterPos2s;
-    PFNGLRASTERPOS2SVPROC glRasterPos2sv;
-    PFNGLRASTERPOS3DPROC glRasterPos3d;
-    PFNGLRASTERPOS3DVPROC glRasterPos3dv;
-    PFNGLRASTERPOS3FPROC glRasterPos3f;
-    PFNGLRASTERPOS3FVPROC glRasterPos3fv;
-    PFNGLRASTERPOS3IPROC glRasterPos3i;
-    PFNGLRASTERPOS3IVPROC glRasterPos3iv;
-    PFNGLRASTERPOS3SPROC glRasterPos3s;
-    PFNGLRASTERPOS3SVPROC glRasterPos3sv;
-    PFNGLRASTERPOS4DPROC glRasterPos4d;
-    PFNGLRASTERPOS4DVPROC glRasterPos4dv;
-    PFNGLRASTERPOS4FPROC glRasterPos4f;
-    PFNGLRASTERPOS4FVPROC glRasterPos4fv;
-    PFNGLRASTERPOS4IPROC glRasterPos4i;
-    PFNGLRASTERPOS4IVPROC glRasterPos4iv;
-    PFNGLRASTERPOS4SPROC glRasterPos4s;
-    PFNGLRASTERPOS4SVPROC glRasterPos4sv;
-    PFNGLREADBUFFERPROC glReadBuffer;
-    PFNGLREADPIXELSPROC glReadPixels;
-    PFNGLRECTDPROC glRectd;
-    PFNGLRECTDVPROC glRectdv;
-    PFNGLRECTFPROC glRectf;
-    PFNGLRECTFVPROC glRectfv;
-    PFNGLRECTIPROC glRecti;
-    PFNGLRECTIVPROC glRectiv;
-    PFNGLRECTSPROC glRects;
-    PFNGLRECTSVPROC glRectsv;
-    PFNGLRENDERMODEPROC glRenderMode;
-    PFNGLROTATEDPROC glRotated;
-    PFNGLROTATEFPROC glRotatef;
-    PFNGLSCALEDPROC glScaled;
-    PFNGLSCALEFPROC glScalef;
-    PFNGLSCISSORPROC glScissor;
-    PFNGLSELECTBUFFERPROC glSelectBuffer;
-    PFNGLSHADEMODELPROC glShadeModel;
-    PFNGLSTENCILFUNCPROC glStencilFunc;
-    PFNGLSTENCILMASKPROC glStencilMask;
-    PFNGLSTENCILOPPROC glStencilOp;
-    PFNGLTEXCOORD1DPROC glTexCoord1d;
-    PFNGLTEXCOORD1DVPROC glTexCoord1dv;
-    PFNGLTEXCOORD1FPROC glTexCoord1f;
-    PFNGLTEXCOORD1FVPROC glTexCoord1fv;
-    PFNGLTEXCOORD1IPROC glTexCoord1i;
-    PFNGLTEXCOORD1IVPROC glTexCoord1iv;
-    PFNGLTEXCOORD1SPROC glTexCoord1s;
-    PFNGLTEXCOORD1SVPROC glTexCoord1sv;
-    PFNGLTEXCOORD2DPROC glTexCoord2d;
-    PFNGLTEXCOORD2DVPROC glTexCoord2dv;
-    PFNGLTEXCOORD2FPROC glTexCoord2f;
-    PFNGLTEXCOORD2FVPROC glTexCoord2fv;
-    PFNGLTEXCOORD2IPROC glTexCoord2i;
-    PFNGLTEXCOORD2IVPROC glTexCoord2iv;
-    PFNGLTEXCOORD2SPROC glTexCoord2s;
-    PFNGLTEXCOORD2SVPROC glTexCoord2sv;
-    PFNGLTEXCOORD3DPROC glTexCoord3d;
-    PFNGLTEXCOORD3DVPROC glTexCoord3dv;
-    PFNGLTEXCOORD3FPROC glTexCoord3f;
-    PFNGLTEXCOORD3FVPROC glTexCoord3fv;
-    PFNGLTEXCOORD3IPROC glTexCoord3i;
-    PFNGLTEXCOORD3IVPROC glTexCoord3iv;
-    PFNGLTEXCOORD3SPROC glTexCoord3s;
-    PFNGLTEXCOORD3SVPROC glTexCoord3sv;
-    PFNGLTEXCOORD4DPROC glTexCoord4d;
-    PFNGLTEXCOORD4DVPROC glTexCoord4dv;
-    PFNGLTEXCOORD4FPROC glTexCoord4f;
-    PFNGLTEXCOORD4FVPROC glTexCoord4fv;
-    PFNGLTEXCOORD4IPROC glTexCoord4i;
-    PFNGLTEXCOORD4IVPROC glTexCoord4iv;
-    PFNGLTEXCOORD4SPROC glTexCoord4s;
-    PFNGLTEXCOORD4SVPROC glTexCoord4sv;
-    PFNGLTEXENVFPROC glTexEnvf;
-    PFNGLTEXENVFVPROC glTexEnvfv;
-    PFNGLTEXENVIPROC glTexEnvi;
-    PFNGLTEXENVIVPROC glTexEnviv;
-    PFNGLTEXGENDPROC glTexGend;
-    PFNGLTEXGENDVPROC glTexGendv;
-    PFNGLTEXGENFPROC glTexGenf;
-    PFNGLTEXGENFVPROC glTexGenfv;
-    PFNGLTEXGENIPROC glTexGeni;
-    PFNGLTEXGENIVPROC glTexGeniv;
-    PFNGLTEXIMAGE1DPROC glTexImage1D;
-    PFNGLTEXIMAGE2DPROC glTexImage2D;
-    PFNGLTEXPARAMETERFPROC glTexParameterf;
-    PFNGLTEXPARAMETERFVPROC glTexParameterfv;
-    PFNGLTEXPARAMETERIPROC glTexParameteri;
-    PFNGLTEXPARAMETERIVPROC glTexParameteriv;
-    PFNGLTRANSLATEDPROC glTranslated;
-    PFNGLTRANSLATEFPROC glTranslatef;
-    PFNGLVERTEX2DPROC glVertex2d;
-    PFNGLVERTEX2DVPROC glVertex2dv;
-    PFNGLVERTEX2FPROC glVertex2f;
-    PFNGLVERTEX2FVPROC glVertex2fv;
-    PFNGLVERTEX2IPROC glVertex2i;
-    PFNGLVERTEX2IVPROC glVertex2iv;
-    PFNGLVERTEX2SPROC glVertex2s;
-    PFNGLVERTEX2SVPROC glVertex2sv;
-    PFNGLVERTEX3DPROC glVertex3d;
-    PFNGLVERTEX3DVPROC glVertex3dv;
-    PFNGLVERTEX3FPROC glVertex3f;
-    PFNGLVERTEX3FVPROC glVertex3fv;
-    PFNGLVERTEX3IPROC glVertex3i;
-    PFNGLVERTEX3IVPROC glVertex3iv;
-    PFNGLVERTEX3SPROC glVertex3s;
-    PFNGLVERTEX3SVPROC glVertex3sv;
-    PFNGLVERTEX4DPROC glVertex4d;
-    PFNGLVERTEX4DVPROC glVertex4dv;
-    PFNGLVERTEX4FPROC glVertex4f;
-    PFNGLVERTEX4FVPROC glVertex4fv;
-    PFNGLVERTEX4IPROC glVertex4i;
-    PFNGLVERTEX4IVPROC glVertex4iv;
-    PFNGLVERTEX4SPROC glVertex4s;
-    PFNGLVERTEX4SVPROC glVertex4sv;
-    PFNGLVIEWPORTPROC glViewport;
+    REGALGLACCUMPROC glAccum;
+    REGALGLALPHAFUNCPROC glAlphaFunc;
+    REGALGLBEGINPROC glBegin;
+    REGALGLBITMAPPROC glBitmap;
+    REGALGLBLENDFUNCPROC glBlendFunc;
+    REGALGLCALLLISTPROC glCallList;
+    REGALGLCALLLISTSPROC glCallLists;
+    REGALGLCLEARPROC glClear;
+    REGALGLCLEARACCUMPROC glClearAccum;
+    REGALGLCLEARCOLORPROC glClearColor;
+    REGALGLCLEARDEPTHPROC glClearDepth;
+    REGALGLCLEARINDEXPROC glClearIndex;
+    REGALGLCLEARSTENCILPROC glClearStencil;
+    REGALGLCLIPPLANEPROC glClipPlane;
+    REGALGLCOLOR3BPROC glColor3b;
+    REGALGLCOLOR3BVPROC glColor3bv;
+    REGALGLCOLOR3DPROC glColor3d;
+    REGALGLCOLOR3DVPROC glColor3dv;
+    REGALGLCOLOR3FPROC glColor3f;
+    REGALGLCOLOR3FVPROC glColor3fv;
+    REGALGLCOLOR3IPROC glColor3i;
+    REGALGLCOLOR3IVPROC glColor3iv;
+    REGALGLCOLOR3SPROC glColor3s;
+    REGALGLCOLOR3SVPROC glColor3sv;
+    REGALGLCOLOR3UBPROC glColor3ub;
+    REGALGLCOLOR3UBVPROC glColor3ubv;
+    REGALGLCOLOR3UIPROC glColor3ui;
+    REGALGLCOLOR3UIVPROC glColor3uiv;
+    REGALGLCOLOR3USPROC glColor3us;
+    REGALGLCOLOR3USVPROC glColor3usv;
+    REGALGLCOLOR4BPROC glColor4b;
+    REGALGLCOLOR4BVPROC glColor4bv;
+    REGALGLCOLOR4DPROC glColor4d;
+    REGALGLCOLOR4DVPROC glColor4dv;
+    REGALGLCOLOR4FPROC glColor4f;
+    REGALGLCOLOR4FVPROC glColor4fv;
+    REGALGLCOLOR4IPROC glColor4i;
+    REGALGLCOLOR4IVPROC glColor4iv;
+    REGALGLCOLOR4SPROC glColor4s;
+    REGALGLCOLOR4SVPROC glColor4sv;
+    REGALGLCOLOR4UBPROC glColor4ub;
+    REGALGLCOLOR4UBVPROC glColor4ubv;
+    REGALGLCOLOR4UIPROC glColor4ui;
+    REGALGLCOLOR4UIVPROC glColor4uiv;
+    REGALGLCOLOR4USPROC glColor4us;
+    REGALGLCOLOR4USVPROC glColor4usv;
+    REGALGLCOLORMASKPROC glColorMask;
+    REGALGLCOLORMATERIALPROC glColorMaterial;
+    REGALGLCOPYPIXELSPROC glCopyPixels;
+    REGALGLCULLFACEPROC glCullFace;
+    REGALGLDELETELISTSPROC glDeleteLists;
+    REGALGLDEPTHFUNCPROC glDepthFunc;
+    REGALGLDEPTHMASKPROC glDepthMask;
+    REGALGLDEPTHRANGEPROC glDepthRange;
+    REGALGLDISABLEPROC glDisable;
+    REGALGLDRAWBUFFERPROC glDrawBuffer;
+    REGALGLDRAWPIXELSPROC glDrawPixels;
+    REGALGLEDGEFLAGPROC glEdgeFlag;
+    REGALGLEDGEFLAGVPROC glEdgeFlagv;
+    REGALGLENABLEPROC glEnable;
+    REGALGLENDPROC glEnd;
+    REGALGLENDLISTPROC glEndList;
+    REGALGLEVALCOORD1DPROC glEvalCoord1d;
+    REGALGLEVALCOORD1DVPROC glEvalCoord1dv;
+    REGALGLEVALCOORD1FPROC glEvalCoord1f;
+    REGALGLEVALCOORD1FVPROC glEvalCoord1fv;
+    REGALGLEVALCOORD2DPROC glEvalCoord2d;
+    REGALGLEVALCOORD2DVPROC glEvalCoord2dv;
+    REGALGLEVALCOORD2FPROC glEvalCoord2f;
+    REGALGLEVALCOORD2FVPROC glEvalCoord2fv;
+    REGALGLEVALMESH1PROC glEvalMesh1;
+    REGALGLEVALMESH2PROC glEvalMesh2;
+    REGALGLEVALPOINT1PROC glEvalPoint1;
+    REGALGLEVALPOINT2PROC glEvalPoint2;
+    REGALGLFEEDBACKBUFFERPROC glFeedbackBuffer;
+    REGALGLFINISHPROC glFinish;
+    REGALGLFLUSHPROC glFlush;
+    REGALGLFOGFPROC glFogf;
+    REGALGLFOGFVPROC glFogfv;
+    REGALGLFOGIPROC glFogi;
+    REGALGLFOGIVPROC glFogiv;
+    REGALGLFRONTFACEPROC glFrontFace;
+    REGALGLFRUSTUMPROC glFrustum;
+    REGALGLGENLISTSPROC glGenLists;
+    REGALGLGETBOOLEANVPROC glGetBooleanv;
+    REGALGLGETCLIPPLANEPROC glGetClipPlane;
+    REGALGLGETDOUBLEVPROC glGetDoublev;
+    REGALGLGETERRORPROC glGetError;
+    REGALGLGETFLOATVPROC glGetFloatv;
+    REGALGLGETINTEGERVPROC glGetIntegerv;
+    REGALGLGETLIGHTFVPROC glGetLightfv;
+    REGALGLGETLIGHTIVPROC glGetLightiv;
+    REGALGLGETMAPDVPROC glGetMapdv;
+    REGALGLGETMAPFVPROC glGetMapfv;
+    REGALGLGETMAPIVPROC glGetMapiv;
+    REGALGLGETMATERIALFVPROC glGetMaterialfv;
+    REGALGLGETMATERIALIVPROC glGetMaterialiv;
+    REGALGLGETPIXELMAPFVPROC glGetPixelMapfv;
+    REGALGLGETPIXELMAPUIVPROC glGetPixelMapuiv;
+    REGALGLGETPIXELMAPUSVPROC glGetPixelMapusv;
+    REGALGLGETPOLYGONSTIPPLEPROC glGetPolygonStipple;
+    REGALGLGETSTRINGPROC glGetString;
+    REGALGLGETTEXENVFVPROC glGetTexEnvfv;
+    REGALGLGETTEXENVIVPROC glGetTexEnviv;
+    REGALGLGETTEXGENDVPROC glGetTexGendv;
+    REGALGLGETTEXGENFVPROC glGetTexGenfv;
+    REGALGLGETTEXGENIVPROC glGetTexGeniv;
+    REGALGLGETTEXIMAGEPROC glGetTexImage;
+    REGALGLGETTEXLEVELPARAMETERFVPROC glGetTexLevelParameterfv;
+    REGALGLGETTEXLEVELPARAMETERIVPROC glGetTexLevelParameteriv;
+    REGALGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
+    REGALGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
+    REGALGLHINTPROC glHint;
+    REGALGLINDEXMASKPROC glIndexMask;
+    REGALGLINDEXDPROC glIndexd;
+    REGALGLINDEXDVPROC glIndexdv;
+    REGALGLINDEXFPROC glIndexf;
+    REGALGLINDEXFVPROC glIndexfv;
+    REGALGLINDEXIPROC glIndexi;
+    REGALGLINDEXIVPROC glIndexiv;
+    REGALGLINDEXSPROC glIndexs;
+    REGALGLINDEXSVPROC glIndexsv;
+    REGALGLINITNAMESPROC glInitNames;
+    REGALGLISENABLEDPROC glIsEnabled;
+    REGALGLISLISTPROC glIsList;
+    REGALGLLIGHTMODELFPROC glLightModelf;
+    REGALGLLIGHTMODELFVPROC glLightModelfv;
+    REGALGLLIGHTMODELIPROC glLightModeli;
+    REGALGLLIGHTMODELIVPROC glLightModeliv;
+    REGALGLLIGHTFPROC glLightf;
+    REGALGLLIGHTFVPROC glLightfv;
+    REGALGLLIGHTIPROC glLighti;
+    REGALGLLIGHTIVPROC glLightiv;
+    REGALGLLINESTIPPLEPROC glLineStipple;
+    REGALGLLINEWIDTHPROC glLineWidth;
+    REGALGLLISTBASEPROC glListBase;
+    REGALGLLOADIDENTITYPROC glLoadIdentity;
+    REGALGLLOADMATRIXDPROC glLoadMatrixd;
+    REGALGLLOADMATRIXFPROC glLoadMatrixf;
+    REGALGLLOADNAMEPROC glLoadName;
+    REGALGLLOGICOPPROC glLogicOp;
+    REGALGLMAP1DPROC glMap1d;
+    REGALGLMAP1FPROC glMap1f;
+    REGALGLMAP2DPROC glMap2d;
+    REGALGLMAP2FPROC glMap2f;
+    REGALGLMAPGRID1DPROC glMapGrid1d;
+    REGALGLMAPGRID1FPROC glMapGrid1f;
+    REGALGLMAPGRID2DPROC glMapGrid2d;
+    REGALGLMAPGRID2FPROC glMapGrid2f;
+    REGALGLMATERIALFPROC glMaterialf;
+    REGALGLMATERIALFVPROC glMaterialfv;
+    REGALGLMATERIALIPROC glMateriali;
+    REGALGLMATERIALIVPROC glMaterialiv;
+    REGALGLMATRIXMODEPROC glMatrixMode;
+    REGALGLMULTMATRIXDPROC glMultMatrixd;
+    REGALGLMULTMATRIXFPROC glMultMatrixf;
+    REGALGLNEWLISTPROC glNewList;
+    REGALGLNORMAL3BPROC glNormal3b;
+    REGALGLNORMAL3BVPROC glNormal3bv;
+    REGALGLNORMAL3DPROC glNormal3d;
+    REGALGLNORMAL3DVPROC glNormal3dv;
+    REGALGLNORMAL3FPROC glNormal3f;
+    REGALGLNORMAL3FVPROC glNormal3fv;
+    REGALGLNORMAL3IPROC glNormal3i;
+    REGALGLNORMAL3IVPROC glNormal3iv;
+    REGALGLNORMAL3SPROC glNormal3s;
+    REGALGLNORMAL3SVPROC glNormal3sv;
+    REGALGLORTHOPROC glOrtho;
+    REGALGLPASSTHROUGHPROC glPassThrough;
+    REGALGLPIXELMAPFVPROC glPixelMapfv;
+    REGALGLPIXELMAPUIVPROC glPixelMapuiv;
+    REGALGLPIXELMAPUSVPROC glPixelMapusv;
+    REGALGLPIXELSTOREFPROC glPixelStoref;
+    REGALGLPIXELSTOREIPROC glPixelStorei;
+    REGALGLPIXELTRANSFERFPROC glPixelTransferf;
+    REGALGLPIXELTRANSFERIPROC glPixelTransferi;
+    REGALGLPIXELZOOMPROC glPixelZoom;
+    REGALGLPOINTSIZEPROC glPointSize;
+    REGALGLPOLYGONMODEPROC glPolygonMode;
+    REGALGLPOLYGONSTIPPLEPROC glPolygonStipple;
+    REGALGLPOPATTRIBPROC glPopAttrib;
+    REGALGLPOPMATRIXPROC glPopMatrix;
+    REGALGLPOPNAMEPROC glPopName;
+    REGALGLPUSHATTRIBPROC glPushAttrib;
+    REGALGLPUSHMATRIXPROC glPushMatrix;
+    REGALGLPUSHNAMEPROC glPushName;
+    REGALGLRASTERPOS2DPROC glRasterPos2d;
+    REGALGLRASTERPOS2DVPROC glRasterPos2dv;
+    REGALGLRASTERPOS2FPROC glRasterPos2f;
+    REGALGLRASTERPOS2FVPROC glRasterPos2fv;
+    REGALGLRASTERPOS2IPROC glRasterPos2i;
+    REGALGLRASTERPOS2IVPROC glRasterPos2iv;
+    REGALGLRASTERPOS2SPROC glRasterPos2s;
+    REGALGLRASTERPOS2SVPROC glRasterPos2sv;
+    REGALGLRASTERPOS3DPROC glRasterPos3d;
+    REGALGLRASTERPOS3DVPROC glRasterPos3dv;
+    REGALGLRASTERPOS3FPROC glRasterPos3f;
+    REGALGLRASTERPOS3FVPROC glRasterPos3fv;
+    REGALGLRASTERPOS3IPROC glRasterPos3i;
+    REGALGLRASTERPOS3IVPROC glRasterPos3iv;
+    REGALGLRASTERPOS3SPROC glRasterPos3s;
+    REGALGLRASTERPOS3SVPROC glRasterPos3sv;
+    REGALGLRASTERPOS4DPROC glRasterPos4d;
+    REGALGLRASTERPOS4DVPROC glRasterPos4dv;
+    REGALGLRASTERPOS4FPROC glRasterPos4f;
+    REGALGLRASTERPOS4FVPROC glRasterPos4fv;
+    REGALGLRASTERPOS4IPROC glRasterPos4i;
+    REGALGLRASTERPOS4IVPROC glRasterPos4iv;
+    REGALGLRASTERPOS4SPROC glRasterPos4s;
+    REGALGLRASTERPOS4SVPROC glRasterPos4sv;
+    REGALGLREADBUFFERPROC glReadBuffer;
+    REGALGLREADPIXELSPROC glReadPixels;
+    REGALGLRECTDPROC glRectd;
+    REGALGLRECTDVPROC glRectdv;
+    REGALGLRECTFPROC glRectf;
+    REGALGLRECTFVPROC glRectfv;
+    REGALGLRECTIPROC glRecti;
+    REGALGLRECTIVPROC glRectiv;
+    REGALGLRECTSPROC glRects;
+    REGALGLRECTSVPROC glRectsv;
+    REGALGLRENDERMODEPROC glRenderMode;
+    REGALGLROTATEDPROC glRotated;
+    REGALGLROTATEFPROC glRotatef;
+    REGALGLSCALEDPROC glScaled;
+    REGALGLSCALEFPROC glScalef;
+    REGALGLSCISSORPROC glScissor;
+    REGALGLSELECTBUFFERPROC glSelectBuffer;
+    REGALGLSHADEMODELPROC glShadeModel;
+    REGALGLSTENCILFUNCPROC glStencilFunc;
+    REGALGLSTENCILMASKPROC glStencilMask;
+    REGALGLSTENCILOPPROC glStencilOp;
+    REGALGLTEXCOORD1DPROC glTexCoord1d;
+    REGALGLTEXCOORD1DVPROC glTexCoord1dv;
+    REGALGLTEXCOORD1FPROC glTexCoord1f;
+    REGALGLTEXCOORD1FVPROC glTexCoord1fv;
+    REGALGLTEXCOORD1IPROC glTexCoord1i;
+    REGALGLTEXCOORD1IVPROC glTexCoord1iv;
+    REGALGLTEXCOORD1SPROC glTexCoord1s;
+    REGALGLTEXCOORD1SVPROC glTexCoord1sv;
+    REGALGLTEXCOORD2DPROC glTexCoord2d;
+    REGALGLTEXCOORD2DVPROC glTexCoord2dv;
+    REGALGLTEXCOORD2FPROC glTexCoord2f;
+    REGALGLTEXCOORD2FVPROC glTexCoord2fv;
+    REGALGLTEXCOORD2IPROC glTexCoord2i;
+    REGALGLTEXCOORD2IVPROC glTexCoord2iv;
+    REGALGLTEXCOORD2SPROC glTexCoord2s;
+    REGALGLTEXCOORD2SVPROC glTexCoord2sv;
+    REGALGLTEXCOORD3DPROC glTexCoord3d;
+    REGALGLTEXCOORD3DVPROC glTexCoord3dv;
+    REGALGLTEXCOORD3FPROC glTexCoord3f;
+    REGALGLTEXCOORD3FVPROC glTexCoord3fv;
+    REGALGLTEXCOORD3IPROC glTexCoord3i;
+    REGALGLTEXCOORD3IVPROC glTexCoord3iv;
+    REGALGLTEXCOORD3SPROC glTexCoord3s;
+    REGALGLTEXCOORD3SVPROC glTexCoord3sv;
+    REGALGLTEXCOORD4DPROC glTexCoord4d;
+    REGALGLTEXCOORD4DVPROC glTexCoord4dv;
+    REGALGLTEXCOORD4FPROC glTexCoord4f;
+    REGALGLTEXCOORD4FVPROC glTexCoord4fv;
+    REGALGLTEXCOORD4IPROC glTexCoord4i;
+    REGALGLTEXCOORD4IVPROC glTexCoord4iv;
+    REGALGLTEXCOORD4SPROC glTexCoord4s;
+    REGALGLTEXCOORD4SVPROC glTexCoord4sv;
+    REGALGLTEXENVFPROC glTexEnvf;
+    REGALGLTEXENVFVPROC glTexEnvfv;
+    REGALGLTEXENVIPROC glTexEnvi;
+    REGALGLTEXENVIVPROC glTexEnviv;
+    REGALGLTEXGENDPROC glTexGend;
+    REGALGLTEXGENDVPROC glTexGendv;
+    REGALGLTEXGENFPROC glTexGenf;
+    REGALGLTEXGENFVPROC glTexGenfv;
+    REGALGLTEXGENIPROC glTexGeni;
+    REGALGLTEXGENIVPROC glTexGeniv;
+    REGALGLTEXIMAGE1DPROC glTexImage1D;
+    REGALGLTEXIMAGE2DPROC glTexImage2D;
+    REGALGLTEXPARAMETERFPROC glTexParameterf;
+    REGALGLTEXPARAMETERFVPROC glTexParameterfv;
+    REGALGLTEXPARAMETERIPROC glTexParameteri;
+    REGALGLTEXPARAMETERIVPROC glTexParameteriv;
+    REGALGLTRANSLATEDPROC glTranslated;
+    REGALGLTRANSLATEFPROC glTranslatef;
+    REGALGLVERTEX2DPROC glVertex2d;
+    REGALGLVERTEX2DVPROC glVertex2dv;
+    REGALGLVERTEX2FPROC glVertex2f;
+    REGALGLVERTEX2FVPROC glVertex2fv;
+    REGALGLVERTEX2IPROC glVertex2i;
+    REGALGLVERTEX2IVPROC glVertex2iv;
+    REGALGLVERTEX2SPROC glVertex2s;
+    REGALGLVERTEX2SVPROC glVertex2sv;
+    REGALGLVERTEX3DPROC glVertex3d;
+    REGALGLVERTEX3DVPROC glVertex3dv;
+    REGALGLVERTEX3FPROC glVertex3f;
+    REGALGLVERTEX3FVPROC glVertex3fv;
+    REGALGLVERTEX3IPROC glVertex3i;
+    REGALGLVERTEX3IVPROC glVertex3iv;
+    REGALGLVERTEX3SPROC glVertex3s;
+    REGALGLVERTEX3SVPROC glVertex3sv;
+    REGALGLVERTEX4DPROC glVertex4d;
+    REGALGLVERTEX4DVPROC glVertex4dv;
+    REGALGLVERTEX4FPROC glVertex4f;
+    REGALGLVERTEX4FVPROC glVertex4fv;
+    REGALGLVERTEX4IPROC glVertex4i;
+    REGALGLVERTEX4IVPROC glVertex4iv;
+    REGALGLVERTEX4SPROC glVertex4s;
+    REGALGLVERTEX4SVPROC glVertex4sv;
+    REGALGLVIEWPORTPROC glViewport;
 
     // GL_VERSION_1_1
 
-    PFNGLARETEXTURESRESIDENTPROC glAreTexturesResident;
-    PFNGLARRAYELEMENTPROC glArrayElement;
-    PFNGLBINDTEXTUREPROC glBindTexture;
-    PFNGLCOLORPOINTERPROC glColorPointer;
-    PFNGLCOPYTEXIMAGE1DPROC glCopyTexImage1D;
-    PFNGLCOPYTEXIMAGE2DPROC glCopyTexImage2D;
-    PFNGLCOPYTEXSUBIMAGE1DPROC glCopyTexSubImage1D;
-    PFNGLCOPYTEXSUBIMAGE2DPROC glCopyTexSubImage2D;
-    PFNGLDELETETEXTURESPROC glDeleteTextures;
-    PFNGLDISABLECLIENTSTATEPROC glDisableClientState;
-    PFNGLDRAWARRAYSPROC glDrawArrays;
-    PFNGLDRAWELEMENTSPROC glDrawElements;
-    PFNGLEDGEFLAGPOINTERPROC glEdgeFlagPointer;
-    PFNGLENABLECLIENTSTATEPROC glEnableClientState;
-    PFNGLGENTEXTURESPROC glGenTextures;
-    PFNGLGETPOINTERVPROC glGetPointerv;
-    PFNGLINDEXPOINTERPROC glIndexPointer;
-    PFNGLINDEXUBPROC glIndexub;
-    PFNGLINDEXUBVPROC glIndexubv;
-    PFNGLINTERLEAVEDARRAYSPROC glInterleavedArrays;
-    PFNGLISTEXTUREPROC glIsTexture;
-    PFNGLNORMALPOINTERPROC glNormalPointer;
-    PFNGLPOLYGONOFFSETPROC glPolygonOffset;
-    PFNGLPOPCLIENTATTRIBPROC glPopClientAttrib;
-    PFNGLPRIORITIZETEXTURESPROC glPrioritizeTextures;
-    PFNGLPUSHCLIENTATTRIBPROC glPushClientAttrib;
-    PFNGLTEXCOORDPOINTERPROC glTexCoordPointer;
-    PFNGLTEXSUBIMAGE1DPROC glTexSubImage1D;
-    PFNGLTEXSUBIMAGE2DPROC glTexSubImage2D;
-    PFNGLVERTEXPOINTERPROC glVertexPointer;
+    REGALGLARETEXTURESRESIDENTPROC glAreTexturesResident;
+    REGALGLARRAYELEMENTPROC glArrayElement;
+    REGALGLBINDTEXTUREPROC glBindTexture;
+    REGALGLCOLORPOINTERPROC glColorPointer;
+    REGALGLCOPYTEXIMAGE1DPROC glCopyTexImage1D;
+    REGALGLCOPYTEXIMAGE2DPROC glCopyTexImage2D;
+    REGALGLCOPYTEXSUBIMAGE1DPROC glCopyTexSubImage1D;
+    REGALGLCOPYTEXSUBIMAGE2DPROC glCopyTexSubImage2D;
+    REGALGLDELETETEXTURESPROC glDeleteTextures;
+    REGALGLDISABLECLIENTSTATEPROC glDisableClientState;
+    REGALGLDRAWARRAYSPROC glDrawArrays;
+    REGALGLDRAWELEMENTSPROC glDrawElements;
+    REGALGLEDGEFLAGPOINTERPROC glEdgeFlagPointer;
+    REGALGLENABLECLIENTSTATEPROC glEnableClientState;
+    REGALGLGENTEXTURESPROC glGenTextures;
+    REGALGLGETPOINTERVPROC glGetPointerv;
+    REGALGLINDEXPOINTERPROC glIndexPointer;
+    REGALGLINDEXUBPROC glIndexub;
+    REGALGLINDEXUBVPROC glIndexubv;
+    REGALGLINTERLEAVEDARRAYSPROC glInterleavedArrays;
+    REGALGLISTEXTUREPROC glIsTexture;
+    REGALGLNORMALPOINTERPROC glNormalPointer;
+    REGALGLPOLYGONOFFSETPROC glPolygonOffset;
+    REGALGLPOPCLIENTATTRIBPROC glPopClientAttrib;
+    REGALGLPRIORITIZETEXTURESPROC glPrioritizeTextures;
+    REGALGLPUSHCLIENTATTRIBPROC glPushClientAttrib;
+    REGALGLTEXCOORDPOINTERPROC glTexCoordPointer;
+    REGALGLTEXSUBIMAGE1DPROC glTexSubImage1D;
+    REGALGLTEXSUBIMAGE2DPROC glTexSubImage2D;
+    REGALGLVERTEXPOINTERPROC glVertexPointer;
 
     // GL_VERSION_1_2
 
-    PFNGLBLENDCOLORPROC glBlendColor;
-    PFNGLBLENDEQUATIONPROC glBlendEquation;
-    PFNGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
-    PFNGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
-    PFNGLTEXIMAGE3DPROC glTexImage3D;
-    PFNGLTEXSUBIMAGE3DPROC glTexSubImage3D;
+    REGALGLBLENDCOLORPROC glBlendColor;
+    REGALGLBLENDEQUATIONPROC glBlendEquation;
+    REGALGLCOPYTEXSUBIMAGE3DPROC glCopyTexSubImage3D;
+    REGALGLDRAWRANGEELEMENTSPROC glDrawRangeElements;
+    REGALGLTEXIMAGE3DPROC glTexImage3D;
+    REGALGLTEXSUBIMAGE3DPROC glTexSubImage3D;
 
     // GL_VERSION_1_3
 
-    PFNGLACTIVETEXTUREPROC glActiveTexture;
-    PFNGLCLIENTACTIVETEXTUREPROC glClientActiveTexture;
-    PFNGLCOMPRESSEDTEXIMAGE1DPROC glCompressedTexImage1D;
-    PFNGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
-    PFNGLCOMPRESSEDTEXIMAGE3DPROC glCompressedTexImage3D;
-    PFNGLCOMPRESSEDTEXSUBIMAGE1DPROC glCompressedTexSubImage1D;
-    PFNGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
-    PFNGLCOMPRESSEDTEXSUBIMAGE3DPROC glCompressedTexSubImage3D;
-    PFNGLGETCOMPRESSEDTEXIMAGEPROC glGetCompressedTexImage;
-    PFNGLLOADTRANSPOSEMATRIXDPROC glLoadTransposeMatrixd;
-    PFNGLLOADTRANSPOSEMATRIXFPROC glLoadTransposeMatrixf;
-    PFNGLMULTTRANSPOSEMATRIXDPROC glMultTransposeMatrixd;
-    PFNGLMULTTRANSPOSEMATRIXFPROC glMultTransposeMatrixf;
-    PFNGLMULTITEXCOORD1DPROC glMultiTexCoord1d;
-    PFNGLMULTITEXCOORD1DVPROC glMultiTexCoord1dv;
-    PFNGLMULTITEXCOORD1FPROC glMultiTexCoord1f;
-    PFNGLMULTITEXCOORD1FVPROC glMultiTexCoord1fv;
-    PFNGLMULTITEXCOORD1IPROC glMultiTexCoord1i;
-    PFNGLMULTITEXCOORD1IVPROC glMultiTexCoord1iv;
-    PFNGLMULTITEXCOORD1SPROC glMultiTexCoord1s;
-    PFNGLMULTITEXCOORD1SVPROC glMultiTexCoord1sv;
-    PFNGLMULTITEXCOORD2DPROC glMultiTexCoord2d;
-    PFNGLMULTITEXCOORD2DVPROC glMultiTexCoord2dv;
-    PFNGLMULTITEXCOORD2FPROC glMultiTexCoord2f;
-    PFNGLMULTITEXCOORD2FVPROC glMultiTexCoord2fv;
-    PFNGLMULTITEXCOORD2IPROC glMultiTexCoord2i;
-    PFNGLMULTITEXCOORD2IVPROC glMultiTexCoord2iv;
-    PFNGLMULTITEXCOORD2SPROC glMultiTexCoord2s;
-    PFNGLMULTITEXCOORD2SVPROC glMultiTexCoord2sv;
-    PFNGLMULTITEXCOORD3DPROC glMultiTexCoord3d;
-    PFNGLMULTITEXCOORD3DVPROC glMultiTexCoord3dv;
-    PFNGLMULTITEXCOORD3FPROC glMultiTexCoord3f;
-    PFNGLMULTITEXCOORD3FVPROC glMultiTexCoord3fv;
-    PFNGLMULTITEXCOORD3IPROC glMultiTexCoord3i;
-    PFNGLMULTITEXCOORD3IVPROC glMultiTexCoord3iv;
-    PFNGLMULTITEXCOORD3SPROC glMultiTexCoord3s;
-    PFNGLMULTITEXCOORD3SVPROC glMultiTexCoord3sv;
-    PFNGLMULTITEXCOORD4DPROC glMultiTexCoord4d;
-    PFNGLMULTITEXCOORD4DVPROC glMultiTexCoord4dv;
-    PFNGLMULTITEXCOORD4FPROC glMultiTexCoord4f;
-    PFNGLMULTITEXCOORD4FVPROC glMultiTexCoord4fv;
-    PFNGLMULTITEXCOORD4IPROC glMultiTexCoord4i;
-    PFNGLMULTITEXCOORD4IVPROC glMultiTexCoord4iv;
-    PFNGLMULTITEXCOORD4SPROC glMultiTexCoord4s;
-    PFNGLMULTITEXCOORD4SVPROC glMultiTexCoord4sv;
-    PFNGLSAMPLECOVERAGEPROC glSampleCoverage;
+    REGALGLACTIVETEXTUREPROC glActiveTexture;
+    REGALGLCLIENTACTIVETEXTUREPROC glClientActiveTexture;
+    REGALGLCOMPRESSEDTEXIMAGE1DPROC glCompressedTexImage1D;
+    REGALGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
+    REGALGLCOMPRESSEDTEXIMAGE3DPROC glCompressedTexImage3D;
+    REGALGLCOMPRESSEDTEXSUBIMAGE1DPROC glCompressedTexSubImage1D;
+    REGALGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
+    REGALGLCOMPRESSEDTEXSUBIMAGE3DPROC glCompressedTexSubImage3D;
+    REGALGLGETCOMPRESSEDTEXIMAGEPROC glGetCompressedTexImage;
+    REGALGLLOADTRANSPOSEMATRIXDPROC glLoadTransposeMatrixd;
+    REGALGLLOADTRANSPOSEMATRIXFPROC glLoadTransposeMatrixf;
+    REGALGLMULTTRANSPOSEMATRIXDPROC glMultTransposeMatrixd;
+    REGALGLMULTTRANSPOSEMATRIXFPROC glMultTransposeMatrixf;
+    REGALGLMULTITEXCOORD1DPROC glMultiTexCoord1d;
+    REGALGLMULTITEXCOORD1DVPROC glMultiTexCoord1dv;
+    REGALGLMULTITEXCOORD1FPROC glMultiTexCoord1f;
+    REGALGLMULTITEXCOORD1FVPROC glMultiTexCoord1fv;
+    REGALGLMULTITEXCOORD1IPROC glMultiTexCoord1i;
+    REGALGLMULTITEXCOORD1IVPROC glMultiTexCoord1iv;
+    REGALGLMULTITEXCOORD1SPROC glMultiTexCoord1s;
+    REGALGLMULTITEXCOORD1SVPROC glMultiTexCoord1sv;
+    REGALGLMULTITEXCOORD2DPROC glMultiTexCoord2d;
+    REGALGLMULTITEXCOORD2DVPROC glMultiTexCoord2dv;
+    REGALGLMULTITEXCOORD2FPROC glMultiTexCoord2f;
+    REGALGLMULTITEXCOORD2FVPROC glMultiTexCoord2fv;
+    REGALGLMULTITEXCOORD2IPROC glMultiTexCoord2i;
+    REGALGLMULTITEXCOORD2IVPROC glMultiTexCoord2iv;
+    REGALGLMULTITEXCOORD2SPROC glMultiTexCoord2s;
+    REGALGLMULTITEXCOORD2SVPROC glMultiTexCoord2sv;
+    REGALGLMULTITEXCOORD3DPROC glMultiTexCoord3d;
+    REGALGLMULTITEXCOORD3DVPROC glMultiTexCoord3dv;
+    REGALGLMULTITEXCOORD3FPROC glMultiTexCoord3f;
+    REGALGLMULTITEXCOORD3FVPROC glMultiTexCoord3fv;
+    REGALGLMULTITEXCOORD3IPROC glMultiTexCoord3i;
+    REGALGLMULTITEXCOORD3IVPROC glMultiTexCoord3iv;
+    REGALGLMULTITEXCOORD3SPROC glMultiTexCoord3s;
+    REGALGLMULTITEXCOORD3SVPROC glMultiTexCoord3sv;
+    REGALGLMULTITEXCOORD4DPROC glMultiTexCoord4d;
+    REGALGLMULTITEXCOORD4DVPROC glMultiTexCoord4dv;
+    REGALGLMULTITEXCOORD4FPROC glMultiTexCoord4f;
+    REGALGLMULTITEXCOORD4FVPROC glMultiTexCoord4fv;
+    REGALGLMULTITEXCOORD4IPROC glMultiTexCoord4i;
+    REGALGLMULTITEXCOORD4IVPROC glMultiTexCoord4iv;
+    REGALGLMULTITEXCOORD4SPROC glMultiTexCoord4s;
+    REGALGLMULTITEXCOORD4SVPROC glMultiTexCoord4sv;
+    REGALGLSAMPLECOVERAGEPROC glSampleCoverage;
 
     // GL_VERSION_1_4
 
-    PFNGLBLENDFUNCSEPARATEPROC glBlendFuncSeparate;
-    PFNGLFOGCOORDPOINTERPROC glFogCoordPointer;
-    PFNGLFOGCOORDDPROC glFogCoordd;
-    PFNGLFOGCOORDDVPROC glFogCoorddv;
-    PFNGLFOGCOORDFPROC glFogCoordf;
-    PFNGLFOGCOORDFVPROC glFogCoordfv;
-    PFNGLMULTIDRAWARRAYSPROC glMultiDrawArrays;
-    PFNGLMULTIDRAWELEMENTSPROC glMultiDrawElements;
-    PFNGLPOINTPARAMETERFPROC glPointParameterf;
-    PFNGLPOINTPARAMETERFVPROC glPointParameterfv;
-    PFNGLPOINTPARAMETERIPROC glPointParameteri;
-    PFNGLPOINTPARAMETERIVPROC glPointParameteriv;
-    PFNGLSECONDARYCOLOR3BPROC glSecondaryColor3b;
-    PFNGLSECONDARYCOLOR3BVPROC glSecondaryColor3bv;
-    PFNGLSECONDARYCOLOR3DPROC glSecondaryColor3d;
-    PFNGLSECONDARYCOLOR3DVPROC glSecondaryColor3dv;
-    PFNGLSECONDARYCOLOR3FPROC glSecondaryColor3f;
-    PFNGLSECONDARYCOLOR3FVPROC glSecondaryColor3fv;
-    PFNGLSECONDARYCOLOR3IPROC glSecondaryColor3i;
-    PFNGLSECONDARYCOLOR3IVPROC glSecondaryColor3iv;
-    PFNGLSECONDARYCOLOR3SPROC glSecondaryColor3s;
-    PFNGLSECONDARYCOLOR3SVPROC glSecondaryColor3sv;
-    PFNGLSECONDARYCOLOR3UBPROC glSecondaryColor3ub;
-    PFNGLSECONDARYCOLOR3UBVPROC glSecondaryColor3ubv;
-    PFNGLSECONDARYCOLOR3UIPROC glSecondaryColor3ui;
-    PFNGLSECONDARYCOLOR3UIVPROC glSecondaryColor3uiv;
-    PFNGLSECONDARYCOLOR3USPROC glSecondaryColor3us;
-    PFNGLSECONDARYCOLOR3USVPROC glSecondaryColor3usv;
-    PFNGLSECONDARYCOLORPOINTERPROC glSecondaryColorPointer;
-    PFNGLWINDOWPOS2DPROC glWindowPos2d;
-    PFNGLWINDOWPOS2DVPROC glWindowPos2dv;
-    PFNGLWINDOWPOS2FPROC glWindowPos2f;
-    PFNGLWINDOWPOS2FVPROC glWindowPos2fv;
-    PFNGLWINDOWPOS2IPROC glWindowPos2i;
-    PFNGLWINDOWPOS2IVPROC glWindowPos2iv;
-    PFNGLWINDOWPOS2SPROC glWindowPos2s;
-    PFNGLWINDOWPOS2SVPROC glWindowPos2sv;
-    PFNGLWINDOWPOS3DPROC glWindowPos3d;
-    PFNGLWINDOWPOS3DVPROC glWindowPos3dv;
-    PFNGLWINDOWPOS3FPROC glWindowPos3f;
-    PFNGLWINDOWPOS3FVPROC glWindowPos3fv;
-    PFNGLWINDOWPOS3IPROC glWindowPos3i;
-    PFNGLWINDOWPOS3IVPROC glWindowPos3iv;
-    PFNGLWINDOWPOS3SPROC glWindowPos3s;
-    PFNGLWINDOWPOS3SVPROC glWindowPos3sv;
+    REGALGLBLENDFUNCSEPARATEPROC glBlendFuncSeparate;
+    REGALGLFOGCOORDPOINTERPROC glFogCoordPointer;
+    REGALGLFOGCOORDDPROC glFogCoordd;
+    REGALGLFOGCOORDDVPROC glFogCoorddv;
+    REGALGLFOGCOORDFPROC glFogCoordf;
+    REGALGLFOGCOORDFVPROC glFogCoordfv;
+    REGALGLMULTIDRAWARRAYSPROC glMultiDrawArrays;
+    REGALGLMULTIDRAWELEMENTSPROC glMultiDrawElements;
+    REGALGLPOINTPARAMETERFPROC glPointParameterf;
+    REGALGLPOINTPARAMETERFVPROC glPointParameterfv;
+    REGALGLPOINTPARAMETERIPROC glPointParameteri;
+    REGALGLPOINTPARAMETERIVPROC glPointParameteriv;
+    REGALGLSECONDARYCOLOR3BPROC glSecondaryColor3b;
+    REGALGLSECONDARYCOLOR3BVPROC glSecondaryColor3bv;
+    REGALGLSECONDARYCOLOR3DPROC glSecondaryColor3d;
+    REGALGLSECONDARYCOLOR3DVPROC glSecondaryColor3dv;
+    REGALGLSECONDARYCOLOR3FPROC glSecondaryColor3f;
+    REGALGLSECONDARYCOLOR3FVPROC glSecondaryColor3fv;
+    REGALGLSECONDARYCOLOR3IPROC glSecondaryColor3i;
+    REGALGLSECONDARYCOLOR3IVPROC glSecondaryColor3iv;
+    REGALGLSECONDARYCOLOR3SPROC glSecondaryColor3s;
+    REGALGLSECONDARYCOLOR3SVPROC glSecondaryColor3sv;
+    REGALGLSECONDARYCOLOR3UBPROC glSecondaryColor3ub;
+    REGALGLSECONDARYCOLOR3UBVPROC glSecondaryColor3ubv;
+    REGALGLSECONDARYCOLOR3UIPROC glSecondaryColor3ui;
+    REGALGLSECONDARYCOLOR3UIVPROC glSecondaryColor3uiv;
+    REGALGLSECONDARYCOLOR3USPROC glSecondaryColor3us;
+    REGALGLSECONDARYCOLOR3USVPROC glSecondaryColor3usv;
+    REGALGLSECONDARYCOLORPOINTERPROC glSecondaryColorPointer;
+    REGALGLWINDOWPOS2DPROC glWindowPos2d;
+    REGALGLWINDOWPOS2DVPROC glWindowPos2dv;
+    REGALGLWINDOWPOS2FPROC glWindowPos2f;
+    REGALGLWINDOWPOS2FVPROC glWindowPos2fv;
+    REGALGLWINDOWPOS2IPROC glWindowPos2i;
+    REGALGLWINDOWPOS2IVPROC glWindowPos2iv;
+    REGALGLWINDOWPOS2SPROC glWindowPos2s;
+    REGALGLWINDOWPOS2SVPROC glWindowPos2sv;
+    REGALGLWINDOWPOS3DPROC glWindowPos3d;
+    REGALGLWINDOWPOS3DVPROC glWindowPos3dv;
+    REGALGLWINDOWPOS3FPROC glWindowPos3f;
+    REGALGLWINDOWPOS3FVPROC glWindowPos3fv;
+    REGALGLWINDOWPOS3IPROC glWindowPos3i;
+    REGALGLWINDOWPOS3IVPROC glWindowPos3iv;
+    REGALGLWINDOWPOS3SPROC glWindowPos3s;
+    REGALGLWINDOWPOS3SVPROC glWindowPos3sv;
 
     // GL_VERSION_1_5
 
-    PFNGLBEGINQUERYPROC glBeginQuery;
-    PFNGLBINDBUFFERPROC glBindBuffer;
-    PFNGLBUFFERDATAPROC glBufferData;
-    PFNGLBUFFERSUBDATAPROC glBufferSubData;
-    PFNGLDELETEBUFFERSPROC glDeleteBuffers;
-    PFNGLDELETEQUERIESPROC glDeleteQueries;
-    PFNGLENDQUERYPROC glEndQuery;
-    PFNGLGENBUFFERSPROC glGenBuffers;
-    PFNGLGENQUERIESPROC glGenQueries;
-    PFNGLGETBUFFERPARAMETERIVPROC glGetBufferParameteriv;
-    PFNGLGETBUFFERPOINTERVPROC glGetBufferPointerv;
-    PFNGLGETBUFFERSUBDATAPROC glGetBufferSubData;
-    PFNGLGETQUERYOBJECTIVPROC glGetQueryObjectiv;
-    PFNGLGETQUERYOBJECTUIVPROC glGetQueryObjectuiv;
-    PFNGLGETQUERYIVPROC glGetQueryiv;
-    PFNGLISBUFFERPROC glIsBuffer;
-    PFNGLISQUERYPROC glIsQuery;
-    PFNGLMAPBUFFERPROC glMapBuffer;
-    PFNGLUNMAPBUFFERPROC glUnmapBuffer;
+    REGALGLBEGINQUERYPROC glBeginQuery;
+    REGALGLBINDBUFFERPROC glBindBuffer;
+    REGALGLBUFFERDATAPROC glBufferData;
+    REGALGLBUFFERSUBDATAPROC glBufferSubData;
+    REGALGLDELETEBUFFERSPROC glDeleteBuffers;
+    REGALGLDELETEQUERIESPROC glDeleteQueries;
+    REGALGLENDQUERYPROC glEndQuery;
+    REGALGLGENBUFFERSPROC glGenBuffers;
+    REGALGLGENQUERIESPROC glGenQueries;
+    REGALGLGETBUFFERPARAMETERIVPROC glGetBufferParameteriv;
+    REGALGLGETBUFFERPOINTERVPROC glGetBufferPointerv;
+    REGALGLGETBUFFERSUBDATAPROC glGetBufferSubData;
+    REGALGLGETQUERYOBJECTIVPROC glGetQueryObjectiv;
+    REGALGLGETQUERYOBJECTUIVPROC glGetQueryObjectuiv;
+    REGALGLGETQUERYIVPROC glGetQueryiv;
+    REGALGLISBUFFERPROC glIsBuffer;
+    REGALGLISQUERYPROC glIsQuery;
+    REGALGLMAPBUFFERPROC glMapBuffer;
+    REGALGLUNMAPBUFFERPROC glUnmapBuffer;
 
     // GL_VERSION_2_0
 
-    PFNGLATTACHSHADERPROC glAttachShader;
-    PFNGLBINDATTRIBLOCATIONPROC glBindAttribLocation;
-    PFNGLBLENDEQUATIONSEPARATEPROC glBlendEquationSeparate;
-    PFNGLCOMPILESHADERPROC glCompileShader;
-    PFNGLCREATEPROGRAMPROC glCreateProgram;
-    PFNGLCREATESHADERPROC glCreateShader;
-    PFNGLDELETEPROGRAMPROC glDeleteProgram;
-    PFNGLDELETESHADERPROC glDeleteShader;
-    PFNGLDETACHSHADERPROC glDetachShader;
-    PFNGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
-    PFNGLDRAWBUFFERSPROC glDrawBuffers;
-    PFNGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
-    PFNGLGETACTIVEATTRIBPROC glGetActiveAttrib;
-    PFNGLGETACTIVEUNIFORMPROC glGetActiveUniform;
-    PFNGLGETATTACHEDSHADERSPROC glGetAttachedShaders;
-    PFNGLGETATTRIBLOCATIONPROC glGetAttribLocation;
-    PFNGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
-    PFNGLGETPROGRAMIVPROC glGetProgramiv;
-    PFNGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
-    PFNGLGETSHADERSOURCEPROC glGetShaderSource;
-    PFNGLGETSHADERIVPROC glGetShaderiv;
-    PFNGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
-    PFNGLGETUNIFORMFVPROC glGetUniformfv;
-    PFNGLGETUNIFORMIVPROC glGetUniformiv;
-    PFNGLGETVERTEXATTRIBPOINTERVPROC glGetVertexAttribPointerv;
-    PFNGLGETVERTEXATTRIBDVPROC glGetVertexAttribdv;
-    PFNGLGETVERTEXATTRIBFVPROC glGetVertexAttribfv;
-    PFNGLGETVERTEXATTRIBIVPROC glGetVertexAttribiv;
-    PFNGLISPROGRAMPROC glIsProgram;
-    PFNGLISSHADERPROC glIsShader;
-    PFNGLLINKPROGRAMPROC glLinkProgram;
-    PFNGLSHADERSOURCEPROC glShaderSource;
-    PFNGLSTENCILFUNCSEPARATEPROC glStencilFuncSeparate;
-    PFNGLSTENCILMASKSEPARATEPROC glStencilMaskSeparate;
-    PFNGLSTENCILOPSEPARATEPROC glStencilOpSeparate;
-    PFNGLUNIFORM1FPROC glUniform1f;
-    PFNGLUNIFORM1FVPROC glUniform1fv;
-    PFNGLUNIFORM1IPROC glUniform1i;
-    PFNGLUNIFORM1IVPROC glUniform1iv;
-    PFNGLUNIFORM2FPROC glUniform2f;
-    PFNGLUNIFORM2FVPROC glUniform2fv;
-    PFNGLUNIFORM2IPROC glUniform2i;
-    PFNGLUNIFORM2IVPROC glUniform2iv;
-    PFNGLUNIFORM3FPROC glUniform3f;
-    PFNGLUNIFORM3FVPROC glUniform3fv;
-    PFNGLUNIFORM3IPROC glUniform3i;
-    PFNGLUNIFORM3IVPROC glUniform3iv;
-    PFNGLUNIFORM4FPROC glUniform4f;
-    PFNGLUNIFORM4FVPROC glUniform4fv;
-    PFNGLUNIFORM4IPROC glUniform4i;
-    PFNGLUNIFORM4IVPROC glUniform4iv;
-    PFNGLUNIFORMMATRIX2FVPROC glUniformMatrix2fv;
-    PFNGLUNIFORMMATRIX3FVPROC glUniformMatrix3fv;
-    PFNGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
-    PFNGLUSEPROGRAMPROC glUseProgram;
-    PFNGLVALIDATEPROGRAMPROC glValidateProgram;
-    PFNGLVERTEXATTRIB1DPROC glVertexAttrib1d;
-    PFNGLVERTEXATTRIB1DVPROC glVertexAttrib1dv;
-    PFNGLVERTEXATTRIB1FPROC glVertexAttrib1f;
-    PFNGLVERTEXATTRIB1FVPROC glVertexAttrib1fv;
-    PFNGLVERTEXATTRIB1SPROC glVertexAttrib1s;
-    PFNGLVERTEXATTRIB1SVPROC glVertexAttrib1sv;
-    PFNGLVERTEXATTRIB2DPROC glVertexAttrib2d;
-    PFNGLVERTEXATTRIB2DVPROC glVertexAttrib2dv;
-    PFNGLVERTEXATTRIB2FPROC glVertexAttrib2f;
-    PFNGLVERTEXATTRIB2FVPROC glVertexAttrib2fv;
-    PFNGLVERTEXATTRIB2SPROC glVertexAttrib2s;
-    PFNGLVERTEXATTRIB2SVPROC glVertexAttrib2sv;
-    PFNGLVERTEXATTRIB3DPROC glVertexAttrib3d;
-    PFNGLVERTEXATTRIB3DVPROC glVertexAttrib3dv;
-    PFNGLVERTEXATTRIB3FPROC glVertexAttrib3f;
-    PFNGLVERTEXATTRIB3FVPROC glVertexAttrib3fv;
-    PFNGLVERTEXATTRIB3SPROC glVertexAttrib3s;
-    PFNGLVERTEXATTRIB3SVPROC glVertexAttrib3sv;
-    PFNGLVERTEXATTRIB4NBVPROC glVertexAttrib4Nbv;
-    PFNGLVERTEXATTRIB4NIVPROC glVertexAttrib4Niv;
-    PFNGLVERTEXATTRIB4NSVPROC glVertexAttrib4Nsv;
-    PFNGLVERTEXATTRIB4NUBPROC glVertexAttrib4Nub;
-    PFNGLVERTEXATTRIB4NUBVPROC glVertexAttrib4Nubv;
-    PFNGLVERTEXATTRIB4NUIVPROC glVertexAttrib4Nuiv;
-    PFNGLVERTEXATTRIB4NUSVPROC glVertexAttrib4Nusv;
-    PFNGLVERTEXATTRIB4BVPROC glVertexAttrib4bv;
-    PFNGLVERTEXATTRIB4DPROC glVertexAttrib4d;
-    PFNGLVERTEXATTRIB4DVPROC glVertexAttrib4dv;
-    PFNGLVERTEXATTRIB4FPROC glVertexAttrib4f;
-    PFNGLVERTEXATTRIB4FVPROC glVertexAttrib4fv;
-    PFNGLVERTEXATTRIB4IVPROC glVertexAttrib4iv;
-    PFNGLVERTEXATTRIB4SPROC glVertexAttrib4s;
-    PFNGLVERTEXATTRIB4SVPROC glVertexAttrib4sv;
-    PFNGLVERTEXATTRIB4UBVPROC glVertexAttrib4ubv;
-    PFNGLVERTEXATTRIB4UIVPROC glVertexAttrib4uiv;
-    PFNGLVERTEXATTRIB4USVPROC glVertexAttrib4usv;
-    PFNGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
+    REGALGLATTACHSHADERPROC glAttachShader;
+    REGALGLBINDATTRIBLOCATIONPROC glBindAttribLocation;
+    REGALGLBLENDEQUATIONSEPARATEPROC glBlendEquationSeparate;
+    REGALGLCOMPILESHADERPROC glCompileShader;
+    REGALGLCREATEPROGRAMPROC glCreateProgram;
+    REGALGLCREATESHADERPROC glCreateShader;
+    REGALGLDELETEPROGRAMPROC glDeleteProgram;
+    REGALGLDELETESHADERPROC glDeleteShader;
+    REGALGLDETACHSHADERPROC glDetachShader;
+    REGALGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
+    REGALGLDRAWBUFFERSPROC glDrawBuffers;
+    REGALGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
+    REGALGLGETACTIVEATTRIBPROC glGetActiveAttrib;
+    REGALGLGETACTIVEUNIFORMPROC glGetActiveUniform;
+    REGALGLGETATTACHEDSHADERSPROC glGetAttachedShaders;
+    REGALGLGETATTRIBLOCATIONPROC glGetAttribLocation;
+    REGALGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
+    REGALGLGETPROGRAMIVPROC glGetProgramiv;
+    REGALGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
+    REGALGLGETSHADERSOURCEPROC glGetShaderSource;
+    REGALGLGETSHADERIVPROC glGetShaderiv;
+    REGALGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
+    REGALGLGETUNIFORMFVPROC glGetUniformfv;
+    REGALGLGETUNIFORMIVPROC glGetUniformiv;
+    REGALGLGETVERTEXATTRIBPOINTERVPROC glGetVertexAttribPointerv;
+    REGALGLGETVERTEXATTRIBDVPROC glGetVertexAttribdv;
+    REGALGLGETVERTEXATTRIBFVPROC glGetVertexAttribfv;
+    REGALGLGETVERTEXATTRIBIVPROC glGetVertexAttribiv;
+    REGALGLISPROGRAMPROC glIsProgram;
+    REGALGLISSHADERPROC glIsShader;
+    REGALGLLINKPROGRAMPROC glLinkProgram;
+    REGALGLSHADERSOURCEPROC glShaderSource;
+    REGALGLSTENCILFUNCSEPARATEPROC glStencilFuncSeparate;
+    REGALGLSTENCILMASKSEPARATEPROC glStencilMaskSeparate;
+    REGALGLSTENCILOPSEPARATEPROC glStencilOpSeparate;
+    REGALGLUNIFORM1FPROC glUniform1f;
+    REGALGLUNIFORM1FVPROC glUniform1fv;
+    REGALGLUNIFORM1IPROC glUniform1i;
+    REGALGLUNIFORM1IVPROC glUniform1iv;
+    REGALGLUNIFORM2FPROC glUniform2f;
+    REGALGLUNIFORM2FVPROC glUniform2fv;
+    REGALGLUNIFORM2IPROC glUniform2i;
+    REGALGLUNIFORM2IVPROC glUniform2iv;
+    REGALGLUNIFORM3FPROC glUniform3f;
+    REGALGLUNIFORM3FVPROC glUniform3fv;
+    REGALGLUNIFORM3IPROC glUniform3i;
+    REGALGLUNIFORM3IVPROC glUniform3iv;
+    REGALGLUNIFORM4FPROC glUniform4f;
+    REGALGLUNIFORM4FVPROC glUniform4fv;
+    REGALGLUNIFORM4IPROC glUniform4i;
+    REGALGLUNIFORM4IVPROC glUniform4iv;
+    REGALGLUNIFORMMATRIX2FVPROC glUniformMatrix2fv;
+    REGALGLUNIFORMMATRIX3FVPROC glUniformMatrix3fv;
+    REGALGLUNIFORMMATRIX4FVPROC glUniformMatrix4fv;
+    REGALGLUSEPROGRAMPROC glUseProgram;
+    REGALGLVALIDATEPROGRAMPROC glValidateProgram;
+    REGALGLVERTEXATTRIB1DPROC glVertexAttrib1d;
+    REGALGLVERTEXATTRIB1DVPROC glVertexAttrib1dv;
+    REGALGLVERTEXATTRIB1FPROC glVertexAttrib1f;
+    REGALGLVERTEXATTRIB1FVPROC glVertexAttrib1fv;
+    REGALGLVERTEXATTRIB1SPROC glVertexAttrib1s;
+    REGALGLVERTEXATTRIB1SVPROC glVertexAttrib1sv;
+    REGALGLVERTEXATTRIB2DPROC glVertexAttrib2d;
+    REGALGLVERTEXATTRIB2DVPROC glVertexAttrib2dv;
+    REGALGLVERTEXATTRIB2FPROC glVertexAttrib2f;
+    REGALGLVERTEXATTRIB2FVPROC glVertexAttrib2fv;
+    REGALGLVERTEXATTRIB2SPROC glVertexAttrib2s;
+    REGALGLVERTEXATTRIB2SVPROC glVertexAttrib2sv;
+    REGALGLVERTEXATTRIB3DPROC glVertexAttrib3d;
+    REGALGLVERTEXATTRIB3DVPROC glVertexAttrib3dv;
+    REGALGLVERTEXATTRIB3FPROC glVertexAttrib3f;
+    REGALGLVERTEXATTRIB3FVPROC glVertexAttrib3fv;
+    REGALGLVERTEXATTRIB3SPROC glVertexAttrib3s;
+    REGALGLVERTEXATTRIB3SVPROC glVertexAttrib3sv;
+    REGALGLVERTEXATTRIB4NBVPROC glVertexAttrib4Nbv;
+    REGALGLVERTEXATTRIB4NIVPROC glVertexAttrib4Niv;
+    REGALGLVERTEXATTRIB4NSVPROC glVertexAttrib4Nsv;
+    REGALGLVERTEXATTRIB4NUBPROC glVertexAttrib4Nub;
+    REGALGLVERTEXATTRIB4NUBVPROC glVertexAttrib4Nubv;
+    REGALGLVERTEXATTRIB4NUIVPROC glVertexAttrib4Nuiv;
+    REGALGLVERTEXATTRIB4NUSVPROC glVertexAttrib4Nusv;
+    REGALGLVERTEXATTRIB4BVPROC glVertexAttrib4bv;
+    REGALGLVERTEXATTRIB4DPROC glVertexAttrib4d;
+    REGALGLVERTEXATTRIB4DVPROC glVertexAttrib4dv;
+    REGALGLVERTEXATTRIB4FPROC glVertexAttrib4f;
+    REGALGLVERTEXATTRIB4FVPROC glVertexAttrib4fv;
+    REGALGLVERTEXATTRIB4IVPROC glVertexAttrib4iv;
+    REGALGLVERTEXATTRIB4SPROC glVertexAttrib4s;
+    REGALGLVERTEXATTRIB4SVPROC glVertexAttrib4sv;
+    REGALGLVERTEXATTRIB4UBVPROC glVertexAttrib4ubv;
+    REGALGLVERTEXATTRIB4UIVPROC glVertexAttrib4uiv;
+    REGALGLVERTEXATTRIB4USVPROC glVertexAttrib4usv;
+    REGALGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
 
     // GL_VERSION_2_1
 
-    PFNGLUNIFORMMATRIX2X3FVPROC glUniformMatrix2x3fv;
-    PFNGLUNIFORMMATRIX2X4FVPROC glUniformMatrix2x4fv;
-    PFNGLUNIFORMMATRIX3X2FVPROC glUniformMatrix3x2fv;
-    PFNGLUNIFORMMATRIX3X4FVPROC glUniformMatrix3x4fv;
-    PFNGLUNIFORMMATRIX4X2FVPROC glUniformMatrix4x2fv;
-    PFNGLUNIFORMMATRIX4X3FVPROC glUniformMatrix4x3fv;
+    REGALGLUNIFORMMATRIX2X3FVPROC glUniformMatrix2x3fv;
+    REGALGLUNIFORMMATRIX2X4FVPROC glUniformMatrix2x4fv;
+    REGALGLUNIFORMMATRIX3X2FVPROC glUniformMatrix3x2fv;
+    REGALGLUNIFORMMATRIX3X4FVPROC glUniformMatrix3x4fv;
+    REGALGLUNIFORMMATRIX4X2FVPROC glUniformMatrix4x2fv;
+    REGALGLUNIFORMMATRIX4X3FVPROC glUniformMatrix4x3fv;
 
     // GL_VERSION_3_0
 
-    PFNGLBEGINCONDITIONALRENDERPROC glBeginConditionalRender;
-    PFNGLBEGINTRANSFORMFEEDBACKPROC glBeginTransformFeedback;
-    PFNGLBINDFRAGDATALOCATIONPROC glBindFragDataLocation;
-    PFNGLCLAMPCOLORPROC glClampColor;
-    PFNGLCLEARBUFFERFIPROC glClearBufferfi;
-    PFNGLCLEARBUFFERFVPROC glClearBufferfv;
-    PFNGLCLEARBUFFERIVPROC glClearBufferiv;
-    PFNGLCLEARBUFFERUIVPROC glClearBufferuiv;
-    PFNGLCOLORMASKIPROC glColorMaski;
-    PFNGLDISABLEIPROC glDisablei;
-    PFNGLENABLEIPROC glEnablei;
-    PFNGLENDCONDITIONALRENDERPROC glEndConditionalRender;
-    PFNGLENDTRANSFORMFEEDBACKPROC glEndTransformFeedback;
-    PFNGLGETBOOLEANI_VPROC glGetBooleani_v;
-    PFNGLGETFRAGDATALOCATIONPROC glGetFragDataLocation;
-    PFNGLGETSTRINGIPROC glGetStringi;
-    PFNGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
-    PFNGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
-    PFNGLGETTRANSFORMFEEDBACKVARYINGPROC glGetTransformFeedbackVarying;
-    PFNGLGETUNIFORMUIVPROC glGetUniformuiv;
-    PFNGLGETVERTEXATTRIBIIVPROC glGetVertexAttribIiv;
-    PFNGLGETVERTEXATTRIBIUIVPROC glGetVertexAttribIuiv;
-    PFNGLISENABLEDIPROC glIsEnabledi;
-    PFNGLTEXPARAMETERIIVPROC glTexParameterIiv;
-    PFNGLTEXPARAMETERIUIVPROC glTexParameterIuiv;
-    PFNGLTRANSFORMFEEDBACKVARYINGSPROC glTransformFeedbackVaryings;
-    PFNGLUNIFORM1UIPROC glUniform1ui;
-    PFNGLUNIFORM1UIVPROC glUniform1uiv;
-    PFNGLUNIFORM2UIPROC glUniform2ui;
-    PFNGLUNIFORM2UIVPROC glUniform2uiv;
-    PFNGLUNIFORM3UIPROC glUniform3ui;
-    PFNGLUNIFORM3UIVPROC glUniform3uiv;
-    PFNGLUNIFORM4UIPROC glUniform4ui;
-    PFNGLUNIFORM4UIVPROC glUniform4uiv;
-    PFNGLVERTEXATTRIBI1IPROC glVertexAttribI1i;
-    PFNGLVERTEXATTRIBI1IVPROC glVertexAttribI1iv;
-    PFNGLVERTEXATTRIBI1UIPROC glVertexAttribI1ui;
-    PFNGLVERTEXATTRIBI1UIVPROC glVertexAttribI1uiv;
-    PFNGLVERTEXATTRIBI2IPROC glVertexAttribI2i;
-    PFNGLVERTEXATTRIBI2IVPROC glVertexAttribI2iv;
-    PFNGLVERTEXATTRIBI2UIPROC glVertexAttribI2ui;
-    PFNGLVERTEXATTRIBI2UIVPROC glVertexAttribI2uiv;
-    PFNGLVERTEXATTRIBI3IPROC glVertexAttribI3i;
-    PFNGLVERTEXATTRIBI3IVPROC glVertexAttribI3iv;
-    PFNGLVERTEXATTRIBI3UIPROC glVertexAttribI3ui;
-    PFNGLVERTEXATTRIBI3UIVPROC glVertexAttribI3uiv;
-    PFNGLVERTEXATTRIBI4BVPROC glVertexAttribI4bv;
-    PFNGLVERTEXATTRIBI4IPROC glVertexAttribI4i;
-    PFNGLVERTEXATTRIBI4IVPROC glVertexAttribI4iv;
-    PFNGLVERTEXATTRIBI4SVPROC glVertexAttribI4sv;
-    PFNGLVERTEXATTRIBI4UBVPROC glVertexAttribI4ubv;
-    PFNGLVERTEXATTRIBI4UIPROC glVertexAttribI4ui;
-    PFNGLVERTEXATTRIBI4UIVPROC glVertexAttribI4uiv;
-    PFNGLVERTEXATTRIBI4USVPROC glVertexAttribI4usv;
-    PFNGLVERTEXATTRIBIPOINTERPROC glVertexAttribIPointer;
+    REGALGLBEGINCONDITIONALRENDERPROC glBeginConditionalRender;
+    REGALGLBEGINTRANSFORMFEEDBACKPROC glBeginTransformFeedback;
+    REGALGLBINDFRAGDATALOCATIONPROC glBindFragDataLocation;
+    REGALGLCLAMPCOLORPROC glClampColor;
+    REGALGLCLEARBUFFERFIPROC glClearBufferfi;
+    REGALGLCLEARBUFFERFVPROC glClearBufferfv;
+    REGALGLCLEARBUFFERIVPROC glClearBufferiv;
+    REGALGLCLEARBUFFERUIVPROC glClearBufferuiv;
+    REGALGLCOLORMASKIPROC glColorMaski;
+    REGALGLDISABLEIPROC glDisablei;
+    REGALGLENABLEIPROC glEnablei;
+    REGALGLENDCONDITIONALRENDERPROC glEndConditionalRender;
+    REGALGLENDTRANSFORMFEEDBACKPROC glEndTransformFeedback;
+    REGALGLGETBOOLEANI_VPROC glGetBooleani_v;
+    REGALGLGETFRAGDATALOCATIONPROC glGetFragDataLocation;
+    REGALGLGETSTRINGIPROC glGetStringi;
+    REGALGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
+    REGALGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
+    REGALGLGETTRANSFORMFEEDBACKVARYINGPROC glGetTransformFeedbackVarying;
+    REGALGLGETUNIFORMUIVPROC glGetUniformuiv;
+    REGALGLGETVERTEXATTRIBIIVPROC glGetVertexAttribIiv;
+    REGALGLGETVERTEXATTRIBIUIVPROC glGetVertexAttribIuiv;
+    REGALGLISENABLEDIPROC glIsEnabledi;
+    REGALGLTEXPARAMETERIIVPROC glTexParameterIiv;
+    REGALGLTEXPARAMETERIUIVPROC glTexParameterIuiv;
+    REGALGLTRANSFORMFEEDBACKVARYINGSPROC glTransformFeedbackVaryings;
+    REGALGLUNIFORM1UIPROC glUniform1ui;
+    REGALGLUNIFORM1UIVPROC glUniform1uiv;
+    REGALGLUNIFORM2UIPROC glUniform2ui;
+    REGALGLUNIFORM2UIVPROC glUniform2uiv;
+    REGALGLUNIFORM3UIPROC glUniform3ui;
+    REGALGLUNIFORM3UIVPROC glUniform3uiv;
+    REGALGLUNIFORM4UIPROC glUniform4ui;
+    REGALGLUNIFORM4UIVPROC glUniform4uiv;
+    REGALGLVERTEXATTRIBI1IPROC glVertexAttribI1i;
+    REGALGLVERTEXATTRIBI1IVPROC glVertexAttribI1iv;
+    REGALGLVERTEXATTRIBI1UIPROC glVertexAttribI1ui;
+    REGALGLVERTEXATTRIBI1UIVPROC glVertexAttribI1uiv;
+    REGALGLVERTEXATTRIBI2IPROC glVertexAttribI2i;
+    REGALGLVERTEXATTRIBI2IVPROC glVertexAttribI2iv;
+    REGALGLVERTEXATTRIBI2UIPROC glVertexAttribI2ui;
+    REGALGLVERTEXATTRIBI2UIVPROC glVertexAttribI2uiv;
+    REGALGLVERTEXATTRIBI3IPROC glVertexAttribI3i;
+    REGALGLVERTEXATTRIBI3IVPROC glVertexAttribI3iv;
+    REGALGLVERTEXATTRIBI3UIPROC glVertexAttribI3ui;
+    REGALGLVERTEXATTRIBI3UIVPROC glVertexAttribI3uiv;
+    REGALGLVERTEXATTRIBI4BVPROC glVertexAttribI4bv;
+    REGALGLVERTEXATTRIBI4IPROC glVertexAttribI4i;
+    REGALGLVERTEXATTRIBI4IVPROC glVertexAttribI4iv;
+    REGALGLVERTEXATTRIBI4SVPROC glVertexAttribI4sv;
+    REGALGLVERTEXATTRIBI4UBVPROC glVertexAttribI4ubv;
+    REGALGLVERTEXATTRIBI4UIPROC glVertexAttribI4ui;
+    REGALGLVERTEXATTRIBI4UIVPROC glVertexAttribI4uiv;
+    REGALGLVERTEXATTRIBI4USVPROC glVertexAttribI4usv;
+    REGALGLVERTEXATTRIBIPOINTERPROC glVertexAttribIPointer;
 
     // GL_VERSION_3_1
 
-    PFNGLDRAWARRAYSINSTANCEDPROC glDrawArraysInstanced;
-    PFNGLDRAWELEMENTSINSTANCEDPROC glDrawElementsInstanced;
-    PFNGLPRIMITIVERESTARTINDEXPROC glPrimitiveRestartIndex;
-    PFNGLTEXBUFFERPROC glTexBuffer;
+    REGALGLDRAWARRAYSINSTANCEDPROC glDrawArraysInstanced;
+    REGALGLDRAWELEMENTSINSTANCEDPROC glDrawElementsInstanced;
+    REGALGLPRIMITIVERESTARTINDEXPROC glPrimitiveRestartIndex;
+    REGALGLTEXBUFFERPROC glTexBuffer;
 
     // GL_VERSION_3_2
 
-    PFNGLFRAMEBUFFERTEXTUREPROC glFramebufferTexture;
-    PFNGLFRAMEBUFFERTEXTUREFACEPROC glFramebufferTextureFace;
-    PFNGLGETBUFFERPARAMETERI64VPROC glGetBufferParameteri64v;
-    PFNGLGETINTEGER64I_VPROC glGetInteger64i_v;
+    REGALGLFRAMEBUFFERTEXTUREPROC glFramebufferTexture;
+    REGALGLFRAMEBUFFERTEXTUREFACEPROC glFramebufferTextureFace;
+    REGALGLGETBUFFERPARAMETERI64VPROC glGetBufferParameteri64v;
+    REGALGLGETINTEGER64I_VPROC glGetInteger64i_v;
 
     // GL_VERSION_3_3
 
-    PFNGLVERTEXATTRIBDIVISORPROC glVertexAttribDivisor;
+    REGALGLVERTEXATTRIBDIVISORPROC glVertexAttribDivisor;
 
     // GL_VERSION_4_0
 
-    PFNGLBLENDEQUATIONSEPARATEIPROC glBlendEquationSeparatei;
-    PFNGLBLENDEQUATIONIPROC glBlendEquationi;
-    PFNGLBLENDFUNCSEPARATEIPROC glBlendFuncSeparatei;
-    PFNGLBLENDFUNCIPROC glBlendFunci;
+    REGALGLBLENDEQUATIONSEPARATEIPROC glBlendEquationSeparatei;
+    REGALGLBLENDEQUATIONIPROC glBlendEquationi;
+    REGALGLBLENDFUNCSEPARATEIPROC glBlendFuncSeparatei;
+    REGALGLBLENDFUNCIPROC glBlendFunci;
 
     // GL_3DFX_tbuffer
 
-    PFNGLTBUFFERMASK3DFXPROC glTbufferMask3DFX;
+    REGALGLTBUFFERMASK3DFXPROC glTbufferMask3DFX;
 
     // GL_AMD_debug_output
 
-    PFNGLDEBUGMESSAGECALLBACKAMDPROC glDebugMessageCallbackAMD;
-    PFNGLDEBUGMESSAGEENABLEAMDPROC glDebugMessageEnableAMD;
-    PFNGLDEBUGMESSAGEINSERTAMDPROC glDebugMessageInsertAMD;
-    PFNGLGETDEBUGMESSAGELOGAMDPROC glGetDebugMessageLogAMD;
+    REGALGLDEBUGMESSAGECALLBACKAMDPROC glDebugMessageCallbackAMD;
+    REGALGLDEBUGMESSAGEENABLEAMDPROC glDebugMessageEnableAMD;
+    REGALGLDEBUGMESSAGEINSERTAMDPROC glDebugMessageInsertAMD;
+    REGALGLGETDEBUGMESSAGELOGAMDPROC glGetDebugMessageLogAMD;
 
     // GL_AMD_draw_buffers_blend
 
-    PFNGLBLENDEQUATIONINDEXEDAMDPROC glBlendEquationIndexedAMD;
-    PFNGLBLENDEQUATIONSEPARATEINDEXEDAMDPROC glBlendEquationSeparateIndexedAMD;
-    PFNGLBLENDFUNCINDEXEDAMDPROC glBlendFuncIndexedAMD;
-    PFNGLBLENDFUNCSEPARATEINDEXEDAMDPROC glBlendFuncSeparateIndexedAMD;
+    REGALGLBLENDEQUATIONINDEXEDAMDPROC glBlendEquationIndexedAMD;
+    REGALGLBLENDEQUATIONSEPARATEINDEXEDAMDPROC glBlendEquationSeparateIndexedAMD;
+    REGALGLBLENDFUNCINDEXEDAMDPROC glBlendFuncIndexedAMD;
+    REGALGLBLENDFUNCSEPARATEINDEXEDAMDPROC glBlendFuncSeparateIndexedAMD;
 
     // GL_AMD_interleaved_elements
 
-    PFNGLVERTEXATTRIBPARAMETERIAMDPROC glVertexAttribParameteriAMD;
+    REGALGLVERTEXATTRIBPARAMETERIAMDPROC glVertexAttribParameteriAMD;
 
     // GL_AMD_multi_draw_indirect
 
-    PFNGLMULTIDRAWARRAYSINDIRECTAMDPROC glMultiDrawArraysIndirectAMD;
-    PFNGLMULTIDRAWELEMENTSINDIRECTAMDPROC glMultiDrawElementsIndirectAMD;
+    REGALGLMULTIDRAWARRAYSINDIRECTAMDPROC glMultiDrawArraysIndirectAMD;
+    REGALGLMULTIDRAWELEMENTSINDIRECTAMDPROC glMultiDrawElementsIndirectAMD;
 
     // GL_AMD_name_gen_delete
 
-    PFNGLDELETENAMESAMDPROC glDeleteNamesAMD;
-    PFNGLGENNAMESAMDPROC glGenNamesAMD;
-    PFNGLISNAMEAMDPROC glIsNameAMD;
+    REGALGLDELETENAMESAMDPROC glDeleteNamesAMD;
+    REGALGLGENNAMESAMDPROC glGenNamesAMD;
+    REGALGLISNAMEAMDPROC glIsNameAMD;
 
     // GL_AMD_performance_monitor
 
-    PFNGLBEGINPERFMONITORAMDPROC glBeginPerfMonitorAMD;
-    PFNGLDELETEPERFMONITORSAMDPROC glDeletePerfMonitorsAMD;
-    PFNGLENDPERFMONITORAMDPROC glEndPerfMonitorAMD;
-    PFNGLGENPERFMONITORSAMDPROC glGenPerfMonitorsAMD;
-    PFNGLGETPERFMONITORCOUNTERDATAAMDPROC glGetPerfMonitorCounterDataAMD;
-    PFNGLGETPERFMONITORCOUNTERINFOAMDPROC glGetPerfMonitorCounterInfoAMD;
-    PFNGLGETPERFMONITORCOUNTERSTRINGAMDPROC glGetPerfMonitorCounterStringAMD;
-    PFNGLGETPERFMONITORCOUNTERSAMDPROC glGetPerfMonitorCountersAMD;
-    PFNGLGETPERFMONITORGROUPSTRINGAMDPROC glGetPerfMonitorGroupStringAMD;
-    PFNGLGETPERFMONITORGROUPSAMDPROC glGetPerfMonitorGroupsAMD;
-    PFNGLSELECTPERFMONITORCOUNTERSAMDPROC glSelectPerfMonitorCountersAMD;
+    REGALGLBEGINPERFMONITORAMDPROC glBeginPerfMonitorAMD;
+    REGALGLDELETEPERFMONITORSAMDPROC glDeletePerfMonitorsAMD;
+    REGALGLENDPERFMONITORAMDPROC glEndPerfMonitorAMD;
+    REGALGLGENPERFMONITORSAMDPROC glGenPerfMonitorsAMD;
+    REGALGLGETPERFMONITORCOUNTERDATAAMDPROC glGetPerfMonitorCounterDataAMD;
+    REGALGLGETPERFMONITORCOUNTERINFOAMDPROC glGetPerfMonitorCounterInfoAMD;
+    REGALGLGETPERFMONITORCOUNTERSTRINGAMDPROC glGetPerfMonitorCounterStringAMD;
+    REGALGLGETPERFMONITORCOUNTERSAMDPROC glGetPerfMonitorCountersAMD;
+    REGALGLGETPERFMONITORGROUPSTRINGAMDPROC glGetPerfMonitorGroupStringAMD;
+    REGALGLGETPERFMONITORGROUPSAMDPROC glGetPerfMonitorGroupsAMD;
+    REGALGLSELECTPERFMONITORCOUNTERSAMDPROC glSelectPerfMonitorCountersAMD;
 
     // GL_AMD_sample_positions
 
-    PFNGLSETMULTISAMPLEFVAMDPROC glSetMultisamplefvAMD;
+    REGALGLSETMULTISAMPLEFVAMDPROC glSetMultisamplefvAMD;
 
     // GL_AMD_sparse_texture
 
-    PFNGLTEXSTORAGESPARSEAMDPROC glTexStorageSparseAMD;
-    PFNGLTEXTURESTORAGESPARSEAMDPROC glTextureStorageSparseAMD;
+    REGALGLTEXSTORAGESPARSEAMDPROC glTexStorageSparseAMD;
+    REGALGLTEXTURESTORAGESPARSEAMDPROC glTextureStorageSparseAMD;
 
     // GL_AMD_stencil_operation_extended
 
-    PFNGLSTENCILOPVALUEAMDPROC glStencilOpValueAMD;
+    REGALGLSTENCILOPVALUEAMDPROC glStencilOpValueAMD;
 
     // GL_AMD_vertex_shader_tessellator
 
-    PFNGLTESSELLATIONFACTORAMDPROC glTessellationFactorAMD;
-    PFNGLTESSELLATIONMODEAMDPROC glTessellationModeAMD;
+    REGALGLTESSELLATIONFACTORAMDPROC glTessellationFactorAMD;
+    REGALGLTESSELLATIONMODEAMDPROC glTessellationModeAMD;
 
     // GL_ANGLE_framebuffer_blit
 
-    PFNGLBLITFRAMEBUFFERANGLEPROC glBlitFramebufferANGLE;
+    REGALGLBLITFRAMEBUFFERANGLEPROC glBlitFramebufferANGLE;
 
     // GL_ANGLE_framebuffer_multisample
 
-    PFNGLRENDERBUFFERSTORAGEMULTISAMPLEANGLEPROC glRenderbufferStorageMultisampleANGLE;
+    REGALGLRENDERBUFFERSTORAGEMULTISAMPLEANGLEPROC glRenderbufferStorageMultisampleANGLE;
 
     // GL_ANGLE_instanced_arrays
 
-    PFNGLDRAWARRAYSINSTANCEDANGLEPROC glDrawArraysInstancedANGLE;
-    PFNGLDRAWELEMENTSINSTANCEDANGLEPROC glDrawElementsInstancedANGLE;
-    PFNGLVERTEXATTRIBDIVISORANGLEPROC glVertexAttribDivisorANGLE;
+    REGALGLDRAWARRAYSINSTANCEDANGLEPROC glDrawArraysInstancedANGLE;
+    REGALGLDRAWELEMENTSINSTANCEDANGLEPROC glDrawElementsInstancedANGLE;
+    REGALGLVERTEXATTRIBDIVISORANGLEPROC glVertexAttribDivisorANGLE;
 
     // GL_ANGLE_timer_query
 
-    PFNGLBEGINQUERYANGLEPROC glBeginQueryANGLE;
-    PFNGLDELETEQUERIESANGLEPROC glDeleteQueriesANGLE;
-    PFNGLENDQUERYANGLEPROC glEndQueryANGLE;
-    PFNGLGENQUERIESANGLEPROC glGenQueriesANGLE;
-    PFNGLGETQUERYOBJECTI64VANGLEPROC glGetQueryObjecti64vANGLE;
-    PFNGLGETQUERYOBJECTIVANGLEPROC glGetQueryObjectivANGLE;
-    PFNGLGETQUERYOBJECTUI64VANGLEPROC glGetQueryObjectui64vANGLE;
-    PFNGLGETQUERYOBJECTUIVANGLEPROC glGetQueryObjectuivANGLE;
-    PFNGLGETQUERYIVANGLEPROC glGetQueryivANGLE;
-    PFNGLISQUERYANGLEPROC glIsQueryANGLE;
-    PFNGLQUERYCOUNTERANGLEPROC glQueryCounterANGLE;
+    REGALGLBEGINQUERYANGLEPROC glBeginQueryANGLE;
+    REGALGLDELETEQUERIESANGLEPROC glDeleteQueriesANGLE;
+    REGALGLENDQUERYANGLEPROC glEndQueryANGLE;
+    REGALGLGENQUERIESANGLEPROC glGenQueriesANGLE;
+    REGALGLGETQUERYOBJECTI64VANGLEPROC glGetQueryObjecti64vANGLE;
+    REGALGLGETQUERYOBJECTIVANGLEPROC glGetQueryObjectivANGLE;
+    REGALGLGETQUERYOBJECTUI64VANGLEPROC glGetQueryObjectui64vANGLE;
+    REGALGLGETQUERYOBJECTUIVANGLEPROC glGetQueryObjectuivANGLE;
+    REGALGLGETQUERYIVANGLEPROC glGetQueryivANGLE;
+    REGALGLISQUERYANGLEPROC glIsQueryANGLE;
+    REGALGLQUERYCOUNTERANGLEPROC glQueryCounterANGLE;
 
     // GL_ANGLE_translated_shader_source
 
-    PFNGLGETTRANSLATEDSHADERSOURCEANGLEPROC glGetTranslatedShaderSourceANGLE;
+    REGALGLGETTRANSLATEDSHADERSOURCEANGLEPROC glGetTranslatedShaderSourceANGLE;
 
     // GL_APPLE_copy_texture_levels
 
-    PFNGLCOPYTEXTURELEVELSAPPLEPROC glCopyTextureLevelsAPPLE;
+    REGALGLCOPYTEXTURELEVELSAPPLEPROC glCopyTextureLevelsAPPLE;
 
     // GL_APPLE_element_array
 
-    PFNGLDRAWELEMENTARRAYAPPLEPROC glDrawElementArrayAPPLE;
-    PFNGLDRAWRANGEELEMENTARRAYAPPLEPROC glDrawRangeElementArrayAPPLE;
-    PFNGLELEMENTPOINTERAPPLEPROC glElementPointerAPPLE;
-    PFNGLMULTIDRAWELEMENTARRAYAPPLEPROC glMultiDrawElementArrayAPPLE;
-    PFNGLMULTIDRAWRANGEELEMENTARRAYAPPLEPROC glMultiDrawRangeElementArrayAPPLE;
+    REGALGLDRAWELEMENTARRAYAPPLEPROC glDrawElementArrayAPPLE;
+    REGALGLDRAWRANGEELEMENTARRAYAPPLEPROC glDrawRangeElementArrayAPPLE;
+    REGALGLELEMENTPOINTERAPPLEPROC glElementPointerAPPLE;
+    REGALGLMULTIDRAWELEMENTARRAYAPPLEPROC glMultiDrawElementArrayAPPLE;
+    REGALGLMULTIDRAWRANGEELEMENTARRAYAPPLEPROC glMultiDrawRangeElementArrayAPPLE;
 
     // GL_APPLE_fence
 
-    PFNGLDELETEFENCESAPPLEPROC glDeleteFencesAPPLE;
-    PFNGLFINISHFENCEAPPLEPROC glFinishFenceAPPLE;
-    PFNGLFINISHOBJECTAPPLEPROC glFinishObjectAPPLE;
-    PFNGLGENFENCESAPPLEPROC glGenFencesAPPLE;
-    PFNGLISFENCEAPPLEPROC glIsFenceAPPLE;
-    PFNGLSETFENCEAPPLEPROC glSetFenceAPPLE;
-    PFNGLTESTFENCEAPPLEPROC glTestFenceAPPLE;
-    PFNGLTESTOBJECTAPPLEPROC glTestObjectAPPLE;
+    REGALGLDELETEFENCESAPPLEPROC glDeleteFencesAPPLE;
+    REGALGLFINISHFENCEAPPLEPROC glFinishFenceAPPLE;
+    REGALGLFINISHOBJECTAPPLEPROC glFinishObjectAPPLE;
+    REGALGLGENFENCESAPPLEPROC glGenFencesAPPLE;
+    REGALGLISFENCEAPPLEPROC glIsFenceAPPLE;
+    REGALGLSETFENCEAPPLEPROC glSetFenceAPPLE;
+    REGALGLTESTFENCEAPPLEPROC glTestFenceAPPLE;
+    REGALGLTESTOBJECTAPPLEPROC glTestObjectAPPLE;
 
     // GL_APPLE_flush_buffer_range
 
-    PFNGLBUFFERPARAMETERIAPPLEPROC glBufferParameteriAPPLE;
-    PFNGLFLUSHMAPPEDBUFFERRANGEAPPLEPROC glFlushMappedBufferRangeAPPLE;
+    REGALGLBUFFERPARAMETERIAPPLEPROC glBufferParameteriAPPLE;
+    REGALGLFLUSHMAPPEDBUFFERRANGEAPPLEPROC glFlushMappedBufferRangeAPPLE;
 
     // GL_APPLE_flush_render
 
-    PFNGLFINISHRENDERAPPLEPROC glFinishRenderAPPLE;
-    PFNGLFLUSHRENDERAPPLEPROC glFlushRenderAPPLE;
-    PFNGLSWAPAPPLEPROC glSwapAPPLE;
+    REGALGLFINISHRENDERAPPLEPROC glFinishRenderAPPLE;
+    REGALGLFLUSHRENDERAPPLEPROC glFlushRenderAPPLE;
+    REGALGLSWAPAPPLEPROC glSwapAPPLE;
 
     // GL_APPLE_framebuffer_multisample
 
-    PFNGLRENDERBUFFERSTORAGEMULTISAMPLEAPPLEPROC glRenderbufferStorageMultisampleAPPLE;
-    PFNGLRESOLVEMULTISAMPLEFRAMEBUFFERAPPLEPROC glResolveMultisampleFramebufferAPPLE;
+    REGALGLRENDERBUFFERSTORAGEMULTISAMPLEAPPLEPROC glRenderbufferStorageMultisampleAPPLE;
+    REGALGLRESOLVEMULTISAMPLEFRAMEBUFFERAPPLEPROC glResolveMultisampleFramebufferAPPLE;
 
     // GL_APPLE_object_purgeable
 
-    PFNGLGETOBJECTPARAMETERIVAPPLEPROC glGetObjectParameterivAPPLE;
-    PFNGLOBJECTPURGEABLEAPPLEPROC glObjectPurgeableAPPLE;
-    PFNGLOBJECTUNPURGEABLEAPPLEPROC glObjectUnpurgeableAPPLE;
+    REGALGLGETOBJECTPARAMETERIVAPPLEPROC glGetObjectParameterivAPPLE;
+    REGALGLOBJECTPURGEABLEAPPLEPROC glObjectPurgeableAPPLE;
+    REGALGLOBJECTUNPURGEABLEAPPLEPROC glObjectUnpurgeableAPPLE;
 
     // GL_APPLE_sync
 
-    PFNGLCLIENTWAITSYNCAPPLEPROC glClientWaitSyncAPPLE;
-    PFNGLDELETESYNCAPPLEPROC glDeleteSyncAPPLE;
-    PFNGLFENCESYNCAPPLEPROC glFenceSyncAPPLE;
-    PFNGLGETINTEGER64VAPPLEPROC glGetInteger64vAPPLE;
-    PFNGLGETSYNCIVAPPLEPROC glGetSyncivAPPLE;
-    PFNGLISSYNCAPPLEPROC glIsSyncAPPLE;
-    PFNGLWAITSYNCAPPLEPROC glWaitSyncAPPLE;
+    REGALGLCLIENTWAITSYNCAPPLEPROC glClientWaitSyncAPPLE;
+    REGALGLDELETESYNCAPPLEPROC glDeleteSyncAPPLE;
+    REGALGLFENCESYNCAPPLEPROC glFenceSyncAPPLE;
+    REGALGLGETINTEGER64VAPPLEPROC glGetInteger64vAPPLE;
+    REGALGLGETSYNCIVAPPLEPROC glGetSyncivAPPLE;
+    REGALGLISSYNCAPPLEPROC glIsSyncAPPLE;
+    REGALGLWAITSYNCAPPLEPROC glWaitSyncAPPLE;
 
     // GL_APPLE_texture_range
 
-    PFNGLGETTEXPARAMETERPOINTERVAPPLEPROC glGetTexParameterPointervAPPLE;
-    PFNGLTEXTURERANGEAPPLEPROC glTextureRangeAPPLE;
+    REGALGLGETTEXPARAMETERPOINTERVAPPLEPROC glGetTexParameterPointervAPPLE;
+    REGALGLTEXTURERANGEAPPLEPROC glTextureRangeAPPLE;
 
     // GL_APPLE_vertex_array_object
 
-    PFNGLBINDVERTEXARRAYAPPLEPROC glBindVertexArrayAPPLE;
-    PFNGLDELETEVERTEXARRAYSAPPLEPROC glDeleteVertexArraysAPPLE;
-    PFNGLGENVERTEXARRAYSAPPLEPROC glGenVertexArraysAPPLE;
-    PFNGLISVERTEXARRAYAPPLEPROC glIsVertexArrayAPPLE;
+    REGALGLBINDVERTEXARRAYAPPLEPROC glBindVertexArrayAPPLE;
+    REGALGLDELETEVERTEXARRAYSAPPLEPROC glDeleteVertexArraysAPPLE;
+    REGALGLGENVERTEXARRAYSAPPLEPROC glGenVertexArraysAPPLE;
+    REGALGLISVERTEXARRAYAPPLEPROC glIsVertexArrayAPPLE;
 
     // GL_APPLE_vertex_array_range
 
-    PFNGLFLUSHVERTEXARRAYRANGEAPPLEPROC glFlushVertexArrayRangeAPPLE;
-    PFNGLVERTEXARRAYPARAMETERIAPPLEPROC glVertexArrayParameteriAPPLE;
-    PFNGLVERTEXARRAYRANGEAPPLEPROC glVertexArrayRangeAPPLE;
+    REGALGLFLUSHVERTEXARRAYRANGEAPPLEPROC glFlushVertexArrayRangeAPPLE;
+    REGALGLVERTEXARRAYPARAMETERIAPPLEPROC glVertexArrayParameteriAPPLE;
+    REGALGLVERTEXARRAYRANGEAPPLEPROC glVertexArrayRangeAPPLE;
 
     // GL_APPLE_vertex_program_evaluators
 
-    PFNGLDISABLEVERTEXATTRIBAPPLEPROC glDisableVertexAttribAPPLE;
-    PFNGLENABLEVERTEXATTRIBAPPLEPROC glEnableVertexAttribAPPLE;
-    PFNGLISVERTEXATTRIBENABLEDAPPLEPROC glIsVertexAttribEnabledAPPLE;
-    PFNGLMAPVERTEXATTRIB1DAPPLEPROC glMapVertexAttrib1dAPPLE;
-    PFNGLMAPVERTEXATTRIB1FAPPLEPROC glMapVertexAttrib1fAPPLE;
-    PFNGLMAPVERTEXATTRIB2DAPPLEPROC glMapVertexAttrib2dAPPLE;
-    PFNGLMAPVERTEXATTRIB2FAPPLEPROC glMapVertexAttrib2fAPPLE;
+    REGALGLDISABLEVERTEXATTRIBAPPLEPROC glDisableVertexAttribAPPLE;
+    REGALGLENABLEVERTEXATTRIBAPPLEPROC glEnableVertexAttribAPPLE;
+    REGALGLISVERTEXATTRIBENABLEDAPPLEPROC glIsVertexAttribEnabledAPPLE;
+    REGALGLMAPVERTEXATTRIB1DAPPLEPROC glMapVertexAttrib1dAPPLE;
+    REGALGLMAPVERTEXATTRIB1FAPPLEPROC glMapVertexAttrib1fAPPLE;
+    REGALGLMAPVERTEXATTRIB2DAPPLEPROC glMapVertexAttrib2dAPPLE;
+    REGALGLMAPVERTEXATTRIB2FAPPLEPROC glMapVertexAttrib2fAPPLE;
 
     // GL_ARB_ES2_compatibility
 
-    PFNGLCLEARDEPTHFPROC glClearDepthf;
-    PFNGLDEPTHRANGEFPROC glDepthRangef;
-    PFNGLGETSHADERPRECISIONFORMATPROC glGetShaderPrecisionFormat;
-    PFNGLRELEASESHADERCOMPILERPROC glReleaseShaderCompiler;
-    PFNGLSHADERBINARYPROC glShaderBinary;
+    REGALGLCLEARDEPTHFPROC glClearDepthf;
+    REGALGLDEPTHRANGEFPROC glDepthRangef;
+    REGALGLGETSHADERPRECISIONFORMATPROC glGetShaderPrecisionFormat;
+    REGALGLRELEASESHADERCOMPILERPROC glReleaseShaderCompiler;
+    REGALGLSHADERBINARYPROC glShaderBinary;
 
     // GL_ARB_base_instance
 
-    PFNGLDRAWARRAYSINSTANCEDBASEINSTANCEPROC glDrawArraysInstancedBaseInstance;
-    PFNGLDRAWELEMENTSINSTANCEDBASEINSTANCEPROC glDrawElementsInstancedBaseInstance;
-    PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXBASEINSTANCEPROC glDrawElementsInstancedBaseVertexBaseInstance;
+    REGALGLDRAWARRAYSINSTANCEDBASEINSTANCEPROC glDrawArraysInstancedBaseInstance;
+    REGALGLDRAWELEMENTSINSTANCEDBASEINSTANCEPROC glDrawElementsInstancedBaseInstance;
+    REGALGLDRAWELEMENTSINSTANCEDBASEVERTEXBASEINSTANCEPROC glDrawElementsInstancedBaseVertexBaseInstance;
 
     // GL_ARB_bindless_texture
 
-    PFNGLGETIMAGEHANDLEARBPROC glGetImageHandleARB;
-    PFNGLGETTEXTUREHANDLEARBPROC glGetTextureHandleARB;
-    PFNGLGETTEXTURESAMPLERHANDLEARBPROC glGetTextureSamplerHandleARB;
-    PFNGLGETVERTEXATTRIBLUI64VARBPROC glGetVertexAttribLui64vARB;
-    PFNGLISIMAGEHANDLERESIDENTARBPROC glIsImageHandleResidentARB;
-    PFNGLISTEXTUREHANDLERESIDENTARBPROC glIsTextureHandleResidentARB;
-    PFNGLMAKEIMAGEHANDLENONRESIDENTARBPROC glMakeImageHandleNonResidentARB;
-    PFNGLMAKEIMAGEHANDLERESIDENTARBPROC glMakeImageHandleResidentARB;
-    PFNGLMAKETEXTUREHANDLENONRESIDENTARBPROC glMakeTextureHandleNonResidentARB;
-    PFNGLMAKETEXTUREHANDLERESIDENTARBPROC glMakeTextureHandleResidentARB;
-    PFNGLPROGRAMUNIFORMHANDLEUI64ARBPROC glProgramUniformHandleui64ARB;
-    PFNGLPROGRAMUNIFORMHANDLEUI64VARBPROC glProgramUniformHandleui64vARB;
-    PFNGLUNIFORMHANDLEUI64ARBPROC glUniformHandleui64ARB;
-    PFNGLUNIFORMHANDLEUI64VARBPROC glUniformHandleui64vARB;
-    PFNGLVERTEXATTRIBL1UI64ARBPROC glVertexAttribL1ui64ARB;
-    PFNGLVERTEXATTRIBL1UI64VARBPROC glVertexAttribL1ui64vARB;
+    REGALGLGETIMAGEHANDLEARBPROC glGetImageHandleARB;
+    REGALGLGETTEXTUREHANDLEARBPROC glGetTextureHandleARB;
+    REGALGLGETTEXTURESAMPLERHANDLEARBPROC glGetTextureSamplerHandleARB;
+    REGALGLGETVERTEXATTRIBLUI64VARBPROC glGetVertexAttribLui64vARB;
+    REGALGLISIMAGEHANDLERESIDENTARBPROC glIsImageHandleResidentARB;
+    REGALGLISTEXTUREHANDLERESIDENTARBPROC glIsTextureHandleResidentARB;
+    REGALGLMAKEIMAGEHANDLENONRESIDENTARBPROC glMakeImageHandleNonResidentARB;
+    REGALGLMAKEIMAGEHANDLERESIDENTARBPROC glMakeImageHandleResidentARB;
+    REGALGLMAKETEXTUREHANDLENONRESIDENTARBPROC glMakeTextureHandleNonResidentARB;
+    REGALGLMAKETEXTUREHANDLERESIDENTARBPROC glMakeTextureHandleResidentARB;
+    REGALGLPROGRAMUNIFORMHANDLEUI64ARBPROC glProgramUniformHandleui64ARB;
+    REGALGLPROGRAMUNIFORMHANDLEUI64VARBPROC glProgramUniformHandleui64vARB;
+    REGALGLUNIFORMHANDLEUI64ARBPROC glUniformHandleui64ARB;
+    REGALGLUNIFORMHANDLEUI64VARBPROC glUniformHandleui64vARB;
+    REGALGLVERTEXATTRIBL1UI64ARBPROC glVertexAttribL1ui64ARB;
+    REGALGLVERTEXATTRIBL1UI64VARBPROC glVertexAttribL1ui64vARB;
 
     // GL_ARB_blend_func_extended
 
-    PFNGLBINDFRAGDATALOCATIONINDEXEDPROC glBindFragDataLocationIndexed;
-    PFNGLGETFRAGDATAINDEXPROC glGetFragDataIndex;
+    REGALGLBINDFRAGDATALOCATIONINDEXEDPROC glBindFragDataLocationIndexed;
+    REGALGLGETFRAGDATAINDEXPROC glGetFragDataIndex;
 
     // GL_ARB_buffer_storage
 
-    PFNGLBUFFERSTORAGEPROC glBufferStorage;
-    PFNGLNAMEDBUFFERSTORAGEEXTPROC glNamedBufferStorageEXT;
+    REGALGLBUFFERSTORAGEPROC glBufferStorage;
+    REGALGLNAMEDBUFFERSTORAGEEXTPROC glNamedBufferStorageEXT;
 
     // GL_ARB_cl_event
 
-    PFNGLCREATESYNCFROMCLEVENTARBPROC glCreateSyncFromCLeventARB;
+    REGALGLCREATESYNCFROMCLEVENTARBPROC glCreateSyncFromCLeventARB;
 
     // GL_ARB_clear_buffer_object
 
-    PFNGLCLEARBUFFERDATAPROC glClearBufferData;
-    PFNGLCLEARBUFFERSUBDATAPROC glClearBufferSubData;
-    PFNGLCLEARNAMEDBUFFERDATAEXTPROC glClearNamedBufferDataEXT;
-    PFNGLCLEARNAMEDBUFFERSUBDATAEXTPROC glClearNamedBufferSubDataEXT;
+    REGALGLCLEARBUFFERDATAPROC glClearBufferData;
+    REGALGLCLEARBUFFERSUBDATAPROC glClearBufferSubData;
+    REGALGLCLEARNAMEDBUFFERDATAEXTPROC glClearNamedBufferDataEXT;
+    REGALGLCLEARNAMEDBUFFERSUBDATAEXTPROC glClearNamedBufferSubDataEXT;
 
     // GL_ARB_clear_texture
 
-    PFNGLCLEARTEXIMAGEPROC glClearTexImage;
-    PFNGLCLEARTEXSUBIMAGEPROC glClearTexSubImage;
+    REGALGLCLEARTEXIMAGEPROC glClearTexImage;
+    REGALGLCLEARTEXSUBIMAGEPROC glClearTexSubImage;
 
     // GL_ARB_color_buffer_float
 
-    PFNGLCLAMPCOLORARBPROC glClampColorARB;
+    REGALGLCLAMPCOLORARBPROC glClampColorARB;
 
     // GL_ARB_compute_shader
 
-    PFNGLDISPATCHCOMPUTEPROC glDispatchCompute;
-    PFNGLDISPATCHCOMPUTEINDIRECTPROC glDispatchComputeIndirect;
+    REGALGLDISPATCHCOMPUTEPROC glDispatchCompute;
+    REGALGLDISPATCHCOMPUTEINDIRECTPROC glDispatchComputeIndirect;
 
     // GL_ARB_compute_variable_group_size
 
-    PFNGLDISPATCHCOMPUTEGROUPSIZEARBPROC glDispatchComputeGroupSizeARB;
+    REGALGLDISPATCHCOMPUTEGROUPSIZEARBPROC glDispatchComputeGroupSizeARB;
 
     // GL_ARB_copy_buffer
 
-    PFNGLCOPYBUFFERSUBDATAPROC glCopyBufferSubData;
+    REGALGLCOPYBUFFERSUBDATAPROC glCopyBufferSubData;
 
     // GL_ARB_copy_image
 
-    PFNGLCOPYIMAGESUBDATAPROC glCopyImageSubData;
+    REGALGLCOPYIMAGESUBDATAPROC glCopyImageSubData;
 
     // GL_ARB_debug_output
 
-    PFNGLDEBUGMESSAGECALLBACKARBPROC glDebugMessageCallbackARB;
-    PFNGLDEBUGMESSAGECONTROLARBPROC glDebugMessageControlARB;
-    PFNGLDEBUGMESSAGEINSERTARBPROC glDebugMessageInsertARB;
-    PFNGLGETDEBUGMESSAGELOGARBPROC glGetDebugMessageLogARB;
+    REGALGLDEBUGMESSAGECALLBACKARBPROC glDebugMessageCallbackARB;
+    REGALGLDEBUGMESSAGECONTROLARBPROC glDebugMessageControlARB;
+    REGALGLDEBUGMESSAGEINSERTARBPROC glDebugMessageInsertARB;
+    REGALGLGETDEBUGMESSAGELOGARBPROC glGetDebugMessageLogARB;
 
     // GL_ARB_draw_buffers
 
-    PFNGLDRAWBUFFERSARBPROC glDrawBuffersARB;
+    REGALGLDRAWBUFFERSARBPROC glDrawBuffersARB;
 
     // GL_ARB_draw_buffers_blend
 
-    PFNGLBLENDEQUATIONSEPARATEIARBPROC glBlendEquationSeparateiARB;
-    PFNGLBLENDEQUATIONIARBPROC glBlendEquationiARB;
-    PFNGLBLENDFUNCSEPARATEIARBPROC glBlendFuncSeparateiARB;
-    PFNGLBLENDFUNCIARBPROC glBlendFunciARB;
+    REGALGLBLENDEQUATIONSEPARATEIARBPROC glBlendEquationSeparateiARB;
+    REGALGLBLENDEQUATIONIARBPROC glBlendEquationiARB;
+    REGALGLBLENDFUNCSEPARATEIARBPROC glBlendFuncSeparateiARB;
+    REGALGLBLENDFUNCIARBPROC glBlendFunciARB;
 
     // GL_ARB_draw_elements_base_vertex
 
-    PFNGLDRAWELEMENTSBASEVERTEXPROC glDrawElementsBaseVertex;
-    PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC glDrawElementsInstancedBaseVertex;
-    PFNGLDRAWRANGEELEMENTSBASEVERTEXPROC glDrawRangeElementsBaseVertex;
-    PFNGLMULTIDRAWELEMENTSBASEVERTEXPROC glMultiDrawElementsBaseVertex;
+    REGALGLDRAWELEMENTSBASEVERTEXPROC glDrawElementsBaseVertex;
+    REGALGLDRAWELEMENTSINSTANCEDBASEVERTEXPROC glDrawElementsInstancedBaseVertex;
+    REGALGLDRAWRANGEELEMENTSBASEVERTEXPROC glDrawRangeElementsBaseVertex;
+    REGALGLMULTIDRAWELEMENTSBASEVERTEXPROC glMultiDrawElementsBaseVertex;
 
     // GL_ARB_draw_indirect
 
-    PFNGLDRAWARRAYSINDIRECTPROC glDrawArraysIndirect;
-    PFNGLDRAWELEMENTSINDIRECTPROC glDrawElementsIndirect;
+    REGALGLDRAWARRAYSINDIRECTPROC glDrawArraysIndirect;
+    REGALGLDRAWELEMENTSINDIRECTPROC glDrawElementsIndirect;
 
     // GL_ARB_draw_instanced
 
-    PFNGLDRAWARRAYSINSTANCEDARBPROC glDrawArraysInstancedARB;
-    PFNGLDRAWELEMENTSINSTANCEDARBPROC glDrawElementsInstancedARB;
+    REGALGLDRAWARRAYSINSTANCEDARBPROC glDrawArraysInstancedARB;
+    REGALGLDRAWELEMENTSINSTANCEDARBPROC glDrawElementsInstancedARB;
 
     // GL_ARB_framebuffer_no_attachments
 
-    PFNGLFRAMEBUFFERPARAMETERIPROC glFramebufferParameteri;
-    PFNGLGETFRAMEBUFFERPARAMETERIVPROC glGetFramebufferParameteriv;
-    PFNGLGETNAMEDFRAMEBUFFERPARAMETERIVEXTPROC glGetNamedFramebufferParameterivEXT;
-    PFNGLNAMEDFRAMEBUFFERPARAMETERIEXTPROC glNamedFramebufferParameteriEXT;
+    REGALGLFRAMEBUFFERPARAMETERIPROC glFramebufferParameteri;
+    REGALGLGETFRAMEBUFFERPARAMETERIVPROC glGetFramebufferParameteriv;
+    REGALGLGETNAMEDFRAMEBUFFERPARAMETERIVEXTPROC glGetNamedFramebufferParameterivEXT;
+    REGALGLNAMEDFRAMEBUFFERPARAMETERIEXTPROC glNamedFramebufferParameteriEXT;
 
     // GL_ARB_framebuffer_object
 
-    PFNGLBINDFRAMEBUFFERPROC glBindFramebuffer;
-    PFNGLBINDRENDERBUFFERPROC glBindRenderbuffer;
-    PFNGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
-    PFNGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
-    PFNGLDELETEFRAMEBUFFERSPROC glDeleteFramebuffers;
-    PFNGLDELETERENDERBUFFERSPROC glDeleteRenderbuffers;
-    PFNGLFRAMEBUFFERRENDERBUFFERPROC glFramebufferRenderbuffer;
-    PFNGLFRAMEBUFFERTEXTURE1DPROC glFramebufferTexture1D;
-    PFNGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
-    PFNGLFRAMEBUFFERTEXTURE3DPROC glFramebufferTexture3D;
-    PFNGLFRAMEBUFFERTEXTURELAYERPROC glFramebufferTextureLayer;
-    PFNGLGENFRAMEBUFFERSPROC glGenFramebuffers;
-    PFNGLGENRENDERBUFFERSPROC glGenRenderbuffers;
-    PFNGLGENERATEMIPMAPPROC glGenerateMipmap;
-    PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC glGetFramebufferAttachmentParameteriv;
-    PFNGLGETRENDERBUFFERPARAMETERIVPROC glGetRenderbufferParameteriv;
-    PFNGLISFRAMEBUFFERPROC glIsFramebuffer;
-    PFNGLISRENDERBUFFERPROC glIsRenderbuffer;
-    PFNGLRENDERBUFFERSTORAGEPROC glRenderbufferStorage;
-    PFNGLRENDERBUFFERSTORAGEMULTISAMPLEPROC glRenderbufferStorageMultisample;
+    REGALGLBINDFRAMEBUFFERPROC glBindFramebuffer;
+    REGALGLBINDRENDERBUFFERPROC glBindRenderbuffer;
+    REGALGLBLITFRAMEBUFFERPROC glBlitFramebuffer;
+    REGALGLCHECKFRAMEBUFFERSTATUSPROC glCheckFramebufferStatus;
+    REGALGLDELETEFRAMEBUFFERSPROC glDeleteFramebuffers;
+    REGALGLDELETERENDERBUFFERSPROC glDeleteRenderbuffers;
+    REGALGLFRAMEBUFFERRENDERBUFFERPROC glFramebufferRenderbuffer;
+    REGALGLFRAMEBUFFERTEXTURE1DPROC glFramebufferTexture1D;
+    REGALGLFRAMEBUFFERTEXTURE2DPROC glFramebufferTexture2D;
+    REGALGLFRAMEBUFFERTEXTURE3DPROC glFramebufferTexture3D;
+    REGALGLFRAMEBUFFERTEXTURELAYERPROC glFramebufferTextureLayer;
+    REGALGLGENFRAMEBUFFERSPROC glGenFramebuffers;
+    REGALGLGENRENDERBUFFERSPROC glGenRenderbuffers;
+    REGALGLGENERATEMIPMAPPROC glGenerateMipmap;
+    REGALGLGETFRAMEBUFFERATTACHMENTPARAMETERIVPROC glGetFramebufferAttachmentParameteriv;
+    REGALGLGETRENDERBUFFERPARAMETERIVPROC glGetRenderbufferParameteriv;
+    REGALGLISFRAMEBUFFERPROC glIsFramebuffer;
+    REGALGLISRENDERBUFFERPROC glIsRenderbuffer;
+    REGALGLRENDERBUFFERSTORAGEPROC glRenderbufferStorage;
+    REGALGLRENDERBUFFERSTORAGEMULTISAMPLEPROC glRenderbufferStorageMultisample;
 
     // GL_ARB_geometry_shader4
 
-    PFNGLFRAMEBUFFERTEXTUREARBPROC glFramebufferTextureARB;
-    PFNGLFRAMEBUFFERTEXTUREFACEARBPROC glFramebufferTextureFaceARB;
-    PFNGLFRAMEBUFFERTEXTURELAYERARBPROC glFramebufferTextureLayerARB;
-    PFNGLPROGRAMPARAMETERIARBPROC glProgramParameteriARB;
+    REGALGLFRAMEBUFFERTEXTUREARBPROC glFramebufferTextureARB;
+    REGALGLFRAMEBUFFERTEXTUREFACEARBPROC glFramebufferTextureFaceARB;
+    REGALGLFRAMEBUFFERTEXTURELAYERARBPROC glFramebufferTextureLayerARB;
+    REGALGLPROGRAMPARAMETERIARBPROC glProgramParameteriARB;
 
     // GL_ARB_get_program_binary
 
-    PFNGLGETPROGRAMBINARYPROC glGetProgramBinary;
-    PFNGLPROGRAMBINARYPROC glProgramBinary;
-    PFNGLPROGRAMPARAMETERIPROC glProgramParameteri;
+    REGALGLGETPROGRAMBINARYPROC glGetProgramBinary;
+    REGALGLPROGRAMBINARYPROC glProgramBinary;
+    REGALGLPROGRAMPARAMETERIPROC glProgramParameteri;
 
     // GL_ARB_gpu_shader_fp64
 
-    PFNGLGETUNIFORMDVPROC glGetUniformdv;
-    PFNGLUNIFORM1DPROC glUniform1d;
-    PFNGLUNIFORM1DVPROC glUniform1dv;
-    PFNGLUNIFORM2DPROC glUniform2d;
-    PFNGLUNIFORM2DVPROC glUniform2dv;
-    PFNGLUNIFORM3DPROC glUniform3d;
-    PFNGLUNIFORM3DVPROC glUniform3dv;
-    PFNGLUNIFORM4DPROC glUniform4d;
-    PFNGLUNIFORM4DVPROC glUniform4dv;
-    PFNGLUNIFORMMATRIX2DVPROC glUniformMatrix2dv;
-    PFNGLUNIFORMMATRIX2X3DVPROC glUniformMatrix2x3dv;
-    PFNGLUNIFORMMATRIX2X4DVPROC glUniformMatrix2x4dv;
-    PFNGLUNIFORMMATRIX3DVPROC glUniformMatrix3dv;
-    PFNGLUNIFORMMATRIX3X2DVPROC glUniformMatrix3x2dv;
-    PFNGLUNIFORMMATRIX3X4DVPROC glUniformMatrix3x4dv;
-    PFNGLUNIFORMMATRIX4DVPROC glUniformMatrix4dv;
-    PFNGLUNIFORMMATRIX4X2DVPROC glUniformMatrix4x2dv;
-    PFNGLUNIFORMMATRIX4X3DVPROC glUniformMatrix4x3dv;
+    REGALGLGETUNIFORMDVPROC glGetUniformdv;
+    REGALGLUNIFORM1DPROC glUniform1d;
+    REGALGLUNIFORM1DVPROC glUniform1dv;
+    REGALGLUNIFORM2DPROC glUniform2d;
+    REGALGLUNIFORM2DVPROC glUniform2dv;
+    REGALGLUNIFORM3DPROC glUniform3d;
+    REGALGLUNIFORM3DVPROC glUniform3dv;
+    REGALGLUNIFORM4DPROC glUniform4d;
+    REGALGLUNIFORM4DVPROC glUniform4dv;
+    REGALGLUNIFORMMATRIX2DVPROC glUniformMatrix2dv;
+    REGALGLUNIFORMMATRIX2X3DVPROC glUniformMatrix2x3dv;
+    REGALGLUNIFORMMATRIX2X4DVPROC glUniformMatrix2x4dv;
+    REGALGLUNIFORMMATRIX3DVPROC glUniformMatrix3dv;
+    REGALGLUNIFORMMATRIX3X2DVPROC glUniformMatrix3x2dv;
+    REGALGLUNIFORMMATRIX3X4DVPROC glUniformMatrix3x4dv;
+    REGALGLUNIFORMMATRIX4DVPROC glUniformMatrix4dv;
+    REGALGLUNIFORMMATRIX4X2DVPROC glUniformMatrix4x2dv;
+    REGALGLUNIFORMMATRIX4X3DVPROC glUniformMatrix4x3dv;
 
     // GL_ARB_imaging
 
-    PFNGLCOLORSUBTABLEPROC glColorSubTable;
-    PFNGLCOLORTABLEPROC glColorTable;
-    PFNGLCOLORTABLEPARAMETERFVPROC glColorTableParameterfv;
-    PFNGLCOLORTABLEPARAMETERIVPROC glColorTableParameteriv;
-    PFNGLCONVOLUTIONFILTER1DPROC glConvolutionFilter1D;
-    PFNGLCONVOLUTIONFILTER2DPROC glConvolutionFilter2D;
-    PFNGLCONVOLUTIONPARAMETERFPROC glConvolutionParameterf;
-    PFNGLCONVOLUTIONPARAMETERFVPROC glConvolutionParameterfv;
-    PFNGLCONVOLUTIONPARAMETERIPROC glConvolutionParameteri;
-    PFNGLCONVOLUTIONPARAMETERIVPROC glConvolutionParameteriv;
-    PFNGLCOPYCOLORSUBTABLEPROC glCopyColorSubTable;
-    PFNGLCOPYCOLORTABLEPROC glCopyColorTable;
-    PFNGLCOPYCONVOLUTIONFILTER1DPROC glCopyConvolutionFilter1D;
-    PFNGLCOPYCONVOLUTIONFILTER2DPROC glCopyConvolutionFilter2D;
-    PFNGLGETCOLORTABLEPROC glGetColorTable;
-    PFNGLGETCOLORTABLEPARAMETERFVPROC glGetColorTableParameterfv;
-    PFNGLGETCOLORTABLEPARAMETERIVPROC glGetColorTableParameteriv;
-    PFNGLGETCONVOLUTIONFILTERPROC glGetConvolutionFilter;
-    PFNGLGETCONVOLUTIONPARAMETERFVPROC glGetConvolutionParameterfv;
-    PFNGLGETCONVOLUTIONPARAMETERIVPROC glGetConvolutionParameteriv;
-    PFNGLGETHISTOGRAMPROC glGetHistogram;
-    PFNGLGETHISTOGRAMPARAMETERFVPROC glGetHistogramParameterfv;
-    PFNGLGETHISTOGRAMPARAMETERIVPROC glGetHistogramParameteriv;
-    PFNGLGETMINMAXPROC glGetMinmax;
-    PFNGLGETMINMAXPARAMETERFVPROC glGetMinmaxParameterfv;
-    PFNGLGETMINMAXPARAMETERIVPROC glGetMinmaxParameteriv;
-    PFNGLGETSEPARABLEFILTERPROC glGetSeparableFilter;
-    PFNGLHISTOGRAMPROC glHistogram;
-    PFNGLMINMAXPROC glMinmax;
-    PFNGLRESETHISTOGRAMPROC glResetHistogram;
-    PFNGLRESETMINMAXPROC glResetMinmax;
-    PFNGLSEPARABLEFILTER2DPROC glSeparableFilter2D;
+    REGALGLCOLORSUBTABLEPROC glColorSubTable;
+    REGALGLCOLORTABLEPROC glColorTable;
+    REGALGLCOLORTABLEPARAMETERFVPROC glColorTableParameterfv;
+    REGALGLCOLORTABLEPARAMETERIVPROC glColorTableParameteriv;
+    REGALGLCONVOLUTIONFILTER1DPROC glConvolutionFilter1D;
+    REGALGLCONVOLUTIONFILTER2DPROC glConvolutionFilter2D;
+    REGALGLCONVOLUTIONPARAMETERFPROC glConvolutionParameterf;
+    REGALGLCONVOLUTIONPARAMETERFVPROC glConvolutionParameterfv;
+    REGALGLCONVOLUTIONPARAMETERIPROC glConvolutionParameteri;
+    REGALGLCONVOLUTIONPARAMETERIVPROC glConvolutionParameteriv;
+    REGALGLCOPYCOLORSUBTABLEPROC glCopyColorSubTable;
+    REGALGLCOPYCOLORTABLEPROC glCopyColorTable;
+    REGALGLCOPYCONVOLUTIONFILTER1DPROC glCopyConvolutionFilter1D;
+    REGALGLCOPYCONVOLUTIONFILTER2DPROC glCopyConvolutionFilter2D;
+    REGALGLGETCOLORTABLEPROC glGetColorTable;
+    REGALGLGETCOLORTABLEPARAMETERFVPROC glGetColorTableParameterfv;
+    REGALGLGETCOLORTABLEPARAMETERIVPROC glGetColorTableParameteriv;
+    REGALGLGETCONVOLUTIONFILTERPROC glGetConvolutionFilter;
+    REGALGLGETCONVOLUTIONPARAMETERFVPROC glGetConvolutionParameterfv;
+    REGALGLGETCONVOLUTIONPARAMETERIVPROC glGetConvolutionParameteriv;
+    REGALGLGETHISTOGRAMPROC glGetHistogram;
+    REGALGLGETHISTOGRAMPARAMETERFVPROC glGetHistogramParameterfv;
+    REGALGLGETHISTOGRAMPARAMETERIVPROC glGetHistogramParameteriv;
+    REGALGLGETMINMAXPROC glGetMinmax;
+    REGALGLGETMINMAXPARAMETERFVPROC glGetMinmaxParameterfv;
+    REGALGLGETMINMAXPARAMETERIVPROC glGetMinmaxParameteriv;
+    REGALGLGETSEPARABLEFILTERPROC glGetSeparableFilter;
+    REGALGLHISTOGRAMPROC glHistogram;
+    REGALGLMINMAXPROC glMinmax;
+    REGALGLRESETHISTOGRAMPROC glResetHistogram;
+    REGALGLRESETMINMAXPROC glResetMinmax;
+    REGALGLSEPARABLEFILTER2DPROC glSeparableFilter2D;
 
     // GL_ARB_indirect_parameters
 
-    PFNGLMULTIDRAWARRAYSINDIRECTCOUNTARBPROC glMultiDrawArraysIndirectCountARB;
-    PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTARBPROC glMultiDrawElementsIndirectCountARB;
+    REGALGLMULTIDRAWARRAYSINDIRECTCOUNTARBPROC glMultiDrawArraysIndirectCountARB;
+    REGALGLMULTIDRAWELEMENTSINDIRECTCOUNTARBPROC glMultiDrawElementsIndirectCountARB;
 
     // GL_ARB_instanced_arrays
 
-    PFNGLVERTEXATTRIBDIVISORARBPROC glVertexAttribDivisorARB;
+    REGALGLVERTEXATTRIBDIVISORARBPROC glVertexAttribDivisorARB;
 
     // GL_ARB_internalformat_query
 
-    PFNGLGETINTERNALFORMATIVPROC glGetInternalformativ;
+    REGALGLGETINTERNALFORMATIVPROC glGetInternalformativ;
 
     // GL_ARB_internalformat_query2
 
-    PFNGLGETINTERNALFORMATI64VPROC glGetInternalformati64v;
+    REGALGLGETINTERNALFORMATI64VPROC glGetInternalformati64v;
 
     // GL_ARB_invalidate_subdata
 
-    PFNGLINVALIDATEBUFFERDATAPROC glInvalidateBufferData;
-    PFNGLINVALIDATEBUFFERSUBDATAPROC glInvalidateBufferSubData;
-    PFNGLINVALIDATEFRAMEBUFFERPROC glInvalidateFramebuffer;
-    PFNGLINVALIDATESUBFRAMEBUFFERPROC glInvalidateSubFramebuffer;
-    PFNGLINVALIDATETEXIMAGEPROC glInvalidateTexImage;
-    PFNGLINVALIDATETEXSUBIMAGEPROC glInvalidateTexSubImage;
+    REGALGLINVALIDATEBUFFERDATAPROC glInvalidateBufferData;
+    REGALGLINVALIDATEBUFFERSUBDATAPROC glInvalidateBufferSubData;
+    REGALGLINVALIDATEFRAMEBUFFERPROC glInvalidateFramebuffer;
+    REGALGLINVALIDATESUBFRAMEBUFFERPROC glInvalidateSubFramebuffer;
+    REGALGLINVALIDATETEXIMAGEPROC glInvalidateTexImage;
+    REGALGLINVALIDATETEXSUBIMAGEPROC glInvalidateTexSubImage;
 
     // GL_ARB_map_buffer_range
 
-    PFNGLFLUSHMAPPEDBUFFERRANGEPROC glFlushMappedBufferRange;
-    PFNGLMAPBUFFERRANGEPROC glMapBufferRange;
+    REGALGLFLUSHMAPPEDBUFFERRANGEPROC glFlushMappedBufferRange;
+    REGALGLMAPBUFFERRANGEPROC glMapBufferRange;
 
     // GL_ARB_matrix_palette
 
-    PFNGLCURRENTPALETTEMATRIXARBPROC glCurrentPaletteMatrixARB;
-    PFNGLMATRIXINDEXPOINTERARBPROC glMatrixIndexPointerARB;
-    PFNGLMATRIXINDEXUBVARBPROC glMatrixIndexubvARB;
-    PFNGLMATRIXINDEXUIVARBPROC glMatrixIndexuivARB;
-    PFNGLMATRIXINDEXUSVARBPROC glMatrixIndexusvARB;
+    REGALGLCURRENTPALETTEMATRIXARBPROC glCurrentPaletteMatrixARB;
+    REGALGLMATRIXINDEXPOINTERARBPROC glMatrixIndexPointerARB;
+    REGALGLMATRIXINDEXUBVARBPROC glMatrixIndexubvARB;
+    REGALGLMATRIXINDEXUIVARBPROC glMatrixIndexuivARB;
+    REGALGLMATRIXINDEXUSVARBPROC glMatrixIndexusvARB;
 
     // GL_ARB_multi_bind
 
-    PFNGLBINDBUFFERSBASEPROC glBindBuffersBase;
-    PFNGLBINDBUFFERSRANGEPROC glBindBuffersRange;
-    PFNGLBINDIMAGETEXTURESPROC glBindImageTextures;
-    PFNGLBINDSAMPLERSPROC glBindSamplers;
-    PFNGLBINDTEXTURESPROC glBindTextures;
-    PFNGLBINDVERTEXBUFFERSPROC glBindVertexBuffers;
+    REGALGLBINDBUFFERSBASEPROC glBindBuffersBase;
+    REGALGLBINDBUFFERSRANGEPROC glBindBuffersRange;
+    REGALGLBINDIMAGETEXTURESPROC glBindImageTextures;
+    REGALGLBINDSAMPLERSPROC glBindSamplers;
+    REGALGLBINDTEXTURESPROC glBindTextures;
+    REGALGLBINDVERTEXBUFFERSPROC glBindVertexBuffers;
 
     // GL_ARB_multi_draw_indirect
 
-    PFNGLMULTIDRAWARRAYSINDIRECTPROC glMultiDrawArraysIndirect;
-    PFNGLMULTIDRAWELEMENTSINDIRECTPROC glMultiDrawElementsIndirect;
+    REGALGLMULTIDRAWARRAYSINDIRECTPROC glMultiDrawArraysIndirect;
+    REGALGLMULTIDRAWELEMENTSINDIRECTPROC glMultiDrawElementsIndirect;
 
     // GL_ARB_multisample
 
-    PFNGLSAMPLECOVERAGEARBPROC glSampleCoverageARB;
+    REGALGLSAMPLECOVERAGEARBPROC glSampleCoverageARB;
 
     // GL_ARB_multitexture
 
-    PFNGLACTIVETEXTUREARBPROC glActiveTextureARB;
-    PFNGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
-    PFNGLMULTITEXCOORD1DARBPROC glMultiTexCoord1dARB;
-    PFNGLMULTITEXCOORD1DVARBPROC glMultiTexCoord1dvARB;
-    PFNGLMULTITEXCOORD1FARBPROC glMultiTexCoord1fARB;
-    PFNGLMULTITEXCOORD1FVARBPROC glMultiTexCoord1fvARB;
-    PFNGLMULTITEXCOORD1IARBPROC glMultiTexCoord1iARB;
-    PFNGLMULTITEXCOORD1IVARBPROC glMultiTexCoord1ivARB;
-    PFNGLMULTITEXCOORD1SARBPROC glMultiTexCoord1sARB;
-    PFNGLMULTITEXCOORD1SVARBPROC glMultiTexCoord1svARB;
-    PFNGLMULTITEXCOORD2DARBPROC glMultiTexCoord2dARB;
-    PFNGLMULTITEXCOORD2DVARBPROC glMultiTexCoord2dvARB;
-    PFNGLMULTITEXCOORD2FARBPROC glMultiTexCoord2fARB;
-    PFNGLMULTITEXCOORD2FVARBPROC glMultiTexCoord2fvARB;
-    PFNGLMULTITEXCOORD2IARBPROC glMultiTexCoord2iARB;
-    PFNGLMULTITEXCOORD2IVARBPROC glMultiTexCoord2ivARB;
-    PFNGLMULTITEXCOORD2SARBPROC glMultiTexCoord2sARB;
-    PFNGLMULTITEXCOORD2SVARBPROC glMultiTexCoord2svARB;
-    PFNGLMULTITEXCOORD3DARBPROC glMultiTexCoord3dARB;
-    PFNGLMULTITEXCOORD3DVARBPROC glMultiTexCoord3dvARB;
-    PFNGLMULTITEXCOORD3FARBPROC glMultiTexCoord3fARB;
-    PFNGLMULTITEXCOORD3FVARBPROC glMultiTexCoord3fvARB;
-    PFNGLMULTITEXCOORD3IARBPROC glMultiTexCoord3iARB;
-    PFNGLMULTITEXCOORD3IVARBPROC glMultiTexCoord3ivARB;
-    PFNGLMULTITEXCOORD3SARBPROC glMultiTexCoord3sARB;
-    PFNGLMULTITEXCOORD3SVARBPROC glMultiTexCoord3svARB;
-    PFNGLMULTITEXCOORD4DARBPROC glMultiTexCoord4dARB;
-    PFNGLMULTITEXCOORD4DVARBPROC glMultiTexCoord4dvARB;
-    PFNGLMULTITEXCOORD4FARBPROC glMultiTexCoord4fARB;
-    PFNGLMULTITEXCOORD4FVARBPROC glMultiTexCoord4fvARB;
-    PFNGLMULTITEXCOORD4IARBPROC glMultiTexCoord4iARB;
-    PFNGLMULTITEXCOORD4IVARBPROC glMultiTexCoord4ivARB;
-    PFNGLMULTITEXCOORD4SARBPROC glMultiTexCoord4sARB;
-    PFNGLMULTITEXCOORD4SVARBPROC glMultiTexCoord4svARB;
+    REGALGLACTIVETEXTUREARBPROC glActiveTextureARB;
+    REGALGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
+    REGALGLMULTITEXCOORD1DARBPROC glMultiTexCoord1dARB;
+    REGALGLMULTITEXCOORD1DVARBPROC glMultiTexCoord1dvARB;
+    REGALGLMULTITEXCOORD1FARBPROC glMultiTexCoord1fARB;
+    REGALGLMULTITEXCOORD1FVARBPROC glMultiTexCoord1fvARB;
+    REGALGLMULTITEXCOORD1IARBPROC glMultiTexCoord1iARB;
+    REGALGLMULTITEXCOORD1IVARBPROC glMultiTexCoord1ivARB;
+    REGALGLMULTITEXCOORD1SARBPROC glMultiTexCoord1sARB;
+    REGALGLMULTITEXCOORD1SVARBPROC glMultiTexCoord1svARB;
+    REGALGLMULTITEXCOORD2DARBPROC glMultiTexCoord2dARB;
+    REGALGLMULTITEXCOORD2DVARBPROC glMultiTexCoord2dvARB;
+    REGALGLMULTITEXCOORD2FARBPROC glMultiTexCoord2fARB;
+    REGALGLMULTITEXCOORD2FVARBPROC glMultiTexCoord2fvARB;
+    REGALGLMULTITEXCOORD2IARBPROC glMultiTexCoord2iARB;
+    REGALGLMULTITEXCOORD2IVARBPROC glMultiTexCoord2ivARB;
+    REGALGLMULTITEXCOORD2SARBPROC glMultiTexCoord2sARB;
+    REGALGLMULTITEXCOORD2SVARBPROC glMultiTexCoord2svARB;
+    REGALGLMULTITEXCOORD3DARBPROC glMultiTexCoord3dARB;
+    REGALGLMULTITEXCOORD3DVARBPROC glMultiTexCoord3dvARB;
+    REGALGLMULTITEXCOORD3FARBPROC glMultiTexCoord3fARB;
+    REGALGLMULTITEXCOORD3FVARBPROC glMultiTexCoord3fvARB;
+    REGALGLMULTITEXCOORD3IARBPROC glMultiTexCoord3iARB;
+    REGALGLMULTITEXCOORD3IVARBPROC glMultiTexCoord3ivARB;
+    REGALGLMULTITEXCOORD3SARBPROC glMultiTexCoord3sARB;
+    REGALGLMULTITEXCOORD3SVARBPROC glMultiTexCoord3svARB;
+    REGALGLMULTITEXCOORD4DARBPROC glMultiTexCoord4dARB;
+    REGALGLMULTITEXCOORD4DVARBPROC glMultiTexCoord4dvARB;
+    REGALGLMULTITEXCOORD4FARBPROC glMultiTexCoord4fARB;
+    REGALGLMULTITEXCOORD4FVARBPROC glMultiTexCoord4fvARB;
+    REGALGLMULTITEXCOORD4IARBPROC glMultiTexCoord4iARB;
+    REGALGLMULTITEXCOORD4IVARBPROC glMultiTexCoord4ivARB;
+    REGALGLMULTITEXCOORD4SARBPROC glMultiTexCoord4sARB;
+    REGALGLMULTITEXCOORD4SVARBPROC glMultiTexCoord4svARB;
 
     // GL_ARB_occlusion_query
 
-    PFNGLBEGINQUERYARBPROC glBeginQueryARB;
-    PFNGLDELETEQUERIESARBPROC glDeleteQueriesARB;
-    PFNGLENDQUERYARBPROC glEndQueryARB;
-    PFNGLGENQUERIESARBPROC glGenQueriesARB;
-    PFNGLGETQUERYOBJECTIVARBPROC glGetQueryObjectivARB;
-    PFNGLGETQUERYOBJECTUIVARBPROC glGetQueryObjectuivARB;
-    PFNGLGETQUERYIVARBPROC glGetQueryivARB;
-    PFNGLISQUERYARBPROC glIsQueryARB;
+    REGALGLBEGINQUERYARBPROC glBeginQueryARB;
+    REGALGLDELETEQUERIESARBPROC glDeleteQueriesARB;
+    REGALGLENDQUERYARBPROC glEndQueryARB;
+    REGALGLGENQUERIESARBPROC glGenQueriesARB;
+    REGALGLGETQUERYOBJECTIVARBPROC glGetQueryObjectivARB;
+    REGALGLGETQUERYOBJECTUIVARBPROC glGetQueryObjectuivARB;
+    REGALGLGETQUERYIVARBPROC glGetQueryivARB;
+    REGALGLISQUERYARBPROC glIsQueryARB;
 
     // GL_ARB_point_parameters
 
-    PFNGLPOINTPARAMETERFARBPROC glPointParameterfARB;
-    PFNGLPOINTPARAMETERFVARBPROC glPointParameterfvARB;
+    REGALGLPOINTPARAMETERFARBPROC glPointParameterfARB;
+    REGALGLPOINTPARAMETERFVARBPROC glPointParameterfvARB;
 
     // GL_ARB_program_interface_query
 
-    PFNGLGETPROGRAMINTERFACEIVPROC glGetProgramInterfaceiv;
-    PFNGLGETPROGRAMRESOURCEINDEXPROC glGetProgramResourceIndex;
-    PFNGLGETPROGRAMRESOURCELOCATIONPROC glGetProgramResourceLocation;
-    PFNGLGETPROGRAMRESOURCELOCATIONINDEXPROC glGetProgramResourceLocationIndex;
-    PFNGLGETPROGRAMRESOURCENAMEPROC glGetProgramResourceName;
-    PFNGLGETPROGRAMRESOURCEIVPROC glGetProgramResourceiv;
+    REGALGLGETPROGRAMINTERFACEIVPROC glGetProgramInterfaceiv;
+    REGALGLGETPROGRAMRESOURCEINDEXPROC glGetProgramResourceIndex;
+    REGALGLGETPROGRAMRESOURCELOCATIONPROC glGetProgramResourceLocation;
+    REGALGLGETPROGRAMRESOURCELOCATIONINDEXPROC glGetProgramResourceLocationIndex;
+    REGALGLGETPROGRAMRESOURCENAMEPROC glGetProgramResourceName;
+    REGALGLGETPROGRAMRESOURCEIVPROC glGetProgramResourceiv;
 
     // GL_ARB_provoking_vertex
 
-    PFNGLPROVOKINGVERTEXPROC glProvokingVertex;
+    REGALGLPROVOKINGVERTEXPROC glProvokingVertex;
 
     // GL_ARB_robustness
 
-    PFNGLGETGRAPHICSRESETSTATUSARBPROC glGetGraphicsResetStatusARB;
-    PFNGLGETNCOLORTABLEARBPROC glGetnColorTableARB;
-    PFNGLGETNCOMPRESSEDTEXIMAGEARBPROC glGetnCompressedTexImageARB;
-    PFNGLGETNCONVOLUTIONFILTERARBPROC glGetnConvolutionFilterARB;
-    PFNGLGETNHISTOGRAMARBPROC glGetnHistogramARB;
-    PFNGLGETNMAPDVARBPROC glGetnMapdvARB;
-    PFNGLGETNMAPFVARBPROC glGetnMapfvARB;
-    PFNGLGETNMAPIVARBPROC glGetnMapivARB;
-    PFNGLGETNMINMAXARBPROC glGetnMinmaxARB;
-    PFNGLGETNPIXELMAPFVARBPROC glGetnPixelMapfvARB;
-    PFNGLGETNPIXELMAPUIVARBPROC glGetnPixelMapuivARB;
-    PFNGLGETNPIXELMAPUSVARBPROC glGetnPixelMapusvARB;
-    PFNGLGETNPOLYGONSTIPPLEARBPROC glGetnPolygonStippleARB;
-    PFNGLGETNSEPARABLEFILTERARBPROC glGetnSeparableFilterARB;
-    PFNGLGETNTEXIMAGEARBPROC glGetnTexImageARB;
-    PFNGLGETNUNIFORMDVARBPROC glGetnUniformdvARB;
-    PFNGLGETNUNIFORMFVARBPROC glGetnUniformfvARB;
-    PFNGLGETNUNIFORMIVARBPROC glGetnUniformivARB;
-    PFNGLGETNUNIFORMUIVARBPROC glGetnUniformuivARB;
-    PFNGLREADNPIXELSARBPROC glReadnPixelsARB;
+    REGALGLGETGRAPHICSRESETSTATUSARBPROC glGetGraphicsResetStatusARB;
+    REGALGLGETNCOLORTABLEARBPROC glGetnColorTableARB;
+    REGALGLGETNCOMPRESSEDTEXIMAGEARBPROC glGetnCompressedTexImageARB;
+    REGALGLGETNCONVOLUTIONFILTERARBPROC glGetnConvolutionFilterARB;
+    REGALGLGETNHISTOGRAMARBPROC glGetnHistogramARB;
+    REGALGLGETNMAPDVARBPROC glGetnMapdvARB;
+    REGALGLGETNMAPFVARBPROC glGetnMapfvARB;
+    REGALGLGETNMAPIVARBPROC glGetnMapivARB;
+    REGALGLGETNMINMAXARBPROC glGetnMinmaxARB;
+    REGALGLGETNPIXELMAPFVARBPROC glGetnPixelMapfvARB;
+    REGALGLGETNPIXELMAPUIVARBPROC glGetnPixelMapuivARB;
+    REGALGLGETNPIXELMAPUSVARBPROC glGetnPixelMapusvARB;
+    REGALGLGETNPOLYGONSTIPPLEARBPROC glGetnPolygonStippleARB;
+    REGALGLGETNSEPARABLEFILTERARBPROC glGetnSeparableFilterARB;
+    REGALGLGETNTEXIMAGEARBPROC glGetnTexImageARB;
+    REGALGLGETNUNIFORMDVARBPROC glGetnUniformdvARB;
+    REGALGLGETNUNIFORMFVARBPROC glGetnUniformfvARB;
+    REGALGLGETNUNIFORMIVARBPROC glGetnUniformivARB;
+    REGALGLGETNUNIFORMUIVARBPROC glGetnUniformuivARB;
+    REGALGLREADNPIXELSARBPROC glReadnPixelsARB;
 
     // GL_ARB_sample_shading
 
-    PFNGLMINSAMPLESHADINGPROC glMinSampleShading;
-    PFNGLMINSAMPLESHADINGARBPROC glMinSampleShadingARB;
+    REGALGLMINSAMPLESHADINGPROC glMinSampleShading;
+    REGALGLMINSAMPLESHADINGARBPROC glMinSampleShadingARB;
 
     // GL_ARB_sampler_objects
 
-    PFNGLBINDSAMPLERPROC glBindSampler;
-    PFNGLDELETESAMPLERSPROC glDeleteSamplers;
-    PFNGLGENSAMPLERSPROC glGenSamplers;
-    PFNGLGETSAMPLERPARAMETERIIVPROC glGetSamplerParameterIiv;
-    PFNGLGETSAMPLERPARAMETERIUIVPROC glGetSamplerParameterIuiv;
-    PFNGLGETSAMPLERPARAMETERFVPROC glGetSamplerParameterfv;
-    PFNGLGETSAMPLERPARAMETERIVPROC glGetSamplerParameteriv;
-    PFNGLISSAMPLERPROC glIsSampler;
-    PFNGLSAMPLERPARAMETERIIVPROC glSamplerParameterIiv;
-    PFNGLSAMPLERPARAMETERIUIVPROC glSamplerParameterIuiv;
-    PFNGLSAMPLERPARAMETERFPROC glSamplerParameterf;
-    PFNGLSAMPLERPARAMETERFVPROC glSamplerParameterfv;
-    PFNGLSAMPLERPARAMETERIPROC glSamplerParameteri;
-    PFNGLSAMPLERPARAMETERIVPROC glSamplerParameteriv;
+    REGALGLBINDSAMPLERPROC glBindSampler;
+    REGALGLDELETESAMPLERSPROC glDeleteSamplers;
+    REGALGLGENSAMPLERSPROC glGenSamplers;
+    REGALGLGETSAMPLERPARAMETERIIVPROC glGetSamplerParameterIiv;
+    REGALGLGETSAMPLERPARAMETERIUIVPROC glGetSamplerParameterIuiv;
+    REGALGLGETSAMPLERPARAMETERFVPROC glGetSamplerParameterfv;
+    REGALGLGETSAMPLERPARAMETERIVPROC glGetSamplerParameteriv;
+    REGALGLISSAMPLERPROC glIsSampler;
+    REGALGLSAMPLERPARAMETERIIVPROC glSamplerParameterIiv;
+    REGALGLSAMPLERPARAMETERIUIVPROC glSamplerParameterIuiv;
+    REGALGLSAMPLERPARAMETERFPROC glSamplerParameterf;
+    REGALGLSAMPLERPARAMETERFVPROC glSamplerParameterfv;
+    REGALGLSAMPLERPARAMETERIPROC glSamplerParameteri;
+    REGALGLSAMPLERPARAMETERIVPROC glSamplerParameteriv;
 
     // GL_ARB_separate_shader_objects
 
-    PFNGLACTIVESHADERPROGRAMPROC glActiveShaderProgram;
-    PFNGLBINDPROGRAMPIPELINEPROC glBindProgramPipeline;
-    PFNGLCREATESHADERPROGRAMVPROC glCreateShaderProgramv;
-    PFNGLDELETEPROGRAMPIPELINESPROC glDeleteProgramPipelines;
-    PFNGLGENPROGRAMPIPELINESPROC glGenProgramPipelines;
-    PFNGLGETPROGRAMPIPELINEINFOLOGPROC glGetProgramPipelineInfoLog;
-    PFNGLGETPROGRAMPIPELINEIVPROC glGetProgramPipelineiv;
-    PFNGLISPROGRAMPIPELINEPROC glIsProgramPipeline;
-    PFNGLPROGRAMUNIFORM1DPROC glProgramUniform1d;
-    PFNGLPROGRAMUNIFORM1DVPROC glProgramUniform1dv;
-    PFNGLPROGRAMUNIFORM1FPROC glProgramUniform1f;
-    PFNGLPROGRAMUNIFORM1FVPROC glProgramUniform1fv;
-    PFNGLPROGRAMUNIFORM1IPROC glProgramUniform1i;
-    PFNGLPROGRAMUNIFORM1IVPROC glProgramUniform1iv;
-    PFNGLPROGRAMUNIFORM1UIPROC glProgramUniform1ui;
-    PFNGLPROGRAMUNIFORM1UIVPROC glProgramUniform1uiv;
-    PFNGLPROGRAMUNIFORM2DPROC glProgramUniform2d;
-    PFNGLPROGRAMUNIFORM2DVPROC glProgramUniform2dv;
-    PFNGLPROGRAMUNIFORM2FPROC glProgramUniform2f;
-    PFNGLPROGRAMUNIFORM2FVPROC glProgramUniform2fv;
-    PFNGLPROGRAMUNIFORM2IPROC glProgramUniform2i;
-    PFNGLPROGRAMUNIFORM2IVPROC glProgramUniform2iv;
-    PFNGLPROGRAMUNIFORM2UIPROC glProgramUniform2ui;
-    PFNGLPROGRAMUNIFORM2UIVPROC glProgramUniform2uiv;
-    PFNGLPROGRAMUNIFORM3DPROC glProgramUniform3d;
-    PFNGLPROGRAMUNIFORM3DVPROC glProgramUniform3dv;
-    PFNGLPROGRAMUNIFORM3FPROC glProgramUniform3f;
-    PFNGLPROGRAMUNIFORM3FVPROC glProgramUniform3fv;
-    PFNGLPROGRAMUNIFORM3IPROC glProgramUniform3i;
-    PFNGLPROGRAMUNIFORM3IVPROC glProgramUniform3iv;
-    PFNGLPROGRAMUNIFORM3UIPROC glProgramUniform3ui;
-    PFNGLPROGRAMUNIFORM3UIVPROC glProgramUniform3uiv;
-    PFNGLPROGRAMUNIFORM4DPROC glProgramUniform4d;
-    PFNGLPROGRAMUNIFORM4DVPROC glProgramUniform4dv;
-    PFNGLPROGRAMUNIFORM4FPROC glProgramUniform4f;
-    PFNGLPROGRAMUNIFORM4FVPROC glProgramUniform4fv;
-    PFNGLPROGRAMUNIFORM4IPROC glProgramUniform4i;
-    PFNGLPROGRAMUNIFORM4IVPROC glProgramUniform4iv;
-    PFNGLPROGRAMUNIFORM4UIPROC glProgramUniform4ui;
-    PFNGLPROGRAMUNIFORM4UIVPROC glProgramUniform4uiv;
-    PFNGLPROGRAMUNIFORMMATRIX2DVPROC glProgramUniformMatrix2dv;
-    PFNGLPROGRAMUNIFORMMATRIX2FVPROC glProgramUniformMatrix2fv;
-    PFNGLPROGRAMUNIFORMMATRIX2X3DVPROC glProgramUniformMatrix2x3dv;
-    PFNGLPROGRAMUNIFORMMATRIX2X3FVPROC glProgramUniformMatrix2x3fv;
-    PFNGLPROGRAMUNIFORMMATRIX2X4DVPROC glProgramUniformMatrix2x4dv;
-    PFNGLPROGRAMUNIFORMMATRIX2X4FVPROC glProgramUniformMatrix2x4fv;
-    PFNGLPROGRAMUNIFORMMATRIX3DVPROC glProgramUniformMatrix3dv;
-    PFNGLPROGRAMUNIFORMMATRIX3FVPROC glProgramUniformMatrix3fv;
-    PFNGLPROGRAMUNIFORMMATRIX3X2DVPROC glProgramUniformMatrix3x2dv;
-    PFNGLPROGRAMUNIFORMMATRIX3X2FVPROC glProgramUniformMatrix3x2fv;
-    PFNGLPROGRAMUNIFORMMATRIX3X4DVPROC glProgramUniformMatrix3x4dv;
-    PFNGLPROGRAMUNIFORMMATRIX3X4FVPROC glProgramUniformMatrix3x4fv;
-    PFNGLPROGRAMUNIFORMMATRIX4DVPROC glProgramUniformMatrix4dv;
-    PFNGLPROGRAMUNIFORMMATRIX4FVPROC glProgramUniformMatrix4fv;
-    PFNGLPROGRAMUNIFORMMATRIX4X2DVPROC glProgramUniformMatrix4x2dv;
-    PFNGLPROGRAMUNIFORMMATRIX4X2FVPROC glProgramUniformMatrix4x2fv;
-    PFNGLPROGRAMUNIFORMMATRIX4X3DVPROC glProgramUniformMatrix4x3dv;
-    PFNGLPROGRAMUNIFORMMATRIX4X3FVPROC glProgramUniformMatrix4x3fv;
-    PFNGLUSEPROGRAMSTAGESPROC glUseProgramStages;
-    PFNGLVALIDATEPROGRAMPIPELINEPROC glValidateProgramPipeline;
+    REGALGLACTIVESHADERPROGRAMPROC glActiveShaderProgram;
+    REGALGLBINDPROGRAMPIPELINEPROC glBindProgramPipeline;
+    REGALGLCREATESHADERPROGRAMVPROC glCreateShaderProgramv;
+    REGALGLDELETEPROGRAMPIPELINESPROC glDeleteProgramPipelines;
+    REGALGLGENPROGRAMPIPELINESPROC glGenProgramPipelines;
+    REGALGLGETPROGRAMPIPELINEINFOLOGPROC glGetProgramPipelineInfoLog;
+    REGALGLGETPROGRAMPIPELINEIVPROC glGetProgramPipelineiv;
+    REGALGLISPROGRAMPIPELINEPROC glIsProgramPipeline;
+    REGALGLPROGRAMUNIFORM1DPROC glProgramUniform1d;
+    REGALGLPROGRAMUNIFORM1DVPROC glProgramUniform1dv;
+    REGALGLPROGRAMUNIFORM1FPROC glProgramUniform1f;
+    REGALGLPROGRAMUNIFORM1FVPROC glProgramUniform1fv;
+    REGALGLPROGRAMUNIFORM1IPROC glProgramUniform1i;
+    REGALGLPROGRAMUNIFORM1IVPROC glProgramUniform1iv;
+    REGALGLPROGRAMUNIFORM1UIPROC glProgramUniform1ui;
+    REGALGLPROGRAMUNIFORM1UIVPROC glProgramUniform1uiv;
+    REGALGLPROGRAMUNIFORM2DPROC glProgramUniform2d;
+    REGALGLPROGRAMUNIFORM2DVPROC glProgramUniform2dv;
+    REGALGLPROGRAMUNIFORM2FPROC glProgramUniform2f;
+    REGALGLPROGRAMUNIFORM2FVPROC glProgramUniform2fv;
+    REGALGLPROGRAMUNIFORM2IPROC glProgramUniform2i;
+    REGALGLPROGRAMUNIFORM2IVPROC glProgramUniform2iv;
+    REGALGLPROGRAMUNIFORM2UIPROC glProgramUniform2ui;
+    REGALGLPROGRAMUNIFORM2UIVPROC glProgramUniform2uiv;
+    REGALGLPROGRAMUNIFORM3DPROC glProgramUniform3d;
+    REGALGLPROGRAMUNIFORM3DVPROC glProgramUniform3dv;
+    REGALGLPROGRAMUNIFORM3FPROC glProgramUniform3f;
+    REGALGLPROGRAMUNIFORM3FVPROC glProgramUniform3fv;
+    REGALGLPROGRAMUNIFORM3IPROC glProgramUniform3i;
+    REGALGLPROGRAMUNIFORM3IVPROC glProgramUniform3iv;
+    REGALGLPROGRAMUNIFORM3UIPROC glProgramUniform3ui;
+    REGALGLPROGRAMUNIFORM3UIVPROC glProgramUniform3uiv;
+    REGALGLPROGRAMUNIFORM4DPROC glProgramUniform4d;
+    REGALGLPROGRAMUNIFORM4DVPROC glProgramUniform4dv;
+    REGALGLPROGRAMUNIFORM4FPROC glProgramUniform4f;
+    REGALGLPROGRAMUNIFORM4FVPROC glProgramUniform4fv;
+    REGALGLPROGRAMUNIFORM4IPROC glProgramUniform4i;
+    REGALGLPROGRAMUNIFORM4IVPROC glProgramUniform4iv;
+    REGALGLPROGRAMUNIFORM4UIPROC glProgramUniform4ui;
+    REGALGLPROGRAMUNIFORM4UIVPROC glProgramUniform4uiv;
+    REGALGLPROGRAMUNIFORMMATRIX2DVPROC glProgramUniformMatrix2dv;
+    REGALGLPROGRAMUNIFORMMATRIX2FVPROC glProgramUniformMatrix2fv;
+    REGALGLPROGRAMUNIFORMMATRIX2X3DVPROC glProgramUniformMatrix2x3dv;
+    REGALGLPROGRAMUNIFORMMATRIX2X3FVPROC glProgramUniformMatrix2x3fv;
+    REGALGLPROGRAMUNIFORMMATRIX2X4DVPROC glProgramUniformMatrix2x4dv;
+    REGALGLPROGRAMUNIFORMMATRIX2X4FVPROC glProgramUniformMatrix2x4fv;
+    REGALGLPROGRAMUNIFORMMATRIX3DVPROC glProgramUniformMatrix3dv;
+    REGALGLPROGRAMUNIFORMMATRIX3FVPROC glProgramUniformMatrix3fv;
+    REGALGLPROGRAMUNIFORMMATRIX3X2DVPROC glProgramUniformMatrix3x2dv;
+    REGALGLPROGRAMUNIFORMMATRIX3X2FVPROC glProgramUniformMatrix3x2fv;
+    REGALGLPROGRAMUNIFORMMATRIX3X4DVPROC glProgramUniformMatrix3x4dv;
+    REGALGLPROGRAMUNIFORMMATRIX3X4FVPROC glProgramUniformMatrix3x4fv;
+    REGALGLPROGRAMUNIFORMMATRIX4DVPROC glProgramUniformMatrix4dv;
+    REGALGLPROGRAMUNIFORMMATRIX4FVPROC glProgramUniformMatrix4fv;
+    REGALGLPROGRAMUNIFORMMATRIX4X2DVPROC glProgramUniformMatrix4x2dv;
+    REGALGLPROGRAMUNIFORMMATRIX4X2FVPROC glProgramUniformMatrix4x2fv;
+    REGALGLPROGRAMUNIFORMMATRIX4X3DVPROC glProgramUniformMatrix4x3dv;
+    REGALGLPROGRAMUNIFORMMATRIX4X3FVPROC glProgramUniformMatrix4x3fv;
+    REGALGLUSEPROGRAMSTAGESPROC glUseProgramStages;
+    REGALGLVALIDATEPROGRAMPIPELINEPROC glValidateProgramPipeline;
 
     // GL_ARB_shader_atomic_counters
 
-    PFNGLGETACTIVEATOMICCOUNTERBUFFERIVPROC glGetActiveAtomicCounterBufferiv;
+    REGALGLGETACTIVEATOMICCOUNTERBUFFERIVPROC glGetActiveAtomicCounterBufferiv;
 
     // GL_ARB_shader_image_load_store
 
-    PFNGLBINDIMAGETEXTUREPROC glBindImageTexture;
-    PFNGLMEMORYBARRIERPROC glMemoryBarrier;
+    REGALGLBINDIMAGETEXTUREPROC glBindImageTexture;
+    REGALGLMEMORYBARRIERPROC glMemoryBarrier;
 
     // GL_ARB_shader_objects
 
-    PFNGLATTACHOBJECTARBPROC glAttachObjectARB;
-    PFNGLCOMPILESHADERARBPROC glCompileShaderARB;
-    PFNGLCREATEPROGRAMOBJECTARBPROC glCreateProgramObjectARB;
-    PFNGLCREATESHADEROBJECTARBPROC glCreateShaderObjectARB;
-    PFNGLDELETEOBJECTARBPROC glDeleteObjectARB;
-    PFNGLDETACHOBJECTARBPROC glDetachObjectARB;
-    PFNGLGETACTIVEUNIFORMARBPROC glGetActiveUniformARB;
-    PFNGLGETATTACHEDOBJECTSARBPROC glGetAttachedObjectsARB;
-    PFNGLGETHANDLEARBPROC glGetHandleARB;
-    PFNGLGETINFOLOGARBPROC glGetInfoLogARB;
-    PFNGLGETOBJECTPARAMETERFVARBPROC glGetObjectParameterfvARB;
-    PFNGLGETOBJECTPARAMETERIVARBPROC glGetObjectParameterivARB;
-    PFNGLGETSHADERSOURCEARBPROC glGetShaderSourceARB;
-    PFNGLGETUNIFORMLOCATIONARBPROC glGetUniformLocationARB;
-    PFNGLGETUNIFORMFVARBPROC glGetUniformfvARB;
-    PFNGLGETUNIFORMIVARBPROC glGetUniformivARB;
-    PFNGLLINKPROGRAMARBPROC glLinkProgramARB;
-    PFNGLSHADERSOURCEARBPROC glShaderSourceARB;
-    PFNGLUNIFORM1FARBPROC glUniform1fARB;
-    PFNGLUNIFORM1FVARBPROC glUniform1fvARB;
-    PFNGLUNIFORM1IARBPROC glUniform1iARB;
-    PFNGLUNIFORM1IVARBPROC glUniform1ivARB;
-    PFNGLUNIFORM2FARBPROC glUniform2fARB;
-    PFNGLUNIFORM2FVARBPROC glUniform2fvARB;
-    PFNGLUNIFORM2IARBPROC glUniform2iARB;
-    PFNGLUNIFORM2IVARBPROC glUniform2ivARB;
-    PFNGLUNIFORM3FARBPROC glUniform3fARB;
-    PFNGLUNIFORM3FVARBPROC glUniform3fvARB;
-    PFNGLUNIFORM3IARBPROC glUniform3iARB;
-    PFNGLUNIFORM3IVARBPROC glUniform3ivARB;
-    PFNGLUNIFORM4FARBPROC glUniform4fARB;
-    PFNGLUNIFORM4FVARBPROC glUniform4fvARB;
-    PFNGLUNIFORM4IARBPROC glUniform4iARB;
-    PFNGLUNIFORM4IVARBPROC glUniform4ivARB;
-    PFNGLUNIFORMMATRIX2FVARBPROC glUniformMatrix2fvARB;
-    PFNGLUNIFORMMATRIX3FVARBPROC glUniformMatrix3fvARB;
-    PFNGLUNIFORMMATRIX4FVARBPROC glUniformMatrix4fvARB;
-    PFNGLUSEPROGRAMOBJECTARBPROC glUseProgramObjectARB;
-    PFNGLVALIDATEPROGRAMARBPROC glValidateProgramARB;
+    REGALGLATTACHOBJECTARBPROC glAttachObjectARB;
+    REGALGLCOMPILESHADERARBPROC glCompileShaderARB;
+    REGALGLCREATEPROGRAMOBJECTARBPROC glCreateProgramObjectARB;
+    REGALGLCREATESHADEROBJECTARBPROC glCreateShaderObjectARB;
+    REGALGLDELETEOBJECTARBPROC glDeleteObjectARB;
+    REGALGLDETACHOBJECTARBPROC glDetachObjectARB;
+    REGALGLGETACTIVEUNIFORMARBPROC glGetActiveUniformARB;
+    REGALGLGETATTACHEDOBJECTSARBPROC glGetAttachedObjectsARB;
+    REGALGLGETHANDLEARBPROC glGetHandleARB;
+    REGALGLGETINFOLOGARBPROC glGetInfoLogARB;
+    REGALGLGETOBJECTPARAMETERFVARBPROC glGetObjectParameterfvARB;
+    REGALGLGETOBJECTPARAMETERIVARBPROC glGetObjectParameterivARB;
+    REGALGLGETSHADERSOURCEARBPROC glGetShaderSourceARB;
+    REGALGLGETUNIFORMLOCATIONARBPROC glGetUniformLocationARB;
+    REGALGLGETUNIFORMFVARBPROC glGetUniformfvARB;
+    REGALGLGETUNIFORMIVARBPROC glGetUniformivARB;
+    REGALGLLINKPROGRAMARBPROC glLinkProgramARB;
+    REGALGLSHADERSOURCEARBPROC glShaderSourceARB;
+    REGALGLUNIFORM1FARBPROC glUniform1fARB;
+    REGALGLUNIFORM1FVARBPROC glUniform1fvARB;
+    REGALGLUNIFORM1IARBPROC glUniform1iARB;
+    REGALGLUNIFORM1IVARBPROC glUniform1ivARB;
+    REGALGLUNIFORM2FARBPROC glUniform2fARB;
+    REGALGLUNIFORM2FVARBPROC glUniform2fvARB;
+    REGALGLUNIFORM2IARBPROC glUniform2iARB;
+    REGALGLUNIFORM2IVARBPROC glUniform2ivARB;
+    REGALGLUNIFORM3FARBPROC glUniform3fARB;
+    REGALGLUNIFORM3FVARBPROC glUniform3fvARB;
+    REGALGLUNIFORM3IARBPROC glUniform3iARB;
+    REGALGLUNIFORM3IVARBPROC glUniform3ivARB;
+    REGALGLUNIFORM4FARBPROC glUniform4fARB;
+    REGALGLUNIFORM4FVARBPROC glUniform4fvARB;
+    REGALGLUNIFORM4IARBPROC glUniform4iARB;
+    REGALGLUNIFORM4IVARBPROC glUniform4ivARB;
+    REGALGLUNIFORMMATRIX2FVARBPROC glUniformMatrix2fvARB;
+    REGALGLUNIFORMMATRIX3FVARBPROC glUniformMatrix3fvARB;
+    REGALGLUNIFORMMATRIX4FVARBPROC glUniformMatrix4fvARB;
+    REGALGLUSEPROGRAMOBJECTARBPROC glUseProgramObjectARB;
+    REGALGLVALIDATEPROGRAMARBPROC glValidateProgramARB;
 
     // GL_ARB_shader_storage_buffer_object
 
-    PFNGLSHADERSTORAGEBLOCKBINDINGPROC glShaderStorageBlockBinding;
+    REGALGLSHADERSTORAGEBLOCKBINDINGPROC glShaderStorageBlockBinding;
 
     // GL_ARB_shader_subroutine
 
-    PFNGLGETACTIVESUBROUTINENAMEPROC glGetActiveSubroutineName;
-    PFNGLGETACTIVESUBROUTINEUNIFORMNAMEPROC glGetActiveSubroutineUniformName;
-    PFNGLGETACTIVESUBROUTINEUNIFORMIVPROC glGetActiveSubroutineUniformiv;
-    PFNGLGETPROGRAMSTAGEIVPROC glGetProgramStageiv;
-    PFNGLGETPROGRAMSUBROUTINEPARAMETERUIVNVPROC glGetProgramSubroutineParameteruivNV;
-    PFNGLGETSUBROUTINEINDEXPROC glGetSubroutineIndex;
-    PFNGLGETSUBROUTINEUNIFORMLOCATIONPROC glGetSubroutineUniformLocation;
-    PFNGLGETUNIFORMSUBROUTINEUIVPROC glGetUniformSubroutineuiv;
-    PFNGLPROGRAMSUBROUTINEPARAMETERSUIVNVPROC glProgramSubroutineParametersuivNV;
-    PFNGLUNIFORMSUBROUTINESUIVPROC glUniformSubroutinesuiv;
+    REGALGLGETACTIVESUBROUTINENAMEPROC glGetActiveSubroutineName;
+    REGALGLGETACTIVESUBROUTINEUNIFORMNAMEPROC glGetActiveSubroutineUniformName;
+    REGALGLGETACTIVESUBROUTINEUNIFORMIVPROC glGetActiveSubroutineUniformiv;
+    REGALGLGETPROGRAMSTAGEIVPROC glGetProgramStageiv;
+    REGALGLGETPROGRAMSUBROUTINEPARAMETERUIVNVPROC glGetProgramSubroutineParameteruivNV;
+    REGALGLGETSUBROUTINEINDEXPROC glGetSubroutineIndex;
+    REGALGLGETSUBROUTINEUNIFORMLOCATIONPROC glGetSubroutineUniformLocation;
+    REGALGLGETUNIFORMSUBROUTINEUIVPROC glGetUniformSubroutineuiv;
+    REGALGLPROGRAMSUBROUTINEPARAMETERSUIVNVPROC glProgramSubroutineParametersuivNV;
+    REGALGLUNIFORMSUBROUTINESUIVPROC glUniformSubroutinesuiv;
 
     // GL_ARB_shading_language_include
 
-    PFNGLCOMPILESHADERINCLUDEARBPROC glCompileShaderIncludeARB;
-    PFNGLDELETENAMEDSTRINGARBPROC glDeleteNamedStringARB;
-    PFNGLGETNAMEDSTRINGARBPROC glGetNamedStringARB;
-    PFNGLGETNAMEDSTRINGIVARBPROC glGetNamedStringivARB;
-    PFNGLISNAMEDSTRINGARBPROC glIsNamedStringARB;
-    PFNGLNAMEDSTRINGARBPROC glNamedStringARB;
+    REGALGLCOMPILESHADERINCLUDEARBPROC glCompileShaderIncludeARB;
+    REGALGLDELETENAMEDSTRINGARBPROC glDeleteNamedStringARB;
+    REGALGLGETNAMEDSTRINGARBPROC glGetNamedStringARB;
+    REGALGLGETNAMEDSTRINGIVARBPROC glGetNamedStringivARB;
+    REGALGLISNAMEDSTRINGARBPROC glIsNamedStringARB;
+    REGALGLNAMEDSTRINGARBPROC glNamedStringARB;
 
     // GL_ARB_sparse_texture
 
-    PFNGLTEXPAGECOMMITMENTARBPROC glTexPageCommitmentARB;
-    PFNGLTEXTUREPAGECOMMITMENTEXTPROC glTexturePageCommitmentEXT;
+    REGALGLTEXPAGECOMMITMENTARBPROC glTexPageCommitmentARB;
+    REGALGLTEXTUREPAGECOMMITMENTEXTPROC glTexturePageCommitmentEXT;
 
     // GL_ARB_sync
 
-    PFNGLCLIENTWAITSYNCPROC glClientWaitSync;
-    PFNGLDELETESYNCPROC glDeleteSync;
-    PFNGLFENCESYNCPROC glFenceSync;
-    PFNGLGETINTEGER64VPROC glGetInteger64v;
-    PFNGLGETSYNCIVPROC glGetSynciv;
-    PFNGLISSYNCPROC glIsSync;
-    PFNGLWAITSYNCPROC glWaitSync;
+    REGALGLCLIENTWAITSYNCPROC glClientWaitSync;
+    REGALGLDELETESYNCPROC glDeleteSync;
+    REGALGLFENCESYNCPROC glFenceSync;
+    REGALGLGETINTEGER64VPROC glGetInteger64v;
+    REGALGLGETSYNCIVPROC glGetSynciv;
+    REGALGLISSYNCPROC glIsSync;
+    REGALGLWAITSYNCPROC glWaitSync;
 
     // GL_ARB_tessellation_shader
 
-    PFNGLPATCHPARAMETERFVPROC glPatchParameterfv;
-    PFNGLPATCHPARAMETERIPROC glPatchParameteri;
+    REGALGLPATCHPARAMETERFVPROC glPatchParameterfv;
+    REGALGLPATCHPARAMETERIPROC glPatchParameteri;
 
     // GL_ARB_texture_buffer_object
 
-    PFNGLTEXBUFFERARBPROC glTexBufferARB;
+    REGALGLTEXBUFFERARBPROC glTexBufferARB;
 
     // GL_ARB_texture_buffer_range
 
-    PFNGLTEXBUFFERRANGEPROC glTexBufferRange;
-    PFNGLTEXTUREBUFFERRANGEEXTPROC glTextureBufferRangeEXT;
+    REGALGLTEXBUFFERRANGEPROC glTexBufferRange;
+    REGALGLTEXTUREBUFFERRANGEEXTPROC glTextureBufferRangeEXT;
 
     // GL_ARB_texture_compression
 
-    PFNGLCOMPRESSEDTEXIMAGE1DARBPROC glCompressedTexImage1DARB;
-    PFNGLCOMPRESSEDTEXIMAGE2DARBPROC glCompressedTexImage2DARB;
-    PFNGLCOMPRESSEDTEXIMAGE3DARBPROC glCompressedTexImage3DARB;
-    PFNGLCOMPRESSEDTEXSUBIMAGE1DARBPROC glCompressedTexSubImage1DARB;
-    PFNGLCOMPRESSEDTEXSUBIMAGE2DARBPROC glCompressedTexSubImage2DARB;
-    PFNGLCOMPRESSEDTEXSUBIMAGE3DARBPROC glCompressedTexSubImage3DARB;
-    PFNGLGETCOMPRESSEDTEXIMAGEARBPROC glGetCompressedTexImageARB;
+    REGALGLCOMPRESSEDTEXIMAGE1DARBPROC glCompressedTexImage1DARB;
+    REGALGLCOMPRESSEDTEXIMAGE2DARBPROC glCompressedTexImage2DARB;
+    REGALGLCOMPRESSEDTEXIMAGE3DARBPROC glCompressedTexImage3DARB;
+    REGALGLCOMPRESSEDTEXSUBIMAGE1DARBPROC glCompressedTexSubImage1DARB;
+    REGALGLCOMPRESSEDTEXSUBIMAGE2DARBPROC glCompressedTexSubImage2DARB;
+    REGALGLCOMPRESSEDTEXSUBIMAGE3DARBPROC glCompressedTexSubImage3DARB;
+    REGALGLGETCOMPRESSEDTEXIMAGEARBPROC glGetCompressedTexImageARB;
 
     // GL_ARB_texture_multisample
 
-    PFNGLGETMULTISAMPLEFVPROC glGetMultisamplefv;
-    PFNGLSAMPLEMASKIPROC glSampleMaski;
-    PFNGLTEXIMAGE2DMULTISAMPLEPROC glTexImage2DMultisample;
-    PFNGLTEXIMAGE3DMULTISAMPLEPROC glTexImage3DMultisample;
+    REGALGLGETMULTISAMPLEFVPROC glGetMultisamplefv;
+    REGALGLSAMPLEMASKIPROC glSampleMaski;
+    REGALGLTEXIMAGE2DMULTISAMPLEPROC glTexImage2DMultisample;
+    REGALGLTEXIMAGE3DMULTISAMPLEPROC glTexImage3DMultisample;
 
     // GL_ARB_texture_storage
 
-    PFNGLTEXSTORAGE1DPROC glTexStorage1D;
-    PFNGLTEXSTORAGE2DPROC glTexStorage2D;
-    PFNGLTEXSTORAGE3DPROC glTexStorage3D;
-    PFNGLTEXTURESTORAGE1DEXTPROC glTextureStorage1DEXT;
-    PFNGLTEXTURESTORAGE2DEXTPROC glTextureStorage2DEXT;
-    PFNGLTEXTURESTORAGE3DEXTPROC glTextureStorage3DEXT;
+    REGALGLTEXSTORAGE1DPROC glTexStorage1D;
+    REGALGLTEXSTORAGE2DPROC glTexStorage2D;
+    REGALGLTEXSTORAGE3DPROC glTexStorage3D;
+    REGALGLTEXTURESTORAGE1DEXTPROC glTextureStorage1DEXT;
+    REGALGLTEXTURESTORAGE2DEXTPROC glTextureStorage2DEXT;
+    REGALGLTEXTURESTORAGE3DEXTPROC glTextureStorage3DEXT;
 
     // GL_ARB_texture_storage_multisample
 
-    PFNGLTEXSTORAGE2DMULTISAMPLEPROC glTexStorage2DMultisample;
-    PFNGLTEXSTORAGE3DMULTISAMPLEPROC glTexStorage3DMultisample;
-    PFNGLTEXTURESTORAGE2DMULTISAMPLEEXTPROC glTextureStorage2DMultisampleEXT;
-    PFNGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC glTextureStorage3DMultisampleEXT;
+    REGALGLTEXSTORAGE2DMULTISAMPLEPROC glTexStorage2DMultisample;
+    REGALGLTEXSTORAGE3DMULTISAMPLEPROC glTexStorage3DMultisample;
+    REGALGLTEXTURESTORAGE2DMULTISAMPLEEXTPROC glTextureStorage2DMultisampleEXT;
+    REGALGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC glTextureStorage3DMultisampleEXT;
 
     // GL_ARB_texture_view
 
-    PFNGLTEXTUREVIEWPROC glTextureView;
+    REGALGLTEXTUREVIEWPROC glTextureView;
 
     // GL_ARB_timer_query
 
-    PFNGLGETQUERYOBJECTI64VPROC glGetQueryObjecti64v;
-    PFNGLGETQUERYOBJECTUI64VPROC glGetQueryObjectui64v;
-    PFNGLQUERYCOUNTERPROC glQueryCounter;
+    REGALGLGETQUERYOBJECTI64VPROC glGetQueryObjecti64v;
+    REGALGLGETQUERYOBJECTUI64VPROC glGetQueryObjectui64v;
+    REGALGLQUERYCOUNTERPROC glQueryCounter;
 
     // GL_ARB_transform_feedback2
 
-    PFNGLBINDTRANSFORMFEEDBACKPROC glBindTransformFeedback;
-    PFNGLDELETETRANSFORMFEEDBACKSPROC glDeleteTransformFeedbacks;
-    PFNGLDRAWTRANSFORMFEEDBACKPROC glDrawTransformFeedback;
-    PFNGLGENTRANSFORMFEEDBACKSPROC glGenTransformFeedbacks;
-    PFNGLISTRANSFORMFEEDBACKPROC glIsTransformFeedback;
-    PFNGLPAUSETRANSFORMFEEDBACKPROC glPauseTransformFeedback;
-    PFNGLRESUMETRANSFORMFEEDBACKPROC glResumeTransformFeedback;
+    REGALGLBINDTRANSFORMFEEDBACKPROC glBindTransformFeedback;
+    REGALGLDELETETRANSFORMFEEDBACKSPROC glDeleteTransformFeedbacks;
+    REGALGLDRAWTRANSFORMFEEDBACKPROC glDrawTransformFeedback;
+    REGALGLGENTRANSFORMFEEDBACKSPROC glGenTransformFeedbacks;
+    REGALGLISTRANSFORMFEEDBACKPROC glIsTransformFeedback;
+    REGALGLPAUSETRANSFORMFEEDBACKPROC glPauseTransformFeedback;
+    REGALGLRESUMETRANSFORMFEEDBACKPROC glResumeTransformFeedback;
 
     // GL_ARB_transform_feedback3
 
-    PFNGLBEGINQUERYINDEXEDPROC glBeginQueryIndexed;
-    PFNGLDRAWTRANSFORMFEEDBACKSTREAMPROC glDrawTransformFeedbackStream;
-    PFNGLENDQUERYINDEXEDPROC glEndQueryIndexed;
-    PFNGLGETQUERYINDEXEDIVPROC glGetQueryIndexediv;
+    REGALGLBEGINQUERYINDEXEDPROC glBeginQueryIndexed;
+    REGALGLDRAWTRANSFORMFEEDBACKSTREAMPROC glDrawTransformFeedbackStream;
+    REGALGLENDQUERYINDEXEDPROC glEndQueryIndexed;
+    REGALGLGETQUERYINDEXEDIVPROC glGetQueryIndexediv;
 
     // GL_ARB_transform_feedback_instanced
 
-    PFNGLDRAWTRANSFORMFEEDBACKINSTANCEDPROC glDrawTransformFeedbackInstanced;
-    PFNGLDRAWTRANSFORMFEEDBACKSTREAMINSTANCEDPROC glDrawTransformFeedbackStreamInstanced;
+    REGALGLDRAWTRANSFORMFEEDBACKINSTANCEDPROC glDrawTransformFeedbackInstanced;
+    REGALGLDRAWTRANSFORMFEEDBACKSTREAMINSTANCEDPROC glDrawTransformFeedbackStreamInstanced;
 
     // GL_ARB_transpose_matrix
 
-    PFNGLLOADTRANSPOSEMATRIXDARBPROC glLoadTransposeMatrixdARB;
-    PFNGLLOADTRANSPOSEMATRIXFARBPROC glLoadTransposeMatrixfARB;
-    PFNGLMULTTRANSPOSEMATRIXDARBPROC glMultTransposeMatrixdARB;
-    PFNGLMULTTRANSPOSEMATRIXFARBPROC glMultTransposeMatrixfARB;
+    REGALGLLOADTRANSPOSEMATRIXDARBPROC glLoadTransposeMatrixdARB;
+    REGALGLLOADTRANSPOSEMATRIXFARBPROC glLoadTransposeMatrixfARB;
+    REGALGLMULTTRANSPOSEMATRIXDARBPROC glMultTransposeMatrixdARB;
+    REGALGLMULTTRANSPOSEMATRIXFARBPROC glMultTransposeMatrixfARB;
 
     // GL_ARB_uniform_buffer_object
 
-    PFNGLBINDBUFFERBASEPROC glBindBufferBase;
-    PFNGLBINDBUFFERRANGEPROC glBindBufferRange;
-    PFNGLGETACTIVEUNIFORMBLOCKNAMEPROC glGetActiveUniformBlockName;
-    PFNGLGETACTIVEUNIFORMBLOCKIVPROC glGetActiveUniformBlockiv;
-    PFNGLGETACTIVEUNIFORMNAMEPROC glGetActiveUniformName;
-    PFNGLGETACTIVEUNIFORMSIVPROC glGetActiveUniformsiv;
-    PFNGLGETINTEGERI_VPROC glGetIntegeri_v;
-    PFNGLGETUNIFORMBLOCKINDEXPROC glGetUniformBlockIndex;
-    PFNGLGETUNIFORMINDICESPROC glGetUniformIndices;
-    PFNGLUNIFORMBLOCKBINDINGPROC glUniformBlockBinding;
+    REGALGLBINDBUFFERBASEPROC glBindBufferBase;
+    REGALGLBINDBUFFERRANGEPROC glBindBufferRange;
+    REGALGLGETACTIVEUNIFORMBLOCKNAMEPROC glGetActiveUniformBlockName;
+    REGALGLGETACTIVEUNIFORMBLOCKIVPROC glGetActiveUniformBlockiv;
+    REGALGLGETACTIVEUNIFORMNAMEPROC glGetActiveUniformName;
+    REGALGLGETACTIVEUNIFORMSIVPROC glGetActiveUniformsiv;
+    REGALGLGETINTEGERI_VPROC glGetIntegeri_v;
+    REGALGLGETUNIFORMBLOCKINDEXPROC glGetUniformBlockIndex;
+    REGALGLGETUNIFORMINDICESPROC glGetUniformIndices;
+    REGALGLUNIFORMBLOCKBINDINGPROC glUniformBlockBinding;
 
     // GL_ARB_vertex_array_object
 
-    PFNGLBINDVERTEXARRAYPROC glBindVertexArray;
-    PFNGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
-    PFNGLGENVERTEXARRAYSPROC glGenVertexArrays;
-    PFNGLISVERTEXARRAYPROC glIsVertexArray;
+    REGALGLBINDVERTEXARRAYPROC glBindVertexArray;
+    REGALGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
+    REGALGLGENVERTEXARRAYSPROC glGenVertexArrays;
+    REGALGLISVERTEXARRAYPROC glIsVertexArray;
 
     // GL_ARB_vertex_attrib_64bit
 
-    PFNGLGETVERTEXATTRIBLDVPROC glGetVertexAttribLdv;
-    PFNGLVERTEXATTRIBL1DPROC glVertexAttribL1d;
-    PFNGLVERTEXATTRIBL1DVPROC glVertexAttribL1dv;
-    PFNGLVERTEXATTRIBL2DPROC glVertexAttribL2d;
-    PFNGLVERTEXATTRIBL2DVPROC glVertexAttribL2dv;
-    PFNGLVERTEXATTRIBL3DPROC glVertexAttribL3d;
-    PFNGLVERTEXATTRIBL3DVPROC glVertexAttribL3dv;
-    PFNGLVERTEXATTRIBL4DPROC glVertexAttribL4d;
-    PFNGLVERTEXATTRIBL4DVPROC glVertexAttribL4dv;
-    PFNGLVERTEXATTRIBLPOINTERPROC glVertexAttribLPointer;
+    REGALGLGETVERTEXATTRIBLDVPROC glGetVertexAttribLdv;
+    REGALGLVERTEXATTRIBL1DPROC glVertexAttribL1d;
+    REGALGLVERTEXATTRIBL1DVPROC glVertexAttribL1dv;
+    REGALGLVERTEXATTRIBL2DPROC glVertexAttribL2d;
+    REGALGLVERTEXATTRIBL2DVPROC glVertexAttribL2dv;
+    REGALGLVERTEXATTRIBL3DPROC glVertexAttribL3d;
+    REGALGLVERTEXATTRIBL3DVPROC glVertexAttribL3dv;
+    REGALGLVERTEXATTRIBL4DPROC glVertexAttribL4d;
+    REGALGLVERTEXATTRIBL4DVPROC glVertexAttribL4dv;
+    REGALGLVERTEXATTRIBLPOINTERPROC glVertexAttribLPointer;
 
     // GL_ARB_vertex_attrib_binding
 
-    PFNGLBINDVERTEXBUFFERPROC glBindVertexBuffer;
-    PFNGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC glVertexArrayBindVertexBufferEXT;
-    PFNGLVERTEXARRAYVERTEXATTRIBBINDINGEXTPROC glVertexArrayVertexAttribBindingEXT;
-    PFNGLVERTEXARRAYVERTEXATTRIBFORMATEXTPROC glVertexArrayVertexAttribFormatEXT;
-    PFNGLVERTEXARRAYVERTEXATTRIBIFORMATEXTPROC glVertexArrayVertexAttribIFormatEXT;
-    PFNGLVERTEXARRAYVERTEXATTRIBLFORMATEXTPROC glVertexArrayVertexAttribLFormatEXT;
-    PFNGLVERTEXARRAYVERTEXBINDINGDIVISOREXTPROC glVertexArrayVertexBindingDivisorEXT;
-    PFNGLVERTEXATTRIBBINDINGPROC glVertexAttribBinding;
-    PFNGLVERTEXATTRIBFORMATPROC glVertexAttribFormat;
-    PFNGLVERTEXATTRIBIFORMATPROC glVertexAttribIFormat;
-    PFNGLVERTEXATTRIBLFORMATPROC glVertexAttribLFormat;
-    PFNGLVERTEXBINDINGDIVISORPROC glVertexBindingDivisor;
+    REGALGLBINDVERTEXBUFFERPROC glBindVertexBuffer;
+    REGALGLVERTEXARRAYBINDVERTEXBUFFEREXTPROC glVertexArrayBindVertexBufferEXT;
+    REGALGLVERTEXARRAYVERTEXATTRIBBINDINGEXTPROC glVertexArrayVertexAttribBindingEXT;
+    REGALGLVERTEXARRAYVERTEXATTRIBFORMATEXTPROC glVertexArrayVertexAttribFormatEXT;
+    REGALGLVERTEXARRAYVERTEXATTRIBIFORMATEXTPROC glVertexArrayVertexAttribIFormatEXT;
+    REGALGLVERTEXARRAYVERTEXATTRIBLFORMATEXTPROC glVertexArrayVertexAttribLFormatEXT;
+    REGALGLVERTEXARRAYVERTEXBINDINGDIVISOREXTPROC glVertexArrayVertexBindingDivisorEXT;
+    REGALGLVERTEXATTRIBBINDINGPROC glVertexAttribBinding;
+    REGALGLVERTEXATTRIBFORMATPROC glVertexAttribFormat;
+    REGALGLVERTEXATTRIBIFORMATPROC glVertexAttribIFormat;
+    REGALGLVERTEXATTRIBLFORMATPROC glVertexAttribLFormat;
+    REGALGLVERTEXBINDINGDIVISORPROC glVertexBindingDivisor;
 
     // GL_ARB_vertex_blend
 
-    PFNGLVERTEXBLENDARBPROC glVertexBlendARB;
-    PFNGLWEIGHTPOINTERARBPROC glWeightPointerARB;
-    PFNGLWEIGHTBVARBPROC glWeightbvARB;
-    PFNGLWEIGHTDVARBPROC glWeightdvARB;
-    PFNGLWEIGHTFVARBPROC glWeightfvARB;
-    PFNGLWEIGHTIVARBPROC glWeightivARB;
-    PFNGLWEIGHTSVARBPROC glWeightsvARB;
-    PFNGLWEIGHTUBVARBPROC glWeightubvARB;
-    PFNGLWEIGHTUIVARBPROC glWeightuivARB;
-    PFNGLWEIGHTUSVARBPROC glWeightusvARB;
+    REGALGLVERTEXBLENDARBPROC glVertexBlendARB;
+    REGALGLWEIGHTPOINTERARBPROC glWeightPointerARB;
+    REGALGLWEIGHTBVARBPROC glWeightbvARB;
+    REGALGLWEIGHTDVARBPROC glWeightdvARB;
+    REGALGLWEIGHTFVARBPROC glWeightfvARB;
+    REGALGLWEIGHTIVARBPROC glWeightivARB;
+    REGALGLWEIGHTSVARBPROC glWeightsvARB;
+    REGALGLWEIGHTUBVARBPROC glWeightubvARB;
+    REGALGLWEIGHTUIVARBPROC glWeightuivARB;
+    REGALGLWEIGHTUSVARBPROC glWeightusvARB;
 
     // GL_ARB_vertex_buffer_object
 
-    PFNGLBINDBUFFERARBPROC glBindBufferARB;
-    PFNGLBUFFERDATAARBPROC glBufferDataARB;
-    PFNGLBUFFERSUBDATAARBPROC glBufferSubDataARB;
-    PFNGLDELETEBUFFERSARBPROC glDeleteBuffersARB;
-    PFNGLGENBUFFERSARBPROC glGenBuffersARB;
-    PFNGLGETBUFFERPARAMETERIVARBPROC glGetBufferParameterivARB;
-    PFNGLGETBUFFERPOINTERVARBPROC glGetBufferPointervARB;
-    PFNGLGETBUFFERSUBDATAARBPROC glGetBufferSubDataARB;
-    PFNGLISBUFFERARBPROC glIsBufferARB;
-    PFNGLMAPBUFFERARBPROC glMapBufferARB;
-    PFNGLUNMAPBUFFERARBPROC glUnmapBufferARB;
+    REGALGLBINDBUFFERARBPROC glBindBufferARB;
+    REGALGLBUFFERDATAARBPROC glBufferDataARB;
+    REGALGLBUFFERSUBDATAARBPROC glBufferSubDataARB;
+    REGALGLDELETEBUFFERSARBPROC glDeleteBuffersARB;
+    REGALGLGENBUFFERSARBPROC glGenBuffersARB;
+    REGALGLGETBUFFERPARAMETERIVARBPROC glGetBufferParameterivARB;
+    REGALGLGETBUFFERPOINTERVARBPROC glGetBufferPointervARB;
+    REGALGLGETBUFFERSUBDATAARBPROC glGetBufferSubDataARB;
+    REGALGLISBUFFERARBPROC glIsBufferARB;
+    REGALGLMAPBUFFERARBPROC glMapBufferARB;
+    REGALGLUNMAPBUFFERARBPROC glUnmapBufferARB;
 
     // GL_ARB_vertex_program
 
-    PFNGLBINDPROGRAMARBPROC glBindProgramARB;
-    PFNGLDELETEPROGRAMSARBPROC glDeleteProgramsARB;
-    PFNGLDISABLEVERTEXATTRIBARRAYARBPROC glDisableVertexAttribArrayARB;
-    PFNGLENABLEVERTEXATTRIBARRAYARBPROC glEnableVertexAttribArrayARB;
-    PFNGLGENPROGRAMSARBPROC glGenProgramsARB;
-    PFNGLGETPROGRAMENVPARAMETERDVARBPROC glGetProgramEnvParameterdvARB;
-    PFNGLGETPROGRAMENVPARAMETERFVARBPROC glGetProgramEnvParameterfvARB;
-    PFNGLGETPROGRAMLOCALPARAMETERDVARBPROC glGetProgramLocalParameterdvARB;
-    PFNGLGETPROGRAMLOCALPARAMETERFVARBPROC glGetProgramLocalParameterfvARB;
-    PFNGLGETPROGRAMSTRINGARBPROC glGetProgramStringARB;
-    PFNGLGETPROGRAMIVARBPROC glGetProgramivARB;
-    PFNGLGETVERTEXATTRIBPOINTERVARBPROC glGetVertexAttribPointervARB;
-    PFNGLGETVERTEXATTRIBDVARBPROC glGetVertexAttribdvARB;
-    PFNGLGETVERTEXATTRIBFVARBPROC glGetVertexAttribfvARB;
-    PFNGLGETVERTEXATTRIBIVARBPROC glGetVertexAttribivARB;
-    PFNGLISPROGRAMARBPROC glIsProgramARB;
-    PFNGLPROGRAMENVPARAMETER4DARBPROC glProgramEnvParameter4dARB;
-    PFNGLPROGRAMENVPARAMETER4DVARBPROC glProgramEnvParameter4dvARB;
-    PFNGLPROGRAMENVPARAMETER4FARBPROC glProgramEnvParameter4fARB;
-    PFNGLPROGRAMENVPARAMETER4FVARBPROC glProgramEnvParameter4fvARB;
-    PFNGLPROGRAMLOCALPARAMETER4DARBPROC glProgramLocalParameter4dARB;
-    PFNGLPROGRAMLOCALPARAMETER4DVARBPROC glProgramLocalParameter4dvARB;
-    PFNGLPROGRAMLOCALPARAMETER4FARBPROC glProgramLocalParameter4fARB;
-    PFNGLPROGRAMLOCALPARAMETER4FVARBPROC glProgramLocalParameter4fvARB;
-    PFNGLPROGRAMSTRINGARBPROC glProgramStringARB;
-    PFNGLVERTEXATTRIB1DARBPROC glVertexAttrib1dARB;
-    PFNGLVERTEXATTRIB1DVARBPROC glVertexAttrib1dvARB;
-    PFNGLVERTEXATTRIB1FARBPROC glVertexAttrib1fARB;
-    PFNGLVERTEXATTRIB1FVARBPROC glVertexAttrib1fvARB;
-    PFNGLVERTEXATTRIB1SARBPROC glVertexAttrib1sARB;
-    PFNGLVERTEXATTRIB1SVARBPROC glVertexAttrib1svARB;
-    PFNGLVERTEXATTRIB2DARBPROC glVertexAttrib2dARB;
-    PFNGLVERTEXATTRIB2DVARBPROC glVertexAttrib2dvARB;
-    PFNGLVERTEXATTRIB2FARBPROC glVertexAttrib2fARB;
-    PFNGLVERTEXATTRIB2FVARBPROC glVertexAttrib2fvARB;
-    PFNGLVERTEXATTRIB2SARBPROC glVertexAttrib2sARB;
-    PFNGLVERTEXATTRIB2SVARBPROC glVertexAttrib2svARB;
-    PFNGLVERTEXATTRIB3DARBPROC glVertexAttrib3dARB;
-    PFNGLVERTEXATTRIB3DVARBPROC glVertexAttrib3dvARB;
-    PFNGLVERTEXATTRIB3FARBPROC glVertexAttrib3fARB;
-    PFNGLVERTEXATTRIB3FVARBPROC glVertexAttrib3fvARB;
-    PFNGLVERTEXATTRIB3SARBPROC glVertexAttrib3sARB;
-    PFNGLVERTEXATTRIB3SVARBPROC glVertexAttrib3svARB;
-    PFNGLVERTEXATTRIB4NBVARBPROC glVertexAttrib4NbvARB;
-    PFNGLVERTEXATTRIB4NIVARBPROC glVertexAttrib4NivARB;
-    PFNGLVERTEXATTRIB4NSVARBPROC glVertexAttrib4NsvARB;
-    PFNGLVERTEXATTRIB4NUBARBPROC glVertexAttrib4NubARB;
-    PFNGLVERTEXATTRIB4NUBVARBPROC glVertexAttrib4NubvARB;
-    PFNGLVERTEXATTRIB4NUIVARBPROC glVertexAttrib4NuivARB;
-    PFNGLVERTEXATTRIB4NUSVARBPROC glVertexAttrib4NusvARB;
-    PFNGLVERTEXATTRIB4BVARBPROC glVertexAttrib4bvARB;
-    PFNGLVERTEXATTRIB4DARBPROC glVertexAttrib4dARB;
-    PFNGLVERTEXATTRIB4DVARBPROC glVertexAttrib4dvARB;
-    PFNGLVERTEXATTRIB4FARBPROC glVertexAttrib4fARB;
-    PFNGLVERTEXATTRIB4FVARBPROC glVertexAttrib4fvARB;
-    PFNGLVERTEXATTRIB4IVARBPROC glVertexAttrib4ivARB;
-    PFNGLVERTEXATTRIB4SARBPROC glVertexAttrib4sARB;
-    PFNGLVERTEXATTRIB4SVARBPROC glVertexAttrib4svARB;
-    PFNGLVERTEXATTRIB4UBVARBPROC glVertexAttrib4ubvARB;
-    PFNGLVERTEXATTRIB4UIVARBPROC glVertexAttrib4uivARB;
-    PFNGLVERTEXATTRIB4USVARBPROC glVertexAttrib4usvARB;
-    PFNGLVERTEXATTRIBPOINTERARBPROC glVertexAttribPointerARB;
+    REGALGLBINDPROGRAMARBPROC glBindProgramARB;
+    REGALGLDELETEPROGRAMSARBPROC glDeleteProgramsARB;
+    REGALGLDISABLEVERTEXATTRIBARRAYARBPROC glDisableVertexAttribArrayARB;
+    REGALGLENABLEVERTEXATTRIBARRAYARBPROC glEnableVertexAttribArrayARB;
+    REGALGLGENPROGRAMSARBPROC glGenProgramsARB;
+    REGALGLGETPROGRAMENVPARAMETERDVARBPROC glGetProgramEnvParameterdvARB;
+    REGALGLGETPROGRAMENVPARAMETERFVARBPROC glGetProgramEnvParameterfvARB;
+    REGALGLGETPROGRAMLOCALPARAMETERDVARBPROC glGetProgramLocalParameterdvARB;
+    REGALGLGETPROGRAMLOCALPARAMETERFVARBPROC glGetProgramLocalParameterfvARB;
+    REGALGLGETPROGRAMSTRINGARBPROC glGetProgramStringARB;
+    REGALGLGETPROGRAMIVARBPROC glGetProgramivARB;
+    REGALGLGETVERTEXATTRIBPOINTERVARBPROC glGetVertexAttribPointervARB;
+    REGALGLGETVERTEXATTRIBDVARBPROC glGetVertexAttribdvARB;
+    REGALGLGETVERTEXATTRIBFVARBPROC glGetVertexAttribfvARB;
+    REGALGLGETVERTEXATTRIBIVARBPROC glGetVertexAttribivARB;
+    REGALGLISPROGRAMARBPROC glIsProgramARB;
+    REGALGLPROGRAMENVPARAMETER4DARBPROC glProgramEnvParameter4dARB;
+    REGALGLPROGRAMENVPARAMETER4DVARBPROC glProgramEnvParameter4dvARB;
+    REGALGLPROGRAMENVPARAMETER4FARBPROC glProgramEnvParameter4fARB;
+    REGALGLPROGRAMENVPARAMETER4FVARBPROC glProgramEnvParameter4fvARB;
+    REGALGLPROGRAMLOCALPARAMETER4DARBPROC glProgramLocalParameter4dARB;
+    REGALGLPROGRAMLOCALPARAMETER4DVARBPROC glProgramLocalParameter4dvARB;
+    REGALGLPROGRAMLOCALPARAMETER4FARBPROC glProgramLocalParameter4fARB;
+    REGALGLPROGRAMLOCALPARAMETER4FVARBPROC glProgramLocalParameter4fvARB;
+    REGALGLPROGRAMSTRINGARBPROC glProgramStringARB;
+    REGALGLVERTEXATTRIB1DARBPROC glVertexAttrib1dARB;
+    REGALGLVERTEXATTRIB1DVARBPROC glVertexAttrib1dvARB;
+    REGALGLVERTEXATTRIB1FARBPROC glVertexAttrib1fARB;
+    REGALGLVERTEXATTRIB1FVARBPROC glVertexAttrib1fvARB;
+    REGALGLVERTEXATTRIB1SARBPROC glVertexAttrib1sARB;
+    REGALGLVERTEXATTRIB1SVARBPROC glVertexAttrib1svARB;
+    REGALGLVERTEXATTRIB2DARBPROC glVertexAttrib2dARB;
+    REGALGLVERTEXATTRIB2DVARBPROC glVertexAttrib2dvARB;
+    REGALGLVERTEXATTRIB2FARBPROC glVertexAttrib2fARB;
+    REGALGLVERTEXATTRIB2FVARBPROC glVertexAttrib2fvARB;
+    REGALGLVERTEXATTRIB2SARBPROC glVertexAttrib2sARB;
+    REGALGLVERTEXATTRIB2SVARBPROC glVertexAttrib2svARB;
+    REGALGLVERTEXATTRIB3DARBPROC glVertexAttrib3dARB;
+    REGALGLVERTEXATTRIB3DVARBPROC glVertexAttrib3dvARB;
+    REGALGLVERTEXATTRIB3FARBPROC glVertexAttrib3fARB;
+    REGALGLVERTEXATTRIB3FVARBPROC glVertexAttrib3fvARB;
+    REGALGLVERTEXATTRIB3SARBPROC glVertexAttrib3sARB;
+    REGALGLVERTEXATTRIB3SVARBPROC glVertexAttrib3svARB;
+    REGALGLVERTEXATTRIB4NBVARBPROC glVertexAttrib4NbvARB;
+    REGALGLVERTEXATTRIB4NIVARBPROC glVertexAttrib4NivARB;
+    REGALGLVERTEXATTRIB4NSVARBPROC glVertexAttrib4NsvARB;
+    REGALGLVERTEXATTRIB4NUBARBPROC glVertexAttrib4NubARB;
+    REGALGLVERTEXATTRIB4NUBVARBPROC glVertexAttrib4NubvARB;
+    REGALGLVERTEXATTRIB4NUIVARBPROC glVertexAttrib4NuivARB;
+    REGALGLVERTEXATTRIB4NUSVARBPROC glVertexAttrib4NusvARB;
+    REGALGLVERTEXATTRIB4BVARBPROC glVertexAttrib4bvARB;
+    REGALGLVERTEXATTRIB4DARBPROC glVertexAttrib4dARB;
+    REGALGLVERTEXATTRIB4DVARBPROC glVertexAttrib4dvARB;
+    REGALGLVERTEXATTRIB4FARBPROC glVertexAttrib4fARB;
+    REGALGLVERTEXATTRIB4FVARBPROC glVertexAttrib4fvARB;
+    REGALGLVERTEXATTRIB4IVARBPROC glVertexAttrib4ivARB;
+    REGALGLVERTEXATTRIB4SARBPROC glVertexAttrib4sARB;
+    REGALGLVERTEXATTRIB4SVARBPROC glVertexAttrib4svARB;
+    REGALGLVERTEXATTRIB4UBVARBPROC glVertexAttrib4ubvARB;
+    REGALGLVERTEXATTRIB4UIVARBPROC glVertexAttrib4uivARB;
+    REGALGLVERTEXATTRIB4USVARBPROC glVertexAttrib4usvARB;
+    REGALGLVERTEXATTRIBPOINTERARBPROC glVertexAttribPointerARB;
 
     // GL_ARB_vertex_shader
 
-    PFNGLBINDATTRIBLOCATIONARBPROC glBindAttribLocationARB;
-    PFNGLGETACTIVEATTRIBARBPROC glGetActiveAttribARB;
-    PFNGLGETATTRIBLOCATIONARBPROC glGetAttribLocationARB;
+    REGALGLBINDATTRIBLOCATIONARBPROC glBindAttribLocationARB;
+    REGALGLGETACTIVEATTRIBARBPROC glGetActiveAttribARB;
+    REGALGLGETATTRIBLOCATIONARBPROC glGetAttribLocationARB;
 
     // GL_ARB_vertex_type_2_10_10_10_rev
 
-    PFNGLCOLORP3UIPROC glColorP3ui;
-    PFNGLCOLORP3UIVPROC glColorP3uiv;
-    PFNGLCOLORP4UIPROC glColorP4ui;
-    PFNGLCOLORP4UIVPROC glColorP4uiv;
-    PFNGLMULTITEXCOORDP1UIPROC glMultiTexCoordP1ui;
-    PFNGLMULTITEXCOORDP1UIVPROC glMultiTexCoordP1uiv;
-    PFNGLMULTITEXCOORDP2UIPROC glMultiTexCoordP2ui;
-    PFNGLMULTITEXCOORDP2UIVPROC glMultiTexCoordP2uiv;
-    PFNGLMULTITEXCOORDP3UIPROC glMultiTexCoordP3ui;
-    PFNGLMULTITEXCOORDP3UIVPROC glMultiTexCoordP3uiv;
-    PFNGLMULTITEXCOORDP4UIPROC glMultiTexCoordP4ui;
-    PFNGLMULTITEXCOORDP4UIVPROC glMultiTexCoordP4uiv;
-    PFNGLNORMALP3UIPROC glNormalP3ui;
-    PFNGLNORMALP3UIVPROC glNormalP3uiv;
-    PFNGLSECONDARYCOLORP3UIPROC glSecondaryColorP3ui;
-    PFNGLSECONDARYCOLORP3UIVPROC glSecondaryColorP3uiv;
-    PFNGLTEXCOORDP1UIPROC glTexCoordP1ui;
-    PFNGLTEXCOORDP1UIVPROC glTexCoordP1uiv;
-    PFNGLTEXCOORDP2UIPROC glTexCoordP2ui;
-    PFNGLTEXCOORDP2UIVPROC glTexCoordP2uiv;
-    PFNGLTEXCOORDP3UIPROC glTexCoordP3ui;
-    PFNGLTEXCOORDP3UIVPROC glTexCoordP3uiv;
-    PFNGLTEXCOORDP4UIPROC glTexCoordP4ui;
-    PFNGLTEXCOORDP4UIVPROC glTexCoordP4uiv;
-    PFNGLVERTEXATTRIBP1UIPROC glVertexAttribP1ui;
-    PFNGLVERTEXATTRIBP1UIVPROC glVertexAttribP1uiv;
-    PFNGLVERTEXATTRIBP2UIPROC glVertexAttribP2ui;
-    PFNGLVERTEXATTRIBP2UIVPROC glVertexAttribP2uiv;
-    PFNGLVERTEXATTRIBP3UIPROC glVertexAttribP3ui;
-    PFNGLVERTEXATTRIBP3UIVPROC glVertexAttribP3uiv;
-    PFNGLVERTEXATTRIBP4UIPROC glVertexAttribP4ui;
-    PFNGLVERTEXATTRIBP4UIVPROC glVertexAttribP4uiv;
-    PFNGLVERTEXP2UIPROC glVertexP2ui;
-    PFNGLVERTEXP2UIVPROC glVertexP2uiv;
-    PFNGLVERTEXP3UIPROC glVertexP3ui;
-    PFNGLVERTEXP3UIVPROC glVertexP3uiv;
-    PFNGLVERTEXP4UIPROC glVertexP4ui;
-    PFNGLVERTEXP4UIVPROC glVertexP4uiv;
+    REGALGLCOLORP3UIPROC glColorP3ui;
+    REGALGLCOLORP3UIVPROC glColorP3uiv;
+    REGALGLCOLORP4UIPROC glColorP4ui;
+    REGALGLCOLORP4UIVPROC glColorP4uiv;
+    REGALGLMULTITEXCOORDP1UIPROC glMultiTexCoordP1ui;
+    REGALGLMULTITEXCOORDP1UIVPROC glMultiTexCoordP1uiv;
+    REGALGLMULTITEXCOORDP2UIPROC glMultiTexCoordP2ui;
+    REGALGLMULTITEXCOORDP2UIVPROC glMultiTexCoordP2uiv;
+    REGALGLMULTITEXCOORDP3UIPROC glMultiTexCoordP3ui;
+    REGALGLMULTITEXCOORDP3UIVPROC glMultiTexCoordP3uiv;
+    REGALGLMULTITEXCOORDP4UIPROC glMultiTexCoordP4ui;
+    REGALGLMULTITEXCOORDP4UIVPROC glMultiTexCoordP4uiv;
+    REGALGLNORMALP3UIPROC glNormalP3ui;
+    REGALGLNORMALP3UIVPROC glNormalP3uiv;
+    REGALGLSECONDARYCOLORP3UIPROC glSecondaryColorP3ui;
+    REGALGLSECONDARYCOLORP3UIVPROC glSecondaryColorP3uiv;
+    REGALGLTEXCOORDP1UIPROC glTexCoordP1ui;
+    REGALGLTEXCOORDP1UIVPROC glTexCoordP1uiv;
+    REGALGLTEXCOORDP2UIPROC glTexCoordP2ui;
+    REGALGLTEXCOORDP2UIVPROC glTexCoordP2uiv;
+    REGALGLTEXCOORDP3UIPROC glTexCoordP3ui;
+    REGALGLTEXCOORDP3UIVPROC glTexCoordP3uiv;
+    REGALGLTEXCOORDP4UIPROC glTexCoordP4ui;
+    REGALGLTEXCOORDP4UIVPROC glTexCoordP4uiv;
+    REGALGLVERTEXATTRIBP1UIPROC glVertexAttribP1ui;
+    REGALGLVERTEXATTRIBP1UIVPROC glVertexAttribP1uiv;
+    REGALGLVERTEXATTRIBP2UIPROC glVertexAttribP2ui;
+    REGALGLVERTEXATTRIBP2UIVPROC glVertexAttribP2uiv;
+    REGALGLVERTEXATTRIBP3UIPROC glVertexAttribP3ui;
+    REGALGLVERTEXATTRIBP3UIVPROC glVertexAttribP3uiv;
+    REGALGLVERTEXATTRIBP4UIPROC glVertexAttribP4ui;
+    REGALGLVERTEXATTRIBP4UIVPROC glVertexAttribP4uiv;
+    REGALGLVERTEXP2UIPROC glVertexP2ui;
+    REGALGLVERTEXP2UIVPROC glVertexP2uiv;
+    REGALGLVERTEXP3UIPROC glVertexP3ui;
+    REGALGLVERTEXP3UIVPROC glVertexP3uiv;
+    REGALGLVERTEXP4UIPROC glVertexP4ui;
+    REGALGLVERTEXP4UIVPROC glVertexP4uiv;
 
     // GL_ARB_viewport_array
 
-    PFNGLDEPTHRANGEARRAYVPROC glDepthRangeArrayv;
-    PFNGLDEPTHRANGEINDEXEDPROC glDepthRangeIndexed;
-    PFNGLGETDOUBLEI_VPROC glGetDoublei_v;
-    PFNGLGETFLOATI_VPROC glGetFloati_v;
-    PFNGLSCISSORARRAYVPROC glScissorArrayv;
-    PFNGLSCISSORINDEXEDPROC glScissorIndexed;
-    PFNGLSCISSORINDEXEDVPROC glScissorIndexedv;
-    PFNGLVIEWPORTARRAYVPROC glViewportArrayv;
-    PFNGLVIEWPORTINDEXEDFPROC glViewportIndexedf;
-    PFNGLVIEWPORTINDEXEDFVPROC glViewportIndexedfv;
+    REGALGLDEPTHRANGEARRAYVPROC glDepthRangeArrayv;
+    REGALGLDEPTHRANGEINDEXEDPROC glDepthRangeIndexed;
+    REGALGLGETDOUBLEI_VPROC glGetDoublei_v;
+    REGALGLGETFLOATI_VPROC glGetFloati_v;
+    REGALGLSCISSORARRAYVPROC glScissorArrayv;
+    REGALGLSCISSORINDEXEDPROC glScissorIndexed;
+    REGALGLSCISSORINDEXEDVPROC glScissorIndexedv;
+    REGALGLVIEWPORTARRAYVPROC glViewportArrayv;
+    REGALGLVIEWPORTINDEXEDFPROC glViewportIndexedf;
+    REGALGLVIEWPORTINDEXEDFVPROC glViewportIndexedfv;
 
     // GL_ARB_window_pos
 
-    PFNGLWINDOWPOS2DARBPROC glWindowPos2dARB;
-    PFNGLWINDOWPOS2DVARBPROC glWindowPos2dvARB;
-    PFNGLWINDOWPOS2FARBPROC glWindowPos2fARB;
-    PFNGLWINDOWPOS2FVARBPROC glWindowPos2fvARB;
-    PFNGLWINDOWPOS2IARBPROC glWindowPos2iARB;
-    PFNGLWINDOWPOS2IVARBPROC glWindowPos2ivARB;
-    PFNGLWINDOWPOS2SARBPROC glWindowPos2sARB;
-    PFNGLWINDOWPOS2SVARBPROC glWindowPos2svARB;
-    PFNGLWINDOWPOS3DARBPROC glWindowPos3dARB;
-    PFNGLWINDOWPOS3DVARBPROC glWindowPos3dvARB;
-    PFNGLWINDOWPOS3FARBPROC glWindowPos3fARB;
-    PFNGLWINDOWPOS3FVARBPROC glWindowPos3fvARB;
-    PFNGLWINDOWPOS3IARBPROC glWindowPos3iARB;
-    PFNGLWINDOWPOS3IVARBPROC glWindowPos3ivARB;
-    PFNGLWINDOWPOS3SARBPROC glWindowPos3sARB;
-    PFNGLWINDOWPOS3SVARBPROC glWindowPos3svARB;
+    REGALGLWINDOWPOS2DARBPROC glWindowPos2dARB;
+    REGALGLWINDOWPOS2DVARBPROC glWindowPos2dvARB;
+    REGALGLWINDOWPOS2FARBPROC glWindowPos2fARB;
+    REGALGLWINDOWPOS2FVARBPROC glWindowPos2fvARB;
+    REGALGLWINDOWPOS2IARBPROC glWindowPos2iARB;
+    REGALGLWINDOWPOS2IVARBPROC glWindowPos2ivARB;
+    REGALGLWINDOWPOS2SARBPROC glWindowPos2sARB;
+    REGALGLWINDOWPOS2SVARBPROC glWindowPos2svARB;
+    REGALGLWINDOWPOS3DARBPROC glWindowPos3dARB;
+    REGALGLWINDOWPOS3DVARBPROC glWindowPos3dvARB;
+    REGALGLWINDOWPOS3FARBPROC glWindowPos3fARB;
+    REGALGLWINDOWPOS3FVARBPROC glWindowPos3fvARB;
+    REGALGLWINDOWPOS3IARBPROC glWindowPos3iARB;
+    REGALGLWINDOWPOS3IVARBPROC glWindowPos3ivARB;
+    REGALGLWINDOWPOS3SARBPROC glWindowPos3sARB;
+    REGALGLWINDOWPOS3SVARBPROC glWindowPos3svARB;
 
     // GL_ATI_draw_buffers
 
-    PFNGLDRAWBUFFERSATIPROC glDrawBuffersATI;
+    REGALGLDRAWBUFFERSATIPROC glDrawBuffersATI;
 
     // GL_ATI_element_array
 
-    PFNGLDRAWELEMENTARRAYATIPROC glDrawElementArrayATI;
-    PFNGLDRAWRANGEELEMENTARRAYATIPROC glDrawRangeElementArrayATI;
-    PFNGLELEMENTPOINTERATIPROC glElementPointerATI;
+    REGALGLDRAWELEMENTARRAYATIPROC glDrawElementArrayATI;
+    REGALGLDRAWRANGEELEMENTARRAYATIPROC glDrawRangeElementArrayATI;
+    REGALGLELEMENTPOINTERATIPROC glElementPointerATI;
 
     // GL_ATI_envmap_bumpmap
 
-    PFNGLGETTEXBUMPPARAMETERFVATIPROC glGetTexBumpParameterfvATI;
-    PFNGLGETTEXBUMPPARAMETERIVATIPROC glGetTexBumpParameterivATI;
-    PFNGLTEXBUMPPARAMETERFVATIPROC glTexBumpParameterfvATI;
-    PFNGLTEXBUMPPARAMETERIVATIPROC glTexBumpParameterivATI;
+    REGALGLGETTEXBUMPPARAMETERFVATIPROC glGetTexBumpParameterfvATI;
+    REGALGLGETTEXBUMPPARAMETERIVATIPROC glGetTexBumpParameterivATI;
+    REGALGLTEXBUMPPARAMETERFVATIPROC glTexBumpParameterfvATI;
+    REGALGLTEXBUMPPARAMETERIVATIPROC glTexBumpParameterivATI;
 
     // GL_ATI_fragment_shader
 
-    PFNGLALPHAFRAGMENTOP1ATIPROC glAlphaFragmentOp1ATI;
-    PFNGLALPHAFRAGMENTOP2ATIPROC glAlphaFragmentOp2ATI;
-    PFNGLALPHAFRAGMENTOP3ATIPROC glAlphaFragmentOp3ATI;
-    PFNGLBEGINFRAGMENTSHADERATIPROC glBeginFragmentShaderATI;
-    PFNGLBINDFRAGMENTSHADERATIPROC glBindFragmentShaderATI;
-    PFNGLCOLORFRAGMENTOP1ATIPROC glColorFragmentOp1ATI;
-    PFNGLCOLORFRAGMENTOP2ATIPROC glColorFragmentOp2ATI;
-    PFNGLCOLORFRAGMENTOP3ATIPROC glColorFragmentOp3ATI;
-    PFNGLDELETEFRAGMENTSHADERATIPROC glDeleteFragmentShaderATI;
-    PFNGLENDFRAGMENTSHADERATIPROC glEndFragmentShaderATI;
-    PFNGLGENFRAGMENTSHADERSATIPROC glGenFragmentShadersATI;
-    PFNGLPASSTEXCOORDATIPROC glPassTexCoordATI;
-    PFNGLSAMPLEMAPATIPROC glSampleMapATI;
-    PFNGLSETFRAGMENTSHADERCONSTANTATIPROC glSetFragmentShaderConstantATI;
+    REGALGLALPHAFRAGMENTOP1ATIPROC glAlphaFragmentOp1ATI;
+    REGALGLALPHAFRAGMENTOP2ATIPROC glAlphaFragmentOp2ATI;
+    REGALGLALPHAFRAGMENTOP3ATIPROC glAlphaFragmentOp3ATI;
+    REGALGLBEGINFRAGMENTSHADERATIPROC glBeginFragmentShaderATI;
+    REGALGLBINDFRAGMENTSHADERATIPROC glBindFragmentShaderATI;
+    REGALGLCOLORFRAGMENTOP1ATIPROC glColorFragmentOp1ATI;
+    REGALGLCOLORFRAGMENTOP2ATIPROC glColorFragmentOp2ATI;
+    REGALGLCOLORFRAGMENTOP3ATIPROC glColorFragmentOp3ATI;
+    REGALGLDELETEFRAGMENTSHADERATIPROC glDeleteFragmentShaderATI;
+    REGALGLENDFRAGMENTSHADERATIPROC glEndFragmentShaderATI;
+    REGALGLGENFRAGMENTSHADERSATIPROC glGenFragmentShadersATI;
+    REGALGLPASSTEXCOORDATIPROC glPassTexCoordATI;
+    REGALGLSAMPLEMAPATIPROC glSampleMapATI;
+    REGALGLSETFRAGMENTSHADERCONSTANTATIPROC glSetFragmentShaderConstantATI;
 
     // GL_ATI_map_object_buffer
 
-    PFNGLMAPOBJECTBUFFERATIPROC glMapObjectBufferATI;
-    PFNGLUNMAPOBJECTBUFFERATIPROC glUnmapObjectBufferATI;
+    REGALGLMAPOBJECTBUFFERATIPROC glMapObjectBufferATI;
+    REGALGLUNMAPOBJECTBUFFERATIPROC glUnmapObjectBufferATI;
 
     // GL_ATI_pn_triangles
 
-    PFNGLPNTRIANGLESFATIPROC glPNTrianglesfATI;
-    PFNGLPNTRIANGLESIATIPROC glPNTrianglesiATI;
+    REGALGLPNTRIANGLESFATIPROC glPNTrianglesfATI;
+    REGALGLPNTRIANGLESIATIPROC glPNTrianglesiATI;
 
     // GL_ATI_separate_stencil
 
-    PFNGLSTENCILFUNCSEPARATEATIPROC glStencilFuncSeparateATI;
-    PFNGLSTENCILOPSEPARATEATIPROC glStencilOpSeparateATI;
+    REGALGLSTENCILFUNCSEPARATEATIPROC glStencilFuncSeparateATI;
+    REGALGLSTENCILOPSEPARATEATIPROC glStencilOpSeparateATI;
 
     // GL_ATI_vertex_array_object
 
-    PFNGLARRAYOBJECTATIPROC glArrayObjectATI;
-    PFNGLFREEOBJECTBUFFERATIPROC glFreeObjectBufferATI;
-    PFNGLGETARRAYOBJECTFVATIPROC glGetArrayObjectfvATI;
-    PFNGLGETARRAYOBJECTIVATIPROC glGetArrayObjectivATI;
-    PFNGLGETOBJECTBUFFERFVATIPROC glGetObjectBufferfvATI;
-    PFNGLGETOBJECTBUFFERIVATIPROC glGetObjectBufferivATI;
-    PFNGLGETVARIANTARRAYOBJECTFVATIPROC glGetVariantArrayObjectfvATI;
-    PFNGLGETVARIANTARRAYOBJECTIVATIPROC glGetVariantArrayObjectivATI;
-    PFNGLISOBJECTBUFFERATIPROC glIsObjectBufferATI;
-    PFNGLNEWOBJECTBUFFERATIPROC glNewObjectBufferATI;
-    PFNGLUPDATEOBJECTBUFFERATIPROC glUpdateObjectBufferATI;
-    PFNGLVARIANTARRAYOBJECTATIPROC glVariantArrayObjectATI;
+    REGALGLARRAYOBJECTATIPROC glArrayObjectATI;
+    REGALGLFREEOBJECTBUFFERATIPROC glFreeObjectBufferATI;
+    REGALGLGETARRAYOBJECTFVATIPROC glGetArrayObjectfvATI;
+    REGALGLGETARRAYOBJECTIVATIPROC glGetArrayObjectivATI;
+    REGALGLGETOBJECTBUFFERFVATIPROC glGetObjectBufferfvATI;
+    REGALGLGETOBJECTBUFFERIVATIPROC glGetObjectBufferivATI;
+    REGALGLGETVARIANTARRAYOBJECTFVATIPROC glGetVariantArrayObjectfvATI;
+    REGALGLGETVARIANTARRAYOBJECTIVATIPROC glGetVariantArrayObjectivATI;
+    REGALGLISOBJECTBUFFERATIPROC glIsObjectBufferATI;
+    REGALGLNEWOBJECTBUFFERATIPROC glNewObjectBufferATI;
+    REGALGLUPDATEOBJECTBUFFERATIPROC glUpdateObjectBufferATI;
+    REGALGLVARIANTARRAYOBJECTATIPROC glVariantArrayObjectATI;
 
     // GL_ATI_vertex_attrib_array_object
 
-    PFNGLGETVERTEXATTRIBARRAYOBJECTFVATIPROC glGetVertexAttribArrayObjectfvATI;
-    PFNGLGETVERTEXATTRIBARRAYOBJECTIVATIPROC glGetVertexAttribArrayObjectivATI;
-    PFNGLVERTEXATTRIBARRAYOBJECTATIPROC glVertexAttribArrayObjectATI;
+    REGALGLGETVERTEXATTRIBARRAYOBJECTFVATIPROC glGetVertexAttribArrayObjectfvATI;
+    REGALGLGETVERTEXATTRIBARRAYOBJECTIVATIPROC glGetVertexAttribArrayObjectivATI;
+    REGALGLVERTEXATTRIBARRAYOBJECTATIPROC glVertexAttribArrayObjectATI;
 
     // GL_ATI_vertex_streams
 
-    PFNGLCLIENTACTIVEVERTEXSTREAMATIPROC glClientActiveVertexStreamATI;
-    PFNGLNORMALSTREAM3BATIPROC glNormalStream3bATI;
-    PFNGLNORMALSTREAM3BVATIPROC glNormalStream3bvATI;
-    PFNGLNORMALSTREAM3DATIPROC glNormalStream3dATI;
-    PFNGLNORMALSTREAM3DVATIPROC glNormalStream3dvATI;
-    PFNGLNORMALSTREAM3FATIPROC glNormalStream3fATI;
-    PFNGLNORMALSTREAM3FVATIPROC glNormalStream3fvATI;
-    PFNGLNORMALSTREAM3IATIPROC glNormalStream3iATI;
-    PFNGLNORMALSTREAM3IVATIPROC glNormalStream3ivATI;
-    PFNGLNORMALSTREAM3SATIPROC glNormalStream3sATI;
-    PFNGLNORMALSTREAM3SVATIPROC glNormalStream3svATI;
-    PFNGLVERTEXBLENDENVFATIPROC glVertexBlendEnvfATI;
-    PFNGLVERTEXBLENDENVIATIPROC glVertexBlendEnviATI;
-    PFNGLVERTEXSTREAM1DATIPROC glVertexStream1dATI;
-    PFNGLVERTEXSTREAM1DVATIPROC glVertexStream1dvATI;
-    PFNGLVERTEXSTREAM1FATIPROC glVertexStream1fATI;
-    PFNGLVERTEXSTREAM1FVATIPROC glVertexStream1fvATI;
-    PFNGLVERTEXSTREAM1IATIPROC glVertexStream1iATI;
-    PFNGLVERTEXSTREAM1IVATIPROC glVertexStream1ivATI;
-    PFNGLVERTEXSTREAM1SATIPROC glVertexStream1sATI;
-    PFNGLVERTEXSTREAM1SVATIPROC glVertexStream1svATI;
-    PFNGLVERTEXSTREAM2DATIPROC glVertexStream2dATI;
-    PFNGLVERTEXSTREAM2DVATIPROC glVertexStream2dvATI;
-    PFNGLVERTEXSTREAM2FATIPROC glVertexStream2fATI;
-    PFNGLVERTEXSTREAM2FVATIPROC glVertexStream2fvATI;
-    PFNGLVERTEXSTREAM2IATIPROC glVertexStream2iATI;
-    PFNGLVERTEXSTREAM2IVATIPROC glVertexStream2ivATI;
-    PFNGLVERTEXSTREAM2SATIPROC glVertexStream2sATI;
-    PFNGLVERTEXSTREAM2SVATIPROC glVertexStream2svATI;
-    PFNGLVERTEXSTREAM3DATIPROC glVertexStream3dATI;
-    PFNGLVERTEXSTREAM3DVATIPROC glVertexStream3dvATI;
-    PFNGLVERTEXSTREAM3FATIPROC glVertexStream3fATI;
-    PFNGLVERTEXSTREAM3FVATIPROC glVertexStream3fvATI;
-    PFNGLVERTEXSTREAM3IATIPROC glVertexStream3iATI;
-    PFNGLVERTEXSTREAM3IVATIPROC glVertexStream3ivATI;
-    PFNGLVERTEXSTREAM3SATIPROC glVertexStream3sATI;
-    PFNGLVERTEXSTREAM3SVATIPROC glVertexStream3svATI;
-    PFNGLVERTEXSTREAM4DATIPROC glVertexStream4dATI;
-    PFNGLVERTEXSTREAM4DVATIPROC glVertexStream4dvATI;
-    PFNGLVERTEXSTREAM4FATIPROC glVertexStream4fATI;
-    PFNGLVERTEXSTREAM4FVATIPROC glVertexStream4fvATI;
-    PFNGLVERTEXSTREAM4IATIPROC glVertexStream4iATI;
-    PFNGLVERTEXSTREAM4IVATIPROC glVertexStream4ivATI;
-    PFNGLVERTEXSTREAM4SATIPROC glVertexStream4sATI;
-    PFNGLVERTEXSTREAM4SVATIPROC glVertexStream4svATI;
+    REGALGLCLIENTACTIVEVERTEXSTREAMATIPROC glClientActiveVertexStreamATI;
+    REGALGLNORMALSTREAM3BATIPROC glNormalStream3bATI;
+    REGALGLNORMALSTREAM3BVATIPROC glNormalStream3bvATI;
+    REGALGLNORMALSTREAM3DATIPROC glNormalStream3dATI;
+    REGALGLNORMALSTREAM3DVATIPROC glNormalStream3dvATI;
+    REGALGLNORMALSTREAM3FATIPROC glNormalStream3fATI;
+    REGALGLNORMALSTREAM3FVATIPROC glNormalStream3fvATI;
+    REGALGLNORMALSTREAM3IATIPROC glNormalStream3iATI;
+    REGALGLNORMALSTREAM3IVATIPROC glNormalStream3ivATI;
+    REGALGLNORMALSTREAM3SATIPROC glNormalStream3sATI;
+    REGALGLNORMALSTREAM3SVATIPROC glNormalStream3svATI;
+    REGALGLVERTEXBLENDENVFATIPROC glVertexBlendEnvfATI;
+    REGALGLVERTEXBLENDENVIATIPROC glVertexBlendEnviATI;
+    REGALGLVERTEXSTREAM1DATIPROC glVertexStream1dATI;
+    REGALGLVERTEXSTREAM1DVATIPROC glVertexStream1dvATI;
+    REGALGLVERTEXSTREAM1FATIPROC glVertexStream1fATI;
+    REGALGLVERTEXSTREAM1FVATIPROC glVertexStream1fvATI;
+    REGALGLVERTEXSTREAM1IATIPROC glVertexStream1iATI;
+    REGALGLVERTEXSTREAM1IVATIPROC glVertexStream1ivATI;
+    REGALGLVERTEXSTREAM1SATIPROC glVertexStream1sATI;
+    REGALGLVERTEXSTREAM1SVATIPROC glVertexStream1svATI;
+    REGALGLVERTEXSTREAM2DATIPROC glVertexStream2dATI;
+    REGALGLVERTEXSTREAM2DVATIPROC glVertexStream2dvATI;
+    REGALGLVERTEXSTREAM2FATIPROC glVertexStream2fATI;
+    REGALGLVERTEXSTREAM2FVATIPROC glVertexStream2fvATI;
+    REGALGLVERTEXSTREAM2IATIPROC glVertexStream2iATI;
+    REGALGLVERTEXSTREAM2IVATIPROC glVertexStream2ivATI;
+    REGALGLVERTEXSTREAM2SATIPROC glVertexStream2sATI;
+    REGALGLVERTEXSTREAM2SVATIPROC glVertexStream2svATI;
+    REGALGLVERTEXSTREAM3DATIPROC glVertexStream3dATI;
+    REGALGLVERTEXSTREAM3DVATIPROC glVertexStream3dvATI;
+    REGALGLVERTEXSTREAM3FATIPROC glVertexStream3fATI;
+    REGALGLVERTEXSTREAM3FVATIPROC glVertexStream3fvATI;
+    REGALGLVERTEXSTREAM3IATIPROC glVertexStream3iATI;
+    REGALGLVERTEXSTREAM3IVATIPROC glVertexStream3ivATI;
+    REGALGLVERTEXSTREAM3SATIPROC glVertexStream3sATI;
+    REGALGLVERTEXSTREAM3SVATIPROC glVertexStream3svATI;
+    REGALGLVERTEXSTREAM4DATIPROC glVertexStream4dATI;
+    REGALGLVERTEXSTREAM4DVATIPROC glVertexStream4dvATI;
+    REGALGLVERTEXSTREAM4FATIPROC glVertexStream4fATI;
+    REGALGLVERTEXSTREAM4FVATIPROC glVertexStream4fvATI;
+    REGALGLVERTEXSTREAM4IATIPROC glVertexStream4iATI;
+    REGALGLVERTEXSTREAM4IVATIPROC glVertexStream4ivATI;
+    REGALGLVERTEXSTREAM4SATIPROC glVertexStream4sATI;
+    REGALGLVERTEXSTREAM4SVATIPROC glVertexStream4svATI;
 
     // GL_EXT_bindable_uniform
 
-    PFNGLGETUNIFORMBUFFERSIZEEXTPROC glGetUniformBufferSizeEXT;
-    PFNGLGETUNIFORMOFFSETEXTPROC glGetUniformOffsetEXT;
-    PFNGLUNIFORMBUFFEREXTPROC glUniformBufferEXT;
+    REGALGLGETUNIFORMBUFFERSIZEEXTPROC glGetUniformBufferSizeEXT;
+    REGALGLGETUNIFORMOFFSETEXTPROC glGetUniformOffsetEXT;
+    REGALGLUNIFORMBUFFEREXTPROC glUniformBufferEXT;
 
     // GL_EXT_blend_color
 
-    PFNGLBLENDCOLOREXTPROC glBlendColorEXT;
+    REGALGLBLENDCOLOREXTPROC glBlendColorEXT;
 
     // GL_EXT_blend_equation_separate
 
-    PFNGLBLENDEQUATIONSEPARATEEXTPROC glBlendEquationSeparateEXT;
+    REGALGLBLENDEQUATIONSEPARATEEXTPROC glBlendEquationSeparateEXT;
 
     // GL_EXT_blend_func_separate
 
-    PFNGLBLENDFUNCSEPARATEEXTPROC glBlendFuncSeparateEXT;
+    REGALGLBLENDFUNCSEPARATEEXTPROC glBlendFuncSeparateEXT;
 
     // GL_EXT_blend_minmax
 
-    PFNGLBLENDEQUATIONEXTPROC glBlendEquationEXT;
+    REGALGLBLENDEQUATIONEXTPROC glBlendEquationEXT;
 
     // GL_EXT_color_subtable
 
-    PFNGLCOLORSUBTABLEEXTPROC glColorSubTableEXT;
-    PFNGLCOPYCOLORSUBTABLEEXTPROC glCopyColorSubTableEXT;
+    REGALGLCOLORSUBTABLEEXTPROC glColorSubTableEXT;
+    REGALGLCOPYCOLORSUBTABLEEXTPROC glCopyColorSubTableEXT;
 
     // GL_EXT_compiled_vertex_array
 
-    PFNGLLOCKARRAYSEXTPROC glLockArraysEXT;
-    PFNGLUNLOCKARRAYSEXTPROC glUnlockArraysEXT;
+    REGALGLLOCKARRAYSEXTPROC glLockArraysEXT;
+    REGALGLUNLOCKARRAYSEXTPROC glUnlockArraysEXT;
 
     // GL_EXT_convolution
 
-    PFNGLCONVOLUTIONFILTER1DEXTPROC glConvolutionFilter1DEXT;
-    PFNGLCONVOLUTIONFILTER2DEXTPROC glConvolutionFilter2DEXT;
-    PFNGLCONVOLUTIONPARAMETERFEXTPROC glConvolutionParameterfEXT;
-    PFNGLCONVOLUTIONPARAMETERFVEXTPROC glConvolutionParameterfvEXT;
-    PFNGLCONVOLUTIONPARAMETERIEXTPROC glConvolutionParameteriEXT;
-    PFNGLCONVOLUTIONPARAMETERIVEXTPROC glConvolutionParameterivEXT;
-    PFNGLCOPYCONVOLUTIONFILTER1DEXTPROC glCopyConvolutionFilter1DEXT;
-    PFNGLCOPYCONVOLUTIONFILTER2DEXTPROC glCopyConvolutionFilter2DEXT;
-    PFNGLGETCONVOLUTIONFILTEREXTPROC glGetConvolutionFilterEXT;
-    PFNGLGETCONVOLUTIONPARAMETERFVEXTPROC glGetConvolutionParameterfvEXT;
-    PFNGLGETCONVOLUTIONPARAMETERIVEXTPROC glGetConvolutionParameterivEXT;
-    PFNGLGETSEPARABLEFILTEREXTPROC glGetSeparableFilterEXT;
-    PFNGLSEPARABLEFILTER2DEXTPROC glSeparableFilter2DEXT;
+    REGALGLCONVOLUTIONFILTER1DEXTPROC glConvolutionFilter1DEXT;
+    REGALGLCONVOLUTIONFILTER2DEXTPROC glConvolutionFilter2DEXT;
+    REGALGLCONVOLUTIONPARAMETERFEXTPROC glConvolutionParameterfEXT;
+    REGALGLCONVOLUTIONPARAMETERFVEXTPROC glConvolutionParameterfvEXT;
+    REGALGLCONVOLUTIONPARAMETERIEXTPROC glConvolutionParameteriEXT;
+    REGALGLCONVOLUTIONPARAMETERIVEXTPROC glConvolutionParameterivEXT;
+    REGALGLCOPYCONVOLUTIONFILTER1DEXTPROC glCopyConvolutionFilter1DEXT;
+    REGALGLCOPYCONVOLUTIONFILTER2DEXTPROC glCopyConvolutionFilter2DEXT;
+    REGALGLGETCONVOLUTIONFILTEREXTPROC glGetConvolutionFilterEXT;
+    REGALGLGETCONVOLUTIONPARAMETERFVEXTPROC glGetConvolutionParameterfvEXT;
+    REGALGLGETCONVOLUTIONPARAMETERIVEXTPROC glGetConvolutionParameterivEXT;
+    REGALGLGETSEPARABLEFILTEREXTPROC glGetSeparableFilterEXT;
+    REGALGLSEPARABLEFILTER2DEXTPROC glSeparableFilter2DEXT;
 
     // GL_EXT_coordinate_frame
 
-    PFNGLBINORMAL3BEXTPROC glBinormal3bEXT;
-    PFNGLBINORMAL3BVEXTPROC glBinormal3bvEXT;
-    PFNGLBINORMAL3DEXTPROC glBinormal3dEXT;
-    PFNGLBINORMAL3DVEXTPROC glBinormal3dvEXT;
-    PFNGLBINORMAL3FEXTPROC glBinormal3fEXT;
-    PFNGLBINORMAL3FVEXTPROC glBinormal3fvEXT;
-    PFNGLBINORMAL3IEXTPROC glBinormal3iEXT;
-    PFNGLBINORMAL3IVEXTPROC glBinormal3ivEXT;
-    PFNGLBINORMAL3SEXTPROC glBinormal3sEXT;
-    PFNGLBINORMAL3SVEXTPROC glBinormal3svEXT;
-    PFNGLBINORMALPOINTEREXTPROC glBinormalPointerEXT;
-    PFNGLTANGENT3BEXTPROC glTangent3bEXT;
-    PFNGLTANGENT3BVEXTPROC glTangent3bvEXT;
-    PFNGLTANGENT3DEXTPROC glTangent3dEXT;
-    PFNGLTANGENT3DVEXTPROC glTangent3dvEXT;
-    PFNGLTANGENT3FEXTPROC glTangent3fEXT;
-    PFNGLTANGENT3FVEXTPROC glTangent3fvEXT;
-    PFNGLTANGENT3IEXTPROC glTangent3iEXT;
-    PFNGLTANGENT3IVEXTPROC glTangent3ivEXT;
-    PFNGLTANGENT3SEXTPROC glTangent3sEXT;
-    PFNGLTANGENT3SVEXTPROC glTangent3svEXT;
-    PFNGLTANGENTPOINTEREXTPROC glTangentPointerEXT;
+    REGALGLBINORMAL3BEXTPROC glBinormal3bEXT;
+    REGALGLBINORMAL3BVEXTPROC glBinormal3bvEXT;
+    REGALGLBINORMAL3DEXTPROC glBinormal3dEXT;
+    REGALGLBINORMAL3DVEXTPROC glBinormal3dvEXT;
+    REGALGLBINORMAL3FEXTPROC glBinormal3fEXT;
+    REGALGLBINORMAL3FVEXTPROC glBinormal3fvEXT;
+    REGALGLBINORMAL3IEXTPROC glBinormal3iEXT;
+    REGALGLBINORMAL3IVEXTPROC glBinormal3ivEXT;
+    REGALGLBINORMAL3SEXTPROC glBinormal3sEXT;
+    REGALGLBINORMAL3SVEXTPROC glBinormal3svEXT;
+    REGALGLBINORMALPOINTEREXTPROC glBinormalPointerEXT;
+    REGALGLTANGENT3BEXTPROC glTangent3bEXT;
+    REGALGLTANGENT3BVEXTPROC glTangent3bvEXT;
+    REGALGLTANGENT3DEXTPROC glTangent3dEXT;
+    REGALGLTANGENT3DVEXTPROC glTangent3dvEXT;
+    REGALGLTANGENT3FEXTPROC glTangent3fEXT;
+    REGALGLTANGENT3FVEXTPROC glTangent3fvEXT;
+    REGALGLTANGENT3IEXTPROC glTangent3iEXT;
+    REGALGLTANGENT3IVEXTPROC glTangent3ivEXT;
+    REGALGLTANGENT3SEXTPROC glTangent3sEXT;
+    REGALGLTANGENT3SVEXTPROC glTangent3svEXT;
+    REGALGLTANGENTPOINTEREXTPROC glTangentPointerEXT;
 
     // GL_EXT_copy_texture
 
-    PFNGLCOPYTEXIMAGE1DEXTPROC glCopyTexImage1DEXT;
-    PFNGLCOPYTEXIMAGE2DEXTPROC glCopyTexImage2DEXT;
-    PFNGLCOPYTEXSUBIMAGE1DEXTPROC glCopyTexSubImage1DEXT;
-    PFNGLCOPYTEXSUBIMAGE2DEXTPROC glCopyTexSubImage2DEXT;
-    PFNGLCOPYTEXSUBIMAGE3DEXTPROC glCopyTexSubImage3DEXT;
+    REGALGLCOPYTEXIMAGE1DEXTPROC glCopyTexImage1DEXT;
+    REGALGLCOPYTEXIMAGE2DEXTPROC glCopyTexImage2DEXT;
+    REGALGLCOPYTEXSUBIMAGE1DEXTPROC glCopyTexSubImage1DEXT;
+    REGALGLCOPYTEXSUBIMAGE2DEXTPROC glCopyTexSubImage2DEXT;
+    REGALGLCOPYTEXSUBIMAGE3DEXTPROC glCopyTexSubImage3DEXT;
 
     // GL_EXT_cull_vertex
 
-    PFNGLCULLPARAMETERDVEXTPROC glCullParameterdvEXT;
-    PFNGLCULLPARAMETERFVEXTPROC glCullParameterfvEXT;
+    REGALGLCULLPARAMETERDVEXTPROC glCullParameterdvEXT;
+    REGALGLCULLPARAMETERFVEXTPROC glCullParameterfvEXT;
 
     // GL_EXT_debug_label
 
-    PFNGLGETOBJECTLABELEXTPROC glGetObjectLabelEXT;
-    PFNGLLABELOBJECTEXTPROC glLabelObjectEXT;
+    REGALGLGETOBJECTLABELEXTPROC glGetObjectLabelEXT;
+    REGALGLLABELOBJECTEXTPROC glLabelObjectEXT;
 
     // GL_EXT_debug_marker
 
-    PFNGLINSERTEVENTMARKEREXTPROC glInsertEventMarkerEXT;
-    PFNGLPOPGROUPMARKEREXTPROC glPopGroupMarkerEXT;
-    PFNGLPUSHGROUPMARKEREXTPROC glPushGroupMarkerEXT;
+    REGALGLINSERTEVENTMARKEREXTPROC glInsertEventMarkerEXT;
+    REGALGLPOPGROUPMARKEREXTPROC glPopGroupMarkerEXT;
+    REGALGLPUSHGROUPMARKEREXTPROC glPushGroupMarkerEXT;
 
     // GL_EXT_depth_bounds_test
 
-    PFNGLDEPTHBOUNDSEXTPROC glDepthBoundsEXT;
+    REGALGLDEPTHBOUNDSEXTPROC glDepthBoundsEXT;
 
     // GL_EXT_direct_state_access
 
-    PFNGLBINDMULTITEXTUREEXTPROC glBindMultiTextureEXT;
-    PFNGLCHECKNAMEDFRAMEBUFFERSTATUSEXTPROC glCheckNamedFramebufferStatusEXT;
-    PFNGLCLIENTATTRIBDEFAULTEXTPROC glClientAttribDefaultEXT;
-    PFNGLCOMPRESSEDMULTITEXIMAGE1DEXTPROC glCompressedMultiTexImage1DEXT;
-    PFNGLCOMPRESSEDMULTITEXIMAGE2DEXTPROC glCompressedMultiTexImage2DEXT;
-    PFNGLCOMPRESSEDMULTITEXIMAGE3DEXTPROC glCompressedMultiTexImage3DEXT;
-    PFNGLCOMPRESSEDMULTITEXSUBIMAGE1DEXTPROC glCompressedMultiTexSubImage1DEXT;
-    PFNGLCOMPRESSEDMULTITEXSUBIMAGE2DEXTPROC glCompressedMultiTexSubImage2DEXT;
-    PFNGLCOMPRESSEDMULTITEXSUBIMAGE3DEXTPROC glCompressedMultiTexSubImage3DEXT;
-    PFNGLCOMPRESSEDTEXTUREIMAGE1DEXTPROC glCompressedTextureImage1DEXT;
-    PFNGLCOMPRESSEDTEXTUREIMAGE2DEXTPROC glCompressedTextureImage2DEXT;
-    PFNGLCOMPRESSEDTEXTUREIMAGE3DEXTPROC glCompressedTextureImage3DEXT;
-    PFNGLCOMPRESSEDTEXTURESUBIMAGE1DEXTPROC glCompressedTextureSubImage1DEXT;
-    PFNGLCOMPRESSEDTEXTURESUBIMAGE2DEXTPROC glCompressedTextureSubImage2DEXT;
-    PFNGLCOMPRESSEDTEXTURESUBIMAGE3DEXTPROC glCompressedTextureSubImage3DEXT;
-    PFNGLCOPYMULTITEXIMAGE1DEXTPROC glCopyMultiTexImage1DEXT;
-    PFNGLCOPYMULTITEXIMAGE2DEXTPROC glCopyMultiTexImage2DEXT;
-    PFNGLCOPYMULTITEXSUBIMAGE1DEXTPROC glCopyMultiTexSubImage1DEXT;
-    PFNGLCOPYMULTITEXSUBIMAGE2DEXTPROC glCopyMultiTexSubImage2DEXT;
-    PFNGLCOPYMULTITEXSUBIMAGE3DEXTPROC glCopyMultiTexSubImage3DEXT;
-    PFNGLCOPYTEXTUREIMAGE1DEXTPROC glCopyTextureImage1DEXT;
-    PFNGLCOPYTEXTUREIMAGE2DEXTPROC glCopyTextureImage2DEXT;
-    PFNGLCOPYTEXTURESUBIMAGE1DEXTPROC glCopyTextureSubImage1DEXT;
-    PFNGLCOPYTEXTURESUBIMAGE2DEXTPROC glCopyTextureSubImage2DEXT;
-    PFNGLCOPYTEXTURESUBIMAGE3DEXTPROC glCopyTextureSubImage3DEXT;
-    PFNGLDISABLECLIENTSTATEINDEXEDEXTPROC glDisableClientStateIndexedEXT;
-    PFNGLDISABLECLIENTSTATEIEXTPROC glDisableClientStateiEXT;
-    PFNGLDISABLEVERTEXARRAYATTRIBEXTPROC glDisableVertexArrayAttribEXT;
-    PFNGLDISABLEVERTEXARRAYEXTPROC glDisableVertexArrayEXT;
-    PFNGLENABLECLIENTSTATEINDEXEDEXTPROC glEnableClientStateIndexedEXT;
-    PFNGLENABLECLIENTSTATEIEXTPROC glEnableClientStateiEXT;
-    PFNGLENABLEVERTEXARRAYATTRIBEXTPROC glEnableVertexArrayAttribEXT;
-    PFNGLENABLEVERTEXARRAYEXTPROC glEnableVertexArrayEXT;
-    PFNGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC glFlushMappedNamedBufferRangeEXT;
-    PFNGLFRAMEBUFFERDRAWBUFFEREXTPROC glFramebufferDrawBufferEXT;
-    PFNGLFRAMEBUFFERDRAWBUFFERSEXTPROC glFramebufferDrawBuffersEXT;
-    PFNGLFRAMEBUFFERREADBUFFEREXTPROC glFramebufferReadBufferEXT;
-    PFNGLGENERATEMULTITEXMIPMAPEXTPROC glGenerateMultiTexMipmapEXT;
-    PFNGLGENERATETEXTUREMIPMAPEXTPROC glGenerateTextureMipmapEXT;
-    PFNGLGETCOMPRESSEDMULTITEXIMAGEEXTPROC glGetCompressedMultiTexImageEXT;
-    PFNGLGETCOMPRESSEDTEXTUREIMAGEEXTPROC glGetCompressedTextureImageEXT;
-    PFNGLGETDOUBLEINDEXEDVEXTPROC glGetDoubleIndexedvEXT;
-    PFNGLGETDOUBLEI_VEXTPROC glGetDoublei_vEXT;
-    PFNGLGETFLOATINDEXEDVEXTPROC glGetFloatIndexedvEXT;
-    PFNGLGETFLOATI_VEXTPROC glGetFloati_vEXT;
-    PFNGLGETFRAMEBUFFERPARAMETERIVEXTPROC glGetFramebufferParameterivEXT;
-    PFNGLGETMULTITEXENVFVEXTPROC glGetMultiTexEnvfvEXT;
-    PFNGLGETMULTITEXENVIVEXTPROC glGetMultiTexEnvivEXT;
-    PFNGLGETMULTITEXGENDVEXTPROC glGetMultiTexGendvEXT;
-    PFNGLGETMULTITEXGENFVEXTPROC glGetMultiTexGenfvEXT;
-    PFNGLGETMULTITEXGENIVEXTPROC glGetMultiTexGenivEXT;
-    PFNGLGETMULTITEXIMAGEEXTPROC glGetMultiTexImageEXT;
-    PFNGLGETMULTITEXLEVELPARAMETERFVEXTPROC glGetMultiTexLevelParameterfvEXT;
-    PFNGLGETMULTITEXLEVELPARAMETERIVEXTPROC glGetMultiTexLevelParameterivEXT;
-    PFNGLGETMULTITEXPARAMETERIIVEXTPROC glGetMultiTexParameterIivEXT;
-    PFNGLGETMULTITEXPARAMETERIUIVEXTPROC glGetMultiTexParameterIuivEXT;
-    PFNGLGETMULTITEXPARAMETERFVEXTPROC glGetMultiTexParameterfvEXT;
-    PFNGLGETMULTITEXPARAMETERIVEXTPROC glGetMultiTexParameterivEXT;
-    PFNGLGETNAMEDBUFFERPARAMETERIVEXTPROC glGetNamedBufferParameterivEXT;
-    PFNGLGETNAMEDBUFFERPOINTERVEXTPROC glGetNamedBufferPointervEXT;
-    PFNGLGETNAMEDBUFFERSUBDATAEXTPROC glGetNamedBufferSubDataEXT;
-    PFNGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC glGetNamedFramebufferAttachmentParameterivEXT;
-    PFNGLGETNAMEDPROGRAMLOCALPARAMETERIIVEXTPROC glGetNamedProgramLocalParameterIivEXT;
-    PFNGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC glGetNamedProgramLocalParameterIuivEXT;
-    PFNGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC glGetNamedProgramLocalParameterdvEXT;
-    PFNGLGETNAMEDPROGRAMLOCALPARAMETERFVEXTPROC glGetNamedProgramLocalParameterfvEXT;
-    PFNGLGETNAMEDPROGRAMSTRINGEXTPROC glGetNamedProgramStringEXT;
-    PFNGLGETNAMEDPROGRAMIVEXTPROC glGetNamedProgramivEXT;
-    PFNGLGETNAMEDRENDERBUFFERPARAMETERIVEXTPROC glGetNamedRenderbufferParameterivEXT;
-    PFNGLGETPOINTERINDEXEDVEXTPROC glGetPointerIndexedvEXT;
-    PFNGLGETPOINTERI_VEXTPROC glGetPointeri_vEXT;
-    PFNGLGETTEXTUREIMAGEEXTPROC glGetTextureImageEXT;
-    PFNGLGETTEXTURELEVELPARAMETERFVEXTPROC glGetTextureLevelParameterfvEXT;
-    PFNGLGETTEXTURELEVELPARAMETERIVEXTPROC glGetTextureLevelParameterivEXT;
-    PFNGLGETTEXTUREPARAMETERIIVEXTPROC glGetTextureParameterIivEXT;
-    PFNGLGETTEXTUREPARAMETERIUIVEXTPROC glGetTextureParameterIuivEXT;
-    PFNGLGETTEXTUREPARAMETERFVEXTPROC glGetTextureParameterfvEXT;
-    PFNGLGETTEXTUREPARAMETERIVEXTPROC glGetTextureParameterivEXT;
-    PFNGLGETVERTEXARRAYINTEGERI_VEXTPROC glGetVertexArrayIntegeri_vEXT;
-    PFNGLGETVERTEXARRAYINTEGERVEXTPROC glGetVertexArrayIntegervEXT;
-    PFNGLGETVERTEXARRAYPOINTERI_VEXTPROC glGetVertexArrayPointeri_vEXT;
-    PFNGLGETVERTEXARRAYPOINTERVEXTPROC glGetVertexArrayPointervEXT;
-    PFNGLMAPNAMEDBUFFEREXTPROC glMapNamedBufferEXT;
-    PFNGLMAPNAMEDBUFFERRANGEEXTPROC glMapNamedBufferRangeEXT;
-    PFNGLMATRIXFRUSTUMEXTPROC glMatrixFrustumEXT;
-    PFNGLMATRIXLOADIDENTITYEXTPROC glMatrixLoadIdentityEXT;
-    PFNGLMATRIXLOADTRANSPOSEDEXTPROC glMatrixLoadTransposedEXT;
-    PFNGLMATRIXLOADTRANSPOSEFEXTPROC glMatrixLoadTransposefEXT;
-    PFNGLMATRIXLOADDEXTPROC glMatrixLoaddEXT;
-    PFNGLMATRIXLOADFEXTPROC glMatrixLoadfEXT;
-    PFNGLMATRIXMULTTRANSPOSEDEXTPROC glMatrixMultTransposedEXT;
-    PFNGLMATRIXMULTTRANSPOSEFEXTPROC glMatrixMultTransposefEXT;
-    PFNGLMATRIXMULTDEXTPROC glMatrixMultdEXT;
-    PFNGLMATRIXMULTFEXTPROC glMatrixMultfEXT;
-    PFNGLMATRIXORTHOEXTPROC glMatrixOrthoEXT;
-    PFNGLMATRIXPOPEXTPROC glMatrixPopEXT;
-    PFNGLMATRIXPUSHEXTPROC glMatrixPushEXT;
-    PFNGLMATRIXROTATEDEXTPROC glMatrixRotatedEXT;
-    PFNGLMATRIXROTATEFEXTPROC glMatrixRotatefEXT;
-    PFNGLMATRIXSCALEDEXTPROC glMatrixScaledEXT;
-    PFNGLMATRIXSCALEFEXTPROC glMatrixScalefEXT;
-    PFNGLMATRIXTRANSLATEDEXTPROC glMatrixTranslatedEXT;
-    PFNGLMATRIXTRANSLATEFEXTPROC glMatrixTranslatefEXT;
-    PFNGLMULTITEXBUFFEREXTPROC glMultiTexBufferEXT;
-    PFNGLMULTITEXCOORDPOINTEREXTPROC glMultiTexCoordPointerEXT;
-    PFNGLMULTITEXENVFEXTPROC glMultiTexEnvfEXT;
-    PFNGLMULTITEXENVFVEXTPROC glMultiTexEnvfvEXT;
-    PFNGLMULTITEXENVIEXTPROC glMultiTexEnviEXT;
-    PFNGLMULTITEXENVIVEXTPROC glMultiTexEnvivEXT;
-    PFNGLMULTITEXGENDEXTPROC glMultiTexGendEXT;
-    PFNGLMULTITEXGENDVEXTPROC glMultiTexGendvEXT;
-    PFNGLMULTITEXGENFEXTPROC glMultiTexGenfEXT;
-    PFNGLMULTITEXGENFVEXTPROC glMultiTexGenfvEXT;
-    PFNGLMULTITEXGENIEXTPROC glMultiTexGeniEXT;
-    PFNGLMULTITEXGENIVEXTPROC glMultiTexGenivEXT;
-    PFNGLMULTITEXIMAGE1DEXTPROC glMultiTexImage1DEXT;
-    PFNGLMULTITEXIMAGE2DEXTPROC glMultiTexImage2DEXT;
-    PFNGLMULTITEXIMAGE3DEXTPROC glMultiTexImage3DEXT;
-    PFNGLMULTITEXPARAMETERIIVEXTPROC glMultiTexParameterIivEXT;
-    PFNGLMULTITEXPARAMETERIUIVEXTPROC glMultiTexParameterIuivEXT;
-    PFNGLMULTITEXPARAMETERFEXTPROC glMultiTexParameterfEXT;
-    PFNGLMULTITEXPARAMETERFVEXTPROC glMultiTexParameterfvEXT;
-    PFNGLMULTITEXPARAMETERIEXTPROC glMultiTexParameteriEXT;
-    PFNGLMULTITEXPARAMETERIVEXTPROC glMultiTexParameterivEXT;
-    PFNGLMULTITEXRENDERBUFFEREXTPROC glMultiTexRenderbufferEXT;
-    PFNGLMULTITEXSUBIMAGE1DEXTPROC glMultiTexSubImage1DEXT;
-    PFNGLMULTITEXSUBIMAGE2DEXTPROC glMultiTexSubImage2DEXT;
-    PFNGLMULTITEXSUBIMAGE3DEXTPROC glMultiTexSubImage3DEXT;
-    PFNGLNAMEDBUFFERDATAEXTPROC glNamedBufferDataEXT;
-    PFNGLNAMEDBUFFERSUBDATAEXTPROC glNamedBufferSubDataEXT;
-    PFNGLNAMEDCOPYBUFFERSUBDATAEXTPROC glNamedCopyBufferSubDataEXT;
-    PFNGLNAMEDFRAMEBUFFERRENDERBUFFEREXTPROC glNamedFramebufferRenderbufferEXT;
-    PFNGLNAMEDFRAMEBUFFERTEXTURE1DEXTPROC glNamedFramebufferTexture1DEXT;
-    PFNGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC glNamedFramebufferTexture2DEXT;
-    PFNGLNAMEDFRAMEBUFFERTEXTURE3DEXTPROC glNamedFramebufferTexture3DEXT;
-    PFNGLNAMEDFRAMEBUFFERTEXTUREEXTPROC glNamedFramebufferTextureEXT;
-    PFNGLNAMEDFRAMEBUFFERTEXTUREFACEEXTPROC glNamedFramebufferTextureFaceEXT;
-    PFNGLNAMEDFRAMEBUFFERTEXTURELAYEREXTPROC glNamedFramebufferTextureLayerEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETER4DEXTPROC glNamedProgramLocalParameter4dEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETER4DVEXTPROC glNamedProgramLocalParameter4dvEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC glNamedProgramLocalParameter4fEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETER4FVEXTPROC glNamedProgramLocalParameter4fvEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETERI4IEXTPROC glNamedProgramLocalParameterI4iEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETERI4IVEXTPROC glNamedProgramLocalParameterI4ivEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC glNamedProgramLocalParameterI4uiEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC glNamedProgramLocalParameterI4uivEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETERS4FVEXTPROC glNamedProgramLocalParameters4fvEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETERSI4IVEXTPROC glNamedProgramLocalParametersI4ivEXT;
-    PFNGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC glNamedProgramLocalParametersI4uivEXT;
-    PFNGLNAMEDPROGRAMSTRINGEXTPROC glNamedProgramStringEXT;
-    PFNGLNAMEDRENDERBUFFERSTORAGEEXTPROC glNamedRenderbufferStorageEXT;
-    PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLECOVERAGEEXTPROC glNamedRenderbufferStorageMultisampleCoverageEXT;
-    PFNGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC glNamedRenderbufferStorageMultisampleEXT;
-    PFNGLPROGRAMUNIFORM1DEXTPROC glProgramUniform1dEXT;
-    PFNGLPROGRAMUNIFORM1DVEXTPROC glProgramUniform1dvEXT;
-    PFNGLPROGRAMUNIFORM1FEXTPROC glProgramUniform1fEXT;
-    PFNGLPROGRAMUNIFORM1FVEXTPROC glProgramUniform1fvEXT;
-    PFNGLPROGRAMUNIFORM1IEXTPROC glProgramUniform1iEXT;
-    PFNGLPROGRAMUNIFORM1IVEXTPROC glProgramUniform1ivEXT;
-    PFNGLPROGRAMUNIFORM1UIEXTPROC glProgramUniform1uiEXT;
-    PFNGLPROGRAMUNIFORM1UIVEXTPROC glProgramUniform1uivEXT;
-    PFNGLPROGRAMUNIFORM2DEXTPROC glProgramUniform2dEXT;
-    PFNGLPROGRAMUNIFORM2DVEXTPROC glProgramUniform2dvEXT;
-    PFNGLPROGRAMUNIFORM2FEXTPROC glProgramUniform2fEXT;
-    PFNGLPROGRAMUNIFORM2FVEXTPROC glProgramUniform2fvEXT;
-    PFNGLPROGRAMUNIFORM2IEXTPROC glProgramUniform2iEXT;
-    PFNGLPROGRAMUNIFORM2IVEXTPROC glProgramUniform2ivEXT;
-    PFNGLPROGRAMUNIFORM2UIEXTPROC glProgramUniform2uiEXT;
-    PFNGLPROGRAMUNIFORM2UIVEXTPROC glProgramUniform2uivEXT;
-    PFNGLPROGRAMUNIFORM3DEXTPROC glProgramUniform3dEXT;
-    PFNGLPROGRAMUNIFORM3DVEXTPROC glProgramUniform3dvEXT;
-    PFNGLPROGRAMUNIFORM3FEXTPROC glProgramUniform3fEXT;
-    PFNGLPROGRAMUNIFORM3FVEXTPROC glProgramUniform3fvEXT;
-    PFNGLPROGRAMUNIFORM3IEXTPROC glProgramUniform3iEXT;
-    PFNGLPROGRAMUNIFORM3IVEXTPROC glProgramUniform3ivEXT;
-    PFNGLPROGRAMUNIFORM3UIEXTPROC glProgramUniform3uiEXT;
-    PFNGLPROGRAMUNIFORM3UIVEXTPROC glProgramUniform3uivEXT;
-    PFNGLPROGRAMUNIFORM4DEXTPROC glProgramUniform4dEXT;
-    PFNGLPROGRAMUNIFORM4DVEXTPROC glProgramUniform4dvEXT;
-    PFNGLPROGRAMUNIFORM4FEXTPROC glProgramUniform4fEXT;
-    PFNGLPROGRAMUNIFORM4FVEXTPROC glProgramUniform4fvEXT;
-    PFNGLPROGRAMUNIFORM4IEXTPROC glProgramUniform4iEXT;
-    PFNGLPROGRAMUNIFORM4IVEXTPROC glProgramUniform4ivEXT;
-    PFNGLPROGRAMUNIFORM4UIEXTPROC glProgramUniform4uiEXT;
-    PFNGLPROGRAMUNIFORM4UIVEXTPROC glProgramUniform4uivEXT;
-    PFNGLPROGRAMUNIFORMMATRIX2DVEXTPROC glProgramUniformMatrix2dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX2FVEXTPROC glProgramUniformMatrix2fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX2X3DVEXTPROC glProgramUniformMatrix2x3dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX2X3FVEXTPROC glProgramUniformMatrix2x3fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX2X4DVEXTPROC glProgramUniformMatrix2x4dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX2X4FVEXTPROC glProgramUniformMatrix2x4fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX3DVEXTPROC glProgramUniformMatrix3dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX3FVEXTPROC glProgramUniformMatrix3fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX3X2DVEXTPROC glProgramUniformMatrix3x2dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX3X2FVEXTPROC glProgramUniformMatrix3x2fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX3X4DVEXTPROC glProgramUniformMatrix3x4dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX3X4FVEXTPROC glProgramUniformMatrix3x4fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX4DVEXTPROC glProgramUniformMatrix4dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX4FVEXTPROC glProgramUniformMatrix4fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX4X2DVEXTPROC glProgramUniformMatrix4x2dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX4X2FVEXTPROC glProgramUniformMatrix4x2fvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX4X3DVEXTPROC glProgramUniformMatrix4x3dvEXT;
-    PFNGLPROGRAMUNIFORMMATRIX4X3FVEXTPROC glProgramUniformMatrix4x3fvEXT;
-    PFNGLPUSHCLIENTATTRIBDEFAULTEXTPROC glPushClientAttribDefaultEXT;
-    PFNGLTEXTUREBUFFEREXTPROC glTextureBufferEXT;
-    PFNGLTEXTUREIMAGE1DEXTPROC glTextureImage1DEXT;
-    PFNGLTEXTUREIMAGE2DEXTPROC glTextureImage2DEXT;
-    PFNGLTEXTUREIMAGE3DEXTPROC glTextureImage3DEXT;
-    PFNGLTEXTUREPARAMETERIIVEXTPROC glTextureParameterIivEXT;
-    PFNGLTEXTUREPARAMETERIUIVEXTPROC glTextureParameterIuivEXT;
-    PFNGLTEXTUREPARAMETERFEXTPROC glTextureParameterfEXT;
-    PFNGLTEXTUREPARAMETERFVEXTPROC glTextureParameterfvEXT;
-    PFNGLTEXTUREPARAMETERIEXTPROC glTextureParameteriEXT;
-    PFNGLTEXTUREPARAMETERIVEXTPROC glTextureParameterivEXT;
-    PFNGLTEXTURERENDERBUFFEREXTPROC glTextureRenderbufferEXT;
-    PFNGLTEXTURESUBIMAGE1DEXTPROC glTextureSubImage1DEXT;
-    PFNGLTEXTURESUBIMAGE2DEXTPROC glTextureSubImage2DEXT;
-    PFNGLTEXTURESUBIMAGE3DEXTPROC glTextureSubImage3DEXT;
-    PFNGLUNMAPNAMEDBUFFEREXTPROC glUnmapNamedBufferEXT;
-    PFNGLVERTEXARRAYCOLOROFFSETEXTPROC glVertexArrayColorOffsetEXT;
-    PFNGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC glVertexArrayEdgeFlagOffsetEXT;
-    PFNGLVERTEXARRAYFOGCOORDOFFSETEXTPROC glVertexArrayFogCoordOffsetEXT;
-    PFNGLVERTEXARRAYINDEXOFFSETEXTPROC glVertexArrayIndexOffsetEXT;
-    PFNGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC glVertexArrayMultiTexCoordOffsetEXT;
-    PFNGLVERTEXARRAYNORMALOFFSETEXTPROC glVertexArrayNormalOffsetEXT;
-    PFNGLVERTEXARRAYSECONDARYCOLOROFFSETEXTPROC glVertexArraySecondaryColorOffsetEXT;
-    PFNGLVERTEXARRAYTEXCOORDOFFSETEXTPROC glVertexArrayTexCoordOffsetEXT;
-    PFNGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC glVertexArrayVertexAttribIOffsetEXT;
-    PFNGLVERTEXARRAYVERTEXATTRIBOFFSETEXTPROC glVertexArrayVertexAttribOffsetEXT;
-    PFNGLVERTEXARRAYVERTEXOFFSETEXTPROC glVertexArrayVertexOffsetEXT;
+    REGALGLBINDMULTITEXTUREEXTPROC glBindMultiTextureEXT;
+    REGALGLCHECKNAMEDFRAMEBUFFERSTATUSEXTPROC glCheckNamedFramebufferStatusEXT;
+    REGALGLCLIENTATTRIBDEFAULTEXTPROC glClientAttribDefaultEXT;
+    REGALGLCOMPRESSEDMULTITEXIMAGE1DEXTPROC glCompressedMultiTexImage1DEXT;
+    REGALGLCOMPRESSEDMULTITEXIMAGE2DEXTPROC glCompressedMultiTexImage2DEXT;
+    REGALGLCOMPRESSEDMULTITEXIMAGE3DEXTPROC glCompressedMultiTexImage3DEXT;
+    REGALGLCOMPRESSEDMULTITEXSUBIMAGE1DEXTPROC glCompressedMultiTexSubImage1DEXT;
+    REGALGLCOMPRESSEDMULTITEXSUBIMAGE2DEXTPROC glCompressedMultiTexSubImage2DEXT;
+    REGALGLCOMPRESSEDMULTITEXSUBIMAGE3DEXTPROC glCompressedMultiTexSubImage3DEXT;
+    REGALGLCOMPRESSEDTEXTUREIMAGE1DEXTPROC glCompressedTextureImage1DEXT;
+    REGALGLCOMPRESSEDTEXTUREIMAGE2DEXTPROC glCompressedTextureImage2DEXT;
+    REGALGLCOMPRESSEDTEXTUREIMAGE3DEXTPROC glCompressedTextureImage3DEXT;
+    REGALGLCOMPRESSEDTEXTURESUBIMAGE1DEXTPROC glCompressedTextureSubImage1DEXT;
+    REGALGLCOMPRESSEDTEXTURESUBIMAGE2DEXTPROC glCompressedTextureSubImage2DEXT;
+    REGALGLCOMPRESSEDTEXTURESUBIMAGE3DEXTPROC glCompressedTextureSubImage3DEXT;
+    REGALGLCOPYMULTITEXIMAGE1DEXTPROC glCopyMultiTexImage1DEXT;
+    REGALGLCOPYMULTITEXIMAGE2DEXTPROC glCopyMultiTexImage2DEXT;
+    REGALGLCOPYMULTITEXSUBIMAGE1DEXTPROC glCopyMultiTexSubImage1DEXT;
+    REGALGLCOPYMULTITEXSUBIMAGE2DEXTPROC glCopyMultiTexSubImage2DEXT;
+    REGALGLCOPYMULTITEXSUBIMAGE3DEXTPROC glCopyMultiTexSubImage3DEXT;
+    REGALGLCOPYTEXTUREIMAGE1DEXTPROC glCopyTextureImage1DEXT;
+    REGALGLCOPYTEXTUREIMAGE2DEXTPROC glCopyTextureImage2DEXT;
+    REGALGLCOPYTEXTURESUBIMAGE1DEXTPROC glCopyTextureSubImage1DEXT;
+    REGALGLCOPYTEXTURESUBIMAGE2DEXTPROC glCopyTextureSubImage2DEXT;
+    REGALGLCOPYTEXTURESUBIMAGE3DEXTPROC glCopyTextureSubImage3DEXT;
+    REGALGLDISABLECLIENTSTATEINDEXEDEXTPROC glDisableClientStateIndexedEXT;
+    REGALGLDISABLECLIENTSTATEIEXTPROC glDisableClientStateiEXT;
+    REGALGLDISABLEVERTEXARRAYATTRIBEXTPROC glDisableVertexArrayAttribEXT;
+    REGALGLDISABLEVERTEXARRAYEXTPROC glDisableVertexArrayEXT;
+    REGALGLENABLECLIENTSTATEINDEXEDEXTPROC glEnableClientStateIndexedEXT;
+    REGALGLENABLECLIENTSTATEIEXTPROC glEnableClientStateiEXT;
+    REGALGLENABLEVERTEXARRAYATTRIBEXTPROC glEnableVertexArrayAttribEXT;
+    REGALGLENABLEVERTEXARRAYEXTPROC glEnableVertexArrayEXT;
+    REGALGLFLUSHMAPPEDNAMEDBUFFERRANGEEXTPROC glFlushMappedNamedBufferRangeEXT;
+    REGALGLFRAMEBUFFERDRAWBUFFEREXTPROC glFramebufferDrawBufferEXT;
+    REGALGLFRAMEBUFFERDRAWBUFFERSEXTPROC glFramebufferDrawBuffersEXT;
+    REGALGLFRAMEBUFFERREADBUFFEREXTPROC glFramebufferReadBufferEXT;
+    REGALGLGENERATEMULTITEXMIPMAPEXTPROC glGenerateMultiTexMipmapEXT;
+    REGALGLGENERATETEXTUREMIPMAPEXTPROC glGenerateTextureMipmapEXT;
+    REGALGLGETCOMPRESSEDMULTITEXIMAGEEXTPROC glGetCompressedMultiTexImageEXT;
+    REGALGLGETCOMPRESSEDTEXTUREIMAGEEXTPROC glGetCompressedTextureImageEXT;
+    REGALGLGETDOUBLEINDEXEDVEXTPROC glGetDoubleIndexedvEXT;
+    REGALGLGETDOUBLEI_VEXTPROC glGetDoublei_vEXT;
+    REGALGLGETFLOATINDEXEDVEXTPROC glGetFloatIndexedvEXT;
+    REGALGLGETFLOATI_VEXTPROC glGetFloati_vEXT;
+    REGALGLGETFRAMEBUFFERPARAMETERIVEXTPROC glGetFramebufferParameterivEXT;
+    REGALGLGETMULTITEXENVFVEXTPROC glGetMultiTexEnvfvEXT;
+    REGALGLGETMULTITEXENVIVEXTPROC glGetMultiTexEnvivEXT;
+    REGALGLGETMULTITEXGENDVEXTPROC glGetMultiTexGendvEXT;
+    REGALGLGETMULTITEXGENFVEXTPROC glGetMultiTexGenfvEXT;
+    REGALGLGETMULTITEXGENIVEXTPROC glGetMultiTexGenivEXT;
+    REGALGLGETMULTITEXIMAGEEXTPROC glGetMultiTexImageEXT;
+    REGALGLGETMULTITEXLEVELPARAMETERFVEXTPROC glGetMultiTexLevelParameterfvEXT;
+    REGALGLGETMULTITEXLEVELPARAMETERIVEXTPROC glGetMultiTexLevelParameterivEXT;
+    REGALGLGETMULTITEXPARAMETERIIVEXTPROC glGetMultiTexParameterIivEXT;
+    REGALGLGETMULTITEXPARAMETERIUIVEXTPROC glGetMultiTexParameterIuivEXT;
+    REGALGLGETMULTITEXPARAMETERFVEXTPROC glGetMultiTexParameterfvEXT;
+    REGALGLGETMULTITEXPARAMETERIVEXTPROC glGetMultiTexParameterivEXT;
+    REGALGLGETNAMEDBUFFERPARAMETERIVEXTPROC glGetNamedBufferParameterivEXT;
+    REGALGLGETNAMEDBUFFERPOINTERVEXTPROC glGetNamedBufferPointervEXT;
+    REGALGLGETNAMEDBUFFERSUBDATAEXTPROC glGetNamedBufferSubDataEXT;
+    REGALGLGETNAMEDFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC glGetNamedFramebufferAttachmentParameterivEXT;
+    REGALGLGETNAMEDPROGRAMLOCALPARAMETERIIVEXTPROC glGetNamedProgramLocalParameterIivEXT;
+    REGALGLGETNAMEDPROGRAMLOCALPARAMETERIUIVEXTPROC glGetNamedProgramLocalParameterIuivEXT;
+    REGALGLGETNAMEDPROGRAMLOCALPARAMETERDVEXTPROC glGetNamedProgramLocalParameterdvEXT;
+    REGALGLGETNAMEDPROGRAMLOCALPARAMETERFVEXTPROC glGetNamedProgramLocalParameterfvEXT;
+    REGALGLGETNAMEDPROGRAMSTRINGEXTPROC glGetNamedProgramStringEXT;
+    REGALGLGETNAMEDPROGRAMIVEXTPROC glGetNamedProgramivEXT;
+    REGALGLGETNAMEDRENDERBUFFERPARAMETERIVEXTPROC glGetNamedRenderbufferParameterivEXT;
+    REGALGLGETPOINTERINDEXEDVEXTPROC glGetPointerIndexedvEXT;
+    REGALGLGETPOINTERI_VEXTPROC glGetPointeri_vEXT;
+    REGALGLGETTEXTUREIMAGEEXTPROC glGetTextureImageEXT;
+    REGALGLGETTEXTURELEVELPARAMETERFVEXTPROC glGetTextureLevelParameterfvEXT;
+    REGALGLGETTEXTURELEVELPARAMETERIVEXTPROC glGetTextureLevelParameterivEXT;
+    REGALGLGETTEXTUREPARAMETERIIVEXTPROC glGetTextureParameterIivEXT;
+    REGALGLGETTEXTUREPARAMETERIUIVEXTPROC glGetTextureParameterIuivEXT;
+    REGALGLGETTEXTUREPARAMETERFVEXTPROC glGetTextureParameterfvEXT;
+    REGALGLGETTEXTUREPARAMETERIVEXTPROC glGetTextureParameterivEXT;
+    REGALGLGETVERTEXARRAYINTEGERI_VEXTPROC glGetVertexArrayIntegeri_vEXT;
+    REGALGLGETVERTEXARRAYINTEGERVEXTPROC glGetVertexArrayIntegervEXT;
+    REGALGLGETVERTEXARRAYPOINTERI_VEXTPROC glGetVertexArrayPointeri_vEXT;
+    REGALGLGETVERTEXARRAYPOINTERVEXTPROC glGetVertexArrayPointervEXT;
+    REGALGLMAPNAMEDBUFFEREXTPROC glMapNamedBufferEXT;
+    REGALGLMAPNAMEDBUFFERRANGEEXTPROC glMapNamedBufferRangeEXT;
+    REGALGLMATRIXFRUSTUMEXTPROC glMatrixFrustumEXT;
+    REGALGLMATRIXLOADIDENTITYEXTPROC glMatrixLoadIdentityEXT;
+    REGALGLMATRIXLOADTRANSPOSEDEXTPROC glMatrixLoadTransposedEXT;
+    REGALGLMATRIXLOADTRANSPOSEFEXTPROC glMatrixLoadTransposefEXT;
+    REGALGLMATRIXLOADDEXTPROC glMatrixLoaddEXT;
+    REGALGLMATRIXLOADFEXTPROC glMatrixLoadfEXT;
+    REGALGLMATRIXMULTTRANSPOSEDEXTPROC glMatrixMultTransposedEXT;
+    REGALGLMATRIXMULTTRANSPOSEFEXTPROC glMatrixMultTransposefEXT;
+    REGALGLMATRIXMULTDEXTPROC glMatrixMultdEXT;
+    REGALGLMATRIXMULTFEXTPROC glMatrixMultfEXT;
+    REGALGLMATRIXORTHOEXTPROC glMatrixOrthoEXT;
+    REGALGLMATRIXPOPEXTPROC glMatrixPopEXT;
+    REGALGLMATRIXPUSHEXTPROC glMatrixPushEXT;
+    REGALGLMATRIXROTATEDEXTPROC glMatrixRotatedEXT;
+    REGALGLMATRIXROTATEFEXTPROC glMatrixRotatefEXT;
+    REGALGLMATRIXSCALEDEXTPROC glMatrixScaledEXT;
+    REGALGLMATRIXSCALEFEXTPROC glMatrixScalefEXT;
+    REGALGLMATRIXTRANSLATEDEXTPROC glMatrixTranslatedEXT;
+    REGALGLMATRIXTRANSLATEFEXTPROC glMatrixTranslatefEXT;
+    REGALGLMULTITEXBUFFEREXTPROC glMultiTexBufferEXT;
+    REGALGLMULTITEXCOORDPOINTEREXTPROC glMultiTexCoordPointerEXT;
+    REGALGLMULTITEXENVFEXTPROC glMultiTexEnvfEXT;
+    REGALGLMULTITEXENVFVEXTPROC glMultiTexEnvfvEXT;
+    REGALGLMULTITEXENVIEXTPROC glMultiTexEnviEXT;
+    REGALGLMULTITEXENVIVEXTPROC glMultiTexEnvivEXT;
+    REGALGLMULTITEXGENDEXTPROC glMultiTexGendEXT;
+    REGALGLMULTITEXGENDVEXTPROC glMultiTexGendvEXT;
+    REGALGLMULTITEXGENFEXTPROC glMultiTexGenfEXT;
+    REGALGLMULTITEXGENFVEXTPROC glMultiTexGenfvEXT;
+    REGALGLMULTITEXGENIEXTPROC glMultiTexGeniEXT;
+    REGALGLMULTITEXGENIVEXTPROC glMultiTexGenivEXT;
+    REGALGLMULTITEXIMAGE1DEXTPROC glMultiTexImage1DEXT;
+    REGALGLMULTITEXIMAGE2DEXTPROC glMultiTexImage2DEXT;
+    REGALGLMULTITEXIMAGE3DEXTPROC glMultiTexImage3DEXT;
+    REGALGLMULTITEXPARAMETERIIVEXTPROC glMultiTexParameterIivEXT;
+    REGALGLMULTITEXPARAMETERIUIVEXTPROC glMultiTexParameterIuivEXT;
+    REGALGLMULTITEXPARAMETERFEXTPROC glMultiTexParameterfEXT;
+    REGALGLMULTITEXPARAMETERFVEXTPROC glMultiTexParameterfvEXT;
+    REGALGLMULTITEXPARAMETERIEXTPROC glMultiTexParameteriEXT;
+    REGALGLMULTITEXPARAMETERIVEXTPROC glMultiTexParameterivEXT;
+    REGALGLMULTITEXRENDERBUFFEREXTPROC glMultiTexRenderbufferEXT;
+    REGALGLMULTITEXSUBIMAGE1DEXTPROC glMultiTexSubImage1DEXT;
+    REGALGLMULTITEXSUBIMAGE2DEXTPROC glMultiTexSubImage2DEXT;
+    REGALGLMULTITEXSUBIMAGE3DEXTPROC glMultiTexSubImage3DEXT;
+    REGALGLNAMEDBUFFERDATAEXTPROC glNamedBufferDataEXT;
+    REGALGLNAMEDBUFFERSUBDATAEXTPROC glNamedBufferSubDataEXT;
+    REGALGLNAMEDCOPYBUFFERSUBDATAEXTPROC glNamedCopyBufferSubDataEXT;
+    REGALGLNAMEDFRAMEBUFFERRENDERBUFFEREXTPROC glNamedFramebufferRenderbufferEXT;
+    REGALGLNAMEDFRAMEBUFFERTEXTURE1DEXTPROC glNamedFramebufferTexture1DEXT;
+    REGALGLNAMEDFRAMEBUFFERTEXTURE2DEXTPROC glNamedFramebufferTexture2DEXT;
+    REGALGLNAMEDFRAMEBUFFERTEXTURE3DEXTPROC glNamedFramebufferTexture3DEXT;
+    REGALGLNAMEDFRAMEBUFFERTEXTUREEXTPROC glNamedFramebufferTextureEXT;
+    REGALGLNAMEDFRAMEBUFFERTEXTUREFACEEXTPROC glNamedFramebufferTextureFaceEXT;
+    REGALGLNAMEDFRAMEBUFFERTEXTURELAYEREXTPROC glNamedFramebufferTextureLayerEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETER4DEXTPROC glNamedProgramLocalParameter4dEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETER4DVEXTPROC glNamedProgramLocalParameter4dvEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETER4FEXTPROC glNamedProgramLocalParameter4fEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETER4FVEXTPROC glNamedProgramLocalParameter4fvEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETERI4IEXTPROC glNamedProgramLocalParameterI4iEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETERI4IVEXTPROC glNamedProgramLocalParameterI4ivEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETERI4UIEXTPROC glNamedProgramLocalParameterI4uiEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETERI4UIVEXTPROC glNamedProgramLocalParameterI4uivEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETERS4FVEXTPROC glNamedProgramLocalParameters4fvEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETERSI4IVEXTPROC glNamedProgramLocalParametersI4ivEXT;
+    REGALGLNAMEDPROGRAMLOCALPARAMETERSI4UIVEXTPROC glNamedProgramLocalParametersI4uivEXT;
+    REGALGLNAMEDPROGRAMSTRINGEXTPROC glNamedProgramStringEXT;
+    REGALGLNAMEDRENDERBUFFERSTORAGEEXTPROC glNamedRenderbufferStorageEXT;
+    REGALGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLECOVERAGEEXTPROC glNamedRenderbufferStorageMultisampleCoverageEXT;
+    REGALGLNAMEDRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC glNamedRenderbufferStorageMultisampleEXT;
+    REGALGLPROGRAMUNIFORM1DEXTPROC glProgramUniform1dEXT;
+    REGALGLPROGRAMUNIFORM1DVEXTPROC glProgramUniform1dvEXT;
+    REGALGLPROGRAMUNIFORM1FEXTPROC glProgramUniform1fEXT;
+    REGALGLPROGRAMUNIFORM1FVEXTPROC glProgramUniform1fvEXT;
+    REGALGLPROGRAMUNIFORM1IEXTPROC glProgramUniform1iEXT;
+    REGALGLPROGRAMUNIFORM1IVEXTPROC glProgramUniform1ivEXT;
+    REGALGLPROGRAMUNIFORM1UIEXTPROC glProgramUniform1uiEXT;
+    REGALGLPROGRAMUNIFORM1UIVEXTPROC glProgramUniform1uivEXT;
+    REGALGLPROGRAMUNIFORM2DEXTPROC glProgramUniform2dEXT;
+    REGALGLPROGRAMUNIFORM2DVEXTPROC glProgramUniform2dvEXT;
+    REGALGLPROGRAMUNIFORM2FEXTPROC glProgramUniform2fEXT;
+    REGALGLPROGRAMUNIFORM2FVEXTPROC glProgramUniform2fvEXT;
+    REGALGLPROGRAMUNIFORM2IEXTPROC glProgramUniform2iEXT;
+    REGALGLPROGRAMUNIFORM2IVEXTPROC glProgramUniform2ivEXT;
+    REGALGLPROGRAMUNIFORM2UIEXTPROC glProgramUniform2uiEXT;
+    REGALGLPROGRAMUNIFORM2UIVEXTPROC glProgramUniform2uivEXT;
+    REGALGLPROGRAMUNIFORM3DEXTPROC glProgramUniform3dEXT;
+    REGALGLPROGRAMUNIFORM3DVEXTPROC glProgramUniform3dvEXT;
+    REGALGLPROGRAMUNIFORM3FEXTPROC glProgramUniform3fEXT;
+    REGALGLPROGRAMUNIFORM3FVEXTPROC glProgramUniform3fvEXT;
+    REGALGLPROGRAMUNIFORM3IEXTPROC glProgramUniform3iEXT;
+    REGALGLPROGRAMUNIFORM3IVEXTPROC glProgramUniform3ivEXT;
+    REGALGLPROGRAMUNIFORM3UIEXTPROC glProgramUniform3uiEXT;
+    REGALGLPROGRAMUNIFORM3UIVEXTPROC glProgramUniform3uivEXT;
+    REGALGLPROGRAMUNIFORM4DEXTPROC glProgramUniform4dEXT;
+    REGALGLPROGRAMUNIFORM4DVEXTPROC glProgramUniform4dvEXT;
+    REGALGLPROGRAMUNIFORM4FEXTPROC glProgramUniform4fEXT;
+    REGALGLPROGRAMUNIFORM4FVEXTPROC glProgramUniform4fvEXT;
+    REGALGLPROGRAMUNIFORM4IEXTPROC glProgramUniform4iEXT;
+    REGALGLPROGRAMUNIFORM4IVEXTPROC glProgramUniform4ivEXT;
+    REGALGLPROGRAMUNIFORM4UIEXTPROC glProgramUniform4uiEXT;
+    REGALGLPROGRAMUNIFORM4UIVEXTPROC glProgramUniform4uivEXT;
+    REGALGLPROGRAMUNIFORMMATRIX2DVEXTPROC glProgramUniformMatrix2dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX2FVEXTPROC glProgramUniformMatrix2fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX2X3DVEXTPROC glProgramUniformMatrix2x3dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX2X3FVEXTPROC glProgramUniformMatrix2x3fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX2X4DVEXTPROC glProgramUniformMatrix2x4dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX2X4FVEXTPROC glProgramUniformMatrix2x4fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX3DVEXTPROC glProgramUniformMatrix3dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX3FVEXTPROC glProgramUniformMatrix3fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX3X2DVEXTPROC glProgramUniformMatrix3x2dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX3X2FVEXTPROC glProgramUniformMatrix3x2fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX3X4DVEXTPROC glProgramUniformMatrix3x4dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX3X4FVEXTPROC glProgramUniformMatrix3x4fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX4DVEXTPROC glProgramUniformMatrix4dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX4FVEXTPROC glProgramUniformMatrix4fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX4X2DVEXTPROC glProgramUniformMatrix4x2dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX4X2FVEXTPROC glProgramUniformMatrix4x2fvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX4X3DVEXTPROC glProgramUniformMatrix4x3dvEXT;
+    REGALGLPROGRAMUNIFORMMATRIX4X3FVEXTPROC glProgramUniformMatrix4x3fvEXT;
+    REGALGLPUSHCLIENTATTRIBDEFAULTEXTPROC glPushClientAttribDefaultEXT;
+    REGALGLTEXTUREBUFFEREXTPROC glTextureBufferEXT;
+    REGALGLTEXTUREIMAGE1DEXTPROC glTextureImage1DEXT;
+    REGALGLTEXTUREIMAGE2DEXTPROC glTextureImage2DEXT;
+    REGALGLTEXTUREIMAGE3DEXTPROC glTextureImage3DEXT;
+    REGALGLTEXTUREPARAMETERIIVEXTPROC glTextureParameterIivEXT;
+    REGALGLTEXTUREPARAMETERIUIVEXTPROC glTextureParameterIuivEXT;
+    REGALGLTEXTUREPARAMETERFEXTPROC glTextureParameterfEXT;
+    REGALGLTEXTUREPARAMETERFVEXTPROC glTextureParameterfvEXT;
+    REGALGLTEXTUREPARAMETERIEXTPROC glTextureParameteriEXT;
+    REGALGLTEXTUREPARAMETERIVEXTPROC glTextureParameterivEXT;
+    REGALGLTEXTURERENDERBUFFEREXTPROC glTextureRenderbufferEXT;
+    REGALGLTEXTURESUBIMAGE1DEXTPROC glTextureSubImage1DEXT;
+    REGALGLTEXTURESUBIMAGE2DEXTPROC glTextureSubImage2DEXT;
+    REGALGLTEXTURESUBIMAGE3DEXTPROC glTextureSubImage3DEXT;
+    REGALGLUNMAPNAMEDBUFFEREXTPROC glUnmapNamedBufferEXT;
+    REGALGLVERTEXARRAYCOLOROFFSETEXTPROC glVertexArrayColorOffsetEXT;
+    REGALGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC glVertexArrayEdgeFlagOffsetEXT;
+    REGALGLVERTEXARRAYFOGCOORDOFFSETEXTPROC glVertexArrayFogCoordOffsetEXT;
+    REGALGLVERTEXARRAYINDEXOFFSETEXTPROC glVertexArrayIndexOffsetEXT;
+    REGALGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC glVertexArrayMultiTexCoordOffsetEXT;
+    REGALGLVERTEXARRAYNORMALOFFSETEXTPROC glVertexArrayNormalOffsetEXT;
+    REGALGLVERTEXARRAYSECONDARYCOLOROFFSETEXTPROC glVertexArraySecondaryColorOffsetEXT;
+    REGALGLVERTEXARRAYTEXCOORDOFFSETEXTPROC glVertexArrayTexCoordOffsetEXT;
+    REGALGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC glVertexArrayVertexAttribIOffsetEXT;
+    REGALGLVERTEXARRAYVERTEXATTRIBOFFSETEXTPROC glVertexArrayVertexAttribOffsetEXT;
+    REGALGLVERTEXARRAYVERTEXOFFSETEXTPROC glVertexArrayVertexOffsetEXT;
 
     // GL_EXT_discard_framebuffer
 
-    PFNGLDISCARDFRAMEBUFFEREXTPROC glDiscardFramebufferEXT;
+    REGALGLDISCARDFRAMEBUFFEREXTPROC glDiscardFramebufferEXT;
 
     // GL_EXT_disjoint_timer_query
 
-    PFNGLGETQUERYOBJECTIVEXTPROC glGetQueryObjectivEXT;
-    PFNGLQUERYCOUNTEREXTPROC glQueryCounterEXT;
+    REGALGLGETQUERYOBJECTIVEXTPROC glGetQueryObjectivEXT;
+    REGALGLQUERYCOUNTEREXTPROC glQueryCounterEXT;
 
     // GL_EXT_draw_buffers2
 
-    PFNGLCOLORMASKINDEXEDEXTPROC glColorMaskIndexedEXT;
-    PFNGLDISABLEINDEXEDEXTPROC glDisableIndexedEXT;
-    PFNGLENABLEINDEXEDEXTPROC glEnableIndexedEXT;
-    PFNGLGETBOOLEANINDEXEDVEXTPROC glGetBooleanIndexedvEXT;
-    PFNGLGETINTEGERINDEXEDVEXTPROC glGetIntegerIndexedvEXT;
-    PFNGLISENABLEDINDEXEDEXTPROC glIsEnabledIndexedEXT;
+    REGALGLCOLORMASKINDEXEDEXTPROC glColorMaskIndexedEXT;
+    REGALGLDISABLEINDEXEDEXTPROC glDisableIndexedEXT;
+    REGALGLENABLEINDEXEDEXTPROC glEnableIndexedEXT;
+    REGALGLGETBOOLEANINDEXEDVEXTPROC glGetBooleanIndexedvEXT;
+    REGALGLGETINTEGERINDEXEDVEXTPROC glGetIntegerIndexedvEXT;
+    REGALGLISENABLEDINDEXEDEXTPROC glIsEnabledIndexedEXT;
 
     // GL_EXT_draw_instanced
 
-    PFNGLDRAWARRAYSINSTANCEDEXTPROC glDrawArraysInstancedEXT;
-    PFNGLDRAWELEMENTSINSTANCEDEXTPROC glDrawElementsInstancedEXT;
+    REGALGLDRAWARRAYSINSTANCEDEXTPROC glDrawArraysInstancedEXT;
+    REGALGLDRAWELEMENTSINSTANCEDEXTPROC glDrawElementsInstancedEXT;
 
     // GL_EXT_draw_range_elements
 
-    PFNGLDRAWRANGEELEMENTSEXTPROC glDrawRangeElementsEXT;
+    REGALGLDRAWRANGEELEMENTSEXTPROC glDrawRangeElementsEXT;
 
     // GL_EXT_fog_coord
 
-    PFNGLFOGCOORDPOINTEREXTPROC glFogCoordPointerEXT;
-    PFNGLFOGCOORDDEXTPROC glFogCoorddEXT;
-    PFNGLFOGCOORDDVEXTPROC glFogCoorddvEXT;
-    PFNGLFOGCOORDFEXTPROC glFogCoordfEXT;
-    PFNGLFOGCOORDFVEXTPROC glFogCoordfvEXT;
+    REGALGLFOGCOORDPOINTEREXTPROC glFogCoordPointerEXT;
+    REGALGLFOGCOORDDEXTPROC glFogCoorddEXT;
+    REGALGLFOGCOORDDVEXTPROC glFogCoorddvEXT;
+    REGALGLFOGCOORDFEXTPROC glFogCoordfEXT;
+    REGALGLFOGCOORDFVEXTPROC glFogCoordfvEXT;
 
     // GL_EXT_fragment_lighting
 
-    PFNGLFRAGMENTCOLORMATERIALEXTPROC glFragmentColorMaterialEXT;
-    PFNGLFRAGMENTLIGHTMODELFEXTPROC glFragmentLightModelfEXT;
-    PFNGLFRAGMENTLIGHTMODELFVEXTPROC glFragmentLightModelfvEXT;
-    PFNGLFRAGMENTLIGHTMODELIEXTPROC glFragmentLightModeliEXT;
-    PFNGLFRAGMENTLIGHTMODELIVEXTPROC glFragmentLightModelivEXT;
-    PFNGLFRAGMENTLIGHTFEXTPROC glFragmentLightfEXT;
-    PFNGLFRAGMENTLIGHTFVEXTPROC glFragmentLightfvEXT;
-    PFNGLFRAGMENTLIGHTIEXTPROC glFragmentLightiEXT;
-    PFNGLFRAGMENTLIGHTIVEXTPROC glFragmentLightivEXT;
-    PFNGLFRAGMENTMATERIALFEXTPROC glFragmentMaterialfEXT;
-    PFNGLFRAGMENTMATERIALFVEXTPROC glFragmentMaterialfvEXT;
-    PFNGLFRAGMENTMATERIALIEXTPROC glFragmentMaterialiEXT;
-    PFNGLFRAGMENTMATERIALIVEXTPROC glFragmentMaterialivEXT;
-    PFNGLGETFRAGMENTLIGHTFVEXTPROC glGetFragmentLightfvEXT;
-    PFNGLGETFRAGMENTLIGHTIVEXTPROC glGetFragmentLightivEXT;
-    PFNGLGETFRAGMENTMATERIALFVEXTPROC glGetFragmentMaterialfvEXT;
-    PFNGLGETFRAGMENTMATERIALIVEXTPROC glGetFragmentMaterialivEXT;
-    PFNGLLIGHTENVIEXTPROC glLightEnviEXT;
+    REGALGLFRAGMENTCOLORMATERIALEXTPROC glFragmentColorMaterialEXT;
+    REGALGLFRAGMENTLIGHTMODELFEXTPROC glFragmentLightModelfEXT;
+    REGALGLFRAGMENTLIGHTMODELFVEXTPROC glFragmentLightModelfvEXT;
+    REGALGLFRAGMENTLIGHTMODELIEXTPROC glFragmentLightModeliEXT;
+    REGALGLFRAGMENTLIGHTMODELIVEXTPROC glFragmentLightModelivEXT;
+    REGALGLFRAGMENTLIGHTFEXTPROC glFragmentLightfEXT;
+    REGALGLFRAGMENTLIGHTFVEXTPROC glFragmentLightfvEXT;
+    REGALGLFRAGMENTLIGHTIEXTPROC glFragmentLightiEXT;
+    REGALGLFRAGMENTLIGHTIVEXTPROC glFragmentLightivEXT;
+    REGALGLFRAGMENTMATERIALFEXTPROC glFragmentMaterialfEXT;
+    REGALGLFRAGMENTMATERIALFVEXTPROC glFragmentMaterialfvEXT;
+    REGALGLFRAGMENTMATERIALIEXTPROC glFragmentMaterialiEXT;
+    REGALGLFRAGMENTMATERIALIVEXTPROC glFragmentMaterialivEXT;
+    REGALGLGETFRAGMENTLIGHTFVEXTPROC glGetFragmentLightfvEXT;
+    REGALGLGETFRAGMENTLIGHTIVEXTPROC glGetFragmentLightivEXT;
+    REGALGLGETFRAGMENTMATERIALFVEXTPROC glGetFragmentMaterialfvEXT;
+    REGALGLGETFRAGMENTMATERIALIVEXTPROC glGetFragmentMaterialivEXT;
+    REGALGLLIGHTENVIEXTPROC glLightEnviEXT;
 
     // GL_EXT_framebuffer_blit
 
-    PFNGLBLITFRAMEBUFFEREXTPROC glBlitFramebufferEXT;
+    REGALGLBLITFRAMEBUFFEREXTPROC glBlitFramebufferEXT;
 
     // GL_EXT_framebuffer_multisample
 
-    PFNGLRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC glRenderbufferStorageMultisampleEXT;
+    REGALGLRENDERBUFFERSTORAGEMULTISAMPLEEXTPROC glRenderbufferStorageMultisampleEXT;
 
     // GL_EXT_framebuffer_object
 
-    PFNGLBINDFRAMEBUFFEREXTPROC glBindFramebufferEXT;
-    PFNGLBINDRENDERBUFFEREXTPROC glBindRenderbufferEXT;
-    PFNGLCHECKFRAMEBUFFERSTATUSEXTPROC glCheckFramebufferStatusEXT;
-    PFNGLDELETEFRAMEBUFFERSEXTPROC glDeleteFramebuffersEXT;
-    PFNGLDELETERENDERBUFFERSEXTPROC glDeleteRenderbuffersEXT;
-    PFNGLFRAMEBUFFERRENDERBUFFEREXTPROC glFramebufferRenderbufferEXT;
-    PFNGLFRAMEBUFFERTEXTURE1DEXTPROC glFramebufferTexture1DEXT;
-    PFNGLFRAMEBUFFERTEXTURE2DEXTPROC glFramebufferTexture2DEXT;
-    PFNGLFRAMEBUFFERTEXTURE3DEXTPROC glFramebufferTexture3DEXT;
-    PFNGLGENFRAMEBUFFERSEXTPROC glGenFramebuffersEXT;
-    PFNGLGENRENDERBUFFERSEXTPROC glGenRenderbuffersEXT;
-    PFNGLGENERATEMIPMAPEXTPROC glGenerateMipmapEXT;
-    PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC glGetFramebufferAttachmentParameterivEXT;
-    PFNGLGETRENDERBUFFERPARAMETERIVEXTPROC glGetRenderbufferParameterivEXT;
-    PFNGLISFRAMEBUFFEREXTPROC glIsFramebufferEXT;
-    PFNGLISRENDERBUFFEREXTPROC glIsRenderbufferEXT;
-    PFNGLRENDERBUFFERSTORAGEEXTPROC glRenderbufferStorageEXT;
+    REGALGLBINDFRAMEBUFFEREXTPROC glBindFramebufferEXT;
+    REGALGLBINDRENDERBUFFEREXTPROC glBindRenderbufferEXT;
+    REGALGLCHECKFRAMEBUFFERSTATUSEXTPROC glCheckFramebufferStatusEXT;
+    REGALGLDELETEFRAMEBUFFERSEXTPROC glDeleteFramebuffersEXT;
+    REGALGLDELETERENDERBUFFERSEXTPROC glDeleteRenderbuffersEXT;
+    REGALGLFRAMEBUFFERRENDERBUFFEREXTPROC glFramebufferRenderbufferEXT;
+    REGALGLFRAMEBUFFERTEXTURE1DEXTPROC glFramebufferTexture1DEXT;
+    REGALGLFRAMEBUFFERTEXTURE2DEXTPROC glFramebufferTexture2DEXT;
+    REGALGLFRAMEBUFFERTEXTURE3DEXTPROC glFramebufferTexture3DEXT;
+    REGALGLGENFRAMEBUFFERSEXTPROC glGenFramebuffersEXT;
+    REGALGLGENRENDERBUFFERSEXTPROC glGenRenderbuffersEXT;
+    REGALGLGENERATEMIPMAPEXTPROC glGenerateMipmapEXT;
+    REGALGLGETFRAMEBUFFERATTACHMENTPARAMETERIVEXTPROC glGetFramebufferAttachmentParameterivEXT;
+    REGALGLGETRENDERBUFFERPARAMETERIVEXTPROC glGetRenderbufferParameterivEXT;
+    REGALGLISFRAMEBUFFEREXTPROC glIsFramebufferEXT;
+    REGALGLISRENDERBUFFEREXTPROC glIsRenderbufferEXT;
+    REGALGLRENDERBUFFERSTORAGEEXTPROC glRenderbufferStorageEXT;
 
     // GL_EXT_geometry_shader4
 
-    PFNGLFRAMEBUFFERTEXTUREEXTPROC glFramebufferTextureEXT;
-    PFNGLFRAMEBUFFERTEXTUREFACEEXTPROC glFramebufferTextureFaceEXT;
-    PFNGLPROGRAMPARAMETERIEXTPROC glProgramParameteriEXT;
+    REGALGLFRAMEBUFFERTEXTUREEXTPROC glFramebufferTextureEXT;
+    REGALGLFRAMEBUFFERTEXTUREFACEEXTPROC glFramebufferTextureFaceEXT;
+    REGALGLPROGRAMPARAMETERIEXTPROC glProgramParameteriEXT;
 
     // GL_EXT_gpu_program_parameters
 
-    PFNGLPROGRAMENVPARAMETERS4FVEXTPROC glProgramEnvParameters4fvEXT;
-    PFNGLPROGRAMLOCALPARAMETERS4FVEXTPROC glProgramLocalParameters4fvEXT;
+    REGALGLPROGRAMENVPARAMETERS4FVEXTPROC glProgramEnvParameters4fvEXT;
+    REGALGLPROGRAMLOCALPARAMETERS4FVEXTPROC glProgramLocalParameters4fvEXT;
 
     // GL_EXT_gpu_shader4
 
-    PFNGLBINDFRAGDATALOCATIONEXTPROC glBindFragDataLocationEXT;
-    PFNGLGETFRAGDATALOCATIONEXTPROC glGetFragDataLocationEXT;
-    PFNGLGETUNIFORMUIVEXTPROC glGetUniformuivEXT;
-    PFNGLGETVERTEXATTRIBIIVEXTPROC glGetVertexAttribIivEXT;
-    PFNGLGETVERTEXATTRIBIUIVEXTPROC glGetVertexAttribIuivEXT;
-    PFNGLUNIFORM1UIEXTPROC glUniform1uiEXT;
-    PFNGLUNIFORM1UIVEXTPROC glUniform1uivEXT;
-    PFNGLUNIFORM2UIEXTPROC glUniform2uiEXT;
-    PFNGLUNIFORM2UIVEXTPROC glUniform2uivEXT;
-    PFNGLUNIFORM3UIEXTPROC glUniform3uiEXT;
-    PFNGLUNIFORM3UIVEXTPROC glUniform3uivEXT;
-    PFNGLUNIFORM4UIEXTPROC glUniform4uiEXT;
-    PFNGLUNIFORM4UIVEXTPROC glUniform4uivEXT;
-    PFNGLVERTEXATTRIBI1IEXTPROC glVertexAttribI1iEXT;
-    PFNGLVERTEXATTRIBI1IVEXTPROC glVertexAttribI1ivEXT;
-    PFNGLVERTEXATTRIBI1UIEXTPROC glVertexAttribI1uiEXT;
-    PFNGLVERTEXATTRIBI1UIVEXTPROC glVertexAttribI1uivEXT;
-    PFNGLVERTEXATTRIBI2IEXTPROC glVertexAttribI2iEXT;
-    PFNGLVERTEXATTRIBI2IVEXTPROC glVertexAttribI2ivEXT;
-    PFNGLVERTEXATTRIBI2UIEXTPROC glVertexAttribI2uiEXT;
-    PFNGLVERTEXATTRIBI2UIVEXTPROC glVertexAttribI2uivEXT;
-    PFNGLVERTEXATTRIBI3IEXTPROC glVertexAttribI3iEXT;
-    PFNGLVERTEXATTRIBI3IVEXTPROC glVertexAttribI3ivEXT;
-    PFNGLVERTEXATTRIBI3UIEXTPROC glVertexAttribI3uiEXT;
-    PFNGLVERTEXATTRIBI3UIVEXTPROC glVertexAttribI3uivEXT;
-    PFNGLVERTEXATTRIBI4BVEXTPROC glVertexAttribI4bvEXT;
-    PFNGLVERTEXATTRIBI4IEXTPROC glVertexAttribI4iEXT;
-    PFNGLVERTEXATTRIBI4IVEXTPROC glVertexAttribI4ivEXT;
-    PFNGLVERTEXATTRIBI4SVEXTPROC glVertexAttribI4svEXT;
-    PFNGLVERTEXATTRIBI4UBVEXTPROC glVertexAttribI4ubvEXT;
-    PFNGLVERTEXATTRIBI4UIEXTPROC glVertexAttribI4uiEXT;
-    PFNGLVERTEXATTRIBI4UIVEXTPROC glVertexAttribI4uivEXT;
-    PFNGLVERTEXATTRIBI4USVEXTPROC glVertexAttribI4usvEXT;
-    PFNGLVERTEXATTRIBIPOINTEREXTPROC glVertexAttribIPointerEXT;
+    REGALGLBINDFRAGDATALOCATIONEXTPROC glBindFragDataLocationEXT;
+    REGALGLGETFRAGDATALOCATIONEXTPROC glGetFragDataLocationEXT;
+    REGALGLGETUNIFORMUIVEXTPROC glGetUniformuivEXT;
+    REGALGLGETVERTEXATTRIBIIVEXTPROC glGetVertexAttribIivEXT;
+    REGALGLGETVERTEXATTRIBIUIVEXTPROC glGetVertexAttribIuivEXT;
+    REGALGLUNIFORM1UIEXTPROC glUniform1uiEXT;
+    REGALGLUNIFORM1UIVEXTPROC glUniform1uivEXT;
+    REGALGLUNIFORM2UIEXTPROC glUniform2uiEXT;
+    REGALGLUNIFORM2UIVEXTPROC glUniform2uivEXT;
+    REGALGLUNIFORM3UIEXTPROC glUniform3uiEXT;
+    REGALGLUNIFORM3UIVEXTPROC glUniform3uivEXT;
+    REGALGLUNIFORM4UIEXTPROC glUniform4uiEXT;
+    REGALGLUNIFORM4UIVEXTPROC glUniform4uivEXT;
+    REGALGLVERTEXATTRIBI1IEXTPROC glVertexAttribI1iEXT;
+    REGALGLVERTEXATTRIBI1IVEXTPROC glVertexAttribI1ivEXT;
+    REGALGLVERTEXATTRIBI1UIEXTPROC glVertexAttribI1uiEXT;
+    REGALGLVERTEXATTRIBI1UIVEXTPROC glVertexAttribI1uivEXT;
+    REGALGLVERTEXATTRIBI2IEXTPROC glVertexAttribI2iEXT;
+    REGALGLVERTEXATTRIBI2IVEXTPROC glVertexAttribI2ivEXT;
+    REGALGLVERTEXATTRIBI2UIEXTPROC glVertexAttribI2uiEXT;
+    REGALGLVERTEXATTRIBI2UIVEXTPROC glVertexAttribI2uivEXT;
+    REGALGLVERTEXATTRIBI3IEXTPROC glVertexAttribI3iEXT;
+    REGALGLVERTEXATTRIBI3IVEXTPROC glVertexAttribI3ivEXT;
+    REGALGLVERTEXATTRIBI3UIEXTPROC glVertexAttribI3uiEXT;
+    REGALGLVERTEXATTRIBI3UIVEXTPROC glVertexAttribI3uivEXT;
+    REGALGLVERTEXATTRIBI4BVEXTPROC glVertexAttribI4bvEXT;
+    REGALGLVERTEXATTRIBI4IEXTPROC glVertexAttribI4iEXT;
+    REGALGLVERTEXATTRIBI4IVEXTPROC glVertexAttribI4ivEXT;
+    REGALGLVERTEXATTRIBI4SVEXTPROC glVertexAttribI4svEXT;
+    REGALGLVERTEXATTRIBI4UBVEXTPROC glVertexAttribI4ubvEXT;
+    REGALGLVERTEXATTRIBI4UIEXTPROC glVertexAttribI4uiEXT;
+    REGALGLVERTEXATTRIBI4UIVEXTPROC glVertexAttribI4uivEXT;
+    REGALGLVERTEXATTRIBI4USVEXTPROC glVertexAttribI4usvEXT;
+    REGALGLVERTEXATTRIBIPOINTEREXTPROC glVertexAttribIPointerEXT;
 
     // GL_EXT_histogram
 
-    PFNGLGETHISTOGRAMEXTPROC glGetHistogramEXT;
-    PFNGLGETHISTOGRAMPARAMETERFVEXTPROC glGetHistogramParameterfvEXT;
-    PFNGLGETHISTOGRAMPARAMETERIVEXTPROC glGetHistogramParameterivEXT;
-    PFNGLGETMINMAXEXTPROC glGetMinmaxEXT;
-    PFNGLGETMINMAXPARAMETERFVEXTPROC glGetMinmaxParameterfvEXT;
-    PFNGLGETMINMAXPARAMETERIVEXTPROC glGetMinmaxParameterivEXT;
-    PFNGLHISTOGRAMEXTPROC glHistogramEXT;
-    PFNGLMINMAXEXTPROC glMinmaxEXT;
-    PFNGLRESETHISTOGRAMEXTPROC glResetHistogramEXT;
-    PFNGLRESETMINMAXEXTPROC glResetMinmaxEXT;
+    REGALGLGETHISTOGRAMEXTPROC glGetHistogramEXT;
+    REGALGLGETHISTOGRAMPARAMETERFVEXTPROC glGetHistogramParameterfvEXT;
+    REGALGLGETHISTOGRAMPARAMETERIVEXTPROC glGetHistogramParameterivEXT;
+    REGALGLGETMINMAXEXTPROC glGetMinmaxEXT;
+    REGALGLGETMINMAXPARAMETERFVEXTPROC glGetMinmaxParameterfvEXT;
+    REGALGLGETMINMAXPARAMETERIVEXTPROC glGetMinmaxParameterivEXT;
+    REGALGLHISTOGRAMEXTPROC glHistogramEXT;
+    REGALGLMINMAXEXTPROC glMinmaxEXT;
+    REGALGLRESETHISTOGRAMEXTPROC glResetHistogramEXT;
+    REGALGLRESETMINMAXEXTPROC glResetMinmaxEXT;
 
     // GL_EXT_index_func
 
-    PFNGLINDEXFUNCEXTPROC glIndexFuncEXT;
+    REGALGLINDEXFUNCEXTPROC glIndexFuncEXT;
 
     // GL_EXT_index_material
 
-    PFNGLINDEXMATERIALEXTPROC glIndexMaterialEXT;
+    REGALGLINDEXMATERIALEXTPROC glIndexMaterialEXT;
 
     // GL_EXT_light_texture
 
-    PFNGLAPPLYTEXTUREEXTPROC glApplyTextureEXT;
-    PFNGLTEXTURELIGHTEXTPROC glTextureLightEXT;
-    PFNGLTEXTUREMATERIALEXTPROC glTextureMaterialEXT;
+    REGALGLAPPLYTEXTUREEXTPROC glApplyTextureEXT;
+    REGALGLTEXTURELIGHTEXTPROC glTextureLightEXT;
+    REGALGLTEXTUREMATERIALEXTPROC glTextureMaterialEXT;
 
     // GL_EXT_map_buffer_range
 
-    PFNGLFLUSHMAPPEDBUFFERRANGEEXTPROC glFlushMappedBufferRangeEXT;
-    PFNGLMAPBUFFERRANGEEXTPROC glMapBufferRangeEXT;
+    REGALGLFLUSHMAPPEDBUFFERRANGEEXTPROC glFlushMappedBufferRangeEXT;
+    REGALGLMAPBUFFERRANGEEXTPROC glMapBufferRangeEXT;
 
     // GL_EXT_multi_draw_arrays
 
-    PFNGLMULTIDRAWARRAYSEXTPROC glMultiDrawArraysEXT;
-    PFNGLMULTIDRAWELEMENTSEXTPROC glMultiDrawElementsEXT;
+    REGALGLMULTIDRAWARRAYSEXTPROC glMultiDrawArraysEXT;
+    REGALGLMULTIDRAWELEMENTSEXTPROC glMultiDrawElementsEXT;
 
     // GL_EXT_multisample
 
-    PFNGLSAMPLEMASKEXTPROC glSampleMaskEXT;
-    PFNGLSAMPLEPATTERNEXTPROC glSamplePatternEXT;
+    REGALGLSAMPLEMASKEXTPROC glSampleMaskEXT;
+    REGALGLSAMPLEPATTERNEXTPROC glSamplePatternEXT;
 
     // GL_EXT_multisampled_render_to_texture
 
-    PFNGLFRAMEBUFFERTEXTURE2DMULTISAMPLEEXTPROC glFramebufferTexture2DMultisampleEXT;
+    REGALGLFRAMEBUFFERTEXTURE2DMULTISAMPLEEXTPROC glFramebufferTexture2DMultisampleEXT;
 
     // GL_EXT_multiview_draw_buffers
 
-    PFNGLDRAWBUFFERSINDEXEDEXTPROC glDrawBuffersIndexedEXT;
-    PFNGLGETINTEGERI_VEXTPROC glGetIntegeri_vEXT;
-    PFNGLREADBUFFERINDEXEDEXTPROC glReadBufferIndexedEXT;
+    REGALGLDRAWBUFFERSINDEXEDEXTPROC glDrawBuffersIndexedEXT;
+    REGALGLGETINTEGERI_VEXTPROC glGetIntegeri_vEXT;
+    REGALGLREADBUFFERINDEXEDEXTPROC glReadBufferIndexedEXT;
 
     // GL_EXT_occlusion_query_boolean
 
-    PFNGLBEGINQUERYEXTPROC glBeginQueryEXT;
-    PFNGLDELETEQUERIESEXTPROC glDeleteQueriesEXT;
-    PFNGLENDQUERYEXTPROC glEndQueryEXT;
-    PFNGLGENQUERIESEXTPROC glGenQueriesEXT;
-    PFNGLGETQUERYOBJECTUIVEXTPROC glGetQueryObjectuivEXT;
-    PFNGLGETQUERYIVEXTPROC glGetQueryivEXT;
-    PFNGLISQUERYEXTPROC glIsQueryEXT;
+    REGALGLBEGINQUERYEXTPROC glBeginQueryEXT;
+    REGALGLDELETEQUERIESEXTPROC glDeleteQueriesEXT;
+    REGALGLENDQUERYEXTPROC glEndQueryEXT;
+    REGALGLGENQUERIESEXTPROC glGenQueriesEXT;
+    REGALGLGETQUERYOBJECTUIVEXTPROC glGetQueryObjectuivEXT;
+    REGALGLGETQUERYIVEXTPROC glGetQueryivEXT;
+    REGALGLISQUERYEXTPROC glIsQueryEXT;
 
     // GL_EXT_paletted_texture
 
-    PFNGLCOLORTABLEEXTPROC glColorTableEXT;
-    PFNGLGETCOLORTABLEEXTPROC glGetColorTableEXT;
-    PFNGLGETCOLORTABLEPARAMETERFVEXTPROC glGetColorTableParameterfvEXT;
-    PFNGLGETCOLORTABLEPARAMETERIVEXTPROC glGetColorTableParameterivEXT;
+    REGALGLCOLORTABLEEXTPROC glColorTableEXT;
+    REGALGLGETCOLORTABLEEXTPROC glGetColorTableEXT;
+    REGALGLGETCOLORTABLEPARAMETERFVEXTPROC glGetColorTableParameterfvEXT;
+    REGALGLGETCOLORTABLEPARAMETERIVEXTPROC glGetColorTableParameterivEXT;
 
     // GL_EXT_pixel_transform
 
-    PFNGLGETPIXELTRANSFORMPARAMETERFVEXTPROC glGetPixelTransformParameterfvEXT;
-    PFNGLGETPIXELTRANSFORMPARAMETERIVEXTPROC glGetPixelTransformParameterivEXT;
-    PFNGLPIXELTRANSFORMPARAMETERFEXTPROC glPixelTransformParameterfEXT;
-    PFNGLPIXELTRANSFORMPARAMETERFVEXTPROC glPixelTransformParameterfvEXT;
-    PFNGLPIXELTRANSFORMPARAMETERIEXTPROC glPixelTransformParameteriEXT;
-    PFNGLPIXELTRANSFORMPARAMETERIVEXTPROC glPixelTransformParameterivEXT;
+    REGALGLGETPIXELTRANSFORMPARAMETERFVEXTPROC glGetPixelTransformParameterfvEXT;
+    REGALGLGETPIXELTRANSFORMPARAMETERIVEXTPROC glGetPixelTransformParameterivEXT;
+    REGALGLPIXELTRANSFORMPARAMETERFEXTPROC glPixelTransformParameterfEXT;
+    REGALGLPIXELTRANSFORMPARAMETERFVEXTPROC glPixelTransformParameterfvEXT;
+    REGALGLPIXELTRANSFORMPARAMETERIEXTPROC glPixelTransformParameteriEXT;
+    REGALGLPIXELTRANSFORMPARAMETERIVEXTPROC glPixelTransformParameterivEXT;
 
     // GL_EXT_point_parameters
 
-    PFNGLPOINTPARAMETERFEXTPROC glPointParameterfEXT;
-    PFNGLPOINTPARAMETERFVEXTPROC glPointParameterfvEXT;
+    REGALGLPOINTPARAMETERFEXTPROC glPointParameterfEXT;
+    REGALGLPOINTPARAMETERFVEXTPROC glPointParameterfvEXT;
 
     // GL_EXT_polygon_offset
 
-    PFNGLPOLYGONOFFSETEXTPROC glPolygonOffsetEXT;
+    REGALGLPOLYGONOFFSETEXTPROC glPolygonOffsetEXT;
 
     // GL_EXT_provoking_vertex
 
-    PFNGLPROVOKINGVERTEXEXTPROC glProvokingVertexEXT;
+    REGALGLPROVOKINGVERTEXEXTPROC glProvokingVertexEXT;
 
     // GL_EXT_robustness
 
-    PFNGLGETNUNIFORMFVEXTPROC glGetnUniformfvEXT;
-    PFNGLGETNUNIFORMIVEXTPROC glGetnUniformivEXT;
-    PFNGLREADNPIXELSEXTPROC glReadnPixelsEXT;
+    REGALGLGETNUNIFORMFVEXTPROC glGetnUniformfvEXT;
+    REGALGLGETNUNIFORMIVEXTPROC glGetnUniformivEXT;
+    REGALGLREADNPIXELSEXTPROC glReadnPixelsEXT;
 
     // GL_EXT_scene_marker
 
-    PFNGLBEGINSCENEEXTPROC glBeginSceneEXT;
-    PFNGLENDSCENEEXTPROC glEndSceneEXT;
+    REGALGLBEGINSCENEEXTPROC glBeginSceneEXT;
+    REGALGLENDSCENEEXTPROC glEndSceneEXT;
 
     // GL_EXT_secondary_color
 
-    PFNGLSECONDARYCOLOR3BEXTPROC glSecondaryColor3bEXT;
-    PFNGLSECONDARYCOLOR3BVEXTPROC glSecondaryColor3bvEXT;
-    PFNGLSECONDARYCOLOR3DEXTPROC glSecondaryColor3dEXT;
-    PFNGLSECONDARYCOLOR3DVEXTPROC glSecondaryColor3dvEXT;
-    PFNGLSECONDARYCOLOR3FEXTPROC glSecondaryColor3fEXT;
-    PFNGLSECONDARYCOLOR3FVEXTPROC glSecondaryColor3fvEXT;
-    PFNGLSECONDARYCOLOR3IEXTPROC glSecondaryColor3iEXT;
-    PFNGLSECONDARYCOLOR3IVEXTPROC glSecondaryColor3ivEXT;
-    PFNGLSECONDARYCOLOR3SEXTPROC glSecondaryColor3sEXT;
-    PFNGLSECONDARYCOLOR3SVEXTPROC glSecondaryColor3svEXT;
-    PFNGLSECONDARYCOLOR3UBEXTPROC glSecondaryColor3ubEXT;
-    PFNGLSECONDARYCOLOR3UBVEXTPROC glSecondaryColor3ubvEXT;
-    PFNGLSECONDARYCOLOR3UIEXTPROC glSecondaryColor3uiEXT;
-    PFNGLSECONDARYCOLOR3UIVEXTPROC glSecondaryColor3uivEXT;
-    PFNGLSECONDARYCOLOR3USEXTPROC glSecondaryColor3usEXT;
-    PFNGLSECONDARYCOLOR3USVEXTPROC glSecondaryColor3usvEXT;
-    PFNGLSECONDARYCOLORPOINTEREXTPROC glSecondaryColorPointerEXT;
+    REGALGLSECONDARYCOLOR3BEXTPROC glSecondaryColor3bEXT;
+    REGALGLSECONDARYCOLOR3BVEXTPROC glSecondaryColor3bvEXT;
+    REGALGLSECONDARYCOLOR3DEXTPROC glSecondaryColor3dEXT;
+    REGALGLSECONDARYCOLOR3DVEXTPROC glSecondaryColor3dvEXT;
+    REGALGLSECONDARYCOLOR3FEXTPROC glSecondaryColor3fEXT;
+    REGALGLSECONDARYCOLOR3FVEXTPROC glSecondaryColor3fvEXT;
+    REGALGLSECONDARYCOLOR3IEXTPROC glSecondaryColor3iEXT;
+    REGALGLSECONDARYCOLOR3IVEXTPROC glSecondaryColor3ivEXT;
+    REGALGLSECONDARYCOLOR3SEXTPROC glSecondaryColor3sEXT;
+    REGALGLSECONDARYCOLOR3SVEXTPROC glSecondaryColor3svEXT;
+    REGALGLSECONDARYCOLOR3UBEXTPROC glSecondaryColor3ubEXT;
+    REGALGLSECONDARYCOLOR3UBVEXTPROC glSecondaryColor3ubvEXT;
+    REGALGLSECONDARYCOLOR3UIEXTPROC glSecondaryColor3uiEXT;
+    REGALGLSECONDARYCOLOR3UIVEXTPROC glSecondaryColor3uivEXT;
+    REGALGLSECONDARYCOLOR3USEXTPROC glSecondaryColor3usEXT;
+    REGALGLSECONDARYCOLOR3USVEXTPROC glSecondaryColor3usvEXT;
+    REGALGLSECONDARYCOLORPOINTEREXTPROC glSecondaryColorPointerEXT;
 
     // GL_EXT_separate_shader_objects
 
-    PFNGLACTIVEPROGRAMEXTPROC glActiveProgramEXT;
-    PFNGLCREATESHADERPROGRAMEXTPROC glCreateShaderProgramEXT;
-    PFNGLUSESHADERPROGRAMEXTPROC glUseShaderProgramEXT;
+    REGALGLACTIVEPROGRAMEXTPROC glActiveProgramEXT;
+    REGALGLCREATESHADERPROGRAMEXTPROC glCreateShaderProgramEXT;
+    REGALGLUSESHADERPROGRAMEXTPROC glUseShaderProgramEXT;
 
     // GL_EXT_shader_image_load_store
 
-    PFNGLBINDIMAGETEXTUREEXTPROC glBindImageTextureEXT;
-    PFNGLMEMORYBARRIEREXTPROC glMemoryBarrierEXT;
+    REGALGLBINDIMAGETEXTUREEXTPROC glBindImageTextureEXT;
+    REGALGLMEMORYBARRIEREXTPROC glMemoryBarrierEXT;
 
     // GL_EXT_stencil_clear_tag
 
-    PFNGLSTENCILCLEARTAGEXTPROC glStencilClearTagEXT;
+    REGALGLSTENCILCLEARTAGEXTPROC glStencilClearTagEXT;
 
     // GL_EXT_stencil_two_side
 
-    PFNGLACTIVESTENCILFACEEXTPROC glActiveStencilFaceEXT;
+    REGALGLACTIVESTENCILFACEEXTPROC glActiveStencilFaceEXT;
 
     // GL_EXT_subtexture
 
-    PFNGLTEXSUBIMAGE1DEXTPROC glTexSubImage1DEXT;
-    PFNGLTEXSUBIMAGE2DEXTPROC glTexSubImage2DEXT;
-    PFNGLTEXSUBIMAGE3DEXTPROC glTexSubImage3DEXT;
+    REGALGLTEXSUBIMAGE1DEXTPROC glTexSubImage1DEXT;
+    REGALGLTEXSUBIMAGE2DEXTPROC glTexSubImage2DEXT;
+    REGALGLTEXSUBIMAGE3DEXTPROC glTexSubImage3DEXT;
 
     // GL_EXT_texture3D
 
-    PFNGLTEXIMAGE3DEXTPROC glTexImage3DEXT;
+    REGALGLTEXIMAGE3DEXTPROC glTexImage3DEXT;
 
     // GL_EXT_texture_array
 
-    PFNGLFRAMEBUFFERTEXTURELAYEREXTPROC glFramebufferTextureLayerEXT;
+    REGALGLFRAMEBUFFERTEXTURELAYEREXTPROC glFramebufferTextureLayerEXT;
 
     // GL_EXT_texture_buffer_object
 
-    PFNGLTEXBUFFEREXTPROC glTexBufferEXT;
+    REGALGLTEXBUFFEREXTPROC glTexBufferEXT;
 
     // GL_EXT_texture_integer
 
-    PFNGLCLEARCOLORIIEXTPROC glClearColorIiEXT;
-    PFNGLCLEARCOLORIUIEXTPROC glClearColorIuiEXT;
-    PFNGLGETTEXPARAMETERIIVEXTPROC glGetTexParameterIivEXT;
-    PFNGLGETTEXPARAMETERIUIVEXTPROC glGetTexParameterIuivEXT;
-    PFNGLTEXPARAMETERIIVEXTPROC glTexParameterIivEXT;
-    PFNGLTEXPARAMETERIUIVEXTPROC glTexParameterIuivEXT;
+    REGALGLCLEARCOLORIIEXTPROC glClearColorIiEXT;
+    REGALGLCLEARCOLORIUIEXTPROC glClearColorIuiEXT;
+    REGALGLGETTEXPARAMETERIIVEXTPROC glGetTexParameterIivEXT;
+    REGALGLGETTEXPARAMETERIUIVEXTPROC glGetTexParameterIuivEXT;
+    REGALGLTEXPARAMETERIIVEXTPROC glTexParameterIivEXT;
+    REGALGLTEXPARAMETERIUIVEXTPROC glTexParameterIuivEXT;
 
     // GL_EXT_texture_object
 
-    PFNGLARETEXTURESRESIDENTEXTPROC glAreTexturesResidentEXT;
-    PFNGLBINDTEXTUREEXTPROC glBindTextureEXT;
-    PFNGLDELETETEXTURESEXTPROC glDeleteTexturesEXT;
-    PFNGLGENTEXTURESEXTPROC glGenTexturesEXT;
-    PFNGLISTEXTUREEXTPROC glIsTextureEXT;
-    PFNGLPRIORITIZETEXTURESEXTPROC glPrioritizeTexturesEXT;
+    REGALGLARETEXTURESRESIDENTEXTPROC glAreTexturesResidentEXT;
+    REGALGLBINDTEXTUREEXTPROC glBindTextureEXT;
+    REGALGLDELETETEXTURESEXTPROC glDeleteTexturesEXT;
+    REGALGLGENTEXTURESEXTPROC glGenTexturesEXT;
+    REGALGLISTEXTUREEXTPROC glIsTextureEXT;
+    REGALGLPRIORITIZETEXTURESEXTPROC glPrioritizeTexturesEXT;
 
     // GL_EXT_texture_perturb_normal
 
-    PFNGLTEXTURENORMALEXTPROC glTextureNormalEXT;
+    REGALGLTEXTURENORMALEXTPROC glTextureNormalEXT;
 
     // GL_EXT_texture_storage
 
-    PFNGLTEXSTORAGE1DEXTPROC glTexStorage1DEXT;
-    PFNGLTEXSTORAGE2DEXTPROC glTexStorage2DEXT;
-    PFNGLTEXSTORAGE3DEXTPROC glTexStorage3DEXT;
+    REGALGLTEXSTORAGE1DEXTPROC glTexStorage1DEXT;
+    REGALGLTEXSTORAGE2DEXTPROC glTexStorage2DEXT;
+    REGALGLTEXSTORAGE3DEXTPROC glTexStorage3DEXT;
 
     // GL_EXT_timer_query
 
-    PFNGLGETQUERYOBJECTI64VEXTPROC glGetQueryObjecti64vEXT;
-    PFNGLGETQUERYOBJECTUI64VEXTPROC glGetQueryObjectui64vEXT;
+    REGALGLGETQUERYOBJECTI64VEXTPROC glGetQueryObjecti64vEXT;
+    REGALGLGETQUERYOBJECTUI64VEXTPROC glGetQueryObjectui64vEXT;
 
     // GL_EXT_transform_feedback
 
-    PFNGLBEGINTRANSFORMFEEDBACKEXTPROC glBeginTransformFeedbackEXT;
-    PFNGLBINDBUFFERBASEEXTPROC glBindBufferBaseEXT;
-    PFNGLBINDBUFFEROFFSETEXTPROC glBindBufferOffsetEXT;
-    PFNGLBINDBUFFERRANGEEXTPROC glBindBufferRangeEXT;
-    PFNGLENDTRANSFORMFEEDBACKEXTPROC glEndTransformFeedbackEXT;
-    PFNGLGETTRANSFORMFEEDBACKVARYINGEXTPROC glGetTransformFeedbackVaryingEXT;
-    PFNGLTRANSFORMFEEDBACKVARYINGSEXTPROC glTransformFeedbackVaryingsEXT;
+    REGALGLBEGINTRANSFORMFEEDBACKEXTPROC glBeginTransformFeedbackEXT;
+    REGALGLBINDBUFFERBASEEXTPROC glBindBufferBaseEXT;
+    REGALGLBINDBUFFEROFFSETEXTPROC glBindBufferOffsetEXT;
+    REGALGLBINDBUFFERRANGEEXTPROC glBindBufferRangeEXT;
+    REGALGLENDTRANSFORMFEEDBACKEXTPROC glEndTransformFeedbackEXT;
+    REGALGLGETTRANSFORMFEEDBACKVARYINGEXTPROC glGetTransformFeedbackVaryingEXT;
+    REGALGLTRANSFORMFEEDBACKVARYINGSEXTPROC glTransformFeedbackVaryingsEXT;
 
     // GL_EXT_vertex_array
 
-    PFNGLARRAYELEMENTEXTPROC glArrayElementEXT;
-    PFNGLCOLORPOINTEREXTPROC glColorPointerEXT;
-    PFNGLDRAWARRAYSEXTPROC glDrawArraysEXT;
-    PFNGLEDGEFLAGPOINTEREXTPROC glEdgeFlagPointerEXT;
-    PFNGLGETPOINTERVEXTPROC glGetPointervEXT;
-    PFNGLINDEXPOINTEREXTPROC glIndexPointerEXT;
-    PFNGLNORMALPOINTEREXTPROC glNormalPointerEXT;
-    PFNGLTEXCOORDPOINTEREXTPROC glTexCoordPointerEXT;
-    PFNGLVERTEXPOINTEREXTPROC glVertexPointerEXT;
+    REGALGLARRAYELEMENTEXTPROC glArrayElementEXT;
+    REGALGLCOLORPOINTEREXTPROC glColorPointerEXT;
+    REGALGLDRAWARRAYSEXTPROC glDrawArraysEXT;
+    REGALGLEDGEFLAGPOINTEREXTPROC glEdgeFlagPointerEXT;
+    REGALGLGETPOINTERVEXTPROC glGetPointervEXT;
+    REGALGLINDEXPOINTEREXTPROC glIndexPointerEXT;
+    REGALGLNORMALPOINTEREXTPROC glNormalPointerEXT;
+    REGALGLTEXCOORDPOINTEREXTPROC glTexCoordPointerEXT;
+    REGALGLVERTEXPOINTEREXTPROC glVertexPointerEXT;
 
     // GL_EXT_vertex_attrib_64bit
 
-    PFNGLGETVERTEXATTRIBLDVEXTPROC glGetVertexAttribLdvEXT;
-    PFNGLVERTEXARRAYVERTEXATTRIBLOFFSETEXTPROC glVertexArrayVertexAttribLOffsetEXT;
-    PFNGLVERTEXATTRIBL1DEXTPROC glVertexAttribL1dEXT;
-    PFNGLVERTEXATTRIBL1DVEXTPROC glVertexAttribL1dvEXT;
-    PFNGLVERTEXATTRIBL2DEXTPROC glVertexAttribL2dEXT;
-    PFNGLVERTEXATTRIBL2DVEXTPROC glVertexAttribL2dvEXT;
-    PFNGLVERTEXATTRIBL3DEXTPROC glVertexAttribL3dEXT;
-    PFNGLVERTEXATTRIBL3DVEXTPROC glVertexAttribL3dvEXT;
-    PFNGLVERTEXATTRIBL4DEXTPROC glVertexAttribL4dEXT;
-    PFNGLVERTEXATTRIBL4DVEXTPROC glVertexAttribL4dvEXT;
-    PFNGLVERTEXATTRIBLPOINTEREXTPROC glVertexAttribLPointerEXT;
+    REGALGLGETVERTEXATTRIBLDVEXTPROC glGetVertexAttribLdvEXT;
+    REGALGLVERTEXARRAYVERTEXATTRIBLOFFSETEXTPROC glVertexArrayVertexAttribLOffsetEXT;
+    REGALGLVERTEXATTRIBL1DEXTPROC glVertexAttribL1dEXT;
+    REGALGLVERTEXATTRIBL1DVEXTPROC glVertexAttribL1dvEXT;
+    REGALGLVERTEXATTRIBL2DEXTPROC glVertexAttribL2dEXT;
+    REGALGLVERTEXATTRIBL2DVEXTPROC glVertexAttribL2dvEXT;
+    REGALGLVERTEXATTRIBL3DEXTPROC glVertexAttribL3dEXT;
+    REGALGLVERTEXATTRIBL3DVEXTPROC glVertexAttribL3dvEXT;
+    REGALGLVERTEXATTRIBL4DEXTPROC glVertexAttribL4dEXT;
+    REGALGLVERTEXATTRIBL4DVEXTPROC glVertexAttribL4dvEXT;
+    REGALGLVERTEXATTRIBLPOINTEREXTPROC glVertexAttribLPointerEXT;
 
     // GL_EXT_vertex_shader
 
-    PFNGLBEGINVERTEXSHADEREXTPROC glBeginVertexShaderEXT;
-    PFNGLBINDLIGHTPARAMETEREXTPROC glBindLightParameterEXT;
-    PFNGLBINDMATERIALPARAMETEREXTPROC glBindMaterialParameterEXT;
-    PFNGLBINDPARAMETEREXTPROC glBindParameterEXT;
-    PFNGLBINDTEXGENPARAMETEREXTPROC glBindTexGenParameterEXT;
-    PFNGLBINDTEXTUREUNITPARAMETEREXTPROC glBindTextureUnitParameterEXT;
-    PFNGLBINDVERTEXSHADEREXTPROC glBindVertexShaderEXT;
-    PFNGLDELETEVERTEXSHADEREXTPROC glDeleteVertexShaderEXT;
-    PFNGLDISABLEVARIANTCLIENTSTATEEXTPROC glDisableVariantClientStateEXT;
-    PFNGLENABLEVARIANTCLIENTSTATEEXTPROC glEnableVariantClientStateEXT;
-    PFNGLENDVERTEXSHADEREXTPROC glEndVertexShaderEXT;
-    PFNGLEXTRACTCOMPONENTEXTPROC glExtractComponentEXT;
-    PFNGLGENSYMBOLSEXTPROC glGenSymbolsEXT;
-    PFNGLGENVERTEXSHADERSEXTPROC glGenVertexShadersEXT;
-    PFNGLGETINVARIANTBOOLEANVEXTPROC glGetInvariantBooleanvEXT;
-    PFNGLGETINVARIANTFLOATVEXTPROC glGetInvariantFloatvEXT;
-    PFNGLGETINVARIANTINTEGERVEXTPROC glGetInvariantIntegervEXT;
-    PFNGLGETLOCALCONSTANTBOOLEANVEXTPROC glGetLocalConstantBooleanvEXT;
-    PFNGLGETLOCALCONSTANTFLOATVEXTPROC glGetLocalConstantFloatvEXT;
-    PFNGLGETLOCALCONSTANTINTEGERVEXTPROC glGetLocalConstantIntegervEXT;
-    PFNGLGETVARIANTBOOLEANVEXTPROC glGetVariantBooleanvEXT;
-    PFNGLGETVARIANTFLOATVEXTPROC glGetVariantFloatvEXT;
-    PFNGLGETVARIANTINTEGERVEXTPROC glGetVariantIntegervEXT;
-    PFNGLGETVARIANTPOINTERVEXTPROC glGetVariantPointervEXT;
-    PFNGLINSERTCOMPONENTEXTPROC glInsertComponentEXT;
-    PFNGLISVARIANTENABLEDEXTPROC glIsVariantEnabledEXT;
-    PFNGLSETINVARIANTEXTPROC glSetInvariantEXT;
-    PFNGLSETLOCALCONSTANTEXTPROC glSetLocalConstantEXT;
-    PFNGLSHADEROP1EXTPROC glShaderOp1EXT;
-    PFNGLSHADEROP2EXTPROC glShaderOp2EXT;
-    PFNGLSHADEROP3EXTPROC glShaderOp3EXT;
-    PFNGLSWIZZLEEXTPROC glSwizzleEXT;
-    PFNGLVARIANTPOINTEREXTPROC glVariantPointerEXT;
-    PFNGLVARIANTBVEXTPROC glVariantbvEXT;
-    PFNGLVARIANTDVEXTPROC glVariantdvEXT;
-    PFNGLVARIANTFVEXTPROC glVariantfvEXT;
-    PFNGLVARIANTIVEXTPROC glVariantivEXT;
-    PFNGLVARIANTSVEXTPROC glVariantsvEXT;
-    PFNGLVARIANTUBVEXTPROC glVariantubvEXT;
-    PFNGLVARIANTUIVEXTPROC glVariantuivEXT;
-    PFNGLVARIANTUSVEXTPROC glVariantusvEXT;
-    PFNGLWRITEMASKEXTPROC glWriteMaskEXT;
+    REGALGLBEGINVERTEXSHADEREXTPROC glBeginVertexShaderEXT;
+    REGALGLBINDLIGHTPARAMETEREXTPROC glBindLightParameterEXT;
+    REGALGLBINDMATERIALPARAMETEREXTPROC glBindMaterialParameterEXT;
+    REGALGLBINDPARAMETEREXTPROC glBindParameterEXT;
+    REGALGLBINDTEXGENPARAMETEREXTPROC glBindTexGenParameterEXT;
+    REGALGLBINDTEXTUREUNITPARAMETEREXTPROC glBindTextureUnitParameterEXT;
+    REGALGLBINDVERTEXSHADEREXTPROC glBindVertexShaderEXT;
+    REGALGLDELETEVERTEXSHADEREXTPROC glDeleteVertexShaderEXT;
+    REGALGLDISABLEVARIANTCLIENTSTATEEXTPROC glDisableVariantClientStateEXT;
+    REGALGLENABLEVARIANTCLIENTSTATEEXTPROC glEnableVariantClientStateEXT;
+    REGALGLENDVERTEXSHADEREXTPROC glEndVertexShaderEXT;
+    REGALGLEXTRACTCOMPONENTEXTPROC glExtractComponentEXT;
+    REGALGLGENSYMBOLSEXTPROC glGenSymbolsEXT;
+    REGALGLGENVERTEXSHADERSEXTPROC glGenVertexShadersEXT;
+    REGALGLGETINVARIANTBOOLEANVEXTPROC glGetInvariantBooleanvEXT;
+    REGALGLGETINVARIANTFLOATVEXTPROC glGetInvariantFloatvEXT;
+    REGALGLGETINVARIANTINTEGERVEXTPROC glGetInvariantIntegervEXT;
+    REGALGLGETLOCALCONSTANTBOOLEANVEXTPROC glGetLocalConstantBooleanvEXT;
+    REGALGLGETLOCALCONSTANTFLOATVEXTPROC glGetLocalConstantFloatvEXT;
+    REGALGLGETLOCALCONSTANTINTEGERVEXTPROC glGetLocalConstantIntegervEXT;
+    REGALGLGETVARIANTBOOLEANVEXTPROC glGetVariantBooleanvEXT;
+    REGALGLGETVARIANTFLOATVEXTPROC glGetVariantFloatvEXT;
+    REGALGLGETVARIANTINTEGERVEXTPROC glGetVariantIntegervEXT;
+    REGALGLGETVARIANTPOINTERVEXTPROC glGetVariantPointervEXT;
+    REGALGLINSERTCOMPONENTEXTPROC glInsertComponentEXT;
+    REGALGLISVARIANTENABLEDEXTPROC glIsVariantEnabledEXT;
+    REGALGLSETINVARIANTEXTPROC glSetInvariantEXT;
+    REGALGLSETLOCALCONSTANTEXTPROC glSetLocalConstantEXT;
+    REGALGLSHADEROP1EXTPROC glShaderOp1EXT;
+    REGALGLSHADEROP2EXTPROC glShaderOp2EXT;
+    REGALGLSHADEROP3EXTPROC glShaderOp3EXT;
+    REGALGLSWIZZLEEXTPROC glSwizzleEXT;
+    REGALGLVARIANTPOINTEREXTPROC glVariantPointerEXT;
+    REGALGLVARIANTBVEXTPROC glVariantbvEXT;
+    REGALGLVARIANTDVEXTPROC glVariantdvEXT;
+    REGALGLVARIANTFVEXTPROC glVariantfvEXT;
+    REGALGLVARIANTIVEXTPROC glVariantivEXT;
+    REGALGLVARIANTSVEXTPROC glVariantsvEXT;
+    REGALGLVARIANTUBVEXTPROC glVariantubvEXT;
+    REGALGLVARIANTUIVEXTPROC glVariantuivEXT;
+    REGALGLVARIANTUSVEXTPROC glVariantusvEXT;
+    REGALGLWRITEMASKEXTPROC glWriteMaskEXT;
 
     // GL_EXT_vertex_weighting
 
-    PFNGLVERTEXWEIGHTPOINTEREXTPROC glVertexWeightPointerEXT;
-    PFNGLVERTEXWEIGHTFEXTPROC glVertexWeightfEXT;
-    PFNGLVERTEXWEIGHTFVEXTPROC glVertexWeightfvEXT;
+    REGALGLVERTEXWEIGHTPOINTEREXTPROC glVertexWeightPointerEXT;
+    REGALGLVERTEXWEIGHTFEXTPROC glVertexWeightfEXT;
+    REGALGLVERTEXWEIGHTFVEXTPROC glVertexWeightfvEXT;
 
     // GL_EXT_x11_sync_object
 
-    PFNGLIMPORTSYNCEXTPROC glImportSyncEXT;
+    REGALGLIMPORTSYNCEXTPROC glImportSyncEXT;
 
     // GL_GREMEDY_frame_terminator
 
-    PFNGLFRAMETERMINATORGREMEDYPROC glFrameTerminatorGREMEDY;
+    REGALGLFRAMETERMINATORGREMEDYPROC glFrameTerminatorGREMEDY;
 
     // GL_GREMEDY_string_marker
 
-    PFNGLSTRINGMARKERGREMEDYPROC glStringMarkerGREMEDY;
+    REGALGLSTRINGMARKERGREMEDYPROC glStringMarkerGREMEDY;
 
     // GL_HP_image_transform
 
-    PFNGLGETIMAGETRANSFORMPARAMETERFVHPPROC glGetImageTransformParameterfvHP;
-    PFNGLGETIMAGETRANSFORMPARAMETERIVHPPROC glGetImageTransformParameterivHP;
-    PFNGLIMAGETRANSFORMPARAMETERFHPPROC glImageTransformParameterfHP;
-    PFNGLIMAGETRANSFORMPARAMETERFVHPPROC glImageTransformParameterfvHP;
-    PFNGLIMAGETRANSFORMPARAMETERIHPPROC glImageTransformParameteriHP;
-    PFNGLIMAGETRANSFORMPARAMETERIVHPPROC glImageTransformParameterivHP;
+    REGALGLGETIMAGETRANSFORMPARAMETERFVHPPROC glGetImageTransformParameterfvHP;
+    REGALGLGETIMAGETRANSFORMPARAMETERIVHPPROC glGetImageTransformParameterivHP;
+    REGALGLIMAGETRANSFORMPARAMETERFHPPROC glImageTransformParameterfHP;
+    REGALGLIMAGETRANSFORMPARAMETERFVHPPROC glImageTransformParameterfvHP;
+    REGALGLIMAGETRANSFORMPARAMETERIHPPROC glImageTransformParameteriHP;
+    REGALGLIMAGETRANSFORMPARAMETERIVHPPROC glImageTransformParameterivHP;
 
     // GL_IBM_multimode_draw_arrays
 
-    PFNGLMULTIMODEDRAWARRAYSIBMPROC glMultiModeDrawArraysIBM;
-    PFNGLMULTIMODEDRAWELEMENTSIBMPROC glMultiModeDrawElementsIBM;
+    REGALGLMULTIMODEDRAWARRAYSIBMPROC glMultiModeDrawArraysIBM;
+    REGALGLMULTIMODEDRAWELEMENTSIBMPROC glMultiModeDrawElementsIBM;
 
     // GL_IBM_vertex_array_lists
 
-    PFNGLCOLORPOINTERLISTIBMPROC glColorPointerListIBM;
-    PFNGLEDGEFLAGPOINTERLISTIBMPROC glEdgeFlagPointerListIBM;
-    PFNGLFOGCOORDPOINTERLISTIBMPROC glFogCoordPointerListIBM;
-    PFNGLINDEXPOINTERLISTIBMPROC glIndexPointerListIBM;
-    PFNGLNORMALPOINTERLISTIBMPROC glNormalPointerListIBM;
-    PFNGLSECONDARYCOLORPOINTERLISTIBMPROC glSecondaryColorPointerListIBM;
-    PFNGLTEXCOORDPOINTERLISTIBMPROC glTexCoordPointerListIBM;
-    PFNGLVERTEXPOINTERLISTIBMPROC glVertexPointerListIBM;
+    REGALGLCOLORPOINTERLISTIBMPROC glColorPointerListIBM;
+    REGALGLEDGEFLAGPOINTERLISTIBMPROC glEdgeFlagPointerListIBM;
+    REGALGLFOGCOORDPOINTERLISTIBMPROC glFogCoordPointerListIBM;
+    REGALGLINDEXPOINTERLISTIBMPROC glIndexPointerListIBM;
+    REGALGLNORMALPOINTERLISTIBMPROC glNormalPointerListIBM;
+    REGALGLSECONDARYCOLORPOINTERLISTIBMPROC glSecondaryColorPointerListIBM;
+    REGALGLTEXCOORDPOINTERLISTIBMPROC glTexCoordPointerListIBM;
+    REGALGLVERTEXPOINTERLISTIBMPROC glVertexPointerListIBM;
 
     // GL_IMG_multisampled_render_to_texture
 
-    PFNGLFRAMEBUFFERTEXTURE2DMULTISAMPLEIMGPROC glFramebufferTexture2DMultisampleIMG;
-    PFNGLRENDERBUFFERSTORAGEMULTISAMPLEIMGPROC glRenderbufferStorageMultisampleIMG;
+    REGALGLFRAMEBUFFERTEXTURE2DMULTISAMPLEIMGPROC glFramebufferTexture2DMultisampleIMG;
+    REGALGLRENDERBUFFERSTORAGEMULTISAMPLEIMGPROC glRenderbufferStorageMultisampleIMG;
 
     // GL_INGR_blend_func_separate
 
-    PFNGLBLENDFUNCSEPARATEINGRPROC glBlendFuncSeparateINGR;
+    REGALGLBLENDFUNCSEPARATEINGRPROC glBlendFuncSeparateINGR;
 
     // GL_INTEL_map_texture
 
-    PFNGLMAPTEXTURE2DINTELPROC glMapTexture2DINTEL;
-    PFNGLSYNCTEXTUREINTELPROC glSyncTextureINTEL;
-    PFNGLUNMAPTEXTURE2DINTELPROC glUnmapTexture2DINTEL;
+    REGALGLMAPTEXTURE2DINTELPROC glMapTexture2DINTEL;
+    REGALGLSYNCTEXTUREINTELPROC glSyncTextureINTEL;
+    REGALGLUNMAPTEXTURE2DINTELPROC glUnmapTexture2DINTEL;
 
     // GL_INTEL_parallel_arrays
 
-    PFNGLCOLORPOINTERVINTELPROC glColorPointervINTEL;
-    PFNGLNORMALPOINTERVINTELPROC glNormalPointervINTEL;
-    PFNGLTEXCOORDPOINTERVINTELPROC glTexCoordPointervINTEL;
-    PFNGLVERTEXPOINTERVINTELPROC glVertexPointervINTEL;
+    REGALGLCOLORPOINTERVINTELPROC glColorPointervINTEL;
+    REGALGLNORMALPOINTERVINTELPROC glNormalPointervINTEL;
+    REGALGLTEXCOORDPOINTERVINTELPROC glTexCoordPointervINTEL;
+    REGALGLVERTEXPOINTERVINTELPROC glVertexPointervINTEL;
 
     // GL_INTEL_texture_scissor
 
-    PFNGLTEXSCISSORFUNCINTELPROC glTexScissorFuncINTEL;
-    PFNGLTEXSCISSORINTELPROC glTexScissorINTEL;
+    REGALGLTEXSCISSORFUNCINTELPROC glTexScissorFuncINTEL;
+    REGALGLTEXSCISSORINTELPROC glTexScissorINTEL;
 
     // GL_KHR_debug
 
-    PFNGLDEBUGMESSAGECALLBACKPROC glDebugMessageCallback;
-    PFNGLDEBUGMESSAGECONTROLPROC glDebugMessageControl;
-    PFNGLDEBUGMESSAGEINSERTPROC glDebugMessageInsert;
-    PFNGLGETDEBUGMESSAGELOGPROC glGetDebugMessageLog;
-    PFNGLGETOBJECTLABELPROC glGetObjectLabel;
-    PFNGLGETOBJECTPTRLABELPROC glGetObjectPtrLabel;
-    PFNGLOBJECTLABELPROC glObjectLabel;
-    PFNGLOBJECTPTRLABELPROC glObjectPtrLabel;
-    PFNGLPOPDEBUGGROUPPROC glPopDebugGroup;
-    PFNGLPUSHDEBUGGROUPPROC glPushDebugGroup;
+    REGALGLDEBUGMESSAGECALLBACKPROC glDebugMessageCallback;
+    REGALGLDEBUGMESSAGECONTROLPROC glDebugMessageControl;
+    REGALGLDEBUGMESSAGEINSERTPROC glDebugMessageInsert;
+    REGALGLGETDEBUGMESSAGELOGPROC glGetDebugMessageLog;
+    REGALGLGETOBJECTLABELPROC glGetObjectLabel;
+    REGALGLGETOBJECTPTRLABELPROC glGetObjectPtrLabel;
+    REGALGLOBJECTLABELPROC glObjectLabel;
+    REGALGLOBJECTPTRLABELPROC glObjectPtrLabel;
+    REGALGLPOPDEBUGGROUPPROC glPopDebugGroup;
+    REGALGLPUSHDEBUGGROUPPROC glPushDebugGroup;
 
     // GL_KTX_buffer_region
 
-    PFNGLBUFFERREGIONENABLEDPROC glBufferRegionEnabled;
-    PFNGLDELETEBUFFERREGIONPROC glDeleteBufferRegion;
-    PFNGLDRAWBUFFERREGIONPROC glDrawBufferRegion;
-    PFNGLNEWBUFFERREGIONPROC glNewBufferRegion;
-    PFNGLREADBUFFERREGIONPROC glReadBufferRegion;
+    REGALGLBUFFERREGIONENABLEDPROC glBufferRegionEnabled;
+    REGALGLDELETEBUFFERREGIONPROC glDeleteBufferRegion;
+    REGALGLDRAWBUFFERREGIONPROC glDrawBufferRegion;
+    REGALGLNEWBUFFERREGIONPROC glNewBufferRegion;
+    REGALGLREADBUFFERREGIONPROC glReadBufferRegion;
 
     // GL_MESA_resize_buffers
 
-    PFNGLRESIZEBUFFERSMESAPROC glResizeBuffersMESA;
+    REGALGLRESIZEBUFFERSMESAPROC glResizeBuffersMESA;
 
     // GL_MESA_window_pos
 
-    PFNGLWINDOWPOS2DMESAPROC glWindowPos2dMESA;
-    PFNGLWINDOWPOS2DVMESAPROC glWindowPos2dvMESA;
-    PFNGLWINDOWPOS2FMESAPROC glWindowPos2fMESA;
-    PFNGLWINDOWPOS2FVMESAPROC glWindowPos2fvMESA;
-    PFNGLWINDOWPOS2IMESAPROC glWindowPos2iMESA;
-    PFNGLWINDOWPOS2IVMESAPROC glWindowPos2ivMESA;
-    PFNGLWINDOWPOS2SMESAPROC glWindowPos2sMESA;
-    PFNGLWINDOWPOS2SVMESAPROC glWindowPos2svMESA;
-    PFNGLWINDOWPOS3DMESAPROC glWindowPos3dMESA;
-    PFNGLWINDOWPOS3DVMESAPROC glWindowPos3dvMESA;
-    PFNGLWINDOWPOS3FMESAPROC glWindowPos3fMESA;
-    PFNGLWINDOWPOS3FVMESAPROC glWindowPos3fvMESA;
-    PFNGLWINDOWPOS3IMESAPROC glWindowPos3iMESA;
-    PFNGLWINDOWPOS3IVMESAPROC glWindowPos3ivMESA;
-    PFNGLWINDOWPOS3SMESAPROC glWindowPos3sMESA;
-    PFNGLWINDOWPOS3SVMESAPROC glWindowPos3svMESA;
-    PFNGLWINDOWPOS4DMESAPROC glWindowPos4dMESA;
-    PFNGLWINDOWPOS4DVMESAPROC glWindowPos4dvMESA;
-    PFNGLWINDOWPOS4FMESAPROC glWindowPos4fMESA;
-    PFNGLWINDOWPOS4FVMESAPROC glWindowPos4fvMESA;
-    PFNGLWINDOWPOS4IMESAPROC glWindowPos4iMESA;
-    PFNGLWINDOWPOS4IVMESAPROC glWindowPos4ivMESA;
-    PFNGLWINDOWPOS4SMESAPROC glWindowPos4sMESA;
-    PFNGLWINDOWPOS4SVMESAPROC glWindowPos4svMESA;
+    REGALGLWINDOWPOS2DMESAPROC glWindowPos2dMESA;
+    REGALGLWINDOWPOS2DVMESAPROC glWindowPos2dvMESA;
+    REGALGLWINDOWPOS2FMESAPROC glWindowPos2fMESA;
+    REGALGLWINDOWPOS2FVMESAPROC glWindowPos2fvMESA;
+    REGALGLWINDOWPOS2IMESAPROC glWindowPos2iMESA;
+    REGALGLWINDOWPOS2IVMESAPROC glWindowPos2ivMESA;
+    REGALGLWINDOWPOS2SMESAPROC glWindowPos2sMESA;
+    REGALGLWINDOWPOS2SVMESAPROC glWindowPos2svMESA;
+    REGALGLWINDOWPOS3DMESAPROC glWindowPos3dMESA;
+    REGALGLWINDOWPOS3DVMESAPROC glWindowPos3dvMESA;
+    REGALGLWINDOWPOS3FMESAPROC glWindowPos3fMESA;
+    REGALGLWINDOWPOS3FVMESAPROC glWindowPos3fvMESA;
+    REGALGLWINDOWPOS3IMESAPROC glWindowPos3iMESA;
+    REGALGLWINDOWPOS3IVMESAPROC glWindowPos3ivMESA;
+    REGALGLWINDOWPOS3SMESAPROC glWindowPos3sMESA;
+    REGALGLWINDOWPOS3SVMESAPROC glWindowPos3svMESA;
+    REGALGLWINDOWPOS4DMESAPROC glWindowPos4dMESA;
+    REGALGLWINDOWPOS4DVMESAPROC glWindowPos4dvMESA;
+    REGALGLWINDOWPOS4FMESAPROC glWindowPos4fMESA;
+    REGALGLWINDOWPOS4FVMESAPROC glWindowPos4fvMESA;
+    REGALGLWINDOWPOS4IMESAPROC glWindowPos4iMESA;
+    REGALGLWINDOWPOS4IVMESAPROC glWindowPos4ivMESA;
+    REGALGLWINDOWPOS4SMESAPROC glWindowPos4sMESA;
+    REGALGLWINDOWPOS4SVMESAPROC glWindowPos4svMESA;
 
     // GL_NVX_conditional_render
 
-    PFNGLBEGINCONDITIONALRENDERNVXPROC glBeginConditionalRenderNVX;
-    PFNGLENDCONDITIONALRENDERNVXPROC glEndConditionalRenderNVX;
+    REGALGLBEGINCONDITIONALRENDERNVXPROC glBeginConditionalRenderNVX;
+    REGALGLENDCONDITIONALRENDERNVXPROC glEndConditionalRenderNVX;
 
     // GL_NV_bindless_texture
 
-    PFNGLGETIMAGEHANDLENVPROC glGetImageHandleNV;
-    PFNGLGETTEXTUREHANDLENVPROC glGetTextureHandleNV;
-    PFNGLGETTEXTURESAMPLERHANDLENVPROC glGetTextureSamplerHandleNV;
-    PFNGLISIMAGEHANDLERESIDENTNVPROC glIsImageHandleResidentNV;
-    PFNGLISTEXTUREHANDLERESIDENTNVPROC glIsTextureHandleResidentNV;
-    PFNGLMAKEIMAGEHANDLENONRESIDENTNVPROC glMakeImageHandleNonResidentNV;
-    PFNGLMAKEIMAGEHANDLERESIDENTNVPROC glMakeImageHandleResidentNV;
-    PFNGLMAKETEXTUREHANDLENONRESIDENTNVPROC glMakeTextureHandleNonResidentNV;
-    PFNGLMAKETEXTUREHANDLERESIDENTNVPROC glMakeTextureHandleResidentNV;
-    PFNGLPROGRAMUNIFORMHANDLEUI64NVPROC glProgramUniformHandleui64NV;
-    PFNGLPROGRAMUNIFORMHANDLEUI64VNVPROC glProgramUniformHandleui64vNV;
-    PFNGLUNIFORMHANDLEUI64NVPROC glUniformHandleui64NV;
-    PFNGLUNIFORMHANDLEUI64VNVPROC glUniformHandleui64vNV;
+    REGALGLGETIMAGEHANDLENVPROC glGetImageHandleNV;
+    REGALGLGETTEXTUREHANDLENVPROC glGetTextureHandleNV;
+    REGALGLGETTEXTURESAMPLERHANDLENVPROC glGetTextureSamplerHandleNV;
+    REGALGLISIMAGEHANDLERESIDENTNVPROC glIsImageHandleResidentNV;
+    REGALGLISTEXTUREHANDLERESIDENTNVPROC glIsTextureHandleResidentNV;
+    REGALGLMAKEIMAGEHANDLENONRESIDENTNVPROC glMakeImageHandleNonResidentNV;
+    REGALGLMAKEIMAGEHANDLERESIDENTNVPROC glMakeImageHandleResidentNV;
+    REGALGLMAKETEXTUREHANDLENONRESIDENTNVPROC glMakeTextureHandleNonResidentNV;
+    REGALGLMAKETEXTUREHANDLERESIDENTNVPROC glMakeTextureHandleResidentNV;
+    REGALGLPROGRAMUNIFORMHANDLEUI64NVPROC glProgramUniformHandleui64NV;
+    REGALGLPROGRAMUNIFORMHANDLEUI64VNVPROC glProgramUniformHandleui64vNV;
+    REGALGLUNIFORMHANDLEUI64NVPROC glUniformHandleui64NV;
+    REGALGLUNIFORMHANDLEUI64VNVPROC glUniformHandleui64vNV;
 
     // GL_NV_blend_equation_advanced
 
-    PFNGLBLENDBARRIERNVPROC glBlendBarrierNV;
-    PFNGLBLENDPARAMETERINVPROC glBlendParameteriNV;
+    REGALGLBLENDBARRIERNVPROC glBlendBarrierNV;
+    REGALGLBLENDPARAMETERINVPROC glBlendParameteriNV;
 
     // GL_NV_conditional_render
 
-    PFNGLBEGINCONDITIONALRENDERNVPROC glBeginConditionalRenderNV;
-    PFNGLENDCONDITIONALRENDERNVPROC glEndConditionalRenderNV;
+    REGALGLBEGINCONDITIONALRENDERNVPROC glBeginConditionalRenderNV;
+    REGALGLENDCONDITIONALRENDERNVPROC glEndConditionalRenderNV;
 
     // GL_NV_copy_buffer
 
-    PFNGLCOPYBUFFERSUBDATANVPROC glCopyBufferSubDataNV;
+    REGALGLCOPYBUFFERSUBDATANVPROC glCopyBufferSubDataNV;
 
     // GL_NV_copy_image
 
-    PFNGLCOPYIMAGESUBDATANVPROC glCopyImageSubDataNV;
+    REGALGLCOPYIMAGESUBDATANVPROC glCopyImageSubDataNV;
 
     // GL_NV_coverage_sample
 
-    PFNGLCOVERAGEMASKNVPROC glCoverageMaskNV;
-    PFNGLCOVERAGEOPERATIONNVPROC glCoverageOperationNV;
+    REGALGLCOVERAGEMASKNVPROC glCoverageMaskNV;
+    REGALGLCOVERAGEOPERATIONNVPROC glCoverageOperationNV;
 
     // GL_NV_depth_buffer_float
 
-    PFNGLCLEARDEPTHDNVPROC glClearDepthdNV;
-    PFNGLDEPTHBOUNDSDNVPROC glDepthBoundsdNV;
-    PFNGLDEPTHRANGEDNVPROC glDepthRangedNV;
+    REGALGLCLEARDEPTHDNVPROC glClearDepthdNV;
+    REGALGLDEPTHBOUNDSDNVPROC glDepthBoundsdNV;
+    REGALGLDEPTHRANGEDNVPROC glDepthRangedNV;
 
     // GL_NV_draw_buffers
 
-    PFNGLDRAWBUFFERSNVPROC glDrawBuffersNV;
+    REGALGLDRAWBUFFERSNVPROC glDrawBuffersNV;
 
     // GL_NV_draw_texture
 
-    PFNGLDRAWTEXTURENVPROC glDrawTextureNV;
+    REGALGLDRAWTEXTURENVPROC glDrawTextureNV;
 
     // GL_NV_evaluators
 
-    PFNGLEVALMAPSNVPROC glEvalMapsNV;
-    PFNGLGETMAPATTRIBPARAMETERFVNVPROC glGetMapAttribParameterfvNV;
-    PFNGLGETMAPATTRIBPARAMETERIVNVPROC glGetMapAttribParameterivNV;
-    PFNGLGETMAPCONTROLPOINTSNVPROC glGetMapControlPointsNV;
-    PFNGLGETMAPPARAMETERFVNVPROC glGetMapParameterfvNV;
-    PFNGLGETMAPPARAMETERIVNVPROC glGetMapParameterivNV;
-    PFNGLMAPCONTROLPOINTSNVPROC glMapControlPointsNV;
-    PFNGLMAPPARAMETERFVNVPROC glMapParameterfvNV;
-    PFNGLMAPPARAMETERIVNVPROC glMapParameterivNV;
+    REGALGLEVALMAPSNVPROC glEvalMapsNV;
+    REGALGLGETMAPATTRIBPARAMETERFVNVPROC glGetMapAttribParameterfvNV;
+    REGALGLGETMAPATTRIBPARAMETERIVNVPROC glGetMapAttribParameterivNV;
+    REGALGLGETMAPCONTROLPOINTSNVPROC glGetMapControlPointsNV;
+    REGALGLGETMAPPARAMETERFVNVPROC glGetMapParameterfvNV;
+    REGALGLGETMAPPARAMETERIVNVPROC glGetMapParameterivNV;
+    REGALGLMAPCONTROLPOINTSNVPROC glMapControlPointsNV;
+    REGALGLMAPPARAMETERFVNVPROC glMapParameterfvNV;
+    REGALGLMAPPARAMETERIVNVPROC glMapParameterivNV;
 
     // GL_NV_explicit_multisample
 
-    PFNGLGETMULTISAMPLEFVNVPROC glGetMultisamplefvNV;
-    PFNGLSAMPLEMASKINDEXEDNVPROC glSampleMaskIndexedNV;
-    PFNGLTEXRENDERBUFFERNVPROC glTexRenderbufferNV;
+    REGALGLGETMULTISAMPLEFVNVPROC glGetMultisamplefvNV;
+    REGALGLSAMPLEMASKINDEXEDNVPROC glSampleMaskIndexedNV;
+    REGALGLTEXRENDERBUFFERNVPROC glTexRenderbufferNV;
 
     // GL_NV_fence
 
-    PFNGLDELETEFENCESNVPROC glDeleteFencesNV;
-    PFNGLFINISHFENCENVPROC glFinishFenceNV;
-    PFNGLGENFENCESNVPROC glGenFencesNV;
-    PFNGLGETFENCEIVNVPROC glGetFenceivNV;
-    PFNGLISFENCENVPROC glIsFenceNV;
-    PFNGLSETFENCENVPROC glSetFenceNV;
-    PFNGLTESTFENCENVPROC glTestFenceNV;
+    REGALGLDELETEFENCESNVPROC glDeleteFencesNV;
+    REGALGLFINISHFENCENVPROC glFinishFenceNV;
+    REGALGLGENFENCESNVPROC glGenFencesNV;
+    REGALGLGETFENCEIVNVPROC glGetFenceivNV;
+    REGALGLISFENCENVPROC glIsFenceNV;
+    REGALGLSETFENCENVPROC glSetFenceNV;
+    REGALGLTESTFENCENVPROC glTestFenceNV;
 
     // GL_NV_fragment_program
 
-    PFNGLGETPROGRAMNAMEDPARAMETERDVNVPROC glGetProgramNamedParameterdvNV;
-    PFNGLGETPROGRAMNAMEDPARAMETERFVNVPROC glGetProgramNamedParameterfvNV;
-    PFNGLPROGRAMNAMEDPARAMETER4DNVPROC glProgramNamedParameter4dNV;
-    PFNGLPROGRAMNAMEDPARAMETER4DVNVPROC glProgramNamedParameter4dvNV;
-    PFNGLPROGRAMNAMEDPARAMETER4FNVPROC glProgramNamedParameter4fNV;
-    PFNGLPROGRAMNAMEDPARAMETER4FVNVPROC glProgramNamedParameter4fvNV;
+    REGALGLGETPROGRAMNAMEDPARAMETERDVNVPROC glGetProgramNamedParameterdvNV;
+    REGALGLGETPROGRAMNAMEDPARAMETERFVNVPROC glGetProgramNamedParameterfvNV;
+    REGALGLPROGRAMNAMEDPARAMETER4DNVPROC glProgramNamedParameter4dNV;
+    REGALGLPROGRAMNAMEDPARAMETER4DVNVPROC glProgramNamedParameter4dvNV;
+    REGALGLPROGRAMNAMEDPARAMETER4FNVPROC glProgramNamedParameter4fNV;
+    REGALGLPROGRAMNAMEDPARAMETER4FVNVPROC glProgramNamedParameter4fvNV;
 
     // GL_NV_framebuffer_blit
 
-    PFNGLBLITFRAMEBUFFERNVPROC glBlitFramebufferNV;
+    REGALGLBLITFRAMEBUFFERNVPROC glBlitFramebufferNV;
 
     // GL_NV_framebuffer_multisample_coverage
 
-    PFNGLRENDERBUFFERSTORAGEMULTISAMPLECOVERAGENVPROC glRenderbufferStorageMultisampleCoverageNV;
+    REGALGLRENDERBUFFERSTORAGEMULTISAMPLECOVERAGENVPROC glRenderbufferStorageMultisampleCoverageNV;
 
     // GL_NV_geometry_program4
 
-    PFNGLPROGRAMVERTEXLIMITNVPROC glProgramVertexLimitNV;
+    REGALGLPROGRAMVERTEXLIMITNVPROC glProgramVertexLimitNV;
 
     // GL_NV_gpu_program4
 
-    PFNGLGETPROGRAMENVPARAMETERIIVNVPROC glGetProgramEnvParameterIivNV;
-    PFNGLGETPROGRAMENVPARAMETERIUIVNVPROC glGetProgramEnvParameterIuivNV;
-    PFNGLGETPROGRAMLOCALPARAMETERIIVNVPROC glGetProgramLocalParameterIivNV;
-    PFNGLGETPROGRAMLOCALPARAMETERIUIVNVPROC glGetProgramLocalParameterIuivNV;
-    PFNGLPROGRAMENVPARAMETERI4INVPROC glProgramEnvParameterI4iNV;
-    PFNGLPROGRAMENVPARAMETERI4IVNVPROC glProgramEnvParameterI4ivNV;
-    PFNGLPROGRAMENVPARAMETERI4UINVPROC glProgramEnvParameterI4uiNV;
-    PFNGLPROGRAMENVPARAMETERI4UIVNVPROC glProgramEnvParameterI4uivNV;
-    PFNGLPROGRAMENVPARAMETERSI4IVNVPROC glProgramEnvParametersI4ivNV;
-    PFNGLPROGRAMENVPARAMETERSI4UIVNVPROC glProgramEnvParametersI4uivNV;
-    PFNGLPROGRAMLOCALPARAMETERI4INVPROC glProgramLocalParameterI4iNV;
-    PFNGLPROGRAMLOCALPARAMETERI4IVNVPROC glProgramLocalParameterI4ivNV;
-    PFNGLPROGRAMLOCALPARAMETERI4UINVPROC glProgramLocalParameterI4uiNV;
-    PFNGLPROGRAMLOCALPARAMETERI4UIVNVPROC glProgramLocalParameterI4uivNV;
-    PFNGLPROGRAMLOCALPARAMETERSI4IVNVPROC glProgramLocalParametersI4ivNV;
-    PFNGLPROGRAMLOCALPARAMETERSI4UIVNVPROC glProgramLocalParametersI4uivNV;
+    REGALGLGETPROGRAMENVPARAMETERIIVNVPROC glGetProgramEnvParameterIivNV;
+    REGALGLGETPROGRAMENVPARAMETERIUIVNVPROC glGetProgramEnvParameterIuivNV;
+    REGALGLGETPROGRAMLOCALPARAMETERIIVNVPROC glGetProgramLocalParameterIivNV;
+    REGALGLGETPROGRAMLOCALPARAMETERIUIVNVPROC glGetProgramLocalParameterIuivNV;
+    REGALGLPROGRAMENVPARAMETERI4INVPROC glProgramEnvParameterI4iNV;
+    REGALGLPROGRAMENVPARAMETERI4IVNVPROC glProgramEnvParameterI4ivNV;
+    REGALGLPROGRAMENVPARAMETERI4UINVPROC glProgramEnvParameterI4uiNV;
+    REGALGLPROGRAMENVPARAMETERI4UIVNVPROC glProgramEnvParameterI4uivNV;
+    REGALGLPROGRAMENVPARAMETERSI4IVNVPROC glProgramEnvParametersI4ivNV;
+    REGALGLPROGRAMENVPARAMETERSI4UIVNVPROC glProgramEnvParametersI4uivNV;
+    REGALGLPROGRAMLOCALPARAMETERI4INVPROC glProgramLocalParameterI4iNV;
+    REGALGLPROGRAMLOCALPARAMETERI4IVNVPROC glProgramLocalParameterI4ivNV;
+    REGALGLPROGRAMLOCALPARAMETERI4UINVPROC glProgramLocalParameterI4uiNV;
+    REGALGLPROGRAMLOCALPARAMETERI4UIVNVPROC glProgramLocalParameterI4uivNV;
+    REGALGLPROGRAMLOCALPARAMETERSI4IVNVPROC glProgramLocalParametersI4ivNV;
+    REGALGLPROGRAMLOCALPARAMETERSI4UIVNVPROC glProgramLocalParametersI4uivNV;
 
     // GL_NV_gpu_shader5
 
-    PFNGLGETUNIFORMI64VNVPROC glGetUniformi64vNV;
-    PFNGLPROGRAMUNIFORM1I64NVPROC glProgramUniform1i64NV;
-    PFNGLPROGRAMUNIFORM1I64VNVPROC glProgramUniform1i64vNV;
-    PFNGLPROGRAMUNIFORM1UI64NVPROC glProgramUniform1ui64NV;
-    PFNGLPROGRAMUNIFORM1UI64VNVPROC glProgramUniform1ui64vNV;
-    PFNGLPROGRAMUNIFORM2I64NVPROC glProgramUniform2i64NV;
-    PFNGLPROGRAMUNIFORM2I64VNVPROC glProgramUniform2i64vNV;
-    PFNGLPROGRAMUNIFORM2UI64NVPROC glProgramUniform2ui64NV;
-    PFNGLPROGRAMUNIFORM2UI64VNVPROC glProgramUniform2ui64vNV;
-    PFNGLPROGRAMUNIFORM3I64NVPROC glProgramUniform3i64NV;
-    PFNGLPROGRAMUNIFORM3I64VNVPROC glProgramUniform3i64vNV;
-    PFNGLPROGRAMUNIFORM3UI64NVPROC glProgramUniform3ui64NV;
-    PFNGLPROGRAMUNIFORM3UI64VNVPROC glProgramUniform3ui64vNV;
-    PFNGLPROGRAMUNIFORM4I64NVPROC glProgramUniform4i64NV;
-    PFNGLPROGRAMUNIFORM4I64VNVPROC glProgramUniform4i64vNV;
-    PFNGLPROGRAMUNIFORM4UI64NVPROC glProgramUniform4ui64NV;
-    PFNGLPROGRAMUNIFORM4UI64VNVPROC glProgramUniform4ui64vNV;
-    PFNGLUNIFORM1I64NVPROC glUniform1i64NV;
-    PFNGLUNIFORM1I64VNVPROC glUniform1i64vNV;
-    PFNGLUNIFORM1UI64NVPROC glUniform1ui64NV;
-    PFNGLUNIFORM1UI64VNVPROC glUniform1ui64vNV;
-    PFNGLUNIFORM2I64NVPROC glUniform2i64NV;
-    PFNGLUNIFORM2I64VNVPROC glUniform2i64vNV;
-    PFNGLUNIFORM2UI64NVPROC glUniform2ui64NV;
-    PFNGLUNIFORM2UI64VNVPROC glUniform2ui64vNV;
-    PFNGLUNIFORM3I64NVPROC glUniform3i64NV;
-    PFNGLUNIFORM3I64VNVPROC glUniform3i64vNV;
-    PFNGLUNIFORM3UI64NVPROC glUniform3ui64NV;
-    PFNGLUNIFORM3UI64VNVPROC glUniform3ui64vNV;
-    PFNGLUNIFORM4I64NVPROC glUniform4i64NV;
-    PFNGLUNIFORM4I64VNVPROC glUniform4i64vNV;
-    PFNGLUNIFORM4UI64NVPROC glUniform4ui64NV;
-    PFNGLUNIFORM4UI64VNVPROC glUniform4ui64vNV;
+    REGALGLGETUNIFORMI64VNVPROC glGetUniformi64vNV;
+    REGALGLPROGRAMUNIFORM1I64NVPROC glProgramUniform1i64NV;
+    REGALGLPROGRAMUNIFORM1I64VNVPROC glProgramUniform1i64vNV;
+    REGALGLPROGRAMUNIFORM1UI64NVPROC glProgramUniform1ui64NV;
+    REGALGLPROGRAMUNIFORM1UI64VNVPROC glProgramUniform1ui64vNV;
+    REGALGLPROGRAMUNIFORM2I64NVPROC glProgramUniform2i64NV;
+    REGALGLPROGRAMUNIFORM2I64VNVPROC glProgramUniform2i64vNV;
+    REGALGLPROGRAMUNIFORM2UI64NVPROC glProgramUniform2ui64NV;
+    REGALGLPROGRAMUNIFORM2UI64VNVPROC glProgramUniform2ui64vNV;
+    REGALGLPROGRAMUNIFORM3I64NVPROC glProgramUniform3i64NV;
+    REGALGLPROGRAMUNIFORM3I64VNVPROC glProgramUniform3i64vNV;
+    REGALGLPROGRAMUNIFORM3UI64NVPROC glProgramUniform3ui64NV;
+    REGALGLPROGRAMUNIFORM3UI64VNVPROC glProgramUniform3ui64vNV;
+    REGALGLPROGRAMUNIFORM4I64NVPROC glProgramUniform4i64NV;
+    REGALGLPROGRAMUNIFORM4I64VNVPROC glProgramUniform4i64vNV;
+    REGALGLPROGRAMUNIFORM4UI64NVPROC glProgramUniform4ui64NV;
+    REGALGLPROGRAMUNIFORM4UI64VNVPROC glProgramUniform4ui64vNV;
+    REGALGLUNIFORM1I64NVPROC glUniform1i64NV;
+    REGALGLUNIFORM1I64VNVPROC glUniform1i64vNV;
+    REGALGLUNIFORM1UI64NVPROC glUniform1ui64NV;
+    REGALGLUNIFORM1UI64VNVPROC glUniform1ui64vNV;
+    REGALGLUNIFORM2I64NVPROC glUniform2i64NV;
+    REGALGLUNIFORM2I64VNVPROC glUniform2i64vNV;
+    REGALGLUNIFORM2UI64NVPROC glUniform2ui64NV;
+    REGALGLUNIFORM2UI64VNVPROC glUniform2ui64vNV;
+    REGALGLUNIFORM3I64NVPROC glUniform3i64NV;
+    REGALGLUNIFORM3I64VNVPROC glUniform3i64vNV;
+    REGALGLUNIFORM3UI64NVPROC glUniform3ui64NV;
+    REGALGLUNIFORM3UI64VNVPROC glUniform3ui64vNV;
+    REGALGLUNIFORM4I64NVPROC glUniform4i64NV;
+    REGALGLUNIFORM4I64VNVPROC glUniform4i64vNV;
+    REGALGLUNIFORM4UI64NVPROC glUniform4ui64NV;
+    REGALGLUNIFORM4UI64VNVPROC glUniform4ui64vNV;
 
     // GL_NV_half_float
 
-    PFNGLCOLOR3HNVPROC glColor3hNV;
-    PFNGLCOLOR3HVNVPROC glColor3hvNV;
-    PFNGLCOLOR4HNVPROC glColor4hNV;
-    PFNGLCOLOR4HVNVPROC glColor4hvNV;
-    PFNGLFOGCOORDHNVPROC glFogCoordhNV;
-    PFNGLFOGCOORDHVNVPROC glFogCoordhvNV;
-    PFNGLMULTITEXCOORD1HNVPROC glMultiTexCoord1hNV;
-    PFNGLMULTITEXCOORD1HVNVPROC glMultiTexCoord1hvNV;
-    PFNGLMULTITEXCOORD2HNVPROC glMultiTexCoord2hNV;
-    PFNGLMULTITEXCOORD2HVNVPROC glMultiTexCoord2hvNV;
-    PFNGLMULTITEXCOORD3HNVPROC glMultiTexCoord3hNV;
-    PFNGLMULTITEXCOORD3HVNVPROC glMultiTexCoord3hvNV;
-    PFNGLMULTITEXCOORD4HNVPROC glMultiTexCoord4hNV;
-    PFNGLMULTITEXCOORD4HVNVPROC glMultiTexCoord4hvNV;
-    PFNGLNORMAL3HNVPROC glNormal3hNV;
-    PFNGLNORMAL3HVNVPROC glNormal3hvNV;
-    PFNGLSECONDARYCOLOR3HNVPROC glSecondaryColor3hNV;
-    PFNGLSECONDARYCOLOR3HVNVPROC glSecondaryColor3hvNV;
-    PFNGLTEXCOORD1HNVPROC glTexCoord1hNV;
-    PFNGLTEXCOORD1HVNVPROC glTexCoord1hvNV;
-    PFNGLTEXCOORD2HNVPROC glTexCoord2hNV;
-    PFNGLTEXCOORD2HVNVPROC glTexCoord2hvNV;
-    PFNGLTEXCOORD3HNVPROC glTexCoord3hNV;
-    PFNGLTEXCOORD3HVNVPROC glTexCoord3hvNV;
-    PFNGLTEXCOORD4HNVPROC glTexCoord4hNV;
-    PFNGLTEXCOORD4HVNVPROC glTexCoord4hvNV;
-    PFNGLVERTEX2HNVPROC glVertex2hNV;
-    PFNGLVERTEX2HVNVPROC glVertex2hvNV;
-    PFNGLVERTEX3HNVPROC glVertex3hNV;
-    PFNGLVERTEX3HVNVPROC glVertex3hvNV;
-    PFNGLVERTEX4HNVPROC glVertex4hNV;
-    PFNGLVERTEX4HVNVPROC glVertex4hvNV;
-    PFNGLVERTEXATTRIB1HNVPROC glVertexAttrib1hNV;
-    PFNGLVERTEXATTRIB1HVNVPROC glVertexAttrib1hvNV;
-    PFNGLVERTEXATTRIB2HNVPROC glVertexAttrib2hNV;
-    PFNGLVERTEXATTRIB2HVNVPROC glVertexAttrib2hvNV;
-    PFNGLVERTEXATTRIB3HNVPROC glVertexAttrib3hNV;
-    PFNGLVERTEXATTRIB3HVNVPROC glVertexAttrib3hvNV;
-    PFNGLVERTEXATTRIB4HNVPROC glVertexAttrib4hNV;
-    PFNGLVERTEXATTRIB4HVNVPROC glVertexAttrib4hvNV;
-    PFNGLVERTEXATTRIBS1HVNVPROC glVertexAttribs1hvNV;
-    PFNGLVERTEXATTRIBS2HVNVPROC glVertexAttribs2hvNV;
-    PFNGLVERTEXATTRIBS3HVNVPROC glVertexAttribs3hvNV;
-    PFNGLVERTEXATTRIBS4HVNVPROC glVertexAttribs4hvNV;
-    PFNGLVERTEXWEIGHTHNVPROC glVertexWeighthNV;
-    PFNGLVERTEXWEIGHTHVNVPROC glVertexWeighthvNV;
+    REGALGLCOLOR3HNVPROC glColor3hNV;
+    REGALGLCOLOR3HVNVPROC glColor3hvNV;
+    REGALGLCOLOR4HNVPROC glColor4hNV;
+    REGALGLCOLOR4HVNVPROC glColor4hvNV;
+    REGALGLFOGCOORDHNVPROC glFogCoordhNV;
+    REGALGLFOGCOORDHVNVPROC glFogCoordhvNV;
+    REGALGLMULTITEXCOORD1HNVPROC glMultiTexCoord1hNV;
+    REGALGLMULTITEXCOORD1HVNVPROC glMultiTexCoord1hvNV;
+    REGALGLMULTITEXCOORD2HNVPROC glMultiTexCoord2hNV;
+    REGALGLMULTITEXCOORD2HVNVPROC glMultiTexCoord2hvNV;
+    REGALGLMULTITEXCOORD3HNVPROC glMultiTexCoord3hNV;
+    REGALGLMULTITEXCOORD3HVNVPROC glMultiTexCoord3hvNV;
+    REGALGLMULTITEXCOORD4HNVPROC glMultiTexCoord4hNV;
+    REGALGLMULTITEXCOORD4HVNVPROC glMultiTexCoord4hvNV;
+    REGALGLNORMAL3HNVPROC glNormal3hNV;
+    REGALGLNORMAL3HVNVPROC glNormal3hvNV;
+    REGALGLSECONDARYCOLOR3HNVPROC glSecondaryColor3hNV;
+    REGALGLSECONDARYCOLOR3HVNVPROC glSecondaryColor3hvNV;
+    REGALGLTEXCOORD1HNVPROC glTexCoord1hNV;
+    REGALGLTEXCOORD1HVNVPROC glTexCoord1hvNV;
+    REGALGLTEXCOORD2HNVPROC glTexCoord2hNV;
+    REGALGLTEXCOORD2HVNVPROC glTexCoord2hvNV;
+    REGALGLTEXCOORD3HNVPROC glTexCoord3hNV;
+    REGALGLTEXCOORD3HVNVPROC glTexCoord3hvNV;
+    REGALGLTEXCOORD4HNVPROC glTexCoord4hNV;
+    REGALGLTEXCOORD4HVNVPROC glTexCoord4hvNV;
+    REGALGLVERTEX2HNVPROC glVertex2hNV;
+    REGALGLVERTEX2HVNVPROC glVertex2hvNV;
+    REGALGLVERTEX3HNVPROC glVertex3hNV;
+    REGALGLVERTEX3HVNVPROC glVertex3hvNV;
+    REGALGLVERTEX4HNVPROC glVertex4hNV;
+    REGALGLVERTEX4HVNVPROC glVertex4hvNV;
+    REGALGLVERTEXATTRIB1HNVPROC glVertexAttrib1hNV;
+    REGALGLVERTEXATTRIB1HVNVPROC glVertexAttrib1hvNV;
+    REGALGLVERTEXATTRIB2HNVPROC glVertexAttrib2hNV;
+    REGALGLVERTEXATTRIB2HVNVPROC glVertexAttrib2hvNV;
+    REGALGLVERTEXATTRIB3HNVPROC glVertexAttrib3hNV;
+    REGALGLVERTEXATTRIB3HVNVPROC glVertexAttrib3hvNV;
+    REGALGLVERTEXATTRIB4HNVPROC glVertexAttrib4hNV;
+    REGALGLVERTEXATTRIB4HVNVPROC glVertexAttrib4hvNV;
+    REGALGLVERTEXATTRIBS1HVNVPROC glVertexAttribs1hvNV;
+    REGALGLVERTEXATTRIBS2HVNVPROC glVertexAttribs2hvNV;
+    REGALGLVERTEXATTRIBS3HVNVPROC glVertexAttribs3hvNV;
+    REGALGLVERTEXATTRIBS4HVNVPROC glVertexAttribs4hvNV;
+    REGALGLVERTEXWEIGHTHNVPROC glVertexWeighthNV;
+    REGALGLVERTEXWEIGHTHVNVPROC glVertexWeighthvNV;
 
     // GL_NV_non_square_matrices
 
-    PFNGLUNIFORMMATRIX2X3FVNVPROC glUniformMatrix2x3fvNV;
-    PFNGLUNIFORMMATRIX2X4FVNVPROC glUniformMatrix2x4fvNV;
-    PFNGLUNIFORMMATRIX3X2FVNVPROC glUniformMatrix3x2fvNV;
-    PFNGLUNIFORMMATRIX3X4FVNVPROC glUniformMatrix3x4fvNV;
-    PFNGLUNIFORMMATRIX4X2FVNVPROC glUniformMatrix4x2fvNV;
-    PFNGLUNIFORMMATRIX4X3FVNVPROC glUniformMatrix4x3fvNV;
+    REGALGLUNIFORMMATRIX2X3FVNVPROC glUniformMatrix2x3fvNV;
+    REGALGLUNIFORMMATRIX2X4FVNVPROC glUniformMatrix2x4fvNV;
+    REGALGLUNIFORMMATRIX3X2FVNVPROC glUniformMatrix3x2fvNV;
+    REGALGLUNIFORMMATRIX3X4FVNVPROC glUniformMatrix3x4fvNV;
+    REGALGLUNIFORMMATRIX4X2FVNVPROC glUniformMatrix4x2fvNV;
+    REGALGLUNIFORMMATRIX4X3FVNVPROC glUniformMatrix4x3fvNV;
 
     // GL_NV_occlusion_query
 
-    PFNGLBEGINOCCLUSIONQUERYNVPROC glBeginOcclusionQueryNV;
-    PFNGLDELETEOCCLUSIONQUERIESNVPROC glDeleteOcclusionQueriesNV;
-    PFNGLENDOCCLUSIONQUERYNVPROC glEndOcclusionQueryNV;
-    PFNGLGENOCCLUSIONQUERIESNVPROC glGenOcclusionQueriesNV;
-    PFNGLGETOCCLUSIONQUERYIVNVPROC glGetOcclusionQueryivNV;
-    PFNGLGETOCCLUSIONQUERYUIVNVPROC glGetOcclusionQueryuivNV;
-    PFNGLISOCCLUSIONQUERYNVPROC glIsOcclusionQueryNV;
+    REGALGLBEGINOCCLUSIONQUERYNVPROC glBeginOcclusionQueryNV;
+    REGALGLDELETEOCCLUSIONQUERIESNVPROC glDeleteOcclusionQueriesNV;
+    REGALGLENDOCCLUSIONQUERYNVPROC glEndOcclusionQueryNV;
+    REGALGLGENOCCLUSIONQUERIESNVPROC glGenOcclusionQueriesNV;
+    REGALGLGETOCCLUSIONQUERYIVNVPROC glGetOcclusionQueryivNV;
+    REGALGLGETOCCLUSIONQUERYUIVNVPROC glGetOcclusionQueryuivNV;
+    REGALGLISOCCLUSIONQUERYNVPROC glIsOcclusionQueryNV;
 
     // GL_NV_parameter_buffer_object
 
-    PFNGLPROGRAMBUFFERPARAMETERSIIVNVPROC glProgramBufferParametersIivNV;
-    PFNGLPROGRAMBUFFERPARAMETERSIUIVNVPROC glProgramBufferParametersIuivNV;
-    PFNGLPROGRAMBUFFERPARAMETERSFVNVPROC glProgramBufferParametersfvNV;
+    REGALGLPROGRAMBUFFERPARAMETERSIIVNVPROC glProgramBufferParametersIivNV;
+    REGALGLPROGRAMBUFFERPARAMETERSIUIVNVPROC glProgramBufferParametersIuivNV;
+    REGALGLPROGRAMBUFFERPARAMETERSFVNVPROC glProgramBufferParametersfvNV;
 
     // GL_NV_path_rendering
 
-    PFNGLCOPYPATHNVPROC glCopyPathNV;
-    PFNGLCOVERFILLPATHINSTANCEDNVPROC glCoverFillPathInstancedNV;
-    PFNGLCOVERFILLPATHNVPROC glCoverFillPathNV;
-    PFNGLCOVERSTROKEPATHINSTANCEDNVPROC glCoverStrokePathInstancedNV;
-    PFNGLCOVERSTROKEPATHNVPROC glCoverStrokePathNV;
-    PFNGLDELETEPATHSNVPROC glDeletePathsNV;
-    PFNGLGENPATHSNVPROC glGenPathsNV;
-    PFNGLGETPATHCOLORGENFVNVPROC glGetPathColorGenfvNV;
-    PFNGLGETPATHCOLORGENIVNVPROC glGetPathColorGenivNV;
-    PFNGLGETPATHCOMMANDSNVPROC glGetPathCommandsNV;
-    PFNGLGETPATHCOORDSNVPROC glGetPathCoordsNV;
-    PFNGLGETPATHDASHARRAYNVPROC glGetPathDashArrayNV;
-    PFNGLGETPATHLENGTHNVPROC glGetPathLengthNV;
-    PFNGLGETPATHMETRICRANGENVPROC glGetPathMetricRangeNV;
-    PFNGLGETPATHMETRICSNVPROC glGetPathMetricsNV;
-    PFNGLGETPATHPARAMETERFVNVPROC glGetPathParameterfvNV;
-    PFNGLGETPATHPARAMETERIVNVPROC glGetPathParameterivNV;
-    PFNGLGETPATHSPACINGNVPROC glGetPathSpacingNV;
-    PFNGLGETPATHTEXGENFVNVPROC glGetPathTexGenfvNV;
-    PFNGLGETPATHTEXGENIVNVPROC glGetPathTexGenivNV;
-    PFNGLINTERPOLATEPATHSNVPROC glInterpolatePathsNV;
-    PFNGLISPATHNVPROC glIsPathNV;
-    PFNGLISPOINTINFILLPATHNVPROC glIsPointInFillPathNV;
-    PFNGLISPOINTINSTROKEPATHNVPROC glIsPointInStrokePathNV;
-    PFNGLPATHCOLORGENNVPROC glPathColorGenNV;
-    PFNGLPATHCOMMANDSNVPROC glPathCommandsNV;
-    PFNGLPATHCOORDSNVPROC glPathCoordsNV;
-    PFNGLPATHCOVERDEPTHFUNCNVPROC glPathCoverDepthFuncNV;
-    PFNGLPATHDASHARRAYNVPROC glPathDashArrayNV;
-    PFNGLPATHFOGGENNVPROC glPathFogGenNV;
-    PFNGLPATHGLYPHRANGENVPROC glPathGlyphRangeNV;
-    PFNGLPATHGLYPHSNVPROC glPathGlyphsNV;
-    PFNGLPATHPARAMETERFNVPROC glPathParameterfNV;
-    PFNGLPATHPARAMETERFVNVPROC glPathParameterfvNV;
-    PFNGLPATHPARAMETERINVPROC glPathParameteriNV;
-    PFNGLPATHPARAMETERIVNVPROC glPathParameterivNV;
-    PFNGLPATHSTENCILDEPTHOFFSETNVPROC glPathStencilDepthOffsetNV;
-    PFNGLPATHSTENCILFUNCNVPROC glPathStencilFuncNV;
-    PFNGLPATHSTRINGNVPROC glPathStringNV;
-    PFNGLPATHSUBCOMMANDSNVPROC glPathSubCommandsNV;
-    PFNGLPATHSUBCOORDSNVPROC glPathSubCoordsNV;
-    PFNGLPATHTEXGENNVPROC glPathTexGenNV;
-    PFNGLPOINTALONGPATHNVPROC glPointAlongPathNV;
-    PFNGLSTENCILFILLPATHINSTANCEDNVPROC glStencilFillPathInstancedNV;
-    PFNGLSTENCILFILLPATHNVPROC glStencilFillPathNV;
-    PFNGLSTENCILSTROKEPATHINSTANCEDNVPROC glStencilStrokePathInstancedNV;
-    PFNGLSTENCILSTROKEPATHNVPROC glStencilStrokePathNV;
-    PFNGLTRANSFORMPATHNVPROC glTransformPathNV;
-    PFNGLWEIGHTPATHSNVPROC glWeightPathsNV;
+    REGALGLCOPYPATHNVPROC glCopyPathNV;
+    REGALGLCOVERFILLPATHINSTANCEDNVPROC glCoverFillPathInstancedNV;
+    REGALGLCOVERFILLPATHNVPROC glCoverFillPathNV;
+    REGALGLCOVERSTROKEPATHINSTANCEDNVPROC glCoverStrokePathInstancedNV;
+    REGALGLCOVERSTROKEPATHNVPROC glCoverStrokePathNV;
+    REGALGLDELETEPATHSNVPROC glDeletePathsNV;
+    REGALGLGENPATHSNVPROC glGenPathsNV;
+    REGALGLGETPATHCOLORGENFVNVPROC glGetPathColorGenfvNV;
+    REGALGLGETPATHCOLORGENIVNVPROC glGetPathColorGenivNV;
+    REGALGLGETPATHCOMMANDSNVPROC glGetPathCommandsNV;
+    REGALGLGETPATHCOORDSNVPROC glGetPathCoordsNV;
+    REGALGLGETPATHDASHARRAYNVPROC glGetPathDashArrayNV;
+    REGALGLGETPATHLENGTHNVPROC glGetPathLengthNV;
+    REGALGLGETPATHMETRICRANGENVPROC glGetPathMetricRangeNV;
+    REGALGLGETPATHMETRICSNVPROC glGetPathMetricsNV;
+    REGALGLGETPATHPARAMETERFVNVPROC glGetPathParameterfvNV;
+    REGALGLGETPATHPARAMETERIVNVPROC glGetPathParameterivNV;
+    REGALGLGETPATHSPACINGNVPROC glGetPathSpacingNV;
+    REGALGLGETPATHTEXGENFVNVPROC glGetPathTexGenfvNV;
+    REGALGLGETPATHTEXGENIVNVPROC glGetPathTexGenivNV;
+    REGALGLINTERPOLATEPATHSNVPROC glInterpolatePathsNV;
+    REGALGLISPATHNVPROC glIsPathNV;
+    REGALGLISPOINTINFILLPATHNVPROC glIsPointInFillPathNV;
+    REGALGLISPOINTINSTROKEPATHNVPROC glIsPointInStrokePathNV;
+    REGALGLPATHCOLORGENNVPROC glPathColorGenNV;
+    REGALGLPATHCOMMANDSNVPROC glPathCommandsNV;
+    REGALGLPATHCOORDSNVPROC glPathCoordsNV;
+    REGALGLPATHCOVERDEPTHFUNCNVPROC glPathCoverDepthFuncNV;
+    REGALGLPATHDASHARRAYNVPROC glPathDashArrayNV;
+    REGALGLPATHFOGGENNVPROC glPathFogGenNV;
+    REGALGLPATHGLYPHRANGENVPROC glPathGlyphRangeNV;
+    REGALGLPATHGLYPHSNVPROC glPathGlyphsNV;
+    REGALGLPATHPARAMETERFNVPROC glPathParameterfNV;
+    REGALGLPATHPARAMETERFVNVPROC glPathParameterfvNV;
+    REGALGLPATHPARAMETERINVPROC glPathParameteriNV;
+    REGALGLPATHPARAMETERIVNVPROC glPathParameterivNV;
+    REGALGLPATHSTENCILDEPTHOFFSETNVPROC glPathStencilDepthOffsetNV;
+    REGALGLPATHSTENCILFUNCNVPROC glPathStencilFuncNV;
+    REGALGLPATHSTRINGNVPROC glPathStringNV;
+    REGALGLPATHSUBCOMMANDSNVPROC glPathSubCommandsNV;
+    REGALGLPATHSUBCOORDSNVPROC glPathSubCoordsNV;
+    REGALGLPATHTEXGENNVPROC glPathTexGenNV;
+    REGALGLPOINTALONGPATHNVPROC glPointAlongPathNV;
+    REGALGLSTENCILFILLPATHINSTANCEDNVPROC glStencilFillPathInstancedNV;
+    REGALGLSTENCILFILLPATHNVPROC glStencilFillPathNV;
+    REGALGLSTENCILSTROKEPATHINSTANCEDNVPROC glStencilStrokePathInstancedNV;
+    REGALGLSTENCILSTROKEPATHNVPROC glStencilStrokePathNV;
+    REGALGLTRANSFORMPATHNVPROC glTransformPathNV;
+    REGALGLWEIGHTPATHSNVPROC glWeightPathsNV;
 
     // GL_NV_pixel_data_range
 
-    PFNGLFLUSHPIXELDATARANGENVPROC glFlushPixelDataRangeNV;
-    PFNGLPIXELDATARANGENVPROC glPixelDataRangeNV;
+    REGALGLFLUSHPIXELDATARANGENVPROC glFlushPixelDataRangeNV;
+    REGALGLPIXELDATARANGENVPROC glPixelDataRangeNV;
 
     // GL_NV_point_sprite
 
-    PFNGLPOINTPARAMETERINVPROC glPointParameteriNV;
-    PFNGLPOINTPARAMETERIVNVPROC glPointParameterivNV;
+    REGALGLPOINTPARAMETERINVPROC glPointParameteriNV;
+    REGALGLPOINTPARAMETERIVNVPROC glPointParameterivNV;
 
     // GL_NV_present_video
 
-    PFNGLGETVIDEOI64VNVPROC glGetVideoi64vNV;
-    PFNGLGETVIDEOIVNVPROC glGetVideoivNV;
-    PFNGLGETVIDEOUI64VNVPROC glGetVideoui64vNV;
-    PFNGLGETVIDEOUIVNVPROC glGetVideouivNV;
-    PFNGLPRESENTFRAMEDUALFILLNVPROC glPresentFrameDualFillNV;
-    PFNGLPRESENTFRAMEKEYEDNVPROC glPresentFrameKeyedNV;
+    REGALGLGETVIDEOI64VNVPROC glGetVideoi64vNV;
+    REGALGLGETVIDEOIVNVPROC glGetVideoivNV;
+    REGALGLGETVIDEOUI64VNVPROC glGetVideoui64vNV;
+    REGALGLGETVIDEOUIVNVPROC glGetVideouivNV;
+    REGALGLPRESENTFRAMEDUALFILLNVPROC glPresentFrameDualFillNV;
+    REGALGLPRESENTFRAMEKEYEDNVPROC glPresentFrameKeyedNV;
 
     // GL_NV_primitive_restart
 
-    PFNGLPRIMITIVERESTARTINDEXNVPROC glPrimitiveRestartIndexNV;
-    PFNGLPRIMITIVERESTARTNVPROC glPrimitiveRestartNV;
+    REGALGLPRIMITIVERESTARTINDEXNVPROC glPrimitiveRestartIndexNV;
+    REGALGLPRIMITIVERESTARTNVPROC glPrimitiveRestartNV;
 
     // GL_NV_read_buffer
 
-    PFNGLREADBUFFERNVPROC glReadBufferNV;
+    REGALGLREADBUFFERNVPROC glReadBufferNV;
 
     // GL_NV_register_combiners
 
-    PFNGLCOMBINERINPUTNVPROC glCombinerInputNV;
-    PFNGLCOMBINEROUTPUTNVPROC glCombinerOutputNV;
-    PFNGLCOMBINERPARAMETERFNVPROC glCombinerParameterfNV;
-    PFNGLCOMBINERPARAMETERFVNVPROC glCombinerParameterfvNV;
-    PFNGLCOMBINERPARAMETERINVPROC glCombinerParameteriNV;
-    PFNGLCOMBINERPARAMETERIVNVPROC glCombinerParameterivNV;
-    PFNGLFINALCOMBINERINPUTNVPROC glFinalCombinerInputNV;
-    PFNGLGETCOMBINERINPUTPARAMETERFVNVPROC glGetCombinerInputParameterfvNV;
-    PFNGLGETCOMBINERINPUTPARAMETERIVNVPROC glGetCombinerInputParameterivNV;
-    PFNGLGETCOMBINEROUTPUTPARAMETERFVNVPROC glGetCombinerOutputParameterfvNV;
-    PFNGLGETCOMBINEROUTPUTPARAMETERIVNVPROC glGetCombinerOutputParameterivNV;
-    PFNGLGETFINALCOMBINERINPUTPARAMETERFVNVPROC glGetFinalCombinerInputParameterfvNV;
-    PFNGLGETFINALCOMBINERINPUTPARAMETERIVNVPROC glGetFinalCombinerInputParameterivNV;
+    REGALGLCOMBINERINPUTNVPROC glCombinerInputNV;
+    REGALGLCOMBINEROUTPUTNVPROC glCombinerOutputNV;
+    REGALGLCOMBINERPARAMETERFNVPROC glCombinerParameterfNV;
+    REGALGLCOMBINERPARAMETERFVNVPROC glCombinerParameterfvNV;
+    REGALGLCOMBINERPARAMETERINVPROC glCombinerParameteriNV;
+    REGALGLCOMBINERPARAMETERIVNVPROC glCombinerParameterivNV;
+    REGALGLFINALCOMBINERINPUTNVPROC glFinalCombinerInputNV;
+    REGALGLGETCOMBINERINPUTPARAMETERFVNVPROC glGetCombinerInputParameterfvNV;
+    REGALGLGETCOMBINERINPUTPARAMETERIVNVPROC glGetCombinerInputParameterivNV;
+    REGALGLGETCOMBINEROUTPUTPARAMETERFVNVPROC glGetCombinerOutputParameterfvNV;
+    REGALGLGETCOMBINEROUTPUTPARAMETERIVNVPROC glGetCombinerOutputParameterivNV;
+    REGALGLGETFINALCOMBINERINPUTPARAMETERFVNVPROC glGetFinalCombinerInputParameterfvNV;
+    REGALGLGETFINALCOMBINERINPUTPARAMETERIVNVPROC glGetFinalCombinerInputParameterivNV;
 
     // GL_NV_register_combiners2
 
-    PFNGLCOMBINERSTAGEPARAMETERFVNVPROC glCombinerStageParameterfvNV;
-    PFNGLGETCOMBINERSTAGEPARAMETERFVNVPROC glGetCombinerStageParameterfvNV;
+    REGALGLCOMBINERSTAGEPARAMETERFVNVPROC glCombinerStageParameterfvNV;
+    REGALGLGETCOMBINERSTAGEPARAMETERFVNVPROC glGetCombinerStageParameterfvNV;
 
     // GL_NV_shader_buffer_load
 
-    PFNGLGETBUFFERPARAMETERUI64VNVPROC glGetBufferParameterui64vNV;
-    PFNGLGETINTEGERUI64VNVPROC glGetIntegerui64vNV;
-    PFNGLGETNAMEDBUFFERPARAMETERUI64VNVPROC glGetNamedBufferParameterui64vNV;
-    PFNGLGETUNIFORMUI64VNVPROC glGetUniformui64vNV;
-    PFNGLISBUFFERRESIDENTNVPROC glIsBufferResidentNV;
-    PFNGLISNAMEDBUFFERRESIDENTNVPROC glIsNamedBufferResidentNV;
-    PFNGLMAKEBUFFERNONRESIDENTNVPROC glMakeBufferNonResidentNV;
-    PFNGLMAKEBUFFERRESIDENTNVPROC glMakeBufferResidentNV;
-    PFNGLMAKENAMEDBUFFERNONRESIDENTNVPROC glMakeNamedBufferNonResidentNV;
-    PFNGLMAKENAMEDBUFFERRESIDENTNVPROC glMakeNamedBufferResidentNV;
-    PFNGLPROGRAMUNIFORMUI64NVPROC glProgramUniformui64NV;
-    PFNGLPROGRAMUNIFORMUI64VNVPROC glProgramUniformui64vNV;
-    PFNGLUNIFORMUI64NVPROC glUniformui64NV;
-    PFNGLUNIFORMUI64VNVPROC glUniformui64vNV;
+    REGALGLGETBUFFERPARAMETERUI64VNVPROC glGetBufferParameterui64vNV;
+    REGALGLGETINTEGERUI64VNVPROC glGetIntegerui64vNV;
+    REGALGLGETNAMEDBUFFERPARAMETERUI64VNVPROC glGetNamedBufferParameterui64vNV;
+    REGALGLGETUNIFORMUI64VNVPROC glGetUniformui64vNV;
+    REGALGLISBUFFERRESIDENTNVPROC glIsBufferResidentNV;
+    REGALGLISNAMEDBUFFERRESIDENTNVPROC glIsNamedBufferResidentNV;
+    REGALGLMAKEBUFFERNONRESIDENTNVPROC glMakeBufferNonResidentNV;
+    REGALGLMAKEBUFFERRESIDENTNVPROC glMakeBufferResidentNV;
+    REGALGLMAKENAMEDBUFFERNONRESIDENTNVPROC glMakeNamedBufferNonResidentNV;
+    REGALGLMAKENAMEDBUFFERRESIDENTNVPROC glMakeNamedBufferResidentNV;
+    REGALGLPROGRAMUNIFORMUI64NVPROC glProgramUniformui64NV;
+    REGALGLPROGRAMUNIFORMUI64VNVPROC glProgramUniformui64vNV;
+    REGALGLUNIFORMUI64NVPROC glUniformui64NV;
+    REGALGLUNIFORMUI64VNVPROC glUniformui64vNV;
 
     // GL_NV_texture_barrier
 
-    PFNGLTEXTUREBARRIERNVPROC glTextureBarrierNV;
+    REGALGLTEXTUREBARRIERNVPROC glTextureBarrierNV;
 
     // GL_NV_texture_multisample
 
-    PFNGLTEXIMAGE2DMULTISAMPLECOVERAGENVPROC glTexImage2DMultisampleCoverageNV;
-    PFNGLTEXIMAGE3DMULTISAMPLECOVERAGENVPROC glTexImage3DMultisampleCoverageNV;
-    PFNGLTEXTUREIMAGE2DMULTISAMPLECOVERAGENVPROC glTextureImage2DMultisampleCoverageNV;
-    PFNGLTEXTUREIMAGE2DMULTISAMPLENVPROC glTextureImage2DMultisampleNV;
-    PFNGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC glTextureImage3DMultisampleCoverageNV;
-    PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC glTextureImage3DMultisampleNV;
+    REGALGLTEXIMAGE2DMULTISAMPLECOVERAGENVPROC glTexImage2DMultisampleCoverageNV;
+    REGALGLTEXIMAGE3DMULTISAMPLECOVERAGENVPROC glTexImage3DMultisampleCoverageNV;
+    REGALGLTEXTUREIMAGE2DMULTISAMPLECOVERAGENVPROC glTextureImage2DMultisampleCoverageNV;
+    REGALGLTEXTUREIMAGE2DMULTISAMPLENVPROC glTextureImage2DMultisampleNV;
+    REGALGLTEXTUREIMAGE3DMULTISAMPLECOVERAGENVPROC glTextureImage3DMultisampleCoverageNV;
+    REGALGLTEXTUREIMAGE3DMULTISAMPLENVPROC glTextureImage3DMultisampleNV;
 
     // GL_NV_transform_feedback
 
-    PFNGLACTIVEVARYINGNVPROC glActiveVaryingNV;
-    PFNGLBEGINTRANSFORMFEEDBACKNVPROC glBeginTransformFeedbackNV;
-    PFNGLBINDBUFFERBASENVPROC glBindBufferBaseNV;
-    PFNGLBINDBUFFEROFFSETNVPROC glBindBufferOffsetNV;
-    PFNGLBINDBUFFERRANGENVPROC glBindBufferRangeNV;
-    PFNGLENDTRANSFORMFEEDBACKNVPROC glEndTransformFeedbackNV;
-    PFNGLGETACTIVEVARYINGNVPROC glGetActiveVaryingNV;
-    PFNGLGETTRANSFORMFEEDBACKVARYINGNVPROC glGetTransformFeedbackVaryingNV;
-    PFNGLGETVARYINGLOCATIONNVPROC glGetVaryingLocationNV;
-    PFNGLTRANSFORMFEEDBACKATTRIBSNVPROC glTransformFeedbackAttribsNV;
-    PFNGLTRANSFORMFEEDBACKVARYINGSNVPROC glTransformFeedbackVaryingsNV;
+    REGALGLACTIVEVARYINGNVPROC glActiveVaryingNV;
+    REGALGLBEGINTRANSFORMFEEDBACKNVPROC glBeginTransformFeedbackNV;
+    REGALGLBINDBUFFERBASENVPROC glBindBufferBaseNV;
+    REGALGLBINDBUFFEROFFSETNVPROC glBindBufferOffsetNV;
+    REGALGLBINDBUFFERRANGENVPROC glBindBufferRangeNV;
+    REGALGLENDTRANSFORMFEEDBACKNVPROC glEndTransformFeedbackNV;
+    REGALGLGETACTIVEVARYINGNVPROC glGetActiveVaryingNV;
+    REGALGLGETTRANSFORMFEEDBACKVARYINGNVPROC glGetTransformFeedbackVaryingNV;
+    REGALGLGETVARYINGLOCATIONNVPROC glGetVaryingLocationNV;
+    REGALGLTRANSFORMFEEDBACKATTRIBSNVPROC glTransformFeedbackAttribsNV;
+    REGALGLTRANSFORMFEEDBACKVARYINGSNVPROC glTransformFeedbackVaryingsNV;
 
     // GL_NV_transform_feedback2
 
-    PFNGLBINDTRANSFORMFEEDBACKNVPROC glBindTransformFeedbackNV;
-    PFNGLDELETETRANSFORMFEEDBACKSNVPROC glDeleteTransformFeedbacksNV;
-    PFNGLDRAWTRANSFORMFEEDBACKNVPROC glDrawTransformFeedbackNV;
-    PFNGLGENTRANSFORMFEEDBACKSNVPROC glGenTransformFeedbacksNV;
-    PFNGLISTRANSFORMFEEDBACKNVPROC glIsTransformFeedbackNV;
-    PFNGLPAUSETRANSFORMFEEDBACKNVPROC glPauseTransformFeedbackNV;
-    PFNGLRESUMETRANSFORMFEEDBACKNVPROC glResumeTransformFeedbackNV;
+    REGALGLBINDTRANSFORMFEEDBACKNVPROC glBindTransformFeedbackNV;
+    REGALGLDELETETRANSFORMFEEDBACKSNVPROC glDeleteTransformFeedbacksNV;
+    REGALGLDRAWTRANSFORMFEEDBACKNVPROC glDrawTransformFeedbackNV;
+    REGALGLGENTRANSFORMFEEDBACKSNVPROC glGenTransformFeedbacksNV;
+    REGALGLISTRANSFORMFEEDBACKNVPROC glIsTransformFeedbackNV;
+    REGALGLPAUSETRANSFORMFEEDBACKNVPROC glPauseTransformFeedbackNV;
+    REGALGLRESUMETRANSFORMFEEDBACKNVPROC glResumeTransformFeedbackNV;
 
     // GL_NV_vdpau_interop
 
-    PFNGLVDPAUFININVPROC glVDPAUFiniNV;
-    PFNGLVDPAUGETSURFACEIVNVPROC glVDPAUGetSurfaceivNV;
-    PFNGLVDPAUINITNVPROC glVDPAUInitNV;
-    PFNGLVDPAUISSURFACENVPROC glVDPAUIsSurfaceNV;
-    PFNGLVDPAUMAPSURFACESNVPROC glVDPAUMapSurfacesNV;
-    PFNGLVDPAUREGISTEROUTPUTSURFACENVPROC glVDPAURegisterOutputSurfaceNV;
-    PFNGLVDPAUREGISTERVIDEOSURFACENVPROC glVDPAURegisterVideoSurfaceNV;
-    PFNGLVDPAUSURFACEACCESSNVPROC glVDPAUSurfaceAccessNV;
-    PFNGLVDPAUUNMAPSURFACESNVPROC glVDPAUUnmapSurfacesNV;
-    PFNGLVDPAUUNREGISTERSURFACENVPROC glVDPAUUnregisterSurfaceNV;
+    REGALGLVDPAUFININVPROC glVDPAUFiniNV;
+    REGALGLVDPAUGETSURFACEIVNVPROC glVDPAUGetSurfaceivNV;
+    REGALGLVDPAUINITNVPROC glVDPAUInitNV;
+    REGALGLVDPAUISSURFACENVPROC glVDPAUIsSurfaceNV;
+    REGALGLVDPAUMAPSURFACESNVPROC glVDPAUMapSurfacesNV;
+    REGALGLVDPAUREGISTEROUTPUTSURFACENVPROC glVDPAURegisterOutputSurfaceNV;
+    REGALGLVDPAUREGISTERVIDEOSURFACENVPROC glVDPAURegisterVideoSurfaceNV;
+    REGALGLVDPAUSURFACEACCESSNVPROC glVDPAUSurfaceAccessNV;
+    REGALGLVDPAUUNMAPSURFACESNVPROC glVDPAUUnmapSurfacesNV;
+    REGALGLVDPAUUNREGISTERSURFACENVPROC glVDPAUUnregisterSurfaceNV;
 
     // GL_NV_vertex_array_range
 
-    PFNGLFLUSHVERTEXARRAYRANGENVPROC glFlushVertexArrayRangeNV;
-    PFNGLVERTEXARRAYRANGENVPROC glVertexArrayRangeNV;
+    REGALGLFLUSHVERTEXARRAYRANGENVPROC glFlushVertexArrayRangeNV;
+    REGALGLVERTEXARRAYRANGENVPROC glVertexArrayRangeNV;
 
     // GL_NV_vertex_attrib_integer_64bit
 
-    PFNGLGETVERTEXATTRIBLI64VNVPROC glGetVertexAttribLi64vNV;
-    PFNGLGETVERTEXATTRIBLUI64VNVPROC glGetVertexAttribLui64vNV;
-    PFNGLVERTEXATTRIBL1I64NVPROC glVertexAttribL1i64NV;
-    PFNGLVERTEXATTRIBL1I64VNVPROC glVertexAttribL1i64vNV;
-    PFNGLVERTEXATTRIBL1UI64NVPROC glVertexAttribL1ui64NV;
-    PFNGLVERTEXATTRIBL1UI64VNVPROC glVertexAttribL1ui64vNV;
-    PFNGLVERTEXATTRIBL2I64NVPROC glVertexAttribL2i64NV;
-    PFNGLVERTEXATTRIBL2I64VNVPROC glVertexAttribL2i64vNV;
-    PFNGLVERTEXATTRIBL2UI64NVPROC glVertexAttribL2ui64NV;
-    PFNGLVERTEXATTRIBL2UI64VNVPROC glVertexAttribL2ui64vNV;
-    PFNGLVERTEXATTRIBL3I64NVPROC glVertexAttribL3i64NV;
-    PFNGLVERTEXATTRIBL3I64VNVPROC glVertexAttribL3i64vNV;
-    PFNGLVERTEXATTRIBL3UI64NVPROC glVertexAttribL3ui64NV;
-    PFNGLVERTEXATTRIBL3UI64VNVPROC glVertexAttribL3ui64vNV;
-    PFNGLVERTEXATTRIBL4I64NVPROC glVertexAttribL4i64NV;
-    PFNGLVERTEXATTRIBL4I64VNVPROC glVertexAttribL4i64vNV;
-    PFNGLVERTEXATTRIBL4UI64NVPROC glVertexAttribL4ui64NV;
-    PFNGLVERTEXATTRIBL4UI64VNVPROC glVertexAttribL4ui64vNV;
-    PFNGLVERTEXATTRIBLFORMATNVPROC glVertexAttribLFormatNV;
+    REGALGLGETVERTEXATTRIBLI64VNVPROC glGetVertexAttribLi64vNV;
+    REGALGLGETVERTEXATTRIBLUI64VNVPROC glGetVertexAttribLui64vNV;
+    REGALGLVERTEXATTRIBL1I64NVPROC glVertexAttribL1i64NV;
+    REGALGLVERTEXATTRIBL1I64VNVPROC glVertexAttribL1i64vNV;
+    REGALGLVERTEXATTRIBL1UI64NVPROC glVertexAttribL1ui64NV;
+    REGALGLVERTEXATTRIBL1UI64VNVPROC glVertexAttribL1ui64vNV;
+    REGALGLVERTEXATTRIBL2I64NVPROC glVertexAttribL2i64NV;
+    REGALGLVERTEXATTRIBL2I64VNVPROC glVertexAttribL2i64vNV;
+    REGALGLVERTEXATTRIBL2UI64NVPROC glVertexAttribL2ui64NV;
+    REGALGLVERTEXATTRIBL2UI64VNVPROC glVertexAttribL2ui64vNV;
+    REGALGLVERTEXATTRIBL3I64NVPROC glVertexAttribL3i64NV;
+    REGALGLVERTEXATTRIBL3I64VNVPROC glVertexAttribL3i64vNV;
+    REGALGLVERTEXATTRIBL3UI64NVPROC glVertexAttribL3ui64NV;
+    REGALGLVERTEXATTRIBL3UI64VNVPROC glVertexAttribL3ui64vNV;
+    REGALGLVERTEXATTRIBL4I64NVPROC glVertexAttribL4i64NV;
+    REGALGLVERTEXATTRIBL4I64VNVPROC glVertexAttribL4i64vNV;
+    REGALGLVERTEXATTRIBL4UI64NVPROC glVertexAttribL4ui64NV;
+    REGALGLVERTEXATTRIBL4UI64VNVPROC glVertexAttribL4ui64vNV;
+    REGALGLVERTEXATTRIBLFORMATNVPROC glVertexAttribLFormatNV;
 
     // GL_NV_vertex_buffer_unified_memory
 
-    PFNGLBUFFERADDRESSRANGENVPROC glBufferAddressRangeNV;
-    PFNGLCOLORFORMATNVPROC glColorFormatNV;
-    PFNGLEDGEFLAGFORMATNVPROC glEdgeFlagFormatNV;
-    PFNGLFOGCOORDFORMATNVPROC glFogCoordFormatNV;
-    PFNGLGETINTEGERUI64I_VNVPROC glGetIntegerui64i_vNV;
-    PFNGLINDEXFORMATNVPROC glIndexFormatNV;
-    PFNGLNORMALFORMATNVPROC glNormalFormatNV;
-    PFNGLSECONDARYCOLORFORMATNVPROC glSecondaryColorFormatNV;
-    PFNGLTEXCOORDFORMATNVPROC glTexCoordFormatNV;
-    PFNGLVERTEXATTRIBFORMATNVPROC glVertexAttribFormatNV;
-    PFNGLVERTEXATTRIBIFORMATNVPROC glVertexAttribIFormatNV;
-    PFNGLVERTEXFORMATNVPROC glVertexFormatNV;
+    REGALGLBUFFERADDRESSRANGENVPROC glBufferAddressRangeNV;
+    REGALGLCOLORFORMATNVPROC glColorFormatNV;
+    REGALGLEDGEFLAGFORMATNVPROC glEdgeFlagFormatNV;
+    REGALGLFOGCOORDFORMATNVPROC glFogCoordFormatNV;
+    REGALGLGETINTEGERUI64I_VNVPROC glGetIntegerui64i_vNV;
+    REGALGLINDEXFORMATNVPROC glIndexFormatNV;
+    REGALGLNORMALFORMATNVPROC glNormalFormatNV;
+    REGALGLSECONDARYCOLORFORMATNVPROC glSecondaryColorFormatNV;
+    REGALGLTEXCOORDFORMATNVPROC glTexCoordFormatNV;
+    REGALGLVERTEXATTRIBFORMATNVPROC glVertexAttribFormatNV;
+    REGALGLVERTEXATTRIBIFORMATNVPROC glVertexAttribIFormatNV;
+    REGALGLVERTEXFORMATNVPROC glVertexFormatNV;
 
     // GL_NV_vertex_program
 
-    PFNGLAREPROGRAMSRESIDENTNVPROC glAreProgramsResidentNV;
-    PFNGLBINDPROGRAMNVPROC glBindProgramNV;
-    PFNGLDELETEPROGRAMSNVPROC glDeleteProgramsNV;
-    PFNGLEXECUTEPROGRAMNVPROC glExecuteProgramNV;
-    PFNGLGENPROGRAMSNVPROC glGenProgramsNV;
-    PFNGLGETPROGRAMPARAMETERDVNVPROC glGetProgramParameterdvNV;
-    PFNGLGETPROGRAMPARAMETERFVNVPROC glGetProgramParameterfvNV;
-    PFNGLGETPROGRAMSTRINGNVPROC glGetProgramStringNV;
-    PFNGLGETPROGRAMIVNVPROC glGetProgramivNV;
-    PFNGLGETTRACKMATRIXIVNVPROC glGetTrackMatrixivNV;
-    PFNGLGETVERTEXATTRIBPOINTERVNVPROC glGetVertexAttribPointervNV;
-    PFNGLGETVERTEXATTRIBDVNVPROC glGetVertexAttribdvNV;
-    PFNGLGETVERTEXATTRIBFVNVPROC glGetVertexAttribfvNV;
-    PFNGLGETVERTEXATTRIBIVNVPROC glGetVertexAttribivNV;
-    PFNGLISPROGRAMNVPROC glIsProgramNV;
-    PFNGLLOADPROGRAMNVPROC glLoadProgramNV;
-    PFNGLPROGRAMPARAMETER4DNVPROC glProgramParameter4dNV;
-    PFNGLPROGRAMPARAMETER4DVNVPROC glProgramParameter4dvNV;
-    PFNGLPROGRAMPARAMETER4FNVPROC glProgramParameter4fNV;
-    PFNGLPROGRAMPARAMETER4FVNVPROC glProgramParameter4fvNV;
-    PFNGLPROGRAMPARAMETERS4DVNVPROC glProgramParameters4dvNV;
-    PFNGLPROGRAMPARAMETERS4FVNVPROC glProgramParameters4fvNV;
-    PFNGLREQUESTRESIDENTPROGRAMSNVPROC glRequestResidentProgramsNV;
-    PFNGLTRACKMATRIXNVPROC glTrackMatrixNV;
-    PFNGLVERTEXATTRIB1DNVPROC glVertexAttrib1dNV;
-    PFNGLVERTEXATTRIB1DVNVPROC glVertexAttrib1dvNV;
-    PFNGLVERTEXATTRIB1FNVPROC glVertexAttrib1fNV;
-    PFNGLVERTEXATTRIB1FVNVPROC glVertexAttrib1fvNV;
-    PFNGLVERTEXATTRIB1SNVPROC glVertexAttrib1sNV;
-    PFNGLVERTEXATTRIB1SVNVPROC glVertexAttrib1svNV;
-    PFNGLVERTEXATTRIB2DNVPROC glVertexAttrib2dNV;
-    PFNGLVERTEXATTRIB2DVNVPROC glVertexAttrib2dvNV;
-    PFNGLVERTEXATTRIB2FNVPROC glVertexAttrib2fNV;
-    PFNGLVERTEXATTRIB2FVNVPROC glVertexAttrib2fvNV;
-    PFNGLVERTEXATTRIB2SNVPROC glVertexAttrib2sNV;
-    PFNGLVERTEXATTRIB2SVNVPROC glVertexAttrib2svNV;
-    PFNGLVERTEXATTRIB3DNVPROC glVertexAttrib3dNV;
-    PFNGLVERTEXATTRIB3DVNVPROC glVertexAttrib3dvNV;
-    PFNGLVERTEXATTRIB3FNVPROC glVertexAttrib3fNV;
-    PFNGLVERTEXATTRIB3FVNVPROC glVertexAttrib3fvNV;
-    PFNGLVERTEXATTRIB3SNVPROC glVertexAttrib3sNV;
-    PFNGLVERTEXATTRIB3SVNVPROC glVertexAttrib3svNV;
-    PFNGLVERTEXATTRIB4DNVPROC glVertexAttrib4dNV;
-    PFNGLVERTEXATTRIB4DVNVPROC glVertexAttrib4dvNV;
-    PFNGLVERTEXATTRIB4FNVPROC glVertexAttrib4fNV;
-    PFNGLVERTEXATTRIB4FVNVPROC glVertexAttrib4fvNV;
-    PFNGLVERTEXATTRIB4SNVPROC glVertexAttrib4sNV;
-    PFNGLVERTEXATTRIB4SVNVPROC glVertexAttrib4svNV;
-    PFNGLVERTEXATTRIB4UBNVPROC glVertexAttrib4ubNV;
-    PFNGLVERTEXATTRIB4UBVNVPROC glVertexAttrib4ubvNV;
-    PFNGLVERTEXATTRIBPOINTERNVPROC glVertexAttribPointerNV;
-    PFNGLVERTEXATTRIBS1DVNVPROC glVertexAttribs1dvNV;
-    PFNGLVERTEXATTRIBS1FVNVPROC glVertexAttribs1fvNV;
-    PFNGLVERTEXATTRIBS1SVNVPROC glVertexAttribs1svNV;
-    PFNGLVERTEXATTRIBS2DVNVPROC glVertexAttribs2dvNV;
-    PFNGLVERTEXATTRIBS2FVNVPROC glVertexAttribs2fvNV;
-    PFNGLVERTEXATTRIBS2SVNVPROC glVertexAttribs2svNV;
-    PFNGLVERTEXATTRIBS3DVNVPROC glVertexAttribs3dvNV;
-    PFNGLVERTEXATTRIBS3FVNVPROC glVertexAttribs3fvNV;
-    PFNGLVERTEXATTRIBS3SVNVPROC glVertexAttribs3svNV;
-    PFNGLVERTEXATTRIBS4DVNVPROC glVertexAttribs4dvNV;
-    PFNGLVERTEXATTRIBS4FVNVPROC glVertexAttribs4fvNV;
-    PFNGLVERTEXATTRIBS4SVNVPROC glVertexAttribs4svNV;
-    PFNGLVERTEXATTRIBS4UBVNVPROC glVertexAttribs4ubvNV;
+    REGALGLAREPROGRAMSRESIDENTNVPROC glAreProgramsResidentNV;
+    REGALGLBINDPROGRAMNVPROC glBindProgramNV;
+    REGALGLDELETEPROGRAMSNVPROC glDeleteProgramsNV;
+    REGALGLEXECUTEPROGRAMNVPROC glExecuteProgramNV;
+    REGALGLGENPROGRAMSNVPROC glGenProgramsNV;
+    REGALGLGETPROGRAMPARAMETERDVNVPROC glGetProgramParameterdvNV;
+    REGALGLGETPROGRAMPARAMETERFVNVPROC glGetProgramParameterfvNV;
+    REGALGLGETPROGRAMSTRINGNVPROC glGetProgramStringNV;
+    REGALGLGETPROGRAMIVNVPROC glGetProgramivNV;
+    REGALGLGETTRACKMATRIXIVNVPROC glGetTrackMatrixivNV;
+    REGALGLGETVERTEXATTRIBPOINTERVNVPROC glGetVertexAttribPointervNV;
+    REGALGLGETVERTEXATTRIBDVNVPROC glGetVertexAttribdvNV;
+    REGALGLGETVERTEXATTRIBFVNVPROC glGetVertexAttribfvNV;
+    REGALGLGETVERTEXATTRIBIVNVPROC glGetVertexAttribivNV;
+    REGALGLISPROGRAMNVPROC glIsProgramNV;
+    REGALGLLOADPROGRAMNVPROC glLoadProgramNV;
+    REGALGLPROGRAMPARAMETER4DNVPROC glProgramParameter4dNV;
+    REGALGLPROGRAMPARAMETER4DVNVPROC glProgramParameter4dvNV;
+    REGALGLPROGRAMPARAMETER4FNVPROC glProgramParameter4fNV;
+    REGALGLPROGRAMPARAMETER4FVNVPROC glProgramParameter4fvNV;
+    REGALGLPROGRAMPARAMETERS4DVNVPROC glProgramParameters4dvNV;
+    REGALGLPROGRAMPARAMETERS4FVNVPROC glProgramParameters4fvNV;
+    REGALGLREQUESTRESIDENTPROGRAMSNVPROC glRequestResidentProgramsNV;
+    REGALGLTRACKMATRIXNVPROC glTrackMatrixNV;
+    REGALGLVERTEXATTRIB1DNVPROC glVertexAttrib1dNV;
+    REGALGLVERTEXATTRIB1DVNVPROC glVertexAttrib1dvNV;
+    REGALGLVERTEXATTRIB1FNVPROC glVertexAttrib1fNV;
+    REGALGLVERTEXATTRIB1FVNVPROC glVertexAttrib1fvNV;
+    REGALGLVERTEXATTRIB1SNVPROC glVertexAttrib1sNV;
+    REGALGLVERTEXATTRIB1SVNVPROC glVertexAttrib1svNV;
+    REGALGLVERTEXATTRIB2DNVPROC glVertexAttrib2dNV;
+    REGALGLVERTEXATTRIB2DVNVPROC glVertexAttrib2dvNV;
+    REGALGLVERTEXATTRIB2FNVPROC glVertexAttrib2fNV;
+    REGALGLVERTEXATTRIB2FVNVPROC glVertexAttrib2fvNV;
+    REGALGLVERTEXATTRIB2SNVPROC glVertexAttrib2sNV;
+    REGALGLVERTEXATTRIB2SVNVPROC glVertexAttrib2svNV;
+    REGALGLVERTEXATTRIB3DNVPROC glVertexAttrib3dNV;
+    REGALGLVERTEXATTRIB3DVNVPROC glVertexAttrib3dvNV;
+    REGALGLVERTEXATTRIB3FNVPROC glVertexAttrib3fNV;
+    REGALGLVERTEXATTRIB3FVNVPROC glVertexAttrib3fvNV;
+    REGALGLVERTEXATTRIB3SNVPROC glVertexAttrib3sNV;
+    REGALGLVERTEXATTRIB3SVNVPROC glVertexAttrib3svNV;
+    REGALGLVERTEXATTRIB4DNVPROC glVertexAttrib4dNV;
+    REGALGLVERTEXATTRIB4DVNVPROC glVertexAttrib4dvNV;
+    REGALGLVERTEXATTRIB4FNVPROC glVertexAttrib4fNV;
+    REGALGLVERTEXATTRIB4FVNVPROC glVertexAttrib4fvNV;
+    REGALGLVERTEXATTRIB4SNVPROC glVertexAttrib4sNV;
+    REGALGLVERTEXATTRIB4SVNVPROC glVertexAttrib4svNV;
+    REGALGLVERTEXATTRIB4UBNVPROC glVertexAttrib4ubNV;
+    REGALGLVERTEXATTRIB4UBVNVPROC glVertexAttrib4ubvNV;
+    REGALGLVERTEXATTRIBPOINTERNVPROC glVertexAttribPointerNV;
+    REGALGLVERTEXATTRIBS1DVNVPROC glVertexAttribs1dvNV;
+    REGALGLVERTEXATTRIBS1FVNVPROC glVertexAttribs1fvNV;
+    REGALGLVERTEXATTRIBS1SVNVPROC glVertexAttribs1svNV;
+    REGALGLVERTEXATTRIBS2DVNVPROC glVertexAttribs2dvNV;
+    REGALGLVERTEXATTRIBS2FVNVPROC glVertexAttribs2fvNV;
+    REGALGLVERTEXATTRIBS2SVNVPROC glVertexAttribs2svNV;
+    REGALGLVERTEXATTRIBS3DVNVPROC glVertexAttribs3dvNV;
+    REGALGLVERTEXATTRIBS3FVNVPROC glVertexAttribs3fvNV;
+    REGALGLVERTEXATTRIBS3SVNVPROC glVertexAttribs3svNV;
+    REGALGLVERTEXATTRIBS4DVNVPROC glVertexAttribs4dvNV;
+    REGALGLVERTEXATTRIBS4FVNVPROC glVertexAttribs4fvNV;
+    REGALGLVERTEXATTRIBS4SVNVPROC glVertexAttribs4svNV;
+    REGALGLVERTEXATTRIBS4UBVNVPROC glVertexAttribs4ubvNV;
 
     // GL_NV_video_capture
 
-    PFNGLBEGINVIDEOCAPTURENVPROC glBeginVideoCaptureNV;
-    PFNGLBINDVIDEOCAPTURESTREAMBUFFERNVPROC glBindVideoCaptureStreamBufferNV;
-    PFNGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC glBindVideoCaptureStreamTextureNV;
-    PFNGLENDVIDEOCAPTURENVPROC glEndVideoCaptureNV;
-    PFNGLGETVIDEOCAPTURESTREAMDVNVPROC glGetVideoCaptureStreamdvNV;
-    PFNGLGETVIDEOCAPTURESTREAMFVNVPROC glGetVideoCaptureStreamfvNV;
-    PFNGLGETVIDEOCAPTURESTREAMIVNVPROC glGetVideoCaptureStreamivNV;
-    PFNGLGETVIDEOCAPTUREIVNVPROC glGetVideoCaptureivNV;
-    PFNGLVIDEOCAPTURENVPROC glVideoCaptureNV;
-    PFNGLVIDEOCAPTURESTREAMPARAMETERDVNVPROC glVideoCaptureStreamParameterdvNV;
-    PFNGLVIDEOCAPTURESTREAMPARAMETERFVNVPROC glVideoCaptureStreamParameterfvNV;
-    PFNGLVIDEOCAPTURESTREAMPARAMETERIVNVPROC glVideoCaptureStreamParameterivNV;
+    REGALGLBEGINVIDEOCAPTURENVPROC glBeginVideoCaptureNV;
+    REGALGLBINDVIDEOCAPTURESTREAMBUFFERNVPROC glBindVideoCaptureStreamBufferNV;
+    REGALGLBINDVIDEOCAPTURESTREAMTEXTURENVPROC glBindVideoCaptureStreamTextureNV;
+    REGALGLENDVIDEOCAPTURENVPROC glEndVideoCaptureNV;
+    REGALGLGETVIDEOCAPTURESTREAMDVNVPROC glGetVideoCaptureStreamdvNV;
+    REGALGLGETVIDEOCAPTURESTREAMFVNVPROC glGetVideoCaptureStreamfvNV;
+    REGALGLGETVIDEOCAPTURESTREAMIVNVPROC glGetVideoCaptureStreamivNV;
+    REGALGLGETVIDEOCAPTUREIVNVPROC glGetVideoCaptureivNV;
+    REGALGLVIDEOCAPTURENVPROC glVideoCaptureNV;
+    REGALGLVIDEOCAPTURESTREAMPARAMETERDVNVPROC glVideoCaptureStreamParameterdvNV;
+    REGALGLVIDEOCAPTURESTREAMPARAMETERFVNVPROC glVideoCaptureStreamParameterfvNV;
+    REGALGLVIDEOCAPTURESTREAMPARAMETERIVNVPROC glVideoCaptureStreamParameterivNV;
 
     // GL_OES_blend_equation_separate
 
-    PFNGLBLENDEQUATIONSEPARATEOESPROC glBlendEquationSeparateOES;
+    REGALGLBLENDEQUATIONSEPARATEOESPROC glBlendEquationSeparateOES;
 
     // GL_OES_blend_func_separate
 
-    PFNGLBLENDFUNCSEPARATEOESPROC glBlendFuncSeparateOES;
+    REGALGLBLENDFUNCSEPARATEOESPROC glBlendFuncSeparateOES;
 
     // GL_OES_blend_subtract
 
-    PFNGLBLENDEQUATIONOESPROC glBlendEquationOES;
+    REGALGLBLENDEQUATIONOESPROC glBlendEquationOES;
 
     // GL_OES_framebuffer_object
 
-    PFNGLBINDFRAMEBUFFEROESPROC glBindFramebufferOES;
-    PFNGLBINDRENDERBUFFEROESPROC glBindRenderbufferOES;
-    PFNGLCHECKFRAMEBUFFERSTATUSOESPROC glCheckFramebufferStatusOES;
-    PFNGLDELETEFRAMEBUFFERSOESPROC glDeleteFramebuffersOES;
-    PFNGLDELETERENDERBUFFERSOESPROC glDeleteRenderbuffersOES;
-    PFNGLFRAMEBUFFERRENDERBUFFEROESPROC glFramebufferRenderbufferOES;
-    PFNGLFRAMEBUFFERTEXTURE2DOESPROC glFramebufferTexture2DOES;
-    PFNGLGENFRAMEBUFFERSOESPROC glGenFramebuffersOES;
-    PFNGLGENRENDERBUFFERSOESPROC glGenRenderbuffersOES;
-    PFNGLGENERATEMIPMAPOESPROC glGenerateMipmapOES;
-    PFNGLGETFRAMEBUFFERATTACHMENTPARAMETERIVOESPROC glGetFramebufferAttachmentParameterivOES;
-    PFNGLGETRENDERBUFFERPARAMETERIVOESPROC glGetRenderbufferParameterivOES;
-    PFNGLISFRAMEBUFFEROESPROC glIsFramebufferOES;
-    PFNGLISRENDERBUFFEROESPROC glIsRenderbufferOES;
-    PFNGLRENDERBUFFERSTORAGEOESPROC glRenderbufferStorageOES;
+    REGALGLBINDFRAMEBUFFEROESPROC glBindFramebufferOES;
+    REGALGLBINDRENDERBUFFEROESPROC glBindRenderbufferOES;
+    REGALGLCHECKFRAMEBUFFERSTATUSOESPROC glCheckFramebufferStatusOES;
+    REGALGLDELETEFRAMEBUFFERSOESPROC glDeleteFramebuffersOES;
+    REGALGLDELETERENDERBUFFERSOESPROC glDeleteRenderbuffersOES;
+    REGALGLFRAMEBUFFERRENDERBUFFEROESPROC glFramebufferRenderbufferOES;
+    REGALGLFRAMEBUFFERTEXTURE2DOESPROC glFramebufferTexture2DOES;
+    REGALGLGENFRAMEBUFFERSOESPROC glGenFramebuffersOES;
+    REGALGLGENRENDERBUFFERSOESPROC glGenRenderbuffersOES;
+    REGALGLGENERATEMIPMAPOESPROC glGenerateMipmapOES;
+    REGALGLGETFRAMEBUFFERATTACHMENTPARAMETERIVOESPROC glGetFramebufferAttachmentParameterivOES;
+    REGALGLGETRENDERBUFFERPARAMETERIVOESPROC glGetRenderbufferParameterivOES;
+    REGALGLISFRAMEBUFFEROESPROC glIsFramebufferOES;
+    REGALGLISRENDERBUFFEROESPROC glIsRenderbufferOES;
+    REGALGLRENDERBUFFERSTORAGEOESPROC glRenderbufferStorageOES;
 
     // GL_OES_get_program_binary
 
-    PFNGLGETPROGRAMBINARYOESPROC glGetProgramBinaryOES;
-    PFNGLPROGRAMBINARYOESPROC glProgramBinaryOES;
+    REGALGLGETPROGRAMBINARYOESPROC glGetProgramBinaryOES;
+    REGALGLPROGRAMBINARYOESPROC glProgramBinaryOES;
 
     // GL_OES_mapbuffer
 
-    PFNGLGETBUFFERPOINTERVOESPROC glGetBufferPointervOES;
-    PFNGLMAPBUFFEROESPROC glMapBufferOES;
-    PFNGLUNMAPBUFFEROESPROC glUnmapBufferOES;
+    REGALGLGETBUFFERPOINTERVOESPROC glGetBufferPointervOES;
+    REGALGLMAPBUFFEROESPROC glMapBufferOES;
+    REGALGLUNMAPBUFFEROESPROC glUnmapBufferOES;
 
     // GL_OES_matrix_palette
 
-    PFNGLCURRENTPALETTEMATRIXOESPROC glCurrentPaletteMatrixOES;
-    PFNGLMATRIXINDEXPOINTEROESPROC glMatrixIndexPointerOES;
-    PFNGLWEIGHTPOINTEROESPROC glWeightPointerOES;
+    REGALGLCURRENTPALETTEMATRIXOESPROC glCurrentPaletteMatrixOES;
+    REGALGLMATRIXINDEXPOINTEROESPROC glMatrixIndexPointerOES;
+    REGALGLWEIGHTPOINTEROESPROC glWeightPointerOES;
 
     // GL_OES_single_precision
 
-    PFNGLCLEARDEPTHFOESPROC glClearDepthfOES;
-    PFNGLCLIPPLANEFOESPROC glClipPlanefOES;
-    PFNGLDEPTHRANGEFOESPROC glDepthRangefOES;
-    PFNGLFRUSTUMFOESPROC glFrustumfOES;
-    PFNGLGETCLIPPLANEFOESPROC glGetClipPlanefOES;
-    PFNGLORTHOFOESPROC glOrthofOES;
+    REGALGLCLEARDEPTHFOESPROC glClearDepthfOES;
+    REGALGLCLIPPLANEFOESPROC glClipPlanefOES;
+    REGALGLDEPTHRANGEFOESPROC glDepthRangefOES;
+    REGALGLFRUSTUMFOESPROC glFrustumfOES;
+    REGALGLGETCLIPPLANEFOESPROC glGetClipPlanefOES;
+    REGALGLORTHOFOESPROC glOrthofOES;
 
     // GL_OES_texture_3D
 
-    PFNGLCOMPRESSEDTEXIMAGE3DOESPROC glCompressedTexImage3DOES;
-    PFNGLCOMPRESSEDTEXSUBIMAGE3DOESPROC glCompressedTexSubImage3DOES;
-    PFNGLCOPYTEXSUBIMAGE3DOESPROC glCopyTexSubImage3DOES;
-    PFNGLFRAMEBUFFERTEXTURE3DOESPROC glFramebufferTexture3DOES;
-    PFNGLTEXIMAGE3DOESPROC glTexImage3DOES;
-    PFNGLTEXSUBIMAGE3DOESPROC glTexSubImage3DOES;
+    REGALGLCOMPRESSEDTEXIMAGE3DOESPROC glCompressedTexImage3DOES;
+    REGALGLCOMPRESSEDTEXSUBIMAGE3DOESPROC glCompressedTexSubImage3DOES;
+    REGALGLCOPYTEXSUBIMAGE3DOESPROC glCopyTexSubImage3DOES;
+    REGALGLFRAMEBUFFERTEXTURE3DOESPROC glFramebufferTexture3DOES;
+    REGALGLTEXIMAGE3DOESPROC glTexImage3DOES;
+    REGALGLTEXSUBIMAGE3DOESPROC glTexSubImage3DOES;
 
     // GL_OES_texture_cube_map
 
-    PFNGLGETTEXGENFVOESPROC glGetTexGenfvOES;
-    PFNGLGETTEXGENIVOESPROC glGetTexGenivOES;
-    PFNGLGETTEXGENXVOESPROC glGetTexGenxvOES;
-    PFNGLTEXGENFOESPROC glTexGenfOES;
-    PFNGLTEXGENFVOESPROC glTexGenfvOES;
-    PFNGLTEXGENIOESPROC glTexGeniOES;
-    PFNGLTEXGENIVOESPROC glTexGenivOES;
-    PFNGLTEXGENXOESPROC glTexGenxOES;
-    PFNGLTEXGENXVOESPROC glTexGenxvOES;
+    REGALGLGETTEXGENFVOESPROC glGetTexGenfvOES;
+    REGALGLGETTEXGENIVOESPROC glGetTexGenivOES;
+    REGALGLGETTEXGENXVOESPROC glGetTexGenxvOES;
+    REGALGLTEXGENFOESPROC glTexGenfOES;
+    REGALGLTEXGENFVOESPROC glTexGenfvOES;
+    REGALGLTEXGENIOESPROC glTexGeniOES;
+    REGALGLTEXGENIVOESPROC glTexGenivOES;
+    REGALGLTEXGENXOESPROC glTexGenxOES;
+    REGALGLTEXGENXVOESPROC glTexGenxvOES;
 
     // GL_OES_vertex_array_object
 
-    PFNGLBINDVERTEXARRAYOESPROC glBindVertexArrayOES;
-    PFNGLDELETEVERTEXARRAYSOESPROC glDeleteVertexArraysOES;
-    PFNGLGENVERTEXARRAYSOESPROC glGenVertexArraysOES;
-    PFNGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
+    REGALGLBINDVERTEXARRAYOESPROC glBindVertexArrayOES;
+    REGALGLDELETEVERTEXARRAYSOESPROC glDeleteVertexArraysOES;
+    REGALGLGENVERTEXARRAYSOESPROC glGenVertexArraysOES;
+    REGALGLISVERTEXARRAYOESPROC glIsVertexArrayOES;
 
     // GL_PGI_misc_hints
 
-    PFNGLHINTPGIPROC glHintPGI;
+    REGALGLHINTPGIPROC glHintPGI;
 
     // GL_QCOM_alpha_test
 
-    PFNGLALPHAFUNCQCOMPROC glAlphaFuncQCOM;
+    REGALGLALPHAFUNCQCOMPROC glAlphaFuncQCOM;
 
     // GL_QCOM_driver_control
 
-    PFNGLDISABLEDRIVERCONTROLQCOMPROC glDisableDriverControlQCOM;
-    PFNGLENABLEDRIVERCONTROLQCOMPROC glEnableDriverControlQCOM;
-    PFNGLGETDRIVERCONTROLSTRINGQCOMPROC glGetDriverControlStringQCOM;
-    PFNGLGETDRIVERCONTROLSQCOMPROC glGetDriverControlsQCOM;
+    REGALGLDISABLEDRIVERCONTROLQCOMPROC glDisableDriverControlQCOM;
+    REGALGLENABLEDRIVERCONTROLQCOMPROC glEnableDriverControlQCOM;
+    REGALGLGETDRIVERCONTROLSTRINGQCOMPROC glGetDriverControlStringQCOM;
+    REGALGLGETDRIVERCONTROLSQCOMPROC glGetDriverControlsQCOM;
 
     // GL_QCOM_extended_get
 
-    PFNGLEXTGETBUFFERPOINTERVQCOMPROC glExtGetBufferPointervQCOM;
-    PFNGLEXTGETBUFFERSQCOMPROC glExtGetBuffersQCOM;
-    PFNGLEXTGETFRAMEBUFFERSQCOMPROC glExtGetFramebuffersQCOM;
-    PFNGLEXTGETRENDERBUFFERSQCOMPROC glExtGetRenderbuffersQCOM;
-    PFNGLEXTGETTEXLEVELPARAMETERIVQCOMPROC glExtGetTexLevelParameterivQCOM;
-    PFNGLEXTGETTEXSUBIMAGEQCOMPROC glExtGetTexSubImageQCOM;
-    PFNGLEXTGETTEXTURESQCOMPROC glExtGetTexturesQCOM;
-    PFNGLEXTTEXOBJECTSTATEOVERRIDEIQCOMPROC glExtTexObjectStateOverrideiQCOM;
+    REGALGLEXTGETBUFFERPOINTERVQCOMPROC glExtGetBufferPointervQCOM;
+    REGALGLEXTGETBUFFERSQCOMPROC glExtGetBuffersQCOM;
+    REGALGLEXTGETFRAMEBUFFERSQCOMPROC glExtGetFramebuffersQCOM;
+    REGALGLEXTGETRENDERBUFFERSQCOMPROC glExtGetRenderbuffersQCOM;
+    REGALGLEXTGETTEXLEVELPARAMETERIVQCOMPROC glExtGetTexLevelParameterivQCOM;
+    REGALGLEXTGETTEXSUBIMAGEQCOMPROC glExtGetTexSubImageQCOM;
+    REGALGLEXTGETTEXTURESQCOMPROC glExtGetTexturesQCOM;
+    REGALGLEXTTEXOBJECTSTATEOVERRIDEIQCOMPROC glExtTexObjectStateOverrideiQCOM;
 
     // GL_QCOM_extended_get2
 
-    PFNGLEXTGETPROGRAMBINARYSOURCEQCOMPROC glExtGetProgramBinarySourceQCOM;
-    PFNGLEXTGETPROGRAMSQCOMPROC glExtGetProgramsQCOM;
-    PFNGLEXTGETSHADERSQCOMPROC glExtGetShadersQCOM;
-    PFNGLEXTISPROGRAMBINARYQCOMPROC glExtIsProgramBinaryQCOM;
+    REGALGLEXTGETPROGRAMBINARYSOURCEQCOMPROC glExtGetProgramBinarySourceQCOM;
+    REGALGLEXTGETPROGRAMSQCOMPROC glExtGetProgramsQCOM;
+    REGALGLEXTGETSHADERSQCOMPROC glExtGetShadersQCOM;
+    REGALGLEXTISPROGRAMBINARYQCOMPROC glExtIsProgramBinaryQCOM;
 
     // GL_QCOM_tiled_rendering
 
-    PFNGLENDTILINGQCOMPROC glEndTilingQCOM;
-    PFNGLSTARTTILINGQCOMPROC glStartTilingQCOM;
+    REGALGLENDTILINGQCOMPROC glEndTilingQCOM;
+    REGALGLSTARTTILINGQCOMPROC glStartTilingQCOM;
 
     // GL_REGAL_ES1_0_compatibility
 
-    PFNGLALPHAFUNCXPROC glAlphaFuncx;
-    PFNGLCLEARCOLORXPROC glClearColorx;
-    PFNGLCLEARDEPTHXPROC glClearDepthx;
-    PFNGLCOLOR4XPROC glColor4x;
-    PFNGLDEPTHRANGEXPROC glDepthRangex;
-    PFNGLFOGXPROC glFogx;
-    PFNGLFOGXVPROC glFogxv;
-    PFNGLFRUSTUMFPROC glFrustumf;
-    PFNGLFRUSTUMXPROC glFrustumx;
-    PFNGLLIGHTMODELXPROC glLightModelx;
-    PFNGLLIGHTMODELXVPROC glLightModelxv;
-    PFNGLLIGHTXPROC glLightx;
-    PFNGLLIGHTXVPROC glLightxv;
-    PFNGLLINEWIDTHXPROC glLineWidthx;
-    PFNGLLOADMATRIXXPROC glLoadMatrixx;
-    PFNGLMATERIALXPROC glMaterialx;
-    PFNGLMATERIALXVPROC glMaterialxv;
-    PFNGLMULTMATRIXXPROC glMultMatrixx;
-    PFNGLMULTITEXCOORD4XPROC glMultiTexCoord4x;
-    PFNGLNORMAL3XPROC glNormal3x;
-    PFNGLORTHOFPROC glOrthof;
-    PFNGLORTHOXPROC glOrthox;
-    PFNGLPOINTSIZEXPROC glPointSizex;
-    PFNGLPOLYGONOFFSETXPROC glPolygonOffsetx;
-    PFNGLROTATEXPROC glRotatex;
-    PFNGLSAMPLECOVERAGEXPROC glSampleCoveragex;
-    PFNGLSCALEXPROC glScalex;
-    PFNGLTEXENVXPROC glTexEnvx;
-    PFNGLTEXENVXVPROC glTexEnvxv;
-    PFNGLTEXPARAMETERXPROC glTexParameterx;
-    PFNGLTRANSLATEXPROC glTranslatex;
+    REGALGLALPHAFUNCXPROC glAlphaFuncx;
+    REGALGLCLEARCOLORXPROC glClearColorx;
+    REGALGLCLEARDEPTHXPROC glClearDepthx;
+    REGALGLCOLOR4XPROC glColor4x;
+    REGALGLDEPTHRANGEXPROC glDepthRangex;
+    REGALGLFOGXPROC glFogx;
+    REGALGLFOGXVPROC glFogxv;
+    REGALGLFRUSTUMFPROC glFrustumf;
+    REGALGLFRUSTUMXPROC glFrustumx;
+    REGALGLLIGHTMODELXPROC glLightModelx;
+    REGALGLLIGHTMODELXVPROC glLightModelxv;
+    REGALGLLIGHTXPROC glLightx;
+    REGALGLLIGHTXVPROC glLightxv;
+    REGALGLLINEWIDTHXPROC glLineWidthx;
+    REGALGLLOADMATRIXXPROC glLoadMatrixx;
+    REGALGLMATERIALXPROC glMaterialx;
+    REGALGLMATERIALXVPROC glMaterialxv;
+    REGALGLMULTMATRIXXPROC glMultMatrixx;
+    REGALGLMULTITEXCOORD4XPROC glMultiTexCoord4x;
+    REGALGLNORMAL3XPROC glNormal3x;
+    REGALGLORTHOFPROC glOrthof;
+    REGALGLORTHOXPROC glOrthox;
+    REGALGLPOINTSIZEXPROC glPointSizex;
+    REGALGLPOLYGONOFFSETXPROC glPolygonOffsetx;
+    REGALGLROTATEXPROC glRotatex;
+    REGALGLSAMPLECOVERAGEXPROC glSampleCoveragex;
+    REGALGLSCALEXPROC glScalex;
+    REGALGLTEXENVXPROC glTexEnvx;
+    REGALGLTEXENVXVPROC glTexEnvxv;
+    REGALGLTEXPARAMETERXPROC glTexParameterx;
+    REGALGLTRANSLATEXPROC glTranslatex;
 
     // GL_REGAL_ES1_1_compatibility
 
-    PFNGLCLIPPLANEFPROC glClipPlanef;
-    PFNGLCLIPPLANEXPROC glClipPlanex;
-    PFNGLGETCLIPPLANEFPROC glGetClipPlanef;
-    PFNGLGETCLIPPLANEXPROC glGetClipPlanex;
-    PFNGLGETFIXEDVPROC glGetFixedv;
-    PFNGLGETLIGHTXVPROC glGetLightxv;
-    PFNGLGETMATERIALXVPROC glGetMaterialxv;
-    PFNGLGETTEXENVXVPROC glGetTexEnvxv;
-    PFNGLGETTEXPARAMETERXVPROC glGetTexParameterxv;
-    PFNGLPOINTPARAMETERXPROC glPointParameterx;
-    PFNGLPOINTPARAMETERXVPROC glPointParameterxv;
-    PFNGLPOINTSIZEPOINTEROESPROC glPointSizePointerOES;
-    PFNGLTEXPARAMETERXVPROC glTexParameterxv;
+    REGALGLCLIPPLANEFPROC glClipPlanef;
+    REGALGLCLIPPLANEXPROC glClipPlanex;
+    REGALGLGETCLIPPLANEFPROC glGetClipPlanef;
+    REGALGLGETCLIPPLANEXPROC glGetClipPlanex;
+    REGALGLGETFIXEDVPROC glGetFixedv;
+    REGALGLGETLIGHTXVPROC glGetLightxv;
+    REGALGLGETMATERIALXVPROC glGetMaterialxv;
+    REGALGLGETTEXENVXVPROC glGetTexEnvxv;
+    REGALGLGETTEXPARAMETERXVPROC glGetTexParameterxv;
+    REGALGLPOINTPARAMETERXPROC glPointParameterx;
+    REGALGLPOINTPARAMETERXVPROC glPointParameterxv;
+    REGALGLPOINTSIZEPOINTEROESPROC glPointSizePointerOES;
+    REGALGLTEXPARAMETERXVPROC glTexParameterxv;
 
     // GL_REGAL_log
 
-    PFNGLLOGMESSAGECALLBACKREGALPROC glLogMessageCallbackREGAL;
+    REGALGLLOGMESSAGECALLBACKREGALPROC glLogMessageCallbackREGAL;
 
     // GL_SGIS_detail_texture
 
-    PFNGLDETAILTEXFUNCSGISPROC glDetailTexFuncSGIS;
-    PFNGLGETDETAILTEXFUNCSGISPROC glGetDetailTexFuncSGIS;
+    REGALGLDETAILTEXFUNCSGISPROC glDetailTexFuncSGIS;
+    REGALGLGETDETAILTEXFUNCSGISPROC glGetDetailTexFuncSGIS;
 
     // GL_SGIS_fog_function
 
-    PFNGLFOGFUNCSGISPROC glFogFuncSGIS;
-    PFNGLGETFOGFUNCSGISPROC glGetFogFuncSGIS;
+    REGALGLFOGFUNCSGISPROC glFogFuncSGIS;
+    REGALGLGETFOGFUNCSGISPROC glGetFogFuncSGIS;
 
     // GL_SGIS_multisample
 
-    PFNGLSAMPLEMASKSGISPROC glSampleMaskSGIS;
-    PFNGLSAMPLEPATTERNSGISPROC glSamplePatternSGIS;
+    REGALGLSAMPLEMASKSGISPROC glSampleMaskSGIS;
+    REGALGLSAMPLEPATTERNSGISPROC glSamplePatternSGIS;
 
     // GL_SGIS_pixel_texture
 
-    PFNGLGETPIXELTEXGENPARAMETERFVSGISPROC glGetPixelTexGenParameterfvSGIS;
-    PFNGLGETPIXELTEXGENPARAMETERIVSGISPROC glGetPixelTexGenParameterivSGIS;
-    PFNGLPIXELTEXGENPARAMETERFSGISPROC glPixelTexGenParameterfSGIS;
-    PFNGLPIXELTEXGENPARAMETERFVSGISPROC glPixelTexGenParameterfvSGIS;
-    PFNGLPIXELTEXGENPARAMETERISGISPROC glPixelTexGenParameteriSGIS;
-    PFNGLPIXELTEXGENPARAMETERIVSGISPROC glPixelTexGenParameterivSGIS;
+    REGALGLGETPIXELTEXGENPARAMETERFVSGISPROC glGetPixelTexGenParameterfvSGIS;
+    REGALGLGETPIXELTEXGENPARAMETERIVSGISPROC glGetPixelTexGenParameterivSGIS;
+    REGALGLPIXELTEXGENPARAMETERFSGISPROC glPixelTexGenParameterfSGIS;
+    REGALGLPIXELTEXGENPARAMETERFVSGISPROC glPixelTexGenParameterfvSGIS;
+    REGALGLPIXELTEXGENPARAMETERISGISPROC glPixelTexGenParameteriSGIS;
+    REGALGLPIXELTEXGENPARAMETERIVSGISPROC glPixelTexGenParameterivSGIS;
 
     // GL_SGIS_point_parameters
 
-    PFNGLPOINTPARAMETERFSGISPROC glPointParameterfSGIS;
-    PFNGLPOINTPARAMETERFVSGISPROC glPointParameterfvSGIS;
+    REGALGLPOINTPARAMETERFSGISPROC glPointParameterfSGIS;
+    REGALGLPOINTPARAMETERFVSGISPROC glPointParameterfvSGIS;
 
     // GL_SGIS_sharpen_texture
 
-    PFNGLGETSHARPENTEXFUNCSGISPROC glGetSharpenTexFuncSGIS;
-    PFNGLSHARPENTEXFUNCSGISPROC glSharpenTexFuncSGIS;
+    REGALGLGETSHARPENTEXFUNCSGISPROC glGetSharpenTexFuncSGIS;
+    REGALGLSHARPENTEXFUNCSGISPROC glSharpenTexFuncSGIS;
 
     // GL_SGIS_texture4D
 
-    PFNGLTEXIMAGE4DSGISPROC glTexImage4DSGIS;
-    PFNGLTEXSUBIMAGE4DSGISPROC glTexSubImage4DSGIS;
+    REGALGLTEXIMAGE4DSGISPROC glTexImage4DSGIS;
+    REGALGLTEXSUBIMAGE4DSGISPROC glTexSubImage4DSGIS;
 
     // GL_SGIS_texture_color_mask
 
-    PFNGLTEXTURECOLORMASKSGISPROC glTextureColorMaskSGIS;
+    REGALGLTEXTURECOLORMASKSGISPROC glTextureColorMaskSGIS;
 
     // GL_SGIS_texture_filter4
 
-    PFNGLGETTEXFILTERFUNCSGISPROC glGetTexFilterFuncSGIS;
-    PFNGLTEXFILTERFUNCSGISPROC glTexFilterFuncSGIS;
+    REGALGLGETTEXFILTERFUNCSGISPROC glGetTexFilterFuncSGIS;
+    REGALGLTEXFILTERFUNCSGISPROC glTexFilterFuncSGIS;
 
     // GL_SGIX_async
 
-    PFNGLASYNCMARKERSGIXPROC glAsyncMarkerSGIX;
-    PFNGLDELETEASYNCMARKERSSGIXPROC glDeleteAsyncMarkersSGIX;
-    PFNGLFINISHASYNCSGIXPROC glFinishAsyncSGIX;
-    PFNGLGENASYNCMARKERSSGIXPROC glGenAsyncMarkersSGIX;
-    PFNGLISASYNCMARKERSGIXPROC glIsAsyncMarkerSGIX;
-    PFNGLPOLLASYNCSGIXPROC glPollAsyncSGIX;
+    REGALGLASYNCMARKERSGIXPROC glAsyncMarkerSGIX;
+    REGALGLDELETEASYNCMARKERSSGIXPROC glDeleteAsyncMarkersSGIX;
+    REGALGLFINISHASYNCSGIXPROC glFinishAsyncSGIX;
+    REGALGLGENASYNCMARKERSSGIXPROC glGenAsyncMarkersSGIX;
+    REGALGLISASYNCMARKERSGIXPROC glIsAsyncMarkerSGIX;
+    REGALGLPOLLASYNCSGIXPROC glPollAsyncSGIX;
 
     // GL_SGIX_flush_raster
 
-    PFNGLFLUSHRASTERSGIXPROC glFlushRasterSGIX;
+    REGALGLFLUSHRASTERSGIXPROC glFlushRasterSGIX;
 
     // GL_SGIX_fog_texture
 
-    PFNGLTEXTUREFOGSGIXPROC glTextureFogSGIX;
+    REGALGLTEXTUREFOGSGIXPROC glTextureFogSGIX;
 
     // GL_SGIX_fragment_lighting
 
-    PFNGLFRAGMENTCOLORMATERIALSGIXPROC glFragmentColorMaterialSGIX;
-    PFNGLFRAGMENTLIGHTMODELFSGIXPROC glFragmentLightModelfSGIX;
-    PFNGLFRAGMENTLIGHTMODELFVSGIXPROC glFragmentLightModelfvSGIX;
-    PFNGLFRAGMENTLIGHTMODELISGIXPROC glFragmentLightModeliSGIX;
-    PFNGLFRAGMENTLIGHTMODELIVSGIXPROC glFragmentLightModelivSGIX;
-    PFNGLFRAGMENTLIGHTFSGIXPROC glFragmentLightfSGIX;
-    PFNGLFRAGMENTLIGHTFVSGIXPROC glFragmentLightfvSGIX;
-    PFNGLFRAGMENTLIGHTISGIXPROC glFragmentLightiSGIX;
-    PFNGLFRAGMENTLIGHTIVSGIXPROC glFragmentLightivSGIX;
-    PFNGLFRAGMENTMATERIALFSGIXPROC glFragmentMaterialfSGIX;
-    PFNGLFRAGMENTMATERIALFVSGIXPROC glFragmentMaterialfvSGIX;
-    PFNGLFRAGMENTMATERIALISGIXPROC glFragmentMaterialiSGIX;
-    PFNGLFRAGMENTMATERIALIVSGIXPROC glFragmentMaterialivSGIX;
-    PFNGLGETFRAGMENTLIGHTFVSGIXPROC glGetFragmentLightfvSGIX;
-    PFNGLGETFRAGMENTLIGHTIVSGIXPROC glGetFragmentLightivSGIX;
-    PFNGLGETFRAGMENTMATERIALFVSGIXPROC glGetFragmentMaterialfvSGIX;
-    PFNGLGETFRAGMENTMATERIALIVSGIXPROC glGetFragmentMaterialivSGIX;
-    PFNGLLIGHTENVISGIXPROC glLightEnviSGIX;
+    REGALGLFRAGMENTCOLORMATERIALSGIXPROC glFragmentColorMaterialSGIX;
+    REGALGLFRAGMENTLIGHTMODELFSGIXPROC glFragmentLightModelfSGIX;
+    REGALGLFRAGMENTLIGHTMODELFVSGIXPROC glFragmentLightModelfvSGIX;
+    REGALGLFRAGMENTLIGHTMODELISGIXPROC glFragmentLightModeliSGIX;
+    REGALGLFRAGMENTLIGHTMODELIVSGIXPROC glFragmentLightModelivSGIX;
+    REGALGLFRAGMENTLIGHTFSGIXPROC glFragmentLightfSGIX;
+    REGALGLFRAGMENTLIGHTFVSGIXPROC glFragmentLightfvSGIX;
+    REGALGLFRAGMENTLIGHTISGIXPROC glFragmentLightiSGIX;
+    REGALGLFRAGMENTLIGHTIVSGIXPROC glFragmentLightivSGIX;
+    REGALGLFRAGMENTMATERIALFSGIXPROC glFragmentMaterialfSGIX;
+    REGALGLFRAGMENTMATERIALFVSGIXPROC glFragmentMaterialfvSGIX;
+    REGALGLFRAGMENTMATERIALISGIXPROC glFragmentMaterialiSGIX;
+    REGALGLFRAGMENTMATERIALIVSGIXPROC glFragmentMaterialivSGIX;
+    REGALGLGETFRAGMENTLIGHTFVSGIXPROC glGetFragmentLightfvSGIX;
+    REGALGLGETFRAGMENTLIGHTIVSGIXPROC glGetFragmentLightivSGIX;
+    REGALGLGETFRAGMENTMATERIALFVSGIXPROC glGetFragmentMaterialfvSGIX;
+    REGALGLGETFRAGMENTMATERIALIVSGIXPROC glGetFragmentMaterialivSGIX;
+    REGALGLLIGHTENVISGIXPROC glLightEnviSGIX;
 
     // GL_SGIX_framezoom
 
-    PFNGLFRAMEZOOMSGIXPROC glFrameZoomSGIX;
+    REGALGLFRAMEZOOMSGIXPROC glFrameZoomSGIX;
 
     // GL_SGIX_igloo_interface
 
-    PFNGLIGLOOINTERFACESGIXPROC glIglooInterfaceSGIX;
+    REGALGLIGLOOINTERFACESGIXPROC glIglooInterfaceSGIX;
 
     // GL_SGIX_instruments
 
-    PFNGLGETINSTRUMENTSSGIXPROC glGetInstrumentsSGIX;
-    PFNGLINSTRUMENTSBUFFERSGIXPROC glInstrumentsBufferSGIX;
-    PFNGLPOLLINSTRUMENTSSGIXPROC glPollInstrumentsSGIX;
-    PFNGLREADINSTRUMENTSSGIXPROC glReadInstrumentsSGIX;
-    PFNGLSTARTINSTRUMENTSSGIXPROC glStartInstrumentsSGIX;
-    PFNGLSTOPINSTRUMENTSSGIXPROC glStopInstrumentsSGIX;
+    REGALGLGETINSTRUMENTSSGIXPROC glGetInstrumentsSGIX;
+    REGALGLINSTRUMENTSBUFFERSGIXPROC glInstrumentsBufferSGIX;
+    REGALGLPOLLINSTRUMENTSSGIXPROC glPollInstrumentsSGIX;
+    REGALGLREADINSTRUMENTSSGIXPROC glReadInstrumentsSGIX;
+    REGALGLSTARTINSTRUMENTSSGIXPROC glStartInstrumentsSGIX;
+    REGALGLSTOPINSTRUMENTSSGIXPROC glStopInstrumentsSGIX;
 
     // GL_SGIX_list_priority
 
-    PFNGLGETLISTPARAMETERFVSGIXPROC glGetListParameterfvSGIX;
-    PFNGLGETLISTPARAMETERIVSGIXPROC glGetListParameterivSGIX;
-    PFNGLLISTPARAMETERFSGIXPROC glListParameterfSGIX;
-    PFNGLLISTPARAMETERFVSGIXPROC glListParameterfvSGIX;
-    PFNGLLISTPARAMETERISGIXPROC glListParameteriSGIX;
-    PFNGLLISTPARAMETERIVSGIXPROC glListParameterivSGIX;
+    REGALGLGETLISTPARAMETERFVSGIXPROC glGetListParameterfvSGIX;
+    REGALGLGETLISTPARAMETERIVSGIXPROC glGetListParameterivSGIX;
+    REGALGLLISTPARAMETERFSGIXPROC glListParameterfSGIX;
+    REGALGLLISTPARAMETERFVSGIXPROC glListParameterfvSGIX;
+    REGALGLLISTPARAMETERISGIXPROC glListParameteriSGIX;
+    REGALGLLISTPARAMETERIVSGIXPROC glListParameterivSGIX;
 
     // GL_SGIX_pixel_texture
 
-    PFNGLPIXELTEXGENSGIXPROC glPixelTexGenSGIX;
+    REGALGLPIXELTEXGENSGIXPROC glPixelTexGenSGIX;
 
     // GL_SGIX_polynomial_ffd
 
-    PFNGLDEFORMSGIXPROC glDeformSGIX;
-    PFNGLDEFORMATIONMAP3DSGIXPROC glDeformationMap3dSGIX;
-    PFNGLDEFORMATIONMAP3FSGIXPROC glDeformationMap3fSGIX;
-    PFNGLLOADIDENTITYDEFORMATIONMAPSGIXPROC glLoadIdentityDeformationMapSGIX;
+    REGALGLDEFORMSGIXPROC glDeformSGIX;
+    REGALGLDEFORMATIONMAP3DSGIXPROC glDeformationMap3dSGIX;
+    REGALGLDEFORMATIONMAP3FSGIXPROC glDeformationMap3fSGIX;
+    REGALGLLOADIDENTITYDEFORMATIONMAPSGIXPROC glLoadIdentityDeformationMapSGIX;
 
     // GL_SGIX_reference_plane
 
-    PFNGLREFERENCEPLANESGIXPROC glReferencePlaneSGIX;
+    REGALGLREFERENCEPLANESGIXPROC glReferencePlaneSGIX;
 
     // GL_SGIX_sprite
 
-    PFNGLSPRITEPARAMETERFSGIXPROC glSpriteParameterfSGIX;
-    PFNGLSPRITEPARAMETERFVSGIXPROC glSpriteParameterfvSGIX;
-    PFNGLSPRITEPARAMETERISGIXPROC glSpriteParameteriSGIX;
-    PFNGLSPRITEPARAMETERIVSGIXPROC glSpriteParameterivSGIX;
+    REGALGLSPRITEPARAMETERFSGIXPROC glSpriteParameterfSGIX;
+    REGALGLSPRITEPARAMETERFVSGIXPROC glSpriteParameterfvSGIX;
+    REGALGLSPRITEPARAMETERISGIXPROC glSpriteParameteriSGIX;
+    REGALGLSPRITEPARAMETERIVSGIXPROC glSpriteParameterivSGIX;
 
     // GL_SGIX_tag_sample_buffer
 
-    PFNGLTAGSAMPLEBUFFERSGIXPROC glTagSampleBufferSGIX;
+    REGALGLTAGSAMPLEBUFFERSGIXPROC glTagSampleBufferSGIX;
 
     // GL_SGI_color_table
 
-    PFNGLCOLORTABLEPARAMETERFVSGIPROC glColorTableParameterfvSGI;
-    PFNGLCOLORTABLEPARAMETERIVSGIPROC glColorTableParameterivSGI;
-    PFNGLCOLORTABLESGIPROC glColorTableSGI;
-    PFNGLCOPYCOLORTABLESGIPROC glCopyColorTableSGI;
-    PFNGLGETCOLORTABLEPARAMETERFVSGIPROC glGetColorTableParameterfvSGI;
-    PFNGLGETCOLORTABLEPARAMETERIVSGIPROC glGetColorTableParameterivSGI;
-    PFNGLGETCOLORTABLESGIPROC glGetColorTableSGI;
+    REGALGLCOLORTABLEPARAMETERFVSGIPROC glColorTableParameterfvSGI;
+    REGALGLCOLORTABLEPARAMETERIVSGIPROC glColorTableParameterivSGI;
+    REGALGLCOLORTABLESGIPROC glColorTableSGI;
+    REGALGLCOPYCOLORTABLESGIPROC glCopyColorTableSGI;
+    REGALGLGETCOLORTABLEPARAMETERFVSGIPROC glGetColorTableParameterfvSGI;
+    REGALGLGETCOLORTABLEPARAMETERIVSGIPROC glGetColorTableParameterivSGI;
+    REGALGLGETCOLORTABLESGIPROC glGetColorTableSGI;
 
     // GL_SUNX_constant_data
 
-    PFNGLFINISHTEXTURESUNXPROC glFinishTextureSUNX;
+    REGALGLFINISHTEXTURESUNXPROC glFinishTextureSUNX;
 
     // GL_SUN_global_alpha
 
-    PFNGLGLOBALALPHAFACTORBSUNPROC glGlobalAlphaFactorbSUN;
-    PFNGLGLOBALALPHAFACTORDSUNPROC glGlobalAlphaFactordSUN;
-    PFNGLGLOBALALPHAFACTORFSUNPROC glGlobalAlphaFactorfSUN;
-    PFNGLGLOBALALPHAFACTORISUNPROC glGlobalAlphaFactoriSUN;
-    PFNGLGLOBALALPHAFACTORSSUNPROC glGlobalAlphaFactorsSUN;
-    PFNGLGLOBALALPHAFACTORUBSUNPROC glGlobalAlphaFactorubSUN;
-    PFNGLGLOBALALPHAFACTORUISUNPROC glGlobalAlphaFactoruiSUN;
-    PFNGLGLOBALALPHAFACTORUSSUNPROC glGlobalAlphaFactorusSUN;
+    REGALGLGLOBALALPHAFACTORBSUNPROC glGlobalAlphaFactorbSUN;
+    REGALGLGLOBALALPHAFACTORDSUNPROC glGlobalAlphaFactordSUN;
+    REGALGLGLOBALALPHAFACTORFSUNPROC glGlobalAlphaFactorfSUN;
+    REGALGLGLOBALALPHAFACTORISUNPROC glGlobalAlphaFactoriSUN;
+    REGALGLGLOBALALPHAFACTORSSUNPROC glGlobalAlphaFactorsSUN;
+    REGALGLGLOBALALPHAFACTORUBSUNPROC glGlobalAlphaFactorubSUN;
+    REGALGLGLOBALALPHAFACTORUISUNPROC glGlobalAlphaFactoruiSUN;
+    REGALGLGLOBALALPHAFACTORUSSUNPROC glGlobalAlphaFactorusSUN;
 
     // GL_SUN_mesh_array
 
-    PFNGLDRAWMESHARRAYSSUNPROC glDrawMeshArraysSUN;
+    REGALGLDRAWMESHARRAYSSUNPROC glDrawMeshArraysSUN;
 
     // GL_SUN_read_video_pixels
 
-    PFNGLREADVIDEOPIXELSSUNPROC glReadVideoPixelsSUN;
+    REGALGLREADVIDEOPIXELSSUNPROC glReadVideoPixelsSUN;
 
     // GL_SUN_triangle_list
 
-    PFNGLREPLACEMENTCODEPOINTERSUNPROC glReplacementCodePointerSUN;
-    PFNGLREPLACEMENTCODEUBSUNPROC glReplacementCodeubSUN;
-    PFNGLREPLACEMENTCODEUBVSUNPROC glReplacementCodeubvSUN;
-    PFNGLREPLACEMENTCODEUISUNPROC glReplacementCodeuiSUN;
-    PFNGLREPLACEMENTCODEUIVSUNPROC glReplacementCodeuivSUN;
-    PFNGLREPLACEMENTCODEUSSUNPROC glReplacementCodeusSUN;
-    PFNGLREPLACEMENTCODEUSVSUNPROC glReplacementCodeusvSUN;
+    REGALGLREPLACEMENTCODEPOINTERSUNPROC glReplacementCodePointerSUN;
+    REGALGLREPLACEMENTCODEUBSUNPROC glReplacementCodeubSUN;
+    REGALGLREPLACEMENTCODEUBVSUNPROC glReplacementCodeubvSUN;
+    REGALGLREPLACEMENTCODEUISUNPROC glReplacementCodeuiSUN;
+    REGALGLREPLACEMENTCODEUIVSUNPROC glReplacementCodeuivSUN;
+    REGALGLREPLACEMENTCODEUSSUNPROC glReplacementCodeusSUN;
+    REGALGLREPLACEMENTCODEUSVSUNPROC glReplacementCodeusvSUN;
 
     // GL_SUN_vertex
 
-    PFNGLCOLOR3FVERTEX3FSUNPROC glColor3fVertex3fSUN;
-    PFNGLCOLOR3FVERTEX3FVSUNPROC glColor3fVertex3fvSUN;
-    PFNGLCOLOR4FNORMAL3FVERTEX3FSUNPROC glColor4fNormal3fVertex3fSUN;
-    PFNGLCOLOR4FNORMAL3FVERTEX3FVSUNPROC glColor4fNormal3fVertex3fvSUN;
-    PFNGLCOLOR4UBVERTEX2FSUNPROC glColor4ubVertex2fSUN;
-    PFNGLCOLOR4UBVERTEX2FVSUNPROC glColor4ubVertex2fvSUN;
-    PFNGLCOLOR4UBVERTEX3FSUNPROC glColor4ubVertex3fSUN;
-    PFNGLCOLOR4UBVERTEX3FVSUNPROC glColor4ubVertex3fvSUN;
-    PFNGLNORMAL3FVERTEX3FSUNPROC glNormal3fVertex3fSUN;
-    PFNGLNORMAL3FVERTEX3FVSUNPROC glNormal3fVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUICOLOR3FVERTEX3FSUNPROC glReplacementCodeuiColor3fVertex3fSUN;
-    PFNGLREPLACEMENTCODEUICOLOR3FVERTEX3FVSUNPROC glReplacementCodeuiColor3fVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUICOLOR4FNORMAL3FVERTEX3FSUNPROC glReplacementCodeuiColor4fNormal3fVertex3fSUN;
-    PFNGLREPLACEMENTCODEUICOLOR4FNORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiColor4fNormal3fVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUICOLOR4UBVERTEX3FSUNPROC glReplacementCodeuiColor4ubVertex3fSUN;
-    PFNGLREPLACEMENTCODEUICOLOR4UBVERTEX3FVSUNPROC glReplacementCodeuiColor4ubVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUINORMAL3FVERTEX3FSUNPROC glReplacementCodeuiNormal3fVertex3fSUN;
-    PFNGLREPLACEMENTCODEUINORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiNormal3fVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUITEXCOORD2FCOLOR4FNORMAL3FVERTEX3FSUNPROC glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN;
-    PFNGLREPLACEMENTCODEUITEXCOORD2FCOLOR4FNORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUITEXCOORD2FNORMAL3FVERTEX3FSUNPROC glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN;
-    PFNGLREPLACEMENTCODEUITEXCOORD2FNORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUITEXCOORD2FVERTEX3FSUNPROC glReplacementCodeuiTexCoord2fVertex3fSUN;
-    PFNGLREPLACEMENTCODEUITEXCOORD2FVERTEX3FVSUNPROC glReplacementCodeuiTexCoord2fVertex3fvSUN;
-    PFNGLREPLACEMENTCODEUIVERTEX3FSUNPROC glReplacementCodeuiVertex3fSUN;
-    PFNGLREPLACEMENTCODEUIVERTEX3FVSUNPROC glReplacementCodeuiVertex3fvSUN;
-    PFNGLTEXCOORD2FCOLOR3FVERTEX3FSUNPROC glTexCoord2fColor3fVertex3fSUN;
-    PFNGLTEXCOORD2FCOLOR3FVERTEX3FVSUNPROC glTexCoord2fColor3fVertex3fvSUN;
-    PFNGLTEXCOORD2FCOLOR4FNORMAL3FVERTEX3FSUNPROC glTexCoord2fColor4fNormal3fVertex3fSUN;
-    PFNGLTEXCOORD2FCOLOR4FNORMAL3FVERTEX3FVSUNPROC glTexCoord2fColor4fNormal3fVertex3fvSUN;
-    PFNGLTEXCOORD2FCOLOR4UBVERTEX3FSUNPROC glTexCoord2fColor4ubVertex3fSUN;
-    PFNGLTEXCOORD2FCOLOR4UBVERTEX3FVSUNPROC glTexCoord2fColor4ubVertex3fvSUN;
-    PFNGLTEXCOORD2FNORMAL3FVERTEX3FSUNPROC glTexCoord2fNormal3fVertex3fSUN;
-    PFNGLTEXCOORD2FNORMAL3FVERTEX3FVSUNPROC glTexCoord2fNormal3fVertex3fvSUN;
-    PFNGLTEXCOORD2FVERTEX3FSUNPROC glTexCoord2fVertex3fSUN;
-    PFNGLTEXCOORD2FVERTEX3FVSUNPROC glTexCoord2fVertex3fvSUN;
-    PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC glTexCoord4fColor4fNormal3fVertex4fSUN;
-    PFNGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FVSUNPROC glTexCoord4fColor4fNormal3fVertex4fvSUN;
-    PFNGLTEXCOORD4FVERTEX4FSUNPROC glTexCoord4fVertex4fSUN;
-    PFNGLTEXCOORD4FVERTEX4FVSUNPROC glTexCoord4fVertex4fvSUN;
+    REGALGLCOLOR3FVERTEX3FSUNPROC glColor3fVertex3fSUN;
+    REGALGLCOLOR3FVERTEX3FVSUNPROC glColor3fVertex3fvSUN;
+    REGALGLCOLOR4FNORMAL3FVERTEX3FSUNPROC glColor4fNormal3fVertex3fSUN;
+    REGALGLCOLOR4FNORMAL3FVERTEX3FVSUNPROC glColor4fNormal3fVertex3fvSUN;
+    REGALGLCOLOR4UBVERTEX2FSUNPROC glColor4ubVertex2fSUN;
+    REGALGLCOLOR4UBVERTEX2FVSUNPROC glColor4ubVertex2fvSUN;
+    REGALGLCOLOR4UBVERTEX3FSUNPROC glColor4ubVertex3fSUN;
+    REGALGLCOLOR4UBVERTEX3FVSUNPROC glColor4ubVertex3fvSUN;
+    REGALGLNORMAL3FVERTEX3FSUNPROC glNormal3fVertex3fSUN;
+    REGALGLNORMAL3FVERTEX3FVSUNPROC glNormal3fVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUICOLOR3FVERTEX3FSUNPROC glReplacementCodeuiColor3fVertex3fSUN;
+    REGALGLREPLACEMENTCODEUICOLOR3FVERTEX3FVSUNPROC glReplacementCodeuiColor3fVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUICOLOR4FNORMAL3FVERTEX3FSUNPROC glReplacementCodeuiColor4fNormal3fVertex3fSUN;
+    REGALGLREPLACEMENTCODEUICOLOR4FNORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiColor4fNormal3fVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUICOLOR4UBVERTEX3FSUNPROC glReplacementCodeuiColor4ubVertex3fSUN;
+    REGALGLREPLACEMENTCODEUICOLOR4UBVERTEX3FVSUNPROC glReplacementCodeuiColor4ubVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUINORMAL3FVERTEX3FSUNPROC glReplacementCodeuiNormal3fVertex3fSUN;
+    REGALGLREPLACEMENTCODEUINORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiNormal3fVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUITEXCOORD2FCOLOR4FNORMAL3FVERTEX3FSUNPROC glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN;
+    REGALGLREPLACEMENTCODEUITEXCOORD2FCOLOR4FNORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUITEXCOORD2FNORMAL3FVERTEX3FSUNPROC glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN;
+    REGALGLREPLACEMENTCODEUITEXCOORD2FNORMAL3FVERTEX3FVSUNPROC glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUITEXCOORD2FVERTEX3FSUNPROC glReplacementCodeuiTexCoord2fVertex3fSUN;
+    REGALGLREPLACEMENTCODEUITEXCOORD2FVERTEX3FVSUNPROC glReplacementCodeuiTexCoord2fVertex3fvSUN;
+    REGALGLREPLACEMENTCODEUIVERTEX3FSUNPROC glReplacementCodeuiVertex3fSUN;
+    REGALGLREPLACEMENTCODEUIVERTEX3FVSUNPROC glReplacementCodeuiVertex3fvSUN;
+    REGALGLTEXCOORD2FCOLOR3FVERTEX3FSUNPROC glTexCoord2fColor3fVertex3fSUN;
+    REGALGLTEXCOORD2FCOLOR3FVERTEX3FVSUNPROC glTexCoord2fColor3fVertex3fvSUN;
+    REGALGLTEXCOORD2FCOLOR4FNORMAL3FVERTEX3FSUNPROC glTexCoord2fColor4fNormal3fVertex3fSUN;
+    REGALGLTEXCOORD2FCOLOR4FNORMAL3FVERTEX3FVSUNPROC glTexCoord2fColor4fNormal3fVertex3fvSUN;
+    REGALGLTEXCOORD2FCOLOR4UBVERTEX3FSUNPROC glTexCoord2fColor4ubVertex3fSUN;
+    REGALGLTEXCOORD2FCOLOR4UBVERTEX3FVSUNPROC glTexCoord2fColor4ubVertex3fvSUN;
+    REGALGLTEXCOORD2FNORMAL3FVERTEX3FSUNPROC glTexCoord2fNormal3fVertex3fSUN;
+    REGALGLTEXCOORD2FNORMAL3FVERTEX3FVSUNPROC glTexCoord2fNormal3fVertex3fvSUN;
+    REGALGLTEXCOORD2FVERTEX3FSUNPROC glTexCoord2fVertex3fSUN;
+    REGALGLTEXCOORD2FVERTEX3FVSUNPROC glTexCoord2fVertex3fvSUN;
+    REGALGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FSUNPROC glTexCoord4fColor4fNormal3fVertex4fSUN;
+    REGALGLTEXCOORD4FCOLOR4FNORMAL3FVERTEX4FVSUNPROC glTexCoord4fColor4fNormal3fVertex4fvSUN;
+    REGALGLTEXCOORD4FVERTEX4FSUNPROC glTexCoord4fVertex4fSUN;
+    REGALGLTEXCOORD4FVERTEX4FVSUNPROC glTexCoord4fVertex4fvSUN;
 
     // GL_WIN_swap_hint
 
-    PFNGLADDSWAPHINTRECTWINPROC glAddSwapHintRectWIN;
+    REGALGLADDSWAPHINTRECTWINPROC glAddSwapHintRectWIN;
 
   };
 

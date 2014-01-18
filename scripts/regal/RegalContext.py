@@ -201,13 +201,13 @@ ${EMU_MEMBER_DECLARE}
       #endif
     }
     #if REGAL_SYS_OSX
-      PFNCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
+      REGALCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
     #elif REGAL_SYS_EGL
-      PFNEGLMAKECURRENTPROC eglMakeCurrent;
+      REGALEGLMAKECURRENTPROC eglMakeCurrent;
     #elif REGAL_SYS_GLX
-      PFNGLXMAKECURRENTPROC glXMakeCurrent;
+      REGALGLXMAKECURRENTPROC glXMakeCurrent;
     #elif REGAL_SYS_WGL
-      PFNWGLMAKECURRENTPROC wglMakeCurrent;
+      REGALWGLMAKECURRENTPROC wglMakeCurrent;
     #else
       # error "Implement me!"
     #endif

@@ -54,9 +54,8 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptBin_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length)
+static void REGAL_CALL emuProcInterceptBin_glShaderBinary(RegalContext *_context, GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl

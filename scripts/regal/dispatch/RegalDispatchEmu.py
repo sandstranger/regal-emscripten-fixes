@@ -89,7 +89,7 @@ def apiEmuProcsHeaderCode( e, apis, orig ):
   code +=     '  }\n'
   code +=     '\n'
   for oe in o:
-    code +=   '  PFN%sPROC %s;\n' % ( oe.upper(), oe )
+    code +=   '  REGAL%sPROC %s;\n' % ( oe.upper(), oe )
   code +=     '\n'
   code +=     '  void Initialize( Dispatch::GL & dt ) {\n'
   for oe in o:
@@ -108,8 +108,7 @@ def callAndReturn( e, function ):
 
   if not typeIsVoid(rType):
     code += 'return '
-  #code += '_context->%s->orig.%s(%s);\n' % ( e['member'], name, callParams )
-  code += 'orig.%s(%s);\n' % ( name, callParams )
+  code += 'orig.%s( _context, %s);\n' % ( name, callParams )
   
   return code
 
@@ -143,8 +142,11 @@ def apiEmuProcsSourceCode( e, apis, orig ):
 
       intercept.append( name )
 
+      if params == "void" or params == "":
+        params = "RegalContext *_context"
+      else:
+        params = "RegalContext *_context, %s" % params
       code +=      '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emuProcIntercept%s_' % e['suffix'], name, params)
-      code +=      '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code +=      '  RegalAssert(_context);\n'
 
       body =       ''
@@ -229,8 +231,6 @@ def apiEmuFuncDefineCode(apis, args):
                 continue
 
             code += '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emu_', name, params)
-            code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
-            code += '  RegalAssert(_context);\n'
             code += '\n'
 
             level = [ (emu[i], emuFindEntry( function, emu[i]['formulae'], emu[i]['member'] )) for i in range( len( emue ) - 1 ) ]

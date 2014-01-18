@@ -172,9 +172,9 @@ struct Vao
     if( ctx.info->core )
     {
       maxName = 1;
-      orig.glGenVertexArrays( 1, & coreVao );
+      orig.glGenVertexArrays( &ctx, 1, & coreVao );
       RegalAssert( coreVao != 0 );
-      orig.glBindVertexArray( coreVao );
+      orig.glBindVertexArray( &ctx, coreVao );
     }
     else
       coreVao = 0;
@@ -217,8 +217,8 @@ struct Vao
     {
       maxName = current;
     }
-    orig.glBindBuffer( GL_ARRAY_BUFFER, vao.vertexBuffer );
-    orig.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, vao.indexBuffer );
+    orig.glBindBuffer( &ctx, GL_ARRAY_BUFFER, vao.vertexBuffer );
+    orig.glBindBuffer( &ctx, GL_ELEMENT_ARRAY_BUFFER, vao.indexBuffer );
     GLuint lastBuffer = vao.vertexBuffer;
     RegalAssert( max_vertex_attribs <= REGAL_EMU_MAX_VERTEX_ATTRIBS );
     for( GLuint i = 0; i < max_vertex_attribs; i++ )
@@ -226,19 +226,19 @@ struct Vao
       Array &a = vao.a[ i ];
       if( a.buffer != lastBuffer )
       {
-        orig.glBindBuffer( GL_ARRAY_BUFFER, a.buffer );
+        orig.glBindBuffer( &ctx, GL_ARRAY_BUFFER, a.buffer );
         lastBuffer = a.buffer;
       }
 
       EnableDisableVertexAttribArray( ctx, a.enabled, i );
       if( a.pointer || a.buffer )
       {
-        orig.glVertexAttribPointer( i, a.size, a.type, a.normalized, a.stride, a.pointer );
+        orig.glVertexAttribPointer( &ctx, i, a.size, a.type, a.normalized, a.stride, a.pointer );
       }
     }
     if( lastBuffer != vao.vertexBuffer )
     {
-      orig.glBindBuffer( GL_ARRAY_BUFFER, vao.vertexBuffer );
+      orig.glBindBuffer( &ctx, GL_ARRAY_BUFFER, vao.vertexBuffer );
     }
   }
 
@@ -296,12 +296,12 @@ struct Vao
     a.enabled = enable;
     if( a.enabled == GL_TRUE )
     {
-      orig.glEnableVertexAttribArray( index );
+      orig.glEnableVertexAttribArray( &ctx, index );
       enables |= 1 << index;
     }
     else
     {
-      orig.glDisableVertexAttribArray( index );
+      orig.glDisableVertexAttribArray( &ctx, index );
       enables &= ~( 1 << index );
     }
   }
@@ -402,7 +402,7 @@ struct Vao
 
     RegalAssert( a.buffer == 0 || GLuint64( a.pointer ) < ( 1 << 22 ) );
 
-    orig.glVertexAttribPointer( index, size, type, normalized, stride, pointer );
+    orig.glVertexAttribPointer( &ctx, index, size, type, normalized, stride, pointer );
   }
 
   void Validate( RegalContext &ctx )

@@ -54,9 +54,8 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(GLenum pname, GLboolean *params)
+static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(RegalContext *_context, GLenum pname, GLboolean *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateHint & orig = _context->hint->orig;
 
@@ -67,9 +66,8 @@ static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(GLenum pname, GLboolea
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glGetDoublev(GLenum pname, GLdouble *params)
+static void REGAL_CALL emuProcInterceptHint_glGetDoublev(RegalContext *_context, GLenum pname, GLdouble *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateHint & orig = _context->hint->orig;
 
@@ -80,9 +78,8 @@ static void REGAL_CALL emuProcInterceptHint_glGetDoublev(GLenum pname, GLdouble 
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glGetFloatv(GLenum pname, GLfloat *params)
+static void REGAL_CALL emuProcInterceptHint_glGetFloatv(RegalContext *_context, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateHint & orig = _context->hint->orig;
 
@@ -93,9 +90,8 @@ static void REGAL_CALL emuProcInterceptHint_glGetFloatv(GLenum pname, GLfloat *p
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(GLenum pname, GLint *params)
+static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(RegalContext *_context, GLenum pname, GLint *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateHint & orig = _context->hint->orig;
 
@@ -106,9 +102,8 @@ static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(GLenum pname, GLint *p
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glHint(GLenum target, GLenum mode)
+static void REGAL_CALL emuProcInterceptHint_glHint(RegalContext *_context, GLenum target, GLenum mode)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateHint & orig = _context->hint->orig;
 

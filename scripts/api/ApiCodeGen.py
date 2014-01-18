@@ -259,7 +259,7 @@ def typedefCode(typedef, version, cMode = False):
 
 # Code generation for function prototype.
 
-def funcProtoCode(function, version, call = None, cMode = False):
+def funcProtoCode(function, version, call = None, cMode = False, prefix = "PFN", prefixDecl = ""):
 
   if not validVersion(function.version, version):
     return ''
@@ -268,7 +268,14 @@ def funcProtoCode(function, version, call = None, cMode = False):
     call = ''
   else:
     call += ' '
-  return 'typedef %s(%s*PFN%sPROC)(%s);' % (typeCode(function.ret.type), call, function.name.upper(), paramsDeclCode(function.parameters, cMode))
+  paramsDecl = paramsDeclCode( function.parameters, cMode )
+  if prefixDecl != "":
+    if paramsDecl == "void" or paramsDecl == "":
+      paramsDecl = prefixDecl
+    else:
+      paramsDecl = "%s, %s" % ( prefixDecl, paramsDecl )
+
+  return 'typedef %s(%s*%s%sPROC)(%s);' % (typeCode(function.ret.type), call, prefix, function.name.upper(), paramsDecl)
 
 # Code generation for function pointer variable declaration.
 

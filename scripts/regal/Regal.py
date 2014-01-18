@@ -358,8 +358,8 @@ def apiFuncDefineCode(apis, args):
 
       emue = [ emuFindEntry( function, i['formulae'], i['member'] ) for i in emuRegal ]
 
+      c +=   '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       if function.needsContext:
-        c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
         c += '  %s\n' % logFunction( function, 'App' )
         c += '  if (!_context) return'
@@ -384,11 +384,9 @@ def apiFuncDefineCode(apis, args):
             c += '  #if REGAL_SYS_ES1\n'
             c += '  if (_context->isES1()) // Pass-through for ES1 only\n'
             c += '  {\n'
-            c += '    Dispatch::GL *_next = &_context->dispatchGL;\n'
-            c += '    RegalAssert(_next);\n    '
             if not typeIsVoid(rType):
               c += 'return '
-            c += '_next->%s(%s);\n' % ( name, callParams )
+            c += '_context->dispatchGL.%s(_context, %s);\n' % ( name, callParams )
             if typeIsVoid(rType):
               c += '    return;\n'
             c += '  }\n'
@@ -406,14 +404,12 @@ def apiFuncDefineCode(apis, args):
         else:
           if not getattr(function,'regalOnly',False):
             t = ''
-            t += 'Dispatch::GL *_next = &_context->dispatchGL;\n'
-            t += 'RegalAssert(_next);\n'
 
             t += listToString(indent(stripVertical(emuCodeGen(emue,'pre')),''))
 
             if not typeIsVoid(rType):
               t += 'return '
-            t += '_next->%s(%s);\n' % ( name, callParams )
+            t += '_context->dispatchGL.%s(%s);\n' % ( name, callParams )
 
             t += listToString(indent(stripVertical(emuCodeGen(emue,'post')),''))
 
@@ -430,8 +426,6 @@ def apiFuncDefineCode(apis, args):
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
 
         if not getattr(function,'regalOnly',False):
-          c += '  Dispatch::Global *_next = &dispatchGlobal;\n'
-          c += '  RegalAssert(_next);\n'
 
           if not typeIsVoid(rType):
             if rTypes in api.defaults:
@@ -446,7 +440,7 @@ def apiFuncDefineCode(apis, args):
           c += '  '
           if not typeIsVoid(rType):
             c += 'ret = '
-          c += '_next->%s(%s);\n' % ( name, callParams )
+          c += 'dispatchGlobal.%s(_context, %s);\n' % ( name, callParams )
 
         c += listToString(indent(stripVertical(emuCodeGen(emue,'init')),'  '))
 

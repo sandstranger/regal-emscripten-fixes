@@ -54,9 +54,8 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(GLsizei n, const GLuint *textures)
+static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(RegalContext *_context, GLsizei n, const GLuint *textures)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
@@ -64,13 +63,12 @@ static void REGAL_CALL emuProcInterceptTexSto_glDeleteTextures(GLsizei n, const 
   RegalAssert(_context);
   _context->texsto->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTextures(n, textures);
+  orig.glDeleteTextures( _context, n, textures);
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
@@ -82,9 +80,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIiv(GLenum target
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint *params)
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIuiv(RegalContext *_context, GLenum target, GLenum pname, GLuint *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
@@ -96,9 +93,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterIuiv(GLenum targe
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterfv(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
@@ -110,9 +106,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameterfv(GLenum target,
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameteriv(GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameteriv(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   EmuProcsOriginateTexSto & orig = _context->texsto->orig;
 
@@ -124,9 +119,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glGetTexParameteriv(GLenum target,
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1D(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -134,9 +128,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1D(GLenum target, GLsi
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1DEXT(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -144,9 +137,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage1DEXT(GLenum target, G
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2D(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -154,9 +146,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2D(GLenum target, GLsi
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2DEXT(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -164,9 +155,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage2DEXT(GLenum target, G
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3D(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -174,9 +164,8 @@ static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3D(GLenum target, GLsi
 
 }
 
-static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+static void REGAL_CALL emuProcInterceptTexSto_glTexStorage3DEXT(RegalContext *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl

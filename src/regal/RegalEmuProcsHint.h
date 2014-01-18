@@ -63,11 +63,11 @@ struct EmuProcsOriginateHint {
     memset(this, 0, sizeof( *this ) );
   }
 
-  PFNGLGETBOOLEANVPROC glGetBooleanv;
-  PFNGLGETDOUBLEVPROC glGetDoublev;
-  PFNGLGETFLOATVPROC glGetFloatv;
-  PFNGLGETINTEGERVPROC glGetIntegerv;
-  PFNGLHINTPROC glHint;
+  REGALGLGETBOOLEANVPROC glGetBooleanv;
+  REGALGLGETDOUBLEVPROC glGetDoublev;
+  REGALGLGETFLOATVPROC glGetFloatv;
+  REGALGLGETINTEGERVPROC glGetIntegerv;
+  REGALGLHINTPROC glHint;
 
   void Initialize( Dispatch::GL & dt ) {
     glGetBooleanv = dt.glGetBooleanv;

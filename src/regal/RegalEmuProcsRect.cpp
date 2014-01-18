@@ -54,9 +54,8 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptRect_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+static void REGAL_CALL emuProcInterceptRect_glRectd(RegalContext *_context, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -64,9 +63,8 @@ static void REGAL_CALL emuProcInterceptRect_glRectd(GLdouble x1, GLdouble y1, GL
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectdv(const GLdouble *v1, const GLdouble *v2)
+static void REGAL_CALL emuProcInterceptRect_glRectdv(RegalContext *_context, const GLdouble *v1, const GLdouble *v2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -74,9 +72,8 @@ static void REGAL_CALL emuProcInterceptRect_glRectdv(const GLdouble *v1, const G
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+static void REGAL_CALL emuProcInterceptRect_glRectf(RegalContext *_context, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -84,9 +81,8 @@ static void REGAL_CALL emuProcInterceptRect_glRectf(GLfloat x1, GLfloat y1, GLfl
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectfv(const GLfloat *v1, const GLfloat *v2)
+static void REGAL_CALL emuProcInterceptRect_glRectfv(RegalContext *_context, const GLfloat *v1, const GLfloat *v2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -94,9 +90,8 @@ static void REGAL_CALL emuProcInterceptRect_glRectfv(const GLfloat *v1, const GL
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRecti(GLint x1, GLint y1, GLint x2, GLint y2)
+static void REGAL_CALL emuProcInterceptRect_glRecti(RegalContext *_context, GLint x1, GLint y1, GLint x2, GLint y2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -104,9 +99,8 @@ static void REGAL_CALL emuProcInterceptRect_glRecti(GLint x1, GLint y1, GLint x2
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectiv(const GLint *v1, const GLint *v2)
+static void REGAL_CALL emuProcInterceptRect_glRectiv(RegalContext *_context, const GLint *v1, const GLint *v2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -114,9 +108,8 @@ static void REGAL_CALL emuProcInterceptRect_glRectiv(const GLint *v1, const GLin
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+static void REGAL_CALL emuProcInterceptRect_glRects(RegalContext *_context, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl
@@ -124,9 +117,8 @@ static void REGAL_CALL emuProcInterceptRect_glRects(GLshort x1, GLshort y1, GLsh
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectsv(const GLshort *v1, const GLshort *v2)
+static void REGAL_CALL emuProcInterceptRect_glRectsv(RegalContext *_context, const GLshort *v1, const GLshort *v2)
 {
-  RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
 
   // impl

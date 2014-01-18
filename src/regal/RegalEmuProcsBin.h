@@ -63,7 +63,7 @@ struct EmuProcsOriginateBin {
     memset(this, 0, sizeof( *this ) );
   }
 
-  PFNGLSHADERBINARYPROC glShaderBinary;
+  REGALGLSHADERBINARYPROC glShaderBinary;
 
   void Initialize( Dispatch::GL & dt ) {
     glShaderBinary = dt.glShaderBinary;

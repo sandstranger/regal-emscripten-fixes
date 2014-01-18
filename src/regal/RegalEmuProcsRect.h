@@ -63,20 +63,20 @@ struct EmuProcsOriginateRect {
     memset(this, 0, sizeof( *this ) );
   }
 
-  PFNGLBEGINPROC glBegin;
-  PFNGLENDPROC glEnd;
-  PFNGLRECTDPROC glRectd;
-  PFNGLRECTDVPROC glRectdv;
-  PFNGLRECTFPROC glRectf;
-  PFNGLRECTFVPROC glRectfv;
-  PFNGLRECTIPROC glRecti;
-  PFNGLRECTIVPROC glRectiv;
-  PFNGLRECTSPROC glRects;
-  PFNGLRECTSVPROC glRectsv;
-  PFNGLVERTEX2DPROC glVertex2d;
-  PFNGLVERTEX2FPROC glVertex2f;
-  PFNGLVERTEX2IPROC glVertex2i;
-  PFNGLVERTEX2SPROC glVertex2s;
+  REGALGLBEGINPROC glBegin;
+  REGALGLENDPROC glEnd;
+  REGALGLRECTDPROC glRectd;
+  REGALGLRECTDVPROC glRectdv;
+  REGALGLRECTFPROC glRectf;
+  REGALGLRECTFVPROC glRectfv;
+  REGALGLRECTIPROC glRecti;
+  REGALGLRECTIVPROC glRectiv;
+  REGALGLRECTSPROC glRects;
+  REGALGLRECTSVPROC glRectsv;
+  REGALGLVERTEX2DPROC glVertex2d;
+  REGALGLVERTEX2FPROC glVertex2f;
+  REGALGLVERTEX2IPROC glVertex2i;
+  REGALGLVERTEX2SPROC glVertex2s;
 
   void Initialize( Dispatch::GL & dt ) {
     glBegin = dt.glBegin;
