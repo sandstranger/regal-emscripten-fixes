@@ -36,8 +36,8 @@ def apiDebugFuncDefineCode(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      params = paramsDefaultCode(function.parameters, True, paramsPrefix = "RegalContext *_context")
+      callParams = paramsNameCode(function.parameters, paramsPrefix = "_context")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -59,7 +59,6 @@ def apiDebugFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'debug_', name, params)
-      code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
       e = emuFindEntry( function, debugDispatchFormulae, '' )
       if e != None and 'prefix' in e :

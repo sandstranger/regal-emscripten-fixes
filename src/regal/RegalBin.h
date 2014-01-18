@@ -69,7 +69,7 @@ struct Bin
 
   void ShaderBinary( RegalContext *ctx, GLsizei count, const GLuint *shaders, GLenum binaryFormat, const void *binary, GLsizei length)
   {
-    orig.glShaderBinary( count, shaders, binaryFormat, binary, length );
+    orig.glShaderBinary( ctx, count, shaders, binaryFormat, binary, length );
   }
 };
 

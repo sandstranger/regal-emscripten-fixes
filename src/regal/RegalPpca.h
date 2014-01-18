@@ -146,7 +146,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
       return;
 
     if (mask)
-      orig.glPushClientAttrib(mask);
+      orig.glPushClientAttrib( &ctx, mask);
   }
 
   void glPopClientAttrib(RegalContext &ctx)
@@ -229,7 +229,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
       return;
 
     if (mask)
-      orig.glClientAttribDefaultEXT(mask);
+      orig.glClientAttribDefaultEXT( &ctx, mask);
   }
 
   void glPushClientAttribDefaultEXT(RegalContext &ctx, GLbitfield mask)

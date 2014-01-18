@@ -276,7 +276,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
       return;
 
     if (mask)
-      orig.glPushAttrib(mask);
+      orig.glPushAttrib(ctx, mask);
   }
 
   void PopAttrib(RegalContext *ctx)
@@ -604,7 +604,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         return;
 
       if (mask)
-        orig.glPopAttrib();
+        orig.glPopAttrib( ctx );
     }
   }
 

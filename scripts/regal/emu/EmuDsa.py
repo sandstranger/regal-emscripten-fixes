@@ -510,21 +510,39 @@ dsaFormulae = {
     'MatrixLoadMultStack' : {
         'entries' : [
             'glMatrix(Load|Mult)(Transpose|)(f|d)EXT',
-            'glMatrix(Push|Pop)()()EXT',
         ],
         'impl' : [
             '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
             'orig.gl${m1}${m2}Matrix${m3}( _context, ${arg1plus});',
         ],
     },
+    'MatrixPushPopStack' : {
+        'entries' : [
+            'glMatrix(Push|Pop)EXT',
+        ],
+        'impl' : [
+            '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
+            'orig.gl${m1}Matrix( _context );',
+        ],
+    },
     'MatrixTransform' : {
         'entries' : [
-            'glMatrix(LoadIdentity|Ortho|Frustum)()EXT',
+            'glMatrix(Ortho|Frustum)()EXT',
             'glMatrix(Rotate|Scale|Translate)(f|d)EXT',
         ],
         'impl' : [
             '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
             'orig.gl${m1}${m2}( _context, ${arg1plus});',
+        ],
+    },
+
+    'MatrixIdent' : {
+        'entries' : [
+            'glMatrixLoadIdentityEXT',
+        ],
+        'impl' : [
+            '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
+            'orig.glLoadIdentity( _context );',
         ],
     },
 

@@ -2292,7 +2292,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadIdentityEXT(RegalContext 
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glLoadIdentity( _context, );
+  orig.glLoadIdentity( _context );
 
 }
 
@@ -2414,7 +2414,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixPopEXT(RegalContext *_context
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glPopMatrix( _context, );
+  orig.glPopMatrix( _context );
 
 }
 
@@ -2425,7 +2425,7 @@ static void REGAL_CALL emuProcInterceptDsa_glMatrixPushEXT(RegalContext *_contex
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
-  orig.glPushMatrix( _context, );
+  orig.glPushMatrix( _context );
 
 }
 

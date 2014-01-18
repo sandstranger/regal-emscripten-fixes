@@ -133,7 +133,7 @@ def apiEmuProcsSourceCode( e, apis, orig ):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True)
+      params = paramsDefaultCode(function.parameters, True, paramsPrefix = "RegalContext *_context")
       callParams = paramsNameCode(function.parameters)
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
@@ -146,10 +146,6 @@ def apiEmuProcsSourceCode( e, apis, orig ):
 
       intercept.append( name )
 
-      if params == "void" or len(params) is 0:
-        params = "RegalContext *_context"
-      else:
-        params = "RegalContext *_context, %s" % params
       code +=      '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emuProcIntercept%s_' % e['suffix'], name, params)
       code +=      '  RegalAssert(_context);\n'
 

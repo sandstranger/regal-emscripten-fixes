@@ -211,27 +211,33 @@ def paramsTypeCode(parameters, cMode = False):
 
 # Code generation for parameters names.
 
-def paramsNameCode(parameters):
+def paramsNameCode(parameters, paramsPrefix = ""):
 
-  if len(parameters) is 0:
+  if paramsPrefix == "" and len(parameters) is 0:
     return ''
 
   code = []
+  if paramsPrefix != "":
+    code.append( paramsPrefix )
+
   for i in range(len(parameters)):
     code.append('%s' % paramNameCode(parameters[i].name, i))
   return ', '.join(code)
 
 # Code generation for parameters types, names, and default values.
 
-def paramsDefaultCode(parameters, cMode = False):
+def paramsDefaultCode(parameters, cMode = False, paramsPrefix = ""):
 
-  if len(parameters) is 0:
+  if paramsPrefix == "" and len(parameters) is 0:
     if cMode:
       return 'void'
     else:
       return ''
 
   code = []
+  if paramsPrefix != "":
+    code.append( paramsPrefix )
+
   for param in parameters:
     line = '%s%s%s' % (typeSansArrayCode(param.type), param.name, typeArrayCode(param.type))
     if not cMode:
