@@ -180,7 +180,7 @@ formulae = {
     'entries' : [ 'glEnd' ],
     'post' : [
       '_context->http.inBeginEnd--;',
-      '_context->http.YieldToHttpServer( _context, false /*second call, don\'t update log */ );'
+      '_context->http.YieldToHttpServer( _context, false /* no log update */ );'
     ],
   },
 
@@ -324,6 +324,13 @@ def generateDispatchHttp(apis, args):
         code += '    RegalAssert( _context );\n'
 
       code += '    if( _context ) {\n'
+      if function.name == "glBegin" or function.name == "glEnd":
+        code += '      _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+      else:
+        code += '      if( _context->http.inBeginEnd == 0 ) {\n'
+        code += '        _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+        code += '      }\n'
+
       if generated and 'pre' in generated:
         for i in generated['pre']:
           code += '      %s\n' % i
@@ -331,7 +338,10 @@ def generateDispatchHttp(apis, args):
       code += '      if( _context->http.runState == RS_Next ) {\n'
       code += '        _context->http.runState = RS_Pause;\n'
       code += '      }\n'
-      code += '      _context->http.YieldToHttpServer( _context );\n'
+      if function.name == "glBegin" or function.name == "glEnd":
+        code += '      _context->http.YieldToHttpServer( _context );\n'
+      else:
+        code += '      _context->http.YieldToHttpServer( _context, _context->http.inBeginEnd == 0 );\n'
       code += '    }\n'
 
       

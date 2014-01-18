@@ -361,11 +361,6 @@ def apiFuncDefineCode(apis, args):
       if function.needsContext:
         c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
-        c += '  #if REGAL_HTTP\n'
-	c += '  if( _context->http.inBeginEnd == 0 ) {\n'
-        c += '    _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
-	c += '  }\n'
-        c += '  #endif\n'
         c += '  %s\n' % logFunction( function, 'App' )
         c += '  if (!_context) return'
         if typeIsVoid(rType):
@@ -431,12 +426,6 @@ def apiFuncDefineCode(apis, args):
             c += listToString(indent(stripVertical(emuCodeGen(emue,'suffix')),'  '))
 
       else:
-        c += '  #if REGAL_HTTP\n'
-        c += '  {\n'
-        c += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
-        c += '    if( _context ) { _context->http.callString = %s; }\n' % logFunction( function, 'print_string' )
-        c += '  }\n'
-        c += '  #endif\n'
         c += '  %s\n' % logFunction(function, 'App' )
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
 
