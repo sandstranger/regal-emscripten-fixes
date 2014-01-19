@@ -40,6 +40,8 @@
 #include "RegalSystem.h"
 #include "RegalNamespace.h"
 
+#define GL_VER_ALL 1
+
 #if REGAL_SYS_X11
 #include <X11/Xlib.h>
 #endif

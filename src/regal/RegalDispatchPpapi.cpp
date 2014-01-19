@@ -1640,6 +1640,39 @@ static void REGAL_CALL ppapi_glRenderbufferStorage(GLenum target, GLenum interna
   rCtx->ppapiES2->RenderbufferStorage(rCtx->ppapiResource, target, internalformat, width, height);
 }
 
+static void REGAL_CALL ppapi_glInsertEventMarkerEXT(GLsizei length, const GLchar *marker)
+{
+  Internal("ppapi_glInsertEventMarkerEXT","()");
+  RegalContext * rCtx = REGAL_GET_CONTEXT();
+  RegalAssert(rCtx)
+  RegalAssert(rCtx->ppapiES2)
+  RegalAssert(rCtx->ppapiES2->InsertEventMarkerEXT)
+  RegalAssert(rCtx->ppapiResource)
+  rCtx->ppapiES2->InsertEventMarkerEXT(rCtx->ppapiResource, length, marker);
+}
+
+static void REGAL_CALL ppapi_glPopGroupMarkerEXT(void)
+{
+  Internal("ppapi_glPopGroupMarkerEXT","()");
+  RegalContext * rCtx = REGAL_GET_CONTEXT();
+  RegalAssert(rCtx)
+  RegalAssert(rCtx->ppapiES2)
+  RegalAssert(rCtx->ppapiES2->PopGroupMarkerEXT)
+  RegalAssert(rCtx->ppapiResource)
+  rCtx->ppapiES2->PopGroupMarkerEXT(rCtx->ppapiResource);
+}
+
+static void REGAL_CALL ppapi_glPushGroupMarkerEXT(GLsizei length, const GLchar *marker)
+{
+  Internal("ppapi_glPushGroupMarkerEXT","()");
+  RegalContext * rCtx = REGAL_GET_CONTEXT();
+  RegalAssert(rCtx)
+  RegalAssert(rCtx->ppapiES2)
+  RegalAssert(rCtx->ppapiES2->PushGroupMarkerEXT)
+  RegalAssert(rCtx->ppapiResource)
+  rCtx->ppapiES2->PushGroupMarkerEXT(rCtx->ppapiResource, length, marker);
+}
+
 void InitDispatchPpapi(Dispatch::GL &tbl)
 {
   // OpenGL ES 2.0 only
@@ -1785,6 +1818,9 @@ void InitDispatchPpapi(Dispatch::GL &tbl)
   tbl.glIsFramebuffer = ppapi_glIsFramebuffer;
   tbl.glIsRenderbuffer = ppapi_glIsRenderbuffer;
   tbl.glRenderbufferStorage = ppapi_glRenderbufferStorage;
+  tbl.glInsertEventMarkerEXT = ppapi_glInsertEventMarkerEXT;
+  tbl.glPopGroupMarkerEXT = ppapi_glPopGroupMarkerEXT;
+  tbl.glPushGroupMarkerEXT = ppapi_glPushGroupMarkerEXT;
 
 }
 

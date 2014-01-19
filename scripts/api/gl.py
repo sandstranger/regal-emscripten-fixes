@@ -29201,16 +29201,18 @@ glInsertEventMarkerEXT = Function('glInsertEventMarkerEXT')
 glInsertEventMarkerEXT.ret = Return('void')
 glInsertEventMarkerEXT.add( Input( 'length','GLsizei' ))
 glInsertEventMarkerEXT.add( Input( 'marker','const GLchar *' ))
-glInsertEventMarkerEXT.version = 'ES 2.0'
+glInsertEventMarkerEXT.version = ''
 glInsertEventMarkerEXT.category = 'GL_EXT_debug_marker'
+glInsertEventMarkerEXT.esVersions = [2.0]
 glInsertEventMarkerEXT.trace = True
 glInsertEventMarkerEXT.play = True
 gl.add(glInsertEventMarkerEXT)
 
 glPopGroupMarkerEXT = Function('glPopGroupMarkerEXT')
 glPopGroupMarkerEXT.ret = Return('void')
-glPopGroupMarkerEXT.version = 'ES 2.0'
+glPopGroupMarkerEXT.version = ''
 glPopGroupMarkerEXT.category = 'GL_EXT_debug_marker'
+glPopGroupMarkerEXT.esVersions = [2.0]
 glPopGroupMarkerEXT.trace = True
 glPopGroupMarkerEXT.play = True
 gl.add(glPopGroupMarkerEXT)
@@ -29219,8 +29221,9 @@ glPushGroupMarkerEXT = Function('glPushGroupMarkerEXT')
 glPushGroupMarkerEXT.ret = Return('void')
 glPushGroupMarkerEXT.add( Input( 'length','GLsizei' ))
 glPushGroupMarkerEXT.add( Input( 'marker','const GLchar *' ))
-glPushGroupMarkerEXT.version = 'ES 2.0'
+glPushGroupMarkerEXT.version = ''
 glPushGroupMarkerEXT.category = 'GL_EXT_debug_marker'
+glPushGroupMarkerEXT.esVersions = [2.0]
 glPushGroupMarkerEXT.trace = True
 glPushGroupMarkerEXT.play = True
 gl.add(glPushGroupMarkerEXT)

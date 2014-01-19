@@ -203,6 +203,9 @@ using namespace std;
 #undef glIsFramebuffer
 #undef glIsRenderbuffer
 #undef glRenderbufferStorage
+#undef glInsertEventMarkerEXT
+#undef glPopGroupMarkerEXT
+#undef glPushGroupMarkerEXT
 
 extern "C"
 {
@@ -348,6 +351,9 @@ extern "C"
   extern GLboolean  REGAL_CALL glIsFramebuffer(GLuint framebuffer);
   extern GLboolean  REGAL_CALL glIsRenderbuffer(GLuint renderbuffer);
   extern void  REGAL_CALL glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+  extern void  REGAL_CALL glInsertEventMarkerEXT(GLsizei length, const GLchar *marker);
+  extern void  REGAL_CALL glPopGroupMarkerEXT(void);
+  extern void  REGAL_CALL glPushGroupMarkerEXT(GLsizei length, const GLchar *marker);
 }
 
 REGAL_GLOBAL_END
@@ -503,6 +509,9 @@ void InitDispatchStaticES2(Dispatch::GL &tbl)
   tbl.rglIsFramebuffer = glIsFramebuffer;
   tbl.rglIsRenderbuffer = glIsRenderbuffer;
   tbl.rglRenderbufferStorage = glRenderbufferStorage;
+  tbl.rglInsertEventMarkerEXT = glInsertEventMarkerEXT;
+  tbl.rglPopGroupMarkerEXT = glPopGroupMarkerEXT;
+  tbl.rglPushGroupMarkerEXT = glPushGroupMarkerEXT;
 
 }
 

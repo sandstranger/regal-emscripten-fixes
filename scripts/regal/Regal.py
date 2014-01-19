@@ -20,6 +20,10 @@ ${LICENSE}
 #ifndef __REGAL_DECLARATIONS_H
 #define __REGAL_DECLARATIONS_H
 
+#if ! defined( GL_VER ) && ! defined( GL_CORE_VER ) && ! defined( ES_VER )
+#define GL_VER 999999
+#endif
+
 ${REGAL_SYS}
 
 #if REGAL_SYS_WGL
@@ -530,6 +534,29 @@ def apiEnumCode( apis, args ):
 
   return code
 
+def apiVerInt( ver ):
+  va = [ int( x ) for x in ver.split('.') ]
+  while len( va ) < 3:
+    va.append(0)
+  return '%d%02d%02d' % tuple(va)
+
+def apiFuncDecl( function ):
+  name   = function.name
+  params = paramsDefaultCode(function.parameters, True)
+  rType  = typeCode(function.ret.type)
+  funcDecl = ''
+  guard = []
+  if len(function.version):
+    guard.append( 'GL_VER >= %s' % apiVerInt( function.version ) )
+  if getattr(function,'esVersions', None) and len(function.esVersions):
+    guard.extend( [ 'ES_VER == %s' % ( apiVerInt('%s' % x) ) for x in function.esVersions ] )
+  if len(guard):
+    funcDecl += '#if GL_VER_ALL ||' + ' || '.join( guard ) + '\n'
+  funcDecl += 'REGAL_DECL %sREGAL_CALL %s(%s);\n' % (rType, name, params)
+  if len(guard):
+    funcDecl += '#endif\n'
+  return funcDecl;
+
 # CodeGen for API function declaration.
 
 def apiFuncDeclareCode(apis, args):
@@ -579,9 +606,10 @@ def apiFuncDeclareCode(apis, args):
         category = version.replace('.', '_')
         category = 'GL_VERSION_' + category
 
+
       t.append((category,funcProtoCode(function, version, 'REGAL_CALL', True)))
       m.append((category,'#define %-35s r%-35s' % (name, name) ))
-      f.append((category,'REGAL_DECL %sREGAL_CALL %s(%s);' % (rType, name, params) ))
+      f.append((category, apiFuncDecl( function ) ))
       p.append((category,'REGAL_DECL %sREGAL_CALL plugin_%s(%s);' % (rType, name, rparams) ))
 
     def cmpEnum(a,b):
