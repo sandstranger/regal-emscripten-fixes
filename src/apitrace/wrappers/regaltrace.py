@@ -68,7 +68,9 @@ class RegalTracer(GlTracer):
 
     def prototype(self, function):
         s = '%s %s( ' % ( function.type, function.name )
-        s += ', '.join( [ '%s %s' % (arg.type, arg.name) for arg in function.args ] );
+        args = [ 'void * _context' ]
+        args.extend([ '%s %s' % (arg.type, arg.name) for arg in function.args ])
+        s += ', '.join( args )
         s += ' )'
         return s
 

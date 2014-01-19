@@ -61,8 +61,8 @@
 
 namespace Regal { namespace Trace { 
 
-extern void glViewport( GLint x, GLint y, GLsizei width, GLsizei height );
-extern void glScissor( GLint x, GLint y, GLsizei width, GLsizei height );
+extern void glViewport( void *_context, GLint x, GLint y, GLsizei width, GLsizei height );
+extern void glScissor( void *_context, GLint x, GLint y, GLsizei width, GLsizei height );
 
 } }
 
@@ -251,8 +251,8 @@ void setContext(uintptr_t context_id)
         GLint scissor_box[4] = {0, 0, 0, 0};
         _glGetIntegerv(GL_VIEWPORT, viewport);
         _glGetIntegerv(GL_SCISSOR_BOX, scissor_box);
-        ::Regal::Trace::glViewport(viewport[0], viewport[1], viewport[2], viewport[3]);
-        ::Regal::Trace::glScissor(scissor_box[0], scissor_box[1], scissor_box[2], scissor_box[3]);
+        ::Regal::Trace::glViewport(NULL, viewport[0], viewport[1], viewport[2], viewport[3]);
+        ::Regal::Trace::glScissor(NULL, scissor_box[0], scissor_box[1], scissor_box[2], scissor_box[3]);
     }
 }
 
