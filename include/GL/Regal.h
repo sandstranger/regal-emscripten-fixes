@@ -773,7 +773,7 @@ REGAL_DECL void REGAL_CALL glTbufferMask3DFX(GLuint mask);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_3DFX_TBUFFER
-REGAL_DECL void REGAL_CALL plugin_glTbufferMask3DFX(GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glTbufferMask3DFX(void *_context, GLuint mask);
 #endif
 
 /**
@@ -976,10 +976,10 @@ REGAL_DECL void REGAL_CALL glDebugMessageInsertAMD(GLenum category, GLenum sever
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_DEBUG_OUTPUT
-REGAL_DECL GLuint REGAL_CALL plugin_glGetDebugMessageLogAMD(GLuint count, GLsizei bufsize, GLenum *categories, GLuint *severities, GLuint *ids, GLsizei *lengths, GLchar *message);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, GLvoid *userParam);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageInsertAMD(GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar *buf);
+REGAL_DECL GLuint REGAL_CALL plugin_glGetDebugMessageLogAMD(void *_context, GLuint count, GLsizei bufsize, GLenum *categories, GLuint *severities, GLuint *ids, GLsizei *lengths, GLchar *message);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageCallbackAMD(void *_context, GLDEBUGPROCAMD callback, GLvoid *userParam);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageEnableAMD(void *_context, GLenum category, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageInsertAMD(void *_context, GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar *buf);
 #endif
 
 /**
@@ -1065,10 +1065,10 @@ REGAL_DECL void REGAL_CALL glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum srcR
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_DRAW_BUFFERS_BLEND
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationIndexedAMD(GLuint buf, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateIndexedAMD(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncIndexedAMD(GLuint buf, GLenum src, GLenum dst);
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateIndexedAMD(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationIndexedAMD(void *_context, GLuint buf, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateIndexedAMD(void *_context, GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncIndexedAMD(void *_context, GLuint buf, GLenum src, GLenum dst);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateIndexedAMD(void *_context, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
 #endif
 
 /**
@@ -1117,7 +1117,7 @@ REGAL_DECL void REGAL_CALL glVertexAttribParameteriAMD(GLuint index, GLenum pnam
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_INTERLEAVED_ELEMENTS
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribParameteriAMD(GLuint index, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribParameteriAMD(void *_context, GLuint index, GLenum pname, GLint param);
 #endif
 
 /**
@@ -1164,8 +1164,8 @@ REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirectAMD(GLenum mode, GLenum ty
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_MULTI_DRAW_INDIRECT
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysIndirectAMD(void *_context, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsIndirectAMD(void *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
 #endif
 
 /**
@@ -1223,9 +1223,9 @@ REGAL_DECL void REGAL_CALL glGenNamesAMD(GLenum identifier, GLuint num, GLuint *
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_NAME_GEN_DELETE
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsNameAMD(GLenum identifier, GLuint name);
-REGAL_DECL void REGAL_CALL plugin_glDeleteNamesAMD(GLenum identifier, GLuint num, const GLuint *names);
-REGAL_DECL void REGAL_CALL plugin_glGenNamesAMD(GLenum identifier, GLuint num, GLuint *names);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsNameAMD(void *_context, GLenum identifier, GLuint name);
+REGAL_DECL void REGAL_CALL plugin_glDeleteNamesAMD(void *_context, GLenum identifier, GLuint num, const GLuint *names);
+REGAL_DECL void REGAL_CALL plugin_glGenNamesAMD(void *_context, GLenum identifier, GLuint num, GLuint *names);
 #endif
 
 /**
@@ -1309,17 +1309,17 @@ REGAL_DECL void REGAL_CALL glSelectPerfMonitorCountersAMD(GLuint monitor, GLbool
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_PERFORMANCE_MONITOR
-REGAL_DECL void REGAL_CALL plugin_glBeginPerfMonitorAMD(GLuint monitor);
-REGAL_DECL void REGAL_CALL plugin_glDeletePerfMonitorsAMD(GLsizei n, GLuint *monitors);
-REGAL_DECL void REGAL_CALL plugin_glEndPerfMonitorAMD(GLuint monitor);
-REGAL_DECL void REGAL_CALL plugin_glGenPerfMonitorsAMD(GLsizei n, GLuint *monitors);
-REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCounterDataAMD(GLuint monitor, GLenum pname, GLsizei dataSize, GLuint *data, GLint *bytesWritten);
-REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCounterInfoAMD(GLuint group, GLuint counter, GLenum pname, GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCounterStringAMD(GLuint group, GLuint counter, GLsizei bufSize, GLsizei *length, GLchar *counterString);
-REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCountersAMD(GLuint group, GLint *numCounters, GLint *maxActiveCounters, GLsizei countersSize, GLuint *counters);
-REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorGroupStringAMD(GLuint group, GLsizei bufSize, GLsizei *length, GLchar *groupString);
-REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorGroupsAMD(GLint *numGroups, GLsizei groupsSize, GLuint *groups);
-REGAL_DECL void REGAL_CALL plugin_glSelectPerfMonitorCountersAMD(GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint *counterList);
+REGAL_DECL void REGAL_CALL plugin_glBeginPerfMonitorAMD(void *_context, GLuint monitor);
+REGAL_DECL void REGAL_CALL plugin_glDeletePerfMonitorsAMD(void *_context, GLsizei n, GLuint *monitors);
+REGAL_DECL void REGAL_CALL plugin_glEndPerfMonitorAMD(void *_context, GLuint monitor);
+REGAL_DECL void REGAL_CALL plugin_glGenPerfMonitorsAMD(void *_context, GLsizei n, GLuint *monitors);
+REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCounterDataAMD(void *_context, GLuint monitor, GLenum pname, GLsizei dataSize, GLuint *data, GLint *bytesWritten);
+REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCounterInfoAMD(void *_context, GLuint group, GLuint counter, GLenum pname, GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCounterStringAMD(void *_context, GLuint group, GLuint counter, GLsizei bufSize, GLsizei *length, GLchar *counterString);
+REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorCountersAMD(void *_context, GLuint group, GLint *numCounters, GLint *maxActiveCounters, GLsizei countersSize, GLuint *counters);
+REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorGroupStringAMD(void *_context, GLuint group, GLsizei bufSize, GLsizei *length, GLchar *groupString);
+REGAL_DECL void REGAL_CALL plugin_glGetPerfMonitorGroupsAMD(void *_context, GLint *numGroups, GLsizei groupsSize, GLuint *groups);
+REGAL_DECL void REGAL_CALL plugin_glSelectPerfMonitorCountersAMD(void *_context, GLuint monitor, GLboolean enable, GLuint group, GLint numCounters, GLuint *counterList);
 #endif
 
 /**
@@ -1465,7 +1465,7 @@ REGAL_DECL void REGAL_CALL glSetMultisamplefvAMD(GLenum pname, GLuint index, con
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_SAMPLE_POSITIONS
-REGAL_DECL void REGAL_CALL plugin_glSetMultisamplefvAMD(GLenum pname, GLuint index, const GLfloat *val);
+REGAL_DECL void REGAL_CALL plugin_glSetMultisamplefvAMD(void *_context, GLenum pname, GLuint index, const GLfloat *val);
 #endif
 
 /**
@@ -1556,8 +1556,8 @@ REGAL_DECL void REGAL_CALL glTextureStorageSparseAMD(GLuint texture, GLenum targ
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_SPARSE_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
-REGAL_DECL void REGAL_CALL plugin_glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+REGAL_DECL void REGAL_CALL plugin_glTexStorageSparseAMD(void *_context, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+REGAL_DECL void REGAL_CALL plugin_glTextureStorageSparseAMD(void *_context, GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
 #endif
 
 /**
@@ -1608,7 +1608,7 @@ REGAL_DECL void REGAL_CALL glStencilOpValueAMD(GLenum face, GLuint value);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_STENCIL_OPERATION_EXTENDED
-REGAL_DECL void REGAL_CALL plugin_glStencilOpValueAMD(GLenum face, GLuint value);
+REGAL_DECL void REGAL_CALL plugin_glStencilOpValueAMD(void *_context, GLenum face, GLuint value);
 #endif
 
 /**
@@ -1665,8 +1665,8 @@ REGAL_DECL void REGAL_CALL glTessellationModeAMD(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_AMD_VERTEX_SHADER_TESSELLATOR
-REGAL_DECL void REGAL_CALL plugin_glTessellationFactorAMD(GLfloat factor);
-REGAL_DECL void REGAL_CALL plugin_glTessellationModeAMD(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glTessellationFactorAMD(void *_context, GLfloat factor);
+REGAL_DECL void REGAL_CALL plugin_glTessellationModeAMD(void *_context, GLenum mode);
 #endif
 
 /**
@@ -1717,7 +1717,7 @@ REGAL_DECL void REGAL_CALL glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLin
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ANGLE_FRAMEBUFFER_BLIT
-REGAL_DECL void REGAL_CALL plugin_glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+REGAL_DECL void REGAL_CALL plugin_glBlitFramebufferANGLE(void *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 #endif
 
 /**
@@ -1767,7 +1767,7 @@ REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleANGLE(GLenum target, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ANGLE_FRAMEBUFFER_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleANGLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleANGLE(void *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -1821,9 +1821,9 @@ REGAL_DECL void REGAL_CALL glVertexAttribDivisorANGLE(GLuint index, GLuint divis
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ANGLE_INSTANCED_ARRAYS
-REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedANGLE(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribDivisorANGLE(GLuint index, GLuint divisor);
+REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedANGLE(void *_context, GLenum mode, GLint first, GLsizei count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedANGLE(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribDivisorANGLE(void *_context, GLuint index, GLuint divisor);
 #endif
 
 /**
@@ -2100,17 +2100,17 @@ REGAL_DECL void REGAL_CALL glQueryCounterANGLE(GLuint id, GLenum target);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ANGLE_TIMER_QUERY
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsQueryANGLE(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBeginQueryANGLE(GLenum target, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteQueriesANGLE(GLsizei n, const GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glEndQueryANGLE(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGenQueriesANGLE(GLsizei n, GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjecti64vANGLE(GLuint id, GLenum pname, GLint64 *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectivANGLE(GLuint id, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectui64vANGLE(GLuint id, GLenum pname, GLuint64 *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuivANGLE(GLuint id, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryivANGLE(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glQueryCounterANGLE(GLuint id, GLenum target);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsQueryANGLE(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBeginQueryANGLE(void *_context, GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteQueriesANGLE(void *_context, GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glEndQueryANGLE(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGenQueriesANGLE(void *_context, GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjecti64vANGLE(void *_context, GLuint id, GLenum pname, GLint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectivANGLE(void *_context, GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectui64vANGLE(void *_context, GLuint id, GLenum pname, GLuint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuivANGLE(void *_context, GLuint id, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryivANGLE(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glQueryCounterANGLE(void *_context, GLuint id, GLenum target);
 #endif
 
 /**
@@ -2158,7 +2158,7 @@ REGAL_DECL void REGAL_CALL glGetTranslatedShaderSourceANGLE(GLuint shader, GLsiz
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ANGLE_TRANSLATED_SHADER_SOURCE
-REGAL_DECL void REGAL_CALL plugin_glGetTranslatedShaderSourceANGLE(GLuint shader, GLsizei bufsize, GLsizei *length, GLchar *source);
+REGAL_DECL void REGAL_CALL plugin_glGetTranslatedShaderSourceANGLE(void *_context, GLuint shader, GLsizei bufsize, GLsizei *length, GLchar *source);
 #endif
 
 /**
@@ -2266,7 +2266,7 @@ REGAL_DECL void REGAL_CALL glCopyTextureLevelsAPPLE(GLuint destinationTexture, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_COPY_TEXTURE_LEVELS
-REGAL_DECL void REGAL_CALL plugin_glCopyTextureLevelsAPPLE(GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount);
+REGAL_DECL void REGAL_CALL plugin_glCopyTextureLevelsAPPLE(void *_context, GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount);
 #endif
 
 /**
@@ -2328,11 +2328,11 @@ REGAL_DECL void REGAL_CALL glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_ELEMENT_ARRAY
-REGAL_DECL void REGAL_CALL plugin_glDrawElementArrayAPPLE(GLenum mode, GLint first, GLsizei count);
-REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count);
-REGAL_DECL void REGAL_CALL plugin_glElementPointerAPPLE(GLenum type, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementArrayAPPLE(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawRangeElementArrayAPPLE(GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementArrayAPPLE(void *_context, GLenum mode, GLint first, GLsizei count);
+REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementArrayAPPLE(void *_context, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count);
+REGAL_DECL void REGAL_CALL plugin_glElementPointerAPPLE(void *_context, GLenum type, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementArrayAPPLE(void *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawRangeElementArrayAPPLE(void *_context, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount);
 #endif
 
 /**
@@ -2402,14 +2402,14 @@ REGAL_DECL void REGAL_CALL glSetFenceAPPLE(GLuint fence);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_FENCE
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsFenceAPPLE(GLuint fence);
-REGAL_DECL GLboolean REGAL_CALL plugin_glTestFenceAPPLE(GLuint fence);
-REGAL_DECL GLboolean REGAL_CALL plugin_glTestObjectAPPLE(GLenum object, GLuint name);
-REGAL_DECL void REGAL_CALL plugin_glDeleteFencesAPPLE(GLsizei n, const GLuint *fences);
-REGAL_DECL void REGAL_CALL plugin_glFinishFenceAPPLE(GLuint fence);
-REGAL_DECL void REGAL_CALL plugin_glFinishObjectAPPLE(GLenum object, GLint name);
-REGAL_DECL void REGAL_CALL plugin_glGenFencesAPPLE(GLsizei n, GLuint *fences);
-REGAL_DECL void REGAL_CALL plugin_glSetFenceAPPLE(GLuint fence);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsFenceAPPLE(void *_context, GLuint fence);
+REGAL_DECL GLboolean REGAL_CALL plugin_glTestFenceAPPLE(void *_context, GLuint fence);
+REGAL_DECL GLboolean REGAL_CALL plugin_glTestObjectAPPLE(void *_context, GLenum object, GLuint name);
+REGAL_DECL void REGAL_CALL plugin_glDeleteFencesAPPLE(void *_context, GLsizei n, const GLuint *fences);
+REGAL_DECL void REGAL_CALL plugin_glFinishFenceAPPLE(void *_context, GLuint fence);
+REGAL_DECL void REGAL_CALL plugin_glFinishObjectAPPLE(void *_context, GLenum object, GLint name);
+REGAL_DECL void REGAL_CALL plugin_glGenFencesAPPLE(void *_context, GLsizei n, GLuint *fences);
+REGAL_DECL void REGAL_CALL plugin_glSetFenceAPPLE(void *_context, GLuint fence);
 #endif
 
 /**
@@ -2506,8 +2506,8 @@ REGAL_DECL void REGAL_CALL glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_FLUSH_BUFFER_RANGE
-REGAL_DECL void REGAL_CALL plugin_glBufferParameteriAPPLE(GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFlushMappedBufferRangeAPPLE(GLenum target, GLintptr offset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glBufferParameteriAPPLE(void *_context, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFlushMappedBufferRangeAPPLE(void *_context, GLenum target, GLintptr offset, GLsizeiptr size);
 #endif
 
 /**
@@ -2557,9 +2557,9 @@ REGAL_DECL void REGAL_CALL glSwapAPPLE(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_FLUSH_RENDER
-REGAL_DECL void REGAL_CALL plugin_glFinishRenderAPPLE(void);
-REGAL_DECL void REGAL_CALL plugin_glFlushRenderAPPLE(void);
-REGAL_DECL void REGAL_CALL plugin_glSwapAPPLE(void);
+REGAL_DECL void REGAL_CALL plugin_glFinishRenderAPPLE(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glFlushRenderAPPLE(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glSwapAPPLE(void *_context);
 #endif
 
 /**
@@ -2616,8 +2616,8 @@ REGAL_DECL void REGAL_CALL glResolveMultisampleFramebufferAPPLE(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_FRAMEBUFFER_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleAPPLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glResolveMultisampleFramebufferAPPLE(void);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleAPPLE(void *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glResolveMultisampleFramebufferAPPLE(void *_context);
 #endif
 
 /**
@@ -2676,9 +2676,9 @@ REGAL_DECL void REGAL_CALL glGetObjectParameterivAPPLE(GLenum objectType, GLuint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_OBJECT_PURGEABLE
-REGAL_DECL GLenum REGAL_CALL plugin_glObjectPurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
-REGAL_DECL GLenum REGAL_CALL plugin_glObjectUnpurgeableAPPLE(GLenum objectType, GLuint name, GLenum option);
-REGAL_DECL void REGAL_CALL plugin_glGetObjectParameterivAPPLE(GLenum objectType, GLuint name, GLenum pname, GLint *params);
+REGAL_DECL GLenum REGAL_CALL plugin_glObjectPurgeableAPPLE(void *_context, GLenum objectType, GLuint name, GLenum option);
+REGAL_DECL GLenum REGAL_CALL plugin_glObjectUnpurgeableAPPLE(void *_context, GLenum objectType, GLuint name, GLenum option);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectParameterivAPPLE(void *_context, GLenum objectType, GLuint name, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -2888,13 +2888,13 @@ REGAL_DECL void REGAL_CALL glWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_SYNC
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsSyncAPPLE(GLsync sync);
-REGAL_DECL GLenum REGAL_CALL plugin_glClientWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
-REGAL_DECL GLsync REGAL_CALL plugin_glFenceSyncAPPLE(GLenum condition, GLbitfield flags);
-REGAL_DECL void REGAL_CALL plugin_glDeleteSyncAPPLE(GLsync sync);
-REGAL_DECL void REGAL_CALL plugin_glGetInteger64vAPPLE(GLenum pname, GLint64 *params);
-REGAL_DECL void REGAL_CALL plugin_glGetSyncivAPPLE(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
-REGAL_DECL void REGAL_CALL plugin_glWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsSyncAPPLE(void *_context, GLsync sync);
+REGAL_DECL GLenum REGAL_CALL plugin_glClientWaitSyncAPPLE(void *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
+REGAL_DECL GLsync REGAL_CALL plugin_glFenceSyncAPPLE(void *_context, GLenum condition, GLbitfield flags);
+REGAL_DECL void REGAL_CALL plugin_glDeleteSyncAPPLE(void *_context, GLsync sync);
+REGAL_DECL void REGAL_CALL plugin_glGetInteger64vAPPLE(void *_context, GLenum pname, GLint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetSyncivAPPLE(void *_context, GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+REGAL_DECL void REGAL_CALL plugin_glWaitSyncAPPLE(void *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
 #endif
 
 /**
@@ -2980,8 +2980,8 @@ REGAL_DECL void REGAL_CALL glTextureRangeAPPLE(GLenum target, GLsizei length, co
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_TEXTURE_RANGE
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameterPointervAPPLE(GLenum target, GLenum pname, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glTextureRangeAPPLE(GLenum target, GLsizei length, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameterPointervAPPLE(void *_context, GLenum target, GLenum pname, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glTextureRangeAPPLE(void *_context, GLenum target, GLsizei length, const GLvoid *pointer);
 #endif
 
 /**
@@ -3070,10 +3070,10 @@ REGAL_DECL void REGAL_CALL glGenVertexArraysAPPLE(GLsizei n, GLuint *arrays);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_VERTEX_ARRAY_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexArrayAPPLE(GLuint array);
-REGAL_DECL void REGAL_CALL plugin_glBindVertexArrayAPPLE(GLuint array);
-REGAL_DECL void REGAL_CALL plugin_glDeleteVertexArraysAPPLE(GLsizei n, const GLuint *arrays);
-REGAL_DECL void REGAL_CALL plugin_glGenVertexArraysAPPLE(GLsizei n, GLuint *arrays);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexArrayAPPLE(void *_context, GLuint array);
+REGAL_DECL void REGAL_CALL plugin_glBindVertexArrayAPPLE(void *_context, GLuint array);
+REGAL_DECL void REGAL_CALL plugin_glDeleteVertexArraysAPPLE(void *_context, GLsizei n, const GLuint *arrays);
+REGAL_DECL void REGAL_CALL plugin_glGenVertexArraysAPPLE(void *_context, GLsizei n, GLuint *arrays);
 #endif
 
 /**
@@ -3134,9 +3134,9 @@ REGAL_DECL void REGAL_CALL glVertexArrayRangeAPPLE(GLsizei length, GLvoid *point
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_VERTEX_ARRAY_RANGE
-REGAL_DECL void REGAL_CALL plugin_glFlushVertexArrayRangeAPPLE(GLsizei length, GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayParameteriAPPLE(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayRangeAPPLE(GLsizei length, GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glFlushVertexArrayRangeAPPLE(void *_context, GLsizei length, GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayParameteriAPPLE(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayRangeAPPLE(void *_context, GLsizei length, GLvoid *pointer);
 #endif
 
 /**
@@ -3211,13 +3211,13 @@ REGAL_DECL void REGAL_CALL glMapVertexAttrib2fAPPLE(GLuint index, GLuint size, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_APPLE_VERTEX_PROGRAM_EVALUATORS
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexAttribEnabledAPPLE(GLuint index, GLenum pname);
-REGAL_DECL void REGAL_CALL plugin_glDisableVertexAttribAPPLE(GLuint index, GLenum pname);
-REGAL_DECL void REGAL_CALL plugin_glEnableVertexAttribAPPLE(GLuint index, GLenum pname);
-REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib1dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points);
-REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib1fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points);
-REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib2dAPPLE(GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points);
-REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib2fAPPLE(GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexAttribEnabledAPPLE(void *_context, GLuint index, GLenum pname);
+REGAL_DECL void REGAL_CALL plugin_glDisableVertexAttribAPPLE(void *_context, GLuint index, GLenum pname);
+REGAL_DECL void REGAL_CALL plugin_glEnableVertexAttribAPPLE(void *_context, GLuint index, GLenum pname);
+REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib1dAPPLE(void *_context, GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points);
+REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib1fAPPLE(void *_context, GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib2dAPPLE(void *_context, GLuint index, GLuint size, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points);
+REGAL_DECL void REGAL_CALL plugin_glMapVertexAttrib2fAPPLE(void *_context, GLuint index, GLuint size, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points);
 #endif
 
 /**
@@ -3326,11 +3326,11 @@ REGAL_DECL void REGAL_CALL glShaderBinary(GLsizei count, const GLuint *shaders, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_ES2_COMPATIBILITY
-REGAL_DECL void REGAL_CALL plugin_glClearDepthf(GLclampf d);
-REGAL_DECL void REGAL_CALL plugin_glDepthRangef(GLclampf n, GLclampf f);
-REGAL_DECL void REGAL_CALL plugin_glGetShaderPrecisionFormat(GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision);
-REGAL_DECL void REGAL_CALL plugin_glReleaseShaderCompiler(void);
-REGAL_DECL void REGAL_CALL plugin_glShaderBinary(GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length);
+REGAL_DECL void REGAL_CALL plugin_glClearDepthf(void *_context, GLclampf d);
+REGAL_DECL void REGAL_CALL plugin_glDepthRangef(void *_context, GLclampf n, GLclampf f);
+REGAL_DECL void REGAL_CALL plugin_glGetShaderPrecisionFormat(void *_context, GLenum shadertype, GLenum precisiontype, GLint *range, GLint *precision);
+REGAL_DECL void REGAL_CALL plugin_glReleaseShaderCompiler(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glShaderBinary(void *_context, GLsizei count, const GLuint *shaders, GLenum binaryformat, const GLvoid *binary, GLsizei length);
 #endif
 
 /**
@@ -3424,9 +3424,9 @@ REGAL_DECL void REGAL_CALL glDrawElementsInstancedBaseVertexBaseInstance(GLenum 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_BASE_INSTANCE
-REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLuint baseinstance);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance);
+REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedBaseInstance(void *_context, GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedBaseInstance(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLuint baseinstance);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedBaseVertexBaseInstance(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance);
 #endif
 
 /**
@@ -3519,22 +3519,22 @@ REGAL_DECL void REGAL_CALL glVertexAttribL1ui64vARB(GLuint index, const GLuint64
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_BINDLESS_TEXTURE
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsImageHandleResidentARB(GLuint64 handle);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsTextureHandleResidentARB(GLuint64 handle);
-REGAL_DECL GLuint64 REGAL_CALL plugin_glGetImageHandleARB(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
-REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureHandleARB(GLuint texture);
-REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureSamplerHandleARB(GLuint texture, GLuint sampler);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLui64vARB(GLuint index, GLenum pname, GLuint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleNonResidentARB(GLuint64 handle);
-REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleResidentARB(GLuint64 handle, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleNonResidentARB(GLuint64 handle);
-REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleResidentARB(GLuint64 handle);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64ARB(GLuint program, GLint location, GLuint64 value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 *values);
-REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64ARB(GLint location, GLuint64 value);
-REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64vARB(GLint location, GLsizei count, const GLuint64 *value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64ARB(GLuint index, GLuint64EXT x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64vARB(GLuint index, const GLuint64EXT *v);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsImageHandleResidentARB(void *_context, GLuint64 handle);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsTextureHandleResidentARB(void *_context, GLuint64 handle);
+REGAL_DECL GLuint64 REGAL_CALL plugin_glGetImageHandleARB(void *_context, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureHandleARB(void *_context, GLuint texture);
+REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureSamplerHandleARB(void *_context, GLuint texture, GLuint sampler);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLui64vARB(void *_context, GLuint index, GLenum pname, GLuint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleNonResidentARB(void *_context, GLuint64 handle);
+REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleResidentARB(void *_context, GLuint64 handle, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleNonResidentARB(void *_context, GLuint64 handle);
+REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleResidentARB(void *_context, GLuint64 handle);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64ARB(void *_context, GLuint program, GLint location, GLuint64 value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64vARB(void *_context, GLuint program, GLint location, GLsizei count, const GLuint64 *values);
+REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64ARB(void *_context, GLint location, GLuint64 value);
+REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64vARB(void *_context, GLint location, GLsizei count, const GLuint64 *value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64ARB(void *_context, GLuint index, GLuint64EXT x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64vARB(void *_context, GLuint index, const GLuint64EXT *v);
 #endif
 
 /**
@@ -3588,8 +3588,8 @@ REGAL_DECL void REGAL_CALL glBindFragDataLocationIndexed(GLuint program, GLuint 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_BLEND_FUNC_EXTENDED
-REGAL_DECL GLint REGAL_CALL plugin_glGetFragDataIndex(GLuint program, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glBindFragDataLocationIndexed(GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
+REGAL_DECL GLint REGAL_CALL plugin_glGetFragDataIndex(void *_context, GLuint program, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glBindFragDataLocationIndexed(void *_context, GLuint program, GLuint colorNumber, GLuint index, const GLchar *name);
 #endif
 
 /**
@@ -3646,8 +3646,8 @@ REGAL_DECL void REGAL_CALL glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr siz
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_BUFFER_STORAGE
-REGAL_DECL void REGAL_CALL plugin_glBufferStorage(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
-REGAL_DECL void REGAL_CALL plugin_glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+REGAL_DECL void REGAL_CALL plugin_glBufferStorage(void *_context, GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+REGAL_DECL void REGAL_CALL plugin_glNamedBufferStorageEXT(void *_context, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
 #endif
 
 /**
@@ -3696,7 +3696,7 @@ REGAL_DECL GLsync REGAL_CALL glCreateSyncFromCLeventARB(cl_context context, cl_e
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_CL_EVENT
-REGAL_DECL GLsync REGAL_CALL plugin_glCreateSyncFromCLeventARB(cl_context context, cl_event event, GLbitfield flags);
+REGAL_DECL GLsync REGAL_CALL plugin_glCreateSyncFromCLeventARB(void *_context, cl_context context, cl_event event, GLbitfield flags);
 #endif
 
 /**
@@ -3749,10 +3749,10 @@ REGAL_DECL void REGAL_CALL glClearNamedBufferSubDataEXT(GLuint buffer, GLenum in
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_CLEAR_BUFFER_OBJECT
-REGAL_DECL void REGAL_CALL plugin_glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glClearBufferData(void *_context, GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glClearBufferSubData(void *_context, GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glClearNamedBufferDataEXT(void *_context, GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glClearNamedBufferSubDataEXT(void *_context, GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
 #endif
 
 /**
@@ -3803,8 +3803,8 @@ REGAL_DECL void REGAL_CALL glClearTexSubImage(GLuint texture, GLint level, GLint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_CLEAR_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glClearTexImage(GLuint texture, GLint level, GLenum format, GLenum type, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glClearTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glClearTexImage(void *_context, GLuint texture, GLint level, GLenum format, GLenum type, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glClearTexSubImage(void *_context, GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *data);
 #endif
 
 /**
@@ -3856,7 +3856,7 @@ REGAL_DECL void REGAL_CALL glClampColorARB(GLenum target, GLenum clamp);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_COLOR_BUFFER_FLOAT
-REGAL_DECL void REGAL_CALL plugin_glClampColorARB(GLenum target, GLenum clamp);
+REGAL_DECL void REGAL_CALL plugin_glClampColorARB(void *_context, GLenum target, GLenum clamp);
 #endif
 
 /**
@@ -3963,8 +3963,8 @@ REGAL_DECL void REGAL_CALL glDispatchComputeIndirect(GLintptr indirect);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_COMPUTE_SHADER
-REGAL_DECL void REGAL_CALL plugin_glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
-REGAL_DECL void REGAL_CALL plugin_glDispatchComputeIndirect(GLintptr indirect);
+REGAL_DECL void REGAL_CALL plugin_glDispatchCompute(void *_context, GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+REGAL_DECL void REGAL_CALL plugin_glDispatchComputeIndirect(void *_context, GLintptr indirect);
 #endif
 
 /**
@@ -4015,7 +4015,7 @@ REGAL_DECL void REGAL_CALL glDispatchComputeGroupSizeARB(GLuint num_groups_x, GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_COMPUTE_VARIABLE_GROUP_SIZE
-REGAL_DECL void REGAL_CALL plugin_glDispatchComputeGroupSizeARB(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
+REGAL_DECL void REGAL_CALL plugin_glDispatchComputeGroupSizeARB(void *_context, GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
 #endif
 
 /**
@@ -4064,7 +4064,7 @@ REGAL_DECL void REGAL_CALL glCopyBufferSubData(GLenum readtarget, GLenum writeta
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_COPY_BUFFER
-REGAL_DECL void REGAL_CALL plugin_glCopyBufferSubData(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glCopyBufferSubData(void *_context, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
 #endif
 
 /**
@@ -4108,7 +4108,7 @@ REGAL_DECL void REGAL_CALL glCopyImageSubData(GLuint srcName, GLenum srcTarget, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_COPY_IMAGE
-REGAL_DECL void REGAL_CALL plugin_glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+REGAL_DECL void REGAL_CALL plugin_glCopyImageSubData(void *_context, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
 #endif
 
 /**
@@ -4186,10 +4186,10 @@ REGAL_DECL void REGAL_CALL glDebugMessageInsertARB(GLenum source, GLenum type, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_DEBUG_OUTPUT
-REGAL_DECL GLuint REGAL_CALL plugin_glGetDebugMessageLogARB(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageCallbackARB(GLDEBUGPROCARB callback, const GLvoid *userParam);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageControlARB(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageInsertARB(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+REGAL_DECL GLuint REGAL_CALL plugin_glGetDebugMessageLogARB(void *_context, GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageCallbackARB(void *_context, GLDEBUGPROCARB callback, const GLvoid *userParam);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageControlARB(void *_context, GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageInsertARB(void *_context, GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
 #endif
 
 /**
@@ -4355,7 +4355,7 @@ REGAL_DECL void REGAL_CALL glDrawBuffersARB(GLsizei n, const GLenum *bufs);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_DRAW_BUFFERS
-REGAL_DECL void REGAL_CALL plugin_glDrawBuffersARB(GLsizei n, const GLenum *bufs);
+REGAL_DECL void REGAL_CALL plugin_glDrawBuffersARB(void *_context, GLsizei n, const GLenum *bufs);
 #endif
 
 /**
@@ -4408,10 +4408,10 @@ REGAL_DECL void REGAL_CALL glBlendFunciARB(GLuint buf, GLenum src, GLenum dst);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_DRAW_BUFFERS_BLEND
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateiARB(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationiARB(GLuint buf, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateiARB(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
-REGAL_DECL void REGAL_CALL plugin_glBlendFunciARB(GLuint buf, GLenum src, GLenum dst);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateiARB(void *_context, GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationiARB(void *_context, GLuint buf, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateiARB(void *_context, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendFunciARB(void *_context, GLuint buf, GLenum src, GLenum dst);
 #endif
 
 /**
@@ -4464,10 +4464,10 @@ REGAL_DECL void REGAL_CALL glMultiDrawElementsBaseVertex(GLenum mode, const GLsi
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_DRAW_ELEMENTS_BASE_VERTEX
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedBaseVertex(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex);
-REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementsBaseVertex(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsBaseVertex(GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsBaseVertex(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedBaseVertex(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex);
+REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementsBaseVertex(void *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsBaseVertex(void *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex);
 #endif
 
 /**
@@ -4519,8 +4519,8 @@ REGAL_DECL void REGAL_CALL glDrawElementsIndirect(GLenum mode, GLenum type, cons
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_DRAW_INDIRECT
-REGAL_DECL void REGAL_CALL plugin_glDrawArraysIndirect(GLenum mode, const GLvoid *indirect);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect);
+REGAL_DECL void REGAL_CALL plugin_glDrawArraysIndirect(void *_context, GLenum mode, const GLvoid *indirect);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsIndirect(void *_context, GLenum mode, GLenum type, const GLvoid *indirect);
 #endif
 
 /**
@@ -4567,8 +4567,8 @@ REGAL_DECL void REGAL_CALL glDrawElementsInstancedARB(GLenum mode, GLsizei count
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_DRAW_INSTANCED
-REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedARB(GLenum mode, GLint start, GLsizei count, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedARB(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedARB(void *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedARB(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
 #endif
 
 /**
@@ -4779,10 +4779,10 @@ REGAL_DECL void REGAL_CALL glNamedFramebufferParameteriEXT(GLuint framebuffer, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_FRAMEBUFFER_NO_ATTACHMENTS
-REGAL_DECL void REGAL_CALL plugin_glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferParameteri(void *_context, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glGetFramebufferParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedFramebufferParameterivEXT(void *_context, GLuint framebuffer, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferParameteriEXT(void *_context, GLuint framebuffer, GLenum pname, GLint param);
 #endif
 
 /**
@@ -4959,26 +4959,26 @@ REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisample(GLenum target, GLsiz
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_FRAMEBUFFER_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsFramebuffer(GLuint framebuffer);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsRenderbuffer(GLuint renderbuffer);
-REGAL_DECL GLenum REGAL_CALL plugin_glCheckFramebufferStatus(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glBindFramebuffer(GLenum target, GLuint framebuffer);
-REGAL_DECL void REGAL_CALL plugin_glBindRenderbuffer(GLenum target, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glBlitFramebuffer(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
-REGAL_DECL void REGAL_CALL plugin_glDeleteFramebuffers(GLsizei n, const GLuint *framebuffers);
-REGAL_DECL void REGAL_CALL plugin_glDeleteRenderbuffers(GLsizei n, const GLuint *renderbuffers);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferRenderbuffer(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture1D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture3D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureLayer(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
-REGAL_DECL void REGAL_CALL plugin_glGenFramebuffers(GLsizei n, GLuint *framebuffers);
-REGAL_DECL void REGAL_CALL plugin_glGenRenderbuffers(GLsizei n, GLuint *renderbuffers);
-REGAL_DECL void REGAL_CALL plugin_glGenerateMipmap(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGetFramebufferAttachmentParameteriv(GLenum target, GLenum attachment, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetRenderbufferParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorage(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsFramebuffer(void *_context, GLuint framebuffer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsRenderbuffer(void *_context, GLuint renderbuffer);
+REGAL_DECL GLenum REGAL_CALL plugin_glCheckFramebufferStatus(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glBindFramebuffer(void *_context, GLenum target, GLuint framebuffer);
+REGAL_DECL void REGAL_CALL plugin_glBindRenderbuffer(void *_context, GLenum target, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glBlitFramebuffer(void *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+REGAL_DECL void REGAL_CALL plugin_glDeleteFramebuffers(void *_context, GLsizei n, const GLuint *framebuffers);
+REGAL_DECL void REGAL_CALL plugin_glDeleteRenderbuffers(void *_context, GLsizei n, const GLuint *renderbuffers);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferRenderbuffer(void *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture1D(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2D(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture3D(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureLayer(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+REGAL_DECL void REGAL_CALL plugin_glGenFramebuffers(void *_context, GLsizei n, GLuint *framebuffers);
+REGAL_DECL void REGAL_CALL plugin_glGenRenderbuffers(void *_context, GLsizei n, GLuint *renderbuffers);
+REGAL_DECL void REGAL_CALL plugin_glGenerateMipmap(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGetFramebufferAttachmentParameteriv(void *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetRenderbufferParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorage(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisample(void *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -5084,10 +5084,10 @@ REGAL_DECL void REGAL_CALL glProgramParameteriARB(GLuint program, GLenum pname, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_GEOMETRY_SHADER4
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureARB(GLenum target, GLenum attachment, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureFaceARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureLayerARB(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameteriARB(GLuint program, GLenum pname, GLint value);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureARB(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureFaceARB(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureLayerARB(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameteriARB(void *_context, GLuint program, GLenum pname, GLint value);
 #endif
 
 /**
@@ -5144,9 +5144,9 @@ REGAL_DECL void REGAL_CALL glProgramParameteri(GLuint program, GLenum pname, GLi
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_GET_PROGRAM_BINARY
-REGAL_DECL void REGAL_CALL plugin_glGetProgramBinary(GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary);
-REGAL_DECL void REGAL_CALL plugin_glProgramBinary(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLsizei length);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameteri(GLuint program, GLenum pname, GLint value);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramBinary(void *_context, GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary);
+REGAL_DECL void REGAL_CALL plugin_glProgramBinary(void *_context, GLuint program, GLenum binaryFormat, const GLvoid *binary, GLsizei length);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameteri(void *_context, GLuint program, GLenum pname, GLint value);
 #endif
 
 /**
@@ -5293,24 +5293,24 @@ REGAL_DECL void REGAL_CALL glUniformMatrix4x3dv(GLint location, GLsizei count, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_GPU_SHADER_FP64
-REGAL_DECL void REGAL_CALL plugin_glGetUniformdv(GLuint program, GLint location, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glUniform1d(GLint location, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glUniform1dv(GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2d(GLint location, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glUniform2dv(GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3d(GLint location, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glUniform3dv(GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4d(GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glUniform4dv(GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x2dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x3dv(GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformdv(void *_context, GLuint program, GLint location, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glUniform1d(void *_context, GLint location, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glUniform1dv(void *_context, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2d(void *_context, GLint location, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glUniform2dv(void *_context, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3d(void *_context, GLint location, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glUniform3dv(void *_context, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4d(void *_context, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glUniform4dv(void *_context, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x3dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x4dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x2dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x4dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x2dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x3dv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
 #endif
 
 /**
@@ -5591,38 +5591,38 @@ REGAL_DECL void REGAL_CALL glSeparableFilter2D(GLenum target, GLenum internalfor
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_IMAGING
-REGAL_DECL void REGAL_CALL plugin_glColorSubTable(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glColorTable(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
-REGAL_DECL void REGAL_CALL plugin_glColorTableParameterfv(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glColorTableParameteriv(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter1D(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterf(GLenum target, GLenum pname, GLfloat params);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterfv(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameteri(GLenum target, GLenum pname, GLint params);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameteriv(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glCopyColorSubTable(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyColorTable(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter1D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter2D(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTable(GLenum target, GLenum format, GLenum type, GLvoid *table);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterfv(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetConvolutionFilter(GLenum target, GLenum format, GLenum type, GLvoid *image);
-REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameterfv(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetHistogram(GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
-REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameterfv(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMinmax(GLenum target, GLboolean reset, GLenum format, GLenum types, GLvoid *values);
-REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameterfv(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetSeparableFilter(GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span);
-REGAL_DECL void REGAL_CALL plugin_glHistogram(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
-REGAL_DECL void REGAL_CALL plugin_glMinmax(GLenum target, GLenum internalformat, GLboolean sink);
-REGAL_DECL void REGAL_CALL plugin_glResetHistogram(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glResetMinmax(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glSeparableFilter2D(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column);
+REGAL_DECL void REGAL_CALL plugin_glColorSubTable(void *_context, GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glColorTable(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
+REGAL_DECL void REGAL_CALL plugin_glColorTableParameterfv(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glColorTableParameteriv(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter1D(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter2D(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterf(void *_context, GLenum target, GLenum pname, GLfloat params);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterfv(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameteri(void *_context, GLenum target, GLenum pname, GLint params);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameteriv(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glCopyColorSubTable(void *_context, GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyColorTable(void *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter1D(void *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter2D(void *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTable(void *_context, GLenum target, GLenum format, GLenum type, GLvoid *table);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterfv(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetConvolutionFilter(void *_context, GLenum target, GLenum format, GLenum type, GLvoid *image);
+REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameterfv(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetHistogram(void *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
+REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameterfv(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMinmax(void *_context, GLenum target, GLboolean reset, GLenum format, GLenum types, GLvoid *values);
+REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameterfv(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetSeparableFilter(void *_context, GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span);
+REGAL_DECL void REGAL_CALL plugin_glHistogram(void *_context, GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
+REGAL_DECL void REGAL_CALL plugin_glMinmax(void *_context, GLenum target, GLenum internalformat, GLboolean sink);
+REGAL_DECL void REGAL_CALL plugin_glResetHistogram(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glResetMinmax(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glSeparableFilter2D(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column);
 #endif
 
 /**
@@ -5674,8 +5674,8 @@ REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirectCountARB(GLenum mode, GLen
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_INDIRECT_PARAMETERS
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysIndirectCountARB(GLenum mode, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysIndirectCountARB(void *_context, GLenum mode, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsIndirectCountARB(void *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
 #endif
 
 /**
@@ -5723,7 +5723,7 @@ REGAL_DECL void REGAL_CALL glVertexAttribDivisorARB(GLuint index, GLuint divisor
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_INSTANCED_ARRAYS
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribDivisorARB(GLuint index, GLuint divisor);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribDivisorARB(void *_context, GLuint index, GLuint divisor);
 #endif
 
 /**
@@ -5771,7 +5771,7 @@ REGAL_DECL void REGAL_CALL glGetInternalformativ(GLenum target, GLenum internalf
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_INTERNALFORMAT_QUERY
-REGAL_DECL void REGAL_CALL plugin_glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetInternalformativ(void *_context, GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params);
 #endif
 
 /**
@@ -5917,7 +5917,7 @@ REGAL_DECL void REGAL_CALL glGetInternalformati64v(GLenum target, GLenum interna
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_INTERNALFORMAT_QUERY2
-REGAL_DECL void REGAL_CALL plugin_glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetInternalformati64v(void *_context, GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params);
 #endif
 
 /**
@@ -5976,12 +5976,12 @@ REGAL_DECL void REGAL_CALL glInvalidateTexSubImage(GLuint texture, GLint level, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_INVALIDATE_SUBDATA
-REGAL_DECL void REGAL_CALL plugin_glInvalidateBufferData(GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length);
-REGAL_DECL void REGAL_CALL plugin_glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments);
-REGAL_DECL void REGAL_CALL plugin_glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glInvalidateTexImage(GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+REGAL_DECL void REGAL_CALL plugin_glInvalidateBufferData(void *_context, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glInvalidateBufferSubData(void *_context, GLuint buffer, GLintptr offset, GLsizeiptr length);
+REGAL_DECL void REGAL_CALL plugin_glInvalidateFramebuffer(void *_context, GLenum target, GLsizei numAttachments, const GLenum *attachments);
+REGAL_DECL void REGAL_CALL plugin_glInvalidateSubFramebuffer(void *_context, GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glInvalidateTexImage(void *_context, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glInvalidateTexSubImage(void *_context, GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
 #endif
 
 /**
@@ -6069,8 +6069,8 @@ REGAL_DECL void REGAL_CALL glFlushMappedBufferRange(GLenum target, GLintptr offs
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_MAP_BUFFER_RANGE
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferRange(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
-REGAL_DECL void REGAL_CALL plugin_glFlushMappedBufferRange(GLenum target, GLintptr offset, GLsizeiptr length);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferRange(void *_context, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+REGAL_DECL void REGAL_CALL plugin_glFlushMappedBufferRange(void *_context, GLenum target, GLintptr offset, GLsizeiptr length);
 #endif
 
 /**
@@ -6139,11 +6139,11 @@ REGAL_DECL void REGAL_CALL glMatrixIndexusvARB(GLint size, const GLushort *indic
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_MATRIX_PALETTE
-REGAL_DECL void REGAL_CALL plugin_glCurrentPaletteMatrixARB(GLint index);
-REGAL_DECL void REGAL_CALL plugin_glMatrixIndexPointerARB(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glMatrixIndexubvARB(GLint size, const GLubyte *indices);
-REGAL_DECL void REGAL_CALL plugin_glMatrixIndexuivARB(GLint size, const GLuint *indices);
-REGAL_DECL void REGAL_CALL plugin_glMatrixIndexusvARB(GLint size, const GLushort *indices);
+REGAL_DECL void REGAL_CALL plugin_glCurrentPaletteMatrixARB(void *_context, GLint index);
+REGAL_DECL void REGAL_CALL plugin_glMatrixIndexPointerARB(void *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glMatrixIndexubvARB(void *_context, GLint size, const GLubyte *indices);
+REGAL_DECL void REGAL_CALL plugin_glMatrixIndexuivARB(void *_context, GLint size, const GLuint *indices);
+REGAL_DECL void REGAL_CALL plugin_glMatrixIndexusvARB(void *_context, GLint size, const GLushort *indices);
 #endif
 
 /**
@@ -6202,12 +6202,12 @@ REGAL_DECL void REGAL_CALL glBindVertexBuffers(GLuint first, GLsizei count, cons
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_MULTI_BIND
-REGAL_DECL void REGAL_CALL plugin_glBindBuffersBase(GLenum target, GLuint first, GLsizei count, const GLuint *buffers);
-REGAL_DECL void REGAL_CALL plugin_glBindBuffersRange(GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes);
-REGAL_DECL void REGAL_CALL plugin_glBindImageTextures(GLuint first, GLsizei count, const GLuint *textures);
-REGAL_DECL void REGAL_CALL plugin_glBindSamplers(GLuint first, GLsizei count, const GLuint *samplers);
-REGAL_DECL void REGAL_CALL plugin_glBindTextures(GLuint first, GLsizei count, const GLuint *textures);
-REGAL_DECL void REGAL_CALL plugin_glBindVertexBuffers(GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides);
+REGAL_DECL void REGAL_CALL plugin_glBindBuffersBase(void *_context, GLenum target, GLuint first, GLsizei count, const GLuint *buffers);
+REGAL_DECL void REGAL_CALL plugin_glBindBuffersRange(void *_context, GLenum target, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizeiptr *sizes);
+REGAL_DECL void REGAL_CALL plugin_glBindImageTextures(void *_context, GLuint first, GLsizei count, const GLuint *textures);
+REGAL_DECL void REGAL_CALL plugin_glBindSamplers(void *_context, GLuint first, GLsizei count, const GLuint *samplers);
+REGAL_DECL void REGAL_CALL plugin_glBindTextures(void *_context, GLuint first, GLsizei count, const GLuint *textures);
+REGAL_DECL void REGAL_CALL plugin_glBindVertexBuffers(void *_context, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides);
 #endif
 
 /**
@@ -6254,8 +6254,8 @@ REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirect(GLenum mode, GLenum type,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_MULTI_DRAW_INDIRECT
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysIndirect(void *_context, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsIndirect(void *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
 #endif
 
 /**
@@ -6311,7 +6311,7 @@ REGAL_DECL void REGAL_CALL glSampleCoverageARB(GLclampf value, GLboolean invert)
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glSampleCoverageARB(GLclampf value, GLboolean invert);
+REGAL_DECL void REGAL_CALL plugin_glSampleCoverageARB(void *_context, GLclampf value, GLboolean invert);
 #endif
 
 /**
@@ -6492,40 +6492,40 @@ REGAL_DECL void REGAL_CALL glMultiTexCoord4svARB(GLenum target, const GLshort *v
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_MULTITEXTURE
-REGAL_DECL void REGAL_CALL plugin_glActiveTextureARB(GLenum texture);
-REGAL_DECL void REGAL_CALL plugin_glClientActiveTextureARB(GLenum texture);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1dARB(GLenum target, GLdouble s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1dvARB(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1fARB(GLenum target, GLfloat s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1fvARB(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1iARB(GLenum target, GLint s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1ivARB(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1sARB(GLenum target, GLshort s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1svARB(GLenum target, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2dARB(GLenum target, GLdouble s, GLdouble t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2dvARB(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2fARB(GLenum target, GLfloat s, GLfloat t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2fvARB(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2iARB(GLenum target, GLint s, GLint t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2ivARB(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2sARB(GLenum target, GLshort s, GLshort t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2svARB(GLenum target, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3dvARB(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3fvARB(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3iARB(GLenum target, GLint s, GLint t, GLint r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3ivARB(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3sARB(GLenum target, GLshort s, GLshort t, GLshort r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3svARB(GLenum target, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4dARB(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4dvARB(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4fARB(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4fvARB(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4iARB(GLenum target, GLint s, GLint t, GLint r, GLint q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4ivARB(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4sARB(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4svARB(GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glActiveTextureARB(void *_context, GLenum texture);
+REGAL_DECL void REGAL_CALL plugin_glClientActiveTextureARB(void *_context, GLenum texture);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1dARB(void *_context, GLenum target, GLdouble s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1dvARB(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1fARB(void *_context, GLenum target, GLfloat s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1fvARB(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1iARB(void *_context, GLenum target, GLint s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1ivARB(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1sARB(void *_context, GLenum target, GLshort s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1svARB(void *_context, GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2dARB(void *_context, GLenum target, GLdouble s, GLdouble t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2dvARB(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2fARB(void *_context, GLenum target, GLfloat s, GLfloat t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2fvARB(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2iARB(void *_context, GLenum target, GLint s, GLint t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2ivARB(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2sARB(void *_context, GLenum target, GLshort s, GLshort t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2svARB(void *_context, GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3dARB(void *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3dvARB(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3fARB(void *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3fvARB(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3iARB(void *_context, GLenum target, GLint s, GLint t, GLint r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3ivARB(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3sARB(void *_context, GLenum target, GLshort s, GLshort t, GLshort r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3svARB(void *_context, GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4dARB(void *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4dvARB(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4fARB(void *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4fvARB(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4iARB(void *_context, GLenum target, GLint s, GLint t, GLint r, GLint q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4ivARB(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4sARB(void *_context, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4svARB(void *_context, GLenum target, const GLshort *v);
 #endif
 
 /**
@@ -6598,14 +6598,14 @@ REGAL_DECL void REGAL_CALL glGetQueryivARB(GLenum target, GLenum pname, GLint *p
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_OCCLUSION_QUERY
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsQueryARB(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBeginQueryARB(GLenum target, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteQueriesARB(GLsizei n, const GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glEndQueryARB(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGenQueriesARB(GLsizei n, GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectivARB(GLuint id, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuivARB(GLuint id, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryivARB(GLenum target, GLenum pname, GLint *params);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsQueryARB(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBeginQueryARB(void *_context, GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteQueriesARB(void *_context, GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glEndQueryARB(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGenQueriesARB(void *_context, GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectivARB(void *_context, GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuivARB(void *_context, GLuint id, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryivARB(void *_context, GLenum target, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -6726,8 +6726,8 @@ REGAL_DECL void REGAL_CALL glPointParameterfvARB(GLenum pname, const GLfloat *pa
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_POINT_PARAMETERS
-REGAL_DECL void REGAL_CALL plugin_glPointParameterfARB(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterfvARB(GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterfARB(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterfvARB(void *_context, GLenum pname, const GLfloat *params);
 #endif
 
 /**
@@ -6869,12 +6869,12 @@ REGAL_DECL void REGAL_CALL glGetProgramResourceiv(GLuint program, GLenum program
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_PROGRAM_INTERFACE_QUERY
-REGAL_DECL GLint REGAL_CALL plugin_glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name);
-REGAL_DECL GLint REGAL_CALL plugin_glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name);
-REGAL_DECL GLuint REGAL_CALL plugin_glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params);
+REGAL_DECL GLint REGAL_CALL plugin_glGetProgramResourceLocation(void *_context, GLuint program, GLenum programInterface, const GLchar *name);
+REGAL_DECL GLint REGAL_CALL plugin_glGetProgramResourceLocationIndex(void *_context, GLuint program, GLenum programInterface, const GLchar *name);
+REGAL_DECL GLuint REGAL_CALL plugin_glGetProgramResourceIndex(void *_context, GLuint program, GLenum programInterface, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramInterfaceiv(void *_context, GLuint program, GLenum programInterface, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramResourceName(void *_context, GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramResourceiv(void *_context, GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params);
 #endif
 
 /**
@@ -6925,7 +6925,7 @@ REGAL_DECL void REGAL_CALL glProvokingVertex(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_PROVOKING_VERTEX
-REGAL_DECL void REGAL_CALL plugin_glProvokingVertex(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glProvokingVertex(void *_context, GLenum mode);
 #endif
 
 /**
@@ -7071,26 +7071,26 @@ REGAL_DECL void REGAL_CALL glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLs
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_ROBUSTNESS
-REGAL_DECL GLenum REGAL_CALL plugin_glGetGraphicsResetStatusARB(void);
-REGAL_DECL void REGAL_CALL plugin_glGetnColorTableARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *table);
-REGAL_DECL void REGAL_CALL plugin_glGetnCompressedTexImageARB(GLenum target, GLint lod, GLsizei bufSize, GLvoid *img);
-REGAL_DECL void REGAL_CALL plugin_glGetnConvolutionFilterARB(GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *image);
-REGAL_DECL void REGAL_CALL plugin_glGetnHistogramARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values);
-REGAL_DECL void REGAL_CALL plugin_glGetnMapdvARB(GLenum target, GLenum query, GLsizei bufSize, GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glGetnMapfvARB(GLenum target, GLenum query, GLsizei bufSize, GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glGetnMapivARB(GLenum target, GLenum query, GLsizei bufSize, GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glGetnMinmaxARB(GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values);
-REGAL_DECL void REGAL_CALL plugin_glGetnPixelMapfvARB(GLenum map, GLsizei bufSize, GLfloat *values);
-REGAL_DECL void REGAL_CALL plugin_glGetnPixelMapuivARB(GLenum map, GLsizei bufSize, GLuint *values);
-REGAL_DECL void REGAL_CALL plugin_glGetnPixelMapusvARB(GLenum map, GLsizei bufSize, GLushort *values);
-REGAL_DECL void REGAL_CALL plugin_glGetnPolygonStippleARB(GLsizei bufSize, GLubyte *pattern);
-REGAL_DECL void REGAL_CALL plugin_glGetnSeparableFilterARB(GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, GLvoid *row, GLsizei columnBufSize, GLvoid *column, GLvoid *span);
-REGAL_DECL void REGAL_CALL plugin_glGetnTexImageARB(GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, GLvoid *img);
-REGAL_DECL void REGAL_CALL plugin_glGetnUniformdvARB(GLuint program, GLint location, GLsizei bufSize, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetnUniformfvARB(GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetnUniformivARB(GLuint program, GLint location, GLsizei bufSize, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetnUniformuivARB(GLuint program, GLint location, GLsizei bufSize, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glReadnPixelsARB(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data);
+REGAL_DECL GLenum REGAL_CALL plugin_glGetGraphicsResetStatusARB(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glGetnColorTableARB(void *_context, GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *table);
+REGAL_DECL void REGAL_CALL plugin_glGetnCompressedTexImageARB(void *_context, GLenum target, GLint lod, GLsizei bufSize, GLvoid *img);
+REGAL_DECL void REGAL_CALL plugin_glGetnConvolutionFilterARB(void *_context, GLenum target, GLenum format, GLenum type, GLsizei bufSize, GLvoid *image);
+REGAL_DECL void REGAL_CALL plugin_glGetnHistogramARB(void *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values);
+REGAL_DECL void REGAL_CALL plugin_glGetnMapdvARB(void *_context, GLenum target, GLenum query, GLsizei bufSize, GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glGetnMapfvARB(void *_context, GLenum target, GLenum query, GLsizei bufSize, GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glGetnMapivARB(void *_context, GLenum target, GLenum query, GLsizei bufSize, GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glGetnMinmaxARB(void *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLsizei bufSize, GLvoid *values);
+REGAL_DECL void REGAL_CALL plugin_glGetnPixelMapfvARB(void *_context, GLenum map, GLsizei bufSize, GLfloat *values);
+REGAL_DECL void REGAL_CALL plugin_glGetnPixelMapuivARB(void *_context, GLenum map, GLsizei bufSize, GLuint *values);
+REGAL_DECL void REGAL_CALL plugin_glGetnPixelMapusvARB(void *_context, GLenum map, GLsizei bufSize, GLushort *values);
+REGAL_DECL void REGAL_CALL plugin_glGetnPolygonStippleARB(void *_context, GLsizei bufSize, GLubyte *pattern);
+REGAL_DECL void REGAL_CALL plugin_glGetnSeparableFilterARB(void *_context, GLenum target, GLenum format, GLenum type, GLsizei rowBufSize, GLvoid *row, GLsizei columnBufSize, GLvoid *column, GLvoid *span);
+REGAL_DECL void REGAL_CALL plugin_glGetnTexImageARB(void *_context, GLenum target, GLint level, GLenum format, GLenum type, GLsizei bufSize, GLvoid *img);
+REGAL_DECL void REGAL_CALL plugin_glGetnUniformdvARB(void *_context, GLuint program, GLint location, GLsizei bufSize, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetnUniformfvARB(void *_context, GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetnUniformivARB(void *_context, GLuint program, GLint location, GLsizei bufSize, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetnUniformuivARB(void *_context, GLuint program, GLint location, GLsizei bufSize, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glReadnPixelsARB(void *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data);
 #endif
 
 /**
@@ -7142,8 +7142,8 @@ REGAL_DECL void REGAL_CALL glMinSampleShadingARB(GLclampf value);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SAMPLE_SHADING
-REGAL_DECL void REGAL_CALL plugin_glMinSampleShading(GLclampf value);
-REGAL_DECL void REGAL_CALL plugin_glMinSampleShadingARB(GLclampf value);
+REGAL_DECL void REGAL_CALL plugin_glMinSampleShading(void *_context, GLclampf value);
+REGAL_DECL void REGAL_CALL plugin_glMinSampleShadingARB(void *_context, GLclampf value);
 #endif
 
 /**
@@ -7230,20 +7230,20 @@ REGAL_DECL void REGAL_CALL glSamplerParameteriv(GLuint sampler, GLenum pname, co
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SAMPLER_OBJECTS
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsSampler(GLuint sampler);
-REGAL_DECL void REGAL_CALL plugin_glBindSampler(GLuint unit, GLuint sampler);
-REGAL_DECL void REGAL_CALL plugin_glDeleteSamplers(GLsizei count, const GLuint *samplers);
-REGAL_DECL void REGAL_CALL plugin_glGenSamplers(GLsizei count, GLuint *samplers);
-REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameterIiv(GLuint sampler, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameterIuiv(GLuint sampler, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameterfv(GLuint sampler, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameteriv(GLuint sampler, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glSamplerParameterIiv(GLuint sampler, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glSamplerParameterIuiv(GLuint sampler, GLenum pname, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glSamplerParameterf(GLuint sampler, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glSamplerParameterfv(GLuint sampler, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glSamplerParameteri(GLuint sampler, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glSamplerParameteriv(GLuint sampler, GLenum pname, const GLint *params);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsSampler(void *_context, GLuint sampler);
+REGAL_DECL void REGAL_CALL plugin_glBindSampler(void *_context, GLuint unit, GLuint sampler);
+REGAL_DECL void REGAL_CALL plugin_glDeleteSamplers(void *_context, GLsizei count, const GLuint *samplers);
+REGAL_DECL void REGAL_CALL plugin_glGenSamplers(void *_context, GLsizei count, GLuint *samplers);
+REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameterIiv(void *_context, GLuint sampler, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameterIuiv(void *_context, GLuint sampler, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameterfv(void *_context, GLuint sampler, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetSamplerParameteriv(void *_context, GLuint sampler, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glSamplerParameterIiv(void *_context, GLuint sampler, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glSamplerParameterIuiv(void *_context, GLuint sampler, GLenum pname, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glSamplerParameterf(void *_context, GLuint sampler, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glSamplerParameterfv(void *_context, GLuint sampler, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glSamplerParameteri(void *_context, GLuint sampler, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glSamplerParameteriv(void *_context, GLuint sampler, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -7508,66 +7508,66 @@ REGAL_DECL void REGAL_CALL glValidateProgramPipeline(GLuint pipeline);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SEPARATE_SHADER_OBJECTS
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgramPipeline(GLuint pipeline);
-REGAL_DECL GLuint REGAL_CALL plugin_glCreateShaderProgramv(GLenum type, GLsizei count, const GLchar * const *strings);
-REGAL_DECL void REGAL_CALL plugin_glActiveShaderProgram(GLuint pipeline, GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glBindProgramPipeline(GLuint pipeline);
-REGAL_DECL void REGAL_CALL plugin_glDeleteProgramPipelines(GLsizei n, const GLuint *pipelines);
-REGAL_DECL void REGAL_CALL plugin_glGenProgramPipelines(GLsizei n, GLuint *pipelines);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramPipelineInfoLog(GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramPipelineiv(GLuint pipeline, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1d(GLuint program, GLint location, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1dv(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1f(GLuint program, GLint location, GLfloat x);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1fv(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1i(GLuint program, GLint location, GLint x);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1iv(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ui(GLuint program, GLint location, GLuint v0);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1uiv(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2d(GLuint program, GLint location, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2dv(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2f(GLuint program, GLint location, GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2fv(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2i(GLuint program, GLint location, GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2iv(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ui(GLuint program, GLint location, GLuint x, GLuint y);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2uiv(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3d(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3dv(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3f(GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3fv(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3i(GLuint program, GLint location, GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3iv(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ui(GLuint program, GLint location, GLuint x, GLuint y, GLuint z);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3uiv(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4d(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4dv(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4f(GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4fv(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4i(GLuint program, GLint location, GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4iv(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ui(GLuint program, GLint location, GLuint x, GLuint y, GLuint z, GLuint w);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4uiv(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3dv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3fv(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUseProgramStages(GLuint pipeline, GLbitfield stages, GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glValidateProgramPipeline(GLuint pipeline);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgramPipeline(void *_context, GLuint pipeline);
+REGAL_DECL GLuint REGAL_CALL plugin_glCreateShaderProgramv(void *_context, GLenum type, GLsizei count, const GLchar * const *strings);
+REGAL_DECL void REGAL_CALL plugin_glActiveShaderProgram(void *_context, GLuint pipeline, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glBindProgramPipeline(void *_context, GLuint pipeline);
+REGAL_DECL void REGAL_CALL plugin_glDeleteProgramPipelines(void *_context, GLsizei n, const GLuint *pipelines);
+REGAL_DECL void REGAL_CALL plugin_glGenProgramPipelines(void *_context, GLsizei n, GLuint *pipelines);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramPipelineInfoLog(void *_context, GLuint pipeline, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramPipelineiv(void *_context, GLuint pipeline, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1d(void *_context, GLuint program, GLint location, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1dv(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1f(void *_context, GLuint program, GLint location, GLfloat x);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1fv(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1i(void *_context, GLuint program, GLint location, GLint x);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1iv(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ui(void *_context, GLuint program, GLint location, GLuint v0);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1uiv(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2d(void *_context, GLuint program, GLint location, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2dv(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2f(void *_context, GLuint program, GLint location, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2fv(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2i(void *_context, GLuint program, GLint location, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2iv(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ui(void *_context, GLuint program, GLint location, GLuint x, GLuint y);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2uiv(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3d(void *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3dv(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3f(void *_context, GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3fv(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3i(void *_context, GLuint program, GLint location, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3iv(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ui(void *_context, GLuint program, GLint location, GLuint x, GLuint y, GLuint z);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3uiv(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4d(void *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4dv(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4f(void *_context, GLuint program, GLint location, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4fv(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4i(void *_context, GLuint program, GLint location, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4iv(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ui(void *_context, GLuint program, GLint location, GLuint x, GLuint y, GLuint z, GLuint w);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4uiv(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3dv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3fv(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUseProgramStages(void *_context, GLuint pipeline, GLbitfield stages, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glValidateProgramPipeline(void *_context, GLuint pipeline);
 #endif
 
 /**
@@ -7643,7 +7643,7 @@ REGAL_DECL void REGAL_CALL glGetActiveAtomicCounterBufferiv(GLuint program, GLui
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SHADER_ATOMIC_COUNTERS
-REGAL_DECL void REGAL_CALL plugin_glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveAtomicCounterBufferiv(void *_context, GLuint program, GLuint bufferIndex, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -7757,8 +7757,8 @@ REGAL_DECL void REGAL_CALL glMemoryBarrier(GLbitfield barriers);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SHADER_IMAGE_LOAD_STORE
-REGAL_DECL void REGAL_CALL plugin_glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
-REGAL_DECL void REGAL_CALL plugin_glMemoryBarrier(GLbitfield barriers);
+REGAL_DECL void REGAL_CALL plugin_glBindImageTexture(void *_context, GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
+REGAL_DECL void REGAL_CALL plugin_glMemoryBarrier(void *_context, GLbitfield barriers);
 #endif
 
 /**
@@ -7953,45 +7953,45 @@ REGAL_DECL void REGAL_CALL glValidateProgramARB(GLhandleARB programObj);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SHADER_OBJECTS
-REGAL_DECL GLhandleARB REGAL_CALL plugin_glCreateProgramObjectARB(void);
-REGAL_DECL GLhandleARB REGAL_CALL plugin_glCreateShaderObjectARB(GLenum shaderType);
-REGAL_DECL GLhandleARB REGAL_CALL plugin_glGetHandleARB(GLenum pname);
-REGAL_DECL GLint REGAL_CALL plugin_glGetUniformLocationARB(GLhandleARB programObj, const GLcharARB *name);
-REGAL_DECL void REGAL_CALL plugin_glAttachObjectARB(GLhandleARB containerObj, GLhandleARB obj);
-REGAL_DECL void REGAL_CALL plugin_glCompileShaderARB(GLhandleARB shaderObj);
-REGAL_DECL void REGAL_CALL plugin_glDeleteObjectARB(GLhandleARB obj);
-REGAL_DECL void REGAL_CALL plugin_glDetachObjectARB(GLhandleARB containerObj, GLhandleARB attachedObj);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
-REGAL_DECL void REGAL_CALL plugin_glGetAttachedObjectsARB(GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
-REGAL_DECL void REGAL_CALL plugin_glGetInfoLogARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
-REGAL_DECL void REGAL_CALL plugin_glGetObjectParameterfvARB(GLhandleARB obj, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetObjectParameterivARB(GLhandleARB obj, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetShaderSourceARB(GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *source);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformfvARB(GLhandleARB programObj, GLint location, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformivARB(GLhandleARB programObj, GLint location, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glLinkProgramARB(GLhandleARB programObj);
-REGAL_DECL void REGAL_CALL plugin_glShaderSourceARB(GLhandleARB shaderObj, GLsizei count, const GLcharARB ** const string, const GLint *length);
-REGAL_DECL void REGAL_CALL plugin_glUniform1fARB(GLint location, GLfloat v0);
-REGAL_DECL void REGAL_CALL plugin_glUniform1fvARB(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform1iARB(GLint location, GLint v0);
-REGAL_DECL void REGAL_CALL plugin_glUniform1ivARB(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2fARB(GLint location, GLfloat v0, GLfloat v1);
-REGAL_DECL void REGAL_CALL plugin_glUniform2fvARB(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2iARB(GLint location, GLint v0, GLint v1);
-REGAL_DECL void REGAL_CALL plugin_glUniform2ivARB(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
-REGAL_DECL void REGAL_CALL plugin_glUniform3fvARB(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3iARB(GLint location, GLint v0, GLint v1, GLint v2);
-REGAL_DECL void REGAL_CALL plugin_glUniform3ivARB(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4fARB(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-REGAL_DECL void REGAL_CALL plugin_glUniform4fvARB(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4iARB(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
-REGAL_DECL void REGAL_CALL plugin_glUniform4ivARB(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4fvARB(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUseProgramObjectARB(GLhandleARB programObj);
-REGAL_DECL void REGAL_CALL plugin_glValidateProgramARB(GLhandleARB programObj);
+REGAL_DECL GLhandleARB REGAL_CALL plugin_glCreateProgramObjectARB(void *_context);
+REGAL_DECL GLhandleARB REGAL_CALL plugin_glCreateShaderObjectARB(void *_context, GLenum shaderType);
+REGAL_DECL GLhandleARB REGAL_CALL plugin_glGetHandleARB(void *_context, GLenum pname);
+REGAL_DECL GLint REGAL_CALL plugin_glGetUniformLocationARB(void *_context, GLhandleARB programObj, const GLcharARB *name);
+REGAL_DECL void REGAL_CALL plugin_glAttachObjectARB(void *_context, GLhandleARB containerObj, GLhandleARB obj);
+REGAL_DECL void REGAL_CALL plugin_glCompileShaderARB(void *_context, GLhandleARB shaderObj);
+REGAL_DECL void REGAL_CALL plugin_glDeleteObjectARB(void *_context, GLhandleARB obj);
+REGAL_DECL void REGAL_CALL plugin_glDetachObjectARB(void *_context, GLhandleARB containerObj, GLhandleARB attachedObj);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformARB(void *_context, GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
+REGAL_DECL void REGAL_CALL plugin_glGetAttachedObjectsARB(void *_context, GLhandleARB containerObj, GLsizei maxCount, GLsizei *count, GLhandleARB *obj);
+REGAL_DECL void REGAL_CALL plugin_glGetInfoLogARB(void *_context, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectParameterfvARB(void *_context, GLhandleARB obj, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectParameterivARB(void *_context, GLhandleARB obj, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetShaderSourceARB(void *_context, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *source);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformfvARB(void *_context, GLhandleARB programObj, GLint location, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformivARB(void *_context, GLhandleARB programObj, GLint location, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glLinkProgramARB(void *_context, GLhandleARB programObj);
+REGAL_DECL void REGAL_CALL plugin_glShaderSourceARB(void *_context, GLhandleARB shaderObj, GLsizei count, const GLcharARB ** const string, const GLint *length);
+REGAL_DECL void REGAL_CALL plugin_glUniform1fARB(void *_context, GLint location, GLfloat v0);
+REGAL_DECL void REGAL_CALL plugin_glUniform1fvARB(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform1iARB(void *_context, GLint location, GLint v0);
+REGAL_DECL void REGAL_CALL plugin_glUniform1ivARB(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2fARB(void *_context, GLint location, GLfloat v0, GLfloat v1);
+REGAL_DECL void REGAL_CALL plugin_glUniform2fvARB(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2iARB(void *_context, GLint location, GLint v0, GLint v1);
+REGAL_DECL void REGAL_CALL plugin_glUniform2ivARB(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3fARB(void *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+REGAL_DECL void REGAL_CALL plugin_glUniform3fvARB(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3iARB(void *_context, GLint location, GLint v0, GLint v1, GLint v2);
+REGAL_DECL void REGAL_CALL plugin_glUniform3ivARB(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4fARB(void *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+REGAL_DECL void REGAL_CALL plugin_glUniform4fvARB(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4iARB(void *_context, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+REGAL_DECL void REGAL_CALL plugin_glUniform4ivARB(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2fvARB(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3fvARB(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4fvARB(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUseProgramObjectARB(void *_context, GLhandleARB programObj);
+REGAL_DECL void REGAL_CALL plugin_glValidateProgramARB(void *_context, GLhandleARB programObj);
 #endif
 
 /**
@@ -8054,7 +8054,7 @@ REGAL_DECL void REGAL_CALL glShaderStorageBlockBinding(GLuint program, GLuint st
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SHADER_STORAGE_BUFFER_OBJECT
-REGAL_DECL void REGAL_CALL plugin_glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+REGAL_DECL void REGAL_CALL plugin_glShaderStorageBlockBinding(void *_context, GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
 #endif
 
 /**
@@ -8137,16 +8137,16 @@ REGAL_DECL void REGAL_CALL glUniformSubroutinesuiv(GLenum shaderType, GLsizei co
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SHADER_SUBROUTINE
-REGAL_DECL GLint REGAL_CALL plugin_glGetSubroutineUniformLocation(GLuint program, GLenum shaderType, const GLchar *name);
-REGAL_DECL GLuint REGAL_CALL plugin_glGetSubroutineIndex(GLuint program, GLenum shaderType, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveSubroutineName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveSubroutineUniformName(GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveSubroutineUniformiv(GLuint program, GLenum shaderType, GLuint index, GLenum pname, GLint *values);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramStageiv(GLuint program, GLenum shaderType, GLenum pname, GLint *values);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramSubroutineParameteruivNV(GLenum target, GLuint index, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformSubroutineuiv(GLenum shaderType, GLint location, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramSubroutineParametersuivNV(GLenum target, GLsizei count, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glUniformSubroutinesuiv(GLenum shaderType, GLsizei count, const GLuint *indices);
+REGAL_DECL GLint REGAL_CALL plugin_glGetSubroutineUniformLocation(void *_context, GLuint program, GLenum shaderType, const GLchar *name);
+REGAL_DECL GLuint REGAL_CALL plugin_glGetSubroutineIndex(void *_context, GLuint program, GLenum shaderType, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveSubroutineName(void *_context, GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveSubroutineUniformName(void *_context, GLuint program, GLenum shaderType, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveSubroutineUniformiv(void *_context, GLuint program, GLenum shaderType, GLuint index, GLenum pname, GLint *values);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramStageiv(void *_context, GLuint program, GLenum shaderType, GLenum pname, GLint *values);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramSubroutineParameteruivNV(void *_context, GLenum target, GLuint index, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformSubroutineuiv(void *_context, GLenum shaderType, GLint location, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramSubroutineParametersuivNV(void *_context, GLenum target, GLsizei count, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glUniformSubroutinesuiv(void *_context, GLenum shaderType, GLsizei count, const GLuint *indices);
 #endif
 
 /**
@@ -8243,12 +8243,12 @@ REGAL_DECL void REGAL_CALL glNamedStringARB(GLenum type, GLint namelen, const GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SHADING_LANGUAGE_INCLUDE
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsNamedStringARB(GLint namelen, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glCompileShaderIncludeARB(GLuint shader, GLsizei count, const GLchar **path, const GLint *length);
-REGAL_DECL void REGAL_CALL plugin_glDeleteNamedStringARB(GLint namelen, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedStringARB(GLint namelen, const GLchar *name, GLsizei bufSize, GLint *stringlen, GLchar *string);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedStringivARB(GLint namelen, const GLchar *name, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedStringARB(GLenum type, GLint namelen, const GLchar *name, GLint stringlen, const GLchar *string);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsNamedStringARB(void *_context, GLint namelen, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glCompileShaderIncludeARB(void *_context, GLuint shader, GLsizei count, const GLchar **path, const GLint *length);
+REGAL_DECL void REGAL_CALL plugin_glDeleteNamedStringARB(void *_context, GLint namelen, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedStringARB(void *_context, GLint namelen, const GLchar *name, GLsizei bufSize, GLint *stringlen, GLchar *string);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedStringivARB(void *_context, GLint namelen, const GLchar *name, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedStringARB(void *_context, GLenum type, GLint namelen, const GLchar *name, GLint stringlen, const GLchar *string);
 #endif
 
 /**
@@ -8375,8 +8375,8 @@ REGAL_DECL void REGAL_CALL glTexturePageCommitmentEXT(GLuint texture, GLenum tar
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SPARSE_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
-REGAL_DECL void REGAL_CALL plugin_glTexturePageCommitmentEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+REGAL_DECL void REGAL_CALL plugin_glTexPageCommitmentARB(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+REGAL_DECL void REGAL_CALL plugin_glTexturePageCommitmentEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
 #endif
 
 /**
@@ -8488,13 +8488,13 @@ REGAL_DECL void REGAL_CALL glWaitSync(GLsync sync, GLbitfield flags, GLuint64 ti
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_SYNC
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsSync(GLsync sync);
-REGAL_DECL GLenum REGAL_CALL plugin_glClientWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
-REGAL_DECL GLsync REGAL_CALL plugin_glFenceSync(GLenum condition, GLbitfield flags);
-REGAL_DECL void REGAL_CALL plugin_glDeleteSync(GLsync sync);
-REGAL_DECL void REGAL_CALL plugin_glGetInteger64v(GLenum pname, GLint64 *params);
-REGAL_DECL void REGAL_CALL plugin_glGetSynciv(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
-REGAL_DECL void REGAL_CALL plugin_glWaitSync(GLsync sync, GLbitfield flags, GLuint64 timeout);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsSync(void *_context, GLsync sync);
+REGAL_DECL GLenum REGAL_CALL plugin_glClientWaitSync(void *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
+REGAL_DECL GLsync REGAL_CALL plugin_glFenceSync(void *_context, GLenum condition, GLbitfield flags);
+REGAL_DECL void REGAL_CALL plugin_glDeleteSync(void *_context, GLsync sync);
+REGAL_DECL void REGAL_CALL plugin_glGetInteger64v(void *_context, GLenum pname, GLint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetSynciv(void *_context, GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+REGAL_DECL void REGAL_CALL plugin_glWaitSync(void *_context, GLsync sync, GLbitfield flags, GLuint64 timeout);
 #endif
 
 /**
@@ -8576,8 +8576,8 @@ REGAL_DECL void REGAL_CALL glPatchParameteri(GLenum pname, GLint value);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TESSELLATION_SHADER
-REGAL_DECL void REGAL_CALL plugin_glPatchParameterfv(GLenum pname, const GLfloat *values);
-REGAL_DECL void REGAL_CALL plugin_glPatchParameteri(GLenum pname, GLint value);
+REGAL_DECL void REGAL_CALL plugin_glPatchParameterfv(void *_context, GLenum pname, const GLfloat *values);
+REGAL_DECL void REGAL_CALL plugin_glPatchParameteri(void *_context, GLenum pname, GLint value);
 #endif
 
 /**
@@ -8661,7 +8661,7 @@ REGAL_DECL void REGAL_CALL glTexBufferARB(GLenum target, GLenum internalformat, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TEXTURE_BUFFER_OBJECT
-REGAL_DECL void REGAL_CALL plugin_glTexBufferARB(GLenum target, GLenum internalformat, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glTexBufferARB(void *_context, GLenum target, GLenum internalformat, GLuint buffer);
 #endif
 
 /**
@@ -8714,8 +8714,8 @@ REGAL_DECL void REGAL_CALL glTextureBufferRangeEXT(GLuint texture, GLenum target
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TEXTURE_BUFFER_RANGE
-REGAL_DECL void REGAL_CALL plugin_glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
-REGAL_DECL void REGAL_CALL plugin_glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glTexBufferRange(void *_context, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glTextureBufferRangeEXT(void *_context, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
 #endif
 
 /**
@@ -8791,13 +8791,13 @@ REGAL_DECL void REGAL_CALL glGetCompressedTexImageARB(GLenum target, GLint lod, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TEXTURE_COMPRESSION
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage1DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage2DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage3DARB(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage1DARB(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage2DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage3DARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glGetCompressedTexImageARB(GLenum target, GLint lod, GLvoid *img);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage1DARB(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage2DARB(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage3DARB(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage1DARB(void *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage2DARB(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage3DARB(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glGetCompressedTexImageARB(void *_context, GLenum target, GLint lod, GLvoid *img);
 #endif
 
 /**
@@ -9260,10 +9260,10 @@ REGAL_DECL void REGAL_CALL glTexImage3DMultisample(GLenum target, GLsizei sample
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TEXTURE_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glGetMultisamplefv(GLenum pname, GLuint index, GLfloat *val);
-REGAL_DECL void REGAL_CALL plugin_glSampleMaski(GLuint index, GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glTexImage2DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
-REGAL_DECL void REGAL_CALL plugin_glTexImage3DMultisample(GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+REGAL_DECL void REGAL_CALL plugin_glGetMultisamplefv(void *_context, GLenum pname, GLuint index, GLfloat *val);
+REGAL_DECL void REGAL_CALL plugin_glSampleMaski(void *_context, GLuint index, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glTexImage2DMultisample(void *_context, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+REGAL_DECL void REGAL_CALL plugin_glTexImage3DMultisample(void *_context, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 #endif
 
 /**
@@ -9448,12 +9448,12 @@ REGAL_DECL void REGAL_CALL glTextureStorage3DEXT(GLuint texture, GLenum target, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TEXTURE_STORAGE
-REGAL_DECL void REGAL_CALL plugin_glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
-REGAL_DECL void REGAL_CALL plugin_glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage1D(void *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage2D(void *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage3D(void *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+REGAL_DECL void REGAL_CALL plugin_glTextureStorage1DEXT(void *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glTextureStorage2DEXT(void *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glTextureStorage3DEXT(void *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 #endif
 
 /**
@@ -9506,10 +9506,10 @@ REGAL_DECL void REGAL_CALL glTextureStorage3DMultisampleEXT(GLuint texture, GLen
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TEXTURE_STORAGE_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
-REGAL_DECL void REGAL_CALL plugin_glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
-REGAL_DECL void REGAL_CALL plugin_glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
-REGAL_DECL void REGAL_CALL plugin_glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage2DMultisample(void *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage3DMultisample(void *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+REGAL_DECL void REGAL_CALL plugin_glTextureStorage2DMultisampleEXT(void *_context, GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+REGAL_DECL void REGAL_CALL plugin_glTextureStorage3DMultisampleEXT(void *_context, GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
 #endif
 
 /**
@@ -9597,7 +9597,7 @@ REGAL_DECL void REGAL_CALL glTextureView(GLuint texture, GLenum target, GLuint o
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TEXTURE_VIEW
-REGAL_DECL void REGAL_CALL plugin_glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+REGAL_DECL void REGAL_CALL plugin_glTextureView(void *_context, GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
 #endif
 
 /**
@@ -9652,9 +9652,9 @@ REGAL_DECL void REGAL_CALL glQueryCounter(GLuint id, GLenum target);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TIMER_QUERY
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjecti64v(GLuint id, GLenum pname, GLint64 *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectui64v(GLuint id, GLenum pname, GLuint64 *params);
-REGAL_DECL void REGAL_CALL plugin_glQueryCounter(GLuint id, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjecti64v(void *_context, GLuint id, GLenum pname, GLint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectui64v(void *_context, GLuint id, GLenum pname, GLuint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glQueryCounter(void *_context, GLuint id, GLenum target);
 #endif
 
 /**
@@ -9723,13 +9723,13 @@ REGAL_DECL void REGAL_CALL glResumeTransformFeedback(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TRANSFORM_FEEDBACK2
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsTransformFeedback(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBindTransformFeedback(GLenum target, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteTransformFeedbacks(GLsizei n, const GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedback(GLenum mode, GLuint name);
-REGAL_DECL void REGAL_CALL plugin_glGenTransformFeedbacks(GLsizei n, GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glPauseTransformFeedback(void);
-REGAL_DECL void REGAL_CALL plugin_glResumeTransformFeedback(void);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsTransformFeedback(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBindTransformFeedback(void *_context, GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteTransformFeedbacks(void *_context, GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedback(void *_context, GLenum mode, GLuint name);
+REGAL_DECL void REGAL_CALL plugin_glGenTransformFeedbacks(void *_context, GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glPauseTransformFeedback(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glResumeTransformFeedback(void *_context);
 #endif
 
 /**
@@ -9786,10 +9786,10 @@ REGAL_DECL void REGAL_CALL glGetQueryIndexediv(GLenum target, GLuint index, GLen
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TRANSFORM_FEEDBACK3
-REGAL_DECL void REGAL_CALL plugin_glBeginQueryIndexed(GLenum target, GLuint index, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackStream(GLenum mode, GLuint id, GLuint stream);
-REGAL_DECL void REGAL_CALL plugin_glEndQueryIndexed(GLenum target, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryIndexediv(GLenum target, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glBeginQueryIndexed(void *_context, GLenum target, GLuint index, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackStream(void *_context, GLenum mode, GLuint id, GLuint stream);
+REGAL_DECL void REGAL_CALL plugin_glEndQueryIndexed(void *_context, GLenum target, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryIndexediv(void *_context, GLenum target, GLuint index, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -9836,8 +9836,8 @@ REGAL_DECL void REGAL_CALL glDrawTransformFeedbackStreamInstanced(GLenum mode, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TRANSFORM_FEEDBACK_INSTANCED
-REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackInstanced(void *_context, GLenum mode, GLuint id, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackStreamInstanced(void *_context, GLenum mode, GLuint id, GLuint stream, GLsizei primcount);
 #endif
 
 /**
@@ -9897,10 +9897,10 @@ REGAL_DECL void REGAL_CALL glMultTransposeMatrixfARB(const GLfloat *m);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_TRANSPOSE_MATRIX
-REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixdARB(const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixfARB(const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixdARB(const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixfARB(const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixdARB(void *_context, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixfARB(void *_context, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixdARB(void *_context, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixfARB(void *_context, const GLfloat *m);
 #endif
 
 /**
@@ -10007,16 +10007,16 @@ REGAL_DECL void REGAL_CALL glUniformBlockBinding(GLuint program, GLuint uniformB
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_UNIFORM_BUFFER_OBJECT
-REGAL_DECL GLuint REGAL_CALL plugin_glGetUniformBlockIndex(GLuint program, const GLchar *uniformBlockName);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferBase(GLenum target, GLuint index, GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferRange(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformBlockName(GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformBlockiv(GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformName(GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformsiv(GLuint program, GLsizei uniformCount, const GLuint *uniformIndices, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetIntegeri_v(GLenum target, GLuint index, GLint *data);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformIndices(GLuint program, GLsizei uniformCount, const GLchar * const *uniformNames, GLuint *uniformIndices);
-REGAL_DECL void REGAL_CALL plugin_glUniformBlockBinding(GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
+REGAL_DECL GLuint REGAL_CALL plugin_glGetUniformBlockIndex(void *_context, GLuint program, const GLchar *uniformBlockName);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferBase(void *_context, GLenum target, GLuint index, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferRange(void *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformBlockName(void *_context, GLuint program, GLuint uniformBlockIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformBlockName);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformBlockiv(void *_context, GLuint program, GLuint uniformBlockIndex, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformName(void *_context, GLuint program, GLuint uniformIndex, GLsizei bufSize, GLsizei *length, GLchar *uniformName);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveUniformsiv(void *_context, GLuint program, GLsizei uniformCount, const GLuint *uniformIndices, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetIntegeri_v(void *_context, GLenum target, GLuint index, GLint *data);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformIndices(void *_context, GLuint program, GLsizei uniformCount, const GLchar * const *uniformNames, GLuint *uniformIndices);
+REGAL_DECL void REGAL_CALL plugin_glUniformBlockBinding(void *_context, GLuint program, GLuint uniformBlockIndex, GLuint uniformBlockBinding);
 #endif
 
 /**
@@ -10073,10 +10073,10 @@ REGAL_DECL void REGAL_CALL glGenVertexArrays(GLsizei n, GLuint *arrays);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_ARRAY_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexArray(GLuint array);
-REGAL_DECL void REGAL_CALL plugin_glBindVertexArray(GLuint array);
-REGAL_DECL void REGAL_CALL plugin_glDeleteVertexArrays(GLsizei n, const GLuint *arrays);
-REGAL_DECL void REGAL_CALL plugin_glGenVertexArrays(GLsizei n, GLuint *arrays);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexArray(void *_context, GLuint array);
+REGAL_DECL void REGAL_CALL plugin_glBindVertexArray(void *_context, GLuint array);
+REGAL_DECL void REGAL_CALL plugin_glDeleteVertexArrays(void *_context, GLsizei n, const GLuint *arrays);
+REGAL_DECL void REGAL_CALL plugin_glGenVertexArrays(void *_context, GLsizei n, GLuint *arrays);
 #endif
 
 /**
@@ -10147,16 +10147,16 @@ REGAL_DECL void REGAL_CALL glVertexAttribLPointer(GLuint index, GLint size, GLen
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_ATTRIB_64BIT
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLdv(GLuint index, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1d(GLuint index, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2d(GLuint index, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3d(GLuint index, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribLPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLdv(void *_context, GLuint index, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1d(void *_context, GLuint index, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2d(void *_context, GLuint index, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3d(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4d(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribLPointer(void *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -10243,18 +10243,18 @@ REGAL_DECL void REGAL_CALL glVertexBindingDivisor(GLuint bindingindex, GLuint di
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_ATTRIB_BINDING
-REGAL_DECL void REGAL_CALL plugin_glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
-REGAL_DECL void REGAL_CALL plugin_glVertexBindingDivisor(GLuint bindingindex, GLuint divisor);
+REGAL_DECL void REGAL_CALL plugin_glBindVertexBuffer(void *_context, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayBindVertexBufferEXT(void *_context, GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribBindingEXT(void *_context, GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribFormatEXT(void *_context, GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribIFormatEXT(void *_context, GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribLFormatEXT(void *_context, GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexBindingDivisorEXT(void *_context, GLuint vaobj, GLuint bindingindex, GLuint divisor);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribBinding(void *_context, GLuint attribindex, GLuint bindingindex);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribFormat(void *_context, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribIFormat(void *_context, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribLFormat(void *_context, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+REGAL_DECL void REGAL_CALL plugin_glVertexBindingDivisor(void *_context, GLuint bindingindex, GLuint divisor);
 #endif
 
 /**
@@ -10370,16 +10370,16 @@ REGAL_DECL void REGAL_CALL glWeightusvARB(GLint size, const GLushort *weights);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_BLEND
-REGAL_DECL void REGAL_CALL plugin_glVertexBlendARB(GLint count);
-REGAL_DECL void REGAL_CALL plugin_glWeightPointerARB(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glWeightbvARB(GLint size, const GLbyte *weights);
-REGAL_DECL void REGAL_CALL plugin_glWeightdvARB(GLint size, const GLdouble *weights);
-REGAL_DECL void REGAL_CALL plugin_glWeightfvARB(GLint size, const GLfloat *weights);
-REGAL_DECL void REGAL_CALL plugin_glWeightivARB(GLint size, const GLint *weights);
-REGAL_DECL void REGAL_CALL plugin_glWeightsvARB(GLint size, const GLshort *weights);
-REGAL_DECL void REGAL_CALL plugin_glWeightubvARB(GLint size, const GLubyte *weights);
-REGAL_DECL void REGAL_CALL plugin_glWeightuivARB(GLint size, const GLuint *weights);
-REGAL_DECL void REGAL_CALL plugin_glWeightusvARB(GLint size, const GLushort *weights);
+REGAL_DECL void REGAL_CALL plugin_glVertexBlendARB(void *_context, GLint count);
+REGAL_DECL void REGAL_CALL plugin_glWeightPointerARB(void *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glWeightbvARB(void *_context, GLint size, const GLbyte *weights);
+REGAL_DECL void REGAL_CALL plugin_glWeightdvARB(void *_context, GLint size, const GLdouble *weights);
+REGAL_DECL void REGAL_CALL plugin_glWeightfvARB(void *_context, GLint size, const GLfloat *weights);
+REGAL_DECL void REGAL_CALL plugin_glWeightivARB(void *_context, GLint size, const GLint *weights);
+REGAL_DECL void REGAL_CALL plugin_glWeightsvARB(void *_context, GLint size, const GLshort *weights);
+REGAL_DECL void REGAL_CALL plugin_glWeightubvARB(void *_context, GLint size, const GLubyte *weights);
+REGAL_DECL void REGAL_CALL plugin_glWeightuivARB(void *_context, GLint size, const GLuint *weights);
+REGAL_DECL void REGAL_CALL plugin_glWeightusvARB(void *_context, GLint size, const GLushort *weights);
 #endif
 
 /**
@@ -10487,17 +10487,17 @@ REGAL_DECL void REGAL_CALL glGetBufferSubDataARB(GLenum target, GLintptrARB offs
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_BUFFER_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsBufferARB(GLuint buffer);
-REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapBufferARB(GLenum target);
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferARB(GLenum target, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferARB(GLenum target, GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glBufferDataARB(GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage);
-REGAL_DECL void REGAL_CALL plugin_glBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glDeleteBuffersARB(GLsizei n, const GLuint *buffers);
-REGAL_DECL void REGAL_CALL plugin_glGenBuffersARB(GLsizei n, GLuint *buffers);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferParameterivARB(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferPointervARB(GLenum target, GLenum pname, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferSubDataARB(GLenum target, GLintptrARB offset, GLsizeiptrARB size, GLvoid *data);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsBufferARB(void *_context, GLuint buffer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapBufferARB(void *_context, GLenum target);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferARB(void *_context, GLenum target, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferARB(void *_context, GLenum target, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glBufferDataARB(void *_context, GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage);
+REGAL_DECL void REGAL_CALL plugin_glBufferSubDataARB(void *_context, GLenum target, GLintptrARB offset, GLsizeiptrARB size, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glDeleteBuffersARB(void *_context, GLsizei n, const GLuint *buffers);
+REGAL_DECL void REGAL_CALL plugin_glGenBuffersARB(void *_context, GLsizei n, GLuint *buffers);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferParameterivARB(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferPointervARB(void *_context, GLenum target, GLenum pname, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferSubDataARB(void *_context, GLenum target, GLintptrARB offset, GLsizeiptrARB size, GLvoid *data);
 #endif
 
 /**
@@ -10806,68 +10806,68 @@ REGAL_DECL void REGAL_CALL glVertexAttribPointerARB(GLuint index, GLint size, GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_PROGRAM
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgramARB(GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glBindProgramARB(GLenum target, GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glDeleteProgramsARB(GLsizei n, const GLuint *programs);
-REGAL_DECL void REGAL_CALL plugin_glDisableVertexAttribArrayARB(GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glEnableVertexAttribArrayARB(GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glGenProgramsARB(GLsizei n, GLuint *programs);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterdvARB(GLenum target, GLuint index, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterfvARB(GLenum target, GLuint index, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterdvARB(GLenum target, GLuint index, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterfvARB(GLenum target, GLuint index, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramStringARB(GLenum target, GLenum pname, GLvoid *string);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramivARB(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribPointervARB(GLuint index, GLenum pname, GLvoid **pointer);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribdvARB(GLuint index, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribfvARB(GLuint index, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribivARB(GLuint index, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4dvARB(GLenum target, GLuint index, const GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4fvARB(GLenum target, GLuint index, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4dARB(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4dvARB(GLenum target, GLuint index, const GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4fARB(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4fvARB(GLenum target, GLuint index, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramStringARB(GLenum target, GLenum format, GLsizei len, const GLvoid *string);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dARB(GLuint index, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dvARB(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fARB(GLuint index, GLfloat x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fvARB(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1sARB(GLuint index, GLshort x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1svARB(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dARB(GLuint index, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dvARB(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fARB(GLuint index, GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fvARB(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2sARB(GLuint index, GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2svARB(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dvARB(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fvARB(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3sARB(GLuint index, GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3svARB(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NbvARB(GLuint index, const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NivARB(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NsvARB(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NubARB(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NubvARB(GLuint index, const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NuivARB(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NusvARB(GLuint index, const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4bvARB(GLuint index, const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dARB(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dvARB(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fARB(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fvARB(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ivARB(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4sARB(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4svARB(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubvARB(GLuint index, const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4uivARB(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4usvARB(GLuint index, const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribPointerARB(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgramARB(void *_context, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glBindProgramARB(void *_context, GLenum target, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glDeleteProgramsARB(void *_context, GLsizei n, const GLuint *programs);
+REGAL_DECL void REGAL_CALL plugin_glDisableVertexAttribArrayARB(void *_context, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glEnableVertexAttribArrayARB(void *_context, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glGenProgramsARB(void *_context, GLsizei n, GLuint *programs);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterdvARB(void *_context, GLenum target, GLuint index, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterfvARB(void *_context, GLenum target, GLuint index, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterdvARB(void *_context, GLenum target, GLuint index, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterfvARB(void *_context, GLenum target, GLuint index, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramStringARB(void *_context, GLenum target, GLenum pname, GLvoid *string);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramivARB(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribPointervARB(void *_context, GLuint index, GLenum pname, GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribdvARB(void *_context, GLuint index, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribfvARB(void *_context, GLuint index, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribivARB(void *_context, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4dARB(void *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4dvARB(void *_context, GLenum target, GLuint index, const GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4fARB(void *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameter4fvARB(void *_context, GLenum target, GLuint index, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4dARB(void *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4dvARB(void *_context, GLenum target, GLuint index, const GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4fARB(void *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameter4fvARB(void *_context, GLenum target, GLuint index, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramStringARB(void *_context, GLenum target, GLenum format, GLsizei len, const GLvoid *string);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dARB(void *_context, GLuint index, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dvARB(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fARB(void *_context, GLuint index, GLfloat x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fvARB(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1sARB(void *_context, GLuint index, GLshort x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1svARB(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dARB(void *_context, GLuint index, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dvARB(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fARB(void *_context, GLuint index, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fvARB(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2sARB(void *_context, GLuint index, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2svARB(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dARB(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dvARB(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fARB(void *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fvARB(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3sARB(void *_context, GLuint index, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3svARB(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NbvARB(void *_context, GLuint index, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NivARB(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NsvARB(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NubARB(void *_context, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NubvARB(void *_context, GLuint index, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NuivARB(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4NusvARB(void *_context, GLuint index, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4bvARB(void *_context, GLuint index, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dARB(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dvARB(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fARB(void *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fvARB(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ivARB(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4sARB(void *_context, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4svARB(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubvARB(void *_context, GLuint index, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4uivARB(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4usvARB(void *_context, GLuint index, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribPointerARB(void *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -10927,9 +10927,9 @@ REGAL_DECL void REGAL_CALL glGetActiveAttribARB(GLhandleARB programObj, GLuint i
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_SHADER
-REGAL_DECL GLint REGAL_CALL plugin_glGetAttribLocationARB(GLhandleARB programObj, const GLcharARB *name);
-REGAL_DECL void REGAL_CALL plugin_glBindAttribLocationARB(GLhandleARB programObj, GLuint index, const GLcharARB *name);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveAttribARB(GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
+REGAL_DECL GLint REGAL_CALL plugin_glGetAttribLocationARB(void *_context, GLhandleARB programObj, const GLcharARB *name);
+REGAL_DECL void REGAL_CALL plugin_glBindAttribLocationARB(void *_context, GLhandleARB programObj, GLuint index, const GLcharARB *name);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveAttribARB(void *_context, GLhandleARB programObj, GLuint index, GLsizei maxLength, GLsizei *length, GLint *size, GLenum *type, GLcharARB *name);
 #endif
 
 /**
@@ -11088,44 +11088,44 @@ REGAL_DECL void REGAL_CALL glVertexP4uiv(GLenum type, const GLuint *coords);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VERTEX_TYPE_2_10_10_10_REV
-REGAL_DECL void REGAL_CALL plugin_glColorP3ui(GLenum type, GLuint color);
-REGAL_DECL void REGAL_CALL plugin_glColorP3uiv(GLenum type, const GLuint *color);
-REGAL_DECL void REGAL_CALL plugin_glColorP4ui(GLenum type, GLuint color);
-REGAL_DECL void REGAL_CALL plugin_glColorP4uiv(GLenum type, const GLuint *color);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP1ui(GLenum texture, GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP1uiv(GLenum texture, GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP2ui(GLenum texture, GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP2uiv(GLenum texture, GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP3ui(GLenum texture, GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP3uiv(GLenum texture, GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP4ui(GLenum texture, GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP4uiv(GLenum texture, GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glNormalP3ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glNormalP3uiv(GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColorP3ui(GLenum type, GLuint color);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColorP3uiv(GLenum type, const GLuint *color);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP1ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP1uiv(GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP2ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP2uiv(GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP3ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP3uiv(GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP4ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordP4uiv(GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP1ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP1uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP2ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP2uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP3ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP3uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP4ui(GLuint index, GLenum type, GLboolean normalized, GLuint value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribP4uiv(GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glVertexP2ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexP2uiv(GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexP3ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexP3uiv(GLenum type, const GLuint *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexP4ui(GLenum type, GLuint coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexP4uiv(GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glColorP3ui(void *_context, GLenum type, GLuint color);
+REGAL_DECL void REGAL_CALL plugin_glColorP3uiv(void *_context, GLenum type, const GLuint *color);
+REGAL_DECL void REGAL_CALL plugin_glColorP4ui(void *_context, GLenum type, GLuint color);
+REGAL_DECL void REGAL_CALL plugin_glColorP4uiv(void *_context, GLenum type, const GLuint *color);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP1ui(void *_context, GLenum texture, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP1uiv(void *_context, GLenum texture, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP2ui(void *_context, GLenum texture, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP2uiv(void *_context, GLenum texture, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP3ui(void *_context, GLenum texture, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP3uiv(void *_context, GLenum texture, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP4ui(void *_context, GLenum texture, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordP4uiv(void *_context, GLenum texture, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glNormalP3ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glNormalP3uiv(void *_context, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColorP3ui(void *_context, GLenum type, GLuint color);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColorP3uiv(void *_context, GLenum type, const GLuint *color);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP1ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP1uiv(void *_context, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP2ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP2uiv(void *_context, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP3ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP3uiv(void *_context, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP4ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordP4uiv(void *_context, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP1ui(void *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP1uiv(void *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP2ui(void *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP2uiv(void *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP3ui(void *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP3uiv(void *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP4ui(void *_context, GLuint index, GLenum type, GLboolean normalized, GLuint value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribP4uiv(void *_context, GLuint index, GLenum type, GLboolean normalized, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glVertexP2ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexP2uiv(void *_context, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexP3ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexP3uiv(void *_context, GLenum type, const GLuint *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexP4ui(void *_context, GLenum type, GLuint coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexP4uiv(void *_context, GLenum type, const GLuint *coords);
 #endif
 
 /**
@@ -11205,16 +11205,16 @@ REGAL_DECL void REGAL_CALL glViewportIndexedfv(GLuint index, const GLfloat *v);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_VIEWPORT_ARRAY
-REGAL_DECL void REGAL_CALL plugin_glDepthRangeArrayv(GLuint first, GLsizei count, const GLclampd *v);
-REGAL_DECL void REGAL_CALL plugin_glDepthRangeIndexed(GLuint index, GLclampd n, GLclampd f);
-REGAL_DECL void REGAL_CALL plugin_glGetDoublei_v(GLenum target, GLuint index, GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glGetFloati_v(GLenum target, GLuint index, GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glScissorArrayv(GLuint first, GLsizei count, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glScissorIndexed(GLuint index, GLint left, GLint bottom, GLint width, GLint height);
-REGAL_DECL void REGAL_CALL plugin_glScissorIndexedv(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glViewportArrayv(GLuint first, GLsizei count, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glViewportIndexedf(GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
-REGAL_DECL void REGAL_CALL plugin_glViewportIndexedfv(GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glDepthRangeArrayv(void *_context, GLuint first, GLsizei count, const GLclampd *v);
+REGAL_DECL void REGAL_CALL plugin_glDepthRangeIndexed(void *_context, GLuint index, GLclampd n, GLclampd f);
+REGAL_DECL void REGAL_CALL plugin_glGetDoublei_v(void *_context, GLenum target, GLuint index, GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glGetFloati_v(void *_context, GLenum target, GLuint index, GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glScissorArrayv(void *_context, GLuint first, GLsizei count, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glScissorIndexed(void *_context, GLuint index, GLint left, GLint bottom, GLint width, GLint height);
+REGAL_DECL void REGAL_CALL plugin_glScissorIndexedv(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glViewportArrayv(void *_context, GLuint first, GLsizei count, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glViewportIndexedf(void *_context, GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h);
+REGAL_DECL void REGAL_CALL plugin_glViewportIndexedfv(void *_context, GLuint index, const GLfloat *v);
 #endif
 
 /**
@@ -11303,22 +11303,22 @@ REGAL_DECL void REGAL_CALL glWindowPos3svARB(const GLshort *p);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ARB_WINDOW_POS
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2dARB(GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2dvARB(const GLdouble *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2fARB(GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2fvARB(const GLfloat *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2iARB(GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2ivARB(const GLint *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2sARB(GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2svARB(const GLshort *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3dARB(GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3dvARB(const GLdouble *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3fARB(GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3fvARB(const GLfloat *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3iARB(GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3ivARB(const GLint *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3sARB(GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3svARB(const GLshort *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2dARB(void *_context, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2dvARB(void *_context, const GLdouble *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2fARB(void *_context, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2fvARB(void *_context, const GLfloat *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2iARB(void *_context, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2ivARB(void *_context, const GLint *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2sARB(void *_context, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2svARB(void *_context, const GLshort *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3dARB(void *_context, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3dvARB(void *_context, const GLdouble *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3fARB(void *_context, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3fvARB(void *_context, const GLfloat *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3iARB(void *_context, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3ivARB(void *_context, const GLint *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3sARB(void *_context, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3svARB(void *_context, const GLshort *p);
 #endif
 
 /**
@@ -11446,7 +11446,7 @@ REGAL_DECL void REGAL_CALL glDrawBuffersATI(GLsizei n, const GLenum *bufs);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_DRAW_BUFFERS
-REGAL_DECL void REGAL_CALL plugin_glDrawBuffersATI(GLsizei n, const GLenum *bufs);
+REGAL_DECL void REGAL_CALL plugin_glDrawBuffersATI(void *_context, GLsizei n, const GLenum *bufs);
 #endif
 
 /**
@@ -11502,9 +11502,9 @@ REGAL_DECL void REGAL_CALL glElementPointerATI(GLenum type, const GLvoid *pointe
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_ELEMENT_ARRAY
-REGAL_DECL void REGAL_CALL plugin_glDrawElementArrayATI(GLenum mode, GLsizei count);
-REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementArrayATI(GLenum mode, GLuint start, GLuint end, GLsizei count);
-REGAL_DECL void REGAL_CALL plugin_glElementPointerATI(GLenum type, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementArrayATI(void *_context, GLenum mode, GLsizei count);
+REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementArrayATI(void *_context, GLenum mode, GLuint start, GLuint end, GLsizei count);
+REGAL_DECL void REGAL_CALL plugin_glElementPointerATI(void *_context, GLenum type, const GLvoid *pointer);
 #endif
 
 /**
@@ -11568,10 +11568,10 @@ REGAL_DECL void REGAL_CALL glTexBumpParameterivATI(GLenum pname, const GLint *pa
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_ENVMAP_BUMPMAP
-REGAL_DECL void REGAL_CALL plugin_glGetTexBumpParameterfvATI(GLenum pname, GLfloat *param);
-REGAL_DECL void REGAL_CALL plugin_glGetTexBumpParameterivATI(GLenum pname, GLint *param);
-REGAL_DECL void REGAL_CALL plugin_glTexBumpParameterfvATI(GLenum pname, const GLfloat *param);
-REGAL_DECL void REGAL_CALL plugin_glTexBumpParameterivATI(GLenum pname, const GLint *param);
+REGAL_DECL void REGAL_CALL plugin_glGetTexBumpParameterfvATI(void *_context, GLenum pname, GLfloat *param);
+REGAL_DECL void REGAL_CALL plugin_glGetTexBumpParameterivATI(void *_context, GLenum pname, GLint *param);
+REGAL_DECL void REGAL_CALL plugin_glTexBumpParameterfvATI(void *_context, GLenum pname, const GLfloat *param);
+REGAL_DECL void REGAL_CALL plugin_glTexBumpParameterivATI(void *_context, GLenum pname, const GLint *param);
 #endif
 
 /**
@@ -11711,20 +11711,20 @@ REGAL_DECL void REGAL_CALL glSetFragmentShaderConstantATI(GLuint dst, const GLfl
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_FRAGMENT_SHADER
-REGAL_DECL GLuint REGAL_CALL plugin_glGenFragmentShadersATI(GLuint range);
-REGAL_DECL void REGAL_CALL plugin_glAlphaFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
-REGAL_DECL void REGAL_CALL plugin_glAlphaFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
-REGAL_DECL void REGAL_CALL plugin_glAlphaFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
-REGAL_DECL void REGAL_CALL plugin_glBeginFragmentShaderATI(void);
-REGAL_DECL void REGAL_CALL plugin_glBindFragmentShaderATI(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glColorFragmentOp1ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
-REGAL_DECL void REGAL_CALL plugin_glColorFragmentOp2ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
-REGAL_DECL void REGAL_CALL plugin_glColorFragmentOp3ATI(GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
-REGAL_DECL void REGAL_CALL plugin_glDeleteFragmentShaderATI(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glEndFragmentShaderATI(void);
-REGAL_DECL void REGAL_CALL plugin_glPassTexCoordATI(GLuint dst, GLuint coord, GLenum swizzle);
-REGAL_DECL void REGAL_CALL plugin_glSampleMapATI(GLuint dst, GLuint interp, GLenum swizzle);
-REGAL_DECL void REGAL_CALL plugin_glSetFragmentShaderConstantATI(GLuint dst, const GLfloat *value);
+REGAL_DECL GLuint REGAL_CALL plugin_glGenFragmentShadersATI(void *_context, GLuint range);
+REGAL_DECL void REGAL_CALL plugin_glAlphaFragmentOp1ATI(void *_context, GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+REGAL_DECL void REGAL_CALL plugin_glAlphaFragmentOp2ATI(void *_context, GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+REGAL_DECL void REGAL_CALL plugin_glAlphaFragmentOp3ATI(void *_context, GLenum op, GLuint dst, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+REGAL_DECL void REGAL_CALL plugin_glBeginFragmentShaderATI(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glBindFragmentShaderATI(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glColorFragmentOp1ATI(void *_context, GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod);
+REGAL_DECL void REGAL_CALL plugin_glColorFragmentOp2ATI(void *_context, GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod);
+REGAL_DECL void REGAL_CALL plugin_glColorFragmentOp3ATI(void *_context, GLenum op, GLuint dst, GLuint dstMask, GLuint dstMod, GLuint arg1, GLuint arg1Rep, GLuint arg1Mod, GLuint arg2, GLuint arg2Rep, GLuint arg2Mod, GLuint arg3, GLuint arg3Rep, GLuint arg3Mod);
+REGAL_DECL void REGAL_CALL plugin_glDeleteFragmentShaderATI(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glEndFragmentShaderATI(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPassTexCoordATI(void *_context, GLuint dst, GLuint coord, GLenum swizzle);
+REGAL_DECL void REGAL_CALL plugin_glSampleMapATI(void *_context, GLuint dst, GLuint interp, GLenum swizzle);
+REGAL_DECL void REGAL_CALL plugin_glSetFragmentShaderConstantATI(void *_context, GLuint dst, const GLfloat *value);
 #endif
 
 /**
@@ -11771,8 +11771,8 @@ REGAL_DECL void REGAL_CALL glUnmapObjectBufferATI(GLuint buffer);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_MAP_OBJECT_BUFFER
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapObjectBufferATI(GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glUnmapObjectBufferATI(GLuint buffer);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapObjectBufferATI(void *_context, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glUnmapObjectBufferATI(void *_context, GLuint buffer);
 #endif
 
 /**
@@ -11865,8 +11865,8 @@ REGAL_DECL void REGAL_CALL glPNTrianglesiATI(GLenum pname, GLint param);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_PN_TRIANGLES
-REGAL_DECL void REGAL_CALL plugin_glPNTrianglesfATI(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPNTrianglesiATI(GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glPNTrianglesfATI(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPNTrianglesiATI(void *_context, GLenum pname, GLint param);
 #endif
 
 /**
@@ -11920,8 +11920,8 @@ REGAL_DECL void REGAL_CALL glStencilOpSeparateATI(GLenum face, GLenum sfail, GLe
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_SEPARATE_STENCIL
-REGAL_DECL void REGAL_CALL plugin_glStencilFuncSeparateATI(GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glStencilOpSeparateATI(GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
+REGAL_DECL void REGAL_CALL plugin_glStencilFuncSeparateATI(void *_context, GLenum frontfunc, GLenum backfunc, GLint ref, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glStencilOpSeparateATI(void *_context, GLenum face, GLenum sfail, GLenum dpfail, GLenum dppass);
 #endif
 
 /**
@@ -12183,18 +12183,18 @@ REGAL_DECL void REGAL_CALL glVariantArrayObjectATI(GLuint id, GLenum type, GLsiz
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_VERTEX_ARRAY_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsObjectBufferATI(GLuint buffer);
-REGAL_DECL GLuint REGAL_CALL plugin_glNewObjectBufferATI(GLsizei size, const GLvoid *pointer, GLenum usage);
-REGAL_DECL void REGAL_CALL plugin_glArrayObjectATI(GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
-REGAL_DECL void REGAL_CALL plugin_glFreeObjectBufferATI(GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glGetArrayObjectfvATI(GLenum array, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetArrayObjectivATI(GLenum array, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetObjectBufferfvATI(GLuint buffer, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetObjectBufferivATI(GLuint buffer, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVariantArrayObjectfvATI(GLuint id, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVariantArrayObjectivATI(GLuint id, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glUpdateObjectBufferATI(GLuint buffer, GLuint offset, GLsizei size, const GLvoid *pointer, GLenum preserve);
-REGAL_DECL void REGAL_CALL plugin_glVariantArrayObjectATI(GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsObjectBufferATI(void *_context, GLuint buffer);
+REGAL_DECL GLuint REGAL_CALL plugin_glNewObjectBufferATI(void *_context, GLsizei size, const GLvoid *pointer, GLenum usage);
+REGAL_DECL void REGAL_CALL plugin_glArrayObjectATI(void *_context, GLenum array, GLint size, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
+REGAL_DECL void REGAL_CALL plugin_glFreeObjectBufferATI(void *_context, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glGetArrayObjectfvATI(void *_context, GLenum array, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetArrayObjectivATI(void *_context, GLenum array, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectBufferfvATI(void *_context, GLuint buffer, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectBufferivATI(void *_context, GLuint buffer, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVariantArrayObjectfvATI(void *_context, GLuint id, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVariantArrayObjectivATI(void *_context, GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glUpdateObjectBufferATI(void *_context, GLuint buffer, GLuint offset, GLsizei size, const GLvoid *pointer, GLenum preserve);
+REGAL_DECL void REGAL_CALL plugin_glVariantArrayObjectATI(void *_context, GLuint id, GLenum type, GLsizei stride, GLuint buffer, GLuint offset);
 #endif
 
 /**
@@ -12244,9 +12244,9 @@ REGAL_DECL void REGAL_CALL glVertexAttribArrayObjectATI(GLuint index, GLint size
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_VERTEX_ATTRIB_ARRAY_OBJECT
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribArrayObjectfvATI(GLuint index, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribArrayObjectivATI(GLuint index, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribArrayObjectATI(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLuint buffer, GLuint offset);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribArrayObjectfvATI(void *_context, GLuint index, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribArrayObjectivATI(void *_context, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribArrayObjectATI(void *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, GLuint buffer, GLuint offset);
 #endif
 
 /**
@@ -12435,51 +12435,51 @@ REGAL_DECL void REGAL_CALL glVertexStream4svATI(GLenum stream, const GLshort *co
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_ATI_VERTEX_STREAMS
-REGAL_DECL void REGAL_CALL plugin_glClientActiveVertexStreamATI(GLenum stream);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3bATI(GLenum stream, GLbyte x, GLbyte y, GLbyte z);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3bvATI(GLenum stream, const GLbyte *coords);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3dvATI(GLenum stream, const GLdouble *coords);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3fvATI(GLenum stream, const GLfloat *coords);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3iATI(GLenum stream, GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3ivATI(GLenum stream, const GLint *coords);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3sATI(GLenum stream, GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glNormalStream3svATI(GLenum stream, const GLshort *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexBlendEnvfATI(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glVertexBlendEnviATI(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1dATI(GLenum stream, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1dvATI(GLenum stream, const GLdouble *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1fATI(GLenum stream, GLfloat x);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1fvATI(GLenum stream, const GLfloat *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1iATI(GLenum stream, GLint x);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1ivATI(GLenum stream, const GLint *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1sATI(GLenum stream, GLshort x);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream1svATI(GLenum stream, const GLshort *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2dATI(GLenum stream, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2dvATI(GLenum stream, const GLdouble *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2fATI(GLenum stream, GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2fvATI(GLenum stream, const GLfloat *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2iATI(GLenum stream, GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2ivATI(GLenum stream, const GLint *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2sATI(GLenum stream, GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream2svATI(GLenum stream, const GLshort *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3dvATI(GLenum stream, const GLdouble *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3fvATI(GLenum stream, const GLfloat *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3iATI(GLenum stream, GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3ivATI(GLenum stream, const GLint *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3sATI(GLenum stream, GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream3svATI(GLenum stream, const GLshort *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4dATI(GLenum stream, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4dvATI(GLenum stream, const GLdouble *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4fATI(GLenum stream, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4fvATI(GLenum stream, const GLfloat *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4iATI(GLenum stream, GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4ivATI(GLenum stream, const GLint *coords);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4sATI(GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w);
-REGAL_DECL void REGAL_CALL plugin_glVertexStream4svATI(GLenum stream, const GLshort *coords);
+REGAL_DECL void REGAL_CALL plugin_glClientActiveVertexStreamATI(void *_context, GLenum stream);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3bATI(void *_context, GLenum stream, GLbyte x, GLbyte y, GLbyte z);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3bvATI(void *_context, GLenum stream, const GLbyte *coords);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3dATI(void *_context, GLenum stream, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3dvATI(void *_context, GLenum stream, const GLdouble *coords);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3fATI(void *_context, GLenum stream, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3fvATI(void *_context, GLenum stream, const GLfloat *coords);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3iATI(void *_context, GLenum stream, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3ivATI(void *_context, GLenum stream, const GLint *coords);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3sATI(void *_context, GLenum stream, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glNormalStream3svATI(void *_context, GLenum stream, const GLshort *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexBlendEnvfATI(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glVertexBlendEnviATI(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1dATI(void *_context, GLenum stream, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1dvATI(void *_context, GLenum stream, const GLdouble *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1fATI(void *_context, GLenum stream, GLfloat x);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1fvATI(void *_context, GLenum stream, const GLfloat *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1iATI(void *_context, GLenum stream, GLint x);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1ivATI(void *_context, GLenum stream, const GLint *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1sATI(void *_context, GLenum stream, GLshort x);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream1svATI(void *_context, GLenum stream, const GLshort *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2dATI(void *_context, GLenum stream, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2dvATI(void *_context, GLenum stream, const GLdouble *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2fATI(void *_context, GLenum stream, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2fvATI(void *_context, GLenum stream, const GLfloat *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2iATI(void *_context, GLenum stream, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2ivATI(void *_context, GLenum stream, const GLint *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2sATI(void *_context, GLenum stream, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream2svATI(void *_context, GLenum stream, const GLshort *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3dATI(void *_context, GLenum stream, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3dvATI(void *_context, GLenum stream, const GLdouble *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3fATI(void *_context, GLenum stream, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3fvATI(void *_context, GLenum stream, const GLfloat *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3iATI(void *_context, GLenum stream, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3ivATI(void *_context, GLenum stream, const GLint *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3sATI(void *_context, GLenum stream, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream3svATI(void *_context, GLenum stream, const GLshort *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4dATI(void *_context, GLenum stream, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4dvATI(void *_context, GLenum stream, const GLdouble *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4fATI(void *_context, GLenum stream, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4fvATI(void *_context, GLenum stream, const GLfloat *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4iATI(void *_context, GLenum stream, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4ivATI(void *_context, GLenum stream, const GLint *coords);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4sATI(void *_context, GLenum stream, GLshort x, GLshort y, GLshort z, GLshort w);
+REGAL_DECL void REGAL_CALL plugin_glVertexStream4svATI(void *_context, GLenum stream, const GLshort *coords);
 #endif
 
 /**
@@ -12703,9 +12703,9 @@ REGAL_DECL void REGAL_CALL glUniformBufferEXT(GLuint program, GLint location, GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_BINDABLE_UNIFORM
-REGAL_DECL GLint REGAL_CALL plugin_glGetUniformBufferSizeEXT(GLuint program, GLint location);
-REGAL_DECL GLintptr REGAL_CALL plugin_glGetUniformOffsetEXT(GLuint program, GLint location);
-REGAL_DECL void REGAL_CALL plugin_glUniformBufferEXT(GLuint program, GLint location, GLuint buffer);
+REGAL_DECL GLint REGAL_CALL plugin_glGetUniformBufferSizeEXT(void *_context, GLuint program, GLint location);
+REGAL_DECL GLintptr REGAL_CALL plugin_glGetUniformOffsetEXT(void *_context, GLuint program, GLint location);
+REGAL_DECL void REGAL_CALL plugin_glUniformBufferEXT(void *_context, GLuint program, GLint location, GLuint buffer);
 #endif
 
 /**
@@ -12757,7 +12757,7 @@ REGAL_DECL void REGAL_CALL glBlendColorEXT(GLclampf red, GLclampf green, GLclamp
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_BLEND_COLOR
-REGAL_DECL void REGAL_CALL plugin_glBlendColorEXT(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendColorEXT(void *_context, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
 #endif
 
 /**
@@ -12806,7 +12806,7 @@ REGAL_DECL void REGAL_CALL glBlendEquationSeparateEXT(GLenum modeRGB, GLenum mod
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_BLEND_EQUATION_SEPARATE
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateEXT(GLenum modeRGB, GLenum modeAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateEXT(void *_context, GLenum modeRGB, GLenum modeAlpha);
 #endif
 
 /**
@@ -12857,7 +12857,7 @@ REGAL_DECL void REGAL_CALL glBlendFuncSeparateEXT(GLenum sfactorRGB, GLenum dfac
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_BLEND_FUNC_SEPARATE
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateEXT(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateEXT(void *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
 #endif
 
 /**
@@ -12908,7 +12908,7 @@ REGAL_DECL void REGAL_CALL glBlendEquationEXT(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_BLEND_MINMAX
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationEXT(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationEXT(void *_context, GLenum mode);
 #endif
 
 /**
@@ -13088,8 +13088,8 @@ REGAL_DECL void REGAL_CALL glCopyColorSubTableEXT(GLenum target, GLsizei start, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_COLOR_SUBTABLE
-REGAL_DECL void REGAL_CALL plugin_glColorSubTableEXT(GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *table);
-REGAL_DECL void REGAL_CALL plugin_glCopyColorSubTableEXT(GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glColorSubTableEXT(void *_context, GLenum target, GLsizei start, GLsizei count, GLenum format, GLenum type, const GLvoid *table);
+REGAL_DECL void REGAL_CALL plugin_glCopyColorSubTableEXT(void *_context, GLenum target, GLsizei start, GLint x, GLint y, GLsizei width);
 #endif
 
 /**
@@ -13141,8 +13141,8 @@ REGAL_DECL void REGAL_CALL glUnlockArraysEXT(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_COMPILED_VERTEX_ARRAY
-REGAL_DECL void REGAL_CALL plugin_glLockArraysEXT(GLint first, GLsizei count);
-REGAL_DECL void REGAL_CALL plugin_glUnlockArraysEXT(void);
+REGAL_DECL void REGAL_CALL plugin_glLockArraysEXT(void *_context, GLint first, GLsizei count);
+REGAL_DECL void REGAL_CALL plugin_glUnlockArraysEXT(void *_context);
 #endif
 
 /**
@@ -13245,19 +13245,19 @@ REGAL_DECL void REGAL_CALL glSeparableFilter2DEXT(GLenum target, GLenum internal
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_CONVOLUTION
-REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterfEXT(GLenum target, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameteriEXT(GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterivEXT(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter1DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter2DEXT(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glGetConvolutionFilterEXT(GLenum target, GLenum format, GLenum type, GLvoid *image);
-REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameterfvEXT(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameterivEXT(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetSeparableFilterEXT(GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span);
-REGAL_DECL void REGAL_CALL plugin_glSeparableFilter2DEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter1DEXT(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *image);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionFilter2DEXT(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *image);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterfEXT(void *_context, GLenum target, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterfvEXT(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameteriEXT(void *_context, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glConvolutionParameterivEXT(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter1DEXT(void *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyConvolutionFilter2DEXT(void *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glGetConvolutionFilterEXT(void *_context, GLenum target, GLenum format, GLenum type, GLvoid *image);
+REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameterfvEXT(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetConvolutionParameterivEXT(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetSeparableFilterEXT(void *_context, GLenum target, GLenum format, GLenum type, GLvoid *row, GLvoid *column, GLvoid *span);
+REGAL_DECL void REGAL_CALL plugin_glSeparableFilter2DEXT(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *row, const GLvoid *column);
 #endif
 
 /**
@@ -13381,28 +13381,28 @@ REGAL_DECL void REGAL_CALL glTangentPointerEXT(GLenum type, GLsizei stride, cons
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_COORDINATE_FRAME
-REGAL_DECL void REGAL_CALL plugin_glBinormal3bEXT(GLbyte bx, GLbyte by, GLbyte bz);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3bvEXT(const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3dEXT(GLdouble bx, GLdouble by, GLdouble bz);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3dvEXT(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3fEXT(GLfloat bx, GLfloat by, GLfloat bz);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3fvEXT(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3iEXT(GLint bx, GLint by, GLint bz);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3ivEXT(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3sEXT(GLshort bx, GLshort by, GLshort bz);
-REGAL_DECL void REGAL_CALL plugin_glBinormal3svEXT(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glBinormalPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glTangent3bEXT(GLbyte tx, GLbyte ty, GLbyte tz);
-REGAL_DECL void REGAL_CALL plugin_glTangent3bvEXT(const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glTangent3dEXT(GLdouble tx, GLdouble ty, GLdouble tz);
-REGAL_DECL void REGAL_CALL plugin_glTangent3dvEXT(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glTangent3fEXT(GLfloat tx, GLfloat ty, GLfloat tz);
-REGAL_DECL void REGAL_CALL plugin_glTangent3fvEXT(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTangent3iEXT(GLint tx, GLint ty, GLint tz);
-REGAL_DECL void REGAL_CALL plugin_glTangent3ivEXT(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glTangent3sEXT(GLshort tx, GLshort ty, GLshort tz);
-REGAL_DECL void REGAL_CALL plugin_glTangent3svEXT(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glTangentPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3bEXT(void *_context, GLbyte bx, GLbyte by, GLbyte bz);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3bvEXT(void *_context, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3dEXT(void *_context, GLdouble bx, GLdouble by, GLdouble bz);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3dvEXT(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3fEXT(void *_context, GLfloat bx, GLfloat by, GLfloat bz);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3fvEXT(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3iEXT(void *_context, GLint bx, GLint by, GLint bz);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3ivEXT(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3sEXT(void *_context, GLshort bx, GLshort by, GLshort bz);
+REGAL_DECL void REGAL_CALL plugin_glBinormal3svEXT(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glBinormalPointerEXT(void *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glTangent3bEXT(void *_context, GLbyte tx, GLbyte ty, GLbyte tz);
+REGAL_DECL void REGAL_CALL plugin_glTangent3bvEXT(void *_context, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glTangent3dEXT(void *_context, GLdouble tx, GLdouble ty, GLdouble tz);
+REGAL_DECL void REGAL_CALL plugin_glTangent3dvEXT(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glTangent3fEXT(void *_context, GLfloat tx, GLfloat ty, GLfloat tz);
+REGAL_DECL void REGAL_CALL plugin_glTangent3fvEXT(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTangent3iEXT(void *_context, GLint tx, GLint ty, GLint tz);
+REGAL_DECL void REGAL_CALL plugin_glTangent3ivEXT(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glTangent3sEXT(void *_context, GLshort tx, GLshort ty, GLshort tz);
+REGAL_DECL void REGAL_CALL plugin_glTangent3svEXT(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glTangentPointerEXT(void *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -13458,11 +13458,11 @@ REGAL_DECL void REGAL_CALL glCopyTexSubImage3DEXT(GLenum target, GLint level, GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_COPY_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glCopyTexImage1DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexImage2DEXT(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexImage1DEXT(void *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexImage2DEXT(void *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage1DEXT(void *_context, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage2DEXT(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage3DEXT(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -13515,8 +13515,8 @@ REGAL_DECL void REGAL_CALL glCullParameterfvEXT(GLenum pname, GLfloat *params);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_CULL_VERTEX
-REGAL_DECL void REGAL_CALL plugin_glCullParameterdvEXT(GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glCullParameterfvEXT(GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glCullParameterdvEXT(void *_context, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glCullParameterfvEXT(void *_context, GLenum pname, GLfloat *params);
 #endif
 
 /**
@@ -13572,8 +13572,8 @@ REGAL_DECL void REGAL_CALL glLabelObjectEXT(GLenum type, GLuint object, GLsizei 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DEBUG_LABEL
-REGAL_DECL void REGAL_CALL plugin_glGetObjectLabelEXT(GLenum type, GLuint object, GLsizei bufSize, GLsizei *length, GLchar *label);
-REGAL_DECL void REGAL_CALL plugin_glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar *label);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectLabelEXT(void *_context, GLenum type, GLuint object, GLsizei bufSize, GLsizei *length, GLchar *label);
+REGAL_DECL void REGAL_CALL plugin_glLabelObjectEXT(void *_context, GLenum type, GLuint object, GLsizei length, const GLchar *label);
 #endif
 
 /**
@@ -13623,9 +13623,9 @@ REGAL_DECL void REGAL_CALL glPushGroupMarkerEXT(GLsizei length, const GLchar *ma
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DEBUG_MARKER
-REGAL_DECL void REGAL_CALL plugin_glInsertEventMarkerEXT(GLsizei length, const GLchar *marker);
-REGAL_DECL void REGAL_CALL plugin_glPopGroupMarkerEXT(void);
-REGAL_DECL void REGAL_CALL plugin_glPushGroupMarkerEXT(GLsizei length, const GLchar *marker);
+REGAL_DECL void REGAL_CALL plugin_glInsertEventMarkerEXT(void *_context, GLsizei length, const GLchar *marker);
+REGAL_DECL void REGAL_CALL plugin_glPopGroupMarkerEXT(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPushGroupMarkerEXT(void *_context, GLsizei length, const GLchar *marker);
 #endif
 
 /**
@@ -13674,7 +13674,7 @@ REGAL_DECL void REGAL_CALL glDepthBoundsEXT(GLclampd zmin, GLclampd zmax);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DEPTH_BOUNDS_TEST
-REGAL_DECL void REGAL_CALL plugin_glDepthBoundsEXT(GLclampd zmin, GLclampd zmax);
+REGAL_DECL void REGAL_CALL plugin_glDepthBoundsEXT(void *_context, GLclampd zmin, GLclampd zmax);
 #endif
 
 /**
@@ -14411,236 +14411,236 @@ REGAL_DECL void REGAL_CALL glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buf
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DIRECT_STATE_ACCESS
-REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapNamedBufferEXT(GLuint buffer);
-REGAL_DECL GLenum REGAL_CALL plugin_glCheckNamedFramebufferStatusEXT(GLuint framebuffer, GLenum target);
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapNamedBufferEXT(GLuint buffer, GLenum access);
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
-REGAL_DECL void REGAL_CALL plugin_glBindMultiTextureEXT(GLenum texunit, GLenum target, GLuint texture);
-REGAL_DECL void REGAL_CALL plugin_glClientAttribDefaultEXT(GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits);
-REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glCopyTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glCopyTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glDisableClientStateIndexedEXT(GLenum array, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glDisableClientStateiEXT(GLenum array, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glDisableVertexArrayAttribEXT(GLuint vaobj, GLenum array);
-REGAL_DECL void REGAL_CALL plugin_glDisableVertexArrayEXT(GLuint vaobj, GLenum array);
-REGAL_DECL void REGAL_CALL plugin_glEnableClientStateIndexedEXT(GLenum array, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glEnableClientStateiEXT(GLenum array, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glEnableVertexArrayAttribEXT(GLuint vaobj, GLenum array);
-REGAL_DECL void REGAL_CALL plugin_glEnableVertexArrayEXT(GLuint vaobj, GLenum array);
-REGAL_DECL void REGAL_CALL plugin_glFlushMappedNamedBufferRangeEXT(GLuint buffer, GLintptr offset, GLsizeiptr length);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferDrawBufferEXT(GLuint framebuffer, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferDrawBuffersEXT(GLuint framebuffer, GLsizei n, const GLenum *bufs);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferReadBufferEXT(GLuint framebuffer, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glGenerateMultiTexMipmapEXT(GLenum texunit, GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGenerateTextureMipmapEXT(GLuint texture, GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGetCompressedMultiTexImageEXT(GLenum texunit, GLenum target, GLint lod, GLvoid *img);
-REGAL_DECL void REGAL_CALL plugin_glGetCompressedTextureImageEXT(GLuint texture, GLenum target, GLint lod, GLvoid *img);
-REGAL_DECL void REGAL_CALL plugin_glGetDoubleIndexedvEXT(GLenum target, GLuint index, GLdouble *data);
-REGAL_DECL void REGAL_CALL plugin_glGetDoublei_vEXT(GLenum target, GLuint index, GLdouble *data);
-REGAL_DECL void REGAL_CALL plugin_glGetFloatIndexedvEXT(GLenum target, GLuint index, GLfloat *data);
-REGAL_DECL void REGAL_CALL plugin_glGetFloati_vEXT(GLenum target, GLuint index, GLfloat *data);
-REGAL_DECL void REGAL_CALL plugin_glGetFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexImageEXT(GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexLevelParameterfvEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexLevelParameterivEXT(GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferParameterivEXT(GLuint buffer, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferPointervEXT(GLuint buffer, GLenum pname, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedFramebufferAttachmentParameterivEXT(GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterIivEXT(GLuint program, GLenum target, GLuint index, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterIuivEXT(GLuint program, GLenum target, GLuint index, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterdvEXT(GLuint program, GLenum target, GLuint index, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterfvEXT(GLuint program, GLenum target, GLuint index, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramStringEXT(GLuint program, GLenum target, GLenum pname, GLvoid *string);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramivEXT(GLuint program, GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedRenderbufferParameterivEXT(GLuint renderbuffer, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetPointerIndexedvEXT(GLenum target, GLuint index, GLvoid **data);
-REGAL_DECL void REGAL_CALL plugin_glGetPointeri_vEXT(GLenum pname, GLuint index, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glGetTextureImageEXT(GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glGetTextureLevelParameterfvEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTextureLevelParameterivEXT(GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayIntegeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLint *param);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayIntegervEXT(GLuint vaobj, GLenum pname, GLint *param);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayPointeri_vEXT(GLuint vaobj, GLuint index, GLenum pname, GLvoid **param);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayPointervEXT(GLuint vaobj, GLenum pname, GLvoid **param);
-REGAL_DECL void REGAL_CALL plugin_glMatrixFrustumEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
-REGAL_DECL void REGAL_CALL plugin_glMatrixLoadIdentityEXT(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glMatrixLoadTransposedEXT(GLenum mode, const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixLoadTransposefEXT(GLenum mode, const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixLoaddEXT(GLenum mode, const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixLoadfEXT(GLenum mode, const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixMultTransposedEXT(GLenum mode, const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixMultTransposefEXT(GLenum mode, const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixMultdEXT(GLenum mode, const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixMultfEXT(GLenum mode, const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glMatrixOrthoEXT(GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
-REGAL_DECL void REGAL_CALL plugin_glMatrixPopEXT(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glMatrixPushEXT(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glMatrixRotatedEXT(GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glMatrixRotatefEXT(GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glMatrixScaledEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glMatrixScalefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glMatrixTranslatedEXT(GLenum mode, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glMatrixTranslatefEXT(GLenum mode, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexBufferEXT(GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordPointerEXT(GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexEnvfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexEnvfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexEnviEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexEnvivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexGendEXT(GLenum texunit, GLenum coord, GLenum pname, GLdouble param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexGendvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexGenfEXT(GLenum texunit, GLenum coord, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexGenfvEXT(GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexGeniEXT(GLenum texunit, GLenum coord, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexGenivEXT(GLenum texunit, GLenum coord, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterIivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterIuivEXT(GLenum texunit, GLenum target, GLenum pname, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterfEXT(GLenum texunit, GLenum target, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterfvEXT(GLenum texunit, GLenum target, GLenum pname, const GLfloat *param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexParameteriEXT(GLenum texunit, GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterivEXT(GLenum texunit, GLenum target, GLenum pname, const GLint *param);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexRenderbufferEXT(GLenum texunit, GLenum target, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexSubImage1DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexSubImage2DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexSubImage3DEXT(GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glNamedBufferDataEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage);
-REGAL_DECL void REGAL_CALL plugin_glNamedBufferSubDataEXT(GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glNamedCopyBufferSubDataEXT(GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferRenderbufferEXT(GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTexture1DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTexture2DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTexture3DEXT(GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTextureEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTextureFaceEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face);
-REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTextureLayerEXT(GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4dEXT(GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4dvEXT(GLuint program, GLenum target, GLuint index, const GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4fEXT(GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4fvEXT(GLuint program, GLenum target, GLuint index, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4iEXT(GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4ivEXT(GLuint program, GLenum target, GLuint index, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4uiEXT(GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4uivEXT(GLuint program, GLenum target, GLuint index, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameters4fvEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParametersI4ivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParametersI4uivEXT(GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glNamedProgramStringEXT(GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string);
-REGAL_DECL void REGAL_CALL plugin_glNamedRenderbufferStorageEXT(GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glNamedRenderbufferStorageMultisampleCoverageEXT(GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glNamedRenderbufferStorageMultisampleEXT(GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1dEXT(GLuint program, GLint location, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1fEXT(GLuint program, GLint location, GLfloat v0);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1iEXT(GLuint program, GLint location, GLint v0);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1uiEXT(GLuint program, GLint location, GLuint v0);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2dEXT(GLuint program, GLint location, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2iEXT(GLuint program, GLint location, GLint v0, GLint v1);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4dEXT(GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4dvEXT(GLuint program, GLint location, GLsizei count, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4fEXT(GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4fvEXT(GLuint program, GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4iEXT(GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ivEXT(GLuint program, GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4uiEXT(GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4uivEXT(GLuint program, GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3dvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3fvEXT(GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glPushClientAttribDefaultEXT(GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glTextureBufferEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glTextureImage1DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTextureImage2DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTextureImage3DEXT(GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTextureParameterIivEXT(GLuint texture, GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glTextureParameterIuivEXT(GLuint texture, GLenum target, GLenum pname, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glTextureParameterfEXT(GLuint texture, GLenum target, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glTextureParameterfvEXT(GLuint texture, GLenum target, GLenum pname, const GLfloat *param);
-REGAL_DECL void REGAL_CALL plugin_glTextureParameteriEXT(GLuint texture, GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glTextureParameterivEXT(GLuint texture, GLenum target, GLenum pname, const GLint *param);
-REGAL_DECL void REGAL_CALL plugin_glTextureRenderbufferEXT(GLuint texture, GLenum target, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glTextureSubImage1DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTextureSubImage2DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTextureSubImage3DEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayEdgeFlagOffsetEXT(GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayFogCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayIndexOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayMultiTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayNormalOffsetEXT(GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArraySecondaryColorOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayTexCoordOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribIOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexOffsetEXT(GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapNamedBufferEXT(void *_context, GLuint buffer);
+REGAL_DECL GLenum REGAL_CALL plugin_glCheckNamedFramebufferStatusEXT(void *_context, GLuint framebuffer, GLenum target);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapNamedBufferEXT(void *_context, GLuint buffer, GLenum access);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapNamedBufferRangeEXT(void *_context, GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access);
+REGAL_DECL void REGAL_CALL plugin_glBindMultiTextureEXT(void *_context, GLenum texunit, GLenum target, GLuint texture);
+REGAL_DECL void REGAL_CALL plugin_glClientAttribDefaultEXT(void *_context, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexImage1DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexImage2DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexImage3DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexSubImage1DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexSubImage2DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedMultiTexSubImage3DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTextureImage1DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTextureImage2DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTextureImage3DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTextureSubImage1DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTextureSubImage2DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTextureSubImage3DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits);
+REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexImage1DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexImage2DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexSubImage1DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexSubImage2DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glCopyMultiTexSubImage3DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glCopyTextureImage1DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyTextureImage2DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyTextureSubImage1DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyTextureSubImage2DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glCopyTextureSubImage3DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glDisableClientStateIndexedEXT(void *_context, GLenum array, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glDisableClientStateiEXT(void *_context, GLenum array, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glDisableVertexArrayAttribEXT(void *_context, GLuint vaobj, GLenum array);
+REGAL_DECL void REGAL_CALL plugin_glDisableVertexArrayEXT(void *_context, GLuint vaobj, GLenum array);
+REGAL_DECL void REGAL_CALL plugin_glEnableClientStateIndexedEXT(void *_context, GLenum array, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glEnableClientStateiEXT(void *_context, GLenum array, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glEnableVertexArrayAttribEXT(void *_context, GLuint vaobj, GLenum array);
+REGAL_DECL void REGAL_CALL plugin_glEnableVertexArrayEXT(void *_context, GLuint vaobj, GLenum array);
+REGAL_DECL void REGAL_CALL plugin_glFlushMappedNamedBufferRangeEXT(void *_context, GLuint buffer, GLintptr offset, GLsizeiptr length);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferDrawBufferEXT(void *_context, GLuint framebuffer, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferDrawBuffersEXT(void *_context, GLuint framebuffer, GLsizei n, const GLenum *bufs);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferReadBufferEXT(void *_context, GLuint framebuffer, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glGenerateMultiTexMipmapEXT(void *_context, GLenum texunit, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGenerateTextureMipmapEXT(void *_context, GLuint texture, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGetCompressedMultiTexImageEXT(void *_context, GLenum texunit, GLenum target, GLint lod, GLvoid *img);
+REGAL_DECL void REGAL_CALL plugin_glGetCompressedTextureImageEXT(void *_context, GLuint texture, GLenum target, GLint lod, GLvoid *img);
+REGAL_DECL void REGAL_CALL plugin_glGetDoubleIndexedvEXT(void *_context, GLenum target, GLuint index, GLdouble *data);
+REGAL_DECL void REGAL_CALL plugin_glGetDoublei_vEXT(void *_context, GLenum target, GLuint index, GLdouble *data);
+REGAL_DECL void REGAL_CALL plugin_glGetFloatIndexedvEXT(void *_context, GLenum target, GLuint index, GLfloat *data);
+REGAL_DECL void REGAL_CALL plugin_glGetFloati_vEXT(void *_context, GLenum target, GLuint index, GLfloat *data);
+REGAL_DECL void REGAL_CALL plugin_glGetFramebufferParameterivEXT(void *_context, GLuint framebuffer, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexEnvfvEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexEnvivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexGendvEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexGenfvEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexGenivEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexImageEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexLevelParameterfvEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexLevelParameterivEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterIivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterIuivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterfvEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMultiTexParameterivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferParameterivEXT(void *_context, GLuint buffer, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferPointervEXT(void *_context, GLuint buffer, GLenum pname, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferSubDataEXT(void *_context, GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedFramebufferAttachmentParameterivEXT(void *_context, GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterIivEXT(void *_context, GLuint program, GLenum target, GLuint index, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterIuivEXT(void *_context, GLuint program, GLenum target, GLuint index, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterdvEXT(void *_context, GLuint program, GLenum target, GLuint index, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramLocalParameterfvEXT(void *_context, GLuint program, GLenum target, GLuint index, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramStringEXT(void *_context, GLuint program, GLenum target, GLenum pname, GLvoid *string);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedProgramivEXT(void *_context, GLuint program, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedRenderbufferParameterivEXT(void *_context, GLuint renderbuffer, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetPointerIndexedvEXT(void *_context, GLenum target, GLuint index, GLvoid **data);
+REGAL_DECL void REGAL_CALL plugin_glGetPointeri_vEXT(void *_context, GLenum pname, GLuint index, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glGetTextureImageEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glGetTextureLevelParameterfvEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTextureLevelParameterivEXT(void *_context, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterIivEXT(void *_context, GLuint texture, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterIuivEXT(void *_context, GLuint texture, GLenum target, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterfvEXT(void *_context, GLuint texture, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTextureParameterivEXT(void *_context, GLuint texture, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayIntegeri_vEXT(void *_context, GLuint vaobj, GLuint index, GLenum pname, GLint *param);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayIntegervEXT(void *_context, GLuint vaobj, GLenum pname, GLint *param);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayPointeri_vEXT(void *_context, GLuint vaobj, GLuint index, GLenum pname, GLvoid **param);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexArrayPointervEXT(void *_context, GLuint vaobj, GLenum pname, GLvoid **param);
+REGAL_DECL void REGAL_CALL plugin_glMatrixFrustumEXT(void *_context, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+REGAL_DECL void REGAL_CALL plugin_glMatrixLoadIdentityEXT(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glMatrixLoadTransposedEXT(void *_context, GLenum mode, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixLoadTransposefEXT(void *_context, GLenum mode, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixLoaddEXT(void *_context, GLenum mode, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixLoadfEXT(void *_context, GLenum mode, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixMultTransposedEXT(void *_context, GLenum mode, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixMultTransposefEXT(void *_context, GLenum mode, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixMultdEXT(void *_context, GLenum mode, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixMultfEXT(void *_context, GLenum mode, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glMatrixOrthoEXT(void *_context, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+REGAL_DECL void REGAL_CALL plugin_glMatrixPopEXT(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glMatrixPushEXT(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glMatrixRotatedEXT(void *_context, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glMatrixRotatefEXT(void *_context, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glMatrixScaledEXT(void *_context, GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glMatrixScalefEXT(void *_context, GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glMatrixTranslatedEXT(void *_context, GLenum mode, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glMatrixTranslatefEXT(void *_context, GLenum mode, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexBufferEXT(void *_context, GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoordPointerEXT(void *_context, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexEnvfEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexEnvfvEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexEnviEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexEnvivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexGendEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, GLdouble param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexGendvEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexGenfEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexGenfvEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexGeniEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexGenivEXT(void *_context, GLenum texunit, GLenum coord, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexImage1DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexImage2DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexImage3DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterIivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterIuivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterfEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterfvEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, const GLfloat *param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexParameteriEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexParameterivEXT(void *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *param);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexRenderbufferEXT(void *_context, GLenum texunit, GLenum target, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexSubImage1DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexSubImage2DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexSubImage3DEXT(void *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glNamedBufferDataEXT(void *_context, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage);
+REGAL_DECL void REGAL_CALL plugin_glNamedBufferSubDataEXT(void *_context, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glNamedCopyBufferSubDataEXT(void *_context, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferRenderbufferEXT(void *_context, GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTexture1DEXT(void *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTexture2DEXT(void *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTexture3DEXT(void *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTextureEXT(void *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTextureFaceEXT(void *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face);
+REGAL_DECL void REGAL_CALL plugin_glNamedFramebufferTextureLayerEXT(void *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4dEXT(void *_context, GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4dvEXT(void *_context, GLuint program, GLenum target, GLuint index, const GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4fEXT(void *_context, GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameter4fvEXT(void *_context, GLuint program, GLenum target, GLuint index, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4iEXT(void *_context, GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4ivEXT(void *_context, GLuint program, GLenum target, GLuint index, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4uiEXT(void *_context, GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameterI4uivEXT(void *_context, GLuint program, GLenum target, GLuint index, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParameters4fvEXT(void *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParametersI4ivEXT(void *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramLocalParametersI4uivEXT(void *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glNamedProgramStringEXT(void *_context, GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string);
+REGAL_DECL void REGAL_CALL plugin_glNamedRenderbufferStorageEXT(void *_context, GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glNamedRenderbufferStorageMultisampleCoverageEXT(void *_context, GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glNamedRenderbufferStorageMultisampleEXT(void *_context, GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1dEXT(void *_context, GLuint program, GLint location, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1dvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1fEXT(void *_context, GLuint program, GLint location, GLfloat v0);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1fvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1iEXT(void *_context, GLuint program, GLint location, GLint v0);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1uiEXT(void *_context, GLuint program, GLint location, GLuint v0);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1uivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2dEXT(void *_context, GLuint program, GLint location, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2dvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2fEXT(void *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2fvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2iEXT(void *_context, GLuint program, GLint location, GLint v0, GLint v1);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2uiEXT(void *_context, GLuint program, GLint location, GLuint v0, GLuint v1);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2uivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3dEXT(void *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3dvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3fEXT(void *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3fvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3iEXT(void *_context, GLuint program, GLint location, GLint v0, GLint v1, GLint v2);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3uiEXT(void *_context, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3uivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4dEXT(void *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4dvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4fEXT(void *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4fvEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4iEXT(void *_context, GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4uiEXT(void *_context, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4uivEXT(void *_context, GLuint program, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x3fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix2x4fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x2fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix3x4fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x2fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3dvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformMatrix4x3fvEXT(void *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glPushClientAttribDefaultEXT(void *_context, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glTextureBufferEXT(void *_context, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glTextureImage1DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTextureImage2DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTextureImage3DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTextureParameterIivEXT(void *_context, GLuint texture, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glTextureParameterIuivEXT(void *_context, GLuint texture, GLenum target, GLenum pname, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glTextureParameterfEXT(void *_context, GLuint texture, GLenum target, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glTextureParameterfvEXT(void *_context, GLuint texture, GLenum target, GLenum pname, const GLfloat *param);
+REGAL_DECL void REGAL_CALL plugin_glTextureParameteriEXT(void *_context, GLuint texture, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glTextureParameterivEXT(void *_context, GLuint texture, GLenum target, GLenum pname, const GLint *param);
+REGAL_DECL void REGAL_CALL plugin_glTextureRenderbufferEXT(void *_context, GLuint texture, GLenum target, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glTextureSubImage1DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTextureSubImage2DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTextureSubImage3DEXT(void *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayColorOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayEdgeFlagOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayFogCoordOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayIndexOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayMultiTexCoordOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayNormalOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArraySecondaryColorOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayTexCoordOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribIOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset);
 #endif
 
 /**
@@ -14690,7 +14690,7 @@ REGAL_DECL void REGAL_CALL glDiscardFramebufferEXT(GLenum target, GLsizei numAtt
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DISCARD_FRAMEBUFFER
-REGAL_DECL void REGAL_CALL plugin_glDiscardFramebufferEXT(GLenum target, GLsizei numAttachments, const GLenum *attachments);
+REGAL_DECL void REGAL_CALL plugin_glDiscardFramebufferEXT(void *_context, GLenum target, GLsizei numAttachments, const GLenum *attachments);
 #endif
 
 /**
@@ -14743,8 +14743,8 @@ REGAL_DECL void REGAL_CALL glQueryCounterEXT(GLuint id, GLenum target);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DISJOINT_TIMER_QUERY
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectivEXT(GLuint id, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glQueryCounterEXT(GLuint id, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectivEXT(void *_context, GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glQueryCounterEXT(void *_context, GLuint id, GLenum target);
 #endif
 
 /**
@@ -14803,12 +14803,12 @@ REGAL_DECL void REGAL_CALL glGetIntegerIndexedvEXT(GLenum value, GLuint index, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DRAW_BUFFERS2
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsEnabledIndexedEXT(GLenum target, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glColorMaskIndexedEXT(GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
-REGAL_DECL void REGAL_CALL plugin_glDisableIndexedEXT(GLenum target, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glEnableIndexedEXT(GLenum target, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glGetBooleanIndexedvEXT(GLenum value, GLuint index, GLboolean *data);
-REGAL_DECL void REGAL_CALL plugin_glGetIntegerIndexedvEXT(GLenum value, GLuint index, GLint *data);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsEnabledIndexedEXT(void *_context, GLenum target, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glColorMaskIndexedEXT(void *_context, GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+REGAL_DECL void REGAL_CALL plugin_glDisableIndexedEXT(void *_context, GLenum target, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glEnableIndexedEXT(void *_context, GLenum target, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glGetBooleanIndexedvEXT(void *_context, GLenum value, GLuint index, GLboolean *data);
+REGAL_DECL void REGAL_CALL plugin_glGetIntegerIndexedvEXT(void *_context, GLenum value, GLuint index, GLint *data);
 #endif
 
 /**
@@ -14855,8 +14855,8 @@ REGAL_DECL void REGAL_CALL glDrawElementsInstancedEXT(GLenum mode, GLsizei count
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DRAW_INSTANCED
-REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedEXT(GLenum mode, GLint start, GLsizei count, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedEXT(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstancedEXT(void *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstancedEXT(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
 #endif
 
 /**
@@ -14905,7 +14905,7 @@ REGAL_DECL void REGAL_CALL glDrawRangeElementsEXT(GLenum mode, GLuint start, GLu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_DRAW_RANGE_ELEMENTS
-REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementsEXT(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices);
+REGAL_DECL void REGAL_CALL plugin_glDrawRangeElementsEXT(void *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices);
 #endif
 
 /**
@@ -14972,11 +14972,11 @@ REGAL_DECL void REGAL_CALL glFogCoordfvEXT(const GLfloat *coord);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_FOG_COORD
-REGAL_DECL void REGAL_CALL plugin_glFogCoordPointerEXT(GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glFogCoorddEXT(GLdouble coord);
-REGAL_DECL void REGAL_CALL plugin_glFogCoorddvEXT(const GLdouble *coord);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordfEXT(GLfloat coord);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordfvEXT(const GLfloat *coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordPointerEXT(void *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glFogCoorddEXT(void *_context, GLdouble coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoorddvEXT(void *_context, const GLdouble *coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordfEXT(void *_context, GLfloat coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordfvEXT(void *_context, const GLfloat *coord);
 #endif
 
 /**
@@ -15094,24 +15094,24 @@ REGAL_DECL void REGAL_CALL glLightEnviEXT(GLenum pname, GLint param);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_FRAGMENT_LIGHTING
-REGAL_DECL void REGAL_CALL plugin_glFragmentColorMaterialEXT(GLenum face, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfEXT(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfvEXT(GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModeliEXT(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelivEXT(GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightfEXT(GLenum light, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightfvEXT(GLenum light, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightiEXT(GLenum light, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightivEXT(GLenum light, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfEXT(GLenum face, GLenum pname, const GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfvEXT(GLenum face, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialiEXT(GLenum face, GLenum pname, const GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialivEXT(GLenum face, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightfvEXT(GLenum light, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightivEXT(GLenum light, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialfvEXT(GLenum face, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialivEXT(GLenum face, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glLightEnviEXT(GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentColorMaterialEXT(void *_context, GLenum face, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfEXT(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfvEXT(void *_context, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModeliEXT(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelivEXT(void *_context, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightfEXT(void *_context, GLenum light, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightfvEXT(void *_context, GLenum light, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightiEXT(void *_context, GLenum light, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightivEXT(void *_context, GLenum light, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfEXT(void *_context, GLenum face, GLenum pname, const GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfvEXT(void *_context, GLenum face, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialiEXT(void *_context, GLenum face, GLenum pname, const GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialivEXT(void *_context, GLenum face, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightfvEXT(void *_context, GLenum light, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightivEXT(void *_context, GLenum light, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialfvEXT(void *_context, GLenum face, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialivEXT(void *_context, GLenum face, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glLightEnviEXT(void *_context, GLenum pname, GLint param);
 #endif
 
 /**
@@ -15162,7 +15162,7 @@ REGAL_DECL void REGAL_CALL glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_FRAMEBUFFER_BLIT
-REGAL_DECL void REGAL_CALL plugin_glBlitFramebufferEXT(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+REGAL_DECL void REGAL_CALL plugin_glBlitFramebufferEXT(void *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 #endif
 
 /**
@@ -15212,7 +15212,7 @@ REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleEXT(GLenum target, GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_FRAMEBUFFER_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleEXT(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleEXT(void *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -15391,23 +15391,23 @@ REGAL_DECL void REGAL_CALL glRenderbufferStorageEXT(GLenum target, GLenum intern
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_FRAMEBUFFER_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsFramebufferEXT(GLuint framebuffer);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsRenderbufferEXT(GLuint renderbuffer);
-REGAL_DECL GLenum REGAL_CALL plugin_glCheckFramebufferStatusEXT(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glBindFramebufferEXT(GLenum target, GLuint framebuffer);
-REGAL_DECL void REGAL_CALL plugin_glBindRenderbufferEXT(GLenum target, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glDeleteFramebuffersEXT(GLsizei n, const GLuint *framebuffers);
-REGAL_DECL void REGAL_CALL plugin_glDeleteRenderbuffersEXT(GLsizei n, const GLuint *renderbuffers);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferRenderbufferEXT(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture1DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture3DEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
-REGAL_DECL void REGAL_CALL plugin_glGenFramebuffersEXT(GLsizei n, GLuint *framebuffers);
-REGAL_DECL void REGAL_CALL plugin_glGenRenderbuffersEXT(GLsizei n, GLuint *renderbuffers);
-REGAL_DECL void REGAL_CALL plugin_glGenerateMipmapEXT(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGetFramebufferAttachmentParameterivEXT(GLenum target, GLenum attachment, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetRenderbufferParameterivEXT(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageEXT(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsFramebufferEXT(void *_context, GLuint framebuffer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsRenderbufferEXT(void *_context, GLuint renderbuffer);
+REGAL_DECL GLenum REGAL_CALL plugin_glCheckFramebufferStatusEXT(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glBindFramebufferEXT(void *_context, GLenum target, GLuint framebuffer);
+REGAL_DECL void REGAL_CALL plugin_glBindRenderbufferEXT(void *_context, GLenum target, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glDeleteFramebuffersEXT(void *_context, GLsizei n, const GLuint *framebuffers);
+REGAL_DECL void REGAL_CALL plugin_glDeleteRenderbuffersEXT(void *_context, GLsizei n, const GLuint *renderbuffers);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferRenderbufferEXT(void *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture1DEXT(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DEXT(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture3DEXT(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+REGAL_DECL void REGAL_CALL plugin_glGenFramebuffersEXT(void *_context, GLsizei n, GLuint *framebuffers);
+REGAL_DECL void REGAL_CALL plugin_glGenRenderbuffersEXT(void *_context, GLsizei n, GLuint *renderbuffers);
+REGAL_DECL void REGAL_CALL plugin_glGenerateMipmapEXT(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGetFramebufferAttachmentParameterivEXT(void *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetRenderbufferParameterivEXT(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageEXT(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -15513,9 +15513,9 @@ REGAL_DECL void REGAL_CALL glProgramParameteriEXT(GLuint program, GLenum pname, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_GEOMETRY_SHADER4
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureEXT(GLenum target, GLenum attachment, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureFaceEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameteriEXT(GLuint program, GLenum pname, GLint value);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureEXT(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureFaceEXT(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameteriEXT(void *_context, GLuint program, GLenum pname, GLint value);
 #endif
 
 /**
@@ -15562,8 +15562,8 @@ REGAL_DECL void REGAL_CALL glProgramLocalParameters4fvEXT(GLenum target, GLuint 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_GPU_PROGRAM_PARAMETERS
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameters4fvEXT(GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameters4fvEXT(void *_context, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameters4fvEXT(void *_context, GLenum target, GLuint index, GLsizei count, const GLfloat *params);
 #endif
 
 /**
@@ -15735,40 +15735,40 @@ REGAL_DECL void REGAL_CALL glVertexAttribIPointerEXT(GLuint index, GLint size, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_GPU_SHADER4
-REGAL_DECL GLint REGAL_CALL plugin_glGetFragDataLocationEXT(GLuint program, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glBindFragDataLocationEXT(GLuint program, GLuint color, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformuivEXT(GLuint program, GLint location, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIivEXT(GLuint index, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIuivEXT(GLuint index, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glUniform1uiEXT(GLint location, GLuint v0);
-REGAL_DECL void REGAL_CALL plugin_glUniform1uivEXT(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2uiEXT(GLint location, GLuint v0, GLuint v1);
-REGAL_DECL void REGAL_CALL plugin_glUniform2uivEXT(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2);
-REGAL_DECL void REGAL_CALL plugin_glUniform3uivEXT(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4uiEXT(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
-REGAL_DECL void REGAL_CALL plugin_glUniform4uivEXT(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1iEXT(GLuint index, GLint x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1ivEXT(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1uiEXT(GLuint index, GLuint x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1uivEXT(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2iEXT(GLuint index, GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2ivEXT(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2uiEXT(GLuint index, GLuint x, GLuint y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2uivEXT(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3iEXT(GLuint index, GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3ivEXT(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3uiEXT(GLuint index, GLuint x, GLuint y, GLuint z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3uivEXT(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4bvEXT(GLuint index, const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4iEXT(GLuint index, GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ivEXT(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4svEXT(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ubvEXT(GLuint index, const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4uiEXT(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4uivEXT(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4usvEXT(GLuint index, const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribIPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL GLint REGAL_CALL plugin_glGetFragDataLocationEXT(void *_context, GLuint program, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glBindFragDataLocationEXT(void *_context, GLuint program, GLuint color, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformuivEXT(void *_context, GLuint program, GLint location, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIivEXT(void *_context, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIuivEXT(void *_context, GLuint index, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glUniform1uiEXT(void *_context, GLint location, GLuint v0);
+REGAL_DECL void REGAL_CALL plugin_glUniform1uivEXT(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2uiEXT(void *_context, GLint location, GLuint v0, GLuint v1);
+REGAL_DECL void REGAL_CALL plugin_glUniform2uivEXT(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3uiEXT(void *_context, GLint location, GLuint v0, GLuint v1, GLuint v2);
+REGAL_DECL void REGAL_CALL plugin_glUniform3uivEXT(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4uiEXT(void *_context, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+REGAL_DECL void REGAL_CALL plugin_glUniform4uivEXT(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1iEXT(void *_context, GLuint index, GLint x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1ivEXT(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1uiEXT(void *_context, GLuint index, GLuint x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1uivEXT(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2iEXT(void *_context, GLuint index, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2ivEXT(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2uiEXT(void *_context, GLuint index, GLuint x, GLuint y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2uivEXT(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3iEXT(void *_context, GLuint index, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3ivEXT(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3uiEXT(void *_context, GLuint index, GLuint x, GLuint y, GLuint z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3uivEXT(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4bvEXT(void *_context, GLuint index, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4iEXT(void *_context, GLuint index, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ivEXT(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4svEXT(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ubvEXT(void *_context, GLuint index, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4uiEXT(void *_context, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4uivEXT(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4usvEXT(void *_context, GLuint index, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribIPointerEXT(void *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -15855,16 +15855,16 @@ REGAL_DECL void REGAL_CALL glResetMinmaxEXT(GLenum target);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_HISTOGRAM
-REGAL_DECL void REGAL_CALL plugin_glGetHistogramEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
-REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameterfvEXT(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameterivEXT(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMinmaxEXT(GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
-REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameterfvEXT(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameterivEXT(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glHistogramEXT(GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
-REGAL_DECL void REGAL_CALL plugin_glMinmaxEXT(GLenum target, GLenum internalformat, GLboolean sink);
-REGAL_DECL void REGAL_CALL plugin_glResetHistogramEXT(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glResetMinmaxEXT(GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGetHistogramEXT(void *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
+REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameterfvEXT(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetHistogramParameterivEXT(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMinmaxEXT(void *_context, GLenum target, GLboolean reset, GLenum format, GLenum type, GLvoid *values);
+REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameterfvEXT(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMinmaxParameterivEXT(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glHistogramEXT(void *_context, GLenum target, GLsizei width, GLenum internalformat, GLboolean sink);
+REGAL_DECL void REGAL_CALL plugin_glMinmaxEXT(void *_context, GLenum target, GLenum internalformat, GLboolean sink);
+REGAL_DECL void REGAL_CALL plugin_glResetHistogramEXT(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glResetMinmaxEXT(void *_context, GLenum target);
 #endif
 
 /**
@@ -15908,7 +15908,7 @@ REGAL_DECL void REGAL_CALL glIndexFuncEXT(GLenum func, GLfloat ref);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_INDEX_FUNC
-REGAL_DECL void REGAL_CALL plugin_glIndexFuncEXT(GLenum func, GLfloat ref);
+REGAL_DECL void REGAL_CALL plugin_glIndexFuncEXT(void *_context, GLenum func, GLfloat ref);
 #endif
 
 /**
@@ -15952,7 +15952,7 @@ REGAL_DECL void REGAL_CALL glIndexMaterialEXT(GLenum face, GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_INDEX_MATERIAL
-REGAL_DECL void REGAL_CALL plugin_glIndexMaterialEXT(GLenum face, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glIndexMaterialEXT(void *_context, GLenum face, GLenum mode);
 #endif
 
 /**
@@ -16014,9 +16014,9 @@ REGAL_DECL void REGAL_CALL glTextureMaterialEXT(GLenum face, GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_LIGHT_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glApplyTextureEXT(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glTextureLightEXT(GLenum pname);
-REGAL_DECL void REGAL_CALL plugin_glTextureMaterialEXT(GLenum face, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glApplyTextureEXT(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glTextureLightEXT(void *_context, GLenum pname);
+REGAL_DECL void REGAL_CALL plugin_glTextureMaterialEXT(void *_context, GLenum face, GLenum mode);
 #endif
 
 /**
@@ -16072,8 +16072,8 @@ REGAL_DECL void REGAL_CALL glFlushMappedBufferRangeEXT(GLenum target, GLintptr o
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_MAP_BUFFER_RANGE
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
-REGAL_DECL void REGAL_CALL plugin_glFlushMappedBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferRangeEXT(void *_context, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+REGAL_DECL void REGAL_CALL plugin_glFlushMappedBufferRangeEXT(void *_context, GLenum target, GLintptr offset, GLsizeiptr length);
 #endif
 
 /**
@@ -16120,8 +16120,8 @@ REGAL_DECL void REGAL_CALL glMultiDrawElementsEXT(GLenum mode, const GLsizei *co
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_MULTI_DRAW_ARRAYS
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysEXT(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsEXT(GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawArraysEXT(void *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawElementsEXT(void *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount);
 #endif
 
 /**
@@ -16188,8 +16188,8 @@ REGAL_DECL void REGAL_CALL glSamplePatternEXT(GLenum pattern);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glSampleMaskEXT(GLclampf value, GLboolean invert);
-REGAL_DECL void REGAL_CALL plugin_glSamplePatternEXT(GLenum pattern);
+REGAL_DECL void REGAL_CALL plugin_glSampleMaskEXT(void *_context, GLclampf value, GLboolean invert);
+REGAL_DECL void REGAL_CALL plugin_glSamplePatternEXT(void *_context, GLenum pattern);
 #endif
 
 /**
@@ -16237,7 +16237,7 @@ REGAL_DECL void REGAL_CALL glFramebufferTexture2DMultisampleEXT(GLenum target, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_MULTISAMPLED_RENDER_TO_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DMultisampleEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DMultisampleEXT(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
 #endif
 
 /**
@@ -16295,9 +16295,9 @@ REGAL_DECL void REGAL_CALL glReadBufferIndexedEXT(GLenum src, GLint index);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_MULTIVIEW_DRAW_BUFFERS
-REGAL_DECL void REGAL_CALL plugin_glDrawBuffersIndexedEXT(GLint n, const GLenum *location, const GLint *indices);
-REGAL_DECL void REGAL_CALL plugin_glGetIntegeri_vEXT(GLenum target, GLuint index, GLint *data);
-REGAL_DECL void REGAL_CALL plugin_glReadBufferIndexedEXT(GLenum src, GLint index);
+REGAL_DECL void REGAL_CALL plugin_glDrawBuffersIndexedEXT(void *_context, GLint n, const GLenum *location, const GLint *indices);
+REGAL_DECL void REGAL_CALL plugin_glGetIntegeri_vEXT(void *_context, GLenum target, GLuint index, GLint *data);
+REGAL_DECL void REGAL_CALL plugin_glReadBufferIndexedEXT(void *_context, GLenum src, GLint index);
 #endif
 
 /**
@@ -16367,13 +16367,13 @@ REGAL_DECL void REGAL_CALL glGetQueryivEXT(GLenum target, GLenum pname, GLint *p
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_OCCLUSION_QUERY_BOOLEAN
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsQueryEXT(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBeginQueryEXT(GLenum target, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteQueriesEXT(GLsizei n, const GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glEndQueryEXT(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGenQueriesEXT(GLsizei n, GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuivEXT(GLuint id, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryivEXT(GLenum target, GLenum pname, GLint *params);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsQueryEXT(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBeginQueryEXT(void *_context, GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteQueriesEXT(void *_context, GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glEndQueryEXT(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGenQueriesEXT(void *_context, GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuivEXT(void *_context, GLuint id, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryivEXT(void *_context, GLenum target, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -16549,10 +16549,10 @@ REGAL_DECL void REGAL_CALL glGetColorTableParameterivEXT(GLenum target, GLenum p
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_PALETTED_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glColorTableEXT(GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableEXT(GLenum target, GLenum format, GLenum type, GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterfvEXT(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterivEXT(GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glColorTableEXT(void *_context, GLenum target, GLenum internalFormat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableEXT(void *_context, GLenum target, GLenum format, GLenum type, GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterfvEXT(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterivEXT(void *_context, GLenum target, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -16658,12 +16658,12 @@ REGAL_DECL void REGAL_CALL glPixelTransformParameterivEXT(GLenum target, GLenum 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_PIXEL_TRANSFORM
-REGAL_DECL void REGAL_CALL plugin_glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameterfEXT(GLenum target, GLenum pname, const GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameteriEXT(GLenum target, GLenum pname, const GLint param);
-REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetPixelTransformParameterfvEXT(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetPixelTransformParameterivEXT(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameterfEXT(void *_context, GLenum target, GLenum pname, const GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameterfvEXT(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameteriEXT(void *_context, GLenum target, GLenum pname, const GLint param);
+REGAL_DECL void REGAL_CALL plugin_glPixelTransformParameterivEXT(void *_context, GLenum target, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -16717,8 +16717,8 @@ REGAL_DECL void REGAL_CALL glPointParameterfvEXT(GLenum pname, const GLfloat *pa
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_POINT_PARAMETERS
-REGAL_DECL void REGAL_CALL plugin_glPointParameterfEXT(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterfvEXT(GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterfEXT(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterfvEXT(void *_context, GLenum pname, const GLfloat *params);
 #endif
 
 /**
@@ -16768,7 +16768,7 @@ REGAL_DECL void REGAL_CALL glPolygonOffsetEXT(GLfloat factor, GLfloat bias);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_POLYGON_OFFSET
-REGAL_DECL void REGAL_CALL plugin_glPolygonOffsetEXT(GLfloat factor, GLfloat bias);
+REGAL_DECL void REGAL_CALL plugin_glPolygonOffsetEXT(void *_context, GLfloat factor, GLfloat bias);
 #endif
 
 /**
@@ -16819,7 +16819,7 @@ REGAL_DECL void REGAL_CALL glProvokingVertexEXT(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_PROVOKING_VERTEX
-REGAL_DECL void REGAL_CALL plugin_glProvokingVertexEXT(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glProvokingVertexEXT(void *_context, GLenum mode);
 #endif
 
 /**
@@ -16944,9 +16944,9 @@ REGAL_DECL void REGAL_CALL glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLs
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_ROBUSTNESS
-REGAL_DECL void REGAL_CALL plugin_glGetnUniformfvEXT(GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetnUniformivEXT(GLuint program, GLint location, GLsizei bufSize, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glGetnUniformfvEXT(void *_context, GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetnUniformivEXT(void *_context, GLuint program, GLint location, GLsizei bufSize, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glReadnPixelsEXT(void *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data);
 #endif
 
 /**
@@ -17025,8 +17025,8 @@ REGAL_DECL void REGAL_CALL glEndSceneEXT(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_SCENE_MARKER
-REGAL_DECL void REGAL_CALL plugin_glBeginSceneEXT(void);
-REGAL_DECL void REGAL_CALL plugin_glEndSceneEXT(void);
+REGAL_DECL void REGAL_CALL plugin_glBeginSceneEXT(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glEndSceneEXT(void *_context);
 #endif
 
 /**
@@ -17128,23 +17128,23 @@ REGAL_DECL void REGAL_CALL glSecondaryColorPointerEXT(GLint size, GLenum type, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_SECONDARY_COLOR
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3bEXT(GLbyte red, GLbyte green, GLbyte blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3bvEXT(const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3dEXT(GLdouble red, GLdouble green, GLdouble blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3dvEXT(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3fEXT(GLfloat red, GLfloat green, GLfloat blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3fvEXT(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3iEXT(GLint red, GLint green, GLint blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ivEXT(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3sEXT(GLshort red, GLshort green, GLshort blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3svEXT(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ubEXT(GLubyte red, GLubyte green, GLubyte blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ubvEXT(const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3uiEXT(GLuint red, GLuint green, GLuint blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3uivEXT(const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3usEXT(GLushort red, GLushort green, GLushort blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3usvEXT(const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColorPointerEXT(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3bEXT(void *_context, GLbyte red, GLbyte green, GLbyte blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3bvEXT(void *_context, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3dEXT(void *_context, GLdouble red, GLdouble green, GLdouble blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3dvEXT(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3fEXT(void *_context, GLfloat red, GLfloat green, GLfloat blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3fvEXT(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3iEXT(void *_context, GLint red, GLint green, GLint blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ivEXT(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3sEXT(void *_context, GLshort red, GLshort green, GLshort blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3svEXT(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ubEXT(void *_context, GLubyte red, GLubyte green, GLubyte blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ubvEXT(void *_context, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3uiEXT(void *_context, GLuint red, GLuint green, GLuint blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3uivEXT(void *_context, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3usEXT(void *_context, GLushort red, GLushort green, GLushort blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3usvEXT(void *_context, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColorPointerEXT(void *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -17198,9 +17198,9 @@ REGAL_DECL void REGAL_CALL glUseShaderProgramEXT(GLenum type, GLuint program);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_SEPARATE_SHADER_OBJECTS
-REGAL_DECL GLuint REGAL_CALL plugin_glCreateShaderProgramEXT(GLenum type, const GLchar *string);
-REGAL_DECL void REGAL_CALL plugin_glActiveProgramEXT(GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glUseShaderProgramEXT(GLenum type, GLuint program);
+REGAL_DECL GLuint REGAL_CALL plugin_glCreateShaderProgramEXT(void *_context, GLenum type, const GLchar *string);
+REGAL_DECL void REGAL_CALL plugin_glActiveProgramEXT(void *_context, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glUseShaderProgramEXT(void *_context, GLenum type, GLuint program);
 #endif
 
 /**
@@ -17371,8 +17371,8 @@ REGAL_DECL void REGAL_CALL glMemoryBarrierEXT(GLbitfield barriers);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_SHADER_IMAGE_LOAD_STORE
-REGAL_DECL void REGAL_CALL plugin_glBindImageTextureEXT(GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format);
-REGAL_DECL void REGAL_CALL plugin_glMemoryBarrierEXT(GLbitfield barriers);
+REGAL_DECL void REGAL_CALL plugin_glBindImageTextureEXT(void *_context, GLuint index, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLint format);
+REGAL_DECL void REGAL_CALL plugin_glMemoryBarrierEXT(void *_context, GLbitfield barriers);
 #endif
 
 /**
@@ -17488,7 +17488,7 @@ REGAL_DECL void REGAL_CALL glStencilClearTagEXT(GLsizei stencilTagBits, GLuint s
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_STENCIL_CLEAR_TAG
-REGAL_DECL void REGAL_CALL plugin_glStencilClearTagEXT(GLsizei stencilTagBits, GLuint stencilClearTag);
+REGAL_DECL void REGAL_CALL plugin_glStencilClearTagEXT(void *_context, GLsizei stencilTagBits, GLuint stencilClearTag);
 #endif
 
 /**
@@ -17537,7 +17537,7 @@ REGAL_DECL void REGAL_CALL glActiveStencilFaceEXT(GLenum face);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_STENCIL_TWO_SIDE
-REGAL_DECL void REGAL_CALL plugin_glActiveStencilFaceEXT(GLenum face);
+REGAL_DECL void REGAL_CALL plugin_glActiveStencilFaceEXT(void *_context, GLenum face);
 #endif
 
 /**
@@ -17620,9 +17620,9 @@ REGAL_DECL void REGAL_CALL glTexSubImage3DEXT(GLenum target, GLint level, GLint 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_SUBTEXTURE
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage1DEXT(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage2DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage3DEXT(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage1DEXT(void *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage2DEXT(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage3DEXT(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
 #endif
 
 /**
@@ -17751,7 +17751,7 @@ REGAL_DECL void REGAL_CALL glTexImage3DEXT(GLenum target, GLint level, GLenum in
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TEXTURE3D
-REGAL_DECL void REGAL_CALL plugin_glTexImage3DEXT(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexImage3DEXT(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
 #endif
 
 /**
@@ -17806,7 +17806,7 @@ REGAL_DECL void REGAL_CALL glFramebufferTextureLayerEXT(GLenum target, GLenum at
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TEXTURE_ARRAY
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureLayerEXT(GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureLayerEXT(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer);
 #endif
 
 /**
@@ -17858,7 +17858,7 @@ REGAL_DECL void REGAL_CALL glTexBufferEXT(GLenum target, GLenum internalformat, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TEXTURE_BUFFER_OBJECT
-REGAL_DECL void REGAL_CALL plugin_glTexBufferEXT(GLenum target, GLenum internalformat, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glTexBufferEXT(void *_context, GLenum target, GLenum internalformat, GLuint buffer);
 #endif
 
 /**
@@ -18265,12 +18265,12 @@ REGAL_DECL void REGAL_CALL glTexParameterIuivEXT(GLenum target, GLenum pname, co
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TEXTURE_INTEGER
-REGAL_DECL void REGAL_CALL plugin_glClearColorIiEXT(GLint red, GLint green, GLint blue, GLint alpha);
-REGAL_DECL void REGAL_CALL plugin_glClearColorIuiEXT(GLuint red, GLuint green, GLuint blue, GLuint alpha);
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIivEXT(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIuivEXT(GLenum target, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterIivEXT(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterIuivEXT(GLenum target, GLenum pname, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glClearColorIiEXT(void *_context, GLint red, GLint green, GLint blue, GLint alpha);
+REGAL_DECL void REGAL_CALL plugin_glClearColorIuiEXT(void *_context, GLuint red, GLuint green, GLuint blue, GLuint alpha);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIivEXT(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIuivEXT(void *_context, GLenum target, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterIivEXT(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterIuivEXT(void *_context, GLenum target, GLenum pname, const GLuint *params);
 #endif
 
 /**
@@ -18405,12 +18405,12 @@ REGAL_DECL void REGAL_CALL glPrioritizeTexturesEXT(GLsizei n, const GLuint *text
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TEXTURE_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glAreTexturesResidentEXT(GLsizei n, const GLuint *textures, GLboolean *residences);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsTextureEXT(GLuint texture);
-REGAL_DECL void REGAL_CALL plugin_glBindTextureEXT(GLenum target, GLuint texture);
-REGAL_DECL void REGAL_CALL plugin_glDeleteTexturesEXT(GLsizei n, const GLuint *textures);
-REGAL_DECL void REGAL_CALL plugin_glGenTexturesEXT(GLsizei n, GLuint *textures);
-REGAL_DECL void REGAL_CALL plugin_glPrioritizeTexturesEXT(GLsizei n, const GLuint *textures, const GLclampf *priorities);
+REGAL_DECL GLboolean REGAL_CALL plugin_glAreTexturesResidentEXT(void *_context, GLsizei n, const GLuint *textures, GLboolean *residences);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsTextureEXT(void *_context, GLuint texture);
+REGAL_DECL void REGAL_CALL plugin_glBindTextureEXT(void *_context, GLenum target, GLuint texture);
+REGAL_DECL void REGAL_CALL plugin_glDeleteTexturesEXT(void *_context, GLsizei n, const GLuint *textures);
+REGAL_DECL void REGAL_CALL plugin_glGenTexturesEXT(void *_context, GLsizei n, GLuint *textures);
+REGAL_DECL void REGAL_CALL plugin_glPrioritizeTexturesEXT(void *_context, GLsizei n, const GLuint *textures, const GLclampf *priorities);
 #endif
 
 /**
@@ -18459,7 +18459,7 @@ REGAL_DECL void REGAL_CALL glTextureNormalEXT(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TEXTURE_PERTURB_NORMAL
-REGAL_DECL void REGAL_CALL plugin_glTextureNormalEXT(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glTextureNormalEXT(void *_context, GLenum mode);
 #endif
 
 /**
@@ -18769,9 +18769,9 @@ REGAL_DECL void REGAL_CALL glTexStorage3DEXT(GLenum target, GLsizei levels, GLen
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TEXTURE_STORAGE
-REGAL_DECL void REGAL_CALL plugin_glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage1DEXT(void *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage2DEXT(void *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glTexStorage3DEXT(void *_context, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
 #endif
 
 /**
@@ -18890,8 +18890,8 @@ REGAL_DECL void REGAL_CALL glGetQueryObjectui64vEXT(GLuint id, GLenum pname, GLu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TIMER_QUERY
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjecti64vEXT(GLuint id, GLenum pname, GLint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectui64vEXT(GLuint id, GLenum pname, GLuint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjecti64vEXT(void *_context, GLuint id, GLenum pname, GLint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectui64vEXT(void *_context, GLuint id, GLenum pname, GLuint64EXT *params);
 #endif
 
 /**
@@ -18971,13 +18971,13 @@ REGAL_DECL void REGAL_CALL glTransformFeedbackVaryingsEXT(GLuint program, GLsize
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_TRANSFORM_FEEDBACK
-REGAL_DECL void REGAL_CALL plugin_glBeginTransformFeedbackEXT(GLenum primitiveMode);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferBaseEXT(GLenum target, GLuint index, GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferOffsetEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferRangeEXT(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
-REGAL_DECL void REGAL_CALL plugin_glEndTransformFeedbackEXT(void);
-REGAL_DECL void REGAL_CALL plugin_glGetTransformFeedbackVaryingEXT(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackVaryingsEXT(GLuint program, GLsizei count, const GLchar ** const varyings, GLenum bufferMode);
+REGAL_DECL void REGAL_CALL plugin_glBeginTransformFeedbackEXT(void *_context, GLenum primitiveMode);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferBaseEXT(void *_context, GLenum target, GLuint index, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferOffsetEXT(void *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferRangeEXT(void *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glEndTransformFeedbackEXT(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glGetTransformFeedbackVaryingEXT(void *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackVaryingsEXT(void *_context, GLuint program, GLsizei count, const GLchar ** const varyings, GLenum bufferMode);
 #endif
 
 /**
@@ -19115,15 +19115,15 @@ REGAL_DECL void REGAL_CALL glVertexPointerEXT(GLint size, GLenum type, GLsizei s
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_VERTEX_ARRAY
-REGAL_DECL void REGAL_CALL plugin_glArrayElementEXT(GLint i);
-REGAL_DECL void REGAL_CALL plugin_glColorPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glDrawArraysEXT(GLenum mode, GLint first, GLsizei count);
-REGAL_DECL void REGAL_CALL plugin_glEdgeFlagPointerEXT(GLsizei stride, GLsizei count, const GLboolean *pointer);
-REGAL_DECL void REGAL_CALL plugin_glGetPointervEXT(GLenum pname, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glIndexPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glNormalPointerEXT(GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glVertexPointerEXT(GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glArrayElementEXT(void *_context, GLint i);
+REGAL_DECL void REGAL_CALL plugin_glColorPointerEXT(void *_context, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glDrawArraysEXT(void *_context, GLenum mode, GLint first, GLsizei count);
+REGAL_DECL void REGAL_CALL plugin_glEdgeFlagPointerEXT(void *_context, GLsizei stride, GLsizei count, const GLboolean *pointer);
+REGAL_DECL void REGAL_CALL plugin_glGetPointervEXT(void *_context, GLenum pname, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glIndexPointerEXT(void *_context, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glNormalPointerEXT(void *_context, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordPointerEXT(void *_context, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glVertexPointerEXT(void *_context, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer);
 #endif
 
 /**
@@ -19212,17 +19212,17 @@ REGAL_DECL void REGAL_CALL glVertexAttribLPointerEXT(GLuint index, GLint size, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_VERTEX_ATTRIB_64BIT
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLdvEXT(GLuint index, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribLOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1dEXT(GLuint index, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1dvEXT(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2dEXT(GLuint index, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2dvEXT(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3dvEXT(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4dvEXT(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribLPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLdvEXT(void *_context, GLuint index, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayVertexAttribLOffsetEXT(void *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1dEXT(void *_context, GLuint index, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1dvEXT(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2dEXT(void *_context, GLuint index, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2dvEXT(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3dEXT(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3dvEXT(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4dEXT(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4dvEXT(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribLPointerEXT(void *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -19502,48 +19502,48 @@ REGAL_DECL void REGAL_CALL glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_VERTEX_SHADER
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsVariantEnabledEXT(GLuint id, GLenum cap);
-REGAL_DECL GLuint REGAL_CALL plugin_glBindLightParameterEXT(GLenum light, GLenum value);
-REGAL_DECL GLuint REGAL_CALL plugin_glBindMaterialParameterEXT(GLenum face, GLenum value);
-REGAL_DECL GLuint REGAL_CALL plugin_glBindParameterEXT(GLenum value);
-REGAL_DECL GLuint REGAL_CALL plugin_glBindTexGenParameterEXT(GLenum unit, GLenum coord, GLenum value);
-REGAL_DECL GLuint REGAL_CALL plugin_glBindTextureUnitParameterEXT(GLenum unit, GLenum value);
-REGAL_DECL GLuint REGAL_CALL plugin_glGenSymbolsEXT(GLenum datatype, GLenum storagetype, GLenum range, GLuint components);
-REGAL_DECL GLuint REGAL_CALL plugin_glGenVertexShadersEXT(GLuint range);
-REGAL_DECL void REGAL_CALL plugin_glBeginVertexShaderEXT(void);
-REGAL_DECL void REGAL_CALL plugin_glBindVertexShaderEXT(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteVertexShaderEXT(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDisableVariantClientStateEXT(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glEnableVariantClientStateEXT(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glEndVertexShaderEXT(void);
-REGAL_DECL void REGAL_CALL plugin_glExtractComponentEXT(GLuint res, GLuint src, GLuint num);
-REGAL_DECL void REGAL_CALL plugin_glGetInvariantBooleanvEXT(GLuint id, GLenum value, GLboolean *data);
-REGAL_DECL void REGAL_CALL plugin_glGetInvariantFloatvEXT(GLuint id, GLenum value, GLfloat *data);
-REGAL_DECL void REGAL_CALL plugin_glGetInvariantIntegervEXT(GLuint id, GLenum value, GLint *data);
-REGAL_DECL void REGAL_CALL plugin_glGetLocalConstantBooleanvEXT(GLuint id, GLenum value, GLboolean *data);
-REGAL_DECL void REGAL_CALL plugin_glGetLocalConstantFloatvEXT(GLuint id, GLenum value, GLfloat *data);
-REGAL_DECL void REGAL_CALL plugin_glGetLocalConstantIntegervEXT(GLuint id, GLenum value, GLint *data);
-REGAL_DECL void REGAL_CALL plugin_glGetVariantBooleanvEXT(GLuint id, GLenum value, GLboolean *data);
-REGAL_DECL void REGAL_CALL plugin_glGetVariantFloatvEXT(GLuint id, GLenum value, GLfloat *data);
-REGAL_DECL void REGAL_CALL plugin_glGetVariantIntegervEXT(GLuint id, GLenum value, GLint *data);
-REGAL_DECL void REGAL_CALL plugin_glGetVariantPointervEXT(GLuint id, GLenum value, GLvoid **data);
-REGAL_DECL void REGAL_CALL plugin_glInsertComponentEXT(GLuint res, GLuint src, GLuint num);
-REGAL_DECL void REGAL_CALL plugin_glSetInvariantEXT(GLuint id, GLenum type, const GLvoid *addr);
-REGAL_DECL void REGAL_CALL plugin_glSetLocalConstantEXT(GLuint id, GLenum type, const GLvoid *addr);
-REGAL_DECL void REGAL_CALL plugin_glShaderOp1EXT(GLenum op, GLuint res, GLuint arg1);
-REGAL_DECL void REGAL_CALL plugin_glShaderOp2EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2);
-REGAL_DECL void REGAL_CALL plugin_glShaderOp3EXT(GLenum op, GLuint res, GLuint arg1, GLuint arg2, GLuint arg3);
-REGAL_DECL void REGAL_CALL plugin_glSwizzleEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
-REGAL_DECL void REGAL_CALL plugin_glVariantPointerEXT(GLuint id, GLenum type, GLuint stride, const GLvoid *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantbvEXT(GLuint id, const GLbyte *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantdvEXT(GLuint id, const GLdouble *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantfvEXT(GLuint id, const GLfloat *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantivEXT(GLuint id, const GLint *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantsvEXT(GLuint id, const GLshort *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantubvEXT(GLuint id, const GLubyte *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantuivEXT(GLuint id, const GLuint *addr);
-REGAL_DECL void REGAL_CALL plugin_glVariantusvEXT(GLuint id, const GLushort *addr);
-REGAL_DECL void REGAL_CALL plugin_glWriteMaskEXT(GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsVariantEnabledEXT(void *_context, GLuint id, GLenum cap);
+REGAL_DECL GLuint REGAL_CALL plugin_glBindLightParameterEXT(void *_context, GLenum light, GLenum value);
+REGAL_DECL GLuint REGAL_CALL plugin_glBindMaterialParameterEXT(void *_context, GLenum face, GLenum value);
+REGAL_DECL GLuint REGAL_CALL plugin_glBindParameterEXT(void *_context, GLenum value);
+REGAL_DECL GLuint REGAL_CALL plugin_glBindTexGenParameterEXT(void *_context, GLenum unit, GLenum coord, GLenum value);
+REGAL_DECL GLuint REGAL_CALL plugin_glBindTextureUnitParameterEXT(void *_context, GLenum unit, GLenum value);
+REGAL_DECL GLuint REGAL_CALL plugin_glGenSymbolsEXT(void *_context, GLenum datatype, GLenum storagetype, GLenum range, GLuint components);
+REGAL_DECL GLuint REGAL_CALL plugin_glGenVertexShadersEXT(void *_context, GLuint range);
+REGAL_DECL void REGAL_CALL plugin_glBeginVertexShaderEXT(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glBindVertexShaderEXT(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteVertexShaderEXT(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDisableVariantClientStateEXT(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glEnableVariantClientStateEXT(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glEndVertexShaderEXT(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glExtractComponentEXT(void *_context, GLuint res, GLuint src, GLuint num);
+REGAL_DECL void REGAL_CALL plugin_glGetInvariantBooleanvEXT(void *_context, GLuint id, GLenum value, GLboolean *data);
+REGAL_DECL void REGAL_CALL plugin_glGetInvariantFloatvEXT(void *_context, GLuint id, GLenum value, GLfloat *data);
+REGAL_DECL void REGAL_CALL plugin_glGetInvariantIntegervEXT(void *_context, GLuint id, GLenum value, GLint *data);
+REGAL_DECL void REGAL_CALL plugin_glGetLocalConstantBooleanvEXT(void *_context, GLuint id, GLenum value, GLboolean *data);
+REGAL_DECL void REGAL_CALL plugin_glGetLocalConstantFloatvEXT(void *_context, GLuint id, GLenum value, GLfloat *data);
+REGAL_DECL void REGAL_CALL plugin_glGetLocalConstantIntegervEXT(void *_context, GLuint id, GLenum value, GLint *data);
+REGAL_DECL void REGAL_CALL plugin_glGetVariantBooleanvEXT(void *_context, GLuint id, GLenum value, GLboolean *data);
+REGAL_DECL void REGAL_CALL plugin_glGetVariantFloatvEXT(void *_context, GLuint id, GLenum value, GLfloat *data);
+REGAL_DECL void REGAL_CALL plugin_glGetVariantIntegervEXT(void *_context, GLuint id, GLenum value, GLint *data);
+REGAL_DECL void REGAL_CALL plugin_glGetVariantPointervEXT(void *_context, GLuint id, GLenum value, GLvoid **data);
+REGAL_DECL void REGAL_CALL plugin_glInsertComponentEXT(void *_context, GLuint res, GLuint src, GLuint num);
+REGAL_DECL void REGAL_CALL plugin_glSetInvariantEXT(void *_context, GLuint id, GLenum type, const GLvoid *addr);
+REGAL_DECL void REGAL_CALL plugin_glSetLocalConstantEXT(void *_context, GLuint id, GLenum type, const GLvoid *addr);
+REGAL_DECL void REGAL_CALL plugin_glShaderOp1EXT(void *_context, GLenum op, GLuint res, GLuint arg1);
+REGAL_DECL void REGAL_CALL plugin_glShaderOp2EXT(void *_context, GLenum op, GLuint res, GLuint arg1, GLuint arg2);
+REGAL_DECL void REGAL_CALL plugin_glShaderOp3EXT(void *_context, GLenum op, GLuint res, GLuint arg1, GLuint arg2, GLuint arg3);
+REGAL_DECL void REGAL_CALL plugin_glSwizzleEXT(void *_context, GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
+REGAL_DECL void REGAL_CALL plugin_glVariantPointerEXT(void *_context, GLuint id, GLenum type, GLuint stride, const GLvoid *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantbvEXT(void *_context, GLuint id, const GLbyte *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantdvEXT(void *_context, GLuint id, const GLdouble *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantfvEXT(void *_context, GLuint id, const GLfloat *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantivEXT(void *_context, GLuint id, const GLint *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantsvEXT(void *_context, GLuint id, const GLshort *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantubvEXT(void *_context, GLuint id, const GLubyte *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantuivEXT(void *_context, GLuint id, const GLuint *addr);
+REGAL_DECL void REGAL_CALL plugin_glVariantusvEXT(void *_context, GLuint id, const GLushort *addr);
+REGAL_DECL void REGAL_CALL plugin_glWriteMaskEXT(void *_context, GLuint res, GLuint in, GLenum outX, GLenum outY, GLenum outZ, GLenum outW);
 #endif
 
 /**
@@ -19609,9 +19609,9 @@ REGAL_DECL void REGAL_CALL glVertexWeightfvEXT(const GLfloat *weight);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_VERTEX_WEIGHTING
-REGAL_DECL void REGAL_CALL plugin_glVertexWeightPointerEXT(GLsizei size, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glVertexWeightfEXT(GLfloat weight);
-REGAL_DECL void REGAL_CALL plugin_glVertexWeightfvEXT(const GLfloat *weight);
+REGAL_DECL void REGAL_CALL plugin_glVertexWeightPointerEXT(void *_context, GLsizei size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glVertexWeightfEXT(void *_context, GLfloat weight);
+REGAL_DECL void REGAL_CALL plugin_glVertexWeightfvEXT(void *_context, const GLfloat *weight);
 #endif
 
 /**
@@ -19659,7 +19659,7 @@ REGAL_DECL GLsync REGAL_CALL glImportSyncEXT(GLenum external_sync_type, GLintptr
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_EXT_X11_SYNC_OBJECT
-REGAL_DECL GLsync REGAL_CALL plugin_glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, GLbitfield flags);
+REGAL_DECL GLsync REGAL_CALL plugin_glImportSyncEXT(void *_context, GLenum external_sync_type, GLintptr external_sync, GLbitfield flags);
 #endif
 
 /**
@@ -19735,7 +19735,7 @@ REGAL_DECL void REGAL_CALL glFrameTerminatorGREMEDY(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_GREMEDY_FRAME_TERMINATOR
-REGAL_DECL void REGAL_CALL plugin_glFrameTerminatorGREMEDY(void);
+REGAL_DECL void REGAL_CALL plugin_glFrameTerminatorGREMEDY(void *_context);
 #endif
 
 /**
@@ -19779,7 +19779,7 @@ REGAL_DECL void REGAL_CALL glStringMarkerGREMEDY(GLsizei len, const GLvoid *stri
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_GREMEDY_STRING_MARKER
-REGAL_DECL void REGAL_CALL plugin_glStringMarkerGREMEDY(GLsizei len, const GLvoid *string);
+REGAL_DECL void REGAL_CALL plugin_glStringMarkerGREMEDY(void *_context, GLsizei len, const GLvoid *string);
 #endif
 
 /**
@@ -19856,12 +19856,12 @@ REGAL_DECL void REGAL_CALL glImageTransformParameterivHP(GLenum target, GLenum p
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_HP_IMAGE_TRANSFORM
-REGAL_DECL void REGAL_CALL plugin_glGetImageTransformParameterfvHP(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetImageTransformParameterivHP(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glImageTransformParameterfHP(GLenum target, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glImageTransformParameterfvHP(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glImageTransformParameteriHP(GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glImageTransformParameterivHP(GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetImageTransformParameterfvHP(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetImageTransformParameterivHP(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glImageTransformParameterfHP(void *_context, GLenum target, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glImageTransformParameterfvHP(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glImageTransformParameteriHP(void *_context, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glImageTransformParameterivHP(void *_context, GLenum target, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -19973,8 +19973,8 @@ REGAL_DECL void REGAL_CALL glMultiModeDrawElementsIBM(const GLenum *mode, const 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_IBM_MULTIMODE_DRAW_ARRAYS
-REGAL_DECL void REGAL_CALL plugin_glMultiModeDrawArraysIBM(const GLenum *mode, const GLint *first, const GLsizei *count, GLsizei primcount, GLint modestride);
-REGAL_DECL void REGAL_CALL plugin_glMultiModeDrawElementsIBM(const GLenum *mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, GLint modestride);
+REGAL_DECL void REGAL_CALL plugin_glMultiModeDrawArraysIBM(void *_context, const GLenum *mode, const GLint *first, const GLsizei *count, GLsizei primcount, GLint modestride);
+REGAL_DECL void REGAL_CALL plugin_glMultiModeDrawElementsIBM(void *_context, const GLenum *mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, GLint modestride);
 #endif
 
 /**
@@ -20155,14 +20155,14 @@ REGAL_DECL void REGAL_CALL glVertexPointerListIBM(GLint size, GLenum type, GLint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_IBM_VERTEX_ARRAY_LISTS
-REGAL_DECL void REGAL_CALL plugin_glColorPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
-REGAL_DECL void REGAL_CALL plugin_glEdgeFlagPointerListIBM(GLint stride, const GLboolean **pointer, GLint ptrstride);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordPointerListIBM(GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
-REGAL_DECL void REGAL_CALL plugin_glIndexPointerListIBM(GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
-REGAL_DECL void REGAL_CALL plugin_glNormalPointerListIBM(GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColorPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
-REGAL_DECL void REGAL_CALL plugin_glVertexPointerListIBM(GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glColorPointerListIBM(void *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glEdgeFlagPointerListIBM(void *_context, GLint stride, const GLboolean **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordPointerListIBM(void *_context, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glIndexPointerListIBM(void *_context, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glNormalPointerListIBM(void *_context, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColorPointerListIBM(void *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordPointerListIBM(void *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
+REGAL_DECL void REGAL_CALL plugin_glVertexPointerListIBM(void *_context, GLint size, GLenum type, GLint stride, const GLvoid **pointer, GLint ptrstride);
 #endif
 
 /**
@@ -20216,8 +20216,8 @@ REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleIMG(GLenum target, GL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_IMG_MULTISAMPLED_RENDER_TO_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DMultisampleIMG(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleIMG(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DMultisampleIMG(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleIMG(void *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -20502,7 +20502,7 @@ REGAL_DECL void REGAL_CALL glBlendFuncSeparateINGR(GLenum sfactorRGB, GLenum dfa
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_INGR_BLEND_FUNC_SEPARATE
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateINGR(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateINGR(void *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
 #endif
 
 /**
@@ -20630,9 +20630,9 @@ REGAL_DECL void REGAL_CALL glUnmapTexture2DINTEL(GLuint texture, GLint level);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_INTEL_MAP_TEXTURE
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapTexture2DINTEL(GLuint texture, GLint level, GLbitfield access, GLint *stride, GLenum *layout);
-REGAL_DECL void REGAL_CALL plugin_glSyncTextureINTEL(GLuint texture);
-REGAL_DECL void REGAL_CALL plugin_glUnmapTexture2DINTEL(GLuint texture, GLint level);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapTexture2DINTEL(void *_context, GLuint texture, GLint level, GLbitfield access, GLint *stride, GLenum *layout);
+REGAL_DECL void REGAL_CALL plugin_glSyncTextureINTEL(void *_context, GLuint texture);
+REGAL_DECL void REGAL_CALL plugin_glUnmapTexture2DINTEL(void *_context, GLuint texture, GLint level);
 #endif
 
 /**
@@ -20693,10 +20693,10 @@ REGAL_DECL void REGAL_CALL glVertexPointervINTEL(GLint size, GLenum type, const 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_INTEL_PARALLEL_ARRAYS
-REGAL_DECL void REGAL_CALL plugin_glColorPointervINTEL(GLint size, GLenum type, const GLvoid **pointer);
-REGAL_DECL void REGAL_CALL plugin_glNormalPointervINTEL(GLenum type, const GLvoid **pointer);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordPointervINTEL(GLint size, GLenum type, const GLvoid **pointer);
-REGAL_DECL void REGAL_CALL plugin_glVertexPointervINTEL(GLint size, GLenum type, const GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glColorPointervINTEL(void *_context, GLint size, GLenum type, const GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glNormalPointervINTEL(void *_context, GLenum type, const GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordPointervINTEL(void *_context, GLint size, GLenum type, const GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glVertexPointervINTEL(void *_context, GLint size, GLenum type, const GLvoid **pointer);
 #endif
 
 /**
@@ -20743,8 +20743,8 @@ REGAL_DECL void REGAL_CALL glTexScissorINTEL(GLenum target, GLclampf tlow, GLcla
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_INTEL_TEXTURE_SCISSOR
-REGAL_DECL void REGAL_CALL plugin_glTexScissorFuncINTEL(GLenum target, GLenum lfunc, GLenum hfunc);
-REGAL_DECL void REGAL_CALL plugin_glTexScissorINTEL(GLenum target, GLclampf tlow, GLclampf thigh);
+REGAL_DECL void REGAL_CALL plugin_glTexScissorFuncINTEL(void *_context, GLenum target, GLenum lfunc, GLenum hfunc);
+REGAL_DECL void REGAL_CALL plugin_glTexScissorINTEL(void *_context, GLenum target, GLclampf tlow, GLclampf thigh);
 #endif
 
 /**
@@ -20856,16 +20856,16 @@ REGAL_DECL void REGAL_CALL glPushDebugGroup(GLenum source, GLuint id, GLsizei le
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_KHR_DEBUG
-REGAL_DECL GLuint REGAL_CALL plugin_glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageCallback(GLDEBUGPROC callback, const GLvoid *userParam);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
-REGAL_DECL void REGAL_CALL plugin_glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
-REGAL_DECL void REGAL_CALL plugin_glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label);
-REGAL_DECL void REGAL_CALL plugin_glGetObjectPtrLabel(const GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
-REGAL_DECL void REGAL_CALL plugin_glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
-REGAL_DECL void REGAL_CALL plugin_glObjectPtrLabel(const GLvoid *ptr, GLsizei length, const GLchar *label);
-REGAL_DECL void REGAL_CALL plugin_glPopDebugGroup(void);
-REGAL_DECL void REGAL_CALL plugin_glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message);
+REGAL_DECL GLuint REGAL_CALL plugin_glGetDebugMessageLog(void *_context, GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageCallback(void *_context, GLDEBUGPROC callback, const GLvoid *userParam);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageControl(void *_context, GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+REGAL_DECL void REGAL_CALL plugin_glDebugMessageInsert(void *_context, GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectLabel(void *_context, GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label);
+REGAL_DECL void REGAL_CALL plugin_glGetObjectPtrLabel(void *_context, const GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
+REGAL_DECL void REGAL_CALL plugin_glObjectLabel(void *_context, GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
+REGAL_DECL void REGAL_CALL plugin_glObjectPtrLabel(void *_context, const GLvoid *ptr, GLsizei length, const GLchar *label);
+REGAL_DECL void REGAL_CALL plugin_glPopDebugGroup(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPushDebugGroup(void *_context, GLenum source, GLuint id, GLsizei length, const GLchar *message);
 #endif
 
 /**
@@ -20987,11 +20987,11 @@ REGAL_DECL void REGAL_CALL glReadBufferRegion(GLuint region, GLint x, GLint y, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_KTX_BUFFER_REGION
-REGAL_DECL GLuint REGAL_CALL plugin_glBufferRegionEnabled(void);
-REGAL_DECL GLuint REGAL_CALL plugin_glNewBufferRegion(GLenum region);
-REGAL_DECL void REGAL_CALL plugin_glDeleteBufferRegion(GLenum region);
-REGAL_DECL void REGAL_CALL plugin_glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
-REGAL_DECL void REGAL_CALL plugin_glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL GLuint REGAL_CALL plugin_glBufferRegionEnabled(void *_context);
+REGAL_DECL GLuint REGAL_CALL plugin_glNewBufferRegion(void *_context, GLenum region);
+REGAL_DECL void REGAL_CALL plugin_glDeleteBufferRegion(void *_context, GLenum region);
+REGAL_DECL void REGAL_CALL plugin_glDrawBufferRegion(void *_context, GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
+REGAL_DECL void REGAL_CALL plugin_glReadBufferRegion(void *_context, GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -21104,7 +21104,7 @@ REGAL_DECL void REGAL_CALL glResizeBuffersMESA(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_MESA_RESIZE_BUFFERS
-REGAL_DECL void REGAL_CALL plugin_glResizeBuffersMESA(void);
+REGAL_DECL void REGAL_CALL plugin_glResizeBuffersMESA(void *_context);
 #endif
 
 /**
@@ -21217,30 +21217,30 @@ REGAL_DECL void REGAL_CALL glWindowPos4svMESA(const GLshort *v);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_MESA_WINDOW_POS
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2dMESA(GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2dvMESA(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2fMESA(GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2fvMESA(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2iMESA(GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2ivMESA(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2sMESA(GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2svMESA(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3dMESA(GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3dvMESA(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3fMESA(GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3fvMESA(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3iMESA(GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3ivMESA(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3sMESA(GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3svMESA(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4dMESA(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4dvMESA(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4fMESA(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4fvMESA(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4iMESA(GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4ivMESA(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4sMESA(GLshort x, GLshort y, GLshort z, GLshort w);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos4svMESA(const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2dMESA(void *_context, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2dvMESA(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2fMESA(void *_context, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2fvMESA(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2iMESA(void *_context, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2ivMESA(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2sMESA(void *_context, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2svMESA(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3dMESA(void *_context, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3dvMESA(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3fMESA(void *_context, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3fvMESA(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3iMESA(void *_context, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3ivMESA(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3sMESA(void *_context, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3svMESA(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4dMESA(void *_context, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4dvMESA(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4fMESA(void *_context, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4fvMESA(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4iMESA(void *_context, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4ivMESA(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4sMESA(void *_context, GLshort x, GLshort y, GLshort z, GLshort w);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos4svMESA(void *_context, const GLshort *v);
 #endif
 
 /**
@@ -21321,8 +21321,8 @@ REGAL_DECL void REGAL_CALL glEndConditionalRenderNVX(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NVX_CONDITIONAL_RENDER
-REGAL_DECL void REGAL_CALL plugin_glBeginConditionalRenderNVX(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glEndConditionalRenderNVX(void);
+REGAL_DECL void REGAL_CALL plugin_glBeginConditionalRenderNVX(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glEndConditionalRenderNVX(void *_context);
 #endif
 
 /**
@@ -21508,19 +21508,19 @@ REGAL_DECL void REGAL_CALL glUniformHandleui64vNV(GLint location, GLsizei count,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_BINDLESS_TEXTURE
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsImageHandleResidentNV(GLuint64 handle);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsTextureHandleResidentNV(GLuint64 handle);
-REGAL_DECL GLuint64 REGAL_CALL plugin_glGetImageHandleNV(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
-REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureHandleNV(GLuint texture);
-REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureSamplerHandleNV(GLuint texture, GLuint sampler);
-REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleNonResidentNV(GLuint64 handle);
-REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleResidentNV(GLuint64 handle, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleNonResidentNV(GLuint64 handle);
-REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleResidentNV(GLuint64 handle);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64NV(GLuint program, GLint location, GLuint64 value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64 *values);
-REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64NV(GLint location, GLuint64 value);
-REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64vNV(GLint location, GLsizei count, const GLuint64 *value);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsImageHandleResidentNV(void *_context, GLuint64 handle);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsTextureHandleResidentNV(void *_context, GLuint64 handle);
+REGAL_DECL GLuint64 REGAL_CALL plugin_glGetImageHandleNV(void *_context, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureHandleNV(void *_context, GLuint texture);
+REGAL_DECL GLuint64 REGAL_CALL plugin_glGetTextureSamplerHandleNV(void *_context, GLuint texture, GLuint sampler);
+REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleNonResidentNV(void *_context, GLuint64 handle);
+REGAL_DECL void REGAL_CALL plugin_glMakeImageHandleResidentNV(void *_context, GLuint64 handle, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleNonResidentNV(void *_context, GLuint64 handle);
+REGAL_DECL void REGAL_CALL plugin_glMakeTextureHandleResidentNV(void *_context, GLuint64 handle);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64NV(void *_context, GLuint program, GLint location, GLuint64 value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformHandleui64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLuint64 *values);
+REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64NV(void *_context, GLint location, GLuint64 value);
+REGAL_DECL void REGAL_CALL plugin_glUniformHandleui64vNV(void *_context, GLint location, GLsizei count, const GLuint64 *value);
 #endif
 
 /**
@@ -21616,8 +21616,8 @@ REGAL_DECL void REGAL_CALL glBlendParameteriNV(GLenum pname, GLint value);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_BLEND_EQUATION_ADVANCED
-REGAL_DECL void REGAL_CALL plugin_glBlendBarrierNV(void);
-REGAL_DECL void REGAL_CALL plugin_glBlendParameteriNV(GLenum pname, GLint value);
+REGAL_DECL void REGAL_CALL plugin_glBlendBarrierNV(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glBlendParameteriNV(void *_context, GLenum pname, GLint value);
 #endif
 
 /**
@@ -21704,8 +21704,8 @@ REGAL_DECL void REGAL_CALL glEndConditionalRenderNV(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_CONDITIONAL_RENDER
-REGAL_DECL void REGAL_CALL plugin_glBeginConditionalRenderNV(GLuint id, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glEndConditionalRenderNV(void);
+REGAL_DECL void REGAL_CALL plugin_glBeginConditionalRenderNV(void *_context, GLuint id, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glEndConditionalRenderNV(void *_context);
 #endif
 
 /**
@@ -21754,7 +21754,7 @@ REGAL_DECL void REGAL_CALL glCopyBufferSubDataNV(GLenum readtarget, GLenum write
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_COPY_BUFFER
-REGAL_DECL void REGAL_CALL plugin_glCopyBufferSubDataNV(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glCopyBufferSubDataNV(void *_context, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
 #endif
 
 /**
@@ -21831,7 +21831,7 @@ REGAL_DECL void REGAL_CALL glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_COPY_IMAGE
-REGAL_DECL void REGAL_CALL plugin_glCopyImageSubDataNV(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+REGAL_DECL void REGAL_CALL plugin_glCopyImageSubDataNV(void *_context, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 #endif
 
 /**
@@ -21891,8 +21891,8 @@ REGAL_DECL void REGAL_CALL glCoverageOperationNV(GLenum operation);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_COVERAGE_SAMPLE
-REGAL_DECL void REGAL_CALL plugin_glCoverageMaskNV(GLboolean mask);
-REGAL_DECL void REGAL_CALL plugin_glCoverageOperationNV(GLenum operation);
+REGAL_DECL void REGAL_CALL plugin_glCoverageMaskNV(void *_context, GLboolean mask);
+REGAL_DECL void REGAL_CALL plugin_glCoverageOperationNV(void *_context, GLenum operation);
 #endif
 
 /**
@@ -21982,9 +21982,9 @@ REGAL_DECL void REGAL_CALL glDepthRangedNV(GLdouble zNear, GLdouble zFar);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_DEPTH_BUFFER_FLOAT
-REGAL_DECL void REGAL_CALL plugin_glClearDepthdNV(GLdouble depth);
-REGAL_DECL void REGAL_CALL plugin_glDepthBoundsdNV(GLdouble zmin, GLdouble zmax);
-REGAL_DECL void REGAL_CALL plugin_glDepthRangedNV(GLdouble zNear, GLdouble zFar);
+REGAL_DECL void REGAL_CALL plugin_glClearDepthdNV(void *_context, GLdouble depth);
+REGAL_DECL void REGAL_CALL plugin_glDepthBoundsdNV(void *_context, GLdouble zmin, GLdouble zmax);
+REGAL_DECL void REGAL_CALL plugin_glDepthRangedNV(void *_context, GLdouble zNear, GLdouble zFar);
 #endif
 
 /**
@@ -22151,7 +22151,7 @@ REGAL_DECL void REGAL_CALL glDrawBuffersNV(GLsizei n, const GLenum *bufs);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_DRAW_BUFFERS
-REGAL_DECL void REGAL_CALL plugin_glDrawBuffersNV(GLsizei n, const GLenum *bufs);
+REGAL_DECL void REGAL_CALL plugin_glDrawBuffersNV(void *_context, GLsizei n, const GLenum *bufs);
 #endif
 
 /**
@@ -22195,7 +22195,7 @@ REGAL_DECL void REGAL_CALL glDrawTextureNV(GLuint texture, GLuint sampler, GLflo
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_DRAW_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glDrawTextureNV(GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
+REGAL_DECL void REGAL_CALL plugin_glDrawTextureNV(void *_context, GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
 #endif
 
 /**
@@ -22290,15 +22290,15 @@ REGAL_DECL void REGAL_CALL glMapParameterivNV(GLenum target, GLenum pname, const
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_EVALUATORS
-REGAL_DECL void REGAL_CALL plugin_glEvalMapsNV(GLenum target, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glGetMapAttribParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMapAttribParameterivNV(GLenum target, GLuint index, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLboolean packed, GLvoid *points);
-REGAL_DECL void REGAL_CALL plugin_glGetMapParameterfvNV(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMapParameterivNV(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glMapControlPointsNV(GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const GLvoid *points);
-REGAL_DECL void REGAL_CALL plugin_glMapParameterfvNV(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glMapParameterivNV(GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glEvalMapsNV(void *_context, GLenum target, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glGetMapAttribParameterfvNV(void *_context, GLenum target, GLuint index, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMapAttribParameterivNV(void *_context, GLenum target, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMapControlPointsNV(void *_context, GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLboolean packed, GLvoid *points);
+REGAL_DECL void REGAL_CALL plugin_glGetMapParameterfvNV(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMapParameterivNV(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glMapControlPointsNV(void *_context, GLenum target, GLuint index, GLenum type, GLsizei ustride, GLsizei vstride, GLint uorder, GLint vorder, GLboolean packed, const GLvoid *points);
+REGAL_DECL void REGAL_CALL plugin_glMapParameterfvNV(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glMapParameterivNV(void *_context, GLenum target, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -22361,9 +22361,9 @@ REGAL_DECL void REGAL_CALL glTexRenderbufferNV(GLenum target, GLuint renderbuffe
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_EXPLICIT_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glGetMultisamplefvNV(GLenum pname, GLuint index, GLfloat *val);
-REGAL_DECL void REGAL_CALL plugin_glSampleMaskIndexedNV(GLuint index, GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glTexRenderbufferNV(GLenum target, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glGetMultisamplefvNV(void *_context, GLenum pname, GLuint index, GLfloat *val);
+REGAL_DECL void REGAL_CALL plugin_glSampleMaskIndexedNV(void *_context, GLuint index, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glTexRenderbufferNV(void *_context, GLenum target, GLuint renderbuffer);
 #endif
 
 /**
@@ -22479,13 +22479,13 @@ REGAL_DECL void REGAL_CALL glSetFenceNV(GLuint fence, GLenum condition);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_FENCE
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsFenceNV(GLuint fence);
-REGAL_DECL GLboolean REGAL_CALL plugin_glTestFenceNV(GLuint fence);
-REGAL_DECL void REGAL_CALL plugin_glDeleteFencesNV(GLsizei n, const GLuint *fences);
-REGAL_DECL void REGAL_CALL plugin_glFinishFenceNV(GLuint fence);
-REGAL_DECL void REGAL_CALL plugin_glGenFencesNV(GLsizei n, GLuint *fences);
-REGAL_DECL void REGAL_CALL plugin_glGetFenceivNV(GLuint fence, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glSetFenceNV(GLuint fence, GLenum condition);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsFenceNV(void *_context, GLuint fence);
+REGAL_DECL GLboolean REGAL_CALL plugin_glTestFenceNV(void *_context, GLuint fence);
+REGAL_DECL void REGAL_CALL plugin_glDeleteFencesNV(void *_context, GLsizei n, const GLuint *fences);
+REGAL_DECL void REGAL_CALL plugin_glFinishFenceNV(void *_context, GLuint fence);
+REGAL_DECL void REGAL_CALL plugin_glGenFencesNV(void *_context, GLsizei n, GLuint *fences);
+REGAL_DECL void REGAL_CALL plugin_glGetFenceivNV(void *_context, GLuint fence, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glSetFenceNV(void *_context, GLuint fence, GLenum condition);
 #endif
 
 /**
@@ -22633,12 +22633,12 @@ REGAL_DECL void REGAL_CALL glProgramNamedParameter4fvNV(GLuint id, GLsizei len, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_FRAGMENT_PROGRAM
-REGAL_DECL void REGAL_CALL plugin_glGetProgramNamedParameterdvNV(GLuint id, GLsizei len, const GLubyte *name, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramNamedParameterfvNV(GLuint id, GLsizei len, const GLubyte *name, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4dNV(GLuint id, GLsizei len, const GLubyte *name, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4dvNV(GLuint id, GLsizei len, const GLubyte *name, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4fNV(GLuint id, GLsizei len, const GLubyte *name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4fvNV(GLuint id, GLsizei len, const GLubyte *name, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramNamedParameterdvNV(void *_context, GLuint id, GLsizei len, const GLubyte *name, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramNamedParameterfvNV(void *_context, GLuint id, GLsizei len, const GLubyte *name, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4dNV(void *_context, GLuint id, GLsizei len, const GLubyte *name, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4dvNV(void *_context, GLuint id, GLsizei len, const GLubyte *name, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4fNV(void *_context, GLuint id, GLsizei len, const GLubyte *name, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glProgramNamedParameter4fvNV(void *_context, GLuint id, GLsizei len, const GLubyte *name, const GLfloat *v);
 #endif
 
 /**
@@ -22723,7 +22723,7 @@ REGAL_DECL void REGAL_CALL glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint s
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_FRAMEBUFFER_BLIT
-REGAL_DECL void REGAL_CALL plugin_glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+REGAL_DECL void REGAL_CALL plugin_glBlitFramebufferNV(void *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 #endif
 
 /**
@@ -22808,7 +22808,7 @@ REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleCoverageNV(GLenum tar
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_FRAMEBUFFER_MULTISAMPLE_COVERAGE
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageMultisampleCoverageNV(void *_context, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -22858,7 +22858,7 @@ REGAL_DECL void REGAL_CALL glProgramVertexLimitNV(GLenum target, GLint limit);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_GEOMETRY_PROGRAM4
-REGAL_DECL void REGAL_CALL plugin_glProgramVertexLimitNV(GLenum target, GLint limit);
+REGAL_DECL void REGAL_CALL plugin_glProgramVertexLimitNV(void *_context, GLenum target, GLint limit);
 #endif
 
 /**
@@ -22958,22 +22958,22 @@ REGAL_DECL void REGAL_CALL glProgramLocalParametersI4uivNV(GLenum target, GLuint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_GPU_PROGRAM4
-REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterIivNV(GLenum target, GLuint index, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterIuivNV(GLenum target, GLuint index, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterIivNV(GLenum target, GLuint index, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterIuivNV(GLenum target, GLuint index, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4ivNV(GLenum target, GLuint index, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4uivNV(GLenum target, GLuint index, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramEnvParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4iNV(GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4ivNV(GLenum target, GLuint index, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4uiNV(GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4uivNV(GLenum target, GLuint index, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParametersI4ivNV(GLenum target, GLuint index, GLsizei count, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramLocalParametersI4uivNV(GLenum target, GLuint index, GLsizei count, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterIivNV(void *_context, GLenum target, GLuint index, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramEnvParameterIuivNV(void *_context, GLenum target, GLuint index, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterIivNV(void *_context, GLenum target, GLuint index, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramLocalParameterIuivNV(void *_context, GLenum target, GLuint index, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4iNV(void *_context, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4ivNV(void *_context, GLenum target, GLuint index, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4uiNV(void *_context, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParameterI4uivNV(void *_context, GLenum target, GLuint index, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParametersI4ivNV(void *_context, GLenum target, GLuint index, GLsizei count, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramEnvParametersI4uivNV(void *_context, GLenum target, GLuint index, GLsizei count, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4iNV(void *_context, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4ivNV(void *_context, GLenum target, GLuint index, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4uiNV(void *_context, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParameterI4uivNV(void *_context, GLenum target, GLuint index, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParametersI4ivNV(void *_context, GLenum target, GLuint index, GLsizei count, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramLocalParametersI4uivNV(void *_context, GLenum target, GLuint index, GLsizei count, const GLuint *params);
 #endif
 
 /**
@@ -23177,39 +23177,39 @@ REGAL_DECL void REGAL_CALL glUniform4ui64vNV(GLint location, GLsizei count, cons
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_GPU_SHADER5
-REGAL_DECL void REGAL_CALL plugin_glGetUniformi64vNV(GLuint program, GLint location, GLint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1i64NV(GLuint program, GLint location, GLint64EXT x);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ui64NV(GLuint program, GLint location, GLuint64EXT x);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4i64NV(GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4i64vNV(GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ui64NV(GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform1i64NV(GLint location, GLint64EXT x);
-REGAL_DECL void REGAL_CALL plugin_glUniform1i64vNV(GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform1ui64NV(GLint location, GLuint64EXT x);
-REGAL_DECL void REGAL_CALL plugin_glUniform1ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2i64NV(GLint location, GLint64EXT x, GLint64EXT y);
-REGAL_DECL void REGAL_CALL plugin_glUniform2i64vNV(GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y);
-REGAL_DECL void REGAL_CALL plugin_glUniform2ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
-REGAL_DECL void REGAL_CALL plugin_glUniform3i64vNV(GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
-REGAL_DECL void REGAL_CALL plugin_glUniform3ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4i64NV(GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
-REGAL_DECL void REGAL_CALL plugin_glUniform4i64vNV(GLint location, GLsizei count, const GLint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4ui64NV(GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
-REGAL_DECL void REGAL_CALL plugin_glUniform4ui64vNV(GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformi64vNV(void *_context, GLuint program, GLint location, GLint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1i64NV(void *_context, GLuint program, GLint location, GLint64EXT x);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1i64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ui64NV(void *_context, GLuint program, GLint location, GLuint64EXT x);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform1ui64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2i64NV(void *_context, GLuint program, GLint location, GLint64EXT x, GLint64EXT y);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2i64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ui64NV(void *_context, GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform2ui64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3i64NV(void *_context, GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3i64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ui64NV(void *_context, GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform3ui64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4i64NV(void *_context, GLuint program, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4i64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ui64NV(void *_context, GLuint program, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniform4ui64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform1i64NV(void *_context, GLint location, GLint64EXT x);
+REGAL_DECL void REGAL_CALL plugin_glUniform1i64vNV(void *_context, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform1ui64NV(void *_context, GLint location, GLuint64EXT x);
+REGAL_DECL void REGAL_CALL plugin_glUniform1ui64vNV(void *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2i64NV(void *_context, GLint location, GLint64EXT x, GLint64EXT y);
+REGAL_DECL void REGAL_CALL plugin_glUniform2i64vNV(void *_context, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2ui64NV(void *_context, GLint location, GLuint64EXT x, GLuint64EXT y);
+REGAL_DECL void REGAL_CALL plugin_glUniform2ui64vNV(void *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3i64NV(void *_context, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+REGAL_DECL void REGAL_CALL plugin_glUniform3i64vNV(void *_context, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3ui64NV(void *_context, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+REGAL_DECL void REGAL_CALL plugin_glUniform3ui64vNV(void *_context, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4i64NV(void *_context, GLint location, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+REGAL_DECL void REGAL_CALL plugin_glUniform4i64vNV(void *_context, GLint location, GLsizei count, const GLint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4ui64NV(void *_context, GLint location, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+REGAL_DECL void REGAL_CALL plugin_glUniform4ui64vNV(void *_context, GLint location, GLsizei count, const GLuint64EXT *value);
 #endif
 
 /**
@@ -23392,52 +23392,52 @@ REGAL_DECL void REGAL_CALL glVertexWeighthvNV(const GLhalfNV *weight);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_HALF_FLOAT
-REGAL_DECL void REGAL_CALL plugin_glColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue, GLhalfNV alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordhNV(GLhalfNV coord);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordhvNV(const GLhalfNV *coord);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1hNV(GLenum target, GLhalfNV s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1hvNV(GLenum target, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2hNV(GLenum target, GLhalfNV s, GLhalfNV t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2hvNV(GLenum target, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3hvNV(GLenum target, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4hNV(GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4hvNV(GLenum target, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glNormal3hNV(GLhalfNV nx, GLhalfNV ny, GLhalfNV nz);
-REGAL_DECL void REGAL_CALL plugin_glNormal3hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3hNV(GLhalfNV red, GLhalfNV green, GLhalfNV blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1hNV(GLhalfNV s);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2hNV(GLhalfNV s, GLhalfNV t);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4hNV(GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex2hNV(GLhalfNV x, GLhalfNV y);
-REGAL_DECL void REGAL_CALL plugin_glVertex2hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex3hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z);
-REGAL_DECL void REGAL_CALL plugin_glVertex3hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex4hNV(GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
-REGAL_DECL void REGAL_CALL plugin_glVertex4hvNV(const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1hNV(GLuint index, GLhalfNV x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1hvNV(GLuint index, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2hNV(GLuint index, GLhalfNV x, GLhalfNV y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2hvNV(GLuint index, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3hvNV(GLuint index, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4hNV(GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4hvNV(GLuint index, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1hvNV(GLuint index, GLsizei count, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2hvNV(GLuint index, GLsizei count, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3hvNV(GLuint index, GLsizei count, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4hvNV(GLuint index, GLsizei count, const GLhalfNV *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexWeighthNV(GLhalfNV weight);
-REGAL_DECL void REGAL_CALL plugin_glVertexWeighthvNV(const GLhalfNV *weight);
+REGAL_DECL void REGAL_CALL plugin_glColor3hNV(void *_context, GLhalfNV red, GLhalfNV green, GLhalfNV blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4hNV(void *_context, GLhalfNV red, GLhalfNV green, GLhalfNV blue, GLhalfNV alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordhNV(void *_context, GLhalfNV coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordhvNV(void *_context, const GLhalfNV *coord);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1hNV(void *_context, GLenum target, GLhalfNV s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1hvNV(void *_context, GLenum target, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2hNV(void *_context, GLenum target, GLhalfNV s, GLhalfNV t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2hvNV(void *_context, GLenum target, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3hNV(void *_context, GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3hvNV(void *_context, GLenum target, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4hNV(void *_context, GLenum target, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4hvNV(void *_context, GLenum target, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glNormal3hNV(void *_context, GLhalfNV nx, GLhalfNV ny, GLhalfNV nz);
+REGAL_DECL void REGAL_CALL plugin_glNormal3hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3hNV(void *_context, GLhalfNV red, GLhalfNV green, GLhalfNV blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1hNV(void *_context, GLhalfNV s);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2hNV(void *_context, GLhalfNV s, GLhalfNV t);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3hNV(void *_context, GLhalfNV s, GLhalfNV t, GLhalfNV r);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4hNV(void *_context, GLhalfNV s, GLhalfNV t, GLhalfNV r, GLhalfNV q);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex2hNV(void *_context, GLhalfNV x, GLhalfNV y);
+REGAL_DECL void REGAL_CALL plugin_glVertex2hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex3hNV(void *_context, GLhalfNV x, GLhalfNV y, GLhalfNV z);
+REGAL_DECL void REGAL_CALL plugin_glVertex3hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex4hNV(void *_context, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
+REGAL_DECL void REGAL_CALL plugin_glVertex4hvNV(void *_context, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1hNV(void *_context, GLuint index, GLhalfNV x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1hvNV(void *_context, GLuint index, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2hNV(void *_context, GLuint index, GLhalfNV x, GLhalfNV y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2hvNV(void *_context, GLuint index, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3hNV(void *_context, GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3hvNV(void *_context, GLuint index, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4hNV(void *_context, GLuint index, GLhalfNV x, GLhalfNV y, GLhalfNV z, GLhalfNV w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4hvNV(void *_context, GLuint index, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1hvNV(void *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2hvNV(void *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3hvNV(void *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4hvNV(void *_context, GLuint index, GLsizei count, const GLhalfNV *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexWeighthNV(void *_context, GLhalfNV weight);
+REGAL_DECL void REGAL_CALL plugin_glVertexWeighthvNV(void *_context, const GLhalfNV *weight);
 #endif
 
 /**
@@ -23635,12 +23635,12 @@ REGAL_DECL void REGAL_CALL glUniformMatrix4x3fvNV(GLint location, GLsizei count,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_NON_SQUARE_MATRICES
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x3fvNV(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x4fvNV(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x2fvNV(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x4fvNV(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x2fvNV(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x3fvNV(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 #endif
 
 /**
@@ -23709,13 +23709,13 @@ REGAL_DECL void REGAL_CALL glGetOcclusionQueryuivNV(GLuint id, GLenum pname, GLu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_OCCLUSION_QUERY
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsOcclusionQueryNV(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBeginOcclusionQueryNV(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteOcclusionQueriesNV(GLsizei n, const GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glEndOcclusionQueryNV(void);
-REGAL_DECL void REGAL_CALL plugin_glGenOcclusionQueriesNV(GLsizei n, GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glGetOcclusionQueryivNV(GLuint id, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetOcclusionQueryuivNV(GLuint id, GLenum pname, GLuint *params);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsOcclusionQueryNV(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBeginOcclusionQueryNV(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteOcclusionQueriesNV(void *_context, GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glEndOcclusionQueryNV(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glGenOcclusionQueriesNV(void *_context, GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glGetOcclusionQueryivNV(void *_context, GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetOcclusionQueryuivNV(void *_context, GLuint id, GLenum pname, GLuint *params);
 #endif
 
 /**
@@ -23873,9 +23873,9 @@ REGAL_DECL void REGAL_CALL glProgramBufferParametersfvNV(GLenum target, GLuint b
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_PARAMETER_BUFFER_OBJECT
-REGAL_DECL void REGAL_CALL plugin_glProgramBufferParametersIivNV(GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramBufferParametersIuivNV(GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glProgramBufferParametersfvNV(GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramBufferParametersIivNV(void *_context, GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramBufferParametersIuivNV(void *_context, GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glProgramBufferParametersfvNV(void *_context, GLenum target, GLuint buffer, GLuint index, GLsizei count, const GLfloat *params);
 #endif
 
 /**
@@ -24193,55 +24193,55 @@ REGAL_DECL void REGAL_CALL glWeightPathsNV(GLuint resultPath, GLsizei numPaths, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_PATH_RENDERING
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsPathNV(GLuint path);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsPointInFillPathNV(GLuint path, GLuint mask, GLfloat x, GLfloat y);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsPointInStrokePathNV(GLuint path, GLfloat x, GLfloat y);
-REGAL_DECL GLboolean REGAL_CALL plugin_glPointAlongPathNV(GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat *x, GLfloat *y, GLfloat *tangentX, GLfloat *tangentY);
-REGAL_DECL GLfloat REGAL_CALL plugin_glGetPathLengthNV(GLuint path, GLsizei startSegment, GLsizei numSegments);
-REGAL_DECL GLuint REGAL_CALL plugin_glGenPathsNV(GLsizei range);
-REGAL_DECL void REGAL_CALL plugin_glCopyPathNV(GLuint resultPath, GLuint srcPath);
-REGAL_DECL void REGAL_CALL plugin_glCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
-REGAL_DECL void REGAL_CALL plugin_glCoverFillPathNV(GLuint path, GLenum coverMode);
-REGAL_DECL void REGAL_CALL plugin_glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
-REGAL_DECL void REGAL_CALL plugin_glCoverStrokePathNV(GLuint name, GLenum coverMode);
-REGAL_DECL void REGAL_CALL plugin_glDeletePathsNV(GLuint path, GLsizei range);
-REGAL_DECL void REGAL_CALL plugin_glGetPathColorGenfvNV(GLenum color, GLenum pname, GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glGetPathColorGenivNV(GLenum color, GLenum pname, GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glGetPathCommandsNV(GLuint name, GLubyte *commands);
-REGAL_DECL void REGAL_CALL plugin_glGetPathCoordsNV(GLuint name, GLfloat *coords);
-REGAL_DECL void REGAL_CALL plugin_glGetPathDashArrayNV(GLuint name, GLfloat *dashArray);
-REGAL_DECL void REGAL_CALL plugin_glGetPathMetricRangeNV(GLbitfield metricQueryMask, GLuint fistPathName, GLsizei numPaths, GLsizei stride, GLfloat *metrics);
-REGAL_DECL void REGAL_CALL plugin_glGetPathMetricsNV(GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLsizei stride, GLfloat *metrics);
-REGAL_DECL void REGAL_CALL plugin_glGetPathParameterfvNV(GLuint name, GLenum param, GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glGetPathParameterivNV(GLuint name, GLenum param, GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glGetPathSpacingNV(GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat *returnedSpacing);
-REGAL_DECL void REGAL_CALL plugin_glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pname, GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glGetPathTexGenivNV(GLenum texCoordSet, GLenum pname, GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glInterpolatePathsNV(GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight);
-REGAL_DECL void REGAL_CALL plugin_glPathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat *coeffs);
-REGAL_DECL void REGAL_CALL plugin_glPathCommandsNV(GLuint path, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
-REGAL_DECL void REGAL_CALL plugin_glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
-REGAL_DECL void REGAL_CALL plugin_glPathCoverDepthFuncNV(GLenum zfunc);
-REGAL_DECL void REGAL_CALL plugin_glPathDashArrayNV(GLuint path, GLsizei dashCount, const GLfloat *dashArray);
-REGAL_DECL void REGAL_CALL plugin_glPathFogGenNV(GLenum genMode);
-REGAL_DECL void REGAL_CALL plugin_glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
-REGAL_DECL void REGAL_CALL plugin_glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const GLvoid *charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
-REGAL_DECL void REGAL_CALL plugin_glPathParameterfNV(GLuint path, GLenum pname, GLfloat value);
-REGAL_DECL void REGAL_CALL plugin_glPathParameterfvNV(GLuint path, GLenum pname, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glPathParameteriNV(GLuint path, GLenum pname, GLint value);
-REGAL_DECL void REGAL_CALL plugin_glPathParameterivNV(GLuint path, GLenum pname, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glPathStencilDepthOffsetNV(GLfloat factor, GLfloat units);
-REGAL_DECL void REGAL_CALL plugin_glPathStencilFuncNV(GLenum func, GLint ref, GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glPathStringNV(GLuint path, GLenum format, GLsizei length, const GLvoid *pathString);
-REGAL_DECL void REGAL_CALL plugin_glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
-REGAL_DECL void REGAL_CALL plugin_glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
-REGAL_DECL void REGAL_CALL plugin_glPathTexGenNV(GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat *coeffs);
-REGAL_DECL void REGAL_CALL plugin_glStencilFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat *transformValues);
-REGAL_DECL void REGAL_CALL plugin_glStencilFillPathNV(GLuint path, GLenum fillMode, GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glStencilStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat *transformValues);
-REGAL_DECL void REGAL_CALL plugin_glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glTransformPathNV(GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat *transformValues);
-REGAL_DECL void REGAL_CALL plugin_glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint *paths, const GLfloat *weights);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsPathNV(void *_context, GLuint path);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsPointInFillPathNV(void *_context, GLuint path, GLuint mask, GLfloat x, GLfloat y);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsPointInStrokePathNV(void *_context, GLuint path, GLfloat x, GLfloat y);
+REGAL_DECL GLboolean REGAL_CALL plugin_glPointAlongPathNV(void *_context, GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat *x, GLfloat *y, GLfloat *tangentX, GLfloat *tangentY);
+REGAL_DECL GLfloat REGAL_CALL plugin_glGetPathLengthNV(void *_context, GLuint path, GLsizei startSegment, GLsizei numSegments);
+REGAL_DECL GLuint REGAL_CALL plugin_glGenPathsNV(void *_context, GLsizei range);
+REGAL_DECL void REGAL_CALL plugin_glCopyPathNV(void *_context, GLuint resultPath, GLuint srcPath);
+REGAL_DECL void REGAL_CALL plugin_glCoverFillPathInstancedNV(void *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
+REGAL_DECL void REGAL_CALL plugin_glCoverFillPathNV(void *_context, GLuint path, GLenum coverMode);
+REGAL_DECL void REGAL_CALL plugin_glCoverStrokePathInstancedNV(void *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
+REGAL_DECL void REGAL_CALL plugin_glCoverStrokePathNV(void *_context, GLuint name, GLenum coverMode);
+REGAL_DECL void REGAL_CALL plugin_glDeletePathsNV(void *_context, GLuint path, GLsizei range);
+REGAL_DECL void REGAL_CALL plugin_glGetPathColorGenfvNV(void *_context, GLenum color, GLenum pname, GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glGetPathColorGenivNV(void *_context, GLenum color, GLenum pname, GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glGetPathCommandsNV(void *_context, GLuint name, GLubyte *commands);
+REGAL_DECL void REGAL_CALL plugin_glGetPathCoordsNV(void *_context, GLuint name, GLfloat *coords);
+REGAL_DECL void REGAL_CALL plugin_glGetPathDashArrayNV(void *_context, GLuint name, GLfloat *dashArray);
+REGAL_DECL void REGAL_CALL plugin_glGetPathMetricRangeNV(void *_context, GLbitfield metricQueryMask, GLuint fistPathName, GLsizei numPaths, GLsizei stride, GLfloat *metrics);
+REGAL_DECL void REGAL_CALL plugin_glGetPathMetricsNV(void *_context, GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLsizei stride, GLfloat *metrics);
+REGAL_DECL void REGAL_CALL plugin_glGetPathParameterfvNV(void *_context, GLuint name, GLenum param, GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glGetPathParameterivNV(void *_context, GLuint name, GLenum param, GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glGetPathSpacingNV(void *_context, GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat *returnedSpacing);
+REGAL_DECL void REGAL_CALL plugin_glGetPathTexGenfvNV(void *_context, GLenum texCoordSet, GLenum pname, GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glGetPathTexGenivNV(void *_context, GLenum texCoordSet, GLenum pname, GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glInterpolatePathsNV(void *_context, GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight);
+REGAL_DECL void REGAL_CALL plugin_glPathColorGenNV(void *_context, GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat *coeffs);
+REGAL_DECL void REGAL_CALL plugin_glPathCommandsNV(void *_context, GLuint path, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+REGAL_DECL void REGAL_CALL plugin_glPathCoordsNV(void *_context, GLuint path, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+REGAL_DECL void REGAL_CALL plugin_glPathCoverDepthFuncNV(void *_context, GLenum zfunc);
+REGAL_DECL void REGAL_CALL plugin_glPathDashArrayNV(void *_context, GLuint path, GLsizei dashCount, const GLfloat *dashArray);
+REGAL_DECL void REGAL_CALL plugin_glPathFogGenNV(void *_context, GLenum genMode);
+REGAL_DECL void REGAL_CALL plugin_glPathGlyphRangeNV(void *_context, GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+REGAL_DECL void REGAL_CALL plugin_glPathGlyphsNV(void *_context, GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const GLvoid *charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+REGAL_DECL void REGAL_CALL plugin_glPathParameterfNV(void *_context, GLuint path, GLenum pname, GLfloat value);
+REGAL_DECL void REGAL_CALL plugin_glPathParameterfvNV(void *_context, GLuint path, GLenum pname, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glPathParameteriNV(void *_context, GLuint path, GLenum pname, GLint value);
+REGAL_DECL void REGAL_CALL plugin_glPathParameterivNV(void *_context, GLuint path, GLenum pname, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glPathStencilDepthOffsetNV(void *_context, GLfloat factor, GLfloat units);
+REGAL_DECL void REGAL_CALL plugin_glPathStencilFuncNV(void *_context, GLenum func, GLint ref, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glPathStringNV(void *_context, GLuint path, GLenum format, GLsizei length, const GLvoid *pathString);
+REGAL_DECL void REGAL_CALL plugin_glPathSubCommandsNV(void *_context, GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+REGAL_DECL void REGAL_CALL plugin_glPathSubCoordsNV(void *_context, GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+REGAL_DECL void REGAL_CALL plugin_glPathTexGenNV(void *_context, GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat *coeffs);
+REGAL_DECL void REGAL_CALL plugin_glStencilFillPathInstancedNV(void *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat *transformValues);
+REGAL_DECL void REGAL_CALL plugin_glStencilFillPathNV(void *_context, GLuint path, GLenum fillMode, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glStencilStrokePathInstancedNV(void *_context, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat *transformValues);
+REGAL_DECL void REGAL_CALL plugin_glStencilStrokePathNV(void *_context, GLuint path, GLint reference, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glTransformPathNV(void *_context, GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat *transformValues);
+REGAL_DECL void REGAL_CALL plugin_glWeightPathsNV(void *_context, GLuint resultPath, GLsizei numPaths, const GLuint *paths, const GLfloat *weights);
 #endif
 
 /**
@@ -24332,8 +24332,8 @@ REGAL_DECL void REGAL_CALL glPixelDataRangeNV(GLenum target, GLsizei size, const
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_PIXEL_DATA_RANGE
-REGAL_DECL void REGAL_CALL plugin_glFlushPixelDataRangeNV(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glPixelDataRangeNV(GLenum target, GLsizei size, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glFlushPixelDataRangeNV(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glPixelDataRangeNV(void *_context, GLenum target, GLsizei size, const GLvoid *pointer);
 #endif
 
 /**
@@ -24418,8 +24418,8 @@ REGAL_DECL void REGAL_CALL glPointParameterivNV(GLenum pname, const GLint *param
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_POINT_SPRITE
-REGAL_DECL void REGAL_CALL plugin_glPointParameteriNV(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterivNV(GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glPointParameteriNV(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterivNV(void *_context, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -24487,12 +24487,12 @@ REGAL_DECL void REGAL_CALL glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_PRESENT_VIDEO
-REGAL_DECL void REGAL_CALL plugin_glGetVideoi64vNV(GLuint video_slot, GLenum pname, GLint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVideoivNV(GLuint video_slot, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVideoui64vNV(GLuint video_slot, GLenum pname, GLuint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVideouivNV(GLuint video_slot, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glPresentFrameDualFillNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3);
-REGAL_DECL void REGAL_CALL plugin_glPresentFrameKeyedNV(GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1);
+REGAL_DECL void REGAL_CALL plugin_glGetVideoi64vNV(void *_context, GLuint video_slot, GLenum pname, GLint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVideoivNV(void *_context, GLuint video_slot, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVideoui64vNV(void *_context, GLuint video_slot, GLenum pname, GLuint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVideouivNV(void *_context, GLuint video_slot, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glPresentFrameDualFillNV(void *_context, GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLenum target1, GLuint fill1, GLenum target2, GLuint fill2, GLenum target3, GLuint fill3);
+REGAL_DECL void REGAL_CALL plugin_glPresentFrameKeyedNV(void *_context, GLuint video_slot, GLuint64EXT minPresentTime, GLuint beginPresentTimeId, GLuint presentDurationId, GLenum type, GLenum target0, GLuint fill0, GLuint key0, GLenum target1, GLuint fill1, GLuint key1);
 #endif
 
 /**
@@ -24544,8 +24544,8 @@ REGAL_DECL void REGAL_CALL glPrimitiveRestartNV(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_PRIMITIVE_RESTART
-REGAL_DECL void REGAL_CALL plugin_glPrimitiveRestartIndexNV(GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glPrimitiveRestartNV(void);
+REGAL_DECL void REGAL_CALL plugin_glPrimitiveRestartIndexNV(void *_context, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glPrimitiveRestartNV(void *_context);
 #endif
 
 /**
@@ -24589,7 +24589,7 @@ REGAL_DECL void REGAL_CALL glReadBufferNV(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_READ_BUFFER
-REGAL_DECL void REGAL_CALL plugin_glReadBufferNV(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glReadBufferNV(void *_context, GLenum mode);
 #endif
 
 /**
@@ -24755,19 +24755,19 @@ REGAL_DECL void REGAL_CALL glGetFinalCombinerInputParameterivNV(GLenum variable,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_REGISTER_COMBINERS
-REGAL_DECL void REGAL_CALL plugin_glCombinerInputNV(GLenum stage, GLenum portion, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
-REGAL_DECL void REGAL_CALL plugin_glCombinerOutputNV(GLenum stage, GLenum portion, GLenum abOutput, GLenum cdOutput, GLenum sumOutput, GLenum scale, GLenum bias, GLboolean abDotProduct, GLboolean cdDotProduct, GLboolean muxSum);
-REGAL_DECL void REGAL_CALL plugin_glCombinerParameterfNV(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glCombinerParameterfvNV(GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glCombinerParameteriNV(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glCombinerParameterivNV(GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glFinalCombinerInputNV(GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
-REGAL_DECL void REGAL_CALL plugin_glGetCombinerInputParameterfvNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetCombinerInputParameterivNV(GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetCombinerOutputParameterfvNV(GLenum stage, GLenum portion, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetCombinerOutputParameterivNV(GLenum stage, GLenum portion, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFinalCombinerInputParameterfvNV(GLenum variable, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFinalCombinerInputParameterivNV(GLenum variable, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glCombinerInputNV(void *_context, GLenum stage, GLenum portion, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
+REGAL_DECL void REGAL_CALL plugin_glCombinerOutputNV(void *_context, GLenum stage, GLenum portion, GLenum abOutput, GLenum cdOutput, GLenum sumOutput, GLenum scale, GLenum bias, GLboolean abDotProduct, GLboolean cdDotProduct, GLboolean muxSum);
+REGAL_DECL void REGAL_CALL plugin_glCombinerParameterfNV(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glCombinerParameterfvNV(void *_context, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glCombinerParameteriNV(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glCombinerParameterivNV(void *_context, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glFinalCombinerInputNV(void *_context, GLenum variable, GLenum input, GLenum mapping, GLenum componentUsage);
+REGAL_DECL void REGAL_CALL plugin_glGetCombinerInputParameterfvNV(void *_context, GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetCombinerInputParameterivNV(void *_context, GLenum stage, GLenum portion, GLenum variable, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetCombinerOutputParameterfvNV(void *_context, GLenum stage, GLenum portion, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetCombinerOutputParameterivNV(void *_context, GLenum stage, GLenum portion, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFinalCombinerInputParameterfvNV(void *_context, GLenum variable, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFinalCombinerInputParameterivNV(void *_context, GLenum variable, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -24818,8 +24818,8 @@ REGAL_DECL void REGAL_CALL glGetCombinerStageParameterfvNV(GLenum stage, GLenum 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_REGISTER_COMBINERS2
-REGAL_DECL void REGAL_CALL plugin_glCombinerStageParameterfvNV(GLenum stage, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetCombinerStageParameterfvNV(GLenum stage, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glCombinerStageParameterfvNV(void *_context, GLenum stage, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetCombinerStageParameterfvNV(void *_context, GLenum stage, GLenum pname, GLfloat *params);
 #endif
 
 /**
@@ -24949,20 +24949,20 @@ REGAL_DECL void REGAL_CALL glUniformui64vNV(GLint location, GLsizei count, const
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_SHADER_BUFFER_LOAD
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsBufferResidentNV(GLenum target);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsNamedBufferResidentNV(GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferParameterui64vNV(GLenum target, GLenum pname, GLuint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glGetIntegerui64vNV(GLenum target, GLuint64EXT *data);
-REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferParameterui64vNV(GLuint buffer, GLenum pname, GLuint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformui64vNV(GLuint program, GLint location, GLuint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glMakeBufferNonResidentNV(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glMakeBufferResidentNV(GLenum target, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glMakeNamedBufferNonResidentNV(GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glMakeNamedBufferResidentNV(GLuint buffer, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformui64NV(GLuint program, GLint location, GLuint64EXT v0);
-REGAL_DECL void REGAL_CALL plugin_glProgramUniformui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformui64NV(GLint location, GLuint64EXT v0);
-REGAL_DECL void REGAL_CALL plugin_glUniformui64vNV(GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsBufferResidentNV(void *_context, GLenum target);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsNamedBufferResidentNV(void *_context, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferParameterui64vNV(void *_context, GLenum target, GLenum pname, GLuint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glGetIntegerui64vNV(void *_context, GLenum target, GLuint64EXT *data);
+REGAL_DECL void REGAL_CALL plugin_glGetNamedBufferParameterui64vNV(void *_context, GLuint buffer, GLenum pname, GLuint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformui64vNV(void *_context, GLuint program, GLint location, GLuint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glMakeBufferNonResidentNV(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glMakeBufferResidentNV(void *_context, GLenum target, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glMakeNamedBufferNonResidentNV(void *_context, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glMakeNamedBufferResidentNV(void *_context, GLuint buffer, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformui64NV(void *_context, GLuint program, GLint location, GLuint64EXT v0);
+REGAL_DECL void REGAL_CALL plugin_glProgramUniformui64vNV(void *_context, GLuint program, GLint location, GLsizei count, const GLuint64EXT *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformui64NV(void *_context, GLint location, GLuint64EXT v0);
+REGAL_DECL void REGAL_CALL plugin_glUniformui64vNV(void *_context, GLint location, GLsizei count, const GLuint64EXT *value);
 #endif
 
 /**
@@ -25211,7 +25211,7 @@ REGAL_DECL void REGAL_CALL glTextureBarrierNV(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_TEXTURE_BARRIER
-REGAL_DECL void REGAL_CALL plugin_glTextureBarrierNV(void);
+REGAL_DECL void REGAL_CALL plugin_glTextureBarrierNV(void *_context);
 #endif
 
 /**
@@ -25446,12 +25446,12 @@ REGAL_DECL void REGAL_CALL glTextureImage3DMultisampleNV(GLuint texture, GLenum 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_TEXTURE_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glTexImage2DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
-REGAL_DECL void REGAL_CALL plugin_glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
-REGAL_DECL void REGAL_CALL plugin_glTextureImage2DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
-REGAL_DECL void REGAL_CALL plugin_glTextureImage2DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
-REGAL_DECL void REGAL_CALL plugin_glTextureImage3DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
-REGAL_DECL void REGAL_CALL plugin_glTextureImage3DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+REGAL_DECL void REGAL_CALL plugin_glTexImage2DMultisampleCoverageNV(void *_context, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+REGAL_DECL void REGAL_CALL plugin_glTexImage3DMultisampleCoverageNV(void *_context, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+REGAL_DECL void REGAL_CALL plugin_glTextureImage2DMultisampleCoverageNV(void *_context, GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+REGAL_DECL void REGAL_CALL plugin_glTextureImage2DMultisampleNV(void *_context, GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+REGAL_DECL void REGAL_CALL plugin_glTextureImage3DMultisampleCoverageNV(void *_context, GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+REGAL_DECL void REGAL_CALL plugin_glTextureImage3DMultisampleNV(void *_context, GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
 #endif
 
 /**
@@ -25772,17 +25772,17 @@ REGAL_DECL void REGAL_CALL glTransformFeedbackVaryingsNV(GLuint program, GLsizei
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_TRANSFORM_FEEDBACK
-REGAL_DECL GLint REGAL_CALL plugin_glGetVaryingLocationNV(GLuint program, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glActiveVaryingNV(GLuint program, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glBeginTransformFeedbackNV(GLenum primitiveMode);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferBaseNV(GLenum target, GLuint index, GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferOffsetNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glBindBufferRangeNV(GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
-REGAL_DECL void REGAL_CALL plugin_glEndTransformFeedbackNV(void);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveVaryingNV(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetTransformFeedbackVaryingNV(GLuint program, GLuint index, GLint *location);
-REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackAttribsNV(GLuint count, const GLint *attribs, GLenum bufferMode);
-REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackVaryingsNV(GLuint program, GLsizei count, const GLint *locations, GLenum bufferMode);
+REGAL_DECL GLint REGAL_CALL plugin_glGetVaryingLocationNV(void *_context, GLuint program, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glActiveVaryingNV(void *_context, GLuint program, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glBeginTransformFeedbackNV(void *_context, GLenum primitiveMode);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferBaseNV(void *_context, GLenum target, GLuint index, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferOffsetNV(void *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glBindBufferRangeNV(void *_context, GLenum target, GLuint index, GLuint buffer, GLintptr offset, GLsizeiptr size);
+REGAL_DECL void REGAL_CALL plugin_glEndTransformFeedbackNV(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveVaryingNV(void *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetTransformFeedbackVaryingNV(void *_context, GLuint program, GLuint index, GLint *location);
+REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackAttribsNV(void *_context, GLuint count, const GLint *attribs, GLenum bufferMode);
+REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackVaryingsNV(void *_context, GLuint program, GLsizei count, const GLint *locations, GLenum bufferMode);
 #endif
 
 /**
@@ -25851,13 +25851,13 @@ REGAL_DECL void REGAL_CALL glResumeTransformFeedbackNV(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_TRANSFORM_FEEDBACK2
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsTransformFeedbackNV(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBindTransformFeedbackNV(GLenum target, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteTransformFeedbacksNV(GLsizei n, const GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackNV(GLenum mode, GLuint name);
-REGAL_DECL void REGAL_CALL plugin_glGenTransformFeedbacksNV(GLsizei n, GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glPauseTransformFeedbackNV(void);
-REGAL_DECL void REGAL_CALL plugin_glResumeTransformFeedbackNV(void);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsTransformFeedbackNV(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBindTransformFeedbackNV(void *_context, GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteTransformFeedbacksNV(void *_context, GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glDrawTransformFeedbackNV(void *_context, GLenum mode, GLuint name);
+REGAL_DECL void REGAL_CALL plugin_glGenTransformFeedbacksNV(void *_context, GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glPauseTransformFeedbackNV(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glResumeTransformFeedbackNV(void *_context);
 #endif
 
 /**
@@ -25935,16 +25935,16 @@ REGAL_DECL void REGAL_CALL glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_VDPAU_INTEROP
-REGAL_DECL GLboolean REGAL_CALL plugin_glVDPAUIsSurfaceNV(GLvdpauSurfaceNV surface);
-REGAL_DECL GLvdpauSurfaceNV REGAL_CALL plugin_glVDPAURegisterOutputSurfaceNV(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
-REGAL_DECL GLvdpauSurfaceNV REGAL_CALL plugin_glVDPAURegisterVideoSurfaceNV(const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
-REGAL_DECL void REGAL_CALL plugin_glVDPAUFiniNV(void);
-REGAL_DECL void REGAL_CALL plugin_glVDPAUGetSurfaceivNV(GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
-REGAL_DECL void REGAL_CALL plugin_glVDPAUInitNV(const GLvoid *vdpDevice, const GLvoid *getProcAddress);
-REGAL_DECL void REGAL_CALL plugin_glVDPAUMapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces);
-REGAL_DECL void REGAL_CALL plugin_glVDPAUSurfaceAccessNV(GLvdpauSurfaceNV surface, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glVDPAUUnmapSurfacesNV(GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces);
-REGAL_DECL void REGAL_CALL plugin_glVDPAUUnregisterSurfaceNV(GLvdpauSurfaceNV surface);
+REGAL_DECL GLboolean REGAL_CALL plugin_glVDPAUIsSurfaceNV(void *_context, GLvdpauSurfaceNV surface);
+REGAL_DECL GLvdpauSurfaceNV REGAL_CALL plugin_glVDPAURegisterOutputSurfaceNV(void *_context, const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
+REGAL_DECL GLvdpauSurfaceNV REGAL_CALL plugin_glVDPAURegisterVideoSurfaceNV(void *_context, const GLvoid *vdpSurface, GLenum target, GLsizei numTextureNames, const GLuint *textureNames);
+REGAL_DECL void REGAL_CALL plugin_glVDPAUFiniNV(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glVDPAUGetSurfaceivNV(void *_context, GLvdpauSurfaceNV surface, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+REGAL_DECL void REGAL_CALL plugin_glVDPAUInitNV(void *_context, const GLvoid *vdpDevice, const GLvoid *getProcAddress);
+REGAL_DECL void REGAL_CALL plugin_glVDPAUMapSurfacesNV(void *_context, GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces);
+REGAL_DECL void REGAL_CALL plugin_glVDPAUSurfaceAccessNV(void *_context, GLvdpauSurfaceNV surface, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glVDPAUUnmapSurfacesNV(void *_context, GLsizei numSurfaces, const GLvdpauSurfaceNV *surfaces);
+REGAL_DECL void REGAL_CALL plugin_glVDPAUUnregisterSurfaceNV(void *_context, GLvdpauSurfaceNV surface);
 #endif
 
 /**
@@ -25999,8 +25999,8 @@ REGAL_DECL void REGAL_CALL glVertexArrayRangeNV(GLsizei size, const GLvoid *poin
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_VERTEX_ARRAY_RANGE
-REGAL_DECL void REGAL_CALL plugin_glFlushVertexArrayRangeNV(void);
-REGAL_DECL void REGAL_CALL plugin_glVertexArrayRangeNV(GLsizei size, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glFlushVertexArrayRangeNV(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glVertexArrayRangeNV(void *_context, GLsizei size, const GLvoid *pointer);
 #endif
 
 /**
@@ -26135,25 +26135,25 @@ REGAL_DECL void REGAL_CALL glVertexAttribLFormatNV(GLuint index, GLint size, GLe
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_VERTEX_ATTRIB_INTEGER_64BIT
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLi64vNV(GLuint index, GLenum pname, GLint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLui64vNV(GLuint index, GLenum pname, GLuint64EXT *params);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1i64NV(GLuint index, GLint64EXT x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1i64vNV(GLuint index, const GLint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64NV(GLuint index, GLuint64EXT x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64vNV(GLuint index, const GLuint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2i64NV(GLuint index, GLint64EXT x, GLint64EXT y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2i64vNV(GLuint index, const GLint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2ui64vNV(GLuint index, const GLuint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3i64vNV(GLuint index, const GLint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3ui64vNV(GLuint index, const GLuint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4i64vNV(GLuint index, const GLint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4ui64vNV(GLuint index, const GLuint64EXT *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribLFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLi64vNV(void *_context, GLuint index, GLenum pname, GLint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribLui64vNV(void *_context, GLuint index, GLenum pname, GLuint64EXT *params);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1i64NV(void *_context, GLuint index, GLint64EXT x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1i64vNV(void *_context, GLuint index, const GLint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64NV(void *_context, GLuint index, GLuint64EXT x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL1ui64vNV(void *_context, GLuint index, const GLuint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2i64NV(void *_context, GLuint index, GLint64EXT x, GLint64EXT y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2i64vNV(void *_context, GLuint index, const GLint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2ui64NV(void *_context, GLuint index, GLuint64EXT x, GLuint64EXT y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL2ui64vNV(void *_context, GLuint index, const GLuint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3i64NV(void *_context, GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3i64vNV(void *_context, GLuint index, const GLint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3ui64NV(void *_context, GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL3ui64vNV(void *_context, GLuint index, const GLuint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4i64NV(void *_context, GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4i64vNV(void *_context, GLuint index, const GLint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4ui64NV(void *_context, GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribL4ui64vNV(void *_context, GLuint index, const GLuint64EXT *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribLFormatNV(void *_context, GLuint index, GLint size, GLenum type, GLsizei stride);
 #endif
 
 /**
@@ -26258,18 +26258,18 @@ REGAL_DECL void REGAL_CALL glVertexFormatNV(GLint size, GLenum type, GLsizei str
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_VERTEX_BUFFER_UNIFIED_MEMORY
-REGAL_DECL void REGAL_CALL plugin_glBufferAddressRangeNV(GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length);
-REGAL_DECL void REGAL_CALL plugin_glColorFormatNV(GLint size, GLenum type, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glEdgeFlagFormatNV(GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordFormatNV(GLenum type, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glGetIntegerui64i_vNV(GLenum target, GLuint index, GLuint64EXT *data);
-REGAL_DECL void REGAL_CALL plugin_glIndexFormatNV(GLenum type, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glNormalFormatNV(GLenum type, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColorFormatNV(GLint size, GLenum type, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordFormatNV(GLint size, GLenum type, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribFormatNV(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribIFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
-REGAL_DECL void REGAL_CALL plugin_glVertexFormatNV(GLint size, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glBufferAddressRangeNV(void *_context, GLenum pname, GLuint index, GLuint64EXT address, GLsizeiptr length);
+REGAL_DECL void REGAL_CALL plugin_glColorFormatNV(void *_context, GLint size, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glEdgeFlagFormatNV(void *_context, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordFormatNV(void *_context, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glGetIntegerui64i_vNV(void *_context, GLenum target, GLuint index, GLuint64EXT *data);
+REGAL_DECL void REGAL_CALL plugin_glIndexFormatNV(void *_context, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glNormalFormatNV(void *_context, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColorFormatNV(void *_context, GLint size, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordFormatNV(void *_context, GLint size, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribFormatNV(void *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribIFormatNV(void *_context, GLuint index, GLint size, GLenum type, GLsizei stride);
+REGAL_DECL void REGAL_CALL plugin_glVertexFormatNV(void *_context, GLint size, GLenum type, GLsizei stride);
 #endif
 
 /**
@@ -26588,70 +26588,70 @@ REGAL_DECL void REGAL_CALL glVertexAttribs4ubvNV(GLuint index, GLsizei n, const 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_VERTEX_PROGRAM
-REGAL_DECL GLboolean REGAL_CALL plugin_glAreProgramsResidentNV(GLsizei n, const GLuint *programs, GLboolean *residences);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgramNV(GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBindProgramNV(GLenum target, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glDeleteProgramsNV(GLsizei n, const GLuint *programs);
-REGAL_DECL void REGAL_CALL plugin_glExecuteProgramNV(GLenum target, GLuint id, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGenProgramsNV(GLsizei n, GLuint *programs);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramParameterdvNV(GLenum target, GLuint index, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramParameterfvNV(GLenum target, GLuint index, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramStringNV(GLuint id, GLenum pname, GLubyte *program);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramivNV(GLuint id, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTrackMatrixivNV(GLenum target, GLuint address, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribPointervNV(GLuint index, GLenum pname, GLvoid **pointer);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribdvNV(GLuint index, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribfvNV(GLuint index, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribivNV(GLuint index, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glLoadProgramNV(GLenum target, GLuint id, GLsizei len, const GLubyte *program);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameter4dNV(GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameter4dvNV(GLenum target, GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameter4fNV(GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameter4fvNV(GLenum target, GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameters4dvNV(GLenum target, GLuint index, GLsizei count, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glProgramParameters4fvNV(GLenum target, GLuint index, GLsizei count, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glRequestResidentProgramsNV(GLsizei n, const GLuint *programs);
-REGAL_DECL void REGAL_CALL plugin_glTrackMatrixNV(GLenum target, GLuint address, GLenum matrix, GLenum transform);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dNV(GLuint index, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dvNV(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fNV(GLuint index, GLfloat x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fvNV(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1sNV(GLuint index, GLshort x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1svNV(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dNV(GLuint index, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dvNV(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fNV(GLuint index, GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fvNV(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2sNV(GLuint index, GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2svNV(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dvNV(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fvNV(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3sNV(GLuint index, GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3svNV(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dNV(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dvNV(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fNV(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fvNV(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4sNV(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4svNV(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubNV(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubvNV(GLuint index, const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribPointerNV(GLuint index, GLint fsize, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1dvNV(GLuint index, GLsizei n, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1fvNV(GLuint index, GLsizei n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1svNV(GLuint index, GLsizei n, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2dvNV(GLuint index, GLsizei n, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2fvNV(GLuint index, GLsizei n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2svNV(GLuint index, GLsizei n, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3dvNV(GLuint index, GLsizei n, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3fvNV(GLuint index, GLsizei n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3svNV(GLuint index, GLsizei n, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4dvNV(GLuint index, GLsizei n, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4fvNV(GLuint index, GLsizei n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4svNV(GLuint index, GLsizei n, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4ubvNV(GLuint index, GLsizei n, const GLubyte *v);
+REGAL_DECL GLboolean REGAL_CALL plugin_glAreProgramsResidentNV(void *_context, GLsizei n, const GLuint *programs, GLboolean *residences);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgramNV(void *_context, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBindProgramNV(void *_context, GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glDeleteProgramsNV(void *_context, GLsizei n, const GLuint *programs);
+REGAL_DECL void REGAL_CALL plugin_glExecuteProgramNV(void *_context, GLenum target, GLuint id, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGenProgramsNV(void *_context, GLsizei n, GLuint *programs);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramParameterdvNV(void *_context, GLenum target, GLuint index, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramParameterfvNV(void *_context, GLenum target, GLuint index, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramStringNV(void *_context, GLuint id, GLenum pname, GLubyte *program);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramivNV(void *_context, GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTrackMatrixivNV(void *_context, GLenum target, GLuint address, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribPointervNV(void *_context, GLuint index, GLenum pname, GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribdvNV(void *_context, GLuint index, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribfvNV(void *_context, GLuint index, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribivNV(void *_context, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glLoadProgramNV(void *_context, GLenum target, GLuint id, GLsizei len, const GLubyte *program);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameter4dNV(void *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameter4dvNV(void *_context, GLenum target, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameter4fNV(void *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameter4fvNV(void *_context, GLenum target, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameters4dvNV(void *_context, GLenum target, GLuint index, GLsizei count, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glProgramParameters4fvNV(void *_context, GLenum target, GLuint index, GLsizei count, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glRequestResidentProgramsNV(void *_context, GLsizei n, const GLuint *programs);
+REGAL_DECL void REGAL_CALL plugin_glTrackMatrixNV(void *_context, GLenum target, GLuint address, GLenum matrix, GLenum transform);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dNV(void *_context, GLuint index, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dvNV(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fNV(void *_context, GLuint index, GLfloat x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fvNV(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1sNV(void *_context, GLuint index, GLshort x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1svNV(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dNV(void *_context, GLuint index, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dvNV(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fNV(void *_context, GLuint index, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fvNV(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2sNV(void *_context, GLuint index, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2svNV(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dNV(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dvNV(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fNV(void *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fvNV(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3sNV(void *_context, GLuint index, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3svNV(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dNV(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dvNV(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fNV(void *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fvNV(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4sNV(void *_context, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4svNV(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubNV(void *_context, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubvNV(void *_context, GLuint index, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribPointerNV(void *_context, GLuint index, GLint fsize, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1dvNV(void *_context, GLuint index, GLsizei n, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1fvNV(void *_context, GLuint index, GLsizei n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs1svNV(void *_context, GLuint index, GLsizei n, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2dvNV(void *_context, GLuint index, GLsizei n, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2fvNV(void *_context, GLuint index, GLsizei n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs2svNV(void *_context, GLuint index, GLsizei n, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3dvNV(void *_context, GLuint index, GLsizei n, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3fvNV(void *_context, GLuint index, GLsizei n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs3svNV(void *_context, GLuint index, GLsizei n, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4dvNV(void *_context, GLuint index, GLsizei n, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4fvNV(void *_context, GLuint index, GLsizei n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4svNV(void *_context, GLuint index, GLsizei n, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribs4ubvNV(void *_context, GLuint index, GLsizei n, const GLubyte *v);
 #endif
 
 /**
@@ -26857,18 +26857,18 @@ REGAL_DECL void REGAL_CALL glVideoCaptureStreamParameterivNV(GLuint video_captur
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_NV_VIDEO_CAPTURE
-REGAL_DECL GLenum REGAL_CALL plugin_glVideoCaptureNV(GLuint video_capture_slot, GLuint *sequence_num, GLuint64EXT *capture_time);
-REGAL_DECL void REGAL_CALL plugin_glBeginVideoCaptureNV(GLuint video_capture_slot);
-REGAL_DECL void REGAL_CALL plugin_glBindVideoCaptureStreamBufferNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLintptr offset);
-REGAL_DECL void REGAL_CALL plugin_glBindVideoCaptureStreamTextureNV(GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLenum target, GLuint texture);
-REGAL_DECL void REGAL_CALL plugin_glEndVideoCaptureNV(GLuint video_capture_slot);
-REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureStreamdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureStreamfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureStreamivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureivNV(GLuint video_capture_slot, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterdvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterfvNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterivNV(GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint *params);
+REGAL_DECL GLenum REGAL_CALL plugin_glVideoCaptureNV(void *_context, GLuint video_capture_slot, GLuint *sequence_num, GLuint64EXT *capture_time);
+REGAL_DECL void REGAL_CALL plugin_glBeginVideoCaptureNV(void *_context, GLuint video_capture_slot);
+REGAL_DECL void REGAL_CALL plugin_glBindVideoCaptureStreamBufferNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLintptr offset);
+REGAL_DECL void REGAL_CALL plugin_glBindVideoCaptureStreamTextureNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum frame_region, GLenum target, GLuint texture);
+REGAL_DECL void REGAL_CALL plugin_glEndVideoCaptureNV(void *_context, GLuint video_capture_slot);
+REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureStreamdvNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureStreamfvNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureStreamivNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVideoCaptureivNV(void *_context, GLuint video_capture_slot, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterdvNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, const GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterfvNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glVideoCaptureStreamParameterivNV(void *_context, GLuint video_capture_slot, GLuint stream, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -26952,7 +26952,7 @@ REGAL_DECL void REGAL_CALL glBlendEquationSeparateOES(GLenum modeRGB, GLenum mod
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_BLEND_EQUATION_SEPARATE
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateOES(GLenum modeRGB, GLenum modeAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparateOES(void *_context, GLenum modeRGB, GLenum modeAlpha);
 #endif
 
 /**
@@ -27003,7 +27003,7 @@ REGAL_DECL void REGAL_CALL glBlendFuncSeparateOES(GLenum sfactorRGB, GLenum dfac
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_BLEND_FUNC_SEPARATE
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateOES(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparateOES(void *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
 #endif
 
 /**
@@ -27054,7 +27054,7 @@ REGAL_DECL void REGAL_CALL glBlendEquationOES(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_BLEND_SUBTRACT
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationOES(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationOES(void *_context, GLenum mode);
 #endif
 
 /**
@@ -27280,21 +27280,21 @@ REGAL_DECL void REGAL_CALL glRenderbufferStorageOES(GLenum target, GLenum intern
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_FRAMEBUFFER_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsFramebufferOES(GLuint framebuffer);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsRenderbufferOES(GLuint renderbuffer);
-REGAL_DECL GLenum REGAL_CALL plugin_glCheckFramebufferStatusOES(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glBindFramebufferOES(GLenum target, GLuint framebuffer);
-REGAL_DECL void REGAL_CALL plugin_glBindRenderbufferOES(GLenum target, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glDeleteFramebuffersOES(GLsizei n, const GLuint *framebuffers);
-REGAL_DECL void REGAL_CALL plugin_glDeleteRenderbuffersOES(GLsizei n, const GLuint *renderbuffers);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferRenderbufferOES(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glGenFramebuffersOES(GLsizei n, GLuint *framebuffers);
-REGAL_DECL void REGAL_CALL plugin_glGenRenderbuffersOES(GLsizei n, GLuint *renderbuffers);
-REGAL_DECL void REGAL_CALL plugin_glGenerateMipmapOES(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGetFramebufferAttachmentParameterivOES(GLenum target, GLenum attachment, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetRenderbufferParameterivOES(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageOES(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsFramebufferOES(void *_context, GLuint framebuffer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsRenderbufferOES(void *_context, GLuint renderbuffer);
+REGAL_DECL GLenum REGAL_CALL plugin_glCheckFramebufferStatusOES(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glBindFramebufferOES(void *_context, GLenum target, GLuint framebuffer);
+REGAL_DECL void REGAL_CALL plugin_glBindRenderbufferOES(void *_context, GLenum target, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glDeleteFramebuffersOES(void *_context, GLsizei n, const GLuint *framebuffers);
+REGAL_DECL void REGAL_CALL plugin_glDeleteRenderbuffersOES(void *_context, GLsizei n, const GLuint *renderbuffers);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferRenderbufferOES(void *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture2DOES(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glGenFramebuffersOES(void *_context, GLsizei n, GLuint *framebuffers);
+REGAL_DECL void REGAL_CALL plugin_glGenRenderbuffersOES(void *_context, GLsizei n, GLuint *renderbuffers);
+REGAL_DECL void REGAL_CALL plugin_glGenerateMipmapOES(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGetFramebufferAttachmentParameterivOES(void *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetRenderbufferParameterivOES(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glRenderbufferStorageOES(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -27347,8 +27347,8 @@ REGAL_DECL void REGAL_CALL glProgramBinaryOES(GLuint program, GLenum binaryForma
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_GET_PROGRAM_BINARY
-REGAL_DECL void REGAL_CALL plugin_glGetProgramBinaryOES(GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary);
-REGAL_DECL void REGAL_CALL plugin_glProgramBinaryOES(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLint length);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramBinaryOES(void *_context, GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary);
+REGAL_DECL void REGAL_CALL plugin_glProgramBinaryOES(void *_context, GLuint program, GLenum binaryFormat, const GLvoid *binary, GLint length);
 #endif
 
 /**
@@ -27405,9 +27405,9 @@ REGAL_DECL void REGAL_CALL glGetBufferPointervOES(GLenum target, GLenum pname, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_MAPBUFFER
-REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapBufferOES(GLenum target);
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferOES(GLenum target, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferPointervOES(GLenum target, GLenum pname, GLvoid **params);
+REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapBufferOES(void *_context, GLenum target);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBufferOES(void *_context, GLenum target, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferPointervOES(void *_context, GLenum target, GLenum pname, GLvoid **params);
 #endif
 
 /**
@@ -27510,9 +27510,9 @@ REGAL_DECL void REGAL_CALL glWeightPointerOES(GLint size, GLenum type, GLsizei s
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_MATRIX_PALETTE
-REGAL_DECL void REGAL_CALL plugin_glCurrentPaletteMatrixOES(GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glMatrixIndexPointerOES(GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glWeightPointerOES(GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glCurrentPaletteMatrixOES(void *_context, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glMatrixIndexPointerOES(void *_context, GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glWeightPointerOES(void *_context, GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
 #endif
 
 /**
@@ -27781,12 +27781,12 @@ REGAL_DECL void REGAL_CALL glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_SINGLE_PRECISION
-REGAL_DECL void REGAL_CALL plugin_glClearDepthfOES(GLclampd depth);
-REGAL_DECL void REGAL_CALL plugin_glClipPlanefOES(GLenum plane, const GLfloat *equation);
-REGAL_DECL void REGAL_CALL plugin_glDepthRangefOES(GLclampf n, GLclampf f);
-REGAL_DECL void REGAL_CALL plugin_glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
-REGAL_DECL void REGAL_CALL plugin_glGetClipPlanefOES(GLenum plane, GLfloat *equation);
-REGAL_DECL void REGAL_CALL plugin_glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+REGAL_DECL void REGAL_CALL plugin_glClearDepthfOES(void *_context, GLclampd depth);
+REGAL_DECL void REGAL_CALL plugin_glClipPlanefOES(void *_context, GLenum plane, const GLfloat *equation);
+REGAL_DECL void REGAL_CALL plugin_glDepthRangefOES(void *_context, GLclampf n, GLclampf f);
+REGAL_DECL void REGAL_CALL plugin_glFrustumfOES(void *_context, GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+REGAL_DECL void REGAL_CALL plugin_glGetClipPlanefOES(void *_context, GLenum plane, GLfloat *equation);
+REGAL_DECL void REGAL_CALL plugin_glOrthofOES(void *_context, GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
 #endif
 
 /**
@@ -28012,12 +28012,12 @@ REGAL_DECL void REGAL_CALL glTexSubImage3DOES(GLenum target, GLint level, GLint 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_TEXTURE_3D
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture3DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
-REGAL_DECL void REGAL_CALL plugin_glTexImage3DOES(GLenum target, GLint level, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage3DOES(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage3DOES(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage3DOES(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture3DOES(void *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+REGAL_DECL void REGAL_CALL plugin_glTexImage3DOES(void *_context, GLenum target, GLint level, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage3DOES(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
 #endif
 
 /**
@@ -28101,15 +28101,15 @@ REGAL_DECL void REGAL_CALL glTexGenxvOES(GLenum coord, GLenum pname, const GLfix
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_TEXTURE_CUBE_MAP
-REGAL_DECL void REGAL_CALL plugin_glGetTexGenfvOES(GLenum coord, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexGenivOES(GLenum coord, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexGenxvOES(GLenum coord, GLenum pname, GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glTexGenfOES(GLenum coord, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glTexGenfvOES(GLenum coord, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glTexGeniOES(GLenum coord, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glTexGenivOES(GLenum coord, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glTexGenxOES(GLenum coord, GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glTexGenxvOES(GLenum coord, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexGenfvOES(void *_context, GLenum coord, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexGenivOES(void *_context, GLenum coord, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexGenxvOES(void *_context, GLenum coord, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glTexGenfOES(void *_context, GLenum coord, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glTexGenfvOES(void *_context, GLenum coord, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glTexGeniOES(void *_context, GLenum coord, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glTexGenivOES(void *_context, GLenum coord, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glTexGenxOES(void *_context, GLenum coord, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glTexGenxvOES(void *_context, GLenum coord, GLenum pname, const GLfixed *params);
 #endif
 
 /**
@@ -28166,10 +28166,10 @@ REGAL_DECL void REGAL_CALL glGenVertexArraysOES(GLsizei n, GLuint *arrays);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_OES_VERTEX_ARRAY_OBJECT
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexArrayOES(GLuint array);
-REGAL_DECL void REGAL_CALL plugin_glBindVertexArrayOES(GLuint array);
-REGAL_DECL void REGAL_CALL plugin_glDeleteVertexArraysOES(GLsizei n, const GLuint *arrays);
-REGAL_DECL void REGAL_CALL plugin_glGenVertexArraysOES(GLsizei n, GLuint *arrays);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsVertexArrayOES(void *_context, GLuint array);
+REGAL_DECL void REGAL_CALL plugin_glBindVertexArrayOES(void *_context, GLuint array);
+REGAL_DECL void REGAL_CALL plugin_glDeleteVertexArraysOES(void *_context, GLsizei n, const GLuint *arrays);
+REGAL_DECL void REGAL_CALL plugin_glGenVertexArraysOES(void *_context, GLsizei n, GLuint *arrays);
 #endif
 
 /**
@@ -28404,7 +28404,7 @@ REGAL_DECL void REGAL_CALL glHintPGI(GLenum target, GLint mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_PGI_MISC_HINTS
-REGAL_DECL void REGAL_CALL plugin_glHintPGI(GLenum target, GLint mode);
+REGAL_DECL void REGAL_CALL plugin_glHintPGI(void *_context, GLenum target, GLint mode);
 #endif
 
 /**
@@ -28507,7 +28507,7 @@ REGAL_DECL void REGAL_CALL glAlphaFuncQCOM(GLenum func, GLclampf ref);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_QCOM_ALPHA_TEST
-REGAL_DECL void REGAL_CALL plugin_glAlphaFuncQCOM(GLenum func, GLclampf ref);
+REGAL_DECL void REGAL_CALL plugin_glAlphaFuncQCOM(void *_context, GLenum func, GLclampf ref);
 #endif
 
 /**
@@ -28595,10 +28595,10 @@ REGAL_DECL void REGAL_CALL glGetDriverControlsQCOM(GLint *num, GLsizei size, GLu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_QCOM_DRIVER_CONTROL
-REGAL_DECL void REGAL_CALL plugin_glDisableDriverControlQCOM(GLuint driverControl);
-REGAL_DECL void REGAL_CALL plugin_glEnableDriverControlQCOM(GLuint driverControl);
-REGAL_DECL void REGAL_CALL plugin_glGetDriverControlStringQCOM(GLuint driverControl, GLsizei bufSize, GLsizei *length, GLchar *driverControlString);
-REGAL_DECL void REGAL_CALL plugin_glGetDriverControlsQCOM(GLint *num, GLsizei size, GLuint *driverControls);
+REGAL_DECL void REGAL_CALL plugin_glDisableDriverControlQCOM(void *_context, GLuint driverControl);
+REGAL_DECL void REGAL_CALL plugin_glEnableDriverControlQCOM(void *_context, GLuint driverControl);
+REGAL_DECL void REGAL_CALL plugin_glGetDriverControlStringQCOM(void *_context, GLuint driverControl, GLsizei bufSize, GLsizei *length, GLchar *driverControlString);
+REGAL_DECL void REGAL_CALL plugin_glGetDriverControlsQCOM(void *_context, GLint *num, GLsizei size, GLuint *driverControls);
 #endif
 
 /**
@@ -28677,14 +28677,14 @@ REGAL_DECL void REGAL_CALL glExtTexObjectStateOverrideiQCOM(GLenum target, GLenu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_QCOM_EXTENDED_GET
-REGAL_DECL void REGAL_CALL plugin_glExtGetBufferPointervQCOM(GLenum target, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glExtGetBuffersQCOM(GLuint *buffers, GLint maxBuffers, GLint *numBuffers);
-REGAL_DECL void REGAL_CALL plugin_glExtGetFramebuffersQCOM(GLuint *framebuffers, GLint maxFramebuffers, GLint *numFramebuffers);
-REGAL_DECL void REGAL_CALL plugin_glExtGetRenderbuffersQCOM(GLuint *renderbuffers, GLint maxRenderbuffers, GLint *numRenderbuffers);
-REGAL_DECL void REGAL_CALL plugin_glExtGetTexLevelParameterivQCOM(GLuint texture, GLenum face, GLint level, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glExtGetTexSubImageQCOM(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLvoid *texels);
-REGAL_DECL void REGAL_CALL plugin_glExtGetTexturesQCOM(GLuint *textures, GLint maxTextures, GLint *numTextures);
-REGAL_DECL void REGAL_CALL plugin_glExtTexObjectStateOverrideiQCOM(GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glExtGetBufferPointervQCOM(void *_context, GLenum target, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glExtGetBuffersQCOM(void *_context, GLuint *buffers, GLint maxBuffers, GLint *numBuffers);
+REGAL_DECL void REGAL_CALL plugin_glExtGetFramebuffersQCOM(void *_context, GLuint *framebuffers, GLint maxFramebuffers, GLint *numFramebuffers);
+REGAL_DECL void REGAL_CALL plugin_glExtGetRenderbuffersQCOM(void *_context, GLuint *renderbuffers, GLint maxRenderbuffers, GLint *numRenderbuffers);
+REGAL_DECL void REGAL_CALL plugin_glExtGetTexLevelParameterivQCOM(void *_context, GLuint texture, GLenum face, GLint level, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glExtGetTexSubImageQCOM(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLvoid *texels);
+REGAL_DECL void REGAL_CALL plugin_glExtGetTexturesQCOM(void *_context, GLuint *textures, GLint maxTextures, GLint *numTextures);
+REGAL_DECL void REGAL_CALL plugin_glExtTexObjectStateOverrideiQCOM(void *_context, GLenum target, GLenum pname, GLint param);
 #endif
 
 /**
@@ -28737,10 +28737,10 @@ REGAL_DECL void REGAL_CALL glExtGetShadersQCOM(GLuint *shaders, GLint maxShaders
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_QCOM_EXTENDED_GET2
-REGAL_DECL GLboolean REGAL_CALL plugin_glExtIsProgramBinaryQCOM(GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glExtGetProgramBinarySourceQCOM(GLuint program, GLenum shadertype, GLchar *source, GLint *length);
-REGAL_DECL void REGAL_CALL plugin_glExtGetProgramsQCOM(GLuint *programs, GLint maxPrograms, GLint *numPrograms);
-REGAL_DECL void REGAL_CALL plugin_glExtGetShadersQCOM(GLuint *shaders, GLint maxShaders, GLint *numShaders);
+REGAL_DECL GLboolean REGAL_CALL plugin_glExtIsProgramBinaryQCOM(void *_context, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glExtGetProgramBinarySourceQCOM(void *_context, GLuint program, GLenum shadertype, GLchar *source, GLint *length);
+REGAL_DECL void REGAL_CALL plugin_glExtGetProgramsQCOM(void *_context, GLuint *programs, GLint maxPrograms, GLint *numPrograms);
+REGAL_DECL void REGAL_CALL plugin_glExtGetShadersQCOM(void *_context, GLuint *shaders, GLint maxShaders, GLint *numShaders);
 #endif
 
 /**
@@ -28854,8 +28854,8 @@ REGAL_DECL void REGAL_CALL glStartTilingQCOM(GLuint x, GLuint y, GLuint width, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_QCOM_TILED_RENDERING
-REGAL_DECL void REGAL_CALL plugin_glEndTilingQCOM(GLbitfield preserveMask);
-REGAL_DECL void REGAL_CALL plugin_glStartTilingQCOM(GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask);
+REGAL_DECL void REGAL_CALL plugin_glEndTilingQCOM(void *_context, GLbitfield preserveMask);
+REGAL_DECL void REGAL_CALL plugin_glStartTilingQCOM(void *_context, GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask);
 #endif
 
 /**
@@ -29021,37 +29021,37 @@ REGAL_DECL void REGAL_CALL glTranslatex(GLfixed x, GLfixed y, GLfixed z);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_REGAL_ES1_0_COMPATIBILITY
-REGAL_DECL void REGAL_CALL plugin_glAlphaFuncx(GLenum func, GLclampx ref);
-REGAL_DECL void REGAL_CALL plugin_glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha);
-REGAL_DECL void REGAL_CALL plugin_glClearDepthx(GLclampx depth);
-REGAL_DECL void REGAL_CALL plugin_glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
-REGAL_DECL void REGAL_CALL plugin_glDepthRangex(GLclampx zNear, GLclampx zFar);
-REGAL_DECL void REGAL_CALL plugin_glFogx(GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glFogxv(GLenum pname, const GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
-REGAL_DECL void REGAL_CALL plugin_glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
-REGAL_DECL void REGAL_CALL plugin_glLightModelx(GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glLightModelxv(GLenum pname, const GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glLightx(GLenum light, GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glLightxv(GLenum light, GLenum pname, const GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glLineWidthx(GLfixed width);
-REGAL_DECL void REGAL_CALL plugin_glLoadMatrixx(const GLfixed *m);
-REGAL_DECL void REGAL_CALL plugin_glMaterialx(GLenum face, GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glMaterialxv(GLenum face, GLenum pname, const GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glMultMatrixx(const GLfixed *m);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
-REGAL_DECL void REGAL_CALL plugin_glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz);
-REGAL_DECL void REGAL_CALL plugin_glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
-REGAL_DECL void REGAL_CALL plugin_glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
-REGAL_DECL void REGAL_CALL plugin_glPointSizex(GLfixed size);
-REGAL_DECL void REGAL_CALL plugin_glPolygonOffsetx(GLfixed factor, GLfixed units);
-REGAL_DECL void REGAL_CALL plugin_glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
-REGAL_DECL void REGAL_CALL plugin_glSampleCoveragex(GLclampx value, GLboolean invert);
-REGAL_DECL void REGAL_CALL plugin_glScalex(GLfixed x, GLfixed y, GLfixed z);
-REGAL_DECL void REGAL_CALL plugin_glTexEnvx(GLenum target, GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterx(GLenum target, GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glTranslatex(GLfixed x, GLfixed y, GLfixed z);
+REGAL_DECL void REGAL_CALL plugin_glAlphaFuncx(void *_context, GLenum func, GLclampx ref);
+REGAL_DECL void REGAL_CALL plugin_glClearColorx(void *_context, GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha);
+REGAL_DECL void REGAL_CALL plugin_glClearDepthx(void *_context, GLclampx depth);
+REGAL_DECL void REGAL_CALL plugin_glColor4x(void *_context, GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
+REGAL_DECL void REGAL_CALL plugin_glDepthRangex(void *_context, GLclampx zNear, GLclampx zFar);
+REGAL_DECL void REGAL_CALL plugin_glFogx(void *_context, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glFogxv(void *_context, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glFrustumf(void *_context, GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+REGAL_DECL void REGAL_CALL plugin_glFrustumx(void *_context, GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+REGAL_DECL void REGAL_CALL plugin_glLightModelx(void *_context, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glLightModelxv(void *_context, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glLightx(void *_context, GLenum light, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glLightxv(void *_context, GLenum light, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glLineWidthx(void *_context, GLfixed width);
+REGAL_DECL void REGAL_CALL plugin_glLoadMatrixx(void *_context, const GLfixed *m);
+REGAL_DECL void REGAL_CALL plugin_glMaterialx(void *_context, GLenum face, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glMaterialxv(void *_context, GLenum face, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glMultMatrixx(void *_context, const GLfixed *m);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4x(void *_context, GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
+REGAL_DECL void REGAL_CALL plugin_glNormal3x(void *_context, GLfixed nx, GLfixed ny, GLfixed nz);
+REGAL_DECL void REGAL_CALL plugin_glOrthof(void *_context, GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
+REGAL_DECL void REGAL_CALL plugin_glOrthox(void *_context, GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
+REGAL_DECL void REGAL_CALL plugin_glPointSizex(void *_context, GLfixed size);
+REGAL_DECL void REGAL_CALL plugin_glPolygonOffsetx(void *_context, GLfixed factor, GLfixed units);
+REGAL_DECL void REGAL_CALL plugin_glRotatex(void *_context, GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
+REGAL_DECL void REGAL_CALL plugin_glSampleCoveragex(void *_context, GLclampx value, GLboolean invert);
+REGAL_DECL void REGAL_CALL plugin_glScalex(void *_context, GLfixed x, GLfixed y, GLfixed z);
+REGAL_DECL void REGAL_CALL plugin_glTexEnvx(void *_context, GLenum target, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glTexEnvxv(void *_context, GLenum target, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterx(void *_context, GLenum target, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glTranslatex(void *_context, GLfixed x, GLfixed y, GLfixed z);
 #endif
 
 /**
@@ -29131,19 +29131,19 @@ REGAL_DECL void REGAL_CALL glTexParameterxv(GLenum target, GLenum pname, const G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_REGAL_ES1_1_COMPATIBILITY
-REGAL_DECL void REGAL_CALL plugin_glClipPlanef(GLenum plane, const GLfloat *equation);
-REGAL_DECL void REGAL_CALL plugin_glClipPlanex(GLenum plane, const GLfixed *equation);
-REGAL_DECL void REGAL_CALL plugin_glGetClipPlanef(GLenum pname, GLfloat *eqn);
-REGAL_DECL void REGAL_CALL plugin_glGetClipPlanex(GLenum pname, GLfixed *eqn);
-REGAL_DECL void REGAL_CALL plugin_glGetFixedv(GLenum pname, GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glGetLightxv(GLenum light, GLenum pname, GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterx(GLenum pname, GLfixed param);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterxv(GLenum pname, const GLfixed *params);
-REGAL_DECL void REGAL_CALL plugin_glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glClipPlanef(void *_context, GLenum plane, const GLfloat *equation);
+REGAL_DECL void REGAL_CALL plugin_glClipPlanex(void *_context, GLenum plane, const GLfixed *equation);
+REGAL_DECL void REGAL_CALL plugin_glGetClipPlanef(void *_context, GLenum pname, GLfloat *eqn);
+REGAL_DECL void REGAL_CALL plugin_glGetClipPlanex(void *_context, GLenum pname, GLfixed *eqn);
+REGAL_DECL void REGAL_CALL plugin_glGetFixedv(void *_context, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glGetLightxv(void *_context, GLenum light, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMaterialxv(void *_context, GLenum face, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexEnvxv(void *_context, GLenum env, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameterxv(void *_context, GLenum target, GLenum pname, GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterx(void *_context, GLenum pname, GLfixed param);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterxv(void *_context, GLenum pname, const GLfixed *params);
+REGAL_DECL void REGAL_CALL plugin_glPointSizePointerOES(void *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterxv(void *_context, GLenum target, GLenum pname, const GLfixed *params);
 #endif
 
 /**
@@ -29228,7 +29228,7 @@ REGAL_DECL const GLchar *REGAL_CALL glErrorStringREGAL(GLenum error);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_REGAL_ERROR_STRING
-REGAL_DECL const GLchar *REGAL_CALL plugin_glErrorStringREGAL(GLenum error);
+REGAL_DECL const GLchar *REGAL_CALL plugin_glErrorStringREGAL(void *_context, GLenum error);
 #endif
 
 /**
@@ -29275,8 +29275,8 @@ REGAL_DECL GLboolean REGAL_CALL glIsSupportedREGAL(const GLchar *ext);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_REGAL_EXTENSION_QUERY
-REGAL_DECL GLboolean REGAL_CALL plugin_glGetExtensionREGAL(const GLchar *ext);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsSupportedREGAL(const GLchar *ext);
+REGAL_DECL GLboolean REGAL_CALL plugin_glGetExtensionREGAL(void *_context, const GLchar *ext);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsSupportedREGAL(void *_context, const GLchar *ext);
 #endif
 
 /**
@@ -29332,7 +29332,7 @@ REGAL_DECL void REGAL_CALL glLogMessageCallbackREGAL(GLLOGPROCREGAL callback);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_REGAL_LOG
-REGAL_DECL void REGAL_CALL plugin_glLogMessageCallbackREGAL(GLLOGPROCREGAL callback);
+REGAL_DECL void REGAL_CALL plugin_glLogMessageCallbackREGAL(void *_context, GLLOGPROCREGAL callback);
 #endif
 
 /**
@@ -29500,8 +29500,8 @@ REGAL_DECL void REGAL_CALL glGetDetailTexFuncSGIS(GLenum target, GLfloat *points
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_DETAIL_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glDetailTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points);
-REGAL_DECL void REGAL_CALL plugin_glGetDetailTexFuncSGIS(GLenum target, GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glDetailTexFuncSGIS(void *_context, GLenum target, GLsizei n, const GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glGetDetailTexFuncSGIS(void *_context, GLenum target, GLfloat *points);
 #endif
 
 /**
@@ -29548,8 +29548,8 @@ REGAL_DECL void REGAL_CALL glGetFogFuncSGIS(GLfloat *points);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_FOG_FUNCTION
-REGAL_DECL void REGAL_CALL plugin_glFogFuncSGIS(GLsizei n, const GLfloat *points);
-REGAL_DECL void REGAL_CALL plugin_glGetFogFuncSGIS(GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glFogFuncSGIS(void *_context, GLsizei n, const GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glGetFogFuncSGIS(void *_context, GLfloat *points);
 #endif
 
 /**
@@ -29648,8 +29648,8 @@ REGAL_DECL void REGAL_CALL glSamplePatternSGIS(GLenum pattern);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_MULTISAMPLE
-REGAL_DECL void REGAL_CALL plugin_glSampleMaskSGIS(GLclampf value, GLboolean invert);
-REGAL_DECL void REGAL_CALL plugin_glSamplePatternSGIS(GLenum pattern);
+REGAL_DECL void REGAL_CALL plugin_glSampleMaskSGIS(void *_context, GLclampf value, GLboolean invert);
+REGAL_DECL void REGAL_CALL plugin_glSamplePatternSGIS(void *_context, GLenum pattern);
 #endif
 
 /**
@@ -29708,12 +29708,12 @@ REGAL_DECL void REGAL_CALL glPixelTexGenParameterivSGIS(GLenum pname, const GLin
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_PIXEL_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glGetPixelTexGenParameterfvSGIS(GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetPixelTexGenParameterivSGIS(GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameterfSGIS(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameterfvSGIS(GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameteriSGIS(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameterivSGIS(GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetPixelTexGenParameterfvSGIS(void *_context, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetPixelTexGenParameterivSGIS(void *_context, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameterfSGIS(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameterfvSGIS(void *_context, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameteriSGIS(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glPixelTexGenParameterivSGIS(void *_context, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -29799,8 +29799,8 @@ REGAL_DECL void REGAL_CALL glPointParameterfvSGIS(GLenum pname, const GLfloat *p
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_POINT_PARAMETERS
-REGAL_DECL void REGAL_CALL plugin_glPointParameterfSGIS(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterfvSGIS(GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterfSGIS(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterfvSGIS(void *_context, GLenum pname, const GLfloat *params);
 #endif
 
 /**
@@ -29847,8 +29847,8 @@ REGAL_DECL void REGAL_CALL glSharpenTexFuncSGIS(GLenum target, GLsizei n, const 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_SHARPEN_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glGetSharpenTexFuncSGIS(GLenum target, GLfloat *points);
-REGAL_DECL void REGAL_CALL plugin_glSharpenTexFuncSGIS(GLenum target, GLsizei n, const GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glGetSharpenTexFuncSGIS(void *_context, GLenum target, GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glSharpenTexFuncSGIS(void *_context, GLenum target, GLsizei n, const GLfloat *points);
 #endif
 
 /**
@@ -29895,8 +29895,8 @@ REGAL_DECL void REGAL_CALL glTexSubImage4DSGIS(GLenum target, GLint level, GLint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_TEXTURE4D
-REGAL_DECL void REGAL_CALL plugin_glTexImage4DSGIS(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage4DSGIS(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexImage4DSGIS(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage4DSGIS(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint woffset, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLenum format, GLenum type, const GLvoid *pixels);
 #endif
 
 /**
@@ -29972,7 +29972,7 @@ REGAL_DECL void REGAL_CALL glTextureColorMaskSGIS(GLboolean red, GLboolean green
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_TEXTURE_COLOR_MASK
-REGAL_DECL void REGAL_CALL plugin_glTextureColorMaskSGIS(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+REGAL_DECL void REGAL_CALL plugin_glTextureColorMaskSGIS(void *_context, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
 #endif
 
 /**
@@ -30051,8 +30051,8 @@ REGAL_DECL void REGAL_CALL glTexFilterFuncSGIS(GLenum target, GLenum filter, GLs
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIS_TEXTURE_FILTER4
-REGAL_DECL void REGAL_CALL plugin_glGetTexFilterFuncSGIS(GLenum target, GLenum filter, GLfloat *weights);
-REGAL_DECL void REGAL_CALL plugin_glTexFilterFuncSGIS(GLenum target, GLenum filter, GLsizei n, const GLfloat *weights);
+REGAL_DECL void REGAL_CALL plugin_glGetTexFilterFuncSGIS(void *_context, GLenum target, GLenum filter, GLfloat *weights);
+REGAL_DECL void REGAL_CALL plugin_glTexFilterFuncSGIS(void *_context, GLenum target, GLenum filter, GLsizei n, const GLfloat *weights);
 #endif
 
 /**
@@ -30150,12 +30150,12 @@ REGAL_DECL void REGAL_CALL glDeleteAsyncMarkersSGIX(GLuint marker, GLsizei range
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_ASYNC
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsAsyncMarkerSGIX(GLuint marker);
-REGAL_DECL GLint REGAL_CALL plugin_glFinishAsyncSGIX(GLuint *markerp);
-REGAL_DECL GLint REGAL_CALL plugin_glPollAsyncSGIX(GLuint *markerp);
-REGAL_DECL GLuint REGAL_CALL plugin_glGenAsyncMarkersSGIX(GLsizei range);
-REGAL_DECL void REGAL_CALL plugin_glAsyncMarkerSGIX(GLuint marker);
-REGAL_DECL void REGAL_CALL plugin_glDeleteAsyncMarkersSGIX(GLuint marker, GLsizei range);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsAsyncMarkerSGIX(void *_context, GLuint marker);
+REGAL_DECL GLint REGAL_CALL plugin_glFinishAsyncSGIX(void *_context, GLuint *markerp);
+REGAL_DECL GLint REGAL_CALL plugin_glPollAsyncSGIX(void *_context, GLuint *markerp);
+REGAL_DECL GLuint REGAL_CALL plugin_glGenAsyncMarkersSGIX(void *_context, GLsizei range);
+REGAL_DECL void REGAL_CALL plugin_glAsyncMarkerSGIX(void *_context, GLuint marker);
+REGAL_DECL void REGAL_CALL plugin_glDeleteAsyncMarkersSGIX(void *_context, GLuint marker, GLsizei range);
 #endif
 
 /**
@@ -30368,7 +30368,7 @@ REGAL_DECL void REGAL_CALL glFlushRasterSGIX(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_FLUSH_RASTER
-REGAL_DECL void REGAL_CALL plugin_glFlushRasterSGIX(void);
+REGAL_DECL void REGAL_CALL plugin_glFlushRasterSGIX(void *_context);
 #endif
 
 /**
@@ -30451,7 +30451,7 @@ REGAL_DECL void REGAL_CALL glTextureFogSGIX(GLenum pname);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_FOG_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glTextureFogSGIX(GLenum pname);
+REGAL_DECL void REGAL_CALL plugin_glTextureFogSGIX(void *_context, GLenum pname);
 #endif
 
 /**
@@ -30546,24 +30546,24 @@ REGAL_DECL void REGAL_CALL glLightEnviSGIX(GLenum pname, GLint param);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_FRAGMENT_LIGHTING
-REGAL_DECL void REGAL_CALL plugin_glFragmentColorMaterialSGIX(GLenum face, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfSGIX(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfvSGIX(GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModeliSGIX(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelivSGIX(GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightfSGIX(GLenum light, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightfvSGIX(GLenum light, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightiSGIX(GLenum light, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentLightivSGIX(GLenum light, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfSGIX(GLenum face, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfvSGIX(GLenum face, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialiSGIX(GLenum face, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialivSGIX(GLenum face, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightfvSGIX(GLenum light, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightivSGIX(GLenum light, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialfvSGIX(GLenum face, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialivSGIX(GLenum face, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glLightEnviSGIX(GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentColorMaterialSGIX(void *_context, GLenum face, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfSGIX(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelfvSGIX(void *_context, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModeliSGIX(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightModelivSGIX(void *_context, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightfSGIX(void *_context, GLenum light, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightfvSGIX(void *_context, GLenum light, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightiSGIX(void *_context, GLenum light, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentLightivSGIX(void *_context, GLenum light, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfSGIX(void *_context, GLenum face, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialfvSGIX(void *_context, GLenum face, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialiSGIX(void *_context, GLenum face, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFragmentMaterialivSGIX(void *_context, GLenum face, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightfvSGIX(void *_context, GLenum light, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentLightivSGIX(void *_context, GLenum light, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialfvSGIX(void *_context, GLenum face, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFragmentMaterialivSGIX(void *_context, GLenum face, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glLightEnviSGIX(void *_context, GLenum pname, GLint param);
 #endif
 
 /**
@@ -30658,7 +30658,7 @@ REGAL_DECL void REGAL_CALL glFrameZoomSGIX(GLint factor);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_FRAMEZOOM
-REGAL_DECL void REGAL_CALL plugin_glFrameZoomSGIX(GLint factor);
+REGAL_DECL void REGAL_CALL plugin_glFrameZoomSGIX(void *_context, GLint factor);
 #endif
 
 /**
@@ -30702,7 +30702,7 @@ REGAL_DECL void REGAL_CALL glIglooInterfaceSGIX(GLenum pname, const GLvoid *para
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_IGLOO_INTERFACE
-REGAL_DECL void REGAL_CALL plugin_glIglooInterfaceSGIX(GLenum pname, const GLvoid *params);
+REGAL_DECL void REGAL_CALL plugin_glIglooInterfaceSGIX(void *_context, GLenum pname, const GLvoid *params);
 #endif
 
 /**
@@ -30761,12 +30761,12 @@ REGAL_DECL void REGAL_CALL glStopInstrumentsSGIX(GLint marker);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_INSTRUMENTS
-REGAL_DECL GLint REGAL_CALL plugin_glGetInstrumentsSGIX(void);
-REGAL_DECL GLint REGAL_CALL plugin_glPollInstrumentsSGIX(GLint *marker_p);
-REGAL_DECL void REGAL_CALL plugin_glInstrumentsBufferSGIX(GLsizei size, GLint *buffer);
-REGAL_DECL void REGAL_CALL plugin_glReadInstrumentsSGIX(GLint marker);
-REGAL_DECL void REGAL_CALL plugin_glStartInstrumentsSGIX(void);
-REGAL_DECL void REGAL_CALL plugin_glStopInstrumentsSGIX(GLint marker);
+REGAL_DECL GLint REGAL_CALL plugin_glGetInstrumentsSGIX(void *_context);
+REGAL_DECL GLint REGAL_CALL plugin_glPollInstrumentsSGIX(void *_context, GLint *marker_p);
+REGAL_DECL void REGAL_CALL plugin_glInstrumentsBufferSGIX(void *_context, GLsizei size, GLint *buffer);
+REGAL_DECL void REGAL_CALL plugin_glReadInstrumentsSGIX(void *_context, GLint marker);
+REGAL_DECL void REGAL_CALL plugin_glStartInstrumentsSGIX(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glStopInstrumentsSGIX(void *_context, GLint marker);
 #endif
 
 /**
@@ -30857,12 +30857,12 @@ REGAL_DECL void REGAL_CALL glListParameterivSGIX(GLuint list, GLenum pname, cons
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_LIST_PRIORITY
-REGAL_DECL void REGAL_CALL plugin_glGetListParameterfvSGIX(GLuint list, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetListParameterivSGIX(GLuint list, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glListParameterfSGIX(GLuint list, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glListParameterfvSGIX(GLuint list, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glListParameteriSGIX(GLuint list, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glListParameterivSGIX(GLuint list, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetListParameterfvSGIX(void *_context, GLuint list, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetListParameterivSGIX(void *_context, GLuint list, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glListParameterfSGIX(void *_context, GLuint list, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glListParameterfvSGIX(void *_context, GLuint list, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glListParameteriSGIX(void *_context, GLuint list, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glListParameterivSGIX(void *_context, GLuint list, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -30906,7 +30906,7 @@ REGAL_DECL void REGAL_CALL glPixelTexGenSGIX(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_PIXEL_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glPixelTexGenSGIX(GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glPixelTexGenSGIX(void *_context, GLenum mode);
 #endif
 
 /**
@@ -30959,10 +30959,10 @@ REGAL_DECL void REGAL_CALL glLoadIdentityDeformationMapSGIX(GLbitfield mask);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_POLYNOMIAL_FFD
-REGAL_DECL void REGAL_CALL plugin_glDeformSGIX(GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glDeformationMap3dSGIX(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, GLdouble w1, GLdouble w2, GLint wstride, GLint worder, const GLdouble *points);
-REGAL_DECL void REGAL_CALL plugin_glDeformationMap3fSGIX(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, GLfloat w1, GLfloat w2, GLint wstride, GLint worder, const GLfloat *points);
-REGAL_DECL void REGAL_CALL plugin_glLoadIdentityDeformationMapSGIX(GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glDeformSGIX(void *_context, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glDeformationMap3dSGIX(void *_context, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, GLdouble w1, GLdouble w2, GLint wstride, GLint worder, const GLdouble *points);
+REGAL_DECL void REGAL_CALL plugin_glDeformationMap3fSGIX(void *_context, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, GLfloat w1, GLfloat w2, GLint wstride, GLint worder, const GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glLoadIdentityDeformationMapSGIX(void *_context, GLbitfield mask);
 #endif
 
 /**
@@ -31006,7 +31006,7 @@ REGAL_DECL void REGAL_CALL glReferencePlaneSGIX(const GLdouble *equation);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_REFERENCE_PLANE
-REGAL_DECL void REGAL_CALL plugin_glReferencePlaneSGIX(const GLdouble *equation);
+REGAL_DECL void REGAL_CALL plugin_glReferencePlaneSGIX(void *_context, const GLdouble *equation);
 #endif
 
 /**
@@ -31162,10 +31162,10 @@ REGAL_DECL void REGAL_CALL glSpriteParameterivSGIX(GLenum pname, const GLint *pa
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_SPRITE
-REGAL_DECL void REGAL_CALL plugin_glSpriteParameterfSGIX(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glSpriteParameterfvSGIX(GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glSpriteParameteriSGIX(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glSpriteParameterivSGIX(GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glSpriteParameterfSGIX(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glSpriteParameterfvSGIX(void *_context, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glSpriteParameteriSGIX(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glSpriteParameterivSGIX(void *_context, GLenum pname, const GLint *params);
 #endif
 
 /**
@@ -31209,7 +31209,7 @@ REGAL_DECL void REGAL_CALL glTagSampleBufferSGIX(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGIX_TAG_SAMPLE_BUFFER
-REGAL_DECL void REGAL_CALL plugin_glTagSampleBufferSGIX(void);
+REGAL_DECL void REGAL_CALL plugin_glTagSampleBufferSGIX(void *_context);
 #endif
 
 /**
@@ -31558,13 +31558,13 @@ REGAL_DECL void REGAL_CALL glGetColorTableSGI(GLenum target, GLenum format, GLen
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SGI_COLOR_TABLE
-REGAL_DECL void REGAL_CALL plugin_glColorTableParameterfvSGI(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glColorTableParameterivSGI(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glColorTableSGI(GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
-REGAL_DECL void REGAL_CALL plugin_glCopyColorTableSGI(GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterfvSGI(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterivSGI(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetColorTableSGI(GLenum target, GLenum format, GLenum type, GLvoid *table);
+REGAL_DECL void REGAL_CALL plugin_glColorTableParameterfvSGI(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glColorTableParameterivSGI(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glColorTableSGI(void *_context, GLenum target, GLenum internalformat, GLsizei width, GLenum format, GLenum type, const GLvoid *table);
+REGAL_DECL void REGAL_CALL plugin_glCopyColorTableSGI(void *_context, GLenum target, GLenum internalformat, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterfvSGI(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableParameterivSGI(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetColorTableSGI(void *_context, GLenum target, GLenum format, GLenum type, GLvoid *table);
 #endif
 
 /**
@@ -31646,7 +31646,7 @@ REGAL_DECL void REGAL_CALL glFinishTextureSUNX(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SUNX_CONSTANT_DATA
-REGAL_DECL void REGAL_CALL plugin_glFinishTextureSUNX(void);
+REGAL_DECL void REGAL_CALL plugin_glFinishTextureSUNX(void *_context);
 #endif
 
 /**
@@ -31748,14 +31748,14 @@ REGAL_DECL void REGAL_CALL glGlobalAlphaFactorusSUN(GLushort factor);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SUN_GLOBAL_ALPHA
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorbSUN(GLbyte factor);
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactordSUN(GLdouble factor);
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorfSUN(GLfloat factor);
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactoriSUN(GLint factor);
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorsSUN(GLshort factor);
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorubSUN(GLubyte factor);
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactoruiSUN(GLuint factor);
-REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorusSUN(GLushort factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorbSUN(void *_context, GLbyte factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactordSUN(void *_context, GLdouble factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorfSUN(void *_context, GLfloat factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactoriSUN(void *_context, GLint factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorsSUN(void *_context, GLshort factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorubSUN(void *_context, GLubyte factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactoruiSUN(void *_context, GLuint factor);
+REGAL_DECL void REGAL_CALL plugin_glGlobalAlphaFactorusSUN(void *_context, GLushort factor);
 #endif
 
 /**
@@ -31804,7 +31804,7 @@ REGAL_DECL void REGAL_CALL glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SUN_MESH_ARRAY
-REGAL_DECL void REGAL_CALL plugin_glDrawMeshArraysSUN(GLenum mode, GLint first, GLsizei count, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glDrawMeshArraysSUN(void *_context, GLenum mode, GLint first, GLsizei count, GLsizei width);
 #endif
 
 /**
@@ -31848,7 +31848,7 @@ REGAL_DECL void REGAL_CALL glReadVideoPixelsSUN(GLint x, GLint y, GLsizei width,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SUN_READ_VIDEO_PIXELS
-REGAL_DECL void REGAL_CALL plugin_glReadVideoPixelsSUN(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glReadVideoPixelsSUN(void *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
 #endif
 
 /**
@@ -31962,13 +31962,13 @@ REGAL_DECL void REGAL_CALL glReplacementCodeusvSUN(const GLushort *code);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SUN_TRIANGLE_LIST
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodePointerSUN(GLenum type, GLsizei stride, const GLvoid **pointer);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeubSUN(GLubyte code);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeubvSUN(const GLubyte *code);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiSUN(GLuint code);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuivSUN(const GLuint *code);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeusSUN(GLushort code);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeusvSUN(const GLushort *code);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodePointerSUN(void *_context, GLenum type, GLsizei stride, const GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeubSUN(void *_context, GLubyte code);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeubvSUN(void *_context, const GLubyte *code);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiSUN(void *_context, GLuint code);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuivSUN(void *_context, const GLuint *code);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeusSUN(void *_context, GLushort code);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeusvSUN(void *_context, const GLushort *code);
 #endif
 
 /**
@@ -32129,46 +32129,46 @@ REGAL_DECL void REGAL_CALL glTexCoord4fVertex4fvSUN(const GLfloat *tc, const GLf
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_SUN_VERTEX
-REGAL_DECL void REGAL_CALL plugin_glColor3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glColor3fVertex3fvSUN(const GLfloat *c, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4fNormal3fVertex3fSUN(GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glColor4fNormal3fVertex3fvSUN(const GLfloat *c, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex2fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex2fvSUN(const GLubyte *c, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex3fSUN(GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex3fvSUN(const GLubyte *c, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glNormal3fVertex3fSUN(GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glNormal3fVertex3fvSUN(const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor3fVertex3fvSUN(const GLuint *rc, const GLfloat *c, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4fNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4ubVertex3fSUN(GLuint rc, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4ubVertex3fvSUN(const GLuint *rc, const GLubyte *c, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiNormal3fVertex3fSUN(GLuint rc, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(const GLuint *rc, const GLfloat *tc, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fVertex3fSUN(GLuint rc, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fVertex3fvSUN(const GLuint *rc, const GLfloat *tc, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiVertex3fSUN(GLuint rc, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiVertex3fvSUN(const GLuint *rc, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor3fVertex3fvSUN(const GLfloat *tc, const GLfloat *c, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4fNormal3fVertex3fvSUN(const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4ubVertex3fSUN(GLfloat s, GLfloat t, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4ubVertex3fvSUN(const GLfloat *tc, const GLubyte *c, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fNormal3fVertex3fSUN(GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fNormal3fVertex3fvSUN(const GLfloat *tc, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fVertex3fSUN(GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fVertex3fvSUN(const GLfloat *tc, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4fColor4fNormal3fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4fColor4fNormal3fVertex4fvSUN(const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4fVertex4fSUN(GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4fVertex4fvSUN(const GLfloat *tc, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3fVertex3fSUN(void *_context, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glColor3fVertex3fvSUN(void *_context, const GLfloat *c, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4fNormal3fVertex3fSUN(void *_context, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glColor4fNormal3fVertex3fvSUN(void *_context, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex2fSUN(void *_context, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex2fvSUN(void *_context, const GLubyte *c, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex3fSUN(void *_context, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glColor4ubVertex3fvSUN(void *_context, const GLubyte *c, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glNormal3fVertex3fSUN(void *_context, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glNormal3fVertex3fvSUN(void *_context, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor3fVertex3fSUN(void *_context, GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor3fVertex3fvSUN(void *_context, const GLuint *rc, const GLfloat *c, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4fNormal3fVertex3fSUN(void *_context, GLuint rc, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4fNormal3fVertex3fvSUN(void *_context, const GLuint *rc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4ubVertex3fSUN(void *_context, GLuint rc, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiColor4ubVertex3fvSUN(void *_context, const GLuint *rc, const GLubyte *c, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiNormal3fVertex3fSUN(void *_context, GLuint rc, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiNormal3fVertex3fvSUN(void *_context, const GLuint *rc, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN(void *_context, GLuint rc, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN(void *_context, const GLuint *rc, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN(void *_context, GLuint rc, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN(void *_context, const GLuint *rc, const GLfloat *tc, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fVertex3fSUN(void *_context, GLuint rc, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiTexCoord2fVertex3fvSUN(void *_context, const GLuint *rc, const GLfloat *tc, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiVertex3fSUN(void *_context, GLuint rc, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glReplacementCodeuiVertex3fvSUN(void *_context, const GLuint *rc, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor3fVertex3fSUN(void *_context, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor3fVertex3fvSUN(void *_context, const GLfloat *tc, const GLfloat *c, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4fNormal3fVertex3fSUN(void *_context, GLfloat s, GLfloat t, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4fNormal3fVertex3fvSUN(void *_context, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4ubVertex3fSUN(void *_context, GLfloat s, GLfloat t, GLubyte r, GLubyte g, GLubyte b, GLubyte a, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fColor4ubVertex3fvSUN(void *_context, const GLfloat *tc, const GLubyte *c, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fNormal3fVertex3fSUN(void *_context, GLfloat s, GLfloat t, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fNormal3fVertex3fvSUN(void *_context, const GLfloat *tc, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fVertex3fSUN(void *_context, GLfloat s, GLfloat t, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fVertex3fvSUN(void *_context, const GLfloat *tc, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4fColor4fNormal3fVertex4fSUN(void *_context, GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat r, GLfloat g, GLfloat b, GLfloat a, GLfloat nx, GLfloat ny, GLfloat nz, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4fColor4fNormal3fVertex4fvSUN(void *_context, const GLfloat *tc, const GLfloat *c, const GLfloat *n, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4fVertex4fSUN(void *_context, GLfloat s, GLfloat t, GLfloat p, GLfloat q, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4fVertex4fvSUN(void *_context, const GLfloat *tc, const GLfloat *v);
 #endif
 
 /**
@@ -33127,312 +33127,312 @@ REGAL_DECL void REGAL_CALL glViewport(GLint x, GLint y, GLsizei width, GLsizei h
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_1_0
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsEnabled(GLenum cap);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsList(GLuint list);
-REGAL_DECL GLenum REGAL_CALL plugin_glGetError(void);
-REGAL_DECL GLint REGAL_CALL plugin_glRenderMode(GLenum mode);
-REGAL_DECL GLuint REGAL_CALL plugin_glGenLists(GLsizei range);
-REGAL_DECL const GLubyte *REGAL_CALL plugin_glGetString(GLenum name);
-REGAL_DECL void REGAL_CALL plugin_glAccum(GLenum op, GLfloat value);
-REGAL_DECL void REGAL_CALL plugin_glAlphaFunc(GLenum func, GLclampf ref);
-REGAL_DECL void REGAL_CALL plugin_glBegin(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glBitmap(GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap);
-REGAL_DECL void REGAL_CALL plugin_glBlendFunc(GLenum sfactor, GLenum dfactor);
-REGAL_DECL void REGAL_CALL plugin_glCallList(GLuint list);
-REGAL_DECL void REGAL_CALL plugin_glCallLists(GLsizei n, GLenum type, const GLvoid *lists);
-REGAL_DECL void REGAL_CALL plugin_glClear(GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glClearAccum(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
-REGAL_DECL void REGAL_CALL plugin_glClearColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
-REGAL_DECL void REGAL_CALL plugin_glClearDepth(GLclampd depth);
-REGAL_DECL void REGAL_CALL plugin_glClearIndex(GLfloat c);
-REGAL_DECL void REGAL_CALL plugin_glClearStencil(GLint s);
-REGAL_DECL void REGAL_CALL plugin_glClipPlane(GLenum plane, const GLdouble *equation);
-REGAL_DECL void REGAL_CALL plugin_glColor3b(GLbyte red, GLbyte green, GLbyte blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3bv(const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glColor3d(GLdouble red, GLdouble green, GLdouble blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glColor3f(GLfloat red, GLfloat green, GLfloat blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glColor3i(GLint red, GLint green, GLint blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glColor3s(GLshort red, GLshort green, GLshort blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glColor3ub(GLubyte red, GLubyte green, GLubyte blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3ubv(const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glColor3ui(GLuint red, GLuint green, GLuint blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3uiv(const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glColor3us(GLushort red, GLushort green, GLushort blue);
-REGAL_DECL void REGAL_CALL plugin_glColor3usv(const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4b(GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4bv(const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4d(GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4f(GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4i(GLint red, GLint green, GLint blue, GLint alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4s(GLshort red, GLshort green, GLshort blue, GLshort alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4ub(GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4ubv(const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4ui(GLuint red, GLuint green, GLuint blue, GLuint alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4uiv(const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glColor4us(GLushort red, GLushort green, GLushort blue, GLushort alpha);
-REGAL_DECL void REGAL_CALL plugin_glColor4usv(const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glColorMask(GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
-REGAL_DECL void REGAL_CALL plugin_glColorMaterial(GLenum face, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glCopyPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum type);
-REGAL_DECL void REGAL_CALL plugin_glCullFace(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glDeleteLists(GLuint list, GLsizei range);
-REGAL_DECL void REGAL_CALL plugin_glDepthFunc(GLenum func);
-REGAL_DECL void REGAL_CALL plugin_glDepthMask(GLboolean flag);
-REGAL_DECL void REGAL_CALL plugin_glDepthRange(GLclampd zNear, GLclampd zFar);
-REGAL_DECL void REGAL_CALL plugin_glDisable(GLenum cap);
-REGAL_DECL void REGAL_CALL plugin_glDrawBuffer(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glDrawPixels(GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glEdgeFlag(GLboolean flag);
-REGAL_DECL void REGAL_CALL plugin_glEdgeFlagv(const GLboolean *flag);
-REGAL_DECL void REGAL_CALL plugin_glEnable(GLenum cap);
-REGAL_DECL void REGAL_CALL plugin_glEnd(void);
-REGAL_DECL void REGAL_CALL plugin_glEndList(void);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord1d(GLdouble u);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord1dv(const GLdouble *u);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord1f(GLfloat u);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord1fv(const GLfloat *u);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord2d(GLdouble u, GLdouble v);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord2dv(const GLdouble *u);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord2f(GLfloat u, GLfloat v);
-REGAL_DECL void REGAL_CALL plugin_glEvalCoord2fv(const GLfloat *u);
-REGAL_DECL void REGAL_CALL plugin_glEvalMesh1(GLenum mode, GLint i1, GLint i2);
-REGAL_DECL void REGAL_CALL plugin_glEvalMesh2(GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2);
-REGAL_DECL void REGAL_CALL plugin_glEvalPoint1(GLint i);
-REGAL_DECL void REGAL_CALL plugin_glEvalPoint2(GLint i, GLint j);
-REGAL_DECL void REGAL_CALL plugin_glFeedbackBuffer(GLsizei size, GLenum type, GLfloat *buffer);
-REGAL_DECL void REGAL_CALL plugin_glFinish(void);
-REGAL_DECL void REGAL_CALL plugin_glFlush(void);
-REGAL_DECL void REGAL_CALL plugin_glFogf(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glFogfv(GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glFogi(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glFogiv(GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glFrontFace(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glFrustum(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
-REGAL_DECL void REGAL_CALL plugin_glGetBooleanv(GLenum pname, GLboolean *params);
-REGAL_DECL void REGAL_CALL plugin_glGetClipPlane(GLenum plane, GLdouble *equation);
-REGAL_DECL void REGAL_CALL plugin_glGetDoublev(GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetFloatv(GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetIntegerv(GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetLightfv(GLenum light, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetLightiv(GLenum light, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMapdv(GLenum target, GLenum query, GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glGetMapfv(GLenum target, GLenum query, GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glGetMapiv(GLenum target, GLenum query, GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glGetMaterialfv(GLenum face, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetMaterialiv(GLenum face, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetPixelMapfv(GLenum map, GLfloat *values);
-REGAL_DECL void REGAL_CALL plugin_glGetPixelMapuiv(GLenum map, GLuint *values);
-REGAL_DECL void REGAL_CALL plugin_glGetPixelMapusv(GLenum map, GLushort *values);
-REGAL_DECL void REGAL_CALL plugin_glGetPolygonStipple(GLubyte *mask);
-REGAL_DECL void REGAL_CALL plugin_glGetTexEnvfv(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexEnviv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexGendv(GLenum coord, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexGenfv(GLenum coord, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexGeniv(GLenum coord, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexImage(GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glGetTexLevelParameterfv(GLenum target, GLint level, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexLevelParameteriv(GLenum target, GLint level, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameterfv(GLenum target, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glHint(GLenum target, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glIndexMask(GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glIndexd(GLdouble c);
-REGAL_DECL void REGAL_CALL plugin_glIndexdv(const GLdouble *c);
-REGAL_DECL void REGAL_CALL plugin_glIndexf(GLfloat c);
-REGAL_DECL void REGAL_CALL plugin_glIndexfv(const GLfloat *c);
-REGAL_DECL void REGAL_CALL plugin_glIndexi(GLint c);
-REGAL_DECL void REGAL_CALL plugin_glIndexiv(const GLint *c);
-REGAL_DECL void REGAL_CALL plugin_glIndexs(GLshort c);
-REGAL_DECL void REGAL_CALL plugin_glIndexsv(const GLshort *c);
-REGAL_DECL void REGAL_CALL plugin_glInitNames(void);
-REGAL_DECL void REGAL_CALL plugin_glLightModelf(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glLightModelfv(GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glLightModeli(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glLightModeliv(GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glLightf(GLenum light, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glLightfv(GLenum light, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glLighti(GLenum light, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glLightiv(GLenum light, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glLineStipple(GLint factor, GLushort pattern);
-REGAL_DECL void REGAL_CALL plugin_glLineWidth(GLfloat width);
-REGAL_DECL void REGAL_CALL plugin_glListBase(GLuint base);
-REGAL_DECL void REGAL_CALL plugin_glLoadIdentity(void);
-REGAL_DECL void REGAL_CALL plugin_glLoadMatrixd(const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glLoadMatrixf(const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glLoadName(GLuint name);
-REGAL_DECL void REGAL_CALL plugin_glLogicOp(GLenum opcode);
-REGAL_DECL void REGAL_CALL plugin_glMap1d(GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points);
-REGAL_DECL void REGAL_CALL plugin_glMap1f(GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points);
-REGAL_DECL void REGAL_CALL plugin_glMap2d(GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points);
-REGAL_DECL void REGAL_CALL plugin_glMap2f(GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points);
-REGAL_DECL void REGAL_CALL plugin_glMapGrid1d(GLint un, GLdouble u1, GLdouble u2);
-REGAL_DECL void REGAL_CALL plugin_glMapGrid1f(GLint un, GLfloat u1, GLfloat u2);
-REGAL_DECL void REGAL_CALL plugin_glMapGrid2d(GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2);
-REGAL_DECL void REGAL_CALL plugin_glMapGrid2f(GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2);
-REGAL_DECL void REGAL_CALL plugin_glMaterialf(GLenum face, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glMaterialfv(GLenum face, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glMateriali(GLenum face, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glMaterialiv(GLenum face, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glMatrixMode(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glMultMatrixd(const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glMultMatrixf(const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glNewList(GLuint list, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glNormal3b(GLbyte nx, GLbyte ny, GLbyte nz);
-REGAL_DECL void REGAL_CALL plugin_glNormal3bv(const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glNormal3d(GLdouble nx, GLdouble ny, GLdouble nz);
-REGAL_DECL void REGAL_CALL plugin_glNormal3dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glNormal3f(GLfloat nx, GLfloat ny, GLfloat nz);
-REGAL_DECL void REGAL_CALL plugin_glNormal3fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glNormal3i(GLint nx, GLint ny, GLint nz);
-REGAL_DECL void REGAL_CALL plugin_glNormal3iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glNormal3s(GLshort nx, GLshort ny, GLshort nz);
-REGAL_DECL void REGAL_CALL plugin_glNormal3sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glOrtho(GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
-REGAL_DECL void REGAL_CALL plugin_glPassThrough(GLfloat token);
-REGAL_DECL void REGAL_CALL plugin_glPixelMapfv(GLenum map, GLsizei mapsize, const GLfloat *values);
-REGAL_DECL void REGAL_CALL plugin_glPixelMapuiv(GLenum map, GLsizei mapsize, const GLuint *values);
-REGAL_DECL void REGAL_CALL plugin_glPixelMapusv(GLenum map, GLsizei mapsize, const GLushort *values);
-REGAL_DECL void REGAL_CALL plugin_glPixelStoref(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPixelStorei(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glPixelTransferf(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPixelTransferi(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glPixelZoom(GLfloat xfactor, GLfloat yfactor);
-REGAL_DECL void REGAL_CALL plugin_glPointSize(GLfloat size);
-REGAL_DECL void REGAL_CALL plugin_glPolygonMode(GLenum face, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glPolygonStipple(const GLubyte *mask);
-REGAL_DECL void REGAL_CALL plugin_glPopAttrib(void);
-REGAL_DECL void REGAL_CALL plugin_glPopMatrix(void);
-REGAL_DECL void REGAL_CALL plugin_glPopName(void);
-REGAL_DECL void REGAL_CALL plugin_glPushAttrib(GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glPushMatrix(void);
-REGAL_DECL void REGAL_CALL plugin_glPushName(GLuint name);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2d(GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2f(GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2i(GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2s(GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos2sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3d(GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3f(GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3i(GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3s(GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos3sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4i(GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4s(GLshort x, GLshort y, GLshort z, GLshort w);
-REGAL_DECL void REGAL_CALL plugin_glRasterPos4sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glReadBuffer(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glReadPixels(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glRectd(GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2);
-REGAL_DECL void REGAL_CALL plugin_glRectdv(const GLdouble *v1, const GLdouble *v2);
-REGAL_DECL void REGAL_CALL plugin_glRectf(GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2);
-REGAL_DECL void REGAL_CALL plugin_glRectfv(const GLfloat *v1, const GLfloat *v2);
-REGAL_DECL void REGAL_CALL plugin_glRecti(GLint x1, GLint y1, GLint x2, GLint y2);
-REGAL_DECL void REGAL_CALL plugin_glRectiv(const GLint *v1, const GLint *v2);
-REGAL_DECL void REGAL_CALL plugin_glRects(GLshort x1, GLshort y1, GLshort x2, GLshort y2);
-REGAL_DECL void REGAL_CALL plugin_glRectsv(const GLshort *v1, const GLshort *v2);
-REGAL_DECL void REGAL_CALL plugin_glRotated(GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glRotatef(GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glScaled(GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glScalef(GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glScissor(GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glSelectBuffer(GLsizei size, GLuint *buffer);
-REGAL_DECL void REGAL_CALL plugin_glShadeModel(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glStencilFunc(GLenum func, GLint ref, GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glStencilMask(GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glStencilOp(GLenum fail, GLenum zfail, GLenum zpass);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1d(GLdouble s);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1f(GLfloat s);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1i(GLint s);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1s(GLshort s);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord1sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2d(GLdouble s, GLdouble t);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2f(GLfloat s, GLfloat t);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2i(GLint s, GLint t);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2s(GLshort s, GLshort t);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord2sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3d(GLdouble s, GLdouble t, GLdouble r);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3f(GLfloat s, GLfloat t, GLfloat r);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3i(GLint s, GLint t, GLint r);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3s(GLshort s, GLshort t, GLshort r);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord3sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4d(GLdouble s, GLdouble t, GLdouble r, GLdouble q);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4f(GLfloat s, GLfloat t, GLfloat r, GLfloat q);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4i(GLint s, GLint t, GLint r, GLint q);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4s(GLshort s, GLshort t, GLshort r, GLshort q);
-REGAL_DECL void REGAL_CALL plugin_glTexCoord4sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glTexEnvf(GLenum target, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glTexEnvfv(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glTexEnvi(GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glTexEnviv(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glTexGend(GLenum coord, GLenum pname, GLdouble param);
-REGAL_DECL void REGAL_CALL plugin_glTexGendv(GLenum coord, GLenum pname, const GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glTexGenf(GLenum coord, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glTexGenfv(GLenum coord, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glTexGeni(GLenum coord, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glTexGeniv(GLenum coord, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glTexImage1D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterf(GLenum target, GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterfv(GLenum target, GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glTexParameteri(GLenum target, GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glTexParameteriv(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glTranslated(GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glTranslatef(GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glVertex2d(GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glVertex2dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex2f(GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glVertex2fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex2i(GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glVertex2iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex2s(GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glVertex2sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex3d(GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glVertex3dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex3f(GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glVertex3fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex3i(GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glVertex3iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex3s(GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glVertex3sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex4d(GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glVertex4dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex4f(GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glVertex4fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex4i(GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glVertex4iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertex4s(GLshort x, GLshort y, GLshort z, GLshort w);
-REGAL_DECL void REGAL_CALL plugin_glVertex4sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glViewport(GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsEnabled(void *_context, GLenum cap);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsList(void *_context, GLuint list);
+REGAL_DECL GLenum REGAL_CALL plugin_glGetError(void *_context);
+REGAL_DECL GLint REGAL_CALL plugin_glRenderMode(void *_context, GLenum mode);
+REGAL_DECL GLuint REGAL_CALL plugin_glGenLists(void *_context, GLsizei range);
+REGAL_DECL const GLubyte *REGAL_CALL plugin_glGetString(void *_context, GLenum name);
+REGAL_DECL void REGAL_CALL plugin_glAccum(void *_context, GLenum op, GLfloat value);
+REGAL_DECL void REGAL_CALL plugin_glAlphaFunc(void *_context, GLenum func, GLclampf ref);
+REGAL_DECL void REGAL_CALL plugin_glBegin(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glBitmap(void *_context, GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap);
+REGAL_DECL void REGAL_CALL plugin_glBlendFunc(void *_context, GLenum sfactor, GLenum dfactor);
+REGAL_DECL void REGAL_CALL plugin_glCallList(void *_context, GLuint list);
+REGAL_DECL void REGAL_CALL plugin_glCallLists(void *_context, GLsizei n, GLenum type, const GLvoid *lists);
+REGAL_DECL void REGAL_CALL plugin_glClear(void *_context, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glClearAccum(void *_context, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+REGAL_DECL void REGAL_CALL plugin_glClearColor(void *_context, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+REGAL_DECL void REGAL_CALL plugin_glClearDepth(void *_context, GLclampd depth);
+REGAL_DECL void REGAL_CALL plugin_glClearIndex(void *_context, GLfloat c);
+REGAL_DECL void REGAL_CALL plugin_glClearStencil(void *_context, GLint s);
+REGAL_DECL void REGAL_CALL plugin_glClipPlane(void *_context, GLenum plane, const GLdouble *equation);
+REGAL_DECL void REGAL_CALL plugin_glColor3b(void *_context, GLbyte red, GLbyte green, GLbyte blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3bv(void *_context, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3d(void *_context, GLdouble red, GLdouble green, GLdouble blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3f(void *_context, GLfloat red, GLfloat green, GLfloat blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3i(void *_context, GLint red, GLint green, GLint blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3s(void *_context, GLshort red, GLshort green, GLshort blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3ub(void *_context, GLubyte red, GLubyte green, GLubyte blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3ubv(void *_context, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3ui(void *_context, GLuint red, GLuint green, GLuint blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3uiv(void *_context, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glColor3us(void *_context, GLushort red, GLushort green, GLushort blue);
+REGAL_DECL void REGAL_CALL plugin_glColor3usv(void *_context, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4b(void *_context, GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4bv(void *_context, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4d(void *_context, GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4f(void *_context, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4i(void *_context, GLint red, GLint green, GLint blue, GLint alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4s(void *_context, GLshort red, GLshort green, GLshort blue, GLshort alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4ub(void *_context, GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4ubv(void *_context, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4ui(void *_context, GLuint red, GLuint green, GLuint blue, GLuint alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4uiv(void *_context, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glColor4us(void *_context, GLushort red, GLushort green, GLushort blue, GLushort alpha);
+REGAL_DECL void REGAL_CALL plugin_glColor4usv(void *_context, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glColorMask(void *_context, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha);
+REGAL_DECL void REGAL_CALL plugin_glColorMaterial(void *_context, GLenum face, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glCopyPixels(void *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum type);
+REGAL_DECL void REGAL_CALL plugin_glCullFace(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glDeleteLists(void *_context, GLuint list, GLsizei range);
+REGAL_DECL void REGAL_CALL plugin_glDepthFunc(void *_context, GLenum func);
+REGAL_DECL void REGAL_CALL plugin_glDepthMask(void *_context, GLboolean flag);
+REGAL_DECL void REGAL_CALL plugin_glDepthRange(void *_context, GLclampd zNear, GLclampd zFar);
+REGAL_DECL void REGAL_CALL plugin_glDisable(void *_context, GLenum cap);
+REGAL_DECL void REGAL_CALL plugin_glDrawBuffer(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glDrawPixels(void *_context, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glEdgeFlag(void *_context, GLboolean flag);
+REGAL_DECL void REGAL_CALL plugin_glEdgeFlagv(void *_context, const GLboolean *flag);
+REGAL_DECL void REGAL_CALL plugin_glEnable(void *_context, GLenum cap);
+REGAL_DECL void REGAL_CALL plugin_glEnd(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glEndList(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord1d(void *_context, GLdouble u);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord1dv(void *_context, const GLdouble *u);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord1f(void *_context, GLfloat u);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord1fv(void *_context, const GLfloat *u);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord2d(void *_context, GLdouble u, GLdouble v);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord2dv(void *_context, const GLdouble *u);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord2f(void *_context, GLfloat u, GLfloat v);
+REGAL_DECL void REGAL_CALL plugin_glEvalCoord2fv(void *_context, const GLfloat *u);
+REGAL_DECL void REGAL_CALL plugin_glEvalMesh1(void *_context, GLenum mode, GLint i1, GLint i2);
+REGAL_DECL void REGAL_CALL plugin_glEvalMesh2(void *_context, GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2);
+REGAL_DECL void REGAL_CALL plugin_glEvalPoint1(void *_context, GLint i);
+REGAL_DECL void REGAL_CALL plugin_glEvalPoint2(void *_context, GLint i, GLint j);
+REGAL_DECL void REGAL_CALL plugin_glFeedbackBuffer(void *_context, GLsizei size, GLenum type, GLfloat *buffer);
+REGAL_DECL void REGAL_CALL plugin_glFinish(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glFlush(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glFogf(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glFogfv(void *_context, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glFogi(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glFogiv(void *_context, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glFrontFace(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glFrustum(void *_context, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+REGAL_DECL void REGAL_CALL plugin_glGetBooleanv(void *_context, GLenum pname, GLboolean *params);
+REGAL_DECL void REGAL_CALL plugin_glGetClipPlane(void *_context, GLenum plane, GLdouble *equation);
+REGAL_DECL void REGAL_CALL plugin_glGetDoublev(void *_context, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetFloatv(void *_context, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetIntegerv(void *_context, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetLightfv(void *_context, GLenum light, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetLightiv(void *_context, GLenum light, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMapdv(void *_context, GLenum target, GLenum query, GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glGetMapfv(void *_context, GLenum target, GLenum query, GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glGetMapiv(void *_context, GLenum target, GLenum query, GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glGetMaterialfv(void *_context, GLenum face, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetMaterialiv(void *_context, GLenum face, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetPixelMapfv(void *_context, GLenum map, GLfloat *values);
+REGAL_DECL void REGAL_CALL plugin_glGetPixelMapuiv(void *_context, GLenum map, GLuint *values);
+REGAL_DECL void REGAL_CALL plugin_glGetPixelMapusv(void *_context, GLenum map, GLushort *values);
+REGAL_DECL void REGAL_CALL plugin_glGetPolygonStipple(void *_context, GLubyte *mask);
+REGAL_DECL void REGAL_CALL plugin_glGetTexEnvfv(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexEnviv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexGendv(void *_context, GLenum coord, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexGenfv(void *_context, GLenum coord, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexGeniv(void *_context, GLenum coord, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexImage(void *_context, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glGetTexLevelParameterfv(void *_context, GLenum target, GLint level, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexLevelParameteriv(void *_context, GLenum target, GLint level, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameterfv(void *_context, GLenum target, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glHint(void *_context, GLenum target, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glIndexMask(void *_context, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glIndexd(void *_context, GLdouble c);
+REGAL_DECL void REGAL_CALL plugin_glIndexdv(void *_context, const GLdouble *c);
+REGAL_DECL void REGAL_CALL plugin_glIndexf(void *_context, GLfloat c);
+REGAL_DECL void REGAL_CALL plugin_glIndexfv(void *_context, const GLfloat *c);
+REGAL_DECL void REGAL_CALL plugin_glIndexi(void *_context, GLint c);
+REGAL_DECL void REGAL_CALL plugin_glIndexiv(void *_context, const GLint *c);
+REGAL_DECL void REGAL_CALL plugin_glIndexs(void *_context, GLshort c);
+REGAL_DECL void REGAL_CALL plugin_glIndexsv(void *_context, const GLshort *c);
+REGAL_DECL void REGAL_CALL plugin_glInitNames(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glLightModelf(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glLightModelfv(void *_context, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glLightModeli(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glLightModeliv(void *_context, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glLightf(void *_context, GLenum light, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glLightfv(void *_context, GLenum light, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glLighti(void *_context, GLenum light, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glLightiv(void *_context, GLenum light, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glLineStipple(void *_context, GLint factor, GLushort pattern);
+REGAL_DECL void REGAL_CALL plugin_glLineWidth(void *_context, GLfloat width);
+REGAL_DECL void REGAL_CALL plugin_glListBase(void *_context, GLuint base);
+REGAL_DECL void REGAL_CALL plugin_glLoadIdentity(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glLoadMatrixd(void *_context, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glLoadMatrixf(void *_context, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glLoadName(void *_context, GLuint name);
+REGAL_DECL void REGAL_CALL plugin_glLogicOp(void *_context, GLenum opcode);
+REGAL_DECL void REGAL_CALL plugin_glMap1d(void *_context, GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points);
+REGAL_DECL void REGAL_CALL plugin_glMap1f(void *_context, GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glMap2d(void *_context, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points);
+REGAL_DECL void REGAL_CALL plugin_glMap2f(void *_context, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points);
+REGAL_DECL void REGAL_CALL plugin_glMapGrid1d(void *_context, GLint un, GLdouble u1, GLdouble u2);
+REGAL_DECL void REGAL_CALL plugin_glMapGrid1f(void *_context, GLint un, GLfloat u1, GLfloat u2);
+REGAL_DECL void REGAL_CALL plugin_glMapGrid2d(void *_context, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2);
+REGAL_DECL void REGAL_CALL plugin_glMapGrid2f(void *_context, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2);
+REGAL_DECL void REGAL_CALL plugin_glMaterialf(void *_context, GLenum face, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glMaterialfv(void *_context, GLenum face, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glMateriali(void *_context, GLenum face, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glMaterialiv(void *_context, GLenum face, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glMatrixMode(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glMultMatrixd(void *_context, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glMultMatrixf(void *_context, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glNewList(void *_context, GLuint list, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glNormal3b(void *_context, GLbyte nx, GLbyte ny, GLbyte nz);
+REGAL_DECL void REGAL_CALL plugin_glNormal3bv(void *_context, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glNormal3d(void *_context, GLdouble nx, GLdouble ny, GLdouble nz);
+REGAL_DECL void REGAL_CALL plugin_glNormal3dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glNormal3f(void *_context, GLfloat nx, GLfloat ny, GLfloat nz);
+REGAL_DECL void REGAL_CALL plugin_glNormal3fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glNormal3i(void *_context, GLint nx, GLint ny, GLint nz);
+REGAL_DECL void REGAL_CALL plugin_glNormal3iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glNormal3s(void *_context, GLshort nx, GLshort ny, GLshort nz);
+REGAL_DECL void REGAL_CALL plugin_glNormal3sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glOrtho(void *_context, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar);
+REGAL_DECL void REGAL_CALL plugin_glPassThrough(void *_context, GLfloat token);
+REGAL_DECL void REGAL_CALL plugin_glPixelMapfv(void *_context, GLenum map, GLsizei mapsize, const GLfloat *values);
+REGAL_DECL void REGAL_CALL plugin_glPixelMapuiv(void *_context, GLenum map, GLsizei mapsize, const GLuint *values);
+REGAL_DECL void REGAL_CALL plugin_glPixelMapusv(void *_context, GLenum map, GLsizei mapsize, const GLushort *values);
+REGAL_DECL void REGAL_CALL plugin_glPixelStoref(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPixelStorei(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glPixelTransferf(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPixelTransferi(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glPixelZoom(void *_context, GLfloat xfactor, GLfloat yfactor);
+REGAL_DECL void REGAL_CALL plugin_glPointSize(void *_context, GLfloat size);
+REGAL_DECL void REGAL_CALL plugin_glPolygonMode(void *_context, GLenum face, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glPolygonStipple(void *_context, const GLubyte *mask);
+REGAL_DECL void REGAL_CALL plugin_glPopAttrib(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPopMatrix(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPopName(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPushAttrib(void *_context, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glPushMatrix(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPushName(void *_context, GLuint name);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2d(void *_context, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2f(void *_context, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2i(void *_context, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2s(void *_context, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos2sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3d(void *_context, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3f(void *_context, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3i(void *_context, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3s(void *_context, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos3sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4d(void *_context, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4f(void *_context, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4i(void *_context, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4s(void *_context, GLshort x, GLshort y, GLshort z, GLshort w);
+REGAL_DECL void REGAL_CALL plugin_glRasterPos4sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glReadBuffer(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glReadPixels(void *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glRectd(void *_context, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2);
+REGAL_DECL void REGAL_CALL plugin_glRectdv(void *_context, const GLdouble *v1, const GLdouble *v2);
+REGAL_DECL void REGAL_CALL plugin_glRectf(void *_context, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2);
+REGAL_DECL void REGAL_CALL plugin_glRectfv(void *_context, const GLfloat *v1, const GLfloat *v2);
+REGAL_DECL void REGAL_CALL plugin_glRecti(void *_context, GLint x1, GLint y1, GLint x2, GLint y2);
+REGAL_DECL void REGAL_CALL plugin_glRectiv(void *_context, const GLint *v1, const GLint *v2);
+REGAL_DECL void REGAL_CALL plugin_glRects(void *_context, GLshort x1, GLshort y1, GLshort x2, GLshort y2);
+REGAL_DECL void REGAL_CALL plugin_glRectsv(void *_context, const GLshort *v1, const GLshort *v2);
+REGAL_DECL void REGAL_CALL plugin_glRotated(void *_context, GLdouble angle, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glRotatef(void *_context, GLfloat angle, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glScaled(void *_context, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glScalef(void *_context, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glScissor(void *_context, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glSelectBuffer(void *_context, GLsizei size, GLuint *buffer);
+REGAL_DECL void REGAL_CALL plugin_glShadeModel(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glStencilFunc(void *_context, GLenum func, GLint ref, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glStencilMask(void *_context, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glStencilOp(void *_context, GLenum fail, GLenum zfail, GLenum zpass);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1d(void *_context, GLdouble s);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1f(void *_context, GLfloat s);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1i(void *_context, GLint s);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1s(void *_context, GLshort s);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord1sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2d(void *_context, GLdouble s, GLdouble t);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2f(void *_context, GLfloat s, GLfloat t);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2i(void *_context, GLint s, GLint t);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2s(void *_context, GLshort s, GLshort t);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord2sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3d(void *_context, GLdouble s, GLdouble t, GLdouble r);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3f(void *_context, GLfloat s, GLfloat t, GLfloat r);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3i(void *_context, GLint s, GLint t, GLint r);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3s(void *_context, GLshort s, GLshort t, GLshort r);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord3sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4d(void *_context, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4f(void *_context, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4i(void *_context, GLint s, GLint t, GLint r, GLint q);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4s(void *_context, GLshort s, GLshort t, GLshort r, GLshort q);
+REGAL_DECL void REGAL_CALL plugin_glTexCoord4sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glTexEnvf(void *_context, GLenum target, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glTexEnvfv(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glTexEnvi(void *_context, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glTexEnviv(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glTexGend(void *_context, GLenum coord, GLenum pname, GLdouble param);
+REGAL_DECL void REGAL_CALL plugin_glTexGendv(void *_context, GLenum coord, GLenum pname, const GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glTexGenf(void *_context, GLenum coord, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glTexGenfv(void *_context, GLenum coord, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glTexGeni(void *_context, GLenum coord, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glTexGeniv(void *_context, GLenum coord, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glTexImage1D(void *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexImage2D(void *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterf(void *_context, GLenum target, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterfv(void *_context, GLenum target, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glTexParameteri(void *_context, GLenum target, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glTexParameteriv(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glTranslated(void *_context, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glTranslatef(void *_context, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glVertex2d(void *_context, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glVertex2dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex2f(void *_context, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glVertex2fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex2i(void *_context, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glVertex2iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex2s(void *_context, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glVertex2sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex3d(void *_context, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glVertex3dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex3f(void *_context, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glVertex3fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex3i(void *_context, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glVertex3iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex3s(void *_context, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glVertex3sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex4d(void *_context, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glVertex4dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex4f(void *_context, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glVertex4fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex4i(void *_context, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glVertex4iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertex4s(void *_context, GLshort x, GLshort y, GLshort z, GLshort w);
+REGAL_DECL void REGAL_CALL plugin_glVertex4sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glViewport(void *_context, GLint x, GLint y, GLsizei width, GLsizei height);
 #endif
 
 /**
@@ -34096,36 +34096,36 @@ REGAL_DECL void REGAL_CALL glVertexPointer(GLint size, GLenum type, GLsizei stri
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_1_1
-REGAL_DECL GLboolean REGAL_CALL plugin_glAreTexturesResident(GLsizei n, const GLuint *textures, GLboolean *residences);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsTexture(GLuint texture);
-REGAL_DECL void REGAL_CALL plugin_glArrayElement(GLint index);
-REGAL_DECL void REGAL_CALL plugin_glBindTexture(GLenum target, GLuint texture);
-REGAL_DECL void REGAL_CALL plugin_glColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexImage1D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexImage2D(GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glDeleteTextures(GLsizei n, const GLuint *textures);
-REGAL_DECL void REGAL_CALL plugin_glDisableClientState(GLenum cap);
-REGAL_DECL void REGAL_CALL plugin_glDrawArrays(GLenum mode, GLint first, GLsizei count);
-REGAL_DECL void REGAL_CALL plugin_glDrawElements(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices);
-REGAL_DECL void REGAL_CALL plugin_glEdgeFlagPointer(GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glEnableClientState(GLenum cap);
-REGAL_DECL void REGAL_CALL plugin_glGenTextures(GLsizei n, GLuint *textures);
-REGAL_DECL void REGAL_CALL plugin_glGetPointerv(GLenum pname, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glIndexPointer(GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glIndexub(GLubyte c);
-REGAL_DECL void REGAL_CALL plugin_glIndexubv(const GLubyte *c);
-REGAL_DECL void REGAL_CALL plugin_glInterleavedArrays(GLenum format, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glNormalPointer(GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glPolygonOffset(GLfloat factor, GLfloat units);
-REGAL_DECL void REGAL_CALL plugin_glPopClientAttrib(void);
-REGAL_DECL void REGAL_CALL plugin_glPrioritizeTextures(GLsizei n, const GLuint *textures, const GLclampf *priorities);
-REGAL_DECL void REGAL_CALL plugin_glPushClientAttrib(GLbitfield mask);
-REGAL_DECL void REGAL_CALL plugin_glTexCoordPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glVertexPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glAreTexturesResident(void *_context, GLsizei n, const GLuint *textures, GLboolean *residences);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsTexture(void *_context, GLuint texture);
+REGAL_DECL void REGAL_CALL plugin_glArrayElement(void *_context, GLint index);
+REGAL_DECL void REGAL_CALL plugin_glBindTexture(void *_context, GLenum target, GLuint texture);
+REGAL_DECL void REGAL_CALL plugin_glColorPointer(void *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexImage1D(void *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexImage2D(void *_context, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage1D(void *_context, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage2D(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glDeleteTextures(void *_context, GLsizei n, const GLuint *textures);
+REGAL_DECL void REGAL_CALL plugin_glDisableClientState(void *_context, GLenum cap);
+REGAL_DECL void REGAL_CALL plugin_glDrawArrays(void *_context, GLenum mode, GLint first, GLsizei count);
+REGAL_DECL void REGAL_CALL plugin_glDrawElements(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices);
+REGAL_DECL void REGAL_CALL plugin_glEdgeFlagPointer(void *_context, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glEnableClientState(void *_context, GLenum cap);
+REGAL_DECL void REGAL_CALL plugin_glGenTextures(void *_context, GLsizei n, GLuint *textures);
+REGAL_DECL void REGAL_CALL plugin_glGetPointerv(void *_context, GLenum pname, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glIndexPointer(void *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glIndexub(void *_context, GLubyte c);
+REGAL_DECL void REGAL_CALL plugin_glIndexubv(void *_context, const GLubyte *c);
+REGAL_DECL void REGAL_CALL plugin_glInterleavedArrays(void *_context, GLenum format, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glNormalPointer(void *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glPolygonOffset(void *_context, GLfloat factor, GLfloat units);
+REGAL_DECL void REGAL_CALL plugin_glPopClientAttrib(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glPrioritizeTextures(void *_context, GLsizei n, const GLuint *textures, const GLclampf *priorities);
+REGAL_DECL void REGAL_CALL plugin_glPushClientAttrib(void *_context, GLbitfield mask);
+REGAL_DECL void REGAL_CALL plugin_glTexCoordPointer(void *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage1D(void *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage2D(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glVertexPointer(void *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -34228,12 +34228,12 @@ REGAL_DECL void REGAL_CALL glTexSubImage3D(GLenum target, GLint level, GLint xof
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_1_2
-REGAL_DECL void REGAL_CALL plugin_glBlendColor(GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
-REGAL_DECL void REGAL_CALL plugin_glBlendEquation(GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
-REGAL_DECL void REGAL_CALL plugin_glDrawRangeElements(GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices);
-REGAL_DECL void REGAL_CALL plugin_glTexImage3D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
-REGAL_DECL void REGAL_CALL plugin_glTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glBlendColor(void *_context, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquation(void *_context, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glCopyTexSubImage3D(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glDrawRangeElements(void *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices);
+REGAL_DECL void REGAL_CALL plugin_glTexImage3D(void *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+REGAL_DECL void REGAL_CALL plugin_glTexSubImage3D(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
 #endif
 
 /**
@@ -34511,52 +34511,52 @@ REGAL_DECL void REGAL_CALL glSampleCoverage(GLclampf value, GLboolean invert);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_1_3
-REGAL_DECL void REGAL_CALL plugin_glActiveTexture(GLenum texture);
-REGAL_DECL void REGAL_CALL plugin_glClientActiveTexture(GLenum texture);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage1D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage2D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage3D(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage1D(GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage2D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage3D(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glGetCompressedTexImage(GLenum target, GLint lod, GLvoid *img);
-REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixd(const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixf(const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixd(const GLdouble *m);
-REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixf(const GLfloat *m);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1d(GLenum target, GLdouble s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1dv(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1f(GLenum target, GLfloat s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1fv(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1i(GLenum target, GLint s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1iv(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1s(GLenum target, GLshort s);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1sv(GLenum target, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2d(GLenum target, GLdouble s, GLdouble t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2dv(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2f(GLenum target, GLfloat s, GLfloat t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2fv(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2i(GLenum target, GLint s, GLint t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2iv(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2s(GLenum target, GLshort s, GLshort t);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2sv(GLenum target, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3d(GLenum target, GLdouble s, GLdouble t, GLdouble r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3dv(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3f(GLenum target, GLfloat s, GLfloat t, GLfloat r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3fv(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3i(GLenum target, GLint s, GLint t, GLint r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3iv(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3s(GLenum target, GLshort s, GLshort t, GLshort r);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3sv(GLenum target, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4d(GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4dv(GLenum target, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4f(GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4fv(GLenum target, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4i(GLenum target, GLint s, GLint t, GLint r, GLint q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4iv(GLenum target, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4s(GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
-REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4sv(GLenum target, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glSampleCoverage(GLclampf value, GLboolean invert);
+REGAL_DECL void REGAL_CALL plugin_glActiveTexture(void *_context, GLenum texture);
+REGAL_DECL void REGAL_CALL plugin_glClientActiveTexture(void *_context, GLenum texture);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage1D(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage2D(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexImage3D(void *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage1D(void *_context, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage2D(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glCompressedTexSubImage3D(void *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glGetCompressedTexImage(void *_context, GLenum target, GLint lod, GLvoid *img);
+REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixd(void *_context, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glLoadTransposeMatrixf(void *_context, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixd(void *_context, const GLdouble *m);
+REGAL_DECL void REGAL_CALL plugin_glMultTransposeMatrixf(void *_context, const GLfloat *m);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1d(void *_context, GLenum target, GLdouble s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1dv(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1f(void *_context, GLenum target, GLfloat s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1fv(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1i(void *_context, GLenum target, GLint s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1iv(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1s(void *_context, GLenum target, GLshort s);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord1sv(void *_context, GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2d(void *_context, GLenum target, GLdouble s, GLdouble t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2dv(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2f(void *_context, GLenum target, GLfloat s, GLfloat t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2fv(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2i(void *_context, GLenum target, GLint s, GLint t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2iv(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2s(void *_context, GLenum target, GLshort s, GLshort t);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord2sv(void *_context, GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3d(void *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3dv(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3f(void *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3fv(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3i(void *_context, GLenum target, GLint s, GLint t, GLint r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3iv(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3s(void *_context, GLenum target, GLshort s, GLshort t, GLshort r);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord3sv(void *_context, GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4d(void *_context, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4dv(void *_context, GLenum target, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4f(void *_context, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4fv(void *_context, GLenum target, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4i(void *_context, GLenum target, GLint s, GLint t, GLint r, GLint q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4iv(void *_context, GLenum target, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4s(void *_context, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q);
+REGAL_DECL void REGAL_CALL plugin_glMultiTexCoord4sv(void *_context, GLenum target, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glSampleCoverage(void *_context, GLclampf value, GLboolean invert);
 #endif
 
 /**
@@ -34774,51 +34774,51 @@ REGAL_DECL void REGAL_CALL glWindowPos3sv(const GLshort *p);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_1_4
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparate(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordPointer(GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordd(GLdouble coord);
-REGAL_DECL void REGAL_CALL plugin_glFogCoorddv(const GLdouble *coord);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordf(GLfloat coord);
-REGAL_DECL void REGAL_CALL plugin_glFogCoordfv(const GLfloat *coord);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawArrays(GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glMultiDrawElements(GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterf(GLenum pname, GLfloat param);
-REGAL_DECL void REGAL_CALL plugin_glPointParameterfv(GLenum pname, const GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glPointParameteri(GLenum pname, GLint param);
-REGAL_DECL void REGAL_CALL plugin_glPointParameteriv(GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3b(GLbyte red, GLbyte green, GLbyte blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3bv(const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3d(GLdouble red, GLdouble green, GLdouble blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3dv(const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3f(GLfloat red, GLfloat green, GLfloat blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3fv(const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3i(GLint red, GLint green, GLint blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3iv(const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3s(GLshort red, GLshort green, GLshort blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3sv(const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ub(GLubyte red, GLubyte green, GLubyte blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ubv(const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ui(GLuint red, GLuint green, GLuint blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3uiv(const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3us(GLushort red, GLushort green, GLushort blue);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3usv(const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glSecondaryColorPointer(GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2d(GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2dv(const GLdouble *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2f(GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2fv(const GLfloat *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2i(GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2iv(const GLint *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2s(GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos2sv(const GLshort *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3d(GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3dv(const GLdouble *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3f(GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3fv(const GLfloat *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3i(GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3iv(const GLint *p);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3s(GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glWindowPos3sv(const GLshort *p);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparate(void *_context, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordPointer(void *_context, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordd(void *_context, GLdouble coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoorddv(void *_context, const GLdouble *coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordf(void *_context, GLfloat coord);
+REGAL_DECL void REGAL_CALL plugin_glFogCoordfv(void *_context, const GLfloat *coord);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawArrays(void *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glMultiDrawElements(void *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterf(void *_context, GLenum pname, GLfloat param);
+REGAL_DECL void REGAL_CALL plugin_glPointParameterfv(void *_context, GLenum pname, const GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glPointParameteri(void *_context, GLenum pname, GLint param);
+REGAL_DECL void REGAL_CALL plugin_glPointParameteriv(void *_context, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3b(void *_context, GLbyte red, GLbyte green, GLbyte blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3bv(void *_context, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3d(void *_context, GLdouble red, GLdouble green, GLdouble blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3dv(void *_context, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3f(void *_context, GLfloat red, GLfloat green, GLfloat blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3fv(void *_context, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3i(void *_context, GLint red, GLint green, GLint blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3iv(void *_context, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3s(void *_context, GLshort red, GLshort green, GLshort blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3sv(void *_context, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ub(void *_context, GLubyte red, GLubyte green, GLubyte blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ubv(void *_context, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3ui(void *_context, GLuint red, GLuint green, GLuint blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3uiv(void *_context, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3us(void *_context, GLushort red, GLushort green, GLushort blue);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColor3usv(void *_context, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glSecondaryColorPointer(void *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2d(void *_context, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2dv(void *_context, const GLdouble *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2f(void *_context, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2fv(void *_context, const GLfloat *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2i(void *_context, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2iv(void *_context, const GLint *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2s(void *_context, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos2sv(void *_context, const GLshort *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3d(void *_context, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3dv(void *_context, const GLdouble *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3f(void *_context, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3fv(void *_context, const GLfloat *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3i(void *_context, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3iv(void *_context, const GLint *p);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3s(void *_context, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glWindowPos3sv(void *_context, const GLshort *p);
 #endif
 
 /**
@@ -34969,25 +34969,25 @@ REGAL_DECL void REGAL_CALL glGetQueryiv(GLenum target, GLenum pname, GLint *para
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_1_5
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsBuffer(GLuint buffer);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsQuery(GLuint id);
-REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapBuffer(GLenum target);
-REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBuffer(GLenum target, GLenum access);
-REGAL_DECL void REGAL_CALL plugin_glBeginQuery(GLenum target, GLuint id);
-REGAL_DECL void REGAL_CALL plugin_glBindBuffer(GLenum target, GLuint buffer);
-REGAL_DECL void REGAL_CALL plugin_glBufferData(GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage);
-REGAL_DECL void REGAL_CALL plugin_glBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glDeleteBuffers(GLsizei n, const GLuint *buffers);
-REGAL_DECL void REGAL_CALL plugin_glDeleteQueries(GLsizei n, const GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glEndQuery(GLenum target);
-REGAL_DECL void REGAL_CALL plugin_glGenBuffers(GLsizei n, GLuint *buffers);
-REGAL_DECL void REGAL_CALL plugin_glGenQueries(GLsizei n, GLuint *ids);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferParameteriv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferPointerv(GLenum target, GLenum pname, GLvoid **params);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferSubData(GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectiv(GLuint id, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuiv(GLuint id, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetQueryiv(GLenum target, GLenum pname, GLint *params);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsBuffer(void *_context, GLuint buffer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsQuery(void *_context, GLuint id);
+REGAL_DECL GLboolean REGAL_CALL plugin_glUnmapBuffer(void *_context, GLenum target);
+REGAL_DECL GLvoid *REGAL_CALL plugin_glMapBuffer(void *_context, GLenum target, GLenum access);
+REGAL_DECL void REGAL_CALL plugin_glBeginQuery(void *_context, GLenum target, GLuint id);
+REGAL_DECL void REGAL_CALL plugin_glBindBuffer(void *_context, GLenum target, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glBufferData(void *_context, GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage);
+REGAL_DECL void REGAL_CALL plugin_glBufferSubData(void *_context, GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glDeleteBuffers(void *_context, GLsizei n, const GLuint *buffers);
+REGAL_DECL void REGAL_CALL plugin_glDeleteQueries(void *_context, GLsizei n, const GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glEndQuery(void *_context, GLenum target);
+REGAL_DECL void REGAL_CALL plugin_glGenBuffers(void *_context, GLsizei n, GLuint *buffers);
+REGAL_DECL void REGAL_CALL plugin_glGenQueries(void *_context, GLsizei n, GLuint *ids);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferParameteriv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferPointerv(void *_context, GLenum target, GLenum pname, GLvoid **params);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferSubData(void *_context, GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectiv(void *_context, GLuint id, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryObjectuiv(void *_context, GLuint id, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetQueryiv(void *_context, GLenum target, GLenum pname, GLint *params);
 #endif
 
 /**
@@ -35394,99 +35394,99 @@ REGAL_DECL void REGAL_CALL glVertexAttribPointer(GLuint index, GLint size, GLenu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_2_0
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgram(GLuint program);
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsShader(GLuint shader);
-REGAL_DECL GLint REGAL_CALL plugin_glGetAttribLocation(GLuint program, const GLchar *name);
-REGAL_DECL GLint REGAL_CALL plugin_glGetUniformLocation(GLuint program, const GLchar *name);
-REGAL_DECL GLuint REGAL_CALL plugin_glCreateProgram(void);
-REGAL_DECL GLuint REGAL_CALL plugin_glCreateShader(GLenum type);
-REGAL_DECL void REGAL_CALL plugin_glAttachShader(GLuint program, GLuint shader);
-REGAL_DECL void REGAL_CALL plugin_glBindAttribLocation(GLuint program, GLuint index, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparate(GLenum modeRGB, GLenum modeAlpha);
-REGAL_DECL void REGAL_CALL plugin_glCompileShader(GLuint shader);
-REGAL_DECL void REGAL_CALL plugin_glDeleteProgram(GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glDeleteShader(GLuint shader);
-REGAL_DECL void REGAL_CALL plugin_glDetachShader(GLuint program, GLuint shader);
-REGAL_DECL void REGAL_CALL plugin_glDisableVertexAttribArray(GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glDrawBuffers(GLsizei n, const GLenum *bufs);
-REGAL_DECL void REGAL_CALL plugin_glEnableVertexAttribArray(GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveAttrib(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetActiveUniform(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetAttachedShaders(GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramInfoLog(GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
-REGAL_DECL void REGAL_CALL plugin_glGetProgramiv(GLuint program, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetShaderInfoLog(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
-REGAL_DECL void REGAL_CALL plugin_glGetShaderSource(GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
-REGAL_DECL void REGAL_CALL plugin_glGetShaderiv(GLuint shader, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformfv(GLuint program, GLint location, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformiv(GLuint program, GLint location, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribPointerv(GLuint index, GLenum pname, GLvoid **pointer);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribdv(GLuint index, GLenum pname, GLdouble *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribfv(GLuint index, GLenum pname, GLfloat *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribiv(GLuint index, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glLinkProgram(GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glShaderSource(GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length);
-REGAL_DECL void REGAL_CALL plugin_glStencilFuncSeparate(GLenum face, GLenum func, GLint ref, GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glStencilMaskSeparate(GLenum face, GLuint mask);
-REGAL_DECL void REGAL_CALL plugin_glStencilOpSeparate(GLenum face, GLenum fail, GLenum zfail, GLenum zpass);
-REGAL_DECL void REGAL_CALL plugin_glUniform1f(GLint location, GLfloat v0);
-REGAL_DECL void REGAL_CALL plugin_glUniform1fv(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform1i(GLint location, GLint v0);
-REGAL_DECL void REGAL_CALL plugin_glUniform1iv(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2f(GLint location, GLfloat v0, GLfloat v1);
-REGAL_DECL void REGAL_CALL plugin_glUniform2fv(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2i(GLint location, GLint v0, GLint v1);
-REGAL_DECL void REGAL_CALL plugin_glUniform2iv(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
-REGAL_DECL void REGAL_CALL plugin_glUniform3fv(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3i(GLint location, GLint v0, GLint v1, GLint v2);
-REGAL_DECL void REGAL_CALL plugin_glUniform3iv(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4f(GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
-REGAL_DECL void REGAL_CALL plugin_glUniform4fv(GLint location, GLsizei count, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4i(GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
-REGAL_DECL void REGAL_CALL plugin_glUniform4iv(GLint location, GLsizei count, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUseProgram(GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glValidateProgram(GLuint program);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1d(GLuint index, GLdouble x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1f(GLuint index, GLfloat x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fv(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1s(GLuint index, GLshort x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1sv(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2d(GLuint index, GLdouble x, GLdouble y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2f(GLuint index, GLfloat x, GLfloat y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fv(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2s(GLuint index, GLshort x, GLshort y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2sv(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3d(GLuint index, GLdouble x, GLdouble y, GLdouble z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3f(GLuint index, GLfloat x, GLfloat y, GLfloat z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fv(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3s(GLuint index, GLshort x, GLshort y, GLshort z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3sv(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nbv(GLuint index, const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Niv(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nsv(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nub(GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nubv(GLuint index, const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nuiv(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nusv(GLuint index, const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4bv(GLuint index, const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4d(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dv(GLuint index, const GLdouble *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4f(GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fv(GLuint index, const GLfloat *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4iv(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4s(GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4sv(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubv(GLuint index, const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4uiv(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4usv(GLuint index, const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribPointer(GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsProgram(void *_context, GLuint program);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsShader(void *_context, GLuint shader);
+REGAL_DECL GLint REGAL_CALL plugin_glGetAttribLocation(void *_context, GLuint program, const GLchar *name);
+REGAL_DECL GLint REGAL_CALL plugin_glGetUniformLocation(void *_context, GLuint program, const GLchar *name);
+REGAL_DECL GLuint REGAL_CALL plugin_glCreateProgram(void *_context);
+REGAL_DECL GLuint REGAL_CALL plugin_glCreateShader(void *_context, GLenum type);
+REGAL_DECL void REGAL_CALL plugin_glAttachShader(void *_context, GLuint program, GLuint shader);
+REGAL_DECL void REGAL_CALL plugin_glBindAttribLocation(void *_context, GLuint program, GLuint index, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparate(void *_context, GLenum modeRGB, GLenum modeAlpha);
+REGAL_DECL void REGAL_CALL plugin_glCompileShader(void *_context, GLuint shader);
+REGAL_DECL void REGAL_CALL plugin_glDeleteProgram(void *_context, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glDeleteShader(void *_context, GLuint shader);
+REGAL_DECL void REGAL_CALL plugin_glDetachShader(void *_context, GLuint program, GLuint shader);
+REGAL_DECL void REGAL_CALL plugin_glDisableVertexAttribArray(void *_context, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glDrawBuffers(void *_context, GLsizei n, const GLenum *bufs);
+REGAL_DECL void REGAL_CALL plugin_glEnableVertexAttribArray(void *_context, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveAttrib(void *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetActiveUniform(void *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLint *size, GLenum *type, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetAttachedShaders(void *_context, GLuint program, GLsizei maxCount, GLsizei *count, GLuint *shaders);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramInfoLog(void *_context, GLuint program, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+REGAL_DECL void REGAL_CALL plugin_glGetProgramiv(void *_context, GLuint program, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetShaderInfoLog(void *_context, GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *infoLog);
+REGAL_DECL void REGAL_CALL plugin_glGetShaderSource(void *_context, GLuint shader, GLsizei bufSize, GLsizei *length, GLchar *source);
+REGAL_DECL void REGAL_CALL plugin_glGetShaderiv(void *_context, GLuint shader, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformfv(void *_context, GLuint program, GLint location, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformiv(void *_context, GLuint program, GLint location, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribPointerv(void *_context, GLuint index, GLenum pname, GLvoid **pointer);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribdv(void *_context, GLuint index, GLenum pname, GLdouble *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribfv(void *_context, GLuint index, GLenum pname, GLfloat *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribiv(void *_context, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glLinkProgram(void *_context, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glShaderSource(void *_context, GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length);
+REGAL_DECL void REGAL_CALL plugin_glStencilFuncSeparate(void *_context, GLenum face, GLenum func, GLint ref, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glStencilMaskSeparate(void *_context, GLenum face, GLuint mask);
+REGAL_DECL void REGAL_CALL plugin_glStencilOpSeparate(void *_context, GLenum face, GLenum fail, GLenum zfail, GLenum zpass);
+REGAL_DECL void REGAL_CALL plugin_glUniform1f(void *_context, GLint location, GLfloat v0);
+REGAL_DECL void REGAL_CALL plugin_glUniform1fv(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform1i(void *_context, GLint location, GLint v0);
+REGAL_DECL void REGAL_CALL plugin_glUniform1iv(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2f(void *_context, GLint location, GLfloat v0, GLfloat v1);
+REGAL_DECL void REGAL_CALL plugin_glUniform2fv(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2i(void *_context, GLint location, GLint v0, GLint v1);
+REGAL_DECL void REGAL_CALL plugin_glUniform2iv(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3f(void *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2);
+REGAL_DECL void REGAL_CALL plugin_glUniform3fv(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3i(void *_context, GLint location, GLint v0, GLint v1, GLint v2);
+REGAL_DECL void REGAL_CALL plugin_glUniform3iv(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4f(void *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3);
+REGAL_DECL void REGAL_CALL plugin_glUniform4fv(void *_context, GLint location, GLsizei count, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4i(void *_context, GLint location, GLint v0, GLint v1, GLint v2, GLint v3);
+REGAL_DECL void REGAL_CALL plugin_glUniform4iv(void *_context, GLint location, GLsizei count, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUseProgram(void *_context, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glValidateProgram(void *_context, GLuint program);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1d(void *_context, GLuint index, GLdouble x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1f(void *_context, GLuint index, GLfloat x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1fv(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1s(void *_context, GLuint index, GLshort x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib1sv(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2d(void *_context, GLuint index, GLdouble x, GLdouble y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2f(void *_context, GLuint index, GLfloat x, GLfloat y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2fv(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2s(void *_context, GLuint index, GLshort x, GLshort y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib2sv(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3d(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3f(void *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3fv(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3s(void *_context, GLuint index, GLshort x, GLshort y, GLshort z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib3sv(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nbv(void *_context, GLuint index, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Niv(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nsv(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nub(void *_context, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nubv(void *_context, GLuint index, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nuiv(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4Nusv(void *_context, GLuint index, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4bv(void *_context, GLuint index, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4d(void *_context, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4dv(void *_context, GLuint index, const GLdouble *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4f(void *_context, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4fv(void *_context, GLuint index, const GLfloat *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4iv(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4s(void *_context, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4sv(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4ubv(void *_context, GLuint index, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4uiv(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttrib4usv(void *_context, GLuint index, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribPointer(void *_context, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -35571,12 +35571,12 @@ REGAL_DECL void REGAL_CALL glUniformMatrix4x3fv(GLint location, GLsizei count, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_2_1
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x4fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x2fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x3fv(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x3fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix2x4fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x2fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix3x4fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x2fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glUniformMatrix4x3fv(void *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
 #endif
 
 /**
@@ -35892,61 +35892,61 @@ REGAL_DECL void REGAL_CALL glVertexAttribIPointer(GLuint index, GLint size, GLen
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_3_0
-REGAL_DECL GLboolean REGAL_CALL plugin_glIsEnabledi(GLenum target, GLuint index);
-REGAL_DECL GLint REGAL_CALL plugin_glGetFragDataLocation(GLuint program, const GLchar *name);
-REGAL_DECL const GLubyte *REGAL_CALL plugin_glGetStringi(GLenum name, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glBeginConditionalRender(GLuint id, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glBeginTransformFeedback(GLenum primitiveMode);
-REGAL_DECL void REGAL_CALL plugin_glBindFragDataLocation(GLuint program, GLuint color, const GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glClampColor(GLenum target, GLenum clamp);
-REGAL_DECL void REGAL_CALL plugin_glClearBufferfi(GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
-REGAL_DECL void REGAL_CALL plugin_glClearBufferfv(GLenum buffer, GLint drawbuffer, const GLfloat *value);
-REGAL_DECL void REGAL_CALL plugin_glClearBufferiv(GLenum buffer, GLint drawbuffer, const GLint *value);
-REGAL_DECL void REGAL_CALL plugin_glClearBufferuiv(GLenum buffer, GLint drawbuffer, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glColorMaski(GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
-REGAL_DECL void REGAL_CALL plugin_glDisablei(GLenum cap, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glEnablei(GLenum cap, GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glEndConditionalRender(void);
-REGAL_DECL void REGAL_CALL plugin_glEndTransformFeedback(void);
-REGAL_DECL void REGAL_CALL plugin_glGetBooleani_v(GLenum target, GLuint index, GLboolean *data);
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIiv(GLenum target, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIuiv(GLenum target, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetTransformFeedbackVarying(GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
-REGAL_DECL void REGAL_CALL plugin_glGetUniformuiv(GLuint program, GLint location, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIiv(GLuint index, GLenum pname, GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIuiv(GLuint index, GLenum pname, GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterIiv(GLenum target, GLenum pname, const GLint *params);
-REGAL_DECL void REGAL_CALL plugin_glTexParameterIuiv(GLenum target, GLenum pname, const GLuint *params);
-REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackVaryings(GLuint program, GLsizei count, const GLchar * const *varyings, GLenum bufferMode);
-REGAL_DECL void REGAL_CALL plugin_glUniform1ui(GLint location, GLuint v0);
-REGAL_DECL void REGAL_CALL plugin_glUniform1uiv(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform2ui(GLint location, GLuint v0, GLuint v1);
-REGAL_DECL void REGAL_CALL plugin_glUniform2uiv(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform3ui(GLint location, GLuint v0, GLuint v1, GLuint v2);
-REGAL_DECL void REGAL_CALL plugin_glUniform3uiv(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glUniform4ui(GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
-REGAL_DECL void REGAL_CALL plugin_glUniform4uiv(GLint location, GLsizei count, const GLuint *value);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1i(GLuint index, GLint x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1iv(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1ui(GLuint index, GLuint x);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1uiv(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2i(GLuint index, GLint x, GLint y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2iv(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2ui(GLuint index, GLuint x, GLuint y);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2uiv(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3i(GLuint index, GLint x, GLint y, GLint z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3iv(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3ui(GLuint index, GLuint x, GLuint y, GLuint z);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3uiv(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4bv(GLuint index, const GLbyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4i(GLuint index, GLint x, GLint y, GLint z, GLint w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4iv(GLuint index, const GLint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4sv(GLuint index, const GLshort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ubv(GLuint index, const GLubyte *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ui(GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4uiv(GLuint index, const GLuint *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4usv(GLuint index, const GLushort *v);
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribIPointer(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+REGAL_DECL GLboolean REGAL_CALL plugin_glIsEnabledi(void *_context, GLenum target, GLuint index);
+REGAL_DECL GLint REGAL_CALL plugin_glGetFragDataLocation(void *_context, GLuint program, const GLchar *name);
+REGAL_DECL const GLubyte *REGAL_CALL plugin_glGetStringi(void *_context, GLenum name, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glBeginConditionalRender(void *_context, GLuint id, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glBeginTransformFeedback(void *_context, GLenum primitiveMode);
+REGAL_DECL void REGAL_CALL plugin_glBindFragDataLocation(void *_context, GLuint program, GLuint color, const GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glClampColor(void *_context, GLenum target, GLenum clamp);
+REGAL_DECL void REGAL_CALL plugin_glClearBufferfi(void *_context, GLenum buffer, GLint drawbuffer, GLfloat depth, GLint stencil);
+REGAL_DECL void REGAL_CALL plugin_glClearBufferfv(void *_context, GLenum buffer, GLint drawbuffer, const GLfloat *value);
+REGAL_DECL void REGAL_CALL plugin_glClearBufferiv(void *_context, GLenum buffer, GLint drawbuffer, const GLint *value);
+REGAL_DECL void REGAL_CALL plugin_glClearBufferuiv(void *_context, GLenum buffer, GLint drawbuffer, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glColorMaski(void *_context, GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a);
+REGAL_DECL void REGAL_CALL plugin_glDisablei(void *_context, GLenum cap, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glEnablei(void *_context, GLenum cap, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glEndConditionalRender(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glEndTransformFeedback(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glGetBooleani_v(void *_context, GLenum target, GLuint index, GLboolean *data);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIiv(void *_context, GLenum target, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTexParameterIuiv(void *_context, GLenum target, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetTransformFeedbackVarying(void *_context, GLuint program, GLuint index, GLsizei bufSize, GLsizei *length, GLsizei *size, GLenum *type, GLchar *name);
+REGAL_DECL void REGAL_CALL plugin_glGetUniformuiv(void *_context, GLuint program, GLint location, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIiv(void *_context, GLuint index, GLenum pname, GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glGetVertexAttribIuiv(void *_context, GLuint index, GLenum pname, GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterIiv(void *_context, GLenum target, GLenum pname, const GLint *params);
+REGAL_DECL void REGAL_CALL plugin_glTexParameterIuiv(void *_context, GLenum target, GLenum pname, const GLuint *params);
+REGAL_DECL void REGAL_CALL plugin_glTransformFeedbackVaryings(void *_context, GLuint program, GLsizei count, const GLchar * const *varyings, GLenum bufferMode);
+REGAL_DECL void REGAL_CALL plugin_glUniform1ui(void *_context, GLint location, GLuint v0);
+REGAL_DECL void REGAL_CALL plugin_glUniform1uiv(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform2ui(void *_context, GLint location, GLuint v0, GLuint v1);
+REGAL_DECL void REGAL_CALL plugin_glUniform2uiv(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform3ui(void *_context, GLint location, GLuint v0, GLuint v1, GLuint v2);
+REGAL_DECL void REGAL_CALL plugin_glUniform3uiv(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glUniform4ui(void *_context, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3);
+REGAL_DECL void REGAL_CALL plugin_glUniform4uiv(void *_context, GLint location, GLsizei count, const GLuint *value);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1i(void *_context, GLuint index, GLint x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1iv(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1ui(void *_context, GLuint index, GLuint x);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI1uiv(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2i(void *_context, GLuint index, GLint x, GLint y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2iv(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2ui(void *_context, GLuint index, GLuint x, GLuint y);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI2uiv(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3i(void *_context, GLuint index, GLint x, GLint y, GLint z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3iv(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3ui(void *_context, GLuint index, GLuint x, GLuint y, GLuint z);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI3uiv(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4bv(void *_context, GLuint index, const GLbyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4i(void *_context, GLuint index, GLint x, GLint y, GLint z, GLint w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4iv(void *_context, GLuint index, const GLint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4sv(void *_context, GLuint index, const GLshort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ubv(void *_context, GLuint index, const GLubyte *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4ui(void *_context, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4uiv(void *_context, GLuint index, const GLuint *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribI4usv(void *_context, GLuint index, const GLushort *v);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribIPointer(void *_context, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
 /**
@@ -36023,10 +36023,10 @@ REGAL_DECL void REGAL_CALL glTexBuffer(GLenum target, GLenum internalformat, GLu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_3_1
-REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstanced(GLenum mode, GLint start, GLsizei count, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstanced(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
-REGAL_DECL void REGAL_CALL plugin_glPrimitiveRestartIndex(GLuint index);
-REGAL_DECL void REGAL_CALL plugin_glTexBuffer(GLenum target, GLenum internalformat, GLuint buffer);
+REGAL_DECL void REGAL_CALL plugin_glDrawArraysInstanced(void *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glDrawElementsInstanced(void *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+REGAL_DECL void REGAL_CALL plugin_glPrimitiveRestartIndex(void *_context, GLuint index);
+REGAL_DECL void REGAL_CALL plugin_glTexBuffer(void *_context, GLenum target, GLenum internalformat, GLuint buffer);
 #endif
 
 /**
@@ -36104,10 +36104,10 @@ REGAL_DECL void REGAL_CALL glGetInteger64i_v(GLenum target, GLuint index, GLint6
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_3_2
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture(GLenum target, GLenum attachment, GLuint texture, GLint level);
-REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureFace(GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
-REGAL_DECL void REGAL_CALL plugin_glGetBufferParameteri64v(GLenum target, GLenum pname, GLint64 *params);
-REGAL_DECL void REGAL_CALL plugin_glGetInteger64i_v(GLenum target, GLuint index, GLint64 *data);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTexture(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level);
+REGAL_DECL void REGAL_CALL plugin_glFramebufferTextureFace(void *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face);
+REGAL_DECL void REGAL_CALL plugin_glGetBufferParameteri64v(void *_context, GLenum target, GLenum pname, GLint64 *params);
+REGAL_DECL void REGAL_CALL plugin_glGetInteger64i_v(void *_context, GLenum target, GLuint index, GLint64 *data);
 #endif
 
 /**
@@ -36155,7 +36155,7 @@ REGAL_DECL void REGAL_CALL glVertexAttribDivisor(GLuint index, GLuint divisor);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_3_3
-REGAL_DECL void REGAL_CALL plugin_glVertexAttribDivisor(GLuint index, GLuint divisor);
+REGAL_DECL void REGAL_CALL plugin_glVertexAttribDivisor(void *_context, GLuint index, GLuint divisor);
 #endif
 
 /**
@@ -36223,10 +36223,10 @@ REGAL_DECL void REGAL_CALL glBlendFunci(GLuint buf, GLenum src, GLenum dst);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_VERSION_4_0
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparatei(GLuint buf, GLenum modeRGB, GLenum modeAlpha);
-REGAL_DECL void REGAL_CALL plugin_glBlendEquationi(GLuint buf, GLenum mode);
-REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparatei(GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
-REGAL_DECL void REGAL_CALL plugin_glBlendFunci(GLuint buf, GLenum src, GLenum dst);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationSeparatei(void *_context, GLuint buf, GLenum modeRGB, GLenum modeAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendEquationi(void *_context, GLuint buf, GLenum mode);
+REGAL_DECL void REGAL_CALL plugin_glBlendFuncSeparatei(void *_context, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha);
+REGAL_DECL void REGAL_CALL plugin_glBlendFunci(void *_context, GLuint buf, GLenum src, GLenum dst);
 #endif
 
 /**
@@ -36469,7 +36469,7 @@ REGAL_DECL void REGAL_CALL glAddSwapHintRectWIN(GLint x, GLint y, GLsizei width,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GL_WIN_SWAP_HINT
-REGAL_DECL void REGAL_CALL plugin_glAddSwapHintRectWIN(GLint x, GLint y, GLsizei width, GLsizei height);
+REGAL_DECL void REGAL_CALL plugin_glAddSwapHintRectWIN(void *_context, GLint x, GLint y, GLsizei width, GLsizei height);
 #endif
 
 #if REGAL_SYS_WGL
@@ -36523,7 +36523,7 @@ REGAL_DECL BOOL REGAL_CALL wglSetStereoEmitterState3DL(HDC hDC, UINT uState);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_3DL_STEREO_CONTROL
-REGAL_DECL BOOL REGAL_CALL plugin_wglSetStereoEmitterState3DL(HDC hDC, UINT uState);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSetStereoEmitterState3DL(void *_context, HDC hDC, UINT uState);
 #endif
 
 /**
@@ -36604,15 +36604,15 @@ REGAL_DECL VOID REGAL_CALL wglBlitContextFramebufferAMD(HGLRC dstCtx, GLint srcX
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_AMD_GPU_ASSOCIATION
-REGAL_DECL BOOL REGAL_CALL plugin_wglDeleteAssociatedContextAMD(HGLRC hglrc);
-REGAL_DECL BOOL REGAL_CALL plugin_wglMakeAssociatedContextCurrentAMD(HGLRC hglrc);
-REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateAssociatedContextAMD(UINT id);
-REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateAssociatedContextAttribsAMD(UINT id, HGLRC hShareContext, const int *attribList);
-REGAL_DECL HGLRC REGAL_CALL plugin_wglGetCurrentAssociatedContextAMD(void);
-REGAL_DECL INT REGAL_CALL plugin_wglGetGPUInfoAMD(UINT id, int property, GLenum dataType, UINT size, void *data);
-REGAL_DECL UINT REGAL_CALL plugin_wglGetContextGPUIDAMD(HGLRC hglrc);
-REGAL_DECL UINT REGAL_CALL plugin_wglGetGPUIDsAMD(UINT maxCount, UINT *ids);
-REGAL_DECL VOID REGAL_CALL plugin_wglBlitContextFramebufferAMD(HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDeleteAssociatedContextAMD(void *_context, HGLRC hglrc);
+REGAL_DECL BOOL REGAL_CALL plugin_wglMakeAssociatedContextCurrentAMD(void *_context, HGLRC hglrc);
+REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateAssociatedContextAMD(void *_context, UINT id);
+REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateAssociatedContextAttribsAMD(void *_context, UINT id, HGLRC hShareContext, const int *attribList);
+REGAL_DECL HGLRC REGAL_CALL plugin_wglGetCurrentAssociatedContextAMD(void *_context);
+REGAL_DECL INT REGAL_CALL plugin_wglGetGPUInfoAMD(void *_context, UINT id, int property, GLenum dataType, UINT size, void *data);
+REGAL_DECL UINT REGAL_CALL plugin_wglGetContextGPUIDAMD(void *_context, HGLRC hglrc);
+REGAL_DECL UINT REGAL_CALL plugin_wglGetGPUIDsAMD(void *_context, UINT maxCount, UINT *ids);
+REGAL_DECL VOID REGAL_CALL plugin_wglBlitContextFramebufferAMD(void *_context, HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 #endif
 
 /**
@@ -36672,10 +36672,10 @@ REGAL_DECL VOID REGAL_CALL wglDeleteBufferRegionARB(HANDLE hRegion);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_ARB_BUFFER_REGION
-REGAL_DECL BOOL REGAL_CALL plugin_wglRestoreBufferRegionARB(HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSaveBufferRegionARB(HANDLE hRegion, int x, int y, int width, int height);
-REGAL_DECL HANDLE REGAL_CALL plugin_wglCreateBufferRegionARB(HDC hDC, int iLayerPlane, UINT uType);
-REGAL_DECL VOID REGAL_CALL plugin_wglDeleteBufferRegionARB(HANDLE hRegion);
+REGAL_DECL BOOL REGAL_CALL plugin_wglRestoreBufferRegionARB(void *_context, HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSaveBufferRegionARB(void *_context, HANDLE hRegion, int x, int y, int width, int height);
+REGAL_DECL HANDLE REGAL_CALL plugin_wglCreateBufferRegionARB(void *_context, HDC hDC, int iLayerPlane, UINT uType);
+REGAL_DECL VOID REGAL_CALL plugin_wglDeleteBufferRegionARB(void *_context, HANDLE hRegion);
 #endif
 
 /**
@@ -36728,7 +36728,7 @@ REGAL_DECL HGLRC REGAL_CALL wglCreateContextAttribsARB(HDC hDC, HGLRC hShareCont
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_ARB_CREATE_CONTEXT
-REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateContextAttribsARB(HDC hDC, HGLRC hShareContext, const int *piAttribList);
+REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateContextAttribsARB(void *_context, HDC hDC, HGLRC hShareContext, const int *piAttribList);
 #endif
 
 /**
@@ -36841,7 +36841,7 @@ REGAL_DECL const char *REGAL_CALL wglGetExtensionsStringARB(HDC hDC);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_ARB_EXTENSIONS_STRING
-REGAL_DECL const char *REGAL_CALL plugin_wglGetExtensionsStringARB(HDC hDC);
+REGAL_DECL const char *REGAL_CALL plugin_wglGetExtensionsStringARB(void *_context, HDC hDC);
 #endif
 
 /**
@@ -36925,8 +36925,8 @@ REGAL_DECL HDC REGAL_CALL wglGetCurrentReadDCARB(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_ARB_MAKE_CURRENT_READ
-REGAL_DECL BOOL REGAL_CALL plugin_wglMakeContextCurrentARB(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-REGAL_DECL HDC REGAL_CALL plugin_wglGetCurrentReadDCARB(void);
+REGAL_DECL BOOL REGAL_CALL plugin_wglMakeContextCurrentARB(void *_context, HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+REGAL_DECL HDC REGAL_CALL plugin_wglGetCurrentReadDCARB(void *_context);
 #endif
 
 /**
@@ -37026,11 +37026,11 @@ REGAL_DECL int REGAL_CALL wglReleasePbufferDCARB(HPBUFFERARB hPbuffer, HDC hDC);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_ARB_PBUFFER
-REGAL_DECL BOOL REGAL_CALL plugin_wglDestroyPbufferARB(HPBUFFERARB hPbuffer);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryPbufferARB(HPBUFFERARB hPbuffer, int iAttribute, int *piValue);
-REGAL_DECL HDC REGAL_CALL plugin_wglGetPbufferDCARB(HPBUFFERARB hPbuffer);
-REGAL_DECL HPBUFFERARB REGAL_CALL plugin_wglCreatePbufferARB(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
-REGAL_DECL int REGAL_CALL plugin_wglReleasePbufferDCARB(HPBUFFERARB hPbuffer, HDC hDC);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDestroyPbufferARB(void *_context, HPBUFFERARB hPbuffer);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryPbufferARB(void *_context, HPBUFFERARB hPbuffer, int iAttribute, int *piValue);
+REGAL_DECL HDC REGAL_CALL plugin_wglGetPbufferDCARB(void *_context, HPBUFFERARB hPbuffer);
+REGAL_DECL HPBUFFERARB REGAL_CALL plugin_wglCreatePbufferARB(void *_context, HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
+REGAL_DECL int REGAL_CALL plugin_wglReleasePbufferDCARB(void *_context, HPBUFFERARB hPbuffer, HDC hDC);
 #endif
 
 /**
@@ -37132,9 +37132,9 @@ REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribivARB(HDC hDC, int iPixelForma
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_ARB_PIXEL_FORMAT
-REGAL_DECL BOOL REGAL_CALL plugin_wglChoosePixelFormatARB(HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribfvARB(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribivARB(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
+REGAL_DECL BOOL REGAL_CALL plugin_wglChoosePixelFormatARB(void *_context, HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribfvARB(void *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribivARB(void *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
 #endif
 
 /**
@@ -37251,9 +37251,9 @@ REGAL_DECL BOOL REGAL_CALL wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const in
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_ARB_RENDER_TEXTURE
-REGAL_DECL BOOL REGAL_CALL plugin_wglBindTexImageARB(HPBUFFERARB hPbuffer, int iBuffer);
-REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseTexImageARB(HPBUFFERARB hPbuffer, int iBuffer);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSetPbufferAttribARB(HPBUFFERARB hPbuffer, const int *piAttribList);
+REGAL_DECL BOOL REGAL_CALL plugin_wglBindTexImageARB(void *_context, HPBUFFERARB hPbuffer, int iBuffer);
+REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseTexImageARB(void *_context, HPBUFFERARB hPbuffer, int iBuffer);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSetPbufferAttribARB(void *_context, HPBUFFERARB hPbuffer, const int *piAttribList);
 #endif
 
 /**
@@ -37500,10 +37500,10 @@ REGAL_DECL VOID REGAL_CALL wglDestroyDisplayColorTableEXT(GLushort id);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_EXT_DISPLAY_COLOR_TABLE
-REGAL_DECL GLboolean REGAL_CALL plugin_wglBindDisplayColorTableEXT(GLushort id);
-REGAL_DECL GLboolean REGAL_CALL plugin_wglCreateDisplayColorTableEXT(GLushort id);
-REGAL_DECL GLboolean REGAL_CALL plugin_wglLoadDisplayColorTableEXT(const GLushort *table, GLuint length);
-REGAL_DECL VOID REGAL_CALL plugin_wglDestroyDisplayColorTableEXT(GLushort id);
+REGAL_DECL GLboolean REGAL_CALL plugin_wglBindDisplayColorTableEXT(void *_context, GLushort id);
+REGAL_DECL GLboolean REGAL_CALL plugin_wglCreateDisplayColorTableEXT(void *_context, GLushort id);
+REGAL_DECL GLboolean REGAL_CALL plugin_wglLoadDisplayColorTableEXT(void *_context, const GLushort *table, GLuint length);
+REGAL_DECL VOID REGAL_CALL plugin_wglDestroyDisplayColorTableEXT(void *_context, GLushort id);
 #endif
 
 /**
@@ -37547,7 +37547,7 @@ REGAL_DECL const char *REGAL_CALL wglGetExtensionsStringEXT(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_EXT_EXTENSIONS_STRING
-REGAL_DECL const char *REGAL_CALL plugin_wglGetExtensionsStringEXT(void);
+REGAL_DECL const char *REGAL_CALL plugin_wglGetExtensionsStringEXT(void *_context);
 #endif
 
 /**
@@ -37630,8 +37630,8 @@ REGAL_DECL HDC REGAL_CALL wglGetCurrentReadDCEXT(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_EXT_MAKE_CURRENT_READ
-REGAL_DECL BOOL REGAL_CALL plugin_wglMakeContextCurrentEXT(HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
-REGAL_DECL HDC REGAL_CALL plugin_wglGetCurrentReadDCEXT(void);
+REGAL_DECL BOOL REGAL_CALL plugin_wglMakeContextCurrentEXT(void *_context, HDC hDrawDC, HDC hReadDC, HGLRC hglrc);
+REGAL_DECL HDC REGAL_CALL plugin_wglGetCurrentReadDCEXT(void *_context);
 #endif
 
 /**
@@ -37732,11 +37732,11 @@ REGAL_DECL int REGAL_CALL wglReleasePbufferDCEXT(HPBUFFEREXT hPbuffer, HDC hDC);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_EXT_PBUFFER
-REGAL_DECL BOOL REGAL_CALL plugin_wglDestroyPbufferEXT(HPBUFFEREXT hPbuffer);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryPbufferEXT(HPBUFFEREXT hPbuffer, int iAttribute, int *piValue);
-REGAL_DECL HDC REGAL_CALL plugin_wglGetPbufferDCEXT(HPBUFFEREXT hPbuffer);
-REGAL_DECL HPBUFFEREXT REGAL_CALL plugin_wglCreatePbufferEXT(HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
-REGAL_DECL int REGAL_CALL plugin_wglReleasePbufferDCEXT(HPBUFFEREXT hPbuffer, HDC hDC);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDestroyPbufferEXT(void *_context, HPBUFFEREXT hPbuffer);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryPbufferEXT(void *_context, HPBUFFEREXT hPbuffer, int iAttribute, int *piValue);
+REGAL_DECL HDC REGAL_CALL plugin_wglGetPbufferDCEXT(void *_context, HPBUFFEREXT hPbuffer);
+REGAL_DECL HPBUFFEREXT REGAL_CALL plugin_wglCreatePbufferEXT(void *_context, HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList);
+REGAL_DECL int REGAL_CALL plugin_wglReleasePbufferDCEXT(void *_context, HPBUFFEREXT hPbuffer, HDC hDC);
 #endif
 
 /**
@@ -37834,9 +37834,9 @@ REGAL_DECL BOOL REGAL_CALL wglGetPixelFormatAttribivEXT(HDC hDC, int iPixelForma
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_EXT_PIXEL_FORMAT
-REGAL_DECL BOOL REGAL_CALL plugin_wglChoosePixelFormatEXT(HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribfvEXT(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribivEXT(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
+REGAL_DECL BOOL REGAL_CALL plugin_wglChoosePixelFormatEXT(void *_context, HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribfvEXT(void *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetPixelFormatAttribivEXT(void *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues);
 #endif
 
 /**
@@ -37915,8 +37915,8 @@ REGAL_DECL int REGAL_CALL wglGetSwapIntervalEXT(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_EXT_SWAP_CONTROL
-REGAL_DECL BOOL REGAL_CALL plugin_wglSwapIntervalEXT(int interval);
-REGAL_DECL int REGAL_CALL plugin_wglGetSwapIntervalEXT(void);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSwapIntervalEXT(void *_context, int interval);
+REGAL_DECL int REGAL_CALL plugin_wglGetSwapIntervalEXT(void *_context);
 #endif
 
 /**
@@ -37975,12 +37975,12 @@ REGAL_DECL int REGAL_CALL wglGetPixelFormat(HDC hDC);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_GDI
-REGAL_DECL BOOL REGAL_CALL plugin_SwapBuffers(HDC hDC);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSetPixelFormat(HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSwapBuffers(HDC hDC);
-REGAL_DECL int REGAL_CALL plugin_wglChoosePixelFormat(HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd);
-REGAL_DECL int REGAL_CALL plugin_wglDescribePixelFormat(HDC hDC, int iPixelFormat, UINT nBytes, LPPIXELFORMATDESCRIPTOR ppfd);
-REGAL_DECL int REGAL_CALL plugin_wglGetPixelFormat(HDC hDC);
+REGAL_DECL BOOL REGAL_CALL plugin_SwapBuffers(void *_context, HDC hDC);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSetPixelFormat(void *_context, HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSwapBuffers(void *_context, HDC hDC);
+REGAL_DECL int REGAL_CALL plugin_wglChoosePixelFormat(void *_context, HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd);
+REGAL_DECL int REGAL_CALL plugin_wglDescribePixelFormat(void *_context, HDC hDC, int iPixelFormat, UINT nBytes, LPPIXELFORMATDESCRIPTOR ppfd);
+REGAL_DECL int REGAL_CALL plugin_wglGetPixelFormat(void *_context, HDC hDC);
 #endif
 
 /**
@@ -38034,8 +38034,8 @@ REGAL_DECL BOOL REGAL_CALL wglSetDigitalVideoParametersI3D(HDC hDC, int iAttribu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_I3D_DIGITAL_VIDEO_CONTROL
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetDigitalVideoParametersI3D(HDC hDC, int iAttribute, int *piValue);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSetDigitalVideoParametersI3D(HDC hDC, int iAttribute, const int *piValue);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetDigitalVideoParametersI3D(void *_context, HDC hDC, int iAttribute, int *piValue);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSetDigitalVideoParametersI3D(void *_context, HDC hDC, int iAttribute, const int *piValue);
 #endif
 
 /**
@@ -38093,10 +38093,10 @@ REGAL_DECL BOOL REGAL_CALL wglSetGammaTableParametersI3D(HDC hDC, int iAttribute
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_I3D_GAMMA
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetGammaTableI3D(HDC hDC, int iEntries, USHORT *puRed, USHORT *puGreen, USHORT *puBlue);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetGammaTableParametersI3D(HDC hDC, int iAttribute, int *piValue);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSetGammaTableI3D(HDC hDC, int iEntries, const USHORT *puRed, const USHORT *puGreen, const USHORT *puBlue);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSetGammaTableParametersI3D(HDC hDC, int iAttribute, const int *piValue);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetGammaTableI3D(void *_context, HDC hDC, int iEntries, USHORT *puRed, USHORT *puGreen, USHORT *puBlue);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetGammaTableParametersI3D(void *_context, HDC hDC, int iAttribute, int *piValue);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSetGammaTableI3D(void *_context, HDC hDC, int iEntries, const USHORT *puRed, const USHORT *puGreen, const USHORT *puBlue);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSetGammaTableParametersI3D(void *_context, HDC hDC, int iAttribute, const int *piValue);
 #endif
 
 /**
@@ -38185,18 +38185,18 @@ REGAL_DECL BOOL REGAL_CALL wglQueryGenlockMaxSourceDelayI3D(HDC hDC, UINT *uMaxL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_I3D_GENLOCK
-REGAL_DECL BOOL REGAL_CALL plugin_wglDisableGenlockI3D(HDC hDC);
-REGAL_DECL BOOL REGAL_CALL plugin_wglEnableGenlockI3D(HDC hDC);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSampleRateI3D(HDC hDC, UINT uRate);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSourceDelayI3D(HDC hDC, UINT uDelay);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSourceEdgeI3D(HDC hDC, UINT uEdge);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSourceI3D(HDC hDC, UINT uSource);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSampleRateI3D(HDC hDC, UINT *uRate);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSourceDelayI3D(HDC hDC, UINT *uDelay);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSourceEdgeI3D(HDC hDC, UINT *uEdge);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSourceI3D(HDC hDC, UINT *uSource);
-REGAL_DECL BOOL REGAL_CALL plugin_wglIsEnabledGenlockI3D(HDC hDC, BOOL *pFlag);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryGenlockMaxSourceDelayI3D(HDC hDC, UINT *uMaxLineDelay, UINT *uMaxPixelDelay);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDisableGenlockI3D(void *_context, HDC hDC);
+REGAL_DECL BOOL REGAL_CALL plugin_wglEnableGenlockI3D(void *_context, HDC hDC);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSampleRateI3D(void *_context, HDC hDC, UINT uRate);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSourceDelayI3D(void *_context, HDC hDC, UINT uDelay);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSourceEdgeI3D(void *_context, HDC hDC, UINT uEdge);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGenlockSourceI3D(void *_context, HDC hDC, UINT uSource);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSampleRateI3D(void *_context, HDC hDC, UINT *uRate);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSourceDelayI3D(void *_context, HDC hDC, UINT *uDelay);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSourceEdgeI3D(void *_context, HDC hDC, UINT *uEdge);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetGenlockSourceI3D(void *_context, HDC hDC, UINT *uSource);
+REGAL_DECL BOOL REGAL_CALL plugin_wglIsEnabledGenlockI3D(void *_context, HDC hDC, BOOL *pFlag);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryGenlockMaxSourceDelayI3D(void *_context, HDC hDC, UINT *uMaxLineDelay, UINT *uMaxPixelDelay);
 #endif
 
 /**
@@ -38254,10 +38254,10 @@ REGAL_DECL LPVOID REGAL_CALL wglCreateImageBufferI3D(HDC hDC, DWORD dwSize, UINT
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_I3D_IMAGE_BUFFER
-REGAL_DECL BOOL REGAL_CALL plugin_wglAssociateImageBufferEventsI3D(HDC hDC, const HANDLE *pEvent, const LPVOID *pAddress, const DWORD *pSize, UINT count);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDestroyImageBufferI3D(HDC hDC, LPVOID pAddress);
-REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseImageBufferEventsI3D(HDC hDC, const LPVOID *pAddress, UINT count);
-REGAL_DECL LPVOID REGAL_CALL plugin_wglCreateImageBufferI3D(HDC hDC, DWORD dwSize, UINT uFlags);
+REGAL_DECL BOOL REGAL_CALL plugin_wglAssociateImageBufferEventsI3D(void *_context, HDC hDC, const HANDLE *pEvent, const LPVOID *pAddress, const DWORD *pSize, UINT count);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDestroyImageBufferI3D(void *_context, HDC hDC, LPVOID pAddress);
+REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseImageBufferEventsI3D(void *_context, HDC hDC, const LPVOID *pAddress, UINT count);
+REGAL_DECL LPVOID REGAL_CALL plugin_wglCreateImageBufferI3D(void *_context, HDC hDC, DWORD dwSize, UINT uFlags);
 #endif
 
 /**
@@ -38310,10 +38310,10 @@ REGAL_DECL BOOL REGAL_CALL wglQueryFrameLockMasterI3D(BOOL *pFlag);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_I3D_SWAP_FRAME_LOCK
-REGAL_DECL BOOL REGAL_CALL plugin_wglDisableFrameLockI3D(void);
-REGAL_DECL BOOL REGAL_CALL plugin_wglEnableFrameLockI3D(void);
-REGAL_DECL BOOL REGAL_CALL plugin_wglIsEnabledFrameLockI3D(BOOL *pFlag);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryFrameLockMasterI3D(BOOL *pFlag);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDisableFrameLockI3D(void *_context);
+REGAL_DECL BOOL REGAL_CALL plugin_wglEnableFrameLockI3D(void *_context);
+REGAL_DECL BOOL REGAL_CALL plugin_wglIsEnabledFrameLockI3D(void *_context, BOOL *pFlag);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryFrameLockMasterI3D(void *_context, BOOL *pFlag);
 #endif
 
 /**
@@ -38366,10 +38366,10 @@ REGAL_DECL BOOL REGAL_CALL wglQueryFrameTrackingI3D(DWORD *pFrameCount, DWORD *p
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_I3D_SWAP_FRAME_USAGE
-REGAL_DECL BOOL REGAL_CALL plugin_wglBeginFrameTrackingI3D(void);
-REGAL_DECL BOOL REGAL_CALL plugin_wglEndFrameTrackingI3D(void);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetFrameUsageI3D(float *pUsage);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryFrameTrackingI3D(DWORD *pFrameCount, DWORD *pMissedFrames, float *pLastMissedUsage);
+REGAL_DECL BOOL REGAL_CALL plugin_wglBeginFrameTrackingI3D(void *_context);
+REGAL_DECL BOOL REGAL_CALL plugin_wglEndFrameTrackingI3D(void *_context);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetFrameUsageI3D(void *_context, float *pUsage);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryFrameTrackingI3D(void *_context, DWORD *pFrameCount, DWORD *pMissedFrames, float *pLastMissedUsage);
 #endif
 
 /**
@@ -38440,14 +38440,14 @@ REGAL_DECL HANDLE REGAL_CALL wglDXRegisterObjectNV(HANDLE hDevice, GLvoid *dxObj
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_DX_INTEROP
-REGAL_DECL BOOL REGAL_CALL plugin_wglDXCloseDeviceNV(HANDLE hDevice);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDXLockObjectsNV(HANDLE hDevice, GLint count, HANDLE *hObjects);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDXObjectAccessNV(HANDLE hObject, GLenum access);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDXSetResourceShareHandleNV(GLvoid *dxObject, HANDLE shareHandle);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDXUnlockObjectsNV(HANDLE hDevice, GLint count, HANDLE *hObjects);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDXUnregisterObjectNV(HANDLE hDevice, HANDLE hObject);
-REGAL_DECL HANDLE REGAL_CALL plugin_wglDXOpenDeviceNV(GLvoid *dxDevice);
-REGAL_DECL HANDLE REGAL_CALL plugin_wglDXRegisterObjectNV(HANDLE hDevice, GLvoid *dxObject, GLuint name, GLenum type, GLenum access);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDXCloseDeviceNV(void *_context, HANDLE hDevice);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDXLockObjectsNV(void *_context, HANDLE hDevice, GLint count, HANDLE *hObjects);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDXObjectAccessNV(void *_context, HANDLE hObject, GLenum access);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDXSetResourceShareHandleNV(void *_context, GLvoid *dxObject, HANDLE shareHandle);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDXUnlockObjectsNV(void *_context, HANDLE hDevice, GLint count, HANDLE *hObjects);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDXUnregisterObjectNV(void *_context, HANDLE hDevice, HANDLE hObject);
+REGAL_DECL HANDLE REGAL_CALL plugin_wglDXOpenDeviceNV(void *_context, GLvoid *dxDevice);
+REGAL_DECL HANDLE REGAL_CALL plugin_wglDXRegisterObjectNV(void *_context, HANDLE hDevice, GLvoid *dxObject, GLuint name, GLenum type, GLenum access);
 #endif
 
 /**
@@ -38491,7 +38491,7 @@ REGAL_DECL BOOL REGAL_CALL wglCopyImageSubDataNV(HGLRC hSrcRC, GLuint srcName, G
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_COPY_IMAGE
-REGAL_DECL BOOL REGAL_CALL plugin_wglCopyImageSubDataNV(HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+REGAL_DECL BOOL REGAL_CALL plugin_wglCopyImageSubDataNV(void *_context, HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 #endif
 
 /**
@@ -38592,11 +38592,11 @@ REGAL_DECL HDC REGAL_CALL wglCreateAffinityDCNV(const HGPUNV *phGpuList);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_GPU_AFFINITY
-REGAL_DECL BOOL REGAL_CALL plugin_wglDeleteDCNV(HDC hAffinityDC);
-REGAL_DECL BOOL REGAL_CALL plugin_wglEnumGpuDevicesNV(HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice);
-REGAL_DECL BOOL REGAL_CALL plugin_wglEnumGpusFromAffinityDCNV(HDC hAffinityDC, UINT iGpuIndex, HGPUNV *hGpu);
-REGAL_DECL BOOL REGAL_CALL plugin_wglEnumGpusNV(UINT iGpuIndex, HGPUNV *phGpu);
-REGAL_DECL HDC REGAL_CALL plugin_wglCreateAffinityDCNV(const HGPUNV *phGpuList);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDeleteDCNV(void *_context, HDC hAffinityDC);
+REGAL_DECL BOOL REGAL_CALL plugin_wglEnumGpuDevicesNV(void *_context, HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice);
+REGAL_DECL BOOL REGAL_CALL plugin_wglEnumGpusFromAffinityDCNV(void *_context, HDC hAffinityDC, UINT iGpuIndex, HGPUNV *hGpu);
+REGAL_DECL BOOL REGAL_CALL plugin_wglEnumGpusNV(void *_context, UINT iGpuIndex, HGPUNV *phGpu);
+REGAL_DECL HDC REGAL_CALL plugin_wglCreateAffinityDCNV(void *_context, const HGPUNV *phGpuList);
 #endif
 
 /**
@@ -38683,9 +38683,9 @@ REGAL_DECL int REGAL_CALL wglEnumerateVideoDevicesNV(HDC hDC, HVIDEOOUTPUTDEVICE
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_PRESENT_VIDEO
-REGAL_DECL BOOL REGAL_CALL plugin_wglBindVideoDeviceNV(HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int *piAttribList);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryCurrentContextNV(int iAttribute, int *piValue);
-REGAL_DECL int REGAL_CALL plugin_wglEnumerateVideoDevicesNV(HDC hDC, HVIDEOOUTPUTDEVICENV *phDeviceList);
+REGAL_DECL BOOL REGAL_CALL plugin_wglBindVideoDeviceNV(void *_context, HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int *piAttribList);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryCurrentContextNV(void *_context, int iAttribute, int *piValue);
+REGAL_DECL int REGAL_CALL plugin_wglEnumerateVideoDevicesNV(void *_context, HDC hDC, HVIDEOOUTPUTDEVICENV *phDeviceList);
 #endif
 
 /**
@@ -38815,12 +38815,12 @@ REGAL_DECL BOOL REGAL_CALL wglResetFrameCountNV(HDC hDC);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_SWAP_GROUP
-REGAL_DECL BOOL REGAL_CALL plugin_wglBindSwapBarrierNV(GLuint group, GLuint barrier);
-REGAL_DECL BOOL REGAL_CALL plugin_wglJoinSwapGroupNV(HDC hDC, GLuint group);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryFrameCountNV(HDC hDC, GLuint *count);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryMaxSwapGroupsNV(HDC hDC, GLuint *maxGroups, GLuint *maxBarriers);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQuerySwapGroupNV(HDC hDC, GLuint *group, GLuint *barrier);
-REGAL_DECL BOOL REGAL_CALL plugin_wglResetFrameCountNV(HDC hDC);
+REGAL_DECL BOOL REGAL_CALL plugin_wglBindSwapBarrierNV(void *_context, GLuint group, GLuint barrier);
+REGAL_DECL BOOL REGAL_CALL plugin_wglJoinSwapGroupNV(void *_context, HDC hDC, GLuint group);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryFrameCountNV(void *_context, HDC hDC, GLuint *count);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryMaxSwapGroupsNV(void *_context, HDC hDC, GLuint *maxGroups, GLuint *maxBarriers);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQuerySwapGroupNV(void *_context, HDC hDC, GLuint *group, GLuint *barrier);
+REGAL_DECL BOOL REGAL_CALL plugin_wglResetFrameCountNV(void *_context, HDC hDC);
 #endif
 
 /**
@@ -38867,8 +38867,8 @@ REGAL_DECL void REGAL_CALL wglFreeMemoryNV(void *pointer);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_VERTEX_ARRAY_RANGE
-REGAL_DECL void *REGAL_CALL plugin_wglAllocateMemoryNV(GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
-REGAL_DECL void REGAL_CALL plugin_wglFreeMemoryNV(void *pointer);
+REGAL_DECL void *REGAL_CALL plugin_wglAllocateMemoryNV(void *_context, GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority);
+REGAL_DECL void REGAL_CALL plugin_wglFreeMemoryNV(void *_context, void *pointer);
 #endif
 
 /**
@@ -38929,11 +38929,11 @@ REGAL_DECL UINT REGAL_CALL wglEnumerateVideoCaptureDevicesNV(HDC hDC, HVIDEOINPU
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_VIDEO_CAPTURE
-REGAL_DECL BOOL REGAL_CALL plugin_wglBindVideoCaptureDeviceNV(UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice);
-REGAL_DECL BOOL REGAL_CALL plugin_wglLockVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVICENV hDevice);
-REGAL_DECL BOOL REGAL_CALL plugin_wglQueryVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int *piValue);
-REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseVideoCaptureDeviceNV(HDC hDC, HVIDEOINPUTDEVICENV hDevice);
-REGAL_DECL UINT REGAL_CALL plugin_wglEnumerateVideoCaptureDevicesNV(HDC hDC, HVIDEOINPUTDEVICENV *phDeviceList);
+REGAL_DECL BOOL REGAL_CALL plugin_wglBindVideoCaptureDeviceNV(void *_context, UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice);
+REGAL_DECL BOOL REGAL_CALL plugin_wglLockVideoCaptureDeviceNV(void *_context, HDC hDC, HVIDEOINPUTDEVICENV hDevice);
+REGAL_DECL BOOL REGAL_CALL plugin_wglQueryVideoCaptureDeviceNV(void *_context, HDC hDC, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int *piValue);
+REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseVideoCaptureDeviceNV(void *_context, HDC hDC, HVIDEOINPUTDEVICENV hDevice);
+REGAL_DECL UINT REGAL_CALL plugin_wglEnumerateVideoCaptureDevicesNV(void *_context, HDC hDC, HVIDEOINPUTDEVICENV *phDeviceList);
 #endif
 
 /**
@@ -39008,12 +39008,12 @@ REGAL_DECL BOOL REGAL_CALL wglSendPbufferToVideoNV(HPBUFFERARB hPbuffer, int iBu
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_NV_VIDEO_OUTPUT
-REGAL_DECL BOOL REGAL_CALL plugin_wglBindVideoImageNV(HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetVideoDeviceNV(HDC hDC, int numDevices, HPVIDEODEV *hVideoDevice);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetVideoInfoNV(HPVIDEODEV hpVideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
-REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseVideoDeviceNV(HPVIDEODEV hVideoDevice);
-REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseVideoImageNV(HPBUFFERARB hPbuffer, int iVideoBuffer);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSendPbufferToVideoNV(HPBUFFERARB hPbuffer, int iBufferType, unsigned long *pulCounterPbuffer, BOOL bBlock);
+REGAL_DECL BOOL REGAL_CALL plugin_wglBindVideoImageNV(void *_context, HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetVideoDeviceNV(void *_context, HDC hDC, int numDevices, HPVIDEODEV *hVideoDevice);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetVideoInfoNV(void *_context, HPVIDEODEV hpVideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
+REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseVideoDeviceNV(void *_context, HPVIDEODEV hVideoDevice);
+REGAL_DECL BOOL REGAL_CALL plugin_wglReleaseVideoImageNV(void *_context, HPBUFFERARB hPbuffer, int iVideoBuffer);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSendPbufferToVideoNV(void *_context, HPBUFFERARB hPbuffer, int iBufferType, unsigned long *pulCounterPbuffer, BOOL bBlock);
 #endif
 
 /**
@@ -39072,12 +39072,12 @@ REGAL_DECL INT64 REGAL_CALL wglSwapLayerBuffersMscOML(HDC hDC, int fuPlanes, INT
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_OML_SYNC_CONTROL
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetMscRateOML(HDC hDC, INT32 *numerator, INT32 *denominator);
-REGAL_DECL BOOL REGAL_CALL plugin_wglGetSyncValuesOML(HDC hDC, INT64 *ust, INT64 *msc, INT64 *sbc);
-REGAL_DECL BOOL REGAL_CALL plugin_wglWaitForMscOML(HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 *ust, INT64 *msc, INT64 *sbc);
-REGAL_DECL BOOL REGAL_CALL plugin_wglWaitForSbcOML(HDC hDC, INT64 target_sbc, INT64 *ust, INT64 *msc, INT64 *sbc);
-REGAL_DECL INT64 REGAL_CALL plugin_wglSwapBuffersMscOML(HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder);
-REGAL_DECL INT64 REGAL_CALL plugin_wglSwapLayerBuffersMscOML(HDC hDC, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetMscRateOML(void *_context, HDC hDC, INT32 *numerator, INT32 *denominator);
+REGAL_DECL BOOL REGAL_CALL plugin_wglGetSyncValuesOML(void *_context, HDC hDC, INT64 *ust, INT64 *msc, INT64 *sbc);
+REGAL_DECL BOOL REGAL_CALL plugin_wglWaitForMscOML(void *_context, HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 *ust, INT64 *msc, INT64 *sbc);
+REGAL_DECL BOOL REGAL_CALL plugin_wglWaitForSbcOML(void *_context, HDC hDC, INT64 target_sbc, INT64 *ust, INT64 *msc, INT64 *sbc);
+REGAL_DECL INT64 REGAL_CALL plugin_wglSwapBuffersMscOML(void *_context, HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder);
+REGAL_DECL INT64 REGAL_CALL plugin_wglSwapLayerBuffersMscOML(void *_context, HDC hDC, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder);
 #endif
 
 /**
@@ -39178,26 +39178,26 @@ REGAL_DECL int REGAL_CALL wglSetLayerPaletteEntries(HDC hDC, int iLayerPlane, in
 #endif
 
 #ifndef REGAL_NO_PLUGIN_WGL_CORE
-REGAL_DECL BOOL REGAL_CALL plugin_wglCopyContext(HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDeleteContext(HGLRC hglrc);
-REGAL_DECL BOOL REGAL_CALL plugin_wglDescribeLayerPlane(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nBytes, LPLAYERPLANEDESCRIPTOR plpd);
-REGAL_DECL BOOL REGAL_CALL plugin_wglMakeCurrent(HDC hDC, HGLRC hglrc);
-REGAL_DECL BOOL REGAL_CALL plugin_wglRealizeLayerPalette(HDC hDC, int iLayerPlane, BOOL bRealize);
-REGAL_DECL BOOL REGAL_CALL plugin_wglShareLists(HGLRC hglrcShare, HGLRC hglrcSrc);
-REGAL_DECL BOOL REGAL_CALL plugin_wglSwapLayerBuffers(HDC hDC, UINT fuPlanes);
-REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontBitmapsA(HDC hDC, DWORD first, DWORD count, DWORD listBase);
-REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontBitmapsW(HDC hDC, DWORD first, DWORD count, DWORD listBase);
-REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontOutlinesA(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
-REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontOutlinesW(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
-REGAL_DECL DWORD REGAL_CALL plugin_wglSwapMultipleBuffers(UINT n, const WGLSWAP *ps);
-REGAL_DECL HDC REGAL_CALL plugin_wglGetCurrentDC(void);
-REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateContext(HDC hDC);
-REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateLayerContext(HDC hDC, int iLayerPlane);
-REGAL_DECL HGLRC REGAL_CALL plugin_wglGetCurrentContext(void);
-REGAL_DECL PROC REGAL_CALL plugin_wglGetDefaultProcAddress(LPCSTR lpszProc);
-REGAL_DECL PROC REGAL_CALL plugin_wglGetProcAddress(LPCSTR lpszProc);
-REGAL_DECL int REGAL_CALL plugin_wglGetLayerPaletteEntries(HDC hDC, int iLayerPlane, int iStart, int nEntries, COLORREF *pcr);
-REGAL_DECL int REGAL_CALL plugin_wglSetLayerPaletteEntries(HDC hDC, int iLayerPlane, int iStart, int nEntries, const COLORREF *pcr);
+REGAL_DECL BOOL REGAL_CALL plugin_wglCopyContext(void *_context, HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDeleteContext(void *_context, HGLRC hglrc);
+REGAL_DECL BOOL REGAL_CALL plugin_wglDescribeLayerPlane(void *_context, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nBytes, LPLAYERPLANEDESCRIPTOR plpd);
+REGAL_DECL BOOL REGAL_CALL plugin_wglMakeCurrent(void *_context, HDC hDC, HGLRC hglrc);
+REGAL_DECL BOOL REGAL_CALL plugin_wglRealizeLayerPalette(void *_context, HDC hDC, int iLayerPlane, BOOL bRealize);
+REGAL_DECL BOOL REGAL_CALL plugin_wglShareLists(void *_context, HGLRC hglrcShare, HGLRC hglrcSrc);
+REGAL_DECL BOOL REGAL_CALL plugin_wglSwapLayerBuffers(void *_context, HDC hDC, UINT fuPlanes);
+REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontBitmapsA(void *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase);
+REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontBitmapsW(void *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase);
+REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontOutlinesA(void *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+REGAL_DECL BOOL REGAL_CALL plugin_wglUseFontOutlinesW(void *_context, HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+REGAL_DECL DWORD REGAL_CALL plugin_wglSwapMultipleBuffers(void *_context, UINT n, const WGLSWAP *ps);
+REGAL_DECL HDC REGAL_CALL plugin_wglGetCurrentDC(void *_context);
+REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateContext(void *_context, HDC hDC);
+REGAL_DECL HGLRC REGAL_CALL plugin_wglCreateLayerContext(void *_context, HDC hDC, int iLayerPlane);
+REGAL_DECL HGLRC REGAL_CALL plugin_wglGetCurrentContext(void *_context);
+REGAL_DECL PROC REGAL_CALL plugin_wglGetDefaultProcAddress(void *_context, LPCSTR lpszProc);
+REGAL_DECL PROC REGAL_CALL plugin_wglGetProcAddress(void *_context, LPCSTR lpszProc);
+REGAL_DECL int REGAL_CALL plugin_wglGetLayerPaletteEntries(void *_context, HDC hDC, int iLayerPlane, int iStart, int nEntries, COLORREF *pcr);
+REGAL_DECL int REGAL_CALL plugin_wglSetLayerPaletteEntries(void *_context, HDC hDC, int iLayerPlane, int iStart, int nEntries, const COLORREF *pcr);
 #endif
 
 #endif /* REGAL_SYS_WGL_DECLARE_WGL */
@@ -39316,15 +39316,15 @@ REGAL_DECL void REGAL_CALL glXBlitContextFramebufferAMD(GLXContext dstCtx, GLint
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_AMD_GPU_ASSOCIATION
-REGAL_DECL Bool REGAL_CALL plugin_glXDeleteAssociatedContextAMD(GLXContext ctx);
-REGAL_DECL Bool REGAL_CALL plugin_glXMakeAssociatedContextCurrentAMD(GLXContext ctx);
-REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateAssociatedContextAMD(unsigned int id, GLXContext share_list);
-REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateAssociatedContextAttribsAMD(unsigned int id, GLXContext share_context, const int *attribList);
-REGAL_DECL GLXContext REGAL_CALL plugin_glXGetCurrentAssociatedContextAMD(void);
-REGAL_DECL int REGAL_CALL plugin_glXGetGPUInfoAMD(unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data);
-REGAL_DECL unsigned int REGAL_CALL plugin_glXGetContextGPUIDAMD(GLXContext ctx);
-REGAL_DECL unsigned int REGAL_CALL plugin_glXGetGPUIDsAMD(unsigned int maxCount, unsigned int *ids);
-REGAL_DECL void REGAL_CALL plugin_glXBlitContextFramebufferAMD(GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+REGAL_DECL Bool REGAL_CALL plugin_glXDeleteAssociatedContextAMD(void *_context, GLXContext ctx);
+REGAL_DECL Bool REGAL_CALL plugin_glXMakeAssociatedContextCurrentAMD(void *_context, GLXContext ctx);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateAssociatedContextAMD(void *_context, unsigned int id, GLXContext share_list);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateAssociatedContextAttribsAMD(void *_context, unsigned int id, GLXContext share_context, const int *attribList);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXGetCurrentAssociatedContextAMD(void *_context);
+REGAL_DECL int REGAL_CALL plugin_glXGetGPUInfoAMD(void *_context, unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data);
+REGAL_DECL unsigned int REGAL_CALL plugin_glXGetContextGPUIDAMD(void *_context, GLXContext ctx);
+REGAL_DECL unsigned int REGAL_CALL plugin_glXGetGPUIDsAMD(void *_context, unsigned int maxCount, unsigned int *ids);
+REGAL_DECL void REGAL_CALL plugin_glXBlitContextFramebufferAMD(void *_context, GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
 #endif
 
 /**
@@ -39376,7 +39376,7 @@ REGAL_DECL GLXContext REGAL_CALL glXCreateContextAttribsARB(Display *dpy, GLXFBC
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_ARB_CREATE_CONTEXT
-REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateContextAttribsARB(Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateContextAttribsARB(void *_context, Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list);
 #endif
 
 /**
@@ -39554,7 +39554,7 @@ REGAL_DECL __GLXextFuncPtr REGAL_CALL glXGetProcAddressARB(const GLubyte *procNa
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_ARB_GET_PROC_ADDRESS
-REGAL_DECL __GLXextFuncPtr REGAL_CALL plugin_glXGetProcAddressARB(const GLubyte *procName);
+REGAL_DECL __GLXextFuncPtr REGAL_CALL plugin_glXGetProcAddressARB(void *_context, const GLubyte *procName);
 #endif
 
 /**
@@ -39771,9 +39771,9 @@ REGAL_DECL void REGAL_CALL glXReleaseTexImageATI(Display *dpy, GLXPbuffer pbuf, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_ATI_RENDER_TEXTURE
-REGAL_DECL void REGAL_CALL plugin_glXBindTexImageATI(Display *dpy, GLXPbuffer pbuf, int buffer);
-REGAL_DECL void REGAL_CALL plugin_glXDrawableAttribATI(Display *dpy, GLXDrawable draw, const int *attrib_list);
-REGAL_DECL void REGAL_CALL plugin_glXReleaseTexImageATI(Display *dpy, GLXPbuffer pbuf, int buffer);
+REGAL_DECL void REGAL_CALL plugin_glXBindTexImageATI(void *_context, Display *dpy, GLXPbuffer pbuf, int buffer);
+REGAL_DECL void REGAL_CALL plugin_glXDrawableAttribATI(void *_context, Display *dpy, GLXDrawable draw, const int *attrib_list);
+REGAL_DECL void REGAL_CALL plugin_glXReleaseTexImageATI(void *_context, Display *dpy, GLXPbuffer pbuf, int buffer);
 #endif
 
 /**
@@ -39960,10 +39960,10 @@ REGAL_DECL void REGAL_CALL glXFreeContextEXT(Display *dpy, GLXContext context);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_EXT_IMPORT_CONTEXT
-REGAL_DECL GLXContext REGAL_CALL plugin_glXImportContextEXT(Display *dpy, GLXContextID contextID);
-REGAL_DECL GLXContextID REGAL_CALL plugin_glXGetContextIDEXT(const GLXContext context);
-REGAL_DECL int REGAL_CALL plugin_glXQueryContextInfoEXT(Display *dpy, GLXContext context, int attribute, int *value);
-REGAL_DECL void REGAL_CALL plugin_glXFreeContextEXT(Display *dpy, GLXContext context);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXImportContextEXT(void *_context, Display *dpy, GLXContextID contextID);
+REGAL_DECL GLXContextID REGAL_CALL plugin_glXGetContextIDEXT(void *_context, const GLXContext context);
+REGAL_DECL int REGAL_CALL plugin_glXQueryContextInfoEXT(void *_context, Display *dpy, GLXContext context, int attribute, int *value);
+REGAL_DECL void REGAL_CALL plugin_glXFreeContextEXT(void *_context, Display *dpy, GLXContext context);
 #endif
 
 /**
@@ -40012,7 +40012,7 @@ REGAL_DECL void REGAL_CALL glXSwapIntervalEXT(Display *dpy, GLXDrawable drawable
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_EXT_SWAP_CONTROL
-REGAL_DECL void REGAL_CALL plugin_glXSwapIntervalEXT(Display *dpy, GLXDrawable drawable, int interval);
+REGAL_DECL void REGAL_CALL plugin_glXSwapIntervalEXT(void *_context, Display *dpy, GLXDrawable drawable, int interval);
 #endif
 
 /**
@@ -40125,8 +40125,8 @@ REGAL_DECL void REGAL_CALL glXReleaseTexImageEXT(Display *display, GLXDrawable d
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_EXT_TEXTURE_FROM_PIXMAP
-REGAL_DECL void REGAL_CALL plugin_glXBindTexImageEXT(Display *display, GLXDrawable drawable, int buffer, const int *attrib_list);
-REGAL_DECL void REGAL_CALL plugin_glXReleaseTexImageEXT(Display *display, GLXDrawable drawable, int buffer);
+REGAL_DECL void REGAL_CALL plugin_glXBindTexImageEXT(void *_context, Display *display, GLXDrawable drawable, int buffer, const int *attrib_list);
+REGAL_DECL void REGAL_CALL plugin_glXReleaseTexImageEXT(void *_context, Display *display, GLXDrawable drawable, int buffer);
 #endif
 
 /**
@@ -40286,7 +40286,7 @@ REGAL_DECL unsigned int REGAL_CALL glXGetAGPOffsetMESA(const void *pointer);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_MESA_AGP_OFFSET
-REGAL_DECL unsigned int REGAL_CALL plugin_glXGetAGPOffsetMESA(const void *pointer);
+REGAL_DECL unsigned int REGAL_CALL plugin_glXGetAGPOffsetMESA(void *_context, const void *pointer);
 #endif
 
 /**
@@ -40330,7 +40330,7 @@ REGAL_DECL void REGAL_CALL glXCopySubBufferMESA(Display *dpy, GLXDrawable drawab
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_MESA_COPY_SUB_BUFFER
-REGAL_DECL void REGAL_CALL plugin_glXCopySubBufferMESA(Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
+REGAL_DECL void REGAL_CALL plugin_glXCopySubBufferMESA(void *_context, Display *dpy, GLXDrawable drawable, int x, int y, int width, int height);
 #endif
 
 /**
@@ -40374,7 +40374,7 @@ REGAL_DECL GLXPixmap REGAL_CALL glXCreateGLXPixmapMESA(Display *dpy, XVisualInfo
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_MESA_PIXMAP_COLORMAP
-REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreateGLXPixmapMESA(Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
+REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreateGLXPixmapMESA(void *_context, Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap);
 #endif
 
 /**
@@ -40418,7 +40418,7 @@ REGAL_DECL Bool REGAL_CALL glXReleaseBuffersMESA(Display *dpy, GLXDrawable d);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_MESA_RELEASE_BUFFERS
-REGAL_DECL Bool REGAL_CALL plugin_glXReleaseBuffersMESA(Display *dpy, GLXDrawable d);
+REGAL_DECL Bool REGAL_CALL plugin_glXReleaseBuffersMESA(void *_context, Display *dpy, GLXDrawable d);
 #endif
 
 /**
@@ -40467,7 +40467,7 @@ REGAL_DECL GLboolean REGAL_CALL glXSet3DfxModeMESA(GLint mode);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_MESA_SET_3DFX_MODE
-REGAL_DECL GLboolean REGAL_CALL plugin_glXSet3DfxModeMESA(GLint mode);
+REGAL_DECL GLboolean REGAL_CALL plugin_glXSet3DfxModeMESA(void *_context, GLint mode);
 #endif
 
 /**
@@ -40514,8 +40514,8 @@ REGAL_DECL int REGAL_CALL glXSwapIntervalMESA(unsigned int interval);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_MESA_SWAP_CONTROL
-REGAL_DECL int REGAL_CALL plugin_glXGetSwapIntervalMESA(void);
-REGAL_DECL int REGAL_CALL plugin_glXSwapIntervalMESA(unsigned int interval);
+REGAL_DECL int REGAL_CALL plugin_glXGetSwapIntervalMESA(void *_context);
+REGAL_DECL int REGAL_CALL plugin_glXSwapIntervalMESA(void *_context, unsigned int interval);
 #endif
 
 /**
@@ -40559,7 +40559,7 @@ REGAL_DECL void REGAL_CALL glXCopyImageSubDataNV(Display *dpy, GLXContext srcCtx
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_NV_COPY_IMAGE
-REGAL_DECL void REGAL_CALL plugin_glXCopyImageSubDataNV(Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
+REGAL_DECL void REGAL_CALL plugin_glXCopyImageSubDataNV(void *_context, Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth);
 #endif
 
 /**
@@ -40675,8 +40675,8 @@ REGAL_DECL unsigned int *REGAL_CALL glXEnumerateVideoDevicesNV(Display *dpy, int
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_NV_PRESENT_VIDEO
-REGAL_DECL int REGAL_CALL plugin_glXBindVideoDeviceNV(Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list);
-REGAL_DECL unsigned int *REGAL_CALL plugin_glXEnumerateVideoDevicesNV(Display *dpy, int screen, int *nelements);
+REGAL_DECL int REGAL_CALL plugin_glXBindVideoDeviceNV(void *_context, Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list);
+REGAL_DECL unsigned int *REGAL_CALL plugin_glXEnumerateVideoDevicesNV(void *_context, Display *dpy, int screen, int *nelements);
 #endif
 
 /**
@@ -40735,12 +40735,12 @@ REGAL_DECL Bool REGAL_CALL glXResetFrameCountNV(Display *dpy, int screen);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_NV_SWAP_GROUP
-REGAL_DECL Bool REGAL_CALL plugin_glXBindSwapBarrierNV(Display *dpy, GLuint group, GLuint barrier);
-REGAL_DECL Bool REGAL_CALL plugin_glXJoinSwapGroupNV(Display *dpy, GLXDrawable drawable, GLuint group);
-REGAL_DECL Bool REGAL_CALL plugin_glXQueryFrameCountNV(Display *dpy, int screen, GLuint *count);
-REGAL_DECL Bool REGAL_CALL plugin_glXQueryMaxSwapGroupsNV(Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers);
-REGAL_DECL Bool REGAL_CALL plugin_glXQuerySwapGroupNV(Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier);
-REGAL_DECL Bool REGAL_CALL plugin_glXResetFrameCountNV(Display *dpy, int screen);
+REGAL_DECL Bool REGAL_CALL plugin_glXBindSwapBarrierNV(void *_context, Display *dpy, GLuint group, GLuint barrier);
+REGAL_DECL Bool REGAL_CALL plugin_glXJoinSwapGroupNV(void *_context, Display *dpy, GLXDrawable drawable, GLuint group);
+REGAL_DECL Bool REGAL_CALL plugin_glXQueryFrameCountNV(void *_context, Display *dpy, int screen, GLuint *count);
+REGAL_DECL Bool REGAL_CALL plugin_glXQueryMaxSwapGroupsNV(void *_context, Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers);
+REGAL_DECL Bool REGAL_CALL plugin_glXQuerySwapGroupNV(void *_context, Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier);
+REGAL_DECL Bool REGAL_CALL plugin_glXResetFrameCountNV(void *_context, Display *dpy, int screen);
 #endif
 
 /**
@@ -40787,8 +40787,8 @@ REGAL_DECL void REGAL_CALL glXFreeMemoryNV(void *pointer);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_NV_VERTEX_ARRAY_RANGE
-REGAL_DECL void *REGAL_CALL plugin_glXAllocateMemoryNV(GLsizei size, GLfloat readFrequency, GLfloat writeFrequency, GLfloat priority);
-REGAL_DECL void REGAL_CALL plugin_glXFreeMemoryNV(void *pointer);
+REGAL_DECL void *REGAL_CALL plugin_glXAllocateMemoryNV(void *_context, GLsizei size, GLfloat readFrequency, GLfloat writeFrequency, GLfloat priority);
+REGAL_DECL void REGAL_CALL plugin_glXFreeMemoryNV(void *_context, void *pointer);
 #endif
 
 /**
@@ -40850,11 +40850,11 @@ REGAL_DECL void REGAL_CALL glXReleaseVideoCaptureDeviceNV(Display *dpy, GLXVideo
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_NV_VIDEO_CAPTURE
-REGAL_DECL GLXVideoCaptureDeviceNV *REGAL_CALL plugin_glXEnumerateVideoCaptureDevicesNV(Display *dpy, int screen, int *nelements);
-REGAL_DECL int REGAL_CALL plugin_glXBindVideoCaptureDeviceNV(Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
-REGAL_DECL int REGAL_CALL plugin_glXQueryVideoCaptureDeviceNV(Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value);
-REGAL_DECL void REGAL_CALL plugin_glXLockVideoCaptureDeviceNV(Display *dpy, GLXVideoCaptureDeviceNV device);
-REGAL_DECL void REGAL_CALL plugin_glXReleaseVideoCaptureDeviceNV(Display *dpy, GLXVideoCaptureDeviceNV device);
+REGAL_DECL GLXVideoCaptureDeviceNV *REGAL_CALL plugin_glXEnumerateVideoCaptureDevicesNV(void *_context, Display *dpy, int screen, int *nelements);
+REGAL_DECL int REGAL_CALL plugin_glXBindVideoCaptureDeviceNV(void *_context, Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device);
+REGAL_DECL int REGAL_CALL plugin_glXQueryVideoCaptureDeviceNV(void *_context, Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value);
+REGAL_DECL void REGAL_CALL plugin_glXLockVideoCaptureDeviceNV(void *_context, Display *dpy, GLXVideoCaptureDeviceNV device);
+REGAL_DECL void REGAL_CALL plugin_glXReleaseVideoCaptureDeviceNV(void *_context, Display *dpy, GLXVideoCaptureDeviceNV device);
 #endif
 
 /**
@@ -40926,12 +40926,12 @@ REGAL_DECL int REGAL_CALL glXSendPbufferToVideoNV(Display *dpy, GLXPbuffer pbuf,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_NV_VIDEO_OUTPUT
-REGAL_DECL int REGAL_CALL plugin_glXBindVideoImageNV(Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
-REGAL_DECL int REGAL_CALL plugin_glXGetVideoDeviceNV(Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
-REGAL_DECL int REGAL_CALL plugin_glXGetVideoInfoNV(Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
-REGAL_DECL int REGAL_CALL plugin_glXReleaseVideoDeviceNV(Display *dpy, int screen, GLXVideoDeviceNV VideoDevice);
-REGAL_DECL int REGAL_CALL plugin_glXReleaseVideoImageNV(Display *dpy, GLXPbuffer pbuf);
-REGAL_DECL int REGAL_CALL plugin_glXSendPbufferToVideoNV(Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock);
+REGAL_DECL int REGAL_CALL plugin_glXBindVideoImageNV(void *_context, Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer);
+REGAL_DECL int REGAL_CALL plugin_glXGetVideoDeviceNV(void *_context, Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice);
+REGAL_DECL int REGAL_CALL plugin_glXGetVideoInfoNV(void *_context, Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo);
+REGAL_DECL int REGAL_CALL plugin_glXReleaseVideoDeviceNV(void *_context, Display *dpy, int screen, GLXVideoDeviceNV VideoDevice);
+REGAL_DECL int REGAL_CALL plugin_glXReleaseVideoImageNV(void *_context, Display *dpy, GLXPbuffer pbuf);
+REGAL_DECL int REGAL_CALL plugin_glXSendPbufferToVideoNV(void *_context, Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock);
 #endif
 
 /**
@@ -41022,11 +41022,11 @@ REGAL_DECL int64_t REGAL_CALL glXSwapBuffersMscOML(Display *dpy, GLXDrawable dra
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_OML_SYNC_CONTROL
-REGAL_DECL Bool REGAL_CALL plugin_glXGetMscRateOML(Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
-REGAL_DECL Bool REGAL_CALL plugin_glXGetSyncValuesOML(Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
-REGAL_DECL Bool REGAL_CALL plugin_glXWaitForMscOML(Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
-REGAL_DECL Bool REGAL_CALL plugin_glXWaitForSbcOML(Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
-REGAL_DECL int64_t REGAL_CALL plugin_glXSwapBuffersMscOML(Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
+REGAL_DECL Bool REGAL_CALL plugin_glXGetMscRateOML(void *_context, Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator);
+REGAL_DECL Bool REGAL_CALL plugin_glXGetSyncValuesOML(void *_context, Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc);
+REGAL_DECL Bool REGAL_CALL plugin_glXWaitForMscOML(void *_context, Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc);
+REGAL_DECL Bool REGAL_CALL plugin_glXWaitForSbcOML(void *_context, Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc);
+REGAL_DECL int64_t REGAL_CALL plugin_glXSwapBuffersMscOML(void *_context, Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder);
 #endif
 
 /**
@@ -41237,12 +41237,12 @@ REGAL_DECL int REGAL_CALL glXGetFBConfigAttribSGIX(Display *dpy, GLXFBConfigSGIX
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGIX_FBCONFIG
-REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateContextWithConfigSGIX(Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
-REGAL_DECL GLXFBConfigSGIX *REGAL_CALL plugin_glXChooseFBConfigSGIX(Display *dpy, int screen, const int *attrib_list, int *nelements);
-REGAL_DECL GLXFBConfigSGIX REGAL_CALL plugin_glXGetFBConfigFromVisualSGIX(Display *dpy, XVisualInfo *vis);
-REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreateGLXPixmapWithConfigSGIX(Display *dpy, GLXFBConfig config, Pixmap pixmap);
-REGAL_DECL XVisualInfo *REGAL_CALL plugin_glXGetVisualFromFBConfigSGIX(Display *dpy, GLXFBConfig config);
-REGAL_DECL int REGAL_CALL plugin_glXGetFBConfigAttribSGIX(Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateContextWithConfigSGIX(void *_context, Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
+REGAL_DECL GLXFBConfigSGIX *REGAL_CALL plugin_glXChooseFBConfigSGIX(void *_context, Display *dpy, int screen, const int *attrib_list, int *nelements);
+REGAL_DECL GLXFBConfigSGIX REGAL_CALL plugin_glXGetFBConfigFromVisualSGIX(void *_context, Display *dpy, XVisualInfo *vis);
+REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreateGLXPixmapWithConfigSGIX(void *_context, Display *dpy, GLXFBConfig config, Pixmap pixmap);
+REGAL_DECL XVisualInfo *REGAL_CALL plugin_glXGetVisualFromFBConfigSGIX(void *_context, Display *dpy, GLXFBConfig config);
+REGAL_DECL int REGAL_CALL plugin_glXGetFBConfigAttribSGIX(void *_context, Display *dpy, GLXFBConfigSGIX config, int attribute, int *value);
 #endif
 
 /**
@@ -41367,11 +41367,11 @@ REGAL_DECL void REGAL_CALL glXSelectEventSGIX(Display *dpy, GLXDrawable drawable
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGIX_PBUFFER
-REGAL_DECL GLXPbuffer REGAL_CALL plugin_glXCreateGLXPbufferSGIX(Display *dpy, GLXFBConfig config, unsigned int width, unsigned int height, int *attrib_list);
-REGAL_DECL void REGAL_CALL plugin_glXDestroyGLXPbufferSGIX(Display *dpy, GLXPbuffer pbuf);
-REGAL_DECL void REGAL_CALL plugin_glXGetSelectedEventSGIX(Display *dpy, GLXDrawable drawable, unsigned long *mask);
-REGAL_DECL void REGAL_CALL plugin_glXQueryGLXPbufferSGIX(Display *dpy, GLXPbuffer pbuf, int attribute, unsigned int *value);
-REGAL_DECL void REGAL_CALL plugin_glXSelectEventSGIX(Display *dpy, GLXDrawable drawable, unsigned long mask);
+REGAL_DECL GLXPbuffer REGAL_CALL plugin_glXCreateGLXPbufferSGIX(void *_context, Display *dpy, GLXFBConfig config, unsigned int width, unsigned int height, int *attrib_list);
+REGAL_DECL void REGAL_CALL plugin_glXDestroyGLXPbufferSGIX(void *_context, Display *dpy, GLXPbuffer pbuf);
+REGAL_DECL void REGAL_CALL plugin_glXGetSelectedEventSGIX(void *_context, Display *dpy, GLXDrawable drawable, unsigned long *mask);
+REGAL_DECL void REGAL_CALL plugin_glXQueryGLXPbufferSGIX(void *_context, Display *dpy, GLXPbuffer pbuf, int attribute, unsigned int *value);
+REGAL_DECL void REGAL_CALL plugin_glXSelectEventSGIX(void *_context, Display *dpy, GLXDrawable drawable, unsigned long mask);
 #endif
 
 /**
@@ -41418,8 +41418,8 @@ REGAL_DECL void REGAL_CALL glXBindSwapBarrierSGIX(Display *dpy, GLXDrawable draw
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGIX_SWAP_BARRIER
-REGAL_DECL Bool REGAL_CALL plugin_glXQueryMaxSwapBarriersSGIX(Display *dpy, int screen, int *max);
-REGAL_DECL void REGAL_CALL plugin_glXBindSwapBarrierSGIX(Display *dpy, GLXDrawable drawable, int barrier);
+REGAL_DECL Bool REGAL_CALL plugin_glXQueryMaxSwapBarriersSGIX(void *_context, Display *dpy, int screen, int *max);
+REGAL_DECL void REGAL_CALL plugin_glXBindSwapBarrierSGIX(void *_context, Display *dpy, GLXDrawable drawable, int barrier);
 #endif
 
 /**
@@ -41463,7 +41463,7 @@ REGAL_DECL void REGAL_CALL glXJoinSwapGroupSGIX(Display *dpy, GLXDrawable drawab
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGIX_SWAP_GROUP
-REGAL_DECL void REGAL_CALL plugin_glXJoinSwapGroupSGIX(Display *dpy, GLXDrawable drawable, GLXDrawable member);
+REGAL_DECL void REGAL_CALL plugin_glXJoinSwapGroupSGIX(void *_context, Display *dpy, GLXDrawable drawable, GLXDrawable member);
 #endif
 
 /**
@@ -41524,11 +41524,11 @@ REGAL_DECL int REGAL_CALL glXQueryChannelRectSGIX(Display *display, int screen, 
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGIX_VIDEO_RESIZE
-REGAL_DECL int REGAL_CALL plugin_glXBindChannelToWindowSGIX(Display *display, int screen, int channel, Window window);
-REGAL_DECL int REGAL_CALL plugin_glXChannelRectSGIX(Display *display, int screen, int channel, int x, int y, int w, int h);
-REGAL_DECL int REGAL_CALL plugin_glXChannelRectSyncSGIX(Display *display, int screen, int channel, GLenum synctype);
-REGAL_DECL int REGAL_CALL plugin_glXQueryChannelDeltasSGIX(Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
-REGAL_DECL int REGAL_CALL plugin_glXQueryChannelRectSGIX(Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
+REGAL_DECL int REGAL_CALL plugin_glXBindChannelToWindowSGIX(void *_context, Display *display, int screen, int channel, Window window);
+REGAL_DECL int REGAL_CALL plugin_glXChannelRectSGIX(void *_context, Display *display, int screen, int channel, int x, int y, int w, int h);
+REGAL_DECL int REGAL_CALL plugin_glXChannelRectSyncSGIX(void *_context, Display *display, int screen, int channel, GLenum synctype);
+REGAL_DECL int REGAL_CALL plugin_glXQueryChannelDeltasSGIX(void *_context, Display *display, int screen, int channel, int *x, int *y, int *w, int *h);
+REGAL_DECL int REGAL_CALL plugin_glXQueryChannelRectSGIX(void *_context, Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh);
 #endif
 
 /**
@@ -41604,7 +41604,7 @@ REGAL_DECL void REGAL_CALL glXCushionSGI(Display *dpy, Window window, float cush
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGI_CUSHION
-REGAL_DECL void REGAL_CALL plugin_glXCushionSGI(Display *dpy, Window window, float cushion);
+REGAL_DECL void REGAL_CALL plugin_glXCushionSGI(void *_context, Display *dpy, Window window, float cushion);
 #endif
 
 /**
@@ -41651,8 +41651,8 @@ REGAL_DECL GLXDrawable REGAL_CALL glXGetCurrentReadDrawableSGI(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGI_MAKE_CURRENT_READ
-REGAL_DECL Bool REGAL_CALL plugin_glXMakeCurrentReadSGI(Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-REGAL_DECL GLXDrawable REGAL_CALL plugin_glXGetCurrentReadDrawableSGI(void);
+REGAL_DECL Bool REGAL_CALL plugin_glXMakeCurrentReadSGI(void *_context, Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+REGAL_DECL GLXDrawable REGAL_CALL plugin_glXGetCurrentReadDrawableSGI(void *_context);
 #endif
 
 /**
@@ -41696,7 +41696,7 @@ REGAL_DECL int REGAL_CALL glXSwapIntervalSGI(int interval);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGI_SWAP_CONTROL
-REGAL_DECL int REGAL_CALL plugin_glXSwapIntervalSGI(int interval);
+REGAL_DECL int REGAL_CALL plugin_glXSwapIntervalSGI(void *_context, int interval);
 #endif
 
 /**
@@ -41743,8 +41743,8 @@ REGAL_DECL int REGAL_CALL glXWaitVideoSyncSGI(int divisor, int remainder, unsign
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SGI_VIDEO_SYNC
-REGAL_DECL int REGAL_CALL plugin_glXGetVideoSyncSGI(unsigned int *count);
-REGAL_DECL int REGAL_CALL plugin_glXWaitVideoSyncSGI(int divisor, int remainder, unsigned int *count);
+REGAL_DECL int REGAL_CALL plugin_glXGetVideoSyncSGI(void *_context, unsigned int *count);
+REGAL_DECL int REGAL_CALL plugin_glXWaitVideoSyncSGI(void *_context, int divisor, int remainder, unsigned int *count);
 #endif
 
 /**
@@ -41788,7 +41788,7 @@ REGAL_DECL Status REGAL_CALL glXGetTransparentIndexSUN(Display *dpy, Window over
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SUN_GET_TRANSPARENT_INDEX
-REGAL_DECL Status REGAL_CALL plugin_glXGetTransparentIndexSUN(Display *dpy, Window overlay, Window underlay, unsigned long *pTransparentIndex);
+REGAL_DECL Status REGAL_CALL plugin_glXGetTransparentIndexSUN(void *_context, Display *dpy, Window overlay, Window underlay, unsigned long *pTransparentIndex);
 #endif
 
 /**
@@ -41840,8 +41840,8 @@ REGAL_DECL int REGAL_CALL glXVideoResizeSUN(Display *display, GLXDrawable window
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_SUN_VIDEO_RESIZE
-REGAL_DECL int REGAL_CALL plugin_glXGetVideoResizeSUN(Display *display, GLXDrawable window, float *factor);
-REGAL_DECL int REGAL_CALL plugin_glXVideoResizeSUN(Display *display, GLXDrawable window, float factor);
+REGAL_DECL int REGAL_CALL plugin_glXGetVideoResizeSUN(void *_context, Display *display, GLXDrawable window, float *factor);
+REGAL_DECL int REGAL_CALL plugin_glXVideoResizeSUN(void *_context, Display *display, GLXDrawable window, float factor);
 #endif
 
 /**
@@ -41960,23 +41960,23 @@ REGAL_DECL void REGAL_CALL glXWaitX(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_VERSION_1_0
-REGAL_DECL Bool REGAL_CALL plugin_glXIsDirect(Display *dpy, GLXContext ctx);
-REGAL_DECL Bool REGAL_CALL plugin_glXMakeCurrent(Display *dpy, GLXDrawable drawable, GLXContext ctx);
-REGAL_DECL Bool REGAL_CALL plugin_glXQueryExtension(Display *dpy, int *errorBase, int *eventBase);
-REGAL_DECL Bool REGAL_CALL plugin_glXQueryVersion(Display *dpy, int *major, int *minor);
-REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateContext(Display *dpy, XVisualInfo *vis, GLXContext shareList, Bool direct);
-REGAL_DECL GLXContext REGAL_CALL plugin_glXGetCurrentContext(void);
-REGAL_DECL GLXDrawable REGAL_CALL plugin_glXGetCurrentDrawable(void);
-REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreateGLXPixmap(Display *dpy, XVisualInfo *vis, Pixmap pixmap);
-REGAL_DECL XVisualInfo *REGAL_CALL plugin_glXChooseVisual(Display *dpy, int screen, int *attribList);
-REGAL_DECL int REGAL_CALL plugin_glXGetConfig(Display *dpy, XVisualInfo *vis, int attrib, int *value);
-REGAL_DECL void REGAL_CALL plugin_glXCopyContext(Display *dpy, GLXContext src, GLXContext dst, unsigned long mask);
-REGAL_DECL void REGAL_CALL plugin_glXDestroyContext(Display *dpy, GLXContext ctx);
-REGAL_DECL void REGAL_CALL plugin_glXDestroyGLXPixmap(Display *dpy, GLXPixmap pix);
-REGAL_DECL void REGAL_CALL plugin_glXSwapBuffers(Display *dpy, GLXDrawable drawable);
-REGAL_DECL void REGAL_CALL plugin_glXUseXFont(Font font, int first, int count, int listBase);
-REGAL_DECL void REGAL_CALL plugin_glXWaitGL(void);
-REGAL_DECL void REGAL_CALL plugin_glXWaitX(void);
+REGAL_DECL Bool REGAL_CALL plugin_glXIsDirect(void *_context, Display *dpy, GLXContext ctx);
+REGAL_DECL Bool REGAL_CALL plugin_glXMakeCurrent(void *_context, Display *dpy, GLXDrawable drawable, GLXContext ctx);
+REGAL_DECL Bool REGAL_CALL plugin_glXQueryExtension(void *_context, Display *dpy, int *errorBase, int *eventBase);
+REGAL_DECL Bool REGAL_CALL plugin_glXQueryVersion(void *_context, Display *dpy, int *major, int *minor);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateContext(void *_context, Display *dpy, XVisualInfo *vis, GLXContext shareList, Bool direct);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXGetCurrentContext(void *_context);
+REGAL_DECL GLXDrawable REGAL_CALL plugin_glXGetCurrentDrawable(void *_context);
+REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreateGLXPixmap(void *_context, Display *dpy, XVisualInfo *vis, Pixmap pixmap);
+REGAL_DECL XVisualInfo *REGAL_CALL plugin_glXChooseVisual(void *_context, Display *dpy, int screen, int *attribList);
+REGAL_DECL int REGAL_CALL plugin_glXGetConfig(void *_context, Display *dpy, XVisualInfo *vis, int attrib, int *value);
+REGAL_DECL void REGAL_CALL plugin_glXCopyContext(void *_context, Display *dpy, GLXContext src, GLXContext dst, unsigned long mask);
+REGAL_DECL void REGAL_CALL plugin_glXDestroyContext(void *_context, Display *dpy, GLXContext ctx);
+REGAL_DECL void REGAL_CALL plugin_glXDestroyGLXPixmap(void *_context, Display *dpy, GLXPixmap pix);
+REGAL_DECL void REGAL_CALL plugin_glXSwapBuffers(void *_context, Display *dpy, GLXDrawable drawable);
+REGAL_DECL void REGAL_CALL plugin_glXUseXFont(void *_context, Font font, int first, int count, int listBase);
+REGAL_DECL void REGAL_CALL plugin_glXWaitGL(void *_context);
+REGAL_DECL void REGAL_CALL plugin_glXWaitX(void *_context);
 #endif
 
 /**
@@ -42032,9 +42032,9 @@ REGAL_DECL const char *REGAL_CALL glXQueryServerString(Display *dpy, int screen,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_VERSION_1_1
-REGAL_DECL const char *REGAL_CALL plugin_glXGetClientString(Display *dpy, int name);
-REGAL_DECL const char *REGAL_CALL plugin_glXQueryExtensionsString(Display *dpy, int screen);
-REGAL_DECL const char *REGAL_CALL plugin_glXQueryServerString(Display *dpy, int screen, int name);
+REGAL_DECL const char *REGAL_CALL plugin_glXGetClientString(void *_context, Display *dpy, int name);
+REGAL_DECL const char *REGAL_CALL plugin_glXQueryExtensionsString(void *_context, Display *dpy, int screen);
+REGAL_DECL const char *REGAL_CALL plugin_glXQueryServerString(void *_context, Display *dpy, int screen, int name);
 #endif
 
 /**
@@ -42078,7 +42078,7 @@ REGAL_DECL Display *REGAL_CALL glXGetCurrentDisplay(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_VERSION_1_2
-REGAL_DECL Display *REGAL_CALL plugin_glXGetCurrentDisplay(void);
+REGAL_DECL Display *REGAL_CALL plugin_glXGetCurrentDisplay(void *_context);
 #endif
 
 /**
@@ -42229,23 +42229,23 @@ REGAL_DECL void REGAL_CALL glXSelectEvent(Display *dpy, GLXDrawable draw, unsign
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_VERSION_1_3
-REGAL_DECL Bool REGAL_CALL plugin_glXMakeContextCurrent(Display *display, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
-REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateNewContext(Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
-REGAL_DECL GLXDrawable REGAL_CALL plugin_glXGetCurrentReadDrawable(void);
-REGAL_DECL GLXFBConfig *REGAL_CALL plugin_glXChooseFBConfig(Display *dpy, int screen, const int *attrib_list, int *nelements);
-REGAL_DECL GLXFBConfig *REGAL_CALL plugin_glXGetFBConfigs(Display *dpy, int screen, int *nelements);
-REGAL_DECL GLXPbuffer REGAL_CALL plugin_glXCreatePbuffer(Display *dpy, GLXFBConfig config, const int *attrib_list);
-REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreatePixmap(Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
-REGAL_DECL GLXWindow REGAL_CALL plugin_glXCreateWindow(Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
-REGAL_DECL XVisualInfo *REGAL_CALL plugin_glXGetVisualFromFBConfig(Display *dpy, GLXFBConfig config);
-REGAL_DECL int REGAL_CALL plugin_glXGetFBConfigAttrib(Display *dpy, GLXFBConfig config, int attribute, int *value);
-REGAL_DECL int REGAL_CALL plugin_glXQueryContext(Display *dpy, GLXContext ctx, int attribute, int *value);
-REGAL_DECL void REGAL_CALL plugin_glXDestroyPbuffer(Display *dpy, GLXPbuffer pbuf);
-REGAL_DECL void REGAL_CALL plugin_glXDestroyPixmap(Display *dpy, GLXPixmap pixmap);
-REGAL_DECL void REGAL_CALL plugin_glXDestroyWindow(Display *dpy, GLXWindow win);
-REGAL_DECL void REGAL_CALL plugin_glXGetSelectedEvent(Display *dpy, GLXDrawable draw, unsigned long *event_mask);
-REGAL_DECL void REGAL_CALL plugin_glXQueryDrawable(Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
-REGAL_DECL void REGAL_CALL plugin_glXSelectEvent(Display *dpy, GLXDrawable draw, unsigned long event_mask);
+REGAL_DECL Bool REGAL_CALL plugin_glXMakeContextCurrent(void *_context, Display *display, GLXDrawable draw, GLXDrawable read, GLXContext ctx);
+REGAL_DECL GLXContext REGAL_CALL plugin_glXCreateNewContext(void *_context, Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct);
+REGAL_DECL GLXDrawable REGAL_CALL plugin_glXGetCurrentReadDrawable(void *_context);
+REGAL_DECL GLXFBConfig *REGAL_CALL plugin_glXChooseFBConfig(void *_context, Display *dpy, int screen, const int *attrib_list, int *nelements);
+REGAL_DECL GLXFBConfig *REGAL_CALL plugin_glXGetFBConfigs(void *_context, Display *dpy, int screen, int *nelements);
+REGAL_DECL GLXPbuffer REGAL_CALL plugin_glXCreatePbuffer(void *_context, Display *dpy, GLXFBConfig config, const int *attrib_list);
+REGAL_DECL GLXPixmap REGAL_CALL plugin_glXCreatePixmap(void *_context, Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list);
+REGAL_DECL GLXWindow REGAL_CALL plugin_glXCreateWindow(void *_context, Display *dpy, GLXFBConfig config, Window win, const int *attrib_list);
+REGAL_DECL XVisualInfo *REGAL_CALL plugin_glXGetVisualFromFBConfig(void *_context, Display *dpy, GLXFBConfig config);
+REGAL_DECL int REGAL_CALL plugin_glXGetFBConfigAttrib(void *_context, Display *dpy, GLXFBConfig config, int attribute, int *value);
+REGAL_DECL int REGAL_CALL plugin_glXQueryContext(void *_context, Display *dpy, GLXContext ctx, int attribute, int *value);
+REGAL_DECL void REGAL_CALL plugin_glXDestroyPbuffer(void *_context, Display *dpy, GLXPbuffer pbuf);
+REGAL_DECL void REGAL_CALL plugin_glXDestroyPixmap(void *_context, Display *dpy, GLXPixmap pixmap);
+REGAL_DECL void REGAL_CALL plugin_glXDestroyWindow(void *_context, Display *dpy, GLXWindow win);
+REGAL_DECL void REGAL_CALL plugin_glXGetSelectedEvent(void *_context, Display *dpy, GLXDrawable draw, unsigned long *event_mask);
+REGAL_DECL void REGAL_CALL plugin_glXQueryDrawable(void *_context, Display *dpy, GLXDrawable draw, int attribute, unsigned int *value);
+REGAL_DECL void REGAL_CALL plugin_glXSelectEvent(void *_context, Display *dpy, GLXDrawable draw, unsigned long event_mask);
 #endif
 
 /**
@@ -42294,7 +42294,7 @@ REGAL_DECL __GLXextFuncPtr REGAL_CALL glXGetProcAddress(const GLubyte *procName)
 #endif
 
 #ifndef REGAL_NO_PLUGIN_GLX_VERSION_1_4
-REGAL_DECL __GLXextFuncPtr REGAL_CALL plugin_glXGetProcAddress(const GLubyte *procName);
+REGAL_DECL __GLXextFuncPtr REGAL_CALL plugin_glXGetProcAddress(void *_context, const GLubyte *procName);
 #endif
 
 #endif /* REGAL_SYS_GLX */
@@ -42462,31 +42462,31 @@ REGAL_DECL void REGAL_CALL CGLGetVersion(GLint *majorvers, GLint *minorvers);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_CGL_VERSION_1_0
-REGAL_DECL CGLError REGAL_CALL plugin_CGLChoosePixelFormat(const CGLPixelFormatAttribute *attribs, CGLPixelFormatObj *pix, GLint *npix);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLClearDrawable(CGLContextObj ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLCopyContext(CGLContextObj src, CGLContextObj dst, GLbitfield mask);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLCreateContext(CGLPixelFormatObj pix, CGLContextObj share, CGLContextObj *ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDescribePixelFormat(CGLPixelFormatObj pix, GLint pix_num, CGLPixelFormatAttribute attrib, GLint *value);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDescribeRenderer(CGLRendererInfoObj rend, GLint rend_num, CGLRendererProperty prop, GLint *value);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyContext(CGLContextObj ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyPixelFormat(CGLPixelFormatObj pix);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyRendererInfo(CGLRendererInfoObj rend);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDisable(CGLContextObj ctx, CGLContextEnable pname);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLEnable(CGLContextObj ctx, CGLContextEnable pname);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLFlushDrawable(CGLContextObj ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLGetOffScreen(CGLContextObj ctx, GLsizei *width, GLsizei *height, GLsizei *rowbytes, void **baseaddr);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLGetOption(CGLGlobalOption pname, GLint *param);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLGetParameter(CGLContextObj ctx, CGLContextParameter pname, GLint *params);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLGetVirtualScreen(CGLContextObj ctx, GLint *screen);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLIsEnabled(CGLContextObj ctx, CGLContextEnable pname, GLint *enable);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLQueryRendererInfo(GLuint display_mask, CGLRendererInfoObj *rend, GLint *nrend);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetFullScreen(CGLContextObj ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetOffScreen(CGLContextObj ctx, GLsizei width, GLsizei height, GLsizei rowbytes, void *baseaddr);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetOption(CGLGlobalOption pname, GLint param);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetParameter(CGLContextObj ctx, CGLContextParameter pname, const GLint *params);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetVirtualScreen(CGLContextObj ctx, GLint screen);
-REGAL_DECL const char *REGAL_CALL plugin_CGLErrorString(CGLError error);
-REGAL_DECL void REGAL_CALL plugin_CGLGetVersion(GLint *majorvers, GLint *minorvers);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLChoosePixelFormat(void *_context, const CGLPixelFormatAttribute *attribs, CGLPixelFormatObj *pix, GLint *npix);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLClearDrawable(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLCopyContext(void *_context, CGLContextObj src, CGLContextObj dst, GLbitfield mask);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLCreateContext(void *_context, CGLPixelFormatObj pix, CGLContextObj share, CGLContextObj *ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDescribePixelFormat(void *_context, CGLPixelFormatObj pix, GLint pix_num, CGLPixelFormatAttribute attrib, GLint *value);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDescribeRenderer(void *_context, CGLRendererInfoObj rend, GLint rend_num, CGLRendererProperty prop, GLint *value);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyContext(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyPixelFormat(void *_context, CGLPixelFormatObj pix);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyRendererInfo(void *_context, CGLRendererInfoObj rend);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDisable(void *_context, CGLContextObj ctx, CGLContextEnable pname);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLEnable(void *_context, CGLContextObj ctx, CGLContextEnable pname);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLFlushDrawable(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLGetOffScreen(void *_context, CGLContextObj ctx, GLsizei *width, GLsizei *height, GLsizei *rowbytes, void **baseaddr);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLGetOption(void *_context, CGLGlobalOption pname, GLint *param);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLGetParameter(void *_context, CGLContextObj ctx, CGLContextParameter pname, GLint *params);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLGetVirtualScreen(void *_context, CGLContextObj ctx, GLint *screen);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLIsEnabled(void *_context, CGLContextObj ctx, CGLContextEnable pname, GLint *enable);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLQueryRendererInfo(void *_context, GLuint display_mask, CGLRendererInfoObj *rend, GLint *nrend);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetFullScreen(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetOffScreen(void *_context, CGLContextObj ctx, GLsizei width, GLsizei height, GLsizei rowbytes, void *baseaddr);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetOption(void *_context, CGLGlobalOption pname, GLint param);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetParameter(void *_context, CGLContextObj ctx, CGLContextParameter pname, const GLint *params);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetVirtualScreen(void *_context, CGLContextObj ctx, GLint screen);
+REGAL_DECL const char *REGAL_CALL plugin_CGLErrorString(void *_context, CGLError error);
+REGAL_DECL void REGAL_CALL plugin_CGLGetVersion(void *_context, GLint *majorvers, GLint *minorvers);
 #endif
 
 /**
@@ -42545,12 +42545,12 @@ REGAL_DECL CGLError REGAL_CALL CGLTexImagePBuffer(CGLContextObj ctx, CGLPBufferO
 #endif
 
 #ifndef REGAL_NO_PLUGIN_CGL_VERSION_1_1
-REGAL_DECL CGLError REGAL_CALL plugin_CGLCreatePBuffer(GLsizei width, GLsizei height, GLenum target, GLenum internalFormat, GLint max_level, CGLPBufferObj *pbuffer);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDescribePBuffer(CGLPBufferObj pbuffer, GLsizei *width, GLsizei *height, GLenum *target, GLenum *internalFormat, GLint *mipmap);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyPBuffer(CGLPBufferObj pbuffer);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLGetPBuffer(CGLContextObj ctx, CGLPBufferObj *pbuffer, GLenum *face, GLint *level, GLint *screen);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetPBuffer(CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum face, GLint level, GLint screen);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLTexImagePBuffer(CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum source);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLCreatePBuffer(void *_context, GLsizei width, GLsizei height, GLenum target, GLenum internalFormat, GLint max_level, CGLPBufferObj *pbuffer);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDescribePBuffer(void *_context, CGLPBufferObj pbuffer, GLsizei *width, GLsizei *height, GLenum *target, GLenum *internalFormat, GLint *mipmap);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLDestroyPBuffer(void *_context, CGLPBufferObj pbuffer);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLGetPBuffer(void *_context, CGLContextObj ctx, CGLPBufferObj *pbuffer, GLenum *face, GLint *level, GLint *screen);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetPBuffer(void *_context, CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum face, GLint level, GLint screen);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLTexImagePBuffer(void *_context, CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum source);
 #endif
 
 /**
@@ -42633,20 +42633,20 @@ REGAL_DECL void REGAL_CALL CGLReleasePixelFormat(CGLPixelFormatObj pix);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_CGL_VERSION_1_2
-REGAL_DECL CGLContextObj REGAL_CALL plugin_CGLRetainContext(CGLContextObj ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLGetGlobalOption(CGLGlobalOption pname, GLint *params);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLLockContext(CGLContextObj ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetGlobalOption(CGLGlobalOption pname, const GLint *params);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLUnlockContext(CGLContextObj ctx);
-REGAL_DECL CGLPBufferObj REGAL_CALL plugin_CGLRetainPBuffer(CGLPBufferObj pbuffer);
-REGAL_DECL CGLPixelFormatObj REGAL_CALL plugin_CGLGetPixelFormat(CGLContextObj ctx);
-REGAL_DECL CGLPixelFormatObj REGAL_CALL plugin_CGLRetainPixelFormat(CGLPixelFormatObj pix);
-REGAL_DECL GLuint REGAL_CALL plugin_CGLGetContextRetainCount(CGLContextObj ctx);
-REGAL_DECL GLuint REGAL_CALL plugin_CGLGetPBufferRetainCount(CGLPBufferObj pbuffer);
-REGAL_DECL GLuint REGAL_CALL plugin_CGLGetPixelFormatRetainCount(CGLPixelFormatObj pix);
-REGAL_DECL void REGAL_CALL plugin_CGLReleaseContext(CGLContextObj ctx);
-REGAL_DECL void REGAL_CALL plugin_CGLReleasePBuffer(CGLPBufferObj pbuffer);
-REGAL_DECL void REGAL_CALL plugin_CGLReleasePixelFormat(CGLPixelFormatObj pix);
+REGAL_DECL CGLContextObj REGAL_CALL plugin_CGLRetainContext(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLGetGlobalOption(void *_context, CGLGlobalOption pname, GLint *params);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLLockContext(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetGlobalOption(void *_context, CGLGlobalOption pname, const GLint *params);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLUnlockContext(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLPBufferObj REGAL_CALL plugin_CGLRetainPBuffer(void *_context, CGLPBufferObj pbuffer);
+REGAL_DECL CGLPixelFormatObj REGAL_CALL plugin_CGLGetPixelFormat(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLPixelFormatObj REGAL_CALL plugin_CGLRetainPixelFormat(void *_context, CGLPixelFormatObj pix);
+REGAL_DECL GLuint REGAL_CALL plugin_CGLGetContextRetainCount(void *_context, CGLContextObj ctx);
+REGAL_DECL GLuint REGAL_CALL plugin_CGLGetPBufferRetainCount(void *_context, CGLPBufferObj pbuffer);
+REGAL_DECL GLuint REGAL_CALL plugin_CGLGetPixelFormatRetainCount(void *_context, CGLPixelFormatObj pix);
+REGAL_DECL void REGAL_CALL plugin_CGLReleaseContext(void *_context, CGLContextObj ctx);
+REGAL_DECL void REGAL_CALL plugin_CGLReleasePBuffer(void *_context, CGLPBufferObj pbuffer);
+REGAL_DECL void REGAL_CALL plugin_CGLReleasePixelFormat(void *_context, CGLPixelFormatObj pix);
 #endif
 
 /**
@@ -42708,13 +42708,13 @@ REGAL_DECL CGLShareGroupObj REGAL_CALL CGLGetShareGroup(CGLContextObj ctx);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_CGL_VERSION_1_3
-REGAL_DECL CGLContextObj REGAL_CALL plugin_CGLGetCurrentContext(void);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLGetSurface(CGLContextObj ctx, CGSConnectionID *conn, CGSWindowID *win, CGSSurfaceID *srf);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetCurrentContext(CGLContextObj ctx);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLSetSurface(CGLContextObj ctx, CGSConnectionID conn, CGSWindowID win, CGSSurfaceID srf);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLTexImageIOSurface2D(CGLContextObj ctx, GLenum target, GLenum internal_format, GLsizei width, GLsizei height, GLenum format, GLenum type, IOSurfaceRef ioSurface, GLuint plane);
-REGAL_DECL CGLError REGAL_CALL plugin_CGLUpdateContext(CGLContextObj ctx);
-REGAL_DECL CGLShareGroupObj REGAL_CALL plugin_CGLGetShareGroup(CGLContextObj ctx);
+REGAL_DECL CGLContextObj REGAL_CALL plugin_CGLGetCurrentContext(void *_context);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLGetSurface(void *_context, CGLContextObj ctx, CGSConnectionID *conn, CGSWindowID *win, CGSSurfaceID *srf);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetCurrentContext(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLSetSurface(void *_context, CGLContextObj ctx, CGSConnectionID conn, CGSWindowID win, CGSSurfaceID srf);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLTexImageIOSurface2D(void *_context, CGLContextObj ctx, GLenum target, GLenum internal_format, GLsizei width, GLsizei height, GLenum format, GLenum type, IOSurfaceRef ioSurface, GLuint plane);
+REGAL_DECL CGLError REGAL_CALL plugin_CGLUpdateContext(void *_context, CGLContextObj ctx);
+REGAL_DECL CGLShareGroupObj REGAL_CALL plugin_CGLGetShareGroup(void *_context, CGLContextObj ctx);
 #endif
 
 #endif /* REGAL_SYS_OSX */
@@ -42762,7 +42762,7 @@ REGAL_DECL EGLBoolean REGAL_CALL eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_ANGLE_QUERY_SURFACE_POINTER
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglQuerySurfacePointerANGLE(EGLDisplay dpy, EGLSurface surface, EGLint attribute, GLvoid **value);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglQuerySurfacePointerANGLE(void *_context, EGLDisplay dpy, EGLSurface surface, EGLint attribute, GLvoid **value);
 #endif
 
 /**
@@ -43062,10 +43062,10 @@ REGAL_DECL EGLint REGAL_CALL eglClientWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLs
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_KHR_FENCE_SYNC
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroySyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetSyncAttribKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint attribute, EGLint *value);
-REGAL_DECL EGLSyncKHR REGAL_CALL plugin_eglCreateSyncKHR(EGLDisplay dpy, EGLenum type, const EGLint *attrib_list);
-REGAL_DECL EGLint REGAL_CALL plugin_eglClientWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags, EGLTimeKHR timeout);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroySyncKHR(void *_context, EGLDisplay dpy, EGLSyncKHR GLsync);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetSyncAttribKHR(void *_context, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint attribute, EGLint *value);
+REGAL_DECL EGLSyncKHR REGAL_CALL plugin_eglCreateSyncKHR(void *_context, EGLDisplay dpy, EGLenum type, const EGLint *attrib_list);
+REGAL_DECL EGLint REGAL_CALL plugin_eglClientWaitSyncKHR(void *_context, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags, EGLTimeKHR timeout);
 #endif
 
 /**
@@ -43158,8 +43158,8 @@ REGAL_DECL EGLImageKHR REGAL_CALL eglCreateImageKHR(EGLDisplay dpy, EGLContext c
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_KHR_IMAGE_BASE
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroyImageKHR(EGLDisplay dpy, EGLImageKHR image);
-REGAL_DECL EGLImageKHR REGAL_CALL plugin_eglCreateImageKHR(EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroyImageKHR(void *_context, EGLDisplay dpy, EGLImageKHR image);
+REGAL_DECL EGLImageKHR REGAL_CALL plugin_eglCreateImageKHR(void *_context, EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list);
 #endif
 
 /**
@@ -43238,8 +43238,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglUnlockSurfaceKHR(EGLDisplay display, EGLSurf
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_KHR_LOCK_SURFACE
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglLockSurfaceKHR(EGLDisplay display, EGLSurface surface, const EGLint *attrib_list);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglUnlockSurfaceKHR(EGLDisplay display, EGLSurface surface);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglLockSurfaceKHR(void *_context, EGLDisplay display, EGLSurface surface, const EGLint *attrib_list);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglUnlockSurfaceKHR(void *_context, EGLDisplay display, EGLSurface surface);
 #endif
 
 /**
@@ -43421,9 +43421,9 @@ REGAL_DECL EGLBoolean REGAL_CALL eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGL
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_KHR_STREAM_CONSUMER_GLTEXTURE
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglStreamConsumerAcquireKHR(EGLDisplay dpy, EGLStreamKHR stream);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglStreamConsumerGLTextureExternalKHR(EGLDisplay dpy, EGLStreamKHR stream);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglStreamConsumerReleaseKHR(EGLDisplay dpy, EGLStreamKHR stream);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglStreamConsumerAcquireKHR(void *_context, EGLDisplay dpy, EGLStreamKHR stream);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglStreamConsumerGLTextureExternalKHR(void *_context, EGLDisplay dpy, EGLStreamKHR stream);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglStreamConsumerReleaseKHR(void *_context, EGLDisplay dpy, EGLStreamKHR stream);
 #endif
 
 /**
@@ -43470,8 +43470,8 @@ REGAL_DECL EGLStreamKHR REGAL_CALL eglCreateStreamFromFileDescriptorKHR(EGLDispl
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_KHR_STREAM_CROSS_PROCESS_FD
-REGAL_DECL EGLNativeFileDescriptorKHR REGAL_CALL plugin_eglGetStreamFileDescriptorKHR(EGLDisplay dpy, EGLStreamKHR stream);
-REGAL_DECL EGLStreamKHR REGAL_CALL plugin_eglCreateStreamFromFileDescriptorKHR(EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor);
+REGAL_DECL EGLNativeFileDescriptorKHR REGAL_CALL plugin_eglGetStreamFileDescriptorKHR(void *_context, EGLDisplay dpy, EGLStreamKHR stream);
+REGAL_DECL EGLStreamKHR REGAL_CALL plugin_eglCreateStreamFromFileDescriptorKHR(void *_context, EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor);
 #endif
 
 /**
@@ -43554,7 +43554,7 @@ REGAL_DECL EGLSurface REGAL_CALL eglCreateStreamProducerSurfaceKHR(EGLDisplay dp
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_KHR_STREAM_PRODUCER_EGLSURFACE
-REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreateStreamProducerSurfaceKHR(EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint *attrib_list);
+REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreateStreamProducerSurfaceKHR(void *_context, EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint *attrib_list);
 #endif
 
 /**
@@ -43630,7 +43630,7 @@ REGAL_DECL EGLint REGAL_CALL eglWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync, E
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_KHR_WAIT_SYNC
-REGAL_DECL EGLint REGAL_CALL plugin_eglWaitSyncKHR(EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags);
+REGAL_DECL EGLint REGAL_CALL plugin_eglWaitSyncKHR(void *_context, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags);
 #endif
 
 /**
@@ -43687,8 +43687,8 @@ REGAL_DECL EGLImageKHR REGAL_CALL eglCreateDRMImageMESA(EGLDisplay dpy, const EG
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_MESA_DRM_IMAGE
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglExportDRMImageMESA(EGLDisplay dpy, EGLImageKHR image, EGLint *name, EGLint *handle, EGLint *stride);
-REGAL_DECL EGLImageKHR REGAL_CALL plugin_eglCreateDRMImageMESA(EGLDisplay dpy, const EGLint *attrib_list);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglExportDRMImageMESA(void *_context, EGLDisplay dpy, EGLImageKHR image, EGLint *name, EGLint *handle, EGLint *stride);
+REGAL_DECL EGLImageKHR REGAL_CALL plugin_eglCreateDRMImageMESA(void *_context, EGLDisplay dpy, const EGLint *attrib_list);
 #endif
 
 /**
@@ -43748,8 +43748,8 @@ REGAL_DECL void REGAL_CALL eglCoverageOperationNV(GLenum operation);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_NV_COVERAGE_SAMPLE
-REGAL_DECL void REGAL_CALL plugin_eglCoverageMaskNV(GLboolean mask);
-REGAL_DECL void REGAL_CALL plugin_eglCoverageOperationNV(GLenum operation);
+REGAL_DECL void REGAL_CALL plugin_eglCoverageMaskNV(void *_context, GLboolean mask);
+REGAL_DECL void REGAL_CALL plugin_eglCoverageOperationNV(void *_context, GLenum operation);
 #endif
 
 /**
@@ -43831,7 +43831,7 @@ REGAL_DECL EGLBoolean REGAL_CALL eglPostSubBufferNV(EGLDisplay dpy, EGLSurface s
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_NV_POST_SUB_BUFFER
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglPostSubBufferNV(EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglPostSubBufferNV(void *_context, EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height);
 #endif
 
 /**
@@ -43905,12 +43905,12 @@ REGAL_DECL EGLint REGAL_CALL eglClientWaitSyncNV(EGLSyncNV GLsync, EGLint flags,
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_NV_SYNC
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroySyncNV(EGLSyncNV GLsync);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglFenceNV(EGLSyncNV GLsync);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetSyncAttribNV(EGLSyncNV GLsync, EGLint attribute, EGLint *value);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSignalSyncNV(EGLSyncNV GLsync, EGLenum mode);
-REGAL_DECL EGLSyncNV REGAL_CALL plugin_eglCreateFenceSyncNV(EGLDisplay dpy, EGLenum condition, const EGLint *attrib_list);
-REGAL_DECL EGLint REGAL_CALL plugin_eglClientWaitSyncNV(EGLSyncNV GLsync, EGLint flags, EGLTimeNV timeout);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroySyncNV(void *_context, EGLSyncNV GLsync);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglFenceNV(void *_context, EGLSyncNV GLsync);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetSyncAttribNV(void *_context, EGLSyncNV GLsync, EGLint attribute, EGLint *value);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSignalSyncNV(void *_context, EGLSyncNV GLsync, EGLenum mode);
+REGAL_DECL EGLSyncNV REGAL_CALL plugin_eglCreateFenceSyncNV(void *_context, EGLDisplay dpy, EGLenum condition, const EGLint *attrib_list);
+REGAL_DECL EGLint REGAL_CALL plugin_eglClientWaitSyncNV(void *_context, EGLSyncNV GLsync, EGLint flags, EGLTimeNV timeout);
 #endif
 
 /**
@@ -43957,8 +43957,8 @@ REGAL_DECL EGLuint64NV REGAL_CALL eglGetSystemTimeNV(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_NV_SYSTEM_TIME
-REGAL_DECL EGLuint64NV REGAL_CALL plugin_eglGetSystemTimeFrequencyNV(void);
-REGAL_DECL EGLuint64NV REGAL_CALL plugin_eglGetSystemTimeNV(void);
+REGAL_DECL EGLuint64NV REGAL_CALL plugin_eglGetSystemTimeFrequencyNV(void *_context);
+REGAL_DECL EGLuint64NV REGAL_CALL plugin_eglGetSystemTimeNV(void *_context);
 #endif
 
 /**
@@ -44202,31 +44202,31 @@ REGAL_DECL const char *REGAL_CALL eglQueryString(EGLDisplay dpy, EGLint name);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_VERSION_1_0
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglChooseConfig(EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglCopyBuffers(EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroyContext(EGLDisplay dpy, EGLContext ctx);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroySurface(EGLDisplay dpy, EGLSurface surface);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetConfigAttrib(EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetConfigs(EGLDisplay dpy, EGLConfig *configs, EGLint config_size, EGLint *num_config);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglInitialize(EGLDisplay dpy, EGLint *major, EGLint *minor);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglMakeCurrent(EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglQueryContext(EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint *value);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglQuerySurface(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSwapBuffers(EGLDisplay dpy, EGLSurface surface);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglTerminate(EGLDisplay dpy);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglWaitGL(void);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglWaitNative(EGLint engine);
-REGAL_DECL EGLContext REGAL_CALL plugin_eglCreateContext(EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list);
-REGAL_DECL EGLContext REGAL_CALL plugin_eglGetCurrentContext(void);
-REGAL_DECL EGLDisplay REGAL_CALL plugin_eglGetCurrentDisplay(void);
-REGAL_DECL EGLDisplay REGAL_CALL plugin_eglGetDisplay(EGLNativeDisplayType display_id);
-REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreatePbufferSurface(EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list);
-REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreatePixmapSurface(EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint *attrib_list);
-REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreateWindowSurface(EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list);
-REGAL_DECL EGLSurface REGAL_CALL plugin_eglGetCurrentSurface(EGLint readdraw);
-REGAL_DECL EGLint REGAL_CALL plugin_eglGetError(void);
-REGAL_DECL __eglMustCastToProperFunctionPointerType REGAL_CALL plugin_eglGetProcAddress(const char *procname);
-REGAL_DECL const char *REGAL_CALL plugin_eglQueryString(EGLDisplay dpy, EGLint name);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglChooseConfig(void *_context, EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglCopyBuffers(void *_context, EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroyContext(void *_context, EGLDisplay dpy, EGLContext ctx);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglDestroySurface(void *_context, EGLDisplay dpy, EGLSurface surface);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetConfigAttrib(void *_context, EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglGetConfigs(void *_context, EGLDisplay dpy, EGLConfig *configs, EGLint config_size, EGLint *num_config);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglInitialize(void *_context, EGLDisplay dpy, EGLint *major, EGLint *minor);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglMakeCurrent(void *_context, EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglQueryContext(void *_context, EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint *value);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglQuerySurface(void *_context, EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSwapBuffers(void *_context, EGLDisplay dpy, EGLSurface surface);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglTerminate(void *_context, EGLDisplay dpy);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglWaitGL(void *_context);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglWaitNative(void *_context, EGLint engine);
+REGAL_DECL EGLContext REGAL_CALL plugin_eglCreateContext(void *_context, EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list);
+REGAL_DECL EGLContext REGAL_CALL plugin_eglGetCurrentContext(void *_context);
+REGAL_DECL EGLDisplay REGAL_CALL plugin_eglGetCurrentDisplay(void *_context);
+REGAL_DECL EGLDisplay REGAL_CALL plugin_eglGetDisplay(void *_context, EGLNativeDisplayType display_id);
+REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreatePbufferSurface(void *_context, EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list);
+REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreatePixmapSurface(void *_context, EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint *attrib_list);
+REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreateWindowSurface(void *_context, EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list);
+REGAL_DECL EGLSurface REGAL_CALL plugin_eglGetCurrentSurface(void *_context, EGLint readdraw);
+REGAL_DECL EGLint REGAL_CALL plugin_eglGetError(void *_context);
+REGAL_DECL __eglMustCastToProperFunctionPointerType REGAL_CALL plugin_eglGetProcAddress(void *_context, const char *procname);
+REGAL_DECL const char *REGAL_CALL plugin_eglQueryString(void *_context, EGLDisplay dpy, EGLint name);
 #endif
 
 /**
@@ -44273,8 +44273,8 @@ REGAL_DECL EGLBoolean REGAL_CALL eglReleaseTexImage(EGLDisplay dpy, EGLSurface s
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_VERSION_1_1
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglBindTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglReleaseTexImage(EGLDisplay dpy, EGLSurface surface, EGLint buffer);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglBindTexImage(void *_context, EGLDisplay dpy, EGLSurface surface, EGLint buffer);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglReleaseTexImage(void *_context, EGLDisplay dpy, EGLSurface surface, EGLint buffer);
 #endif
 
 /**
@@ -44336,13 +44336,13 @@ REGAL_DECL EGLenum REGAL_CALL eglQueryAPI(void);
 #endif
 
 #ifndef REGAL_NO_PLUGIN_EGL_VERSION_1_2
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglBindAPI(EGLenum api);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglReleaseThread(void);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSurfaceAttrib(EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSwapInterval(EGLDisplay dpy, EGLint interval);
-REGAL_DECL EGLBoolean REGAL_CALL plugin_eglWaitClient(void);
-REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreatePbufferFromClientBuffer(EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list);
-REGAL_DECL EGLenum REGAL_CALL plugin_eglQueryAPI(void);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglBindAPI(void *_context, EGLenum api);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglReleaseThread(void *_context);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSurfaceAttrib(void *_context, EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglSwapInterval(void *_context, EGLDisplay dpy, EGLint interval);
+REGAL_DECL EGLBoolean REGAL_CALL plugin_eglWaitClient(void *_context);
+REGAL_DECL EGLSurface REGAL_CALL plugin_eglCreatePbufferFromClientBuffer(void *_context, EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list);
+REGAL_DECL EGLenum REGAL_CALL plugin_eglQueryAPI(void *_context);
 #endif
 
 /**

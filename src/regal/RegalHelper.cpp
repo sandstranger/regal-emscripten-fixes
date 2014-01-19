@@ -1082,9 +1082,10 @@ shaderSourceStrings(const GLsizei count, const GLchar **string,  const GLint *le
 bool
 getInfoLog
 (
+  RegalContext * ctx,
   ::std::string &log,
-  void (REGAL_CALL *getInfoLog)      (GLuint,GLsizei,GLsizei *,GLchar *),
-  void (REGAL_CALL *getInfoLogLength)(GLuint,GLenum,GLint *),
+  void (REGAL_CALL *getInfoLog)      (RegalContext *,GLuint,GLsizei,GLsizei *,GLchar *),
+  void (REGAL_CALL *getInfoLogLength)(RegalContext *,GLuint,GLenum,GLint *),
   GLuint obj
 )
 {
@@ -1092,13 +1093,13 @@ getInfoLog
   RegalAssert(getInfoLogLength);
 
   GLint length = 0;
-  getInfoLogLength(obj,GL_INFO_LOG_LENGTH,&length);
+  getInfoLogLength(ctx,obj,GL_INFO_LOG_LENGTH,&length);
 
   if (length)
   {
     log.resize(length);
     RegalAssert(log.length()==size_t(length));
-    getInfoLog(obj,length,NULL,&log[0]);
+    getInfoLog(ctx,obj,length,NULL,&log[0]);
   }
   else
     log.clear();

@@ -128,9 +128,10 @@ namespace helper {
 
    bool getInfoLog
    (
+    RegalContext * ctx,
     ::std::string &log,
-    void (REGAL_CALL *getInfoLog)      (GLuint,GLsizei,GLsizei *,GLchar *),
-    void (REGAL_CALL *getInfoLogLength)(GLuint,GLenum,GLint *),
+    void (REGAL_CALL *getInfoLog)      (RegalContext *,GLuint,GLsizei,GLsizei *,GLchar *),
+    void (REGAL_CALL *getInfoLogLength)(RegalContext *,GLuint,GLenum,GLint *),
     GLuint obj
   );
 }

@@ -409,11 +409,11 @@ RegalContext::groupInitialized() const
 void RegalContext::parkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
-  pp.CGLSetCurrentContext( NULL );
+  pp.CGLSetCurrentContext( this, NULL );
   #elif REGAL_SYS_WGL
-  pp.wglMakeCurrent( NULL, NULL );
+  pp.wglMakeCurrent( this, NULL, NULL );
   #elif REGAL_SYS_GLX
-  pp.glXMakeCurrent( x11Display, None, NULL );
+  pp.glXMakeCurrent( this, x11Display, None, NULL );
   #else
   # error "Implement me!"
   #endif
@@ -423,11 +423,11 @@ void RegalContext::parkContext( RegalContext::ParkProcs & pp )
 void RegalContext::unparkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
-  pp.CGLSetCurrentContext( reinterpret_cast<CGLContextObj>(sysCtx) );
+  pp.CGLSetCurrentContext( this, reinterpret_cast<CGLContextObj>(sysCtx) );
   #elif REGAL_SYS_WGL
-  pp.wglMakeCurrent( hdc, hglrc );
+  pp.wglMakeCurrent( this, hdc, hglrc );
   #elif REGAL_SYS_GLX
-  pp.glXMakeCurrent( x11Display, x11Drawable, reinterpret_cast<GLXContext>(sysCtx) );
+  pp.glXMakeCurrent( this, x11Display, x11Drawable, reinterpret_cast<GLXContext>(sysCtx) );
   #else
   # error "Implement me!"
   #endif

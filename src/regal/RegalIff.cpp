@@ -1821,29 +1821,29 @@ void Program::Init( RegalContext * ctx, const Store & sstore, GLuint vshd, GLuin
   progcount = 0;
   RegalAssert(ctx);
   store = sstore;
-  pg = orig.glCreateProgram();
+  pg = orig.glCreateProgram( ctx );
   vs = vshd;
-  orig.glAttachShader(pg, vs );
+  orig.glAttachShader( ctx, pg, vs );
   fs = fshd;
-  orig.glAttachShader(pg, fs );
+  orig.glAttachShader(ctx, pg, fs );
   Attribs( ctx );
-  orig.glLinkProgram( pg );
+  orig.glLinkProgram( ctx, pg );
 
 #ifndef NDEBUG
   GLint status = 0;
-  orig.glGetProgramiv( pg, GL_LINK_STATUS, &status );
+  orig.glGetProgramiv( ctx, pg, GL_LINK_STATUS, &status );
   if (!status)
   {
     std::string log;
-    if (helper::getInfoLog( log, orig.glGetProgramInfoLog, orig.glGetProgramiv, pg ))
+    if (helper::getInfoLog( ctx, log, orig.glGetProgramInfoLog, orig.glGetProgramiv, pg ))
       Warning( "Regal::Program::Init", log);
   }
 #endif
 
-  orig.glUseProgram( pg );
+  orig.glUseProgram( ctx, pg );
   Samplers( ctx, orig );
   Uniforms( ctx, orig );
-  orig.glUseProgram( ctx->iff->program );
+  orig.glUseProgram( ctx, ctx->iff->program );
 }
 
 void Program::Shader( RegalContext * ctx, EmuProcsOriginateIff & orig, GLenum type, GLuint & shader, const GLchar *src )
@@ -1855,17 +1855,17 @@ void Program::Shader( RegalContext * ctx, EmuProcsOriginateIff & orig, GLenum ty
   const GLchar *srcs[] = { src };
   GLint len[] = { 0 };
   len[0] = (GLint)strlen( src );
-  shader = orig.glCreateShader(type);
-  orig.glShaderSource( shader, 1, srcs, len );
-  orig.glCompileShader( shader );
+  shader = orig.glCreateShader(ctx, type);
+  orig.glShaderSource( ctx, shader, 1, srcs, len );
+  orig.glCompileShader( ctx, shader );
 
 #ifndef NDEBUG
   GLint status = 0;
-  orig.glGetShaderiv( shader, GL_COMPILE_STATUS, &status );
+  orig.glGetShaderiv( ctx, shader, GL_COMPILE_STATUS, &status );
   if (!status)
   {
     std::string log;
-    if ( helper::getInfoLog( log, orig.glGetShaderInfoLog, orig.glGetShaderiv, shader ) )
+    if ( helper::getInfoLog( ctx, log, orig.glGetShaderInfoLog, orig.glGetShaderiv, shader ) )
       Warning("Regal::Program::Shader", log);
   }
 #endif
@@ -1879,28 +1879,28 @@ void Program::Attribs( RegalContext * ctx )
   EmuProcsOriginateIff & orig = ctx->iff->orig;
   
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Vertex );
-  orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
+  orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
   //orig.glBindAttribLocation( pg, 1, "rglWeight" );
   if ( store.lighting )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Normal );
-    orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
+    orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
   }
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Color );
   if ( store.attrArrayFlags & ( 1 << ctx->iff->ffAttrMap[ RFF2A_Color ] ) && ( store.lighting == false || store.colorMaterial ) )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Color );
-    orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
+    orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
   }
   if ( store.colorSum  && store.lighting == false )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_SecondaryColor );
-    orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
+    orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
   }
   if ( store.fog.enable && store.fog.useDepth == false )
   {
     RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_FogCoord );
-    orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
+    orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
   }
   GLuint units = std::min( (GLuint)ctx->iff->ffAttrNumTex, (GLuint)REGAL_EMU_MAX_TEXTURE_UNITS );
   for ( GLuint i = 0; i < units; i++ )
@@ -1914,7 +1914,7 @@ void Program::Attribs( RegalContext * ctx )
 #endif
     string_list ss;
     ss << "rglMultiTexCoord" << i;
-    orig.glBindAttribLocation( pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
+    orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrTexBegin + i, ss.str().c_str() );
   }
 }
 
@@ -1931,14 +1931,14 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_SecondaryColor );
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_FogCoord );
 
-  orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
-  orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
-  orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
+  orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
+  orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_Normal ], "rglNormal" );
+  orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_Color ], "rglColor" );
   if ( ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ] != RFF2A_Invalid )
   {
-    orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
+    orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_SecondaryColor ], "rglSecondaryColor" );
   }
-  orig.glBindAttribLocation( pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
+  orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrMap[ RFF2A_FogCoord ], "rglFogCoord" );
   GLuint units = std::min( /*(GLuint)ctx->iff->ffAttrNumTex*/(GLuint)16, (GLuint)REGAL_EMU_MAX_TEXTURE_UNITS );
   for ( GLuint i = 0; i < units; i++ )
   {
@@ -1946,7 +1946,7 @@ void Program::UserShaderModeAttribs( RegalContext * ctx )
     string s( "rglMultiTexCoord" );
     const char *nums = "0123456789abcdefghijklmnop";
     s += string( nums + i, 1 );
-    orig.glBindAttribLocation( pg, ctx->iff->ffAttrTexBegin + i, s.c_str() );
+    orig.glBindAttribLocation( ctx, pg, ctx->iff->ffAttrTexBegin + i, s.c_str() );
   }
 }
 
@@ -1960,9 +1960,9 @@ void Program::Samplers( RegalContext * ctx, EmuProcsOriginateIff & orig )
   for ( GLint ii = 0; ii < REGAL_EMU_MAX_TEXTURE_UNITS; ii++ )
   {
     std::string samplerName = print_string("rglSampler",ii);
-    GLint slot = orig.glGetUniformLocation( pg, samplerName.c_str() );
+    GLint slot = orig.glGetUniformLocation( ctx, pg, samplerName.c_str() );
     if ( slot >= 0 )
-      orig.glUniform1i( slot, ii );
+      orig.glUniform1i( ctx, slot, ii );
   }
 }
 
@@ -1976,7 +1976,7 @@ void Iff::UserProgramInstance::LocateUniforms( RegalContext * ctx, EmuProcsOrigi
   {
     RegalAssertArrayIndex( regalFFUniformInfo, i );
     const RegalFFUniformInfo & ri = regalFFUniformInfo[i];
-    GLint slot = orig.glGetUniformLocation( inst.prog, ri.name );
+    GLint slot = orig.glGetUniformLocation( ctx, inst.prog, ri.name );
     if (slot > -1)
       ffuniforms[ ri.val ] = UniformInfo(~GLuint64(0), slot);
   }
@@ -1993,7 +1993,7 @@ void Program::Uniforms( RegalContext * ctx, EmuProcsOriginateIff & orig )
   {
     RegalAssertArrayIndex( regalFFUniformInfo, i );
     const RegalFFUniformInfo & ri = regalFFUniformInfo[i];
-    GLint slot = orig.glGetUniformLocation( pg, ri.name );
+    GLint slot = orig.glGetUniformLocation( ctx, pg, ri.name );
     if (slot > -1)
       uniforms[ ri.val ] = UniformInfo(~GLuint64(0), slot);
   }
@@ -2056,8 +2056,8 @@ void Iff::Cleanup( RegalContext &ctx )
 
   RestoreVao(&ctx);
 
-  orig.glDeleteBuffers(1, &immVbo);
-  orig.glDeleteVertexArrays(1, &immVao);
+  orig.glDeleteBuffers(&ctx, 1, &immVbo);
+  orig.glDeleteVertexArrays(&ctx, 1, &immVao);
 
   size_t n = array_size( ffprogs );
   for (size_t i = 0; i < n; ++i)
@@ -2068,27 +2068,27 @@ void Iff::Cleanup( RegalContext &ctx )
     {
       if (&pgm == currprog)
       {
-        orig.glUseProgram(0);
+        orig.glUseProgram(&ctx, 0);
         currprog = NULL;
       }
-      orig.glDeleteShader(pgm.vs);
-      orig.glDeleteShader(pgm.fs);
-      orig.glDeleteProgram(pgm.pg);
+      orig.glDeleteShader(&ctx, pgm.vs);
+      orig.glDeleteShader(&ctx, pgm.fs);
+      orig.glDeleteProgram(&ctx, pgm.pg);
     }
   }
 
   const bool isWebGLish = (ctx.info->vendor == "Chromium" || ctx.info->webgl);
 
-  orig.glBindBuffer(GL_ARRAY_BUFFER, 0);
-  orig.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
+  orig.glBindBuffer(&ctx, GL_ARRAY_BUFFER, 0);
+  orig.glBindBuffer(&ctx, GL_ELEMENT_ARRAY_BUFFER, 0);
   for (GLuint i=0; i<ctx.emuInfo->gl_max_vertex_attribs; ++i)
   {
     // Chromium/PepperAPI GLES generates an error (visible through glGetError)
     // and logs a message if a call is made to glVertexAttribPointer and no
     // GL_ARRAY_BUFFER is bound.
     if (!isWebGLish)
-      orig.glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-    orig.glDisableVertexAttribArray(i);
+      orig.glVertexAttribPointer(&ctx, i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+    orig.glDisableVertexAttribArray(&ctx, i);
   }
 }
 
@@ -2165,7 +2165,7 @@ void Iff::EnableClientState( RegalContext * ctx, GLenum state )
   RegalAssert( idx < max_vertex_attribs );
   if ( idx < max_vertex_attribs )
   {
-    orig.glEnableVertexAttribArray( idx );
+    orig.glEnableVertexAttribArray( ctx, idx );
     EnableArray( ctx, idx ); // keep ffn up to date
   }
 }
@@ -2179,7 +2179,7 @@ void Iff::DisableClientState( RegalContext * ctx, GLenum state )
   RegalAssert( idx < max_vertex_attribs );
   if ( idx < max_vertex_attribs )
   {
-    orig.glDisableVertexAttribArray( idx );
+    orig.glDisableVertexAttribArray( ctx, idx );
     DisableArray( ctx, idx ); // keep ffn up to date
   }
 }
@@ -2211,34 +2211,34 @@ void Iff::VertexPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei st
     return;
 
   RestoreVao( ctx );
-  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_Vertex ], size, type, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( ctx, ffAttrMap[ RFF2A_Vertex ], size, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::NormalPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_Normal ], 3, type, n, stride, pointer );
+  orig.glVertexAttribPointer( ctx, ffAttrMap[ RFF2A_Normal ], 3, type, n, stride, pointer );
 }
 
 void Iff::ColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_Color ], size, type, n, stride, pointer );
+  orig.glVertexAttribPointer( ctx, ffAttrMap[ RFF2A_Color ], size, type, n, stride, pointer );
 }
 
 void Iff::SecondaryColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
   GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
-  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_SecondaryColor ], size, type, n, stride, pointer );
+  orig.glVertexAttribPointer( ctx, ffAttrMap[ RFF2A_SecondaryColor ], size, type, n, stride, pointer );
 }
 
 void Iff::FogCoordPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer )
 {
   RestoreVao( ctx );
-  orig.glVertexAttribPointer( ffAttrMap[ RFF2A_FogCoord ], 1, type, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( ctx, ffAttrMap[ RFF2A_FogCoord ], 1, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::EdgeFlagPointer( RegalContext * ctx, GLsizei stride, const GLvoid *pointer )
@@ -2247,7 +2247,7 @@ void Iff::EdgeFlagPointer( RegalContext * ctx, GLsizei stride, const GLvoid *poi
   GLuint index = ffAttrMap[ RFF2A_EdgeFlag ];
   if (index == RFF2A_Invalid)
     return;
-  orig.glVertexAttribPointer( index, 1, GL_UNSIGNED_BYTE, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( ctx, index, 1, GL_UNSIGNED_BYTE, GL_FALSE, stride, pointer );
 }
 
 void Iff::TexCoordPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
@@ -2258,22 +2258,22 @@ void Iff::TexCoordPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei 
     return;
   }
   RestoreVao( ctx );
-  orig.glVertexAttribPointer( ffAttrTexBegin + catIndex, size, type, GL_FALSE, stride, pointer );
+  orig.glVertexAttribPointer( ctx, ffAttrTexBegin + catIndex, size, type, GL_FALSE, stride, pointer );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLdouble * d )
 {
-  orig.glGetVertexAttribdv( index, pname, d );
+  orig.glGetVertexAttribdv( ctx, index, pname, d );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLfloat * f )
 {
-  orig.glGetVertexAttribfv( index, pname, f );
+  orig.glGetVertexAttribfv( ctx, index, pname, f );
 }
 
 void Iff::GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLint * i )
 {
-  orig.glGetVertexAttribiv( index, pname, i );
+  orig.glGetVertexAttribiv( ctx, index, pname, i );
 }
 
 bool Iff::IsEnabled( RegalContext * ctx, GLenum pname, GLboolean &enabled )
@@ -2364,11 +2364,11 @@ bool Iff::IsEnabled( RegalContext * ctx, GLenum pname, GLboolean &enabled )
 
 void Iff::InitImmediate(RegalContext &ctx)
 {
-  orig.glGenVertexArrays( 1, & immVao );
-  orig.glBindVertexArray( immVao );
+  orig.glGenVertexArrays( &ctx, 1, & immVao );
+  orig.glBindVertexArray( &ctx, immVao );
   BindVertexArray( &ctx, immVao ); // to keep ffn current
-  orig.glGenBuffers( 1, & immVbo );
-  orig.glBindBuffer( GL_ARRAY_BUFFER, immVbo );
+  orig.glGenBuffers( &ctx, 1, & immVbo );
+  orig.glBindBuffer( &ctx, GL_ARRAY_BUFFER, immVbo );
 
 #if REGAL_SYS_EMSCRIPTEN
   // We need this to be an allocated buffer for WebGL, because a dangling VertexAttribPointer
@@ -2379,10 +2379,10 @@ void Iff::InitImmediate(RegalContext &ctx)
   for (GLuint i = 0; i < max_vertex_attribs; i++)
   {
     EnableArray( &ctx, i ); // to keep ffn current
-    orig.glEnableVertexAttribArray( i );
-    orig.glVertexAttribPointer( i, 4, GL_FLOAT, GL_FALSE, max_vertex_attribs * sizeof(Float4), (GLubyte *)NULL + i * sizeof(Float4) );
+    orig.glEnableVertexAttribArray( &ctx, i );
+    orig.glVertexAttribPointer( &ctx, i, 4, GL_FLOAT, GL_FALSE, max_vertex_attribs * sizeof(Float4), (GLubyte *)NULL + i * sizeof(Float4) );
   }
-  orig.glBindVertexArray( 0 );
+  orig.glBindVertexArray( &ctx, 0 );
   BindVertexArray( &ctx, 0 ); // to keep ffn current
 
   // The initial texture coordinates are (s; t; r; q) = (0; 0; 0; 1)
@@ -2419,7 +2419,7 @@ void Iff::glDeleteVertexArrays( RegalContext * ctx, GLsizei n, const GLuint * ar
   {
     GLuint name = arrays[ i ];
     if (name != immVao)
-      orig.glDeleteVertexArrays( 1, &name );
+      orig.glDeleteVertexArrays( ctx, 1, &name );
   }
 }
 
@@ -2430,7 +2430,7 @@ void Iff::glDeleteBuffers( RegalContext * ctx, GLsizei n, const GLuint * buffers
   {
     GLuint name = buffers[ i ];
     if (name != immVbo)
-      orig.glDeleteBuffers( 1, &name );
+      orig.glDeleteBuffers( ctx, 1, &name );
   }
 }
 
@@ -2439,7 +2439,7 @@ GLboolean Iff::IsVertexArray( RegalContext * ctx, GLuint name )
   RegalAssert( ctx != NULL );
   if (name == immVao )
     return GL_FALSE;
-  return orig.glIsVertexArray( name );
+  return orig.glIsVertexArray( ctx, name );
 }
 
 void Iff::glBindVertexArray( RegalContext *ctx, GLuint vao )
@@ -2466,7 +2466,7 @@ void Iff::Begin( RegalContext * ctx, GLenum mode )
   if (immActive == false)
   {
     immActive = true;
-    orig.glBindVertexArray( immVao );
+    orig.glBindVertexArray( ctx, immVao );
     BindVertexArray( ctx, immVao );  // keep ffn current
   }
   PreDraw( ctx );
@@ -2483,7 +2483,7 @@ void Iff::RestoreVao( RegalContext * ctx )
 {
   if (immActive)
   {
-    orig.glBindVertexArray( immShadowVao );
+    orig.glBindVertexArray( ctx, immShadowVao );
     BindVertexArray( ctx, immShadowVao );
     immActive = false;
   }
@@ -2493,12 +2493,12 @@ void Iff::Flush( RegalContext * ctx )
 {
   if (immCurrent>0)   // Do nothing for empty buffer
   {
-    orig.glBufferData( GL_ARRAY_BUFFER, immCurrent * max_vertex_attribs * sizeof(Float4), immArray, GL_DYNAMIC_DRAW );
+    orig.glBufferData( ctx, GL_ARRAY_BUFFER, immCurrent * max_vertex_attribs * sizeof(Float4), immArray, GL_DYNAMIC_DRAW );
 
     GLenum derivedPrim = immPrim;
     if (( immPrim == GL_POLYGON ) && ( ctx->info->core == true || ctx->info->es2 ))
       derivedPrim = GL_TRIANGLE_FAN;
-    orig.glDrawArrays( derivedPrim, 0, immCurrent );
+    orig.glDrawArrays( ctx, derivedPrim, 0, immCurrent );
   }
 }
 
@@ -3410,7 +3410,7 @@ void Iff::WindowPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z )
     // todo - cache rasterpos and implement glDrawPixels and glBitmap
     return;
   }
-  orig.glWindowPos3d( x, y, z );
+  orig.glWindowPos3d( ctx, x, y, z );
 }
 
 void Iff::BindVertexArray( RegalContext * ctx, GLuint vao )
@@ -3438,7 +3438,7 @@ void Iff::DisableArray( RegalContext * ctx, GLuint index )
 
 GLuint Iff::CreateShader( RegalContext *ctx, GLenum shaderType )
 {
-  GLuint sh = orig.glCreateShader( shaderType );
+  GLuint sh = orig.glCreateShader( ctx, shaderType );
   shaderTypeMap[ sh ] = shaderType;
   return sh;
 }
@@ -3621,7 +3621,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
             m = RescaleNormal( m );
           }
           r3::Matrix3f m3 = r3::ToMatrix3( m ).Transpose(); // FIXME: r3::Matrix3f should be column major like Matrix4...
-          orig.glUniformMatrix3fv( ui.slot, 1, GL_FALSE, m3.Ptr() );
+          orig.glUniformMatrix3fv( ctx, ui.slot, 1, GL_FALSE, m3.Ptr() );
         }
         break;
       }
@@ -3637,7 +3637,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
           if( transpose ) {
             m = m.Transpose();
           }
-          orig.glUniformMatrix4fv( ui.slot, 1, GL_FALSE, m.Ptr() );
+          orig.glUniformMatrix4fv( ctx, ui.slot, 1, GL_FALSE, m.Ptr() );
         }
         break;
       }
@@ -3653,7 +3653,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
           if( transpose ) {
             m = m.Transpose();
           }
-          orig.glUniformMatrix4fv( ui.slot, 1, GL_FALSE, m.Ptr() );
+          orig.glUniformMatrix4fv( ctx, ui.slot, 1, GL_FALSE, m.Ptr() );
         }
         break;
       }
@@ -3670,7 +3670,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
           if( transpose ) {
             m = m.Transpose();
           }
-          orig.glUniformMatrix4fv( ui.slot, 1, GL_FALSE, m.Ptr() );
+          orig.glUniformMatrix4fv( ctx, ui.slot, 1, GL_FALSE, m.Ptr() );
         }
         break;
       }
@@ -3703,7 +3703,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
           if( transpose ) {
             m = m.Transpose();
           }
-          orig.glUniformMatrix4fv( ui.slot, 1, GL_FALSE, m.Ptr() );
+          orig.glUniformMatrix4fv( ctx, ui.slot, 1, GL_FALSE, m.Ptr() );
         }
         break;
       }
@@ -3729,7 +3729,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
         if ( ui.ver != textureEnvColorVer[ idx ] )
         {
           ui.ver = textureEnvColorVer[ idx ];
-          orig.glUniform4fv( ui.slot, 1, &textureEnvColor[ idx ].x);
+          orig.glUniform4fv( ctx, ui.slot, 1, &textureEnvColor[ idx ].x);
         }
         break;
       }
@@ -3747,7 +3747,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
         if ( ui.ver != u.light[ idx ].ver )
         {
           ui.ver = u.light[ idx ].ver;
-          orig.glUniform4fv( ui.slot, LE_Elements, &u.light[ idx ].ambient.x);
+          orig.glUniform4fv( ctx, ui.slot, LE_Elements, &u.light[ idx ].ambient.x);
         }
         break;
       }
@@ -3759,13 +3759,13 @@ void Iff::UpdateUniforms( RegalContext * ctx )
         if ( ui.ver != u.mat[ idx ].ver )
         {
           ui.ver = u.mat[ idx ].ver;
-          orig.glUniform4fv( ui.slot, ME_Elements, &u.mat[ idx ].ambient.x);
+          orig.glUniform4fv( ctx, ui.slot, ME_Elements, &u.mat[ idx ].ambient.x);
         }
         break;
       }
       case FFU_LightModelAmbient:
       {
-        orig.glUniform4fv( ui.slot, 1, &u.lightModelAmbient.x);
+        orig.glUniform4fv( ctx, ui.slot, 1, &u.lightModelAmbient.x);
         break;
       }
       case FFU_Texgen0ObjS:
@@ -3812,7 +3812,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
           if ( ui.ver != tg.eyeVer )
           {
             ui.ver = tg.eyeVer;
-            orig.glUniform4fv( ui.slot, 1, & tg.eye.x );
+            orig.glUniform4fv( ctx, ui.slot, 1, & tg.eye.x );
           }
         }
         else
@@ -3820,7 +3820,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
           if ( ui.ver != tg.objVer )
           {
             ui.ver = tg.objVer;
-            orig.glUniform4fv( ui.slot, 1, & tg.obj.x );
+            orig.glUniform4fv( ctx, ui.slot, 1, & tg.obj.x );
           }
         }
         break;
@@ -3839,7 +3839,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
         if ( ui.ver != u.clip[idx].ver )
         {
           ui.ver = u.clip[idx].ver;
-          orig.glUniform4fv( ui.slot, 1, & u.clip[idx].plane.x );
+          orig.glUniform4fv( ctx, ui.slot, 1, & u.clip[idx].plane.x );
         }
         break;
       }
@@ -3848,7 +3848,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
         if ( ui.ver != u.fog.ver )
         {
           ui.ver = u.fog.ver;
-          orig.glUniform4fv( ui.slot, 2, &u.fog.params[0].x);
+          orig.glUniform4fv( ctx, ui.slot, 2, &u.fog.params[0].x);
         }
         break;
       }
@@ -3857,7 +3857,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
         if ( ui.ver != u.alphaTest.ver )
         {
           ui.ver = u.alphaTest.ver;
-          orig.glUniform2f( ui.slot, u.alphaTest.alphaRef, u.alphaTest.alphaTestEnable );
+          orig.glUniform2f( ctx, ui.slot, u.alphaTest.alphaRef, u.alphaTest.alphaTestEnable );
         }
         break;
       }
@@ -3866,7 +3866,7 @@ void Iff::UpdateUniforms( RegalContext * ctx )
         if ( ui.ver != u.vabVer )
         {
           ui.ver = u.vabVer;
-          orig.glUniform4fv( ui.slot, REGAL_EMU_MAX_VERTEX_ATTRIBS, & immVab[0].x );
+          orig.glUniform4fv( ctx, ui.slot, REGAL_EMU_MAX_VERTEX_ATTRIBS, & immVab[0].x );
         }
         break;
       }
@@ -4097,9 +4097,9 @@ void Iff::UseFixedFunctionProgram( RegalContext * ctx )
     // delete this program
     if ( p->pg != 0 )
     {
-      orig.glDeleteShader( p->vs );
-      orig.glDeleteShader( p->fs );
-      orig.glDeleteProgram( p->pg );
+      orig.glDeleteShader( ctx, p->vs );
+      orig.glDeleteShader( ctx, p->fs );
+      orig.glDeleteProgram( ctx, p->pg );
       *p = Program();
     }
     GLuint vs = CreateFixedFunctionVertexShader( ctx );
@@ -4109,7 +4109,7 @@ void Iff::UseFixedFunctionProgram( RegalContext * ctx )
   }
   RegalAssertArrayIndex( ffprogs, base + match );
   currprog = & ffprogs[ base + match ];
-  orig.glUseProgram( currprog->pg );
+  orig.glUseProgram( ctx, currprog->pg );
   UpdateUniforms( ctx );
 }
   
@@ -4183,7 +4183,7 @@ void Iff::UseShaderProgram( RegalContext * ctx )
       currinst->prevKey = k;
       currinst->prevInstance = & currinst->instances[ k ];
       if( currinst->prevInstance->inst.prog != 0 ) {
-        orig.glUseProgram( currinst->prevInstance->inst.prog );
+        orig.glUseProgram( ctx, currinst->prevInstance->inst.prog );
       }
     }
     UserProgramInstance & upi = * currinst->prevInstance;
@@ -4206,7 +4206,7 @@ void Iff::UseShaderProgram( RegalContext * ctx )
 
       ShaderInstance::CreateProgramInstance( instProcs, currinst->program, sources, upi.inst );
       upi.LocateUniforms( ctx, orig );
-      orig.glUseProgram( upi.inst.prog );
+      orig.glUseProgram( ctx, upi.inst.prog );
     }
 
     if( upi.inst.ver != currinst->program.ver ) {
@@ -4482,7 +4482,7 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
 
   const GLchar * dumb = static_cast<const GLchar *>( src.c_str() );
   const GLchar ** dumber = & dumb;
-  orig.glShaderSource( shader, 1, dumber, NULL );
+  orig.glShaderSource( ctx, shader, 1, dumber, NULL );
 }
 
 void Iff::LinkProgram( RegalContext *ctx, GLuint program )
@@ -4499,14 +4499,14 @@ void Iff::LinkProgram( RegalContext *ctx, GLuint program )
       p.UserShaderModeAttribs(ctx);
     }
   }
-  orig.glLinkProgram( program );
+  orig.glLinkProgram( ctx, program );
   Program & p = shprogmap[ program ];
   
-  orig.glUseProgram( program );
+  orig.glUseProgram( ctx, program );
   p.Samplers( ctx, orig );
   p.Uniforms( ctx, orig );
   if( this->program != 0 ) {
-    orig.glUseProgram( this->program );
+    orig.glUseProgram( ctx, this->program );
   }
   
 }

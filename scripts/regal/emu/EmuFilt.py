@@ -177,9 +177,9 @@ if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
   return;
 GLfloat newparam;
 if (_context->filt->FilterTexParameter(*_context, ${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}), newparam))
-  _context->filt->orig.glTexParameterf( _context,${arg0}, ${arg1}, newparam);
+  orig.glTexParameterf( _context, ${arg0}, ${arg1}, newparam);
 else
-  _context->filt->orig.glTexParameter${m1}( _context,${arg0plus});
+  orig.glTexParameter${m1}( _context, ${arg0plus});
 return;'''
   },
 
@@ -192,9 +192,9 @@ if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
   return;
 GLfloat newparam;
 if (${arg2} && _context->filt->FilterTexParameter(*_context, ${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}[0]), newparam))
-  _context->filt->orig.glTexParameterf( _context,${arg0}, ${arg1}, newparam);
+  orig.glTexParameterf( _context, ${arg0}, ${arg1}, newparam);
 else
-  _context->filt->orig.glTexParameter${m1}v( _context,${arg0plus});
+  orig.glTexParameter${m1}v( _context, ${arg0plus});
 return;'''
   },
 
@@ -206,8 +206,8 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  if (_context->info->gl_nv_framebuffer_blit)  return _context->filt->orig.${m0}NV(${arg0plus});',
-       '  if (_context->info->gl_ext_framebuffer_blit) return _context->filt->orig.${m0}EXT(${arg0plus});',
+       '  if (_context->info->gl_nv_framebuffer_blit)  return orig.${m0}NV( _context, ${arg0plus});',
+       '  if (_context->info->gl_ext_framebuffer_blit) return orig.${m0}EXT( _context, ${arg0plus});',
        '}'
      ]
   },
@@ -221,7 +221,7 @@ return;'''
        'if (_context->isES2())',
        '{',
        '  if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)',
-       '    return _context->filt->orig.${m0}(${arg0plus});',
+       '    return orig.${m0}( _context, ${arg0plus} );',
        '}'
      ]
   },
@@ -233,7 +233,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  return _context->filt->orig.glDrawElements( _context,${arg0}, ${arg3plus});',
+       '  return orig.glDrawElements( _context,${arg0}, ${arg3plus});',
        '}'
      ]
   },
@@ -249,7 +249,7 @@ return;'''
        '{',
        '  if (basevertex==0)',
        '  {',
-       '    return _context->filt->orig.glDrawElements( _context,${arg0}, ${arg3}, ${arg4}, ${arg5});',
+       '    return orig.glDrawElements( _context,${arg0}, ${arg3}, ${arg4}, ${arg5});',
        '  }',
        '  else',
        '  {',
@@ -274,7 +274,7 @@ return;'''
        '{',
        '  if (_context->info->gl_nv_draw_buffers)',
        '  {',
-       '    _context->filt->orig.${name}NV(${arg0plus});',
+       '    orig.${name}NV( _context, ${arg0plus} );',
        '    return;',
        '  }',
        '}'
@@ -288,7 +288,7 @@ return;'''
        'if (!_context->info->gl_ati_draw_buffers)',
        '{',
        '  _context->emuLevel++;',
-       '  _context->filt->orig.glDrawBuffers( _context,${arg0plus});',
+       '  orig.glDrawBuffers( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -301,7 +301,7 @@ return;'''
        'if (!_context->info->gl_arb_draw_buffers)',
        '{',
        '  _context->emuLevel++;',
-       '  _context->filt->orig.glDrawBuffers( _context,${arg0plus});',
+       '  orig.glDrawBuffers( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -333,7 +333,7 @@ return;'''
 #           'if (_context->info->es2)',
 #           '#endif',
 #           '{',
-#           '  return _context->filt->orig.glCreateShader( _context,${arg0plus});',
+#           '  return orig.glCreateShader( _context,${arg0plus});',
 #           '}'
 #         ]
 #    },
@@ -343,7 +343,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  return _context->filt->orig.glCreateProgram( _context,${arg0plus});',
+      '  return orig.glCreateProgram( _context );',
       '}'
     ]
   },
@@ -355,7 +355,7 @@ return;'''
 #           'if (_context->info->es2)',
 #           '#endif',
 #           '{',
-#           '  _context->filt->orig.glShaderSource( _context,${arg0plus});',
+#           '  orig.glShaderSource( _context,${arg0plus});',
 #           '  return;',
 #           '}'
 #         ]
@@ -366,7 +366,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  _context->filt->orig.glCompileShader( _context,${arg0plus});',
+      '  orig.glCompileShader( _context,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -377,7 +377,7 @@ return;'''
     'impl' : [
       'if (!_context->info->gl_arb_multitexture)',
       '{',
-      '  _context->filt->orig.glActiveTexture( _context,${arg0plus});',
+      '  orig.glActiveTexture( _context,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -389,7 +389,7 @@ return;'''
       'if (!_context->info->gl_arb_multitexture)',
       '{',
       '  _context->emuLevel++;',
-      '  _context->filt->orig.glClientActiveTexture( _context,${arg0plus});',
+      '  orig.glClientActiveTexture( _context,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -400,7 +400,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  _context->filt->orig.glAttachShader( _context,${arg0plus});',
+      '  orig.glAttachShader( _context,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -411,7 +411,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  _context->filt->orig.glBindAttribLocation( _context,${arg0plus});',
+      '  orig.glBindAttribLocation( _context,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -422,7 +422,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  return _context->filt->orig.glGetUniformLocation( _context,${arg0plus});',
+      '  return orig.glGetUniformLocation( _context,${arg0plus});',
       '}'
     ]
   },
@@ -432,7 +432,7 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
       '{',
-      '  _context->filt->orig.glUniform1i( _context,${arg0plus});',
+      '  orig.glUniform1i( _context,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -443,10 +443,10 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
        '{',
-       '  if (_context->filt->orig.glIsProgram( _context,obj))',
-       '    _context->filt->orig.glGetProgramiv( _context,${arg0plus});',
+       '  if (orig.glIsProgram( _context,obj))',
+       '    orig.glGetProgramiv( _context,${arg0plus});',
        '  else',
-       '    _context->filt->orig.glGetShaderiv( _context,${arg0plus});',
+       '    orig.glGetShaderiv( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -457,10 +457,10 @@ return;'''
     'impl' : [
       'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
        '{',
-       '  if (_context->filt->orig.glIsProgram( _context,obj))',
-       '    _context->filt->orig.glGetProgramInfoLog( _context,${arg0plus});',
+       '  if (orig.glIsProgram( _context,obj))',
+       '    orig.glGetProgramInfoLog( _context,${arg0plus});',
        '  else',
-       '    _context->filt->orig.glGetShaderInfoLog( _context,${arg0plus});',
+       '    orig.glGetShaderInfoLog( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -473,7 +473,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  _context->filt->orig.glBlendEquation( _context,${arg0plus});',
+       '  orig.glBlendEquation( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -486,7 +486,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  _context->filt->orig.glBlendColor( _context,${arg0plus});',
+       '  orig.glBlendColor( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -500,7 +500,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  return _context->filt->orig.gl${m1}BufferOES( _context,${arg0plus});',
+       '  return orig.gl${m1}BufferOES( _context,${arg0plus});',
        '}'
      ]
   },
@@ -510,7 +510,7 @@ return;'''
     'impl' : [
        'if (_context->isES2())',
        '{',
-       '  _context->filt->orig.glBufferData( _context,${arg0plus});',
+       '  orig.glBufferData( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -543,7 +543,7 @@ return;'''
     'entries' : [ 'glFramebuffer(Texture1D|Texture3D|Renderbuffer)' ],
     'impl' : [
        'if (_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
-       '  _context->filt->orig.glFramebuffer${m1}( _context,${arg0plus});',
+       '  orig.glFramebuffer${m1}( _context,${arg0plus});',
        'return;'
      ]
   },
@@ -557,7 +557,7 @@ return;'''
        'if (!_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
        '  *${arg3} = 0;',
        'else',
-       '  _context->filt->orig.glGetFramebufferAttachmentParameteriv( _context,${arg0plus});',
+       '  orig.glGetFramebufferAttachmentParameteriv( _context,${arg0plus});',
        'return;'
      ]
   },
@@ -580,7 +580,7 @@ return;'''
        'if (!_context->info->gl_ext_framebuffer_object)',
        '{',
        '  _context->emuLevel++;',
-       '  _context->filt->orig.gl${m1}( _context,${arg0plus});',
+       '  orig.gl${m1}( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -592,7 +592,7 @@ return;'''
        'if (!_context->info->gl_ext_framebuffer_object)',
        '{',
        '  _context->emuLevel++;',
-       '  return _context->filt->orig.gl${m1}( _context,${arg0plus});',
+       '  return orig.gl${m1}( _context,${arg0plus});',
        '}'
      ]
   },
@@ -605,7 +605,7 @@ return;'''
        'if (!_context->info->gl_ext_framebuffer_blit)',
        '{',
        '  _context->emuLevel++;',
-       '  _context->filt->orig.glBlitFramebuffer( _context,${arg0plus});',
+       '  orig.glBlitFramebuffer( _context,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -624,9 +624,9 @@ return;'''
        '  return ${dummyretval};',
        '}',
        'if (_context->isES2() && _context->info->gl_nv_read_buffer)',
-       '  _context->filt->orig.glReadBufferNV( _context,${arg0plus});',
+       '  orig.glReadBufferNV( _context,${arg0plus});',
        'else',
-       '  _context->filt->orig.glReadBuffer( _context,${arg0plus});',
+       '  orig.glReadBuffer( _context,${arg0plus});',
        'return;'
      ]
   },
@@ -647,7 +647,7 @@ return;'''
        '{',
        '  if (!buf)'
        '  {',
-       '    _context->filt->orig.glColorMask( _context,${arg1plus});',
+       '    orig.glColorMask( _context,${arg1plus});',
        '  }',
        '  return;',
        '}'
@@ -661,7 +661,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    _context->filt->orig.glGetBooleanv( _context,${arg0},${arg2});',
+       '    orig.glGetBooleanv( _context,${arg0},${arg2});',
        '  }',
        '  return;',
        '}'
@@ -675,7 +675,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    _context->filt->orig.glGetIntegerv( _context,${arg0},${arg2});',
+       '    orig.glGetIntegerv( _context,${arg0},${arg2});',
        '  }',
        '  return;',
        '}'
@@ -689,7 +689,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    _context->filt->orig.glEnable( _context,${arg0});',
+       '    orig.glEnable( _context,${arg0});',
        '  }',
        '  return;',
        '}'
@@ -703,7 +703,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    _context->filt->orig.glDisable( _context,${arg0});',
+       '    orig.glDisable( _context,${arg0});',
        '  }',
        '  return;',
        '}'
@@ -717,7 +717,7 @@ return;'''
        '{',
        '  if (!index)'
        '  {',
-       '    return _context->filt->orig.glIsEnabled( _context,${arg0});',
+       '    return orig.glIsEnabled( _context,${arg0});',
        '  }',
        '  return GL_FALSE;',
        '}'

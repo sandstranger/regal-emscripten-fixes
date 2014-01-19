@@ -40,6 +40,7 @@ REGAL_GLOBAL_BEGIN
 #include <vector>
 #include <string>
 #include "RegalPrint.h"
+#include "RegalDispatch.h"
 
 #include <lookup3.h>
 
@@ -54,7 +55,7 @@ REGAL_NAMESPACE_BEGIN
 namespace Cache {
 
 void
-shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length)
+shaderSource(RegalContext * ctx, REGALGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length)
 {
   if (REGAL_CACHE && REGAL_CACHE_SHADER && Config::cache && Config::cacheShader)
   {
@@ -113,7 +114,7 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
         bufferPtr[0] = &buffer[0];
         bufferPtr[1] = NULL;
 
-        proc(shader,1,bufferPtr,NULL);
+        proc(ctx,shader,1,bufferPtr,NULL);
         return;
       }
       else
@@ -127,7 +128,7 @@ shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLc
   // Call the driver
 
 done:
-  proc(shader,count,string,length);
+  proc(ctx,shader,count,string,length);
 }
 
 };

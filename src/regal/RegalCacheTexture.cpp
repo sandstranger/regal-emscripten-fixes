@@ -61,7 +61,7 @@ REGAL_NAMESPACE_BEGIN
 namespace Cache {
 
 static void
-cacheTextureTarget(PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXIMAGEPROC getTexImageProc, GLenum target)
+cacheTextureTarget(RegalContext * ctx, REGALGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, REGALGLGETTEXIMAGEPROC getTexImageProc, GLenum target)
 {
   RegalAssert(getTexLevelProc);
   RegalAssert(getTexImageProc);
@@ -74,8 +74,8 @@ cacheTextureTarget(PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXI
     GLint width = 0;
     GLint height = 0;
 
-    getTexLevelProc(target, 0, GL_TEXTURE_WIDTH,  &width);
-    getTexLevelProc(target, 0, GL_TEXTURE_HEIGHT, &height);
+    getTexLevelProc(ctx, target, 0, GL_TEXTURE_WIDTH,  &width);
+    getTexLevelProc(ctx, target, 0, GL_TEXTURE_HEIGHT, &height);
 
     const GLint size = width*height;
     const GLint bytes = size*4;
@@ -90,7 +90,7 @@ cacheTextureTarget(PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXI
 
     scoped_array<GLbyte> buffer(new GLbyte [bytes]);
 
-    getTexImageProc(target,0,GL_RGBA,GL_UNSIGNED_BYTE,buffer.get());
+    getTexImageProc(ctx, target,0,GL_RGBA,GL_UNSIGNED_BYTE,buffer.get());
 
     // Compute 32-bit hash
 
@@ -123,31 +123,31 @@ cacheTextureTarget(PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXI
 }
 
 void
-bindTexture(PFNGLBINDTEXTUREPROC bindTextureProc, PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXIMAGEPROC getTexImageProc, GLenum target, GLuint texture)
+bindTexture(RegalContext * ctx, REGALGLBINDTEXTUREPROC bindTextureProc, REGALGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, REGALGLGETTEXIMAGEPROC getTexImageProc, GLenum target, GLuint texture)
 {
   RegalAssert(bindTextureProc);
   RegalAssert(getTexLevelProc);
   RegalAssert(getTexImageProc);
 
-  bindTextureProc(target,texture);
+  bindTextureProc(ctx,target,texture);
 
   Internal("Cache::BindTexture(",Token::GLenumToString(target),",",texture,")");
 
   switch (target)
   {
     case GL_TEXTURE_CUBE_MAP:
-      cacheTextureTarget(getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_POSITIVE_X);
-      cacheTextureTarget(getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_NEGATIVE_X);
-      cacheTextureTarget(getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_POSITIVE_Y);
-      cacheTextureTarget(getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_NEGATIVE_Y);
-      cacheTextureTarget(getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_POSITIVE_Z);
-      cacheTextureTarget(getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_NEGATIVE_Z);
+      cacheTextureTarget(ctx,getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_POSITIVE_X);
+      cacheTextureTarget(ctx,getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_NEGATIVE_X);
+      cacheTextureTarget(ctx,getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_POSITIVE_Y);
+      cacheTextureTarget(ctx,getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_NEGATIVE_Y);
+      cacheTextureTarget(ctx,getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_POSITIVE_Z);
+      cacheTextureTarget(ctx,getTexLevelProc,getTexImageProc,GL_TEXTURE_CUBE_MAP_NEGATIVE_Z);
       break;
 
     // TODO - arrays, etc
 
     default:
-      cacheTextureTarget(getTexLevelProc,getTexImageProc,target);
+      cacheTextureTarget(ctx,getTexLevelProc,getTexImageProc,target);
       break;
   }
 }

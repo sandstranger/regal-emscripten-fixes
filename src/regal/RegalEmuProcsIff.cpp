@@ -3734,7 +3734,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1d(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, x );
   } else {
-    orig.glUniform1d( location, x );
+    orig.glUniform1d( _context, location, x );
   }
 
 }
@@ -3748,7 +3748,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1dv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    orig.glUniform1dv( location, count, value );
+    orig.glUniform1dv( _context, location, count, value );
   }
 
 }
@@ -3762,7 +3762,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1f(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    orig.glUniform1f( location, v0 );
+    orig.glUniform1f( _context, location, v0 );
   }
 
 }
@@ -3776,7 +3776,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1fARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    orig.glUniform1fARB( location, v0 );
+    orig.glUniform1fARB( _context, location, v0 );
   }
 
 }
@@ -3790,7 +3790,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1fv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    orig.glUniform1fv( location, count, value );
+    orig.glUniform1fv( _context, location, count, value );
   }
 
 }
@@ -3804,7 +3804,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1fvARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    orig.glUniform1fvARB( location, count, value );
+    orig.glUniform1fvARB( _context, location, count, value );
   }
 
 }
@@ -3818,7 +3818,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1i(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    orig.glUniform1i( location, v0 );
+    orig.glUniform1i( _context, location, v0 );
   }
 
 }
@@ -3832,7 +3832,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1iARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    orig.glUniform1iARB( location, v0 );
+    orig.glUniform1iARB( _context, location, v0 );
   }
 
 }
@@ -3846,7 +3846,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1iv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    orig.glUniform1iv( location, count, value );
+    orig.glUniform1iv( _context, location, count, value );
   }
 
 }
@@ -3860,7 +3860,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1ivARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    orig.glUniform1ivARB( location, count, value );
+    orig.glUniform1ivARB( _context, location, count, value );
   }
 
 }
@@ -3874,7 +3874,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1ui(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, 1, v0 );
   } else {
-    orig.glUniform1ui( location, v0 );
+    orig.glUniform1ui( _context, location, v0 );
   }
 
 }
@@ -3888,7 +3888,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform1uiv(RegalContext *_context,
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 1, location, count, value );
   } else {
-    orig.glUniform1uiv( location, count, value );
+    orig.glUniform1uiv( _context, location, count, value );
   }
 
 }
@@ -3902,7 +3902,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2d(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, x, y );
   } else {
-    orig.glUniform2d( location, x, y );
+    orig.glUniform2d( _context, location, x, y );
   }
 
 }
@@ -3916,7 +3916,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2dv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    orig.glUniform2dv( location, count, value );
+    orig.glUniform2dv( _context, location, count, value );
   }
 
 }
@@ -3930,7 +3930,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2f(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    orig.glUniform2f( location, v0, v1 );
+    orig.glUniform2f( _context, location, v0, v1 );
   }
 
 }
@@ -3944,7 +3944,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2fARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    orig.glUniform2fARB( location, v0, v1 );
+    orig.glUniform2fARB( _context, location, v0, v1 );
   }
 
 }
@@ -3958,7 +3958,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2fv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    orig.glUniform2fv( location, count, value );
+    orig.glUniform2fv( _context, location, count, value );
   }
 
 }
@@ -3972,7 +3972,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2fvARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    orig.glUniform2fvARB( location, count, value );
+    orig.glUniform2fvARB( _context, location, count, value );
   }
 
 }
@@ -3986,7 +3986,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2i(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    orig.glUniform2i( location, v0, v1 );
+    orig.glUniform2i( _context, location, v0, v1 );
   }
 
 }
@@ -4000,7 +4000,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2iARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    orig.glUniform2iARB( location, v0, v1 );
+    orig.glUniform2iARB( _context, location, v0, v1 );
   }
 
 }
@@ -4014,7 +4014,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2iv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    orig.glUniform2iv( location, count, value );
+    orig.glUniform2iv( _context, location, count, value );
   }
 
 }
@@ -4028,7 +4028,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2ivARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    orig.glUniform2ivARB( location, count, value );
+    orig.glUniform2ivARB( _context, location, count, value );
   }
 
 }
@@ -4042,7 +4042,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2ui(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, 1, v0, v1 );
   } else {
-    orig.glUniform2ui( location, v0, v1 );
+    orig.glUniform2ui( _context, location, v0, v1 );
   }
 
 }
@@ -4056,7 +4056,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform2uiv(RegalContext *_context,
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 2, location, count, value );
   } else {
-    orig.glUniform2uiv( location, count, value );
+    orig.glUniform2uiv( _context, location, count, value );
   }
 
 }
@@ -4070,7 +4070,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3d(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, x, y, z );
   } else {
-    orig.glUniform3d( location, x, y, z );
+    orig.glUniform3d( _context, location, x, y, z );
   }
 
 }
@@ -4084,7 +4084,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3dv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    orig.glUniform3dv( location, count, value );
+    orig.glUniform3dv( _context, location, count, value );
   }
 
 }
@@ -4098,7 +4098,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3f(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    orig.glUniform3f( location, v0, v1, v2 );
+    orig.glUniform3f( _context, location, v0, v1, v2 );
   }
 
 }
@@ -4112,7 +4112,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3fARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    orig.glUniform3fARB( location, v0, v1, v2 );
+    orig.glUniform3fARB( _context, location, v0, v1, v2 );
   }
 
 }
@@ -4126,7 +4126,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3fv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    orig.glUniform3fv( location, count, value );
+    orig.glUniform3fv( _context, location, count, value );
   }
 
 }
@@ -4140,7 +4140,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3fvARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    orig.glUniform3fvARB( location, count, value );
+    orig.glUniform3fvARB( _context, location, count, value );
   }
 
 }
@@ -4154,7 +4154,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3i(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    orig.glUniform3i( location, v0, v1, v2 );
+    orig.glUniform3i( _context, location, v0, v1, v2 );
   }
 
 }
@@ -4168,7 +4168,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3iARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    orig.glUniform3iARB( location, v0, v1, v2 );
+    orig.glUniform3iARB( _context, location, v0, v1, v2 );
   }
 
 }
@@ -4182,7 +4182,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3iv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    orig.glUniform3iv( location, count, value );
+    orig.glUniform3iv( _context, location, count, value );
   }
 
 }
@@ -4196,7 +4196,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3ivARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    orig.glUniform3ivARB( location, count, value );
+    orig.glUniform3ivARB( _context, location, count, value );
   }
 
 }
@@ -4210,7 +4210,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3ui(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, 1, v0, v1, v2 );
   } else {
-    orig.glUniform3ui( location, v0, v1, v2 );
+    orig.glUniform3ui( _context, location, v0, v1, v2 );
   }
 
 }
@@ -4224,7 +4224,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform3uiv(RegalContext *_context,
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 3, location, count, value );
   } else {
-    orig.glUniform3uiv( location, count, value );
+    orig.glUniform3uiv( _context, location, count, value );
   }
 
 }
@@ -4238,7 +4238,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4d(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, x, y, z, w );
   } else {
-    orig.glUniform4d( location, x, y, z, w );
+    orig.glUniform4d( _context, location, x, y, z, w );
   }
 
 }
@@ -4252,7 +4252,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4dv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    orig.glUniform4dv( location, count, value );
+    orig.glUniform4dv( _context, location, count, value );
   }
 
 }
@@ -4266,7 +4266,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4f(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    orig.glUniform4f( location, v0, v1, v2, v3 );
+    orig.glUniform4f( _context, location, v0, v1, v2, v3 );
   }
 
 }
@@ -4280,7 +4280,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4fARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    orig.glUniform4fARB( location, v0, v1, v2, v3 );
+    orig.glUniform4fARB( _context, location, v0, v1, v2, v3 );
   }
 
 }
@@ -4294,7 +4294,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4fv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    orig.glUniform4fv( location, count, value );
+    orig.glUniform4fv( _context, location, count, value );
   }
 
 }
@@ -4308,7 +4308,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4fvARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    orig.glUniform4fvARB( location, count, value );
+    orig.glUniform4fvARB( _context, location, count, value );
   }
 
 }
@@ -4322,7 +4322,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4i(RegalContext *_context, G
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    orig.glUniform4i( location, v0, v1, v2, v3 );
+    orig.glUniform4i( _context, location, v0, v1, v2, v3 );
   }
 
 }
@@ -4336,7 +4336,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4iARB(RegalContext *_context
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    orig.glUniform4iARB( location, v0, v1, v2, v3 );
+    orig.glUniform4iARB( _context, location, v0, v1, v2, v3 );
   }
 
 }
@@ -4350,7 +4350,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4iv(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    orig.glUniform4iv( location, count, value );
+    orig.glUniform4iv( _context, location, count, value );
   }
 
 }
@@ -4364,7 +4364,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4ivARB(RegalContext *_contex
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    orig.glUniform4ivARB( location, count, value );
+    orig.glUniform4ivARB( _context, location, count, value );
   }
 
 }
@@ -4378,7 +4378,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4ui(RegalContext *_context, 
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, 1, v0, v1, v2, v3 );
   } else {
-    orig.glUniform4ui( location, v0, v1, v2, v3 );
+    orig.glUniform4ui( _context, location, v0, v1, v2, v3 );
   }
 
 }
@@ -4392,7 +4392,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniform4uiv(RegalContext *_context,
   if( _context->iff->currinst ) {
     _context->iff->Uniform( _context, 4, location, count, value );
   } else {
-    orig.glUniform4uiv( location, count, value );
+    orig.glUniform4uiv( _context, location, count, value );
   }
 
 }
@@ -4406,7 +4406,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2dv(RegalContext *_con
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 2, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix2dv( location, count, transpose, value );
+    orig.glUniformMatrix2dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4420,7 +4420,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2fv(RegalContext *_con
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 2, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix2fv( location, count, transpose, value );
+    orig.glUniformMatrix2fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4434,7 +4434,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2fvARB(RegalContext *_
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 2, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix2fvARB( location, count, transpose, value );
+    orig.glUniformMatrix2fvARB( _context, location, count, transpose, value );
   }
 
 }
@@ -4448,7 +4448,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x3dv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 3, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix2x3dv( location, count, transpose, value );
+    orig.glUniformMatrix2x3dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4462,7 +4462,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x3fv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 3, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix2x3fv( location, count, transpose, value );
+    orig.glUniformMatrix2x3fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4476,7 +4476,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x4dv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 4, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix2x4dv( location, count, transpose, value );
+    orig.glUniformMatrix2x4dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4490,7 +4490,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix2x4fv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 2, 4, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix2x4fv( location, count, transpose, value );
+    orig.glUniformMatrix2x4fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4504,7 +4504,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3dv(RegalContext *_con
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 3, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix3dv( location, count, transpose, value );
+    orig.glUniformMatrix3dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4518,7 +4518,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3fv(RegalContext *_con
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 3, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix3fv( location, count, transpose, value );
+    orig.glUniformMatrix3fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4532,7 +4532,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3fvARB(RegalContext *_
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 3, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix3fvARB( location, count, transpose, value );
+    orig.glUniformMatrix3fvARB( _context, location, count, transpose, value );
   }
 
 }
@@ -4546,7 +4546,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x2dv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 2, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix3x2dv( location, count, transpose, value );
+    orig.glUniformMatrix3x2dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4560,7 +4560,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x2fv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 2, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix3x2fv( location, count, transpose, value );
+    orig.glUniformMatrix3x2fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4574,7 +4574,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x4dv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 4, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix3x4dv( location, count, transpose, value );
+    orig.glUniformMatrix3x4dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4588,7 +4588,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix3x4fv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 3, 4, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix3x4fv( location, count, transpose, value );
+    orig.glUniformMatrix3x4fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4602,7 +4602,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4dv(RegalContext *_con
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 4, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix4dv( location, count, transpose, value );
+    orig.glUniformMatrix4dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4616,7 +4616,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4fv(RegalContext *_con
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 4, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix4fv( location, count, transpose, value );
+    orig.glUniformMatrix4fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4630,7 +4630,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4fvARB(RegalContext *_
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 4, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix4fvARB( location, count, transpose, value );
+    orig.glUniformMatrix4fvARB( _context, location, count, transpose, value );
   }
 
 }
@@ -4644,7 +4644,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x2dv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 2, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix4x2dv( location, count, transpose, value );
+    orig.glUniformMatrix4x2dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4658,7 +4658,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x2fv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 2, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix4x2fv( location, count, transpose, value );
+    orig.glUniformMatrix4x2fv( _context, location, count, transpose, value );
   }
 
 }
@@ -4672,7 +4672,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x3dv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 3, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix4x3dv( location, count, transpose, value );
+    orig.glUniformMatrix4x3dv( _context, location, count, transpose, value );
   }
 
 }
@@ -4686,7 +4686,7 @@ static void REGAL_CALL emuProcInterceptIff_glUniformMatrix4x3fv(RegalContext *_c
   if( _context->iff->currinst ) {
     _context->iff->UniformMatrix( _context, 4, 3, location, count, transpose, value );
   } else {
-    orig.glUniformMatrix4x3fv( location, count, transpose, value );
+    orig.glUniformMatrix4x3fv( _context, location, count, transpose, value );
   }
 
 }

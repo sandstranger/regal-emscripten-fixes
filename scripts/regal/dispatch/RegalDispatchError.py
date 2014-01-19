@@ -32,8 +32,8 @@ def apiErrorFuncDefineCode(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
+      callParams = paramsNameCode(function.parameters, "_context")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -56,12 +56,11 @@ def apiErrorFuncDefineCode(apis, args):
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'error_', name, params)
       code += '  Internal("error_%s","()");\n' % name
-      code += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       code += '  RegalAssert(_context);\n'
       if name != 'glGetError':
         code += '  GLenum _error = GL_NO_ERROR;\n'
         code += '  if (!_context->err.inBeginEnd)\n'
-        code += '    _error = _context->err.next.glGetError();\n'
+        code += '    _error = _context->err.next.glGetError( _context );\n'
         code += '  RegalAssert(_error==GL_NO_ERROR);\n'
         code += '  '
         if name == 'glBegin':
@@ -72,7 +71,7 @@ def apiErrorFuncDefineCode(apis, args):
         if name == 'glEnd':
           code += '_context->err.inBeginEnd = false;\n'
         code += '  if (!_context->err.inBeginEnd) {\n'
-        code += '    _error = _context->err.next.glGetError();\n'
+        code += '    _error = _context->err.next.glGetError( _context );\n'
         code += '    if (_error!=GL_NO_ERROR) {\n'
         code += '      Error("%s : ",Token::GLerrorToString(_error));\n'%(name)
         code += '      #if REGAL_BREAK\n'
@@ -85,7 +84,7 @@ def apiErrorFuncDefineCode(apis, args):
         if not typeIsVoid(rType):
           code += 'return ret;\n'
       else:
-        code += '  GLenum error = _context->err.next.glGetError();\n'
+        code += '  GLenum error = _context->err.next.glGetError( _context );\n'
         code += '  return error;\n'
       code += '}\n\n'
 

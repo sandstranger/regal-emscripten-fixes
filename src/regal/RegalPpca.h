@@ -167,7 +167,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     if (mask&GL_CLIENT_VERTEX_ARRAY_BIT)
     {
       RegalAssert(vertexArrayStack.size());
-      ClientState::VertexArray::transition(orig, vertexArrayStack.back(), driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+      ClientState::VertexArray::transition(orig, &ctx, vertexArrayStack.back(), driverAllowsVertexAttributeArraysWithoutBoundBuffer);
       vertexArrayStack.pop_back();
 
       Internal("Regal::Ppca::PopClientAttrib GL_CLIENT_VERTEX_ARRAY_BIT ",ClientState::VertexArray::toString());
@@ -178,7 +178,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     if (mask&GL_CLIENT_PIXEL_STORE_BIT)
     {
       RegalAssert(pixelStoreStack.size());
-      ClientState::PixelStore::transition(orig, pixelStoreStack.back());
+      ClientState::PixelStore::transition(orig, &ctx, pixelStoreStack.back());
       pixelStoreStack.pop_back();
 
       Internal("Regal::Ppca::PopClientAttrib GL_CLIENT_PIXEL_STORE_BIT ",ClientState::PixelStore::toString());
@@ -205,7 +205,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
       // Ideally we'd only set the state that has changed - revisit
 
-      ClientState::VertexArray::set(orig,driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+      ClientState::VertexArray::set(orig,&ctx,driverAllowsVertexAttributeArraysWithoutBoundBuffer);
 
       mask &= ~GL_CLIENT_VERTEX_ARRAY_BIT;
     }
@@ -218,7 +218,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
       // Ideally we'd only set the state that has changed - revisit
 
-      ClientState::PixelStore::set(orig);
+      ClientState::PixelStore::set(orig,&ctx);
 
       mask &= ~GL_CLIENT_PIXEL_STORE_BIT;
     }

@@ -81,8 +81,8 @@ def generatePluginSource(apis, args):
         continue
 
       name       = function.name
-      params     = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      params     = paramsDefaultCode(function.parameters, True, "void *_context")
+      callParams = paramsNameCode(function.parameters, "reinterpret_cast< ::REGAL_NAMESPACE_INTERNAL::RegalContext * >(_context)")
       rType      = typeCode(function.ret.type)
       rTypes     = rType.strip()
       category   = getattr(function, 'category', None)

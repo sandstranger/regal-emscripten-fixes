@@ -313,7 +313,7 @@ void
 Init::checkForGLErrors(RegalContext *context)
 {
   RegalAssert(context);
-  GLenum err = context->dispatchGL.glGetError();
+  GLenum err = context->dispatchGL.glGetError( context );
   if (err!=GL_NO_ERROR)
     Error("GL error = ",toString(err));
 }

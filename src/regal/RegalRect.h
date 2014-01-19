@@ -111,10 +111,10 @@ struct Rect
 
     orig.glBegin(ctx, GL_POLYGON);
 
-      Emu::glVertex2(orig, x1, y1);
-      Emu::glVertex2(orig, x2, y1);
-      Emu::glVertex2(orig, x2, y2);
-      Emu::glVertex2(orig, x1, y2);
+      Emu::glVertex2(orig, ctx, x1, y1);
+      Emu::glVertex2(orig, ctx, x2, y1);
+      Emu::glVertex2(orig, ctx, x2, y2);
+      Emu::glVertex2(orig, ctx, x1, y2);
 
     // undo the above "artificial" increment
 

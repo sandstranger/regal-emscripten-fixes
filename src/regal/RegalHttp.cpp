@@ -486,7 +486,7 @@ struct TextureHandler : public RequestHandler {
           for( int i = 0; i < sizeof(top)/sizeof(top[0]); i++ ) {
             GLfloat fval[4] = { 0, 0, 0, 0 };
             const TextureObjectParameter & p = top[i];
-            h.gl.GetTextureParameter( texname, GL_TEXTURE_2D, p.pname, fval );
+            h.gl.GetTextureParameter( ctx, texname, GL_TEXTURE_2D, p.pname, fval );
             switch( p.pname ) {
               case GL_TEXTURE_BASE_LEVEL: baseLevel = GLint(fval[0]); break;
               case GL_TEXTURE_MAX_LEVEL: maxLevel = GLint(fval[0]); break;
@@ -500,7 +500,7 @@ struct TextureHandler : public RequestHandler {
           indent += 2;
           for( int level = baseLevel; level <= maxLevel; level++ ) {
             GLfloat fval[4] = { 0, 0, 0, 0 };
-            h.gl.GetTextureLevelParameter( texname, GL_TEXTURE_2D, level, GL_TEXTURE_WIDTH, fval );
+            h.gl.GetTextureLevelParameter( ctx, texname, GL_TEXTURE_2D, level, GL_TEXTURE_WIDTH, fval );
             if( int(fval[0]) == 0 ) {
               break;
             }
@@ -509,7 +509,7 @@ struct TextureHandler : public RequestHandler {
             for( int i = 0; i < sizeof(tolp)/sizeof(tolp[0]); i++ ) {
               GLfloat fval[4] = { 0, 0, 0, 0 };
               const TextureObjectParameter & p = tolp[i];
-              h.gl.GetTextureLevelParameter( texname, GL_TEXTURE_2D, level, p.pname, fval );
+              h.gl.GetTextureLevelParameter( ctx, texname, GL_TEXTURE_2D, level, p.pname, fval );
               if( fval[0] != p.initVal[0] ) {
                 json += string( indent, ' ' ) + PrintTextureObjectParameter( p, fval );
               }
@@ -535,8 +535,8 @@ struct TextureHandler : public RequestHandler {
         if( ctx->emuInfo->gl_ext_direct_state_access == GL_TRUE || ctx->info->gl_ext_direct_state_access ) {
           ctx->http.AcquireAppContext( ctx );
           GLfloat fwidth, fheight;
-          h.gl.GetTextureLevelParameter( texname, texinfo.target, 0, GL_TEXTURE_WIDTH, &fwidth );
-          h.gl.GetTextureLevelParameter( texname, texinfo.target, 0, GL_TEXTURE_HEIGHT, &fheight );
+          h.gl.GetTextureLevelParameter( ctx, texname, texinfo.target, 0, GL_TEXTURE_WIDTH, &fwidth );
+          h.gl.GetTextureLevelParameter( ctx, texname, texinfo.target, 0, GL_TEXTURE_HEIGHT, &fheight );
           
           int width = int(fwidth);
           int height = int(fheight);
@@ -549,7 +549,7 @@ struct TextureHandler : public RequestHandler {
           int stride = width * 4;
           unsigned char * pixels = new unsigned char[ int(height + 1) * stride ];
           
-          h.gl.GetTextureImage( texname, texinfo.target, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
+          h.gl.GetTextureImage( ctx, texname, texinfo.target, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
           ctx->http.ReleaseAppContext( ctx );
           
           for( int j = 0; j < height/2; j++ ) {
@@ -867,7 +867,7 @@ struct ProgramHandler : public RequestHandler {
       json += string( indent, ' ' ) + "\"name\": " + progNameString + ",\n";
       GLuint shaders[8];
       GLsizei numShaders = 0;
-      h.gl.GetAttachedShaders( prog, (GLsizei)array_size(shaders), &numShaders, shaders );
+      h.gl.GetAttachedShaders( ctx, prog, (GLsizei)array_size(shaders), &numShaders, shaders );
       if( numShaders > 0 ) {
         json += string( indent, ' ' ) + "\"shaders\": [ ";
         for( int i = 0; i < numShaders; i++ ) {
@@ -879,7 +879,7 @@ struct ProgramHandler : public RequestHandler {
         json += " ],\n";
       }
       GLint activeUniforms = 0;
-      h.gl.GetProgramiv( prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
+      h.gl.GetProgramiv( ctx, prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
       if( activeUniforms > 0 ) {
         json += string( indent, ' ' ) + "\"GL_ACTIVE_UNIFORMS\": " + print_string( activeUniforms, ",\n" );
         json += string( indent, ' ' ) + "\"uniforms\": {\n";
@@ -891,9 +891,9 @@ struct ProgramHandler : public RequestHandler {
           GLsizei nameLen = 0;
           GLint count;
           GLenum type;
-          h.gl.GetActiveUniform( prog, i, 80, &nameLen, &count, &type, name );
+          h.gl.GetActiveUniform( ctx, prog, i, 80, &nameLen, &count, &type, name );
           name[nameLen] = 0;
-          GLint loc = h.gl.GetUniformLocation( prog, name );
+          GLint loc = h.gl.GetUniformLocation( ctx, prog, name );
           json +=string( indent, ' ' ) + "\"" + string(name) + "\": {\n";
           indent += 2;
           json +=string( indent, ' ' ) + print_string( "\"location\": ", loc, ",\n" );
@@ -913,7 +913,7 @@ struct ProgramHandler : public RequestHandler {
       {
         char dbgLog[1<<15];
         int dbgLogLen = 0;
-        h.gl.GetProgramInfoLog( prog, (1<<15) - 2, &dbgLogLen, dbgLog );
+        h.gl.GetProgramInfoLog( ctx, prog, (1<<15) - 2, &dbgLogLen, dbgLog );
         dbgLog[ dbgLogLen ] = 0;
         if( dbgLogLen > 0 ) {
           json += string( indent, ' ' ) + print_string( "\"infoLog\": " );
@@ -960,22 +960,22 @@ struct ShaderHandler : public RequestHandler {
       h.AcquireAppContext( ctx );
       json += string( indent, ' ' ) + "\"name\": " + shaderNameString + ",\n";
       GLint ival;
-      h.gl.GetShaderiv(shader, GL_SHADER_TYPE, &ival );
+      h.gl.GetShaderiv(ctx, shader, GL_SHADER_TYPE, &ival );
       json += string( indent, ' ' ) + "\"GL_SHADER_TYPE\": \"" + Token::GLenumToString( ival ) + "\",\n";
-      h.gl.GetShaderiv(shader, GL_DELETE_STATUS, &ival );
+      h.gl.GetShaderiv(ctx, shader, GL_DELETE_STATUS, &ival );
       json += string( indent, ' ' ) + "\"GL_DELETE_STATUS\": " + ( ival ? "true" : "false" ) + ",\n";
-      h.gl.GetShaderiv(shader, GL_COMPILE_STATUS, &ival );
+      h.gl.GetShaderiv(ctx, shader, GL_COMPILE_STATUS, &ival );
       json += string( indent, ' ' ) + "\"GL_COMPILE_STATUS\": " + ( ival ? "true" : "false" ) + ",\n";
       {
         char str[1<<15];
         int strLen = 0;
-        h.gl.GetShaderSource( shader, sizeof(str) - 2, &strLen, str );
+        h.gl.GetShaderSource( ctx, shader, sizeof(str) - 2, &strLen, str );
         str[ strLen ] = 0;
         if( strLen > 0 ) {
           json += string( indent, ' ' ) + print_string( "\"source\": " );
           json += PrintMultiLine( str, strLen, indent );
         }
-        h.gl.GetShaderInfoLog( shader, sizeof(str) - 2, &strLen, str );
+        h.gl.GetShaderInfoLog( ctx, shader, sizeof(str) - 2, &strLen, str );
         str[ strLen ] = 0;
         if( strLen > 0 ) {
           json += string( indent, ' ' ) + print_string( "\"infoLog\": " );
@@ -1029,17 +1029,17 @@ struct FboHandler : public RequestHandler {
       ScopedContextAcquire sca( ctx );
       Http & h = ctx->http;
       GLint currFbo = -1;
-      h.gl.GetIntegerv( GL_READ_FRAMEBUFFER_BINDING, & currFbo );
+      h.gl.GetIntegerv( ctx, GL_READ_FRAMEBUFFER_BINDING, & currFbo );
       if( fbo != currFbo ) {
         SendText( conn, "application/json", "\"can't query the non-current FBO yet\"" );
         return;
       }
       HttpFboInfo & fi = ctx->http.fbo[ fbo ];
       
-      h.gl.Finish();
+      h.gl.Finish( ctx );
       if( fbo == 0 ) {
         GLint vp[4];
-        h.gl.GetIntegerv( GL_VIEWPORT, vp );
+        h.gl.GetIntegerv( ctx, GL_VIEWPORT, vp );
         fi.width = vp[0] + vp[2];
         fi.height = vp[1] + vp[3];
       }
@@ -1048,7 +1048,7 @@ struct FboHandler : public RequestHandler {
       
       unsigned char * pixels = new unsigned char[ (fi.height+1) * stride ];
       
-      h.gl.ReadPixels( 0, 0, fi.width, fi.height, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
+      h.gl.ReadPixels( ctx, 0, 0, fi.width, fi.height, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
       for( int j = 0; j < fi.height/2; j++ ) {
         unsigned char * s = pixels + (fi.height -1 - j) * stride;
         unsigned char * d = pixels + j * stride;

@@ -341,7 +341,7 @@ def apiFuncDefineCode(apis, args):
 
       name       = function.name
       params     = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      callParams = paramsNameCode(function.parameters, paramsPrefix = "_context")
       rType      = typeCode(function.ret.type)
       rTypes     = rType.strip()
       category   = getattr(function, 'category', None)
@@ -386,7 +386,7 @@ def apiFuncDefineCode(apis, args):
             c += '  {\n'
             if not typeIsVoid(rType):
               c += 'return '
-            c += '_context->dispatchGL.%s(_context, %s);\n' % ( name, callParams )
+            c += '_context->dispatchGL.%s(%s);\n' % ( name, callParams )
             if typeIsVoid(rType):
               c += '    return;\n'
             c += '  }\n'
@@ -440,7 +440,7 @@ def apiFuncDefineCode(apis, args):
           c += '  '
           if not typeIsVoid(rType):
             c += 'ret = '
-          c += 'dispatchGlobal.%s(_context, %s);\n' % ( name, callParams )
+          c += 'dispatchGlobal.%s(%s);\n' % ( name, callParams )
 
         c += listToString(indent(stripVertical(emuCodeGen(emue,'init')),'  '))
 
@@ -568,6 +568,7 @@ def apiFuncDeclareCode(apis, args):
 
       name   = function.name
       params = paramsDefaultCode(function.parameters, True)
+      rparams = paramsDefaultCode(function.parameters, True, "void *_context")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -581,7 +582,7 @@ def apiFuncDeclareCode(apis, args):
       t.append((category,funcProtoCode(function, version, 'REGAL_CALL', True)))
       m.append((category,'#define %-35s r%-35s' % (name, name) ))
       f.append((category,'REGAL_DECL %sREGAL_CALL %s(%s);' % (rType, name, params) ))
-      p.append((category,'REGAL_DECL %sREGAL_CALL plugin_%s(%s);' % (rType, name, params) ))
+      p.append((category,'REGAL_DECL %sREGAL_CALL plugin_%s(%s);' % (rType, name, rparams) ))
 
     def cmpEnum(a,b):
       if a[0]==b[0]:

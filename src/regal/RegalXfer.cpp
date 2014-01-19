@@ -165,8 +165,8 @@ namespace Emu {
       // now unpack the packed formats into their canonical formats
       const GLubyte * pix = static_cast<const GLubyte *>(pixels);
       pix += ctx->xfer->unpackSkipRows * rowLength + ctx->xfer->unpackSkipPixels * pixelSize;
-      orig.glPixelStorei( GL_UNPACK_SKIP_ROWS, 0 );
-      orig.glPixelStorei( GL_UNPACK_SKIP_PIXELS, 0 );
+      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_ROWS, 0 );
+      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_PIXELS, 0 );
       for( int i = 0; i < height; i++ ) {
         switch( complex ) {
           case 1:
@@ -200,13 +200,13 @@ namespace Emu {
           default:
             break;
         }
-        orig.glTexSubImage2D( target, level, xoffset, yoffset + i, width, 1, TargetFormat(*ctx, internalFormat, tgtfmt), tgttype, vline );
+        orig.glTexSubImage2D( ctx, target, level, xoffset, yoffset + i, width, 1, TargetFormat(*ctx, internalFormat, tgtfmt), tgttype, vline );
         pix += rowLength;
       }
-      orig.glPixelStorei( GL_UNPACK_SKIP_ROWS, ctx->xfer->unpackSkipRows );
-      orig.glPixelStorei( GL_UNPACK_SKIP_PIXELS, ctx->xfer->unpackSkipPixels );
+      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_ROWS, ctx->xfer->unpackSkipRows );
+      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_PIXELS, ctx->xfer->unpackSkipPixels );
     } else {
-        orig.glTexSubImage2D( target, level, xoffset, yoffset, width, height, TargetFormat(*ctx, internalFormat, tgtfmt), type, pixels );
+        orig.glTexSubImage2D( ctx, target, level, xoffset, yoffset, width, height, TargetFormat(*ctx, internalFormat, tgtfmt), type, pixels );
     }
   }
 
@@ -319,7 +319,7 @@ namespace Emu {
     else
 #endif
     {
-      orig.glCompressedTexSubImage2D( target, level, xoffset, yoffset, width, height, TargetFormat(*ctx, internalFormat, format), imageSize, data );
+      orig.glCompressedTexSubImage2D( ctx, target, level, xoffset, yoffset, width, height, TargetFormat(*ctx, internalFormat, format), imageSize, data );
     }
   }
 
@@ -355,13 +355,13 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
     // Only supported in desktop mode
 
     case GL_RGB5:
-      orig.glTexImage2D( target, level, internalFormat, width, height, border, format, type, pixels );
+      orig.glTexImage2D( ctx, target, level, internalFormat, width, height, border, format, type, pixels );
       return;
 
     // Formats common to GL and ES 2.0, just pass-through directly.
 
     case GL_RGB5_A1:
-      orig.glTexImage2D( target, level, internalFormat, width, height, border, format, type, pixels );
+      orig.glTexImage2D( ctx, target, level, internalFormat, width, height, border, format, type, pixels );
       return;
 
     default:
@@ -400,7 +400,7 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
   if (ctx->isES2())
     internalFormat = targetFormat;
 
-  orig.glTexImage2D( target, level, internalFormat, width, height, border, targetFormat, targetType, NULL );
+  orig.glTexImage2D( ctx, target, level, internalFormat, width, height, border, targetFormat, targetType, NULL );
   name2ifmt[ textureBinding2D[ activeTextureIndex ] ] = internalFormat;
   if( pixels ) {
     SubImage2D( ctx, target, internalFormat, level, 0, 0, width, height, format, type, pixels );
@@ -433,14 +433,14 @@ void Xfer::CompressedTexImage2D( RegalContext * ctx, GLenum target, GLint level,
         if (internalFormat == GL_COMPRESSED_SRGB_S3TC_DXT1_EXT ||
             internalFormat == GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT)
           ifmt = GL_SRGB_ALPHA_EXT;
-        orig.glTexImage2D( target, level, ifmt, width, height, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, NULL );
+        orig.glTexImage2D( ctx, target, level, ifmt, width, height, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, NULL );
         if( width == 4 && height == 4 ) {
           const GLubyte tail[] = { 255, 255, 255, 255,
                                    255, 255, 255, 255,
                                    255, 255, 255, 255,
                                    255, 255, 255, 255 };
-          orig.glTexImage2D( target, level + 1, ifmt, 2, 2, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
-          orig.glTexImage2D( target, level + 2, ifmt, 1, 1, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
+          orig.glTexImage2D( ctx, target, level + 1, ifmt, 2, 2, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
+          orig.glTexImage2D( ctx, target, level + 2, ifmt, 1, 1, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
         }
         break;
       default:
@@ -453,7 +453,7 @@ void Xfer::CompressedTexImage2D( RegalContext * ctx, GLenum target, GLint level,
     }
   } else {
      name2ifmt[ textureBinding2D[ activeTextureIndex ] ] = internalFormat;
-     orig.glCompressedTexImage2D( target, level, internalFormat, width, height, border, imageSize, data );
+     orig.glCompressedTexImage2D( ctx, target, level, internalFormat, width, height, border, imageSize, data );
   }
 }
 

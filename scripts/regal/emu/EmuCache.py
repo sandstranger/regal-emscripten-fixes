@@ -13,7 +13,7 @@ formulaeGlobal = {
         'pre' : [
           'if (REGAL_CACHE && REGAL_CACHE_SHADER)',
           '{',
-          '  Cache::shaderSource(_next->glShaderSource, shader, count, string, length);',
+          '  Cache::shaderSource(_context,_context->dispatchGL.glShaderSource, shader, count, string, length);',
           '  return;',
           '}'
         ]
@@ -30,7 +30,7 @@ formulaeGlobal = {
         'pre' : [
           'if (REGAL_CACHE && REGAL_CACHE_TEXTURE)',
           '{',
-          '  Cache::bindTexture(_next->glBindTexture,_next->glGetTexLevelParameteriv,_next->glGetTexImage, target, texture);',
+          '  Cache::bindTexture(_context,_context->dispatchGL.glBindTexture, _context->dispatchGL.glGetTexLevelParameteriv, _context->dispatchGL.glGetTexImage, target, texture);',
           '  return;',
           '}'
         ]

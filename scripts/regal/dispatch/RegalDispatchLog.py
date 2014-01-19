@@ -86,8 +86,8 @@ def generateDispatchLog(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
+      callParams = paramsNameCode(function.parameters, "_context")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -112,7 +112,6 @@ def generateDispatchLog(apis, args):
 #     code += '    %s\n' % logFunction( function, 'Driver', True, False )
 
       if function.needsContext:
-        code += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
         code += '    RegalAssert(_context);\n'
 
       # Temporarily adjust the context begin/end depth for proper indentation
@@ -159,11 +158,11 @@ def generateDispatchLog(apis, args):
 
       if name=='glUseProgram':
         code += '    #if !REGAL_SYS_PPAPI\n'
-        code += '    if (Logging::enableDriver && program && log_glIsProgram(program))\n'
+        code += '    if (Logging::enableDriver && program && log_glIsProgram(_context, program))\n'
         code += '    {\n'
         code += '      GLuint  _shaders[16];\n'
         code += '      GLsizei _count;\n'
-        code += '      log_glGetAttachedShaders(program,16,&_count,_shaders);\n'
+        code += '      log_glGetAttachedShaders(_context, program,16,&_count,_shaders);\n'
         code += '    }\n'
         code += '    #endif // REGAL_SYS_PPAPI\n'
 

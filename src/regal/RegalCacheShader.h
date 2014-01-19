@@ -43,6 +43,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+#include "RegalDispatch.h"
 
 REGAL_GLOBAL_END
 
@@ -50,7 +51,7 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Cache {
 
-  void shaderSource(PFNGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length);
+  void shaderSource(RegalContext * ctx, REGALGLSHADERSOURCEPROC proc, GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length);
 
 };
 

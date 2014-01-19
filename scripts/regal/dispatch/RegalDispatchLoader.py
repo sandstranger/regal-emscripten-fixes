@@ -130,7 +130,10 @@ def apiMissingFuncDefineCode(apis, args):
       params = paramsDefaultCode(function.parameters, True, "RegalContext *_context" )
 
       code += '  static %sREGAL_CALL loader_%s(%s)\n  {\n' % ( rType, name, params )
-      code += '    driver_%s(%s);\n' % ( name, callParams )
+      code += '    '
+      if not typeIsVoid(rType):
+        code += 'return '
+      code += 'driver_%s(%s);\n' % ( name, callParams )
       code += '  }\n'
       code += '\n'
 
@@ -196,6 +199,7 @@ def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambd
       code += '    if( driver_%s == NULL ) {\n' % name
       code += '      driver_%s = missing_%s;\n' % (name,name)
       code += '    }\n'
+      code += '    dt.%s = loader_%s;\n' % (name,name)
 
     code += '\n'
 
@@ -257,10 +261,12 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
       categoryPrev = category
 
 
-      code += '    _getProcAddress( dt.%s, %s, "%s" );\n'%(name,name,name)
-      code += '    if( dt.%s == NULL ) {\n' % name
-      code += '      dt.%s = missing_%s;\n' % (name,name)
+      code += '    _getProcAddress( driver_%s, %s, "%s" );\n'%(name,name,name)
+      code += '    if( driver_%s == NULL ) {\n' % name
+      code += '      driver_%s = missing_%s;\n' % (name,name)
       code += '    }\n'
+      code += '    dt.%s = loader_%s;\n'% (name, name)
+      code += '\n'
 
     if api.name in cond:
       code += '  #endif // %s\n' % cond[api.name]

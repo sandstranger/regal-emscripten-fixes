@@ -50,16 +50,16 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL cache_glShaderSource(GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length)
+static void REGAL_CALL cache_glShaderSource(RegalContext * ctx, GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length)
 {
   RegalContext *_context = REGAL_GET_CONTEXT();
   RegalAssert(_context);
   Dispatch::GL *_next = &_context->dispatchGL;
   RegalAssert(_next);
   if (Config::cache && Config::cacheShader)
-    Cache::shaderSource(_next->glShaderSource, shader, count, string, length);
+    Cache::shaderSource(ctx, _next->glShaderSource, shader, count, string, length);
   else
-    _next->glShaderSource(shader, count, string, length);
+    _next->glShaderSource(ctx, shader, count, string, length);
 }
 
 void InitDispatchTableCache(Dispatch::GL &tbl)

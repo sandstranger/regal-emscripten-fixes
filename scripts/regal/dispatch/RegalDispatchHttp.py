@@ -280,8 +280,8 @@ def generateDispatchHttp(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
+      callParams = paramsNameCode(function.parameters, "_context")
       rType  = typeCode(function.ret.type)
       rTypes    = rType.strip()
       category  = getattr(function, 'category', None)
@@ -319,7 +319,6 @@ def generateDispatchHttp(apis, args):
 
       if not typeIsVoid(rType):
         code += '    %s ret = %s;\n' % (rType, retInit)
-      code += '    RegalContext *_context = REGAL_GET_CONTEXT();\n'
       if function.needsContext:
         code += '    RegalAssert( _context );\n'
 

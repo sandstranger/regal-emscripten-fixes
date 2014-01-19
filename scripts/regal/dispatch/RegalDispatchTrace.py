@@ -41,8 +41,8 @@ def apiTraceFuncDefineCode(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
+      callParams = paramsNameCode(function.parameters, "_context")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -88,8 +88,8 @@ def apiTraceFuncDefineCode(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
+      callParams = paramsNameCode(function.parameters, "_context")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)

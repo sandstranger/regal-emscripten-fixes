@@ -43,6 +43,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+#include "RegalDispatch.h"
 
 REGAL_GLOBAL_END
 
@@ -52,7 +53,7 @@ namespace Cache {
 
   // glBindTexture handler
 
-  void bindTexture(PFNGLBINDTEXTUREPROC bindTextureProc, PFNGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, PFNGLGETTEXIMAGEPROC getTexImageProc, GLenum target, GLuint texture);
+  void bindTexture(RegalContext * ctx, REGALGLBINDTEXTUREPROC bindTextureProc, REGALGLGETTEXLEVELPARAMETERIVPROC getTexLevelProc, REGALGLGETTEXIMAGEPROC getTexImageProc, GLenum target, GLuint texture);
 
 };
 
