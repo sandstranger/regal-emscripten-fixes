@@ -976,13 +976,21 @@ typedef void (REGAL_CALL *PFNGLDEBUGMESSAGEINSERTAMDPROC)(GLenum category, GLenu
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_AMD_DEBUG_OUTPUT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint REGAL_CALL glGetDebugMessageLogAMD(GLuint count, GLsizei bufsize, GLenum *categories, GLuint *severities, GLuint *ids, GLsizei *lengths, GLchar *message);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDebugMessageCallbackAMD(GLDEBUGPROCAMD callback, GLvoid *userParam);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDebugMessageEnableAMD(GLenum category, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDebugMessageInsertAMD(GLenum category, GLenum severity, GLuint id, GLsizei length, const GLchar *buf);
+#endif
 
 #endif
 
@@ -1136,7 +1144,9 @@ typedef void (REGAL_CALL *PFNGLVERTEXATTRIBPARAMETERIAMDPROC)(GLuint index, GLen
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_AMD_INTERLEAVED_ELEMENTS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribParameteriAMD(GLuint index, GLenum pname, GLint param);
+#endif
 
 #endif
 
@@ -1183,9 +1193,13 @@ typedef void (REGAL_CALL *PFNGLMULTIDRAWELEMENTSINDIRECTAMDPROC)(GLenum mode, GL
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_AMD_MULTI_DRAW_INDIRECT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMultiDrawArraysIndirectAMD(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirectAMD(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+#endif
 
 #endif
 
@@ -1243,11 +1257,17 @@ typedef void (REGAL_CALL *PFNGLGENNAMESAMDPROC)(GLenum identifier, GLuint num, G
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_AMD_NAME_GEN_DELETE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsNameAMD(GLenum identifier, GLuint name);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteNamesAMD(GLenum identifier, GLuint num, const GLuint *names);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGenNamesAMD(GLenum identifier, GLuint num, GLuint *names);
+#endif
 
 #endif
 
@@ -1523,7 +1543,9 @@ typedef void (REGAL_CALL *PFNGLSETMULTISAMPLEFVAMDPROC)(GLenum pname, GLuint ind
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_AMD_SAMPLE_POSITIONS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glSetMultisamplefvAMD(GLenum pname, GLuint index, const GLfloat *val);
+#endif
 
 #endif
 
@@ -1614,9 +1636,13 @@ typedef void (REGAL_CALL *PFNGLTEXTURESTORAGESPARSEAMDPROC)(GLuint texture, GLen
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_AMD_SPARSE_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorageSparseAMD(GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureStorageSparseAMD(GLuint texture, GLenum target, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLsizei layers, GLbitfield flags);
+#endif
 
 #endif
 
@@ -1669,7 +1695,9 @@ typedef void (REGAL_CALL *PFNGLSTENCILOPVALUEAMDPROC)(GLenum face, GLuint value)
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_AMD_STENCIL_OPERATION_EXTENDED
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glStencilOpValueAMD(GLenum face, GLuint value);
+#endif
 
 #endif
 
@@ -1785,7 +1813,9 @@ typedef void (REGAL_CALL *PFNGLBLITFRAMEBUFFERANGLEPROC)(GLint srcX0, GLint srcY
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ANGLE_FRAMEBUFFER_BLIT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBlitFramebufferANGLE(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+#endif
 
 #endif
 
@@ -1836,7 +1866,9 @@ typedef void (REGAL_CALL *PFNGLRENDERBUFFERSTORAGEMULTISAMPLEANGLEPROC)(GLenum t
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ANGLE_FRAMEBUFFER_MULTISAMPLE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleANGLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+#endif
 
 #endif
 
@@ -1889,11 +1921,17 @@ typedef void (REGAL_CALL *PFNGLVERTEXATTRIBDIVISORANGLEPROC)(GLuint index, GLuin
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ANGLE_INSTANCED_ARRAYS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawArraysInstancedANGLE(GLenum mode, GLint first, GLsizei count, GLsizei primcount);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawElementsInstancedANGLE(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribDivisorANGLE(GLuint index, GLuint divisor);
+#endif
 
 #endif
 
@@ -2163,27 +2201,49 @@ typedef void (REGAL_CALL *PFNGLQUERYCOUNTERANGLEPROC)(GLuint id, GLenum target);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ANGLE_TIMER_QUERY
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsQueryANGLE(GLuint id);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBeginQueryANGLE(GLenum target, GLuint id);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteQueriesANGLE(GLsizei n, const GLuint *ids);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glEndQueryANGLE(GLenum target);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGenQueriesANGLE(GLsizei n, GLuint *ids);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryObjecti64vANGLE(GLuint id, GLenum pname, GLint64 *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryObjectivANGLE(GLuint id, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryObjectui64vANGLE(GLuint id, GLenum pname, GLuint64 *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryObjectuivANGLE(GLuint id, GLenum pname, GLuint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryivANGLE(GLenum target, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glQueryCounterANGLE(GLuint id, GLenum target);
+#endif
 
 #endif
 
@@ -2242,7 +2302,9 @@ typedef void (REGAL_CALL *PFNGLGETTRANSLATEDSHADERSOURCEANGLEPROC)(GLuint shader
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ANGLE_TRANSLATED_SHADER_SOURCE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetTranslatedShaderSourceANGLE(GLuint shader, GLsizei bufsize, GLsizei *length, GLchar *source);
+#endif
 
 #endif
 
@@ -2351,7 +2413,9 @@ typedef void (REGAL_CALL *PFNGLCOPYTEXTURELEVELSAPPLEPROC)(GLuint destinationTex
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_APPLE_COPY_TEXTURE_LEVELS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCopyTextureLevelsAPPLE(GLuint destinationTexture, GLuint sourceTexture, GLint sourceBaseLevel, GLsizei sourceLevelCount);
+#endif
 
 #endif
 
@@ -2686,11 +2750,17 @@ typedef void (REGAL_CALL *PFNGLSWAPAPPLEPROC)(void);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_APPLE_FLUSH_RENDER
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFinishRenderAPPLE(void);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFlushRenderAPPLE(void);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glSwapAPPLE(void);
+#endif
 
 #endif
 
@@ -2749,9 +2819,13 @@ typedef void (REGAL_CALL *PFNGLRESOLVEMULTISAMPLEFRAMEBUFFERAPPLEPROC)(void);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_APPLE_FRAMEBUFFER_MULTISAMPLE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleAPPLE(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glResolveMultisampleFramebufferAPPLE(void);
+#endif
 
 #endif
 
@@ -3027,19 +3101,33 @@ typedef void (REGAL_CALL *PFNGLWAITSYNCAPPLEPROC)(GLsync sync, GLbitfield flags,
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_APPLE_SYNC
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsSyncAPPLE(GLsync sync);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLenum REGAL_CALL glClientWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLsync REGAL_CALL glFenceSyncAPPLE(GLenum condition, GLbitfield flags);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteSyncAPPLE(GLsync sync);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetInteger64vAPPLE(GLenum pname, GLint64 *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetSyncivAPPLE(GLsync sync, GLenum pname, GLsizei bufSize, GLsizei *length, GLint *values);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glWaitSyncAPPLE(GLsync sync, GLbitfield flags, GLuint64 timeout);
+#endif
 
 #endif
 
@@ -3637,11 +3725,17 @@ typedef void (REGAL_CALL *PFNGLDRAWELEMENTSINSTANCEDBASEVERTEXBASEINSTANCEPROC)(
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_BASE_INSTANCE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawArraysInstancedBaseInstance(GLenum mode, GLint first, GLsizei count, GLsizei primcount, GLuint baseinstance);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawElementsInstancedBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLuint baseinstance);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawElementsInstancedBaseVertexBaseInstance(GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex, GLuint baseinstance);
+#endif
 
 #endif
 
@@ -3722,37 +3816,69 @@ typedef void (REGAL_CALL *PFNGLVERTEXATTRIBL1UI64VARBPROC)(GLuint index, const G
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_BINDLESS_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsImageHandleResidentARB(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsTextureHandleResidentARB(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint64 REGAL_CALL glGetImageHandleARB(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint64 REGAL_CALL glGetTextureHandleARB(GLuint texture);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint64 REGAL_CALL glGetTextureSamplerHandleARB(GLuint texture, GLuint sampler);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetVertexAttribLui64vARB(GLuint index, GLenum pname, GLuint64EXT *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeImageHandleNonResidentARB(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeImageHandleResidentARB(GLuint64 handle, GLenum access);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeTextureHandleNonResidentARB(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeTextureHandleResidentARB(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glProgramUniformHandleui64ARB(GLuint program, GLint location, GLuint64 value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glProgramUniformHandleui64vARB(GLuint program, GLint location, GLsizei count, const GLuint64 *values);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformHandleui64ARB(GLint location, GLuint64 value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformHandleui64vARB(GLint location, GLsizei count, const GLuint64 *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribL1ui64ARB(GLuint index, GLuint64EXT x);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribL1ui64vARB(GLuint index, const GLuint64EXT *v);
+#endif
 
 #endif
 
@@ -3885,11 +4011,13 @@ typedef void (REGAL_CALL *PFNGLNAMEDBUFFERSTORAGEEXTPROC)(GLuint buffer, GLsizei
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_BUFFER_STORAGE
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
+#endif
+
 #if GL_VER_ALL || GL_VER >= 40400
 REGAL_DECL void REGAL_CALL glBufferStorage(GLenum target, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
 #endif
-
-REGAL_DECL void REGAL_CALL glNamedBufferStorageEXT(GLuint buffer, GLsizeiptr size, const GLvoid *data, GLbitfield flags);
 
 #endif
 
@@ -3940,7 +4068,9 @@ typedef GLsync (REGAL_CALL *PFNGLCREATESYNCFROMCLEVENTARBPROC)(cl_context contex
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_CL_EVENT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLsync REGAL_CALL glCreateSyncFromCLeventARB(cl_context context, cl_event event, GLbitfield flags);
+#endif
 
 #endif
 
@@ -3991,13 +4121,21 @@ typedef void (REGAL_CALL *PFNGLCLEARNAMEDBUFFERSUBDATAEXTPROC)(GLuint buffer, GL
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_CLEAR_BUFFER_OBJECT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glClearBufferData(GLenum target, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glClearBufferSubData(GLenum target, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glClearNamedBufferDataEXT(GLuint buffer, GLenum internalformat, GLenum format, GLenum type, const GLvoid *data);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glClearNamedBufferSubDataEXT(GLuint buffer, GLenum internalformat, GLintptr offset, GLsizeiptr size, GLenum format, GLenum type, const GLvoid *data);
+#endif
 
 #endif
 
@@ -4220,9 +4358,13 @@ typedef void (REGAL_CALL *PFNGLDISPATCHCOMPUTEPROC)(GLuint num_groups_x, GLuint 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_COMPUTE_SHADER
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDispatchCompute(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDispatchComputeIndirect(GLintptr indirect);
+#endif
 
 #endif
 
@@ -4275,7 +4417,9 @@ typedef void (REGAL_CALL *PFNGLDISPATCHCOMPUTEGROUPSIZEARBPROC)(GLuint num_group
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_COMPUTE_VARIABLE_GROUP_SIZE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDispatchComputeGroupSizeARB(GLuint num_groups_x, GLuint num_groups_y, GLuint num_groups_z, GLuint group_size_x, GLuint group_size_y, GLuint group_size_z);
+#endif
 
 #endif
 
@@ -4372,7 +4516,9 @@ typedef void (REGAL_CALL *PFNGLCOPYIMAGESUBDATAPROC)(GLuint srcName, GLenum srcT
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_COPY_IMAGE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCopyImageSubData(GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei srcWidth, GLsizei srcHeight, GLsizei srcDepth);
+#endif
 
 #endif
 
@@ -5092,13 +5238,21 @@ typedef void (REGAL_CALL *PFNGLNAMEDFRAMEBUFFERPARAMETERIEXTPROC)(GLuint framebu
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_FRAMEBUFFER_NO_ATTACHMENTS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFramebufferParameteri(GLenum target, GLenum pname, GLint param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetFramebufferParameteriv(GLenum target, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetNamedFramebufferParameterivEXT(GLuint framebuffer, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glNamedFramebufferParameteriEXT(GLuint framebuffer, GLenum pname, GLint param);
+#endif
 
 #endif
 
@@ -6224,9 +6378,13 @@ typedef void (REGAL_CALL *PFNGLMULTIDRAWELEMENTSINDIRECTCOUNTARBPROC)(GLenum mod
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_INDIRECT_PARAMETERS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMultiDrawArraysIndirectCountARB(GLenum mode, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirectCountARB(GLenum mode, GLenum type, const GLvoid *indirect, GLintptr drawcount, GLsizei maxdrawcount, GLsizei stride);
+#endif
 
 #endif
 
@@ -6327,7 +6485,9 @@ typedef void (REGAL_CALL *PFNGLGETINTERNALFORMATIVPROC)(GLenum target, GLenum in
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_INTERNALFORMAT_QUERY
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetInternalformativ(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint *params);
+#endif
 
 #endif
 
@@ -6474,7 +6634,9 @@ typedef void (REGAL_CALL *PFNGLGETINTERNALFORMATI64VPROC)(GLenum target, GLenum 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_INTERNALFORMAT_QUERY2
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetInternalformati64v(GLenum target, GLenum internalformat, GLenum pname, GLsizei bufSize, GLint64 *params);
+#endif
 
 #endif
 
@@ -6529,17 +6691,29 @@ typedef void (REGAL_CALL *PFNGLINVALIDATETEXSUBIMAGEPROC)(GLuint texture, GLint 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_INVALIDATE_SUBDATA
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glInvalidateBufferData(GLuint buffer);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glInvalidateBufferSubData(GLuint buffer, GLintptr offset, GLsizeiptr length);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glInvalidateFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glInvalidateSubFramebuffer(GLenum target, GLsizei numAttachments, const GLenum *attachments, GLint x, GLint y, GLsizei width, GLsizei height);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glInvalidateTexImage(GLuint texture, GLint level);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glInvalidateTexSubImage(GLuint texture, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth);
+#endif
 
 #endif
 
@@ -6856,9 +7030,13 @@ typedef void (REGAL_CALL *PFNGLMULTIDRAWELEMENTSINDIRECTPROC)(GLenum mode, GLenu
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_MULTI_DRAW_INDIRECT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMultiDrawArraysIndirect(GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMultiDrawElementsIndirect(GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride);
+#endif
 
 #endif
 
@@ -7604,17 +7782,29 @@ typedef void (REGAL_CALL *PFNGLGETPROGRAMRESOURCENAMEPROC)(GLuint program, GLenu
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_PROGRAM_INTERFACE_QUERY
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLint REGAL_CALL glGetProgramResourceLocation(GLuint program, GLenum programInterface, const GLchar *name);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLint REGAL_CALL glGetProgramResourceLocationIndex(GLuint program, GLenum programInterface, const GLchar *name);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint REGAL_CALL glGetProgramResourceIndex(GLuint program, GLenum programInterface, const GLchar *name);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetProgramInterfaceiv(GLuint program, GLenum programInterface, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetProgramResourceName(GLuint program, GLenum programInterface, GLuint index, GLsizei bufSize, GLsizei *length, GLchar *name);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetProgramResourceiv(GLuint program, GLenum programInterface, GLuint index, GLsizei propCount, const GLenum *props, GLsizei bufSize, GLsizei *length, GLint *params);
+#endif
 
 #endif
 
@@ -8680,7 +8870,9 @@ typedef void (REGAL_CALL *PFNGLGETACTIVEATOMICCOUNTERBUFFERIVPROC)(GLuint progra
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_SHADER_ATOMIC_COUNTERS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetActiveAtomicCounterBufferiv(GLuint program, GLuint bufferIndex, GLenum pname, GLint *params);
+#endif
 
 #endif
 
@@ -8794,9 +8986,13 @@ typedef void (REGAL_CALL *PFNGLMEMORYBARRIERPROC)(GLbitfield barriers);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_SHADER_IMAGE_LOAD_STORE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBindImageTexture(GLuint unit, GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum access, GLenum format);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMemoryBarrier(GLbitfield barriers);
+#endif
 
 #endif
 
@@ -9211,7 +9407,9 @@ typedef void (REGAL_CALL *PFNGLSHADERSTORAGEBLOCKBINDINGPROC)(GLuint program, GL
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_SHADER_STORAGE_BUFFER_OBJECT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glShaderStorageBlockBinding(GLuint program, GLuint storageBlockIndex, GLuint storageBlockBinding);
+#endif
 
 #endif
 
@@ -9580,9 +9778,13 @@ typedef void (REGAL_CALL *PFNGLTEXTUREPAGECOMMITMENTEXTPROC)(GLuint texture, GLe
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_SPARSE_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexPageCommitmentARB(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexturePageCommitmentEXT(GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLboolean commit);
+#endif
 
 #endif
 
@@ -9951,9 +10153,13 @@ typedef void (REGAL_CALL *PFNGLTEXTUREBUFFERRANGEEXTPROC)(GLuint texture, GLenum
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_TEXTURE_BUFFER_RANGE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexBufferRange(GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureBufferRangeEXT(GLuint texture, GLenum target, GLenum internalformat, GLuint buffer, GLintptr offset, GLsizeiptr size);
+#endif
 
 #endif
 
@@ -10716,17 +10922,29 @@ typedef void (REGAL_CALL *PFNGLTEXTURESTORAGE3DEXTPROC)(GLuint texture, GLenum t
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_TEXTURE_STORAGE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage1D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage2D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage3D(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureStorage1DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureStorage2DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureStorage3DEXT(GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+#endif
 
 #endif
 
@@ -10782,13 +11000,21 @@ typedef void (REGAL_CALL *PFNGLTEXTURESTORAGE3DMULTISAMPLEEXTPROC)(GLuint textur
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_TEXTURE_STORAGE_MULTISAMPLE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage2DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage3DMultisample(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureStorage2DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureStorage3DMultisampleEXT(GLuint texture, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations);
+#endif
 
 #endif
 
@@ -10880,7 +11106,9 @@ typedef void (REGAL_CALL *PFNGLTEXTUREVIEWPROC)(GLuint texture, GLenum target, G
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_TEXTURE_VIEW
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureView(GLuint texture, GLenum target, GLuint origtexture, GLenum internalformat, GLuint minlevel, GLuint numlevels, GLuint minlayer, GLuint numlayers);
+#endif
 
 #endif
 
@@ -11161,9 +11389,13 @@ typedef void (REGAL_CALL *PFNGLDRAWTRANSFORMFEEDBACKSTREAMINSTANCEDPROC)(GLenum 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_TRANSFORM_FEEDBACK_INSTANCED
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawTransformFeedbackInstanced(GLenum mode, GLuint id, GLsizei primcount);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawTransformFeedbackStreamInstanced(GLenum mode, GLuint id, GLuint stream, GLsizei primcount);
+#endif
 
 #endif
 
@@ -11644,29 +11876,53 @@ typedef void (REGAL_CALL *PFNGLVERTEXBINDINGDIVISORPROC)(GLuint bindingindex, GL
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_ARB_VERTEX_ATTRIB_BINDING
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBindVertexBuffer(GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexArrayBindVertexBufferEXT(GLuint vaobj, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribBindingEXT(GLuint vaobj, GLuint attribindex, GLuint bindingindex);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribIFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribLFormatEXT(GLuint vaobj, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexArrayVertexBindingDivisorEXT(GLuint vaobj, GLuint bindingindex, GLuint divisor);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribBinding(GLuint attribindex, GLuint bindingindex);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribFormat(GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribIFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexAttribLFormat(GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glVertexBindingDivisor(GLuint bindingindex, GLuint divisor);
+#endif
 
 #endif
 
@@ -15868,9 +16124,13 @@ typedef void (REGAL_CALL *PFNGLLABELOBJECTEXTPROC)(GLenum type, GLuint object, G
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_DEBUG_LABEL
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetObjectLabelEXT(GLenum type, GLuint object, GLsizei bufSize, GLsizei *length, GLchar *label);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glLabelObjectEXT(GLenum type, GLuint object, GLsizei length, const GLchar *label);
+#endif
 
 #endif
 
@@ -15920,15 +16180,15 @@ typedef void (REGAL_CALL *PFNGLPUSHGROUPMARKEREXTPROC)(GLsizei length, const GLc
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_DEBUG_MARKER
-#if GL_VER_ALL || ES_VER == 20000
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 20000
 REGAL_DECL void REGAL_CALL glInsertEventMarkerEXT(GLsizei length, const GLchar *marker);
 #endif
 
-#if GL_VER_ALL || ES_VER == 20000
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 20000
 REGAL_DECL void REGAL_CALL glPopGroupMarkerEXT(void);
 #endif
 
-#if GL_VER_ALL || ES_VER == 20000
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 20000
 REGAL_DECL void REGAL_CALL glPushGroupMarkerEXT(GLsizei length, const GLchar *marker);
 #endif
 
@@ -17691,7 +17951,9 @@ typedef void (REGAL_CALL *PFNGLDISCARDFRAMEBUFFEREXTPROC)(GLenum target, GLsizei
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_DISCARD_FRAMEBUFFER
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDiscardFramebufferEXT(GLenum target, GLsizei numAttachments, const GLenum *attachments);
+#endif
 
 #endif
 
@@ -17744,9 +18006,13 @@ typedef void (REGAL_CALL *PFNGLQUERYCOUNTEREXTPROC)(GLuint id, GLenum target);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_DISJOINT_TIMER_QUERY
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryObjectivEXT(GLuint id, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glQueryCounterEXT(GLuint id, GLenum target);
+#endif
 
 #endif
 
@@ -18123,41 +18389,77 @@ typedef void (REGAL_CALL *PFNGLLIGHTENVIEXTPROC)(GLenum pname, GLint param);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_FRAGMENT_LIGHTING
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentColorMaterialEXT(GLenum face, GLenum mode);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightModelfEXT(GLenum pname, GLfloat param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightModelfvEXT(GLenum pname, GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightModeliEXT(GLenum pname, GLint param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightModelivEXT(GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightfEXT(GLenum light, GLenum pname, GLfloat param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightfvEXT(GLenum light, GLenum pname, GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightiEXT(GLenum light, GLenum pname, GLint param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentLightivEXT(GLenum light, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentMaterialfEXT(GLenum face, GLenum pname, const GLfloat param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentMaterialfvEXT(GLenum face, GLenum pname, const GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentMaterialiEXT(GLenum face, GLenum pname, const GLint param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFragmentMaterialivEXT(GLenum face, GLenum pname, const GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetFragmentLightfvEXT(GLenum light, GLenum pname, GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetFragmentLightivEXT(GLenum light, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetFragmentMaterialfvEXT(GLenum face, GLenum pname, const GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetFragmentMaterialivEXT(GLenum face, GLenum pname, const GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glLightEnviEXT(GLenum pname, GLint param);
+#endif
 
 #endif
 
@@ -19354,9 +19656,13 @@ typedef void (REGAL_CALL *PFNGLFLUSHMAPPEDBUFFERRANGEEXTPROC)(GLenum target, GLi
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_MAP_BUFFER_RANGE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLvoid *REGAL_CALL glMapBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFlushMappedBufferRangeEXT(GLenum target, GLintptr offset, GLsizeiptr length);
+#endif
 
 #endif
 
@@ -19534,7 +19840,9 @@ typedef void (REGAL_CALL *PFNGLFRAMEBUFFERTEXTURE2DMULTISAMPLEEXTPROC)(GLenum ta
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_MULTISAMPLED_RENDER_TO_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFramebufferTexture2DMultisampleEXT(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+#endif
 
 #endif
 
@@ -19591,11 +19899,17 @@ typedef void (REGAL_CALL *PFNGLREADBUFFERINDEXEDEXTPROC)(GLenum src, GLint index
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_MULTIVIEW_DRAW_BUFFERS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawBuffersIndexedEXT(GLint n, const GLenum *location, const GLint *indices);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetIntegeri_vEXT(GLenum target, GLuint index, GLint *data);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glReadBufferIndexedEXT(GLenum src, GLint index);
+#endif
 
 #endif
 
@@ -19662,19 +19976,33 @@ typedef void (REGAL_CALL *PFNGLGETQUERYOBJECTUIVEXTPROC)(GLuint id, GLenum pname
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_OCCLUSION_QUERY_BOOLEAN
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsQueryEXT(GLuint id);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBeginQueryEXT(GLenum target, GLuint id);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteQueriesEXT(GLsizei n, const GLuint *ids);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glEndQueryEXT(GLenum target);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGenQueriesEXT(GLsizei n, GLuint *ids);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryObjectuivEXT(GLuint id, GLenum pname, GLuint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetQueryivEXT(GLenum target, GLenum pname, GLint *params);
+#endif
 
 #endif
 
@@ -19989,9 +20317,13 @@ REGAL_DECL void REGAL_CALL glPixelTransformParameteriEXT(GLenum target, GLenum p
 REGAL_DECL void REGAL_CALL glPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params);
 #endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPixelTransformParameterfvEXT(GLenum target, GLenum pname, const GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPixelTransformParameterivEXT(GLenum target, GLenum pname, const GLint *params);
+#endif
 
 #endif
 
@@ -20288,11 +20620,17 @@ typedef void (REGAL_CALL *PFNGLREADNPIXELSEXTPROC)(GLint x, GLint y, GLsizei wid
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_ROBUSTNESS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetnUniformfvEXT(GLuint program, GLint location, GLsizei bufSize, GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetnUniformivEXT(GLuint program, GLint location, GLsizei bufSize, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glReadnPixelsEXT(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLsizei bufSize, GLvoid *data);
+#endif
 
 #endif
 
@@ -20373,9 +20711,13 @@ typedef void (REGAL_CALL *PFNGLENDSCENEEXTPROC)(void);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_SCENE_MARKER
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBeginSceneEXT(void);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glEndSceneEXT(void);
+#endif
 
 #endif
 
@@ -22247,11 +22589,17 @@ typedef void (REGAL_CALL *PFNGLTEXSTORAGE3DEXTPROC)(GLenum target, GLsizei level
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_TEXTURE_STORAGE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage1DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage2DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexStorage3DEXT(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth);
+#endif
 
 #endif
 
@@ -22739,29 +23087,49 @@ typedef void (REGAL_CALL *PFNGLVERTEXATTRIBLPOINTEREXTPROC)(GLuint index, GLint 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_VERTEX_ATTRIB_64BIT
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glGetVertexAttribLdvEXT(GLuint index, GLenum pname, GLdouble *params);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL1dEXT(GLuint index, GLdouble x);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL1dvEXT(GLuint index, const GLdouble *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL2dEXT(GLuint index, GLdouble x, GLdouble y);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL2dvEXT(GLuint index, const GLdouble *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL3dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL3dvEXT(GLuint index, const GLdouble *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL4dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL4dvEXT(GLuint index, const GLdouble *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribLPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
+#endif
+
 #if GL_VER_ALL || GL_VER >= 30000
 REGAL_DECL void REGAL_CALL glVertexArrayVertexAttribLOffsetEXT(GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, GLintptr offset);
 #endif
-
-REGAL_DECL void REGAL_CALL glGetVertexAttribLdvEXT(GLuint index, GLenum pname, GLdouble *params);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL1dEXT(GLuint index, GLdouble x);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL1dvEXT(GLuint index, const GLdouble *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL2dEXT(GLuint index, GLdouble x, GLdouble y);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL2dvEXT(GLuint index, const GLdouble *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL3dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL3dvEXT(GLuint index, const GLdouble *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL4dEXT(GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL4dvEXT(GLuint index, const GLdouble *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribLPointerEXT(GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer);
 
 #endif
 
@@ -23344,7 +23712,9 @@ typedef GLsync (REGAL_CALL *PFNGLIMPORTSYNCEXTPROC)(GLenum external_sync_type, G
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_EXT_X11_SYNC_OBJECT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLsync REGAL_CALL glImportSyncEXT(GLenum external_sync_type, GLintptr external_sync, GLbitfield flags);
+#endif
 
 #endif
 
@@ -23955,9 +24325,13 @@ typedef void (REGAL_CALL *PFNGLRENDERBUFFERSTORAGEMULTISAMPLEIMGPROC)(GLenum tar
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_IMG_MULTISAMPLED_RENDER_TO_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFramebufferTexture2DMultisampleIMG(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLsizei samples);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glRenderbufferStorageMultisampleIMG(GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height);
+#endif
 
 #endif
 
@@ -24373,11 +24747,17 @@ typedef void (REGAL_CALL *PFNGLUNMAPTEXTURE2DINTELPROC)(GLuint texture, GLint le
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_INTEL_MAP_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLvoid *REGAL_CALL glMapTexture2DINTEL(GLuint texture, GLint level, GLbitfield access, GLint *stride, GLenum *layout);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glSyncTextureINTEL(GLuint texture);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUnmapTexture2DINTEL(GLuint texture, GLint level);
+#endif
 
 #endif
 
@@ -24502,9 +24882,13 @@ typedef void (REGAL_CALL *PFNGLTEXSCISSORINTELPROC)(GLenum target, GLclampf tlow
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_INTEL_TEXTURE_SCISSOR
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexScissorFuncINTEL(GLenum target, GLenum lfunc, GLenum hfunc);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexScissorINTEL(GLenum target, GLclampf tlow, GLclampf thigh);
+#endif
 
 #endif
 
@@ -24609,25 +24993,45 @@ typedef void (REGAL_CALL *PFNGLPUSHDEBUGGROUPPROC)(GLenum source, GLuint id, GLs
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_KHR_DEBUG
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint REGAL_CALL glGetDebugMessageLog(GLuint count, GLsizei bufsize, GLenum *sources, GLenum *types, GLuint *ids, GLenum *severities, GLsizei *lengths, GLchar *messageLog);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDebugMessageCallback(GLDEBUGPROC callback, const GLvoid *userParam);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDebugMessageControl(GLenum source, GLenum type, GLenum severity, GLsizei count, const GLuint *ids, GLboolean enabled);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDebugMessageInsert(GLenum source, GLenum type, GLuint id, GLenum severity, GLsizei length, const GLchar *buf);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetObjectLabel(GLenum identifier, GLuint name, GLsizei bufSize, GLsizei *length, GLchar *label);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetObjectPtrLabel(const GLvoid *ptr, GLsizei bufSize, GLsizei *length, GLchar *label);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glObjectLabel(GLenum identifier, GLuint name, GLsizei length, const GLchar *label);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glObjectPtrLabel(const GLvoid *ptr, GLsizei length, const GLchar *label);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPopDebugGroup(void);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPushDebugGroup(GLenum source, GLuint id, GLsizei length, const GLchar *message);
+#endif
 
 #endif
 
@@ -24755,15 +25159,25 @@ typedef void (REGAL_CALL *PFNGLREADBUFFERREGIONPROC)(GLuint region, GLint x, GLi
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_KTX_BUFFER_REGION
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint REGAL_CALL glBufferRegionEnabled(void);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint REGAL_CALL glNewBufferRegion(GLenum region);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteBufferRegion(GLenum region);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height, GLint xDest, GLint yDest);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glReadBufferRegion(GLuint region, GLint x, GLint y, GLsizei width, GLsizei height);
+#endif
 
 #endif
 
@@ -25354,31 +25768,57 @@ typedef void (REGAL_CALL *PFNGLUNIFORMHANDLEUI64VNVPROC)(GLint location, GLsizei
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_BINDLESS_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsImageHandleResidentNV(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsTextureHandleResidentNV(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint64 REGAL_CALL glGetImageHandleNV(GLuint texture, GLint level, GLboolean layered, GLint layer, GLenum format);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint64 REGAL_CALL glGetTextureHandleNV(GLuint texture);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint64 REGAL_CALL glGetTextureSamplerHandleNV(GLuint texture, GLuint sampler);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeImageHandleNonResidentNV(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeImageHandleResidentNV(GLuint64 handle, GLenum access);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeTextureHandleNonResidentNV(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMakeTextureHandleResidentNV(GLuint64 handle);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glProgramUniformHandleui64NV(GLuint program, GLint location, GLuint64 value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glProgramUniformHandleui64vNV(GLuint program, GLint location, GLsizei count, const GLuint64 *values);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformHandleui64NV(GLint location, GLuint64 value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformHandleui64vNV(GLint location, GLsizei count, const GLuint64 *value);
+#endif
 
 #endif
 
@@ -25486,9 +25926,13 @@ typedef void (REGAL_CALL *PFNGLBLENDPARAMETERINVPROC)(GLenum pname, GLint value)
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_BLEND_EQUATION_ADVANCED
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBlendBarrierNV(void);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBlendParameteriNV(GLenum pname, GLint value);
+#endif
 
 #endif
 
@@ -25633,7 +26077,9 @@ typedef void (REGAL_CALL *PFNGLCOPYBUFFERSUBDATANVPROC)(GLenum readtarget, GLenu
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_COPY_BUFFER
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCopyBufferSubDataNV(GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size);
+#endif
 
 #endif
 
@@ -25773,9 +26219,13 @@ typedef void (REGAL_CALL *PFNGLCOVERAGEOPERATIONNVPROC)(GLenum operation);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_COVERAGE_SAMPLE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCoverageMaskNV(GLboolean mask);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCoverageOperationNV(GLenum operation);
+#endif
 
 #endif
 
@@ -26045,7 +26495,9 @@ typedef void (REGAL_CALL *PFNGLDRAWBUFFERSNVPROC)(GLsizei n, const GLenum *bufs)
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_DRAW_BUFFERS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawBuffersNV(GLsizei n, const GLenum *bufs);
+#endif
 
 #endif
 
@@ -26090,7 +26542,9 @@ typedef void (REGAL_CALL *PFNGLDRAWTEXTURENVPROC)(GLuint texture, GLuint sampler
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_DRAW_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDrawTextureNV(GLuint texture, GLuint sampler, GLfloat x0, GLfloat y0, GLfloat x1, GLfloat y1, GLfloat z, GLfloat s0, GLfloat t0, GLfloat s1, GLfloat t1);
+#endif
 
 #endif
 
@@ -26694,7 +27148,9 @@ typedef void (REGAL_CALL *PFNGLBLITFRAMEBUFFERNVPROC)(GLint srcX0, GLint srcY0, 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_FRAMEBUFFER_BLIT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBlitFramebufferNV(GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter);
+#endif
 
 #endif
 
@@ -27893,17 +28349,29 @@ typedef void (REGAL_CALL *PFNGLUNIFORMMATRIX4X3FVNVPROC)(GLint location, GLsizei
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_NON_SQUARE_MATRICES
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformMatrix2x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformMatrix2x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformMatrix3x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformMatrix3x4fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformMatrix4x2fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glUniformMatrix4x3fvNV(GLint location, GLsizei count, GLboolean transpose, const GLfloat *value);
+#endif
 
 #endif
 
@@ -28444,103 +28912,201 @@ typedef void (REGAL_CALL *PFNGLWEIGHTPATHSNVPROC)(GLuint resultPath, GLsizei num
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_PATH_RENDERING
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsPathNV(GLuint path);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsPointInFillPathNV(GLuint path, GLuint mask, GLfloat x, GLfloat y);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsPointInStrokePathNV(GLuint path, GLfloat x, GLfloat y);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glPointAlongPathNV(GLuint path, GLsizei startSegment, GLsizei numSegments, GLfloat distance, GLfloat *x, GLfloat *y, GLfloat *tangentX, GLfloat *tangentY);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLfloat REGAL_CALL glGetPathLengthNV(GLuint path, GLsizei startSegment, GLsizei numSegments);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLuint REGAL_CALL glGenPathsNV(GLsizei range);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCopyPathNV(GLuint resultPath, GLuint srcPath);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCoverFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCoverFillPathNV(GLuint path, GLenum coverMode);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCoverStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum coverMode, GLenum transformType, const GLfloat *transformValues);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCoverStrokePathNV(GLuint name, GLenum coverMode);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeletePathsNV(GLuint path, GLsizei range);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathColorGenfvNV(GLenum color, GLenum pname, GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathColorGenivNV(GLenum color, GLenum pname, GLint *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathCommandsNV(GLuint name, GLubyte *commands);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathCoordsNV(GLuint name, GLfloat *coords);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathDashArrayNV(GLuint name, GLfloat *dashArray);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathMetricRangeNV(GLbitfield metricQueryMask, GLuint fistPathName, GLsizei numPaths, GLsizei stride, GLfloat *metrics);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathMetricsNV(GLbitfield metricQueryMask, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLsizei stride, GLfloat *metrics);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathParameterfvNV(GLuint name, GLenum param, GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathParameterivNV(GLuint name, GLenum param, GLint *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathSpacingNV(GLenum pathListMode, GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLfloat advanceScale, GLfloat kerningScale, GLenum transformType, GLfloat *returnedSpacing);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathTexGenfvNV(GLenum texCoordSet, GLenum pname, GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetPathTexGenivNV(GLenum texCoordSet, GLenum pname, GLint *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glInterpolatePathsNV(GLuint resultPath, GLuint pathA, GLuint pathB, GLfloat weight);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathColorGenNV(GLenum color, GLenum genMode, GLenum colorFormat, const GLfloat *coeffs);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathCommandsNV(GLuint path, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathCoordsNV(GLuint path, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathCoverDepthFuncNV(GLenum zfunc);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathDashArrayNV(GLuint path, GLsizei dashCount, const GLfloat *dashArray);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathFogGenNV(GLenum genMode);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathGlyphRangeNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLuint firstGlyph, GLsizei numGlyphs, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathGlyphsNV(GLuint firstPathName, GLenum fontTarget, const GLvoid *fontName, GLbitfield fontStyle, GLsizei numGlyphs, GLenum type, const GLvoid *charcodes, GLenum handleMissingGlyphs, GLuint pathParameterTemplate, GLfloat emScale);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathParameterfNV(GLuint path, GLenum pname, GLfloat value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathParameterfvNV(GLuint path, GLenum pname, const GLfloat *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathParameteriNV(GLuint path, GLenum pname, GLint value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathParameterivNV(GLuint path, GLenum pname, const GLint *value);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathStencilDepthOffsetNV(GLfloat factor, GLfloat units);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathStencilFuncNV(GLenum func, GLint ref, GLuint mask);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathStringNV(GLuint path, GLenum format, GLsizei length, const GLvoid *pathString);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathSubCommandsNV(GLuint path, GLsizei commandStart, GLsizei commandsToDelete, GLsizei numCommands, const GLubyte *commands, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathSubCoordsNV(GLuint path, GLsizei coordStart, GLsizei numCoords, GLenum coordType, const GLvoid *coords);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glPathTexGenNV(GLenum texCoordSet, GLenum genMode, GLint components, const GLfloat *coeffs);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glStencilFillPathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLenum fillMode, GLuint mask, GLenum transformType, const GLfloat *transformValues);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glStencilFillPathNV(GLuint path, GLenum fillMode, GLuint mask);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glStencilStrokePathInstancedNV(GLsizei numPaths, GLenum pathNameType, const GLvoid *paths, GLuint pathBase, GLint reference, GLuint mask, GLenum transformType, const GLfloat *transformValues);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glStencilStrokePathNV(GLuint path, GLint reference, GLuint mask);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTransformPathNV(GLuint resultPath, GLuint srcPath, GLenum transformType, const GLfloat *transformValues);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glWeightPathsNV(GLuint resultPath, GLsizei numPaths, const GLuint *paths, const GLfloat *weights);
+#endif
 
 #endif
 
@@ -28973,7 +29539,9 @@ typedef void (REGAL_CALL *PFNGLREADBUFFERNVPROC)(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_READ_BUFFER
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glReadBufferNV(GLenum mode);
+#endif
 
 #endif
 
@@ -29916,17 +30484,29 @@ typedef void (REGAL_CALL *PFNGLTEXTUREIMAGE3DMULTISAMPLENVPROC)(GLuint texture, 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_TEXTURE_MULTISAMPLE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexImage2DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexImage3DMultisampleCoverageNV(GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureImage2DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureImage2DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureImage3DMultisampleCoverageNV(GLuint texture, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureImage3DMultisampleNV(GLuint texture, GLenum target, GLsizei samples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations);
+#endif
 
 #endif
 
@@ -30688,45 +31268,81 @@ typedef void (REGAL_CALL *PFNGLVERTEXATTRIBLFORMATNVPROC)(GLuint index, GLint si
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_NV_VERTEX_ATTRIB_INTEGER_64BIT
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glGetVertexAttribLi64vNV(GLuint index, GLenum pname, GLint64EXT *params);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glGetVertexAttribLui64vNV(GLuint index, GLenum pname, GLuint64EXT *params);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL1i64NV(GLuint index, GLint64EXT x);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL1i64vNV(GLuint index, const GLint64EXT *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL1ui64NV(GLuint index, GLuint64EXT x);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL1ui64vNV(GLuint index, const GLuint64EXT *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL2i64NV(GLuint index, GLint64EXT x, GLint64EXT y);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL2i64vNV(GLuint index, const GLint64EXT *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL2ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL2ui64vNV(GLuint index, const GLuint64EXT *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL3i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL3i64vNV(GLuint index, const GLint64EXT *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL3ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL3ui64vNV(GLuint index, const GLuint64EXT *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL4i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL4i64vNV(GLuint index, const GLint64EXT *v);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL4ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
+#endif
+
+#if GL_VER_ALL || GL_VER >= 20000
+REGAL_DECL void REGAL_CALL glVertexAttribL4ui64vNV(GLuint index, const GLuint64EXT *v);
+#endif
+
 #if GL_VER_ALL || GL_VER >= 30000
 REGAL_DECL void REGAL_CALL glVertexAttribLFormatNV(GLuint index, GLint size, GLenum type, GLsizei stride);
 #endif
-
-REGAL_DECL void REGAL_CALL glGetVertexAttribLi64vNV(GLuint index, GLenum pname, GLint64EXT *params);
-
-REGAL_DECL void REGAL_CALL glGetVertexAttribLui64vNV(GLuint index, GLenum pname, GLuint64EXT *params);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL1i64NV(GLuint index, GLint64EXT x);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL1i64vNV(GLuint index, const GLint64EXT *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL1ui64NV(GLuint index, GLuint64EXT x);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL1ui64vNV(GLuint index, const GLuint64EXT *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL2i64NV(GLuint index, GLint64EXT x, GLint64EXT y);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL2i64vNV(GLuint index, const GLint64EXT *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL2ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL2ui64vNV(GLuint index, const GLuint64EXT *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL3i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL3i64vNV(GLuint index, const GLint64EXT *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL3ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL3ui64vNV(GLuint index, const GLuint64EXT *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL4i64NV(GLuint index, GLint64EXT x, GLint64EXT y, GLint64EXT z, GLint64EXT w);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL4i64vNV(GLuint index, const GLint64EXT *v);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL4ui64NV(GLuint index, GLuint64EXT x, GLuint64EXT y, GLuint64EXT z, GLuint64EXT w);
-
-REGAL_DECL void REGAL_CALL glVertexAttribL4ui64vNV(GLuint index, const GLuint64EXT *v);
 
 #endif
 
@@ -31808,7 +32424,9 @@ typedef void (REGAL_CALL *PFNGLBLENDEQUATIONSEPARATEOESPROC)(GLenum modeRGB, GLe
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_BLEND_EQUATION_SEPARATE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBlendEquationSeparateOES(GLenum modeRGB, GLenum modeAlpha);
+#endif
 
 #endif
 
@@ -31860,7 +32478,9 @@ typedef void (REGAL_CALL *PFNGLBLENDFUNCSEPARATEOESPROC)(GLenum sfactorRGB, GLen
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_BLEND_FUNC_SEPARATE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBlendFuncSeparateOES(GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha);
+#endif
 
 #endif
 
@@ -31912,7 +32532,9 @@ typedef void (REGAL_CALL *PFNGLBLENDEQUATIONOESPROC)(GLenum mode);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_BLEND_SUBTRACT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBlendEquationOES(GLenum mode);
+#endif
 
 #endif
 
@@ -32125,35 +32747,65 @@ typedef void (REGAL_CALL *PFNGLRENDERBUFFERSTORAGEOESPROC)(GLenum target, GLenum
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_FRAMEBUFFER_OBJECT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsFramebufferOES(GLuint framebuffer);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsRenderbufferOES(GLuint renderbuffer);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLenum REGAL_CALL glCheckFramebufferStatusOES(GLenum target);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBindFramebufferOES(GLenum target, GLuint framebuffer);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBindRenderbufferOES(GLenum target, GLuint renderbuffer);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteFramebuffersOES(GLsizei n, const GLuint *framebuffers);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteRenderbuffersOES(GLsizei n, const GLuint *renderbuffers);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFramebufferRenderbufferOES(GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFramebufferTexture2DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGenFramebuffersOES(GLsizei n, GLuint *framebuffers);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGenRenderbuffersOES(GLsizei n, GLuint *renderbuffers);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGenerateMipmapOES(GLenum target);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetFramebufferAttachmentParameterivOES(GLenum target, GLenum attachment, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetRenderbufferParameterivOES(GLenum target, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glRenderbufferStorageOES(GLenum target, GLenum internalformat, GLsizei width, GLsizei height);
+#endif
 
 #endif
 
@@ -32220,9 +32872,13 @@ typedef void (REGAL_CALL *PFNGLPROGRAMBINARYOESPROC)(GLuint program, GLenum bina
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_GET_PROGRAM_BINARY
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetProgramBinaryOES(GLuint program, GLsizei bufSize, GLsizei *length, GLenum *binaryFormat, GLvoid *binary);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glProgramBinaryOES(GLuint program, GLenum binaryFormat, const GLvoid *binary, GLint length);
+#endif
 
 #endif
 
@@ -32279,11 +32935,17 @@ typedef void (REGAL_CALL *PFNGLGETBUFFERPOINTERVOESPROC)(GLenum target, GLenum p
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_MAPBUFFER
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glUnmapBufferOES(GLenum target);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLvoid *REGAL_CALL glMapBufferOES(GLenum target, GLenum access);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetBufferPointervOES(GLenum target, GLenum pname, GLvoid **params);
+#endif
 
 #endif
 
@@ -32387,11 +33049,17 @@ typedef void (REGAL_CALL *PFNGLWEIGHTPOINTEROESPROC)(GLint size, GLenum type, GL
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_MATRIX_PALETTE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCurrentPaletteMatrixOES(GLuint index);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glMatrixIndexPointerOES(GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glWeightPointerOES(GLint size, GLenum type, GLsizei stride, GLvoid *pointer);
+#endif
 
 #endif
 
@@ -32658,17 +33326,29 @@ typedef void (REGAL_CALL *PFNGLORTHOFOESPROC)(GLfloat l, GLfloat r, GLfloat b, G
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_SINGLE_PRECISION
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glClearDepthfOES(GLclampd depth);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glClipPlanefOES(GLenum plane, const GLfloat *equation);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDepthRangefOES(GLclampf n, GLclampf f);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFrustumfOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetClipPlanefOES(GLenum plane, GLfloat *equation);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glOrthofOES(GLfloat l, GLfloat r, GLfloat b, GLfloat t, GLfloat n, GLfloat f);
+#endif
 
 #endif
 
@@ -32895,17 +33575,29 @@ typedef void (REGAL_CALL *PFNGLTEXSUBIMAGE3DOESPROC)(GLenum target, GLint level,
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_TEXTURE_3D
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCompressedTexImage3DOES(GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *data);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCompressedTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glCopyTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glFramebufferTexture3DOES(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexImage3DOES(GLenum target, GLint level, GLenum internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexSubImage3DOES(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels);
+#endif
 
 #endif
 
@@ -32987,23 +33679,41 @@ typedef void (REGAL_CALL *PFNGLTEXGENXVOESPROC)(GLenum coord, GLenum pname, cons
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_TEXTURE_CUBE_MAP
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetTexGenfvOES(GLenum coord, GLenum pname, GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetTexGenivOES(GLenum coord, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetTexGenxvOES(GLenum coord, GLenum pname, GLfixed *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexGenfOES(GLenum coord, GLenum pname, GLfloat param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexGenfvOES(GLenum coord, GLenum pname, const GLfloat *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexGeniOES(GLenum coord, GLenum pname, GLint param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexGenivOES(GLenum coord, GLenum pname, const GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexGenxOES(GLenum coord, GLenum pname, GLfixed param);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTexGenxvOES(GLenum coord, GLenum pname, const GLfixed *params);
+#endif
 
 #endif
 
@@ -33066,13 +33776,21 @@ typedef void (REGAL_CALL *PFNGLGENVERTEXARRAYSOESPROC)(GLsizei n, GLuint *arrays
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_OES_VERTEX_ARRAY_OBJECT
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glIsVertexArrayOES(GLuint array);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glBindVertexArrayOES(GLuint array);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDeleteVertexArraysOES(GLsizei n, const GLuint *arrays);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGenVertexArraysOES(GLsizei n, GLuint *arrays);
+#endif
 
 #endif
 
@@ -33417,7 +34135,9 @@ typedef void (REGAL_CALL *PFNGLALPHAFUNCQCOMPROC)(GLenum func, GLclampf ref);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_QCOM_ALPHA_TEST
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glAlphaFuncQCOM(GLenum func, GLclampf ref);
+#endif
 
 #endif
 
@@ -33503,13 +34223,21 @@ typedef void (REGAL_CALL *PFNGLGETDRIVERCONTROLSTRINGQCOMPROC)(GLuint driverCont
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_QCOM_DRIVER_CONTROL
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glDisableDriverControlQCOM(GLuint driverControl);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glEnableDriverControlQCOM(GLuint driverControl);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetDriverControlStringQCOM(GLuint driverControl, GLsizei bufSize, GLsizei *length, GLchar *driverControlString);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glGetDriverControlsQCOM(GLint *num, GLsizei size, GLuint *driverControls);
+#endif
 
 #endif
 
@@ -33585,21 +34313,37 @@ typedef void (REGAL_CALL *PFNGLEXTTEXOBJECTSTATEOVERRIDEIQCOMPROC)(GLenum target
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_QCOM_EXTENDED_GET
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetBufferPointervQCOM(GLenum target, GLvoid **params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetBuffersQCOM(GLuint *buffers, GLint maxBuffers, GLint *numBuffers);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetFramebuffersQCOM(GLuint *framebuffers, GLint maxFramebuffers, GLint *numFramebuffers);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetRenderbuffersQCOM(GLuint *renderbuffers, GLint maxRenderbuffers, GLint *numRenderbuffers);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetTexLevelParameterivQCOM(GLuint texture, GLenum face, GLint level, GLenum pname, GLint *params);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetTexSubImageQCOM(GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, GLvoid *texels);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetTexturesQCOM(GLuint *textures, GLint maxTextures, GLint *numTextures);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtTexObjectStateOverrideiQCOM(GLenum target, GLenum pname, GLint param);
+#endif
 
 #endif
 
@@ -33657,13 +34401,21 @@ typedef void (REGAL_CALL *PFNGLEXTGETSHADERSQCOMPROC)(GLuint *shaders, GLint max
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_QCOM_EXTENDED_GET2
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL GLboolean REGAL_CALL glExtIsProgramBinaryQCOM(GLuint program);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetProgramBinarySourceQCOM(GLuint program, GLenum shadertype, GLchar *source, GLint *length);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetProgramsQCOM(GLuint *programs, GLint maxPrograms, GLint *numPrograms);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glExtGetShadersQCOM(GLuint *shaders, GLint maxShaders, GLint *numShaders);
+#endif
 
 #endif
 
@@ -33780,9 +34532,13 @@ typedef void (REGAL_CALL *PFNGLSTARTTILINGQCOMPROC)(GLuint x, GLuint y, GLuint w
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_QCOM_TILED_RENDERING
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glEndTilingQCOM(GLbitfield preserveMask);
+#endif
 
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glStartTilingQCOM(GLuint x, GLuint y, GLuint width, GLuint height, GLbitfield preserveMask);
+#endif
 
 #endif
 
@@ -33920,127 +34676,127 @@ typedef void (REGAL_CALL *PFNGLTRANSLATEXPROC)(GLfixed x, GLfixed y, GLfixed z);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_REGAL_ES1_0_COMPATIBILITY
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glAlphaFuncx(GLenum func, GLclampx ref);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glClearColorx(GLclampx red, GLclampx green, GLclampx blue, GLclampx alpha);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glClearDepthx(GLclampx depth);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glColor4x(GLfixed red, GLfixed green, GLfixed blue, GLfixed alpha);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glDepthRangex(GLclampx zNear, GLclampx zFar);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glFogx(GLenum pname, GLfixed param);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glFogxv(GLenum pname, const GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glFrustumf(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glFrustumx(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glLightModelx(GLenum pname, GLfixed param);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glLightModelxv(GLenum pname, const GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glLightx(GLenum light, GLenum pname, GLfixed param);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glLightxv(GLenum light, GLenum pname, const GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glLineWidthx(GLfixed width);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glLoadMatrixx(const GLfixed *m);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glMaterialx(GLenum face, GLenum pname, GLfixed param);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glMaterialxv(GLenum face, GLenum pname, const GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glMultMatrixx(const GLfixed *m);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glMultiTexCoord4x(GLenum target, GLfixed s, GLfixed t, GLfixed r, GLfixed q);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glNormal3x(GLfixed nx, GLfixed ny, GLfixed nz);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glOrthof(GLfloat left, GLfloat right, GLfloat bottom, GLfloat top, GLfloat zNear, GLfloat zFar);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glOrthox(GLfixed left, GLfixed right, GLfixed bottom, GLfixed top, GLfixed zNear, GLfixed zFar);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glPointSizex(GLfixed size);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glPolygonOffsetx(GLfixed factor, GLfixed units);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glRotatex(GLfixed angle, GLfixed x, GLfixed y, GLfixed z);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glSampleCoveragex(GLclampx value, GLboolean invert);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glScalex(GLfixed x, GLfixed y, GLfixed z);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glTexEnvx(GLenum target, GLenum pname, GLfixed param);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glTexEnvxv(GLenum target, GLenum pname, const GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glTexParameterx(GLenum target, GLenum pname, GLfixed param);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10000 || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glTranslatex(GLfixed x, GLfixed y, GLfixed z);
 #endif
 
@@ -34141,55 +34897,55 @@ typedef void (REGAL_CALL *PFNGLTEXPARAMETERXVPROC)(GLenum target, GLenum pname, 
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_REGAL_ES1_1_COMPATIBILITY
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glClipPlanef(GLenum plane, const GLfloat *equation);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glClipPlanex(GLenum plane, const GLfixed *equation);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glGetClipPlanef(GLenum pname, GLfloat *eqn);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glGetClipPlanex(GLenum pname, GLfixed *eqn);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glGetFixedv(GLenum pname, GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glGetLightxv(GLenum light, GLenum pname, GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glGetMaterialxv(GLenum face, GLenum pname, GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glGetTexEnvxv(GLenum env, GLenum pname, GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glGetTexParameterxv(GLenum target, GLenum pname, GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glPointParameterx(GLenum pname, GLfixed param);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glPointParameterxv(GLenum pname, const GLfixed *params);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glPointSizePointerOES(GLenum type, GLsizei stride, const GLvoid *pointer);
 #endif
 
-#if GL_VER_ALL || ES_VER == 10100
+#if GL_VER_ALL || GL_VER >= 20000 || ES_VER == 10100
 REGAL_DECL void REGAL_CALL glTexParameterxv(GLenum target, GLenum pname, const GLfixed *params);
 #endif
 
@@ -35608,7 +36364,9 @@ typedef void (REGAL_CALL *PFNGLTEXTUREFOGSGIXPROC)(GLenum pname);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_SGIX_FOG_TEXTURE
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glTextureFogSGIX(GLenum pname);
+#endif
 
 #endif
 
@@ -37186,7 +37944,9 @@ typedef void (REGAL_CALL *PFNGLREADVIDEOPIXELSSUNPROC)(GLint x, GLint y, GLsizei
 #endif
 
 #ifndef REGAL_NO_DECLARATION_GL_SUN_READ_VIDEO_PIXELS
+#if GL_VER_ALL || GL_VER >= 20000
 REGAL_DECL void REGAL_CALL glReadVideoPixelsSUN(GLint x, GLint y, GLsizei width, GLsizei height, GLenum format, GLenum type, GLvoid *pixels);
+#endif
 
 #endif
 

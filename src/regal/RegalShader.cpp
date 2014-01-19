@@ -82,10 +82,9 @@ namespace Shader {
     if (parseOk) {
       output = regal_glsl_get_output (shader);
 
-      Internal( "Shader optimize success:\n", output.c_str());
-
     } else {
-      Internal( "Shader optimize error: ",  regal_glsl_get_log(shader));
+      Internal( "Shader optimize: ", "error ")
+      Internal( "err", regal_glsl_get_log(shader));
       res = false;
     }
 
@@ -331,9 +330,12 @@ namespace Shader {
   public:
 
     add_alpha_test( Emu::Iff::CompareFunc cf ) : func( cf ), alphaRef( NULL ), fragColor( NULL ), fragData( NULL ), fragDataIndex( -1 ) {}
-
+    
     virtual ir_visitor_status visit(ir_variable *var) {
-      if( (fragColor == NULL) && !strcmp(var->name, "gl_FragColor") && (var->used == 1) && ( var->mode == ir_var_shader_out ) ) {
+      if( fragColor == NULL &&
+          ( !strcmp(var->name, "gl_FragColor") || !strcmp(var->name, "rglFragColor" ) ) &&
+          var->used == 1 &&
+          var->mode == ir_var_shader_out ) {
         fragColor = var;
       }
 

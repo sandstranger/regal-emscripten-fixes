@@ -3425,6 +3425,7 @@ void Iff::Init( RegalContext &ctx )
 {
   orig.Initialize( ctx.dispatchGL );
   instProcs.Initialize( ctx.dispatchGL );
+  instProcs.ctx = &ctx;
   EmuProcsInterceptIff( ctx.dispatchGL );
   
   shadowMatrixMode = GL_MODELVIEW;

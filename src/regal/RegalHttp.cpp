@@ -886,6 +886,7 @@ struct ProgramHandler : public RequestHandler {
         indent += 2;
         ShaderInstance::Procs sip;
         sip.Initialize( ctx->http.next );
+        sip.ctx = ctx;
         for( int i = 0; i < activeUniforms; i++ ) {
           GLchar name[80];
           GLsizei nameLen = 0;

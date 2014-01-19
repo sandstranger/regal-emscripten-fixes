@@ -44,7 +44,7 @@ NSTimer *timer = nil;
 
     [super initWithCoder: aDecoder];
   NSOpenGLPixelFormatAttribute attr[] = {
-#if 0
+#if 1
         NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersionLegacy,
 #else
         NSOpenGLPFAOpenGLProfile, NSOpenGLProfileVersion3_2Core,
