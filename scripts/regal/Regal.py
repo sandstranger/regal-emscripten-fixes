@@ -551,7 +551,7 @@ def apiFuncDecl( function ):
   if getattr(function,'esVersions', None) and len(function.esVersions):
     guard.extend( [ 'ES_VER == %s' % ( apiVerInt('%s' % x) ) for x in function.esVersions ] )
   if len(guard):
-    funcDecl += '#if GL_VER_ALL ||' + ' || '.join( guard ) + '\n'
+    funcDecl += '#if GL_VER_ALL || ' + ' || '.join( guard ) + '\n'
   funcDecl += 'REGAL_DECL %sREGAL_CALL %s(%s);\n' % (rType, name, params)
   if len(guard):
     funcDecl += '#endif\n'
