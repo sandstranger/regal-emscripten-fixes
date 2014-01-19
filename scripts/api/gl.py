@@ -12125,6 +12125,7 @@ glAccum.ret = Return('void')
 glAccum.add( Input( 'op','GLenum' ))
 glAccum.add( Input( 'value','GLfloat' ))
 glAccum.version = '1.0'
+glAccum.deprecated = '3.1'
 glAccum.category = 'GL_VERSION_1_0'
 glAccum.trace = True
 glAccum.play = True
@@ -12135,6 +12136,7 @@ glAlphaFunc.ret = Return('void')
 glAlphaFunc.add( Input( 'func','GLenum' ))
 glAlphaFunc.add( Input( 'ref','GLclampf' ))
 glAlphaFunc.version = '1.0'
+glAlphaFunc.deprecated = '3.1'
 glAlphaFunc.category = 'GL_VERSION_1_0'
 glAlphaFunc.esVersions = [1.0, 1.1]
 glAlphaFunc.trace = True
@@ -12145,6 +12147,7 @@ glBegin = Function('glBegin')
 glBegin.ret = Return('void')
 glBegin.add( Input( 'mode','GLenum' ,regalLog = 'GLmodeToString(mode)' ))
 glBegin.version = '1.0'
+glBegin.deprecated = '3.1'
 glBegin.category = 'GL_VERSION_1_0'
 glBegin.trace = True
 glBegin.play = True
@@ -12160,6 +12163,7 @@ glBitmap.add( Input( 'xmove','GLfloat' ))
 glBitmap.add( Input( 'ymove','GLfloat' ))
 glBitmap.add( Input( 'bitmap','const GLubyte *' ,size = 'helperGLPixelImageSize(width, height, 0, GL_COLOR_INDEX, GL_BITMAP, 0, GL_BITMAP)' ))
 glBitmap.version = '1.0'
+glBitmap.deprecated = '3.1'
 glBitmap.category = 'GL_VERSION_1_0'
 glBitmap.trace = True
 glBitmap.play = True
@@ -12180,6 +12184,7 @@ glCallList = Function('glCallList')
 glCallList.ret = Return('void')
 glCallList.add( Input( 'list','GLuint' ))
 glCallList.version = '1.0'
+glCallList.deprecated = '3.1'
 glCallList.category = 'GL_VERSION_1_0'
 glCallList.trace = True
 glCallList.play = True
@@ -12191,6 +12196,7 @@ glCallLists.add( Input( 'n','GLsizei' ))
 glCallLists.add( Input( 'type','GLenum' ))
 glCallLists.add( Input( 'lists','const GLvoid *' ,size = 'helperGLCallListsSize(n, type)' ,cast = 'const GLubyte *' ))
 glCallLists.version = '1.0'
+glCallLists.deprecated = '3.1'
 glCallLists.category = 'GL_VERSION_1_0'
 glCallLists.trace = True
 glCallLists.play = True
@@ -12213,6 +12219,7 @@ glClearAccum.add( Input( 'green','GLfloat' ))
 glClearAccum.add( Input( 'blue','GLfloat' ))
 glClearAccum.add( Input( 'alpha','GLfloat' ))
 glClearAccum.version = '1.0'
+glClearAccum.deprecated = '3.1'
 glClearAccum.category = 'GL_VERSION_1_0'
 glClearAccum.trace = True
 glClearAccum.play = True
@@ -12276,6 +12283,7 @@ glColor3b.add( Input( 'red','GLbyte' ))
 glColor3b.add( Input( 'green','GLbyte' ))
 glColor3b.add( Input( 'blue','GLbyte' ))
 glColor3b.version = '1.0'
+glColor3b.deprecated = '3.1'
 glColor3b.category = 'GL_VERSION_1_0'
 glColor3b.trace = True
 glColor3b.play = True
@@ -12285,6 +12293,7 @@ glColor3bv = Function('glColor3bv')
 glColor3bv.ret = Return('void')
 glColor3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
 glColor3bv.version = '1.0'
+glColor3bv.deprecated = '3.1'
 glColor3bv.category = 'GL_VERSION_1_0'
 glColor3bv.trace = True
 glColor3bv.play = True
@@ -12296,6 +12305,7 @@ glColor3d.add( Input( 'red','GLdouble' ))
 glColor3d.add( Input( 'green','GLdouble' ))
 glColor3d.add( Input( 'blue','GLdouble' ))
 glColor3d.version = '1.0'
+glColor3d.deprecated = '3.1'
 glColor3d.category = 'GL_VERSION_1_0'
 glColor3d.trace = True
 glColor3d.play = True
@@ -12305,6 +12315,7 @@ glColor3dv = Function('glColor3dv')
 glColor3dv.ret = Return('void')
 glColor3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glColor3dv.version = '1.0'
+glColor3dv.deprecated = '3.1'
 glColor3dv.category = 'GL_VERSION_1_0'
 glColor3dv.trace = True
 glColor3dv.play = True
@@ -12316,6 +12327,7 @@ glColor3f.add( Input( 'red','GLfloat' ))
 glColor3f.add( Input( 'green','GLfloat' ))
 glColor3f.add( Input( 'blue','GLfloat' ))
 glColor3f.version = '1.0'
+glColor3f.deprecated = '3.1'
 glColor3f.category = 'GL_VERSION_1_0'
 glColor3f.trace = True
 glColor3f.play = True
@@ -12325,6 +12337,7 @@ glColor3fv = Function('glColor3fv')
 glColor3fv.ret = Return('void')
 glColor3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glColor3fv.version = '1.0'
+glColor3fv.deprecated = '3.1'
 glColor3fv.category = 'GL_VERSION_1_0'
 glColor3fv.trace = True
 glColor3fv.play = True
@@ -12336,6 +12349,7 @@ glColor3i.add( Input( 'red','GLint' ))
 glColor3i.add( Input( 'green','GLint' ))
 glColor3i.add( Input( 'blue','GLint' ))
 glColor3i.version = '1.0'
+glColor3i.deprecated = '3.1'
 glColor3i.category = 'GL_VERSION_1_0'
 glColor3i.trace = True
 glColor3i.play = True
@@ -12345,6 +12359,7 @@ glColor3iv = Function('glColor3iv')
 glColor3iv.ret = Return('void')
 glColor3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glColor3iv.version = '1.0'
+glColor3iv.deprecated = '3.1'
 glColor3iv.category = 'GL_VERSION_1_0'
 glColor3iv.trace = True
 glColor3iv.play = True
@@ -12356,6 +12371,7 @@ glColor3s.add( Input( 'red','GLshort' ))
 glColor3s.add( Input( 'green','GLshort' ))
 glColor3s.add( Input( 'blue','GLshort' ))
 glColor3s.version = '1.0'
+glColor3s.deprecated = '3.1'
 glColor3s.category = 'GL_VERSION_1_0'
 glColor3s.trace = True
 glColor3s.play = True
@@ -12365,6 +12381,7 @@ glColor3sv = Function('glColor3sv')
 glColor3sv.ret = Return('void')
 glColor3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glColor3sv.version = '1.0'
+glColor3sv.deprecated = '3.1'
 glColor3sv.category = 'GL_VERSION_1_0'
 glColor3sv.trace = True
 glColor3sv.play = True
@@ -12376,6 +12393,7 @@ glColor3ub.add( Input( 'red','GLubyte' ))
 glColor3ub.add( Input( 'green','GLubyte' ))
 glColor3ub.add( Input( 'blue','GLubyte' ))
 glColor3ub.version = '1.0'
+glColor3ub.deprecated = '3.1'
 glColor3ub.category = 'GL_VERSION_1_0'
 glColor3ub.trace = True
 glColor3ub.play = True
@@ -12385,6 +12403,7 @@ glColor3ubv = Function('glColor3ubv')
 glColor3ubv.ret = Return('void')
 glColor3ubv.add( Input( 'v','const GLubyte *' ,size = 3 ))
 glColor3ubv.version = '1.0'
+glColor3ubv.deprecated = '3.1'
 glColor3ubv.category = 'GL_VERSION_1_0'
 glColor3ubv.trace = True
 glColor3ubv.play = True
@@ -12396,6 +12415,7 @@ glColor3ui.add( Input( 'red','GLuint' ))
 glColor3ui.add( Input( 'green','GLuint' ))
 glColor3ui.add( Input( 'blue','GLuint' ))
 glColor3ui.version = '1.0'
+glColor3ui.deprecated = '3.1'
 glColor3ui.category = 'GL_VERSION_1_0'
 glColor3ui.trace = True
 glColor3ui.play = True
@@ -12405,6 +12425,7 @@ glColor3uiv = Function('glColor3uiv')
 glColor3uiv.ret = Return('void')
 glColor3uiv.add( Input( 'v','const GLuint *' ,size = 3 ))
 glColor3uiv.version = '1.0'
+glColor3uiv.deprecated = '3.1'
 glColor3uiv.category = 'GL_VERSION_1_0'
 glColor3uiv.trace = True
 glColor3uiv.play = True
@@ -12416,6 +12437,7 @@ glColor3us.add( Input( 'red','GLushort' ))
 glColor3us.add( Input( 'green','GLushort' ))
 glColor3us.add( Input( 'blue','GLushort' ))
 glColor3us.version = '1.0'
+glColor3us.deprecated = '3.1'
 glColor3us.category = 'GL_VERSION_1_0'
 glColor3us.trace = True
 glColor3us.play = True
@@ -12425,6 +12447,7 @@ glColor3usv = Function('glColor3usv')
 glColor3usv.ret = Return('void')
 glColor3usv.add( Input( 'v','const GLushort *' ,size = 3 ))
 glColor3usv.version = '1.0'
+glColor3usv.deprecated = '3.1'
 glColor3usv.category = 'GL_VERSION_1_0'
 glColor3usv.trace = True
 glColor3usv.play = True
@@ -12437,6 +12460,7 @@ glColor4b.add( Input( 'green','GLbyte' ))
 glColor4b.add( Input( 'blue','GLbyte' ))
 glColor4b.add( Input( 'alpha','GLbyte' ))
 glColor4b.version = '1.0'
+glColor4b.deprecated = '3.1'
 glColor4b.category = 'GL_VERSION_1_0'
 glColor4b.trace = True
 glColor4b.play = True
@@ -12446,6 +12470,7 @@ glColor4bv = Function('glColor4bv')
 glColor4bv.ret = Return('void')
 glColor4bv.add( Input( 'v','const GLbyte *' ,size = 4 ))
 glColor4bv.version = '1.0'
+glColor4bv.deprecated = '3.1'
 glColor4bv.category = 'GL_VERSION_1_0'
 glColor4bv.trace = True
 glColor4bv.play = True
@@ -12458,6 +12483,7 @@ glColor4d.add( Input( 'green','GLdouble' ))
 glColor4d.add( Input( 'blue','GLdouble' ))
 glColor4d.add( Input( 'alpha','GLdouble' ))
 glColor4d.version = '1.0'
+glColor4d.deprecated = '3.1'
 glColor4d.category = 'GL_VERSION_1_0'
 glColor4d.trace = True
 glColor4d.play = True
@@ -12467,6 +12493,7 @@ glColor4dv = Function('glColor4dv')
 glColor4dv.ret = Return('void')
 glColor4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
 glColor4dv.version = '1.0'
+glColor4dv.deprecated = '3.1'
 glColor4dv.category = 'GL_VERSION_1_0'
 glColor4dv.trace = True
 glColor4dv.play = True
@@ -12479,6 +12506,7 @@ glColor4f.add( Input( 'green','GLfloat' ))
 glColor4f.add( Input( 'blue','GLfloat' ))
 glColor4f.add( Input( 'alpha','GLfloat' ))
 glColor4f.version = '1.0'
+glColor4f.deprecated = '3.1'
 glColor4f.category = 'GL_VERSION_1_0'
 glColor4f.esVersions = [1.0, 1.1]
 glColor4f.trace = True
@@ -12489,6 +12517,7 @@ glColor4fv = Function('glColor4fv')
 glColor4fv.ret = Return('void')
 glColor4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
 glColor4fv.version = '1.0'
+glColor4fv.deprecated = '3.1'
 glColor4fv.category = 'GL_VERSION_1_0'
 glColor4fv.trace = True
 glColor4fv.play = True
@@ -12501,6 +12530,7 @@ glColor4i.add( Input( 'green','GLint' ))
 glColor4i.add( Input( 'blue','GLint' ))
 glColor4i.add( Input( 'alpha','GLint' ))
 glColor4i.version = '1.0'
+glColor4i.deprecated = '3.1'
 glColor4i.category = 'GL_VERSION_1_0'
 glColor4i.trace = True
 glColor4i.play = True
@@ -12510,6 +12540,7 @@ glColor4iv = Function('glColor4iv')
 glColor4iv.ret = Return('void')
 glColor4iv.add( Input( 'v','const GLint *' ,size = 4 ))
 glColor4iv.version = '1.0'
+glColor4iv.deprecated = '3.1'
 glColor4iv.category = 'GL_VERSION_1_0'
 glColor4iv.trace = True
 glColor4iv.play = True
@@ -12522,6 +12553,7 @@ glColor4s.add( Input( 'green','GLshort' ))
 glColor4s.add( Input( 'blue','GLshort' ))
 glColor4s.add( Input( 'alpha','GLshort' ))
 glColor4s.version = '1.0'
+glColor4s.deprecated = '3.1'
 glColor4s.category = 'GL_VERSION_1_0'
 glColor4s.trace = True
 glColor4s.play = True
@@ -12531,6 +12563,7 @@ glColor4sv = Function('glColor4sv')
 glColor4sv.ret = Return('void')
 glColor4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
 glColor4sv.version = '1.0'
+glColor4sv.deprecated = '3.1'
 glColor4sv.category = 'GL_VERSION_1_0'
 glColor4sv.trace = True
 glColor4sv.play = True
@@ -12543,6 +12576,7 @@ glColor4ub.add( Input( 'green','GLubyte' ))
 glColor4ub.add( Input( 'blue','GLubyte' ))
 glColor4ub.add( Input( 'alpha','GLubyte' ))
 glColor4ub.version = '1.0'
+glColor4ub.deprecated = '3.1'
 glColor4ub.category = 'GL_VERSION_1_0'
 glColor4ub.esVersions = [1.1]
 glColor4ub.trace = True
@@ -12553,6 +12587,7 @@ glColor4ubv = Function('glColor4ubv')
 glColor4ubv.ret = Return('void')
 glColor4ubv.add( Input( 'v','const GLubyte *' ,size = 4 ))
 glColor4ubv.version = '1.0'
+glColor4ubv.deprecated = '3.1'
 glColor4ubv.category = 'GL_VERSION_1_0'
 glColor4ubv.trace = True
 glColor4ubv.play = True
@@ -12565,6 +12600,7 @@ glColor4ui.add( Input( 'green','GLuint' ))
 glColor4ui.add( Input( 'blue','GLuint' ))
 glColor4ui.add( Input( 'alpha','GLuint' ))
 glColor4ui.version = '1.0'
+glColor4ui.deprecated = '3.1'
 glColor4ui.category = 'GL_VERSION_1_0'
 glColor4ui.trace = True
 glColor4ui.play = True
@@ -12574,6 +12610,7 @@ glColor4uiv = Function('glColor4uiv')
 glColor4uiv.ret = Return('void')
 glColor4uiv.add( Input( 'v','const GLuint *' ,size = 4 ))
 glColor4uiv.version = '1.0'
+glColor4uiv.deprecated = '3.1'
 glColor4uiv.category = 'GL_VERSION_1_0'
 glColor4uiv.trace = True
 glColor4uiv.play = True
@@ -12586,6 +12623,7 @@ glColor4us.add( Input( 'green','GLushort' ))
 glColor4us.add( Input( 'blue','GLushort' ))
 glColor4us.add( Input( 'alpha','GLushort' ))
 glColor4us.version = '1.0'
+glColor4us.deprecated = '3.1'
 glColor4us.category = 'GL_VERSION_1_0'
 glColor4us.trace = True
 glColor4us.play = True
@@ -12595,6 +12633,7 @@ glColor4usv = Function('glColor4usv')
 glColor4usv.ret = Return('void')
 glColor4usv.add( Input( 'v','const GLushort *' ,size = 4 ))
 glColor4usv.version = '1.0'
+glColor4usv.deprecated = '3.1'
 glColor4usv.category = 'GL_VERSION_1_0'
 glColor4usv.trace = True
 glColor4usv.play = True
@@ -12618,6 +12657,7 @@ glColorMaterial.ret = Return('void')
 glColorMaterial.add( Input( 'face','GLenum' ))
 glColorMaterial.add( Input( 'mode','GLenum' ,regalLog = 'GLmodeToString(mode)' ))
 glColorMaterial.version = '1.0'
+glColorMaterial.deprecated = '3.1'
 glColorMaterial.category = 'GL_VERSION_1_0'
 glColorMaterial.trace = True
 glColorMaterial.play = True
@@ -12651,6 +12691,7 @@ glDeleteLists.ret = Return('void')
 glDeleteLists.add( Input( 'list','GLuint' ))
 glDeleteLists.add( Input( 'range','GLsizei' ))
 glDeleteLists.version = '1.0'
+glDeleteLists.deprecated = '3.1'
 glDeleteLists.category = 'GL_VERSION_1_0'
 glDeleteLists.trace = True
 glDeleteLists.play = True
@@ -12714,6 +12755,7 @@ glDrawPixels.add( Input( 'format','GLenum' ))
 glDrawPixels.add( Input( 'type','GLenum' ))
 glDrawPixels.add( Input( 'pixels','const GLvoid *' ,size = 'helperGLPixelImageSize(width, height, 0, format, type, 0, 0)' ,cast = 'const GLubyte *' ))
 glDrawPixels.version = '1.0'
+glDrawPixels.deprecated = '3.1'
 glDrawPixels.category = 'GL_VERSION_1_0'
 glDrawPixels.trace = True
 glDrawPixels.play = True
@@ -12723,6 +12765,7 @@ glEdgeFlag = Function('glEdgeFlag')
 glEdgeFlag.ret = Return('void')
 glEdgeFlag.add( Input( 'flag','GLboolean' ))
 glEdgeFlag.version = '1.0'
+glEdgeFlag.deprecated = '3.1'
 glEdgeFlag.category = 'GL_VERSION_1_0'
 glEdgeFlag.trace = True
 glEdgeFlag.play = True
@@ -12732,6 +12775,7 @@ glEdgeFlagv = Function('glEdgeFlagv')
 glEdgeFlagv.ret = Return('void')
 glEdgeFlagv.add( Input( 'flag','const GLboolean *' ,size = 1 ))
 glEdgeFlagv.version = '1.0'
+glEdgeFlagv.deprecated = '3.1'
 glEdgeFlagv.category = 'GL_VERSION_1_0'
 glEdgeFlagv.trace = True
 glEdgeFlagv.play = True
@@ -12750,6 +12794,7 @@ gl.add(glEnable)
 glEnd = Function('glEnd')
 glEnd.ret = Return('void')
 glEnd.version = '1.0'
+glEnd.deprecated = '3.1'
 glEnd.category = 'GL_VERSION_1_0'
 glEnd.trace = True
 glEnd.play = True
@@ -12758,6 +12803,7 @@ gl.add(glEnd)
 glEndList = Function('glEndList')
 glEndList.ret = Return('void')
 glEndList.version = '1.0'
+glEndList.deprecated = '3.1'
 glEndList.category = 'GL_VERSION_1_0'
 glEndList.trace = True
 glEndList.play = True
@@ -12767,6 +12813,7 @@ glEvalCoord1d = Function('glEvalCoord1d')
 glEvalCoord1d.ret = Return('void')
 glEvalCoord1d.add( Input( 'u','GLdouble' ))
 glEvalCoord1d.version = '1.0'
+glEvalCoord1d.deprecated = '3.1'
 glEvalCoord1d.category = 'GL_VERSION_1_0'
 glEvalCoord1d.trace = True
 glEvalCoord1d.play = True
@@ -12776,6 +12823,7 @@ glEvalCoord1dv = Function('glEvalCoord1dv')
 glEvalCoord1dv.ret = Return('void')
 glEvalCoord1dv.add( Input( 'u','const GLdouble *' ,size = 1 ))
 glEvalCoord1dv.version = '1.0'
+glEvalCoord1dv.deprecated = '3.1'
 glEvalCoord1dv.category = 'GL_VERSION_1_0'
 glEvalCoord1dv.trace = True
 glEvalCoord1dv.play = True
@@ -12785,6 +12833,7 @@ glEvalCoord1f = Function('glEvalCoord1f')
 glEvalCoord1f.ret = Return('void')
 glEvalCoord1f.add( Input( 'u','GLfloat' ))
 glEvalCoord1f.version = '1.0'
+glEvalCoord1f.deprecated = '3.1'
 glEvalCoord1f.category = 'GL_VERSION_1_0'
 glEvalCoord1f.trace = True
 glEvalCoord1f.play = True
@@ -12794,6 +12843,7 @@ glEvalCoord1fv = Function('glEvalCoord1fv')
 glEvalCoord1fv.ret = Return('void')
 glEvalCoord1fv.add( Input( 'u','const GLfloat *' ,size = 1 ))
 glEvalCoord1fv.version = '1.0'
+glEvalCoord1fv.deprecated = '3.1'
 glEvalCoord1fv.category = 'GL_VERSION_1_0'
 glEvalCoord1fv.trace = True
 glEvalCoord1fv.play = True
@@ -12804,6 +12854,7 @@ glEvalCoord2d.ret = Return('void')
 glEvalCoord2d.add( Input( 'u','GLdouble' ))
 glEvalCoord2d.add( Input( 'v','GLdouble' ))
 glEvalCoord2d.version = '1.0'
+glEvalCoord2d.deprecated = '3.1'
 glEvalCoord2d.category = 'GL_VERSION_1_0'
 glEvalCoord2d.trace = True
 glEvalCoord2d.play = True
@@ -12813,6 +12864,7 @@ glEvalCoord2dv = Function('glEvalCoord2dv')
 glEvalCoord2dv.ret = Return('void')
 glEvalCoord2dv.add( Input( 'u','const GLdouble *' ,size = 2 ))
 glEvalCoord2dv.version = '1.0'
+glEvalCoord2dv.deprecated = '3.1'
 glEvalCoord2dv.category = 'GL_VERSION_1_0'
 glEvalCoord2dv.trace = True
 glEvalCoord2dv.play = True
@@ -12823,6 +12875,7 @@ glEvalCoord2f.ret = Return('void')
 glEvalCoord2f.add( Input( 'u','GLfloat' ))
 glEvalCoord2f.add( Input( 'v','GLfloat' ))
 glEvalCoord2f.version = '1.0'
+glEvalCoord2f.deprecated = '3.1'
 glEvalCoord2f.category = 'GL_VERSION_1_0'
 glEvalCoord2f.trace = True
 glEvalCoord2f.play = True
@@ -12832,6 +12885,7 @@ glEvalCoord2fv = Function('glEvalCoord2fv')
 glEvalCoord2fv.ret = Return('void')
 glEvalCoord2fv.add( Input( 'u','const GLfloat *' ,size = 2 ))
 glEvalCoord2fv.version = '1.0'
+glEvalCoord2fv.deprecated = '3.1'
 glEvalCoord2fv.category = 'GL_VERSION_1_0'
 glEvalCoord2fv.trace = True
 glEvalCoord2fv.play = True
@@ -12843,6 +12897,7 @@ glEvalMesh1.add( Input( 'mode','GLenum' ,regalLog = 'GLmodeToString(mode)' ))
 glEvalMesh1.add( Input( 'i1','GLint' ))
 glEvalMesh1.add( Input( 'i2','GLint' ))
 glEvalMesh1.version = '1.0'
+glEvalMesh1.deprecated = '3.1'
 glEvalMesh1.category = 'GL_VERSION_1_0'
 glEvalMesh1.trace = True
 glEvalMesh1.play = True
@@ -12856,6 +12911,7 @@ glEvalMesh2.add( Input( 'i2','GLint' ))
 glEvalMesh2.add( Input( 'j1','GLint' ))
 glEvalMesh2.add( Input( 'j2','GLint' ))
 glEvalMesh2.version = '1.0'
+glEvalMesh2.deprecated = '3.1'
 glEvalMesh2.category = 'GL_VERSION_1_0'
 glEvalMesh2.trace = True
 glEvalMesh2.play = True
@@ -12865,6 +12921,7 @@ glEvalPoint1 = Function('glEvalPoint1')
 glEvalPoint1.ret = Return('void')
 glEvalPoint1.add( Input( 'i','GLint' ))
 glEvalPoint1.version = '1.0'
+glEvalPoint1.deprecated = '3.1'
 glEvalPoint1.category = 'GL_VERSION_1_0'
 glEvalPoint1.trace = True
 glEvalPoint1.play = True
@@ -12875,6 +12932,7 @@ glEvalPoint2.ret = Return('void')
 glEvalPoint2.add( Input( 'i','GLint' ))
 glEvalPoint2.add( Input( 'j','GLint' ))
 glEvalPoint2.version = '1.0'
+glEvalPoint2.deprecated = '3.1'
 glEvalPoint2.category = 'GL_VERSION_1_0'
 glEvalPoint2.trace = True
 glEvalPoint2.play = True
@@ -12886,6 +12944,7 @@ glFeedbackBuffer.add( Input( 'size','GLsizei' ))
 glFeedbackBuffer.add( Input( 'type','GLenum' ))
 glFeedbackBuffer.add( Output( 'buffer','GLfloat *' ))
 glFeedbackBuffer.version = '1.0'
+glFeedbackBuffer.deprecated = '3.1'
 glFeedbackBuffer.category = 'GL_VERSION_1_0'
 glFeedbackBuffer.trace = True
 glFeedbackBuffer.play = True
@@ -12970,6 +13029,7 @@ glFrustum.add( Input( 'top','GLdouble' ))
 glFrustum.add( Input( 'zNear','GLdouble' ))
 glFrustum.add( Input( 'zFar','GLdouble' ))
 glFrustum.version = '1.0'
+glFrustum.deprecated = '3.1'
 glFrustum.category = 'GL_VERSION_1_0'
 glFrustum.trace = True
 glFrustum.play = True
@@ -12979,6 +13039,7 @@ glGenLists = Function('glGenLists')
 glGenLists.ret = Return('GLuint')
 glGenLists.add( Input( 'range','GLsizei' ))
 glGenLists.version = '1.0'
+glGenLists.deprecated = '3.1'
 glGenLists.category = 'GL_VERSION_1_0'
 glGenLists.trace = True
 glGenLists.play = True
@@ -13205,6 +13266,7 @@ glGetTexGendv.add( Input( 'coord','GLenum' ))
 glGetTexGendv.add( Input( 'pname','GLenum' ))
 glGetTexGendv.add( Output( 'params','GLdouble *' ))
 glGetTexGendv.version = '1.0'
+glGetTexGendv.deprecated = '3.1'
 glGetTexGendv.category = 'GL_VERSION_1_0'
 glGetTexGendv.trace = True
 glGetTexGendv.play = False
@@ -13216,6 +13278,7 @@ glGetTexGenfv.add( Input( 'coord','GLenum' ))
 glGetTexGenfv.add( Input( 'pname','GLenum' ))
 glGetTexGenfv.add( Output( 'params','GLfloat *' ))
 glGetTexGenfv.version = '1.0'
+glGetTexGenfv.deprecated = '3.1'
 glGetTexGenfv.category = 'GL_VERSION_1_0'
 glGetTexGenfv.trace = True
 glGetTexGenfv.play = False
@@ -13227,6 +13290,7 @@ glGetTexGeniv.add( Input( 'coord','GLenum' ))
 glGetTexGeniv.add( Input( 'pname','GLenum' ))
 glGetTexGeniv.add( Output( 'params','GLint *' ))
 glGetTexGeniv.version = '1.0'
+glGetTexGeniv.deprecated = '3.1'
 glGetTexGeniv.category = 'GL_VERSION_1_0'
 glGetTexGeniv.trace = True
 glGetTexGeniv.play = False
@@ -13317,6 +13381,7 @@ glIndexd = Function('glIndexd')
 glIndexd.ret = Return('void')
 glIndexd.add( Input( 'c','GLdouble' ))
 glIndexd.version = '1.0'
+glIndexd.deprecated = '3.1'
 glIndexd.category = 'GL_VERSION_1_0'
 glIndexd.trace = True
 glIndexd.play = True
@@ -13326,6 +13391,7 @@ glIndexdv = Function('glIndexdv')
 glIndexdv.ret = Return('void')
 glIndexdv.add( Input( 'c','const GLdouble *' ,size = 1 ))
 glIndexdv.version = '1.0'
+glIndexdv.deprecated = '3.1'
 glIndexdv.category = 'GL_VERSION_1_0'
 glIndexdv.trace = True
 glIndexdv.play = True
@@ -13335,6 +13401,7 @@ glIndexf = Function('glIndexf')
 glIndexf.ret = Return('void')
 glIndexf.add( Input( 'c','GLfloat' ))
 glIndexf.version = '1.0'
+glIndexf.deprecated = '3.1'
 glIndexf.category = 'GL_VERSION_1_0'
 glIndexf.trace = True
 glIndexf.play = True
@@ -13344,6 +13411,7 @@ glIndexfv = Function('glIndexfv')
 glIndexfv.ret = Return('void')
 glIndexfv.add( Input( 'c','const GLfloat *' ,size = 1 ))
 glIndexfv.version = '1.0'
+glIndexfv.deprecated = '3.1'
 glIndexfv.category = 'GL_VERSION_1_0'
 glIndexfv.trace = True
 glIndexfv.play = True
@@ -13353,6 +13421,7 @@ glIndexi = Function('glIndexi')
 glIndexi.ret = Return('void')
 glIndexi.add( Input( 'c','GLint' ))
 glIndexi.version = '1.0'
+glIndexi.deprecated = '3.1'
 glIndexi.category = 'GL_VERSION_1_0'
 glIndexi.trace = True
 glIndexi.play = True
@@ -13362,6 +13431,7 @@ glIndexiv = Function('glIndexiv')
 glIndexiv.ret = Return('void')
 glIndexiv.add( Input( 'c','const GLint *' ,size = 1 ))
 glIndexiv.version = '1.0'
+glIndexiv.deprecated = '3.1'
 glIndexiv.category = 'GL_VERSION_1_0'
 glIndexiv.trace = True
 glIndexiv.play = True
@@ -13371,6 +13441,7 @@ glIndexs = Function('glIndexs')
 glIndexs.ret = Return('void')
 glIndexs.add( Input( 'c','GLshort' ))
 glIndexs.version = '1.0'
+glIndexs.deprecated = '3.1'
 glIndexs.category = 'GL_VERSION_1_0'
 glIndexs.trace = True
 glIndexs.play = True
@@ -13380,6 +13451,7 @@ glIndexsv = Function('glIndexsv')
 glIndexsv.ret = Return('void')
 glIndexsv.add( Input( 'c','const GLshort *' ,size = 1 ))
 glIndexsv.version = '1.0'
+glIndexsv.deprecated = '3.1'
 glIndexsv.category = 'GL_VERSION_1_0'
 glIndexsv.trace = True
 glIndexsv.play = True
@@ -13388,6 +13460,7 @@ gl.add(glIndexsv)
 glInitNames = Function('glInitNames')
 glInitNames.ret = Return('void')
 glInitNames.version = '1.0'
+glInitNames.deprecated = '3.1'
 glInitNames.category = 'GL_VERSION_1_0'
 glInitNames.trace = True
 glInitNames.play = True
@@ -13407,6 +13480,7 @@ glIsList = Function('glIsList')
 glIsList.ret = Return('GLboolean')
 glIsList.add( Input( 'list','GLuint' ))
 glIsList.version = '1.0'
+glIsList.deprecated = '3.1'
 glIsList.category = 'GL_VERSION_1_0'
 glIsList.trace = True
 glIsList.play = True
@@ -13417,6 +13491,7 @@ glLightModelf.ret = Return('void')
 glLightModelf.add( Input( 'pname','GLenum' ))
 glLightModelf.add( Input( 'param','GLfloat' ))
 glLightModelf.version = '1.0'
+glLightModelf.deprecated = '3.1'
 glLightModelf.category = 'GL_VERSION_1_0'
 glLightModelf.esVersions = [1.0, 1.1]
 glLightModelf.trace = True
@@ -13428,6 +13503,7 @@ glLightModelfv.ret = Return('void')
 glLightModelfv.add( Input( 'pname','GLenum' ))
 glLightModelfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLLightModelvSize(pname)' ))
 glLightModelfv.version = '1.0'
+glLightModelfv.deprecated = '3.1'
 glLightModelfv.category = 'GL_VERSION_1_0'
 glLightModelfv.esVersions = [1.0, 1.1]
 glLightModelfv.trace = True
@@ -13439,6 +13515,7 @@ glLightModeli.ret = Return('void')
 glLightModeli.add( Input( 'pname','GLenum' ))
 glLightModeli.add( Input( 'param','GLint' ))
 glLightModeli.version = '1.0'
+glLightModeli.deprecated = '3.1'
 glLightModeli.category = 'GL_VERSION_1_0'
 glLightModeli.trace = True
 glLightModeli.play = True
@@ -13449,6 +13526,7 @@ glLightModeliv.ret = Return('void')
 glLightModeliv.add( Input( 'pname','GLenum' ))
 glLightModeliv.add( Input( 'params','const GLint *' ,size = 'helperGLLightModelvSize(pname)' ))
 glLightModeliv.version = '1.0'
+glLightModeliv.deprecated = '3.1'
 glLightModeliv.category = 'GL_VERSION_1_0'
 glLightModeliv.trace = True
 glLightModeliv.play = True
@@ -13460,6 +13538,7 @@ glLightf.add( Input( 'light','GLenum' ))
 glLightf.add( Input( 'pname','GLenum' ))
 glLightf.add( Input( 'param','GLfloat' ))
 glLightf.version = '1.0'
+glLightf.deprecated = '3.1'
 glLightf.category = 'GL_VERSION_1_0'
 glLightf.esVersions = [1.0, 1.1]
 glLightf.trace = True
@@ -13472,6 +13551,7 @@ glLightfv.add( Input( 'light','GLenum' ))
 glLightfv.add( Input( 'pname','GLenum' ))
 glLightfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLLightvSize(pname)' ))
 glLightfv.version = '1.0'
+glLightfv.deprecated = '3.1'
 glLightfv.category = 'GL_VERSION_1_0'
 glLightfv.esVersions = [1.0, 1.1]
 glLightfv.trace = True
@@ -13484,6 +13564,7 @@ glLighti.add( Input( 'light','GLenum' ))
 glLighti.add( Input( 'pname','GLenum' ))
 glLighti.add( Input( 'param','GLint' ))
 glLighti.version = '1.0'
+glLighti.deprecated = '3.1'
 glLighti.category = 'GL_VERSION_1_0'
 glLighti.trace = True
 glLighti.play = True
@@ -13495,6 +13576,7 @@ glLightiv.add( Input( 'light','GLenum' ))
 glLightiv.add( Input( 'pname','GLenum' ))
 glLightiv.add( Input( 'params','const GLint *' ,size = 'helperGLLightvSize(pname)' ))
 glLightiv.version = '1.0'
+glLightiv.deprecated = '3.1'
 glLightiv.category = 'GL_VERSION_1_0'
 glLightiv.trace = True
 glLightiv.play = True
@@ -13505,6 +13587,7 @@ glLineStipple.ret = Return('void')
 glLineStipple.add( Input( 'factor','GLint' ))
 glLineStipple.add( Input( 'pattern','GLushort' ))
 glLineStipple.version = '1.0'
+glLineStipple.deprecated = '3.1'
 glLineStipple.category = 'GL_VERSION_1_0'
 glLineStipple.trace = True
 glLineStipple.play = True
@@ -13524,6 +13607,7 @@ glListBase = Function('glListBase')
 glListBase.ret = Return('void')
 glListBase.add( Input( 'base','GLuint' ))
 glListBase.version = '1.0'
+glListBase.deprecated = '3.1'
 glListBase.category = 'GL_VERSION_1_0'
 glListBase.trace = True
 glListBase.play = True
@@ -13532,6 +13616,7 @@ gl.add(glListBase)
 glLoadIdentity = Function('glLoadIdentity')
 glLoadIdentity.ret = Return('void')
 glLoadIdentity.version = '1.0'
+glLoadIdentity.deprecated = '3.1'
 glLoadIdentity.category = 'GL_VERSION_1_0'
 glLoadIdentity.esVersions = [1.0, 1.1]
 glLoadIdentity.trace = True
@@ -13542,6 +13627,7 @@ glLoadMatrixd = Function('glLoadMatrixd')
 glLoadMatrixd.ret = Return('void')
 glLoadMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
 glLoadMatrixd.version = '1.0'
+glLoadMatrixd.deprecated = '3.1'
 glLoadMatrixd.category = 'GL_VERSION_1_0'
 glLoadMatrixd.trace = True
 glLoadMatrixd.play = True
@@ -13551,6 +13637,7 @@ glLoadMatrixf = Function('glLoadMatrixf')
 glLoadMatrixf.ret = Return('void')
 glLoadMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
 glLoadMatrixf.version = '1.0'
+glLoadMatrixf.deprecated = '3.1'
 glLoadMatrixf.category = 'GL_VERSION_1_0'
 glLoadMatrixf.esVersions = [1.0, 1.1]
 glLoadMatrixf.trace = True
@@ -13561,6 +13648,7 @@ glLoadName = Function('glLoadName')
 glLoadName.ret = Return('void')
 glLoadName.add( Input( 'name','GLuint' ))
 glLoadName.version = '1.0'
+glLoadName.deprecated = '3.1'
 glLoadName.category = 'GL_VERSION_1_0'
 glLoadName.trace = True
 glLoadName.play = True
@@ -13585,6 +13673,7 @@ glMap1d.add( Input( 'stride','GLint' ))
 glMap1d.add( Input( 'order','GLint' ))
 glMap1d.add( Input( 'points','const GLdouble *' ))
 glMap1d.version = '1.0'
+glMap1d.deprecated = '3.1'
 glMap1d.category = 'GL_VERSION_1_0'
 glMap1d.trace = True
 glMap1d.play = True
@@ -13599,6 +13688,7 @@ glMap1f.add( Input( 'stride','GLint' ))
 glMap1f.add( Input( 'order','GLint' ))
 glMap1f.add( Input( 'points','const GLfloat *' ))
 glMap1f.version = '1.0'
+glMap1f.deprecated = '3.1'
 glMap1f.category = 'GL_VERSION_1_0'
 glMap1f.trace = True
 glMap1f.play = True
@@ -13617,6 +13707,7 @@ glMap2d.add( Input( 'vstride','GLint' ))
 glMap2d.add( Input( 'vorder','GLint' ))
 glMap2d.add( Input( 'points','const GLdouble *' ))
 glMap2d.version = '1.0'
+glMap2d.deprecated = '3.1'
 glMap2d.category = 'GL_VERSION_1_0'
 glMap2d.trace = True
 glMap2d.play = True
@@ -13635,6 +13726,7 @@ glMap2f.add( Input( 'vstride','GLint' ))
 glMap2f.add( Input( 'vorder','GLint' ))
 glMap2f.add( Input( 'points','const GLfloat *' ))
 glMap2f.version = '1.0'
+glMap2f.deprecated = '3.1'
 glMap2f.category = 'GL_VERSION_1_0'
 glMap2f.trace = True
 glMap2f.play = True
@@ -13646,6 +13738,7 @@ glMapGrid1d.add( Input( 'un','GLint' ))
 glMapGrid1d.add( Input( 'u1','GLdouble' ))
 glMapGrid1d.add( Input( 'u2','GLdouble' ))
 glMapGrid1d.version = '1.0'
+glMapGrid1d.deprecated = '3.1'
 glMapGrid1d.category = 'GL_VERSION_1_0'
 glMapGrid1d.trace = True
 glMapGrid1d.play = True
@@ -13657,6 +13750,7 @@ glMapGrid1f.add( Input( 'un','GLint' ))
 glMapGrid1f.add( Input( 'u1','GLfloat' ))
 glMapGrid1f.add( Input( 'u2','GLfloat' ))
 glMapGrid1f.version = '1.0'
+glMapGrid1f.deprecated = '3.1'
 glMapGrid1f.category = 'GL_VERSION_1_0'
 glMapGrid1f.trace = True
 glMapGrid1f.play = True
@@ -13671,6 +13765,7 @@ glMapGrid2d.add( Input( 'vn','GLint' ))
 glMapGrid2d.add( Input( 'v1','GLdouble' ))
 glMapGrid2d.add( Input( 'v2','GLdouble' ))
 glMapGrid2d.version = '1.0'
+glMapGrid2d.deprecated = '3.1'
 glMapGrid2d.category = 'GL_VERSION_1_0'
 glMapGrid2d.trace = True
 glMapGrid2d.play = True
@@ -13685,6 +13780,7 @@ glMapGrid2f.add( Input( 'vn','GLint' ))
 glMapGrid2f.add( Input( 'v1','GLfloat' ))
 glMapGrid2f.add( Input( 'v2','GLfloat' ))
 glMapGrid2f.version = '1.0'
+glMapGrid2f.deprecated = '3.1'
 glMapGrid2f.category = 'GL_VERSION_1_0'
 glMapGrid2f.trace = True
 glMapGrid2f.play = True
@@ -13696,6 +13792,7 @@ glMaterialf.add( Input( 'face','GLenum' ))
 glMaterialf.add( Input( 'pname','GLenum' ))
 glMaterialf.add( Input( 'param','GLfloat' ))
 glMaterialf.version = '1.0'
+glMaterialf.deprecated = '3.1'
 glMaterialf.category = 'GL_VERSION_1_0'
 glMaterialf.esVersions = [1.0, 1.1]
 glMaterialf.trace = True
@@ -13708,6 +13805,7 @@ glMaterialfv.add( Input( 'face','GLenum' ))
 glMaterialfv.add( Input( 'pname','GLenum' ))
 glMaterialfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLMaterialvSize(pname)' ))
 glMaterialfv.version = '1.0'
+glMaterialfv.deprecated = '3.1'
 glMaterialfv.category = 'GL_VERSION_1_0'
 glMaterialfv.esVersions = [1.0, 1.1]
 glMaterialfv.trace = True
@@ -13720,6 +13818,7 @@ glMateriali.add( Input( 'face','GLenum' ))
 glMateriali.add( Input( 'pname','GLenum' ))
 glMateriali.add( Input( 'param','GLint' ))
 glMateriali.version = '1.0'
+glMateriali.deprecated = '3.1'
 glMateriali.category = 'GL_VERSION_1_0'
 glMateriali.trace = True
 glMateriali.play = True
@@ -13731,6 +13830,7 @@ glMaterialiv.add( Input( 'face','GLenum' ))
 glMaterialiv.add( Input( 'pname','GLenum' ))
 glMaterialiv.add( Input( 'params','const GLint *' ,size = 'helperGLMaterialvSize(pname)' ))
 glMaterialiv.version = '1.0'
+glMaterialiv.deprecated = '3.1'
 glMaterialiv.category = 'GL_VERSION_1_0'
 glMaterialiv.trace = True
 glMaterialiv.play = True
@@ -13740,6 +13840,7 @@ glMatrixMode = Function('glMatrixMode')
 glMatrixMode.ret = Return('void')
 glMatrixMode.add( Input( 'mode','GLenum' ,regalLog = 'GLmodeToString(mode)' ))
 glMatrixMode.version = '1.0'
+glMatrixMode.deprecated = '3.1'
 glMatrixMode.category = 'GL_VERSION_1_0'
 glMatrixMode.esVersions = [1.0, 1.1]
 glMatrixMode.trace = True
@@ -13750,6 +13851,7 @@ glMultMatrixd = Function('glMultMatrixd')
 glMultMatrixd.ret = Return('void')
 glMultMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
 glMultMatrixd.version = '1.0'
+glMultMatrixd.deprecated = '3.1'
 glMultMatrixd.category = 'GL_VERSION_1_0'
 glMultMatrixd.trace = True
 glMultMatrixd.play = True
@@ -13759,6 +13861,7 @@ glMultMatrixf = Function('glMultMatrixf')
 glMultMatrixf.ret = Return('void')
 glMultMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
 glMultMatrixf.version = '1.0'
+glMultMatrixf.deprecated = '3.1'
 glMultMatrixf.category = 'GL_VERSION_1_0'
 glMultMatrixf.esVersions = [1.0, 1.1]
 glMultMatrixf.trace = True
@@ -13770,6 +13873,7 @@ glNewList.ret = Return('void')
 glNewList.add( Input( 'list','GLuint' ))
 glNewList.add( Input( 'mode','GLenum' ,regalLog = 'GLmodeToString(mode)' ))
 glNewList.version = '1.0'
+glNewList.deprecated = '3.1'
 glNewList.category = 'GL_VERSION_1_0'
 glNewList.trace = True
 glNewList.play = True
@@ -13781,6 +13885,7 @@ glNormal3b.add( Input( 'nx','GLbyte' ))
 glNormal3b.add( Input( 'ny','GLbyte' ))
 glNormal3b.add( Input( 'nz','GLbyte' ))
 glNormal3b.version = '1.0'
+glNormal3b.deprecated = '3.1'
 glNormal3b.category = 'GL_VERSION_1_0'
 glNormal3b.trace = True
 glNormal3b.play = True
@@ -13790,6 +13895,7 @@ glNormal3bv = Function('glNormal3bv')
 glNormal3bv.ret = Return('void')
 glNormal3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
 glNormal3bv.version = '1.0'
+glNormal3bv.deprecated = '3.1'
 glNormal3bv.category = 'GL_VERSION_1_0'
 glNormal3bv.trace = True
 glNormal3bv.play = True
@@ -13801,6 +13907,7 @@ glNormal3d.add( Input( 'nx','GLdouble' ))
 glNormal3d.add( Input( 'ny','GLdouble' ))
 glNormal3d.add( Input( 'nz','GLdouble' ))
 glNormal3d.version = '1.0'
+glNormal3d.deprecated = '3.1'
 glNormal3d.category = 'GL_VERSION_1_0'
 glNormal3d.trace = True
 glNormal3d.play = True
@@ -13810,6 +13917,7 @@ glNormal3dv = Function('glNormal3dv')
 glNormal3dv.ret = Return('void')
 glNormal3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glNormal3dv.version = '1.0'
+glNormal3dv.deprecated = '3.1'
 glNormal3dv.category = 'GL_VERSION_1_0'
 glNormal3dv.trace = True
 glNormal3dv.play = True
@@ -13821,6 +13929,7 @@ glNormal3f.add( Input( 'nx','GLfloat' ))
 glNormal3f.add( Input( 'ny','GLfloat' ))
 glNormal3f.add( Input( 'nz','GLfloat' ))
 glNormal3f.version = '1.0'
+glNormal3f.deprecated = '3.1'
 glNormal3f.category = 'GL_VERSION_1_0'
 glNormal3f.esVersions = [1.0, 1.1]
 glNormal3f.trace = True
@@ -13831,6 +13940,7 @@ glNormal3fv = Function('glNormal3fv')
 glNormal3fv.ret = Return('void')
 glNormal3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glNormal3fv.version = '1.0'
+glNormal3fv.deprecated = '3.1'
 glNormal3fv.category = 'GL_VERSION_1_0'
 glNormal3fv.trace = True
 glNormal3fv.play = True
@@ -13842,6 +13952,7 @@ glNormal3i.add( Input( 'nx','GLint' ))
 glNormal3i.add( Input( 'ny','GLint' ))
 glNormal3i.add( Input( 'nz','GLint' ))
 glNormal3i.version = '1.0'
+glNormal3i.deprecated = '3.1'
 glNormal3i.category = 'GL_VERSION_1_0'
 glNormal3i.trace = True
 glNormal3i.play = True
@@ -13851,6 +13962,7 @@ glNormal3iv = Function('glNormal3iv')
 glNormal3iv.ret = Return('void')
 glNormal3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glNormal3iv.version = '1.0'
+glNormal3iv.deprecated = '3.1'
 glNormal3iv.category = 'GL_VERSION_1_0'
 glNormal3iv.trace = True
 glNormal3iv.play = True
@@ -13862,6 +13974,7 @@ glNormal3s.add( Input( 'nx','GLshort' ))
 glNormal3s.add( Input( 'ny','GLshort' ))
 glNormal3s.add( Input( 'nz','GLshort' ))
 glNormal3s.version = '1.0'
+glNormal3s.deprecated = '3.1'
 glNormal3s.category = 'GL_VERSION_1_0'
 glNormal3s.trace = True
 glNormal3s.play = True
@@ -13871,6 +13984,7 @@ glNormal3sv = Function('glNormal3sv')
 glNormal3sv.ret = Return('void')
 glNormal3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glNormal3sv.version = '1.0'
+glNormal3sv.deprecated = '3.1'
 glNormal3sv.category = 'GL_VERSION_1_0'
 glNormal3sv.trace = True
 glNormal3sv.play = True
@@ -13885,6 +13999,7 @@ glOrtho.add( Input( 'top','GLdouble' ))
 glOrtho.add( Input( 'zNear','GLdouble' ))
 glOrtho.add( Input( 'zFar','GLdouble' ))
 glOrtho.version = '1.0'
+glOrtho.deprecated = '3.1'
 glOrtho.category = 'GL_VERSION_1_0'
 glOrtho.trace = True
 glOrtho.play = True
@@ -13894,6 +14009,7 @@ glPassThrough = Function('glPassThrough')
 glPassThrough.ret = Return('void')
 glPassThrough.add( Input( 'token','GLfloat' ))
 glPassThrough.version = '1.0'
+glPassThrough.deprecated = '3.1'
 glPassThrough.category = 'GL_VERSION_1_0'
 glPassThrough.trace = True
 glPassThrough.play = True
@@ -13905,6 +14021,7 @@ glPixelMapfv.add( Input( 'map','GLenum' ))
 glPixelMapfv.add( Input( 'mapsize','GLsizei' ))
 glPixelMapfv.add( Input( 'values','const GLfloat *' ,size = 'mapsize' ))
 glPixelMapfv.version = '1.0'
+glPixelMapfv.deprecated = '3.1'
 glPixelMapfv.category = 'GL_VERSION_1_0'
 glPixelMapfv.trace = True
 glPixelMapfv.play = True
@@ -13916,6 +14033,7 @@ glPixelMapuiv.add( Input( 'map','GLenum' ))
 glPixelMapuiv.add( Input( 'mapsize','GLsizei' ))
 glPixelMapuiv.add( Input( 'values','const GLuint *' ,size = 'mapsize' ))
 glPixelMapuiv.version = '1.0'
+glPixelMapuiv.deprecated = '3.1'
 glPixelMapuiv.category = 'GL_VERSION_1_0'
 glPixelMapuiv.trace = True
 glPixelMapuiv.play = True
@@ -13927,6 +14045,7 @@ glPixelMapusv.add( Input( 'map','GLenum' ))
 glPixelMapusv.add( Input( 'mapsize','GLsizei' ))
 glPixelMapusv.add( Input( 'values','const GLushort *' ,size = 'mapsize' ))
 glPixelMapusv.version = '1.0'
+glPixelMapusv.deprecated = '3.1'
 glPixelMapusv.category = 'GL_VERSION_1_0'
 glPixelMapusv.trace = True
 glPixelMapusv.play = True
@@ -13958,6 +14077,7 @@ glPixelTransferf.ret = Return('void')
 glPixelTransferf.add( Input( 'pname','GLenum' ))
 glPixelTransferf.add( Input( 'param','GLfloat' ))
 glPixelTransferf.version = '1.0'
+glPixelTransferf.deprecated = '3.1'
 glPixelTransferf.category = 'GL_VERSION_1_0'
 glPixelTransferf.trace = True
 glPixelTransferf.play = True
@@ -13968,6 +14088,7 @@ glPixelTransferi.ret = Return('void')
 glPixelTransferi.add( Input( 'pname','GLenum' ))
 glPixelTransferi.add( Input( 'param','GLint' ))
 glPixelTransferi.version = '1.0'
+glPixelTransferi.deprecated = '3.1'
 glPixelTransferi.category = 'GL_VERSION_1_0'
 glPixelTransferi.trace = True
 glPixelTransferi.play = True
@@ -13978,6 +14099,7 @@ glPixelZoom.ret = Return('void')
 glPixelZoom.add( Input( 'xfactor','GLfloat' ))
 glPixelZoom.add( Input( 'yfactor','GLfloat' ))
 glPixelZoom.version = '1.0'
+glPixelZoom.deprecated = '3.1'
 glPixelZoom.category = 'GL_VERSION_1_0'
 glPixelZoom.trace = True
 glPixelZoom.play = True
@@ -14007,6 +14129,7 @@ glPolygonStipple = Function('glPolygonStipple')
 glPolygonStipple.ret = Return('void')
 glPolygonStipple.add( Input( 'mask','const GLubyte *' ,size = 'helperGLPixelImageSize(32, 32, 0, GL_COLOR_INDEX, GL_BITMAP, 0, GL_BITMAP)' ))
 glPolygonStipple.version = '1.0'
+glPolygonStipple.deprecated = '3.1'
 glPolygonStipple.category = 'GL_VERSION_1_0'
 glPolygonStipple.trace = True
 glPolygonStipple.play = True
@@ -14015,6 +14138,7 @@ gl.add(glPolygonStipple)
 glPopAttrib = Function('glPopAttrib')
 glPopAttrib.ret = Return('void')
 glPopAttrib.version = '1.0'
+glPopAttrib.deprecated = '3.1'
 glPopAttrib.category = 'GL_VERSION_1_0'
 glPopAttrib.trace = True
 glPopAttrib.play = True
@@ -14023,6 +14147,7 @@ gl.add(glPopAttrib)
 glPopMatrix = Function('glPopMatrix')
 glPopMatrix.ret = Return('void')
 glPopMatrix.version = '1.0'
+glPopMatrix.deprecated = '3.1'
 glPopMatrix.category = 'GL_VERSION_1_0'
 glPopMatrix.esVersions = [1.0, 1.1]
 glPopMatrix.trace = True
@@ -14032,6 +14157,7 @@ gl.add(glPopMatrix)
 glPopName = Function('glPopName')
 glPopName.ret = Return('void')
 glPopName.version = '1.0'
+glPopName.deprecated = '3.1'
 glPopName.category = 'GL_VERSION_1_0'
 glPopName.trace = True
 glPopName.play = True
@@ -14041,6 +14167,7 @@ glPushAttrib = Function('glPushAttrib')
 glPushAttrib.ret = Return('void')
 glPushAttrib.add( Input( 'mask','GLbitfield' ,regalLog = 'GLpushAttribToString(mask)' ))
 glPushAttrib.version = '1.0'
+glPushAttrib.deprecated = '3.1'
 glPushAttrib.category = 'GL_VERSION_1_0'
 glPushAttrib.trace = True
 glPushAttrib.play = True
@@ -14049,6 +14176,7 @@ gl.add(glPushAttrib)
 glPushMatrix = Function('glPushMatrix')
 glPushMatrix.ret = Return('void')
 glPushMatrix.version = '1.0'
+glPushMatrix.deprecated = '3.1'
 glPushMatrix.category = 'GL_VERSION_1_0'
 glPushMatrix.esVersions = [1.0, 1.1]
 glPushMatrix.trace = True
@@ -14059,6 +14187,7 @@ glPushName = Function('glPushName')
 glPushName.ret = Return('void')
 glPushName.add( Input( 'name','GLuint' ))
 glPushName.version = '1.0'
+glPushName.deprecated = '3.1'
 glPushName.category = 'GL_VERSION_1_0'
 glPushName.trace = True
 glPushName.play = True
@@ -14069,6 +14198,7 @@ glRasterPos2d.ret = Return('void')
 glRasterPos2d.add( Input( 'x','GLdouble' ))
 glRasterPos2d.add( Input( 'y','GLdouble' ))
 glRasterPos2d.version = '1.0'
+glRasterPos2d.deprecated = '3.1'
 glRasterPos2d.category = 'GL_VERSION_1_0'
 glRasterPos2d.trace = True
 glRasterPos2d.play = True
@@ -14078,6 +14208,7 @@ glRasterPos2dv = Function('glRasterPos2dv')
 glRasterPos2dv.ret = Return('void')
 glRasterPos2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
 glRasterPos2dv.version = '1.0'
+glRasterPos2dv.deprecated = '3.1'
 glRasterPos2dv.category = 'GL_VERSION_1_0'
 glRasterPos2dv.trace = True
 glRasterPos2dv.play = True
@@ -14088,6 +14219,7 @@ glRasterPos2f.ret = Return('void')
 glRasterPos2f.add( Input( 'x','GLfloat' ))
 glRasterPos2f.add( Input( 'y','GLfloat' ))
 glRasterPos2f.version = '1.0'
+glRasterPos2f.deprecated = '3.1'
 glRasterPos2f.category = 'GL_VERSION_1_0'
 glRasterPos2f.trace = True
 glRasterPos2f.play = True
@@ -14097,6 +14229,7 @@ glRasterPos2fv = Function('glRasterPos2fv')
 glRasterPos2fv.ret = Return('void')
 glRasterPos2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
 glRasterPos2fv.version = '1.0'
+glRasterPos2fv.deprecated = '3.1'
 glRasterPos2fv.category = 'GL_VERSION_1_0'
 glRasterPos2fv.trace = True
 glRasterPos2fv.play = True
@@ -14107,6 +14240,7 @@ glRasterPos2i.ret = Return('void')
 glRasterPos2i.add( Input( 'x','GLint' ))
 glRasterPos2i.add( Input( 'y','GLint' ))
 glRasterPos2i.version = '1.0'
+glRasterPos2i.deprecated = '3.1'
 glRasterPos2i.category = 'GL_VERSION_1_0'
 glRasterPos2i.trace = True
 glRasterPos2i.play = True
@@ -14116,6 +14250,7 @@ glRasterPos2iv = Function('glRasterPos2iv')
 glRasterPos2iv.ret = Return('void')
 glRasterPos2iv.add( Input( 'v','const GLint *' ,size = 2 ))
 glRasterPos2iv.version = '1.0'
+glRasterPos2iv.deprecated = '3.1'
 glRasterPos2iv.category = 'GL_VERSION_1_0'
 glRasterPos2iv.trace = True
 glRasterPos2iv.play = True
@@ -14126,6 +14261,7 @@ glRasterPos2s.ret = Return('void')
 glRasterPos2s.add( Input( 'x','GLshort' ))
 glRasterPos2s.add( Input( 'y','GLshort' ))
 glRasterPos2s.version = '1.0'
+glRasterPos2s.deprecated = '3.1'
 glRasterPos2s.category = 'GL_VERSION_1_0'
 glRasterPos2s.trace = True
 glRasterPos2s.play = True
@@ -14135,6 +14271,7 @@ glRasterPos2sv = Function('glRasterPos2sv')
 glRasterPos2sv.ret = Return('void')
 glRasterPos2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
 glRasterPos2sv.version = '1.0'
+glRasterPos2sv.deprecated = '3.1'
 glRasterPos2sv.category = 'GL_VERSION_1_0'
 glRasterPos2sv.trace = True
 glRasterPos2sv.play = True
@@ -14146,6 +14283,7 @@ glRasterPos3d.add( Input( 'x','GLdouble' ))
 glRasterPos3d.add( Input( 'y','GLdouble' ))
 glRasterPos3d.add( Input( 'z','GLdouble' ))
 glRasterPos3d.version = '1.0'
+glRasterPos3d.deprecated = '3.1'
 glRasterPos3d.category = 'GL_VERSION_1_0'
 glRasterPos3d.trace = True
 glRasterPos3d.play = True
@@ -14155,6 +14293,7 @@ glRasterPos3dv = Function('glRasterPos3dv')
 glRasterPos3dv.ret = Return('void')
 glRasterPos3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glRasterPos3dv.version = '1.0'
+glRasterPos3dv.deprecated = '3.1'
 glRasterPos3dv.category = 'GL_VERSION_1_0'
 glRasterPos3dv.trace = True
 glRasterPos3dv.play = True
@@ -14166,6 +14305,7 @@ glRasterPos3f.add( Input( 'x','GLfloat' ))
 glRasterPos3f.add( Input( 'y','GLfloat' ))
 glRasterPos3f.add( Input( 'z','GLfloat' ))
 glRasterPos3f.version = '1.0'
+glRasterPos3f.deprecated = '3.1'
 glRasterPos3f.category = 'GL_VERSION_1_0'
 glRasterPos3f.trace = True
 glRasterPos3f.play = True
@@ -14175,6 +14315,7 @@ glRasterPos3fv = Function('glRasterPos3fv')
 glRasterPos3fv.ret = Return('void')
 glRasterPos3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glRasterPos3fv.version = '1.0'
+glRasterPos3fv.deprecated = '3.1'
 glRasterPos3fv.category = 'GL_VERSION_1_0'
 glRasterPos3fv.trace = True
 glRasterPos3fv.play = True
@@ -14186,6 +14327,7 @@ glRasterPos3i.add( Input( 'x','GLint' ))
 glRasterPos3i.add( Input( 'y','GLint' ))
 glRasterPos3i.add( Input( 'z','GLint' ))
 glRasterPos3i.version = '1.0'
+glRasterPos3i.deprecated = '3.1'
 glRasterPos3i.category = 'GL_VERSION_1_0'
 glRasterPos3i.trace = True
 glRasterPos3i.play = True
@@ -14195,6 +14337,7 @@ glRasterPos3iv = Function('glRasterPos3iv')
 glRasterPos3iv.ret = Return('void')
 glRasterPos3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glRasterPos3iv.version = '1.0'
+glRasterPos3iv.deprecated = '3.1'
 glRasterPos3iv.category = 'GL_VERSION_1_0'
 glRasterPos3iv.trace = True
 glRasterPos3iv.play = True
@@ -14206,6 +14349,7 @@ glRasterPos3s.add( Input( 'x','GLshort' ))
 glRasterPos3s.add( Input( 'y','GLshort' ))
 glRasterPos3s.add( Input( 'z','GLshort' ))
 glRasterPos3s.version = '1.0'
+glRasterPos3s.deprecated = '3.1'
 glRasterPos3s.category = 'GL_VERSION_1_0'
 glRasterPos3s.trace = True
 glRasterPos3s.play = True
@@ -14215,6 +14359,7 @@ glRasterPos3sv = Function('glRasterPos3sv')
 glRasterPos3sv.ret = Return('void')
 glRasterPos3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glRasterPos3sv.version = '1.0'
+glRasterPos3sv.deprecated = '3.1'
 glRasterPos3sv.category = 'GL_VERSION_1_0'
 glRasterPos3sv.trace = True
 glRasterPos3sv.play = True
@@ -14227,6 +14372,7 @@ glRasterPos4d.add( Input( 'y','GLdouble' ))
 glRasterPos4d.add( Input( 'z','GLdouble' ))
 glRasterPos4d.add( Input( 'w','GLdouble' ))
 glRasterPos4d.version = '1.0'
+glRasterPos4d.deprecated = '3.1'
 glRasterPos4d.category = 'GL_VERSION_1_0'
 glRasterPos4d.trace = True
 glRasterPos4d.play = True
@@ -14236,6 +14382,7 @@ glRasterPos4dv = Function('glRasterPos4dv')
 glRasterPos4dv.ret = Return('void')
 glRasterPos4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
 glRasterPos4dv.version = '1.0'
+glRasterPos4dv.deprecated = '3.1'
 glRasterPos4dv.category = 'GL_VERSION_1_0'
 glRasterPos4dv.trace = True
 glRasterPos4dv.play = True
@@ -14248,6 +14395,7 @@ glRasterPos4f.add( Input( 'y','GLfloat' ))
 glRasterPos4f.add( Input( 'z','GLfloat' ))
 glRasterPos4f.add( Input( 'w','GLfloat' ))
 glRasterPos4f.version = '1.0'
+glRasterPos4f.deprecated = '3.1'
 glRasterPos4f.category = 'GL_VERSION_1_0'
 glRasterPos4f.trace = True
 glRasterPos4f.play = True
@@ -14257,6 +14405,7 @@ glRasterPos4fv = Function('glRasterPos4fv')
 glRasterPos4fv.ret = Return('void')
 glRasterPos4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
 glRasterPos4fv.version = '1.0'
+glRasterPos4fv.deprecated = '3.1'
 glRasterPos4fv.category = 'GL_VERSION_1_0'
 glRasterPos4fv.trace = True
 glRasterPos4fv.play = True
@@ -14269,6 +14418,7 @@ glRasterPos4i.add( Input( 'y','GLint' ))
 glRasterPos4i.add( Input( 'z','GLint' ))
 glRasterPos4i.add( Input( 'w','GLint' ))
 glRasterPos4i.version = '1.0'
+glRasterPos4i.deprecated = '3.1'
 glRasterPos4i.category = 'GL_VERSION_1_0'
 glRasterPos4i.trace = True
 glRasterPos4i.play = True
@@ -14278,6 +14428,7 @@ glRasterPos4iv = Function('glRasterPos4iv')
 glRasterPos4iv.ret = Return('void')
 glRasterPos4iv.add( Input( 'v','const GLint *' ,size = 4 ))
 glRasterPos4iv.version = '1.0'
+glRasterPos4iv.deprecated = '3.1'
 glRasterPos4iv.category = 'GL_VERSION_1_0'
 glRasterPos4iv.trace = True
 glRasterPos4iv.play = True
@@ -14290,6 +14441,7 @@ glRasterPos4s.add( Input( 'y','GLshort' ))
 glRasterPos4s.add( Input( 'z','GLshort' ))
 glRasterPos4s.add( Input( 'w','GLshort' ))
 glRasterPos4s.version = '1.0'
+glRasterPos4s.deprecated = '3.1'
 glRasterPos4s.category = 'GL_VERSION_1_0'
 glRasterPos4s.trace = True
 glRasterPos4s.play = True
@@ -14299,6 +14451,7 @@ glRasterPos4sv = Function('glRasterPos4sv')
 glRasterPos4sv.ret = Return('void')
 glRasterPos4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
 glRasterPos4sv.version = '1.0'
+glRasterPos4sv.deprecated = '3.1'
 glRasterPos4sv.category = 'GL_VERSION_1_0'
 glRasterPos4sv.trace = True
 glRasterPos4sv.play = True
@@ -14336,6 +14489,7 @@ glRectd.add( Input( 'y1','GLdouble' ))
 glRectd.add( Input( 'x2','GLdouble' ))
 glRectd.add( Input( 'y2','GLdouble' ))
 glRectd.version = '1.0'
+glRectd.deprecated = '3.1'
 glRectd.category = 'GL_VERSION_1_0'
 glRectd.trace = True
 glRectd.play = True
@@ -14346,6 +14500,7 @@ glRectdv.ret = Return('void')
 glRectdv.add( Input( 'v1','const GLdouble *' ,size = 2 ))
 glRectdv.add( Input( 'v2','const GLdouble *' ,size = 2 ))
 glRectdv.version = '1.0'
+glRectdv.deprecated = '3.1'
 glRectdv.category = 'GL_VERSION_1_0'
 glRectdv.trace = True
 glRectdv.play = True
@@ -14358,6 +14513,7 @@ glRectf.add( Input( 'y1','GLfloat' ))
 glRectf.add( Input( 'x2','GLfloat' ))
 glRectf.add( Input( 'y2','GLfloat' ))
 glRectf.version = '1.0'
+glRectf.deprecated = '3.1'
 glRectf.category = 'GL_VERSION_1_0'
 glRectf.trace = True
 glRectf.play = True
@@ -14368,6 +14524,7 @@ glRectfv.ret = Return('void')
 glRectfv.add( Input( 'v1','const GLfloat *' ,size = 2 ))
 glRectfv.add( Input( 'v2','const GLfloat *' ,size = 2 ))
 glRectfv.version = '1.0'
+glRectfv.deprecated = '3.1'
 glRectfv.category = 'GL_VERSION_1_0'
 glRectfv.trace = True
 glRectfv.play = True
@@ -14380,6 +14537,7 @@ glRecti.add( Input( 'y1','GLint' ))
 glRecti.add( Input( 'x2','GLint' ))
 glRecti.add( Input( 'y2','GLint' ))
 glRecti.version = '1.0'
+glRecti.deprecated = '3.1'
 glRecti.category = 'GL_VERSION_1_0'
 glRecti.trace = True
 glRecti.play = True
@@ -14390,6 +14548,7 @@ glRectiv.ret = Return('void')
 glRectiv.add( Input( 'v1','const GLint *' ,size = 2 ))
 glRectiv.add( Input( 'v2','const GLint *' ,size = 2 ))
 glRectiv.version = '1.0'
+glRectiv.deprecated = '3.1'
 glRectiv.category = 'GL_VERSION_1_0'
 glRectiv.trace = True
 glRectiv.play = True
@@ -14402,6 +14561,7 @@ glRects.add( Input( 'y1','GLshort' ))
 glRects.add( Input( 'x2','GLshort' ))
 glRects.add( Input( 'y2','GLshort' ))
 glRects.version = '1.0'
+glRects.deprecated = '3.1'
 glRects.category = 'GL_VERSION_1_0'
 glRects.trace = True
 glRects.play = True
@@ -14412,6 +14572,7 @@ glRectsv.ret = Return('void')
 glRectsv.add( Input( 'v1','const GLshort *' ,size = 2 ))
 glRectsv.add( Input( 'v2','const GLshort *' ,size = 2 ))
 glRectsv.version = '1.0'
+glRectsv.deprecated = '3.1'
 glRectsv.category = 'GL_VERSION_1_0'
 glRectsv.trace = True
 glRectsv.play = True
@@ -14421,6 +14582,7 @@ glRenderMode = Function('glRenderMode')
 glRenderMode.ret = Return('GLint')
 glRenderMode.add( Input( 'mode','GLenum' ,regalLog = 'GLmodeToString(mode)' ))
 glRenderMode.version = '1.0'
+glRenderMode.deprecated = '3.1'
 glRenderMode.category = 'GL_VERSION_1_0'
 glRenderMode.trace = True
 glRenderMode.play = True
@@ -14433,6 +14595,7 @@ glRotated.add( Input( 'x','GLdouble' ))
 glRotated.add( Input( 'y','GLdouble' ))
 glRotated.add( Input( 'z','GLdouble' ))
 glRotated.version = '1.0'
+glRotated.deprecated = '3.1'
 glRotated.category = 'GL_VERSION_1_0'
 glRotated.trace = True
 glRotated.play = True
@@ -14445,6 +14608,7 @@ glRotatef.add( Input( 'x','GLfloat' ))
 glRotatef.add( Input( 'y','GLfloat' ))
 glRotatef.add( Input( 'z','GLfloat' ))
 glRotatef.version = '1.0'
+glRotatef.deprecated = '3.1'
 glRotatef.category = 'GL_VERSION_1_0'
 glRotatef.esVersions = [1.0, 1.1]
 glRotatef.trace = True
@@ -14457,6 +14621,7 @@ glScaled.add( Input( 'x','GLdouble' ))
 glScaled.add( Input( 'y','GLdouble' ))
 glScaled.add( Input( 'z','GLdouble' ))
 glScaled.version = '1.0'
+glScaled.deprecated = '3.1'
 glScaled.category = 'GL_VERSION_1_0'
 glScaled.trace = True
 glScaled.play = True
@@ -14468,6 +14633,7 @@ glScalef.add( Input( 'x','GLfloat' ))
 glScalef.add( Input( 'y','GLfloat' ))
 glScalef.add( Input( 'z','GLfloat' ))
 glScalef.version = '1.0'
+glScalef.deprecated = '3.1'
 glScalef.category = 'GL_VERSION_1_0'
 glScalef.esVersions = [1.0, 1.1]
 glScalef.trace = True
@@ -14492,6 +14658,7 @@ glSelectBuffer.ret = Return('void')
 glSelectBuffer.add( Input( 'size','GLsizei' ))
 glSelectBuffer.add( Output( 'buffer','GLuint *' ,size = 'size' ))
 glSelectBuffer.version = '1.0'
+glSelectBuffer.deprecated = '3.1'
 glSelectBuffer.category = 'GL_VERSION_1_0'
 glSelectBuffer.trace = True
 glSelectBuffer.play = True
@@ -14545,6 +14712,7 @@ glTexCoord1d = Function('glTexCoord1d')
 glTexCoord1d.ret = Return('void')
 glTexCoord1d.add( Input( 's','GLdouble' ))
 glTexCoord1d.version = '1.0'
+glTexCoord1d.deprecated = '3.1'
 glTexCoord1d.category = 'GL_VERSION_1_0'
 glTexCoord1d.trace = True
 glTexCoord1d.play = True
@@ -14554,6 +14722,7 @@ glTexCoord1dv = Function('glTexCoord1dv')
 glTexCoord1dv.ret = Return('void')
 glTexCoord1dv.add( Input( 'v','const GLdouble *' ,size = 1 ))
 glTexCoord1dv.version = '1.0'
+glTexCoord1dv.deprecated = '3.1'
 glTexCoord1dv.category = 'GL_VERSION_1_0'
 glTexCoord1dv.trace = True
 glTexCoord1dv.play = True
@@ -14563,6 +14732,7 @@ glTexCoord1f = Function('glTexCoord1f')
 glTexCoord1f.ret = Return('void')
 glTexCoord1f.add( Input( 's','GLfloat' ))
 glTexCoord1f.version = '1.0'
+glTexCoord1f.deprecated = '3.1'
 glTexCoord1f.category = 'GL_VERSION_1_0'
 glTexCoord1f.trace = True
 glTexCoord1f.play = True
@@ -14572,6 +14742,7 @@ glTexCoord1fv = Function('glTexCoord1fv')
 glTexCoord1fv.ret = Return('void')
 glTexCoord1fv.add( Input( 'v','const GLfloat *' ,size = 1 ))
 glTexCoord1fv.version = '1.0'
+glTexCoord1fv.deprecated = '3.1'
 glTexCoord1fv.category = 'GL_VERSION_1_0'
 glTexCoord1fv.trace = True
 glTexCoord1fv.play = True
@@ -14581,6 +14752,7 @@ glTexCoord1i = Function('glTexCoord1i')
 glTexCoord1i.ret = Return('void')
 glTexCoord1i.add( Input( 's','GLint' ))
 glTexCoord1i.version = '1.0'
+glTexCoord1i.deprecated = '3.1'
 glTexCoord1i.category = 'GL_VERSION_1_0'
 glTexCoord1i.trace = True
 glTexCoord1i.play = True
@@ -14590,6 +14762,7 @@ glTexCoord1iv = Function('glTexCoord1iv')
 glTexCoord1iv.ret = Return('void')
 glTexCoord1iv.add( Input( 'v','const GLint *' ,size = 1 ))
 glTexCoord1iv.version = '1.0'
+glTexCoord1iv.deprecated = '3.1'
 glTexCoord1iv.category = 'GL_VERSION_1_0'
 glTexCoord1iv.trace = True
 glTexCoord1iv.play = True
@@ -14599,6 +14772,7 @@ glTexCoord1s = Function('glTexCoord1s')
 glTexCoord1s.ret = Return('void')
 glTexCoord1s.add( Input( 's','GLshort' ))
 glTexCoord1s.version = '1.0'
+glTexCoord1s.deprecated = '3.1'
 glTexCoord1s.category = 'GL_VERSION_1_0'
 glTexCoord1s.trace = True
 glTexCoord1s.play = True
@@ -14608,6 +14782,7 @@ glTexCoord1sv = Function('glTexCoord1sv')
 glTexCoord1sv.ret = Return('void')
 glTexCoord1sv.add( Input( 'v','const GLshort *' ,size = 1 ))
 glTexCoord1sv.version = '1.0'
+glTexCoord1sv.deprecated = '3.1'
 glTexCoord1sv.category = 'GL_VERSION_1_0'
 glTexCoord1sv.trace = True
 glTexCoord1sv.play = True
@@ -14618,6 +14793,7 @@ glTexCoord2d.ret = Return('void')
 glTexCoord2d.add( Input( 's','GLdouble' ))
 glTexCoord2d.add( Input( 't','GLdouble' ))
 glTexCoord2d.version = '1.0'
+glTexCoord2d.deprecated = '3.1'
 glTexCoord2d.category = 'GL_VERSION_1_0'
 glTexCoord2d.trace = True
 glTexCoord2d.play = True
@@ -14627,6 +14803,7 @@ glTexCoord2dv = Function('glTexCoord2dv')
 glTexCoord2dv.ret = Return('void')
 glTexCoord2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
 glTexCoord2dv.version = '1.0'
+glTexCoord2dv.deprecated = '3.1'
 glTexCoord2dv.category = 'GL_VERSION_1_0'
 glTexCoord2dv.trace = True
 glTexCoord2dv.play = True
@@ -14637,6 +14814,7 @@ glTexCoord2f.ret = Return('void')
 glTexCoord2f.add( Input( 's','GLfloat' ))
 glTexCoord2f.add( Input( 't','GLfloat' ))
 glTexCoord2f.version = '1.0'
+glTexCoord2f.deprecated = '3.1'
 glTexCoord2f.category = 'GL_VERSION_1_0'
 glTexCoord2f.trace = True
 glTexCoord2f.play = True
@@ -14646,6 +14824,7 @@ glTexCoord2fv = Function('glTexCoord2fv')
 glTexCoord2fv.ret = Return('void')
 glTexCoord2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
 glTexCoord2fv.version = '1.0'
+glTexCoord2fv.deprecated = '3.1'
 glTexCoord2fv.category = 'GL_VERSION_1_0'
 glTexCoord2fv.trace = True
 glTexCoord2fv.play = True
@@ -14656,6 +14835,7 @@ glTexCoord2i.ret = Return('void')
 glTexCoord2i.add( Input( 's','GLint' ))
 glTexCoord2i.add( Input( 't','GLint' ))
 glTexCoord2i.version = '1.0'
+glTexCoord2i.deprecated = '3.1'
 glTexCoord2i.category = 'GL_VERSION_1_0'
 glTexCoord2i.trace = True
 glTexCoord2i.play = True
@@ -14665,6 +14845,7 @@ glTexCoord2iv = Function('glTexCoord2iv')
 glTexCoord2iv.ret = Return('void')
 glTexCoord2iv.add( Input( 'v','const GLint *' ,size = 2 ))
 glTexCoord2iv.version = '1.0'
+glTexCoord2iv.deprecated = '3.1'
 glTexCoord2iv.category = 'GL_VERSION_1_0'
 glTexCoord2iv.trace = True
 glTexCoord2iv.play = True
@@ -14675,6 +14856,7 @@ glTexCoord2s.ret = Return('void')
 glTexCoord2s.add( Input( 's','GLshort' ))
 glTexCoord2s.add( Input( 't','GLshort' ))
 glTexCoord2s.version = '1.0'
+glTexCoord2s.deprecated = '3.1'
 glTexCoord2s.category = 'GL_VERSION_1_0'
 glTexCoord2s.trace = True
 glTexCoord2s.play = True
@@ -14684,6 +14866,7 @@ glTexCoord2sv = Function('glTexCoord2sv')
 glTexCoord2sv.ret = Return('void')
 glTexCoord2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
 glTexCoord2sv.version = '1.0'
+glTexCoord2sv.deprecated = '3.1'
 glTexCoord2sv.category = 'GL_VERSION_1_0'
 glTexCoord2sv.trace = True
 glTexCoord2sv.play = True
@@ -14695,6 +14878,7 @@ glTexCoord3d.add( Input( 's','GLdouble' ))
 glTexCoord3d.add( Input( 't','GLdouble' ))
 glTexCoord3d.add( Input( 'r','GLdouble' ))
 glTexCoord3d.version = '1.0'
+glTexCoord3d.deprecated = '3.1'
 glTexCoord3d.category = 'GL_VERSION_1_0'
 glTexCoord3d.trace = True
 glTexCoord3d.play = True
@@ -14704,6 +14888,7 @@ glTexCoord3dv = Function('glTexCoord3dv')
 glTexCoord3dv.ret = Return('void')
 glTexCoord3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glTexCoord3dv.version = '1.0'
+glTexCoord3dv.deprecated = '3.1'
 glTexCoord3dv.category = 'GL_VERSION_1_0'
 glTexCoord3dv.trace = True
 glTexCoord3dv.play = True
@@ -14715,6 +14900,7 @@ glTexCoord3f.add( Input( 's','GLfloat' ))
 glTexCoord3f.add( Input( 't','GLfloat' ))
 glTexCoord3f.add( Input( 'r','GLfloat' ))
 glTexCoord3f.version = '1.0'
+glTexCoord3f.deprecated = '3.1'
 glTexCoord3f.category = 'GL_VERSION_1_0'
 glTexCoord3f.trace = True
 glTexCoord3f.play = True
@@ -14724,6 +14910,7 @@ glTexCoord3fv = Function('glTexCoord3fv')
 glTexCoord3fv.ret = Return('void')
 glTexCoord3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glTexCoord3fv.version = '1.0'
+glTexCoord3fv.deprecated = '3.1'
 glTexCoord3fv.category = 'GL_VERSION_1_0'
 glTexCoord3fv.trace = True
 glTexCoord3fv.play = True
@@ -14735,6 +14922,7 @@ glTexCoord3i.add( Input( 's','GLint' ))
 glTexCoord3i.add( Input( 't','GLint' ))
 glTexCoord3i.add( Input( 'r','GLint' ))
 glTexCoord3i.version = '1.0'
+glTexCoord3i.deprecated = '3.1'
 glTexCoord3i.category = 'GL_VERSION_1_0'
 glTexCoord3i.trace = True
 glTexCoord3i.play = True
@@ -14744,6 +14932,7 @@ glTexCoord3iv = Function('glTexCoord3iv')
 glTexCoord3iv.ret = Return('void')
 glTexCoord3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glTexCoord3iv.version = '1.0'
+glTexCoord3iv.deprecated = '3.1'
 glTexCoord3iv.category = 'GL_VERSION_1_0'
 glTexCoord3iv.trace = True
 glTexCoord3iv.play = True
@@ -14755,6 +14944,7 @@ glTexCoord3s.add( Input( 's','GLshort' ))
 glTexCoord3s.add( Input( 't','GLshort' ))
 glTexCoord3s.add( Input( 'r','GLshort' ))
 glTexCoord3s.version = '1.0'
+glTexCoord3s.deprecated = '3.1'
 glTexCoord3s.category = 'GL_VERSION_1_0'
 glTexCoord3s.trace = True
 glTexCoord3s.play = True
@@ -14764,6 +14954,7 @@ glTexCoord3sv = Function('glTexCoord3sv')
 glTexCoord3sv.ret = Return('void')
 glTexCoord3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glTexCoord3sv.version = '1.0'
+glTexCoord3sv.deprecated = '3.1'
 glTexCoord3sv.category = 'GL_VERSION_1_0'
 glTexCoord3sv.trace = True
 glTexCoord3sv.play = True
@@ -14776,6 +14967,7 @@ glTexCoord4d.add( Input( 't','GLdouble' ))
 glTexCoord4d.add( Input( 'r','GLdouble' ))
 glTexCoord4d.add( Input( 'q','GLdouble' ))
 glTexCoord4d.version = '1.0'
+glTexCoord4d.deprecated = '3.1'
 glTexCoord4d.category = 'GL_VERSION_1_0'
 glTexCoord4d.trace = True
 glTexCoord4d.play = True
@@ -14785,6 +14977,7 @@ glTexCoord4dv = Function('glTexCoord4dv')
 glTexCoord4dv.ret = Return('void')
 glTexCoord4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
 glTexCoord4dv.version = '1.0'
+glTexCoord4dv.deprecated = '3.1'
 glTexCoord4dv.category = 'GL_VERSION_1_0'
 glTexCoord4dv.trace = True
 glTexCoord4dv.play = True
@@ -14797,6 +14990,7 @@ glTexCoord4f.add( Input( 't','GLfloat' ))
 glTexCoord4f.add( Input( 'r','GLfloat' ))
 glTexCoord4f.add( Input( 'q','GLfloat' ))
 glTexCoord4f.version = '1.0'
+glTexCoord4f.deprecated = '3.1'
 glTexCoord4f.category = 'GL_VERSION_1_0'
 glTexCoord4f.trace = True
 glTexCoord4f.play = True
@@ -14806,6 +15000,7 @@ glTexCoord4fv = Function('glTexCoord4fv')
 glTexCoord4fv.ret = Return('void')
 glTexCoord4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
 glTexCoord4fv.version = '1.0'
+glTexCoord4fv.deprecated = '3.1'
 glTexCoord4fv.category = 'GL_VERSION_1_0'
 glTexCoord4fv.trace = True
 glTexCoord4fv.play = True
@@ -14818,6 +15013,7 @@ glTexCoord4i.add( Input( 't','GLint' ))
 glTexCoord4i.add( Input( 'r','GLint' ))
 glTexCoord4i.add( Input( 'q','GLint' ))
 glTexCoord4i.version = '1.0'
+glTexCoord4i.deprecated = '3.1'
 glTexCoord4i.category = 'GL_VERSION_1_0'
 glTexCoord4i.trace = True
 glTexCoord4i.play = True
@@ -14827,6 +15023,7 @@ glTexCoord4iv = Function('glTexCoord4iv')
 glTexCoord4iv.ret = Return('void')
 glTexCoord4iv.add( Input( 'v','const GLint *' ,size = 4 ))
 glTexCoord4iv.version = '1.0'
+glTexCoord4iv.deprecated = '3.1'
 glTexCoord4iv.category = 'GL_VERSION_1_0'
 glTexCoord4iv.trace = True
 glTexCoord4iv.play = True
@@ -14839,6 +15036,7 @@ glTexCoord4s.add( Input( 't','GLshort' ))
 glTexCoord4s.add( Input( 'r','GLshort' ))
 glTexCoord4s.add( Input( 'q','GLshort' ))
 glTexCoord4s.version = '1.0'
+glTexCoord4s.deprecated = '3.1'
 glTexCoord4s.category = 'GL_VERSION_1_0'
 glTexCoord4s.trace = True
 glTexCoord4s.play = True
@@ -14848,6 +15046,7 @@ glTexCoord4sv = Function('glTexCoord4sv')
 glTexCoord4sv.ret = Return('void')
 glTexCoord4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
 glTexCoord4sv.version = '1.0'
+glTexCoord4sv.deprecated = '3.1'
 glTexCoord4sv.category = 'GL_VERSION_1_0'
 glTexCoord4sv.trace = True
 glTexCoord4sv.play = True
@@ -14907,6 +15106,7 @@ glTexGend.add( Input( 'coord','GLenum' ))
 glTexGend.add( Input( 'pname','GLenum' ))
 glTexGend.add( Input( 'param','GLdouble' ))
 glTexGend.version = '1.0'
+glTexGend.deprecated = '3.1'
 glTexGend.category = 'GL_VERSION_1_0'
 glTexGend.trace = True
 glTexGend.play = True
@@ -14918,6 +15118,7 @@ glTexGendv.add( Input( 'coord','GLenum' ))
 glTexGendv.add( Input( 'pname','GLenum' ))
 glTexGendv.add( Input( 'params','const GLdouble *' ,size = 'helperGLTexGenvSize(pname)' ))
 glTexGendv.version = '1.0'
+glTexGendv.deprecated = '3.1'
 glTexGendv.category = 'GL_VERSION_1_0'
 glTexGendv.trace = True
 glTexGendv.play = True
@@ -14929,6 +15130,7 @@ glTexGenf.add( Input( 'coord','GLenum' ))
 glTexGenf.add( Input( 'pname','GLenum' ))
 glTexGenf.add( Input( 'param','GLfloat' ))
 glTexGenf.version = '1.0'
+glTexGenf.deprecated = '3.1'
 glTexGenf.category = 'GL_VERSION_1_0'
 glTexGenf.trace = True
 glTexGenf.play = True
@@ -14940,6 +15142,7 @@ glTexGenfv.add( Input( 'coord','GLenum' ))
 glTexGenfv.add( Input( 'pname','GLenum' ))
 glTexGenfv.add( Input( 'params','const GLfloat *' ,size = 'helperGLTexGenvSize(pname)' ))
 glTexGenfv.version = '1.0'
+glTexGenfv.deprecated = '3.1'
 glTexGenfv.category = 'GL_VERSION_1_0'
 glTexGenfv.trace = True
 glTexGenfv.play = True
@@ -14951,6 +15154,7 @@ glTexGeni.add( Input( 'coord','GLenum' ))
 glTexGeni.add( Input( 'pname','GLenum' ))
 glTexGeni.add( Input( 'param','GLint' ,regalLog = 'GLenumToString(static_cast<GLenum>(param))' ))
 glTexGeni.version = '1.0'
+glTexGeni.deprecated = '3.1'
 glTexGeni.category = 'GL_VERSION_1_0'
 glTexGeni.trace = True
 glTexGeni.play = True
@@ -14962,6 +15166,7 @@ glTexGeniv.add( Input( 'coord','GLenum' ))
 glTexGeniv.add( Input( 'pname','GLenum' ))
 glTexGeniv.add( Input( 'params','const GLint *' ,size = 'helperGLTexGenvSize(pname)' ))
 glTexGeniv.version = '1.0'
+glTexGeniv.deprecated = '3.1'
 glTexGeniv.category = 'GL_VERSION_1_0'
 glTexGeniv.trace = True
 glTexGeniv.play = True
@@ -15055,6 +15260,7 @@ glTranslated.add( Input( 'x','GLdouble' ))
 glTranslated.add( Input( 'y','GLdouble' ))
 glTranslated.add( Input( 'z','GLdouble' ))
 glTranslated.version = '1.0'
+glTranslated.deprecated = '3.1'
 glTranslated.category = 'GL_VERSION_1_0'
 glTranslated.trace = True
 glTranslated.play = True
@@ -15066,6 +15272,7 @@ glTranslatef.add( Input( 'x','GLfloat' ))
 glTranslatef.add( Input( 'y','GLfloat' ))
 glTranslatef.add( Input( 'z','GLfloat' ))
 glTranslatef.version = '1.0'
+glTranslatef.deprecated = '3.1'
 glTranslatef.category = 'GL_VERSION_1_0'
 glTranslatef.esVersions = [1.0, 1.1]
 glTranslatef.trace = True
@@ -15077,6 +15284,7 @@ glVertex2d.ret = Return('void')
 glVertex2d.add( Input( 'x','GLdouble' ))
 glVertex2d.add( Input( 'y','GLdouble' ))
 glVertex2d.version = '1.0'
+glVertex2d.deprecated = '3.1'
 glVertex2d.category = 'GL_VERSION_1_0'
 glVertex2d.trace = True
 glVertex2d.play = True
@@ -15086,6 +15294,7 @@ glVertex2dv = Function('glVertex2dv')
 glVertex2dv.ret = Return('void')
 glVertex2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
 glVertex2dv.version = '1.0'
+glVertex2dv.deprecated = '3.1'
 glVertex2dv.category = 'GL_VERSION_1_0'
 glVertex2dv.trace = True
 glVertex2dv.play = True
@@ -15096,6 +15305,7 @@ glVertex2f.ret = Return('void')
 glVertex2f.add( Input( 'x','GLfloat' ))
 glVertex2f.add( Input( 'y','GLfloat' ))
 glVertex2f.version = '1.0'
+glVertex2f.deprecated = '3.1'
 glVertex2f.category = 'GL_VERSION_1_0'
 glVertex2f.trace = True
 glVertex2f.play = True
@@ -15105,6 +15315,7 @@ glVertex2fv = Function('glVertex2fv')
 glVertex2fv.ret = Return('void')
 glVertex2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
 glVertex2fv.version = '1.0'
+glVertex2fv.deprecated = '3.1'
 glVertex2fv.category = 'GL_VERSION_1_0'
 glVertex2fv.trace = True
 glVertex2fv.play = True
@@ -15115,6 +15326,7 @@ glVertex2i.ret = Return('void')
 glVertex2i.add( Input( 'x','GLint' ))
 glVertex2i.add( Input( 'y','GLint' ))
 glVertex2i.version = '1.0'
+glVertex2i.deprecated = '3.1'
 glVertex2i.category = 'GL_VERSION_1_0'
 glVertex2i.trace = True
 glVertex2i.play = True
@@ -15124,6 +15336,7 @@ glVertex2iv = Function('glVertex2iv')
 glVertex2iv.ret = Return('void')
 glVertex2iv.add( Input( 'v','const GLint *' ,size = 2 ))
 glVertex2iv.version = '1.0'
+glVertex2iv.deprecated = '3.1'
 glVertex2iv.category = 'GL_VERSION_1_0'
 glVertex2iv.trace = True
 glVertex2iv.play = True
@@ -15134,6 +15347,7 @@ glVertex2s.ret = Return('void')
 glVertex2s.add( Input( 'x','GLshort' ))
 glVertex2s.add( Input( 'y','GLshort' ))
 glVertex2s.version = '1.0'
+glVertex2s.deprecated = '3.1'
 glVertex2s.category = 'GL_VERSION_1_0'
 glVertex2s.trace = True
 glVertex2s.play = True
@@ -15143,6 +15357,7 @@ glVertex2sv = Function('glVertex2sv')
 glVertex2sv.ret = Return('void')
 glVertex2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
 glVertex2sv.version = '1.0'
+glVertex2sv.deprecated = '3.1'
 glVertex2sv.category = 'GL_VERSION_1_0'
 glVertex2sv.trace = True
 glVertex2sv.play = True
@@ -15154,6 +15369,7 @@ glVertex3d.add( Input( 'x','GLdouble' ))
 glVertex3d.add( Input( 'y','GLdouble' ))
 glVertex3d.add( Input( 'z','GLdouble' ))
 glVertex3d.version = '1.0'
+glVertex3d.deprecated = '3.1'
 glVertex3d.category = 'GL_VERSION_1_0'
 glVertex3d.trace = True
 glVertex3d.play = True
@@ -15163,6 +15379,7 @@ glVertex3dv = Function('glVertex3dv')
 glVertex3dv.ret = Return('void')
 glVertex3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glVertex3dv.version = '1.0'
+glVertex3dv.deprecated = '3.1'
 glVertex3dv.category = 'GL_VERSION_1_0'
 glVertex3dv.trace = True
 glVertex3dv.play = True
@@ -15174,6 +15391,7 @@ glVertex3f.add( Input( 'x','GLfloat' ))
 glVertex3f.add( Input( 'y','GLfloat' ))
 glVertex3f.add( Input( 'z','GLfloat' ))
 glVertex3f.version = '1.0'
+glVertex3f.deprecated = '3.1'
 glVertex3f.category = 'GL_VERSION_1_0'
 glVertex3f.trace = True
 glVertex3f.play = True
@@ -15183,6 +15401,7 @@ glVertex3fv = Function('glVertex3fv')
 glVertex3fv.ret = Return('void')
 glVertex3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glVertex3fv.version = '1.0'
+glVertex3fv.deprecated = '3.1'
 glVertex3fv.category = 'GL_VERSION_1_0'
 glVertex3fv.trace = True
 glVertex3fv.play = True
@@ -15194,6 +15413,7 @@ glVertex3i.add( Input( 'x','GLint' ))
 glVertex3i.add( Input( 'y','GLint' ))
 glVertex3i.add( Input( 'z','GLint' ))
 glVertex3i.version = '1.0'
+glVertex3i.deprecated = '3.1'
 glVertex3i.category = 'GL_VERSION_1_0'
 glVertex3i.trace = True
 glVertex3i.play = True
@@ -15203,6 +15423,7 @@ glVertex3iv = Function('glVertex3iv')
 glVertex3iv.ret = Return('void')
 glVertex3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glVertex3iv.version = '1.0'
+glVertex3iv.deprecated = '3.1'
 glVertex3iv.category = 'GL_VERSION_1_0'
 glVertex3iv.trace = True
 glVertex3iv.play = True
@@ -15214,6 +15435,7 @@ glVertex3s.add( Input( 'x','GLshort' ))
 glVertex3s.add( Input( 'y','GLshort' ))
 glVertex3s.add( Input( 'z','GLshort' ))
 glVertex3s.version = '1.0'
+glVertex3s.deprecated = '3.1'
 glVertex3s.category = 'GL_VERSION_1_0'
 glVertex3s.trace = True
 glVertex3s.play = True
@@ -15223,6 +15445,7 @@ glVertex3sv = Function('glVertex3sv')
 glVertex3sv.ret = Return('void')
 glVertex3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glVertex3sv.version = '1.0'
+glVertex3sv.deprecated = '3.1'
 glVertex3sv.category = 'GL_VERSION_1_0'
 glVertex3sv.trace = True
 glVertex3sv.play = True
@@ -15235,6 +15458,7 @@ glVertex4d.add( Input( 'y','GLdouble' ))
 glVertex4d.add( Input( 'z','GLdouble' ))
 glVertex4d.add( Input( 'w','GLdouble' ))
 glVertex4d.version = '1.0'
+glVertex4d.deprecated = '3.1'
 glVertex4d.category = 'GL_VERSION_1_0'
 glVertex4d.trace = True
 glVertex4d.play = True
@@ -15244,6 +15468,7 @@ glVertex4dv = Function('glVertex4dv')
 glVertex4dv.ret = Return('void')
 glVertex4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
 glVertex4dv.version = '1.0'
+glVertex4dv.deprecated = '3.1'
 glVertex4dv.category = 'GL_VERSION_1_0'
 glVertex4dv.trace = True
 glVertex4dv.play = True
@@ -15256,6 +15481,7 @@ glVertex4f.add( Input( 'y','GLfloat' ))
 glVertex4f.add( Input( 'z','GLfloat' ))
 glVertex4f.add( Input( 'w','GLfloat' ))
 glVertex4f.version = '1.0'
+glVertex4f.deprecated = '3.1'
 glVertex4f.category = 'GL_VERSION_1_0'
 glVertex4f.trace = True
 glVertex4f.play = True
@@ -15265,6 +15491,7 @@ glVertex4fv = Function('glVertex4fv')
 glVertex4fv.ret = Return('void')
 glVertex4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
 glVertex4fv.version = '1.0'
+glVertex4fv.deprecated = '3.1'
 glVertex4fv.category = 'GL_VERSION_1_0'
 glVertex4fv.trace = True
 glVertex4fv.play = True
@@ -15277,6 +15504,7 @@ glVertex4i.add( Input( 'y','GLint' ))
 glVertex4i.add( Input( 'z','GLint' ))
 glVertex4i.add( Input( 'w','GLint' ))
 glVertex4i.version = '1.0'
+glVertex4i.deprecated = '3.1'
 glVertex4i.category = 'GL_VERSION_1_0'
 glVertex4i.trace = True
 glVertex4i.play = True
@@ -15286,6 +15514,7 @@ glVertex4iv = Function('glVertex4iv')
 glVertex4iv.ret = Return('void')
 glVertex4iv.add( Input( 'v','const GLint *' ,size = 4 ))
 glVertex4iv.version = '1.0'
+glVertex4iv.deprecated = '3.1'
 glVertex4iv.category = 'GL_VERSION_1_0'
 glVertex4iv.trace = True
 glVertex4iv.play = True
@@ -15298,6 +15527,7 @@ glVertex4s.add( Input( 'y','GLshort' ))
 glVertex4s.add( Input( 'z','GLshort' ))
 glVertex4s.add( Input( 'w','GLshort' ))
 glVertex4s.version = '1.0'
+glVertex4s.deprecated = '3.1'
 glVertex4s.category = 'GL_VERSION_1_0'
 glVertex4s.trace = True
 glVertex4s.play = True
@@ -15307,6 +15537,7 @@ glVertex4sv = Function('glVertex4sv')
 glVertex4sv.ret = Return('void')
 glVertex4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
 glVertex4sv.version = '1.0'
+glVertex4sv.deprecated = '3.1'
 glVertex4sv.category = 'GL_VERSION_1_0'
 glVertex4sv.trace = True
 glVertex4sv.play = True
@@ -15333,6 +15564,7 @@ glAreTexturesResident.add( Input( 'n','GLsizei' ))
 glAreTexturesResident.add( Input( 'textures','const GLuint *' ,size = 'n' ))
 glAreTexturesResident.add( Output( 'residences','GLboolean *' ,size = 'n' ))
 glAreTexturesResident.version = '1.1'
+glAreTexturesResident.deprecated = '3.1'
 glAreTexturesResident.category = 'GL_VERSION_1_1'
 glAreTexturesResident.trace = True
 glAreTexturesResident.play = True
@@ -15365,6 +15597,7 @@ glColorPointer.add( Input( 'type','GLenum' ))
 glColorPointer.add( Input( 'stride','GLsizei' ))
 glColorPointer.add( Input( 'pointer','const GLvoid *' ))
 glColorPointer.version = '1.1'
+glColorPointer.deprecated = '3.1'
 glColorPointer.category = 'GL_VERSION_1_1'
 glColorPointer.esVersions = [1.0, 1.1]
 glColorPointer.trace = True
@@ -15485,6 +15718,7 @@ glEdgeFlagPointer.ret = Return('void')
 glEdgeFlagPointer.add( Input( 'stride','GLsizei' ))
 glEdgeFlagPointer.add( Input( 'pointer','const GLvoid *' ))
 glEdgeFlagPointer.version = '1.1'
+glEdgeFlagPointer.deprecated = '3.1'
 glEdgeFlagPointer.category = 'GL_VERSION_1_1'
 glEdgeFlagPointer.trace = True
 glEdgeFlagPointer.play = True
@@ -15528,6 +15762,7 @@ glIndexPointer.add( Input( 'type','GLenum' ))
 glIndexPointer.add( Input( 'stride','GLsizei' ))
 glIndexPointer.add( Input( 'pointer','const GLvoid *' ))
 glIndexPointer.version = '1.1'
+glIndexPointer.deprecated = '3.1'
 glIndexPointer.category = 'GL_VERSION_1_1'
 glIndexPointer.trace = True
 glIndexPointer.play = True
@@ -15537,6 +15772,7 @@ glIndexub = Function('glIndexub')
 glIndexub.ret = Return('void')
 glIndexub.add( Input( 'c','GLubyte' ))
 glIndexub.version = '1.1'
+glIndexub.deprecated = '3.1'
 glIndexub.category = 'GL_VERSION_1_1'
 glIndexub.trace = True
 glIndexub.play = True
@@ -15546,6 +15782,7 @@ glIndexubv = Function('glIndexubv')
 glIndexubv.ret = Return('void')
 glIndexubv.add( Input( 'c','const GLubyte *' ,size = 1 ))
 glIndexubv.version = '1.1'
+glIndexubv.deprecated = '3.1'
 glIndexubv.category = 'GL_VERSION_1_1'
 glIndexubv.trace = True
 glIndexubv.play = True
@@ -15578,6 +15815,7 @@ glNormalPointer.add( Input( 'type','GLenum' ))
 glNormalPointer.add( Input( 'stride','GLsizei' ))
 glNormalPointer.add( Input( 'pointer','const GLvoid *' ))
 glNormalPointer.version = '1.1'
+glNormalPointer.deprecated = '3.1'
 glNormalPointer.category = 'GL_VERSION_1_1'
 glNormalPointer.esVersions = [1.0, 1.1]
 glNormalPointer.trace = True
@@ -15598,6 +15836,7 @@ gl.add(glPolygonOffset)
 glPopClientAttrib = Function('glPopClientAttrib')
 glPopClientAttrib.ret = Return('void')
 glPopClientAttrib.version = '1.1'
+glPopClientAttrib.deprecated = '3.1'
 glPopClientAttrib.category = 'GL_VERSION_1_1'
 glPopClientAttrib.trace = True
 glPopClientAttrib.play = True
@@ -15609,6 +15848,7 @@ glPrioritizeTextures.add( Input( 'n','GLsizei' ))
 glPrioritizeTextures.add( Input( 'textures','const GLuint *' ,size = 'n' ))
 glPrioritizeTextures.add( Input( 'priorities','const GLclampf *' ,size = 'n' ))
 glPrioritizeTextures.version = '1.1'
+glPrioritizeTextures.deprecated = '3.1'
 glPrioritizeTextures.category = 'GL_VERSION_1_1'
 glPrioritizeTextures.trace = True
 glPrioritizeTextures.play = True
@@ -15618,6 +15858,7 @@ glPushClientAttrib = Function('glPushClientAttrib')
 glPushClientAttrib.ret = Return('void')
 glPushClientAttrib.add( Input( 'mask','GLbitfield' ,regalLog = 'GLpushClientAttribToString(mask)' ))
 glPushClientAttrib.version = '1.1'
+glPushClientAttrib.deprecated = '3.1'
 glPushClientAttrib.category = 'GL_VERSION_1_1'
 glPushClientAttrib.trace = True
 glPushClientAttrib.play = True
@@ -15630,6 +15871,7 @@ glTexCoordPointer.add( Input( 'type','GLenum' ))
 glTexCoordPointer.add( Input( 'stride','GLsizei' ))
 glTexCoordPointer.add( Input( 'pointer','const GLvoid *' ))
 glTexCoordPointer.version = '1.1'
+glTexCoordPointer.deprecated = '3.1'
 glTexCoordPointer.category = 'GL_VERSION_1_1'
 glTexCoordPointer.esVersions = [1.0, 1.1]
 glTexCoordPointer.trace = True
@@ -15676,6 +15918,7 @@ glVertexPointer.add( Input( 'type','GLenum' ))
 glVertexPointer.add( Input( 'stride','GLsizei' ))
 glVertexPointer.add( Input( 'pointer','const GLvoid *' ))
 glVertexPointer.version = '1.1'
+glVertexPointer.deprecated = '3.1'
 glVertexPointer.category = 'GL_VERSION_1_1'
 glVertexPointer.esVersions = [1.0, 1.1]
 glVertexPointer.trace = True
@@ -15791,6 +16034,7 @@ glClientActiveTexture = Function('glClientActiveTexture')
 glClientActiveTexture.ret = Return('void')
 glClientActiveTexture.add( Input( 'texture','GLenum' ))
 glClientActiveTexture.version = '1.3'
+glClientActiveTexture.deprecated = '3.1'
 glClientActiveTexture.category = 'GL_VERSION_1_3'
 glClientActiveTexture.esVersions = [1.0, 1.1]
 glClientActiveTexture.trace = True
@@ -15913,6 +16157,7 @@ glLoadTransposeMatrixd = Function('glLoadTransposeMatrixd')
 glLoadTransposeMatrixd.ret = Return('void')
 glLoadTransposeMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
 glLoadTransposeMatrixd.version = '1.3'
+glLoadTransposeMatrixd.deprecated = '3.1'
 glLoadTransposeMatrixd.category = 'GL_VERSION_1_3'
 glLoadTransposeMatrixd.trace = True
 glLoadTransposeMatrixd.play = True
@@ -15922,6 +16167,7 @@ glLoadTransposeMatrixf = Function('glLoadTransposeMatrixf')
 glLoadTransposeMatrixf.ret = Return('void')
 glLoadTransposeMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
 glLoadTransposeMatrixf.version = '1.3'
+glLoadTransposeMatrixf.deprecated = '3.1'
 glLoadTransposeMatrixf.category = 'GL_VERSION_1_3'
 glLoadTransposeMatrixf.trace = True
 glLoadTransposeMatrixf.play = True
@@ -15931,6 +16177,7 @@ glMultTransposeMatrixd = Function('glMultTransposeMatrixd')
 glMultTransposeMatrixd.ret = Return('void')
 glMultTransposeMatrixd.add( Input( 'm','const GLdouble *' ,size = 16 ))
 glMultTransposeMatrixd.version = '1.3'
+glMultTransposeMatrixd.deprecated = '3.1'
 glMultTransposeMatrixd.category = 'GL_VERSION_1_3'
 glMultTransposeMatrixd.trace = True
 glMultTransposeMatrixd.play = True
@@ -15940,6 +16187,7 @@ glMultTransposeMatrixf = Function('glMultTransposeMatrixf')
 glMultTransposeMatrixf.ret = Return('void')
 glMultTransposeMatrixf.add( Input( 'm','const GLfloat *' ,size = 16 ))
 glMultTransposeMatrixf.version = '1.3'
+glMultTransposeMatrixf.deprecated = '3.1'
 glMultTransposeMatrixf.category = 'GL_VERSION_1_3'
 glMultTransposeMatrixf.trace = True
 glMultTransposeMatrixf.play = True
@@ -15950,6 +16198,7 @@ glMultiTexCoord1d.ret = Return('void')
 glMultiTexCoord1d.add( Input( 'target','GLenum' ))
 glMultiTexCoord1d.add( Input( 's','GLdouble' ))
 glMultiTexCoord1d.version = '1.3'
+glMultiTexCoord1d.deprecated = '3.1'
 glMultiTexCoord1d.category = 'GL_VERSION_1_3'
 glMultiTexCoord1d.trace = True
 glMultiTexCoord1d.play = True
@@ -15960,6 +16209,7 @@ glMultiTexCoord1dv.ret = Return('void')
 glMultiTexCoord1dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1dv.add( Input( 'v','const GLdouble *' ,size = 1 ))
 glMultiTexCoord1dv.version = '1.3'
+glMultiTexCoord1dv.deprecated = '3.1'
 glMultiTexCoord1dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1dv.trace = True
 glMultiTexCoord1dv.play = True
@@ -15970,6 +16220,7 @@ glMultiTexCoord1f.ret = Return('void')
 glMultiTexCoord1f.add( Input( 'target','GLenum' ))
 glMultiTexCoord1f.add( Input( 's','GLfloat' ))
 glMultiTexCoord1f.version = '1.3'
+glMultiTexCoord1f.deprecated = '3.1'
 glMultiTexCoord1f.category = 'GL_VERSION_1_3'
 glMultiTexCoord1f.trace = True
 glMultiTexCoord1f.play = True
@@ -15980,6 +16231,7 @@ glMultiTexCoord1fv.ret = Return('void')
 glMultiTexCoord1fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1fv.add( Input( 'v','const GLfloat *' ,size = 1 ))
 glMultiTexCoord1fv.version = '1.3'
+glMultiTexCoord1fv.deprecated = '3.1'
 glMultiTexCoord1fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1fv.trace = True
 glMultiTexCoord1fv.play = True
@@ -15990,6 +16242,7 @@ glMultiTexCoord1i.ret = Return('void')
 glMultiTexCoord1i.add( Input( 'target','GLenum' ))
 glMultiTexCoord1i.add( Input( 's','GLint' ))
 glMultiTexCoord1i.version = '1.3'
+glMultiTexCoord1i.deprecated = '3.1'
 glMultiTexCoord1i.category = 'GL_VERSION_1_3'
 glMultiTexCoord1i.trace = True
 glMultiTexCoord1i.play = True
@@ -16000,6 +16253,7 @@ glMultiTexCoord1iv.ret = Return('void')
 glMultiTexCoord1iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1iv.add( Input( 'v','const GLint *' ,size = 1 ))
 glMultiTexCoord1iv.version = '1.3'
+glMultiTexCoord1iv.deprecated = '3.1'
 glMultiTexCoord1iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1iv.trace = True
 glMultiTexCoord1iv.play = True
@@ -16010,6 +16264,7 @@ glMultiTexCoord1s.ret = Return('void')
 glMultiTexCoord1s.add( Input( 'target','GLenum' ))
 glMultiTexCoord1s.add( Input( 's','GLshort' ))
 glMultiTexCoord1s.version = '1.3'
+glMultiTexCoord1s.deprecated = '3.1'
 glMultiTexCoord1s.category = 'GL_VERSION_1_3'
 glMultiTexCoord1s.trace = True
 glMultiTexCoord1s.play = True
@@ -16020,6 +16275,7 @@ glMultiTexCoord1sv.ret = Return('void')
 glMultiTexCoord1sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord1sv.add( Input( 'v','const GLshort *' ,size = 1 ))
 glMultiTexCoord1sv.version = '1.3'
+glMultiTexCoord1sv.deprecated = '3.1'
 glMultiTexCoord1sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord1sv.trace = True
 glMultiTexCoord1sv.play = True
@@ -16031,6 +16287,7 @@ glMultiTexCoord2d.add( Input( 'target','GLenum' ))
 glMultiTexCoord2d.add( Input( 's','GLdouble' ))
 glMultiTexCoord2d.add( Input( 't','GLdouble' ))
 glMultiTexCoord2d.version = '1.3'
+glMultiTexCoord2d.deprecated = '3.1'
 glMultiTexCoord2d.category = 'GL_VERSION_1_3'
 glMultiTexCoord2d.trace = True
 glMultiTexCoord2d.play = True
@@ -16041,6 +16298,7 @@ glMultiTexCoord2dv.ret = Return('void')
 glMultiTexCoord2dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2dv.add( Input( 'v','const GLdouble *' ,size = 2 ))
 glMultiTexCoord2dv.version = '1.3'
+glMultiTexCoord2dv.deprecated = '3.1'
 glMultiTexCoord2dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2dv.trace = True
 glMultiTexCoord2dv.play = True
@@ -16052,6 +16310,7 @@ glMultiTexCoord2f.add( Input( 'target','GLenum' ))
 glMultiTexCoord2f.add( Input( 's','GLfloat' ))
 glMultiTexCoord2f.add( Input( 't','GLfloat' ))
 glMultiTexCoord2f.version = '1.3'
+glMultiTexCoord2f.deprecated = '3.1'
 glMultiTexCoord2f.category = 'GL_VERSION_1_3'
 glMultiTexCoord2f.trace = True
 glMultiTexCoord2f.play = True
@@ -16062,6 +16321,7 @@ glMultiTexCoord2fv.ret = Return('void')
 glMultiTexCoord2fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2fv.add( Input( 'v','const GLfloat *' ,size = 2 ))
 glMultiTexCoord2fv.version = '1.3'
+glMultiTexCoord2fv.deprecated = '3.1'
 glMultiTexCoord2fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2fv.trace = True
 glMultiTexCoord2fv.play = True
@@ -16073,6 +16333,7 @@ glMultiTexCoord2i.add( Input( 'target','GLenum' ))
 glMultiTexCoord2i.add( Input( 's','GLint' ))
 glMultiTexCoord2i.add( Input( 't','GLint' ))
 glMultiTexCoord2i.version = '1.3'
+glMultiTexCoord2i.deprecated = '3.1'
 glMultiTexCoord2i.category = 'GL_VERSION_1_3'
 glMultiTexCoord2i.trace = True
 glMultiTexCoord2i.play = True
@@ -16083,6 +16344,7 @@ glMultiTexCoord2iv.ret = Return('void')
 glMultiTexCoord2iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2iv.add( Input( 'v','const GLint *' ,size = 2 ))
 glMultiTexCoord2iv.version = '1.3'
+glMultiTexCoord2iv.deprecated = '3.1'
 glMultiTexCoord2iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2iv.trace = True
 glMultiTexCoord2iv.play = True
@@ -16094,6 +16356,7 @@ glMultiTexCoord2s.add( Input( 'target','GLenum' ))
 glMultiTexCoord2s.add( Input( 's','GLshort' ))
 glMultiTexCoord2s.add( Input( 't','GLshort' ))
 glMultiTexCoord2s.version = '1.3'
+glMultiTexCoord2s.deprecated = '3.1'
 glMultiTexCoord2s.category = 'GL_VERSION_1_3'
 glMultiTexCoord2s.trace = True
 glMultiTexCoord2s.play = True
@@ -16104,6 +16367,7 @@ glMultiTexCoord2sv.ret = Return('void')
 glMultiTexCoord2sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord2sv.add( Input( 'v','const GLshort *' ,size = 2 ))
 glMultiTexCoord2sv.version = '1.3'
+glMultiTexCoord2sv.deprecated = '3.1'
 glMultiTexCoord2sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord2sv.trace = True
 glMultiTexCoord2sv.play = True
@@ -16116,6 +16380,7 @@ glMultiTexCoord3d.add( Input( 's','GLdouble' ))
 glMultiTexCoord3d.add( Input( 't','GLdouble' ))
 glMultiTexCoord3d.add( Input( 'r','GLdouble' ))
 glMultiTexCoord3d.version = '1.3'
+glMultiTexCoord3d.deprecated = '3.1'
 glMultiTexCoord3d.category = 'GL_VERSION_1_3'
 glMultiTexCoord3d.trace = True
 glMultiTexCoord3d.play = True
@@ -16126,6 +16391,7 @@ glMultiTexCoord3dv.ret = Return('void')
 glMultiTexCoord3dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glMultiTexCoord3dv.version = '1.3'
+glMultiTexCoord3dv.deprecated = '3.1'
 glMultiTexCoord3dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3dv.trace = True
 glMultiTexCoord3dv.play = True
@@ -16138,6 +16404,7 @@ glMultiTexCoord3f.add( Input( 's','GLfloat' ))
 glMultiTexCoord3f.add( Input( 't','GLfloat' ))
 glMultiTexCoord3f.add( Input( 'r','GLfloat' ))
 glMultiTexCoord3f.version = '1.3'
+glMultiTexCoord3f.deprecated = '3.1'
 glMultiTexCoord3f.category = 'GL_VERSION_1_3'
 glMultiTexCoord3f.trace = True
 glMultiTexCoord3f.play = True
@@ -16148,6 +16415,7 @@ glMultiTexCoord3fv.ret = Return('void')
 glMultiTexCoord3fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glMultiTexCoord3fv.version = '1.3'
+glMultiTexCoord3fv.deprecated = '3.1'
 glMultiTexCoord3fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3fv.trace = True
 glMultiTexCoord3fv.play = True
@@ -16160,6 +16428,7 @@ glMultiTexCoord3i.add( Input( 's','GLint' ))
 glMultiTexCoord3i.add( Input( 't','GLint' ))
 glMultiTexCoord3i.add( Input( 'r','GLint' ))
 glMultiTexCoord3i.version = '1.3'
+glMultiTexCoord3i.deprecated = '3.1'
 glMultiTexCoord3i.category = 'GL_VERSION_1_3'
 glMultiTexCoord3i.trace = True
 glMultiTexCoord3i.play = True
@@ -16170,6 +16439,7 @@ glMultiTexCoord3iv.ret = Return('void')
 glMultiTexCoord3iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glMultiTexCoord3iv.version = '1.3'
+glMultiTexCoord3iv.deprecated = '3.1'
 glMultiTexCoord3iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3iv.trace = True
 glMultiTexCoord3iv.play = True
@@ -16182,6 +16452,7 @@ glMultiTexCoord3s.add( Input( 's','GLshort' ))
 glMultiTexCoord3s.add( Input( 't','GLshort' ))
 glMultiTexCoord3s.add( Input( 'r','GLshort' ))
 glMultiTexCoord3s.version = '1.3'
+glMultiTexCoord3s.deprecated = '3.1'
 glMultiTexCoord3s.category = 'GL_VERSION_1_3'
 glMultiTexCoord3s.trace = True
 glMultiTexCoord3s.play = True
@@ -16192,6 +16463,7 @@ glMultiTexCoord3sv.ret = Return('void')
 glMultiTexCoord3sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glMultiTexCoord3sv.version = '1.3'
+glMultiTexCoord3sv.deprecated = '3.1'
 glMultiTexCoord3sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord3sv.trace = True
 glMultiTexCoord3sv.play = True
@@ -16205,6 +16477,7 @@ glMultiTexCoord4d.add( Input( 't','GLdouble' ))
 glMultiTexCoord4d.add( Input( 'r','GLdouble' ))
 glMultiTexCoord4d.add( Input( 'q','GLdouble' ))
 glMultiTexCoord4d.version = '1.3'
+glMultiTexCoord4d.deprecated = '3.1'
 glMultiTexCoord4d.category = 'GL_VERSION_1_3'
 glMultiTexCoord4d.trace = True
 glMultiTexCoord4d.play = True
@@ -16215,6 +16488,7 @@ glMultiTexCoord4dv.ret = Return('void')
 glMultiTexCoord4dv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4dv.add( Input( 'v','const GLdouble *' ,size = 4 ))
 glMultiTexCoord4dv.version = '1.3'
+glMultiTexCoord4dv.deprecated = '3.1'
 glMultiTexCoord4dv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4dv.trace = True
 glMultiTexCoord4dv.play = True
@@ -16228,6 +16502,7 @@ glMultiTexCoord4f.add( Input( 't','GLfloat' ))
 glMultiTexCoord4f.add( Input( 'r','GLfloat' ))
 glMultiTexCoord4f.add( Input( 'q','GLfloat' ))
 glMultiTexCoord4f.version = '1.3'
+glMultiTexCoord4f.deprecated = '3.1'
 glMultiTexCoord4f.category = 'GL_VERSION_1_3'
 glMultiTexCoord4f.esVersions = [1.0, 1.1]
 glMultiTexCoord4f.trace = True
@@ -16239,6 +16514,7 @@ glMultiTexCoord4fv.ret = Return('void')
 glMultiTexCoord4fv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4fv.add( Input( 'v','const GLfloat *' ,size = 4 ))
 glMultiTexCoord4fv.version = '1.3'
+glMultiTexCoord4fv.deprecated = '3.1'
 glMultiTexCoord4fv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4fv.trace = True
 glMultiTexCoord4fv.play = True
@@ -16252,6 +16528,7 @@ glMultiTexCoord4i.add( Input( 't','GLint' ))
 glMultiTexCoord4i.add( Input( 'r','GLint' ))
 glMultiTexCoord4i.add( Input( 'q','GLint' ))
 glMultiTexCoord4i.version = '1.3'
+glMultiTexCoord4i.deprecated = '3.1'
 glMultiTexCoord4i.category = 'GL_VERSION_1_3'
 glMultiTexCoord4i.trace = True
 glMultiTexCoord4i.play = True
@@ -16262,6 +16539,7 @@ glMultiTexCoord4iv.ret = Return('void')
 glMultiTexCoord4iv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4iv.add( Input( 'v','const GLint *' ,size = 4 ))
 glMultiTexCoord4iv.version = '1.3'
+glMultiTexCoord4iv.deprecated = '3.1'
 glMultiTexCoord4iv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4iv.trace = True
 glMultiTexCoord4iv.play = True
@@ -16275,6 +16553,7 @@ glMultiTexCoord4s.add( Input( 't','GLshort' ))
 glMultiTexCoord4s.add( Input( 'r','GLshort' ))
 glMultiTexCoord4s.add( Input( 'q','GLshort' ))
 glMultiTexCoord4s.version = '1.3'
+glMultiTexCoord4s.deprecated = '3.1'
 glMultiTexCoord4s.category = 'GL_VERSION_1_3'
 glMultiTexCoord4s.trace = True
 glMultiTexCoord4s.play = True
@@ -16285,6 +16564,7 @@ glMultiTexCoord4sv.ret = Return('void')
 glMultiTexCoord4sv.add( Input( 'target','GLenum' ))
 glMultiTexCoord4sv.add( Input( 'v','const GLshort *' ,size = 4 ))
 glMultiTexCoord4sv.version = '1.3'
+glMultiTexCoord4sv.deprecated = '3.1'
 glMultiTexCoord4sv.category = 'GL_VERSION_1_3'
 glMultiTexCoord4sv.trace = True
 glMultiTexCoord4sv.play = True
@@ -16311,6 +16591,7 @@ glFogCoordPointer.add( Input( 'type','GLenum' ))
 glFogCoordPointer.add( Input( 'stride','GLsizei' ))
 glFogCoordPointer.add( Input( 'pointer','const GLvoid *' ))
 glFogCoordPointer.version = '1.4'
+glFogCoordPointer.deprecated = '3.1'
 glFogCoordPointer.category = 'GL_VERSION_1_4'
 glFogCoordPointer.trace = True
 glFogCoordPointer.play = True
@@ -16320,6 +16601,7 @@ glFogCoordd = Function('glFogCoordd')
 glFogCoordd.ret = Return('void')
 glFogCoordd.add( Input( 'coord','GLdouble' ))
 glFogCoordd.version = '1.4'
+glFogCoordd.deprecated = '3.1'
 glFogCoordd.category = 'GL_VERSION_1_4'
 glFogCoordd.trace = True
 glFogCoordd.play = True
@@ -16329,6 +16611,7 @@ glFogCoorddv = Function('glFogCoorddv')
 glFogCoorddv.ret = Return('void')
 glFogCoorddv.add( Input( 'coord','const GLdouble *' ,size = 1 ))
 glFogCoorddv.version = '1.4'
+glFogCoorddv.deprecated = '3.1'
 glFogCoorddv.category = 'GL_VERSION_1_4'
 glFogCoorddv.trace = True
 glFogCoorddv.play = True
@@ -16338,6 +16621,7 @@ glFogCoordf = Function('glFogCoordf')
 glFogCoordf.ret = Return('void')
 glFogCoordf.add( Input( 'coord','GLfloat' ))
 glFogCoordf.version = '1.4'
+glFogCoordf.deprecated = '3.1'
 glFogCoordf.category = 'GL_VERSION_1_4'
 glFogCoordf.trace = True
 glFogCoordf.play = True
@@ -16347,6 +16631,7 @@ glFogCoordfv = Function('glFogCoordfv')
 glFogCoordfv.ret = Return('void')
 glFogCoordfv.add( Input( 'coord','const GLfloat *' ,size = 1 ))
 glFogCoordfv.version = '1.4'
+glFogCoordfv.deprecated = '3.1'
 glFogCoordfv.category = 'GL_VERSION_1_4'
 glFogCoordfv.trace = True
 glFogCoordfv.play = True
@@ -16425,6 +16710,7 @@ glSecondaryColor3b.add( Input( 'red','GLbyte' ))
 glSecondaryColor3b.add( Input( 'green','GLbyte' ))
 glSecondaryColor3b.add( Input( 'blue','GLbyte' ))
 glSecondaryColor3b.version = '1.4'
+glSecondaryColor3b.deprecated = '3.1'
 glSecondaryColor3b.category = 'GL_VERSION_1_4'
 glSecondaryColor3b.trace = True
 glSecondaryColor3b.play = True
@@ -16434,6 +16720,7 @@ glSecondaryColor3bv = Function('glSecondaryColor3bv')
 glSecondaryColor3bv.ret = Return('void')
 glSecondaryColor3bv.add( Input( 'v','const GLbyte *' ,size = 3 ))
 glSecondaryColor3bv.version = '1.4'
+glSecondaryColor3bv.deprecated = '3.1'
 glSecondaryColor3bv.category = 'GL_VERSION_1_4'
 glSecondaryColor3bv.trace = True
 glSecondaryColor3bv.play = True
@@ -16445,6 +16732,7 @@ glSecondaryColor3d.add( Input( 'red','GLdouble' ))
 glSecondaryColor3d.add( Input( 'green','GLdouble' ))
 glSecondaryColor3d.add( Input( 'blue','GLdouble' ))
 glSecondaryColor3d.version = '1.4'
+glSecondaryColor3d.deprecated = '3.1'
 glSecondaryColor3d.category = 'GL_VERSION_1_4'
 glSecondaryColor3d.trace = True
 glSecondaryColor3d.play = True
@@ -16454,6 +16742,7 @@ glSecondaryColor3dv = Function('glSecondaryColor3dv')
 glSecondaryColor3dv.ret = Return('void')
 glSecondaryColor3dv.add( Input( 'v','const GLdouble *' ,size = 3 ))
 glSecondaryColor3dv.version = '1.4'
+glSecondaryColor3dv.deprecated = '3.1'
 glSecondaryColor3dv.category = 'GL_VERSION_1_4'
 glSecondaryColor3dv.trace = True
 glSecondaryColor3dv.play = True
@@ -16465,6 +16754,7 @@ glSecondaryColor3f.add( Input( 'red','GLfloat' ))
 glSecondaryColor3f.add( Input( 'green','GLfloat' ))
 glSecondaryColor3f.add( Input( 'blue','GLfloat' ))
 glSecondaryColor3f.version = '1.4'
+glSecondaryColor3f.deprecated = '3.1'
 glSecondaryColor3f.category = 'GL_VERSION_1_4'
 glSecondaryColor3f.trace = True
 glSecondaryColor3f.play = True
@@ -16474,6 +16764,7 @@ glSecondaryColor3fv = Function('glSecondaryColor3fv')
 glSecondaryColor3fv.ret = Return('void')
 glSecondaryColor3fv.add( Input( 'v','const GLfloat *' ,size = 3 ))
 glSecondaryColor3fv.version = '1.4'
+glSecondaryColor3fv.deprecated = '3.1'
 glSecondaryColor3fv.category = 'GL_VERSION_1_4'
 glSecondaryColor3fv.trace = True
 glSecondaryColor3fv.play = True
@@ -16485,6 +16776,7 @@ glSecondaryColor3i.add( Input( 'red','GLint' ))
 glSecondaryColor3i.add( Input( 'green','GLint' ))
 glSecondaryColor3i.add( Input( 'blue','GLint' ))
 glSecondaryColor3i.version = '1.4'
+glSecondaryColor3i.deprecated = '3.1'
 glSecondaryColor3i.category = 'GL_VERSION_1_4'
 glSecondaryColor3i.trace = True
 glSecondaryColor3i.play = True
@@ -16494,6 +16786,7 @@ glSecondaryColor3iv = Function('glSecondaryColor3iv')
 glSecondaryColor3iv.ret = Return('void')
 glSecondaryColor3iv.add( Input( 'v','const GLint *' ,size = 3 ))
 glSecondaryColor3iv.version = '1.4'
+glSecondaryColor3iv.deprecated = '3.1'
 glSecondaryColor3iv.category = 'GL_VERSION_1_4'
 glSecondaryColor3iv.trace = True
 glSecondaryColor3iv.play = True
@@ -16505,6 +16798,7 @@ glSecondaryColor3s.add( Input( 'red','GLshort' ))
 glSecondaryColor3s.add( Input( 'green','GLshort' ))
 glSecondaryColor3s.add( Input( 'blue','GLshort' ))
 glSecondaryColor3s.version = '1.4'
+glSecondaryColor3s.deprecated = '3.1'
 glSecondaryColor3s.category = 'GL_VERSION_1_4'
 glSecondaryColor3s.trace = True
 glSecondaryColor3s.play = True
@@ -16514,6 +16808,7 @@ glSecondaryColor3sv = Function('glSecondaryColor3sv')
 glSecondaryColor3sv.ret = Return('void')
 glSecondaryColor3sv.add( Input( 'v','const GLshort *' ,size = 3 ))
 glSecondaryColor3sv.version = '1.4'
+glSecondaryColor3sv.deprecated = '3.1'
 glSecondaryColor3sv.category = 'GL_VERSION_1_4'
 glSecondaryColor3sv.trace = True
 glSecondaryColor3sv.play = True
@@ -16525,6 +16820,7 @@ glSecondaryColor3ub.add( Input( 'red','GLubyte' ))
 glSecondaryColor3ub.add( Input( 'green','GLubyte' ))
 glSecondaryColor3ub.add( Input( 'blue','GLubyte' ))
 glSecondaryColor3ub.version = '1.4'
+glSecondaryColor3ub.deprecated = '3.1'
 glSecondaryColor3ub.category = 'GL_VERSION_1_4'
 glSecondaryColor3ub.trace = True
 glSecondaryColor3ub.play = True
@@ -16534,6 +16830,7 @@ glSecondaryColor3ubv = Function('glSecondaryColor3ubv')
 glSecondaryColor3ubv.ret = Return('void')
 glSecondaryColor3ubv.add( Input( 'v','const GLubyte *' ,size = 3 ))
 glSecondaryColor3ubv.version = '1.4'
+glSecondaryColor3ubv.deprecated = '3.1'
 glSecondaryColor3ubv.category = 'GL_VERSION_1_4'
 glSecondaryColor3ubv.trace = True
 glSecondaryColor3ubv.play = True
@@ -16545,6 +16842,7 @@ glSecondaryColor3ui.add( Input( 'red','GLuint' ))
 glSecondaryColor3ui.add( Input( 'green','GLuint' ))
 glSecondaryColor3ui.add( Input( 'blue','GLuint' ))
 glSecondaryColor3ui.version = '1.4'
+glSecondaryColor3ui.deprecated = '3.1'
 glSecondaryColor3ui.category = 'GL_VERSION_1_4'
 glSecondaryColor3ui.trace = True
 glSecondaryColor3ui.play = True
@@ -16554,6 +16852,7 @@ glSecondaryColor3uiv = Function('glSecondaryColor3uiv')
 glSecondaryColor3uiv.ret = Return('void')
 glSecondaryColor3uiv.add( Input( 'v','const GLuint *' ,size = 3 ))
 glSecondaryColor3uiv.version = '1.4'
+glSecondaryColor3uiv.deprecated = '3.1'
 glSecondaryColor3uiv.category = 'GL_VERSION_1_4'
 glSecondaryColor3uiv.trace = True
 glSecondaryColor3uiv.play = True
@@ -16565,6 +16864,7 @@ glSecondaryColor3us.add( Input( 'red','GLushort' ))
 glSecondaryColor3us.add( Input( 'green','GLushort' ))
 glSecondaryColor3us.add( Input( 'blue','GLushort' ))
 glSecondaryColor3us.version = '1.4'
+glSecondaryColor3us.deprecated = '3.1'
 glSecondaryColor3us.category = 'GL_VERSION_1_4'
 glSecondaryColor3us.trace = True
 glSecondaryColor3us.play = True
@@ -16574,6 +16874,7 @@ glSecondaryColor3usv = Function('glSecondaryColor3usv')
 glSecondaryColor3usv.ret = Return('void')
 glSecondaryColor3usv.add( Input( 'v','const GLushort *' ,size = 3 ))
 glSecondaryColor3usv.version = '1.4'
+glSecondaryColor3usv.deprecated = '3.1'
 glSecondaryColor3usv.category = 'GL_VERSION_1_4'
 glSecondaryColor3usv.trace = True
 glSecondaryColor3usv.play = True
@@ -16586,6 +16887,7 @@ glSecondaryColorPointer.add( Input( 'type','GLenum' ))
 glSecondaryColorPointer.add( Input( 'stride','GLsizei' ))
 glSecondaryColorPointer.add( Input( 'pointer','const GLvoid *' ))
 glSecondaryColorPointer.version = '1.4'
+glSecondaryColorPointer.deprecated = '3.1'
 glSecondaryColorPointer.category = 'GL_VERSION_1_4'
 glSecondaryColorPointer.trace = True
 glSecondaryColorPointer.play = True
@@ -16596,6 +16898,7 @@ glWindowPos2d.ret = Return('void')
 glWindowPos2d.add( Input( 'x','GLdouble' ))
 glWindowPos2d.add( Input( 'y','GLdouble' ))
 glWindowPos2d.version = '1.4'
+glWindowPos2d.deprecated = '3.1'
 glWindowPos2d.category = 'GL_VERSION_1_4'
 glWindowPos2d.trace = True
 glWindowPos2d.play = True
@@ -16605,6 +16908,7 @@ glWindowPos2dv = Function('glWindowPos2dv')
 glWindowPos2dv.ret = Return('void')
 glWindowPos2dv.add( Input( 'p','const GLdouble *' ,size = 2 ))
 glWindowPos2dv.version = '1.4'
+glWindowPos2dv.deprecated = '3.1'
 glWindowPos2dv.category = 'GL_VERSION_1_4'
 glWindowPos2dv.trace = True
 glWindowPos2dv.play = True
@@ -16615,6 +16919,7 @@ glWindowPos2f.ret = Return('void')
 glWindowPos2f.add( Input( 'x','GLfloat' ))
 glWindowPos2f.add( Input( 'y','GLfloat' ))
 glWindowPos2f.version = '1.4'
+glWindowPos2f.deprecated = '3.1'
 glWindowPos2f.category = 'GL_VERSION_1_4'
 glWindowPos2f.trace = True
 glWindowPos2f.play = True
@@ -16624,6 +16929,7 @@ glWindowPos2fv = Function('glWindowPos2fv')
 glWindowPos2fv.ret = Return('void')
 glWindowPos2fv.add( Input( 'p','const GLfloat *' ,size = 2 ))
 glWindowPos2fv.version = '1.4'
+glWindowPos2fv.deprecated = '3.1'
 glWindowPos2fv.category = 'GL_VERSION_1_4'
 glWindowPos2fv.trace = True
 glWindowPos2fv.play = True
@@ -16634,6 +16940,7 @@ glWindowPos2i.ret = Return('void')
 glWindowPos2i.add( Input( 'x','GLint' ))
 glWindowPos2i.add( Input( 'y','GLint' ))
 glWindowPos2i.version = '1.4'
+glWindowPos2i.deprecated = '3.1'
 glWindowPos2i.category = 'GL_VERSION_1_4'
 glWindowPos2i.trace = True
 glWindowPos2i.play = True
@@ -16643,6 +16950,7 @@ glWindowPos2iv = Function('glWindowPos2iv')
 glWindowPos2iv.ret = Return('void')
 glWindowPos2iv.add( Input( 'p','const GLint *' ,size = 2 ))
 glWindowPos2iv.version = '1.4'
+glWindowPos2iv.deprecated = '3.1'
 glWindowPos2iv.category = 'GL_VERSION_1_4'
 glWindowPos2iv.trace = True
 glWindowPos2iv.play = True
@@ -16653,6 +16961,7 @@ glWindowPos2s.ret = Return('void')
 glWindowPos2s.add( Input( 'x','GLshort' ))
 glWindowPos2s.add( Input( 'y','GLshort' ))
 glWindowPos2s.version = '1.4'
+glWindowPos2s.deprecated = '3.1'
 glWindowPos2s.category = 'GL_VERSION_1_4'
 glWindowPos2s.trace = True
 glWindowPos2s.play = True
@@ -16662,6 +16971,7 @@ glWindowPos2sv = Function('glWindowPos2sv')
 glWindowPos2sv.ret = Return('void')
 glWindowPos2sv.add( Input( 'p','const GLshort *' ,size = 2 ))
 glWindowPos2sv.version = '1.4'
+glWindowPos2sv.deprecated = '3.1'
 glWindowPos2sv.category = 'GL_VERSION_1_4'
 glWindowPos2sv.trace = True
 glWindowPos2sv.play = True
@@ -16673,6 +16983,7 @@ glWindowPos3d.add( Input( 'x','GLdouble' ))
 glWindowPos3d.add( Input( 'y','GLdouble' ))
 glWindowPos3d.add( Input( 'z','GLdouble' ))
 glWindowPos3d.version = '1.4'
+glWindowPos3d.deprecated = '3.1'
 glWindowPos3d.category = 'GL_VERSION_1_4'
 glWindowPos3d.trace = True
 glWindowPos3d.play = True
@@ -16682,6 +16993,7 @@ glWindowPos3dv = Function('glWindowPos3dv')
 glWindowPos3dv.ret = Return('void')
 glWindowPos3dv.add( Input( 'p','const GLdouble *' ,size = 3 ))
 glWindowPos3dv.version = '1.4'
+glWindowPos3dv.deprecated = '3.1'
 glWindowPos3dv.category = 'GL_VERSION_1_4'
 glWindowPos3dv.trace = True
 glWindowPos3dv.play = True
@@ -16693,6 +17005,7 @@ glWindowPos3f.add( Input( 'x','GLfloat' ))
 glWindowPos3f.add( Input( 'y','GLfloat' ))
 glWindowPos3f.add( Input( 'z','GLfloat' ))
 glWindowPos3f.version = '1.4'
+glWindowPos3f.deprecated = '3.1'
 glWindowPos3f.category = 'GL_VERSION_1_4'
 glWindowPos3f.trace = True
 glWindowPos3f.play = True
@@ -16702,6 +17015,7 @@ glWindowPos3fv = Function('glWindowPos3fv')
 glWindowPos3fv.ret = Return('void')
 glWindowPos3fv.add( Input( 'p','const GLfloat *' ,size = 3 ))
 glWindowPos3fv.version = '1.4'
+glWindowPos3fv.deprecated = '3.1'
 glWindowPos3fv.category = 'GL_VERSION_1_4'
 glWindowPos3fv.trace = True
 glWindowPos3fv.play = True
@@ -16713,6 +17027,7 @@ glWindowPos3i.add( Input( 'x','GLint' ))
 glWindowPos3i.add( Input( 'y','GLint' ))
 glWindowPos3i.add( Input( 'z','GLint' ))
 glWindowPos3i.version = '1.4'
+glWindowPos3i.deprecated = '3.1'
 glWindowPos3i.category = 'GL_VERSION_1_4'
 glWindowPos3i.trace = True
 glWindowPos3i.play = True
@@ -16722,6 +17037,7 @@ glWindowPos3iv = Function('glWindowPos3iv')
 glWindowPos3iv.ret = Return('void')
 glWindowPos3iv.add( Input( 'p','const GLint *' ,size = 3 ))
 glWindowPos3iv.version = '1.4'
+glWindowPos3iv.deprecated = '3.1'
 glWindowPos3iv.category = 'GL_VERSION_1_4'
 glWindowPos3iv.trace = True
 glWindowPos3iv.play = True
@@ -16733,6 +17049,7 @@ glWindowPos3s.add( Input( 'x','GLshort' ))
 glWindowPos3s.add( Input( 'y','GLshort' ))
 glWindowPos3s.add( Input( 'z','GLshort' ))
 glWindowPos3s.version = '1.4'
+glWindowPos3s.deprecated = '3.1'
 glWindowPos3s.category = 'GL_VERSION_1_4'
 glWindowPos3s.trace = True
 glWindowPos3s.play = True
@@ -16742,6 +17059,7 @@ glWindowPos3sv = Function('glWindowPos3sv')
 glWindowPos3sv.ret = Return('void')
 glWindowPos3sv.add( Input( 'p','const GLshort *' ,size = 3 ))
 glWindowPos3sv.version = '1.4'
+glWindowPos3sv.deprecated = '3.1'
 glWindowPos3sv.category = 'GL_VERSION_1_4'
 glWindowPos3sv.trace = True
 glWindowPos3sv.play = True
@@ -21319,6 +21637,7 @@ glColorSubTable.add( Input( 'format','GLenum' ))
 glColorSubTable.add( Input( 'type','GLenum' ))
 glColorSubTable.add( Input( 'data','const GLvoid *' ))
 glColorSubTable.version = '1.2'
+glColorSubTable.deprecated = '3.1'
 glColorSubTable.category = 'GL_ARB_imaging'
 glColorSubTable.trace = True
 glColorSubTable.play = True
@@ -21333,6 +21652,7 @@ glColorTable.add( Input( 'format','GLenum' ))
 glColorTable.add( Input( 'type','GLenum' ))
 glColorTable.add( Input( 'table','const GLvoid *' ))
 glColorTable.version = '1.2'
+glColorTable.deprecated = '3.1'
 glColorTable.category = 'GL_ARB_imaging'
 glColorTable.trace = True
 glColorTable.play = True
@@ -21344,6 +21664,7 @@ glColorTableParameterfv.add( Input( 'target','GLenum' ))
 glColorTableParameterfv.add( Input( 'pname','GLenum' ))
 glColorTableParameterfv.add( Input( 'params','const GLfloat *' ))
 glColorTableParameterfv.version = '1.2'
+glColorTableParameterfv.deprecated = '3.1'
 glColorTableParameterfv.category = 'GL_ARB_imaging'
 glColorTableParameterfv.trace = True
 glColorTableParameterfv.play = True
@@ -21355,6 +21676,7 @@ glColorTableParameteriv.add( Input( 'target','GLenum' ))
 glColorTableParameteriv.add( Input( 'pname','GLenum' ))
 glColorTableParameteriv.add( Input( 'params','const GLint *' ))
 glColorTableParameteriv.version = '1.2'
+glColorTableParameteriv.deprecated = '3.1'
 glColorTableParameteriv.category = 'GL_ARB_imaging'
 glColorTableParameteriv.trace = True
 glColorTableParameteriv.play = True
@@ -21369,6 +21691,7 @@ glConvolutionFilter1D.add( Input( 'format','GLenum' ))
 glConvolutionFilter1D.add( Input( 'type','GLenum' ))
 glConvolutionFilter1D.add( Input( 'image','const GLvoid *' ))
 glConvolutionFilter1D.version = '1.2'
+glConvolutionFilter1D.deprecated = '3.1'
 glConvolutionFilter1D.category = 'GL_ARB_imaging'
 glConvolutionFilter1D.trace = True
 glConvolutionFilter1D.play = True
@@ -21384,6 +21707,7 @@ glConvolutionFilter2D.add( Input( 'format','GLenum' ))
 glConvolutionFilter2D.add( Input( 'type','GLenum' ))
 glConvolutionFilter2D.add( Input( 'image','const GLvoid *' ))
 glConvolutionFilter2D.version = '1.2'
+glConvolutionFilter2D.deprecated = '3.1'
 glConvolutionFilter2D.category = 'GL_ARB_imaging'
 glConvolutionFilter2D.trace = True
 glConvolutionFilter2D.play = True
@@ -21395,6 +21719,7 @@ glConvolutionParameterf.add( Input( 'target','GLenum' ))
 glConvolutionParameterf.add( Input( 'pname','GLenum' ))
 glConvolutionParameterf.add( Input( 'params','GLfloat' ))
 glConvolutionParameterf.version = '1.2'
+glConvolutionParameterf.deprecated = '3.1'
 glConvolutionParameterf.category = 'GL_ARB_imaging'
 glConvolutionParameterf.trace = True
 glConvolutionParameterf.play = True
@@ -21406,6 +21731,7 @@ glConvolutionParameterfv.add( Input( 'target','GLenum' ))
 glConvolutionParameterfv.add( Input( 'pname','GLenum' ))
 glConvolutionParameterfv.add( Input( 'params','const GLfloat *' ))
 glConvolutionParameterfv.version = '1.2'
+glConvolutionParameterfv.deprecated = '3.1'
 glConvolutionParameterfv.category = 'GL_ARB_imaging'
 glConvolutionParameterfv.trace = True
 glConvolutionParameterfv.play = True
@@ -21417,6 +21743,7 @@ glConvolutionParameteri.add( Input( 'target','GLenum' ))
 glConvolutionParameteri.add( Input( 'pname','GLenum' ))
 glConvolutionParameteri.add( Input( 'params','GLint' ))
 glConvolutionParameteri.version = '1.2'
+glConvolutionParameteri.deprecated = '3.1'
 glConvolutionParameteri.category = 'GL_ARB_imaging'
 glConvolutionParameteri.trace = True
 glConvolutionParameteri.play = True
@@ -21428,6 +21755,7 @@ glConvolutionParameteriv.add( Input( 'target','GLenum' ))
 glConvolutionParameteriv.add( Input( 'pname','GLenum' ))
 glConvolutionParameteriv.add( Input( 'params','const GLint *' ))
 glConvolutionParameteriv.version = '1.2'
+glConvolutionParameteriv.deprecated = '3.1'
 glConvolutionParameteriv.category = 'GL_ARB_imaging'
 glConvolutionParameteriv.trace = True
 glConvolutionParameteriv.play = True
@@ -21441,6 +21769,7 @@ glCopyColorSubTable.add( Input( 'x','GLint' ))
 glCopyColorSubTable.add( Input( 'y','GLint' ))
 glCopyColorSubTable.add( Input( 'width','GLsizei' ))
 glCopyColorSubTable.version = '1.2'
+glCopyColorSubTable.deprecated = '3.1'
 glCopyColorSubTable.category = 'GL_ARB_imaging'
 glCopyColorSubTable.trace = True
 glCopyColorSubTable.play = True
@@ -21454,6 +21783,7 @@ glCopyColorTable.add( Input( 'x','GLint' ))
 glCopyColorTable.add( Input( 'y','GLint' ))
 glCopyColorTable.add( Input( 'width','GLsizei' ))
 glCopyColorTable.version = '1.2'
+glCopyColorTable.deprecated = '3.1'
 glCopyColorTable.category = 'GL_ARB_imaging'
 glCopyColorTable.trace = True
 glCopyColorTable.play = True
@@ -21467,6 +21797,7 @@ glCopyConvolutionFilter1D.add( Input( 'x','GLint' ))
 glCopyConvolutionFilter1D.add( Input( 'y','GLint' ))
 glCopyConvolutionFilter1D.add( Input( 'width','GLsizei' ))
 glCopyConvolutionFilter1D.version = '1.2'
+glCopyConvolutionFilter1D.deprecated = '3.1'
 glCopyConvolutionFilter1D.category = 'GL_ARB_imaging'
 glCopyConvolutionFilter1D.trace = True
 glCopyConvolutionFilter1D.play = True
@@ -21481,6 +21812,7 @@ glCopyConvolutionFilter2D.add( Input( 'y','GLint' ))
 glCopyConvolutionFilter2D.add( Input( 'width','GLsizei' ))
 glCopyConvolutionFilter2D.add( Input( 'height','GLsizei' ))
 glCopyConvolutionFilter2D.version = '1.2'
+glCopyConvolutionFilter2D.deprecated = '3.1'
 glCopyConvolutionFilter2D.category = 'GL_ARB_imaging'
 glCopyConvolutionFilter2D.trace = True
 glCopyConvolutionFilter2D.play = True
@@ -21493,6 +21825,7 @@ glGetColorTable.add( Input( 'format','GLenum' ))
 glGetColorTable.add( Input( 'type','GLenum' ))
 glGetColorTable.add( Output( 'table','GLvoid *' ))
 glGetColorTable.version = '1.2'
+glGetColorTable.deprecated = '3.1'
 glGetColorTable.category = 'GL_ARB_imaging'
 glGetColorTable.trace = True
 glGetColorTable.play = True
@@ -21504,6 +21837,7 @@ glGetColorTableParameterfv.add( Input( 'target','GLenum' ))
 glGetColorTableParameterfv.add( Input( 'pname','GLenum' ))
 glGetColorTableParameterfv.add( Output( 'params','GLfloat *' ))
 glGetColorTableParameterfv.version = '1.2'
+glGetColorTableParameterfv.deprecated = '3.1'
 glGetColorTableParameterfv.category = 'GL_ARB_imaging'
 glGetColorTableParameterfv.trace = True
 glGetColorTableParameterfv.play = True
@@ -21515,6 +21849,7 @@ glGetColorTableParameteriv.add( Input( 'target','GLenum' ))
 glGetColorTableParameteriv.add( Input( 'pname','GLenum' ))
 glGetColorTableParameteriv.add( Output( 'params','GLint *' ))
 glGetColorTableParameteriv.version = '1.2'
+glGetColorTableParameteriv.deprecated = '3.1'
 glGetColorTableParameteriv.category = 'GL_ARB_imaging'
 glGetColorTableParameteriv.trace = True
 glGetColorTableParameteriv.play = True
@@ -21527,6 +21862,7 @@ glGetConvolutionFilter.add( Input( 'format','GLenum' ))
 glGetConvolutionFilter.add( Input( 'type','GLenum' ))
 glGetConvolutionFilter.add( Output( 'image','GLvoid *' ))
 glGetConvolutionFilter.version = '1.2'
+glGetConvolutionFilter.deprecated = '3.1'
 glGetConvolutionFilter.category = 'GL_ARB_imaging'
 glGetConvolutionFilter.trace = True
 glGetConvolutionFilter.play = False
@@ -21538,6 +21874,7 @@ glGetConvolutionParameterfv.add( Input( 'target','GLenum' ))
 glGetConvolutionParameterfv.add( Input( 'pname','GLenum' ))
 glGetConvolutionParameterfv.add( Output( 'params','GLfloat *' ))
 glGetConvolutionParameterfv.version = '1.2'
+glGetConvolutionParameterfv.deprecated = '3.1'
 glGetConvolutionParameterfv.category = 'GL_ARB_imaging'
 glGetConvolutionParameterfv.trace = True
 glGetConvolutionParameterfv.play = False
@@ -21549,6 +21886,7 @@ glGetConvolutionParameteriv.add( Input( 'target','GLenum' ))
 glGetConvolutionParameteriv.add( Input( 'pname','GLenum' ))
 glGetConvolutionParameteriv.add( Output( 'params','GLint *' ))
 glGetConvolutionParameteriv.version = '1.2'
+glGetConvolutionParameteriv.deprecated = '3.1'
 glGetConvolutionParameteriv.category = 'GL_ARB_imaging'
 glGetConvolutionParameteriv.trace = True
 glGetConvolutionParameteriv.play = False
@@ -21562,6 +21900,7 @@ glGetHistogram.add( Input( 'format','GLenum' ))
 glGetHistogram.add( Input( 'type','GLenum' ))
 glGetHistogram.add( Output( 'values','GLvoid *' ))
 glGetHistogram.version = '1.2'
+glGetHistogram.deprecated = '3.1'
 glGetHistogram.category = 'GL_ARB_imaging'
 glGetHistogram.trace = True
 glGetHistogram.play = False
@@ -21573,6 +21912,7 @@ glGetHistogramParameterfv.add( Input( 'target','GLenum' ))
 glGetHistogramParameterfv.add( Input( 'pname','GLenum' ))
 glGetHistogramParameterfv.add( Output( 'params','GLfloat *' ))
 glGetHistogramParameterfv.version = '1.2'
+glGetHistogramParameterfv.deprecated = '3.1'
 glGetHistogramParameterfv.category = 'GL_ARB_imaging'
 glGetHistogramParameterfv.trace = True
 glGetHistogramParameterfv.play = False
@@ -21584,6 +21924,7 @@ glGetHistogramParameteriv.add( Input( 'target','GLenum' ))
 glGetHistogramParameteriv.add( Input( 'pname','GLenum' ))
 glGetHistogramParameteriv.add( Output( 'params','GLint *' ))
 glGetHistogramParameteriv.version = '1.2'
+glGetHistogramParameteriv.deprecated = '3.1'
 glGetHistogramParameteriv.category = 'GL_ARB_imaging'
 glGetHistogramParameteriv.trace = True
 glGetHistogramParameteriv.play = False
@@ -21597,6 +21938,7 @@ glGetMinmax.add( Input( 'format','GLenum' ))
 glGetMinmax.add( Input( 'types','GLenum' ))
 glGetMinmax.add( Output( 'values','GLvoid *' ))
 glGetMinmax.version = '1.2'
+glGetMinmax.deprecated = '3.1'
 glGetMinmax.category = 'GL_ARB_imaging'
 glGetMinmax.trace = True
 glGetMinmax.play = False
@@ -21608,6 +21950,7 @@ glGetMinmaxParameterfv.add( Input( 'target','GLenum' ))
 glGetMinmaxParameterfv.add( Input( 'pname','GLenum' ))
 glGetMinmaxParameterfv.add( Output( 'params','GLfloat *' ))
 glGetMinmaxParameterfv.version = '1.2'
+glGetMinmaxParameterfv.deprecated = '3.1'
 glGetMinmaxParameterfv.category = 'GL_ARB_imaging'
 glGetMinmaxParameterfv.trace = True
 glGetMinmaxParameterfv.play = False
@@ -21619,6 +21962,7 @@ glGetMinmaxParameteriv.add( Input( 'target','GLenum' ))
 glGetMinmaxParameteriv.add( Input( 'pname','GLenum' ))
 glGetMinmaxParameteriv.add( Output( 'params','GLint *' ))
 glGetMinmaxParameteriv.version = '1.2'
+glGetMinmaxParameteriv.deprecated = '3.1'
 glGetMinmaxParameteriv.category = 'GL_ARB_imaging'
 glGetMinmaxParameteriv.trace = True
 glGetMinmaxParameteriv.play = False
@@ -21633,6 +21977,7 @@ glGetSeparableFilter.add( Output( 'row','GLvoid *' ))
 glGetSeparableFilter.add( Output( 'column','GLvoid *' ))
 glGetSeparableFilter.add( Output( 'span','GLvoid *' ))
 glGetSeparableFilter.version = '1.2'
+glGetSeparableFilter.deprecated = '3.1'
 glGetSeparableFilter.category = 'GL_ARB_imaging'
 glGetSeparableFilter.trace = True
 glGetSeparableFilter.play = False
@@ -21645,6 +21990,7 @@ glHistogram.add( Input( 'width','GLsizei' ))
 glHistogram.add( Input( 'internalformat','GLenum' ))
 glHistogram.add( Input( 'sink','GLboolean' ))
 glHistogram.version = '1.2'
+glHistogram.deprecated = '3.1'
 glHistogram.category = 'GL_ARB_imaging'
 glHistogram.trace = True
 glHistogram.play = True
@@ -21656,6 +22002,7 @@ glMinmax.add( Input( 'target','GLenum' ))
 glMinmax.add( Input( 'internalformat','GLenum' ))
 glMinmax.add( Input( 'sink','GLboolean' ))
 glMinmax.version = '1.2'
+glMinmax.deprecated = '3.1'
 glMinmax.category = 'GL_ARB_imaging'
 glMinmax.trace = True
 glMinmax.play = True
@@ -21665,6 +22012,7 @@ glResetHistogram = Function('glResetHistogram')
 glResetHistogram.ret = Return('void')
 glResetHistogram.add( Input( 'target','GLenum' ))
 glResetHistogram.version = '1.2'
+glResetHistogram.deprecated = '3.1'
 glResetHistogram.category = 'GL_ARB_imaging'
 glResetHistogram.trace = True
 glResetHistogram.play = True
@@ -21674,6 +22022,7 @@ glResetMinmax = Function('glResetMinmax')
 glResetMinmax.ret = Return('void')
 glResetMinmax.add( Input( 'target','GLenum' ))
 glResetMinmax.version = '1.2'
+glResetMinmax.deprecated = '3.1'
 glResetMinmax.category = 'GL_ARB_imaging'
 glResetMinmax.trace = True
 glResetMinmax.play = True
@@ -21690,6 +22039,7 @@ glSeparableFilter2D.add( Input( 'type','GLenum' ))
 glSeparableFilter2D.add( Input( 'row','const GLvoid *' ))
 glSeparableFilter2D.add( Input( 'column','const GLvoid *' ))
 glSeparableFilter2D.version = '1.2'
+glSeparableFilter2D.deprecated = '3.1'
 glSeparableFilter2D.category = 'GL_ARB_imaging'
 glSeparableFilter2D.trace = True
 glSeparableFilter2D.play = True
@@ -26485,6 +26835,7 @@ glColorP3ui.ret = Return('void')
 glColorP3ui.add( Input( 'type','GLenum' ))
 glColorP3ui.add( Input( 'color','GLuint' ))
 glColorP3ui.version = '3.3'
+glColorP3ui.deprecated = '3.0'
 glColorP3ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glColorP3ui.trace = True
 glColorP3ui.play = True
@@ -26495,6 +26846,7 @@ glColorP3uiv.ret = Return('void')
 glColorP3uiv.add( Input( 'type','GLenum' ))
 glColorP3uiv.add( Input( 'color','const GLuint *' ,size = 1 ))
 glColorP3uiv.version = '3.3'
+glColorP3uiv.deprecated = '3.0'
 glColorP3uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glColorP3uiv.trace = True
 glColorP3uiv.play = True
@@ -26505,6 +26857,7 @@ glColorP4ui.ret = Return('void')
 glColorP4ui.add( Input( 'type','GLenum' ))
 glColorP4ui.add( Input( 'color','GLuint' ))
 glColorP4ui.version = '3.3'
+glColorP4ui.deprecated = '3.0'
 glColorP4ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glColorP4ui.trace = True
 glColorP4ui.play = True
@@ -26515,6 +26868,7 @@ glColorP4uiv.ret = Return('void')
 glColorP4uiv.add( Input( 'type','GLenum' ))
 glColorP4uiv.add( Input( 'color','const GLuint *' ,size = 1 ))
 glColorP4uiv.version = '3.3'
+glColorP4uiv.deprecated = '3.0'
 glColorP4uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glColorP4uiv.trace = True
 glColorP4uiv.play = True
@@ -26526,6 +26880,7 @@ glMultiTexCoordP1ui.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP1ui.add( Input( 'type','GLenum' ))
 glMultiTexCoordP1ui.add( Input( 'coords','GLuint' ))
 glMultiTexCoordP1ui.version = '3.3'
+glMultiTexCoordP1ui.deprecated = '3.0'
 glMultiTexCoordP1ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP1ui.trace = True
 glMultiTexCoordP1ui.play = True
@@ -26537,6 +26892,7 @@ glMultiTexCoordP1uiv.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP1uiv.add( Input( 'type','GLenum' ))
 glMultiTexCoordP1uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glMultiTexCoordP1uiv.version = '3.3'
+glMultiTexCoordP1uiv.deprecated = '3.0'
 glMultiTexCoordP1uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP1uiv.trace = True
 glMultiTexCoordP1uiv.play = True
@@ -26548,6 +26904,7 @@ glMultiTexCoordP2ui.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP2ui.add( Input( 'type','GLenum' ))
 glMultiTexCoordP2ui.add( Input( 'coords','GLuint' ))
 glMultiTexCoordP2ui.version = '3.3'
+glMultiTexCoordP2ui.deprecated = '3.0'
 glMultiTexCoordP2ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP2ui.trace = True
 glMultiTexCoordP2ui.play = True
@@ -26559,6 +26916,7 @@ glMultiTexCoordP2uiv.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP2uiv.add( Input( 'type','GLenum' ))
 glMultiTexCoordP2uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glMultiTexCoordP2uiv.version = '3.3'
+glMultiTexCoordP2uiv.deprecated = '3.0'
 glMultiTexCoordP2uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP2uiv.trace = True
 glMultiTexCoordP2uiv.play = True
@@ -26570,6 +26928,7 @@ glMultiTexCoordP3ui.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP3ui.add( Input( 'type','GLenum' ))
 glMultiTexCoordP3ui.add( Input( 'coords','GLuint' ))
 glMultiTexCoordP3ui.version = '3.3'
+glMultiTexCoordP3ui.deprecated = '3.0'
 glMultiTexCoordP3ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP3ui.trace = True
 glMultiTexCoordP3ui.play = True
@@ -26581,6 +26940,7 @@ glMultiTexCoordP3uiv.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP3uiv.add( Input( 'type','GLenum' ))
 glMultiTexCoordP3uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glMultiTexCoordP3uiv.version = '3.3'
+glMultiTexCoordP3uiv.deprecated = '3.0'
 glMultiTexCoordP3uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP3uiv.trace = True
 glMultiTexCoordP3uiv.play = True
@@ -26592,6 +26952,7 @@ glMultiTexCoordP4ui.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP4ui.add( Input( 'type','GLenum' ))
 glMultiTexCoordP4ui.add( Input( 'coords','GLuint' ))
 glMultiTexCoordP4ui.version = '3.3'
+glMultiTexCoordP4ui.deprecated = '3.0'
 glMultiTexCoordP4ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP4ui.trace = True
 glMultiTexCoordP4ui.play = True
@@ -26603,6 +26964,7 @@ glMultiTexCoordP4uiv.add( Input( 'texture','GLenum' ))
 glMultiTexCoordP4uiv.add( Input( 'type','GLenum' ))
 glMultiTexCoordP4uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glMultiTexCoordP4uiv.version = '3.3'
+glMultiTexCoordP4uiv.deprecated = '3.0'
 glMultiTexCoordP4uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glMultiTexCoordP4uiv.trace = True
 glMultiTexCoordP4uiv.play = True
@@ -26613,6 +26975,7 @@ glNormalP3ui.ret = Return('void')
 glNormalP3ui.add( Input( 'type','GLenum' ))
 glNormalP3ui.add( Input( 'coords','GLuint' ))
 glNormalP3ui.version = '3.3'
+glNormalP3ui.deprecated = '3.0'
 glNormalP3ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glNormalP3ui.trace = True
 glNormalP3ui.play = True
@@ -26623,6 +26986,7 @@ glNormalP3uiv.ret = Return('void')
 glNormalP3uiv.add( Input( 'type','GLenum' ))
 glNormalP3uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glNormalP3uiv.version = '3.3'
+glNormalP3uiv.deprecated = '3.0'
 glNormalP3uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glNormalP3uiv.trace = True
 glNormalP3uiv.play = True
@@ -26633,6 +26997,7 @@ glSecondaryColorP3ui.ret = Return('void')
 glSecondaryColorP3ui.add( Input( 'type','GLenum' ))
 glSecondaryColorP3ui.add( Input( 'color','GLuint' ))
 glSecondaryColorP3ui.version = '3.3'
+glSecondaryColorP3ui.deprecated = '3.0'
 glSecondaryColorP3ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glSecondaryColorP3ui.trace = True
 glSecondaryColorP3ui.play = True
@@ -26643,6 +27008,7 @@ glSecondaryColorP3uiv.ret = Return('void')
 glSecondaryColorP3uiv.add( Input( 'type','GLenum' ))
 glSecondaryColorP3uiv.add( Input( 'color','const GLuint *' ,size = 1 ))
 glSecondaryColorP3uiv.version = '3.3'
+glSecondaryColorP3uiv.deprecated = '3.0'
 glSecondaryColorP3uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glSecondaryColorP3uiv.trace = True
 glSecondaryColorP3uiv.play = True
@@ -26653,6 +27019,7 @@ glTexCoordP1ui.ret = Return('void')
 glTexCoordP1ui.add( Input( 'type','GLenum' ))
 glTexCoordP1ui.add( Input( 'coords','GLuint' ))
 glTexCoordP1ui.version = '3.3'
+glTexCoordP1ui.deprecated = '3.0'
 glTexCoordP1ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP1ui.trace = True
 glTexCoordP1ui.play = True
@@ -26663,6 +27030,7 @@ glTexCoordP1uiv.ret = Return('void')
 glTexCoordP1uiv.add( Input( 'type','GLenum' ))
 glTexCoordP1uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glTexCoordP1uiv.version = '3.3'
+glTexCoordP1uiv.deprecated = '3.0'
 glTexCoordP1uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP1uiv.trace = True
 glTexCoordP1uiv.play = True
@@ -26673,6 +27041,7 @@ glTexCoordP2ui.ret = Return('void')
 glTexCoordP2ui.add( Input( 'type','GLenum' ))
 glTexCoordP2ui.add( Input( 'coords','GLuint' ))
 glTexCoordP2ui.version = '3.3'
+glTexCoordP2ui.deprecated = '3.0'
 glTexCoordP2ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP2ui.trace = True
 glTexCoordP2ui.play = True
@@ -26683,6 +27052,7 @@ glTexCoordP2uiv.ret = Return('void')
 glTexCoordP2uiv.add( Input( 'type','GLenum' ))
 glTexCoordP2uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glTexCoordP2uiv.version = '3.3'
+glTexCoordP2uiv.deprecated = '3.0'
 glTexCoordP2uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP2uiv.trace = True
 glTexCoordP2uiv.play = True
@@ -26693,6 +27063,7 @@ glTexCoordP3ui.ret = Return('void')
 glTexCoordP3ui.add( Input( 'type','GLenum' ))
 glTexCoordP3ui.add( Input( 'coords','GLuint' ))
 glTexCoordP3ui.version = '3.3'
+glTexCoordP3ui.deprecated = '3.0'
 glTexCoordP3ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP3ui.trace = True
 glTexCoordP3ui.play = True
@@ -26703,6 +27074,7 @@ glTexCoordP3uiv.ret = Return('void')
 glTexCoordP3uiv.add( Input( 'type','GLenum' ))
 glTexCoordP3uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glTexCoordP3uiv.version = '3.3'
+glTexCoordP3uiv.deprecated = '3.0'
 glTexCoordP3uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP3uiv.trace = True
 glTexCoordP3uiv.play = True
@@ -26713,6 +27085,7 @@ glTexCoordP4ui.ret = Return('void')
 glTexCoordP4ui.add( Input( 'type','GLenum' ))
 glTexCoordP4ui.add( Input( 'coords','GLuint' ))
 glTexCoordP4ui.version = '3.3'
+glTexCoordP4ui.deprecated = '3.0'
 glTexCoordP4ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP4ui.trace = True
 glTexCoordP4ui.play = True
@@ -26723,6 +27096,7 @@ glTexCoordP4uiv.ret = Return('void')
 glTexCoordP4uiv.add( Input( 'type','GLenum' ))
 glTexCoordP4uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glTexCoordP4uiv.version = '3.3'
+glTexCoordP4uiv.deprecated = '3.0'
 glTexCoordP4uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glTexCoordP4uiv.trace = True
 glTexCoordP4uiv.play = True
@@ -26735,6 +27109,7 @@ glVertexAttribP1ui.add( Input( 'type','GLenum' ))
 glVertexAttribP1ui.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP1ui.add( Input( 'value','GLuint' ))
 glVertexAttribP1ui.version = '3.3'
+glVertexAttribP1ui.deprecated = '3.0'
 glVertexAttribP1ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP1ui.trace = True
 glVertexAttribP1ui.play = True
@@ -26747,6 +27122,7 @@ glVertexAttribP1uiv.add( Input( 'type','GLenum' ))
 glVertexAttribP1uiv.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP1uiv.add( Input( 'value','const GLuint *' ,size = 1 ))
 glVertexAttribP1uiv.version = '3.3'
+glVertexAttribP1uiv.deprecated = '3.0'
 glVertexAttribP1uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP1uiv.trace = True
 glVertexAttribP1uiv.play = True
@@ -26759,6 +27135,7 @@ glVertexAttribP2ui.add( Input( 'type','GLenum' ))
 glVertexAttribP2ui.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP2ui.add( Input( 'value','GLuint' ))
 glVertexAttribP2ui.version = '3.3'
+glVertexAttribP2ui.deprecated = '3.0'
 glVertexAttribP2ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP2ui.trace = True
 glVertexAttribP2ui.play = True
@@ -26771,6 +27148,7 @@ glVertexAttribP2uiv.add( Input( 'type','GLenum' ))
 glVertexAttribP2uiv.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP2uiv.add( Input( 'value','const GLuint *' ,size = 1 ))
 glVertexAttribP2uiv.version = '3.3'
+glVertexAttribP2uiv.deprecated = '3.0'
 glVertexAttribP2uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP2uiv.trace = True
 glVertexAttribP2uiv.play = True
@@ -26783,6 +27161,7 @@ glVertexAttribP3ui.add( Input( 'type','GLenum' ))
 glVertexAttribP3ui.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP3ui.add( Input( 'value','GLuint' ))
 glVertexAttribP3ui.version = '3.3'
+glVertexAttribP3ui.deprecated = '3.0'
 glVertexAttribP3ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP3ui.trace = True
 glVertexAttribP3ui.play = True
@@ -26795,6 +27174,7 @@ glVertexAttribP3uiv.add( Input( 'type','GLenum' ))
 glVertexAttribP3uiv.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP3uiv.add( Input( 'value','const GLuint *' ,size = 1 ))
 glVertexAttribP3uiv.version = '3.3'
+glVertexAttribP3uiv.deprecated = '3.0'
 glVertexAttribP3uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP3uiv.trace = True
 glVertexAttribP3uiv.play = True
@@ -26807,6 +27187,7 @@ glVertexAttribP4ui.add( Input( 'type','GLenum' ))
 glVertexAttribP4ui.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP4ui.add( Input( 'value','GLuint' ))
 glVertexAttribP4ui.version = '3.3'
+glVertexAttribP4ui.deprecated = '3.0'
 glVertexAttribP4ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP4ui.trace = True
 glVertexAttribP4ui.play = True
@@ -26819,6 +27200,7 @@ glVertexAttribP4uiv.add( Input( 'type','GLenum' ))
 glVertexAttribP4uiv.add( Input( 'normalized','GLboolean' ))
 glVertexAttribP4uiv.add( Input( 'value','const GLuint *' ,size = 1 ))
 glVertexAttribP4uiv.version = '3.3'
+glVertexAttribP4uiv.deprecated = '3.0'
 glVertexAttribP4uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexAttribP4uiv.trace = True
 glVertexAttribP4uiv.play = True
@@ -26829,6 +27211,7 @@ glVertexP2ui.ret = Return('void')
 glVertexP2ui.add( Input( 'type','GLenum' ))
 glVertexP2ui.add( Input( 'coords','GLuint' ))
 glVertexP2ui.version = '3.3'
+glVertexP2ui.deprecated = '3.0'
 glVertexP2ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexP2ui.trace = True
 glVertexP2ui.play = True
@@ -26839,6 +27222,7 @@ glVertexP2uiv.ret = Return('void')
 glVertexP2uiv.add( Input( 'type','GLenum' ))
 glVertexP2uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glVertexP2uiv.version = '3.3'
+glVertexP2uiv.deprecated = '3.0'
 glVertexP2uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexP2uiv.trace = True
 glVertexP2uiv.play = True
@@ -26849,6 +27233,7 @@ glVertexP3ui.ret = Return('void')
 glVertexP3ui.add( Input( 'type','GLenum' ))
 glVertexP3ui.add( Input( 'coords','GLuint' ))
 glVertexP3ui.version = '3.3'
+glVertexP3ui.deprecated = '3.0'
 glVertexP3ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexP3ui.trace = True
 glVertexP3ui.play = True
@@ -26859,6 +27244,7 @@ glVertexP3uiv.ret = Return('void')
 glVertexP3uiv.add( Input( 'type','GLenum' ))
 glVertexP3uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glVertexP3uiv.version = '3.3'
+glVertexP3uiv.deprecated = '3.0'
 glVertexP3uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexP3uiv.trace = True
 glVertexP3uiv.play = True
@@ -26869,6 +27255,7 @@ glVertexP4ui.ret = Return('void')
 glVertexP4ui.add( Input( 'type','GLenum' ))
 glVertexP4ui.add( Input( 'coords','GLuint' ))
 glVertexP4ui.version = '3.3'
+glVertexP4ui.deprecated = '3.0'
 glVertexP4ui.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexP4ui.trace = True
 glVertexP4ui.play = True
@@ -26879,6 +27266,7 @@ glVertexP4uiv.ret = Return('void')
 glVertexP4uiv.add( Input( 'type','GLenum' ))
 glVertexP4uiv.add( Input( 'coords','const GLuint *' ,size = 1 ))
 glVertexP4uiv.version = '3.3'
+glVertexP4uiv.deprecated = '3.0'
 glVertexP4uiv.category = 'GL_ARB_vertex_type_2_10_10_10_rev'
 glVertexP4uiv.trace = True
 glVertexP4uiv.play = True
