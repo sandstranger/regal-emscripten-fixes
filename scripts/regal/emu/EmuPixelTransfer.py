@@ -20,6 +20,6 @@ xferFormulae = {
     },
     'TexImage2D' : {
         'entries' : [ 'gl(Compressed|)Tex(Sub|)Image2D(ARB|EXT|)' ],
-        'impl' : [ '_context->xfer->${m1}Tex${m2}Image2D( _context, ${arg0plus} );', ],
+        'impl' : [ '_context->xfer->${m1}Tex${m2}Image2D( _context, ${arg0plus} ); return;', ],
     }
 }

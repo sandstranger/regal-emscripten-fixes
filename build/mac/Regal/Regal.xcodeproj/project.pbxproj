@@ -2411,7 +2411,8 @@
 				GCC_OPTIMIZATION_LEVEL = 0;
 				GCC_PREPROCESSOR_DEFINITIONS = (
 					"DEBUG=1",
-					"REGAL_LOG=0",
+					"REGAL_LOG=1",
+					"REGAL_ERROR_POST_EMU=1",
 					"REGAL_HTTP=1",
 					"$(inherited)",
 				);

@@ -458,16 +458,16 @@ dsaFormulae = {
     'DsaGetCommands1' : {
         'entries' : [ 'glGet(Float|Double)(Indexed|i_)v(EXT|)' ],
         'impl' : [
-            'if ( ! _context->dsa->GetIndexedv( _context, ${arg0}, ${arg1}, ${arg2} ) ) {',
-            '  orig.glGet${m1}${m2}v${m3}( _context, ${arg0}, ${arg1}, ${arg2});',
+            'if ( _context->dsa->GetIndexedv( _context, ${arg0}, ${arg1}, ${arg2} ) ) {',
+            '  return;',
             '}',
         ],
     },
     'DsaGetCommands2' : {
         'entries' : [ 'glGetPointerIndexedvEXT' ],
         'impl' : [
-            '// if ( ! _context->dsa->GetIndexedv( _context, ${arg0}, ${arg1}, ${arg2} ) ) {',
-            '//     orig.glGetPointerIndexedvEXT( _context, ${arg0}, ${arg1}, ${arg2});',
+            '// if ( _context->dsa->GetIndexedv( _context, ${arg0}, ${arg1}, ${arg2} ) ) {',
+            '//   return;',
             '// }',
         ],
     },
@@ -476,6 +476,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, ${arg0} );',
             'orig.glGetIntegerv( _context, ${arg1plus});',
+            'return;',
         ],
     },
     'SelectorIsEnabled' : {
@@ -502,8 +503,8 @@ dsaFormulae = {
     'MatrixMode' : {
         'entries' : [ 'glMatrixMode' ],
         'impl' : [
-            'if (!_context->dsa->ShadowMatrixMode(${arg0})) {',
-            '  orig.glMatrixMode( _context, ${arg0});',
+            'if (_context->dsa->ShadowMatrixMode(${arg0})) {',
+            '  return;',
             '}',
         ],
     },
@@ -514,6 +515,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
             'orig.gl${m1}${m2}Matrix${m3}( _context, ${arg1plus});',
+            'return;',
         ],
     },
     'MatrixPushPopStack' : {
@@ -523,6 +525,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
             'orig.gl${m1}Matrix( _context );',
+            'return;',
         ],
     },
     'MatrixTransform' : {
@@ -533,6 +536,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
             'orig.gl${m1}${m2}( _context, ${arg1plus});',
+            'return;',
         ],
     },
 
@@ -543,14 +547,15 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaMatrixMode( _context, ${arg0} );',
             'orig.glLoadIdentity( _context );',
+            'return;',
         ],
     },
 
     'ClientActiveTexture' : {
         'entries' : [ 'glClientActiveTexture(ARB|)' ],
         'impl' : [
-            'if (!_context->dsa->ShadowClientActiveTexture( ${arg0} )) {',
-            '  orig.glClientActiveTexture( _context, ${arg0} );',
+            'if (_context->dsa->ShadowClientActiveTexture( ${arg0} )) {',
+            '  return;',
             '}',
         ],
     },
@@ -569,6 +574,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaClientActiveTexture( _context, ${arg1} + GL_TEXTURE0 );',
             'orig.gl${m1}ClientState( _context, ${arg0} );',
+            'return;',
         ],
     },
     'ClientTexCoords' : {
@@ -576,6 +582,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaClientActiveTexture( _context, ${arg0} );',
             'orig.glTexCoordPointer( _context, ${arg1plus} );',
+            'return;',
         ],
     },
     'EnableIndexed' : {
@@ -583,13 +590,14 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaActiveTexture( _context, ${arg1} + GL_TEXTURE0 );',
             'orig.gl${m1}( _context, ${arg0} );',
+            'return;',
         ],
     },
     'ActiveTexture' : {
         'entries' : [ 'glActiveTexture(ARB|)' ],
         'impl' : [
-            'if( false == _context->dsa->ShadowActiveTexture( ${arg0} ) ) {',
-            '    orig.glActiveTexture( _context, ${arg0} );',
+            'if( _context->dsa->ShadowActiveTexture( ${arg0} ) ) {',
+            '    return;',
             '}',
         ],
     },
@@ -633,13 +641,14 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaActiveTexture( _context, ${arg0} );',
             'orig.${nondsa}( _context, ${arg1plus} );',
+            'return;',
         ],
     },
     'BindTexture' : {
         'entries' : [ 'glBindTexture(EXT|)' ],
         'impl' : [
-            'if (!_context->dsa->ShadowTexture( ${arg0}, ${arg1} )) {',
-            '    orig.glBindTexture( _context, ${arg0}, ${arg1} );',
+            'if (_context->dsa->ShadowTexture( ${arg0}, ${arg1} )) {',
+            '  return;',
             '}',
         ],
     },
@@ -649,6 +658,7 @@ dsaFormulae = {
             '_context->dsa->DsaActiveTexture( _context, ${arg0} );',
             '_context->dsa->ShadowDsaTexture( ${arg1plus} );',
             'orig.glBindTexture( _context, ${arg1plus} );',
+            'return;',
         ],
     },
     'BoundTextureCommands' : {
@@ -671,14 +681,15 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaTexture( _context, ${arg1}, ${arg0} );',
             'orig.${nondsa}( _context, ${arg1plus} );',
+            'return;',
         ],
     },
 
     'UseProgram' : {
         'entries' : [ 'glUseProgram' ],
         'impl' : [
-            'if( false == _context->dsa->ShadowGlslProgram( ${arg0} ) ) {',
-            '  orig.glUseProgram( _context, ${arg0});',
+            'if( _context->dsa->ShadowGlslProgram( ${arg0} ) ) {',
+            '  return;',
             '}',
         ],
     },
@@ -697,14 +708,15 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaGlslProgram( _context, ${arg0});',
             'orig.glUniform${m1}${m2}${m3}${m4}( _context, ${arg1plus} );',
+            'return;',
         ],
     },
 
     'BindAsmProgram' : {
         'entries' : [ 'glBindProgramARB' ],
         'impl' : [
-            'if (!_context->dsa->ShadowAsmProgram( ${arg0}, ${arg1} ) ) {',
-            '    orig.glBindProgramARB( _context, ${arg0}, ${arg1} );',
+            'if (_context->dsa->ShadowAsmProgram( ${arg0}, ${arg1} ) ) {',
+            '  return;',
             '}',
         ],
     },
@@ -732,14 +744,15 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaAsmProgram( _context, ${arg1}, ${arg0});',
             'orig.${nondsa}( _context, ${arg1plus} );',
+            'return;',
         ],
     },
 
     'BindFramebuffer' : {
         'entries' : [ 'glBindFramebuffer(EXT|)' ],
         'impl' : [
-            'if (!_context->dsa->ShadowFramebuffer( ${arg0}, ${arg1} ) ) {',
-            '    orig.glBindFramebuffer( _context, ${arg0}, ${arg1} );',
+            'if (_context->dsa->ShadowFramebuffer( ${arg0}, ${arg1} ) ) {',
+            '  return;',
             '}',
         ],
     },
@@ -769,6 +782,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, ${arg0});',
             'orig.${nondsa}( _context, GL_FRAMEBUFFER, ${arg1plus} );',
+            'return;',
         ],
     },
     'SelectorFramebufferCommands3' : {
@@ -776,6 +790,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, ${arg0});',
             'orig.gl${m1}${m2}( _context, ${arg1plus} );',
+            'return;',
         ],
     },
     'SelectorFramebufferCommands4' : {
@@ -789,8 +804,8 @@ dsaFormulae = {
     'BindRenderbuffer' : {
         'entries' : [ 'glBindRenderbuffer(EXT|)' ],
         'impl' : [
-            'if (!_context->dsa->ShadowRenderbuffer( ${arg0}, ${arg1} ) ) {',
-            '    orig.glBindRenderbuffer( _context, ${arg0}, ${arg1} );',
+            'if (_context->dsa->ShadowRenderbuffer( ${arg0}, ${arg1} ) ) {',
+            '  return;',
             '}',
         ],
     },
@@ -816,25 +831,27 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, ${arg0});',
             'orig.${nondsa}( _context, GL_RENDERBUFFER, ${arg1plus} );',
+            'return;',
         ],
     },
 
     'ClientAttribDefault' : {
         'entries' : ['glClientAttribDefaultEXT'],
-        'impl' : [ '_context->dsa->ClientAttribDefault( _context, ${arg0} );' ],
+        'impl' : [ '_context->dsa->ClientAttribDefault( _context, ${arg0} ); return;' ],
     },
     'PushClientAttribDefault' : {
         'entries' : ['glPushClientAttribDefaultEXT'],
         'impl' : [
             'orig.glPushClientAttrib( _context, ${arg0});',
             '_context->dsa->ClientAttribDefault(_context, ${arg0});',
+            'return;',
         ],
     },
     'BindVertexArray' : {
         'entries' : [ 'glBindVertexArray' ],
         'impl' : [
-            'if (!_context->dsa->ShadowVao( ${arg0} )) {',
-            '    orig.glBindVertexArray( _context, ${arg0} );',
+            'if (_context->dsa->ShadowVao( ${arg0} )) {',
+            '  return;',
             '}',
         ],
     },
@@ -846,8 +863,8 @@ dsaFormulae = {
     'BindBuffer' : {
         'entries' : [ 'glBindBuffer(ARB|)' ],
         'impl' : [
-            'if (!_context->dsa->ShadowBuffer( ${arg0}, ${arg1} ) ) {',
-            '    orig.glBindBuffer( _context, ${arg0}, ${arg1});',
+            'if (_context->dsa->ShadowBuffer( ${arg0}, ${arg1} ) ) {',
+            '  return;',
             '}',
         ],
     },
@@ -869,6 +886,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaBuffer( _context, ${arg0});',
             'orig.gl${m1}${m2}Buffer${m3}( _context, GL_ARRAY_BUFFER, ${arg1plus} );',
+            'return;',
         ],
     },
     'DsaBufferCommands2' : {
@@ -891,6 +909,7 @@ dsaFormulae = {
             '_context->dsa->DsaVao( _context, ${arg0} );'
             '_context->dsa->DsaBuffer( _context, ${arg1} );',
             'orig.gl${m1}Pointer( _context, ${arg2}, reinterpret_cast<const GLvoid *>(${arg3}) );',
+            'return;',
         ],
     },
     'DsaVertexArrayPointerOffsets4' : {
@@ -899,6 +918,7 @@ dsaFormulae = {
             '_context->dsa->DsaVao( _context, ${arg0} );'
             '_context->dsa->DsaBuffer( _context, ${arg1} );',
             'orig.gl${m1}Pointer( _context, ${arg2}, ${arg3}, reinterpret_cast<const GLvoid *>(${arg4}) );',
+            'return;',
         ],
     },
     'DsaVertexArrayOffsetCommands5' : {
@@ -907,6 +927,7 @@ dsaFormulae = {
             '_context->dsa->DsaVao( _context, ${arg0} );'
             '_context->dsa->DsaBuffer( _context, ${arg1} );',
             'orig.gl${m1}Pointer( _context, ${arg2}, ${arg3}, ${arg4}, reinterpret_cast<const GLvoid *>(${arg5}) );',
+            'return;',
         ],
     },
     'DsaVertexArrayOffsetCommands6' : {
@@ -915,6 +936,7 @@ dsaFormulae = {
             '_context->dsa->DsaVao( _context, ${arg0} );'
             '_context->dsa->DsaBuffer( _context, ${arg1} );',
             'orig.gl${m1}Pointer( _context, ${arg2}, ${arg3}, ${arg4}, ${arg5}, reinterpret_cast<const GLvoid *>(${arg6}) );',
+            'return;',
         ],
     },
     'DsaVertexArrayOffsetCommands6EXT' : {
@@ -923,6 +945,7 @@ dsaFormulae = {
             '_context->dsa->DsaVao( _context, ${arg0} );'
             '_context->dsa->DsaBuffer( _context, ${arg1} );',
             'orig.gl${m1}PointerEXT( _context, ${arg2}, ${arg3}, ${arg4}, ${arg5}, reinterpret_cast<const GLvoid *>(${arg6}) );',
+            'return;',
         ],
     },
     'DsaVertexArrayOffsetCommands7' : {
@@ -931,6 +954,7 @@ dsaFormulae = {
             '_context->dsa->DsaVao( _context, ${arg0} );'
             '_context->dsa->DsaBuffer( _context, ${arg1} );',
             'orig.gl${m1}Pointer( _context, ${arg2}, ${arg3}, ${arg4}, ${arg5}, ${arg6}, reinterpret_cast<const GLvoid *>(${arg7}) );',
+            'return;',
         ],
     },
     'Delete' : {
@@ -963,6 +987,7 @@ dsaFormulae = {
             '} else {',
             '  orig.gl${m1}ClientState( _context, ${arg1} );',
             '}'
+            'return;',
         ],
     },
     'VertexArrayAttribEnable' : {
@@ -970,6 +995,7 @@ dsaFormulae = {
         'impl' : [
             '_context->dsa->DsaVao( _context, ${arg0} );',
             'orig.gl${m1}VertexAttribArray( _context, ${arg1} );'
+            'return;',
         ],
     },
 }

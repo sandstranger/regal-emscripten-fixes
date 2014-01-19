@@ -8,67 +8,65 @@ ppaFormulae = {
   },
   'PushAtrrib' : {
     'entries'  : [ 'glPushAttrib' ],
-    'impl'     : [ '_context->ppa->PushAttrib( _context, ${arg0} );', ],
+    'impl'     : [ '_context->ppa->PushAttrib( _context, ${arg0} ); return;', ],
   },
   'PopAttrib' : {
     'entries' : [ 'glPopAttrib' ],
-    'impl'    : [ '_context->ppa->PopAttrib( _context );', ],
+    'impl'    : [ '_context->ppa->PopAttrib( _context ); return;', ],
   },
   'Get'       : {
     'entries' : [ 'glGet(Integer|Float|Double|Boolean)(i_|)v(EXT|)' ],
     'impl'    : [
-      'if( ! _context->ppa->glGet${m2}v( _context, ${arg0plus} ) ) {',
-      '  orig.glGet${m1}${m2}v${m3}( _context, ${arg0plus} );',
+      'if( _context->ppa->glGet${m2}v( _context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },
   'GetPolygonStipple'       : {
     'entries' : [ 'glGetPolygonStipple' ],
     'impl'    : [
-      'if( ! _context->ppa->glGetPolygonStipple( _context, ${arg0plus} ) ) {',
-      '  orig.glGetPolygonStipple( _context, ${arg0plus} );',
+      'if( _context->ppa->glGetPolygonStipple( _context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },
   'glGetColorTableOrConvolutionParameterv'       : {
     'entries' : [ 'glGet(ColorTable|Convolution)Parameter(i|f)v' ],
     'impl'    : [
-      'if( ! _context->ppa->glGet${m1}Parameterv( _context, ${arg0plus} ) ) {',
-      '  orig.glGet${m1}Parameter${m2}v( _context, ${arg0plus} );',
+      'if( _context->ppa->glGet${m1}Parameterv( _context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },
   'GetLightOrMaterialv'       : {
     'entries' : [ 'glGet(Light|Material)(f|i|x)v' ],
     'impl'    : [
-      'if( ! _context->ppa->glGet${m1}v( _context, ${arg0plus} ) ) {',
-      '  orig.glGet${m1}${m2}v( _context, ${arg0plus} );',
+      'if( _context->ppa->glGet${m1}v( _context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },
   'GetTexEnviv'       : {
     'entries' : [ 'glGet(Multi|)TexEnv(f|i)v(EXT|)' ],
     'impl'    : [
-      'if( ! _context->ppa->glGet${m1}TexEnvv( _context, ${arg0plus} ) ) {',
-      '  orig.glGet${m1}TexEnv${m2}v${m3}( _context, ${arg0plus} );',
+      'if( _context->ppa->glGet${m1}TexEnvv( _context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },
   'GetTexParam' : {
     'entries' : [ 'glGet(Tex|Texture)(Level|)Parameter(f|i)v(EXT|)' ],
     'impl'    : [
-      'if( ! _context->ppa->glGet${m1}${m2}Parameter( _context, ${arg0plus} ) ) {',
-      '  orig.glGet${m1}${m2}Parameter${m3}v${m4}( _context, ${arg0plus} );',
+      'if( _context->ppa->glGet${m1}${m2}Parameter( _context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },
   'IsEnabled'       : {
     'entries' : [ 'glIsEnabled(i|)' ],
     'impl'    : [
-      '{',
-      '  GLboolean enabled;',
-      '  if( ! _context->ppa->glIsEnabled${m1}( _context, enabled, ${arg0plus} ) )',
-      '    return orig.glIsEnabled${m1}( _context, ${arg0plus} );',
+      'GLboolean enabled;',
+      'if( _context->ppa->glIsEnabled${m1}( _context, enabled, ${arg0plus} ) ) {',
       '  return enabled;',
       '}',
     ],
@@ -76,8 +74,8 @@ ppaFormulae = {
   'Enable'    : {
     'entries' : [ 'gl(Enable|Disable)(i|)' ],
     'impl'    : [
-      'if( ! _context->ppa->${m1}${m2}( _context, ${arg0plus} ) ) {',
-      '  orig.gl${m1}${m2}( _context, ${arg0plus} );',
+      'if( _context->ppa->${m1}${m2}( _context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },
@@ -95,12 +93,7 @@ ppaFormulae = {
   },
   'TrackDrawBuffer' : {
     'entries'    : [ 'glDrawBuffer(s|)(ARB|EXT|NV|)' ],
-    'impl'    : [
-      'if( !_context->isES2() ) {',
-      '  _context->ppa->glDrawBuffer${m1}( ${arg0plus} );',
-      '  orig.glDrawBuffer${m1}( _context, ${arg0plus} );',
-      '}',
-    ],
+    'prefix'     : [ '  _context->ppa->glDrawBuffer${m1}( ${arg0plus} );', ],
   },
   'TrackMatrixMode' : {
     'entries'    : [ 'glMatrixMode' ],

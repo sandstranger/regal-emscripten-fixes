@@ -6,24 +6,24 @@ ppcaFormulae = {
 
   'PushClientAttrib' : {
     'entries'  : [ 'glPushClientAttrib' ],
-    'impl'     : [ '_context->ppca->glPushClientAttrib( *_context, ${arg0} );', ],
+    'impl'     : [ '_context->ppca->glPushClientAttrib( *_context, ${arg0} ); return;', ],
   },
 
   'PopClientAttrib' : {
     'entries' : [ 'glPopClientAttrib' ],
-    'impl'    : [ '_context->ppca->glPopClientAttrib( *_context );', ],
+    'impl'    : [ '_context->ppca->glPopClientAttrib( *_context ); return;', ],
   },
 
   'PushClientAttribDefaultEXT' : {
     'entries'  : [ 'gl(Push|)ClientAttribDefaultEXT' ],
-    'impl'     : [ '_context->ppca->gl${m1}ClientAttribDefaultEXT( *_context, ${arg0} );', ],
+    'impl'     : [ '_context->ppca->gl${m1}ClientAttribDefaultEXT( *_context, ${arg0} ); return;', ],
   },
 
   'Get'       : {
     'entries' : [ 'glGet(Integer|Float|Double|Boolean)v(EXT|)' ],
     'impl'    : [
-      'if ( ! _context->ppca->glGetv( *_context, ${arg0plus} ) ) {',
-      '  orig.glGet${m1}v${m2}( _context, ${arg0plus} );',
+      'if ( _context->ppca->glGetv( *_context, ${arg0plus} ) ) {',
+      '  return;',
       '}',
     ],
   },

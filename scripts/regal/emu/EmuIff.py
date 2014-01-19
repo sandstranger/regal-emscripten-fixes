@@ -4,7 +4,9 @@ iffFormulae = {
     'options' : {
       'originate' : [
         'glCreateProgram',
+        'glDeleteBuffers',
         'glDeleteProgram',
+        'glDeleteVertexArrays',
         'glAttachShader',
         'glCreateShader',
         'glDeleteShader',
@@ -28,36 +30,34 @@ iffFormulae = {
     },
     'VaPointer4EXTOverride' : {
         'entries' : [ 'gl(Vertex|Color|TexCoord)PointerEXT' ],
-        'impl' : [ '_context->iff->${m1}Pointer( _context, ${arg0}, ${arg1}, ${arg2}, ${arg4} );' ],
+        'impl' : [ '_context->iff->${m1}Pointer( _context, ${arg0}, ${arg1}, ${arg2}, ${arg4} ); return;' ],
     },
     'EdgeFlagPointerEXT' : {
         'entries' : [ 'glEdgeFlagPointerEXT' ],
-        'impl' : [ '_context->iff->EdgeFlagPointer( _context, ${arg0}, ${arg2} );' ],
+        'impl' : [ '_context->iff->EdgeFlagPointer( _context, ${arg0}, ${arg2} ); return;' ],
     },
     'NormalPointerEXT' : {
         'entries' : [ 'glNormalPointerEXT' ],
-        'impl' : [ '_context->iff->NormalPointer( _context, ${arg0}, ${arg1}, ${arg3} );' ],
+        'impl' : [ '_context->iff->NormalPointer( _context, ${arg0}, ${arg1}, ${arg3} ); return;' ],
     },
     'PointerEXT' : {
         'entries' : [ 'gl(FogCoord|SecondaryColor)PointerEXT' ],
-        'impl' : [ '_context->iff->${m1}Pointer( _context, ${arg0plus} );' ],
+        'impl' : [ '_context->iff->${m1}Pointer( _context, ${arg0plus} ); return;' ],
     },
     'VaPointerOverride' : {
         'entries' : [ 'gl(Vertex|Normal|Color|SecondaryColor|FogCoord|EdgeFlag|TexCoord)Pointer' ],
-        'impl' : [ '_context->iff->${m1}Pointer( _context, ${arg0plus} );' ],
+        'impl' : [ '_context->iff->${m1}Pointer( _context, ${arg0plus} ); return;' ],
     },
     'VaClientStateOverride' : {
         'entries' : [ 'gl(Enable|Disable)ClientState' ],
-        'impl' : [ '_context->iff->${m1}ClientState( _context, ${arg0} );' ],
+        'impl' : [ '_context->iff->${m1}ClientState( _context, ${arg0} ); return;' ],
     },
     'IsEnabled' : {
         'entries' : [ 'glIsEnabled' ],
         'impl' : [
-            '{',
-            '    GLboolean enabled;',
-            '    if ( !_context->iff->IsEnabled( _context, ${arg0plus}, enabled ) )',
-            '        return orig.glIsEnabled( _context, ${arg0plus} );',
-            '    return enabled;',
+            'GLboolean enabled;',
+            'if ( _context->iff->IsEnabled( _context, ${arg0plus}, enabled ) ) {',
+            '  return enabled;',
             '}',
         ]
     },
@@ -69,21 +69,17 @@ iffFormulae = {
         'entries' : [ 'glIsVertexArray(ARB|)' ],
         'impl' : [ 'return _context->iff->IsVertexArray( _context, ${arg0} );' ],
     },
-   'DeleteStuff' : {
-        'entries' : [ 'glDelete(Buffers|VertexArrays)(ARB|)' ],
-        'impl' : [ '_context->iff->glDelete${m1}( _context, ${arg0}, ${arg1} );' ],
-    },
     'ImmShadowClientActiveTexture' : {
         'entries' : [ 'glClientActiveTexture(ARB|)', ],
         'prefix' : [ '_context->iff->ShadowClientActiveTexture( ${arg0} ); ', ],
     },
     'ImmBegin' : {
         'entries' : [ 'glBegin' ],
-        'impl' : [ '_context->iff->Begin( _context, ${arg0} );', ],
+        'impl' : [ '_context->iff->Begin( _context, ${arg0} ); return;', ],
     },
     'ImmEnd' : {
         'entries' : [ 'glEnd' ],
-        'impl' : [ '_context->iff->End( _context );', ],
+        'impl' : [ '_context->iff->End( _context ); return;', ],
     },
     'ImmAttr' : {
         'entries' : [ 'glVertexAttrib(1|2|3|4)(N|)(b|d|f|i|s|ub|us)(v|)(ARB|)' ],
@@ -91,23 +87,23 @@ iffFormulae = {
     },
     'ImmFixedAttrf' : {
         'entries' : [ 'gl(SecondaryColor|Color|Normal|FogCoord)(2|3|4)(d|f)(v|)(EXT|)?' ],
-        'impl' : [ '_context->iff->Attr<${m2}>( _context, _context->iff->AttrIndex( RFF2A_${m1} ), ${arg0plus} );', ],
+        'impl' : [ '_context->iff->Attr<${m2}>( _context, _context->iff->AttrIndex( RFF2A_${m1} ), ${arg0plus} ); return;', ],
     },
     'ImmVertex' : {
         'entries' : [ 'gl(Vertex)(2|3|4)(d|f|i|s)(v|)' ],
-        'impl' : [ '_context->iff->Attr<${m2}>( _context, _context->iff->AttrIndex( RFF2A_${m1} ), ${arg0plus} );', ],
+        'impl' : [ '_context->iff->Attr<${m2}>( _context, _context->iff->AttrIndex( RFF2A_${m1} ), ${arg0plus} ); return;', ],
     },
     'ImmFixedAttri' : {
         'entries' : [ 'gl(SecondaryColor|Color|Normal)(2|3|4)(b|i|s|ub|ui|us)(v|)(EXT|)?' ],
-        'impl' : [ '_context->iff->AttrN<${m2}>( _context, _context->iff->AttrIndex( RFF2A_${m1} ), ${arg0plus} );', ],
+        'impl' : [ '_context->iff->AttrN<${m2}>( _context, _context->iff->AttrIndex( RFF2A_${m1} ), ${arg0plus} ); return;', ],
     },
     'ImmTexCoord' : {
         'entries' : [ 'glTexCoord(1|2|3|4)(d|f|i|s)(v|)' ],
-        'impl' : [ '_context->iff->Attr<${m1}>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), ${arg0plus} );', ],
+        'impl' : [ '_context->iff->Attr<${m1}>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), ${arg0plus} ); return;', ],
     },
     'ImmMultiTexCoord' : {
         'entries' : [ 'glMultiTexCoord(1|2|3|4)(d|f|i|s)(v|)(ARB|)' ],
-        'impl' : [ '_context->iff->Attr<${m1}>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, ${arg0} - GL_TEXTURE0 ), ${arg1plus} );', ],
+        'impl' : [ '_context->iff->Attr<${m1}>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, ${arg0} - GL_TEXTURE0 ), ${arg1plus} ); return;', ],
     },
     'ImmRestore' : {
         'entries' : [
@@ -128,32 +124,27 @@ iffFormulae = {
     },
     'FfnShadeModel' : {
         'entries' : [ 'glShadeModel' ],
-        'impl' : [
-          '_context->iff->ShadeModel( ${arg0plus} );',
-          'if( !_context->isCore() && !_context->isES2() ) {',
-          '  orig.glShadeModel( _context,${arg0plus});',
-          '}',
-          ],
+        'prefix' : [ '_context->iff->ShadeModel( ${arg0plus} );', ],
     },
     'FfnShadow' : {
         'entries' : [ 'gl(MatrixMode|BindProgramPipeline|Enable|Disable)' ],
         'impl' : [
-            'if( ! _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
-            '    orig.gl${m1}( _context, ${arg0plus} );',
+            'if( _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
+            '    return;',
             '}',
             ],
     },
     'FfnShadowProgram' : {
         'entries' : [ 'gl(UseProgram)(ObjectARB|)' ],
         'impl' : [
-            'if( ! _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
-            '    orig.gl${m1}( _context, ${arg0plus} );',
+            'if( _context->iff->Shadow${m1}( ${arg0plus} ) ) {',
+            '    return;',
             '}',
             ],
     },
     'FfnShadowIndexed' : {
         'entries' : [ 'gl(Enable|Disable)(i|IndexedEXT)' ],
-        'impl' : [ '_context->iff->${m1}Indexed( ${arg0plus} );', ],
+        'impl' : [ '_context->iff->${m1}Indexed( ${arg0plus} ); return;', ],
     },
     'FfnShadowTexBinding' : {
         'entries' : [ 'glBind(Multi|)Texture(EXT|)' ],
@@ -177,51 +168,51 @@ iffFormulae = {
     },
     'FfnTexEnv' : {
         'entries' : [ 'gl(Multi|)TexEnv(i|f)(v|)(EXT|)' ],
-        'impl' : [ '_context->iff->TexEnv( ${arg0plus} );', ],
+        'impl' : [ '_context->iff->TexEnv( ${arg0plus} ); return;', ],
     },
     'FfnGetTexEnv' : {
         'entries' : [ 'glGetTexEnv(i|f)(v|)(EXT|)' ],
         'impl' : [
             '_context->iff->RestoreVao( _context );',
-            'if ( ! _context->iff->GetTexEnv( ${arg0plus} ) ) {',
-            '    orig.glGetTexEnv${m1}${m2}${m3}( _context, ${arg0plus} );',
+            'if ( _context->iff->GetTexEnv( ${arg0plus} ) ) {',
+            '    return;',
             '}',
         ],
     },
     'FfnLightMatModel' : {
         'entries' : [ 'gl(Light|Material|GetMaterial|LightModel)(i|f)(v|)' ],
-        'impl' : [ '_context->iff->${m1}( ${arg0plus} );', ],
+        'impl' : [ '_context->iff->${m1}( ${arg0plus} ); return;', ],
     },
     'FfnColorMaterial' : {
         'entries' : [ 'glColorMaterial' ],
-        'impl' : [ '_context->iff->ColorMaterial( ${arg0plus} );', ],
+        'impl' : [ '_context->iff->ColorMaterial( ${arg0plus} ); return;', ],
     },
     'FfnTexGen' : {
         'entries' : [ 'glTexGen(i|f|d)(v|)' ],
         'impl' : [
-            'if ( ! _context->iff->TexGen( ${arg0plus} ) ) {',
-            '    orig.glTexGen${m1}${m2}( _context, ${arg0plus} );',
+            'if ( _context->iff->TexGen( ${arg0plus} ) ) {',
+            '    return;',
             '}',
         ],
     },
     'FfnAlphaFunc' : {
         'entries' : [ 'glAlphaFunc' ],
-        'impl' : [ '_context->iff->AlphaFunc( ${arg0plus} );', ],
+        'impl' : [ '_context->iff->AlphaFunc( ${arg0plus} ); return;', ],
     },
     'FfnClipPlane' : {
         'entries' : [ 'glClipPlane' ],
-        'impl' : [ '_context->iff->ClipPlane( ${arg0plus} );', ],
+        'impl' : [ '_context->iff->ClipPlane( ${arg0plus} ); return;', ],
     },
     'FfnFog' : {
         'entries' : [ 'glFog(f|i)(v|)' ],
-        'impl' : [ '_context->iff->Fog( ${arg0plus} );', ],
+        'impl' : [ '_context->iff->Fog( ${arg0plus} ); return;', ],
     },
     'FfnGetBoolean' : {
         'entries' : [ 'glGetBooleanv' ],
         'impl' : [
             '_context->iff->RestoreVao( _context );',
-            'if ( ! _context->iff->glGetBooleanv( _context, ${arg0plus} ) ) {',
-            '    orig.glGetBooleanv( _context, ${arg0plus} );',
+            'if ( _context->iff->glGetBooleanv( _context, ${arg0plus} ) ) {',
+            '    return;',
             '}',
         ],
     },
@@ -229,8 +220,8 @@ iffFormulae = {
         'entries' : [ 'glGet(Integer|Float|Double)v' ],
         'impl' : [
             '_context->iff->RestoreVao( _context );',
-            'if ( ! _context->iff->Get( _context, ${arg0plus} ) ) {',
-            '    orig.glGet${m1}v( _context, ${arg0plus} );',
+            'if ( _context->iff->Get( _context, ${arg0plus} ) ) {',
+            '    return;',
             '}',
         ],
     },
@@ -238,8 +229,8 @@ iffFormulae = {
         'entries' : [ 'glGetMultiTexGen(d|f|i)vEXT' ],
         'impl' : [
             '_context->iff->RestoreVao( _context );',
-            'if ( ! _context->iff->GetMultiTexGenv( _context, ${arg0plus} ) ) {',
-            '    orig.glGetMultiTexGen${m1}vEXT( _context, ${arg0plus} );',
+            'if ( _context->iff->GetMultiTexGenv( _context, ${arg0plus} ) ) {',
+            '    return;',
             '}',
         ],
     },
@@ -247,8 +238,8 @@ iffFormulae = {
         'entries' : [ 'glGetTexGen(d|f|i)v' ],
         'impl' : [
             '_context->iff->RestoreVao( _context );',
-            'if ( ! _context->iff->GetTexGenv( _context, ${arg0plus} ) ) {',
-            '    orig.glGetTexGen${m1}v( _context, ${arg0plus} );',
+            'if ( _context->iff->GetTexGenv( _context, ${arg0plus} ) ) {',
+            '    return;',
             '}',
         ],
     },
@@ -270,7 +261,7 @@ iffFormulae = {
             'gl(Matrix)(Ortho|Frustum)()()EXT',
             'gl(Matrix)(Push|Pop)()()EXT',
         ],
-        'impl' : [ '_context->iff->${m1}${m2}${m3}( ${arg0plus} );' ],
+        'impl' : [ '_context->iff->${m1}${m2}${m3}( ${arg0plus} ); return;' ],
     },
     'Viewport' : {
         'entries' : [ 'glViewport', ],
@@ -282,7 +273,7 @@ iffFormulae = {
     },
     'RasterPosition' : {
         'entries' : [ 'gl(Raster|Window)Pos(2|3)(i|s|f|d)', ],
-        'impl' : [ '_context->iff->${m1}Position( _context, ${arg0plus} );', ],
+        'impl' : [ '_context->iff->${m1}Position( _context, ${arg0plus} ); return;', ],
     },
     'EnableArray' : {
         'entries' : [ 'gl(Enable|Disable)VertexAttribArray(ARB|)' ],
@@ -294,11 +285,11 @@ iffFormulae = {
 
     'ShaderSource' : {
         'entries' : [ 'glShaderSource(ARB|)?', ],
-        'impl' : [ '_context->iff->ShaderSource( _context, ${arg0plus} );', ],
+        'impl' : [ '_context->iff->ShaderSource( _context, ${arg0plus} ); return;', ],
     },
     'LinkProgram' : {
         'entries' : [ 'glLinkProgram(ARB|)?', ],
-        'impl' : [ '_context->iff->LinkProgram( _context, ${arg0} );', ],
+        'impl' : [ '_context->iff->LinkProgram( _context, ${arg0} ); return;', ],
     },
     'CreateShader' : {
         'entries' : [ 'glCreateShader(ObjectARB)?', ],
@@ -309,8 +300,7 @@ iffFormulae = {
         'impl' : [ 
           'if( _context->iff->currinst ) {',
           '  _context->iff->Uniform( _context, ${m1}, ${arg0}, 1, ${arg1plus} );',
-          '} else {',
-          '  orig.${m0}( _context, ${arg0plus} );',
+          '  return;',
           '}',
         ],
     },
@@ -319,8 +309,7 @@ iffFormulae = {
         'impl' : [ 
           'if( _context->iff->currinst ) {',
           '  _context->iff->Uniform( _context, ${m1}, ${arg0plus} );',
-          '} else {',
-          '  orig.${m0}( _context, ${arg0plus} );',
+          '  return;',
           '}',
         ],
     },
@@ -329,8 +318,7 @@ iffFormulae = {
         'impl' : [ 
           'if( _context->iff->currinst ) {',
           '  _context->iff->UniformMatrix( _context, ${m1}, ${m1}, ${arg0plus} );',
-          '} else {',
-          '  orig.${m0}( _context, ${arg0plus} );',
+          '  return;',
           '}',
         ],
     },
@@ -339,8 +327,7 @@ iffFormulae = {
         'impl' : [ 
           'if( _context->iff->currinst ) {',
           '  _context->iff->UniformMatrix( _context, ${m1}, ${m2}, ${arg0plus} );',
-          '} else {',
-          '  orig.${m0}( _context, ${arg0plus} );',
+          '  return;',
           '}',
         ],
     },

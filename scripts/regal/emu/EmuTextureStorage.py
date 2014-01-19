@@ -11,23 +11,19 @@ texstoFormulae = {
     },
     'TextureStorage' : {
         'entries' : [ 'glTexStorage(1|2|3)D(EXT|)' ],
-        'impl' : [ '_context->texsto->TextureStorage( _context, ${arg0plus} );', ],
+        'impl' : [ '_context->texsto->TextureStorage( _context, ${arg0plus} ); return;', ],
     },
     'GetTexParameterv' : {
         'entries' : [ 'glGetTexParameter(I|)(u|)(f|i)v' ],
         'impl' : [
-            'RegalAssert(_context);',
-            'if ( !_context->texsto->GetTexParameterv( _context, ${arg0plus} ) ) {',
-            '   orig.glGetTexParameter${m1}${m2}${m3}v( _context, ${arg0plus} );',
+            'if ( _context->texsto->GetTexParameterv( _context, ${arg0plus} ) ) {',
+            '   return;',
             '}',
         ]
     },
     'DeleteTextures' : {
         'entries' : [ 'glDeleteTextures' ],
-        'prefix' : [
-          'RegalAssert(_context);',
-          '_context->texsto->DeleteTextures( _context, ${arg0plus} );'
-        ],
+        'prefix' : [ '_context->texsto->DeleteTextures( _context, ${arg0plus} );' ],
     },
 
     #'TexImage' : { # disallow these if the object was specified with TextureStorage

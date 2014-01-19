@@ -39,8 +39,8 @@ quadsFormulae = {
     'entries' : [ 'glDrawArrays(EXT|)' ],
     'impl'    : [
 '''
-if ( ! _context->quads->glDrawArrays( _context, ${arg0plus} ) ) {
-  return orig.glDrawArrays( _context, ${arg0plus} );
+if ( _context->quads->glDrawArrays( _context, ${arg0plus} ) ) {
+  return;
 }
 '''
     ],

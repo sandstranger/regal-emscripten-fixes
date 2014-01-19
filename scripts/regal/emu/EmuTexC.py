@@ -62,7 +62,9 @@ texCFormulae = {
         'impl' :
 '''
 orig.glGenTextures( _context, ${arg0plus} );
-_context->texc->ShadowGenTextures( ${arg0}, ${arg1} );'''
+_context->texc->ShadowGenTextures( ${arg0}, ${arg1} );
+return;
+'''
     },
 
     'ShadowGenerateMipmap' : {
@@ -99,6 +101,8 @@ if ( _buffer.ConvertFrom( ${arg4}, ${arg5}, ${arg6}, ${arg7}, ${arg8} ) )
 else
 {
   orig.glTexSubImage2D( _context, ${arg0plus} );
-}'''
+}
+return;
+'''
     },
 }

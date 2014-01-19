@@ -2412,28 +2412,6 @@ void Iff::InitImmediate(RegalContext &ctx)
   // The initial values for all generic vertex attributes are (0:0; 0:0; 0:0; 1:0).
 }
 
-void Iff::glDeleteVertexArrays( RegalContext * ctx, GLsizei n, const GLuint * arrays )
-{
-  RegalAssert( ctx != NULL );
-  for (GLsizei i = 0; i < n; i++)
-  {
-    GLuint name = arrays[ i ];
-    if (name != immVao)
-      orig.glDeleteVertexArrays( ctx, 1, &name );
-  }
-}
-
-void Iff::glDeleteBuffers( RegalContext * ctx, GLsizei n, const GLuint * buffers )
-{
-  RegalAssert( ctx != NULL );
-  for (GLsizei i = 0; i < n; i++)
-  {
-    GLuint name = buffers[ i ];
-    if (name != immVbo)
-      orig.glDeleteBuffers( ctx, 1, &name );
-  }
-}
-
 GLboolean Iff::IsVertexArray( RegalContext * ctx, GLuint name )
 {
   RegalAssert( ctx != NULL );

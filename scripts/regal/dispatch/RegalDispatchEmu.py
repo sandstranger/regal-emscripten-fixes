@@ -153,13 +153,18 @@ def apiEmuProcsSourceCode( e, apis, orig ):
       if emue != None and 'prefix' in emue and len(emue['prefix']):
         body +=    '  // prefix\n'
         body += listToString( indent( emue['prefix'], '  ' ) )
-        body +=    '\n'
-        body +=    '  ' + callAndReturn( e, function )
+        if body.find("return") > 0:
+          raise Exception("Cannot early return in prefix clause. - %s %s" % ( e['suffix'], name ) )
 
       elif emue != None and 'impl' in emue and len( emue['impl'] ):
         body +=    '  // impl\n'
         body += listToString( indent( emue['impl'], '  ' ) )
+        if body.find("return") < 0:
+          raise Exception("Must have at least one return in impl clause. - %s %s" % ( e['suffix'], name ) )
 
+
+      body +=      '\n'
+      body +=      '  ' + callAndReturn( e, function )
       body +=      '\n'
       body +=      '}\n'
 
