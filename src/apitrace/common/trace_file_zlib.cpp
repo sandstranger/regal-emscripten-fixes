@@ -31,7 +31,6 @@
 #include <string.h>
 
 #include <zlib.h>
-#include <gzguts.h>
 
 // for lseek
 #ifdef _WIN32
@@ -52,108 +51,21 @@ using namespace trace;
 class ZLibFile : public File {
 public:
     ZLibFile(const std::string &filename = std::string(),
-             File::Mode mode = File::Read);
-    virtual ~ZLibFile();
+             File::Mode mode = File::Read) {}
+    virtual ~ZLibFile() {}
 
 
-    virtual bool supportsOffsets() const;
-    virtual File::Offset currentOffset();
+    virtual bool supportsOffsets() const { return false; }
+    virtual File::Offset currentOffset() { return File::Offset(0); }
 protected:
-    virtual bool rawOpen(const std::string &filename, File::Mode mode);
-    virtual bool rawWrite(const void *buffer, size_t length);
-    virtual size_t rawRead(void *buffer, size_t length);
-    virtual int rawGetc();
-    virtual void rawClose();
-    virtual void rawFlush();
-    virtual bool rawSkip(size_t length);
-    virtual int  rawPercentRead();
+    virtual bool rawOpen(const std::string &filename, File::Mode mode) { return false; }
+    virtual bool rawWrite(const void *buffer, size_t length) { return false; }
+    virtual size_t rawRead(void *buffer, size_t length) { return 0; }
+    virtual int rawGetc() { return 0; }
+    virtual void rawClose() {}
+    virtual void rawFlush() {}
+    virtual bool rawSkip(size_t length) { return false; }
+    virtual int  rawPercentRead() { return 0; }
 private:
-    gzFile m_gzFile;
-    double m_endOffset;
 };
 
-ZLibFile::ZLibFile(const std::string &filename,
-                   File::Mode mode)
-    : File(filename, mode),
-      m_gzFile(NULL)
-{
-}
-
-ZLibFile::~ZLibFile()
-{
-    close();
-}
-
-bool ZLibFile::rawOpen(const std::string &filename, File::Mode mode)
-{
-    m_gzFile = gzopen(filename.c_str(),
-                      (mode == File::Write) ? "wb" : "rb");
-
-    if (mode == File::Read && m_gzFile) {
-        //XXX: unfortunately zlib doesn't support
-        //     SEEK_END or we could've done:
-        //m_endOffset = gzseek(m_gzFile, 0, SEEK_END);
-        //gzrewind(m_gzFile);
-        gz_state *state = (gz_state *)m_gzFile;
-        off_t loc = lseek(state->fd, 0, SEEK_CUR);
-        m_endOffset = lseek(state->fd, 0, SEEK_END);
-        lseek(state->fd, loc, SEEK_SET);
-    }
-
-    return m_gzFile != NULL;
-}
-
-bool ZLibFile::rawWrite(const void *buffer, size_t length)
-{
-    return gzwrite(m_gzFile, buffer, unsigned(length)) != -1;
-}
-
-size_t ZLibFile::rawRead(void *buffer, size_t length)
-{
-    int ret = gzread(m_gzFile, buffer, unsigned(length));
-    return ret < 0 ? 0 : ret;
-}
-
-int ZLibFile::rawGetc()
-{
-    return gzgetc(m_gzFile);
-}
-
-void ZLibFile::rawClose()
-{
-    if (m_gzFile) {
-        gzclose(m_gzFile);
-        m_gzFile = NULL;
-    }
-}
-
-void ZLibFile::rawFlush()
-{
-    gzflush(m_gzFile, Z_SYNC_FLUSH);
-}
-
-File::Offset ZLibFile::currentOffset()
-{
-    return File::Offset(gztell(m_gzFile));
-}
-
-bool ZLibFile::supportsOffsets() const
-{
-    return false;
-}
-
-bool ZLibFile::rawSkip(size_t)
-{
-    return false;
-}
-
-int ZLibFile::rawPercentRead()
-{
-    gz_state *state = (gz_state *)m_gzFile;
-    return int(100 * (lseek(state->fd, 0, SEEK_CUR) / m_endOffset));
-}
-
-
-File * File::createZLib(void) {
-    return new ZLibFile;
-}

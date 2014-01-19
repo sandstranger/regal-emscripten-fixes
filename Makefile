@@ -20,8 +20,6 @@
 
 include build/common.inc
 
-include make/Makefile.zlib
-include make/Makefile.libpng
 include make/Makefile.snappy
 include make/Makefile.apitrace
 include make/Makefile.glslopt

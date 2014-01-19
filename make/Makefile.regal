@@ -28,7 +28,6 @@ ifdef REGAL.STATIC
 
 include make/Makefile.apitrace
 include make/Makefile.glslopt
-include make/Makefile.libpng
 
 all:: regal.lib
 
