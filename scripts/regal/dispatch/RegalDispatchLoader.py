@@ -29,7 +29,6 @@ using namespace std;
 #include "RegalPush.h"
 #include "RegalToken.h"
 #include "RegalHelper.h"
-#include "RegalPrivate.h"
 #include "RegalContext.h"
 ${LOCAL_INCLUDE}
 
@@ -302,4 +301,4 @@ def generateLoaderSource(apis, args):
   substitute['IFDEF'] = '#if REGAL_DRIVER && REGAL_LOADER\n\n'
   substitute['ENDIF'] = '#endif\n'
 
-  outputCode( '%s/RegalDispatchLoader.cpp' % args.srcdir, loaderSourceTemplate.substitute(substitute))
+  outputCode( '%s/layer/loader/LoaderProcs.cpp' % args.srcdir, loaderSourceTemplate.substitute(substitute))

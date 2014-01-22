@@ -42,16 +42,12 @@ from RegalToken              import *
 from RegalDispatch           import *
 from RegalDispatchDebug      import *
 from RegalDispatchError      import *
-from RegalDispatchEmu        import *
-from RegalDispatchGMock      import *
-from RegalDispatchGLX        import *
 from RegalDispatchLog        import *
 from RegalDispatchHttp       import *
 from RegalDispatchLoader     import *
 from RegalDispatchPpapi      import *
-from RegalDispatchStaticEGL  import *
-from RegalDispatchStaticES2  import *
 from RegalDispatchTrace      import *
+from RegalEmu                import *
 
 regalLicense = '''
 /*
@@ -213,7 +209,6 @@ def generate(apis, args):
   generateContextInfoSource(apis, args)
   generateEmuInfoHeader(apis, args)
   generateEmuInfoSource(apis, args)
-  generateDispatchGLX(apis, args)
   generateTraceSource( apis, args )
   generatePublicHeader(apis, args)
   generatePluginSource(apis,args)
@@ -225,17 +220,12 @@ def generate(apis, args):
   generateErrorSource( apis, args )
   generateDebugSource( apis, args )
   generatePpapiSource( apis, args )
-  generateStaticES2Source( apis, args )
-  generateStaticEGLSource( apis, args )
   generateDispatchHeader(apis, args)
   generateLookupSource(apis, args)
   generateLookupHeader(apis, args)
   generateTokenSource(apis, args)
   generateTokenHeader(apis, args)
   generateEnumHeader(apis, args)
-
-  generateGMockHeader(apis, args)
-  generateGmockSource(apis, args)
 
   additional_exports = ['RegalSetErrorCallback', 'RegalShareContext', 'RegalMakeCurrent', 'RegalDestroyContext']
 

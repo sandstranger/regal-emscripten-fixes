@@ -158,4 +158,4 @@ def generateTraceSource(apis, args):
   substitute['API_DISPATCH_GLOBAL_FUNC_INIT'] = globalFuncInit
   substitute['IFDEF'] = '#if REGAL_TRACE\n\n#ifdef REGAL_NAMESPACE\n#undef REGAL_NAMESPACE\n#endif\n\n'
   substitute['ENDIF'] = '#endif\n'
-  outputCode( '%s/RegalDispatchTrace.cpp' % args.srcdir, dispatchSourceTemplate.substitute(substitute))
+  outputCode( '%s/layer/trace/TraceProcs.cpp' % args.srcdir, dispatchSourceTemplate.substitute(substitute))

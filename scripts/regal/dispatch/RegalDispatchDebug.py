@@ -84,17 +84,17 @@ def apiDebugFuncDefineCode(apis, args):
 
 debugGlobalCode = '''
 #include "RegalContext.h"
-#include "RegalDispatchDebug.h"
+#include "Debug.h"
 #include "RegalDebugInfo.h"
 '''
 
 debugLocalCode = '''
 
-void InitDispatchDebug( Dispatch::GL & tbl );
+void InitDebugLayer( Dispatch::GL & tbl );
 
 void Debug::Init( RegalContext * ctx ) {
   next = ctx->dispatchGL;
-  InitDispatchDebug( ctx->dispatchGL );
+  InitDebugLayer( ctx->dispatchGL );
 }
 '''
 
@@ -119,5 +119,5 @@ def generateDebugSource(apis, args):
   substitute['IFDEF'] = '#if REGAL_DEBUG\n\n'
   substitute['ENDIF'] = '#endif\n'
 
-  outputCode( '%s/RegalDispatchDebug.cpp' % args.srcdir, dispatchSourceTemplate.substitute(substitute))
+  outputCode( '%s/layer/debug/DebugProcs.cpp' % args.srcdir, dispatchSourceTemplate.substitute(substitute))
 

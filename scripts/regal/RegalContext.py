@@ -60,7 +60,7 @@ emuRegal = [
 ]
 
 
-# RegalDispatchEmu.cpp fixed-function emulation
+# src/regal/emu/... fixed-function emulation
 
 emu = [
     { 'type' : 'Emu::Obj',        'include' : 'RegalObj.h',        'member' : 'obj',    'plugin' : False, 'suffix' : 'Obj',        'ifdef' : 'REGAL_EMU_OBJ',        'formulae' : objFormulae        },

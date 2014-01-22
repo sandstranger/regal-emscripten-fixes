@@ -100,7 +100,7 @@ def apiErrorFuncDefineCode(apis, args):
 
 localInclude = '''
 #include "RegalContext.h"
-#include "RegalDispatchError.h"
+#include "Error.h"
 '''
 
 localCode = '''
@@ -131,4 +131,4 @@ def generateErrorSource(apis, args):
   substitute['API_DISPATCH_GLOBAL_FUNC_INIT'] = ''
   substitute['IFDEF'] = '#if REGAL_ERROR\n\n'
   substitute['ENDIF'] = '#endif\n'
-  outputCode( '%s/RegalDispatchError.cpp' % args.srcdir, dispatchSourceTemplate.substitute(substitute))
+  outputCode( '%s/layer/error/ErrorProcs.cpp' % args.srcdir, dispatchSourceTemplate.substitute(substitute))

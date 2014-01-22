@@ -216,7 +216,7 @@ ${LICENSE}
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
-#include "RegalHttp.h"
+#include "Http.h"
 #include "RegalPush.h"
 #include "RegalToken.h"
 #include "RegalHelper.h"
@@ -387,4 +387,4 @@ def generateDispatchHttp(apis, args):
   substitute['API_GL_DISPATCH_INIT']     = apiDispatchFuncInitCode( apis, args, 'http' )
   substitute['API_GLOBAL_DISPATCH_INIT'] = apiDispatchGlobalFuncInitCode( apis, args, 'http' )
 
-  outputCode( '%s/RegalDispatchHttp.cpp' % args.srcdir, dispatchHttpTemplate.substitute(substitute))
+  outputCode( '%s/layer/http/HttpProcs.cpp' % args.srcdir, dispatchHttpTemplate.substitute(substitute))

@@ -188,4 +188,4 @@ def generateDispatchLog(apis, args):
   substitute['API_GL_DISPATCH_INIT']     = apiDispatchFuncInitCode( apis, args, 'log' )
   substitute['API_GLOBAL_DISPATCH_INIT'] = apiDispatchGlobalFuncInitCode( apis, args, 'log' )
 
-  outputCode( '%s/RegalDispatchLog.cpp' % args.srcdir, dispatchLogTemplate.substitute(substitute))
+  outputCode( '%s/layer/log/LogProcs.cpp' % args.srcdir, dispatchLogTemplate.substitute(substitute))

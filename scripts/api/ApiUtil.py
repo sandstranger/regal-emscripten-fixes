@@ -1,6 +1,8 @@
 #!/usr/bin/python
 
 import ApiCodeFilter
+import os.path
+import os
 
 # Import attribute <name> from module <name>
 
@@ -50,6 +52,10 @@ def outputCode(filename, code):
 
   try:
 
+
+    dirname = os.path.dirname( filename )
+    if not os.path.isdir( dirname ):
+      os.makedirs( dirname )
     output = open(filename, 'w')
     output.write(code)
     output.close()
