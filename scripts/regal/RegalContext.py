@@ -94,7 +94,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalThread.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
-#include "RegalLayer.h"
+#include "RegalDispatch.h"
 #include "RegalScopedPtr.h"
 #include "RegalSharedList.h"
 
@@ -179,7 +179,6 @@ struct RegalContext
     void init( T & dt ) {
       #if REGAL_SYS_OSX
         CGLSetCurrentContext       = dispatchGlobal.CGLSetCurrentContext;
-        CGLSetCurrentContext_layer = dispatchGlobal.CGLSetCurrentContext_layer;
       #elif REGAL_SYS_EGL
         eglMakeCurrent       = dispatchGlobal.eglMakeCurrent;
         eglMakeCurrent_layer = dispatchGlobal.eglMakeCurrent_layer;
@@ -195,7 +194,6 @@ struct RegalContext
     }
     #if REGAL_SYS_OSX
       REGALCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
-      Layer * CGLSetCurrentContext_layer;
     #elif REGAL_SYS_EGL
       REGALEGLMAKECURRENTPROC eglMakeCurrent;
       Layer * eglMakeCurrent_layer;
@@ -359,11 +357,11 @@ RegalContext::groupInitialized() const
 void RegalContext::parkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
-  pp.CGLSetCurrentContext( this, NULL );
+  RCGLSetCurrentContext( pp, NULL );
   #elif REGAL_SYS_WGL
-  pp.wglMakeCurrent( this, NULL, NULL );
+  RwglMakeCurrent( pp, NULL, NULL );
   #elif REGAL_SYS_GLX
-  pp.glXMakeCurrent( this, x11Display, None, NULL );
+  RglXMakeCurrent( pp, x11Display, None, NULL );
   #else
   # error "Implement me!"
   #endif
@@ -373,11 +371,11 @@ void RegalContext::parkContext( RegalContext::ParkProcs & pp )
 void RegalContext::unparkContext( RegalContext::ParkProcs & pp )
 {
   #if REGAL_SYS_OSX
-  pp.CGLSetCurrentContext( this, reinterpret_cast<CGLContextObj>(sysCtx) );
+  RCGLSetCurrentContext( pp, reinterpret_cast<CGLContextObj>(sysCtx) );
   #elif REGAL_SYS_WGL
-  pp.wglMakeCurrent( this, hdc, hglrc );
+  RwglMakeCurrent( pp, hdc, hglrc );
   #elif REGAL_SYS_GLX
-  pp.glXMakeCurrent( this, x11Display, x11Drawable, reinterpret_cast<GLXContext>(sysCtx) );
+  RglXMakeCurrent( pp, x11Display, x11Drawable, reinterpret_cast<GLXContext>(sysCtx) );
   #else
   # error "Implement me!"
   #endif

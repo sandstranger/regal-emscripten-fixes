@@ -48,7 +48,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalThread.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
-#include "RegalLayer.h"
+#include "RegalDispatch.h"
 #include "RegalScopedPtr.h"
 #include "RegalSharedList.h"
 
@@ -151,7 +151,6 @@ struct RegalContext
     void init( T & dt ) {
       #if REGAL_SYS_OSX
         CGLSetCurrentContext       = dispatchGlobal.CGLSetCurrentContext;
-        CGLSetCurrentContext_layer = dispatchGlobal.CGLSetCurrentContext_layer;
       #elif REGAL_SYS_EGL
         eglMakeCurrent       = dispatchGlobal.eglMakeCurrent;
         eglMakeCurrent_layer = dispatchGlobal.eglMakeCurrent_layer;
@@ -167,7 +166,6 @@ struct RegalContext
     }
     #if REGAL_SYS_OSX
       REGALCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
-      Layer * CGLSetCurrentContext_layer;
     #elif REGAL_SYS_EGL
       REGALEGLMAKECURRENTPROC eglMakeCurrent;
       Layer * eglMakeCurrent_layer;

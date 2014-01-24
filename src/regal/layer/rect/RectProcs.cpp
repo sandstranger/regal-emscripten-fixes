@@ -159,22 +159,14 @@ static void REGAL_CALL Rect_glRectsv(Layer *_layer, const GLshort *v1, const GLs
 }
 
 void RectIntercept( Dispatch::GL & dt ) {
-  dt.glRectd       = Rect_glRectd;
-  dt.glRectd_layer  = Rect_glRectd;
-  dt.glRectdv      = Rect_glRectdv;
-  dt.glRectdv_layer = Rect_glRectdv;
-  dt.glRectf       = Rect_glRectf;
-  dt.glRectf_layer  = Rect_glRectf;
-  dt.glRectfv      = Rect_glRectfv;
-  dt.glRectfv_layer = Rect_glRectfv;
-  dt.glRecti       = Rect_glRecti;
-  dt.glRecti_layer  = Rect_glRecti;
-  dt.glRectiv      = Rect_glRectiv;
-  dt.glRectiv_layer = Rect_glRectiv;
-  dt.glRects       = Rect_glRects;
-  dt.glRects_layer  = Rect_glRects;
-  dt.glRectsv      = Rect_glRectsv;
-  dt.glRectsv_layer = Rect_glRectsv;
+  dt.glRectd  = RRect_glRectd;
+  dt.glRectdv = RRect_glRectdv;
+  dt.glRectf  = RRect_glRectf;
+  dt.glRectfv = RRect_glRectfv;
+  dt.glRecti  = RRect_glRecti;
+  dt.glRectiv = RRect_glRectiv;
+  dt.glRects  = RRect_glRects;
+  dt.glRectsv = RRect_glRectsv;
 }
 
 REGAL_NAMESPACE_END

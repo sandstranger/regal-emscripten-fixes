@@ -247,32 +247,19 @@ static void REGAL_CALL TexC_glTexSubImage2D(Layer *_layer, GLenum target, GLint 
 }
 
 void TexCIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture          = TexC_glActiveTexture;
-  dt.glActiveTexture_layer     = TexC_glActiveTexture;
-  dt.glActiveTextureARB       = TexC_glActiveTextureARB;
-  dt.glActiveTextureARB_layer  = TexC_glActiveTextureARB;
-  dt.glBindTexture            = TexC_glBindTexture;
-  dt.glBindTexture_layer       = TexC_glBindTexture;
-  dt.glBindTextureEXT         = TexC_glBindTextureEXT;
-  dt.glBindTextureEXT_layer    = TexC_glBindTextureEXT;
-  dt.glDeleteTextures         = TexC_glDeleteTextures;
-  dt.glDeleteTextures_layer    = TexC_glDeleteTextures;
-  dt.glDeleteTexturesEXT      = TexC_glDeleteTexturesEXT;
-  dt.glDeleteTexturesEXT_layer = TexC_glDeleteTexturesEXT;
-  dt.glGenTextures            = TexC_glGenTextures;
-  dt.glGenTextures_layer       = TexC_glGenTextures;
-  dt.glGenTexturesEXT         = TexC_glGenTexturesEXT;
-  dt.glGenTexturesEXT_layer    = TexC_glGenTexturesEXT;
-  dt.glGenerateMipmap         = TexC_glGenerateMipmap;
-  dt.glGenerateMipmap_layer    = TexC_glGenerateMipmap;
-  dt.glGenerateMipmapEXT      = TexC_glGenerateMipmapEXT;
-  dt.glGenerateMipmapEXT_layer = TexC_glGenerateMipmapEXT;
-  dt.glPixelStorei            = TexC_glPixelStorei;
-  dt.glPixelStorei_layer       = TexC_glPixelStorei;
-  dt.glTexImage2D             = TexC_glTexImage2D;
-  dt.glTexImage2D_layer        = TexC_glTexImage2D;
-  dt.glTexSubImage2D          = TexC_glTexSubImage2D;
-  dt.glTexSubImage2D_layer     = TexC_glTexSubImage2D;
+  dt.glActiveTexture     = RTexC_glActiveTexture;
+  dt.glActiveTextureARB  = RTexC_glActiveTextureARB;
+  dt.glBindTexture       = RTexC_glBindTexture;
+  dt.glBindTextureEXT    = RTexC_glBindTextureEXT;
+  dt.glDeleteTextures    = RTexC_glDeleteTextures;
+  dt.glDeleteTexturesEXT = RTexC_glDeleteTexturesEXT;
+  dt.glGenTextures       = RTexC_glGenTextures;
+  dt.glGenTexturesEXT    = RTexC_glGenTexturesEXT;
+  dt.glGenerateMipmap    = RTexC_glGenerateMipmap;
+  dt.glGenerateMipmapEXT = RTexC_glGenerateMipmapEXT;
+  dt.glPixelStorei       = RTexC_glPixelStorei;
+  dt.glTexImage2D        = RTexC_glTexImage2D;
+  dt.glTexSubImage2D     = RTexC_glTexSubImage2D;
 }
 
 REGAL_NAMESPACE_END

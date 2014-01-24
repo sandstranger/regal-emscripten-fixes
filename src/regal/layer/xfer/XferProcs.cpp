@@ -198,28 +198,17 @@ static void REGAL_CALL Xfer_glTexSubImage2DEXT(Layer *_layer, GLenum target, GLi
 }
 
 void XferIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture                   = Xfer_glActiveTexture;
-  dt.glActiveTexture_layer              = Xfer_glActiveTexture;
-  dt.glActiveTextureARB                = Xfer_glActiveTextureARB;
-  dt.glActiveTextureARB_layer           = Xfer_glActiveTextureARB;
-  dt.glCompressedTexImage2D            = Xfer_glCompressedTexImage2D;
-  dt.glCompressedTexImage2D_layer       = Xfer_glCompressedTexImage2D;
-  dt.glCompressedTexImage2DARB         = Xfer_glCompressedTexImage2DARB;
-  dt.glCompressedTexImage2DARB_layer    = Xfer_glCompressedTexImage2DARB;
-  dt.glCompressedTexSubImage2D         = Xfer_glCompressedTexSubImage2D;
-  dt.glCompressedTexSubImage2D_layer    = Xfer_glCompressedTexSubImage2D;
-  dt.glCompressedTexSubImage2DARB      = Xfer_glCompressedTexSubImage2DARB;
-  dt.glCompressedTexSubImage2DARB_layer = Xfer_glCompressedTexSubImage2DARB;
-  dt.glPixelStoref                     = Xfer_glPixelStoref;
-  dt.glPixelStoref_layer                = Xfer_glPixelStoref;
-  dt.glPixelStorei                     = Xfer_glPixelStorei;
-  dt.glPixelStorei_layer                = Xfer_glPixelStorei;
-  dt.glTexImage2D                      = Xfer_glTexImage2D;
-  dt.glTexImage2D_layer                 = Xfer_glTexImage2D;
-  dt.glTexSubImage2D                   = Xfer_glTexSubImage2D;
-  dt.glTexSubImage2D_layer              = Xfer_glTexSubImage2D;
-  dt.glTexSubImage2DEXT                = Xfer_glTexSubImage2DEXT;
-  dt.glTexSubImage2DEXT_layer           = Xfer_glTexSubImage2DEXT;
+  dt.glActiveTexture              = RXfer_glActiveTexture;
+  dt.glActiveTextureARB           = RXfer_glActiveTextureARB;
+  dt.glCompressedTexImage2D       = RXfer_glCompressedTexImage2D;
+  dt.glCompressedTexImage2DARB    = RXfer_glCompressedTexImage2DARB;
+  dt.glCompressedTexSubImage2D    = RXfer_glCompressedTexSubImage2D;
+  dt.glCompressedTexSubImage2DARB = RXfer_glCompressedTexSubImage2DARB;
+  dt.glPixelStoref                = RXfer_glPixelStoref;
+  dt.glPixelStorei                = RXfer_glPixelStorei;
+  dt.glTexImage2D                 = RXfer_glTexImage2D;
+  dt.glTexSubImage2D              = RXfer_glTexSubImage2D;
+  dt.glTexSubImage2DEXT           = RXfer_glTexSubImage2DEXT;
 }
 
 REGAL_NAMESPACE_END

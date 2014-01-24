@@ -766,7 +766,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalLog.h"
 #include "RegalMac.h"
 #include "RegalInit.h"
-#include "RegalIff.h"
 #include "RegalPush.h"
 #include "RegalToken.h"
 #include "RegalState.h"
@@ -776,8 +775,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 #include "RegalEmuInfo.h"
-#include "RegalCacheShader.h"
-#include "RegalCacheTexture.h"
 #include "RegalScopedPtr.h"
 #include "RegalMarker.h"
 

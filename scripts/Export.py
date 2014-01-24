@@ -35,9 +35,7 @@ from RegalSystem             import *
 from RegalContext            import *
 from RegalContextInfo        import *
 from RegalEmuInfo            import *
-from RegalStatistics         import *
 from RegalLookup             import *
-from RegalPlugin             import *
 from RegalToken              import *
 from RegalDispatch           import *
 from RegalDispatchDebug      import *
@@ -211,7 +209,6 @@ def generate(apis, args):
   generateEmuInfoSource(apis, args)
   generateTraceSource( apis, args )
   generatePublicHeader(apis, args)
-  generatePluginSource(apis,args)
   generateSource(apis, args)
   generateSystemHeader(apis, args)
   generateEmuSource( apis, args )

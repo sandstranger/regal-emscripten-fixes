@@ -45,7 +45,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrint.h"
 
 #include "RegalEmu.h"
-#include "RegalIff.h"
 #include "RegalToken.h"
 #include "RegalDispatch.h"
 

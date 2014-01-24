@@ -204,28 +204,17 @@ static void REGAL_CALL Quads_glShadeModel(Layer *_layer, GLenum mode)
 }
 
 void QuadsIntercept( Dispatch::GL & dt ) {
-  dt.glBindBuffer              = Quads_glBindBuffer;
-  dt.glBindBuffer_layer         = Quads_glBindBuffer;
-  dt.glCullFace                = Quads_glCullFace;
-  dt.glCullFace_layer           = Quads_glCullFace;
-  dt.glDisable                 = Quads_glDisable;
-  dt.glDisable_layer            = Quads_glDisable;
-  dt.glDrawArrays              = Quads_glDrawArrays;
-  dt.glDrawArrays_layer         = Quads_glDrawArrays;
-  dt.glDrawArraysEXT           = Quads_glDrawArraysEXT;
-  dt.glDrawArraysEXT_layer      = Quads_glDrawArraysEXT;
-  dt.glEnable                  = Quads_glEnable;
-  dt.glEnable_layer             = Quads_glEnable;
-  dt.glFrontFace               = Quads_glFrontFace;
-  dt.glFrontFace_layer          = Quads_glFrontFace;
-  dt.glPolygonMode             = Quads_glPolygonMode;
-  dt.glPolygonMode_layer        = Quads_glPolygonMode;
-  dt.glProvokingVertex         = Quads_glProvokingVertex;
-  dt.glProvokingVertex_layer    = Quads_glProvokingVertex;
-  dt.glProvokingVertexEXT      = Quads_glProvokingVertexEXT;
-  dt.glProvokingVertexEXT_layer = Quads_glProvokingVertexEXT;
-  dt.glShadeModel              = Quads_glShadeModel;
-  dt.glShadeModel_layer         = Quads_glShadeModel;
+  dt.glBindBuffer         = RQuads_glBindBuffer;
+  dt.glCullFace           = RQuads_glCullFace;
+  dt.glDisable            = RQuads_glDisable;
+  dt.glDrawArrays         = RQuads_glDrawArrays;
+  dt.glDrawArraysEXT      = RQuads_glDrawArraysEXT;
+  dt.glEnable             = RQuads_glEnable;
+  dt.glFrontFace          = RQuads_glFrontFace;
+  dt.glPolygonMode        = RQuads_glPolygonMode;
+  dt.glProvokingVertex    = RQuads_glProvokingVertex;
+  dt.glProvokingVertexEXT = RQuads_glProvokingVertexEXT;
+  dt.glShadeModel         = RQuads_glShadeModel;
 }
 
 REGAL_NAMESPACE_END

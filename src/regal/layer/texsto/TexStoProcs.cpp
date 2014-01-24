@@ -206,28 +206,17 @@ static void REGAL_CALL TexSto_glTexStorage3DEXT(Layer *_layer, GLenum target, GL
 }
 
 void TexStoIntercept( Dispatch::GL & dt ) {
-  dt.glDeleteTextures           = TexSto_glDeleteTextures;
-  dt.glDeleteTextures_layer      = TexSto_glDeleteTextures;
-  dt.glGetTexParameterIiv       = TexSto_glGetTexParameterIiv;
-  dt.glGetTexParameterIiv_layer  = TexSto_glGetTexParameterIiv;
-  dt.glGetTexParameterIuiv      = TexSto_glGetTexParameterIuiv;
-  dt.glGetTexParameterIuiv_layer = TexSto_glGetTexParameterIuiv;
-  dt.glGetTexParameterfv        = TexSto_glGetTexParameterfv;
-  dt.glGetTexParameterfv_layer   = TexSto_glGetTexParameterfv;
-  dt.glGetTexParameteriv        = TexSto_glGetTexParameteriv;
-  dt.glGetTexParameteriv_layer   = TexSto_glGetTexParameteriv;
-  dt.glTexStorage1D             = TexSto_glTexStorage1D;
-  dt.glTexStorage1D_layer        = TexSto_glTexStorage1D;
-  dt.glTexStorage1DEXT          = TexSto_glTexStorage1DEXT;
-  dt.glTexStorage1DEXT_layer     = TexSto_glTexStorage1DEXT;
-  dt.glTexStorage2D             = TexSto_glTexStorage2D;
-  dt.glTexStorage2D_layer        = TexSto_glTexStorage2D;
-  dt.glTexStorage2DEXT          = TexSto_glTexStorage2DEXT;
-  dt.glTexStorage2DEXT_layer     = TexSto_glTexStorage2DEXT;
-  dt.glTexStorage3D             = TexSto_glTexStorage3D;
-  dt.glTexStorage3D_layer        = TexSto_glTexStorage3D;
-  dt.glTexStorage3DEXT          = TexSto_glTexStorage3DEXT;
-  dt.glTexStorage3DEXT_layer     = TexSto_glTexStorage3DEXT;
+  dt.glDeleteTextures      = RTexSto_glDeleteTextures;
+  dt.glGetTexParameterIiv  = RTexSto_glGetTexParameterIiv;
+  dt.glGetTexParameterIuiv = RTexSto_glGetTexParameterIuiv;
+  dt.glGetTexParameterfv   = RTexSto_glGetTexParameterfv;
+  dt.glGetTexParameteriv   = RTexSto_glGetTexParameteriv;
+  dt.glTexStorage1D        = RTexSto_glTexStorage1D;
+  dt.glTexStorage1DEXT     = RTexSto_glTexStorage1DEXT;
+  dt.glTexStorage2D        = RTexSto_glTexStorage2D;
+  dt.glTexStorage2DEXT     = RTexSto_glTexStorage2DEXT;
+  dt.glTexStorage3D        = RTexSto_glTexStorage3D;
+  dt.glTexStorage3DEXT     = RTexSto_glTexStorage3DEXT;
 }
 
 REGAL_NAMESPACE_END

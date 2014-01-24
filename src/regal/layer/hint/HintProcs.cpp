@@ -130,16 +130,11 @@ static void REGAL_CALL Hint_glHint(Layer *_layer, GLenum target, GLenum mode)
 }
 
 void HintIntercept( Dispatch::GL & dt ) {
-  dt.glGetBooleanv      = Hint_glGetBooleanv;
-  dt.glGetBooleanv_layer = Hint_glGetBooleanv;
-  dt.glGetDoublev       = Hint_glGetDoublev;
-  dt.glGetDoublev_layer  = Hint_glGetDoublev;
-  dt.glGetFloatv        = Hint_glGetFloatv;
-  dt.glGetFloatv_layer   = Hint_glGetFloatv;
-  dt.glGetIntegerv      = Hint_glGetIntegerv;
-  dt.glGetIntegerv_layer = Hint_glGetIntegerv;
-  dt.glHint             = Hint_glHint;
-  dt.glHint_layer        = Hint_glHint;
+  dt.glGetBooleanv = RHint_glGetBooleanv;
+  dt.glGetDoublev  = RHint_glGetDoublev;
+  dt.glGetFloatv   = RHint_glGetFloatv;
+  dt.glGetIntegerv = RHint_glGetIntegerv;
+  dt.glHint        = RHint_glHint;
 }
 
 REGAL_NAMESPACE_END

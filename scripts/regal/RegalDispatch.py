@@ -100,8 +100,12 @@ def apiRegalFunctionDefines(apis, args):
       if category and not (category == categoryPrev):
         code += '    // %s\n\n' % category
 
-      
-      code += '#define R%s( dt, %s ) dt.%s.proc( dt.%s.layer, %s )\n' % ( name, callParams, name, name, callParams )
+      cpa = "dt"
+      cpb = "dt.%s.layer" % name
+      if len(callParams):
+        cpa += ", %s" % callParams
+        cpb += ", %s" % callParams
+      code += '#define R%s( %s ) dt.%s.proc( %s )\n' % ( name, cpa, name, cpb )
 
       categoryPrev = category
 
@@ -207,7 +211,7 @@ struct Layer {
 template <typename T>
 struct RegalProc {
   RegalProc() : proc(NULL), layer(NULL) {}
-  RegalProc( T p, Layer * l ) : proc(p), l(layer) {}
+  RegalProc( T p, Layer * l ) : proc(p), layer(l) {}
   T proc;
   Layer *layer;
 };
