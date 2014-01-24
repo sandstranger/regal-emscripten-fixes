@@ -43,43 +43,42 @@ from EmuPixelTransfer import xferFormulae
 # Regal.cpp emulation
 
 emuRegal = [
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : initFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : initFormulaeGlobal },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : contextShareFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : contextStateFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : getStringFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : forceCoreFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : lookupFormulae },
-    { 'type' : 'Marker',   'include' : 'RegalMarker.h', 'member' : 'marker', 'suffix' : None,  'ifdef' : None,  'formulae' : markerFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : markerFormulaeGlobal },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : extensionQueryFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : errorStringFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : logFormulae    },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : enableFormulae },
-    { 'type' : None,       'include' : None,            'member' : None,     'suffix' : None,  'ifdef' : None,  'formulae' : cacheFormulaeGlobal },
+    { 'name' : None,     'type' : None, 'formulae' : initFormulae           },
+    { 'name' : None,     'type' : None, 'formulae' : initFormulaeGlobal     },
+    { 'name' : None,     'type' : None, 'formulae' : contextShareFormulae   },
+    { 'name' : None,     'type' : None, 'formulae' : contextStateFormulae   },
+    { 'name' : None,     'type' : None, 'formulae' : getStringFormulae      },
+    { 'name' : None,     'type' : None, 'formulae' : forceCoreFormulae      },
+    { 'name' : None,     'type' : None, 'formulae' : lookupFormulae         },
+    { 'name' : 'marker', 'type' : None, 'formulae' : markerFormulae         },
+    { 'name' : None,     'type' : None, 'formulae' : markerFormulaeGlobal   },
+    { 'name' : None,     'type' : None, 'formulae' : extensionQueryFormulae },
+    { 'name' : None,     'type' : None, 'formulae' : errorStringFormulae    },
+    { 'name' : None,     'type' : None, 'formulae' : logFormulae            },
+    { 'name' : None,     'type' : None, 'formulae' : enableFormulae         },
+    { 'name' : None,     'type' : None, 'formulae' : cacheFormulaeGlobal    },
 ]
 
 
-# src/regal/emu/... fixed-function emulation
+# src/regal/layer/... regal interception layers
 
 emu = [
-    { 'type' : 'Emu::Obj',        'include' : 'RegalObj.h',        'member' : 'obj',    'plugin' : False, 'suffix' : 'Obj',        'ifdef' : 'REGAL_EMU_OBJ',        'formulae' : objFormulae        },
-    { 'type' : 'Emu::Hint',       'include' : 'RegalHint.h',       'member' : 'hint',   'plugin' : False, 'suffix' : 'Hint',       'ifdef' : 'REGAL_EMU_HINT',       'formulae' : hintFormulae       },
-    { 'type' : 'Emu::Ppa',        'include' : 'RegalPpa.h',        'member' : 'ppa',    'plugin' : False, 'suffix' : 'Ppa',        'ifdef' : 'REGAL_EMU_PPA',        'formulae' : ppaFormulae        },
-    { 'type' : 'Emu::Ppca',       'include' : 'RegalPpca.h',       'member' : 'ppca',   'plugin' : False, 'suffix' : 'Ppca',       'ifdef' : 'REGAL_EMU_PPCA',       'formulae' : ppcaFormulae       },
-    { 'type' : 'Emu::Bin',        'include' : 'RegalBin.h',        'member' : 'bin',    'plugin' : False, 'suffix' : 'Bin',        'ifdef' : 'REGAL_EMU_BIN',        'formulae' : binFormulae        },
-    { 'type' : 'Emu::Xfer',       'include' : 'RegalXfer.h',       'member' : 'xfer',   'plugin' : False, 'suffix' : 'Xfer',       'ifdef' : 'REGAL_EMU_XFER',       'formulae' : xferFormulae       },
-    { 'type' : 'Emu::TexSto',     'include' : 'RegalTexSto.h',     'member' : 'texsto', 'plugin' : False, 'suffix' : 'TexSto',     'ifdef' : 'REGAL_EMU_TEXSTO',     'formulae' : texstoFormulae     },
-    { 'type' : 'Emu::BaseVertex', 'include' : 'RegalBaseVertex.h', 'member' : 'bv',     'plugin' : False, 'suffix' : 'BaseVertex', 'ifdef' : 'REGAL_EMU_BASEVERTEX', 'formulae' : baseVertexFormulae },
-    { 'type' : 'Emu::Rect',       'include' : 'RegalRect.h',       'member' : 'rect',   'plugin' : False, 'suffix' : 'Rect',       'ifdef' : 'REGAL_EMU_RECT',       'formulae' : rectFormulae       },
-    { 'type' : 'Emu::Iff',        'include' : 'RegalIff.h',        'member' : 'iff',    'plugin' : False, 'suffix' : 'Iff',        'ifdef' : 'REGAL_EMU_IFF',        'formulae' : iffFormulae        },
-    { 'type' : 'Emu::Quads',      'include' : 'RegalQuads.h',      'member' : 'quads',  'plugin' : False, 'suffix' : 'Quads',      'ifdef' : 'REGAL_EMU_QUADS',      'formulae' : quadsFormulae      },
-    { 'type' : 'Emu::So',         'include' : 'RegalSo.h',         'member' : 'so',     'plugin' : False, 'suffix' : 'So',         'ifdef' : 'REGAL_EMU_SO',         'formulae' : soFormulae         },
-    { 'type' : 'Emu::Dsa',        'include' : 'RegalDsa.h',        'member' : 'dsa',    'plugin' : False, 'suffix' : 'Dsa',        'ifdef' : 'REGAL_EMU_DSA',        'formulae' : dsaFormulae        },
-    { 'type' : 'Emu::Vao',        'include' : 'RegalVao.h',        'member' : 'vao',    'plugin' : False, 'suffix' : 'Vao',        'ifdef' : 'REGAL_EMU_VAO',        'formulae' : vaoFormulae        },
-    { 'type' : 'Emu::TexC',       'include' : 'RegalTexC.h',       'member' : 'texc',   'plugin' : False, 'suffix' : 'TexC',       'ifdef' : 'REGAL_EMU_TEXC',       'formulae' : texCFormulae       },
-    { 'type' : 'Emu::Filt',       'include' : 'RegalFilt.h',       'member' : 'filt',   'plugin' : False, 'suffix' : 'Filt',     'ifdef' : 'REGAL_EMU_FILT',     'formulae' : filtFormulae     },
-    { 'type' : 'void',            'include' : None,                'member' : None,     'plugin' : False, 'suffix' : None,         'ifdef' : None,                   'formulae' : None               }
+    { 'name' : 'obj',    'type' : 'Obj',        'formulae' : objFormulae        },
+    { 'name' : 'hint',   'type' : 'Hint',       'formulae' : hintFormulae       },
+    { 'name' : 'ppa',    'type' : 'Ppa',        'formulae' : ppaFormulae        },
+    { 'name' : 'ppca',   'type' : 'Ppca',       'formulae' : ppcaFormulae       },
+    { 'name' : 'bin',    'type' : 'Bin',        'formulae' : binFormulae        },
+    { 'name' : 'xfer',   'type' : 'Xfer',       'formulae' : xferFormulae       },
+    { 'name' : 'texsto', 'type' : 'TexSto',     'formulae' : texstoFormulae     },
+    { 'name' : 'bv',     'type' : 'BaseVertex', 'formulae' : baseVertexFormulae },
+    { 'name' : 'rect',   'type' : 'Rect',       'formulae' : rectFormulae       },
+    { 'name' : 'iff',    'type' : 'Iff',        'formulae' : iffFormulae        },
+    { 'name' : 'quads',  'type' : 'Quads',      'formulae' : quadsFormulae      },
+    { 'name' : 'so',     'type' : 'So',         'formulae' : soFormulae         },
+    { 'name' : 'dsa',    'type' : 'Dsa',        'formulae' : dsaFormulae        },
+    { 'name' : 'vao',    'type' : 'Vao',        'formulae' : vaoFormulae        },
+    { 'name' : 'texc',   'type' : 'TexC',       'formulae' : texCFormulae       },
+    { 'name' : 'filt',   'type' : 'Filt',       'formulae' : filtFormulae       },
 ]
 
 contextHeaderTemplate = Template( '''${AUTOGENERATED}
@@ -95,10 +94,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalThread.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
-#include "RegalDispatchDebug.h"
-#include "RegalDispatchLog.h"
-#include "RegalDispatchError.h"
-#include "RegalDispatchHttp.h"
+#include "RegalLayer.h"
 #include "RegalScopedPtr.h"
 #include "RegalSharedList.h"
 
@@ -134,19 +130,11 @@ struct RegalContext
 
   bool                    initialized;
   Dispatch::GL            dispatchGL;
-  Err                     err;
-  Debug                   debug;
-  Log                     log; 
-  Http                    http;
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;
 
-  //
-  // Emulation
-  //
-
-${EMU_MEMBER_DECLARE}
+  std::vector<Layer *>    layer;
 
   #if REGAL_SYS_PPAPI
   PPB_OpenGLES2      *ppapiES2;
@@ -187,27 +175,36 @@ ${EMU_MEMBER_DECLARE}
   // unparkContext() makes it current to the calling thread
           
   struct ParkProcs {
-    void init( Dispatch::Global & dispatchGlobal ) {
+    template <typename T>
+    void init( T & dt ) {
       #if REGAL_SYS_OSX
-        CGLSetCurrentContext = dispatchGlobal.CGLSetCurrentContext;
+        CGLSetCurrentContext       = dispatchGlobal.CGLSetCurrentContext;
+        CGLSetCurrentContext_layer = dispatchGlobal.CGLSetCurrentContext_layer;
       #elif REGAL_SYS_EGL
-        eglMakeCurrent = dispatchGlobal.eglMakeCurrent;
+        eglMakeCurrent       = dispatchGlobal.eglMakeCurrent;
+        eglMakeCurrent_layer = dispatchGlobal.eglMakeCurrent_layer;
       #elif REGAL_SYS_GLX
-        glXMakeCurrent = dispatchGlobal.glXMakeCurrent;
+        glXMakeCurrent       = dispatchGlobal.glXMakeCurrent;
+        glXMakeCurrent_layer = dispatchGlobal.glXMakeCurrent_layer;
       #elif REGAL_SYS_WGL
-        wglMakeCurrent = dispatchGlobal.wglMakeCurrent;
+        wglMakeCurrent       = dispatchGlobal.wglMakeCurrent;
+        wglMakeCurrent_layer = dispatchGlobal.wglMakeCurrent_layer;
       #else
         # error "Implement me!"
       #endif
     }
     #if REGAL_SYS_OSX
       REGALCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
+      Layer * CGLSetCurrentContext_layer;
     #elif REGAL_SYS_EGL
       REGALEGLMAKECURRENTPROC eglMakeCurrent;
+      Layer * eglMakeCurrent_layer;
     #elif REGAL_SYS_GLX
       REGALGLXMAKECURRENTPROC glXMakeCurrent;
+      Layer * glXMakeCurrent_layer;
     #elif REGAL_SYS_WGL
       REGALWGLMAKECURRENTPROC wglMakeCurrent;
+       wglMakeCurrent;
     #else
       # error "Implement me!"
     #endif
@@ -241,7 +238,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalConfig.h"
 #include "RegalContext.h"
 #include "RegalEmuInfo.h"
-#include "RegalLayerInfo.h"
 #include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 
@@ -297,8 +293,6 @@ ${EMU_MEMBER_CONSTRUCT}#endif
   shareGroup.push_back(this);
 }
 
-void InitDispatchLoader( Dispatch::GL & );
-
 void
 RegalContext::Init()
 {
@@ -306,12 +300,8 @@ RegalContext::Init()
 
   RegalAssert(!initialized);
 
-  // Regal context init requires staged dispatch update, starting with the driver/loader
-      
   memset( &dispatchGL, 0, sizeof( Dispatch::GL ) );
             
-  InitDispatchLoader( dispatchGL );
-
   RegalAssert(this);
   if (!info)
   {
@@ -328,46 +318,6 @@ RegalContext::Init()
   }
 
 ${MEMBER_INIT}
-
-#if REGAL_LOG
-  log.Init( this );
-#endif
-
-#if REGAL_CACHE // todo
-#endif
-
-#if REGAL_ERROR_POST_EMU
-#if REGAL_ERROR
-  if( Config::enableError ) {
-    err.Init( this );
-  }
-#endif
-#endif
-
-#if REGAL_EMULATION
-
-${EMULATION_ENABLED}
-
-#if !REGAL_FORCE_EMULATION
-  if (Config::enableEmulation || Config::forceEmulation)
-#endif
-  {
-
-${EMU_MEMBER_INIT}
-  }
-#endif
-
-#if ! REGAL_ERROR_POST_EMU
-#if REGAL_ERROR
-  if( Config::enableError ) {
-    err.Init( this );
-  }
-#endif
-#endif
-
-#if REGAL_HTTP
-  http.Init( this );
-#endif
 
   initialized = true;
 }
@@ -444,9 +394,9 @@ def generateContextHeader(apis, args):
     emuMemberDeclare  = ''
 
     for i in emuRegal:
-      if i.get('member')!=None:
+      if i.get('name')!=None:
         emuForwardDeclare += 'struct %s;\n' % i['type']
-        emuMemberDeclare  += '  scoped_ptr<%-18s> %s;\n' % ( i['type'], i['member'] )
+        emuMemberDeclare  += '  scoped_ptr<%-18s> %s;\n' % ( i['type'], i['name'] )
 
     emuForwardDeclare += '#if REGAL_EMULATION\n'
     emuMemberDeclare  += '#if REGAL_EMULATION\n'
@@ -455,12 +405,12 @@ def generateContextHeader(apis, args):
     emuMemberDeclare += '  int emuLevel;\n'
 
     for i in emu:
-      if i.get('member')!=None:
+      if i.get('name')!=None:
         if i['type'].startswith('Emu::'):
           emuForwardDeclare += 'namespace Emu { struct %s; };\n' % i['type'][5:]
         else:
           emuForwardDeclare += 'struct %s;\n' % i['type']
-        emuMemberDeclare  += '  scoped_ptr<%-18s> %s;\n' % ( i['type'], i['member'] )
+        emuMemberDeclare  += '  scoped_ptr<%-18s> %s;\n' % ( i['type'], i['name'] )
 
     emuForwardDeclare += '#endif\n'
     emuMemberDeclare  += '#endif\n'
@@ -517,64 +467,6 @@ def generateContextSource(apis, args):
     emuMemberCleanup   = ''
     emulatedExtensions = []
     emuEmulationEnabled = ''
-
-    for i in emuRegal:
-      if i['include']:
-        includes        += '#include "%s"\n' % i['include']
-      if i['member']:
-        memberConstruct += '  %s(NULL),\n' % ( i['member'] )
-        memberInit      += indent(wrapCIf('!%s' % i['member'],'%s = new %s;\n'%(i['member'],i['type'])),'  ')
-
-    emuMemberConstruct += '  emuLevel(0),\n'
-
-    emuMemberInit += '    // emu\n'
-    emuMemberInit += '    emuLevel = %d;\n' % ( len( emu ) - 1 )
-    emuMemberCleanup  += '  // emu\n'
-
-    for i in range( len( emu ) - 1 ) :
-      if emu[i]['member']:
-        emuMemberConstruct += '  %s(NULL),\n' % emu[i]['member']
-
-    for i in range( len( emu ) - 1 ) :
-      if emu[i]['include']:
-        emuIncludes += '#include "%s"\n' % emu[i]['include']
-      if emu[i]['member']:
-        cleanup = ''
-        cleanup += 'emuLevel = %d;\n' % ( int(emu[i]['level']) - 1)
-        cleanup += '%s->Cleanup(*this);\n' % emu[i]['member']
-        cleanup += '%s.reset(NULL);\n' % emu[i]['member']
-        emuMemberCleanup += indent(wrapIf(emu[i]['ifdef'],wrapCIf(emu[i]['member'],cleanup)),'  ')
-
-      revi = len( emu ) - 2 - i;
-      if emu[revi]['member']:
-
-        init = '{\n'
-        init += '  Emu::LayerInfo layer;\n'
-        init += '  Emu::Get%sLayerInfo( *this, layer );\n' % emu[revi]['suffix']
-        init += '  bool enable = false;\n'
-        emuMemberInit += indent(init,'    ')
-
-        # Info logging of activated emulation layers
-
-        init = ''
-        init += 'if( Config::enableEmu%s ) {\n' % emu[revi]['suffix']
-        init += '  enable = layer.emulationSupported && ( layer.emulationNeeded || Config::forceEmu%s ); \n' % emu[revi]['suffix']
-        init += '  if( enable ) {\n' 
-        if len(emu[revi]['ifdef']):
-          init += '    Info("Activating emulation layer %s");\n'%(emu[revi]['ifdef'])
-        init += '    %s = new %s;\n' % ( emu[revi]['member'], emu[revi]['type'] )
-        init += '    emuLevel = %d;\n' % ( int(emu[revi]['level']) - 1)
-        init += '    %s->Init(*this);\n' % emu[revi]['member']
-        init += '  }\n'
-        init += '}\n'
-        emuMemberInit += indent(wrapIf(emu[revi]['ifdef'], init),'      ')
-
-        init = ''
-        init += '  Emu::Set%sEmuInfo( enable, this->emuInfo, layer );\n' % emu[revi]['suffix']
-        init += '}\n'
-        emuMemberInit += indent(init,'    ')
-      
-    emuMemberInit += '    emuLevel = %d;\n' % ( len( emu ) - 1 )
 
     # Output
 

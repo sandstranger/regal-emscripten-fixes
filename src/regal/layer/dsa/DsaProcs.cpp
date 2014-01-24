@@ -54,106 +54,114 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptDsa_glActiveTexture(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Dsa_glActiveTexture(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if( _context->dsa->ShadowActiveTexture( texture ) ) {
       return;
   }
 
-  orig.glActiveTexture( _context, texture );
+  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glActiveTextureARB(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Dsa_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if( _context->dsa->ShadowActiveTexture( texture ) ) {
       return;
   }
 
-  orig.glActiveTextureARB( _context, texture );
+  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBegin(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Dsa_glBegin(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glBegin( _context, mode );
+  orig.glBegin( orig.glBegin_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindBuffer(RegalContext *_context, GLenum target, GLuint buffer)
+static void REGAL_CALL Dsa_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowBuffer( target, buffer ) ) {
     return;
   }
 
-  orig.glBindBuffer( _context, target, buffer );
+  orig.glBindBuffer( orig.glBindBuffer_layer, target, buffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindBufferARB(RegalContext *_context, GLenum target, GLuint buffer)
+static void REGAL_CALL Dsa_glBindBufferARB(Layer *_layer, GLenum target, GLuint buffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowBuffer( target, buffer ) ) {
     return;
   }
 
-  orig.glBindBufferARB( _context, target, buffer );
+  orig.glBindBufferARB( orig.glBindBufferARB_layer, target, buffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindFramebuffer(RegalContext *_context, GLenum target, GLuint framebuffer)
+static void REGAL_CALL Dsa_glBindFramebuffer(Layer *_layer, GLenum target, GLuint framebuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowFramebuffer( target, framebuffer ) ) {
     return;
   }
 
-  orig.glBindFramebuffer( _context, target, framebuffer );
+  orig.glBindFramebuffer( orig.glBindFramebuffer_layer, target, framebuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindFramebufferEXT(RegalContext *_context, GLenum target, GLuint framebuffer)
+static void REGAL_CALL Dsa_glBindFramebufferEXT(Layer *_layer, GLenum target, GLuint framebuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowFramebuffer( target, framebuffer ) ) {
     return;
   }
 
-  orig.glBindFramebufferEXT( _context, target, framebuffer );
+  orig.glBindFramebufferEXT( orig.glBindFramebufferEXT_layer, target, framebuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindMultiTextureEXT(RegalContext *_context, GLenum texunit, GLenum target, GLuint texture)
+static void REGAL_CALL Dsa_glBindMultiTextureEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
@@ -161,779 +169,838 @@ static void REGAL_CALL emuProcInterceptDsa_glBindMultiTextureEXT(RegalContext *_
   orig.glBindTexture( _context, target, texture );
   return;
 
-  orig.glBindMultiTextureEXT( _context, texunit, target, texture );
+  orig.glBindMultiTextureEXT( orig.glBindMultiTextureEXT_layer, texunit, target, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindProgramARB(RegalContext *_context, GLenum target, GLuint program)
+static void REGAL_CALL Dsa_glBindProgramARB(Layer *_layer, GLenum target, GLuint program)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowAsmProgram( target, program ) ) {
     return;
   }
 
-  orig.glBindProgramARB( _context, target, program );
+  orig.glBindProgramARB( orig.glBindProgramARB_layer, target, program );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindRenderbuffer(RegalContext *_context, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glBindRenderbuffer(Layer *_layer, GLenum target, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowRenderbuffer( target, renderbuffer ) ) {
     return;
   }
 
-  orig.glBindRenderbuffer( _context, target, renderbuffer );
+  orig.glBindRenderbuffer( orig.glBindRenderbuffer_layer, target, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindRenderbufferEXT(RegalContext *_context, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glBindRenderbufferEXT(Layer *_layer, GLenum target, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowRenderbuffer( target, renderbuffer ) ) {
     return;
   }
 
-  orig.glBindRenderbufferEXT( _context, target, renderbuffer );
+  orig.glBindRenderbufferEXT( orig.glBindRenderbufferEXT_layer, target, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindTexture(RegalContext *_context, GLenum target, GLuint texture)
+static void REGAL_CALL Dsa_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowTexture( target, texture )) {
     return;
   }
 
-  orig.glBindTexture( _context, target, texture );
+  orig.glBindTexture( orig.glBindTexture_layer, target, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindTextureEXT(RegalContext *_context, GLenum target, GLuint texture)
+static void REGAL_CALL Dsa_glBindTextureEXT(Layer *_layer, GLenum target, GLuint texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowTexture( target, texture )) {
     return;
   }
 
-  orig.glBindTextureEXT( _context, target, texture );
+  orig.glBindTextureEXT( orig.glBindTextureEXT_layer, target, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBindVertexArray(RegalContext *_context, GLuint array)
+static void REGAL_CALL Dsa_glBindVertexArray(Layer *_layer, GLuint array)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowVao( array )) {
     return;
   }
 
-  orig.glBindVertexArray( _context, array );
+  orig.glBindVertexArray( orig.glBindVertexArray_layer, array );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBufferData(RegalContext *_context, GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
+static void REGAL_CALL Dsa_glBufferData(Layer *_layer, GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glBufferData( _context, target, size, data, usage );
+  orig.glBufferData( orig.glBufferData_layer, target, size, data, usage );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glBufferSubData(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
+static void REGAL_CALL Dsa_glBufferSubData(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glBufferSubData( _context, target, offset, size, data );
+  orig.glBufferSubData( orig.glBufferSubData_layer, target, offset, size, data );
 
 }
 
-static GLenum REGAL_CALL emuProcInterceptDsa_glCheckNamedFramebufferStatusEXT(RegalContext *_context, GLuint framebuffer, GLenum target)
+static GLenum REGAL_CALL Dsa_glCheckNamedFramebufferStatusEXT(Layer *_layer, GLuint framebuffer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   return orig.glCheckFramebufferStatus( _context, target );
 
-  return orig.glCheckNamedFramebufferStatusEXT( _context, framebuffer, target );
+  return orig.glCheckNamedFramebufferStatusEXT( orig.glCheckNamedFramebufferStatusEXT_layer, framebuffer, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glClientActiveTexture(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Dsa_glClientActiveTexture(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowClientActiveTexture( texture )) {
     return;
   }
 
-  orig.glClientActiveTexture( _context, texture );
+  orig.glClientActiveTexture( orig.glClientActiveTexture_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glClientActiveTextureARB(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Dsa_glClientActiveTextureARB(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowClientActiveTexture( texture )) {
     return;
   }
 
-  orig.glClientActiveTextureARB( _context, texture );
+  orig.glClientActiveTextureARB( orig.glClientActiveTextureARB_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glClientAttribDefaultEXT(RegalContext *_context, GLbitfield mask)
+static void REGAL_CALL Dsa_glClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->ClientAttribDefault( _context, mask ); return;
 
-  orig.glClientAttribDefaultEXT( _context, mask );
+  orig.glClientAttribDefaultEXT( orig.glClientAttribDefaultEXT_layer, mask );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glColorPointer(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL Dsa_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glColorPointer( _context, size, type, stride, pointer );
+  orig.glColorPointer( orig.glColorPointer_layer, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexImage1DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Dsa_glCompressedMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCompressedTexImage1D( _context, target, level, internalformat, width, border, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexImage1DEXT( _context, texunit, target, level, internalformat, width, border, imageSize, data );
+  orig.glCompressedMultiTexImage1DEXT( orig.glCompressedMultiTexImage1DEXT_layer, texunit, target, level, internalformat, width, border, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexImage2DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, bits );
   return;
 
-  orig.glCompressedMultiTexImage2DEXT( _context, texunit, target, level, internalformat, width, height, border, imageSize, bits );
+  orig.glCompressedMultiTexImage2DEXT( orig.glCompressedMultiTexImage2DEXT_layer, texunit, target, level, internalformat, width, height, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexImage3DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCompressedTexImage3D( _context, target, level, internalformat, width, height, depth, border, imageSize, bits );
   return;
 
-  orig.glCompressedMultiTexImage3DEXT( _context, texunit, target, level, internalformat, width, height, depth, border, imageSize, bits );
+  orig.glCompressedMultiTexImage3DEXT( orig.glCompressedMultiTexImage3DEXT_layer, texunit, target, level, internalformat, width, height, depth, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexSubImage1DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Dsa_glCompressedMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCompressedTexSubImage1D( _context, target, level, xoffset, width, format, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexSubImage1DEXT( _context, texunit, target, level, xoffset, width, format, imageSize, data );
+  orig.glCompressedMultiTexSubImage1DEXT( orig.glCompressedMultiTexSubImage1DEXT_layer, texunit, target, level, xoffset, width, format, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexSubImage2DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Dsa_glCompressedMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexSubImage2DEXT( _context, texunit, target, level, xoffset, yoffset, width, height, format, imageSize, data );
+  orig.glCompressedMultiTexSubImage2DEXT( orig.glCompressedMultiTexSubImage2DEXT_layer, texunit, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedMultiTexSubImage3DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Dsa_glCompressedMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCompressedTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexSubImage3DEXT( _context, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
+  orig.glCompressedMultiTexSubImage3DEXT( orig.glCompressedMultiTexSubImage3DEXT_layer, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureImage1DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCompressedTexImage1D( _context, target, level, internalformat, width, border, imageSize, bits );
   return;
 
-  orig.glCompressedTextureImage1DEXT( _context, texture, target, level, internalformat, width, border, imageSize, bits );
+  orig.glCompressedTextureImage1DEXT( orig.glCompressedTextureImage1DEXT_layer, texture, target, level, internalformat, width, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureImage2DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, bits );
   return;
 
-  orig.glCompressedTextureImage2DEXT( _context, texture, target, level, internalformat, width, height, border, imageSize, bits );
+  orig.glCompressedTextureImage2DEXT( orig.glCompressedTextureImage2DEXT_layer, texture, target, level, internalformat, width, height, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureImage3DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCompressedTexImage3D( _context, target, level, internalformat, width, height, depth, border, imageSize, bits );
   return;
 
-  orig.glCompressedTextureImage3DEXT( _context, texture, target, level, internalformat, width, height, depth, border, imageSize, bits );
+  orig.glCompressedTextureImage3DEXT( orig.glCompressedTextureImage3DEXT_layer, texture, target, level, internalformat, width, height, depth, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureSubImage1DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCompressedTexSubImage1D( _context, target, level, xoffset, width, format, imageSize, bits );
   return;
 
-  orig.glCompressedTextureSubImage1DEXT( _context, texture, target, level, xoffset, width, format, imageSize, bits );
+  orig.glCompressedTextureSubImage1DEXT( orig.glCompressedTextureSubImage1DEXT_layer, texture, target, level, xoffset, width, format, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureSubImage2DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, bits );
   return;
 
-  orig.glCompressedTextureSubImage2DEXT( _context, texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits );
+  orig.glCompressedTextureSubImage2DEXT( orig.glCompressedTextureSubImage2DEXT_layer, texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCompressedTextureSubImage3DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL Dsa_glCompressedTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCompressedTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
   return;
 
-  orig.glCompressedTextureSubImage3DEXT( _context, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
+  orig.glCompressedTextureSubImage3DEXT( orig.glCompressedTextureSubImage3DEXT_layer, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyBufferSubData(RegalContext *_context, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
+static void REGAL_CALL Dsa_glCopyBufferSubData(Layer *_layer, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glCopyBufferSubData( _context, readtarget, writetarget, readoffset, writeoffset, size );
+  orig.glCopyBufferSubData( orig.glCopyBufferSubData_layer, readtarget, writetarget, readoffset, writeoffset, size );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexImage1DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
+static void REGAL_CALL Dsa_glCopyMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCopyTexImage1D( _context, target, level, internalformat, x, y, width, border );
   return;
 
-  orig.glCopyMultiTexImage1DEXT( _context, texunit, target, level, internalformat, x, y, width, border );
+  orig.glCopyMultiTexImage1DEXT( orig.glCopyMultiTexImage1DEXT_layer, texunit, target, level, internalformat, x, y, width, border );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexImage2DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
+static void REGAL_CALL Dsa_glCopyMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border );
   return;
 
-  orig.glCopyMultiTexImage2DEXT( _context, texunit, target, level, internalformat, x, y, width, height, border );
+  orig.glCopyMultiTexImage2DEXT( orig.glCopyMultiTexImage2DEXT_layer, texunit, target, level, internalformat, x, y, width, height, border );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexSubImage1DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
+static void REGAL_CALL Dsa_glCopyMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCopyTexSubImage1D( _context, target, level, xoffset, x, y, width );
   return;
 
-  orig.glCopyMultiTexSubImage1DEXT( _context, texunit, target, level, xoffset, x, y, width );
+  orig.glCopyMultiTexSubImage1DEXT( orig.glCopyMultiTexSubImage1DEXT_layer, texunit, target, level, xoffset, x, y, width );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexSubImage2DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glCopyMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCopyTexSubImage2D( _context, target, level, xoffset, yoffset, x, y, width, height );
   return;
 
-  orig.glCopyMultiTexSubImage2DEXT( _context, texunit, target, level, xoffset, yoffset, x, y, width, height );
+  orig.glCopyMultiTexSubImage2DEXT( orig.glCopyMultiTexSubImage2DEXT_layer, texunit, target, level, xoffset, yoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyMultiTexSubImage3DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glCopyMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glCopyTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, x, y, width, height );
   return;
 
-  orig.glCopyMultiTexSubImage3DEXT( _context, texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height );
+  orig.glCopyMultiTexSubImage3DEXT( orig.glCopyMultiTexSubImage3DEXT_layer, texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyTextureImage1DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
+static void REGAL_CALL Dsa_glCopyTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCopyTexImage1D( _context, target, level, internalformat, x, y, width, border );
   return;
 
-  orig.glCopyTextureImage1DEXT( _context, texture, target, level, internalformat, x, y, width, border );
+  orig.glCopyTextureImage1DEXT( orig.glCopyTextureImage1DEXT_layer, texture, target, level, internalformat, x, y, width, border );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyTextureImage2DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
+static void REGAL_CALL Dsa_glCopyTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border );
   return;
 
-  orig.glCopyTextureImage2DEXT( _context, texture, target, level, internalformat, x, y, width, height, border );
+  orig.glCopyTextureImage2DEXT( orig.glCopyTextureImage2DEXT_layer, texture, target, level, internalformat, x, y, width, height, border );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyTextureSubImage1DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
+static void REGAL_CALL Dsa_glCopyTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCopyTexSubImage1D( _context, target, level, xoffset, x, y, width );
   return;
 
-  orig.glCopyTextureSubImage1DEXT( _context, texture, target, level, xoffset, x, y, width );
+  orig.glCopyTextureSubImage1DEXT( orig.glCopyTextureSubImage1DEXT_layer, texture, target, level, xoffset, x, y, width );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyTextureSubImage2DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glCopyTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCopyTexSubImage2D( _context, target, level, xoffset, yoffset, x, y, width, height );
   return;
 
-  orig.glCopyTextureSubImage2DEXT( _context, texture, target, level, xoffset, yoffset, x, y, width, height );
+  orig.glCopyTextureSubImage2DEXT( orig.glCopyTextureSubImage2DEXT_layer, texture, target, level, xoffset, yoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glCopyTextureSubImage3DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glCopyTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glCopyTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, x, y, width, height );
   return;
 
-  orig.glCopyTextureSubImage3DEXT( _context, texture, target, level, xoffset, yoffset, zoffset, x, y, width, height );
+  orig.glCopyTextureSubImage3DEXT( orig.glCopyTextureSubImage3DEXT_layer, texture, target, level, xoffset, yoffset, zoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteBuffers(RegalContext *_context, GLsizei n, const GLuint *buffers)
+static void REGAL_CALL Dsa_glDeleteBuffers(Layer *_layer, GLsizei n, const GLuint *buffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteBuffers( _context, n, buffers );
 
-  orig.glDeleteBuffers( _context, n, buffers );
+  orig.glDeleteBuffers( orig.glDeleteBuffers_layer, n, buffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteBuffersARB(RegalContext *_context, GLsizei n, const GLuint *buffers)
+static void REGAL_CALL Dsa_glDeleteBuffersARB(Layer *_layer, GLsizei n, const GLuint *buffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteBuffers( _context, n, buffers );
 
-  orig.glDeleteBuffersARB( _context, n, buffers );
+  orig.glDeleteBuffersARB( orig.glDeleteBuffersARB_layer, n, buffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteFramebuffers(RegalContext *_context, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL Dsa_glDeleteFramebuffers(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffers( _context, n, framebuffers );
+  orig.glDeleteFramebuffers( orig.glDeleteFramebuffers_layer, n, framebuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteFramebuffersEXT(RegalContext *_context, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL Dsa_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffersEXT( _context, n, framebuffers );
+  orig.glDeleteFramebuffersEXT( orig.glDeleteFramebuffersEXT_layer, n, framebuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteFramebuffersOES(RegalContext *_context, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL Dsa_glDeleteFramebuffersOES(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffersOES( _context, n, framebuffers );
+  orig.glDeleteFramebuffersOES( orig.glDeleteFramebuffersOES_layer, n, framebuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteProgram(RegalContext *_context, GLuint program)
+static void REGAL_CALL Dsa_glDeleteProgram(Layer *_layer, GLuint program)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteGlslProgram( _context, program );
 
-  orig.glDeleteProgram( _context, program );
+  orig.glDeleteProgram( orig.glDeleteProgram_layer, program );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteProgramsARB(RegalContext *_context, GLsizei n, const GLuint *programs)
+static void REGAL_CALL Dsa_glDeleteProgramsARB(Layer *_layer, GLsizei n, const GLuint *programs)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteAsmPrograms( _context, n, programs );
 
-  orig.glDeleteProgramsARB( _context, n, programs );
+  orig.glDeleteProgramsARB( orig.glDeleteProgramsARB_layer, n, programs );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteProgramsNV(RegalContext *_context, GLsizei n, const GLuint *programs)
+static void REGAL_CALL Dsa_glDeleteProgramsNV(Layer *_layer, GLsizei n, const GLuint *programs)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteAsmPrograms( _context, n, programs );
 
-  orig.glDeleteProgramsNV( _context, n, programs );
+  orig.glDeleteProgramsNV( orig.glDeleteProgramsNV_layer, n, programs );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteRenderbuffers(RegalContext *_context, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL Dsa_glDeleteRenderbuffers(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffers( _context, n, renderbuffers );
+  orig.glDeleteRenderbuffers( orig.glDeleteRenderbuffers_layer, n, renderbuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteRenderbuffersEXT(RegalContext *_context, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL Dsa_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffersEXT( _context, n, renderbuffers );
+  orig.glDeleteRenderbuffersEXT( orig.glDeleteRenderbuffersEXT_layer, n, renderbuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteRenderbuffersOES(RegalContext *_context, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL Dsa_glDeleteRenderbuffersOES(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffersOES( _context, n, renderbuffers );
+  orig.glDeleteRenderbuffersOES( orig.glDeleteRenderbuffersOES_layer, n, renderbuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteTextures(RegalContext *_context, GLsizei n, const GLuint *textures)
+static void REGAL_CALL Dsa_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTextures( _context, n, textures );
+  orig.glDeleteTextures( orig.glDeleteTextures_layer, n, textures );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteTexturesEXT(RegalContext *_context, GLsizei n, const GLuint *textures)
+static void REGAL_CALL Dsa_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const GLuint *textures)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTexturesEXT( _context, n, textures );
+  orig.glDeleteTexturesEXT( orig.glDeleteTexturesEXT_layer, n, textures );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteVertexArrays(RegalContext *_context, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL Dsa_glDeleteVertexArrays(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArrays( _context, n, arrays );
+  orig.glDeleteVertexArrays( orig.glDeleteVertexArrays_layer, n, arrays );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteVertexArraysAPPLE(RegalContext *_context, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL Dsa_glDeleteVertexArraysAPPLE(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArraysAPPLE( _context, n, arrays );
+  orig.glDeleteVertexArraysAPPLE( orig.glDeleteVertexArraysAPPLE_layer, n, arrays );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDeleteVertexArraysOES(RegalContext *_context, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL Dsa_glDeleteVertexArraysOES(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArraysOES( _context, n, arrays );
+  orig.glDeleteVertexArraysOES( orig.glDeleteVertexArraysOES_layer, n, arrays );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDisable(RegalContext *_context, GLenum cap)
+static void REGAL_CALL Dsa_glDisable(Layer *_layer, GLenum cap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glDisable( _context, cap );
+  orig.glDisable( orig.glDisable_layer, cap );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDisableClientState(RegalContext *_context, GLenum cap)
+static void REGAL_CALL Dsa_glDisableClientState(Layer *_layer, GLenum cap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glDisableClientState( _context, cap );
+  orig.glDisableClientState( orig.glDisableClientState_layer, cap );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDisableClientStateIndexedEXT(RegalContext *_context, GLenum array, GLuint index)
+static void REGAL_CALL Dsa_glDisableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
   orig.glDisableClientState( _context, array );
   return;
 
-  orig.glDisableClientStateIndexedEXT( _context, array, index );
+  orig.glDisableClientStateIndexedEXT( orig.glDisableClientStateIndexedEXT_layer, array, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDisableClientStateiEXT(RegalContext *_context, GLenum array, GLuint index)
+static void REGAL_CALL Dsa_glDisableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
   orig.glDisableClientState( _context, array );
   return;
 
-  orig.glDisableClientStateiEXT( _context, array, index );
+  orig.glDisableClientStateiEXT( orig.glDisableClientStateiEXT_layer, array, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDisableIndexedEXT(RegalContext *_context, GLenum target, GLuint index)
+static void REGAL_CALL Dsa_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, index + GL_TEXTURE0 );
   orig.glDisable( _context, target );
   return;
 
-  orig.glDisableIndexedEXT( _context, target, index );
+  orig.glDisableIndexedEXT( orig.glDisableIndexedEXT_layer, target, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDisableVertexArrayAttribEXT(RegalContext *_context, GLuint vaobj, GLenum array)
+static void REGAL_CALL Dsa_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );
   orig.glDisableVertexAttribArray( _context, array );return;
 
-  orig.glDisableVertexArrayAttribEXT( _context, vaobj, array );
+  orig.glDisableVertexArrayAttribEXT( orig.glDisableVertexArrayAttribEXT_layer, vaobj, array );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDisableVertexArrayEXT(RegalContext *_context, GLuint vaobj, GLenum array)
+static void REGAL_CALL Dsa_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );
@@ -944,274 +1011,296 @@ static void REGAL_CALL emuProcInterceptDsa_glDisableVertexArrayEXT(RegalContext 
     orig.glDisableClientState( _context, array );
   }return;
 
-  orig.glDisableVertexArrayEXT( _context, vaobj, array );
+  orig.glDisableVertexArrayEXT( orig.glDisableVertexArrayEXT_layer, vaobj, array );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawArrays(RegalContext *_context, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL Dsa_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArrays( _context, mode, first, count );
+  orig.glDrawArrays( orig.glDrawArrays_layer, mode, first, count );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawArraysEXT(RegalContext *_context, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL Dsa_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysEXT( _context, mode, first, count );
+  orig.glDrawArraysEXT( orig.glDrawArraysEXT_layer, mode, first, count );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawArraysIndirect(RegalContext *_context, GLenum mode, const GLvoid *indirect)
+static void REGAL_CALL Dsa_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysIndirect( _context, mode, indirect );
+  orig.glDrawArraysIndirect( orig.glDrawArraysIndirect_layer, mode, indirect );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawArraysInstanced(RegalContext *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL Dsa_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstanced( _context, mode, start, count, primcount );
+  orig.glDrawArraysInstanced( orig.glDrawArraysInstanced_layer, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawArraysInstancedARB(RegalContext *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL Dsa_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstancedARB( _context, mode, start, count, primcount );
+  orig.glDrawArraysInstancedARB( orig.glDrawArraysInstancedARB_layer, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawArraysInstancedEXT(RegalContext *_context, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL Dsa_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstancedEXT( _context, mode, start, count, primcount );
+  orig.glDrawArraysInstancedEXT( orig.glDrawArraysInstancedEXT_layer, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementArrayAPPLE(RegalContext *_context, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL Dsa_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementArrayAPPLE( _context, mode, first, count );
+  orig.glDrawElementArrayAPPLE( orig.glDrawElementArrayAPPLE_layer, mode, first, count );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementArrayATI(RegalContext *_context, GLenum mode, GLsizei count)
+static void REGAL_CALL Dsa_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementArrayATI( _context, mode, count );
+  orig.glDrawElementArrayATI( orig.glDrawElementArrayATI_layer, mode, count );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElements(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL Dsa_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElements( _context, mode, count, type, indices );
+  orig.glDrawElements( orig.glDrawElements_layer, mode, count, type, indices );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementsBaseVertex(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL Dsa_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsBaseVertex( _context, mode, count, type, indices, basevertex );
+  orig.glDrawElementsBaseVertex( orig.glDrawElementsBaseVertex_layer, mode, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementsIndirect(RegalContext *_context, GLenum mode, GLenum type, const GLvoid *indirect)
+static void REGAL_CALL Dsa_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsIndirect( _context, mode, type, indirect );
+  orig.glDrawElementsIndirect( orig.glDrawElementsIndirect_layer, mode, type, indirect );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstanced(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL Dsa_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstanced( _context, mode, count, type, indices, primcount );
+  orig.glDrawElementsInstanced( orig.glDrawElementsInstanced_layer, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstancedARB(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL Dsa_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedARB( _context, mode, count, type, indices, primcount );
+  orig.glDrawElementsInstancedARB( orig.glDrawElementsInstancedARB_layer, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstancedBaseVertex(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
+static void REGAL_CALL Dsa_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
+  orig.glDrawElementsInstancedBaseVertex( orig.glDrawElementsInstancedBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glDrawElementsInstancedEXT(RegalContext *_context, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL Dsa_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedEXT( _context, mode, count, type, indices, primcount );
+  orig.glDrawElementsInstancedEXT( orig.glDrawElementsInstancedEXT_layer, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glEnable(RegalContext *_context, GLenum cap)
+static void REGAL_CALL Dsa_glEnable(Layer *_layer, GLenum cap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glEnable( _context, cap );
+  orig.glEnable( orig.glEnable_layer, cap );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glEnableClientState(RegalContext *_context, GLenum cap)
+static void REGAL_CALL Dsa_glEnableClientState(Layer *_layer, GLenum cap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glEnableClientState( _context, cap );
+  orig.glEnableClientState( orig.glEnableClientState_layer, cap );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glEnableClientStateIndexedEXT(RegalContext *_context, GLenum array, GLuint index)
+static void REGAL_CALL Dsa_glEnableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
   orig.glEnableClientState( _context, array );
   return;
 
-  orig.glEnableClientStateIndexedEXT( _context, array, index );
+  orig.glEnableClientStateIndexedEXT( orig.glEnableClientStateIndexedEXT_layer, array, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glEnableClientStateiEXT(RegalContext *_context, GLenum array, GLuint index)
+static void REGAL_CALL Dsa_glEnableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, index + GL_TEXTURE0 );
   orig.glEnableClientState( _context, array );
   return;
 
-  orig.glEnableClientStateiEXT( _context, array, index );
+  orig.glEnableClientStateiEXT( orig.glEnableClientStateiEXT_layer, array, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glEnableIndexedEXT(RegalContext *_context, GLenum target, GLuint index)
+static void REGAL_CALL Dsa_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, index + GL_TEXTURE0 );
   orig.glEnable( _context, target );
   return;
 
-  orig.glEnableIndexedEXT( _context, target, index );
+  orig.glEnableIndexedEXT( orig.glEnableIndexedEXT_layer, target, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glEnableVertexArrayAttribEXT(RegalContext *_context, GLuint vaobj, GLenum array)
+static void REGAL_CALL Dsa_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );
   orig.glEnableVertexAttribArray( _context, array );return;
 
-  orig.glEnableVertexArrayAttribEXT( _context, vaobj, array );
+  orig.glEnableVertexArrayAttribEXT( orig.glEnableVertexArrayAttribEXT_layer, vaobj, array );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glEnableVertexArrayEXT(RegalContext *_context, GLuint vaobj, GLenum array)
+static void REGAL_CALL Dsa_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );
@@ -1222,5311 +1311,6138 @@ static void REGAL_CALL emuProcInterceptDsa_glEnableVertexArrayEXT(RegalContext *
     orig.glEnableClientState( _context, array );
   }return;
 
-  orig.glEnableVertexArrayEXT( _context, vaobj, array );
+  orig.glEnableVertexArrayEXT( orig.glEnableVertexArrayEXT_layer, vaobj, array );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFlushMappedBufferRange(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length)
+static void REGAL_CALL Dsa_glFlushMappedBufferRange(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glFlushMappedBufferRange( _context, target, offset, length );
+  orig.glFlushMappedBufferRange( orig.glFlushMappedBufferRange_layer, target, offset, length );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFlushMappedBufferRangeEXT(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length)
+static void REGAL_CALL Dsa_glFlushMappedBufferRangeEXT(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glFlushMappedBufferRangeEXT( _context, target, offset, length );
+  orig.glFlushMappedBufferRangeEXT( orig.glFlushMappedBufferRangeEXT_layer, target, offset, length );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFlushMappedNamedBufferRangeEXT(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr length)
+static void REGAL_CALL Dsa_glFlushMappedNamedBufferRangeEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr length)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   orig.glFlushMappedBufferRange( _context, GL_ARRAY_BUFFER, offset, length );
   return;
 
-  orig.glFlushMappedNamedBufferRangeEXT( _context, buffer, offset, length );
+  orig.glFlushMappedNamedBufferRangeEXT( orig.glFlushMappedNamedBufferRangeEXT_layer, buffer, offset, length );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferDrawBufferEXT(RegalContext *_context, GLuint framebuffer, GLenum mode)
+static void REGAL_CALL Dsa_glFramebufferDrawBufferEXT(Layer *_layer, GLuint framebuffer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glDrawBuffer( _context, mode );
   return;
 
-  orig.glFramebufferDrawBufferEXT( _context, framebuffer, mode );
+  orig.glFramebufferDrawBufferEXT( orig.glFramebufferDrawBufferEXT_layer, framebuffer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferDrawBuffersEXT(RegalContext *_context, GLuint framebuffer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL Dsa_glFramebufferDrawBuffersEXT(Layer *_layer, GLuint framebuffer, GLsizei n, const GLenum *bufs)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glDrawBuffers( _context, n, bufs );
   return;
 
-  orig.glFramebufferDrawBuffersEXT( _context, framebuffer, n, bufs );
+  orig.glFramebufferDrawBuffersEXT( orig.glFramebufferDrawBuffersEXT_layer, framebuffer, n, bufs );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferReadBufferEXT(RegalContext *_context, GLuint framebuffer, GLenum mode)
+static void REGAL_CALL Dsa_glFramebufferReadBufferEXT(Layer *_layer, GLuint framebuffer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glReadBuffer( _context, mode );
   return;
 
-  orig.glFramebufferReadBufferEXT( _context, framebuffer, mode );
+  orig.glFramebufferReadBufferEXT( orig.glFramebufferReadBufferEXT_layer, framebuffer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferRenderbuffer(RegalContext *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glFramebufferRenderbuffer(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferRenderbuffer( _context, target, attachment, renderbuffertarget, renderbuffer );
+  orig.glFramebufferRenderbuffer( orig.glFramebufferRenderbuffer_layer, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferRenderbufferEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glFramebufferRenderbufferEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferRenderbufferEXT( _context, target, attachment, renderbuffertarget, renderbuffer );
+  orig.glFramebufferRenderbufferEXT( orig.glFramebufferRenderbufferEXT_layer, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glFramebufferTexture(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture( _context, target, attachment, texture, level );
+  orig.glFramebufferTexture( orig.glFramebufferTexture_layer, target, attachment, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture1D(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glFramebufferTexture1D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture1D( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture1D( orig.glFramebufferTexture1D_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture1DEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glFramebufferTexture1DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture1DEXT( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture1DEXT( orig.glFramebufferTexture1DEXT_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture2D(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glFramebufferTexture2D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture2D( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture2D( orig.glFramebufferTexture2D_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture2DEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glFramebufferTexture2DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture2DEXT( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture2DEXT( orig.glFramebufferTexture2DEXT_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture3D(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL Dsa_glFramebufferTexture3D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture3D( _context, target, attachment, textarget, texture, level, layer );
+  orig.glFramebufferTexture3D( orig.glFramebufferTexture3D_layer, target, attachment, textarget, texture, level, layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTexture3DEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+static void REGAL_CALL Dsa_glFramebufferTexture3DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture3DEXT( _context, target, attachment, textarget, texture, level, zoffset );
+  orig.glFramebufferTexture3DEXT( orig.glFramebufferTexture3DEXT_layer, target, attachment, textarget, texture, level, zoffset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureARB(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glFramebufferTextureARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureARB( _context, target, attachment, texture, level );
+  orig.glFramebufferTextureARB( orig.glFramebufferTextureARB_layer, target, attachment, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureEXT(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glFramebufferTextureEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureEXT( _context, target, attachment, texture, level );
+  orig.glFramebufferTextureEXT( orig.glFramebufferTextureEXT_layer, target, attachment, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureFace(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL Dsa_glFramebufferTextureFace(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFace( _context, target, attachment, texture, level, face );
+  orig.glFramebufferTextureFace( orig.glFramebufferTextureFace_layer, target, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureFaceARB(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL Dsa_glFramebufferTextureFaceARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFaceARB( _context, target, attachment, texture, level, face );
+  orig.glFramebufferTextureFaceARB( orig.glFramebufferTextureFaceARB_layer, target, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureFaceEXT(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL Dsa_glFramebufferTextureFaceEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFaceEXT( _context, target, attachment, texture, level, face );
+  orig.glFramebufferTextureFaceEXT( orig.glFramebufferTextureFaceEXT_layer, target, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureLayer(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL Dsa_glFramebufferTextureLayer(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayer( _context, target, attachment, texture, level, layer );
+  orig.glFramebufferTextureLayer( orig.glFramebufferTextureLayer_layer, target, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureLayerARB(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL Dsa_glFramebufferTextureLayerARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayerARB( _context, target, attachment, texture, level, layer );
+  orig.glFramebufferTextureLayerARB( orig.glFramebufferTextureLayerARB_layer, target, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glFramebufferTextureLayerEXT(RegalContext *_context, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL Dsa_glFramebufferTextureLayerEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayerEXT( _context, target, attachment, texture, level, layer );
+  orig.glFramebufferTextureLayerEXT( orig.glFramebufferTextureLayerEXT_layer, target, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGenerateMipmap(RegalContext *_context, GLenum target)
+static void REGAL_CALL Dsa_glGenerateMipmap(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGenerateMipmap( _context, target );
+  orig.glGenerateMipmap( orig.glGenerateMipmap_layer, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGenerateMipmapEXT(RegalContext *_context, GLenum target)
+static void REGAL_CALL Dsa_glGenerateMipmapEXT(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGenerateMipmapEXT( _context, target );
+  orig.glGenerateMipmapEXT( orig.glGenerateMipmapEXT_layer, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGenerateMultiTexMipmapEXT(RegalContext *_context, GLenum texunit, GLenum target)
+static void REGAL_CALL Dsa_glGenerateMultiTexMipmapEXT(Layer *_layer, GLenum texunit, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGenerateMipmap( _context, target );
   return;
 
-  orig.glGenerateMultiTexMipmapEXT( _context, texunit, target );
+  orig.glGenerateMultiTexMipmapEXT( orig.glGenerateMultiTexMipmapEXT_layer, texunit, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGenerateTextureMipmapEXT(RegalContext *_context, GLuint texture, GLenum target)
+static void REGAL_CALL Dsa_glGenerateTextureMipmapEXT(Layer *_layer, GLuint texture, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGenerateMipmap( _context, target );
   return;
 
-  orig.glGenerateTextureMipmapEXT( _context, texture, target );
+  orig.glGenerateTextureMipmapEXT( orig.glGenerateTextureMipmapEXT_layer, texture, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetBooleanv(RegalContext *_context, GLenum pname, GLboolean *params)
+static void REGAL_CALL Dsa_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetBooleanv( _context, pname, params );
+  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetBufferParameteriv(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetBufferParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferParameteriv( _context, target, pname, params );
+  orig.glGetBufferParameteriv( orig.glGetBufferParameteriv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetBufferPointerv(RegalContext *_context, GLenum target, GLenum pname, GLvoid **params)
+static void REGAL_CALL Dsa_glGetBufferPointerv(Layer *_layer, GLenum target, GLenum pname, GLvoid **params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferPointerv( _context, target, pname, params );
+  orig.glGetBufferPointerv( orig.glGetBufferPointerv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetBufferSubData(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data)
+static void REGAL_CALL Dsa_glGetBufferSubData(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferSubData( _context, target, offset, size, data );
+  orig.glGetBufferSubData( orig.glGetBufferSubData_layer, target, offset, size, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetCompressedMultiTexImageEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint lod, GLvoid *img)
+static void REGAL_CALL Dsa_glGetCompressedMultiTexImageEXT(Layer *_layer, GLenum texunit, GLenum target, GLint lod, GLvoid *img)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetCompressedTexImage( _context, target, lod, img );
   return;
 
-  orig.glGetCompressedMultiTexImageEXT( _context, texunit, target, lod, img );
+  orig.glGetCompressedMultiTexImageEXT( orig.glGetCompressedMultiTexImageEXT_layer, texunit, target, lod, img );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetCompressedTextureImageEXT(RegalContext *_context, GLuint texture, GLenum target, GLint lod, GLvoid *img)
+static void REGAL_CALL Dsa_glGetCompressedTextureImageEXT(Layer *_layer, GLuint texture, GLenum target, GLint lod, GLvoid *img)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetCompressedTexImage( _context, target, lod, img );
   return;
 
-  orig.glGetCompressedTextureImageEXT( _context, texture, target, lod, img );
+  orig.glGetCompressedTextureImageEXT( orig.glGetCompressedTextureImageEXT_layer, texture, target, lod, img );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetDoubleIndexedvEXT(RegalContext *_context, GLenum target, GLuint index, GLdouble *data)
+static void REGAL_CALL Dsa_glGetDoubleIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if ( _context->dsa->GetIndexedv( _context, target, index, data ) ) {
     return;
   }
 
-  orig.glGetDoubleIndexedvEXT( _context, target, index, data );
+  orig.glGetDoubleIndexedvEXT( orig.glGetDoubleIndexedvEXT_layer, target, index, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetDoublei_v(RegalContext *_context, GLenum target, GLuint index, GLdouble *v)
+static void REGAL_CALL Dsa_glGetDoublei_v(Layer *_layer, GLenum target, GLuint index, GLdouble *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if ( _context->dsa->GetIndexedv( _context, target, index, v ) ) {
     return;
   }
 
-  orig.glGetDoublei_v( _context, target, index, v );
+  orig.glGetDoublei_v( orig.glGetDoublei_v_layer, target, index, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetDoublei_vEXT(RegalContext *_context, GLenum target, GLuint index, GLdouble *data)
+static void REGAL_CALL Dsa_glGetDoublei_vEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if ( _context->dsa->GetIndexedv( _context, target, index, data ) ) {
     return;
   }
 
-  orig.glGetDoublei_vEXT( _context, target, index, data );
+  orig.glGetDoublei_vEXT( orig.glGetDoublei_vEXT_layer, target, index, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetDoublev(RegalContext *_context, GLenum pname, GLdouble *params)
+static void REGAL_CALL Dsa_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetDoublev( _context, pname, params );
+  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetFloatIndexedvEXT(RegalContext *_context, GLenum target, GLuint index, GLfloat *data)
+static void REGAL_CALL Dsa_glGetFloatIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if ( _context->dsa->GetIndexedv( _context, target, index, data ) ) {
     return;
   }
 
-  orig.glGetFloatIndexedvEXT( _context, target, index, data );
+  orig.glGetFloatIndexedvEXT( orig.glGetFloatIndexedvEXT_layer, target, index, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetFloati_v(RegalContext *_context, GLenum target, GLuint index, GLfloat *v)
+static void REGAL_CALL Dsa_glGetFloati_v(Layer *_layer, GLenum target, GLuint index, GLfloat *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if ( _context->dsa->GetIndexedv( _context, target, index, v ) ) {
     return;
   }
 
-  orig.glGetFloati_v( _context, target, index, v );
+  orig.glGetFloati_v( orig.glGetFloati_v_layer, target, index, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetFloati_vEXT(RegalContext *_context, GLenum target, GLuint index, GLfloat *data)
+static void REGAL_CALL Dsa_glGetFloati_vEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if ( _context->dsa->GetIndexedv( _context, target, index, data ) ) {
     return;
   }
 
-  orig.glGetFloati_vEXT( _context, target, index, data );
+  orig.glGetFloati_vEXT( orig.glGetFloati_vEXT_layer, target, index, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetFloatv(RegalContext *_context, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetFloatv( _context, pname, params );
+  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetFramebufferParameterivEXT(RegalContext *_context, GLuint framebuffer, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetFramebufferParameterivEXT(Layer *_layer, GLuint framebuffer, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer );
   orig.glGetIntegerv( _context, pname, params);
   return;
 
-  orig.glGetFramebufferParameterivEXT( _context, framebuffer, pname, params );
+  orig.glGetFramebufferParameterivEXT( orig.glGetFramebufferParameterivEXT_layer, framebuffer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetIntegerv(RegalContext *_context, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetIntegerv( _context, pname, params );
+  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexEnvfvEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexEnvfv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexEnvfvEXT( _context, texunit, target, pname, params );
+  orig.glGetMultiTexEnvfvEXT( orig.glGetMultiTexEnvfvEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexEnvivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexEnviv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexEnvivEXT( _context, texunit, target, pname, params );
+  orig.glGetMultiTexEnvivEXT( orig.glGetMultiTexEnvivEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexGendvEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
+static void REGAL_CALL Dsa_glGetMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexGendv( _context, coord, pname, params );
   return;
 
-  orig.glGetMultiTexGendvEXT( _context, texunit, coord, pname, params );
+  orig.glGetMultiTexGendvEXT( orig.glGetMultiTexGendvEXT_layer, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexGenfvEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexGenfv( _context, coord, pname, params );
   return;
 
-  orig.glGetMultiTexGenfvEXT( _context, texunit, coord, pname, params );
+  orig.glGetMultiTexGenfvEXT( orig.glGetMultiTexGenfvEXT_layer, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexGenivEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexGeniv( _context, coord, pname, params );
   return;
 
-  orig.glGetMultiTexGenivEXT( _context, texunit, coord, pname, params );
+  orig.glGetMultiTexGenivEXT( orig.glGetMultiTexGenivEXT_layer, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexImageEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
+static void REGAL_CALL Dsa_glGetMultiTexImageEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexImage( _context, target, level, format, type, pixels );
   return;
 
-  orig.glGetMultiTexImageEXT( _context, texunit, target, level, format, type, pixels );
+  orig.glGetMultiTexImageEXT( orig.glGetMultiTexImageEXT_layer, texunit, target, level, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexLevelParameterfvEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetMultiTexLevelParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
   return;
 
-  orig.glGetMultiTexLevelParameterfvEXT( _context, texunit, target, level, pname, params );
+  orig.glGetMultiTexLevelParameterfvEXT( orig.glGetMultiTexLevelParameterfvEXT_layer, texunit, target, level, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexLevelParameterivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetMultiTexLevelParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
   return;
 
-  orig.glGetMultiTexLevelParameterivEXT( _context, texunit, target, level, pname, params );
+  orig.glGetMultiTexLevelParameterivEXT( orig.glGetMultiTexLevelParameterivEXT_layer, texunit, target, level, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterIivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetMultiTexParameterIivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterIivEXT( _context, texunit, target, pname, params );
+  orig.glGetMultiTexParameterIivEXT( orig.glGetMultiTexParameterIivEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterIuivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLuint *params)
+static void REGAL_CALL Dsa_glGetMultiTexParameterIuivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterIuivEXT( _context, texunit, target, pname, params );
+  orig.glGetMultiTexParameterIuivEXT( orig.glGetMultiTexParameterIuivEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterfvEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetMultiTexParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexParameterfv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterfvEXT( _context, texunit, target, pname, params );
+  orig.glGetMultiTexParameterfvEXT( orig.glGetMultiTexParameterfvEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetMultiTexParameterivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetMultiTexParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glGetTexParameteriv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterivEXT( _context, texunit, target, pname, params );
+  orig.glGetMultiTexParameterivEXT( orig.glGetMultiTexParameterivEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedBufferParameterivEXT(RegalContext *_context, GLuint buffer, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetNamedBufferParameterivEXT(Layer *_layer, GLuint buffer, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   orig.glGetBufferParameteriv( _context, GL_ARRAY_BUFFER, pname, params );
   return;
 
-  orig.glGetNamedBufferParameterivEXT( _context, buffer, pname, params );
+  orig.glGetNamedBufferParameterivEXT( orig.glGetNamedBufferParameterivEXT_layer, buffer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedBufferPointervEXT(RegalContext *_context, GLuint buffer, GLenum pname, GLvoid **params)
+static void REGAL_CALL Dsa_glGetNamedBufferPointervEXT(Layer *_layer, GLuint buffer, GLenum pname, GLvoid **params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   orig.glGetBufferPointerv( _context, GL_ARRAY_BUFFER, pname, params );
   return;
 
-  orig.glGetNamedBufferPointervEXT( _context, buffer, pname, params );
+  orig.glGetNamedBufferPointervEXT( orig.glGetNamedBufferPointervEXT_layer, buffer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedBufferSubDataEXT(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data)
+static void REGAL_CALL Dsa_glGetNamedBufferSubDataEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   orig.glGetBufferSubData( _context, GL_ARRAY_BUFFER, offset, size, data );
   return;
 
-  orig.glGetNamedBufferSubDataEXT( _context, buffer, offset, size, data );
+  orig.glGetNamedBufferSubDataEXT( orig.glGetNamedBufferSubDataEXT_layer, buffer, offset, size, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedFramebufferAttachmentParameterivEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetNamedFramebufferAttachmentParameterivEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glGetFramebufferAttachmentParameteriv( _context, GL_FRAMEBUFFER, attachment, pname, params );
   return;
 
-  orig.glGetNamedFramebufferAttachmentParameterivEXT( _context, framebuffer, attachment, pname, params );
+  orig.glGetNamedFramebufferAttachmentParameterivEXT( orig.glGetNamedFramebufferAttachmentParameterivEXT_layer, framebuffer, attachment, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterIivEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLint *params)
+static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterIivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glGetProgramLocalParameterIivNV( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterIivEXT( _context, program, target, index, params );
+  orig.glGetNamedProgramLocalParameterIivEXT( orig.glGetNamedProgramLocalParameterIivEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterIuivEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLuint *params)
+static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterIuivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glGetProgramLocalParameterIuivNV( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterIuivEXT( _context, program, target, index, params );
+  orig.glGetNamedProgramLocalParameterIuivEXT( orig.glGetNamedProgramLocalParameterIuivEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterdvEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLdouble *params)
+static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterdvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glGetProgramLocalParameterdvARB( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterdvEXT( _context, program, target, index, params );
+  orig.glGetNamedProgramLocalParameterdvEXT( orig.glGetNamedProgramLocalParameterdvEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramLocalParameterfvEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLfloat *params)
+static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterfvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glGetProgramLocalParameterfvARB( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterfvEXT( _context, program, target, index, params );
+  orig.glGetNamedProgramLocalParameterfvEXT( orig.glGetNamedProgramLocalParameterfvEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramStringEXT(RegalContext *_context, GLuint program, GLenum target, GLenum pname, GLvoid *string)
+static void REGAL_CALL Dsa_glGetNamedProgramStringEXT(Layer *_layer, GLuint program, GLenum target, GLenum pname, GLvoid *string)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glGetProgramStringARB( _context, target, pname, string );
   return;
 
-  orig.glGetNamedProgramStringEXT( _context, program, target, pname, string );
+  orig.glGetNamedProgramStringEXT( orig.glGetNamedProgramStringEXT_layer, program, target, pname, string );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedProgramivEXT(RegalContext *_context, GLuint program, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetNamedProgramivEXT(Layer *_layer, GLuint program, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glGetProgramivARB( _context, target, pname, params );
   return;
 
-  orig.glGetNamedProgramivEXT( _context, program, target, pname, params );
+  orig.glGetNamedProgramivEXT( orig.glGetNamedProgramivEXT_layer, program, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetNamedRenderbufferParameterivEXT(RegalContext *_context, GLuint renderbuffer, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetNamedRenderbufferParameterivEXT(Layer *_layer, GLuint renderbuffer, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
   orig.glGetRenderbufferParameteriv( _context, GL_RENDERBUFFER, pname, params );
   return;
 
-  orig.glGetNamedRenderbufferParameterivEXT( _context, renderbuffer, pname, params );
+  orig.glGetNamedRenderbufferParameterivEXT( orig.glGetNamedRenderbufferParameterivEXT_layer, renderbuffer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetPointerIndexedvEXT(RegalContext *_context, GLenum target, GLuint index, GLvoid **data)
+static void REGAL_CALL Dsa_glGetPointerIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLvoid **data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   // if ( _context->dsa->GetIndexedv( _context, target, index, data ) ) {
   //   return;
   // }
 
-  orig.glGetPointerIndexedvEXT( _context, target, index, data );
+  orig.glGetPointerIndexedvEXT( orig.glGetPointerIndexedvEXT_layer, target, index, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterIivNV(RegalContext *_context, GLenum target, GLuint index, GLint *params)
+static void REGAL_CALL Dsa_glGetProgramEnvParameterIivNV(Layer *_layer, GLenum target, GLuint index, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterIivNV( _context, target, index, params );
+  orig.glGetProgramEnvParameterIivNV( orig.glGetProgramEnvParameterIivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterIuivNV(RegalContext *_context, GLenum target, GLuint index, GLuint *params)
+static void REGAL_CALL Dsa_glGetProgramEnvParameterIuivNV(Layer *_layer, GLenum target, GLuint index, GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterIuivNV( _context, target, index, params );
+  orig.glGetProgramEnvParameterIuivNV( orig.glGetProgramEnvParameterIuivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterdvARB(RegalContext *_context, GLenum target, GLuint index, GLdouble *params)
+static void REGAL_CALL Dsa_glGetProgramEnvParameterdvARB(Layer *_layer, GLenum target, GLuint index, GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterdvARB( _context, target, index, params );
+  orig.glGetProgramEnvParameterdvARB( orig.glGetProgramEnvParameterdvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramEnvParameterfvARB(RegalContext *_context, GLenum target, GLuint index, GLfloat *params)
+static void REGAL_CALL Dsa_glGetProgramEnvParameterfvARB(Layer *_layer, GLenum target, GLuint index, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterfvARB( _context, target, index, params );
+  orig.glGetProgramEnvParameterfvARB( orig.glGetProgramEnvParameterfvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterIivNV(RegalContext *_context, GLenum target, GLuint index, GLint *params)
+static void REGAL_CALL Dsa_glGetProgramLocalParameterIivNV(Layer *_layer, GLenum target, GLuint index, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterIivNV( _context, target, index, params );
+  orig.glGetProgramLocalParameterIivNV( orig.glGetProgramLocalParameterIivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterIuivNV(RegalContext *_context, GLenum target, GLuint index, GLuint *params)
+static void REGAL_CALL Dsa_glGetProgramLocalParameterIuivNV(Layer *_layer, GLenum target, GLuint index, GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterIuivNV( _context, target, index, params );
+  orig.glGetProgramLocalParameterIuivNV( orig.glGetProgramLocalParameterIuivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterdvARB(RegalContext *_context, GLenum target, GLuint index, GLdouble *params)
+static void REGAL_CALL Dsa_glGetProgramLocalParameterdvARB(Layer *_layer, GLenum target, GLuint index, GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterdvARB( _context, target, index, params );
+  orig.glGetProgramLocalParameterdvARB( orig.glGetProgramLocalParameterdvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetProgramLocalParameterfvARB(RegalContext *_context, GLenum target, GLuint index, GLfloat *params)
+static void REGAL_CALL Dsa_glGetProgramLocalParameterfvARB(Layer *_layer, GLenum target, GLuint index, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterfvARB( _context, target, index, params );
+  orig.glGetProgramLocalParameterfvARB( orig.glGetProgramLocalParameterfvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetRenderbufferParameteriv(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetRenderbufferParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glGetRenderbufferParameteriv( _context, target, pname, params );
+  orig.glGetRenderbufferParameteriv( orig.glGetRenderbufferParameteriv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetRenderbufferParameterivEXT(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetRenderbufferParameterivEXT(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glGetRenderbufferParameterivEXT( _context, target, pname, params );
+  orig.glGetRenderbufferParameterivEXT( orig.glGetRenderbufferParameterivEXT_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTexEnvfv(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexEnvfv( _context, target, pname, params );
+  orig.glGetTexEnvfv( orig.glGetTexEnvfv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTexEnviv(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexEnviv( _context, target, pname, params );
+  orig.glGetTexEnviv( orig.glGetTexEnviv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTexParameterfv(RegalContext *_context, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexParameterfv( _context, target, pname, params );
+  orig.glGetTexParameterfv( orig.glGetTexParameterfv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTexParameteriv(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexParameteriv( _context, target, pname, params );
+  orig.glGetTexParameteriv( orig.glGetTexParameteriv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTextureImageEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
+static void REGAL_CALL Dsa_glGetTextureImageEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetTexImage( _context, target, level, format, type, pixels );
   return;
 
-  orig.glGetTextureImageEXT( _context, texture, target, level, format, type, pixels );
+  orig.glGetTextureImageEXT( orig.glGetTextureImageEXT_layer, texture, target, level, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTextureLevelParameterfvEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetTextureLevelParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
   return;
 
-  orig.glGetTextureLevelParameterfvEXT( _context, texture, target, level, pname, params );
+  orig.glGetTextureLevelParameterfvEXT( orig.glGetTextureLevelParameterfvEXT_layer, texture, target, level, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTextureLevelParameterivEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetTextureLevelParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
   return;
 
-  orig.glGetTextureLevelParameterivEXT( _context, texture, target, level, pname, params );
+  orig.glGetTextureLevelParameterivEXT( orig.glGetTextureLevelParameterivEXT_layer, texture, target, level, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterIivEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetTextureParameterIivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterIivEXT( _context, texture, target, pname, params );
+  orig.glGetTextureParameterIivEXT( orig.glGetTextureParameterIivEXT_layer, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterIuivEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLuint *params)
+static void REGAL_CALL Dsa_glGetTextureParameterIuivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterIuivEXT( _context, texture, target, pname, params );
+  orig.glGetTextureParameterIuivEXT( orig.glGetTextureParameterIuivEXT_layer, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterfvEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL Dsa_glGetTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetTexParameterfv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterfvEXT( _context, texture, target, pname, params );
+  orig.glGetTextureParameterfvEXT( orig.glGetTextureParameterfvEXT_layer, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glGetTextureParameterivEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Dsa_glGetTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glGetTexParameteriv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterivEXT( _context, texture, target, pname, params );
+  orig.glGetTextureParameterivEXT( orig.glGetTextureParameterivEXT_layer, texture, target, pname, params );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptDsa_glIsEnabled(RegalContext *_context, GLenum cap)
+static GLboolean REGAL_CALL Dsa_glIsEnabled(Layer *_layer, GLenum cap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreIsEnabled( _context, cap );
 
-  return orig.glIsEnabled( _context, cap );
+  return orig.glIsEnabled( orig.glIsEnabled_layer, cap );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptDsa_glIsEnabledIndexedEXT(RegalContext *_context, GLenum target, GLuint index)
+static GLboolean REGAL_CALL Dsa_glIsEnabledIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   GLboolean ret;
   ret = _context->dsa->IsEnabledIndexed( _context, target, index );
   return ret;
 
-  return orig.glIsEnabledIndexedEXT( _context, target, index );
+  return orig.glIsEnabledIndexedEXT( orig.glIsEnabledIndexedEXT_layer, target, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glLoadIdentity(RegalContext *_context)
+static void REGAL_CALL Dsa_glLoadIdentity(Layer *_layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadIdentity( _context );
+  orig.glLoadIdentity( orig.glLoadIdentity_layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glLoadMatrixd(RegalContext *_context, const GLdouble *m)
+static void REGAL_CALL Dsa_glLoadMatrixd(Layer *_layer, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadMatrixd( _context, m );
+  orig.glLoadMatrixd( orig.glLoadMatrixd_layer, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glLoadMatrixf(RegalContext *_context, const GLfloat *m)
+static void REGAL_CALL Dsa_glLoadMatrixf(Layer *_layer, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadMatrixf( _context, m );
+  orig.glLoadMatrixf( orig.glLoadMatrixf_layer, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glLoadTransposeMatrixd(RegalContext *_context, const GLdouble *m)
+static void REGAL_CALL Dsa_glLoadTransposeMatrixd(Layer *_layer, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadTransposeMatrixd( _context, m );
+  orig.glLoadTransposeMatrixd( orig.glLoadTransposeMatrixd_layer, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glLoadTransposeMatrixf(RegalContext *_context, const GLfloat *m)
+static void REGAL_CALL Dsa_glLoadTransposeMatrixf(Layer *_layer, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadTransposeMatrixf( _context, m );
+  orig.glLoadTransposeMatrixf( orig.glLoadTransposeMatrixf_layer, m );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBuffer(RegalContext *_context, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL Dsa_glMapBuffer(Layer *_layer, GLenum target, GLenum access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBuffer( _context, target, access );
+  return orig.glMapBuffer( orig.glMapBuffer_layer, target, access );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBufferARB(RegalContext *_context, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL Dsa_glMapBufferARB(Layer *_layer, GLenum target, GLenum access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferARB( _context, target, access );
+  return orig.glMapBufferARB( orig.glMapBufferARB_layer, target, access );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBufferRange(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
+static GLvoid *REGAL_CALL Dsa_glMapBufferRange(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferRange( _context, target, offset, length, access );
+  return orig.glMapBufferRange( orig.glMapBufferRange_layer, target, offset, length, access );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapBufferRangeEXT(RegalContext *_context, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
+static GLvoid *REGAL_CALL Dsa_glMapBufferRangeEXT(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferRangeEXT( _context, target, offset, length, access );
+  return orig.glMapBufferRangeEXT( orig.glMapBufferRangeEXT_layer, target, offset, length, access );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapNamedBufferEXT(RegalContext *_context, GLuint buffer, GLenum access)
+static GLvoid *REGAL_CALL Dsa_glMapNamedBufferEXT(Layer *_layer, GLuint buffer, GLenum access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   return orig.glMapBuffer( _context, GL_ARRAY_BUFFER, access );
 
-  return orig.glMapNamedBufferEXT( _context, buffer, access );
+  return orig.glMapNamedBufferEXT( orig.glMapNamedBufferEXT_layer, buffer, access );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptDsa_glMapNamedBufferRangeEXT(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access)
+static GLvoid *REGAL_CALL Dsa_glMapNamedBufferRangeEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   return orig.glMapBufferRange( _context, GL_ARRAY_BUFFER, offset, length, access );
 
-  return orig.glMapNamedBufferRangeEXT( _context, buffer, offset, length, access );
+  return orig.glMapNamedBufferRangeEXT( orig.glMapNamedBufferRangeEXT_layer, buffer, offset, length, access );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixFrustumEXT(RegalContext *_context, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL Dsa_glMatrixFrustumEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glFrustum( _context, left, right, bottom, top, zNear, zFar);
   return;
 
-  orig.glMatrixFrustumEXT( _context, mode, left, right, bottom, top, zNear, zFar );
+  orig.glMatrixFrustumEXT( orig.glMatrixFrustumEXT_layer, mode, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadIdentityEXT(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Dsa_glMatrixLoadIdentityEXT(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glLoadIdentity( _context );
   return;
 
-  orig.glMatrixLoadIdentityEXT( _context, mode );
+  orig.glMatrixLoadIdentityEXT( orig.glMatrixLoadIdentityEXT_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadTransposedEXT(RegalContext *_context, GLenum mode, const GLdouble *m)
+static void REGAL_CALL Dsa_glMatrixLoadTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glLoadTransposeMatrixd( _context, m);
   return;
 
-  orig.glMatrixLoadTransposedEXT( _context, mode, m );
+  orig.glMatrixLoadTransposedEXT( orig.glMatrixLoadTransposedEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadTransposefEXT(RegalContext *_context, GLenum mode, const GLfloat *m)
+static void REGAL_CALL Dsa_glMatrixLoadTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glLoadTransposeMatrixf( _context, m);
   return;
 
-  orig.glMatrixLoadTransposefEXT( _context, mode, m );
+  orig.glMatrixLoadTransposefEXT( orig.glMatrixLoadTransposefEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixLoaddEXT(RegalContext *_context, GLenum mode, const GLdouble *m)
+static void REGAL_CALL Dsa_glMatrixLoaddEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glLoadMatrixd( _context, m);
   return;
 
-  orig.glMatrixLoaddEXT( _context, mode, m );
+  orig.glMatrixLoaddEXT( orig.glMatrixLoaddEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixLoadfEXT(RegalContext *_context, GLenum mode, const GLfloat *m)
+static void REGAL_CALL Dsa_glMatrixLoadfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glLoadMatrixf( _context, m);
   return;
 
-  orig.glMatrixLoadfEXT( _context, mode, m );
+  orig.glMatrixLoadfEXT( orig.glMatrixLoadfEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixMode(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Dsa_glMatrixMode(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if (_context->dsa->ShadowMatrixMode(mode)) {
     return;
   }
 
-  orig.glMatrixMode( _context, mode );
+  orig.glMatrixMode( orig.glMatrixMode_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixMultTransposedEXT(RegalContext *_context, GLenum mode, const GLdouble *m)
+static void REGAL_CALL Dsa_glMatrixMultTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glMultTransposeMatrixd( _context, m);
   return;
 
-  orig.glMatrixMultTransposedEXT( _context, mode, m );
+  orig.glMatrixMultTransposedEXT( orig.glMatrixMultTransposedEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixMultTransposefEXT(RegalContext *_context, GLenum mode, const GLfloat *m)
+static void REGAL_CALL Dsa_glMatrixMultTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glMultTransposeMatrixf( _context, m);
   return;
 
-  orig.glMatrixMultTransposefEXT( _context, mode, m );
+  orig.glMatrixMultTransposefEXT( orig.glMatrixMultTransposefEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixMultdEXT(RegalContext *_context, GLenum mode, const GLdouble *m)
+static void REGAL_CALL Dsa_glMatrixMultdEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glMultMatrixd( _context, m);
   return;
 
-  orig.glMatrixMultdEXT( _context, mode, m );
+  orig.glMatrixMultdEXT( orig.glMatrixMultdEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixMultfEXT(RegalContext *_context, GLenum mode, const GLfloat *m)
+static void REGAL_CALL Dsa_glMatrixMultfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glMultMatrixf( _context, m);
   return;
 
-  orig.glMatrixMultfEXT( _context, mode, m );
+  orig.glMatrixMultfEXT( orig.glMatrixMultfEXT_layer, mode, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixOrthoEXT(RegalContext *_context, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL Dsa_glMatrixOrthoEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glOrtho( _context, left, right, bottom, top, zNear, zFar);
   return;
 
-  orig.glMatrixOrthoEXT( _context, mode, left, right, bottom, top, zNear, zFar );
+  orig.glMatrixOrthoEXT( orig.glMatrixOrthoEXT_layer, mode, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixPopEXT(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Dsa_glMatrixPopEXT(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glPopMatrix( _context );
   return;
 
-  orig.glMatrixPopEXT( _context, mode );
+  orig.glMatrixPopEXT( orig.glMatrixPopEXT_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixPushEXT(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Dsa_glMatrixPushEXT(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glPushMatrix( _context );
   return;
 
-  orig.glMatrixPushEXT( _context, mode );
+  orig.glMatrixPushEXT( orig.glMatrixPushEXT_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixRotatedEXT(RegalContext *_context, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glMatrixRotatedEXT(Layer *_layer, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glRotated( _context, angle, x, y, z);
   return;
 
-  orig.glMatrixRotatedEXT( _context, mode, angle, x, y, z );
+  orig.glMatrixRotatedEXT( orig.glMatrixRotatedEXT_layer, mode, angle, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixRotatefEXT(RegalContext *_context, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Dsa_glMatrixRotatefEXT(Layer *_layer, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glRotatef( _context, angle, x, y, z);
   return;
 
-  orig.glMatrixRotatefEXT( _context, mode, angle, x, y, z );
+  orig.glMatrixRotatefEXT( orig.glMatrixRotatefEXT_layer, mode, angle, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixScaledEXT(RegalContext *_context, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glMatrixScaledEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glScaled( _context, x, y, z);
   return;
 
-  orig.glMatrixScaledEXT( _context, mode, x, y, z );
+  orig.glMatrixScaledEXT( orig.glMatrixScaledEXT_layer, mode, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixScalefEXT(RegalContext *_context, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Dsa_glMatrixScalefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glScalef( _context, x, y, z);
   return;
 
-  orig.glMatrixScalefEXT( _context, mode, x, y, z );
+  orig.glMatrixScalefEXT( orig.glMatrixScalefEXT_layer, mode, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixTranslatedEXT(RegalContext *_context, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glMatrixTranslatedEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glTranslated( _context, x, y, z);
   return;
 
-  orig.glMatrixTranslatedEXT( _context, mode, x, y, z );
+  orig.glMatrixTranslatedEXT( orig.glMatrixTranslatedEXT_layer, mode, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMatrixTranslatefEXT(RegalContext *_context, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Dsa_glMatrixTranslatefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaMatrixMode( _context, mode );
   orig.glTranslatef( _context, x, y, z);
   return;
 
-  orig.glMatrixTranslatefEXT( _context, mode, x, y, z );
+  orig.glMatrixTranslatefEXT( orig.glMatrixTranslatefEXT_layer, mode, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultMatrixd(RegalContext *_context, const GLdouble *m)
+static void REGAL_CALL Dsa_glMultMatrixd(Layer *_layer, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultMatrixd( _context, m );
+  orig.glMultMatrixd( orig.glMultMatrixd_layer, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultMatrixf(RegalContext *_context, const GLfloat *m)
+static void REGAL_CALL Dsa_glMultMatrixf(Layer *_layer, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultMatrixf( _context, m );
+  orig.glMultMatrixf( orig.glMultMatrixf_layer, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultTransposeMatrixd(RegalContext *_context, const GLdouble *m)
+static void REGAL_CALL Dsa_glMultTransposeMatrixd(Layer *_layer, const GLdouble *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultTransposeMatrixd( _context, m );
+  orig.glMultTransposeMatrixd( orig.glMultTransposeMatrixd_layer, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultTransposeMatrixf(RegalContext *_context, const GLfloat *m)
+static void REGAL_CALL Dsa_glMultTransposeMatrixf(Layer *_layer, const GLfloat *m)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultTransposeMatrixf( _context, m );
+  orig.glMultTransposeMatrixf( orig.glMultTransposeMatrixf_layer, m );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArrays(RegalContext *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL Dsa_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArrays( _context, mode, first, count, primcount );
+  orig.glMultiDrawArrays( orig.glMultiDrawArrays_layer, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArraysEXT(RegalContext *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL Dsa_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysEXT( _context, mode, first, count, primcount );
+  orig.glMultiDrawArraysEXT( orig.glMultiDrawArraysEXT_layer, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArraysIndirect(RegalContext *_context, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL Dsa_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysIndirect( _context, mode, indirect, primcount, stride );
+  orig.glMultiDrawArraysIndirect( orig.glMultiDrawArraysIndirect_layer, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawArraysIndirectAMD(RegalContext *_context, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL Dsa_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysIndirectAMD( _context, mode, indirect, primcount, stride );
+  orig.glMultiDrawArraysIndirectAMD( orig.glMultiDrawArraysIndirectAMD_layer, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementArrayAPPLE(RegalContext *_context, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL Dsa_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementArrayAPPLE( _context, mode, first, count, primcount );
+  orig.glMultiDrawElementArrayAPPLE( orig.glMultiDrawElementArrayAPPLE_layer, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElements(RegalContext *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
+static void REGAL_CALL Dsa_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElements( _context, mode, count, type, indices, primcount );
+  orig.glMultiDrawElements( orig.glMultiDrawElements_layer, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsBaseVertex(RegalContext *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
+static void REGAL_CALL Dsa_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsBaseVertex( _context, mode, count, type, indices, primcount, basevertex );
+  orig.glMultiDrawElementsBaseVertex( orig.glMultiDrawElementsBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsEXT(RegalContext *_context, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
+static void REGAL_CALL Dsa_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsEXT( _context, mode, count, type, indices, primcount );
+  orig.glMultiDrawElementsEXT( orig.glMultiDrawElementsEXT_layer, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsIndirect(RegalContext *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL Dsa_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsIndirect( _context, mode, type, indirect, primcount, stride );
+  orig.glMultiDrawElementsIndirect( orig.glMultiDrawElementsIndirect_layer, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiDrawElementsIndirectAMD(RegalContext *_context, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL Dsa_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsIndirectAMD( _context, mode, type, indirect, primcount, stride );
+  orig.glMultiDrawElementsIndirectAMD( orig.glMultiDrawElementsIndirectAMD_layer, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexBufferEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer)
+static void REGAL_CALL Dsa_glMultiTexBufferEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexBuffer( _context, target, internalformat, buffer );
   return;
 
-  orig.glMultiTexBufferEXT( _context, texunit, target, internalformat, buffer );
+  orig.glMultiTexBufferEXT( orig.glMultiTexBufferEXT_layer, texunit, target, internalformat, buffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexCoordPointerEXT(RegalContext *_context, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL Dsa_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaClientActiveTexture( _context, texunit );
   orig.glTexCoordPointer( _context, size, type, stride, pointer );
   return;
 
-  orig.glMultiTexCoordPointerEXT( _context, texunit, size, type, stride, pointer );
+  orig.glMultiTexCoordPointerEXT( orig.glMultiTexCoordPointerEXT_layer, texunit, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnvfEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL Dsa_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexEnvf( _context, target, pname, param );
   return;
 
-  orig.glMultiTexEnvfEXT( _context, texunit, target, pname, param );
+  orig.glMultiTexEnvfEXT( orig.glMultiTexEnvfEXT_layer, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnvfvEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL Dsa_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexEnvfv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexEnvfvEXT( _context, texunit, target, pname, params );
+  orig.glMultiTexEnvfvEXT( orig.glMultiTexEnvfvEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnviEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL Dsa_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexEnvi( _context, target, pname, param );
   return;
 
-  orig.glMultiTexEnviEXT( _context, texunit, target, pname, param );
+  orig.glMultiTexEnviEXT( orig.glMultiTexEnviEXT_layer, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexEnvivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL Dsa_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexEnviv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexEnvivEXT( _context, texunit, target, pname, params );
+  orig.glMultiTexEnvivEXT( orig.glMultiTexEnvivEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexGendEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLdouble param)
+static void REGAL_CALL Dsa_glMultiTexGendEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexGend( _context, coord, pname, param );
   return;
 
-  orig.glMultiTexGendEXT( _context, texunit, coord, pname, param );
+  orig.glMultiTexGendEXT( orig.glMultiTexGendEXT_layer, texunit, coord, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexGendvEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params)
+static void REGAL_CALL Dsa_glMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexGendv( _context, coord, pname, params );
   return;
 
-  orig.glMultiTexGendvEXT( _context, texunit, coord, pname, params );
+  orig.glMultiTexGendvEXT( orig.glMultiTexGendvEXT_layer, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexGenfEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLfloat param)
+static void REGAL_CALL Dsa_glMultiTexGenfEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexGenf( _context, coord, pname, param );
   return;
 
-  orig.glMultiTexGenfEXT( _context, texunit, coord, pname, param );
+  orig.glMultiTexGenfEXT( orig.glMultiTexGenfEXT_layer, texunit, coord, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexGenfvEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params)
+static void REGAL_CALL Dsa_glMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexGenfv( _context, coord, pname, params );
   return;
 
-  orig.glMultiTexGenfvEXT( _context, texunit, coord, pname, params );
+  orig.glMultiTexGenfvEXT( orig.glMultiTexGenfvEXT_layer, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexGeniEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, GLint param)
+static void REGAL_CALL Dsa_glMultiTexGeniEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexGeni( _context, coord, pname, param );
   return;
 
-  orig.glMultiTexGeniEXT( _context, texunit, coord, pname, param );
+  orig.glMultiTexGeniEXT( orig.glMultiTexGeniEXT_layer, texunit, coord, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexGenivEXT(RegalContext *_context, GLenum texunit, GLenum coord, GLenum pname, const GLint *params)
+static void REGAL_CALL Dsa_glMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexGeniv( _context, coord, pname, params );
   return;
 
-  orig.glMultiTexGenivEXT( _context, texunit, coord, pname, params );
+  orig.glMultiTexGenivEXT( orig.glMultiTexGenivEXT_layer, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexImage1DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
   return;
 
-  orig.glMultiTexImage1DEXT( _context, texunit, target, level, internalformat, width, border, format, type, pixels );
+  orig.glMultiTexImage1DEXT( orig.glMultiTexImage1DEXT_layer, texunit, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexImage2DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
   return;
 
-  orig.glMultiTexImage2DEXT( _context, texunit, target, level, internalformat, width, height, border, format, type, pixels );
+  orig.glMultiTexImage2DEXT( orig.glMultiTexImage2DEXT_layer, texunit, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexImage3DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
   return;
 
-  orig.glMultiTexImage3DEXT( _context, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  orig.glMultiTexImage3DEXT( orig.glMultiTexImage3DEXT_layer, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterIivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL Dsa_glMultiTexParameterIivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexParameterIivEXT( _context, texunit, target, pname, params );
+  orig.glMultiTexParameterIivEXT( orig.glMultiTexParameterIivEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterIuivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLuint *params)
+static void REGAL_CALL Dsa_glMultiTexParameterIuivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexParameterIuivEXT( _context, texunit, target, pname, params );
+  orig.glMultiTexParameterIuivEXT( orig.glMultiTexParameterIuivEXT_layer, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterfEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL Dsa_glMultiTexParameterfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexParameterf( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameterfEXT( _context, texunit, target, pname, param );
+  orig.glMultiTexParameterfEXT( orig.glMultiTexParameterfEXT_layer, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterfvEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLfloat *param)
+static void REGAL_CALL Dsa_glMultiTexParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexParameterfv( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameterfvEXT( _context, texunit, target, pname, param );
+  orig.glMultiTexParameterfvEXT( orig.glMultiTexParameterfvEXT_layer, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameteriEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL Dsa_glMultiTexParameteriEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexParameteri( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameteriEXT( _context, texunit, target, pname, param );
+  orig.glMultiTexParameteriEXT( orig.glMultiTexParameteriEXT_layer, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexParameterivEXT(RegalContext *_context, GLenum texunit, GLenum target, GLenum pname, const GLint *param)
+static void REGAL_CALL Dsa_glMultiTexParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexParameteriv( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameterivEXT( _context, texunit, target, pname, param );
+  orig.glMultiTexParameterivEXT( orig.glMultiTexParameterivEXT_layer, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexRenderbufferEXT(RegalContext *_context, GLenum texunit, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glMultiTexRenderbufferEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexRenderbufferNV( _context, target, renderbuffer );
   return;
 
-  orig.glMultiTexRenderbufferEXT( _context, texunit, target, renderbuffer );
+  orig.glMultiTexRenderbufferEXT( orig.glMultiTexRenderbufferEXT_layer, texunit, target, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexSubImage1DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexSubImage1D( _context, target, level, xoffset, width, format, type, pixels );
   return;
 
-  orig.glMultiTexSubImage1DEXT( _context, texunit, target, level, xoffset, width, format, type, pixels );
+  orig.glMultiTexSubImage1DEXT( orig.glMultiTexSubImage1DEXT_layer, texunit, target, level, xoffset, width, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexSubImage2DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
   return;
 
-  orig.glMultiTexSubImage2DEXT( _context, texunit, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  orig.glMultiTexSubImage2DEXT( orig.glMultiTexSubImage2DEXT_layer, texunit, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glMultiTexSubImage3DEXT(RegalContext *_context, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaActiveTexture( _context, texunit );
   orig.glTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
   return;
 
-  orig.glMultiTexSubImage3DEXT( _context, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+  orig.glMultiTexSubImage3DEXT( orig.glMultiTexSubImage3DEXT_layer, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedBufferDataEXT(RegalContext *_context, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage)
+static void REGAL_CALL Dsa_glNamedBufferDataEXT(Layer *_layer, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   orig.glBufferData( _context, GL_ARRAY_BUFFER, size, data, usage );
   return;
 
-  orig.glNamedBufferDataEXT( _context, buffer, size, data, usage );
+  orig.glNamedBufferDataEXT( orig.glNamedBufferDataEXT_layer, buffer, size, data, usage );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedBufferSubDataEXT(RegalContext *_context, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
+static void REGAL_CALL Dsa_glNamedBufferSubDataEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   orig.glBufferSubData( _context, GL_ARRAY_BUFFER, offset, size, data );
   return;
 
-  orig.glNamedBufferSubDataEXT( _context, buffer, offset, size, data );
+  orig.glNamedBufferSubDataEXT( orig.glNamedBufferSubDataEXT_layer, buffer, offset, size, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedCopyBufferSubDataEXT(RegalContext *_context, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
+static void REGAL_CALL Dsa_glNamedCopyBufferSubDataEXT(Layer *_layer, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, readBuffer);
   orig.glCopyBufferSubData( _context, GL_ARRAY_BUFFER, writeBuffer, readOffset, writeOffset, size );
   return;
 
-  orig.glNamedCopyBufferSubDataEXT( _context, readBuffer, writeBuffer, readOffset, writeOffset, size );
+  orig.glNamedCopyBufferSubDataEXT( orig.glNamedCopyBufferSubDataEXT_layer, readBuffer, writeBuffer, readOffset, writeOffset, size );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferRenderbufferEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glNamedFramebufferRenderbufferEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glFramebufferRenderbuffer( _context, GL_FRAMEBUFFER, attachment, renderbuffertarget, renderbuffer );
   return;
 
-  orig.glNamedFramebufferRenderbufferEXT( _context, framebuffer, attachment, renderbuffertarget, renderbuffer );
+  orig.glNamedFramebufferRenderbufferEXT( orig.glNamedFramebufferRenderbufferEXT_layer, framebuffer, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTexture1DEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glNamedFramebufferTexture1DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glFramebufferTexture1D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level );
   return;
 
-  orig.glNamedFramebufferTexture1DEXT( _context, framebuffer, attachment, textarget, texture, level );
+  orig.glNamedFramebufferTexture1DEXT( orig.glNamedFramebufferTexture1DEXT_layer, framebuffer, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTexture2DEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glNamedFramebufferTexture2DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glFramebufferTexture2D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level );
   return;
 
-  orig.glNamedFramebufferTexture2DEXT( _context, framebuffer, attachment, textarget, texture, level );
+  orig.glNamedFramebufferTexture2DEXT( orig.glNamedFramebufferTexture2DEXT_layer, framebuffer, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTexture3DEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+static void REGAL_CALL Dsa_glNamedFramebufferTexture3DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glFramebufferTexture3D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level, zoffset );
   return;
 
-  orig.glNamedFramebufferTexture3DEXT( _context, framebuffer, attachment, textarget, texture, level, zoffset );
+  orig.glNamedFramebufferTexture3DEXT( orig.glNamedFramebufferTexture3DEXT_layer, framebuffer, attachment, textarget, texture, level, zoffset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTextureEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL Dsa_glNamedFramebufferTextureEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glFramebufferTexture( _context, GL_FRAMEBUFFER, attachment, texture, level );
   return;
 
-  orig.glNamedFramebufferTextureEXT( _context, framebuffer, attachment, texture, level );
+  orig.glNamedFramebufferTextureEXT( orig.glNamedFramebufferTextureEXT_layer, framebuffer, attachment, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTextureFaceEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL Dsa_glNamedFramebufferTextureFaceEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glFramebufferTextureFaceARB( _context, GL_FRAMEBUFFER, attachment, texture, level, face );
   return;
 
-  orig.glNamedFramebufferTextureFaceEXT( _context, framebuffer, attachment, texture, level, face );
+  orig.glNamedFramebufferTextureFaceEXT( orig.glNamedFramebufferTextureFaceEXT_layer, framebuffer, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedFramebufferTextureLayerEXT(RegalContext *_context, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL Dsa_glNamedFramebufferTextureLayerEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   orig.glFramebufferTextureLayer( _context, GL_FRAMEBUFFER, attachment, texture, level, layer );
   return;
 
-  orig.glNamedFramebufferTextureLayerEXT( _context, framebuffer, attachment, texture, level, layer );
+  orig.glNamedFramebufferTextureLayerEXT( orig.glNamedFramebufferTextureLayerEXT_layer, framebuffer, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4dEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameter4dEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameter4dARB( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameter4dEXT( _context, program, target, index, x, y, z, w );
+  orig.glNamedProgramLocalParameter4dEXT( orig.glNamedProgramLocalParameter4dEXT_layer, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4dvEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLdouble *params)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameter4dvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameter4dvARB( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameter4dvEXT( _context, program, target, index, params );
+  orig.glNamedProgramLocalParameter4dvEXT( orig.glNamedProgramLocalParameter4dvEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4fEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameter4fEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameter4fARB( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameter4fEXT( _context, program, target, index, x, y, z, w );
+  orig.glNamedProgramLocalParameter4fEXT( orig.glNamedProgramLocalParameter4fEXT_layer, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameter4fvEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLfloat *params)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameter4fvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameter4fvARB( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameter4fvEXT( _context, program, target, index, params );
+  orig.glNamedProgramLocalParameter4fvEXT( orig.glNamedProgramLocalParameter4fvEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4iEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4iEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameterI4iNV( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameterI4iEXT( _context, program, target, index, x, y, z, w );
+  orig.glNamedProgramLocalParameterI4iEXT( orig.glNamedProgramLocalParameterI4iEXT_layer, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4ivEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLint *params)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4ivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameterI4ivNV( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameterI4ivEXT( _context, program, target, index, params );
+  orig.glNamedProgramLocalParameterI4ivEXT( orig.glNamedProgramLocalParameterI4ivEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4uiEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4uiEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameterI4uiNV( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameterI4uiEXT( _context, program, target, index, x, y, z, w );
+  orig.glNamedProgramLocalParameterI4uiEXT( orig.glNamedProgramLocalParameterI4uiEXT_layer, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameterI4uivEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, const GLuint *params)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4uivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameterI4uivNV( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameterI4uivEXT( _context, program, target, index, params );
+  orig.glNamedProgramLocalParameterI4uivEXT( orig.glNamedProgramLocalParameterI4uivEXT_layer, program, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParameters4fvEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
+static void REGAL_CALL Dsa_glNamedProgramLocalParameters4fvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParameters4fvEXT( _context, target, index, count, params );
   return;
 
-  orig.glNamedProgramLocalParameters4fvEXT( _context, program, target, index, count, params );
+  orig.glNamedProgramLocalParameters4fvEXT( orig.glNamedProgramLocalParameters4fvEXT_layer, program, target, index, count, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParametersI4ivEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params)
+static void REGAL_CALL Dsa_glNamedProgramLocalParametersI4ivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParametersI4ivNV( _context, target, index, count, params );
   return;
 
-  orig.glNamedProgramLocalParametersI4ivEXT( _context, program, target, index, count, params );
+  orig.glNamedProgramLocalParametersI4ivEXT( orig.glNamedProgramLocalParametersI4ivEXT_layer, program, target, index, count, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramLocalParametersI4uivEXT(RegalContext *_context, GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params)
+static void REGAL_CALL Dsa_glNamedProgramLocalParametersI4uivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramLocalParametersI4uivNV( _context, target, index, count, params );
   return;
 
-  orig.glNamedProgramLocalParametersI4uivEXT( _context, program, target, index, count, params );
+  orig.glNamedProgramLocalParametersI4uivEXT( orig.glNamedProgramLocalParametersI4uivEXT_layer, program, target, index, count, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedProgramStringEXT(RegalContext *_context, GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
+static void REGAL_CALL Dsa_glNamedProgramStringEXT(Layer *_layer, GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaAsmProgram( _context, target, program);
   orig.glProgramStringARB( _context, target, format, len, string );
   return;
 
-  orig.glNamedProgramStringEXT( _context, program, target, format, len, string );
+  orig.glNamedProgramStringEXT( orig.glNamedProgramStringEXT_layer, program, target, format, len, string );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedRenderbufferStorageEXT(RegalContext *_context, GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glNamedRenderbufferStorageEXT(Layer *_layer, GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
   orig.glRenderbufferStorage( _context, GL_RENDERBUFFER, internalformat, width, height );
   return;
 
-  orig.glNamedRenderbufferStorageEXT( _context, renderbuffer, internalformat, width, height );
+  orig.glNamedRenderbufferStorageEXT( orig.glNamedRenderbufferStorageEXT_layer, renderbuffer, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedRenderbufferStorageMultisampleCoverageEXT(RegalContext *_context, GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glNamedRenderbufferStorageMultisampleCoverageEXT(Layer *_layer, GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
   orig.glRenderbufferStorageMultisampleCoverageNV( _context, GL_RENDERBUFFER, coverageSamples, colorSamples, internalformat, width, height );
   return;
 
-  orig.glNamedRenderbufferStorageMultisampleCoverageEXT( _context, renderbuffer, coverageSamples, colorSamples, internalformat, width, height );
+  orig.glNamedRenderbufferStorageMultisampleCoverageEXT( orig.glNamedRenderbufferStorageMultisampleCoverageEXT_layer, renderbuffer, coverageSamples, colorSamples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNamedRenderbufferStorageMultisampleEXT(RegalContext *_context, GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glNamedRenderbufferStorageMultisampleEXT(Layer *_layer, GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaRenderbuffer( _context, GL_RENDERBUFFER, renderbuffer);
   orig.glRenderbufferStorageMultisample( _context, GL_RENDERBUFFER, samples, internalformat, width, height );
   return;
 
-  orig.glNamedRenderbufferStorageMultisampleEXT( _context, renderbuffer, samples, internalformat, width, height );
+  orig.glNamedRenderbufferStorageMultisampleEXT( orig.glNamedRenderbufferStorageMultisampleEXT_layer, renderbuffer, samples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glNormalPointer(RegalContext *_context, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL Dsa_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glNormalPointer( _context, type, stride, pointer );
+  orig.glNormalPointer( orig.glNormalPointer_layer, type, stride, pointer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glPopMatrix(RegalContext *_context)
+static void REGAL_CALL Dsa_glPopMatrix(Layer *_layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glPopMatrix( _context );
+  orig.glPopMatrix( orig.glPopMatrix_layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4dARB(RegalContext *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL Dsa_glProgramEnvParameter4dARB(Layer *_layer, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4dARB( _context, target, index, x, y, z, w );
+  orig.glProgramEnvParameter4dARB( orig.glProgramEnvParameter4dARB_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4dvARB(RegalContext *_context, GLenum target, GLuint index, const GLdouble *params)
+static void REGAL_CALL Dsa_glProgramEnvParameter4dvARB(Layer *_layer, GLenum target, GLuint index, const GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4dvARB( _context, target, index, params );
+  orig.glProgramEnvParameter4dvARB( orig.glProgramEnvParameter4dvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4fARB(RegalContext *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL Dsa_glProgramEnvParameter4fARB(Layer *_layer, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4fARB( _context, target, index, x, y, z, w );
+  orig.glProgramEnvParameter4fARB( orig.glProgramEnvParameter4fARB_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameter4fvARB(RegalContext *_context, GLenum target, GLuint index, const GLfloat *params)
+static void REGAL_CALL Dsa_glProgramEnvParameter4fvARB(Layer *_layer, GLenum target, GLuint index, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4fvARB( _context, target, index, params );
+  orig.glProgramEnvParameter4fvARB( orig.glProgramEnvParameter4fvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4iNV(RegalContext *_context, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL Dsa_glProgramEnvParameterI4iNV(Layer *_layer, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4iNV( _context, target, index, x, y, z, w );
+  orig.glProgramEnvParameterI4iNV( orig.glProgramEnvParameterI4iNV_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4ivNV(RegalContext *_context, GLenum target, GLuint index, const GLint *params)
+static void REGAL_CALL Dsa_glProgramEnvParameterI4ivNV(Layer *_layer, GLenum target, GLuint index, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4ivNV( _context, target, index, params );
+  orig.glProgramEnvParameterI4ivNV( orig.glProgramEnvParameterI4ivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4uiNV(RegalContext *_context, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+static void REGAL_CALL Dsa_glProgramEnvParameterI4uiNV(Layer *_layer, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4uiNV( _context, target, index, x, y, z, w );
+  orig.glProgramEnvParameterI4uiNV( orig.glProgramEnvParameterI4uiNV_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParameterI4uivNV(RegalContext *_context, GLenum target, GLuint index, const GLuint *params)
+static void REGAL_CALL Dsa_glProgramEnvParameterI4uivNV(Layer *_layer, GLenum target, GLuint index, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4uivNV( _context, target, index, params );
+  orig.glProgramEnvParameterI4uivNV( orig.glProgramEnvParameterI4uivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParametersI4ivNV(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLint *params)
+static void REGAL_CALL Dsa_glProgramEnvParametersI4ivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParametersI4ivNV( _context, target, index, count, params );
+  orig.glProgramEnvParametersI4ivNV( orig.glProgramEnvParametersI4ivNV_layer, target, index, count, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramEnvParametersI4uivNV(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLuint *params)
+static void REGAL_CALL Dsa_glProgramEnvParametersI4uivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParametersI4uivNV( _context, target, index, count, params );
+  orig.glProgramEnvParametersI4uivNV( orig.glProgramEnvParametersI4uivNV_layer, target, index, count, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4dARB(RegalContext *_context, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL Dsa_glProgramLocalParameter4dARB(Layer *_layer, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4dARB( _context, target, index, x, y, z, w );
+  orig.glProgramLocalParameter4dARB( orig.glProgramLocalParameter4dARB_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4dvARB(RegalContext *_context, GLenum target, GLuint index, const GLdouble *params)
+static void REGAL_CALL Dsa_glProgramLocalParameter4dvARB(Layer *_layer, GLenum target, GLuint index, const GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4dvARB( _context, target, index, params );
+  orig.glProgramLocalParameter4dvARB( orig.glProgramLocalParameter4dvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4fARB(RegalContext *_context, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL Dsa_glProgramLocalParameter4fARB(Layer *_layer, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4fARB( _context, target, index, x, y, z, w );
+  orig.glProgramLocalParameter4fARB( orig.glProgramLocalParameter4fARB_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameter4fvARB(RegalContext *_context, GLenum target, GLuint index, const GLfloat *params)
+static void REGAL_CALL Dsa_glProgramLocalParameter4fvARB(Layer *_layer, GLenum target, GLuint index, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4fvARB( _context, target, index, params );
+  orig.glProgramLocalParameter4fvARB( orig.glProgramLocalParameter4fvARB_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4iNV(RegalContext *_context, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL Dsa_glProgramLocalParameterI4iNV(Layer *_layer, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4iNV( _context, target, index, x, y, z, w );
+  orig.glProgramLocalParameterI4iNV( orig.glProgramLocalParameterI4iNV_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4ivNV(RegalContext *_context, GLenum target, GLuint index, const GLint *params)
+static void REGAL_CALL Dsa_glProgramLocalParameterI4ivNV(Layer *_layer, GLenum target, GLuint index, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4ivNV( _context, target, index, params );
+  orig.glProgramLocalParameterI4ivNV( orig.glProgramLocalParameterI4ivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4uiNV(RegalContext *_context, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+static void REGAL_CALL Dsa_glProgramLocalParameterI4uiNV(Layer *_layer, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4uiNV( _context, target, index, x, y, z, w );
+  orig.glProgramLocalParameterI4uiNV( orig.glProgramLocalParameterI4uiNV_layer, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParameterI4uivNV(RegalContext *_context, GLenum target, GLuint index, const GLuint *params)
+static void REGAL_CALL Dsa_glProgramLocalParameterI4uivNV(Layer *_layer, GLenum target, GLuint index, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4uivNV( _context, target, index, params );
+  orig.glProgramLocalParameterI4uivNV( orig.glProgramLocalParameterI4uivNV_layer, target, index, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParametersI4ivNV(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLint *params)
+static void REGAL_CALL Dsa_glProgramLocalParametersI4ivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParametersI4ivNV( _context, target, index, count, params );
+  orig.glProgramLocalParametersI4ivNV( orig.glProgramLocalParametersI4ivNV_layer, target, index, count, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramLocalParametersI4uivNV(RegalContext *_context, GLenum target, GLuint index, GLsizei count, const GLuint *params)
+static void REGAL_CALL Dsa_glProgramLocalParametersI4uivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParametersI4uivNV( _context, target, index, count, params );
+  orig.glProgramLocalParametersI4uivNV( orig.glProgramLocalParametersI4uivNV_layer, target, index, count, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1dEXT(RegalContext *_context, GLuint program, GLint location, GLdouble x)
+static void REGAL_CALL Dsa_glProgramUniform1dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1d( _context, location, x );
   return;
 
-  orig.glProgramUniform1dEXT( _context, program, location, x );
+  orig.glProgramUniform1dEXT( orig.glProgramUniform1dEXT_layer, program, location, x );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniform1dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1dvEXT( _context, program, location, count, value );
+  orig.glProgramUniform1dvEXT( orig.glProgramUniform1dvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1fEXT(RegalContext *_context, GLuint program, GLint location, GLfloat v0)
+static void REGAL_CALL Dsa_glProgramUniform1fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1f( _context, location, v0 );
   return;
 
-  orig.glProgramUniform1fEXT( _context, program, location, v0 );
+  orig.glProgramUniform1fEXT( orig.glProgramUniform1fEXT_layer, program, location, v0 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniform1fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1fvEXT( _context, program, location, count, value );
+  orig.glProgramUniform1fvEXT( orig.glProgramUniform1fvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1iEXT(RegalContext *_context, GLuint program, GLint location, GLint v0)
+static void REGAL_CALL Dsa_glProgramUniform1iEXT(Layer *_layer, GLuint program, GLint location, GLint v0)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1i( _context, location, v0 );
   return;
 
-  orig.glProgramUniform1iEXT( _context, program, location, v0 );
+  orig.glProgramUniform1iEXT( orig.glProgramUniform1iEXT_layer, program, location, v0 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1ivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glProgramUniform1ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1ivEXT( _context, program, location, count, value );
+  orig.glProgramUniform1ivEXT( orig.glProgramUniform1ivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1uiEXT(RegalContext *_context, GLuint program, GLint location, GLuint v0)
+static void REGAL_CALL Dsa_glProgramUniform1uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1ui( _context, location, v0 );
   return;
 
-  orig.glProgramUniform1uiEXT( _context, program, location, v0 );
+  orig.glProgramUniform1uiEXT( orig.glProgramUniform1uiEXT_layer, program, location, v0 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform1uivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glProgramUniform1uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform1uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1uivEXT( _context, program, location, count, value );
+  orig.glProgramUniform1uivEXT( orig.glProgramUniform1uivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2dEXT(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y)
+static void REGAL_CALL Dsa_glProgramUniform2dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2d( _context, location, x, y );
   return;
 
-  orig.glProgramUniform2dEXT( _context, program, location, x, y );
+  orig.glProgramUniform2dEXT( orig.glProgramUniform2dEXT_layer, program, location, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniform2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2dvEXT( _context, program, location, count, value );
+  orig.glProgramUniform2dvEXT( orig.glProgramUniform2dvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2fEXT(RegalContext *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1)
+static void REGAL_CALL Dsa_glProgramUniform2fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2f( _context, location, v0, v1 );
   return;
 
-  orig.glProgramUniform2fEXT( _context, program, location, v0, v1 );
+  orig.glProgramUniform2fEXT( orig.glProgramUniform2fEXT_layer, program, location, v0, v1 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniform2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2fvEXT( _context, program, location, count, value );
+  orig.glProgramUniform2fvEXT( orig.glProgramUniform2fvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2iEXT(RegalContext *_context, GLuint program, GLint location, GLint v0, GLint v1)
+static void REGAL_CALL Dsa_glProgramUniform2iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2i( _context, location, v0, v1 );
   return;
 
-  orig.glProgramUniform2iEXT( _context, program, location, v0, v1 );
+  orig.glProgramUniform2iEXT( orig.glProgramUniform2iEXT_layer, program, location, v0, v1 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2ivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glProgramUniform2ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2ivEXT( _context, program, location, count, value );
+  orig.glProgramUniform2ivEXT( orig.glProgramUniform2ivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2uiEXT(RegalContext *_context, GLuint program, GLint location, GLuint v0, GLuint v1)
+static void REGAL_CALL Dsa_glProgramUniform2uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2ui( _context, location, v0, v1 );
   return;
 
-  orig.glProgramUniform2uiEXT( _context, program, location, v0, v1 );
+  orig.glProgramUniform2uiEXT( orig.glProgramUniform2uiEXT_layer, program, location, v0, v1 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform2uivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glProgramUniform2uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform2uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2uivEXT( _context, program, location, count, value );
+  orig.glProgramUniform2uivEXT( orig.glProgramUniform2uivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3dEXT(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glProgramUniform3dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3d( _context, location, x, y, z );
   return;
 
-  orig.glProgramUniform3dEXT( _context, program, location, x, y, z );
+  orig.glProgramUniform3dEXT( orig.glProgramUniform3dEXT_layer, program, location, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniform3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3dvEXT( _context, program, location, count, value );
+  orig.glProgramUniform3dvEXT( orig.glProgramUniform3dvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3fEXT(RegalContext *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
+static void REGAL_CALL Dsa_glProgramUniform3fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3f( _context, location, v0, v1, v2 );
   return;
 
-  orig.glProgramUniform3fEXT( _context, program, location, v0, v1, v2 );
+  orig.glProgramUniform3fEXT( orig.glProgramUniform3fEXT_layer, program, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniform3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3fvEXT( _context, program, location, count, value );
+  orig.glProgramUniform3fvEXT( orig.glProgramUniform3fvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3iEXT(RegalContext *_context, GLuint program, GLint location, GLint v0, GLint v1, GLint v2)
+static void REGAL_CALL Dsa_glProgramUniform3iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1, GLint v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3i( _context, location, v0, v1, v2 );
   return;
 
-  orig.glProgramUniform3iEXT( _context, program, location, v0, v1, v2 );
+  orig.glProgramUniform3iEXT( orig.glProgramUniform3iEXT_layer, program, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3ivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glProgramUniform3ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3ivEXT( _context, program, location, count, value );
+  orig.glProgramUniform3ivEXT( orig.glProgramUniform3ivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3uiEXT(RegalContext *_context, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2)
+static void REGAL_CALL Dsa_glProgramUniform3uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3ui( _context, location, v0, v1, v2 );
   return;
 
-  orig.glProgramUniform3uiEXT( _context, program, location, v0, v1, v2 );
+  orig.glProgramUniform3uiEXT( orig.glProgramUniform3uiEXT_layer, program, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform3uivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glProgramUniform3uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform3uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3uivEXT( _context, program, location, count, value );
+  orig.glProgramUniform3uivEXT( orig.glProgramUniform3uivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4dEXT(RegalContext *_context, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL Dsa_glProgramUniform4dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4d( _context, location, x, y, z, w );
   return;
 
-  orig.glProgramUniform4dEXT( _context, program, location, x, y, z, w );
+  orig.glProgramUniform4dEXT( orig.glProgramUniform4dEXT_layer, program, location, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniform4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4dvEXT( _context, program, location, count, value );
+  orig.glProgramUniform4dvEXT( orig.glProgramUniform4dvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4fEXT(RegalContext *_context, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
+static void REGAL_CALL Dsa_glProgramUniform4fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4f( _context, location, v0, v1, v2, v3 );
   return;
 
-  orig.glProgramUniform4fEXT( _context, program, location, v0, v1, v2, v3 );
+  orig.glProgramUniform4fEXT( orig.glProgramUniform4fEXT_layer, program, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniform4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4fvEXT( _context, program, location, count, value );
+  orig.glProgramUniform4fvEXT( orig.glProgramUniform4fvEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4iEXT(RegalContext *_context, GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
+static void REGAL_CALL Dsa_glProgramUniform4iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4i( _context, location, v0, v1, v2, v3 );
   return;
 
-  orig.glProgramUniform4iEXT( _context, program, location, v0, v1, v2, v3 );
+  orig.glProgramUniform4iEXT( orig.glProgramUniform4iEXT_layer, program, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4ivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glProgramUniform4ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4ivEXT( _context, program, location, count, value );
+  orig.glProgramUniform4ivEXT( orig.glProgramUniform4ivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4uiEXT(RegalContext *_context, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
+static void REGAL_CALL Dsa_glProgramUniform4uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4ui( _context, location, v0, v1, v2, v3 );
   return;
 
-  orig.glProgramUniform4uiEXT( _context, program, location, v0, v1, v2, v3 );
+  orig.glProgramUniform4uiEXT( orig.glProgramUniform4uiEXT_layer, program, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniform4uivEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glProgramUniform4uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniform4uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4uivEXT( _context, program, location, count, value );
+  orig.glProgramUniform4uivEXT( orig.glProgramUniform4uivEXT_layer, program, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix2dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix2dvEXT( orig.glProgramUniformMatrix2dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix2fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix2fvEXT( orig.glProgramUniformMatrix2fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x3dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix2x3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix2x3dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x3dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix2x3dvEXT( orig.glProgramUniformMatrix2x3dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x3fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix2x3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix2x3fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x3fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix2x3fvEXT( orig.glProgramUniformMatrix2x3fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x4dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix2x4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix2x4dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x4dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix2x4dvEXT( orig.glProgramUniformMatrix2x4dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix2x4fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix2x4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix2x4fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x4fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix2x4fvEXT( orig.glProgramUniformMatrix2x4fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix3dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix3dvEXT( orig.glProgramUniformMatrix3dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix3fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix3fvEXT( orig.glProgramUniformMatrix3fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x2dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix3x2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix3x2dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x2dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix3x2dvEXT( orig.glProgramUniformMatrix3x2dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x2fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix3x2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix3x2fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x2fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix3x2fvEXT( orig.glProgramUniformMatrix3x2fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x4dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix3x4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix3x4dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x4dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix3x4dvEXT( orig.glProgramUniformMatrix3x4dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix3x4fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix3x4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix3x4fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x4fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix3x4fvEXT( orig.glProgramUniformMatrix3x4fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix4dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix4dvEXT( orig.glProgramUniformMatrix4dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix4fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix4fvEXT( orig.glProgramUniformMatrix4fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x2dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix4x2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix4x2dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x2dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix4x2dvEXT( orig.glProgramUniformMatrix4x2dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x2fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix4x2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix4x2fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x2fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix4x2fvEXT( orig.glProgramUniformMatrix4x2fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x3dvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix4x3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix4x3dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x3dvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix4x3dvEXT( orig.glProgramUniformMatrix4x3dvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glProgramUniformMatrix4x3fvEXT(RegalContext *_context, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glProgramUniformMatrix4x3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaGlslProgram( _context, program);
   orig.glUniformMatrix4x3fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x3fvEXT( _context, program, location, count, transpose, value );
+  orig.glProgramUniformMatrix4x3fvEXT( orig.glProgramUniformMatrix4x3fvEXT_layer, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glPushClientAttribDefaultEXT(RegalContext *_context, GLbitfield mask)
+static void REGAL_CALL Dsa_glPushClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   orig.glPushClientAttrib( _context, mask);
   _context->dsa->ClientAttribDefault(_context, mask);
   return;
 
-  orig.glPushClientAttribDefaultEXT( _context, mask );
+  orig.glPushClientAttribDefaultEXT( orig.glPushClientAttribDefaultEXT_layer, mask );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glPushMatrix(RegalContext *_context)
+static void REGAL_CALL Dsa_glPushMatrix(Layer *_layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glPushMatrix( _context );
+  orig.glPushMatrix( orig.glPushMatrix_layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorage(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glRenderbufferStorage(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorage( _context, target, internalformat, width, height );
+  orig.glRenderbufferStorage( orig.glRenderbufferStorage_layer, target, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageEXT(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glRenderbufferStorageEXT(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageEXT( _context, target, internalformat, width, height );
+  orig.glRenderbufferStorageEXT( orig.glRenderbufferStorageEXT_layer, target, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageMultisample(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glRenderbufferStorageMultisample(Layer *_layer, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisample( _context, target, samples, internalformat, width, height );
+  orig.glRenderbufferStorageMultisample( orig.glRenderbufferStorageMultisample_layer, target, samples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageMultisampleCoverageNV(RegalContext *_context, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glRenderbufferStorageMultisampleCoverageNV(Layer *_layer, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisampleCoverageNV( _context, target, coverageSamples, colorSamples, internalformat, width, height );
+  orig.glRenderbufferStorageMultisampleCoverageNV( orig.glRenderbufferStorageMultisampleCoverageNV_layer, target, coverageSamples, colorSamples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glRenderbufferStorageMultisampleEXT(RegalContext *_context, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glRenderbufferStorageMultisampleEXT(Layer *_layer, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisampleEXT( _context, target, samples, internalformat, width, height );
+  orig.glRenderbufferStorageMultisampleEXT( orig.glRenderbufferStorageMultisampleEXT_layer, target, samples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glRotated(RegalContext *_context, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glRotated(Layer *_layer, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glRotated( _context, angle, x, y, z );
+  orig.glRotated( orig.glRotated_layer, angle, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glRotatef(RegalContext *_context, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Dsa_glRotatef(Layer *_layer, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glRotatef( _context, angle, x, y, z );
+  orig.glRotatef( orig.glRotatef_layer, angle, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glScaled(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glScaled(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glScaled( _context, x, y, z );
+  orig.glScaled( orig.glScaled_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glScalef(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Dsa_glScalef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glScalef( _context, x, y, z );
+  orig.glScalef( orig.glScalef_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glSecondaryColorPointer(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL Dsa_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glSecondaryColorPointer( _context, size, type, stride, pointer );
+  orig.glSecondaryColorPointer( orig.glSecondaryColorPointer_layer, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexBuffer(RegalContext *_context, GLenum target, GLenum internalformat, GLuint buffer)
+static void REGAL_CALL Dsa_glTexBuffer(Layer *_layer, GLenum target, GLenum internalformat, GLuint buffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexBuffer( _context, target, internalformat, buffer );
+  orig.glTexBuffer( orig.glTexBuffer_layer, target, internalformat, buffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexCoordPointer(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL Dsa_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glTexCoordPointer( _context, size, type, stride, pointer );
+  orig.glTexCoordPointer( orig.glTexCoordPointer_layer, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexEnvf(RegalContext *_context, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL Dsa_glTexEnvf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvf( _context, target, pname, param );
+  orig.glTexEnvf( orig.glTexEnvf_layer, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexEnvfv(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL Dsa_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvfv( _context, target, pname, params );
+  orig.glTexEnvfv( orig.glTexEnvfv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexEnvi(RegalContext *_context, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL Dsa_glTexEnvi(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvi( _context, target, pname, param );
+  orig.glTexEnvi( orig.glTexEnvi_layer, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexEnviv(RegalContext *_context, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL Dsa_glTexEnviv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnviv( _context, target, pname, params );
+  orig.glTexEnviv( orig.glTexEnviv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexGenf(RegalContext *_context, GLenum coord, GLenum pname, GLfloat param)
+static void REGAL_CALL Dsa_glTexGenf(Layer *_layer, GLenum coord, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGenf( _context, coord, pname, param );
+  orig.glTexGenf( orig.glTexGenf_layer, coord, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexGenfv(RegalContext *_context, GLenum coord, GLenum pname, const GLfloat *params)
+static void REGAL_CALL Dsa_glTexGenfv(Layer *_layer, GLenum coord, GLenum pname, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGenfv( _context, coord, pname, params );
+  orig.glTexGenfv( orig.glTexGenfv_layer, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexGeni(RegalContext *_context, GLenum coord, GLenum pname, GLint param)
+static void REGAL_CALL Dsa_glTexGeni(Layer *_layer, GLenum coord, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGeni( _context, coord, pname, param );
+  orig.glTexGeni( orig.glTexGeni_layer, coord, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexGeniv(RegalContext *_context, GLenum coord, GLenum pname, const GLint *params)
+static void REGAL_CALL Dsa_glTexGeniv(Layer *_layer, GLenum coord, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGeniv( _context, coord, pname, params );
+  orig.glTexGeniv( orig.glTexGeniv_layer, coord, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexParameterf(RegalContext *_context, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL Dsa_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
 
-  // prefix
-  _context->dsa->RestoreTexture( _context );
-  _context->dsa->RestoreActiveTexture( _context );
-
-  orig.glTexParameterf( _context, target, pname, param );
-
-}
-
-static void REGAL_CALL emuProcInterceptDsa_glTexParameterfv(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params)
-{
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameterfv( _context, target, pname, params );
+  orig.glTexParameterf( orig.glTexParameterf_layer, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexParameteri(RegalContext *_context, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL Dsa_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameteri( _context, target, pname, param );
+  orig.glTexParameterfv( orig.glTexParameterfv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexParameteriv(RegalContext *_context, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL Dsa_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameteriv( _context, target, pname, params );
+  orig.glTexParameteri( orig.glTexParameteri_layer, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTexRenderbufferNV(RegalContext *_context, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexRenderbufferNV( _context, target, renderbuffer );
+  orig.glTexParameteriv( orig.glTexParameteriv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureBufferEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer)
+static void REGAL_CALL Dsa_glTexRenderbufferNV(Layer *_layer, GLenum target, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
+
+  // prefix
+  _context->dsa->RestoreTexture( _context );
+  _context->dsa->RestoreActiveTexture( _context );
+
+  orig.glTexRenderbufferNV( orig.glTexRenderbufferNV_layer, target, renderbuffer );
+
+}
+
+static void REGAL_CALL Dsa_glTextureBufferEXT(Layer *_layer, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer)
+{
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexBuffer( _context, target, internalformat, buffer );
   return;
 
-  orig.glTextureBufferEXT( _context, texture, target, internalformat, buffer );
+  orig.glTextureBufferEXT( orig.glTextureBufferEXT_layer, texture, target, internalformat, buffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureImage1DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
   return;
 
-  orig.glTextureImage1DEXT( _context, texture, target, level, internalformat, width, border, format, type, pixels );
+  orig.glTextureImage1DEXT( orig.glTextureImage1DEXT_layer, texture, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureImage2DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
   return;
 
-  orig.glTextureImage2DEXT( _context, texture, target, level, internalformat, width, height, border, format, type, pixels );
+  orig.glTextureImage2DEXT( orig.glTextureImage2DEXT_layer, texture, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureImage3DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
   return;
 
-  orig.glTextureImage3DEXT( _context, texture, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  orig.glTextureImage3DEXT( orig.glTextureImage3DEXT_layer, texture, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureParameterIivEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL Dsa_glTextureParameterIivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glTextureParameterIivEXT( _context, texture, target, pname, params );
+  orig.glTextureParameterIivEXT( orig.glTextureParameterIivEXT_layer, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureParameterIuivEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLuint *params)
+static void REGAL_CALL Dsa_glTextureParameterIuivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLuint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glTextureParameterIuivEXT( _context, texture, target, pname, params );
+  orig.glTextureParameterIuivEXT( orig.glTextureParameterIuivEXT_layer, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureParameterfEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL Dsa_glTextureParameterfEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexParameterf( _context, target, pname, param );
   return;
 
-  orig.glTextureParameterfEXT( _context, texture, target, pname, param );
+  orig.glTextureParameterfEXT( orig.glTextureParameterfEXT_layer, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureParameterfvEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLfloat *param)
+static void REGAL_CALL Dsa_glTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLfloat *param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexParameterfv( _context, target, pname, param );
   return;
 
-  orig.glTextureParameterfvEXT( _context, texture, target, pname, param );
+  orig.glTextureParameterfvEXT( orig.glTextureParameterfvEXT_layer, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureParameteriEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL Dsa_glTextureParameteriEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexParameteri( _context, target, pname, param );
   return;
 
-  orig.glTextureParameteriEXT( _context, texture, target, pname, param );
+  orig.glTextureParameteriEXT( orig.glTextureParameteriEXT_layer, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureParameterivEXT(RegalContext *_context, GLuint texture, GLenum target, GLenum pname, const GLint *param)
+static void REGAL_CALL Dsa_glTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLint *param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexParameteriv( _context, target, pname, param );
   return;
 
-  orig.glTextureParameterivEXT( _context, texture, target, pname, param );
+  orig.glTextureParameterivEXT( orig.glTextureParameterivEXT_layer, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureRenderbufferEXT(RegalContext *_context, GLuint texture, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL Dsa_glTextureRenderbufferEXT(Layer *_layer, GLuint texture, GLenum target, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexRenderbufferNV( _context, target, renderbuffer );
   return;
 
-  orig.glTextureRenderbufferEXT( _context, texture, target, renderbuffer );
+  orig.glTextureRenderbufferEXT( orig.glTextureRenderbufferEXT_layer, texture, target, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureStorage1DEXT(RegalContext *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+static void REGAL_CALL Dsa_glTextureStorage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexStorage1D( _context, target, levels, internalformat, width );
   return;
 
-  orig.glTextureStorage1DEXT( _context, texture, target, levels, internalformat, width );
+  orig.glTextureStorage1DEXT( orig.glTextureStorage1DEXT_layer, texture, target, levels, internalformat, width );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureStorage2DEXT(RegalContext *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Dsa_glTextureStorage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexStorage2D( _context, target, levels, internalformat, width, height );
   return;
 
-  orig.glTextureStorage2DEXT( _context, texture, target, levels, internalformat, width, height );
+  orig.glTextureStorage2DEXT( orig.glTextureStorage2DEXT_layer, texture, target, levels, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureStorage3DEXT(RegalContext *_context, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+static void REGAL_CALL Dsa_glTextureStorage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexStorage3D( _context, target, levels, internalformat, width, height, depth );
   return;
 
-  orig.glTextureStorage3DEXT( _context, texture, target, levels, internalformat, width, height, depth );
+  orig.glTextureStorage3DEXT( orig.glTextureStorage3DEXT_layer, texture, target, levels, internalformat, width, height, depth );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureSubImage1DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexSubImage1D( _context, target, level, xoffset, width, format, type, pixels );
   return;
 
-  orig.glTextureSubImage1DEXT( _context, texture, target, level, xoffset, width, format, type, pixels );
+  orig.glTextureSubImage1DEXT( orig.glTextureSubImage1DEXT_layer, texture, target, level, xoffset, width, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureSubImage2DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
   return;
 
-  orig.glTextureSubImage2DEXT( _context, texture, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  orig.glTextureSubImage2DEXT( orig.glTextureSubImage2DEXT_layer, texture, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTextureSubImage3DEXT(RegalContext *_context, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Dsa_glTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaTexture( _context, target, texture );
   orig.glTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
   return;
 
-  orig.glTextureSubImage3DEXT( _context, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+  orig.glTextureSubImage3DEXT( orig.glTextureSubImage3DEXT_layer, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTranslated(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glTranslated(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glTranslated( _context, x, y, z );
+  orig.glTranslated( orig.glTranslated_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glTranslatef(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Dsa_glTranslatef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glTranslatef( _context, x, y, z );
+  orig.glTranslatef( orig.glTranslatef_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1d(RegalContext *_context, GLint location, GLdouble x)
+static void REGAL_CALL Dsa_glUniform1d(Layer *_layer, GLint location, GLdouble x)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1d( _context, location, x );
+  orig.glUniform1d( orig.glUniform1d_layer, location, x );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1dv(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniform1dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1dv( _context, location, count, value );
+  orig.glUniform1dv( orig.glUniform1dv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1f(RegalContext *_context, GLint location, GLfloat v0)
+static void REGAL_CALL Dsa_glUniform1f(Layer *_layer, GLint location, GLfloat v0)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1f( _context, location, v0 );
+  orig.glUniform1f( orig.glUniform1f_layer, location, v0 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1fv(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniform1fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1fv( _context, location, count, value );
+  orig.glUniform1fv( orig.glUniform1fv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1i(RegalContext *_context, GLint location, GLint v0)
+static void REGAL_CALL Dsa_glUniform1i(Layer *_layer, GLint location, GLint v0)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1i( _context, location, v0 );
+  orig.glUniform1i( orig.glUniform1i_layer, location, v0 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1iv(RegalContext *_context, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glUniform1iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1iv( _context, location, count, value );
+  orig.glUniform1iv( orig.glUniform1iv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1ui(RegalContext *_context, GLint location, GLuint v0)
+static void REGAL_CALL Dsa_glUniform1ui(Layer *_layer, GLint location, GLuint v0)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1ui( _context, location, v0 );
+  orig.glUniform1ui( orig.glUniform1ui_layer, location, v0 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform1uiv(RegalContext *_context, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glUniform1uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1uiv( _context, location, count, value );
+  orig.glUniform1uiv( orig.glUniform1uiv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2d(RegalContext *_context, GLint location, GLdouble x, GLdouble y)
+static void REGAL_CALL Dsa_glUniform2d(Layer *_layer, GLint location, GLdouble x, GLdouble y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2d( _context, location, x, y );
+  orig.glUniform2d( orig.glUniform2d_layer, location, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2dv(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniform2dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2dv( _context, location, count, value );
+  orig.glUniform2dv( orig.glUniform2dv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2f(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1)
+static void REGAL_CALL Dsa_glUniform2f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2f( _context, location, v0, v1 );
+  orig.glUniform2f( orig.glUniform2f_layer, location, v0, v1 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2fv(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniform2fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2fv( _context, location, count, value );
+  orig.glUniform2fv( orig.glUniform2fv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2i(RegalContext *_context, GLint location, GLint v0, GLint v1)
+static void REGAL_CALL Dsa_glUniform2i(Layer *_layer, GLint location, GLint v0, GLint v1)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2i( _context, location, v0, v1 );
+  orig.glUniform2i( orig.glUniform2i_layer, location, v0, v1 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2iv(RegalContext *_context, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glUniform2iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2iv( _context, location, count, value );
+  orig.glUniform2iv( orig.glUniform2iv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2ui(RegalContext *_context, GLint location, GLuint v0, GLuint v1)
+static void REGAL_CALL Dsa_glUniform2ui(Layer *_layer, GLint location, GLuint v0, GLuint v1)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2ui( _context, location, v0, v1 );
+  orig.glUniform2ui( orig.glUniform2ui_layer, location, v0, v1 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform2uiv(RegalContext *_context, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glUniform2uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2uiv( _context, location, count, value );
+  orig.glUniform2uiv( orig.glUniform2uiv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3d(RegalContext *_context, GLint location, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Dsa_glUniform3d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3d( _context, location, x, y, z );
+  orig.glUniform3d( orig.glUniform3d_layer, location, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3dv(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniform3dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3dv( _context, location, count, value );
+  orig.glUniform3dv( orig.glUniform3dv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3f(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
+static void REGAL_CALL Dsa_glUniform3f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3f( _context, location, v0, v1, v2 );
+  orig.glUniform3f( orig.glUniform3f_layer, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3fv(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniform3fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3fv( _context, location, count, value );
+  orig.glUniform3fv( orig.glUniform3fv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3i(RegalContext *_context, GLint location, GLint v0, GLint v1, GLint v2)
+static void REGAL_CALL Dsa_glUniform3i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3i( _context, location, v0, v1, v2 );
+  orig.glUniform3i( orig.glUniform3i_layer, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3iv(RegalContext *_context, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glUniform3iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3iv( _context, location, count, value );
+  orig.glUniform3iv( orig.glUniform3iv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3ui(RegalContext *_context, GLint location, GLuint v0, GLuint v1, GLuint v2)
+static void REGAL_CALL Dsa_glUniform3ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3ui( _context, location, v0, v1, v2 );
+  orig.glUniform3ui( orig.glUniform3ui_layer, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform3uiv(RegalContext *_context, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glUniform3uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3uiv( _context, location, count, value );
+  orig.glUniform3uiv( orig.glUniform3uiv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4d(RegalContext *_context, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL Dsa_glUniform4d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4d( _context, location, x, y, z, w );
+  orig.glUniform4d( orig.glUniform4d_layer, location, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4dv(RegalContext *_context, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniform4dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4dv( _context, location, count, value );
+  orig.glUniform4dv( orig.glUniform4dv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4f(RegalContext *_context, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
+static void REGAL_CALL Dsa_glUniform4f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4f( _context, location, v0, v1, v2, v3 );
+  orig.glUniform4f( orig.glUniform4f_layer, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4fv(RegalContext *_context, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniform4fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4fv( _context, location, count, value );
+  orig.glUniform4fv( orig.glUniform4fv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4i(RegalContext *_context, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
+static void REGAL_CALL Dsa_glUniform4i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4i( _context, location, v0, v1, v2, v3 );
+  orig.glUniform4i( orig.glUniform4i_layer, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4iv(RegalContext *_context, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL Dsa_glUniform4iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4iv( _context, location, count, value );
+  orig.glUniform4iv( orig.glUniform4iv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4ui(RegalContext *_context, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
+static void REGAL_CALL Dsa_glUniform4ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4ui( _context, location, v0, v1, v2, v3 );
+  orig.glUniform4ui( orig.glUniform4ui_layer, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniform4uiv(RegalContext *_context, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL Dsa_glUniform4uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4uiv( _context, location, count, value );
+  orig.glUniform4uiv( orig.glUniform4uiv_layer, location, count, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix2dv( orig.glUniformMatrix2dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix2fv( orig.glUniformMatrix2fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x3dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix2x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x3dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix2x3dv( orig.glUniformMatrix2x3dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x3fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix2x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x3fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix2x3fv( orig.glUniformMatrix2x3fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x4dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix2x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x4dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix2x4dv( orig.glUniformMatrix2x4dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix2x4fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix2x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x4fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix2x4fv( orig.glUniformMatrix2x4fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix3dv( orig.glUniformMatrix3dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix3fv( orig.glUniformMatrix3fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x2dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix3x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x2dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix3x2dv( orig.glUniformMatrix3x2dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x2fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix3x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x2fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix3x2fv( orig.glUniformMatrix3x2fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x4dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix3x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x4dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix3x4dv( orig.glUniformMatrix3x4dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix3x4fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix3x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x4fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix3x4fv( orig.glUniformMatrix3x4fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix4dv( orig.glUniformMatrix4dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix4fv( orig.glUniformMatrix4fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x2dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix4x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x2dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix4x2dv( orig.glUniformMatrix4x2dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x2fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix4x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x2fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix4x2fv( orig.glUniformMatrix4x2fv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x3dv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL Dsa_glUniformMatrix4x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x3dv( _context, location, count, transpose, value );
+  orig.glUniformMatrix4x3dv( orig.glUniformMatrix4x3dv_layer, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUniformMatrix4x3fv(RegalContext *_context, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL Dsa_glUniformMatrix4x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x3fv( _context, location, count, transpose, value );
+  orig.glUniformMatrix4x3fv( orig.glUniformMatrix4x3fv_layer, location, count, transpose, value );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptDsa_glUnmapBuffer(RegalContext *_context, GLenum target)
+static GLboolean REGAL_CALL Dsa_glUnmapBuffer(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glUnmapBuffer( _context, target );
+  return orig.glUnmapBuffer( orig.glUnmapBuffer_layer, target );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptDsa_glUnmapBufferARB(RegalContext *_context, GLenum target)
+static GLboolean REGAL_CALL Dsa_glUnmapBufferARB(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glUnmapBufferARB( _context, target );
+  return orig.glUnmapBufferARB( orig.glUnmapBufferARB_layer, target );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptDsa_glUnmapNamedBufferEXT(RegalContext *_context, GLuint buffer)
+static GLboolean REGAL_CALL Dsa_glUnmapNamedBufferEXT(Layer *_layer, GLuint buffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaBuffer( _context, buffer);
   return orig.glUnmapBuffer( _context, GL_ARRAY_BUFFER );
 
-  return orig.glUnmapNamedBufferEXT( _context, buffer );
+  return orig.glUnmapNamedBufferEXT( orig.glUnmapNamedBufferEXT_layer, buffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glUseProgram(RegalContext *_context, GLuint program)
+static void REGAL_CALL Dsa_glUseProgram(Layer *_layer, GLuint program)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   if( _context->dsa->ShadowGlslProgram( program ) ) {
     return;
   }
 
-  orig.glUseProgram( _context, program );
+  orig.glUseProgram( orig.glUseProgram_layer, program );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayColorOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glColorPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayColorOffsetEXT( _context, vaobj, buffer, size, type, stride, offset );
+  orig.glVertexArrayColorOffsetEXT( orig.glVertexArrayColorOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayEdgeFlagOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glEdgeFlagPointer( _context, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayEdgeFlagOffsetEXT( _context, vaobj, buffer, stride, offset );
+  orig.glVertexArrayEdgeFlagOffsetEXT( orig.glVertexArrayEdgeFlagOffsetEXT_layer, vaobj, buffer, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayFogCoordOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glFogCoordPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayFogCoordOffsetEXT( _context, vaobj, buffer, type, stride, offset );
+  orig.glVertexArrayFogCoordOffsetEXT( orig.glVertexArrayFogCoordOffsetEXT_layer, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayIndexOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glIndexPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayIndexOffsetEXT( _context, vaobj, buffer, type, stride, offset );
+  orig.glVertexArrayIndexOffsetEXT( orig.glVertexArrayIndexOffsetEXT_layer, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayMultiTexCoordOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glMultiTexCoordPointerEXT( _context, texunit, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayMultiTexCoordOffsetEXT( _context, vaobj, buffer, texunit, size, type, stride, offset );
+  orig.glVertexArrayMultiTexCoordOffsetEXT( orig.glVertexArrayMultiTexCoordOffsetEXT_layer, vaobj, buffer, texunit, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayNormalOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glNormalPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayNormalOffsetEXT( _context, vaobj, buffer, type, stride, offset );
+  orig.glVertexArrayNormalOffsetEXT( orig.glVertexArrayNormalOffsetEXT_layer, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArraySecondaryColorOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glSecondaryColorPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArraySecondaryColorOffsetEXT( _context, vaobj, buffer, size, type, stride, offset );
+  orig.glVertexArraySecondaryColorOffsetEXT( orig.glVertexArraySecondaryColorOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayTexCoordOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glTexCoordPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayTexCoordOffsetEXT( _context, vaobj, buffer, size, type, stride, offset );
+  orig.glVertexArrayTexCoordOffsetEXT( orig.glVertexArrayTexCoordOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayVertexAttribIOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glVertexAttribIPointer( _context, index, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayVertexAttribIOffsetEXT( _context, vaobj, buffer, index, size, type, stride, offset );
+  orig.glVertexArrayVertexAttribIOffsetEXT( orig.glVertexArrayVertexAttribIOffsetEXT_layer, vaobj, buffer, index, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayVertexAttribOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glVertexAttribPointer( _context, index, size, type, normalized, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayVertexAttribOffsetEXT( _context, vaobj, buffer, index, size, type, normalized, stride, offset );
+  orig.glVertexArrayVertexAttribOffsetEXT( orig.glVertexArrayVertexAttribOffsetEXT_layer, vaobj, buffer, index, size, type, normalized, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexArrayVertexOffsetEXT(RegalContext *_context, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL Dsa_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // impl
   _context->dsa->DsaVao( _context, vaobj );_context->dsa->DsaBuffer( _context, buffer );
   orig.glVertexPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayVertexOffsetEXT( _context, vaobj, buffer, size, type, stride, offset );
+  orig.glVertexArrayVertexOffsetEXT( orig.glVertexArrayVertexOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL emuProcInterceptDsa_glVertexPointer(RegalContext *_context, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL Dsa_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateDsa & orig = _context->dsa->orig;
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glVertexPointer( _context, size, type, stride, pointer );
+  orig.glVertexPointer( orig.glVertexPointer_layer, size, type, stride, pointer );
 
 }
 
-void EmuProcsInterceptDsa( Dispatch::GL & dt ) {
-  dt.glActiveTexture                                  = emuProcInterceptDsa_glActiveTexture;
-  dt.glActiveTextureARB                               = emuProcInterceptDsa_glActiveTextureARB;
-  dt.glBegin                                          = emuProcInterceptDsa_glBegin;
-  dt.glBindBuffer                                     = emuProcInterceptDsa_glBindBuffer;
-  dt.glBindBufferARB                                  = emuProcInterceptDsa_glBindBufferARB;
-  dt.glBindFramebuffer                                = emuProcInterceptDsa_glBindFramebuffer;
-  dt.glBindFramebufferEXT                             = emuProcInterceptDsa_glBindFramebufferEXT;
-  dt.glBindMultiTextureEXT                            = emuProcInterceptDsa_glBindMultiTextureEXT;
-  dt.glBindProgramARB                                 = emuProcInterceptDsa_glBindProgramARB;
-  dt.glBindRenderbuffer                               = emuProcInterceptDsa_glBindRenderbuffer;
-  dt.glBindRenderbufferEXT                            = emuProcInterceptDsa_glBindRenderbufferEXT;
-  dt.glBindTexture                                    = emuProcInterceptDsa_glBindTexture;
-  dt.glBindTextureEXT                                 = emuProcInterceptDsa_glBindTextureEXT;
-  dt.glBindVertexArray                                = emuProcInterceptDsa_glBindVertexArray;
-  dt.glBufferData                                     = emuProcInterceptDsa_glBufferData;
-  dt.glBufferSubData                                  = emuProcInterceptDsa_glBufferSubData;
-  dt.glCheckNamedFramebufferStatusEXT                 = emuProcInterceptDsa_glCheckNamedFramebufferStatusEXT;
-  dt.glClientActiveTexture                            = emuProcInterceptDsa_glClientActiveTexture;
-  dt.glClientActiveTextureARB                         = emuProcInterceptDsa_glClientActiveTextureARB;
-  dt.glClientAttribDefaultEXT                         = emuProcInterceptDsa_glClientAttribDefaultEXT;
-  dt.glColorPointer                                   = emuProcInterceptDsa_glColorPointer;
-  dt.glCompressedMultiTexImage1DEXT                   = emuProcInterceptDsa_glCompressedMultiTexImage1DEXT;
-  dt.glCompressedMultiTexImage2DEXT                   = emuProcInterceptDsa_glCompressedMultiTexImage2DEXT;
-  dt.glCompressedMultiTexImage3DEXT                   = emuProcInterceptDsa_glCompressedMultiTexImage3DEXT;
-  dt.glCompressedMultiTexSubImage1DEXT                = emuProcInterceptDsa_glCompressedMultiTexSubImage1DEXT;
-  dt.glCompressedMultiTexSubImage2DEXT                = emuProcInterceptDsa_glCompressedMultiTexSubImage2DEXT;
-  dt.glCompressedMultiTexSubImage3DEXT                = emuProcInterceptDsa_glCompressedMultiTexSubImage3DEXT;
-  dt.glCompressedTextureImage1DEXT                    = emuProcInterceptDsa_glCompressedTextureImage1DEXT;
-  dt.glCompressedTextureImage2DEXT                    = emuProcInterceptDsa_glCompressedTextureImage2DEXT;
-  dt.glCompressedTextureImage3DEXT                    = emuProcInterceptDsa_glCompressedTextureImage3DEXT;
-  dt.glCompressedTextureSubImage1DEXT                 = emuProcInterceptDsa_glCompressedTextureSubImage1DEXT;
-  dt.glCompressedTextureSubImage2DEXT                 = emuProcInterceptDsa_glCompressedTextureSubImage2DEXT;
-  dt.glCompressedTextureSubImage3DEXT                 = emuProcInterceptDsa_glCompressedTextureSubImage3DEXT;
-  dt.glCopyBufferSubData                              = emuProcInterceptDsa_glCopyBufferSubData;
-  dt.glCopyMultiTexImage1DEXT                         = emuProcInterceptDsa_glCopyMultiTexImage1DEXT;
-  dt.glCopyMultiTexImage2DEXT                         = emuProcInterceptDsa_glCopyMultiTexImage2DEXT;
-  dt.glCopyMultiTexSubImage1DEXT                      = emuProcInterceptDsa_glCopyMultiTexSubImage1DEXT;
-  dt.glCopyMultiTexSubImage2DEXT                      = emuProcInterceptDsa_glCopyMultiTexSubImage2DEXT;
-  dt.glCopyMultiTexSubImage3DEXT                      = emuProcInterceptDsa_glCopyMultiTexSubImage3DEXT;
-  dt.glCopyTextureImage1DEXT                          = emuProcInterceptDsa_glCopyTextureImage1DEXT;
-  dt.glCopyTextureImage2DEXT                          = emuProcInterceptDsa_glCopyTextureImage2DEXT;
-  dt.glCopyTextureSubImage1DEXT                       = emuProcInterceptDsa_glCopyTextureSubImage1DEXT;
-  dt.glCopyTextureSubImage2DEXT                       = emuProcInterceptDsa_glCopyTextureSubImage2DEXT;
-  dt.glCopyTextureSubImage3DEXT                       = emuProcInterceptDsa_glCopyTextureSubImage3DEXT;
-  dt.glDeleteBuffers                                  = emuProcInterceptDsa_glDeleteBuffers;
-  dt.glDeleteBuffersARB                               = emuProcInterceptDsa_glDeleteBuffersARB;
-  dt.glDeleteFramebuffers                             = emuProcInterceptDsa_glDeleteFramebuffers;
-  dt.glDeleteFramebuffersEXT                          = emuProcInterceptDsa_glDeleteFramebuffersEXT;
-  dt.glDeleteFramebuffersOES                          = emuProcInterceptDsa_glDeleteFramebuffersOES;
-  dt.glDeleteProgram                                  = emuProcInterceptDsa_glDeleteProgram;
-  dt.glDeleteProgramsARB                              = emuProcInterceptDsa_glDeleteProgramsARB;
-  dt.glDeleteProgramsNV                               = emuProcInterceptDsa_glDeleteProgramsNV;
-  dt.glDeleteRenderbuffers                            = emuProcInterceptDsa_glDeleteRenderbuffers;
-  dt.glDeleteRenderbuffersEXT                         = emuProcInterceptDsa_glDeleteRenderbuffersEXT;
-  dt.glDeleteRenderbuffersOES                         = emuProcInterceptDsa_glDeleteRenderbuffersOES;
-  dt.glDeleteTextures                                 = emuProcInterceptDsa_glDeleteTextures;
-  dt.glDeleteTexturesEXT                              = emuProcInterceptDsa_glDeleteTexturesEXT;
-  dt.glDeleteVertexArrays                             = emuProcInterceptDsa_glDeleteVertexArrays;
-  dt.glDeleteVertexArraysAPPLE                        = emuProcInterceptDsa_glDeleteVertexArraysAPPLE;
-  dt.glDeleteVertexArraysOES                          = emuProcInterceptDsa_glDeleteVertexArraysOES;
-  dt.glDisable                                        = emuProcInterceptDsa_glDisable;
-  dt.glDisableClientState                             = emuProcInterceptDsa_glDisableClientState;
-  dt.glDisableClientStateIndexedEXT                   = emuProcInterceptDsa_glDisableClientStateIndexedEXT;
-  dt.glDisableClientStateiEXT                         = emuProcInterceptDsa_glDisableClientStateiEXT;
-  dt.glDisableIndexedEXT                              = emuProcInterceptDsa_glDisableIndexedEXT;
-  dt.glDisableVertexArrayAttribEXT                    = emuProcInterceptDsa_glDisableVertexArrayAttribEXT;
-  dt.glDisableVertexArrayEXT                          = emuProcInterceptDsa_glDisableVertexArrayEXT;
-  dt.glDrawArrays                                     = emuProcInterceptDsa_glDrawArrays;
-  dt.glDrawArraysEXT                                  = emuProcInterceptDsa_glDrawArraysEXT;
-  dt.glDrawArraysIndirect                             = emuProcInterceptDsa_glDrawArraysIndirect;
-  dt.glDrawArraysInstanced                            = emuProcInterceptDsa_glDrawArraysInstanced;
-  dt.glDrawArraysInstancedARB                         = emuProcInterceptDsa_glDrawArraysInstancedARB;
-  dt.glDrawArraysInstancedEXT                         = emuProcInterceptDsa_glDrawArraysInstancedEXT;
-  dt.glDrawElementArrayAPPLE                          = emuProcInterceptDsa_glDrawElementArrayAPPLE;
-  dt.glDrawElementArrayATI                            = emuProcInterceptDsa_glDrawElementArrayATI;
-  dt.glDrawElements                                   = emuProcInterceptDsa_glDrawElements;
-  dt.glDrawElementsBaseVertex                         = emuProcInterceptDsa_glDrawElementsBaseVertex;
-  dt.glDrawElementsIndirect                           = emuProcInterceptDsa_glDrawElementsIndirect;
-  dt.glDrawElementsInstanced                          = emuProcInterceptDsa_glDrawElementsInstanced;
-  dt.glDrawElementsInstancedARB                       = emuProcInterceptDsa_glDrawElementsInstancedARB;
-  dt.glDrawElementsInstancedBaseVertex                = emuProcInterceptDsa_glDrawElementsInstancedBaseVertex;
-  dt.glDrawElementsInstancedEXT                       = emuProcInterceptDsa_glDrawElementsInstancedEXT;
-  dt.glEnable                                         = emuProcInterceptDsa_glEnable;
-  dt.glEnableClientState                              = emuProcInterceptDsa_glEnableClientState;
-  dt.glEnableClientStateIndexedEXT                    = emuProcInterceptDsa_glEnableClientStateIndexedEXT;
-  dt.glEnableClientStateiEXT                          = emuProcInterceptDsa_glEnableClientStateiEXT;
-  dt.glEnableIndexedEXT                               = emuProcInterceptDsa_glEnableIndexedEXT;
-  dt.glEnableVertexArrayAttribEXT                     = emuProcInterceptDsa_glEnableVertexArrayAttribEXT;
-  dt.glEnableVertexArrayEXT                           = emuProcInterceptDsa_glEnableVertexArrayEXT;
-  dt.glFlushMappedBufferRange                         = emuProcInterceptDsa_glFlushMappedBufferRange;
-  dt.glFlushMappedBufferRangeEXT                      = emuProcInterceptDsa_glFlushMappedBufferRangeEXT;
-  dt.glFlushMappedNamedBufferRangeEXT                 = emuProcInterceptDsa_glFlushMappedNamedBufferRangeEXT;
-  dt.glFramebufferDrawBufferEXT                       = emuProcInterceptDsa_glFramebufferDrawBufferEXT;
-  dt.glFramebufferDrawBuffersEXT                      = emuProcInterceptDsa_glFramebufferDrawBuffersEXT;
-  dt.glFramebufferReadBufferEXT                       = emuProcInterceptDsa_glFramebufferReadBufferEXT;
-  dt.glFramebufferRenderbuffer                        = emuProcInterceptDsa_glFramebufferRenderbuffer;
-  dt.glFramebufferRenderbufferEXT                     = emuProcInterceptDsa_glFramebufferRenderbufferEXT;
-  dt.glFramebufferTexture                             = emuProcInterceptDsa_glFramebufferTexture;
-  dt.glFramebufferTexture1D                           = emuProcInterceptDsa_glFramebufferTexture1D;
-  dt.glFramebufferTexture1DEXT                        = emuProcInterceptDsa_glFramebufferTexture1DEXT;
-  dt.glFramebufferTexture2D                           = emuProcInterceptDsa_glFramebufferTexture2D;
-  dt.glFramebufferTexture2DEXT                        = emuProcInterceptDsa_glFramebufferTexture2DEXT;
-  dt.glFramebufferTexture3D                           = emuProcInterceptDsa_glFramebufferTexture3D;
-  dt.glFramebufferTexture3DEXT                        = emuProcInterceptDsa_glFramebufferTexture3DEXT;
-  dt.glFramebufferTextureARB                          = emuProcInterceptDsa_glFramebufferTextureARB;
-  dt.glFramebufferTextureEXT                          = emuProcInterceptDsa_glFramebufferTextureEXT;
-  dt.glFramebufferTextureFace                         = emuProcInterceptDsa_glFramebufferTextureFace;
-  dt.glFramebufferTextureFaceARB                      = emuProcInterceptDsa_glFramebufferTextureFaceARB;
-  dt.glFramebufferTextureFaceEXT                      = emuProcInterceptDsa_glFramebufferTextureFaceEXT;
-  dt.glFramebufferTextureLayer                        = emuProcInterceptDsa_glFramebufferTextureLayer;
-  dt.glFramebufferTextureLayerARB                     = emuProcInterceptDsa_glFramebufferTextureLayerARB;
-  dt.glFramebufferTextureLayerEXT                     = emuProcInterceptDsa_glFramebufferTextureLayerEXT;
-  dt.glGenerateMipmap                                 = emuProcInterceptDsa_glGenerateMipmap;
-  dt.glGenerateMipmapEXT                              = emuProcInterceptDsa_glGenerateMipmapEXT;
-  dt.glGenerateMultiTexMipmapEXT                      = emuProcInterceptDsa_glGenerateMultiTexMipmapEXT;
-  dt.glGenerateTextureMipmapEXT                       = emuProcInterceptDsa_glGenerateTextureMipmapEXT;
-  dt.glGetBooleanv                                    = emuProcInterceptDsa_glGetBooleanv;
-  dt.glGetBufferParameteriv                           = emuProcInterceptDsa_glGetBufferParameteriv;
-  dt.glGetBufferPointerv                              = emuProcInterceptDsa_glGetBufferPointerv;
-  dt.glGetBufferSubData                               = emuProcInterceptDsa_glGetBufferSubData;
-  dt.glGetCompressedMultiTexImageEXT                  = emuProcInterceptDsa_glGetCompressedMultiTexImageEXT;
-  dt.glGetCompressedTextureImageEXT                   = emuProcInterceptDsa_glGetCompressedTextureImageEXT;
-  dt.glGetDoubleIndexedvEXT                           = emuProcInterceptDsa_glGetDoubleIndexedvEXT;
-  dt.glGetDoublei_v                                   = emuProcInterceptDsa_glGetDoublei_v;
-  dt.glGetDoublei_vEXT                                = emuProcInterceptDsa_glGetDoublei_vEXT;
-  dt.glGetDoublev                                     = emuProcInterceptDsa_glGetDoublev;
-  dt.glGetFloatIndexedvEXT                            = emuProcInterceptDsa_glGetFloatIndexedvEXT;
-  dt.glGetFloati_v                                    = emuProcInterceptDsa_glGetFloati_v;
-  dt.glGetFloati_vEXT                                 = emuProcInterceptDsa_glGetFloati_vEXT;
-  dt.glGetFloatv                                      = emuProcInterceptDsa_glGetFloatv;
-  dt.glGetFramebufferParameterivEXT                   = emuProcInterceptDsa_glGetFramebufferParameterivEXT;
-  dt.glGetIntegerv                                    = emuProcInterceptDsa_glGetIntegerv;
-  dt.glGetMultiTexEnvfvEXT                            = emuProcInterceptDsa_glGetMultiTexEnvfvEXT;
-  dt.glGetMultiTexEnvivEXT                            = emuProcInterceptDsa_glGetMultiTexEnvivEXT;
-  dt.glGetMultiTexGendvEXT                            = emuProcInterceptDsa_glGetMultiTexGendvEXT;
-  dt.glGetMultiTexGenfvEXT                            = emuProcInterceptDsa_glGetMultiTexGenfvEXT;
-  dt.glGetMultiTexGenivEXT                            = emuProcInterceptDsa_glGetMultiTexGenivEXT;
-  dt.glGetMultiTexImageEXT                            = emuProcInterceptDsa_glGetMultiTexImageEXT;
-  dt.glGetMultiTexLevelParameterfvEXT                 = emuProcInterceptDsa_glGetMultiTexLevelParameterfvEXT;
-  dt.glGetMultiTexLevelParameterivEXT                 = emuProcInterceptDsa_glGetMultiTexLevelParameterivEXT;
-  dt.glGetMultiTexParameterIivEXT                     = emuProcInterceptDsa_glGetMultiTexParameterIivEXT;
-  dt.glGetMultiTexParameterIuivEXT                    = emuProcInterceptDsa_glGetMultiTexParameterIuivEXT;
-  dt.glGetMultiTexParameterfvEXT                      = emuProcInterceptDsa_glGetMultiTexParameterfvEXT;
-  dt.glGetMultiTexParameterivEXT                      = emuProcInterceptDsa_glGetMultiTexParameterivEXT;
-  dt.glGetNamedBufferParameterivEXT                   = emuProcInterceptDsa_glGetNamedBufferParameterivEXT;
-  dt.glGetNamedBufferPointervEXT                      = emuProcInterceptDsa_glGetNamedBufferPointervEXT;
-  dt.glGetNamedBufferSubDataEXT                       = emuProcInterceptDsa_glGetNamedBufferSubDataEXT;
-  dt.glGetNamedFramebufferAttachmentParameterivEXT    = emuProcInterceptDsa_glGetNamedFramebufferAttachmentParameterivEXT;
-  dt.glGetNamedProgramLocalParameterIivEXT            = emuProcInterceptDsa_glGetNamedProgramLocalParameterIivEXT;
-  dt.glGetNamedProgramLocalParameterIuivEXT           = emuProcInterceptDsa_glGetNamedProgramLocalParameterIuivEXT;
-  dt.glGetNamedProgramLocalParameterdvEXT             = emuProcInterceptDsa_glGetNamedProgramLocalParameterdvEXT;
-  dt.glGetNamedProgramLocalParameterfvEXT             = emuProcInterceptDsa_glGetNamedProgramLocalParameterfvEXT;
-  dt.glGetNamedProgramStringEXT                       = emuProcInterceptDsa_glGetNamedProgramStringEXT;
-  dt.glGetNamedProgramivEXT                           = emuProcInterceptDsa_glGetNamedProgramivEXT;
-  dt.glGetNamedRenderbufferParameterivEXT             = emuProcInterceptDsa_glGetNamedRenderbufferParameterivEXT;
-  dt.glGetPointerIndexedvEXT                          = emuProcInterceptDsa_glGetPointerIndexedvEXT;
-  dt.glGetProgramEnvParameterIivNV                    = emuProcInterceptDsa_glGetProgramEnvParameterIivNV;
-  dt.glGetProgramEnvParameterIuivNV                   = emuProcInterceptDsa_glGetProgramEnvParameterIuivNV;
-  dt.glGetProgramEnvParameterdvARB                    = emuProcInterceptDsa_glGetProgramEnvParameterdvARB;
-  dt.glGetProgramEnvParameterfvARB                    = emuProcInterceptDsa_glGetProgramEnvParameterfvARB;
-  dt.glGetProgramLocalParameterIivNV                  = emuProcInterceptDsa_glGetProgramLocalParameterIivNV;
-  dt.glGetProgramLocalParameterIuivNV                 = emuProcInterceptDsa_glGetProgramLocalParameterIuivNV;
-  dt.glGetProgramLocalParameterdvARB                  = emuProcInterceptDsa_glGetProgramLocalParameterdvARB;
-  dt.glGetProgramLocalParameterfvARB                  = emuProcInterceptDsa_glGetProgramLocalParameterfvARB;
-  dt.glGetRenderbufferParameteriv                     = emuProcInterceptDsa_glGetRenderbufferParameteriv;
-  dt.glGetRenderbufferParameterivEXT                  = emuProcInterceptDsa_glGetRenderbufferParameterivEXT;
-  dt.glGetTexEnvfv                                    = emuProcInterceptDsa_glGetTexEnvfv;
-  dt.glGetTexEnviv                                    = emuProcInterceptDsa_glGetTexEnviv;
-  dt.glGetTexParameterfv                              = emuProcInterceptDsa_glGetTexParameterfv;
-  dt.glGetTexParameteriv                              = emuProcInterceptDsa_glGetTexParameteriv;
-  dt.glGetTextureImageEXT                             = emuProcInterceptDsa_glGetTextureImageEXT;
-  dt.glGetTextureLevelParameterfvEXT                  = emuProcInterceptDsa_glGetTextureLevelParameterfvEXT;
-  dt.glGetTextureLevelParameterivEXT                  = emuProcInterceptDsa_glGetTextureLevelParameterivEXT;
-  dt.glGetTextureParameterIivEXT                      = emuProcInterceptDsa_glGetTextureParameterIivEXT;
-  dt.glGetTextureParameterIuivEXT                     = emuProcInterceptDsa_glGetTextureParameterIuivEXT;
-  dt.glGetTextureParameterfvEXT                       = emuProcInterceptDsa_glGetTextureParameterfvEXT;
-  dt.glGetTextureParameterivEXT                       = emuProcInterceptDsa_glGetTextureParameterivEXT;
-  dt.glIsEnabled                                      = emuProcInterceptDsa_glIsEnabled;
-  dt.glIsEnabledIndexedEXT                            = emuProcInterceptDsa_glIsEnabledIndexedEXT;
-  dt.glLoadIdentity                                   = emuProcInterceptDsa_glLoadIdentity;
-  dt.glLoadMatrixd                                    = emuProcInterceptDsa_glLoadMatrixd;
-  dt.glLoadMatrixf                                    = emuProcInterceptDsa_glLoadMatrixf;
-  dt.glLoadTransposeMatrixd                           = emuProcInterceptDsa_glLoadTransposeMatrixd;
-  dt.glLoadTransposeMatrixf                           = emuProcInterceptDsa_glLoadTransposeMatrixf;
-  dt.glMapBuffer                                      = emuProcInterceptDsa_glMapBuffer;
-  dt.glMapBufferARB                                   = emuProcInterceptDsa_glMapBufferARB;
-  dt.glMapBufferRange                                 = emuProcInterceptDsa_glMapBufferRange;
-  dt.glMapBufferRangeEXT                              = emuProcInterceptDsa_glMapBufferRangeEXT;
-  dt.glMapNamedBufferEXT                              = emuProcInterceptDsa_glMapNamedBufferEXT;
-  dt.glMapNamedBufferRangeEXT                         = emuProcInterceptDsa_glMapNamedBufferRangeEXT;
-  dt.glMatrixFrustumEXT                               = emuProcInterceptDsa_glMatrixFrustumEXT;
-  dt.glMatrixLoadIdentityEXT                          = emuProcInterceptDsa_glMatrixLoadIdentityEXT;
-  dt.glMatrixLoadTransposedEXT                        = emuProcInterceptDsa_glMatrixLoadTransposedEXT;
-  dt.glMatrixLoadTransposefEXT                        = emuProcInterceptDsa_glMatrixLoadTransposefEXT;
-  dt.glMatrixLoaddEXT                                 = emuProcInterceptDsa_glMatrixLoaddEXT;
-  dt.glMatrixLoadfEXT                                 = emuProcInterceptDsa_glMatrixLoadfEXT;
-  dt.glMatrixMode                                     = emuProcInterceptDsa_glMatrixMode;
-  dt.glMatrixMultTransposedEXT                        = emuProcInterceptDsa_glMatrixMultTransposedEXT;
-  dt.glMatrixMultTransposefEXT                        = emuProcInterceptDsa_glMatrixMultTransposefEXT;
-  dt.glMatrixMultdEXT                                 = emuProcInterceptDsa_glMatrixMultdEXT;
-  dt.glMatrixMultfEXT                                 = emuProcInterceptDsa_glMatrixMultfEXT;
-  dt.glMatrixOrthoEXT                                 = emuProcInterceptDsa_glMatrixOrthoEXT;
-  dt.glMatrixPopEXT                                   = emuProcInterceptDsa_glMatrixPopEXT;
-  dt.glMatrixPushEXT                                  = emuProcInterceptDsa_glMatrixPushEXT;
-  dt.glMatrixRotatedEXT                               = emuProcInterceptDsa_glMatrixRotatedEXT;
-  dt.glMatrixRotatefEXT                               = emuProcInterceptDsa_glMatrixRotatefEXT;
-  dt.glMatrixScaledEXT                                = emuProcInterceptDsa_glMatrixScaledEXT;
-  dt.glMatrixScalefEXT                                = emuProcInterceptDsa_glMatrixScalefEXT;
-  dt.glMatrixTranslatedEXT                            = emuProcInterceptDsa_glMatrixTranslatedEXT;
-  dt.glMatrixTranslatefEXT                            = emuProcInterceptDsa_glMatrixTranslatefEXT;
-  dt.glMultMatrixd                                    = emuProcInterceptDsa_glMultMatrixd;
-  dt.glMultMatrixf                                    = emuProcInterceptDsa_glMultMatrixf;
-  dt.glMultTransposeMatrixd                           = emuProcInterceptDsa_glMultTransposeMatrixd;
-  dt.glMultTransposeMatrixf                           = emuProcInterceptDsa_glMultTransposeMatrixf;
-  dt.glMultiDrawArrays                                = emuProcInterceptDsa_glMultiDrawArrays;
-  dt.glMultiDrawArraysEXT                             = emuProcInterceptDsa_glMultiDrawArraysEXT;
-  dt.glMultiDrawArraysIndirect                        = emuProcInterceptDsa_glMultiDrawArraysIndirect;
-  dt.glMultiDrawArraysIndirectAMD                     = emuProcInterceptDsa_glMultiDrawArraysIndirectAMD;
-  dt.glMultiDrawElementArrayAPPLE                     = emuProcInterceptDsa_glMultiDrawElementArrayAPPLE;
-  dt.glMultiDrawElements                              = emuProcInterceptDsa_glMultiDrawElements;
-  dt.glMultiDrawElementsBaseVertex                    = emuProcInterceptDsa_glMultiDrawElementsBaseVertex;
-  dt.glMultiDrawElementsEXT                           = emuProcInterceptDsa_glMultiDrawElementsEXT;
-  dt.glMultiDrawElementsIndirect                      = emuProcInterceptDsa_glMultiDrawElementsIndirect;
-  dt.glMultiDrawElementsIndirectAMD                   = emuProcInterceptDsa_glMultiDrawElementsIndirectAMD;
-  dt.glMultiTexBufferEXT                              = emuProcInterceptDsa_glMultiTexBufferEXT;
-  dt.glMultiTexCoordPointerEXT                        = emuProcInterceptDsa_glMultiTexCoordPointerEXT;
-  dt.glMultiTexEnvfEXT                                = emuProcInterceptDsa_glMultiTexEnvfEXT;
-  dt.glMultiTexEnvfvEXT                               = emuProcInterceptDsa_glMultiTexEnvfvEXT;
-  dt.glMultiTexEnviEXT                                = emuProcInterceptDsa_glMultiTexEnviEXT;
-  dt.glMultiTexEnvivEXT                               = emuProcInterceptDsa_glMultiTexEnvivEXT;
-  dt.glMultiTexGendEXT                                = emuProcInterceptDsa_glMultiTexGendEXT;
-  dt.glMultiTexGendvEXT                               = emuProcInterceptDsa_glMultiTexGendvEXT;
-  dt.glMultiTexGenfEXT                                = emuProcInterceptDsa_glMultiTexGenfEXT;
-  dt.glMultiTexGenfvEXT                               = emuProcInterceptDsa_glMultiTexGenfvEXT;
-  dt.glMultiTexGeniEXT                                = emuProcInterceptDsa_glMultiTexGeniEXT;
-  dt.glMultiTexGenivEXT                               = emuProcInterceptDsa_glMultiTexGenivEXT;
-  dt.glMultiTexImage1DEXT                             = emuProcInterceptDsa_glMultiTexImage1DEXT;
-  dt.glMultiTexImage2DEXT                             = emuProcInterceptDsa_glMultiTexImage2DEXT;
-  dt.glMultiTexImage3DEXT                             = emuProcInterceptDsa_glMultiTexImage3DEXT;
-  dt.glMultiTexParameterIivEXT                        = emuProcInterceptDsa_glMultiTexParameterIivEXT;
-  dt.glMultiTexParameterIuivEXT                       = emuProcInterceptDsa_glMultiTexParameterIuivEXT;
-  dt.glMultiTexParameterfEXT                          = emuProcInterceptDsa_glMultiTexParameterfEXT;
-  dt.glMultiTexParameterfvEXT                         = emuProcInterceptDsa_glMultiTexParameterfvEXT;
-  dt.glMultiTexParameteriEXT                          = emuProcInterceptDsa_glMultiTexParameteriEXT;
-  dt.glMultiTexParameterivEXT                         = emuProcInterceptDsa_glMultiTexParameterivEXT;
-  dt.glMultiTexRenderbufferEXT                        = emuProcInterceptDsa_glMultiTexRenderbufferEXT;
-  dt.glMultiTexSubImage1DEXT                          = emuProcInterceptDsa_glMultiTexSubImage1DEXT;
-  dt.glMultiTexSubImage2DEXT                          = emuProcInterceptDsa_glMultiTexSubImage2DEXT;
-  dt.glMultiTexSubImage3DEXT                          = emuProcInterceptDsa_glMultiTexSubImage3DEXT;
-  dt.glNamedBufferDataEXT                             = emuProcInterceptDsa_glNamedBufferDataEXT;
-  dt.glNamedBufferSubDataEXT                          = emuProcInterceptDsa_glNamedBufferSubDataEXT;
-  dt.glNamedCopyBufferSubDataEXT                      = emuProcInterceptDsa_glNamedCopyBufferSubDataEXT;
-  dt.glNamedFramebufferRenderbufferEXT                = emuProcInterceptDsa_glNamedFramebufferRenderbufferEXT;
-  dt.glNamedFramebufferTexture1DEXT                   = emuProcInterceptDsa_glNamedFramebufferTexture1DEXT;
-  dt.glNamedFramebufferTexture2DEXT                   = emuProcInterceptDsa_glNamedFramebufferTexture2DEXT;
-  dt.glNamedFramebufferTexture3DEXT                   = emuProcInterceptDsa_glNamedFramebufferTexture3DEXT;
-  dt.glNamedFramebufferTextureEXT                     = emuProcInterceptDsa_glNamedFramebufferTextureEXT;
-  dt.glNamedFramebufferTextureFaceEXT                 = emuProcInterceptDsa_glNamedFramebufferTextureFaceEXT;
-  dt.glNamedFramebufferTextureLayerEXT                = emuProcInterceptDsa_glNamedFramebufferTextureLayerEXT;
-  dt.glNamedProgramLocalParameter4dEXT                = emuProcInterceptDsa_glNamedProgramLocalParameter4dEXT;
-  dt.glNamedProgramLocalParameter4dvEXT               = emuProcInterceptDsa_glNamedProgramLocalParameter4dvEXT;
-  dt.glNamedProgramLocalParameter4fEXT                = emuProcInterceptDsa_glNamedProgramLocalParameter4fEXT;
-  dt.glNamedProgramLocalParameter4fvEXT               = emuProcInterceptDsa_glNamedProgramLocalParameter4fvEXT;
-  dt.glNamedProgramLocalParameterI4iEXT               = emuProcInterceptDsa_glNamedProgramLocalParameterI4iEXT;
-  dt.glNamedProgramLocalParameterI4ivEXT              = emuProcInterceptDsa_glNamedProgramLocalParameterI4ivEXT;
-  dt.glNamedProgramLocalParameterI4uiEXT              = emuProcInterceptDsa_glNamedProgramLocalParameterI4uiEXT;
-  dt.glNamedProgramLocalParameterI4uivEXT             = emuProcInterceptDsa_glNamedProgramLocalParameterI4uivEXT;
-  dt.glNamedProgramLocalParameters4fvEXT              = emuProcInterceptDsa_glNamedProgramLocalParameters4fvEXT;
-  dt.glNamedProgramLocalParametersI4ivEXT             = emuProcInterceptDsa_glNamedProgramLocalParametersI4ivEXT;
-  dt.glNamedProgramLocalParametersI4uivEXT            = emuProcInterceptDsa_glNamedProgramLocalParametersI4uivEXT;
-  dt.glNamedProgramStringEXT                          = emuProcInterceptDsa_glNamedProgramStringEXT;
-  dt.glNamedRenderbufferStorageEXT                    = emuProcInterceptDsa_glNamedRenderbufferStorageEXT;
-  dt.glNamedRenderbufferStorageMultisampleCoverageEXT = emuProcInterceptDsa_glNamedRenderbufferStorageMultisampleCoverageEXT;
-  dt.glNamedRenderbufferStorageMultisampleEXT         = emuProcInterceptDsa_glNamedRenderbufferStorageMultisampleEXT;
-  dt.glNormalPointer                                  = emuProcInterceptDsa_glNormalPointer;
-  dt.glPopMatrix                                      = emuProcInterceptDsa_glPopMatrix;
-  dt.glProgramEnvParameter4dARB                       = emuProcInterceptDsa_glProgramEnvParameter4dARB;
-  dt.glProgramEnvParameter4dvARB                      = emuProcInterceptDsa_glProgramEnvParameter4dvARB;
-  dt.glProgramEnvParameter4fARB                       = emuProcInterceptDsa_glProgramEnvParameter4fARB;
-  dt.glProgramEnvParameter4fvARB                      = emuProcInterceptDsa_glProgramEnvParameter4fvARB;
-  dt.glProgramEnvParameterI4iNV                       = emuProcInterceptDsa_glProgramEnvParameterI4iNV;
-  dt.glProgramEnvParameterI4ivNV                      = emuProcInterceptDsa_glProgramEnvParameterI4ivNV;
-  dt.glProgramEnvParameterI4uiNV                      = emuProcInterceptDsa_glProgramEnvParameterI4uiNV;
-  dt.glProgramEnvParameterI4uivNV                     = emuProcInterceptDsa_glProgramEnvParameterI4uivNV;
-  dt.glProgramEnvParametersI4ivNV                     = emuProcInterceptDsa_glProgramEnvParametersI4ivNV;
-  dt.glProgramEnvParametersI4uivNV                    = emuProcInterceptDsa_glProgramEnvParametersI4uivNV;
-  dt.glProgramLocalParameter4dARB                     = emuProcInterceptDsa_glProgramLocalParameter4dARB;
-  dt.glProgramLocalParameter4dvARB                    = emuProcInterceptDsa_glProgramLocalParameter4dvARB;
-  dt.glProgramLocalParameter4fARB                     = emuProcInterceptDsa_glProgramLocalParameter4fARB;
-  dt.glProgramLocalParameter4fvARB                    = emuProcInterceptDsa_glProgramLocalParameter4fvARB;
-  dt.glProgramLocalParameterI4iNV                     = emuProcInterceptDsa_glProgramLocalParameterI4iNV;
-  dt.glProgramLocalParameterI4ivNV                    = emuProcInterceptDsa_glProgramLocalParameterI4ivNV;
-  dt.glProgramLocalParameterI4uiNV                    = emuProcInterceptDsa_glProgramLocalParameterI4uiNV;
-  dt.glProgramLocalParameterI4uivNV                   = emuProcInterceptDsa_glProgramLocalParameterI4uivNV;
-  dt.glProgramLocalParametersI4ivNV                   = emuProcInterceptDsa_glProgramLocalParametersI4ivNV;
-  dt.glProgramLocalParametersI4uivNV                  = emuProcInterceptDsa_glProgramLocalParametersI4uivNV;
-  dt.glProgramUniform1dEXT                            = emuProcInterceptDsa_glProgramUniform1dEXT;
-  dt.glProgramUniform1dvEXT                           = emuProcInterceptDsa_glProgramUniform1dvEXT;
-  dt.glProgramUniform1fEXT                            = emuProcInterceptDsa_glProgramUniform1fEXT;
-  dt.glProgramUniform1fvEXT                           = emuProcInterceptDsa_glProgramUniform1fvEXT;
-  dt.glProgramUniform1iEXT                            = emuProcInterceptDsa_glProgramUniform1iEXT;
-  dt.glProgramUniform1ivEXT                           = emuProcInterceptDsa_glProgramUniform1ivEXT;
-  dt.glProgramUniform1uiEXT                           = emuProcInterceptDsa_glProgramUniform1uiEXT;
-  dt.glProgramUniform1uivEXT                          = emuProcInterceptDsa_glProgramUniform1uivEXT;
-  dt.glProgramUniform2dEXT                            = emuProcInterceptDsa_glProgramUniform2dEXT;
-  dt.glProgramUniform2dvEXT                           = emuProcInterceptDsa_glProgramUniform2dvEXT;
-  dt.glProgramUniform2fEXT                            = emuProcInterceptDsa_glProgramUniform2fEXT;
-  dt.glProgramUniform2fvEXT                           = emuProcInterceptDsa_glProgramUniform2fvEXT;
-  dt.glProgramUniform2iEXT                            = emuProcInterceptDsa_glProgramUniform2iEXT;
-  dt.glProgramUniform2ivEXT                           = emuProcInterceptDsa_glProgramUniform2ivEXT;
-  dt.glProgramUniform2uiEXT                           = emuProcInterceptDsa_glProgramUniform2uiEXT;
-  dt.glProgramUniform2uivEXT                          = emuProcInterceptDsa_glProgramUniform2uivEXT;
-  dt.glProgramUniform3dEXT                            = emuProcInterceptDsa_glProgramUniform3dEXT;
-  dt.glProgramUniform3dvEXT                           = emuProcInterceptDsa_glProgramUniform3dvEXT;
-  dt.glProgramUniform3fEXT                            = emuProcInterceptDsa_glProgramUniform3fEXT;
-  dt.glProgramUniform3fvEXT                           = emuProcInterceptDsa_glProgramUniform3fvEXT;
-  dt.glProgramUniform3iEXT                            = emuProcInterceptDsa_glProgramUniform3iEXT;
-  dt.glProgramUniform3ivEXT                           = emuProcInterceptDsa_glProgramUniform3ivEXT;
-  dt.glProgramUniform3uiEXT                           = emuProcInterceptDsa_glProgramUniform3uiEXT;
-  dt.glProgramUniform3uivEXT                          = emuProcInterceptDsa_glProgramUniform3uivEXT;
-  dt.glProgramUniform4dEXT                            = emuProcInterceptDsa_glProgramUniform4dEXT;
-  dt.glProgramUniform4dvEXT                           = emuProcInterceptDsa_glProgramUniform4dvEXT;
-  dt.glProgramUniform4fEXT                            = emuProcInterceptDsa_glProgramUniform4fEXT;
-  dt.glProgramUniform4fvEXT                           = emuProcInterceptDsa_glProgramUniform4fvEXT;
-  dt.glProgramUniform4iEXT                            = emuProcInterceptDsa_glProgramUniform4iEXT;
-  dt.glProgramUniform4ivEXT                           = emuProcInterceptDsa_glProgramUniform4ivEXT;
-  dt.glProgramUniform4uiEXT                           = emuProcInterceptDsa_glProgramUniform4uiEXT;
-  dt.glProgramUniform4uivEXT                          = emuProcInterceptDsa_glProgramUniform4uivEXT;
-  dt.glProgramUniformMatrix2dvEXT                     = emuProcInterceptDsa_glProgramUniformMatrix2dvEXT;
-  dt.glProgramUniformMatrix2fvEXT                     = emuProcInterceptDsa_glProgramUniformMatrix2fvEXT;
-  dt.glProgramUniformMatrix2x3dvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix2x3dvEXT;
-  dt.glProgramUniformMatrix2x3fvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix2x3fvEXT;
-  dt.glProgramUniformMatrix2x4dvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix2x4dvEXT;
-  dt.glProgramUniformMatrix2x4fvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix2x4fvEXT;
-  dt.glProgramUniformMatrix3dvEXT                     = emuProcInterceptDsa_glProgramUniformMatrix3dvEXT;
-  dt.glProgramUniformMatrix3fvEXT                     = emuProcInterceptDsa_glProgramUniformMatrix3fvEXT;
-  dt.glProgramUniformMatrix3x2dvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix3x2dvEXT;
-  dt.glProgramUniformMatrix3x2fvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix3x2fvEXT;
-  dt.glProgramUniformMatrix3x4dvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix3x4dvEXT;
-  dt.glProgramUniformMatrix3x4fvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix3x4fvEXT;
-  dt.glProgramUniformMatrix4dvEXT                     = emuProcInterceptDsa_glProgramUniformMatrix4dvEXT;
-  dt.glProgramUniformMatrix4fvEXT                     = emuProcInterceptDsa_glProgramUniformMatrix4fvEXT;
-  dt.glProgramUniformMatrix4x2dvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix4x2dvEXT;
-  dt.glProgramUniformMatrix4x2fvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix4x2fvEXT;
-  dt.glProgramUniformMatrix4x3dvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix4x3dvEXT;
-  dt.glProgramUniformMatrix4x3fvEXT                   = emuProcInterceptDsa_glProgramUniformMatrix4x3fvEXT;
-  dt.glPushClientAttribDefaultEXT                     = emuProcInterceptDsa_glPushClientAttribDefaultEXT;
-  dt.glPushMatrix                                     = emuProcInterceptDsa_glPushMatrix;
-  dt.glRenderbufferStorage                            = emuProcInterceptDsa_glRenderbufferStorage;
-  dt.glRenderbufferStorageEXT                         = emuProcInterceptDsa_glRenderbufferStorageEXT;
-  dt.glRenderbufferStorageMultisample                 = emuProcInterceptDsa_glRenderbufferStorageMultisample;
-  dt.glRenderbufferStorageMultisampleCoverageNV       = emuProcInterceptDsa_glRenderbufferStorageMultisampleCoverageNV;
-  dt.glRenderbufferStorageMultisampleEXT              = emuProcInterceptDsa_glRenderbufferStorageMultisampleEXT;
-  dt.glRotated                                        = emuProcInterceptDsa_glRotated;
-  dt.glRotatef                                        = emuProcInterceptDsa_glRotatef;
-  dt.glScaled                                         = emuProcInterceptDsa_glScaled;
-  dt.glScalef                                         = emuProcInterceptDsa_glScalef;
-  dt.glSecondaryColorPointer                          = emuProcInterceptDsa_glSecondaryColorPointer;
-  dt.glTexBuffer                                      = emuProcInterceptDsa_glTexBuffer;
-  dt.glTexCoordPointer                                = emuProcInterceptDsa_glTexCoordPointer;
-  dt.glTexEnvf                                        = emuProcInterceptDsa_glTexEnvf;
-  dt.glTexEnvfv                                       = emuProcInterceptDsa_glTexEnvfv;
-  dt.glTexEnvi                                        = emuProcInterceptDsa_glTexEnvi;
-  dt.glTexEnviv                                       = emuProcInterceptDsa_glTexEnviv;
-  dt.glTexGenf                                        = emuProcInterceptDsa_glTexGenf;
-  dt.glTexGenfv                                       = emuProcInterceptDsa_glTexGenfv;
-  dt.glTexGeni                                        = emuProcInterceptDsa_glTexGeni;
-  dt.glTexGeniv                                       = emuProcInterceptDsa_glTexGeniv;
-  dt.glTexParameterf                                  = emuProcInterceptDsa_glTexParameterf;
-  dt.glTexParameterfv                                 = emuProcInterceptDsa_glTexParameterfv;
-  dt.glTexParameteri                                  = emuProcInterceptDsa_glTexParameteri;
-  dt.glTexParameteriv                                 = emuProcInterceptDsa_glTexParameteriv;
-  dt.glTexRenderbufferNV                              = emuProcInterceptDsa_glTexRenderbufferNV;
-  dt.glTextureBufferEXT                               = emuProcInterceptDsa_glTextureBufferEXT;
-  dt.glTextureImage1DEXT                              = emuProcInterceptDsa_glTextureImage1DEXT;
-  dt.glTextureImage2DEXT                              = emuProcInterceptDsa_glTextureImage2DEXT;
-  dt.glTextureImage3DEXT                              = emuProcInterceptDsa_glTextureImage3DEXT;
-  dt.glTextureParameterIivEXT                         = emuProcInterceptDsa_glTextureParameterIivEXT;
-  dt.glTextureParameterIuivEXT                        = emuProcInterceptDsa_glTextureParameterIuivEXT;
-  dt.glTextureParameterfEXT                           = emuProcInterceptDsa_glTextureParameterfEXT;
-  dt.glTextureParameterfvEXT                          = emuProcInterceptDsa_glTextureParameterfvEXT;
-  dt.glTextureParameteriEXT                           = emuProcInterceptDsa_glTextureParameteriEXT;
-  dt.glTextureParameterivEXT                          = emuProcInterceptDsa_glTextureParameterivEXT;
-  dt.glTextureRenderbufferEXT                         = emuProcInterceptDsa_glTextureRenderbufferEXT;
-  dt.glTextureStorage1DEXT                            = emuProcInterceptDsa_glTextureStorage1DEXT;
-  dt.glTextureStorage2DEXT                            = emuProcInterceptDsa_glTextureStorage2DEXT;
-  dt.glTextureStorage3DEXT                            = emuProcInterceptDsa_glTextureStorage3DEXT;
-  dt.glTextureSubImage1DEXT                           = emuProcInterceptDsa_glTextureSubImage1DEXT;
-  dt.glTextureSubImage2DEXT                           = emuProcInterceptDsa_glTextureSubImage2DEXT;
-  dt.glTextureSubImage3DEXT                           = emuProcInterceptDsa_glTextureSubImage3DEXT;
-  dt.glTranslated                                     = emuProcInterceptDsa_glTranslated;
-  dt.glTranslatef                                     = emuProcInterceptDsa_glTranslatef;
-  dt.glUniform1d                                      = emuProcInterceptDsa_glUniform1d;
-  dt.glUniform1dv                                     = emuProcInterceptDsa_glUniform1dv;
-  dt.glUniform1f                                      = emuProcInterceptDsa_glUniform1f;
-  dt.glUniform1fv                                     = emuProcInterceptDsa_glUniform1fv;
-  dt.glUniform1i                                      = emuProcInterceptDsa_glUniform1i;
-  dt.glUniform1iv                                     = emuProcInterceptDsa_glUniform1iv;
-  dt.glUniform1ui                                     = emuProcInterceptDsa_glUniform1ui;
-  dt.glUniform1uiv                                    = emuProcInterceptDsa_glUniform1uiv;
-  dt.glUniform2d                                      = emuProcInterceptDsa_glUniform2d;
-  dt.glUniform2dv                                     = emuProcInterceptDsa_glUniform2dv;
-  dt.glUniform2f                                      = emuProcInterceptDsa_glUniform2f;
-  dt.glUniform2fv                                     = emuProcInterceptDsa_glUniform2fv;
-  dt.glUniform2i                                      = emuProcInterceptDsa_glUniform2i;
-  dt.glUniform2iv                                     = emuProcInterceptDsa_glUniform2iv;
-  dt.glUniform2ui                                     = emuProcInterceptDsa_glUniform2ui;
-  dt.glUniform2uiv                                    = emuProcInterceptDsa_glUniform2uiv;
-  dt.glUniform3d                                      = emuProcInterceptDsa_glUniform3d;
-  dt.glUniform3dv                                     = emuProcInterceptDsa_glUniform3dv;
-  dt.glUniform3f                                      = emuProcInterceptDsa_glUniform3f;
-  dt.glUniform3fv                                     = emuProcInterceptDsa_glUniform3fv;
-  dt.glUniform3i                                      = emuProcInterceptDsa_glUniform3i;
-  dt.glUniform3iv                                     = emuProcInterceptDsa_glUniform3iv;
-  dt.glUniform3ui                                     = emuProcInterceptDsa_glUniform3ui;
-  dt.glUniform3uiv                                    = emuProcInterceptDsa_glUniform3uiv;
-  dt.glUniform4d                                      = emuProcInterceptDsa_glUniform4d;
-  dt.glUniform4dv                                     = emuProcInterceptDsa_glUniform4dv;
-  dt.glUniform4f                                      = emuProcInterceptDsa_glUniform4f;
-  dt.glUniform4fv                                     = emuProcInterceptDsa_glUniform4fv;
-  dt.glUniform4i                                      = emuProcInterceptDsa_glUniform4i;
-  dt.glUniform4iv                                     = emuProcInterceptDsa_glUniform4iv;
-  dt.glUniform4ui                                     = emuProcInterceptDsa_glUniform4ui;
-  dt.glUniform4uiv                                    = emuProcInterceptDsa_glUniform4uiv;
-  dt.glUniformMatrix2dv                               = emuProcInterceptDsa_glUniformMatrix2dv;
-  dt.glUniformMatrix2fv                               = emuProcInterceptDsa_glUniformMatrix2fv;
-  dt.glUniformMatrix2x3dv                             = emuProcInterceptDsa_glUniformMatrix2x3dv;
-  dt.glUniformMatrix2x3fv                             = emuProcInterceptDsa_glUniformMatrix2x3fv;
-  dt.glUniformMatrix2x4dv                             = emuProcInterceptDsa_glUniformMatrix2x4dv;
-  dt.glUniformMatrix2x4fv                             = emuProcInterceptDsa_glUniformMatrix2x4fv;
-  dt.glUniformMatrix3dv                               = emuProcInterceptDsa_glUniformMatrix3dv;
-  dt.glUniformMatrix3fv                               = emuProcInterceptDsa_glUniformMatrix3fv;
-  dt.glUniformMatrix3x2dv                             = emuProcInterceptDsa_glUniformMatrix3x2dv;
-  dt.glUniformMatrix3x2fv                             = emuProcInterceptDsa_glUniformMatrix3x2fv;
-  dt.glUniformMatrix3x4dv                             = emuProcInterceptDsa_glUniformMatrix3x4dv;
-  dt.glUniformMatrix3x4fv                             = emuProcInterceptDsa_glUniformMatrix3x4fv;
-  dt.glUniformMatrix4dv                               = emuProcInterceptDsa_glUniformMatrix4dv;
-  dt.glUniformMatrix4fv                               = emuProcInterceptDsa_glUniformMatrix4fv;
-  dt.glUniformMatrix4x2dv                             = emuProcInterceptDsa_glUniformMatrix4x2dv;
-  dt.glUniformMatrix4x2fv                             = emuProcInterceptDsa_glUniformMatrix4x2fv;
-  dt.glUniformMatrix4x3dv                             = emuProcInterceptDsa_glUniformMatrix4x3dv;
-  dt.glUniformMatrix4x3fv                             = emuProcInterceptDsa_glUniformMatrix4x3fv;
-  dt.glUnmapBuffer                                    = emuProcInterceptDsa_glUnmapBuffer;
-  dt.glUnmapBufferARB                                 = emuProcInterceptDsa_glUnmapBufferARB;
-  dt.glUnmapNamedBufferEXT                            = emuProcInterceptDsa_glUnmapNamedBufferEXT;
-  dt.glUseProgram                                     = emuProcInterceptDsa_glUseProgram;
-  dt.glVertexArrayColorOffsetEXT                      = emuProcInterceptDsa_glVertexArrayColorOffsetEXT;
-  dt.glVertexArrayEdgeFlagOffsetEXT                   = emuProcInterceptDsa_glVertexArrayEdgeFlagOffsetEXT;
-  dt.glVertexArrayFogCoordOffsetEXT                   = emuProcInterceptDsa_glVertexArrayFogCoordOffsetEXT;
-  dt.glVertexArrayIndexOffsetEXT                      = emuProcInterceptDsa_glVertexArrayIndexOffsetEXT;
-  dt.glVertexArrayMultiTexCoordOffsetEXT              = emuProcInterceptDsa_glVertexArrayMultiTexCoordOffsetEXT;
-  dt.glVertexArrayNormalOffsetEXT                     = emuProcInterceptDsa_glVertexArrayNormalOffsetEXT;
-  dt.glVertexArraySecondaryColorOffsetEXT             = emuProcInterceptDsa_glVertexArraySecondaryColorOffsetEXT;
-  dt.glVertexArrayTexCoordOffsetEXT                   = emuProcInterceptDsa_glVertexArrayTexCoordOffsetEXT;
-  dt.glVertexArrayVertexAttribIOffsetEXT              = emuProcInterceptDsa_glVertexArrayVertexAttribIOffsetEXT;
-  dt.glVertexArrayVertexAttribOffsetEXT               = emuProcInterceptDsa_glVertexArrayVertexAttribOffsetEXT;
-  dt.glVertexArrayVertexOffsetEXT                     = emuProcInterceptDsa_glVertexArrayVertexOffsetEXT;
-  dt.glVertexPointer                                  = emuProcInterceptDsa_glVertexPointer;
+void DsaIntercept( Dispatch::GL & dt ) {
+  dt.glActiveTexture                                       = Dsa_glActiveTexture;
+  dt.glActiveTexture_layer                                  = Dsa_glActiveTexture;
+  dt.glActiveTextureARB                                    = Dsa_glActiveTextureARB;
+  dt.glActiveTextureARB_layer                               = Dsa_glActiveTextureARB;
+  dt.glBegin                                               = Dsa_glBegin;
+  dt.glBegin_layer                                          = Dsa_glBegin;
+  dt.glBindBuffer                                          = Dsa_glBindBuffer;
+  dt.glBindBuffer_layer                                     = Dsa_glBindBuffer;
+  dt.glBindBufferARB                                       = Dsa_glBindBufferARB;
+  dt.glBindBufferARB_layer                                  = Dsa_glBindBufferARB;
+  dt.glBindFramebuffer                                     = Dsa_glBindFramebuffer;
+  dt.glBindFramebuffer_layer                                = Dsa_glBindFramebuffer;
+  dt.glBindFramebufferEXT                                  = Dsa_glBindFramebufferEXT;
+  dt.glBindFramebufferEXT_layer                             = Dsa_glBindFramebufferEXT;
+  dt.glBindMultiTextureEXT                                 = Dsa_glBindMultiTextureEXT;
+  dt.glBindMultiTextureEXT_layer                            = Dsa_glBindMultiTextureEXT;
+  dt.glBindProgramARB                                      = Dsa_glBindProgramARB;
+  dt.glBindProgramARB_layer                                 = Dsa_glBindProgramARB;
+  dt.glBindRenderbuffer                                    = Dsa_glBindRenderbuffer;
+  dt.glBindRenderbuffer_layer                               = Dsa_glBindRenderbuffer;
+  dt.glBindRenderbufferEXT                                 = Dsa_glBindRenderbufferEXT;
+  dt.glBindRenderbufferEXT_layer                            = Dsa_glBindRenderbufferEXT;
+  dt.glBindTexture                                         = Dsa_glBindTexture;
+  dt.glBindTexture_layer                                    = Dsa_glBindTexture;
+  dt.glBindTextureEXT                                      = Dsa_glBindTextureEXT;
+  dt.glBindTextureEXT_layer                                 = Dsa_glBindTextureEXT;
+  dt.glBindVertexArray                                     = Dsa_glBindVertexArray;
+  dt.glBindVertexArray_layer                                = Dsa_glBindVertexArray;
+  dt.glBufferData                                          = Dsa_glBufferData;
+  dt.glBufferData_layer                                     = Dsa_glBufferData;
+  dt.glBufferSubData                                       = Dsa_glBufferSubData;
+  dt.glBufferSubData_layer                                  = Dsa_glBufferSubData;
+  dt.glCheckNamedFramebufferStatusEXT                      = Dsa_glCheckNamedFramebufferStatusEXT;
+  dt.glCheckNamedFramebufferStatusEXT_layer                 = Dsa_glCheckNamedFramebufferStatusEXT;
+  dt.glClientActiveTexture                                 = Dsa_glClientActiveTexture;
+  dt.glClientActiveTexture_layer                            = Dsa_glClientActiveTexture;
+  dt.glClientActiveTextureARB                              = Dsa_glClientActiveTextureARB;
+  dt.glClientActiveTextureARB_layer                         = Dsa_glClientActiveTextureARB;
+  dt.glClientAttribDefaultEXT                              = Dsa_glClientAttribDefaultEXT;
+  dt.glClientAttribDefaultEXT_layer                         = Dsa_glClientAttribDefaultEXT;
+  dt.glColorPointer                                        = Dsa_glColorPointer;
+  dt.glColorPointer_layer                                   = Dsa_glColorPointer;
+  dt.glCompressedMultiTexImage1DEXT                        = Dsa_glCompressedMultiTexImage1DEXT;
+  dt.glCompressedMultiTexImage1DEXT_layer                   = Dsa_glCompressedMultiTexImage1DEXT;
+  dt.glCompressedMultiTexImage2DEXT                        = Dsa_glCompressedMultiTexImage2DEXT;
+  dt.glCompressedMultiTexImage2DEXT_layer                   = Dsa_glCompressedMultiTexImage2DEXT;
+  dt.glCompressedMultiTexImage3DEXT                        = Dsa_glCompressedMultiTexImage3DEXT;
+  dt.glCompressedMultiTexImage3DEXT_layer                   = Dsa_glCompressedMultiTexImage3DEXT;
+  dt.glCompressedMultiTexSubImage1DEXT                     = Dsa_glCompressedMultiTexSubImage1DEXT;
+  dt.glCompressedMultiTexSubImage1DEXT_layer                = Dsa_glCompressedMultiTexSubImage1DEXT;
+  dt.glCompressedMultiTexSubImage2DEXT                     = Dsa_glCompressedMultiTexSubImage2DEXT;
+  dt.glCompressedMultiTexSubImage2DEXT_layer                = Dsa_glCompressedMultiTexSubImage2DEXT;
+  dt.glCompressedMultiTexSubImage3DEXT                     = Dsa_glCompressedMultiTexSubImage3DEXT;
+  dt.glCompressedMultiTexSubImage3DEXT_layer                = Dsa_glCompressedMultiTexSubImage3DEXT;
+  dt.glCompressedTextureImage1DEXT                         = Dsa_glCompressedTextureImage1DEXT;
+  dt.glCompressedTextureImage1DEXT_layer                    = Dsa_glCompressedTextureImage1DEXT;
+  dt.glCompressedTextureImage2DEXT                         = Dsa_glCompressedTextureImage2DEXT;
+  dt.glCompressedTextureImage2DEXT_layer                    = Dsa_glCompressedTextureImage2DEXT;
+  dt.glCompressedTextureImage3DEXT                         = Dsa_glCompressedTextureImage3DEXT;
+  dt.glCompressedTextureImage3DEXT_layer                    = Dsa_glCompressedTextureImage3DEXT;
+  dt.glCompressedTextureSubImage1DEXT                      = Dsa_glCompressedTextureSubImage1DEXT;
+  dt.glCompressedTextureSubImage1DEXT_layer                 = Dsa_glCompressedTextureSubImage1DEXT;
+  dt.glCompressedTextureSubImage2DEXT                      = Dsa_glCompressedTextureSubImage2DEXT;
+  dt.glCompressedTextureSubImage2DEXT_layer                 = Dsa_glCompressedTextureSubImage2DEXT;
+  dt.glCompressedTextureSubImage3DEXT                      = Dsa_glCompressedTextureSubImage3DEXT;
+  dt.glCompressedTextureSubImage3DEXT_layer                 = Dsa_glCompressedTextureSubImage3DEXT;
+  dt.glCopyBufferSubData                                   = Dsa_glCopyBufferSubData;
+  dt.glCopyBufferSubData_layer                              = Dsa_glCopyBufferSubData;
+  dt.glCopyMultiTexImage1DEXT                              = Dsa_glCopyMultiTexImage1DEXT;
+  dt.glCopyMultiTexImage1DEXT_layer                         = Dsa_glCopyMultiTexImage1DEXT;
+  dt.glCopyMultiTexImage2DEXT                              = Dsa_glCopyMultiTexImage2DEXT;
+  dt.glCopyMultiTexImage2DEXT_layer                         = Dsa_glCopyMultiTexImage2DEXT;
+  dt.glCopyMultiTexSubImage1DEXT                           = Dsa_glCopyMultiTexSubImage1DEXT;
+  dt.glCopyMultiTexSubImage1DEXT_layer                      = Dsa_glCopyMultiTexSubImage1DEXT;
+  dt.glCopyMultiTexSubImage2DEXT                           = Dsa_glCopyMultiTexSubImage2DEXT;
+  dt.glCopyMultiTexSubImage2DEXT_layer                      = Dsa_glCopyMultiTexSubImage2DEXT;
+  dt.glCopyMultiTexSubImage3DEXT                           = Dsa_glCopyMultiTexSubImage3DEXT;
+  dt.glCopyMultiTexSubImage3DEXT_layer                      = Dsa_glCopyMultiTexSubImage3DEXT;
+  dt.glCopyTextureImage1DEXT                               = Dsa_glCopyTextureImage1DEXT;
+  dt.glCopyTextureImage1DEXT_layer                          = Dsa_glCopyTextureImage1DEXT;
+  dt.glCopyTextureImage2DEXT                               = Dsa_glCopyTextureImage2DEXT;
+  dt.glCopyTextureImage2DEXT_layer                          = Dsa_glCopyTextureImage2DEXT;
+  dt.glCopyTextureSubImage1DEXT                            = Dsa_glCopyTextureSubImage1DEXT;
+  dt.glCopyTextureSubImage1DEXT_layer                       = Dsa_glCopyTextureSubImage1DEXT;
+  dt.glCopyTextureSubImage2DEXT                            = Dsa_glCopyTextureSubImage2DEXT;
+  dt.glCopyTextureSubImage2DEXT_layer                       = Dsa_glCopyTextureSubImage2DEXT;
+  dt.glCopyTextureSubImage3DEXT                            = Dsa_glCopyTextureSubImage3DEXT;
+  dt.glCopyTextureSubImage3DEXT_layer                       = Dsa_glCopyTextureSubImage3DEXT;
+  dt.glDeleteBuffers                                       = Dsa_glDeleteBuffers;
+  dt.glDeleteBuffers_layer                                  = Dsa_glDeleteBuffers;
+  dt.glDeleteBuffersARB                                    = Dsa_glDeleteBuffersARB;
+  dt.glDeleteBuffersARB_layer                               = Dsa_glDeleteBuffersARB;
+  dt.glDeleteFramebuffers                                  = Dsa_glDeleteFramebuffers;
+  dt.glDeleteFramebuffers_layer                             = Dsa_glDeleteFramebuffers;
+  dt.glDeleteFramebuffersEXT                               = Dsa_glDeleteFramebuffersEXT;
+  dt.glDeleteFramebuffersEXT_layer                          = Dsa_glDeleteFramebuffersEXT;
+  dt.glDeleteFramebuffersOES                               = Dsa_glDeleteFramebuffersOES;
+  dt.glDeleteFramebuffersOES_layer                          = Dsa_glDeleteFramebuffersOES;
+  dt.glDeleteProgram                                       = Dsa_glDeleteProgram;
+  dt.glDeleteProgram_layer                                  = Dsa_glDeleteProgram;
+  dt.glDeleteProgramsARB                                   = Dsa_glDeleteProgramsARB;
+  dt.glDeleteProgramsARB_layer                              = Dsa_glDeleteProgramsARB;
+  dt.glDeleteProgramsNV                                    = Dsa_glDeleteProgramsNV;
+  dt.glDeleteProgramsNV_layer                               = Dsa_glDeleteProgramsNV;
+  dt.glDeleteRenderbuffers                                 = Dsa_glDeleteRenderbuffers;
+  dt.glDeleteRenderbuffers_layer                            = Dsa_glDeleteRenderbuffers;
+  dt.glDeleteRenderbuffersEXT                              = Dsa_glDeleteRenderbuffersEXT;
+  dt.glDeleteRenderbuffersEXT_layer                         = Dsa_glDeleteRenderbuffersEXT;
+  dt.glDeleteRenderbuffersOES                              = Dsa_glDeleteRenderbuffersOES;
+  dt.glDeleteRenderbuffersOES_layer                         = Dsa_glDeleteRenderbuffersOES;
+  dt.glDeleteTextures                                      = Dsa_glDeleteTextures;
+  dt.glDeleteTextures_layer                                 = Dsa_glDeleteTextures;
+  dt.glDeleteTexturesEXT                                   = Dsa_glDeleteTexturesEXT;
+  dt.glDeleteTexturesEXT_layer                              = Dsa_glDeleteTexturesEXT;
+  dt.glDeleteVertexArrays                                  = Dsa_glDeleteVertexArrays;
+  dt.glDeleteVertexArrays_layer                             = Dsa_glDeleteVertexArrays;
+  dt.glDeleteVertexArraysAPPLE                             = Dsa_glDeleteVertexArraysAPPLE;
+  dt.glDeleteVertexArraysAPPLE_layer                        = Dsa_glDeleteVertexArraysAPPLE;
+  dt.glDeleteVertexArraysOES                               = Dsa_glDeleteVertexArraysOES;
+  dt.glDeleteVertexArraysOES_layer                          = Dsa_glDeleteVertexArraysOES;
+  dt.glDisable                                             = Dsa_glDisable;
+  dt.glDisable_layer                                        = Dsa_glDisable;
+  dt.glDisableClientState                                  = Dsa_glDisableClientState;
+  dt.glDisableClientState_layer                             = Dsa_glDisableClientState;
+  dt.glDisableClientStateIndexedEXT                        = Dsa_glDisableClientStateIndexedEXT;
+  dt.glDisableClientStateIndexedEXT_layer                   = Dsa_glDisableClientStateIndexedEXT;
+  dt.glDisableClientStateiEXT                              = Dsa_glDisableClientStateiEXT;
+  dt.glDisableClientStateiEXT_layer                         = Dsa_glDisableClientStateiEXT;
+  dt.glDisableIndexedEXT                                   = Dsa_glDisableIndexedEXT;
+  dt.glDisableIndexedEXT_layer                              = Dsa_glDisableIndexedEXT;
+  dt.glDisableVertexArrayAttribEXT                         = Dsa_glDisableVertexArrayAttribEXT;
+  dt.glDisableVertexArrayAttribEXT_layer                    = Dsa_glDisableVertexArrayAttribEXT;
+  dt.glDisableVertexArrayEXT                               = Dsa_glDisableVertexArrayEXT;
+  dt.glDisableVertexArrayEXT_layer                          = Dsa_glDisableVertexArrayEXT;
+  dt.glDrawArrays                                          = Dsa_glDrawArrays;
+  dt.glDrawArrays_layer                                     = Dsa_glDrawArrays;
+  dt.glDrawArraysEXT                                       = Dsa_glDrawArraysEXT;
+  dt.glDrawArraysEXT_layer                                  = Dsa_glDrawArraysEXT;
+  dt.glDrawArraysIndirect                                  = Dsa_glDrawArraysIndirect;
+  dt.glDrawArraysIndirect_layer                             = Dsa_glDrawArraysIndirect;
+  dt.glDrawArraysInstanced                                 = Dsa_glDrawArraysInstanced;
+  dt.glDrawArraysInstanced_layer                            = Dsa_glDrawArraysInstanced;
+  dt.glDrawArraysInstancedARB                              = Dsa_glDrawArraysInstancedARB;
+  dt.glDrawArraysInstancedARB_layer                         = Dsa_glDrawArraysInstancedARB;
+  dt.glDrawArraysInstancedEXT                              = Dsa_glDrawArraysInstancedEXT;
+  dt.glDrawArraysInstancedEXT_layer                         = Dsa_glDrawArraysInstancedEXT;
+  dt.glDrawElementArrayAPPLE                               = Dsa_glDrawElementArrayAPPLE;
+  dt.glDrawElementArrayAPPLE_layer                          = Dsa_glDrawElementArrayAPPLE;
+  dt.glDrawElementArrayATI                                 = Dsa_glDrawElementArrayATI;
+  dt.glDrawElementArrayATI_layer                            = Dsa_glDrawElementArrayATI;
+  dt.glDrawElements                                        = Dsa_glDrawElements;
+  dt.glDrawElements_layer                                   = Dsa_glDrawElements;
+  dt.glDrawElementsBaseVertex                              = Dsa_glDrawElementsBaseVertex;
+  dt.glDrawElementsBaseVertex_layer                         = Dsa_glDrawElementsBaseVertex;
+  dt.glDrawElementsIndirect                                = Dsa_glDrawElementsIndirect;
+  dt.glDrawElementsIndirect_layer                           = Dsa_glDrawElementsIndirect;
+  dt.glDrawElementsInstanced                               = Dsa_glDrawElementsInstanced;
+  dt.glDrawElementsInstanced_layer                          = Dsa_glDrawElementsInstanced;
+  dt.glDrawElementsInstancedARB                            = Dsa_glDrawElementsInstancedARB;
+  dt.glDrawElementsInstancedARB_layer                       = Dsa_glDrawElementsInstancedARB;
+  dt.glDrawElementsInstancedBaseVertex                     = Dsa_glDrawElementsInstancedBaseVertex;
+  dt.glDrawElementsInstancedBaseVertex_layer                = Dsa_glDrawElementsInstancedBaseVertex;
+  dt.glDrawElementsInstancedEXT                            = Dsa_glDrawElementsInstancedEXT;
+  dt.glDrawElementsInstancedEXT_layer                       = Dsa_glDrawElementsInstancedEXT;
+  dt.glEnable                                              = Dsa_glEnable;
+  dt.glEnable_layer                                         = Dsa_glEnable;
+  dt.glEnableClientState                                   = Dsa_glEnableClientState;
+  dt.glEnableClientState_layer                              = Dsa_glEnableClientState;
+  dt.glEnableClientStateIndexedEXT                         = Dsa_glEnableClientStateIndexedEXT;
+  dt.glEnableClientStateIndexedEXT_layer                    = Dsa_glEnableClientStateIndexedEXT;
+  dt.glEnableClientStateiEXT                               = Dsa_glEnableClientStateiEXT;
+  dt.glEnableClientStateiEXT_layer                          = Dsa_glEnableClientStateiEXT;
+  dt.glEnableIndexedEXT                                    = Dsa_glEnableIndexedEXT;
+  dt.glEnableIndexedEXT_layer                               = Dsa_glEnableIndexedEXT;
+  dt.glEnableVertexArrayAttribEXT                          = Dsa_glEnableVertexArrayAttribEXT;
+  dt.glEnableVertexArrayAttribEXT_layer                     = Dsa_glEnableVertexArrayAttribEXT;
+  dt.glEnableVertexArrayEXT                                = Dsa_glEnableVertexArrayEXT;
+  dt.glEnableVertexArrayEXT_layer                           = Dsa_glEnableVertexArrayEXT;
+  dt.glFlushMappedBufferRange                              = Dsa_glFlushMappedBufferRange;
+  dt.glFlushMappedBufferRange_layer                         = Dsa_glFlushMappedBufferRange;
+  dt.glFlushMappedBufferRangeEXT                           = Dsa_glFlushMappedBufferRangeEXT;
+  dt.glFlushMappedBufferRangeEXT_layer                      = Dsa_glFlushMappedBufferRangeEXT;
+  dt.glFlushMappedNamedBufferRangeEXT                      = Dsa_glFlushMappedNamedBufferRangeEXT;
+  dt.glFlushMappedNamedBufferRangeEXT_layer                 = Dsa_glFlushMappedNamedBufferRangeEXT;
+  dt.glFramebufferDrawBufferEXT                            = Dsa_glFramebufferDrawBufferEXT;
+  dt.glFramebufferDrawBufferEXT_layer                       = Dsa_glFramebufferDrawBufferEXT;
+  dt.glFramebufferDrawBuffersEXT                           = Dsa_glFramebufferDrawBuffersEXT;
+  dt.glFramebufferDrawBuffersEXT_layer                      = Dsa_glFramebufferDrawBuffersEXT;
+  dt.glFramebufferReadBufferEXT                            = Dsa_glFramebufferReadBufferEXT;
+  dt.glFramebufferReadBufferEXT_layer                       = Dsa_glFramebufferReadBufferEXT;
+  dt.glFramebufferRenderbuffer                             = Dsa_glFramebufferRenderbuffer;
+  dt.glFramebufferRenderbuffer_layer                        = Dsa_glFramebufferRenderbuffer;
+  dt.glFramebufferRenderbufferEXT                          = Dsa_glFramebufferRenderbufferEXT;
+  dt.glFramebufferRenderbufferEXT_layer                     = Dsa_glFramebufferRenderbufferEXT;
+  dt.glFramebufferTexture                                  = Dsa_glFramebufferTexture;
+  dt.glFramebufferTexture_layer                             = Dsa_glFramebufferTexture;
+  dt.glFramebufferTexture1D                                = Dsa_glFramebufferTexture1D;
+  dt.glFramebufferTexture1D_layer                           = Dsa_glFramebufferTexture1D;
+  dt.glFramebufferTexture1DEXT                             = Dsa_glFramebufferTexture1DEXT;
+  dt.glFramebufferTexture1DEXT_layer                        = Dsa_glFramebufferTexture1DEXT;
+  dt.glFramebufferTexture2D                                = Dsa_glFramebufferTexture2D;
+  dt.glFramebufferTexture2D_layer                           = Dsa_glFramebufferTexture2D;
+  dt.glFramebufferTexture2DEXT                             = Dsa_glFramebufferTexture2DEXT;
+  dt.glFramebufferTexture2DEXT_layer                        = Dsa_glFramebufferTexture2DEXT;
+  dt.glFramebufferTexture3D                                = Dsa_glFramebufferTexture3D;
+  dt.glFramebufferTexture3D_layer                           = Dsa_glFramebufferTexture3D;
+  dt.glFramebufferTexture3DEXT                             = Dsa_glFramebufferTexture3DEXT;
+  dt.glFramebufferTexture3DEXT_layer                        = Dsa_glFramebufferTexture3DEXT;
+  dt.glFramebufferTextureARB                               = Dsa_glFramebufferTextureARB;
+  dt.glFramebufferTextureARB_layer                          = Dsa_glFramebufferTextureARB;
+  dt.glFramebufferTextureEXT                               = Dsa_glFramebufferTextureEXT;
+  dt.glFramebufferTextureEXT_layer                          = Dsa_glFramebufferTextureEXT;
+  dt.glFramebufferTextureFace                              = Dsa_glFramebufferTextureFace;
+  dt.glFramebufferTextureFace_layer                         = Dsa_glFramebufferTextureFace;
+  dt.glFramebufferTextureFaceARB                           = Dsa_glFramebufferTextureFaceARB;
+  dt.glFramebufferTextureFaceARB_layer                      = Dsa_glFramebufferTextureFaceARB;
+  dt.glFramebufferTextureFaceEXT                           = Dsa_glFramebufferTextureFaceEXT;
+  dt.glFramebufferTextureFaceEXT_layer                      = Dsa_glFramebufferTextureFaceEXT;
+  dt.glFramebufferTextureLayer                             = Dsa_glFramebufferTextureLayer;
+  dt.glFramebufferTextureLayer_layer                        = Dsa_glFramebufferTextureLayer;
+  dt.glFramebufferTextureLayerARB                          = Dsa_glFramebufferTextureLayerARB;
+  dt.glFramebufferTextureLayerARB_layer                     = Dsa_glFramebufferTextureLayerARB;
+  dt.glFramebufferTextureLayerEXT                          = Dsa_glFramebufferTextureLayerEXT;
+  dt.glFramebufferTextureLayerEXT_layer                     = Dsa_glFramebufferTextureLayerEXT;
+  dt.glGenerateMipmap                                      = Dsa_glGenerateMipmap;
+  dt.glGenerateMipmap_layer                                 = Dsa_glGenerateMipmap;
+  dt.glGenerateMipmapEXT                                   = Dsa_glGenerateMipmapEXT;
+  dt.glGenerateMipmapEXT_layer                              = Dsa_glGenerateMipmapEXT;
+  dt.glGenerateMultiTexMipmapEXT                           = Dsa_glGenerateMultiTexMipmapEXT;
+  dt.glGenerateMultiTexMipmapEXT_layer                      = Dsa_glGenerateMultiTexMipmapEXT;
+  dt.glGenerateTextureMipmapEXT                            = Dsa_glGenerateTextureMipmapEXT;
+  dt.glGenerateTextureMipmapEXT_layer                       = Dsa_glGenerateTextureMipmapEXT;
+  dt.glGetBooleanv                                         = Dsa_glGetBooleanv;
+  dt.glGetBooleanv_layer                                    = Dsa_glGetBooleanv;
+  dt.glGetBufferParameteriv                                = Dsa_glGetBufferParameteriv;
+  dt.glGetBufferParameteriv_layer                           = Dsa_glGetBufferParameteriv;
+  dt.glGetBufferPointerv                                   = Dsa_glGetBufferPointerv;
+  dt.glGetBufferPointerv_layer                              = Dsa_glGetBufferPointerv;
+  dt.glGetBufferSubData                                    = Dsa_glGetBufferSubData;
+  dt.glGetBufferSubData_layer                               = Dsa_glGetBufferSubData;
+  dt.glGetCompressedMultiTexImageEXT                       = Dsa_glGetCompressedMultiTexImageEXT;
+  dt.glGetCompressedMultiTexImageEXT_layer                  = Dsa_glGetCompressedMultiTexImageEXT;
+  dt.glGetCompressedTextureImageEXT                        = Dsa_glGetCompressedTextureImageEXT;
+  dt.glGetCompressedTextureImageEXT_layer                   = Dsa_glGetCompressedTextureImageEXT;
+  dt.glGetDoubleIndexedvEXT                                = Dsa_glGetDoubleIndexedvEXT;
+  dt.glGetDoubleIndexedvEXT_layer                           = Dsa_glGetDoubleIndexedvEXT;
+  dt.glGetDoublei_v                                        = Dsa_glGetDoublei_v;
+  dt.glGetDoublei_v_layer                                   = Dsa_glGetDoublei_v;
+  dt.glGetDoublei_vEXT                                     = Dsa_glGetDoublei_vEXT;
+  dt.glGetDoublei_vEXT_layer                                = Dsa_glGetDoublei_vEXT;
+  dt.glGetDoublev                                          = Dsa_glGetDoublev;
+  dt.glGetDoublev_layer                                     = Dsa_glGetDoublev;
+  dt.glGetFloatIndexedvEXT                                 = Dsa_glGetFloatIndexedvEXT;
+  dt.glGetFloatIndexedvEXT_layer                            = Dsa_glGetFloatIndexedvEXT;
+  dt.glGetFloati_v                                         = Dsa_glGetFloati_v;
+  dt.glGetFloati_v_layer                                    = Dsa_glGetFloati_v;
+  dt.glGetFloati_vEXT                                      = Dsa_glGetFloati_vEXT;
+  dt.glGetFloati_vEXT_layer                                 = Dsa_glGetFloati_vEXT;
+  dt.glGetFloatv                                           = Dsa_glGetFloatv;
+  dt.glGetFloatv_layer                                      = Dsa_glGetFloatv;
+  dt.glGetFramebufferParameterivEXT                        = Dsa_glGetFramebufferParameterivEXT;
+  dt.glGetFramebufferParameterivEXT_layer                   = Dsa_glGetFramebufferParameterivEXT;
+  dt.glGetIntegerv                                         = Dsa_glGetIntegerv;
+  dt.glGetIntegerv_layer                                    = Dsa_glGetIntegerv;
+  dt.glGetMultiTexEnvfvEXT                                 = Dsa_glGetMultiTexEnvfvEXT;
+  dt.glGetMultiTexEnvfvEXT_layer                            = Dsa_glGetMultiTexEnvfvEXT;
+  dt.glGetMultiTexEnvivEXT                                 = Dsa_glGetMultiTexEnvivEXT;
+  dt.glGetMultiTexEnvivEXT_layer                            = Dsa_glGetMultiTexEnvivEXT;
+  dt.glGetMultiTexGendvEXT                                 = Dsa_glGetMultiTexGendvEXT;
+  dt.glGetMultiTexGendvEXT_layer                            = Dsa_glGetMultiTexGendvEXT;
+  dt.glGetMultiTexGenfvEXT                                 = Dsa_glGetMultiTexGenfvEXT;
+  dt.glGetMultiTexGenfvEXT_layer                            = Dsa_glGetMultiTexGenfvEXT;
+  dt.glGetMultiTexGenivEXT                                 = Dsa_glGetMultiTexGenivEXT;
+  dt.glGetMultiTexGenivEXT_layer                            = Dsa_glGetMultiTexGenivEXT;
+  dt.glGetMultiTexImageEXT                                 = Dsa_glGetMultiTexImageEXT;
+  dt.glGetMultiTexImageEXT_layer                            = Dsa_glGetMultiTexImageEXT;
+  dt.glGetMultiTexLevelParameterfvEXT                      = Dsa_glGetMultiTexLevelParameterfvEXT;
+  dt.glGetMultiTexLevelParameterfvEXT_layer                 = Dsa_glGetMultiTexLevelParameterfvEXT;
+  dt.glGetMultiTexLevelParameterivEXT                      = Dsa_glGetMultiTexLevelParameterivEXT;
+  dt.glGetMultiTexLevelParameterivEXT_layer                 = Dsa_glGetMultiTexLevelParameterivEXT;
+  dt.glGetMultiTexParameterIivEXT                          = Dsa_glGetMultiTexParameterIivEXT;
+  dt.glGetMultiTexParameterIivEXT_layer                     = Dsa_glGetMultiTexParameterIivEXT;
+  dt.glGetMultiTexParameterIuivEXT                         = Dsa_glGetMultiTexParameterIuivEXT;
+  dt.glGetMultiTexParameterIuivEXT_layer                    = Dsa_glGetMultiTexParameterIuivEXT;
+  dt.glGetMultiTexParameterfvEXT                           = Dsa_glGetMultiTexParameterfvEXT;
+  dt.glGetMultiTexParameterfvEXT_layer                      = Dsa_glGetMultiTexParameterfvEXT;
+  dt.glGetMultiTexParameterivEXT                           = Dsa_glGetMultiTexParameterivEXT;
+  dt.glGetMultiTexParameterivEXT_layer                      = Dsa_glGetMultiTexParameterivEXT;
+  dt.glGetNamedBufferParameterivEXT                        = Dsa_glGetNamedBufferParameterivEXT;
+  dt.glGetNamedBufferParameterivEXT_layer                   = Dsa_glGetNamedBufferParameterivEXT;
+  dt.glGetNamedBufferPointervEXT                           = Dsa_glGetNamedBufferPointervEXT;
+  dt.glGetNamedBufferPointervEXT_layer                      = Dsa_glGetNamedBufferPointervEXT;
+  dt.glGetNamedBufferSubDataEXT                            = Dsa_glGetNamedBufferSubDataEXT;
+  dt.glGetNamedBufferSubDataEXT_layer                       = Dsa_glGetNamedBufferSubDataEXT;
+  dt.glGetNamedFramebufferAttachmentParameterivEXT         = Dsa_glGetNamedFramebufferAttachmentParameterivEXT;
+  dt.glGetNamedFramebufferAttachmentParameterivEXT_layer    = Dsa_glGetNamedFramebufferAttachmentParameterivEXT;
+  dt.glGetNamedProgramLocalParameterIivEXT                 = Dsa_glGetNamedProgramLocalParameterIivEXT;
+  dt.glGetNamedProgramLocalParameterIivEXT_layer            = Dsa_glGetNamedProgramLocalParameterIivEXT;
+  dt.glGetNamedProgramLocalParameterIuivEXT                = Dsa_glGetNamedProgramLocalParameterIuivEXT;
+  dt.glGetNamedProgramLocalParameterIuivEXT_layer           = Dsa_glGetNamedProgramLocalParameterIuivEXT;
+  dt.glGetNamedProgramLocalParameterdvEXT                  = Dsa_glGetNamedProgramLocalParameterdvEXT;
+  dt.glGetNamedProgramLocalParameterdvEXT_layer             = Dsa_glGetNamedProgramLocalParameterdvEXT;
+  dt.glGetNamedProgramLocalParameterfvEXT                  = Dsa_glGetNamedProgramLocalParameterfvEXT;
+  dt.glGetNamedProgramLocalParameterfvEXT_layer             = Dsa_glGetNamedProgramLocalParameterfvEXT;
+  dt.glGetNamedProgramStringEXT                            = Dsa_glGetNamedProgramStringEXT;
+  dt.glGetNamedProgramStringEXT_layer                       = Dsa_glGetNamedProgramStringEXT;
+  dt.glGetNamedProgramivEXT                                = Dsa_glGetNamedProgramivEXT;
+  dt.glGetNamedProgramivEXT_layer                           = Dsa_glGetNamedProgramivEXT;
+  dt.glGetNamedRenderbufferParameterivEXT                  = Dsa_glGetNamedRenderbufferParameterivEXT;
+  dt.glGetNamedRenderbufferParameterivEXT_layer             = Dsa_glGetNamedRenderbufferParameterivEXT;
+  dt.glGetPointerIndexedvEXT                               = Dsa_glGetPointerIndexedvEXT;
+  dt.glGetPointerIndexedvEXT_layer                          = Dsa_glGetPointerIndexedvEXT;
+  dt.glGetProgramEnvParameterIivNV                         = Dsa_glGetProgramEnvParameterIivNV;
+  dt.glGetProgramEnvParameterIivNV_layer                    = Dsa_glGetProgramEnvParameterIivNV;
+  dt.glGetProgramEnvParameterIuivNV                        = Dsa_glGetProgramEnvParameterIuivNV;
+  dt.glGetProgramEnvParameterIuivNV_layer                   = Dsa_glGetProgramEnvParameterIuivNV;
+  dt.glGetProgramEnvParameterdvARB                         = Dsa_glGetProgramEnvParameterdvARB;
+  dt.glGetProgramEnvParameterdvARB_layer                    = Dsa_glGetProgramEnvParameterdvARB;
+  dt.glGetProgramEnvParameterfvARB                         = Dsa_glGetProgramEnvParameterfvARB;
+  dt.glGetProgramEnvParameterfvARB_layer                    = Dsa_glGetProgramEnvParameterfvARB;
+  dt.glGetProgramLocalParameterIivNV                       = Dsa_glGetProgramLocalParameterIivNV;
+  dt.glGetProgramLocalParameterIivNV_layer                  = Dsa_glGetProgramLocalParameterIivNV;
+  dt.glGetProgramLocalParameterIuivNV                      = Dsa_glGetProgramLocalParameterIuivNV;
+  dt.glGetProgramLocalParameterIuivNV_layer                 = Dsa_glGetProgramLocalParameterIuivNV;
+  dt.glGetProgramLocalParameterdvARB                       = Dsa_glGetProgramLocalParameterdvARB;
+  dt.glGetProgramLocalParameterdvARB_layer                  = Dsa_glGetProgramLocalParameterdvARB;
+  dt.glGetProgramLocalParameterfvARB                       = Dsa_glGetProgramLocalParameterfvARB;
+  dt.glGetProgramLocalParameterfvARB_layer                  = Dsa_glGetProgramLocalParameterfvARB;
+  dt.glGetRenderbufferParameteriv                          = Dsa_glGetRenderbufferParameteriv;
+  dt.glGetRenderbufferParameteriv_layer                     = Dsa_glGetRenderbufferParameteriv;
+  dt.glGetRenderbufferParameterivEXT                       = Dsa_glGetRenderbufferParameterivEXT;
+  dt.glGetRenderbufferParameterivEXT_layer                  = Dsa_glGetRenderbufferParameterivEXT;
+  dt.glGetTexEnvfv                                         = Dsa_glGetTexEnvfv;
+  dt.glGetTexEnvfv_layer                                    = Dsa_glGetTexEnvfv;
+  dt.glGetTexEnviv                                         = Dsa_glGetTexEnviv;
+  dt.glGetTexEnviv_layer                                    = Dsa_glGetTexEnviv;
+  dt.glGetTexParameterfv                                   = Dsa_glGetTexParameterfv;
+  dt.glGetTexParameterfv_layer                              = Dsa_glGetTexParameterfv;
+  dt.glGetTexParameteriv                                   = Dsa_glGetTexParameteriv;
+  dt.glGetTexParameteriv_layer                              = Dsa_glGetTexParameteriv;
+  dt.glGetTextureImageEXT                                  = Dsa_glGetTextureImageEXT;
+  dt.glGetTextureImageEXT_layer                             = Dsa_glGetTextureImageEXT;
+  dt.glGetTextureLevelParameterfvEXT                       = Dsa_glGetTextureLevelParameterfvEXT;
+  dt.glGetTextureLevelParameterfvEXT_layer                  = Dsa_glGetTextureLevelParameterfvEXT;
+  dt.glGetTextureLevelParameterivEXT                       = Dsa_glGetTextureLevelParameterivEXT;
+  dt.glGetTextureLevelParameterivEXT_layer                  = Dsa_glGetTextureLevelParameterivEXT;
+  dt.glGetTextureParameterIivEXT                           = Dsa_glGetTextureParameterIivEXT;
+  dt.glGetTextureParameterIivEXT_layer                      = Dsa_glGetTextureParameterIivEXT;
+  dt.glGetTextureParameterIuivEXT                          = Dsa_glGetTextureParameterIuivEXT;
+  dt.glGetTextureParameterIuivEXT_layer                     = Dsa_glGetTextureParameterIuivEXT;
+  dt.glGetTextureParameterfvEXT                            = Dsa_glGetTextureParameterfvEXT;
+  dt.glGetTextureParameterfvEXT_layer                       = Dsa_glGetTextureParameterfvEXT;
+  dt.glGetTextureParameterivEXT                            = Dsa_glGetTextureParameterivEXT;
+  dt.glGetTextureParameterivEXT_layer                       = Dsa_glGetTextureParameterivEXT;
+  dt.glIsEnabled                                           = Dsa_glIsEnabled;
+  dt.glIsEnabled_layer                                      = Dsa_glIsEnabled;
+  dt.glIsEnabledIndexedEXT                                 = Dsa_glIsEnabledIndexedEXT;
+  dt.glIsEnabledIndexedEXT_layer                            = Dsa_glIsEnabledIndexedEXT;
+  dt.glLoadIdentity                                        = Dsa_glLoadIdentity;
+  dt.glLoadIdentity_layer                                   = Dsa_glLoadIdentity;
+  dt.glLoadMatrixd                                         = Dsa_glLoadMatrixd;
+  dt.glLoadMatrixd_layer                                    = Dsa_glLoadMatrixd;
+  dt.glLoadMatrixf                                         = Dsa_glLoadMatrixf;
+  dt.glLoadMatrixf_layer                                    = Dsa_glLoadMatrixf;
+  dt.glLoadTransposeMatrixd                                = Dsa_glLoadTransposeMatrixd;
+  dt.glLoadTransposeMatrixd_layer                           = Dsa_glLoadTransposeMatrixd;
+  dt.glLoadTransposeMatrixf                                = Dsa_glLoadTransposeMatrixf;
+  dt.glLoadTransposeMatrixf_layer                           = Dsa_glLoadTransposeMatrixf;
+  dt.glMapBuffer                                           = Dsa_glMapBuffer;
+  dt.glMapBuffer_layer                                      = Dsa_glMapBuffer;
+  dt.glMapBufferARB                                        = Dsa_glMapBufferARB;
+  dt.glMapBufferARB_layer                                   = Dsa_glMapBufferARB;
+  dt.glMapBufferRange                                      = Dsa_glMapBufferRange;
+  dt.glMapBufferRange_layer                                 = Dsa_glMapBufferRange;
+  dt.glMapBufferRangeEXT                                   = Dsa_glMapBufferRangeEXT;
+  dt.glMapBufferRangeEXT_layer                              = Dsa_glMapBufferRangeEXT;
+  dt.glMapNamedBufferEXT                                   = Dsa_glMapNamedBufferEXT;
+  dt.glMapNamedBufferEXT_layer                              = Dsa_glMapNamedBufferEXT;
+  dt.glMapNamedBufferRangeEXT                              = Dsa_glMapNamedBufferRangeEXT;
+  dt.glMapNamedBufferRangeEXT_layer                         = Dsa_glMapNamedBufferRangeEXT;
+  dt.glMatrixFrustumEXT                                    = Dsa_glMatrixFrustumEXT;
+  dt.glMatrixFrustumEXT_layer                               = Dsa_glMatrixFrustumEXT;
+  dt.glMatrixLoadIdentityEXT                               = Dsa_glMatrixLoadIdentityEXT;
+  dt.glMatrixLoadIdentityEXT_layer                          = Dsa_glMatrixLoadIdentityEXT;
+  dt.glMatrixLoadTransposedEXT                             = Dsa_glMatrixLoadTransposedEXT;
+  dt.glMatrixLoadTransposedEXT_layer                        = Dsa_glMatrixLoadTransposedEXT;
+  dt.glMatrixLoadTransposefEXT                             = Dsa_glMatrixLoadTransposefEXT;
+  dt.glMatrixLoadTransposefEXT_layer                        = Dsa_glMatrixLoadTransposefEXT;
+  dt.glMatrixLoaddEXT                                      = Dsa_glMatrixLoaddEXT;
+  dt.glMatrixLoaddEXT_layer                                 = Dsa_glMatrixLoaddEXT;
+  dt.glMatrixLoadfEXT                                      = Dsa_glMatrixLoadfEXT;
+  dt.glMatrixLoadfEXT_layer                                 = Dsa_glMatrixLoadfEXT;
+  dt.glMatrixMode                                          = Dsa_glMatrixMode;
+  dt.glMatrixMode_layer                                     = Dsa_glMatrixMode;
+  dt.glMatrixMultTransposedEXT                             = Dsa_glMatrixMultTransposedEXT;
+  dt.glMatrixMultTransposedEXT_layer                        = Dsa_glMatrixMultTransposedEXT;
+  dt.glMatrixMultTransposefEXT                             = Dsa_glMatrixMultTransposefEXT;
+  dt.glMatrixMultTransposefEXT_layer                        = Dsa_glMatrixMultTransposefEXT;
+  dt.glMatrixMultdEXT                                      = Dsa_glMatrixMultdEXT;
+  dt.glMatrixMultdEXT_layer                                 = Dsa_glMatrixMultdEXT;
+  dt.glMatrixMultfEXT                                      = Dsa_glMatrixMultfEXT;
+  dt.glMatrixMultfEXT_layer                                 = Dsa_glMatrixMultfEXT;
+  dt.glMatrixOrthoEXT                                      = Dsa_glMatrixOrthoEXT;
+  dt.glMatrixOrthoEXT_layer                                 = Dsa_glMatrixOrthoEXT;
+  dt.glMatrixPopEXT                                        = Dsa_glMatrixPopEXT;
+  dt.glMatrixPopEXT_layer                                   = Dsa_glMatrixPopEXT;
+  dt.glMatrixPushEXT                                       = Dsa_glMatrixPushEXT;
+  dt.glMatrixPushEXT_layer                                  = Dsa_glMatrixPushEXT;
+  dt.glMatrixRotatedEXT                                    = Dsa_glMatrixRotatedEXT;
+  dt.glMatrixRotatedEXT_layer                               = Dsa_glMatrixRotatedEXT;
+  dt.glMatrixRotatefEXT                                    = Dsa_glMatrixRotatefEXT;
+  dt.glMatrixRotatefEXT_layer                               = Dsa_glMatrixRotatefEXT;
+  dt.glMatrixScaledEXT                                     = Dsa_glMatrixScaledEXT;
+  dt.glMatrixScaledEXT_layer                                = Dsa_glMatrixScaledEXT;
+  dt.glMatrixScalefEXT                                     = Dsa_glMatrixScalefEXT;
+  dt.glMatrixScalefEXT_layer                                = Dsa_glMatrixScalefEXT;
+  dt.glMatrixTranslatedEXT                                 = Dsa_glMatrixTranslatedEXT;
+  dt.glMatrixTranslatedEXT_layer                            = Dsa_glMatrixTranslatedEXT;
+  dt.glMatrixTranslatefEXT                                 = Dsa_glMatrixTranslatefEXT;
+  dt.glMatrixTranslatefEXT_layer                            = Dsa_glMatrixTranslatefEXT;
+  dt.glMultMatrixd                                         = Dsa_glMultMatrixd;
+  dt.glMultMatrixd_layer                                    = Dsa_glMultMatrixd;
+  dt.glMultMatrixf                                         = Dsa_glMultMatrixf;
+  dt.glMultMatrixf_layer                                    = Dsa_glMultMatrixf;
+  dt.glMultTransposeMatrixd                                = Dsa_glMultTransposeMatrixd;
+  dt.glMultTransposeMatrixd_layer                           = Dsa_glMultTransposeMatrixd;
+  dt.glMultTransposeMatrixf                                = Dsa_glMultTransposeMatrixf;
+  dt.glMultTransposeMatrixf_layer                           = Dsa_glMultTransposeMatrixf;
+  dt.glMultiDrawArrays                                     = Dsa_glMultiDrawArrays;
+  dt.glMultiDrawArrays_layer                                = Dsa_glMultiDrawArrays;
+  dt.glMultiDrawArraysEXT                                  = Dsa_glMultiDrawArraysEXT;
+  dt.glMultiDrawArraysEXT_layer                             = Dsa_glMultiDrawArraysEXT;
+  dt.glMultiDrawArraysIndirect                             = Dsa_glMultiDrawArraysIndirect;
+  dt.glMultiDrawArraysIndirect_layer                        = Dsa_glMultiDrawArraysIndirect;
+  dt.glMultiDrawArraysIndirectAMD                          = Dsa_glMultiDrawArraysIndirectAMD;
+  dt.glMultiDrawArraysIndirectAMD_layer                     = Dsa_glMultiDrawArraysIndirectAMD;
+  dt.glMultiDrawElementArrayAPPLE                          = Dsa_glMultiDrawElementArrayAPPLE;
+  dt.glMultiDrawElementArrayAPPLE_layer                     = Dsa_glMultiDrawElementArrayAPPLE;
+  dt.glMultiDrawElements                                   = Dsa_glMultiDrawElements;
+  dt.glMultiDrawElements_layer                              = Dsa_glMultiDrawElements;
+  dt.glMultiDrawElementsBaseVertex                         = Dsa_glMultiDrawElementsBaseVertex;
+  dt.glMultiDrawElementsBaseVertex_layer                    = Dsa_glMultiDrawElementsBaseVertex;
+  dt.glMultiDrawElementsEXT                                = Dsa_glMultiDrawElementsEXT;
+  dt.glMultiDrawElementsEXT_layer                           = Dsa_glMultiDrawElementsEXT;
+  dt.glMultiDrawElementsIndirect                           = Dsa_glMultiDrawElementsIndirect;
+  dt.glMultiDrawElementsIndirect_layer                      = Dsa_glMultiDrawElementsIndirect;
+  dt.glMultiDrawElementsIndirectAMD                        = Dsa_glMultiDrawElementsIndirectAMD;
+  dt.glMultiDrawElementsIndirectAMD_layer                   = Dsa_glMultiDrawElementsIndirectAMD;
+  dt.glMultiTexBufferEXT                                   = Dsa_glMultiTexBufferEXT;
+  dt.glMultiTexBufferEXT_layer                              = Dsa_glMultiTexBufferEXT;
+  dt.glMultiTexCoordPointerEXT                             = Dsa_glMultiTexCoordPointerEXT;
+  dt.glMultiTexCoordPointerEXT_layer                        = Dsa_glMultiTexCoordPointerEXT;
+  dt.glMultiTexEnvfEXT                                     = Dsa_glMultiTexEnvfEXT;
+  dt.glMultiTexEnvfEXT_layer                                = Dsa_glMultiTexEnvfEXT;
+  dt.glMultiTexEnvfvEXT                                    = Dsa_glMultiTexEnvfvEXT;
+  dt.glMultiTexEnvfvEXT_layer                               = Dsa_glMultiTexEnvfvEXT;
+  dt.glMultiTexEnviEXT                                     = Dsa_glMultiTexEnviEXT;
+  dt.glMultiTexEnviEXT_layer                                = Dsa_glMultiTexEnviEXT;
+  dt.glMultiTexEnvivEXT                                    = Dsa_glMultiTexEnvivEXT;
+  dt.glMultiTexEnvivEXT_layer                               = Dsa_glMultiTexEnvivEXT;
+  dt.glMultiTexGendEXT                                     = Dsa_glMultiTexGendEXT;
+  dt.glMultiTexGendEXT_layer                                = Dsa_glMultiTexGendEXT;
+  dt.glMultiTexGendvEXT                                    = Dsa_glMultiTexGendvEXT;
+  dt.glMultiTexGendvEXT_layer                               = Dsa_glMultiTexGendvEXT;
+  dt.glMultiTexGenfEXT                                     = Dsa_glMultiTexGenfEXT;
+  dt.glMultiTexGenfEXT_layer                                = Dsa_glMultiTexGenfEXT;
+  dt.glMultiTexGenfvEXT                                    = Dsa_glMultiTexGenfvEXT;
+  dt.glMultiTexGenfvEXT_layer                               = Dsa_glMultiTexGenfvEXT;
+  dt.glMultiTexGeniEXT                                     = Dsa_glMultiTexGeniEXT;
+  dt.glMultiTexGeniEXT_layer                                = Dsa_glMultiTexGeniEXT;
+  dt.glMultiTexGenivEXT                                    = Dsa_glMultiTexGenivEXT;
+  dt.glMultiTexGenivEXT_layer                               = Dsa_glMultiTexGenivEXT;
+  dt.glMultiTexImage1DEXT                                  = Dsa_glMultiTexImage1DEXT;
+  dt.glMultiTexImage1DEXT_layer                             = Dsa_glMultiTexImage1DEXT;
+  dt.glMultiTexImage2DEXT                                  = Dsa_glMultiTexImage2DEXT;
+  dt.glMultiTexImage2DEXT_layer                             = Dsa_glMultiTexImage2DEXT;
+  dt.glMultiTexImage3DEXT                                  = Dsa_glMultiTexImage3DEXT;
+  dt.glMultiTexImage3DEXT_layer                             = Dsa_glMultiTexImage3DEXT;
+  dt.glMultiTexParameterIivEXT                             = Dsa_glMultiTexParameterIivEXT;
+  dt.glMultiTexParameterIivEXT_layer                        = Dsa_glMultiTexParameterIivEXT;
+  dt.glMultiTexParameterIuivEXT                            = Dsa_glMultiTexParameterIuivEXT;
+  dt.glMultiTexParameterIuivEXT_layer                       = Dsa_glMultiTexParameterIuivEXT;
+  dt.glMultiTexParameterfEXT                               = Dsa_glMultiTexParameterfEXT;
+  dt.glMultiTexParameterfEXT_layer                          = Dsa_glMultiTexParameterfEXT;
+  dt.glMultiTexParameterfvEXT                              = Dsa_glMultiTexParameterfvEXT;
+  dt.glMultiTexParameterfvEXT_layer                         = Dsa_glMultiTexParameterfvEXT;
+  dt.glMultiTexParameteriEXT                               = Dsa_glMultiTexParameteriEXT;
+  dt.glMultiTexParameteriEXT_layer                          = Dsa_glMultiTexParameteriEXT;
+  dt.glMultiTexParameterivEXT                              = Dsa_glMultiTexParameterivEXT;
+  dt.glMultiTexParameterivEXT_layer                         = Dsa_glMultiTexParameterivEXT;
+  dt.glMultiTexRenderbufferEXT                             = Dsa_glMultiTexRenderbufferEXT;
+  dt.glMultiTexRenderbufferEXT_layer                        = Dsa_glMultiTexRenderbufferEXT;
+  dt.glMultiTexSubImage1DEXT                               = Dsa_glMultiTexSubImage1DEXT;
+  dt.glMultiTexSubImage1DEXT_layer                          = Dsa_glMultiTexSubImage1DEXT;
+  dt.glMultiTexSubImage2DEXT                               = Dsa_glMultiTexSubImage2DEXT;
+  dt.glMultiTexSubImage2DEXT_layer                          = Dsa_glMultiTexSubImage2DEXT;
+  dt.glMultiTexSubImage3DEXT                               = Dsa_glMultiTexSubImage3DEXT;
+  dt.glMultiTexSubImage3DEXT_layer                          = Dsa_glMultiTexSubImage3DEXT;
+  dt.glNamedBufferDataEXT                                  = Dsa_glNamedBufferDataEXT;
+  dt.glNamedBufferDataEXT_layer                             = Dsa_glNamedBufferDataEXT;
+  dt.glNamedBufferSubDataEXT                               = Dsa_glNamedBufferSubDataEXT;
+  dt.glNamedBufferSubDataEXT_layer                          = Dsa_glNamedBufferSubDataEXT;
+  dt.glNamedCopyBufferSubDataEXT                           = Dsa_glNamedCopyBufferSubDataEXT;
+  dt.glNamedCopyBufferSubDataEXT_layer                      = Dsa_glNamedCopyBufferSubDataEXT;
+  dt.glNamedFramebufferRenderbufferEXT                     = Dsa_glNamedFramebufferRenderbufferEXT;
+  dt.glNamedFramebufferRenderbufferEXT_layer                = Dsa_glNamedFramebufferRenderbufferEXT;
+  dt.glNamedFramebufferTexture1DEXT                        = Dsa_glNamedFramebufferTexture1DEXT;
+  dt.glNamedFramebufferTexture1DEXT_layer                   = Dsa_glNamedFramebufferTexture1DEXT;
+  dt.glNamedFramebufferTexture2DEXT                        = Dsa_glNamedFramebufferTexture2DEXT;
+  dt.glNamedFramebufferTexture2DEXT_layer                   = Dsa_glNamedFramebufferTexture2DEXT;
+  dt.glNamedFramebufferTexture3DEXT                        = Dsa_glNamedFramebufferTexture3DEXT;
+  dt.glNamedFramebufferTexture3DEXT_layer                   = Dsa_glNamedFramebufferTexture3DEXT;
+  dt.glNamedFramebufferTextureEXT                          = Dsa_glNamedFramebufferTextureEXT;
+  dt.glNamedFramebufferTextureEXT_layer                     = Dsa_glNamedFramebufferTextureEXT;
+  dt.glNamedFramebufferTextureFaceEXT                      = Dsa_glNamedFramebufferTextureFaceEXT;
+  dt.glNamedFramebufferTextureFaceEXT_layer                 = Dsa_glNamedFramebufferTextureFaceEXT;
+  dt.glNamedFramebufferTextureLayerEXT                     = Dsa_glNamedFramebufferTextureLayerEXT;
+  dt.glNamedFramebufferTextureLayerEXT_layer                = Dsa_glNamedFramebufferTextureLayerEXT;
+  dt.glNamedProgramLocalParameter4dEXT                     = Dsa_glNamedProgramLocalParameter4dEXT;
+  dt.glNamedProgramLocalParameter4dEXT_layer                = Dsa_glNamedProgramLocalParameter4dEXT;
+  dt.glNamedProgramLocalParameter4dvEXT                    = Dsa_glNamedProgramLocalParameter4dvEXT;
+  dt.glNamedProgramLocalParameter4dvEXT_layer               = Dsa_glNamedProgramLocalParameter4dvEXT;
+  dt.glNamedProgramLocalParameter4fEXT                     = Dsa_glNamedProgramLocalParameter4fEXT;
+  dt.glNamedProgramLocalParameter4fEXT_layer                = Dsa_glNamedProgramLocalParameter4fEXT;
+  dt.glNamedProgramLocalParameter4fvEXT                    = Dsa_glNamedProgramLocalParameter4fvEXT;
+  dt.glNamedProgramLocalParameter4fvEXT_layer               = Dsa_glNamedProgramLocalParameter4fvEXT;
+  dt.glNamedProgramLocalParameterI4iEXT                    = Dsa_glNamedProgramLocalParameterI4iEXT;
+  dt.glNamedProgramLocalParameterI4iEXT_layer               = Dsa_glNamedProgramLocalParameterI4iEXT;
+  dt.glNamedProgramLocalParameterI4ivEXT                   = Dsa_glNamedProgramLocalParameterI4ivEXT;
+  dt.glNamedProgramLocalParameterI4ivEXT_layer              = Dsa_glNamedProgramLocalParameterI4ivEXT;
+  dt.glNamedProgramLocalParameterI4uiEXT                   = Dsa_glNamedProgramLocalParameterI4uiEXT;
+  dt.glNamedProgramLocalParameterI4uiEXT_layer              = Dsa_glNamedProgramLocalParameterI4uiEXT;
+  dt.glNamedProgramLocalParameterI4uivEXT                  = Dsa_glNamedProgramLocalParameterI4uivEXT;
+  dt.glNamedProgramLocalParameterI4uivEXT_layer             = Dsa_glNamedProgramLocalParameterI4uivEXT;
+  dt.glNamedProgramLocalParameters4fvEXT                   = Dsa_glNamedProgramLocalParameters4fvEXT;
+  dt.glNamedProgramLocalParameters4fvEXT_layer              = Dsa_glNamedProgramLocalParameters4fvEXT;
+  dt.glNamedProgramLocalParametersI4ivEXT                  = Dsa_glNamedProgramLocalParametersI4ivEXT;
+  dt.glNamedProgramLocalParametersI4ivEXT_layer             = Dsa_glNamedProgramLocalParametersI4ivEXT;
+  dt.glNamedProgramLocalParametersI4uivEXT                 = Dsa_glNamedProgramLocalParametersI4uivEXT;
+  dt.glNamedProgramLocalParametersI4uivEXT_layer            = Dsa_glNamedProgramLocalParametersI4uivEXT;
+  dt.glNamedProgramStringEXT                               = Dsa_glNamedProgramStringEXT;
+  dt.glNamedProgramStringEXT_layer                          = Dsa_glNamedProgramStringEXT;
+  dt.glNamedRenderbufferStorageEXT                         = Dsa_glNamedRenderbufferStorageEXT;
+  dt.glNamedRenderbufferStorageEXT_layer                    = Dsa_glNamedRenderbufferStorageEXT;
+  dt.glNamedRenderbufferStorageMultisampleCoverageEXT      = Dsa_glNamedRenderbufferStorageMultisampleCoverageEXT;
+  dt.glNamedRenderbufferStorageMultisampleCoverageEXT_layer = Dsa_glNamedRenderbufferStorageMultisampleCoverageEXT;
+  dt.glNamedRenderbufferStorageMultisampleEXT              = Dsa_glNamedRenderbufferStorageMultisampleEXT;
+  dt.glNamedRenderbufferStorageMultisampleEXT_layer         = Dsa_glNamedRenderbufferStorageMultisampleEXT;
+  dt.glNormalPointer                                       = Dsa_glNormalPointer;
+  dt.glNormalPointer_layer                                  = Dsa_glNormalPointer;
+  dt.glPopMatrix                                           = Dsa_glPopMatrix;
+  dt.glPopMatrix_layer                                      = Dsa_glPopMatrix;
+  dt.glProgramEnvParameter4dARB                            = Dsa_glProgramEnvParameter4dARB;
+  dt.glProgramEnvParameter4dARB_layer                       = Dsa_glProgramEnvParameter4dARB;
+  dt.glProgramEnvParameter4dvARB                           = Dsa_glProgramEnvParameter4dvARB;
+  dt.glProgramEnvParameter4dvARB_layer                      = Dsa_glProgramEnvParameter4dvARB;
+  dt.glProgramEnvParameter4fARB                            = Dsa_glProgramEnvParameter4fARB;
+  dt.glProgramEnvParameter4fARB_layer                       = Dsa_glProgramEnvParameter4fARB;
+  dt.glProgramEnvParameter4fvARB                           = Dsa_glProgramEnvParameter4fvARB;
+  dt.glProgramEnvParameter4fvARB_layer                      = Dsa_glProgramEnvParameter4fvARB;
+  dt.glProgramEnvParameterI4iNV                            = Dsa_glProgramEnvParameterI4iNV;
+  dt.glProgramEnvParameterI4iNV_layer                       = Dsa_glProgramEnvParameterI4iNV;
+  dt.glProgramEnvParameterI4ivNV                           = Dsa_glProgramEnvParameterI4ivNV;
+  dt.glProgramEnvParameterI4ivNV_layer                      = Dsa_glProgramEnvParameterI4ivNV;
+  dt.glProgramEnvParameterI4uiNV                           = Dsa_glProgramEnvParameterI4uiNV;
+  dt.glProgramEnvParameterI4uiNV_layer                      = Dsa_glProgramEnvParameterI4uiNV;
+  dt.glProgramEnvParameterI4uivNV                          = Dsa_glProgramEnvParameterI4uivNV;
+  dt.glProgramEnvParameterI4uivNV_layer                     = Dsa_glProgramEnvParameterI4uivNV;
+  dt.glProgramEnvParametersI4ivNV                          = Dsa_glProgramEnvParametersI4ivNV;
+  dt.glProgramEnvParametersI4ivNV_layer                     = Dsa_glProgramEnvParametersI4ivNV;
+  dt.glProgramEnvParametersI4uivNV                         = Dsa_glProgramEnvParametersI4uivNV;
+  dt.glProgramEnvParametersI4uivNV_layer                    = Dsa_glProgramEnvParametersI4uivNV;
+  dt.glProgramLocalParameter4dARB                          = Dsa_glProgramLocalParameter4dARB;
+  dt.glProgramLocalParameter4dARB_layer                     = Dsa_glProgramLocalParameter4dARB;
+  dt.glProgramLocalParameter4dvARB                         = Dsa_glProgramLocalParameter4dvARB;
+  dt.glProgramLocalParameter4dvARB_layer                    = Dsa_glProgramLocalParameter4dvARB;
+  dt.glProgramLocalParameter4fARB                          = Dsa_glProgramLocalParameter4fARB;
+  dt.glProgramLocalParameter4fARB_layer                     = Dsa_glProgramLocalParameter4fARB;
+  dt.glProgramLocalParameter4fvARB                         = Dsa_glProgramLocalParameter4fvARB;
+  dt.glProgramLocalParameter4fvARB_layer                    = Dsa_glProgramLocalParameter4fvARB;
+  dt.glProgramLocalParameterI4iNV                          = Dsa_glProgramLocalParameterI4iNV;
+  dt.glProgramLocalParameterI4iNV_layer                     = Dsa_glProgramLocalParameterI4iNV;
+  dt.glProgramLocalParameterI4ivNV                         = Dsa_glProgramLocalParameterI4ivNV;
+  dt.glProgramLocalParameterI4ivNV_layer                    = Dsa_glProgramLocalParameterI4ivNV;
+  dt.glProgramLocalParameterI4uiNV                         = Dsa_glProgramLocalParameterI4uiNV;
+  dt.glProgramLocalParameterI4uiNV_layer                    = Dsa_glProgramLocalParameterI4uiNV;
+  dt.glProgramLocalParameterI4uivNV                        = Dsa_glProgramLocalParameterI4uivNV;
+  dt.glProgramLocalParameterI4uivNV_layer                   = Dsa_glProgramLocalParameterI4uivNV;
+  dt.glProgramLocalParametersI4ivNV                        = Dsa_glProgramLocalParametersI4ivNV;
+  dt.glProgramLocalParametersI4ivNV_layer                   = Dsa_glProgramLocalParametersI4ivNV;
+  dt.glProgramLocalParametersI4uivNV                       = Dsa_glProgramLocalParametersI4uivNV;
+  dt.glProgramLocalParametersI4uivNV_layer                  = Dsa_glProgramLocalParametersI4uivNV;
+  dt.glProgramUniform1dEXT                                 = Dsa_glProgramUniform1dEXT;
+  dt.glProgramUniform1dEXT_layer                            = Dsa_glProgramUniform1dEXT;
+  dt.glProgramUniform1dvEXT                                = Dsa_glProgramUniform1dvEXT;
+  dt.glProgramUniform1dvEXT_layer                           = Dsa_glProgramUniform1dvEXT;
+  dt.glProgramUniform1fEXT                                 = Dsa_glProgramUniform1fEXT;
+  dt.glProgramUniform1fEXT_layer                            = Dsa_glProgramUniform1fEXT;
+  dt.glProgramUniform1fvEXT                                = Dsa_glProgramUniform1fvEXT;
+  dt.glProgramUniform1fvEXT_layer                           = Dsa_glProgramUniform1fvEXT;
+  dt.glProgramUniform1iEXT                                 = Dsa_glProgramUniform1iEXT;
+  dt.glProgramUniform1iEXT_layer                            = Dsa_glProgramUniform1iEXT;
+  dt.glProgramUniform1ivEXT                                = Dsa_glProgramUniform1ivEXT;
+  dt.glProgramUniform1ivEXT_layer                           = Dsa_glProgramUniform1ivEXT;
+  dt.glProgramUniform1uiEXT                                = Dsa_glProgramUniform1uiEXT;
+  dt.glProgramUniform1uiEXT_layer                           = Dsa_glProgramUniform1uiEXT;
+  dt.glProgramUniform1uivEXT                               = Dsa_glProgramUniform1uivEXT;
+  dt.glProgramUniform1uivEXT_layer                          = Dsa_glProgramUniform1uivEXT;
+  dt.glProgramUniform2dEXT                                 = Dsa_glProgramUniform2dEXT;
+  dt.glProgramUniform2dEXT_layer                            = Dsa_glProgramUniform2dEXT;
+  dt.glProgramUniform2dvEXT                                = Dsa_glProgramUniform2dvEXT;
+  dt.glProgramUniform2dvEXT_layer                           = Dsa_glProgramUniform2dvEXT;
+  dt.glProgramUniform2fEXT                                 = Dsa_glProgramUniform2fEXT;
+  dt.glProgramUniform2fEXT_layer                            = Dsa_glProgramUniform2fEXT;
+  dt.glProgramUniform2fvEXT                                = Dsa_glProgramUniform2fvEXT;
+  dt.glProgramUniform2fvEXT_layer                           = Dsa_glProgramUniform2fvEXT;
+  dt.glProgramUniform2iEXT                                 = Dsa_glProgramUniform2iEXT;
+  dt.glProgramUniform2iEXT_layer                            = Dsa_glProgramUniform2iEXT;
+  dt.glProgramUniform2ivEXT                                = Dsa_glProgramUniform2ivEXT;
+  dt.glProgramUniform2ivEXT_layer                           = Dsa_glProgramUniform2ivEXT;
+  dt.glProgramUniform2uiEXT                                = Dsa_glProgramUniform2uiEXT;
+  dt.glProgramUniform2uiEXT_layer                           = Dsa_glProgramUniform2uiEXT;
+  dt.glProgramUniform2uivEXT                               = Dsa_glProgramUniform2uivEXT;
+  dt.glProgramUniform2uivEXT_layer                          = Dsa_glProgramUniform2uivEXT;
+  dt.glProgramUniform3dEXT                                 = Dsa_glProgramUniform3dEXT;
+  dt.glProgramUniform3dEXT_layer                            = Dsa_glProgramUniform3dEXT;
+  dt.glProgramUniform3dvEXT                                = Dsa_glProgramUniform3dvEXT;
+  dt.glProgramUniform3dvEXT_layer                           = Dsa_glProgramUniform3dvEXT;
+  dt.glProgramUniform3fEXT                                 = Dsa_glProgramUniform3fEXT;
+  dt.glProgramUniform3fEXT_layer                            = Dsa_glProgramUniform3fEXT;
+  dt.glProgramUniform3fvEXT                                = Dsa_glProgramUniform3fvEXT;
+  dt.glProgramUniform3fvEXT_layer                           = Dsa_glProgramUniform3fvEXT;
+  dt.glProgramUniform3iEXT                                 = Dsa_glProgramUniform3iEXT;
+  dt.glProgramUniform3iEXT_layer                            = Dsa_glProgramUniform3iEXT;
+  dt.glProgramUniform3ivEXT                                = Dsa_glProgramUniform3ivEXT;
+  dt.glProgramUniform3ivEXT_layer                           = Dsa_glProgramUniform3ivEXT;
+  dt.glProgramUniform3uiEXT                                = Dsa_glProgramUniform3uiEXT;
+  dt.glProgramUniform3uiEXT_layer                           = Dsa_glProgramUniform3uiEXT;
+  dt.glProgramUniform3uivEXT                               = Dsa_glProgramUniform3uivEXT;
+  dt.glProgramUniform3uivEXT_layer                          = Dsa_glProgramUniform3uivEXT;
+  dt.glProgramUniform4dEXT                                 = Dsa_glProgramUniform4dEXT;
+  dt.glProgramUniform4dEXT_layer                            = Dsa_glProgramUniform4dEXT;
+  dt.glProgramUniform4dvEXT                                = Dsa_glProgramUniform4dvEXT;
+  dt.glProgramUniform4dvEXT_layer                           = Dsa_glProgramUniform4dvEXT;
+  dt.glProgramUniform4fEXT                                 = Dsa_glProgramUniform4fEXT;
+  dt.glProgramUniform4fEXT_layer                            = Dsa_glProgramUniform4fEXT;
+  dt.glProgramUniform4fvEXT                                = Dsa_glProgramUniform4fvEXT;
+  dt.glProgramUniform4fvEXT_layer                           = Dsa_glProgramUniform4fvEXT;
+  dt.glProgramUniform4iEXT                                 = Dsa_glProgramUniform4iEXT;
+  dt.glProgramUniform4iEXT_layer                            = Dsa_glProgramUniform4iEXT;
+  dt.glProgramUniform4ivEXT                                = Dsa_glProgramUniform4ivEXT;
+  dt.glProgramUniform4ivEXT_layer                           = Dsa_glProgramUniform4ivEXT;
+  dt.glProgramUniform4uiEXT                                = Dsa_glProgramUniform4uiEXT;
+  dt.glProgramUniform4uiEXT_layer                           = Dsa_glProgramUniform4uiEXT;
+  dt.glProgramUniform4uivEXT                               = Dsa_glProgramUniform4uivEXT;
+  dt.glProgramUniform4uivEXT_layer                          = Dsa_glProgramUniform4uivEXT;
+  dt.glProgramUniformMatrix2dvEXT                          = Dsa_glProgramUniformMatrix2dvEXT;
+  dt.glProgramUniformMatrix2dvEXT_layer                     = Dsa_glProgramUniformMatrix2dvEXT;
+  dt.glProgramUniformMatrix2fvEXT                          = Dsa_glProgramUniformMatrix2fvEXT;
+  dt.glProgramUniformMatrix2fvEXT_layer                     = Dsa_glProgramUniformMatrix2fvEXT;
+  dt.glProgramUniformMatrix2x3dvEXT                        = Dsa_glProgramUniformMatrix2x3dvEXT;
+  dt.glProgramUniformMatrix2x3dvEXT_layer                   = Dsa_glProgramUniformMatrix2x3dvEXT;
+  dt.glProgramUniformMatrix2x3fvEXT                        = Dsa_glProgramUniformMatrix2x3fvEXT;
+  dt.glProgramUniformMatrix2x3fvEXT_layer                   = Dsa_glProgramUniformMatrix2x3fvEXT;
+  dt.glProgramUniformMatrix2x4dvEXT                        = Dsa_glProgramUniformMatrix2x4dvEXT;
+  dt.glProgramUniformMatrix2x4dvEXT_layer                   = Dsa_glProgramUniformMatrix2x4dvEXT;
+  dt.glProgramUniformMatrix2x4fvEXT                        = Dsa_glProgramUniformMatrix2x4fvEXT;
+  dt.glProgramUniformMatrix2x4fvEXT_layer                   = Dsa_glProgramUniformMatrix2x4fvEXT;
+  dt.glProgramUniformMatrix3dvEXT                          = Dsa_glProgramUniformMatrix3dvEXT;
+  dt.glProgramUniformMatrix3dvEXT_layer                     = Dsa_glProgramUniformMatrix3dvEXT;
+  dt.glProgramUniformMatrix3fvEXT                          = Dsa_glProgramUniformMatrix3fvEXT;
+  dt.glProgramUniformMatrix3fvEXT_layer                     = Dsa_glProgramUniformMatrix3fvEXT;
+  dt.glProgramUniformMatrix3x2dvEXT                        = Dsa_glProgramUniformMatrix3x2dvEXT;
+  dt.glProgramUniformMatrix3x2dvEXT_layer                   = Dsa_glProgramUniformMatrix3x2dvEXT;
+  dt.glProgramUniformMatrix3x2fvEXT                        = Dsa_glProgramUniformMatrix3x2fvEXT;
+  dt.glProgramUniformMatrix3x2fvEXT_layer                   = Dsa_glProgramUniformMatrix3x2fvEXT;
+  dt.glProgramUniformMatrix3x4dvEXT                        = Dsa_glProgramUniformMatrix3x4dvEXT;
+  dt.glProgramUniformMatrix3x4dvEXT_layer                   = Dsa_glProgramUniformMatrix3x4dvEXT;
+  dt.glProgramUniformMatrix3x4fvEXT                        = Dsa_glProgramUniformMatrix3x4fvEXT;
+  dt.glProgramUniformMatrix3x4fvEXT_layer                   = Dsa_glProgramUniformMatrix3x4fvEXT;
+  dt.glProgramUniformMatrix4dvEXT                          = Dsa_glProgramUniformMatrix4dvEXT;
+  dt.glProgramUniformMatrix4dvEXT_layer                     = Dsa_glProgramUniformMatrix4dvEXT;
+  dt.glProgramUniformMatrix4fvEXT                          = Dsa_glProgramUniformMatrix4fvEXT;
+  dt.glProgramUniformMatrix4fvEXT_layer                     = Dsa_glProgramUniformMatrix4fvEXT;
+  dt.glProgramUniformMatrix4x2dvEXT                        = Dsa_glProgramUniformMatrix4x2dvEXT;
+  dt.glProgramUniformMatrix4x2dvEXT_layer                   = Dsa_glProgramUniformMatrix4x2dvEXT;
+  dt.glProgramUniformMatrix4x2fvEXT                        = Dsa_glProgramUniformMatrix4x2fvEXT;
+  dt.glProgramUniformMatrix4x2fvEXT_layer                   = Dsa_glProgramUniformMatrix4x2fvEXT;
+  dt.glProgramUniformMatrix4x3dvEXT                        = Dsa_glProgramUniformMatrix4x3dvEXT;
+  dt.glProgramUniformMatrix4x3dvEXT_layer                   = Dsa_glProgramUniformMatrix4x3dvEXT;
+  dt.glProgramUniformMatrix4x3fvEXT                        = Dsa_glProgramUniformMatrix4x3fvEXT;
+  dt.glProgramUniformMatrix4x3fvEXT_layer                   = Dsa_glProgramUniformMatrix4x3fvEXT;
+  dt.glPushClientAttribDefaultEXT                          = Dsa_glPushClientAttribDefaultEXT;
+  dt.glPushClientAttribDefaultEXT_layer                     = Dsa_glPushClientAttribDefaultEXT;
+  dt.glPushMatrix                                          = Dsa_glPushMatrix;
+  dt.glPushMatrix_layer                                     = Dsa_glPushMatrix;
+  dt.glRenderbufferStorage                                 = Dsa_glRenderbufferStorage;
+  dt.glRenderbufferStorage_layer                            = Dsa_glRenderbufferStorage;
+  dt.glRenderbufferStorageEXT                              = Dsa_glRenderbufferStorageEXT;
+  dt.glRenderbufferStorageEXT_layer                         = Dsa_glRenderbufferStorageEXT;
+  dt.glRenderbufferStorageMultisample                      = Dsa_glRenderbufferStorageMultisample;
+  dt.glRenderbufferStorageMultisample_layer                 = Dsa_glRenderbufferStorageMultisample;
+  dt.glRenderbufferStorageMultisampleCoverageNV            = Dsa_glRenderbufferStorageMultisampleCoverageNV;
+  dt.glRenderbufferStorageMultisampleCoverageNV_layer       = Dsa_glRenderbufferStorageMultisampleCoverageNV;
+  dt.glRenderbufferStorageMultisampleEXT                   = Dsa_glRenderbufferStorageMultisampleEXT;
+  dt.glRenderbufferStorageMultisampleEXT_layer              = Dsa_glRenderbufferStorageMultisampleEXT;
+  dt.glRotated                                             = Dsa_glRotated;
+  dt.glRotated_layer                                        = Dsa_glRotated;
+  dt.glRotatef                                             = Dsa_glRotatef;
+  dt.glRotatef_layer                                        = Dsa_glRotatef;
+  dt.glScaled                                              = Dsa_glScaled;
+  dt.glScaled_layer                                         = Dsa_glScaled;
+  dt.glScalef                                              = Dsa_glScalef;
+  dt.glScalef_layer                                         = Dsa_glScalef;
+  dt.glSecondaryColorPointer                               = Dsa_glSecondaryColorPointer;
+  dt.glSecondaryColorPointer_layer                          = Dsa_glSecondaryColorPointer;
+  dt.glTexBuffer                                           = Dsa_glTexBuffer;
+  dt.glTexBuffer_layer                                      = Dsa_glTexBuffer;
+  dt.glTexCoordPointer                                     = Dsa_glTexCoordPointer;
+  dt.glTexCoordPointer_layer                                = Dsa_glTexCoordPointer;
+  dt.glTexEnvf                                             = Dsa_glTexEnvf;
+  dt.glTexEnvf_layer                                        = Dsa_glTexEnvf;
+  dt.glTexEnvfv                                            = Dsa_glTexEnvfv;
+  dt.glTexEnvfv_layer                                       = Dsa_glTexEnvfv;
+  dt.glTexEnvi                                             = Dsa_glTexEnvi;
+  dt.glTexEnvi_layer                                        = Dsa_glTexEnvi;
+  dt.glTexEnviv                                            = Dsa_glTexEnviv;
+  dt.glTexEnviv_layer                                       = Dsa_glTexEnviv;
+  dt.glTexGenf                                             = Dsa_glTexGenf;
+  dt.glTexGenf_layer                                        = Dsa_glTexGenf;
+  dt.glTexGenfv                                            = Dsa_glTexGenfv;
+  dt.glTexGenfv_layer                                       = Dsa_glTexGenfv;
+  dt.glTexGeni                                             = Dsa_glTexGeni;
+  dt.glTexGeni_layer                                        = Dsa_glTexGeni;
+  dt.glTexGeniv                                            = Dsa_glTexGeniv;
+  dt.glTexGeniv_layer                                       = Dsa_glTexGeniv;
+  dt.glTexParameterf                                       = Dsa_glTexParameterf;
+  dt.glTexParameterf_layer                                  = Dsa_glTexParameterf;
+  dt.glTexParameterfv                                      = Dsa_glTexParameterfv;
+  dt.glTexParameterfv_layer                                 = Dsa_glTexParameterfv;
+  dt.glTexParameteri                                       = Dsa_glTexParameteri;
+  dt.glTexParameteri_layer                                  = Dsa_glTexParameteri;
+  dt.glTexParameteriv                                      = Dsa_glTexParameteriv;
+  dt.glTexParameteriv_layer                                 = Dsa_glTexParameteriv;
+  dt.glTexRenderbufferNV                                   = Dsa_glTexRenderbufferNV;
+  dt.glTexRenderbufferNV_layer                              = Dsa_glTexRenderbufferNV;
+  dt.glTextureBufferEXT                                    = Dsa_glTextureBufferEXT;
+  dt.glTextureBufferEXT_layer                               = Dsa_glTextureBufferEXT;
+  dt.glTextureImage1DEXT                                   = Dsa_glTextureImage1DEXT;
+  dt.glTextureImage1DEXT_layer                              = Dsa_glTextureImage1DEXT;
+  dt.glTextureImage2DEXT                                   = Dsa_glTextureImage2DEXT;
+  dt.glTextureImage2DEXT_layer                              = Dsa_glTextureImage2DEXT;
+  dt.glTextureImage3DEXT                                   = Dsa_glTextureImage3DEXT;
+  dt.glTextureImage3DEXT_layer                              = Dsa_glTextureImage3DEXT;
+  dt.glTextureParameterIivEXT                              = Dsa_glTextureParameterIivEXT;
+  dt.glTextureParameterIivEXT_layer                         = Dsa_glTextureParameterIivEXT;
+  dt.glTextureParameterIuivEXT                             = Dsa_glTextureParameterIuivEXT;
+  dt.glTextureParameterIuivEXT_layer                        = Dsa_glTextureParameterIuivEXT;
+  dt.glTextureParameterfEXT                                = Dsa_glTextureParameterfEXT;
+  dt.glTextureParameterfEXT_layer                           = Dsa_glTextureParameterfEXT;
+  dt.glTextureParameterfvEXT                               = Dsa_glTextureParameterfvEXT;
+  dt.glTextureParameterfvEXT_layer                          = Dsa_glTextureParameterfvEXT;
+  dt.glTextureParameteriEXT                                = Dsa_glTextureParameteriEXT;
+  dt.glTextureParameteriEXT_layer                           = Dsa_glTextureParameteriEXT;
+  dt.glTextureParameterivEXT                               = Dsa_glTextureParameterivEXT;
+  dt.glTextureParameterivEXT_layer                          = Dsa_glTextureParameterivEXT;
+  dt.glTextureRenderbufferEXT                              = Dsa_glTextureRenderbufferEXT;
+  dt.glTextureRenderbufferEXT_layer                         = Dsa_glTextureRenderbufferEXT;
+  dt.glTextureStorage1DEXT                                 = Dsa_glTextureStorage1DEXT;
+  dt.glTextureStorage1DEXT_layer                            = Dsa_glTextureStorage1DEXT;
+  dt.glTextureStorage2DEXT                                 = Dsa_glTextureStorage2DEXT;
+  dt.glTextureStorage2DEXT_layer                            = Dsa_glTextureStorage2DEXT;
+  dt.glTextureStorage3DEXT                                 = Dsa_glTextureStorage3DEXT;
+  dt.glTextureStorage3DEXT_layer                            = Dsa_glTextureStorage3DEXT;
+  dt.glTextureSubImage1DEXT                                = Dsa_glTextureSubImage1DEXT;
+  dt.glTextureSubImage1DEXT_layer                           = Dsa_glTextureSubImage1DEXT;
+  dt.glTextureSubImage2DEXT                                = Dsa_glTextureSubImage2DEXT;
+  dt.glTextureSubImage2DEXT_layer                           = Dsa_glTextureSubImage2DEXT;
+  dt.glTextureSubImage3DEXT                                = Dsa_glTextureSubImage3DEXT;
+  dt.glTextureSubImage3DEXT_layer                           = Dsa_glTextureSubImage3DEXT;
+  dt.glTranslated                                          = Dsa_glTranslated;
+  dt.glTranslated_layer                                     = Dsa_glTranslated;
+  dt.glTranslatef                                          = Dsa_glTranslatef;
+  dt.glTranslatef_layer                                     = Dsa_glTranslatef;
+  dt.glUniform1d                                           = Dsa_glUniform1d;
+  dt.glUniform1d_layer                                      = Dsa_glUniform1d;
+  dt.glUniform1dv                                          = Dsa_glUniform1dv;
+  dt.glUniform1dv_layer                                     = Dsa_glUniform1dv;
+  dt.glUniform1f                                           = Dsa_glUniform1f;
+  dt.glUniform1f_layer                                      = Dsa_glUniform1f;
+  dt.glUniform1fv                                          = Dsa_glUniform1fv;
+  dt.glUniform1fv_layer                                     = Dsa_glUniform1fv;
+  dt.glUniform1i                                           = Dsa_glUniform1i;
+  dt.glUniform1i_layer                                      = Dsa_glUniform1i;
+  dt.glUniform1iv                                          = Dsa_glUniform1iv;
+  dt.glUniform1iv_layer                                     = Dsa_glUniform1iv;
+  dt.glUniform1ui                                          = Dsa_glUniform1ui;
+  dt.glUniform1ui_layer                                     = Dsa_glUniform1ui;
+  dt.glUniform1uiv                                         = Dsa_glUniform1uiv;
+  dt.glUniform1uiv_layer                                    = Dsa_glUniform1uiv;
+  dt.glUniform2d                                           = Dsa_glUniform2d;
+  dt.glUniform2d_layer                                      = Dsa_glUniform2d;
+  dt.glUniform2dv                                          = Dsa_glUniform2dv;
+  dt.glUniform2dv_layer                                     = Dsa_glUniform2dv;
+  dt.glUniform2f                                           = Dsa_glUniform2f;
+  dt.glUniform2f_layer                                      = Dsa_glUniform2f;
+  dt.glUniform2fv                                          = Dsa_glUniform2fv;
+  dt.glUniform2fv_layer                                     = Dsa_glUniform2fv;
+  dt.glUniform2i                                           = Dsa_glUniform2i;
+  dt.glUniform2i_layer                                      = Dsa_glUniform2i;
+  dt.glUniform2iv                                          = Dsa_glUniform2iv;
+  dt.glUniform2iv_layer                                     = Dsa_glUniform2iv;
+  dt.glUniform2ui                                          = Dsa_glUniform2ui;
+  dt.glUniform2ui_layer                                     = Dsa_glUniform2ui;
+  dt.glUniform2uiv                                         = Dsa_glUniform2uiv;
+  dt.glUniform2uiv_layer                                    = Dsa_glUniform2uiv;
+  dt.glUniform3d                                           = Dsa_glUniform3d;
+  dt.glUniform3d_layer                                      = Dsa_glUniform3d;
+  dt.glUniform3dv                                          = Dsa_glUniform3dv;
+  dt.glUniform3dv_layer                                     = Dsa_glUniform3dv;
+  dt.glUniform3f                                           = Dsa_glUniform3f;
+  dt.glUniform3f_layer                                      = Dsa_glUniform3f;
+  dt.glUniform3fv                                          = Dsa_glUniform3fv;
+  dt.glUniform3fv_layer                                     = Dsa_glUniform3fv;
+  dt.glUniform3i                                           = Dsa_glUniform3i;
+  dt.glUniform3i_layer                                      = Dsa_glUniform3i;
+  dt.glUniform3iv                                          = Dsa_glUniform3iv;
+  dt.glUniform3iv_layer                                     = Dsa_glUniform3iv;
+  dt.glUniform3ui                                          = Dsa_glUniform3ui;
+  dt.glUniform3ui_layer                                     = Dsa_glUniform3ui;
+  dt.glUniform3uiv                                         = Dsa_glUniform3uiv;
+  dt.glUniform3uiv_layer                                    = Dsa_glUniform3uiv;
+  dt.glUniform4d                                           = Dsa_glUniform4d;
+  dt.glUniform4d_layer                                      = Dsa_glUniform4d;
+  dt.glUniform4dv                                          = Dsa_glUniform4dv;
+  dt.glUniform4dv_layer                                     = Dsa_glUniform4dv;
+  dt.glUniform4f                                           = Dsa_glUniform4f;
+  dt.glUniform4f_layer                                      = Dsa_glUniform4f;
+  dt.glUniform4fv                                          = Dsa_glUniform4fv;
+  dt.glUniform4fv_layer                                     = Dsa_glUniform4fv;
+  dt.glUniform4i                                           = Dsa_glUniform4i;
+  dt.glUniform4i_layer                                      = Dsa_glUniform4i;
+  dt.glUniform4iv                                          = Dsa_glUniform4iv;
+  dt.glUniform4iv_layer                                     = Dsa_glUniform4iv;
+  dt.glUniform4ui                                          = Dsa_glUniform4ui;
+  dt.glUniform4ui_layer                                     = Dsa_glUniform4ui;
+  dt.glUniform4uiv                                         = Dsa_glUniform4uiv;
+  dt.glUniform4uiv_layer                                    = Dsa_glUniform4uiv;
+  dt.glUniformMatrix2dv                                    = Dsa_glUniformMatrix2dv;
+  dt.glUniformMatrix2dv_layer                               = Dsa_glUniformMatrix2dv;
+  dt.glUniformMatrix2fv                                    = Dsa_glUniformMatrix2fv;
+  dt.glUniformMatrix2fv_layer                               = Dsa_glUniformMatrix2fv;
+  dt.glUniformMatrix2x3dv                                  = Dsa_glUniformMatrix2x3dv;
+  dt.glUniformMatrix2x3dv_layer                             = Dsa_glUniformMatrix2x3dv;
+  dt.glUniformMatrix2x3fv                                  = Dsa_glUniformMatrix2x3fv;
+  dt.glUniformMatrix2x3fv_layer                             = Dsa_glUniformMatrix2x3fv;
+  dt.glUniformMatrix2x4dv                                  = Dsa_glUniformMatrix2x4dv;
+  dt.glUniformMatrix2x4dv_layer                             = Dsa_glUniformMatrix2x4dv;
+  dt.glUniformMatrix2x4fv                                  = Dsa_glUniformMatrix2x4fv;
+  dt.glUniformMatrix2x4fv_layer                             = Dsa_glUniformMatrix2x4fv;
+  dt.glUniformMatrix3dv                                    = Dsa_glUniformMatrix3dv;
+  dt.glUniformMatrix3dv_layer                               = Dsa_glUniformMatrix3dv;
+  dt.glUniformMatrix3fv                                    = Dsa_glUniformMatrix3fv;
+  dt.glUniformMatrix3fv_layer                               = Dsa_glUniformMatrix3fv;
+  dt.glUniformMatrix3x2dv                                  = Dsa_glUniformMatrix3x2dv;
+  dt.glUniformMatrix3x2dv_layer                             = Dsa_glUniformMatrix3x2dv;
+  dt.glUniformMatrix3x2fv                                  = Dsa_glUniformMatrix3x2fv;
+  dt.glUniformMatrix3x2fv_layer                             = Dsa_glUniformMatrix3x2fv;
+  dt.glUniformMatrix3x4dv                                  = Dsa_glUniformMatrix3x4dv;
+  dt.glUniformMatrix3x4dv_layer                             = Dsa_glUniformMatrix3x4dv;
+  dt.glUniformMatrix3x4fv                                  = Dsa_glUniformMatrix3x4fv;
+  dt.glUniformMatrix3x4fv_layer                             = Dsa_glUniformMatrix3x4fv;
+  dt.glUniformMatrix4dv                                    = Dsa_glUniformMatrix4dv;
+  dt.glUniformMatrix4dv_layer                               = Dsa_glUniformMatrix4dv;
+  dt.glUniformMatrix4fv                                    = Dsa_glUniformMatrix4fv;
+  dt.glUniformMatrix4fv_layer                               = Dsa_glUniformMatrix4fv;
+  dt.glUniformMatrix4x2dv                                  = Dsa_glUniformMatrix4x2dv;
+  dt.glUniformMatrix4x2dv_layer                             = Dsa_glUniformMatrix4x2dv;
+  dt.glUniformMatrix4x2fv                                  = Dsa_glUniformMatrix4x2fv;
+  dt.glUniformMatrix4x2fv_layer                             = Dsa_glUniformMatrix4x2fv;
+  dt.glUniformMatrix4x3dv                                  = Dsa_glUniformMatrix4x3dv;
+  dt.glUniformMatrix4x3dv_layer                             = Dsa_glUniformMatrix4x3dv;
+  dt.glUniformMatrix4x3fv                                  = Dsa_glUniformMatrix4x3fv;
+  dt.glUniformMatrix4x3fv_layer                             = Dsa_glUniformMatrix4x3fv;
+  dt.glUnmapBuffer                                         = Dsa_glUnmapBuffer;
+  dt.glUnmapBuffer_layer                                    = Dsa_glUnmapBuffer;
+  dt.glUnmapBufferARB                                      = Dsa_glUnmapBufferARB;
+  dt.glUnmapBufferARB_layer                                 = Dsa_glUnmapBufferARB;
+  dt.glUnmapNamedBufferEXT                                 = Dsa_glUnmapNamedBufferEXT;
+  dt.glUnmapNamedBufferEXT_layer                            = Dsa_glUnmapNamedBufferEXT;
+  dt.glUseProgram                                          = Dsa_glUseProgram;
+  dt.glUseProgram_layer                                     = Dsa_glUseProgram;
+  dt.glVertexArrayColorOffsetEXT                           = Dsa_glVertexArrayColorOffsetEXT;
+  dt.glVertexArrayColorOffsetEXT_layer                      = Dsa_glVertexArrayColorOffsetEXT;
+  dt.glVertexArrayEdgeFlagOffsetEXT                        = Dsa_glVertexArrayEdgeFlagOffsetEXT;
+  dt.glVertexArrayEdgeFlagOffsetEXT_layer                   = Dsa_glVertexArrayEdgeFlagOffsetEXT;
+  dt.glVertexArrayFogCoordOffsetEXT                        = Dsa_glVertexArrayFogCoordOffsetEXT;
+  dt.glVertexArrayFogCoordOffsetEXT_layer                   = Dsa_glVertexArrayFogCoordOffsetEXT;
+  dt.glVertexArrayIndexOffsetEXT                           = Dsa_glVertexArrayIndexOffsetEXT;
+  dt.glVertexArrayIndexOffsetEXT_layer                      = Dsa_glVertexArrayIndexOffsetEXT;
+  dt.glVertexArrayMultiTexCoordOffsetEXT                   = Dsa_glVertexArrayMultiTexCoordOffsetEXT;
+  dt.glVertexArrayMultiTexCoordOffsetEXT_layer              = Dsa_glVertexArrayMultiTexCoordOffsetEXT;
+  dt.glVertexArrayNormalOffsetEXT                          = Dsa_glVertexArrayNormalOffsetEXT;
+  dt.glVertexArrayNormalOffsetEXT_layer                     = Dsa_glVertexArrayNormalOffsetEXT;
+  dt.glVertexArraySecondaryColorOffsetEXT                  = Dsa_glVertexArraySecondaryColorOffsetEXT;
+  dt.glVertexArraySecondaryColorOffsetEXT_layer             = Dsa_glVertexArraySecondaryColorOffsetEXT;
+  dt.glVertexArrayTexCoordOffsetEXT                        = Dsa_glVertexArrayTexCoordOffsetEXT;
+  dt.glVertexArrayTexCoordOffsetEXT_layer                   = Dsa_glVertexArrayTexCoordOffsetEXT;
+  dt.glVertexArrayVertexAttribIOffsetEXT                   = Dsa_glVertexArrayVertexAttribIOffsetEXT;
+  dt.glVertexArrayVertexAttribIOffsetEXT_layer              = Dsa_glVertexArrayVertexAttribIOffsetEXT;
+  dt.glVertexArrayVertexAttribOffsetEXT                    = Dsa_glVertexArrayVertexAttribOffsetEXT;
+  dt.glVertexArrayVertexAttribOffsetEXT_layer               = Dsa_glVertexArrayVertexAttribOffsetEXT;
+  dt.glVertexArrayVertexOffsetEXT                          = Dsa_glVertexArrayVertexOffsetEXT;
+  dt.glVertexArrayVertexOffsetEXT_layer                     = Dsa_glVertexArrayVertexOffsetEXT;
+  dt.glVertexPointer                                       = Dsa_glVertexPointer;
+  dt.glVertexPointer_layer                                  = Dsa_glVertexPointer;
 }
 
 REGAL_NAMESPACE_END

@@ -54,111 +54,127 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptRect_glRectd(RegalContext *_context, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+static void REGAL_CALL Rect_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRectd( _context, x1, y1, x2, y2 );
+  orig.glRectd( orig.glRectd_layer, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectdv(RegalContext *_context, const GLdouble *v1, const GLdouble *v2)
+static void REGAL_CALL Rect_glRectdv(Layer *_layer, const GLdouble *v1, const GLdouble *v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectdv( _context, v1, v2 );
+  orig.glRectdv( orig.glRectdv_layer, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectf(RegalContext *_context, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+static void REGAL_CALL Rect_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRectf( _context, x1, y1, x2, y2 );
+  orig.glRectf( orig.glRectf_layer, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectfv(RegalContext *_context, const GLfloat *v1, const GLfloat *v2)
+static void REGAL_CALL Rect_glRectfv(Layer *_layer, const GLfloat *v1, const GLfloat *v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectfv( _context, v1, v2 );
+  orig.glRectfv( orig.glRectfv_layer, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRecti(RegalContext *_context, GLint x1, GLint y1, GLint x2, GLint y2)
+static void REGAL_CALL Rect_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2, GLint y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRecti( _context, x1, y1, x2, y2 );
+  orig.glRecti( orig.glRecti_layer, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectiv(RegalContext *_context, const GLint *v1, const GLint *v2)
+static void REGAL_CALL Rect_glRectiv(Layer *_layer, const GLint *v1, const GLint *v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectiv( _context, v1, v2 );
+  orig.glRectiv( orig.glRectiv_layer, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRects(RegalContext *_context, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+static void REGAL_CALL Rect_glRects(Layer *_layer, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRects( _context, x1, y1, x2, y2 );
+  orig.glRects( orig.glRects_layer, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptRect_glRectsv(RegalContext *_context, const GLshort *v1, const GLshort *v2)
+static void REGAL_CALL Rect_glRectsv(Layer *_layer, const GLshort *v1, const GLshort *v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateRect & orig = _context->rect->orig;
+  Rect * self = static_cast<Rect *>(_layer);
+
+  RectOriginate & orig = self->orig;
 
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectsv( _context, v1, v2 );
+  orig.glRectsv( orig.glRectsv_layer, v1, v2 );
 
 }
 
-void EmuProcsInterceptRect( Dispatch::GL & dt ) {
-  dt.glRectd  = emuProcInterceptRect_glRectd;
-  dt.glRectdv = emuProcInterceptRect_glRectdv;
-  dt.glRectf  = emuProcInterceptRect_glRectf;
-  dt.glRectfv = emuProcInterceptRect_glRectfv;
-  dt.glRecti  = emuProcInterceptRect_glRecti;
-  dt.glRectiv = emuProcInterceptRect_glRectiv;
-  dt.glRects  = emuProcInterceptRect_glRects;
-  dt.glRectsv = emuProcInterceptRect_glRectsv;
+void RectIntercept( Dispatch::GL & dt ) {
+  dt.glRectd       = Rect_glRectd;
+  dt.glRectd_layer  = Rect_glRectd;
+  dt.glRectdv      = Rect_glRectdv;
+  dt.glRectdv_layer = Rect_glRectdv;
+  dt.glRectf       = Rect_glRectf;
+  dt.glRectf_layer  = Rect_glRectf;
+  dt.glRectfv      = Rect_glRectfv;
+  dt.glRectfv_layer = Rect_glRectfv;
+  dt.glRecti       = Rect_glRecti;
+  dt.glRecti_layer  = Rect_glRecti;
+  dt.glRectiv      = Rect_glRectiv;
+  dt.glRectiv_layer = Rect_glRectiv;
+  dt.glRects       = Rect_glRects;
+  dt.glRects_layer  = Rect_glRects;
+  dt.glRectsv      = Rect_glRectsv;
+  dt.glRectsv_layer = Rect_glRectsv;
 }
 
 REGAL_NAMESPACE_END

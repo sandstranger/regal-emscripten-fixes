@@ -13732,8 +13732,6 @@ extern "C" {
     {
         _context->dispatchGL.glPushGroupMarkerEXT(_context, length, marker);
     }
-    if (_context->marker)
-      _context->marker->PushGroupMarker(*_context, _message);
   }
 
   /* GL_EXT_depth_bounds_test */
@@ -18719,8 +18717,6 @@ extern "C" {
     {
         _context->dispatchGL.glPushDebugGroup(_context, source, id, length, message);
     }
-    if (_context->marker)
-      _context->marker->PushGroupMarker(*_context, _message);
   }
 
   /* GL_KTX_buffer_region */
@@ -25634,8 +25630,6 @@ extern "C" {
     Init::init();
     HGLRC ret = NULL;
     ret = dispatchGlobal.wglCreateContextAttribsARB(_context, hDC, hShareContext, piAttribList);
-    if (ret && hShareContext)
-      Init::shareContext(ret,hShareContext);
     return ret;
   }
 
@@ -27082,8 +27076,6 @@ extern "C" {
     Init::init();
     BOOL ret = 0;
     ret = dispatchGlobal.wglShareLists(_context, hglrcShare, hglrcSrc);
-    if (ret && hglrcShare && hglrcSrc)
-      Init::shareContext(hglrcShare,hglrcSrc);
     return ret;
   }
 
@@ -27186,8 +27178,6 @@ extern "C" {
     Init::init();
     GLXContext ret = 0;
     ret = dispatchGlobal.glXCreateContext(_context, dpy, vis, shareList, direct);
-    if (ret && shareList)
-      Init::shareContext(ret,shareList);
     return ret;
   }
 
@@ -27403,8 +27393,6 @@ extern "C" {
     Init::init();
     GLXContext ret = 0;
     ret = dispatchGlobal.glXCreateNewContext(_context, dpy, config, render_type, share_list, direct);
-    if (ret && share_list)
-      Init::shareContext(ret,share_list);
     return ret;
   }
 
@@ -27693,8 +27681,6 @@ extern "C" {
     Init::init();
     GLXContext ret = 0;
     ret = dispatchGlobal.glXCreateContextAttribsARB(_context, dpy, config, share_context, direct, attrib_list);
-    if (ret && share_context)
-      Init::shareContext(ret,share_context);
     return ret;
   }
 

@@ -70,7 +70,7 @@ ${ENDIF}
 def apiEmuProcsHeaderCode( e, apis, orig ):
   code = ''
 
-  code +=     'void EmuProcsIntercept%s( Dispatch::GL & dt );\n\n' % e['suffix']
+  code +=     'void %sIntercept( Dispatch::GL & dt );\n\n' % e['type']
 
   o = emuGetOriginateList( e['formulae'], apis )
   for f in orig:
@@ -81,18 +81,22 @@ def apiEmuProcsHeaderCode( e, apis, orig ):
   if len(o) == 0:
     return code
 
-  code +=     'struct EmuProcsOriginate%s {\n' % e['suffix']
+  code +=     'struct %sOriginate {\n' % e['type']
   code +=     '\n'
-  code +=     '  EmuProcsOriginate%s() {\n' % e['suffix']
+  code +=     '  %sOriginate() {\n' % e['type']
   code +=     '    memset(this, 0, sizeof( *this ) );\n'
   code +=     '  }\n'
   code +=     '\n'
   for oe in o:
     code +=   '  REGAL%sPROC %s;\n' % ( oe.upper(), oe )
+    code +=   '  Layer * %s_layer;\n' % ( oe )
+    code +=   '\n'
   code +=     '\n'
   code +=     '  void Initialize( Dispatch::GL & dt ) {\n'
   for oe in o:
     code +=   '    %s = dt.%s;\n' % ( oe, oe )
+    code +=   '    %s_layer = dt.%s_layer;\n' % ( oe, oe )
+    code +=   '\n'
   code +=     '  }\n'
   code +=     '};\n\n'
 
@@ -107,11 +111,10 @@ def callAndReturn( e, function ):
 
   if not typeIsVoid(rType):
     code += 'return '
-  if len(callParams) == 0:
-    callParams = "_context"
-  else:
-    callParams = "_context, %s" % callParams
-  code += 'orig.%s( %s );\n' % ( name, callParams )
+  cp = "orig.%s_layer" % name
+  if len(callParams):
+    cp += ", %s" % callParams
+  code += 'orig.%s( %s );\n' % ( name, cp )
   
   return code
 
@@ -120,6 +123,7 @@ def apiEmuProcsSourceCode( e, apis, orig ):
 
   intercept = []
   ore = re.compile( "orig.gl[A-Za-z0-9_]+" );
+  sre = re.compile( "self->" );
 
   for api in apis:
 
@@ -132,34 +136,33 @@ def apiEmuProcsSourceCode( e, apis, orig ):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True, paramsPrefix = "RegalContext *_context")
+      params = paramsDefaultCode(function.parameters, True, paramsPrefix = "Layer *_layer")
       callParams = paramsNameCode(function.parameters)
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
 
-      emue = emuFindEntry( function, e['formulae'], e['member'] )
+      emue = emuFindEntry( function, e['formulae'], e['name'] )
 
       if not emue:
         continue
 
       intercept.append( name )
 
-      code +=      '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'emuProcIntercept%s_' % e['suffix'], name, params)
-      code +=      '  RegalAssert(_context);\n'
+      code +=      '\nstatic %sREGAL_CALL %s%s(%s) \n{\n' % (rType, '%s_' % e['type'], name, params)
 
       body =       ''
       if emue != None and 'prefix' in emue and len(emue['prefix']):
         body +=    '  // prefix\n'
         body += listToString( indent( emue['prefix'], '  ' ) )
         if body.find("return") > 0:
-          raise Exception("Cannot early return in prefix clause. - %s %s" % ( e['suffix'], name ) )
+          raise Exception("Cannot early return in prefix clause. - %s %s" % ( e['type'], name ) )
 
       elif emue != None and 'impl' in emue and len( emue['impl'] ):
         body +=    '  // impl\n'
         body += listToString( indent( emue['impl'], '  ' ) )
         if body.find("return") < 0:
-          raise Exception("Must have at least one return in impl clause. - %s %s" % ( e['suffix'], name ) )
+          raise Exception("Must have at least one return in impl clause. - %s %s" % ( e['type'], name ) )
 
 
       body +=      '\n'
@@ -167,24 +170,28 @@ def apiEmuProcsSourceCode( e, apis, orig ):
       body +=      '\n'
       body +=      '}\n'
 
-      calls = ore.findall( body )
-      if calls:
-        for c in calls:
+      selfcalls = sre.findall( body )
+      origcalls = ore.findall( body )
+      if selfcalls or origcalls:
+        code +=      '  %s * self = static_cast<%s *>(_layer);\n' % ( e['type'], e['type'] )
+      code +=      '\n'
+      if origcalls:
+        for c in origcalls:
           c = c[5:]
           if c not in orig:
             orig.append( c )
-        code +=      '  EmuProcsOriginate%s & orig = _context->%s->orig;\n' % ( e['suffix'], e['member'] )
+        code +=      '  %sOriginate & orig = self->orig;\n' % e['type']
       code +=      '\n'
 
       code += body
 
-  code +=     'void EmuProcsIntercept%s( Dispatch::GL & dt ) {\n' % e['suffix']
+  code +=     'void %sIntercept( Dispatch::GL & dt ) {\n' % e['type']
   maxf = 0
   for f in intercept:
     maxf = max( maxf, len(f) )
   for f in sorted(intercept):
     spc = ' ' * ( maxf - len(f) )
-    code +=     '  dt.%s%s = emuProcIntercept%s_%s;\n' % ( f, spc, e['suffix'], f )
+    code +=     '  dt.%s%s = R%s_%s;\n' % ( f, spc, e['type'], f )
   code +=     '}\n'
   return code
 
@@ -200,16 +207,16 @@ def generateEmuSource(apis, args):
     s['LICENSE']         = args.license
     s['AUTOGENERATED']   = args.generated
     s['COPYRIGHT']       = args.copyright
-    origfuncs = orig[ e['suffix'] ] = []
+    origfuncs = orig[ e['type'] ] = []
     s['LOCAL_CODE']      = apiEmuProcsSourceCode( e, apis, origfuncs )
-    s['LOCAL_INCLUDE']   = '#include "Regal%s.h"\n#include "RegalEmuProcs%s.h"\n' % (e['suffix'],e['suffix'])
+    s['LOCAL_INCLUDE']   = '#include "Regal%s.h"\n#include "RegalEmuProcs%s.h"\n' % (e['type'],e['type'])
     s['API_DISPATCH_FUNC_DEFINE'] = ''
     s['API_DISPATCH_FUNC_INIT'] = ''
     s['API_DISPATCH_GLOBAL_FUNC_INIT'] = ''
     s['IFDEF'] = '#if REGAL_EMULATION\n\n'
     s['ENDIF'] = '#endif // REGAL_EMULATION\n'
 
-    outputCode( '%s/layer/%s/%sProcs.cpp' % (args.srcdir, e['member'], e['suffix']), emuProcsSourceTemplate.substitute(s))
+    outputCode( '%s/layer/%s/%sProcs.cpp' % (args.srcdir, e['name'], e['type']), emuProcsSourceTemplate.substitute(s))
 
   for e in emu:
     if not e['formulae']:
@@ -218,8 +225,8 @@ def generateEmuSource(apis, args):
     s['LICENSE']         = args.license
     s['AUTOGENERATED']   = args.generated
     s['COPYRIGHT']       = args.copyright
-    s['HEADER_NAME']   = 'REGAL_EMU_PROCS_%s_H' % e['suffix'].upper()
-    origfuncs = orig[ e['suffix'] ]
+    s['HEADER_NAME']   = 'REGAL_EMU_PROCS_%s_H' % e['type'].upper()
+    origfuncs = orig[ e['type'] ]
     s['LOCAL_CODE']      =  apiEmuProcsHeaderCode( e, apis, origfuncs )
     s['LOCAL_INCLUDE']   = ''
     s['API_DISPATCH_FUNC_DEFINE'] = ''
@@ -228,6 +235,6 @@ def generateEmuSource(apis, args):
     s['IFDEF'] = '#if REGAL_EMULATION\n\n'
     s['ENDIF'] = '#endif // REGAL_EMULATION\n'
 
-    outputCode( '%s/layer/%s/%sProcs.h' % (args.srcdir, e['member'], e['suffix']), emuProcsHeaderTemplate.substitute(s))
+    outputCode( '%s/layer/%s/%sProcs.h' % (args.srcdir, e['name'], e['type']), emuProcsHeaderTemplate.substitute(s))
 
 

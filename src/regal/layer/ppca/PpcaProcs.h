@@ -55,150 +55,819 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void EmuProcsInterceptPpca( Dispatch::GL & dt );
+void PpcaIntercept( Dispatch::GL & dt );
 
-struct EmuProcsOriginatePpca {
+struct PpcaOriginate {
 
-  EmuProcsOriginatePpca() {
+  PpcaOriginate() {
     memset(this, 0, sizeof( *this ) );
   }
 
   REGALGLBINDBUFFERPROC glBindBuffer;
+  Layer * glBindBuffer_layer;
+
+  REGALGLBINDBUFFER_LAYERPROC glBindBuffer_layer;
+  Layer * glBindBuffer_layer_layer;
+
   REGALGLBINDVERTEXARRAYPROC glBindVertexArray;
+  Layer * glBindVertexArray_layer;
+
+  REGALGLBINDVERTEXARRAY_LAYERPROC glBindVertexArray_layer;
+  Layer * glBindVertexArray_layer_layer;
+
   REGALGLBINDVERTEXBUFFERPROC glBindVertexBuffer;
+  Layer * glBindVertexBuffer_layer;
+
+  REGALGLBINDVERTEXBUFFER_LAYERPROC glBindVertexBuffer_layer;
+  Layer * glBindVertexBuffer_layer_layer;
+
   REGALGLBINDVERTEXBUFFERSPROC glBindVertexBuffers;
+  Layer * glBindVertexBuffers_layer;
+
+  REGALGLBINDVERTEXBUFFERS_LAYERPROC glBindVertexBuffers_layer;
+  Layer * glBindVertexBuffers_layer_layer;
+
   REGALGLCLIENTACTIVETEXTUREPROC glClientActiveTexture;
+  Layer * glClientActiveTexture_layer;
+
   REGALGLCLIENTACTIVETEXTUREARBPROC glClientActiveTextureARB;
+  Layer * glClientActiveTextureARB_layer;
+
+  REGALGLCLIENTACTIVETEXTUREARB_LAYERPROC glClientActiveTextureARB_layer;
+  Layer * glClientActiveTextureARB_layer_layer;
+
+  REGALGLCLIENTACTIVETEXTURE_LAYERPROC glClientActiveTexture_layer;
+  Layer * glClientActiveTexture_layer_layer;
+
   REGALGLCLIENTATTRIBDEFAULTEXTPROC glClientAttribDefaultEXT;
+  Layer * glClientAttribDefaultEXT_layer;
+
+  REGALGLCLIENTATTRIBDEFAULTEXT_LAYERPROC glClientAttribDefaultEXT_layer;
+  Layer * glClientAttribDefaultEXT_layer_layer;
+
   REGALGLCOLORPOINTERPROC glColorPointer;
+  Layer * glColorPointer_layer;
+
+  REGALGLCOLORPOINTER_LAYERPROC glColorPointer_layer;
+  Layer * glColorPointer_layer_layer;
+
   REGALGLDELETEBUFFERSPROC glDeleteBuffers;
+  Layer * glDeleteBuffers_layer;
+
+  REGALGLDELETEBUFFERS_LAYERPROC glDeleteBuffers_layer;
+  Layer * glDeleteBuffers_layer_layer;
+
   REGALGLDELETEVERTEXARRAYSPROC glDeleteVertexArrays;
+  Layer * glDeleteVertexArrays_layer;
+
+  REGALGLDELETEVERTEXARRAYS_LAYERPROC glDeleteVertexArrays_layer;
+  Layer * glDeleteVertexArrays_layer_layer;
+
   REGALGLDISABLEPROC glDisable;
+  Layer * glDisable_layer;
+
   REGALGLDISABLECLIENTSTATEPROC glDisableClientState;
+  Layer * glDisableClientState_layer;
+
   REGALGLDISABLECLIENTSTATEINDEXEDEXTPROC glDisableClientStateIndexedEXT;
+  Layer * glDisableClientStateIndexedEXT_layer;
+
+  REGALGLDISABLECLIENTSTATEINDEXEDEXT_LAYERPROC glDisableClientStateIndexedEXT_layer;
+  Layer * glDisableClientStateIndexedEXT_layer_layer;
+
+  REGALGLDISABLECLIENTSTATE_LAYERPROC glDisableClientState_layer;
+  Layer * glDisableClientState_layer_layer;
+
   REGALGLDISABLECLIENTSTATEIEXTPROC glDisableClientStateiEXT;
+  Layer * glDisableClientStateiEXT_layer;
+
+  REGALGLDISABLECLIENTSTATEIEXT_LAYERPROC glDisableClientStateiEXT_layer;
+  Layer * glDisableClientStateiEXT_layer_layer;
+
   REGALGLDISABLEINDEXEDEXTPROC glDisableIndexedEXT;
+  Layer * glDisableIndexedEXT_layer;
+
+  REGALGLDISABLEINDEXEDEXT_LAYERPROC glDisableIndexedEXT_layer;
+  Layer * glDisableIndexedEXT_layer_layer;
+
   REGALGLDISABLEVERTEXARRAYATTRIBEXTPROC glDisableVertexArrayAttribEXT;
+  Layer * glDisableVertexArrayAttribEXT_layer;
+
+  REGALGLDISABLEVERTEXARRAYATTRIBEXT_LAYERPROC glDisableVertexArrayAttribEXT_layer;
+  Layer * glDisableVertexArrayAttribEXT_layer_layer;
+
   REGALGLDISABLEVERTEXARRAYEXTPROC glDisableVertexArrayEXT;
+  Layer * glDisableVertexArrayEXT_layer;
+
+  REGALGLDISABLEVERTEXARRAYEXT_LAYERPROC glDisableVertexArrayEXT_layer;
+  Layer * glDisableVertexArrayEXT_layer_layer;
+
   REGALGLDISABLEVERTEXATTRIBARRAYPROC glDisableVertexAttribArray;
+  Layer * glDisableVertexAttribArray_layer;
+
+  REGALGLDISABLEVERTEXATTRIBARRAY_LAYERPROC glDisableVertexAttribArray_layer;
+  Layer * glDisableVertexAttribArray_layer_layer;
+
+  REGALGLDISABLE_LAYERPROC glDisable_layer;
+  Layer * glDisable_layer_layer;
+
   REGALGLDISABLEIPROC glDisablei;
+  Layer * glDisablei_layer;
+
+  REGALGLDISABLEI_LAYERPROC glDisablei_layer;
+  Layer * glDisablei_layer_layer;
+
   REGALGLEDGEFLAGPOINTERPROC glEdgeFlagPointer;
+  Layer * glEdgeFlagPointer_layer;
+
+  REGALGLEDGEFLAGPOINTER_LAYERPROC glEdgeFlagPointer_layer;
+  Layer * glEdgeFlagPointer_layer_layer;
+
   REGALGLENABLEPROC glEnable;
+  Layer * glEnable_layer;
+
   REGALGLENABLECLIENTSTATEPROC glEnableClientState;
+  Layer * glEnableClientState_layer;
+
   REGALGLENABLECLIENTSTATEINDEXEDEXTPROC glEnableClientStateIndexedEXT;
+  Layer * glEnableClientStateIndexedEXT_layer;
+
+  REGALGLENABLECLIENTSTATEINDEXEDEXT_LAYERPROC glEnableClientStateIndexedEXT_layer;
+  Layer * glEnableClientStateIndexedEXT_layer_layer;
+
+  REGALGLENABLECLIENTSTATE_LAYERPROC glEnableClientState_layer;
+  Layer * glEnableClientState_layer_layer;
+
   REGALGLENABLECLIENTSTATEIEXTPROC glEnableClientStateiEXT;
+  Layer * glEnableClientStateiEXT_layer;
+
+  REGALGLENABLECLIENTSTATEIEXT_LAYERPROC glEnableClientStateiEXT_layer;
+  Layer * glEnableClientStateiEXT_layer_layer;
+
   REGALGLENABLEINDEXEDEXTPROC glEnableIndexedEXT;
+  Layer * glEnableIndexedEXT_layer;
+
+  REGALGLENABLEINDEXEDEXT_LAYERPROC glEnableIndexedEXT_layer;
+  Layer * glEnableIndexedEXT_layer_layer;
+
   REGALGLENABLEVERTEXARRAYATTRIBEXTPROC glEnableVertexArrayAttribEXT;
+  Layer * glEnableVertexArrayAttribEXT_layer;
+
+  REGALGLENABLEVERTEXARRAYATTRIBEXT_LAYERPROC glEnableVertexArrayAttribEXT_layer;
+  Layer * glEnableVertexArrayAttribEXT_layer_layer;
+
   REGALGLENABLEVERTEXARRAYEXTPROC glEnableVertexArrayEXT;
+  Layer * glEnableVertexArrayEXT_layer;
+
+  REGALGLENABLEVERTEXARRAYEXT_LAYERPROC glEnableVertexArrayEXT_layer;
+  Layer * glEnableVertexArrayEXT_layer_layer;
+
   REGALGLENABLEVERTEXATTRIBARRAYPROC glEnableVertexAttribArray;
+  Layer * glEnableVertexAttribArray_layer;
+
+  REGALGLENABLEVERTEXATTRIBARRAY_LAYERPROC glEnableVertexAttribArray_layer;
+  Layer * glEnableVertexAttribArray_layer_layer;
+
+  REGALGLENABLE_LAYERPROC glEnable_layer;
+  Layer * glEnable_layer_layer;
+
   REGALGLENABLEIPROC glEnablei;
+  Layer * glEnablei_layer;
+
+  REGALGLENABLEI_LAYERPROC glEnablei_layer;
+  Layer * glEnablei_layer_layer;
+
   REGALGLFOGCOORDPOINTERPROC glFogCoordPointer;
+  Layer * glFogCoordPointer_layer;
+
+  REGALGLFOGCOORDPOINTER_LAYERPROC glFogCoordPointer_layer;
+  Layer * glFogCoordPointer_layer_layer;
+
   REGALGLGETBOOLEANVPROC glGetBooleanv;
+  Layer * glGetBooleanv_layer;
+
+  REGALGLGETBOOLEANV_LAYERPROC glGetBooleanv_layer;
+  Layer * glGetBooleanv_layer_layer;
+
   REGALGLGETDOUBLEVPROC glGetDoublev;
+  Layer * glGetDoublev_layer;
+
+  REGALGLGETDOUBLEV_LAYERPROC glGetDoublev_layer;
+  Layer * glGetDoublev_layer_layer;
+
   REGALGLGETFLOATVPROC glGetFloatv;
+  Layer * glGetFloatv_layer;
+
+  REGALGLGETFLOATV_LAYERPROC glGetFloatv_layer;
+  Layer * glGetFloatv_layer_layer;
+
   REGALGLGETINTEGERVPROC glGetIntegerv;
+  Layer * glGetIntegerv_layer;
+
+  REGALGLGETINTEGERV_LAYERPROC glGetIntegerv_layer;
+  Layer * glGetIntegerv_layer_layer;
+
   REGALGLINDEXPOINTERPROC glIndexPointer;
+  Layer * glIndexPointer_layer;
+
+  REGALGLINDEXPOINTER_LAYERPROC glIndexPointer_layer;
+  Layer * glIndexPointer_layer_layer;
+
   REGALGLINTERLEAVEDARRAYSPROC glInterleavedArrays;
+  Layer * glInterleavedArrays_layer;
+
+  REGALGLINTERLEAVEDARRAYS_LAYERPROC glInterleavedArrays_layer;
+  Layer * glInterleavedArrays_layer_layer;
+
   REGALGLMULTITEXCOORDPOINTEREXTPROC glMultiTexCoordPointerEXT;
+  Layer * glMultiTexCoordPointerEXT_layer;
+
+  REGALGLMULTITEXCOORDPOINTEREXT_LAYERPROC glMultiTexCoordPointerEXT_layer;
+  Layer * glMultiTexCoordPointerEXT_layer_layer;
+
   REGALGLNORMALPOINTERPROC glNormalPointer;
+  Layer * glNormalPointer_layer;
+
+  REGALGLNORMALPOINTER_LAYERPROC glNormalPointer_layer;
+  Layer * glNormalPointer_layer_layer;
+
   REGALGLPIXELSTOREFPROC glPixelStoref;
+  Layer * glPixelStoref_layer;
+
+  REGALGLPIXELSTOREF_LAYERPROC glPixelStoref_layer;
+  Layer * glPixelStoref_layer_layer;
+
   REGALGLPIXELSTOREIPROC glPixelStorei;
+  Layer * glPixelStorei_layer;
+
+  REGALGLPIXELSTOREI_LAYERPROC glPixelStorei_layer;
+  Layer * glPixelStorei_layer_layer;
+
   REGALGLPOPCLIENTATTRIBPROC glPopClientAttrib;
+  Layer * glPopClientAttrib_layer;
+
+  REGALGLPOPCLIENTATTRIB_LAYERPROC glPopClientAttrib_layer;
+  Layer * glPopClientAttrib_layer_layer;
+
   REGALGLPRIMITIVERESTARTINDEXPROC glPrimitiveRestartIndex;
+  Layer * glPrimitiveRestartIndex_layer;
+
+  REGALGLPRIMITIVERESTARTINDEX_LAYERPROC glPrimitiveRestartIndex_layer;
+  Layer * glPrimitiveRestartIndex_layer_layer;
+
   REGALGLPUSHCLIENTATTRIBPROC glPushClientAttrib;
+  Layer * glPushClientAttrib_layer;
+
   REGALGLPUSHCLIENTATTRIBDEFAULTEXTPROC glPushClientAttribDefaultEXT;
+  Layer * glPushClientAttribDefaultEXT_layer;
+
+  REGALGLPUSHCLIENTATTRIBDEFAULTEXT_LAYERPROC glPushClientAttribDefaultEXT_layer;
+  Layer * glPushClientAttribDefaultEXT_layer_layer;
+
+  REGALGLPUSHCLIENTATTRIB_LAYERPROC glPushClientAttrib_layer;
+  Layer * glPushClientAttrib_layer_layer;
+
   REGALGLSECONDARYCOLORPOINTERPROC glSecondaryColorPointer;
+  Layer * glSecondaryColorPointer_layer;
+
+  REGALGLSECONDARYCOLORPOINTER_LAYERPROC glSecondaryColorPointer_layer;
+  Layer * glSecondaryColorPointer_layer_layer;
+
   REGALGLTEXCOORDPOINTERPROC glTexCoordPointer;
+  Layer * glTexCoordPointer_layer;
+
+  REGALGLTEXCOORDPOINTER_LAYERPROC glTexCoordPointer_layer;
+  Layer * glTexCoordPointer_layer_layer;
+
   REGALGLVERTEXARRAYCOLOROFFSETEXTPROC glVertexArrayColorOffsetEXT;
+  Layer * glVertexArrayColorOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYCOLOROFFSETEXT_LAYERPROC glVertexArrayColorOffsetEXT_layer;
+  Layer * glVertexArrayColorOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYEDGEFLAGOFFSETEXTPROC glVertexArrayEdgeFlagOffsetEXT;
+  Layer * glVertexArrayEdgeFlagOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYEDGEFLAGOFFSETEXT_LAYERPROC glVertexArrayEdgeFlagOffsetEXT_layer;
+  Layer * glVertexArrayEdgeFlagOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYFOGCOORDOFFSETEXTPROC glVertexArrayFogCoordOffsetEXT;
+  Layer * glVertexArrayFogCoordOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYFOGCOORDOFFSETEXT_LAYERPROC glVertexArrayFogCoordOffsetEXT_layer;
+  Layer * glVertexArrayFogCoordOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYINDEXOFFSETEXTPROC glVertexArrayIndexOffsetEXT;
+  Layer * glVertexArrayIndexOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYINDEXOFFSETEXT_LAYERPROC glVertexArrayIndexOffsetEXT_layer;
+  Layer * glVertexArrayIndexOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYMULTITEXCOORDOFFSETEXTPROC glVertexArrayMultiTexCoordOffsetEXT;
+  Layer * glVertexArrayMultiTexCoordOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYMULTITEXCOORDOFFSETEXT_LAYERPROC glVertexArrayMultiTexCoordOffsetEXT_layer;
+  Layer * glVertexArrayMultiTexCoordOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYNORMALOFFSETEXTPROC glVertexArrayNormalOffsetEXT;
+  Layer * glVertexArrayNormalOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYNORMALOFFSETEXT_LAYERPROC glVertexArrayNormalOffsetEXT_layer;
+  Layer * glVertexArrayNormalOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYSECONDARYCOLOROFFSETEXTPROC glVertexArraySecondaryColorOffsetEXT;
+  Layer * glVertexArraySecondaryColorOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYSECONDARYCOLOROFFSETEXT_LAYERPROC glVertexArraySecondaryColorOffsetEXT_layer;
+  Layer * glVertexArraySecondaryColorOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYTEXCOORDOFFSETEXTPROC glVertexArrayTexCoordOffsetEXT;
+  Layer * glVertexArrayTexCoordOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYTEXCOORDOFFSETEXT_LAYERPROC glVertexArrayTexCoordOffsetEXT_layer;
+  Layer * glVertexArrayTexCoordOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYVERTEXATTRIBIOFFSETEXTPROC glVertexArrayVertexAttribIOffsetEXT;
+  Layer * glVertexArrayVertexAttribIOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYVERTEXATTRIBIOFFSETEXT_LAYERPROC glVertexArrayVertexAttribIOffsetEXT_layer;
+  Layer * glVertexArrayVertexAttribIOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYVERTEXATTRIBOFFSETEXTPROC glVertexArrayVertexAttribOffsetEXT;
+  Layer * glVertexArrayVertexAttribOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYVERTEXATTRIBOFFSETEXT_LAYERPROC glVertexArrayVertexAttribOffsetEXT_layer;
+  Layer * glVertexArrayVertexAttribOffsetEXT_layer_layer;
+
   REGALGLVERTEXARRAYVERTEXOFFSETEXTPROC glVertexArrayVertexOffsetEXT;
+  Layer * glVertexArrayVertexOffsetEXT_layer;
+
+  REGALGLVERTEXARRAYVERTEXOFFSETEXT_LAYERPROC glVertexArrayVertexOffsetEXT_layer;
+  Layer * glVertexArrayVertexOffsetEXT_layer_layer;
+
   REGALGLVERTEXATTRIBBINDINGPROC glVertexAttribBinding;
+  Layer * glVertexAttribBinding_layer;
+
+  REGALGLVERTEXATTRIBBINDING_LAYERPROC glVertexAttribBinding_layer;
+  Layer * glVertexAttribBinding_layer_layer;
+
   REGALGLVERTEXATTRIBDIVISORPROC glVertexAttribDivisor;
+  Layer * glVertexAttribDivisor_layer;
+
+  REGALGLVERTEXATTRIBDIVISOR_LAYERPROC glVertexAttribDivisor_layer;
+  Layer * glVertexAttribDivisor_layer_layer;
+
   REGALGLVERTEXATTRIBFORMATPROC glVertexAttribFormat;
+  Layer * glVertexAttribFormat_layer;
+
+  REGALGLVERTEXATTRIBFORMAT_LAYERPROC glVertexAttribFormat_layer;
+  Layer * glVertexAttribFormat_layer_layer;
+
   REGALGLVERTEXATTRIBIFORMATPROC glVertexAttribIFormat;
+  Layer * glVertexAttribIFormat_layer;
+
+  REGALGLVERTEXATTRIBIFORMAT_LAYERPROC glVertexAttribIFormat_layer;
+  Layer * glVertexAttribIFormat_layer_layer;
+
   REGALGLVERTEXATTRIBIPOINTERPROC glVertexAttribIPointer;
+  Layer * glVertexAttribIPointer_layer;
+
+  REGALGLVERTEXATTRIBIPOINTER_LAYERPROC glVertexAttribIPointer_layer;
+  Layer * glVertexAttribIPointer_layer_layer;
+
   REGALGLVERTEXATTRIBLFORMATPROC glVertexAttribLFormat;
+  Layer * glVertexAttribLFormat_layer;
+
+  REGALGLVERTEXATTRIBLFORMAT_LAYERPROC glVertexAttribLFormat_layer;
+  Layer * glVertexAttribLFormat_layer_layer;
+
   REGALGLVERTEXATTRIBLPOINTERPROC glVertexAttribLPointer;
+  Layer * glVertexAttribLPointer_layer;
+
+  REGALGLVERTEXATTRIBLPOINTER_LAYERPROC glVertexAttribLPointer_layer;
+  Layer * glVertexAttribLPointer_layer_layer;
+
   REGALGLVERTEXATTRIBPOINTERPROC glVertexAttribPointer;
+  Layer * glVertexAttribPointer_layer;
+
+  REGALGLVERTEXATTRIBPOINTER_LAYERPROC glVertexAttribPointer_layer;
+  Layer * glVertexAttribPointer_layer_layer;
+
   REGALGLVERTEXBINDINGDIVISORPROC glVertexBindingDivisor;
+  Layer * glVertexBindingDivisor_layer;
+
+  REGALGLVERTEXBINDINGDIVISOR_LAYERPROC glVertexBindingDivisor_layer;
+  Layer * glVertexBindingDivisor_layer_layer;
+
   REGALGLVERTEXPOINTERPROC glVertexPointer;
+  Layer * glVertexPointer_layer;
+
+  REGALGLVERTEXPOINTER_LAYERPROC glVertexPointer_layer;
+  Layer * glVertexPointer_layer_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glBindBuffer = dt.glBindBuffer;
+    glBindBuffer_layer = dt.glBindBuffer_layer;
+
+    glBindBuffer_layer = dt.glBindBuffer_layer;
+    glBindBuffer_layer_layer = dt.glBindBuffer_layer_layer;
+
     glBindVertexArray = dt.glBindVertexArray;
+    glBindVertexArray_layer = dt.glBindVertexArray_layer;
+
+    glBindVertexArray_layer = dt.glBindVertexArray_layer;
+    glBindVertexArray_layer_layer = dt.glBindVertexArray_layer_layer;
+
     glBindVertexBuffer = dt.glBindVertexBuffer;
+    glBindVertexBuffer_layer = dt.glBindVertexBuffer_layer;
+
+    glBindVertexBuffer_layer = dt.glBindVertexBuffer_layer;
+    glBindVertexBuffer_layer_layer = dt.glBindVertexBuffer_layer_layer;
+
     glBindVertexBuffers = dt.glBindVertexBuffers;
+    glBindVertexBuffers_layer = dt.glBindVertexBuffers_layer;
+
+    glBindVertexBuffers_layer = dt.glBindVertexBuffers_layer;
+    glBindVertexBuffers_layer_layer = dt.glBindVertexBuffers_layer_layer;
+
     glClientActiveTexture = dt.glClientActiveTexture;
+    glClientActiveTexture_layer = dt.glClientActiveTexture_layer;
+
     glClientActiveTextureARB = dt.glClientActiveTextureARB;
+    glClientActiveTextureARB_layer = dt.glClientActiveTextureARB_layer;
+
+    glClientActiveTextureARB_layer = dt.glClientActiveTextureARB_layer;
+    glClientActiveTextureARB_layer_layer = dt.glClientActiveTextureARB_layer_layer;
+
+    glClientActiveTexture_layer = dt.glClientActiveTexture_layer;
+    glClientActiveTexture_layer_layer = dt.glClientActiveTexture_layer_layer;
+
     glClientAttribDefaultEXT = dt.glClientAttribDefaultEXT;
+    glClientAttribDefaultEXT_layer = dt.glClientAttribDefaultEXT_layer;
+
+    glClientAttribDefaultEXT_layer = dt.glClientAttribDefaultEXT_layer;
+    glClientAttribDefaultEXT_layer_layer = dt.glClientAttribDefaultEXT_layer_layer;
+
     glColorPointer = dt.glColorPointer;
+    glColorPointer_layer = dt.glColorPointer_layer;
+
+    glColorPointer_layer = dt.glColorPointer_layer;
+    glColorPointer_layer_layer = dt.glColorPointer_layer_layer;
+
     glDeleteBuffers = dt.glDeleteBuffers;
+    glDeleteBuffers_layer = dt.glDeleteBuffers_layer;
+
+    glDeleteBuffers_layer = dt.glDeleteBuffers_layer;
+    glDeleteBuffers_layer_layer = dt.glDeleteBuffers_layer_layer;
+
     glDeleteVertexArrays = dt.glDeleteVertexArrays;
+    glDeleteVertexArrays_layer = dt.glDeleteVertexArrays_layer;
+
+    glDeleteVertexArrays_layer = dt.glDeleteVertexArrays_layer;
+    glDeleteVertexArrays_layer_layer = dt.glDeleteVertexArrays_layer_layer;
+
     glDisable = dt.glDisable;
+    glDisable_layer = dt.glDisable_layer;
+
     glDisableClientState = dt.glDisableClientState;
+    glDisableClientState_layer = dt.glDisableClientState_layer;
+
     glDisableClientStateIndexedEXT = dt.glDisableClientStateIndexedEXT;
+    glDisableClientStateIndexedEXT_layer = dt.glDisableClientStateIndexedEXT_layer;
+
+    glDisableClientStateIndexedEXT_layer = dt.glDisableClientStateIndexedEXT_layer;
+    glDisableClientStateIndexedEXT_layer_layer = dt.glDisableClientStateIndexedEXT_layer_layer;
+
+    glDisableClientState_layer = dt.glDisableClientState_layer;
+    glDisableClientState_layer_layer = dt.glDisableClientState_layer_layer;
+
     glDisableClientStateiEXT = dt.glDisableClientStateiEXT;
+    glDisableClientStateiEXT_layer = dt.glDisableClientStateiEXT_layer;
+
+    glDisableClientStateiEXT_layer = dt.glDisableClientStateiEXT_layer;
+    glDisableClientStateiEXT_layer_layer = dt.glDisableClientStateiEXT_layer_layer;
+
     glDisableIndexedEXT = dt.glDisableIndexedEXT;
+    glDisableIndexedEXT_layer = dt.glDisableIndexedEXT_layer;
+
+    glDisableIndexedEXT_layer = dt.glDisableIndexedEXT_layer;
+    glDisableIndexedEXT_layer_layer = dt.glDisableIndexedEXT_layer_layer;
+
     glDisableVertexArrayAttribEXT = dt.glDisableVertexArrayAttribEXT;
+    glDisableVertexArrayAttribEXT_layer = dt.glDisableVertexArrayAttribEXT_layer;
+
+    glDisableVertexArrayAttribEXT_layer = dt.glDisableVertexArrayAttribEXT_layer;
+    glDisableVertexArrayAttribEXT_layer_layer = dt.glDisableVertexArrayAttribEXT_layer_layer;
+
     glDisableVertexArrayEXT = dt.glDisableVertexArrayEXT;
+    glDisableVertexArrayEXT_layer = dt.glDisableVertexArrayEXT_layer;
+
+    glDisableVertexArrayEXT_layer = dt.glDisableVertexArrayEXT_layer;
+    glDisableVertexArrayEXT_layer_layer = dt.glDisableVertexArrayEXT_layer_layer;
+
     glDisableVertexAttribArray = dt.glDisableVertexAttribArray;
+    glDisableVertexAttribArray_layer = dt.glDisableVertexAttribArray_layer;
+
+    glDisableVertexAttribArray_layer = dt.glDisableVertexAttribArray_layer;
+    glDisableVertexAttribArray_layer_layer = dt.glDisableVertexAttribArray_layer_layer;
+
+    glDisable_layer = dt.glDisable_layer;
+    glDisable_layer_layer = dt.glDisable_layer_layer;
+
     glDisablei = dt.glDisablei;
+    glDisablei_layer = dt.glDisablei_layer;
+
+    glDisablei_layer = dt.glDisablei_layer;
+    glDisablei_layer_layer = dt.glDisablei_layer_layer;
+
     glEdgeFlagPointer = dt.glEdgeFlagPointer;
+    glEdgeFlagPointer_layer = dt.glEdgeFlagPointer_layer;
+
+    glEdgeFlagPointer_layer = dt.glEdgeFlagPointer_layer;
+    glEdgeFlagPointer_layer_layer = dt.glEdgeFlagPointer_layer_layer;
+
     glEnable = dt.glEnable;
+    glEnable_layer = dt.glEnable_layer;
+
     glEnableClientState = dt.glEnableClientState;
+    glEnableClientState_layer = dt.glEnableClientState_layer;
+
     glEnableClientStateIndexedEXT = dt.glEnableClientStateIndexedEXT;
+    glEnableClientStateIndexedEXT_layer = dt.glEnableClientStateIndexedEXT_layer;
+
+    glEnableClientStateIndexedEXT_layer = dt.glEnableClientStateIndexedEXT_layer;
+    glEnableClientStateIndexedEXT_layer_layer = dt.glEnableClientStateIndexedEXT_layer_layer;
+
+    glEnableClientState_layer = dt.glEnableClientState_layer;
+    glEnableClientState_layer_layer = dt.glEnableClientState_layer_layer;
+
     glEnableClientStateiEXT = dt.glEnableClientStateiEXT;
+    glEnableClientStateiEXT_layer = dt.glEnableClientStateiEXT_layer;
+
+    glEnableClientStateiEXT_layer = dt.glEnableClientStateiEXT_layer;
+    glEnableClientStateiEXT_layer_layer = dt.glEnableClientStateiEXT_layer_layer;
+
     glEnableIndexedEXT = dt.glEnableIndexedEXT;
+    glEnableIndexedEXT_layer = dt.glEnableIndexedEXT_layer;
+
+    glEnableIndexedEXT_layer = dt.glEnableIndexedEXT_layer;
+    glEnableIndexedEXT_layer_layer = dt.glEnableIndexedEXT_layer_layer;
+
     glEnableVertexArrayAttribEXT = dt.glEnableVertexArrayAttribEXT;
+    glEnableVertexArrayAttribEXT_layer = dt.glEnableVertexArrayAttribEXT_layer;
+
+    glEnableVertexArrayAttribEXT_layer = dt.glEnableVertexArrayAttribEXT_layer;
+    glEnableVertexArrayAttribEXT_layer_layer = dt.glEnableVertexArrayAttribEXT_layer_layer;
+
     glEnableVertexArrayEXT = dt.glEnableVertexArrayEXT;
+    glEnableVertexArrayEXT_layer = dt.glEnableVertexArrayEXT_layer;
+
+    glEnableVertexArrayEXT_layer = dt.glEnableVertexArrayEXT_layer;
+    glEnableVertexArrayEXT_layer_layer = dt.glEnableVertexArrayEXT_layer_layer;
+
     glEnableVertexAttribArray = dt.glEnableVertexAttribArray;
+    glEnableVertexAttribArray_layer = dt.glEnableVertexAttribArray_layer;
+
+    glEnableVertexAttribArray_layer = dt.glEnableVertexAttribArray_layer;
+    glEnableVertexAttribArray_layer_layer = dt.glEnableVertexAttribArray_layer_layer;
+
+    glEnable_layer = dt.glEnable_layer;
+    glEnable_layer_layer = dt.glEnable_layer_layer;
+
     glEnablei = dt.glEnablei;
+    glEnablei_layer = dt.glEnablei_layer;
+
+    glEnablei_layer = dt.glEnablei_layer;
+    glEnablei_layer_layer = dt.glEnablei_layer_layer;
+
     glFogCoordPointer = dt.glFogCoordPointer;
+    glFogCoordPointer_layer = dt.glFogCoordPointer_layer;
+
+    glFogCoordPointer_layer = dt.glFogCoordPointer_layer;
+    glFogCoordPointer_layer_layer = dt.glFogCoordPointer_layer_layer;
+
     glGetBooleanv = dt.glGetBooleanv;
+    glGetBooleanv_layer = dt.glGetBooleanv_layer;
+
+    glGetBooleanv_layer = dt.glGetBooleanv_layer;
+    glGetBooleanv_layer_layer = dt.glGetBooleanv_layer_layer;
+
     glGetDoublev = dt.glGetDoublev;
+    glGetDoublev_layer = dt.glGetDoublev_layer;
+
+    glGetDoublev_layer = dt.glGetDoublev_layer;
+    glGetDoublev_layer_layer = dt.glGetDoublev_layer_layer;
+
     glGetFloatv = dt.glGetFloatv;
+    glGetFloatv_layer = dt.glGetFloatv_layer;
+
+    glGetFloatv_layer = dt.glGetFloatv_layer;
+    glGetFloatv_layer_layer = dt.glGetFloatv_layer_layer;
+
     glGetIntegerv = dt.glGetIntegerv;
+    glGetIntegerv_layer = dt.glGetIntegerv_layer;
+
+    glGetIntegerv_layer = dt.glGetIntegerv_layer;
+    glGetIntegerv_layer_layer = dt.glGetIntegerv_layer_layer;
+
     glIndexPointer = dt.glIndexPointer;
+    glIndexPointer_layer = dt.glIndexPointer_layer;
+
+    glIndexPointer_layer = dt.glIndexPointer_layer;
+    glIndexPointer_layer_layer = dt.glIndexPointer_layer_layer;
+
     glInterleavedArrays = dt.glInterleavedArrays;
+    glInterleavedArrays_layer = dt.glInterleavedArrays_layer;
+
+    glInterleavedArrays_layer = dt.glInterleavedArrays_layer;
+    glInterleavedArrays_layer_layer = dt.glInterleavedArrays_layer_layer;
+
     glMultiTexCoordPointerEXT = dt.glMultiTexCoordPointerEXT;
+    glMultiTexCoordPointerEXT_layer = dt.glMultiTexCoordPointerEXT_layer;
+
+    glMultiTexCoordPointerEXT_layer = dt.glMultiTexCoordPointerEXT_layer;
+    glMultiTexCoordPointerEXT_layer_layer = dt.glMultiTexCoordPointerEXT_layer_layer;
+
     glNormalPointer = dt.glNormalPointer;
+    glNormalPointer_layer = dt.glNormalPointer_layer;
+
+    glNormalPointer_layer = dt.glNormalPointer_layer;
+    glNormalPointer_layer_layer = dt.glNormalPointer_layer_layer;
+
     glPixelStoref = dt.glPixelStoref;
+    glPixelStoref_layer = dt.glPixelStoref_layer;
+
+    glPixelStoref_layer = dt.glPixelStoref_layer;
+    glPixelStoref_layer_layer = dt.glPixelStoref_layer_layer;
+
     glPixelStorei = dt.glPixelStorei;
+    glPixelStorei_layer = dt.glPixelStorei_layer;
+
+    glPixelStorei_layer = dt.glPixelStorei_layer;
+    glPixelStorei_layer_layer = dt.glPixelStorei_layer_layer;
+
     glPopClientAttrib = dt.glPopClientAttrib;
+    glPopClientAttrib_layer = dt.glPopClientAttrib_layer;
+
+    glPopClientAttrib_layer = dt.glPopClientAttrib_layer;
+    glPopClientAttrib_layer_layer = dt.glPopClientAttrib_layer_layer;
+
     glPrimitiveRestartIndex = dt.glPrimitiveRestartIndex;
+    glPrimitiveRestartIndex_layer = dt.glPrimitiveRestartIndex_layer;
+
+    glPrimitiveRestartIndex_layer = dt.glPrimitiveRestartIndex_layer;
+    glPrimitiveRestartIndex_layer_layer = dt.glPrimitiveRestartIndex_layer_layer;
+
     glPushClientAttrib = dt.glPushClientAttrib;
+    glPushClientAttrib_layer = dt.glPushClientAttrib_layer;
+
     glPushClientAttribDefaultEXT = dt.glPushClientAttribDefaultEXT;
+    glPushClientAttribDefaultEXT_layer = dt.glPushClientAttribDefaultEXT_layer;
+
+    glPushClientAttribDefaultEXT_layer = dt.glPushClientAttribDefaultEXT_layer;
+    glPushClientAttribDefaultEXT_layer_layer = dt.glPushClientAttribDefaultEXT_layer_layer;
+
+    glPushClientAttrib_layer = dt.glPushClientAttrib_layer;
+    glPushClientAttrib_layer_layer = dt.glPushClientAttrib_layer_layer;
+
     glSecondaryColorPointer = dt.glSecondaryColorPointer;
+    glSecondaryColorPointer_layer = dt.glSecondaryColorPointer_layer;
+
+    glSecondaryColorPointer_layer = dt.glSecondaryColorPointer_layer;
+    glSecondaryColorPointer_layer_layer = dt.glSecondaryColorPointer_layer_layer;
+
     glTexCoordPointer = dt.glTexCoordPointer;
+    glTexCoordPointer_layer = dt.glTexCoordPointer_layer;
+
+    glTexCoordPointer_layer = dt.glTexCoordPointer_layer;
+    glTexCoordPointer_layer_layer = dt.glTexCoordPointer_layer_layer;
+
     glVertexArrayColorOffsetEXT = dt.glVertexArrayColorOffsetEXT;
+    glVertexArrayColorOffsetEXT_layer = dt.glVertexArrayColorOffsetEXT_layer;
+
+    glVertexArrayColorOffsetEXT_layer = dt.glVertexArrayColorOffsetEXT_layer;
+    glVertexArrayColorOffsetEXT_layer_layer = dt.glVertexArrayColorOffsetEXT_layer_layer;
+
     glVertexArrayEdgeFlagOffsetEXT = dt.glVertexArrayEdgeFlagOffsetEXT;
+    glVertexArrayEdgeFlagOffsetEXT_layer = dt.glVertexArrayEdgeFlagOffsetEXT_layer;
+
+    glVertexArrayEdgeFlagOffsetEXT_layer = dt.glVertexArrayEdgeFlagOffsetEXT_layer;
+    glVertexArrayEdgeFlagOffsetEXT_layer_layer = dt.glVertexArrayEdgeFlagOffsetEXT_layer_layer;
+
     glVertexArrayFogCoordOffsetEXT = dt.glVertexArrayFogCoordOffsetEXT;
+    glVertexArrayFogCoordOffsetEXT_layer = dt.glVertexArrayFogCoordOffsetEXT_layer;
+
+    glVertexArrayFogCoordOffsetEXT_layer = dt.glVertexArrayFogCoordOffsetEXT_layer;
+    glVertexArrayFogCoordOffsetEXT_layer_layer = dt.glVertexArrayFogCoordOffsetEXT_layer_layer;
+
     glVertexArrayIndexOffsetEXT = dt.glVertexArrayIndexOffsetEXT;
+    glVertexArrayIndexOffsetEXT_layer = dt.glVertexArrayIndexOffsetEXT_layer;
+
+    glVertexArrayIndexOffsetEXT_layer = dt.glVertexArrayIndexOffsetEXT_layer;
+    glVertexArrayIndexOffsetEXT_layer_layer = dt.glVertexArrayIndexOffsetEXT_layer_layer;
+
     glVertexArrayMultiTexCoordOffsetEXT = dt.glVertexArrayMultiTexCoordOffsetEXT;
+    glVertexArrayMultiTexCoordOffsetEXT_layer = dt.glVertexArrayMultiTexCoordOffsetEXT_layer;
+
+    glVertexArrayMultiTexCoordOffsetEXT_layer = dt.glVertexArrayMultiTexCoordOffsetEXT_layer;
+    glVertexArrayMultiTexCoordOffsetEXT_layer_layer = dt.glVertexArrayMultiTexCoordOffsetEXT_layer_layer;
+
     glVertexArrayNormalOffsetEXT = dt.glVertexArrayNormalOffsetEXT;
+    glVertexArrayNormalOffsetEXT_layer = dt.glVertexArrayNormalOffsetEXT_layer;
+
+    glVertexArrayNormalOffsetEXT_layer = dt.glVertexArrayNormalOffsetEXT_layer;
+    glVertexArrayNormalOffsetEXT_layer_layer = dt.glVertexArrayNormalOffsetEXT_layer_layer;
+
     glVertexArraySecondaryColorOffsetEXT = dt.glVertexArraySecondaryColorOffsetEXT;
+    glVertexArraySecondaryColorOffsetEXT_layer = dt.glVertexArraySecondaryColorOffsetEXT_layer;
+
+    glVertexArraySecondaryColorOffsetEXT_layer = dt.glVertexArraySecondaryColorOffsetEXT_layer;
+    glVertexArraySecondaryColorOffsetEXT_layer_layer = dt.glVertexArraySecondaryColorOffsetEXT_layer_layer;
+
     glVertexArrayTexCoordOffsetEXT = dt.glVertexArrayTexCoordOffsetEXT;
+    glVertexArrayTexCoordOffsetEXT_layer = dt.glVertexArrayTexCoordOffsetEXT_layer;
+
+    glVertexArrayTexCoordOffsetEXT_layer = dt.glVertexArrayTexCoordOffsetEXT_layer;
+    glVertexArrayTexCoordOffsetEXT_layer_layer = dt.glVertexArrayTexCoordOffsetEXT_layer_layer;
+
     glVertexArrayVertexAttribIOffsetEXT = dt.glVertexArrayVertexAttribIOffsetEXT;
+    glVertexArrayVertexAttribIOffsetEXT_layer = dt.glVertexArrayVertexAttribIOffsetEXT_layer;
+
+    glVertexArrayVertexAttribIOffsetEXT_layer = dt.glVertexArrayVertexAttribIOffsetEXT_layer;
+    glVertexArrayVertexAttribIOffsetEXT_layer_layer = dt.glVertexArrayVertexAttribIOffsetEXT_layer_layer;
+
     glVertexArrayVertexAttribOffsetEXT = dt.glVertexArrayVertexAttribOffsetEXT;
+    glVertexArrayVertexAttribOffsetEXT_layer = dt.glVertexArrayVertexAttribOffsetEXT_layer;
+
+    glVertexArrayVertexAttribOffsetEXT_layer = dt.glVertexArrayVertexAttribOffsetEXT_layer;
+    glVertexArrayVertexAttribOffsetEXT_layer_layer = dt.glVertexArrayVertexAttribOffsetEXT_layer_layer;
+
     glVertexArrayVertexOffsetEXT = dt.glVertexArrayVertexOffsetEXT;
+    glVertexArrayVertexOffsetEXT_layer = dt.glVertexArrayVertexOffsetEXT_layer;
+
+    glVertexArrayVertexOffsetEXT_layer = dt.glVertexArrayVertexOffsetEXT_layer;
+    glVertexArrayVertexOffsetEXT_layer_layer = dt.glVertexArrayVertexOffsetEXT_layer_layer;
+
     glVertexAttribBinding = dt.glVertexAttribBinding;
+    glVertexAttribBinding_layer = dt.glVertexAttribBinding_layer;
+
+    glVertexAttribBinding_layer = dt.glVertexAttribBinding_layer;
+    glVertexAttribBinding_layer_layer = dt.glVertexAttribBinding_layer_layer;
+
     glVertexAttribDivisor = dt.glVertexAttribDivisor;
+    glVertexAttribDivisor_layer = dt.glVertexAttribDivisor_layer;
+
+    glVertexAttribDivisor_layer = dt.glVertexAttribDivisor_layer;
+    glVertexAttribDivisor_layer_layer = dt.glVertexAttribDivisor_layer_layer;
+
     glVertexAttribFormat = dt.glVertexAttribFormat;
+    glVertexAttribFormat_layer = dt.glVertexAttribFormat_layer;
+
+    glVertexAttribFormat_layer = dt.glVertexAttribFormat_layer;
+    glVertexAttribFormat_layer_layer = dt.glVertexAttribFormat_layer_layer;
+
     glVertexAttribIFormat = dt.glVertexAttribIFormat;
+    glVertexAttribIFormat_layer = dt.glVertexAttribIFormat_layer;
+
+    glVertexAttribIFormat_layer = dt.glVertexAttribIFormat_layer;
+    glVertexAttribIFormat_layer_layer = dt.glVertexAttribIFormat_layer_layer;
+
     glVertexAttribIPointer = dt.glVertexAttribIPointer;
+    glVertexAttribIPointer_layer = dt.glVertexAttribIPointer_layer;
+
+    glVertexAttribIPointer_layer = dt.glVertexAttribIPointer_layer;
+    glVertexAttribIPointer_layer_layer = dt.glVertexAttribIPointer_layer_layer;
+
     glVertexAttribLFormat = dt.glVertexAttribLFormat;
+    glVertexAttribLFormat_layer = dt.glVertexAttribLFormat_layer;
+
+    glVertexAttribLFormat_layer = dt.glVertexAttribLFormat_layer;
+    glVertexAttribLFormat_layer_layer = dt.glVertexAttribLFormat_layer_layer;
+
     glVertexAttribLPointer = dt.glVertexAttribLPointer;
+    glVertexAttribLPointer_layer = dt.glVertexAttribLPointer_layer;
+
+    glVertexAttribLPointer_layer = dt.glVertexAttribLPointer_layer;
+    glVertexAttribLPointer_layer_layer = dt.glVertexAttribLPointer_layer_layer;
+
     glVertexAttribPointer = dt.glVertexAttribPointer;
+    glVertexAttribPointer_layer = dt.glVertexAttribPointer_layer;
+
+    glVertexAttribPointer_layer = dt.glVertexAttribPointer_layer;
+    glVertexAttribPointer_layer_layer = dt.glVertexAttribPointer_layer_layer;
+
     glVertexBindingDivisor = dt.glVertexBindingDivisor;
+    glVertexBindingDivisor_layer = dt.glVertexBindingDivisor_layer;
+
+    glVertexBindingDivisor_layer = dt.glVertexBindingDivisor_layer;
+    glVertexBindingDivisor_layer_layer = dt.glVertexBindingDivisor_layer_layer;
+
     glVertexPointer = dt.glVertexPointer;
+    glVertexPointer_layer = dt.glVertexPointer_layer;
+
+    glVertexPointer_layer = dt.glVertexPointer_layer;
+    glVertexPointer_layer_layer = dt.glVertexPointer_layer_layer;
+
   }
 };
 

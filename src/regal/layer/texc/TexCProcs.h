@@ -55,42 +55,171 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void EmuProcsInterceptTexC( Dispatch::GL & dt );
+void TexCIntercept( Dispatch::GL & dt );
 
-struct EmuProcsOriginateTexC {
+struct TexCOriginate {
 
-  EmuProcsOriginateTexC() {
+  TexCOriginate() {
     memset(this, 0, sizeof( *this ) );
   }
 
   REGALGLACTIVETEXTUREPROC glActiveTexture;
+  Layer * glActiveTexture_layer;
+
   REGALGLACTIVETEXTUREARBPROC glActiveTextureARB;
+  Layer * glActiveTextureARB_layer;
+
+  REGALGLACTIVETEXTUREARB_LAYERPROC glActiveTextureARB_layer;
+  Layer * glActiveTextureARB_layer_layer;
+
+  REGALGLACTIVETEXTURE_LAYERPROC glActiveTexture_layer;
+  Layer * glActiveTexture_layer_layer;
+
   REGALGLBINDTEXTUREPROC glBindTexture;
+  Layer * glBindTexture_layer;
+
   REGALGLBINDTEXTUREEXTPROC glBindTextureEXT;
+  Layer * glBindTextureEXT_layer;
+
+  REGALGLBINDTEXTUREEXT_LAYERPROC glBindTextureEXT_layer;
+  Layer * glBindTextureEXT_layer_layer;
+
+  REGALGLBINDTEXTURE_LAYERPROC glBindTexture_layer;
+  Layer * glBindTexture_layer_layer;
+
   REGALGLDELETETEXTURESPROC glDeleteTextures;
+  Layer * glDeleteTextures_layer;
+
   REGALGLDELETETEXTURESEXTPROC glDeleteTexturesEXT;
+  Layer * glDeleteTexturesEXT_layer;
+
+  REGALGLDELETETEXTURESEXT_LAYERPROC glDeleteTexturesEXT_layer;
+  Layer * glDeleteTexturesEXT_layer_layer;
+
+  REGALGLDELETETEXTURES_LAYERPROC glDeleteTextures_layer;
+  Layer * glDeleteTextures_layer_layer;
+
   REGALGLGENTEXTURESPROC glGenTextures;
+  Layer * glGenTextures_layer;
+
   REGALGLGENTEXTURESEXTPROC glGenTexturesEXT;
+  Layer * glGenTexturesEXT_layer;
+
+  REGALGLGENTEXTURESEXT_LAYERPROC glGenTexturesEXT_layer;
+  Layer * glGenTexturesEXT_layer_layer;
+
+  REGALGLGENTEXTURES_LAYERPROC glGenTextures_layer;
+  Layer * glGenTextures_layer_layer;
+
   REGALGLGENERATEMIPMAPPROC glGenerateMipmap;
+  Layer * glGenerateMipmap_layer;
+
   REGALGLGENERATEMIPMAPEXTPROC glGenerateMipmapEXT;
+  Layer * glGenerateMipmapEXT_layer;
+
+  REGALGLGENERATEMIPMAPEXT_LAYERPROC glGenerateMipmapEXT_layer;
+  Layer * glGenerateMipmapEXT_layer_layer;
+
+  REGALGLGENERATEMIPMAP_LAYERPROC glGenerateMipmap_layer;
+  Layer * glGenerateMipmap_layer_layer;
+
   REGALGLPIXELSTOREIPROC glPixelStorei;
+  Layer * glPixelStorei_layer;
+
+  REGALGLPIXELSTOREI_LAYERPROC glPixelStorei_layer;
+  Layer * glPixelStorei_layer_layer;
+
   REGALGLTEXIMAGE2DPROC glTexImage2D;
+  Layer * glTexImage2D_layer;
+
+  REGALGLTEXIMAGE2D_LAYERPROC glTexImage2D_layer;
+  Layer * glTexImage2D_layer_layer;
+
   REGALGLTEXSUBIMAGE2DPROC glTexSubImage2D;
+  Layer * glTexSubImage2D_layer;
+
+  REGALGLTEXSUBIMAGE2D_LAYERPROC glTexSubImage2D_layer;
+  Layer * glTexSubImage2D_layer_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glActiveTexture = dt.glActiveTexture;
+    glActiveTexture_layer = dt.glActiveTexture_layer;
+
     glActiveTextureARB = dt.glActiveTextureARB;
+    glActiveTextureARB_layer = dt.glActiveTextureARB_layer;
+
+    glActiveTextureARB_layer = dt.glActiveTextureARB_layer;
+    glActiveTextureARB_layer_layer = dt.glActiveTextureARB_layer_layer;
+
+    glActiveTexture_layer = dt.glActiveTexture_layer;
+    glActiveTexture_layer_layer = dt.glActiveTexture_layer_layer;
+
     glBindTexture = dt.glBindTexture;
+    glBindTexture_layer = dt.glBindTexture_layer;
+
     glBindTextureEXT = dt.glBindTextureEXT;
+    glBindTextureEXT_layer = dt.glBindTextureEXT_layer;
+
+    glBindTextureEXT_layer = dt.glBindTextureEXT_layer;
+    glBindTextureEXT_layer_layer = dt.glBindTextureEXT_layer_layer;
+
+    glBindTexture_layer = dt.glBindTexture_layer;
+    glBindTexture_layer_layer = dt.glBindTexture_layer_layer;
+
     glDeleteTextures = dt.glDeleteTextures;
+    glDeleteTextures_layer = dt.glDeleteTextures_layer;
+
     glDeleteTexturesEXT = dt.glDeleteTexturesEXT;
+    glDeleteTexturesEXT_layer = dt.glDeleteTexturesEXT_layer;
+
+    glDeleteTexturesEXT_layer = dt.glDeleteTexturesEXT_layer;
+    glDeleteTexturesEXT_layer_layer = dt.glDeleteTexturesEXT_layer_layer;
+
+    glDeleteTextures_layer = dt.glDeleteTextures_layer;
+    glDeleteTextures_layer_layer = dt.glDeleteTextures_layer_layer;
+
     glGenTextures = dt.glGenTextures;
+    glGenTextures_layer = dt.glGenTextures_layer;
+
     glGenTexturesEXT = dt.glGenTexturesEXT;
+    glGenTexturesEXT_layer = dt.glGenTexturesEXT_layer;
+
+    glGenTexturesEXT_layer = dt.glGenTexturesEXT_layer;
+    glGenTexturesEXT_layer_layer = dt.glGenTexturesEXT_layer_layer;
+
+    glGenTextures_layer = dt.glGenTextures_layer;
+    glGenTextures_layer_layer = dt.glGenTextures_layer_layer;
+
     glGenerateMipmap = dt.glGenerateMipmap;
+    glGenerateMipmap_layer = dt.glGenerateMipmap_layer;
+
     glGenerateMipmapEXT = dt.glGenerateMipmapEXT;
+    glGenerateMipmapEXT_layer = dt.glGenerateMipmapEXT_layer;
+
+    glGenerateMipmapEXT_layer = dt.glGenerateMipmapEXT_layer;
+    glGenerateMipmapEXT_layer_layer = dt.glGenerateMipmapEXT_layer_layer;
+
+    glGenerateMipmap_layer = dt.glGenerateMipmap_layer;
+    glGenerateMipmap_layer_layer = dt.glGenerateMipmap_layer_layer;
+
     glPixelStorei = dt.glPixelStorei;
+    glPixelStorei_layer = dt.glPixelStorei_layer;
+
+    glPixelStorei_layer = dt.glPixelStorei_layer;
+    glPixelStorei_layer_layer = dt.glPixelStorei_layer_layer;
+
     glTexImage2D = dt.glTexImage2D;
+    glTexImage2D_layer = dt.glTexImage2D_layer;
+
+    glTexImage2D_layer = dt.glTexImage2D_layer;
+    glTexImage2D_layer_layer = dt.glTexImage2D_layer_layer;
+
     glTexSubImage2D = dt.glTexSubImage2D;
+    glTexSubImage2D_layer = dt.glTexSubImage2D_layer;
+
+    glTexSubImage2D_layer = dt.glTexSubImage2D_layer;
+    glTexSubImage2D_layer_layer = dt.glTexSubImage2D_layer_layer;
+
   }
 };
 

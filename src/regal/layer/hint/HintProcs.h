@@ -55,26 +55,75 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void EmuProcsInterceptHint( Dispatch::GL & dt );
+void HintIntercept( Dispatch::GL & dt );
 
-struct EmuProcsOriginateHint {
+struct HintOriginate {
 
-  EmuProcsOriginateHint() {
+  HintOriginate() {
     memset(this, 0, sizeof( *this ) );
   }
 
   REGALGLGETBOOLEANVPROC glGetBooleanv;
+  Layer * glGetBooleanv_layer;
+
+  REGALGLGETBOOLEANV_LAYERPROC glGetBooleanv_layer;
+  Layer * glGetBooleanv_layer_layer;
+
   REGALGLGETDOUBLEVPROC glGetDoublev;
+  Layer * glGetDoublev_layer;
+
+  REGALGLGETDOUBLEV_LAYERPROC glGetDoublev_layer;
+  Layer * glGetDoublev_layer_layer;
+
   REGALGLGETFLOATVPROC glGetFloatv;
+  Layer * glGetFloatv_layer;
+
+  REGALGLGETFLOATV_LAYERPROC glGetFloatv_layer;
+  Layer * glGetFloatv_layer_layer;
+
   REGALGLGETINTEGERVPROC glGetIntegerv;
+  Layer * glGetIntegerv_layer;
+
+  REGALGLGETINTEGERV_LAYERPROC glGetIntegerv_layer;
+  Layer * glGetIntegerv_layer_layer;
+
   REGALGLHINTPROC glHint;
+  Layer * glHint_layer;
+
+  REGALGLHINT_LAYERPROC glHint_layer;
+  Layer * glHint_layer_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glGetBooleanv = dt.glGetBooleanv;
+    glGetBooleanv_layer = dt.glGetBooleanv_layer;
+
+    glGetBooleanv_layer = dt.glGetBooleanv_layer;
+    glGetBooleanv_layer_layer = dt.glGetBooleanv_layer_layer;
+
     glGetDoublev = dt.glGetDoublev;
+    glGetDoublev_layer = dt.glGetDoublev_layer;
+
+    glGetDoublev_layer = dt.glGetDoublev_layer;
+    glGetDoublev_layer_layer = dt.glGetDoublev_layer_layer;
+
     glGetFloatv = dt.glGetFloatv;
+    glGetFloatv_layer = dt.glGetFloatv_layer;
+
+    glGetFloatv_layer = dt.glGetFloatv_layer;
+    glGetFloatv_layer_layer = dt.glGetFloatv_layer_layer;
+
     glGetIntegerv = dt.glGetIntegerv;
+    glGetIntegerv_layer = dt.glGetIntegerv_layer;
+
+    glGetIntegerv_layer = dt.glGetIntegerv_layer;
+    glGetIntegerv_layer_layer = dt.glGetIntegerv_layer_layer;
+
     glHint = dt.glHint;
+    glHint_layer = dt.glHint_layer;
+
+    glHint_layer = dt.glHint_layer;
+    glHint_layer_layer = dt.glHint_layer_layer;
+
   }
 };
 

@@ -126,7 +126,7 @@ def apiMissingFuncDefineCode(apis, args):
       code += '  PFN%sPROC driver_%s = NULL;\n' % ( name.upper(), name )
       code += '\n'
 
-      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context" )
+      params = paramsDefaultCode(function.parameters, True, "Layer *_layer" )
 
       code += '  static %sREGAL_CALL loader_%s(%s)\n  {\n' % ( rType, name, params )
       code += '    '

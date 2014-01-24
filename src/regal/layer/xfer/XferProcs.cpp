@@ -54,150 +54,172 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptXfer_glActiveTexture(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Xfer_glActiveTexture(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
 
-  orig.glActiveTexture( _context, texture );
+  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glActiveTextureARB(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Xfer_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
 
-  orig.glActiveTextureARB( _context, texture );
+  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glCompressedTexImage2D(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Xfer_glCompressedTexImage2D(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // impl
   _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data ); return;
 
-  orig.glCompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data );
+  orig.glCompressedTexImage2D( orig.glCompressedTexImage2D_layer, target, level, internalformat, width, height, border, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glCompressedTexImage2DARB(RegalContext *_context, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Xfer_glCompressedTexImage2DARB(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // impl
   _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data ); return;
 
-  orig.glCompressedTexImage2DARB( _context, target, level, internalformat, width, height, border, imageSize, data );
+  orig.glCompressedTexImage2DARB( orig.glCompressedTexImage2DARB_layer, target, level, internalformat, width, height, border, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glCompressedTexSubImage2D(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Xfer_glCompressedTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // impl
   _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
 
-  orig.glCompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data );
+  orig.glCompressedTexSubImage2D( orig.glCompressedTexSubImage2D_layer, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glCompressedTexSubImage2DARB(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL Xfer_glCompressedTexSubImage2DARB(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // impl
   _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
 
-  orig.glCompressedTexSubImage2DARB( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data );
+  orig.glCompressedTexSubImage2DARB( orig.glCompressedTexSubImage2DARB_layer, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glPixelStoref(RegalContext *_context, GLenum pname, GLfloat param)
+static void REGAL_CALL Xfer_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
 
-  orig.glPixelStoref( _context, pname, param );
+  orig.glPixelStoref( orig.glPixelStoref_layer, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glPixelStorei(RegalContext *_context, GLenum pname, GLint param)
+static void REGAL_CALL Xfer_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
 
-  orig.glPixelStorei( _context, pname, param );
+  orig.glPixelStorei( orig.glPixelStorei_layer, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glTexImage2D(RegalContext *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Xfer_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // impl
   _context->xfer->TexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels ); return;
 
-  orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
+  orig.glTexImage2D( orig.glTexImage2D_layer, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glTexSubImage2D(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Xfer_glTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // impl
   _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
 
-  orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  orig.glTexSubImage2D( orig.glTexSubImage2D_layer, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptXfer_glTexSubImage2DEXT(RegalContext *_context, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Xfer_glTexSubImage2DEXT(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateXfer & orig = _context->xfer->orig;
+  Xfer * self = static_cast<Xfer *>(_layer);
+
+  XferOriginate & orig = self->orig;
 
   // impl
   _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
 
-  orig.glTexSubImage2DEXT( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  orig.glTexSubImage2DEXT( orig.glTexSubImage2DEXT_layer, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-void EmuProcsInterceptXfer( Dispatch::GL & dt ) {
-  dt.glActiveTexture              = emuProcInterceptXfer_glActiveTexture;
-  dt.glActiveTextureARB           = emuProcInterceptXfer_glActiveTextureARB;
-  dt.glCompressedTexImage2D       = emuProcInterceptXfer_glCompressedTexImage2D;
-  dt.glCompressedTexImage2DARB    = emuProcInterceptXfer_glCompressedTexImage2DARB;
-  dt.glCompressedTexSubImage2D    = emuProcInterceptXfer_glCompressedTexSubImage2D;
-  dt.glCompressedTexSubImage2DARB = emuProcInterceptXfer_glCompressedTexSubImage2DARB;
-  dt.glPixelStoref                = emuProcInterceptXfer_glPixelStoref;
-  dt.glPixelStorei                = emuProcInterceptXfer_glPixelStorei;
-  dt.glTexImage2D                 = emuProcInterceptXfer_glTexImage2D;
-  dt.glTexSubImage2D              = emuProcInterceptXfer_glTexSubImage2D;
-  dt.glTexSubImage2DEXT           = emuProcInterceptXfer_glTexSubImage2DEXT;
+void XferIntercept( Dispatch::GL & dt ) {
+  dt.glActiveTexture                   = Xfer_glActiveTexture;
+  dt.glActiveTexture_layer              = Xfer_glActiveTexture;
+  dt.glActiveTextureARB                = Xfer_glActiveTextureARB;
+  dt.glActiveTextureARB_layer           = Xfer_glActiveTextureARB;
+  dt.glCompressedTexImage2D            = Xfer_glCompressedTexImage2D;
+  dt.glCompressedTexImage2D_layer       = Xfer_glCompressedTexImage2D;
+  dt.glCompressedTexImage2DARB         = Xfer_glCompressedTexImage2DARB;
+  dt.glCompressedTexImage2DARB_layer    = Xfer_glCompressedTexImage2DARB;
+  dt.glCompressedTexSubImage2D         = Xfer_glCompressedTexSubImage2D;
+  dt.glCompressedTexSubImage2D_layer    = Xfer_glCompressedTexSubImage2D;
+  dt.glCompressedTexSubImage2DARB      = Xfer_glCompressedTexSubImage2DARB;
+  dt.glCompressedTexSubImage2DARB_layer = Xfer_glCompressedTexSubImage2DARB;
+  dt.glPixelStoref                     = Xfer_glPixelStoref;
+  dt.glPixelStoref_layer                = Xfer_glPixelStoref;
+  dt.glPixelStorei                     = Xfer_glPixelStorei;
+  dt.glPixelStorei_layer                = Xfer_glPixelStorei;
+  dt.glTexImage2D                      = Xfer_glTexImage2D;
+  dt.glTexImage2D_layer                 = Xfer_glTexImage2D;
+  dt.glTexSubImage2D                   = Xfer_glTexSubImage2D;
+  dt.glTexSubImage2D_layer              = Xfer_glTexSubImage2D;
+  dt.glTexSubImage2DEXT                = Xfer_glTexSubImage2DEXT;
+  dt.glTexSubImage2DEXT_layer           = Xfer_glTexSubImage2DEXT;
 }
 
 REGAL_NAMESPACE_END

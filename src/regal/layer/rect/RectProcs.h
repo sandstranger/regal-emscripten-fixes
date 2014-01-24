@@ -55,44 +55,147 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void EmuProcsInterceptRect( Dispatch::GL & dt );
+void RectIntercept( Dispatch::GL & dt );
 
-struct EmuProcsOriginateRect {
+struct RectOriginate {
 
-  EmuProcsOriginateRect() {
+  RectOriginate() {
     memset(this, 0, sizeof( *this ) );
   }
 
   REGALGLBEGINPROC glBegin;
+  Layer * glBegin_layer;
+
   REGALGLENDPROC glEnd;
+  Layer * glEnd_layer;
+
   REGALGLRECTDPROC glRectd;
+  Layer * glRectd_layer;
+
+  REGALGLRECTD_LAYERPROC glRectd_layer;
+  Layer * glRectd_layer_layer;
+
   REGALGLRECTDVPROC glRectdv;
+  Layer * glRectdv_layer;
+
+  REGALGLRECTDV_LAYERPROC glRectdv_layer;
+  Layer * glRectdv_layer_layer;
+
   REGALGLRECTFPROC glRectf;
+  Layer * glRectf_layer;
+
+  REGALGLRECTF_LAYERPROC glRectf_layer;
+  Layer * glRectf_layer_layer;
+
   REGALGLRECTFVPROC glRectfv;
+  Layer * glRectfv_layer;
+
+  REGALGLRECTFV_LAYERPROC glRectfv_layer;
+  Layer * glRectfv_layer_layer;
+
   REGALGLRECTIPROC glRecti;
+  Layer * glRecti_layer;
+
+  REGALGLRECTI_LAYERPROC glRecti_layer;
+  Layer * glRecti_layer_layer;
+
   REGALGLRECTIVPROC glRectiv;
+  Layer * glRectiv_layer;
+
+  REGALGLRECTIV_LAYERPROC glRectiv_layer;
+  Layer * glRectiv_layer_layer;
+
   REGALGLRECTSPROC glRects;
+  Layer * glRects_layer;
+
+  REGALGLRECTS_LAYERPROC glRects_layer;
+  Layer * glRects_layer_layer;
+
   REGALGLRECTSVPROC glRectsv;
+  Layer * glRectsv_layer;
+
+  REGALGLRECTSV_LAYERPROC glRectsv_layer;
+  Layer * glRectsv_layer_layer;
+
   REGALGLVERTEX2DPROC glVertex2d;
+  Layer * glVertex2d_layer;
+
   REGALGLVERTEX2FPROC glVertex2f;
+  Layer * glVertex2f_layer;
+
   REGALGLVERTEX2IPROC glVertex2i;
+  Layer * glVertex2i_layer;
+
   REGALGLVERTEX2SPROC glVertex2s;
+  Layer * glVertex2s_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glBegin = dt.glBegin;
+    glBegin_layer = dt.glBegin_layer;
+
     glEnd = dt.glEnd;
+    glEnd_layer = dt.glEnd_layer;
+
     glRectd = dt.glRectd;
+    glRectd_layer = dt.glRectd_layer;
+
+    glRectd_layer = dt.glRectd_layer;
+    glRectd_layer_layer = dt.glRectd_layer_layer;
+
     glRectdv = dt.glRectdv;
+    glRectdv_layer = dt.glRectdv_layer;
+
+    glRectdv_layer = dt.glRectdv_layer;
+    glRectdv_layer_layer = dt.glRectdv_layer_layer;
+
     glRectf = dt.glRectf;
+    glRectf_layer = dt.glRectf_layer;
+
+    glRectf_layer = dt.glRectf_layer;
+    glRectf_layer_layer = dt.glRectf_layer_layer;
+
     glRectfv = dt.glRectfv;
+    glRectfv_layer = dt.glRectfv_layer;
+
+    glRectfv_layer = dt.glRectfv_layer;
+    glRectfv_layer_layer = dt.glRectfv_layer_layer;
+
     glRecti = dt.glRecti;
+    glRecti_layer = dt.glRecti_layer;
+
+    glRecti_layer = dt.glRecti_layer;
+    glRecti_layer_layer = dt.glRecti_layer_layer;
+
     glRectiv = dt.glRectiv;
+    glRectiv_layer = dt.glRectiv_layer;
+
+    glRectiv_layer = dt.glRectiv_layer;
+    glRectiv_layer_layer = dt.glRectiv_layer_layer;
+
     glRects = dt.glRects;
+    glRects_layer = dt.glRects_layer;
+
+    glRects_layer = dt.glRects_layer;
+    glRects_layer_layer = dt.glRects_layer_layer;
+
     glRectsv = dt.glRectsv;
+    glRectsv_layer = dt.glRectsv_layer;
+
+    glRectsv_layer = dt.glRectsv_layer;
+    glRectsv_layer_layer = dt.glRectsv_layer_layer;
+
     glVertex2d = dt.glVertex2d;
+    glVertex2d_layer = dt.glVertex2d_layer;
+
     glVertex2f = dt.glVertex2f;
+    glVertex2f_layer = dt.glVertex2f_layer;
+
     glVertex2i = dt.glVertex2i;
+    glVertex2i_layer = dt.glVertex2i_layer;
+
     glVertex2s = dt.glVertex2s;
+    glVertex2s_layer = dt.glVertex2s_layer;
+
   }
 };
 

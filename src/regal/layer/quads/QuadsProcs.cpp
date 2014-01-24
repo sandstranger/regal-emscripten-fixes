@@ -54,46 +54,50 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptQuads_glBindBuffer(RegalContext *_context, GLenum target, GLuint buffer)
+static void REGAL_CALL Quads_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glBindBuffer( target, buffer );
 
-  orig.glBindBuffer( _context, target, buffer );
+  orig.glBindBuffer( orig.glBindBuffer_layer, target, buffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glCullFace(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Quads_glCullFace(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glCullFace( mode );
 
-  orig.glCullFace( _context, mode );
+  orig.glCullFace( orig.glCullFace_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glDisable(RegalContext *_context, GLenum cap)
+static void REGAL_CALL Quads_glDisable(Layer *_layer, GLenum cap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glDisable( cap );
 
-  orig.glDisable( _context, cap );
+  orig.glDisable( orig.glDisable_layer, cap );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glDrawArrays(RegalContext *_context, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL Quads_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // impl
 
@@ -101,14 +105,15 @@ static void REGAL_CALL emuProcInterceptQuads_glDrawArrays(RegalContext *_context
     return;
   }
 
-  orig.glDrawArrays( _context, mode, first, count );
+  orig.glDrawArrays( orig.glDrawArrays_layer, mode, first, count );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glDrawArraysEXT(RegalContext *_context, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL Quads_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // impl
 
@@ -116,94 +121,111 @@ static void REGAL_CALL emuProcInterceptQuads_glDrawArraysEXT(RegalContext *_cont
     return;
   }
 
-  orig.glDrawArraysEXT( _context, mode, first, count );
+  orig.glDrawArraysEXT( orig.glDrawArraysEXT_layer, mode, first, count );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glEnable(RegalContext *_context, GLenum cap)
+static void REGAL_CALL Quads_glEnable(Layer *_layer, GLenum cap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glEnable( cap );
 
-  orig.glEnable( _context, cap );
+  orig.glEnable( orig.glEnable_layer, cap );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glFrontFace(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Quads_glFrontFace(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glFrontFace( mode );
 
-  orig.glFrontFace( _context, mode );
+  orig.glFrontFace( orig.glFrontFace_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glPolygonMode(RegalContext *_context, GLenum face, GLenum mode)
+static void REGAL_CALL Quads_glPolygonMode(Layer *_layer, GLenum face, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glPolygonMode( face, mode );
 
-  orig.glPolygonMode( _context, face, mode );
+  orig.glPolygonMode( orig.glPolygonMode_layer, face, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glProvokingVertex(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Quads_glProvokingVertex(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glProvokingVertex( mode );
 
-  orig.glProvokingVertex( _context, mode );
+  orig.glProvokingVertex( orig.glProvokingVertex_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glProvokingVertexEXT(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Quads_glProvokingVertexEXT(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glProvokingVertex( mode );
 
-  orig.glProvokingVertexEXT( _context, mode );
+  orig.glProvokingVertexEXT( orig.glProvokingVertexEXT_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptQuads_glShadeModel(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Quads_glShadeModel(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateQuads & orig = _context->quads->orig;
+  Quads * self = static_cast<Quads *>(_layer);
+
+  QuadsOriginate & orig = self->orig;
 
   // prefix
   _context->quads->glShadeModel( mode );
 
-  orig.glShadeModel( _context, mode );
+  orig.glShadeModel( orig.glShadeModel_layer, mode );
 
 }
 
-void EmuProcsInterceptQuads( Dispatch::GL & dt ) {
-  dt.glBindBuffer         = emuProcInterceptQuads_glBindBuffer;
-  dt.glCullFace           = emuProcInterceptQuads_glCullFace;
-  dt.glDisable            = emuProcInterceptQuads_glDisable;
-  dt.glDrawArrays         = emuProcInterceptQuads_glDrawArrays;
-  dt.glDrawArraysEXT      = emuProcInterceptQuads_glDrawArraysEXT;
-  dt.glEnable             = emuProcInterceptQuads_glEnable;
-  dt.glFrontFace          = emuProcInterceptQuads_glFrontFace;
-  dt.glPolygonMode        = emuProcInterceptQuads_glPolygonMode;
-  dt.glProvokingVertex    = emuProcInterceptQuads_glProvokingVertex;
-  dt.glProvokingVertexEXT = emuProcInterceptQuads_glProvokingVertexEXT;
-  dt.glShadeModel         = emuProcInterceptQuads_glShadeModel;
+void QuadsIntercept( Dispatch::GL & dt ) {
+  dt.glBindBuffer              = Quads_glBindBuffer;
+  dt.glBindBuffer_layer         = Quads_glBindBuffer;
+  dt.glCullFace                = Quads_glCullFace;
+  dt.glCullFace_layer           = Quads_glCullFace;
+  dt.glDisable                 = Quads_glDisable;
+  dt.glDisable_layer            = Quads_glDisable;
+  dt.glDrawArrays              = Quads_glDrawArrays;
+  dt.glDrawArrays_layer         = Quads_glDrawArrays;
+  dt.glDrawArraysEXT           = Quads_glDrawArraysEXT;
+  dt.glDrawArraysEXT_layer      = Quads_glDrawArraysEXT;
+  dt.glEnable                  = Quads_glEnable;
+  dt.glEnable_layer             = Quads_glEnable;
+  dt.glFrontFace               = Quads_glFrontFace;
+  dt.glFrontFace_layer          = Quads_glFrontFace;
+  dt.glPolygonMode             = Quads_glPolygonMode;
+  dt.glPolygonMode_layer        = Quads_glPolygonMode;
+  dt.glProvokingVertex         = Quads_glProvokingVertex;
+  dt.glProvokingVertex_layer    = Quads_glProvokingVertex;
+  dt.glProvokingVertexEXT      = Quads_glProvokingVertexEXT;
+  dt.glProvokingVertexEXT_layer = Quads_glProvokingVertexEXT;
+  dt.glShadeModel              = Quads_glShadeModel;
+  dt.glShadeModel_layer         = Quads_glShadeModel;
 }
 
 REGAL_NAMESPACE_END

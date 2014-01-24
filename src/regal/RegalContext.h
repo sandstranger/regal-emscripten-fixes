@@ -48,10 +48,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalThread.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
-#include "RegalDispatchDebug.h"
-#include "RegalDispatchLog.h"
-#include "RegalDispatchError.h"
-#include "RegalDispatchHttp.h"
+#include "RegalLayer.h"
 #include "RegalScopedPtr.h"
 #include "RegalSharedList.h"
 
@@ -68,24 +65,24 @@ REGAL_NAMESPACE_BEGIN
 struct EmuInfo;
 struct DebugInfo;
 
-struct Marker;
+struct None;
 #if REGAL_EMULATION
-namespace Emu { struct Obj; };
-namespace Emu { struct Hint; };
-namespace Emu { struct Ppa; };
-namespace Emu { struct Ppca; };
-namespace Emu { struct Bin; };
-namespace Emu { struct Xfer; };
-namespace Emu { struct TexSto; };
-namespace Emu { struct BaseVertex; };
-namespace Emu { struct Rect; };
-namespace Emu { struct Iff; };
-namespace Emu { struct Quads; };
-namespace Emu { struct So; };
-namespace Emu { struct Dsa; };
-namespace Emu { struct Vao; };
-namespace Emu { struct TexC; };
-namespace Emu { struct Filt; };
+struct Obj;
+struct Hint;
+struct Ppa;
+struct Ppca;
+struct Bin;
+struct Xfer;
+struct TexSto;
+struct BaseVertex;
+struct Rect;
+struct Iff;
+struct Quads;
+struct So;
+struct Dsa;
+struct Vao;
+struct TexC;
+struct Filt;
 #endif
 
 struct RegalContext
@@ -105,39 +102,11 @@ struct RegalContext
 
   bool                    initialized;
   Dispatch::GL            dispatchGL;
-  Err                     err;
-  Debug                   debug;
-  Log                     log;
-  Http                    http;
   scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;
 
-  //
-  // Emulation
-  //
-
-  scoped_ptr<Marker            > marker;
-#if REGAL_EMULATION
-  // Fixed function emulation
-  int emuLevel;
-  scoped_ptr<Emu::Obj          > obj;
-  scoped_ptr<Emu::Hint         > hint;
-  scoped_ptr<Emu::Ppa          > ppa;
-  scoped_ptr<Emu::Ppca         > ppca;
-  scoped_ptr<Emu::Bin          > bin;
-  scoped_ptr<Emu::Xfer         > xfer;
-  scoped_ptr<Emu::TexSto       > texsto;
-  scoped_ptr<Emu::BaseVertex   > bv;
-  scoped_ptr<Emu::Rect         > rect;
-  scoped_ptr<Emu::Iff          > iff;
-  scoped_ptr<Emu::Quads        > quads;
-  scoped_ptr<Emu::So           > so;
-  scoped_ptr<Emu::Dsa          > dsa;
-  scoped_ptr<Emu::Vao          > vao;
-  scoped_ptr<Emu::TexC         > texc;
-  scoped_ptr<Emu::Filt         > filt;
-#endif
+  std::vector<Layer *>    layer;
 
   #if REGAL_SYS_PPAPI
   PPB_OpenGLES2      *ppapiES2;
@@ -178,27 +147,36 @@ struct RegalContext
   // unparkContext() makes it current to the calling thread
 
   struct ParkProcs {
-    void init( Dispatch::Global & dispatchGlobal ) {
+    template <typename T>
+    void init( T & dt ) {
       #if REGAL_SYS_OSX
-        CGLSetCurrentContext = dispatchGlobal.CGLSetCurrentContext;
+        CGLSetCurrentContext       = dispatchGlobal.CGLSetCurrentContext;
+        CGLSetCurrentContext_layer = dispatchGlobal.CGLSetCurrentContext_layer;
       #elif REGAL_SYS_EGL
-        eglMakeCurrent = dispatchGlobal.eglMakeCurrent;
+        eglMakeCurrent       = dispatchGlobal.eglMakeCurrent;
+        eglMakeCurrent_layer = dispatchGlobal.eglMakeCurrent_layer;
       #elif REGAL_SYS_GLX
-        glXMakeCurrent = dispatchGlobal.glXMakeCurrent;
+        glXMakeCurrent       = dispatchGlobal.glXMakeCurrent;
+        glXMakeCurrent_layer = dispatchGlobal.glXMakeCurrent_layer;
       #elif REGAL_SYS_WGL
-        wglMakeCurrent = dispatchGlobal.wglMakeCurrent;
+        wglMakeCurrent       = dispatchGlobal.wglMakeCurrent;
+        wglMakeCurrent_layer = dispatchGlobal.wglMakeCurrent_layer;
       #else
         # error "Implement me!"
       #endif
     }
     #if REGAL_SYS_OSX
       REGALCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
+      Layer * CGLSetCurrentContext_layer;
     #elif REGAL_SYS_EGL
       REGALEGLMAKECURRENTPROC eglMakeCurrent;
+      Layer * eglMakeCurrent_layer;
     #elif REGAL_SYS_GLX
       REGALGLXMAKECURRENTPROC glXMakeCurrent;
+      Layer * glXMakeCurrent_layer;
     #elif REGAL_SYS_WGL
       REGALWGLMAKECURRENTPROC wglMakeCurrent;
+       wglMakeCurrent;
     #else
       # error "Implement me!"
     #endif

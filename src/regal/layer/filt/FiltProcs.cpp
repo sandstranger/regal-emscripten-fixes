@@ -54,10 +54,11 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptFilt_glAccum(RegalContext *_context, GLenum op, GLfloat value)
+static void REGAL_CALL Filt_glAccum(Layer *_layer, GLenum op, GLfloat value)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -69,14 +70,15 @@ static void REGAL_CALL emuProcInterceptFilt_glAccum(RegalContext *_context, GLen
      return ;
   }
 
-  orig.glAccum( _context, op, value );
+  orig.glAccum( orig.glAccum_layer, op, value );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glActiveTextureARB(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Filt_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_arb_multitexture)
@@ -85,14 +87,15 @@ static void REGAL_CALL emuProcInterceptFilt_glActiveTextureARB(RegalContext *_co
     return;
   }
 
-  orig.glActiveTextureARB( _context, texture );
+  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glAttachObjectARB(RegalContext *_context, GLhandleARB containerObj, GLhandleARB obj)
+static void REGAL_CALL Filt_glAttachObjectARB(Layer *_layer, GLhandleARB containerObj, GLhandleARB obj)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -101,14 +104,15 @@ static void REGAL_CALL emuProcInterceptFilt_glAttachObjectARB(RegalContext *_con
     return;
   }
 
-  orig.glAttachObjectARB( _context, containerObj, obj );
+  orig.glAttachObjectARB( orig.glAttachObjectARB_layer, containerObj, obj );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBindAttribLocationARB(RegalContext *_context, GLhandleARB programObj, GLuint index, const GLcharARB *name)
+static void REGAL_CALL Filt_glBindAttribLocationARB(Layer *_layer, GLhandleARB programObj, GLuint index, const GLcharARB *name)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -117,14 +121,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBindAttribLocationARB(RegalContext
     return;
   }
 
-  orig.glBindAttribLocationARB( _context, programObj, index, name );
+  orig.glBindAttribLocationARB( orig.glBindAttribLocationARB_layer, programObj, index, name );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBindFramebuffer(RegalContext *_context, GLenum target, GLuint framebuffer)
+static void REGAL_CALL Filt_glBindFramebuffer(Layer *_layer, GLenum target, GLuint framebuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -140,14 +145,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBindFramebuffer(RegalContext *_con
     return ;
   }
 
-  orig.glBindFramebuffer( _context, target, framebuffer );
+  orig.glBindFramebuffer( orig.glBindFramebuffer_layer, target, framebuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBindFramebufferEXT(RegalContext *_context, GLenum target, GLuint framebuffer)
+static void REGAL_CALL Filt_glBindFramebufferEXT(Layer *_layer, GLenum target, GLuint framebuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -157,14 +163,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBindFramebufferEXT(RegalContext *_
     return;
   }
 
-  orig.glBindFramebufferEXT( _context, target, framebuffer );
+  orig.glBindFramebufferEXT( orig.glBindFramebufferEXT_layer, target, framebuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBindFramebufferOES(RegalContext *_context, GLenum target, GLuint framebuffer)
+static void REGAL_CALL Filt_glBindFramebufferOES(Layer *_layer, GLenum target, GLuint framebuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -180,14 +187,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBindFramebufferOES(RegalContext *_
     return ;
   }
 
-  orig.glBindFramebufferOES( _context, target, framebuffer );
+  orig.glBindFramebufferOES( orig.glBindFramebufferOES_layer, target, framebuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBindProgramARB(RegalContext *_context, GLenum target, GLuint program)
+static void REGAL_CALL Filt_glBindProgramARB(Layer *_layer, GLenum target, GLuint program)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -196,14 +204,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBindProgramARB(RegalContext *_cont
     return;
   }
 
-  orig.glBindProgramARB( _context, target, program );
+  orig.glBindProgramARB( orig.glBindProgramARB_layer, target, program );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBindRenderbufferEXT(RegalContext *_context, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL Filt_glBindRenderbufferEXT(Layer *_layer, GLenum target, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -213,14 +222,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBindRenderbufferEXT(RegalContext *
     return;
   }
 
-  orig.glBindRenderbufferEXT( _context, target, renderbuffer );
+  orig.glBindRenderbufferEXT( orig.glBindRenderbufferEXT_layer, target, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBindTexture(RegalContext *_context, GLenum target, GLuint texture)
+static void REGAL_CALL Filt_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->BindTexture(*_context, target, texture))
@@ -231,14 +241,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBindTexture(RegalContext *_context
     return ;
   }
 
-  orig.glBindTexture( _context, target, texture );
+  orig.glBindTexture( orig.glBindTexture_layer, target, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBitmap(RegalContext *_context, GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
+static void REGAL_CALL Filt_glBitmap(Layer *_layer, GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -250,14 +261,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBitmap(RegalContext *_context, GLs
      return ;
   }
 
-  orig.glBitmap( _context, width, height, xorig, yorig, xmove, ymove, bitmap );
+  orig.glBitmap( orig.glBitmap_layer, width, height, xorig, yorig, xmove, ymove, bitmap );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBlendColorEXT(RegalContext *_context, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
+static void REGAL_CALL Filt_glBlendColorEXT(Layer *_layer, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -266,14 +278,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBlendColorEXT(RegalContext *_conte
     return;
   }
 
-  orig.glBlendColorEXT( _context, red, green, blue, alpha );
+  orig.glBlendColorEXT( orig.glBlendColorEXT_layer, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBlendEquationEXT(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Filt_glBlendEquationEXT(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -282,14 +295,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBlendEquationEXT(RegalContext *_co
     return;
   }
 
-  orig.glBlendEquationEXT( _context, mode );
+  orig.glBlendEquationEXT( orig.glBlendEquationEXT_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBlitFramebuffer(RegalContext *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+static void REGAL_CALL Filt_glBlitFramebuffer(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -298,14 +312,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBlitFramebuffer(RegalContext *_con
     if (_context->info->gl_ext_framebuffer_blit) return orig.glBlitFramebufferEXT( _context, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
   }
 
-  orig.glBlitFramebuffer( _context, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
+  orig.glBlitFramebuffer( orig.glBlitFramebuffer_layer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBlitFramebufferANGLE(RegalContext *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+static void REGAL_CALL Filt_glBlitFramebufferANGLE(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -317,14 +332,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBlitFramebufferANGLE(RegalContext 
     return ;
   }
 
-  orig.glBlitFramebufferANGLE( _context, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
+  orig.glBlitFramebufferANGLE( orig.glBlitFramebufferANGLE_layer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBlitFramebufferEXT(RegalContext *_context, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+static void REGAL_CALL Filt_glBlitFramebufferEXT(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_blit)
@@ -334,14 +350,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBlitFramebufferEXT(RegalContext *_
     return;
   }
 
-  orig.glBlitFramebufferEXT( _context, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
+  orig.glBlitFramebufferEXT( orig.glBlitFramebufferEXT_layer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glBufferDataARB(RegalContext *_context, GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
+static void REGAL_CALL Filt_glBufferDataARB(Layer *_layer, GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -350,14 +367,15 @@ static void REGAL_CALL emuProcInterceptFilt_glBufferDataARB(RegalContext *_conte
     return;
   }
 
-  orig.glBufferDataARB( _context, target, size, data, usage );
+  orig.glBufferDataARB( orig.glBufferDataARB_layer, target, size, data, usage );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glCallList(RegalContext *_context, GLuint list)
+static void REGAL_CALL Filt_glCallList(Layer *_layer, GLuint list)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -369,14 +387,15 @@ static void REGAL_CALL emuProcInterceptFilt_glCallList(RegalContext *_context, G
      return ;
   }
 
-  orig.glCallList( _context, list );
+  orig.glCallList( orig.glCallList_layer, list );
 
 }
 
-static GLenum REGAL_CALL emuProcInterceptFilt_glCheckFramebufferStatusEXT(RegalContext *_context, GLenum target)
+static GLenum REGAL_CALL Filt_glCheckFramebufferStatusEXT(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -385,14 +404,15 @@ static GLenum REGAL_CALL emuProcInterceptFilt_glCheckFramebufferStatusEXT(RegalC
     return orig.glCheckFramebufferStatus( _context,target);
   }
 
-  return orig.glCheckFramebufferStatusEXT( _context, target );
+  return orig.glCheckFramebufferStatusEXT( orig.glCheckFramebufferStatusEXT_layer, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glClearAccum(RegalContext *_context, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+static void REGAL_CALL Filt_glClearAccum(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -404,14 +424,15 @@ static void REGAL_CALL emuProcInterceptFilt_glClearAccum(RegalContext *_context,
      return ;
   }
 
-  orig.glClearAccum( _context, red, green, blue, alpha );
+  orig.glClearAccum( orig.glClearAccum_layer, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glClientActiveTexture(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Filt_glClientActiveTexture(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -423,14 +444,15 @@ static void REGAL_CALL emuProcInterceptFilt_glClientActiveTexture(RegalContext *
     return ;
   }
 
-  orig.glClientActiveTexture( _context, texture );
+  orig.glClientActiveTexture( orig.glClientActiveTexture_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glClientActiveTextureARB(RegalContext *_context, GLenum texture)
+static void REGAL_CALL Filt_glClientActiveTextureARB(Layer *_layer, GLenum texture)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_arb_multitexture)
@@ -440,14 +462,15 @@ static void REGAL_CALL emuProcInterceptFilt_glClientActiveTextureARB(RegalContex
     return;
   }
 
-  orig.glClientActiveTextureARB( _context, texture );
+  orig.glClientActiveTextureARB( orig.glClientActiveTextureARB_layer, texture );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glColorMaskIndexedEXT(RegalContext *_context, GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
+static void REGAL_CALL Filt_glColorMaskIndexedEXT(Layer *_layer, GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
@@ -458,14 +481,15 @@ static void REGAL_CALL emuProcInterceptFilt_glColorMaskIndexedEXT(RegalContext *
     return;
   }
 
-  orig.glColorMaskIndexedEXT( _context, buf, r, g, b, a );
+  orig.glColorMaskIndexedEXT( orig.glColorMaskIndexedEXT_layer, buf, r, g, b, a );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glCompileShaderARB(RegalContext *_context, GLhandleARB shaderObj)
+static void REGAL_CALL Filt_glCompileShaderARB(Layer *_layer, GLhandleARB shaderObj)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -474,14 +498,15 @@ static void REGAL_CALL emuProcInterceptFilt_glCompileShaderARB(RegalContext *_co
     return;
   }
 
-  orig.glCompileShaderARB( _context, shaderObj );
+  orig.glCompileShaderARB( orig.glCompileShaderARB_layer, shaderObj );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glCopyPixels(RegalContext *_context, GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
+static void REGAL_CALL Filt_glCopyPixels(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -493,14 +518,15 @@ static void REGAL_CALL emuProcInterceptFilt_glCopyPixels(RegalContext *_context,
      return ;
   }
 
-  orig.glCopyPixels( _context, x, y, width, height, type );
+  orig.glCopyPixels( orig.glCopyPixels_layer, x, y, width, height, type );
 
 }
 
-static GLhandleARB REGAL_CALL emuProcInterceptFilt_glCreateProgramObjectARB(RegalContext *_context)
+static GLhandleARB REGAL_CALL Filt_glCreateProgramObjectARB(Layer *_layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -508,14 +534,15 @@ static GLhandleARB REGAL_CALL emuProcInterceptFilt_glCreateProgramObjectARB(Rega
     return orig.glCreateProgram( _context );
   }
 
-  return orig.glCreateProgramObjectARB( _context );
+  return orig.glCreateProgramObjectARB( orig.glCreateProgramObjectARB_layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDeleteFramebuffersEXT(RegalContext *_context, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL Filt_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -525,14 +552,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDeleteFramebuffersEXT(RegalContext
     return;
   }
 
-  orig.glDeleteFramebuffersEXT( _context, n, framebuffers );
+  orig.glDeleteFramebuffersEXT( orig.glDeleteFramebuffersEXT_layer, n, framebuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDeleteLists(RegalContext *_context, GLuint list, GLsizei range)
+static void REGAL_CALL Filt_glDeleteLists(Layer *_layer, GLuint list, GLsizei range)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -544,14 +572,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDeleteLists(RegalContext *_context
      return ;
   }
 
-  orig.glDeleteLists( _context, list, range );
+  orig.glDeleteLists( orig.glDeleteLists_layer, list, range );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDeleteRenderbuffersEXT(RegalContext *_context, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL Filt_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -561,14 +590,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDeleteRenderbuffersEXT(RegalContex
     return;
   }
 
-  orig.glDeleteRenderbuffersEXT( _context, n, renderbuffers );
+  orig.glDeleteRenderbuffersEXT( orig.glDeleteRenderbuffersEXT_layer, n, renderbuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDisableIndexedEXT(RegalContext *_context, GLenum target, GLuint index)
+static void REGAL_CALL Filt_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
@@ -579,14 +609,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDisableIndexedEXT(RegalContext *_c
     return;
   }
 
-  orig.glDisableIndexedEXT( _context, target, index );
+  orig.glDisableIndexedEXT( orig.glDisableIndexedEXT_layer, target, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDrawBuffer(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Filt_glDrawBuffer(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -595,14 +626,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffer(RegalContext *_context,
       return orig.glDrawBuffer( _context, mode );
   }
 
-  orig.glDrawBuffer( _context, mode );
+  orig.glDrawBuffer( orig.glDrawBuffer_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDrawBuffers(RegalContext *_context, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL Filt_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->DrawBuffers(*_context, n, bufs))
@@ -621,14 +653,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffers(RegalContext *_context
     }
   }
 
-  orig.glDrawBuffers( _context, n, bufs );
+  orig.glDrawBuffers( orig.glDrawBuffers_layer, n, bufs );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDrawBuffersARB(RegalContext *_context, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL Filt_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_arb_draw_buffers)
@@ -638,14 +671,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffersARB(RegalContext *_cont
     return;
   }
 
-  orig.glDrawBuffersARB( _context, n, bufs );
+  orig.glDrawBuffersARB( orig.glDrawBuffersARB_layer, n, bufs );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDrawBuffersATI(RegalContext *_context, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL Filt_glDrawBuffersATI(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ati_draw_buffers)
@@ -655,14 +689,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawBuffersATI(RegalContext *_cont
     return;
   }
 
-  orig.glDrawBuffersATI( _context, n, bufs );
+  orig.glDrawBuffersATI( orig.glDrawBuffersATI_layer, n, bufs );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDrawPixels(RegalContext *_context, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Filt_glDrawPixels(Layer *_layer, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -674,14 +709,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawPixels(RegalContext *_context,
      return ;
   }
 
-  orig.glDrawPixels( _context, width, height, format, type, pixels );
+  orig.glDrawPixels( orig.glDrawPixels_layer, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDrawRangeElements(RegalContext *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL Filt_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -689,14 +725,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawRangeElements(RegalContext *_c
     return orig.glDrawElements( _context,mode, count, type, indices);
   }
 
-  orig.glDrawRangeElements( _context, mode, start, end, count, type, indices );
+  orig.glDrawRangeElements( orig.glDrawRangeElements_layer, mode, start, end, count, type, indices );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glDrawRangeElementsBaseVertex(RegalContext *_context, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL Filt_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_arb_draw_elements_base_vertex)
@@ -712,14 +749,15 @@ static void REGAL_CALL emuProcInterceptFilt_glDrawRangeElementsBaseVertex(RegalC
     }
   }
 
-  orig.glDrawRangeElementsBaseVertex( _context, mode, start, end, count, type, indices, basevertex );
+  orig.glDrawRangeElementsBaseVertex( orig.glDrawRangeElementsBaseVertex_layer, mode, start, end, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEdgeFlag(RegalContext *_context, GLboolean flag)
+static void REGAL_CALL Filt_glEdgeFlag(Layer *_layer, GLboolean flag)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -731,14 +769,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEdgeFlag(RegalContext *_context, G
      return ;
   }
 
-  orig.glEdgeFlag( _context, flag );
+  orig.glEdgeFlag( orig.glEdgeFlag_layer, flag );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEnableIndexedEXT(RegalContext *_context, GLenum target, GLuint index)
+static void REGAL_CALL Filt_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
@@ -749,14 +788,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEnableIndexedEXT(RegalContext *_co
     return;
   }
 
-  orig.glEnableIndexedEXT( _context, target, index );
+  orig.glEnableIndexedEXT( orig.glEnableIndexedEXT_layer, target, index );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEndList(RegalContext *_context)
+static void REGAL_CALL Filt_glEndList(Layer *_layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -768,14 +808,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEndList(RegalContext *_context)
      return ;
   }
 
-  orig.glEndList( _context );
+  orig.glEndList( orig.glEndList_layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1d(RegalContext *_context, GLdouble u)
+static void REGAL_CALL Filt_glEvalCoord1d(Layer *_layer, GLdouble u)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -787,14 +828,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1d(RegalContext *_context
      return ;
   }
 
-  orig.glEvalCoord1d( _context, u );
+  orig.glEvalCoord1d( orig.glEvalCoord1d_layer, u );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1dv(RegalContext *_context, const GLdouble *u)
+static void REGAL_CALL Filt_glEvalCoord1dv(Layer *_layer, const GLdouble *u)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -806,14 +848,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1dv(RegalContext *_contex
      return ;
   }
 
-  orig.glEvalCoord1dv( _context, u );
+  orig.glEvalCoord1dv( orig.glEvalCoord1dv_layer, u );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1f(RegalContext *_context, GLfloat u)
+static void REGAL_CALL Filt_glEvalCoord1f(Layer *_layer, GLfloat u)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -825,14 +868,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1f(RegalContext *_context
      return ;
   }
 
-  orig.glEvalCoord1f( _context, u );
+  orig.glEvalCoord1f( orig.glEvalCoord1f_layer, u );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1fv(RegalContext *_context, const GLfloat *u)
+static void REGAL_CALL Filt_glEvalCoord1fv(Layer *_layer, const GLfloat *u)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -844,14 +888,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord1fv(RegalContext *_contex
      return ;
   }
 
-  orig.glEvalCoord1fv( _context, u );
+  orig.glEvalCoord1fv( orig.glEvalCoord1fv_layer, u );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2d(RegalContext *_context, GLdouble u, GLdouble v)
+static void REGAL_CALL Filt_glEvalCoord2d(Layer *_layer, GLdouble u, GLdouble v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -863,14 +908,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2d(RegalContext *_context
      return ;
   }
 
-  orig.glEvalCoord2d( _context, u, v );
+  orig.glEvalCoord2d( orig.glEvalCoord2d_layer, u, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2dv(RegalContext *_context, const GLdouble *u)
+static void REGAL_CALL Filt_glEvalCoord2dv(Layer *_layer, const GLdouble *u)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -882,14 +928,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2dv(RegalContext *_contex
      return ;
   }
 
-  orig.glEvalCoord2dv( _context, u );
+  orig.glEvalCoord2dv( orig.glEvalCoord2dv_layer, u );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2f(RegalContext *_context, GLfloat u, GLfloat v)
+static void REGAL_CALL Filt_glEvalCoord2f(Layer *_layer, GLfloat u, GLfloat v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -901,14 +948,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2f(RegalContext *_context
      return ;
   }
 
-  orig.glEvalCoord2f( _context, u, v );
+  orig.glEvalCoord2f( orig.glEvalCoord2f_layer, u, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2fv(RegalContext *_context, const GLfloat *u)
+static void REGAL_CALL Filt_glEvalCoord2fv(Layer *_layer, const GLfloat *u)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -920,14 +968,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalCoord2fv(RegalContext *_contex
      return ;
   }
 
-  orig.glEvalCoord2fv( _context, u );
+  orig.glEvalCoord2fv( orig.glEvalCoord2fv_layer, u );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalMesh1(RegalContext *_context, GLenum mode, GLint i1, GLint i2)
+static void REGAL_CALL Filt_glEvalMesh1(Layer *_layer, GLenum mode, GLint i1, GLint i2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -939,14 +988,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalMesh1(RegalContext *_context, 
      return ;
   }
 
-  orig.glEvalMesh1( _context, mode, i1, i2 );
+  orig.glEvalMesh1( orig.glEvalMesh1_layer, mode, i1, i2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalMesh2(RegalContext *_context, GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
+static void REGAL_CALL Filt_glEvalMesh2(Layer *_layer, GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -958,14 +1008,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalMesh2(RegalContext *_context, 
      return ;
   }
 
-  orig.glEvalMesh2( _context, mode, i1, i2, j1, j2 );
+  orig.glEvalMesh2( orig.glEvalMesh2_layer, mode, i1, i2, j1, j2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalPoint1(RegalContext *_context, GLint i)
+static void REGAL_CALL Filt_glEvalPoint1(Layer *_layer, GLint i)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -977,14 +1028,15 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalPoint1(RegalContext *_context,
      return ;
   }
 
-  orig.glEvalPoint1( _context, i );
+  orig.glEvalPoint1( orig.glEvalPoint1_layer, i );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glEvalPoint2(RegalContext *_context, GLint i, GLint j)
+static void REGAL_CALL Filt_glEvalPoint2(Layer *_layer, GLint i, GLint j)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -996,28 +1048,30 @@ static void REGAL_CALL emuProcInterceptFilt_glEvalPoint2(RegalContext *_context,
      return ;
   }
 
-  orig.glEvalPoint2( _context, i, j );
+  orig.glEvalPoint2( orig.glEvalPoint2_layer, i, j );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferRenderbuffer(RegalContext *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL Filt_glFramebufferRenderbuffer(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
     orig.glFramebufferRenderbuffer( _context,target, attachment, renderbuffertarget, renderbuffer);
   return;
 
-  orig.glFramebufferRenderbuffer( _context, target, attachment, renderbuffertarget, renderbuffer );
+  orig.glFramebufferRenderbuffer( orig.glFramebufferRenderbuffer_layer, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferRenderbufferEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL Filt_glFramebufferRenderbufferEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1027,28 +1081,30 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferRenderbufferEXT(RegalCo
     return;
   }
 
-  orig.glFramebufferRenderbufferEXT( _context, target, attachment, renderbuffertarget, renderbuffer );
+  orig.glFramebufferRenderbufferEXT( orig.glFramebufferRenderbufferEXT_layer, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture1D(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Filt_glFramebufferTexture1D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
     orig.glFramebufferTexture1D( _context,target, attachment, textarget, texture, level);
   return;
 
-  orig.glFramebufferTexture1D( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture1D( orig.glFramebufferTexture1D_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture1DEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Filt_glFramebufferTexture1DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1058,14 +1114,15 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture1DEXT(RegalConte
     return;
   }
 
-  orig.glFramebufferTexture1DEXT( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture1DEXT( orig.glFramebufferTexture1DEXT_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture2D(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Filt_glFramebufferTexture2D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->FramebufferTexture2D(*_context, target, attachment, textarget, texture, level))
@@ -1076,14 +1133,15 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture2D(RegalContext 
     return ;
   }
 
-  orig.glFramebufferTexture2D( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture2D( orig.glFramebufferTexture2D_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture2DEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL Filt_glFramebufferTexture2DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1093,28 +1151,30 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture2DEXT(RegalConte
     return;
   }
 
-  orig.glFramebufferTexture2DEXT( _context, target, attachment, textarget, texture, level );
+  orig.glFramebufferTexture2DEXT( orig.glFramebufferTexture2DEXT_layer, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture3D(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL Filt_glFramebufferTexture3D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
     orig.glFramebufferTexture3D( _context,target, attachment, textarget, texture, level, layer);
   return;
 
-  orig.glFramebufferTexture3D( _context, target, attachment, textarget, texture, level, layer );
+  orig.glFramebufferTexture3D( orig.glFramebufferTexture3D_layer, target, attachment, textarget, texture, level, layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture3DEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+static void REGAL_CALL Filt_glFramebufferTexture3DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1124,14 +1184,15 @@ static void REGAL_CALL emuProcInterceptFilt_glFramebufferTexture3DEXT(RegalConte
     return;
   }
 
-  orig.glFramebufferTexture3DEXT( _context, target, attachment, textarget, texture, level, zoffset );
+  orig.glFramebufferTexture3DEXT( orig.glFramebufferTexture3DEXT_layer, target, attachment, textarget, texture, level, zoffset );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGenFramebuffersEXT(RegalContext *_context, GLsizei n, GLuint *framebuffers)
+static void REGAL_CALL Filt_glGenFramebuffersEXT(Layer *_layer, GLsizei n, GLuint *framebuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1141,14 +1202,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGenFramebuffersEXT(RegalContext *_
     return;
   }
 
-  orig.glGenFramebuffersEXT( _context, n, framebuffers );
+  orig.glGenFramebuffersEXT( orig.glGenFramebuffersEXT_layer, n, framebuffers );
 
 }
 
-static GLuint REGAL_CALL emuProcInterceptFilt_glGenLists(RegalContext *_context, GLsizei range)
+static GLuint REGAL_CALL Filt_glGenLists(Layer *_layer, GLsizei range)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1160,14 +1222,15 @@ static GLuint REGAL_CALL emuProcInterceptFilt_glGenLists(RegalContext *_context,
      return (( GLuint  )0);
   }
 
-  return orig.glGenLists( _context, range );
+  return orig.glGenLists( orig.glGenLists_layer, range );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGenProgramsARB(RegalContext *_context, GLsizei n, GLuint *programs)
+static void REGAL_CALL Filt_glGenProgramsARB(Layer *_layer, GLsizei n, GLuint *programs)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1176,14 +1239,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGenProgramsARB(RegalContext *_cont
     return;
   }
 
-  orig.glGenProgramsARB( _context, n, programs );
+  orig.glGenProgramsARB( orig.glGenProgramsARB_layer, n, programs );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGenRenderbuffersEXT(RegalContext *_context, GLsizei n, GLuint *renderbuffers)
+static void REGAL_CALL Filt_glGenRenderbuffersEXT(Layer *_layer, GLsizei n, GLuint *renderbuffers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1193,14 +1257,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGenRenderbuffersEXT(RegalContext *
     return;
   }
 
-  orig.glGenRenderbuffersEXT( _context, n, renderbuffers );
+  orig.glGenRenderbuffersEXT( orig.glGenRenderbuffersEXT_layer, n, renderbuffers );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGenSamplers(RegalContext *_context, GLsizei count, GLuint *samplers)
+static void REGAL_CALL Filt_glGenSamplers(Layer *_layer, GLsizei count, GLuint *samplers)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1212,14 +1277,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGenSamplers(RegalContext *_context
     return ;
   }
 
-  orig.glGenSamplers( _context, count, samplers );
+  orig.glGenSamplers( orig.glGenSamplers_layer, count, samplers );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGenerateMipmap(RegalContext *_context, GLenum target)
+static void REGAL_CALL Filt_glGenerateMipmap(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->GenerateMipmap(*_context, target))
@@ -1230,14 +1296,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGenerateMipmap(RegalContext *_cont
     return ;
   }
 
-  orig.glGenerateMipmap( _context, target );
+  orig.glGenerateMipmap( orig.glGenerateMipmap_layer, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGenerateMipmapEXT(RegalContext *_context, GLenum target)
+static void REGAL_CALL Filt_glGenerateMipmapEXT(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1247,14 +1314,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGenerateMipmapEXT(RegalContext *_c
     return;
   }
 
-  orig.glGenerateMipmapEXT( _context, target );
+  orig.glGenerateMipmapEXT( orig.glGenerateMipmapEXT_layer, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetBooleanIndexedvEXT(RegalContext *_context, GLenum value, GLuint index, GLboolean *data)
+static void REGAL_CALL Filt_glGetBooleanIndexedvEXT(Layer *_layer, GLenum value, GLuint index, GLboolean *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
@@ -1265,14 +1333,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetBooleanIndexedvEXT(RegalContext
     return;
   }
 
-  orig.glGetBooleanIndexedvEXT( _context, value, index, data );
+  orig.glGetBooleanIndexedvEXT( orig.glGetBooleanIndexedvEXT_layer, value, index, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetBooleanv(RegalContext *_context, GLenum pname, GLboolean *params)
+static void REGAL_CALL Filt_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->Get(*_context, pname, params))
@@ -1283,14 +1352,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetBooleanv(RegalContext *_context
     return ;
   }
 
-  orig.glGetBooleanv( _context, pname, params );
+  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetDoublev(RegalContext *_context, GLenum pname, GLdouble *params)
+static void REGAL_CALL Filt_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->Get(*_context, pname, params))
@@ -1301,14 +1371,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetDoublev(RegalContext *_context,
     return ;
   }
 
-  orig.glGetDoublev( _context, pname, params );
+  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetFloatv(RegalContext *_context, GLenum pname, GLfloat *params)
+static void REGAL_CALL Filt_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->Get(*_context, pname, params))
@@ -1319,14 +1390,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetFloatv(RegalContext *_context, 
     return ;
   }
 
-  orig.glGetFloatv( _context, pname, params );
+  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetFramebufferAttachmentParameteriv(RegalContext *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetFramebufferAttachmentParameteriv(Layer *_layer, GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->filt->FramebufferAttachmentSupported(*_context, attachment))
@@ -1335,14 +1407,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetFramebufferAttachmentParameteri
     orig.glGetFramebufferAttachmentParameteriv( _context,target, attachment, pname, params);
   return;
 
-  orig.glGetFramebufferAttachmentParameteriv( _context, target, attachment, pname, params );
+  orig.glGetFramebufferAttachmentParameteriv( orig.glGetFramebufferAttachmentParameteriv_layer, target, attachment, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetFramebufferAttachmentParameterivEXT(RegalContext *_context, GLenum target, GLenum attachment, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetFramebufferAttachmentParameterivEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1352,14 +1425,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetFramebufferAttachmentParameteri
     return;
   }
 
-  orig.glGetFramebufferAttachmentParameterivEXT( _context, target, attachment, pname, params );
+  orig.glGetFramebufferAttachmentParameterivEXT( orig.glGetFramebufferAttachmentParameterivEXT_layer, target, attachment, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetInfoLogARB(RegalContext *_context, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
+static void REGAL_CALL Filt_glGetInfoLogARB(Layer *_layer, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -1371,14 +1445,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetInfoLogARB(RegalContext *_conte
     return;
   }
 
-  orig.glGetInfoLogARB( _context, obj, maxLength, length, infoLog );
+  orig.glGetInfoLogARB( orig.glGetInfoLogARB_layer, obj, maxLength, length, infoLog );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetInteger64v(RegalContext *_context, GLenum pname, GLint64 *params)
+static void REGAL_CALL Filt_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->Get(*_context, pname, params))
@@ -1389,14 +1464,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetInteger64v(RegalContext *_conte
     return ;
   }
 
-  orig.glGetInteger64v( _context, pname, params );
+  orig.glGetInteger64v( orig.glGetInteger64v_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetIntegerIndexedvEXT(RegalContext *_context, GLenum value, GLuint index, GLint *data)
+static void REGAL_CALL Filt_glGetIntegerIndexedvEXT(Layer *_layer, GLenum value, GLuint index, GLint *data)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
@@ -1407,14 +1483,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetIntegerIndexedvEXT(RegalContext
     return;
   }
 
-  orig.glGetIntegerIndexedvEXT( _context, value, index, data );
+  orig.glGetIntegerIndexedvEXT( orig.glGetIntegerIndexedvEXT_layer, value, index, data );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetIntegerv(RegalContext *_context, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->Get(*_context, pname, params))
@@ -1425,14 +1502,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetIntegerv(RegalContext *_context
     return ;
   }
 
-  orig.glGetIntegerv( _context, pname, params );
+  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetObjectParameterivARB(RegalContext *_context, GLhandleARB obj, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetObjectParameterivARB(Layer *_layer, GLhandleARB obj, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -1444,14 +1522,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetObjectParameterivARB(RegalConte
     return;
   }
 
-  orig.glGetObjectParameterivARB( _context, obj, pname, params );
+  orig.glGetObjectParameterivARB( orig.glGetObjectParameterivARB_layer, obj, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetProgramivARB(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetProgramivARB(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1460,14 +1539,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetProgramivARB(RegalContext *_con
     return;
   }
 
-  orig.glGetProgramivARB( _context, target, pname, params );
+  orig.glGetProgramivARB( orig.glGetProgramivARB_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetRenderbufferParameterivEXT(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetRenderbufferParameterivEXT(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1477,14 +1557,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetRenderbufferParameterivEXT(Rega
     return;
   }
 
-  orig.glGetRenderbufferParameterivEXT( _context, target, pname, params );
+  orig.glGetRenderbufferParameterivEXT( orig.glGetRenderbufferParameterivEXT_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetTexImage(RegalContext *_context, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
+static void REGAL_CALL Filt_glGetTexImage(Layer *_layer, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1496,14 +1577,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetTexImage(RegalContext *_context
     return ;
   }
 
-  orig.glGetTexImage( _context, target, level, format, type, pixels );
+  orig.glGetTexImage( orig.glGetTexImage_layer, target, level, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetTexLevelParameterfv(RegalContext *_context, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL Filt_glGetTexLevelParameterfv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1515,14 +1597,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetTexLevelParameterfv(RegalContex
     return ;
   }
 
-  orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
+  orig.glGetTexLevelParameterfv( orig.glGetTexLevelParameterfv_layer, target, level, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetTexLevelParameteriv(RegalContext *_context, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetTexLevelParameteriv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1534,14 +1617,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetTexLevelParameteriv(RegalContex
     return ;
   }
 
-  orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
+  orig.glGetTexLevelParameteriv( orig.glGetTexLevelParameteriv_layer, target, level, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glGetTexParameteriv(RegalContext *_context, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL Filt_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->GetTexParameteriv(*_context, target, pname, params))
@@ -1552,14 +1636,15 @@ static void REGAL_CALL emuProcInterceptFilt_glGetTexParameteriv(RegalContext *_c
     return ;
   }
 
-  orig.glGetTexParameteriv( _context, target, pname, params );
+  orig.glGetTexParameteriv( orig.glGetTexParameteriv_layer, target, pname, params );
 
 }
 
-static GLint REGAL_CALL emuProcInterceptFilt_glGetUniformLocationARB(RegalContext *_context, GLhandleARB programObj, const GLcharARB *name)
+static GLint REGAL_CALL Filt_glGetUniformLocationARB(Layer *_layer, GLhandleARB programObj, const GLcharARB *name)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -1567,14 +1652,15 @@ static GLint REGAL_CALL emuProcInterceptFilt_glGetUniformLocationARB(RegalContex
     return orig.glGetUniformLocation( _context,programObj, name);
   }
 
-  return orig.glGetUniformLocationARB( _context, programObj, name );
+  return orig.glGetUniformLocationARB( orig.glGetUniformLocationARB_layer, programObj, name );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptFilt_glIsEnabledIndexedEXT(RegalContext *_context, GLenum target, GLuint index)
+static GLboolean REGAL_CALL Filt_glIsEnabledIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (target==GL_BLEND && !_context->info->gl_ext_draw_buffers2)
@@ -1585,14 +1671,15 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glIsEnabledIndexedEXT(RegalCont
     return GL_FALSE;
   }
 
-  return orig.glIsEnabledIndexedEXT( _context, target, index );
+  return orig.glIsEnabledIndexedEXT( orig.glIsEnabledIndexedEXT_layer, target, index );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptFilt_glIsFramebufferEXT(RegalContext *_context, GLuint framebuffer)
+static GLboolean REGAL_CALL Filt_glIsFramebufferEXT(Layer *_layer, GLuint framebuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1601,14 +1688,15 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glIsFramebufferEXT(RegalContext
     return orig.glIsFramebuffer( _context,framebuffer);
   }
 
-  return orig.glIsFramebufferEXT( _context, framebuffer );
+  return orig.glIsFramebufferEXT( orig.glIsFramebufferEXT_layer, framebuffer );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptFilt_glIsRenderbufferEXT(RegalContext *_context, GLuint renderbuffer)
+static GLboolean REGAL_CALL Filt_glIsRenderbufferEXT(Layer *_layer, GLuint renderbuffer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -1617,14 +1705,15 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glIsRenderbufferEXT(RegalContex
     return orig.glIsRenderbuffer( _context,renderbuffer);
   }
 
-  return orig.glIsRenderbufferEXT( _context, renderbuffer );
+  return orig.glIsRenderbufferEXT( orig.glIsRenderbufferEXT_layer, renderbuffer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glLineStipple(RegalContext *_context, GLint factor, GLushort pattern)
+static void REGAL_CALL Filt_glLineStipple(Layer *_layer, GLint factor, GLushort pattern)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1636,14 +1725,15 @@ static void REGAL_CALL emuProcInterceptFilt_glLineStipple(RegalContext *_context
      return ;
   }
 
-  orig.glLineStipple( _context, factor, pattern );
+  orig.glLineStipple( orig.glLineStipple_layer, factor, pattern );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glLineWidth(RegalContext *_context, GLfloat width)
+static void REGAL_CALL Filt_glLineWidth(Layer *_layer, GLfloat width)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isCore())
@@ -1655,14 +1745,15 @@ static void REGAL_CALL emuProcInterceptFilt_glLineWidth(RegalContext *_context, 
      return ;
   }
 
-  orig.glLineWidth( _context, width );
+  orig.glLineWidth( orig.glLineWidth_layer, width );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMap1d(RegalContext *_context, GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
+static void REGAL_CALL Filt_glMap1d(Layer *_layer, GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1674,14 +1765,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMap1d(RegalContext *_context, GLen
      return ;
   }
 
-  orig.glMap1d( _context, target, u1, u2, stride, order, points );
+  orig.glMap1d( orig.glMap1d_layer, target, u1, u2, stride, order, points );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMap1f(RegalContext *_context, GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
+static void REGAL_CALL Filt_glMap1f(Layer *_layer, GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1693,14 +1785,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMap1f(RegalContext *_context, GLen
      return ;
   }
 
-  orig.glMap1f( _context, target, u1, u2, stride, order, points );
+  orig.glMap1f( orig.glMap1f_layer, target, u1, u2, stride, order, points );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMap2d(RegalContext *_context, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
+static void REGAL_CALL Filt_glMap2d(Layer *_layer, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1712,14 +1805,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMap2d(RegalContext *_context, GLen
      return ;
   }
 
-  orig.glMap2d( _context, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
+  orig.glMap2d( orig.glMap2d_layer, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMap2f(RegalContext *_context, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
+static void REGAL_CALL Filt_glMap2f(Layer *_layer, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1731,14 +1825,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMap2f(RegalContext *_context, GLen
      return ;
   }
 
-  orig.glMap2f( _context, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
+  orig.glMap2f( orig.glMap2f_layer, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptFilt_glMapBuffer(RegalContext *_context, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL Filt_glMapBuffer(Layer *_layer, GLenum target, GLenum access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1746,14 +1841,15 @@ static GLvoid *REGAL_CALL emuProcInterceptFilt_glMapBuffer(RegalContext *_contex
     return orig.glMapBufferOES( _context,target, access);
   }
 
-  return orig.glMapBuffer( _context, target, access );
+  return orig.glMapBuffer( orig.glMapBuffer_layer, target, access );
 
 }
 
-static GLvoid *REGAL_CALL emuProcInterceptFilt_glMapBufferARB(RegalContext *_context, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL Filt_glMapBufferARB(Layer *_layer, GLenum target, GLenum access)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1761,14 +1857,15 @@ static GLvoid *REGAL_CALL emuProcInterceptFilt_glMapBufferARB(RegalContext *_con
     return orig.glMapBufferOES( _context,target, access);
   }
 
-  return orig.glMapBufferARB( _context, target, access );
+  return orig.glMapBufferARB( orig.glMapBufferARB_layer, target, access );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMapGrid1d(RegalContext *_context, GLint un, GLdouble u1, GLdouble u2)
+static void REGAL_CALL Filt_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1780,14 +1877,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMapGrid1d(RegalContext *_context, 
      return ;
   }
 
-  orig.glMapGrid1d( _context, un, u1, u2 );
+  orig.glMapGrid1d( orig.glMapGrid1d_layer, un, u1, u2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMapGrid1f(RegalContext *_context, GLint un, GLfloat u1, GLfloat u2)
+static void REGAL_CALL Filt_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1799,14 +1897,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMapGrid1f(RegalContext *_context, 
      return ;
   }
 
-  orig.glMapGrid1f( _context, un, u1, u2 );
+  orig.glMapGrid1f( orig.glMapGrid1f_layer, un, u1, u2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMapGrid2d(RegalContext *_context, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
+static void REGAL_CALL Filt_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1818,14 +1917,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMapGrid2d(RegalContext *_context, 
      return ;
   }
 
-  orig.glMapGrid2d( _context, un, u1, u2, vn, v1, v2 );
+  orig.glMapGrid2d( orig.glMapGrid2d_layer, un, u1, u2, vn, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glMapGrid2f(RegalContext *_context, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
+static void REGAL_CALL Filt_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1837,14 +1937,15 @@ static void REGAL_CALL emuProcInterceptFilt_glMapGrid2f(RegalContext *_context, 
      return ;
   }
 
-  orig.glMapGrid2f( _context, un, u1, u2, vn, v1, v2 );
+  orig.glMapGrid2f( orig.glMapGrid2f_layer, un, u1, u2, vn, v1, v2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glNewList(RegalContext *_context, GLuint list, GLenum mode)
+static void REGAL_CALL Filt_glNewList(Layer *_layer, GLuint list, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1856,14 +1957,15 @@ static void REGAL_CALL emuProcInterceptFilt_glNewList(RegalContext *_context, GL
      return ;
   }
 
-  orig.glNewList( _context, list, mode );
+  orig.glNewList( orig.glNewList_layer, list, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPixelStoref(RegalContext *_context, GLenum pname, GLfloat param)
+static void REGAL_CALL Filt_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1875,14 +1977,15 @@ static void REGAL_CALL emuProcInterceptFilt_glPixelStoref(RegalContext *_context
      return ;
   }
 
-  orig.glPixelStoref( _context, pname, param );
+  orig.glPixelStoref( orig.glPixelStoref_layer, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPixelStorei(RegalContext *_context, GLenum pname, GLint param)
+static void REGAL_CALL Filt_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->PixelStorei(*_context, pname, param))
@@ -1893,14 +1996,15 @@ static void REGAL_CALL emuProcInterceptFilt_glPixelStorei(RegalContext *_context
     return ;
   }
 
-  orig.glPixelStorei( _context, pname, param );
+  orig.glPixelStorei( orig.glPixelStorei_layer, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPixelTransferf(RegalContext *_context, GLenum pname, GLfloat param)
+static void REGAL_CALL Filt_glPixelTransferf(Layer *_layer, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1912,14 +2016,15 @@ static void REGAL_CALL emuProcInterceptFilt_glPixelTransferf(RegalContext *_cont
      return ;
   }
 
-  orig.glPixelTransferf( _context, pname, param );
+  orig.glPixelTransferf( orig.glPixelTransferf_layer, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPixelTransferi(RegalContext *_context, GLenum pname, GLint param)
+static void REGAL_CALL Filt_glPixelTransferi(Layer *_layer, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1931,14 +2036,15 @@ static void REGAL_CALL emuProcInterceptFilt_glPixelTransferi(RegalContext *_cont
      return ;
   }
 
-  orig.glPixelTransferi( _context, pname, param );
+  orig.glPixelTransferi( orig.glPixelTransferi_layer, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPixelZoom(RegalContext *_context, GLfloat xfactor, GLfloat yfactor)
+static void REGAL_CALL Filt_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat yfactor)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -1950,14 +2056,15 @@ static void REGAL_CALL emuProcInterceptFilt_glPixelZoom(RegalContext *_context, 
      return ;
   }
 
-  orig.glPixelZoom( _context, xfactor, yfactor );
+  orig.glPixelZoom( orig.glPixelZoom_layer, xfactor, yfactor );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPolygonMode(RegalContext *_context, GLenum face, GLenum mode)
+static void REGAL_CALL Filt_glPolygonMode(Layer *_layer, GLenum face, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->PolygonMode(*_context, face, mode))
@@ -1968,28 +2075,30 @@ static void REGAL_CALL emuProcInterceptFilt_glPolygonMode(RegalContext *_context
     return ;
   }
 
-  orig.glPolygonMode( _context, face, mode );
+  orig.glPolygonMode( orig.glPolygonMode_layer, face, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPopGroupMarkerEXT(RegalContext *_context)
+static void REGAL_CALL Filt_glPopGroupMarkerEXT(Layer *_layer)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if( ! _context->info->gl_ext_debug_marker ) {
     return;
   }
 
-  orig.glPopGroupMarkerEXT( _context );
+  orig.glPopGroupMarkerEXT( orig.glPopGroupMarkerEXT_layer );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glProgramStringARB(RegalContext *_context, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
+static void REGAL_CALL Filt_glProgramStringARB(Layer *_layer, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -1998,28 +2107,30 @@ static void REGAL_CALL emuProcInterceptFilt_glProgramStringARB(RegalContext *_co
     return;
   }
 
-  orig.glProgramStringARB( _context, target, format, len, string );
+  orig.glProgramStringARB( orig.glProgramStringARB_layer, target, format, len, string );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glPushGroupMarkerEXT(RegalContext *_context, GLsizei length, const GLchar *marker)
+static void REGAL_CALL Filt_glPushGroupMarkerEXT(Layer *_layer, GLsizei length, const GLchar *marker)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if( ! _context->info->gl_ext_debug_marker ) {
     return;
   }
 
-  orig.glPushGroupMarkerEXT( _context, length, marker );
+  orig.glPushGroupMarkerEXT( orig.glPushGroupMarkerEXT_layer, length, marker );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2d(RegalContext *_context, GLdouble x, GLdouble y)
+static void REGAL_CALL Filt_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2031,14 +2142,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2d(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos2d( _context, x, y );
+  orig.glRasterPos2d( orig.glRasterPos2d_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2dv(RegalContext *_context, const GLdouble *v)
+static void REGAL_CALL Filt_glRasterPos2dv(Layer *_layer, const GLdouble *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2050,14 +2162,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2dv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos2dv( _context, v );
+  orig.glRasterPos2dv( orig.glRasterPos2dv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2f(RegalContext *_context, GLfloat x, GLfloat y)
+static void REGAL_CALL Filt_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2069,14 +2182,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2f(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos2f( _context, x, y );
+  orig.glRasterPos2f( orig.glRasterPos2f_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2fv(RegalContext *_context, const GLfloat *v)
+static void REGAL_CALL Filt_glRasterPos2fv(Layer *_layer, const GLfloat *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2088,14 +2202,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2fv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos2fv( _context, v );
+  orig.glRasterPos2fv( orig.glRasterPos2fv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2i(RegalContext *_context, GLint x, GLint y)
+static void REGAL_CALL Filt_glRasterPos2i(Layer *_layer, GLint x, GLint y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2107,14 +2222,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2i(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos2i( _context, x, y );
+  orig.glRasterPos2i( orig.glRasterPos2i_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2iv(RegalContext *_context, const GLint *v)
+static void REGAL_CALL Filt_glRasterPos2iv(Layer *_layer, const GLint *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2126,14 +2242,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2iv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos2iv( _context, v );
+  orig.glRasterPos2iv( orig.glRasterPos2iv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2s(RegalContext *_context, GLshort x, GLshort y)
+static void REGAL_CALL Filt_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2145,14 +2262,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2s(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos2s( _context, x, y );
+  orig.glRasterPos2s( orig.glRasterPos2s_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos2sv(RegalContext *_context, const GLshort *v)
+static void REGAL_CALL Filt_glRasterPos2sv(Layer *_layer, const GLshort *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2164,14 +2282,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos2sv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos2sv( _context, v );
+  orig.glRasterPos2sv( orig.glRasterPos2sv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3d(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Filt_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2183,14 +2302,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3d(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos3d( _context, x, y, z );
+  orig.glRasterPos3d( orig.glRasterPos3d_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3dv(RegalContext *_context, const GLdouble *v)
+static void REGAL_CALL Filt_glRasterPos3dv(Layer *_layer, const GLdouble *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2202,14 +2322,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3dv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos3dv( _context, v );
+  orig.glRasterPos3dv( orig.glRasterPos3dv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3f(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Filt_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2221,14 +2342,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3f(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos3f( _context, x, y, z );
+  orig.glRasterPos3f( orig.glRasterPos3f_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3fv(RegalContext *_context, const GLfloat *v)
+static void REGAL_CALL Filt_glRasterPos3fv(Layer *_layer, const GLfloat *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2240,14 +2362,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3fv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos3fv( _context, v );
+  orig.glRasterPos3fv( orig.glRasterPos3fv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3i(RegalContext *_context, GLint x, GLint y, GLint z)
+static void REGAL_CALL Filt_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2259,14 +2382,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3i(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos3i( _context, x, y, z );
+  orig.glRasterPos3i( orig.glRasterPos3i_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3iv(RegalContext *_context, const GLint *v)
+static void REGAL_CALL Filt_glRasterPos3iv(Layer *_layer, const GLint *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2278,14 +2402,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3iv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos3iv( _context, v );
+  orig.glRasterPos3iv( orig.glRasterPos3iv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3s(RegalContext *_context, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL Filt_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2297,14 +2422,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3s(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos3s( _context, x, y, z );
+  orig.glRasterPos3s( orig.glRasterPos3s_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos3sv(RegalContext *_context, const GLshort *v)
+static void REGAL_CALL Filt_glRasterPos3sv(Layer *_layer, const GLshort *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2316,14 +2442,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos3sv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos3sv( _context, v );
+  orig.glRasterPos3sv( orig.glRasterPos3sv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4d(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL Filt_glRasterPos4d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2335,14 +2462,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4d(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos4d( _context, x, y, z, w );
+  orig.glRasterPos4d( orig.glRasterPos4d_layer, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4dv(RegalContext *_context, const GLdouble *v)
+static void REGAL_CALL Filt_glRasterPos4dv(Layer *_layer, const GLdouble *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2354,14 +2482,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4dv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos4dv( _context, v );
+  orig.glRasterPos4dv( orig.glRasterPos4dv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4f(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL Filt_glRasterPos4f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2373,14 +2502,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4f(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos4f( _context, x, y, z, w );
+  orig.glRasterPos4f( orig.glRasterPos4f_layer, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4fv(RegalContext *_context, const GLfloat *v)
+static void REGAL_CALL Filt_glRasterPos4fv(Layer *_layer, const GLfloat *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2392,14 +2522,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4fv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos4fv( _context, v );
+  orig.glRasterPos4fv( orig.glRasterPos4fv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4i(RegalContext *_context, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL Filt_glRasterPos4i(Layer *_layer, GLint x, GLint y, GLint z, GLint w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2411,14 +2542,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4i(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos4i( _context, x, y, z, w );
+  orig.glRasterPos4i( orig.glRasterPos4i_layer, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4iv(RegalContext *_context, const GLint *v)
+static void REGAL_CALL Filt_glRasterPos4iv(Layer *_layer, const GLint *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2430,14 +2562,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4iv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos4iv( _context, v );
+  orig.glRasterPos4iv( orig.glRasterPos4iv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4s(RegalContext *_context, GLshort x, GLshort y, GLshort z, GLshort w)
+static void REGAL_CALL Filt_glRasterPos4s(Layer *_layer, GLshort x, GLshort y, GLshort z, GLshort w)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2449,14 +2582,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4s(RegalContext *_context
      return ;
   }
 
-  orig.glRasterPos4s( _context, x, y, z, w );
+  orig.glRasterPos4s( orig.glRasterPos4s_layer, x, y, z, w );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRasterPos4sv(RegalContext *_context, const GLshort *v)
+static void REGAL_CALL Filt_glRasterPos4sv(Layer *_layer, const GLshort *v)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2468,14 +2602,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRasterPos4sv(RegalContext *_contex
      return ;
   }
 
-  orig.glRasterPos4sv( _context, v );
+  orig.glRasterPos4sv( orig.glRasterPos4sv_layer, v );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glReadBuffer(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Filt_glReadBuffer(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->ReadBuffer(*_context, mode))
@@ -2491,14 +2626,15 @@ static void REGAL_CALL emuProcInterceptFilt_glReadBuffer(RegalContext *_context,
     orig.glReadBuffer( _context,mode);
   return;
 
-  orig.glReadBuffer( _context, mode );
+  orig.glReadBuffer( orig.glReadBuffer_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRectd(RegalContext *_context, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+static void REGAL_CALL Filt_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2510,14 +2646,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRectd(RegalContext *_context, GLdo
      return ;
   }
 
-  orig.glRectd( _context, x1, y1, x2, y2 );
+  orig.glRectd( orig.glRectd_layer, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRectf(RegalContext *_context, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+static void REGAL_CALL Filt_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2529,14 +2666,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRectf(RegalContext *_context, GLfl
      return ;
   }
 
-  orig.glRectf( _context, x1, y1, x2, y2 );
+  orig.glRectf( orig.glRectf_layer, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRecti(RegalContext *_context, GLint x1, GLint y1, GLint x2, GLint y2)
+static void REGAL_CALL Filt_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2, GLint y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2548,14 +2686,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRecti(RegalContext *_context, GLin
      return ;
   }
 
-  orig.glRecti( _context, x1, y1, x2, y2 );
+  orig.glRecti( orig.glRecti_layer, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRects(RegalContext *_context, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+static void REGAL_CALL Filt_glRects(Layer *_layer, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2567,14 +2706,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRects(RegalContext *_context, GLsh
      return ;
   }
 
-  orig.glRects( _context, x1, y1, x2, y2 );
+  orig.glRects( orig.glRects_layer, x1, y1, x2, y2 );
 
 }
 
-static GLint REGAL_CALL emuProcInterceptFilt_glRenderMode(RegalContext *_context, GLenum mode)
+static GLint REGAL_CALL Filt_glRenderMode(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->RenderMode(*_context, mode))
@@ -2585,14 +2725,15 @@ static GLint REGAL_CALL emuProcInterceptFilt_glRenderMode(RegalContext *_context
     return (( GLint  )0);
   }
 
-  return orig.glRenderMode( _context, mode );
+  return orig.glRenderMode( orig.glRenderMode_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glRenderbufferStorageEXT(RegalContext *_context, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL Filt_glRenderbufferStorageEXT(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (!_context->info->gl_ext_framebuffer_object)
@@ -2602,14 +2743,15 @@ static void REGAL_CALL emuProcInterceptFilt_glRenderbufferStorageEXT(RegalContex
     return;
   }
 
-  orig.glRenderbufferStorageEXT( _context, target, internalformat, width, height );
+  orig.glRenderbufferStorageEXT( orig.glRenderbufferStorageEXT_layer, target, internalformat, width, height );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glShadeModel(RegalContext *_context, GLenum mode)
+static void REGAL_CALL Filt_glShadeModel(Layer *_layer, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2621,14 +2763,15 @@ static void REGAL_CALL emuProcInterceptFilt_glShadeModel(RegalContext *_context,
      return ;
   }
 
-  orig.glShadeModel( _context, mode );
+  orig.glShadeModel( orig.glShadeModel_layer, mode );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glTexImage1D(RegalContext *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Filt_glTexImage1D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -2640,14 +2783,15 @@ static void REGAL_CALL emuProcInterceptFilt_glTexImage1D(RegalContext *_context,
     return ;
   }
 
-  orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
+  orig.glTexImage1D( orig.glTexImage1D_layer, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glTexImage2D(RegalContext *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Filt_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->filt->TexImage2D(*_context, target, level, internalformat, width, height, border, format, type, pixels))
@@ -2658,14 +2802,15 @@ static void REGAL_CALL emuProcInterceptFilt_glTexImage2D(RegalContext *_context,
     return ;
   }
 
-  orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
+  orig.glTexImage2D( orig.glTexImage2D_layer, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glTexImage3D(RegalContext *_context, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL Filt_glTexImage3D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -2677,14 +2822,15 @@ static void REGAL_CALL emuProcInterceptFilt_glTexImage3D(RegalContext *_context,
     return ;
   }
 
-  orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  orig.glTexImage3D( orig.glTexImage3D_layer, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glTexParameterf(RegalContext *_context, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL Filt_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
 
@@ -2697,14 +2843,15 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameterf(RegalContext *_conte
     orig.glTexParameterf( _context, target, pname, param);
   return;
 
-  orig.glTexParameterf( _context, target, pname, param );
+  orig.glTexParameterf( orig.glTexParameterf_layer, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glTexParameterfv(RegalContext *_context, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL Filt_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
 
@@ -2717,14 +2864,15 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameterfv(RegalContext *_cont
     orig.glTexParameterfv( _context, target, pname, params);
   return;
 
-  orig.glTexParameterfv( _context, target, pname, params );
+  orig.glTexParameterfv( orig.glTexParameterfv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glTexParameteri(RegalContext *_context, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL Filt_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
 
@@ -2737,14 +2885,15 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameteri(RegalContext *_conte
     orig.glTexParameteri( _context, target, pname, param);
   return;
 
-  orig.glTexParameteri( _context, target, pname, param );
+  orig.glTexParameteri( orig.glTexParameteri_layer, target, pname, param );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glTexParameteriv(RegalContext *_context, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL Filt_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
 
@@ -2757,14 +2906,15 @@ static void REGAL_CALL emuProcInterceptFilt_glTexParameteriv(RegalContext *_cont
     orig.glTexParameteriv( _context, target, pname, params);
   return;
 
-  orig.glTexParameteriv( _context, target, pname, params );
+  orig.glTexParameteriv( orig.glTexParameteriv_layer, target, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glUniform1iARB(RegalContext *_context, GLint location, GLint v0)
+static void REGAL_CALL Filt_glUniform1iARB(Layer *_layer, GLint location, GLint v0)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || !_context->info->gl_arb_shader_objects)
@@ -2773,14 +2923,15 @@ static void REGAL_CALL emuProcInterceptFilt_glUniform1iARB(RegalContext *_contex
     return;
   }
 
-  orig.glUniform1iARB( _context, location, v0 );
+  orig.glUniform1iARB( orig.glUniform1iARB_layer, location, v0 );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptFilt_glUnmapBuffer(RegalContext *_context, GLenum target)
+static GLboolean REGAL_CALL Filt_glUnmapBuffer(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -2788,14 +2939,15 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glUnmapBuffer(RegalContext *_co
     return orig.glUnmapBufferOES( _context,target);
   }
 
-  return orig.glUnmapBuffer( _context, target );
+  return orig.glUnmapBuffer( orig.glUnmapBuffer_layer, target );
 
 }
 
-static GLboolean REGAL_CALL emuProcInterceptFilt_glUnmapBufferARB(RegalContext *_context, GLenum target)
+static GLboolean REGAL_CALL Filt_glUnmapBufferARB(Layer *_layer, GLenum target)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2())
@@ -2803,14 +2955,15 @@ static GLboolean REGAL_CALL emuProcInterceptFilt_glUnmapBufferARB(RegalContext *
     return orig.glUnmapBufferOES( _context,target);
   }
 
-  return orig.glUnmapBufferARB( _context, target );
+  return orig.glUnmapBufferARB( orig.glUnmapBufferARB_layer, target );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2d(RegalContext *_context, GLdouble x, GLdouble y)
+static void REGAL_CALL Filt_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2822,14 +2975,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2d(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos2d( _context, x, y );
+  orig.glWindowPos2d( orig.glWindowPos2d_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2dv(RegalContext *_context, const GLdouble *p)
+static void REGAL_CALL Filt_glWindowPos2dv(Layer *_layer, const GLdouble *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2841,14 +2995,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2dv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos2dv( _context, p );
+  orig.glWindowPos2dv( orig.glWindowPos2dv_layer, p );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2f(RegalContext *_context, GLfloat x, GLfloat y)
+static void REGAL_CALL Filt_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2860,14 +3015,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2f(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos2f( _context, x, y );
+  orig.glWindowPos2f( orig.glWindowPos2f_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2fv(RegalContext *_context, const GLfloat *p)
+static void REGAL_CALL Filt_glWindowPos2fv(Layer *_layer, const GLfloat *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2879,14 +3035,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2fv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos2fv( _context, p );
+  orig.glWindowPos2fv( orig.glWindowPos2fv_layer, p );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2i(RegalContext *_context, GLint x, GLint y)
+static void REGAL_CALL Filt_glWindowPos2i(Layer *_layer, GLint x, GLint y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2898,14 +3055,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2i(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos2i( _context, x, y );
+  orig.glWindowPos2i( orig.glWindowPos2i_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2iv(RegalContext *_context, const GLint *p)
+static void REGAL_CALL Filt_glWindowPos2iv(Layer *_layer, const GLint *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2917,14 +3075,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2iv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos2iv( _context, p );
+  orig.glWindowPos2iv( orig.glWindowPos2iv_layer, p );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2s(RegalContext *_context, GLshort x, GLshort y)
+static void REGAL_CALL Filt_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2936,14 +3095,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2s(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos2s( _context, x, y );
+  orig.glWindowPos2s( orig.glWindowPos2s_layer, x, y );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos2sv(RegalContext *_context, const GLshort *p)
+static void REGAL_CALL Filt_glWindowPos2sv(Layer *_layer, const GLshort *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2955,14 +3115,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos2sv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos2sv( _context, p );
+  orig.glWindowPos2sv( orig.glWindowPos2sv_layer, p );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3d(RegalContext *_context, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL Filt_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2974,14 +3135,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3d(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos3d( _context, x, y, z );
+  orig.glWindowPos3d( orig.glWindowPos3d_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3dv(RegalContext *_context, const GLdouble *p)
+static void REGAL_CALL Filt_glWindowPos3dv(Layer *_layer, const GLdouble *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -2993,14 +3155,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3dv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos3dv( _context, p );
+  orig.glWindowPos3dv( orig.glWindowPos3dv_layer, p );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3f(RegalContext *_context, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL Filt_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -3012,14 +3175,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3f(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos3f( _context, x, y, z );
+  orig.glWindowPos3f( orig.glWindowPos3f_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3fv(RegalContext *_context, const GLfloat *p)
+static void REGAL_CALL Filt_glWindowPos3fv(Layer *_layer, const GLfloat *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -3031,14 +3195,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3fv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos3fv( _context, p );
+  orig.glWindowPos3fv( orig.glWindowPos3fv_layer, p );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3i(RegalContext *_context, GLint x, GLint y, GLint z)
+static void REGAL_CALL Filt_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -3050,14 +3215,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3i(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos3i( _context, x, y, z );
+  orig.glWindowPos3i( orig.glWindowPos3i_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3iv(RegalContext *_context, const GLint *p)
+static void REGAL_CALL Filt_glWindowPos3iv(Layer *_layer, const GLint *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -3069,14 +3235,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3iv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos3iv( _context, p );
+  orig.glWindowPos3iv( orig.glWindowPos3iv_layer, p );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3s(RegalContext *_context, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL Filt_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -3088,14 +3255,15 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3s(RegalContext *_context
      return ;
   }
 
-  orig.glWindowPos3s( _context, x, y, z );
+  orig.glWindowPos3s( orig.glWindowPos3s_layer, x, y, z );
 
 }
 
-static void REGAL_CALL emuProcInterceptFilt_glWindowPos3sv(RegalContext *_context, const GLshort *p)
+static void REGAL_CALL Filt_glWindowPos3sv(Layer *_layer, const GLshort *p)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateFilt & orig = _context->filt->orig;
+  Filt * self = static_cast<Filt *>(_layer);
+
+  FiltOriginate & orig = self->orig;
 
   // impl
   if (_context->isES2() || _context->isCore())
@@ -3107,179 +3275,347 @@ static void REGAL_CALL emuProcInterceptFilt_glWindowPos3sv(RegalContext *_contex
      return ;
   }
 
-  orig.glWindowPos3sv( _context, p );
+  orig.glWindowPos3sv( orig.glWindowPos3sv_layer, p );
 
 }
 
-void EmuProcsInterceptFilt( Dispatch::GL & dt ) {
-  dt.glAccum                                  = emuProcInterceptFilt_glAccum;
-  dt.glActiveTextureARB                       = emuProcInterceptFilt_glActiveTextureARB;
-  dt.glAttachObjectARB                        = emuProcInterceptFilt_glAttachObjectARB;
-  dt.glBindAttribLocationARB                  = emuProcInterceptFilt_glBindAttribLocationARB;
-  dt.glBindFramebuffer                        = emuProcInterceptFilt_glBindFramebuffer;
-  dt.glBindFramebufferEXT                     = emuProcInterceptFilt_glBindFramebufferEXT;
-  dt.glBindFramebufferOES                     = emuProcInterceptFilt_glBindFramebufferOES;
-  dt.glBindProgramARB                         = emuProcInterceptFilt_glBindProgramARB;
-  dt.glBindRenderbufferEXT                    = emuProcInterceptFilt_glBindRenderbufferEXT;
-  dt.glBindTexture                            = emuProcInterceptFilt_glBindTexture;
-  dt.glBitmap                                 = emuProcInterceptFilt_glBitmap;
-  dt.glBlendColorEXT                          = emuProcInterceptFilt_glBlendColorEXT;
-  dt.glBlendEquationEXT                       = emuProcInterceptFilt_glBlendEquationEXT;
-  dt.glBlitFramebuffer                        = emuProcInterceptFilt_glBlitFramebuffer;
-  dt.glBlitFramebufferANGLE                   = emuProcInterceptFilt_glBlitFramebufferANGLE;
-  dt.glBlitFramebufferEXT                     = emuProcInterceptFilt_glBlitFramebufferEXT;
-  dt.glBufferDataARB                          = emuProcInterceptFilt_glBufferDataARB;
-  dt.glCallList                               = emuProcInterceptFilt_glCallList;
-  dt.glCheckFramebufferStatusEXT              = emuProcInterceptFilt_glCheckFramebufferStatusEXT;
-  dt.glClearAccum                             = emuProcInterceptFilt_glClearAccum;
-  dt.glClientActiveTexture                    = emuProcInterceptFilt_glClientActiveTexture;
-  dt.glClientActiveTextureARB                 = emuProcInterceptFilt_glClientActiveTextureARB;
-  dt.glColorMaskIndexedEXT                    = emuProcInterceptFilt_glColorMaskIndexedEXT;
-  dt.glCompileShaderARB                       = emuProcInterceptFilt_glCompileShaderARB;
-  dt.glCopyPixels                             = emuProcInterceptFilt_glCopyPixels;
-  dt.glCreateProgramObjectARB                 = emuProcInterceptFilt_glCreateProgramObjectARB;
-  dt.glDeleteFramebuffersEXT                  = emuProcInterceptFilt_glDeleteFramebuffersEXT;
-  dt.glDeleteLists                            = emuProcInterceptFilt_glDeleteLists;
-  dt.glDeleteRenderbuffersEXT                 = emuProcInterceptFilt_glDeleteRenderbuffersEXT;
-  dt.glDisableIndexedEXT                      = emuProcInterceptFilt_glDisableIndexedEXT;
-  dt.glDrawBuffer                             = emuProcInterceptFilt_glDrawBuffer;
-  dt.glDrawBuffers                            = emuProcInterceptFilt_glDrawBuffers;
-  dt.glDrawBuffersARB                         = emuProcInterceptFilt_glDrawBuffersARB;
-  dt.glDrawBuffersATI                         = emuProcInterceptFilt_glDrawBuffersATI;
-  dt.glDrawPixels                             = emuProcInterceptFilt_glDrawPixels;
-  dt.glDrawRangeElements                      = emuProcInterceptFilt_glDrawRangeElements;
-  dt.glDrawRangeElementsBaseVertex            = emuProcInterceptFilt_glDrawRangeElementsBaseVertex;
-  dt.glEdgeFlag                               = emuProcInterceptFilt_glEdgeFlag;
-  dt.glEnableIndexedEXT                       = emuProcInterceptFilt_glEnableIndexedEXT;
-  dt.glEndList                                = emuProcInterceptFilt_glEndList;
-  dt.glEvalCoord1d                            = emuProcInterceptFilt_glEvalCoord1d;
-  dt.glEvalCoord1dv                           = emuProcInterceptFilt_glEvalCoord1dv;
-  dt.glEvalCoord1f                            = emuProcInterceptFilt_glEvalCoord1f;
-  dt.glEvalCoord1fv                           = emuProcInterceptFilt_glEvalCoord1fv;
-  dt.glEvalCoord2d                            = emuProcInterceptFilt_glEvalCoord2d;
-  dt.glEvalCoord2dv                           = emuProcInterceptFilt_glEvalCoord2dv;
-  dt.glEvalCoord2f                            = emuProcInterceptFilt_glEvalCoord2f;
-  dt.glEvalCoord2fv                           = emuProcInterceptFilt_glEvalCoord2fv;
-  dt.glEvalMesh1                              = emuProcInterceptFilt_glEvalMesh1;
-  dt.glEvalMesh2                              = emuProcInterceptFilt_glEvalMesh2;
-  dt.glEvalPoint1                             = emuProcInterceptFilt_glEvalPoint1;
-  dt.glEvalPoint2                             = emuProcInterceptFilt_glEvalPoint2;
-  dt.glFramebufferRenderbuffer                = emuProcInterceptFilt_glFramebufferRenderbuffer;
-  dt.glFramebufferRenderbufferEXT             = emuProcInterceptFilt_glFramebufferRenderbufferEXT;
-  dt.glFramebufferTexture1D                   = emuProcInterceptFilt_glFramebufferTexture1D;
-  dt.glFramebufferTexture1DEXT                = emuProcInterceptFilt_glFramebufferTexture1DEXT;
-  dt.glFramebufferTexture2D                   = emuProcInterceptFilt_glFramebufferTexture2D;
-  dt.glFramebufferTexture2DEXT                = emuProcInterceptFilt_glFramebufferTexture2DEXT;
-  dt.glFramebufferTexture3D                   = emuProcInterceptFilt_glFramebufferTexture3D;
-  dt.glFramebufferTexture3DEXT                = emuProcInterceptFilt_glFramebufferTexture3DEXT;
-  dt.glGenFramebuffersEXT                     = emuProcInterceptFilt_glGenFramebuffersEXT;
-  dt.glGenLists                               = emuProcInterceptFilt_glGenLists;
-  dt.glGenProgramsARB                         = emuProcInterceptFilt_glGenProgramsARB;
-  dt.glGenRenderbuffersEXT                    = emuProcInterceptFilt_glGenRenderbuffersEXT;
-  dt.glGenSamplers                            = emuProcInterceptFilt_glGenSamplers;
-  dt.glGenerateMipmap                         = emuProcInterceptFilt_glGenerateMipmap;
-  dt.glGenerateMipmapEXT                      = emuProcInterceptFilt_glGenerateMipmapEXT;
-  dt.glGetBooleanIndexedvEXT                  = emuProcInterceptFilt_glGetBooleanIndexedvEXT;
-  dt.glGetBooleanv                            = emuProcInterceptFilt_glGetBooleanv;
-  dt.glGetDoublev                             = emuProcInterceptFilt_glGetDoublev;
-  dt.glGetFloatv                              = emuProcInterceptFilt_glGetFloatv;
-  dt.glGetFramebufferAttachmentParameteriv    = emuProcInterceptFilt_glGetFramebufferAttachmentParameteriv;
-  dt.glGetFramebufferAttachmentParameterivEXT = emuProcInterceptFilt_glGetFramebufferAttachmentParameterivEXT;
-  dt.glGetInfoLogARB                          = emuProcInterceptFilt_glGetInfoLogARB;
-  dt.glGetInteger64v                          = emuProcInterceptFilt_glGetInteger64v;
-  dt.glGetIntegerIndexedvEXT                  = emuProcInterceptFilt_glGetIntegerIndexedvEXT;
-  dt.glGetIntegerv                            = emuProcInterceptFilt_glGetIntegerv;
-  dt.glGetObjectParameterivARB                = emuProcInterceptFilt_glGetObjectParameterivARB;
-  dt.glGetProgramivARB                        = emuProcInterceptFilt_glGetProgramivARB;
-  dt.glGetRenderbufferParameterivEXT          = emuProcInterceptFilt_glGetRenderbufferParameterivEXT;
-  dt.glGetTexImage                            = emuProcInterceptFilt_glGetTexImage;
-  dt.glGetTexLevelParameterfv                 = emuProcInterceptFilt_glGetTexLevelParameterfv;
-  dt.glGetTexLevelParameteriv                 = emuProcInterceptFilt_glGetTexLevelParameteriv;
-  dt.glGetTexParameteriv                      = emuProcInterceptFilt_glGetTexParameteriv;
-  dt.glGetUniformLocationARB                  = emuProcInterceptFilt_glGetUniformLocationARB;
-  dt.glIsEnabledIndexedEXT                    = emuProcInterceptFilt_glIsEnabledIndexedEXT;
-  dt.glIsFramebufferEXT                       = emuProcInterceptFilt_glIsFramebufferEXT;
-  dt.glIsRenderbufferEXT                      = emuProcInterceptFilt_glIsRenderbufferEXT;
-  dt.glLineStipple                            = emuProcInterceptFilt_glLineStipple;
-  dt.glLineWidth                              = emuProcInterceptFilt_glLineWidth;
-  dt.glMap1d                                  = emuProcInterceptFilt_glMap1d;
-  dt.glMap1f                                  = emuProcInterceptFilt_glMap1f;
-  dt.glMap2d                                  = emuProcInterceptFilt_glMap2d;
-  dt.glMap2f                                  = emuProcInterceptFilt_glMap2f;
-  dt.glMapBuffer                              = emuProcInterceptFilt_glMapBuffer;
-  dt.glMapBufferARB                           = emuProcInterceptFilt_glMapBufferARB;
-  dt.glMapGrid1d                              = emuProcInterceptFilt_glMapGrid1d;
-  dt.glMapGrid1f                              = emuProcInterceptFilt_glMapGrid1f;
-  dt.glMapGrid2d                              = emuProcInterceptFilt_glMapGrid2d;
-  dt.glMapGrid2f                              = emuProcInterceptFilt_glMapGrid2f;
-  dt.glNewList                                = emuProcInterceptFilt_glNewList;
-  dt.glPixelStoref                            = emuProcInterceptFilt_glPixelStoref;
-  dt.glPixelStorei                            = emuProcInterceptFilt_glPixelStorei;
-  dt.glPixelTransferf                         = emuProcInterceptFilt_glPixelTransferf;
-  dt.glPixelTransferi                         = emuProcInterceptFilt_glPixelTransferi;
-  dt.glPixelZoom                              = emuProcInterceptFilt_glPixelZoom;
-  dt.glPolygonMode                            = emuProcInterceptFilt_glPolygonMode;
-  dt.glPopGroupMarkerEXT                      = emuProcInterceptFilt_glPopGroupMarkerEXT;
-  dt.glProgramStringARB                       = emuProcInterceptFilt_glProgramStringARB;
-  dt.glPushGroupMarkerEXT                     = emuProcInterceptFilt_glPushGroupMarkerEXT;
-  dt.glRasterPos2d                            = emuProcInterceptFilt_glRasterPos2d;
-  dt.glRasterPos2dv                           = emuProcInterceptFilt_glRasterPos2dv;
-  dt.glRasterPos2f                            = emuProcInterceptFilt_glRasterPos2f;
-  dt.glRasterPos2fv                           = emuProcInterceptFilt_glRasterPos2fv;
-  dt.glRasterPos2i                            = emuProcInterceptFilt_glRasterPos2i;
-  dt.glRasterPos2iv                           = emuProcInterceptFilt_glRasterPos2iv;
-  dt.glRasterPos2s                            = emuProcInterceptFilt_glRasterPos2s;
-  dt.glRasterPos2sv                           = emuProcInterceptFilt_glRasterPos2sv;
-  dt.glRasterPos3d                            = emuProcInterceptFilt_glRasterPos3d;
-  dt.glRasterPos3dv                           = emuProcInterceptFilt_glRasterPos3dv;
-  dt.glRasterPos3f                            = emuProcInterceptFilt_glRasterPos3f;
-  dt.glRasterPos3fv                           = emuProcInterceptFilt_glRasterPos3fv;
-  dt.glRasterPos3i                            = emuProcInterceptFilt_glRasterPos3i;
-  dt.glRasterPos3iv                           = emuProcInterceptFilt_glRasterPos3iv;
-  dt.glRasterPos3s                            = emuProcInterceptFilt_glRasterPos3s;
-  dt.glRasterPos3sv                           = emuProcInterceptFilt_glRasterPos3sv;
-  dt.glRasterPos4d                            = emuProcInterceptFilt_glRasterPos4d;
-  dt.glRasterPos4dv                           = emuProcInterceptFilt_glRasterPos4dv;
-  dt.glRasterPos4f                            = emuProcInterceptFilt_glRasterPos4f;
-  dt.glRasterPos4fv                           = emuProcInterceptFilt_glRasterPos4fv;
-  dt.glRasterPos4i                            = emuProcInterceptFilt_glRasterPos4i;
-  dt.glRasterPos4iv                           = emuProcInterceptFilt_glRasterPos4iv;
-  dt.glRasterPos4s                            = emuProcInterceptFilt_glRasterPos4s;
-  dt.glRasterPos4sv                           = emuProcInterceptFilt_glRasterPos4sv;
-  dt.glReadBuffer                             = emuProcInterceptFilt_glReadBuffer;
-  dt.glRectd                                  = emuProcInterceptFilt_glRectd;
-  dt.glRectf                                  = emuProcInterceptFilt_glRectf;
-  dt.glRecti                                  = emuProcInterceptFilt_glRecti;
-  dt.glRects                                  = emuProcInterceptFilt_glRects;
-  dt.glRenderMode                             = emuProcInterceptFilt_glRenderMode;
-  dt.glRenderbufferStorageEXT                 = emuProcInterceptFilt_glRenderbufferStorageEXT;
-  dt.glShadeModel                             = emuProcInterceptFilt_glShadeModel;
-  dt.glTexImage1D                             = emuProcInterceptFilt_glTexImage1D;
-  dt.glTexImage2D                             = emuProcInterceptFilt_glTexImage2D;
-  dt.glTexImage3D                             = emuProcInterceptFilt_glTexImage3D;
-  dt.glTexParameterf                          = emuProcInterceptFilt_glTexParameterf;
-  dt.glTexParameterfv                         = emuProcInterceptFilt_glTexParameterfv;
-  dt.glTexParameteri                          = emuProcInterceptFilt_glTexParameteri;
-  dt.glTexParameteriv                         = emuProcInterceptFilt_glTexParameteriv;
-  dt.glUniform1iARB                           = emuProcInterceptFilt_glUniform1iARB;
-  dt.glUnmapBuffer                            = emuProcInterceptFilt_glUnmapBuffer;
-  dt.glUnmapBufferARB                         = emuProcInterceptFilt_glUnmapBufferARB;
-  dt.glWindowPos2d                            = emuProcInterceptFilt_glWindowPos2d;
-  dt.glWindowPos2dv                           = emuProcInterceptFilt_glWindowPos2dv;
-  dt.glWindowPos2f                            = emuProcInterceptFilt_glWindowPos2f;
-  dt.glWindowPos2fv                           = emuProcInterceptFilt_glWindowPos2fv;
-  dt.glWindowPos2i                            = emuProcInterceptFilt_glWindowPos2i;
-  dt.glWindowPos2iv                           = emuProcInterceptFilt_glWindowPos2iv;
-  dt.glWindowPos2s                            = emuProcInterceptFilt_glWindowPos2s;
-  dt.glWindowPos2sv                           = emuProcInterceptFilt_glWindowPos2sv;
-  dt.glWindowPos3d                            = emuProcInterceptFilt_glWindowPos3d;
-  dt.glWindowPos3dv                           = emuProcInterceptFilt_glWindowPos3dv;
-  dt.glWindowPos3f                            = emuProcInterceptFilt_glWindowPos3f;
-  dt.glWindowPos3fv                           = emuProcInterceptFilt_glWindowPos3fv;
-  dt.glWindowPos3i                            = emuProcInterceptFilt_glWindowPos3i;
-  dt.glWindowPos3iv                           = emuProcInterceptFilt_glWindowPos3iv;
-  dt.glWindowPos3s                            = emuProcInterceptFilt_glWindowPos3s;
-  dt.glWindowPos3sv                           = emuProcInterceptFilt_glWindowPos3sv;
+void FiltIntercept( Dispatch::GL & dt ) {
+  dt.glAccum                                       = Filt_glAccum;
+  dt.glAccum_layer                                  = Filt_glAccum;
+  dt.glActiveTextureARB                            = Filt_glActiveTextureARB;
+  dt.glActiveTextureARB_layer                       = Filt_glActiveTextureARB;
+  dt.glAttachObjectARB                             = Filt_glAttachObjectARB;
+  dt.glAttachObjectARB_layer                        = Filt_glAttachObjectARB;
+  dt.glBindAttribLocationARB                       = Filt_glBindAttribLocationARB;
+  dt.glBindAttribLocationARB_layer                  = Filt_glBindAttribLocationARB;
+  dt.glBindFramebuffer                             = Filt_glBindFramebuffer;
+  dt.glBindFramebuffer_layer                        = Filt_glBindFramebuffer;
+  dt.glBindFramebufferEXT                          = Filt_glBindFramebufferEXT;
+  dt.glBindFramebufferEXT_layer                     = Filt_glBindFramebufferEXT;
+  dt.glBindFramebufferOES                          = Filt_glBindFramebufferOES;
+  dt.glBindFramebufferOES_layer                     = Filt_glBindFramebufferOES;
+  dt.glBindProgramARB                              = Filt_glBindProgramARB;
+  dt.glBindProgramARB_layer                         = Filt_glBindProgramARB;
+  dt.glBindRenderbufferEXT                         = Filt_glBindRenderbufferEXT;
+  dt.glBindRenderbufferEXT_layer                    = Filt_glBindRenderbufferEXT;
+  dt.glBindTexture                                 = Filt_glBindTexture;
+  dt.glBindTexture_layer                            = Filt_glBindTexture;
+  dt.glBitmap                                      = Filt_glBitmap;
+  dt.glBitmap_layer                                 = Filt_glBitmap;
+  dt.glBlendColorEXT                               = Filt_glBlendColorEXT;
+  dt.glBlendColorEXT_layer                          = Filt_glBlendColorEXT;
+  dt.glBlendEquationEXT                            = Filt_glBlendEquationEXT;
+  dt.glBlendEquationEXT_layer                       = Filt_glBlendEquationEXT;
+  dt.glBlitFramebuffer                             = Filt_glBlitFramebuffer;
+  dt.glBlitFramebuffer_layer                        = Filt_glBlitFramebuffer;
+  dt.glBlitFramebufferANGLE                        = Filt_glBlitFramebufferANGLE;
+  dt.glBlitFramebufferANGLE_layer                   = Filt_glBlitFramebufferANGLE;
+  dt.glBlitFramebufferEXT                          = Filt_glBlitFramebufferEXT;
+  dt.glBlitFramebufferEXT_layer                     = Filt_glBlitFramebufferEXT;
+  dt.glBufferDataARB                               = Filt_glBufferDataARB;
+  dt.glBufferDataARB_layer                          = Filt_glBufferDataARB;
+  dt.glCallList                                    = Filt_glCallList;
+  dt.glCallList_layer                               = Filt_glCallList;
+  dt.glCheckFramebufferStatusEXT                   = Filt_glCheckFramebufferStatusEXT;
+  dt.glCheckFramebufferStatusEXT_layer              = Filt_glCheckFramebufferStatusEXT;
+  dt.glClearAccum                                  = Filt_glClearAccum;
+  dt.glClearAccum_layer                             = Filt_glClearAccum;
+  dt.glClientActiveTexture                         = Filt_glClientActiveTexture;
+  dt.glClientActiveTexture_layer                    = Filt_glClientActiveTexture;
+  dt.glClientActiveTextureARB                      = Filt_glClientActiveTextureARB;
+  dt.glClientActiveTextureARB_layer                 = Filt_glClientActiveTextureARB;
+  dt.glColorMaskIndexedEXT                         = Filt_glColorMaskIndexedEXT;
+  dt.glColorMaskIndexedEXT_layer                    = Filt_glColorMaskIndexedEXT;
+  dt.glCompileShaderARB                            = Filt_glCompileShaderARB;
+  dt.glCompileShaderARB_layer                       = Filt_glCompileShaderARB;
+  dt.glCopyPixels                                  = Filt_glCopyPixels;
+  dt.glCopyPixels_layer                             = Filt_glCopyPixels;
+  dt.glCreateProgramObjectARB                      = Filt_glCreateProgramObjectARB;
+  dt.glCreateProgramObjectARB_layer                 = Filt_glCreateProgramObjectARB;
+  dt.glDeleteFramebuffersEXT                       = Filt_glDeleteFramebuffersEXT;
+  dt.glDeleteFramebuffersEXT_layer                  = Filt_glDeleteFramebuffersEXT;
+  dt.glDeleteLists                                 = Filt_glDeleteLists;
+  dt.glDeleteLists_layer                            = Filt_glDeleteLists;
+  dt.glDeleteRenderbuffersEXT                      = Filt_glDeleteRenderbuffersEXT;
+  dt.glDeleteRenderbuffersEXT_layer                 = Filt_glDeleteRenderbuffersEXT;
+  dt.glDisableIndexedEXT                           = Filt_glDisableIndexedEXT;
+  dt.glDisableIndexedEXT_layer                      = Filt_glDisableIndexedEXT;
+  dt.glDrawBuffer                                  = Filt_glDrawBuffer;
+  dt.glDrawBuffer_layer                             = Filt_glDrawBuffer;
+  dt.glDrawBuffers                                 = Filt_glDrawBuffers;
+  dt.glDrawBuffers_layer                            = Filt_glDrawBuffers;
+  dt.glDrawBuffersARB                              = Filt_glDrawBuffersARB;
+  dt.glDrawBuffersARB_layer                         = Filt_glDrawBuffersARB;
+  dt.glDrawBuffersATI                              = Filt_glDrawBuffersATI;
+  dt.glDrawBuffersATI_layer                         = Filt_glDrawBuffersATI;
+  dt.glDrawPixels                                  = Filt_glDrawPixels;
+  dt.glDrawPixels_layer                             = Filt_glDrawPixels;
+  dt.glDrawRangeElements                           = Filt_glDrawRangeElements;
+  dt.glDrawRangeElements_layer                      = Filt_glDrawRangeElements;
+  dt.glDrawRangeElementsBaseVertex                 = Filt_glDrawRangeElementsBaseVertex;
+  dt.glDrawRangeElementsBaseVertex_layer            = Filt_glDrawRangeElementsBaseVertex;
+  dt.glEdgeFlag                                    = Filt_glEdgeFlag;
+  dt.glEdgeFlag_layer                               = Filt_glEdgeFlag;
+  dt.glEnableIndexedEXT                            = Filt_glEnableIndexedEXT;
+  dt.glEnableIndexedEXT_layer                       = Filt_glEnableIndexedEXT;
+  dt.glEndList                                     = Filt_glEndList;
+  dt.glEndList_layer                                = Filt_glEndList;
+  dt.glEvalCoord1d                                 = Filt_glEvalCoord1d;
+  dt.glEvalCoord1d_layer                            = Filt_glEvalCoord1d;
+  dt.glEvalCoord1dv                                = Filt_glEvalCoord1dv;
+  dt.glEvalCoord1dv_layer                           = Filt_glEvalCoord1dv;
+  dt.glEvalCoord1f                                 = Filt_glEvalCoord1f;
+  dt.glEvalCoord1f_layer                            = Filt_glEvalCoord1f;
+  dt.glEvalCoord1fv                                = Filt_glEvalCoord1fv;
+  dt.glEvalCoord1fv_layer                           = Filt_glEvalCoord1fv;
+  dt.glEvalCoord2d                                 = Filt_glEvalCoord2d;
+  dt.glEvalCoord2d_layer                            = Filt_glEvalCoord2d;
+  dt.glEvalCoord2dv                                = Filt_glEvalCoord2dv;
+  dt.glEvalCoord2dv_layer                           = Filt_glEvalCoord2dv;
+  dt.glEvalCoord2f                                 = Filt_glEvalCoord2f;
+  dt.glEvalCoord2f_layer                            = Filt_glEvalCoord2f;
+  dt.glEvalCoord2fv                                = Filt_glEvalCoord2fv;
+  dt.glEvalCoord2fv_layer                           = Filt_glEvalCoord2fv;
+  dt.glEvalMesh1                                   = Filt_glEvalMesh1;
+  dt.glEvalMesh1_layer                              = Filt_glEvalMesh1;
+  dt.glEvalMesh2                                   = Filt_glEvalMesh2;
+  dt.glEvalMesh2_layer                              = Filt_glEvalMesh2;
+  dt.glEvalPoint1                                  = Filt_glEvalPoint1;
+  dt.glEvalPoint1_layer                             = Filt_glEvalPoint1;
+  dt.glEvalPoint2                                  = Filt_glEvalPoint2;
+  dt.glEvalPoint2_layer                             = Filt_glEvalPoint2;
+  dt.glFramebufferRenderbuffer                     = Filt_glFramebufferRenderbuffer;
+  dt.glFramebufferRenderbuffer_layer                = Filt_glFramebufferRenderbuffer;
+  dt.glFramebufferRenderbufferEXT                  = Filt_glFramebufferRenderbufferEXT;
+  dt.glFramebufferRenderbufferEXT_layer             = Filt_glFramebufferRenderbufferEXT;
+  dt.glFramebufferTexture1D                        = Filt_glFramebufferTexture1D;
+  dt.glFramebufferTexture1D_layer                   = Filt_glFramebufferTexture1D;
+  dt.glFramebufferTexture1DEXT                     = Filt_glFramebufferTexture1DEXT;
+  dt.glFramebufferTexture1DEXT_layer                = Filt_glFramebufferTexture1DEXT;
+  dt.glFramebufferTexture2D                        = Filt_glFramebufferTexture2D;
+  dt.glFramebufferTexture2D_layer                   = Filt_glFramebufferTexture2D;
+  dt.glFramebufferTexture2DEXT                     = Filt_glFramebufferTexture2DEXT;
+  dt.glFramebufferTexture2DEXT_layer                = Filt_glFramebufferTexture2DEXT;
+  dt.glFramebufferTexture3D                        = Filt_glFramebufferTexture3D;
+  dt.glFramebufferTexture3D_layer                   = Filt_glFramebufferTexture3D;
+  dt.glFramebufferTexture3DEXT                     = Filt_glFramebufferTexture3DEXT;
+  dt.glFramebufferTexture3DEXT_layer                = Filt_glFramebufferTexture3DEXT;
+  dt.glGenFramebuffersEXT                          = Filt_glGenFramebuffersEXT;
+  dt.glGenFramebuffersEXT_layer                     = Filt_glGenFramebuffersEXT;
+  dt.glGenLists                                    = Filt_glGenLists;
+  dt.glGenLists_layer                               = Filt_glGenLists;
+  dt.glGenProgramsARB                              = Filt_glGenProgramsARB;
+  dt.glGenProgramsARB_layer                         = Filt_glGenProgramsARB;
+  dt.glGenRenderbuffersEXT                         = Filt_glGenRenderbuffersEXT;
+  dt.glGenRenderbuffersEXT_layer                    = Filt_glGenRenderbuffersEXT;
+  dt.glGenSamplers                                 = Filt_glGenSamplers;
+  dt.glGenSamplers_layer                            = Filt_glGenSamplers;
+  dt.glGenerateMipmap                              = Filt_glGenerateMipmap;
+  dt.glGenerateMipmap_layer                         = Filt_glGenerateMipmap;
+  dt.glGenerateMipmapEXT                           = Filt_glGenerateMipmapEXT;
+  dt.glGenerateMipmapEXT_layer                      = Filt_glGenerateMipmapEXT;
+  dt.glGetBooleanIndexedvEXT                       = Filt_glGetBooleanIndexedvEXT;
+  dt.glGetBooleanIndexedvEXT_layer                  = Filt_glGetBooleanIndexedvEXT;
+  dt.glGetBooleanv                                 = Filt_glGetBooleanv;
+  dt.glGetBooleanv_layer                            = Filt_glGetBooleanv;
+  dt.glGetDoublev                                  = Filt_glGetDoublev;
+  dt.glGetDoublev_layer                             = Filt_glGetDoublev;
+  dt.glGetFloatv                                   = Filt_glGetFloatv;
+  dt.glGetFloatv_layer                              = Filt_glGetFloatv;
+  dt.glGetFramebufferAttachmentParameteriv         = Filt_glGetFramebufferAttachmentParameteriv;
+  dt.glGetFramebufferAttachmentParameteriv_layer    = Filt_glGetFramebufferAttachmentParameteriv;
+  dt.glGetFramebufferAttachmentParameterivEXT      = Filt_glGetFramebufferAttachmentParameterivEXT;
+  dt.glGetFramebufferAttachmentParameterivEXT_layer = Filt_glGetFramebufferAttachmentParameterivEXT;
+  dt.glGetInfoLogARB                               = Filt_glGetInfoLogARB;
+  dt.glGetInfoLogARB_layer                          = Filt_glGetInfoLogARB;
+  dt.glGetInteger64v                               = Filt_glGetInteger64v;
+  dt.glGetInteger64v_layer                          = Filt_glGetInteger64v;
+  dt.glGetIntegerIndexedvEXT                       = Filt_glGetIntegerIndexedvEXT;
+  dt.glGetIntegerIndexedvEXT_layer                  = Filt_glGetIntegerIndexedvEXT;
+  dt.glGetIntegerv                                 = Filt_glGetIntegerv;
+  dt.glGetIntegerv_layer                            = Filt_glGetIntegerv;
+  dt.glGetObjectParameterivARB                     = Filt_glGetObjectParameterivARB;
+  dt.glGetObjectParameterivARB_layer                = Filt_glGetObjectParameterivARB;
+  dt.glGetProgramivARB                             = Filt_glGetProgramivARB;
+  dt.glGetProgramivARB_layer                        = Filt_glGetProgramivARB;
+  dt.glGetRenderbufferParameterivEXT               = Filt_glGetRenderbufferParameterivEXT;
+  dt.glGetRenderbufferParameterivEXT_layer          = Filt_glGetRenderbufferParameterivEXT;
+  dt.glGetTexImage                                 = Filt_glGetTexImage;
+  dt.glGetTexImage_layer                            = Filt_glGetTexImage;
+  dt.glGetTexLevelParameterfv                      = Filt_glGetTexLevelParameterfv;
+  dt.glGetTexLevelParameterfv_layer                 = Filt_glGetTexLevelParameterfv;
+  dt.glGetTexLevelParameteriv                      = Filt_glGetTexLevelParameteriv;
+  dt.glGetTexLevelParameteriv_layer                 = Filt_glGetTexLevelParameteriv;
+  dt.glGetTexParameteriv                           = Filt_glGetTexParameteriv;
+  dt.glGetTexParameteriv_layer                      = Filt_glGetTexParameteriv;
+  dt.glGetUniformLocationARB                       = Filt_glGetUniformLocationARB;
+  dt.glGetUniformLocationARB_layer                  = Filt_glGetUniformLocationARB;
+  dt.glIsEnabledIndexedEXT                         = Filt_glIsEnabledIndexedEXT;
+  dt.glIsEnabledIndexedEXT_layer                    = Filt_glIsEnabledIndexedEXT;
+  dt.glIsFramebufferEXT                            = Filt_glIsFramebufferEXT;
+  dt.glIsFramebufferEXT_layer                       = Filt_glIsFramebufferEXT;
+  dt.glIsRenderbufferEXT                           = Filt_glIsRenderbufferEXT;
+  dt.glIsRenderbufferEXT_layer                      = Filt_glIsRenderbufferEXT;
+  dt.glLineStipple                                 = Filt_glLineStipple;
+  dt.glLineStipple_layer                            = Filt_glLineStipple;
+  dt.glLineWidth                                   = Filt_glLineWidth;
+  dt.glLineWidth_layer                              = Filt_glLineWidth;
+  dt.glMap1d                                       = Filt_glMap1d;
+  dt.glMap1d_layer                                  = Filt_glMap1d;
+  dt.glMap1f                                       = Filt_glMap1f;
+  dt.glMap1f_layer                                  = Filt_glMap1f;
+  dt.glMap2d                                       = Filt_glMap2d;
+  dt.glMap2d_layer                                  = Filt_glMap2d;
+  dt.glMap2f                                       = Filt_glMap2f;
+  dt.glMap2f_layer                                  = Filt_glMap2f;
+  dt.glMapBuffer                                   = Filt_glMapBuffer;
+  dt.glMapBuffer_layer                              = Filt_glMapBuffer;
+  dt.glMapBufferARB                                = Filt_glMapBufferARB;
+  dt.glMapBufferARB_layer                           = Filt_glMapBufferARB;
+  dt.glMapGrid1d                                   = Filt_glMapGrid1d;
+  dt.glMapGrid1d_layer                              = Filt_glMapGrid1d;
+  dt.glMapGrid1f                                   = Filt_glMapGrid1f;
+  dt.glMapGrid1f_layer                              = Filt_glMapGrid1f;
+  dt.glMapGrid2d                                   = Filt_glMapGrid2d;
+  dt.glMapGrid2d_layer                              = Filt_glMapGrid2d;
+  dt.glMapGrid2f                                   = Filt_glMapGrid2f;
+  dt.glMapGrid2f_layer                              = Filt_glMapGrid2f;
+  dt.glNewList                                     = Filt_glNewList;
+  dt.glNewList_layer                                = Filt_glNewList;
+  dt.glPixelStoref                                 = Filt_glPixelStoref;
+  dt.glPixelStoref_layer                            = Filt_glPixelStoref;
+  dt.glPixelStorei                                 = Filt_glPixelStorei;
+  dt.glPixelStorei_layer                            = Filt_glPixelStorei;
+  dt.glPixelTransferf                              = Filt_glPixelTransferf;
+  dt.glPixelTransferf_layer                         = Filt_glPixelTransferf;
+  dt.glPixelTransferi                              = Filt_glPixelTransferi;
+  dt.glPixelTransferi_layer                         = Filt_glPixelTransferi;
+  dt.glPixelZoom                                   = Filt_glPixelZoom;
+  dt.glPixelZoom_layer                              = Filt_glPixelZoom;
+  dt.glPolygonMode                                 = Filt_glPolygonMode;
+  dt.glPolygonMode_layer                            = Filt_glPolygonMode;
+  dt.glPopGroupMarkerEXT                           = Filt_glPopGroupMarkerEXT;
+  dt.glPopGroupMarkerEXT_layer                      = Filt_glPopGroupMarkerEXT;
+  dt.glProgramStringARB                            = Filt_glProgramStringARB;
+  dt.glProgramStringARB_layer                       = Filt_glProgramStringARB;
+  dt.glPushGroupMarkerEXT                          = Filt_glPushGroupMarkerEXT;
+  dt.glPushGroupMarkerEXT_layer                     = Filt_glPushGroupMarkerEXT;
+  dt.glRasterPos2d                                 = Filt_glRasterPos2d;
+  dt.glRasterPos2d_layer                            = Filt_glRasterPos2d;
+  dt.glRasterPos2dv                                = Filt_glRasterPos2dv;
+  dt.glRasterPos2dv_layer                           = Filt_glRasterPos2dv;
+  dt.glRasterPos2f                                 = Filt_glRasterPos2f;
+  dt.glRasterPos2f_layer                            = Filt_glRasterPos2f;
+  dt.glRasterPos2fv                                = Filt_glRasterPos2fv;
+  dt.glRasterPos2fv_layer                           = Filt_glRasterPos2fv;
+  dt.glRasterPos2i                                 = Filt_glRasterPos2i;
+  dt.glRasterPos2i_layer                            = Filt_glRasterPos2i;
+  dt.glRasterPos2iv                                = Filt_glRasterPos2iv;
+  dt.glRasterPos2iv_layer                           = Filt_glRasterPos2iv;
+  dt.glRasterPos2s                                 = Filt_glRasterPos2s;
+  dt.glRasterPos2s_layer                            = Filt_glRasterPos2s;
+  dt.glRasterPos2sv                                = Filt_glRasterPos2sv;
+  dt.glRasterPos2sv_layer                           = Filt_glRasterPos2sv;
+  dt.glRasterPos3d                                 = Filt_glRasterPos3d;
+  dt.glRasterPos3d_layer                            = Filt_glRasterPos3d;
+  dt.glRasterPos3dv                                = Filt_glRasterPos3dv;
+  dt.glRasterPos3dv_layer                           = Filt_glRasterPos3dv;
+  dt.glRasterPos3f                                 = Filt_glRasterPos3f;
+  dt.glRasterPos3f_layer                            = Filt_glRasterPos3f;
+  dt.glRasterPos3fv                                = Filt_glRasterPos3fv;
+  dt.glRasterPos3fv_layer                           = Filt_glRasterPos3fv;
+  dt.glRasterPos3i                                 = Filt_glRasterPos3i;
+  dt.glRasterPos3i_layer                            = Filt_glRasterPos3i;
+  dt.glRasterPos3iv                                = Filt_glRasterPos3iv;
+  dt.glRasterPos3iv_layer                           = Filt_glRasterPos3iv;
+  dt.glRasterPos3s                                 = Filt_glRasterPos3s;
+  dt.glRasterPos3s_layer                            = Filt_glRasterPos3s;
+  dt.glRasterPos3sv                                = Filt_glRasterPos3sv;
+  dt.glRasterPos3sv_layer                           = Filt_glRasterPos3sv;
+  dt.glRasterPos4d                                 = Filt_glRasterPos4d;
+  dt.glRasterPos4d_layer                            = Filt_glRasterPos4d;
+  dt.glRasterPos4dv                                = Filt_glRasterPos4dv;
+  dt.glRasterPos4dv_layer                           = Filt_glRasterPos4dv;
+  dt.glRasterPos4f                                 = Filt_glRasterPos4f;
+  dt.glRasterPos4f_layer                            = Filt_glRasterPos4f;
+  dt.glRasterPos4fv                                = Filt_glRasterPos4fv;
+  dt.glRasterPos4fv_layer                           = Filt_glRasterPos4fv;
+  dt.glRasterPos4i                                 = Filt_glRasterPos4i;
+  dt.glRasterPos4i_layer                            = Filt_glRasterPos4i;
+  dt.glRasterPos4iv                                = Filt_glRasterPos4iv;
+  dt.glRasterPos4iv_layer                           = Filt_glRasterPos4iv;
+  dt.glRasterPos4s                                 = Filt_glRasterPos4s;
+  dt.glRasterPos4s_layer                            = Filt_glRasterPos4s;
+  dt.glRasterPos4sv                                = Filt_glRasterPos4sv;
+  dt.glRasterPos4sv_layer                           = Filt_glRasterPos4sv;
+  dt.glReadBuffer                                  = Filt_glReadBuffer;
+  dt.glReadBuffer_layer                             = Filt_glReadBuffer;
+  dt.glRectd                                       = Filt_glRectd;
+  dt.glRectd_layer                                  = Filt_glRectd;
+  dt.glRectf                                       = Filt_glRectf;
+  dt.glRectf_layer                                  = Filt_glRectf;
+  dt.glRecti                                       = Filt_glRecti;
+  dt.glRecti_layer                                  = Filt_glRecti;
+  dt.glRects                                       = Filt_glRects;
+  dt.glRects_layer                                  = Filt_glRects;
+  dt.glRenderMode                                  = Filt_glRenderMode;
+  dt.glRenderMode_layer                             = Filt_glRenderMode;
+  dt.glRenderbufferStorageEXT                      = Filt_glRenderbufferStorageEXT;
+  dt.glRenderbufferStorageEXT_layer                 = Filt_glRenderbufferStorageEXT;
+  dt.glShadeModel                                  = Filt_glShadeModel;
+  dt.glShadeModel_layer                             = Filt_glShadeModel;
+  dt.glTexImage1D                                  = Filt_glTexImage1D;
+  dt.glTexImage1D_layer                             = Filt_glTexImage1D;
+  dt.glTexImage2D                                  = Filt_glTexImage2D;
+  dt.glTexImage2D_layer                             = Filt_glTexImage2D;
+  dt.glTexImage3D                                  = Filt_glTexImage3D;
+  dt.glTexImage3D_layer                             = Filt_glTexImage3D;
+  dt.glTexParameterf                               = Filt_glTexParameterf;
+  dt.glTexParameterf_layer                          = Filt_glTexParameterf;
+  dt.glTexParameterfv                              = Filt_glTexParameterfv;
+  dt.glTexParameterfv_layer                         = Filt_glTexParameterfv;
+  dt.glTexParameteri                               = Filt_glTexParameteri;
+  dt.glTexParameteri_layer                          = Filt_glTexParameteri;
+  dt.glTexParameteriv                              = Filt_glTexParameteriv;
+  dt.glTexParameteriv_layer                         = Filt_glTexParameteriv;
+  dt.glUniform1iARB                                = Filt_glUniform1iARB;
+  dt.glUniform1iARB_layer                           = Filt_glUniform1iARB;
+  dt.glUnmapBuffer                                 = Filt_glUnmapBuffer;
+  dt.glUnmapBuffer_layer                            = Filt_glUnmapBuffer;
+  dt.glUnmapBufferARB                              = Filt_glUnmapBufferARB;
+  dt.glUnmapBufferARB_layer                         = Filt_glUnmapBufferARB;
+  dt.glWindowPos2d                                 = Filt_glWindowPos2d;
+  dt.glWindowPos2d_layer                            = Filt_glWindowPos2d;
+  dt.glWindowPos2dv                                = Filt_glWindowPos2dv;
+  dt.glWindowPos2dv_layer                           = Filt_glWindowPos2dv;
+  dt.glWindowPos2f                                 = Filt_glWindowPos2f;
+  dt.glWindowPos2f_layer                            = Filt_glWindowPos2f;
+  dt.glWindowPos2fv                                = Filt_glWindowPos2fv;
+  dt.glWindowPos2fv_layer                           = Filt_glWindowPos2fv;
+  dt.glWindowPos2i                                 = Filt_glWindowPos2i;
+  dt.glWindowPos2i_layer                            = Filt_glWindowPos2i;
+  dt.glWindowPos2iv                                = Filt_glWindowPos2iv;
+  dt.glWindowPos2iv_layer                           = Filt_glWindowPos2iv;
+  dt.glWindowPos2s                                 = Filt_glWindowPos2s;
+  dt.glWindowPos2s_layer                            = Filt_glWindowPos2s;
+  dt.glWindowPos2sv                                = Filt_glWindowPos2sv;
+  dt.glWindowPos2sv_layer                           = Filt_glWindowPos2sv;
+  dt.glWindowPos3d                                 = Filt_glWindowPos3d;
+  dt.glWindowPos3d_layer                            = Filt_glWindowPos3d;
+  dt.glWindowPos3dv                                = Filt_glWindowPos3dv;
+  dt.glWindowPos3dv_layer                           = Filt_glWindowPos3dv;
+  dt.glWindowPos3f                                 = Filt_glWindowPos3f;
+  dt.glWindowPos3f_layer                            = Filt_glWindowPos3f;
+  dt.glWindowPos3fv                                = Filt_glWindowPos3fv;
+  dt.glWindowPos3fv_layer                           = Filt_glWindowPos3fv;
+  dt.glWindowPos3i                                 = Filt_glWindowPos3i;
+  dt.glWindowPos3i_layer                            = Filt_glWindowPos3i;
+  dt.glWindowPos3iv                                = Filt_glWindowPos3iv;
+  dt.glWindowPos3iv_layer                           = Filt_glWindowPos3iv;
+  dt.glWindowPos3s                                 = Filt_glWindowPos3s;
+  dt.glWindowPos3s_layer                            = Filt_glWindowPos3s;
+  dt.glWindowPos3sv                                = Filt_glWindowPos3sv;
+  dt.glWindowPos3sv_layer                           = Filt_glWindowPos3sv;
 }
 
 REGAL_NAMESPACE_END

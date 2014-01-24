@@ -54,82 +54,92 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL emuProcInterceptHint_glGetBooleanv(RegalContext *_context, GLenum pname, GLboolean *params)
+static void REGAL_CALL Hint_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateHint & orig = _context->hint->orig;
+  Hint * self = static_cast<Hint *>(_layer);
+
+  HintOriginate & orig = self->orig;
 
   // impl
   if( _context->hint->glGetv( *_context, pname, params ) ) {
     return;
   }
 
-  orig.glGetBooleanv( _context, pname, params );
+  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glGetDoublev(RegalContext *_context, GLenum pname, GLdouble *params)
+static void REGAL_CALL Hint_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateHint & orig = _context->hint->orig;
+  Hint * self = static_cast<Hint *>(_layer);
+
+  HintOriginate & orig = self->orig;
 
   // impl
   if( _context->hint->glGetv( *_context, pname, params ) ) {
     return;
   }
 
-  orig.glGetDoublev( _context, pname, params );
+  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glGetFloatv(RegalContext *_context, GLenum pname, GLfloat *params)
+static void REGAL_CALL Hint_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateHint & orig = _context->hint->orig;
+  Hint * self = static_cast<Hint *>(_layer);
+
+  HintOriginate & orig = self->orig;
 
   // impl
   if( _context->hint->glGetv( *_context, pname, params ) ) {
     return;
   }
 
-  orig.glGetFloatv( _context, pname, params );
+  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glGetIntegerv(RegalContext *_context, GLenum pname, GLint *params)
+static void REGAL_CALL Hint_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateHint & orig = _context->hint->orig;
+  Hint * self = static_cast<Hint *>(_layer);
+
+  HintOriginate & orig = self->orig;
 
   // impl
   if( _context->hint->glGetv( *_context, pname, params ) ) {
     return;
   }
 
-  orig.glGetIntegerv( _context, pname, params );
+  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
 
 }
 
-static void REGAL_CALL emuProcInterceptHint_glHint(RegalContext *_context, GLenum target, GLenum mode)
+static void REGAL_CALL Hint_glHint(Layer *_layer, GLenum target, GLenum mode)
 {
-  RegalAssert(_context);
-  EmuProcsOriginateHint & orig = _context->hint->orig;
+  Hint * self = static_cast<Hint *>(_layer);
+
+  HintOriginate & orig = self->orig;
 
   // impl
   if( _context->hint->glHint( *_context, target, mode ) ) {
     return;
   }
 
-  orig.glHint( _context, target, mode );
+  orig.glHint( orig.glHint_layer, target, mode );
 
 }
 
-void EmuProcsInterceptHint( Dispatch::GL & dt ) {
-  dt.glGetBooleanv = emuProcInterceptHint_glGetBooleanv;
-  dt.glGetDoublev  = emuProcInterceptHint_glGetDoublev;
-  dt.glGetFloatv   = emuProcInterceptHint_glGetFloatv;
-  dt.glGetIntegerv = emuProcInterceptHint_glGetIntegerv;
-  dt.glHint        = emuProcInterceptHint_glHint;
+void HintIntercept( Dispatch::GL & dt ) {
+  dt.glGetBooleanv      = Hint_glGetBooleanv;
+  dt.glGetBooleanv_layer = Hint_glGetBooleanv;
+  dt.glGetDoublev       = Hint_glGetDoublev;
+  dt.glGetDoublev_layer  = Hint_glGetDoublev;
+  dt.glGetFloatv        = Hint_glGetFloatv;
+  dt.glGetFloatv_layer   = Hint_glGetFloatv;
+  dt.glGetIntegerv      = Hint_glGetIntegerv;
+  dt.glGetIntegerv_layer = Hint_glGetIntegerv;
+  dt.glHint             = Hint_glHint;
+  dt.glHint_layer        = Hint_glHint;
 }
 
 REGAL_NAMESPACE_END

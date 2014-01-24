@@ -55,46 +55,171 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void EmuProcsInterceptTexSto( Dispatch::GL & dt );
+void TexStoIntercept( Dispatch::GL & dt );
 
-struct EmuProcsOriginateTexSto {
+struct TexStoOriginate {
 
-  EmuProcsOriginateTexSto() {
+  TexStoOriginate() {
     memset(this, 0, sizeof( *this ) );
   }
 
   REGALGLDELETETEXTURESPROC glDeleteTextures;
+  Layer * glDeleteTextures_layer;
+
+  REGALGLDELETETEXTURES_LAYERPROC glDeleteTextures_layer;
+  Layer * glDeleteTextures_layer_layer;
+
   REGALGLGETINTEGERVPROC glGetIntegerv;
+  Layer * glGetIntegerv_layer;
+
   REGALGLGETTEXPARAMETERIIVPROC glGetTexParameterIiv;
+  Layer * glGetTexParameterIiv_layer;
+
+  REGALGLGETTEXPARAMETERIIV_LAYERPROC glGetTexParameterIiv_layer;
+  Layer * glGetTexParameterIiv_layer_layer;
+
   REGALGLGETTEXPARAMETERIUIVPROC glGetTexParameterIuiv;
+  Layer * glGetTexParameterIuiv_layer;
+
+  REGALGLGETTEXPARAMETERIUIV_LAYERPROC glGetTexParameterIuiv_layer;
+  Layer * glGetTexParameterIuiv_layer_layer;
+
   REGALGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
+  Layer * glGetTexParameterfv_layer;
+
+  REGALGLGETTEXPARAMETERFV_LAYERPROC glGetTexParameterfv_layer;
+  Layer * glGetTexParameterfv_layer_layer;
+
   REGALGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
+  Layer * glGetTexParameteriv_layer;
+
+  REGALGLGETTEXPARAMETERIV_LAYERPROC glGetTexParameteriv_layer;
+  Layer * glGetTexParameteriv_layer_layer;
+
   REGALGLTEXIMAGE1DPROC glTexImage1D;
+  Layer * glTexImage1D_layer;
+
   REGALGLTEXIMAGE2DPROC glTexImage2D;
+  Layer * glTexImage2D_layer;
+
   REGALGLTEXIMAGE3DPROC glTexImage3D;
+  Layer * glTexImage3D_layer;
+
   REGALGLTEXSTORAGE1DPROC glTexStorage1D;
+  Layer * glTexStorage1D_layer;
+
   REGALGLTEXSTORAGE1DEXTPROC glTexStorage1DEXT;
+  Layer * glTexStorage1DEXT_layer;
+
+  REGALGLTEXSTORAGE1DEXT_LAYERPROC glTexStorage1DEXT_layer;
+  Layer * glTexStorage1DEXT_layer_layer;
+
+  REGALGLTEXSTORAGE1D_LAYERPROC glTexStorage1D_layer;
+  Layer * glTexStorage1D_layer_layer;
+
   REGALGLTEXSTORAGE2DPROC glTexStorage2D;
+  Layer * glTexStorage2D_layer;
+
   REGALGLTEXSTORAGE2DEXTPROC glTexStorage2DEXT;
+  Layer * glTexStorage2DEXT_layer;
+
+  REGALGLTEXSTORAGE2DEXT_LAYERPROC glTexStorage2DEXT_layer;
+  Layer * glTexStorage2DEXT_layer_layer;
+
+  REGALGLTEXSTORAGE2D_LAYERPROC glTexStorage2D_layer;
+  Layer * glTexStorage2D_layer_layer;
+
   REGALGLTEXSTORAGE3DPROC glTexStorage3D;
+  Layer * glTexStorage3D_layer;
+
   REGALGLTEXSTORAGE3DEXTPROC glTexStorage3DEXT;
+  Layer * glTexStorage3DEXT_layer;
+
+  REGALGLTEXSTORAGE3DEXT_LAYERPROC glTexStorage3DEXT_layer;
+  Layer * glTexStorage3DEXT_layer_layer;
+
+  REGALGLTEXSTORAGE3D_LAYERPROC glTexStorage3D_layer;
+  Layer * glTexStorage3D_layer_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glDeleteTextures = dt.glDeleteTextures;
+    glDeleteTextures_layer = dt.glDeleteTextures_layer;
+
+    glDeleteTextures_layer = dt.glDeleteTextures_layer;
+    glDeleteTextures_layer_layer = dt.glDeleteTextures_layer_layer;
+
     glGetIntegerv = dt.glGetIntegerv;
+    glGetIntegerv_layer = dt.glGetIntegerv_layer;
+
     glGetTexParameterIiv = dt.glGetTexParameterIiv;
+    glGetTexParameterIiv_layer = dt.glGetTexParameterIiv_layer;
+
+    glGetTexParameterIiv_layer = dt.glGetTexParameterIiv_layer;
+    glGetTexParameterIiv_layer_layer = dt.glGetTexParameterIiv_layer_layer;
+
     glGetTexParameterIuiv = dt.glGetTexParameterIuiv;
+    glGetTexParameterIuiv_layer = dt.glGetTexParameterIuiv_layer;
+
+    glGetTexParameterIuiv_layer = dt.glGetTexParameterIuiv_layer;
+    glGetTexParameterIuiv_layer_layer = dt.glGetTexParameterIuiv_layer_layer;
+
     glGetTexParameterfv = dt.glGetTexParameterfv;
+    glGetTexParameterfv_layer = dt.glGetTexParameterfv_layer;
+
+    glGetTexParameterfv_layer = dt.glGetTexParameterfv_layer;
+    glGetTexParameterfv_layer_layer = dt.glGetTexParameterfv_layer_layer;
+
     glGetTexParameteriv = dt.glGetTexParameteriv;
+    glGetTexParameteriv_layer = dt.glGetTexParameteriv_layer;
+
+    glGetTexParameteriv_layer = dt.glGetTexParameteriv_layer;
+    glGetTexParameteriv_layer_layer = dt.glGetTexParameteriv_layer_layer;
+
     glTexImage1D = dt.glTexImage1D;
+    glTexImage1D_layer = dt.glTexImage1D_layer;
+
     glTexImage2D = dt.glTexImage2D;
+    glTexImage2D_layer = dt.glTexImage2D_layer;
+
     glTexImage3D = dt.glTexImage3D;
+    glTexImage3D_layer = dt.glTexImage3D_layer;
+
     glTexStorage1D = dt.glTexStorage1D;
+    glTexStorage1D_layer = dt.glTexStorage1D_layer;
+
     glTexStorage1DEXT = dt.glTexStorage1DEXT;
+    glTexStorage1DEXT_layer = dt.glTexStorage1DEXT_layer;
+
+    glTexStorage1DEXT_layer = dt.glTexStorage1DEXT_layer;
+    glTexStorage1DEXT_layer_layer = dt.glTexStorage1DEXT_layer_layer;
+
+    glTexStorage1D_layer = dt.glTexStorage1D_layer;
+    glTexStorage1D_layer_layer = dt.glTexStorage1D_layer_layer;
+
     glTexStorage2D = dt.glTexStorage2D;
+    glTexStorage2D_layer = dt.glTexStorage2D_layer;
+
     glTexStorage2DEXT = dt.glTexStorage2DEXT;
+    glTexStorage2DEXT_layer = dt.glTexStorage2DEXT_layer;
+
+    glTexStorage2DEXT_layer = dt.glTexStorage2DEXT_layer;
+    glTexStorage2DEXT_layer_layer = dt.glTexStorage2DEXT_layer_layer;
+
+    glTexStorage2D_layer = dt.glTexStorage2D_layer;
+    glTexStorage2D_layer_layer = dt.glTexStorage2D_layer_layer;
+
     glTexStorage3D = dt.glTexStorage3D;
+    glTexStorage3D_layer = dt.glTexStorage3D_layer;
+
     glTexStorage3DEXT = dt.glTexStorage3DEXT;
+    glTexStorage3DEXT_layer = dt.glTexStorage3DEXT_layer;
+
+    glTexStorage3DEXT_layer = dt.glTexStorage3DEXT_layer;
+    glTexStorage3DEXT_layer_layer = dt.glTexStorage3DEXT_layer_layer;
+
+    glTexStorage3D_layer = dt.glTexStorage3D_layer;
+    glTexStorage3D_layer_layer = dt.glTexStorage3D_layer_layer;
+
   }
 };
 

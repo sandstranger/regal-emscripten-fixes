@@ -58,13 +58,6 @@ ${REGAL_SYS}
 #  define REGAL_DECL
 #endif
 
-/* Plugins need the GL API as externs with plugin_ prefix */
-
-#ifdef REGAL_PLUGIN_MODE
-#undef  REGAL_DECL
-#define REGAL_DECL extern
-#endif
-
 #endif /* __REGAL_DECLARATIONS_H */
 
 #ifndef __${HEADER_NAME}_H__
@@ -360,7 +353,7 @@ def apiFuncDefineCode(apis, args):
       c = ''
       c += 'REGAL_DECL %sREGAL_CALL %s(%s) \n{\n' % (rType, name, params)
 
-      emue = [ emuFindEntry( function, i['formulae'], i['member'] ) for i in emuRegal ]
+      emue = [ emuFindEntry( function, i['formulae'], i['name'] ) for i in emuRegal ]
 
       c +=   '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       if function.needsContext:
@@ -423,7 +416,7 @@ def apiFuncDefineCode(apis, args):
 
             c += indent(t)
 
-            c += listToString(indent(stripVertical(emuCodeGen(emue,'suffix')),'  '))
+            c += listToString(indent(stripVertical(emuCodeGen(emue,'type')),'  '))
 
       else:
         c += '  %s\n' % logFunction(function, 'App' )
@@ -448,7 +441,7 @@ def apiFuncDefineCode(apis, args):
 
         c += listToString(indent(stripVertical(emuCodeGen(emue,'init')),'  '))
 
-        c += listToString(indent(stripVertical(emuCodeGen(emue,'suffix')),'  '))
+        c += listToString(indent(stripVertical(emuCodeGen(emue,'type')),'  '))
         if not typeIsVoid(rType):
           c += '  return ret;\n'
       c += '}\n\n'
@@ -569,7 +562,6 @@ def apiFuncDeclareCode(apis, args):
     t = [] # function pointer typedefs
     m = [] # mangled names for REGAL_NAMESPACE support
     f = [] # gl names
-    p = [] # plugin names for REGAL_PLUGIN_MODE support
 
     for enum in api.enums:
       if enum.name == 'defines':
@@ -610,7 +602,6 @@ def apiFuncDeclareCode(apis, args):
       t.append((category,funcProtoCode(function, version, 'REGAL_CALL', True)))
       m.append((category,'#define %-35s r%-35s' % (name, name) ))
       f.append((category, apiFuncDecl( function ) ))
-      p.append((category,'REGAL_DECL %sREGAL_CALL plugin_%s(%s);' % (rType, name, rparams) ))
 
     def cmpEnum(a,b):
       if a[0]==b[0]:
@@ -631,9 +622,6 @@ def apiFuncDeclareCode(apis, args):
     def namespaceIfDef(category):
       return '#ifndef REGAL_NO_NAMESPACE_%s'%(upper(category).replace(' ','_'))
 
-    def pluginIfDef(category):
-      return '#ifndef REGAL_NO_PLUGIN_%s'%(upper(category).replace(' ','_'))
-
     def declarationIfDef(category):
       return '#ifndef REGAL_NO_DECLARATION_%s'%(upper(category).replace(' ','_'))
 
@@ -646,7 +634,6 @@ def apiFuncDeclareCode(apis, args):
     categories.update([ i[0] for i in e ])
     categories.update([ i[0] for i in t ])
     categories.update([ i[0] for i in m ])
-    categories.update([ i[0] for i in p ])
     categories.update([ i[0] for i in f ])
 
     for i in categories:
@@ -700,15 +687,10 @@ def apiFuncDeclareCode(apis, args):
     f = ifCategory(f,declarationIfDef)
     f = spaceCategory(f)
 
-    p.sort()
-    p = ifCategory(p,pluginIfDef)
-    p = spaceCategory(p)
-
     d.extend(e)
     d.extend(t)
     d.extend(m)
     d.extend(f)
-    d.extend(p)
 
     tmp = listToString(unfoldCategory(d,'/**\n ** %s\n **/',lambda x,y: cmp(x[0], y[0])))
 
