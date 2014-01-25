@@ -92,18 +92,18 @@ namespace ClientState
   inline static void enable(Procs &dt, RegalContext * ctx, const GLenum cap, const GLboolean enable)
   {
     if (enable)
-      dt.glEnableClientState(ctx,cap);
+      RglEnableClientState( dt,cap);
     else
-      dt.glDisableClientState(ctx,cap);
+      RglDisableClientState( dt,cap);
   }
 
   template <typename Procs>
   inline static void enablei(Procs &dt, RegalContext * ctx, const GLenum cap, const GLuint index, const GLboolean enable)
   {
     if (enable)
-      dt.glEnableClientStateiEXT(ctx,cap,index);
+      RglEnableClientStateiEXT( dt,cap,index);
     else
-      dt.glDisableClientStateiEXT(ctx,cap,index);
+      RglDisableClientStateiEXT( dt,cap,index);
   }
 
   inline static void enableToString(string_list& tmp, const GLboolean b, const char* bEnum, const char *delim = "\n")
@@ -225,29 +225,29 @@ namespace ClientState
           if (vaInt < 7)
           {
             enable(dt,ctx,vaEnum[vaInt][0],enabled);
-            dt.glBindBuffer(ctx, GL_ARRAY_BUFFER,buffer);
+            RglBindBuffer( dt, GL_ARRAY_BUFFER,buffer);
             switch (vaInt)
             {
               case VERTEX:
-                dt.glVertexPointer(ctx, size,type,stride,pointer);
+                RglVertexPointer( dt, size,type,stride,pointer);
                 break;
               case NORMAL:
-                dt.glNormalPointer(ctx, type,stride,pointer);
+                RglNormalPointer( dt, type,stride,pointer);
                 break;
               case FOG_COORD:
-                dt.glFogCoordPointer(ctx, type,stride,pointer);
+                RglFogCoordPointer( dt, type,stride,pointer);
                 break;
               case COLOR:
-                dt.glColorPointer(ctx, size,type,stride,pointer);
+                RglColorPointer( dt, size,type,stride,pointer);
                 break;
               case SECONDARY_COLOR:
-                dt.glSecondaryColorPointer(ctx, size,type,stride,pointer);
+                RglSecondaryColorPointer( dt, size,type,stride,pointer);
                 break;
               case INDEX:
-                dt.glIndexPointer(ctx, type,stride,pointer);
+                RglIndexPointer( dt, type,stride,pointer);
                 break;
               case EDGE_FLAG:
-                dt.glEdgeFlagPointer(ctx, stride,pointer);
+                RglEdgeFlagPointer( dt, stride,pointer);
                 break;
               default:
                 break;
@@ -257,8 +257,8 @@ namespace ClientState
           {
             GLuint index = static_cast<GLuint>(vaInt - 7);
             enablei(dt,ctx,vaEnum[7][0],index,enabled);
-            dt.glBindBuffer(ctx, GL_ARRAY_BUFFER,buffer);
-            dt.glMultiTexCoordPointerEXT(ctx, GL_TEXTURE0+index,size,type,stride,pointer);
+            RglBindBuffer( dt, GL_ARRAY_BUFFER,buffer);
+            RglMultiTexCoordPointerEXT( dt, GL_TEXTURE0+index,size,type,stride,pointer);
           }
         }
       }
@@ -284,7 +284,7 @@ namespace ClientState
             if (buffer != to.buffer)
             {
               buffer = to.buffer;
-              dt.glBindBuffer(ctx, GL_ARRAY_BUFFER,buffer);
+              RglBindBuffer( dt, GL_ARRAY_BUFFER,buffer);
             }
             if (size != to.size ||
                 type != to.type ||
@@ -298,25 +298,25 @@ namespace ClientState
               switch (vaInt)
               {
                 case VERTEX:
-                  dt.glVertexPointer(ctx, size,type,stride,pointer);
+                  RglVertexPointer( dt, size,type,stride,pointer);
                   break;
                 case NORMAL:
-                  dt.glNormalPointer(ctx, type,stride,pointer);
+                  RglNormalPointer( dt, type,stride,pointer);
                   break;
                 case FOG_COORD:
-                  dt.glFogCoordPointer(ctx, type,stride,pointer);
+                  RglFogCoordPointer( dt, type,stride,pointer);
                   break;
                 case COLOR:
-                  dt.glColorPointer(ctx, size,type,stride,pointer);
+                  RglColorPointer( dt, size,type,stride,pointer);
                   break;
                 case SECONDARY_COLOR:
-                  dt.glSecondaryColorPointer(ctx, size,type,stride,pointer);
+                  RglSecondaryColorPointer( dt, size,type,stride,pointer);
                   break;
                 case INDEX:
-                  dt.glIndexPointer(ctx, type,stride,pointer);
+                  RglIndexPointer( dt, type,stride,pointer);
                   break;
                 case EDGE_FLAG:
-                  dt.glEdgeFlagPointer(ctx, stride,pointer);
+                  RglEdgeFlagPointer( dt, stride,pointer);
                   break;
                 default:
                   break;
@@ -334,7 +334,7 @@ namespace ClientState
             if (buffer != to.buffer)
             {
               buffer = to.buffer;
-              dt.glBindBuffer(ctx, GL_ARRAY_BUFFER,buffer);
+              RglBindBuffer( dt, GL_ARRAY_BUFFER,buffer);
             }
             if (size != to.size ||
                 type != to.type ||
@@ -345,7 +345,7 @@ namespace ClientState
               type = to.type;
               stride = to.stride;
               pointer = to.pointer;
-              dt.glMultiTexCoordPointerEXT(ctx, GL_TEXTURE0+index,size,type,stride,pointer);
+              RglMultiTexCoordPointerEXT( dt, GL_TEXTURE0+index,size,type,stride,pointer);
             }
           }
         }
@@ -438,10 +438,10 @@ namespace ClientState
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
       {
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&buffer));
-        dt.glGetVertexAttribPointerv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_POINTER,reinterpret_cast<GLvoid **>(&offset));
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_STRIDE,reinterpret_cast<GLint*>(&stride));
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_DIVISOR,reinterpret_cast<GLint*>(&divisor));
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&buffer));
+        RglGetVertexAttribPointerv( dt, index,GL_VERTEX_ATTRIB_ARRAY_POINTER,reinterpret_cast<GLvoid **>(&offset));
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_STRIDE,reinterpret_cast<GLint*>(&stride));
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_DIVISOR,reinterpret_cast<GLint*>(&divisor));
       }
       return *this;
     }
@@ -452,8 +452,8 @@ namespace ClientState
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
       {
-        dt.glBindVertexBuffer(ctx, index,buffer,offset,stride);
-        dt.glVertexBindingDivisor(ctx, index,divisor);
+        RglBindVertexBuffer( dt, index,buffer,offset,stride);
+        RglVertexBindingDivisor( dt, index,divisor);
       }
       return *this;
     }
@@ -471,12 +471,12 @@ namespace ClientState
           buffer = to.buffer;
           offset = to.offset;
           stride = to.stride;
-          dt.glBindVertexBuffer(ctx, index,buffer,offset,stride);
+          RglBindVertexBuffer( dt, index,buffer,offset,stride);
         }
         if (divisor != to.divisor)
         {
           divisor = to.divisor;
-          dt.glVertexBindingDivisor(ctx, index,divisor);
+          RglVertexBindingDivisor( dt, index,divisor);
         }
       }
     }
@@ -543,18 +543,18 @@ namespace ClientState
       {
         GLint val;
 
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_ENABLED,&val);
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_ENABLED,&val);
         enabled = static_cast<GLboolean>(val);
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_SIZE,reinterpret_cast<GLint*>(&size));
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_TYPE,reinterpret_cast<GLint*>(&type));
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_RELATIVE_OFFSET,reinterpret_cast<GLint*>(&relativeOffset));
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_NORMALIZED,&val);
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_SIZE,reinterpret_cast<GLint*>(&size));
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_TYPE,reinterpret_cast<GLint*>(&type));
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_RELATIVE_OFFSET,reinterpret_cast<GLint*>(&relativeOffset));
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_NORMALIZED,&val);
         normalized = static_cast<GLboolean>(val);
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_INTEGER,&val);
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_INTEGER,&val);
         isInteger = static_cast<GLboolean>(val);
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_LONG,&val);
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_LONG,&val);
         isLong = static_cast<GLboolean>(val);
-        dt.glGetVertexAttribiv(ctx, index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&bindingIndex));
+        RglGetVertexAttribiv( dt, index,GL_VERTEX_ATTRIB_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&bindingIndex));
       }
       return *this;
     }
@@ -566,16 +566,16 @@ namespace ClientState
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
       {
         if (enabled)
-          dt.glEnableVertexAttribArray(ctx, index);
+          RglEnableVertexAttribArray( dt, index);
         else
-          dt.glDisableVertexAttribArray(ctx, index);
+          RglDisableVertexAttribArray( dt, index);
         if (isInteger)
-          dt.glVertexAttribIFormat(ctx, index,size,type,relativeOffset);
+          RglVertexAttribIFormat( dt, index,size,type,relativeOffset);
         else if (isLong)
-          dt.glVertexAttribLFormat(ctx, index,size,type,relativeOffset);
+          RglVertexAttribLFormat( dt, index,size,type,relativeOffset);
         else
-          dt.glVertexAttribFormat(ctx, index,size,type,normalized,relativeOffset);
-        dt.glVertexAttribBinding(ctx, index,bindingIndex);
+          RglVertexAttribFormat( dt, index,size,type,normalized,relativeOffset);
+        RglVertexAttribBinding( dt, index,bindingIndex);
       }
       return *this;
     }
@@ -590,9 +590,9 @@ namespace ClientState
         {
           enabled = to.enabled;
           if (enabled)
-            dt.glEnableVertexAttribArray(ctx, index);
+            RglEnableVertexAttribArray( dt, index);
           else
-            dt.glDisableVertexAttribArray(ctx, index);
+            RglDisableVertexAttribArray( dt, index);
         }
         if (isInteger != to.isInteger ||
             isLong != to.isLong ||
@@ -609,16 +609,16 @@ namespace ClientState
           relativeOffset = to.relativeOffset;
 
           if (isInteger)
-            dt.glVertexAttribIFormat(ctx, index,size,type,relativeOffset);
+            RglVertexAttribIFormat( dt, index,size,type,relativeOffset);
           else if (isLong)
-            dt.glVertexAttribLFormat(ctx, index,size,type,relativeOffset);
+            RglVertexAttribLFormat( dt, index,size,type,relativeOffset);
           else
-            dt.glVertexAttribFormat(ctx, index,size,type,normalized,relativeOffset);
+            RglVertexAttribFormat( dt, index,size,type,normalized,relativeOffset);
         }
         if (bindingIndex != to.bindingIndex)
         {
           bindingIndex = to.bindingIndex;
-          dt.glVertexAttribBinding(ctx, index,bindingIndex);
+          RglVertexAttribBinding( dt, index,bindingIndex);
         }
       }
     }
@@ -730,9 +730,9 @@ namespace ClientState
     template <typename Procs>
     VertexArray &get(Procs &dt, RegalContext * ctx)
     {
-      dt.glGetIntegerv(ctx, GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
+      RglGetIntegerv( dt, GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
       if (vertexArrayBinding)
-        dt.glBindVertexArray(ctx, 0);
+        RglBindVertexArray( dt, 0);
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
         named[ii].get(dt,static_cast<vaName>(ii));
@@ -742,21 +742,21 @@ namespace ClientState
       n = array_size( generic );
       for (size_t ii=0; ii<n; ii++)
         generic[ii].get(dt,static_cast<GLuint>(ii));
-      dt.glGetIntegerv(ctx, GL_ELEMENT_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&elementArrayBufferBinding));
-      dt.glGetIntegerv(ctx, GL_CLIENT_ACTIVE_TEXTURE,reinterpret_cast<GLint*>(&clientActiveTexture));
-      primitiveRestartFixedIndex = dt.glIsEnabled(ctx, GL_PRIMITIVE_RESTART_FIXED_INDEX);
-      primitiveRestart = dt.glIsEnabled(ctx, GL_PRIMITIVE_RESTART);
-      dt.glGetIntegerv(ctx, GL_PRIMITIVE_RESTART_INDEX,reinterpret_cast<GLint*>(&primitiveRestartIndex));
-      dt.glGetIntegerv(ctx, GL_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&arrayBufferBinding));
+      RglGetIntegerv( dt, GL_ELEMENT_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&elementArrayBufferBinding));
+      RglGetIntegerv( dt, GL_CLIENT_ACTIVE_TEXTURE,reinterpret_cast<GLint*>(&clientActiveTexture));
+      primitiveRestartFixedIndex = RglIsEnabled( dt, GL_PRIMITIVE_RESTART_FIXED_INDEX);
+      primitiveRestart = RglIsEnabled( dt, GL_PRIMITIVE_RESTART);
+      RglGetIntegerv( dt, GL_PRIMITIVE_RESTART_INDEX,reinterpret_cast<GLint*>(&primitiveRestartIndex));
+      RglGetIntegerv( dt, GL_ARRAY_BUFFER_BINDING,reinterpret_cast<GLint*>(&arrayBufferBinding));
       if (vertexArrayBinding)
-        dt.glBindVertexArray(ctx, vertexArrayBinding);
+        RglBindVertexArray( dt, vertexArrayBinding);
       return *this;
     }
 
     template <typename Procs>
     const VertexArray &set(Procs &dt, RegalContext * ctx, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
-      dt.glBindVertexArray(ctx, 0);
+      RglBindVertexArray( dt, 0);
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
         named[n-ii-1].set(dt,ctx,static_cast<vaName>(n-ii-1),driverAllowsVertexAttributeArraysWithoutBoundBuffer);
@@ -766,19 +766,19 @@ namespace ClientState
       n = array_size( generic );
       for (size_t ii=0; ii<n; ii++)
         generic[n-ii-1].set(dt,ctx,static_cast<GLuint>(n-ii-1));
-      dt.glBindBuffer(ctx, GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
-      dt.glClientActiveTexture(ctx, clientActiveTexture);
+      RglBindBuffer( dt, GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
+      RglClientActiveTexture( dt, clientActiveTexture);
       if (primitiveRestartFixedIndex)
-        dt.glEnable(ctx, GL_PRIMITIVE_RESTART_FIXED_INDEX);
+        RglEnable( dt, GL_PRIMITIVE_RESTART_FIXED_INDEX);
       else
-        dt.glDisable(ctx, GL_PRIMITIVE_RESTART_FIXED_INDEX);
+        RglDisable( dt, GL_PRIMITIVE_RESTART_FIXED_INDEX);
       if (primitiveRestart)
-        dt.glEnable(ctx, GL_PRIMITIVE_RESTART);
+        RglEnable( dt, GL_PRIMITIVE_RESTART);
       else
-        dt.glDisable(ctx, GL_PRIMITIVE_RESTART);
-      dt.glPrimitiveRestartIndex(ctx, primitiveRestartIndex);
-      dt.glBindBuffer(ctx, GL_ARRAY_BUFFER,arrayBufferBinding);
-      dt.glBindVertexArray(ctx, vertexArrayBinding);
+        RglDisable( dt, GL_PRIMITIVE_RESTART);
+      RglPrimitiveRestartIndex( dt, primitiveRestartIndex);
+      RglBindBuffer( dt, GL_ARRAY_BUFFER,arrayBufferBinding);
+      RglBindVertexArray( dt, vertexArrayBinding);
       return *this;
     }
 
@@ -788,7 +788,7 @@ namespace ClientState
       GLuint tmpVertexArrayBinding = to.vertexArrayBinding;
       if (vertexArrayBinding) {
         vertexArrayBinding = 0;
-        dt.glBindVertexArray(ctx,vertexArrayBinding);
+        RglBindVertexArray( dt,vertexArrayBinding);
       }
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
@@ -801,37 +801,37 @@ namespace ClientState
         generic[n-ii-1].transition(dt,ctx,to.generic[n-ii-1],static_cast<GLuint>(n-ii-1));
       if (elementArrayBufferBinding != to.elementArrayBufferBinding) {
         elementArrayBufferBinding = to.elementArrayBufferBinding;
-        dt.glBindBuffer(ctx,GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
+        RglBindBuffer( dt,GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
       }
       if (clientActiveTexture != to.clientActiveTexture) {
         clientActiveTexture = to.clientActiveTexture;
-        dt.glClientActiveTexture(ctx,clientActiveTexture);
+        RglClientActiveTexture( dt,clientActiveTexture);
       }
       if (primitiveRestartFixedIndex != to.primitiveRestartFixedIndex) {
         primitiveRestartFixedIndex = to.primitiveRestartFixedIndex;
         if (primitiveRestartFixedIndex)
-          dt.glEnable(ctx,GL_PRIMITIVE_RESTART_FIXED_INDEX);
+          RglEnable( dt,GL_PRIMITIVE_RESTART_FIXED_INDEX);
         else
-          dt.glDisable(ctx,GL_PRIMITIVE_RESTART_FIXED_INDEX);
+          RglDisable( dt,GL_PRIMITIVE_RESTART_FIXED_INDEX);
       }
       if (primitiveRestart != to.primitiveRestart) {
         primitiveRestart = to.primitiveRestart;
         if (primitiveRestart)
-          dt.glEnable(ctx,GL_PRIMITIVE_RESTART);
+          RglEnable( dt,GL_PRIMITIVE_RESTART);
         else
-          dt.glDisable(ctx,GL_PRIMITIVE_RESTART);
+          RglDisable( dt,GL_PRIMITIVE_RESTART);
       }
       if (primitiveRestartIndex != to.primitiveRestartIndex) {
         primitiveRestartIndex = to.primitiveRestartIndex;
-        dt.glPrimitiveRestartIndex(ctx,primitiveRestartIndex);
+        RglPrimitiveRestartIndex( dt,primitiveRestartIndex);
       }
       if (arrayBufferBinding != to.arrayBufferBinding) {
         arrayBufferBinding = to.arrayBufferBinding;
-        dt.glBindBuffer(ctx,GL_ARRAY_BUFFER,arrayBufferBinding);
+        RglBindBuffer( dt,GL_ARRAY_BUFFER,arrayBufferBinding);
       }
       if (vertexArrayBinding != tmpVertexArrayBinding) {
         vertexArrayBinding = tmpVertexArrayBinding;
-        dt.glBindVertexArray(ctx,vertexArrayBinding);
+        RglBindVertexArray( dt,vertexArrayBinding);
       }
     }
 
@@ -1800,48 +1800,48 @@ namespace ClientState
     template <typename Procs>
     PixelStore &get(Procs &dt, RegalContext * ctx)
     {
-      dt.glGetBooleanv(ctx, GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
-      dt.glGetBooleanv(ctx, GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
-      dt.glGetIntegerv(ctx, GL_UNPACK_IMAGE_HEIGHT,&unpackImageHeight);
-      dt.glGetIntegerv(ctx, GL_UNPACK_SKIP_IMAGES,&unpackSkipImages);
-      dt.glGetIntegerv(ctx, GL_UNPACK_ROW_LENGTH,&unpackRowLength);
-      dt.glGetIntegerv(ctx, GL_UNPACK_SKIP_ROWS,&unpackSkipRows);
-      dt.glGetIntegerv(ctx, GL_UNPACK_SKIP_PIXELS,&unpackSkipPixels);
-      dt.glGetIntegerv(ctx, GL_UNPACK_ALIGNMENT,&unpackAlignment);
-      dt.glGetBooleanv(ctx, GL_PACK_SWAP_BYTES,&packSwapBytes);
-      dt.glGetBooleanv(ctx, GL_PACK_LSB_FIRST,&packLsbFirst);
-      dt.glGetIntegerv(ctx, GL_PACK_IMAGE_HEIGHT,&packImageHeight);
-      dt.glGetIntegerv(ctx, GL_PACK_SKIP_IMAGES,&packSkipImages);
-      dt.glGetIntegerv(ctx, GL_PACK_ROW_LENGTH,&packRowLength);
-      dt.glGetIntegerv(ctx, GL_PACK_SKIP_ROWS,&packSkipRows);
-      dt.glGetIntegerv(ctx, GL_PACK_SKIP_PIXELS,&packSkipPixels);
-      dt.glGetIntegerv(ctx, GL_PACK_ALIGNMENT,&packAlignment);
-      dt.glGetIntegerv(ctx, GL_PIXEL_UNPACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelUnpackBufferBinding));
-      dt.glGetIntegerv(ctx, GL_PIXEL_PACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelPackBufferBinding));
+      RglGetBooleanv( dt, GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
+      RglGetBooleanv( dt, GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
+      RglGetIntegerv( dt, GL_UNPACK_IMAGE_HEIGHT,&unpackImageHeight);
+      RglGetIntegerv( dt, GL_UNPACK_SKIP_IMAGES,&unpackSkipImages);
+      RglGetIntegerv( dt, GL_UNPACK_ROW_LENGTH,&unpackRowLength);
+      RglGetIntegerv( dt, GL_UNPACK_SKIP_ROWS,&unpackSkipRows);
+      RglGetIntegerv( dt, GL_UNPACK_SKIP_PIXELS,&unpackSkipPixels);
+      RglGetIntegerv( dt, GL_UNPACK_ALIGNMENT,&unpackAlignment);
+      RglGetBooleanv( dt, GL_PACK_SWAP_BYTES,&packSwapBytes);
+      RglGetBooleanv( dt, GL_PACK_LSB_FIRST,&packLsbFirst);
+      RglGetIntegerv( dt, GL_PACK_IMAGE_HEIGHT,&packImageHeight);
+      RglGetIntegerv( dt, GL_PACK_SKIP_IMAGES,&packSkipImages);
+      RglGetIntegerv( dt, GL_PACK_ROW_LENGTH,&packRowLength);
+      RglGetIntegerv( dt, GL_PACK_SKIP_ROWS,&packSkipRows);
+      RglGetIntegerv( dt, GL_PACK_SKIP_PIXELS,&packSkipPixels);
+      RglGetIntegerv( dt, GL_PACK_ALIGNMENT,&packAlignment);
+      RglGetIntegerv( dt, GL_PIXEL_UNPACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelUnpackBufferBinding));
+      RglGetIntegerv( dt, GL_PIXEL_PACK_BUFFER_BINDING,reinterpret_cast<GLint*>(&pixelPackBufferBinding));
       return *this;
     }
 
     template <typename Procs>
     const PixelStore &set(Procs &dt, RegalContext * ctx) const
     {
-      dt.glPixelStorei(ctx, GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
-      dt.glPixelStorei(ctx, GL_UNPACK_LSB_FIRST,unpackLsbFirst);
-      dt.glPixelStorei(ctx, GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
-      dt.glPixelStorei(ctx, GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
-      dt.glPixelStorei(ctx, GL_UNPACK_ROW_LENGTH,unpackRowLength);
-      dt.glPixelStorei(ctx, GL_UNPACK_SKIP_ROWS,unpackSkipRows);
-      dt.glPixelStorei(ctx, GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
-      dt.glPixelStorei(ctx, GL_UNPACK_ALIGNMENT,unpackAlignment);
-      dt.glPixelStorei(ctx, GL_PACK_SWAP_BYTES,packSwapBytes);
-      dt.glPixelStorei(ctx, GL_PACK_LSB_FIRST,packLsbFirst);
-      dt.glPixelStorei(ctx, GL_PACK_IMAGE_HEIGHT,packImageHeight);
-      dt.glPixelStorei(ctx, GL_PACK_SKIP_IMAGES,packSkipImages);
-      dt.glPixelStorei(ctx, GL_PACK_ROW_LENGTH,packRowLength);
-      dt.glPixelStorei(ctx, GL_PACK_SKIP_ROWS,packSkipRows);
-      dt.glPixelStorei(ctx, GL_PACK_SKIP_PIXELS,packSkipPixels);
-      dt.glPixelStorei(ctx, GL_PACK_ALIGNMENT,packAlignment);
-      dt.glBindBuffer(ctx, GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
-      dt.glBindBuffer(ctx, GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
+      RglPixelStorei( dt, GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
+      RglPixelStorei( dt, GL_UNPACK_LSB_FIRST,unpackLsbFirst);
+      RglPixelStorei( dt, GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
+      RglPixelStorei( dt, GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
+      RglPixelStorei( dt, GL_UNPACK_ROW_LENGTH,unpackRowLength);
+      RglPixelStorei( dt, GL_UNPACK_SKIP_ROWS,unpackSkipRows);
+      RglPixelStorei( dt, GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
+      RglPixelStorei( dt, GL_UNPACK_ALIGNMENT,unpackAlignment);
+      RglPixelStorei( dt, GL_PACK_SWAP_BYTES,packSwapBytes);
+      RglPixelStorei( dt, GL_PACK_LSB_FIRST,packLsbFirst);
+      RglPixelStorei( dt, GL_PACK_IMAGE_HEIGHT,packImageHeight);
+      RglPixelStorei( dt, GL_PACK_SKIP_IMAGES,packSkipImages);
+      RglPixelStorei( dt, GL_PACK_ROW_LENGTH,packRowLength);
+      RglPixelStorei( dt, GL_PACK_SKIP_ROWS,packSkipRows);
+      RglPixelStorei( dt, GL_PACK_SKIP_PIXELS,packSkipPixels);
+      RglPixelStorei( dt, GL_PACK_ALIGNMENT,packAlignment);
+      RglBindBuffer( dt, GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
+      RglBindBuffer( dt, GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
       return *this;
     }
 
@@ -1850,75 +1850,75 @@ namespace ClientState
     {
       if (unpackSwapBytes != to.unpackSwapBytes) {
         unpackSwapBytes = to.unpackSwapBytes;
-        dt.glPixelStorei(ctx, GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
+        RglPixelStorei( dt, GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
       }
       if (unpackLsbFirst != to.unpackLsbFirst) {
         unpackLsbFirst = to.unpackLsbFirst;
-        dt.glPixelStorei(ctx, GL_UNPACK_LSB_FIRST,unpackLsbFirst);
+        RglPixelStorei( dt, GL_UNPACK_LSB_FIRST,unpackLsbFirst);
       }
       if (unpackImageHeight != to.unpackImageHeight) {
         unpackImageHeight = to.unpackImageHeight;
-        dt.glPixelStorei(ctx, GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
+        RglPixelStorei( dt, GL_UNPACK_IMAGE_HEIGHT,unpackImageHeight);
       }
       if (unpackSkipImages != to.unpackSkipImages) {
         unpackSkipImages = to.unpackSkipImages;
-        dt.glPixelStorei(ctx, GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
+        RglPixelStorei( dt, GL_UNPACK_SKIP_IMAGES,unpackSkipImages);
       }
       if (unpackRowLength != to.unpackRowLength) {
         unpackRowLength = to.unpackRowLength;
-        dt.glPixelStorei(ctx, GL_UNPACK_ROW_LENGTH,unpackRowLength);
+        RglPixelStorei( dt, GL_UNPACK_ROW_LENGTH,unpackRowLength);
       }
       if (unpackSkipRows != to.unpackSkipRows) {
         unpackSkipRows = to.unpackSkipRows;
-        dt.glPixelStorei(ctx, GL_UNPACK_SKIP_ROWS,unpackSkipRows);
+        RglPixelStorei( dt, GL_UNPACK_SKIP_ROWS,unpackSkipRows);
       }
       if (unpackSkipPixels != to.unpackSkipPixels) {
         unpackSkipPixels = to.unpackSkipPixels;
-        dt.glPixelStorei(ctx, GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
+        RglPixelStorei( dt, GL_UNPACK_SKIP_PIXELS,unpackSkipPixels);
       }
       if (unpackAlignment != to.unpackAlignment) {
         unpackAlignment = to.unpackAlignment;
-        dt.glPixelStorei(ctx, GL_UNPACK_ALIGNMENT,unpackAlignment);
+        RglPixelStorei( dt, GL_UNPACK_ALIGNMENT,unpackAlignment);
       }
       if (packSwapBytes != to.packSwapBytes) {
         packSwapBytes = to.packSwapBytes;
-        dt.glPixelStorei(ctx, GL_PACK_SWAP_BYTES,packSwapBytes);
+        RglPixelStorei( dt, GL_PACK_SWAP_BYTES,packSwapBytes);
       }
       if (packLsbFirst != to.packLsbFirst) {
         packLsbFirst = to.packLsbFirst;
-        dt.glPixelStorei(ctx, GL_PACK_LSB_FIRST,packLsbFirst);
+        RglPixelStorei( dt, GL_PACK_LSB_FIRST,packLsbFirst);
       }
       if (packImageHeight != to.packImageHeight) {
         packImageHeight = to.packImageHeight;
-        dt.glPixelStorei(ctx, GL_PACK_IMAGE_HEIGHT,packImageHeight);
+        RglPixelStorei( dt, GL_PACK_IMAGE_HEIGHT,packImageHeight);
       }
       if (packSkipImages != to.packSkipImages) {
         packSkipImages = to.packSkipImages;
-        dt.glPixelStorei(ctx, GL_PACK_SKIP_IMAGES,packSkipImages);
+        RglPixelStorei( dt, GL_PACK_SKIP_IMAGES,packSkipImages);
       }
       if (packRowLength != to.packRowLength) {
         packRowLength = to.packRowLength;
-        dt.glPixelStorei(ctx, GL_PACK_ROW_LENGTH,packRowLength);
+        RglPixelStorei( dt, GL_PACK_ROW_LENGTH,packRowLength);
       }
       if (packSkipRows != to.packSkipRows) {
         packSkipRows = to.packSkipRows;
-        dt.glPixelStorei(ctx, GL_PACK_SKIP_ROWS,packSkipRows);
+        RglPixelStorei( dt, GL_PACK_SKIP_ROWS,packSkipRows);
       }
       if (packSkipPixels != to.packSkipPixels) {
         packSkipPixels = to.packSkipPixels;
-        dt.glPixelStorei(ctx, GL_PACK_SKIP_PIXELS,packSkipPixels);
+        RglPixelStorei( dt, GL_PACK_SKIP_PIXELS,packSkipPixels);
       }
       if (packAlignment != to.packAlignment) {
         packAlignment = to.packAlignment;
-        dt.glPixelStorei(ctx, GL_PACK_ALIGNMENT,packAlignment);
+        RglPixelStorei( dt, GL_PACK_ALIGNMENT,packAlignment);
       }
       if (pixelUnpackBufferBinding != to.pixelUnpackBufferBinding) {
         pixelUnpackBufferBinding = to.pixelUnpackBufferBinding;
-        dt.glBindBuffer(ctx, GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
+        RglBindBuffer( dt, GL_PIXEL_UNPACK_BUFFER,pixelUnpackBufferBinding);
       }
       if (pixelPackBufferBinding != to.pixelPackBufferBinding) {
         pixelPackBufferBinding = to.pixelPackBufferBinding;
-        dt.glBindBuffer(ctx, GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
+        RglBindBuffer( dt, GL_PIXEL_PACK_BUFFER,pixelPackBufferBinding);
       }
     }
 

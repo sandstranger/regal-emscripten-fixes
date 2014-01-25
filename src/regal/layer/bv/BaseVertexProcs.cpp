@@ -63,7 +63,7 @@ static void REGAL_CALL bv_glBindBuffer(Layer *_layer, GLenum target, GLuint buff
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glBindBuffer( target, buffer );
+  self->glBindBuffer( target, buffer );
 
   RglBindBuffer( orig, target, buffer );
 
@@ -76,7 +76,7 @@ static void REGAL_CALL bv_glBindVertexArray(Layer *_layer, GLuint array)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glBindVertexArray( array );
+  self->glBindVertexArray( array );
 
   RglBindVertexArray( orig, array );
 
@@ -89,7 +89,7 @@ static void REGAL_CALL bv_glBindVertexBuffer(Layer *_layer, GLuint bindingindex,
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glBindVertexBuffer( bindingindex, buffer, offset, stride );
+  self->glBindVertexBuffer( bindingindex, buffer, offset, stride );
 
   RglBindVertexBuffer( orig, bindingindex, buffer, offset, stride );
 
@@ -102,7 +102,7 @@ static void REGAL_CALL bv_glClientActiveTexture(Layer *_layer, GLenum texture)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glClientActiveTexture( texture );
+  self->glClientActiveTexture( texture );
 
   RglClientActiveTexture( orig, texture );
 
@@ -115,7 +115,7 @@ static void REGAL_CALL bv_glClientActiveTextureARB(Layer *_layer, GLenum texture
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glClientActiveTexture( texture );
+  self->glClientActiveTexture( texture );
 
   RglClientActiveTextureARB( orig, texture );
 
@@ -128,7 +128,7 @@ static void REGAL_CALL bv_glColorPointer(Layer *_layer, GLint size, GLenum type,
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glColorPointer( size, type, stride, pointer );
+  self->glColorPointer( size, type, stride, pointer );
 
   RglColorPointer( orig, size, type, stride, pointer );
 
@@ -141,7 +141,7 @@ static void REGAL_CALL bv_glDisable(Layer *_layer, GLenum cap)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisable( cap );
+  self->glDisable( cap );
 
   RglDisable( orig, cap );
 
@@ -154,7 +154,7 @@ static void REGAL_CALL bv_glDisableClientState(Layer *_layer, GLenum cap)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisableClientState( cap );
+  self->glDisableClientState( cap );
 
   RglDisableClientState( orig, cap );
 
@@ -167,7 +167,7 @@ static void REGAL_CALL bv_glDisableClientStateIndexedEXT(Layer *_layer, GLenum a
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisableClientStateIndexedEXT( array, index );
+  self->glDisableClientStateIndexedEXT( array, index );
 
   RglDisableClientStateIndexedEXT( orig, array, index );
 
@@ -180,7 +180,7 @@ static void REGAL_CALL bv_glDisableClientStateiEXT(Layer *_layer, GLenum array, 
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisableClientStateiEXT( array, index );
+  self->glDisableClientStateiEXT( array, index );
 
   RglDisableClientStateiEXT( orig, array, index );
 
@@ -193,7 +193,7 @@ static void REGAL_CALL bv_glDisableIndexedEXT(Layer *_layer, GLenum target, GLui
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisableIndexedEXT( target, index );
+  self->glDisableIndexedEXT( target, index );
 
   RglDisableIndexedEXT( orig, target, index );
 
@@ -206,7 +206,7 @@ static void REGAL_CALL bv_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint va
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisableVertexArrayAttribEXT( vaobj, array );
+  self->glDisableVertexArrayAttribEXT( vaobj, array );
 
   RglDisableVertexArrayAttribEXT( orig, vaobj, array );
 
@@ -219,7 +219,7 @@ static void REGAL_CALL bv_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj, G
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisableVertexArrayEXT( vaobj, array );
+  self->glDisableVertexArrayEXT( vaobj, array );
 
   RglDisableVertexArrayEXT( orig, vaobj, array );
 
@@ -232,7 +232,7 @@ static void REGAL_CALL bv_glDisableVertexAttribArray(Layer *_layer, GLuint index
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisableVertexAttribArray( index );
+  self->glDisableVertexAttribArray( index );
 
   RglDisableVertexAttribArray( orig, index );
 
@@ -245,7 +245,7 @@ static void REGAL_CALL bv_glDisablei(Layer *_layer, GLenum cap, GLuint index)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glDisablei( cap, index );
+  self->glDisablei( cap, index );
 
   RglDisablei( orig, cap, index );
 
@@ -258,7 +258,7 @@ static void REGAL_CALL bv_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, G
   BaseVertexOriginate & orig = self->orig;
 
   // impl
-  if( _context->bv->glDrawElementsBaseVertex( *_context, mode, count, type, indices, basevertex ) ) {
+  if( self->glDrawElementsBaseVertex( mode, count, type, indices, basevertex ) ) {
     return;
   }
 
@@ -273,7 +273,7 @@ static void REGAL_CALL bv_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenu
   BaseVertexOriginate & orig = self->orig;
 
   // impl
-  if( _context->bv->glDrawElementsInstancedBaseVertex( *_context, mode, count, type, indices, primcount, basevertex ) ) {
+  if( self->glDrawElementsInstancedBaseVertex( mode, count, type, indices, primcount, basevertex ) ) {
     return;
   }
 
@@ -288,7 +288,7 @@ static void REGAL_CALL bv_glDrawElementsInstancedBaseVertexBaseInstance(Layer *_
   BaseVertexOriginate & orig = self->orig;
 
   // impl
-  if( _context->bv->glDrawElementsInstancedBaseVertexBaseInstance( *_context, mode, count, type, indices, primcount, basevertex, baseinstance ) ) {
+  if( self->glDrawElementsInstancedBaseVertexBaseInstance( mode, count, type, indices, primcount, basevertex, baseinstance ) ) {
     return;
   }
 
@@ -303,7 +303,7 @@ static void REGAL_CALL bv_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mo
   BaseVertexOriginate & orig = self->orig;
 
   // impl
-  if( _context->bv->glDrawRangeElementsBaseVertex( *_context, mode, start, end, count, type, indices, basevertex ) ) {
+  if( self->glDrawRangeElementsBaseVertex( mode, start, end, count, type, indices, basevertex ) ) {
     return;
   }
 
@@ -318,7 +318,7 @@ static void REGAL_CALL bv_glEdgeFlagPointer(Layer *_layer, GLsizei stride, const
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEdgeFlagPointer( stride, pointer );
+  self->glEdgeFlagPointer( stride, pointer );
 
   RglEdgeFlagPointer( orig, stride, pointer );
 
@@ -331,7 +331,7 @@ static void REGAL_CALL bv_glEnable(Layer *_layer, GLenum cap)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnable( cap );
+  self->glEnable( cap );
 
   RglEnable( orig, cap );
 
@@ -344,7 +344,7 @@ static void REGAL_CALL bv_glEnableClientState(Layer *_layer, GLenum cap)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnableClientState( cap );
+  self->glEnableClientState( cap );
 
   RglEnableClientState( orig, cap );
 
@@ -357,7 +357,7 @@ static void REGAL_CALL bv_glEnableClientStateIndexedEXT(Layer *_layer, GLenum ar
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnableClientStateIndexedEXT( array, index );
+  self->glEnableClientStateIndexedEXT( array, index );
 
   RglEnableClientStateIndexedEXT( orig, array, index );
 
@@ -370,7 +370,7 @@ static void REGAL_CALL bv_glEnableClientStateiEXT(Layer *_layer, GLenum array, G
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnableClientStateiEXT( array, index );
+  self->glEnableClientStateiEXT( array, index );
 
   RglEnableClientStateiEXT( orig, array, index );
 
@@ -383,7 +383,7 @@ static void REGAL_CALL bv_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuin
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnableIndexedEXT( target, index );
+  self->glEnableIndexedEXT( target, index );
 
   RglEnableIndexedEXT( orig, target, index );
 
@@ -396,7 +396,7 @@ static void REGAL_CALL bv_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint vao
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnableVertexArrayAttribEXT( vaobj, array );
+  self->glEnableVertexArrayAttribEXT( vaobj, array );
 
   RglEnableVertexArrayAttribEXT( orig, vaobj, array );
 
@@ -409,7 +409,7 @@ static void REGAL_CALL bv_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, GL
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnableVertexArrayEXT( vaobj, array );
+  self->glEnableVertexArrayEXT( vaobj, array );
 
   RglEnableVertexArrayEXT( orig, vaobj, array );
 
@@ -422,7 +422,7 @@ static void REGAL_CALL bv_glEnableVertexAttribArray(Layer *_layer, GLuint index)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnableVertexAttribArray( index );
+  self->glEnableVertexAttribArray( index );
 
   RglEnableVertexAttribArray( orig, index );
 
@@ -435,7 +435,7 @@ static void REGAL_CALL bv_glEnablei(Layer *_layer, GLenum cap, GLuint index)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glEnablei( cap, index );
+  self->glEnablei( cap, index );
 
   RglEnablei( orig, cap, index );
 
@@ -448,7 +448,7 @@ static void REGAL_CALL bv_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei 
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glFogCoordPointer( type, stride, pointer );
+  self->glFogCoordPointer( type, stride, pointer );
 
   RglFogCoordPointer( orig, type, stride, pointer );
 
@@ -461,7 +461,7 @@ static void REGAL_CALL bv_glIndexPointer(Layer *_layer, GLenum type, GLsizei str
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glIndexPointer( type, stride, pointer );
+  self->glIndexPointer( type, stride, pointer );
 
   RglIndexPointer( orig, type, stride, pointer );
 
@@ -474,7 +474,7 @@ static void REGAL_CALL bv_glInterleavedArrays(Layer *_layer, GLenum format, GLsi
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glInterleavedArrays( format, stride, pointer );
+  self->glInterleavedArrays( format, stride, pointer );
 
   RglInterleavedArrays( orig, format, stride, pointer );
 
@@ -487,7 +487,7 @@ static void REGAL_CALL bv_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mo
   BaseVertexOriginate & orig = self->orig;
 
   // impl
-  if( _context->bv->glMultiDrawElementsBaseVertex( *_context, mode, count, type, indices, primcount, basevertex ) ) {
+  if( self->glMultiDrawElementsBaseVertex( mode, count, type, indices, primcount, basevertex ) ) {
     return;
   }
 
@@ -502,7 +502,7 @@ static void REGAL_CALL bv_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texuni
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glMultiTexCoordPointerEXT( texunit, size, type, stride, pointer );
+  self->glMultiTexCoordPointerEXT( texunit, size, type, stride, pointer );
 
   RglMultiTexCoordPointerEXT( orig, texunit, size, type, stride, pointer );
 
@@ -515,7 +515,7 @@ static void REGAL_CALL bv_glNormalPointer(Layer *_layer, GLenum type, GLsizei st
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glNormalPointer( type, stride, pointer );
+  self->glNormalPointer( type, stride, pointer );
 
   RglNormalPointer( orig, type, stride, pointer );
 
@@ -528,7 +528,7 @@ static void REGAL_CALL bv_glPrimitiveRestartIndex(Layer *_layer, GLuint index)
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glPrimitiveRestartIndex( index );
+  self->glPrimitiveRestartIndex( index );
 
   RglPrimitiveRestartIndex( orig, index );
 
@@ -541,7 +541,7 @@ static void REGAL_CALL bv_glSecondaryColorPointer(Layer *_layer, GLint size, GLe
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glSecondaryColorPointer( size, type, stride, pointer );
+  self->glSecondaryColorPointer( size, type, stride, pointer );
 
   RglSecondaryColorPointer( orig, size, type, stride, pointer );
 
@@ -554,7 +554,7 @@ static void REGAL_CALL bv_glTexCoordPointer(Layer *_layer, GLint size, GLenum ty
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glTexCoordPointer( size, type, stride, pointer );
+  self->glTexCoordPointer( size, type, stride, pointer );
 
   RglTexCoordPointer( orig, size, type, stride, pointer );
 
@@ -567,7 +567,7 @@ static void REGAL_CALL bv_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint vaob
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
+  self->glVertexArrayColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
   RglVertexArrayColorOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
@@ -580,7 +580,7 @@ static void REGAL_CALL bv_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint v
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayEdgeFlagOffsetEXT( vaobj, buffer, stride, offset );
+  self->glVertexArrayEdgeFlagOffsetEXT( vaobj, buffer, stride, offset );
 
   RglVertexArrayEdgeFlagOffsetEXT( orig, vaobj, buffer, stride, offset );
 
@@ -593,7 +593,7 @@ static void REGAL_CALL bv_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint v
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayFogCoordOffsetEXT( vaobj, buffer, type, stride, offset );
+  self->glVertexArrayFogCoordOffsetEXT( vaobj, buffer, type, stride, offset );
 
   RglVertexArrayFogCoordOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
@@ -606,7 +606,7 @@ static void REGAL_CALL bv_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint vaob
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayIndexOffsetEXT( vaobj, buffer, type, stride, offset );
+  self->glVertexArrayIndexOffsetEXT( vaobj, buffer, type, stride, offset );
 
   RglVertexArrayIndexOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
@@ -619,7 +619,7 @@ static void REGAL_CALL bv_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, GLu
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayMultiTexCoordOffsetEXT( vaobj, buffer, texunit, size, type, stride, offset );
+  self->glVertexArrayMultiTexCoordOffsetEXT( vaobj, buffer, texunit, size, type, stride, offset );
 
   RglVertexArrayMultiTexCoordOffsetEXT( orig, vaobj, buffer, texunit, size, type, stride, offset );
 
@@ -632,7 +632,7 @@ static void REGAL_CALL bv_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint vao
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayNormalOffsetEXT( vaobj, buffer, type, stride, offset );
+  self->glVertexArrayNormalOffsetEXT( vaobj, buffer, type, stride, offset );
 
   RglVertexArrayNormalOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
@@ -645,7 +645,7 @@ static void REGAL_CALL bv_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, GL
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArraySecondaryColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
+  self->glVertexArraySecondaryColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
   RglVertexArraySecondaryColorOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
@@ -658,7 +658,7 @@ static void REGAL_CALL bv_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint v
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayTexCoordOffsetEXT( vaobj, buffer, size, type, stride, offset );
+  self->glVertexArrayTexCoordOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
   RglVertexArrayTexCoordOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
@@ -671,7 +671,7 @@ static void REGAL_CALL bv_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, GLu
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayVertexAttribIOffsetEXT( vaobj, buffer, index, size, type, stride, offset );
+  self->glVertexArrayVertexAttribIOffsetEXT( vaobj, buffer, index, size, type, stride, offset );
 
   RglVertexArrayVertexAttribIOffsetEXT( orig, vaobj, buffer, index, size, type, stride, offset );
 
@@ -684,7 +684,7 @@ static void REGAL_CALL bv_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GLui
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayVertexAttribOffsetEXT( vaobj, buffer, index, size, type, normalized, stride, offset );
+  self->glVertexArrayVertexAttribOffsetEXT( vaobj, buffer, index, size, type, normalized, stride, offset );
 
   RglVertexArrayVertexAttribOffsetEXT( orig, vaobj, buffer, index, size, type, normalized, stride, offset );
 
@@ -697,7 +697,7 @@ static void REGAL_CALL bv_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint vao
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexArrayVertexOffsetEXT( vaobj, buffer, size, type, stride, offset );
+  self->glVertexArrayVertexOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
   RglVertexArrayVertexOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
@@ -710,7 +710,7 @@ static void REGAL_CALL bv_glVertexAttribBinding(Layer *_layer, GLuint attribinde
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribBinding( attribindex, bindingindex );
+  self->glVertexAttribBinding( attribindex, bindingindex );
 
   RglVertexAttribBinding( orig, attribindex, bindingindex );
 
@@ -723,7 +723,7 @@ static void REGAL_CALL bv_glVertexAttribDivisor(Layer *_layer, GLuint index, GLu
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribDivisor( index, divisor );
+  self->glVertexAttribDivisor( index, divisor );
 
   RglVertexAttribDivisor( orig, index, divisor );
 
@@ -736,7 +736,7 @@ static void REGAL_CALL bv_glVertexAttribFormat(Layer *_layer, GLuint attribindex
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
+  self->glVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
 
   RglVertexAttribFormat( orig, attribindex, size, type, normalized, relativeoffset );
 
@@ -749,7 +749,7 @@ static void REGAL_CALL bv_glVertexAttribIFormat(Layer *_layer, GLuint attribinde
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribIFormat( attribindex, size, type, relativeoffset );
+  self->glVertexAttribIFormat( attribindex, size, type, relativeoffset );
 
   RglVertexAttribIFormat( orig, attribindex, size, type, relativeoffset );
 
@@ -762,7 +762,7 @@ static void REGAL_CALL bv_glVertexAttribIPointer(Layer *_layer, GLuint index, GL
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribIPointer( index, size, type, stride, pointer );
+  self->glVertexAttribIPointer( index, size, type, stride, pointer );
 
   RglVertexAttribIPointer( orig, index, size, type, stride, pointer );
 
@@ -775,7 +775,7 @@ static void REGAL_CALL bv_glVertexAttribLFormat(Layer *_layer, GLuint attribinde
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribLFormat( attribindex, size, type, relativeoffset );
+  self->glVertexAttribLFormat( attribindex, size, type, relativeoffset );
 
   RglVertexAttribLFormat( orig, attribindex, size, type, relativeoffset );
 
@@ -788,7 +788,7 @@ static void REGAL_CALL bv_glVertexAttribLPointer(Layer *_layer, GLuint index, GL
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribLPointer( index, size, type, stride, pointer );
+  self->glVertexAttribLPointer( index, size, type, stride, pointer );
 
   RglVertexAttribLPointer( orig, index, size, type, stride, pointer );
 
@@ -801,7 +801,7 @@ static void REGAL_CALL bv_glVertexAttribPointer(Layer *_layer, GLuint index, GLi
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexAttribPointer( index, size, type, normalized, stride, pointer );
+  self->glVertexAttribPointer( index, size, type, normalized, stride, pointer );
 
   RglVertexAttribPointer( orig, index, size, type, normalized, stride, pointer );
 
@@ -814,7 +814,7 @@ static void REGAL_CALL bv_glVertexBindingDivisor(Layer *_layer, GLuint bindingin
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexBindingDivisor( bindingindex, divisor );
+  self->glVertexBindingDivisor( bindingindex, divisor );
 
   RglVertexBindingDivisor( orig, bindingindex, divisor );
 
@@ -827,7 +827,7 @@ static void REGAL_CALL bv_glVertexPointer(Layer *_layer, GLint size, GLenum type
   BaseVertexOriginate & orig = self->orig;
 
   // prefix
-  _context->bv->glVertexPointer( size, type, stride, pointer );
+  self->glVertexPointer( size, type, stride, pointer );
 
   RglVertexPointer( orig, size, type, stride, pointer );
 
