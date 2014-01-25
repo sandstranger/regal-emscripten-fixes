@@ -53,7 +53,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalClientState.h"
 #include "RegalHelper.h"
 #include "RegalPrivate.h"
-#include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 #include "RegalEmuInfo.h"
 #include "RegalScopedPtr.h"

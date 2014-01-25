@@ -47,7 +47,7 @@ using std::string;
 typedef Regal::StringList string_list;
 
 
-#include "RegalIff.h"
+#include "Iff.h"
 #include "RegalLog.h"
 #include "RegalToken.h"
 #include "RegalHelper.h"

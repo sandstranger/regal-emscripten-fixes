@@ -9,6 +9,8 @@ solution "regal"
     files { "src/regal/**.h", "src/regal/**.cpp" }
     includedirs { 
       "include",
+      "src/mongoose",
+      "src/lookup3",
       "src/glsl/include",
       "src/glsl/src/glsl",
       "src/glsl/src/mesa"

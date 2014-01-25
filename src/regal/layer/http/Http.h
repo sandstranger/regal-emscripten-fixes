@@ -107,13 +107,14 @@ enum HttpRunState {
 
 struct RegalContext;
 
-struct Http
+struct Http : public Layer
 {
 public:
-  Http();
+  Http( RegalContext * ctx );
   ~Http();
-  void Init( RegalContext * ctx );
-  static void Init();
+  virtual std::string GetName() const { return "http"; }
+  virtual bool Initialize( const std::string & instanceInfo );
+  virtual void ResetIntercept();
 
   std::map<GLuint, HttpFboInfo> fbo;
   std::set<GLuint> vao;
@@ -128,9 +129,9 @@ public:
   
   void YieldToHttpServer( RegalContext * ctx, bool log = true );  // called by rendering thread
   
-  void AcquireAppContext( RegalContext * ctx );      // called by http server
-  void ReleaseAppContext( RegalContext * ctx );      // called by http server
-  void ContinueFromBreakpoint( RegalContext * ctx, HttpRunState rs ); // called by http server
+  void AcquireAppContext();      // called by http server
+  void ReleaseAppContext();      // called by http server
+  void ContinueFromBreakpoint( HttpRunState rs ); // called by http server
   
   Thread::Mutex *contextMutex;
   Thread::Mutex *breakpointMutex;
@@ -167,20 +168,20 @@ public:
     
     void Initialize( Dispatch::GL * tbl );
 
-    REGALGLFINISHPROC Finish;
-    REGALGLGETACTIVEUNIFORMPROC GetActiveUniform;
-    REGALGLGETATTACHEDSHADERSPROC GetAttachedShaders;
-    REGALGLGETINTEGERVPROC GetIntegerv;
-    REGALGLGETPROGRAMINFOLOGPROC GetProgramInfoLog;
-    REGALGLGETPROGRAMIVPROC GetProgramiv;
-    REGALGLGETSHADERINFOLOGPROC GetShaderInfoLog;
-    REGALGLGETSHADERSOURCEPROC GetShaderSource;
-    REGALGLGETSHADERIVPROC GetShaderiv;
-    REGALGLGETTEXTUREIMAGEEXTPROC GetTextureImage;
-    REGALGLGETTEXTURELEVELPARAMETERFVEXTPROC GetTextureLevelParameter;
-    REGALGLGETTEXTUREPARAMETERFVEXTPROC GetTextureParameter;
-    REGALGLGETUNIFORMLOCATIONPROC GetUniformLocation;
-    REGALGLREADPIXELSPROC ReadPixels;
+    REGALGLFINISHPROC glFinish;
+    REGALGLGETACTIVEUNIFORMPROC glGetActiveUniform;
+    REGALGLGETATTACHEDSHADERSPROC glGetAttachedShaders;
+    REGALGLGETINTEGERVPROC glGetIntegerv;
+    REGALGLGETPROGRAMINFOLOGPROC glGetProgramInfoLog;
+    REGALGLGETPROGRAMIVPROC glGetProgramiv;
+    REGALGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
+    REGALGLGETSHADERSOURCEPROC glGetShaderSource;
+    REGALGLGETSHADERIVPROC glGetShaderiv;
+    REGALGLGETTEXTUREIMAGEEXTPROC glGetTextureImage;
+    REGALGLGETTEXTURELEVELPARAMETERFVEXTPROC glGetTextureLevelParameterfv;
+    REGALGLGETTEXTUREPARAMETERFVEXTPROC glGetTextureParameterfv;
+    REGALGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
+    REGALGLREADPIXELSPROC glReadPixels;
   };
 
   static void Start();
@@ -188,6 +189,7 @@ public:
   
   GlProcs gl;
   Dispatch::GL next;
+  int instanceNum;
   static bool enabled;
   static int  port;
 

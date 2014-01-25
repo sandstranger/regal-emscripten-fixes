@@ -13,7 +13,7 @@ from RegalDispatchShared import dispatchSourceTemplate, apiDispatchFuncInitCode
 
 from Emu       import emuFindEntry, emuCodeGen
 
-from DispatchDebug import debugDispatchFormulae
+from DebugFormulae import debugDispatchFormulae
 
 ##############################################################################################
 
@@ -36,8 +36,8 @@ def apiDebugFuncDefineCode(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True, paramsPrefix = "RegalContext *_context")
-      callParams = paramsNameCode(function.parameters, paramsPrefix = "_context")
+      params = paramsDefaultCode(function.parameters, True, paramsPrefix = "Layer *_layer")
+      callParams = paramsNameCode(function.parameters, paramsPrefix = "self->next")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -59,7 +59,7 @@ def apiDebugFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'debug_', name, params)
-      code += '  RegalAssert(_context);\n'
+      code += '  Debug *self = static_cast<Debug *>(_layer);\n'
       e = emuFindEntry( function, debugDispatchFormulae, '' )
       if e != None and 'prefix' in e :
         for l in e['prefix'] :
@@ -67,7 +67,7 @@ def apiDebugFuncDefineCode(apis, args):
       code += '  '
       if not typeIsVoid(rType):
         code += '%s ret = ' % rType
-      code += '_context->debug.next.%s(%s);\n' % ( name, callParams )
+      code += 'R%s(%s);\n' % ( name, callParams )
       if not typeIsVoid(rType):
         code += '  return ret;\n'
       code += '}\n\n'
@@ -85,17 +85,23 @@ def apiDebugFuncDefineCode(apis, args):
 debugGlobalCode = '''
 #include "RegalContext.h"
 #include "Debug.h"
-#include "RegalDebugInfo.h"
 '''
 
 debugLocalCode = '''
 
-void InitDebugLayer( Dispatch::GL & tbl );
+void InitDebugLayer( Layer *layer, Dispatch::GL & tbl );
 
-void Debug::Init( RegalContext * ctx ) {
-  next = ctx->dispatchGL;
-  InitDebugLayer( ctx->dispatchGL );
+bool Debug::Initialize( const std::string & instanceInfo ) {
+  ResetIntercept();
+  return true;
 }
+
+void Debug::ResetIntercept() {
+  RegalContext * ctx = GetContext();
+  next = ctx->dispatchGL;
+  InitDebugLayer( this, ctx->dispatchGL );
+}
+
 '''
 
 def generateDebugSource(apis, args):

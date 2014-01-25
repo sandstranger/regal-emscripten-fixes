@@ -32,6 +32,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalDispatch.h"
+#include "DebugInfo.h"
 
 REGAL_GLOBAL_END
 
@@ -39,14 +40,17 @@ REGAL_NAMESPACE_BEGIN
 
 struct RegalContext;
 
-struct Debug
+struct Debug : public Layer, public DebugInfo
 {
 public:
-  Debug() {}
-  ~Debug() {}
-  void Init( RegalContext * ctx );
+  Debug( RegalContext * ctx ) : Layer( ctx ) {}
+  
+  virtual std::string GetName() const { return "debug"; }
+  
+  virtual bool Initialize( const std::string & instanceInfo );
+  
+  virtual void ResetIntercept();
 
-  Dispatch::GL curr;
   Dispatch::GL next;
 };
 

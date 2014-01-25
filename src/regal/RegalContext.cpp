@@ -47,7 +47,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalConfig.h"
 #include "RegalContext.h"
 #include "RegalEmuInfo.h"
-#include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 
 REGAL_GLOBAL_END
@@ -59,7 +58,6 @@ using namespace Logging;
 RegalContext::RegalContext()
 : initialized(false),
   dispatchGL(),
-  dbg(NULL),
   info(NULL),
 #if REGAL_SYS_PPAPI
   ppapiES2(NULL),
@@ -86,12 +84,6 @@ RegalContext::RegalContext()
   depthNewList(0)
 {
   Internal("RegalContext::RegalContext","()");
-
-  if (Config::enableDebug)
-  {
-    dbg = new DebugInfo();
-    dbg->Init(this);
-  }
 
   shareGroup.push_back(this);
 }

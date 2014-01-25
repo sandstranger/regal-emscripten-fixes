@@ -41,7 +41,7 @@ ${LOCAL_CODE}
 
 ${API_DISPATCH_FUNC_DEFINE}
 
-void InitDispatch${DISPATCH_NAME}(Dispatch::GL &tbl)
+void InitDispatch${DISPATCH_NAME}( Layer *layer, Dispatch::GL &tbl )
 {
   ${API_DISPATCH_FUNC_INIT}
 }
@@ -134,9 +134,9 @@ def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambd
       categoryPrev = category
 
       if dispatchName!=None:
-        code += '  tbl.%s = %s_%s;\n' % ( name, dispatchName, name )
+        code += '  tbl.%s = MakeRegalProc( %s_%s, layer );\n' % ( name, dispatchName, name )
       else:
-        code += '    tbl.%s = %s;\n' % ( name, name )
+        code += '    tbl.%s = MakeRegalProc( %s, layer );\n' % ( name, name )
 
     if api.name in cond:
       code += '#endif // %s\n' % cond[api.name]

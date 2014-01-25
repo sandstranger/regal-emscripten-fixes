@@ -67,18 +67,18 @@ REGAL_GLOBAL_BEGIN
 
 //#include "pcre.h"
 
-#include "RegalHttp.h"
-#include "RegalDispatchHttp.h"
+#include "Http.h"
+#include "Favicon.h"
+#include "jscode.h"
+
 #include "RegalContext.h"
 #include "RegalToken.h"
 #include "RegalShaderInstance.h"
-#include "RegalWebJs.h"
 
 #include "RegalLog.h"
 #include "RegalInit.h"
 #include "RegalConfig.h"
 #include "RegalThread.h"
-#include "RegalFavicon.h"
 #include "RegalContextInfo.h"
 #include "RegalEmuInfo.h"
 
@@ -105,7 +105,9 @@ REGAL_NAMESPACE_BEGIN
 RegalContext::ParkProcs pp;
 
 mg_callbacks callbacks;         // Callbacks
-mg_context   *ctx = NULL;       // Mongoose context
+mg_context   *mgctx = NULL;       // Mongoose context
+
+Http * GetInstanceByIndex( int idx );
 
 struct Connection {
   Connection( mg_connection * conn ) : connection( conn ) {
@@ -133,13 +135,13 @@ struct Connection {
 };
 
 struct ScopedContextAcquire {
-  ScopedContextAcquire( RegalContext * _ctx ) : ctx(_ctx) {
-    ctx->http.AcquireAppContext( ctx );
+  ScopedContextAcquire( Http * _http ) : http(_http) {
+    http->AcquireAppContext();
   }
   ~ScopedContextAcquire() {
-    ctx->http.ReleaseAppContext( ctx );
+    http->ReleaseAppContext();
   }
-  RegalContext * ctx;
+  Http * http;
 };
 
 struct RequestHandler {
@@ -204,7 +206,7 @@ void Http::Start()
 {
   Internal("Http::Start","()");
   
-  if (enabled && !ctx)
+  if (enabled)
   {
     memset(&callbacks,0,sizeof(callbacks));
     callbacks.log_message   = log_message;
@@ -217,14 +219,14 @@ void Http::Start()
     {
       string j = print_string(port+i);
       const char *options[] = { "listening_ports", j.c_str(), "num_threads", "1", NULL};
-      ctx = mg_start(&callbacks, NULL, options);
-      if (ctx)
+      mgctx = mg_start(&callbacks, NULL, options);
+      if (mgctx)
         break;
     }
     
     const char *option = NULL;
-    if (ctx)
-      option = mg_get_option(ctx,"listening_ports");
+    if (mgctx)
+      option = mg_get_option(mgctx,"listening_ports");
     
     if (option)
     {
@@ -241,7 +243,7 @@ void Http::Stop()
 {
   Internal("Http::Stop","()");
   
-  if (ctx)
+  if (mgctx)
   {
     HTrace("Closing HTTP connections.");
     
@@ -249,10 +251,10 @@ void Http::Stop()
     // on Windows - so just skip the cleanup for now.
     
 #if !REGAL_SYS_WGL
-    mg_stop(ctx);
+    mg_stop(mgctx);
 #endif
     
-    ctx = NULL;
+    mgctx = NULL;
   }
 }
 
@@ -452,11 +454,13 @@ string PrintTextureObjectParameter( const TextureObjectParameter & p, const GLfl
 
 struct TextureHandler : public RequestHandler {
   virtual void HandleRequest( Connection & conn ) {
-    RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
-    Http & h = ctx->http;
-    if( ctx == NULL ) {
+    Http * http = GetInstanceByIndex( 0 );
+    if( http == NULL ) {
       return;
     }
+    Http & h = *http;
+    RegalContext * ctx = h.GetContext();
+
     string json;
     if( conn.path.size() == 1 ) {
       
@@ -478,7 +482,7 @@ struct TextureHandler : public RequestHandler {
         json += "{\n";
         indent += 2;
         if( ctx->emuInfo->gl_ext_direct_state_access == GL_TRUE || ctx->info->gl_ext_direct_state_access ) {
-          h.AcquireAppContext( ctx );
+          h.AcquireAppContext();
           json += "  \"name\": " + tex + ",\n";
           GLint baseLevel = 0;
           GLint maxLevel = 0;
@@ -486,7 +490,7 @@ struct TextureHandler : public RequestHandler {
           for( int i = 0; i < sizeof(top)/sizeof(top[0]); i++ ) {
             GLfloat fval[4] = { 0, 0, 0, 0 };
             const TextureObjectParameter & p = top[i];
-            h.gl.GetTextureParameter( ctx, texname, GL_TEXTURE_2D, p.pname, fval );
+            RglGetTextureParameter( h.gl, texname, GL_TEXTURE_2D, p.pname, fval );
             switch( p.pname ) {
               case GL_TEXTURE_BASE_LEVEL: baseLevel = GLint(fval[0]); break;
               case GL_TEXTURE_MAX_LEVEL: maxLevel = GLint(fval[0]); break;
@@ -500,7 +504,7 @@ struct TextureHandler : public RequestHandler {
           indent += 2;
           for( int level = baseLevel; level <= maxLevel; level++ ) {
             GLfloat fval[4] = { 0, 0, 0, 0 };
-            h.gl.GetTextureLevelParameter( ctx, texname, GL_TEXTURE_2D, level, GL_TEXTURE_WIDTH, fval );
+            RglGetTextureLevelParameter( h.gl, texname, GL_TEXTURE_2D, level, GL_TEXTURE_WIDTH, fval );
             if( int(fval[0]) == 0 ) {
               break;
             }
@@ -509,7 +513,7 @@ struct TextureHandler : public RequestHandler {
             for( int i = 0; i < sizeof(tolp)/sizeof(tolp[0]); i++ ) {
               GLfloat fval[4] = { 0, 0, 0, 0 };
               const TextureObjectParameter & p = tolp[i];
-              h.gl.GetTextureLevelParameter( ctx, texname, GL_TEXTURE_2D, level, p.pname, fval );
+              RglGetTextureLevelParameter( h.gl, texname, GL_TEXTURE_2D, level, p.pname, fval );
               if( fval[0] != p.initVal[0] ) {
                 json += string( indent, ' ' ) + PrintTextureObjectParameter( p, fval );
               }
@@ -524,7 +528,7 @@ struct TextureHandler : public RequestHandler {
           EraseLastComma( json );
           indent -= 2;
           json += string( indent, ' ' ) + "]\n";
-          ctx->http.ReleaseAppContext( ctx );
+          h.ReleaseAppContext( ctx );
         }
         EraseLastComma( json );
         indent -= 2;
@@ -533,10 +537,10 @@ struct TextureHandler : public RequestHandler {
         SendText( conn, "application/json", json );
       } else if( conn.path.size() == 3 && conn.path[2] == "image" ) {
         if( ctx->emuInfo->gl_ext_direct_state_access == GL_TRUE || ctx->info->gl_ext_direct_state_access ) {
-          ctx->http.AcquireAppContext( ctx );
+          h.AcquireAppContext();
           GLfloat fwidth, fheight;
-          h.gl.GetTextureLevelParameter( ctx, texname, texinfo.target, 0, GL_TEXTURE_WIDTH, &fwidth );
-          h.gl.GetTextureLevelParameter( ctx, texname, texinfo.target, 0, GL_TEXTURE_HEIGHT, &fheight );
+          RglGetTextureLevelParameter( h.gl, texname, texinfo.target, 0, GL_TEXTURE_WIDTH, &fwidth );
+          RglGetTextureLevelParameter( h.gl, texname, texinfo.target, 0, GL_TEXTURE_HEIGHT, &fheight );
           
           int width = int(fwidth);
           int height = int(fheight);
@@ -549,8 +553,8 @@ struct TextureHandler : public RequestHandler {
           int stride = width * 4;
           unsigned char * pixels = new unsigned char[ int(height + 1) * stride ];
           
-          h.gl.GetTextureImage( ctx, texname, texinfo.target, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
-          ctx->http.ReleaseAppContext( ctx );
+          RglGetTextureImage( h.gl, texname, texinfo.target, 0, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
+          h.ReleaseAppContext( ctx );
           
           for( int j = 0; j < height/2; j++ ) {
             unsigned char * s = pixels + (height - 1 - j) * stride;
@@ -841,11 +845,11 @@ string PrintMultiLine( char * bigstring, int len, int indent ) {
 
 struct ProgramHandler : public RequestHandler {
   virtual void HandleRequest( Connection & conn ) {
-    RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
-    Http & h = ctx->http;
-    if( ctx == NULL ) {
+    Http * http = GetInstanceByIndex( 0 );
+    if( http == NULL ) {
       return;
     }
+    Http & h = *http;
     string json;
     if( conn.path.size() == 1 ) {
       
@@ -862,12 +866,12 @@ struct ProgramHandler : public RequestHandler {
       int indent = 0;
       json += "{\n";
       indent += 2;
-      Http & h = ctx->http;
-      h.AcquireAppContext( ctx );
+      Http & h = *http;
+      h.AcquireAppContext();
       json += string( indent, ' ' ) + "\"name\": " + progNameString + ",\n";
       GLuint shaders[8];
       GLsizei numShaders = 0;
-      h.gl.GetAttachedShaders( ctx, prog, (GLsizei)array_size(shaders), &numShaders, shaders );
+      RglGetAttachedShaders( h.gl, prog, (GLsizei)array_size(shaders), &numShaders, shaders );
       if( numShaders > 0 ) {
         json += string( indent, ' ' ) + "\"shaders\": [ ";
         for( int i = 0; i < numShaders; i++ ) {
@@ -879,22 +883,22 @@ struct ProgramHandler : public RequestHandler {
         json += " ],\n";
       }
       GLint activeUniforms = 0;
-      h.gl.GetProgramiv( ctx, prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
+      RglGetProgramiv( h.gl, prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
       if( activeUniforms > 0 ) {
         json += string( indent, ' ' ) + "\"GL_ACTIVE_UNIFORMS\": " + print_string( activeUniforms, ",\n" );
         json += string( indent, ' ' ) + "\"uniforms\": {\n";
         indent += 2;
         ShaderInstance::Procs sip;
-        sip.Initialize( ctx->http.next );
+        sip.Initialize( h.next );
         sip.ctx = ctx;
         for( int i = 0; i < activeUniforms; i++ ) {
           GLchar name[80];
           GLsizei nameLen = 0;
           GLint count;
           GLenum type;
-          h.gl.GetActiveUniform( ctx, prog, i, 80, &nameLen, &count, &type, name );
+          RglGetActiveUniform( h.gl, prog, i, 80, &nameLen, &count, &type, name );
           name[nameLen] = 0;
-          GLint loc = h.gl.GetUniformLocation( ctx, prog, name );
+          GLint loc = RglGetUniformLocation( h.gl, prog, name );
           json +=string( indent, ' ' ) + "\"" + string(name) + "\": {\n";
           indent += 2;
           json +=string( indent, ' ' ) + print_string( "\"location\": ", loc, ",\n" );
@@ -914,7 +918,7 @@ struct ProgramHandler : public RequestHandler {
       {
         char dbgLog[1<<15];
         int dbgLogLen = 0;
-        h.gl.GetProgramInfoLog( ctx, prog, (1<<15) - 2, &dbgLogLen, dbgLog );
+        RglGetProgramInfoLog( h.gl, prog, (1<<15) - 2, &dbgLogLen, dbgLog );
         dbgLog[ dbgLogLen ] = 0;
         if( dbgLogLen > 0 ) {
           json += string( indent, ' ' ) + print_string( "\"infoLog\": " );
@@ -936,11 +940,11 @@ struct ProgramHandler : public RequestHandler {
 
 struct ShaderHandler : public RequestHandler {
   virtual void HandleRequest( Connection & conn ) {
-    RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
-    Http & h = ctx->http;
-    if( ctx == NULL ) {
+    Http * http = GetInstanceByIndex( 0 );
+    if( http == NULL ) {
       return;
     }
+    Http & h = *http;
     string json;
     if( conn.path.size() == 1 ) {
       
@@ -957,26 +961,26 @@ struct ShaderHandler : public RequestHandler {
       int indent = 0;
       json += "{\n";
       indent += 2;
-      Http & h = ctx->http;
-      h.AcquireAppContext( ctx );
+      Http & h = *http;
+      h.AcquireAppContext();
       json += string( indent, ' ' ) + "\"name\": " + shaderNameString + ",\n";
       GLint ival;
-      h.gl.GetShaderiv(ctx, shader, GL_SHADER_TYPE, &ival );
+      RglGetShaderiv( h.gl, shader, GL_SHADER_TYPE, &ival );
       json += string( indent, ' ' ) + "\"GL_SHADER_TYPE\": \"" + Token::GLenumToString( ival ) + "\",\n";
-      h.gl.GetShaderiv(ctx, shader, GL_DELETE_STATUS, &ival );
+      RglGetShaderiv( h.gl, shader, GL_DELETE_STATUS, &ival );
       json += string( indent, ' ' ) + "\"GL_DELETE_STATUS\": " + ( ival ? "true" : "false" ) + ",\n";
-      h.gl.GetShaderiv(ctx, shader, GL_COMPILE_STATUS, &ival );
+      RglGetShaderiv( h.gl, shader, GL_COMPILE_STATUS, &ival );
       json += string( indent, ' ' ) + "\"GL_COMPILE_STATUS\": " + ( ival ? "true" : "false" ) + ",\n";
       {
         char str[1<<15];
         int strLen = 0;
-        h.gl.GetShaderSource( ctx, shader, sizeof(str) - 2, &strLen, str );
+        RglGetShaderSource( h.gl, shader, sizeof(str) - 2, &strLen, str );
         str[ strLen ] = 0;
         if( strLen > 0 ) {
           json += string( indent, ' ' ) + print_string( "\"source\": " );
           json += PrintMultiLine( str, strLen, indent );
         }
-        h.gl.GetShaderInfoLog( ctx, shader, sizeof(str) - 2, &strLen, str );
+        RglGetShaderInfoLog( h.gl, shader, sizeof(str) - 2, &strLen, str );
         str[ strLen ] = 0;
         if( strLen > 0 ) {
           json += string( indent, ' ' ) + print_string( "\"infoLog\": " );
@@ -1001,9 +1005,9 @@ struct FboHandler : public RequestHandler {
     if( conn.path.size() == 1 ) {
       string json;
       json += "[ ";
-      RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
+      Http * http = GetInstanceByIndex( 0 );
       if( ctx ) {
-        Http & h = ctx->http;
+        Http & h = *http;
         for( map<GLuint, HttpFboInfo>::iterator it = h.fbo.begin(); it != h.fbo.end(); ++it ) {
           json += print_string( it->first, ", " );
         }
@@ -1025,22 +1029,22 @@ struct FboHandler : public RequestHandler {
     }
     GLint fbo = atoi( conn.path[1].c_str() );
     
-    RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
-    if( ctx && ctx->http.fbo.count( fbo ) > 0 ) {
+    Http * http = GetInstanceByIndex( 0 );
+    if( ctx && h.fbo.count( fbo ) > 0 ) {
       ScopedContextAcquire sca( ctx );
-      Http & h = ctx->http;
+      Http & h = *http;
       GLint currFbo = -1;
-      h.gl.GetIntegerv( ctx, GL_READ_FRAMEBUFFER_BINDING, & currFbo );
+      RglGetIntegerv( h.gl, GL_READ_FRAMEBUFFER_BINDING, & currFbo );
       if( fbo != currFbo ) {
         SendText( conn, "application/json", "\"can't query the non-current FBO yet\"" );
         return;
       }
-      HttpFboInfo & fi = ctx->http.fbo[ fbo ];
+      HttpFboInfo & fi = h.fbo[ fbo ];
       
-      h.gl.Finish( ctx );
+      RglFinish( h.gl );
       if( fbo == 0 ) {
         GLint vp[4];
-        h.gl.GetIntegerv( ctx, GL_VIEWPORT, vp );
+        RglGetIntegerv( h.gl, GL_VIEWPORT, vp );
         fi.width = vp[0] + vp[2];
         fi.height = vp[1] + vp[3];
       }
@@ -1049,7 +1053,7 @@ struct FboHandler : public RequestHandler {
       
       unsigned char * pixels = new unsigned char[ (fi.height+1) * stride ];
       
-      h.gl.ReadPixels( ctx, 0, 0, fi.width, fi.height, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
+      RglReadPixels( h.gl, 0, 0, fi.width, fi.height, GL_RGBA, GL_UNSIGNED_BYTE, pixels );
       for( int j = 0; j < fi.height/2; j++ ) {
         unsigned char * s = pixels + (fi.height -1 - j) * stride;
         unsigned char * d = pixels + j * stride;
@@ -1129,10 +1133,10 @@ struct LogHandler : public RequestHandler {
     int indent = 0;
     json += string( indent, ' ' ) + "{\n";
     indent += 2;
-    RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
+    Http * http = GetInstanceByIndex( 0 );
     if( ctx ) {
       ScopedContextAcquire sca( ctx );
-      Http & h = ctx->http;
+      Http & h = *http;
       json += string( indent, ' ' ) + "\"count\": " + EventCountToJson( h.count, indent ) + ",\n";
       GLint64 front = h.count.call - h.callLog.size() + 1;
       if( startLine < 0 ) {
@@ -1232,11 +1236,11 @@ struct DebugHandler : public RequestHandler {
     bool waitForPause = false;
     if( conn.path.size() == 2 ) {
       const string & cmd = conn.path[1];
-      RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
+      Http * http = GetInstanceByIndex( 0 );
       if( ctx ) {
         waitForPause = true;
-        Http & h = ctx->http;
-        h.AcquireAppContext( ctx );
+        Http & h = *http;
+        h.AcquireAppContext();
         if( cmd == "play" ) {
           h.ContinueFromBreakpoint( ctx, RS_Run );
           waitForPause = false;
@@ -1258,10 +1262,10 @@ struct DebugHandler : public RequestHandler {
     }
     
     if( waitForPause ) {
-      RegalContext * ctx = ::REGAL_NAMESPACE_INTERNAL::Init::getContextByIndex( 0 );
+      Http * http = GetInstanceByIndex( 0 );
       // wait up to 16 seconds for the frame to finish
       for( int i = 0; i < 16000; i++ ) {
-        if( ctx->http.runState == RS_Pause ) {
+        if( h.runState == RS_Pause ) {
           break;
         }
 #if ! REGAL_SYS_WGL
@@ -1313,9 +1317,41 @@ void Redirect( Connection & conn, const string & redirect_to ) {
   mg_write( conn.connection, http.c_str(), http.length() );
 }
 
+int instanceCount;
+map<int, Http *> instances;
 
-Http::Http() : runState( RS_Run ), debugGroupStackDepth( -1 ), stepOverGroupDepth( -1 ), inBeginEnd( 0 )
+Thread::Mutext instCountMutex( Thread::MT_Normal );
+
+Http * GetInstanceByIndex( int idx ) {
+  ScopedContextAcquire sma( instCountMutex );
+  if( instances.count( idx ) == 0 ) {
+    return NULL;
+  }
+  return instances[ idx ];
+}
+
+int addInstance( Http * inst ) {
+  ScopedContextAcquire sma( instCountMutex );
+  if( inst == NULL ) {
+    return -1;
+  }
+  int c = instanceCount;
+  instanceCount++;
+  instances[ c ] = inst;
+  return c;
+}
+
+void delInstance( int idx ) {
+  ScopedContextAcquire sma( instCountMutex );
+  if( instances.count( idx ) == 0 ) {
+    return;
+  }
+  instances.erase( idx );
+}
+
+Http::Http( RegalContext * ctx ) : Layer( ctx ), runState( RS_Run ), debugGroupStackDepth( -1 ), stepOverGroupDepth( -1 ), inBeginEnd( 0 )
 {
+  instanceNum = addInstance( this );
   contextMutex = new Thread::Mutex( Thread::MT_Normal );
   contextMutex->acquire();
   breakpointMutex = new Thread::Mutex( Thread::MT_Normal );
@@ -1422,7 +1458,7 @@ void Http::YieldToHttpServer( RegalContext * ctx, bool log )
    */
   currentBreakpoint = -1;
   if( httpServerWantsContext && inBeginEnd == 0 ) {
-    ctx->http.httpServerWantsContext = false;
+    h.httpServerWantsContext = false;
     ctx->parkContext( pp );
     contextMutex->release();
     // wait a bit?
@@ -1434,22 +1470,21 @@ void Http::YieldToHttpServer( RegalContext * ctx, bool log )
   }
 }
 
-void Http::AcquireAppContext( RegalContext * ctx )
+void Http::AcquireAppContext()
 {
-  ctx->http.httpServerWantsContext = true;
-  ctx->http.contextMutex->acquire();
-  ctx->unparkContext( pp );
+  httpServerWantsContext = true;
+  contextMutex->acquire();
+  GetContext()->unparkContext( pp );
 }
 
-void Http::ReleaseAppContext( RegalContext * ctx )
+void Http::ReleaseAppContext()
 {
-  ctx->parkContext( pp );
-  ctx->http.contextMutex->release();
+  GetContext()->parkContext( pp );
+  contextMutex->release();
 }
 
-void Http::ContinueFromBreakpoint( RegalContext * ctx, HttpRunState rs )
+void Http::ContinueFromBreakpoint( HttpRunState rs )
 {
-	UNUSED_PARAMETER(ctx);
 	if( runState == RS_Pause ) {
     breakpointMutex->release();
     breakpointMutex->acquire();
@@ -1458,20 +1493,20 @@ void Http::ContinueFromBreakpoint( RegalContext * ctx, HttpRunState rs )
 }
 
 void Http::GlProcs::Initialize( Dispatch::GL * tbl ) {
-  Finish                   = tbl->glFinish ;
-  GetActiveUniform         = tbl->glGetActiveUniform ;
-  GetAttachedShaders       = tbl->glGetAttachedShaders ;
-  GetIntegerv              = tbl->glGetIntegerv ;
-  GetProgramInfoLog        = tbl->glGetProgramInfoLog ;
-  GetProgramiv             = tbl->glGetProgramiv ;
-  GetShaderInfoLog         = tbl->glGetShaderInfoLog ;
-  GetShaderSource          = tbl->glGetShaderSource ;
-  GetShaderiv              = tbl->glGetShaderiv ;
-  GetTextureImage          = tbl->glGetTextureImageEXT ;
-  GetTextureLevelParameter = tbl->glGetTextureLevelParameterfvEXT ;
-  GetTextureParameter      = tbl->glGetTextureParameterfvEXT ;
-  GetUniformLocation       = tbl->glGetUniformLocation ;
-  ReadPixels               = tbl->glReadPixels ;
+  glFinish                     = tbl->glFinish ;
+  glGetActiveUniform           = tbl->glGetActiveUniform ;
+  glGetAttachedShaders         = tbl->glGetAttachedShaders ;
+  glGetIntegerv                = tbl->glGetIntegerv ;
+  glGetProgramInfoLog          = tbl->glGetProgramInfoLog ;
+  glGetProgramiv               = tbl->glGetProgramiv ;
+  glGetShaderInfoLog           = tbl->glGetShaderInfoLog ;
+  glGetShaderSource            = tbl->glGetShaderSource ;
+  glGetShaderiv                = tbl->glGetShaderiv ;
+  glGetTextureImage            = tbl->glGetTextureImageEXT ;
+  glGetTextureLevelParameterfv = tbl->glGetTextureLevelParameterfvEXT ;
+  glGetTextureParameterfv      = tbl->glGetTextureParameterfvEXT ;
+  glGetUniformLocation         = tbl->glGetUniformLocation ;
+  glReadPixels                 = tbl->glReadPixels ;
 }
 
 REGAL_NAMESPACE_END

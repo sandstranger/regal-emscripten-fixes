@@ -102,18 +102,15 @@ struct DebugInfo {
         matrixMode = GL_MODELVIEW;
     }
 
-    void MatrixMode( RegalContext * ctx, GLenum mode ) {
-        UNUSED_PARAMETER(ctx);
+    void MatrixMode( GLenum mode ) {
         matrixMode = static_cast<Enum>(mode);
     }
 
-    void ClientActiveTexture( RegalContext * ctx, GLenum texture ) {
-        UNUSED_PARAMETER(ctx);
+    void ClientActiveTexture( GLenum texture ) {
         clientActiveTextureIndex = texture - GL_TEXTURE0;
     }
 
-    void ActiveTexture( RegalContext * ctx, GLenum texture ) {
-        UNUSED_PARAMETER(ctx);
+    void ActiveTexture( GLenum texture ) {
         activeTextureIndex = texture - GL_TEXTURE0;
     }
 

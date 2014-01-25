@@ -101,7 +101,6 @@ REGAL_GLOBAL_END
 REGAL_NAMESPACE_BEGIN
 
 struct EmuInfo;
-struct DebugInfo;
 
 struct RegalContext
 {
@@ -120,7 +119,6 @@ struct RegalContext
 
   bool                    initialized;
   Dispatch::GL            dispatchGL;
-  scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;
 
@@ -226,7 +224,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalConfig.h"
 #include "RegalContext.h"
 #include "RegalEmuInfo.h"
-#include "RegalDebugInfo.h"
 #include "RegalContextInfo.h"
 
 
@@ -242,7 +239,6 @@ using namespace Logging;
 RegalContext::RegalContext()
 : initialized(false),
   dispatchGL(),
-  dbg(NULL),
   info(NULL),
 ${MEMBER_CONSTRUCT}#if REGAL_EMULATION
 ${EMU_MEMBER_CONSTRUCT}#endif
@@ -271,12 +267,6 @@ ${EMU_MEMBER_CONSTRUCT}#endif
   depthNewList(0)
 {
   Internal("RegalContext::RegalContext","()");
-
-  if (Config::enableDebug)
-  {
-    dbg = new DebugInfo();
-    dbg->Init(this);
-  }
 
   shareGroup.push_back(this);
 }

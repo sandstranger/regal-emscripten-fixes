@@ -63,7 +63,6 @@ REGAL_GLOBAL_END
 REGAL_NAMESPACE_BEGIN
 
 struct EmuInfo;
-struct DebugInfo;
 
 struct RegalContext
 {
@@ -82,7 +81,6 @@ struct RegalContext
 
   bool                    initialized;
   Dispatch::GL            dispatchGL;
-  scoped_ptr<DebugInfo>   dbg;
   scoped_ptr<ContextInfo> info;
   scoped_ptr<EmuInfo>     emuInfo;
 

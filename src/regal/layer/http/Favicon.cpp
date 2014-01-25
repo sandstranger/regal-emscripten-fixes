@@ -31,7 +31,6 @@
 #include "pch.h" /* For MS precompiled header support */
 
 #include "RegalUtil.h"
-#include "RegalHttp.h"
 
 #if REGAL_HTTP
 
