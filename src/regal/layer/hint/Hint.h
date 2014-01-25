@@ -52,7 +52,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
 #include "RegalToken.h"
-#include "RegalEmuProcsHint.h"
+#include "HintProcs.h"
 
 REGAL_GLOBAL_END
 
@@ -60,8 +60,19 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-struct Hint
+struct Hint : public Layer
 {
+
+  Hint( RegalContext * ctx ) : Layer( ctx ) {}
+  
+  virtual std::string GetName() const { return "hint"; }
+  
+  virtual void ResetInterception() {
+    RegalContext * ctx = GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    HintIntercept( this, ctx->dispatchGL );
+  }
+  
   GLenum lineSmooth;
   GLenum polygonSmooth;
   GLenum textureCompression;
@@ -70,12 +81,18 @@ struct Hint
   GLenum pointSmooth;
   GLenum fog;
   GLenum generateMipmap;
-  EmuProcsOriginateHint orig;
+  HintOriginate orig;
 
-  void Init(RegalContext &ctx)
+  virtual bool Initialize( const std::string & instanceInfo )
   {
-    orig.Initialize( ctx.dispatchGL );
-    EmuProcsInterceptHint( ctx.dispatchGL );
+    RegalContext * ctx = GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    // check whether we can init
+    bool canInit = true;
+    if( canInit == false ) {
+      return false;
+    }
+    HintIntercept( this, ctx->dispatchGL );
 
     lineSmooth               = GL_DONT_CARE;
     polygonSmooth            = GL_DONT_CARE;
@@ -85,19 +102,15 @@ struct Hint
     pointSmooth              = GL_DONT_CARE;
     fog                      = GL_DONT_CARE;
     generateMipmap           = GL_DONT_CARE;
+    return true;
   }
 
-  void Cleanup(RegalContext &ctx)
-  {
-    UNUSED_PARAMETER(ctx);
-  }
-
-  bool glHint(RegalContext &ctx, GLenum target, GLenum mode)
+  bool glHint(GLenum target, GLenum mode)
   {
     // just go straight to the driver if this is not ES
     //<> what about core contexts?
 
-    if (!ctx.isES1() && !ctx.isES2())
+    if (!GetContext()->isES1() && !GetContext()->isES2())
       return false;
 
     // these are the only valid choices for mode
@@ -147,12 +160,12 @@ struct Hint
     return true;
   }
 
-  template <typename T> bool glGetv(RegalContext &ctx, GLenum pname, T *params)
+  template <typename T> bool glGetv(GLenum pname, T *params)
   {
     // just go straight to the driver if this is not ES
     //<> what about core contexts?
 
-    if (!ctx.isES1() && !ctx.isES2())
+    if (!GetContext()->isES1() && !GetContext()->isES2())
       return false;
 
     switch (pname)

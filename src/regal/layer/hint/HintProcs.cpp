@@ -63,7 +63,7 @@ static void REGAL_CALL hint_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean
   HintOriginate & orig = self->orig;
 
   // impl
-  if( _context->hint->glGetv( *_context, pname, params ) ) {
+  if( self->glGetv( pname, params ) ) {
     return;
   }
 
@@ -78,7 +78,7 @@ static void REGAL_CALL hint_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *
   HintOriginate & orig = self->orig;
 
   // impl
-  if( _context->hint->glGetv( *_context, pname, params ) ) {
+  if( self->glGetv( pname, params ) ) {
     return;
   }
 
@@ -93,7 +93,7 @@ static void REGAL_CALL hint_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *pa
   HintOriginate & orig = self->orig;
 
   // impl
-  if( _context->hint->glGetv( *_context, pname, params ) ) {
+  if( self->glGetv( pname, params ) ) {
     return;
   }
 
@@ -108,7 +108,7 @@ static void REGAL_CALL hint_glGetIntegerv(Layer *_layer, GLenum pname, GLint *pa
   HintOriginate & orig = self->orig;
 
   // impl
-  if( _context->hint->glGetv( *_context, pname, params ) ) {
+  if( self->glGetv( pname, params ) ) {
     return;
   }
 
@@ -123,7 +123,7 @@ static void REGAL_CALL hint_glHint(Layer *_layer, GLenum target, GLenum mode)
   HintOriginate & orig = self->orig;
 
   // impl
-  if( _context->hint->glHint( *_context, target, mode ) ) {
+  if( self->glHint( target, mode ) ) {
     return;
   }
 

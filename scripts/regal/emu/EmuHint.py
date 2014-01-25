@@ -4,7 +4,7 @@ hintFormulae = {
   'Hint'       : {
     'entries' : [ 'glHint' ],
     'impl'    : [
-      'if( _context->hint->glHint( *_context, ${arg0plus} ) ) {',
+      'if( self->glHint( ${arg0plus} ) ) {',
       '  return;',
       '}',
     ],
@@ -12,7 +12,7 @@ hintFormulae = {
   'Get'       : {
     'entries' : [ 'glGet(Integer|Float|Double|Boolean)v(EXT|)' ],
     'impl'    : [
-      'if( _context->hint->glGet${m2}v( *_context, ${arg0plus} ) ) {',
+      'if( self->glGet${m2}v( ${arg0plus} ) ) {',
       '  return;',
       '}',
     ],
