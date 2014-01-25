@@ -20,7 +20,7 @@ formulae = {
     'entries' : [ 'glBindTexture(EXT|)' ],
     'pre' : [
       'if( ${arg1} != 0 ) {',
-      '  HttpTextureInfo & hti = _context->http.texture[ ${arg1} ];',
+      '  HttpTextureInfo & hti = self->texture[ ${arg1} ];',
       '  RegalAssert( hti.name == 0 || hti.name == ${arg1} );',
       '  if( hti.name == 0 ) {',
       '    hti.name = ${arg1};',
@@ -33,7 +33,7 @@ formulae = {
     'entries' : [ 'glBindMultiTextureEXT' ],
     'pre' : [
       'if( ${arg2} != 0 ) {',
-      '  HttpTextureInfo & hti = _context->http.texture[ ${arg2} ];',
+      '  HttpTextureInfo & hti = self->texture[ ${arg2} ];',
       '  RegalAssert( hti.name == 0 || hti.name == ${arg2} );',
       '  if( hti.name == 0 ) {',
       '    hti.name = ${arg2};',
@@ -48,7 +48,7 @@ formulae = {
       'if( ${arg2} != NULL ) {',
       '  for( int i = 0; i < ${arg1}; i++ ) {',
       '    if( ${arg2}[i] != 0 ) {',
-      '      HttpTextureInfo & hti = _context->http.texture[ ${arg2}[i] ];',
+      '      HttpTextureInfo & hti = self->texture[ ${arg2}[i] ];',
       '      RegalAssert( hti.name == 0 || hti.name == ${arg2}[i] );',
       '      if( hti.name == 0 ) {',
       '        hti.name = ${arg2}[i];',
@@ -64,7 +64,7 @@ formulae = {
     'entries' : [ 'glDeleteTextures(EXT|)' ],
     'pre' : [
       'for( int i = 0; i < ${arg0}; i++ ) {',
-      '  _context->http.texture.erase( ${arg1}[i] );',
+      '  self->texture.erase( ${arg1}[i] );',
       '}',
     ],
   },
@@ -72,28 +72,28 @@ formulae = {
   'createshader' : {
     'entries' : [ 'glCreateShader(ObjectARB|)' ],
     'post' : [
-      '_context->http.shader.insert( ret );',
+      'self->shader.insert( ret );',
     ],
   },
 
   'deleteshader' : {
     'entries' : [ 'glDeleteShader(ObjectARB|)' ],
     'post' : [
-      '_context->http.shader.erase( ${arg0} );',
+      'self->shader.erase( ${arg0} );',
     ],
   },
 
   'createprogram' : {
     'entries' : [ 'glCreateProgram(ObjectARB|)' ],
     'post' : [
-      '_context->http.program.insert( ret );',
+      'self->program.insert( ret );',
     ],
   },
 
   'deleteprogram' : {
     'entries' : [ 'glDeleteProgram(ObjectARB|)' ],
     'post' : [
-      '_context->http.program.erase( ${arg0} );',
+      'self->program.erase( ${arg0} );',
     ],
   },
 
@@ -101,14 +101,14 @@ formulae = {
   'bindfbo' : {
     'entries' : [ 'glBindFramebuffer(ARB|)' ],
     'pre' : [
-      '_context->http.fbo[ ${arg1} ] = HttpFboInfo( ${arg1} );',
-      '_context->http.count.fbo++;',
-      'if( _context->http.runState == RS_NextFbo ) {',
-      '  _context->http.runState = RS_Pause;',
+      'self->fbo[ ${arg1} ] = HttpFboInfo( ${arg1} );',
+      'self->count.fbo++;',
+      'if( self->runState == RS_NextFbo ) {',
+      '  self->runState = RS_Pause;',
       '}',
     ],
     'post' : [
-      '_context->http.count.lastFbo = _context->http.count.call;',
+      'self->count.lastFbo = self->count.call;',
     ],
   },
 
@@ -116,7 +116,7 @@ formulae = {
     'entries' : [ 'glDeleteFramebufferss(EXT|)' ],
     'pre' : [
       'for( int i = 0; i < ${arg0}; i++ ) {',
-      '  _context->http.fbo.erase( ${arg1}[i] );',
+      '  self->fbo.erase( ${arg1}[i] );',
       '}',
     ],
   },
@@ -124,79 +124,78 @@ formulae = {
   'pushdebuggroup' : {
     'entries' : [ 'glPushDebugGroup', 'glPushGroupMarkerEXT' ],
     'pre' : [
-      '_context->http.count.group++;',
-      'if( _context->http.runState == RS_NextGroup ) {',
-      '  _context->http.runState = RS_Pause;',
+      'self->count.group++;',
+      'if( self->runState == RS_NextGroup ) {',
+      '  self->runState = RS_Pause;',
       '}',
-      '_context->http.debugGroupStackDepth++;',
+      'self->debugGroupStackDepth++;',
     ],
     'post' : [
-      '_context->http.count.lastGroup = _context->http.count.call;',
+      'self->count.lastGroup = self->count.call;',
     ],
   },
 
   'popdebuggroup' : {
     'entries' : [ 'glPopDebugGroup', 'glPopGroupMarkerEXT' ],
     'post' : [
-      'Http &h = _context->http;',
-      'if( h.runState == RS_StepOutOfGroup || h.runState == RS_NextGroup ) {',
-      '  h.runState = RS_Pause;',
+      'if( self->runState == RS_StepOutOfGroup || self->runState == RS_NextGroup ) {',
+      '  self->runState = RS_Pause;',
       '}',
-      'if( h.runState == RS_StepOverGroup && h.debugGroupStackDepth == h.stepOverGroupDepth ) {',
-      '  h.runState = RS_Pause;',
+      'if( self->runState == RS_StepOverGroup && self->debugGroupStackDepth == self->stepOverGroupDepth ) {',
+      '  self->runState = RS_Pause;',
       '}',
-      'h.debugGroupStackDepth--;',
+      'self->debugGroupStackDepth--;',
     ],
   },
 
   'draw' : {
     'entries' : [ 'gl(Multi|)Draw(Arrays|Elements).*', ],
     'pre' : [
-      '_context->http.count.draw++;',
-      'if( _context->http.runState == RS_NextDraw ) {',
-      '  _context->http.runState = RS_Pause;',
+      'self->count.draw++;',
+      'if( self->runState == RS_NextDraw ) {',
+      '  self->runState = RS_Pause;',
       '}',
     ],
     'post' : [
-      '_context->http.count.lastDraw = _context->http.count.call;',
+      'self->count.lastDraw = self->count.call;',
     ],
   },
 
   'begin' : {
     'entries' : [ 'glBegin' ],
     'pre' : [
-      '_context->http.count.draw++;',
-      '_context->http.inBeginEnd++;',
-      'if( _context->http.runState == RS_NextDraw ) {',
-      '  _context->http.runState = RS_Pause;',
+      'self->count.draw++;',
+      'self->inBeginEnd++;',
+      'if( self->runState == RS_NextDraw ) {',
+      '  self->runState = RS_Pause;',
       '}',
     ],
     'post' : [
-      '_context->http.count.lastDraw = _context->http.count.call;',
+      'self->count.lastDraw = self->count.call;',
     ],
   },
 
   'end' : {
     'entries' : [ 'glEnd' ],
     'post' : [
-      '_context->http.inBeginEnd--;',
-      '_context->http.YieldToHttpServer( _context, false /* no log update */ );'
+      'self->inBeginEnd--;',
+      'self->YieldToHttpServer( false /* no log update */ );'
     ],
   },
 
   'swap' : {
     'entries' : [ '(glX|wgl|egl|)SwapBuffers', 'CGLFlushDrawable' ],
     'pre' : [
-      '_context->http.count.frame++;',
-      'switch( _context->http.runState ) {',
+      'self->count.frame++;',
+      'switch( self->runState ) {',
       '   case RS_Run:',
       '     break;',
       '   default:',
-      '    _context->http.runState = RS_Pause;',
+      '    self->runState = RS_Pause;',
       '}',
     ],
     'post' : [
-      '_context->http.count.lastFrame = _context->http.count.call;',
+      'self->count.lastFrame = self->count.call;',
     ],
   },
 
@@ -232,23 +231,28 @@ REGAL_NAMESPACE_BEGIN
 
 static Dispatch::Global nextGlobal;
 
-void InitDispatchHttp( Dispatch::GL & );
-void InitDispatchHttp( Dispatch::Global & );
+void InitDispatchHttp( Layer * layer, Dispatch::GL & );
+void InitDispatchHttp( Layer * layer, Dispatch::Global & );
 
-void Http::Init( RegalContext * ctx ) {
+bool Http::Initialize( const std::string & instanceInfo ) {
+  ResetIntercept();
+  return true;
+}
 
-  ctx->http.next = ctx->dispatchGL;
-  InitDispatchHttp( ctx->dispatchGL );
+void Http::ResetIntercept() {
+  RegalContext * ctx = GetContext();
+  next = ctx->dispatchGL;
+  InitDispatchHttp( this, ctx->dispatchGL );
 
-  gl.Initialize( & ctx->http.next );
+  gl.Initialize( &next );
 
   nextGlobal = dispatchGlobal;
-  InitDispatchHttp( dispatchGlobal );
+  InitDispatchHttp( this, dispatchGlobal );
 }
 
 ${API_FUNC_DEFINE}
 
-void InitDispatchHttp(Dispatch::GL &tbl)
+void InitDispatchHttp( Layer *layer, Dispatch::GL &tbl)
 {
 ${API_GL_DISPATCH_INIT}
 }
@@ -280,8 +284,13 @@ def generateDispatchHttp(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
-      callParams = paramsNameCode(function.parameters, "_context")
+      params = paramsDefaultCode(function.parameters, True, "Layer *_layer")
+      callParams = ''
+      if function.needsContext:
+        callParams = paramsNameCode(function.parameters, "self->next")
+      else:
+        callParams = paramsNameCode(function.parameters, "dispatchGlobal")
+
       rType  = typeCode(function.ret.type)
       rTypes    = rType.strip()
       category  = getattr(function, 'category', None)
@@ -304,6 +313,7 @@ def generateDispatchHttp(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'http_', name, params)
+      code += '  Http * self = static_cast<Http *>(_layer);\n'
 
       generated = dispatchGenCode( function, formulae )
 
@@ -319,54 +329,41 @@ def generateDispatchHttp(apis, args):
 
       if not typeIsVoid(rType):
         code += '    %s ret = %s;\n' % (rType, retInit)
-      if function.needsContext:
-        code += '    RegalAssert( _context );\n'
 
-      code += '    if( _context ) {\n'
       if function.name == "glBegin" or function.name == "glEnd":
-        code += '      _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
+        code += '  self->callString = %s\n' % logFunction( function, 'print_string' )
       else:
-        code += '      if( _context->http.inBeginEnd == 0 ) {\n'
-        code += '        _context->http.callString = %s;\n' % logFunction( function, 'print_string' )
-        code += '      }\n'
+        code += '  if( self->inBeginEnd == 0 ) {\n'
+        code += '    self->callString = %s\n' % logFunction( function, 'print_string' )
+        code += '  }\n'
 
       if generated and 'pre' in generated:
         for i in generated['pre']:
-          code += '      %s\n' % i
+          code += '  %s\n' % i
 
-      code += '      if( _context->http.runState == RS_Next ) {\n'
-      code += '        _context->http.runState = RS_Pause;\n'
-      code += '      }\n'
+      code +=   '  if( self->runState == RS_Next ) {\n'
+      code +=   '    self->runState = RS_Pause;\n'
+      code +=   '  }\n'
       if function.name == "glBegin" or function.name == "glEnd":
-        code += '      _context->http.YieldToHttpServer( _context );\n'
+        code += '  self->YieldToHttpServer();\n'
       else:
-        code += '      _context->http.YieldToHttpServer( _context, _context->http.inBeginEnd == 0 );\n'
-      code += '    }\n'
+        code += '  self->YieldToHttpServer( self->inBeginEnd == 0 );\n'
 
       
 
-      if function.needsContext:
-        code += '    Dispatch::GL *_next = _context ? &_context->http.next : NULL;\n'
-      else:
-        code += '    Dispatch::Global *_next = &nextGlobal;\n'
-
-      code += '    RegalAssert(_next);\n'
-
-      code += '    '
+      code += '  '
 
       if not typeIsVoid(rType):
         code += 'ret = '
-      code += '_next->%s(%s);\n' % ( name, callParams )
+      code += 'R%s(%s);\n' % ( name, callParams )
 
       
       if generated and 'post' in generated:
-        code += '    if( _context ) {\n'
         for i in generated['post']:
-          code += '      %s\n' % i
-        code += '    }\n'
+          code += '  %s\n' % i
 
       if not typeIsVoid(rType):
-        code += '    return ret;\n'
+        code += '  return ret;\n'
       code += '}\n\n'
 
     if api.name in cond:

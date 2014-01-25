@@ -73,9 +73,9 @@ REGAL_GLOBAL_BEGIN
 #include "RegalSharedMap.h"
 #include "RegalFloat4.h"
 #include "RegalShaderInstance.h"
-#include "RegalEmuProcsIff.h"
 #include "RegalState.h"
 #include "linear.h"
+#include "IffProcs.h"
 
 REGAL_GLOBAL_END
 

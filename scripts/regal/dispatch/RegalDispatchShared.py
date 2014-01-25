@@ -155,7 +155,7 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
 
   categoryPrev = None
   code = '''
-void InitDispatch%s%s(Dispatch::Global &tbl)
+void InitDispatch%s%s( Layer * layer, Dispatch::Global &tbl)
 {
 '''%(dispatchName[0:1].upper(),dispatchName[1:])
 
@@ -203,9 +203,9 @@ void InitDispatch%s%s(Dispatch::Global &tbl)
       categoryPrev = category
 
       if dispatchName!=None:
-        code += '  tbl.%s = %s_%s;\n' % ( name, dispatchName, name )
+        code += '  tbl.%s = MakeRegalProc(%s_%s, layer);\n' % ( name, dispatchName, name )
       else:
-        code += '    tbl.%s = %s;\n' % ( name, name )
+        code += '    tbl.%s = MakeRegalProc(%s, layer);\n' % ( name, name )
 
     if api.name in cond:
       code += '#endif // %s\n' % cond[api.name]

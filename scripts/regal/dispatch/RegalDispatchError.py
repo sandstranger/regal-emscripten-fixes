@@ -32,8 +32,8 @@ def apiErrorFuncDefineCode(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
-      callParams = paramsNameCode(function.parameters, "_context")
+      params = paramsDefaultCode(function.parameters, True, "Layer *_layer")
+      callParams = paramsNameCode(function.parameters, "self->next")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -55,36 +55,35 @@ def apiErrorFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'error_', name, params)
-      code += '  Internal("error_%s","()");\n' % name
-      code += '  RegalAssert(_context);\n'
+      code += '  Err * self = static_cast<Err *>( layer );\n'
       if name != 'glGetError':
         code += '  GLenum _error = GL_NO_ERROR;\n'
-        code += '  if (!_context->err.inBeginEnd)\n'
-        code += '    _error = _context->err.next.glGetError( _context );\n'
+        code += '  if (!self->inBeginEnd)\n'
+        code += '    _error = RglGetError( self->next );\n'
         code += '  RegalAssert(_error==GL_NO_ERROR);\n'
         code += '  '
         if name == 'glBegin':
-          code += '_context->err.inBeginEnd = true;\n'
+          code += 'self->inBeginEnd = true;\n'
         if not typeIsVoid(rType):
           code += '%s ret = ' % rType
-        code += '_context->err.next.%s(%s);\n' % ( name, callParams )
+        code += 'R%s(%s);\n' % ( name, callParams )
         if name == 'glEnd':
-          code += '_context->err.inBeginEnd = false;\n'
-        code += '  if (!_context->err.inBeginEnd) {\n'
-        code += '    _error = _context->err.next.glGetError( _context );\n'
+          code += 'self->inBeginEnd = false;\n'
+        code += '  if (!self->inBeginEnd) {\n'
+        code += '    _error = RglGetError( self->next );\n'
         code += '    if (_error!=GL_NO_ERROR) {\n'
         code += '      Error("%s : ",Token::GLerrorToString(_error));\n'%(name)
         code += '      #if REGAL_BREAK\n'
         code += '      Break::ErrorCB(_error);\n'
         code += '      #endif\n'
-        code += '      if (_context->err.callback)\n'
-        code += '        _context->err.callback( _error );\n'
+        code += '      if (self->callback)\n'
+        code += '        self->callback( _error );\n'
         code += '    }\n'
         code += '  }\n'
         if not typeIsVoid(rType):
           code += 'return ret;\n'
       else:
-        code += '  GLenum error = _context->err.next.glGetError( _context );\n'
+        code += '  GLenum error = RglGetError( self->next );\n'
         code += '  return error;\n'
       code += '}\n\n'
 
@@ -105,11 +104,17 @@ localInclude = '''
 
 localCode = '''
 
-void InitDispatchError( Dispatch::GL & tbl );
+void InitDispatchError( Layer * layer, Dispatch::GL & tbl );
 
-void Err::Init( RegalContext * ctx ) {
+bool Err::Initialize( const std::string & instanceInfo ) {
+  ResetIntercept();
+  return true;
+}
+
+void Err::ResetIntercept() {
+  RegalContext * ctx = GetContext();
   next = ctx->dispatchGL;
-  InitDispatchError( ctx->dispatchGL );
+  InitDispatchError( this, ctx->dispatchGL );
 }
 
 '''

@@ -43,19 +43,21 @@ REGAL_NAMESPACE_BEGIN
 
 struct RegalContext;
 
-struct Err
+struct Err : public Layer
 {
 public:
-  Err()
-  : callback(NULL),
-    inBeginEnd(false)
+  Err( RegalContext * ctx )
+  : Layer( ctx )
+  , callback(NULL)
+  , inBeginEnd(false)
   {}
 
   ~Err() {}
   
-  void Init( RegalContext * ctx );
+  virtual std::string GetName() const { return "err"; }
+  virtual bool Initialize( const std::string & instanceInfo );
+  virtual void ResetIntercept();
   
-
   ::RegalErrorCallback callback;
   bool inBeginEnd;
   Dispatch::GL next;

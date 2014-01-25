@@ -127,7 +127,7 @@ public:
   std::vector< Breakpoint * > breakpoint;
   int currentBreakpoint;                         // -1 while not at breaktpoint
   
-  void YieldToHttpServer( RegalContext * ctx, bool log = true );  // called by rendering thread
+  void YieldToHttpServer( bool log = true );  // called by rendering thread
   
   void AcquireAppContext();      // called by http server
   void ReleaseAppContext();      // called by http server
@@ -177,9 +177,9 @@ public:
     REGALGLGETSHADERINFOLOGPROC glGetShaderInfoLog;
     REGALGLGETSHADERSOURCEPROC glGetShaderSource;
     REGALGLGETSHADERIVPROC glGetShaderiv;
-    REGALGLGETTEXTUREIMAGEEXTPROC glGetTextureImage;
-    REGALGLGETTEXTURELEVELPARAMETERFVEXTPROC glGetTextureLevelParameterfv;
-    REGALGLGETTEXTUREPARAMETERFVEXTPROC glGetTextureParameterfv;
+    REGALGLGETTEXTUREIMAGEEXTPROC glGetTextureImageEXT;
+    REGALGLGETTEXTURELEVELPARAMETERFVEXTPROC glGetTextureLevelParameterfvEXT;
+    REGALGLGETTEXTUREPARAMETERFVEXTPROC glGetTextureParameterfvEXT;
     REGALGLGETUNIFORMLOCATIONPROC glGetUniformLocation;
     REGALGLREADPIXELSPROC glReadPixels;
   };
@@ -190,9 +190,6 @@ public:
   GlProcs gl;
   Dispatch::GL next;
   int instanceNum;
-  static bool enabled;
-  static int  port;
-
 };
 
 REGAL_NAMESPACE_END
