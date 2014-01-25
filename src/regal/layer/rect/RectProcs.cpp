@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalRect.h"
-#include "RegalEmuProcsRect.h"
+#include "Rect.h"
+#include "RectProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Rect_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+using namespace Emu;
+
+static void REGAL_CALL rect_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL Rect_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLd
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRectd( orig.glRectd_layer, x1, y1, x2, y2 );
+  RglRectd( orig, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL Rect_glRectdv(Layer *_layer, const GLdouble *v1, const GLdouble *v2)
+static void REGAL_CALL rect_glRectdv(Layer *_layer, const GLdouble *v1, const GLdouble *v2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -76,11 +78,11 @@ static void REGAL_CALL Rect_glRectdv(Layer *_layer, const GLdouble *v1, const GL
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectdv( orig.glRectdv_layer, v1, v2 );
+  RglRectdv( orig, v1, v2 );
 
 }
 
-static void REGAL_CALL Rect_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+static void REGAL_CALL rect_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -89,11 +91,11 @@ static void REGAL_CALL Rect_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLflo
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRectf( orig.glRectf_layer, x1, y1, x2, y2 );
+  RglRectf( orig, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL Rect_glRectfv(Layer *_layer, const GLfloat *v1, const GLfloat *v2)
+static void REGAL_CALL rect_glRectfv(Layer *_layer, const GLfloat *v1, const GLfloat *v2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -102,11 +104,11 @@ static void REGAL_CALL Rect_glRectfv(Layer *_layer, const GLfloat *v1, const GLf
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectfv( orig.glRectfv_layer, v1, v2 );
+  RglRectfv( orig, v1, v2 );
 
 }
 
-static void REGAL_CALL Rect_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2, GLint y2)
+static void REGAL_CALL rect_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2, GLint y2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -115,11 +117,11 @@ static void REGAL_CALL Rect_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2,
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRecti( orig.glRecti_layer, x1, y1, x2, y2 );
+  RglRecti( orig, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL Rect_glRectiv(Layer *_layer, const GLint *v1, const GLint *v2)
+static void REGAL_CALL rect_glRectiv(Layer *_layer, const GLint *v1, const GLint *v2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -128,11 +130,11 @@ static void REGAL_CALL Rect_glRectiv(Layer *_layer, const GLint *v1, const GLint
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectiv( orig.glRectiv_layer, v1, v2 );
+  RglRectiv( orig, v1, v2 );
 
 }
 
-static void REGAL_CALL Rect_glRects(Layer *_layer, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+static void REGAL_CALL rect_glRects(Layer *_layer, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -141,11 +143,11 @@ static void REGAL_CALL Rect_glRects(Layer *_layer, GLshort x1, GLshort y1, GLsho
   // impl
   _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
 
-  orig.glRects( orig.glRects_layer, x1, y1, x2, y2 );
+  RglRects( orig, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL Rect_glRectsv(Layer *_layer, const GLshort *v1, const GLshort *v2)
+static void REGAL_CALL rect_glRectsv(Layer *_layer, const GLshort *v1, const GLshort *v2)
 {
   Rect * self = static_cast<Rect *>(_layer);
 
@@ -154,19 +156,19 @@ static void REGAL_CALL Rect_glRectsv(Layer *_layer, const GLshort *v1, const GLs
   // impl
   _context->rect->glRectv( _context, v1, v2 ); return;
 
-  orig.glRectsv( orig.glRectsv_layer, v1, v2 );
+  RglRectsv( orig, v1, v2 );
 
 }
 
-void RectIntercept( Dispatch::GL & dt ) {
-  dt.glRectd  = RRect_glRectd;
-  dt.glRectdv = RRect_glRectdv;
-  dt.glRectf  = RRect_glRectf;
-  dt.glRectfv = RRect_glRectfv;
-  dt.glRecti  = RRect_glRecti;
-  dt.glRectiv = RRect_glRectiv;
-  dt.glRects  = RRect_glRects;
-  dt.glRectsv = RRect_glRectsv;
+void RectIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glRectd  = MakeRegalProc(rect_glRectd, layer);
+  dt.glRectdv = MakeRegalProc(rect_glRectdv, layer);
+  dt.glRectf  = MakeRegalProc(rect_glRectf, layer);
+  dt.glRectfv = MakeRegalProc(rect_glRectfv, layer);
+  dt.glRecti  = MakeRegalProc(rect_glRecti, layer);
+  dt.glRectiv = MakeRegalProc(rect_glRectiv, layer);
+  dt.glRects  = MakeRegalProc(rect_glRects, layer);
+  dt.glRectsv = MakeRegalProc(rect_glRectsv, layer);
 }
 
 REGAL_NAMESPACE_END

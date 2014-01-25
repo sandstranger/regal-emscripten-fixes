@@ -38,12 +38,10 @@
   $ astyle --style=allman --indent=spaces=2 --indent-switches
 */
 
-#ifndef REGAL_EMU_PROCS_PPA_H
-#define REGAL_EMU_PROCS_PPA_H
+#ifndef REGAL_LAYER_PPA_PROCS_H
+#define REGAL_LAYER_PPA_PROCS_H
 
 #include "RegalUtil.h"
-
-#if REGAL_EMULATION
 
 REGAL_GLOBAL_BEGIN
 
@@ -55,8 +53,152 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void PpaIntercept( Dispatch::GL & dt );
+void PpaIntercept( Layer *layer, Dispatch::GL & dt );
 
+// glActiveTexture
+// glActiveTextureARB
+// glAlphaFunc
+// glBlendColor
+// glBlendEquation
+// glBlendEquationSeparate
+// glBlendEquationSeparatei
+// glBlendEquationi
+// glBlendFunc
+// glBlendFuncSeparate
+// glBlendFuncSeparatei
+// glBlendFunci
+// glClampColor
+// glClearAccum
+// glClearColor
+// glClearDepth
+// glClearDepthf
+// glClearIndex
+// glClearStencil
+// glClipPlane
+// glColorMask
+// glColorMaski
+// glColorMaterial
+// glColorTableParameterfv
+// glColorTableParameteriv
+// glConvolutionParameterf
+// glConvolutionParameterfv
+// glConvolutionParameteri
+// glConvolutionParameteriv
+// glCullFace
+// glDepthFunc
+// glDepthMask
+// glDepthRange
+// glDepthRangeArrayv
+// glDepthRangeIndexed
+// glDepthRangef
+// glDisable
+// glDisablei
+// glDrawBuffer
+// glDrawBuffers
+// glDrawBuffersARB
+// glDrawBuffersNV
+// glEnable
+// glEnablei
+// glFrontFace
+// glGetBooleani_v
+// glGetBooleanv
+// glGetColorTableParameterfv
+// glGetColorTableParameteriv
+// glGetConvolutionParameterfv
+// glGetConvolutionParameteriv
+// glGetDoublei_v
+// glGetDoublei_vEXT
+// glGetDoublev
+// glGetFloati_v
+// glGetFloati_vEXT
+// glGetFloatv
+// glGetIntegeri_v
+// glGetIntegeri_vEXT
+// glGetIntegerv
+// glGetLightfv
+// glGetLightiv
+// glGetLightxv
+// glGetMaterialfv
+// glGetMaterialiv
+// glGetMaterialxv
+// glGetMultiTexEnvfvEXT
+// glGetMultiTexEnvivEXT
+// glGetPolygonStipple
+// glGetTexEnvfv
+// glGetTexEnviv
+// glGetTexLevelParameterfv
+// glGetTexLevelParameteriv
+// glGetTexParameterfv
+// glGetTexParameteriv
+// glGetTextureLevelParameterfvEXT
+// glGetTextureLevelParameterivEXT
+// glGetTextureParameterfvEXT
+// glGetTextureParameterivEXT
+// glHint
+// glIndexMask
+// glIsEnabled
+// glIsEnabledi
+// glLightModelf
+// glLightModelfv
+// glLightModeli
+// glLightModeliv
+// glLightf
+// glLightfv
+// glLighti
+// glLightiv
+// glLineStipple
+// glLineWidth
+// glListBase
+// glLogicOp
+// glMapGrid1d
+// glMapGrid1f
+// glMapGrid2d
+// glMapGrid2f
+// glMaterialf
+// glMaterialfv
+// glMateriali
+// glMaterialiv
+// glMatrixMode
+// glMinSampleShading
+// glMultiTexEnvfEXT
+// glMultiTexEnvfvEXT
+// glMultiTexEnviEXT
+// glMultiTexEnvivEXT
+// glPixelTransferf
+// glPixelTransferi
+// glPixelZoom
+// glPointParameterf
+// glPointParameterfv
+// glPointParameteri
+// glPointParameteriv
+// glPointSize
+// glPolygonMode
+// glPolygonOffset
+// glPolygonStipple
+// glPopAttrib
+// glProvokingVertex
+// glPushAttrib
+// glReadBuffer
+// glSampleCoverage
+// glScissor
+// glScissorArrayv
+// glScissorIndexed
+// glScissorIndexedv
+// glShadeModel
+// glStencilFunc
+// glStencilFuncSeparate
+// glStencilMask
+// glStencilMaskSeparate
+// glStencilOp
+// glStencilOpSeparate
+// glTexEnvf
+// glTexEnvfv
+// glTexEnvi
+// glTexEnviv
+// glViewport
+// glViewportArrayv
+// glViewportIndexedf
+// glViewportIndexedfv
 struct PpaOriginate {
 
   PpaOriginate() {
@@ -64,1757 +206,597 @@ struct PpaOriginate {
   }
 
   REGALGLACTIVETEXTUREPROC glActiveTexture;
-  Layer * glActiveTexture_layer;
 
   REGALGLACTIVETEXTUREARBPROC glActiveTextureARB;
-  Layer * glActiveTextureARB_layer;
-
-  REGALGLACTIVETEXTUREARB_LAYERPROC glActiveTextureARB_layer;
-  Layer * glActiveTextureARB_layer_layer;
-
-  REGALGLACTIVETEXTURE_LAYERPROC glActiveTexture_layer;
-  Layer * glActiveTexture_layer_layer;
 
   REGALGLALPHAFUNCPROC glAlphaFunc;
-  Layer * glAlphaFunc_layer;
-
-  REGALGLALPHAFUNC_LAYERPROC glAlphaFunc_layer;
-  Layer * glAlphaFunc_layer_layer;
 
   REGALGLBLENDCOLORPROC glBlendColor;
-  Layer * glBlendColor_layer;
-
-  REGALGLBLENDCOLOR_LAYERPROC glBlendColor_layer;
-  Layer * glBlendColor_layer_layer;
 
   REGALGLBLENDEQUATIONPROC glBlendEquation;
-  Layer * glBlendEquation_layer;
 
   REGALGLBLENDEQUATIONSEPARATEPROC glBlendEquationSeparate;
-  Layer * glBlendEquationSeparate_layer;
-
-  REGALGLBLENDEQUATIONSEPARATE_LAYERPROC glBlendEquationSeparate_layer;
-  Layer * glBlendEquationSeparate_layer_layer;
 
   REGALGLBLENDEQUATIONSEPARATEIPROC glBlendEquationSeparatei;
-  Layer * glBlendEquationSeparatei_layer;
-
-  REGALGLBLENDEQUATIONSEPARATEI_LAYERPROC glBlendEquationSeparatei_layer;
-  Layer * glBlendEquationSeparatei_layer_layer;
-
-  REGALGLBLENDEQUATION_LAYERPROC glBlendEquation_layer;
-  Layer * glBlendEquation_layer_layer;
 
   REGALGLBLENDEQUATIONIPROC glBlendEquationi;
-  Layer * glBlendEquationi_layer;
-
-  REGALGLBLENDEQUATIONI_LAYERPROC glBlendEquationi_layer;
-  Layer * glBlendEquationi_layer_layer;
 
   REGALGLBLENDFUNCPROC glBlendFunc;
-  Layer * glBlendFunc_layer;
 
   REGALGLBLENDFUNCSEPARATEPROC glBlendFuncSeparate;
-  Layer * glBlendFuncSeparate_layer;
-
-  REGALGLBLENDFUNCSEPARATE_LAYERPROC glBlendFuncSeparate_layer;
-  Layer * glBlendFuncSeparate_layer_layer;
 
   REGALGLBLENDFUNCSEPARATEIPROC glBlendFuncSeparatei;
-  Layer * glBlendFuncSeparatei_layer;
-
-  REGALGLBLENDFUNCSEPARATEI_LAYERPROC glBlendFuncSeparatei_layer;
-  Layer * glBlendFuncSeparatei_layer_layer;
-
-  REGALGLBLENDFUNC_LAYERPROC glBlendFunc_layer;
-  Layer * glBlendFunc_layer_layer;
 
   REGALGLBLENDFUNCIPROC glBlendFunci;
-  Layer * glBlendFunci_layer;
-
-  REGALGLBLENDFUNCI_LAYERPROC glBlendFunci_layer;
-  Layer * glBlendFunci_layer_layer;
 
   REGALGLCLAMPCOLORPROC glClampColor;
-  Layer * glClampColor_layer;
-
-  REGALGLCLAMPCOLOR_LAYERPROC glClampColor_layer;
-  Layer * glClampColor_layer_layer;
 
   REGALGLCLEARACCUMPROC glClearAccum;
-  Layer * glClearAccum_layer;
-
-  REGALGLCLEARACCUM_LAYERPROC glClearAccum_layer;
-  Layer * glClearAccum_layer_layer;
 
   REGALGLCLEARCOLORPROC glClearColor;
-  Layer * glClearColor_layer;
-
-  REGALGLCLEARCOLOR_LAYERPROC glClearColor_layer;
-  Layer * glClearColor_layer_layer;
 
   REGALGLCLEARDEPTHPROC glClearDepth;
-  Layer * glClearDepth_layer;
-
-  REGALGLCLEARDEPTH_LAYERPROC glClearDepth_layer;
-  Layer * glClearDepth_layer_layer;
 
   REGALGLCLEARDEPTHFPROC glClearDepthf;
-  Layer * glClearDepthf_layer;
-
-  REGALGLCLEARDEPTHF_LAYERPROC glClearDepthf_layer;
-  Layer * glClearDepthf_layer_layer;
 
   REGALGLCLEARINDEXPROC glClearIndex;
-  Layer * glClearIndex_layer;
-
-  REGALGLCLEARINDEX_LAYERPROC glClearIndex_layer;
-  Layer * glClearIndex_layer_layer;
 
   REGALGLCLEARSTENCILPROC glClearStencil;
-  Layer * glClearStencil_layer;
-
-  REGALGLCLEARSTENCIL_LAYERPROC glClearStencil_layer;
-  Layer * glClearStencil_layer_layer;
 
   REGALGLCLIPPLANEPROC glClipPlane;
-  Layer * glClipPlane_layer;
-
-  REGALGLCLIPPLANE_LAYERPROC glClipPlane_layer;
-  Layer * glClipPlane_layer_layer;
 
   REGALGLCOLORMASKPROC glColorMask;
-  Layer * glColorMask_layer;
-
-  REGALGLCOLORMASK_LAYERPROC glColorMask_layer;
-  Layer * glColorMask_layer_layer;
 
   REGALGLCOLORMASKIPROC glColorMaski;
-  Layer * glColorMaski_layer;
-
-  REGALGLCOLORMASKI_LAYERPROC glColorMaski_layer;
-  Layer * glColorMaski_layer_layer;
 
   REGALGLCOLORMATERIALPROC glColorMaterial;
-  Layer * glColorMaterial_layer;
-
-  REGALGLCOLORMATERIAL_LAYERPROC glColorMaterial_layer;
-  Layer * glColorMaterial_layer_layer;
 
   REGALGLCOLORTABLEPARAMETERFVPROC glColorTableParameterfv;
-  Layer * glColorTableParameterfv_layer;
-
-  REGALGLCOLORTABLEPARAMETERFV_LAYERPROC glColorTableParameterfv_layer;
-  Layer * glColorTableParameterfv_layer_layer;
 
   REGALGLCOLORTABLEPARAMETERIVPROC glColorTableParameteriv;
-  Layer * glColorTableParameteriv_layer;
-
-  REGALGLCOLORTABLEPARAMETERIV_LAYERPROC glColorTableParameteriv_layer;
-  Layer * glColorTableParameteriv_layer_layer;
 
   REGALGLCONVOLUTIONPARAMETERFPROC glConvolutionParameterf;
-  Layer * glConvolutionParameterf_layer;
-
-  REGALGLCONVOLUTIONPARAMETERF_LAYERPROC glConvolutionParameterf_layer;
-  Layer * glConvolutionParameterf_layer_layer;
 
   REGALGLCONVOLUTIONPARAMETERFVPROC glConvolutionParameterfv;
-  Layer * glConvolutionParameterfv_layer;
-
-  REGALGLCONVOLUTIONPARAMETERFV_LAYERPROC glConvolutionParameterfv_layer;
-  Layer * glConvolutionParameterfv_layer_layer;
 
   REGALGLCONVOLUTIONPARAMETERIPROC glConvolutionParameteri;
-  Layer * glConvolutionParameteri_layer;
-
-  REGALGLCONVOLUTIONPARAMETERI_LAYERPROC glConvolutionParameteri_layer;
-  Layer * glConvolutionParameteri_layer_layer;
 
   REGALGLCONVOLUTIONPARAMETERIVPROC glConvolutionParameteriv;
-  Layer * glConvolutionParameteriv_layer;
-
-  REGALGLCONVOLUTIONPARAMETERIV_LAYERPROC glConvolutionParameteriv_layer;
-  Layer * glConvolutionParameteriv_layer_layer;
 
   REGALGLCULLFACEPROC glCullFace;
-  Layer * glCullFace_layer;
-
-  REGALGLCULLFACE_LAYERPROC glCullFace_layer;
-  Layer * glCullFace_layer_layer;
 
   REGALGLDEPTHFUNCPROC glDepthFunc;
-  Layer * glDepthFunc_layer;
-
-  REGALGLDEPTHFUNC_LAYERPROC glDepthFunc_layer;
-  Layer * glDepthFunc_layer_layer;
 
   REGALGLDEPTHMASKPROC glDepthMask;
-  Layer * glDepthMask_layer;
-
-  REGALGLDEPTHMASK_LAYERPROC glDepthMask_layer;
-  Layer * glDepthMask_layer_layer;
 
   REGALGLDEPTHRANGEPROC glDepthRange;
-  Layer * glDepthRange_layer;
 
   REGALGLDEPTHRANGEARRAYVPROC glDepthRangeArrayv;
-  Layer * glDepthRangeArrayv_layer;
-
-  REGALGLDEPTHRANGEARRAYV_LAYERPROC glDepthRangeArrayv_layer;
-  Layer * glDepthRangeArrayv_layer_layer;
 
   REGALGLDEPTHRANGEINDEXEDPROC glDepthRangeIndexed;
-  Layer * glDepthRangeIndexed_layer;
-
-  REGALGLDEPTHRANGEINDEXED_LAYERPROC glDepthRangeIndexed_layer;
-  Layer * glDepthRangeIndexed_layer_layer;
-
-  REGALGLDEPTHRANGE_LAYERPROC glDepthRange_layer;
-  Layer * glDepthRange_layer_layer;
 
   REGALGLDEPTHRANGEFPROC glDepthRangef;
-  Layer * glDepthRangef_layer;
-
-  REGALGLDEPTHRANGEF_LAYERPROC glDepthRangef_layer;
-  Layer * glDepthRangef_layer_layer;
 
   REGALGLDISABLEPROC glDisable;
-  Layer * glDisable_layer;
-
-  REGALGLDISABLE_LAYERPROC glDisable_layer;
-  Layer * glDisable_layer_layer;
 
   REGALGLDISABLEIPROC glDisablei;
-  Layer * glDisablei_layer;
-
-  REGALGLDISABLEI_LAYERPROC glDisablei_layer;
-  Layer * glDisablei_layer_layer;
 
   REGALGLDRAWBUFFERPROC glDrawBuffer;
-  Layer * glDrawBuffer_layer;
-
-  REGALGLDRAWBUFFER_LAYERPROC glDrawBuffer_layer;
-  Layer * glDrawBuffer_layer_layer;
 
   REGALGLDRAWBUFFERSPROC glDrawBuffers;
-  Layer * glDrawBuffers_layer;
 
   REGALGLDRAWBUFFERSARBPROC glDrawBuffersARB;
-  Layer * glDrawBuffersARB_layer;
-
-  REGALGLDRAWBUFFERSARB_LAYERPROC glDrawBuffersARB_layer;
-  Layer * glDrawBuffersARB_layer_layer;
 
   REGALGLDRAWBUFFERSNVPROC glDrawBuffersNV;
-  Layer * glDrawBuffersNV_layer;
-
-  REGALGLDRAWBUFFERSNV_LAYERPROC glDrawBuffersNV_layer;
-  Layer * glDrawBuffersNV_layer_layer;
-
-  REGALGLDRAWBUFFERS_LAYERPROC glDrawBuffers_layer;
-  Layer * glDrawBuffers_layer_layer;
 
   REGALGLENABLEPROC glEnable;
-  Layer * glEnable_layer;
-
-  REGALGLENABLE_LAYERPROC glEnable_layer;
-  Layer * glEnable_layer_layer;
 
   REGALGLENABLEIPROC glEnablei;
-  Layer * glEnablei_layer;
-
-  REGALGLENABLEI_LAYERPROC glEnablei_layer;
-  Layer * glEnablei_layer_layer;
 
   REGALGLFOGFPROC glFogf;
-  Layer * glFogf_layer;
 
   REGALGLFOGFVPROC glFogfv;
-  Layer * glFogfv_layer;
 
   REGALGLFOGIPROC glFogi;
-  Layer * glFogi_layer;
 
   REGALGLFRONTFACEPROC glFrontFace;
-  Layer * glFrontFace_layer;
-
-  REGALGLFRONTFACE_LAYERPROC glFrontFace_layer;
-  Layer * glFrontFace_layer_layer;
 
   REGALGLGETBOOLEANI_VPROC glGetBooleani_v;
-  Layer * glGetBooleani_v_layer;
-
-  REGALGLGETBOOLEANI_V_LAYERPROC glGetBooleani_v_layer;
-  Layer * glGetBooleani_v_layer_layer;
 
   REGALGLGETBOOLEANVPROC glGetBooleanv;
-  Layer * glGetBooleanv_layer;
-
-  REGALGLGETBOOLEANV_LAYERPROC glGetBooleanv_layer;
-  Layer * glGetBooleanv_layer_layer;
 
   REGALGLGETCOLORTABLEPARAMETERFVPROC glGetColorTableParameterfv;
-  Layer * glGetColorTableParameterfv_layer;
-
-  REGALGLGETCOLORTABLEPARAMETERFV_LAYERPROC glGetColorTableParameterfv_layer;
-  Layer * glGetColorTableParameterfv_layer_layer;
 
   REGALGLGETCOLORTABLEPARAMETERIVPROC glGetColorTableParameteriv;
-  Layer * glGetColorTableParameteriv_layer;
-
-  REGALGLGETCOLORTABLEPARAMETERIV_LAYERPROC glGetColorTableParameteriv_layer;
-  Layer * glGetColorTableParameteriv_layer_layer;
 
   REGALGLGETCONVOLUTIONPARAMETERFVPROC glGetConvolutionParameterfv;
-  Layer * glGetConvolutionParameterfv_layer;
-
-  REGALGLGETCONVOLUTIONPARAMETERFV_LAYERPROC glGetConvolutionParameterfv_layer;
-  Layer * glGetConvolutionParameterfv_layer_layer;
 
   REGALGLGETCONVOLUTIONPARAMETERIVPROC glGetConvolutionParameteriv;
-  Layer * glGetConvolutionParameteriv_layer;
-
-  REGALGLGETCONVOLUTIONPARAMETERIV_LAYERPROC glGetConvolutionParameteriv_layer;
-  Layer * glGetConvolutionParameteriv_layer_layer;
 
   REGALGLGETDOUBLEI_VPROC glGetDoublei_v;
-  Layer * glGetDoublei_v_layer;
 
   REGALGLGETDOUBLEI_VEXTPROC glGetDoublei_vEXT;
-  Layer * glGetDoublei_vEXT_layer;
-
-  REGALGLGETDOUBLEI_VEXT_LAYERPROC glGetDoublei_vEXT_layer;
-  Layer * glGetDoublei_vEXT_layer_layer;
-
-  REGALGLGETDOUBLEI_V_LAYERPROC glGetDoublei_v_layer;
-  Layer * glGetDoublei_v_layer_layer;
 
   REGALGLGETDOUBLEVPROC glGetDoublev;
-  Layer * glGetDoublev_layer;
-
-  REGALGLGETDOUBLEV_LAYERPROC glGetDoublev_layer;
-  Layer * glGetDoublev_layer_layer;
 
   REGALGLGETFLOATI_VPROC glGetFloati_v;
-  Layer * glGetFloati_v_layer;
 
   REGALGLGETFLOATI_VEXTPROC glGetFloati_vEXT;
-  Layer * glGetFloati_vEXT_layer;
-
-  REGALGLGETFLOATI_VEXT_LAYERPROC glGetFloati_vEXT_layer;
-  Layer * glGetFloati_vEXT_layer_layer;
-
-  REGALGLGETFLOATI_V_LAYERPROC glGetFloati_v_layer;
-  Layer * glGetFloati_v_layer_layer;
 
   REGALGLGETFLOATVPROC glGetFloatv;
-  Layer * glGetFloatv_layer;
-
-  REGALGLGETFLOATV_LAYERPROC glGetFloatv_layer;
-  Layer * glGetFloatv_layer_layer;
 
   REGALGLGETINTEGERI_VPROC glGetIntegeri_v;
-  Layer * glGetIntegeri_v_layer;
 
   REGALGLGETINTEGERI_VEXTPROC glGetIntegeri_vEXT;
-  Layer * glGetIntegeri_vEXT_layer;
-
-  REGALGLGETINTEGERI_VEXT_LAYERPROC glGetIntegeri_vEXT_layer;
-  Layer * glGetIntegeri_vEXT_layer_layer;
-
-  REGALGLGETINTEGERI_V_LAYERPROC glGetIntegeri_v_layer;
-  Layer * glGetIntegeri_v_layer_layer;
 
   REGALGLGETINTEGERVPROC glGetIntegerv;
-  Layer * glGetIntegerv_layer;
-
-  REGALGLGETINTEGERV_LAYERPROC glGetIntegerv_layer;
-  Layer * glGetIntegerv_layer_layer;
 
   REGALGLGETLIGHTFVPROC glGetLightfv;
-  Layer * glGetLightfv_layer;
-
-  REGALGLGETLIGHTFV_LAYERPROC glGetLightfv_layer;
-  Layer * glGetLightfv_layer_layer;
 
   REGALGLGETLIGHTIVPROC glGetLightiv;
-  Layer * glGetLightiv_layer;
-
-  REGALGLGETLIGHTIV_LAYERPROC glGetLightiv_layer;
-  Layer * glGetLightiv_layer_layer;
 
   REGALGLGETLIGHTXVPROC glGetLightxv;
-  Layer * glGetLightxv_layer;
-
-  REGALGLGETLIGHTXV_LAYERPROC glGetLightxv_layer;
-  Layer * glGetLightxv_layer_layer;
 
   REGALGLGETMATERIALFVPROC glGetMaterialfv;
-  Layer * glGetMaterialfv_layer;
-
-  REGALGLGETMATERIALFV_LAYERPROC glGetMaterialfv_layer;
-  Layer * glGetMaterialfv_layer_layer;
 
   REGALGLGETMATERIALIVPROC glGetMaterialiv;
-  Layer * glGetMaterialiv_layer;
-
-  REGALGLGETMATERIALIV_LAYERPROC glGetMaterialiv_layer;
-  Layer * glGetMaterialiv_layer_layer;
 
   REGALGLGETMATERIALXVPROC glGetMaterialxv;
-  Layer * glGetMaterialxv_layer;
-
-  REGALGLGETMATERIALXV_LAYERPROC glGetMaterialxv_layer;
-  Layer * glGetMaterialxv_layer_layer;
 
   REGALGLGETMULTITEXENVFVEXTPROC glGetMultiTexEnvfvEXT;
-  Layer * glGetMultiTexEnvfvEXT_layer;
-
-  REGALGLGETMULTITEXENVFVEXT_LAYERPROC glGetMultiTexEnvfvEXT_layer;
-  Layer * glGetMultiTexEnvfvEXT_layer_layer;
 
   REGALGLGETMULTITEXENVIVEXTPROC glGetMultiTexEnvivEXT;
-  Layer * glGetMultiTexEnvivEXT_layer;
-
-  REGALGLGETMULTITEXENVIVEXT_LAYERPROC glGetMultiTexEnvivEXT_layer;
-  Layer * glGetMultiTexEnvivEXT_layer_layer;
 
   REGALGLGETPOLYGONSTIPPLEPROC glGetPolygonStipple;
-  Layer * glGetPolygonStipple_layer;
-
-  REGALGLGETPOLYGONSTIPPLE_LAYERPROC glGetPolygonStipple_layer;
-  Layer * glGetPolygonStipple_layer_layer;
 
   REGALGLGETTEXENVFVPROC glGetTexEnvfv;
-  Layer * glGetTexEnvfv_layer;
-
-  REGALGLGETTEXENVFV_LAYERPROC glGetTexEnvfv_layer;
-  Layer * glGetTexEnvfv_layer_layer;
 
   REGALGLGETTEXENVIVPROC glGetTexEnviv;
-  Layer * glGetTexEnviv_layer;
-
-  REGALGLGETTEXENVIV_LAYERPROC glGetTexEnviv_layer;
-  Layer * glGetTexEnviv_layer_layer;
 
   REGALGLGETTEXLEVELPARAMETERFVPROC glGetTexLevelParameterfv;
-  Layer * glGetTexLevelParameterfv_layer;
-
-  REGALGLGETTEXLEVELPARAMETERFV_LAYERPROC glGetTexLevelParameterfv_layer;
-  Layer * glGetTexLevelParameterfv_layer_layer;
 
   REGALGLGETTEXLEVELPARAMETERIVPROC glGetTexLevelParameteriv;
-  Layer * glGetTexLevelParameteriv_layer;
-
-  REGALGLGETTEXLEVELPARAMETERIV_LAYERPROC glGetTexLevelParameteriv_layer;
-  Layer * glGetTexLevelParameteriv_layer_layer;
 
   REGALGLGETTEXPARAMETERFVPROC glGetTexParameterfv;
-  Layer * glGetTexParameterfv_layer;
-
-  REGALGLGETTEXPARAMETERFV_LAYERPROC glGetTexParameterfv_layer;
-  Layer * glGetTexParameterfv_layer_layer;
 
   REGALGLGETTEXPARAMETERIVPROC glGetTexParameteriv;
-  Layer * glGetTexParameteriv_layer;
-
-  REGALGLGETTEXPARAMETERIV_LAYERPROC glGetTexParameteriv_layer;
-  Layer * glGetTexParameteriv_layer_layer;
 
   REGALGLGETTEXTURELEVELPARAMETERFVEXTPROC glGetTextureLevelParameterfvEXT;
-  Layer * glGetTextureLevelParameterfvEXT_layer;
-
-  REGALGLGETTEXTURELEVELPARAMETERFVEXT_LAYERPROC glGetTextureLevelParameterfvEXT_layer;
-  Layer * glGetTextureLevelParameterfvEXT_layer_layer;
 
   REGALGLGETTEXTURELEVELPARAMETERIVEXTPROC glGetTextureLevelParameterivEXT;
-  Layer * glGetTextureLevelParameterivEXT_layer;
-
-  REGALGLGETTEXTURELEVELPARAMETERIVEXT_LAYERPROC glGetTextureLevelParameterivEXT_layer;
-  Layer * glGetTextureLevelParameterivEXT_layer_layer;
 
   REGALGLGETTEXTUREPARAMETERFVEXTPROC glGetTextureParameterfvEXT;
-  Layer * glGetTextureParameterfvEXT_layer;
-
-  REGALGLGETTEXTUREPARAMETERFVEXT_LAYERPROC glGetTextureParameterfvEXT_layer;
-  Layer * glGetTextureParameterfvEXT_layer_layer;
 
   REGALGLGETTEXTUREPARAMETERIVEXTPROC glGetTextureParameterivEXT;
-  Layer * glGetTextureParameterivEXT_layer;
-
-  REGALGLGETTEXTUREPARAMETERIVEXT_LAYERPROC glGetTextureParameterivEXT_layer;
-  Layer * glGetTextureParameterivEXT_layer_layer;
 
   REGALGLHINTPROC glHint;
-  Layer * glHint_layer;
-
-  REGALGLHINT_LAYERPROC glHint_layer;
-  Layer * glHint_layer_layer;
 
   REGALGLINDEXMASKPROC glIndexMask;
-  Layer * glIndexMask_layer;
-
-  REGALGLINDEXMASK_LAYERPROC glIndexMask_layer;
-  Layer * glIndexMask_layer_layer;
 
   REGALGLISENABLEDPROC glIsEnabled;
-  Layer * glIsEnabled_layer;
-
-  REGALGLISENABLED_LAYERPROC glIsEnabled_layer;
-  Layer * glIsEnabled_layer_layer;
 
   REGALGLISENABLEDIPROC glIsEnabledi;
-  Layer * glIsEnabledi_layer;
-
-  REGALGLISENABLEDI_LAYERPROC glIsEnabledi_layer;
-  Layer * glIsEnabledi_layer_layer;
 
   REGALGLLIGHTMODELFPROC glLightModelf;
-  Layer * glLightModelf_layer;
-
-  REGALGLLIGHTMODELF_LAYERPROC glLightModelf_layer;
-  Layer * glLightModelf_layer_layer;
 
   REGALGLLIGHTMODELFVPROC glLightModelfv;
-  Layer * glLightModelfv_layer;
-
-  REGALGLLIGHTMODELFV_LAYERPROC glLightModelfv_layer;
-  Layer * glLightModelfv_layer_layer;
 
   REGALGLLIGHTMODELIPROC glLightModeli;
-  Layer * glLightModeli_layer;
-
-  REGALGLLIGHTMODELI_LAYERPROC glLightModeli_layer;
-  Layer * glLightModeli_layer_layer;
 
   REGALGLLIGHTMODELIVPROC glLightModeliv;
-  Layer * glLightModeliv_layer;
-
-  REGALGLLIGHTMODELIV_LAYERPROC glLightModeliv_layer;
-  Layer * glLightModeliv_layer_layer;
 
   REGALGLLIGHTFPROC glLightf;
-  Layer * glLightf_layer;
-
-  REGALGLLIGHTF_LAYERPROC glLightf_layer;
-  Layer * glLightf_layer_layer;
 
   REGALGLLIGHTFVPROC glLightfv;
-  Layer * glLightfv_layer;
-
-  REGALGLLIGHTFV_LAYERPROC glLightfv_layer;
-  Layer * glLightfv_layer_layer;
 
   REGALGLLIGHTIPROC glLighti;
-  Layer * glLighti_layer;
-
-  REGALGLLIGHTI_LAYERPROC glLighti_layer;
-  Layer * glLighti_layer_layer;
 
   REGALGLLIGHTIVPROC glLightiv;
-  Layer * glLightiv_layer;
-
-  REGALGLLIGHTIV_LAYERPROC glLightiv_layer;
-  Layer * glLightiv_layer_layer;
 
   REGALGLLINESTIPPLEPROC glLineStipple;
-  Layer * glLineStipple_layer;
-
-  REGALGLLINESTIPPLE_LAYERPROC glLineStipple_layer;
-  Layer * glLineStipple_layer_layer;
 
   REGALGLLINEWIDTHPROC glLineWidth;
-  Layer * glLineWidth_layer;
-
-  REGALGLLINEWIDTH_LAYERPROC glLineWidth_layer;
-  Layer * glLineWidth_layer_layer;
 
   REGALGLLISTBASEPROC glListBase;
-  Layer * glListBase_layer;
-
-  REGALGLLISTBASE_LAYERPROC glListBase_layer;
-  Layer * glListBase_layer_layer;
 
   REGALGLLOGICOPPROC glLogicOp;
-  Layer * glLogicOp_layer;
-
-  REGALGLLOGICOP_LAYERPROC glLogicOp_layer;
-  Layer * glLogicOp_layer_layer;
 
   REGALGLMAPGRID1DPROC glMapGrid1d;
-  Layer * glMapGrid1d_layer;
-
-  REGALGLMAPGRID1D_LAYERPROC glMapGrid1d_layer;
-  Layer * glMapGrid1d_layer_layer;
 
   REGALGLMAPGRID1FPROC glMapGrid1f;
-  Layer * glMapGrid1f_layer;
-
-  REGALGLMAPGRID1F_LAYERPROC glMapGrid1f_layer;
-  Layer * glMapGrid1f_layer_layer;
 
   REGALGLMAPGRID2DPROC glMapGrid2d;
-  Layer * glMapGrid2d_layer;
-
-  REGALGLMAPGRID2D_LAYERPROC glMapGrid2d_layer;
-  Layer * glMapGrid2d_layer_layer;
 
   REGALGLMAPGRID2FPROC glMapGrid2f;
-  Layer * glMapGrid2f_layer;
-
-  REGALGLMAPGRID2F_LAYERPROC glMapGrid2f_layer;
-  Layer * glMapGrid2f_layer_layer;
 
   REGALGLMATERIALFPROC glMaterialf;
-  Layer * glMaterialf_layer;
-
-  REGALGLMATERIALF_LAYERPROC glMaterialf_layer;
-  Layer * glMaterialf_layer_layer;
 
   REGALGLMATERIALFVPROC glMaterialfv;
-  Layer * glMaterialfv_layer;
-
-  REGALGLMATERIALFV_LAYERPROC glMaterialfv_layer;
-  Layer * glMaterialfv_layer_layer;
 
   REGALGLMATERIALIPROC glMateriali;
-  Layer * glMateriali_layer;
-
-  REGALGLMATERIALI_LAYERPROC glMateriali_layer;
-  Layer * glMateriali_layer_layer;
 
   REGALGLMATERIALIVPROC glMaterialiv;
-  Layer * glMaterialiv_layer;
-
-  REGALGLMATERIALIV_LAYERPROC glMaterialiv_layer;
-  Layer * glMaterialiv_layer_layer;
 
   REGALGLMATRIXMODEPROC glMatrixMode;
-  Layer * glMatrixMode_layer;
-
-  REGALGLMATRIXMODE_LAYERPROC glMatrixMode_layer;
-  Layer * glMatrixMode_layer_layer;
 
   REGALGLMINSAMPLESHADINGPROC glMinSampleShading;
-  Layer * glMinSampleShading_layer;
-
-  REGALGLMINSAMPLESHADING_LAYERPROC glMinSampleShading_layer;
-  Layer * glMinSampleShading_layer_layer;
 
   REGALGLMULTITEXENVFEXTPROC glMultiTexEnvfEXT;
-  Layer * glMultiTexEnvfEXT_layer;
-
-  REGALGLMULTITEXENVFEXT_LAYERPROC glMultiTexEnvfEXT_layer;
-  Layer * glMultiTexEnvfEXT_layer_layer;
 
   REGALGLMULTITEXENVFVEXTPROC glMultiTexEnvfvEXT;
-  Layer * glMultiTexEnvfvEXT_layer;
-
-  REGALGLMULTITEXENVFVEXT_LAYERPROC glMultiTexEnvfvEXT_layer;
-  Layer * glMultiTexEnvfvEXT_layer_layer;
 
   REGALGLMULTITEXENVIEXTPROC glMultiTexEnviEXT;
-  Layer * glMultiTexEnviEXT_layer;
-
-  REGALGLMULTITEXENVIEXT_LAYERPROC glMultiTexEnviEXT_layer;
-  Layer * glMultiTexEnviEXT_layer_layer;
 
   REGALGLMULTITEXENVIVEXTPROC glMultiTexEnvivEXT;
-  Layer * glMultiTexEnvivEXT_layer;
-
-  REGALGLMULTITEXENVIVEXT_LAYERPROC glMultiTexEnvivEXT_layer;
-  Layer * glMultiTexEnvivEXT_layer_layer;
 
   REGALGLPIXELTRANSFERFPROC glPixelTransferf;
-  Layer * glPixelTransferf_layer;
-
-  REGALGLPIXELTRANSFERF_LAYERPROC glPixelTransferf_layer;
-  Layer * glPixelTransferf_layer_layer;
 
   REGALGLPIXELTRANSFERIPROC glPixelTransferi;
-  Layer * glPixelTransferi_layer;
-
-  REGALGLPIXELTRANSFERI_LAYERPROC glPixelTransferi_layer;
-  Layer * glPixelTransferi_layer_layer;
 
   REGALGLPIXELZOOMPROC glPixelZoom;
-  Layer * glPixelZoom_layer;
-
-  REGALGLPIXELZOOM_LAYERPROC glPixelZoom_layer;
-  Layer * glPixelZoom_layer_layer;
 
   REGALGLPOINTPARAMETERFPROC glPointParameterf;
-  Layer * glPointParameterf_layer;
-
-  REGALGLPOINTPARAMETERF_LAYERPROC glPointParameterf_layer;
-  Layer * glPointParameterf_layer_layer;
 
   REGALGLPOINTPARAMETERFVPROC glPointParameterfv;
-  Layer * glPointParameterfv_layer;
-
-  REGALGLPOINTPARAMETERFV_LAYERPROC glPointParameterfv_layer;
-  Layer * glPointParameterfv_layer_layer;
 
   REGALGLPOINTPARAMETERIPROC glPointParameteri;
-  Layer * glPointParameteri_layer;
-
-  REGALGLPOINTPARAMETERI_LAYERPROC glPointParameteri_layer;
-  Layer * glPointParameteri_layer_layer;
 
   REGALGLPOINTPARAMETERIVPROC glPointParameteriv;
-  Layer * glPointParameteriv_layer;
-
-  REGALGLPOINTPARAMETERIV_LAYERPROC glPointParameteriv_layer;
-  Layer * glPointParameteriv_layer_layer;
 
   REGALGLPOINTSIZEPROC glPointSize;
-  Layer * glPointSize_layer;
-
-  REGALGLPOINTSIZE_LAYERPROC glPointSize_layer;
-  Layer * glPointSize_layer_layer;
 
   REGALGLPOLYGONMODEPROC glPolygonMode;
-  Layer * glPolygonMode_layer;
-
-  REGALGLPOLYGONMODE_LAYERPROC glPolygonMode_layer;
-  Layer * glPolygonMode_layer_layer;
 
   REGALGLPOLYGONOFFSETPROC glPolygonOffset;
-  Layer * glPolygonOffset_layer;
-
-  REGALGLPOLYGONOFFSET_LAYERPROC glPolygonOffset_layer;
-  Layer * glPolygonOffset_layer_layer;
 
   REGALGLPOLYGONSTIPPLEPROC glPolygonStipple;
-  Layer * glPolygonStipple_layer;
-
-  REGALGLPOLYGONSTIPPLE_LAYERPROC glPolygonStipple_layer;
-  Layer * glPolygonStipple_layer_layer;
 
   REGALGLPOPATTRIBPROC glPopAttrib;
-  Layer * glPopAttrib_layer;
-
-  REGALGLPOPATTRIB_LAYERPROC glPopAttrib_layer;
-  Layer * glPopAttrib_layer_layer;
 
   REGALGLPROVOKINGVERTEXPROC glProvokingVertex;
-  Layer * glProvokingVertex_layer;
-
-  REGALGLPROVOKINGVERTEX_LAYERPROC glProvokingVertex_layer;
-  Layer * glProvokingVertex_layer_layer;
 
   REGALGLPUSHATTRIBPROC glPushAttrib;
-  Layer * glPushAttrib_layer;
-
-  REGALGLPUSHATTRIB_LAYERPROC glPushAttrib_layer;
-  Layer * glPushAttrib_layer_layer;
 
   REGALGLREADBUFFERPROC glReadBuffer;
-  Layer * glReadBuffer_layer;
-
-  REGALGLREADBUFFER_LAYERPROC glReadBuffer_layer;
-  Layer * glReadBuffer_layer_layer;
 
   REGALGLSAMPLECOVERAGEPROC glSampleCoverage;
-  Layer * glSampleCoverage_layer;
-
-  REGALGLSAMPLECOVERAGE_LAYERPROC glSampleCoverage_layer;
-  Layer * glSampleCoverage_layer_layer;
 
   REGALGLSCISSORPROC glScissor;
-  Layer * glScissor_layer;
 
   REGALGLSCISSORARRAYVPROC glScissorArrayv;
-  Layer * glScissorArrayv_layer;
-
-  REGALGLSCISSORARRAYV_LAYERPROC glScissorArrayv_layer;
-  Layer * glScissorArrayv_layer_layer;
 
   REGALGLSCISSORINDEXEDPROC glScissorIndexed;
-  Layer * glScissorIndexed_layer;
-
-  REGALGLSCISSORINDEXED_LAYERPROC glScissorIndexed_layer;
-  Layer * glScissorIndexed_layer_layer;
 
   REGALGLSCISSORINDEXEDVPROC glScissorIndexedv;
-  Layer * glScissorIndexedv_layer;
-
-  REGALGLSCISSORINDEXEDV_LAYERPROC glScissorIndexedv_layer;
-  Layer * glScissorIndexedv_layer_layer;
-
-  REGALGLSCISSOR_LAYERPROC glScissor_layer;
-  Layer * glScissor_layer_layer;
 
   REGALGLSHADEMODELPROC glShadeModel;
-  Layer * glShadeModel_layer;
-
-  REGALGLSHADEMODEL_LAYERPROC glShadeModel_layer;
-  Layer * glShadeModel_layer_layer;
 
   REGALGLSTENCILFUNCPROC glStencilFunc;
-  Layer * glStencilFunc_layer;
 
   REGALGLSTENCILFUNCSEPARATEPROC glStencilFuncSeparate;
-  Layer * glStencilFuncSeparate_layer;
-
-  REGALGLSTENCILFUNCSEPARATE_LAYERPROC glStencilFuncSeparate_layer;
-  Layer * glStencilFuncSeparate_layer_layer;
-
-  REGALGLSTENCILFUNC_LAYERPROC glStencilFunc_layer;
-  Layer * glStencilFunc_layer_layer;
 
   REGALGLSTENCILMASKPROC glStencilMask;
-  Layer * glStencilMask_layer;
 
   REGALGLSTENCILMASKSEPARATEPROC glStencilMaskSeparate;
-  Layer * glStencilMaskSeparate_layer;
-
-  REGALGLSTENCILMASKSEPARATE_LAYERPROC glStencilMaskSeparate_layer;
-  Layer * glStencilMaskSeparate_layer_layer;
-
-  REGALGLSTENCILMASK_LAYERPROC glStencilMask_layer;
-  Layer * glStencilMask_layer_layer;
 
   REGALGLSTENCILOPPROC glStencilOp;
-  Layer * glStencilOp_layer;
 
   REGALGLSTENCILOPSEPARATEPROC glStencilOpSeparate;
-  Layer * glStencilOpSeparate_layer;
-
-  REGALGLSTENCILOPSEPARATE_LAYERPROC glStencilOpSeparate_layer;
-  Layer * glStencilOpSeparate_layer_layer;
-
-  REGALGLSTENCILOP_LAYERPROC glStencilOp_layer;
-  Layer * glStencilOp_layer_layer;
 
   REGALGLTEXENVFPROC glTexEnvf;
-  Layer * glTexEnvf_layer;
-
-  REGALGLTEXENVF_LAYERPROC glTexEnvf_layer;
-  Layer * glTexEnvf_layer_layer;
 
   REGALGLTEXENVFVPROC glTexEnvfv;
-  Layer * glTexEnvfv_layer;
-
-  REGALGLTEXENVFV_LAYERPROC glTexEnvfv_layer;
-  Layer * glTexEnvfv_layer_layer;
 
   REGALGLTEXENVIPROC glTexEnvi;
-  Layer * glTexEnvi_layer;
-
-  REGALGLTEXENVI_LAYERPROC glTexEnvi_layer;
-  Layer * glTexEnvi_layer_layer;
 
   REGALGLTEXENVIVPROC glTexEnviv;
-  Layer * glTexEnviv_layer;
-
-  REGALGLTEXENVIV_LAYERPROC glTexEnviv_layer;
-  Layer * glTexEnviv_layer_layer;
 
   REGALGLVIEWPORTPROC glViewport;
-  Layer * glViewport_layer;
 
   REGALGLVIEWPORTARRAYVPROC glViewportArrayv;
-  Layer * glViewportArrayv_layer;
-
-  REGALGLVIEWPORTARRAYV_LAYERPROC glViewportArrayv_layer;
-  Layer * glViewportArrayv_layer_layer;
 
   REGALGLVIEWPORTINDEXEDFPROC glViewportIndexedf;
-  Layer * glViewportIndexedf_layer;
-
-  REGALGLVIEWPORTINDEXEDF_LAYERPROC glViewportIndexedf_layer;
-  Layer * glViewportIndexedf_layer_layer;
 
   REGALGLVIEWPORTINDEXEDFVPROC glViewportIndexedfv;
-  Layer * glViewportIndexedfv_layer;
-
-  REGALGLVIEWPORTINDEXEDFV_LAYERPROC glViewportIndexedfv_layer;
-  Layer * glViewportIndexedfv_layer_layer;
-
-  REGALGLVIEWPORT_LAYERPROC glViewport_layer;
-  Layer * glViewport_layer_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glActiveTexture = dt.glActiveTexture;
-    glActiveTexture_layer = dt.glActiveTexture_layer;
 
     glActiveTextureARB = dt.glActiveTextureARB;
-    glActiveTextureARB_layer = dt.glActiveTextureARB_layer;
-
-    glActiveTextureARB_layer = dt.glActiveTextureARB_layer;
-    glActiveTextureARB_layer_layer = dt.glActiveTextureARB_layer_layer;
-
-    glActiveTexture_layer = dt.glActiveTexture_layer;
-    glActiveTexture_layer_layer = dt.glActiveTexture_layer_layer;
 
     glAlphaFunc = dt.glAlphaFunc;
-    glAlphaFunc_layer = dt.glAlphaFunc_layer;
-
-    glAlphaFunc_layer = dt.glAlphaFunc_layer;
-    glAlphaFunc_layer_layer = dt.glAlphaFunc_layer_layer;
 
     glBlendColor = dt.glBlendColor;
-    glBlendColor_layer = dt.glBlendColor_layer;
-
-    glBlendColor_layer = dt.glBlendColor_layer;
-    glBlendColor_layer_layer = dt.glBlendColor_layer_layer;
 
     glBlendEquation = dt.glBlendEquation;
-    glBlendEquation_layer = dt.glBlendEquation_layer;
 
     glBlendEquationSeparate = dt.glBlendEquationSeparate;
-    glBlendEquationSeparate_layer = dt.glBlendEquationSeparate_layer;
-
-    glBlendEquationSeparate_layer = dt.glBlendEquationSeparate_layer;
-    glBlendEquationSeparate_layer_layer = dt.glBlendEquationSeparate_layer_layer;
 
     glBlendEquationSeparatei = dt.glBlendEquationSeparatei;
-    glBlendEquationSeparatei_layer = dt.glBlendEquationSeparatei_layer;
-
-    glBlendEquationSeparatei_layer = dt.glBlendEquationSeparatei_layer;
-    glBlendEquationSeparatei_layer_layer = dt.glBlendEquationSeparatei_layer_layer;
-
-    glBlendEquation_layer = dt.glBlendEquation_layer;
-    glBlendEquation_layer_layer = dt.glBlendEquation_layer_layer;
 
     glBlendEquationi = dt.glBlendEquationi;
-    glBlendEquationi_layer = dt.glBlendEquationi_layer;
-
-    glBlendEquationi_layer = dt.glBlendEquationi_layer;
-    glBlendEquationi_layer_layer = dt.glBlendEquationi_layer_layer;
 
     glBlendFunc = dt.glBlendFunc;
-    glBlendFunc_layer = dt.glBlendFunc_layer;
 
     glBlendFuncSeparate = dt.glBlendFuncSeparate;
-    glBlendFuncSeparate_layer = dt.glBlendFuncSeparate_layer;
-
-    glBlendFuncSeparate_layer = dt.glBlendFuncSeparate_layer;
-    glBlendFuncSeparate_layer_layer = dt.glBlendFuncSeparate_layer_layer;
 
     glBlendFuncSeparatei = dt.glBlendFuncSeparatei;
-    glBlendFuncSeparatei_layer = dt.glBlendFuncSeparatei_layer;
-
-    glBlendFuncSeparatei_layer = dt.glBlendFuncSeparatei_layer;
-    glBlendFuncSeparatei_layer_layer = dt.glBlendFuncSeparatei_layer_layer;
-
-    glBlendFunc_layer = dt.glBlendFunc_layer;
-    glBlendFunc_layer_layer = dt.glBlendFunc_layer_layer;
 
     glBlendFunci = dt.glBlendFunci;
-    glBlendFunci_layer = dt.glBlendFunci_layer;
-
-    glBlendFunci_layer = dt.glBlendFunci_layer;
-    glBlendFunci_layer_layer = dt.glBlendFunci_layer_layer;
 
     glClampColor = dt.glClampColor;
-    glClampColor_layer = dt.glClampColor_layer;
-
-    glClampColor_layer = dt.glClampColor_layer;
-    glClampColor_layer_layer = dt.glClampColor_layer_layer;
 
     glClearAccum = dt.glClearAccum;
-    glClearAccum_layer = dt.glClearAccum_layer;
-
-    glClearAccum_layer = dt.glClearAccum_layer;
-    glClearAccum_layer_layer = dt.glClearAccum_layer_layer;
 
     glClearColor = dt.glClearColor;
-    glClearColor_layer = dt.glClearColor_layer;
-
-    glClearColor_layer = dt.glClearColor_layer;
-    glClearColor_layer_layer = dt.glClearColor_layer_layer;
 
     glClearDepth = dt.glClearDepth;
-    glClearDepth_layer = dt.glClearDepth_layer;
-
-    glClearDepth_layer = dt.glClearDepth_layer;
-    glClearDepth_layer_layer = dt.glClearDepth_layer_layer;
 
     glClearDepthf = dt.glClearDepthf;
-    glClearDepthf_layer = dt.glClearDepthf_layer;
-
-    glClearDepthf_layer = dt.glClearDepthf_layer;
-    glClearDepthf_layer_layer = dt.glClearDepthf_layer_layer;
 
     glClearIndex = dt.glClearIndex;
-    glClearIndex_layer = dt.glClearIndex_layer;
-
-    glClearIndex_layer = dt.glClearIndex_layer;
-    glClearIndex_layer_layer = dt.glClearIndex_layer_layer;
 
     glClearStencil = dt.glClearStencil;
-    glClearStencil_layer = dt.glClearStencil_layer;
-
-    glClearStencil_layer = dt.glClearStencil_layer;
-    glClearStencil_layer_layer = dt.glClearStencil_layer_layer;
 
     glClipPlane = dt.glClipPlane;
-    glClipPlane_layer = dt.glClipPlane_layer;
-
-    glClipPlane_layer = dt.glClipPlane_layer;
-    glClipPlane_layer_layer = dt.glClipPlane_layer_layer;
 
     glColorMask = dt.glColorMask;
-    glColorMask_layer = dt.glColorMask_layer;
-
-    glColorMask_layer = dt.glColorMask_layer;
-    glColorMask_layer_layer = dt.glColorMask_layer_layer;
 
     glColorMaski = dt.glColorMaski;
-    glColorMaski_layer = dt.glColorMaski_layer;
-
-    glColorMaski_layer = dt.glColorMaski_layer;
-    glColorMaski_layer_layer = dt.glColorMaski_layer_layer;
 
     glColorMaterial = dt.glColorMaterial;
-    glColorMaterial_layer = dt.glColorMaterial_layer;
-
-    glColorMaterial_layer = dt.glColorMaterial_layer;
-    glColorMaterial_layer_layer = dt.glColorMaterial_layer_layer;
 
     glColorTableParameterfv = dt.glColorTableParameterfv;
-    glColorTableParameterfv_layer = dt.glColorTableParameterfv_layer;
-
-    glColorTableParameterfv_layer = dt.glColorTableParameterfv_layer;
-    glColorTableParameterfv_layer_layer = dt.glColorTableParameterfv_layer_layer;
 
     glColorTableParameteriv = dt.glColorTableParameteriv;
-    glColorTableParameteriv_layer = dt.glColorTableParameteriv_layer;
-
-    glColorTableParameteriv_layer = dt.glColorTableParameteriv_layer;
-    glColorTableParameteriv_layer_layer = dt.glColorTableParameteriv_layer_layer;
 
     glConvolutionParameterf = dt.glConvolutionParameterf;
-    glConvolutionParameterf_layer = dt.glConvolutionParameterf_layer;
-
-    glConvolutionParameterf_layer = dt.glConvolutionParameterf_layer;
-    glConvolutionParameterf_layer_layer = dt.glConvolutionParameterf_layer_layer;
 
     glConvolutionParameterfv = dt.glConvolutionParameterfv;
-    glConvolutionParameterfv_layer = dt.glConvolutionParameterfv_layer;
-
-    glConvolutionParameterfv_layer = dt.glConvolutionParameterfv_layer;
-    glConvolutionParameterfv_layer_layer = dt.glConvolutionParameterfv_layer_layer;
 
     glConvolutionParameteri = dt.glConvolutionParameteri;
-    glConvolutionParameteri_layer = dt.glConvolutionParameteri_layer;
-
-    glConvolutionParameteri_layer = dt.glConvolutionParameteri_layer;
-    glConvolutionParameteri_layer_layer = dt.glConvolutionParameteri_layer_layer;
 
     glConvolutionParameteriv = dt.glConvolutionParameteriv;
-    glConvolutionParameteriv_layer = dt.glConvolutionParameteriv_layer;
-
-    glConvolutionParameteriv_layer = dt.glConvolutionParameteriv_layer;
-    glConvolutionParameteriv_layer_layer = dt.glConvolutionParameteriv_layer_layer;
 
     glCullFace = dt.glCullFace;
-    glCullFace_layer = dt.glCullFace_layer;
-
-    glCullFace_layer = dt.glCullFace_layer;
-    glCullFace_layer_layer = dt.glCullFace_layer_layer;
 
     glDepthFunc = dt.glDepthFunc;
-    glDepthFunc_layer = dt.glDepthFunc_layer;
-
-    glDepthFunc_layer = dt.glDepthFunc_layer;
-    glDepthFunc_layer_layer = dt.glDepthFunc_layer_layer;
 
     glDepthMask = dt.glDepthMask;
-    glDepthMask_layer = dt.glDepthMask_layer;
-
-    glDepthMask_layer = dt.glDepthMask_layer;
-    glDepthMask_layer_layer = dt.glDepthMask_layer_layer;
 
     glDepthRange = dt.glDepthRange;
-    glDepthRange_layer = dt.glDepthRange_layer;
 
     glDepthRangeArrayv = dt.glDepthRangeArrayv;
-    glDepthRangeArrayv_layer = dt.glDepthRangeArrayv_layer;
-
-    glDepthRangeArrayv_layer = dt.glDepthRangeArrayv_layer;
-    glDepthRangeArrayv_layer_layer = dt.glDepthRangeArrayv_layer_layer;
 
     glDepthRangeIndexed = dt.glDepthRangeIndexed;
-    glDepthRangeIndexed_layer = dt.glDepthRangeIndexed_layer;
-
-    glDepthRangeIndexed_layer = dt.glDepthRangeIndexed_layer;
-    glDepthRangeIndexed_layer_layer = dt.glDepthRangeIndexed_layer_layer;
-
-    glDepthRange_layer = dt.glDepthRange_layer;
-    glDepthRange_layer_layer = dt.glDepthRange_layer_layer;
 
     glDepthRangef = dt.glDepthRangef;
-    glDepthRangef_layer = dt.glDepthRangef_layer;
-
-    glDepthRangef_layer = dt.glDepthRangef_layer;
-    glDepthRangef_layer_layer = dt.glDepthRangef_layer_layer;
 
     glDisable = dt.glDisable;
-    glDisable_layer = dt.glDisable_layer;
-
-    glDisable_layer = dt.glDisable_layer;
-    glDisable_layer_layer = dt.glDisable_layer_layer;
 
     glDisablei = dt.glDisablei;
-    glDisablei_layer = dt.glDisablei_layer;
-
-    glDisablei_layer = dt.glDisablei_layer;
-    glDisablei_layer_layer = dt.glDisablei_layer_layer;
 
     glDrawBuffer = dt.glDrawBuffer;
-    glDrawBuffer_layer = dt.glDrawBuffer_layer;
-
-    glDrawBuffer_layer = dt.glDrawBuffer_layer;
-    glDrawBuffer_layer_layer = dt.glDrawBuffer_layer_layer;
 
     glDrawBuffers = dt.glDrawBuffers;
-    glDrawBuffers_layer = dt.glDrawBuffers_layer;
 
     glDrawBuffersARB = dt.glDrawBuffersARB;
-    glDrawBuffersARB_layer = dt.glDrawBuffersARB_layer;
-
-    glDrawBuffersARB_layer = dt.glDrawBuffersARB_layer;
-    glDrawBuffersARB_layer_layer = dt.glDrawBuffersARB_layer_layer;
 
     glDrawBuffersNV = dt.glDrawBuffersNV;
-    glDrawBuffersNV_layer = dt.glDrawBuffersNV_layer;
-
-    glDrawBuffersNV_layer = dt.glDrawBuffersNV_layer;
-    glDrawBuffersNV_layer_layer = dt.glDrawBuffersNV_layer_layer;
-
-    glDrawBuffers_layer = dt.glDrawBuffers_layer;
-    glDrawBuffers_layer_layer = dt.glDrawBuffers_layer_layer;
 
     glEnable = dt.glEnable;
-    glEnable_layer = dt.glEnable_layer;
-
-    glEnable_layer = dt.glEnable_layer;
-    glEnable_layer_layer = dt.glEnable_layer_layer;
 
     glEnablei = dt.glEnablei;
-    glEnablei_layer = dt.glEnablei_layer;
-
-    glEnablei_layer = dt.glEnablei_layer;
-    glEnablei_layer_layer = dt.glEnablei_layer_layer;
 
     glFogf = dt.glFogf;
-    glFogf_layer = dt.glFogf_layer;
 
     glFogfv = dt.glFogfv;
-    glFogfv_layer = dt.glFogfv_layer;
 
     glFogi = dt.glFogi;
-    glFogi_layer = dt.glFogi_layer;
 
     glFrontFace = dt.glFrontFace;
-    glFrontFace_layer = dt.glFrontFace_layer;
-
-    glFrontFace_layer = dt.glFrontFace_layer;
-    glFrontFace_layer_layer = dt.glFrontFace_layer_layer;
 
     glGetBooleani_v = dt.glGetBooleani_v;
-    glGetBooleani_v_layer = dt.glGetBooleani_v_layer;
-
-    glGetBooleani_v_layer = dt.glGetBooleani_v_layer;
-    glGetBooleani_v_layer_layer = dt.glGetBooleani_v_layer_layer;
 
     glGetBooleanv = dt.glGetBooleanv;
-    glGetBooleanv_layer = dt.glGetBooleanv_layer;
-
-    glGetBooleanv_layer = dt.glGetBooleanv_layer;
-    glGetBooleanv_layer_layer = dt.glGetBooleanv_layer_layer;
 
     glGetColorTableParameterfv = dt.glGetColorTableParameterfv;
-    glGetColorTableParameterfv_layer = dt.glGetColorTableParameterfv_layer;
-
-    glGetColorTableParameterfv_layer = dt.glGetColorTableParameterfv_layer;
-    glGetColorTableParameterfv_layer_layer = dt.glGetColorTableParameterfv_layer_layer;
 
     glGetColorTableParameteriv = dt.glGetColorTableParameteriv;
-    glGetColorTableParameteriv_layer = dt.glGetColorTableParameteriv_layer;
-
-    glGetColorTableParameteriv_layer = dt.glGetColorTableParameteriv_layer;
-    glGetColorTableParameteriv_layer_layer = dt.glGetColorTableParameteriv_layer_layer;
 
     glGetConvolutionParameterfv = dt.glGetConvolutionParameterfv;
-    glGetConvolutionParameterfv_layer = dt.glGetConvolutionParameterfv_layer;
-
-    glGetConvolutionParameterfv_layer = dt.glGetConvolutionParameterfv_layer;
-    glGetConvolutionParameterfv_layer_layer = dt.glGetConvolutionParameterfv_layer_layer;
 
     glGetConvolutionParameteriv = dt.glGetConvolutionParameteriv;
-    glGetConvolutionParameteriv_layer = dt.glGetConvolutionParameteriv_layer;
-
-    glGetConvolutionParameteriv_layer = dt.glGetConvolutionParameteriv_layer;
-    glGetConvolutionParameteriv_layer_layer = dt.glGetConvolutionParameteriv_layer_layer;
 
     glGetDoublei_v = dt.glGetDoublei_v;
-    glGetDoublei_v_layer = dt.glGetDoublei_v_layer;
 
     glGetDoublei_vEXT = dt.glGetDoublei_vEXT;
-    glGetDoublei_vEXT_layer = dt.glGetDoublei_vEXT_layer;
-
-    glGetDoublei_vEXT_layer = dt.glGetDoublei_vEXT_layer;
-    glGetDoublei_vEXT_layer_layer = dt.glGetDoublei_vEXT_layer_layer;
-
-    glGetDoublei_v_layer = dt.glGetDoublei_v_layer;
-    glGetDoublei_v_layer_layer = dt.glGetDoublei_v_layer_layer;
 
     glGetDoublev = dt.glGetDoublev;
-    glGetDoublev_layer = dt.glGetDoublev_layer;
-
-    glGetDoublev_layer = dt.glGetDoublev_layer;
-    glGetDoublev_layer_layer = dt.glGetDoublev_layer_layer;
 
     glGetFloati_v = dt.glGetFloati_v;
-    glGetFloati_v_layer = dt.glGetFloati_v_layer;
 
     glGetFloati_vEXT = dt.glGetFloati_vEXT;
-    glGetFloati_vEXT_layer = dt.glGetFloati_vEXT_layer;
-
-    glGetFloati_vEXT_layer = dt.glGetFloati_vEXT_layer;
-    glGetFloati_vEXT_layer_layer = dt.glGetFloati_vEXT_layer_layer;
-
-    glGetFloati_v_layer = dt.glGetFloati_v_layer;
-    glGetFloati_v_layer_layer = dt.glGetFloati_v_layer_layer;
 
     glGetFloatv = dt.glGetFloatv;
-    glGetFloatv_layer = dt.glGetFloatv_layer;
-
-    glGetFloatv_layer = dt.glGetFloatv_layer;
-    glGetFloatv_layer_layer = dt.glGetFloatv_layer_layer;
 
     glGetIntegeri_v = dt.glGetIntegeri_v;
-    glGetIntegeri_v_layer = dt.glGetIntegeri_v_layer;
 
     glGetIntegeri_vEXT = dt.glGetIntegeri_vEXT;
-    glGetIntegeri_vEXT_layer = dt.glGetIntegeri_vEXT_layer;
-
-    glGetIntegeri_vEXT_layer = dt.glGetIntegeri_vEXT_layer;
-    glGetIntegeri_vEXT_layer_layer = dt.glGetIntegeri_vEXT_layer_layer;
-
-    glGetIntegeri_v_layer = dt.glGetIntegeri_v_layer;
-    glGetIntegeri_v_layer_layer = dt.glGetIntegeri_v_layer_layer;
 
     glGetIntegerv = dt.glGetIntegerv;
-    glGetIntegerv_layer = dt.glGetIntegerv_layer;
-
-    glGetIntegerv_layer = dt.glGetIntegerv_layer;
-    glGetIntegerv_layer_layer = dt.glGetIntegerv_layer_layer;
 
     glGetLightfv = dt.glGetLightfv;
-    glGetLightfv_layer = dt.glGetLightfv_layer;
-
-    glGetLightfv_layer = dt.glGetLightfv_layer;
-    glGetLightfv_layer_layer = dt.glGetLightfv_layer_layer;
 
     glGetLightiv = dt.glGetLightiv;
-    glGetLightiv_layer = dt.glGetLightiv_layer;
-
-    glGetLightiv_layer = dt.glGetLightiv_layer;
-    glGetLightiv_layer_layer = dt.glGetLightiv_layer_layer;
 
     glGetLightxv = dt.glGetLightxv;
-    glGetLightxv_layer = dt.glGetLightxv_layer;
-
-    glGetLightxv_layer = dt.glGetLightxv_layer;
-    glGetLightxv_layer_layer = dt.glGetLightxv_layer_layer;
 
     glGetMaterialfv = dt.glGetMaterialfv;
-    glGetMaterialfv_layer = dt.glGetMaterialfv_layer;
-
-    glGetMaterialfv_layer = dt.glGetMaterialfv_layer;
-    glGetMaterialfv_layer_layer = dt.glGetMaterialfv_layer_layer;
 
     glGetMaterialiv = dt.glGetMaterialiv;
-    glGetMaterialiv_layer = dt.glGetMaterialiv_layer;
-
-    glGetMaterialiv_layer = dt.glGetMaterialiv_layer;
-    glGetMaterialiv_layer_layer = dt.glGetMaterialiv_layer_layer;
 
     glGetMaterialxv = dt.glGetMaterialxv;
-    glGetMaterialxv_layer = dt.glGetMaterialxv_layer;
-
-    glGetMaterialxv_layer = dt.glGetMaterialxv_layer;
-    glGetMaterialxv_layer_layer = dt.glGetMaterialxv_layer_layer;
 
     glGetMultiTexEnvfvEXT = dt.glGetMultiTexEnvfvEXT;
-    glGetMultiTexEnvfvEXT_layer = dt.glGetMultiTexEnvfvEXT_layer;
-
-    glGetMultiTexEnvfvEXT_layer = dt.glGetMultiTexEnvfvEXT_layer;
-    glGetMultiTexEnvfvEXT_layer_layer = dt.glGetMultiTexEnvfvEXT_layer_layer;
 
     glGetMultiTexEnvivEXT = dt.glGetMultiTexEnvivEXT;
-    glGetMultiTexEnvivEXT_layer = dt.glGetMultiTexEnvivEXT_layer;
-
-    glGetMultiTexEnvivEXT_layer = dt.glGetMultiTexEnvivEXT_layer;
-    glGetMultiTexEnvivEXT_layer_layer = dt.glGetMultiTexEnvivEXT_layer_layer;
 
     glGetPolygonStipple = dt.glGetPolygonStipple;
-    glGetPolygonStipple_layer = dt.glGetPolygonStipple_layer;
-
-    glGetPolygonStipple_layer = dt.glGetPolygonStipple_layer;
-    glGetPolygonStipple_layer_layer = dt.glGetPolygonStipple_layer_layer;
 
     glGetTexEnvfv = dt.glGetTexEnvfv;
-    glGetTexEnvfv_layer = dt.glGetTexEnvfv_layer;
-
-    glGetTexEnvfv_layer = dt.glGetTexEnvfv_layer;
-    glGetTexEnvfv_layer_layer = dt.glGetTexEnvfv_layer_layer;
 
     glGetTexEnviv = dt.glGetTexEnviv;
-    glGetTexEnviv_layer = dt.glGetTexEnviv_layer;
-
-    glGetTexEnviv_layer = dt.glGetTexEnviv_layer;
-    glGetTexEnviv_layer_layer = dt.glGetTexEnviv_layer_layer;
 
     glGetTexLevelParameterfv = dt.glGetTexLevelParameterfv;
-    glGetTexLevelParameterfv_layer = dt.glGetTexLevelParameterfv_layer;
-
-    glGetTexLevelParameterfv_layer = dt.glGetTexLevelParameterfv_layer;
-    glGetTexLevelParameterfv_layer_layer = dt.glGetTexLevelParameterfv_layer_layer;
 
     glGetTexLevelParameteriv = dt.glGetTexLevelParameteriv;
-    glGetTexLevelParameteriv_layer = dt.glGetTexLevelParameteriv_layer;
-
-    glGetTexLevelParameteriv_layer = dt.glGetTexLevelParameteriv_layer;
-    glGetTexLevelParameteriv_layer_layer = dt.glGetTexLevelParameteriv_layer_layer;
 
     glGetTexParameterfv = dt.glGetTexParameterfv;
-    glGetTexParameterfv_layer = dt.glGetTexParameterfv_layer;
-
-    glGetTexParameterfv_layer = dt.glGetTexParameterfv_layer;
-    glGetTexParameterfv_layer_layer = dt.glGetTexParameterfv_layer_layer;
 
     glGetTexParameteriv = dt.glGetTexParameteriv;
-    glGetTexParameteriv_layer = dt.glGetTexParameteriv_layer;
-
-    glGetTexParameteriv_layer = dt.glGetTexParameteriv_layer;
-    glGetTexParameteriv_layer_layer = dt.glGetTexParameteriv_layer_layer;
 
     glGetTextureLevelParameterfvEXT = dt.glGetTextureLevelParameterfvEXT;
-    glGetTextureLevelParameterfvEXT_layer = dt.glGetTextureLevelParameterfvEXT_layer;
-
-    glGetTextureLevelParameterfvEXT_layer = dt.glGetTextureLevelParameterfvEXT_layer;
-    glGetTextureLevelParameterfvEXT_layer_layer = dt.glGetTextureLevelParameterfvEXT_layer_layer;
 
     glGetTextureLevelParameterivEXT = dt.glGetTextureLevelParameterivEXT;
-    glGetTextureLevelParameterivEXT_layer = dt.glGetTextureLevelParameterivEXT_layer;
-
-    glGetTextureLevelParameterivEXT_layer = dt.glGetTextureLevelParameterivEXT_layer;
-    glGetTextureLevelParameterivEXT_layer_layer = dt.glGetTextureLevelParameterivEXT_layer_layer;
 
     glGetTextureParameterfvEXT = dt.glGetTextureParameterfvEXT;
-    glGetTextureParameterfvEXT_layer = dt.glGetTextureParameterfvEXT_layer;
-
-    glGetTextureParameterfvEXT_layer = dt.glGetTextureParameterfvEXT_layer;
-    glGetTextureParameterfvEXT_layer_layer = dt.glGetTextureParameterfvEXT_layer_layer;
 
     glGetTextureParameterivEXT = dt.glGetTextureParameterivEXT;
-    glGetTextureParameterivEXT_layer = dt.glGetTextureParameterivEXT_layer;
-
-    glGetTextureParameterivEXT_layer = dt.glGetTextureParameterivEXT_layer;
-    glGetTextureParameterivEXT_layer_layer = dt.glGetTextureParameterivEXT_layer_layer;
 
     glHint = dt.glHint;
-    glHint_layer = dt.glHint_layer;
-
-    glHint_layer = dt.glHint_layer;
-    glHint_layer_layer = dt.glHint_layer_layer;
 
     glIndexMask = dt.glIndexMask;
-    glIndexMask_layer = dt.glIndexMask_layer;
-
-    glIndexMask_layer = dt.glIndexMask_layer;
-    glIndexMask_layer_layer = dt.glIndexMask_layer_layer;
 
     glIsEnabled = dt.glIsEnabled;
-    glIsEnabled_layer = dt.glIsEnabled_layer;
-
-    glIsEnabled_layer = dt.glIsEnabled_layer;
-    glIsEnabled_layer_layer = dt.glIsEnabled_layer_layer;
 
     glIsEnabledi = dt.glIsEnabledi;
-    glIsEnabledi_layer = dt.glIsEnabledi_layer;
-
-    glIsEnabledi_layer = dt.glIsEnabledi_layer;
-    glIsEnabledi_layer_layer = dt.glIsEnabledi_layer_layer;
 
     glLightModelf = dt.glLightModelf;
-    glLightModelf_layer = dt.glLightModelf_layer;
-
-    glLightModelf_layer = dt.glLightModelf_layer;
-    glLightModelf_layer_layer = dt.glLightModelf_layer_layer;
 
     glLightModelfv = dt.glLightModelfv;
-    glLightModelfv_layer = dt.glLightModelfv_layer;
-
-    glLightModelfv_layer = dt.glLightModelfv_layer;
-    glLightModelfv_layer_layer = dt.glLightModelfv_layer_layer;
 
     glLightModeli = dt.glLightModeli;
-    glLightModeli_layer = dt.glLightModeli_layer;
-
-    glLightModeli_layer = dt.glLightModeli_layer;
-    glLightModeli_layer_layer = dt.glLightModeli_layer_layer;
 
     glLightModeliv = dt.glLightModeliv;
-    glLightModeliv_layer = dt.glLightModeliv_layer;
-
-    glLightModeliv_layer = dt.glLightModeliv_layer;
-    glLightModeliv_layer_layer = dt.glLightModeliv_layer_layer;
 
     glLightf = dt.glLightf;
-    glLightf_layer = dt.glLightf_layer;
-
-    glLightf_layer = dt.glLightf_layer;
-    glLightf_layer_layer = dt.glLightf_layer_layer;
 
     glLightfv = dt.glLightfv;
-    glLightfv_layer = dt.glLightfv_layer;
-
-    glLightfv_layer = dt.glLightfv_layer;
-    glLightfv_layer_layer = dt.glLightfv_layer_layer;
 
     glLighti = dt.glLighti;
-    glLighti_layer = dt.glLighti_layer;
-
-    glLighti_layer = dt.glLighti_layer;
-    glLighti_layer_layer = dt.glLighti_layer_layer;
 
     glLightiv = dt.glLightiv;
-    glLightiv_layer = dt.glLightiv_layer;
-
-    glLightiv_layer = dt.glLightiv_layer;
-    glLightiv_layer_layer = dt.glLightiv_layer_layer;
 
     glLineStipple = dt.glLineStipple;
-    glLineStipple_layer = dt.glLineStipple_layer;
-
-    glLineStipple_layer = dt.glLineStipple_layer;
-    glLineStipple_layer_layer = dt.glLineStipple_layer_layer;
 
     glLineWidth = dt.glLineWidth;
-    glLineWidth_layer = dt.glLineWidth_layer;
-
-    glLineWidth_layer = dt.glLineWidth_layer;
-    glLineWidth_layer_layer = dt.glLineWidth_layer_layer;
 
     glListBase = dt.glListBase;
-    glListBase_layer = dt.glListBase_layer;
-
-    glListBase_layer = dt.glListBase_layer;
-    glListBase_layer_layer = dt.glListBase_layer_layer;
 
     glLogicOp = dt.glLogicOp;
-    glLogicOp_layer = dt.glLogicOp_layer;
-
-    glLogicOp_layer = dt.glLogicOp_layer;
-    glLogicOp_layer_layer = dt.glLogicOp_layer_layer;
 
     glMapGrid1d = dt.glMapGrid1d;
-    glMapGrid1d_layer = dt.glMapGrid1d_layer;
-
-    glMapGrid1d_layer = dt.glMapGrid1d_layer;
-    glMapGrid1d_layer_layer = dt.glMapGrid1d_layer_layer;
 
     glMapGrid1f = dt.glMapGrid1f;
-    glMapGrid1f_layer = dt.glMapGrid1f_layer;
-
-    glMapGrid1f_layer = dt.glMapGrid1f_layer;
-    glMapGrid1f_layer_layer = dt.glMapGrid1f_layer_layer;
 
     glMapGrid2d = dt.glMapGrid2d;
-    glMapGrid2d_layer = dt.glMapGrid2d_layer;
-
-    glMapGrid2d_layer = dt.glMapGrid2d_layer;
-    glMapGrid2d_layer_layer = dt.glMapGrid2d_layer_layer;
 
     glMapGrid2f = dt.glMapGrid2f;
-    glMapGrid2f_layer = dt.glMapGrid2f_layer;
-
-    glMapGrid2f_layer = dt.glMapGrid2f_layer;
-    glMapGrid2f_layer_layer = dt.glMapGrid2f_layer_layer;
 
     glMaterialf = dt.glMaterialf;
-    glMaterialf_layer = dt.glMaterialf_layer;
-
-    glMaterialf_layer = dt.glMaterialf_layer;
-    glMaterialf_layer_layer = dt.glMaterialf_layer_layer;
 
     glMaterialfv = dt.glMaterialfv;
-    glMaterialfv_layer = dt.glMaterialfv_layer;
-
-    glMaterialfv_layer = dt.glMaterialfv_layer;
-    glMaterialfv_layer_layer = dt.glMaterialfv_layer_layer;
 
     glMateriali = dt.glMateriali;
-    glMateriali_layer = dt.glMateriali_layer;
-
-    glMateriali_layer = dt.glMateriali_layer;
-    glMateriali_layer_layer = dt.glMateriali_layer_layer;
 
     glMaterialiv = dt.glMaterialiv;
-    glMaterialiv_layer = dt.glMaterialiv_layer;
-
-    glMaterialiv_layer = dt.glMaterialiv_layer;
-    glMaterialiv_layer_layer = dt.glMaterialiv_layer_layer;
 
     glMatrixMode = dt.glMatrixMode;
-    glMatrixMode_layer = dt.glMatrixMode_layer;
-
-    glMatrixMode_layer = dt.glMatrixMode_layer;
-    glMatrixMode_layer_layer = dt.glMatrixMode_layer_layer;
 
     glMinSampleShading = dt.glMinSampleShading;
-    glMinSampleShading_layer = dt.glMinSampleShading_layer;
-
-    glMinSampleShading_layer = dt.glMinSampleShading_layer;
-    glMinSampleShading_layer_layer = dt.glMinSampleShading_layer_layer;
 
     glMultiTexEnvfEXT = dt.glMultiTexEnvfEXT;
-    glMultiTexEnvfEXT_layer = dt.glMultiTexEnvfEXT_layer;
-
-    glMultiTexEnvfEXT_layer = dt.glMultiTexEnvfEXT_layer;
-    glMultiTexEnvfEXT_layer_layer = dt.glMultiTexEnvfEXT_layer_layer;
 
     glMultiTexEnvfvEXT = dt.glMultiTexEnvfvEXT;
-    glMultiTexEnvfvEXT_layer = dt.glMultiTexEnvfvEXT_layer;
-
-    glMultiTexEnvfvEXT_layer = dt.glMultiTexEnvfvEXT_layer;
-    glMultiTexEnvfvEXT_layer_layer = dt.glMultiTexEnvfvEXT_layer_layer;
 
     glMultiTexEnviEXT = dt.glMultiTexEnviEXT;
-    glMultiTexEnviEXT_layer = dt.glMultiTexEnviEXT_layer;
-
-    glMultiTexEnviEXT_layer = dt.glMultiTexEnviEXT_layer;
-    glMultiTexEnviEXT_layer_layer = dt.glMultiTexEnviEXT_layer_layer;
 
     glMultiTexEnvivEXT = dt.glMultiTexEnvivEXT;
-    glMultiTexEnvivEXT_layer = dt.glMultiTexEnvivEXT_layer;
-
-    glMultiTexEnvivEXT_layer = dt.glMultiTexEnvivEXT_layer;
-    glMultiTexEnvivEXT_layer_layer = dt.glMultiTexEnvivEXT_layer_layer;
 
     glPixelTransferf = dt.glPixelTransferf;
-    glPixelTransferf_layer = dt.glPixelTransferf_layer;
-
-    glPixelTransferf_layer = dt.glPixelTransferf_layer;
-    glPixelTransferf_layer_layer = dt.glPixelTransferf_layer_layer;
 
     glPixelTransferi = dt.glPixelTransferi;
-    glPixelTransferi_layer = dt.glPixelTransferi_layer;
-
-    glPixelTransferi_layer = dt.glPixelTransferi_layer;
-    glPixelTransferi_layer_layer = dt.glPixelTransferi_layer_layer;
 
     glPixelZoom = dt.glPixelZoom;
-    glPixelZoom_layer = dt.glPixelZoom_layer;
-
-    glPixelZoom_layer = dt.glPixelZoom_layer;
-    glPixelZoom_layer_layer = dt.glPixelZoom_layer_layer;
 
     glPointParameterf = dt.glPointParameterf;
-    glPointParameterf_layer = dt.glPointParameterf_layer;
-
-    glPointParameterf_layer = dt.glPointParameterf_layer;
-    glPointParameterf_layer_layer = dt.glPointParameterf_layer_layer;
 
     glPointParameterfv = dt.glPointParameterfv;
-    glPointParameterfv_layer = dt.glPointParameterfv_layer;
-
-    glPointParameterfv_layer = dt.glPointParameterfv_layer;
-    glPointParameterfv_layer_layer = dt.glPointParameterfv_layer_layer;
 
     glPointParameteri = dt.glPointParameteri;
-    glPointParameteri_layer = dt.glPointParameteri_layer;
-
-    glPointParameteri_layer = dt.glPointParameteri_layer;
-    glPointParameteri_layer_layer = dt.glPointParameteri_layer_layer;
 
     glPointParameteriv = dt.glPointParameteriv;
-    glPointParameteriv_layer = dt.glPointParameteriv_layer;
-
-    glPointParameteriv_layer = dt.glPointParameteriv_layer;
-    glPointParameteriv_layer_layer = dt.glPointParameteriv_layer_layer;
 
     glPointSize = dt.glPointSize;
-    glPointSize_layer = dt.glPointSize_layer;
-
-    glPointSize_layer = dt.glPointSize_layer;
-    glPointSize_layer_layer = dt.glPointSize_layer_layer;
 
     glPolygonMode = dt.glPolygonMode;
-    glPolygonMode_layer = dt.glPolygonMode_layer;
-
-    glPolygonMode_layer = dt.glPolygonMode_layer;
-    glPolygonMode_layer_layer = dt.glPolygonMode_layer_layer;
 
     glPolygonOffset = dt.glPolygonOffset;
-    glPolygonOffset_layer = dt.glPolygonOffset_layer;
-
-    glPolygonOffset_layer = dt.glPolygonOffset_layer;
-    glPolygonOffset_layer_layer = dt.glPolygonOffset_layer_layer;
 
     glPolygonStipple = dt.glPolygonStipple;
-    glPolygonStipple_layer = dt.glPolygonStipple_layer;
-
-    glPolygonStipple_layer = dt.glPolygonStipple_layer;
-    glPolygonStipple_layer_layer = dt.glPolygonStipple_layer_layer;
 
     glPopAttrib = dt.glPopAttrib;
-    glPopAttrib_layer = dt.glPopAttrib_layer;
-
-    glPopAttrib_layer = dt.glPopAttrib_layer;
-    glPopAttrib_layer_layer = dt.glPopAttrib_layer_layer;
 
     glProvokingVertex = dt.glProvokingVertex;
-    glProvokingVertex_layer = dt.glProvokingVertex_layer;
-
-    glProvokingVertex_layer = dt.glProvokingVertex_layer;
-    glProvokingVertex_layer_layer = dt.glProvokingVertex_layer_layer;
 
     glPushAttrib = dt.glPushAttrib;
-    glPushAttrib_layer = dt.glPushAttrib_layer;
-
-    glPushAttrib_layer = dt.glPushAttrib_layer;
-    glPushAttrib_layer_layer = dt.glPushAttrib_layer_layer;
 
     glReadBuffer = dt.glReadBuffer;
-    glReadBuffer_layer = dt.glReadBuffer_layer;
-
-    glReadBuffer_layer = dt.glReadBuffer_layer;
-    glReadBuffer_layer_layer = dt.glReadBuffer_layer_layer;
 
     glSampleCoverage = dt.glSampleCoverage;
-    glSampleCoverage_layer = dt.glSampleCoverage_layer;
-
-    glSampleCoverage_layer = dt.glSampleCoverage_layer;
-    glSampleCoverage_layer_layer = dt.glSampleCoverage_layer_layer;
 
     glScissor = dt.glScissor;
-    glScissor_layer = dt.glScissor_layer;
 
     glScissorArrayv = dt.glScissorArrayv;
-    glScissorArrayv_layer = dt.glScissorArrayv_layer;
-
-    glScissorArrayv_layer = dt.glScissorArrayv_layer;
-    glScissorArrayv_layer_layer = dt.glScissorArrayv_layer_layer;
 
     glScissorIndexed = dt.glScissorIndexed;
-    glScissorIndexed_layer = dt.glScissorIndexed_layer;
-
-    glScissorIndexed_layer = dt.glScissorIndexed_layer;
-    glScissorIndexed_layer_layer = dt.glScissorIndexed_layer_layer;
 
     glScissorIndexedv = dt.glScissorIndexedv;
-    glScissorIndexedv_layer = dt.glScissorIndexedv_layer;
-
-    glScissorIndexedv_layer = dt.glScissorIndexedv_layer;
-    glScissorIndexedv_layer_layer = dt.glScissorIndexedv_layer_layer;
-
-    glScissor_layer = dt.glScissor_layer;
-    glScissor_layer_layer = dt.glScissor_layer_layer;
 
     glShadeModel = dt.glShadeModel;
-    glShadeModel_layer = dt.glShadeModel_layer;
-
-    glShadeModel_layer = dt.glShadeModel_layer;
-    glShadeModel_layer_layer = dt.glShadeModel_layer_layer;
 
     glStencilFunc = dt.glStencilFunc;
-    glStencilFunc_layer = dt.glStencilFunc_layer;
 
     glStencilFuncSeparate = dt.glStencilFuncSeparate;
-    glStencilFuncSeparate_layer = dt.glStencilFuncSeparate_layer;
-
-    glStencilFuncSeparate_layer = dt.glStencilFuncSeparate_layer;
-    glStencilFuncSeparate_layer_layer = dt.glStencilFuncSeparate_layer_layer;
-
-    glStencilFunc_layer = dt.glStencilFunc_layer;
-    glStencilFunc_layer_layer = dt.glStencilFunc_layer_layer;
 
     glStencilMask = dt.glStencilMask;
-    glStencilMask_layer = dt.glStencilMask_layer;
 
     glStencilMaskSeparate = dt.glStencilMaskSeparate;
-    glStencilMaskSeparate_layer = dt.glStencilMaskSeparate_layer;
-
-    glStencilMaskSeparate_layer = dt.glStencilMaskSeparate_layer;
-    glStencilMaskSeparate_layer_layer = dt.glStencilMaskSeparate_layer_layer;
-
-    glStencilMask_layer = dt.glStencilMask_layer;
-    glStencilMask_layer_layer = dt.glStencilMask_layer_layer;
 
     glStencilOp = dt.glStencilOp;
-    glStencilOp_layer = dt.glStencilOp_layer;
 
     glStencilOpSeparate = dt.glStencilOpSeparate;
-    glStencilOpSeparate_layer = dt.glStencilOpSeparate_layer;
-
-    glStencilOpSeparate_layer = dt.glStencilOpSeparate_layer;
-    glStencilOpSeparate_layer_layer = dt.glStencilOpSeparate_layer_layer;
-
-    glStencilOp_layer = dt.glStencilOp_layer;
-    glStencilOp_layer_layer = dt.glStencilOp_layer_layer;
 
     glTexEnvf = dt.glTexEnvf;
-    glTexEnvf_layer = dt.glTexEnvf_layer;
-
-    glTexEnvf_layer = dt.glTexEnvf_layer;
-    glTexEnvf_layer_layer = dt.glTexEnvf_layer_layer;
 
     glTexEnvfv = dt.glTexEnvfv;
-    glTexEnvfv_layer = dt.glTexEnvfv_layer;
-
-    glTexEnvfv_layer = dt.glTexEnvfv_layer;
-    glTexEnvfv_layer_layer = dt.glTexEnvfv_layer_layer;
 
     glTexEnvi = dt.glTexEnvi;
-    glTexEnvi_layer = dt.glTexEnvi_layer;
-
-    glTexEnvi_layer = dt.glTexEnvi_layer;
-    glTexEnvi_layer_layer = dt.glTexEnvi_layer_layer;
 
     glTexEnviv = dt.glTexEnviv;
-    glTexEnviv_layer = dt.glTexEnviv_layer;
-
-    glTexEnviv_layer = dt.glTexEnviv_layer;
-    glTexEnviv_layer_layer = dt.glTexEnviv_layer_layer;
 
     glViewport = dt.glViewport;
-    glViewport_layer = dt.glViewport_layer;
 
     glViewportArrayv = dt.glViewportArrayv;
-    glViewportArrayv_layer = dt.glViewportArrayv_layer;
-
-    glViewportArrayv_layer = dt.glViewportArrayv_layer;
-    glViewportArrayv_layer_layer = dt.glViewportArrayv_layer_layer;
 
     glViewportIndexedf = dt.glViewportIndexedf;
-    glViewportIndexedf_layer = dt.glViewportIndexedf_layer;
-
-    glViewportIndexedf_layer = dt.glViewportIndexedf_layer;
-    glViewportIndexedf_layer_layer = dt.glViewportIndexedf_layer_layer;
 
     glViewportIndexedfv = dt.glViewportIndexedfv;
-    glViewportIndexedfv_layer = dt.glViewportIndexedfv_layer;
-
-    glViewportIndexedfv_layer = dt.glViewportIndexedfv_layer;
-    glViewportIndexedfv_layer_layer = dt.glViewportIndexedfv_layer_layer;
-
-    glViewport_layer = dt.glViewport_layer;
-    glViewport_layer_layer = dt.glViewport_layer_layer;
 
   }
 };
 
 REGAL_NAMESPACE_END
 
-#endif // REGAL_EMULATION
-
-#endif // REGAL_EMU_PROCS_PPA_H
+#endif // REGAL_LAYER_PPA_PROCS_H

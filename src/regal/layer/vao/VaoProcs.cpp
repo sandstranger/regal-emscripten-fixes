@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalVao.h"
-#include "RegalEmuProcsVao.h"
+#include "Vao.h"
+#include "VaoProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Vao_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
+using namespace Emu;
+
+static void REGAL_CALL vao_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL Vao_glBindBuffer(Layer *_layer, GLenum target, GLuint buf
   // prefix
   _context->vao->ShadowBufferBinding( target, buffer );
 
-  orig.glBindBuffer( orig.glBindBuffer_layer, target, buffer );
+  RglBindBuffer( orig, target, buffer );
 
 }
 
-static void REGAL_CALL Vao_glBindBufferARB(Layer *_layer, GLenum target, GLuint buffer)
+static void REGAL_CALL vao_glBindBufferARB(Layer *_layer, GLenum target, GLuint buffer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -76,11 +78,11 @@ static void REGAL_CALL Vao_glBindBufferARB(Layer *_layer, GLenum target, GLuint 
   // prefix
   _context->vao->ShadowBufferBinding( target, buffer );
 
-  orig.glBindBufferARB( orig.glBindBufferARB_layer, target, buffer );
+  RglBindBufferARB( orig, target, buffer );
 
 }
 
-static void REGAL_CALL Vao_glBindVertexArray(Layer *_layer, GLuint array)
+static void REGAL_CALL vao_glBindVertexArray(Layer *_layer, GLuint array)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -89,11 +91,11 @@ static void REGAL_CALL Vao_glBindVertexArray(Layer *_layer, GLuint array)
   // impl
   _context->vao->BindVertexArray(*_context, array ); return;
 
-  orig.glBindVertexArray( orig.glBindVertexArray_layer, array );
+  RglBindVertexArray( orig, array );
 
 }
 
-static void REGAL_CALL Vao_glClientActiveTexture(Layer *_layer, GLenum texture)
+static void REGAL_CALL vao_glClientActiveTexture(Layer *_layer, GLenum texture)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -102,11 +104,11 @@ static void REGAL_CALL Vao_glClientActiveTexture(Layer *_layer, GLenum texture)
   // prefix
   _context->vao->ClientActiveTexture(*_context, texture );
 
-  orig.glClientActiveTexture( orig.glClientActiveTexture_layer, texture );
+  RglClientActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Vao_glClientActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL vao_glClientActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -115,11 +117,11 @@ static void REGAL_CALL Vao_glClientActiveTextureARB(Layer *_layer, GLenum textur
   // prefix
   _context->vao->ClientActiveTexture(*_context, texture );
 
-  orig.glClientActiveTextureARB( orig.glClientActiveTextureARB_layer, texture );
+  RglClientActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Vao_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -128,11 +130,11 @@ static void REGAL_CALL Vao_glColorPointer(Layer *_layer, GLint size, GLenum type
   // impl
   _context->vao->ColorPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glColorPointer( orig.glColorPointer_layer, size, type, stride, pointer );
+  RglColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL vao_glColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -141,11 +143,11 @@ static void REGAL_CALL Vao_glColorPointerEXT(Layer *_layer, GLint size, GLenum t
   // impl
   _context->vao->ColorPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glColorPointerEXT( orig.glColorPointerEXT_layer, size, type, stride, count, pointer );
+  RglColorPointerEXT( orig, size, type, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Vao_glDeleteVertexArrays(Layer *_layer, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL vao_glDeleteVertexArrays(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -154,11 +156,11 @@ static void REGAL_CALL Vao_glDeleteVertexArrays(Layer *_layer, GLsizei n, const 
   // impl
   _context->vao->DeleteVertexArrays( n, arrays ); return;
 
-  orig.glDeleteVertexArrays( orig.glDeleteVertexArrays_layer, n, arrays );
+  RglDeleteVertexArrays( orig, n, arrays );
 
 }
 
-static void REGAL_CALL Vao_glDisableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL vao_glDisableClientState(Layer *_layer, GLenum cap)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -167,11 +169,11 @@ static void REGAL_CALL Vao_glDisableClientState(Layer *_layer, GLenum cap)
   // impl
   _context->vao->DisableClientState(*_context, cap ); return;
 
-  orig.glDisableClientState( orig.glDisableClientState_layer, cap );
+  RglDisableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Vao_glDisableVertexAttribArray(Layer *_layer, GLuint index)
+static void REGAL_CALL vao_glDisableVertexAttribArray(Layer *_layer, GLuint index)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -180,11 +182,11 @@ static void REGAL_CALL Vao_glDisableVertexAttribArray(Layer *_layer, GLuint inde
   // impl
   return _context->vao->DisableVertexAttribArray(*_context, index );
 
-  orig.glDisableVertexAttribArray( orig.glDisableVertexAttribArray_layer, index );
+  RglDisableVertexAttribArray( orig, index );
 
 }
 
-static void REGAL_CALL Vao_glDisableVertexAttribArrayARB(Layer *_layer, GLuint index)
+static void REGAL_CALL vao_glDisableVertexAttribArrayARB(Layer *_layer, GLuint index)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -193,11 +195,11 @@ static void REGAL_CALL Vao_glDisableVertexAttribArrayARB(Layer *_layer, GLuint i
   // impl
   return _context->vao->DisableVertexAttribArray(*_context, index );
 
-  orig.glDisableVertexAttribArrayARB( orig.glDisableVertexAttribArrayARB_layer, index );
+  RglDisableVertexAttribArrayARB( orig, index );
 
 }
 
-static void REGAL_CALL Vao_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL vao_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -206,11 +208,11 @@ static void REGAL_CALL Vao_glDrawArrays(Layer *_layer, GLenum mode, GLint first,
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArrays( orig.glDrawArrays_layer, mode, first, count );
+  RglDrawArrays( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Vao_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL vao_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -219,11 +221,11 @@ static void REGAL_CALL Vao_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint fir
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysEXT( orig.glDrawArraysEXT_layer, mode, first, count );
+  RglDrawArraysEXT( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Vao_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
+static void REGAL_CALL vao_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -232,11 +234,11 @@ static void REGAL_CALL Vao_glDrawArraysIndirect(Layer *_layer, GLenum mode, cons
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysIndirect( orig.glDrawArraysIndirect_layer, mode, indirect );
+  RglDrawArraysIndirect( orig, mode, indirect );
 
 }
 
-static void REGAL_CALL Vao_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL vao_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -245,11 +247,11 @@ static void REGAL_CALL Vao_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLi
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysInstanced( orig.glDrawArraysInstanced_layer, mode, start, count, primcount );
+  RglDrawArraysInstanced( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Vao_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL vao_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -258,11 +260,11 @@ static void REGAL_CALL Vao_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, 
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysInstancedARB( orig.glDrawArraysInstancedARB_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedARB( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Vao_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL vao_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -271,11 +273,11 @@ static void REGAL_CALL Vao_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, 
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawArraysInstancedEXT( orig.glDrawArraysInstancedEXT_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedEXT( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL vao_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -284,11 +286,11 @@ static void REGAL_CALL Vao_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, G
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementArrayAPPLE( orig.glDrawElementArrayAPPLE_layer, mode, first, count );
+  RglDrawElementArrayAPPLE( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
+static void REGAL_CALL vao_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -297,11 +299,11 @@ static void REGAL_CALL Vao_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLs
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementArrayATI( orig.glDrawElementArrayATI_layer, mode, count );
+  RglDrawElementArrayATI( orig, mode, count );
 
 }
 
-static void REGAL_CALL Vao_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL vao_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -310,11 +312,11 @@ static void REGAL_CALL Vao_glDrawElements(Layer *_layer, GLenum mode, GLsizei co
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElements( orig.glDrawElements_layer, mode, count, type, indices );
+  RglDrawElements( orig, mode, count, type, indices );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL vao_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -323,11 +325,11 @@ static void REGAL_CALL Vao_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, 
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsBaseVertex( orig.glDrawElementsBaseVertex_layer, mode, count, type, indices, basevertex );
+  RglDrawElementsBaseVertex( orig, mode, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
+static void REGAL_CALL vao_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -336,11 +338,11 @@ static void REGAL_CALL Vao_glDrawElementsIndirect(Layer *_layer, GLenum mode, GL
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsIndirect( orig.glDrawElementsIndirect_layer, mode, type, indirect );
+  RglDrawElementsIndirect( orig, mode, type, indirect );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL vao_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -349,11 +351,11 @@ static void REGAL_CALL Vao_glDrawElementsInstanced(Layer *_layer, GLenum mode, G
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstanced( orig.glDrawElementsInstanced_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstanced( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL vao_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -362,11 +364,11 @@ static void REGAL_CALL Vao_glDrawElementsInstancedARB(Layer *_layer, GLenum mode
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstancedARB( orig.glDrawElementsInstancedARB_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedARB( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
+static void REGAL_CALL vao_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -375,11 +377,11 @@ static void REGAL_CALL Vao_glDrawElementsInstancedBaseVertex(Layer *_layer, GLen
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstancedBaseVertex( orig.glDrawElementsInstancedBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglDrawElementsInstancedBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL Vao_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL vao_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -388,11 +390,11 @@ static void REGAL_CALL Vao_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glDrawElementsInstancedEXT( orig.glDrawElementsInstancedEXT_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Vao_glEnableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL vao_glEnableClientState(Layer *_layer, GLenum cap)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -401,11 +403,11 @@ static void REGAL_CALL Vao_glEnableClientState(Layer *_layer, GLenum cap)
   // impl
   _context->vao->EnableClientState(*_context, cap ); return;
 
-  orig.glEnableClientState( orig.glEnableClientState_layer, cap );
+  RglEnableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Vao_glEnableVertexAttribArray(Layer *_layer, GLuint index)
+static void REGAL_CALL vao_glEnableVertexAttribArray(Layer *_layer, GLuint index)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -414,11 +416,11 @@ static void REGAL_CALL Vao_glEnableVertexAttribArray(Layer *_layer, GLuint index
   // impl
   return _context->vao->EnableVertexAttribArray(*_context, index );
 
-  orig.glEnableVertexAttribArray( orig.glEnableVertexAttribArray_layer, index );
+  RglEnableVertexAttribArray( orig, index );
 
 }
 
-static void REGAL_CALL Vao_glEnableVertexAttribArrayARB(Layer *_layer, GLuint index)
+static void REGAL_CALL vao_glEnableVertexAttribArrayARB(Layer *_layer, GLuint index)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -427,11 +429,11 @@ static void REGAL_CALL Vao_glEnableVertexAttribArrayARB(Layer *_layer, GLuint in
   // impl
   return _context->vao->EnableVertexAttribArray(*_context, index );
 
-  orig.glEnableVertexAttribArrayARB( orig.glEnableVertexAttribArrayARB_layer, index );
+  RglEnableVertexAttribArrayARB( orig, index );
 
 }
 
-static void REGAL_CALL Vao_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -440,11 +442,11 @@ static void REGAL_CALL Vao_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei
   // impl
   _context->vao->FogCoordPointer(*_context, type, stride, pointer ); return;
 
-  orig.glFogCoordPointer( orig.glFogCoordPointer_layer, type, stride, pointer );
+  RglFogCoordPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glFogCoordPointerEXT(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glFogCoordPointerEXT(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -453,11 +455,11 @@ static void REGAL_CALL Vao_glFogCoordPointerEXT(Layer *_layer, GLenum type, GLsi
   // impl
   _context->vao->FogCoordPointer(*_context, type, stride, pointer ); return;
 
-  orig.glFogCoordPointerEXT( orig.glFogCoordPointerEXT_layer, type, stride, pointer );
+  RglFogCoordPointerEXT( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glGenVertexArrays(Layer *_layer, GLsizei n, GLuint *arrays)
+static void REGAL_CALL vao_glGenVertexArrays(Layer *_layer, GLsizei n, GLuint *arrays)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -466,11 +468,11 @@ static void REGAL_CALL Vao_glGenVertexArrays(Layer *_layer, GLsizei n, GLuint *a
   // impl
   _context->vao->GenVertexArrays( n, arrays ); return;
 
-  orig.glGenVertexArrays( orig.glGenVertexArrays_layer, n, arrays );
+  RglGenVertexArrays( orig, n, arrays );
 
 }
 
-static void REGAL_CALL Vao_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
+static void REGAL_CALL vao_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -481,11 +483,11 @@ static void REGAL_CALL Vao_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean 
     return;
   }
 
-  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
+  RglGetBooleanv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL vao_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -496,11 +498,11 @@ static void REGAL_CALL Vao_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *p
     return;
   }
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL vao_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -511,11 +513,11 @@ static void REGAL_CALL Vao_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *par
     return;
   }
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *params)
+static void REGAL_CALL vao_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -526,11 +528,11 @@ static void REGAL_CALL Vao_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 
     return;
   }
 
-  orig.glGetInteger64v( orig.glGetInteger64v_layer, pname, params );
+  RglGetInteger64v( orig, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL vao_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -541,11 +543,11 @@ static void REGAL_CALL Vao_glGetIntegerv(Layer *_layer, GLenum pname, GLint *par
     return;
   }
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribPointerv(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
+static void REGAL_CALL vao_glGetVertexAttribPointerv(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -554,11 +556,11 @@ static void REGAL_CALL Vao_glGetVertexAttribPointerv(Layer *_layer, GLuint index
   // impl
   _context->vao->GetAttrib( index, pname, pointer ); return;
 
-  orig.glGetVertexAttribPointerv( orig.glGetVertexAttribPointerv_layer, index, pname, pointer );
+  RglGetVertexAttribPointerv( orig, index, pname, pointer );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribPointervARB(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
+static void REGAL_CALL vao_glGetVertexAttribPointervARB(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -567,11 +569,11 @@ static void REGAL_CALL Vao_glGetVertexAttribPointervARB(Layer *_layer, GLuint in
   // impl
   _context->vao->GetAttrib( index, pname, pointer ); return;
 
-  orig.glGetVertexAttribPointervARB( orig.glGetVertexAttribPointervARB_layer, index, pname, pointer );
+  RglGetVertexAttribPointervARB( orig, index, pname, pointer );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribdv(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
+static void REGAL_CALL vao_glGetVertexAttribdv(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -580,11 +582,11 @@ static void REGAL_CALL Vao_glGetVertexAttribdv(Layer *_layer, GLuint index, GLen
   // impl
   _context->vao->GetAttrib( index, pname, params ); return;
 
-  orig.glGetVertexAttribdv( orig.glGetVertexAttribdv_layer, index, pname, params );
+  RglGetVertexAttribdv( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribdvARB(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
+static void REGAL_CALL vao_glGetVertexAttribdvARB(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -593,11 +595,11 @@ static void REGAL_CALL Vao_glGetVertexAttribdvARB(Layer *_layer, GLuint index, G
   // impl
   _context->vao->GetAttrib( index, pname, params ); return;
 
-  orig.glGetVertexAttribdvARB( orig.glGetVertexAttribdvARB_layer, index, pname, params );
+  RglGetVertexAttribdvARB( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribfv(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
+static void REGAL_CALL vao_glGetVertexAttribfv(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -606,11 +608,11 @@ static void REGAL_CALL Vao_glGetVertexAttribfv(Layer *_layer, GLuint index, GLen
   // impl
   _context->vao->GetAttrib( index, pname, params ); return;
 
-  orig.glGetVertexAttribfv( orig.glGetVertexAttribfv_layer, index, pname, params );
+  RglGetVertexAttribfv( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribfvARB(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
+static void REGAL_CALL vao_glGetVertexAttribfvARB(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -619,11 +621,11 @@ static void REGAL_CALL Vao_glGetVertexAttribfvARB(Layer *_layer, GLuint index, G
   // impl
   _context->vao->GetAttrib( index, pname, params ); return;
 
-  orig.glGetVertexAttribfvARB( orig.glGetVertexAttribfvARB_layer, index, pname, params );
+  RglGetVertexAttribfvARB( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribiv(Layer *_layer, GLuint index, GLenum pname, GLint *params)
+static void REGAL_CALL vao_glGetVertexAttribiv(Layer *_layer, GLuint index, GLenum pname, GLint *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -632,11 +634,11 @@ static void REGAL_CALL Vao_glGetVertexAttribiv(Layer *_layer, GLuint index, GLen
   // impl
   _context->vao->GetAttrib( index, pname, params ); return;
 
-  orig.glGetVertexAttribiv( orig.glGetVertexAttribiv_layer, index, pname, params );
+  RglGetVertexAttribiv( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glGetVertexAttribivARB(Layer *_layer, GLuint index, GLenum pname, GLint *params)
+static void REGAL_CALL vao_glGetVertexAttribivARB(Layer *_layer, GLuint index, GLenum pname, GLint *params)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -645,11 +647,11 @@ static void REGAL_CALL Vao_glGetVertexAttribivARB(Layer *_layer, GLuint index, G
   // impl
   _context->vao->GetAttrib( index, pname, params ); return;
 
-  orig.glGetVertexAttribivARB( orig.glGetVertexAttribivARB_layer, index, pname, params );
+  RglGetVertexAttribivARB( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Vao_glInterleavedArrays(Layer *_layer, GLenum format, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glInterleavedArrays(Layer *_layer, GLenum format, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -658,11 +660,11 @@ static void REGAL_CALL Vao_glInterleavedArrays(Layer *_layer, GLenum format, GLs
   // impl
   _context->vao->InterleavedArrays(*_context, format, stride, pointer ); return;
 
-  orig.glInterleavedArrays( orig.glInterleavedArrays_layer, format, stride, pointer );
+  RglInterleavedArrays( orig, format, stride, pointer );
 
 }
 
-static GLboolean REGAL_CALL Vao_glIsVertexArray(Layer *_layer, GLuint array)
+static GLboolean REGAL_CALL vao_glIsVertexArray(Layer *_layer, GLuint array)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -671,11 +673,11 @@ static GLboolean REGAL_CALL Vao_glIsVertexArray(Layer *_layer, GLuint array)
   // impl
   return _context->vao->IsVertexArray( array );
 
-  return orig.glIsVertexArray( orig.glIsVertexArray_layer, array );
+  return RglIsVertexArray( orig, array );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL vao_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -684,11 +686,11 @@ static void REGAL_CALL Vao_glMultiDrawArrays(Layer *_layer, GLenum mode, const G
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArrays( orig.glMultiDrawArrays_layer, mode, first, count, primcount );
+  RglMultiDrawArrays( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL vao_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -697,11 +699,11 @@ static void REGAL_CALL Vao_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, cons
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArraysEXT( orig.glMultiDrawArraysEXT_layer, mode, first, count, primcount );
+  RglMultiDrawArraysEXT( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL vao_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -710,11 +712,11 @@ static void REGAL_CALL Vao_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode,
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArraysIndirect( orig.glMultiDrawArraysIndirect_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirect( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL vao_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -723,11 +725,11 @@ static void REGAL_CALL Vao_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mo
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawArraysIndirectAMD( orig.glMultiDrawArraysIndirectAMD_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirectAMD( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL vao_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -736,11 +738,11 @@ static void REGAL_CALL Vao_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mo
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementArrayAPPLE( orig.glMultiDrawElementArrayAPPLE_layer, mode, first, count, primcount );
+  RglMultiDrawElementArrayAPPLE( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
+static void REGAL_CALL vao_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -749,11 +751,11 @@ static void REGAL_CALL Vao_glMultiDrawElements(Layer *_layer, GLenum mode, const
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElements( orig.glMultiDrawElements_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElements( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
+static void REGAL_CALL vao_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -762,11 +764,11 @@ static void REGAL_CALL Vao_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum m
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsBaseVertex( orig.glMultiDrawElementsBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglMultiDrawElementsBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
+static void REGAL_CALL vao_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -775,11 +777,11 @@ static void REGAL_CALL Vao_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, co
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsEXT( orig.glMultiDrawElementsEXT_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElementsEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL vao_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -788,11 +790,11 @@ static void REGAL_CALL Vao_glMultiDrawElementsIndirect(Layer *_layer, GLenum mod
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsIndirect( orig.glMultiDrawElementsIndirect_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirect( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Vao_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL vao_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -801,11 +803,11 @@ static void REGAL_CALL Vao_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum 
   // prefix
   // _context->vao->Validate(*_context );
 
-  orig.glMultiDrawElementsIndirectAMD( orig.glMultiDrawElementsIndirectAMD_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirectAMD( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Vao_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -814,11 +816,11 @@ static void REGAL_CALL Vao_glNormalPointer(Layer *_layer, GLenum type, GLsizei s
   // impl
   _context->vao->NormalPointer(*_context, type, stride, pointer ); return;
 
-  orig.glNormalPointer( orig.glNormalPointer_layer, type, stride, pointer );
+  RglNormalPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glNormalPointerEXT(Layer *_layer, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL vao_glNormalPointerEXT(Layer *_layer, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -827,11 +829,11 @@ static void REGAL_CALL Vao_glNormalPointerEXT(Layer *_layer, GLenum type, GLsize
   // impl
   _context->vao->NormalPointer(*_context, type, stride, pointer ); return;
 
-  orig.glNormalPointerEXT( orig.glNormalPointerEXT_layer, type, stride, count, pointer );
+  RglNormalPointerEXT( orig, type, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Vao_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -840,11 +842,11 @@ static void REGAL_CALL Vao_glSecondaryColorPointer(Layer *_layer, GLint size, GL
   // impl
   _context->vao->SecondaryColorPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glSecondaryColorPointer( orig.glSecondaryColorPointer_layer, size, type, stride, pointer );
+  RglSecondaryColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glSecondaryColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glSecondaryColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -853,11 +855,11 @@ static void REGAL_CALL Vao_glSecondaryColorPointerEXT(Layer *_layer, GLint size,
   // impl
   _context->vao->SecondaryColorPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glSecondaryColorPointerEXT( orig.glSecondaryColorPointerEXT_layer, size, type, stride, pointer );
+  RglSecondaryColorPointerEXT( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -866,11 +868,11 @@ static void REGAL_CALL Vao_glTexCoordPointer(Layer *_layer, GLint size, GLenum t
   // impl
   _context->vao->TexCoordPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glTexCoordPointer( orig.glTexCoordPointer_layer, size, type, stride, pointer );
+  RglTexCoordPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glTexCoordPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL vao_glTexCoordPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -879,11 +881,11 @@ static void REGAL_CALL Vao_glTexCoordPointerEXT(Layer *_layer, GLint size, GLenu
   // impl
   _context->vao->TexCoordPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glTexCoordPointerEXT( orig.glTexCoordPointerEXT_layer, size, type, stride, count, pointer );
+  RglTexCoordPointerEXT( orig, size, type, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Vao_glVertexAttribPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glVertexAttribPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -892,11 +894,11 @@ static void REGAL_CALL Vao_glVertexAttribPointer(Layer *_layer, GLuint index, GL
   // impl
   return _context->vao->AttribPointer(*_context, index, size, type, normalized, stride, pointer );
 
-  orig.glVertexAttribPointer( orig.glVertexAttribPointer_layer, index, size, type, normalized, stride, pointer );
+  RglVertexAttribPointer( orig, index, size, type, normalized, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glVertexAttribPointerARB(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glVertexAttribPointerARB(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -905,11 +907,11 @@ static void REGAL_CALL Vao_glVertexAttribPointerARB(Layer *_layer, GLuint index,
   // impl
   return _context->vao->AttribPointer(*_context, index, size, type, normalized, stride, pointer );
 
-  orig.glVertexAttribPointerARB( orig.glVertexAttribPointerARB_layer, index, size, type, normalized, stride, pointer );
+  RglVertexAttribPointerARB( orig, index, size, type, normalized, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL vao_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -918,11 +920,11 @@ static void REGAL_CALL Vao_glVertexPointer(Layer *_layer, GLint size, GLenum typ
   // impl
   _context->vao->VertexPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glVertexPointer( orig.glVertexPointer_layer, size, type, stride, pointer );
+  RglVertexPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Vao_glVertexPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL vao_glVertexPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Vao * self = static_cast<Vao *>(_layer);
 
@@ -931,78 +933,78 @@ static void REGAL_CALL Vao_glVertexPointerEXT(Layer *_layer, GLint size, GLenum 
   // impl
   _context->vao->VertexPointer(*_context, size, type, stride, pointer ); return;
 
-  orig.glVertexPointerEXT( orig.glVertexPointerEXT_layer, size, type, stride, count, pointer );
+  RglVertexPointerEXT( orig, size, type, stride, count, pointer );
 
 }
 
-void VaoIntercept( Dispatch::GL & dt ) {
-  dt.glBindBuffer                      = RVao_glBindBuffer;
-  dt.glBindBufferARB                   = RVao_glBindBufferARB;
-  dt.glBindVertexArray                 = RVao_glBindVertexArray;
-  dt.glClientActiveTexture             = RVao_glClientActiveTexture;
-  dt.glClientActiveTextureARB          = RVao_glClientActiveTextureARB;
-  dt.glColorPointer                    = RVao_glColorPointer;
-  dt.glColorPointerEXT                 = RVao_glColorPointerEXT;
-  dt.glDeleteVertexArrays              = RVao_glDeleteVertexArrays;
-  dt.glDisableClientState              = RVao_glDisableClientState;
-  dt.glDisableVertexAttribArray        = RVao_glDisableVertexAttribArray;
-  dt.glDisableVertexAttribArrayARB     = RVao_glDisableVertexAttribArrayARB;
-  dt.glDrawArrays                      = RVao_glDrawArrays;
-  dt.glDrawArraysEXT                   = RVao_glDrawArraysEXT;
-  dt.glDrawArraysIndirect              = RVao_glDrawArraysIndirect;
-  dt.glDrawArraysInstanced             = RVao_glDrawArraysInstanced;
-  dt.glDrawArraysInstancedARB          = RVao_glDrawArraysInstancedARB;
-  dt.glDrawArraysInstancedEXT          = RVao_glDrawArraysInstancedEXT;
-  dt.glDrawElementArrayAPPLE           = RVao_glDrawElementArrayAPPLE;
-  dt.glDrawElementArrayATI             = RVao_glDrawElementArrayATI;
-  dt.glDrawElements                    = RVao_glDrawElements;
-  dt.glDrawElementsBaseVertex          = RVao_glDrawElementsBaseVertex;
-  dt.glDrawElementsIndirect            = RVao_glDrawElementsIndirect;
-  dt.glDrawElementsInstanced           = RVao_glDrawElementsInstanced;
-  dt.glDrawElementsInstancedARB        = RVao_glDrawElementsInstancedARB;
-  dt.glDrawElementsInstancedBaseVertex = RVao_glDrawElementsInstancedBaseVertex;
-  dt.glDrawElementsInstancedEXT        = RVao_glDrawElementsInstancedEXT;
-  dt.glEnableClientState               = RVao_glEnableClientState;
-  dt.glEnableVertexAttribArray         = RVao_glEnableVertexAttribArray;
-  dt.glEnableVertexAttribArrayARB      = RVao_glEnableVertexAttribArrayARB;
-  dt.glFogCoordPointer                 = RVao_glFogCoordPointer;
-  dt.glFogCoordPointerEXT              = RVao_glFogCoordPointerEXT;
-  dt.glGenVertexArrays                 = RVao_glGenVertexArrays;
-  dt.glGetBooleanv                     = RVao_glGetBooleanv;
-  dt.glGetDoublev                      = RVao_glGetDoublev;
-  dt.glGetFloatv                       = RVao_glGetFloatv;
-  dt.glGetInteger64v                   = RVao_glGetInteger64v;
-  dt.glGetIntegerv                     = RVao_glGetIntegerv;
-  dt.glGetVertexAttribPointerv         = RVao_glGetVertexAttribPointerv;
-  dt.glGetVertexAttribPointervARB      = RVao_glGetVertexAttribPointervARB;
-  dt.glGetVertexAttribdv               = RVao_glGetVertexAttribdv;
-  dt.glGetVertexAttribdvARB            = RVao_glGetVertexAttribdvARB;
-  dt.glGetVertexAttribfv               = RVao_glGetVertexAttribfv;
-  dt.glGetVertexAttribfvARB            = RVao_glGetVertexAttribfvARB;
-  dt.glGetVertexAttribiv               = RVao_glGetVertexAttribiv;
-  dt.glGetVertexAttribivARB            = RVao_glGetVertexAttribivARB;
-  dt.glInterleavedArrays               = RVao_glInterleavedArrays;
-  dt.glIsVertexArray                   = RVao_glIsVertexArray;
-  dt.glMultiDrawArrays                 = RVao_glMultiDrawArrays;
-  dt.glMultiDrawArraysEXT              = RVao_glMultiDrawArraysEXT;
-  dt.glMultiDrawArraysIndirect         = RVao_glMultiDrawArraysIndirect;
-  dt.glMultiDrawArraysIndirectAMD      = RVao_glMultiDrawArraysIndirectAMD;
-  dt.glMultiDrawElementArrayAPPLE      = RVao_glMultiDrawElementArrayAPPLE;
-  dt.glMultiDrawElements               = RVao_glMultiDrawElements;
-  dt.glMultiDrawElementsBaseVertex     = RVao_glMultiDrawElementsBaseVertex;
-  dt.glMultiDrawElementsEXT            = RVao_glMultiDrawElementsEXT;
-  dt.glMultiDrawElementsIndirect       = RVao_glMultiDrawElementsIndirect;
-  dt.glMultiDrawElementsIndirectAMD    = RVao_glMultiDrawElementsIndirectAMD;
-  dt.glNormalPointer                   = RVao_glNormalPointer;
-  dt.glNormalPointerEXT                = RVao_glNormalPointerEXT;
-  dt.glSecondaryColorPointer           = RVao_glSecondaryColorPointer;
-  dt.glSecondaryColorPointerEXT        = RVao_glSecondaryColorPointerEXT;
-  dt.glTexCoordPointer                 = RVao_glTexCoordPointer;
-  dt.glTexCoordPointerEXT              = RVao_glTexCoordPointerEXT;
-  dt.glVertexAttribPointer             = RVao_glVertexAttribPointer;
-  dt.glVertexAttribPointerARB          = RVao_glVertexAttribPointerARB;
-  dt.glVertexPointer                   = RVao_glVertexPointer;
-  dt.glVertexPointerEXT                = RVao_glVertexPointerEXT;
+void VaoIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glBindBuffer                      = MakeRegalProc(vao_glBindBuffer, layer);
+  dt.glBindBufferARB                   = MakeRegalProc(vao_glBindBufferARB, layer);
+  dt.glBindVertexArray                 = MakeRegalProc(vao_glBindVertexArray, layer);
+  dt.glClientActiveTexture             = MakeRegalProc(vao_glClientActiveTexture, layer);
+  dt.glClientActiveTextureARB          = MakeRegalProc(vao_glClientActiveTextureARB, layer);
+  dt.glColorPointer                    = MakeRegalProc(vao_glColorPointer, layer);
+  dt.glColorPointerEXT                 = MakeRegalProc(vao_glColorPointerEXT, layer);
+  dt.glDeleteVertexArrays              = MakeRegalProc(vao_glDeleteVertexArrays, layer);
+  dt.glDisableClientState              = MakeRegalProc(vao_glDisableClientState, layer);
+  dt.glDisableVertexAttribArray        = MakeRegalProc(vao_glDisableVertexAttribArray, layer);
+  dt.glDisableVertexAttribArrayARB     = MakeRegalProc(vao_glDisableVertexAttribArrayARB, layer);
+  dt.glDrawArrays                      = MakeRegalProc(vao_glDrawArrays, layer);
+  dt.glDrawArraysEXT                   = MakeRegalProc(vao_glDrawArraysEXT, layer);
+  dt.glDrawArraysIndirect              = MakeRegalProc(vao_glDrawArraysIndirect, layer);
+  dt.glDrawArraysInstanced             = MakeRegalProc(vao_glDrawArraysInstanced, layer);
+  dt.glDrawArraysInstancedARB          = MakeRegalProc(vao_glDrawArraysInstancedARB, layer);
+  dt.glDrawArraysInstancedEXT          = MakeRegalProc(vao_glDrawArraysInstancedEXT, layer);
+  dt.glDrawElementArrayAPPLE           = MakeRegalProc(vao_glDrawElementArrayAPPLE, layer);
+  dt.glDrawElementArrayATI             = MakeRegalProc(vao_glDrawElementArrayATI, layer);
+  dt.glDrawElements                    = MakeRegalProc(vao_glDrawElements, layer);
+  dt.glDrawElementsBaseVertex          = MakeRegalProc(vao_glDrawElementsBaseVertex, layer);
+  dt.glDrawElementsIndirect            = MakeRegalProc(vao_glDrawElementsIndirect, layer);
+  dt.glDrawElementsInstanced           = MakeRegalProc(vao_glDrawElementsInstanced, layer);
+  dt.glDrawElementsInstancedARB        = MakeRegalProc(vao_glDrawElementsInstancedARB, layer);
+  dt.glDrawElementsInstancedBaseVertex = MakeRegalProc(vao_glDrawElementsInstancedBaseVertex, layer);
+  dt.glDrawElementsInstancedEXT        = MakeRegalProc(vao_glDrawElementsInstancedEXT, layer);
+  dt.glEnableClientState               = MakeRegalProc(vao_glEnableClientState, layer);
+  dt.glEnableVertexAttribArray         = MakeRegalProc(vao_glEnableVertexAttribArray, layer);
+  dt.glEnableVertexAttribArrayARB      = MakeRegalProc(vao_glEnableVertexAttribArrayARB, layer);
+  dt.glFogCoordPointer                 = MakeRegalProc(vao_glFogCoordPointer, layer);
+  dt.glFogCoordPointerEXT              = MakeRegalProc(vao_glFogCoordPointerEXT, layer);
+  dt.glGenVertexArrays                 = MakeRegalProc(vao_glGenVertexArrays, layer);
+  dt.glGetBooleanv                     = MakeRegalProc(vao_glGetBooleanv, layer);
+  dt.glGetDoublev                      = MakeRegalProc(vao_glGetDoublev, layer);
+  dt.glGetFloatv                       = MakeRegalProc(vao_glGetFloatv, layer);
+  dt.glGetInteger64v                   = MakeRegalProc(vao_glGetInteger64v, layer);
+  dt.glGetIntegerv                     = MakeRegalProc(vao_glGetIntegerv, layer);
+  dt.glGetVertexAttribPointerv         = MakeRegalProc(vao_glGetVertexAttribPointerv, layer);
+  dt.glGetVertexAttribPointervARB      = MakeRegalProc(vao_glGetVertexAttribPointervARB, layer);
+  dt.glGetVertexAttribdv               = MakeRegalProc(vao_glGetVertexAttribdv, layer);
+  dt.glGetVertexAttribdvARB            = MakeRegalProc(vao_glGetVertexAttribdvARB, layer);
+  dt.glGetVertexAttribfv               = MakeRegalProc(vao_glGetVertexAttribfv, layer);
+  dt.glGetVertexAttribfvARB            = MakeRegalProc(vao_glGetVertexAttribfvARB, layer);
+  dt.glGetVertexAttribiv               = MakeRegalProc(vao_glGetVertexAttribiv, layer);
+  dt.glGetVertexAttribivARB            = MakeRegalProc(vao_glGetVertexAttribivARB, layer);
+  dt.glInterleavedArrays               = MakeRegalProc(vao_glInterleavedArrays, layer);
+  dt.glIsVertexArray                   = MakeRegalProc(vao_glIsVertexArray, layer);
+  dt.glMultiDrawArrays                 = MakeRegalProc(vao_glMultiDrawArrays, layer);
+  dt.glMultiDrawArraysEXT              = MakeRegalProc(vao_glMultiDrawArraysEXT, layer);
+  dt.glMultiDrawArraysIndirect         = MakeRegalProc(vao_glMultiDrawArraysIndirect, layer);
+  dt.glMultiDrawArraysIndirectAMD      = MakeRegalProc(vao_glMultiDrawArraysIndirectAMD, layer);
+  dt.glMultiDrawElementArrayAPPLE      = MakeRegalProc(vao_glMultiDrawElementArrayAPPLE, layer);
+  dt.glMultiDrawElements               = MakeRegalProc(vao_glMultiDrawElements, layer);
+  dt.glMultiDrawElementsBaseVertex     = MakeRegalProc(vao_glMultiDrawElementsBaseVertex, layer);
+  dt.glMultiDrawElementsEXT            = MakeRegalProc(vao_glMultiDrawElementsEXT, layer);
+  dt.glMultiDrawElementsIndirect       = MakeRegalProc(vao_glMultiDrawElementsIndirect, layer);
+  dt.glMultiDrawElementsIndirectAMD    = MakeRegalProc(vao_glMultiDrawElementsIndirectAMD, layer);
+  dt.glNormalPointer                   = MakeRegalProc(vao_glNormalPointer, layer);
+  dt.glNormalPointerEXT                = MakeRegalProc(vao_glNormalPointerEXT, layer);
+  dt.glSecondaryColorPointer           = MakeRegalProc(vao_glSecondaryColorPointer, layer);
+  dt.glSecondaryColorPointerEXT        = MakeRegalProc(vao_glSecondaryColorPointerEXT, layer);
+  dt.glTexCoordPointer                 = MakeRegalProc(vao_glTexCoordPointer, layer);
+  dt.glTexCoordPointerEXT              = MakeRegalProc(vao_glTexCoordPointerEXT, layer);
+  dt.glVertexAttribPointer             = MakeRegalProc(vao_glVertexAttribPointer, layer);
+  dt.glVertexAttribPointerARB          = MakeRegalProc(vao_glVertexAttribPointerARB, layer);
+  dt.glVertexPointer                   = MakeRegalProc(vao_glVertexPointer, layer);
+  dt.glVertexPointerEXT                = MakeRegalProc(vao_glVertexPointerEXT, layer);
 }
 
 REGAL_NAMESPACE_END

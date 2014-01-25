@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalIff.h"
-#include "RegalEmuProcsIff.h"
+#include "Iff.h"
+#include "IffProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Iff_glActiveTexture(Layer *_layer, GLenum texture)
+using namespace Emu;
+
+static void REGAL_CALL iff_glActiveTexture(Layer *_layer, GLenum texture)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL Iff_glActiveTexture(Layer *_layer, GLenum texture)
   // prefix
   _context->iff->ShadowActiveTexture( texture );
 
-  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
+  RglActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Iff_glActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL iff_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -76,11 +78,11 @@ static void REGAL_CALL Iff_glActiveTextureARB(Layer *_layer, GLenum texture)
   // prefix
   _context->iff->ShadowActiveTexture( texture );
 
-  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
+  RglActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Iff_glAlphaFunc(Layer *_layer, GLenum func, GLclampf ref)
+static void REGAL_CALL iff_glAlphaFunc(Layer *_layer, GLenum func, GLclampf ref)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -89,11 +91,11 @@ static void REGAL_CALL Iff_glAlphaFunc(Layer *_layer, GLenum func, GLclampf ref)
   // impl
   _context->iff->AlphaFunc( func, ref ); return;
 
-  orig.glAlphaFunc( orig.glAlphaFunc_layer, func, ref );
+  RglAlphaFunc( orig, func, ref );
 
 }
 
-static void REGAL_CALL Iff_glBegin(Layer *_layer, GLenum mode)
+static void REGAL_CALL iff_glBegin(Layer *_layer, GLenum mode)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -102,11 +104,11 @@ static void REGAL_CALL Iff_glBegin(Layer *_layer, GLenum mode)
   // impl
   _context->iff->Begin( _context, mode ); return;
 
-  orig.glBegin( orig.glBegin_layer, mode );
+  RglBegin( orig, mode );
 
 }
 
-static void REGAL_CALL Iff_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
+static void REGAL_CALL iff_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -115,11 +117,11 @@ static void REGAL_CALL Iff_glBindBuffer(Layer *_layer, GLenum target, GLuint buf
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glBindBuffer( orig.glBindBuffer_layer, target, buffer );
+  RglBindBuffer( orig, target, buffer );
 
 }
 
-static void REGAL_CALL Iff_glBindMultiTextureEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint texture)
+static void REGAL_CALL iff_glBindMultiTextureEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint texture)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -128,11 +130,11 @@ static void REGAL_CALL Iff_glBindMultiTextureEXT(Layer *_layer, GLenum texunit, 
   // prefix
   _context->iff->ShadowMultiTexBinding( texunit, target, texture );
 
-  orig.glBindMultiTextureEXT( orig.glBindMultiTextureEXT_layer, texunit, target, texture );
+  RglBindMultiTextureEXT( orig, texunit, target, texture );
 
 }
 
-static void REGAL_CALL Iff_glBindProgramPipeline(Layer *_layer, GLuint pipeline)
+static void REGAL_CALL iff_glBindProgramPipeline(Layer *_layer, GLuint pipeline)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -143,11 +145,11 @@ static void REGAL_CALL Iff_glBindProgramPipeline(Layer *_layer, GLuint pipeline)
       return;
   }
 
-  orig.glBindProgramPipeline( orig.glBindProgramPipeline_layer, pipeline );
+  RglBindProgramPipeline( orig, pipeline );
 
 }
 
-static void REGAL_CALL Iff_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL iff_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -156,11 +158,11 @@ static void REGAL_CALL Iff_glBindTexture(Layer *_layer, GLenum target, GLuint te
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
 
-  orig.glBindTexture( orig.glBindTexture_layer, target, texture );
+  RglBindTexture( orig, target, texture );
 
 }
 
-static void REGAL_CALL Iff_glBindTextureEXT(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL iff_glBindTextureEXT(Layer *_layer, GLenum target, GLuint texture)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -169,11 +171,11 @@ static void REGAL_CALL Iff_glBindTextureEXT(Layer *_layer, GLenum target, GLuint
   // prefix
   _context->iff->ShadowTexBinding( target, texture );
 
-  orig.glBindTextureEXT( orig.glBindTextureEXT_layer, target, texture );
+  RglBindTextureEXT( orig, target, texture );
 
 }
 
-static void REGAL_CALL Iff_glBindVertexArray(Layer *_layer, GLuint array)
+static void REGAL_CALL iff_glBindVertexArray(Layer *_layer, GLuint array)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -182,11 +184,11 @@ static void REGAL_CALL Iff_glBindVertexArray(Layer *_layer, GLuint array)
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  orig.glBindVertexArray( orig.glBindVertexArray_layer, array );
+  RglBindVertexArray( orig, array );
 
 }
 
-static void REGAL_CALL Iff_glBindVertexArrayAPPLE(Layer *_layer, GLuint array)
+static void REGAL_CALL iff_glBindVertexArrayAPPLE(Layer *_layer, GLuint array)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -195,11 +197,11 @@ static void REGAL_CALL Iff_glBindVertexArrayAPPLE(Layer *_layer, GLuint array)
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  orig.glBindVertexArrayAPPLE( orig.glBindVertexArrayAPPLE_layer, array );
+  RglBindVertexArrayAPPLE( orig, array );
 
 }
 
-static void REGAL_CALL Iff_glBindVertexArrayOES(Layer *_layer, GLuint array)
+static void REGAL_CALL iff_glBindVertexArrayOES(Layer *_layer, GLuint array)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -208,11 +210,11 @@ static void REGAL_CALL Iff_glBindVertexArrayOES(Layer *_layer, GLuint array)
   // prefix
   _context->iff->glBindVertexArray( _context, array );
 
-  orig.glBindVertexArrayOES( orig.glBindVertexArrayOES_layer, array );
+  RglBindVertexArrayOES( orig, array );
 
 }
 
-static void REGAL_CALL Iff_glClientActiveTexture(Layer *_layer, GLenum texture)
+static void REGAL_CALL iff_glClientActiveTexture(Layer *_layer, GLenum texture)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -221,11 +223,11 @@ static void REGAL_CALL Iff_glClientActiveTexture(Layer *_layer, GLenum texture)
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
 
-  orig.glClientActiveTexture( orig.glClientActiveTexture_layer, texture );
+  RglClientActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Iff_glClientActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL iff_glClientActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -234,11 +236,11 @@ static void REGAL_CALL Iff_glClientActiveTextureARB(Layer *_layer, GLenum textur
   // prefix
   _context->iff->ShadowClientActiveTexture( texture );
 
-  orig.glClientActiveTextureARB( orig.glClientActiveTextureARB_layer, texture );
+  RglClientActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Iff_glClipPlane(Layer *_layer, GLenum plane, const GLdouble *equation)
+static void REGAL_CALL iff_glClipPlane(Layer *_layer, GLenum plane, const GLdouble *equation)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -247,11 +249,11 @@ static void REGAL_CALL Iff_glClipPlane(Layer *_layer, GLenum plane, const GLdoub
   // impl
   _context->iff->ClipPlane( plane, equation ); return;
 
-  orig.glClipPlane( orig.glClipPlane_layer, plane, equation );
+  RglClipPlane( orig, plane, equation );
 
 }
 
-static void REGAL_CALL Iff_glColor3b(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue)
+static void REGAL_CALL iff_glColor3b(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -260,11 +262,11 @@ static void REGAL_CALL Iff_glColor3b(Layer *_layer, GLbyte red, GLbyte green, GL
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3b( orig.glColor3b_layer, red, green, blue );
+  RglColor3b( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3bv(Layer *_layer, const GLbyte *v)
+static void REGAL_CALL iff_glColor3bv(Layer *_layer, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -273,11 +275,11 @@ static void REGAL_CALL Iff_glColor3bv(Layer *_layer, const GLbyte *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3bv( orig.glColor3bv_layer, v );
+  RglColor3bv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor3d(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue)
+static void REGAL_CALL iff_glColor3d(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -286,11 +288,11 @@ static void REGAL_CALL Iff_glColor3d(Layer *_layer, GLdouble red, GLdouble green
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3d( orig.glColor3d_layer, red, green, blue );
+  RglColor3d( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glColor3dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -299,11 +301,11 @@ static void REGAL_CALL Iff_glColor3dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3dv( orig.glColor3dv_layer, v );
+  RglColor3dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor3f(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue)
+static void REGAL_CALL iff_glColor3f(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -312,11 +314,11 @@ static void REGAL_CALL Iff_glColor3f(Layer *_layer, GLfloat red, GLfloat green, 
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3f( orig.glColor3f_layer, red, green, blue );
+  RglColor3f( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glColor3fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -325,11 +327,11 @@ static void REGAL_CALL Iff_glColor3fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3fv( orig.glColor3fv_layer, v );
+  RglColor3fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor3i(Layer *_layer, GLint red, GLint green, GLint blue)
+static void REGAL_CALL iff_glColor3i(Layer *_layer, GLint red, GLint green, GLint blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -338,11 +340,11 @@ static void REGAL_CALL Iff_glColor3i(Layer *_layer, GLint red, GLint green, GLin
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3i( orig.glColor3i_layer, red, green, blue );
+  RglColor3i( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glColor3iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -351,11 +353,11 @@ static void REGAL_CALL Iff_glColor3iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3iv( orig.glColor3iv_layer, v );
+  RglColor3iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor3s(Layer *_layer, GLshort red, GLshort green, GLshort blue)
+static void REGAL_CALL iff_glColor3s(Layer *_layer, GLshort red, GLshort green, GLshort blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -364,11 +366,11 @@ static void REGAL_CALL Iff_glColor3s(Layer *_layer, GLshort red, GLshort green, 
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3s( orig.glColor3s_layer, red, green, blue );
+  RglColor3s( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glColor3sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -377,11 +379,11 @@ static void REGAL_CALL Iff_glColor3sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3sv( orig.glColor3sv_layer, v );
+  RglColor3sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor3ub(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue)
+static void REGAL_CALL iff_glColor3ub(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -390,11 +392,11 @@ static void REGAL_CALL Iff_glColor3ub(Layer *_layer, GLubyte red, GLubyte green,
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3ub( orig.glColor3ub_layer, red, green, blue );
+  RglColor3ub( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3ubv(Layer *_layer, const GLubyte *v)
+static void REGAL_CALL iff_glColor3ubv(Layer *_layer, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -403,11 +405,11 @@ static void REGAL_CALL Iff_glColor3ubv(Layer *_layer, const GLubyte *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3ubv( orig.glColor3ubv_layer, v );
+  RglColor3ubv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor3ui(Layer *_layer, GLuint red, GLuint green, GLuint blue)
+static void REGAL_CALL iff_glColor3ui(Layer *_layer, GLuint red, GLuint green, GLuint blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -416,11 +418,11 @@ static void REGAL_CALL Iff_glColor3ui(Layer *_layer, GLuint red, GLuint green, G
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3ui( orig.glColor3ui_layer, red, green, blue );
+  RglColor3ui( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3uiv(Layer *_layer, const GLuint *v)
+static void REGAL_CALL iff_glColor3uiv(Layer *_layer, const GLuint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -429,11 +431,11 @@ static void REGAL_CALL Iff_glColor3uiv(Layer *_layer, const GLuint *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3uiv( orig.glColor3uiv_layer, v );
+  RglColor3uiv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor3us(Layer *_layer, GLushort red, GLushort green, GLushort blue)
+static void REGAL_CALL iff_glColor3us(Layer *_layer, GLushort red, GLushort green, GLushort blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -442,11 +444,11 @@ static void REGAL_CALL Iff_glColor3us(Layer *_layer, GLushort red, GLushort gree
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue ); return;
 
-  orig.glColor3us( orig.glColor3us_layer, red, green, blue );
+  RglColor3us( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glColor3usv(Layer *_layer, const GLushort *v)
+static void REGAL_CALL iff_glColor3usv(Layer *_layer, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -455,11 +457,11 @@ static void REGAL_CALL Iff_glColor3usv(Layer *_layer, const GLushort *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor3usv( orig.glColor3usv_layer, v );
+  RglColor3usv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4b(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
+static void REGAL_CALL iff_glColor4b(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue, GLbyte alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -468,11 +470,11 @@ static void REGAL_CALL Iff_glColor4b(Layer *_layer, GLbyte red, GLbyte green, GL
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4b( orig.glColor4b_layer, red, green, blue, alpha );
+  RglColor4b( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4bv(Layer *_layer, const GLbyte *v)
+static void REGAL_CALL iff_glColor4bv(Layer *_layer, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -481,11 +483,11 @@ static void REGAL_CALL Iff_glColor4bv(Layer *_layer, const GLbyte *v)
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4bv( orig.glColor4bv_layer, v );
+  RglColor4bv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4d(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
+static void REGAL_CALL iff_glColor4d(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue, GLdouble alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -494,11 +496,11 @@ static void REGAL_CALL Iff_glColor4d(Layer *_layer, GLdouble red, GLdouble green
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4d( orig.glColor4d_layer, red, green, blue, alpha );
+  RglColor4d( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glColor4dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -507,11 +509,11 @@ static void REGAL_CALL Iff_glColor4dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4dv( orig.glColor4dv_layer, v );
+  RglColor4dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4f(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+static void REGAL_CALL iff_glColor4f(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -520,11 +522,11 @@ static void REGAL_CALL Iff_glColor4f(Layer *_layer, GLfloat red, GLfloat green, 
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4f( orig.glColor4f_layer, red, green, blue, alpha );
+  RglColor4f( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glColor4fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -533,11 +535,11 @@ static void REGAL_CALL Iff_glColor4fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4fv( orig.glColor4fv_layer, v );
+  RglColor4fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4i(Layer *_layer, GLint red, GLint green, GLint blue, GLint alpha)
+static void REGAL_CALL iff_glColor4i(Layer *_layer, GLint red, GLint green, GLint blue, GLint alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -546,11 +548,11 @@ static void REGAL_CALL Iff_glColor4i(Layer *_layer, GLint red, GLint green, GLin
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4i( orig.glColor4i_layer, red, green, blue, alpha );
+  RglColor4i( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glColor4iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -559,11 +561,11 @@ static void REGAL_CALL Iff_glColor4iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4iv( orig.glColor4iv_layer, v );
+  RglColor4iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4s(Layer *_layer, GLshort red, GLshort green, GLshort blue, GLshort alpha)
+static void REGAL_CALL iff_glColor4s(Layer *_layer, GLshort red, GLshort green, GLshort blue, GLshort alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -572,11 +574,11 @@ static void REGAL_CALL Iff_glColor4s(Layer *_layer, GLshort red, GLshort green, 
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4s( orig.glColor4s_layer, red, green, blue, alpha );
+  RglColor4s( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glColor4sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -585,11 +587,11 @@ static void REGAL_CALL Iff_glColor4sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4sv( orig.glColor4sv_layer, v );
+  RglColor4sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4ub(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
+static void REGAL_CALL iff_glColor4ub(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue, GLubyte alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -598,11 +600,11 @@ static void REGAL_CALL Iff_glColor4ub(Layer *_layer, GLubyte red, GLubyte green,
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4ub( orig.glColor4ub_layer, red, green, blue, alpha );
+  RglColor4ub( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4ubv(Layer *_layer, const GLubyte *v)
+static void REGAL_CALL iff_glColor4ubv(Layer *_layer, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -611,11 +613,11 @@ static void REGAL_CALL Iff_glColor4ubv(Layer *_layer, const GLubyte *v)
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4ubv( orig.glColor4ubv_layer, v );
+  RglColor4ubv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4ui(Layer *_layer, GLuint red, GLuint green, GLuint blue, GLuint alpha)
+static void REGAL_CALL iff_glColor4ui(Layer *_layer, GLuint red, GLuint green, GLuint blue, GLuint alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -624,11 +626,11 @@ static void REGAL_CALL Iff_glColor4ui(Layer *_layer, GLuint red, GLuint green, G
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4ui( orig.glColor4ui_layer, red, green, blue, alpha );
+  RglColor4ui( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4uiv(Layer *_layer, const GLuint *v)
+static void REGAL_CALL iff_glColor4uiv(Layer *_layer, const GLuint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -637,11 +639,11 @@ static void REGAL_CALL Iff_glColor4uiv(Layer *_layer, const GLuint *v)
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4uiv( orig.glColor4uiv_layer, v );
+  RglColor4uiv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColor4us(Layer *_layer, GLushort red, GLushort green, GLushort blue, GLushort alpha)
+static void REGAL_CALL iff_glColor4us(Layer *_layer, GLushort red, GLushort green, GLushort blue, GLushort alpha)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -650,11 +652,11 @@ static void REGAL_CALL Iff_glColor4us(Layer *_layer, GLushort red, GLushort gree
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), red, green, blue, alpha ); return;
 
-  orig.glColor4us( orig.glColor4us_layer, red, green, blue, alpha );
+  RglColor4us( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Iff_glColor4usv(Layer *_layer, const GLushort *v)
+static void REGAL_CALL iff_glColor4usv(Layer *_layer, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -663,11 +665,11 @@ static void REGAL_CALL Iff_glColor4usv(Layer *_layer, const GLushort *v)
   // impl
   _context->iff->AttrN<4>( _context, _context->iff->AttrIndex( RFF2A_Color ), v ); return;
 
-  orig.glColor4usv( orig.glColor4usv_layer, v );
+  RglColor4usv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glColorMaterial(Layer *_layer, GLenum face, GLenum mode)
+static void REGAL_CALL iff_glColorMaterial(Layer *_layer, GLenum face, GLenum mode)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -676,11 +678,11 @@ static void REGAL_CALL Iff_glColorMaterial(Layer *_layer, GLenum face, GLenum mo
   // impl
   _context->iff->ColorMaterial( face, mode ); return;
 
-  orig.glColorMaterial( orig.glColorMaterial_layer, face, mode );
+  RglColorMaterial( orig, face, mode );
 
 }
 
-static void REGAL_CALL Iff_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -689,11 +691,11 @@ static void REGAL_CALL Iff_glColorPointer(Layer *_layer, GLint size, GLenum type
   // impl
   _context->iff->ColorPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glColorPointer( orig.glColorPointer_layer, size, type, stride, pointer );
+  RglColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL iff_glColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -702,11 +704,11 @@ static void REGAL_CALL Iff_glColorPointerEXT(Layer *_layer, GLint size, GLenum t
   // impl
   _context->iff->ColorPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glColorPointerEXT( orig.glColorPointerEXT_layer, size, type, stride, count, pointer );
+  RglColorPointerEXT( orig, size, type, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Iff_glCopyTexImage2D(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
+static void REGAL_CALL iff_glCopyTexImage2D(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -715,11 +717,11 @@ static void REGAL_CALL Iff_glCopyTexImage2D(Layer *_layer, GLenum target, GLint 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glCopyTexImage2D( orig.glCopyTexImage2D_layer, target, level, internalformat, x, y, width, height, border );
+  RglCopyTexImage2D( orig, target, level, internalformat, x, y, width, height, border );
 
 }
 
-static GLuint REGAL_CALL Iff_glCreateShader(Layer *_layer, GLenum type)
+static GLuint REGAL_CALL iff_glCreateShader(Layer *_layer, GLenum type)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -728,11 +730,11 @@ static GLuint REGAL_CALL Iff_glCreateShader(Layer *_layer, GLenum type)
   // impl
   return _context->iff->CreateShader( _context, type );
 
-  return orig.glCreateShader( orig.glCreateShader_layer, type );
+  return RglCreateShader( orig, type );
 
 }
 
-static GLhandleARB REGAL_CALL Iff_glCreateShaderObjectARB(Layer *_layer, GLenum shaderType)
+static GLhandleARB REGAL_CALL iff_glCreateShaderObjectARB(Layer *_layer, GLenum shaderType)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -741,11 +743,11 @@ static GLhandleARB REGAL_CALL Iff_glCreateShaderObjectARB(Layer *_layer, GLenum 
   // impl
   return _context->iff->CreateShader( _context, shaderType );
 
-  return orig.glCreateShaderObjectARB( orig.glCreateShaderObjectARB_layer, shaderType );
+  return RglCreateShaderObjectARB( orig, shaderType );
 
 }
 
-static void REGAL_CALL Iff_glDepthRange(Layer *_layer, GLclampd zNear, GLclampd zFar)
+static void REGAL_CALL iff_glDepthRange(Layer *_layer, GLclampd zNear, GLclampd zFar)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -754,11 +756,11 @@ static void REGAL_CALL Iff_glDepthRange(Layer *_layer, GLclampd zNear, GLclampd 
   // prefix
   _context->iff->DepthRange( GLfloat(zNear), GLfloat(zFar) );
 
-  orig.glDepthRange( orig.glDepthRange_layer, zNear, zFar );
+  RglDepthRange( orig, zNear, zFar );
 
 }
 
-static void REGAL_CALL Iff_glDisable(Layer *_layer, GLenum cap)
+static void REGAL_CALL iff_glDisable(Layer *_layer, GLenum cap)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -769,11 +771,11 @@ static void REGAL_CALL Iff_glDisable(Layer *_layer, GLenum cap)
       return;
   }
 
-  orig.glDisable( orig.glDisable_layer, cap );
+  RglDisable( orig, cap );
 
 }
 
-static void REGAL_CALL Iff_glDisableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL iff_glDisableClientState(Layer *_layer, GLenum cap)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -782,11 +784,11 @@ static void REGAL_CALL Iff_glDisableClientState(Layer *_layer, GLenum cap)
   // impl
   _context->iff->DisableClientState( _context, cap ); return;
 
-  orig.glDisableClientState( orig.glDisableClientState_layer, cap );
+  RglDisableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Iff_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL iff_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -795,11 +797,11 @@ static void REGAL_CALL Iff_glDisableIndexedEXT(Layer *_layer, GLenum target, GLu
   // impl
   _context->iff->DisableIndexed( target, index ); return;
 
-  orig.glDisableIndexedEXT( orig.glDisableIndexedEXT_layer, target, index );
+  RglDisableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Iff_glDisableVertexAttribArray(Layer *_layer, GLuint index)
+static void REGAL_CALL iff_glDisableVertexAttribArray(Layer *_layer, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -809,11 +811,11 @@ static void REGAL_CALL Iff_glDisableVertexAttribArray(Layer *_layer, GLuint inde
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
 
-  orig.glDisableVertexAttribArray( orig.glDisableVertexAttribArray_layer, index );
+  RglDisableVertexAttribArray( orig, index );
 
 }
 
-static void REGAL_CALL Iff_glDisableVertexAttribArrayARB(Layer *_layer, GLuint index)
+static void REGAL_CALL iff_glDisableVertexAttribArrayARB(Layer *_layer, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -823,11 +825,11 @@ static void REGAL_CALL Iff_glDisableVertexAttribArrayARB(Layer *_layer, GLuint i
   _context->iff->RestoreVao( _context );
   _context->iff->DisableArray( _context, index );
 
-  orig.glDisableVertexAttribArrayARB( orig.glDisableVertexAttribArrayARB_layer, index );
+  RglDisableVertexAttribArrayARB( orig, index );
 
 }
 
-static void REGAL_CALL Iff_glDisablei(Layer *_layer, GLenum cap, GLuint index)
+static void REGAL_CALL iff_glDisablei(Layer *_layer, GLenum cap, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -836,11 +838,11 @@ static void REGAL_CALL Iff_glDisablei(Layer *_layer, GLenum cap, GLuint index)
   // impl
   _context->iff->DisableIndexed( cap, index ); return;
 
-  orig.glDisablei( orig.glDisablei_layer, cap, index );
+  RglDisablei( orig, cap, index );
 
 }
 
-static void REGAL_CALL Iff_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL iff_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -849,11 +851,11 @@ static void REGAL_CALL Iff_glDrawArrays(Layer *_layer, GLenum mode, GLint first,
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArrays( orig.glDrawArrays_layer, mode, first, count );
+  RglDrawArrays( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Iff_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL iff_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -862,11 +864,11 @@ static void REGAL_CALL Iff_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint fir
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysEXT( orig.glDrawArraysEXT_layer, mode, first, count );
+  RglDrawArraysEXT( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Iff_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
+static void REGAL_CALL iff_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -875,11 +877,11 @@ static void REGAL_CALL Iff_glDrawArraysIndirect(Layer *_layer, GLenum mode, cons
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysIndirect( orig.glDrawArraysIndirect_layer, mode, indirect );
+  RglDrawArraysIndirect( orig, mode, indirect );
 
 }
 
-static void REGAL_CALL Iff_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL iff_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -888,11 +890,11 @@ static void REGAL_CALL Iff_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLi
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysInstanced( orig.glDrawArraysInstanced_layer, mode, start, count, primcount );
+  RglDrawArraysInstanced( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Iff_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL iff_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -901,11 +903,11 @@ static void REGAL_CALL Iff_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, 
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysInstancedARB( orig.glDrawArraysInstancedARB_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedARB( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Iff_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL iff_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -914,11 +916,11 @@ static void REGAL_CALL Iff_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, 
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawArraysInstancedEXT( orig.glDrawArraysInstancedEXT_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedEXT( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL iff_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -927,11 +929,11 @@ static void REGAL_CALL Iff_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, G
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementArrayAPPLE( orig.glDrawElementArrayAPPLE_layer, mode, first, count );
+  RglDrawElementArrayAPPLE( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
+static void REGAL_CALL iff_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -940,11 +942,11 @@ static void REGAL_CALL Iff_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLs
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementArrayATI( orig.glDrawElementArrayATI_layer, mode, count );
+  RglDrawElementArrayATI( orig, mode, count );
 
 }
 
-static void REGAL_CALL Iff_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL iff_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -953,11 +955,11 @@ static void REGAL_CALL Iff_glDrawElements(Layer *_layer, GLenum mode, GLsizei co
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElements( orig.glDrawElements_layer, mode, count, type, indices );
+  RglDrawElements( orig, mode, count, type, indices );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL iff_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -966,11 +968,11 @@ static void REGAL_CALL Iff_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, 
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsBaseVertex( orig.glDrawElementsBaseVertex_layer, mode, count, type, indices, basevertex );
+  RglDrawElementsBaseVertex( orig, mode, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
+static void REGAL_CALL iff_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -979,11 +981,11 @@ static void REGAL_CALL Iff_glDrawElementsIndirect(Layer *_layer, GLenum mode, GL
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsIndirect( orig.glDrawElementsIndirect_layer, mode, type, indirect );
+  RglDrawElementsIndirect( orig, mode, type, indirect );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL iff_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -992,11 +994,11 @@ static void REGAL_CALL Iff_glDrawElementsInstanced(Layer *_layer, GLenum mode, G
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstanced( orig.glDrawElementsInstanced_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstanced( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL iff_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1005,11 +1007,11 @@ static void REGAL_CALL Iff_glDrawElementsInstancedARB(Layer *_layer, GLenum mode
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstancedARB( orig.glDrawElementsInstancedARB_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedARB( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
+static void REGAL_CALL iff_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1018,11 +1020,11 @@ static void REGAL_CALL Iff_glDrawElementsInstancedBaseVertex(Layer *_layer, GLen
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstancedBaseVertex( orig.glDrawElementsInstancedBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglDrawElementsInstancedBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL Iff_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL iff_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1031,11 +1033,11 @@ static void REGAL_CALL Iff_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawElementsInstancedEXT( orig.glDrawElementsInstancedEXT_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Iff_glDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
+static void REGAL_CALL iff_glDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1044,11 +1046,11 @@ static void REGAL_CALL Iff_glDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mo
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementArrayAPPLE( orig.glDrawRangeElementArrayAPPLE_layer, mode, start, end, first, count );
+  RglDrawRangeElementArrayAPPLE( orig, mode, start, end, first, count );
 
 }
 
-static void REGAL_CALL Iff_glDrawRangeElementArrayATI(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count)
+static void REGAL_CALL iff_glDrawRangeElementArrayATI(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1057,11 +1059,11 @@ static void REGAL_CALL Iff_glDrawRangeElementArrayATI(Layer *_layer, GLenum mode
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementArrayATI( orig.glDrawRangeElementArrayATI_layer, mode, start, end, count );
+  RglDrawRangeElementArrayATI( orig, mode, start, end, count );
 
 }
 
-static void REGAL_CALL Iff_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL iff_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1070,11 +1072,11 @@ static void REGAL_CALL Iff_glDrawRangeElements(Layer *_layer, GLenum mode, GLuin
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElements( orig.glDrawRangeElements_layer, mode, start, end, count, type, indices );
+  RglDrawRangeElements( orig, mode, start, end, count, type, indices );
 
 }
 
-static void REGAL_CALL Iff_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL iff_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1083,11 +1085,11 @@ static void REGAL_CALL Iff_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum m
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementsBaseVertex( orig.glDrawRangeElementsBaseVertex_layer, mode, start, end, count, type, indices, basevertex );
+  RglDrawRangeElementsBaseVertex( orig, mode, start, end, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL Iff_glDrawRangeElementsEXT(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL iff_glDrawRangeElementsEXT(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1096,11 +1098,11 @@ static void REGAL_CALL Iff_glDrawRangeElementsEXT(Layer *_layer, GLenum mode, GL
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glDrawRangeElementsEXT( orig.glDrawRangeElementsEXT_layer, mode, start, end, count, type, indices );
+  RglDrawRangeElementsEXT( orig, mode, start, end, count, type, indices );
 
 }
 
-static void REGAL_CALL Iff_glEdgeFlagPointer(Layer *_layer, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glEdgeFlagPointer(Layer *_layer, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1109,11 +1111,11 @@ static void REGAL_CALL Iff_glEdgeFlagPointer(Layer *_layer, GLsizei stride, cons
   // impl
   _context->iff->EdgeFlagPointer( _context, stride, pointer ); return;
 
-  orig.glEdgeFlagPointer( orig.glEdgeFlagPointer_layer, stride, pointer );
+  RglEdgeFlagPointer( orig, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glEdgeFlagPointerEXT(Layer *_layer, GLsizei stride, GLsizei count, const GLboolean *pointer)
+static void REGAL_CALL iff_glEdgeFlagPointerEXT(Layer *_layer, GLsizei stride, GLsizei count, const GLboolean *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1122,11 +1124,11 @@ static void REGAL_CALL Iff_glEdgeFlagPointerEXT(Layer *_layer, GLsizei stride, G
   // impl
   _context->iff->EdgeFlagPointer( _context, stride, pointer ); return;
 
-  orig.glEdgeFlagPointerEXT( orig.glEdgeFlagPointerEXT_layer, stride, count, pointer );
+  RglEdgeFlagPointerEXT( orig, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Iff_glEnable(Layer *_layer, GLenum cap)
+static void REGAL_CALL iff_glEnable(Layer *_layer, GLenum cap)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1137,11 +1139,11 @@ static void REGAL_CALL Iff_glEnable(Layer *_layer, GLenum cap)
       return;
   }
 
-  orig.glEnable( orig.glEnable_layer, cap );
+  RglEnable( orig, cap );
 
 }
 
-static void REGAL_CALL Iff_glEnableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL iff_glEnableClientState(Layer *_layer, GLenum cap)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1150,11 +1152,11 @@ static void REGAL_CALL Iff_glEnableClientState(Layer *_layer, GLenum cap)
   // impl
   _context->iff->EnableClientState( _context, cap ); return;
 
-  orig.glEnableClientState( orig.glEnableClientState_layer, cap );
+  RglEnableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Iff_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL iff_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1163,11 +1165,11 @@ static void REGAL_CALL Iff_glEnableIndexedEXT(Layer *_layer, GLenum target, GLui
   // impl
   _context->iff->EnableIndexed( target, index ); return;
 
-  orig.glEnableIndexedEXT( orig.glEnableIndexedEXT_layer, target, index );
+  RglEnableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Iff_glEnableVertexAttribArray(Layer *_layer, GLuint index)
+static void REGAL_CALL iff_glEnableVertexAttribArray(Layer *_layer, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1177,11 +1179,11 @@ static void REGAL_CALL Iff_glEnableVertexAttribArray(Layer *_layer, GLuint index
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
 
-  orig.glEnableVertexAttribArray( orig.glEnableVertexAttribArray_layer, index );
+  RglEnableVertexAttribArray( orig, index );
 
 }
 
-static void REGAL_CALL Iff_glEnableVertexAttribArrayARB(Layer *_layer, GLuint index)
+static void REGAL_CALL iff_glEnableVertexAttribArrayARB(Layer *_layer, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1191,11 +1193,11 @@ static void REGAL_CALL Iff_glEnableVertexAttribArrayARB(Layer *_layer, GLuint in
   _context->iff->RestoreVao( _context );
   _context->iff->EnableArray( _context, index );
 
-  orig.glEnableVertexAttribArrayARB( orig.glEnableVertexAttribArrayARB_layer, index );
+  RglEnableVertexAttribArrayARB( orig, index );
 
 }
 
-static void REGAL_CALL Iff_glEnablei(Layer *_layer, GLenum cap, GLuint index)
+static void REGAL_CALL iff_glEnablei(Layer *_layer, GLenum cap, GLuint index)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1204,11 +1206,11 @@ static void REGAL_CALL Iff_glEnablei(Layer *_layer, GLenum cap, GLuint index)
   // impl
   _context->iff->EnableIndexed( cap, index ); return;
 
-  orig.glEnablei( orig.glEnablei_layer, cap, index );
+  RglEnablei( orig, cap, index );
 
 }
 
-static void REGAL_CALL Iff_glEnd(Layer *_layer)
+static void REGAL_CALL iff_glEnd(Layer *_layer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1217,11 +1219,11 @@ static void REGAL_CALL Iff_glEnd(Layer *_layer)
   // impl
   _context->iff->End( _context ); return;
 
-  orig.glEnd( orig.glEnd_layer );
+  RglEnd( orig );
 
 }
 
-static void REGAL_CALL Iff_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1230,11 +1232,11 @@ static void REGAL_CALL Iff_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei
   // impl
   _context->iff->FogCoordPointer( _context, type, stride, pointer ); return;
 
-  orig.glFogCoordPointer( orig.glFogCoordPointer_layer, type, stride, pointer );
+  RglFogCoordPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glFogCoordPointerEXT(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glFogCoordPointerEXT(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1243,11 +1245,11 @@ static void REGAL_CALL Iff_glFogCoordPointerEXT(Layer *_layer, GLenum type, GLsi
   // impl
   _context->iff->FogCoordPointer( _context, type, stride, pointer ); return;
 
-  orig.glFogCoordPointerEXT( orig.glFogCoordPointerEXT_layer, type, stride, pointer );
+  RglFogCoordPointerEXT( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glFogf(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL iff_glFogf(Layer *_layer, GLenum pname, GLfloat param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1256,11 +1258,11 @@ static void REGAL_CALL Iff_glFogf(Layer *_layer, GLenum pname, GLfloat param)
   // impl
   _context->iff->Fog( pname, param ); return;
 
-  orig.glFogf( orig.glFogf_layer, pname, param );
+  RglFogf( orig, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glFogfv(Layer *_layer, GLenum pname, const GLfloat *params)
+static void REGAL_CALL iff_glFogfv(Layer *_layer, GLenum pname, const GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1269,11 +1271,11 @@ static void REGAL_CALL Iff_glFogfv(Layer *_layer, GLenum pname, const GLfloat *p
   // impl
   _context->iff->Fog( pname, params ); return;
 
-  orig.glFogfv( orig.glFogfv_layer, pname, params );
+  RglFogfv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glFogi(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL iff_glFogi(Layer *_layer, GLenum pname, GLint param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1282,11 +1284,11 @@ static void REGAL_CALL Iff_glFogi(Layer *_layer, GLenum pname, GLint param)
   // impl
   _context->iff->Fog( pname, param ); return;
 
-  orig.glFogi( orig.glFogi_layer, pname, param );
+  RglFogi( orig, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glFogiv(Layer *_layer, GLenum pname, const GLint *params)
+static void REGAL_CALL iff_glFogiv(Layer *_layer, GLenum pname, const GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1295,11 +1297,11 @@ static void REGAL_CALL Iff_glFogiv(Layer *_layer, GLenum pname, const GLint *par
   // impl
   _context->iff->Fog( pname, params ); return;
 
-  orig.glFogiv( orig.glFogiv_layer, pname, params );
+  RglFogiv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glFrustum(Layer *_layer, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL iff_glFrustum(Layer *_layer, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1308,11 +1310,11 @@ static void REGAL_CALL Iff_glFrustum(Layer *_layer, GLdouble left, GLdouble righ
   // impl
   _context->iff->Frustum( left, right, bottom, top, zNear, zFar ); return;
 
-  orig.glFrustum( orig.glFrustum_layer, left, right, bottom, top, zNear, zFar );
+  RglFrustum( orig, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL Iff_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
+static void REGAL_CALL iff_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1324,11 +1326,11 @@ static void REGAL_CALL Iff_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean 
       return;
   }
 
-  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
+  RglGetBooleanv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL iff_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1340,11 +1342,11 @@ static void REGAL_CALL Iff_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *p
       return;
   }
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL iff_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1356,11 +1358,11 @@ static void REGAL_CALL Iff_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *par
       return;
   }
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL iff_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1372,11 +1374,11 @@ static void REGAL_CALL Iff_glGetIntegerv(Layer *_layer, GLenum pname, GLint *par
       return;
   }
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetMaterialfv(Layer *_layer, GLenum face, GLenum pname, GLfloat *params)
+static void REGAL_CALL iff_glGetMaterialfv(Layer *_layer, GLenum face, GLenum pname, GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1385,11 +1387,11 @@ static void REGAL_CALL Iff_glGetMaterialfv(Layer *_layer, GLenum face, GLenum pn
   // impl
   _context->iff->GetMaterial( face, pname, params ); return;
 
-  orig.glGetMaterialfv( orig.glGetMaterialfv_layer, face, pname, params );
+  RglGetMaterialfv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetMaterialiv(Layer *_layer, GLenum face, GLenum pname, GLint *params)
+static void REGAL_CALL iff_glGetMaterialiv(Layer *_layer, GLenum face, GLenum pname, GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1398,11 +1400,11 @@ static void REGAL_CALL Iff_glGetMaterialiv(Layer *_layer, GLenum face, GLenum pn
   // impl
   _context->iff->GetMaterial( face, pname, params ); return;
 
-  orig.glGetMaterialiv( orig.glGetMaterialiv_layer, face, pname, params );
+  RglGetMaterialiv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
+static void REGAL_CALL iff_glGetMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1414,11 +1416,11 @@ static void REGAL_CALL Iff_glGetMultiTexGendvEXT(Layer *_layer, GLenum texunit, 
       return;
   }
 
-  orig.glGetMultiTexGendvEXT( orig.glGetMultiTexGendvEXT_layer, texunit, coord, pname, params );
+  RglGetMultiTexGendvEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
+static void REGAL_CALL iff_glGetMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1430,11 +1432,11 @@ static void REGAL_CALL Iff_glGetMultiTexGenfvEXT(Layer *_layer, GLenum texunit, 
       return;
   }
 
-  orig.glGetMultiTexGenfvEXT( orig.glGetMultiTexGenfvEXT_layer, texunit, coord, pname, params );
+  RglGetMultiTexGenfvEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint *params)
+static void REGAL_CALL iff_glGetMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1446,11 +1448,11 @@ static void REGAL_CALL Iff_glGetMultiTexGenivEXT(Layer *_layer, GLenum texunit, 
       return;
   }
 
-  orig.glGetMultiTexGenivEXT( orig.glGetMultiTexGenivEXT_layer, texunit, coord, pname, params );
+  RglGetMultiTexGenivEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL iff_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1462,11 +1464,11 @@ static void REGAL_CALL Iff_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pn
       return;
   }
 
-  orig.glGetTexEnvfv( orig.glGetTexEnvfv_layer, target, pname, params );
+  RglGetTexEnvfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL iff_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1478,11 +1480,11 @@ static void REGAL_CALL Iff_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pn
       return;
   }
 
-  orig.glGetTexEnviv( orig.glGetTexEnviv_layer, target, pname, params );
+  RglGetTexEnviv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetTexGendv(Layer *_layer, GLenum coord, GLenum pname, GLdouble *params)
+static void REGAL_CALL iff_glGetTexGendv(Layer *_layer, GLenum coord, GLenum pname, GLdouble *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1494,11 +1496,11 @@ static void REGAL_CALL Iff_glGetTexGendv(Layer *_layer, GLenum coord, GLenum pna
       return;
   }
 
-  orig.glGetTexGendv( orig.glGetTexGendv_layer, coord, pname, params );
+  RglGetTexGendv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetTexGenfv(Layer *_layer, GLenum coord, GLenum pname, GLfloat *params)
+static void REGAL_CALL iff_glGetTexGenfv(Layer *_layer, GLenum coord, GLenum pname, GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1510,11 +1512,11 @@ static void REGAL_CALL Iff_glGetTexGenfv(Layer *_layer, GLenum coord, GLenum pna
       return;
   }
 
-  orig.glGetTexGenfv( orig.glGetTexGenfv_layer, coord, pname, params );
+  RglGetTexGenfv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetTexGeniv(Layer *_layer, GLenum coord, GLenum pname, GLint *params)
+static void REGAL_CALL iff_glGetTexGeniv(Layer *_layer, GLenum coord, GLenum pname, GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1526,11 +1528,11 @@ static void REGAL_CALL Iff_glGetTexGeniv(Layer *_layer, GLenum coord, GLenum pna
       return;
   }
 
-  orig.glGetTexGeniv( orig.glGetTexGeniv_layer, coord, pname, params );
+  RglGetTexGeniv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribPointerv(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
+static void REGAL_CALL iff_glGetVertexAttribPointerv(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1539,11 +1541,11 @@ static void REGAL_CALL Iff_glGetVertexAttribPointerv(Layer *_layer, GLuint index
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribPointerv( orig.glGetVertexAttribPointerv_layer, index, pname, pointer );
+  RglGetVertexAttribPointerv( orig, index, pname, pointer );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribPointervARB(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
+static void REGAL_CALL iff_glGetVertexAttribPointervARB(Layer *_layer, GLuint index, GLenum pname, GLvoid **pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1552,11 +1554,11 @@ static void REGAL_CALL Iff_glGetVertexAttribPointervARB(Layer *_layer, GLuint in
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribPointervARB( orig.glGetVertexAttribPointervARB_layer, index, pname, pointer );
+  RglGetVertexAttribPointervARB( orig, index, pname, pointer );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribdv(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
+static void REGAL_CALL iff_glGetVertexAttribdv(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1565,11 +1567,11 @@ static void REGAL_CALL Iff_glGetVertexAttribdv(Layer *_layer, GLuint index, GLen
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribdv( orig.glGetVertexAttribdv_layer, index, pname, params );
+  RglGetVertexAttribdv( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribdvARB(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
+static void REGAL_CALL iff_glGetVertexAttribdvARB(Layer *_layer, GLuint index, GLenum pname, GLdouble *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1578,11 +1580,11 @@ static void REGAL_CALL Iff_glGetVertexAttribdvARB(Layer *_layer, GLuint index, G
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribdvARB( orig.glGetVertexAttribdvARB_layer, index, pname, params );
+  RglGetVertexAttribdvARB( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribfv(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
+static void REGAL_CALL iff_glGetVertexAttribfv(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1591,11 +1593,11 @@ static void REGAL_CALL Iff_glGetVertexAttribfv(Layer *_layer, GLuint index, GLen
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribfv( orig.glGetVertexAttribfv_layer, index, pname, params );
+  RglGetVertexAttribfv( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribfvARB(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
+static void REGAL_CALL iff_glGetVertexAttribfvARB(Layer *_layer, GLuint index, GLenum pname, GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1604,11 +1606,11 @@ static void REGAL_CALL Iff_glGetVertexAttribfvARB(Layer *_layer, GLuint index, G
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribfvARB( orig.glGetVertexAttribfvARB_layer, index, pname, params );
+  RglGetVertexAttribfvARB( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribiv(Layer *_layer, GLuint index, GLenum pname, GLint *params)
+static void REGAL_CALL iff_glGetVertexAttribiv(Layer *_layer, GLuint index, GLenum pname, GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1617,11 +1619,11 @@ static void REGAL_CALL Iff_glGetVertexAttribiv(Layer *_layer, GLuint index, GLen
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribiv( orig.glGetVertexAttribiv_layer, index, pname, params );
+  RglGetVertexAttribiv( orig, index, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glGetVertexAttribivARB(Layer *_layer, GLuint index, GLenum pname, GLint *params)
+static void REGAL_CALL iff_glGetVertexAttribivARB(Layer *_layer, GLuint index, GLenum pname, GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1630,11 +1632,11 @@ static void REGAL_CALL Iff_glGetVertexAttribivARB(Layer *_layer, GLuint index, G
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glGetVertexAttribivARB( orig.glGetVertexAttribivARB_layer, index, pname, params );
+  RglGetVertexAttribivARB( orig, index, pname, params );
 
 }
 
-static GLboolean REGAL_CALL Iff_glIsEnabled(Layer *_layer, GLenum cap)
+static GLboolean REGAL_CALL iff_glIsEnabled(Layer *_layer, GLenum cap)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1646,11 +1648,11 @@ static GLboolean REGAL_CALL Iff_glIsEnabled(Layer *_layer, GLenum cap)
     return enabled;
   }
 
-  return orig.glIsEnabled( orig.glIsEnabled_layer, cap );
+  return RglIsEnabled( orig, cap );
 
 }
 
-static GLboolean REGAL_CALL Iff_glIsVertexArray(Layer *_layer, GLuint array)
+static GLboolean REGAL_CALL iff_glIsVertexArray(Layer *_layer, GLuint array)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1659,11 +1661,11 @@ static GLboolean REGAL_CALL Iff_glIsVertexArray(Layer *_layer, GLuint array)
   // impl
   return _context->iff->IsVertexArray( _context, array );
 
-  return orig.glIsVertexArray( orig.glIsVertexArray_layer, array );
+  return RglIsVertexArray( orig, array );
 
 }
 
-static void REGAL_CALL Iff_glLightModelf(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL iff_glLightModelf(Layer *_layer, GLenum pname, GLfloat param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1672,11 +1674,11 @@ static void REGAL_CALL Iff_glLightModelf(Layer *_layer, GLenum pname, GLfloat pa
   // impl
   _context->iff->LightModel( pname, param ); return;
 
-  orig.glLightModelf( orig.glLightModelf_layer, pname, param );
+  RglLightModelf( orig, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glLightModelfv(Layer *_layer, GLenum pname, const GLfloat *params)
+static void REGAL_CALL iff_glLightModelfv(Layer *_layer, GLenum pname, const GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1685,11 +1687,11 @@ static void REGAL_CALL Iff_glLightModelfv(Layer *_layer, GLenum pname, const GLf
   // impl
   _context->iff->LightModel( pname, params ); return;
 
-  orig.glLightModelfv( orig.glLightModelfv_layer, pname, params );
+  RglLightModelfv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glLightModeli(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL iff_glLightModeli(Layer *_layer, GLenum pname, GLint param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1698,11 +1700,11 @@ static void REGAL_CALL Iff_glLightModeli(Layer *_layer, GLenum pname, GLint para
   // impl
   _context->iff->LightModel( pname, param ); return;
 
-  orig.glLightModeli( orig.glLightModeli_layer, pname, param );
+  RglLightModeli( orig, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glLightModeliv(Layer *_layer, GLenum pname, const GLint *params)
+static void REGAL_CALL iff_glLightModeliv(Layer *_layer, GLenum pname, const GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1711,11 +1713,11 @@ static void REGAL_CALL Iff_glLightModeliv(Layer *_layer, GLenum pname, const GLi
   // impl
   _context->iff->LightModel( pname, params ); return;
 
-  orig.glLightModeliv( orig.glLightModeliv_layer, pname, params );
+  RglLightModeliv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glLightf(Layer *_layer, GLenum light, GLenum pname, GLfloat param)
+static void REGAL_CALL iff_glLightf(Layer *_layer, GLenum light, GLenum pname, GLfloat param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1724,11 +1726,11 @@ static void REGAL_CALL Iff_glLightf(Layer *_layer, GLenum light, GLenum pname, G
   // impl
   _context->iff->Light( light, pname, param ); return;
 
-  orig.glLightf( orig.glLightf_layer, light, pname, param );
+  RglLightf( orig, light, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glLightfv(Layer *_layer, GLenum light, GLenum pname, const GLfloat *params)
+static void REGAL_CALL iff_glLightfv(Layer *_layer, GLenum light, GLenum pname, const GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1737,11 +1739,11 @@ static void REGAL_CALL Iff_glLightfv(Layer *_layer, GLenum light, GLenum pname, 
   // impl
   _context->iff->Light( light, pname, params ); return;
 
-  orig.glLightfv( orig.glLightfv_layer, light, pname, params );
+  RglLightfv( orig, light, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glLighti(Layer *_layer, GLenum light, GLenum pname, GLint param)
+static void REGAL_CALL iff_glLighti(Layer *_layer, GLenum light, GLenum pname, GLint param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1750,11 +1752,11 @@ static void REGAL_CALL Iff_glLighti(Layer *_layer, GLenum light, GLenum pname, G
   // impl
   _context->iff->Light( light, pname, param ); return;
 
-  orig.glLighti( orig.glLighti_layer, light, pname, param );
+  RglLighti( orig, light, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glLightiv(Layer *_layer, GLenum light, GLenum pname, const GLint *params)
+static void REGAL_CALL iff_glLightiv(Layer *_layer, GLenum light, GLenum pname, const GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1763,11 +1765,11 @@ static void REGAL_CALL Iff_glLightiv(Layer *_layer, GLenum light, GLenum pname, 
   // impl
   _context->iff->Light( light, pname, params ); return;
 
-  orig.glLightiv( orig.glLightiv_layer, light, pname, params );
+  RglLightiv( orig, light, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glLinkProgram(Layer *_layer, GLuint program)
+static void REGAL_CALL iff_glLinkProgram(Layer *_layer, GLuint program)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1776,11 +1778,11 @@ static void REGAL_CALL Iff_glLinkProgram(Layer *_layer, GLuint program)
   // impl
   _context->iff->LinkProgram( _context, program ); return;
 
-  orig.glLinkProgram( orig.glLinkProgram_layer, program );
+  RglLinkProgram( orig, program );
 
 }
 
-static void REGAL_CALL Iff_glLinkProgramARB(Layer *_layer, GLhandleARB programObj)
+static void REGAL_CALL iff_glLinkProgramARB(Layer *_layer, GLhandleARB programObj)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1789,11 +1791,11 @@ static void REGAL_CALL Iff_glLinkProgramARB(Layer *_layer, GLhandleARB programOb
   // impl
   _context->iff->LinkProgram( _context, programObj ); return;
 
-  orig.glLinkProgramARB( orig.glLinkProgramARB_layer, programObj );
+  RglLinkProgramARB( orig, programObj );
 
 }
 
-static void REGAL_CALL Iff_glLoadIdentity(Layer *_layer)
+static void REGAL_CALL iff_glLoadIdentity(Layer *_layer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1802,11 +1804,11 @@ static void REGAL_CALL Iff_glLoadIdentity(Layer *_layer)
   // impl
   _context->iff->LoadIdentity(  ); return;
 
-  orig.glLoadIdentity( orig.glLoadIdentity_layer );
+  RglLoadIdentity( orig );
 
 }
 
-static void REGAL_CALL Iff_glLoadMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL iff_glLoadMatrixd(Layer *_layer, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1815,11 +1817,11 @@ static void REGAL_CALL Iff_glLoadMatrixd(Layer *_layer, const GLdouble *m)
   // impl
   _context->iff->LoadMatrix( m ); return;
 
-  orig.glLoadMatrixd( orig.glLoadMatrixd_layer, m );
+  RglLoadMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glLoadMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL iff_glLoadMatrixf(Layer *_layer, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1828,11 +1830,11 @@ static void REGAL_CALL Iff_glLoadMatrixf(Layer *_layer, const GLfloat *m)
   // impl
   _context->iff->LoadMatrix( m ); return;
 
-  orig.glLoadMatrixf( orig.glLoadMatrixf_layer, m );
+  RglLoadMatrixf( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glLoadTransposeMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL iff_glLoadTransposeMatrixd(Layer *_layer, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1841,11 +1843,11 @@ static void REGAL_CALL Iff_glLoadTransposeMatrixd(Layer *_layer, const GLdouble 
   // impl
   _context->iff->LoadTransposeMatrix( m ); return;
 
-  orig.glLoadTransposeMatrixd( orig.glLoadTransposeMatrixd_layer, m );
+  RglLoadTransposeMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glLoadTransposeMatrixdARB(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL iff_glLoadTransposeMatrixdARB(Layer *_layer, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1854,11 +1856,11 @@ static void REGAL_CALL Iff_glLoadTransposeMatrixdARB(Layer *_layer, const GLdoub
   // impl
   _context->iff->LoadTransposeMatrix( m ); return;
 
-  orig.glLoadTransposeMatrixdARB( orig.glLoadTransposeMatrixdARB_layer, m );
+  RglLoadTransposeMatrixdARB( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glLoadTransposeMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL iff_glLoadTransposeMatrixf(Layer *_layer, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1867,11 +1869,11 @@ static void REGAL_CALL Iff_glLoadTransposeMatrixf(Layer *_layer, const GLfloat *
   // impl
   _context->iff->LoadTransposeMatrix( m ); return;
 
-  orig.glLoadTransposeMatrixf( orig.glLoadTransposeMatrixf_layer, m );
+  RglLoadTransposeMatrixf( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glLoadTransposeMatrixfARB(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL iff_glLoadTransposeMatrixfARB(Layer *_layer, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1880,11 +1882,11 @@ static void REGAL_CALL Iff_glLoadTransposeMatrixfARB(Layer *_layer, const GLfloa
   // impl
   _context->iff->LoadTransposeMatrix( m ); return;
 
-  orig.glLoadTransposeMatrixfARB( orig.glLoadTransposeMatrixfARB_layer, m );
+  RglLoadTransposeMatrixfARB( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glMaterialf(Layer *_layer, GLenum face, GLenum pname, GLfloat param)
+static void REGAL_CALL iff_glMaterialf(Layer *_layer, GLenum face, GLenum pname, GLfloat param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1893,11 +1895,11 @@ static void REGAL_CALL Iff_glMaterialf(Layer *_layer, GLenum face, GLenum pname,
   // impl
   _context->iff->Material( face, pname, param ); return;
 
-  orig.glMaterialf( orig.glMaterialf_layer, face, pname, param );
+  RglMaterialf( orig, face, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glMaterialfv(Layer *_layer, GLenum face, GLenum pname, const GLfloat *params)
+static void REGAL_CALL iff_glMaterialfv(Layer *_layer, GLenum face, GLenum pname, const GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1906,11 +1908,11 @@ static void REGAL_CALL Iff_glMaterialfv(Layer *_layer, GLenum face, GLenum pname
   // impl
   _context->iff->Material( face, pname, params ); return;
 
-  orig.glMaterialfv( orig.glMaterialfv_layer, face, pname, params );
+  RglMaterialfv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glMateriali(Layer *_layer, GLenum face, GLenum pname, GLint param)
+static void REGAL_CALL iff_glMateriali(Layer *_layer, GLenum face, GLenum pname, GLint param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1919,11 +1921,11 @@ static void REGAL_CALL Iff_glMateriali(Layer *_layer, GLenum face, GLenum pname,
   // impl
   _context->iff->Material( face, pname, param ); return;
 
-  orig.glMateriali( orig.glMateriali_layer, face, pname, param );
+  RglMateriali( orig, face, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glMaterialiv(Layer *_layer, GLenum face, GLenum pname, const GLint *params)
+static void REGAL_CALL iff_glMaterialiv(Layer *_layer, GLenum face, GLenum pname, const GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1932,11 +1934,11 @@ static void REGAL_CALL Iff_glMaterialiv(Layer *_layer, GLenum face, GLenum pname
   // impl
   _context->iff->Material( face, pname, params ); return;
 
-  orig.glMaterialiv( orig.glMaterialiv_layer, face, pname, params );
+  RglMaterialiv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glMatrixFrustumEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL iff_glMatrixFrustumEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1945,11 +1947,11 @@ static void REGAL_CALL Iff_glMatrixFrustumEXT(Layer *_layer, GLenum mode, GLdoub
   // impl
   _context->iff->MatrixFrustum( mode, left, right, bottom, top, zNear, zFar ); return;
 
-  orig.glMatrixFrustumEXT( orig.glMatrixFrustumEXT_layer, mode, left, right, bottom, top, zNear, zFar );
+  RglMatrixFrustumEXT( orig, mode, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL Iff_glMatrixLoadIdentityEXT(Layer *_layer, GLenum mode)
+static void REGAL_CALL iff_glMatrixLoadIdentityEXT(Layer *_layer, GLenum mode)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1958,11 +1960,11 @@ static void REGAL_CALL Iff_glMatrixLoadIdentityEXT(Layer *_layer, GLenum mode)
   // impl
   _context->iff->MatrixLoadIdentity( mode ); return;
 
-  orig.glMatrixLoadIdentityEXT( orig.glMatrixLoadIdentityEXT_layer, mode );
+  RglMatrixLoadIdentityEXT( orig, mode );
 
 }
 
-static void REGAL_CALL Iff_glMatrixLoadTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL iff_glMatrixLoadTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1971,11 +1973,11 @@ static void REGAL_CALL Iff_glMatrixLoadTransposedEXT(Layer *_layer, GLenum mode,
   // impl
   _context->iff->MatrixLoadTranspose( mode, m ); return;
 
-  orig.glMatrixLoadTransposedEXT( orig.glMatrixLoadTransposedEXT_layer, mode, m );
+  RglMatrixLoadTransposedEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixLoadTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL iff_glMatrixLoadTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1984,11 +1986,11 @@ static void REGAL_CALL Iff_glMatrixLoadTransposefEXT(Layer *_layer, GLenum mode,
   // impl
   _context->iff->MatrixLoadTranspose( mode, m ); return;
 
-  orig.glMatrixLoadTransposefEXT( orig.glMatrixLoadTransposefEXT_layer, mode, m );
+  RglMatrixLoadTransposefEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixLoaddEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL iff_glMatrixLoaddEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -1997,11 +1999,11 @@ static void REGAL_CALL Iff_glMatrixLoaddEXT(Layer *_layer, GLenum mode, const GL
   // impl
   _context->iff->MatrixLoad( mode, m ); return;
 
-  orig.glMatrixLoaddEXT( orig.glMatrixLoaddEXT_layer, mode, m );
+  RglMatrixLoaddEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixLoadfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL iff_glMatrixLoadfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2010,11 +2012,11 @@ static void REGAL_CALL Iff_glMatrixLoadfEXT(Layer *_layer, GLenum mode, const GL
   // impl
   _context->iff->MatrixLoad( mode, m ); return;
 
-  orig.glMatrixLoadfEXT( orig.glMatrixLoadfEXT_layer, mode, m );
+  RglMatrixLoadfEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixMode(Layer *_layer, GLenum mode)
+static void REGAL_CALL iff_glMatrixMode(Layer *_layer, GLenum mode)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2025,11 +2027,11 @@ static void REGAL_CALL Iff_glMatrixMode(Layer *_layer, GLenum mode)
       return;
   }
 
-  orig.glMatrixMode( orig.glMatrixMode_layer, mode );
+  RglMatrixMode( orig, mode );
 
 }
 
-static void REGAL_CALL Iff_glMatrixMultTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL iff_glMatrixMultTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2038,11 +2040,11 @@ static void REGAL_CALL Iff_glMatrixMultTransposedEXT(Layer *_layer, GLenum mode,
   // impl
   _context->iff->MatrixMultTranspose( mode, m ); return;
 
-  orig.glMatrixMultTransposedEXT( orig.glMatrixMultTransposedEXT_layer, mode, m );
+  RglMatrixMultTransposedEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixMultTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL iff_glMatrixMultTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2051,11 +2053,11 @@ static void REGAL_CALL Iff_glMatrixMultTransposefEXT(Layer *_layer, GLenum mode,
   // impl
   _context->iff->MatrixMultTranspose( mode, m ); return;
 
-  orig.glMatrixMultTransposefEXT( orig.glMatrixMultTransposefEXT_layer, mode, m );
+  RglMatrixMultTransposefEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixMultdEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL iff_glMatrixMultdEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2064,11 +2066,11 @@ static void REGAL_CALL Iff_glMatrixMultdEXT(Layer *_layer, GLenum mode, const GL
   // impl
   _context->iff->MatrixMult( mode, m ); return;
 
-  orig.glMatrixMultdEXT( orig.glMatrixMultdEXT_layer, mode, m );
+  RglMatrixMultdEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixMultfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL iff_glMatrixMultfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2077,11 +2079,11 @@ static void REGAL_CALL Iff_glMatrixMultfEXT(Layer *_layer, GLenum mode, const GL
   // impl
   _context->iff->MatrixMult( mode, m ); return;
 
-  orig.glMatrixMultfEXT( orig.glMatrixMultfEXT_layer, mode, m );
+  RglMatrixMultfEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Iff_glMatrixOrthoEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL iff_glMatrixOrthoEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2090,11 +2092,11 @@ static void REGAL_CALL Iff_glMatrixOrthoEXT(Layer *_layer, GLenum mode, GLdouble
   // impl
   _context->iff->MatrixOrtho( mode, left, right, bottom, top, zNear, zFar ); return;
 
-  orig.glMatrixOrthoEXT( orig.glMatrixOrthoEXT_layer, mode, left, right, bottom, top, zNear, zFar );
+  RglMatrixOrthoEXT( orig, mode, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL Iff_glMatrixPopEXT(Layer *_layer, GLenum mode)
+static void REGAL_CALL iff_glMatrixPopEXT(Layer *_layer, GLenum mode)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2103,11 +2105,11 @@ static void REGAL_CALL Iff_glMatrixPopEXT(Layer *_layer, GLenum mode)
   // impl
   _context->iff->MatrixPop( mode ); return;
 
-  orig.glMatrixPopEXT( orig.glMatrixPopEXT_layer, mode );
+  RglMatrixPopEXT( orig, mode );
 
 }
 
-static void REGAL_CALL Iff_glMatrixPushEXT(Layer *_layer, GLenum mode)
+static void REGAL_CALL iff_glMatrixPushEXT(Layer *_layer, GLenum mode)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2116,11 +2118,11 @@ static void REGAL_CALL Iff_glMatrixPushEXT(Layer *_layer, GLenum mode)
   // impl
   _context->iff->MatrixPush( mode ); return;
 
-  orig.glMatrixPushEXT( orig.glMatrixPushEXT_layer, mode );
+  RglMatrixPushEXT( orig, mode );
 
 }
 
-static void REGAL_CALL Iff_glMatrixRotatedEXT(Layer *_layer, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glMatrixRotatedEXT(Layer *_layer, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2129,11 +2131,11 @@ static void REGAL_CALL Iff_glMatrixRotatedEXT(Layer *_layer, GLenum mode, GLdoub
   // impl
   _context->iff->MatrixRotate( mode, angle, x, y, z ); return;
 
-  orig.glMatrixRotatedEXT( orig.glMatrixRotatedEXT_layer, mode, angle, x, y, z );
+  RglMatrixRotatedEXT( orig, mode, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glMatrixRotatefEXT(Layer *_layer, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glMatrixRotatefEXT(Layer *_layer, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2142,11 +2144,11 @@ static void REGAL_CALL Iff_glMatrixRotatefEXT(Layer *_layer, GLenum mode, GLfloa
   // impl
   _context->iff->MatrixRotate( mode, angle, x, y, z ); return;
 
-  orig.glMatrixRotatefEXT( orig.glMatrixRotatefEXT_layer, mode, angle, x, y, z );
+  RglMatrixRotatefEXT( orig, mode, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glMatrixScaledEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glMatrixScaledEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2155,11 +2157,11 @@ static void REGAL_CALL Iff_glMatrixScaledEXT(Layer *_layer, GLenum mode, GLdoubl
   // impl
   _context->iff->MatrixScale( mode, x, y, z ); return;
 
-  orig.glMatrixScaledEXT( orig.glMatrixScaledEXT_layer, mode, x, y, z );
+  RglMatrixScaledEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glMatrixScalefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glMatrixScalefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2168,11 +2170,11 @@ static void REGAL_CALL Iff_glMatrixScalefEXT(Layer *_layer, GLenum mode, GLfloat
   // impl
   _context->iff->MatrixScale( mode, x, y, z ); return;
 
-  orig.glMatrixScalefEXT( orig.glMatrixScalefEXT_layer, mode, x, y, z );
+  RglMatrixScalefEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glMatrixTranslatedEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glMatrixTranslatedEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2181,11 +2183,11 @@ static void REGAL_CALL Iff_glMatrixTranslatedEXT(Layer *_layer, GLenum mode, GLd
   // impl
   _context->iff->MatrixTranslate( mode, x, y, z ); return;
 
-  orig.glMatrixTranslatedEXT( orig.glMatrixTranslatedEXT_layer, mode, x, y, z );
+  RglMatrixTranslatedEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glMatrixTranslatefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glMatrixTranslatefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2194,11 +2196,11 @@ static void REGAL_CALL Iff_glMatrixTranslatefEXT(Layer *_layer, GLenum mode, GLf
   // impl
   _context->iff->MatrixTranslate( mode, x, y, z ); return;
 
-  orig.glMatrixTranslatefEXT( orig.glMatrixTranslatefEXT_layer, mode, x, y, z );
+  RglMatrixTranslatefEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glMultMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL iff_glMultMatrixd(Layer *_layer, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2207,11 +2209,11 @@ static void REGAL_CALL Iff_glMultMatrixd(Layer *_layer, const GLdouble *m)
   // impl
   _context->iff->MultMatrix( m ); return;
 
-  orig.glMultMatrixd( orig.glMultMatrixd_layer, m );
+  RglMultMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glMultMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL iff_glMultMatrixf(Layer *_layer, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2220,11 +2222,11 @@ static void REGAL_CALL Iff_glMultMatrixf(Layer *_layer, const GLfloat *m)
   // impl
   _context->iff->MultMatrix( m ); return;
 
-  orig.glMultMatrixf( orig.glMultMatrixf_layer, m );
+  RglMultMatrixf( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glMultTransposeMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL iff_glMultTransposeMatrixd(Layer *_layer, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2233,11 +2235,11 @@ static void REGAL_CALL Iff_glMultTransposeMatrixd(Layer *_layer, const GLdouble 
   // impl
   _context->iff->MultTransposeMatrix( m ); return;
 
-  orig.glMultTransposeMatrixd( orig.glMultTransposeMatrixd_layer, m );
+  RglMultTransposeMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glMultTransposeMatrixdARB(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL iff_glMultTransposeMatrixdARB(Layer *_layer, const GLdouble *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2246,11 +2248,11 @@ static void REGAL_CALL Iff_glMultTransposeMatrixdARB(Layer *_layer, const GLdoub
   // impl
   _context->iff->MultTransposeMatrix( m ); return;
 
-  orig.glMultTransposeMatrixdARB( orig.glMultTransposeMatrixdARB_layer, m );
+  RglMultTransposeMatrixdARB( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glMultTransposeMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL iff_glMultTransposeMatrixf(Layer *_layer, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2259,11 +2261,11 @@ static void REGAL_CALL Iff_glMultTransposeMatrixf(Layer *_layer, const GLfloat *
   // impl
   _context->iff->MultTransposeMatrix( m ); return;
 
-  orig.glMultTransposeMatrixf( orig.glMultTransposeMatrixf_layer, m );
+  RglMultTransposeMatrixf( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glMultTransposeMatrixfARB(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL iff_glMultTransposeMatrixfARB(Layer *_layer, const GLfloat *m)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2272,11 +2274,11 @@ static void REGAL_CALL Iff_glMultTransposeMatrixfARB(Layer *_layer, const GLfloa
   // impl
   _context->iff->MultTransposeMatrix( m ); return;
 
-  orig.glMultTransposeMatrixfARB( orig.glMultTransposeMatrixfARB_layer, m );
+  RglMultTransposeMatrixfARB( orig, m );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL iff_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2285,11 +2287,11 @@ static void REGAL_CALL Iff_glMultiDrawArrays(Layer *_layer, GLenum mode, const G
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArrays( orig.glMultiDrawArrays_layer, mode, first, count, primcount );
+  RglMultiDrawArrays( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL iff_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2298,11 +2300,11 @@ static void REGAL_CALL Iff_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, cons
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArraysEXT( orig.glMultiDrawArraysEXT_layer, mode, first, count, primcount );
+  RglMultiDrawArraysEXT( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL iff_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2311,11 +2313,11 @@ static void REGAL_CALL Iff_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode,
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArraysIndirect( orig.glMultiDrawArraysIndirect_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirect( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL iff_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2324,11 +2326,11 @@ static void REGAL_CALL Iff_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mo
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawArraysIndirectAMD( orig.glMultiDrawArraysIndirectAMD_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirectAMD( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL iff_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2337,11 +2339,11 @@ static void REGAL_CALL Iff_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mo
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementArrayAPPLE( orig.glMultiDrawElementArrayAPPLE_layer, mode, first, count, primcount );
+  RglMultiDrawElementArrayAPPLE( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
+static void REGAL_CALL iff_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2350,11 +2352,11 @@ static void REGAL_CALL Iff_glMultiDrawElements(Layer *_layer, GLenum mode, const
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElements( orig.glMultiDrawElements_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElements( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
+static void REGAL_CALL iff_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2363,11 +2365,11 @@ static void REGAL_CALL Iff_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum m
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsBaseVertex( orig.glMultiDrawElementsBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglMultiDrawElementsBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
+static void REGAL_CALL iff_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2376,11 +2378,11 @@ static void REGAL_CALL Iff_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, co
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsEXT( orig.glMultiDrawElementsEXT_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElementsEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL iff_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2389,11 +2391,11 @@ static void REGAL_CALL Iff_glMultiDrawElementsIndirect(Layer *_layer, GLenum mod
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsIndirect( orig.glMultiDrawElementsIndirect_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirect( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL iff_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2402,11 +2404,11 @@ static void REGAL_CALL Iff_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum 
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawElementsIndirectAMD( orig.glMultiDrawElementsIndirectAMD_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirectAMD( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Iff_glMultiDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL iff_glMultiDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2415,11 +2417,11 @@ static void REGAL_CALL Iff_glMultiDrawRangeElementArrayAPPLE(Layer *_layer, GLen
   // prefix
   _context->iff->PreDraw( _context );
 
-  orig.glMultiDrawRangeElementArrayAPPLE( orig.glMultiDrawRangeElementArrayAPPLE_layer, mode, start, end, first, count, primcount );
+  RglMultiDrawRangeElementArrayAPPLE( orig, mode, start, end, first, count, primcount );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1d(Layer *_layer, GLenum target, GLdouble s)
+static void REGAL_CALL iff_glMultiTexCoord1d(Layer *_layer, GLenum target, GLdouble s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2428,11 +2430,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1d(Layer *_layer, GLenum target, GLdou
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1d( orig.glMultiTexCoord1d_layer, target, s );
+  RglMultiTexCoord1d( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1dARB(Layer *_layer, GLenum target, GLdouble s)
+static void REGAL_CALL iff_glMultiTexCoord1dARB(Layer *_layer, GLenum target, GLdouble s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2441,11 +2443,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1dARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1dARB( orig.glMultiTexCoord1dARB_layer, target, s );
+  RglMultiTexCoord1dARB( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1dv(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord1dv(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2454,11 +2456,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1dv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1dv( orig.glMultiTexCoord1dv_layer, target, v );
+  RglMultiTexCoord1dv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1dvARB(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord1dvARB(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2467,11 +2469,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1dvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1dvARB( orig.glMultiTexCoord1dvARB_layer, target, v );
+  RglMultiTexCoord1dvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1f(Layer *_layer, GLenum target, GLfloat s)
+static void REGAL_CALL iff_glMultiTexCoord1f(Layer *_layer, GLenum target, GLfloat s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2480,11 +2482,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1f(Layer *_layer, GLenum target, GLflo
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1f( orig.glMultiTexCoord1f_layer, target, s );
+  RglMultiTexCoord1f( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1fARB(Layer *_layer, GLenum target, GLfloat s)
+static void REGAL_CALL iff_glMultiTexCoord1fARB(Layer *_layer, GLenum target, GLfloat s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2493,11 +2495,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1fARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1fARB( orig.glMultiTexCoord1fARB_layer, target, s );
+  RglMultiTexCoord1fARB( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1fv(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord1fv(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2506,11 +2508,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1fv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1fv( orig.glMultiTexCoord1fv_layer, target, v );
+  RglMultiTexCoord1fv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1fvARB(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord1fvARB(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2519,11 +2521,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1fvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1fvARB( orig.glMultiTexCoord1fvARB_layer, target, v );
+  RglMultiTexCoord1fvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1i(Layer *_layer, GLenum target, GLint s)
+static void REGAL_CALL iff_glMultiTexCoord1i(Layer *_layer, GLenum target, GLint s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2532,11 +2534,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1i(Layer *_layer, GLenum target, GLint
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1i( orig.glMultiTexCoord1i_layer, target, s );
+  RglMultiTexCoord1i( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1iARB(Layer *_layer, GLenum target, GLint s)
+static void REGAL_CALL iff_glMultiTexCoord1iARB(Layer *_layer, GLenum target, GLint s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2545,11 +2547,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1iARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1iARB( orig.glMultiTexCoord1iARB_layer, target, s );
+  RglMultiTexCoord1iARB( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1iv(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord1iv(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2558,11 +2560,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1iv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1iv( orig.glMultiTexCoord1iv_layer, target, v );
+  RglMultiTexCoord1iv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1ivARB(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord1ivARB(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2571,11 +2573,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1ivARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1ivARB( orig.glMultiTexCoord1ivARB_layer, target, v );
+  RglMultiTexCoord1ivARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1s(Layer *_layer, GLenum target, GLshort s)
+static void REGAL_CALL iff_glMultiTexCoord1s(Layer *_layer, GLenum target, GLshort s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2584,11 +2586,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1s(Layer *_layer, GLenum target, GLsho
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1s( orig.glMultiTexCoord1s_layer, target, s );
+  RglMultiTexCoord1s( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1sARB(Layer *_layer, GLenum target, GLshort s)
+static void REGAL_CALL iff_glMultiTexCoord1sARB(Layer *_layer, GLenum target, GLshort s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2597,11 +2599,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1sARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s ); return;
 
-  orig.glMultiTexCoord1sARB( orig.glMultiTexCoord1sARB_layer, target, s );
+  RglMultiTexCoord1sARB( orig, target, s );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1sv(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord1sv(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2610,11 +2612,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1sv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1sv( orig.glMultiTexCoord1sv_layer, target, v );
+  RglMultiTexCoord1sv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord1svARB(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord1svARB(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2623,11 +2625,11 @@ static void REGAL_CALL Iff_glMultiTexCoord1svARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord1svARB( orig.glMultiTexCoord1svARB_layer, target, v );
+  RglMultiTexCoord1svARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2d(Layer *_layer, GLenum target, GLdouble s, GLdouble t)
+static void REGAL_CALL iff_glMultiTexCoord2d(Layer *_layer, GLenum target, GLdouble s, GLdouble t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2636,11 +2638,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2d(Layer *_layer, GLenum target, GLdou
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2d( orig.glMultiTexCoord2d_layer, target, s, t );
+  RglMultiTexCoord2d( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2dARB(Layer *_layer, GLenum target, GLdouble s, GLdouble t)
+static void REGAL_CALL iff_glMultiTexCoord2dARB(Layer *_layer, GLenum target, GLdouble s, GLdouble t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2649,11 +2651,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2dARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2dARB( orig.glMultiTexCoord2dARB_layer, target, s, t );
+  RglMultiTexCoord2dARB( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2dv(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord2dv(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2662,11 +2664,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2dv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2dv( orig.glMultiTexCoord2dv_layer, target, v );
+  RglMultiTexCoord2dv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2dvARB(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord2dvARB(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2675,11 +2677,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2dvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2dvARB( orig.glMultiTexCoord2dvARB_layer, target, v );
+  RglMultiTexCoord2dvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2f(Layer *_layer, GLenum target, GLfloat s, GLfloat t)
+static void REGAL_CALL iff_glMultiTexCoord2f(Layer *_layer, GLenum target, GLfloat s, GLfloat t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2688,11 +2690,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2f(Layer *_layer, GLenum target, GLflo
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2f( orig.glMultiTexCoord2f_layer, target, s, t );
+  RglMultiTexCoord2f( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2fARB(Layer *_layer, GLenum target, GLfloat s, GLfloat t)
+static void REGAL_CALL iff_glMultiTexCoord2fARB(Layer *_layer, GLenum target, GLfloat s, GLfloat t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2701,11 +2703,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2fARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2fARB( orig.glMultiTexCoord2fARB_layer, target, s, t );
+  RglMultiTexCoord2fARB( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2fv(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord2fv(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2714,11 +2716,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2fv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2fv( orig.glMultiTexCoord2fv_layer, target, v );
+  RglMultiTexCoord2fv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2fvARB(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord2fvARB(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2727,11 +2729,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2fvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2fvARB( orig.glMultiTexCoord2fvARB_layer, target, v );
+  RglMultiTexCoord2fvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2i(Layer *_layer, GLenum target, GLint s, GLint t)
+static void REGAL_CALL iff_glMultiTexCoord2i(Layer *_layer, GLenum target, GLint s, GLint t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2740,11 +2742,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2i(Layer *_layer, GLenum target, GLint
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2i( orig.glMultiTexCoord2i_layer, target, s, t );
+  RglMultiTexCoord2i( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2iARB(Layer *_layer, GLenum target, GLint s, GLint t)
+static void REGAL_CALL iff_glMultiTexCoord2iARB(Layer *_layer, GLenum target, GLint s, GLint t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2753,11 +2755,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2iARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2iARB( orig.glMultiTexCoord2iARB_layer, target, s, t );
+  RglMultiTexCoord2iARB( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2iv(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord2iv(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2766,11 +2768,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2iv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2iv( orig.glMultiTexCoord2iv_layer, target, v );
+  RglMultiTexCoord2iv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2ivARB(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord2ivARB(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2779,11 +2781,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2ivARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2ivARB( orig.glMultiTexCoord2ivARB_layer, target, v );
+  RglMultiTexCoord2ivARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2s(Layer *_layer, GLenum target, GLshort s, GLshort t)
+static void REGAL_CALL iff_glMultiTexCoord2s(Layer *_layer, GLenum target, GLshort s, GLshort t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2792,11 +2794,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2s(Layer *_layer, GLenum target, GLsho
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2s( orig.glMultiTexCoord2s_layer, target, s, t );
+  RglMultiTexCoord2s( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2sARB(Layer *_layer, GLenum target, GLshort s, GLshort t)
+static void REGAL_CALL iff_glMultiTexCoord2sARB(Layer *_layer, GLenum target, GLshort s, GLshort t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2805,11 +2807,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2sARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t ); return;
 
-  orig.glMultiTexCoord2sARB( orig.glMultiTexCoord2sARB_layer, target, s, t );
+  RglMultiTexCoord2sARB( orig, target, s, t );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2sv(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord2sv(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2818,11 +2820,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2sv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2sv( orig.glMultiTexCoord2sv_layer, target, v );
+  RglMultiTexCoord2sv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord2svARB(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord2svARB(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2831,11 +2833,11 @@ static void REGAL_CALL Iff_glMultiTexCoord2svARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord2svARB( orig.glMultiTexCoord2svARB_layer, target, v );
+  RglMultiTexCoord2svARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3d(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r)
+static void REGAL_CALL iff_glMultiTexCoord3d(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2844,11 +2846,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3d(Layer *_layer, GLenum target, GLdou
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3d( orig.glMultiTexCoord3d_layer, target, s, t, r );
+  RglMultiTexCoord3d( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3dARB(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r)
+static void REGAL_CALL iff_glMultiTexCoord3dARB(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2857,11 +2859,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3dARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3dARB( orig.glMultiTexCoord3dARB_layer, target, s, t, r );
+  RglMultiTexCoord3dARB( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3dv(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord3dv(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2870,11 +2872,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3dv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3dv( orig.glMultiTexCoord3dv_layer, target, v );
+  RglMultiTexCoord3dv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3dvARB(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord3dvARB(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2883,11 +2885,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3dvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3dvARB( orig.glMultiTexCoord3dvARB_layer, target, v );
+  RglMultiTexCoord3dvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3f(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r)
+static void REGAL_CALL iff_glMultiTexCoord3f(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2896,11 +2898,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3f(Layer *_layer, GLenum target, GLflo
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3f( orig.glMultiTexCoord3f_layer, target, s, t, r );
+  RglMultiTexCoord3f( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3fARB(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r)
+static void REGAL_CALL iff_glMultiTexCoord3fARB(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2909,11 +2911,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3fARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3fARB( orig.glMultiTexCoord3fARB_layer, target, s, t, r );
+  RglMultiTexCoord3fARB( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3fv(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord3fv(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2922,11 +2924,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3fv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3fv( orig.glMultiTexCoord3fv_layer, target, v );
+  RglMultiTexCoord3fv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3fvARB(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord3fvARB(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2935,11 +2937,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3fvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3fvARB( orig.glMultiTexCoord3fvARB_layer, target, v );
+  RglMultiTexCoord3fvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3i(Layer *_layer, GLenum target, GLint s, GLint t, GLint r)
+static void REGAL_CALL iff_glMultiTexCoord3i(Layer *_layer, GLenum target, GLint s, GLint t, GLint r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2948,11 +2950,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3i(Layer *_layer, GLenum target, GLint
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3i( orig.glMultiTexCoord3i_layer, target, s, t, r );
+  RglMultiTexCoord3i( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3iARB(Layer *_layer, GLenum target, GLint s, GLint t, GLint r)
+static void REGAL_CALL iff_glMultiTexCoord3iARB(Layer *_layer, GLenum target, GLint s, GLint t, GLint r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2961,11 +2963,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3iARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3iARB( orig.glMultiTexCoord3iARB_layer, target, s, t, r );
+  RglMultiTexCoord3iARB( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3iv(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord3iv(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2974,11 +2976,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3iv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3iv( orig.glMultiTexCoord3iv_layer, target, v );
+  RglMultiTexCoord3iv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3ivARB(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord3ivARB(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -2987,11 +2989,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3ivARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3ivARB( orig.glMultiTexCoord3ivARB_layer, target, v );
+  RglMultiTexCoord3ivARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3s(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r)
+static void REGAL_CALL iff_glMultiTexCoord3s(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3000,11 +3002,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3s(Layer *_layer, GLenum target, GLsho
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3s( orig.glMultiTexCoord3s_layer, target, s, t, r );
+  RglMultiTexCoord3s( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3sARB(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r)
+static void REGAL_CALL iff_glMultiTexCoord3sARB(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3013,11 +3015,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3sARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r ); return;
 
-  orig.glMultiTexCoord3sARB( orig.glMultiTexCoord3sARB_layer, target, s, t, r );
+  RglMultiTexCoord3sARB( orig, target, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3sv(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord3sv(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3026,11 +3028,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3sv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3sv( orig.glMultiTexCoord3sv_layer, target, v );
+  RglMultiTexCoord3sv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord3svARB(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord3svARB(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3039,11 +3041,11 @@ static void REGAL_CALL Iff_glMultiTexCoord3svARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord3svARB( orig.glMultiTexCoord3svARB_layer, target, v );
+  RglMultiTexCoord3svARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4d(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
+static void REGAL_CALL iff_glMultiTexCoord4d(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3052,11 +3054,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4d(Layer *_layer, GLenum target, GLdou
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4d( orig.glMultiTexCoord4d_layer, target, s, t, r, q );
+  RglMultiTexCoord4d( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4dARB(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
+static void REGAL_CALL iff_glMultiTexCoord4dARB(Layer *_layer, GLenum target, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3065,11 +3067,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4dARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4dARB( orig.glMultiTexCoord4dARB_layer, target, s, t, r, q );
+  RglMultiTexCoord4dARB( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4dv(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord4dv(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3078,11 +3080,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4dv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4dv( orig.glMultiTexCoord4dv_layer, target, v );
+  RglMultiTexCoord4dv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4dvARB(Layer *_layer, GLenum target, const GLdouble *v)
+static void REGAL_CALL iff_glMultiTexCoord4dvARB(Layer *_layer, GLenum target, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3091,11 +3093,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4dvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4dvARB( orig.glMultiTexCoord4dvARB_layer, target, v );
+  RglMultiTexCoord4dvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4f(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
+static void REGAL_CALL iff_glMultiTexCoord4f(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3104,11 +3106,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4f(Layer *_layer, GLenum target, GLflo
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4f( orig.glMultiTexCoord4f_layer, target, s, t, r, q );
+  RglMultiTexCoord4f( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4fARB(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
+static void REGAL_CALL iff_glMultiTexCoord4fARB(Layer *_layer, GLenum target, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3117,11 +3119,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4fARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4fARB( orig.glMultiTexCoord4fARB_layer, target, s, t, r, q );
+  RglMultiTexCoord4fARB( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4fv(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord4fv(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3130,11 +3132,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4fv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4fv( orig.glMultiTexCoord4fv_layer, target, v );
+  RglMultiTexCoord4fv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4fvARB(Layer *_layer, GLenum target, const GLfloat *v)
+static void REGAL_CALL iff_glMultiTexCoord4fvARB(Layer *_layer, GLenum target, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3143,11 +3145,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4fvARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4fvARB( orig.glMultiTexCoord4fvARB_layer, target, v );
+  RglMultiTexCoord4fvARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4i(Layer *_layer, GLenum target, GLint s, GLint t, GLint r, GLint q)
+static void REGAL_CALL iff_glMultiTexCoord4i(Layer *_layer, GLenum target, GLint s, GLint t, GLint r, GLint q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3156,11 +3158,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4i(Layer *_layer, GLenum target, GLint
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4i( orig.glMultiTexCoord4i_layer, target, s, t, r, q );
+  RglMultiTexCoord4i( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4iARB(Layer *_layer, GLenum target, GLint s, GLint t, GLint r, GLint q)
+static void REGAL_CALL iff_glMultiTexCoord4iARB(Layer *_layer, GLenum target, GLint s, GLint t, GLint r, GLint q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3169,11 +3171,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4iARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4iARB( orig.glMultiTexCoord4iARB_layer, target, s, t, r, q );
+  RglMultiTexCoord4iARB( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4iv(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord4iv(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3182,11 +3184,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4iv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4iv( orig.glMultiTexCoord4iv_layer, target, v );
+  RglMultiTexCoord4iv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4ivARB(Layer *_layer, GLenum target, const GLint *v)
+static void REGAL_CALL iff_glMultiTexCoord4ivARB(Layer *_layer, GLenum target, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3195,11 +3197,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4ivARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4ivARB( orig.glMultiTexCoord4ivARB_layer, target, v );
+  RglMultiTexCoord4ivARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4s(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
+static void REGAL_CALL iff_glMultiTexCoord4s(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3208,11 +3210,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4s(Layer *_layer, GLenum target, GLsho
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4s( orig.glMultiTexCoord4s_layer, target, s, t, r, q );
+  RglMultiTexCoord4s( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4sARB(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
+static void REGAL_CALL iff_glMultiTexCoord4sARB(Layer *_layer, GLenum target, GLshort s, GLshort t, GLshort r, GLshort q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3221,11 +3223,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4sARB(Layer *_layer, GLenum target, GL
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), s, t, r, q ); return;
 
-  orig.glMultiTexCoord4sARB( orig.glMultiTexCoord4sARB_layer, target, s, t, r, q );
+  RglMultiTexCoord4sARB( orig, target, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4sv(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord4sv(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3234,11 +3236,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4sv(Layer *_layer, GLenum target, cons
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4sv( orig.glMultiTexCoord4sv_layer, target, v );
+  RglMultiTexCoord4sv( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexCoord4svARB(Layer *_layer, GLenum target, const GLshort *v)
+static void REGAL_CALL iff_glMultiTexCoord4svARB(Layer *_layer, GLenum target, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3247,11 +3249,11 @@ static void REGAL_CALL Iff_glMultiTexCoord4svARB(Layer *_layer, GLenum target, c
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord, target - GL_TEXTURE0 ), v ); return;
 
-  orig.glMultiTexCoord4svARB( orig.glMultiTexCoord4svARB_layer, target, v );
+  RglMultiTexCoord4svARB( orig, target, v );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL iff_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3260,11 +3262,11 @@ static void REGAL_CALL Iff_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLen
   // impl
   _context->iff->TexEnv( texunit, target, pname, param ); return;
 
-  orig.glMultiTexEnvfEXT( orig.glMultiTexEnvfEXT_layer, texunit, target, pname, param );
+  RglMultiTexEnvfEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL iff_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3273,11 +3275,11 @@ static void REGAL_CALL Iff_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLe
   // impl
   _context->iff->TexEnv( texunit, target, pname, params ); return;
 
-  orig.glMultiTexEnvfvEXT( orig.glMultiTexEnvfvEXT_layer, texunit, target, pname, params );
+  RglMultiTexEnvfvEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL iff_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3286,11 +3288,11 @@ static void REGAL_CALL Iff_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLen
   // impl
   _context->iff->TexEnv( texunit, target, pname, param ); return;
 
-  orig.glMultiTexEnviEXT( orig.glMultiTexEnviEXT_layer, texunit, target, pname, param );
+  RglMultiTexEnviEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL iff_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3299,11 +3301,11 @@ static void REGAL_CALL Iff_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLe
   // impl
   _context->iff->TexEnv( texunit, target, pname, params ); return;
 
-  orig.glMultiTexEnvivEXT( orig.glMultiTexEnvivEXT_layer, texunit, target, pname, params );
+  RglMultiTexEnvivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3312,11 +3314,11 @@ static void REGAL_CALL Iff_glMultiTexImage1DEXT(Layer *_layer, GLenum texunit, G
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  orig.glMultiTexImage1DEXT( orig.glMultiTexImage1DEXT_layer, texunit, target, level, internalformat, width, border, format, type, pixels );
+  RglMultiTexImage1DEXT( orig, texunit, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3325,11 +3327,11 @@ static void REGAL_CALL Iff_glMultiTexImage2DEXT(Layer *_layer, GLenum texunit, G
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  orig.glMultiTexImage2DEXT( orig.glMultiTexImage2DEXT_layer, texunit, target, level, internalformat, width, height, border, format, type, pixels );
+  RglMultiTexImage2DEXT( orig, texunit, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3338,11 +3340,11 @@ static void REGAL_CALL Iff_glMultiTexImage3DEXT(Layer *_layer, GLenum texunit, G
   // prefix
   _context->iff->ShadowMultiTexInfo( texunit, target, internalformat );
 
-  orig.glMultiTexImage3DEXT( orig.glMultiTexImage3DEXT_layer, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  RglMultiTexImage3DEXT( orig, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glNormal3b(Layer *_layer, GLbyte nx, GLbyte ny, GLbyte nz)
+static void REGAL_CALL iff_glNormal3b(Layer *_layer, GLbyte nx, GLbyte ny, GLbyte nz)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3351,11 +3353,11 @@ static void REGAL_CALL Iff_glNormal3b(Layer *_layer, GLbyte nx, GLbyte ny, GLbyt
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), nx, ny, nz ); return;
 
-  orig.glNormal3b( orig.glNormal3b_layer, nx, ny, nz );
+  RglNormal3b( orig, nx, ny, nz );
 
 }
 
-static void REGAL_CALL Iff_glNormal3bv(Layer *_layer, const GLbyte *v)
+static void REGAL_CALL iff_glNormal3bv(Layer *_layer, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3364,11 +3366,11 @@ static void REGAL_CALL Iff_glNormal3bv(Layer *_layer, const GLbyte *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), v ); return;
 
-  orig.glNormal3bv( orig.glNormal3bv_layer, v );
+  RglNormal3bv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glNormal3d(Layer *_layer, GLdouble nx, GLdouble ny, GLdouble nz)
+static void REGAL_CALL iff_glNormal3d(Layer *_layer, GLdouble nx, GLdouble ny, GLdouble nz)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3377,11 +3379,11 @@ static void REGAL_CALL Iff_glNormal3d(Layer *_layer, GLdouble nx, GLdouble ny, G
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), nx, ny, nz ); return;
 
-  orig.glNormal3d( orig.glNormal3d_layer, nx, ny, nz );
+  RglNormal3d( orig, nx, ny, nz );
 
 }
 
-static void REGAL_CALL Iff_glNormal3dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glNormal3dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3390,11 +3392,11 @@ static void REGAL_CALL Iff_glNormal3dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), v ); return;
 
-  orig.glNormal3dv( orig.glNormal3dv_layer, v );
+  RglNormal3dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glNormal3f(Layer *_layer, GLfloat nx, GLfloat ny, GLfloat nz)
+static void REGAL_CALL iff_glNormal3f(Layer *_layer, GLfloat nx, GLfloat ny, GLfloat nz)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3403,11 +3405,11 @@ static void REGAL_CALL Iff_glNormal3f(Layer *_layer, GLfloat nx, GLfloat ny, GLf
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), nx, ny, nz ); return;
 
-  orig.glNormal3f( orig.glNormal3f_layer, nx, ny, nz );
+  RglNormal3f( orig, nx, ny, nz );
 
 }
 
-static void REGAL_CALL Iff_glNormal3fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glNormal3fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3416,11 +3418,11 @@ static void REGAL_CALL Iff_glNormal3fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), v ); return;
 
-  orig.glNormal3fv( orig.glNormal3fv_layer, v );
+  RglNormal3fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glNormal3i(Layer *_layer, GLint nx, GLint ny, GLint nz)
+static void REGAL_CALL iff_glNormal3i(Layer *_layer, GLint nx, GLint ny, GLint nz)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3429,11 +3431,11 @@ static void REGAL_CALL Iff_glNormal3i(Layer *_layer, GLint nx, GLint ny, GLint n
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), nx, ny, nz ); return;
 
-  orig.glNormal3i( orig.glNormal3i_layer, nx, ny, nz );
+  RglNormal3i( orig, nx, ny, nz );
 
 }
 
-static void REGAL_CALL Iff_glNormal3iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glNormal3iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3442,11 +3444,11 @@ static void REGAL_CALL Iff_glNormal3iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), v ); return;
 
-  orig.glNormal3iv( orig.glNormal3iv_layer, v );
+  RglNormal3iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glNormal3s(Layer *_layer, GLshort nx, GLshort ny, GLshort nz)
+static void REGAL_CALL iff_glNormal3s(Layer *_layer, GLshort nx, GLshort ny, GLshort nz)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3455,11 +3457,11 @@ static void REGAL_CALL Iff_glNormal3s(Layer *_layer, GLshort nx, GLshort ny, GLs
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), nx, ny, nz ); return;
 
-  orig.glNormal3s( orig.glNormal3s_layer, nx, ny, nz );
+  RglNormal3s( orig, nx, ny, nz );
 
 }
 
-static void REGAL_CALL Iff_glNormal3sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glNormal3sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3468,11 +3470,11 @@ static void REGAL_CALL Iff_glNormal3sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_Normal ), v ); return;
 
-  orig.glNormal3sv( orig.glNormal3sv_layer, v );
+  RglNormal3sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3481,11 +3483,11 @@ static void REGAL_CALL Iff_glNormalPointer(Layer *_layer, GLenum type, GLsizei s
   // impl
   _context->iff->NormalPointer( _context, type, stride, pointer ); return;
 
-  orig.glNormalPointer( orig.glNormalPointer_layer, type, stride, pointer );
+  RglNormalPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glNormalPointerEXT(Layer *_layer, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL iff_glNormalPointerEXT(Layer *_layer, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3494,11 +3496,11 @@ static void REGAL_CALL Iff_glNormalPointerEXT(Layer *_layer, GLenum type, GLsize
   // impl
   _context->iff->NormalPointer( _context, type, stride, pointer ); return;
 
-  orig.glNormalPointerEXT( orig.glNormalPointerEXT_layer, type, stride, count, pointer );
+  RglNormalPointerEXT( orig, type, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Iff_glOrtho(Layer *_layer, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL iff_glOrtho(Layer *_layer, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3507,11 +3509,11 @@ static void REGAL_CALL Iff_glOrtho(Layer *_layer, GLdouble left, GLdouble right,
   // impl
   _context->iff->Ortho( left, right, bottom, top, zNear, zFar ); return;
 
-  orig.glOrtho( orig.glOrtho_layer, left, right, bottom, top, zNear, zFar );
+  RglOrtho( orig, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL Iff_glPopMatrix(Layer *_layer)
+static void REGAL_CALL iff_glPopMatrix(Layer *_layer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3520,11 +3522,11 @@ static void REGAL_CALL Iff_glPopMatrix(Layer *_layer)
   // impl
   _context->iff->PopMatrix(  ); return;
 
-  orig.glPopMatrix( orig.glPopMatrix_layer );
+  RglPopMatrix( orig );
 
 }
 
-static void REGAL_CALL Iff_glPushMatrix(Layer *_layer)
+static void REGAL_CALL iff_glPushMatrix(Layer *_layer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3533,11 +3535,11 @@ static void REGAL_CALL Iff_glPushMatrix(Layer *_layer)
   // impl
   _context->iff->PushMatrix(  ); return;
 
-  orig.glPushMatrix( orig.glPushMatrix_layer );
+  RglPushMatrix( orig );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
+static void REGAL_CALL iff_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3546,11 +3548,11 @@ static void REGAL_CALL Iff_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
   // impl
   _context->iff->RasterPosition( _context, x, y ); return;
 
-  orig.glRasterPos2d( orig.glRasterPos2d_layer, x, y );
+  RglRasterPos2d( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
+static void REGAL_CALL iff_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3559,11 +3561,11 @@ static void REGAL_CALL Iff_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
   // impl
   _context->iff->RasterPosition( _context, x, y ); return;
 
-  orig.glRasterPos2f( orig.glRasterPos2f_layer, x, y );
+  RglRasterPos2f( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos2i(Layer *_layer, GLint x, GLint y)
+static void REGAL_CALL iff_glRasterPos2i(Layer *_layer, GLint x, GLint y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3572,11 +3574,11 @@ static void REGAL_CALL Iff_glRasterPos2i(Layer *_layer, GLint x, GLint y)
   // impl
   _context->iff->RasterPosition( _context, x, y ); return;
 
-  orig.glRasterPos2i( orig.glRasterPos2i_layer, x, y );
+  RglRasterPos2i( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
+static void REGAL_CALL iff_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3585,11 +3587,11 @@ static void REGAL_CALL Iff_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
   // impl
   _context->iff->RasterPosition( _context, x, y ); return;
 
-  orig.glRasterPos2s( orig.glRasterPos2s_layer, x, y );
+  RglRasterPos2s( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3598,11 +3600,11 @@ static void REGAL_CALL Iff_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y, 
   // impl
   _context->iff->RasterPosition( _context, x, y, z ); return;
 
-  orig.glRasterPos3d( orig.glRasterPos3d_layer, x, y, z );
+  RglRasterPos3d( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3611,11 +3613,11 @@ static void REGAL_CALL Iff_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, GL
   // impl
   _context->iff->RasterPosition( _context, x, y, z ); return;
 
-  orig.glRasterPos3f( orig.glRasterPos3f_layer, x, y, z );
+  RglRasterPos3f( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint z)
+static void REGAL_CALL iff_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3624,11 +3626,11 @@ static void REGAL_CALL Iff_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint 
   // impl
   _context->iff->RasterPosition( _context, x, y, z ); return;
 
-  orig.glRasterPos3i( orig.glRasterPos3i_layer, x, y, z );
+  RglRasterPos3i( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL iff_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3637,11 +3639,11 @@ static void REGAL_CALL Iff_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, GL
   // impl
   _context->iff->RasterPosition( _context, x, y, z ); return;
 
-  orig.glRasterPos3s( orig.glRasterPos3s_layer, x, y, z );
+  RglRasterPos3s( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glRotated(Layer *_layer, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glRotated(Layer *_layer, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3650,11 +3652,11 @@ static void REGAL_CALL Iff_glRotated(Layer *_layer, GLdouble angle, GLdouble x, 
   // impl
   _context->iff->Rotate( angle, x, y, z ); return;
 
-  orig.glRotated( orig.glRotated_layer, angle, x, y, z );
+  RglRotated( orig, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glRotatef(Layer *_layer, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glRotatef(Layer *_layer, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3663,11 +3665,11 @@ static void REGAL_CALL Iff_glRotatef(Layer *_layer, GLfloat angle, GLfloat x, GL
   // impl
   _context->iff->Rotate( angle, x, y, z ); return;
 
-  orig.glRotatef( orig.glRotatef_layer, angle, x, y, z );
+  RglRotatef( orig, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glScaled(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glScaled(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3676,11 +3678,11 @@ static void REGAL_CALL Iff_glScaled(Layer *_layer, GLdouble x, GLdouble y, GLdou
   // impl
   _context->iff->Scale( x, y, z ); return;
 
-  orig.glScaled( orig.glScaled_layer, x, y, z );
+  RglScaled( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glScalef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glScalef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3689,11 +3691,11 @@ static void REGAL_CALL Iff_glScalef(Layer *_layer, GLfloat x, GLfloat y, GLfloat
   // impl
   _context->iff->Scale( x, y, z ); return;
 
-  orig.glScalef( orig.glScalef_layer, x, y, z );
+  RglScalef( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3b(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue)
+static void REGAL_CALL iff_glSecondaryColor3b(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3702,11 +3704,11 @@ static void REGAL_CALL Iff_glSecondaryColor3b(Layer *_layer, GLbyte red, GLbyte 
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3b( orig.glSecondaryColor3b_layer, red, green, blue );
+  RglSecondaryColor3b( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3bEXT(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue)
+static void REGAL_CALL iff_glSecondaryColor3bEXT(Layer *_layer, GLbyte red, GLbyte green, GLbyte blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3715,11 +3717,11 @@ static void REGAL_CALL Iff_glSecondaryColor3bEXT(Layer *_layer, GLbyte red, GLby
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3bEXT( orig.glSecondaryColor3bEXT_layer, red, green, blue );
+  RglSecondaryColor3bEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3bv(Layer *_layer, const GLbyte *v)
+static void REGAL_CALL iff_glSecondaryColor3bv(Layer *_layer, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3728,11 +3730,11 @@ static void REGAL_CALL Iff_glSecondaryColor3bv(Layer *_layer, const GLbyte *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3bv( orig.glSecondaryColor3bv_layer, v );
+  RglSecondaryColor3bv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3bvEXT(Layer *_layer, const GLbyte *v)
+static void REGAL_CALL iff_glSecondaryColor3bvEXT(Layer *_layer, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3741,11 +3743,11 @@ static void REGAL_CALL Iff_glSecondaryColor3bvEXT(Layer *_layer, const GLbyte *v
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3bvEXT( orig.glSecondaryColor3bvEXT_layer, v );
+  RglSecondaryColor3bvEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3d(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue)
+static void REGAL_CALL iff_glSecondaryColor3d(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3754,11 +3756,11 @@ static void REGAL_CALL Iff_glSecondaryColor3d(Layer *_layer, GLdouble red, GLdou
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3d( orig.glSecondaryColor3d_layer, red, green, blue );
+  RglSecondaryColor3d( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3dEXT(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue)
+static void REGAL_CALL iff_glSecondaryColor3dEXT(Layer *_layer, GLdouble red, GLdouble green, GLdouble blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3767,11 +3769,11 @@ static void REGAL_CALL Iff_glSecondaryColor3dEXT(Layer *_layer, GLdouble red, GL
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3dEXT( orig.glSecondaryColor3dEXT_layer, red, green, blue );
+  RglSecondaryColor3dEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glSecondaryColor3dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3780,11 +3782,11 @@ static void REGAL_CALL Iff_glSecondaryColor3dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3dv( orig.glSecondaryColor3dv_layer, v );
+  RglSecondaryColor3dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3dvEXT(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glSecondaryColor3dvEXT(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3793,11 +3795,11 @@ static void REGAL_CALL Iff_glSecondaryColor3dvEXT(Layer *_layer, const GLdouble 
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3dvEXT( orig.glSecondaryColor3dvEXT_layer, v );
+  RglSecondaryColor3dvEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3f(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue)
+static void REGAL_CALL iff_glSecondaryColor3f(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3806,11 +3808,11 @@ static void REGAL_CALL Iff_glSecondaryColor3f(Layer *_layer, GLfloat red, GLfloa
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3f( orig.glSecondaryColor3f_layer, red, green, blue );
+  RglSecondaryColor3f( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3fEXT(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue)
+static void REGAL_CALL iff_glSecondaryColor3fEXT(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3819,11 +3821,11 @@ static void REGAL_CALL Iff_glSecondaryColor3fEXT(Layer *_layer, GLfloat red, GLf
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3fEXT( orig.glSecondaryColor3fEXT_layer, red, green, blue );
+  RglSecondaryColor3fEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glSecondaryColor3fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3832,11 +3834,11 @@ static void REGAL_CALL Iff_glSecondaryColor3fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3fv( orig.glSecondaryColor3fv_layer, v );
+  RglSecondaryColor3fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3fvEXT(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glSecondaryColor3fvEXT(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3845,11 +3847,11 @@ static void REGAL_CALL Iff_glSecondaryColor3fvEXT(Layer *_layer, const GLfloat *
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3fvEXT( orig.glSecondaryColor3fvEXT_layer, v );
+  RglSecondaryColor3fvEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3i(Layer *_layer, GLint red, GLint green, GLint blue)
+static void REGAL_CALL iff_glSecondaryColor3i(Layer *_layer, GLint red, GLint green, GLint blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3858,11 +3860,11 @@ static void REGAL_CALL Iff_glSecondaryColor3i(Layer *_layer, GLint red, GLint gr
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3i( orig.glSecondaryColor3i_layer, red, green, blue );
+  RglSecondaryColor3i( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3iEXT(Layer *_layer, GLint red, GLint green, GLint blue)
+static void REGAL_CALL iff_glSecondaryColor3iEXT(Layer *_layer, GLint red, GLint green, GLint blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3871,11 +3873,11 @@ static void REGAL_CALL Iff_glSecondaryColor3iEXT(Layer *_layer, GLint red, GLint
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3iEXT( orig.glSecondaryColor3iEXT_layer, red, green, blue );
+  RglSecondaryColor3iEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glSecondaryColor3iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3884,11 +3886,11 @@ static void REGAL_CALL Iff_glSecondaryColor3iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3iv( orig.glSecondaryColor3iv_layer, v );
+  RglSecondaryColor3iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3ivEXT(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glSecondaryColor3ivEXT(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3897,11 +3899,11 @@ static void REGAL_CALL Iff_glSecondaryColor3ivEXT(Layer *_layer, const GLint *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3ivEXT( orig.glSecondaryColor3ivEXT_layer, v );
+  RglSecondaryColor3ivEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3s(Layer *_layer, GLshort red, GLshort green, GLshort blue)
+static void REGAL_CALL iff_glSecondaryColor3s(Layer *_layer, GLshort red, GLshort green, GLshort blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3910,11 +3912,11 @@ static void REGAL_CALL Iff_glSecondaryColor3s(Layer *_layer, GLshort red, GLshor
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3s( orig.glSecondaryColor3s_layer, red, green, blue );
+  RglSecondaryColor3s( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3sEXT(Layer *_layer, GLshort red, GLshort green, GLshort blue)
+static void REGAL_CALL iff_glSecondaryColor3sEXT(Layer *_layer, GLshort red, GLshort green, GLshort blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3923,11 +3925,11 @@ static void REGAL_CALL Iff_glSecondaryColor3sEXT(Layer *_layer, GLshort red, GLs
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3sEXT( orig.glSecondaryColor3sEXT_layer, red, green, blue );
+  RglSecondaryColor3sEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glSecondaryColor3sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3936,11 +3938,11 @@ static void REGAL_CALL Iff_glSecondaryColor3sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3sv( orig.glSecondaryColor3sv_layer, v );
+  RglSecondaryColor3sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3svEXT(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glSecondaryColor3svEXT(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3949,11 +3951,11 @@ static void REGAL_CALL Iff_glSecondaryColor3svEXT(Layer *_layer, const GLshort *
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3svEXT( orig.glSecondaryColor3svEXT_layer, v );
+  RglSecondaryColor3svEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3ub(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue)
+static void REGAL_CALL iff_glSecondaryColor3ub(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3962,11 +3964,11 @@ static void REGAL_CALL Iff_glSecondaryColor3ub(Layer *_layer, GLubyte red, GLuby
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3ub( orig.glSecondaryColor3ub_layer, red, green, blue );
+  RglSecondaryColor3ub( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3ubEXT(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue)
+static void REGAL_CALL iff_glSecondaryColor3ubEXT(Layer *_layer, GLubyte red, GLubyte green, GLubyte blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3975,11 +3977,11 @@ static void REGAL_CALL Iff_glSecondaryColor3ubEXT(Layer *_layer, GLubyte red, GL
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3ubEXT( orig.glSecondaryColor3ubEXT_layer, red, green, blue );
+  RglSecondaryColor3ubEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3ubv(Layer *_layer, const GLubyte *v)
+static void REGAL_CALL iff_glSecondaryColor3ubv(Layer *_layer, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -3988,11 +3990,11 @@ static void REGAL_CALL Iff_glSecondaryColor3ubv(Layer *_layer, const GLubyte *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3ubv( orig.glSecondaryColor3ubv_layer, v );
+  RglSecondaryColor3ubv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3ubvEXT(Layer *_layer, const GLubyte *v)
+static void REGAL_CALL iff_glSecondaryColor3ubvEXT(Layer *_layer, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4001,11 +4003,11 @@ static void REGAL_CALL Iff_glSecondaryColor3ubvEXT(Layer *_layer, const GLubyte 
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3ubvEXT( orig.glSecondaryColor3ubvEXT_layer, v );
+  RglSecondaryColor3ubvEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3ui(Layer *_layer, GLuint red, GLuint green, GLuint blue)
+static void REGAL_CALL iff_glSecondaryColor3ui(Layer *_layer, GLuint red, GLuint green, GLuint blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4014,11 +4016,11 @@ static void REGAL_CALL Iff_glSecondaryColor3ui(Layer *_layer, GLuint red, GLuint
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3ui( orig.glSecondaryColor3ui_layer, red, green, blue );
+  RglSecondaryColor3ui( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3uiEXT(Layer *_layer, GLuint red, GLuint green, GLuint blue)
+static void REGAL_CALL iff_glSecondaryColor3uiEXT(Layer *_layer, GLuint red, GLuint green, GLuint blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4027,11 +4029,11 @@ static void REGAL_CALL Iff_glSecondaryColor3uiEXT(Layer *_layer, GLuint red, GLu
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3uiEXT( orig.glSecondaryColor3uiEXT_layer, red, green, blue );
+  RglSecondaryColor3uiEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3uiv(Layer *_layer, const GLuint *v)
+static void REGAL_CALL iff_glSecondaryColor3uiv(Layer *_layer, const GLuint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4040,11 +4042,11 @@ static void REGAL_CALL Iff_glSecondaryColor3uiv(Layer *_layer, const GLuint *v)
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3uiv( orig.glSecondaryColor3uiv_layer, v );
+  RglSecondaryColor3uiv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3uivEXT(Layer *_layer, const GLuint *v)
+static void REGAL_CALL iff_glSecondaryColor3uivEXT(Layer *_layer, const GLuint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4053,11 +4055,11 @@ static void REGAL_CALL Iff_glSecondaryColor3uivEXT(Layer *_layer, const GLuint *
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3uivEXT( orig.glSecondaryColor3uivEXT_layer, v );
+  RglSecondaryColor3uivEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3us(Layer *_layer, GLushort red, GLushort green, GLushort blue)
+static void REGAL_CALL iff_glSecondaryColor3us(Layer *_layer, GLushort red, GLushort green, GLushort blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4066,11 +4068,11 @@ static void REGAL_CALL Iff_glSecondaryColor3us(Layer *_layer, GLushort red, GLus
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3us( orig.glSecondaryColor3us_layer, red, green, blue );
+  RglSecondaryColor3us( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3usEXT(Layer *_layer, GLushort red, GLushort green, GLushort blue)
+static void REGAL_CALL iff_glSecondaryColor3usEXT(Layer *_layer, GLushort red, GLushort green, GLushort blue)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4079,11 +4081,11 @@ static void REGAL_CALL Iff_glSecondaryColor3usEXT(Layer *_layer, GLushort red, G
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), red, green, blue ); return;
 
-  orig.glSecondaryColor3usEXT( orig.glSecondaryColor3usEXT_layer, red, green, blue );
+  RglSecondaryColor3usEXT( orig, red, green, blue );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3usv(Layer *_layer, const GLushort *v)
+static void REGAL_CALL iff_glSecondaryColor3usv(Layer *_layer, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4092,11 +4094,11 @@ static void REGAL_CALL Iff_glSecondaryColor3usv(Layer *_layer, const GLushort *v
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3usv( orig.glSecondaryColor3usv_layer, v );
+  RglSecondaryColor3usv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColor3usvEXT(Layer *_layer, const GLushort *v)
+static void REGAL_CALL iff_glSecondaryColor3usvEXT(Layer *_layer, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4105,11 +4107,11 @@ static void REGAL_CALL Iff_glSecondaryColor3usvEXT(Layer *_layer, const GLushort
   // impl
   _context->iff->AttrN<3>( _context, _context->iff->AttrIndex( RFF2A_SecondaryColor ), v ); return;
 
-  orig.glSecondaryColor3usvEXT( orig.glSecondaryColor3usvEXT_layer, v );
+  RglSecondaryColor3usvEXT( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4118,11 +4120,11 @@ static void REGAL_CALL Iff_glSecondaryColorPointer(Layer *_layer, GLint size, GL
   // impl
   _context->iff->SecondaryColorPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glSecondaryColorPointer( orig.glSecondaryColorPointer_layer, size, type, stride, pointer );
+  RglSecondaryColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glSecondaryColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glSecondaryColorPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4131,11 +4133,11 @@ static void REGAL_CALL Iff_glSecondaryColorPointerEXT(Layer *_layer, GLint size,
   // impl
   _context->iff->SecondaryColorPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glSecondaryColorPointerEXT( orig.glSecondaryColorPointerEXT_layer, size, type, stride, pointer );
+  RglSecondaryColorPointerEXT( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glShadeModel(Layer *_layer, GLenum mode)
+static void REGAL_CALL iff_glShadeModel(Layer *_layer, GLenum mode)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4144,11 +4146,11 @@ static void REGAL_CALL Iff_glShadeModel(Layer *_layer, GLenum mode)
   // prefix
   _context->iff->ShadeModel( mode );
 
-  orig.glShadeModel( orig.glShadeModel_layer, mode );
+  RglShadeModel( orig, mode );
 
 }
 
-static void REGAL_CALL Iff_glShaderSource(Layer *_layer, GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length)
+static void REGAL_CALL iff_glShaderSource(Layer *_layer, GLuint shader, GLsizei count, const GLchar * const *string, const GLint *length)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4157,11 +4159,11 @@ static void REGAL_CALL Iff_glShaderSource(Layer *_layer, GLuint shader, GLsizei 
   // impl
   _context->iff->ShaderSource( _context, shader, count, string, length ); return;
 
-  orig.glShaderSource( orig.glShaderSource_layer, shader, count, string, length );
+  RglShaderSource( orig, shader, count, string, length );
 
 }
 
-static void REGAL_CALL Iff_glShaderSourceARB(Layer *_layer, GLhandleARB shaderObj, GLsizei count, const GLcharARB ** const string, const GLint *length)
+static void REGAL_CALL iff_glShaderSourceARB(Layer *_layer, GLhandleARB shaderObj, GLsizei count, const GLcharARB ** const string, const GLint *length)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4170,11 +4172,11 @@ static void REGAL_CALL Iff_glShaderSourceARB(Layer *_layer, GLhandleARB shaderOb
   // impl
   _context->iff->ShaderSource( _context, shaderObj, count, string, length ); return;
 
-  orig.glShaderSourceARB( orig.glShaderSourceARB_layer, shaderObj, count, string, length );
+  RglShaderSourceARB( orig, shaderObj, count, string, length );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1d(Layer *_layer, GLdouble s)
+static void REGAL_CALL iff_glTexCoord1d(Layer *_layer, GLdouble s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4183,11 +4185,11 @@ static void REGAL_CALL Iff_glTexCoord1d(Layer *_layer, GLdouble s)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s ); return;
 
-  orig.glTexCoord1d( orig.glTexCoord1d_layer, s );
+  RglTexCoord1d( orig, s );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glTexCoord1dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4196,11 +4198,11 @@ static void REGAL_CALL Iff_glTexCoord1dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord1dv( orig.glTexCoord1dv_layer, v );
+  RglTexCoord1dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1f(Layer *_layer, GLfloat s)
+static void REGAL_CALL iff_glTexCoord1f(Layer *_layer, GLfloat s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4209,11 +4211,11 @@ static void REGAL_CALL Iff_glTexCoord1f(Layer *_layer, GLfloat s)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s ); return;
 
-  orig.glTexCoord1f( orig.glTexCoord1f_layer, s );
+  RglTexCoord1f( orig, s );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glTexCoord1fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4222,11 +4224,11 @@ static void REGAL_CALL Iff_glTexCoord1fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord1fv( orig.glTexCoord1fv_layer, v );
+  RglTexCoord1fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1i(Layer *_layer, GLint s)
+static void REGAL_CALL iff_glTexCoord1i(Layer *_layer, GLint s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4235,11 +4237,11 @@ static void REGAL_CALL Iff_glTexCoord1i(Layer *_layer, GLint s)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s ); return;
 
-  orig.glTexCoord1i( orig.glTexCoord1i_layer, s );
+  RglTexCoord1i( orig, s );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glTexCoord1iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4248,11 +4250,11 @@ static void REGAL_CALL Iff_glTexCoord1iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord1iv( orig.glTexCoord1iv_layer, v );
+  RglTexCoord1iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1s(Layer *_layer, GLshort s)
+static void REGAL_CALL iff_glTexCoord1s(Layer *_layer, GLshort s)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4261,11 +4263,11 @@ static void REGAL_CALL Iff_glTexCoord1s(Layer *_layer, GLshort s)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s ); return;
 
-  orig.glTexCoord1s( orig.glTexCoord1s_layer, s );
+  RglTexCoord1s( orig, s );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord1sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glTexCoord1sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4274,11 +4276,11 @@ static void REGAL_CALL Iff_glTexCoord1sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->Attr<1>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord1sv( orig.glTexCoord1sv_layer, v );
+  RglTexCoord1sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2d(Layer *_layer, GLdouble s, GLdouble t)
+static void REGAL_CALL iff_glTexCoord2d(Layer *_layer, GLdouble s, GLdouble t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4287,11 +4289,11 @@ static void REGAL_CALL Iff_glTexCoord2d(Layer *_layer, GLdouble s, GLdouble t)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t ); return;
 
-  orig.glTexCoord2d( orig.glTexCoord2d_layer, s, t );
+  RglTexCoord2d( orig, s, t );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glTexCoord2dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4300,11 +4302,11 @@ static void REGAL_CALL Iff_glTexCoord2dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord2dv( orig.glTexCoord2dv_layer, v );
+  RglTexCoord2dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2f(Layer *_layer, GLfloat s, GLfloat t)
+static void REGAL_CALL iff_glTexCoord2f(Layer *_layer, GLfloat s, GLfloat t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4313,11 +4315,11 @@ static void REGAL_CALL Iff_glTexCoord2f(Layer *_layer, GLfloat s, GLfloat t)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t ); return;
 
-  orig.glTexCoord2f( orig.glTexCoord2f_layer, s, t );
+  RglTexCoord2f( orig, s, t );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glTexCoord2fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4326,11 +4328,11 @@ static void REGAL_CALL Iff_glTexCoord2fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord2fv( orig.glTexCoord2fv_layer, v );
+  RglTexCoord2fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2i(Layer *_layer, GLint s, GLint t)
+static void REGAL_CALL iff_glTexCoord2i(Layer *_layer, GLint s, GLint t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4339,11 +4341,11 @@ static void REGAL_CALL Iff_glTexCoord2i(Layer *_layer, GLint s, GLint t)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t ); return;
 
-  orig.glTexCoord2i( orig.glTexCoord2i_layer, s, t );
+  RglTexCoord2i( orig, s, t );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glTexCoord2iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4352,11 +4354,11 @@ static void REGAL_CALL Iff_glTexCoord2iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord2iv( orig.glTexCoord2iv_layer, v );
+  RglTexCoord2iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2s(Layer *_layer, GLshort s, GLshort t)
+static void REGAL_CALL iff_glTexCoord2s(Layer *_layer, GLshort s, GLshort t)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4365,11 +4367,11 @@ static void REGAL_CALL Iff_glTexCoord2s(Layer *_layer, GLshort s, GLshort t)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t ); return;
 
-  orig.glTexCoord2s( orig.glTexCoord2s_layer, s, t );
+  RglTexCoord2s( orig, s, t );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord2sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glTexCoord2sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4378,11 +4380,11 @@ static void REGAL_CALL Iff_glTexCoord2sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord2sv( orig.glTexCoord2sv_layer, v );
+  RglTexCoord2sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3d(Layer *_layer, GLdouble s, GLdouble t, GLdouble r)
+static void REGAL_CALL iff_glTexCoord3d(Layer *_layer, GLdouble s, GLdouble t, GLdouble r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4391,11 +4393,11 @@ static void REGAL_CALL Iff_glTexCoord3d(Layer *_layer, GLdouble s, GLdouble t, G
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r ); return;
 
-  orig.glTexCoord3d( orig.glTexCoord3d_layer, s, t, r );
+  RglTexCoord3d( orig, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glTexCoord3dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4404,11 +4406,11 @@ static void REGAL_CALL Iff_glTexCoord3dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord3dv( orig.glTexCoord3dv_layer, v );
+  RglTexCoord3dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3f(Layer *_layer, GLfloat s, GLfloat t, GLfloat r)
+static void REGAL_CALL iff_glTexCoord3f(Layer *_layer, GLfloat s, GLfloat t, GLfloat r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4417,11 +4419,11 @@ static void REGAL_CALL Iff_glTexCoord3f(Layer *_layer, GLfloat s, GLfloat t, GLf
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r ); return;
 
-  orig.glTexCoord3f( orig.glTexCoord3f_layer, s, t, r );
+  RglTexCoord3f( orig, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glTexCoord3fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4430,11 +4432,11 @@ static void REGAL_CALL Iff_glTexCoord3fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord3fv( orig.glTexCoord3fv_layer, v );
+  RglTexCoord3fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3i(Layer *_layer, GLint s, GLint t, GLint r)
+static void REGAL_CALL iff_glTexCoord3i(Layer *_layer, GLint s, GLint t, GLint r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4443,11 +4445,11 @@ static void REGAL_CALL Iff_glTexCoord3i(Layer *_layer, GLint s, GLint t, GLint r
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r ); return;
 
-  orig.glTexCoord3i( orig.glTexCoord3i_layer, s, t, r );
+  RglTexCoord3i( orig, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glTexCoord3iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4456,11 +4458,11 @@ static void REGAL_CALL Iff_glTexCoord3iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord3iv( orig.glTexCoord3iv_layer, v );
+  RglTexCoord3iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3s(Layer *_layer, GLshort s, GLshort t, GLshort r)
+static void REGAL_CALL iff_glTexCoord3s(Layer *_layer, GLshort s, GLshort t, GLshort r)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4469,11 +4471,11 @@ static void REGAL_CALL Iff_glTexCoord3s(Layer *_layer, GLshort s, GLshort t, GLs
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r ); return;
 
-  orig.glTexCoord3s( orig.glTexCoord3s_layer, s, t, r );
+  RglTexCoord3s( orig, s, t, r );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord3sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glTexCoord3sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4482,11 +4484,11 @@ static void REGAL_CALL Iff_glTexCoord3sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord3sv( orig.glTexCoord3sv_layer, v );
+  RglTexCoord3sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4d(Layer *_layer, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
+static void REGAL_CALL iff_glTexCoord4d(Layer *_layer, GLdouble s, GLdouble t, GLdouble r, GLdouble q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4495,11 +4497,11 @@ static void REGAL_CALL Iff_glTexCoord4d(Layer *_layer, GLdouble s, GLdouble t, G
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r, q ); return;
 
-  orig.glTexCoord4d( orig.glTexCoord4d_layer, s, t, r, q );
+  RglTexCoord4d( orig, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glTexCoord4dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4508,11 +4510,11 @@ static void REGAL_CALL Iff_glTexCoord4dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord4dv( orig.glTexCoord4dv_layer, v );
+  RglTexCoord4dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4f(Layer *_layer, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
+static void REGAL_CALL iff_glTexCoord4f(Layer *_layer, GLfloat s, GLfloat t, GLfloat r, GLfloat q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4521,11 +4523,11 @@ static void REGAL_CALL Iff_glTexCoord4f(Layer *_layer, GLfloat s, GLfloat t, GLf
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r, q ); return;
 
-  orig.glTexCoord4f( orig.glTexCoord4f_layer, s, t, r, q );
+  RglTexCoord4f( orig, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glTexCoord4fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4534,11 +4536,11 @@ static void REGAL_CALL Iff_glTexCoord4fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord4fv( orig.glTexCoord4fv_layer, v );
+  RglTexCoord4fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4i(Layer *_layer, GLint s, GLint t, GLint r, GLint q)
+static void REGAL_CALL iff_glTexCoord4i(Layer *_layer, GLint s, GLint t, GLint r, GLint q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4547,11 +4549,11 @@ static void REGAL_CALL Iff_glTexCoord4i(Layer *_layer, GLint s, GLint t, GLint r
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r, q ); return;
 
-  orig.glTexCoord4i( orig.glTexCoord4i_layer, s, t, r, q );
+  RglTexCoord4i( orig, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glTexCoord4iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4560,11 +4562,11 @@ static void REGAL_CALL Iff_glTexCoord4iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord4iv( orig.glTexCoord4iv_layer, v );
+  RglTexCoord4iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4s(Layer *_layer, GLshort s, GLshort t, GLshort r, GLshort q)
+static void REGAL_CALL iff_glTexCoord4s(Layer *_layer, GLshort s, GLshort t, GLshort r, GLshort q)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4573,11 +4575,11 @@ static void REGAL_CALL Iff_glTexCoord4s(Layer *_layer, GLshort s, GLshort t, GLs
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), s, t, r, q ); return;
 
-  orig.glTexCoord4s( orig.glTexCoord4s_layer, s, t, r, q );
+  RglTexCoord4s( orig, s, t, r, q );
 
 }
 
-static void REGAL_CALL Iff_glTexCoord4sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glTexCoord4sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4586,11 +4588,11 @@ static void REGAL_CALL Iff_glTexCoord4sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_TexCoord ), v ); return;
 
-  orig.glTexCoord4sv( orig.glTexCoord4sv_layer, v );
+  RglTexCoord4sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4599,11 +4601,11 @@ static void REGAL_CALL Iff_glTexCoordPointer(Layer *_layer, GLint size, GLenum t
   // impl
   _context->iff->TexCoordPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glTexCoordPointer( orig.glTexCoordPointer_layer, size, type, stride, pointer );
+  RglTexCoordPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glTexCoordPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL iff_glTexCoordPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4612,11 +4614,11 @@ static void REGAL_CALL Iff_glTexCoordPointerEXT(Layer *_layer, GLint size, GLenu
   // impl
   _context->iff->TexCoordPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glTexCoordPointerEXT( orig.glTexCoordPointerEXT_layer, size, type, stride, count, pointer );
+  RglTexCoordPointerEXT( orig, size, type, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Iff_glTexEnvf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL iff_glTexEnvf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4625,11 +4627,11 @@ static void REGAL_CALL Iff_glTexEnvf(Layer *_layer, GLenum target, GLenum pname,
   // impl
   _context->iff->TexEnv( target, pname, param ); return;
 
-  orig.glTexEnvf( orig.glTexEnvf_layer, target, pname, param );
+  RglTexEnvf( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL iff_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4638,11 +4640,11 @@ static void REGAL_CALL Iff_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname
   // impl
   _context->iff->TexEnv( target, pname, params ); return;
 
-  orig.glTexEnvfv( orig.glTexEnvfv_layer, target, pname, params );
+  RglTexEnvfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glTexEnvi(Layer *_layer, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL iff_glTexEnvi(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4651,11 +4653,11 @@ static void REGAL_CALL Iff_glTexEnvi(Layer *_layer, GLenum target, GLenum pname,
   // impl
   _context->iff->TexEnv( target, pname, param ); return;
 
-  orig.glTexEnvi( orig.glTexEnvi_layer, target, pname, param );
+  RglTexEnvi( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glTexEnviv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL iff_glTexEnviv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4664,11 +4666,11 @@ static void REGAL_CALL Iff_glTexEnviv(Layer *_layer, GLenum target, GLenum pname
   // impl
   _context->iff->TexEnv( target, pname, params ); return;
 
-  orig.glTexEnviv( orig.glTexEnviv_layer, target, pname, params );
+  RglTexEnviv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glTexGend(Layer *_layer, GLenum coord, GLenum pname, GLdouble param)
+static void REGAL_CALL iff_glTexGend(Layer *_layer, GLenum coord, GLenum pname, GLdouble param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4679,11 +4681,11 @@ static void REGAL_CALL Iff_glTexGend(Layer *_layer, GLenum coord, GLenum pname, 
       return;
   }
 
-  orig.glTexGend( orig.glTexGend_layer, coord, pname, param );
+  RglTexGend( orig, coord, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glTexGendv(Layer *_layer, GLenum coord, GLenum pname, const GLdouble *params)
+static void REGAL_CALL iff_glTexGendv(Layer *_layer, GLenum coord, GLenum pname, const GLdouble *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4694,11 +4696,11 @@ static void REGAL_CALL Iff_glTexGendv(Layer *_layer, GLenum coord, GLenum pname,
       return;
   }
 
-  orig.glTexGendv( orig.glTexGendv_layer, coord, pname, params );
+  RglTexGendv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glTexGenf(Layer *_layer, GLenum coord, GLenum pname, GLfloat param)
+static void REGAL_CALL iff_glTexGenf(Layer *_layer, GLenum coord, GLenum pname, GLfloat param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4709,11 +4711,11 @@ static void REGAL_CALL Iff_glTexGenf(Layer *_layer, GLenum coord, GLenum pname, 
       return;
   }
 
-  orig.glTexGenf( orig.glTexGenf_layer, coord, pname, param );
+  RglTexGenf( orig, coord, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glTexGenfv(Layer *_layer, GLenum coord, GLenum pname, const GLfloat *params)
+static void REGAL_CALL iff_glTexGenfv(Layer *_layer, GLenum coord, GLenum pname, const GLfloat *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4724,11 +4726,11 @@ static void REGAL_CALL Iff_glTexGenfv(Layer *_layer, GLenum coord, GLenum pname,
       return;
   }
 
-  orig.glTexGenfv( orig.glTexGenfv_layer, coord, pname, params );
+  RglTexGenfv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glTexGeni(Layer *_layer, GLenum coord, GLenum pname, GLint param)
+static void REGAL_CALL iff_glTexGeni(Layer *_layer, GLenum coord, GLenum pname, GLint param)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4739,11 +4741,11 @@ static void REGAL_CALL Iff_glTexGeni(Layer *_layer, GLenum coord, GLenum pname, 
       return;
   }
 
-  orig.glTexGeni( orig.glTexGeni_layer, coord, pname, param );
+  RglTexGeni( orig, coord, pname, param );
 
 }
 
-static void REGAL_CALL Iff_glTexGeniv(Layer *_layer, GLenum coord, GLenum pname, const GLint *params)
+static void REGAL_CALL iff_glTexGeniv(Layer *_layer, GLenum coord, GLenum pname, const GLint *params)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4754,11 +4756,11 @@ static void REGAL_CALL Iff_glTexGeniv(Layer *_layer, GLenum coord, GLenum pname,
       return;
   }
 
-  orig.glTexGeniv( orig.glTexGeniv_layer, coord, pname, params );
+  RglTexGeniv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Iff_glTexImage1D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTexImage1D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4767,11 +4769,11 @@ static void REGAL_CALL Iff_glTexImage1D(Layer *_layer, GLenum target, GLint leve
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage1D( orig.glTexImage1D_layer, target, level, internalformat, width, border, format, type, pixels );
+  RglTexImage1D( orig, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4780,11 +4782,11 @@ static void REGAL_CALL Iff_glTexImage2D(Layer *_layer, GLenum target, GLint leve
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage2D( orig.glTexImage2D_layer, target, level, internalformat, width, height, border, format, type, pixels );
+  RglTexImage2D( orig, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTexImage2DMultisample(Layer *_layer, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
+static void REGAL_CALL iff_glTexImage2DMultisample(Layer *_layer, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLboolean fixedsamplelocations)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4793,11 +4795,11 @@ static void REGAL_CALL Iff_glTexImage2DMultisample(Layer *_layer, GLenum target,
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage2DMultisample( orig.glTexImage2DMultisample_layer, target, samples, internalformat, width, height, fixedsamplelocations );
+  RglTexImage2DMultisample( orig, target, samples, internalformat, width, height, fixedsamplelocations );
 
 }
 
-static void REGAL_CALL Iff_glTexImage2DMultisampleCoverageNV(Layer *_layer, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations)
+static void REGAL_CALL iff_glTexImage2DMultisampleCoverageNV(Layer *_layer, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLboolean fixedSampleLocations)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4806,11 +4808,11 @@ static void REGAL_CALL Iff_glTexImage2DMultisampleCoverageNV(Layer *_layer, GLen
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
 
-  orig.glTexImage2DMultisampleCoverageNV( orig.glTexImage2DMultisampleCoverageNV_layer, target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations );
+  RglTexImage2DMultisampleCoverageNV( orig, target, coverageSamples, colorSamples, internalFormat, width, height, fixedSampleLocations );
 
 }
 
-static void REGAL_CALL Iff_glTexImage3D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTexImage3D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4819,11 +4821,11 @@ static void REGAL_CALL Iff_glTexImage3D(Layer *_layer, GLenum target, GLint leve
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage3D( orig.glTexImage3D_layer, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  RglTexImage3D( orig, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTexImage3DEXT(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTexImage3DEXT(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4832,11 +4834,11 @@ static void REGAL_CALL Iff_glTexImage3DEXT(Layer *_layer, GLenum target, GLint l
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage3DEXT( orig.glTexImage3DEXT_layer, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  RglTexImage3DEXT( orig, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTexImage3DMultisample(Layer *_layer, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
+static void REGAL_CALL iff_glTexImage3DMultisample(Layer *_layer, GLenum target, GLsizei samples, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedsamplelocations)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4845,11 +4847,11 @@ static void REGAL_CALL Iff_glTexImage3DMultisample(Layer *_layer, GLenum target,
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage3DMultisample( orig.glTexImage3DMultisample_layer, target, samples, internalformat, width, height, depth, fixedsamplelocations );
+  RglTexImage3DMultisample( orig, target, samples, internalformat, width, height, depth, fixedsamplelocations );
 
 }
 
-static void REGAL_CALL Iff_glTexImage3DMultisampleCoverageNV(Layer *_layer, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
+static void REGAL_CALL iff_glTexImage3DMultisampleCoverageNV(Layer *_layer, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLint internalFormat, GLsizei width, GLsizei height, GLsizei depth, GLboolean fixedSampleLocations)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4858,11 +4860,11 @@ static void REGAL_CALL Iff_glTexImage3DMultisampleCoverageNV(Layer *_layer, GLen
   // prefix
   _context->iff->ShadowTexInfo( target, internalFormat );
 
-  orig.glTexImage3DMultisampleCoverageNV( orig.glTexImage3DMultisampleCoverageNV_layer, target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations );
+  RglTexImage3DMultisampleCoverageNV( orig, target, coverageSamples, colorSamples, internalFormat, width, height, depth, fixedSampleLocations );
 
 }
 
-static void REGAL_CALL Iff_glTexImage4DSGIS(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTexImage4DSGIS(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLsizei size4d, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4871,11 +4873,11 @@ static void REGAL_CALL Iff_glTexImage4DSGIS(Layer *_layer, GLenum target, GLint 
   // prefix
   _context->iff->ShadowTexInfo( target, internalformat );
 
-  orig.glTexImage4DSGIS( orig.glTexImage4DSGIS_layer, target, level, internalformat, width, height, depth, size4d, border, format, type, pixels );
+  RglTexImage4DSGIS( orig, target, level, internalformat, width, height, depth, size4d, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4884,11 +4886,11 @@ static void REGAL_CALL Iff_glTextureImage1DEXT(Layer *_layer, GLuint texture, GL
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  orig.glTextureImage1DEXT( orig.glTextureImage1DEXT_layer, texture, target, level, internalformat, width, border, format, type, pixels );
+  RglTextureImage1DEXT( orig, texture, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4897,11 +4899,11 @@ static void REGAL_CALL Iff_glTextureImage2DEXT(Layer *_layer, GLuint texture, GL
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  orig.glTextureImage2DEXT( orig.glTextureImage2DEXT_layer, texture, target, level, internalformat, width, height, border, format, type, pixels );
+  RglTextureImage2DEXT( orig, texture, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL iff_glTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4910,11 +4912,11 @@ static void REGAL_CALL Iff_glTextureImage3DEXT(Layer *_layer, GLuint texture, GL
   // prefix
   _context->iff->ShadowTextureInfo( texture, target, internalformat );
 
-  orig.glTextureImage3DEXT( orig.glTextureImage3DEXT_layer, texture, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  RglTextureImage3DEXT( orig, texture, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Iff_glTranslated(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glTranslated(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4923,11 +4925,11 @@ static void REGAL_CALL Iff_glTranslated(Layer *_layer, GLdouble x, GLdouble y, G
   // impl
   _context->iff->Translate( x, y, z ); return;
 
-  orig.glTranslated( orig.glTranslated_layer, x, y, z );
+  RglTranslated( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glTranslatef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glTranslatef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4936,11 +4938,11 @@ static void REGAL_CALL Iff_glTranslatef(Layer *_layer, GLfloat x, GLfloat y, GLf
   // impl
   _context->iff->Translate( x, y, z ); return;
 
-  orig.glTranslatef( orig.glTranslatef_layer, x, y, z );
+  RglTranslatef( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glUniform1d(Layer *_layer, GLint location, GLdouble x)
+static void REGAL_CALL iff_glUniform1d(Layer *_layer, GLint location, GLdouble x)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4952,11 +4954,11 @@ static void REGAL_CALL Iff_glUniform1d(Layer *_layer, GLint location, GLdouble x
     return;
   }
 
-  orig.glUniform1d( orig.glUniform1d_layer, location, x );
+  RglUniform1d( orig, location, x );
 
 }
 
-static void REGAL_CALL Iff_glUniform1dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL iff_glUniform1dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4968,11 +4970,11 @@ static void REGAL_CALL Iff_glUniform1dv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform1dv( orig.glUniform1dv_layer, location, count, value );
+  RglUniform1dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform1f(Layer *_layer, GLint location, GLfloat v0)
+static void REGAL_CALL iff_glUniform1f(Layer *_layer, GLint location, GLfloat v0)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -4984,11 +4986,11 @@ static void REGAL_CALL Iff_glUniform1f(Layer *_layer, GLint location, GLfloat v0
     return;
   }
 
-  orig.glUniform1f( orig.glUniform1f_layer, location, v0 );
+  RglUniform1f( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Iff_glUniform1fARB(Layer *_layer, GLint location, GLfloat v0)
+static void REGAL_CALL iff_glUniform1fARB(Layer *_layer, GLint location, GLfloat v0)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5000,11 +5002,11 @@ static void REGAL_CALL Iff_glUniform1fARB(Layer *_layer, GLint location, GLfloat
     return;
   }
 
-  orig.glUniform1fARB( orig.glUniform1fARB_layer, location, v0 );
+  RglUniform1fARB( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Iff_glUniform1fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform1fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5016,11 +5018,11 @@ static void REGAL_CALL Iff_glUniform1fv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform1fv( orig.glUniform1fv_layer, location, count, value );
+  RglUniform1fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform1fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform1fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5032,11 +5034,11 @@ static void REGAL_CALL Iff_glUniform1fvARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform1fvARB( orig.glUniform1fvARB_layer, location, count, value );
+  RglUniform1fvARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform1i(Layer *_layer, GLint location, GLint v0)
+static void REGAL_CALL iff_glUniform1i(Layer *_layer, GLint location, GLint v0)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5048,11 +5050,11 @@ static void REGAL_CALL Iff_glUniform1i(Layer *_layer, GLint location, GLint v0)
     return;
   }
 
-  orig.glUniform1i( orig.glUniform1i_layer, location, v0 );
+  RglUniform1i( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Iff_glUniform1iARB(Layer *_layer, GLint location, GLint v0)
+static void REGAL_CALL iff_glUniform1iARB(Layer *_layer, GLint location, GLint v0)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5064,11 +5066,11 @@ static void REGAL_CALL Iff_glUniform1iARB(Layer *_layer, GLint location, GLint v
     return;
   }
 
-  orig.glUniform1iARB( orig.glUniform1iARB_layer, location, v0 );
+  RglUniform1iARB( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Iff_glUniform1iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform1iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5080,11 +5082,11 @@ static void REGAL_CALL Iff_glUniform1iv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform1iv( orig.glUniform1iv_layer, location, count, value );
+  RglUniform1iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform1ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform1ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5096,11 +5098,11 @@ static void REGAL_CALL Iff_glUniform1ivARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform1ivARB( orig.glUniform1ivARB_layer, location, count, value );
+  RglUniform1ivARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform1ui(Layer *_layer, GLint location, GLuint v0)
+static void REGAL_CALL iff_glUniform1ui(Layer *_layer, GLint location, GLuint v0)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5112,11 +5114,11 @@ static void REGAL_CALL Iff_glUniform1ui(Layer *_layer, GLint location, GLuint v0
     return;
   }
 
-  orig.glUniform1ui( orig.glUniform1ui_layer, location, v0 );
+  RglUniform1ui( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Iff_glUniform1uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL iff_glUniform1uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5128,11 +5130,11 @@ static void REGAL_CALL Iff_glUniform1uiv(Layer *_layer, GLint location, GLsizei 
     return;
   }
 
-  orig.glUniform1uiv( orig.glUniform1uiv_layer, location, count, value );
+  RglUniform1uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform2d(Layer *_layer, GLint location, GLdouble x, GLdouble y)
+static void REGAL_CALL iff_glUniform2d(Layer *_layer, GLint location, GLdouble x, GLdouble y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5144,11 +5146,11 @@ static void REGAL_CALL Iff_glUniform2d(Layer *_layer, GLint location, GLdouble x
     return;
   }
 
-  orig.glUniform2d( orig.glUniform2d_layer, location, x, y );
+  RglUniform2d( orig, location, x, y );
 
 }
 
-static void REGAL_CALL Iff_glUniform2dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL iff_glUniform2dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5160,11 +5162,11 @@ static void REGAL_CALL Iff_glUniform2dv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform2dv( orig.glUniform2dv_layer, location, count, value );
+  RglUniform2dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform2f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1)
+static void REGAL_CALL iff_glUniform2f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5176,11 +5178,11 @@ static void REGAL_CALL Iff_glUniform2f(Layer *_layer, GLint location, GLfloat v0
     return;
   }
 
-  orig.glUniform2f( orig.glUniform2f_layer, location, v0, v1 );
+  RglUniform2f( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Iff_glUniform2fARB(Layer *_layer, GLint location, GLfloat v0, GLfloat v1)
+static void REGAL_CALL iff_glUniform2fARB(Layer *_layer, GLint location, GLfloat v0, GLfloat v1)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5192,11 +5194,11 @@ static void REGAL_CALL Iff_glUniform2fARB(Layer *_layer, GLint location, GLfloat
     return;
   }
 
-  orig.glUniform2fARB( orig.glUniform2fARB_layer, location, v0, v1 );
+  RglUniform2fARB( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Iff_glUniform2fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform2fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5208,11 +5210,11 @@ static void REGAL_CALL Iff_glUniform2fv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform2fv( orig.glUniform2fv_layer, location, count, value );
+  RglUniform2fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform2fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform2fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5224,11 +5226,11 @@ static void REGAL_CALL Iff_glUniform2fvARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform2fvARB( orig.glUniform2fvARB_layer, location, count, value );
+  RglUniform2fvARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform2i(Layer *_layer, GLint location, GLint v0, GLint v1)
+static void REGAL_CALL iff_glUniform2i(Layer *_layer, GLint location, GLint v0, GLint v1)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5240,11 +5242,11 @@ static void REGAL_CALL Iff_glUniform2i(Layer *_layer, GLint location, GLint v0, 
     return;
   }
 
-  orig.glUniform2i( orig.glUniform2i_layer, location, v0, v1 );
+  RglUniform2i( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Iff_glUniform2iARB(Layer *_layer, GLint location, GLint v0, GLint v1)
+static void REGAL_CALL iff_glUniform2iARB(Layer *_layer, GLint location, GLint v0, GLint v1)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5256,11 +5258,11 @@ static void REGAL_CALL Iff_glUniform2iARB(Layer *_layer, GLint location, GLint v
     return;
   }
 
-  orig.glUniform2iARB( orig.glUniform2iARB_layer, location, v0, v1 );
+  RglUniform2iARB( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Iff_glUniform2iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform2iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5272,11 +5274,11 @@ static void REGAL_CALL Iff_glUniform2iv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform2iv( orig.glUniform2iv_layer, location, count, value );
+  RglUniform2iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform2ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform2ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5288,11 +5290,11 @@ static void REGAL_CALL Iff_glUniform2ivARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform2ivARB( orig.glUniform2ivARB_layer, location, count, value );
+  RglUniform2ivARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform2ui(Layer *_layer, GLint location, GLuint v0, GLuint v1)
+static void REGAL_CALL iff_glUniform2ui(Layer *_layer, GLint location, GLuint v0, GLuint v1)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5304,11 +5306,11 @@ static void REGAL_CALL Iff_glUniform2ui(Layer *_layer, GLint location, GLuint v0
     return;
   }
 
-  orig.glUniform2ui( orig.glUniform2ui_layer, location, v0, v1 );
+  RglUniform2ui( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Iff_glUniform2uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL iff_glUniform2uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5320,11 +5322,11 @@ static void REGAL_CALL Iff_glUniform2uiv(Layer *_layer, GLint location, GLsizei 
     return;
   }
 
-  orig.glUniform2uiv( orig.glUniform2uiv_layer, location, count, value );
+  RglUniform2uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform3d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glUniform3d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5336,11 +5338,11 @@ static void REGAL_CALL Iff_glUniform3d(Layer *_layer, GLint location, GLdouble x
     return;
   }
 
-  orig.glUniform3d( orig.glUniform3d_layer, location, x, y, z );
+  RglUniform3d( orig, location, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glUniform3dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL iff_glUniform3dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5352,11 +5354,11 @@ static void REGAL_CALL Iff_glUniform3dv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform3dv( orig.glUniform3dv_layer, location, count, value );
+  RglUniform3dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform3f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
+static void REGAL_CALL iff_glUniform3f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5368,11 +5370,11 @@ static void REGAL_CALL Iff_glUniform3f(Layer *_layer, GLint location, GLfloat v0
     return;
   }
 
-  orig.glUniform3f( orig.glUniform3f_layer, location, v0, v1, v2 );
+  RglUniform3f( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Iff_glUniform3fARB(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
+static void REGAL_CALL iff_glUniform3fARB(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5384,11 +5386,11 @@ static void REGAL_CALL Iff_glUniform3fARB(Layer *_layer, GLint location, GLfloat
     return;
   }
 
-  orig.glUniform3fARB( orig.glUniform3fARB_layer, location, v0, v1, v2 );
+  RglUniform3fARB( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Iff_glUniform3fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform3fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5400,11 +5402,11 @@ static void REGAL_CALL Iff_glUniform3fv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform3fv( orig.glUniform3fv_layer, location, count, value );
+  RglUniform3fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform3fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform3fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5416,11 +5418,11 @@ static void REGAL_CALL Iff_glUniform3fvARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform3fvARB( orig.glUniform3fvARB_layer, location, count, value );
+  RglUniform3fvARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform3i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2)
+static void REGAL_CALL iff_glUniform3i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5432,11 +5434,11 @@ static void REGAL_CALL Iff_glUniform3i(Layer *_layer, GLint location, GLint v0, 
     return;
   }
 
-  orig.glUniform3i( orig.glUniform3i_layer, location, v0, v1, v2 );
+  RglUniform3i( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Iff_glUniform3iARB(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2)
+static void REGAL_CALL iff_glUniform3iARB(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5448,11 +5450,11 @@ static void REGAL_CALL Iff_glUniform3iARB(Layer *_layer, GLint location, GLint v
     return;
   }
 
-  orig.glUniform3iARB( orig.glUniform3iARB_layer, location, v0, v1, v2 );
+  RglUniform3iARB( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Iff_glUniform3iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform3iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5464,11 +5466,11 @@ static void REGAL_CALL Iff_glUniform3iv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform3iv( orig.glUniform3iv_layer, location, count, value );
+  RglUniform3iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform3ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform3ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5480,11 +5482,11 @@ static void REGAL_CALL Iff_glUniform3ivARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform3ivARB( orig.glUniform3ivARB_layer, location, count, value );
+  RglUniform3ivARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform3ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2)
+static void REGAL_CALL iff_glUniform3ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5496,11 +5498,11 @@ static void REGAL_CALL Iff_glUniform3ui(Layer *_layer, GLint location, GLuint v0
     return;
   }
 
-  orig.glUniform3ui( orig.glUniform3ui_layer, location, v0, v1, v2 );
+  RglUniform3ui( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Iff_glUniform3uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL iff_glUniform3uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5512,11 +5514,11 @@ static void REGAL_CALL Iff_glUniform3uiv(Layer *_layer, GLint location, GLsizei 
     return;
   }
 
-  orig.glUniform3uiv( orig.glUniform3uiv_layer, location, count, value );
+  RglUniform3uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform4d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL iff_glUniform4d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5528,11 +5530,11 @@ static void REGAL_CALL Iff_glUniform4d(Layer *_layer, GLint location, GLdouble x
     return;
   }
 
-  orig.glUniform4d( orig.glUniform4d_layer, location, x, y, z, w );
+  RglUniform4d( orig, location, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glUniform4dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL iff_glUniform4dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5544,11 +5546,11 @@ static void REGAL_CALL Iff_glUniform4dv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform4dv( orig.glUniform4dv_layer, location, count, value );
+  RglUniform4dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform4f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
+static void REGAL_CALL iff_glUniform4f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5560,11 +5562,11 @@ static void REGAL_CALL Iff_glUniform4f(Layer *_layer, GLint location, GLfloat v0
     return;
   }
 
-  orig.glUniform4f( orig.glUniform4f_layer, location, v0, v1, v2, v3 );
+  RglUniform4f( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Iff_glUniform4fARB(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
+static void REGAL_CALL iff_glUniform4fARB(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5576,11 +5578,11 @@ static void REGAL_CALL Iff_glUniform4fARB(Layer *_layer, GLint location, GLfloat
     return;
   }
 
-  orig.glUniform4fARB( orig.glUniform4fARB_layer, location, v0, v1, v2, v3 );
+  RglUniform4fARB( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Iff_glUniform4fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform4fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5592,11 +5594,11 @@ static void REGAL_CALL Iff_glUniform4fv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform4fv( orig.glUniform4fv_layer, location, count, value );
+  RglUniform4fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform4fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL iff_glUniform4fvARB(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5608,11 +5610,11 @@ static void REGAL_CALL Iff_glUniform4fvARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform4fvARB( orig.glUniform4fvARB_layer, location, count, value );
+  RglUniform4fvARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform4i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
+static void REGAL_CALL iff_glUniform4i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5624,11 +5626,11 @@ static void REGAL_CALL Iff_glUniform4i(Layer *_layer, GLint location, GLint v0, 
     return;
   }
 
-  orig.glUniform4i( orig.glUniform4i_layer, location, v0, v1, v2, v3 );
+  RglUniform4i( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Iff_glUniform4iARB(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
+static void REGAL_CALL iff_glUniform4iARB(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5640,11 +5642,11 @@ static void REGAL_CALL Iff_glUniform4iARB(Layer *_layer, GLint location, GLint v
     return;
   }
 
-  orig.glUniform4iARB( orig.glUniform4iARB_layer, location, v0, v1, v2, v3 );
+  RglUniform4iARB( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Iff_glUniform4iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform4iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5656,11 +5658,11 @@ static void REGAL_CALL Iff_glUniform4iv(Layer *_layer, GLint location, GLsizei c
     return;
   }
 
-  orig.glUniform4iv( orig.glUniform4iv_layer, location, count, value );
+  RglUniform4iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform4ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL iff_glUniform4ivARB(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5672,11 +5674,11 @@ static void REGAL_CALL Iff_glUniform4ivARB(Layer *_layer, GLint location, GLsize
     return;
   }
 
-  orig.glUniform4ivARB( orig.glUniform4ivARB_layer, location, count, value );
+  RglUniform4ivARB( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniform4ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
+static void REGAL_CALL iff_glUniform4ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5688,11 +5690,11 @@ static void REGAL_CALL Iff_glUniform4ui(Layer *_layer, GLint location, GLuint v0
     return;
   }
 
-  orig.glUniform4ui( orig.glUniform4ui_layer, location, v0, v1, v2, v3 );
+  RglUniform4ui( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Iff_glUniform4uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL iff_glUniform4uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5704,11 +5706,11 @@ static void REGAL_CALL Iff_glUniform4uiv(Layer *_layer, GLint location, GLsizei 
     return;
   }
 
-  orig.glUniform4uiv( orig.glUniform4uiv_layer, location, count, value );
+  RglUniform4uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5720,11 +5722,11 @@ static void REGAL_CALL Iff_glUniformMatrix2dv(Layer *_layer, GLint location, GLs
     return;
   }
 
-  orig.glUniformMatrix2dv( orig.glUniformMatrix2dv_layer, location, count, transpose, value );
+  RglUniformMatrix2dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5736,11 +5738,11 @@ static void REGAL_CALL Iff_glUniformMatrix2fv(Layer *_layer, GLint location, GLs
     return;
   }
 
-  orig.glUniformMatrix2fv( orig.glUniformMatrix2fv_layer, location, count, transpose, value );
+  RglUniformMatrix2fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix2fvARB(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix2fvARB(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5752,11 +5754,11 @@ static void REGAL_CALL Iff_glUniformMatrix2fvARB(Layer *_layer, GLint location, 
     return;
   }
 
-  orig.glUniformMatrix2fvARB( orig.glUniformMatrix2fvARB_layer, location, count, transpose, value );
+  RglUniformMatrix2fvARB( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix2x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix2x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5768,11 +5770,11 @@ static void REGAL_CALL Iff_glUniformMatrix2x3dv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix2x3dv( orig.glUniformMatrix2x3dv_layer, location, count, transpose, value );
+  RglUniformMatrix2x3dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix2x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix2x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5784,11 +5786,11 @@ static void REGAL_CALL Iff_glUniformMatrix2x3fv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix2x3fv( orig.glUniformMatrix2x3fv_layer, location, count, transpose, value );
+  RglUniformMatrix2x3fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix2x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix2x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5800,11 +5802,11 @@ static void REGAL_CALL Iff_glUniformMatrix2x4dv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix2x4dv( orig.glUniformMatrix2x4dv_layer, location, count, transpose, value );
+  RglUniformMatrix2x4dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix2x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix2x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5816,11 +5818,11 @@ static void REGAL_CALL Iff_glUniformMatrix2x4fv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix2x4fv( orig.glUniformMatrix2x4fv_layer, location, count, transpose, value );
+  RglUniformMatrix2x4fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5832,11 +5834,11 @@ static void REGAL_CALL Iff_glUniformMatrix3dv(Layer *_layer, GLint location, GLs
     return;
   }
 
-  orig.glUniformMatrix3dv( orig.glUniformMatrix3dv_layer, location, count, transpose, value );
+  RglUniformMatrix3dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5848,11 +5850,11 @@ static void REGAL_CALL Iff_glUniformMatrix3fv(Layer *_layer, GLint location, GLs
     return;
   }
 
-  orig.glUniformMatrix3fv( orig.glUniformMatrix3fv_layer, location, count, transpose, value );
+  RglUniformMatrix3fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix3fvARB(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix3fvARB(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5864,11 +5866,11 @@ static void REGAL_CALL Iff_glUniformMatrix3fvARB(Layer *_layer, GLint location, 
     return;
   }
 
-  orig.glUniformMatrix3fvARB( orig.glUniformMatrix3fvARB_layer, location, count, transpose, value );
+  RglUniformMatrix3fvARB( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix3x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix3x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5880,11 +5882,11 @@ static void REGAL_CALL Iff_glUniformMatrix3x2dv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix3x2dv( orig.glUniformMatrix3x2dv_layer, location, count, transpose, value );
+  RglUniformMatrix3x2dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix3x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix3x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5896,11 +5898,11 @@ static void REGAL_CALL Iff_glUniformMatrix3x2fv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix3x2fv( orig.glUniformMatrix3x2fv_layer, location, count, transpose, value );
+  RglUniformMatrix3x2fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix3x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix3x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5912,11 +5914,11 @@ static void REGAL_CALL Iff_glUniformMatrix3x4dv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix3x4dv( orig.glUniformMatrix3x4dv_layer, location, count, transpose, value );
+  RglUniformMatrix3x4dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix3x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix3x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5928,11 +5930,11 @@ static void REGAL_CALL Iff_glUniformMatrix3x4fv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix3x4fv( orig.glUniformMatrix3x4fv_layer, location, count, transpose, value );
+  RglUniformMatrix3x4fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5944,11 +5946,11 @@ static void REGAL_CALL Iff_glUniformMatrix4dv(Layer *_layer, GLint location, GLs
     return;
   }
 
-  orig.glUniformMatrix4dv( orig.glUniformMatrix4dv_layer, location, count, transpose, value );
+  RglUniformMatrix4dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5960,11 +5962,11 @@ static void REGAL_CALL Iff_glUniformMatrix4fv(Layer *_layer, GLint location, GLs
     return;
   }
 
-  orig.glUniformMatrix4fv( orig.glUniformMatrix4fv_layer, location, count, transpose, value );
+  RglUniformMatrix4fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix4fvARB(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix4fvARB(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5976,11 +5978,11 @@ static void REGAL_CALL Iff_glUniformMatrix4fvARB(Layer *_layer, GLint location, 
     return;
   }
 
-  orig.glUniformMatrix4fvARB( orig.glUniformMatrix4fvARB_layer, location, count, transpose, value );
+  RglUniformMatrix4fvARB( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix4x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix4x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -5992,11 +5994,11 @@ static void REGAL_CALL Iff_glUniformMatrix4x2dv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix4x2dv( orig.glUniformMatrix4x2dv_layer, location, count, transpose, value );
+  RglUniformMatrix4x2dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix4x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix4x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6008,11 +6010,11 @@ static void REGAL_CALL Iff_glUniformMatrix4x2fv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix4x2fv( orig.glUniformMatrix4x2fv_layer, location, count, transpose, value );
+  RglUniformMatrix4x2fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix4x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL iff_glUniformMatrix4x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6024,11 +6026,11 @@ static void REGAL_CALL Iff_glUniformMatrix4x3dv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix4x3dv( orig.glUniformMatrix4x3dv_layer, location, count, transpose, value );
+  RglUniformMatrix4x3dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUniformMatrix4x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL iff_glUniformMatrix4x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6040,11 +6042,11 @@ static void REGAL_CALL Iff_glUniformMatrix4x3fv(Layer *_layer, GLint location, G
     return;
   }
 
-  orig.glUniformMatrix4x3fv( orig.glUniformMatrix4x3fv_layer, location, count, transpose, value );
+  RglUniformMatrix4x3fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Iff_glUseProgram(Layer *_layer, GLuint program)
+static void REGAL_CALL iff_glUseProgram(Layer *_layer, GLuint program)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6055,11 +6057,11 @@ static void REGAL_CALL Iff_glUseProgram(Layer *_layer, GLuint program)
       return;
   }
 
-  orig.glUseProgram( orig.glUseProgram_layer, program );
+  RglUseProgram( orig, program );
 
 }
 
-static void REGAL_CALL Iff_glUseProgramObjectARB(Layer *_layer, GLhandleARB programObj)
+static void REGAL_CALL iff_glUseProgramObjectARB(Layer *_layer, GLhandleARB programObj)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6070,11 +6072,11 @@ static void REGAL_CALL Iff_glUseProgramObjectARB(Layer *_layer, GLhandleARB prog
       return;
   }
 
-  orig.glUseProgramObjectARB( orig.glUseProgramObjectARB_layer, programObj );
+  RglUseProgramObjectARB( orig, programObj );
 
 }
 
-static void REGAL_CALL Iff_glVertex2d(Layer *_layer, GLdouble x, GLdouble y)
+static void REGAL_CALL iff_glVertex2d(Layer *_layer, GLdouble x, GLdouble y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6083,11 +6085,11 @@ static void REGAL_CALL Iff_glVertex2d(Layer *_layer, GLdouble x, GLdouble y)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y ); return;
 
-  orig.glVertex2d( orig.glVertex2d_layer, x, y );
+  RglVertex2d( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertex2dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glVertex2dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6096,11 +6098,11 @@ static void REGAL_CALL Iff_glVertex2dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex2dv( orig.glVertex2dv_layer, v );
+  RglVertex2dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex2f(Layer *_layer, GLfloat x, GLfloat y)
+static void REGAL_CALL iff_glVertex2f(Layer *_layer, GLfloat x, GLfloat y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6109,11 +6111,11 @@ static void REGAL_CALL Iff_glVertex2f(Layer *_layer, GLfloat x, GLfloat y)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y ); return;
 
-  orig.glVertex2f( orig.glVertex2f_layer, x, y );
+  RglVertex2f( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertex2fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glVertex2fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6122,11 +6124,11 @@ static void REGAL_CALL Iff_glVertex2fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex2fv( orig.glVertex2fv_layer, v );
+  RglVertex2fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex2i(Layer *_layer, GLint x, GLint y)
+static void REGAL_CALL iff_glVertex2i(Layer *_layer, GLint x, GLint y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6135,11 +6137,11 @@ static void REGAL_CALL Iff_glVertex2i(Layer *_layer, GLint x, GLint y)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y ); return;
 
-  orig.glVertex2i( orig.glVertex2i_layer, x, y );
+  RglVertex2i( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertex2iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glVertex2iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6148,11 +6150,11 @@ static void REGAL_CALL Iff_glVertex2iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex2iv( orig.glVertex2iv_layer, v );
+  RglVertex2iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex2s(Layer *_layer, GLshort x, GLshort y)
+static void REGAL_CALL iff_glVertex2s(Layer *_layer, GLshort x, GLshort y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6161,11 +6163,11 @@ static void REGAL_CALL Iff_glVertex2s(Layer *_layer, GLshort x, GLshort y)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y ); return;
 
-  orig.glVertex2s( orig.glVertex2s_layer, x, y );
+  RglVertex2s( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertex2sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glVertex2sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6174,11 +6176,11 @@ static void REGAL_CALL Iff_glVertex2sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->Attr<2>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex2sv( orig.glVertex2sv_layer, v );
+  RglVertex2sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glVertex3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6187,11 +6189,11 @@ static void REGAL_CALL Iff_glVertex3d(Layer *_layer, GLdouble x, GLdouble y, GLd
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z ); return;
 
-  orig.glVertex3d( orig.glVertex3d_layer, x, y, z );
+  RglVertex3d( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertex3dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glVertex3dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6200,11 +6202,11 @@ static void REGAL_CALL Iff_glVertex3dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex3dv( orig.glVertex3dv_layer, v );
+  RglVertex3dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glVertex3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6213,11 +6215,11 @@ static void REGAL_CALL Iff_glVertex3f(Layer *_layer, GLfloat x, GLfloat y, GLflo
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z ); return;
 
-  orig.glVertex3f( orig.glVertex3f_layer, x, y, z );
+  RglVertex3f( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertex3fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glVertex3fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6226,11 +6228,11 @@ static void REGAL_CALL Iff_glVertex3fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex3fv( orig.glVertex3fv_layer, v );
+  RglVertex3fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex3i(Layer *_layer, GLint x, GLint y, GLint z)
+static void REGAL_CALL iff_glVertex3i(Layer *_layer, GLint x, GLint y, GLint z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6239,11 +6241,11 @@ static void REGAL_CALL Iff_glVertex3i(Layer *_layer, GLint x, GLint y, GLint z)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z ); return;
 
-  orig.glVertex3i( orig.glVertex3i_layer, x, y, z );
+  RglVertex3i( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertex3iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glVertex3iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6252,11 +6254,11 @@ static void REGAL_CALL Iff_glVertex3iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex3iv( orig.glVertex3iv_layer, v );
+  RglVertex3iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL iff_glVertex3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6265,11 +6267,11 @@ static void REGAL_CALL Iff_glVertex3s(Layer *_layer, GLshort x, GLshort y, GLsho
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z ); return;
 
-  orig.glVertex3s( orig.glVertex3s_layer, x, y, z );
+  RglVertex3s( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertex3sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glVertex3sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6278,11 +6280,11 @@ static void REGAL_CALL Iff_glVertex3sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->Attr<3>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex3sv( orig.glVertex3sv_layer, v );
+  RglVertex3sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex4d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL iff_glVertex4d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6291,11 +6293,11 @@ static void REGAL_CALL Iff_glVertex4d(Layer *_layer, GLdouble x, GLdouble y, GLd
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z, w ); return;
 
-  orig.glVertex4d( orig.glVertex4d_layer, x, y, z, w );
+  RglVertex4d( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertex4dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL iff_glVertex4dv(Layer *_layer, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6304,11 +6306,11 @@ static void REGAL_CALL Iff_glVertex4dv(Layer *_layer, const GLdouble *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex4dv( orig.glVertex4dv_layer, v );
+  RglVertex4dv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex4f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL iff_glVertex4f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6317,11 +6319,11 @@ static void REGAL_CALL Iff_glVertex4f(Layer *_layer, GLfloat x, GLfloat y, GLflo
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z, w ); return;
 
-  orig.glVertex4f( orig.glVertex4f_layer, x, y, z, w );
+  RglVertex4f( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertex4fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL iff_glVertex4fv(Layer *_layer, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6330,11 +6332,11 @@ static void REGAL_CALL Iff_glVertex4fv(Layer *_layer, const GLfloat *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex4fv( orig.glVertex4fv_layer, v );
+  RglVertex4fv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex4i(Layer *_layer, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL iff_glVertex4i(Layer *_layer, GLint x, GLint y, GLint z, GLint w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6343,11 +6345,11 @@ static void REGAL_CALL Iff_glVertex4i(Layer *_layer, GLint x, GLint y, GLint z, 
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z, w ); return;
 
-  orig.glVertex4i( orig.glVertex4i_layer, x, y, z, w );
+  RglVertex4i( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertex4iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL iff_glVertex4iv(Layer *_layer, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6356,11 +6358,11 @@ static void REGAL_CALL Iff_glVertex4iv(Layer *_layer, const GLint *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex4iv( orig.glVertex4iv_layer, v );
+  RglVertex4iv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertex4s(Layer *_layer, GLshort x, GLshort y, GLshort z, GLshort w)
+static void REGAL_CALL iff_glVertex4s(Layer *_layer, GLshort x, GLshort y, GLshort z, GLshort w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6369,11 +6371,11 @@ static void REGAL_CALL Iff_glVertex4s(Layer *_layer, GLshort x, GLshort y, GLsho
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), x, y, z, w ); return;
 
-  orig.glVertex4s( orig.glVertex4s_layer, x, y, z, w );
+  RglVertex4s( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertex4sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL iff_glVertex4sv(Layer *_layer, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6382,11 +6384,11 @@ static void REGAL_CALL Iff_glVertex4sv(Layer *_layer, const GLshort *v)
   // impl
   _context->iff->Attr<4>( _context, _context->iff->AttrIndex( RFF2A_Vertex ), v ); return;
 
-  orig.glVertex4sv( orig.glVertex4sv_layer, v );
+  RglVertex4sv( orig, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1d(Layer *_layer, GLuint index, GLdouble x)
+static void REGAL_CALL iff_glVertexAttrib1d(Layer *_layer, GLuint index, GLdouble x)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6395,11 +6397,11 @@ static void REGAL_CALL Iff_glVertexAttrib1d(Layer *_layer, GLuint index, GLdoubl
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1d( orig.glVertexAttrib1d_layer, index, x );
+  RglVertexAttrib1d( orig, index, x );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1dARB(Layer *_layer, GLuint index, GLdouble x)
+static void REGAL_CALL iff_glVertexAttrib1dARB(Layer *_layer, GLuint index, GLdouble x)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6408,11 +6410,11 @@ static void REGAL_CALL Iff_glVertexAttrib1dARB(Layer *_layer, GLuint index, GLdo
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1dARB( orig.glVertexAttrib1dARB_layer, index, x );
+  RglVertexAttrib1dARB( orig, index, x );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1dv(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib1dv(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6421,11 +6423,11 @@ static void REGAL_CALL Iff_glVertexAttrib1dv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1dv( orig.glVertexAttrib1dv_layer, index, v );
+  RglVertexAttrib1dv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1dvARB(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib1dvARB(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6434,11 +6436,11 @@ static void REGAL_CALL Iff_glVertexAttrib1dvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1dvARB( orig.glVertexAttrib1dvARB_layer, index, v );
+  RglVertexAttrib1dvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1f(Layer *_layer, GLuint index, GLfloat x)
+static void REGAL_CALL iff_glVertexAttrib1f(Layer *_layer, GLuint index, GLfloat x)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6447,11 +6449,11 @@ static void REGAL_CALL Iff_glVertexAttrib1f(Layer *_layer, GLuint index, GLfloat
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1f( orig.glVertexAttrib1f_layer, index, x );
+  RglVertexAttrib1f( orig, index, x );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1fARB(Layer *_layer, GLuint index, GLfloat x)
+static void REGAL_CALL iff_glVertexAttrib1fARB(Layer *_layer, GLuint index, GLfloat x)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6460,11 +6462,11 @@ static void REGAL_CALL Iff_glVertexAttrib1fARB(Layer *_layer, GLuint index, GLfl
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1fARB( orig.glVertexAttrib1fARB_layer, index, x );
+  RglVertexAttrib1fARB( orig, index, x );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1fv(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib1fv(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6473,11 +6475,11 @@ static void REGAL_CALL Iff_glVertexAttrib1fv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1fv( orig.glVertexAttrib1fv_layer, index, v );
+  RglVertexAttrib1fv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1fvARB(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib1fvARB(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6486,11 +6488,11 @@ static void REGAL_CALL Iff_glVertexAttrib1fvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1fvARB( orig.glVertexAttrib1fvARB_layer, index, v );
+  RglVertexAttrib1fvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1s(Layer *_layer, GLuint index, GLshort x)
+static void REGAL_CALL iff_glVertexAttrib1s(Layer *_layer, GLuint index, GLshort x)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6499,11 +6501,11 @@ static void REGAL_CALL Iff_glVertexAttrib1s(Layer *_layer, GLuint index, GLshort
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1s( orig.glVertexAttrib1s_layer, index, x );
+  RglVertexAttrib1s( orig, index, x );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1sARB(Layer *_layer, GLuint index, GLshort x)
+static void REGAL_CALL iff_glVertexAttrib1sARB(Layer *_layer, GLuint index, GLshort x)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6512,11 +6514,11 @@ static void REGAL_CALL Iff_glVertexAttrib1sARB(Layer *_layer, GLuint index, GLsh
   // prefix
   _context->iff->Attr<1>( _context, index, x );
 
-  orig.glVertexAttrib1sARB( orig.glVertexAttrib1sARB_layer, index, x );
+  RglVertexAttrib1sARB( orig, index, x );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1sv(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib1sv(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6525,11 +6527,11 @@ static void REGAL_CALL Iff_glVertexAttrib1sv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1sv( orig.glVertexAttrib1sv_layer, index, v );
+  RglVertexAttrib1sv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib1svARB(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib1svARB(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6538,11 +6540,11 @@ static void REGAL_CALL Iff_glVertexAttrib1svARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<1>( _context, index, v );
 
-  orig.glVertexAttrib1svARB( orig.glVertexAttrib1svARB_layer, index, v );
+  RglVertexAttrib1svARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2d(Layer *_layer, GLuint index, GLdouble x, GLdouble y)
+static void REGAL_CALL iff_glVertexAttrib2d(Layer *_layer, GLuint index, GLdouble x, GLdouble y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6551,11 +6553,11 @@ static void REGAL_CALL Iff_glVertexAttrib2d(Layer *_layer, GLuint index, GLdoubl
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2d( orig.glVertexAttrib2d_layer, index, x, y );
+  RglVertexAttrib2d( orig, index, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2dARB(Layer *_layer, GLuint index, GLdouble x, GLdouble y)
+static void REGAL_CALL iff_glVertexAttrib2dARB(Layer *_layer, GLuint index, GLdouble x, GLdouble y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6564,11 +6566,11 @@ static void REGAL_CALL Iff_glVertexAttrib2dARB(Layer *_layer, GLuint index, GLdo
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2dARB( orig.glVertexAttrib2dARB_layer, index, x, y );
+  RglVertexAttrib2dARB( orig, index, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2dv(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib2dv(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6577,11 +6579,11 @@ static void REGAL_CALL Iff_glVertexAttrib2dv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2dv( orig.glVertexAttrib2dv_layer, index, v );
+  RglVertexAttrib2dv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2dvARB(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib2dvARB(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6590,11 +6592,11 @@ static void REGAL_CALL Iff_glVertexAttrib2dvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2dvARB( orig.glVertexAttrib2dvARB_layer, index, v );
+  RglVertexAttrib2dvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2f(Layer *_layer, GLuint index, GLfloat x, GLfloat y)
+static void REGAL_CALL iff_glVertexAttrib2f(Layer *_layer, GLuint index, GLfloat x, GLfloat y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6603,11 +6605,11 @@ static void REGAL_CALL Iff_glVertexAttrib2f(Layer *_layer, GLuint index, GLfloat
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2f( orig.glVertexAttrib2f_layer, index, x, y );
+  RglVertexAttrib2f( orig, index, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2fARB(Layer *_layer, GLuint index, GLfloat x, GLfloat y)
+static void REGAL_CALL iff_glVertexAttrib2fARB(Layer *_layer, GLuint index, GLfloat x, GLfloat y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6616,11 +6618,11 @@ static void REGAL_CALL Iff_glVertexAttrib2fARB(Layer *_layer, GLuint index, GLfl
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2fARB( orig.glVertexAttrib2fARB_layer, index, x, y );
+  RglVertexAttrib2fARB( orig, index, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2fv(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib2fv(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6629,11 +6631,11 @@ static void REGAL_CALL Iff_glVertexAttrib2fv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2fv( orig.glVertexAttrib2fv_layer, index, v );
+  RglVertexAttrib2fv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2fvARB(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib2fvARB(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6642,11 +6644,11 @@ static void REGAL_CALL Iff_glVertexAttrib2fvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2fvARB( orig.glVertexAttrib2fvARB_layer, index, v );
+  RglVertexAttrib2fvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2s(Layer *_layer, GLuint index, GLshort x, GLshort y)
+static void REGAL_CALL iff_glVertexAttrib2s(Layer *_layer, GLuint index, GLshort x, GLshort y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6655,11 +6657,11 @@ static void REGAL_CALL Iff_glVertexAttrib2s(Layer *_layer, GLuint index, GLshort
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2s( orig.glVertexAttrib2s_layer, index, x, y );
+  RglVertexAttrib2s( orig, index, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2sARB(Layer *_layer, GLuint index, GLshort x, GLshort y)
+static void REGAL_CALL iff_glVertexAttrib2sARB(Layer *_layer, GLuint index, GLshort x, GLshort y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6668,11 +6670,11 @@ static void REGAL_CALL Iff_glVertexAttrib2sARB(Layer *_layer, GLuint index, GLsh
   // prefix
   _context->iff->Attr<2>( _context, index, x, y );
 
-  orig.glVertexAttrib2sARB( orig.glVertexAttrib2sARB_layer, index, x, y );
+  RglVertexAttrib2sARB( orig, index, x, y );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2sv(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib2sv(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6681,11 +6683,11 @@ static void REGAL_CALL Iff_glVertexAttrib2sv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2sv( orig.glVertexAttrib2sv_layer, index, v );
+  RglVertexAttrib2sv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib2svARB(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib2svARB(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6694,11 +6696,11 @@ static void REGAL_CALL Iff_glVertexAttrib2svARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<2>( _context, index, v );
 
-  orig.glVertexAttrib2svARB( orig.glVertexAttrib2svARB_layer, index, v );
+  RglVertexAttrib2svARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3d(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glVertexAttrib3d(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6707,11 +6709,11 @@ static void REGAL_CALL Iff_glVertexAttrib3d(Layer *_layer, GLuint index, GLdoubl
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3d( orig.glVertexAttrib3d_layer, index, x, y, z );
+  RglVertexAttrib3d( orig, index, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3dARB(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glVertexAttrib3dARB(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6720,11 +6722,11 @@ static void REGAL_CALL Iff_glVertexAttrib3dARB(Layer *_layer, GLuint index, GLdo
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3dARB( orig.glVertexAttrib3dARB_layer, index, x, y, z );
+  RglVertexAttrib3dARB( orig, index, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3dv(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib3dv(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6733,11 +6735,11 @@ static void REGAL_CALL Iff_glVertexAttrib3dv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3dv( orig.glVertexAttrib3dv_layer, index, v );
+  RglVertexAttrib3dv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3dvARB(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib3dvARB(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6746,11 +6748,11 @@ static void REGAL_CALL Iff_glVertexAttrib3dvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3dvARB( orig.glVertexAttrib3dvARB_layer, index, v );
+  RglVertexAttrib3dvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3f(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glVertexAttrib3f(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6759,11 +6761,11 @@ static void REGAL_CALL Iff_glVertexAttrib3f(Layer *_layer, GLuint index, GLfloat
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3f( orig.glVertexAttrib3f_layer, index, x, y, z );
+  RglVertexAttrib3f( orig, index, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3fARB(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glVertexAttrib3fARB(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6772,11 +6774,11 @@ static void REGAL_CALL Iff_glVertexAttrib3fARB(Layer *_layer, GLuint index, GLfl
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3fARB( orig.glVertexAttrib3fARB_layer, index, x, y, z );
+  RglVertexAttrib3fARB( orig, index, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3fv(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib3fv(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6785,11 +6787,11 @@ static void REGAL_CALL Iff_glVertexAttrib3fv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3fv( orig.glVertexAttrib3fv_layer, index, v );
+  RglVertexAttrib3fv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3fvARB(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib3fvARB(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6798,11 +6800,11 @@ static void REGAL_CALL Iff_glVertexAttrib3fvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3fvARB( orig.glVertexAttrib3fvARB_layer, index, v );
+  RglVertexAttrib3fvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3s(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL iff_glVertexAttrib3s(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6811,11 +6813,11 @@ static void REGAL_CALL Iff_glVertexAttrib3s(Layer *_layer, GLuint index, GLshort
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3s( orig.glVertexAttrib3s_layer, index, x, y, z );
+  RglVertexAttrib3s( orig, index, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3sARB(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL iff_glVertexAttrib3sARB(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6824,11 +6826,11 @@ static void REGAL_CALL Iff_glVertexAttrib3sARB(Layer *_layer, GLuint index, GLsh
   // prefix
   _context->iff->Attr<3>( _context, index, x, y, z );
 
-  orig.glVertexAttrib3sARB( orig.glVertexAttrib3sARB_layer, index, x, y, z );
+  RglVertexAttrib3sARB( orig, index, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3sv(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib3sv(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6837,11 +6839,11 @@ static void REGAL_CALL Iff_glVertexAttrib3sv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3sv( orig.glVertexAttrib3sv_layer, index, v );
+  RglVertexAttrib3sv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib3svARB(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib3svARB(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6850,11 +6852,11 @@ static void REGAL_CALL Iff_glVertexAttrib3svARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<3>( _context, index, v );
 
-  orig.glVertexAttrib3svARB( orig.glVertexAttrib3svARB_layer, index, v );
+  RglVertexAttrib3svARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4Nbv(Layer *_layer, GLuint index, const GLbyte *v)
+static void REGAL_CALL iff_glVertexAttrib4Nbv(Layer *_layer, GLuint index, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6863,11 +6865,11 @@ static void REGAL_CALL Iff_glVertexAttrib4Nbv(Layer *_layer, GLuint index, const
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nbv( orig.glVertexAttrib4Nbv_layer, index, v );
+  RglVertexAttrib4Nbv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4NbvARB(Layer *_layer, GLuint index, const GLbyte *v)
+static void REGAL_CALL iff_glVertexAttrib4NbvARB(Layer *_layer, GLuint index, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6876,11 +6878,11 @@ static void REGAL_CALL Iff_glVertexAttrib4NbvARB(Layer *_layer, GLuint index, co
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NbvARB( orig.glVertexAttrib4NbvARB_layer, index, v );
+  RglVertexAttrib4NbvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4Niv(Layer *_layer, GLuint index, const GLint *v)
+static void REGAL_CALL iff_glVertexAttrib4Niv(Layer *_layer, GLuint index, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6889,11 +6891,11 @@ static void REGAL_CALL Iff_glVertexAttrib4Niv(Layer *_layer, GLuint index, const
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Niv( orig.glVertexAttrib4Niv_layer, index, v );
+  RglVertexAttrib4Niv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4NivARB(Layer *_layer, GLuint index, const GLint *v)
+static void REGAL_CALL iff_glVertexAttrib4NivARB(Layer *_layer, GLuint index, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6902,11 +6904,11 @@ static void REGAL_CALL Iff_glVertexAttrib4NivARB(Layer *_layer, GLuint index, co
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NivARB( orig.glVertexAttrib4NivARB_layer, index, v );
+  RglVertexAttrib4NivARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4Nsv(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib4Nsv(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6915,11 +6917,11 @@ static void REGAL_CALL Iff_glVertexAttrib4Nsv(Layer *_layer, GLuint index, const
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nsv( orig.glVertexAttrib4Nsv_layer, index, v );
+  RglVertexAttrib4Nsv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4NsvARB(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib4NsvARB(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6928,11 +6930,11 @@ static void REGAL_CALL Iff_glVertexAttrib4NsvARB(Layer *_layer, GLuint index, co
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NsvARB( orig.glVertexAttrib4NsvARB_layer, index, v );
+  RglVertexAttrib4NsvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4Nub(Layer *_layer, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
+static void REGAL_CALL iff_glVertexAttrib4Nub(Layer *_layer, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6941,11 +6943,11 @@ static void REGAL_CALL Iff_glVertexAttrib4Nub(Layer *_layer, GLuint index, GLuby
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4Nub( orig.glVertexAttrib4Nub_layer, index, x, y, z, w );
+  RglVertexAttrib4Nub( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4NubARB(Layer *_layer, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
+static void REGAL_CALL iff_glVertexAttrib4NubARB(Layer *_layer, GLuint index, GLubyte x, GLubyte y, GLubyte z, GLubyte w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6954,11 +6956,11 @@ static void REGAL_CALL Iff_glVertexAttrib4NubARB(Layer *_layer, GLuint index, GL
   // prefix
   _context->iff->AttrN<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4NubARB( orig.glVertexAttrib4NubARB_layer, index, x, y, z, w );
+  RglVertexAttrib4NubARB( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4Nubv(Layer *_layer, GLuint index, const GLubyte *v)
+static void REGAL_CALL iff_glVertexAttrib4Nubv(Layer *_layer, GLuint index, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6967,11 +6969,11 @@ static void REGAL_CALL Iff_glVertexAttrib4Nubv(Layer *_layer, GLuint index, cons
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nubv( orig.glVertexAttrib4Nubv_layer, index, v );
+  RglVertexAttrib4Nubv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4NubvARB(Layer *_layer, GLuint index, const GLubyte *v)
+static void REGAL_CALL iff_glVertexAttrib4NubvARB(Layer *_layer, GLuint index, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6980,11 +6982,11 @@ static void REGAL_CALL Iff_glVertexAttrib4NubvARB(Layer *_layer, GLuint index, c
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NubvARB( orig.glVertexAttrib4NubvARB_layer, index, v );
+  RglVertexAttrib4NubvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4Nusv(Layer *_layer, GLuint index, const GLushort *v)
+static void REGAL_CALL iff_glVertexAttrib4Nusv(Layer *_layer, GLuint index, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -6993,11 +6995,11 @@ static void REGAL_CALL Iff_glVertexAttrib4Nusv(Layer *_layer, GLuint index, cons
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4Nusv( orig.glVertexAttrib4Nusv_layer, index, v );
+  RglVertexAttrib4Nusv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4NusvARB(Layer *_layer, GLuint index, const GLushort *v)
+static void REGAL_CALL iff_glVertexAttrib4NusvARB(Layer *_layer, GLuint index, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7006,11 +7008,11 @@ static void REGAL_CALL Iff_glVertexAttrib4NusvARB(Layer *_layer, GLuint index, c
   // prefix
   _context->iff->AttrN<4>( _context, index, v );
 
-  orig.glVertexAttrib4NusvARB( orig.glVertexAttrib4NusvARB_layer, index, v );
+  RglVertexAttrib4NusvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4bv(Layer *_layer, GLuint index, const GLbyte *v)
+static void REGAL_CALL iff_glVertexAttrib4bv(Layer *_layer, GLuint index, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7019,11 +7021,11 @@ static void REGAL_CALL Iff_glVertexAttrib4bv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4bv( orig.glVertexAttrib4bv_layer, index, v );
+  RglVertexAttrib4bv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4bvARB(Layer *_layer, GLuint index, const GLbyte *v)
+static void REGAL_CALL iff_glVertexAttrib4bvARB(Layer *_layer, GLuint index, const GLbyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7032,11 +7034,11 @@ static void REGAL_CALL Iff_glVertexAttrib4bvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4bvARB( orig.glVertexAttrib4bvARB_layer, index, v );
+  RglVertexAttrib4bvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4d(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL iff_glVertexAttrib4d(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7045,11 +7047,11 @@ static void REGAL_CALL Iff_glVertexAttrib4d(Layer *_layer, GLuint index, GLdoubl
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4d( orig.glVertexAttrib4d_layer, index, x, y, z, w );
+  RglVertexAttrib4d( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4dARB(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL iff_glVertexAttrib4dARB(Layer *_layer, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7058,11 +7060,11 @@ static void REGAL_CALL Iff_glVertexAttrib4dARB(Layer *_layer, GLuint index, GLdo
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4dARB( orig.glVertexAttrib4dARB_layer, index, x, y, z, w );
+  RglVertexAttrib4dARB( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4dv(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib4dv(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7071,11 +7073,11 @@ static void REGAL_CALL Iff_glVertexAttrib4dv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4dv( orig.glVertexAttrib4dv_layer, index, v );
+  RglVertexAttrib4dv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4dvARB(Layer *_layer, GLuint index, const GLdouble *v)
+static void REGAL_CALL iff_glVertexAttrib4dvARB(Layer *_layer, GLuint index, const GLdouble *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7084,11 +7086,11 @@ static void REGAL_CALL Iff_glVertexAttrib4dvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4dvARB( orig.glVertexAttrib4dvARB_layer, index, v );
+  RglVertexAttrib4dvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4f(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL iff_glVertexAttrib4f(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7097,11 +7099,11 @@ static void REGAL_CALL Iff_glVertexAttrib4f(Layer *_layer, GLuint index, GLfloat
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4f( orig.glVertexAttrib4f_layer, index, x, y, z, w );
+  RglVertexAttrib4f( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4fARB(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL iff_glVertexAttrib4fARB(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7110,11 +7112,11 @@ static void REGAL_CALL Iff_glVertexAttrib4fARB(Layer *_layer, GLuint index, GLfl
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4fARB( orig.glVertexAttrib4fARB_layer, index, x, y, z, w );
+  RglVertexAttrib4fARB( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4fv(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib4fv(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7123,11 +7125,11 @@ static void REGAL_CALL Iff_glVertexAttrib4fv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4fv( orig.glVertexAttrib4fv_layer, index, v );
+  RglVertexAttrib4fv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4fvARB(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL iff_glVertexAttrib4fvARB(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7136,11 +7138,11 @@ static void REGAL_CALL Iff_glVertexAttrib4fvARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4fvARB( orig.glVertexAttrib4fvARB_layer, index, v );
+  RglVertexAttrib4fvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4iv(Layer *_layer, GLuint index, const GLint *v)
+static void REGAL_CALL iff_glVertexAttrib4iv(Layer *_layer, GLuint index, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7149,11 +7151,11 @@ static void REGAL_CALL Iff_glVertexAttrib4iv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4iv( orig.glVertexAttrib4iv_layer, index, v );
+  RglVertexAttrib4iv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4ivARB(Layer *_layer, GLuint index, const GLint *v)
+static void REGAL_CALL iff_glVertexAttrib4ivARB(Layer *_layer, GLuint index, const GLint *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7162,11 +7164,11 @@ static void REGAL_CALL Iff_glVertexAttrib4ivARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4ivARB( orig.glVertexAttrib4ivARB_layer, index, v );
+  RglVertexAttrib4ivARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4s(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
+static void REGAL_CALL iff_glVertexAttrib4s(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7175,11 +7177,11 @@ static void REGAL_CALL Iff_glVertexAttrib4s(Layer *_layer, GLuint index, GLshort
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4s( orig.glVertexAttrib4s_layer, index, x, y, z, w );
+  RglVertexAttrib4s( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4sARB(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
+static void REGAL_CALL iff_glVertexAttrib4sARB(Layer *_layer, GLuint index, GLshort x, GLshort y, GLshort z, GLshort w)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7188,11 +7190,11 @@ static void REGAL_CALL Iff_glVertexAttrib4sARB(Layer *_layer, GLuint index, GLsh
   // prefix
   _context->iff->Attr<4>( _context, index, x, y, z, w );
 
-  orig.glVertexAttrib4sARB( orig.glVertexAttrib4sARB_layer, index, x, y, z, w );
+  RglVertexAttrib4sARB( orig, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4sv(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib4sv(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7201,11 +7203,11 @@ static void REGAL_CALL Iff_glVertexAttrib4sv(Layer *_layer, GLuint index, const 
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4sv( orig.glVertexAttrib4sv_layer, index, v );
+  RglVertexAttrib4sv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4svARB(Layer *_layer, GLuint index, const GLshort *v)
+static void REGAL_CALL iff_glVertexAttrib4svARB(Layer *_layer, GLuint index, const GLshort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7214,11 +7216,11 @@ static void REGAL_CALL Iff_glVertexAttrib4svARB(Layer *_layer, GLuint index, con
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4svARB( orig.glVertexAttrib4svARB_layer, index, v );
+  RglVertexAttrib4svARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4ubv(Layer *_layer, GLuint index, const GLubyte *v)
+static void REGAL_CALL iff_glVertexAttrib4ubv(Layer *_layer, GLuint index, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7227,11 +7229,11 @@ static void REGAL_CALL Iff_glVertexAttrib4ubv(Layer *_layer, GLuint index, const
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4ubv( orig.glVertexAttrib4ubv_layer, index, v );
+  RglVertexAttrib4ubv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4ubvARB(Layer *_layer, GLuint index, const GLubyte *v)
+static void REGAL_CALL iff_glVertexAttrib4ubvARB(Layer *_layer, GLuint index, const GLubyte *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7240,11 +7242,11 @@ static void REGAL_CALL Iff_glVertexAttrib4ubvARB(Layer *_layer, GLuint index, co
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4ubvARB( orig.glVertexAttrib4ubvARB_layer, index, v );
+  RglVertexAttrib4ubvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4usv(Layer *_layer, GLuint index, const GLushort *v)
+static void REGAL_CALL iff_glVertexAttrib4usv(Layer *_layer, GLuint index, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7253,11 +7255,11 @@ static void REGAL_CALL Iff_glVertexAttrib4usv(Layer *_layer, GLuint index, const
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4usv( orig.glVertexAttrib4usv_layer, index, v );
+  RglVertexAttrib4usv( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttrib4usvARB(Layer *_layer, GLuint index, const GLushort *v)
+static void REGAL_CALL iff_glVertexAttrib4usvARB(Layer *_layer, GLuint index, const GLushort *v)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7266,11 +7268,11 @@ static void REGAL_CALL Iff_glVertexAttrib4usvARB(Layer *_layer, GLuint index, co
   // prefix
   _context->iff->Attr<4>( _context, index, v );
 
-  orig.glVertexAttrib4usvARB( orig.glVertexAttrib4usvARB_layer, index, v );
+  RglVertexAttrib4usvARB( orig, index, v );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttribPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glVertexAttribPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7279,11 +7281,11 @@ static void REGAL_CALL Iff_glVertexAttribPointer(Layer *_layer, GLuint index, GL
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glVertexAttribPointer( orig.glVertexAttribPointer_layer, index, size, type, normalized, stride, pointer );
+  RglVertexAttribPointer( orig, index, size, type, normalized, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glVertexAttribPointerARB(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glVertexAttribPointerARB(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7292,11 +7294,11 @@ static void REGAL_CALL Iff_glVertexAttribPointerARB(Layer *_layer, GLuint index,
   // prefix
   _context->iff->RestoreVao( _context );
 
-  orig.glVertexAttribPointerARB( orig.glVertexAttribPointerARB_layer, index, size, type, normalized, stride, pointer );
+  RglVertexAttribPointerARB( orig, index, size, type, normalized, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL iff_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7305,11 +7307,11 @@ static void REGAL_CALL Iff_glVertexPointer(Layer *_layer, GLint size, GLenum typ
   // impl
   _context->iff->VertexPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glVertexPointer( orig.glVertexPointer_layer, size, type, stride, pointer );
+  RglVertexPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Iff_glVertexPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
+static void REGAL_CALL iff_glVertexPointerEXT(Layer *_layer, GLint size, GLenum type, GLsizei stride, GLsizei count, const GLvoid *pointer)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7318,11 +7320,11 @@ static void REGAL_CALL Iff_glVertexPointerEXT(Layer *_layer, GLint size, GLenum 
   // impl
   _context->iff->VertexPointer( _context, size, type, stride, pointer ); return;
 
-  orig.glVertexPointerEXT( orig.glVertexPointerEXT_layer, size, type, stride, count, pointer );
+  RglVertexPointerEXT( orig, size, type, stride, count, pointer );
 
 }
 
-static void REGAL_CALL Iff_glViewport(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL iff_glViewport(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7331,11 +7333,11 @@ static void REGAL_CALL Iff_glViewport(Layer *_layer, GLint x, GLint y, GLsizei w
   // prefix
   _context->iff->Viewport( x, y, width, height );
 
-  orig.glViewport( orig.glViewport_layer, x, y, width, height );
+  RglViewport( orig, x, y, width, height );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
+static void REGAL_CALL iff_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7344,11 +7346,11 @@ static void REGAL_CALL Iff_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
   // impl
   _context->iff->WindowPosition( _context, x, y ); return;
 
-  orig.glWindowPos2d( orig.glWindowPos2d_layer, x, y );
+  RglWindowPos2d( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
+static void REGAL_CALL iff_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7357,11 +7359,11 @@ static void REGAL_CALL Iff_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
   // impl
   _context->iff->WindowPosition( _context, x, y ); return;
 
-  orig.glWindowPos2f( orig.glWindowPos2f_layer, x, y );
+  RglWindowPos2f( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos2i(Layer *_layer, GLint x, GLint y)
+static void REGAL_CALL iff_glWindowPos2i(Layer *_layer, GLint x, GLint y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7370,11 +7372,11 @@ static void REGAL_CALL Iff_glWindowPos2i(Layer *_layer, GLint x, GLint y)
   // impl
   _context->iff->WindowPosition( _context, x, y ); return;
 
-  orig.glWindowPos2i( orig.glWindowPos2i_layer, x, y );
+  RglWindowPos2i( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
+static void REGAL_CALL iff_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7383,11 +7385,11 @@ static void REGAL_CALL Iff_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
   // impl
   _context->iff->WindowPosition( _context, x, y ); return;
 
-  orig.glWindowPos2s( orig.glWindowPos2s_layer, x, y );
+  RglWindowPos2s( orig, x, y );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL iff_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7396,11 +7398,11 @@ static void REGAL_CALL Iff_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y, 
   // impl
   _context->iff->WindowPosition( _context, x, y, z ); return;
 
-  orig.glWindowPos3d( orig.glWindowPos3d_layer, x, y, z );
+  RglWindowPos3d( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL iff_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7409,11 +7411,11 @@ static void REGAL_CALL Iff_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, GL
   // impl
   _context->iff->WindowPosition( _context, x, y, z ); return;
 
-  orig.glWindowPos3f( orig.glWindowPos3f_layer, x, y, z );
+  RglWindowPos3f( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint z)
+static void REGAL_CALL iff_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7422,11 +7424,11 @@ static void REGAL_CALL Iff_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint 
   // impl
   _context->iff->WindowPosition( _context, x, y, z ); return;
 
-  orig.glWindowPos3i( orig.glWindowPos3i_layer, x, y, z );
+  RglWindowPos3i( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Iff_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL iff_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
 {
   Iff * self = static_cast<Iff *>(_layer);
 
@@ -7435,558 +7437,558 @@ static void REGAL_CALL Iff_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, GL
   // impl
   _context->iff->WindowPosition( _context, x, y, z ); return;
 
-  orig.glWindowPos3s( orig.glWindowPos3s_layer, x, y, z );
+  RglWindowPos3s( orig, x, y, z );
 
 }
 
-void IffIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture                   = RIff_glActiveTexture;
-  dt.glActiveTextureARB                = RIff_glActiveTextureARB;
-  dt.glAlphaFunc                       = RIff_glAlphaFunc;
-  dt.glBegin                           = RIff_glBegin;
-  dt.glBindBuffer                      = RIff_glBindBuffer;
-  dt.glBindMultiTextureEXT             = RIff_glBindMultiTextureEXT;
-  dt.glBindProgramPipeline             = RIff_glBindProgramPipeline;
-  dt.glBindTexture                     = RIff_glBindTexture;
-  dt.glBindTextureEXT                  = RIff_glBindTextureEXT;
-  dt.glBindVertexArray                 = RIff_glBindVertexArray;
-  dt.glBindVertexArrayAPPLE            = RIff_glBindVertexArrayAPPLE;
-  dt.glBindVertexArrayOES              = RIff_glBindVertexArrayOES;
-  dt.glClientActiveTexture             = RIff_glClientActiveTexture;
-  dt.glClientActiveTextureARB          = RIff_glClientActiveTextureARB;
-  dt.glClipPlane                       = RIff_glClipPlane;
-  dt.glColor3b                         = RIff_glColor3b;
-  dt.glColor3bv                        = RIff_glColor3bv;
-  dt.glColor3d                         = RIff_glColor3d;
-  dt.glColor3dv                        = RIff_glColor3dv;
-  dt.glColor3f                         = RIff_glColor3f;
-  dt.glColor3fv                        = RIff_glColor3fv;
-  dt.glColor3i                         = RIff_glColor3i;
-  dt.glColor3iv                        = RIff_glColor3iv;
-  dt.glColor3s                         = RIff_glColor3s;
-  dt.glColor3sv                        = RIff_glColor3sv;
-  dt.glColor3ub                        = RIff_glColor3ub;
-  dt.glColor3ubv                       = RIff_glColor3ubv;
-  dt.glColor3ui                        = RIff_glColor3ui;
-  dt.glColor3uiv                       = RIff_glColor3uiv;
-  dt.glColor3us                        = RIff_glColor3us;
-  dt.glColor3usv                       = RIff_glColor3usv;
-  dt.glColor4b                         = RIff_glColor4b;
-  dt.glColor4bv                        = RIff_glColor4bv;
-  dt.glColor4d                         = RIff_glColor4d;
-  dt.glColor4dv                        = RIff_glColor4dv;
-  dt.glColor4f                         = RIff_glColor4f;
-  dt.glColor4fv                        = RIff_glColor4fv;
-  dt.glColor4i                         = RIff_glColor4i;
-  dt.glColor4iv                        = RIff_glColor4iv;
-  dt.glColor4s                         = RIff_glColor4s;
-  dt.glColor4sv                        = RIff_glColor4sv;
-  dt.glColor4ub                        = RIff_glColor4ub;
-  dt.glColor4ubv                       = RIff_glColor4ubv;
-  dt.glColor4ui                        = RIff_glColor4ui;
-  dt.glColor4uiv                       = RIff_glColor4uiv;
-  dt.glColor4us                        = RIff_glColor4us;
-  dt.glColor4usv                       = RIff_glColor4usv;
-  dt.glColorMaterial                   = RIff_glColorMaterial;
-  dt.glColorPointer                    = RIff_glColorPointer;
-  dt.glColorPointerEXT                 = RIff_glColorPointerEXT;
-  dt.glCopyTexImage2D                  = RIff_glCopyTexImage2D;
-  dt.glCreateShader                    = RIff_glCreateShader;
-  dt.glCreateShaderObjectARB           = RIff_glCreateShaderObjectARB;
-  dt.glDepthRange                      = RIff_glDepthRange;
-  dt.glDisable                         = RIff_glDisable;
-  dt.glDisableClientState              = RIff_glDisableClientState;
-  dt.glDisableIndexedEXT               = RIff_glDisableIndexedEXT;
-  dt.glDisableVertexAttribArray        = RIff_glDisableVertexAttribArray;
-  dt.glDisableVertexAttribArrayARB     = RIff_glDisableVertexAttribArrayARB;
-  dt.glDisablei                        = RIff_glDisablei;
-  dt.glDrawArrays                      = RIff_glDrawArrays;
-  dt.glDrawArraysEXT                   = RIff_glDrawArraysEXT;
-  dt.glDrawArraysIndirect              = RIff_glDrawArraysIndirect;
-  dt.glDrawArraysInstanced             = RIff_glDrawArraysInstanced;
-  dt.glDrawArraysInstancedARB          = RIff_glDrawArraysInstancedARB;
-  dt.glDrawArraysInstancedEXT          = RIff_glDrawArraysInstancedEXT;
-  dt.glDrawElementArrayAPPLE           = RIff_glDrawElementArrayAPPLE;
-  dt.glDrawElementArrayATI             = RIff_glDrawElementArrayATI;
-  dt.glDrawElements                    = RIff_glDrawElements;
-  dt.glDrawElementsBaseVertex          = RIff_glDrawElementsBaseVertex;
-  dt.glDrawElementsIndirect            = RIff_glDrawElementsIndirect;
-  dt.glDrawElementsInstanced           = RIff_glDrawElementsInstanced;
-  dt.glDrawElementsInstancedARB        = RIff_glDrawElementsInstancedARB;
-  dt.glDrawElementsInstancedBaseVertex = RIff_glDrawElementsInstancedBaseVertex;
-  dt.glDrawElementsInstancedEXT        = RIff_glDrawElementsInstancedEXT;
-  dt.glDrawRangeElementArrayAPPLE      = RIff_glDrawRangeElementArrayAPPLE;
-  dt.glDrawRangeElementArrayATI        = RIff_glDrawRangeElementArrayATI;
-  dt.glDrawRangeElements               = RIff_glDrawRangeElements;
-  dt.glDrawRangeElementsBaseVertex     = RIff_glDrawRangeElementsBaseVertex;
-  dt.glDrawRangeElementsEXT            = RIff_glDrawRangeElementsEXT;
-  dt.glEdgeFlagPointer                 = RIff_glEdgeFlagPointer;
-  dt.glEdgeFlagPointerEXT              = RIff_glEdgeFlagPointerEXT;
-  dt.glEnable                          = RIff_glEnable;
-  dt.glEnableClientState               = RIff_glEnableClientState;
-  dt.glEnableIndexedEXT                = RIff_glEnableIndexedEXT;
-  dt.glEnableVertexAttribArray         = RIff_glEnableVertexAttribArray;
-  dt.glEnableVertexAttribArrayARB      = RIff_glEnableVertexAttribArrayARB;
-  dt.glEnablei                         = RIff_glEnablei;
-  dt.glEnd                             = RIff_glEnd;
-  dt.glFogCoordPointer                 = RIff_glFogCoordPointer;
-  dt.glFogCoordPointerEXT              = RIff_glFogCoordPointerEXT;
-  dt.glFogf                            = RIff_glFogf;
-  dt.glFogfv                           = RIff_glFogfv;
-  dt.glFogi                            = RIff_glFogi;
-  dt.glFogiv                           = RIff_glFogiv;
-  dt.glFrustum                         = RIff_glFrustum;
-  dt.glGetBooleanv                     = RIff_glGetBooleanv;
-  dt.glGetDoublev                      = RIff_glGetDoublev;
-  dt.glGetFloatv                       = RIff_glGetFloatv;
-  dt.glGetIntegerv                     = RIff_glGetIntegerv;
-  dt.glGetMaterialfv                   = RIff_glGetMaterialfv;
-  dt.glGetMaterialiv                   = RIff_glGetMaterialiv;
-  dt.glGetMultiTexGendvEXT             = RIff_glGetMultiTexGendvEXT;
-  dt.glGetMultiTexGenfvEXT             = RIff_glGetMultiTexGenfvEXT;
-  dt.glGetMultiTexGenivEXT             = RIff_glGetMultiTexGenivEXT;
-  dt.glGetTexEnvfv                     = RIff_glGetTexEnvfv;
-  dt.glGetTexEnviv                     = RIff_glGetTexEnviv;
-  dt.glGetTexGendv                     = RIff_glGetTexGendv;
-  dt.glGetTexGenfv                     = RIff_glGetTexGenfv;
-  dt.glGetTexGeniv                     = RIff_glGetTexGeniv;
-  dt.glGetVertexAttribPointerv         = RIff_glGetVertexAttribPointerv;
-  dt.glGetVertexAttribPointervARB      = RIff_glGetVertexAttribPointervARB;
-  dt.glGetVertexAttribdv               = RIff_glGetVertexAttribdv;
-  dt.glGetVertexAttribdvARB            = RIff_glGetVertexAttribdvARB;
-  dt.glGetVertexAttribfv               = RIff_glGetVertexAttribfv;
-  dt.glGetVertexAttribfvARB            = RIff_glGetVertexAttribfvARB;
-  dt.glGetVertexAttribiv               = RIff_glGetVertexAttribiv;
-  dt.glGetVertexAttribivARB            = RIff_glGetVertexAttribivARB;
-  dt.glIsEnabled                       = RIff_glIsEnabled;
-  dt.glIsVertexArray                   = RIff_glIsVertexArray;
-  dt.glLightModelf                     = RIff_glLightModelf;
-  dt.glLightModelfv                    = RIff_glLightModelfv;
-  dt.glLightModeli                     = RIff_glLightModeli;
-  dt.glLightModeliv                    = RIff_glLightModeliv;
-  dt.glLightf                          = RIff_glLightf;
-  dt.glLightfv                         = RIff_glLightfv;
-  dt.glLighti                          = RIff_glLighti;
-  dt.glLightiv                         = RIff_glLightiv;
-  dt.glLinkProgram                     = RIff_glLinkProgram;
-  dt.glLinkProgramARB                  = RIff_glLinkProgramARB;
-  dt.glLoadIdentity                    = RIff_glLoadIdentity;
-  dt.glLoadMatrixd                     = RIff_glLoadMatrixd;
-  dt.glLoadMatrixf                     = RIff_glLoadMatrixf;
-  dt.glLoadTransposeMatrixd            = RIff_glLoadTransposeMatrixd;
-  dt.glLoadTransposeMatrixdARB         = RIff_glLoadTransposeMatrixdARB;
-  dt.glLoadTransposeMatrixf            = RIff_glLoadTransposeMatrixf;
-  dt.glLoadTransposeMatrixfARB         = RIff_glLoadTransposeMatrixfARB;
-  dt.glMaterialf                       = RIff_glMaterialf;
-  dt.glMaterialfv                      = RIff_glMaterialfv;
-  dt.glMateriali                       = RIff_glMateriali;
-  dt.glMaterialiv                      = RIff_glMaterialiv;
-  dt.glMatrixFrustumEXT                = RIff_glMatrixFrustumEXT;
-  dt.glMatrixLoadIdentityEXT           = RIff_glMatrixLoadIdentityEXT;
-  dt.glMatrixLoadTransposedEXT         = RIff_glMatrixLoadTransposedEXT;
-  dt.glMatrixLoadTransposefEXT         = RIff_glMatrixLoadTransposefEXT;
-  dt.glMatrixLoaddEXT                  = RIff_glMatrixLoaddEXT;
-  dt.glMatrixLoadfEXT                  = RIff_glMatrixLoadfEXT;
-  dt.glMatrixMode                      = RIff_glMatrixMode;
-  dt.glMatrixMultTransposedEXT         = RIff_glMatrixMultTransposedEXT;
-  dt.glMatrixMultTransposefEXT         = RIff_glMatrixMultTransposefEXT;
-  dt.glMatrixMultdEXT                  = RIff_glMatrixMultdEXT;
-  dt.glMatrixMultfEXT                  = RIff_glMatrixMultfEXT;
-  dt.glMatrixOrthoEXT                  = RIff_glMatrixOrthoEXT;
-  dt.glMatrixPopEXT                    = RIff_glMatrixPopEXT;
-  dt.glMatrixPushEXT                   = RIff_glMatrixPushEXT;
-  dt.glMatrixRotatedEXT                = RIff_glMatrixRotatedEXT;
-  dt.glMatrixRotatefEXT                = RIff_glMatrixRotatefEXT;
-  dt.glMatrixScaledEXT                 = RIff_glMatrixScaledEXT;
-  dt.glMatrixScalefEXT                 = RIff_glMatrixScalefEXT;
-  dt.glMatrixTranslatedEXT             = RIff_glMatrixTranslatedEXT;
-  dt.glMatrixTranslatefEXT             = RIff_glMatrixTranslatefEXT;
-  dt.glMultMatrixd                     = RIff_glMultMatrixd;
-  dt.glMultMatrixf                     = RIff_glMultMatrixf;
-  dt.glMultTransposeMatrixd            = RIff_glMultTransposeMatrixd;
-  dt.glMultTransposeMatrixdARB         = RIff_glMultTransposeMatrixdARB;
-  dt.glMultTransposeMatrixf            = RIff_glMultTransposeMatrixf;
-  dt.glMultTransposeMatrixfARB         = RIff_glMultTransposeMatrixfARB;
-  dt.glMultiDrawArrays                 = RIff_glMultiDrawArrays;
-  dt.glMultiDrawArraysEXT              = RIff_glMultiDrawArraysEXT;
-  dt.glMultiDrawArraysIndirect         = RIff_glMultiDrawArraysIndirect;
-  dt.glMultiDrawArraysIndirectAMD      = RIff_glMultiDrawArraysIndirectAMD;
-  dt.glMultiDrawElementArrayAPPLE      = RIff_glMultiDrawElementArrayAPPLE;
-  dt.glMultiDrawElements               = RIff_glMultiDrawElements;
-  dt.glMultiDrawElementsBaseVertex     = RIff_glMultiDrawElementsBaseVertex;
-  dt.glMultiDrawElementsEXT            = RIff_glMultiDrawElementsEXT;
-  dt.glMultiDrawElementsIndirect       = RIff_glMultiDrawElementsIndirect;
-  dt.glMultiDrawElementsIndirectAMD    = RIff_glMultiDrawElementsIndirectAMD;
-  dt.glMultiDrawRangeElementArrayAPPLE = RIff_glMultiDrawRangeElementArrayAPPLE;
-  dt.glMultiTexCoord1d                 = RIff_glMultiTexCoord1d;
-  dt.glMultiTexCoord1dARB              = RIff_glMultiTexCoord1dARB;
-  dt.glMultiTexCoord1dv                = RIff_glMultiTexCoord1dv;
-  dt.glMultiTexCoord1dvARB             = RIff_glMultiTexCoord1dvARB;
-  dt.glMultiTexCoord1f                 = RIff_glMultiTexCoord1f;
-  dt.glMultiTexCoord1fARB              = RIff_glMultiTexCoord1fARB;
-  dt.glMultiTexCoord1fv                = RIff_glMultiTexCoord1fv;
-  dt.glMultiTexCoord1fvARB             = RIff_glMultiTexCoord1fvARB;
-  dt.glMultiTexCoord1i                 = RIff_glMultiTexCoord1i;
-  dt.glMultiTexCoord1iARB              = RIff_glMultiTexCoord1iARB;
-  dt.glMultiTexCoord1iv                = RIff_glMultiTexCoord1iv;
-  dt.glMultiTexCoord1ivARB             = RIff_glMultiTexCoord1ivARB;
-  dt.glMultiTexCoord1s                 = RIff_glMultiTexCoord1s;
-  dt.glMultiTexCoord1sARB              = RIff_glMultiTexCoord1sARB;
-  dt.glMultiTexCoord1sv                = RIff_glMultiTexCoord1sv;
-  dt.glMultiTexCoord1svARB             = RIff_glMultiTexCoord1svARB;
-  dt.glMultiTexCoord2d                 = RIff_glMultiTexCoord2d;
-  dt.glMultiTexCoord2dARB              = RIff_glMultiTexCoord2dARB;
-  dt.glMultiTexCoord2dv                = RIff_glMultiTexCoord2dv;
-  dt.glMultiTexCoord2dvARB             = RIff_glMultiTexCoord2dvARB;
-  dt.glMultiTexCoord2f                 = RIff_glMultiTexCoord2f;
-  dt.glMultiTexCoord2fARB              = RIff_glMultiTexCoord2fARB;
-  dt.glMultiTexCoord2fv                = RIff_glMultiTexCoord2fv;
-  dt.glMultiTexCoord2fvARB             = RIff_glMultiTexCoord2fvARB;
-  dt.glMultiTexCoord2i                 = RIff_glMultiTexCoord2i;
-  dt.glMultiTexCoord2iARB              = RIff_glMultiTexCoord2iARB;
-  dt.glMultiTexCoord2iv                = RIff_glMultiTexCoord2iv;
-  dt.glMultiTexCoord2ivARB             = RIff_glMultiTexCoord2ivARB;
-  dt.glMultiTexCoord2s                 = RIff_glMultiTexCoord2s;
-  dt.glMultiTexCoord2sARB              = RIff_glMultiTexCoord2sARB;
-  dt.glMultiTexCoord2sv                = RIff_glMultiTexCoord2sv;
-  dt.glMultiTexCoord2svARB             = RIff_glMultiTexCoord2svARB;
-  dt.glMultiTexCoord3d                 = RIff_glMultiTexCoord3d;
-  dt.glMultiTexCoord3dARB              = RIff_glMultiTexCoord3dARB;
-  dt.glMultiTexCoord3dv                = RIff_glMultiTexCoord3dv;
-  dt.glMultiTexCoord3dvARB             = RIff_glMultiTexCoord3dvARB;
-  dt.glMultiTexCoord3f                 = RIff_glMultiTexCoord3f;
-  dt.glMultiTexCoord3fARB              = RIff_glMultiTexCoord3fARB;
-  dt.glMultiTexCoord3fv                = RIff_glMultiTexCoord3fv;
-  dt.glMultiTexCoord3fvARB             = RIff_glMultiTexCoord3fvARB;
-  dt.glMultiTexCoord3i                 = RIff_glMultiTexCoord3i;
-  dt.glMultiTexCoord3iARB              = RIff_glMultiTexCoord3iARB;
-  dt.glMultiTexCoord3iv                = RIff_glMultiTexCoord3iv;
-  dt.glMultiTexCoord3ivARB             = RIff_glMultiTexCoord3ivARB;
-  dt.glMultiTexCoord3s                 = RIff_glMultiTexCoord3s;
-  dt.glMultiTexCoord3sARB              = RIff_glMultiTexCoord3sARB;
-  dt.glMultiTexCoord3sv                = RIff_glMultiTexCoord3sv;
-  dt.glMultiTexCoord3svARB             = RIff_glMultiTexCoord3svARB;
-  dt.glMultiTexCoord4d                 = RIff_glMultiTexCoord4d;
-  dt.glMultiTexCoord4dARB              = RIff_glMultiTexCoord4dARB;
-  dt.glMultiTexCoord4dv                = RIff_glMultiTexCoord4dv;
-  dt.glMultiTexCoord4dvARB             = RIff_glMultiTexCoord4dvARB;
-  dt.glMultiTexCoord4f                 = RIff_glMultiTexCoord4f;
-  dt.glMultiTexCoord4fARB              = RIff_glMultiTexCoord4fARB;
-  dt.glMultiTexCoord4fv                = RIff_glMultiTexCoord4fv;
-  dt.glMultiTexCoord4fvARB             = RIff_glMultiTexCoord4fvARB;
-  dt.glMultiTexCoord4i                 = RIff_glMultiTexCoord4i;
-  dt.glMultiTexCoord4iARB              = RIff_glMultiTexCoord4iARB;
-  dt.glMultiTexCoord4iv                = RIff_glMultiTexCoord4iv;
-  dt.glMultiTexCoord4ivARB             = RIff_glMultiTexCoord4ivARB;
-  dt.glMultiTexCoord4s                 = RIff_glMultiTexCoord4s;
-  dt.glMultiTexCoord4sARB              = RIff_glMultiTexCoord4sARB;
-  dt.glMultiTexCoord4sv                = RIff_glMultiTexCoord4sv;
-  dt.glMultiTexCoord4svARB             = RIff_glMultiTexCoord4svARB;
-  dt.glMultiTexEnvfEXT                 = RIff_glMultiTexEnvfEXT;
-  dt.glMultiTexEnvfvEXT                = RIff_glMultiTexEnvfvEXT;
-  dt.glMultiTexEnviEXT                 = RIff_glMultiTexEnviEXT;
-  dt.glMultiTexEnvivEXT                = RIff_glMultiTexEnvivEXT;
-  dt.glMultiTexImage1DEXT              = RIff_glMultiTexImage1DEXT;
-  dt.glMultiTexImage2DEXT              = RIff_glMultiTexImage2DEXT;
-  dt.glMultiTexImage3DEXT              = RIff_glMultiTexImage3DEXT;
-  dt.glNormal3b                        = RIff_glNormal3b;
-  dt.glNormal3bv                       = RIff_glNormal3bv;
-  dt.glNormal3d                        = RIff_glNormal3d;
-  dt.glNormal3dv                       = RIff_glNormal3dv;
-  dt.glNormal3f                        = RIff_glNormal3f;
-  dt.glNormal3fv                       = RIff_glNormal3fv;
-  dt.glNormal3i                        = RIff_glNormal3i;
-  dt.glNormal3iv                       = RIff_glNormal3iv;
-  dt.glNormal3s                        = RIff_glNormal3s;
-  dt.glNormal3sv                       = RIff_glNormal3sv;
-  dt.glNormalPointer                   = RIff_glNormalPointer;
-  dt.glNormalPointerEXT                = RIff_glNormalPointerEXT;
-  dt.glOrtho                           = RIff_glOrtho;
-  dt.glPopMatrix                       = RIff_glPopMatrix;
-  dt.glPushMatrix                      = RIff_glPushMatrix;
-  dt.glRasterPos2d                     = RIff_glRasterPos2d;
-  dt.glRasterPos2f                     = RIff_glRasterPos2f;
-  dt.glRasterPos2i                     = RIff_glRasterPos2i;
-  dt.glRasterPos2s                     = RIff_glRasterPos2s;
-  dt.glRasterPos3d                     = RIff_glRasterPos3d;
-  dt.glRasterPos3f                     = RIff_glRasterPos3f;
-  dt.glRasterPos3i                     = RIff_glRasterPos3i;
-  dt.glRasterPos3s                     = RIff_glRasterPos3s;
-  dt.glRotated                         = RIff_glRotated;
-  dt.glRotatef                         = RIff_glRotatef;
-  dt.glScaled                          = RIff_glScaled;
-  dt.glScalef                          = RIff_glScalef;
-  dt.glSecondaryColor3b                = RIff_glSecondaryColor3b;
-  dt.glSecondaryColor3bEXT             = RIff_glSecondaryColor3bEXT;
-  dt.glSecondaryColor3bv               = RIff_glSecondaryColor3bv;
-  dt.glSecondaryColor3bvEXT            = RIff_glSecondaryColor3bvEXT;
-  dt.glSecondaryColor3d                = RIff_glSecondaryColor3d;
-  dt.glSecondaryColor3dEXT             = RIff_glSecondaryColor3dEXT;
-  dt.glSecondaryColor3dv               = RIff_glSecondaryColor3dv;
-  dt.glSecondaryColor3dvEXT            = RIff_glSecondaryColor3dvEXT;
-  dt.glSecondaryColor3f                = RIff_glSecondaryColor3f;
-  dt.glSecondaryColor3fEXT             = RIff_glSecondaryColor3fEXT;
-  dt.glSecondaryColor3fv               = RIff_glSecondaryColor3fv;
-  dt.glSecondaryColor3fvEXT            = RIff_glSecondaryColor3fvEXT;
-  dt.glSecondaryColor3i                = RIff_glSecondaryColor3i;
-  dt.glSecondaryColor3iEXT             = RIff_glSecondaryColor3iEXT;
-  dt.glSecondaryColor3iv               = RIff_glSecondaryColor3iv;
-  dt.glSecondaryColor3ivEXT            = RIff_glSecondaryColor3ivEXT;
-  dt.glSecondaryColor3s                = RIff_glSecondaryColor3s;
-  dt.glSecondaryColor3sEXT             = RIff_glSecondaryColor3sEXT;
-  dt.glSecondaryColor3sv               = RIff_glSecondaryColor3sv;
-  dt.glSecondaryColor3svEXT            = RIff_glSecondaryColor3svEXT;
-  dt.glSecondaryColor3ub               = RIff_glSecondaryColor3ub;
-  dt.glSecondaryColor3ubEXT            = RIff_glSecondaryColor3ubEXT;
-  dt.glSecondaryColor3ubv              = RIff_glSecondaryColor3ubv;
-  dt.glSecondaryColor3ubvEXT           = RIff_glSecondaryColor3ubvEXT;
-  dt.glSecondaryColor3ui               = RIff_glSecondaryColor3ui;
-  dt.glSecondaryColor3uiEXT            = RIff_glSecondaryColor3uiEXT;
-  dt.glSecondaryColor3uiv              = RIff_glSecondaryColor3uiv;
-  dt.glSecondaryColor3uivEXT           = RIff_glSecondaryColor3uivEXT;
-  dt.glSecondaryColor3us               = RIff_glSecondaryColor3us;
-  dt.glSecondaryColor3usEXT            = RIff_glSecondaryColor3usEXT;
-  dt.glSecondaryColor3usv              = RIff_glSecondaryColor3usv;
-  dt.glSecondaryColor3usvEXT           = RIff_glSecondaryColor3usvEXT;
-  dt.glSecondaryColorPointer           = RIff_glSecondaryColorPointer;
-  dt.glSecondaryColorPointerEXT        = RIff_glSecondaryColorPointerEXT;
-  dt.glShadeModel                      = RIff_glShadeModel;
-  dt.glShaderSource                    = RIff_glShaderSource;
-  dt.glShaderSourceARB                 = RIff_glShaderSourceARB;
-  dt.glTexCoord1d                      = RIff_glTexCoord1d;
-  dt.glTexCoord1dv                     = RIff_glTexCoord1dv;
-  dt.glTexCoord1f                      = RIff_glTexCoord1f;
-  dt.glTexCoord1fv                     = RIff_glTexCoord1fv;
-  dt.glTexCoord1i                      = RIff_glTexCoord1i;
-  dt.glTexCoord1iv                     = RIff_glTexCoord1iv;
-  dt.glTexCoord1s                      = RIff_glTexCoord1s;
-  dt.glTexCoord1sv                     = RIff_glTexCoord1sv;
-  dt.glTexCoord2d                      = RIff_glTexCoord2d;
-  dt.glTexCoord2dv                     = RIff_glTexCoord2dv;
-  dt.glTexCoord2f                      = RIff_glTexCoord2f;
-  dt.glTexCoord2fv                     = RIff_glTexCoord2fv;
-  dt.glTexCoord2i                      = RIff_glTexCoord2i;
-  dt.glTexCoord2iv                     = RIff_glTexCoord2iv;
-  dt.glTexCoord2s                      = RIff_glTexCoord2s;
-  dt.glTexCoord2sv                     = RIff_glTexCoord2sv;
-  dt.glTexCoord3d                      = RIff_glTexCoord3d;
-  dt.glTexCoord3dv                     = RIff_glTexCoord3dv;
-  dt.glTexCoord3f                      = RIff_glTexCoord3f;
-  dt.glTexCoord3fv                     = RIff_glTexCoord3fv;
-  dt.glTexCoord3i                      = RIff_glTexCoord3i;
-  dt.glTexCoord3iv                     = RIff_glTexCoord3iv;
-  dt.glTexCoord3s                      = RIff_glTexCoord3s;
-  dt.glTexCoord3sv                     = RIff_glTexCoord3sv;
-  dt.glTexCoord4d                      = RIff_glTexCoord4d;
-  dt.glTexCoord4dv                     = RIff_glTexCoord4dv;
-  dt.glTexCoord4f                      = RIff_glTexCoord4f;
-  dt.glTexCoord4fv                     = RIff_glTexCoord4fv;
-  dt.glTexCoord4i                      = RIff_glTexCoord4i;
-  dt.glTexCoord4iv                     = RIff_glTexCoord4iv;
-  dt.glTexCoord4s                      = RIff_glTexCoord4s;
-  dt.glTexCoord4sv                     = RIff_glTexCoord4sv;
-  dt.glTexCoordPointer                 = RIff_glTexCoordPointer;
-  dt.glTexCoordPointerEXT              = RIff_glTexCoordPointerEXT;
-  dt.glTexEnvf                         = RIff_glTexEnvf;
-  dt.glTexEnvfv                        = RIff_glTexEnvfv;
-  dt.glTexEnvi                         = RIff_glTexEnvi;
-  dt.glTexEnviv                        = RIff_glTexEnviv;
-  dt.glTexGend                         = RIff_glTexGend;
-  dt.glTexGendv                        = RIff_glTexGendv;
-  dt.glTexGenf                         = RIff_glTexGenf;
-  dt.glTexGenfv                        = RIff_glTexGenfv;
-  dt.glTexGeni                         = RIff_glTexGeni;
-  dt.glTexGeniv                        = RIff_glTexGeniv;
-  dt.glTexImage1D                      = RIff_glTexImage1D;
-  dt.glTexImage2D                      = RIff_glTexImage2D;
-  dt.glTexImage2DMultisample           = RIff_glTexImage2DMultisample;
-  dt.glTexImage2DMultisampleCoverageNV = RIff_glTexImage2DMultisampleCoverageNV;
-  dt.glTexImage3D                      = RIff_glTexImage3D;
-  dt.glTexImage3DEXT                   = RIff_glTexImage3DEXT;
-  dt.glTexImage3DMultisample           = RIff_glTexImage3DMultisample;
-  dt.glTexImage3DMultisampleCoverageNV = RIff_glTexImage3DMultisampleCoverageNV;
-  dt.glTexImage4DSGIS                  = RIff_glTexImage4DSGIS;
-  dt.glTextureImage1DEXT               = RIff_glTextureImage1DEXT;
-  dt.glTextureImage2DEXT               = RIff_glTextureImage2DEXT;
-  dt.glTextureImage3DEXT               = RIff_glTextureImage3DEXT;
-  dt.glTranslated                      = RIff_glTranslated;
-  dt.glTranslatef                      = RIff_glTranslatef;
-  dt.glUniform1d                       = RIff_glUniform1d;
-  dt.glUniform1dv                      = RIff_glUniform1dv;
-  dt.glUniform1f                       = RIff_glUniform1f;
-  dt.glUniform1fARB                    = RIff_glUniform1fARB;
-  dt.glUniform1fv                      = RIff_glUniform1fv;
-  dt.glUniform1fvARB                   = RIff_glUniform1fvARB;
-  dt.glUniform1i                       = RIff_glUniform1i;
-  dt.glUniform1iARB                    = RIff_glUniform1iARB;
-  dt.glUniform1iv                      = RIff_glUniform1iv;
-  dt.glUniform1ivARB                   = RIff_glUniform1ivARB;
-  dt.glUniform1ui                      = RIff_glUniform1ui;
-  dt.glUniform1uiv                     = RIff_glUniform1uiv;
-  dt.glUniform2d                       = RIff_glUniform2d;
-  dt.glUniform2dv                      = RIff_glUniform2dv;
-  dt.glUniform2f                       = RIff_glUniform2f;
-  dt.glUniform2fARB                    = RIff_glUniform2fARB;
-  dt.glUniform2fv                      = RIff_glUniform2fv;
-  dt.glUniform2fvARB                   = RIff_glUniform2fvARB;
-  dt.glUniform2i                       = RIff_glUniform2i;
-  dt.glUniform2iARB                    = RIff_glUniform2iARB;
-  dt.glUniform2iv                      = RIff_glUniform2iv;
-  dt.glUniform2ivARB                   = RIff_glUniform2ivARB;
-  dt.glUniform2ui                      = RIff_glUniform2ui;
-  dt.glUniform2uiv                     = RIff_glUniform2uiv;
-  dt.glUniform3d                       = RIff_glUniform3d;
-  dt.glUniform3dv                      = RIff_glUniform3dv;
-  dt.glUniform3f                       = RIff_glUniform3f;
-  dt.glUniform3fARB                    = RIff_glUniform3fARB;
-  dt.glUniform3fv                      = RIff_glUniform3fv;
-  dt.glUniform3fvARB                   = RIff_glUniform3fvARB;
-  dt.glUniform3i                       = RIff_glUniform3i;
-  dt.glUniform3iARB                    = RIff_glUniform3iARB;
-  dt.glUniform3iv                      = RIff_glUniform3iv;
-  dt.glUniform3ivARB                   = RIff_glUniform3ivARB;
-  dt.glUniform3ui                      = RIff_glUniform3ui;
-  dt.glUniform3uiv                     = RIff_glUniform3uiv;
-  dt.glUniform4d                       = RIff_glUniform4d;
-  dt.glUniform4dv                      = RIff_glUniform4dv;
-  dt.glUniform4f                       = RIff_glUniform4f;
-  dt.glUniform4fARB                    = RIff_glUniform4fARB;
-  dt.glUniform4fv                      = RIff_glUniform4fv;
-  dt.glUniform4fvARB                   = RIff_glUniform4fvARB;
-  dt.glUniform4i                       = RIff_glUniform4i;
-  dt.glUniform4iARB                    = RIff_glUniform4iARB;
-  dt.glUniform4iv                      = RIff_glUniform4iv;
-  dt.glUniform4ivARB                   = RIff_glUniform4ivARB;
-  dt.glUniform4ui                      = RIff_glUniform4ui;
-  dt.glUniform4uiv                     = RIff_glUniform4uiv;
-  dt.glUniformMatrix2dv                = RIff_glUniformMatrix2dv;
-  dt.glUniformMatrix2fv                = RIff_glUniformMatrix2fv;
-  dt.glUniformMatrix2fvARB             = RIff_glUniformMatrix2fvARB;
-  dt.glUniformMatrix2x3dv              = RIff_glUniformMatrix2x3dv;
-  dt.glUniformMatrix2x3fv              = RIff_glUniformMatrix2x3fv;
-  dt.glUniformMatrix2x4dv              = RIff_glUniformMatrix2x4dv;
-  dt.glUniformMatrix2x4fv              = RIff_glUniformMatrix2x4fv;
-  dt.glUniformMatrix3dv                = RIff_glUniformMatrix3dv;
-  dt.glUniformMatrix3fv                = RIff_glUniformMatrix3fv;
-  dt.glUniformMatrix3fvARB             = RIff_glUniformMatrix3fvARB;
-  dt.glUniformMatrix3x2dv              = RIff_glUniformMatrix3x2dv;
-  dt.glUniformMatrix3x2fv              = RIff_glUniformMatrix3x2fv;
-  dt.glUniformMatrix3x4dv              = RIff_glUniformMatrix3x4dv;
-  dt.glUniformMatrix3x4fv              = RIff_glUniformMatrix3x4fv;
-  dt.glUniformMatrix4dv                = RIff_glUniformMatrix4dv;
-  dt.glUniformMatrix4fv                = RIff_glUniformMatrix4fv;
-  dt.glUniformMatrix4fvARB             = RIff_glUniformMatrix4fvARB;
-  dt.glUniformMatrix4x2dv              = RIff_glUniformMatrix4x2dv;
-  dt.glUniformMatrix4x2fv              = RIff_glUniformMatrix4x2fv;
-  dt.glUniformMatrix4x3dv              = RIff_glUniformMatrix4x3dv;
-  dt.glUniformMatrix4x3fv              = RIff_glUniformMatrix4x3fv;
-  dt.glUseProgram                      = RIff_glUseProgram;
-  dt.glUseProgramObjectARB             = RIff_glUseProgramObjectARB;
-  dt.glVertex2d                        = RIff_glVertex2d;
-  dt.glVertex2dv                       = RIff_glVertex2dv;
-  dt.glVertex2f                        = RIff_glVertex2f;
-  dt.glVertex2fv                       = RIff_glVertex2fv;
-  dt.glVertex2i                        = RIff_glVertex2i;
-  dt.glVertex2iv                       = RIff_glVertex2iv;
-  dt.glVertex2s                        = RIff_glVertex2s;
-  dt.glVertex2sv                       = RIff_glVertex2sv;
-  dt.glVertex3d                        = RIff_glVertex3d;
-  dt.glVertex3dv                       = RIff_glVertex3dv;
-  dt.glVertex3f                        = RIff_glVertex3f;
-  dt.glVertex3fv                       = RIff_glVertex3fv;
-  dt.glVertex3i                        = RIff_glVertex3i;
-  dt.glVertex3iv                       = RIff_glVertex3iv;
-  dt.glVertex3s                        = RIff_glVertex3s;
-  dt.glVertex3sv                       = RIff_glVertex3sv;
-  dt.glVertex4d                        = RIff_glVertex4d;
-  dt.glVertex4dv                       = RIff_glVertex4dv;
-  dt.glVertex4f                        = RIff_glVertex4f;
-  dt.glVertex4fv                       = RIff_glVertex4fv;
-  dt.glVertex4i                        = RIff_glVertex4i;
-  dt.glVertex4iv                       = RIff_glVertex4iv;
-  dt.glVertex4s                        = RIff_glVertex4s;
-  dt.glVertex4sv                       = RIff_glVertex4sv;
-  dt.glVertexAttrib1d                  = RIff_glVertexAttrib1d;
-  dt.glVertexAttrib1dARB               = RIff_glVertexAttrib1dARB;
-  dt.glVertexAttrib1dv                 = RIff_glVertexAttrib1dv;
-  dt.glVertexAttrib1dvARB              = RIff_glVertexAttrib1dvARB;
-  dt.glVertexAttrib1f                  = RIff_glVertexAttrib1f;
-  dt.glVertexAttrib1fARB               = RIff_glVertexAttrib1fARB;
-  dt.glVertexAttrib1fv                 = RIff_glVertexAttrib1fv;
-  dt.glVertexAttrib1fvARB              = RIff_glVertexAttrib1fvARB;
-  dt.glVertexAttrib1s                  = RIff_glVertexAttrib1s;
-  dt.glVertexAttrib1sARB               = RIff_glVertexAttrib1sARB;
-  dt.glVertexAttrib1sv                 = RIff_glVertexAttrib1sv;
-  dt.glVertexAttrib1svARB              = RIff_glVertexAttrib1svARB;
-  dt.glVertexAttrib2d                  = RIff_glVertexAttrib2d;
-  dt.glVertexAttrib2dARB               = RIff_glVertexAttrib2dARB;
-  dt.glVertexAttrib2dv                 = RIff_glVertexAttrib2dv;
-  dt.glVertexAttrib2dvARB              = RIff_glVertexAttrib2dvARB;
-  dt.glVertexAttrib2f                  = RIff_glVertexAttrib2f;
-  dt.glVertexAttrib2fARB               = RIff_glVertexAttrib2fARB;
-  dt.glVertexAttrib2fv                 = RIff_glVertexAttrib2fv;
-  dt.glVertexAttrib2fvARB              = RIff_glVertexAttrib2fvARB;
-  dt.glVertexAttrib2s                  = RIff_glVertexAttrib2s;
-  dt.glVertexAttrib2sARB               = RIff_glVertexAttrib2sARB;
-  dt.glVertexAttrib2sv                 = RIff_glVertexAttrib2sv;
-  dt.glVertexAttrib2svARB              = RIff_glVertexAttrib2svARB;
-  dt.glVertexAttrib3d                  = RIff_glVertexAttrib3d;
-  dt.glVertexAttrib3dARB               = RIff_glVertexAttrib3dARB;
-  dt.glVertexAttrib3dv                 = RIff_glVertexAttrib3dv;
-  dt.glVertexAttrib3dvARB              = RIff_glVertexAttrib3dvARB;
-  dt.glVertexAttrib3f                  = RIff_glVertexAttrib3f;
-  dt.glVertexAttrib3fARB               = RIff_glVertexAttrib3fARB;
-  dt.glVertexAttrib3fv                 = RIff_glVertexAttrib3fv;
-  dt.glVertexAttrib3fvARB              = RIff_glVertexAttrib3fvARB;
-  dt.glVertexAttrib3s                  = RIff_glVertexAttrib3s;
-  dt.glVertexAttrib3sARB               = RIff_glVertexAttrib3sARB;
-  dt.glVertexAttrib3sv                 = RIff_glVertexAttrib3sv;
-  dt.glVertexAttrib3svARB              = RIff_glVertexAttrib3svARB;
-  dt.glVertexAttrib4Nbv                = RIff_glVertexAttrib4Nbv;
-  dt.glVertexAttrib4NbvARB             = RIff_glVertexAttrib4NbvARB;
-  dt.glVertexAttrib4Niv                = RIff_glVertexAttrib4Niv;
-  dt.glVertexAttrib4NivARB             = RIff_glVertexAttrib4NivARB;
-  dt.glVertexAttrib4Nsv                = RIff_glVertexAttrib4Nsv;
-  dt.glVertexAttrib4NsvARB             = RIff_glVertexAttrib4NsvARB;
-  dt.glVertexAttrib4Nub                = RIff_glVertexAttrib4Nub;
-  dt.glVertexAttrib4NubARB             = RIff_glVertexAttrib4NubARB;
-  dt.glVertexAttrib4Nubv               = RIff_glVertexAttrib4Nubv;
-  dt.glVertexAttrib4NubvARB            = RIff_glVertexAttrib4NubvARB;
-  dt.glVertexAttrib4Nusv               = RIff_glVertexAttrib4Nusv;
-  dt.glVertexAttrib4NusvARB            = RIff_glVertexAttrib4NusvARB;
-  dt.glVertexAttrib4bv                 = RIff_glVertexAttrib4bv;
-  dt.glVertexAttrib4bvARB              = RIff_glVertexAttrib4bvARB;
-  dt.glVertexAttrib4d                  = RIff_glVertexAttrib4d;
-  dt.glVertexAttrib4dARB               = RIff_glVertexAttrib4dARB;
-  dt.glVertexAttrib4dv                 = RIff_glVertexAttrib4dv;
-  dt.glVertexAttrib4dvARB              = RIff_glVertexAttrib4dvARB;
-  dt.glVertexAttrib4f                  = RIff_glVertexAttrib4f;
-  dt.glVertexAttrib4fARB               = RIff_glVertexAttrib4fARB;
-  dt.glVertexAttrib4fv                 = RIff_glVertexAttrib4fv;
-  dt.glVertexAttrib4fvARB              = RIff_glVertexAttrib4fvARB;
-  dt.glVertexAttrib4iv                 = RIff_glVertexAttrib4iv;
-  dt.glVertexAttrib4ivARB              = RIff_glVertexAttrib4ivARB;
-  dt.glVertexAttrib4s                  = RIff_glVertexAttrib4s;
-  dt.glVertexAttrib4sARB               = RIff_glVertexAttrib4sARB;
-  dt.glVertexAttrib4sv                 = RIff_glVertexAttrib4sv;
-  dt.glVertexAttrib4svARB              = RIff_glVertexAttrib4svARB;
-  dt.glVertexAttrib4ubv                = RIff_glVertexAttrib4ubv;
-  dt.glVertexAttrib4ubvARB             = RIff_glVertexAttrib4ubvARB;
-  dt.glVertexAttrib4usv                = RIff_glVertexAttrib4usv;
-  dt.glVertexAttrib4usvARB             = RIff_glVertexAttrib4usvARB;
-  dt.glVertexAttribPointer             = RIff_glVertexAttribPointer;
-  dt.glVertexAttribPointerARB          = RIff_glVertexAttribPointerARB;
-  dt.glVertexPointer                   = RIff_glVertexPointer;
-  dt.glVertexPointerEXT                = RIff_glVertexPointerEXT;
-  dt.glViewport                        = RIff_glViewport;
-  dt.glWindowPos2d                     = RIff_glWindowPos2d;
-  dt.glWindowPos2f                     = RIff_glWindowPos2f;
-  dt.glWindowPos2i                     = RIff_glWindowPos2i;
-  dt.glWindowPos2s                     = RIff_glWindowPos2s;
-  dt.glWindowPos3d                     = RIff_glWindowPos3d;
-  dt.glWindowPos3f                     = RIff_glWindowPos3f;
-  dt.glWindowPos3i                     = RIff_glWindowPos3i;
-  dt.glWindowPos3s                     = RIff_glWindowPos3s;
+void IffIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glActiveTexture                   = MakeRegalProc(iff_glActiveTexture, layer);
+  dt.glActiveTextureARB                = MakeRegalProc(iff_glActiveTextureARB, layer);
+  dt.glAlphaFunc                       = MakeRegalProc(iff_glAlphaFunc, layer);
+  dt.glBegin                           = MakeRegalProc(iff_glBegin, layer);
+  dt.glBindBuffer                      = MakeRegalProc(iff_glBindBuffer, layer);
+  dt.glBindMultiTextureEXT             = MakeRegalProc(iff_glBindMultiTextureEXT, layer);
+  dt.glBindProgramPipeline             = MakeRegalProc(iff_glBindProgramPipeline, layer);
+  dt.glBindTexture                     = MakeRegalProc(iff_glBindTexture, layer);
+  dt.glBindTextureEXT                  = MakeRegalProc(iff_glBindTextureEXT, layer);
+  dt.glBindVertexArray                 = MakeRegalProc(iff_glBindVertexArray, layer);
+  dt.glBindVertexArrayAPPLE            = MakeRegalProc(iff_glBindVertexArrayAPPLE, layer);
+  dt.glBindVertexArrayOES              = MakeRegalProc(iff_glBindVertexArrayOES, layer);
+  dt.glClientActiveTexture             = MakeRegalProc(iff_glClientActiveTexture, layer);
+  dt.glClientActiveTextureARB          = MakeRegalProc(iff_glClientActiveTextureARB, layer);
+  dt.glClipPlane                       = MakeRegalProc(iff_glClipPlane, layer);
+  dt.glColor3b                         = MakeRegalProc(iff_glColor3b, layer);
+  dt.glColor3bv                        = MakeRegalProc(iff_glColor3bv, layer);
+  dt.glColor3d                         = MakeRegalProc(iff_glColor3d, layer);
+  dt.glColor3dv                        = MakeRegalProc(iff_glColor3dv, layer);
+  dt.glColor3f                         = MakeRegalProc(iff_glColor3f, layer);
+  dt.glColor3fv                        = MakeRegalProc(iff_glColor3fv, layer);
+  dt.glColor3i                         = MakeRegalProc(iff_glColor3i, layer);
+  dt.glColor3iv                        = MakeRegalProc(iff_glColor3iv, layer);
+  dt.glColor3s                         = MakeRegalProc(iff_glColor3s, layer);
+  dt.glColor3sv                        = MakeRegalProc(iff_glColor3sv, layer);
+  dt.glColor3ub                        = MakeRegalProc(iff_glColor3ub, layer);
+  dt.glColor3ubv                       = MakeRegalProc(iff_glColor3ubv, layer);
+  dt.glColor3ui                        = MakeRegalProc(iff_glColor3ui, layer);
+  dt.glColor3uiv                       = MakeRegalProc(iff_glColor3uiv, layer);
+  dt.glColor3us                        = MakeRegalProc(iff_glColor3us, layer);
+  dt.glColor3usv                       = MakeRegalProc(iff_glColor3usv, layer);
+  dt.glColor4b                         = MakeRegalProc(iff_glColor4b, layer);
+  dt.glColor4bv                        = MakeRegalProc(iff_glColor4bv, layer);
+  dt.glColor4d                         = MakeRegalProc(iff_glColor4d, layer);
+  dt.glColor4dv                        = MakeRegalProc(iff_glColor4dv, layer);
+  dt.glColor4f                         = MakeRegalProc(iff_glColor4f, layer);
+  dt.glColor4fv                        = MakeRegalProc(iff_glColor4fv, layer);
+  dt.glColor4i                         = MakeRegalProc(iff_glColor4i, layer);
+  dt.glColor4iv                        = MakeRegalProc(iff_glColor4iv, layer);
+  dt.glColor4s                         = MakeRegalProc(iff_glColor4s, layer);
+  dt.glColor4sv                        = MakeRegalProc(iff_glColor4sv, layer);
+  dt.glColor4ub                        = MakeRegalProc(iff_glColor4ub, layer);
+  dt.glColor4ubv                       = MakeRegalProc(iff_glColor4ubv, layer);
+  dt.glColor4ui                        = MakeRegalProc(iff_glColor4ui, layer);
+  dt.glColor4uiv                       = MakeRegalProc(iff_glColor4uiv, layer);
+  dt.glColor4us                        = MakeRegalProc(iff_glColor4us, layer);
+  dt.glColor4usv                       = MakeRegalProc(iff_glColor4usv, layer);
+  dt.glColorMaterial                   = MakeRegalProc(iff_glColorMaterial, layer);
+  dt.glColorPointer                    = MakeRegalProc(iff_glColorPointer, layer);
+  dt.glColorPointerEXT                 = MakeRegalProc(iff_glColorPointerEXT, layer);
+  dt.glCopyTexImage2D                  = MakeRegalProc(iff_glCopyTexImage2D, layer);
+  dt.glCreateShader                    = MakeRegalProc(iff_glCreateShader, layer);
+  dt.glCreateShaderObjectARB           = MakeRegalProc(iff_glCreateShaderObjectARB, layer);
+  dt.glDepthRange                      = MakeRegalProc(iff_glDepthRange, layer);
+  dt.glDisable                         = MakeRegalProc(iff_glDisable, layer);
+  dt.glDisableClientState              = MakeRegalProc(iff_glDisableClientState, layer);
+  dt.glDisableIndexedEXT               = MakeRegalProc(iff_glDisableIndexedEXT, layer);
+  dt.glDisableVertexAttribArray        = MakeRegalProc(iff_glDisableVertexAttribArray, layer);
+  dt.glDisableVertexAttribArrayARB     = MakeRegalProc(iff_glDisableVertexAttribArrayARB, layer);
+  dt.glDisablei                        = MakeRegalProc(iff_glDisablei, layer);
+  dt.glDrawArrays                      = MakeRegalProc(iff_glDrawArrays, layer);
+  dt.glDrawArraysEXT                   = MakeRegalProc(iff_glDrawArraysEXT, layer);
+  dt.glDrawArraysIndirect              = MakeRegalProc(iff_glDrawArraysIndirect, layer);
+  dt.glDrawArraysInstanced             = MakeRegalProc(iff_glDrawArraysInstanced, layer);
+  dt.glDrawArraysInstancedARB          = MakeRegalProc(iff_glDrawArraysInstancedARB, layer);
+  dt.glDrawArraysInstancedEXT          = MakeRegalProc(iff_glDrawArraysInstancedEXT, layer);
+  dt.glDrawElementArrayAPPLE           = MakeRegalProc(iff_glDrawElementArrayAPPLE, layer);
+  dt.glDrawElementArrayATI             = MakeRegalProc(iff_glDrawElementArrayATI, layer);
+  dt.glDrawElements                    = MakeRegalProc(iff_glDrawElements, layer);
+  dt.glDrawElementsBaseVertex          = MakeRegalProc(iff_glDrawElementsBaseVertex, layer);
+  dt.glDrawElementsIndirect            = MakeRegalProc(iff_glDrawElementsIndirect, layer);
+  dt.glDrawElementsInstanced           = MakeRegalProc(iff_glDrawElementsInstanced, layer);
+  dt.glDrawElementsInstancedARB        = MakeRegalProc(iff_glDrawElementsInstancedARB, layer);
+  dt.glDrawElementsInstancedBaseVertex = MakeRegalProc(iff_glDrawElementsInstancedBaseVertex, layer);
+  dt.glDrawElementsInstancedEXT        = MakeRegalProc(iff_glDrawElementsInstancedEXT, layer);
+  dt.glDrawRangeElementArrayAPPLE      = MakeRegalProc(iff_glDrawRangeElementArrayAPPLE, layer);
+  dt.glDrawRangeElementArrayATI        = MakeRegalProc(iff_glDrawRangeElementArrayATI, layer);
+  dt.glDrawRangeElements               = MakeRegalProc(iff_glDrawRangeElements, layer);
+  dt.glDrawRangeElementsBaseVertex     = MakeRegalProc(iff_glDrawRangeElementsBaseVertex, layer);
+  dt.glDrawRangeElementsEXT            = MakeRegalProc(iff_glDrawRangeElementsEXT, layer);
+  dt.glEdgeFlagPointer                 = MakeRegalProc(iff_glEdgeFlagPointer, layer);
+  dt.glEdgeFlagPointerEXT              = MakeRegalProc(iff_glEdgeFlagPointerEXT, layer);
+  dt.glEnable                          = MakeRegalProc(iff_glEnable, layer);
+  dt.glEnableClientState               = MakeRegalProc(iff_glEnableClientState, layer);
+  dt.glEnableIndexedEXT                = MakeRegalProc(iff_glEnableIndexedEXT, layer);
+  dt.glEnableVertexAttribArray         = MakeRegalProc(iff_glEnableVertexAttribArray, layer);
+  dt.glEnableVertexAttribArrayARB      = MakeRegalProc(iff_glEnableVertexAttribArrayARB, layer);
+  dt.glEnablei                         = MakeRegalProc(iff_glEnablei, layer);
+  dt.glEnd                             = MakeRegalProc(iff_glEnd, layer);
+  dt.glFogCoordPointer                 = MakeRegalProc(iff_glFogCoordPointer, layer);
+  dt.glFogCoordPointerEXT              = MakeRegalProc(iff_glFogCoordPointerEXT, layer);
+  dt.glFogf                            = MakeRegalProc(iff_glFogf, layer);
+  dt.glFogfv                           = MakeRegalProc(iff_glFogfv, layer);
+  dt.glFogi                            = MakeRegalProc(iff_glFogi, layer);
+  dt.glFogiv                           = MakeRegalProc(iff_glFogiv, layer);
+  dt.glFrustum                         = MakeRegalProc(iff_glFrustum, layer);
+  dt.glGetBooleanv                     = MakeRegalProc(iff_glGetBooleanv, layer);
+  dt.glGetDoublev                      = MakeRegalProc(iff_glGetDoublev, layer);
+  dt.glGetFloatv                       = MakeRegalProc(iff_glGetFloatv, layer);
+  dt.glGetIntegerv                     = MakeRegalProc(iff_glGetIntegerv, layer);
+  dt.glGetMaterialfv                   = MakeRegalProc(iff_glGetMaterialfv, layer);
+  dt.glGetMaterialiv                   = MakeRegalProc(iff_glGetMaterialiv, layer);
+  dt.glGetMultiTexGendvEXT             = MakeRegalProc(iff_glGetMultiTexGendvEXT, layer);
+  dt.glGetMultiTexGenfvEXT             = MakeRegalProc(iff_glGetMultiTexGenfvEXT, layer);
+  dt.glGetMultiTexGenivEXT             = MakeRegalProc(iff_glGetMultiTexGenivEXT, layer);
+  dt.glGetTexEnvfv                     = MakeRegalProc(iff_glGetTexEnvfv, layer);
+  dt.glGetTexEnviv                     = MakeRegalProc(iff_glGetTexEnviv, layer);
+  dt.glGetTexGendv                     = MakeRegalProc(iff_glGetTexGendv, layer);
+  dt.glGetTexGenfv                     = MakeRegalProc(iff_glGetTexGenfv, layer);
+  dt.glGetTexGeniv                     = MakeRegalProc(iff_glGetTexGeniv, layer);
+  dt.glGetVertexAttribPointerv         = MakeRegalProc(iff_glGetVertexAttribPointerv, layer);
+  dt.glGetVertexAttribPointervARB      = MakeRegalProc(iff_glGetVertexAttribPointervARB, layer);
+  dt.glGetVertexAttribdv               = MakeRegalProc(iff_glGetVertexAttribdv, layer);
+  dt.glGetVertexAttribdvARB            = MakeRegalProc(iff_glGetVertexAttribdvARB, layer);
+  dt.glGetVertexAttribfv               = MakeRegalProc(iff_glGetVertexAttribfv, layer);
+  dt.glGetVertexAttribfvARB            = MakeRegalProc(iff_glGetVertexAttribfvARB, layer);
+  dt.glGetVertexAttribiv               = MakeRegalProc(iff_glGetVertexAttribiv, layer);
+  dt.glGetVertexAttribivARB            = MakeRegalProc(iff_glGetVertexAttribivARB, layer);
+  dt.glIsEnabled                       = MakeRegalProc(iff_glIsEnabled, layer);
+  dt.glIsVertexArray                   = MakeRegalProc(iff_glIsVertexArray, layer);
+  dt.glLightModelf                     = MakeRegalProc(iff_glLightModelf, layer);
+  dt.glLightModelfv                    = MakeRegalProc(iff_glLightModelfv, layer);
+  dt.glLightModeli                     = MakeRegalProc(iff_glLightModeli, layer);
+  dt.glLightModeliv                    = MakeRegalProc(iff_glLightModeliv, layer);
+  dt.glLightf                          = MakeRegalProc(iff_glLightf, layer);
+  dt.glLightfv                         = MakeRegalProc(iff_glLightfv, layer);
+  dt.glLighti                          = MakeRegalProc(iff_glLighti, layer);
+  dt.glLightiv                         = MakeRegalProc(iff_glLightiv, layer);
+  dt.glLinkProgram                     = MakeRegalProc(iff_glLinkProgram, layer);
+  dt.glLinkProgramARB                  = MakeRegalProc(iff_glLinkProgramARB, layer);
+  dt.glLoadIdentity                    = MakeRegalProc(iff_glLoadIdentity, layer);
+  dt.glLoadMatrixd                     = MakeRegalProc(iff_glLoadMatrixd, layer);
+  dt.glLoadMatrixf                     = MakeRegalProc(iff_glLoadMatrixf, layer);
+  dt.glLoadTransposeMatrixd            = MakeRegalProc(iff_glLoadTransposeMatrixd, layer);
+  dt.glLoadTransposeMatrixdARB         = MakeRegalProc(iff_glLoadTransposeMatrixdARB, layer);
+  dt.glLoadTransposeMatrixf            = MakeRegalProc(iff_glLoadTransposeMatrixf, layer);
+  dt.glLoadTransposeMatrixfARB         = MakeRegalProc(iff_glLoadTransposeMatrixfARB, layer);
+  dt.glMaterialf                       = MakeRegalProc(iff_glMaterialf, layer);
+  dt.glMaterialfv                      = MakeRegalProc(iff_glMaterialfv, layer);
+  dt.glMateriali                       = MakeRegalProc(iff_glMateriali, layer);
+  dt.glMaterialiv                      = MakeRegalProc(iff_glMaterialiv, layer);
+  dt.glMatrixFrustumEXT                = MakeRegalProc(iff_glMatrixFrustumEXT, layer);
+  dt.glMatrixLoadIdentityEXT           = MakeRegalProc(iff_glMatrixLoadIdentityEXT, layer);
+  dt.glMatrixLoadTransposedEXT         = MakeRegalProc(iff_glMatrixLoadTransposedEXT, layer);
+  dt.glMatrixLoadTransposefEXT         = MakeRegalProc(iff_glMatrixLoadTransposefEXT, layer);
+  dt.glMatrixLoaddEXT                  = MakeRegalProc(iff_glMatrixLoaddEXT, layer);
+  dt.glMatrixLoadfEXT                  = MakeRegalProc(iff_glMatrixLoadfEXT, layer);
+  dt.glMatrixMode                      = MakeRegalProc(iff_glMatrixMode, layer);
+  dt.glMatrixMultTransposedEXT         = MakeRegalProc(iff_glMatrixMultTransposedEXT, layer);
+  dt.glMatrixMultTransposefEXT         = MakeRegalProc(iff_glMatrixMultTransposefEXT, layer);
+  dt.glMatrixMultdEXT                  = MakeRegalProc(iff_glMatrixMultdEXT, layer);
+  dt.glMatrixMultfEXT                  = MakeRegalProc(iff_glMatrixMultfEXT, layer);
+  dt.glMatrixOrthoEXT                  = MakeRegalProc(iff_glMatrixOrthoEXT, layer);
+  dt.glMatrixPopEXT                    = MakeRegalProc(iff_glMatrixPopEXT, layer);
+  dt.glMatrixPushEXT                   = MakeRegalProc(iff_glMatrixPushEXT, layer);
+  dt.glMatrixRotatedEXT                = MakeRegalProc(iff_glMatrixRotatedEXT, layer);
+  dt.glMatrixRotatefEXT                = MakeRegalProc(iff_glMatrixRotatefEXT, layer);
+  dt.glMatrixScaledEXT                 = MakeRegalProc(iff_glMatrixScaledEXT, layer);
+  dt.glMatrixScalefEXT                 = MakeRegalProc(iff_glMatrixScalefEXT, layer);
+  dt.glMatrixTranslatedEXT             = MakeRegalProc(iff_glMatrixTranslatedEXT, layer);
+  dt.glMatrixTranslatefEXT             = MakeRegalProc(iff_glMatrixTranslatefEXT, layer);
+  dt.glMultMatrixd                     = MakeRegalProc(iff_glMultMatrixd, layer);
+  dt.glMultMatrixf                     = MakeRegalProc(iff_glMultMatrixf, layer);
+  dt.glMultTransposeMatrixd            = MakeRegalProc(iff_glMultTransposeMatrixd, layer);
+  dt.glMultTransposeMatrixdARB         = MakeRegalProc(iff_glMultTransposeMatrixdARB, layer);
+  dt.glMultTransposeMatrixf            = MakeRegalProc(iff_glMultTransposeMatrixf, layer);
+  dt.glMultTransposeMatrixfARB         = MakeRegalProc(iff_glMultTransposeMatrixfARB, layer);
+  dt.glMultiDrawArrays                 = MakeRegalProc(iff_glMultiDrawArrays, layer);
+  dt.glMultiDrawArraysEXT              = MakeRegalProc(iff_glMultiDrawArraysEXT, layer);
+  dt.glMultiDrawArraysIndirect         = MakeRegalProc(iff_glMultiDrawArraysIndirect, layer);
+  dt.glMultiDrawArraysIndirectAMD      = MakeRegalProc(iff_glMultiDrawArraysIndirectAMD, layer);
+  dt.glMultiDrawElementArrayAPPLE      = MakeRegalProc(iff_glMultiDrawElementArrayAPPLE, layer);
+  dt.glMultiDrawElements               = MakeRegalProc(iff_glMultiDrawElements, layer);
+  dt.glMultiDrawElementsBaseVertex     = MakeRegalProc(iff_glMultiDrawElementsBaseVertex, layer);
+  dt.glMultiDrawElementsEXT            = MakeRegalProc(iff_glMultiDrawElementsEXT, layer);
+  dt.glMultiDrawElementsIndirect       = MakeRegalProc(iff_glMultiDrawElementsIndirect, layer);
+  dt.glMultiDrawElementsIndirectAMD    = MakeRegalProc(iff_glMultiDrawElementsIndirectAMD, layer);
+  dt.glMultiDrawRangeElementArrayAPPLE = MakeRegalProc(iff_glMultiDrawRangeElementArrayAPPLE, layer);
+  dt.glMultiTexCoord1d                 = MakeRegalProc(iff_glMultiTexCoord1d, layer);
+  dt.glMultiTexCoord1dARB              = MakeRegalProc(iff_glMultiTexCoord1dARB, layer);
+  dt.glMultiTexCoord1dv                = MakeRegalProc(iff_glMultiTexCoord1dv, layer);
+  dt.glMultiTexCoord1dvARB             = MakeRegalProc(iff_glMultiTexCoord1dvARB, layer);
+  dt.glMultiTexCoord1f                 = MakeRegalProc(iff_glMultiTexCoord1f, layer);
+  dt.glMultiTexCoord1fARB              = MakeRegalProc(iff_glMultiTexCoord1fARB, layer);
+  dt.glMultiTexCoord1fv                = MakeRegalProc(iff_glMultiTexCoord1fv, layer);
+  dt.glMultiTexCoord1fvARB             = MakeRegalProc(iff_glMultiTexCoord1fvARB, layer);
+  dt.glMultiTexCoord1i                 = MakeRegalProc(iff_glMultiTexCoord1i, layer);
+  dt.glMultiTexCoord1iARB              = MakeRegalProc(iff_glMultiTexCoord1iARB, layer);
+  dt.glMultiTexCoord1iv                = MakeRegalProc(iff_glMultiTexCoord1iv, layer);
+  dt.glMultiTexCoord1ivARB             = MakeRegalProc(iff_glMultiTexCoord1ivARB, layer);
+  dt.glMultiTexCoord1s                 = MakeRegalProc(iff_glMultiTexCoord1s, layer);
+  dt.glMultiTexCoord1sARB              = MakeRegalProc(iff_glMultiTexCoord1sARB, layer);
+  dt.glMultiTexCoord1sv                = MakeRegalProc(iff_glMultiTexCoord1sv, layer);
+  dt.glMultiTexCoord1svARB             = MakeRegalProc(iff_glMultiTexCoord1svARB, layer);
+  dt.glMultiTexCoord2d                 = MakeRegalProc(iff_glMultiTexCoord2d, layer);
+  dt.glMultiTexCoord2dARB              = MakeRegalProc(iff_glMultiTexCoord2dARB, layer);
+  dt.glMultiTexCoord2dv                = MakeRegalProc(iff_glMultiTexCoord2dv, layer);
+  dt.glMultiTexCoord2dvARB             = MakeRegalProc(iff_glMultiTexCoord2dvARB, layer);
+  dt.glMultiTexCoord2f                 = MakeRegalProc(iff_glMultiTexCoord2f, layer);
+  dt.glMultiTexCoord2fARB              = MakeRegalProc(iff_glMultiTexCoord2fARB, layer);
+  dt.glMultiTexCoord2fv                = MakeRegalProc(iff_glMultiTexCoord2fv, layer);
+  dt.glMultiTexCoord2fvARB             = MakeRegalProc(iff_glMultiTexCoord2fvARB, layer);
+  dt.glMultiTexCoord2i                 = MakeRegalProc(iff_glMultiTexCoord2i, layer);
+  dt.glMultiTexCoord2iARB              = MakeRegalProc(iff_glMultiTexCoord2iARB, layer);
+  dt.glMultiTexCoord2iv                = MakeRegalProc(iff_glMultiTexCoord2iv, layer);
+  dt.glMultiTexCoord2ivARB             = MakeRegalProc(iff_glMultiTexCoord2ivARB, layer);
+  dt.glMultiTexCoord2s                 = MakeRegalProc(iff_glMultiTexCoord2s, layer);
+  dt.glMultiTexCoord2sARB              = MakeRegalProc(iff_glMultiTexCoord2sARB, layer);
+  dt.glMultiTexCoord2sv                = MakeRegalProc(iff_glMultiTexCoord2sv, layer);
+  dt.glMultiTexCoord2svARB             = MakeRegalProc(iff_glMultiTexCoord2svARB, layer);
+  dt.glMultiTexCoord3d                 = MakeRegalProc(iff_glMultiTexCoord3d, layer);
+  dt.glMultiTexCoord3dARB              = MakeRegalProc(iff_glMultiTexCoord3dARB, layer);
+  dt.glMultiTexCoord3dv                = MakeRegalProc(iff_glMultiTexCoord3dv, layer);
+  dt.glMultiTexCoord3dvARB             = MakeRegalProc(iff_glMultiTexCoord3dvARB, layer);
+  dt.glMultiTexCoord3f                 = MakeRegalProc(iff_glMultiTexCoord3f, layer);
+  dt.glMultiTexCoord3fARB              = MakeRegalProc(iff_glMultiTexCoord3fARB, layer);
+  dt.glMultiTexCoord3fv                = MakeRegalProc(iff_glMultiTexCoord3fv, layer);
+  dt.glMultiTexCoord3fvARB             = MakeRegalProc(iff_glMultiTexCoord3fvARB, layer);
+  dt.glMultiTexCoord3i                 = MakeRegalProc(iff_glMultiTexCoord3i, layer);
+  dt.glMultiTexCoord3iARB              = MakeRegalProc(iff_glMultiTexCoord3iARB, layer);
+  dt.glMultiTexCoord3iv                = MakeRegalProc(iff_glMultiTexCoord3iv, layer);
+  dt.glMultiTexCoord3ivARB             = MakeRegalProc(iff_glMultiTexCoord3ivARB, layer);
+  dt.glMultiTexCoord3s                 = MakeRegalProc(iff_glMultiTexCoord3s, layer);
+  dt.glMultiTexCoord3sARB              = MakeRegalProc(iff_glMultiTexCoord3sARB, layer);
+  dt.glMultiTexCoord3sv                = MakeRegalProc(iff_glMultiTexCoord3sv, layer);
+  dt.glMultiTexCoord3svARB             = MakeRegalProc(iff_glMultiTexCoord3svARB, layer);
+  dt.glMultiTexCoord4d                 = MakeRegalProc(iff_glMultiTexCoord4d, layer);
+  dt.glMultiTexCoord4dARB              = MakeRegalProc(iff_glMultiTexCoord4dARB, layer);
+  dt.glMultiTexCoord4dv                = MakeRegalProc(iff_glMultiTexCoord4dv, layer);
+  dt.glMultiTexCoord4dvARB             = MakeRegalProc(iff_glMultiTexCoord4dvARB, layer);
+  dt.glMultiTexCoord4f                 = MakeRegalProc(iff_glMultiTexCoord4f, layer);
+  dt.glMultiTexCoord4fARB              = MakeRegalProc(iff_glMultiTexCoord4fARB, layer);
+  dt.glMultiTexCoord4fv                = MakeRegalProc(iff_glMultiTexCoord4fv, layer);
+  dt.glMultiTexCoord4fvARB             = MakeRegalProc(iff_glMultiTexCoord4fvARB, layer);
+  dt.glMultiTexCoord4i                 = MakeRegalProc(iff_glMultiTexCoord4i, layer);
+  dt.glMultiTexCoord4iARB              = MakeRegalProc(iff_glMultiTexCoord4iARB, layer);
+  dt.glMultiTexCoord4iv                = MakeRegalProc(iff_glMultiTexCoord4iv, layer);
+  dt.glMultiTexCoord4ivARB             = MakeRegalProc(iff_glMultiTexCoord4ivARB, layer);
+  dt.glMultiTexCoord4s                 = MakeRegalProc(iff_glMultiTexCoord4s, layer);
+  dt.glMultiTexCoord4sARB              = MakeRegalProc(iff_glMultiTexCoord4sARB, layer);
+  dt.glMultiTexCoord4sv                = MakeRegalProc(iff_glMultiTexCoord4sv, layer);
+  dt.glMultiTexCoord4svARB             = MakeRegalProc(iff_glMultiTexCoord4svARB, layer);
+  dt.glMultiTexEnvfEXT                 = MakeRegalProc(iff_glMultiTexEnvfEXT, layer);
+  dt.glMultiTexEnvfvEXT                = MakeRegalProc(iff_glMultiTexEnvfvEXT, layer);
+  dt.glMultiTexEnviEXT                 = MakeRegalProc(iff_glMultiTexEnviEXT, layer);
+  dt.glMultiTexEnvivEXT                = MakeRegalProc(iff_glMultiTexEnvivEXT, layer);
+  dt.glMultiTexImage1DEXT              = MakeRegalProc(iff_glMultiTexImage1DEXT, layer);
+  dt.glMultiTexImage2DEXT              = MakeRegalProc(iff_glMultiTexImage2DEXT, layer);
+  dt.glMultiTexImage3DEXT              = MakeRegalProc(iff_glMultiTexImage3DEXT, layer);
+  dt.glNormal3b                        = MakeRegalProc(iff_glNormal3b, layer);
+  dt.glNormal3bv                       = MakeRegalProc(iff_glNormal3bv, layer);
+  dt.glNormal3d                        = MakeRegalProc(iff_glNormal3d, layer);
+  dt.glNormal3dv                       = MakeRegalProc(iff_glNormal3dv, layer);
+  dt.glNormal3f                        = MakeRegalProc(iff_glNormal3f, layer);
+  dt.glNormal3fv                       = MakeRegalProc(iff_glNormal3fv, layer);
+  dt.glNormal3i                        = MakeRegalProc(iff_glNormal3i, layer);
+  dt.glNormal3iv                       = MakeRegalProc(iff_glNormal3iv, layer);
+  dt.glNormal3s                        = MakeRegalProc(iff_glNormal3s, layer);
+  dt.glNormal3sv                       = MakeRegalProc(iff_glNormal3sv, layer);
+  dt.glNormalPointer                   = MakeRegalProc(iff_glNormalPointer, layer);
+  dt.glNormalPointerEXT                = MakeRegalProc(iff_glNormalPointerEXT, layer);
+  dt.glOrtho                           = MakeRegalProc(iff_glOrtho, layer);
+  dt.glPopMatrix                       = MakeRegalProc(iff_glPopMatrix, layer);
+  dt.glPushMatrix                      = MakeRegalProc(iff_glPushMatrix, layer);
+  dt.glRasterPos2d                     = MakeRegalProc(iff_glRasterPos2d, layer);
+  dt.glRasterPos2f                     = MakeRegalProc(iff_glRasterPos2f, layer);
+  dt.glRasterPos2i                     = MakeRegalProc(iff_glRasterPos2i, layer);
+  dt.glRasterPos2s                     = MakeRegalProc(iff_glRasterPos2s, layer);
+  dt.glRasterPos3d                     = MakeRegalProc(iff_glRasterPos3d, layer);
+  dt.glRasterPos3f                     = MakeRegalProc(iff_glRasterPos3f, layer);
+  dt.glRasterPos3i                     = MakeRegalProc(iff_glRasterPos3i, layer);
+  dt.glRasterPos3s                     = MakeRegalProc(iff_glRasterPos3s, layer);
+  dt.glRotated                         = MakeRegalProc(iff_glRotated, layer);
+  dt.glRotatef                         = MakeRegalProc(iff_glRotatef, layer);
+  dt.glScaled                          = MakeRegalProc(iff_glScaled, layer);
+  dt.glScalef                          = MakeRegalProc(iff_glScalef, layer);
+  dt.glSecondaryColor3b                = MakeRegalProc(iff_glSecondaryColor3b, layer);
+  dt.glSecondaryColor3bEXT             = MakeRegalProc(iff_glSecondaryColor3bEXT, layer);
+  dt.glSecondaryColor3bv               = MakeRegalProc(iff_glSecondaryColor3bv, layer);
+  dt.glSecondaryColor3bvEXT            = MakeRegalProc(iff_glSecondaryColor3bvEXT, layer);
+  dt.glSecondaryColor3d                = MakeRegalProc(iff_glSecondaryColor3d, layer);
+  dt.glSecondaryColor3dEXT             = MakeRegalProc(iff_glSecondaryColor3dEXT, layer);
+  dt.glSecondaryColor3dv               = MakeRegalProc(iff_glSecondaryColor3dv, layer);
+  dt.glSecondaryColor3dvEXT            = MakeRegalProc(iff_glSecondaryColor3dvEXT, layer);
+  dt.glSecondaryColor3f                = MakeRegalProc(iff_glSecondaryColor3f, layer);
+  dt.glSecondaryColor3fEXT             = MakeRegalProc(iff_glSecondaryColor3fEXT, layer);
+  dt.glSecondaryColor3fv               = MakeRegalProc(iff_glSecondaryColor3fv, layer);
+  dt.glSecondaryColor3fvEXT            = MakeRegalProc(iff_glSecondaryColor3fvEXT, layer);
+  dt.glSecondaryColor3i                = MakeRegalProc(iff_glSecondaryColor3i, layer);
+  dt.glSecondaryColor3iEXT             = MakeRegalProc(iff_glSecondaryColor3iEXT, layer);
+  dt.glSecondaryColor3iv               = MakeRegalProc(iff_glSecondaryColor3iv, layer);
+  dt.glSecondaryColor3ivEXT            = MakeRegalProc(iff_glSecondaryColor3ivEXT, layer);
+  dt.glSecondaryColor3s                = MakeRegalProc(iff_glSecondaryColor3s, layer);
+  dt.glSecondaryColor3sEXT             = MakeRegalProc(iff_glSecondaryColor3sEXT, layer);
+  dt.glSecondaryColor3sv               = MakeRegalProc(iff_glSecondaryColor3sv, layer);
+  dt.glSecondaryColor3svEXT            = MakeRegalProc(iff_glSecondaryColor3svEXT, layer);
+  dt.glSecondaryColor3ub               = MakeRegalProc(iff_glSecondaryColor3ub, layer);
+  dt.glSecondaryColor3ubEXT            = MakeRegalProc(iff_glSecondaryColor3ubEXT, layer);
+  dt.glSecondaryColor3ubv              = MakeRegalProc(iff_glSecondaryColor3ubv, layer);
+  dt.glSecondaryColor3ubvEXT           = MakeRegalProc(iff_glSecondaryColor3ubvEXT, layer);
+  dt.glSecondaryColor3ui               = MakeRegalProc(iff_glSecondaryColor3ui, layer);
+  dt.glSecondaryColor3uiEXT            = MakeRegalProc(iff_glSecondaryColor3uiEXT, layer);
+  dt.glSecondaryColor3uiv              = MakeRegalProc(iff_glSecondaryColor3uiv, layer);
+  dt.glSecondaryColor3uivEXT           = MakeRegalProc(iff_glSecondaryColor3uivEXT, layer);
+  dt.glSecondaryColor3us               = MakeRegalProc(iff_glSecondaryColor3us, layer);
+  dt.glSecondaryColor3usEXT            = MakeRegalProc(iff_glSecondaryColor3usEXT, layer);
+  dt.glSecondaryColor3usv              = MakeRegalProc(iff_glSecondaryColor3usv, layer);
+  dt.glSecondaryColor3usvEXT           = MakeRegalProc(iff_glSecondaryColor3usvEXT, layer);
+  dt.glSecondaryColorPointer           = MakeRegalProc(iff_glSecondaryColorPointer, layer);
+  dt.glSecondaryColorPointerEXT        = MakeRegalProc(iff_glSecondaryColorPointerEXT, layer);
+  dt.glShadeModel                      = MakeRegalProc(iff_glShadeModel, layer);
+  dt.glShaderSource                    = MakeRegalProc(iff_glShaderSource, layer);
+  dt.glShaderSourceARB                 = MakeRegalProc(iff_glShaderSourceARB, layer);
+  dt.glTexCoord1d                      = MakeRegalProc(iff_glTexCoord1d, layer);
+  dt.glTexCoord1dv                     = MakeRegalProc(iff_glTexCoord1dv, layer);
+  dt.glTexCoord1f                      = MakeRegalProc(iff_glTexCoord1f, layer);
+  dt.glTexCoord1fv                     = MakeRegalProc(iff_glTexCoord1fv, layer);
+  dt.glTexCoord1i                      = MakeRegalProc(iff_glTexCoord1i, layer);
+  dt.glTexCoord1iv                     = MakeRegalProc(iff_glTexCoord1iv, layer);
+  dt.glTexCoord1s                      = MakeRegalProc(iff_glTexCoord1s, layer);
+  dt.glTexCoord1sv                     = MakeRegalProc(iff_glTexCoord1sv, layer);
+  dt.glTexCoord2d                      = MakeRegalProc(iff_glTexCoord2d, layer);
+  dt.glTexCoord2dv                     = MakeRegalProc(iff_glTexCoord2dv, layer);
+  dt.glTexCoord2f                      = MakeRegalProc(iff_glTexCoord2f, layer);
+  dt.glTexCoord2fv                     = MakeRegalProc(iff_glTexCoord2fv, layer);
+  dt.glTexCoord2i                      = MakeRegalProc(iff_glTexCoord2i, layer);
+  dt.glTexCoord2iv                     = MakeRegalProc(iff_glTexCoord2iv, layer);
+  dt.glTexCoord2s                      = MakeRegalProc(iff_glTexCoord2s, layer);
+  dt.glTexCoord2sv                     = MakeRegalProc(iff_glTexCoord2sv, layer);
+  dt.glTexCoord3d                      = MakeRegalProc(iff_glTexCoord3d, layer);
+  dt.glTexCoord3dv                     = MakeRegalProc(iff_glTexCoord3dv, layer);
+  dt.glTexCoord3f                      = MakeRegalProc(iff_glTexCoord3f, layer);
+  dt.glTexCoord3fv                     = MakeRegalProc(iff_glTexCoord3fv, layer);
+  dt.glTexCoord3i                      = MakeRegalProc(iff_glTexCoord3i, layer);
+  dt.glTexCoord3iv                     = MakeRegalProc(iff_glTexCoord3iv, layer);
+  dt.glTexCoord3s                      = MakeRegalProc(iff_glTexCoord3s, layer);
+  dt.glTexCoord3sv                     = MakeRegalProc(iff_glTexCoord3sv, layer);
+  dt.glTexCoord4d                      = MakeRegalProc(iff_glTexCoord4d, layer);
+  dt.glTexCoord4dv                     = MakeRegalProc(iff_glTexCoord4dv, layer);
+  dt.glTexCoord4f                      = MakeRegalProc(iff_glTexCoord4f, layer);
+  dt.glTexCoord4fv                     = MakeRegalProc(iff_glTexCoord4fv, layer);
+  dt.glTexCoord4i                      = MakeRegalProc(iff_glTexCoord4i, layer);
+  dt.glTexCoord4iv                     = MakeRegalProc(iff_glTexCoord4iv, layer);
+  dt.glTexCoord4s                      = MakeRegalProc(iff_glTexCoord4s, layer);
+  dt.glTexCoord4sv                     = MakeRegalProc(iff_glTexCoord4sv, layer);
+  dt.glTexCoordPointer                 = MakeRegalProc(iff_glTexCoordPointer, layer);
+  dt.glTexCoordPointerEXT              = MakeRegalProc(iff_glTexCoordPointerEXT, layer);
+  dt.glTexEnvf                         = MakeRegalProc(iff_glTexEnvf, layer);
+  dt.glTexEnvfv                        = MakeRegalProc(iff_glTexEnvfv, layer);
+  dt.glTexEnvi                         = MakeRegalProc(iff_glTexEnvi, layer);
+  dt.glTexEnviv                        = MakeRegalProc(iff_glTexEnviv, layer);
+  dt.glTexGend                         = MakeRegalProc(iff_glTexGend, layer);
+  dt.glTexGendv                        = MakeRegalProc(iff_glTexGendv, layer);
+  dt.glTexGenf                         = MakeRegalProc(iff_glTexGenf, layer);
+  dt.glTexGenfv                        = MakeRegalProc(iff_glTexGenfv, layer);
+  dt.glTexGeni                         = MakeRegalProc(iff_glTexGeni, layer);
+  dt.glTexGeniv                        = MakeRegalProc(iff_glTexGeniv, layer);
+  dt.glTexImage1D                      = MakeRegalProc(iff_glTexImage1D, layer);
+  dt.glTexImage2D                      = MakeRegalProc(iff_glTexImage2D, layer);
+  dt.glTexImage2DMultisample           = MakeRegalProc(iff_glTexImage2DMultisample, layer);
+  dt.glTexImage2DMultisampleCoverageNV = MakeRegalProc(iff_glTexImage2DMultisampleCoverageNV, layer);
+  dt.glTexImage3D                      = MakeRegalProc(iff_glTexImage3D, layer);
+  dt.glTexImage3DEXT                   = MakeRegalProc(iff_glTexImage3DEXT, layer);
+  dt.glTexImage3DMultisample           = MakeRegalProc(iff_glTexImage3DMultisample, layer);
+  dt.glTexImage3DMultisampleCoverageNV = MakeRegalProc(iff_glTexImage3DMultisampleCoverageNV, layer);
+  dt.glTexImage4DSGIS                  = MakeRegalProc(iff_glTexImage4DSGIS, layer);
+  dt.glTextureImage1DEXT               = MakeRegalProc(iff_glTextureImage1DEXT, layer);
+  dt.glTextureImage2DEXT               = MakeRegalProc(iff_glTextureImage2DEXT, layer);
+  dt.glTextureImage3DEXT               = MakeRegalProc(iff_glTextureImage3DEXT, layer);
+  dt.glTranslated                      = MakeRegalProc(iff_glTranslated, layer);
+  dt.glTranslatef                      = MakeRegalProc(iff_glTranslatef, layer);
+  dt.glUniform1d                       = MakeRegalProc(iff_glUniform1d, layer);
+  dt.glUniform1dv                      = MakeRegalProc(iff_glUniform1dv, layer);
+  dt.glUniform1f                       = MakeRegalProc(iff_glUniform1f, layer);
+  dt.glUniform1fARB                    = MakeRegalProc(iff_glUniform1fARB, layer);
+  dt.glUniform1fv                      = MakeRegalProc(iff_glUniform1fv, layer);
+  dt.glUniform1fvARB                   = MakeRegalProc(iff_glUniform1fvARB, layer);
+  dt.glUniform1i                       = MakeRegalProc(iff_glUniform1i, layer);
+  dt.glUniform1iARB                    = MakeRegalProc(iff_glUniform1iARB, layer);
+  dt.glUniform1iv                      = MakeRegalProc(iff_glUniform1iv, layer);
+  dt.glUniform1ivARB                   = MakeRegalProc(iff_glUniform1ivARB, layer);
+  dt.glUniform1ui                      = MakeRegalProc(iff_glUniform1ui, layer);
+  dt.glUniform1uiv                     = MakeRegalProc(iff_glUniform1uiv, layer);
+  dt.glUniform2d                       = MakeRegalProc(iff_glUniform2d, layer);
+  dt.glUniform2dv                      = MakeRegalProc(iff_glUniform2dv, layer);
+  dt.glUniform2f                       = MakeRegalProc(iff_glUniform2f, layer);
+  dt.glUniform2fARB                    = MakeRegalProc(iff_glUniform2fARB, layer);
+  dt.glUniform2fv                      = MakeRegalProc(iff_glUniform2fv, layer);
+  dt.glUniform2fvARB                   = MakeRegalProc(iff_glUniform2fvARB, layer);
+  dt.glUniform2i                       = MakeRegalProc(iff_glUniform2i, layer);
+  dt.glUniform2iARB                    = MakeRegalProc(iff_glUniform2iARB, layer);
+  dt.glUniform2iv                      = MakeRegalProc(iff_glUniform2iv, layer);
+  dt.glUniform2ivARB                   = MakeRegalProc(iff_glUniform2ivARB, layer);
+  dt.glUniform2ui                      = MakeRegalProc(iff_glUniform2ui, layer);
+  dt.glUniform2uiv                     = MakeRegalProc(iff_glUniform2uiv, layer);
+  dt.glUniform3d                       = MakeRegalProc(iff_glUniform3d, layer);
+  dt.glUniform3dv                      = MakeRegalProc(iff_glUniform3dv, layer);
+  dt.glUniform3f                       = MakeRegalProc(iff_glUniform3f, layer);
+  dt.glUniform3fARB                    = MakeRegalProc(iff_glUniform3fARB, layer);
+  dt.glUniform3fv                      = MakeRegalProc(iff_glUniform3fv, layer);
+  dt.glUniform3fvARB                   = MakeRegalProc(iff_glUniform3fvARB, layer);
+  dt.glUniform3i                       = MakeRegalProc(iff_glUniform3i, layer);
+  dt.glUniform3iARB                    = MakeRegalProc(iff_glUniform3iARB, layer);
+  dt.glUniform3iv                      = MakeRegalProc(iff_glUniform3iv, layer);
+  dt.glUniform3ivARB                   = MakeRegalProc(iff_glUniform3ivARB, layer);
+  dt.glUniform3ui                      = MakeRegalProc(iff_glUniform3ui, layer);
+  dt.glUniform3uiv                     = MakeRegalProc(iff_glUniform3uiv, layer);
+  dt.glUniform4d                       = MakeRegalProc(iff_glUniform4d, layer);
+  dt.glUniform4dv                      = MakeRegalProc(iff_glUniform4dv, layer);
+  dt.glUniform4f                       = MakeRegalProc(iff_glUniform4f, layer);
+  dt.glUniform4fARB                    = MakeRegalProc(iff_glUniform4fARB, layer);
+  dt.glUniform4fv                      = MakeRegalProc(iff_glUniform4fv, layer);
+  dt.glUniform4fvARB                   = MakeRegalProc(iff_glUniform4fvARB, layer);
+  dt.glUniform4i                       = MakeRegalProc(iff_glUniform4i, layer);
+  dt.glUniform4iARB                    = MakeRegalProc(iff_glUniform4iARB, layer);
+  dt.glUniform4iv                      = MakeRegalProc(iff_glUniform4iv, layer);
+  dt.glUniform4ivARB                   = MakeRegalProc(iff_glUniform4ivARB, layer);
+  dt.glUniform4ui                      = MakeRegalProc(iff_glUniform4ui, layer);
+  dt.glUniform4uiv                     = MakeRegalProc(iff_glUniform4uiv, layer);
+  dt.glUniformMatrix2dv                = MakeRegalProc(iff_glUniformMatrix2dv, layer);
+  dt.glUniformMatrix2fv                = MakeRegalProc(iff_glUniformMatrix2fv, layer);
+  dt.glUniformMatrix2fvARB             = MakeRegalProc(iff_glUniformMatrix2fvARB, layer);
+  dt.glUniformMatrix2x3dv              = MakeRegalProc(iff_glUniformMatrix2x3dv, layer);
+  dt.glUniformMatrix2x3fv              = MakeRegalProc(iff_glUniformMatrix2x3fv, layer);
+  dt.glUniformMatrix2x4dv              = MakeRegalProc(iff_glUniformMatrix2x4dv, layer);
+  dt.glUniformMatrix2x4fv              = MakeRegalProc(iff_glUniformMatrix2x4fv, layer);
+  dt.glUniformMatrix3dv                = MakeRegalProc(iff_glUniformMatrix3dv, layer);
+  dt.glUniformMatrix3fv                = MakeRegalProc(iff_glUniformMatrix3fv, layer);
+  dt.glUniformMatrix3fvARB             = MakeRegalProc(iff_glUniformMatrix3fvARB, layer);
+  dt.glUniformMatrix3x2dv              = MakeRegalProc(iff_glUniformMatrix3x2dv, layer);
+  dt.glUniformMatrix3x2fv              = MakeRegalProc(iff_glUniformMatrix3x2fv, layer);
+  dt.glUniformMatrix3x4dv              = MakeRegalProc(iff_glUniformMatrix3x4dv, layer);
+  dt.glUniformMatrix3x4fv              = MakeRegalProc(iff_glUniformMatrix3x4fv, layer);
+  dt.glUniformMatrix4dv                = MakeRegalProc(iff_glUniformMatrix4dv, layer);
+  dt.glUniformMatrix4fv                = MakeRegalProc(iff_glUniformMatrix4fv, layer);
+  dt.glUniformMatrix4fvARB             = MakeRegalProc(iff_glUniformMatrix4fvARB, layer);
+  dt.glUniformMatrix4x2dv              = MakeRegalProc(iff_glUniformMatrix4x2dv, layer);
+  dt.glUniformMatrix4x2fv              = MakeRegalProc(iff_glUniformMatrix4x2fv, layer);
+  dt.glUniformMatrix4x3dv              = MakeRegalProc(iff_glUniformMatrix4x3dv, layer);
+  dt.glUniformMatrix4x3fv              = MakeRegalProc(iff_glUniformMatrix4x3fv, layer);
+  dt.glUseProgram                      = MakeRegalProc(iff_glUseProgram, layer);
+  dt.glUseProgramObjectARB             = MakeRegalProc(iff_glUseProgramObjectARB, layer);
+  dt.glVertex2d                        = MakeRegalProc(iff_glVertex2d, layer);
+  dt.glVertex2dv                       = MakeRegalProc(iff_glVertex2dv, layer);
+  dt.glVertex2f                        = MakeRegalProc(iff_glVertex2f, layer);
+  dt.glVertex2fv                       = MakeRegalProc(iff_glVertex2fv, layer);
+  dt.glVertex2i                        = MakeRegalProc(iff_glVertex2i, layer);
+  dt.glVertex2iv                       = MakeRegalProc(iff_glVertex2iv, layer);
+  dt.glVertex2s                        = MakeRegalProc(iff_glVertex2s, layer);
+  dt.glVertex2sv                       = MakeRegalProc(iff_glVertex2sv, layer);
+  dt.glVertex3d                        = MakeRegalProc(iff_glVertex3d, layer);
+  dt.glVertex3dv                       = MakeRegalProc(iff_glVertex3dv, layer);
+  dt.glVertex3f                        = MakeRegalProc(iff_glVertex3f, layer);
+  dt.glVertex3fv                       = MakeRegalProc(iff_glVertex3fv, layer);
+  dt.glVertex3i                        = MakeRegalProc(iff_glVertex3i, layer);
+  dt.glVertex3iv                       = MakeRegalProc(iff_glVertex3iv, layer);
+  dt.glVertex3s                        = MakeRegalProc(iff_glVertex3s, layer);
+  dt.glVertex3sv                       = MakeRegalProc(iff_glVertex3sv, layer);
+  dt.glVertex4d                        = MakeRegalProc(iff_glVertex4d, layer);
+  dt.glVertex4dv                       = MakeRegalProc(iff_glVertex4dv, layer);
+  dt.glVertex4f                        = MakeRegalProc(iff_glVertex4f, layer);
+  dt.glVertex4fv                       = MakeRegalProc(iff_glVertex4fv, layer);
+  dt.glVertex4i                        = MakeRegalProc(iff_glVertex4i, layer);
+  dt.glVertex4iv                       = MakeRegalProc(iff_glVertex4iv, layer);
+  dt.glVertex4s                        = MakeRegalProc(iff_glVertex4s, layer);
+  dt.glVertex4sv                       = MakeRegalProc(iff_glVertex4sv, layer);
+  dt.glVertexAttrib1d                  = MakeRegalProc(iff_glVertexAttrib1d, layer);
+  dt.glVertexAttrib1dARB               = MakeRegalProc(iff_glVertexAttrib1dARB, layer);
+  dt.glVertexAttrib1dv                 = MakeRegalProc(iff_glVertexAttrib1dv, layer);
+  dt.glVertexAttrib1dvARB              = MakeRegalProc(iff_glVertexAttrib1dvARB, layer);
+  dt.glVertexAttrib1f                  = MakeRegalProc(iff_glVertexAttrib1f, layer);
+  dt.glVertexAttrib1fARB               = MakeRegalProc(iff_glVertexAttrib1fARB, layer);
+  dt.glVertexAttrib1fv                 = MakeRegalProc(iff_glVertexAttrib1fv, layer);
+  dt.glVertexAttrib1fvARB              = MakeRegalProc(iff_glVertexAttrib1fvARB, layer);
+  dt.glVertexAttrib1s                  = MakeRegalProc(iff_glVertexAttrib1s, layer);
+  dt.glVertexAttrib1sARB               = MakeRegalProc(iff_glVertexAttrib1sARB, layer);
+  dt.glVertexAttrib1sv                 = MakeRegalProc(iff_glVertexAttrib1sv, layer);
+  dt.glVertexAttrib1svARB              = MakeRegalProc(iff_glVertexAttrib1svARB, layer);
+  dt.glVertexAttrib2d                  = MakeRegalProc(iff_glVertexAttrib2d, layer);
+  dt.glVertexAttrib2dARB               = MakeRegalProc(iff_glVertexAttrib2dARB, layer);
+  dt.glVertexAttrib2dv                 = MakeRegalProc(iff_glVertexAttrib2dv, layer);
+  dt.glVertexAttrib2dvARB              = MakeRegalProc(iff_glVertexAttrib2dvARB, layer);
+  dt.glVertexAttrib2f                  = MakeRegalProc(iff_glVertexAttrib2f, layer);
+  dt.glVertexAttrib2fARB               = MakeRegalProc(iff_glVertexAttrib2fARB, layer);
+  dt.glVertexAttrib2fv                 = MakeRegalProc(iff_glVertexAttrib2fv, layer);
+  dt.glVertexAttrib2fvARB              = MakeRegalProc(iff_glVertexAttrib2fvARB, layer);
+  dt.glVertexAttrib2s                  = MakeRegalProc(iff_glVertexAttrib2s, layer);
+  dt.glVertexAttrib2sARB               = MakeRegalProc(iff_glVertexAttrib2sARB, layer);
+  dt.glVertexAttrib2sv                 = MakeRegalProc(iff_glVertexAttrib2sv, layer);
+  dt.glVertexAttrib2svARB              = MakeRegalProc(iff_glVertexAttrib2svARB, layer);
+  dt.glVertexAttrib3d                  = MakeRegalProc(iff_glVertexAttrib3d, layer);
+  dt.glVertexAttrib3dARB               = MakeRegalProc(iff_glVertexAttrib3dARB, layer);
+  dt.glVertexAttrib3dv                 = MakeRegalProc(iff_glVertexAttrib3dv, layer);
+  dt.glVertexAttrib3dvARB              = MakeRegalProc(iff_glVertexAttrib3dvARB, layer);
+  dt.glVertexAttrib3f                  = MakeRegalProc(iff_glVertexAttrib3f, layer);
+  dt.glVertexAttrib3fARB               = MakeRegalProc(iff_glVertexAttrib3fARB, layer);
+  dt.glVertexAttrib3fv                 = MakeRegalProc(iff_glVertexAttrib3fv, layer);
+  dt.glVertexAttrib3fvARB              = MakeRegalProc(iff_glVertexAttrib3fvARB, layer);
+  dt.glVertexAttrib3s                  = MakeRegalProc(iff_glVertexAttrib3s, layer);
+  dt.glVertexAttrib3sARB               = MakeRegalProc(iff_glVertexAttrib3sARB, layer);
+  dt.glVertexAttrib3sv                 = MakeRegalProc(iff_glVertexAttrib3sv, layer);
+  dt.glVertexAttrib3svARB              = MakeRegalProc(iff_glVertexAttrib3svARB, layer);
+  dt.glVertexAttrib4Nbv                = MakeRegalProc(iff_glVertexAttrib4Nbv, layer);
+  dt.glVertexAttrib4NbvARB             = MakeRegalProc(iff_glVertexAttrib4NbvARB, layer);
+  dt.glVertexAttrib4Niv                = MakeRegalProc(iff_glVertexAttrib4Niv, layer);
+  dt.glVertexAttrib4NivARB             = MakeRegalProc(iff_glVertexAttrib4NivARB, layer);
+  dt.glVertexAttrib4Nsv                = MakeRegalProc(iff_glVertexAttrib4Nsv, layer);
+  dt.glVertexAttrib4NsvARB             = MakeRegalProc(iff_glVertexAttrib4NsvARB, layer);
+  dt.glVertexAttrib4Nub                = MakeRegalProc(iff_glVertexAttrib4Nub, layer);
+  dt.glVertexAttrib4NubARB             = MakeRegalProc(iff_glVertexAttrib4NubARB, layer);
+  dt.glVertexAttrib4Nubv               = MakeRegalProc(iff_glVertexAttrib4Nubv, layer);
+  dt.glVertexAttrib4NubvARB            = MakeRegalProc(iff_glVertexAttrib4NubvARB, layer);
+  dt.glVertexAttrib4Nusv               = MakeRegalProc(iff_glVertexAttrib4Nusv, layer);
+  dt.glVertexAttrib4NusvARB            = MakeRegalProc(iff_glVertexAttrib4NusvARB, layer);
+  dt.glVertexAttrib4bv                 = MakeRegalProc(iff_glVertexAttrib4bv, layer);
+  dt.glVertexAttrib4bvARB              = MakeRegalProc(iff_glVertexAttrib4bvARB, layer);
+  dt.glVertexAttrib4d                  = MakeRegalProc(iff_glVertexAttrib4d, layer);
+  dt.glVertexAttrib4dARB               = MakeRegalProc(iff_glVertexAttrib4dARB, layer);
+  dt.glVertexAttrib4dv                 = MakeRegalProc(iff_glVertexAttrib4dv, layer);
+  dt.glVertexAttrib4dvARB              = MakeRegalProc(iff_glVertexAttrib4dvARB, layer);
+  dt.glVertexAttrib4f                  = MakeRegalProc(iff_glVertexAttrib4f, layer);
+  dt.glVertexAttrib4fARB               = MakeRegalProc(iff_glVertexAttrib4fARB, layer);
+  dt.glVertexAttrib4fv                 = MakeRegalProc(iff_glVertexAttrib4fv, layer);
+  dt.glVertexAttrib4fvARB              = MakeRegalProc(iff_glVertexAttrib4fvARB, layer);
+  dt.glVertexAttrib4iv                 = MakeRegalProc(iff_glVertexAttrib4iv, layer);
+  dt.glVertexAttrib4ivARB              = MakeRegalProc(iff_glVertexAttrib4ivARB, layer);
+  dt.glVertexAttrib4s                  = MakeRegalProc(iff_glVertexAttrib4s, layer);
+  dt.glVertexAttrib4sARB               = MakeRegalProc(iff_glVertexAttrib4sARB, layer);
+  dt.glVertexAttrib4sv                 = MakeRegalProc(iff_glVertexAttrib4sv, layer);
+  dt.glVertexAttrib4svARB              = MakeRegalProc(iff_glVertexAttrib4svARB, layer);
+  dt.glVertexAttrib4ubv                = MakeRegalProc(iff_glVertexAttrib4ubv, layer);
+  dt.glVertexAttrib4ubvARB             = MakeRegalProc(iff_glVertexAttrib4ubvARB, layer);
+  dt.glVertexAttrib4usv                = MakeRegalProc(iff_glVertexAttrib4usv, layer);
+  dt.glVertexAttrib4usvARB             = MakeRegalProc(iff_glVertexAttrib4usvARB, layer);
+  dt.glVertexAttribPointer             = MakeRegalProc(iff_glVertexAttribPointer, layer);
+  dt.glVertexAttribPointerARB          = MakeRegalProc(iff_glVertexAttribPointerARB, layer);
+  dt.glVertexPointer                   = MakeRegalProc(iff_glVertexPointer, layer);
+  dt.glVertexPointerEXT                = MakeRegalProc(iff_glVertexPointerEXT, layer);
+  dt.glViewport                        = MakeRegalProc(iff_glViewport, layer);
+  dt.glWindowPos2d                     = MakeRegalProc(iff_glWindowPos2d, layer);
+  dt.glWindowPos2f                     = MakeRegalProc(iff_glWindowPos2f, layer);
+  dt.glWindowPos2i                     = MakeRegalProc(iff_glWindowPos2i, layer);
+  dt.glWindowPos2s                     = MakeRegalProc(iff_glWindowPos2s, layer);
+  dt.glWindowPos3d                     = MakeRegalProc(iff_glWindowPos3d, layer);
+  dt.glWindowPos3f                     = MakeRegalProc(iff_glWindowPos3f, layer);
+  dt.glWindowPos3i                     = MakeRegalProc(iff_glWindowPos3i, layer);
+  dt.glWindowPos3s                     = MakeRegalProc(iff_glWindowPos3s, layer);
 }
 
 REGAL_NAMESPACE_END

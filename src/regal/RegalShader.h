@@ -62,13 +62,13 @@ namespace Shader {
     kRegalGlslShaderFragment,
   };
 
-  bool OptimizeGLSL (bool is_es, GLenum type, string input, string& output, Emu::Iff::CompareFunc comp );
+  bool OptimizeGLSL (bool is_es, GLenum type, string input, string& output, GLenum comp );
   regal_glsl_ctx* regal_glsl_initialize (gl_api api);
   void regal_glsl_cleanup (regal_glsl_ctx* ctx);
 
   regal_glsl_shader* regal_glsl_parse (regal_glsl_ctx* ctx, regal_glsl_shader_type type, const char* shaderSource);
   void regal_glsl_replace_builtins( regal_glsl_shader * shader );
-  void regal_glsl_add_alpha_test( regal_glsl_shader * shader, Emu::Iff::CompareFunc func );
+  void regal_glsl_add_alpha_test( regal_glsl_shader * shader, GLenum func );
   void regal_glsl_optimize( regal_glsl_shader * shader );
   void regal_glsl_gen_output( regal_glsl_shader * shader );
 

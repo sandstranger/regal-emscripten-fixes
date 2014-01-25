@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalSo.h"
-#include "RegalEmuProcsSo.h"
+#include "So.h"
+#include "SoProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL So_glActiveTexture(Layer *_layer, GLenum texture)
+using namespace Emu;
+
+static void REGAL_CALL so_glActiveTexture(Layer *_layer, GLenum texture)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -65,11 +67,11 @@ static void REGAL_CALL So_glActiveTexture(Layer *_layer, GLenum texture)
      return;
   }
 
-  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
+  RglActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL So_glActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL so_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -80,11 +82,11 @@ static void REGAL_CALL So_glActiveTextureARB(Layer *_layer, GLenum texture)
      return;
   }
 
-  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
+  RglActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL So_glBindSampler(Layer *_layer, GLuint unit, GLuint sampler)
+static void REGAL_CALL so_glBindSampler(Layer *_layer, GLuint unit, GLuint sampler)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -93,11 +95,11 @@ static void REGAL_CALL So_glBindSampler(Layer *_layer, GLuint unit, GLuint sampl
   // impl
   _context->so->BindSampler( unit, sampler ); return;
 
-  orig.glBindSampler( orig.glBindSampler_layer, unit, sampler );
+  RglBindSampler( orig, unit, sampler );
 
 }
 
-static void REGAL_CALL So_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL so_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -108,11 +110,11 @@ static void REGAL_CALL So_glBindTexture(Layer *_layer, GLenum target, GLuint tex
      return;
   }
 
-  orig.glBindTexture( orig.glBindTexture_layer, target, texture );
+  RglBindTexture( orig, target, texture );
 
 }
 
-static void REGAL_CALL So_glDeleteSamplers(Layer *_layer, GLsizei count, const GLuint *samplers)
+static void REGAL_CALL so_glDeleteSamplers(Layer *_layer, GLsizei count, const GLuint *samplers)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -121,11 +123,11 @@ static void REGAL_CALL So_glDeleteSamplers(Layer *_layer, GLsizei count, const G
   // impl
   _context->so->DeleteSamplers( count, samplers ); return;
 
-  orig.glDeleteSamplers( orig.glDeleteSamplers_layer, count, samplers );
+  RglDeleteSamplers( orig, count, samplers );
 
 }
 
-static void REGAL_CALL So_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
+static void REGAL_CALL so_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -134,11 +136,11 @@ static void REGAL_CALL So_glDeleteTextures(Layer *_layer, GLsizei n, const GLuin
   // prefix
   _context->so->DeleteTextures( *_context, n, textures );
 
-  orig.glDeleteTextures( orig.glDeleteTextures_layer, n, textures );
+  RglDeleteTextures( orig, n, textures );
 
 }
 
-static void REGAL_CALL So_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL so_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -147,11 +149,11 @@ static void REGAL_CALL So_glDrawArrays(Layer *_layer, GLenum mode, GLint first, 
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawArrays( orig.glDrawArrays_layer, mode, first, count );
+  RglDrawArrays( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL So_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL so_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -160,11 +162,11 @@ static void REGAL_CALL So_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint firs
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawArraysEXT( orig.glDrawArraysEXT_layer, mode, first, count );
+  RglDrawArraysEXT( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL So_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
+static void REGAL_CALL so_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -173,11 +175,11 @@ static void REGAL_CALL So_glDrawArraysIndirect(Layer *_layer, GLenum mode, const
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawArraysIndirect( orig.glDrawArraysIndirect_layer, mode, indirect );
+  RglDrawArraysIndirect( orig, mode, indirect );
 
 }
 
-static void REGAL_CALL So_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL so_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -186,11 +188,11 @@ static void REGAL_CALL So_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLin
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawArraysInstanced( orig.glDrawArraysInstanced_layer, mode, start, count, primcount );
+  RglDrawArraysInstanced( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL So_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL so_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -199,11 +201,11 @@ static void REGAL_CALL So_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, G
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawArraysInstancedARB( orig.glDrawArraysInstancedARB_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedARB( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL So_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL so_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -212,11 +214,11 @@ static void REGAL_CALL So_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, G
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawArraysInstancedEXT( orig.glDrawArraysInstancedEXT_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedEXT( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL So_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL so_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -225,11 +227,11 @@ static void REGAL_CALL So_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GL
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementArrayAPPLE( orig.glDrawElementArrayAPPLE_layer, mode, first, count );
+  RglDrawElementArrayAPPLE( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL So_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
+static void REGAL_CALL so_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -238,11 +240,11 @@ static void REGAL_CALL So_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsi
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementArrayATI( orig.glDrawElementArrayATI_layer, mode, count );
+  RglDrawElementArrayATI( orig, mode, count );
 
 }
 
-static void REGAL_CALL So_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL so_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -251,11 +253,11 @@ static void REGAL_CALL So_glDrawElements(Layer *_layer, GLenum mode, GLsizei cou
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElements( orig.glDrawElements_layer, mode, count, type, indices );
+  RglDrawElements( orig, mode, count, type, indices );
 
 }
 
-static void REGAL_CALL So_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL so_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -264,11 +266,11 @@ static void REGAL_CALL So_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, G
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementsBaseVertex( orig.glDrawElementsBaseVertex_layer, mode, count, type, indices, basevertex );
+  RglDrawElementsBaseVertex( orig, mode, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL So_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
+static void REGAL_CALL so_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -277,11 +279,11 @@ static void REGAL_CALL So_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLe
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementsIndirect( orig.glDrawElementsIndirect_layer, mode, type, indirect );
+  RglDrawElementsIndirect( orig, mode, type, indirect );
 
 }
 
-static void REGAL_CALL So_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL so_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -290,11 +292,11 @@ static void REGAL_CALL So_glDrawElementsInstanced(Layer *_layer, GLenum mode, GL
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementsInstanced( orig.glDrawElementsInstanced_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstanced( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL So_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL so_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -303,11 +305,11 @@ static void REGAL_CALL So_glDrawElementsInstancedARB(Layer *_layer, GLenum mode,
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementsInstancedARB( orig.glDrawElementsInstancedARB_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedARB( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL So_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
+static void REGAL_CALL so_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -316,11 +318,11 @@ static void REGAL_CALL So_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenu
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementsInstancedBaseVertex( orig.glDrawElementsInstancedBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglDrawElementsInstancedBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL So_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL so_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -329,11 +331,11 @@ static void REGAL_CALL So_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode,
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawElementsInstancedEXT( orig.glDrawElementsInstancedEXT_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL So_glDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
+static void REGAL_CALL so_glDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLint first, GLsizei count)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -342,11 +344,11 @@ static void REGAL_CALL So_glDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mod
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawRangeElementArrayAPPLE( orig.glDrawRangeElementArrayAPPLE_layer, mode, start, end, first, count );
+  RglDrawRangeElementArrayAPPLE( orig, mode, start, end, first, count );
 
 }
 
-static void REGAL_CALL So_glDrawRangeElementArrayATI(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count)
+static void REGAL_CALL so_glDrawRangeElementArrayATI(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -355,11 +357,11 @@ static void REGAL_CALL So_glDrawRangeElementArrayATI(Layer *_layer, GLenum mode,
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawRangeElementArrayATI( orig.glDrawRangeElementArrayATI_layer, mode, start, end, count );
+  RglDrawRangeElementArrayATI( orig, mode, start, end, count );
 
 }
 
-static void REGAL_CALL So_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL so_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -368,11 +370,11 @@ static void REGAL_CALL So_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawRangeElements( orig.glDrawRangeElements_layer, mode, start, end, count, type, indices );
+  RglDrawRangeElements( orig, mode, start, end, count, type, indices );
 
 }
 
-static void REGAL_CALL So_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL so_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -381,11 +383,11 @@ static void REGAL_CALL So_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mo
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawRangeElementsBaseVertex( orig.glDrawRangeElementsBaseVertex_layer, mode, start, end, count, type, indices, basevertex );
+  RglDrawRangeElementsBaseVertex( orig, mode, start, end, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL So_glDrawRangeElementsEXT(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL so_glDrawRangeElementsEXT(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -394,11 +396,11 @@ static void REGAL_CALL So_glDrawRangeElementsEXT(Layer *_layer, GLenum mode, GLu
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glDrawRangeElementsEXT( orig.glDrawRangeElementsEXT_layer, mode, start, end, count, type, indices );
+  RglDrawRangeElementsEXT( orig, mode, start, end, count, type, indices );
 
 }
 
-static void REGAL_CALL So_glGenSamplers(Layer *_layer, GLsizei count, GLuint *samplers)
+static void REGAL_CALL so_glGenSamplers(Layer *_layer, GLsizei count, GLuint *samplers)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -407,11 +409,11 @@ static void REGAL_CALL So_glGenSamplers(Layer *_layer, GLsizei count, GLuint *sa
   // impl
   _context->so->GenSamplers( count, samplers ); return;
 
-  orig.glGenSamplers( orig.glGenSamplers_layer, count, samplers );
+  RglGenSamplers( orig, count, samplers );
 
 }
 
-static void REGAL_CALL So_glGenTextures(Layer *_layer, GLsizei n, GLuint *textures)
+static void REGAL_CALL so_glGenTextures(Layer *_layer, GLsizei n, GLuint *textures)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -420,11 +422,11 @@ static void REGAL_CALL So_glGenTextures(Layer *_layer, GLsizei n, GLuint *textur
   // impl
   _context->so->GenTextures( *_context, n, textures ); return;
 
-  orig.glGenTextures( orig.glGenTextures_layer, n, textures );
+  RglGenTextures( orig, n, textures );
 
 }
 
-static void REGAL_CALL So_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL so_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -435,11 +437,11 @@ static void REGAL_CALL So_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *pa
      return;
   }
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL so_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -450,11 +452,11 @@ static void REGAL_CALL So_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *para
      return;
   }
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *params)
+static void REGAL_CALL so_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -465,11 +467,11 @@ static void REGAL_CALL So_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *
      return;
   }
 
-  orig.glGetInteger64v( orig.glGetInteger64v_layer, pname, params );
+  RglGetInteger64v( orig, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL so_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -480,11 +482,11 @@ static void REGAL_CALL So_glGetIntegerv(Layer *_layer, GLenum pname, GLint *para
      return;
   }
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetSamplerParameterIiv(Layer *_layer, GLuint sampler, GLenum pname, GLint *params)
+static void REGAL_CALL so_glGetSamplerParameterIiv(Layer *_layer, GLuint sampler, GLenum pname, GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -495,11 +497,11 @@ static void REGAL_CALL So_glGetSamplerParameterIiv(Layer *_layer, GLuint sampler
      return;
   }
 
-  orig.glGetSamplerParameterIiv( orig.glGetSamplerParameterIiv_layer, sampler, pname, params );
+  RglGetSamplerParameterIiv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetSamplerParameterIuiv(Layer *_layer, GLuint sampler, GLenum pname, GLuint *params)
+static void REGAL_CALL so_glGetSamplerParameterIuiv(Layer *_layer, GLuint sampler, GLenum pname, GLuint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -510,11 +512,11 @@ static void REGAL_CALL So_glGetSamplerParameterIuiv(Layer *_layer, GLuint sample
      return;
   }
 
-  orig.glGetSamplerParameterIuiv( orig.glGetSamplerParameterIuiv_layer, sampler, pname, params );
+  RglGetSamplerParameterIuiv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetSamplerParameterfv(Layer *_layer, GLuint sampler, GLenum pname, GLfloat *params)
+static void REGAL_CALL so_glGetSamplerParameterfv(Layer *_layer, GLuint sampler, GLenum pname, GLfloat *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -525,11 +527,11 @@ static void REGAL_CALL So_glGetSamplerParameterfv(Layer *_layer, GLuint sampler,
      return;
   }
 
-  orig.glGetSamplerParameterfv( orig.glGetSamplerParameterfv_layer, sampler, pname, params );
+  RglGetSamplerParameterfv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetSamplerParameteriv(Layer *_layer, GLuint sampler, GLenum pname, GLint *params)
+static void REGAL_CALL so_glGetSamplerParameteriv(Layer *_layer, GLuint sampler, GLenum pname, GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -540,11 +542,11 @@ static void REGAL_CALL So_glGetSamplerParameteriv(Layer *_layer, GLuint sampler,
      return;
   }
 
-  orig.glGetSamplerParameteriv( orig.glGetSamplerParameteriv_layer, sampler, pname, params );
+  RglGetSamplerParameteriv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetTexParameterIiv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL so_glGetTexParameterIiv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -555,11 +557,11 @@ static void REGAL_CALL So_glGetTexParameterIiv(Layer *_layer, GLenum target, GLe
      return;
   }
 
-  orig.glGetTexParameterIiv( orig.glGetTexParameterIiv_layer, target, pname, params );
+  RglGetTexParameterIiv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetTexParameterIuiv(Layer *_layer, GLenum target, GLenum pname, GLuint *params)
+static void REGAL_CALL so_glGetTexParameterIuiv(Layer *_layer, GLenum target, GLenum pname, GLuint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -570,11 +572,11 @@ static void REGAL_CALL So_glGetTexParameterIuiv(Layer *_layer, GLenum target, GL
      return;
   }
 
-  orig.glGetTexParameterIuiv( orig.glGetTexParameterIuiv_layer, target, pname, params );
+  RglGetTexParameterIuiv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL so_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -585,11 +587,11 @@ static void REGAL_CALL So_glGetTexParameterfv(Layer *_layer, GLenum target, GLen
      return;
   }
 
-  orig.glGetTexParameterfv( orig.glGetTexParameterfv_layer, target, pname, params );
+  RglGetTexParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL so_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -600,11 +602,11 @@ static void REGAL_CALL So_glGetTexParameteriv(Layer *_layer, GLenum target, GLen
      return;
   }
 
-  orig.glGetTexParameteriv( orig.glGetTexParameteriv_layer, target, pname, params );
+  RglGetTexParameteriv( orig, target, pname, params );
 
 }
 
-static GLboolean REGAL_CALL So_glIsSampler(Layer *_layer, GLuint sampler)
+static GLboolean REGAL_CALL so_glIsSampler(Layer *_layer, GLuint sampler)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -613,11 +615,11 @@ static GLboolean REGAL_CALL So_glIsSampler(Layer *_layer, GLuint sampler)
   // impl
   return _context->so->IsSampler( sampler );
 
-  return orig.glIsSampler( orig.glIsSampler_layer, sampler );
+  return RglIsSampler( orig, sampler );
 
 }
 
-static void REGAL_CALL So_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL so_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -626,11 +628,11 @@ static void REGAL_CALL So_glMultiDrawArrays(Layer *_layer, GLenum mode, const GL
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawArrays( orig.glMultiDrawArrays_layer, mode, first, count, primcount );
+  RglMultiDrawArrays( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL So_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL so_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -639,11 +641,11 @@ static void REGAL_CALL So_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawArraysEXT( orig.glMultiDrawArraysEXT_layer, mode, first, count, primcount );
+  RglMultiDrawArraysEXT( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL So_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL so_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -652,11 +654,11 @@ static void REGAL_CALL So_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, 
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawArraysIndirect( orig.glMultiDrawArraysIndirect_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirect( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL So_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL so_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -665,11 +667,11 @@ static void REGAL_CALL So_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mod
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawArraysIndirectAMD( orig.glMultiDrawArraysIndirectAMD_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirectAMD( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL So_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL so_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -678,11 +680,11 @@ static void REGAL_CALL So_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mod
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawElementArrayAPPLE( orig.glMultiDrawElementArrayAPPLE_layer, mode, first, count, primcount );
+  RglMultiDrawElementArrayAPPLE( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL So_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
+static void REGAL_CALL so_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -691,11 +693,11 @@ static void REGAL_CALL So_glMultiDrawElements(Layer *_layer, GLenum mode, const 
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawElements( orig.glMultiDrawElements_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElements( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL So_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
+static void REGAL_CALL so_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -704,11 +706,11 @@ static void REGAL_CALL So_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mo
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawElementsBaseVertex( orig.glMultiDrawElementsBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglMultiDrawElementsBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL So_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
+static void REGAL_CALL so_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -717,11 +719,11 @@ static void REGAL_CALL So_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, con
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawElementsEXT( orig.glMultiDrawElementsEXT_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElementsEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL So_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL so_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -730,11 +732,11 @@ static void REGAL_CALL So_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawElementsIndirect( orig.glMultiDrawElementsIndirect_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirect( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL So_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL so_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -743,11 +745,11 @@ static void REGAL_CALL So_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum m
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawElementsIndirectAMD( orig.glMultiDrawElementsIndirectAMD_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirectAMD( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL So_glMultiDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL so_glMultiDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mode, GLuint start, GLuint end, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -756,11 +758,11 @@ static void REGAL_CALL So_glMultiDrawRangeElementArrayAPPLE(Layer *_layer, GLenu
   // prefix
   _context->so->PreDraw( *_context );
 
-  orig.glMultiDrawRangeElementArrayAPPLE( orig.glMultiDrawRangeElementArrayAPPLE_layer, mode, start, end, first, count, primcount );
+  RglMultiDrawRangeElementArrayAPPLE( orig, mode, start, end, first, count, primcount );
 
 }
 
-static void REGAL_CALL So_glSamplerParameterIiv(Layer *_layer, GLuint sampler, GLenum pname, const GLint *params)
+static void REGAL_CALL so_glSamplerParameterIiv(Layer *_layer, GLuint sampler, GLenum pname, const GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -771,11 +773,11 @@ static void REGAL_CALL So_glSamplerParameterIiv(Layer *_layer, GLuint sampler, G
      return;
   }
 
-  orig.glSamplerParameterIiv( orig.glSamplerParameterIiv_layer, sampler, pname, params );
+  RglSamplerParameterIiv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glSamplerParameterIuiv(Layer *_layer, GLuint sampler, GLenum pname, const GLuint *params)
+static void REGAL_CALL so_glSamplerParameterIuiv(Layer *_layer, GLuint sampler, GLenum pname, const GLuint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -786,11 +788,11 @@ static void REGAL_CALL So_glSamplerParameterIuiv(Layer *_layer, GLuint sampler, 
      return;
   }
 
-  orig.glSamplerParameterIuiv( orig.glSamplerParameterIuiv_layer, sampler, pname, params );
+  RglSamplerParameterIuiv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glSamplerParameterf(Layer *_layer, GLuint sampler, GLenum pname, GLfloat param)
+static void REGAL_CALL so_glSamplerParameterf(Layer *_layer, GLuint sampler, GLenum pname, GLfloat param)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -801,11 +803,11 @@ static void REGAL_CALL So_glSamplerParameterf(Layer *_layer, GLuint sampler, GLe
      return;
   }
 
-  orig.glSamplerParameterf( orig.glSamplerParameterf_layer, sampler, pname, param );
+  RglSamplerParameterf( orig, sampler, pname, param );
 
 }
 
-static void REGAL_CALL So_glSamplerParameterfv(Layer *_layer, GLuint sampler, GLenum pname, const GLfloat *params)
+static void REGAL_CALL so_glSamplerParameterfv(Layer *_layer, GLuint sampler, GLenum pname, const GLfloat *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -816,11 +818,11 @@ static void REGAL_CALL So_glSamplerParameterfv(Layer *_layer, GLuint sampler, GL
      return;
   }
 
-  orig.glSamplerParameterfv( orig.glSamplerParameterfv_layer, sampler, pname, params );
+  RglSamplerParameterfv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glSamplerParameteri(Layer *_layer, GLuint sampler, GLenum pname, GLint param)
+static void REGAL_CALL so_glSamplerParameteri(Layer *_layer, GLuint sampler, GLenum pname, GLint param)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -831,11 +833,11 @@ static void REGAL_CALL So_glSamplerParameteri(Layer *_layer, GLuint sampler, GLe
      return;
   }
 
-  orig.glSamplerParameteri( orig.glSamplerParameteri_layer, sampler, pname, param );
+  RglSamplerParameteri( orig, sampler, pname, param );
 
 }
 
-static void REGAL_CALL So_glSamplerParameteriv(Layer *_layer, GLuint sampler, GLenum pname, const GLint *params)
+static void REGAL_CALL so_glSamplerParameteriv(Layer *_layer, GLuint sampler, GLenum pname, const GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -846,11 +848,11 @@ static void REGAL_CALL So_glSamplerParameteriv(Layer *_layer, GLuint sampler, GL
      return;
   }
 
-  orig.glSamplerParameteriv( orig.glSamplerParameteriv_layer, sampler, pname, params );
+  RglSamplerParameteriv( orig, sampler, pname, params );
 
 }
 
-static void REGAL_CALL So_glTexParameterIiv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL so_glTexParameterIiv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -861,11 +863,11 @@ static void REGAL_CALL So_glTexParameterIiv(Layer *_layer, GLenum target, GLenum
      return;
   }
 
-  orig.glTexParameterIiv( orig.glTexParameterIiv_layer, target, pname, params );
+  RglTexParameterIiv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glTexParameterIivEXT(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL so_glTexParameterIivEXT(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -876,11 +878,11 @@ static void REGAL_CALL So_glTexParameterIivEXT(Layer *_layer, GLenum target, GLe
      return;
   }
 
-  orig.glTexParameterIivEXT( orig.glTexParameterIivEXT_layer, target, pname, params );
+  RglTexParameterIivEXT( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glTexParameterIuiv(Layer *_layer, GLenum target, GLenum pname, const GLuint *params)
+static void REGAL_CALL so_glTexParameterIuiv(Layer *_layer, GLenum target, GLenum pname, const GLuint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -891,11 +893,11 @@ static void REGAL_CALL So_glTexParameterIuiv(Layer *_layer, GLenum target, GLenu
      return;
   }
 
-  orig.glTexParameterIuiv( orig.glTexParameterIuiv_layer, target, pname, params );
+  RglTexParameterIuiv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glTexParameterIuivEXT(Layer *_layer, GLenum target, GLenum pname, const GLuint *params)
+static void REGAL_CALL so_glTexParameterIuivEXT(Layer *_layer, GLenum target, GLenum pname, const GLuint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -906,11 +908,11 @@ static void REGAL_CALL So_glTexParameterIuivEXT(Layer *_layer, GLenum target, GL
      return;
   }
 
-  orig.glTexParameterIuivEXT( orig.glTexParameterIuivEXT_layer, target, pname, params );
+  RglTexParameterIuivEXT( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL so_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -921,11 +923,11 @@ static void REGAL_CALL So_glTexParameterf(Layer *_layer, GLenum target, GLenum p
      return;
   }
 
-  orig.glTexParameterf( orig.glTexParameterf_layer, target, pname, param );
+  RglTexParameterf( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL So_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL so_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -936,11 +938,11 @@ static void REGAL_CALL So_glTexParameterfv(Layer *_layer, GLenum target, GLenum 
      return;
   }
 
-  orig.glTexParameterfv( orig.glTexParameterfv_layer, target, pname, params );
+  RglTexParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL So_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL so_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -951,11 +953,11 @@ static void REGAL_CALL So_glTexParameteri(Layer *_layer, GLenum target, GLenum p
      return;
   }
 
-  orig.glTexParameteri( orig.glTexParameteri_layer, target, pname, param );
+  RglTexParameteri( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL So_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL so_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   So * self = static_cast<So *>(_layer);
 
@@ -966,77 +968,77 @@ static void REGAL_CALL So_glTexParameteriv(Layer *_layer, GLenum target, GLenum 
      return;
   }
 
-  orig.glTexParameteriv( orig.glTexParameteriv_layer, target, pname, params );
+  RglTexParameteriv( orig, target, pname, params );
 
 }
 
-void SoIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture                   = RSo_glActiveTexture;
-  dt.glActiveTextureARB                = RSo_glActiveTextureARB;
-  dt.glBindSampler                     = RSo_glBindSampler;
-  dt.glBindTexture                     = RSo_glBindTexture;
-  dt.glDeleteSamplers                  = RSo_glDeleteSamplers;
-  dt.glDeleteTextures                  = RSo_glDeleteTextures;
-  dt.glDrawArrays                      = RSo_glDrawArrays;
-  dt.glDrawArraysEXT                   = RSo_glDrawArraysEXT;
-  dt.glDrawArraysIndirect              = RSo_glDrawArraysIndirect;
-  dt.glDrawArraysInstanced             = RSo_glDrawArraysInstanced;
-  dt.glDrawArraysInstancedARB          = RSo_glDrawArraysInstancedARB;
-  dt.glDrawArraysInstancedEXT          = RSo_glDrawArraysInstancedEXT;
-  dt.glDrawElementArrayAPPLE           = RSo_glDrawElementArrayAPPLE;
-  dt.glDrawElementArrayATI             = RSo_glDrawElementArrayATI;
-  dt.glDrawElements                    = RSo_glDrawElements;
-  dt.glDrawElementsBaseVertex          = RSo_glDrawElementsBaseVertex;
-  dt.glDrawElementsIndirect            = RSo_glDrawElementsIndirect;
-  dt.glDrawElementsInstanced           = RSo_glDrawElementsInstanced;
-  dt.glDrawElementsInstancedARB        = RSo_glDrawElementsInstancedARB;
-  dt.glDrawElementsInstancedBaseVertex = RSo_glDrawElementsInstancedBaseVertex;
-  dt.glDrawElementsInstancedEXT        = RSo_glDrawElementsInstancedEXT;
-  dt.glDrawRangeElementArrayAPPLE      = RSo_glDrawRangeElementArrayAPPLE;
-  dt.glDrawRangeElementArrayATI        = RSo_glDrawRangeElementArrayATI;
-  dt.glDrawRangeElements               = RSo_glDrawRangeElements;
-  dt.glDrawRangeElementsBaseVertex     = RSo_glDrawRangeElementsBaseVertex;
-  dt.glDrawRangeElementsEXT            = RSo_glDrawRangeElementsEXT;
-  dt.glGenSamplers                     = RSo_glGenSamplers;
-  dt.glGenTextures                     = RSo_glGenTextures;
-  dt.glGetDoublev                      = RSo_glGetDoublev;
-  dt.glGetFloatv                       = RSo_glGetFloatv;
-  dt.glGetInteger64v                   = RSo_glGetInteger64v;
-  dt.glGetIntegerv                     = RSo_glGetIntegerv;
-  dt.glGetSamplerParameterIiv          = RSo_glGetSamplerParameterIiv;
-  dt.glGetSamplerParameterIuiv         = RSo_glGetSamplerParameterIuiv;
-  dt.glGetSamplerParameterfv           = RSo_glGetSamplerParameterfv;
-  dt.glGetSamplerParameteriv           = RSo_glGetSamplerParameteriv;
-  dt.glGetTexParameterIiv              = RSo_glGetTexParameterIiv;
-  dt.glGetTexParameterIuiv             = RSo_glGetTexParameterIuiv;
-  dt.glGetTexParameterfv               = RSo_glGetTexParameterfv;
-  dt.glGetTexParameteriv               = RSo_glGetTexParameteriv;
-  dt.glIsSampler                       = RSo_glIsSampler;
-  dt.glMultiDrawArrays                 = RSo_glMultiDrawArrays;
-  dt.glMultiDrawArraysEXT              = RSo_glMultiDrawArraysEXT;
-  dt.glMultiDrawArraysIndirect         = RSo_glMultiDrawArraysIndirect;
-  dt.glMultiDrawArraysIndirectAMD      = RSo_glMultiDrawArraysIndirectAMD;
-  dt.glMultiDrawElementArrayAPPLE      = RSo_glMultiDrawElementArrayAPPLE;
-  dt.glMultiDrawElements               = RSo_glMultiDrawElements;
-  dt.glMultiDrawElementsBaseVertex     = RSo_glMultiDrawElementsBaseVertex;
-  dt.glMultiDrawElementsEXT            = RSo_glMultiDrawElementsEXT;
-  dt.glMultiDrawElementsIndirect       = RSo_glMultiDrawElementsIndirect;
-  dt.glMultiDrawElementsIndirectAMD    = RSo_glMultiDrawElementsIndirectAMD;
-  dt.glMultiDrawRangeElementArrayAPPLE = RSo_glMultiDrawRangeElementArrayAPPLE;
-  dt.glSamplerParameterIiv             = RSo_glSamplerParameterIiv;
-  dt.glSamplerParameterIuiv            = RSo_glSamplerParameterIuiv;
-  dt.glSamplerParameterf               = RSo_glSamplerParameterf;
-  dt.glSamplerParameterfv              = RSo_glSamplerParameterfv;
-  dt.glSamplerParameteri               = RSo_glSamplerParameteri;
-  dt.glSamplerParameteriv              = RSo_glSamplerParameteriv;
-  dt.glTexParameterIiv                 = RSo_glTexParameterIiv;
-  dt.glTexParameterIivEXT              = RSo_glTexParameterIivEXT;
-  dt.glTexParameterIuiv                = RSo_glTexParameterIuiv;
-  dt.glTexParameterIuivEXT             = RSo_glTexParameterIuivEXT;
-  dt.glTexParameterf                   = RSo_glTexParameterf;
-  dt.glTexParameterfv                  = RSo_glTexParameterfv;
-  dt.glTexParameteri                   = RSo_glTexParameteri;
-  dt.glTexParameteriv                  = RSo_glTexParameteriv;
+void SoIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glActiveTexture                   = MakeRegalProc(so_glActiveTexture, layer);
+  dt.glActiveTextureARB                = MakeRegalProc(so_glActiveTextureARB, layer);
+  dt.glBindSampler                     = MakeRegalProc(so_glBindSampler, layer);
+  dt.glBindTexture                     = MakeRegalProc(so_glBindTexture, layer);
+  dt.glDeleteSamplers                  = MakeRegalProc(so_glDeleteSamplers, layer);
+  dt.glDeleteTextures                  = MakeRegalProc(so_glDeleteTextures, layer);
+  dt.glDrawArrays                      = MakeRegalProc(so_glDrawArrays, layer);
+  dt.glDrawArraysEXT                   = MakeRegalProc(so_glDrawArraysEXT, layer);
+  dt.glDrawArraysIndirect              = MakeRegalProc(so_glDrawArraysIndirect, layer);
+  dt.glDrawArraysInstanced             = MakeRegalProc(so_glDrawArraysInstanced, layer);
+  dt.glDrawArraysInstancedARB          = MakeRegalProc(so_glDrawArraysInstancedARB, layer);
+  dt.glDrawArraysInstancedEXT          = MakeRegalProc(so_glDrawArraysInstancedEXT, layer);
+  dt.glDrawElementArrayAPPLE           = MakeRegalProc(so_glDrawElementArrayAPPLE, layer);
+  dt.glDrawElementArrayATI             = MakeRegalProc(so_glDrawElementArrayATI, layer);
+  dt.glDrawElements                    = MakeRegalProc(so_glDrawElements, layer);
+  dt.glDrawElementsBaseVertex          = MakeRegalProc(so_glDrawElementsBaseVertex, layer);
+  dt.glDrawElementsIndirect            = MakeRegalProc(so_glDrawElementsIndirect, layer);
+  dt.glDrawElementsInstanced           = MakeRegalProc(so_glDrawElementsInstanced, layer);
+  dt.glDrawElementsInstancedARB        = MakeRegalProc(so_glDrawElementsInstancedARB, layer);
+  dt.glDrawElementsInstancedBaseVertex = MakeRegalProc(so_glDrawElementsInstancedBaseVertex, layer);
+  dt.glDrawElementsInstancedEXT        = MakeRegalProc(so_glDrawElementsInstancedEXT, layer);
+  dt.glDrawRangeElementArrayAPPLE      = MakeRegalProc(so_glDrawRangeElementArrayAPPLE, layer);
+  dt.glDrawRangeElementArrayATI        = MakeRegalProc(so_glDrawRangeElementArrayATI, layer);
+  dt.glDrawRangeElements               = MakeRegalProc(so_glDrawRangeElements, layer);
+  dt.glDrawRangeElementsBaseVertex     = MakeRegalProc(so_glDrawRangeElementsBaseVertex, layer);
+  dt.glDrawRangeElementsEXT            = MakeRegalProc(so_glDrawRangeElementsEXT, layer);
+  dt.glGenSamplers                     = MakeRegalProc(so_glGenSamplers, layer);
+  dt.glGenTextures                     = MakeRegalProc(so_glGenTextures, layer);
+  dt.glGetDoublev                      = MakeRegalProc(so_glGetDoublev, layer);
+  dt.glGetFloatv                       = MakeRegalProc(so_glGetFloatv, layer);
+  dt.glGetInteger64v                   = MakeRegalProc(so_glGetInteger64v, layer);
+  dt.glGetIntegerv                     = MakeRegalProc(so_glGetIntegerv, layer);
+  dt.glGetSamplerParameterIiv          = MakeRegalProc(so_glGetSamplerParameterIiv, layer);
+  dt.glGetSamplerParameterIuiv         = MakeRegalProc(so_glGetSamplerParameterIuiv, layer);
+  dt.glGetSamplerParameterfv           = MakeRegalProc(so_glGetSamplerParameterfv, layer);
+  dt.glGetSamplerParameteriv           = MakeRegalProc(so_glGetSamplerParameteriv, layer);
+  dt.glGetTexParameterIiv              = MakeRegalProc(so_glGetTexParameterIiv, layer);
+  dt.glGetTexParameterIuiv             = MakeRegalProc(so_glGetTexParameterIuiv, layer);
+  dt.glGetTexParameterfv               = MakeRegalProc(so_glGetTexParameterfv, layer);
+  dt.glGetTexParameteriv               = MakeRegalProc(so_glGetTexParameteriv, layer);
+  dt.glIsSampler                       = MakeRegalProc(so_glIsSampler, layer);
+  dt.glMultiDrawArrays                 = MakeRegalProc(so_glMultiDrawArrays, layer);
+  dt.glMultiDrawArraysEXT              = MakeRegalProc(so_glMultiDrawArraysEXT, layer);
+  dt.glMultiDrawArraysIndirect         = MakeRegalProc(so_glMultiDrawArraysIndirect, layer);
+  dt.glMultiDrawArraysIndirectAMD      = MakeRegalProc(so_glMultiDrawArraysIndirectAMD, layer);
+  dt.glMultiDrawElementArrayAPPLE      = MakeRegalProc(so_glMultiDrawElementArrayAPPLE, layer);
+  dt.glMultiDrawElements               = MakeRegalProc(so_glMultiDrawElements, layer);
+  dt.glMultiDrawElementsBaseVertex     = MakeRegalProc(so_glMultiDrawElementsBaseVertex, layer);
+  dt.glMultiDrawElementsEXT            = MakeRegalProc(so_glMultiDrawElementsEXT, layer);
+  dt.glMultiDrawElementsIndirect       = MakeRegalProc(so_glMultiDrawElementsIndirect, layer);
+  dt.glMultiDrawElementsIndirectAMD    = MakeRegalProc(so_glMultiDrawElementsIndirectAMD, layer);
+  dt.glMultiDrawRangeElementArrayAPPLE = MakeRegalProc(so_glMultiDrawRangeElementArrayAPPLE, layer);
+  dt.glSamplerParameterIiv             = MakeRegalProc(so_glSamplerParameterIiv, layer);
+  dt.glSamplerParameterIuiv            = MakeRegalProc(so_glSamplerParameterIuiv, layer);
+  dt.glSamplerParameterf               = MakeRegalProc(so_glSamplerParameterf, layer);
+  dt.glSamplerParameterfv              = MakeRegalProc(so_glSamplerParameterfv, layer);
+  dt.glSamplerParameteri               = MakeRegalProc(so_glSamplerParameteri, layer);
+  dt.glSamplerParameteriv              = MakeRegalProc(so_glSamplerParameteriv, layer);
+  dt.glTexParameterIiv                 = MakeRegalProc(so_glTexParameterIiv, layer);
+  dt.glTexParameterIivEXT              = MakeRegalProc(so_glTexParameterIivEXT, layer);
+  dt.glTexParameterIuiv                = MakeRegalProc(so_glTexParameterIuiv, layer);
+  dt.glTexParameterIuivEXT             = MakeRegalProc(so_glTexParameterIuivEXT, layer);
+  dt.glTexParameterf                   = MakeRegalProc(so_glTexParameterf, layer);
+  dt.glTexParameterfv                  = MakeRegalProc(so_glTexParameterfv, layer);
+  dt.glTexParameteri                   = MakeRegalProc(so_glTexParameteri, layer);
+  dt.glTexParameteriv                  = MakeRegalProc(so_glTexParameteriv, layer);
 }
 
 REGAL_NAMESPACE_END

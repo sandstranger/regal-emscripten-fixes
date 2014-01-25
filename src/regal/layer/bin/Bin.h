@@ -43,7 +43,8 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
-#include "RegalEmuProcsBin.h"
+#include "BinProcs.h"
+#include "RegalDispatch.h"
 
 REGAL_GLOBAL_END
 
@@ -52,24 +53,25 @@ REGAL_NAMESPACE_BEGIN
 namespace Emu
 {
 
-struct Bin
+struct Bin : public Layer
 {
-  EmuProcsOriginateBin orig;
+  BinOriginate orig;
   
-  void Init( RegalContext &ctx )
-  {
-    orig.Initialize( ctx.dispatchGL );
-    EmuProcsInterceptBin( ctx.dispatchGL );
+  Bin( RegalContext * ctx ) : Layer(ctx) {}
+  virtual std::string GetName() { return "bin"; }
+  virtual bool Initialize( const std::string & instanceInfo ) {
+    ResetInterception();
+    return true;
+  }
+  virtual void ResetInterception() {
+    RegalContext * ctx = this->GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    BinIntercept( this, ctx->dispatchGL );
   }
 
-  void Cleanup( RegalContext &ctx )
+  void ShaderBinary( GLsizei count, const GLuint *shaders, GLenum binaryFormat, const void *binary, GLsizei length)
   {
-    UNUSED_PARAMETER(ctx);
-  }
-
-  void ShaderBinary( RegalContext *ctx, GLsizei count, const GLuint *shaders, GLenum binaryFormat, const void *binary, GLsizei length)
-  {
-    orig.glShaderBinary( ctx, count, shaders, binaryFormat, binary, length );
+    RglShaderBinary( orig, count, shaders, binaryFormat, binary, length );
   }
 };
 

@@ -72,6 +72,8 @@ struct RegalProc {
   Layer *layer;
 };
 
+template <typename T> RegalProc<T> MakeRegalProc( T p, Layer *l ) { return RegalProc<T>( p, l ); }
+
     // GL_VERSION_1_0
 
 typedef void (REGAL_CALL *RGLACCUMPROC)(Layer *_layer, GLenum op, GLfloat value);

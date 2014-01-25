@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalPpca.h"
-#include "RegalEmuProcsPpca.h"
+#include "Ppca.h"
+#include "PpcaProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Ppca_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
+using namespace Emu;
+
+static void REGAL_CALL ppca_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL Ppca_glBindBuffer(Layer *_layer, GLenum target, GLuint bu
   // prefix
   _context->ppca->glBindBuffer( target, buffer );
 
-  orig.glBindBuffer( orig.glBindBuffer_layer, target, buffer );
+  RglBindBuffer( orig, target, buffer );
 
 }
 
-static void REGAL_CALL Ppca_glBindVertexArray(Layer *_layer, GLuint array)
+static void REGAL_CALL ppca_glBindVertexArray(Layer *_layer, GLuint array)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -76,11 +78,11 @@ static void REGAL_CALL Ppca_glBindVertexArray(Layer *_layer, GLuint array)
   // prefix
   _context->ppca->glBindVertexArray( array );
 
-  orig.glBindVertexArray( orig.glBindVertexArray_layer, array );
+  RglBindVertexArray( orig, array );
 
 }
 
-static void REGAL_CALL Ppca_glBindVertexBuffer(Layer *_layer, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
+static void REGAL_CALL ppca_glBindVertexBuffer(Layer *_layer, GLuint bindingindex, GLuint buffer, GLintptr offset, GLsizei stride)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -89,11 +91,11 @@ static void REGAL_CALL Ppca_glBindVertexBuffer(Layer *_layer, GLuint bindinginde
   // prefix
   _context->ppca->glBindVertexBuffer( bindingindex, buffer, offset, stride );
 
-  orig.glBindVertexBuffer( orig.glBindVertexBuffer_layer, bindingindex, buffer, offset, stride );
+  RglBindVertexBuffer( orig, bindingindex, buffer, offset, stride );
 
 }
 
-static void REGAL_CALL Ppca_glBindVertexBuffers(Layer *_layer, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides)
+static void REGAL_CALL ppca_glBindVertexBuffers(Layer *_layer, GLuint first, GLsizei count, const GLuint *buffers, const GLintptr *offsets, const GLsizei *strides)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -102,11 +104,11 @@ static void REGAL_CALL Ppca_glBindVertexBuffers(Layer *_layer, GLuint first, GLs
   // prefix
   _context->ppca->glBindVertexBuffers( first, count, buffers, offsets, strides );
 
-  orig.glBindVertexBuffers( orig.glBindVertexBuffers_layer, first, count, buffers, offsets, strides );
+  RglBindVertexBuffers( orig, first, count, buffers, offsets, strides );
 
 }
 
-static void REGAL_CALL Ppca_glClientActiveTexture(Layer *_layer, GLenum texture)
+static void REGAL_CALL ppca_glClientActiveTexture(Layer *_layer, GLenum texture)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -115,11 +117,11 @@ static void REGAL_CALL Ppca_glClientActiveTexture(Layer *_layer, GLenum texture)
   // prefix
   _context->ppca->glClientActiveTexture( texture );
 
-  orig.glClientActiveTexture( orig.glClientActiveTexture_layer, texture );
+  RglClientActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Ppca_glClientActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL ppca_glClientActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -128,11 +130,11 @@ static void REGAL_CALL Ppca_glClientActiveTextureARB(Layer *_layer, GLenum textu
   // prefix
   _context->ppca->glClientActiveTexture( texture );
 
-  orig.glClientActiveTextureARB( orig.glClientActiveTextureARB_layer, texture );
+  RglClientActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Ppca_glClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
+static void REGAL_CALL ppca_glClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -141,11 +143,11 @@ static void REGAL_CALL Ppca_glClientAttribDefaultEXT(Layer *_layer, GLbitfield m
   // impl
   _context->ppca->glClientAttribDefaultEXT( *_context, mask ); return;
 
-  orig.glClientAttribDefaultEXT( orig.glClientAttribDefaultEXT_layer, mask );
+  RglClientAttribDefaultEXT( orig, mask );
 
 }
 
-static void REGAL_CALL Ppca_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -154,11 +156,11 @@ static void REGAL_CALL Ppca_glColorPointer(Layer *_layer, GLint size, GLenum typ
   // prefix
   _context->ppca->glColorPointer( size, type, stride, pointer );
 
-  orig.glColorPointer( orig.glColorPointer_layer, size, type, stride, pointer );
+  RglColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glDeleteBuffers(Layer *_layer, GLsizei n, const GLuint *buffers)
+static void REGAL_CALL ppca_glDeleteBuffers(Layer *_layer, GLsizei n, const GLuint *buffers)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -167,11 +169,11 @@ static void REGAL_CALL Ppca_glDeleteBuffers(Layer *_layer, GLsizei n, const GLui
   // prefix
   _context->ppca->glDeleteBuffers( n, buffers );
 
-  orig.glDeleteBuffers( orig.glDeleteBuffers_layer, n, buffers );
+  RglDeleteBuffers( orig, n, buffers );
 
 }
 
-static void REGAL_CALL Ppca_glDeleteVertexArrays(Layer *_layer, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL ppca_glDeleteVertexArrays(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -180,11 +182,11 @@ static void REGAL_CALL Ppca_glDeleteVertexArrays(Layer *_layer, GLsizei n, const
   // prefix
   _context->ppca->glDeleteVertexArrays( n, arrays );
 
-  orig.glDeleteVertexArrays( orig.glDeleteVertexArrays_layer, n, arrays );
+  RglDeleteVertexArrays( orig, n, arrays );
 
 }
 
-static void REGAL_CALL Ppca_glDisable(Layer *_layer, GLenum cap)
+static void REGAL_CALL ppca_glDisable(Layer *_layer, GLenum cap)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -193,11 +195,11 @@ static void REGAL_CALL Ppca_glDisable(Layer *_layer, GLenum cap)
   // prefix
   _context->ppca->glDisable( cap );
 
-  orig.glDisable( orig.glDisable_layer, cap );
+  RglDisable( orig, cap );
 
 }
 
-static void REGAL_CALL Ppca_glDisableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL ppca_glDisableClientState(Layer *_layer, GLenum cap)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -206,11 +208,11 @@ static void REGAL_CALL Ppca_glDisableClientState(Layer *_layer, GLenum cap)
   // prefix
   _context->ppca->glDisableClientState( cap );
 
-  orig.glDisableClientState( orig.glDisableClientState_layer, cap );
+  RglDisableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Ppca_glDisableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL ppca_glDisableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -219,11 +221,11 @@ static void REGAL_CALL Ppca_glDisableClientStateIndexedEXT(Layer *_layer, GLenum
   // prefix
   _context->ppca->glDisableClientStateIndexedEXT( array, index );
 
-  orig.glDisableClientStateIndexedEXT( orig.glDisableClientStateIndexedEXT_layer, array, index );
+  RglDisableClientStateIndexedEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Ppca_glDisableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL ppca_glDisableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -232,11 +234,11 @@ static void REGAL_CALL Ppca_glDisableClientStateiEXT(Layer *_layer, GLenum array
   // prefix
   _context->ppca->glDisableClientStateiEXT( array, index );
 
-  orig.glDisableClientStateiEXT( orig.glDisableClientStateiEXT_layer, array, index );
+  RglDisableClientStateiEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Ppca_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL ppca_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -245,11 +247,11 @@ static void REGAL_CALL Ppca_glDisableIndexedEXT(Layer *_layer, GLenum target, GL
   // prefix
   _context->ppca->glDisableIndexedEXT( target, index );
 
-  orig.glDisableIndexedEXT( orig.glDisableIndexedEXT_layer, target, index );
+  RglDisableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Ppca_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL ppca_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -258,11 +260,11 @@ static void REGAL_CALL Ppca_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint 
   // prefix
   _context->ppca->glDisableVertexArrayAttribEXT( vaobj, array );
 
-  orig.glDisableVertexArrayAttribEXT( orig.glDisableVertexArrayAttribEXT_layer, vaobj, array );
+  RglDisableVertexArrayAttribEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Ppca_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL ppca_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -271,11 +273,11 @@ static void REGAL_CALL Ppca_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj,
   // prefix
   _context->ppca->glDisableVertexArrayEXT( vaobj, array );
 
-  orig.glDisableVertexArrayEXT( orig.glDisableVertexArrayEXT_layer, vaobj, array );
+  RglDisableVertexArrayEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Ppca_glDisableVertexAttribArray(Layer *_layer, GLuint index)
+static void REGAL_CALL ppca_glDisableVertexAttribArray(Layer *_layer, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -284,11 +286,11 @@ static void REGAL_CALL Ppca_glDisableVertexAttribArray(Layer *_layer, GLuint ind
   // prefix
   _context->ppca->glDisableVertexAttribArray( index );
 
-  orig.glDisableVertexAttribArray( orig.glDisableVertexAttribArray_layer, index );
+  RglDisableVertexAttribArray( orig, index );
 
 }
 
-static void REGAL_CALL Ppca_glDisablei(Layer *_layer, GLenum cap, GLuint index)
+static void REGAL_CALL ppca_glDisablei(Layer *_layer, GLenum cap, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -297,11 +299,11 @@ static void REGAL_CALL Ppca_glDisablei(Layer *_layer, GLenum cap, GLuint index)
   // prefix
   _context->ppca->glDisablei( cap, index );
 
-  orig.glDisablei( orig.glDisablei_layer, cap, index );
+  RglDisablei( orig, cap, index );
 
 }
 
-static void REGAL_CALL Ppca_glEdgeFlagPointer(Layer *_layer, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glEdgeFlagPointer(Layer *_layer, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -310,11 +312,11 @@ static void REGAL_CALL Ppca_glEdgeFlagPointer(Layer *_layer, GLsizei stride, con
   // prefix
   _context->ppca->glEdgeFlagPointer( stride, pointer );
 
-  orig.glEdgeFlagPointer( orig.glEdgeFlagPointer_layer, stride, pointer );
+  RglEdgeFlagPointer( orig, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glEnable(Layer *_layer, GLenum cap)
+static void REGAL_CALL ppca_glEnable(Layer *_layer, GLenum cap)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -323,11 +325,11 @@ static void REGAL_CALL Ppca_glEnable(Layer *_layer, GLenum cap)
   // prefix
   _context->ppca->glEnable( cap );
 
-  orig.glEnable( orig.glEnable_layer, cap );
+  RglEnable( orig, cap );
 
 }
 
-static void REGAL_CALL Ppca_glEnableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL ppca_glEnableClientState(Layer *_layer, GLenum cap)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -336,11 +338,11 @@ static void REGAL_CALL Ppca_glEnableClientState(Layer *_layer, GLenum cap)
   // prefix
   _context->ppca->glEnableClientState( cap );
 
-  orig.glEnableClientState( orig.glEnableClientState_layer, cap );
+  RglEnableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Ppca_glEnableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL ppca_glEnableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -349,11 +351,11 @@ static void REGAL_CALL Ppca_glEnableClientStateIndexedEXT(Layer *_layer, GLenum 
   // prefix
   _context->ppca->glEnableClientStateIndexedEXT( array, index );
 
-  orig.glEnableClientStateIndexedEXT( orig.glEnableClientStateIndexedEXT_layer, array, index );
+  RglEnableClientStateIndexedEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Ppca_glEnableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL ppca_glEnableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -362,11 +364,11 @@ static void REGAL_CALL Ppca_glEnableClientStateiEXT(Layer *_layer, GLenum array,
   // prefix
   _context->ppca->glEnableClientStateiEXT( array, index );
 
-  orig.glEnableClientStateiEXT( orig.glEnableClientStateiEXT_layer, array, index );
+  RglEnableClientStateiEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Ppca_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL ppca_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -375,11 +377,11 @@ static void REGAL_CALL Ppca_glEnableIndexedEXT(Layer *_layer, GLenum target, GLu
   // prefix
   _context->ppca->glEnableIndexedEXT( target, index );
 
-  orig.glEnableIndexedEXT( orig.glEnableIndexedEXT_layer, target, index );
+  RglEnableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Ppca_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL ppca_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -388,11 +390,11 @@ static void REGAL_CALL Ppca_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint v
   // prefix
   _context->ppca->glEnableVertexArrayAttribEXT( vaobj, array );
 
-  orig.glEnableVertexArrayAttribEXT( orig.glEnableVertexArrayAttribEXT_layer, vaobj, array );
+  RglEnableVertexArrayAttribEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Ppca_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL ppca_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -401,11 +403,11 @@ static void REGAL_CALL Ppca_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, 
   // prefix
   _context->ppca->glEnableVertexArrayEXT( vaobj, array );
 
-  orig.glEnableVertexArrayEXT( orig.glEnableVertexArrayEXT_layer, vaobj, array );
+  RglEnableVertexArrayEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Ppca_glEnableVertexAttribArray(Layer *_layer, GLuint index)
+static void REGAL_CALL ppca_glEnableVertexAttribArray(Layer *_layer, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -414,11 +416,11 @@ static void REGAL_CALL Ppca_glEnableVertexAttribArray(Layer *_layer, GLuint inde
   // prefix
   _context->ppca->glEnableVertexAttribArray( index );
 
-  orig.glEnableVertexAttribArray( orig.glEnableVertexAttribArray_layer, index );
+  RglEnableVertexAttribArray( orig, index );
 
 }
 
-static void REGAL_CALL Ppca_glEnablei(Layer *_layer, GLenum cap, GLuint index)
+static void REGAL_CALL ppca_glEnablei(Layer *_layer, GLenum cap, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -427,11 +429,11 @@ static void REGAL_CALL Ppca_glEnablei(Layer *_layer, GLenum cap, GLuint index)
   // prefix
   _context->ppca->glEnablei( cap, index );
 
-  orig.glEnablei( orig.glEnablei_layer, cap, index );
+  RglEnablei( orig, cap, index );
 
 }
 
-static void REGAL_CALL Ppca_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glFogCoordPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -440,11 +442,11 @@ static void REGAL_CALL Ppca_glFogCoordPointer(Layer *_layer, GLenum type, GLsize
   // prefix
   _context->ppca->glFogCoordPointer( type, stride, pointer );
 
-  orig.glFogCoordPointer( orig.glFogCoordPointer_layer, type, stride, pointer );
+  RglFogCoordPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
+static void REGAL_CALL ppca_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -455,11 +457,11 @@ static void REGAL_CALL Ppca_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean
     return;
   }
 
-  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
+  RglGetBooleanv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppca_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL ppca_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -470,11 +472,11 @@ static void REGAL_CALL Ppca_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *
     return;
   }
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppca_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppca_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -485,11 +487,11 @@ static void REGAL_CALL Ppca_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *pa
     return;
   }
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppca_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL ppca_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -500,11 +502,11 @@ static void REGAL_CALL Ppca_glGetIntegerv(Layer *_layer, GLenum pname, GLint *pa
     return;
   }
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppca_glIndexPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glIndexPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -513,11 +515,11 @@ static void REGAL_CALL Ppca_glIndexPointer(Layer *_layer, GLenum type, GLsizei s
   // prefix
   _context->ppca->glIndexPointer( type, stride, pointer );
 
-  orig.glIndexPointer( orig.glIndexPointer_layer, type, stride, pointer );
+  RglIndexPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glInterleavedArrays(Layer *_layer, GLenum format, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glInterleavedArrays(Layer *_layer, GLenum format, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -526,11 +528,11 @@ static void REGAL_CALL Ppca_glInterleavedArrays(Layer *_layer, GLenum format, GL
   // prefix
   _context->ppca->glInterleavedArrays( format, stride, pointer );
 
-  orig.glInterleavedArrays( orig.glInterleavedArrays_layer, format, stride, pointer );
+  RglInterleavedArrays( orig, format, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -539,11 +541,11 @@ static void REGAL_CALL Ppca_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texu
   // prefix
   _context->ppca->glMultiTexCoordPointerEXT( texunit, size, type, stride, pointer );
 
-  orig.glMultiTexCoordPointerEXT( orig.glMultiTexCoordPointerEXT_layer, texunit, size, type, stride, pointer );
+  RglMultiTexCoordPointerEXT( orig, texunit, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -552,11 +554,11 @@ static void REGAL_CALL Ppca_glNormalPointer(Layer *_layer, GLenum type, GLsizei 
   // prefix
   _context->ppca->glNormalPointer( type, stride, pointer );
 
-  orig.glNormalPointer( orig.glNormalPointer_layer, type, stride, pointer );
+  RglNormalPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL ppca_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -565,11 +567,11 @@ static void REGAL_CALL Ppca_glPixelStoref(Layer *_layer, GLenum pname, GLfloat p
   // prefix
   _context->ppca->glPixelStore( pname, param );
 
-  orig.glPixelStoref( orig.glPixelStoref_layer, pname, param );
+  RglPixelStoref( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppca_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL ppca_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -578,11 +580,11 @@ static void REGAL_CALL Ppca_glPixelStorei(Layer *_layer, GLenum pname, GLint par
   // prefix
   _context->ppca->glPixelStore( pname, param );
 
-  orig.glPixelStorei( orig.glPixelStorei_layer, pname, param );
+  RglPixelStorei( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppca_glPopClientAttrib(Layer *_layer)
+static void REGAL_CALL ppca_glPopClientAttrib(Layer *_layer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -591,11 +593,11 @@ static void REGAL_CALL Ppca_glPopClientAttrib(Layer *_layer)
   // impl
   _context->ppca->glPopClientAttrib( *_context ); return;
 
-  orig.glPopClientAttrib( orig.glPopClientAttrib_layer );
+  RglPopClientAttrib( orig );
 
 }
 
-static void REGAL_CALL Ppca_glPrimitiveRestartIndex(Layer *_layer, GLuint index)
+static void REGAL_CALL ppca_glPrimitiveRestartIndex(Layer *_layer, GLuint index)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -604,11 +606,11 @@ static void REGAL_CALL Ppca_glPrimitiveRestartIndex(Layer *_layer, GLuint index)
   // prefix
   _context->ppca->glPrimitiveRestartIndex( index );
 
-  orig.glPrimitiveRestartIndex( orig.glPrimitiveRestartIndex_layer, index );
+  RglPrimitiveRestartIndex( orig, index );
 
 }
 
-static void REGAL_CALL Ppca_glPushClientAttrib(Layer *_layer, GLbitfield mask)
+static void REGAL_CALL ppca_glPushClientAttrib(Layer *_layer, GLbitfield mask)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -617,11 +619,11 @@ static void REGAL_CALL Ppca_glPushClientAttrib(Layer *_layer, GLbitfield mask)
   // impl
   _context->ppca->glPushClientAttrib( *_context, mask ); return;
 
-  orig.glPushClientAttrib( orig.glPushClientAttrib_layer, mask );
+  RglPushClientAttrib( orig, mask );
 
 }
 
-static void REGAL_CALL Ppca_glPushClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
+static void REGAL_CALL ppca_glPushClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -630,11 +632,11 @@ static void REGAL_CALL Ppca_glPushClientAttribDefaultEXT(Layer *_layer, GLbitfie
   // impl
   _context->ppca->glPushClientAttribDefaultEXT( *_context, mask ); return;
 
-  orig.glPushClientAttribDefaultEXT( orig.glPushClientAttribDefaultEXT_layer, mask );
+  RglPushClientAttribDefaultEXT( orig, mask );
 
 }
 
-static void REGAL_CALL Ppca_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -643,11 +645,11 @@ static void REGAL_CALL Ppca_glSecondaryColorPointer(Layer *_layer, GLint size, G
   // prefix
   _context->ppca->glSecondaryColorPointer( size, type, stride, pointer );
 
-  orig.glSecondaryColorPointer( orig.glSecondaryColorPointer_layer, size, type, stride, pointer );
+  RglSecondaryColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -656,11 +658,11 @@ static void REGAL_CALL Ppca_glTexCoordPointer(Layer *_layer, GLint size, GLenum 
   // prefix
   _context->ppca->glTexCoordPointer( size, type, stride, pointer );
 
-  orig.glTexCoordPointer( orig.glTexCoordPointer_layer, size, type, stride, pointer );
+  RglTexCoordPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -669,11 +671,11 @@ static void REGAL_CALL Ppca_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint va
   // prefix
   _context->ppca->glVertexArrayColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  orig.glVertexArrayColorOffsetEXT( orig.glVertexArrayColorOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArrayColorOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -682,11 +684,11 @@ static void REGAL_CALL Ppca_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint
   // prefix
   _context->ppca->glVertexArrayEdgeFlagOffsetEXT( vaobj, buffer, stride, offset );
 
-  orig.glVertexArrayEdgeFlagOffsetEXT( orig.glVertexArrayEdgeFlagOffsetEXT_layer, vaobj, buffer, stride, offset );
+  RglVertexArrayEdgeFlagOffsetEXT( orig, vaobj, buffer, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -695,11 +697,11 @@ static void REGAL_CALL Ppca_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint
   // prefix
   _context->ppca->glVertexArrayFogCoordOffsetEXT( vaobj, buffer, type, stride, offset );
 
-  orig.glVertexArrayFogCoordOffsetEXT( orig.glVertexArrayFogCoordOffsetEXT_layer, vaobj, buffer, type, stride, offset );
+  RglVertexArrayFogCoordOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -708,11 +710,11 @@ static void REGAL_CALL Ppca_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint va
   // prefix
   _context->ppca->glVertexArrayIndexOffsetEXT( vaobj, buffer, type, stride, offset );
 
-  orig.glVertexArrayIndexOffsetEXT( orig.glVertexArrayIndexOffsetEXT_layer, vaobj, buffer, type, stride, offset );
+  RglVertexArrayIndexOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -721,11 +723,11 @@ static void REGAL_CALL Ppca_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, G
   // prefix
   _context->ppca->glVertexArrayMultiTexCoordOffsetEXT( vaobj, buffer, texunit, size, type, stride, offset );
 
-  orig.glVertexArrayMultiTexCoordOffsetEXT( orig.glVertexArrayMultiTexCoordOffsetEXT_layer, vaobj, buffer, texunit, size, type, stride, offset );
+  RglVertexArrayMultiTexCoordOffsetEXT( orig, vaobj, buffer, texunit, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -734,11 +736,11 @@ static void REGAL_CALL Ppca_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint v
   // prefix
   _context->ppca->glVertexArrayNormalOffsetEXT( vaobj, buffer, type, stride, offset );
 
-  orig.glVertexArrayNormalOffsetEXT( orig.glVertexArrayNormalOffsetEXT_layer, vaobj, buffer, type, stride, offset );
+  RglVertexArrayNormalOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -747,11 +749,11 @@ static void REGAL_CALL Ppca_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, 
   // prefix
   _context->ppca->glVertexArraySecondaryColorOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  orig.glVertexArraySecondaryColorOffsetEXT( orig.glVertexArraySecondaryColorOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArraySecondaryColorOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -760,11 +762,11 @@ static void REGAL_CALL Ppca_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint
   // prefix
   _context->ppca->glVertexArrayTexCoordOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  orig.glVertexArrayTexCoordOffsetEXT( orig.glVertexArrayTexCoordOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArrayTexCoordOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -773,11 +775,11 @@ static void REGAL_CALL Ppca_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, G
   // prefix
   _context->ppca->glVertexArrayVertexAttribIOffsetEXT( vaobj, buffer, index, size, type, stride, offset );
 
-  orig.glVertexArrayVertexAttribIOffsetEXT( orig.glVertexArrayVertexAttribIOffsetEXT_layer, vaobj, buffer, index, size, type, stride, offset );
+  RglVertexArrayVertexAttribIOffsetEXT( orig, vaobj, buffer, index, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -786,11 +788,11 @@ static void REGAL_CALL Ppca_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GL
   // prefix
   _context->ppca->glVertexArrayVertexAttribOffsetEXT( vaobj, buffer, index, size, type, normalized, stride, offset );
 
-  orig.glVertexArrayVertexAttribOffsetEXT( orig.glVertexArrayVertexAttribOffsetEXT_layer, vaobj, buffer, index, size, type, normalized, stride, offset );
+  RglVertexArrayVertexAttribOffsetEXT( orig, vaobj, buffer, index, size, type, normalized, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL ppca_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -799,11 +801,11 @@ static void REGAL_CALL Ppca_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint v
   // prefix
   _context->ppca->glVertexArrayVertexOffsetEXT( vaobj, buffer, size, type, stride, offset );
 
-  orig.glVertexArrayVertexOffsetEXT( orig.glVertexArrayVertexOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArrayVertexOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribBinding(Layer *_layer, GLuint attribindex, GLuint bindingindex)
+static void REGAL_CALL ppca_glVertexAttribBinding(Layer *_layer, GLuint attribindex, GLuint bindingindex)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -812,11 +814,11 @@ static void REGAL_CALL Ppca_glVertexAttribBinding(Layer *_layer, GLuint attribin
   // prefix
   _context->ppca->glVertexAttribBinding( attribindex, bindingindex );
 
-  orig.glVertexAttribBinding( orig.glVertexAttribBinding_layer, attribindex, bindingindex );
+  RglVertexAttribBinding( orig, attribindex, bindingindex );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribDivisor(Layer *_layer, GLuint index, GLuint divisor)
+static void REGAL_CALL ppca_glVertexAttribDivisor(Layer *_layer, GLuint index, GLuint divisor)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -825,11 +827,11 @@ static void REGAL_CALL Ppca_glVertexAttribDivisor(Layer *_layer, GLuint index, G
   // prefix
   _context->ppca->glVertexAttribDivisor( index, divisor );
 
-  orig.glVertexAttribDivisor( orig.glVertexAttribDivisor_layer, index, divisor );
+  RglVertexAttribDivisor( orig, index, divisor );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribFormat(Layer *_layer, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
+static void REGAL_CALL ppca_glVertexAttribFormat(Layer *_layer, GLuint attribindex, GLint size, GLenum type, GLboolean normalized, GLuint relativeoffset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -838,11 +840,11 @@ static void REGAL_CALL Ppca_glVertexAttribFormat(Layer *_layer, GLuint attribind
   // prefix
   _context->ppca->glVertexAttribFormat( attribindex, size, type, normalized, relativeoffset );
 
-  orig.glVertexAttribFormat( orig.glVertexAttribFormat_layer, attribindex, size, type, normalized, relativeoffset );
+  RglVertexAttribFormat( orig, attribindex, size, type, normalized, relativeoffset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribIFormat(Layer *_layer, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+static void REGAL_CALL ppca_glVertexAttribIFormat(Layer *_layer, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -851,11 +853,11 @@ static void REGAL_CALL Ppca_glVertexAttribIFormat(Layer *_layer, GLuint attribin
   // prefix
   _context->ppca->glVertexAttribIFormat( attribindex, size, type, relativeoffset );
 
-  orig.glVertexAttribIFormat( orig.glVertexAttribIFormat_layer, attribindex, size, type, relativeoffset );
+  RglVertexAttribIFormat( orig, attribindex, size, type, relativeoffset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribIPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glVertexAttribIPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -864,11 +866,11 @@ static void REGAL_CALL Ppca_glVertexAttribIPointer(Layer *_layer, GLuint index, 
   // prefix
   _context->ppca->glVertexAttribIPointer( index, size, type, stride, pointer );
 
-  orig.glVertexAttribIPointer( orig.glVertexAttribIPointer_layer, index, size, type, stride, pointer );
+  RglVertexAttribIPointer( orig, index, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribLFormat(Layer *_layer, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
+static void REGAL_CALL ppca_glVertexAttribLFormat(Layer *_layer, GLuint attribindex, GLint size, GLenum type, GLuint relativeoffset)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -877,11 +879,11 @@ static void REGAL_CALL Ppca_glVertexAttribLFormat(Layer *_layer, GLuint attribin
   // prefix
   _context->ppca->glVertexAttribLFormat( attribindex, size, type, relativeoffset );
 
-  orig.glVertexAttribLFormat( orig.glVertexAttribLFormat_layer, attribindex, size, type, relativeoffset );
+  RglVertexAttribLFormat( orig, attribindex, size, type, relativeoffset );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribLPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glVertexAttribLPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -890,11 +892,11 @@ static void REGAL_CALL Ppca_glVertexAttribLPointer(Layer *_layer, GLuint index, 
   // prefix
   _context->ppca->glVertexAttribLPointer( index, size, type, stride, pointer );
 
-  orig.glVertexAttribLPointer( orig.glVertexAttribLPointer_layer, index, size, type, stride, pointer );
+  RglVertexAttribLPointer( orig, index, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glVertexAttribPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glVertexAttribPointer(Layer *_layer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -903,11 +905,11 @@ static void REGAL_CALL Ppca_glVertexAttribPointer(Layer *_layer, GLuint index, G
   // prefix
   _context->ppca->glVertexAttribPointer( index, size, type, normalized, stride, pointer );
 
-  orig.glVertexAttribPointer( orig.glVertexAttribPointer_layer, index, size, type, normalized, stride, pointer );
+  RglVertexAttribPointer( orig, index, size, type, normalized, stride, pointer );
 
 }
 
-static void REGAL_CALL Ppca_glVertexBindingDivisor(Layer *_layer, GLuint bindingindex, GLuint divisor)
+static void REGAL_CALL ppca_glVertexBindingDivisor(Layer *_layer, GLuint bindingindex, GLuint divisor)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -916,11 +918,11 @@ static void REGAL_CALL Ppca_glVertexBindingDivisor(Layer *_layer, GLuint binding
   // prefix
   _context->ppca->glVertexBindingDivisor( bindingindex, divisor );
 
-  orig.glVertexBindingDivisor( orig.glVertexBindingDivisor_layer, bindingindex, divisor );
+  RglVertexBindingDivisor( orig, bindingindex, divisor );
 
 }
 
-static void REGAL_CALL Ppca_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL ppca_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Ppca * self = static_cast<Ppca *>(_layer);
 
@@ -929,78 +931,78 @@ static void REGAL_CALL Ppca_glVertexPointer(Layer *_layer, GLint size, GLenum ty
   // prefix
   _context->ppca->glVertexPointer( size, type, stride, pointer );
 
-  orig.glVertexPointer( orig.glVertexPointer_layer, size, type, stride, pointer );
+  RglVertexPointer( orig, size, type, stride, pointer );
 
 }
 
-void PpcaIntercept( Dispatch::GL & dt ) {
-  dt.glBindBuffer                         = RPpca_glBindBuffer;
-  dt.glBindVertexArray                    = RPpca_glBindVertexArray;
-  dt.glBindVertexBuffer                   = RPpca_glBindVertexBuffer;
-  dt.glBindVertexBuffers                  = RPpca_glBindVertexBuffers;
-  dt.glClientActiveTexture                = RPpca_glClientActiveTexture;
-  dt.glClientActiveTextureARB             = RPpca_glClientActiveTextureARB;
-  dt.glClientAttribDefaultEXT             = RPpca_glClientAttribDefaultEXT;
-  dt.glColorPointer                       = RPpca_glColorPointer;
-  dt.glDeleteBuffers                      = RPpca_glDeleteBuffers;
-  dt.glDeleteVertexArrays                 = RPpca_glDeleteVertexArrays;
-  dt.glDisable                            = RPpca_glDisable;
-  dt.glDisableClientState                 = RPpca_glDisableClientState;
-  dt.glDisableClientStateIndexedEXT       = RPpca_glDisableClientStateIndexedEXT;
-  dt.glDisableClientStateiEXT             = RPpca_glDisableClientStateiEXT;
-  dt.glDisableIndexedEXT                  = RPpca_glDisableIndexedEXT;
-  dt.glDisableVertexArrayAttribEXT        = RPpca_glDisableVertexArrayAttribEXT;
-  dt.glDisableVertexArrayEXT              = RPpca_glDisableVertexArrayEXT;
-  dt.glDisableVertexAttribArray           = RPpca_glDisableVertexAttribArray;
-  dt.glDisablei                           = RPpca_glDisablei;
-  dt.glEdgeFlagPointer                    = RPpca_glEdgeFlagPointer;
-  dt.glEnable                             = RPpca_glEnable;
-  dt.glEnableClientState                  = RPpca_glEnableClientState;
-  dt.glEnableClientStateIndexedEXT        = RPpca_glEnableClientStateIndexedEXT;
-  dt.glEnableClientStateiEXT              = RPpca_glEnableClientStateiEXT;
-  dt.glEnableIndexedEXT                   = RPpca_glEnableIndexedEXT;
-  dt.glEnableVertexArrayAttribEXT         = RPpca_glEnableVertexArrayAttribEXT;
-  dt.glEnableVertexArrayEXT               = RPpca_glEnableVertexArrayEXT;
-  dt.glEnableVertexAttribArray            = RPpca_glEnableVertexAttribArray;
-  dt.glEnablei                            = RPpca_glEnablei;
-  dt.glFogCoordPointer                    = RPpca_glFogCoordPointer;
-  dt.glGetBooleanv                        = RPpca_glGetBooleanv;
-  dt.glGetDoublev                         = RPpca_glGetDoublev;
-  dt.glGetFloatv                          = RPpca_glGetFloatv;
-  dt.glGetIntegerv                        = RPpca_glGetIntegerv;
-  dt.glIndexPointer                       = RPpca_glIndexPointer;
-  dt.glInterleavedArrays                  = RPpca_glInterleavedArrays;
-  dt.glMultiTexCoordPointerEXT            = RPpca_glMultiTexCoordPointerEXT;
-  dt.glNormalPointer                      = RPpca_glNormalPointer;
-  dt.glPixelStoref                        = RPpca_glPixelStoref;
-  dt.glPixelStorei                        = RPpca_glPixelStorei;
-  dt.glPopClientAttrib                    = RPpca_glPopClientAttrib;
-  dt.glPrimitiveRestartIndex              = RPpca_glPrimitiveRestartIndex;
-  dt.glPushClientAttrib                   = RPpca_glPushClientAttrib;
-  dt.glPushClientAttribDefaultEXT         = RPpca_glPushClientAttribDefaultEXT;
-  dt.glSecondaryColorPointer              = RPpca_glSecondaryColorPointer;
-  dt.glTexCoordPointer                    = RPpca_glTexCoordPointer;
-  dt.glVertexArrayColorOffsetEXT          = RPpca_glVertexArrayColorOffsetEXT;
-  dt.glVertexArrayEdgeFlagOffsetEXT       = RPpca_glVertexArrayEdgeFlagOffsetEXT;
-  dt.glVertexArrayFogCoordOffsetEXT       = RPpca_glVertexArrayFogCoordOffsetEXT;
-  dt.glVertexArrayIndexOffsetEXT          = RPpca_glVertexArrayIndexOffsetEXT;
-  dt.glVertexArrayMultiTexCoordOffsetEXT  = RPpca_glVertexArrayMultiTexCoordOffsetEXT;
-  dt.glVertexArrayNormalOffsetEXT         = RPpca_glVertexArrayNormalOffsetEXT;
-  dt.glVertexArraySecondaryColorOffsetEXT = RPpca_glVertexArraySecondaryColorOffsetEXT;
-  dt.glVertexArrayTexCoordOffsetEXT       = RPpca_glVertexArrayTexCoordOffsetEXT;
-  dt.glVertexArrayVertexAttribIOffsetEXT  = RPpca_glVertexArrayVertexAttribIOffsetEXT;
-  dt.glVertexArrayVertexAttribOffsetEXT   = RPpca_glVertexArrayVertexAttribOffsetEXT;
-  dt.glVertexArrayVertexOffsetEXT         = RPpca_glVertexArrayVertexOffsetEXT;
-  dt.glVertexAttribBinding                = RPpca_glVertexAttribBinding;
-  dt.glVertexAttribDivisor                = RPpca_glVertexAttribDivisor;
-  dt.glVertexAttribFormat                 = RPpca_glVertexAttribFormat;
-  dt.glVertexAttribIFormat                = RPpca_glVertexAttribIFormat;
-  dt.glVertexAttribIPointer               = RPpca_glVertexAttribIPointer;
-  dt.glVertexAttribLFormat                = RPpca_glVertexAttribLFormat;
-  dt.glVertexAttribLPointer               = RPpca_glVertexAttribLPointer;
-  dt.glVertexAttribPointer                = RPpca_glVertexAttribPointer;
-  dt.glVertexBindingDivisor               = RPpca_glVertexBindingDivisor;
-  dt.glVertexPointer                      = RPpca_glVertexPointer;
+void PpcaIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glBindBuffer                         = MakeRegalProc(ppca_glBindBuffer, layer);
+  dt.glBindVertexArray                    = MakeRegalProc(ppca_glBindVertexArray, layer);
+  dt.glBindVertexBuffer                   = MakeRegalProc(ppca_glBindVertexBuffer, layer);
+  dt.glBindVertexBuffers                  = MakeRegalProc(ppca_glBindVertexBuffers, layer);
+  dt.glClientActiveTexture                = MakeRegalProc(ppca_glClientActiveTexture, layer);
+  dt.glClientActiveTextureARB             = MakeRegalProc(ppca_glClientActiveTextureARB, layer);
+  dt.glClientAttribDefaultEXT             = MakeRegalProc(ppca_glClientAttribDefaultEXT, layer);
+  dt.glColorPointer                       = MakeRegalProc(ppca_glColorPointer, layer);
+  dt.glDeleteBuffers                      = MakeRegalProc(ppca_glDeleteBuffers, layer);
+  dt.glDeleteVertexArrays                 = MakeRegalProc(ppca_glDeleteVertexArrays, layer);
+  dt.glDisable                            = MakeRegalProc(ppca_glDisable, layer);
+  dt.glDisableClientState                 = MakeRegalProc(ppca_glDisableClientState, layer);
+  dt.glDisableClientStateIndexedEXT       = MakeRegalProc(ppca_glDisableClientStateIndexedEXT, layer);
+  dt.glDisableClientStateiEXT             = MakeRegalProc(ppca_glDisableClientStateiEXT, layer);
+  dt.glDisableIndexedEXT                  = MakeRegalProc(ppca_glDisableIndexedEXT, layer);
+  dt.glDisableVertexArrayAttribEXT        = MakeRegalProc(ppca_glDisableVertexArrayAttribEXT, layer);
+  dt.glDisableVertexArrayEXT              = MakeRegalProc(ppca_glDisableVertexArrayEXT, layer);
+  dt.glDisableVertexAttribArray           = MakeRegalProc(ppca_glDisableVertexAttribArray, layer);
+  dt.glDisablei                           = MakeRegalProc(ppca_glDisablei, layer);
+  dt.glEdgeFlagPointer                    = MakeRegalProc(ppca_glEdgeFlagPointer, layer);
+  dt.glEnable                             = MakeRegalProc(ppca_glEnable, layer);
+  dt.glEnableClientState                  = MakeRegalProc(ppca_glEnableClientState, layer);
+  dt.glEnableClientStateIndexedEXT        = MakeRegalProc(ppca_glEnableClientStateIndexedEXT, layer);
+  dt.glEnableClientStateiEXT              = MakeRegalProc(ppca_glEnableClientStateiEXT, layer);
+  dt.glEnableIndexedEXT                   = MakeRegalProc(ppca_glEnableIndexedEXT, layer);
+  dt.glEnableVertexArrayAttribEXT         = MakeRegalProc(ppca_glEnableVertexArrayAttribEXT, layer);
+  dt.glEnableVertexArrayEXT               = MakeRegalProc(ppca_glEnableVertexArrayEXT, layer);
+  dt.glEnableVertexAttribArray            = MakeRegalProc(ppca_glEnableVertexAttribArray, layer);
+  dt.glEnablei                            = MakeRegalProc(ppca_glEnablei, layer);
+  dt.glFogCoordPointer                    = MakeRegalProc(ppca_glFogCoordPointer, layer);
+  dt.glGetBooleanv                        = MakeRegalProc(ppca_glGetBooleanv, layer);
+  dt.glGetDoublev                         = MakeRegalProc(ppca_glGetDoublev, layer);
+  dt.glGetFloatv                          = MakeRegalProc(ppca_glGetFloatv, layer);
+  dt.glGetIntegerv                        = MakeRegalProc(ppca_glGetIntegerv, layer);
+  dt.glIndexPointer                       = MakeRegalProc(ppca_glIndexPointer, layer);
+  dt.glInterleavedArrays                  = MakeRegalProc(ppca_glInterleavedArrays, layer);
+  dt.glMultiTexCoordPointerEXT            = MakeRegalProc(ppca_glMultiTexCoordPointerEXT, layer);
+  dt.glNormalPointer                      = MakeRegalProc(ppca_glNormalPointer, layer);
+  dt.glPixelStoref                        = MakeRegalProc(ppca_glPixelStoref, layer);
+  dt.glPixelStorei                        = MakeRegalProc(ppca_glPixelStorei, layer);
+  dt.glPopClientAttrib                    = MakeRegalProc(ppca_glPopClientAttrib, layer);
+  dt.glPrimitiveRestartIndex              = MakeRegalProc(ppca_glPrimitiveRestartIndex, layer);
+  dt.glPushClientAttrib                   = MakeRegalProc(ppca_glPushClientAttrib, layer);
+  dt.glPushClientAttribDefaultEXT         = MakeRegalProc(ppca_glPushClientAttribDefaultEXT, layer);
+  dt.glSecondaryColorPointer              = MakeRegalProc(ppca_glSecondaryColorPointer, layer);
+  dt.glTexCoordPointer                    = MakeRegalProc(ppca_glTexCoordPointer, layer);
+  dt.glVertexArrayColorOffsetEXT          = MakeRegalProc(ppca_glVertexArrayColorOffsetEXT, layer);
+  dt.glVertexArrayEdgeFlagOffsetEXT       = MakeRegalProc(ppca_glVertexArrayEdgeFlagOffsetEXT, layer);
+  dt.glVertexArrayFogCoordOffsetEXT       = MakeRegalProc(ppca_glVertexArrayFogCoordOffsetEXT, layer);
+  dt.glVertexArrayIndexOffsetEXT          = MakeRegalProc(ppca_glVertexArrayIndexOffsetEXT, layer);
+  dt.glVertexArrayMultiTexCoordOffsetEXT  = MakeRegalProc(ppca_glVertexArrayMultiTexCoordOffsetEXT, layer);
+  dt.glVertexArrayNormalOffsetEXT         = MakeRegalProc(ppca_glVertexArrayNormalOffsetEXT, layer);
+  dt.glVertexArraySecondaryColorOffsetEXT = MakeRegalProc(ppca_glVertexArraySecondaryColorOffsetEXT, layer);
+  dt.glVertexArrayTexCoordOffsetEXT       = MakeRegalProc(ppca_glVertexArrayTexCoordOffsetEXT, layer);
+  dt.glVertexArrayVertexAttribIOffsetEXT  = MakeRegalProc(ppca_glVertexArrayVertexAttribIOffsetEXT, layer);
+  dt.glVertexArrayVertexAttribOffsetEXT   = MakeRegalProc(ppca_glVertexArrayVertexAttribOffsetEXT, layer);
+  dt.glVertexArrayVertexOffsetEXT         = MakeRegalProc(ppca_glVertexArrayVertexOffsetEXT, layer);
+  dt.glVertexAttribBinding                = MakeRegalProc(ppca_glVertexAttribBinding, layer);
+  dt.glVertexAttribDivisor                = MakeRegalProc(ppca_glVertexAttribDivisor, layer);
+  dt.glVertexAttribFormat                 = MakeRegalProc(ppca_glVertexAttribFormat, layer);
+  dt.glVertexAttribIFormat                = MakeRegalProc(ppca_glVertexAttribIFormat, layer);
+  dt.glVertexAttribIPointer               = MakeRegalProc(ppca_glVertexAttribIPointer, layer);
+  dt.glVertexAttribLFormat                = MakeRegalProc(ppca_glVertexAttribLFormat, layer);
+  dt.glVertexAttribLPointer               = MakeRegalProc(ppca_glVertexAttribLPointer, layer);
+  dt.glVertexAttribPointer                = MakeRegalProc(ppca_glVertexAttribPointer, layer);
+  dt.glVertexBindingDivisor               = MakeRegalProc(ppca_glVertexBindingDivisor, layer);
+  dt.glVertexPointer                      = MakeRegalProc(ppca_glVertexPointer, layer);
 }
 
 REGAL_NAMESPACE_END

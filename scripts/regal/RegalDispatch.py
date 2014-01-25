@@ -216,6 +216,8 @@ struct RegalProc {
   Layer *layer;
 };
 
+template <typename T> RegalProc<T> MakeRegalProc( T p, Layer *l ) { return RegalProc<T>( p, l ); }
+
 ${API_REGAL_PROC_TYPEDEFS}
 
 ${API_REGAL_PROC_DEFINES}

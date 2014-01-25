@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalHint.h"
-#include "RegalEmuProcsHint.h"
+#include "Hint.h"
+#include "HintProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Hint_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
+using namespace Emu;
+
+static void REGAL_CALL hint_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
   Hint * self = static_cast<Hint *>(_layer);
 
@@ -65,11 +67,11 @@ static void REGAL_CALL Hint_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean
     return;
   }
 
-  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
+  RglGetBooleanv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Hint_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL hint_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   Hint * self = static_cast<Hint *>(_layer);
 
@@ -80,11 +82,11 @@ static void REGAL_CALL Hint_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *
     return;
   }
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL Hint_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL hint_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   Hint * self = static_cast<Hint *>(_layer);
 
@@ -95,11 +97,11 @@ static void REGAL_CALL Hint_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *pa
     return;
   }
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Hint_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL hint_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   Hint * self = static_cast<Hint *>(_layer);
 
@@ -110,11 +112,11 @@ static void REGAL_CALL Hint_glGetIntegerv(Layer *_layer, GLenum pname, GLint *pa
     return;
   }
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Hint_glHint(Layer *_layer, GLenum target, GLenum mode)
+static void REGAL_CALL hint_glHint(Layer *_layer, GLenum target, GLenum mode)
 {
   Hint * self = static_cast<Hint *>(_layer);
 
@@ -125,16 +127,16 @@ static void REGAL_CALL Hint_glHint(Layer *_layer, GLenum target, GLenum mode)
     return;
   }
 
-  orig.glHint( orig.glHint_layer, target, mode );
+  RglHint( orig, target, mode );
 
 }
 
-void HintIntercept( Dispatch::GL & dt ) {
-  dt.glGetBooleanv = RHint_glGetBooleanv;
-  dt.glGetDoublev  = RHint_glGetDoublev;
-  dt.glGetFloatv   = RHint_glGetFloatv;
-  dt.glGetIntegerv = RHint_glGetIntegerv;
-  dt.glHint        = RHint_glHint;
+void HintIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glGetBooleanv = MakeRegalProc(hint_glGetBooleanv, layer);
+  dt.glGetDoublev  = MakeRegalProc(hint_glGetDoublev, layer);
+  dt.glGetFloatv   = MakeRegalProc(hint_glGetFloatv, layer);
+  dt.glGetIntegerv = MakeRegalProc(hint_glGetIntegerv, layer);
+  dt.glHint        = MakeRegalProc(hint_glHint, layer);
 }
 
 REGAL_NAMESPACE_END

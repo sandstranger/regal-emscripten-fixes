@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalTexSto.h"
-#include "RegalEmuProcsTexSto.h"
+#include "TexSto.h"
+#include "TexStoProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL TexSto_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
+using namespace Emu;
+
+static void REGAL_CALL texsto_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL TexSto_glDeleteTextures(Layer *_layer, GLsizei n, const G
   // prefix
   _context->texsto->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTextures( orig.glDeleteTextures_layer, n, textures );
+  RglDeleteTextures( orig, n, textures );
 
 }
 
-static void REGAL_CALL TexSto_glGetTexParameterIiv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL texsto_glGetTexParameterIiv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -78,11 +80,11 @@ static void REGAL_CALL TexSto_glGetTexParameterIiv(Layer *_layer, GLenum target,
      return;
   }
 
-  orig.glGetTexParameterIiv( orig.glGetTexParameterIiv_layer, target, pname, params );
+  RglGetTexParameterIiv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL TexSto_glGetTexParameterIuiv(Layer *_layer, GLenum target, GLenum pname, GLuint *params)
+static void REGAL_CALL texsto_glGetTexParameterIuiv(Layer *_layer, GLenum target, GLenum pname, GLuint *params)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -93,11 +95,11 @@ static void REGAL_CALL TexSto_glGetTexParameterIuiv(Layer *_layer, GLenum target
      return;
   }
 
-  orig.glGetTexParameterIuiv( orig.glGetTexParameterIuiv_layer, target, pname, params );
+  RglGetTexParameterIuiv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL TexSto_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL texsto_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -108,11 +110,11 @@ static void REGAL_CALL TexSto_glGetTexParameterfv(Layer *_layer, GLenum target, 
      return;
   }
 
-  orig.glGetTexParameterfv( orig.glGetTexParameterfv_layer, target, pname, params );
+  RglGetTexParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL TexSto_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL texsto_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -123,11 +125,11 @@ static void REGAL_CALL TexSto_glGetTexParameteriv(Layer *_layer, GLenum target, 
      return;
   }
 
-  orig.glGetTexParameteriv( orig.glGetTexParameteriv_layer, target, pname, params );
+  RglGetTexParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL TexSto_glTexStorage1D(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+static void REGAL_CALL texsto_glTexStorage1D(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -136,11 +138,11 @@ static void REGAL_CALL TexSto_glTexStorage1D(Layer *_layer, GLenum target, GLsiz
   // impl
   _context->texsto->TextureStorage( _context, target, levels, internalformat, width ); return;
 
-  orig.glTexStorage1D( orig.glTexStorage1D_layer, target, levels, internalformat, width );
+  RglTexStorage1D( orig, target, levels, internalformat, width );
 
 }
 
-static void REGAL_CALL TexSto_glTexStorage1DEXT(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+static void REGAL_CALL texsto_glTexStorage1DEXT(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -149,11 +151,11 @@ static void REGAL_CALL TexSto_glTexStorage1DEXT(Layer *_layer, GLenum target, GL
   // impl
   _context->texsto->TextureStorage( _context, target, levels, internalformat, width ); return;
 
-  orig.glTexStorage1DEXT( orig.glTexStorage1DEXT_layer, target, levels, internalformat, width );
+  RglTexStorage1DEXT( orig, target, levels, internalformat, width );
 
 }
 
-static void REGAL_CALL TexSto_glTexStorage2D(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL texsto_glTexStorage2D(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -162,11 +164,11 @@ static void REGAL_CALL TexSto_glTexStorage2D(Layer *_layer, GLenum target, GLsiz
   // impl
   _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height ); return;
 
-  orig.glTexStorage2D( orig.glTexStorage2D_layer, target, levels, internalformat, width, height );
+  RglTexStorage2D( orig, target, levels, internalformat, width, height );
 
 }
 
-static void REGAL_CALL TexSto_glTexStorage2DEXT(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL texsto_glTexStorage2DEXT(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -175,11 +177,11 @@ static void REGAL_CALL TexSto_glTexStorage2DEXT(Layer *_layer, GLenum target, GL
   // impl
   _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height ); return;
 
-  orig.glTexStorage2DEXT( orig.glTexStorage2DEXT_layer, target, levels, internalformat, width, height );
+  RglTexStorage2DEXT( orig, target, levels, internalformat, width, height );
 
 }
 
-static void REGAL_CALL TexSto_glTexStorage3D(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+static void REGAL_CALL texsto_glTexStorage3D(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -188,11 +190,11 @@ static void REGAL_CALL TexSto_glTexStorage3D(Layer *_layer, GLenum target, GLsiz
   // impl
   _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height, depth ); return;
 
-  orig.glTexStorage3D( orig.glTexStorage3D_layer, target, levels, internalformat, width, height, depth );
+  RglTexStorage3D( orig, target, levels, internalformat, width, height, depth );
 
 }
 
-static void REGAL_CALL TexSto_glTexStorage3DEXT(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+static void REGAL_CALL texsto_glTexStorage3DEXT(Layer *_layer, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
   TexSto * self = static_cast<TexSto *>(_layer);
 
@@ -201,22 +203,22 @@ static void REGAL_CALL TexSto_glTexStorage3DEXT(Layer *_layer, GLenum target, GL
   // impl
   _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height, depth ); return;
 
-  orig.glTexStorage3DEXT( orig.glTexStorage3DEXT_layer, target, levels, internalformat, width, height, depth );
+  RglTexStorage3DEXT( orig, target, levels, internalformat, width, height, depth );
 
 }
 
-void TexStoIntercept( Dispatch::GL & dt ) {
-  dt.glDeleteTextures      = RTexSto_glDeleteTextures;
-  dt.glGetTexParameterIiv  = RTexSto_glGetTexParameterIiv;
-  dt.glGetTexParameterIuiv = RTexSto_glGetTexParameterIuiv;
-  dt.glGetTexParameterfv   = RTexSto_glGetTexParameterfv;
-  dt.glGetTexParameteriv   = RTexSto_glGetTexParameteriv;
-  dt.glTexStorage1D        = RTexSto_glTexStorage1D;
-  dt.glTexStorage1DEXT     = RTexSto_glTexStorage1DEXT;
-  dt.glTexStorage2D        = RTexSto_glTexStorage2D;
-  dt.glTexStorage2DEXT     = RTexSto_glTexStorage2DEXT;
-  dt.glTexStorage3D        = RTexSto_glTexStorage3D;
-  dt.glTexStorage3DEXT     = RTexSto_glTexStorage3DEXT;
+void TexStoIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glDeleteTextures      = MakeRegalProc(texsto_glDeleteTextures, layer);
+  dt.glGetTexParameterIiv  = MakeRegalProc(texsto_glGetTexParameterIiv, layer);
+  dt.glGetTexParameterIuiv = MakeRegalProc(texsto_glGetTexParameterIuiv, layer);
+  dt.glGetTexParameterfv   = MakeRegalProc(texsto_glGetTexParameterfv, layer);
+  dt.glGetTexParameteriv   = MakeRegalProc(texsto_glGetTexParameteriv, layer);
+  dt.glTexStorage1D        = MakeRegalProc(texsto_glTexStorage1D, layer);
+  dt.glTexStorage1DEXT     = MakeRegalProc(texsto_glTexStorage1DEXT, layer);
+  dt.glTexStorage2D        = MakeRegalProc(texsto_glTexStorage2D, layer);
+  dt.glTexStorage2DEXT     = MakeRegalProc(texsto_glTexStorage2DEXT, layer);
+  dt.glTexStorage3D        = MakeRegalProc(texsto_glTexStorage3D, layer);
+  dt.glTexStorage3DEXT     = MakeRegalProc(texsto_glTexStorage3DEXT, layer);
 }
 
 REGAL_NAMESPACE_END

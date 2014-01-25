@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalXfer.h"
-#include "RegalEmuProcsXfer.h"
+#include "Xfer.h"
+#include "XferProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Xfer_glActiveTexture(Layer *_layer, GLenum texture)
+using namespace Emu;
+
+static void REGAL_CALL xfer_glActiveTexture(Layer *_layer, GLenum texture)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL Xfer_glActiveTexture(Layer *_layer, GLenum texture)
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
 
-  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
+  RglActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Xfer_glActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL xfer_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -76,11 +78,11 @@ static void REGAL_CALL Xfer_glActiveTextureARB(Layer *_layer, GLenum texture)
   // prefix
   _context->xfer->ShadowActiveTexture( texture );
 
-  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
+  RglActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Xfer_glCompressedTexImage2D(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL xfer_glCompressedTexImage2D(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -89,11 +91,11 @@ static void REGAL_CALL Xfer_glCompressedTexImage2D(Layer *_layer, GLenum target,
   // impl
   _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data ); return;
 
-  orig.glCompressedTexImage2D( orig.glCompressedTexImage2D_layer, target, level, internalformat, width, height, border, imageSize, data );
+  RglCompressedTexImage2D( orig, target, level, internalformat, width, height, border, imageSize, data );
 
 }
 
-static void REGAL_CALL Xfer_glCompressedTexImage2DARB(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL xfer_glCompressedTexImage2DARB(Layer *_layer, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -102,11 +104,11 @@ static void REGAL_CALL Xfer_glCompressedTexImage2DARB(Layer *_layer, GLenum targ
   // impl
   _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data ); return;
 
-  orig.glCompressedTexImage2DARB( orig.glCompressedTexImage2DARB_layer, target, level, internalformat, width, height, border, imageSize, data );
+  RglCompressedTexImage2DARB( orig, target, level, internalformat, width, height, border, imageSize, data );
 
 }
 
-static void REGAL_CALL Xfer_glCompressedTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL xfer_glCompressedTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -115,11 +117,11 @@ static void REGAL_CALL Xfer_glCompressedTexSubImage2D(Layer *_layer, GLenum targ
   // impl
   _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
 
-  orig.glCompressedTexSubImage2D( orig.glCompressedTexSubImage2D_layer, target, level, xoffset, yoffset, width, height, format, imageSize, data );
+  RglCompressedTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
-static void REGAL_CALL Xfer_glCompressedTexSubImage2DARB(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL xfer_glCompressedTexSubImage2DARB(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -128,11 +130,11 @@ static void REGAL_CALL Xfer_glCompressedTexSubImage2DARB(Layer *_layer, GLenum t
   // impl
   _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
 
-  orig.glCompressedTexSubImage2DARB( orig.glCompressedTexSubImage2DARB_layer, target, level, xoffset, yoffset, width, height, format, imageSize, data );
+  RglCompressedTexSubImage2DARB( orig, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
-static void REGAL_CALL Xfer_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL xfer_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -141,11 +143,11 @@ static void REGAL_CALL Xfer_glPixelStoref(Layer *_layer, GLenum pname, GLfloat p
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
 
-  orig.glPixelStoref( orig.glPixelStoref_layer, pname, param );
+  RglPixelStoref( orig, pname, param );
 
 }
 
-static void REGAL_CALL Xfer_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL xfer_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -154,11 +156,11 @@ static void REGAL_CALL Xfer_glPixelStorei(Layer *_layer, GLenum pname, GLint par
   // prefix
   _context->xfer->PixelStore( _context, pname, param );
 
-  orig.glPixelStorei( orig.glPixelStorei_layer, pname, param );
+  RglPixelStorei( orig, pname, param );
 
 }
 
-static void REGAL_CALL Xfer_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL xfer_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -167,11 +169,11 @@ static void REGAL_CALL Xfer_glTexImage2D(Layer *_layer, GLenum target, GLint lev
   // impl
   _context->xfer->TexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels ); return;
 
-  orig.glTexImage2D( orig.glTexImage2D_layer, target, level, internalformat, width, height, border, format, type, pixels );
+  RglTexImage2D( orig, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Xfer_glTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL xfer_glTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -180,11 +182,11 @@ static void REGAL_CALL Xfer_glTexSubImage2D(Layer *_layer, GLenum target, GLint 
   // impl
   _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
 
-  orig.glTexSubImage2D( orig.glTexSubImage2D_layer, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  RglTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL Xfer_glTexSubImage2DEXT(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL xfer_glTexSubImage2DEXT(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Xfer * self = static_cast<Xfer *>(_layer);
 
@@ -193,22 +195,22 @@ static void REGAL_CALL Xfer_glTexSubImage2DEXT(Layer *_layer, GLenum target, GLi
   // impl
   _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
 
-  orig.glTexSubImage2DEXT( orig.glTexSubImage2DEXT_layer, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  RglTexSubImage2DEXT( orig, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-void XferIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture              = RXfer_glActiveTexture;
-  dt.glActiveTextureARB           = RXfer_glActiveTextureARB;
-  dt.glCompressedTexImage2D       = RXfer_glCompressedTexImage2D;
-  dt.glCompressedTexImage2DARB    = RXfer_glCompressedTexImage2DARB;
-  dt.glCompressedTexSubImage2D    = RXfer_glCompressedTexSubImage2D;
-  dt.glCompressedTexSubImage2DARB = RXfer_glCompressedTexSubImage2DARB;
-  dt.glPixelStoref                = RXfer_glPixelStoref;
-  dt.glPixelStorei                = RXfer_glPixelStorei;
-  dt.glTexImage2D                 = RXfer_glTexImage2D;
-  dt.glTexSubImage2D              = RXfer_glTexSubImage2D;
-  dt.glTexSubImage2DEXT           = RXfer_glTexSubImage2DEXT;
+void XferIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glActiveTexture              = MakeRegalProc(xfer_glActiveTexture, layer);
+  dt.glActiveTextureARB           = MakeRegalProc(xfer_glActiveTextureARB, layer);
+  dt.glCompressedTexImage2D       = MakeRegalProc(xfer_glCompressedTexImage2D, layer);
+  dt.glCompressedTexImage2DARB    = MakeRegalProc(xfer_glCompressedTexImage2DARB, layer);
+  dt.glCompressedTexSubImage2D    = MakeRegalProc(xfer_glCompressedTexSubImage2D, layer);
+  dt.glCompressedTexSubImage2DARB = MakeRegalProc(xfer_glCompressedTexSubImage2DARB, layer);
+  dt.glPixelStoref                = MakeRegalProc(xfer_glPixelStoref, layer);
+  dt.glPixelStorei                = MakeRegalProc(xfer_glPixelStorei, layer);
+  dt.glTexImage2D                 = MakeRegalProc(xfer_glTexImage2D, layer);
+  dt.glTexSubImage2D              = MakeRegalProc(xfer_glTexSubImage2D, layer);
+  dt.glTexSubImage2DEXT           = MakeRegalProc(xfer_glTexSubImage2DEXT, layer);
 }
 
 REGAL_NAMESPACE_END

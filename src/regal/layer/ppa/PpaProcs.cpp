@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalPpa.h"
-#include "RegalEmuProcsPpa.h"
+#include "Ppa.h"
+#include "PpaProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Ppa_glActiveTexture(Layer *_layer, GLenum texture)
+using namespace Emu;
+
+static void REGAL_CALL ppa_glActiveTexture(Layer *_layer, GLenum texture)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL Ppa_glActiveTexture(Layer *_layer, GLenum texture)
   // prefix
   _context->ppa->glActiveTexture( texture );
 
-  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
+  RglActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Ppa_glActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL ppa_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -76,11 +78,11 @@ static void REGAL_CALL Ppa_glActiveTextureARB(Layer *_layer, GLenum texture)
   // prefix
   _context->ppa->glActiveTexture( texture );
 
-  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
+  RglActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Ppa_glAlphaFunc(Layer *_layer, GLenum func, GLclampf ref)
+static void REGAL_CALL ppa_glAlphaFunc(Layer *_layer, GLenum func, GLclampf ref)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -89,11 +91,11 @@ static void REGAL_CALL Ppa_glAlphaFunc(Layer *_layer, GLenum func, GLclampf ref)
   // prefix
   _context->ppa->glAlphaFunc( func, ref );
 
-  orig.glAlphaFunc( orig.glAlphaFunc_layer, func, ref );
+  RglAlphaFunc( orig, func, ref );
 
 }
 
-static void REGAL_CALL Ppa_glBlendColor(Layer *_layer, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
+static void REGAL_CALL ppa_glBlendColor(Layer *_layer, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -102,11 +104,11 @@ static void REGAL_CALL Ppa_glBlendColor(Layer *_layer, GLclampf red, GLclampf gr
   // prefix
   _context->ppa->glBlendColor( red, green, blue, alpha );
 
-  orig.glBlendColor( orig.glBlendColor_layer, red, green, blue, alpha );
+  RglBlendColor( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Ppa_glBlendEquation(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glBlendEquation(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -115,11 +117,11 @@ static void REGAL_CALL Ppa_glBlendEquation(Layer *_layer, GLenum mode)
   // prefix
   _context->ppa->glBlendEquation( mode );
 
-  orig.glBlendEquation( orig.glBlendEquation_layer, mode );
+  RglBlendEquation( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glBlendEquationSeparate(Layer *_layer, GLenum modeRGB, GLenum modeAlpha)
+static void REGAL_CALL ppa_glBlendEquationSeparate(Layer *_layer, GLenum modeRGB, GLenum modeAlpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -128,11 +130,11 @@ static void REGAL_CALL Ppa_glBlendEquationSeparate(Layer *_layer, GLenum modeRGB
   // prefix
   _context->ppa->glBlendEquationSeparate( modeRGB, modeAlpha );
 
-  orig.glBlendEquationSeparate( orig.glBlendEquationSeparate_layer, modeRGB, modeAlpha );
+  RglBlendEquationSeparate( orig, modeRGB, modeAlpha );
 
 }
 
-static void REGAL_CALL Ppa_glBlendEquationSeparatei(Layer *_layer, GLuint buf, GLenum modeRGB, GLenum modeAlpha)
+static void REGAL_CALL ppa_glBlendEquationSeparatei(Layer *_layer, GLuint buf, GLenum modeRGB, GLenum modeAlpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -141,11 +143,11 @@ static void REGAL_CALL Ppa_glBlendEquationSeparatei(Layer *_layer, GLuint buf, G
   // prefix
   _context->ppa->glBlendEquationSeparatei( buf, modeRGB, modeAlpha );
 
-  orig.glBlendEquationSeparatei( orig.glBlendEquationSeparatei_layer, buf, modeRGB, modeAlpha );
+  RglBlendEquationSeparatei( orig, buf, modeRGB, modeAlpha );
 
 }
 
-static void REGAL_CALL Ppa_glBlendEquationi(Layer *_layer, GLuint buf, GLenum mode)
+static void REGAL_CALL ppa_glBlendEquationi(Layer *_layer, GLuint buf, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -154,11 +156,11 @@ static void REGAL_CALL Ppa_glBlendEquationi(Layer *_layer, GLuint buf, GLenum mo
   // prefix
   _context->ppa->glBlendEquationi( buf, mode );
 
-  orig.glBlendEquationi( orig.glBlendEquationi_layer, buf, mode );
+  RglBlendEquationi( orig, buf, mode );
 
 }
 
-static void REGAL_CALL Ppa_glBlendFunc(Layer *_layer, GLenum sfactor, GLenum dfactor)
+static void REGAL_CALL ppa_glBlendFunc(Layer *_layer, GLenum sfactor, GLenum dfactor)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -167,11 +169,11 @@ static void REGAL_CALL Ppa_glBlendFunc(Layer *_layer, GLenum sfactor, GLenum dfa
   // prefix
   _context->ppa->glBlendFunc( sfactor, dfactor );
 
-  orig.glBlendFunc( orig.glBlendFunc_layer, sfactor, dfactor );
+  RglBlendFunc( orig, sfactor, dfactor );
 
 }
 
-static void REGAL_CALL Ppa_glBlendFuncSeparate(Layer *_layer, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
+static void REGAL_CALL ppa_glBlendFuncSeparate(Layer *_layer, GLenum sfactorRGB, GLenum dfactorRGB, GLenum sfactorAlpha, GLenum dfactorAlpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -180,11 +182,11 @@ static void REGAL_CALL Ppa_glBlendFuncSeparate(Layer *_layer, GLenum sfactorRGB,
   // prefix
   _context->ppa->glBlendFuncSeparate( sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
 
-  orig.glBlendFuncSeparate( orig.glBlendFuncSeparate_layer, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
+  RglBlendFuncSeparate( orig, sfactorRGB, dfactorRGB, sfactorAlpha, dfactorAlpha );
 
 }
 
-static void REGAL_CALL Ppa_glBlendFuncSeparatei(Layer *_layer, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
+static void REGAL_CALL ppa_glBlendFuncSeparatei(Layer *_layer, GLuint buf, GLenum srcRGB, GLenum dstRGB, GLenum srcAlpha, GLenum dstAlpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -193,11 +195,11 @@ static void REGAL_CALL Ppa_glBlendFuncSeparatei(Layer *_layer, GLuint buf, GLenu
   // prefix
   _context->ppa->glBlendFuncSeparatei( buf, srcRGB, dstRGB, srcAlpha, dstAlpha );
 
-  orig.glBlendFuncSeparatei( orig.glBlendFuncSeparatei_layer, buf, srcRGB, dstRGB, srcAlpha, dstAlpha );
+  RglBlendFuncSeparatei( orig, buf, srcRGB, dstRGB, srcAlpha, dstAlpha );
 
 }
 
-static void REGAL_CALL Ppa_glBlendFunci(Layer *_layer, GLuint buf, GLenum src, GLenum dst)
+static void REGAL_CALL ppa_glBlendFunci(Layer *_layer, GLuint buf, GLenum src, GLenum dst)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -206,11 +208,11 @@ static void REGAL_CALL Ppa_glBlendFunci(Layer *_layer, GLuint buf, GLenum src, G
   // prefix
   _context->ppa->glBlendFunci( buf, src, dst );
 
-  orig.glBlendFunci( orig.glBlendFunci_layer, buf, src, dst );
+  RglBlendFunci( orig, buf, src, dst );
 
 }
 
-static void REGAL_CALL Ppa_glClampColor(Layer *_layer, GLenum target, GLenum clamp)
+static void REGAL_CALL ppa_glClampColor(Layer *_layer, GLenum target, GLenum clamp)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -219,11 +221,11 @@ static void REGAL_CALL Ppa_glClampColor(Layer *_layer, GLenum target, GLenum cla
   // prefix
   _context->ppa->glClampColor( target, clamp );
 
-  orig.glClampColor( orig.glClampColor_layer, target, clamp );
+  RglClampColor( orig, target, clamp );
 
 }
 
-static void REGAL_CALL Ppa_glClearAccum(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+static void REGAL_CALL ppa_glClearAccum(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -232,11 +234,11 @@ static void REGAL_CALL Ppa_glClearAccum(Layer *_layer, GLfloat red, GLfloat gree
   // prefix
   _context->ppa->glClearAccum( red, green, blue, alpha );
 
-  orig.glClearAccum( orig.glClearAccum_layer, red, green, blue, alpha );
+  RglClearAccum( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Ppa_glClearColor(Layer *_layer, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
+static void REGAL_CALL ppa_glClearColor(Layer *_layer, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -245,11 +247,11 @@ static void REGAL_CALL Ppa_glClearColor(Layer *_layer, GLclampf red, GLclampf gr
   // prefix
   _context->ppa->glClearColor( red, green, blue, alpha );
 
-  orig.glClearColor( orig.glClearColor_layer, red, green, blue, alpha );
+  RglClearColor( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Ppa_glClearDepth(Layer *_layer, GLclampd depth)
+static void REGAL_CALL ppa_glClearDepth(Layer *_layer, GLclampd depth)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -258,11 +260,11 @@ static void REGAL_CALL Ppa_glClearDepth(Layer *_layer, GLclampd depth)
   // prefix
   _context->ppa->glClearDepth( depth );
 
-  orig.glClearDepth( orig.glClearDepth_layer, depth );
+  RglClearDepth( orig, depth );
 
 }
 
-static void REGAL_CALL Ppa_glClearDepthf(Layer *_layer, GLclampf d)
+static void REGAL_CALL ppa_glClearDepthf(Layer *_layer, GLclampf d)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -271,11 +273,11 @@ static void REGAL_CALL Ppa_glClearDepthf(Layer *_layer, GLclampf d)
   // prefix
   _context->ppa->glClearDepth( d );
 
-  orig.glClearDepthf( orig.glClearDepthf_layer, d );
+  RglClearDepthf( orig, d );
 
 }
 
-static void REGAL_CALL Ppa_glClearIndex(Layer *_layer, GLfloat c)
+static void REGAL_CALL ppa_glClearIndex(Layer *_layer, GLfloat c)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -284,11 +286,11 @@ static void REGAL_CALL Ppa_glClearIndex(Layer *_layer, GLfloat c)
   // prefix
   _context->ppa->glClearIndex( c );
 
-  orig.glClearIndex( orig.glClearIndex_layer, c );
+  RglClearIndex( orig, c );
 
 }
 
-static void REGAL_CALL Ppa_glClearStencil(Layer *_layer, GLint s)
+static void REGAL_CALL ppa_glClearStencil(Layer *_layer, GLint s)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -297,11 +299,11 @@ static void REGAL_CALL Ppa_glClearStencil(Layer *_layer, GLint s)
   // prefix
   _context->ppa->glClearStencil( s );
 
-  orig.glClearStencil( orig.glClearStencil_layer, s );
+  RglClearStencil( orig, s );
 
 }
 
-static void REGAL_CALL Ppa_glClipPlane(Layer *_layer, GLenum plane, const GLdouble *equation)
+static void REGAL_CALL ppa_glClipPlane(Layer *_layer, GLenum plane, const GLdouble *equation)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -310,11 +312,11 @@ static void REGAL_CALL Ppa_glClipPlane(Layer *_layer, GLenum plane, const GLdoub
   // prefix
   _context->ppa->glClipPlane( plane, equation );
 
-  orig.glClipPlane( orig.glClipPlane_layer, plane, equation );
+  RglClipPlane( orig, plane, equation );
 
 }
 
-static void REGAL_CALL Ppa_glColorMask(Layer *_layer, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
+static void REGAL_CALL ppa_glColorMask(Layer *_layer, GLboolean red, GLboolean green, GLboolean blue, GLboolean alpha)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -323,11 +325,11 @@ static void REGAL_CALL Ppa_glColorMask(Layer *_layer, GLboolean red, GLboolean g
   // prefix
   _context->ppa->glColorMask( red, green, blue, alpha );
 
-  orig.glColorMask( orig.glColorMask_layer, red, green, blue, alpha );
+  RglColorMask( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Ppa_glColorMaski(Layer *_layer, GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
+static void REGAL_CALL ppa_glColorMaski(Layer *_layer, GLuint index, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -336,11 +338,11 @@ static void REGAL_CALL Ppa_glColorMaski(Layer *_layer, GLuint index, GLboolean r
   // prefix
   _context->ppa->glColorMaski( index, r, g, b, a );
 
-  orig.glColorMaski( orig.glColorMaski_layer, index, r, g, b, a );
+  RglColorMaski( orig, index, r, g, b, a );
 
 }
 
-static void REGAL_CALL Ppa_glColorMaterial(Layer *_layer, GLenum face, GLenum mode)
+static void REGAL_CALL ppa_glColorMaterial(Layer *_layer, GLenum face, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -349,11 +351,11 @@ static void REGAL_CALL Ppa_glColorMaterial(Layer *_layer, GLenum face, GLenum mo
   // prefix
   _context->ppa->glColorMaterial( face, mode );
 
-  orig.glColorMaterial( orig.glColorMaterial_layer, face, mode );
+  RglColorMaterial( orig, face, mode );
 
 }
 
-static void REGAL_CALL Ppa_glColorTableParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glColorTableParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -362,11 +364,11 @@ static void REGAL_CALL Ppa_glColorTableParameterfv(Layer *_layer, GLenum target,
   // prefix
   _context->ppa->glColorTableParameterv( target, pname, params );
 
-  orig.glColorTableParameterfv( orig.glColorTableParameterfv_layer, target, pname, params );
+  RglColorTableParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glColorTableParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glColorTableParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -375,11 +377,11 @@ static void REGAL_CALL Ppa_glColorTableParameteriv(Layer *_layer, GLenum target,
   // prefix
   _context->ppa->glColorTableParameterv( target, pname, params );
 
-  orig.glColorTableParameteriv( orig.glColorTableParameteriv_layer, target, pname, params );
+  RglColorTableParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glConvolutionParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat params)
+static void REGAL_CALL ppa_glConvolutionParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -388,11 +390,11 @@ static void REGAL_CALL Ppa_glConvolutionParameterf(Layer *_layer, GLenum target,
   // prefix
   _context->ppa->glConvolutionParameter( target, pname, params );
 
-  orig.glConvolutionParameterf( orig.glConvolutionParameterf_layer, target, pname, params );
+  RglConvolutionParameterf( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glConvolutionParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glConvolutionParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -401,11 +403,11 @@ static void REGAL_CALL Ppa_glConvolutionParameterfv(Layer *_layer, GLenum target
   // prefix
   _context->ppa->glConvolutionParameterv( target, pname, params );
 
-  orig.glConvolutionParameterfv( orig.glConvolutionParameterfv_layer, target, pname, params );
+  RglConvolutionParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glConvolutionParameteri(Layer *_layer, GLenum target, GLenum pname, GLint params)
+static void REGAL_CALL ppa_glConvolutionParameteri(Layer *_layer, GLenum target, GLenum pname, GLint params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -414,11 +416,11 @@ static void REGAL_CALL Ppa_glConvolutionParameteri(Layer *_layer, GLenum target,
   // prefix
   _context->ppa->glConvolutionParameter( target, pname, params );
 
-  orig.glConvolutionParameteri( orig.glConvolutionParameteri_layer, target, pname, params );
+  RglConvolutionParameteri( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glConvolutionParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glConvolutionParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -427,11 +429,11 @@ static void REGAL_CALL Ppa_glConvolutionParameteriv(Layer *_layer, GLenum target
   // prefix
   _context->ppa->glConvolutionParameterv( target, pname, params );
 
-  orig.glConvolutionParameteriv( orig.glConvolutionParameteriv_layer, target, pname, params );
+  RglConvolutionParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glCullFace(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glCullFace(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -440,11 +442,11 @@ static void REGAL_CALL Ppa_glCullFace(Layer *_layer, GLenum mode)
   // prefix
   _context->ppa->glCullFace( mode );
 
-  orig.glCullFace( orig.glCullFace_layer, mode );
+  RglCullFace( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glDepthFunc(Layer *_layer, GLenum func)
+static void REGAL_CALL ppa_glDepthFunc(Layer *_layer, GLenum func)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -453,11 +455,11 @@ static void REGAL_CALL Ppa_glDepthFunc(Layer *_layer, GLenum func)
   // prefix
   _context->ppa->glDepthFunc( func );
 
-  orig.glDepthFunc( orig.glDepthFunc_layer, func );
+  RglDepthFunc( orig, func );
 
 }
 
-static void REGAL_CALL Ppa_glDepthMask(Layer *_layer, GLboolean flag)
+static void REGAL_CALL ppa_glDepthMask(Layer *_layer, GLboolean flag)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -466,11 +468,11 @@ static void REGAL_CALL Ppa_glDepthMask(Layer *_layer, GLboolean flag)
   // prefix
   _context->ppa->glDepthMask( flag );
 
-  orig.glDepthMask( orig.glDepthMask_layer, flag );
+  RglDepthMask( orig, flag );
 
 }
 
-static void REGAL_CALL Ppa_glDepthRange(Layer *_layer, GLclampd zNear, GLclampd zFar)
+static void REGAL_CALL ppa_glDepthRange(Layer *_layer, GLclampd zNear, GLclampd zFar)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -479,11 +481,11 @@ static void REGAL_CALL Ppa_glDepthRange(Layer *_layer, GLclampd zNear, GLclampd 
   // prefix
   _context->ppa->glDepthRange( zNear, zFar );
 
-  orig.glDepthRange( orig.glDepthRange_layer, zNear, zFar );
+  RglDepthRange( orig, zNear, zFar );
 
 }
 
-static void REGAL_CALL Ppa_glDepthRangeArrayv(Layer *_layer, GLuint first, GLsizei count, const GLclampd *v)
+static void REGAL_CALL ppa_glDepthRangeArrayv(Layer *_layer, GLuint first, GLsizei count, const GLclampd *v)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -492,11 +494,11 @@ static void REGAL_CALL Ppa_glDepthRangeArrayv(Layer *_layer, GLuint first, GLsiz
   // prefix
   _context->ppa->glDepthRangeArrayv( first, count, v );
 
-  orig.glDepthRangeArrayv( orig.glDepthRangeArrayv_layer, first, count, v );
+  RglDepthRangeArrayv( orig, first, count, v );
 
 }
 
-static void REGAL_CALL Ppa_glDepthRangeIndexed(Layer *_layer, GLuint index, GLclampd n, GLclampd f)
+static void REGAL_CALL ppa_glDepthRangeIndexed(Layer *_layer, GLuint index, GLclampd n, GLclampd f)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -505,11 +507,11 @@ static void REGAL_CALL Ppa_glDepthRangeIndexed(Layer *_layer, GLuint index, GLcl
   // prefix
   _context->ppa->glDepthRangeIndexed( index, n, f );
 
-  orig.glDepthRangeIndexed( orig.glDepthRangeIndexed_layer, index, n, f );
+  RglDepthRangeIndexed( orig, index, n, f );
 
 }
 
-static void REGAL_CALL Ppa_glDepthRangef(Layer *_layer, GLclampf n, GLclampf f)
+static void REGAL_CALL ppa_glDepthRangef(Layer *_layer, GLclampf n, GLclampf f)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -518,11 +520,11 @@ static void REGAL_CALL Ppa_glDepthRangef(Layer *_layer, GLclampf n, GLclampf f)
   // prefix
   _context->ppa->glDepthRange( n, f );
 
-  orig.glDepthRangef( orig.glDepthRangef_layer, n, f );
+  RglDepthRangef( orig, n, f );
 
 }
 
-static void REGAL_CALL Ppa_glDisable(Layer *_layer, GLenum cap)
+static void REGAL_CALL ppa_glDisable(Layer *_layer, GLenum cap)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -533,11 +535,11 @@ static void REGAL_CALL Ppa_glDisable(Layer *_layer, GLenum cap)
     return;
   }
 
-  orig.glDisable( orig.glDisable_layer, cap );
+  RglDisable( orig, cap );
 
 }
 
-static void REGAL_CALL Ppa_glDisablei(Layer *_layer, GLenum cap, GLuint index)
+static void REGAL_CALL ppa_glDisablei(Layer *_layer, GLenum cap, GLuint index)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -548,11 +550,11 @@ static void REGAL_CALL Ppa_glDisablei(Layer *_layer, GLenum cap, GLuint index)
     return;
   }
 
-  orig.glDisablei( orig.glDisablei_layer, cap, index );
+  RglDisablei( orig, cap, index );
 
 }
 
-static void REGAL_CALL Ppa_glDrawBuffer(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glDrawBuffer(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -561,11 +563,11 @@ static void REGAL_CALL Ppa_glDrawBuffer(Layer *_layer, GLenum mode)
   // prefix
     _context->ppa->glDrawBuffer( mode );
 
-  orig.glDrawBuffer( orig.glDrawBuffer_layer, mode );
+  RglDrawBuffer( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL ppa_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -574,11 +576,11 @@ static void REGAL_CALL Ppa_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum 
   // prefix
     _context->ppa->glDrawBuffers( n, bufs );
 
-  orig.glDrawBuffers( orig.glDrawBuffers_layer, n, bufs );
+  RglDrawBuffers( orig, n, bufs );
 
 }
 
-static void REGAL_CALL Ppa_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL ppa_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -587,11 +589,11 @@ static void REGAL_CALL Ppa_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLen
   // prefix
     _context->ppa->glDrawBuffers( n, bufs );
 
-  orig.glDrawBuffersARB( orig.glDrawBuffersARB_layer, n, bufs );
+  RglDrawBuffersARB( orig, n, bufs );
 
 }
 
-static void REGAL_CALL Ppa_glDrawBuffersNV(Layer *_layer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL ppa_glDrawBuffersNV(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -600,11 +602,11 @@ static void REGAL_CALL Ppa_glDrawBuffersNV(Layer *_layer, GLsizei n, const GLenu
   // prefix
     _context->ppa->glDrawBuffers( n, bufs );
 
-  orig.glDrawBuffersNV( orig.glDrawBuffersNV_layer, n, bufs );
+  RglDrawBuffersNV( orig, n, bufs );
 
 }
 
-static void REGAL_CALL Ppa_glEnable(Layer *_layer, GLenum cap)
+static void REGAL_CALL ppa_glEnable(Layer *_layer, GLenum cap)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -615,11 +617,11 @@ static void REGAL_CALL Ppa_glEnable(Layer *_layer, GLenum cap)
     return;
   }
 
-  orig.glEnable( orig.glEnable_layer, cap );
+  RglEnable( orig, cap );
 
 }
 
-static void REGAL_CALL Ppa_glEnablei(Layer *_layer, GLenum cap, GLuint index)
+static void REGAL_CALL ppa_glEnablei(Layer *_layer, GLenum cap, GLuint index)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -630,11 +632,11 @@ static void REGAL_CALL Ppa_glEnablei(Layer *_layer, GLenum cap, GLuint index)
     return;
   }
 
-  orig.glEnablei( orig.glEnablei_layer, cap, index );
+  RglEnablei( orig, cap, index );
 
 }
 
-static void REGAL_CALL Ppa_glFrontFace(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glFrontFace(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -643,11 +645,11 @@ static void REGAL_CALL Ppa_glFrontFace(Layer *_layer, GLenum mode)
   // prefix
   _context->ppa->glFrontFace( mode );
 
-  orig.glFrontFace( orig.glFrontFace_layer, mode );
+  RglFrontFace( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glGetBooleani_v(Layer *_layer, GLenum target, GLuint index, GLboolean *data)
+static void REGAL_CALL ppa_glGetBooleani_v(Layer *_layer, GLenum target, GLuint index, GLboolean *data)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -658,11 +660,11 @@ static void REGAL_CALL Ppa_glGetBooleani_v(Layer *_layer, GLenum target, GLuint 
     return;
   }
 
-  orig.glGetBooleani_v( orig.glGetBooleani_v_layer, target, index, data );
+  RglGetBooleani_v( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Ppa_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
+static void REGAL_CALL ppa_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -673,11 +675,11 @@ static void REGAL_CALL Ppa_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean 
     return;
   }
 
-  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
+  RglGetBooleanv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetColorTableParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetColorTableParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -688,11 +690,11 @@ static void REGAL_CALL Ppa_glGetColorTableParameterfv(Layer *_layer, GLenum targ
     return;
   }
 
-  orig.glGetColorTableParameterfv( orig.glGetColorTableParameterfv_layer, target, pname, params );
+  RglGetColorTableParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetColorTableParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetColorTableParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -703,11 +705,11 @@ static void REGAL_CALL Ppa_glGetColorTableParameteriv(Layer *_layer, GLenum targ
     return;
   }
 
-  orig.glGetColorTableParameteriv( orig.glGetColorTableParameteriv_layer, target, pname, params );
+  RglGetColorTableParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetConvolutionParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetConvolutionParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -718,11 +720,11 @@ static void REGAL_CALL Ppa_glGetConvolutionParameterfv(Layer *_layer, GLenum tar
     return;
   }
 
-  orig.glGetConvolutionParameterfv( orig.glGetConvolutionParameterfv_layer, target, pname, params );
+  RglGetConvolutionParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetConvolutionParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetConvolutionParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -733,11 +735,11 @@ static void REGAL_CALL Ppa_glGetConvolutionParameteriv(Layer *_layer, GLenum tar
     return;
   }
 
-  orig.glGetConvolutionParameteriv( orig.glGetConvolutionParameteriv_layer, target, pname, params );
+  RglGetConvolutionParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetDoublei_v(Layer *_layer, GLenum target, GLuint index, GLdouble *v)
+static void REGAL_CALL ppa_glGetDoublei_v(Layer *_layer, GLenum target, GLuint index, GLdouble *v)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -748,11 +750,11 @@ static void REGAL_CALL Ppa_glGetDoublei_v(Layer *_layer, GLenum target, GLuint i
     return;
   }
 
-  orig.glGetDoublei_v( orig.glGetDoublei_v_layer, target, index, v );
+  RglGetDoublei_v( orig, target, index, v );
 
 }
 
-static void REGAL_CALL Ppa_glGetDoublei_vEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
+static void REGAL_CALL ppa_glGetDoublei_vEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -763,11 +765,11 @@ static void REGAL_CALL Ppa_glGetDoublei_vEXT(Layer *_layer, GLenum target, GLuin
     return;
   }
 
-  orig.glGetDoublei_vEXT( orig.glGetDoublei_vEXT_layer, target, index, data );
+  RglGetDoublei_vEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Ppa_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL ppa_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -778,11 +780,11 @@ static void REGAL_CALL Ppa_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *p
     return;
   }
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetFloati_v(Layer *_layer, GLenum target, GLuint index, GLfloat *v)
+static void REGAL_CALL ppa_glGetFloati_v(Layer *_layer, GLenum target, GLuint index, GLfloat *v)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -793,11 +795,11 @@ static void REGAL_CALL Ppa_glGetFloati_v(Layer *_layer, GLenum target, GLuint in
     return;
   }
 
-  orig.glGetFloati_v( orig.glGetFloati_v_layer, target, index, v );
+  RglGetFloati_v( orig, target, index, v );
 
 }
 
-static void REGAL_CALL Ppa_glGetFloati_vEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
+static void REGAL_CALL ppa_glGetFloati_vEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -808,11 +810,11 @@ static void REGAL_CALL Ppa_glGetFloati_vEXT(Layer *_layer, GLenum target, GLuint
     return;
   }
 
-  orig.glGetFloati_vEXT( orig.glGetFloati_vEXT_layer, target, index, data );
+  RglGetFloati_vEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Ppa_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -823,11 +825,11 @@ static void REGAL_CALL Ppa_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *par
     return;
   }
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetIntegeri_v(Layer *_layer, GLenum target, GLuint index, GLint *data)
+static void REGAL_CALL ppa_glGetIntegeri_v(Layer *_layer, GLenum target, GLuint index, GLint *data)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -838,11 +840,11 @@ static void REGAL_CALL Ppa_glGetIntegeri_v(Layer *_layer, GLenum target, GLuint 
     return;
   }
 
-  orig.glGetIntegeri_v( orig.glGetIntegeri_v_layer, target, index, data );
+  RglGetIntegeri_v( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Ppa_glGetIntegeri_vEXT(Layer *_layer, GLenum target, GLuint index, GLint *data)
+static void REGAL_CALL ppa_glGetIntegeri_vEXT(Layer *_layer, GLenum target, GLuint index, GLint *data)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -853,11 +855,11 @@ static void REGAL_CALL Ppa_glGetIntegeri_vEXT(Layer *_layer, GLenum target, GLui
     return;
   }
 
-  orig.glGetIntegeri_vEXT( orig.glGetIntegeri_vEXT_layer, target, index, data );
+  RglGetIntegeri_vEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Ppa_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -868,11 +870,11 @@ static void REGAL_CALL Ppa_glGetIntegerv(Layer *_layer, GLenum pname, GLint *par
     return;
   }
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetLightfv(Layer *_layer, GLenum light, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetLightfv(Layer *_layer, GLenum light, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -883,11 +885,11 @@ static void REGAL_CALL Ppa_glGetLightfv(Layer *_layer, GLenum light, GLenum pnam
     return;
   }
 
-  orig.glGetLightfv( orig.glGetLightfv_layer, light, pname, params );
+  RglGetLightfv( orig, light, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetLightiv(Layer *_layer, GLenum light, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetLightiv(Layer *_layer, GLenum light, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -898,11 +900,11 @@ static void REGAL_CALL Ppa_glGetLightiv(Layer *_layer, GLenum light, GLenum pnam
     return;
   }
 
-  orig.glGetLightiv( orig.glGetLightiv_layer, light, pname, params );
+  RglGetLightiv( orig, light, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetLightxv(Layer *_layer, GLenum light, GLenum pname, GLfixed *params)
+static void REGAL_CALL ppa_glGetLightxv(Layer *_layer, GLenum light, GLenum pname, GLfixed *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -913,11 +915,11 @@ static void REGAL_CALL Ppa_glGetLightxv(Layer *_layer, GLenum light, GLenum pnam
     return;
   }
 
-  orig.glGetLightxv( orig.glGetLightxv_layer, light, pname, params );
+  RglGetLightxv( orig, light, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetMaterialfv(Layer *_layer, GLenum face, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetMaterialfv(Layer *_layer, GLenum face, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -928,11 +930,11 @@ static void REGAL_CALL Ppa_glGetMaterialfv(Layer *_layer, GLenum face, GLenum pn
     return;
   }
 
-  orig.glGetMaterialfv( orig.glGetMaterialfv_layer, face, pname, params );
+  RglGetMaterialfv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetMaterialiv(Layer *_layer, GLenum face, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetMaterialiv(Layer *_layer, GLenum face, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -943,11 +945,11 @@ static void REGAL_CALL Ppa_glGetMaterialiv(Layer *_layer, GLenum face, GLenum pn
     return;
   }
 
-  orig.glGetMaterialiv( orig.glGetMaterialiv_layer, face, pname, params );
+  RglGetMaterialiv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetMaterialxv(Layer *_layer, GLenum face, GLenum pname, GLfixed *params)
+static void REGAL_CALL ppa_glGetMaterialxv(Layer *_layer, GLenum face, GLenum pname, GLfixed *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -958,11 +960,11 @@ static void REGAL_CALL Ppa_glGetMaterialxv(Layer *_layer, GLenum face, GLenum pn
     return;
   }
 
-  orig.glGetMaterialxv( orig.glGetMaterialxv_layer, face, pname, params );
+  RglGetMaterialxv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -973,11 +975,11 @@ static void REGAL_CALL Ppa_glGetMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, 
     return;
   }
 
-  orig.glGetMultiTexEnvfvEXT( orig.glGetMultiTexEnvfvEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexEnvfvEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -988,11 +990,11 @@ static void REGAL_CALL Ppa_glGetMultiTexEnvivEXT(Layer *_layer, GLenum texunit, 
     return;
   }
 
-  orig.glGetMultiTexEnvivEXT( orig.glGetMultiTexEnvivEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexEnvivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetPolygonStipple(Layer *_layer, GLubyte *mask)
+static void REGAL_CALL ppa_glGetPolygonStipple(Layer *_layer, GLubyte *mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1003,11 +1005,11 @@ static void REGAL_CALL Ppa_glGetPolygonStipple(Layer *_layer, GLubyte *mask)
     return;
   }
 
-  orig.glGetPolygonStipple( orig.glGetPolygonStipple_layer, mask );
+  RglGetPolygonStipple( orig, mask );
 
 }
 
-static void REGAL_CALL Ppa_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1018,11 +1020,11 @@ static void REGAL_CALL Ppa_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pn
     return;
   }
 
-  orig.glGetTexEnvfv( orig.glGetTexEnvfv_layer, target, pname, params );
+  RglGetTexEnvfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1033,11 +1035,11 @@ static void REGAL_CALL Ppa_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pn
     return;
   }
 
-  orig.glGetTexEnviv( orig.glGetTexEnviv_layer, target, pname, params );
+  RglGetTexEnviv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTexLevelParameterfv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetTexLevelParameterfv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1048,11 +1050,11 @@ static void REGAL_CALL Ppa_glGetTexLevelParameterfv(Layer *_layer, GLenum target
     return;
   }
 
-  orig.glGetTexLevelParameterfv( orig.glGetTexLevelParameterfv_layer, target, level, pname, params );
+  RglGetTexLevelParameterfv( orig, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTexLevelParameteriv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetTexLevelParameteriv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1063,11 +1065,11 @@ static void REGAL_CALL Ppa_glGetTexLevelParameteriv(Layer *_layer, GLenum target
     return;
   }
 
-  orig.glGetTexLevelParameteriv( orig.glGetTexLevelParameteriv_layer, target, level, pname, params );
+  RglGetTexLevelParameteriv( orig, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1078,11 +1080,11 @@ static void REGAL_CALL Ppa_glGetTexParameterfv(Layer *_layer, GLenum target, GLe
     return;
   }
 
-  orig.glGetTexParameterfv( orig.glGetTexParameterfv_layer, target, pname, params );
+  RglGetTexParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1093,11 +1095,11 @@ static void REGAL_CALL Ppa_glGetTexParameteriv(Layer *_layer, GLenum target, GLe
     return;
   }
 
-  orig.glGetTexParameteriv( orig.glGetTexParameteriv_layer, target, pname, params );
+  RglGetTexParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTextureLevelParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetTextureLevelParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1108,11 +1110,11 @@ static void REGAL_CALL Ppa_glGetTextureLevelParameterfvEXT(Layer *_layer, GLuint
     return;
   }
 
-  orig.glGetTextureLevelParameterfvEXT( orig.glGetTextureLevelParameterfvEXT_layer, texture, target, level, pname, params );
+  RglGetTextureLevelParameterfvEXT( orig, texture, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTextureLevelParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetTextureLevelParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1123,11 +1125,11 @@ static void REGAL_CALL Ppa_glGetTextureLevelParameterivEXT(Layer *_layer, GLuint
     return;
   }
 
-  orig.glGetTextureLevelParameterivEXT( orig.glGetTextureLevelParameterivEXT_layer, texture, target, level, pname, params );
+  RglGetTextureLevelParameterivEXT( orig, texture, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL ppa_glGetTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1138,11 +1140,11 @@ static void REGAL_CALL Ppa_glGetTextureParameterfvEXT(Layer *_layer, GLuint text
     return;
   }
 
-  orig.glGetTextureParameterfvEXT( orig.glGetTextureParameterfvEXT_layer, texture, target, pname, params );
+  RglGetTextureParameterfvEXT( orig, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glGetTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL ppa_glGetTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1153,11 +1155,11 @@ static void REGAL_CALL Ppa_glGetTextureParameterivEXT(Layer *_layer, GLuint text
     return;
   }
 
-  orig.glGetTextureParameterivEXT( orig.glGetTextureParameterivEXT_layer, texture, target, pname, params );
+  RglGetTextureParameterivEXT( orig, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glHint(Layer *_layer, GLenum target, GLenum mode)
+static void REGAL_CALL ppa_glHint(Layer *_layer, GLenum target, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1166,11 +1168,11 @@ static void REGAL_CALL Ppa_glHint(Layer *_layer, GLenum target, GLenum mode)
   // prefix
   _context->ppa->glHint( target, mode );
 
-  orig.glHint( orig.glHint_layer, target, mode );
+  RglHint( orig, target, mode );
 
 }
 
-static void REGAL_CALL Ppa_glIndexMask(Layer *_layer, GLuint mask)
+static void REGAL_CALL ppa_glIndexMask(Layer *_layer, GLuint mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1179,11 +1181,11 @@ static void REGAL_CALL Ppa_glIndexMask(Layer *_layer, GLuint mask)
   // prefix
   _context->ppa->glIndexMask( mask );
 
-  orig.glIndexMask( orig.glIndexMask_layer, mask );
+  RglIndexMask( orig, mask );
 
 }
 
-static GLboolean REGAL_CALL Ppa_glIsEnabled(Layer *_layer, GLenum cap)
+static GLboolean REGAL_CALL ppa_glIsEnabled(Layer *_layer, GLenum cap)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1195,11 +1197,11 @@ static GLboolean REGAL_CALL Ppa_glIsEnabled(Layer *_layer, GLenum cap)
     return enabled;
   }
 
-  return orig.glIsEnabled( orig.glIsEnabled_layer, cap );
+  return RglIsEnabled( orig, cap );
 
 }
 
-static GLboolean REGAL_CALL Ppa_glIsEnabledi(Layer *_layer, GLenum target, GLuint index)
+static GLboolean REGAL_CALL ppa_glIsEnabledi(Layer *_layer, GLenum target, GLuint index)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1211,11 +1213,11 @@ static GLboolean REGAL_CALL Ppa_glIsEnabledi(Layer *_layer, GLenum target, GLuin
     return enabled;
   }
 
-  return orig.glIsEnabledi( orig.glIsEnabledi_layer, target, index );
+  return RglIsEnabledi( orig, target, index );
 
 }
 
-static void REGAL_CALL Ppa_glLightModelf(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL ppa_glLightModelf(Layer *_layer, GLenum pname, GLfloat param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1224,11 +1226,11 @@ static void REGAL_CALL Ppa_glLightModelf(Layer *_layer, GLenum pname, GLfloat pa
   // prefix
   _context->ppa->glLightModel( pname, param );
 
-  orig.glLightModelf( orig.glLightModelf_layer, pname, param );
+  RglLightModelf( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glLightModelfv(Layer *_layer, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glLightModelfv(Layer *_layer, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1237,11 +1239,11 @@ static void REGAL_CALL Ppa_glLightModelfv(Layer *_layer, GLenum pname, const GLf
   // prefix
   _context->ppa->glLightModelv( pname, params );
 
-  orig.glLightModelfv( orig.glLightModelfv_layer, pname, params );
+  RglLightModelfv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glLightModeli(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL ppa_glLightModeli(Layer *_layer, GLenum pname, GLint param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1250,11 +1252,11 @@ static void REGAL_CALL Ppa_glLightModeli(Layer *_layer, GLenum pname, GLint para
   // prefix
   _context->ppa->glLightModel( pname, param );
 
-  orig.glLightModeli( orig.glLightModeli_layer, pname, param );
+  RglLightModeli( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glLightModeliv(Layer *_layer, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glLightModeliv(Layer *_layer, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1263,11 +1265,11 @@ static void REGAL_CALL Ppa_glLightModeliv(Layer *_layer, GLenum pname, const GLi
   // prefix
   _context->ppa->glLightModelv( pname, params );
 
-  orig.glLightModeliv( orig.glLightModeliv_layer, pname, params );
+  RglLightModeliv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glLightf(Layer *_layer, GLenum light, GLenum pname, GLfloat param)
+static void REGAL_CALL ppa_glLightf(Layer *_layer, GLenum light, GLenum pname, GLfloat param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1276,11 +1278,11 @@ static void REGAL_CALL Ppa_glLightf(Layer *_layer, GLenum light, GLenum pname, G
   // prefix
   _context->ppa->glLight( light, pname, param );
 
-  orig.glLightf( orig.glLightf_layer, light, pname, param );
+  RglLightf( orig, light, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glLightfv(Layer *_layer, GLenum light, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glLightfv(Layer *_layer, GLenum light, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1289,11 +1291,11 @@ static void REGAL_CALL Ppa_glLightfv(Layer *_layer, GLenum light, GLenum pname, 
   // prefix
   _context->ppa->glLightv( light, pname, params );
 
-  orig.glLightfv( orig.glLightfv_layer, light, pname, params );
+  RglLightfv( orig, light, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glLighti(Layer *_layer, GLenum light, GLenum pname, GLint param)
+static void REGAL_CALL ppa_glLighti(Layer *_layer, GLenum light, GLenum pname, GLint param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1302,11 +1304,11 @@ static void REGAL_CALL Ppa_glLighti(Layer *_layer, GLenum light, GLenum pname, G
   // prefix
   _context->ppa->glLight( light, pname, param );
 
-  orig.glLighti( orig.glLighti_layer, light, pname, param );
+  RglLighti( orig, light, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glLightiv(Layer *_layer, GLenum light, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glLightiv(Layer *_layer, GLenum light, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1315,11 +1317,11 @@ static void REGAL_CALL Ppa_glLightiv(Layer *_layer, GLenum light, GLenum pname, 
   // prefix
   _context->ppa->glLightv( light, pname, params );
 
-  orig.glLightiv( orig.glLightiv_layer, light, pname, params );
+  RglLightiv( orig, light, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glLineStipple(Layer *_layer, GLint factor, GLushort pattern)
+static void REGAL_CALL ppa_glLineStipple(Layer *_layer, GLint factor, GLushort pattern)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1328,11 +1330,11 @@ static void REGAL_CALL Ppa_glLineStipple(Layer *_layer, GLint factor, GLushort p
   // prefix
   _context->ppa->glLineStipple( factor, pattern );
 
-  orig.glLineStipple( orig.glLineStipple_layer, factor, pattern );
+  RglLineStipple( orig, factor, pattern );
 
 }
 
-static void REGAL_CALL Ppa_glLineWidth(Layer *_layer, GLfloat width)
+static void REGAL_CALL ppa_glLineWidth(Layer *_layer, GLfloat width)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1341,11 +1343,11 @@ static void REGAL_CALL Ppa_glLineWidth(Layer *_layer, GLfloat width)
   // prefix
   _context->ppa->glLineWidth( width );
 
-  orig.glLineWidth( orig.glLineWidth_layer, width );
+  RglLineWidth( orig, width );
 
 }
 
-static void REGAL_CALL Ppa_glListBase(Layer *_layer, GLuint base)
+static void REGAL_CALL ppa_glListBase(Layer *_layer, GLuint base)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1354,11 +1356,11 @@ static void REGAL_CALL Ppa_glListBase(Layer *_layer, GLuint base)
   // prefix
   _context->ppa->glListBase( base );
 
-  orig.glListBase( orig.glListBase_layer, base );
+  RglListBase( orig, base );
 
 }
 
-static void REGAL_CALL Ppa_glLogicOp(Layer *_layer, GLenum opcode)
+static void REGAL_CALL ppa_glLogicOp(Layer *_layer, GLenum opcode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1367,11 +1369,11 @@ static void REGAL_CALL Ppa_glLogicOp(Layer *_layer, GLenum opcode)
   // prefix
   _context->ppa->glLogicOp( opcode );
 
-  orig.glLogicOp( orig.glLogicOp_layer, opcode );
+  RglLogicOp( orig, opcode );
 
 }
 
-static void REGAL_CALL Ppa_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2)
+static void REGAL_CALL ppa_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1380,11 +1382,11 @@ static void REGAL_CALL Ppa_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GLd
   // prefix
   _context->ppa->glMapGrid1( un, u1, u2 );
 
-  orig.glMapGrid1d( orig.glMapGrid1d_layer, un, u1, u2 );
+  RglMapGrid1d( orig, un, u1, u2 );
 
 }
 
-static void REGAL_CALL Ppa_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2)
+static void REGAL_CALL ppa_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1393,11 +1395,11 @@ static void REGAL_CALL Ppa_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLfl
   // prefix
   _context->ppa->glMapGrid1( un, u1, u2 );
 
-  orig.glMapGrid1f( orig.glMapGrid1f_layer, un, u1, u2 );
+  RglMapGrid1f( orig, un, u1, u2 );
 
 }
 
-static void REGAL_CALL Ppa_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
+static void REGAL_CALL ppa_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1406,11 +1408,11 @@ static void REGAL_CALL Ppa_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GLd
   // prefix
   _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
 
-  orig.glMapGrid2d( orig.glMapGrid2d_layer, un, u1, u2, vn, v1, v2 );
+  RglMapGrid2d( orig, un, u1, u2, vn, v1, v2 );
 
 }
 
-static void REGAL_CALL Ppa_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
+static void REGAL_CALL ppa_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1419,11 +1421,11 @@ static void REGAL_CALL Ppa_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLfl
   // prefix
   _context->ppa->glMapGrid2( un, u1, u2, vn, v1, v2 );
 
-  orig.glMapGrid2f( orig.glMapGrid2f_layer, un, u1, u2, vn, v1, v2 );
+  RglMapGrid2f( orig, un, u1, u2, vn, v1, v2 );
 
 }
 
-static void REGAL_CALL Ppa_glMaterialf(Layer *_layer, GLenum face, GLenum pname, GLfloat param)
+static void REGAL_CALL ppa_glMaterialf(Layer *_layer, GLenum face, GLenum pname, GLfloat param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1432,11 +1434,11 @@ static void REGAL_CALL Ppa_glMaterialf(Layer *_layer, GLenum face, GLenum pname,
   // prefix
   _context->ppa->glMaterial( face, pname, param );
 
-  orig.glMaterialf( orig.glMaterialf_layer, face, pname, param );
+  RglMaterialf( orig, face, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glMaterialfv(Layer *_layer, GLenum face, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glMaterialfv(Layer *_layer, GLenum face, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1445,11 +1447,11 @@ static void REGAL_CALL Ppa_glMaterialfv(Layer *_layer, GLenum face, GLenum pname
   // prefix
   _context->ppa->glMaterialv( face, pname, params );
 
-  orig.glMaterialfv( orig.glMaterialfv_layer, face, pname, params );
+  RglMaterialfv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glMateriali(Layer *_layer, GLenum face, GLenum pname, GLint param)
+static void REGAL_CALL ppa_glMateriali(Layer *_layer, GLenum face, GLenum pname, GLint param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1458,11 +1460,11 @@ static void REGAL_CALL Ppa_glMateriali(Layer *_layer, GLenum face, GLenum pname,
   // prefix
   _context->ppa->glMaterial( face, pname, param );
 
-  orig.glMateriali( orig.glMateriali_layer, face, pname, param );
+  RglMateriali( orig, face, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glMaterialiv(Layer *_layer, GLenum face, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glMaterialiv(Layer *_layer, GLenum face, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1471,11 +1473,11 @@ static void REGAL_CALL Ppa_glMaterialiv(Layer *_layer, GLenum face, GLenum pname
   // prefix
   _context->ppa->glMaterialv( face, pname, params );
 
-  orig.glMaterialiv( orig.glMaterialiv_layer, face, pname, params );
+  RglMaterialiv( orig, face, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glMatrixMode(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glMatrixMode(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1484,11 +1486,11 @@ static void REGAL_CALL Ppa_glMatrixMode(Layer *_layer, GLenum mode)
   // prefix
   _context->ppa->glMatrixMode( mode );
 
-  orig.glMatrixMode( orig.glMatrixMode_layer, mode );
+  RglMatrixMode( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glMinSampleShading(Layer *_layer, GLclampf value)
+static void REGAL_CALL ppa_glMinSampleShading(Layer *_layer, GLclampf value)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1497,11 +1499,11 @@ static void REGAL_CALL Ppa_glMinSampleShading(Layer *_layer, GLclampf value)
   // prefix
   _context->ppa->glMinSampleShading( value );
 
-  orig.glMinSampleShading( orig.glMinSampleShading_layer, value );
+  RglMinSampleShading( orig, value );
 
 }
 
-static void REGAL_CALL Ppa_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL ppa_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1510,11 +1512,11 @@ static void REGAL_CALL Ppa_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLen
   // prefix
   _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
-  orig.glMultiTexEnvfEXT( orig.glMultiTexEnvfEXT_layer, texunit, target, pname, param );
+  RglMultiTexEnvfEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1523,11 +1525,11 @@ static void REGAL_CALL Ppa_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLe
   // prefix
   _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
 
-  orig.glMultiTexEnvfvEXT( orig.glMultiTexEnvfvEXT_layer, texunit, target, pname, params );
+  RglMultiTexEnvfvEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL ppa_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1536,11 +1538,11 @@ static void REGAL_CALL Ppa_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLen
   // prefix
   _context->ppa->glMultiTexEnv( texunit, target, pname, param );
 
-  orig.glMultiTexEnviEXT( orig.glMultiTexEnviEXT_layer, texunit, target, pname, param );
+  RglMultiTexEnviEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1549,11 +1551,11 @@ static void REGAL_CALL Ppa_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLe
   // prefix
   _context->ppa->glMultiTexEnvv( texunit, target, pname, params );
 
-  orig.glMultiTexEnvivEXT( orig.glMultiTexEnvivEXT_layer, texunit, target, pname, params );
+  RglMultiTexEnvivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glPixelTransferf(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL ppa_glPixelTransferf(Layer *_layer, GLenum pname, GLfloat param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1562,11 +1564,11 @@ static void REGAL_CALL Ppa_glPixelTransferf(Layer *_layer, GLenum pname, GLfloat
   // prefix
   _context->ppa->glPixelTransfer( pname, param );
 
-  orig.glPixelTransferf( orig.glPixelTransferf_layer, pname, param );
+  RglPixelTransferf( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glPixelTransferi(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL ppa_glPixelTransferi(Layer *_layer, GLenum pname, GLint param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1575,11 +1577,11 @@ static void REGAL_CALL Ppa_glPixelTransferi(Layer *_layer, GLenum pname, GLint p
   // prefix
   _context->ppa->glPixelTransfer( pname, param );
 
-  orig.glPixelTransferi( orig.glPixelTransferi_layer, pname, param );
+  RglPixelTransferi( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat yfactor)
+static void REGAL_CALL ppa_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat yfactor)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1588,11 +1590,11 @@ static void REGAL_CALL Ppa_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat y
   // prefix
   _context->ppa->glPixelZoom( xfactor, yfactor );
 
-  orig.glPixelZoom( orig.glPixelZoom_layer, xfactor, yfactor );
+  RglPixelZoom( orig, xfactor, yfactor );
 
 }
 
-static void REGAL_CALL Ppa_glPointParameterf(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL ppa_glPointParameterf(Layer *_layer, GLenum pname, GLfloat param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1601,11 +1603,11 @@ static void REGAL_CALL Ppa_glPointParameterf(Layer *_layer, GLenum pname, GLfloa
   // prefix
   _context->ppa->glPointParameter( pname, param );
 
-  orig.glPointParameterf( orig.glPointParameterf_layer, pname, param );
+  RglPointParameterf( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glPointParameterfv(Layer *_layer, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glPointParameterfv(Layer *_layer, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1614,11 +1616,11 @@ static void REGAL_CALL Ppa_glPointParameterfv(Layer *_layer, GLenum pname, const
   // prefix
   _context->ppa->glPointParameterv( pname, params );
 
-  orig.glPointParameterfv( orig.glPointParameterfv_layer, pname, params );
+  RglPointParameterfv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glPointParameteri(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL ppa_glPointParameteri(Layer *_layer, GLenum pname, GLint param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1627,11 +1629,11 @@ static void REGAL_CALL Ppa_glPointParameteri(Layer *_layer, GLenum pname, GLint 
   // prefix
   _context->ppa->glPointParameter( pname, param );
 
-  orig.glPointParameteri( orig.glPointParameteri_layer, pname, param );
+  RglPointParameteri( orig, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glPointParameteriv(Layer *_layer, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glPointParameteriv(Layer *_layer, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1640,11 +1642,11 @@ static void REGAL_CALL Ppa_glPointParameteriv(Layer *_layer, GLenum pname, const
   // prefix
   _context->ppa->glPointParameterv( pname, params );
 
-  orig.glPointParameteriv( orig.glPointParameteriv_layer, pname, params );
+  RglPointParameteriv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glPointSize(Layer *_layer, GLfloat size)
+static void REGAL_CALL ppa_glPointSize(Layer *_layer, GLfloat size)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1653,11 +1655,11 @@ static void REGAL_CALL Ppa_glPointSize(Layer *_layer, GLfloat size)
   // prefix
   _context->ppa->glPointSize( size );
 
-  orig.glPointSize( orig.glPointSize_layer, size );
+  RglPointSize( orig, size );
 
 }
 
-static void REGAL_CALL Ppa_glPolygonMode(Layer *_layer, GLenum face, GLenum mode)
+static void REGAL_CALL ppa_glPolygonMode(Layer *_layer, GLenum face, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1666,11 +1668,11 @@ static void REGAL_CALL Ppa_glPolygonMode(Layer *_layer, GLenum face, GLenum mode
   // prefix
   _context->ppa->glPolygonMode( face, mode );
 
-  orig.glPolygonMode( orig.glPolygonMode_layer, face, mode );
+  RglPolygonMode( orig, face, mode );
 
 }
 
-static void REGAL_CALL Ppa_glPolygonOffset(Layer *_layer, GLfloat factor, GLfloat units)
+static void REGAL_CALL ppa_glPolygonOffset(Layer *_layer, GLfloat factor, GLfloat units)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1679,11 +1681,11 @@ static void REGAL_CALL Ppa_glPolygonOffset(Layer *_layer, GLfloat factor, GLfloa
   // prefix
   _context->ppa->glPolygonOffset( factor, units );
 
-  orig.glPolygonOffset( orig.glPolygonOffset_layer, factor, units );
+  RglPolygonOffset( orig, factor, units );
 
 }
 
-static void REGAL_CALL Ppa_glPolygonStipple(Layer *_layer, const GLubyte *mask)
+static void REGAL_CALL ppa_glPolygonStipple(Layer *_layer, const GLubyte *mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1692,11 +1694,11 @@ static void REGAL_CALL Ppa_glPolygonStipple(Layer *_layer, const GLubyte *mask)
   // prefix
   _context->ppa->glPolygonStipple( mask );
 
-  orig.glPolygonStipple( orig.glPolygonStipple_layer, mask );
+  RglPolygonStipple( orig, mask );
 
 }
 
-static void REGAL_CALL Ppa_glPopAttrib(Layer *_layer)
+static void REGAL_CALL ppa_glPopAttrib(Layer *_layer)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1705,11 +1707,11 @@ static void REGAL_CALL Ppa_glPopAttrib(Layer *_layer)
   // impl
   _context->ppa->PopAttrib( _context ); return;
 
-  orig.glPopAttrib( orig.glPopAttrib_layer );
+  RglPopAttrib( orig );
 
 }
 
-static void REGAL_CALL Ppa_glProvokingVertex(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glProvokingVertex(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1718,11 +1720,11 @@ static void REGAL_CALL Ppa_glProvokingVertex(Layer *_layer, GLenum mode)
   // prefix
   _context->ppa->glProvokingVertex( mode );
 
-  orig.glProvokingVertex( orig.glProvokingVertex_layer, mode );
+  RglProvokingVertex( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glPushAttrib(Layer *_layer, GLbitfield mask)
+static void REGAL_CALL ppa_glPushAttrib(Layer *_layer, GLbitfield mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1731,11 +1733,11 @@ static void REGAL_CALL Ppa_glPushAttrib(Layer *_layer, GLbitfield mask)
   // impl
   _context->ppa->PushAttrib( _context, mask ); return;
 
-  orig.glPushAttrib( orig.glPushAttrib_layer, mask );
+  RglPushAttrib( orig, mask );
 
 }
 
-static void REGAL_CALL Ppa_glReadBuffer(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glReadBuffer(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1744,11 +1746,11 @@ static void REGAL_CALL Ppa_glReadBuffer(Layer *_layer, GLenum mode)
   // prefix
   _context->ppa->glReadBuffer( mode );
 
-  orig.glReadBuffer( orig.glReadBuffer_layer, mode );
+  RglReadBuffer( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glSampleCoverage(Layer *_layer, GLclampf value, GLboolean invert)
+static void REGAL_CALL ppa_glSampleCoverage(Layer *_layer, GLclampf value, GLboolean invert)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1757,11 +1759,11 @@ static void REGAL_CALL Ppa_glSampleCoverage(Layer *_layer, GLclampf value, GLboo
   // prefix
   _context->ppa->glSampleCoverage( value, invert );
 
-  orig.glSampleCoverage( orig.glSampleCoverage_layer, value, invert );
+  RglSampleCoverage( orig, value, invert );
 
 }
 
-static void REGAL_CALL Ppa_glScissor(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL ppa_glScissor(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1770,11 +1772,11 @@ static void REGAL_CALL Ppa_glScissor(Layer *_layer, GLint x, GLint y, GLsizei wi
   // prefix
   _context->ppa->glScissor( x, y, width, height );
 
-  orig.glScissor( orig.glScissor_layer, x, y, width, height );
+  RglScissor( orig, x, y, width, height );
 
 }
 
-static void REGAL_CALL Ppa_glScissorArrayv(Layer *_layer, GLuint first, GLsizei count, const GLint *v)
+static void REGAL_CALL ppa_glScissorArrayv(Layer *_layer, GLuint first, GLsizei count, const GLint *v)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1783,11 +1785,11 @@ static void REGAL_CALL Ppa_glScissorArrayv(Layer *_layer, GLuint first, GLsizei 
   // prefix
   _context->ppa->glScissorArrayv( first, count, v );
 
-  orig.glScissorArrayv( orig.glScissorArrayv_layer, first, count, v );
+  RglScissorArrayv( orig, first, count, v );
 
 }
 
-static void REGAL_CALL Ppa_glScissorIndexed(Layer *_layer, GLuint index, GLint left, GLint bottom, GLint width, GLint height)
+static void REGAL_CALL ppa_glScissorIndexed(Layer *_layer, GLuint index, GLint left, GLint bottom, GLint width, GLint height)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1796,11 +1798,11 @@ static void REGAL_CALL Ppa_glScissorIndexed(Layer *_layer, GLuint index, GLint l
   // prefix
   _context->ppa->glScissorIndexed( index, left, bottom, width, height );
 
-  orig.glScissorIndexed( orig.glScissorIndexed_layer, index, left, bottom, width, height );
+  RglScissorIndexed( orig, index, left, bottom, width, height );
 
 }
 
-static void REGAL_CALL Ppa_glScissorIndexedv(Layer *_layer, GLuint index, const GLint *v)
+static void REGAL_CALL ppa_glScissorIndexedv(Layer *_layer, GLuint index, const GLint *v)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1809,11 +1811,11 @@ static void REGAL_CALL Ppa_glScissorIndexedv(Layer *_layer, GLuint index, const 
   // prefix
   _context->ppa->glScissorIndexedv( index, v );
 
-  orig.glScissorIndexedv( orig.glScissorIndexedv_layer, index, v );
+  RglScissorIndexedv( orig, index, v );
 
 }
 
-static void REGAL_CALL Ppa_glShadeModel(Layer *_layer, GLenum mode)
+static void REGAL_CALL ppa_glShadeModel(Layer *_layer, GLenum mode)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1822,11 +1824,11 @@ static void REGAL_CALL Ppa_glShadeModel(Layer *_layer, GLenum mode)
   // prefix
   _context->ppa->glShadeModel( mode );
 
-  orig.glShadeModel( orig.glShadeModel_layer, mode );
+  RglShadeModel( orig, mode );
 
 }
 
-static void REGAL_CALL Ppa_glStencilFunc(Layer *_layer, GLenum func, GLint ref, GLuint mask)
+static void REGAL_CALL ppa_glStencilFunc(Layer *_layer, GLenum func, GLint ref, GLuint mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1835,11 +1837,11 @@ static void REGAL_CALL Ppa_glStencilFunc(Layer *_layer, GLenum func, GLint ref, 
   // prefix
   _context->ppa->glStencilFunc( func, ref, mask );
 
-  orig.glStencilFunc( orig.glStencilFunc_layer, func, ref, mask );
+  RglStencilFunc( orig, func, ref, mask );
 
 }
 
-static void REGAL_CALL Ppa_glStencilFuncSeparate(Layer *_layer, GLenum face, GLenum func, GLint ref, GLuint mask)
+static void REGAL_CALL ppa_glStencilFuncSeparate(Layer *_layer, GLenum face, GLenum func, GLint ref, GLuint mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1848,11 +1850,11 @@ static void REGAL_CALL Ppa_glStencilFuncSeparate(Layer *_layer, GLenum face, GLe
   // prefix
   _context->ppa->glStencilFuncSeparate( face, func, ref, mask );
 
-  orig.glStencilFuncSeparate( orig.glStencilFuncSeparate_layer, face, func, ref, mask );
+  RglStencilFuncSeparate( orig, face, func, ref, mask );
 
 }
 
-static void REGAL_CALL Ppa_glStencilMask(Layer *_layer, GLuint mask)
+static void REGAL_CALL ppa_glStencilMask(Layer *_layer, GLuint mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1861,11 +1863,11 @@ static void REGAL_CALL Ppa_glStencilMask(Layer *_layer, GLuint mask)
   // prefix
   _context->ppa->glStencilMask( mask );
 
-  orig.glStencilMask( orig.glStencilMask_layer, mask );
+  RglStencilMask( orig, mask );
 
 }
 
-static void REGAL_CALL Ppa_glStencilMaskSeparate(Layer *_layer, GLenum face, GLuint mask)
+static void REGAL_CALL ppa_glStencilMaskSeparate(Layer *_layer, GLenum face, GLuint mask)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1874,11 +1876,11 @@ static void REGAL_CALL Ppa_glStencilMaskSeparate(Layer *_layer, GLenum face, GLu
   // prefix
   _context->ppa->glStencilMaskSeparate( face, mask );
 
-  orig.glStencilMaskSeparate( orig.glStencilMaskSeparate_layer, face, mask );
+  RglStencilMaskSeparate( orig, face, mask );
 
 }
 
-static void REGAL_CALL Ppa_glStencilOp(Layer *_layer, GLenum fail, GLenum zfail, GLenum zpass)
+static void REGAL_CALL ppa_glStencilOp(Layer *_layer, GLenum fail, GLenum zfail, GLenum zpass)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1887,11 +1889,11 @@ static void REGAL_CALL Ppa_glStencilOp(Layer *_layer, GLenum fail, GLenum zfail,
   // prefix
   _context->ppa->glStencilOp( fail, zfail, zpass );
 
-  orig.glStencilOp( orig.glStencilOp_layer, fail, zfail, zpass );
+  RglStencilOp( orig, fail, zfail, zpass );
 
 }
 
-static void REGAL_CALL Ppa_glStencilOpSeparate(Layer *_layer, GLenum face, GLenum fail, GLenum zfail, GLenum zpass)
+static void REGAL_CALL ppa_glStencilOpSeparate(Layer *_layer, GLenum face, GLenum fail, GLenum zfail, GLenum zpass)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1900,11 +1902,11 @@ static void REGAL_CALL Ppa_glStencilOpSeparate(Layer *_layer, GLenum face, GLenu
   // prefix
   _context->ppa->glStencilOpSeparate( face, fail, zfail, zpass );
 
-  orig.glStencilOpSeparate( orig.glStencilOpSeparate_layer, face, fail, zfail, zpass );
+  RglStencilOpSeparate( orig, face, fail, zfail, zpass );
 
 }
 
-static void REGAL_CALL Ppa_glTexEnvf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL ppa_glTexEnvf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1913,11 +1915,11 @@ static void REGAL_CALL Ppa_glTexEnvf(Layer *_layer, GLenum target, GLenum pname,
   // prefix
   _context->ppa->glTexEnv( target, pname, param );
 
-  orig.glTexEnvf( orig.glTexEnvf_layer, target, pname, param );
+  RglTexEnvf( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL ppa_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1926,11 +1928,11 @@ static void REGAL_CALL Ppa_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname
   // prefix
   _context->ppa->glTexEnvv( target, pname, params );
 
-  orig.glTexEnvfv( orig.glTexEnvfv_layer, target, pname, params );
+  RglTexEnvfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glTexEnvi(Layer *_layer, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL ppa_glTexEnvi(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1939,11 +1941,11 @@ static void REGAL_CALL Ppa_glTexEnvi(Layer *_layer, GLenum target, GLenum pname,
   // prefix
   _context->ppa->glTexEnv( target, pname, param );
 
-  orig.glTexEnvi( orig.glTexEnvi_layer, target, pname, param );
+  RglTexEnvi( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Ppa_glTexEnviv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL ppa_glTexEnviv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1952,11 +1954,11 @@ static void REGAL_CALL Ppa_glTexEnviv(Layer *_layer, GLenum target, GLenum pname
   // prefix
   _context->ppa->glTexEnvv( target, pname, params );
 
-  orig.glTexEnviv( orig.glTexEnviv_layer, target, pname, params );
+  RglTexEnviv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Ppa_glViewport(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL ppa_glViewport(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1965,11 +1967,11 @@ static void REGAL_CALL Ppa_glViewport(Layer *_layer, GLint x, GLint y, GLsizei w
   // prefix
   _context->ppa->glViewport( x, y, width, height );
 
-  orig.glViewport( orig.glViewport_layer, x, y, width, height );
+  RglViewport( orig, x, y, width, height );
 
 }
 
-static void REGAL_CALL Ppa_glViewportArrayv(Layer *_layer, GLuint first, GLsizei count, const GLfloat *v)
+static void REGAL_CALL ppa_glViewportArrayv(Layer *_layer, GLuint first, GLsizei count, const GLfloat *v)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1978,11 +1980,11 @@ static void REGAL_CALL Ppa_glViewportArrayv(Layer *_layer, GLuint first, GLsizei
   // prefix
   _context->ppa->glViewportArrayv( first, count, v );
 
-  orig.glViewportArrayv( orig.glViewportArrayv_layer, first, count, v );
+  RglViewportArrayv( orig, first, count, v );
 
 }
 
-static void REGAL_CALL Ppa_glViewportIndexedf(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h)
+static void REGAL_CALL ppa_glViewportIndexedf(Layer *_layer, GLuint index, GLfloat x, GLfloat y, GLfloat w, GLfloat h)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -1991,11 +1993,11 @@ static void REGAL_CALL Ppa_glViewportIndexedf(Layer *_layer, GLuint index, GLflo
   // prefix
   _context->ppa->glViewportIndexedf( index, x, y, w, h );
 
-  orig.glViewportIndexedf( orig.glViewportIndexedf_layer, index, x, y, w, h );
+  RglViewportIndexedf( orig, index, x, y, w, h );
 
 }
 
-static void REGAL_CALL Ppa_glViewportIndexedfv(Layer *_layer, GLuint index, const GLfloat *v)
+static void REGAL_CALL ppa_glViewportIndexedfv(Layer *_layer, GLuint index, const GLfloat *v)
 {
   Ppa * self = static_cast<Ppa *>(_layer);
 
@@ -2004,155 +2006,155 @@ static void REGAL_CALL Ppa_glViewportIndexedfv(Layer *_layer, GLuint index, cons
   // prefix
   _context->ppa->glViewportIndexedfv( index, v );
 
-  orig.glViewportIndexedfv( orig.glViewportIndexedfv_layer, index, v );
+  RglViewportIndexedfv( orig, index, v );
 
 }
 
-void PpaIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture                 = RPpa_glActiveTexture;
-  dt.glActiveTextureARB              = RPpa_glActiveTextureARB;
-  dt.glAlphaFunc                     = RPpa_glAlphaFunc;
-  dt.glBlendColor                    = RPpa_glBlendColor;
-  dt.glBlendEquation                 = RPpa_glBlendEquation;
-  dt.glBlendEquationSeparate         = RPpa_glBlendEquationSeparate;
-  dt.glBlendEquationSeparatei        = RPpa_glBlendEquationSeparatei;
-  dt.glBlendEquationi                = RPpa_glBlendEquationi;
-  dt.glBlendFunc                     = RPpa_glBlendFunc;
-  dt.glBlendFuncSeparate             = RPpa_glBlendFuncSeparate;
-  dt.glBlendFuncSeparatei            = RPpa_glBlendFuncSeparatei;
-  dt.glBlendFunci                    = RPpa_glBlendFunci;
-  dt.glClampColor                    = RPpa_glClampColor;
-  dt.glClearAccum                    = RPpa_glClearAccum;
-  dt.glClearColor                    = RPpa_glClearColor;
-  dt.glClearDepth                    = RPpa_glClearDepth;
-  dt.glClearDepthf                   = RPpa_glClearDepthf;
-  dt.glClearIndex                    = RPpa_glClearIndex;
-  dt.glClearStencil                  = RPpa_glClearStencil;
-  dt.glClipPlane                     = RPpa_glClipPlane;
-  dt.glColorMask                     = RPpa_glColorMask;
-  dt.glColorMaski                    = RPpa_glColorMaski;
-  dt.glColorMaterial                 = RPpa_glColorMaterial;
-  dt.glColorTableParameterfv         = RPpa_glColorTableParameterfv;
-  dt.glColorTableParameteriv         = RPpa_glColorTableParameteriv;
-  dt.glConvolutionParameterf         = RPpa_glConvolutionParameterf;
-  dt.glConvolutionParameterfv        = RPpa_glConvolutionParameterfv;
-  dt.glConvolutionParameteri         = RPpa_glConvolutionParameteri;
-  dt.glConvolutionParameteriv        = RPpa_glConvolutionParameteriv;
-  dt.glCullFace                      = RPpa_glCullFace;
-  dt.glDepthFunc                     = RPpa_glDepthFunc;
-  dt.glDepthMask                     = RPpa_glDepthMask;
-  dt.glDepthRange                    = RPpa_glDepthRange;
-  dt.glDepthRangeArrayv              = RPpa_glDepthRangeArrayv;
-  dt.glDepthRangeIndexed             = RPpa_glDepthRangeIndexed;
-  dt.glDepthRangef                   = RPpa_glDepthRangef;
-  dt.glDisable                       = RPpa_glDisable;
-  dt.glDisablei                      = RPpa_glDisablei;
-  dt.glDrawBuffer                    = RPpa_glDrawBuffer;
-  dt.glDrawBuffers                   = RPpa_glDrawBuffers;
-  dt.glDrawBuffersARB                = RPpa_glDrawBuffersARB;
-  dt.glDrawBuffersNV                 = RPpa_glDrawBuffersNV;
-  dt.glEnable                        = RPpa_glEnable;
-  dt.glEnablei                       = RPpa_glEnablei;
-  dt.glFrontFace                     = RPpa_glFrontFace;
-  dt.glGetBooleani_v                 = RPpa_glGetBooleani_v;
-  dt.glGetBooleanv                   = RPpa_glGetBooleanv;
-  dt.glGetColorTableParameterfv      = RPpa_glGetColorTableParameterfv;
-  dt.glGetColorTableParameteriv      = RPpa_glGetColorTableParameteriv;
-  dt.glGetConvolutionParameterfv     = RPpa_glGetConvolutionParameterfv;
-  dt.glGetConvolutionParameteriv     = RPpa_glGetConvolutionParameteriv;
-  dt.glGetDoublei_v                  = RPpa_glGetDoublei_v;
-  dt.glGetDoublei_vEXT               = RPpa_glGetDoublei_vEXT;
-  dt.glGetDoublev                    = RPpa_glGetDoublev;
-  dt.glGetFloati_v                   = RPpa_glGetFloati_v;
-  dt.glGetFloati_vEXT                = RPpa_glGetFloati_vEXT;
-  dt.glGetFloatv                     = RPpa_glGetFloatv;
-  dt.glGetIntegeri_v                 = RPpa_glGetIntegeri_v;
-  dt.glGetIntegeri_vEXT              = RPpa_glGetIntegeri_vEXT;
-  dt.glGetIntegerv                   = RPpa_glGetIntegerv;
-  dt.glGetLightfv                    = RPpa_glGetLightfv;
-  dt.glGetLightiv                    = RPpa_glGetLightiv;
-  dt.glGetLightxv                    = RPpa_glGetLightxv;
-  dt.glGetMaterialfv                 = RPpa_glGetMaterialfv;
-  dt.glGetMaterialiv                 = RPpa_glGetMaterialiv;
-  dt.glGetMaterialxv                 = RPpa_glGetMaterialxv;
-  dt.glGetMultiTexEnvfvEXT           = RPpa_glGetMultiTexEnvfvEXT;
-  dt.glGetMultiTexEnvivEXT           = RPpa_glGetMultiTexEnvivEXT;
-  dt.glGetPolygonStipple             = RPpa_glGetPolygonStipple;
-  dt.glGetTexEnvfv                   = RPpa_glGetTexEnvfv;
-  dt.glGetTexEnviv                   = RPpa_glGetTexEnviv;
-  dt.glGetTexLevelParameterfv        = RPpa_glGetTexLevelParameterfv;
-  dt.glGetTexLevelParameteriv        = RPpa_glGetTexLevelParameteriv;
-  dt.glGetTexParameterfv             = RPpa_glGetTexParameterfv;
-  dt.glGetTexParameteriv             = RPpa_glGetTexParameteriv;
-  dt.glGetTextureLevelParameterfvEXT = RPpa_glGetTextureLevelParameterfvEXT;
-  dt.glGetTextureLevelParameterivEXT = RPpa_glGetTextureLevelParameterivEXT;
-  dt.glGetTextureParameterfvEXT      = RPpa_glGetTextureParameterfvEXT;
-  dt.glGetTextureParameterivEXT      = RPpa_glGetTextureParameterivEXT;
-  dt.glHint                          = RPpa_glHint;
-  dt.glIndexMask                     = RPpa_glIndexMask;
-  dt.glIsEnabled                     = RPpa_glIsEnabled;
-  dt.glIsEnabledi                    = RPpa_glIsEnabledi;
-  dt.glLightModelf                   = RPpa_glLightModelf;
-  dt.glLightModelfv                  = RPpa_glLightModelfv;
-  dt.glLightModeli                   = RPpa_glLightModeli;
-  dt.glLightModeliv                  = RPpa_glLightModeliv;
-  dt.glLightf                        = RPpa_glLightf;
-  dt.glLightfv                       = RPpa_glLightfv;
-  dt.glLighti                        = RPpa_glLighti;
-  dt.glLightiv                       = RPpa_glLightiv;
-  dt.glLineStipple                   = RPpa_glLineStipple;
-  dt.glLineWidth                     = RPpa_glLineWidth;
-  dt.glListBase                      = RPpa_glListBase;
-  dt.glLogicOp                       = RPpa_glLogicOp;
-  dt.glMapGrid1d                     = RPpa_glMapGrid1d;
-  dt.glMapGrid1f                     = RPpa_glMapGrid1f;
-  dt.glMapGrid2d                     = RPpa_glMapGrid2d;
-  dt.glMapGrid2f                     = RPpa_glMapGrid2f;
-  dt.glMaterialf                     = RPpa_glMaterialf;
-  dt.glMaterialfv                    = RPpa_glMaterialfv;
-  dt.glMateriali                     = RPpa_glMateriali;
-  dt.glMaterialiv                    = RPpa_glMaterialiv;
-  dt.glMatrixMode                    = RPpa_glMatrixMode;
-  dt.glMinSampleShading              = RPpa_glMinSampleShading;
-  dt.glMultiTexEnvfEXT               = RPpa_glMultiTexEnvfEXT;
-  dt.glMultiTexEnvfvEXT              = RPpa_glMultiTexEnvfvEXT;
-  dt.glMultiTexEnviEXT               = RPpa_glMultiTexEnviEXT;
-  dt.glMultiTexEnvivEXT              = RPpa_glMultiTexEnvivEXT;
-  dt.glPixelTransferf                = RPpa_glPixelTransferf;
-  dt.glPixelTransferi                = RPpa_glPixelTransferi;
-  dt.glPixelZoom                     = RPpa_glPixelZoom;
-  dt.glPointParameterf               = RPpa_glPointParameterf;
-  dt.glPointParameterfv              = RPpa_glPointParameterfv;
-  dt.glPointParameteri               = RPpa_glPointParameteri;
-  dt.glPointParameteriv              = RPpa_glPointParameteriv;
-  dt.glPointSize                     = RPpa_glPointSize;
-  dt.glPolygonMode                   = RPpa_glPolygonMode;
-  dt.glPolygonOffset                 = RPpa_glPolygonOffset;
-  dt.glPolygonStipple                = RPpa_glPolygonStipple;
-  dt.glPopAttrib                     = RPpa_glPopAttrib;
-  dt.glProvokingVertex               = RPpa_glProvokingVertex;
-  dt.glPushAttrib                    = RPpa_glPushAttrib;
-  dt.glReadBuffer                    = RPpa_glReadBuffer;
-  dt.glSampleCoverage                = RPpa_glSampleCoverage;
-  dt.glScissor                       = RPpa_glScissor;
-  dt.glScissorArrayv                 = RPpa_glScissorArrayv;
-  dt.glScissorIndexed                = RPpa_glScissorIndexed;
-  dt.glScissorIndexedv               = RPpa_glScissorIndexedv;
-  dt.glShadeModel                    = RPpa_glShadeModel;
-  dt.glStencilFunc                   = RPpa_glStencilFunc;
-  dt.glStencilFuncSeparate           = RPpa_glStencilFuncSeparate;
-  dt.glStencilMask                   = RPpa_glStencilMask;
-  dt.glStencilMaskSeparate           = RPpa_glStencilMaskSeparate;
-  dt.glStencilOp                     = RPpa_glStencilOp;
-  dt.glStencilOpSeparate             = RPpa_glStencilOpSeparate;
-  dt.glTexEnvf                       = RPpa_glTexEnvf;
-  dt.glTexEnvfv                      = RPpa_glTexEnvfv;
-  dt.glTexEnvi                       = RPpa_glTexEnvi;
-  dt.glTexEnviv                      = RPpa_glTexEnviv;
-  dt.glViewport                      = RPpa_glViewport;
-  dt.glViewportArrayv                = RPpa_glViewportArrayv;
-  dt.glViewportIndexedf              = RPpa_glViewportIndexedf;
-  dt.glViewportIndexedfv             = RPpa_glViewportIndexedfv;
+void PpaIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glActiveTexture                 = MakeRegalProc(ppa_glActiveTexture, layer);
+  dt.glActiveTextureARB              = MakeRegalProc(ppa_glActiveTextureARB, layer);
+  dt.glAlphaFunc                     = MakeRegalProc(ppa_glAlphaFunc, layer);
+  dt.glBlendColor                    = MakeRegalProc(ppa_glBlendColor, layer);
+  dt.glBlendEquation                 = MakeRegalProc(ppa_glBlendEquation, layer);
+  dt.glBlendEquationSeparate         = MakeRegalProc(ppa_glBlendEquationSeparate, layer);
+  dt.glBlendEquationSeparatei        = MakeRegalProc(ppa_glBlendEquationSeparatei, layer);
+  dt.glBlendEquationi                = MakeRegalProc(ppa_glBlendEquationi, layer);
+  dt.glBlendFunc                     = MakeRegalProc(ppa_glBlendFunc, layer);
+  dt.glBlendFuncSeparate             = MakeRegalProc(ppa_glBlendFuncSeparate, layer);
+  dt.glBlendFuncSeparatei            = MakeRegalProc(ppa_glBlendFuncSeparatei, layer);
+  dt.glBlendFunci                    = MakeRegalProc(ppa_glBlendFunci, layer);
+  dt.glClampColor                    = MakeRegalProc(ppa_glClampColor, layer);
+  dt.glClearAccum                    = MakeRegalProc(ppa_glClearAccum, layer);
+  dt.glClearColor                    = MakeRegalProc(ppa_glClearColor, layer);
+  dt.glClearDepth                    = MakeRegalProc(ppa_glClearDepth, layer);
+  dt.glClearDepthf                   = MakeRegalProc(ppa_glClearDepthf, layer);
+  dt.glClearIndex                    = MakeRegalProc(ppa_glClearIndex, layer);
+  dt.glClearStencil                  = MakeRegalProc(ppa_glClearStencil, layer);
+  dt.glClipPlane                     = MakeRegalProc(ppa_glClipPlane, layer);
+  dt.glColorMask                     = MakeRegalProc(ppa_glColorMask, layer);
+  dt.glColorMaski                    = MakeRegalProc(ppa_glColorMaski, layer);
+  dt.glColorMaterial                 = MakeRegalProc(ppa_glColorMaterial, layer);
+  dt.glColorTableParameterfv         = MakeRegalProc(ppa_glColorTableParameterfv, layer);
+  dt.glColorTableParameteriv         = MakeRegalProc(ppa_glColorTableParameteriv, layer);
+  dt.glConvolutionParameterf         = MakeRegalProc(ppa_glConvolutionParameterf, layer);
+  dt.glConvolutionParameterfv        = MakeRegalProc(ppa_glConvolutionParameterfv, layer);
+  dt.glConvolutionParameteri         = MakeRegalProc(ppa_glConvolutionParameteri, layer);
+  dt.glConvolutionParameteriv        = MakeRegalProc(ppa_glConvolutionParameteriv, layer);
+  dt.glCullFace                      = MakeRegalProc(ppa_glCullFace, layer);
+  dt.glDepthFunc                     = MakeRegalProc(ppa_glDepthFunc, layer);
+  dt.glDepthMask                     = MakeRegalProc(ppa_glDepthMask, layer);
+  dt.glDepthRange                    = MakeRegalProc(ppa_glDepthRange, layer);
+  dt.glDepthRangeArrayv              = MakeRegalProc(ppa_glDepthRangeArrayv, layer);
+  dt.glDepthRangeIndexed             = MakeRegalProc(ppa_glDepthRangeIndexed, layer);
+  dt.glDepthRangef                   = MakeRegalProc(ppa_glDepthRangef, layer);
+  dt.glDisable                       = MakeRegalProc(ppa_glDisable, layer);
+  dt.glDisablei                      = MakeRegalProc(ppa_glDisablei, layer);
+  dt.glDrawBuffer                    = MakeRegalProc(ppa_glDrawBuffer, layer);
+  dt.glDrawBuffers                   = MakeRegalProc(ppa_glDrawBuffers, layer);
+  dt.glDrawBuffersARB                = MakeRegalProc(ppa_glDrawBuffersARB, layer);
+  dt.glDrawBuffersNV                 = MakeRegalProc(ppa_glDrawBuffersNV, layer);
+  dt.glEnable                        = MakeRegalProc(ppa_glEnable, layer);
+  dt.glEnablei                       = MakeRegalProc(ppa_glEnablei, layer);
+  dt.glFrontFace                     = MakeRegalProc(ppa_glFrontFace, layer);
+  dt.glGetBooleani_v                 = MakeRegalProc(ppa_glGetBooleani_v, layer);
+  dt.glGetBooleanv                   = MakeRegalProc(ppa_glGetBooleanv, layer);
+  dt.glGetColorTableParameterfv      = MakeRegalProc(ppa_glGetColorTableParameterfv, layer);
+  dt.glGetColorTableParameteriv      = MakeRegalProc(ppa_glGetColorTableParameteriv, layer);
+  dt.glGetConvolutionParameterfv     = MakeRegalProc(ppa_glGetConvolutionParameterfv, layer);
+  dt.glGetConvolutionParameteriv     = MakeRegalProc(ppa_glGetConvolutionParameteriv, layer);
+  dt.glGetDoublei_v                  = MakeRegalProc(ppa_glGetDoublei_v, layer);
+  dt.glGetDoublei_vEXT               = MakeRegalProc(ppa_glGetDoublei_vEXT, layer);
+  dt.glGetDoublev                    = MakeRegalProc(ppa_glGetDoublev, layer);
+  dt.glGetFloati_v                   = MakeRegalProc(ppa_glGetFloati_v, layer);
+  dt.glGetFloati_vEXT                = MakeRegalProc(ppa_glGetFloati_vEXT, layer);
+  dt.glGetFloatv                     = MakeRegalProc(ppa_glGetFloatv, layer);
+  dt.glGetIntegeri_v                 = MakeRegalProc(ppa_glGetIntegeri_v, layer);
+  dt.glGetIntegeri_vEXT              = MakeRegalProc(ppa_glGetIntegeri_vEXT, layer);
+  dt.glGetIntegerv                   = MakeRegalProc(ppa_glGetIntegerv, layer);
+  dt.glGetLightfv                    = MakeRegalProc(ppa_glGetLightfv, layer);
+  dt.glGetLightiv                    = MakeRegalProc(ppa_glGetLightiv, layer);
+  dt.glGetLightxv                    = MakeRegalProc(ppa_glGetLightxv, layer);
+  dt.glGetMaterialfv                 = MakeRegalProc(ppa_glGetMaterialfv, layer);
+  dt.glGetMaterialiv                 = MakeRegalProc(ppa_glGetMaterialiv, layer);
+  dt.glGetMaterialxv                 = MakeRegalProc(ppa_glGetMaterialxv, layer);
+  dt.glGetMultiTexEnvfvEXT           = MakeRegalProc(ppa_glGetMultiTexEnvfvEXT, layer);
+  dt.glGetMultiTexEnvivEXT           = MakeRegalProc(ppa_glGetMultiTexEnvivEXT, layer);
+  dt.glGetPolygonStipple             = MakeRegalProc(ppa_glGetPolygonStipple, layer);
+  dt.glGetTexEnvfv                   = MakeRegalProc(ppa_glGetTexEnvfv, layer);
+  dt.glGetTexEnviv                   = MakeRegalProc(ppa_glGetTexEnviv, layer);
+  dt.glGetTexLevelParameterfv        = MakeRegalProc(ppa_glGetTexLevelParameterfv, layer);
+  dt.glGetTexLevelParameteriv        = MakeRegalProc(ppa_glGetTexLevelParameteriv, layer);
+  dt.glGetTexParameterfv             = MakeRegalProc(ppa_glGetTexParameterfv, layer);
+  dt.glGetTexParameteriv             = MakeRegalProc(ppa_glGetTexParameteriv, layer);
+  dt.glGetTextureLevelParameterfvEXT = MakeRegalProc(ppa_glGetTextureLevelParameterfvEXT, layer);
+  dt.glGetTextureLevelParameterivEXT = MakeRegalProc(ppa_glGetTextureLevelParameterivEXT, layer);
+  dt.glGetTextureParameterfvEXT      = MakeRegalProc(ppa_glGetTextureParameterfvEXT, layer);
+  dt.glGetTextureParameterivEXT      = MakeRegalProc(ppa_glGetTextureParameterivEXT, layer);
+  dt.glHint                          = MakeRegalProc(ppa_glHint, layer);
+  dt.glIndexMask                     = MakeRegalProc(ppa_glIndexMask, layer);
+  dt.glIsEnabled                     = MakeRegalProc(ppa_glIsEnabled, layer);
+  dt.glIsEnabledi                    = MakeRegalProc(ppa_glIsEnabledi, layer);
+  dt.glLightModelf                   = MakeRegalProc(ppa_glLightModelf, layer);
+  dt.glLightModelfv                  = MakeRegalProc(ppa_glLightModelfv, layer);
+  dt.glLightModeli                   = MakeRegalProc(ppa_glLightModeli, layer);
+  dt.glLightModeliv                  = MakeRegalProc(ppa_glLightModeliv, layer);
+  dt.glLightf                        = MakeRegalProc(ppa_glLightf, layer);
+  dt.glLightfv                       = MakeRegalProc(ppa_glLightfv, layer);
+  dt.glLighti                        = MakeRegalProc(ppa_glLighti, layer);
+  dt.glLightiv                       = MakeRegalProc(ppa_glLightiv, layer);
+  dt.glLineStipple                   = MakeRegalProc(ppa_glLineStipple, layer);
+  dt.glLineWidth                     = MakeRegalProc(ppa_glLineWidth, layer);
+  dt.glListBase                      = MakeRegalProc(ppa_glListBase, layer);
+  dt.glLogicOp                       = MakeRegalProc(ppa_glLogicOp, layer);
+  dt.glMapGrid1d                     = MakeRegalProc(ppa_glMapGrid1d, layer);
+  dt.glMapGrid1f                     = MakeRegalProc(ppa_glMapGrid1f, layer);
+  dt.glMapGrid2d                     = MakeRegalProc(ppa_glMapGrid2d, layer);
+  dt.glMapGrid2f                     = MakeRegalProc(ppa_glMapGrid2f, layer);
+  dt.glMaterialf                     = MakeRegalProc(ppa_glMaterialf, layer);
+  dt.glMaterialfv                    = MakeRegalProc(ppa_glMaterialfv, layer);
+  dt.glMateriali                     = MakeRegalProc(ppa_glMateriali, layer);
+  dt.glMaterialiv                    = MakeRegalProc(ppa_glMaterialiv, layer);
+  dt.glMatrixMode                    = MakeRegalProc(ppa_glMatrixMode, layer);
+  dt.glMinSampleShading              = MakeRegalProc(ppa_glMinSampleShading, layer);
+  dt.glMultiTexEnvfEXT               = MakeRegalProc(ppa_glMultiTexEnvfEXT, layer);
+  dt.glMultiTexEnvfvEXT              = MakeRegalProc(ppa_glMultiTexEnvfvEXT, layer);
+  dt.glMultiTexEnviEXT               = MakeRegalProc(ppa_glMultiTexEnviEXT, layer);
+  dt.glMultiTexEnvivEXT              = MakeRegalProc(ppa_glMultiTexEnvivEXT, layer);
+  dt.glPixelTransferf                = MakeRegalProc(ppa_glPixelTransferf, layer);
+  dt.glPixelTransferi                = MakeRegalProc(ppa_glPixelTransferi, layer);
+  dt.glPixelZoom                     = MakeRegalProc(ppa_glPixelZoom, layer);
+  dt.glPointParameterf               = MakeRegalProc(ppa_glPointParameterf, layer);
+  dt.glPointParameterfv              = MakeRegalProc(ppa_glPointParameterfv, layer);
+  dt.glPointParameteri               = MakeRegalProc(ppa_glPointParameteri, layer);
+  dt.glPointParameteriv              = MakeRegalProc(ppa_glPointParameteriv, layer);
+  dt.glPointSize                     = MakeRegalProc(ppa_glPointSize, layer);
+  dt.glPolygonMode                   = MakeRegalProc(ppa_glPolygonMode, layer);
+  dt.glPolygonOffset                 = MakeRegalProc(ppa_glPolygonOffset, layer);
+  dt.glPolygonStipple                = MakeRegalProc(ppa_glPolygonStipple, layer);
+  dt.glPopAttrib                     = MakeRegalProc(ppa_glPopAttrib, layer);
+  dt.glProvokingVertex               = MakeRegalProc(ppa_glProvokingVertex, layer);
+  dt.glPushAttrib                    = MakeRegalProc(ppa_glPushAttrib, layer);
+  dt.glReadBuffer                    = MakeRegalProc(ppa_glReadBuffer, layer);
+  dt.glSampleCoverage                = MakeRegalProc(ppa_glSampleCoverage, layer);
+  dt.glScissor                       = MakeRegalProc(ppa_glScissor, layer);
+  dt.glScissorArrayv                 = MakeRegalProc(ppa_glScissorArrayv, layer);
+  dt.glScissorIndexed                = MakeRegalProc(ppa_glScissorIndexed, layer);
+  dt.glScissorIndexedv               = MakeRegalProc(ppa_glScissorIndexedv, layer);
+  dt.glShadeModel                    = MakeRegalProc(ppa_glShadeModel, layer);
+  dt.glStencilFunc                   = MakeRegalProc(ppa_glStencilFunc, layer);
+  dt.glStencilFuncSeparate           = MakeRegalProc(ppa_glStencilFuncSeparate, layer);
+  dt.glStencilMask                   = MakeRegalProc(ppa_glStencilMask, layer);
+  dt.glStencilMaskSeparate           = MakeRegalProc(ppa_glStencilMaskSeparate, layer);
+  dt.glStencilOp                     = MakeRegalProc(ppa_glStencilOp, layer);
+  dt.glStencilOpSeparate             = MakeRegalProc(ppa_glStencilOpSeparate, layer);
+  dt.glTexEnvf                       = MakeRegalProc(ppa_glTexEnvf, layer);
+  dt.glTexEnvfv                      = MakeRegalProc(ppa_glTexEnvfv, layer);
+  dt.glTexEnvi                       = MakeRegalProc(ppa_glTexEnvi, layer);
+  dt.glTexEnviv                      = MakeRegalProc(ppa_glTexEnviv, layer);
+  dt.glViewport                      = MakeRegalProc(ppa_glViewport, layer);
+  dt.glViewportArrayv                = MakeRegalProc(ppa_glViewportArrayv, layer);
+  dt.glViewportIndexedf              = MakeRegalProc(ppa_glViewportIndexedf, layer);
+  dt.glViewportIndexedfv             = MakeRegalProc(ppa_glViewportIndexedfv, layer);
 }
 
 REGAL_NAMESPACE_END

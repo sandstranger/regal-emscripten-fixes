@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalFilt.h"
-#include "RegalEmuProcsFilt.h"
+#include "Filt.h"
+#include "FiltProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Filt_glAccum(Layer *_layer, GLenum op, GLfloat value)
+using namespace Emu;
+
+static void REGAL_CALL filt_glAccum(Layer *_layer, GLenum op, GLfloat value)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -70,11 +72,11 @@ static void REGAL_CALL Filt_glAccum(Layer *_layer, GLenum op, GLfloat value)
      return ;
   }
 
-  orig.glAccum( orig.glAccum_layer, op, value );
+  RglAccum( orig, op, value );
 
 }
 
-static void REGAL_CALL Filt_glActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL filt_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -87,11 +89,11 @@ static void REGAL_CALL Filt_glActiveTextureARB(Layer *_layer, GLenum texture)
     return;
   }
 
-  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
+  RglActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Filt_glAttachObjectARB(Layer *_layer, GLhandleARB containerObj, GLhandleARB obj)
+static void REGAL_CALL filt_glAttachObjectARB(Layer *_layer, GLhandleARB containerObj, GLhandleARB obj)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -104,11 +106,11 @@ static void REGAL_CALL Filt_glAttachObjectARB(Layer *_layer, GLhandleARB contain
     return;
   }
 
-  orig.glAttachObjectARB( orig.glAttachObjectARB_layer, containerObj, obj );
+  RglAttachObjectARB( orig, containerObj, obj );
 
 }
 
-static void REGAL_CALL Filt_glBindAttribLocationARB(Layer *_layer, GLhandleARB programObj, GLuint index, const GLcharARB *name)
+static void REGAL_CALL filt_glBindAttribLocationARB(Layer *_layer, GLhandleARB programObj, GLuint index, const GLcharARB *name)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -121,11 +123,11 @@ static void REGAL_CALL Filt_glBindAttribLocationARB(Layer *_layer, GLhandleARB p
     return;
   }
 
-  orig.glBindAttribLocationARB( orig.glBindAttribLocationARB_layer, programObj, index, name );
+  RglBindAttribLocationARB( orig, programObj, index, name );
 
 }
 
-static void REGAL_CALL Filt_glBindFramebuffer(Layer *_layer, GLenum target, GLuint framebuffer)
+static void REGAL_CALL filt_glBindFramebuffer(Layer *_layer, GLenum target, GLuint framebuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -145,11 +147,11 @@ static void REGAL_CALL Filt_glBindFramebuffer(Layer *_layer, GLenum target, GLui
     return ;
   }
 
-  orig.glBindFramebuffer( orig.glBindFramebuffer_layer, target, framebuffer );
+  RglBindFramebuffer( orig, target, framebuffer );
 
 }
 
-static void REGAL_CALL Filt_glBindFramebufferEXT(Layer *_layer, GLenum target, GLuint framebuffer)
+static void REGAL_CALL filt_glBindFramebufferEXT(Layer *_layer, GLenum target, GLuint framebuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -163,11 +165,11 @@ static void REGAL_CALL Filt_glBindFramebufferEXT(Layer *_layer, GLenum target, G
     return;
   }
 
-  orig.glBindFramebufferEXT( orig.glBindFramebufferEXT_layer, target, framebuffer );
+  RglBindFramebufferEXT( orig, target, framebuffer );
 
 }
 
-static void REGAL_CALL Filt_glBindFramebufferOES(Layer *_layer, GLenum target, GLuint framebuffer)
+static void REGAL_CALL filt_glBindFramebufferOES(Layer *_layer, GLenum target, GLuint framebuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -187,11 +189,11 @@ static void REGAL_CALL Filt_glBindFramebufferOES(Layer *_layer, GLenum target, G
     return ;
   }
 
-  orig.glBindFramebufferOES( orig.glBindFramebufferOES_layer, target, framebuffer );
+  RglBindFramebufferOES( orig, target, framebuffer );
 
 }
 
-static void REGAL_CALL Filt_glBindProgramARB(Layer *_layer, GLenum target, GLuint program)
+static void REGAL_CALL filt_glBindProgramARB(Layer *_layer, GLenum target, GLuint program)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -204,11 +206,11 @@ static void REGAL_CALL Filt_glBindProgramARB(Layer *_layer, GLenum target, GLuin
     return;
   }
 
-  orig.glBindProgramARB( orig.glBindProgramARB_layer, target, program );
+  RglBindProgramARB( orig, target, program );
 
 }
 
-static void REGAL_CALL Filt_glBindRenderbufferEXT(Layer *_layer, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL filt_glBindRenderbufferEXT(Layer *_layer, GLenum target, GLuint renderbuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -222,11 +224,11 @@ static void REGAL_CALL Filt_glBindRenderbufferEXT(Layer *_layer, GLenum target, 
     return;
   }
 
-  orig.glBindRenderbufferEXT( orig.glBindRenderbufferEXT_layer, target, renderbuffer );
+  RglBindRenderbufferEXT( orig, target, renderbuffer );
 
 }
 
-static void REGAL_CALL Filt_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL filt_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -241,11 +243,11 @@ static void REGAL_CALL Filt_glBindTexture(Layer *_layer, GLenum target, GLuint t
     return ;
   }
 
-  orig.glBindTexture( orig.glBindTexture_layer, target, texture );
+  RglBindTexture( orig, target, texture );
 
 }
 
-static void REGAL_CALL Filt_glBitmap(Layer *_layer, GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
+static void REGAL_CALL filt_glBitmap(Layer *_layer, GLsizei width, GLsizei height, GLfloat xorig, GLfloat yorig, GLfloat xmove, GLfloat ymove, const GLubyte *bitmap)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -261,11 +263,11 @@ static void REGAL_CALL Filt_glBitmap(Layer *_layer, GLsizei width, GLsizei heigh
      return ;
   }
 
-  orig.glBitmap( orig.glBitmap_layer, width, height, xorig, yorig, xmove, ymove, bitmap );
+  RglBitmap( orig, width, height, xorig, yorig, xmove, ymove, bitmap );
 
 }
 
-static void REGAL_CALL Filt_glBlendColorEXT(Layer *_layer, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
+static void REGAL_CALL filt_glBlendColorEXT(Layer *_layer, GLclampf red, GLclampf green, GLclampf blue, GLclampf alpha)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -278,11 +280,11 @@ static void REGAL_CALL Filt_glBlendColorEXT(Layer *_layer, GLclampf red, GLclamp
     return;
   }
 
-  orig.glBlendColorEXT( orig.glBlendColorEXT_layer, red, green, blue, alpha );
+  RglBlendColorEXT( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Filt_glBlendEquationEXT(Layer *_layer, GLenum mode)
+static void REGAL_CALL filt_glBlendEquationEXT(Layer *_layer, GLenum mode)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -295,11 +297,11 @@ static void REGAL_CALL Filt_glBlendEquationEXT(Layer *_layer, GLenum mode)
     return;
   }
 
-  orig.glBlendEquationEXT( orig.glBlendEquationEXT_layer, mode );
+  RglBlendEquationEXT( orig, mode );
 
 }
 
-static void REGAL_CALL Filt_glBlitFramebuffer(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+static void REGAL_CALL filt_glBlitFramebuffer(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -312,11 +314,11 @@ static void REGAL_CALL Filt_glBlitFramebuffer(Layer *_layer, GLint srcX0, GLint 
     if (_context->info->gl_ext_framebuffer_blit) return orig.glBlitFramebufferEXT( _context, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
   }
 
-  orig.glBlitFramebuffer( orig.glBlitFramebuffer_layer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
+  RglBlitFramebuffer( orig, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
 
 }
 
-static void REGAL_CALL Filt_glBlitFramebufferANGLE(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+static void REGAL_CALL filt_glBlitFramebufferANGLE(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -332,11 +334,11 @@ static void REGAL_CALL Filt_glBlitFramebufferANGLE(Layer *_layer, GLint srcX0, G
     return ;
   }
 
-  orig.glBlitFramebufferANGLE( orig.glBlitFramebufferANGLE_layer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
+  RglBlitFramebufferANGLE( orig, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
 
 }
 
-static void REGAL_CALL Filt_glBlitFramebufferEXT(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
+static void REGAL_CALL filt_glBlitFramebufferEXT(Layer *_layer, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -350,11 +352,11 @@ static void REGAL_CALL Filt_glBlitFramebufferEXT(Layer *_layer, GLint srcX0, GLi
     return;
   }
 
-  orig.glBlitFramebufferEXT( orig.glBlitFramebufferEXT_layer, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
+  RglBlitFramebufferEXT( orig, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
 
 }
 
-static void REGAL_CALL Filt_glBufferDataARB(Layer *_layer, GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
+static void REGAL_CALL filt_glBufferDataARB(Layer *_layer, GLenum target, GLsizeiptrARB size, const GLvoid *data, GLenum usage)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -367,11 +369,11 @@ static void REGAL_CALL Filt_glBufferDataARB(Layer *_layer, GLenum target, GLsize
     return;
   }
 
-  orig.glBufferDataARB( orig.glBufferDataARB_layer, target, size, data, usage );
+  RglBufferDataARB( orig, target, size, data, usage );
 
 }
 
-static void REGAL_CALL Filt_glCallList(Layer *_layer, GLuint list)
+static void REGAL_CALL filt_glCallList(Layer *_layer, GLuint list)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -387,11 +389,11 @@ static void REGAL_CALL Filt_glCallList(Layer *_layer, GLuint list)
      return ;
   }
 
-  orig.glCallList( orig.glCallList_layer, list );
+  RglCallList( orig, list );
 
 }
 
-static GLenum REGAL_CALL Filt_glCheckFramebufferStatusEXT(Layer *_layer, GLenum target)
+static GLenum REGAL_CALL filt_glCheckFramebufferStatusEXT(Layer *_layer, GLenum target)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -404,11 +406,11 @@ static GLenum REGAL_CALL Filt_glCheckFramebufferStatusEXT(Layer *_layer, GLenum 
     return orig.glCheckFramebufferStatus( _context,target);
   }
 
-  return orig.glCheckFramebufferStatusEXT( orig.glCheckFramebufferStatusEXT_layer, target );
+  return RglCheckFramebufferStatusEXT( orig, target );
 
 }
 
-static void REGAL_CALL Filt_glClearAccum(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
+static void REGAL_CALL filt_glClearAccum(Layer *_layer, GLfloat red, GLfloat green, GLfloat blue, GLfloat alpha)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -424,11 +426,11 @@ static void REGAL_CALL Filt_glClearAccum(Layer *_layer, GLfloat red, GLfloat gre
      return ;
   }
 
-  orig.glClearAccum( orig.glClearAccum_layer, red, green, blue, alpha );
+  RglClearAccum( orig, red, green, blue, alpha );
 
 }
 
-static void REGAL_CALL Filt_glClientActiveTexture(Layer *_layer, GLenum texture)
+static void REGAL_CALL filt_glClientActiveTexture(Layer *_layer, GLenum texture)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -444,11 +446,11 @@ static void REGAL_CALL Filt_glClientActiveTexture(Layer *_layer, GLenum texture)
     return ;
   }
 
-  orig.glClientActiveTexture( orig.glClientActiveTexture_layer, texture );
+  RglClientActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Filt_glClientActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL filt_glClientActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -462,11 +464,11 @@ static void REGAL_CALL Filt_glClientActiveTextureARB(Layer *_layer, GLenum textu
     return;
   }
 
-  orig.glClientActiveTextureARB( orig.glClientActiveTextureARB_layer, texture );
+  RglClientActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Filt_glColorMaskIndexedEXT(Layer *_layer, GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
+static void REGAL_CALL filt_glColorMaskIndexedEXT(Layer *_layer, GLuint buf, GLboolean r, GLboolean g, GLboolean b, GLboolean a)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -481,11 +483,11 @@ static void REGAL_CALL Filt_glColorMaskIndexedEXT(Layer *_layer, GLuint buf, GLb
     return;
   }
 
-  orig.glColorMaskIndexedEXT( orig.glColorMaskIndexedEXT_layer, buf, r, g, b, a );
+  RglColorMaskIndexedEXT( orig, buf, r, g, b, a );
 
 }
 
-static void REGAL_CALL Filt_glCompileShaderARB(Layer *_layer, GLhandleARB shaderObj)
+static void REGAL_CALL filt_glCompileShaderARB(Layer *_layer, GLhandleARB shaderObj)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -498,11 +500,11 @@ static void REGAL_CALL Filt_glCompileShaderARB(Layer *_layer, GLhandleARB shader
     return;
   }
 
-  orig.glCompileShaderARB( orig.glCompileShaderARB_layer, shaderObj );
+  RglCompileShaderARB( orig, shaderObj );
 
 }
 
-static void REGAL_CALL Filt_glCopyPixels(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
+static void REGAL_CALL filt_glCopyPixels(Layer *_layer, GLint x, GLint y, GLsizei width, GLsizei height, GLenum type)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -518,11 +520,11 @@ static void REGAL_CALL Filt_glCopyPixels(Layer *_layer, GLint x, GLint y, GLsize
      return ;
   }
 
-  orig.glCopyPixels( orig.glCopyPixels_layer, x, y, width, height, type );
+  RglCopyPixels( orig, x, y, width, height, type );
 
 }
 
-static GLhandleARB REGAL_CALL Filt_glCreateProgramObjectARB(Layer *_layer)
+static GLhandleARB REGAL_CALL filt_glCreateProgramObjectARB(Layer *_layer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -534,11 +536,11 @@ static GLhandleARB REGAL_CALL Filt_glCreateProgramObjectARB(Layer *_layer)
     return orig.glCreateProgram( _context );
   }
 
-  return orig.glCreateProgramObjectARB( orig.glCreateProgramObjectARB_layer );
+  return RglCreateProgramObjectARB( orig );
 
 }
 
-static void REGAL_CALL Filt_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL filt_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -552,11 +554,11 @@ static void REGAL_CALL Filt_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, co
     return;
   }
 
-  orig.glDeleteFramebuffersEXT( orig.glDeleteFramebuffersEXT_layer, n, framebuffers );
+  RglDeleteFramebuffersEXT( orig, n, framebuffers );
 
 }
 
-static void REGAL_CALL Filt_glDeleteLists(Layer *_layer, GLuint list, GLsizei range)
+static void REGAL_CALL filt_glDeleteLists(Layer *_layer, GLuint list, GLsizei range)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -572,11 +574,11 @@ static void REGAL_CALL Filt_glDeleteLists(Layer *_layer, GLuint list, GLsizei ra
      return ;
   }
 
-  orig.glDeleteLists( orig.glDeleteLists_layer, list, range );
+  RglDeleteLists( orig, list, range );
 
 }
 
-static void REGAL_CALL Filt_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL filt_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -590,11 +592,11 @@ static void REGAL_CALL Filt_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, c
     return;
   }
 
-  orig.glDeleteRenderbuffersEXT( orig.glDeleteRenderbuffersEXT_layer, n, renderbuffers );
+  RglDeleteRenderbuffersEXT( orig, n, renderbuffers );
 
 }
 
-static void REGAL_CALL Filt_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL filt_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -609,11 +611,11 @@ static void REGAL_CALL Filt_glDisableIndexedEXT(Layer *_layer, GLenum target, GL
     return;
   }
 
-  orig.glDisableIndexedEXT( orig.glDisableIndexedEXT_layer, target, index );
+  RglDisableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Filt_glDrawBuffer(Layer *_layer, GLenum mode)
+static void REGAL_CALL filt_glDrawBuffer(Layer *_layer, GLenum mode)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -626,11 +628,11 @@ static void REGAL_CALL Filt_glDrawBuffer(Layer *_layer, GLenum mode)
       return orig.glDrawBuffer( _context, mode );
   }
 
-  orig.glDrawBuffer( orig.glDrawBuffer_layer, mode );
+  RglDrawBuffer( orig, mode );
 
 }
 
-static void REGAL_CALL Filt_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL filt_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -653,11 +655,11 @@ static void REGAL_CALL Filt_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum
     }
   }
 
-  orig.glDrawBuffers( orig.glDrawBuffers_layer, n, bufs );
+  RglDrawBuffers( orig, n, bufs );
 
 }
 
-static void REGAL_CALL Filt_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL filt_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -671,11 +673,11 @@ static void REGAL_CALL Filt_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLe
     return;
   }
 
-  orig.glDrawBuffersARB( orig.glDrawBuffersARB_layer, n, bufs );
+  RglDrawBuffersARB( orig, n, bufs );
 
 }
 
-static void REGAL_CALL Filt_glDrawBuffersATI(Layer *_layer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL filt_glDrawBuffersATI(Layer *_layer, GLsizei n, const GLenum *bufs)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -689,11 +691,11 @@ static void REGAL_CALL Filt_glDrawBuffersATI(Layer *_layer, GLsizei n, const GLe
     return;
   }
 
-  orig.glDrawBuffersATI( orig.glDrawBuffersATI_layer, n, bufs );
+  RglDrawBuffersATI( orig, n, bufs );
 
 }
 
-static void REGAL_CALL Filt_glDrawPixels(Layer *_layer, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL filt_glDrawPixels(Layer *_layer, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -709,11 +711,11 @@ static void REGAL_CALL Filt_glDrawPixels(Layer *_layer, GLsizei width, GLsizei h
      return ;
   }
 
-  orig.glDrawPixels( orig.glDrawPixels_layer, width, height, format, type, pixels );
+  RglDrawPixels( orig, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL Filt_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL filt_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -725,11 +727,11 @@ static void REGAL_CALL Filt_glDrawRangeElements(Layer *_layer, GLenum mode, GLui
     return orig.glDrawElements( _context,mode, count, type, indices);
   }
 
-  orig.glDrawRangeElements( orig.glDrawRangeElements_layer, mode, start, end, count, type, indices );
+  RglDrawRangeElements( orig, mode, start, end, count, type, indices );
 
 }
 
-static void REGAL_CALL Filt_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL filt_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mode, GLuint start, GLuint end, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -749,11 +751,11 @@ static void REGAL_CALL Filt_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum 
     }
   }
 
-  orig.glDrawRangeElementsBaseVertex( orig.glDrawRangeElementsBaseVertex_layer, mode, start, end, count, type, indices, basevertex );
+  RglDrawRangeElementsBaseVertex( orig, mode, start, end, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL Filt_glEdgeFlag(Layer *_layer, GLboolean flag)
+static void REGAL_CALL filt_glEdgeFlag(Layer *_layer, GLboolean flag)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -769,11 +771,11 @@ static void REGAL_CALL Filt_glEdgeFlag(Layer *_layer, GLboolean flag)
      return ;
   }
 
-  orig.glEdgeFlag( orig.glEdgeFlag_layer, flag );
+  RglEdgeFlag( orig, flag );
 
 }
 
-static void REGAL_CALL Filt_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL filt_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -788,11 +790,11 @@ static void REGAL_CALL Filt_glEnableIndexedEXT(Layer *_layer, GLenum target, GLu
     return;
   }
 
-  orig.glEnableIndexedEXT( orig.glEnableIndexedEXT_layer, target, index );
+  RglEnableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Filt_glEndList(Layer *_layer)
+static void REGAL_CALL filt_glEndList(Layer *_layer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -808,11 +810,11 @@ static void REGAL_CALL Filt_glEndList(Layer *_layer)
      return ;
   }
 
-  orig.glEndList( orig.glEndList_layer );
+  RglEndList( orig );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord1d(Layer *_layer, GLdouble u)
+static void REGAL_CALL filt_glEvalCoord1d(Layer *_layer, GLdouble u)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -828,11 +830,11 @@ static void REGAL_CALL Filt_glEvalCoord1d(Layer *_layer, GLdouble u)
      return ;
   }
 
-  orig.glEvalCoord1d( orig.glEvalCoord1d_layer, u );
+  RglEvalCoord1d( orig, u );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord1dv(Layer *_layer, const GLdouble *u)
+static void REGAL_CALL filt_glEvalCoord1dv(Layer *_layer, const GLdouble *u)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -848,11 +850,11 @@ static void REGAL_CALL Filt_glEvalCoord1dv(Layer *_layer, const GLdouble *u)
      return ;
   }
 
-  orig.glEvalCoord1dv( orig.glEvalCoord1dv_layer, u );
+  RglEvalCoord1dv( orig, u );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord1f(Layer *_layer, GLfloat u)
+static void REGAL_CALL filt_glEvalCoord1f(Layer *_layer, GLfloat u)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -868,11 +870,11 @@ static void REGAL_CALL Filt_glEvalCoord1f(Layer *_layer, GLfloat u)
      return ;
   }
 
-  orig.glEvalCoord1f( orig.glEvalCoord1f_layer, u );
+  RglEvalCoord1f( orig, u );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord1fv(Layer *_layer, const GLfloat *u)
+static void REGAL_CALL filt_glEvalCoord1fv(Layer *_layer, const GLfloat *u)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -888,11 +890,11 @@ static void REGAL_CALL Filt_glEvalCoord1fv(Layer *_layer, const GLfloat *u)
      return ;
   }
 
-  orig.glEvalCoord1fv( orig.glEvalCoord1fv_layer, u );
+  RglEvalCoord1fv( orig, u );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord2d(Layer *_layer, GLdouble u, GLdouble v)
+static void REGAL_CALL filt_glEvalCoord2d(Layer *_layer, GLdouble u, GLdouble v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -908,11 +910,11 @@ static void REGAL_CALL Filt_glEvalCoord2d(Layer *_layer, GLdouble u, GLdouble v)
      return ;
   }
 
-  orig.glEvalCoord2d( orig.glEvalCoord2d_layer, u, v );
+  RglEvalCoord2d( orig, u, v );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord2dv(Layer *_layer, const GLdouble *u)
+static void REGAL_CALL filt_glEvalCoord2dv(Layer *_layer, const GLdouble *u)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -928,11 +930,11 @@ static void REGAL_CALL Filt_glEvalCoord2dv(Layer *_layer, const GLdouble *u)
      return ;
   }
 
-  orig.glEvalCoord2dv( orig.glEvalCoord2dv_layer, u );
+  RglEvalCoord2dv( orig, u );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord2f(Layer *_layer, GLfloat u, GLfloat v)
+static void REGAL_CALL filt_glEvalCoord2f(Layer *_layer, GLfloat u, GLfloat v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -948,11 +950,11 @@ static void REGAL_CALL Filt_glEvalCoord2f(Layer *_layer, GLfloat u, GLfloat v)
      return ;
   }
 
-  orig.glEvalCoord2f( orig.glEvalCoord2f_layer, u, v );
+  RglEvalCoord2f( orig, u, v );
 
 }
 
-static void REGAL_CALL Filt_glEvalCoord2fv(Layer *_layer, const GLfloat *u)
+static void REGAL_CALL filt_glEvalCoord2fv(Layer *_layer, const GLfloat *u)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -968,11 +970,11 @@ static void REGAL_CALL Filt_glEvalCoord2fv(Layer *_layer, const GLfloat *u)
      return ;
   }
 
-  orig.glEvalCoord2fv( orig.glEvalCoord2fv_layer, u );
+  RglEvalCoord2fv( orig, u );
 
 }
 
-static void REGAL_CALL Filt_glEvalMesh1(Layer *_layer, GLenum mode, GLint i1, GLint i2)
+static void REGAL_CALL filt_glEvalMesh1(Layer *_layer, GLenum mode, GLint i1, GLint i2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -988,11 +990,11 @@ static void REGAL_CALL Filt_glEvalMesh1(Layer *_layer, GLenum mode, GLint i1, GL
      return ;
   }
 
-  orig.glEvalMesh1( orig.glEvalMesh1_layer, mode, i1, i2 );
+  RglEvalMesh1( orig, mode, i1, i2 );
 
 }
 
-static void REGAL_CALL Filt_glEvalMesh2(Layer *_layer, GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
+static void REGAL_CALL filt_glEvalMesh2(Layer *_layer, GLenum mode, GLint i1, GLint i2, GLint j1, GLint j2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1008,11 +1010,11 @@ static void REGAL_CALL Filt_glEvalMesh2(Layer *_layer, GLenum mode, GLint i1, GL
      return ;
   }
 
-  orig.glEvalMesh2( orig.glEvalMesh2_layer, mode, i1, i2, j1, j2 );
+  RglEvalMesh2( orig, mode, i1, i2, j1, j2 );
 
 }
 
-static void REGAL_CALL Filt_glEvalPoint1(Layer *_layer, GLint i)
+static void REGAL_CALL filt_glEvalPoint1(Layer *_layer, GLint i)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1028,11 +1030,11 @@ static void REGAL_CALL Filt_glEvalPoint1(Layer *_layer, GLint i)
      return ;
   }
 
-  orig.glEvalPoint1( orig.glEvalPoint1_layer, i );
+  RglEvalPoint1( orig, i );
 
 }
 
-static void REGAL_CALL Filt_glEvalPoint2(Layer *_layer, GLint i, GLint j)
+static void REGAL_CALL filt_glEvalPoint2(Layer *_layer, GLint i, GLint j)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1048,11 +1050,11 @@ static void REGAL_CALL Filt_glEvalPoint2(Layer *_layer, GLint i, GLint j)
      return ;
   }
 
-  orig.glEvalPoint2( orig.glEvalPoint2_layer, i, j );
+  RglEvalPoint2( orig, i, j );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferRenderbuffer(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL filt_glFramebufferRenderbuffer(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1063,11 +1065,11 @@ static void REGAL_CALL Filt_glFramebufferRenderbuffer(Layer *_layer, GLenum targ
     orig.glFramebufferRenderbuffer( _context,target, attachment, renderbuffertarget, renderbuffer);
   return;
 
-  orig.glFramebufferRenderbuffer( orig.glFramebufferRenderbuffer_layer, target, attachment, renderbuffertarget, renderbuffer );
+  RglFramebufferRenderbuffer( orig, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferRenderbufferEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL filt_glFramebufferRenderbufferEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1081,11 +1083,11 @@ static void REGAL_CALL Filt_glFramebufferRenderbufferEXT(Layer *_layer, GLenum t
     return;
   }
 
-  orig.glFramebufferRenderbufferEXT( orig.glFramebufferRenderbufferEXT_layer, target, attachment, renderbuffertarget, renderbuffer );
+  RglFramebufferRenderbufferEXT( orig, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferTexture1D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL filt_glFramebufferTexture1D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1096,11 +1098,11 @@ static void REGAL_CALL Filt_glFramebufferTexture1D(Layer *_layer, GLenum target,
     orig.glFramebufferTexture1D( _context,target, attachment, textarget, texture, level);
   return;
 
-  orig.glFramebufferTexture1D( orig.glFramebufferTexture1D_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture1D( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferTexture1DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL filt_glFramebufferTexture1DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1114,11 +1116,11 @@ static void REGAL_CALL Filt_glFramebufferTexture1DEXT(Layer *_layer, GLenum targ
     return;
   }
 
-  orig.glFramebufferTexture1DEXT( orig.glFramebufferTexture1DEXT_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture1DEXT( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferTexture2D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL filt_glFramebufferTexture2D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1133,11 +1135,11 @@ static void REGAL_CALL Filt_glFramebufferTexture2D(Layer *_layer, GLenum target,
     return ;
   }
 
-  orig.glFramebufferTexture2D( orig.glFramebufferTexture2D_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture2D( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferTexture2DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL filt_glFramebufferTexture2DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1151,11 +1153,11 @@ static void REGAL_CALL Filt_glFramebufferTexture2DEXT(Layer *_layer, GLenum targ
     return;
   }
 
-  orig.glFramebufferTexture2DEXT( orig.glFramebufferTexture2DEXT_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture2DEXT( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferTexture3D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL filt_glFramebufferTexture3D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1166,11 +1168,11 @@ static void REGAL_CALL Filt_glFramebufferTexture3D(Layer *_layer, GLenum target,
     orig.glFramebufferTexture3D( _context,target, attachment, textarget, texture, level, layer);
   return;
 
-  orig.glFramebufferTexture3D( orig.glFramebufferTexture3D_layer, target, attachment, textarget, texture, level, layer );
+  RglFramebufferTexture3D( orig, target, attachment, textarget, texture, level, layer );
 
 }
 
-static void REGAL_CALL Filt_glFramebufferTexture3DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+static void REGAL_CALL filt_glFramebufferTexture3DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1184,11 +1186,11 @@ static void REGAL_CALL Filt_glFramebufferTexture3DEXT(Layer *_layer, GLenum targ
     return;
   }
 
-  orig.glFramebufferTexture3DEXT( orig.glFramebufferTexture3DEXT_layer, target, attachment, textarget, texture, level, zoffset );
+  RglFramebufferTexture3DEXT( orig, target, attachment, textarget, texture, level, zoffset );
 
 }
 
-static void REGAL_CALL Filt_glGenFramebuffersEXT(Layer *_layer, GLsizei n, GLuint *framebuffers)
+static void REGAL_CALL filt_glGenFramebuffersEXT(Layer *_layer, GLsizei n, GLuint *framebuffers)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1202,11 +1204,11 @@ static void REGAL_CALL Filt_glGenFramebuffersEXT(Layer *_layer, GLsizei n, GLuin
     return;
   }
 
-  orig.glGenFramebuffersEXT( orig.glGenFramebuffersEXT_layer, n, framebuffers );
+  RglGenFramebuffersEXT( orig, n, framebuffers );
 
 }
 
-static GLuint REGAL_CALL Filt_glGenLists(Layer *_layer, GLsizei range)
+static GLuint REGAL_CALL filt_glGenLists(Layer *_layer, GLsizei range)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1222,11 +1224,11 @@ static GLuint REGAL_CALL Filt_glGenLists(Layer *_layer, GLsizei range)
      return (( GLuint  )0);
   }
 
-  return orig.glGenLists( orig.glGenLists_layer, range );
+  return RglGenLists( orig, range );
 
 }
 
-static void REGAL_CALL Filt_glGenProgramsARB(Layer *_layer, GLsizei n, GLuint *programs)
+static void REGAL_CALL filt_glGenProgramsARB(Layer *_layer, GLsizei n, GLuint *programs)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1239,11 +1241,11 @@ static void REGAL_CALL Filt_glGenProgramsARB(Layer *_layer, GLsizei n, GLuint *p
     return;
   }
 
-  orig.glGenProgramsARB( orig.glGenProgramsARB_layer, n, programs );
+  RglGenProgramsARB( orig, n, programs );
 
 }
 
-static void REGAL_CALL Filt_glGenRenderbuffersEXT(Layer *_layer, GLsizei n, GLuint *renderbuffers)
+static void REGAL_CALL filt_glGenRenderbuffersEXT(Layer *_layer, GLsizei n, GLuint *renderbuffers)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1257,11 +1259,11 @@ static void REGAL_CALL Filt_glGenRenderbuffersEXT(Layer *_layer, GLsizei n, GLui
     return;
   }
 
-  orig.glGenRenderbuffersEXT( orig.glGenRenderbuffersEXT_layer, n, renderbuffers );
+  RglGenRenderbuffersEXT( orig, n, renderbuffers );
 
 }
 
-static void REGAL_CALL Filt_glGenSamplers(Layer *_layer, GLsizei count, GLuint *samplers)
+static void REGAL_CALL filt_glGenSamplers(Layer *_layer, GLsizei count, GLuint *samplers)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1277,11 +1279,11 @@ static void REGAL_CALL Filt_glGenSamplers(Layer *_layer, GLsizei count, GLuint *
     return ;
   }
 
-  orig.glGenSamplers( orig.glGenSamplers_layer, count, samplers );
+  RglGenSamplers( orig, count, samplers );
 
 }
 
-static void REGAL_CALL Filt_glGenerateMipmap(Layer *_layer, GLenum target)
+static void REGAL_CALL filt_glGenerateMipmap(Layer *_layer, GLenum target)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1296,11 +1298,11 @@ static void REGAL_CALL Filt_glGenerateMipmap(Layer *_layer, GLenum target)
     return ;
   }
 
-  orig.glGenerateMipmap( orig.glGenerateMipmap_layer, target );
+  RglGenerateMipmap( orig, target );
 
 }
 
-static void REGAL_CALL Filt_glGenerateMipmapEXT(Layer *_layer, GLenum target)
+static void REGAL_CALL filt_glGenerateMipmapEXT(Layer *_layer, GLenum target)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1314,11 +1316,11 @@ static void REGAL_CALL Filt_glGenerateMipmapEXT(Layer *_layer, GLenum target)
     return;
   }
 
-  orig.glGenerateMipmapEXT( orig.glGenerateMipmapEXT_layer, target );
+  RglGenerateMipmapEXT( orig, target );
 
 }
 
-static void REGAL_CALL Filt_glGetBooleanIndexedvEXT(Layer *_layer, GLenum value, GLuint index, GLboolean *data)
+static void REGAL_CALL filt_glGetBooleanIndexedvEXT(Layer *_layer, GLenum value, GLuint index, GLboolean *data)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1333,11 +1335,11 @@ static void REGAL_CALL Filt_glGetBooleanIndexedvEXT(Layer *_layer, GLenum value,
     return;
   }
 
-  orig.glGetBooleanIndexedvEXT( orig.glGetBooleanIndexedvEXT_layer, value, index, data );
+  RglGetBooleanIndexedvEXT( orig, value, index, data );
 
 }
 
-static void REGAL_CALL Filt_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
+static void REGAL_CALL filt_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1352,11 +1354,11 @@ static void REGAL_CALL Filt_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean
     return ;
   }
 
-  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
+  RglGetBooleanv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL filt_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1371,11 +1373,11 @@ static void REGAL_CALL Filt_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *
     return ;
   }
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL filt_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1390,11 +1392,11 @@ static void REGAL_CALL Filt_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *pa
     return ;
   }
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetFramebufferAttachmentParameteriv(Layer *_layer, GLenum target, GLenum attachment, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetFramebufferAttachmentParameteriv(Layer *_layer, GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1407,11 +1409,11 @@ static void REGAL_CALL Filt_glGetFramebufferAttachmentParameteriv(Layer *_layer,
     orig.glGetFramebufferAttachmentParameteriv( _context,target, attachment, pname, params);
   return;
 
-  orig.glGetFramebufferAttachmentParameteriv( orig.glGetFramebufferAttachmentParameteriv_layer, target, attachment, pname, params );
+  RglGetFramebufferAttachmentParameteriv( orig, target, attachment, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetFramebufferAttachmentParameterivEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetFramebufferAttachmentParameterivEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1425,11 +1427,11 @@ static void REGAL_CALL Filt_glGetFramebufferAttachmentParameterivEXT(Layer *_lay
     return;
   }
 
-  orig.glGetFramebufferAttachmentParameterivEXT( orig.glGetFramebufferAttachmentParameterivEXT_layer, target, attachment, pname, params );
+  RglGetFramebufferAttachmentParameterivEXT( orig, target, attachment, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetInfoLogARB(Layer *_layer, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
+static void REGAL_CALL filt_glGetInfoLogARB(Layer *_layer, GLhandleARB obj, GLsizei maxLength, GLsizei *length, GLcharARB *infoLog)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1445,11 +1447,11 @@ static void REGAL_CALL Filt_glGetInfoLogARB(Layer *_layer, GLhandleARB obj, GLsi
     return;
   }
 
-  orig.glGetInfoLogARB( orig.glGetInfoLogARB_layer, obj, maxLength, length, infoLog );
+  RglGetInfoLogARB( orig, obj, maxLength, length, infoLog );
 
 }
 
-static void REGAL_CALL Filt_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *params)
+static void REGAL_CALL filt_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1464,11 +1466,11 @@ static void REGAL_CALL Filt_glGetInteger64v(Layer *_layer, GLenum pname, GLint64
     return ;
   }
 
-  orig.glGetInteger64v( orig.glGetInteger64v_layer, pname, params );
+  RglGetInteger64v( orig, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetIntegerIndexedvEXT(Layer *_layer, GLenum value, GLuint index, GLint *data)
+static void REGAL_CALL filt_glGetIntegerIndexedvEXT(Layer *_layer, GLenum value, GLuint index, GLint *data)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1483,11 +1485,11 @@ static void REGAL_CALL Filt_glGetIntegerIndexedvEXT(Layer *_layer, GLenum value,
     return;
   }
 
-  orig.glGetIntegerIndexedvEXT( orig.glGetIntegerIndexedvEXT_layer, value, index, data );
+  RglGetIntegerIndexedvEXT( orig, value, index, data );
 
 }
 
-static void REGAL_CALL Filt_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1502,11 +1504,11 @@ static void REGAL_CALL Filt_glGetIntegerv(Layer *_layer, GLenum pname, GLint *pa
     return ;
   }
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetObjectParameterivARB(Layer *_layer, GLhandleARB obj, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetObjectParameterivARB(Layer *_layer, GLhandleARB obj, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1522,11 +1524,11 @@ static void REGAL_CALL Filt_glGetObjectParameterivARB(Layer *_layer, GLhandleARB
     return;
   }
 
-  orig.glGetObjectParameterivARB( orig.glGetObjectParameterivARB_layer, obj, pname, params );
+  RglGetObjectParameterivARB( orig, obj, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetProgramivARB(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetProgramivARB(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1539,11 +1541,11 @@ static void REGAL_CALL Filt_glGetProgramivARB(Layer *_layer, GLenum target, GLen
     return;
   }
 
-  orig.glGetProgramivARB( orig.glGetProgramivARB_layer, target, pname, params );
+  RglGetProgramivARB( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetRenderbufferParameterivEXT(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetRenderbufferParameterivEXT(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1557,11 +1559,11 @@ static void REGAL_CALL Filt_glGetRenderbufferParameterivEXT(Layer *_layer, GLenu
     return;
   }
 
-  orig.glGetRenderbufferParameterivEXT( orig.glGetRenderbufferParameterivEXT_layer, target, pname, params );
+  RglGetRenderbufferParameterivEXT( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetTexImage(Layer *_layer, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
+static void REGAL_CALL filt_glGetTexImage(Layer *_layer, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1577,11 +1579,11 @@ static void REGAL_CALL Filt_glGetTexImage(Layer *_layer, GLenum target, GLint le
     return ;
   }
 
-  orig.glGetTexImage( orig.glGetTexImage_layer, target, level, format, type, pixels );
+  RglGetTexImage( orig, target, level, format, type, pixels );
 
 }
 
-static void REGAL_CALL Filt_glGetTexLevelParameterfv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL filt_glGetTexLevelParameterfv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1597,11 +1599,11 @@ static void REGAL_CALL Filt_glGetTexLevelParameterfv(Layer *_layer, GLenum targe
     return ;
   }
 
-  orig.glGetTexLevelParameterfv( orig.glGetTexLevelParameterfv_layer, target, level, pname, params );
+  RglGetTexLevelParameterfv( orig, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetTexLevelParameteriv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetTexLevelParameteriv(Layer *_layer, GLenum target, GLint level, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1617,11 +1619,11 @@ static void REGAL_CALL Filt_glGetTexLevelParameteriv(Layer *_layer, GLenum targe
     return ;
   }
 
-  orig.glGetTexLevelParameteriv( orig.glGetTexLevelParameteriv_layer, target, level, pname, params );
+  RglGetTexLevelParameteriv( orig, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL filt_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1636,11 +1638,11 @@ static void REGAL_CALL Filt_glGetTexParameteriv(Layer *_layer, GLenum target, GL
     return ;
   }
 
-  orig.glGetTexParameteriv( orig.glGetTexParameteriv_layer, target, pname, params );
+  RglGetTexParameteriv( orig, target, pname, params );
 
 }
 
-static GLint REGAL_CALL Filt_glGetUniformLocationARB(Layer *_layer, GLhandleARB programObj, const GLcharARB *name)
+static GLint REGAL_CALL filt_glGetUniformLocationARB(Layer *_layer, GLhandleARB programObj, const GLcharARB *name)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1652,11 +1654,11 @@ static GLint REGAL_CALL Filt_glGetUniformLocationARB(Layer *_layer, GLhandleARB 
     return orig.glGetUniformLocation( _context,programObj, name);
   }
 
-  return orig.glGetUniformLocationARB( orig.glGetUniformLocationARB_layer, programObj, name );
+  return RglGetUniformLocationARB( orig, programObj, name );
 
 }
 
-static GLboolean REGAL_CALL Filt_glIsEnabledIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static GLboolean REGAL_CALL filt_glIsEnabledIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1671,11 +1673,11 @@ static GLboolean REGAL_CALL Filt_glIsEnabledIndexedEXT(Layer *_layer, GLenum tar
     return GL_FALSE;
   }
 
-  return orig.glIsEnabledIndexedEXT( orig.glIsEnabledIndexedEXT_layer, target, index );
+  return RglIsEnabledIndexedEXT( orig, target, index );
 
 }
 
-static GLboolean REGAL_CALL Filt_glIsFramebufferEXT(Layer *_layer, GLuint framebuffer)
+static GLboolean REGAL_CALL filt_glIsFramebufferEXT(Layer *_layer, GLuint framebuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1688,11 +1690,11 @@ static GLboolean REGAL_CALL Filt_glIsFramebufferEXT(Layer *_layer, GLuint frameb
     return orig.glIsFramebuffer( _context,framebuffer);
   }
 
-  return orig.glIsFramebufferEXT( orig.glIsFramebufferEXT_layer, framebuffer );
+  return RglIsFramebufferEXT( orig, framebuffer );
 
 }
 
-static GLboolean REGAL_CALL Filt_glIsRenderbufferEXT(Layer *_layer, GLuint renderbuffer)
+static GLboolean REGAL_CALL filt_glIsRenderbufferEXT(Layer *_layer, GLuint renderbuffer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1705,11 +1707,11 @@ static GLboolean REGAL_CALL Filt_glIsRenderbufferEXT(Layer *_layer, GLuint rende
     return orig.glIsRenderbuffer( _context,renderbuffer);
   }
 
-  return orig.glIsRenderbufferEXT( orig.glIsRenderbufferEXT_layer, renderbuffer );
+  return RglIsRenderbufferEXT( orig, renderbuffer );
 
 }
 
-static void REGAL_CALL Filt_glLineStipple(Layer *_layer, GLint factor, GLushort pattern)
+static void REGAL_CALL filt_glLineStipple(Layer *_layer, GLint factor, GLushort pattern)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1725,11 +1727,11 @@ static void REGAL_CALL Filt_glLineStipple(Layer *_layer, GLint factor, GLushort 
      return ;
   }
 
-  orig.glLineStipple( orig.glLineStipple_layer, factor, pattern );
+  RglLineStipple( orig, factor, pattern );
 
 }
 
-static void REGAL_CALL Filt_glLineWidth(Layer *_layer, GLfloat width)
+static void REGAL_CALL filt_glLineWidth(Layer *_layer, GLfloat width)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1745,11 +1747,11 @@ static void REGAL_CALL Filt_glLineWidth(Layer *_layer, GLfloat width)
      return ;
   }
 
-  orig.glLineWidth( orig.glLineWidth_layer, width );
+  RglLineWidth( orig, width );
 
 }
 
-static void REGAL_CALL Filt_glMap1d(Layer *_layer, GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
+static void REGAL_CALL filt_glMap1d(Layer *_layer, GLenum target, GLdouble u1, GLdouble u2, GLint stride, GLint order, const GLdouble *points)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1765,11 +1767,11 @@ static void REGAL_CALL Filt_glMap1d(Layer *_layer, GLenum target, GLdouble u1, G
      return ;
   }
 
-  orig.glMap1d( orig.glMap1d_layer, target, u1, u2, stride, order, points );
+  RglMap1d( orig, target, u1, u2, stride, order, points );
 
 }
 
-static void REGAL_CALL Filt_glMap1f(Layer *_layer, GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
+static void REGAL_CALL filt_glMap1f(Layer *_layer, GLenum target, GLfloat u1, GLfloat u2, GLint stride, GLint order, const GLfloat *points)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1785,11 +1787,11 @@ static void REGAL_CALL Filt_glMap1f(Layer *_layer, GLenum target, GLfloat u1, GL
      return ;
   }
 
-  orig.glMap1f( orig.glMap1f_layer, target, u1, u2, stride, order, points );
+  RglMap1f( orig, target, u1, u2, stride, order, points );
 
 }
 
-static void REGAL_CALL Filt_glMap2d(Layer *_layer, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
+static void REGAL_CALL filt_glMap2d(Layer *_layer, GLenum target, GLdouble u1, GLdouble u2, GLint ustride, GLint uorder, GLdouble v1, GLdouble v2, GLint vstride, GLint vorder, const GLdouble *points)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1805,11 +1807,11 @@ static void REGAL_CALL Filt_glMap2d(Layer *_layer, GLenum target, GLdouble u1, G
      return ;
   }
 
-  orig.glMap2d( orig.glMap2d_layer, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
+  RglMap2d( orig, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
 
 }
 
-static void REGAL_CALL Filt_glMap2f(Layer *_layer, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
+static void REGAL_CALL filt_glMap2f(Layer *_layer, GLenum target, GLfloat u1, GLfloat u2, GLint ustride, GLint uorder, GLfloat v1, GLfloat v2, GLint vstride, GLint vorder, const GLfloat *points)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1825,11 +1827,11 @@ static void REGAL_CALL Filt_glMap2f(Layer *_layer, GLenum target, GLfloat u1, GL
      return ;
   }
 
-  orig.glMap2f( orig.glMap2f_layer, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
+  RglMap2f( orig, target, u1, u2, ustride, uorder, v1, v2, vstride, vorder, points );
 
 }
 
-static GLvoid *REGAL_CALL Filt_glMapBuffer(Layer *_layer, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL filt_glMapBuffer(Layer *_layer, GLenum target, GLenum access)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1841,11 +1843,11 @@ static GLvoid *REGAL_CALL Filt_glMapBuffer(Layer *_layer, GLenum target, GLenum 
     return orig.glMapBufferOES( _context,target, access);
   }
 
-  return orig.glMapBuffer( orig.glMapBuffer_layer, target, access );
+  return RglMapBuffer( orig, target, access );
 
 }
 
-static GLvoid *REGAL_CALL Filt_glMapBufferARB(Layer *_layer, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL filt_glMapBufferARB(Layer *_layer, GLenum target, GLenum access)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1857,11 +1859,11 @@ static GLvoid *REGAL_CALL Filt_glMapBufferARB(Layer *_layer, GLenum target, GLen
     return orig.glMapBufferOES( _context,target, access);
   }
 
-  return orig.glMapBufferARB( orig.glMapBufferARB_layer, target, access );
+  return RglMapBufferARB( orig, target, access );
 
 }
 
-static void REGAL_CALL Filt_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2)
+static void REGAL_CALL filt_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1877,11 +1879,11 @@ static void REGAL_CALL Filt_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GL
      return ;
   }
 
-  orig.glMapGrid1d( orig.glMapGrid1d_layer, un, u1, u2 );
+  RglMapGrid1d( orig, un, u1, u2 );
 
 }
 
-static void REGAL_CALL Filt_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2)
+static void REGAL_CALL filt_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1897,11 +1899,11 @@ static void REGAL_CALL Filt_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLf
      return ;
   }
 
-  orig.glMapGrid1f( orig.glMapGrid1f_layer, un, u1, u2 );
+  RglMapGrid1f( orig, un, u1, u2 );
 
 }
 
-static void REGAL_CALL Filt_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
+static void REGAL_CALL filt_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GLdouble u2, GLint vn, GLdouble v1, GLdouble v2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1917,11 +1919,11 @@ static void REGAL_CALL Filt_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GL
      return ;
   }
 
-  orig.glMapGrid2d( orig.glMapGrid2d_layer, un, u1, u2, vn, v1, v2 );
+  RglMapGrid2d( orig, un, u1, u2, vn, v1, v2 );
 
 }
 
-static void REGAL_CALL Filt_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
+static void REGAL_CALL filt_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLfloat u2, GLint vn, GLfloat v1, GLfloat v2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1937,11 +1939,11 @@ static void REGAL_CALL Filt_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLf
      return ;
   }
 
-  orig.glMapGrid2f( orig.glMapGrid2f_layer, un, u1, u2, vn, v1, v2 );
+  RglMapGrid2f( orig, un, u1, u2, vn, v1, v2 );
 
 }
 
-static void REGAL_CALL Filt_glNewList(Layer *_layer, GLuint list, GLenum mode)
+static void REGAL_CALL filt_glNewList(Layer *_layer, GLuint list, GLenum mode)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1957,11 +1959,11 @@ static void REGAL_CALL Filt_glNewList(Layer *_layer, GLuint list, GLenum mode)
      return ;
   }
 
-  orig.glNewList( orig.glNewList_layer, list, mode );
+  RglNewList( orig, list, mode );
 
 }
 
-static void REGAL_CALL Filt_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL filt_glPixelStoref(Layer *_layer, GLenum pname, GLfloat param)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1977,11 +1979,11 @@ static void REGAL_CALL Filt_glPixelStoref(Layer *_layer, GLenum pname, GLfloat p
      return ;
   }
 
-  orig.glPixelStoref( orig.glPixelStoref_layer, pname, param );
+  RglPixelStoref( orig, pname, param );
 
 }
 
-static void REGAL_CALL Filt_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL filt_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -1996,11 +1998,11 @@ static void REGAL_CALL Filt_glPixelStorei(Layer *_layer, GLenum pname, GLint par
     return ;
   }
 
-  orig.glPixelStorei( orig.glPixelStorei_layer, pname, param );
+  RglPixelStorei( orig, pname, param );
 
 }
 
-static void REGAL_CALL Filt_glPixelTransferf(Layer *_layer, GLenum pname, GLfloat param)
+static void REGAL_CALL filt_glPixelTransferf(Layer *_layer, GLenum pname, GLfloat param)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2016,11 +2018,11 @@ static void REGAL_CALL Filt_glPixelTransferf(Layer *_layer, GLenum pname, GLfloa
      return ;
   }
 
-  orig.glPixelTransferf( orig.glPixelTransferf_layer, pname, param );
+  RglPixelTransferf( orig, pname, param );
 
 }
 
-static void REGAL_CALL Filt_glPixelTransferi(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL filt_glPixelTransferi(Layer *_layer, GLenum pname, GLint param)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2036,11 +2038,11 @@ static void REGAL_CALL Filt_glPixelTransferi(Layer *_layer, GLenum pname, GLint 
      return ;
   }
 
-  orig.glPixelTransferi( orig.glPixelTransferi_layer, pname, param );
+  RglPixelTransferi( orig, pname, param );
 
 }
 
-static void REGAL_CALL Filt_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat yfactor)
+static void REGAL_CALL filt_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat yfactor)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2056,11 +2058,11 @@ static void REGAL_CALL Filt_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat 
      return ;
   }
 
-  orig.glPixelZoom( orig.glPixelZoom_layer, xfactor, yfactor );
+  RglPixelZoom( orig, xfactor, yfactor );
 
 }
 
-static void REGAL_CALL Filt_glPolygonMode(Layer *_layer, GLenum face, GLenum mode)
+static void REGAL_CALL filt_glPolygonMode(Layer *_layer, GLenum face, GLenum mode)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2075,11 +2077,11 @@ static void REGAL_CALL Filt_glPolygonMode(Layer *_layer, GLenum face, GLenum mod
     return ;
   }
 
-  orig.glPolygonMode( orig.glPolygonMode_layer, face, mode );
+  RglPolygonMode( orig, face, mode );
 
 }
 
-static void REGAL_CALL Filt_glPopGroupMarkerEXT(Layer *_layer)
+static void REGAL_CALL filt_glPopGroupMarkerEXT(Layer *_layer)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2090,11 +2092,11 @@ static void REGAL_CALL Filt_glPopGroupMarkerEXT(Layer *_layer)
     return;
   }
 
-  orig.glPopGroupMarkerEXT( orig.glPopGroupMarkerEXT_layer );
+  RglPopGroupMarkerEXT( orig );
 
 }
 
-static void REGAL_CALL Filt_glProgramStringARB(Layer *_layer, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
+static void REGAL_CALL filt_glProgramStringARB(Layer *_layer, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2107,11 +2109,11 @@ static void REGAL_CALL Filt_glProgramStringARB(Layer *_layer, GLenum target, GLe
     return;
   }
 
-  orig.glProgramStringARB( orig.glProgramStringARB_layer, target, format, len, string );
+  RglProgramStringARB( orig, target, format, len, string );
 
 }
 
-static void REGAL_CALL Filt_glPushGroupMarkerEXT(Layer *_layer, GLsizei length, const GLchar *marker)
+static void REGAL_CALL filt_glPushGroupMarkerEXT(Layer *_layer, GLsizei length, const GLchar *marker)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2122,11 +2124,11 @@ static void REGAL_CALL Filt_glPushGroupMarkerEXT(Layer *_layer, GLsizei length, 
     return;
   }
 
-  orig.glPushGroupMarkerEXT( orig.glPushGroupMarkerEXT_layer, length, marker );
+  RglPushGroupMarkerEXT( orig, length, marker );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
+static void REGAL_CALL filt_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2142,11 +2144,11 @@ static void REGAL_CALL Filt_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
      return ;
   }
 
-  orig.glRasterPos2d( orig.glRasterPos2d_layer, x, y );
+  RglRasterPos2d( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL filt_glRasterPos2dv(Layer *_layer, const GLdouble *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2162,11 +2164,11 @@ static void REGAL_CALL Filt_glRasterPos2dv(Layer *_layer, const GLdouble *v)
      return ;
   }
 
-  orig.glRasterPos2dv( orig.glRasterPos2dv_layer, v );
+  RglRasterPos2dv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
+static void REGAL_CALL filt_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2182,11 +2184,11 @@ static void REGAL_CALL Filt_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
      return ;
   }
 
-  orig.glRasterPos2f( orig.glRasterPos2f_layer, x, y );
+  RglRasterPos2f( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL filt_glRasterPos2fv(Layer *_layer, const GLfloat *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2202,11 +2204,11 @@ static void REGAL_CALL Filt_glRasterPos2fv(Layer *_layer, const GLfloat *v)
      return ;
   }
 
-  orig.glRasterPos2fv( orig.glRasterPos2fv_layer, v );
+  RglRasterPos2fv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2i(Layer *_layer, GLint x, GLint y)
+static void REGAL_CALL filt_glRasterPos2i(Layer *_layer, GLint x, GLint y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2222,11 +2224,11 @@ static void REGAL_CALL Filt_glRasterPos2i(Layer *_layer, GLint x, GLint y)
      return ;
   }
 
-  orig.glRasterPos2i( orig.glRasterPos2i_layer, x, y );
+  RglRasterPos2i( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL filt_glRasterPos2iv(Layer *_layer, const GLint *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2242,11 +2244,11 @@ static void REGAL_CALL Filt_glRasterPos2iv(Layer *_layer, const GLint *v)
      return ;
   }
 
-  orig.glRasterPos2iv( orig.glRasterPos2iv_layer, v );
+  RglRasterPos2iv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
+static void REGAL_CALL filt_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2262,11 +2264,11 @@ static void REGAL_CALL Filt_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
      return ;
   }
 
-  orig.glRasterPos2s( orig.glRasterPos2s_layer, x, y );
+  RglRasterPos2s( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos2sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL filt_glRasterPos2sv(Layer *_layer, const GLshort *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2282,11 +2284,11 @@ static void REGAL_CALL Filt_glRasterPos2sv(Layer *_layer, const GLshort *v)
      return ;
   }
 
-  orig.glRasterPos2sv( orig.glRasterPos2sv_layer, v );
+  RglRasterPos2sv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL filt_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2302,11 +2304,11 @@ static void REGAL_CALL Filt_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y,
      return ;
   }
 
-  orig.glRasterPos3d( orig.glRasterPos3d_layer, x, y, z );
+  RglRasterPos3d( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL filt_glRasterPos3dv(Layer *_layer, const GLdouble *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2322,11 +2324,11 @@ static void REGAL_CALL Filt_glRasterPos3dv(Layer *_layer, const GLdouble *v)
      return ;
   }
 
-  orig.glRasterPos3dv( orig.glRasterPos3dv_layer, v );
+  RglRasterPos3dv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL filt_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2342,11 +2344,11 @@ static void REGAL_CALL Filt_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, G
      return ;
   }
 
-  orig.glRasterPos3f( orig.glRasterPos3f_layer, x, y, z );
+  RglRasterPos3f( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL filt_glRasterPos3fv(Layer *_layer, const GLfloat *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2362,11 +2364,11 @@ static void REGAL_CALL Filt_glRasterPos3fv(Layer *_layer, const GLfloat *v)
      return ;
   }
 
-  orig.glRasterPos3fv( orig.glRasterPos3fv_layer, v );
+  RglRasterPos3fv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint z)
+static void REGAL_CALL filt_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2382,11 +2384,11 @@ static void REGAL_CALL Filt_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint
      return ;
   }
 
-  orig.glRasterPos3i( orig.glRasterPos3i_layer, x, y, z );
+  RglRasterPos3i( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL filt_glRasterPos3iv(Layer *_layer, const GLint *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2402,11 +2404,11 @@ static void REGAL_CALL Filt_glRasterPos3iv(Layer *_layer, const GLint *v)
      return ;
   }
 
-  orig.glRasterPos3iv( orig.glRasterPos3iv_layer, v );
+  RglRasterPos3iv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL filt_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2422,11 +2424,11 @@ static void REGAL_CALL Filt_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, G
      return ;
   }
 
-  orig.glRasterPos3s( orig.glRasterPos3s_layer, x, y, z );
+  RglRasterPos3s( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos3sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL filt_glRasterPos3sv(Layer *_layer, const GLshort *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2442,11 +2444,11 @@ static void REGAL_CALL Filt_glRasterPos3sv(Layer *_layer, const GLshort *v)
      return ;
   }
 
-  orig.glRasterPos3sv( orig.glRasterPos3sv_layer, v );
+  RglRasterPos3sv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL filt_glRasterPos4d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2462,11 +2464,11 @@ static void REGAL_CALL Filt_glRasterPos4d(Layer *_layer, GLdouble x, GLdouble y,
      return ;
   }
 
-  orig.glRasterPos4d( orig.glRasterPos4d_layer, x, y, z, w );
+  RglRasterPos4d( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4dv(Layer *_layer, const GLdouble *v)
+static void REGAL_CALL filt_glRasterPos4dv(Layer *_layer, const GLdouble *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2482,11 +2484,11 @@ static void REGAL_CALL Filt_glRasterPos4dv(Layer *_layer, const GLdouble *v)
      return ;
   }
 
-  orig.glRasterPos4dv( orig.glRasterPos4dv_layer, v );
+  RglRasterPos4dv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL filt_glRasterPos4f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2502,11 +2504,11 @@ static void REGAL_CALL Filt_glRasterPos4f(Layer *_layer, GLfloat x, GLfloat y, G
      return ;
   }
 
-  orig.glRasterPos4f( orig.glRasterPos4f_layer, x, y, z, w );
+  RglRasterPos4f( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4fv(Layer *_layer, const GLfloat *v)
+static void REGAL_CALL filt_glRasterPos4fv(Layer *_layer, const GLfloat *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2522,11 +2524,11 @@ static void REGAL_CALL Filt_glRasterPos4fv(Layer *_layer, const GLfloat *v)
      return ;
   }
 
-  orig.glRasterPos4fv( orig.glRasterPos4fv_layer, v );
+  RglRasterPos4fv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4i(Layer *_layer, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL filt_glRasterPos4i(Layer *_layer, GLint x, GLint y, GLint z, GLint w)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2542,11 +2544,11 @@ static void REGAL_CALL Filt_glRasterPos4i(Layer *_layer, GLint x, GLint y, GLint
      return ;
   }
 
-  orig.glRasterPos4i( orig.glRasterPos4i_layer, x, y, z, w );
+  RglRasterPos4i( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4iv(Layer *_layer, const GLint *v)
+static void REGAL_CALL filt_glRasterPos4iv(Layer *_layer, const GLint *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2562,11 +2564,11 @@ static void REGAL_CALL Filt_glRasterPos4iv(Layer *_layer, const GLint *v)
      return ;
   }
 
-  orig.glRasterPos4iv( orig.glRasterPos4iv_layer, v );
+  RglRasterPos4iv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4s(Layer *_layer, GLshort x, GLshort y, GLshort z, GLshort w)
+static void REGAL_CALL filt_glRasterPos4s(Layer *_layer, GLshort x, GLshort y, GLshort z, GLshort w)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2582,11 +2584,11 @@ static void REGAL_CALL Filt_glRasterPos4s(Layer *_layer, GLshort x, GLshort y, G
      return ;
   }
 
-  orig.glRasterPos4s( orig.glRasterPos4s_layer, x, y, z, w );
+  RglRasterPos4s( orig, x, y, z, w );
 
 }
 
-static void REGAL_CALL Filt_glRasterPos4sv(Layer *_layer, const GLshort *v)
+static void REGAL_CALL filt_glRasterPos4sv(Layer *_layer, const GLshort *v)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2602,11 +2604,11 @@ static void REGAL_CALL Filt_glRasterPos4sv(Layer *_layer, const GLshort *v)
      return ;
   }
 
-  orig.glRasterPos4sv( orig.glRasterPos4sv_layer, v );
+  RglRasterPos4sv( orig, v );
 
 }
 
-static void REGAL_CALL Filt_glReadBuffer(Layer *_layer, GLenum mode)
+static void REGAL_CALL filt_glReadBuffer(Layer *_layer, GLenum mode)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2626,11 +2628,11 @@ static void REGAL_CALL Filt_glReadBuffer(Layer *_layer, GLenum mode)
     orig.glReadBuffer( _context,mode);
   return;
 
-  orig.glReadBuffer( orig.glReadBuffer_layer, mode );
+  RglReadBuffer( orig, mode );
 
 }
 
-static void REGAL_CALL Filt_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
+static void REGAL_CALL filt_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLdouble x2, GLdouble y2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2646,11 +2648,11 @@ static void REGAL_CALL Filt_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLd
      return ;
   }
 
-  orig.glRectd( orig.glRectd_layer, x1, y1, x2, y2 );
+  RglRectd( orig, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL Filt_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
+static void REGAL_CALL filt_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLfloat x2, GLfloat y2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2666,11 +2668,11 @@ static void REGAL_CALL Filt_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLflo
      return ;
   }
 
-  orig.glRectf( orig.glRectf_layer, x1, y1, x2, y2 );
+  RglRectf( orig, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL Filt_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2, GLint y2)
+static void REGAL_CALL filt_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2, GLint y2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2686,11 +2688,11 @@ static void REGAL_CALL Filt_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2,
      return ;
   }
 
-  orig.glRecti( orig.glRecti_layer, x1, y1, x2, y2 );
+  RglRecti( orig, x1, y1, x2, y2 );
 
 }
 
-static void REGAL_CALL Filt_glRects(Layer *_layer, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
+static void REGAL_CALL filt_glRects(Layer *_layer, GLshort x1, GLshort y1, GLshort x2, GLshort y2)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2706,11 +2708,11 @@ static void REGAL_CALL Filt_glRects(Layer *_layer, GLshort x1, GLshort y1, GLsho
      return ;
   }
 
-  orig.glRects( orig.glRects_layer, x1, y1, x2, y2 );
+  RglRects( orig, x1, y1, x2, y2 );
 
 }
 
-static GLint REGAL_CALL Filt_glRenderMode(Layer *_layer, GLenum mode)
+static GLint REGAL_CALL filt_glRenderMode(Layer *_layer, GLenum mode)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2725,11 +2727,11 @@ static GLint REGAL_CALL Filt_glRenderMode(Layer *_layer, GLenum mode)
     return (( GLint  )0);
   }
 
-  return orig.glRenderMode( orig.glRenderMode_layer, mode );
+  return RglRenderMode( orig, mode );
 
 }
 
-static void REGAL_CALL Filt_glRenderbufferStorageEXT(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL filt_glRenderbufferStorageEXT(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2743,11 +2745,11 @@ static void REGAL_CALL Filt_glRenderbufferStorageEXT(Layer *_layer, GLenum targe
     return;
   }
 
-  orig.glRenderbufferStorageEXT( orig.glRenderbufferStorageEXT_layer, target, internalformat, width, height );
+  RglRenderbufferStorageEXT( orig, target, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Filt_glShadeModel(Layer *_layer, GLenum mode)
+static void REGAL_CALL filt_glShadeModel(Layer *_layer, GLenum mode)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2763,11 +2765,11 @@ static void REGAL_CALL Filt_glShadeModel(Layer *_layer, GLenum mode)
      return ;
   }
 
-  orig.glShadeModel( orig.glShadeModel_layer, mode );
+  RglShadeModel( orig, mode );
 
 }
 
-static void REGAL_CALL Filt_glTexImage1D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL filt_glTexImage1D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2783,11 +2785,11 @@ static void REGAL_CALL Filt_glTexImage1D(Layer *_layer, GLenum target, GLint lev
     return ;
   }
 
-  orig.glTexImage1D( orig.glTexImage1D_layer, target, level, internalformat, width, border, format, type, pixels );
+  RglTexImage1D( orig, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Filt_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL filt_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2802,11 +2804,11 @@ static void REGAL_CALL Filt_glTexImage2D(Layer *_layer, GLenum target, GLint lev
     return ;
   }
 
-  orig.glTexImage2D( orig.glTexImage2D_layer, target, level, internalformat, width, height, border, format, type, pixels );
+  RglTexImage2D( orig, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Filt_glTexImage3D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL filt_glTexImage3D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2822,11 +2824,11 @@ static void REGAL_CALL Filt_glTexImage3D(Layer *_layer, GLenum target, GLint lev
     return ;
   }
 
-  orig.glTexImage3D( orig.glTexImage3D_layer, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  RglTexImage3D( orig, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Filt_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL filt_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2843,11 +2845,11 @@ static void REGAL_CALL Filt_glTexParameterf(Layer *_layer, GLenum target, GLenum
     orig.glTexParameterf( _context, target, pname, param);
   return;
 
-  orig.glTexParameterf( orig.glTexParameterf_layer, target, pname, param );
+  RglTexParameterf( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Filt_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL filt_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2864,11 +2866,11 @@ static void REGAL_CALL Filt_glTexParameterfv(Layer *_layer, GLenum target, GLenu
     orig.glTexParameterfv( _context, target, pname, params);
   return;
 
-  orig.glTexParameterfv( orig.glTexParameterfv_layer, target, pname, params );
+  RglTexParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL filt_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2885,11 +2887,11 @@ static void REGAL_CALL Filt_glTexParameteri(Layer *_layer, GLenum target, GLenum
     orig.glTexParameteri( _context, target, pname, param);
   return;
 
-  orig.glTexParameteri( orig.glTexParameteri_layer, target, pname, param );
+  RglTexParameteri( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Filt_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL filt_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2906,11 +2908,11 @@ static void REGAL_CALL Filt_glTexParameteriv(Layer *_layer, GLenum target, GLenu
     orig.glTexParameteriv( _context, target, pname, params);
   return;
 
-  orig.glTexParameteriv( orig.glTexParameteriv_layer, target, pname, params );
+  RglTexParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Filt_glUniform1iARB(Layer *_layer, GLint location, GLint v0)
+static void REGAL_CALL filt_glUniform1iARB(Layer *_layer, GLint location, GLint v0)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2923,11 +2925,11 @@ static void REGAL_CALL Filt_glUniform1iARB(Layer *_layer, GLint location, GLint 
     return;
   }
 
-  orig.glUniform1iARB( orig.glUniform1iARB_layer, location, v0 );
+  RglUniform1iARB( orig, location, v0 );
 
 }
 
-static GLboolean REGAL_CALL Filt_glUnmapBuffer(Layer *_layer, GLenum target)
+static GLboolean REGAL_CALL filt_glUnmapBuffer(Layer *_layer, GLenum target)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2939,11 +2941,11 @@ static GLboolean REGAL_CALL Filt_glUnmapBuffer(Layer *_layer, GLenum target)
     return orig.glUnmapBufferOES( _context,target);
   }
 
-  return orig.glUnmapBuffer( orig.glUnmapBuffer_layer, target );
+  return RglUnmapBuffer( orig, target );
 
 }
 
-static GLboolean REGAL_CALL Filt_glUnmapBufferARB(Layer *_layer, GLenum target)
+static GLboolean REGAL_CALL filt_glUnmapBufferARB(Layer *_layer, GLenum target)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2955,11 +2957,11 @@ static GLboolean REGAL_CALL Filt_glUnmapBufferARB(Layer *_layer, GLenum target)
     return orig.glUnmapBufferOES( _context,target);
   }
 
-  return orig.glUnmapBufferARB( orig.glUnmapBufferARB_layer, target );
+  return RglUnmapBufferARB( orig, target );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
+static void REGAL_CALL filt_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2975,11 +2977,11 @@ static void REGAL_CALL Filt_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
      return ;
   }
 
-  orig.glWindowPos2d( orig.glWindowPos2d_layer, x, y );
+  RglWindowPos2d( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2dv(Layer *_layer, const GLdouble *p)
+static void REGAL_CALL filt_glWindowPos2dv(Layer *_layer, const GLdouble *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -2995,11 +2997,11 @@ static void REGAL_CALL Filt_glWindowPos2dv(Layer *_layer, const GLdouble *p)
      return ;
   }
 
-  orig.glWindowPos2dv( orig.glWindowPos2dv_layer, p );
+  RglWindowPos2dv( orig, p );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
+static void REGAL_CALL filt_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3015,11 +3017,11 @@ static void REGAL_CALL Filt_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
      return ;
   }
 
-  orig.glWindowPos2f( orig.glWindowPos2f_layer, x, y );
+  RglWindowPos2f( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2fv(Layer *_layer, const GLfloat *p)
+static void REGAL_CALL filt_glWindowPos2fv(Layer *_layer, const GLfloat *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3035,11 +3037,11 @@ static void REGAL_CALL Filt_glWindowPos2fv(Layer *_layer, const GLfloat *p)
      return ;
   }
 
-  orig.glWindowPos2fv( orig.glWindowPos2fv_layer, p );
+  RglWindowPos2fv( orig, p );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2i(Layer *_layer, GLint x, GLint y)
+static void REGAL_CALL filt_glWindowPos2i(Layer *_layer, GLint x, GLint y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3055,11 +3057,11 @@ static void REGAL_CALL Filt_glWindowPos2i(Layer *_layer, GLint x, GLint y)
      return ;
   }
 
-  orig.glWindowPos2i( orig.glWindowPos2i_layer, x, y );
+  RglWindowPos2i( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2iv(Layer *_layer, const GLint *p)
+static void REGAL_CALL filt_glWindowPos2iv(Layer *_layer, const GLint *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3075,11 +3077,11 @@ static void REGAL_CALL Filt_glWindowPos2iv(Layer *_layer, const GLint *p)
      return ;
   }
 
-  orig.glWindowPos2iv( orig.glWindowPos2iv_layer, p );
+  RglWindowPos2iv( orig, p );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
+static void REGAL_CALL filt_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3095,11 +3097,11 @@ static void REGAL_CALL Filt_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
      return ;
   }
 
-  orig.glWindowPos2s( orig.glWindowPos2s_layer, x, y );
+  RglWindowPos2s( orig, x, y );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos2sv(Layer *_layer, const GLshort *p)
+static void REGAL_CALL filt_glWindowPos2sv(Layer *_layer, const GLshort *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3115,11 +3117,11 @@ static void REGAL_CALL Filt_glWindowPos2sv(Layer *_layer, const GLshort *p)
      return ;
   }
 
-  orig.glWindowPos2sv( orig.glWindowPos2sv_layer, p );
+  RglWindowPos2sv( orig, p );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL filt_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3135,11 +3137,11 @@ static void REGAL_CALL Filt_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y,
      return ;
   }
 
-  orig.glWindowPos3d( orig.glWindowPos3d_layer, x, y, z );
+  RglWindowPos3d( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3dv(Layer *_layer, const GLdouble *p)
+static void REGAL_CALL filt_glWindowPos3dv(Layer *_layer, const GLdouble *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3155,11 +3157,11 @@ static void REGAL_CALL Filt_glWindowPos3dv(Layer *_layer, const GLdouble *p)
      return ;
   }
 
-  orig.glWindowPos3dv( orig.glWindowPos3dv_layer, p );
+  RglWindowPos3dv( orig, p );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL filt_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3175,11 +3177,11 @@ static void REGAL_CALL Filt_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, G
      return ;
   }
 
-  orig.glWindowPos3f( orig.glWindowPos3f_layer, x, y, z );
+  RglWindowPos3f( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3fv(Layer *_layer, const GLfloat *p)
+static void REGAL_CALL filt_glWindowPos3fv(Layer *_layer, const GLfloat *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3195,11 +3197,11 @@ static void REGAL_CALL Filt_glWindowPos3fv(Layer *_layer, const GLfloat *p)
      return ;
   }
 
-  orig.glWindowPos3fv( orig.glWindowPos3fv_layer, p );
+  RglWindowPos3fv( orig, p );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint z)
+static void REGAL_CALL filt_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3215,11 +3217,11 @@ static void REGAL_CALL Filt_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint
      return ;
   }
 
-  orig.glWindowPos3i( orig.glWindowPos3i_layer, x, y, z );
+  RglWindowPos3i( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3iv(Layer *_layer, const GLint *p)
+static void REGAL_CALL filt_glWindowPos3iv(Layer *_layer, const GLint *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3235,11 +3237,11 @@ static void REGAL_CALL Filt_glWindowPos3iv(Layer *_layer, const GLint *p)
      return ;
   }
 
-  orig.glWindowPos3iv( orig.glWindowPos3iv_layer, p );
+  RglWindowPos3iv( orig, p );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
+static void REGAL_CALL filt_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, GLshort z)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3255,11 +3257,11 @@ static void REGAL_CALL Filt_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, G
      return ;
   }
 
-  orig.glWindowPos3s( orig.glWindowPos3s_layer, x, y, z );
+  RglWindowPos3s( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Filt_glWindowPos3sv(Layer *_layer, const GLshort *p)
+static void REGAL_CALL filt_glWindowPos3sv(Layer *_layer, const GLshort *p)
 {
   Filt * self = static_cast<Filt *>(_layer);
 
@@ -3275,179 +3277,179 @@ static void REGAL_CALL Filt_glWindowPos3sv(Layer *_layer, const GLshort *p)
      return ;
   }
 
-  orig.glWindowPos3sv( orig.glWindowPos3sv_layer, p );
+  RglWindowPos3sv( orig, p );
 
 }
 
-void FiltIntercept( Dispatch::GL & dt ) {
-  dt.glAccum                                  = RFilt_glAccum;
-  dt.glActiveTextureARB                       = RFilt_glActiveTextureARB;
-  dt.glAttachObjectARB                        = RFilt_glAttachObjectARB;
-  dt.glBindAttribLocationARB                  = RFilt_glBindAttribLocationARB;
-  dt.glBindFramebuffer                        = RFilt_glBindFramebuffer;
-  dt.glBindFramebufferEXT                     = RFilt_glBindFramebufferEXT;
-  dt.glBindFramebufferOES                     = RFilt_glBindFramebufferOES;
-  dt.glBindProgramARB                         = RFilt_glBindProgramARB;
-  dt.glBindRenderbufferEXT                    = RFilt_glBindRenderbufferEXT;
-  dt.glBindTexture                            = RFilt_glBindTexture;
-  dt.glBitmap                                 = RFilt_glBitmap;
-  dt.glBlendColorEXT                          = RFilt_glBlendColorEXT;
-  dt.glBlendEquationEXT                       = RFilt_glBlendEquationEXT;
-  dt.glBlitFramebuffer                        = RFilt_glBlitFramebuffer;
-  dt.glBlitFramebufferANGLE                   = RFilt_glBlitFramebufferANGLE;
-  dt.glBlitFramebufferEXT                     = RFilt_glBlitFramebufferEXT;
-  dt.glBufferDataARB                          = RFilt_glBufferDataARB;
-  dt.glCallList                               = RFilt_glCallList;
-  dt.glCheckFramebufferStatusEXT              = RFilt_glCheckFramebufferStatusEXT;
-  dt.glClearAccum                             = RFilt_glClearAccum;
-  dt.glClientActiveTexture                    = RFilt_glClientActiveTexture;
-  dt.glClientActiveTextureARB                 = RFilt_glClientActiveTextureARB;
-  dt.glColorMaskIndexedEXT                    = RFilt_glColorMaskIndexedEXT;
-  dt.glCompileShaderARB                       = RFilt_glCompileShaderARB;
-  dt.glCopyPixels                             = RFilt_glCopyPixels;
-  dt.glCreateProgramObjectARB                 = RFilt_glCreateProgramObjectARB;
-  dt.glDeleteFramebuffersEXT                  = RFilt_glDeleteFramebuffersEXT;
-  dt.glDeleteLists                            = RFilt_glDeleteLists;
-  dt.glDeleteRenderbuffersEXT                 = RFilt_glDeleteRenderbuffersEXT;
-  dt.glDisableIndexedEXT                      = RFilt_glDisableIndexedEXT;
-  dt.glDrawBuffer                             = RFilt_glDrawBuffer;
-  dt.glDrawBuffers                            = RFilt_glDrawBuffers;
-  dt.glDrawBuffersARB                         = RFilt_glDrawBuffersARB;
-  dt.glDrawBuffersATI                         = RFilt_glDrawBuffersATI;
-  dt.glDrawPixels                             = RFilt_glDrawPixels;
-  dt.glDrawRangeElements                      = RFilt_glDrawRangeElements;
-  dt.glDrawRangeElementsBaseVertex            = RFilt_glDrawRangeElementsBaseVertex;
-  dt.glEdgeFlag                               = RFilt_glEdgeFlag;
-  dt.glEnableIndexedEXT                       = RFilt_glEnableIndexedEXT;
-  dt.glEndList                                = RFilt_glEndList;
-  dt.glEvalCoord1d                            = RFilt_glEvalCoord1d;
-  dt.glEvalCoord1dv                           = RFilt_glEvalCoord1dv;
-  dt.glEvalCoord1f                            = RFilt_glEvalCoord1f;
-  dt.glEvalCoord1fv                           = RFilt_glEvalCoord1fv;
-  dt.glEvalCoord2d                            = RFilt_glEvalCoord2d;
-  dt.glEvalCoord2dv                           = RFilt_glEvalCoord2dv;
-  dt.glEvalCoord2f                            = RFilt_glEvalCoord2f;
-  dt.glEvalCoord2fv                           = RFilt_glEvalCoord2fv;
-  dt.glEvalMesh1                              = RFilt_glEvalMesh1;
-  dt.glEvalMesh2                              = RFilt_glEvalMesh2;
-  dt.glEvalPoint1                             = RFilt_glEvalPoint1;
-  dt.glEvalPoint2                             = RFilt_glEvalPoint2;
-  dt.glFramebufferRenderbuffer                = RFilt_glFramebufferRenderbuffer;
-  dt.glFramebufferRenderbufferEXT             = RFilt_glFramebufferRenderbufferEXT;
-  dt.glFramebufferTexture1D                   = RFilt_glFramebufferTexture1D;
-  dt.glFramebufferTexture1DEXT                = RFilt_glFramebufferTexture1DEXT;
-  dt.glFramebufferTexture2D                   = RFilt_glFramebufferTexture2D;
-  dt.glFramebufferTexture2DEXT                = RFilt_glFramebufferTexture2DEXT;
-  dt.glFramebufferTexture3D                   = RFilt_glFramebufferTexture3D;
-  dt.glFramebufferTexture3DEXT                = RFilt_glFramebufferTexture3DEXT;
-  dt.glGenFramebuffersEXT                     = RFilt_glGenFramebuffersEXT;
-  dt.glGenLists                               = RFilt_glGenLists;
-  dt.glGenProgramsARB                         = RFilt_glGenProgramsARB;
-  dt.glGenRenderbuffersEXT                    = RFilt_glGenRenderbuffersEXT;
-  dt.glGenSamplers                            = RFilt_glGenSamplers;
-  dt.glGenerateMipmap                         = RFilt_glGenerateMipmap;
-  dt.glGenerateMipmapEXT                      = RFilt_glGenerateMipmapEXT;
-  dt.glGetBooleanIndexedvEXT                  = RFilt_glGetBooleanIndexedvEXT;
-  dt.glGetBooleanv                            = RFilt_glGetBooleanv;
-  dt.glGetDoublev                             = RFilt_glGetDoublev;
-  dt.glGetFloatv                              = RFilt_glGetFloatv;
-  dt.glGetFramebufferAttachmentParameteriv    = RFilt_glGetFramebufferAttachmentParameteriv;
-  dt.glGetFramebufferAttachmentParameterivEXT = RFilt_glGetFramebufferAttachmentParameterivEXT;
-  dt.glGetInfoLogARB                          = RFilt_glGetInfoLogARB;
-  dt.glGetInteger64v                          = RFilt_glGetInteger64v;
-  dt.glGetIntegerIndexedvEXT                  = RFilt_glGetIntegerIndexedvEXT;
-  dt.glGetIntegerv                            = RFilt_glGetIntegerv;
-  dt.glGetObjectParameterivARB                = RFilt_glGetObjectParameterivARB;
-  dt.glGetProgramivARB                        = RFilt_glGetProgramivARB;
-  dt.glGetRenderbufferParameterivEXT          = RFilt_glGetRenderbufferParameterivEXT;
-  dt.glGetTexImage                            = RFilt_glGetTexImage;
-  dt.glGetTexLevelParameterfv                 = RFilt_glGetTexLevelParameterfv;
-  dt.glGetTexLevelParameteriv                 = RFilt_glGetTexLevelParameteriv;
-  dt.glGetTexParameteriv                      = RFilt_glGetTexParameteriv;
-  dt.glGetUniformLocationARB                  = RFilt_glGetUniformLocationARB;
-  dt.glIsEnabledIndexedEXT                    = RFilt_glIsEnabledIndexedEXT;
-  dt.glIsFramebufferEXT                       = RFilt_glIsFramebufferEXT;
-  dt.glIsRenderbufferEXT                      = RFilt_glIsRenderbufferEXT;
-  dt.glLineStipple                            = RFilt_glLineStipple;
-  dt.glLineWidth                              = RFilt_glLineWidth;
-  dt.glMap1d                                  = RFilt_glMap1d;
-  dt.glMap1f                                  = RFilt_glMap1f;
-  dt.glMap2d                                  = RFilt_glMap2d;
-  dt.glMap2f                                  = RFilt_glMap2f;
-  dt.glMapBuffer                              = RFilt_glMapBuffer;
-  dt.glMapBufferARB                           = RFilt_glMapBufferARB;
-  dt.glMapGrid1d                              = RFilt_glMapGrid1d;
-  dt.glMapGrid1f                              = RFilt_glMapGrid1f;
-  dt.glMapGrid2d                              = RFilt_glMapGrid2d;
-  dt.glMapGrid2f                              = RFilt_glMapGrid2f;
-  dt.glNewList                                = RFilt_glNewList;
-  dt.glPixelStoref                            = RFilt_glPixelStoref;
-  dt.glPixelStorei                            = RFilt_glPixelStorei;
-  dt.glPixelTransferf                         = RFilt_glPixelTransferf;
-  dt.glPixelTransferi                         = RFilt_glPixelTransferi;
-  dt.glPixelZoom                              = RFilt_glPixelZoom;
-  dt.glPolygonMode                            = RFilt_glPolygonMode;
-  dt.glPopGroupMarkerEXT                      = RFilt_glPopGroupMarkerEXT;
-  dt.glProgramStringARB                       = RFilt_glProgramStringARB;
-  dt.glPushGroupMarkerEXT                     = RFilt_glPushGroupMarkerEXT;
-  dt.glRasterPos2d                            = RFilt_glRasterPos2d;
-  dt.glRasterPos2dv                           = RFilt_glRasterPos2dv;
-  dt.glRasterPos2f                            = RFilt_glRasterPos2f;
-  dt.glRasterPos2fv                           = RFilt_glRasterPos2fv;
-  dt.glRasterPos2i                            = RFilt_glRasterPos2i;
-  dt.glRasterPos2iv                           = RFilt_glRasterPos2iv;
-  dt.glRasterPos2s                            = RFilt_glRasterPos2s;
-  dt.glRasterPos2sv                           = RFilt_glRasterPos2sv;
-  dt.glRasterPos3d                            = RFilt_glRasterPos3d;
-  dt.glRasterPos3dv                           = RFilt_glRasterPos3dv;
-  dt.glRasterPos3f                            = RFilt_glRasterPos3f;
-  dt.glRasterPos3fv                           = RFilt_glRasterPos3fv;
-  dt.glRasterPos3i                            = RFilt_glRasterPos3i;
-  dt.glRasterPos3iv                           = RFilt_glRasterPos3iv;
-  dt.glRasterPos3s                            = RFilt_glRasterPos3s;
-  dt.glRasterPos3sv                           = RFilt_glRasterPos3sv;
-  dt.glRasterPos4d                            = RFilt_glRasterPos4d;
-  dt.glRasterPos4dv                           = RFilt_glRasterPos4dv;
-  dt.glRasterPos4f                            = RFilt_glRasterPos4f;
-  dt.glRasterPos4fv                           = RFilt_glRasterPos4fv;
-  dt.glRasterPos4i                            = RFilt_glRasterPos4i;
-  dt.glRasterPos4iv                           = RFilt_glRasterPos4iv;
-  dt.glRasterPos4s                            = RFilt_glRasterPos4s;
-  dt.glRasterPos4sv                           = RFilt_glRasterPos4sv;
-  dt.glReadBuffer                             = RFilt_glReadBuffer;
-  dt.glRectd                                  = RFilt_glRectd;
-  dt.glRectf                                  = RFilt_glRectf;
-  dt.glRecti                                  = RFilt_glRecti;
-  dt.glRects                                  = RFilt_glRects;
-  dt.glRenderMode                             = RFilt_glRenderMode;
-  dt.glRenderbufferStorageEXT                 = RFilt_glRenderbufferStorageEXT;
-  dt.glShadeModel                             = RFilt_glShadeModel;
-  dt.glTexImage1D                             = RFilt_glTexImage1D;
-  dt.glTexImage2D                             = RFilt_glTexImage2D;
-  dt.glTexImage3D                             = RFilt_glTexImage3D;
-  dt.glTexParameterf                          = RFilt_glTexParameterf;
-  dt.glTexParameterfv                         = RFilt_glTexParameterfv;
-  dt.glTexParameteri                          = RFilt_glTexParameteri;
-  dt.glTexParameteriv                         = RFilt_glTexParameteriv;
-  dt.glUniform1iARB                           = RFilt_glUniform1iARB;
-  dt.glUnmapBuffer                            = RFilt_glUnmapBuffer;
-  dt.glUnmapBufferARB                         = RFilt_glUnmapBufferARB;
-  dt.glWindowPos2d                            = RFilt_glWindowPos2d;
-  dt.glWindowPos2dv                           = RFilt_glWindowPos2dv;
-  dt.glWindowPos2f                            = RFilt_glWindowPos2f;
-  dt.glWindowPos2fv                           = RFilt_glWindowPos2fv;
-  dt.glWindowPos2i                            = RFilt_glWindowPos2i;
-  dt.glWindowPos2iv                           = RFilt_glWindowPos2iv;
-  dt.glWindowPos2s                            = RFilt_glWindowPos2s;
-  dt.glWindowPos2sv                           = RFilt_glWindowPos2sv;
-  dt.glWindowPos3d                            = RFilt_glWindowPos3d;
-  dt.glWindowPos3dv                           = RFilt_glWindowPos3dv;
-  dt.glWindowPos3f                            = RFilt_glWindowPos3f;
-  dt.glWindowPos3fv                           = RFilt_glWindowPos3fv;
-  dt.glWindowPos3i                            = RFilt_glWindowPos3i;
-  dt.glWindowPos3iv                           = RFilt_glWindowPos3iv;
-  dt.glWindowPos3s                            = RFilt_glWindowPos3s;
-  dt.glWindowPos3sv                           = RFilt_glWindowPos3sv;
+void FiltIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glAccum                                  = MakeRegalProc(filt_glAccum, layer);
+  dt.glActiveTextureARB                       = MakeRegalProc(filt_glActiveTextureARB, layer);
+  dt.glAttachObjectARB                        = MakeRegalProc(filt_glAttachObjectARB, layer);
+  dt.glBindAttribLocationARB                  = MakeRegalProc(filt_glBindAttribLocationARB, layer);
+  dt.glBindFramebuffer                        = MakeRegalProc(filt_glBindFramebuffer, layer);
+  dt.glBindFramebufferEXT                     = MakeRegalProc(filt_glBindFramebufferEXT, layer);
+  dt.glBindFramebufferOES                     = MakeRegalProc(filt_glBindFramebufferOES, layer);
+  dt.glBindProgramARB                         = MakeRegalProc(filt_glBindProgramARB, layer);
+  dt.glBindRenderbufferEXT                    = MakeRegalProc(filt_glBindRenderbufferEXT, layer);
+  dt.glBindTexture                            = MakeRegalProc(filt_glBindTexture, layer);
+  dt.glBitmap                                 = MakeRegalProc(filt_glBitmap, layer);
+  dt.glBlendColorEXT                          = MakeRegalProc(filt_glBlendColorEXT, layer);
+  dt.glBlendEquationEXT                       = MakeRegalProc(filt_glBlendEquationEXT, layer);
+  dt.glBlitFramebuffer                        = MakeRegalProc(filt_glBlitFramebuffer, layer);
+  dt.glBlitFramebufferANGLE                   = MakeRegalProc(filt_glBlitFramebufferANGLE, layer);
+  dt.glBlitFramebufferEXT                     = MakeRegalProc(filt_glBlitFramebufferEXT, layer);
+  dt.glBufferDataARB                          = MakeRegalProc(filt_glBufferDataARB, layer);
+  dt.glCallList                               = MakeRegalProc(filt_glCallList, layer);
+  dt.glCheckFramebufferStatusEXT              = MakeRegalProc(filt_glCheckFramebufferStatusEXT, layer);
+  dt.glClearAccum                             = MakeRegalProc(filt_glClearAccum, layer);
+  dt.glClientActiveTexture                    = MakeRegalProc(filt_glClientActiveTexture, layer);
+  dt.glClientActiveTextureARB                 = MakeRegalProc(filt_glClientActiveTextureARB, layer);
+  dt.glColorMaskIndexedEXT                    = MakeRegalProc(filt_glColorMaskIndexedEXT, layer);
+  dt.glCompileShaderARB                       = MakeRegalProc(filt_glCompileShaderARB, layer);
+  dt.glCopyPixels                             = MakeRegalProc(filt_glCopyPixels, layer);
+  dt.glCreateProgramObjectARB                 = MakeRegalProc(filt_glCreateProgramObjectARB, layer);
+  dt.glDeleteFramebuffersEXT                  = MakeRegalProc(filt_glDeleteFramebuffersEXT, layer);
+  dt.glDeleteLists                            = MakeRegalProc(filt_glDeleteLists, layer);
+  dt.glDeleteRenderbuffersEXT                 = MakeRegalProc(filt_glDeleteRenderbuffersEXT, layer);
+  dt.glDisableIndexedEXT                      = MakeRegalProc(filt_glDisableIndexedEXT, layer);
+  dt.glDrawBuffer                             = MakeRegalProc(filt_glDrawBuffer, layer);
+  dt.glDrawBuffers                            = MakeRegalProc(filt_glDrawBuffers, layer);
+  dt.glDrawBuffersARB                         = MakeRegalProc(filt_glDrawBuffersARB, layer);
+  dt.glDrawBuffersATI                         = MakeRegalProc(filt_glDrawBuffersATI, layer);
+  dt.glDrawPixels                             = MakeRegalProc(filt_glDrawPixels, layer);
+  dt.glDrawRangeElements                      = MakeRegalProc(filt_glDrawRangeElements, layer);
+  dt.glDrawRangeElementsBaseVertex            = MakeRegalProc(filt_glDrawRangeElementsBaseVertex, layer);
+  dt.glEdgeFlag                               = MakeRegalProc(filt_glEdgeFlag, layer);
+  dt.glEnableIndexedEXT                       = MakeRegalProc(filt_glEnableIndexedEXT, layer);
+  dt.glEndList                                = MakeRegalProc(filt_glEndList, layer);
+  dt.glEvalCoord1d                            = MakeRegalProc(filt_glEvalCoord1d, layer);
+  dt.glEvalCoord1dv                           = MakeRegalProc(filt_glEvalCoord1dv, layer);
+  dt.glEvalCoord1f                            = MakeRegalProc(filt_glEvalCoord1f, layer);
+  dt.glEvalCoord1fv                           = MakeRegalProc(filt_glEvalCoord1fv, layer);
+  dt.glEvalCoord2d                            = MakeRegalProc(filt_glEvalCoord2d, layer);
+  dt.glEvalCoord2dv                           = MakeRegalProc(filt_glEvalCoord2dv, layer);
+  dt.glEvalCoord2f                            = MakeRegalProc(filt_glEvalCoord2f, layer);
+  dt.glEvalCoord2fv                           = MakeRegalProc(filt_glEvalCoord2fv, layer);
+  dt.glEvalMesh1                              = MakeRegalProc(filt_glEvalMesh1, layer);
+  dt.glEvalMesh2                              = MakeRegalProc(filt_glEvalMesh2, layer);
+  dt.glEvalPoint1                             = MakeRegalProc(filt_glEvalPoint1, layer);
+  dt.glEvalPoint2                             = MakeRegalProc(filt_glEvalPoint2, layer);
+  dt.glFramebufferRenderbuffer                = MakeRegalProc(filt_glFramebufferRenderbuffer, layer);
+  dt.glFramebufferRenderbufferEXT             = MakeRegalProc(filt_glFramebufferRenderbufferEXT, layer);
+  dt.glFramebufferTexture1D                   = MakeRegalProc(filt_glFramebufferTexture1D, layer);
+  dt.glFramebufferTexture1DEXT                = MakeRegalProc(filt_glFramebufferTexture1DEXT, layer);
+  dt.glFramebufferTexture2D                   = MakeRegalProc(filt_glFramebufferTexture2D, layer);
+  dt.glFramebufferTexture2DEXT                = MakeRegalProc(filt_glFramebufferTexture2DEXT, layer);
+  dt.glFramebufferTexture3D                   = MakeRegalProc(filt_glFramebufferTexture3D, layer);
+  dt.glFramebufferTexture3DEXT                = MakeRegalProc(filt_glFramebufferTexture3DEXT, layer);
+  dt.glGenFramebuffersEXT                     = MakeRegalProc(filt_glGenFramebuffersEXT, layer);
+  dt.glGenLists                               = MakeRegalProc(filt_glGenLists, layer);
+  dt.glGenProgramsARB                         = MakeRegalProc(filt_glGenProgramsARB, layer);
+  dt.glGenRenderbuffersEXT                    = MakeRegalProc(filt_glGenRenderbuffersEXT, layer);
+  dt.glGenSamplers                            = MakeRegalProc(filt_glGenSamplers, layer);
+  dt.glGenerateMipmap                         = MakeRegalProc(filt_glGenerateMipmap, layer);
+  dt.glGenerateMipmapEXT                      = MakeRegalProc(filt_glGenerateMipmapEXT, layer);
+  dt.glGetBooleanIndexedvEXT                  = MakeRegalProc(filt_glGetBooleanIndexedvEXT, layer);
+  dt.glGetBooleanv                            = MakeRegalProc(filt_glGetBooleanv, layer);
+  dt.glGetDoublev                             = MakeRegalProc(filt_glGetDoublev, layer);
+  dt.glGetFloatv                              = MakeRegalProc(filt_glGetFloatv, layer);
+  dt.glGetFramebufferAttachmentParameteriv    = MakeRegalProc(filt_glGetFramebufferAttachmentParameteriv, layer);
+  dt.glGetFramebufferAttachmentParameterivEXT = MakeRegalProc(filt_glGetFramebufferAttachmentParameterivEXT, layer);
+  dt.glGetInfoLogARB                          = MakeRegalProc(filt_glGetInfoLogARB, layer);
+  dt.glGetInteger64v                          = MakeRegalProc(filt_glGetInteger64v, layer);
+  dt.glGetIntegerIndexedvEXT                  = MakeRegalProc(filt_glGetIntegerIndexedvEXT, layer);
+  dt.glGetIntegerv                            = MakeRegalProc(filt_glGetIntegerv, layer);
+  dt.glGetObjectParameterivARB                = MakeRegalProc(filt_glGetObjectParameterivARB, layer);
+  dt.glGetProgramivARB                        = MakeRegalProc(filt_glGetProgramivARB, layer);
+  dt.glGetRenderbufferParameterivEXT          = MakeRegalProc(filt_glGetRenderbufferParameterivEXT, layer);
+  dt.glGetTexImage                            = MakeRegalProc(filt_glGetTexImage, layer);
+  dt.glGetTexLevelParameterfv                 = MakeRegalProc(filt_glGetTexLevelParameterfv, layer);
+  dt.glGetTexLevelParameteriv                 = MakeRegalProc(filt_glGetTexLevelParameteriv, layer);
+  dt.glGetTexParameteriv                      = MakeRegalProc(filt_glGetTexParameteriv, layer);
+  dt.glGetUniformLocationARB                  = MakeRegalProc(filt_glGetUniformLocationARB, layer);
+  dt.glIsEnabledIndexedEXT                    = MakeRegalProc(filt_glIsEnabledIndexedEXT, layer);
+  dt.glIsFramebufferEXT                       = MakeRegalProc(filt_glIsFramebufferEXT, layer);
+  dt.glIsRenderbufferEXT                      = MakeRegalProc(filt_glIsRenderbufferEXT, layer);
+  dt.glLineStipple                            = MakeRegalProc(filt_glLineStipple, layer);
+  dt.glLineWidth                              = MakeRegalProc(filt_glLineWidth, layer);
+  dt.glMap1d                                  = MakeRegalProc(filt_glMap1d, layer);
+  dt.glMap1f                                  = MakeRegalProc(filt_glMap1f, layer);
+  dt.glMap2d                                  = MakeRegalProc(filt_glMap2d, layer);
+  dt.glMap2f                                  = MakeRegalProc(filt_glMap2f, layer);
+  dt.glMapBuffer                              = MakeRegalProc(filt_glMapBuffer, layer);
+  dt.glMapBufferARB                           = MakeRegalProc(filt_glMapBufferARB, layer);
+  dt.glMapGrid1d                              = MakeRegalProc(filt_glMapGrid1d, layer);
+  dt.glMapGrid1f                              = MakeRegalProc(filt_glMapGrid1f, layer);
+  dt.glMapGrid2d                              = MakeRegalProc(filt_glMapGrid2d, layer);
+  dt.glMapGrid2f                              = MakeRegalProc(filt_glMapGrid2f, layer);
+  dt.glNewList                                = MakeRegalProc(filt_glNewList, layer);
+  dt.glPixelStoref                            = MakeRegalProc(filt_glPixelStoref, layer);
+  dt.glPixelStorei                            = MakeRegalProc(filt_glPixelStorei, layer);
+  dt.glPixelTransferf                         = MakeRegalProc(filt_glPixelTransferf, layer);
+  dt.glPixelTransferi                         = MakeRegalProc(filt_glPixelTransferi, layer);
+  dt.glPixelZoom                              = MakeRegalProc(filt_glPixelZoom, layer);
+  dt.glPolygonMode                            = MakeRegalProc(filt_glPolygonMode, layer);
+  dt.glPopGroupMarkerEXT                      = MakeRegalProc(filt_glPopGroupMarkerEXT, layer);
+  dt.glProgramStringARB                       = MakeRegalProc(filt_glProgramStringARB, layer);
+  dt.glPushGroupMarkerEXT                     = MakeRegalProc(filt_glPushGroupMarkerEXT, layer);
+  dt.glRasterPos2d                            = MakeRegalProc(filt_glRasterPos2d, layer);
+  dt.glRasterPos2dv                           = MakeRegalProc(filt_glRasterPos2dv, layer);
+  dt.glRasterPos2f                            = MakeRegalProc(filt_glRasterPos2f, layer);
+  dt.glRasterPos2fv                           = MakeRegalProc(filt_glRasterPos2fv, layer);
+  dt.glRasterPos2i                            = MakeRegalProc(filt_glRasterPos2i, layer);
+  dt.glRasterPos2iv                           = MakeRegalProc(filt_glRasterPos2iv, layer);
+  dt.glRasterPos2s                            = MakeRegalProc(filt_glRasterPos2s, layer);
+  dt.glRasterPos2sv                           = MakeRegalProc(filt_glRasterPos2sv, layer);
+  dt.glRasterPos3d                            = MakeRegalProc(filt_glRasterPos3d, layer);
+  dt.glRasterPos3dv                           = MakeRegalProc(filt_glRasterPos3dv, layer);
+  dt.glRasterPos3f                            = MakeRegalProc(filt_glRasterPos3f, layer);
+  dt.glRasterPos3fv                           = MakeRegalProc(filt_glRasterPos3fv, layer);
+  dt.glRasterPos3i                            = MakeRegalProc(filt_glRasterPos3i, layer);
+  dt.glRasterPos3iv                           = MakeRegalProc(filt_glRasterPos3iv, layer);
+  dt.glRasterPos3s                            = MakeRegalProc(filt_glRasterPos3s, layer);
+  dt.glRasterPos3sv                           = MakeRegalProc(filt_glRasterPos3sv, layer);
+  dt.glRasterPos4d                            = MakeRegalProc(filt_glRasterPos4d, layer);
+  dt.glRasterPos4dv                           = MakeRegalProc(filt_glRasterPos4dv, layer);
+  dt.glRasterPos4f                            = MakeRegalProc(filt_glRasterPos4f, layer);
+  dt.glRasterPos4fv                           = MakeRegalProc(filt_glRasterPos4fv, layer);
+  dt.glRasterPos4i                            = MakeRegalProc(filt_glRasterPos4i, layer);
+  dt.glRasterPos4iv                           = MakeRegalProc(filt_glRasterPos4iv, layer);
+  dt.glRasterPos4s                            = MakeRegalProc(filt_glRasterPos4s, layer);
+  dt.glRasterPos4sv                           = MakeRegalProc(filt_glRasterPos4sv, layer);
+  dt.glReadBuffer                             = MakeRegalProc(filt_glReadBuffer, layer);
+  dt.glRectd                                  = MakeRegalProc(filt_glRectd, layer);
+  dt.glRectf                                  = MakeRegalProc(filt_glRectf, layer);
+  dt.glRecti                                  = MakeRegalProc(filt_glRecti, layer);
+  dt.glRects                                  = MakeRegalProc(filt_glRects, layer);
+  dt.glRenderMode                             = MakeRegalProc(filt_glRenderMode, layer);
+  dt.glRenderbufferStorageEXT                 = MakeRegalProc(filt_glRenderbufferStorageEXT, layer);
+  dt.glShadeModel                             = MakeRegalProc(filt_glShadeModel, layer);
+  dt.glTexImage1D                             = MakeRegalProc(filt_glTexImage1D, layer);
+  dt.glTexImage2D                             = MakeRegalProc(filt_glTexImage2D, layer);
+  dt.glTexImage3D                             = MakeRegalProc(filt_glTexImage3D, layer);
+  dt.glTexParameterf                          = MakeRegalProc(filt_glTexParameterf, layer);
+  dt.glTexParameterfv                         = MakeRegalProc(filt_glTexParameterfv, layer);
+  dt.glTexParameteri                          = MakeRegalProc(filt_glTexParameteri, layer);
+  dt.glTexParameteriv                         = MakeRegalProc(filt_glTexParameteriv, layer);
+  dt.glUniform1iARB                           = MakeRegalProc(filt_glUniform1iARB, layer);
+  dt.glUnmapBuffer                            = MakeRegalProc(filt_glUnmapBuffer, layer);
+  dt.glUnmapBufferARB                         = MakeRegalProc(filt_glUnmapBufferARB, layer);
+  dt.glWindowPos2d                            = MakeRegalProc(filt_glWindowPos2d, layer);
+  dt.glWindowPos2dv                           = MakeRegalProc(filt_glWindowPos2dv, layer);
+  dt.glWindowPos2f                            = MakeRegalProc(filt_glWindowPos2f, layer);
+  dt.glWindowPos2fv                           = MakeRegalProc(filt_glWindowPos2fv, layer);
+  dt.glWindowPos2i                            = MakeRegalProc(filt_glWindowPos2i, layer);
+  dt.glWindowPos2iv                           = MakeRegalProc(filt_glWindowPos2iv, layer);
+  dt.glWindowPos2s                            = MakeRegalProc(filt_glWindowPos2s, layer);
+  dt.glWindowPos2sv                           = MakeRegalProc(filt_glWindowPos2sv, layer);
+  dt.glWindowPos3d                            = MakeRegalProc(filt_glWindowPos3d, layer);
+  dt.glWindowPos3dv                           = MakeRegalProc(filt_glWindowPos3dv, layer);
+  dt.glWindowPos3f                            = MakeRegalProc(filt_glWindowPos3f, layer);
+  dt.glWindowPos3fv                           = MakeRegalProc(filt_glWindowPos3fv, layer);
+  dt.glWindowPos3i                            = MakeRegalProc(filt_glWindowPos3i, layer);
+  dt.glWindowPos3iv                           = MakeRegalProc(filt_glWindowPos3iv, layer);
+  dt.glWindowPos3s                            = MakeRegalProc(filt_glWindowPos3s, layer);
+  dt.glWindowPos3sv                           = MakeRegalProc(filt_glWindowPos3sv, layer);
 }
 
 REGAL_NAMESPACE_END

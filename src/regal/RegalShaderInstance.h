@@ -86,7 +86,6 @@ namespace ShaderInstance {
   };
   
   struct Procs {
-    RegalContext * ctx;
     REGALGLUNIFORM1DVPROC          glUniform1dv;
     REGALGLUNIFORM2DVPROC          glUniform2dv;
     REGALGLUNIFORM3DVPROC          glUniform3dv;

@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalDsa.h"
-#include "RegalEmuProcsDsa.h"
+#include "Dsa.h"
+#include "DsaProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL Dsa_glActiveTexture(Layer *_layer, GLenum texture)
+using namespace Emu;
+
+static void REGAL_CALL dsa_glActiveTexture(Layer *_layer, GLenum texture)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -65,11 +67,11 @@ static void REGAL_CALL Dsa_glActiveTexture(Layer *_layer, GLenum texture)
       return;
   }
 
-  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
+  RglActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Dsa_glActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL dsa_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -80,11 +82,11 @@ static void REGAL_CALL Dsa_glActiveTextureARB(Layer *_layer, GLenum texture)
       return;
   }
 
-  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
+  RglActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Dsa_glBegin(Layer *_layer, GLenum mode)
+static void REGAL_CALL dsa_glBegin(Layer *_layer, GLenum mode)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -93,11 +95,11 @@ static void REGAL_CALL Dsa_glBegin(Layer *_layer, GLenum mode)
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glBegin( orig.glBegin_layer, mode );
+  RglBegin( orig, mode );
 
 }
 
-static void REGAL_CALL Dsa_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
+static void REGAL_CALL dsa_glBindBuffer(Layer *_layer, GLenum target, GLuint buffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -108,11 +110,11 @@ static void REGAL_CALL Dsa_glBindBuffer(Layer *_layer, GLenum target, GLuint buf
     return;
   }
 
-  orig.glBindBuffer( orig.glBindBuffer_layer, target, buffer );
+  RglBindBuffer( orig, target, buffer );
 
 }
 
-static void REGAL_CALL Dsa_glBindBufferARB(Layer *_layer, GLenum target, GLuint buffer)
+static void REGAL_CALL dsa_glBindBufferARB(Layer *_layer, GLenum target, GLuint buffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -123,11 +125,11 @@ static void REGAL_CALL Dsa_glBindBufferARB(Layer *_layer, GLenum target, GLuint 
     return;
   }
 
-  orig.glBindBufferARB( orig.glBindBufferARB_layer, target, buffer );
+  RglBindBufferARB( orig, target, buffer );
 
 }
 
-static void REGAL_CALL Dsa_glBindFramebuffer(Layer *_layer, GLenum target, GLuint framebuffer)
+static void REGAL_CALL dsa_glBindFramebuffer(Layer *_layer, GLenum target, GLuint framebuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -138,11 +140,11 @@ static void REGAL_CALL Dsa_glBindFramebuffer(Layer *_layer, GLenum target, GLuin
     return;
   }
 
-  orig.glBindFramebuffer( orig.glBindFramebuffer_layer, target, framebuffer );
+  RglBindFramebuffer( orig, target, framebuffer );
 
 }
 
-static void REGAL_CALL Dsa_glBindFramebufferEXT(Layer *_layer, GLenum target, GLuint framebuffer)
+static void REGAL_CALL dsa_glBindFramebufferEXT(Layer *_layer, GLenum target, GLuint framebuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -153,11 +155,11 @@ static void REGAL_CALL Dsa_glBindFramebufferEXT(Layer *_layer, GLenum target, GL
     return;
   }
 
-  orig.glBindFramebufferEXT( orig.glBindFramebufferEXT_layer, target, framebuffer );
+  RglBindFramebufferEXT( orig, target, framebuffer );
 
 }
 
-static void REGAL_CALL Dsa_glBindMultiTextureEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint texture)
+static void REGAL_CALL dsa_glBindMultiTextureEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint texture)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -169,11 +171,11 @@ static void REGAL_CALL Dsa_glBindMultiTextureEXT(Layer *_layer, GLenum texunit, 
   orig.glBindTexture( _context, target, texture );
   return;
 
-  orig.glBindMultiTextureEXT( orig.glBindMultiTextureEXT_layer, texunit, target, texture );
+  RglBindMultiTextureEXT( orig, texunit, target, texture );
 
 }
 
-static void REGAL_CALL Dsa_glBindProgramARB(Layer *_layer, GLenum target, GLuint program)
+static void REGAL_CALL dsa_glBindProgramARB(Layer *_layer, GLenum target, GLuint program)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -184,11 +186,11 @@ static void REGAL_CALL Dsa_glBindProgramARB(Layer *_layer, GLenum target, GLuint
     return;
   }
 
-  orig.glBindProgramARB( orig.glBindProgramARB_layer, target, program );
+  RglBindProgramARB( orig, target, program );
 
 }
 
-static void REGAL_CALL Dsa_glBindRenderbuffer(Layer *_layer, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL dsa_glBindRenderbuffer(Layer *_layer, GLenum target, GLuint renderbuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -199,11 +201,11 @@ static void REGAL_CALL Dsa_glBindRenderbuffer(Layer *_layer, GLenum target, GLui
     return;
   }
 
-  orig.glBindRenderbuffer( orig.glBindRenderbuffer_layer, target, renderbuffer );
+  RglBindRenderbuffer( orig, target, renderbuffer );
 
 }
 
-static void REGAL_CALL Dsa_glBindRenderbufferEXT(Layer *_layer, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL dsa_glBindRenderbufferEXT(Layer *_layer, GLenum target, GLuint renderbuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -214,11 +216,11 @@ static void REGAL_CALL Dsa_glBindRenderbufferEXT(Layer *_layer, GLenum target, G
     return;
   }
 
-  orig.glBindRenderbufferEXT( orig.glBindRenderbufferEXT_layer, target, renderbuffer );
+  RglBindRenderbufferEXT( orig, target, renderbuffer );
 
 }
 
-static void REGAL_CALL Dsa_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL dsa_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -229,11 +231,11 @@ static void REGAL_CALL Dsa_glBindTexture(Layer *_layer, GLenum target, GLuint te
     return;
   }
 
-  orig.glBindTexture( orig.glBindTexture_layer, target, texture );
+  RglBindTexture( orig, target, texture );
 
 }
 
-static void REGAL_CALL Dsa_glBindTextureEXT(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL dsa_glBindTextureEXT(Layer *_layer, GLenum target, GLuint texture)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -244,11 +246,11 @@ static void REGAL_CALL Dsa_glBindTextureEXT(Layer *_layer, GLenum target, GLuint
     return;
   }
 
-  orig.glBindTextureEXT( orig.glBindTextureEXT_layer, target, texture );
+  RglBindTextureEXT( orig, target, texture );
 
 }
 
-static void REGAL_CALL Dsa_glBindVertexArray(Layer *_layer, GLuint array)
+static void REGAL_CALL dsa_glBindVertexArray(Layer *_layer, GLuint array)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -259,11 +261,11 @@ static void REGAL_CALL Dsa_glBindVertexArray(Layer *_layer, GLuint array)
     return;
   }
 
-  orig.glBindVertexArray( orig.glBindVertexArray_layer, array );
+  RglBindVertexArray( orig, array );
 
 }
 
-static void REGAL_CALL Dsa_glBufferData(Layer *_layer, GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
+static void REGAL_CALL dsa_glBufferData(Layer *_layer, GLenum target, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -272,11 +274,11 @@ static void REGAL_CALL Dsa_glBufferData(Layer *_layer, GLenum target, GLsizeiptr
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glBufferData( orig.glBufferData_layer, target, size, data, usage );
+  RglBufferData( orig, target, size, data, usage );
 
 }
 
-static void REGAL_CALL Dsa_glBufferSubData(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
+static void REGAL_CALL dsa_glBufferSubData(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -285,11 +287,11 @@ static void REGAL_CALL Dsa_glBufferSubData(Layer *_layer, GLenum target, GLintpt
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glBufferSubData( orig.glBufferSubData_layer, target, offset, size, data );
+  RglBufferSubData( orig, target, offset, size, data );
 
 }
 
-static GLenum REGAL_CALL Dsa_glCheckNamedFramebufferStatusEXT(Layer *_layer, GLuint framebuffer, GLenum target)
+static GLenum REGAL_CALL dsa_glCheckNamedFramebufferStatusEXT(Layer *_layer, GLuint framebuffer, GLenum target)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -299,11 +301,11 @@ static GLenum REGAL_CALL Dsa_glCheckNamedFramebufferStatusEXT(Layer *_layer, GLu
   _context->dsa->DsaFramebuffer( _context, GL_FRAMEBUFFER, framebuffer);
   return orig.glCheckFramebufferStatus( _context, target );
 
-  return orig.glCheckNamedFramebufferStatusEXT( orig.glCheckNamedFramebufferStatusEXT_layer, framebuffer, target );
+  return RglCheckNamedFramebufferStatusEXT( orig, framebuffer, target );
 
 }
 
-static void REGAL_CALL Dsa_glClientActiveTexture(Layer *_layer, GLenum texture)
+static void REGAL_CALL dsa_glClientActiveTexture(Layer *_layer, GLenum texture)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -314,11 +316,11 @@ static void REGAL_CALL Dsa_glClientActiveTexture(Layer *_layer, GLenum texture)
     return;
   }
 
-  orig.glClientActiveTexture( orig.glClientActiveTexture_layer, texture );
+  RglClientActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL Dsa_glClientActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL dsa_glClientActiveTextureARB(Layer *_layer, GLenum texture)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -329,11 +331,11 @@ static void REGAL_CALL Dsa_glClientActiveTextureARB(Layer *_layer, GLenum textur
     return;
   }
 
-  orig.glClientActiveTextureARB( orig.glClientActiveTextureARB_layer, texture );
+  RglClientActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL Dsa_glClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
+static void REGAL_CALL dsa_glClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -342,11 +344,11 @@ static void REGAL_CALL Dsa_glClientAttribDefaultEXT(Layer *_layer, GLbitfield ma
   // impl
   _context->dsa->ClientAttribDefault( _context, mask ); return;
 
-  orig.glClientAttribDefaultEXT( orig.glClientAttribDefaultEXT_layer, mask );
+  RglClientAttribDefaultEXT( orig, mask );
 
 }
 
-static void REGAL_CALL Dsa_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL dsa_glColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -355,11 +357,11 @@ static void REGAL_CALL Dsa_glColorPointer(Layer *_layer, GLint size, GLenum type
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glColorPointer( orig.glColorPointer_layer, size, type, stride, pointer );
+  RglColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL dsa_glCompressedMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -370,11 +372,11 @@ static void REGAL_CALL Dsa_glCompressedMultiTexImage1DEXT(Layer *_layer, GLenum 
   orig.glCompressedTexImage1D( _context, target, level, internalformat, width, border, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexImage1DEXT( orig.glCompressedMultiTexImage1DEXT_layer, texunit, target, level, internalformat, width, border, imageSize, data );
+  RglCompressedMultiTexImage1DEXT( orig, texunit, target, level, internalformat, width, border, imageSize, data );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -385,11 +387,11 @@ static void REGAL_CALL Dsa_glCompressedMultiTexImage2DEXT(Layer *_layer, GLenum 
   orig.glCompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, bits );
   return;
 
-  orig.glCompressedMultiTexImage2DEXT( orig.glCompressedMultiTexImage2DEXT_layer, texunit, target, level, internalformat, width, height, border, imageSize, bits );
+  RglCompressedMultiTexImage2DEXT( orig, texunit, target, level, internalformat, width, height, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -400,11 +402,11 @@ static void REGAL_CALL Dsa_glCompressedMultiTexImage3DEXT(Layer *_layer, GLenum 
   orig.glCompressedTexImage3D( _context, target, level, internalformat, width, height, depth, border, imageSize, bits );
   return;
 
-  orig.glCompressedMultiTexImage3DEXT( orig.glCompressedMultiTexImage3DEXT_layer, texunit, target, level, internalformat, width, height, depth, border, imageSize, bits );
+  RglCompressedMultiTexImage3DEXT( orig, texunit, target, level, internalformat, width, height, depth, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL dsa_glCompressedMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -415,11 +417,11 @@ static void REGAL_CALL Dsa_glCompressedMultiTexSubImage1DEXT(Layer *_layer, GLen
   orig.glCompressedTexSubImage1D( _context, target, level, xoffset, width, format, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexSubImage1DEXT( orig.glCompressedMultiTexSubImage1DEXT_layer, texunit, target, level, xoffset, width, format, imageSize, data );
+  RglCompressedMultiTexSubImage1DEXT( orig, texunit, target, level, xoffset, width, format, imageSize, data );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL dsa_glCompressedMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -430,11 +432,11 @@ static void REGAL_CALL Dsa_glCompressedMultiTexSubImage2DEXT(Layer *_layer, GLen
   orig.glCompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexSubImage2DEXT( orig.glCompressedMultiTexSubImage2DEXT_layer, texunit, target, level, xoffset, yoffset, width, height, format, imageSize, data );
+  RglCompressedMultiTexSubImage2DEXT( orig, texunit, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
+static void REGAL_CALL dsa_glCompressedMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -445,11 +447,11 @@ static void REGAL_CALL Dsa_glCompressedMultiTexSubImage3DEXT(Layer *_layer, GLen
   orig.glCompressedTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
   return;
 
-  orig.glCompressedMultiTexSubImage3DEXT( orig.glCompressedMultiTexSubImage3DEXT_layer, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
+  RglCompressedMultiTexSubImage3DEXT( orig, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, data );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -460,11 +462,11 @@ static void REGAL_CALL Dsa_glCompressedTextureImage1DEXT(Layer *_layer, GLuint t
   orig.glCompressedTexImage1D( _context, target, level, internalformat, width, border, imageSize, bits );
   return;
 
-  orig.glCompressedTextureImage1DEXT( orig.glCompressedTextureImage1DEXT_layer, texture, target, level, internalformat, width, border, imageSize, bits );
+  RglCompressedTextureImage1DEXT( orig, texture, target, level, internalformat, width, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -475,11 +477,11 @@ static void REGAL_CALL Dsa_glCompressedTextureImage2DEXT(Layer *_layer, GLuint t
   orig.glCompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, bits );
   return;
 
-  orig.glCompressedTextureImage2DEXT( orig.glCompressedTextureImage2DEXT_layer, texture, target, level, internalformat, width, height, border, imageSize, bits );
+  RglCompressedTextureImage2DEXT( orig, texture, target, level, internalformat, width, height, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -490,11 +492,11 @@ static void REGAL_CALL Dsa_glCompressedTextureImage3DEXT(Layer *_layer, GLuint t
   orig.glCompressedTexImage3D( _context, target, level, internalformat, width, height, depth, border, imageSize, bits );
   return;
 
-  orig.glCompressedTextureImage3DEXT( orig.glCompressedTextureImage3DEXT_layer, texture, target, level, internalformat, width, height, depth, border, imageSize, bits );
+  RglCompressedTextureImage3DEXT( orig, texture, target, level, internalformat, width, height, depth, border, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -505,11 +507,11 @@ static void REGAL_CALL Dsa_glCompressedTextureSubImage1DEXT(Layer *_layer, GLuin
   orig.glCompressedTexSubImage1D( _context, target, level, xoffset, width, format, imageSize, bits );
   return;
 
-  orig.glCompressedTextureSubImage1DEXT( orig.glCompressedTextureSubImage1DEXT_layer, texture, target, level, xoffset, width, format, imageSize, bits );
+  RglCompressedTextureSubImage1DEXT( orig, texture, target, level, xoffset, width, format, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -520,11 +522,11 @@ static void REGAL_CALL Dsa_glCompressedTextureSubImage2DEXT(Layer *_layer, GLuin
   orig.glCompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, bits );
   return;
 
-  orig.glCompressedTextureSubImage2DEXT( orig.glCompressedTextureSubImage2DEXT_layer, texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits );
+  RglCompressedTextureSubImage2DEXT( orig, texture, target, level, xoffset, yoffset, width, height, format, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCompressedTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits)
+static void REGAL_CALL dsa_glCompressedTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLsizei imageSize, const GLvoid *bits)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -535,11 +537,11 @@ static void REGAL_CALL Dsa_glCompressedTextureSubImage3DEXT(Layer *_layer, GLuin
   orig.glCompressedTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
   return;
 
-  orig.glCompressedTextureSubImage3DEXT( orig.glCompressedTextureSubImage3DEXT_layer, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
+  RglCompressedTextureSubImage3DEXT( orig, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, imageSize, bits );
 
 }
 
-static void REGAL_CALL Dsa_glCopyBufferSubData(Layer *_layer, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
+static void REGAL_CALL dsa_glCopyBufferSubData(Layer *_layer, GLenum readtarget, GLenum writetarget, GLintptr readoffset, GLintptr writeoffset, GLsizeiptr size)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -548,11 +550,11 @@ static void REGAL_CALL Dsa_glCopyBufferSubData(Layer *_layer, GLenum readtarget,
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glCopyBufferSubData( orig.glCopyBufferSubData_layer, readtarget, writetarget, readoffset, writeoffset, size );
+  RglCopyBufferSubData( orig, readtarget, writetarget, readoffset, writeoffset, size );
 
 }
 
-static void REGAL_CALL Dsa_glCopyMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
+static void REGAL_CALL dsa_glCopyMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -563,11 +565,11 @@ static void REGAL_CALL Dsa_glCopyMultiTexImage1DEXT(Layer *_layer, GLenum texuni
   orig.glCopyTexImage1D( _context, target, level, internalformat, x, y, width, border );
   return;
 
-  orig.glCopyMultiTexImage1DEXT( orig.glCopyMultiTexImage1DEXT_layer, texunit, target, level, internalformat, x, y, width, border );
+  RglCopyMultiTexImage1DEXT( orig, texunit, target, level, internalformat, x, y, width, border );
 
 }
 
-static void REGAL_CALL Dsa_glCopyMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
+static void REGAL_CALL dsa_glCopyMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -578,11 +580,11 @@ static void REGAL_CALL Dsa_glCopyMultiTexImage2DEXT(Layer *_layer, GLenum texuni
   orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border );
   return;
 
-  orig.glCopyMultiTexImage2DEXT( orig.glCopyMultiTexImage2DEXT_layer, texunit, target, level, internalformat, x, y, width, height, border );
+  RglCopyMultiTexImage2DEXT( orig, texunit, target, level, internalformat, x, y, width, height, border );
 
 }
 
-static void REGAL_CALL Dsa_glCopyMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
+static void REGAL_CALL dsa_glCopyMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -593,11 +595,11 @@ static void REGAL_CALL Dsa_glCopyMultiTexSubImage1DEXT(Layer *_layer, GLenum tex
   orig.glCopyTexSubImage1D( _context, target, level, xoffset, x, y, width );
   return;
 
-  orig.glCopyMultiTexSubImage1DEXT( orig.glCopyMultiTexSubImage1DEXT_layer, texunit, target, level, xoffset, x, y, width );
+  RglCopyMultiTexSubImage1DEXT( orig, texunit, target, level, xoffset, x, y, width );
 
 }
 
-static void REGAL_CALL Dsa_glCopyMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glCopyMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -608,11 +610,11 @@ static void REGAL_CALL Dsa_glCopyMultiTexSubImage2DEXT(Layer *_layer, GLenum tex
   orig.glCopyTexSubImage2D( _context, target, level, xoffset, yoffset, x, y, width, height );
   return;
 
-  orig.glCopyMultiTexSubImage2DEXT( orig.glCopyMultiTexSubImage2DEXT_layer, texunit, target, level, xoffset, yoffset, x, y, width, height );
+  RglCopyMultiTexSubImage2DEXT( orig, texunit, target, level, xoffset, yoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glCopyMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glCopyMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -623,11 +625,11 @@ static void REGAL_CALL Dsa_glCopyMultiTexSubImage3DEXT(Layer *_layer, GLenum tex
   orig.glCopyTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, x, y, width, height );
   return;
 
-  orig.glCopyMultiTexSubImage3DEXT( orig.glCopyMultiTexSubImage3DEXT_layer, texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height );
+  RglCopyMultiTexSubImage3DEXT( orig, texunit, target, level, xoffset, yoffset, zoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glCopyTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
+static void REGAL_CALL dsa_glCopyTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLint border)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -638,11 +640,11 @@ static void REGAL_CALL Dsa_glCopyTextureImage1DEXT(Layer *_layer, GLuint texture
   orig.glCopyTexImage1D( _context, target, level, internalformat, x, y, width, border );
   return;
 
-  orig.glCopyTextureImage1DEXT( orig.glCopyTextureImage1DEXT_layer, texture, target, level, internalformat, x, y, width, border );
+  RglCopyTextureImage1DEXT( orig, texture, target, level, internalformat, x, y, width, border );
 
 }
 
-static void REGAL_CALL Dsa_glCopyTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
+static void REGAL_CALL dsa_glCopyTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum internalformat, GLint x, GLint y, GLsizei width, GLsizei height, GLint border)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -653,11 +655,11 @@ static void REGAL_CALL Dsa_glCopyTextureImage2DEXT(Layer *_layer, GLuint texture
   orig.glCopyTexImage2D( _context, target, level, internalformat, x, y, width, height, border );
   return;
 
-  orig.glCopyTextureImage2DEXT( orig.glCopyTextureImage2DEXT_layer, texture, target, level, internalformat, x, y, width, height, border );
+  RglCopyTextureImage2DEXT( orig, texture, target, level, internalformat, x, y, width, height, border );
 
 }
 
-static void REGAL_CALL Dsa_glCopyTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
+static void REGAL_CALL dsa_glCopyTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint x, GLint y, GLsizei width)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -668,11 +670,11 @@ static void REGAL_CALL Dsa_glCopyTextureSubImage1DEXT(Layer *_layer, GLuint text
   orig.glCopyTexSubImage1D( _context, target, level, xoffset, x, y, width );
   return;
 
-  orig.glCopyTextureSubImage1DEXT( orig.glCopyTextureSubImage1DEXT_layer, texture, target, level, xoffset, x, y, width );
+  RglCopyTextureSubImage1DEXT( orig, texture, target, level, xoffset, x, y, width );
 
 }
 
-static void REGAL_CALL Dsa_glCopyTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glCopyTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -683,11 +685,11 @@ static void REGAL_CALL Dsa_glCopyTextureSubImage2DEXT(Layer *_layer, GLuint text
   orig.glCopyTexSubImage2D( _context, target, level, xoffset, yoffset, x, y, width, height );
   return;
 
-  orig.glCopyTextureSubImage2DEXT( orig.glCopyTextureSubImage2DEXT_layer, texture, target, level, xoffset, yoffset, x, y, width, height );
+  RglCopyTextureSubImage2DEXT( orig, texture, target, level, xoffset, yoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glCopyTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glCopyTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLint x, GLint y, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -698,11 +700,11 @@ static void REGAL_CALL Dsa_glCopyTextureSubImage3DEXT(Layer *_layer, GLuint text
   orig.glCopyTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, x, y, width, height );
   return;
 
-  orig.glCopyTextureSubImage3DEXT( orig.glCopyTextureSubImage3DEXT_layer, texture, target, level, xoffset, yoffset, zoffset, x, y, width, height );
+  RglCopyTextureSubImage3DEXT( orig, texture, target, level, xoffset, yoffset, zoffset, x, y, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteBuffers(Layer *_layer, GLsizei n, const GLuint *buffers)
+static void REGAL_CALL dsa_glDeleteBuffers(Layer *_layer, GLsizei n, const GLuint *buffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -711,11 +713,11 @@ static void REGAL_CALL Dsa_glDeleteBuffers(Layer *_layer, GLsizei n, const GLuin
   // prefix
   _context->dsa->DeleteBuffers( _context, n, buffers );
 
-  orig.glDeleteBuffers( orig.glDeleteBuffers_layer, n, buffers );
+  RglDeleteBuffers( orig, n, buffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteBuffersARB(Layer *_layer, GLsizei n, const GLuint *buffers)
+static void REGAL_CALL dsa_glDeleteBuffersARB(Layer *_layer, GLsizei n, const GLuint *buffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -724,11 +726,11 @@ static void REGAL_CALL Dsa_glDeleteBuffersARB(Layer *_layer, GLsizei n, const GL
   // prefix
   _context->dsa->DeleteBuffers( _context, n, buffers );
 
-  orig.glDeleteBuffersARB( orig.glDeleteBuffersARB_layer, n, buffers );
+  RglDeleteBuffersARB( orig, n, buffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteFramebuffers(Layer *_layer, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL dsa_glDeleteFramebuffers(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -737,11 +739,11 @@ static void REGAL_CALL Dsa_glDeleteFramebuffers(Layer *_layer, GLsizei n, const 
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffers( orig.glDeleteFramebuffers_layer, n, framebuffers );
+  RglDeleteFramebuffers( orig, n, framebuffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL dsa_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -750,11 +752,11 @@ static void REGAL_CALL Dsa_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, con
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffersEXT( orig.glDeleteFramebuffersEXT_layer, n, framebuffers );
+  RglDeleteFramebuffersEXT( orig, n, framebuffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteFramebuffersOES(Layer *_layer, GLsizei n, const GLuint *framebuffers)
+static void REGAL_CALL dsa_glDeleteFramebuffersOES(Layer *_layer, GLsizei n, const GLuint *framebuffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -763,11 +765,11 @@ static void REGAL_CALL Dsa_glDeleteFramebuffersOES(Layer *_layer, GLsizei n, con
   // prefix
   _context->dsa->DeleteFramebuffers( _context, n, framebuffers );
 
-  orig.glDeleteFramebuffersOES( orig.glDeleteFramebuffersOES_layer, n, framebuffers );
+  RglDeleteFramebuffersOES( orig, n, framebuffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteProgram(Layer *_layer, GLuint program)
+static void REGAL_CALL dsa_glDeleteProgram(Layer *_layer, GLuint program)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -776,11 +778,11 @@ static void REGAL_CALL Dsa_glDeleteProgram(Layer *_layer, GLuint program)
   // prefix
   _context->dsa->DeleteGlslProgram( _context, program );
 
-  orig.glDeleteProgram( orig.glDeleteProgram_layer, program );
+  RglDeleteProgram( orig, program );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteProgramsARB(Layer *_layer, GLsizei n, const GLuint *programs)
+static void REGAL_CALL dsa_glDeleteProgramsARB(Layer *_layer, GLsizei n, const GLuint *programs)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -789,11 +791,11 @@ static void REGAL_CALL Dsa_glDeleteProgramsARB(Layer *_layer, GLsizei n, const G
   // prefix
   _context->dsa->DeleteAsmPrograms( _context, n, programs );
 
-  orig.glDeleteProgramsARB( orig.glDeleteProgramsARB_layer, n, programs );
+  RglDeleteProgramsARB( orig, n, programs );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteProgramsNV(Layer *_layer, GLsizei n, const GLuint *programs)
+static void REGAL_CALL dsa_glDeleteProgramsNV(Layer *_layer, GLsizei n, const GLuint *programs)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -802,11 +804,11 @@ static void REGAL_CALL Dsa_glDeleteProgramsNV(Layer *_layer, GLsizei n, const GL
   // prefix
   _context->dsa->DeleteAsmPrograms( _context, n, programs );
 
-  orig.glDeleteProgramsNV( orig.glDeleteProgramsNV_layer, n, programs );
+  RglDeleteProgramsNV( orig, n, programs );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteRenderbuffers(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL dsa_glDeleteRenderbuffers(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -815,11 +817,11 @@ static void REGAL_CALL Dsa_glDeleteRenderbuffers(Layer *_layer, GLsizei n, const
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffers( orig.glDeleteRenderbuffers_layer, n, renderbuffers );
+  RglDeleteRenderbuffers( orig, n, renderbuffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL dsa_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -828,11 +830,11 @@ static void REGAL_CALL Dsa_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, co
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffersEXT( orig.glDeleteRenderbuffersEXT_layer, n, renderbuffers );
+  RglDeleteRenderbuffersEXT( orig, n, renderbuffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteRenderbuffersOES(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
+static void REGAL_CALL dsa_glDeleteRenderbuffersOES(Layer *_layer, GLsizei n, const GLuint *renderbuffers)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -841,11 +843,11 @@ static void REGAL_CALL Dsa_glDeleteRenderbuffersOES(Layer *_layer, GLsizei n, co
   // prefix
   _context->dsa->DeleteRenderbuffers( _context, n, renderbuffers );
 
-  orig.glDeleteRenderbuffersOES( orig.glDeleteRenderbuffersOES_layer, n, renderbuffers );
+  RglDeleteRenderbuffersOES( orig, n, renderbuffers );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
+static void REGAL_CALL dsa_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -854,11 +856,11 @@ static void REGAL_CALL Dsa_glDeleteTextures(Layer *_layer, GLsizei n, const GLui
   // prefix
   _context->dsa->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTextures( orig.glDeleteTextures_layer, n, textures );
+  RglDeleteTextures( orig, n, textures );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const GLuint *textures)
+static void REGAL_CALL dsa_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const GLuint *textures)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -867,11 +869,11 @@ static void REGAL_CALL Dsa_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const G
   // prefix
   _context->dsa->DeleteTextures( _context, n, textures );
 
-  orig.glDeleteTexturesEXT( orig.glDeleteTexturesEXT_layer, n, textures );
+  RglDeleteTexturesEXT( orig, n, textures );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteVertexArrays(Layer *_layer, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL dsa_glDeleteVertexArrays(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -880,11 +882,11 @@ static void REGAL_CALL Dsa_glDeleteVertexArrays(Layer *_layer, GLsizei n, const 
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArrays( orig.glDeleteVertexArrays_layer, n, arrays );
+  RglDeleteVertexArrays( orig, n, arrays );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteVertexArraysAPPLE(Layer *_layer, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL dsa_glDeleteVertexArraysAPPLE(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -893,11 +895,11 @@ static void REGAL_CALL Dsa_glDeleteVertexArraysAPPLE(Layer *_layer, GLsizei n, c
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArraysAPPLE( orig.glDeleteVertexArraysAPPLE_layer, n, arrays );
+  RglDeleteVertexArraysAPPLE( orig, n, arrays );
 
 }
 
-static void REGAL_CALL Dsa_glDeleteVertexArraysOES(Layer *_layer, GLsizei n, const GLuint *arrays)
+static void REGAL_CALL dsa_glDeleteVertexArraysOES(Layer *_layer, GLsizei n, const GLuint *arrays)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -906,11 +908,11 @@ static void REGAL_CALL Dsa_glDeleteVertexArraysOES(Layer *_layer, GLsizei n, con
   // prefix
   _context->dsa->DeleteVaos( _context, n, arrays );
 
-  orig.glDeleteVertexArraysOES( orig.glDeleteVertexArraysOES_layer, n, arrays );
+  RglDeleteVertexArraysOES( orig, n, arrays );
 
 }
 
-static void REGAL_CALL Dsa_glDisable(Layer *_layer, GLenum cap)
+static void REGAL_CALL dsa_glDisable(Layer *_layer, GLenum cap)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -919,11 +921,11 @@ static void REGAL_CALL Dsa_glDisable(Layer *_layer, GLenum cap)
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glDisable( orig.glDisable_layer, cap );
+  RglDisable( orig, cap );
 
 }
 
-static void REGAL_CALL Dsa_glDisableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL dsa_glDisableClientState(Layer *_layer, GLenum cap)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -933,11 +935,11 @@ static void REGAL_CALL Dsa_glDisableClientState(Layer *_layer, GLenum cap)
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glDisableClientState( orig.glDisableClientState_layer, cap );
+  RglDisableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Dsa_glDisableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL dsa_glDisableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -948,11 +950,11 @@ static void REGAL_CALL Dsa_glDisableClientStateIndexedEXT(Layer *_layer, GLenum 
   orig.glDisableClientState( _context, array );
   return;
 
-  orig.glDisableClientStateIndexedEXT( orig.glDisableClientStateIndexedEXT_layer, array, index );
+  RglDisableClientStateIndexedEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Dsa_glDisableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL dsa_glDisableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -963,11 +965,11 @@ static void REGAL_CALL Dsa_glDisableClientStateiEXT(Layer *_layer, GLenum array,
   orig.glDisableClientState( _context, array );
   return;
 
-  orig.glDisableClientStateiEXT( orig.glDisableClientStateiEXT_layer, array, index );
+  RglDisableClientStateiEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Dsa_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL dsa_glDisableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -978,11 +980,11 @@ static void REGAL_CALL Dsa_glDisableIndexedEXT(Layer *_layer, GLenum target, GLu
   orig.glDisable( _context, target );
   return;
 
-  orig.glDisableIndexedEXT( orig.glDisableIndexedEXT_layer, target, index );
+  RglDisableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Dsa_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL dsa_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -992,11 +994,11 @@ static void REGAL_CALL Dsa_glDisableVertexArrayAttribEXT(Layer *_layer, GLuint v
   _context->dsa->DsaVao( _context, vaobj );
   orig.glDisableVertexAttribArray( _context, array );return;
 
-  orig.glDisableVertexArrayAttribEXT( orig.glDisableVertexArrayAttribEXT_layer, vaobj, array );
+  RglDisableVertexArrayAttribEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Dsa_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL dsa_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1011,11 +1013,11 @@ static void REGAL_CALL Dsa_glDisableVertexArrayEXT(Layer *_layer, GLuint vaobj, 
     orig.glDisableClientState( _context, array );
   }return;
 
-  orig.glDisableVertexArrayEXT( orig.glDisableVertexArrayEXT_layer, vaobj, array );
+  RglDisableVertexArrayEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Dsa_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL dsa_glDrawArrays(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1024,11 +1026,11 @@ static void REGAL_CALL Dsa_glDrawArrays(Layer *_layer, GLenum mode, GLint first,
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArrays( orig.glDrawArrays_layer, mode, first, count );
+  RglDrawArrays( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Dsa_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL dsa_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1037,11 +1039,11 @@ static void REGAL_CALL Dsa_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint fir
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysEXT( orig.glDrawArraysEXT_layer, mode, first, count );
+  RglDrawArraysEXT( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Dsa_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
+static void REGAL_CALL dsa_glDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1050,11 +1052,11 @@ static void REGAL_CALL Dsa_glDrawArraysIndirect(Layer *_layer, GLenum mode, cons
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysIndirect( orig.glDrawArraysIndirect_layer, mode, indirect );
+  RglDrawArraysIndirect( orig, mode, indirect );
 
 }
 
-static void REGAL_CALL Dsa_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL dsa_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1063,11 +1065,11 @@ static void REGAL_CALL Dsa_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLi
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstanced( orig.glDrawArraysInstanced_layer, mode, start, count, primcount );
+  RglDrawArraysInstanced( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL dsa_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1076,11 +1078,11 @@ static void REGAL_CALL Dsa_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstancedARB( orig.glDrawArraysInstancedARB_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedARB( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
+static void REGAL_CALL dsa_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, GLint start, GLsizei count, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1089,11 +1091,11 @@ static void REGAL_CALL Dsa_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawArraysInstancedEXT( orig.glDrawArraysInstancedEXT_layer, mode, start, count, primcount );
+  RglDrawArraysInstancedEXT( orig, mode, start, count, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
+static void REGAL_CALL dsa_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GLint first, GLsizei count)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1102,11 +1104,11 @@ static void REGAL_CALL Dsa_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, G
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementArrayAPPLE( orig.glDrawElementArrayAPPLE_layer, mode, first, count );
+  RglDrawElementArrayAPPLE( orig, mode, first, count );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
+static void REGAL_CALL dsa_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsizei count)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1115,11 +1117,11 @@ static void REGAL_CALL Dsa_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLs
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementArrayATI( orig.glDrawElementArrayATI_layer, mode, count );
+  RglDrawElementArrayATI( orig, mode, count );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
+static void REGAL_CALL dsa_glDrawElements(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1128,11 +1130,11 @@ static void REGAL_CALL Dsa_glDrawElements(Layer *_layer, GLenum mode, GLsizei co
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElements( orig.glDrawElements_layer, mode, count, type, indices );
+  RglDrawElements( orig, mode, count, type, indices );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
+static void REGAL_CALL dsa_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLint basevertex)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1141,11 +1143,11 @@ static void REGAL_CALL Dsa_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsBaseVertex( orig.glDrawElementsBaseVertex_layer, mode, count, type, indices, basevertex );
+  RglDrawElementsBaseVertex( orig, mode, count, type, indices, basevertex );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
+static void REGAL_CALL dsa_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1154,11 +1156,11 @@ static void REGAL_CALL Dsa_glDrawElementsIndirect(Layer *_layer, GLenum mode, GL
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsIndirect( orig.glDrawElementsIndirect_layer, mode, type, indirect );
+  RglDrawElementsIndirect( orig, mode, type, indirect );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL dsa_glDrawElementsInstanced(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1167,11 +1169,11 @@ static void REGAL_CALL Dsa_glDrawElementsInstanced(Layer *_layer, GLenum mode, G
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstanced( orig.glDrawElementsInstanced_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstanced( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL dsa_glDrawElementsInstancedARB(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1180,11 +1182,11 @@ static void REGAL_CALL Dsa_glDrawElementsInstancedARB(Layer *_layer, GLenum mode
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedARB( orig.glDrawElementsInstancedARB_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedARB( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
+static void REGAL_CALL dsa_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount, GLint basevertex)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1193,11 +1195,11 @@ static void REGAL_CALL Dsa_glDrawElementsInstancedBaseVertex(Layer *_layer, GLen
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedBaseVertex( orig.glDrawElementsInstancedBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglDrawElementsInstancedBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL Dsa_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
+static void REGAL_CALL dsa_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode, GLsizei count, GLenum type, const GLvoid *indices, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1206,11 +1208,11 @@ static void REGAL_CALL Dsa_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glDrawElementsInstancedEXT( orig.glDrawElementsInstancedEXT_layer, mode, count, type, indices, primcount );
+  RglDrawElementsInstancedEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glEnable(Layer *_layer, GLenum cap)
+static void REGAL_CALL dsa_glEnable(Layer *_layer, GLenum cap)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1219,11 +1221,11 @@ static void REGAL_CALL Dsa_glEnable(Layer *_layer, GLenum cap)
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glEnable( orig.glEnable_layer, cap );
+  RglEnable( orig, cap );
 
 }
 
-static void REGAL_CALL Dsa_glEnableClientState(Layer *_layer, GLenum cap)
+static void REGAL_CALL dsa_glEnableClientState(Layer *_layer, GLenum cap)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1233,11 +1235,11 @@ static void REGAL_CALL Dsa_glEnableClientState(Layer *_layer, GLenum cap)
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glEnableClientState( orig.glEnableClientState_layer, cap );
+  RglEnableClientState( orig, cap );
 
 }
 
-static void REGAL_CALL Dsa_glEnableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL dsa_glEnableClientStateIndexedEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1248,11 +1250,11 @@ static void REGAL_CALL Dsa_glEnableClientStateIndexedEXT(Layer *_layer, GLenum a
   orig.glEnableClientState( _context, array );
   return;
 
-  orig.glEnableClientStateIndexedEXT( orig.glEnableClientStateIndexedEXT_layer, array, index );
+  RglEnableClientStateIndexedEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Dsa_glEnableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
+static void REGAL_CALL dsa_glEnableClientStateiEXT(Layer *_layer, GLenum array, GLuint index)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1263,11 +1265,11 @@ static void REGAL_CALL Dsa_glEnableClientStateiEXT(Layer *_layer, GLenum array, 
   orig.glEnableClientState( _context, array );
   return;
 
-  orig.glEnableClientStateiEXT( orig.glEnableClientStateiEXT_layer, array, index );
+  RglEnableClientStateiEXT( orig, array, index );
 
 }
 
-static void REGAL_CALL Dsa_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static void REGAL_CALL dsa_glEnableIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1278,11 +1280,11 @@ static void REGAL_CALL Dsa_glEnableIndexedEXT(Layer *_layer, GLenum target, GLui
   orig.glEnable( _context, target );
   return;
 
-  orig.glEnableIndexedEXT( orig.glEnableIndexedEXT_layer, target, index );
+  RglEnableIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Dsa_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL dsa_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1292,11 +1294,11 @@ static void REGAL_CALL Dsa_glEnableVertexArrayAttribEXT(Layer *_layer, GLuint va
   _context->dsa->DsaVao( _context, vaobj );
   orig.glEnableVertexAttribArray( _context, array );return;
 
-  orig.glEnableVertexArrayAttribEXT( orig.glEnableVertexArrayAttribEXT_layer, vaobj, array );
+  RglEnableVertexArrayAttribEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Dsa_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
+static void REGAL_CALL dsa_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, GLenum array)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1311,11 +1313,11 @@ static void REGAL_CALL Dsa_glEnableVertexArrayEXT(Layer *_layer, GLuint vaobj, G
     orig.glEnableClientState( _context, array );
   }return;
 
-  orig.glEnableVertexArrayEXT( orig.glEnableVertexArrayEXT_layer, vaobj, array );
+  RglEnableVertexArrayEXT( orig, vaobj, array );
 
 }
 
-static void REGAL_CALL Dsa_glFlushMappedBufferRange(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length)
+static void REGAL_CALL dsa_glFlushMappedBufferRange(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1324,11 +1326,11 @@ static void REGAL_CALL Dsa_glFlushMappedBufferRange(Layer *_layer, GLenum target
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glFlushMappedBufferRange( orig.glFlushMappedBufferRange_layer, target, offset, length );
+  RglFlushMappedBufferRange( orig, target, offset, length );
 
 }
 
-static void REGAL_CALL Dsa_glFlushMappedBufferRangeEXT(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length)
+static void REGAL_CALL dsa_glFlushMappedBufferRangeEXT(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1337,11 +1339,11 @@ static void REGAL_CALL Dsa_glFlushMappedBufferRangeEXT(Layer *_layer, GLenum tar
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glFlushMappedBufferRangeEXT( orig.glFlushMappedBufferRangeEXT_layer, target, offset, length );
+  RglFlushMappedBufferRangeEXT( orig, target, offset, length );
 
 }
 
-static void REGAL_CALL Dsa_glFlushMappedNamedBufferRangeEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr length)
+static void REGAL_CALL dsa_glFlushMappedNamedBufferRangeEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr length)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1352,11 +1354,11 @@ static void REGAL_CALL Dsa_glFlushMappedNamedBufferRangeEXT(Layer *_layer, GLuin
   orig.glFlushMappedBufferRange( _context, GL_ARRAY_BUFFER, offset, length );
   return;
 
-  orig.glFlushMappedNamedBufferRangeEXT( orig.glFlushMappedNamedBufferRangeEXT_layer, buffer, offset, length );
+  RglFlushMappedNamedBufferRangeEXT( orig, buffer, offset, length );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferDrawBufferEXT(Layer *_layer, GLuint framebuffer, GLenum mode)
+static void REGAL_CALL dsa_glFramebufferDrawBufferEXT(Layer *_layer, GLuint framebuffer, GLenum mode)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1367,11 +1369,11 @@ static void REGAL_CALL Dsa_glFramebufferDrawBufferEXT(Layer *_layer, GLuint fram
   orig.glDrawBuffer( _context, mode );
   return;
 
-  orig.glFramebufferDrawBufferEXT( orig.glFramebufferDrawBufferEXT_layer, framebuffer, mode );
+  RglFramebufferDrawBufferEXT( orig, framebuffer, mode );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferDrawBuffersEXT(Layer *_layer, GLuint framebuffer, GLsizei n, const GLenum *bufs)
+static void REGAL_CALL dsa_glFramebufferDrawBuffersEXT(Layer *_layer, GLuint framebuffer, GLsizei n, const GLenum *bufs)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1382,11 +1384,11 @@ static void REGAL_CALL Dsa_glFramebufferDrawBuffersEXT(Layer *_layer, GLuint fra
   orig.glDrawBuffers( _context, n, bufs );
   return;
 
-  orig.glFramebufferDrawBuffersEXT( orig.glFramebufferDrawBuffersEXT_layer, framebuffer, n, bufs );
+  RglFramebufferDrawBuffersEXT( orig, framebuffer, n, bufs );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferReadBufferEXT(Layer *_layer, GLuint framebuffer, GLenum mode)
+static void REGAL_CALL dsa_glFramebufferReadBufferEXT(Layer *_layer, GLuint framebuffer, GLenum mode)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1397,11 +1399,11 @@ static void REGAL_CALL Dsa_glFramebufferReadBufferEXT(Layer *_layer, GLuint fram
   orig.glReadBuffer( _context, mode );
   return;
 
-  orig.glFramebufferReadBufferEXT( orig.glFramebufferReadBufferEXT_layer, framebuffer, mode );
+  RglFramebufferReadBufferEXT( orig, framebuffer, mode );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferRenderbuffer(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL dsa_glFramebufferRenderbuffer(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1410,11 +1412,11 @@ static void REGAL_CALL Dsa_glFramebufferRenderbuffer(Layer *_layer, GLenum targe
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferRenderbuffer( orig.glFramebufferRenderbuffer_layer, target, attachment, renderbuffertarget, renderbuffer );
+  RglFramebufferRenderbuffer( orig, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferRenderbufferEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL dsa_glFramebufferRenderbufferEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1423,11 +1425,11 @@ static void REGAL_CALL Dsa_glFramebufferRenderbufferEXT(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferRenderbufferEXT( orig.glFramebufferRenderbufferEXT_layer, target, attachment, renderbuffertarget, renderbuffer );
+  RglFramebufferRenderbufferEXT( orig, target, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTexture(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glFramebufferTexture(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1436,11 +1438,11 @@ static void REGAL_CALL Dsa_glFramebufferTexture(Layer *_layer, GLenum target, GL
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture( orig.glFramebufferTexture_layer, target, attachment, texture, level );
+  RglFramebufferTexture( orig, target, attachment, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTexture1D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glFramebufferTexture1D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1449,11 +1451,11 @@ static void REGAL_CALL Dsa_glFramebufferTexture1D(Layer *_layer, GLenum target, 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture1D( orig.glFramebufferTexture1D_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture1D( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTexture1DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glFramebufferTexture1DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1462,11 +1464,11 @@ static void REGAL_CALL Dsa_glFramebufferTexture1DEXT(Layer *_layer, GLenum targe
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture1DEXT( orig.glFramebufferTexture1DEXT_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture1DEXT( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTexture2D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glFramebufferTexture2D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1475,11 +1477,11 @@ static void REGAL_CALL Dsa_glFramebufferTexture2D(Layer *_layer, GLenum target, 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture2D( orig.glFramebufferTexture2D_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture2D( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTexture2DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glFramebufferTexture2DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1488,11 +1490,11 @@ static void REGAL_CALL Dsa_glFramebufferTexture2DEXT(Layer *_layer, GLenum targe
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture2DEXT( orig.glFramebufferTexture2DEXT_layer, target, attachment, textarget, texture, level );
+  RglFramebufferTexture2DEXT( orig, target, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTexture3D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL dsa_glFramebufferTexture3D(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1501,11 +1503,11 @@ static void REGAL_CALL Dsa_glFramebufferTexture3D(Layer *_layer, GLenum target, 
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture3D( orig.glFramebufferTexture3D_layer, target, attachment, textarget, texture, level, layer );
+  RglFramebufferTexture3D( orig, target, attachment, textarget, texture, level, layer );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTexture3DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+static void REGAL_CALL dsa_glFramebufferTexture3DEXT(Layer *_layer, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1514,11 +1516,11 @@ static void REGAL_CALL Dsa_glFramebufferTexture3DEXT(Layer *_layer, GLenum targe
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTexture3DEXT( orig.glFramebufferTexture3DEXT_layer, target, attachment, textarget, texture, level, zoffset );
+  RglFramebufferTexture3DEXT( orig, target, attachment, textarget, texture, level, zoffset );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glFramebufferTextureARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1527,11 +1529,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureARB(Layer *_layer, GLenum target,
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureARB( orig.glFramebufferTextureARB_layer, target, attachment, texture, level );
+  RglFramebufferTextureARB( orig, target, attachment, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glFramebufferTextureEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1540,11 +1542,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureEXT(Layer *_layer, GLenum target,
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureEXT( orig.glFramebufferTextureEXT_layer, target, attachment, texture, level );
+  RglFramebufferTextureEXT( orig, target, attachment, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureFace(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL dsa_glFramebufferTextureFace(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1553,11 +1555,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureFace(Layer *_layer, GLenum target
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFace( orig.glFramebufferTextureFace_layer, target, attachment, texture, level, face );
+  RglFramebufferTextureFace( orig, target, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureFaceARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL dsa_glFramebufferTextureFaceARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1566,11 +1568,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureFaceARB(Layer *_layer, GLenum tar
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFaceARB( orig.glFramebufferTextureFaceARB_layer, target, attachment, texture, level, face );
+  RglFramebufferTextureFaceARB( orig, target, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureFaceEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL dsa_glFramebufferTextureFaceEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1579,11 +1581,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureFaceEXT(Layer *_layer, GLenum tar
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureFaceEXT( orig.glFramebufferTextureFaceEXT_layer, target, attachment, texture, level, face );
+  RglFramebufferTextureFaceEXT( orig, target, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureLayer(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL dsa_glFramebufferTextureLayer(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1592,11 +1594,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureLayer(Layer *_layer, GLenum targe
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayer( orig.glFramebufferTextureLayer_layer, target, attachment, texture, level, layer );
+  RglFramebufferTextureLayer( orig, target, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureLayerARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL dsa_glFramebufferTextureLayerARB(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1605,11 +1607,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureLayerARB(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayerARB( orig.glFramebufferTextureLayerARB_layer, target, attachment, texture, level, layer );
+  RglFramebufferTextureLayerARB( orig, target, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL Dsa_glFramebufferTextureLayerEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL dsa_glFramebufferTextureLayerEXT(Layer *_layer, GLenum target, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1618,11 +1620,11 @@ static void REGAL_CALL Dsa_glFramebufferTextureLayerEXT(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreFramebuffer( _context );
 
-  orig.glFramebufferTextureLayerEXT( orig.glFramebufferTextureLayerEXT_layer, target, attachment, texture, level, layer );
+  RglFramebufferTextureLayerEXT( orig, target, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL Dsa_glGenerateMipmap(Layer *_layer, GLenum target)
+static void REGAL_CALL dsa_glGenerateMipmap(Layer *_layer, GLenum target)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1632,11 +1634,11 @@ static void REGAL_CALL Dsa_glGenerateMipmap(Layer *_layer, GLenum target)
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGenerateMipmap( orig.glGenerateMipmap_layer, target );
+  RglGenerateMipmap( orig, target );
 
 }
 
-static void REGAL_CALL Dsa_glGenerateMipmapEXT(Layer *_layer, GLenum target)
+static void REGAL_CALL dsa_glGenerateMipmapEXT(Layer *_layer, GLenum target)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1646,11 +1648,11 @@ static void REGAL_CALL Dsa_glGenerateMipmapEXT(Layer *_layer, GLenum target)
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGenerateMipmapEXT( orig.glGenerateMipmapEXT_layer, target );
+  RglGenerateMipmapEXT( orig, target );
 
 }
 
-static void REGAL_CALL Dsa_glGenerateMultiTexMipmapEXT(Layer *_layer, GLenum texunit, GLenum target)
+static void REGAL_CALL dsa_glGenerateMultiTexMipmapEXT(Layer *_layer, GLenum texunit, GLenum target)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1661,11 +1663,11 @@ static void REGAL_CALL Dsa_glGenerateMultiTexMipmapEXT(Layer *_layer, GLenum tex
   orig.glGenerateMipmap( _context, target );
   return;
 
-  orig.glGenerateMultiTexMipmapEXT( orig.glGenerateMultiTexMipmapEXT_layer, texunit, target );
+  RglGenerateMultiTexMipmapEXT( orig, texunit, target );
 
 }
 
-static void REGAL_CALL Dsa_glGenerateTextureMipmapEXT(Layer *_layer, GLuint texture, GLenum target)
+static void REGAL_CALL dsa_glGenerateTextureMipmapEXT(Layer *_layer, GLuint texture, GLenum target)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1676,11 +1678,11 @@ static void REGAL_CALL Dsa_glGenerateTextureMipmapEXT(Layer *_layer, GLuint text
   orig.glGenerateMipmap( _context, target );
   return;
 
-  orig.glGenerateTextureMipmapEXT( orig.glGenerateTextureMipmapEXT_layer, texture, target );
+  RglGenerateTextureMipmapEXT( orig, texture, target );
 
 }
 
-static void REGAL_CALL Dsa_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
+static void REGAL_CALL dsa_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1689,11 +1691,11 @@ static void REGAL_CALL Dsa_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean 
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetBooleanv( orig.glGetBooleanv_layer, pname, params );
+  RglGetBooleanv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetBufferParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetBufferParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1702,11 +1704,11 @@ static void REGAL_CALL Dsa_glGetBufferParameteriv(Layer *_layer, GLenum target, 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferParameteriv( orig.glGetBufferParameteriv_layer, target, pname, params );
+  RglGetBufferParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetBufferPointerv(Layer *_layer, GLenum target, GLenum pname, GLvoid **params)
+static void REGAL_CALL dsa_glGetBufferPointerv(Layer *_layer, GLenum target, GLenum pname, GLvoid **params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1715,11 +1717,11 @@ static void REGAL_CALL Dsa_glGetBufferPointerv(Layer *_layer, GLenum target, GLe
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferPointerv( orig.glGetBufferPointerv_layer, target, pname, params );
+  RglGetBufferPointerv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetBufferSubData(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data)
+static void REGAL_CALL dsa_glGetBufferSubData(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1728,11 +1730,11 @@ static void REGAL_CALL Dsa_glGetBufferSubData(Layer *_layer, GLenum target, GLin
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glGetBufferSubData( orig.glGetBufferSubData_layer, target, offset, size, data );
+  RglGetBufferSubData( orig, target, offset, size, data );
 
 }
 
-static void REGAL_CALL Dsa_glGetCompressedMultiTexImageEXT(Layer *_layer, GLenum texunit, GLenum target, GLint lod, GLvoid *img)
+static void REGAL_CALL dsa_glGetCompressedMultiTexImageEXT(Layer *_layer, GLenum texunit, GLenum target, GLint lod, GLvoid *img)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1743,11 +1745,11 @@ static void REGAL_CALL Dsa_glGetCompressedMultiTexImageEXT(Layer *_layer, GLenum
   orig.glGetCompressedTexImage( _context, target, lod, img );
   return;
 
-  orig.glGetCompressedMultiTexImageEXT( orig.glGetCompressedMultiTexImageEXT_layer, texunit, target, lod, img );
+  RglGetCompressedMultiTexImageEXT( orig, texunit, target, lod, img );
 
 }
 
-static void REGAL_CALL Dsa_glGetCompressedTextureImageEXT(Layer *_layer, GLuint texture, GLenum target, GLint lod, GLvoid *img)
+static void REGAL_CALL dsa_glGetCompressedTextureImageEXT(Layer *_layer, GLuint texture, GLenum target, GLint lod, GLvoid *img)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1758,11 +1760,11 @@ static void REGAL_CALL Dsa_glGetCompressedTextureImageEXT(Layer *_layer, GLuint 
   orig.glGetCompressedTexImage( _context, target, lod, img );
   return;
 
-  orig.glGetCompressedTextureImageEXT( orig.glGetCompressedTextureImageEXT_layer, texture, target, lod, img );
+  RglGetCompressedTextureImageEXT( orig, texture, target, lod, img );
 
 }
 
-static void REGAL_CALL Dsa_glGetDoubleIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
+static void REGAL_CALL dsa_glGetDoubleIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1773,11 +1775,11 @@ static void REGAL_CALL Dsa_glGetDoubleIndexedvEXT(Layer *_layer, GLenum target, 
     return;
   }
 
-  orig.glGetDoubleIndexedvEXT( orig.glGetDoubleIndexedvEXT_layer, target, index, data );
+  RglGetDoubleIndexedvEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Dsa_glGetDoublei_v(Layer *_layer, GLenum target, GLuint index, GLdouble *v)
+static void REGAL_CALL dsa_glGetDoublei_v(Layer *_layer, GLenum target, GLuint index, GLdouble *v)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1788,11 +1790,11 @@ static void REGAL_CALL Dsa_glGetDoublei_v(Layer *_layer, GLenum target, GLuint i
     return;
   }
 
-  orig.glGetDoublei_v( orig.glGetDoublei_v_layer, target, index, v );
+  RglGetDoublei_v( orig, target, index, v );
 
 }
 
-static void REGAL_CALL Dsa_glGetDoublei_vEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
+static void REGAL_CALL dsa_glGetDoublei_vEXT(Layer *_layer, GLenum target, GLuint index, GLdouble *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1803,11 +1805,11 @@ static void REGAL_CALL Dsa_glGetDoublei_vEXT(Layer *_layer, GLenum target, GLuin
     return;
   }
 
-  orig.glGetDoublei_vEXT( orig.glGetDoublei_vEXT_layer, target, index, data );
+  RglGetDoublei_vEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Dsa_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
+static void REGAL_CALL dsa_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1816,11 +1818,11 @@ static void REGAL_CALL Dsa_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *p
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetDoublev( orig.glGetDoublev_layer, pname, params );
+  RglGetDoublev( orig, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetFloatIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
+static void REGAL_CALL dsa_glGetFloatIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1831,11 +1833,11 @@ static void REGAL_CALL Dsa_glGetFloatIndexedvEXT(Layer *_layer, GLenum target, G
     return;
   }
 
-  orig.glGetFloatIndexedvEXT( orig.glGetFloatIndexedvEXT_layer, target, index, data );
+  RglGetFloatIndexedvEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Dsa_glGetFloati_v(Layer *_layer, GLenum target, GLuint index, GLfloat *v)
+static void REGAL_CALL dsa_glGetFloati_v(Layer *_layer, GLenum target, GLuint index, GLfloat *v)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1846,11 +1848,11 @@ static void REGAL_CALL Dsa_glGetFloati_v(Layer *_layer, GLenum target, GLuint in
     return;
   }
 
-  orig.glGetFloati_v( orig.glGetFloati_v_layer, target, index, v );
+  RglGetFloati_v( orig, target, index, v );
 
 }
 
-static void REGAL_CALL Dsa_glGetFloati_vEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
+static void REGAL_CALL dsa_glGetFloati_vEXT(Layer *_layer, GLenum target, GLuint index, GLfloat *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1861,11 +1863,11 @@ static void REGAL_CALL Dsa_glGetFloati_vEXT(Layer *_layer, GLenum target, GLuint
     return;
   }
 
-  orig.glGetFloati_vEXT( orig.glGetFloati_vEXT_layer, target, index, data );
+  RglGetFloati_vEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Dsa_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1874,11 +1876,11 @@ static void REGAL_CALL Dsa_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *par
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetFloatv( orig.glGetFloatv_layer, pname, params );
+  RglGetFloatv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetFramebufferParameterivEXT(Layer *_layer, GLuint framebuffer, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetFramebufferParameterivEXT(Layer *_layer, GLuint framebuffer, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1889,11 +1891,11 @@ static void REGAL_CALL Dsa_glGetFramebufferParameterivEXT(Layer *_layer, GLuint 
   orig.glGetIntegerv( _context, pname, params);
   return;
 
-  orig.glGetFramebufferParameterivEXT( orig.glGetFramebufferParameterivEXT_layer, framebuffer, pname, params );
+  RglGetFramebufferParameterivEXT( orig, framebuffer, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetIntegerv(Layer *_layer, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1902,11 +1904,11 @@ static void REGAL_CALL Dsa_glGetIntegerv(Layer *_layer, GLenum pname, GLint *par
   // prefix
   _context->dsa->RestoreGet( _context, pname );
 
-  orig.glGetIntegerv( orig.glGetIntegerv_layer, pname, params );
+  RglGetIntegerv( orig, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1917,11 +1919,11 @@ static void REGAL_CALL Dsa_glGetMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, 
   orig.glGetTexEnvfv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexEnvfvEXT( orig.glGetMultiTexEnvfvEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexEnvfvEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1932,11 +1934,11 @@ static void REGAL_CALL Dsa_glGetMultiTexEnvivEXT(Layer *_layer, GLenum texunit, 
   orig.glGetTexEnviv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexEnvivEXT( orig.glGetMultiTexEnvivEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexEnvivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
+static void REGAL_CALL dsa_glGetMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1947,11 +1949,11 @@ static void REGAL_CALL Dsa_glGetMultiTexGendvEXT(Layer *_layer, GLenum texunit, 
   orig.glGetTexGendv( _context, coord, pname, params );
   return;
 
-  orig.glGetMultiTexGendvEXT( orig.glGetMultiTexGendvEXT_layer, texunit, coord, pname, params );
+  RglGetMultiTexGendvEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1962,11 +1964,11 @@ static void REGAL_CALL Dsa_glGetMultiTexGenfvEXT(Layer *_layer, GLenum texunit, 
   orig.glGetTexGenfv( _context, coord, pname, params );
   return;
 
-  orig.glGetMultiTexGenfvEXT( orig.glGetMultiTexGenfvEXT_layer, texunit, coord, pname, params );
+  RglGetMultiTexGenfvEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1977,11 +1979,11 @@ static void REGAL_CALL Dsa_glGetMultiTexGenivEXT(Layer *_layer, GLenum texunit, 
   orig.glGetTexGeniv( _context, coord, pname, params );
   return;
 
-  orig.glGetMultiTexGenivEXT( orig.glGetMultiTexGenivEXT_layer, texunit, coord, pname, params );
+  RglGetMultiTexGenivEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexImageEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
+static void REGAL_CALL dsa_glGetMultiTexImageEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -1992,11 +1994,11 @@ static void REGAL_CALL Dsa_glGetMultiTexImageEXT(Layer *_layer, GLenum texunit, 
   orig.glGetTexImage( _context, target, level, format, type, pixels );
   return;
 
-  orig.glGetMultiTexImageEXT( orig.glGetMultiTexImageEXT_layer, texunit, target, level, format, type, pixels );
+  RglGetMultiTexImageEXT( orig, texunit, target, level, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexLevelParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetMultiTexLevelParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2007,11 +2009,11 @@ static void REGAL_CALL Dsa_glGetMultiTexLevelParameterfvEXT(Layer *_layer, GLenu
   orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
   return;
 
-  orig.glGetMultiTexLevelParameterfvEXT( orig.glGetMultiTexLevelParameterfvEXT_layer, texunit, target, level, pname, params );
+  RglGetMultiTexLevelParameterfvEXT( orig, texunit, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexLevelParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetMultiTexLevelParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2022,11 +2024,11 @@ static void REGAL_CALL Dsa_glGetMultiTexLevelParameterivEXT(Layer *_layer, GLenu
   orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
   return;
 
-  orig.glGetMultiTexLevelParameterivEXT( orig.glGetMultiTexLevelParameterivEXT_layer, texunit, target, level, pname, params );
+  RglGetMultiTexLevelParameterivEXT( orig, texunit, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexParameterIivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetMultiTexParameterIivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2037,11 +2039,11 @@ static void REGAL_CALL Dsa_glGetMultiTexParameterIivEXT(Layer *_layer, GLenum te
   orig.glGetTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterIivEXT( orig.glGetMultiTexParameterIivEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexParameterIivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexParameterIuivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLuint *params)
+static void REGAL_CALL dsa_glGetMultiTexParameterIuivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2052,11 +2054,11 @@ static void REGAL_CALL Dsa_glGetMultiTexParameterIuivEXT(Layer *_layer, GLenum t
   orig.glGetTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterIuivEXT( orig.glGetMultiTexParameterIuivEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexParameterIuivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetMultiTexParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2067,11 +2069,11 @@ static void REGAL_CALL Dsa_glGetMultiTexParameterfvEXT(Layer *_layer, GLenum tex
   orig.glGetTexParameterfv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterfvEXT( orig.glGetMultiTexParameterfvEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexParameterfvEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetMultiTexParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetMultiTexParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2082,11 +2084,11 @@ static void REGAL_CALL Dsa_glGetMultiTexParameterivEXT(Layer *_layer, GLenum tex
   orig.glGetTexParameteriv( _context, target, pname, params );
   return;
 
-  orig.glGetMultiTexParameterivEXT( orig.glGetMultiTexParameterivEXT_layer, texunit, target, pname, params );
+  RglGetMultiTexParameterivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedBufferParameterivEXT(Layer *_layer, GLuint buffer, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetNamedBufferParameterivEXT(Layer *_layer, GLuint buffer, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2097,11 +2099,11 @@ static void REGAL_CALL Dsa_glGetNamedBufferParameterivEXT(Layer *_layer, GLuint 
   orig.glGetBufferParameteriv( _context, GL_ARRAY_BUFFER, pname, params );
   return;
 
-  orig.glGetNamedBufferParameterivEXT( orig.glGetNamedBufferParameterivEXT_layer, buffer, pname, params );
+  RglGetNamedBufferParameterivEXT( orig, buffer, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedBufferPointervEXT(Layer *_layer, GLuint buffer, GLenum pname, GLvoid **params)
+static void REGAL_CALL dsa_glGetNamedBufferPointervEXT(Layer *_layer, GLuint buffer, GLenum pname, GLvoid **params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2112,11 +2114,11 @@ static void REGAL_CALL Dsa_glGetNamedBufferPointervEXT(Layer *_layer, GLuint buf
   orig.glGetBufferPointerv( _context, GL_ARRAY_BUFFER, pname, params );
   return;
 
-  orig.glGetNamedBufferPointervEXT( orig.glGetNamedBufferPointervEXT_layer, buffer, pname, params );
+  RglGetNamedBufferPointervEXT( orig, buffer, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedBufferSubDataEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data)
+static void REGAL_CALL dsa_glGetNamedBufferSubDataEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr size, GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2127,11 +2129,11 @@ static void REGAL_CALL Dsa_glGetNamedBufferSubDataEXT(Layer *_layer, GLuint buff
   orig.glGetBufferSubData( _context, GL_ARRAY_BUFFER, offset, size, data );
   return;
 
-  orig.glGetNamedBufferSubDataEXT( orig.glGetNamedBufferSubDataEXT_layer, buffer, offset, size, data );
+  RglGetNamedBufferSubDataEXT( orig, buffer, offset, size, data );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedFramebufferAttachmentParameterivEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetNamedFramebufferAttachmentParameterivEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2142,11 +2144,11 @@ static void REGAL_CALL Dsa_glGetNamedFramebufferAttachmentParameterivEXT(Layer *
   orig.glGetFramebufferAttachmentParameteriv( _context, GL_FRAMEBUFFER, attachment, pname, params );
   return;
 
-  orig.glGetNamedFramebufferAttachmentParameterivEXT( orig.glGetNamedFramebufferAttachmentParameterivEXT_layer, framebuffer, attachment, pname, params );
+  RglGetNamedFramebufferAttachmentParameterivEXT( orig, framebuffer, attachment, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterIivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLint *params)
+static void REGAL_CALL dsa_glGetNamedProgramLocalParameterIivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2157,11 +2159,11 @@ static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterIivEXT(Layer *_layer, 
   orig.glGetProgramLocalParameterIivNV( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterIivEXT( orig.glGetNamedProgramLocalParameterIivEXT_layer, program, target, index, params );
+  RglGetNamedProgramLocalParameterIivEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterIuivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLuint *params)
+static void REGAL_CALL dsa_glGetNamedProgramLocalParameterIuivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2172,11 +2174,11 @@ static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterIuivEXT(Layer *_layer,
   orig.glGetProgramLocalParameterIuivNV( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterIuivEXT( orig.glGetNamedProgramLocalParameterIuivEXT_layer, program, target, index, params );
+  RglGetNamedProgramLocalParameterIuivEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterdvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLdouble *params)
+static void REGAL_CALL dsa_glGetNamedProgramLocalParameterdvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2187,11 +2189,11 @@ static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterdvEXT(Layer *_layer, G
   orig.glGetProgramLocalParameterdvARB( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterdvEXT( orig.glGetNamedProgramLocalParameterdvEXT_layer, program, target, index, params );
+  RglGetNamedProgramLocalParameterdvEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterfvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLfloat *params)
+static void REGAL_CALL dsa_glGetNamedProgramLocalParameterfvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2202,11 +2204,11 @@ static void REGAL_CALL Dsa_glGetNamedProgramLocalParameterfvEXT(Layer *_layer, G
   orig.glGetProgramLocalParameterfvARB( _context, target, index, params );
   return;
 
-  orig.glGetNamedProgramLocalParameterfvEXT( orig.glGetNamedProgramLocalParameterfvEXT_layer, program, target, index, params );
+  RglGetNamedProgramLocalParameterfvEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedProgramStringEXT(Layer *_layer, GLuint program, GLenum target, GLenum pname, GLvoid *string)
+static void REGAL_CALL dsa_glGetNamedProgramStringEXT(Layer *_layer, GLuint program, GLenum target, GLenum pname, GLvoid *string)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2217,11 +2219,11 @@ static void REGAL_CALL Dsa_glGetNamedProgramStringEXT(Layer *_layer, GLuint prog
   orig.glGetProgramStringARB( _context, target, pname, string );
   return;
 
-  orig.glGetNamedProgramStringEXT( orig.glGetNamedProgramStringEXT_layer, program, target, pname, string );
+  RglGetNamedProgramStringEXT( orig, program, target, pname, string );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedProgramivEXT(Layer *_layer, GLuint program, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetNamedProgramivEXT(Layer *_layer, GLuint program, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2232,11 +2234,11 @@ static void REGAL_CALL Dsa_glGetNamedProgramivEXT(Layer *_layer, GLuint program,
   orig.glGetProgramivARB( _context, target, pname, params );
   return;
 
-  orig.glGetNamedProgramivEXT( orig.glGetNamedProgramivEXT_layer, program, target, pname, params );
+  RglGetNamedProgramivEXT( orig, program, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetNamedRenderbufferParameterivEXT(Layer *_layer, GLuint renderbuffer, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetNamedRenderbufferParameterivEXT(Layer *_layer, GLuint renderbuffer, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2247,11 +2249,11 @@ static void REGAL_CALL Dsa_glGetNamedRenderbufferParameterivEXT(Layer *_layer, G
   orig.glGetRenderbufferParameteriv( _context, GL_RENDERBUFFER, pname, params );
   return;
 
-  orig.glGetNamedRenderbufferParameterivEXT( orig.glGetNamedRenderbufferParameterivEXT_layer, renderbuffer, pname, params );
+  RglGetNamedRenderbufferParameterivEXT( orig, renderbuffer, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetPointerIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLvoid **data)
+static void REGAL_CALL dsa_glGetPointerIndexedvEXT(Layer *_layer, GLenum target, GLuint index, GLvoid **data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2262,11 +2264,11 @@ static void REGAL_CALL Dsa_glGetPointerIndexedvEXT(Layer *_layer, GLenum target,
   //   return;
   // }
 
-  orig.glGetPointerIndexedvEXT( orig.glGetPointerIndexedvEXT_layer, target, index, data );
+  RglGetPointerIndexedvEXT( orig, target, index, data );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramEnvParameterIivNV(Layer *_layer, GLenum target, GLuint index, GLint *params)
+static void REGAL_CALL dsa_glGetProgramEnvParameterIivNV(Layer *_layer, GLenum target, GLuint index, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2275,11 +2277,11 @@ static void REGAL_CALL Dsa_glGetProgramEnvParameterIivNV(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterIivNV( orig.glGetProgramEnvParameterIivNV_layer, target, index, params );
+  RglGetProgramEnvParameterIivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramEnvParameterIuivNV(Layer *_layer, GLenum target, GLuint index, GLuint *params)
+static void REGAL_CALL dsa_glGetProgramEnvParameterIuivNV(Layer *_layer, GLenum target, GLuint index, GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2288,11 +2290,11 @@ static void REGAL_CALL Dsa_glGetProgramEnvParameterIuivNV(Layer *_layer, GLenum 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterIuivNV( orig.glGetProgramEnvParameterIuivNV_layer, target, index, params );
+  RglGetProgramEnvParameterIuivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramEnvParameterdvARB(Layer *_layer, GLenum target, GLuint index, GLdouble *params)
+static void REGAL_CALL dsa_glGetProgramEnvParameterdvARB(Layer *_layer, GLenum target, GLuint index, GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2301,11 +2303,11 @@ static void REGAL_CALL Dsa_glGetProgramEnvParameterdvARB(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterdvARB( orig.glGetProgramEnvParameterdvARB_layer, target, index, params );
+  RglGetProgramEnvParameterdvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramEnvParameterfvARB(Layer *_layer, GLenum target, GLuint index, GLfloat *params)
+static void REGAL_CALL dsa_glGetProgramEnvParameterfvARB(Layer *_layer, GLenum target, GLuint index, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2314,11 +2316,11 @@ static void REGAL_CALL Dsa_glGetProgramEnvParameterfvARB(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramEnvParameterfvARB( orig.glGetProgramEnvParameterfvARB_layer, target, index, params );
+  RglGetProgramEnvParameterfvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramLocalParameterIivNV(Layer *_layer, GLenum target, GLuint index, GLint *params)
+static void REGAL_CALL dsa_glGetProgramLocalParameterIivNV(Layer *_layer, GLenum target, GLuint index, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2327,11 +2329,11 @@ static void REGAL_CALL Dsa_glGetProgramLocalParameterIivNV(Layer *_layer, GLenum
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterIivNV( orig.glGetProgramLocalParameterIivNV_layer, target, index, params );
+  RglGetProgramLocalParameterIivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramLocalParameterIuivNV(Layer *_layer, GLenum target, GLuint index, GLuint *params)
+static void REGAL_CALL dsa_glGetProgramLocalParameterIuivNV(Layer *_layer, GLenum target, GLuint index, GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2340,11 +2342,11 @@ static void REGAL_CALL Dsa_glGetProgramLocalParameterIuivNV(Layer *_layer, GLenu
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterIuivNV( orig.glGetProgramLocalParameterIuivNV_layer, target, index, params );
+  RglGetProgramLocalParameterIuivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramLocalParameterdvARB(Layer *_layer, GLenum target, GLuint index, GLdouble *params)
+static void REGAL_CALL dsa_glGetProgramLocalParameterdvARB(Layer *_layer, GLenum target, GLuint index, GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2353,11 +2355,11 @@ static void REGAL_CALL Dsa_glGetProgramLocalParameterdvARB(Layer *_layer, GLenum
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterdvARB( orig.glGetProgramLocalParameterdvARB_layer, target, index, params );
+  RglGetProgramLocalParameterdvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetProgramLocalParameterfvARB(Layer *_layer, GLenum target, GLuint index, GLfloat *params)
+static void REGAL_CALL dsa_glGetProgramLocalParameterfvARB(Layer *_layer, GLenum target, GLuint index, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2366,11 +2368,11 @@ static void REGAL_CALL Dsa_glGetProgramLocalParameterfvARB(Layer *_layer, GLenum
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glGetProgramLocalParameterfvARB( orig.glGetProgramLocalParameterfvARB_layer, target, index, params );
+  RglGetProgramLocalParameterfvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetRenderbufferParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetRenderbufferParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2379,11 +2381,11 @@ static void REGAL_CALL Dsa_glGetRenderbufferParameteriv(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glGetRenderbufferParameteriv( orig.glGetRenderbufferParameteriv_layer, target, pname, params );
+  RglGetRenderbufferParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetRenderbufferParameterivEXT(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetRenderbufferParameterivEXT(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2392,11 +2394,11 @@ static void REGAL_CALL Dsa_glGetRenderbufferParameterivEXT(Layer *_layer, GLenum
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glGetRenderbufferParameterivEXT( orig.glGetRenderbufferParameterivEXT_layer, target, pname, params );
+  RglGetRenderbufferParameterivEXT( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2406,11 +2408,11 @@ static void REGAL_CALL Dsa_glGetTexEnvfv(Layer *_layer, GLenum target, GLenum pn
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexEnvfv( orig.glGetTexEnvfv_layer, target, pname, params );
+  RglGetTexEnvfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2420,11 +2422,11 @@ static void REGAL_CALL Dsa_glGetTexEnviv(Layer *_layer, GLenum target, GLenum pn
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexEnviv( orig.glGetTexEnviv_layer, target, pname, params );
+  RglGetTexEnviv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetTexParameterfv(Layer *_layer, GLenum target, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2434,11 +2436,11 @@ static void REGAL_CALL Dsa_glGetTexParameterfv(Layer *_layer, GLenum target, GLe
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexParameterfv( orig.glGetTexParameterfv_layer, target, pname, params );
+  RglGetTexParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetTexParameteriv(Layer *_layer, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2448,11 +2450,11 @@ static void REGAL_CALL Dsa_glGetTexParameteriv(Layer *_layer, GLenum target, GLe
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glGetTexParameteriv( orig.glGetTexParameteriv_layer, target, pname, params );
+  RglGetTexParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTextureImageEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
+static void REGAL_CALL dsa_glGetTextureImageEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum format, GLenum type, GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2463,11 +2465,11 @@ static void REGAL_CALL Dsa_glGetTextureImageEXT(Layer *_layer, GLuint texture, G
   orig.glGetTexImage( _context, target, level, format, type, pixels );
   return;
 
-  orig.glGetTextureImageEXT( orig.glGetTextureImageEXT_layer, texture, target, level, format, type, pixels );
+  RglGetTextureImageEXT( orig, texture, target, level, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glGetTextureLevelParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetTextureLevelParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2478,11 +2480,11 @@ static void REGAL_CALL Dsa_glGetTextureLevelParameterfvEXT(Layer *_layer, GLuint
   orig.glGetTexLevelParameterfv( _context, target, level, pname, params );
   return;
 
-  orig.glGetTextureLevelParameterfvEXT( orig.glGetTextureLevelParameterfvEXT_layer, texture, target, level, pname, params );
+  RglGetTextureLevelParameterfvEXT( orig, texture, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTextureLevelParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetTextureLevelParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2493,11 +2495,11 @@ static void REGAL_CALL Dsa_glGetTextureLevelParameterivEXT(Layer *_layer, GLuint
   orig.glGetTexLevelParameteriv( _context, target, level, pname, params );
   return;
 
-  orig.glGetTextureLevelParameterivEXT( orig.glGetTextureLevelParameterivEXT_layer, texture, target, level, pname, params );
+  RglGetTextureLevelParameterivEXT( orig, texture, target, level, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTextureParameterIivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetTextureParameterIivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2508,11 +2510,11 @@ static void REGAL_CALL Dsa_glGetTextureParameterIivEXT(Layer *_layer, GLuint tex
   orig.glGetTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterIivEXT( orig.glGetTextureParameterIivEXT_layer, texture, target, pname, params );
+  RglGetTextureParameterIivEXT( orig, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTextureParameterIuivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLuint *params)
+static void REGAL_CALL dsa_glGetTextureParameterIuivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2523,11 +2525,11 @@ static void REGAL_CALL Dsa_glGetTextureParameterIuivEXT(Layer *_layer, GLuint te
   orig.glGetTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterIuivEXT( orig.glGetTextureParameterIuivEXT_layer, texture, target, pname, params );
+  RglGetTextureParameterIuivEXT( orig, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat *params)
+static void REGAL_CALL dsa_glGetTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2538,11 +2540,11 @@ static void REGAL_CALL Dsa_glGetTextureParameterfvEXT(Layer *_layer, GLuint text
   orig.glGetTexParameterfv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterfvEXT( orig.glGetTextureParameterfvEXT_layer, texture, target, pname, params );
+  RglGetTextureParameterfvEXT( orig, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glGetTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
+static void REGAL_CALL dsa_glGetTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2553,11 +2555,11 @@ static void REGAL_CALL Dsa_glGetTextureParameterivEXT(Layer *_layer, GLuint text
   orig.glGetTexParameteriv( _context, target, pname, params );
   return;
 
-  orig.glGetTextureParameterivEXT( orig.glGetTextureParameterivEXT_layer, texture, target, pname, params );
+  RglGetTextureParameterivEXT( orig, texture, target, pname, params );
 
 }
 
-static GLboolean REGAL_CALL Dsa_glIsEnabled(Layer *_layer, GLenum cap)
+static GLboolean REGAL_CALL dsa_glIsEnabled(Layer *_layer, GLenum cap)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2566,11 +2568,11 @@ static GLboolean REGAL_CALL Dsa_glIsEnabled(Layer *_layer, GLenum cap)
   // prefix
   _context->dsa->RestoreIsEnabled( _context, cap );
 
-  return orig.glIsEnabled( orig.glIsEnabled_layer, cap );
+  return RglIsEnabled( orig, cap );
 
 }
 
-static GLboolean REGAL_CALL Dsa_glIsEnabledIndexedEXT(Layer *_layer, GLenum target, GLuint index)
+static GLboolean REGAL_CALL dsa_glIsEnabledIndexedEXT(Layer *_layer, GLenum target, GLuint index)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2581,11 +2583,11 @@ static GLboolean REGAL_CALL Dsa_glIsEnabledIndexedEXT(Layer *_layer, GLenum targ
   ret = _context->dsa->IsEnabledIndexed( _context, target, index );
   return ret;
 
-  return orig.glIsEnabledIndexedEXT( orig.glIsEnabledIndexedEXT_layer, target, index );
+  return RglIsEnabledIndexedEXT( orig, target, index );
 
 }
 
-static void REGAL_CALL Dsa_glLoadIdentity(Layer *_layer)
+static void REGAL_CALL dsa_glLoadIdentity(Layer *_layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2594,11 +2596,11 @@ static void REGAL_CALL Dsa_glLoadIdentity(Layer *_layer)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadIdentity( orig.glLoadIdentity_layer );
+  RglLoadIdentity( orig );
 
 }
 
-static void REGAL_CALL Dsa_glLoadMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL dsa_glLoadMatrixd(Layer *_layer, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2607,11 +2609,11 @@ static void REGAL_CALL Dsa_glLoadMatrixd(Layer *_layer, const GLdouble *m)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadMatrixd( orig.glLoadMatrixd_layer, m );
+  RglLoadMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Dsa_glLoadMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL dsa_glLoadMatrixf(Layer *_layer, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2620,11 +2622,11 @@ static void REGAL_CALL Dsa_glLoadMatrixf(Layer *_layer, const GLfloat *m)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadMatrixf( orig.glLoadMatrixf_layer, m );
+  RglLoadMatrixf( orig, m );
 
 }
 
-static void REGAL_CALL Dsa_glLoadTransposeMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL dsa_glLoadTransposeMatrixd(Layer *_layer, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2633,11 +2635,11 @@ static void REGAL_CALL Dsa_glLoadTransposeMatrixd(Layer *_layer, const GLdouble 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadTransposeMatrixd( orig.glLoadTransposeMatrixd_layer, m );
+  RglLoadTransposeMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Dsa_glLoadTransposeMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL dsa_glLoadTransposeMatrixf(Layer *_layer, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2646,11 +2648,11 @@ static void REGAL_CALL Dsa_glLoadTransposeMatrixf(Layer *_layer, const GLfloat *
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glLoadTransposeMatrixf( orig.glLoadTransposeMatrixf_layer, m );
+  RglLoadTransposeMatrixf( orig, m );
 
 }
 
-static GLvoid *REGAL_CALL Dsa_glMapBuffer(Layer *_layer, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL dsa_glMapBuffer(Layer *_layer, GLenum target, GLenum access)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2659,11 +2661,11 @@ static GLvoid *REGAL_CALL Dsa_glMapBuffer(Layer *_layer, GLenum target, GLenum a
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBuffer( orig.glMapBuffer_layer, target, access );
+  return RglMapBuffer( orig, target, access );
 
 }
 
-static GLvoid *REGAL_CALL Dsa_glMapBufferARB(Layer *_layer, GLenum target, GLenum access)
+static GLvoid *REGAL_CALL dsa_glMapBufferARB(Layer *_layer, GLenum target, GLenum access)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2672,11 +2674,11 @@ static GLvoid *REGAL_CALL Dsa_glMapBufferARB(Layer *_layer, GLenum target, GLenu
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferARB( orig.glMapBufferARB_layer, target, access );
+  return RglMapBufferARB( orig, target, access );
 
 }
 
-static GLvoid *REGAL_CALL Dsa_glMapBufferRange(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
+static GLvoid *REGAL_CALL dsa_glMapBufferRange(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2685,11 +2687,11 @@ static GLvoid *REGAL_CALL Dsa_glMapBufferRange(Layer *_layer, GLenum target, GLi
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferRange( orig.glMapBufferRange_layer, target, offset, length, access );
+  return RglMapBufferRange( orig, target, offset, length, access );
 
 }
 
-static GLvoid *REGAL_CALL Dsa_glMapBufferRangeEXT(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
+static GLvoid *REGAL_CALL dsa_glMapBufferRangeEXT(Layer *_layer, GLenum target, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2698,11 +2700,11 @@ static GLvoid *REGAL_CALL Dsa_glMapBufferRangeEXT(Layer *_layer, GLenum target, 
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glMapBufferRangeEXT( orig.glMapBufferRangeEXT_layer, target, offset, length, access );
+  return RglMapBufferRangeEXT( orig, target, offset, length, access );
 
 }
 
-static GLvoid *REGAL_CALL Dsa_glMapNamedBufferEXT(Layer *_layer, GLuint buffer, GLenum access)
+static GLvoid *REGAL_CALL dsa_glMapNamedBufferEXT(Layer *_layer, GLuint buffer, GLenum access)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2712,11 +2714,11 @@ static GLvoid *REGAL_CALL Dsa_glMapNamedBufferEXT(Layer *_layer, GLuint buffer, 
   _context->dsa->DsaBuffer( _context, buffer);
   return orig.glMapBuffer( _context, GL_ARRAY_BUFFER, access );
 
-  return orig.glMapNamedBufferEXT( orig.glMapNamedBufferEXT_layer, buffer, access );
+  return RglMapNamedBufferEXT( orig, buffer, access );
 
 }
 
-static GLvoid *REGAL_CALL Dsa_glMapNamedBufferRangeEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access)
+static GLvoid *REGAL_CALL dsa_glMapNamedBufferRangeEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr length, GLbitfield access)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2726,11 +2728,11 @@ static GLvoid *REGAL_CALL Dsa_glMapNamedBufferRangeEXT(Layer *_layer, GLuint buf
   _context->dsa->DsaBuffer( _context, buffer);
   return orig.glMapBufferRange( _context, GL_ARRAY_BUFFER, offset, length, access );
 
-  return orig.glMapNamedBufferRangeEXT( orig.glMapNamedBufferRangeEXT_layer, buffer, offset, length, access );
+  return RglMapNamedBufferRangeEXT( orig, buffer, offset, length, access );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixFrustumEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL dsa_glMatrixFrustumEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2741,11 +2743,11 @@ static void REGAL_CALL Dsa_glMatrixFrustumEXT(Layer *_layer, GLenum mode, GLdoub
   orig.glFrustum( _context, left, right, bottom, top, zNear, zFar);
   return;
 
-  orig.glMatrixFrustumEXT( orig.glMatrixFrustumEXT_layer, mode, left, right, bottom, top, zNear, zFar );
+  RglMatrixFrustumEXT( orig, mode, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixLoadIdentityEXT(Layer *_layer, GLenum mode)
+static void REGAL_CALL dsa_glMatrixLoadIdentityEXT(Layer *_layer, GLenum mode)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2756,11 +2758,11 @@ static void REGAL_CALL Dsa_glMatrixLoadIdentityEXT(Layer *_layer, GLenum mode)
   orig.glLoadIdentity( _context );
   return;
 
-  orig.glMatrixLoadIdentityEXT( orig.glMatrixLoadIdentityEXT_layer, mode );
+  RglMatrixLoadIdentityEXT( orig, mode );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixLoadTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL dsa_glMatrixLoadTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2771,11 +2773,11 @@ static void REGAL_CALL Dsa_glMatrixLoadTransposedEXT(Layer *_layer, GLenum mode,
   orig.glLoadTransposeMatrixd( _context, m);
   return;
 
-  orig.glMatrixLoadTransposedEXT( orig.glMatrixLoadTransposedEXT_layer, mode, m );
+  RglMatrixLoadTransposedEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixLoadTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL dsa_glMatrixLoadTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2786,11 +2788,11 @@ static void REGAL_CALL Dsa_glMatrixLoadTransposefEXT(Layer *_layer, GLenum mode,
   orig.glLoadTransposeMatrixf( _context, m);
   return;
 
-  orig.glMatrixLoadTransposefEXT( orig.glMatrixLoadTransposefEXT_layer, mode, m );
+  RglMatrixLoadTransposefEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixLoaddEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL dsa_glMatrixLoaddEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2801,11 +2803,11 @@ static void REGAL_CALL Dsa_glMatrixLoaddEXT(Layer *_layer, GLenum mode, const GL
   orig.glLoadMatrixd( _context, m);
   return;
 
-  orig.glMatrixLoaddEXT( orig.glMatrixLoaddEXT_layer, mode, m );
+  RglMatrixLoaddEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixLoadfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL dsa_glMatrixLoadfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2816,11 +2818,11 @@ static void REGAL_CALL Dsa_glMatrixLoadfEXT(Layer *_layer, GLenum mode, const GL
   orig.glLoadMatrixf( _context, m);
   return;
 
-  orig.glMatrixLoadfEXT( orig.glMatrixLoadfEXT_layer, mode, m );
+  RglMatrixLoadfEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixMode(Layer *_layer, GLenum mode)
+static void REGAL_CALL dsa_glMatrixMode(Layer *_layer, GLenum mode)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2831,11 +2833,11 @@ static void REGAL_CALL Dsa_glMatrixMode(Layer *_layer, GLenum mode)
     return;
   }
 
-  orig.glMatrixMode( orig.glMatrixMode_layer, mode );
+  RglMatrixMode( orig, mode );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixMultTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL dsa_glMatrixMultTransposedEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2846,11 +2848,11 @@ static void REGAL_CALL Dsa_glMatrixMultTransposedEXT(Layer *_layer, GLenum mode,
   orig.glMultTransposeMatrixd( _context, m);
   return;
 
-  orig.glMatrixMultTransposedEXT( orig.glMatrixMultTransposedEXT_layer, mode, m );
+  RglMatrixMultTransposedEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixMultTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL dsa_glMatrixMultTransposefEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2861,11 +2863,11 @@ static void REGAL_CALL Dsa_glMatrixMultTransposefEXT(Layer *_layer, GLenum mode,
   orig.glMultTransposeMatrixf( _context, m);
   return;
 
-  orig.glMatrixMultTransposefEXT( orig.glMatrixMultTransposefEXT_layer, mode, m );
+  RglMatrixMultTransposefEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixMultdEXT(Layer *_layer, GLenum mode, const GLdouble *m)
+static void REGAL_CALL dsa_glMatrixMultdEXT(Layer *_layer, GLenum mode, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2876,11 +2878,11 @@ static void REGAL_CALL Dsa_glMatrixMultdEXT(Layer *_layer, GLenum mode, const GL
   orig.glMultMatrixd( _context, m);
   return;
 
-  orig.glMatrixMultdEXT( orig.glMatrixMultdEXT_layer, mode, m );
+  RglMatrixMultdEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixMultfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
+static void REGAL_CALL dsa_glMatrixMultfEXT(Layer *_layer, GLenum mode, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2891,11 +2893,11 @@ static void REGAL_CALL Dsa_glMatrixMultfEXT(Layer *_layer, GLenum mode, const GL
   orig.glMultMatrixf( _context, m);
   return;
 
-  orig.glMatrixMultfEXT( orig.glMatrixMultfEXT_layer, mode, m );
+  RglMatrixMultfEXT( orig, mode, m );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixOrthoEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
+static void REGAL_CALL dsa_glMatrixOrthoEXT(Layer *_layer, GLenum mode, GLdouble left, GLdouble right, GLdouble bottom, GLdouble top, GLdouble zNear, GLdouble zFar)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2906,11 +2908,11 @@ static void REGAL_CALL Dsa_glMatrixOrthoEXT(Layer *_layer, GLenum mode, GLdouble
   orig.glOrtho( _context, left, right, bottom, top, zNear, zFar);
   return;
 
-  orig.glMatrixOrthoEXT( orig.glMatrixOrthoEXT_layer, mode, left, right, bottom, top, zNear, zFar );
+  RglMatrixOrthoEXT( orig, mode, left, right, bottom, top, zNear, zFar );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixPopEXT(Layer *_layer, GLenum mode)
+static void REGAL_CALL dsa_glMatrixPopEXT(Layer *_layer, GLenum mode)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2921,11 +2923,11 @@ static void REGAL_CALL Dsa_glMatrixPopEXT(Layer *_layer, GLenum mode)
   orig.glPopMatrix( _context );
   return;
 
-  orig.glMatrixPopEXT( orig.glMatrixPopEXT_layer, mode );
+  RglMatrixPopEXT( orig, mode );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixPushEXT(Layer *_layer, GLenum mode)
+static void REGAL_CALL dsa_glMatrixPushEXT(Layer *_layer, GLenum mode)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2936,11 +2938,11 @@ static void REGAL_CALL Dsa_glMatrixPushEXT(Layer *_layer, GLenum mode)
   orig.glPushMatrix( _context );
   return;
 
-  orig.glMatrixPushEXT( orig.glMatrixPushEXT_layer, mode );
+  RglMatrixPushEXT( orig, mode );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixRotatedEXT(Layer *_layer, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glMatrixRotatedEXT(Layer *_layer, GLenum mode, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2951,11 +2953,11 @@ static void REGAL_CALL Dsa_glMatrixRotatedEXT(Layer *_layer, GLenum mode, GLdoub
   orig.glRotated( _context, angle, x, y, z);
   return;
 
-  orig.glMatrixRotatedEXT( orig.glMatrixRotatedEXT_layer, mode, angle, x, y, z );
+  RglMatrixRotatedEXT( orig, mode, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixRotatefEXT(Layer *_layer, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL dsa_glMatrixRotatefEXT(Layer *_layer, GLenum mode, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2966,11 +2968,11 @@ static void REGAL_CALL Dsa_glMatrixRotatefEXT(Layer *_layer, GLenum mode, GLfloa
   orig.glRotatef( _context, angle, x, y, z);
   return;
 
-  orig.glMatrixRotatefEXT( orig.glMatrixRotatefEXT_layer, mode, angle, x, y, z );
+  RglMatrixRotatefEXT( orig, mode, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixScaledEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glMatrixScaledEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2981,11 +2983,11 @@ static void REGAL_CALL Dsa_glMatrixScaledEXT(Layer *_layer, GLenum mode, GLdoubl
   orig.glScaled( _context, x, y, z);
   return;
 
-  orig.glMatrixScaledEXT( orig.glMatrixScaledEXT_layer, mode, x, y, z );
+  RglMatrixScaledEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixScalefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL dsa_glMatrixScalefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -2996,11 +2998,11 @@ static void REGAL_CALL Dsa_glMatrixScalefEXT(Layer *_layer, GLenum mode, GLfloat
   orig.glScalef( _context, x, y, z);
   return;
 
-  orig.glMatrixScalefEXT( orig.glMatrixScalefEXT_layer, mode, x, y, z );
+  RglMatrixScalefEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixTranslatedEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glMatrixTranslatedEXT(Layer *_layer, GLenum mode, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3011,11 +3013,11 @@ static void REGAL_CALL Dsa_glMatrixTranslatedEXT(Layer *_layer, GLenum mode, GLd
   orig.glTranslated( _context, x, y, z);
   return;
 
-  orig.glMatrixTranslatedEXT( orig.glMatrixTranslatedEXT_layer, mode, x, y, z );
+  RglMatrixTranslatedEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glMatrixTranslatefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL dsa_glMatrixTranslatefEXT(Layer *_layer, GLenum mode, GLfloat x, GLfloat y, GLfloat z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3026,11 +3028,11 @@ static void REGAL_CALL Dsa_glMatrixTranslatefEXT(Layer *_layer, GLenum mode, GLf
   orig.glTranslatef( _context, x, y, z);
   return;
 
-  orig.glMatrixTranslatefEXT( orig.glMatrixTranslatefEXT_layer, mode, x, y, z );
+  RglMatrixTranslatefEXT( orig, mode, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glMultMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL dsa_glMultMatrixd(Layer *_layer, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3039,11 +3041,11 @@ static void REGAL_CALL Dsa_glMultMatrixd(Layer *_layer, const GLdouble *m)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultMatrixd( orig.glMultMatrixd_layer, m );
+  RglMultMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Dsa_glMultMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL dsa_glMultMatrixf(Layer *_layer, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3052,11 +3054,11 @@ static void REGAL_CALL Dsa_glMultMatrixf(Layer *_layer, const GLfloat *m)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultMatrixf( orig.glMultMatrixf_layer, m );
+  RglMultMatrixf( orig, m );
 
 }
 
-static void REGAL_CALL Dsa_glMultTransposeMatrixd(Layer *_layer, const GLdouble *m)
+static void REGAL_CALL dsa_glMultTransposeMatrixd(Layer *_layer, const GLdouble *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3065,11 +3067,11 @@ static void REGAL_CALL Dsa_glMultTransposeMatrixd(Layer *_layer, const GLdouble 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultTransposeMatrixd( orig.glMultTransposeMatrixd_layer, m );
+  RglMultTransposeMatrixd( orig, m );
 
 }
 
-static void REGAL_CALL Dsa_glMultTransposeMatrixf(Layer *_layer, const GLfloat *m)
+static void REGAL_CALL dsa_glMultTransposeMatrixf(Layer *_layer, const GLfloat *m)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3078,11 +3080,11 @@ static void REGAL_CALL Dsa_glMultTransposeMatrixf(Layer *_layer, const GLfloat *
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glMultTransposeMatrixf( orig.glMultTransposeMatrixf_layer, m );
+  RglMultTransposeMatrixf( orig, m );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL dsa_glMultiDrawArrays(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3091,11 +3093,11 @@ static void REGAL_CALL Dsa_glMultiDrawArrays(Layer *_layer, GLenum mode, const G
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArrays( orig.glMultiDrawArrays_layer, mode, first, count, primcount );
+  RglMultiDrawArrays( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL dsa_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3104,11 +3106,11 @@ static void REGAL_CALL Dsa_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, cons
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysEXT( orig.glMultiDrawArraysEXT_layer, mode, first, count, primcount );
+  RglMultiDrawArraysEXT( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL dsa_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3117,11 +3119,11 @@ static void REGAL_CALL Dsa_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode,
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysIndirect( orig.glMultiDrawArraysIndirect_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirect( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL dsa_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mode, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3130,11 +3132,11 @@ static void REGAL_CALL Dsa_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mo
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawArraysIndirectAMD( orig.glMultiDrawArraysIndirectAMD_layer, mode, indirect, primcount, stride );
+  RglMultiDrawArraysIndirectAMD( orig, mode, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
+static void REGAL_CALL dsa_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mode, const GLint *first, const GLsizei *count, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3143,11 +3145,11 @@ static void REGAL_CALL Dsa_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mo
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementArrayAPPLE( orig.glMultiDrawElementArrayAPPLE_layer, mode, first, count, primcount );
+  RglMultiDrawElementArrayAPPLE( orig, mode, first, count, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
+static void REGAL_CALL dsa_glMultiDrawElements(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3156,11 +3158,11 @@ static void REGAL_CALL Dsa_glMultiDrawElements(Layer *_layer, GLenum mode, const
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElements( orig.glMultiDrawElements_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElements( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
+static void REGAL_CALL dsa_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid * const *indices, GLsizei primcount, const GLint *basevertex)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3169,11 +3171,11 @@ static void REGAL_CALL Dsa_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum m
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsBaseVertex( orig.glMultiDrawElementsBaseVertex_layer, mode, count, type, indices, primcount, basevertex );
+  RglMultiDrawElementsBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
+static void REGAL_CALL dsa_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, const GLsizei *count, GLenum type, const GLvoid **indices, GLsizei primcount)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3182,11 +3184,11 @@ static void REGAL_CALL Dsa_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, co
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsEXT( orig.glMultiDrawElementsEXT_layer, mode, count, type, indices, primcount );
+  RglMultiDrawElementsEXT( orig, mode, count, type, indices, primcount );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL dsa_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3195,11 +3197,11 @@ static void REGAL_CALL Dsa_glMultiDrawElementsIndirect(Layer *_layer, GLenum mod
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsIndirect( orig.glMultiDrawElementsIndirect_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirect( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Dsa_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
+static void REGAL_CALL dsa_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum mode, GLenum type, const GLvoid *indirect, GLsizei primcount, GLsizei stride)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3208,11 +3210,11 @@ static void REGAL_CALL Dsa_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum 
   // prefix
   _context->dsa->Restore( _context );
 
-  orig.glMultiDrawElementsIndirectAMD( orig.glMultiDrawElementsIndirectAMD_layer, mode, type, indirect, primcount, stride );
+  RglMultiDrawElementsIndirectAMD( orig, mode, type, indirect, primcount, stride );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexBufferEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer)
+static void REGAL_CALL dsa_glMultiTexBufferEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum internalformat, GLuint buffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3223,11 +3225,11 @@ static void REGAL_CALL Dsa_glMultiTexBufferEXT(Layer *_layer, GLenum texunit, GL
   orig.glTexBuffer( _context, target, internalformat, buffer );
   return;
 
-  orig.glMultiTexBufferEXT( orig.glMultiTexBufferEXT_layer, texunit, target, internalformat, buffer );
+  RglMultiTexBufferEXT( orig, texunit, target, internalformat, buffer );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL dsa_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3238,11 +3240,11 @@ static void REGAL_CALL Dsa_glMultiTexCoordPointerEXT(Layer *_layer, GLenum texun
   orig.glTexCoordPointer( _context, size, type, stride, pointer );
   return;
 
-  orig.glMultiTexCoordPointerEXT( orig.glMultiTexCoordPointerEXT_layer, texunit, size, type, stride, pointer );
+  RglMultiTexCoordPointerEXT( orig, texunit, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL dsa_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3253,11 +3255,11 @@ static void REGAL_CALL Dsa_glMultiTexEnvfEXT(Layer *_layer, GLenum texunit, GLen
   orig.glTexEnvf( _context, target, pname, param );
   return;
 
-  orig.glMultiTexEnvfEXT( orig.glMultiTexEnvfEXT_layer, texunit, target, pname, param );
+  RglMultiTexEnvfEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL dsa_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3268,11 +3270,11 @@ static void REGAL_CALL Dsa_glMultiTexEnvfvEXT(Layer *_layer, GLenum texunit, GLe
   orig.glTexEnvfv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexEnvfvEXT( orig.glMultiTexEnvfvEXT_layer, texunit, target, pname, params );
+  RglMultiTexEnvfvEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL dsa_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3283,11 +3285,11 @@ static void REGAL_CALL Dsa_glMultiTexEnviEXT(Layer *_layer, GLenum texunit, GLen
   orig.glTexEnvi( _context, target, pname, param );
   return;
 
-  orig.glMultiTexEnviEXT( orig.glMultiTexEnviEXT_layer, texunit, target, pname, param );
+  RglMultiTexEnviEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL dsa_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3298,11 +3300,11 @@ static void REGAL_CALL Dsa_glMultiTexEnvivEXT(Layer *_layer, GLenum texunit, GLe
   orig.glTexEnviv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexEnvivEXT( orig.glMultiTexEnvivEXT_layer, texunit, target, pname, params );
+  RglMultiTexEnvivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexGendEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble param)
+static void REGAL_CALL dsa_glMultiTexGendEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLdouble param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3313,11 +3315,11 @@ static void REGAL_CALL Dsa_glMultiTexGendEXT(Layer *_layer, GLenum texunit, GLen
   orig.glTexGend( _context, coord, pname, param );
   return;
 
-  orig.glMultiTexGendEXT( orig.glMultiTexGendEXT_layer, texunit, coord, pname, param );
+  RglMultiTexGendEXT( orig, texunit, coord, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params)
+static void REGAL_CALL dsa_glMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3328,11 +3330,11 @@ static void REGAL_CALL Dsa_glMultiTexGendvEXT(Layer *_layer, GLenum texunit, GLe
   orig.glTexGendv( _context, coord, pname, params );
   return;
 
-  orig.glMultiTexGendvEXT( orig.glMultiTexGendvEXT_layer, texunit, coord, pname, params );
+  RglMultiTexGendvEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexGenfEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat param)
+static void REGAL_CALL dsa_glMultiTexGenfEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLfloat param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3343,11 +3345,11 @@ static void REGAL_CALL Dsa_glMultiTexGenfEXT(Layer *_layer, GLenum texunit, GLen
   orig.glTexGenf( _context, coord, pname, param );
   return;
 
-  orig.glMultiTexGenfEXT( orig.glMultiTexGenfEXT_layer, texunit, coord, pname, param );
+  RglMultiTexGenfEXT( orig, texunit, coord, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params)
+static void REGAL_CALL dsa_glMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3358,11 +3360,11 @@ static void REGAL_CALL Dsa_glMultiTexGenfvEXT(Layer *_layer, GLenum texunit, GLe
   orig.glTexGenfv( _context, coord, pname, params );
   return;
 
-  orig.glMultiTexGenfvEXT( orig.glMultiTexGenfvEXT_layer, texunit, coord, pname, params );
+  RglMultiTexGenfvEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexGeniEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint param)
+static void REGAL_CALL dsa_glMultiTexGeniEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, GLint param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3373,11 +3375,11 @@ static void REGAL_CALL Dsa_glMultiTexGeniEXT(Layer *_layer, GLenum texunit, GLen
   orig.glTexGeni( _context, coord, pname, param );
   return;
 
-  orig.glMultiTexGeniEXT( orig.glMultiTexGeniEXT_layer, texunit, coord, pname, param );
+  RglMultiTexGeniEXT( orig, texunit, coord, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLint *params)
+static void REGAL_CALL dsa_glMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLenum coord, GLenum pname, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3388,11 +3390,11 @@ static void REGAL_CALL Dsa_glMultiTexGenivEXT(Layer *_layer, GLenum texunit, GLe
   orig.glTexGeniv( _context, coord, pname, params );
   return;
 
-  orig.glMultiTexGenivEXT( orig.glMultiTexGenivEXT_layer, texunit, coord, pname, params );
+  RglMultiTexGenivEXT( orig, texunit, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glMultiTexImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3403,11 +3405,11 @@ static void REGAL_CALL Dsa_glMultiTexImage1DEXT(Layer *_layer, GLenum texunit, G
   orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
   return;
 
-  orig.glMultiTexImage1DEXT( orig.glMultiTexImage1DEXT_layer, texunit, target, level, internalformat, width, border, format, type, pixels );
+  RglMultiTexImage1DEXT( orig, texunit, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glMultiTexImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3418,11 +3420,11 @@ static void REGAL_CALL Dsa_glMultiTexImage2DEXT(Layer *_layer, GLenum texunit, G
   orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
   return;
 
-  orig.glMultiTexImage2DEXT( orig.glMultiTexImage2DEXT_layer, texunit, target, level, internalformat, width, height, border, format, type, pixels );
+  RglMultiTexImage2DEXT( orig, texunit, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glMultiTexImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3433,11 +3435,11 @@ static void REGAL_CALL Dsa_glMultiTexImage3DEXT(Layer *_layer, GLenum texunit, G
   orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
   return;
 
-  orig.glMultiTexImage3DEXT( orig.glMultiTexImage3DEXT_layer, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  RglMultiTexImage3DEXT( orig, texunit, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexParameterIivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL dsa_glMultiTexParameterIivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3448,11 +3450,11 @@ static void REGAL_CALL Dsa_glMultiTexParameterIivEXT(Layer *_layer, GLenum texun
   orig.glTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexParameterIivEXT( orig.glMultiTexParameterIivEXT_layer, texunit, target, pname, params );
+  RglMultiTexParameterIivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexParameterIuivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLuint *params)
+static void REGAL_CALL dsa_glMultiTexParameterIuivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3463,11 +3465,11 @@ static void REGAL_CALL Dsa_glMultiTexParameterIuivEXT(Layer *_layer, GLenum texu
   orig.glTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glMultiTexParameterIuivEXT( orig.glMultiTexParameterIuivEXT_layer, texunit, target, pname, params );
+  RglMultiTexParameterIuivEXT( orig, texunit, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexParameterfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL dsa_glMultiTexParameterfEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLfloat param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3478,11 +3480,11 @@ static void REGAL_CALL Dsa_glMultiTexParameterfEXT(Layer *_layer, GLenum texunit
   orig.glTexParameterf( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameterfEXT( orig.glMultiTexParameterfEXT_layer, texunit, target, pname, param );
+  RglMultiTexParameterfEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *param)
+static void REGAL_CALL dsa_glMultiTexParameterfvEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLfloat *param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3493,11 +3495,11 @@ static void REGAL_CALL Dsa_glMultiTexParameterfvEXT(Layer *_layer, GLenum texuni
   orig.glTexParameterfv( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameterfvEXT( orig.glMultiTexParameterfvEXT_layer, texunit, target, pname, param );
+  RglMultiTexParameterfvEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexParameteriEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL dsa_glMultiTexParameteriEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, GLint param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3508,11 +3510,11 @@ static void REGAL_CALL Dsa_glMultiTexParameteriEXT(Layer *_layer, GLenum texunit
   orig.glTexParameteri( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameteriEXT( orig.glMultiTexParameteriEXT_layer, texunit, target, pname, param );
+  RglMultiTexParameteriEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *param)
+static void REGAL_CALL dsa_glMultiTexParameterivEXT(Layer *_layer, GLenum texunit, GLenum target, GLenum pname, const GLint *param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3523,11 +3525,11 @@ static void REGAL_CALL Dsa_glMultiTexParameterivEXT(Layer *_layer, GLenum texuni
   orig.glTexParameteriv( _context, target, pname, param );
   return;
 
-  orig.glMultiTexParameterivEXT( orig.glMultiTexParameterivEXT_layer, texunit, target, pname, param );
+  RglMultiTexParameterivEXT( orig, texunit, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexRenderbufferEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL dsa_glMultiTexRenderbufferEXT(Layer *_layer, GLenum texunit, GLenum target, GLuint renderbuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3538,11 +3540,11 @@ static void REGAL_CALL Dsa_glMultiTexRenderbufferEXT(Layer *_layer, GLenum texun
   orig.glTexRenderbufferNV( _context, target, renderbuffer );
   return;
 
-  orig.glMultiTexRenderbufferEXT( orig.glMultiTexRenderbufferEXT_layer, texunit, target, renderbuffer );
+  RglMultiTexRenderbufferEXT( orig, texunit, target, renderbuffer );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3553,11 +3555,11 @@ static void REGAL_CALL Dsa_glMultiTexSubImage1DEXT(Layer *_layer, GLenum texunit
   orig.glTexSubImage1D( _context, target, level, xoffset, width, format, type, pixels );
   return;
 
-  orig.glMultiTexSubImage1DEXT( orig.glMultiTexSubImage1DEXT_layer, texunit, target, level, xoffset, width, format, type, pixels );
+  RglMultiTexSubImage1DEXT( orig, texunit, target, level, xoffset, width, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3568,11 +3570,11 @@ static void REGAL_CALL Dsa_glMultiTexSubImage2DEXT(Layer *_layer, GLenum texunit
   orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
   return;
 
-  orig.glMultiTexSubImage2DEXT( orig.glMultiTexSubImage2DEXT_layer, texunit, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  RglMultiTexSubImage2DEXT( orig, texunit, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3583,11 +3585,11 @@ static void REGAL_CALL Dsa_glMultiTexSubImage3DEXT(Layer *_layer, GLenum texunit
   orig.glTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
   return;
 
-  orig.glMultiTexSubImage3DEXT( orig.glMultiTexSubImage3DEXT_layer, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+  RglMultiTexSubImage3DEXT( orig, texunit, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glNamedBufferDataEXT(Layer *_layer, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage)
+static void REGAL_CALL dsa_glNamedBufferDataEXT(Layer *_layer, GLuint buffer, GLsizeiptr size, const GLvoid *data, GLenum usage)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3598,11 +3600,11 @@ static void REGAL_CALL Dsa_glNamedBufferDataEXT(Layer *_layer, GLuint buffer, GL
   orig.glBufferData( _context, GL_ARRAY_BUFFER, size, data, usage );
   return;
 
-  orig.glNamedBufferDataEXT( orig.glNamedBufferDataEXT_layer, buffer, size, data, usage );
+  RglNamedBufferDataEXT( orig, buffer, size, data, usage );
 
 }
 
-static void REGAL_CALL Dsa_glNamedBufferSubDataEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
+static void REGAL_CALL dsa_glNamedBufferSubDataEXT(Layer *_layer, GLuint buffer, GLintptr offset, GLsizeiptr size, const GLvoid *data)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3613,11 +3615,11 @@ static void REGAL_CALL Dsa_glNamedBufferSubDataEXT(Layer *_layer, GLuint buffer,
   orig.glBufferSubData( _context, GL_ARRAY_BUFFER, offset, size, data );
   return;
 
-  orig.glNamedBufferSubDataEXT( orig.glNamedBufferSubDataEXT_layer, buffer, offset, size, data );
+  RglNamedBufferSubDataEXT( orig, buffer, offset, size, data );
 
 }
 
-static void REGAL_CALL Dsa_glNamedCopyBufferSubDataEXT(Layer *_layer, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
+static void REGAL_CALL dsa_glNamedCopyBufferSubDataEXT(Layer *_layer, GLuint readBuffer, GLuint writeBuffer, GLintptr readOffset, GLintptr writeOffset, GLsizeiptr size)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3628,11 +3630,11 @@ static void REGAL_CALL Dsa_glNamedCopyBufferSubDataEXT(Layer *_layer, GLuint rea
   orig.glCopyBufferSubData( _context, GL_ARRAY_BUFFER, writeBuffer, readOffset, writeOffset, size );
   return;
 
-  orig.glNamedCopyBufferSubDataEXT( orig.glNamedCopyBufferSubDataEXT_layer, readBuffer, writeBuffer, readOffset, writeOffset, size );
+  RglNamedCopyBufferSubDataEXT( orig, readBuffer, writeBuffer, readOffset, writeOffset, size );
 
 }
 
-static void REGAL_CALL Dsa_glNamedFramebufferRenderbufferEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
+static void REGAL_CALL dsa_glNamedFramebufferRenderbufferEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum renderbuffertarget, GLuint renderbuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3643,11 +3645,11 @@ static void REGAL_CALL Dsa_glNamedFramebufferRenderbufferEXT(Layer *_layer, GLui
   orig.glFramebufferRenderbuffer( _context, GL_FRAMEBUFFER, attachment, renderbuffertarget, renderbuffer );
   return;
 
-  orig.glNamedFramebufferRenderbufferEXT( orig.glNamedFramebufferRenderbufferEXT_layer, framebuffer, attachment, renderbuffertarget, renderbuffer );
+  RglNamedFramebufferRenderbufferEXT( orig, framebuffer, attachment, renderbuffertarget, renderbuffer );
 
 }
 
-static void REGAL_CALL Dsa_glNamedFramebufferTexture1DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glNamedFramebufferTexture1DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3658,11 +3660,11 @@ static void REGAL_CALL Dsa_glNamedFramebufferTexture1DEXT(Layer *_layer, GLuint 
   orig.glFramebufferTexture1D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level );
   return;
 
-  orig.glNamedFramebufferTexture1DEXT( orig.glNamedFramebufferTexture1DEXT_layer, framebuffer, attachment, textarget, texture, level );
+  RglNamedFramebufferTexture1DEXT( orig, framebuffer, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glNamedFramebufferTexture2DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glNamedFramebufferTexture2DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3673,11 +3675,11 @@ static void REGAL_CALL Dsa_glNamedFramebufferTexture2DEXT(Layer *_layer, GLuint 
   orig.glFramebufferTexture2D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level );
   return;
 
-  orig.glNamedFramebufferTexture2DEXT( orig.glNamedFramebufferTexture2DEXT_layer, framebuffer, attachment, textarget, texture, level );
+  RglNamedFramebufferTexture2DEXT( orig, framebuffer, attachment, textarget, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glNamedFramebufferTexture3DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
+static void REGAL_CALL dsa_glNamedFramebufferTexture3DEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLenum textarget, GLuint texture, GLint level, GLint zoffset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3688,11 +3690,11 @@ static void REGAL_CALL Dsa_glNamedFramebufferTexture3DEXT(Layer *_layer, GLuint 
   orig.glFramebufferTexture3D( _context, GL_FRAMEBUFFER, attachment, textarget, texture, level, zoffset );
   return;
 
-  orig.glNamedFramebufferTexture3DEXT( orig.glNamedFramebufferTexture3DEXT_layer, framebuffer, attachment, textarget, texture, level, zoffset );
+  RglNamedFramebufferTexture3DEXT( orig, framebuffer, attachment, textarget, texture, level, zoffset );
 
 }
 
-static void REGAL_CALL Dsa_glNamedFramebufferTextureEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
+static void REGAL_CALL dsa_glNamedFramebufferTextureEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3703,11 +3705,11 @@ static void REGAL_CALL Dsa_glNamedFramebufferTextureEXT(Layer *_layer, GLuint fr
   orig.glFramebufferTexture( _context, GL_FRAMEBUFFER, attachment, texture, level );
   return;
 
-  orig.glNamedFramebufferTextureEXT( orig.glNamedFramebufferTextureEXT_layer, framebuffer, attachment, texture, level );
+  RglNamedFramebufferTextureEXT( orig, framebuffer, attachment, texture, level );
 
 }
 
-static void REGAL_CALL Dsa_glNamedFramebufferTextureFaceEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face)
+static void REGAL_CALL dsa_glNamedFramebufferTextureFaceEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLenum face)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3718,11 +3720,11 @@ static void REGAL_CALL Dsa_glNamedFramebufferTextureFaceEXT(Layer *_layer, GLuin
   orig.glFramebufferTextureFaceARB( _context, GL_FRAMEBUFFER, attachment, texture, level, face );
   return;
 
-  orig.glNamedFramebufferTextureFaceEXT( orig.glNamedFramebufferTextureFaceEXT_layer, framebuffer, attachment, texture, level, face );
+  RglNamedFramebufferTextureFaceEXT( orig, framebuffer, attachment, texture, level, face );
 
 }
 
-static void REGAL_CALL Dsa_glNamedFramebufferTextureLayerEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
+static void REGAL_CALL dsa_glNamedFramebufferTextureLayerEXT(Layer *_layer, GLuint framebuffer, GLenum attachment, GLuint texture, GLint level, GLint layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3733,11 +3735,11 @@ static void REGAL_CALL Dsa_glNamedFramebufferTextureLayerEXT(Layer *_layer, GLui
   orig.glFramebufferTextureLayer( _context, GL_FRAMEBUFFER, attachment, texture, level, layer );
   return;
 
-  orig.glNamedFramebufferTextureLayerEXT( orig.glNamedFramebufferTextureLayerEXT_layer, framebuffer, attachment, texture, level, layer );
+  RglNamedFramebufferTextureLayerEXT( orig, framebuffer, attachment, texture, level, layer );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameter4dEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL dsa_glNamedProgramLocalParameter4dEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3748,11 +3750,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameter4dEXT(Layer *_layer, GLui
   orig.glProgramLocalParameter4dARB( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameter4dEXT( orig.glNamedProgramLocalParameter4dEXT_layer, program, target, index, x, y, z, w );
+  RglNamedProgramLocalParameter4dEXT( orig, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameter4dvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLdouble *params)
+static void REGAL_CALL dsa_glNamedProgramLocalParameter4dvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3763,11 +3765,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameter4dvEXT(Layer *_layer, GLu
   orig.glProgramLocalParameter4dvARB( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameter4dvEXT( orig.glNamedProgramLocalParameter4dvEXT_layer, program, target, index, params );
+  RglNamedProgramLocalParameter4dvEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameter4fEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL dsa_glNamedProgramLocalParameter4fEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3778,11 +3780,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameter4fEXT(Layer *_layer, GLui
   orig.glProgramLocalParameter4fARB( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameter4fEXT( orig.glNamedProgramLocalParameter4fEXT_layer, program, target, index, x, y, z, w );
+  RglNamedProgramLocalParameter4fEXT( orig, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameter4fvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLfloat *params)
+static void REGAL_CALL dsa_glNamedProgramLocalParameter4fvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3793,11 +3795,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameter4fvEXT(Layer *_layer, GLu
   orig.glProgramLocalParameter4fvARB( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameter4fvEXT( orig.glNamedProgramLocalParameter4fvEXT_layer, program, target, index, params );
+  RglNamedProgramLocalParameter4fvEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4iEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL dsa_glNamedProgramLocalParameterI4iEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3808,11 +3810,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4iEXT(Layer *_layer, GLu
   orig.glProgramLocalParameterI4iNV( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameterI4iEXT( orig.glNamedProgramLocalParameterI4iEXT_layer, program, target, index, x, y, z, w );
+  RglNamedProgramLocalParameterI4iEXT( orig, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4ivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLint *params)
+static void REGAL_CALL dsa_glNamedProgramLocalParameterI4ivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3823,11 +3825,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4ivEXT(Layer *_layer, GL
   orig.glProgramLocalParameterI4ivNV( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameterI4ivEXT( orig.glNamedProgramLocalParameterI4ivEXT_layer, program, target, index, params );
+  RglNamedProgramLocalParameterI4ivEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4uiEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+static void REGAL_CALL dsa_glNamedProgramLocalParameterI4uiEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3838,11 +3840,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4uiEXT(Layer *_layer, GL
   orig.glProgramLocalParameterI4uiNV( _context, target, index, x, y, z, w );
   return;
 
-  orig.glNamedProgramLocalParameterI4uiEXT( orig.glNamedProgramLocalParameterI4uiEXT_layer, program, target, index, x, y, z, w );
+  RglNamedProgramLocalParameterI4uiEXT( orig, program, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4uivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLuint *params)
+static void REGAL_CALL dsa_glNamedProgramLocalParameterI4uivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3853,11 +3855,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameterI4uivEXT(Layer *_layer, G
   orig.glProgramLocalParameterI4uivNV( _context, target, index, params );
   return;
 
-  orig.glNamedProgramLocalParameterI4uivEXT( orig.glNamedProgramLocalParameterI4uivEXT_layer, program, target, index, params );
+  RglNamedProgramLocalParameterI4uivEXT( orig, program, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParameters4fvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
+static void REGAL_CALL dsa_glNamedProgramLocalParameters4fvEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3868,11 +3870,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParameters4fvEXT(Layer *_layer, GL
   orig.glProgramLocalParameters4fvEXT( _context, target, index, count, params );
   return;
 
-  orig.glNamedProgramLocalParameters4fvEXT( orig.glNamedProgramLocalParameters4fvEXT_layer, program, target, index, count, params );
+  RglNamedProgramLocalParameters4fvEXT( orig, program, target, index, count, params );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParametersI4ivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params)
+static void REGAL_CALL dsa_glNamedProgramLocalParametersI4ivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3883,11 +3885,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParametersI4ivEXT(Layer *_layer, G
   orig.glProgramLocalParametersI4ivNV( _context, target, index, count, params );
   return;
 
-  orig.glNamedProgramLocalParametersI4ivEXT( orig.glNamedProgramLocalParametersI4ivEXT_layer, program, target, index, count, params );
+  RglNamedProgramLocalParametersI4ivEXT( orig, program, target, index, count, params );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramLocalParametersI4uivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params)
+static void REGAL_CALL dsa_glNamedProgramLocalParametersI4uivEXT(Layer *_layer, GLuint program, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3898,11 +3900,11 @@ static void REGAL_CALL Dsa_glNamedProgramLocalParametersI4uivEXT(Layer *_layer, 
   orig.glProgramLocalParametersI4uivNV( _context, target, index, count, params );
   return;
 
-  orig.glNamedProgramLocalParametersI4uivEXT( orig.glNamedProgramLocalParametersI4uivEXT_layer, program, target, index, count, params );
+  RglNamedProgramLocalParametersI4uivEXT( orig, program, target, index, count, params );
 
 }
 
-static void REGAL_CALL Dsa_glNamedProgramStringEXT(Layer *_layer, GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
+static void REGAL_CALL dsa_glNamedProgramStringEXT(Layer *_layer, GLuint program, GLenum target, GLenum format, GLsizei len, const GLvoid *string)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3913,11 +3915,11 @@ static void REGAL_CALL Dsa_glNamedProgramStringEXT(Layer *_layer, GLuint program
   orig.glProgramStringARB( _context, target, format, len, string );
   return;
 
-  orig.glNamedProgramStringEXT( orig.glNamedProgramStringEXT_layer, program, target, format, len, string );
+  RglNamedProgramStringEXT( orig, program, target, format, len, string );
 
 }
 
-static void REGAL_CALL Dsa_glNamedRenderbufferStorageEXT(Layer *_layer, GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glNamedRenderbufferStorageEXT(Layer *_layer, GLuint renderbuffer, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3928,11 +3930,11 @@ static void REGAL_CALL Dsa_glNamedRenderbufferStorageEXT(Layer *_layer, GLuint r
   orig.glRenderbufferStorage( _context, GL_RENDERBUFFER, internalformat, width, height );
   return;
 
-  orig.glNamedRenderbufferStorageEXT( orig.glNamedRenderbufferStorageEXT_layer, renderbuffer, internalformat, width, height );
+  RglNamedRenderbufferStorageEXT( orig, renderbuffer, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glNamedRenderbufferStorageMultisampleCoverageEXT(Layer *_layer, GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glNamedRenderbufferStorageMultisampleCoverageEXT(Layer *_layer, GLuint renderbuffer, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3943,11 +3945,11 @@ static void REGAL_CALL Dsa_glNamedRenderbufferStorageMultisampleCoverageEXT(Laye
   orig.glRenderbufferStorageMultisampleCoverageNV( _context, GL_RENDERBUFFER, coverageSamples, colorSamples, internalformat, width, height );
   return;
 
-  orig.glNamedRenderbufferStorageMultisampleCoverageEXT( orig.glNamedRenderbufferStorageMultisampleCoverageEXT_layer, renderbuffer, coverageSamples, colorSamples, internalformat, width, height );
+  RglNamedRenderbufferStorageMultisampleCoverageEXT( orig, renderbuffer, coverageSamples, colorSamples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glNamedRenderbufferStorageMultisampleEXT(Layer *_layer, GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glNamedRenderbufferStorageMultisampleEXT(Layer *_layer, GLuint renderbuffer, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3958,11 +3960,11 @@ static void REGAL_CALL Dsa_glNamedRenderbufferStorageMultisampleEXT(Layer *_laye
   orig.glRenderbufferStorageMultisample( _context, GL_RENDERBUFFER, samples, internalformat, width, height );
   return;
 
-  orig.glNamedRenderbufferStorageMultisampleEXT( orig.glNamedRenderbufferStorageMultisampleEXT_layer, renderbuffer, samples, internalformat, width, height );
+  RglNamedRenderbufferStorageMultisampleEXT( orig, renderbuffer, samples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL dsa_glNormalPointer(Layer *_layer, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3971,11 +3973,11 @@ static void REGAL_CALL Dsa_glNormalPointer(Layer *_layer, GLenum type, GLsizei s
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glNormalPointer( orig.glNormalPointer_layer, type, stride, pointer );
+  RglNormalPointer( orig, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Dsa_glPopMatrix(Layer *_layer)
+static void REGAL_CALL dsa_glPopMatrix(Layer *_layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3984,11 +3986,11 @@ static void REGAL_CALL Dsa_glPopMatrix(Layer *_layer)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glPopMatrix( orig.glPopMatrix_layer );
+  RglPopMatrix( orig );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameter4dARB(Layer *_layer, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL dsa_glProgramEnvParameter4dARB(Layer *_layer, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -3997,11 +3999,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameter4dARB(Layer *_layer, GLenum targ
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4dARB( orig.glProgramEnvParameter4dARB_layer, target, index, x, y, z, w );
+  RglProgramEnvParameter4dARB( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameter4dvARB(Layer *_layer, GLenum target, GLuint index, const GLdouble *params)
+static void REGAL_CALL dsa_glProgramEnvParameter4dvARB(Layer *_layer, GLenum target, GLuint index, const GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4010,11 +4012,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameter4dvARB(Layer *_layer, GLenum tar
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4dvARB( orig.glProgramEnvParameter4dvARB_layer, target, index, params );
+  RglProgramEnvParameter4dvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameter4fARB(Layer *_layer, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL dsa_glProgramEnvParameter4fARB(Layer *_layer, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4023,11 +4025,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameter4fARB(Layer *_layer, GLenum targ
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4fARB( orig.glProgramEnvParameter4fARB_layer, target, index, x, y, z, w );
+  RglProgramEnvParameter4fARB( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameter4fvARB(Layer *_layer, GLenum target, GLuint index, const GLfloat *params)
+static void REGAL_CALL dsa_glProgramEnvParameter4fvARB(Layer *_layer, GLenum target, GLuint index, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4036,11 +4038,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameter4fvARB(Layer *_layer, GLenum tar
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameter4fvARB( orig.glProgramEnvParameter4fvARB_layer, target, index, params );
+  RglProgramEnvParameter4fvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameterI4iNV(Layer *_layer, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL dsa_glProgramEnvParameterI4iNV(Layer *_layer, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4049,11 +4051,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameterI4iNV(Layer *_layer, GLenum targ
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4iNV( orig.glProgramEnvParameterI4iNV_layer, target, index, x, y, z, w );
+  RglProgramEnvParameterI4iNV( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameterI4ivNV(Layer *_layer, GLenum target, GLuint index, const GLint *params)
+static void REGAL_CALL dsa_glProgramEnvParameterI4ivNV(Layer *_layer, GLenum target, GLuint index, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4062,11 +4064,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameterI4ivNV(Layer *_layer, GLenum tar
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4ivNV( orig.glProgramEnvParameterI4ivNV_layer, target, index, params );
+  RglProgramEnvParameterI4ivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameterI4uiNV(Layer *_layer, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+static void REGAL_CALL dsa_glProgramEnvParameterI4uiNV(Layer *_layer, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4075,11 +4077,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameterI4uiNV(Layer *_layer, GLenum tar
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4uiNV( orig.glProgramEnvParameterI4uiNV_layer, target, index, x, y, z, w );
+  RglProgramEnvParameterI4uiNV( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParameterI4uivNV(Layer *_layer, GLenum target, GLuint index, const GLuint *params)
+static void REGAL_CALL dsa_glProgramEnvParameterI4uivNV(Layer *_layer, GLenum target, GLuint index, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4088,11 +4090,11 @@ static void REGAL_CALL Dsa_glProgramEnvParameterI4uivNV(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParameterI4uivNV( orig.glProgramEnvParameterI4uivNV_layer, target, index, params );
+  RglProgramEnvParameterI4uivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParametersI4ivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLint *params)
+static void REGAL_CALL dsa_glProgramEnvParametersI4ivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4101,11 +4103,11 @@ static void REGAL_CALL Dsa_glProgramEnvParametersI4ivNV(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParametersI4ivNV( orig.glProgramEnvParametersI4ivNV_layer, target, index, count, params );
+  RglProgramEnvParametersI4ivNV( orig, target, index, count, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramEnvParametersI4uivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLuint *params)
+static void REGAL_CALL dsa_glProgramEnvParametersI4uivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4114,11 +4116,11 @@ static void REGAL_CALL Dsa_glProgramEnvParametersI4uivNV(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramEnvParametersI4uivNV( orig.glProgramEnvParametersI4uivNV_layer, target, index, count, params );
+  RglProgramEnvParametersI4uivNV( orig, target, index, count, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameter4dARB(Layer *_layer, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL dsa_glProgramLocalParameter4dARB(Layer *_layer, GLenum target, GLuint index, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4127,11 +4129,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameter4dARB(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4dARB( orig.glProgramLocalParameter4dARB_layer, target, index, x, y, z, w );
+  RglProgramLocalParameter4dARB( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameter4dvARB(Layer *_layer, GLenum target, GLuint index, const GLdouble *params)
+static void REGAL_CALL dsa_glProgramLocalParameter4dvARB(Layer *_layer, GLenum target, GLuint index, const GLdouble *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4140,11 +4142,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameter4dvARB(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4dvARB( orig.glProgramLocalParameter4dvARB_layer, target, index, params );
+  RglProgramLocalParameter4dvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameter4fARB(Layer *_layer, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
+static void REGAL_CALL dsa_glProgramLocalParameter4fARB(Layer *_layer, GLenum target, GLuint index, GLfloat x, GLfloat y, GLfloat z, GLfloat w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4153,11 +4155,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameter4fARB(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4fARB( orig.glProgramLocalParameter4fARB_layer, target, index, x, y, z, w );
+  RglProgramLocalParameter4fARB( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameter4fvARB(Layer *_layer, GLenum target, GLuint index, const GLfloat *params)
+static void REGAL_CALL dsa_glProgramLocalParameter4fvARB(Layer *_layer, GLenum target, GLuint index, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4166,11 +4168,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameter4fvARB(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameter4fvARB( orig.glProgramLocalParameter4fvARB_layer, target, index, params );
+  RglProgramLocalParameter4fvARB( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameterI4iNV(Layer *_layer, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
+static void REGAL_CALL dsa_glProgramLocalParameterI4iNV(Layer *_layer, GLenum target, GLuint index, GLint x, GLint y, GLint z, GLint w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4179,11 +4181,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameterI4iNV(Layer *_layer, GLenum ta
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4iNV( orig.glProgramLocalParameterI4iNV_layer, target, index, x, y, z, w );
+  RglProgramLocalParameterI4iNV( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameterI4ivNV(Layer *_layer, GLenum target, GLuint index, const GLint *params)
+static void REGAL_CALL dsa_glProgramLocalParameterI4ivNV(Layer *_layer, GLenum target, GLuint index, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4192,11 +4194,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameterI4ivNV(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4ivNV( orig.glProgramLocalParameterI4ivNV_layer, target, index, params );
+  RglProgramLocalParameterI4ivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameterI4uiNV(Layer *_layer, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
+static void REGAL_CALL dsa_glProgramLocalParameterI4uiNV(Layer *_layer, GLenum target, GLuint index, GLuint x, GLuint y, GLuint z, GLuint w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4205,11 +4207,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameterI4uiNV(Layer *_layer, GLenum t
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4uiNV( orig.glProgramLocalParameterI4uiNV_layer, target, index, x, y, z, w );
+  RglProgramLocalParameterI4uiNV( orig, target, index, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParameterI4uivNV(Layer *_layer, GLenum target, GLuint index, const GLuint *params)
+static void REGAL_CALL dsa_glProgramLocalParameterI4uivNV(Layer *_layer, GLenum target, GLuint index, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4218,11 +4220,11 @@ static void REGAL_CALL Dsa_glProgramLocalParameterI4uivNV(Layer *_layer, GLenum 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParameterI4uivNV( orig.glProgramLocalParameterI4uivNV_layer, target, index, params );
+  RglProgramLocalParameterI4uivNV( orig, target, index, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParametersI4ivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLint *params)
+static void REGAL_CALL dsa_glProgramLocalParametersI4ivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4231,11 +4233,11 @@ static void REGAL_CALL Dsa_glProgramLocalParametersI4ivNV(Layer *_layer, GLenum 
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParametersI4ivNV( orig.glProgramLocalParametersI4ivNV_layer, target, index, count, params );
+  RglProgramLocalParametersI4ivNV( orig, target, index, count, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramLocalParametersI4uivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLuint *params)
+static void REGAL_CALL dsa_glProgramLocalParametersI4uivNV(Layer *_layer, GLenum target, GLuint index, GLsizei count, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4244,11 +4246,11 @@ static void REGAL_CALL Dsa_glProgramLocalParametersI4uivNV(Layer *_layer, GLenum
   // prefix
   _context->dsa->RestoreAsmProgram( _context, target );
 
-  orig.glProgramLocalParametersI4uivNV( orig.glProgramLocalParametersI4uivNV_layer, target, index, count, params );
+  RglProgramLocalParametersI4uivNV( orig, target, index, count, params );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x)
+static void REGAL_CALL dsa_glProgramUniform1dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4259,11 +4261,11 @@ static void REGAL_CALL Dsa_glProgramUniform1dEXT(Layer *_layer, GLuint program, 
   orig.glUniform1d( _context, location, x );
   return;
 
-  orig.glProgramUniform1dEXT( orig.glProgramUniform1dEXT_layer, program, location, x );
+  RglProgramUniform1dEXT( orig, program, location, x );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniform1dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4274,11 +4276,11 @@ static void REGAL_CALL Dsa_glProgramUniform1dvEXT(Layer *_layer, GLuint program,
   orig.glUniform1dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1dvEXT( orig.glProgramUniform1dvEXT_layer, program, location, count, value );
+  RglProgramUniform1dvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0)
+static void REGAL_CALL dsa_glProgramUniform1fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4289,11 +4291,11 @@ static void REGAL_CALL Dsa_glProgramUniform1fEXT(Layer *_layer, GLuint program, 
   orig.glUniform1f( _context, location, v0 );
   return;
 
-  orig.glProgramUniform1fEXT( orig.glProgramUniform1fEXT_layer, program, location, v0 );
+  RglProgramUniform1fEXT( orig, program, location, v0 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniform1fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4304,11 +4306,11 @@ static void REGAL_CALL Dsa_glProgramUniform1fvEXT(Layer *_layer, GLuint program,
   orig.glUniform1fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1fvEXT( orig.glProgramUniform1fvEXT_layer, program, location, count, value );
+  RglProgramUniform1fvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1iEXT(Layer *_layer, GLuint program, GLint location, GLint v0)
+static void REGAL_CALL dsa_glProgramUniform1iEXT(Layer *_layer, GLuint program, GLint location, GLint v0)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4319,11 +4321,11 @@ static void REGAL_CALL Dsa_glProgramUniform1iEXT(Layer *_layer, GLuint program, 
   orig.glUniform1i( _context, location, v0 );
   return;
 
-  orig.glProgramUniform1iEXT( orig.glProgramUniform1iEXT_layer, program, location, v0 );
+  RglProgramUniform1iEXT( orig, program, location, v0 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glProgramUniform1ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4334,11 +4336,11 @@ static void REGAL_CALL Dsa_glProgramUniform1ivEXT(Layer *_layer, GLuint program,
   orig.glUniform1iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1ivEXT( orig.glProgramUniform1ivEXT_layer, program, location, count, value );
+  RglProgramUniform1ivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0)
+static void REGAL_CALL dsa_glProgramUniform1uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4349,11 +4351,11 @@ static void REGAL_CALL Dsa_glProgramUniform1uiEXT(Layer *_layer, GLuint program,
   orig.glUniform1ui( _context, location, v0 );
   return;
 
-  orig.glProgramUniform1uiEXT( orig.glProgramUniform1uiEXT_layer, program, location, v0 );
+  RglProgramUniform1uiEXT( orig, program, location, v0 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform1uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glProgramUniform1uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4364,11 +4366,11 @@ static void REGAL_CALL Dsa_glProgramUniform1uivEXT(Layer *_layer, GLuint program
   orig.glUniform1uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform1uivEXT( orig.glProgramUniform1uivEXT_layer, program, location, count, value );
+  RglProgramUniform1uivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y)
+static void REGAL_CALL dsa_glProgramUniform2dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4379,11 +4381,11 @@ static void REGAL_CALL Dsa_glProgramUniform2dEXT(Layer *_layer, GLuint program, 
   orig.glUniform2d( _context, location, x, y );
   return;
 
-  orig.glProgramUniform2dEXT( orig.glProgramUniform2dEXT_layer, program, location, x, y );
+  RglProgramUniform2dEXT( orig, program, location, x, y );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniform2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4394,11 +4396,11 @@ static void REGAL_CALL Dsa_glProgramUniform2dvEXT(Layer *_layer, GLuint program,
   orig.glUniform2dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2dvEXT( orig.glProgramUniform2dvEXT_layer, program, location, count, value );
+  RglProgramUniform2dvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1)
+static void REGAL_CALL dsa_glProgramUniform2fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4409,11 +4411,11 @@ static void REGAL_CALL Dsa_glProgramUniform2fEXT(Layer *_layer, GLuint program, 
   orig.glUniform2f( _context, location, v0, v1 );
   return;
 
-  orig.glProgramUniform2fEXT( orig.glProgramUniform2fEXT_layer, program, location, v0, v1 );
+  RglProgramUniform2fEXT( orig, program, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniform2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4424,11 +4426,11 @@ static void REGAL_CALL Dsa_glProgramUniform2fvEXT(Layer *_layer, GLuint program,
   orig.glUniform2fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2fvEXT( orig.glProgramUniform2fvEXT_layer, program, location, count, value );
+  RglProgramUniform2fvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1)
+static void REGAL_CALL dsa_glProgramUniform2iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4439,11 +4441,11 @@ static void REGAL_CALL Dsa_glProgramUniform2iEXT(Layer *_layer, GLuint program, 
   orig.glUniform2i( _context, location, v0, v1 );
   return;
 
-  orig.glProgramUniform2iEXT( orig.glProgramUniform2iEXT_layer, program, location, v0, v1 );
+  RglProgramUniform2iEXT( orig, program, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glProgramUniform2ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4454,11 +4456,11 @@ static void REGAL_CALL Dsa_glProgramUniform2ivEXT(Layer *_layer, GLuint program,
   orig.glUniform2iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2ivEXT( orig.glProgramUniform2ivEXT_layer, program, location, count, value );
+  RglProgramUniform2ivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1)
+static void REGAL_CALL dsa_glProgramUniform2uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4469,11 +4471,11 @@ static void REGAL_CALL Dsa_glProgramUniform2uiEXT(Layer *_layer, GLuint program,
   orig.glUniform2ui( _context, location, v0, v1 );
   return;
 
-  orig.glProgramUniform2uiEXT( orig.glProgramUniform2uiEXT_layer, program, location, v0, v1 );
+  RglProgramUniform2uiEXT( orig, program, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform2uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glProgramUniform2uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4484,11 +4486,11 @@ static void REGAL_CALL Dsa_glProgramUniform2uivEXT(Layer *_layer, GLuint program
   orig.glUniform2uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform2uivEXT( orig.glProgramUniform2uivEXT_layer, program, location, count, value );
+  RglProgramUniform2uivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glProgramUniform3dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4499,11 +4501,11 @@ static void REGAL_CALL Dsa_glProgramUniform3dEXT(Layer *_layer, GLuint program, 
   orig.glUniform3d( _context, location, x, y, z );
   return;
 
-  orig.glProgramUniform3dEXT( orig.glProgramUniform3dEXT_layer, program, location, x, y, z );
+  RglProgramUniform3dEXT( orig, program, location, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniform3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4514,11 +4516,11 @@ static void REGAL_CALL Dsa_glProgramUniform3dvEXT(Layer *_layer, GLuint program,
   orig.glUniform3dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3dvEXT( orig.glProgramUniform3dvEXT_layer, program, location, count, value );
+  RglProgramUniform3dvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
+static void REGAL_CALL dsa_glProgramUniform3fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4529,11 +4531,11 @@ static void REGAL_CALL Dsa_glProgramUniform3fEXT(Layer *_layer, GLuint program, 
   orig.glUniform3f( _context, location, v0, v1, v2 );
   return;
 
-  orig.glProgramUniform3fEXT( orig.glProgramUniform3fEXT_layer, program, location, v0, v1, v2 );
+  RglProgramUniform3fEXT( orig, program, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniform3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4544,11 +4546,11 @@ static void REGAL_CALL Dsa_glProgramUniform3fvEXT(Layer *_layer, GLuint program,
   orig.glUniform3fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3fvEXT( orig.glProgramUniform3fvEXT_layer, program, location, count, value );
+  RglProgramUniform3fvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1, GLint v2)
+static void REGAL_CALL dsa_glProgramUniform3iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1, GLint v2)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4559,11 +4561,11 @@ static void REGAL_CALL Dsa_glProgramUniform3iEXT(Layer *_layer, GLuint program, 
   orig.glUniform3i( _context, location, v0, v1, v2 );
   return;
 
-  orig.glProgramUniform3iEXT( orig.glProgramUniform3iEXT_layer, program, location, v0, v1, v2 );
+  RglProgramUniform3iEXT( orig, program, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glProgramUniform3ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4574,11 +4576,11 @@ static void REGAL_CALL Dsa_glProgramUniform3ivEXT(Layer *_layer, GLuint program,
   orig.glUniform3iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3ivEXT( orig.glProgramUniform3ivEXT_layer, program, location, count, value );
+  RglProgramUniform3ivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2)
+static void REGAL_CALL dsa_glProgramUniform3uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4589,11 +4591,11 @@ static void REGAL_CALL Dsa_glProgramUniform3uiEXT(Layer *_layer, GLuint program,
   orig.glUniform3ui( _context, location, v0, v1, v2 );
   return;
 
-  orig.glProgramUniform3uiEXT( orig.glProgramUniform3uiEXT_layer, program, location, v0, v1, v2 );
+  RglProgramUniform3uiEXT( orig, program, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform3uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glProgramUniform3uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4604,11 +4606,11 @@ static void REGAL_CALL Dsa_glProgramUniform3uivEXT(Layer *_layer, GLuint program
   orig.glUniform3uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform3uivEXT( orig.glProgramUniform3uivEXT_layer, program, location, count, value );
+  RglProgramUniform3uivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL dsa_glProgramUniform4dEXT(Layer *_layer, GLuint program, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4619,11 +4621,11 @@ static void REGAL_CALL Dsa_glProgramUniform4dEXT(Layer *_layer, GLuint program, 
   orig.glUniform4d( _context, location, x, y, z, w );
   return;
 
-  orig.glProgramUniform4dEXT( orig.glProgramUniform4dEXT_layer, program, location, x, y, z, w );
+  RglProgramUniform4dEXT( orig, program, location, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniform4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4634,11 +4636,11 @@ static void REGAL_CALL Dsa_glProgramUniform4dvEXT(Layer *_layer, GLuint program,
   orig.glUniform4dv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4dvEXT( orig.glProgramUniform4dvEXT_layer, program, location, count, value );
+  RglProgramUniform4dvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
+static void REGAL_CALL dsa_glProgramUniform4fEXT(Layer *_layer, GLuint program, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4649,11 +4651,11 @@ static void REGAL_CALL Dsa_glProgramUniform4fEXT(Layer *_layer, GLuint program, 
   orig.glUniform4f( _context, location, v0, v1, v2, v3 );
   return;
 
-  orig.glProgramUniform4fEXT( orig.glProgramUniform4fEXT_layer, program, location, v0, v1, v2, v3 );
+  RglProgramUniform4fEXT( orig, program, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniform4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4664,11 +4666,11 @@ static void REGAL_CALL Dsa_glProgramUniform4fvEXT(Layer *_layer, GLuint program,
   orig.glUniform4fv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4fvEXT( orig.glProgramUniform4fvEXT_layer, program, location, count, value );
+  RglProgramUniform4fvEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
+static void REGAL_CALL dsa_glProgramUniform4iEXT(Layer *_layer, GLuint program, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4679,11 +4681,11 @@ static void REGAL_CALL Dsa_glProgramUniform4iEXT(Layer *_layer, GLuint program, 
   orig.glUniform4i( _context, location, v0, v1, v2, v3 );
   return;
 
-  orig.glProgramUniform4iEXT( orig.glProgramUniform4iEXT_layer, program, location, v0, v1, v2, v3 );
+  RglProgramUniform4iEXT( orig, program, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glProgramUniform4ivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4694,11 +4696,11 @@ static void REGAL_CALL Dsa_glProgramUniform4ivEXT(Layer *_layer, GLuint program,
   orig.glUniform4iv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4ivEXT( orig.glProgramUniform4ivEXT_layer, program, location, count, value );
+  RglProgramUniform4ivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
+static void REGAL_CALL dsa_glProgramUniform4uiEXT(Layer *_layer, GLuint program, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4709,11 +4711,11 @@ static void REGAL_CALL Dsa_glProgramUniform4uiEXT(Layer *_layer, GLuint program,
   orig.glUniform4ui( _context, location, v0, v1, v2, v3 );
   return;
 
-  orig.glProgramUniform4uiEXT( orig.glProgramUniform4uiEXT_layer, program, location, v0, v1, v2, v3 );
+  RglProgramUniform4uiEXT( orig, program, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniform4uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glProgramUniform4uivEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4724,11 +4726,11 @@ static void REGAL_CALL Dsa_glProgramUniform4uivEXT(Layer *_layer, GLuint program
   orig.glUniform4uiv( _context, location, count, value );
   return;
 
-  orig.glProgramUniform4uivEXT( orig.glProgramUniform4uivEXT_layer, program, location, count, value );
+  RglProgramUniform4uivEXT( orig, program, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4739,11 +4741,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix2dvEXT(Layer *_layer, GLuint pr
   orig.glUniformMatrix2dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2dvEXT( orig.glProgramUniformMatrix2dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix2dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4754,11 +4756,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix2fvEXT(Layer *_layer, GLuint pr
   orig.glUniformMatrix2fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2fvEXT( orig.glProgramUniformMatrix2fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix2fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix2x3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix2x3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4769,11 +4771,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix2x3dvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix2x3dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x3dvEXT( orig.glProgramUniformMatrix2x3dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix2x3dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix2x3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix2x3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4784,11 +4786,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix2x3fvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix2x3fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x3fvEXT( orig.glProgramUniformMatrix2x3fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix2x3fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix2x4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix2x4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4799,11 +4801,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix2x4dvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix2x4dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x4dvEXT( orig.glProgramUniformMatrix2x4dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix2x4dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix2x4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix2x4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4814,11 +4816,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix2x4fvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix2x4fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix2x4fvEXT( orig.glProgramUniformMatrix2x4fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix2x4fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4829,11 +4831,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix3dvEXT(Layer *_layer, GLuint pr
   orig.glUniformMatrix3dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3dvEXT( orig.glProgramUniformMatrix3dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix3dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4844,11 +4846,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix3fvEXT(Layer *_layer, GLuint pr
   orig.glUniformMatrix3fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3fvEXT( orig.glProgramUniformMatrix3fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix3fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix3x2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix3x2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4859,11 +4861,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix3x2dvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix3x2dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x2dvEXT( orig.glProgramUniformMatrix3x2dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix3x2dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix3x2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix3x2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4874,11 +4876,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix3x2fvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix3x2fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x2fvEXT( orig.glProgramUniformMatrix3x2fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix3x2fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix3x4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix3x4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4889,11 +4891,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix3x4dvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix3x4dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x4dvEXT( orig.glProgramUniformMatrix3x4dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix3x4dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix3x4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix3x4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4904,11 +4906,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix3x4fvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix3x4fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix3x4fvEXT( orig.glProgramUniformMatrix3x4fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix3x4fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix4dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4919,11 +4921,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix4dvEXT(Layer *_layer, GLuint pr
   orig.glUniformMatrix4dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4dvEXT( orig.glProgramUniformMatrix4dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix4dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix4fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4934,11 +4936,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix4fvEXT(Layer *_layer, GLuint pr
   orig.glUniformMatrix4fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4fvEXT( orig.glProgramUniformMatrix4fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix4fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix4x2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix4x2dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4949,11 +4951,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix4x2dvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix4x2dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x2dvEXT( orig.glProgramUniformMatrix4x2dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix4x2dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix4x2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix4x2fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4964,11 +4966,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix4x2fvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix4x2fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x2fvEXT( orig.glProgramUniformMatrix4x2fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix4x2fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix4x3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix4x3dvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4979,11 +4981,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix4x3dvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix4x3dv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x3dvEXT( orig.glProgramUniformMatrix4x3dvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix4x3dvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glProgramUniformMatrix4x3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glProgramUniformMatrix4x3fvEXT(Layer *_layer, GLuint program, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -4994,11 +4996,11 @@ static void REGAL_CALL Dsa_glProgramUniformMatrix4x3fvEXT(Layer *_layer, GLuint 
   orig.glUniformMatrix4x3fv( _context, location, count, transpose, value );
   return;
 
-  orig.glProgramUniformMatrix4x3fvEXT( orig.glProgramUniformMatrix4x3fvEXT_layer, program, location, count, transpose, value );
+  RglProgramUniformMatrix4x3fvEXT( orig, program, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glPushClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
+static void REGAL_CALL dsa_glPushClientAttribDefaultEXT(Layer *_layer, GLbitfield mask)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5009,11 +5011,11 @@ static void REGAL_CALL Dsa_glPushClientAttribDefaultEXT(Layer *_layer, GLbitfiel
   _context->dsa->ClientAttribDefault(_context, mask);
   return;
 
-  orig.glPushClientAttribDefaultEXT( orig.glPushClientAttribDefaultEXT_layer, mask );
+  RglPushClientAttribDefaultEXT( orig, mask );
 
 }
 
-static void REGAL_CALL Dsa_glPushMatrix(Layer *_layer)
+static void REGAL_CALL dsa_glPushMatrix(Layer *_layer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5022,11 +5024,11 @@ static void REGAL_CALL Dsa_glPushMatrix(Layer *_layer)
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glPushMatrix( orig.glPushMatrix_layer );
+  RglPushMatrix( orig );
 
 }
 
-static void REGAL_CALL Dsa_glRenderbufferStorage(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glRenderbufferStorage(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5035,11 +5037,11 @@ static void REGAL_CALL Dsa_glRenderbufferStorage(Layer *_layer, GLenum target, G
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorage( orig.glRenderbufferStorage_layer, target, internalformat, width, height );
+  RglRenderbufferStorage( orig, target, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glRenderbufferStorageEXT(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glRenderbufferStorageEXT(Layer *_layer, GLenum target, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5048,11 +5050,11 @@ static void REGAL_CALL Dsa_glRenderbufferStorageEXT(Layer *_layer, GLenum target
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageEXT( orig.glRenderbufferStorageEXT_layer, target, internalformat, width, height );
+  RglRenderbufferStorageEXT( orig, target, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glRenderbufferStorageMultisample(Layer *_layer, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glRenderbufferStorageMultisample(Layer *_layer, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5061,11 +5063,11 @@ static void REGAL_CALL Dsa_glRenderbufferStorageMultisample(Layer *_layer, GLenu
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisample( orig.glRenderbufferStorageMultisample_layer, target, samples, internalformat, width, height );
+  RglRenderbufferStorageMultisample( orig, target, samples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glRenderbufferStorageMultisampleCoverageNV(Layer *_layer, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glRenderbufferStorageMultisampleCoverageNV(Layer *_layer, GLenum target, GLsizei coverageSamples, GLsizei colorSamples, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5074,11 +5076,11 @@ static void REGAL_CALL Dsa_glRenderbufferStorageMultisampleCoverageNV(Layer *_la
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisampleCoverageNV( orig.glRenderbufferStorageMultisampleCoverageNV_layer, target, coverageSamples, colorSamples, internalformat, width, height );
+  RglRenderbufferStorageMultisampleCoverageNV( orig, target, coverageSamples, colorSamples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glRenderbufferStorageMultisampleEXT(Layer *_layer, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glRenderbufferStorageMultisampleEXT(Layer *_layer, GLenum target, GLsizei samples, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5087,11 +5089,11 @@ static void REGAL_CALL Dsa_glRenderbufferStorageMultisampleEXT(Layer *_layer, GL
   // prefix
   _context->dsa->RestoreRenderbuffer( _context );
 
-  orig.glRenderbufferStorageMultisampleEXT( orig.glRenderbufferStorageMultisampleEXT_layer, target, samples, internalformat, width, height );
+  RglRenderbufferStorageMultisampleEXT( orig, target, samples, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glRotated(Layer *_layer, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glRotated(Layer *_layer, GLdouble angle, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5100,11 +5102,11 @@ static void REGAL_CALL Dsa_glRotated(Layer *_layer, GLdouble angle, GLdouble x, 
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glRotated( orig.glRotated_layer, angle, x, y, z );
+  RglRotated( orig, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glRotatef(Layer *_layer, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL dsa_glRotatef(Layer *_layer, GLfloat angle, GLfloat x, GLfloat y, GLfloat z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5113,11 +5115,11 @@ static void REGAL_CALL Dsa_glRotatef(Layer *_layer, GLfloat angle, GLfloat x, GL
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glRotatef( orig.glRotatef_layer, angle, x, y, z );
+  RglRotatef( orig, angle, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glScaled(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glScaled(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5126,11 +5128,11 @@ static void REGAL_CALL Dsa_glScaled(Layer *_layer, GLdouble x, GLdouble y, GLdou
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glScaled( orig.glScaled_layer, x, y, z );
+  RglScaled( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glScalef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL dsa_glScalef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5139,11 +5141,11 @@ static void REGAL_CALL Dsa_glScalef(Layer *_layer, GLfloat x, GLfloat y, GLfloat
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glScalef( orig.glScalef_layer, x, y, z );
+  RglScalef( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL dsa_glSecondaryColorPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5152,11 +5154,11 @@ static void REGAL_CALL Dsa_glSecondaryColorPointer(Layer *_layer, GLint size, GL
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glSecondaryColorPointer( orig.glSecondaryColorPointer_layer, size, type, stride, pointer );
+  RglSecondaryColorPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Dsa_glTexBuffer(Layer *_layer, GLenum target, GLenum internalformat, GLuint buffer)
+static void REGAL_CALL dsa_glTexBuffer(Layer *_layer, GLenum target, GLenum internalformat, GLuint buffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5166,11 +5168,11 @@ static void REGAL_CALL Dsa_glTexBuffer(Layer *_layer, GLenum target, GLenum inte
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexBuffer( orig.glTexBuffer_layer, target, internalformat, buffer );
+  RglTexBuffer( orig, target, internalformat, buffer );
 
 }
 
-static void REGAL_CALL Dsa_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL dsa_glTexCoordPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5180,11 +5182,11 @@ static void REGAL_CALL Dsa_glTexCoordPointer(Layer *_layer, GLint size, GLenum t
   _context->dsa->RestoreClientActiveTexture( _context );
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glTexCoordPointer( orig.glTexCoordPointer_layer, size, type, stride, pointer );
+  RglTexCoordPointer( orig, size, type, stride, pointer );
 
 }
 
-static void REGAL_CALL Dsa_glTexEnvf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL dsa_glTexEnvf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5194,11 +5196,11 @@ static void REGAL_CALL Dsa_glTexEnvf(Layer *_layer, GLenum target, GLenum pname,
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvf( orig.glTexEnvf_layer, target, pname, param );
+  RglTexEnvf( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL dsa_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5208,11 +5210,11 @@ static void REGAL_CALL Dsa_glTexEnvfv(Layer *_layer, GLenum target, GLenum pname
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvfv( orig.glTexEnvfv_layer, target, pname, params );
+  RglTexEnvfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTexEnvi(Layer *_layer, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL dsa_glTexEnvi(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5222,11 +5224,11 @@ static void REGAL_CALL Dsa_glTexEnvi(Layer *_layer, GLenum target, GLenum pname,
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnvi( orig.glTexEnvi_layer, target, pname, param );
+  RglTexEnvi( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTexEnviv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL dsa_glTexEnviv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5236,11 +5238,11 @@ static void REGAL_CALL Dsa_glTexEnviv(Layer *_layer, GLenum target, GLenum pname
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexEnviv( orig.glTexEnviv_layer, target, pname, params );
+  RglTexEnviv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTexGenf(Layer *_layer, GLenum coord, GLenum pname, GLfloat param)
+static void REGAL_CALL dsa_glTexGenf(Layer *_layer, GLenum coord, GLenum pname, GLfloat param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5249,11 +5251,11 @@ static void REGAL_CALL Dsa_glTexGenf(Layer *_layer, GLenum coord, GLenum pname, 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGenf( orig.glTexGenf_layer, coord, pname, param );
+  RglTexGenf( orig, coord, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTexGenfv(Layer *_layer, GLenum coord, GLenum pname, const GLfloat *params)
+static void REGAL_CALL dsa_glTexGenfv(Layer *_layer, GLenum coord, GLenum pname, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5262,11 +5264,11 @@ static void REGAL_CALL Dsa_glTexGenfv(Layer *_layer, GLenum coord, GLenum pname,
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGenfv( orig.glTexGenfv_layer, coord, pname, params );
+  RglTexGenfv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTexGeni(Layer *_layer, GLenum coord, GLenum pname, GLint param)
+static void REGAL_CALL dsa_glTexGeni(Layer *_layer, GLenum coord, GLenum pname, GLint param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5275,11 +5277,11 @@ static void REGAL_CALL Dsa_glTexGeni(Layer *_layer, GLenum coord, GLenum pname, 
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGeni( orig.glTexGeni_layer, coord, pname, param );
+  RglTexGeni( orig, coord, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTexGeniv(Layer *_layer, GLenum coord, GLenum pname, const GLint *params)
+static void REGAL_CALL dsa_glTexGeniv(Layer *_layer, GLenum coord, GLenum pname, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5288,25 +5290,11 @@ static void REGAL_CALL Dsa_glTexGeniv(Layer *_layer, GLenum coord, GLenum pname,
   // prefix
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexGeniv( orig.glTexGeniv_layer, coord, pname, params );
+  RglTexGeniv( orig, coord, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
-{
-  Dsa * self = static_cast<Dsa *>(_layer);
-
-  DsaOriginate & orig = self->orig;
-
-  // prefix
-  _context->dsa->RestoreTexture( _context );
-  _context->dsa->RestoreActiveTexture( _context );
-
-  orig.glTexParameterf( orig.glTexParameterf_layer, target, pname, param );
-
-}
-
-static void REGAL_CALL Dsa_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
+static void REGAL_CALL dsa_glTexParameterf(Layer *_layer, GLenum target, GLenum pname, GLfloat param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5316,11 +5304,11 @@ static void REGAL_CALL Dsa_glTexParameterfv(Layer *_layer, GLenum target, GLenum
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameterfv( orig.glTexParameterfv_layer, target, pname, params );
+  RglTexParameterf( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL dsa_glTexParameterfv(Layer *_layer, GLenum target, GLenum pname, const GLfloat *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5330,11 +5318,11 @@ static void REGAL_CALL Dsa_glTexParameteri(Layer *_layer, GLenum target, GLenum 
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameteri( orig.glTexParameteri_layer, target, pname, param );
+  RglTexParameterfv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL dsa_glTexParameteri(Layer *_layer, GLenum target, GLenum pname, GLint param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5344,11 +5332,11 @@ static void REGAL_CALL Dsa_glTexParameteriv(Layer *_layer, GLenum target, GLenum
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexParameteriv( orig.glTexParameteriv_layer, target, pname, params );
+  RglTexParameteri( orig, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTexRenderbufferNV(Layer *_layer, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL dsa_glTexParameteriv(Layer *_layer, GLenum target, GLenum pname, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5358,11 +5346,25 @@ static void REGAL_CALL Dsa_glTexRenderbufferNV(Layer *_layer, GLenum target, GLu
   _context->dsa->RestoreTexture( _context );
   _context->dsa->RestoreActiveTexture( _context );
 
-  orig.glTexRenderbufferNV( orig.glTexRenderbufferNV_layer, target, renderbuffer );
+  RglTexParameteriv( orig, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTextureBufferEXT(Layer *_layer, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer)
+static void REGAL_CALL dsa_glTexRenderbufferNV(Layer *_layer, GLenum target, GLuint renderbuffer)
+{
+  Dsa * self = static_cast<Dsa *>(_layer);
+
+  DsaOriginate & orig = self->orig;
+
+  // prefix
+  _context->dsa->RestoreTexture( _context );
+  _context->dsa->RestoreActiveTexture( _context );
+
+  RglTexRenderbufferNV( orig, target, renderbuffer );
+
+}
+
+static void REGAL_CALL dsa_glTextureBufferEXT(Layer *_layer, GLuint texture, GLenum target, GLenum internalformat, GLuint buffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5373,11 +5375,11 @@ static void REGAL_CALL Dsa_glTextureBufferEXT(Layer *_layer, GLuint texture, GLe
   orig.glTexBuffer( _context, target, internalformat, buffer );
   return;
 
-  orig.glTextureBufferEXT( orig.glTextureBufferEXT_layer, texture, target, internalformat, buffer );
+  RglTextureBufferEXT( orig, texture, target, internalformat, buffer );
 
 }
 
-static void REGAL_CALL Dsa_glTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glTextureImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5388,11 +5390,11 @@ static void REGAL_CALL Dsa_glTextureImage1DEXT(Layer *_layer, GLuint texture, GL
   orig.glTexImage1D( _context, target, level, internalformat, width, border, format, type, pixels );
   return;
 
-  orig.glTextureImage1DEXT( orig.glTextureImage1DEXT_layer, texture, target, level, internalformat, width, border, format, type, pixels );
+  RglTextureImage1DEXT( orig, texture, target, level, internalformat, width, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glTextureImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5403,11 +5405,11 @@ static void REGAL_CALL Dsa_glTextureImage2DEXT(Layer *_layer, GLuint texture, GL
   orig.glTexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels );
   return;
 
-  orig.glTextureImage2DEXT( orig.glTextureImage2DEXT_layer, texture, target, level, internalformat, width, height, border, format, type, pixels );
+  RglTextureImage2DEXT( orig, texture, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glTextureImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLsizei depth, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5418,11 +5420,11 @@ static void REGAL_CALL Dsa_glTextureImage3DEXT(Layer *_layer, GLuint texture, GL
   orig.glTexImage3D( _context, target, level, internalformat, width, height, depth, border, format, type, pixels );
   return;
 
-  orig.glTextureImage3DEXT( orig.glTextureImage3DEXT_layer, texture, target, level, internalformat, width, height, depth, border, format, type, pixels );
+  RglTextureImage3DEXT( orig, texture, target, level, internalformat, width, height, depth, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glTextureParameterIivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLint *params)
+static void REGAL_CALL dsa_glTextureParameterIivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5433,11 +5435,11 @@ static void REGAL_CALL Dsa_glTextureParameterIivEXT(Layer *_layer, GLuint textur
   orig.glTexParameterIiv( _context, target, pname, params );
   return;
 
-  orig.glTextureParameterIivEXT( orig.glTextureParameterIivEXT_layer, texture, target, pname, params );
+  RglTextureParameterIivEXT( orig, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTextureParameterIuivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLuint *params)
+static void REGAL_CALL dsa_glTextureParameterIuivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLuint *params)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5448,11 +5450,11 @@ static void REGAL_CALL Dsa_glTextureParameterIuivEXT(Layer *_layer, GLuint textu
   orig.glTexParameterIuiv( _context, target, pname, params );
   return;
 
-  orig.glTextureParameterIuivEXT( orig.glTextureParameterIuivEXT_layer, texture, target, pname, params );
+  RglTextureParameterIuivEXT( orig, texture, target, pname, params );
 
 }
 
-static void REGAL_CALL Dsa_glTextureParameterfEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat param)
+static void REGAL_CALL dsa_glTextureParameterfEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLfloat param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5463,11 +5465,11 @@ static void REGAL_CALL Dsa_glTextureParameterfEXT(Layer *_layer, GLuint texture,
   orig.glTexParameterf( _context, target, pname, param );
   return;
 
-  orig.glTextureParameterfEXT( orig.glTextureParameterfEXT_layer, texture, target, pname, param );
+  RglTextureParameterfEXT( orig, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLfloat *param)
+static void REGAL_CALL dsa_glTextureParameterfvEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLfloat *param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5478,11 +5480,11 @@ static void REGAL_CALL Dsa_glTextureParameterfvEXT(Layer *_layer, GLuint texture
   orig.glTexParameterfv( _context, target, pname, param );
   return;
 
-  orig.glTextureParameterfvEXT( orig.glTextureParameterfvEXT_layer, texture, target, pname, param );
+  RglTextureParameterfvEXT( orig, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTextureParameteriEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint param)
+static void REGAL_CALL dsa_glTextureParameteriEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, GLint param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5493,11 +5495,11 @@ static void REGAL_CALL Dsa_glTextureParameteriEXT(Layer *_layer, GLuint texture,
   orig.glTexParameteri( _context, target, pname, param );
   return;
 
-  orig.glTextureParameteriEXT( orig.glTextureParameteriEXT_layer, texture, target, pname, param );
+  RglTextureParameteriEXT( orig, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLint *param)
+static void REGAL_CALL dsa_glTextureParameterivEXT(Layer *_layer, GLuint texture, GLenum target, GLenum pname, const GLint *param)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5508,11 +5510,11 @@ static void REGAL_CALL Dsa_glTextureParameterivEXT(Layer *_layer, GLuint texture
   orig.glTexParameteriv( _context, target, pname, param );
   return;
 
-  orig.glTextureParameterivEXT( orig.glTextureParameterivEXT_layer, texture, target, pname, param );
+  RglTextureParameterivEXT( orig, texture, target, pname, param );
 
 }
 
-static void REGAL_CALL Dsa_glTextureRenderbufferEXT(Layer *_layer, GLuint texture, GLenum target, GLuint renderbuffer)
+static void REGAL_CALL dsa_glTextureRenderbufferEXT(Layer *_layer, GLuint texture, GLenum target, GLuint renderbuffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5523,11 +5525,11 @@ static void REGAL_CALL Dsa_glTextureRenderbufferEXT(Layer *_layer, GLuint textur
   orig.glTexRenderbufferNV( _context, target, renderbuffer );
   return;
 
-  orig.glTextureRenderbufferEXT( orig.glTextureRenderbufferEXT_layer, texture, target, renderbuffer );
+  RglTextureRenderbufferEXT( orig, texture, target, renderbuffer );
 
 }
 
-static void REGAL_CALL Dsa_glTextureStorage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
+static void REGAL_CALL dsa_glTextureStorage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5538,11 +5540,11 @@ static void REGAL_CALL Dsa_glTextureStorage1DEXT(Layer *_layer, GLuint texture, 
   orig.glTexStorage1D( _context, target, levels, internalformat, width );
   return;
 
-  orig.glTextureStorage1DEXT( orig.glTextureStorage1DEXT_layer, texture, target, levels, internalformat, width );
+  RglTextureStorage1DEXT( orig, texture, target, levels, internalformat, width );
 
 }
 
-static void REGAL_CALL Dsa_glTextureStorage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
+static void REGAL_CALL dsa_glTextureStorage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5553,11 +5555,11 @@ static void REGAL_CALL Dsa_glTextureStorage2DEXT(Layer *_layer, GLuint texture, 
   orig.glTexStorage2D( _context, target, levels, internalformat, width, height );
   return;
 
-  orig.glTextureStorage2DEXT( orig.glTextureStorage2DEXT_layer, texture, target, levels, internalformat, width, height );
+  RglTextureStorage2DEXT( orig, texture, target, levels, internalformat, width, height );
 
 }
 
-static void REGAL_CALL Dsa_glTextureStorage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
+static void REGAL_CALL dsa_glTextureStorage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5568,11 +5570,11 @@ static void REGAL_CALL Dsa_glTextureStorage3DEXT(Layer *_layer, GLuint texture, 
   orig.glTexStorage3D( _context, target, levels, internalformat, width, height, depth );
   return;
 
-  orig.glTextureStorage3DEXT( orig.glTextureStorage3DEXT_layer, texture, target, levels, internalformat, width, height, depth );
+  RglTextureStorage3DEXT( orig, texture, target, levels, internalformat, width, height, depth );
 
 }
 
-static void REGAL_CALL Dsa_glTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glTextureSubImage1DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLsizei width, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5583,11 +5585,11 @@ static void REGAL_CALL Dsa_glTextureSubImage1DEXT(Layer *_layer, GLuint texture,
   orig.glTexSubImage1D( _context, target, level, xoffset, width, format, type, pixels );
   return;
 
-  orig.glTextureSubImage1DEXT( orig.glTextureSubImage1DEXT_layer, texture, target, level, xoffset, width, format, type, pixels );
+  RglTextureSubImage1DEXT( orig, texture, target, level, xoffset, width, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glTextureSubImage2DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5598,11 +5600,11 @@ static void REGAL_CALL Dsa_glTextureSubImage2DEXT(Layer *_layer, GLuint texture,
   orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
   return;
 
-  orig.glTextureSubImage2DEXT( orig.glTextureSubImage2DEXT_layer, texture, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  RglTextureSubImage2DEXT( orig, texture, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL dsa_glTextureSubImage3DEXT(Layer *_layer, GLuint texture, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLint zoffset, GLsizei width, GLsizei height, GLsizei depth, GLenum format, GLenum type, const GLvoid *pixels)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5613,11 +5615,11 @@ static void REGAL_CALL Dsa_glTextureSubImage3DEXT(Layer *_layer, GLuint texture,
   orig.glTexSubImage3D( _context, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
   return;
 
-  orig.glTextureSubImage3DEXT( orig.glTextureSubImage3DEXT_layer, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
+  RglTextureSubImage3DEXT( orig, texture, target, level, xoffset, yoffset, zoffset, width, height, depth, format, type, pixels );
 
 }
 
-static void REGAL_CALL Dsa_glTranslated(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glTranslated(Layer *_layer, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5626,11 +5628,11 @@ static void REGAL_CALL Dsa_glTranslated(Layer *_layer, GLdouble x, GLdouble y, G
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glTranslated( orig.glTranslated_layer, x, y, z );
+  RglTranslated( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glTranslatef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
+static void REGAL_CALL dsa_glTranslatef(Layer *_layer, GLfloat x, GLfloat y, GLfloat z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5639,11 +5641,11 @@ static void REGAL_CALL Dsa_glTranslatef(Layer *_layer, GLfloat x, GLfloat y, GLf
   // prefix
   _context->dsa->RestoreMatrixMode( _context );
 
-  orig.glTranslatef( orig.glTranslatef_layer, x, y, z );
+  RglTranslatef( orig, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1d(Layer *_layer, GLint location, GLdouble x)
+static void REGAL_CALL dsa_glUniform1d(Layer *_layer, GLint location, GLdouble x)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5652,11 +5654,11 @@ static void REGAL_CALL Dsa_glUniform1d(Layer *_layer, GLint location, GLdouble x
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1d( orig.glUniform1d_layer, location, x );
+  RglUniform1d( orig, location, x );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glUniform1dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5665,11 +5667,11 @@ static void REGAL_CALL Dsa_glUniform1dv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1dv( orig.glUniform1dv_layer, location, count, value );
+  RglUniform1dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1f(Layer *_layer, GLint location, GLfloat v0)
+static void REGAL_CALL dsa_glUniform1f(Layer *_layer, GLint location, GLfloat v0)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5678,11 +5680,11 @@ static void REGAL_CALL Dsa_glUniform1f(Layer *_layer, GLint location, GLfloat v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1f( orig.glUniform1f_layer, location, v0 );
+  RglUniform1f( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glUniform1fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5691,11 +5693,11 @@ static void REGAL_CALL Dsa_glUniform1fv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1fv( orig.glUniform1fv_layer, location, count, value );
+  RglUniform1fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1i(Layer *_layer, GLint location, GLint v0)
+static void REGAL_CALL dsa_glUniform1i(Layer *_layer, GLint location, GLint v0)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5704,11 +5706,11 @@ static void REGAL_CALL Dsa_glUniform1i(Layer *_layer, GLint location, GLint v0)
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1i( orig.glUniform1i_layer, location, v0 );
+  RglUniform1i( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glUniform1iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5717,11 +5719,11 @@ static void REGAL_CALL Dsa_glUniform1iv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1iv( orig.glUniform1iv_layer, location, count, value );
+  RglUniform1iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1ui(Layer *_layer, GLint location, GLuint v0)
+static void REGAL_CALL dsa_glUniform1ui(Layer *_layer, GLint location, GLuint v0)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5730,11 +5732,11 @@ static void REGAL_CALL Dsa_glUniform1ui(Layer *_layer, GLint location, GLuint v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1ui( orig.glUniform1ui_layer, location, v0 );
+  RglUniform1ui( orig, location, v0 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform1uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glUniform1uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5743,11 +5745,11 @@ static void REGAL_CALL Dsa_glUniform1uiv(Layer *_layer, GLint location, GLsizei 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform1uiv( orig.glUniform1uiv_layer, location, count, value );
+  RglUniform1uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2d(Layer *_layer, GLint location, GLdouble x, GLdouble y)
+static void REGAL_CALL dsa_glUniform2d(Layer *_layer, GLint location, GLdouble x, GLdouble y)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5756,11 +5758,11 @@ static void REGAL_CALL Dsa_glUniform2d(Layer *_layer, GLint location, GLdouble x
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2d( orig.glUniform2d_layer, location, x, y );
+  RglUniform2d( orig, location, x, y );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glUniform2dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5769,11 +5771,11 @@ static void REGAL_CALL Dsa_glUniform2dv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2dv( orig.glUniform2dv_layer, location, count, value );
+  RglUniform2dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1)
+static void REGAL_CALL dsa_glUniform2f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5782,11 +5784,11 @@ static void REGAL_CALL Dsa_glUniform2f(Layer *_layer, GLint location, GLfloat v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2f( orig.glUniform2f_layer, location, v0, v1 );
+  RglUniform2f( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glUniform2fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5795,11 +5797,11 @@ static void REGAL_CALL Dsa_glUniform2fv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2fv( orig.glUniform2fv_layer, location, count, value );
+  RglUniform2fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2i(Layer *_layer, GLint location, GLint v0, GLint v1)
+static void REGAL_CALL dsa_glUniform2i(Layer *_layer, GLint location, GLint v0, GLint v1)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5808,11 +5810,11 @@ static void REGAL_CALL Dsa_glUniform2i(Layer *_layer, GLint location, GLint v0, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2i( orig.glUniform2i_layer, location, v0, v1 );
+  RglUniform2i( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glUniform2iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5821,11 +5823,11 @@ static void REGAL_CALL Dsa_glUniform2iv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2iv( orig.glUniform2iv_layer, location, count, value );
+  RglUniform2iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2ui(Layer *_layer, GLint location, GLuint v0, GLuint v1)
+static void REGAL_CALL dsa_glUniform2ui(Layer *_layer, GLint location, GLuint v0, GLuint v1)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5834,11 +5836,11 @@ static void REGAL_CALL Dsa_glUniform2ui(Layer *_layer, GLint location, GLuint v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2ui( orig.glUniform2ui_layer, location, v0, v1 );
+  RglUniform2ui( orig, location, v0, v1 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform2uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glUniform2uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5847,11 +5849,11 @@ static void REGAL_CALL Dsa_glUniform2uiv(Layer *_layer, GLint location, GLsizei 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform2uiv( orig.glUniform2uiv_layer, location, count, value );
+  RglUniform2uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z)
+static void REGAL_CALL dsa_glUniform3d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5860,11 +5862,11 @@ static void REGAL_CALL Dsa_glUniform3d(Layer *_layer, GLint location, GLdouble x
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3d( orig.glUniform3d_layer, location, x, y, z );
+  RglUniform3d( orig, location, x, y, z );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glUniform3dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5873,11 +5875,11 @@ static void REGAL_CALL Dsa_glUniform3dv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3dv( orig.glUniform3dv_layer, location, count, value );
+  RglUniform3dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
+static void REGAL_CALL dsa_glUniform3f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5886,11 +5888,11 @@ static void REGAL_CALL Dsa_glUniform3f(Layer *_layer, GLint location, GLfloat v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3f( orig.glUniform3f_layer, location, v0, v1, v2 );
+  RglUniform3f( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glUniform3fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5899,11 +5901,11 @@ static void REGAL_CALL Dsa_glUniform3fv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3fv( orig.glUniform3fv_layer, location, count, value );
+  RglUniform3fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2)
+static void REGAL_CALL dsa_glUniform3i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5912,11 +5914,11 @@ static void REGAL_CALL Dsa_glUniform3i(Layer *_layer, GLint location, GLint v0, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3i( orig.glUniform3i_layer, location, v0, v1, v2 );
+  RglUniform3i( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glUniform3iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5925,11 +5927,11 @@ static void REGAL_CALL Dsa_glUniform3iv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3iv( orig.glUniform3iv_layer, location, count, value );
+  RglUniform3iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2)
+static void REGAL_CALL dsa_glUniform3ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5938,11 +5940,11 @@ static void REGAL_CALL Dsa_glUniform3ui(Layer *_layer, GLint location, GLuint v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3ui( orig.glUniform3ui_layer, location, v0, v1, v2 );
+  RglUniform3ui( orig, location, v0, v1, v2 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform3uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glUniform3uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5951,11 +5953,11 @@ static void REGAL_CALL Dsa_glUniform3uiv(Layer *_layer, GLint location, GLsizei 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform3uiv( orig.glUniform3uiv_layer, location, count, value );
+  RglUniform3uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
+static void REGAL_CALL dsa_glUniform4d(Layer *_layer, GLint location, GLdouble x, GLdouble y, GLdouble z, GLdouble w)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5964,11 +5966,11 @@ static void REGAL_CALL Dsa_glUniform4d(Layer *_layer, GLint location, GLdouble x
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4d( orig.glUniform4d_layer, location, x, y, z, w );
+  RglUniform4d( orig, location, x, y, z, w );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
+static void REGAL_CALL dsa_glUniform4dv(Layer *_layer, GLint location, GLsizei count, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5977,11 +5979,11 @@ static void REGAL_CALL Dsa_glUniform4dv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4dv( orig.glUniform4dv_layer, location, count, value );
+  RglUniform4dv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
+static void REGAL_CALL dsa_glUniform4f(Layer *_layer, GLint location, GLfloat v0, GLfloat v1, GLfloat v2, GLfloat v3)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -5990,11 +5992,11 @@ static void REGAL_CALL Dsa_glUniform4f(Layer *_layer, GLint location, GLfloat v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4f( orig.glUniform4f_layer, location, v0, v1, v2, v3 );
+  RglUniform4f( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
+static void REGAL_CALL dsa_glUniform4fv(Layer *_layer, GLint location, GLsizei count, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6003,11 +6005,11 @@ static void REGAL_CALL Dsa_glUniform4fv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4fv( orig.glUniform4fv_layer, location, count, value );
+  RglUniform4fv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
+static void REGAL_CALL dsa_glUniform4i(Layer *_layer, GLint location, GLint v0, GLint v1, GLint v2, GLint v3)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6016,11 +6018,11 @@ static void REGAL_CALL Dsa_glUniform4i(Layer *_layer, GLint location, GLint v0, 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4i( orig.glUniform4i_layer, location, v0, v1, v2, v3 );
+  RglUniform4i( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
+static void REGAL_CALL dsa_glUniform4iv(Layer *_layer, GLint location, GLsizei count, const GLint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6029,11 +6031,11 @@ static void REGAL_CALL Dsa_glUniform4iv(Layer *_layer, GLint location, GLsizei c
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4iv( orig.glUniform4iv_layer, location, count, value );
+  RglUniform4iv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
+static void REGAL_CALL dsa_glUniform4ui(Layer *_layer, GLint location, GLuint v0, GLuint v1, GLuint v2, GLuint v3)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6042,11 +6044,11 @@ static void REGAL_CALL Dsa_glUniform4ui(Layer *_layer, GLint location, GLuint v0
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4ui( orig.glUniform4ui_layer, location, v0, v1, v2, v3 );
+  RglUniform4ui( orig, location, v0, v1, v2, v3 );
 
 }
 
-static void REGAL_CALL Dsa_glUniform4uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
+static void REGAL_CALL dsa_glUniform4uiv(Layer *_layer, GLint location, GLsizei count, const GLuint *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6055,11 +6057,11 @@ static void REGAL_CALL Dsa_glUniform4uiv(Layer *_layer, GLint location, GLsizei 
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniform4uiv( orig.glUniform4uiv_layer, location, count, value );
+  RglUniform4uiv( orig, location, count, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6068,11 +6070,11 @@ static void REGAL_CALL Dsa_glUniformMatrix2dv(Layer *_layer, GLint location, GLs
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2dv( orig.glUniformMatrix2dv_layer, location, count, transpose, value );
+  RglUniformMatrix2dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6081,11 +6083,11 @@ static void REGAL_CALL Dsa_glUniformMatrix2fv(Layer *_layer, GLint location, GLs
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2fv( orig.glUniformMatrix2fv_layer, location, count, transpose, value );
+  RglUniformMatrix2fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix2x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix2x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6094,11 +6096,11 @@ static void REGAL_CALL Dsa_glUniformMatrix2x3dv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x3dv( orig.glUniformMatrix2x3dv_layer, location, count, transpose, value );
+  RglUniformMatrix2x3dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix2x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix2x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6107,11 +6109,11 @@ static void REGAL_CALL Dsa_glUniformMatrix2x3fv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x3fv( orig.glUniformMatrix2x3fv_layer, location, count, transpose, value );
+  RglUniformMatrix2x3fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix2x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix2x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6120,11 +6122,11 @@ static void REGAL_CALL Dsa_glUniformMatrix2x4dv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x4dv( orig.glUniformMatrix2x4dv_layer, location, count, transpose, value );
+  RglUniformMatrix2x4dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix2x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix2x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6133,11 +6135,11 @@ static void REGAL_CALL Dsa_glUniformMatrix2x4fv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix2x4fv( orig.glUniformMatrix2x4fv_layer, location, count, transpose, value );
+  RglUniformMatrix2x4fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6146,11 +6148,11 @@ static void REGAL_CALL Dsa_glUniformMatrix3dv(Layer *_layer, GLint location, GLs
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3dv( orig.glUniformMatrix3dv_layer, location, count, transpose, value );
+  RglUniformMatrix3dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6159,11 +6161,11 @@ static void REGAL_CALL Dsa_glUniformMatrix3fv(Layer *_layer, GLint location, GLs
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3fv( orig.glUniformMatrix3fv_layer, location, count, transpose, value );
+  RglUniformMatrix3fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix3x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix3x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6172,11 +6174,11 @@ static void REGAL_CALL Dsa_glUniformMatrix3x2dv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x2dv( orig.glUniformMatrix3x2dv_layer, location, count, transpose, value );
+  RglUniformMatrix3x2dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix3x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix3x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6185,11 +6187,11 @@ static void REGAL_CALL Dsa_glUniformMatrix3x2fv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x2fv( orig.glUniformMatrix3x2fv_layer, location, count, transpose, value );
+  RglUniformMatrix3x2fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix3x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix3x4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6198,11 +6200,11 @@ static void REGAL_CALL Dsa_glUniformMatrix3x4dv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x4dv( orig.glUniformMatrix3x4dv_layer, location, count, transpose, value );
+  RglUniformMatrix3x4dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix3x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix3x4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6211,11 +6213,11 @@ static void REGAL_CALL Dsa_glUniformMatrix3x4fv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix3x4fv( orig.glUniformMatrix3x4fv_layer, location, count, transpose, value );
+  RglUniformMatrix3x4fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix4dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6224,11 +6226,11 @@ static void REGAL_CALL Dsa_glUniformMatrix4dv(Layer *_layer, GLint location, GLs
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4dv( orig.glUniformMatrix4dv_layer, location, count, transpose, value );
+  RglUniformMatrix4dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix4fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6237,11 +6239,11 @@ static void REGAL_CALL Dsa_glUniformMatrix4fv(Layer *_layer, GLint location, GLs
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4fv( orig.glUniformMatrix4fv_layer, location, count, transpose, value );
+  RglUniformMatrix4fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix4x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix4x2dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6250,11 +6252,11 @@ static void REGAL_CALL Dsa_glUniformMatrix4x2dv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x2dv( orig.glUniformMatrix4x2dv_layer, location, count, transpose, value );
+  RglUniformMatrix4x2dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix4x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix4x2fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6263,11 +6265,11 @@ static void REGAL_CALL Dsa_glUniformMatrix4x2fv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x2fv( orig.glUniformMatrix4x2fv_layer, location, count, transpose, value );
+  RglUniformMatrix4x2fv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix4x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
+static void REGAL_CALL dsa_glUniformMatrix4x3dv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLdouble *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6276,11 +6278,11 @@ static void REGAL_CALL Dsa_glUniformMatrix4x3dv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x3dv( orig.glUniformMatrix4x3dv_layer, location, count, transpose, value );
+  RglUniformMatrix4x3dv( orig, location, count, transpose, value );
 
 }
 
-static void REGAL_CALL Dsa_glUniformMatrix4x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
+static void REGAL_CALL dsa_glUniformMatrix4x3fv(Layer *_layer, GLint location, GLsizei count, GLboolean transpose, const GLfloat *value)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6289,11 +6291,11 @@ static void REGAL_CALL Dsa_glUniformMatrix4x3fv(Layer *_layer, GLint location, G
   // prefix
   _context->dsa->RestoreGlslProgram( _context );
 
-  orig.glUniformMatrix4x3fv( orig.glUniformMatrix4x3fv_layer, location, count, transpose, value );
+  RglUniformMatrix4x3fv( orig, location, count, transpose, value );
 
 }
 
-static GLboolean REGAL_CALL Dsa_glUnmapBuffer(Layer *_layer, GLenum target)
+static GLboolean REGAL_CALL dsa_glUnmapBuffer(Layer *_layer, GLenum target)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6302,11 +6304,11 @@ static GLboolean REGAL_CALL Dsa_glUnmapBuffer(Layer *_layer, GLenum target)
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glUnmapBuffer( orig.glUnmapBuffer_layer, target );
+  return RglUnmapBuffer( orig, target );
 
 }
 
-static GLboolean REGAL_CALL Dsa_glUnmapBufferARB(Layer *_layer, GLenum target)
+static GLboolean REGAL_CALL dsa_glUnmapBufferARB(Layer *_layer, GLenum target)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6315,11 +6317,11 @@ static GLboolean REGAL_CALL Dsa_glUnmapBufferARB(Layer *_layer, GLenum target)
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  return orig.glUnmapBufferARB( orig.glUnmapBufferARB_layer, target );
+  return RglUnmapBufferARB( orig, target );
 
 }
 
-static GLboolean REGAL_CALL Dsa_glUnmapNamedBufferEXT(Layer *_layer, GLuint buffer)
+static GLboolean REGAL_CALL dsa_glUnmapNamedBufferEXT(Layer *_layer, GLuint buffer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6329,11 +6331,11 @@ static GLboolean REGAL_CALL Dsa_glUnmapNamedBufferEXT(Layer *_layer, GLuint buff
   _context->dsa->DsaBuffer( _context, buffer);
   return orig.glUnmapBuffer( _context, GL_ARRAY_BUFFER );
 
-  return orig.glUnmapNamedBufferEXT( orig.glUnmapNamedBufferEXT_layer, buffer );
+  return RglUnmapNamedBufferEXT( orig, buffer );
 
 }
 
-static void REGAL_CALL Dsa_glUseProgram(Layer *_layer, GLuint program)
+static void REGAL_CALL dsa_glUseProgram(Layer *_layer, GLuint program)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6344,11 +6346,11 @@ static void REGAL_CALL Dsa_glUseProgram(Layer *_layer, GLuint program)
     return;
   }
 
-  orig.glUseProgram( orig.glUseProgram_layer, program );
+  RglUseProgram( orig, program );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6359,11 +6361,11 @@ static void REGAL_CALL Dsa_glVertexArrayColorOffsetEXT(Layer *_layer, GLuint vao
   orig.glColorPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayColorOffsetEXT( orig.glVertexArrayColorOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArrayColorOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6374,11 +6376,11 @@ static void REGAL_CALL Dsa_glVertexArrayEdgeFlagOffsetEXT(Layer *_layer, GLuint 
   orig.glEdgeFlagPointer( _context, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayEdgeFlagOffsetEXT( orig.glVertexArrayEdgeFlagOffsetEXT_layer, vaobj, buffer, stride, offset );
+  RglVertexArrayEdgeFlagOffsetEXT( orig, vaobj, buffer, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6389,11 +6391,11 @@ static void REGAL_CALL Dsa_glVertexArrayFogCoordOffsetEXT(Layer *_layer, GLuint 
   orig.glFogCoordPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayFogCoordOffsetEXT( orig.glVertexArrayFogCoordOffsetEXT_layer, vaobj, buffer, type, stride, offset );
+  RglVertexArrayFogCoordOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6404,11 +6406,11 @@ static void REGAL_CALL Dsa_glVertexArrayIndexOffsetEXT(Layer *_layer, GLuint vao
   orig.glIndexPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayIndexOffsetEXT( orig.glVertexArrayIndexOffsetEXT_layer, vaobj, buffer, type, stride, offset );
+  RglVertexArrayIndexOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum texunit, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6419,11 +6421,11 @@ static void REGAL_CALL Dsa_glVertexArrayMultiTexCoordOffsetEXT(Layer *_layer, GL
   orig.glMultiTexCoordPointerEXT( _context, texunit, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayMultiTexCoordOffsetEXT( orig.glVertexArrayMultiTexCoordOffsetEXT_layer, vaobj, buffer, texunit, size, type, stride, offset );
+  RglVertexArrayMultiTexCoordOffsetEXT( orig, vaobj, buffer, texunit, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6434,11 +6436,11 @@ static void REGAL_CALL Dsa_glVertexArrayNormalOffsetEXT(Layer *_layer, GLuint va
   orig.glNormalPointer( _context, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayNormalOffsetEXT( orig.glVertexArrayNormalOffsetEXT_layer, vaobj, buffer, type, stride, offset );
+  RglVertexArrayNormalOffsetEXT( orig, vaobj, buffer, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6449,11 +6451,11 @@ static void REGAL_CALL Dsa_glVertexArraySecondaryColorOffsetEXT(Layer *_layer, G
   orig.glSecondaryColorPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArraySecondaryColorOffsetEXT( orig.glVertexArraySecondaryColorOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArraySecondaryColorOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6464,11 +6466,11 @@ static void REGAL_CALL Dsa_glVertexArrayTexCoordOffsetEXT(Layer *_layer, GLuint 
   orig.glTexCoordPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayTexCoordOffsetEXT( orig.glVertexArrayTexCoordOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArrayTexCoordOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6479,11 +6481,11 @@ static void REGAL_CALL Dsa_glVertexArrayVertexAttribIOffsetEXT(Layer *_layer, GL
   orig.glVertexAttribIPointer( _context, index, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayVertexAttribIOffsetEXT( orig.glVertexArrayVertexAttribIOffsetEXT_layer, vaobj, buffer, index, size, type, stride, offset );
+  RglVertexArrayVertexAttribIOffsetEXT( orig, vaobj, buffer, index, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLuint index, GLint size, GLenum type, GLboolean normalized, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6494,11 +6496,11 @@ static void REGAL_CALL Dsa_glVertexArrayVertexAttribOffsetEXT(Layer *_layer, GLu
   orig.glVertexAttribPointer( _context, index, size, type, normalized, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayVertexAttribOffsetEXT( orig.glVertexArrayVertexAttribOffsetEXT_layer, vaobj, buffer, index, size, type, normalized, stride, offset );
+  RglVertexArrayVertexAttribOffsetEXT( orig, vaobj, buffer, index, size, type, normalized, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
+static void REGAL_CALL dsa_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint vaobj, GLuint buffer, GLint size, GLenum type, GLsizei stride, const GLintptr offset)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6509,11 +6511,11 @@ static void REGAL_CALL Dsa_glVertexArrayVertexOffsetEXT(Layer *_layer, GLuint va
   orig.glVertexPointer( _context, size, type, stride, reinterpret_cast<const GLvoid *>(offset) );
   return;
 
-  orig.glVertexArrayVertexOffsetEXT( orig.glVertexArrayVertexOffsetEXT_layer, vaobj, buffer, size, type, stride, offset );
+  RglVertexArrayVertexOffsetEXT( orig, vaobj, buffer, size, type, stride, offset );
 
 }
 
-static void REGAL_CALL Dsa_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
+static void REGAL_CALL dsa_glVertexPointer(Layer *_layer, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer)
 {
   Dsa * self = static_cast<Dsa *>(_layer);
 
@@ -6522,469 +6524,469 @@ static void REGAL_CALL Dsa_glVertexPointer(Layer *_layer, GLint size, GLenum typ
   // prefix
   _context->dsa->RestoreBuffer( _context );
 
-  orig.glVertexPointer( orig.glVertexPointer_layer, size, type, stride, pointer );
+  RglVertexPointer( orig, size, type, stride, pointer );
 
 }
 
-void DsaIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture                                  = RDsa_glActiveTexture;
-  dt.glActiveTextureARB                               = RDsa_glActiveTextureARB;
-  dt.glBegin                                          = RDsa_glBegin;
-  dt.glBindBuffer                                     = RDsa_glBindBuffer;
-  dt.glBindBufferARB                                  = RDsa_glBindBufferARB;
-  dt.glBindFramebuffer                                = RDsa_glBindFramebuffer;
-  dt.glBindFramebufferEXT                             = RDsa_glBindFramebufferEXT;
-  dt.glBindMultiTextureEXT                            = RDsa_glBindMultiTextureEXT;
-  dt.glBindProgramARB                                 = RDsa_glBindProgramARB;
-  dt.glBindRenderbuffer                               = RDsa_glBindRenderbuffer;
-  dt.glBindRenderbufferEXT                            = RDsa_glBindRenderbufferEXT;
-  dt.glBindTexture                                    = RDsa_glBindTexture;
-  dt.glBindTextureEXT                                 = RDsa_glBindTextureEXT;
-  dt.glBindVertexArray                                = RDsa_glBindVertexArray;
-  dt.glBufferData                                     = RDsa_glBufferData;
-  dt.glBufferSubData                                  = RDsa_glBufferSubData;
-  dt.glCheckNamedFramebufferStatusEXT                 = RDsa_glCheckNamedFramebufferStatusEXT;
-  dt.glClientActiveTexture                            = RDsa_glClientActiveTexture;
-  dt.glClientActiveTextureARB                         = RDsa_glClientActiveTextureARB;
-  dt.glClientAttribDefaultEXT                         = RDsa_glClientAttribDefaultEXT;
-  dt.glColorPointer                                   = RDsa_glColorPointer;
-  dt.glCompressedMultiTexImage1DEXT                   = RDsa_glCompressedMultiTexImage1DEXT;
-  dt.glCompressedMultiTexImage2DEXT                   = RDsa_glCompressedMultiTexImage2DEXT;
-  dt.glCompressedMultiTexImage3DEXT                   = RDsa_glCompressedMultiTexImage3DEXT;
-  dt.glCompressedMultiTexSubImage1DEXT                = RDsa_glCompressedMultiTexSubImage1DEXT;
-  dt.glCompressedMultiTexSubImage2DEXT                = RDsa_glCompressedMultiTexSubImage2DEXT;
-  dt.glCompressedMultiTexSubImage3DEXT                = RDsa_glCompressedMultiTexSubImage3DEXT;
-  dt.glCompressedTextureImage1DEXT                    = RDsa_glCompressedTextureImage1DEXT;
-  dt.glCompressedTextureImage2DEXT                    = RDsa_glCompressedTextureImage2DEXT;
-  dt.glCompressedTextureImage3DEXT                    = RDsa_glCompressedTextureImage3DEXT;
-  dt.glCompressedTextureSubImage1DEXT                 = RDsa_glCompressedTextureSubImage1DEXT;
-  dt.glCompressedTextureSubImage2DEXT                 = RDsa_glCompressedTextureSubImage2DEXT;
-  dt.glCompressedTextureSubImage3DEXT                 = RDsa_glCompressedTextureSubImage3DEXT;
-  dt.glCopyBufferSubData                              = RDsa_glCopyBufferSubData;
-  dt.glCopyMultiTexImage1DEXT                         = RDsa_glCopyMultiTexImage1DEXT;
-  dt.glCopyMultiTexImage2DEXT                         = RDsa_glCopyMultiTexImage2DEXT;
-  dt.glCopyMultiTexSubImage1DEXT                      = RDsa_glCopyMultiTexSubImage1DEXT;
-  dt.glCopyMultiTexSubImage2DEXT                      = RDsa_glCopyMultiTexSubImage2DEXT;
-  dt.glCopyMultiTexSubImage3DEXT                      = RDsa_glCopyMultiTexSubImage3DEXT;
-  dt.glCopyTextureImage1DEXT                          = RDsa_glCopyTextureImage1DEXT;
-  dt.glCopyTextureImage2DEXT                          = RDsa_glCopyTextureImage2DEXT;
-  dt.glCopyTextureSubImage1DEXT                       = RDsa_glCopyTextureSubImage1DEXT;
-  dt.glCopyTextureSubImage2DEXT                       = RDsa_glCopyTextureSubImage2DEXT;
-  dt.glCopyTextureSubImage3DEXT                       = RDsa_glCopyTextureSubImage3DEXT;
-  dt.glDeleteBuffers                                  = RDsa_glDeleteBuffers;
-  dt.glDeleteBuffersARB                               = RDsa_glDeleteBuffersARB;
-  dt.glDeleteFramebuffers                             = RDsa_glDeleteFramebuffers;
-  dt.glDeleteFramebuffersEXT                          = RDsa_glDeleteFramebuffersEXT;
-  dt.glDeleteFramebuffersOES                          = RDsa_glDeleteFramebuffersOES;
-  dt.glDeleteProgram                                  = RDsa_glDeleteProgram;
-  dt.glDeleteProgramsARB                              = RDsa_glDeleteProgramsARB;
-  dt.glDeleteProgramsNV                               = RDsa_glDeleteProgramsNV;
-  dt.glDeleteRenderbuffers                            = RDsa_glDeleteRenderbuffers;
-  dt.glDeleteRenderbuffersEXT                         = RDsa_glDeleteRenderbuffersEXT;
-  dt.glDeleteRenderbuffersOES                         = RDsa_glDeleteRenderbuffersOES;
-  dt.glDeleteTextures                                 = RDsa_glDeleteTextures;
-  dt.glDeleteTexturesEXT                              = RDsa_glDeleteTexturesEXT;
-  dt.glDeleteVertexArrays                             = RDsa_glDeleteVertexArrays;
-  dt.glDeleteVertexArraysAPPLE                        = RDsa_glDeleteVertexArraysAPPLE;
-  dt.glDeleteVertexArraysOES                          = RDsa_glDeleteVertexArraysOES;
-  dt.glDisable                                        = RDsa_glDisable;
-  dt.glDisableClientState                             = RDsa_glDisableClientState;
-  dt.glDisableClientStateIndexedEXT                   = RDsa_glDisableClientStateIndexedEXT;
-  dt.glDisableClientStateiEXT                         = RDsa_glDisableClientStateiEXT;
-  dt.glDisableIndexedEXT                              = RDsa_glDisableIndexedEXT;
-  dt.glDisableVertexArrayAttribEXT                    = RDsa_glDisableVertexArrayAttribEXT;
-  dt.glDisableVertexArrayEXT                          = RDsa_glDisableVertexArrayEXT;
-  dt.glDrawArrays                                     = RDsa_glDrawArrays;
-  dt.glDrawArraysEXT                                  = RDsa_glDrawArraysEXT;
-  dt.glDrawArraysIndirect                             = RDsa_glDrawArraysIndirect;
-  dt.glDrawArraysInstanced                            = RDsa_glDrawArraysInstanced;
-  dt.glDrawArraysInstancedARB                         = RDsa_glDrawArraysInstancedARB;
-  dt.glDrawArraysInstancedEXT                         = RDsa_glDrawArraysInstancedEXT;
-  dt.glDrawElementArrayAPPLE                          = RDsa_glDrawElementArrayAPPLE;
-  dt.glDrawElementArrayATI                            = RDsa_glDrawElementArrayATI;
-  dt.glDrawElements                                   = RDsa_glDrawElements;
-  dt.glDrawElementsBaseVertex                         = RDsa_glDrawElementsBaseVertex;
-  dt.glDrawElementsIndirect                           = RDsa_glDrawElementsIndirect;
-  dt.glDrawElementsInstanced                          = RDsa_glDrawElementsInstanced;
-  dt.glDrawElementsInstancedARB                       = RDsa_glDrawElementsInstancedARB;
-  dt.glDrawElementsInstancedBaseVertex                = RDsa_glDrawElementsInstancedBaseVertex;
-  dt.glDrawElementsInstancedEXT                       = RDsa_glDrawElementsInstancedEXT;
-  dt.glEnable                                         = RDsa_glEnable;
-  dt.glEnableClientState                              = RDsa_glEnableClientState;
-  dt.glEnableClientStateIndexedEXT                    = RDsa_glEnableClientStateIndexedEXT;
-  dt.glEnableClientStateiEXT                          = RDsa_glEnableClientStateiEXT;
-  dt.glEnableIndexedEXT                               = RDsa_glEnableIndexedEXT;
-  dt.glEnableVertexArrayAttribEXT                     = RDsa_glEnableVertexArrayAttribEXT;
-  dt.glEnableVertexArrayEXT                           = RDsa_glEnableVertexArrayEXT;
-  dt.glFlushMappedBufferRange                         = RDsa_glFlushMappedBufferRange;
-  dt.glFlushMappedBufferRangeEXT                      = RDsa_glFlushMappedBufferRangeEXT;
-  dt.glFlushMappedNamedBufferRangeEXT                 = RDsa_glFlushMappedNamedBufferRangeEXT;
-  dt.glFramebufferDrawBufferEXT                       = RDsa_glFramebufferDrawBufferEXT;
-  dt.glFramebufferDrawBuffersEXT                      = RDsa_glFramebufferDrawBuffersEXT;
-  dt.glFramebufferReadBufferEXT                       = RDsa_glFramebufferReadBufferEXT;
-  dt.glFramebufferRenderbuffer                        = RDsa_glFramebufferRenderbuffer;
-  dt.glFramebufferRenderbufferEXT                     = RDsa_glFramebufferRenderbufferEXT;
-  dt.glFramebufferTexture                             = RDsa_glFramebufferTexture;
-  dt.glFramebufferTexture1D                           = RDsa_glFramebufferTexture1D;
-  dt.glFramebufferTexture1DEXT                        = RDsa_glFramebufferTexture1DEXT;
-  dt.glFramebufferTexture2D                           = RDsa_glFramebufferTexture2D;
-  dt.glFramebufferTexture2DEXT                        = RDsa_glFramebufferTexture2DEXT;
-  dt.glFramebufferTexture3D                           = RDsa_glFramebufferTexture3D;
-  dt.glFramebufferTexture3DEXT                        = RDsa_glFramebufferTexture3DEXT;
-  dt.glFramebufferTextureARB                          = RDsa_glFramebufferTextureARB;
-  dt.glFramebufferTextureEXT                          = RDsa_glFramebufferTextureEXT;
-  dt.glFramebufferTextureFace                         = RDsa_glFramebufferTextureFace;
-  dt.glFramebufferTextureFaceARB                      = RDsa_glFramebufferTextureFaceARB;
-  dt.glFramebufferTextureFaceEXT                      = RDsa_glFramebufferTextureFaceEXT;
-  dt.glFramebufferTextureLayer                        = RDsa_glFramebufferTextureLayer;
-  dt.glFramebufferTextureLayerARB                     = RDsa_glFramebufferTextureLayerARB;
-  dt.glFramebufferTextureLayerEXT                     = RDsa_glFramebufferTextureLayerEXT;
-  dt.glGenerateMipmap                                 = RDsa_glGenerateMipmap;
-  dt.glGenerateMipmapEXT                              = RDsa_glGenerateMipmapEXT;
-  dt.glGenerateMultiTexMipmapEXT                      = RDsa_glGenerateMultiTexMipmapEXT;
-  dt.glGenerateTextureMipmapEXT                       = RDsa_glGenerateTextureMipmapEXT;
-  dt.glGetBooleanv                                    = RDsa_glGetBooleanv;
-  dt.glGetBufferParameteriv                           = RDsa_glGetBufferParameteriv;
-  dt.glGetBufferPointerv                              = RDsa_glGetBufferPointerv;
-  dt.glGetBufferSubData                               = RDsa_glGetBufferSubData;
-  dt.glGetCompressedMultiTexImageEXT                  = RDsa_glGetCompressedMultiTexImageEXT;
-  dt.glGetCompressedTextureImageEXT                   = RDsa_glGetCompressedTextureImageEXT;
-  dt.glGetDoubleIndexedvEXT                           = RDsa_glGetDoubleIndexedvEXT;
-  dt.glGetDoublei_v                                   = RDsa_glGetDoublei_v;
-  dt.glGetDoublei_vEXT                                = RDsa_glGetDoublei_vEXT;
-  dt.glGetDoublev                                     = RDsa_glGetDoublev;
-  dt.glGetFloatIndexedvEXT                            = RDsa_glGetFloatIndexedvEXT;
-  dt.glGetFloati_v                                    = RDsa_glGetFloati_v;
-  dt.glGetFloati_vEXT                                 = RDsa_glGetFloati_vEXT;
-  dt.glGetFloatv                                      = RDsa_glGetFloatv;
-  dt.glGetFramebufferParameterivEXT                   = RDsa_glGetFramebufferParameterivEXT;
-  dt.glGetIntegerv                                    = RDsa_glGetIntegerv;
-  dt.glGetMultiTexEnvfvEXT                            = RDsa_glGetMultiTexEnvfvEXT;
-  dt.glGetMultiTexEnvivEXT                            = RDsa_glGetMultiTexEnvivEXT;
-  dt.glGetMultiTexGendvEXT                            = RDsa_glGetMultiTexGendvEXT;
-  dt.glGetMultiTexGenfvEXT                            = RDsa_glGetMultiTexGenfvEXT;
-  dt.glGetMultiTexGenivEXT                            = RDsa_glGetMultiTexGenivEXT;
-  dt.glGetMultiTexImageEXT                            = RDsa_glGetMultiTexImageEXT;
-  dt.glGetMultiTexLevelParameterfvEXT                 = RDsa_glGetMultiTexLevelParameterfvEXT;
-  dt.glGetMultiTexLevelParameterivEXT                 = RDsa_glGetMultiTexLevelParameterivEXT;
-  dt.glGetMultiTexParameterIivEXT                     = RDsa_glGetMultiTexParameterIivEXT;
-  dt.glGetMultiTexParameterIuivEXT                    = RDsa_glGetMultiTexParameterIuivEXT;
-  dt.glGetMultiTexParameterfvEXT                      = RDsa_glGetMultiTexParameterfvEXT;
-  dt.glGetMultiTexParameterivEXT                      = RDsa_glGetMultiTexParameterivEXT;
-  dt.glGetNamedBufferParameterivEXT                   = RDsa_glGetNamedBufferParameterivEXT;
-  dt.glGetNamedBufferPointervEXT                      = RDsa_glGetNamedBufferPointervEXT;
-  dt.glGetNamedBufferSubDataEXT                       = RDsa_glGetNamedBufferSubDataEXT;
-  dt.glGetNamedFramebufferAttachmentParameterivEXT    = RDsa_glGetNamedFramebufferAttachmentParameterivEXT;
-  dt.glGetNamedProgramLocalParameterIivEXT            = RDsa_glGetNamedProgramLocalParameterIivEXT;
-  dt.glGetNamedProgramLocalParameterIuivEXT           = RDsa_glGetNamedProgramLocalParameterIuivEXT;
-  dt.glGetNamedProgramLocalParameterdvEXT             = RDsa_glGetNamedProgramLocalParameterdvEXT;
-  dt.glGetNamedProgramLocalParameterfvEXT             = RDsa_glGetNamedProgramLocalParameterfvEXT;
-  dt.glGetNamedProgramStringEXT                       = RDsa_glGetNamedProgramStringEXT;
-  dt.glGetNamedProgramivEXT                           = RDsa_glGetNamedProgramivEXT;
-  dt.glGetNamedRenderbufferParameterivEXT             = RDsa_glGetNamedRenderbufferParameterivEXT;
-  dt.glGetPointerIndexedvEXT                          = RDsa_glGetPointerIndexedvEXT;
-  dt.glGetProgramEnvParameterIivNV                    = RDsa_glGetProgramEnvParameterIivNV;
-  dt.glGetProgramEnvParameterIuivNV                   = RDsa_glGetProgramEnvParameterIuivNV;
-  dt.glGetProgramEnvParameterdvARB                    = RDsa_glGetProgramEnvParameterdvARB;
-  dt.glGetProgramEnvParameterfvARB                    = RDsa_glGetProgramEnvParameterfvARB;
-  dt.glGetProgramLocalParameterIivNV                  = RDsa_glGetProgramLocalParameterIivNV;
-  dt.glGetProgramLocalParameterIuivNV                 = RDsa_glGetProgramLocalParameterIuivNV;
-  dt.glGetProgramLocalParameterdvARB                  = RDsa_glGetProgramLocalParameterdvARB;
-  dt.glGetProgramLocalParameterfvARB                  = RDsa_glGetProgramLocalParameterfvARB;
-  dt.glGetRenderbufferParameteriv                     = RDsa_glGetRenderbufferParameteriv;
-  dt.glGetRenderbufferParameterivEXT                  = RDsa_glGetRenderbufferParameterivEXT;
-  dt.glGetTexEnvfv                                    = RDsa_glGetTexEnvfv;
-  dt.glGetTexEnviv                                    = RDsa_glGetTexEnviv;
-  dt.glGetTexParameterfv                              = RDsa_glGetTexParameterfv;
-  dt.glGetTexParameteriv                              = RDsa_glGetTexParameteriv;
-  dt.glGetTextureImageEXT                             = RDsa_glGetTextureImageEXT;
-  dt.glGetTextureLevelParameterfvEXT                  = RDsa_glGetTextureLevelParameterfvEXT;
-  dt.glGetTextureLevelParameterivEXT                  = RDsa_glGetTextureLevelParameterivEXT;
-  dt.glGetTextureParameterIivEXT                      = RDsa_glGetTextureParameterIivEXT;
-  dt.glGetTextureParameterIuivEXT                     = RDsa_glGetTextureParameterIuivEXT;
-  dt.glGetTextureParameterfvEXT                       = RDsa_glGetTextureParameterfvEXT;
-  dt.glGetTextureParameterivEXT                       = RDsa_glGetTextureParameterivEXT;
-  dt.glIsEnabled                                      = RDsa_glIsEnabled;
-  dt.glIsEnabledIndexedEXT                            = RDsa_glIsEnabledIndexedEXT;
-  dt.glLoadIdentity                                   = RDsa_glLoadIdentity;
-  dt.glLoadMatrixd                                    = RDsa_glLoadMatrixd;
-  dt.glLoadMatrixf                                    = RDsa_glLoadMatrixf;
-  dt.glLoadTransposeMatrixd                           = RDsa_glLoadTransposeMatrixd;
-  dt.glLoadTransposeMatrixf                           = RDsa_glLoadTransposeMatrixf;
-  dt.glMapBuffer                                      = RDsa_glMapBuffer;
-  dt.glMapBufferARB                                   = RDsa_glMapBufferARB;
-  dt.glMapBufferRange                                 = RDsa_glMapBufferRange;
-  dt.glMapBufferRangeEXT                              = RDsa_glMapBufferRangeEXT;
-  dt.glMapNamedBufferEXT                              = RDsa_glMapNamedBufferEXT;
-  dt.glMapNamedBufferRangeEXT                         = RDsa_glMapNamedBufferRangeEXT;
-  dt.glMatrixFrustumEXT                               = RDsa_glMatrixFrustumEXT;
-  dt.glMatrixLoadIdentityEXT                          = RDsa_glMatrixLoadIdentityEXT;
-  dt.glMatrixLoadTransposedEXT                        = RDsa_glMatrixLoadTransposedEXT;
-  dt.glMatrixLoadTransposefEXT                        = RDsa_glMatrixLoadTransposefEXT;
-  dt.glMatrixLoaddEXT                                 = RDsa_glMatrixLoaddEXT;
-  dt.glMatrixLoadfEXT                                 = RDsa_glMatrixLoadfEXT;
-  dt.glMatrixMode                                     = RDsa_glMatrixMode;
-  dt.glMatrixMultTransposedEXT                        = RDsa_glMatrixMultTransposedEXT;
-  dt.glMatrixMultTransposefEXT                        = RDsa_glMatrixMultTransposefEXT;
-  dt.glMatrixMultdEXT                                 = RDsa_glMatrixMultdEXT;
-  dt.glMatrixMultfEXT                                 = RDsa_glMatrixMultfEXT;
-  dt.glMatrixOrthoEXT                                 = RDsa_glMatrixOrthoEXT;
-  dt.glMatrixPopEXT                                   = RDsa_glMatrixPopEXT;
-  dt.glMatrixPushEXT                                  = RDsa_glMatrixPushEXT;
-  dt.glMatrixRotatedEXT                               = RDsa_glMatrixRotatedEXT;
-  dt.glMatrixRotatefEXT                               = RDsa_glMatrixRotatefEXT;
-  dt.glMatrixScaledEXT                                = RDsa_glMatrixScaledEXT;
-  dt.glMatrixScalefEXT                                = RDsa_glMatrixScalefEXT;
-  dt.glMatrixTranslatedEXT                            = RDsa_glMatrixTranslatedEXT;
-  dt.glMatrixTranslatefEXT                            = RDsa_glMatrixTranslatefEXT;
-  dt.glMultMatrixd                                    = RDsa_glMultMatrixd;
-  dt.glMultMatrixf                                    = RDsa_glMultMatrixf;
-  dt.glMultTransposeMatrixd                           = RDsa_glMultTransposeMatrixd;
-  dt.glMultTransposeMatrixf                           = RDsa_glMultTransposeMatrixf;
-  dt.glMultiDrawArrays                                = RDsa_glMultiDrawArrays;
-  dt.glMultiDrawArraysEXT                             = RDsa_glMultiDrawArraysEXT;
-  dt.glMultiDrawArraysIndirect                        = RDsa_glMultiDrawArraysIndirect;
-  dt.glMultiDrawArraysIndirectAMD                     = RDsa_glMultiDrawArraysIndirectAMD;
-  dt.glMultiDrawElementArrayAPPLE                     = RDsa_glMultiDrawElementArrayAPPLE;
-  dt.glMultiDrawElements                              = RDsa_glMultiDrawElements;
-  dt.glMultiDrawElementsBaseVertex                    = RDsa_glMultiDrawElementsBaseVertex;
-  dt.glMultiDrawElementsEXT                           = RDsa_glMultiDrawElementsEXT;
-  dt.glMultiDrawElementsIndirect                      = RDsa_glMultiDrawElementsIndirect;
-  dt.glMultiDrawElementsIndirectAMD                   = RDsa_glMultiDrawElementsIndirectAMD;
-  dt.glMultiTexBufferEXT                              = RDsa_glMultiTexBufferEXT;
-  dt.glMultiTexCoordPointerEXT                        = RDsa_glMultiTexCoordPointerEXT;
-  dt.glMultiTexEnvfEXT                                = RDsa_glMultiTexEnvfEXT;
-  dt.glMultiTexEnvfvEXT                               = RDsa_glMultiTexEnvfvEXT;
-  dt.glMultiTexEnviEXT                                = RDsa_glMultiTexEnviEXT;
-  dt.glMultiTexEnvivEXT                               = RDsa_glMultiTexEnvivEXT;
-  dt.glMultiTexGendEXT                                = RDsa_glMultiTexGendEXT;
-  dt.glMultiTexGendvEXT                               = RDsa_glMultiTexGendvEXT;
-  dt.glMultiTexGenfEXT                                = RDsa_glMultiTexGenfEXT;
-  dt.glMultiTexGenfvEXT                               = RDsa_glMultiTexGenfvEXT;
-  dt.glMultiTexGeniEXT                                = RDsa_glMultiTexGeniEXT;
-  dt.glMultiTexGenivEXT                               = RDsa_glMultiTexGenivEXT;
-  dt.glMultiTexImage1DEXT                             = RDsa_glMultiTexImage1DEXT;
-  dt.glMultiTexImage2DEXT                             = RDsa_glMultiTexImage2DEXT;
-  dt.glMultiTexImage3DEXT                             = RDsa_glMultiTexImage3DEXT;
-  dt.glMultiTexParameterIivEXT                        = RDsa_glMultiTexParameterIivEXT;
-  dt.glMultiTexParameterIuivEXT                       = RDsa_glMultiTexParameterIuivEXT;
-  dt.glMultiTexParameterfEXT                          = RDsa_glMultiTexParameterfEXT;
-  dt.glMultiTexParameterfvEXT                         = RDsa_glMultiTexParameterfvEXT;
-  dt.glMultiTexParameteriEXT                          = RDsa_glMultiTexParameteriEXT;
-  dt.glMultiTexParameterivEXT                         = RDsa_glMultiTexParameterivEXT;
-  dt.glMultiTexRenderbufferEXT                        = RDsa_glMultiTexRenderbufferEXT;
-  dt.glMultiTexSubImage1DEXT                          = RDsa_glMultiTexSubImage1DEXT;
-  dt.glMultiTexSubImage2DEXT                          = RDsa_glMultiTexSubImage2DEXT;
-  dt.glMultiTexSubImage3DEXT                          = RDsa_glMultiTexSubImage3DEXT;
-  dt.glNamedBufferDataEXT                             = RDsa_glNamedBufferDataEXT;
-  dt.glNamedBufferSubDataEXT                          = RDsa_glNamedBufferSubDataEXT;
-  dt.glNamedCopyBufferSubDataEXT                      = RDsa_glNamedCopyBufferSubDataEXT;
-  dt.glNamedFramebufferRenderbufferEXT                = RDsa_glNamedFramebufferRenderbufferEXT;
-  dt.glNamedFramebufferTexture1DEXT                   = RDsa_glNamedFramebufferTexture1DEXT;
-  dt.glNamedFramebufferTexture2DEXT                   = RDsa_glNamedFramebufferTexture2DEXT;
-  dt.glNamedFramebufferTexture3DEXT                   = RDsa_glNamedFramebufferTexture3DEXT;
-  dt.glNamedFramebufferTextureEXT                     = RDsa_glNamedFramebufferTextureEXT;
-  dt.glNamedFramebufferTextureFaceEXT                 = RDsa_glNamedFramebufferTextureFaceEXT;
-  dt.glNamedFramebufferTextureLayerEXT                = RDsa_glNamedFramebufferTextureLayerEXT;
-  dt.glNamedProgramLocalParameter4dEXT                = RDsa_glNamedProgramLocalParameter4dEXT;
-  dt.glNamedProgramLocalParameter4dvEXT               = RDsa_glNamedProgramLocalParameter4dvEXT;
-  dt.glNamedProgramLocalParameter4fEXT                = RDsa_glNamedProgramLocalParameter4fEXT;
-  dt.glNamedProgramLocalParameter4fvEXT               = RDsa_glNamedProgramLocalParameter4fvEXT;
-  dt.glNamedProgramLocalParameterI4iEXT               = RDsa_glNamedProgramLocalParameterI4iEXT;
-  dt.glNamedProgramLocalParameterI4ivEXT              = RDsa_glNamedProgramLocalParameterI4ivEXT;
-  dt.glNamedProgramLocalParameterI4uiEXT              = RDsa_glNamedProgramLocalParameterI4uiEXT;
-  dt.glNamedProgramLocalParameterI4uivEXT             = RDsa_glNamedProgramLocalParameterI4uivEXT;
-  dt.glNamedProgramLocalParameters4fvEXT              = RDsa_glNamedProgramLocalParameters4fvEXT;
-  dt.glNamedProgramLocalParametersI4ivEXT             = RDsa_glNamedProgramLocalParametersI4ivEXT;
-  dt.glNamedProgramLocalParametersI4uivEXT            = RDsa_glNamedProgramLocalParametersI4uivEXT;
-  dt.glNamedProgramStringEXT                          = RDsa_glNamedProgramStringEXT;
-  dt.glNamedRenderbufferStorageEXT                    = RDsa_glNamedRenderbufferStorageEXT;
-  dt.glNamedRenderbufferStorageMultisampleCoverageEXT = RDsa_glNamedRenderbufferStorageMultisampleCoverageEXT;
-  dt.glNamedRenderbufferStorageMultisampleEXT         = RDsa_glNamedRenderbufferStorageMultisampleEXT;
-  dt.glNormalPointer                                  = RDsa_glNormalPointer;
-  dt.glPopMatrix                                      = RDsa_glPopMatrix;
-  dt.glProgramEnvParameter4dARB                       = RDsa_glProgramEnvParameter4dARB;
-  dt.glProgramEnvParameter4dvARB                      = RDsa_glProgramEnvParameter4dvARB;
-  dt.glProgramEnvParameter4fARB                       = RDsa_glProgramEnvParameter4fARB;
-  dt.glProgramEnvParameter4fvARB                      = RDsa_glProgramEnvParameter4fvARB;
-  dt.glProgramEnvParameterI4iNV                       = RDsa_glProgramEnvParameterI4iNV;
-  dt.glProgramEnvParameterI4ivNV                      = RDsa_glProgramEnvParameterI4ivNV;
-  dt.glProgramEnvParameterI4uiNV                      = RDsa_glProgramEnvParameterI4uiNV;
-  dt.glProgramEnvParameterI4uivNV                     = RDsa_glProgramEnvParameterI4uivNV;
-  dt.glProgramEnvParametersI4ivNV                     = RDsa_glProgramEnvParametersI4ivNV;
-  dt.glProgramEnvParametersI4uivNV                    = RDsa_glProgramEnvParametersI4uivNV;
-  dt.glProgramLocalParameter4dARB                     = RDsa_glProgramLocalParameter4dARB;
-  dt.glProgramLocalParameter4dvARB                    = RDsa_glProgramLocalParameter4dvARB;
-  dt.glProgramLocalParameter4fARB                     = RDsa_glProgramLocalParameter4fARB;
-  dt.glProgramLocalParameter4fvARB                    = RDsa_glProgramLocalParameter4fvARB;
-  dt.glProgramLocalParameterI4iNV                     = RDsa_glProgramLocalParameterI4iNV;
-  dt.glProgramLocalParameterI4ivNV                    = RDsa_glProgramLocalParameterI4ivNV;
-  dt.glProgramLocalParameterI4uiNV                    = RDsa_glProgramLocalParameterI4uiNV;
-  dt.glProgramLocalParameterI4uivNV                   = RDsa_glProgramLocalParameterI4uivNV;
-  dt.glProgramLocalParametersI4ivNV                   = RDsa_glProgramLocalParametersI4ivNV;
-  dt.glProgramLocalParametersI4uivNV                  = RDsa_glProgramLocalParametersI4uivNV;
-  dt.glProgramUniform1dEXT                            = RDsa_glProgramUniform1dEXT;
-  dt.glProgramUniform1dvEXT                           = RDsa_glProgramUniform1dvEXT;
-  dt.glProgramUniform1fEXT                            = RDsa_glProgramUniform1fEXT;
-  dt.glProgramUniform1fvEXT                           = RDsa_glProgramUniform1fvEXT;
-  dt.glProgramUniform1iEXT                            = RDsa_glProgramUniform1iEXT;
-  dt.glProgramUniform1ivEXT                           = RDsa_glProgramUniform1ivEXT;
-  dt.glProgramUniform1uiEXT                           = RDsa_glProgramUniform1uiEXT;
-  dt.glProgramUniform1uivEXT                          = RDsa_glProgramUniform1uivEXT;
-  dt.glProgramUniform2dEXT                            = RDsa_glProgramUniform2dEXT;
-  dt.glProgramUniform2dvEXT                           = RDsa_glProgramUniform2dvEXT;
-  dt.glProgramUniform2fEXT                            = RDsa_glProgramUniform2fEXT;
-  dt.glProgramUniform2fvEXT                           = RDsa_glProgramUniform2fvEXT;
-  dt.glProgramUniform2iEXT                            = RDsa_glProgramUniform2iEXT;
-  dt.glProgramUniform2ivEXT                           = RDsa_glProgramUniform2ivEXT;
-  dt.glProgramUniform2uiEXT                           = RDsa_glProgramUniform2uiEXT;
-  dt.glProgramUniform2uivEXT                          = RDsa_glProgramUniform2uivEXT;
-  dt.glProgramUniform3dEXT                            = RDsa_glProgramUniform3dEXT;
-  dt.glProgramUniform3dvEXT                           = RDsa_glProgramUniform3dvEXT;
-  dt.glProgramUniform3fEXT                            = RDsa_glProgramUniform3fEXT;
-  dt.glProgramUniform3fvEXT                           = RDsa_glProgramUniform3fvEXT;
-  dt.glProgramUniform3iEXT                            = RDsa_glProgramUniform3iEXT;
-  dt.glProgramUniform3ivEXT                           = RDsa_glProgramUniform3ivEXT;
-  dt.glProgramUniform3uiEXT                           = RDsa_glProgramUniform3uiEXT;
-  dt.glProgramUniform3uivEXT                          = RDsa_glProgramUniform3uivEXT;
-  dt.glProgramUniform4dEXT                            = RDsa_glProgramUniform4dEXT;
-  dt.glProgramUniform4dvEXT                           = RDsa_glProgramUniform4dvEXT;
-  dt.glProgramUniform4fEXT                            = RDsa_glProgramUniform4fEXT;
-  dt.glProgramUniform4fvEXT                           = RDsa_glProgramUniform4fvEXT;
-  dt.glProgramUniform4iEXT                            = RDsa_glProgramUniform4iEXT;
-  dt.glProgramUniform4ivEXT                           = RDsa_glProgramUniform4ivEXT;
-  dt.glProgramUniform4uiEXT                           = RDsa_glProgramUniform4uiEXT;
-  dt.glProgramUniform4uivEXT                          = RDsa_glProgramUniform4uivEXT;
-  dt.glProgramUniformMatrix2dvEXT                     = RDsa_glProgramUniformMatrix2dvEXT;
-  dt.glProgramUniformMatrix2fvEXT                     = RDsa_glProgramUniformMatrix2fvEXT;
-  dt.glProgramUniformMatrix2x3dvEXT                   = RDsa_glProgramUniformMatrix2x3dvEXT;
-  dt.glProgramUniformMatrix2x3fvEXT                   = RDsa_glProgramUniformMatrix2x3fvEXT;
-  dt.glProgramUniformMatrix2x4dvEXT                   = RDsa_glProgramUniformMatrix2x4dvEXT;
-  dt.glProgramUniformMatrix2x4fvEXT                   = RDsa_glProgramUniformMatrix2x4fvEXT;
-  dt.glProgramUniformMatrix3dvEXT                     = RDsa_glProgramUniformMatrix3dvEXT;
-  dt.glProgramUniformMatrix3fvEXT                     = RDsa_glProgramUniformMatrix3fvEXT;
-  dt.glProgramUniformMatrix3x2dvEXT                   = RDsa_glProgramUniformMatrix3x2dvEXT;
-  dt.glProgramUniformMatrix3x2fvEXT                   = RDsa_glProgramUniformMatrix3x2fvEXT;
-  dt.glProgramUniformMatrix3x4dvEXT                   = RDsa_glProgramUniformMatrix3x4dvEXT;
-  dt.glProgramUniformMatrix3x4fvEXT                   = RDsa_glProgramUniformMatrix3x4fvEXT;
-  dt.glProgramUniformMatrix4dvEXT                     = RDsa_glProgramUniformMatrix4dvEXT;
-  dt.glProgramUniformMatrix4fvEXT                     = RDsa_glProgramUniformMatrix4fvEXT;
-  dt.glProgramUniformMatrix4x2dvEXT                   = RDsa_glProgramUniformMatrix4x2dvEXT;
-  dt.glProgramUniformMatrix4x2fvEXT                   = RDsa_glProgramUniformMatrix4x2fvEXT;
-  dt.glProgramUniformMatrix4x3dvEXT                   = RDsa_glProgramUniformMatrix4x3dvEXT;
-  dt.glProgramUniformMatrix4x3fvEXT                   = RDsa_glProgramUniformMatrix4x3fvEXT;
-  dt.glPushClientAttribDefaultEXT                     = RDsa_glPushClientAttribDefaultEXT;
-  dt.glPushMatrix                                     = RDsa_glPushMatrix;
-  dt.glRenderbufferStorage                            = RDsa_glRenderbufferStorage;
-  dt.glRenderbufferStorageEXT                         = RDsa_glRenderbufferStorageEXT;
-  dt.glRenderbufferStorageMultisample                 = RDsa_glRenderbufferStorageMultisample;
-  dt.glRenderbufferStorageMultisampleCoverageNV       = RDsa_glRenderbufferStorageMultisampleCoverageNV;
-  dt.glRenderbufferStorageMultisampleEXT              = RDsa_glRenderbufferStorageMultisampleEXT;
-  dt.glRotated                                        = RDsa_glRotated;
-  dt.glRotatef                                        = RDsa_glRotatef;
-  dt.glScaled                                         = RDsa_glScaled;
-  dt.glScalef                                         = RDsa_glScalef;
-  dt.glSecondaryColorPointer                          = RDsa_glSecondaryColorPointer;
-  dt.glTexBuffer                                      = RDsa_glTexBuffer;
-  dt.glTexCoordPointer                                = RDsa_glTexCoordPointer;
-  dt.glTexEnvf                                        = RDsa_glTexEnvf;
-  dt.glTexEnvfv                                       = RDsa_glTexEnvfv;
-  dt.glTexEnvi                                        = RDsa_glTexEnvi;
-  dt.glTexEnviv                                       = RDsa_glTexEnviv;
-  dt.glTexGenf                                        = RDsa_glTexGenf;
-  dt.glTexGenfv                                       = RDsa_glTexGenfv;
-  dt.glTexGeni                                        = RDsa_glTexGeni;
-  dt.glTexGeniv                                       = RDsa_glTexGeniv;
-  dt.glTexParameterf                                  = RDsa_glTexParameterf;
-  dt.glTexParameterfv                                 = RDsa_glTexParameterfv;
-  dt.glTexParameteri                                  = RDsa_glTexParameteri;
-  dt.glTexParameteriv                                 = RDsa_glTexParameteriv;
-  dt.glTexRenderbufferNV                              = RDsa_glTexRenderbufferNV;
-  dt.glTextureBufferEXT                               = RDsa_glTextureBufferEXT;
-  dt.glTextureImage1DEXT                              = RDsa_glTextureImage1DEXT;
-  dt.glTextureImage2DEXT                              = RDsa_glTextureImage2DEXT;
-  dt.glTextureImage3DEXT                              = RDsa_glTextureImage3DEXT;
-  dt.glTextureParameterIivEXT                         = RDsa_glTextureParameterIivEXT;
-  dt.glTextureParameterIuivEXT                        = RDsa_glTextureParameterIuivEXT;
-  dt.glTextureParameterfEXT                           = RDsa_glTextureParameterfEXT;
-  dt.glTextureParameterfvEXT                          = RDsa_glTextureParameterfvEXT;
-  dt.glTextureParameteriEXT                           = RDsa_glTextureParameteriEXT;
-  dt.glTextureParameterivEXT                          = RDsa_glTextureParameterivEXT;
-  dt.glTextureRenderbufferEXT                         = RDsa_glTextureRenderbufferEXT;
-  dt.glTextureStorage1DEXT                            = RDsa_glTextureStorage1DEXT;
-  dt.glTextureStorage2DEXT                            = RDsa_glTextureStorage2DEXT;
-  dt.glTextureStorage3DEXT                            = RDsa_glTextureStorage3DEXT;
-  dt.glTextureSubImage1DEXT                           = RDsa_glTextureSubImage1DEXT;
-  dt.glTextureSubImage2DEXT                           = RDsa_glTextureSubImage2DEXT;
-  dt.glTextureSubImage3DEXT                           = RDsa_glTextureSubImage3DEXT;
-  dt.glTranslated                                     = RDsa_glTranslated;
-  dt.glTranslatef                                     = RDsa_glTranslatef;
-  dt.glUniform1d                                      = RDsa_glUniform1d;
-  dt.glUniform1dv                                     = RDsa_glUniform1dv;
-  dt.glUniform1f                                      = RDsa_glUniform1f;
-  dt.glUniform1fv                                     = RDsa_glUniform1fv;
-  dt.glUniform1i                                      = RDsa_glUniform1i;
-  dt.glUniform1iv                                     = RDsa_glUniform1iv;
-  dt.glUniform1ui                                     = RDsa_glUniform1ui;
-  dt.glUniform1uiv                                    = RDsa_glUniform1uiv;
-  dt.glUniform2d                                      = RDsa_glUniform2d;
-  dt.glUniform2dv                                     = RDsa_glUniform2dv;
-  dt.glUniform2f                                      = RDsa_glUniform2f;
-  dt.glUniform2fv                                     = RDsa_glUniform2fv;
-  dt.glUniform2i                                      = RDsa_glUniform2i;
-  dt.glUniform2iv                                     = RDsa_glUniform2iv;
-  dt.glUniform2ui                                     = RDsa_glUniform2ui;
-  dt.glUniform2uiv                                    = RDsa_glUniform2uiv;
-  dt.glUniform3d                                      = RDsa_glUniform3d;
-  dt.glUniform3dv                                     = RDsa_glUniform3dv;
-  dt.glUniform3f                                      = RDsa_glUniform3f;
-  dt.glUniform3fv                                     = RDsa_glUniform3fv;
-  dt.glUniform3i                                      = RDsa_glUniform3i;
-  dt.glUniform3iv                                     = RDsa_glUniform3iv;
-  dt.glUniform3ui                                     = RDsa_glUniform3ui;
-  dt.glUniform3uiv                                    = RDsa_glUniform3uiv;
-  dt.glUniform4d                                      = RDsa_glUniform4d;
-  dt.glUniform4dv                                     = RDsa_glUniform4dv;
-  dt.glUniform4f                                      = RDsa_glUniform4f;
-  dt.glUniform4fv                                     = RDsa_glUniform4fv;
-  dt.glUniform4i                                      = RDsa_glUniform4i;
-  dt.glUniform4iv                                     = RDsa_glUniform4iv;
-  dt.glUniform4ui                                     = RDsa_glUniform4ui;
-  dt.glUniform4uiv                                    = RDsa_glUniform4uiv;
-  dt.glUniformMatrix2dv                               = RDsa_glUniformMatrix2dv;
-  dt.glUniformMatrix2fv                               = RDsa_glUniformMatrix2fv;
-  dt.glUniformMatrix2x3dv                             = RDsa_glUniformMatrix2x3dv;
-  dt.glUniformMatrix2x3fv                             = RDsa_glUniformMatrix2x3fv;
-  dt.glUniformMatrix2x4dv                             = RDsa_glUniformMatrix2x4dv;
-  dt.glUniformMatrix2x4fv                             = RDsa_glUniformMatrix2x4fv;
-  dt.glUniformMatrix3dv                               = RDsa_glUniformMatrix3dv;
-  dt.glUniformMatrix3fv                               = RDsa_glUniformMatrix3fv;
-  dt.glUniformMatrix3x2dv                             = RDsa_glUniformMatrix3x2dv;
-  dt.glUniformMatrix3x2fv                             = RDsa_glUniformMatrix3x2fv;
-  dt.glUniformMatrix3x4dv                             = RDsa_glUniformMatrix3x4dv;
-  dt.glUniformMatrix3x4fv                             = RDsa_glUniformMatrix3x4fv;
-  dt.glUniformMatrix4dv                               = RDsa_glUniformMatrix4dv;
-  dt.glUniformMatrix4fv                               = RDsa_glUniformMatrix4fv;
-  dt.glUniformMatrix4x2dv                             = RDsa_glUniformMatrix4x2dv;
-  dt.glUniformMatrix4x2fv                             = RDsa_glUniformMatrix4x2fv;
-  dt.glUniformMatrix4x3dv                             = RDsa_glUniformMatrix4x3dv;
-  dt.glUniformMatrix4x3fv                             = RDsa_glUniformMatrix4x3fv;
-  dt.glUnmapBuffer                                    = RDsa_glUnmapBuffer;
-  dt.glUnmapBufferARB                                 = RDsa_glUnmapBufferARB;
-  dt.glUnmapNamedBufferEXT                            = RDsa_glUnmapNamedBufferEXT;
-  dt.glUseProgram                                     = RDsa_glUseProgram;
-  dt.glVertexArrayColorOffsetEXT                      = RDsa_glVertexArrayColorOffsetEXT;
-  dt.glVertexArrayEdgeFlagOffsetEXT                   = RDsa_glVertexArrayEdgeFlagOffsetEXT;
-  dt.glVertexArrayFogCoordOffsetEXT                   = RDsa_glVertexArrayFogCoordOffsetEXT;
-  dt.glVertexArrayIndexOffsetEXT                      = RDsa_glVertexArrayIndexOffsetEXT;
-  dt.glVertexArrayMultiTexCoordOffsetEXT              = RDsa_glVertexArrayMultiTexCoordOffsetEXT;
-  dt.glVertexArrayNormalOffsetEXT                     = RDsa_glVertexArrayNormalOffsetEXT;
-  dt.glVertexArraySecondaryColorOffsetEXT             = RDsa_glVertexArraySecondaryColorOffsetEXT;
-  dt.glVertexArrayTexCoordOffsetEXT                   = RDsa_glVertexArrayTexCoordOffsetEXT;
-  dt.glVertexArrayVertexAttribIOffsetEXT              = RDsa_glVertexArrayVertexAttribIOffsetEXT;
-  dt.glVertexArrayVertexAttribOffsetEXT               = RDsa_glVertexArrayVertexAttribOffsetEXT;
-  dt.glVertexArrayVertexOffsetEXT                     = RDsa_glVertexArrayVertexOffsetEXT;
-  dt.glVertexPointer                                  = RDsa_glVertexPointer;
+void DsaIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glActiveTexture                                  = MakeRegalProc(dsa_glActiveTexture, layer);
+  dt.glActiveTextureARB                               = MakeRegalProc(dsa_glActiveTextureARB, layer);
+  dt.glBegin                                          = MakeRegalProc(dsa_glBegin, layer);
+  dt.glBindBuffer                                     = MakeRegalProc(dsa_glBindBuffer, layer);
+  dt.glBindBufferARB                                  = MakeRegalProc(dsa_glBindBufferARB, layer);
+  dt.glBindFramebuffer                                = MakeRegalProc(dsa_glBindFramebuffer, layer);
+  dt.glBindFramebufferEXT                             = MakeRegalProc(dsa_glBindFramebufferEXT, layer);
+  dt.glBindMultiTextureEXT                            = MakeRegalProc(dsa_glBindMultiTextureEXT, layer);
+  dt.glBindProgramARB                                 = MakeRegalProc(dsa_glBindProgramARB, layer);
+  dt.glBindRenderbuffer                               = MakeRegalProc(dsa_glBindRenderbuffer, layer);
+  dt.glBindRenderbufferEXT                            = MakeRegalProc(dsa_glBindRenderbufferEXT, layer);
+  dt.glBindTexture                                    = MakeRegalProc(dsa_glBindTexture, layer);
+  dt.glBindTextureEXT                                 = MakeRegalProc(dsa_glBindTextureEXT, layer);
+  dt.glBindVertexArray                                = MakeRegalProc(dsa_glBindVertexArray, layer);
+  dt.glBufferData                                     = MakeRegalProc(dsa_glBufferData, layer);
+  dt.glBufferSubData                                  = MakeRegalProc(dsa_glBufferSubData, layer);
+  dt.glCheckNamedFramebufferStatusEXT                 = MakeRegalProc(dsa_glCheckNamedFramebufferStatusEXT, layer);
+  dt.glClientActiveTexture                            = MakeRegalProc(dsa_glClientActiveTexture, layer);
+  dt.glClientActiveTextureARB                         = MakeRegalProc(dsa_glClientActiveTextureARB, layer);
+  dt.glClientAttribDefaultEXT                         = MakeRegalProc(dsa_glClientAttribDefaultEXT, layer);
+  dt.glColorPointer                                   = MakeRegalProc(dsa_glColorPointer, layer);
+  dt.glCompressedMultiTexImage1DEXT                   = MakeRegalProc(dsa_glCompressedMultiTexImage1DEXT, layer);
+  dt.glCompressedMultiTexImage2DEXT                   = MakeRegalProc(dsa_glCompressedMultiTexImage2DEXT, layer);
+  dt.glCompressedMultiTexImage3DEXT                   = MakeRegalProc(dsa_glCompressedMultiTexImage3DEXT, layer);
+  dt.glCompressedMultiTexSubImage1DEXT                = MakeRegalProc(dsa_glCompressedMultiTexSubImage1DEXT, layer);
+  dt.glCompressedMultiTexSubImage2DEXT                = MakeRegalProc(dsa_glCompressedMultiTexSubImage2DEXT, layer);
+  dt.glCompressedMultiTexSubImage3DEXT                = MakeRegalProc(dsa_glCompressedMultiTexSubImage3DEXT, layer);
+  dt.glCompressedTextureImage1DEXT                    = MakeRegalProc(dsa_glCompressedTextureImage1DEXT, layer);
+  dt.glCompressedTextureImage2DEXT                    = MakeRegalProc(dsa_glCompressedTextureImage2DEXT, layer);
+  dt.glCompressedTextureImage3DEXT                    = MakeRegalProc(dsa_glCompressedTextureImage3DEXT, layer);
+  dt.glCompressedTextureSubImage1DEXT                 = MakeRegalProc(dsa_glCompressedTextureSubImage1DEXT, layer);
+  dt.glCompressedTextureSubImage2DEXT                 = MakeRegalProc(dsa_glCompressedTextureSubImage2DEXT, layer);
+  dt.glCompressedTextureSubImage3DEXT                 = MakeRegalProc(dsa_glCompressedTextureSubImage3DEXT, layer);
+  dt.glCopyBufferSubData                              = MakeRegalProc(dsa_glCopyBufferSubData, layer);
+  dt.glCopyMultiTexImage1DEXT                         = MakeRegalProc(dsa_glCopyMultiTexImage1DEXT, layer);
+  dt.glCopyMultiTexImage2DEXT                         = MakeRegalProc(dsa_glCopyMultiTexImage2DEXT, layer);
+  dt.glCopyMultiTexSubImage1DEXT                      = MakeRegalProc(dsa_glCopyMultiTexSubImage1DEXT, layer);
+  dt.glCopyMultiTexSubImage2DEXT                      = MakeRegalProc(dsa_glCopyMultiTexSubImage2DEXT, layer);
+  dt.glCopyMultiTexSubImage3DEXT                      = MakeRegalProc(dsa_glCopyMultiTexSubImage3DEXT, layer);
+  dt.glCopyTextureImage1DEXT                          = MakeRegalProc(dsa_glCopyTextureImage1DEXT, layer);
+  dt.glCopyTextureImage2DEXT                          = MakeRegalProc(dsa_glCopyTextureImage2DEXT, layer);
+  dt.glCopyTextureSubImage1DEXT                       = MakeRegalProc(dsa_glCopyTextureSubImage1DEXT, layer);
+  dt.glCopyTextureSubImage2DEXT                       = MakeRegalProc(dsa_glCopyTextureSubImage2DEXT, layer);
+  dt.glCopyTextureSubImage3DEXT                       = MakeRegalProc(dsa_glCopyTextureSubImage3DEXT, layer);
+  dt.glDeleteBuffers                                  = MakeRegalProc(dsa_glDeleteBuffers, layer);
+  dt.glDeleteBuffersARB                               = MakeRegalProc(dsa_glDeleteBuffersARB, layer);
+  dt.glDeleteFramebuffers                             = MakeRegalProc(dsa_glDeleteFramebuffers, layer);
+  dt.glDeleteFramebuffersEXT                          = MakeRegalProc(dsa_glDeleteFramebuffersEXT, layer);
+  dt.glDeleteFramebuffersOES                          = MakeRegalProc(dsa_glDeleteFramebuffersOES, layer);
+  dt.glDeleteProgram                                  = MakeRegalProc(dsa_glDeleteProgram, layer);
+  dt.glDeleteProgramsARB                              = MakeRegalProc(dsa_glDeleteProgramsARB, layer);
+  dt.glDeleteProgramsNV                               = MakeRegalProc(dsa_glDeleteProgramsNV, layer);
+  dt.glDeleteRenderbuffers                            = MakeRegalProc(dsa_glDeleteRenderbuffers, layer);
+  dt.glDeleteRenderbuffersEXT                         = MakeRegalProc(dsa_glDeleteRenderbuffersEXT, layer);
+  dt.glDeleteRenderbuffersOES                         = MakeRegalProc(dsa_glDeleteRenderbuffersOES, layer);
+  dt.glDeleteTextures                                 = MakeRegalProc(dsa_glDeleteTextures, layer);
+  dt.glDeleteTexturesEXT                              = MakeRegalProc(dsa_glDeleteTexturesEXT, layer);
+  dt.glDeleteVertexArrays                             = MakeRegalProc(dsa_glDeleteVertexArrays, layer);
+  dt.glDeleteVertexArraysAPPLE                        = MakeRegalProc(dsa_glDeleteVertexArraysAPPLE, layer);
+  dt.glDeleteVertexArraysOES                          = MakeRegalProc(dsa_glDeleteVertexArraysOES, layer);
+  dt.glDisable                                        = MakeRegalProc(dsa_glDisable, layer);
+  dt.glDisableClientState                             = MakeRegalProc(dsa_glDisableClientState, layer);
+  dt.glDisableClientStateIndexedEXT                   = MakeRegalProc(dsa_glDisableClientStateIndexedEXT, layer);
+  dt.glDisableClientStateiEXT                         = MakeRegalProc(dsa_glDisableClientStateiEXT, layer);
+  dt.glDisableIndexedEXT                              = MakeRegalProc(dsa_glDisableIndexedEXT, layer);
+  dt.glDisableVertexArrayAttribEXT                    = MakeRegalProc(dsa_glDisableVertexArrayAttribEXT, layer);
+  dt.glDisableVertexArrayEXT                          = MakeRegalProc(dsa_glDisableVertexArrayEXT, layer);
+  dt.glDrawArrays                                     = MakeRegalProc(dsa_glDrawArrays, layer);
+  dt.glDrawArraysEXT                                  = MakeRegalProc(dsa_glDrawArraysEXT, layer);
+  dt.glDrawArraysIndirect                             = MakeRegalProc(dsa_glDrawArraysIndirect, layer);
+  dt.glDrawArraysInstanced                            = MakeRegalProc(dsa_glDrawArraysInstanced, layer);
+  dt.glDrawArraysInstancedARB                         = MakeRegalProc(dsa_glDrawArraysInstancedARB, layer);
+  dt.glDrawArraysInstancedEXT                         = MakeRegalProc(dsa_glDrawArraysInstancedEXT, layer);
+  dt.glDrawElementArrayAPPLE                          = MakeRegalProc(dsa_glDrawElementArrayAPPLE, layer);
+  dt.glDrawElementArrayATI                            = MakeRegalProc(dsa_glDrawElementArrayATI, layer);
+  dt.glDrawElements                                   = MakeRegalProc(dsa_glDrawElements, layer);
+  dt.glDrawElementsBaseVertex                         = MakeRegalProc(dsa_glDrawElementsBaseVertex, layer);
+  dt.glDrawElementsIndirect                           = MakeRegalProc(dsa_glDrawElementsIndirect, layer);
+  dt.glDrawElementsInstanced                          = MakeRegalProc(dsa_glDrawElementsInstanced, layer);
+  dt.glDrawElementsInstancedARB                       = MakeRegalProc(dsa_glDrawElementsInstancedARB, layer);
+  dt.glDrawElementsInstancedBaseVertex                = MakeRegalProc(dsa_glDrawElementsInstancedBaseVertex, layer);
+  dt.glDrawElementsInstancedEXT                       = MakeRegalProc(dsa_glDrawElementsInstancedEXT, layer);
+  dt.glEnable                                         = MakeRegalProc(dsa_glEnable, layer);
+  dt.glEnableClientState                              = MakeRegalProc(dsa_glEnableClientState, layer);
+  dt.glEnableClientStateIndexedEXT                    = MakeRegalProc(dsa_glEnableClientStateIndexedEXT, layer);
+  dt.glEnableClientStateiEXT                          = MakeRegalProc(dsa_glEnableClientStateiEXT, layer);
+  dt.glEnableIndexedEXT                               = MakeRegalProc(dsa_glEnableIndexedEXT, layer);
+  dt.glEnableVertexArrayAttribEXT                     = MakeRegalProc(dsa_glEnableVertexArrayAttribEXT, layer);
+  dt.glEnableVertexArrayEXT                           = MakeRegalProc(dsa_glEnableVertexArrayEXT, layer);
+  dt.glFlushMappedBufferRange                         = MakeRegalProc(dsa_glFlushMappedBufferRange, layer);
+  dt.glFlushMappedBufferRangeEXT                      = MakeRegalProc(dsa_glFlushMappedBufferRangeEXT, layer);
+  dt.glFlushMappedNamedBufferRangeEXT                 = MakeRegalProc(dsa_glFlushMappedNamedBufferRangeEXT, layer);
+  dt.glFramebufferDrawBufferEXT                       = MakeRegalProc(dsa_glFramebufferDrawBufferEXT, layer);
+  dt.glFramebufferDrawBuffersEXT                      = MakeRegalProc(dsa_glFramebufferDrawBuffersEXT, layer);
+  dt.glFramebufferReadBufferEXT                       = MakeRegalProc(dsa_glFramebufferReadBufferEXT, layer);
+  dt.glFramebufferRenderbuffer                        = MakeRegalProc(dsa_glFramebufferRenderbuffer, layer);
+  dt.glFramebufferRenderbufferEXT                     = MakeRegalProc(dsa_glFramebufferRenderbufferEXT, layer);
+  dt.glFramebufferTexture                             = MakeRegalProc(dsa_glFramebufferTexture, layer);
+  dt.glFramebufferTexture1D                           = MakeRegalProc(dsa_glFramebufferTexture1D, layer);
+  dt.glFramebufferTexture1DEXT                        = MakeRegalProc(dsa_glFramebufferTexture1DEXT, layer);
+  dt.glFramebufferTexture2D                           = MakeRegalProc(dsa_glFramebufferTexture2D, layer);
+  dt.glFramebufferTexture2DEXT                        = MakeRegalProc(dsa_glFramebufferTexture2DEXT, layer);
+  dt.glFramebufferTexture3D                           = MakeRegalProc(dsa_glFramebufferTexture3D, layer);
+  dt.glFramebufferTexture3DEXT                        = MakeRegalProc(dsa_glFramebufferTexture3DEXT, layer);
+  dt.glFramebufferTextureARB                          = MakeRegalProc(dsa_glFramebufferTextureARB, layer);
+  dt.glFramebufferTextureEXT                          = MakeRegalProc(dsa_glFramebufferTextureEXT, layer);
+  dt.glFramebufferTextureFace                         = MakeRegalProc(dsa_glFramebufferTextureFace, layer);
+  dt.glFramebufferTextureFaceARB                      = MakeRegalProc(dsa_glFramebufferTextureFaceARB, layer);
+  dt.glFramebufferTextureFaceEXT                      = MakeRegalProc(dsa_glFramebufferTextureFaceEXT, layer);
+  dt.glFramebufferTextureLayer                        = MakeRegalProc(dsa_glFramebufferTextureLayer, layer);
+  dt.glFramebufferTextureLayerARB                     = MakeRegalProc(dsa_glFramebufferTextureLayerARB, layer);
+  dt.glFramebufferTextureLayerEXT                     = MakeRegalProc(dsa_glFramebufferTextureLayerEXT, layer);
+  dt.glGenerateMipmap                                 = MakeRegalProc(dsa_glGenerateMipmap, layer);
+  dt.glGenerateMipmapEXT                              = MakeRegalProc(dsa_glGenerateMipmapEXT, layer);
+  dt.glGenerateMultiTexMipmapEXT                      = MakeRegalProc(dsa_glGenerateMultiTexMipmapEXT, layer);
+  dt.glGenerateTextureMipmapEXT                       = MakeRegalProc(dsa_glGenerateTextureMipmapEXT, layer);
+  dt.glGetBooleanv                                    = MakeRegalProc(dsa_glGetBooleanv, layer);
+  dt.glGetBufferParameteriv                           = MakeRegalProc(dsa_glGetBufferParameteriv, layer);
+  dt.glGetBufferPointerv                              = MakeRegalProc(dsa_glGetBufferPointerv, layer);
+  dt.glGetBufferSubData                               = MakeRegalProc(dsa_glGetBufferSubData, layer);
+  dt.glGetCompressedMultiTexImageEXT                  = MakeRegalProc(dsa_glGetCompressedMultiTexImageEXT, layer);
+  dt.glGetCompressedTextureImageEXT                   = MakeRegalProc(dsa_glGetCompressedTextureImageEXT, layer);
+  dt.glGetDoubleIndexedvEXT                           = MakeRegalProc(dsa_glGetDoubleIndexedvEXT, layer);
+  dt.glGetDoublei_v                                   = MakeRegalProc(dsa_glGetDoublei_v, layer);
+  dt.glGetDoublei_vEXT                                = MakeRegalProc(dsa_glGetDoublei_vEXT, layer);
+  dt.glGetDoublev                                     = MakeRegalProc(dsa_glGetDoublev, layer);
+  dt.glGetFloatIndexedvEXT                            = MakeRegalProc(dsa_glGetFloatIndexedvEXT, layer);
+  dt.glGetFloati_v                                    = MakeRegalProc(dsa_glGetFloati_v, layer);
+  dt.glGetFloati_vEXT                                 = MakeRegalProc(dsa_glGetFloati_vEXT, layer);
+  dt.glGetFloatv                                      = MakeRegalProc(dsa_glGetFloatv, layer);
+  dt.glGetFramebufferParameterivEXT                   = MakeRegalProc(dsa_glGetFramebufferParameterivEXT, layer);
+  dt.glGetIntegerv                                    = MakeRegalProc(dsa_glGetIntegerv, layer);
+  dt.glGetMultiTexEnvfvEXT                            = MakeRegalProc(dsa_glGetMultiTexEnvfvEXT, layer);
+  dt.glGetMultiTexEnvivEXT                            = MakeRegalProc(dsa_glGetMultiTexEnvivEXT, layer);
+  dt.glGetMultiTexGendvEXT                            = MakeRegalProc(dsa_glGetMultiTexGendvEXT, layer);
+  dt.glGetMultiTexGenfvEXT                            = MakeRegalProc(dsa_glGetMultiTexGenfvEXT, layer);
+  dt.glGetMultiTexGenivEXT                            = MakeRegalProc(dsa_glGetMultiTexGenivEXT, layer);
+  dt.glGetMultiTexImageEXT                            = MakeRegalProc(dsa_glGetMultiTexImageEXT, layer);
+  dt.glGetMultiTexLevelParameterfvEXT                 = MakeRegalProc(dsa_glGetMultiTexLevelParameterfvEXT, layer);
+  dt.glGetMultiTexLevelParameterivEXT                 = MakeRegalProc(dsa_glGetMultiTexLevelParameterivEXT, layer);
+  dt.glGetMultiTexParameterIivEXT                     = MakeRegalProc(dsa_glGetMultiTexParameterIivEXT, layer);
+  dt.glGetMultiTexParameterIuivEXT                    = MakeRegalProc(dsa_glGetMultiTexParameterIuivEXT, layer);
+  dt.glGetMultiTexParameterfvEXT                      = MakeRegalProc(dsa_glGetMultiTexParameterfvEXT, layer);
+  dt.glGetMultiTexParameterivEXT                      = MakeRegalProc(dsa_glGetMultiTexParameterivEXT, layer);
+  dt.glGetNamedBufferParameterivEXT                   = MakeRegalProc(dsa_glGetNamedBufferParameterivEXT, layer);
+  dt.glGetNamedBufferPointervEXT                      = MakeRegalProc(dsa_glGetNamedBufferPointervEXT, layer);
+  dt.glGetNamedBufferSubDataEXT                       = MakeRegalProc(dsa_glGetNamedBufferSubDataEXT, layer);
+  dt.glGetNamedFramebufferAttachmentParameterivEXT    = MakeRegalProc(dsa_glGetNamedFramebufferAttachmentParameterivEXT, layer);
+  dt.glGetNamedProgramLocalParameterIivEXT            = MakeRegalProc(dsa_glGetNamedProgramLocalParameterIivEXT, layer);
+  dt.glGetNamedProgramLocalParameterIuivEXT           = MakeRegalProc(dsa_glGetNamedProgramLocalParameterIuivEXT, layer);
+  dt.glGetNamedProgramLocalParameterdvEXT             = MakeRegalProc(dsa_glGetNamedProgramLocalParameterdvEXT, layer);
+  dt.glGetNamedProgramLocalParameterfvEXT             = MakeRegalProc(dsa_glGetNamedProgramLocalParameterfvEXT, layer);
+  dt.glGetNamedProgramStringEXT                       = MakeRegalProc(dsa_glGetNamedProgramStringEXT, layer);
+  dt.glGetNamedProgramivEXT                           = MakeRegalProc(dsa_glGetNamedProgramivEXT, layer);
+  dt.glGetNamedRenderbufferParameterivEXT             = MakeRegalProc(dsa_glGetNamedRenderbufferParameterivEXT, layer);
+  dt.glGetPointerIndexedvEXT                          = MakeRegalProc(dsa_glGetPointerIndexedvEXT, layer);
+  dt.glGetProgramEnvParameterIivNV                    = MakeRegalProc(dsa_glGetProgramEnvParameterIivNV, layer);
+  dt.glGetProgramEnvParameterIuivNV                   = MakeRegalProc(dsa_glGetProgramEnvParameterIuivNV, layer);
+  dt.glGetProgramEnvParameterdvARB                    = MakeRegalProc(dsa_glGetProgramEnvParameterdvARB, layer);
+  dt.glGetProgramEnvParameterfvARB                    = MakeRegalProc(dsa_glGetProgramEnvParameterfvARB, layer);
+  dt.glGetProgramLocalParameterIivNV                  = MakeRegalProc(dsa_glGetProgramLocalParameterIivNV, layer);
+  dt.glGetProgramLocalParameterIuivNV                 = MakeRegalProc(dsa_glGetProgramLocalParameterIuivNV, layer);
+  dt.glGetProgramLocalParameterdvARB                  = MakeRegalProc(dsa_glGetProgramLocalParameterdvARB, layer);
+  dt.glGetProgramLocalParameterfvARB                  = MakeRegalProc(dsa_glGetProgramLocalParameterfvARB, layer);
+  dt.glGetRenderbufferParameteriv                     = MakeRegalProc(dsa_glGetRenderbufferParameteriv, layer);
+  dt.glGetRenderbufferParameterivEXT                  = MakeRegalProc(dsa_glGetRenderbufferParameterivEXT, layer);
+  dt.glGetTexEnvfv                                    = MakeRegalProc(dsa_glGetTexEnvfv, layer);
+  dt.glGetTexEnviv                                    = MakeRegalProc(dsa_glGetTexEnviv, layer);
+  dt.glGetTexParameterfv                              = MakeRegalProc(dsa_glGetTexParameterfv, layer);
+  dt.glGetTexParameteriv                              = MakeRegalProc(dsa_glGetTexParameteriv, layer);
+  dt.glGetTextureImageEXT                             = MakeRegalProc(dsa_glGetTextureImageEXT, layer);
+  dt.glGetTextureLevelParameterfvEXT                  = MakeRegalProc(dsa_glGetTextureLevelParameterfvEXT, layer);
+  dt.glGetTextureLevelParameterivEXT                  = MakeRegalProc(dsa_glGetTextureLevelParameterivEXT, layer);
+  dt.glGetTextureParameterIivEXT                      = MakeRegalProc(dsa_glGetTextureParameterIivEXT, layer);
+  dt.glGetTextureParameterIuivEXT                     = MakeRegalProc(dsa_glGetTextureParameterIuivEXT, layer);
+  dt.glGetTextureParameterfvEXT                       = MakeRegalProc(dsa_glGetTextureParameterfvEXT, layer);
+  dt.glGetTextureParameterivEXT                       = MakeRegalProc(dsa_glGetTextureParameterivEXT, layer);
+  dt.glIsEnabled                                      = MakeRegalProc(dsa_glIsEnabled, layer);
+  dt.glIsEnabledIndexedEXT                            = MakeRegalProc(dsa_glIsEnabledIndexedEXT, layer);
+  dt.glLoadIdentity                                   = MakeRegalProc(dsa_glLoadIdentity, layer);
+  dt.glLoadMatrixd                                    = MakeRegalProc(dsa_glLoadMatrixd, layer);
+  dt.glLoadMatrixf                                    = MakeRegalProc(dsa_glLoadMatrixf, layer);
+  dt.glLoadTransposeMatrixd                           = MakeRegalProc(dsa_glLoadTransposeMatrixd, layer);
+  dt.glLoadTransposeMatrixf                           = MakeRegalProc(dsa_glLoadTransposeMatrixf, layer);
+  dt.glMapBuffer                                      = MakeRegalProc(dsa_glMapBuffer, layer);
+  dt.glMapBufferARB                                   = MakeRegalProc(dsa_glMapBufferARB, layer);
+  dt.glMapBufferRange                                 = MakeRegalProc(dsa_glMapBufferRange, layer);
+  dt.glMapBufferRangeEXT                              = MakeRegalProc(dsa_glMapBufferRangeEXT, layer);
+  dt.glMapNamedBufferEXT                              = MakeRegalProc(dsa_glMapNamedBufferEXT, layer);
+  dt.glMapNamedBufferRangeEXT                         = MakeRegalProc(dsa_glMapNamedBufferRangeEXT, layer);
+  dt.glMatrixFrustumEXT                               = MakeRegalProc(dsa_glMatrixFrustumEXT, layer);
+  dt.glMatrixLoadIdentityEXT                          = MakeRegalProc(dsa_glMatrixLoadIdentityEXT, layer);
+  dt.glMatrixLoadTransposedEXT                        = MakeRegalProc(dsa_glMatrixLoadTransposedEXT, layer);
+  dt.glMatrixLoadTransposefEXT                        = MakeRegalProc(dsa_glMatrixLoadTransposefEXT, layer);
+  dt.glMatrixLoaddEXT                                 = MakeRegalProc(dsa_glMatrixLoaddEXT, layer);
+  dt.glMatrixLoadfEXT                                 = MakeRegalProc(dsa_glMatrixLoadfEXT, layer);
+  dt.glMatrixMode                                     = MakeRegalProc(dsa_glMatrixMode, layer);
+  dt.glMatrixMultTransposedEXT                        = MakeRegalProc(dsa_glMatrixMultTransposedEXT, layer);
+  dt.glMatrixMultTransposefEXT                        = MakeRegalProc(dsa_glMatrixMultTransposefEXT, layer);
+  dt.glMatrixMultdEXT                                 = MakeRegalProc(dsa_glMatrixMultdEXT, layer);
+  dt.glMatrixMultfEXT                                 = MakeRegalProc(dsa_glMatrixMultfEXT, layer);
+  dt.glMatrixOrthoEXT                                 = MakeRegalProc(dsa_glMatrixOrthoEXT, layer);
+  dt.glMatrixPopEXT                                   = MakeRegalProc(dsa_glMatrixPopEXT, layer);
+  dt.glMatrixPushEXT                                  = MakeRegalProc(dsa_glMatrixPushEXT, layer);
+  dt.glMatrixRotatedEXT                               = MakeRegalProc(dsa_glMatrixRotatedEXT, layer);
+  dt.glMatrixRotatefEXT                               = MakeRegalProc(dsa_glMatrixRotatefEXT, layer);
+  dt.glMatrixScaledEXT                                = MakeRegalProc(dsa_glMatrixScaledEXT, layer);
+  dt.glMatrixScalefEXT                                = MakeRegalProc(dsa_glMatrixScalefEXT, layer);
+  dt.glMatrixTranslatedEXT                            = MakeRegalProc(dsa_glMatrixTranslatedEXT, layer);
+  dt.glMatrixTranslatefEXT                            = MakeRegalProc(dsa_glMatrixTranslatefEXT, layer);
+  dt.glMultMatrixd                                    = MakeRegalProc(dsa_glMultMatrixd, layer);
+  dt.glMultMatrixf                                    = MakeRegalProc(dsa_glMultMatrixf, layer);
+  dt.glMultTransposeMatrixd                           = MakeRegalProc(dsa_glMultTransposeMatrixd, layer);
+  dt.glMultTransposeMatrixf                           = MakeRegalProc(dsa_glMultTransposeMatrixf, layer);
+  dt.glMultiDrawArrays                                = MakeRegalProc(dsa_glMultiDrawArrays, layer);
+  dt.glMultiDrawArraysEXT                             = MakeRegalProc(dsa_glMultiDrawArraysEXT, layer);
+  dt.glMultiDrawArraysIndirect                        = MakeRegalProc(dsa_glMultiDrawArraysIndirect, layer);
+  dt.glMultiDrawArraysIndirectAMD                     = MakeRegalProc(dsa_glMultiDrawArraysIndirectAMD, layer);
+  dt.glMultiDrawElementArrayAPPLE                     = MakeRegalProc(dsa_glMultiDrawElementArrayAPPLE, layer);
+  dt.glMultiDrawElements                              = MakeRegalProc(dsa_glMultiDrawElements, layer);
+  dt.glMultiDrawElementsBaseVertex                    = MakeRegalProc(dsa_glMultiDrawElementsBaseVertex, layer);
+  dt.glMultiDrawElementsEXT                           = MakeRegalProc(dsa_glMultiDrawElementsEXT, layer);
+  dt.glMultiDrawElementsIndirect                      = MakeRegalProc(dsa_glMultiDrawElementsIndirect, layer);
+  dt.glMultiDrawElementsIndirectAMD                   = MakeRegalProc(dsa_glMultiDrawElementsIndirectAMD, layer);
+  dt.glMultiTexBufferEXT                              = MakeRegalProc(dsa_glMultiTexBufferEXT, layer);
+  dt.glMultiTexCoordPointerEXT                        = MakeRegalProc(dsa_glMultiTexCoordPointerEXT, layer);
+  dt.glMultiTexEnvfEXT                                = MakeRegalProc(dsa_glMultiTexEnvfEXT, layer);
+  dt.glMultiTexEnvfvEXT                               = MakeRegalProc(dsa_glMultiTexEnvfvEXT, layer);
+  dt.glMultiTexEnviEXT                                = MakeRegalProc(dsa_glMultiTexEnviEXT, layer);
+  dt.glMultiTexEnvivEXT                               = MakeRegalProc(dsa_glMultiTexEnvivEXT, layer);
+  dt.glMultiTexGendEXT                                = MakeRegalProc(dsa_glMultiTexGendEXT, layer);
+  dt.glMultiTexGendvEXT                               = MakeRegalProc(dsa_glMultiTexGendvEXT, layer);
+  dt.glMultiTexGenfEXT                                = MakeRegalProc(dsa_glMultiTexGenfEXT, layer);
+  dt.glMultiTexGenfvEXT                               = MakeRegalProc(dsa_glMultiTexGenfvEXT, layer);
+  dt.glMultiTexGeniEXT                                = MakeRegalProc(dsa_glMultiTexGeniEXT, layer);
+  dt.glMultiTexGenivEXT                               = MakeRegalProc(dsa_glMultiTexGenivEXT, layer);
+  dt.glMultiTexImage1DEXT                             = MakeRegalProc(dsa_glMultiTexImage1DEXT, layer);
+  dt.glMultiTexImage2DEXT                             = MakeRegalProc(dsa_glMultiTexImage2DEXT, layer);
+  dt.glMultiTexImage3DEXT                             = MakeRegalProc(dsa_glMultiTexImage3DEXT, layer);
+  dt.glMultiTexParameterIivEXT                        = MakeRegalProc(dsa_glMultiTexParameterIivEXT, layer);
+  dt.glMultiTexParameterIuivEXT                       = MakeRegalProc(dsa_glMultiTexParameterIuivEXT, layer);
+  dt.glMultiTexParameterfEXT                          = MakeRegalProc(dsa_glMultiTexParameterfEXT, layer);
+  dt.glMultiTexParameterfvEXT                         = MakeRegalProc(dsa_glMultiTexParameterfvEXT, layer);
+  dt.glMultiTexParameteriEXT                          = MakeRegalProc(dsa_glMultiTexParameteriEXT, layer);
+  dt.glMultiTexParameterivEXT                         = MakeRegalProc(dsa_glMultiTexParameterivEXT, layer);
+  dt.glMultiTexRenderbufferEXT                        = MakeRegalProc(dsa_glMultiTexRenderbufferEXT, layer);
+  dt.glMultiTexSubImage1DEXT                          = MakeRegalProc(dsa_glMultiTexSubImage1DEXT, layer);
+  dt.glMultiTexSubImage2DEXT                          = MakeRegalProc(dsa_glMultiTexSubImage2DEXT, layer);
+  dt.glMultiTexSubImage3DEXT                          = MakeRegalProc(dsa_glMultiTexSubImage3DEXT, layer);
+  dt.glNamedBufferDataEXT                             = MakeRegalProc(dsa_glNamedBufferDataEXT, layer);
+  dt.glNamedBufferSubDataEXT                          = MakeRegalProc(dsa_glNamedBufferSubDataEXT, layer);
+  dt.glNamedCopyBufferSubDataEXT                      = MakeRegalProc(dsa_glNamedCopyBufferSubDataEXT, layer);
+  dt.glNamedFramebufferRenderbufferEXT                = MakeRegalProc(dsa_glNamedFramebufferRenderbufferEXT, layer);
+  dt.glNamedFramebufferTexture1DEXT                   = MakeRegalProc(dsa_glNamedFramebufferTexture1DEXT, layer);
+  dt.glNamedFramebufferTexture2DEXT                   = MakeRegalProc(dsa_glNamedFramebufferTexture2DEXT, layer);
+  dt.glNamedFramebufferTexture3DEXT                   = MakeRegalProc(dsa_glNamedFramebufferTexture3DEXT, layer);
+  dt.glNamedFramebufferTextureEXT                     = MakeRegalProc(dsa_glNamedFramebufferTextureEXT, layer);
+  dt.glNamedFramebufferTextureFaceEXT                 = MakeRegalProc(dsa_glNamedFramebufferTextureFaceEXT, layer);
+  dt.glNamedFramebufferTextureLayerEXT                = MakeRegalProc(dsa_glNamedFramebufferTextureLayerEXT, layer);
+  dt.glNamedProgramLocalParameter4dEXT                = MakeRegalProc(dsa_glNamedProgramLocalParameter4dEXT, layer);
+  dt.glNamedProgramLocalParameter4dvEXT               = MakeRegalProc(dsa_glNamedProgramLocalParameter4dvEXT, layer);
+  dt.glNamedProgramLocalParameter4fEXT                = MakeRegalProc(dsa_glNamedProgramLocalParameter4fEXT, layer);
+  dt.glNamedProgramLocalParameter4fvEXT               = MakeRegalProc(dsa_glNamedProgramLocalParameter4fvEXT, layer);
+  dt.glNamedProgramLocalParameterI4iEXT               = MakeRegalProc(dsa_glNamedProgramLocalParameterI4iEXT, layer);
+  dt.glNamedProgramLocalParameterI4ivEXT              = MakeRegalProc(dsa_glNamedProgramLocalParameterI4ivEXT, layer);
+  dt.glNamedProgramLocalParameterI4uiEXT              = MakeRegalProc(dsa_glNamedProgramLocalParameterI4uiEXT, layer);
+  dt.glNamedProgramLocalParameterI4uivEXT             = MakeRegalProc(dsa_glNamedProgramLocalParameterI4uivEXT, layer);
+  dt.glNamedProgramLocalParameters4fvEXT              = MakeRegalProc(dsa_glNamedProgramLocalParameters4fvEXT, layer);
+  dt.glNamedProgramLocalParametersI4ivEXT             = MakeRegalProc(dsa_glNamedProgramLocalParametersI4ivEXT, layer);
+  dt.glNamedProgramLocalParametersI4uivEXT            = MakeRegalProc(dsa_glNamedProgramLocalParametersI4uivEXT, layer);
+  dt.glNamedProgramStringEXT                          = MakeRegalProc(dsa_glNamedProgramStringEXT, layer);
+  dt.glNamedRenderbufferStorageEXT                    = MakeRegalProc(dsa_glNamedRenderbufferStorageEXT, layer);
+  dt.glNamedRenderbufferStorageMultisampleCoverageEXT = MakeRegalProc(dsa_glNamedRenderbufferStorageMultisampleCoverageEXT, layer);
+  dt.glNamedRenderbufferStorageMultisampleEXT         = MakeRegalProc(dsa_glNamedRenderbufferStorageMultisampleEXT, layer);
+  dt.glNormalPointer                                  = MakeRegalProc(dsa_glNormalPointer, layer);
+  dt.glPopMatrix                                      = MakeRegalProc(dsa_glPopMatrix, layer);
+  dt.glProgramEnvParameter4dARB                       = MakeRegalProc(dsa_glProgramEnvParameter4dARB, layer);
+  dt.glProgramEnvParameter4dvARB                      = MakeRegalProc(dsa_glProgramEnvParameter4dvARB, layer);
+  dt.glProgramEnvParameter4fARB                       = MakeRegalProc(dsa_glProgramEnvParameter4fARB, layer);
+  dt.glProgramEnvParameter4fvARB                      = MakeRegalProc(dsa_glProgramEnvParameter4fvARB, layer);
+  dt.glProgramEnvParameterI4iNV                       = MakeRegalProc(dsa_glProgramEnvParameterI4iNV, layer);
+  dt.glProgramEnvParameterI4ivNV                      = MakeRegalProc(dsa_glProgramEnvParameterI4ivNV, layer);
+  dt.glProgramEnvParameterI4uiNV                      = MakeRegalProc(dsa_glProgramEnvParameterI4uiNV, layer);
+  dt.glProgramEnvParameterI4uivNV                     = MakeRegalProc(dsa_glProgramEnvParameterI4uivNV, layer);
+  dt.glProgramEnvParametersI4ivNV                     = MakeRegalProc(dsa_glProgramEnvParametersI4ivNV, layer);
+  dt.glProgramEnvParametersI4uivNV                    = MakeRegalProc(dsa_glProgramEnvParametersI4uivNV, layer);
+  dt.glProgramLocalParameter4dARB                     = MakeRegalProc(dsa_glProgramLocalParameter4dARB, layer);
+  dt.glProgramLocalParameter4dvARB                    = MakeRegalProc(dsa_glProgramLocalParameter4dvARB, layer);
+  dt.glProgramLocalParameter4fARB                     = MakeRegalProc(dsa_glProgramLocalParameter4fARB, layer);
+  dt.glProgramLocalParameter4fvARB                    = MakeRegalProc(dsa_glProgramLocalParameter4fvARB, layer);
+  dt.glProgramLocalParameterI4iNV                     = MakeRegalProc(dsa_glProgramLocalParameterI4iNV, layer);
+  dt.glProgramLocalParameterI4ivNV                    = MakeRegalProc(dsa_glProgramLocalParameterI4ivNV, layer);
+  dt.glProgramLocalParameterI4uiNV                    = MakeRegalProc(dsa_glProgramLocalParameterI4uiNV, layer);
+  dt.glProgramLocalParameterI4uivNV                   = MakeRegalProc(dsa_glProgramLocalParameterI4uivNV, layer);
+  dt.glProgramLocalParametersI4ivNV                   = MakeRegalProc(dsa_glProgramLocalParametersI4ivNV, layer);
+  dt.glProgramLocalParametersI4uivNV                  = MakeRegalProc(dsa_glProgramLocalParametersI4uivNV, layer);
+  dt.glProgramUniform1dEXT                            = MakeRegalProc(dsa_glProgramUniform1dEXT, layer);
+  dt.glProgramUniform1dvEXT                           = MakeRegalProc(dsa_glProgramUniform1dvEXT, layer);
+  dt.glProgramUniform1fEXT                            = MakeRegalProc(dsa_glProgramUniform1fEXT, layer);
+  dt.glProgramUniform1fvEXT                           = MakeRegalProc(dsa_glProgramUniform1fvEXT, layer);
+  dt.glProgramUniform1iEXT                            = MakeRegalProc(dsa_glProgramUniform1iEXT, layer);
+  dt.glProgramUniform1ivEXT                           = MakeRegalProc(dsa_glProgramUniform1ivEXT, layer);
+  dt.glProgramUniform1uiEXT                           = MakeRegalProc(dsa_glProgramUniform1uiEXT, layer);
+  dt.glProgramUniform1uivEXT                          = MakeRegalProc(dsa_glProgramUniform1uivEXT, layer);
+  dt.glProgramUniform2dEXT                            = MakeRegalProc(dsa_glProgramUniform2dEXT, layer);
+  dt.glProgramUniform2dvEXT                           = MakeRegalProc(dsa_glProgramUniform2dvEXT, layer);
+  dt.glProgramUniform2fEXT                            = MakeRegalProc(dsa_glProgramUniform2fEXT, layer);
+  dt.glProgramUniform2fvEXT                           = MakeRegalProc(dsa_glProgramUniform2fvEXT, layer);
+  dt.glProgramUniform2iEXT                            = MakeRegalProc(dsa_glProgramUniform2iEXT, layer);
+  dt.glProgramUniform2ivEXT                           = MakeRegalProc(dsa_glProgramUniform2ivEXT, layer);
+  dt.glProgramUniform2uiEXT                           = MakeRegalProc(dsa_glProgramUniform2uiEXT, layer);
+  dt.glProgramUniform2uivEXT                          = MakeRegalProc(dsa_glProgramUniform2uivEXT, layer);
+  dt.glProgramUniform3dEXT                            = MakeRegalProc(dsa_glProgramUniform3dEXT, layer);
+  dt.glProgramUniform3dvEXT                           = MakeRegalProc(dsa_glProgramUniform3dvEXT, layer);
+  dt.glProgramUniform3fEXT                            = MakeRegalProc(dsa_glProgramUniform3fEXT, layer);
+  dt.glProgramUniform3fvEXT                           = MakeRegalProc(dsa_glProgramUniform3fvEXT, layer);
+  dt.glProgramUniform3iEXT                            = MakeRegalProc(dsa_glProgramUniform3iEXT, layer);
+  dt.glProgramUniform3ivEXT                           = MakeRegalProc(dsa_glProgramUniform3ivEXT, layer);
+  dt.glProgramUniform3uiEXT                           = MakeRegalProc(dsa_glProgramUniform3uiEXT, layer);
+  dt.glProgramUniform3uivEXT                          = MakeRegalProc(dsa_glProgramUniform3uivEXT, layer);
+  dt.glProgramUniform4dEXT                            = MakeRegalProc(dsa_glProgramUniform4dEXT, layer);
+  dt.glProgramUniform4dvEXT                           = MakeRegalProc(dsa_glProgramUniform4dvEXT, layer);
+  dt.glProgramUniform4fEXT                            = MakeRegalProc(dsa_glProgramUniform4fEXT, layer);
+  dt.glProgramUniform4fvEXT                           = MakeRegalProc(dsa_glProgramUniform4fvEXT, layer);
+  dt.glProgramUniform4iEXT                            = MakeRegalProc(dsa_glProgramUniform4iEXT, layer);
+  dt.glProgramUniform4ivEXT                           = MakeRegalProc(dsa_glProgramUniform4ivEXT, layer);
+  dt.glProgramUniform4uiEXT                           = MakeRegalProc(dsa_glProgramUniform4uiEXT, layer);
+  dt.glProgramUniform4uivEXT                          = MakeRegalProc(dsa_glProgramUniform4uivEXT, layer);
+  dt.glProgramUniformMatrix2dvEXT                     = MakeRegalProc(dsa_glProgramUniformMatrix2dvEXT, layer);
+  dt.glProgramUniformMatrix2fvEXT                     = MakeRegalProc(dsa_glProgramUniformMatrix2fvEXT, layer);
+  dt.glProgramUniformMatrix2x3dvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix2x3dvEXT, layer);
+  dt.glProgramUniformMatrix2x3fvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix2x3fvEXT, layer);
+  dt.glProgramUniformMatrix2x4dvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix2x4dvEXT, layer);
+  dt.glProgramUniformMatrix2x4fvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix2x4fvEXT, layer);
+  dt.glProgramUniformMatrix3dvEXT                     = MakeRegalProc(dsa_glProgramUniformMatrix3dvEXT, layer);
+  dt.glProgramUniformMatrix3fvEXT                     = MakeRegalProc(dsa_glProgramUniformMatrix3fvEXT, layer);
+  dt.glProgramUniformMatrix3x2dvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix3x2dvEXT, layer);
+  dt.glProgramUniformMatrix3x2fvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix3x2fvEXT, layer);
+  dt.glProgramUniformMatrix3x4dvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix3x4dvEXT, layer);
+  dt.glProgramUniformMatrix3x4fvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix3x4fvEXT, layer);
+  dt.glProgramUniformMatrix4dvEXT                     = MakeRegalProc(dsa_glProgramUniformMatrix4dvEXT, layer);
+  dt.glProgramUniformMatrix4fvEXT                     = MakeRegalProc(dsa_glProgramUniformMatrix4fvEXT, layer);
+  dt.glProgramUniformMatrix4x2dvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix4x2dvEXT, layer);
+  dt.glProgramUniformMatrix4x2fvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix4x2fvEXT, layer);
+  dt.glProgramUniformMatrix4x3dvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix4x3dvEXT, layer);
+  dt.glProgramUniformMatrix4x3fvEXT                   = MakeRegalProc(dsa_glProgramUniformMatrix4x3fvEXT, layer);
+  dt.glPushClientAttribDefaultEXT                     = MakeRegalProc(dsa_glPushClientAttribDefaultEXT, layer);
+  dt.glPushMatrix                                     = MakeRegalProc(dsa_glPushMatrix, layer);
+  dt.glRenderbufferStorage                            = MakeRegalProc(dsa_glRenderbufferStorage, layer);
+  dt.glRenderbufferStorageEXT                         = MakeRegalProc(dsa_glRenderbufferStorageEXT, layer);
+  dt.glRenderbufferStorageMultisample                 = MakeRegalProc(dsa_glRenderbufferStorageMultisample, layer);
+  dt.glRenderbufferStorageMultisampleCoverageNV       = MakeRegalProc(dsa_glRenderbufferStorageMultisampleCoverageNV, layer);
+  dt.glRenderbufferStorageMultisampleEXT              = MakeRegalProc(dsa_glRenderbufferStorageMultisampleEXT, layer);
+  dt.glRotated                                        = MakeRegalProc(dsa_glRotated, layer);
+  dt.glRotatef                                        = MakeRegalProc(dsa_glRotatef, layer);
+  dt.glScaled                                         = MakeRegalProc(dsa_glScaled, layer);
+  dt.glScalef                                         = MakeRegalProc(dsa_glScalef, layer);
+  dt.glSecondaryColorPointer                          = MakeRegalProc(dsa_glSecondaryColorPointer, layer);
+  dt.glTexBuffer                                      = MakeRegalProc(dsa_glTexBuffer, layer);
+  dt.glTexCoordPointer                                = MakeRegalProc(dsa_glTexCoordPointer, layer);
+  dt.glTexEnvf                                        = MakeRegalProc(dsa_glTexEnvf, layer);
+  dt.glTexEnvfv                                       = MakeRegalProc(dsa_glTexEnvfv, layer);
+  dt.glTexEnvi                                        = MakeRegalProc(dsa_glTexEnvi, layer);
+  dt.glTexEnviv                                       = MakeRegalProc(dsa_glTexEnviv, layer);
+  dt.glTexGenf                                        = MakeRegalProc(dsa_glTexGenf, layer);
+  dt.glTexGenfv                                       = MakeRegalProc(dsa_glTexGenfv, layer);
+  dt.glTexGeni                                        = MakeRegalProc(dsa_glTexGeni, layer);
+  dt.glTexGeniv                                       = MakeRegalProc(dsa_glTexGeniv, layer);
+  dt.glTexParameterf                                  = MakeRegalProc(dsa_glTexParameterf, layer);
+  dt.glTexParameterfv                                 = MakeRegalProc(dsa_glTexParameterfv, layer);
+  dt.glTexParameteri                                  = MakeRegalProc(dsa_glTexParameteri, layer);
+  dt.glTexParameteriv                                 = MakeRegalProc(dsa_glTexParameteriv, layer);
+  dt.glTexRenderbufferNV                              = MakeRegalProc(dsa_glTexRenderbufferNV, layer);
+  dt.glTextureBufferEXT                               = MakeRegalProc(dsa_glTextureBufferEXT, layer);
+  dt.glTextureImage1DEXT                              = MakeRegalProc(dsa_glTextureImage1DEXT, layer);
+  dt.glTextureImage2DEXT                              = MakeRegalProc(dsa_glTextureImage2DEXT, layer);
+  dt.glTextureImage3DEXT                              = MakeRegalProc(dsa_glTextureImage3DEXT, layer);
+  dt.glTextureParameterIivEXT                         = MakeRegalProc(dsa_glTextureParameterIivEXT, layer);
+  dt.glTextureParameterIuivEXT                        = MakeRegalProc(dsa_glTextureParameterIuivEXT, layer);
+  dt.glTextureParameterfEXT                           = MakeRegalProc(dsa_glTextureParameterfEXT, layer);
+  dt.glTextureParameterfvEXT                          = MakeRegalProc(dsa_glTextureParameterfvEXT, layer);
+  dt.glTextureParameteriEXT                           = MakeRegalProc(dsa_glTextureParameteriEXT, layer);
+  dt.glTextureParameterivEXT                          = MakeRegalProc(dsa_glTextureParameterivEXT, layer);
+  dt.glTextureRenderbufferEXT                         = MakeRegalProc(dsa_glTextureRenderbufferEXT, layer);
+  dt.glTextureStorage1DEXT                            = MakeRegalProc(dsa_glTextureStorage1DEXT, layer);
+  dt.glTextureStorage2DEXT                            = MakeRegalProc(dsa_glTextureStorage2DEXT, layer);
+  dt.glTextureStorage3DEXT                            = MakeRegalProc(dsa_glTextureStorage3DEXT, layer);
+  dt.glTextureSubImage1DEXT                           = MakeRegalProc(dsa_glTextureSubImage1DEXT, layer);
+  dt.glTextureSubImage2DEXT                           = MakeRegalProc(dsa_glTextureSubImage2DEXT, layer);
+  dt.glTextureSubImage3DEXT                           = MakeRegalProc(dsa_glTextureSubImage3DEXT, layer);
+  dt.glTranslated                                     = MakeRegalProc(dsa_glTranslated, layer);
+  dt.glTranslatef                                     = MakeRegalProc(dsa_glTranslatef, layer);
+  dt.glUniform1d                                      = MakeRegalProc(dsa_glUniform1d, layer);
+  dt.glUniform1dv                                     = MakeRegalProc(dsa_glUniform1dv, layer);
+  dt.glUniform1f                                      = MakeRegalProc(dsa_glUniform1f, layer);
+  dt.glUniform1fv                                     = MakeRegalProc(dsa_glUniform1fv, layer);
+  dt.glUniform1i                                      = MakeRegalProc(dsa_glUniform1i, layer);
+  dt.glUniform1iv                                     = MakeRegalProc(dsa_glUniform1iv, layer);
+  dt.glUniform1ui                                     = MakeRegalProc(dsa_glUniform1ui, layer);
+  dt.glUniform1uiv                                    = MakeRegalProc(dsa_glUniform1uiv, layer);
+  dt.glUniform2d                                      = MakeRegalProc(dsa_glUniform2d, layer);
+  dt.glUniform2dv                                     = MakeRegalProc(dsa_glUniform2dv, layer);
+  dt.glUniform2f                                      = MakeRegalProc(dsa_glUniform2f, layer);
+  dt.glUniform2fv                                     = MakeRegalProc(dsa_glUniform2fv, layer);
+  dt.glUniform2i                                      = MakeRegalProc(dsa_glUniform2i, layer);
+  dt.glUniform2iv                                     = MakeRegalProc(dsa_glUniform2iv, layer);
+  dt.glUniform2ui                                     = MakeRegalProc(dsa_glUniform2ui, layer);
+  dt.glUniform2uiv                                    = MakeRegalProc(dsa_glUniform2uiv, layer);
+  dt.glUniform3d                                      = MakeRegalProc(dsa_glUniform3d, layer);
+  dt.glUniform3dv                                     = MakeRegalProc(dsa_glUniform3dv, layer);
+  dt.glUniform3f                                      = MakeRegalProc(dsa_glUniform3f, layer);
+  dt.glUniform3fv                                     = MakeRegalProc(dsa_glUniform3fv, layer);
+  dt.glUniform3i                                      = MakeRegalProc(dsa_glUniform3i, layer);
+  dt.glUniform3iv                                     = MakeRegalProc(dsa_glUniform3iv, layer);
+  dt.glUniform3ui                                     = MakeRegalProc(dsa_glUniform3ui, layer);
+  dt.glUniform3uiv                                    = MakeRegalProc(dsa_glUniform3uiv, layer);
+  dt.glUniform4d                                      = MakeRegalProc(dsa_glUniform4d, layer);
+  dt.glUniform4dv                                     = MakeRegalProc(dsa_glUniform4dv, layer);
+  dt.glUniform4f                                      = MakeRegalProc(dsa_glUniform4f, layer);
+  dt.glUniform4fv                                     = MakeRegalProc(dsa_glUniform4fv, layer);
+  dt.glUniform4i                                      = MakeRegalProc(dsa_glUniform4i, layer);
+  dt.glUniform4iv                                     = MakeRegalProc(dsa_glUniform4iv, layer);
+  dt.glUniform4ui                                     = MakeRegalProc(dsa_glUniform4ui, layer);
+  dt.glUniform4uiv                                    = MakeRegalProc(dsa_glUniform4uiv, layer);
+  dt.glUniformMatrix2dv                               = MakeRegalProc(dsa_glUniformMatrix2dv, layer);
+  dt.glUniformMatrix2fv                               = MakeRegalProc(dsa_glUniformMatrix2fv, layer);
+  dt.glUniformMatrix2x3dv                             = MakeRegalProc(dsa_glUniformMatrix2x3dv, layer);
+  dt.glUniformMatrix2x3fv                             = MakeRegalProc(dsa_glUniformMatrix2x3fv, layer);
+  dt.glUniformMatrix2x4dv                             = MakeRegalProc(dsa_glUniformMatrix2x4dv, layer);
+  dt.glUniformMatrix2x4fv                             = MakeRegalProc(dsa_glUniformMatrix2x4fv, layer);
+  dt.glUniformMatrix3dv                               = MakeRegalProc(dsa_glUniformMatrix3dv, layer);
+  dt.glUniformMatrix3fv                               = MakeRegalProc(dsa_glUniformMatrix3fv, layer);
+  dt.glUniformMatrix3x2dv                             = MakeRegalProc(dsa_glUniformMatrix3x2dv, layer);
+  dt.glUniformMatrix3x2fv                             = MakeRegalProc(dsa_glUniformMatrix3x2fv, layer);
+  dt.glUniformMatrix3x4dv                             = MakeRegalProc(dsa_glUniformMatrix3x4dv, layer);
+  dt.glUniformMatrix3x4fv                             = MakeRegalProc(dsa_glUniformMatrix3x4fv, layer);
+  dt.glUniformMatrix4dv                               = MakeRegalProc(dsa_glUniformMatrix4dv, layer);
+  dt.glUniformMatrix4fv                               = MakeRegalProc(dsa_glUniformMatrix4fv, layer);
+  dt.glUniformMatrix4x2dv                             = MakeRegalProc(dsa_glUniformMatrix4x2dv, layer);
+  dt.glUniformMatrix4x2fv                             = MakeRegalProc(dsa_glUniformMatrix4x2fv, layer);
+  dt.glUniformMatrix4x3dv                             = MakeRegalProc(dsa_glUniformMatrix4x3dv, layer);
+  dt.glUniformMatrix4x3fv                             = MakeRegalProc(dsa_glUniformMatrix4x3fv, layer);
+  dt.glUnmapBuffer                                    = MakeRegalProc(dsa_glUnmapBuffer, layer);
+  dt.glUnmapBufferARB                                 = MakeRegalProc(dsa_glUnmapBufferARB, layer);
+  dt.glUnmapNamedBufferEXT                            = MakeRegalProc(dsa_glUnmapNamedBufferEXT, layer);
+  dt.glUseProgram                                     = MakeRegalProc(dsa_glUseProgram, layer);
+  dt.glVertexArrayColorOffsetEXT                      = MakeRegalProc(dsa_glVertexArrayColorOffsetEXT, layer);
+  dt.glVertexArrayEdgeFlagOffsetEXT                   = MakeRegalProc(dsa_glVertexArrayEdgeFlagOffsetEXT, layer);
+  dt.glVertexArrayFogCoordOffsetEXT                   = MakeRegalProc(dsa_glVertexArrayFogCoordOffsetEXT, layer);
+  dt.glVertexArrayIndexOffsetEXT                      = MakeRegalProc(dsa_glVertexArrayIndexOffsetEXT, layer);
+  dt.glVertexArrayMultiTexCoordOffsetEXT              = MakeRegalProc(dsa_glVertexArrayMultiTexCoordOffsetEXT, layer);
+  dt.glVertexArrayNormalOffsetEXT                     = MakeRegalProc(dsa_glVertexArrayNormalOffsetEXT, layer);
+  dt.glVertexArraySecondaryColorOffsetEXT             = MakeRegalProc(dsa_glVertexArraySecondaryColorOffsetEXT, layer);
+  dt.glVertexArrayTexCoordOffsetEXT                   = MakeRegalProc(dsa_glVertexArrayTexCoordOffsetEXT, layer);
+  dt.glVertexArrayVertexAttribIOffsetEXT              = MakeRegalProc(dsa_glVertexArrayVertexAttribIOffsetEXT, layer);
+  dt.glVertexArrayVertexAttribOffsetEXT               = MakeRegalProc(dsa_glVertexArrayVertexAttribOffsetEXT, layer);
+  dt.glVertexArrayVertexOffsetEXT                     = MakeRegalProc(dsa_glVertexArrayVertexOffsetEXT, layer);
+  dt.glVertexPointer                                  = MakeRegalProc(dsa_glVertexPointer, layer);
 }
 
 REGAL_NAMESPACE_END

@@ -38,12 +38,10 @@
   $ astyle --style=allman --indent=spaces=2 --indent-switches
 */
 
-#ifndef REGAL_EMU_PROCS_QUADS_H
-#define REGAL_EMU_PROCS_QUADS_H
+#ifndef REGAL_LAYER_QUADS_PROCS_H
+#define REGAL_LAYER_QUADS_PROCS_H
 
 #include "RegalUtil.h"
-
-#if REGAL_EMULATION
 
 REGAL_GLOBAL_BEGIN
 
@@ -55,8 +53,19 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void QuadsIntercept( Dispatch::GL & dt );
+void QuadsIntercept( Layer *layer, Dispatch::GL & dt );
 
+// glBindBuffer
+// glCullFace
+// glDisable
+// glDrawArrays
+// glDrawArraysEXT
+// glEnable
+// glFrontFace
+// glPolygonMode
+// glProvokingVertex
+// glProvokingVertexEXT
+// glShadeModel
 struct QuadsOriginate {
 
   QuadsOriginate() {
@@ -64,161 +73,65 @@ struct QuadsOriginate {
   }
 
   REGALGLBINDBUFFERPROC glBindBuffer;
-  Layer * glBindBuffer_layer;
-
-  REGALGLBINDBUFFER_LAYERPROC glBindBuffer_layer;
-  Layer * glBindBuffer_layer_layer;
 
   REGALGLBUFFERDATAPROC glBufferData;
-  Layer * glBufferData_layer;
 
   REGALGLCULLFACEPROC glCullFace;
-  Layer * glCullFace_layer;
-
-  REGALGLCULLFACE_LAYERPROC glCullFace_layer;
-  Layer * glCullFace_layer_layer;
 
   REGALGLDISABLEPROC glDisable;
-  Layer * glDisable_layer;
-
-  REGALGLDISABLE_LAYERPROC glDisable_layer;
-  Layer * glDisable_layer_layer;
 
   REGALGLDRAWARRAYSPROC glDrawArrays;
-  Layer * glDrawArrays_layer;
 
   REGALGLDRAWARRAYSEXTPROC glDrawArraysEXT;
-  Layer * glDrawArraysEXT_layer;
-
-  REGALGLDRAWARRAYSEXT_LAYERPROC glDrawArraysEXT_layer;
-  Layer * glDrawArraysEXT_layer_layer;
-
-  REGALGLDRAWARRAYS_LAYERPROC glDrawArrays_layer;
-  Layer * glDrawArrays_layer_layer;
 
   REGALGLDRAWELEMENTSPROC glDrawElements;
-  Layer * glDrawElements_layer;
 
   REGALGLENABLEPROC glEnable;
-  Layer * glEnable_layer;
-
-  REGALGLENABLE_LAYERPROC glEnable_layer;
-  Layer * glEnable_layer_layer;
 
   REGALGLFRONTFACEPROC glFrontFace;
-  Layer * glFrontFace_layer;
-
-  REGALGLFRONTFACE_LAYERPROC glFrontFace_layer;
-  Layer * glFrontFace_layer_layer;
 
   REGALGLGENBUFFERSPROC glGenBuffers;
-  Layer * glGenBuffers_layer;
 
   REGALGLPOLYGONMODEPROC glPolygonMode;
-  Layer * glPolygonMode_layer;
-
-  REGALGLPOLYGONMODE_LAYERPROC glPolygonMode_layer;
-  Layer * glPolygonMode_layer_layer;
 
   REGALGLPROVOKINGVERTEXPROC glProvokingVertex;
-  Layer * glProvokingVertex_layer;
 
   REGALGLPROVOKINGVERTEXEXTPROC glProvokingVertexEXT;
-  Layer * glProvokingVertexEXT_layer;
-
-  REGALGLPROVOKINGVERTEXEXT_LAYERPROC glProvokingVertexEXT_layer;
-  Layer * glProvokingVertexEXT_layer_layer;
-
-  REGALGLPROVOKINGVERTEX_LAYERPROC glProvokingVertex_layer;
-  Layer * glProvokingVertex_layer_layer;
 
   REGALGLSHADEMODELPROC glShadeModel;
-  Layer * glShadeModel_layer;
-
-  REGALGLSHADEMODEL_LAYERPROC glShadeModel_layer;
-  Layer * glShadeModel_layer_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glBindBuffer = dt.glBindBuffer;
-    glBindBuffer_layer = dt.glBindBuffer_layer;
-
-    glBindBuffer_layer = dt.glBindBuffer_layer;
-    glBindBuffer_layer_layer = dt.glBindBuffer_layer_layer;
 
     glBufferData = dt.glBufferData;
-    glBufferData_layer = dt.glBufferData_layer;
 
     glCullFace = dt.glCullFace;
-    glCullFace_layer = dt.glCullFace_layer;
-
-    glCullFace_layer = dt.glCullFace_layer;
-    glCullFace_layer_layer = dt.glCullFace_layer_layer;
 
     glDisable = dt.glDisable;
-    glDisable_layer = dt.glDisable_layer;
-
-    glDisable_layer = dt.glDisable_layer;
-    glDisable_layer_layer = dt.glDisable_layer_layer;
 
     glDrawArrays = dt.glDrawArrays;
-    glDrawArrays_layer = dt.glDrawArrays_layer;
 
     glDrawArraysEXT = dt.glDrawArraysEXT;
-    glDrawArraysEXT_layer = dt.glDrawArraysEXT_layer;
-
-    glDrawArraysEXT_layer = dt.glDrawArraysEXT_layer;
-    glDrawArraysEXT_layer_layer = dt.glDrawArraysEXT_layer_layer;
-
-    glDrawArrays_layer = dt.glDrawArrays_layer;
-    glDrawArrays_layer_layer = dt.glDrawArrays_layer_layer;
 
     glDrawElements = dt.glDrawElements;
-    glDrawElements_layer = dt.glDrawElements_layer;
 
     glEnable = dt.glEnable;
-    glEnable_layer = dt.glEnable_layer;
-
-    glEnable_layer = dt.glEnable_layer;
-    glEnable_layer_layer = dt.glEnable_layer_layer;
 
     glFrontFace = dt.glFrontFace;
-    glFrontFace_layer = dt.glFrontFace_layer;
-
-    glFrontFace_layer = dt.glFrontFace_layer;
-    glFrontFace_layer_layer = dt.glFrontFace_layer_layer;
 
     glGenBuffers = dt.glGenBuffers;
-    glGenBuffers_layer = dt.glGenBuffers_layer;
 
     glPolygonMode = dt.glPolygonMode;
-    glPolygonMode_layer = dt.glPolygonMode_layer;
-
-    glPolygonMode_layer = dt.glPolygonMode_layer;
-    glPolygonMode_layer_layer = dt.glPolygonMode_layer_layer;
 
     glProvokingVertex = dt.glProvokingVertex;
-    glProvokingVertex_layer = dt.glProvokingVertex_layer;
 
     glProvokingVertexEXT = dt.glProvokingVertexEXT;
-    glProvokingVertexEXT_layer = dt.glProvokingVertexEXT_layer;
-
-    glProvokingVertexEXT_layer = dt.glProvokingVertexEXT_layer;
-    glProvokingVertexEXT_layer_layer = dt.glProvokingVertexEXT_layer_layer;
-
-    glProvokingVertex_layer = dt.glProvokingVertex_layer;
-    glProvokingVertex_layer_layer = dt.glProvokingVertex_layer_layer;
 
     glShadeModel = dt.glShadeModel;
-    glShadeModel_layer = dt.glShadeModel_layer;
-
-    glShadeModel_layer = dt.glShadeModel_layer;
-    glShadeModel_layer_layer = dt.glShadeModel_layer_layer;
 
   }
 };
 
 REGAL_NAMESPACE_END
 
-#endif // REGAL_EMULATION
-
-#endif // REGAL_EMU_PROCS_QUADS_H
+#endif // REGAL_LAYER_QUADS_PROCS_H

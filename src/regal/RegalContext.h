@@ -65,25 +65,6 @@ REGAL_NAMESPACE_BEGIN
 struct EmuInfo;
 struct DebugInfo;
 
-#if REGAL_EMULATION
-struct Obj;
-struct Hint;
-struct Ppa;
-struct Ppca;
-struct Bin;
-struct Xfer;
-struct TexSto;
-struct BaseVertex;
-struct Rect;
-struct Iff;
-struct Quads;
-struct So;
-struct Dsa;
-struct Vao;
-struct TexC;
-struct Filt;
-#endif
-
 struct RegalContext
 {
   RegalContext();

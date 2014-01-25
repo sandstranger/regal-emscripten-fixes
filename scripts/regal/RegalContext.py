@@ -103,8 +103,6 @@ REGAL_NAMESPACE_BEGIN
 struct EmuInfo;
 struct DebugInfo;
 
-${EMU_FORWARD_DECLARE}
-
 struct RegalContext
 {
   RegalContext();
@@ -414,9 +412,6 @@ def generateContextHeader(apis, args):
     substitute['COPYRIGHT']     = args.copyright
 
     substitute['HEADER_NAME'] = "REGAL_CONTEXT"
-
-    substitute['EMU_FORWARD_DECLARE'] = emuForwardDeclare
-    substitute['EMU_MEMBER_DECLARE'] = emuMemberDeclare
 
     outputCode( '%s/RegalContext.h' % args.srcdir, contextHeaderTemplate.substitute(substitute))
 

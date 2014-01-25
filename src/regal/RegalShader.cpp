@@ -34,6 +34,7 @@
 
 REGAL_GLOBAL_BEGIN
 
+#include "RegalThread.h"
 #include "RegalShader.h"
 
 #if REGAL_GLSL_OPTIMIZER
@@ -63,7 +64,7 @@ namespace Shader {
 #if REGAL_GLSL_OPTIMIZER
 
   // external interface for using the GLSL optimizer
-  bool OptimizeGLSL (bool is_es, GLenum type, string input, string& output, Emu::Iff::CompareFunc comp ) {
+  bool OptimizeGLSL (bool is_es, GLenum type, string input, string& output, GLenum comp ) {
 
     bool res = true;
 
@@ -329,7 +330,7 @@ namespace Shader {
   class add_alpha_test : public ir_hierarchical_visitor {
   public:
 
-    add_alpha_test( Emu::Iff::CompareFunc cf ) : func( cf ), alphaRef( NULL ), fragColor( NULL ), fragData( NULL ), fragDataIndex( -1 ) {}
+    add_alpha_test( GLenum cf ) : func( cf ), alphaRef( NULL ), fragColor( NULL ), fragData( NULL ), fragDataIndex( -1 ) {}
     
     virtual ir_visitor_status visit(ir_variable *var) {
       if( fragColor == NULL &&
@@ -374,14 +375,14 @@ namespace Shader {
 
       ir_rvalue * ref = new(ctx) ir_swizzle( new(ctx) ir_dereference_variable( alphaRef ), 0, 0, 0, 0, 1 );
       switch( func ) {
-        case Emu::Iff::CF_Less:     test = new(ctx) ir_expression( ir_binop_less, glsl_type::bool_type, a, ref ); break;
-        case Emu::Iff::CF_Lequal:   test = new(ctx) ir_expression( ir_binop_lequal, glsl_type::bool_type, a, ref ); break;
-        case Emu::Iff::CF_Equal:    test = new(ctx) ir_expression( ir_binop_all_equal, glsl_type::bool_type, a, ref ); break;
-        case Emu::Iff::CF_Gequal:   test = new(ctx) ir_expression( ir_binop_gequal, glsl_type::bool_type, a, ref ); break;
-        case Emu::Iff::CF_Greater:  test = new(ctx) ir_expression( ir_binop_greater, glsl_type::bool_type, a, ref ); break;
-        case Emu::Iff::CF_NotEqual: test = new(ctx) ir_expression( ir_binop_any_nequal, glsl_type::bool_type, a, ref ); break;
-        case Emu::Iff::CF_Never:    test = new(ctx) ir_constant( false ); break;
-        case Emu::Iff::CF_Always:   test = new(ctx) ir_constant( true );  break;
+        case GL_LESS:     test = new(ctx) ir_expression( ir_binop_less, glsl_type::bool_type, a, ref ); break;
+        case GL_LEQUAL:   test = new(ctx) ir_expression( ir_binop_lequal, glsl_type::bool_type, a, ref ); break;
+        case GL_EQUAL:    test = new(ctx) ir_expression( ir_binop_all_equal, glsl_type::bool_type, a, ref ); break;
+        case GL_GEQUAL:   test = new(ctx) ir_expression( ir_binop_gequal, glsl_type::bool_type, a, ref ); break;
+        case GL_GREATER:  test = new(ctx) ir_expression( ir_binop_greater, glsl_type::bool_type, a, ref ); break;
+        case GL_NOTEQUAL: test = new(ctx) ir_expression( ir_binop_any_nequal, glsl_type::bool_type, a, ref ); break;
+        case GL_NEVER:    test = new(ctx) ir_constant( false ); break;
+        case GL_ALWAYS:   test = new(ctx) ir_constant( true );  break;
         default:
           // assert
           break;
@@ -393,14 +394,14 @@ namespace Shader {
       return visit_continue;
     }
 
-    Emu::Iff::CompareFunc func;
+    GLenum func;
     ir_variable *alphaRef;
     ir_variable *fragColor;
     ir_variable *fragData;
     int fragDataIndex;
   };
 
-  void regal_glsl_add_alpha_test( regal_glsl_shader * shader, Emu::Iff::CompareFunc func ) {
+  void regal_glsl_add_alpha_test( regal_glsl_shader * shader, GLenum func ) {
 
     if( shader == NULL || shader->shader == NULL || shader->shader->Type != GL_FRAGMENT_SHADER ) {
       return;

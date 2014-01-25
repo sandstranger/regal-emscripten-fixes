@@ -47,14 +47,16 @@ REGAL_GLOBAL_BEGIN
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
-#include "RegalTexC.h"
-#include "RegalEmuProcsTexC.h"
+#include "TexC.h"
+#include "TexCProcs.h"
 
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-static void REGAL_CALL TexC_glActiveTexture(Layer *_layer, GLenum texture)
+using namespace Emu;
+
+static void REGAL_CALL texc_glActiveTexture(Layer *_layer, GLenum texture)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -63,11 +65,11 @@ static void REGAL_CALL TexC_glActiveTexture(Layer *_layer, GLenum texture)
   // prefix
   _context->texc->ShadowActiveTexture( texture );
 
-  orig.glActiveTexture( orig.glActiveTexture_layer, texture );
+  RglActiveTexture( orig, texture );
 
 }
 
-static void REGAL_CALL TexC_glActiveTextureARB(Layer *_layer, GLenum texture)
+static void REGAL_CALL texc_glActiveTextureARB(Layer *_layer, GLenum texture)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -76,11 +78,11 @@ static void REGAL_CALL TexC_glActiveTextureARB(Layer *_layer, GLenum texture)
   // prefix
   _context->texc->ShadowActiveTexture( texture );
 
-  orig.glActiveTextureARB( orig.glActiveTextureARB_layer, texture );
+  RglActiveTextureARB( orig, texture );
 
 }
 
-static void REGAL_CALL TexC_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL texc_glBindTexture(Layer *_layer, GLenum target, GLuint texture)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -89,11 +91,11 @@ static void REGAL_CALL TexC_glBindTexture(Layer *_layer, GLenum target, GLuint t
   // prefix
   _context->texc->ShadowBindTexture( target, texture );
 
-  orig.glBindTexture( orig.glBindTexture_layer, target, texture );
+  RglBindTexture( orig, target, texture );
 
 }
 
-static void REGAL_CALL TexC_glBindTextureEXT(Layer *_layer, GLenum target, GLuint texture)
+static void REGAL_CALL texc_glBindTextureEXT(Layer *_layer, GLenum target, GLuint texture)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -102,11 +104,11 @@ static void REGAL_CALL TexC_glBindTextureEXT(Layer *_layer, GLenum target, GLuin
   // prefix
   _context->texc->ShadowBindTexture( target, texture );
 
-  orig.glBindTextureEXT( orig.glBindTextureEXT_layer, target, texture );
+  RglBindTextureEXT( orig, target, texture );
 
 }
 
-static void REGAL_CALL TexC_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
+static void REGAL_CALL texc_glDeleteTextures(Layer *_layer, GLsizei n, const GLuint *textures)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -115,11 +117,11 @@ static void REGAL_CALL TexC_glDeleteTextures(Layer *_layer, GLsizei n, const GLu
   // prefix
   _context->texc->ShadowDeleteTextures( n, textures );
 
-  orig.glDeleteTextures( orig.glDeleteTextures_layer, n, textures );
+  RglDeleteTextures( orig, n, textures );
 
 }
 
-static void REGAL_CALL TexC_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const GLuint *textures)
+static void REGAL_CALL texc_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const GLuint *textures)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -128,11 +130,11 @@ static void REGAL_CALL TexC_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const 
   // prefix
   _context->texc->ShadowDeleteTextures( n, textures );
 
-  orig.glDeleteTexturesEXT( orig.glDeleteTexturesEXT_layer, n, textures );
+  RglDeleteTexturesEXT( orig, n, textures );
 
 }
 
-static void REGAL_CALL TexC_glGenTextures(Layer *_layer, GLsizei n, GLuint *textures)
+static void REGAL_CALL texc_glGenTextures(Layer *_layer, GLsizei n, GLuint *textures)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -144,11 +146,11 @@ static void REGAL_CALL TexC_glGenTextures(Layer *_layer, GLsizei n, GLuint *text
   _context->texc->ShadowGenTextures( n, textures );
   return;
 
-  orig.glGenTextures( orig.glGenTextures_layer, n, textures );
+  RglGenTextures( orig, n, textures );
 
 }
 
-static void REGAL_CALL TexC_glGenTexturesEXT(Layer *_layer, GLsizei n, GLuint *textures)
+static void REGAL_CALL texc_glGenTexturesEXT(Layer *_layer, GLsizei n, GLuint *textures)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -160,11 +162,11 @@ static void REGAL_CALL TexC_glGenTexturesEXT(Layer *_layer, GLsizei n, GLuint *t
   _context->texc->ShadowGenTextures( n, textures );
   return;
 
-  orig.glGenTexturesEXT( orig.glGenTexturesEXT_layer, n, textures );
+  RglGenTexturesEXT( orig, n, textures );
 
 }
 
-static void REGAL_CALL TexC_glGenerateMipmap(Layer *_layer, GLenum target)
+static void REGAL_CALL texc_glGenerateMipmap(Layer *_layer, GLenum target)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -173,11 +175,11 @@ static void REGAL_CALL TexC_glGenerateMipmap(Layer *_layer, GLenum target)
   // prefix
   _context->texc->ShadowGenerateMipmap( target );
 
-  orig.glGenerateMipmap( orig.glGenerateMipmap_layer, target );
+  RglGenerateMipmap( orig, target );
 
 }
 
-static void REGAL_CALL TexC_glGenerateMipmapEXT(Layer *_layer, GLenum target)
+static void REGAL_CALL texc_glGenerateMipmapEXT(Layer *_layer, GLenum target)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -186,11 +188,11 @@ static void REGAL_CALL TexC_glGenerateMipmapEXT(Layer *_layer, GLenum target)
   // prefix
   _context->texc->ShadowGenerateMipmap( target );
 
-  orig.glGenerateMipmapEXT( orig.glGenerateMipmapEXT_layer, target );
+  RglGenerateMipmapEXT( orig, target );
 
 }
 
-static void REGAL_CALL TexC_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
+static void REGAL_CALL texc_glPixelStorei(Layer *_layer, GLenum pname, GLint param)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -199,11 +201,11 @@ static void REGAL_CALL TexC_glPixelStorei(Layer *_layer, GLenum pname, GLint par
   // prefix
   _context->texc->ShadowPixelStore( pname, param );
 
-  orig.glPixelStorei( orig.glPixelStorei_layer, pname, param );
+  RglPixelStorei( orig, pname, param );
 
 }
 
-static void REGAL_CALL TexC_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL texc_glTexImage2D(Layer *_layer, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -212,11 +214,11 @@ static void REGAL_CALL TexC_glTexImage2D(Layer *_layer, GLenum target, GLint lev
   // prefix
   _context->texc->ShadowTexImage2D( target, level, format, type );
 
-  orig.glTexImage2D( orig.glTexImage2D_layer, target, level, internalformat, width, height, border, format, type, pixels );
+  RglTexImage2D( orig, target, level, internalformat, width, height, border, format, type, pixels );
 
 }
 
-static void REGAL_CALL TexC_glTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
+static void REGAL_CALL texc_glTexSubImage2D(Layer *_layer, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels)
 {
   TexC * self = static_cast<TexC *>(_layer);
 
@@ -242,24 +244,24 @@ static void REGAL_CALL TexC_glTexSubImage2D(Layer *_layer, GLenum target, GLint 
   }
   return;
 
-  orig.glTexSubImage2D( orig.glTexSubImage2D_layer, target, level, xoffset, yoffset, width, height, format, type, pixels );
+  RglTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
 }
 
-void TexCIntercept( Dispatch::GL & dt ) {
-  dt.glActiveTexture     = RTexC_glActiveTexture;
-  dt.glActiveTextureARB  = RTexC_glActiveTextureARB;
-  dt.glBindTexture       = RTexC_glBindTexture;
-  dt.glBindTextureEXT    = RTexC_glBindTextureEXT;
-  dt.glDeleteTextures    = RTexC_glDeleteTextures;
-  dt.glDeleteTexturesEXT = RTexC_glDeleteTexturesEXT;
-  dt.glGenTextures       = RTexC_glGenTextures;
-  dt.glGenTexturesEXT    = RTexC_glGenTexturesEXT;
-  dt.glGenerateMipmap    = RTexC_glGenerateMipmap;
-  dt.glGenerateMipmapEXT = RTexC_glGenerateMipmapEXT;
-  dt.glPixelStorei       = RTexC_glPixelStorei;
-  dt.glTexImage2D        = RTexC_glTexImage2D;
-  dt.glTexSubImage2D     = RTexC_glTexSubImage2D;
+void TexCIntercept( Layer *layer, Dispatch::GL & dt ) {
+  dt.glActiveTexture     = MakeRegalProc(texc_glActiveTexture, layer);
+  dt.glActiveTextureARB  = MakeRegalProc(texc_glActiveTextureARB, layer);
+  dt.glBindTexture       = MakeRegalProc(texc_glBindTexture, layer);
+  dt.glBindTextureEXT    = MakeRegalProc(texc_glBindTextureEXT, layer);
+  dt.glDeleteTextures    = MakeRegalProc(texc_glDeleteTextures, layer);
+  dt.glDeleteTexturesEXT = MakeRegalProc(texc_glDeleteTexturesEXT, layer);
+  dt.glGenTextures       = MakeRegalProc(texc_glGenTextures, layer);
+  dt.glGenTexturesEXT    = MakeRegalProc(texc_glGenTexturesEXT, layer);
+  dt.glGenerateMipmap    = MakeRegalProc(texc_glGenerateMipmap, layer);
+  dt.glGenerateMipmapEXT = MakeRegalProc(texc_glGenerateMipmapEXT, layer);
+  dt.glPixelStorei       = MakeRegalProc(texc_glPixelStorei, layer);
+  dt.glTexImage2D        = MakeRegalProc(texc_glTexImage2D, layer);
+  dt.glTexSubImage2D     = MakeRegalProc(texc_glTexSubImage2D, layer);
 }
 
 REGAL_NAMESPACE_END

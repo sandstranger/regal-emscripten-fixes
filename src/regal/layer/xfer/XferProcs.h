@@ -38,12 +38,10 @@
   $ astyle --style=allman --indent=spaces=2 --indent-switches
 */
 
-#ifndef REGAL_EMU_PROCS_XFER_H
-#define REGAL_EMU_PROCS_XFER_H
+#ifndef REGAL_LAYER_XFER_PROCS_H
+#define REGAL_LAYER_XFER_PROCS_H
 
 #include "RegalUtil.h"
-
-#if REGAL_EMULATION
 
 REGAL_GLOBAL_BEGIN
 
@@ -55,8 +53,19 @@ REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
-void XferIntercept( Dispatch::GL & dt );
+void XferIntercept( Layer *layer, Dispatch::GL & dt );
 
+// glActiveTexture
+// glActiveTextureARB
+// glCompressedTexImage2D
+// glCompressedTexImage2DARB
+// glCompressedTexSubImage2D
+// glCompressedTexSubImage2DARB
+// glPixelStoref
+// glPixelStorei
+// glTexImage2D
+// glTexSubImage2D
+// glTexSubImage2DEXT
 struct XferOriginate {
 
   XferOriginate() {
@@ -64,143 +73,53 @@ struct XferOriginate {
   }
 
   REGALGLACTIVETEXTUREPROC glActiveTexture;
-  Layer * glActiveTexture_layer;
 
   REGALGLACTIVETEXTUREARBPROC glActiveTextureARB;
-  Layer * glActiveTextureARB_layer;
-
-  REGALGLACTIVETEXTUREARB_LAYERPROC glActiveTextureARB_layer;
-  Layer * glActiveTextureARB_layer_layer;
-
-  REGALGLACTIVETEXTURE_LAYERPROC glActiveTexture_layer;
-  Layer * glActiveTexture_layer_layer;
 
   REGALGLCOMPRESSEDTEXIMAGE2DPROC glCompressedTexImage2D;
-  Layer * glCompressedTexImage2D_layer;
 
   REGALGLCOMPRESSEDTEXIMAGE2DARBPROC glCompressedTexImage2DARB;
-  Layer * glCompressedTexImage2DARB_layer;
-
-  REGALGLCOMPRESSEDTEXIMAGE2DARB_LAYERPROC glCompressedTexImage2DARB_layer;
-  Layer * glCompressedTexImage2DARB_layer_layer;
-
-  REGALGLCOMPRESSEDTEXIMAGE2D_LAYERPROC glCompressedTexImage2D_layer;
-  Layer * glCompressedTexImage2D_layer_layer;
 
   REGALGLCOMPRESSEDTEXSUBIMAGE2DPROC glCompressedTexSubImage2D;
-  Layer * glCompressedTexSubImage2D_layer;
 
   REGALGLCOMPRESSEDTEXSUBIMAGE2DARBPROC glCompressedTexSubImage2DARB;
-  Layer * glCompressedTexSubImage2DARB_layer;
-
-  REGALGLCOMPRESSEDTEXSUBIMAGE2DARB_LAYERPROC glCompressedTexSubImage2DARB_layer;
-  Layer * glCompressedTexSubImage2DARB_layer_layer;
-
-  REGALGLCOMPRESSEDTEXSUBIMAGE2D_LAYERPROC glCompressedTexSubImage2D_layer;
-  Layer * glCompressedTexSubImage2D_layer_layer;
 
   REGALGLPIXELSTOREFPROC glPixelStoref;
-  Layer * glPixelStoref_layer;
-
-  REGALGLPIXELSTOREF_LAYERPROC glPixelStoref_layer;
-  Layer * glPixelStoref_layer_layer;
 
   REGALGLPIXELSTOREIPROC glPixelStorei;
-  Layer * glPixelStorei_layer;
-
-  REGALGLPIXELSTOREI_LAYERPROC glPixelStorei_layer;
-  Layer * glPixelStorei_layer_layer;
 
   REGALGLTEXIMAGE2DPROC glTexImage2D;
-  Layer * glTexImage2D_layer;
-
-  REGALGLTEXIMAGE2D_LAYERPROC glTexImage2D_layer;
-  Layer * glTexImage2D_layer_layer;
 
   REGALGLTEXSUBIMAGE2DPROC glTexSubImage2D;
-  Layer * glTexSubImage2D_layer;
 
   REGALGLTEXSUBIMAGE2DEXTPROC glTexSubImage2DEXT;
-  Layer * glTexSubImage2DEXT_layer;
-
-  REGALGLTEXSUBIMAGE2DEXT_LAYERPROC glTexSubImage2DEXT_layer;
-  Layer * glTexSubImage2DEXT_layer_layer;
-
-  REGALGLTEXSUBIMAGE2D_LAYERPROC glTexSubImage2D_layer;
-  Layer * glTexSubImage2D_layer_layer;
 
   void Initialize( Dispatch::GL & dt ) {
     glActiveTexture = dt.glActiveTexture;
-    glActiveTexture_layer = dt.glActiveTexture_layer;
 
     glActiveTextureARB = dt.glActiveTextureARB;
-    glActiveTextureARB_layer = dt.glActiveTextureARB_layer;
-
-    glActiveTextureARB_layer = dt.glActiveTextureARB_layer;
-    glActiveTextureARB_layer_layer = dt.glActiveTextureARB_layer_layer;
-
-    glActiveTexture_layer = dt.glActiveTexture_layer;
-    glActiveTexture_layer_layer = dt.glActiveTexture_layer_layer;
 
     glCompressedTexImage2D = dt.glCompressedTexImage2D;
-    glCompressedTexImage2D_layer = dt.glCompressedTexImage2D_layer;
 
     glCompressedTexImage2DARB = dt.glCompressedTexImage2DARB;
-    glCompressedTexImage2DARB_layer = dt.glCompressedTexImage2DARB_layer;
-
-    glCompressedTexImage2DARB_layer = dt.glCompressedTexImage2DARB_layer;
-    glCompressedTexImage2DARB_layer_layer = dt.glCompressedTexImage2DARB_layer_layer;
-
-    glCompressedTexImage2D_layer = dt.glCompressedTexImage2D_layer;
-    glCompressedTexImage2D_layer_layer = dt.glCompressedTexImage2D_layer_layer;
 
     glCompressedTexSubImage2D = dt.glCompressedTexSubImage2D;
-    glCompressedTexSubImage2D_layer = dt.glCompressedTexSubImage2D_layer;
 
     glCompressedTexSubImage2DARB = dt.glCompressedTexSubImage2DARB;
-    glCompressedTexSubImage2DARB_layer = dt.glCompressedTexSubImage2DARB_layer;
-
-    glCompressedTexSubImage2DARB_layer = dt.glCompressedTexSubImage2DARB_layer;
-    glCompressedTexSubImage2DARB_layer_layer = dt.glCompressedTexSubImage2DARB_layer_layer;
-
-    glCompressedTexSubImage2D_layer = dt.glCompressedTexSubImage2D_layer;
-    glCompressedTexSubImage2D_layer_layer = dt.glCompressedTexSubImage2D_layer_layer;
 
     glPixelStoref = dt.glPixelStoref;
-    glPixelStoref_layer = dt.glPixelStoref_layer;
-
-    glPixelStoref_layer = dt.glPixelStoref_layer;
-    glPixelStoref_layer_layer = dt.glPixelStoref_layer_layer;
 
     glPixelStorei = dt.glPixelStorei;
-    glPixelStorei_layer = dt.glPixelStorei_layer;
-
-    glPixelStorei_layer = dt.glPixelStorei_layer;
-    glPixelStorei_layer_layer = dt.glPixelStorei_layer_layer;
 
     glTexImage2D = dt.glTexImage2D;
-    glTexImage2D_layer = dt.glTexImage2D_layer;
-
-    glTexImage2D_layer = dt.glTexImage2D_layer;
-    glTexImage2D_layer_layer = dt.glTexImage2D_layer_layer;
 
     glTexSubImage2D = dt.glTexSubImage2D;
-    glTexSubImage2D_layer = dt.glTexSubImage2D_layer;
 
     glTexSubImage2DEXT = dt.glTexSubImage2DEXT;
-    glTexSubImage2DEXT_layer = dt.glTexSubImage2DEXT_layer;
-
-    glTexSubImage2DEXT_layer = dt.glTexSubImage2DEXT_layer;
-    glTexSubImage2DEXT_layer_layer = dt.glTexSubImage2DEXT_layer_layer;
-
-    glTexSubImage2D_layer = dt.glTexSubImage2D_layer;
-    glTexSubImage2D_layer_layer = dt.glTexSubImage2D_layer_layer;
 
   }
 };
 
 REGAL_NAMESPACE_END
 
-#endif // REGAL_EMULATION
-
-#endif // REGAL_EMU_PROCS_XFER_H
+#endif // REGAL_LAYER_XFER_PROCS_H

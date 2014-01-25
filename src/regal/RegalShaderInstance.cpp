@@ -348,23 +348,23 @@ namespace ShaderInstance {
       case UAT_Double:
       case UAT_DoubleMatrix: {
         for( int j = 0; j < count; j++ ) {
-          tbl.glGetUniformdv( tbl.ctx, program, location + j, reinterpret_cast<GLdouble *>( val + j * size ) );
+          RglGetUniformdv( tbl, program, location + j, reinterpret_cast<GLdouble *>( val + j * size ) );
         }
       } break;
       case UAT_Float:
       case UAT_FloatMatrix: {
         for( int j = 0; j < count; j++ ) {
-          tbl.glGetUniformfv( tbl.ctx, program, location + j, reinterpret_cast<GLfloat *>( val + j * size ) );
+          RglGetUniformfv( tbl, program, location + j, reinterpret_cast<GLfloat *>( val + j * size ) );
         }
       } break;
       case UAT_Int: {
         for( int j = 0; j < count; j++ ) {
-          tbl.glGetUniformiv( tbl.ctx, program, location + j, reinterpret_cast<GLint *>( val + j * size ) );
+          RglGetUniformiv( tbl, program, location + j, reinterpret_cast<GLint *>( val + j * size ) );
         }
       } break;
       case UAT_UnsignedInt: {
         for( int j = 0; j < count; j++ ) {
-          tbl.glGetUniformuiv( tbl.ctx, program, location + j, reinterpret_cast<GLuint *>( val + j * size ) );
+          RglGetUniformuiv( tbl, program, location + j, reinterpret_cast<GLuint *>( val + j * size ) );
         }
       } break;
       default:
@@ -379,53 +379,59 @@ namespace ShaderInstance {
     switch( uat ) {
       case UAT_Double: {
         typedef GLdouble Type;
-        typedef void (REGAL_CALL *Uniform)( RegalContext * ctx, GLint, GLsizei, const Type *);
+        typedef void (REGAL_CALL *UniformProc)( Layer *, GLint, GLsizei, const Type *);
+        typedef RegalProc<UniformProc> Uniform;
         Uniform uniformv[] = { tbl.glUniform1dv, tbl.glUniform2dv, tbl.glUniform3dv, tbl.glUniform4dv };
         int idx = ( size / sizeof(Type) ) - 1;
-        uniformv[idx]( tbl.ctx, location, count, reinterpret_cast<const Type *>(val) );
+        uniformv[idx].proc( uniformv[idx].layer, location, count, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_Float: {
         typedef GLfloat Type;
-        typedef void (REGAL_CALL *Uniform)( RegalContext * ctx, GLint, GLsizei, const Type *);
+        typedef void (REGAL_CALL *UniformProc)( Layer *, GLint, GLsizei, const Type *);
+        typedef RegalProc<UniformProc> Uniform;
         Uniform uniformv[] = { tbl.glUniform1fv, tbl.glUniform2fv, tbl.glUniform3fv, tbl.glUniform4fv };
         int idx = ( size / sizeof(Type) ) - 1;
-        uniformv[idx]( tbl.ctx, location, count, reinterpret_cast<const Type *>(val) );
+        uniformv[idx].proc( uniformv[idx].layer, location, count, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_Int: {
         typedef GLint Type;
-        typedef void (REGAL_CALL *Uniform)( RegalContext * ctx, GLint, GLsizei, const Type *);
+        typedef void (REGAL_CALL *UniformProc)( Layer *, GLint, GLsizei, const Type *);
+        typedef RegalProc<UniformProc> Uniform;
         Uniform uniformv[] = { tbl.glUniform1iv, tbl.glUniform2iv, tbl.glUniform3iv, tbl.glUniform4iv };
         int idx = ( size / sizeof(Type) ) - 1;
-        uniformv[idx]( tbl.ctx, location, count, reinterpret_cast<const Type *>(val) );
+        uniformv[idx].proc( uniformv[idx].layer, location, count, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_UnsignedInt: {
         typedef GLuint Type;
-        typedef void (REGAL_CALL *Uniform)( RegalContext * ctx, GLint, GLsizei, const Type *);
+        typedef void (REGAL_CALL *UniformProc)( Layer *, GLint, GLsizei, const Type *);
+        typedef RegalProc<UniformProc> Uniform;
         Uniform uniformv[] = { tbl.glUniform1uiv, tbl.glUniform2uiv, tbl.glUniform3uiv, tbl.glUniform4uiv };
         int idx = ( size / sizeof(Type) ) - 1;
-        uniformv[idx]( tbl.ctx, location, count, reinterpret_cast<const Type *>(val) );
+        uniformv[idx].proc( uniformv[idx].layer, location, count, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_DoubleMatrix: {
         typedef GLdouble Type;
-        typedef void (REGAL_CALL *Uniform)( RegalContext * ctx, GLint, GLsizei, GLboolean, const Type *);
+        typedef void (REGAL_CALL *UniformProc)( Layer *, GLint, GLsizei, GLboolean, const Type *);
+        typedef RegalProc<UniformProc> Uniform;
         Uniform uniformv[3][3] = {
           { tbl.glUniformMatrix2dv,   tbl.glUniformMatrix2x3dv, tbl.glUniformMatrix2x4dv },
           { tbl.glUniformMatrix3x2dv, tbl.glUniformMatrix3dv,   tbl.glUniformMatrix3x4dv },
           { tbl.glUniformMatrix4x2dv, tbl.glUniformMatrix4x3dv, tbl.glUniformMatrix4dv   }
         };
         MatrixDims md = GetMatrixDims( type );
-        uniformv[ md.rows - 2 ][ md.cols - 2 ]( tbl.ctx, location, count, GL_TRUE, reinterpret_cast<const Type *>(val) );
+        uniformv[ md.rows - 2 ][ md.cols - 2 ].proc( uniformv[ md.rows - 2 ][ md.cols - 2 ].layer, location, count, GL_TRUE, reinterpret_cast<const Type *>(val) );
       } break;
       case UAT_FloatMatrix: {
         typedef GLfloat Type;
-        typedef void (REGAL_CALL *Uniform)( RegalContext * ctx, GLint, GLsizei, GLboolean, const Type *);
+        typedef void (REGAL_CALL *UniformProc)( Layer *, GLint, GLsizei, GLboolean, const Type *);
+        typedef RegalProc<UniformProc> Uniform;
         Uniform uniformv[3][3] = {
           { tbl.glUniformMatrix2fv,   tbl.glUniformMatrix2x3fv, tbl.glUniformMatrix2x4fv },
           { tbl.glUniformMatrix3x2fv, tbl.glUniformMatrix3fv,   tbl.glUniformMatrix3x4fv },
           { tbl.glUniformMatrix4x2fv, tbl.glUniformMatrix4x3fv, tbl.glUniformMatrix4fv   }
         };
         MatrixDims md = GetMatrixDims( type );
-        uniformv[ md.rows - 2 ][ md.cols - 2 ]( tbl.ctx, location, count, GL_TRUE, reinterpret_cast<const Type *>(val) );
+        uniformv[ md.rows - 2 ][ md.cols - 2 ].proc( uniformv[ md.rows - 2 ][ md.cols - 2 ].layer, location, count, GL_TRUE, reinterpret_cast<const Type *>(val) );
       } break;
       default:
         break;

@@ -46,6 +46,10 @@
 #include <X11/Xlib.h>
 #endif
 
+#if ! REGAL_SYS_WGL
+#include <unistd.h>
+#endif
+
 // Visual Studio with /W4 complains about unused function
 // parameters.
 

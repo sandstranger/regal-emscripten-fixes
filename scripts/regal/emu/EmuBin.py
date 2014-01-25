@@ -3,6 +3,6 @@
 binFormulae = {
     'ShaderBinary' : {
         'entries' : [ 'glShaderBinary(ARB|)' ],
-        'impl' : [ '_context->bin->ShaderBinary( _context, ${arg0plus} ); return;', ],
+        'impl' : [ 'self->ShaderBinary( ${arg0plus} ); return;', ],
     }
 }
