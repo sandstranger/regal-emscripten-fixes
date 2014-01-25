@@ -81,7 +81,8 @@ def apiRegalFunctionDefines(apis, args):
 
       name   = function.name
       params = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters)
+      p = [ '_%s' % p.name for p in function.parameters ]
+      callParams = ', '.join( p )
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -162,7 +163,6 @@ def apiDispatchTableDefineCode(apis, args, apiNames, structName):
         code += '    // %s\n\n' % category
 
       code += '    REGAL%sPROC %s;\n' % (name.upper(), name)
-      code += '    Layer * %s_layer;\n' % name
       code += '\n'
 
       categoryPrev = category

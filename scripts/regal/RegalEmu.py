@@ -75,8 +75,6 @@ def apiEmuProcsHeaderCode( e, apis, orig ):
   code +=     'void %sIntercept( Layer *layer, Dispatch::GL & dt );\n\n' % e['type']
 
   o = emuGetOriginateList( e['formulae'], apis )
-  for oe in orig:
-    code += '// %s\n' % oe
   for f in orig:
     if f not in o:
       o.append( f )
@@ -92,12 +90,12 @@ def apiEmuProcsHeaderCode( e, apis, orig ):
   code +=     '  }\n'
   code +=     '\n'
   for oe in o:
-    code +=   '  REGAL%sPROC %s;\n' % ( oe.upper(), oe )
+    code +=   '  REGAL%sPROC %s;' % ( oe.upper(), oe )
     code +=   '\n'
   code +=     '\n'
   code +=     '  void Initialize( Dispatch::GL & dt ) {\n'
   for oe in o:
-    code +=   '    %s = dt.%s;\n' % ( oe, oe )
+    code +=   '    %s = dt.%s;' % ( oe, oe )
     code +=   '\n'
   code +=     '  }\n'
   code +=     '};\n\n'

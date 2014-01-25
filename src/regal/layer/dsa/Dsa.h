@@ -647,7 +647,7 @@ namespace Emu {
       return true;
     }
     
-    void RestoreGet( RegalContext * ctx, GLenum pname ) {
+    void RestoreGet( GLenum pname ) {
       switch( pname ) {
         case GL_CURRENT_PROGRAM:
           RestoreGlslProgram();
@@ -723,7 +723,7 @@ namespace Emu {
       }
     }
     
-    GLboolean IsEnabledIndexed( RegalContext * ctx, GLenum pname, GLuint index ) {
+    GLboolean IsEnabledIndexed( GLenum pname, GLuint index ) {
       switch( pname ) {
         case GL_TEXTURE_1D:
         case GL_TEXTURE_2D:
@@ -746,7 +746,7 @@ namespace Emu {
       return GL_FALSE;
     }
     
-    void RestoreIsEnabled( RegalContext * ctx, GLenum pname ) {
+    void RestoreIsEnabled( GLenum pname ) {
       switch( pname ) {
         case GL_TEXTURE_1D:
         case GL_TEXTURE_2D:
