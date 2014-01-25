@@ -63,7 +63,7 @@ static void REGAL_CALL filt_glAccum(Layer *_layer, GLenum op, GLfloat value)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glAccum for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -83,9 +83,9 @@ static void REGAL_CALL filt_glActiveTextureARB(Layer *_layer, GLenum texture)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_arb_multitexture)
+  if (!self->GetContext()->info->gl_arb_multitexture)
   {
-    orig.glActiveTexture( _context,texture);
+    RglActiveTexture( orig,texture);
     return;
   }
 
@@ -100,9 +100,9 @@ static void REGAL_CALL filt_glAttachObjectARB(Layer *_layer, GLhandleARB contain
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    orig.glAttachShader( _context,containerObj, obj);
+    RglAttachShader( orig,containerObj, obj);
     return;
   }
 
@@ -117,9 +117,9 @@ static void REGAL_CALL filt_glBindAttribLocationARB(Layer *_layer, GLhandleARB p
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    orig.glBindAttribLocation( _context,programObj, index, name);
+    RglBindAttribLocation( orig,programObj, index, name);
     return;
   }
 
@@ -134,12 +134,12 @@ static void REGAL_CALL filt_glBindFramebuffer(Layer *_layer, GLenum target, GLui
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
+    const bool hasFBBlit = self->GetContext()->info->gl_ext_framebuffer_blit || self->GetContext()->info->gl_nv_framebuffer_blit || self->GetContext()->info->gl_version_major >= 3;
     if (!hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER)) target = GL_FRAMEBUFFER;
   }
-  if (_context->filt->BindFramebuffer(*_context, target, framebuffer))
+  if (self->BindFramebuffer(target, framebuffer))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -158,10 +158,9 @@ static void REGAL_CALL filt_glBindFramebufferEXT(Layer *_layer, GLenum target, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glBindFramebuffer( _context,target, framebuffer);
+    RglBindFramebuffer( orig,target, framebuffer);
     return;
   }
 
@@ -176,12 +175,12 @@ static void REGAL_CALL filt_glBindFramebufferOES(Layer *_layer, GLenum target, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;
+    const bool hasFBBlit = self->GetContext()->info->gl_ext_framebuffer_blit || self->GetContext()->info->gl_nv_framebuffer_blit || self->GetContext()->info->gl_version_major >= 3;
     if (!hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER)) target = GL_FRAMEBUFFER;
   }
-  if (_context->filt->BindFramebuffer(*_context, target, framebuffer))
+  if (self->BindFramebuffer(target, framebuffer))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -200,7 +199,7 @@ static void REGAL_CALL filt_glBindProgramARB(Layer *_layer, GLenum target, GLuin
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glBindProgramARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
     return;
@@ -217,10 +216,9 @@ static void REGAL_CALL filt_glBindRenderbufferEXT(Layer *_layer, GLenum target, 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glBindRenderbuffer( _context,target, renderbuffer);
+    RglBindRenderbuffer( orig,target, renderbuffer);
     return;
   }
 
@@ -235,7 +233,7 @@ static void REGAL_CALL filt_glBindTexture(Layer *_layer, GLenum target, GLuint t
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->BindTexture(*_context, target, texture))
+  if (self->BindTexture(target, texture))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -254,7 +252,7 @@ static void REGAL_CALL filt_glBitmap(Layer *_layer, GLsizei width, GLsizei heigh
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glBitmap for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -274,9 +272,9 @@ static void REGAL_CALL filt_glBlendColorEXT(Layer *_layer, GLclampf red, GLclamp
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    orig.glBlendColor( _context,red, green, blue, alpha);
+    RglBlendColor( orig,red, green, blue, alpha);
     return;
   }
 
@@ -291,9 +289,9 @@ static void REGAL_CALL filt_glBlendEquationEXT(Layer *_layer, GLenum mode)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    orig.glBlendEquation( _context,mode);
+    RglBlendEquation( orig,mode);
     return;
   }
 
@@ -308,10 +306,10 @@ static void REGAL_CALL filt_glBlitFramebuffer(Layer *_layer, GLint srcX0, GLint 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    if (_context->info->gl_nv_framebuffer_blit)  return orig.glBlitFramebufferNV( _context, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
-    if (_context->info->gl_ext_framebuffer_blit) return orig.glBlitFramebufferEXT( _context, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    if (self->GetContext()->info->gl_nv_framebuffer_blit)  return RglBlitFramebufferNV( orig, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    if (self->GetContext()->info->gl_ext_framebuffer_blit) return RglBlitFramebufferEXT( orig, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
   }
 
   RglBlitFramebuffer( orig, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter );
@@ -325,7 +323,7 @@ static void REGAL_CALL filt_glBlitFramebufferANGLE(Layer *_layer, GLint srcX0, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glBlitFramebufferANGLE for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -345,10 +343,9 @@ static void REGAL_CALL filt_glBlitFramebufferEXT(Layer *_layer, GLint srcX0, GLi
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_blit)
+  if (!self->GetContext()->info->gl_ext_framebuffer_blit)
   {
-    _context->emuLevel++;
-    orig.glBlitFramebuffer( _context,srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    RglBlitFramebuffer( orig,srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
     return;
   }
 
@@ -363,9 +360,9 @@ static void REGAL_CALL filt_glBufferDataARB(Layer *_layer, GLenum target, GLsize
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    orig.glBufferData( _context,target, size, data, usage);
+    RglBufferData( orig,target, size, data, usage);
     return;
   }
 
@@ -380,7 +377,7 @@ static void REGAL_CALL filt_glCallList(Layer *_layer, GLuint list)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glCallList for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -400,10 +397,9 @@ static GLenum REGAL_CALL filt_glCheckFramebufferStatusEXT(Layer *_layer, GLenum 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    return orig.glCheckFramebufferStatus( _context,target);
+    return RglCheckFramebufferStatus( orig,target);
   }
 
   return RglCheckFramebufferStatusEXT( orig, target );
@@ -417,7 +413,7 @@ static void REGAL_CALL filt_glClearAccum(Layer *_layer, GLfloat red, GLfloat gre
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glClearAccum for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -437,7 +433,7 @@ static void REGAL_CALL filt_glClientActiveTexture(Layer *_layer, GLenum texture)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glClientActiveTexture for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -457,10 +453,9 @@ static void REGAL_CALL filt_glClientActiveTextureARB(Layer *_layer, GLenum textu
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_arb_multitexture)
+  if (!self->GetContext()->info->gl_arb_multitexture)
   {
-    _context->emuLevel++;
-    orig.glClientActiveTexture( _context,texture);
+    RglClientActiveTexture( orig,texture);
     return;
   }
 
@@ -475,10 +470,10 @@ static void REGAL_CALL filt_glColorMaskIndexedEXT(Layer *_layer, GLuint buf, GLb
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
+  if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2)
   {
     if (!buf)  {
-      orig.glColorMask( _context,r, g, b, a);
+      RglColorMask( orig,r, g, b, a);
     }
     return;
   }
@@ -494,9 +489,9 @@ static void REGAL_CALL filt_glCompileShaderARB(Layer *_layer, GLhandleARB shader
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    orig.glCompileShader( _context,shaderObj);
+    RglCompileShader( orig,shaderObj);
     return;
   }
 
@@ -511,7 +506,7 @@ static void REGAL_CALL filt_glCopyPixels(Layer *_layer, GLint x, GLint y, GLsize
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glCopyPixels for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -531,9 +526,9 @@ static GLhandleARB REGAL_CALL filt_glCreateProgramObjectARB(Layer *_layer)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    return orig.glCreateProgram( _context );
+    return RglCreateProgram( orig );
   }
 
   return RglCreateProgramObjectARB( orig );
@@ -547,10 +542,9 @@ static void REGAL_CALL filt_glDeleteFramebuffersEXT(Layer *_layer, GLsizei n, co
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glDeleteFramebuffers( _context,n, framebuffers);
+    RglDeleteFramebuffers( orig,n, framebuffers);
     return;
   }
 
@@ -565,7 +559,7 @@ static void REGAL_CALL filt_glDeleteLists(Layer *_layer, GLuint list, GLsizei ra
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glDeleteLists for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -585,10 +579,9 @@ static void REGAL_CALL filt_glDeleteRenderbuffersEXT(Layer *_layer, GLsizei n, c
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glDeleteRenderbuffers( _context,n, renderbuffers);
+    RglDeleteRenderbuffers( orig,n, renderbuffers);
     return;
   }
 
@@ -603,10 +596,10 @@ static void REGAL_CALL filt_glDisableIndexedEXT(Layer *_layer, GLenum target, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
+  if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2))
   {
     if (!index)  {
-      orig.glDisable( _context,target);
+      RglDisable( orig,target);
     }
     return;
   }
@@ -622,10 +615,10 @@ static void REGAL_CALL filt_glDrawBuffer(Layer *_layer, GLenum mode)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
-      return orig.glDrawBuffer( _context, mode );
+    if (self->GetContext()->info->gl_nv_framebuffer_blit || self->GetContext()->info->gl_ext_framebuffer_blit)
+      return RglDrawBuffer( orig, mode );
   }
 
   RglDrawBuffer( orig, mode );
@@ -639,18 +632,18 @@ static void REGAL_CALL filt_glDrawBuffers(Layer *_layer, GLsizei n, const GLenum
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->DrawBuffers(*_context, n, bufs))
+  if (self->DrawBuffers(n, bufs))
   {
     #if REGAL_BREAK
     Break::Filter();
     #endif
     return ;
   }
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    if (_context->info->gl_nv_draw_buffers)
+    if (self->GetContext()->info->gl_nv_draw_buffers)
     {
-      orig.glDrawBuffersNV( _context, n, bufs );
+      RglDrawBuffersNV( orig, n, bufs );
       return;
     }
   }
@@ -666,10 +659,9 @@ static void REGAL_CALL filt_glDrawBuffersARB(Layer *_layer, GLsizei n, const GLe
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_arb_draw_buffers)
+  if (!self->GetContext()->info->gl_arb_draw_buffers)
   {
-    _context->emuLevel++;
-    orig.glDrawBuffers( _context,n, bufs);
+    RglDrawBuffers( orig,n, bufs);
     return;
   }
 
@@ -684,10 +676,9 @@ static void REGAL_CALL filt_glDrawBuffersATI(Layer *_layer, GLsizei n, const GLe
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ati_draw_buffers)
+  if (!self->GetContext()->info->gl_ati_draw_buffers)
   {
-    _context->emuLevel++;
-    orig.glDrawBuffers( _context,n, bufs);
+    RglDrawBuffers( orig,n, bufs);
     return;
   }
 
@@ -702,7 +693,7 @@ static void REGAL_CALL filt_glDrawPixels(Layer *_layer, GLsizei width, GLsizei h
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glDrawPixels for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -722,9 +713,9 @@ static void REGAL_CALL filt_glDrawRangeElements(Layer *_layer, GLenum mode, GLui
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    return orig.glDrawElements( _context,mode, count, type, indices);
+    return RglDrawElements( orig,mode, count, type, indices);
   }
 
   RglDrawRangeElements( orig, mode, start, end, count, type, indices );
@@ -738,11 +729,11 @@ static void REGAL_CALL filt_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_arb_draw_elements_base_vertex)
+  if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_arb_draw_elements_base_vertex)
   {
     if (basevertex==0)
     {
-      return orig.glDrawElements( _context,mode, count, type, indices);
+      return RglDrawElements( orig,mode, count, type, indices);
     }
     else
     {
@@ -762,7 +753,7 @@ static void REGAL_CALL filt_glEdgeFlag(Layer *_layer, GLboolean flag)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEdgeFlag for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -782,10 +773,10 @@ static void REGAL_CALL filt_glEnableIndexedEXT(Layer *_layer, GLenum target, GLu
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))
+  if (target==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2))
   {
     if (!index)  {
-      orig.glEnable( _context,target);
+      RglEnable( orig,target);
     }
     return;
   }
@@ -801,7 +792,7 @@ static void REGAL_CALL filt_glEndList(Layer *_layer)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEndList for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -821,7 +812,7 @@ static void REGAL_CALL filt_glEvalCoord1d(Layer *_layer, GLdouble u)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord1d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -841,7 +832,7 @@ static void REGAL_CALL filt_glEvalCoord1dv(Layer *_layer, const GLdouble *u)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord1dv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -861,7 +852,7 @@ static void REGAL_CALL filt_glEvalCoord1f(Layer *_layer, GLfloat u)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord1f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -881,7 +872,7 @@ static void REGAL_CALL filt_glEvalCoord1fv(Layer *_layer, const GLfloat *u)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord1fv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -901,7 +892,7 @@ static void REGAL_CALL filt_glEvalCoord2d(Layer *_layer, GLdouble u, GLdouble v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord2d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -921,7 +912,7 @@ static void REGAL_CALL filt_glEvalCoord2dv(Layer *_layer, const GLdouble *u)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord2dv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -941,7 +932,7 @@ static void REGAL_CALL filt_glEvalCoord2f(Layer *_layer, GLfloat u, GLfloat v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord2f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -961,7 +952,7 @@ static void REGAL_CALL filt_glEvalCoord2fv(Layer *_layer, const GLfloat *u)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalCoord2fv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -981,7 +972,7 @@ static void REGAL_CALL filt_glEvalMesh1(Layer *_layer, GLenum mode, GLint i1, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalMesh1 for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1001,7 +992,7 @@ static void REGAL_CALL filt_glEvalMesh2(Layer *_layer, GLenum mode, GLint i1, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalMesh2 for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1021,7 +1012,7 @@ static void REGAL_CALL filt_glEvalPoint1(Layer *_layer, GLint i)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalPoint1 for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1041,7 +1032,7 @@ static void REGAL_CALL filt_glEvalPoint2(Layer *_layer, GLint i, GLint j)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glEvalPoint2 for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1061,8 +1052,8 @@ static void REGAL_CALL filt_glFramebufferRenderbuffer(Layer *_layer, GLenum targ
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-    orig.glFramebufferRenderbuffer( _context,target, attachment, renderbuffertarget, renderbuffer);
+  if (self->FramebufferAttachmentSupported(attachment))
+    RglFramebufferRenderbuffer( orig,target, attachment, renderbuffertarget, renderbuffer);
   return;
 
   RglFramebufferRenderbuffer( orig, target, attachment, renderbuffertarget, renderbuffer );
@@ -1076,10 +1067,9 @@ static void REGAL_CALL filt_glFramebufferRenderbufferEXT(Layer *_layer, GLenum t
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glFramebufferRenderbuffer( _context,target, attachment, renderbuffertarget, renderbuffer);
+    RglFramebufferRenderbuffer( orig,target, attachment, renderbuffertarget, renderbuffer);
     return;
   }
 
@@ -1094,8 +1084,8 @@ static void REGAL_CALL filt_glFramebufferTexture1D(Layer *_layer, GLenum target,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-    orig.glFramebufferTexture1D( _context,target, attachment, textarget, texture, level);
+  if (self->FramebufferAttachmentSupported(attachment))
+    RglFramebufferTexture1D( orig,target, attachment, textarget, texture, level);
   return;
 
   RglFramebufferTexture1D( orig, target, attachment, textarget, texture, level );
@@ -1109,10 +1099,9 @@ static void REGAL_CALL filt_glFramebufferTexture1DEXT(Layer *_layer, GLenum targ
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glFramebufferTexture1D( _context,target, attachment, textarget, texture, level);
+    RglFramebufferTexture1D( orig,target, attachment, textarget, texture, level);
     return;
   }
 
@@ -1127,7 +1116,7 @@ static void REGAL_CALL filt_glFramebufferTexture2D(Layer *_layer, GLenum target,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->FramebufferTexture2D(*_context, target, attachment, textarget, texture, level))
+  if (self->FramebufferTexture2D(target, attachment, textarget, texture, level))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1146,10 +1135,9 @@ static void REGAL_CALL filt_glFramebufferTexture2DEXT(Layer *_layer, GLenum targ
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glFramebufferTexture2D( _context,target, attachment, textarget, texture, level);
+    RglFramebufferTexture2D( orig,target, attachment, textarget, texture, level);
     return;
   }
 
@@ -1164,8 +1152,8 @@ static void REGAL_CALL filt_glFramebufferTexture3D(Layer *_layer, GLenum target,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->FramebufferAttachmentSupported(*_context, attachment))
-    orig.glFramebufferTexture3D( _context,target, attachment, textarget, texture, level, layer);
+  if (self->FramebufferAttachmentSupported(attachment))
+    RglFramebufferTexture3D( orig,target, attachment, textarget, texture, level, layer);
   return;
 
   RglFramebufferTexture3D( orig, target, attachment, textarget, texture, level, layer );
@@ -1179,10 +1167,9 @@ static void REGAL_CALL filt_glFramebufferTexture3DEXT(Layer *_layer, GLenum targ
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glFramebufferTexture3D( _context,target, attachment, textarget, texture, level, zoffset);
+    RglFramebufferTexture3D( orig,target, attachment, textarget, texture, level, zoffset);
     return;
   }
 
@@ -1197,10 +1184,9 @@ static void REGAL_CALL filt_glGenFramebuffersEXT(Layer *_layer, GLsizei n, GLuin
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glGenFramebuffers( _context,n, framebuffers);
+    RglGenFramebuffers( orig,n, framebuffers);
     return;
   }
 
@@ -1215,7 +1201,7 @@ static GLuint REGAL_CALL filt_glGenLists(Layer *_layer, GLsizei range)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glGenLists for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1235,7 +1221,7 @@ static void REGAL_CALL filt_glGenProgramsARB(Layer *_layer, GLsizei n, GLuint *p
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glGenProgramsARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
     return;
@@ -1252,10 +1238,9 @@ static void REGAL_CALL filt_glGenRenderbuffersEXT(Layer *_layer, GLsizei n, GLui
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glGenRenderbuffers( _context,n, renderbuffers);
+    RglGenRenderbuffers( orig,n, renderbuffers);
     return;
   }
 
@@ -1270,7 +1255,7 @@ static void REGAL_CALL filt_glGenSamplers(Layer *_layer, GLsizei count, GLuint *
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glGenSamplers for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -1290,7 +1275,7 @@ static void REGAL_CALL filt_glGenerateMipmap(Layer *_layer, GLenum target)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->GenerateMipmap(*_context, target))
+  if (self->GenerateMipmap(target))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1309,10 +1294,9 @@ static void REGAL_CALL filt_glGenerateMipmapEXT(Layer *_layer, GLenum target)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glGenerateMipmap( _context,target);
+    RglGenerateMipmap( orig,target);
     return;
   }
 
@@ -1327,10 +1311,10 @@ static void REGAL_CALL filt_glGetBooleanIndexedvEXT(Layer *_layer, GLenum value,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
+  if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2)
   {
     if (!index)  {
-      orig.glGetBooleanv( _context,value,data);
+      RglGetBooleanv( orig,value,data);
     }
     return;
   }
@@ -1346,7 +1330,7 @@ static void REGAL_CALL filt_glGetBooleanv(Layer *_layer, GLenum pname, GLboolean
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->Get(*_context, pname, params))
+  if (self->Get(pname, params))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1365,7 +1349,7 @@ static void REGAL_CALL filt_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->Get(*_context, pname, params))
+  if (self->Get(pname, params))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1384,7 +1368,7 @@ static void REGAL_CALL filt_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *pa
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->Get(*_context, pname, params))
+  if (self->Get(pname, params))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1403,10 +1387,10 @@ static void REGAL_CALL filt_glGetFramebufferAttachmentParameteriv(Layer *_layer,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->filt->FramebufferAttachmentSupported(*_context, attachment))
+  if (!self->FramebufferAttachmentSupported(attachment))
     *params = 0;
   else
-    orig.glGetFramebufferAttachmentParameteriv( _context,target, attachment, pname, params);
+    RglGetFramebufferAttachmentParameteriv( orig,target, attachment, pname, params);
   return;
 
   RglGetFramebufferAttachmentParameteriv( orig, target, attachment, pname, params );
@@ -1420,10 +1404,9 @@ static void REGAL_CALL filt_glGetFramebufferAttachmentParameterivEXT(Layer *_lay
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glGetFramebufferAttachmentParameteriv( _context,target, attachment, pname, params);
+    RglGetFramebufferAttachmentParameteriv( orig,target, attachment, pname, params);
     return;
   }
 
@@ -1438,12 +1421,12 @@ static void REGAL_CALL filt_glGetInfoLogARB(Layer *_layer, GLhandleARB obj, GLsi
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    if (orig.glIsProgram( _context,obj))
-      orig.glGetProgramInfoLog( _context,obj, maxLength, length, infoLog);
+    if (RglIsProgram( orig,obj))
+      RglGetProgramInfoLog( orig,obj, maxLength, length, infoLog);
     else
-      orig.glGetShaderInfoLog( _context,obj, maxLength, length, infoLog);
+      RglGetShaderInfoLog( orig,obj, maxLength, length, infoLog);
     return;
   }
 
@@ -1458,7 +1441,7 @@ static void REGAL_CALL filt_glGetInteger64v(Layer *_layer, GLenum pname, GLint64
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->Get(*_context, pname, params))
+  if (self->Get(pname, params))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1477,10 +1460,10 @@ static void REGAL_CALL filt_glGetIntegerIndexedvEXT(Layer *_layer, GLenum value,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)
+  if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2)
   {
     if (!index)  {
-      orig.glGetIntegerv( _context,value,data);
+      RglGetIntegerv( orig,value,data);
     }
     return;
   }
@@ -1496,7 +1479,7 @@ static void REGAL_CALL filt_glGetIntegerv(Layer *_layer, GLenum pname, GLint *pa
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->Get(*_context, pname, params))
+  if (self->Get(pname, params))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1515,12 +1498,12 @@ static void REGAL_CALL filt_glGetObjectParameterivARB(Layer *_layer, GLhandleARB
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    if (orig.glIsProgram( _context,obj))
-      orig.glGetProgramiv( _context,obj, pname, params);
+    if (RglIsProgram( orig,obj))
+      RglGetProgramiv( orig,obj, pname, params);
     else
-      orig.glGetShaderiv( _context,obj, pname, params);
+      RglGetShaderiv( orig,obj, pname, params);
     return;
   }
 
@@ -1535,7 +1518,7 @@ static void REGAL_CALL filt_glGetProgramivARB(Layer *_layer, GLenum target, GLen
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glGetProgramivARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
     return;
@@ -1552,10 +1535,9 @@ static void REGAL_CALL filt_glGetRenderbufferParameterivEXT(Layer *_layer, GLenu
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glGetRenderbufferParameteriv( _context,target, pname, params);
+    RglGetRenderbufferParameteriv( orig,target, pname, params);
     return;
   }
 
@@ -1570,7 +1552,7 @@ static void REGAL_CALL filt_glGetTexImage(Layer *_layer, GLenum target, GLint le
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glGetTexImage for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -1590,7 +1572,7 @@ static void REGAL_CALL filt_glGetTexLevelParameterfv(Layer *_layer, GLenum targe
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glGetTexLevelParameterfv for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -1610,7 +1592,7 @@ static void REGAL_CALL filt_glGetTexLevelParameteriv(Layer *_layer, GLenum targe
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glGetTexLevelParameteriv for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -1630,7 +1612,7 @@ static void REGAL_CALL filt_glGetTexParameteriv(Layer *_layer, GLenum target, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->GetTexParameteriv(*_context, target, pname, params))
+  if (self->GetTexParameteriv(target, pname, params))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -1649,9 +1631,9 @@ static GLint REGAL_CALL filt_glGetUniformLocationARB(Layer *_layer, GLhandleARB 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    return orig.glGetUniformLocation( _context,programObj, name);
+    return RglGetUniformLocation( orig,programObj, name);
   }
 
   return RglGetUniformLocationARB( orig, programObj, name );
@@ -1665,10 +1647,10 @@ static GLboolean REGAL_CALL filt_glIsEnabledIndexedEXT(Layer *_layer, GLenum tar
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (target==GL_BLEND && !_context->info->gl_ext_draw_buffers2)
+  if (target==GL_BLEND && !self->GetContext()->info->gl_ext_draw_buffers2)
   {
     if (!index)  {
-      return orig.glIsEnabled( _context,target);
+      return RglIsEnabled( orig,target);
     }
     return GL_FALSE;
   }
@@ -1684,10 +1666,9 @@ static GLboolean REGAL_CALL filt_glIsFramebufferEXT(Layer *_layer, GLuint frameb
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    return orig.glIsFramebuffer( _context,framebuffer);
+    return RglIsFramebuffer( orig,framebuffer);
   }
 
   return RglIsFramebufferEXT( orig, framebuffer );
@@ -1701,10 +1682,9 @@ static GLboolean REGAL_CALL filt_glIsRenderbufferEXT(Layer *_layer, GLuint rende
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    return orig.glIsRenderbuffer( _context,renderbuffer);
+    return RglIsRenderbuffer( orig,renderbuffer);
   }
 
   return RglIsRenderbufferEXT( orig, renderbuffer );
@@ -1718,7 +1698,7 @@ static void REGAL_CALL filt_glLineStipple(Layer *_layer, GLint factor, GLushort 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glLineStipple for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1738,7 +1718,7 @@ static void REGAL_CALL filt_glLineWidth(Layer *_layer, GLfloat width)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isCore())
+  if (self->GetContext()->isCore())
   {
      Warning("Regal does not support glLineWidth for core profile - skipping.");
      #if REGAL_BREAK
@@ -1758,7 +1738,7 @@ static void REGAL_CALL filt_glMap1d(Layer *_layer, GLenum target, GLdouble u1, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMap1d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1778,7 +1758,7 @@ static void REGAL_CALL filt_glMap1f(Layer *_layer, GLenum target, GLfloat u1, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMap1f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1798,7 +1778,7 @@ static void REGAL_CALL filt_glMap2d(Layer *_layer, GLenum target, GLdouble u1, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMap2d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1818,7 +1798,7 @@ static void REGAL_CALL filt_glMap2f(Layer *_layer, GLenum target, GLfloat u1, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMap2f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1838,9 +1818,9 @@ static GLvoid *REGAL_CALL filt_glMapBuffer(Layer *_layer, GLenum target, GLenum 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    return orig.glMapBufferOES( _context,target, access);
+    return RglMapBufferOES( orig,target, access);
   }
 
   return RglMapBuffer( orig, target, access );
@@ -1854,9 +1834,9 @@ static GLvoid *REGAL_CALL filt_glMapBufferARB(Layer *_layer, GLenum target, GLen
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    return orig.glMapBufferOES( _context,target, access);
+    return RglMapBufferOES( orig,target, access);
   }
 
   return RglMapBufferARB( orig, target, access );
@@ -1870,7 +1850,7 @@ static void REGAL_CALL filt_glMapGrid1d(Layer *_layer, GLint un, GLdouble u1, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMapGrid1d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1890,7 +1870,7 @@ static void REGAL_CALL filt_glMapGrid1f(Layer *_layer, GLint un, GLfloat u1, GLf
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMapGrid1f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1910,7 +1890,7 @@ static void REGAL_CALL filt_glMapGrid2d(Layer *_layer, GLint un, GLdouble u1, GL
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMapGrid2d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1930,7 +1910,7 @@ static void REGAL_CALL filt_glMapGrid2f(Layer *_layer, GLint un, GLfloat u1, GLf
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glMapGrid2f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1950,7 +1930,7 @@ static void REGAL_CALL filt_glNewList(Layer *_layer, GLuint list, GLenum mode)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glNewList for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1970,7 +1950,7 @@ static void REGAL_CALL filt_glPixelStoref(Layer *_layer, GLenum pname, GLfloat p
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glPixelStoref for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -1990,7 +1970,7 @@ static void REGAL_CALL filt_glPixelStorei(Layer *_layer, GLenum pname, GLint par
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->PixelStorei(*_context, pname, param))
+  if (self->PixelStorei(pname, param))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -2009,7 +1989,7 @@ static void REGAL_CALL filt_glPixelTransferf(Layer *_layer, GLenum pname, GLfloa
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glPixelTransferf for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2029,7 +2009,7 @@ static void REGAL_CALL filt_glPixelTransferi(Layer *_layer, GLenum pname, GLint 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glPixelTransferi for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2049,7 +2029,7 @@ static void REGAL_CALL filt_glPixelZoom(Layer *_layer, GLfloat xfactor, GLfloat 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glPixelZoom for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2069,7 +2049,7 @@ static void REGAL_CALL filt_glPolygonMode(Layer *_layer, GLenum face, GLenum mod
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->PolygonMode(*_context, face, mode))
+  if (self->PolygonMode(face, mode))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -2088,7 +2068,7 @@ static void REGAL_CALL filt_glPopGroupMarkerEXT(Layer *_layer)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if( ! _context->info->gl_ext_debug_marker ) {
+  if( ! self->GetContext()->info->gl_ext_debug_marker ) {
     return;
   }
 
@@ -2103,7 +2083,7 @@ static void REGAL_CALL filt_glProgramStringARB(Layer *_layer, GLenum target, GLe
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glProgramStringARB (GL_ARB_vertex_program) for ES 2.0 context - skipping.");
     return;
@@ -2120,7 +2100,7 @@ static void REGAL_CALL filt_glPushGroupMarkerEXT(Layer *_layer, GLsizei length, 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if( ! _context->info->gl_ext_debug_marker ) {
+  if( ! self->GetContext()->info->gl_ext_debug_marker ) {
     return;
   }
 
@@ -2135,7 +2115,7 @@ static void REGAL_CALL filt_glRasterPos2d(Layer *_layer, GLdouble x, GLdouble y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2155,7 +2135,7 @@ static void REGAL_CALL filt_glRasterPos2dv(Layer *_layer, const GLdouble *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2dv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2175,7 +2155,7 @@ static void REGAL_CALL filt_glRasterPos2f(Layer *_layer, GLfloat x, GLfloat y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2195,7 +2175,7 @@ static void REGAL_CALL filt_glRasterPos2fv(Layer *_layer, const GLfloat *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2fv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2215,7 +2195,7 @@ static void REGAL_CALL filt_glRasterPos2i(Layer *_layer, GLint x, GLint y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2i for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2235,7 +2215,7 @@ static void REGAL_CALL filt_glRasterPos2iv(Layer *_layer, const GLint *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2iv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2255,7 +2235,7 @@ static void REGAL_CALL filt_glRasterPos2s(Layer *_layer, GLshort x, GLshort y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2s for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2275,7 +2255,7 @@ static void REGAL_CALL filt_glRasterPos2sv(Layer *_layer, const GLshort *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos2sv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2295,7 +2275,7 @@ static void REGAL_CALL filt_glRasterPos3d(Layer *_layer, GLdouble x, GLdouble y,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2315,7 +2295,7 @@ static void REGAL_CALL filt_glRasterPos3dv(Layer *_layer, const GLdouble *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3dv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2335,7 +2315,7 @@ static void REGAL_CALL filt_glRasterPos3f(Layer *_layer, GLfloat x, GLfloat y, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2355,7 +2335,7 @@ static void REGAL_CALL filt_glRasterPos3fv(Layer *_layer, const GLfloat *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3fv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2375,7 +2355,7 @@ static void REGAL_CALL filt_glRasterPos3i(Layer *_layer, GLint x, GLint y, GLint
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3i for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2395,7 +2375,7 @@ static void REGAL_CALL filt_glRasterPos3iv(Layer *_layer, const GLint *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3iv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2415,7 +2395,7 @@ static void REGAL_CALL filt_glRasterPos3s(Layer *_layer, GLshort x, GLshort y, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3s for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2435,7 +2415,7 @@ static void REGAL_CALL filt_glRasterPos3sv(Layer *_layer, const GLshort *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos3sv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2455,7 +2435,7 @@ static void REGAL_CALL filt_glRasterPos4d(Layer *_layer, GLdouble x, GLdouble y,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2475,7 +2455,7 @@ static void REGAL_CALL filt_glRasterPos4dv(Layer *_layer, const GLdouble *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4dv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2495,7 +2475,7 @@ static void REGAL_CALL filt_glRasterPos4f(Layer *_layer, GLfloat x, GLfloat y, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2515,7 +2495,7 @@ static void REGAL_CALL filt_glRasterPos4fv(Layer *_layer, const GLfloat *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4fv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2535,7 +2515,7 @@ static void REGAL_CALL filt_glRasterPos4i(Layer *_layer, GLint x, GLint y, GLint
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4i for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2555,7 +2535,7 @@ static void REGAL_CALL filt_glRasterPos4iv(Layer *_layer, const GLint *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4iv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2575,7 +2555,7 @@ static void REGAL_CALL filt_glRasterPos4s(Layer *_layer, GLshort x, GLshort y, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4s for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2595,7 +2575,7 @@ static void REGAL_CALL filt_glRasterPos4sv(Layer *_layer, const GLshort *v)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRasterPos4sv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2615,17 +2595,17 @@ static void REGAL_CALL filt_glReadBuffer(Layer *_layer, GLenum mode)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->ReadBuffer(*_context, mode))
+  if (self->ReadBuffer(mode))
   {
     #if REGAL_BREAK
     Break::Filter();
     #endif
     return ;
   }
-  if (_context->isES2() && _context->info->gl_nv_read_buffer)
-    orig.glReadBufferNV( _context,mode);
+  if (self->GetContext()->isES2() && self->GetContext()->info->gl_nv_read_buffer)
+    RglReadBufferNV( orig,mode);
   else
-    orig.glReadBuffer( _context,mode);
+    RglReadBuffer( orig,mode);
   return;
 
   RglReadBuffer( orig, mode );
@@ -2639,7 +2619,7 @@ static void REGAL_CALL filt_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLd
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRectd for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2659,7 +2639,7 @@ static void REGAL_CALL filt_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLflo
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRectf for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2679,7 +2659,7 @@ static void REGAL_CALL filt_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRecti for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2699,7 +2679,7 @@ static void REGAL_CALL filt_glRects(Layer *_layer, GLshort x1, GLshort y1, GLsho
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glRects for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2719,7 +2699,7 @@ static GLint REGAL_CALL filt_glRenderMode(Layer *_layer, GLenum mode)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->RenderMode(*_context, mode))
+  if (self->RenderMode(mode))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -2738,10 +2718,9 @@ static void REGAL_CALL filt_glRenderbufferStorageEXT(Layer *_layer, GLenum targe
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (!_context->info->gl_ext_framebuffer_object)
+  if (!self->GetContext()->info->gl_ext_framebuffer_object)
   {
-    _context->emuLevel++;
-    orig.glRenderbufferStorage( _context,target, internalformat, width, height);
+    RglRenderbufferStorage( orig,target, internalformat, width, height);
     return;
   }
 
@@ -2756,7 +2735,7 @@ static void REGAL_CALL filt_glShadeModel(Layer *_layer, GLenum mode)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glShadeModel for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2776,7 +2755,7 @@ static void REGAL_CALL filt_glTexImage1D(Layer *_layer, GLenum target, GLint lev
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glTexImage1D for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -2796,7 +2775,7 @@ static void REGAL_CALL filt_glTexImage2D(Layer *_layer, GLenum target, GLint lev
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->filt->TexImage2D(*_context, target, level, internalformat, width, height, border, format, type, pixels))
+  if (self->TexImage2D(target, level, internalformat, width, height, border, format, type, pixels))
   {
     #if REGAL_BREAK
     Break::Filter();
@@ -2815,7 +2794,7 @@ static void REGAL_CALL filt_glTexImage3D(Layer *_layer, GLenum target, GLint lev
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
     Warning("Regal does not support glTexImage3D for ES 2.0 - skipping.");
     #if REGAL_BREAK
@@ -2836,13 +2815,13 @@ static void REGAL_CALL filt_glTexParameterf(Layer *_layer, GLenum target, GLenum
 
   // impl
 
-  if (_context->filt->TexParameter(*_context, target, pname))
+  if (self->TexParameter(target, pname))
     return;
   GLfloat newparam;
-  if (_context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(param), newparam))
-    orig.glTexParameterf( _context, target, pname, newparam);
+  if (self->FilterTexParameter(target, pname, static_cast<GLfloat>(param), newparam))
+    RglTexParameterf( orig, target, pname, newparam);
   else
-    orig.glTexParameterf( _context, target, pname, param);
+    RglTexParameterf( orig, target, pname, param);
   return;
 
   RglTexParameterf( orig, target, pname, param );
@@ -2857,13 +2836,13 @@ static void REGAL_CALL filt_glTexParameterfv(Layer *_layer, GLenum target, GLenu
 
   // impl
 
-  if (_context->filt->TexParameter(*_context, target, pname))
+  if (self->TexParameter(target, pname))
     return;
   GLfloat newparam;
-  if (params && _context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(params[0]), newparam))
-    orig.glTexParameterf( _context, target, pname, newparam);
+  if (params && self->FilterTexParameter(target, pname, static_cast<GLfloat>(params[0]), newparam))
+    RglTexParameterf( orig, target, pname, newparam);
   else
-    orig.glTexParameterfv( _context, target, pname, params);
+    RglTexParameterfv( orig, target, pname, params);
   return;
 
   RglTexParameterfv( orig, target, pname, params );
@@ -2878,13 +2857,13 @@ static void REGAL_CALL filt_glTexParameteri(Layer *_layer, GLenum target, GLenum
 
   // impl
 
-  if (_context->filt->TexParameter(*_context, target, pname))
+  if (self->TexParameter(target, pname))
     return;
   GLfloat newparam;
-  if (_context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(param), newparam))
-    orig.glTexParameterf( _context, target, pname, newparam);
+  if (self->FilterTexParameter(target, pname, static_cast<GLfloat>(param), newparam))
+    RglTexParameterf( orig, target, pname, newparam);
   else
-    orig.glTexParameteri( _context, target, pname, param);
+    RglTexParameteri( orig, target, pname, param);
   return;
 
   RglTexParameteri( orig, target, pname, param );
@@ -2899,13 +2878,13 @@ static void REGAL_CALL filt_glTexParameteriv(Layer *_layer, GLenum target, GLenu
 
   // impl
 
-  if (_context->filt->TexParameter(*_context, target, pname))
+  if (self->TexParameter(target, pname))
     return;
   GLfloat newparam;
-  if (params && _context->filt->FilterTexParameter(*_context, target, pname, static_cast<GLfloat>(params[0]), newparam))
-    orig.glTexParameterf( _context, target, pname, newparam);
+  if (params && self->FilterTexParameter(target, pname, static_cast<GLfloat>(params[0]), newparam))
+    RglTexParameterf( orig, target, pname, newparam);
   else
-    orig.glTexParameteriv( _context, target, pname, params);
+    RglTexParameteriv( orig, target, pname, params);
   return;
 
   RglTexParameteriv( orig, target, pname, params );
@@ -2919,9 +2898,9 @@ static void REGAL_CALL filt_glUniform1iARB(Layer *_layer, GLint location, GLint 
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || !_context->info->gl_arb_shader_objects)
+  if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)
   {
-    orig.glUniform1i( _context,location, v0);
+    RglUniform1i( orig,location, v0);
     return;
   }
 
@@ -2936,9 +2915,9 @@ static GLboolean REGAL_CALL filt_glUnmapBuffer(Layer *_layer, GLenum target)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    return orig.glUnmapBufferOES( _context,target);
+    return RglUnmapBufferOES( orig,target);
   }
 
   return RglUnmapBuffer( orig, target );
@@ -2952,9 +2931,9 @@ static GLboolean REGAL_CALL filt_glUnmapBufferARB(Layer *_layer, GLenum target)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2())
+  if (self->GetContext()->isES2())
   {
-    return orig.glUnmapBufferOES( _context,target);
+    return RglUnmapBufferOES( orig,target);
   }
 
   return RglUnmapBufferARB( orig, target );
@@ -2968,7 +2947,7 @@ static void REGAL_CALL filt_glWindowPos2d(Layer *_layer, GLdouble x, GLdouble y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -2988,7 +2967,7 @@ static void REGAL_CALL filt_glWindowPos2dv(Layer *_layer, const GLdouble *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2dv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3008,7 +2987,7 @@ static void REGAL_CALL filt_glWindowPos2f(Layer *_layer, GLfloat x, GLfloat y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3028,7 +3007,7 @@ static void REGAL_CALL filt_glWindowPos2fv(Layer *_layer, const GLfloat *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2fv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3048,7 +3027,7 @@ static void REGAL_CALL filt_glWindowPos2i(Layer *_layer, GLint x, GLint y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2i for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3068,7 +3047,7 @@ static void REGAL_CALL filt_glWindowPos2iv(Layer *_layer, const GLint *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2iv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3088,7 +3067,7 @@ static void REGAL_CALL filt_glWindowPos2s(Layer *_layer, GLshort x, GLshort y)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2s for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3108,7 +3087,7 @@ static void REGAL_CALL filt_glWindowPos2sv(Layer *_layer, const GLshort *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos2sv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3128,7 +3107,7 @@ static void REGAL_CALL filt_glWindowPos3d(Layer *_layer, GLdouble x, GLdouble y,
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3d for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3148,7 +3127,7 @@ static void REGAL_CALL filt_glWindowPos3dv(Layer *_layer, const GLdouble *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3dv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3168,7 +3147,7 @@ static void REGAL_CALL filt_glWindowPos3f(Layer *_layer, GLfloat x, GLfloat y, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3f for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3188,7 +3167,7 @@ static void REGAL_CALL filt_glWindowPos3fv(Layer *_layer, const GLfloat *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3fv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3208,7 +3187,7 @@ static void REGAL_CALL filt_glWindowPos3i(Layer *_layer, GLint x, GLint y, GLint
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3i for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3228,7 +3207,7 @@ static void REGAL_CALL filt_glWindowPos3iv(Layer *_layer, const GLint *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3iv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3248,7 +3227,7 @@ static void REGAL_CALL filt_glWindowPos3s(Layer *_layer, GLshort x, GLshort y, G
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3s for core or ES2 profiles - skipping.");
      #if REGAL_BREAK
@@ -3268,7 +3247,7 @@ static void REGAL_CALL filt_glWindowPos3sv(Layer *_layer, const GLshort *p)
   FiltOriginate & orig = self->orig;
 
   // impl
-  if (_context->isES2() || _context->isCore())
+  if (self->GetContext()->isES2() || self->GetContext()->isCore())
   {
      Warning("Regal does not support glWindowPos3sv for core or ES2 profiles - skipping.");
      #if REGAL_BREAK

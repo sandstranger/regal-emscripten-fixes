@@ -47,7 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
-#include "RegalEmuProcsFilt.h"
+#include "FiltProcs.h"
 #include "RegalBreak.h"
 
 REGAL_GLOBAL_END
@@ -56,56 +56,51 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-  struct Filt
+  struct Filt : public Layer
   {
-    Filt()
-    : fboID(0)
-    {
+    Filt( RegalContext * ctx ) : Layer( ctx ), fboID(0) {}
+
+    virtual std::string GetName() { return "filt"; }
+    virtual bool Initialize( const std::string & instanceInfo ) {
+      ResetInterception();
+      return true;
     }
-
-    void
-    Init(RegalContext &ctx)
-    {
-      orig.Initialize( ctx.dispatchGL );
-      EmuProcsInterceptFilt( ctx.dispatchGL );
+    virtual void ResetInterception() {
+      RegalContext * ctx = this->GetContext();
+      orig.Initialize( ctx->dispatchGL );
+      FiltIntercept( this, ctx->dispatchGL );
     }
+    
+    bool BindTexture(GLenum target, GLuint name );
+    bool BindFramebuffer(GLenum target, GLuint framebuffer);
+    bool DrawBuffers(GLsizei n, const GLenum *bufs);
 
-    void
-    Cleanup(RegalContext &ctx)
-    {
-      UNUSED_PARAMETER(ctx);
-    }
-
-    bool BindTexture(const RegalContext &ctx, GLenum target, GLuint name );
-    bool BindFramebuffer(const RegalContext &ctx, GLenum target, GLuint framebuffer);
-    bool DrawBuffers(const RegalContext &ctx, GLsizei n, const GLenum *bufs);
-
-    template <typename T> bool Get(const RegalContext &ctx, GLenum pname, T *params)
+    template <typename T> bool Get(GLenum pname, T *params)
     {
       int retVal;
-      if (FilterGet(ctx,pname,retVal)) {
+      if (FilterGet(pname,retVal)) {
         params[0] = T(retVal);
         return true;
       }
       return false;
     }
 
-    bool GetTexParameteriv   (const RegalContext &ctx, GLenum target, GLenum pname, GLint *params);
-    bool TexParameter        (const RegalContext &ctx, GLenum target, GLenum pname);
-    bool FilterTexParameter  (const RegalContext &ctx, GLenum target, GLenum pname, GLfloat param, GLfloat &newParam);
-    bool FramebufferTexture2D(const RegalContext &ctx, GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
-    bool GenerateMipmap(const RegalContext &ctx, GLenum target);
-    bool PolygonMode (const RegalContext &ctx, GLenum face, GLenum mode);
-    bool ReadBuffer  (const RegalContext &ctx, GLenum src);
-    bool RenderMode  (const RegalContext &ctx, GLenum mode);
-    bool PixelStorei (const RegalContext &ctx, GLenum pname, GLint param);
-    bool FramebufferAttachmentSupported(const RegalContext &ctx, GLenum attachment);
+    bool GetTexParameteriv   (GLenum target, GLenum pname, GLint *params);
+    bool TexParameter        (GLenum target, GLenum pname);
+    bool FilterTexParameter  (GLenum target, GLenum pname, GLfloat param, GLfloat &newParam);
+    bool FramebufferTexture2D(GLenum target, GLenum attachment, GLenum textarget, GLuint texture, GLint level);
+    bool GenerateMipmap(GLenum target);
+    bool PolygonMode (GLenum face, GLenum mode);
+    bool ReadBuffer  (GLenum src);
+    bool RenderMode  (GLenum mode);
+    bool PixelStorei (GLenum pname, GLint param);
+    bool FramebufferAttachmentSupported(GLenum attachment);
 
-    bool FilterGet   (const RegalContext &ctx, GLenum pname, int &retVal);
+    bool FilterGet   (GLenum pname, int &retVal);
 
-    bool TexImage2D  (const RegalContext &ctx, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data);
+    bool TexImage2D  (GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data);
 
-    EmuProcsOriginateFilt orig;
+    FiltOriginate orig;
     
   private:
     GLuint fboID;

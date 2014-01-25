@@ -37,7 +37,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
-#include "RegalFilt.h"
+#include "Filt.h"
 #include "RegalEmuInfo.h"
 #include "RegalToken.h"
 
@@ -50,13 +50,13 @@ namespace Emu {
   using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
   using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
 
-  bool Filt::BindTexture(const RegalContext &ctx, GLenum target, GLuint name)
+  bool Filt::BindTexture(GLenum target, GLuint name)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
     UNUSED_PARAMETER(name);
 
-    if (ctx.isES2())
+    if (GetContext()->isES2())
     {
       switch ( target )
       {
@@ -72,7 +72,7 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::BindFramebuffer(const RegalContext &ctx, GLenum target, GLuint framebuffer)
+  bool Filt::BindFramebuffer(GLenum target, GLuint framebuffer)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
@@ -83,11 +83,11 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::DrawBuffers(const RegalContext &ctx, GLsizei n, const GLenum *bufs)
+  bool Filt::DrawBuffers(GLsizei n, const GLenum *bufs)
   {
     UNUSED_PARAMETER(ctx);
 
-    if (!ctx.isES2())
+    if (!GetContext()->isES2())
       return false;
 
     for (GLsizei i = 0; i < n; ++i)
@@ -102,16 +102,14 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::TexParameter(const RegalContext &ctx, GLenum target, GLenum pname)
+  bool Filt::TexParameter(GLenum target, GLenum pname)
   {
     UNUSED_PARAMETER(target);
-
-    RegalAssert(ctx.info.get());
 
     // ES 2.0 does not support GL_TEXTURE_WRAP_R, filter it out
     // See: http://www.khronos.org/opengles/sdk/docs/man/xhtml/glTexParameter.xml
 
-    if (ctx.isES2())
+    if (GetContext()->isES2())
       switch (pname)
       {
         case GL_TEXTURE_MIN_FILTER:
@@ -123,7 +121,7 @@ namespace Emu {
         // sRGB is supported for Tegra 4 onwards
 
         case GL_TEXTURE_SRGB_DECODE_EXT:
-          if (ctx.info->gl_ext_texture_srgb_decode)
+          if (GetContext()->info->gl_ext_texture_srgb_decode)
             return false;
 
         // GL_EXT_shadow_samplers for Tegra 4
@@ -131,7 +129,7 @@ namespace Emu {
 
         case GL_TEXTURE_COMPARE_MODE_EXT:
         case GL_TEXTURE_COMPARE_FUNC_EXT:
-          if (ctx.info->gl_ext_shadow_samplers)
+          if (GetContext()->info->gl_ext_shadow_samplers)
             return false;
 
         default:
@@ -142,12 +140,12 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::FilterTexParameter(const RegalContext &ctx, GLenum target, GLenum pname, GLfloat param, GLfloat &newParam)
+  bool Filt::FilterTexParameter(GLenum target, GLenum pname, GLfloat param, GLfloat &newParam)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
 
-    if (!ctx.isES2() && !ctx.isCore())
+    if (!GetContext()->isES2() && !GetContext()->isCore())
       return false;
 
     switch (pname)
@@ -171,14 +169,14 @@ namespace Emu {
     return false;
   }
 
-   bool Filt::GetTexParameteriv(const RegalContext &ctx, GLenum target, GLenum pname, GLint *params)
+   bool Filt::GetTexParameteriv(GLenum target, GLenum pname, GLint *params)
    {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
     UNUSED_PARAMETER(pname);
     UNUSED_PARAMETER(params);
 
-    if (!ctx.isES2())
+    if (!GetContext()->isES2())
       return false;
 
     switch (target)
@@ -194,25 +192,24 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::FramebufferTexture2D(const RegalContext &ctx, GLenum target, GLenum attachment,
+  bool Filt::FramebufferTexture2D(GLenum target, GLenum attachment,
                                   GLenum textarget, GLuint texture, GLint level)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
     UNUSED_PARAMETER(attachment);
     UNUSED_PARAMETER(textarget);
     UNUSED_PARAMETER(texture);
     UNUSED_PARAMETER(level);
 
-    if (!FramebufferAttachmentSupported(ctx, attachment))
+    if (!FramebufferAttachmentSupported(attachment))
     {
       return true;
     }
 
-    if (!ctx.isES2())
+    if (!GetContext()->isES2())
       return false;
 
-    if ((level > 0) && !ctx.info->gl_oes_fbo_render_mipmap)
+    if ((level > 0) && !GetContext()->info->gl_oes_fbo_render_mipmap)
     {
       Warning("glFramebufferTexture2D with level > 0 not supported for ES 2.0 without OES_fbo_render_mipmap.");
       return true;
@@ -240,12 +237,12 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::GenerateMipmap(const RegalContext &ctx, GLenum target)
+  bool Filt::GenerateMipmap(GLenum target)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
 
-    if (!ctx.isES2())
+    if (!GetContext()->isES2())
       return false;
 
     switch (target)
@@ -255,7 +252,7 @@ namespace Emu {
         break;
 
       case GL_TEXTURE_2D_ARRAY:
-        if (!ctx.info->gl_nv_texture_array)
+        if (!GetContext()->info->gl_nv_texture_array)
         {
           Warning("glGenerateMipmap(GL_TEXTURE_2D_ARRAY) not supported for ES 2.0 without NV_texture_array.");
           return true;
@@ -270,12 +267,12 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::ReadBuffer(const RegalContext &ctx, GLenum src)
+  bool Filt::ReadBuffer(GLenum src)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(src);
 
-    if (!ctx.isES2() || !ctx.info->gl_nv_read_buffer)
+    if (!GetContext()->isES2() || !GetContext()->info->gl_nv_read_buffer)
       return false;
 
     switch (src)
@@ -288,7 +285,7 @@ namespace Emu {
       // GL_FRONT may require NV_read_buffer_front, depending whether the context is
       // double buffered. Let's output a warning but still pass it through
       case GL_FRONT:
-        if (!ctx.info->gl_nv_read_buffer_front)
+        if (!GetContext()->info->gl_nv_read_buffer_front)
           Warning("glReadBuffer(GL_FRONT) may not work on ES 2 without NV_read_buffer_front, depending on context buffering.");
         break;
 
@@ -307,7 +304,7 @@ namespace Emu {
       case GL_COLOR_ATTACHMENT13:
       case GL_COLOR_ATTACHMENT14:
       case GL_COLOR_ATTACHMENT15:
-        if (!ctx.info->gl_nv_draw_buffers)
+        if (!GetContext()->info->gl_nv_draw_buffers)
         {
           Warning("glReadBuffer(GL_COLOR_ATTACHMENT1+) not supported for ES 2 without NV_draw_buffers.");
           return true;
@@ -322,12 +319,12 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::RenderMode(const RegalContext &ctx, GLenum mode)
+  bool Filt::RenderMode(GLenum mode)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(mode);
 
-    if (ctx.isCore() || ctx.isES2())
+    if (GetContext()->isCore() || GetContext()->isES2())
       if (mode!=GL_RENDER)
       {
         Warning("Regal does not support ", GLenumToString(mode), " render mode for core or ES 2.0 profiles, only GL_RENDER is supported in those profiles - skipping.");
@@ -337,21 +334,21 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::FramebufferAttachmentSupported(const RegalContext &ctx, GLenum attachment)
+  bool Filt::FramebufferAttachmentSupported(GLenum attachment)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(attachment);
 
     // If we're running on a non-ES context, then all attachments from EXT_framebuffer_object
     // are supported
-    if (!ctx.isES2())
+    if (!GetContext()->isES2())
       return true;
 
     // COLOR_ATTACHMENT1 and up not supported in base ES 2.0. Need either
     // NV_fbo_color_attachments, or EXT_draw_buffers (not yet checked by Regal)
     if ((attachment > GL_COLOR_ATTACHMENT0) &&
         (attachment <= GL_COLOR_ATTACHMENT15) &&
-        !(ctx.info->gl_nv_fbo_color_attachments /*|| ctx.info->gl_ext_draw_buffers*/))
+        !(GetContext()->info->gl_nv_fbo_color_attachments /*|| GetContext()->info->gl_ext_draw_buffers*/))
     {
       Warning("GL_COLOR_ATTACHMENT1+ not supported for ES 2.0 without NV_fbo_color_attachments or EXT_draw_buffers.");
       return false;
@@ -360,13 +357,13 @@ namespace Emu {
     return true;
   }
 
-  bool Filt::PixelStorei(const RegalContext &ctx, GLenum pname, GLint param)
+  bool Filt::PixelStorei(GLenum pname, GLint param)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(pname);
     UNUSED_PARAMETER(param);
 
-    if (ctx.isES2())
+    if (GetContext()->isES2())
     {
       switch (pname)
       {
@@ -377,7 +374,7 @@ namespace Emu {
         case GL_UNPACK_ROW_LENGTH_EXT:
         case GL_UNPACK_SKIP_ROWS_EXT:
         case GL_UNPACK_SKIP_PIXELS_EXT:
-          if (!ctx.info->gl_ext_unpack_subimage)
+          if (!GetContext()->info->gl_ext_unpack_subimage)
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without EXT_unpack_subimage.");
@@ -387,7 +384,7 @@ namespace Emu {
 
         case GL_UNPACK_SKIP_IMAGES_NV:
         case GL_UNPACK_IMAGE_HEIGHT_NV:
-          if (!ctx.info->gl_ext_unpack_subimage || !ctx.info->gl_nv_texture_array)
+          if (!GetContext()->info->gl_ext_unpack_subimage || !GetContext()->info->gl_nv_texture_array)
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without EXT_unpack_subimage and NV_texture_array.");
@@ -398,7 +395,7 @@ namespace Emu {
         case GL_PACK_ROW_LENGTH_NV:
         case GL_PACK_SKIP_ROWS_NV:
         case GL_PACK_SKIP_PIXELS_NV:
-          if (!ctx.info->gl_nv_pack_subimage)
+          if (!GetContext()->info->gl_nv_pack_subimage)
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without NV_pack_subimage.");
@@ -408,7 +405,7 @@ namespace Emu {
 
         case GL_PACK_IMAGE_HEIGHT:
         case GL_PACK_SKIP_IMAGES:
-          if (!ctx.info->gl_nv_pack_subimage || !ctx.info->gl_nv_texture_array)
+          if (!GetContext()->info->gl_nv_pack_subimage || !GetContext()->info->gl_nv_texture_array)
           {
             Warning("glPixelStorei ", GLenumToString(pname),
                     " not supported for ES 2.0 without NV_pack_subimage and NV_texture_array.");
@@ -425,13 +422,13 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::PolygonMode(const RegalContext &ctx, GLenum face, GLenum mode)
+  bool Filt::PolygonMode(GLenum face, GLenum mode)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(face);
     UNUSED_PARAMETER(mode);
 
-    if (ctx.isCore())
+    if (GetContext()->isCore())
     {
       if (face!=GL_FRONT_AND_BACK)
       {
@@ -440,7 +437,7 @@ namespace Emu {
       }
     }
 
-    if (ctx.isES2())
+    if (GetContext()->isES2())
     {
       Warning("Regal does not support glPolygonMode for ES 2.0 - skipping.");
       return true;
@@ -449,13 +446,12 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::FilterGet(const RegalContext &ctx, GLenum pname, int &retVal)
+  bool Filt::FilterGet(GLenum pname, int &retVal)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(pname);
 
     bool filtered = false;
-    if (ctx.isCore() || ctx.isES2())
+    if (GetContext()->isCore() || GetContext()->isES2())
     {
       filtered = true;
       switch (pname )
@@ -463,8 +459,8 @@ namespace Emu {
         case GL_MAX_PIXEL_MAP_TABLE:           retVal = 256;  break;
         case GL_MAX_NAME_STACK_DEPTH:          retVal = 128;  break;
         case GL_MAX_LIST_NESTING:              retVal = 64;   break;
-        case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH: retVal = ctx.emuInfo->gl_max_client_attrib_stack_depth;   break;
-        case GL_MAX_ATTRIB_STACK_DEPTH:        retVal = ctx.emuInfo->gl_max_attrib_stack_depth;          break;
+        case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH: retVal = GetContext()->emuInfo->gl_max_client_attrib_stack_depth;   break;
+        case GL_MAX_ATTRIB_STACK_DEPTH:        retVal = GetContext()->emuInfo->gl_max_attrib_stack_depth;          break;
 
         case GL_DEPTH_BITS:                    retVal = 24;   break;
 
@@ -496,7 +492,7 @@ namespace Emu {
       }
     }
 
-    if (ctx.isCore())
+    if (GetContext()->isCore())
     {
       filtered = true;
 #if 0
@@ -521,12 +517,12 @@ namespace Emu {
       }
     }
 
-    if (ctx.isES2())
+    if (GetContext()->isES2())
     {
       filtered = true;
       switch (pname) {
         case GL_MAX_COLOR_ATTACHMENTS:
-          if (ctx.info->gl_nv_fbo_color_attachments)
+          if (GetContext()->info->gl_nv_fbo_color_attachments)
             filtered = false;
           else
             retVal = 1;
@@ -535,7 +531,7 @@ namespace Emu {
         case GL_PACK_ROW_LENGTH_NV:
         case GL_PACK_SKIP_ROWS_NV:
         case GL_PACK_SKIP_PIXELS_NV:
-          if (ctx.info->gl_nv_pack_subimage)
+          if (GetContext()->info->gl_nv_pack_subimage)
             filtered = false;
           else
             retVal = 0;
@@ -543,7 +539,7 @@ namespace Emu {
 
         case GL_PACK_IMAGE_HEIGHT:
         case GL_PACK_SKIP_IMAGES:
-          if (ctx.info->gl_nv_pack_subimage && ctx.info->gl_nv_texture_array)
+          if (GetContext()->info->gl_nv_pack_subimage && GetContext()->info->gl_nv_texture_array)
             filtered = false;
           else
             retVal = 0;
@@ -552,7 +548,7 @@ namespace Emu {
         case GL_UNPACK_ROW_LENGTH_EXT:
         case GL_UNPACK_SKIP_ROWS_EXT:
         case GL_UNPACK_SKIP_PIXELS_EXT:
-          if (ctx.info->gl_ext_unpack_subimage)
+          if (GetContext()->info->gl_ext_unpack_subimage)
             filtered = false;
           else
             retVal = 0;
@@ -560,7 +556,7 @@ namespace Emu {
 
         case GL_UNPACK_IMAGE_HEIGHT_NV:
         case GL_UNPACK_SKIP_IMAGES_NV:
-          if (ctx.info->gl_ext_unpack_subimage && ctx.info->gl_nv_texture_array)
+          if (GetContext()->info->gl_ext_unpack_subimage && GetContext()->info->gl_nv_texture_array)
             filtered = false;
           else
             retVal = 0;
@@ -584,7 +580,7 @@ namespace Emu {
         case GL_DRAW_BUFFER13:
         case GL_DRAW_BUFFER14:
         case GL_DRAW_BUFFER15:
-          if (ctx.info->gl_nv_draw_buffers)
+          if (GetContext()->info->gl_nv_draw_buffers)
           {
             if (fboID == 0)
               retVal = GL_NONE;
@@ -616,7 +612,7 @@ namespace Emu {
     return false;
   }
 
-  bool Filt::TexImage2D(const RegalContext &ctx, GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data)
+  bool Filt::TexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data)
   {
     UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
@@ -629,7 +625,7 @@ namespace Emu {
     UNUSED_PARAMETER(type);
     UNUSED_PARAMETER(data);
 
-    if (ctx.isES2())
+    if (GetContext()->isES2())
     {
       switch ( target )
       {

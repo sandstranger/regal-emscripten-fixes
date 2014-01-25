@@ -78,7 +78,7 @@ formulae = {
       'glBlitFramebufferANGLE'                           # Emulate glBlitFramebuffer?
     ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
        '  Warning("Regal does not support ${name} for ES 2.0 - skipping.");',
        '  #if REGAL_BREAK',
@@ -94,7 +94,7 @@ formulae = {
   'filterOutCore' : {
     'entries' : [ 'glLineWidth', ],
     'impl' : [
-       'if (_context->isCore())',
+       'if (self->GetContext()->isCore())',
        '{',
        '   Warning("Regal does not support ${name} for core profile - skipping.");',
        '   #if REGAL_BREAK',
@@ -133,7 +133,7 @@ formulae = {
       'glWindowPos(2|3)(d|f|i|s)(v|)',
       ],
     'impl' : [
-       'if (_context->isES2() || _context->isCore())',
+       'if (self->GetContext()->isES2() || self->GetContext()->isCore())',
        '{',
        '   Warning("Regal does not support ${name} for core or ES2 profiles - skipping.");',
        '   #if REGAL_BREAK',
@@ -158,7 +158,7 @@ formulae = {
       'gl(TexImage2D)',
       ],
     'impl' : [
-       'if (_context->filt->${m1}(*_context, ${arg0plus}))',
+       'if (self->${m1}(${arg0plus}))',
        '{',
        '  #if REGAL_BREAK',
        '  Break::Filter();',
@@ -173,13 +173,13 @@ formulae = {
       'glTexParameter(i|f)',
       ],
     'impl' : '''
-if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
+if (self->TexParameter(${arg0}, ${arg1}))
   return;
 GLfloat newparam;
-if (_context->filt->FilterTexParameter(*_context, ${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}), newparam))
-  orig.glTexParameterf( _context, ${arg0}, ${arg1}, newparam);
+if (self->FilterTexParameter(${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}), newparam))
+  RglTexParameterf( orig, ${arg0}, ${arg1}, newparam);
 else
-  orig.glTexParameter${m1}( _context, ${arg0plus});
+  RglTexParameter${m1}( orig, ${arg0plus});
 return;'''
   },
 
@@ -188,13 +188,13 @@ return;'''
       'glTexParameter(i|f)v',
       ],
     'impl' : '''
-if (_context->filt->TexParameter(*_context, ${arg0}, ${arg1}))
+if (self->TexParameter(${arg0}, ${arg1}))
   return;
 GLfloat newparam;
-if (${arg2} && _context->filt->FilterTexParameter(*_context, ${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}[0]), newparam))
-  orig.glTexParameterf( _context, ${arg0}, ${arg1}, newparam);
+if (${arg2} && self->FilterTexParameter(${arg0}, ${arg1}, static_cast<GLfloat>(${arg2}[0]), newparam))
+  RglTexParameterf( orig, ${arg0}, ${arg1}, newparam);
 else
-  orig.glTexParameter${m1}v( _context, ${arg0plus});
+  RglTexParameter${m1}v( orig, ${arg0plus});
 return;'''
   },
 
@@ -204,10 +204,10 @@ return;'''
   'blitFBO' : {
     'entries' : [ 'glBlitFramebuffer' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  if (_context->info->gl_nv_framebuffer_blit)  return orig.${m0}NV( _context, ${arg0plus});',
-       '  if (_context->info->gl_ext_framebuffer_blit) return orig.${m0}EXT( _context, ${arg0plus});',
+       '  if (self->GetContext()->info->gl_nv_framebuffer_blit)  return R${m0}NV( orig, ${arg0plus});',
+       '  if (self->GetContext()->info->gl_ext_framebuffer_blit) return R${m0}EXT( orig, ${arg0plus});',
        '}'
      ]
   },
@@ -218,10 +218,10 @@ return;'''
   'blitDrawRead' : {
     'entries' : [ 'glDrawBuffer' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)',
-       '    return orig.${m0}( _context, ${arg0plus} );',
+       '  if (self->GetContext()->info->gl_nv_framebuffer_blit || self->GetContext()->info->gl_ext_framebuffer_blit)',
+       '    return R${m0}( orig, ${arg0plus} );',
        '}'
      ]
   },
@@ -231,9 +231,9 @@ return;'''
   'glDrawRangeElements' : {
     'entries' : [ 'glDrawRangeElements' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  return orig.glDrawElements( _context,${arg0}, ${arg3plus});',
+       '  return RglDrawElements( orig,${arg0}, ${arg3plus});',
        '}'
      ]
   },
@@ -245,11 +245,11 @@ return;'''
   'glDrawRangeElementsBaseVertex' : {
     'entries' : [ 'glDrawRangeElementsBaseVertex' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_arb_draw_elements_base_vertex)',
+       'if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_arb_draw_elements_base_vertex)',
        '{',
        '  if (basevertex==0)',
        '  {',
-       '    return orig.glDrawElements( _context,${arg0}, ${arg3}, ${arg4}, ${arg5});',
+       '    return RglDrawElements( orig,${arg0}, ${arg3}, ${arg4}, ${arg5});',
        '  }',
        '  else',
        '  {',
@@ -263,18 +263,18 @@ return;'''
   'glDrawBuffers' : {
     'entries' : [ 'glDrawBuffers' ],
     'impl' : [
-       'if (_context->filt->DrawBuffers(*_context, ${arg0plus}))',
+       'if (self->DrawBuffers(${arg0plus}))',
        '{',
        '  #if REGAL_BREAK',
        '  Break::Filter();',
        '  #endif',
        '  return ${dummyretval};',
        '}',
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  if (_context->info->gl_nv_draw_buffers)',
+       '  if (self->GetContext()->info->gl_nv_draw_buffers)',
        '  {',
-       '    orig.${name}NV( _context, ${arg0plus} );',
+       '    R${name}NV( orig, ${arg0plus} );',
        '    return;',
        '  }',
        '}'
@@ -285,10 +285,9 @@ return;'''
   'GL_ATI_draw_buffers' : {
     'entries' : [ 'glDrawBuffersATI' ],
     'impl' : [
-       'if (!_context->info->gl_ati_draw_buffers)',
+       'if (!self->GetContext()->info->gl_ati_draw_buffers)',
        '{',
-       '  _context->emuLevel++;',
-       '  orig.glDrawBuffers( _context,${arg0plus});',
+       '  RglDrawBuffers( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -298,10 +297,9 @@ return;'''
   'GL_ARB_draw_buffers' : {
     'entries' : [ 'glDrawBuffersARB'],
     'impl' : [
-       'if (!_context->info->gl_arb_draw_buffers)',
+       'if (!self->GetContext()->info->gl_arb_draw_buffers)',
        '{',
-       '  _context->emuLevel++;',
-       '  orig.glDrawBuffers( _context,${arg0plus});',
+       '  RglDrawBuffers( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -313,7 +311,7 @@ return;'''
   'GL_ARB_vertex_program' : {
     'entries' : [ 'glGenProgramsARB', 'glBindProgramARB', 'glProgramStringARB', 'glGetProgramivARB' ],
     'impl' : [
-      'if (_context->isES2())',
+      'if (self->GetContext()->isES2())',
       '{',
       '  Warning("Regal does not support ${name} (GL_ARB_vertex_program) for ES 2.0 context - skipping.");',
       '  return;',
@@ -330,10 +328,10 @@ return;'''
 #        'entries' : [ 'glCreateShaderObjectARB' ],
 #        'impl' : [
 #           '#if !REGAL_FORCE_ES2_PROFILE',
-#           'if (_context->info->es2)',
+#           'if (self->GetContext()->info->es2)',
 #           '#endif',
 #           '{',
-#           '  return orig.glCreateShader( _context,${arg0plus});',
+#           '  return RglCreateShader( orig,${arg0plus});',
 #           '}'
 #         ]
 #    },
@@ -341,9 +339,9 @@ return;'''
   'glCreateProgramObjectARB' : {
     'entries' : [ 'glCreateProgramObjectARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
       '{',
-      '  return orig.glCreateProgram( _context );',
+      '  return RglCreateProgram( orig );',
       '}'
     ]
   },
@@ -352,10 +350,10 @@ return;'''
 #        'entries' : [ 'glShaderSourceARB' ],
 #        'impl' : [
 #           '#if !REGAL_FORCE_ES2_PROFILE',
-#           'if (_context->info->es2)',
+#           'if (self->GetContext()->info->es2)',
 #           '#endif',
 #           '{',
-#           '  orig.glShaderSource( _context,${arg0plus});',
+#           '  RglShaderSource( orig,${arg0plus});',
 #           '  return;',
 #           '}'
 #         ]
@@ -364,9 +362,9 @@ return;'''
   'glCompileShaderARB' : {
     'entries' : [ 'glCompileShaderARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
       '{',
-      '  orig.glCompileShader( _context,${arg0plus});',
+      '  RglCompileShader( orig,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -375,9 +373,9 @@ return;'''
   'glActiveTextureARB' : {
     'entries' : [ 'glActiveTextureARB' ],
     'impl' : [
-      'if (!_context->info->gl_arb_multitexture)',
+      'if (!self->GetContext()->info->gl_arb_multitexture)',
       '{',
-      '  orig.glActiveTexture( _context,${arg0plus});',
+      '  RglActiveTexture( orig,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -386,10 +384,9 @@ return;'''
   'glClientActiveTextureARB' : {
     'entries' : [ 'glClientActiveTextureARB' ],
     'impl' : [
-      'if (!_context->info->gl_arb_multitexture)',
+      'if (!self->GetContext()->info->gl_arb_multitexture)',
       '{',
-      '  _context->emuLevel++;',
-      '  orig.glClientActiveTexture( _context,${arg0plus});',
+      '  RglClientActiveTexture( orig,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -398,9 +395,9 @@ return;'''
   'glAttachObjectARB' : {
     'entries' : [ 'glAttachObjectARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
       '{',
-      '  orig.glAttachShader( _context,${arg0plus});',
+      '  RglAttachShader( orig,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -409,9 +406,9 @@ return;'''
   'glBindAttribLocationARB' : {
     'entries' : [ 'glBindAttribLocationARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
       '{',
-      '  orig.glBindAttribLocation( _context,${arg0plus});',
+      '  RglBindAttribLocation( orig,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -420,9 +417,9 @@ return;'''
   'glGetUniformLocationARB' : {
     'entries' : [ 'glGetUniformLocationARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
       '{',
-      '  return orig.glGetUniformLocation( _context,${arg0plus});',
+      '  return RglGetUniformLocation( orig,${arg0plus});',
       '}'
     ]
   },
@@ -430,9 +427,9 @@ return;'''
   'glUniform1iARB' : {
     'entries' : [ 'glUniform1iARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
       '{',
-      '  orig.glUniform1i( _context,${arg0plus});',
+      '  RglUniform1i( orig,${arg0plus});',
       '  return;',
       '}'
     ]
@@ -441,12 +438,12 @@ return;'''
   'glGetObjectParameterivARB' : {
     'entries' : [ 'glGetObjectParameterivARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
        '{',
-       '  if (orig.glIsProgram( _context,obj))',
-       '    orig.glGetProgramiv( _context,${arg0plus});',
+       '  if (RglIsProgram( orig,obj))',
+       '    RglGetProgramiv( orig,${arg0plus});',
        '  else',
-       '    orig.glGetShaderiv( _context,${arg0plus});',
+       '    RglGetShaderiv( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -455,12 +452,12 @@ return;'''
   'glGetInfoLogARB' : {
     'entries' : [ 'glGetInfoLogARB' ],
     'impl' : [
-      'if (_context->isES2() || !_context->info->gl_arb_shader_objects)',
+      'if (self->GetContext()->isES2() || !self->GetContext()->info->gl_arb_shader_objects)',
        '{',
-       '  if (orig.glIsProgram( _context,obj))',
-       '    orig.glGetProgramInfoLog( _context,${arg0plus});',
+       '  if (RglIsProgram( orig,obj))',
+       '    RglGetProgramInfoLog( orig,${arg0plus});',
        '  else',
-       '    orig.glGetShaderInfoLog( _context,${arg0plus});',
+       '    RglGetShaderInfoLog( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -471,9 +468,9 @@ return;'''
   'glBlendEquationEXT' : {
     'entries' : [ 'glBlendEquationEXT' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  orig.glBlendEquation( _context,${arg0plus});',
+       '  RglBlendEquation( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -484,9 +481,9 @@ return;'''
   'glBlendColorEXT' : {
     'entries' : [ 'glBlendColorEXT' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  orig.glBlendColor( _context,${arg0plus});',
+       '  RglBlendColor( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -498,9 +495,9 @@ return;'''
   'MapUnmap' : {
     'entries' : [ 'gl(Map|Unmap)Buffer(ARB|)' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  return orig.gl${m1}BufferOES( _context,${arg0plus});',
+       '  return Rgl${m1}BufferOES( orig,${arg0plus});',
        '}'
      ]
   },
@@ -508,9 +505,9 @@ return;'''
   'glBufferDataARB' : {
     'entries' : [ 'glBufferDataARB' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  orig.glBufferData( _context,${arg0plus});',
+       '  RglBufferData( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -522,12 +519,12 @@ return;'''
   'glBindFramebuffer' : {
     'entries' : [ 'glBindFramebuffer','glBindFramebufferOES' ],
     'impl' : [
-       'if (_context->isES2())',
+       'if (self->GetContext()->isES2())',
        '{',
-       '  const bool hasFBBlit = _context->info->gl_ext_framebuffer_blit || _context->info->gl_nv_framebuffer_blit || _context->info->gl_version_major >= 3;',
+       '  const bool hasFBBlit = self->GetContext()->info->gl_ext_framebuffer_blit || self->GetContext()->info->gl_nv_framebuffer_blit || self->GetContext()->info->gl_version_major >= 3;',
        '  if (!hasFBBlit && (target==GL_DRAW_FRAMEBUFFER || target==GL_READ_FRAMEBUFFER)) target = GL_FRAMEBUFFER;',
        '}',
-       'if (_context->filt->BindFramebuffer(*_context, ${arg0plus}))',
+       'if (self->BindFramebuffer(${arg0plus}))',
        '{',
        '  #if REGAL_BREAK',
        '  Break::Filter();',
@@ -542,8 +539,8 @@ return;'''
   'framebuffer_object_attachment' : {
     'entries' : [ 'glFramebuffer(Texture1D|Texture3D|Renderbuffer)' ],
     'impl' : [
-       'if (_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
-       '  orig.glFramebuffer${m1}( _context,${arg0plus});',
+       'if (self->FramebufferAttachmentSupported(${arg1}))',
+       '  RglFramebuffer${m1}( orig,${arg0plus});',
        'return;'
      ]
   },
@@ -554,10 +551,10 @@ return;'''
   'glGetFramebufferAttachmentParameteriv' : {
     'entries' : [ 'glGetFramebufferAttachmentParameteriv' ],
     'impl' : [
-       'if (!_context->filt->FramebufferAttachmentSupported(*_context, ${arg1}))',
+       'if (!self->FramebufferAttachmentSupported(${arg1}))',
        '  *${arg3} = 0;',
        'else',
-       '  orig.glGetFramebufferAttachmentParameteriv( _context,${arg0plus});',
+       '  RglGetFramebufferAttachmentParameteriv( orig,${arg0plus});',
        'return;'
      ]
   },
@@ -577,10 +574,9 @@ return;'''
                   'gl(FramebufferRenderbuffer)EXT'
     ],
     'impl' : [
-       'if (!_context->info->gl_ext_framebuffer_object)',
+       'if (!self->GetContext()->info->gl_ext_framebuffer_object)',
        '{',
-       '  _context->emuLevel++;',
-       '  orig.gl${m1}( _context,${arg0plus});',
+       '  Rgl${m1}( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -589,10 +585,9 @@ return;'''
   'EXT_framebuffer_object_returning' : {
     'entries' : [ 'gl(CheckFramebufferStatus|IsFramebuffer|IsRenderbuffer)EXT' ],
     'impl' : [
-       'if (!_context->info->gl_ext_framebuffer_object)',
+       'if (!self->GetContext()->info->gl_ext_framebuffer_object)',
        '{',
-       '  _context->emuLevel++;',
-       '  return orig.gl${m1}( _context,${arg0plus});',
+       '  return Rgl${m1}( orig,${arg0plus});',
        '}'
      ]
   },
@@ -602,10 +597,9 @@ return;'''
   'glBlitFramebufferEXT' : {
     'entries' : [ 'glBlitFramebufferEXT' ],
     'impl' : [
-       'if (!_context->info->gl_ext_framebuffer_blit)',
+       'if (!self->GetContext()->info->gl_ext_framebuffer_blit)',
        '{',
-       '  _context->emuLevel++;',
-       '  orig.glBlitFramebuffer( _context,${arg0plus});',
+       '  RglBlitFramebuffer( orig,${arg0plus});',
        '  return;',
        '}'
      ]
@@ -616,17 +610,17 @@ return;'''
   'glReadBuffer' : {
     'entries' : [ 'glReadBuffer' ],
     'impl' : [
-       'if (_context->filt->ReadBuffer(*_context, ${arg0plus}))',
+       'if (self->ReadBuffer(${arg0plus}))',
        '{',
        '  #if REGAL_BREAK',
        '  Break::Filter();',
        '  #endif',
        '  return ${dummyretval};',
        '}',
-       'if (_context->isES2() && _context->info->gl_nv_read_buffer)',
-       '  orig.glReadBufferNV( _context,${arg0plus});',
+       'if (self->GetContext()->isES2() && self->GetContext()->info->gl_nv_read_buffer)',
+       '  RglReadBufferNV( orig,${arg0plus});',
        'else',
-       '  orig.glReadBuffer( _context,${arg0plus});',
+       '  RglReadBuffer( orig,${arg0plus});',
        'return;'
      ]
   },
@@ -643,11 +637,11 @@ return;'''
   'glColorMaskIndexedEXT' : {
     'entries' : [ 'glColorMaskIndexedEXT' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)',
+       'if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2)',
        '{',
        '  if (!buf)'
        '  {',
-       '    orig.glColorMask( _context,${arg1plus});',
+       '    RglColorMask( orig,${arg1plus});',
        '  }',
        '  return;',
        '}'
@@ -657,11 +651,11 @@ return;'''
   'glGetBooleanIndexedvEXT' : {
     'entries' : [ 'glGetBooleanIndexedvEXT' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)',
+       'if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2)',
        '{',
        '  if (!index)'
        '  {',
-       '    orig.glGetBooleanv( _context,${arg0},${arg2});',
+       '    RglGetBooleanv( orig,${arg0},${arg2});',
        '  }',
        '  return;',
        '}'
@@ -671,11 +665,11 @@ return;'''
   'glGetIntegerIndexedvEXT' : {
     'entries' : [ 'glGetIntegerIndexedvEXT' ],
     'impl' : [
-       'if (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2)',
+       'if (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2)',
        '{',
        '  if (!index)'
        '  {',
-       '    orig.glGetIntegerv( _context,${arg0},${arg2});',
+       '    RglGetIntegerv( orig,${arg0},${arg2});',
        '  }',
        '  return;',
        '}'
@@ -685,11 +679,11 @@ return;'''
   'glEnableIndexedEXT' : {
     'entries' : [ 'glEnableIndexedEXT' ],
     'impl' : [
-       'if (${arg0}==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))',
+       'if (${arg0}==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2))',
        '{',
        '  if (!index)'
        '  {',
-       '    orig.glEnable( _context,${arg0});',
+       '    RglEnable( orig,${arg0});',
        '  }',
        '  return;',
        '}'
@@ -699,11 +693,11 @@ return;'''
   'glDisableIndexedEXT' : {
     'entries' : [ 'glDisableIndexedEXT' ],
     'impl' : [
-       'if (${arg0}==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !_context->info->gl_ext_draw_buffers2))',
+       'if (${arg0}==GL_BLEND && (REGAL_FORCE_ES2_PROFILE || !self->GetContext()->info->gl_ext_draw_buffers2))',
        '{',
        '  if (!index)'
        '  {',
-       '    orig.glDisable( _context,${arg0});',
+       '    RglDisable( orig,${arg0});',
        '  }',
        '  return;',
        '}'
@@ -713,11 +707,11 @@ return;'''
   'glIsEnabledIndexedEXT' : {
     'entries' : [ 'glIsEnabledIndexedEXT' ],
     'impl' : [
-       'if (${arg0}==GL_BLEND && !_context->info->gl_ext_draw_buffers2)',
+       'if (${arg0}==GL_BLEND && !self->GetContext()->info->gl_ext_draw_buffers2)',
        '{',
        '  if (!index)'
        '  {',
-       '    return orig.glIsEnabled( _context,${arg0});',
+       '    return RglIsEnabled( orig,${arg0});',
        '  }',
        '  return GL_FALSE;',
        '}'
@@ -727,7 +721,7 @@ return;'''
   'GroupMarker' : {
     'entries' : [ 'gl(Push|Pop)GroupMarkerEXT', ],
     'impl' : [
-      'if( ! _context->info->gl_ext_debug_marker ) {',
+      'if( ! self->GetContext()->info->gl_ext_debug_marker ) {',
       '  return;',
       '}',
      ],
