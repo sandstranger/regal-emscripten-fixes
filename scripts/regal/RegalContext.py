@@ -11,13 +11,9 @@ from EmuContextShare   import formulae       as contextShareFormulae
 from EmuContextState   import formulae       as contextStateFormulae
 from EmuGetString      import formulae       as getStringFormulae
 from EmuForceCore      import formulae       as forceCoreFormulae
-from EmuLookup         import formulae       as lookupFormulae
-from EmuMarker         import formulae       as markerFormulae
-from EmuMarker         import formulaeGlobal as markerFormulaeGlobal
 from EmuExtensionQuery import formulae       as extensionQueryFormulae
 from EmuErrorString    import formulae       as errorStringFormulae
 from EmuEnable         import formulae       as enableFormulae
-from EmuCache          import formulaeGlobal as cacheFormulaeGlobal
 
 from EmuLog    import logFormulae
 
@@ -49,14 +45,10 @@ emuRegal = [
     { 'name' : None,     'type' : None, 'formulae' : contextStateFormulae   },
     { 'name' : None,     'type' : None, 'formulae' : getStringFormulae      },
     { 'name' : None,     'type' : None, 'formulae' : forceCoreFormulae      },
-    { 'name' : None,     'type' : None, 'formulae' : lookupFormulae         },
-    { 'name' : 'marker', 'type' : None, 'formulae' : markerFormulae         },
-    { 'name' : None,     'type' : None, 'formulae' : markerFormulaeGlobal   },
     { 'name' : None,     'type' : None, 'formulae' : extensionQueryFormulae },
     { 'name' : None,     'type' : None, 'formulae' : errorStringFormulae    },
     { 'name' : None,     'type' : None, 'formulae' : logFormulae            },
     { 'name' : None,     'type' : None, 'formulae' : enableFormulae         },
-    { 'name' : None,     'type' : None, 'formulae' : cacheFormulaeGlobal    },
 ]
 
 

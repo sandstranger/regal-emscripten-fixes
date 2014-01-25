@@ -42,6 +42,7 @@ REGAL_GLOBAL_BEGIN
 #include <string>
 #include <algorithm>  // For std::swap
 
+#include "RegalContext.h"
 #include "RegalPrint.h"
 
 #include "RegalEmu.h"
@@ -81,9 +82,10 @@ REGAL_NAMESPACE_BEGIN
 //    http://graphics.stanford.edu/papers/cr/
 //
 
-#ifndef REGAL_FIXED_FUNCTION_MAX_CLIP_DISTANCES
-#define REGAL_FIXED_FUNCTION_MAX_CLIP_DISTANCES 8
-#endif
+#define REGAL_FIXED_FUNCTION_MATRIX_STACK_DEPTH 128
+#define REGAL_FIXED_FUNCTION_MAX_LIGHTS           8
+#define REGAL_FIXED_FUNCTION_MAX_CLIP_PLANES      8
+#define REGAL_FIXED_FUNCTION_MAX_CLIP_DISTANCES   8
 
 namespace State
 {

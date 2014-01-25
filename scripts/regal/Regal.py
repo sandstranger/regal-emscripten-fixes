@@ -338,7 +338,7 @@ def apiFuncDefineCode(apis, args):
 
       name       = function.name
       params     = paramsDefaultCode(function.parameters, True)
-      callParams = paramsNameCode(function.parameters, paramsPrefix = "_context")
+      callParams = paramsNameCode(function.parameters, paramsPrefix = "_context->dispatchGL")
       rType      = typeCode(function.ret.type)
       rTypes     = rType.strip()
       category   = getattr(function, 'category', None)
@@ -355,8 +355,8 @@ def apiFuncDefineCode(apis, args):
 
       emue = [ emuFindEntry( function, i['formulae'], i['name'] ) for i in emuRegal ]
 
-      c +=   '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
       if function.needsContext:
+        c += '  RegalContext *_context = REGAL_GET_CONTEXT();\n'
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
         c += '  %s\n' % logFunction( function, 'App' )
         c += '  if (!_context) return'
@@ -383,7 +383,7 @@ def apiFuncDefineCode(apis, args):
             c += '  {\n'
             if not typeIsVoid(rType):
               c += 'return '
-            c += '_context->dispatchGL.%s(%s);\n' % ( name, callParams )
+            c += 'R%s(%s);\n' % ( name, callParams )
             if typeIsVoid(rType):
               c += '    return;\n'
             c += '  }\n'
@@ -406,7 +406,7 @@ def apiFuncDefineCode(apis, args):
 
             if not typeIsVoid(rType):
               t += 'return '
-            t += '_context->dispatchGL.%s(%s);\n' % ( name, callParams )
+            t += 'R%s(%s);\n' % ( name, callParams )
 
             t += listToString(indent(stripVertical(emuCodeGen(emue,'post')),''))
 
@@ -419,6 +419,7 @@ def apiFuncDefineCode(apis, args):
             c += listToString(indent(stripVertical(emuCodeGen(emue,'type')),'  '))
 
       else:
+        callParams = paramsNameCode(function.parameters, paramsPrefix = "dispatchGlobal")
         c += '  %s\n' % logFunction(function, 'App' )
         c += listToString(indent(stripVertical(emuCodeGen(emue,'prefix')),'  '))
 
@@ -437,7 +438,7 @@ def apiFuncDefineCode(apis, args):
           c += '  '
           if not typeIsVoid(rType):
             c += 'ret = '
-          c += 'dispatchGlobal.%s(%s);\n' % ( name, callParams )
+          c += 'R%s(%s);\n' % ( name, callParams )
 
         c += listToString(indent(stripVertical(emuCodeGen(emue,'init')),'  '))
 
@@ -776,7 +777,6 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContextInfo.h"
 #include "RegalEmuInfo.h"
 #include "RegalScopedPtr.h"
-#include "RegalMarker.h"
 
 using namespace REGAL_NAMESPACE_INTERNAL;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;

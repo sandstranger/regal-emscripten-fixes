@@ -40,7 +40,6 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
-#include "RegalIff.h"
 
 #include "program.h"
 

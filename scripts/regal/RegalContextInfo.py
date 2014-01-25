@@ -118,7 +118,7 @@ inline string getString(RegalContext &context, const GLenum e)
 inline void warnGLError(RegalContext &context, const char *message)
 {
   Internal("warnGLError ",message ? message : NULL);
-  GLenum err = RglGetError( &context );
+  GLenum err = RglGetError( context.dispatchGL );
   if (err!=GL_NO_ERROR)
     Warning("glGetError returned ",GLerrorToString(err)," ",message ? message : NULL);
 }

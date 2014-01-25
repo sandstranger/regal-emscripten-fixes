@@ -291,7 +291,7 @@ namespace Logging {
       indent += std::min(indentMax,rCtx->depthPushMatrix*2);
       indent += std::min(indentMax,rCtx->depthPushAttrib*2);
       indent += std::min(indentMax,rCtx->depthNewList   *2);
-      indent += std::min(indentMax,rCtx->marker ? rCtx->marker->indent() : 0);
+      //indent += std::min(indentMax,rCtx->marker ? rCtx->marker->indent() : 0);
     }
 
     return indent;

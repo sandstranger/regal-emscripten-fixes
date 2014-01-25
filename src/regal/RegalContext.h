@@ -65,7 +65,6 @@ REGAL_NAMESPACE_BEGIN
 struct EmuInfo;
 struct DebugInfo;
 
-struct None;
 #if REGAL_EMULATION
 struct Obj;
 struct Hint;

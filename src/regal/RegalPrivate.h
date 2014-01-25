@@ -39,7 +39,6 @@ REGAL_GLOBAL_BEGIN
 
 #include "RegalUtil.h"
 #include "RegalConfig.h"
-#include "RegalLookup.h"
 #include "RegalDispatch.h"
 
 REGAL_GLOBAL_END

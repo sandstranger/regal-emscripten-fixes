@@ -35,7 +35,6 @@ from RegalSystem             import *
 from RegalContext            import *
 from RegalContextInfo        import *
 from RegalEmuInfo            import *
-from RegalLookup             import *
 from RegalToken              import *
 from RegalDispatch           import *
 from RegalDispatchDebug      import *
@@ -218,8 +217,6 @@ def generate(apis, args):
   generateDebugSource( apis, args )
   generatePpapiSource( apis, args )
   generateDispatchHeader(apis, args)
-  generateLookupSource(apis, args)
-  generateLookupHeader(apis, args)
   generateTokenSource(apis, args)
   generateTokenHeader(apis, args)
   generateEnumHeader(apis, args)

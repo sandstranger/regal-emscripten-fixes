@@ -7,7 +7,12 @@ solution "regal"
     kind "StaticLib"
     language "C++"
     files { "src/regal/**.h", "src/regal/**.cpp" }
-    includedirs { "include" }
+    includedirs { 
+      "include",
+      "src/glsl/include",
+      "src/glsl/src/glsl",
+      "src/glsl/src/mesa"
+    }
                           
     configuration "Debug"
       defines { "DEBUG" }

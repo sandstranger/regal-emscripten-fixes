@@ -39,6 +39,7 @@ REGAL_GLOBAL_BEGIN
 
 #if !REGAL_SYS_WIN32
 #include <pthread.h>
+#include <unistd.h>
 #endif
 
 // Windows TLS API
