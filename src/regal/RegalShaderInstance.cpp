@@ -475,7 +475,7 @@ namespace ShaderInstance {
       const Uniform & u = it->second;
       UniformInstance ui;
       ui.location = u.loc;
-      ui.instanceLocation = tbl.glGetUniformLocation( tbl.ctx, prog, u.name.c_str() );
+      ui.instanceLocation = RglGetUniformLocation( tbl, prog, u.name.c_str() );
       ui.ver = ~ GLuint64(0);
       
       uniforms.push_back( ui );
@@ -499,12 +499,12 @@ namespace ShaderInstance {
 
   
   void GetShaderSource( Procs & tbl, GLuint shader, ShaderSource & ss ) {
-    tbl.glGetShaderiv( tbl.ctx, shader, GL_SHADER_TYPE, reinterpret_cast<GLint *>(&ss.type) );
+    RglGetShaderiv( tbl, shader, GL_SHADER_TYPE, reinterpret_cast<GLint *>(&ss.type) );
     GLint sz = 0;
-    tbl.glGetShaderiv( tbl.ctx, shader, GL_SHADER_SOURCE_LENGTH, &sz );
+    RglGetShaderiv( tbl, shader, GL_SHADER_SOURCE_LENGTH, &sz );
     GLchar *src = new GLchar[ sz + 1 ];
     GLsizei sz1 = 0;
-    tbl.glGetShaderSource( tbl.ctx, shader, sz + 1, &sz1, src );
+    RglGetShaderSource( tbl, shader, sz + 1, &sz1, src );
     src[sz] = 0;
     ss.src = src;
     delete [] src;
@@ -514,7 +514,7 @@ namespace ShaderInstance {
     sources.clear();
     GLuint shaders[8];
     GLsizei numShaders = 0;
-    tbl.glGetAttachedShaders( tbl.ctx, prog, (GLsizei)array_size(shaders), &numShaders, shaders );
+    RglGetAttachedShaders( tbl, prog, (GLsizei)array_size(shaders), &numShaders, shaders );
     
     for( int i = 0; i < numShaders; i++ ) {
       sources.push_back( ShaderSource() );
@@ -524,14 +524,14 @@ namespace ShaderInstance {
   }
 
   GLuint CreateShader( Procs & tbl, const ShaderSource & ss ) {
-    GLuint s = tbl.glCreateShader( tbl.ctx, ss.type );
+    GLuint s = RglCreateShader( tbl, ss.type );
     const GLchar *dumb[] =  { ss.src.c_str(), NULL };
     GLsizei sizes[] = { (GLsizei)ss.src.size(), 0 };
-    tbl.glShaderSource( tbl.ctx, s, 1, dumb, sizes );
-    tbl.glCompileShader( tbl.ctx, s );
+    RglShaderSource( tbl, s, 1, dumb, sizes );
+    RglCompileShader( tbl, s );
     char dbgLog[1<<15];
     int dbgLogLen = 0;
-    tbl.glGetShaderInfoLog( tbl.ctx, s, (1<<15) - 2, &dbgLogLen, dbgLog );
+    RglGetShaderInfoLog( tbl, s, (1<<15) - 2, &dbgLogLen, dbgLog );
     dbgLog[ dbgLogLen ] = 0;
     return s;
   }
@@ -539,8 +539,8 @@ namespace ShaderInstance {
 
   void InitProgram( Procs & tbl, GLuint prog, Program & p ) {
     GLint activeUniforms = 0;
-    tbl.glGetProgramiv( tbl.ctx, prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
-    tbl.glGetError( tbl.ctx );
+    RglGetProgramiv( tbl, prog, GL_ACTIVE_UNIFORMS, &activeUniforms );
+    RglGetError( tbl );
     p = Program();
     p.prog = prog;
     p.ver = 0;
@@ -549,12 +549,12 @@ namespace ShaderInstance {
       GLsizei nameLen = 0;
       GLint count;
       GLenum type;
-      tbl.glGetActiveUniform( tbl.ctx, prog, i, 80, &nameLen, &count, &type, name );
+      RglGetActiveUniform( tbl, prog, i, 80, &nameLen, &count, &type, name );
       name[nameLen] = 0;
       if( strncmp( name, "rgl", 3 ) == 0 ) {
         continue; // rgl namespace is reserved
       }
-      GLint loc = tbl.glGetUniformLocation( tbl.ctx, prog, name );
+      GLint loc = RglGetUniformLocation( tbl, prog, name );
       p.AddUniform( name, loc, count, type );
       char buf[4096];
       GetUniform( tbl, prog, loc, count, type, buf );
@@ -566,27 +566,27 @@ namespace ShaderInstance {
     
     pi.prog = inst;
     
-    tbl.glLinkProgram( tbl.ctx, pi.prog );
+    RglLinkProgram( tbl, pi.prog );
     
     GLint activeAttributes = 0;
-    tbl.glGetProgramiv( tbl.ctx, p.prog, GL_ACTIVE_ATTRIBUTES, &activeAttributes );
+    RglGetProgramiv( tbl, p.prog, GL_ACTIVE_ATTRIBUTES, &activeAttributes );
     
     for( int i = 0; i < activeAttributes; i++ ) {
       GLchar name[80];
       GLsizei nameLen = 0;
       GLint size;
       GLenum type;
-      tbl.glGetActiveAttrib( tbl.ctx, p.prog, i, 80, &nameLen, &size, &type, name );
+      RglGetActiveAttrib( tbl, p.prog, i, 80, &nameLen, &size, &type, name );
       name[nameLen] = 0;
-      GLint loc = tbl.glGetAttribLocation( tbl.ctx, p.prog, name );
-      tbl.glBindAttribLocation( tbl.ctx, pi.prog, loc, name );
+      GLint loc = RglGetAttribLocation( tbl, p.prog, name );
+      RglBindAttribLocation( tbl, pi.prog, loc, name );
     }
     
-    tbl.glLinkProgram( tbl.ctx, pi.prog );
+    RglLinkProgram( tbl, pi.prog );
     {
       char dbgLog[1<<15];
       int dbgLogLen = 0;
-      tbl.glGetProgramInfoLog( tbl.ctx, pi.prog, (1<<15) - 2, &dbgLogLen, dbgLog );
+      RglGetProgramInfoLog( tbl, pi.prog, (1<<15) - 2, &dbgLogLen, dbgLog );
       dbgLog[ dbgLogLen ] = 0;
     }
     
@@ -595,10 +595,10 @@ namespace ShaderInstance {
   }
   
   void CreateProgramInstance( Procs & tbl, const Program & p, const std::vector<ShaderSource> & sources, ProgramInstance &pi ) {
-    GLuint inst = tbl.glCreateProgram( tbl.ctx );
+    GLuint inst = RglCreateProgram( tbl );
     for( int i = 0; i < (int)sources.size(); i++ ) {
       GLuint si = CreateShader( tbl, sources[i] );
-      tbl.glAttachShader( tbl.ctx, inst, si );
+      RglAttachShader( tbl, inst, si );
     }
     InitProgramInstance( tbl, p, inst, pi );
   }
