@@ -39,12 +39,16 @@ REGAL_NAMESPACE_BEGIN
 
 struct RegalContext;
 
-struct Log
+struct Log : public Layer
 {
 public:
-  Log() {}
-  ~Log() {}
-  void Init( RegalContext * ctx );
+  Log( RegalContext * ctx )
+  : Layer( ctx )
+  {}
+
+  virtual std::string GetName() const { return "log"; }
+  virtual bool Initialize( const std::string & instanceInfo );
+  virtual void ResetIntercept();  
 
   Dispatch::GL next;
 };

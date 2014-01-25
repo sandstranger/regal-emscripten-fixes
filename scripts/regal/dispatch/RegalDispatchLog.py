@@ -31,6 +31,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalHelper.h"
 #include "RegalContext.h"
 #include "RegalDispatch.h"
+#include "Log.h"
 
 using namespace ::REGAL_NAMESPACE_INTERNAL::Logging;
 using namespace ::REGAL_NAMESPACE_INTERNAL::Token;
@@ -40,21 +41,27 @@ REGAL_GLOBAL_END
 REGAL_NAMESPACE_BEGIN
 
 static Dispatch::Global nextGlobal;
-void InitDispatchLog( Dispatch::GL & );
-void InitDispatchLog( Dispatch::Global & );
+void InitDispatchLog( Layer * layer, Dispatch::GL & );
+void InitDispatchLog( Layer * layer, Dispatch::Global & );
 
-void Log::Init( RegalContext * ctx ) {
-  ctx->log.next = ctx->dispatchGL;
-  InitDispatchLog( ctx->dispatchGL );
+bool Log::Initialize( const std::string & instanceInfo ) {
+  ResetIntercept();
+  return true;
+}
+
+void Log::ResetIntercept() {
+  RegalContext * ctx = GetContext();
+  next = ctx->dispatchGL;
+  InitDispatchLog( this, ctx->dispatchGL );
 
   nextGlobal = dispatchGlobal;
-  InitDispatchLog( dispatchGlobal );
+  InitDispatchLog( this, dispatchGlobal );
 }
 
 
 ${API_FUNC_DEFINE}
 
-void InitDispatchLog(Dispatch::GL &tbl)
+void InitDispatchLog( Layer * layer, Dispatch::GL &tbl )
 {
 ${API_GL_DISPATCH_INIT}
 }
@@ -86,8 +93,11 @@ def generateDispatchLog(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
-      callParams = paramsNameCode(function.parameters, "_context")
+      params = paramsDefaultCode(function.parameters, True, "Layer *_layer")
+      if function.needsContext:
+        callParams = paramsNameCode(function.parameters, "self->next")
+      else:
+        callParams = paramsNameCode(function.parameters, "dispatchGlobal")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -109,45 +119,31 @@ def generateDispatchLog(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'log_', name, params)
-#     code += '    %s\n' % logFunction( function, 'Driver', True, False )
-
       if function.needsContext:
-        code += '    RegalAssert(_context);\n'
+        code += '  Log * self = static_cast<Log *>(_layer);\n'
 
       # Temporarily adjust the context begin/end depth for proper indentation
       # of the glBegin call
 
       if name=='glBegin':
-        code += '    RegalAssert(_context->depthBeginEnd>0);\n'
-        code += '    Push<size_t> pushDepth(_context->depthBeginEnd);\n'
-        code += '    _context->depthBeginEnd--;\n'
+        code += '    //RegalAssert(self->depthBeginEnd>0);\n'
 
       # Temporarily adjust the context push/pop matrix depth for proper indentation
       # of the glPushMatrix call
 
       if name=='glPushMatrix':
-        code += '    RegalAssert(_context->depthPushMatrix>0);\n'
-        code += '    Push<size_t> pushDepth(_context->depthPushMatrix);\n'
-        code += '    _context->depthPushMatrix--;\n'
+        code += '    //RegalAssert(self->depthPushMatrix>0);\n'
 
       # Temporarily adjust the depth for proper indentation
       # of the glNewList call
 
       if name=='glNewList':
-        code += '    RegalAssert(_context->depthNewList>0);\n'
-        code += '    Push<size_t> pushDepth(_context->depthNewList);\n'
-        code += '    _context->depthNewList--;\n'
+        code += '    //RegalAssert(self->depthNewList>0);\n'
 
-      if function.needsContext:
-        code += '    Dispatch::GL *_next = &_context->log.next;\n'
-      else:
-        code += '    Dispatch::Global *_next = &nextGlobal;\n'
-
-      code += '    RegalAssert(_next);\n'
       code += '    '
       if not typeIsVoid(rType):
         code += '%s ret = '%(rType)
-      code += '_next->%s(%s);\n' % ( name, callParams )
+      code += 'R%s(%s);\n' % ( name, callParams )
 
       if typeIsVoid(rType):
         code += '    %s\n' % logFunction( function, 'Driver', True, True )
@@ -158,11 +154,11 @@ def generateDispatchLog(apis, args):
 
       if name=='glUseProgram':
         code += '    #if !REGAL_SYS_PPAPI\n'
-        code += '    if (Logging::enableDriver && program && log_glIsProgram(_context, program))\n'
+        code += '    if (Logging::enableDriver && program && log_glIsProgram( _layer, program))\n'
         code += '    {\n'
         code += '      GLuint  _shaders[16];\n'
         code += '      GLsizei _count;\n'
-        code += '      log_glGetAttachedShaders(_context, program,16,&_count,_shaders);\n'
+        code += '      log_glGetAttachedShaders( _layer, program,16,&_count,_shaders);\n'
         code += '    }\n'
         code += '    #endif // REGAL_SYS_PPAPI\n'
 

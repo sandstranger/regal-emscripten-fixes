@@ -52,7 +52,7 @@ ${API_DISPATCH_FUNC_DEFINE}
       func = NULL;
   }
 
-  void InitDispatchLoader( Dispatch::GL & dt )
+  void InitDispatchLoader( Layer *layer, Dispatch::GL & dt )
   {
 ${API_DISPATCH_FUNC_INIT}
   }
@@ -198,7 +198,7 @@ def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambd
       code += '    if( driver_%s == NULL ) {\n' % name
       code += '      driver_%s = missing_%s;\n' % (name,name)
       code += '    }\n'
-      code += '    dt.%s = loader_%s;\n' % (name,name)
+      code += '    dt.%s = MakeRegalProc(loader_%s,layer);\n' % (name,name)
 
     code += '\n'
 
@@ -214,7 +214,7 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
     cond = condDefault
 
   categoryPrev = None
-  code = ' void InitDispatchLoader(Dispatch::Global &dt) {\n'
+  code = ' void InitDispatchLoader(Layer *layer, Dispatch::Global &dt) {\n'
 
   for api in apis:
 
@@ -264,7 +264,7 @@ def apiDispatchGlobalFuncInitCode(apis, args, dispatchName, exclude=[], filter =
       code += '    if( driver_%s == NULL ) {\n' % name
       code += '      driver_%s = missing_%s;\n' % (name,name)
       code += '    }\n'
-      code += '    dt.%s = loader_%s;\n'% (name, name)
+      code += '    dt.%s = MakeRegalProc(loader_%s, layer);\n'% (name, name)
       code += '\n'
 
     if api.name in cond:
