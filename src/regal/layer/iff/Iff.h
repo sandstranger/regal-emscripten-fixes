@@ -650,24 +650,28 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
   return GLfloat( double( p[i] ) / double( INT_MAX ) );
 }
 
-struct Iff
+  struct Iff : public Layer
 {
-  Iff();
+  Iff( RegalContext * ctx );
+  virtual std::string GetName() const { return "iff"; }
+  virtual bool Initialize( const std::string & instanceInfo );
+  virtual void ResetIntercept();
+  
   void Cleanup(RegalContext &ctx);
   void InitVertexArray(RegalContext &ctx);
   GLuint ClientStateToIndex(GLenum state);
-  void EnableClientState( RegalContext * ctx, GLenum state );
-  void DisableClientState( RegalContext * ctx, GLenum state );
-  void VertexPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
-  void NormalPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer );
-  void ColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
-  void SecondaryColorPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
-  void FogCoordPointer( RegalContext * ctx, GLenum type, GLsizei stride, const GLvoid *pointer );
-  void EdgeFlagPointer( RegalContext * ctx, GLsizei stride, const GLvoid *pointer );
-  void TexCoordPointer( RegalContext * ctx, GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
-  void GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLdouble * d );
-  void GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLfloat * f );
-  void GetAttrib( RegalContext * ctx, GLuint index, GLenum pname, GLint * i );
+  void EnableClientState( GLenum state );
+  void DisableClientState( GLenum state );
+  void VertexPointer( GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
+  void NormalPointer( GLenum type, GLsizei stride, const GLvoid *pointer );
+  void ColorPointer( GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
+  void SecondaryColorPointer( GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
+  void FogCoordPointer( GLenum type, GLsizei stride, const GLvoid *pointer );
+  void EdgeFlagPointer( GLsizei stride, const GLvoid *pointer );
+  void TexCoordPointer( GLint size, GLenum type, GLsizei stride, const GLvoid *pointer );
+  void GetAttrib( GLuint index, GLenum pname, GLdouble * d );
+  void GetAttrib( GLuint index, GLenum pname, GLfloat * f );
+  void GetAttrib( GLuint index, GLenum pname, GLint * i );
 
   int progcount;
 
@@ -680,7 +684,7 @@ struct Iff
   GLuint ffAttrNumTex;
   GLuint max_vertex_attribs;
 
-  template <typename T> bool VaGet( RegalContext * ctx, GLenum pname, T * params )
+  template <typename T> bool VaGet( GLenum pname, T * params )
   {
     GLuint index = 0;
     switch (pname)
@@ -796,17 +800,17 @@ struct Iff
       default:
         return false;
     }
-    RestoreVao( ctx );
+    RestoreVao();
     if (index == RFF2A_Invalid)
     {
       // What to return in this case?
       return false;
     }
-    GetAttrib( ctx, index, pname, params );
+    GetAttrib( index, pname, params );
     return true;
   }
 
-  bool IsEnabled( RegalContext * ctx, GLenum pname, GLboolean &enabled );
+  bool IsEnabled( GLenum pname, GLboolean &enabled );
 
   // immediate mode
 
@@ -820,21 +824,21 @@ struct Iff
   GLuint  immVbo;
   GLuint  immVao;
   GLuint  immShadowVao;
-  EmuProcsOriginateIff orig;
+  IffOriginate orig;
 
   void InitImmediate(RegalContext &ctx);
-  void glDeleteVertexArrays( RegalContext * ctx, GLsizei n, const GLuint * arrays );
-  void glDeleteBuffers( RegalContext * ctx, GLsizei n, const GLuint * buffers );
-  GLboolean IsVertexArray( RegalContext * ctx, GLuint name );
-  void glBindVertexArray( RegalContext *ctx, GLuint vao );
+  void glDeleteVertexArrays( GLsizei n, const GLuint * arrays );
+  void glDeleteBuffers( GLsizei n, const GLuint * buffers );
+  GLboolean IsVertexArray( GLuint name );
+  void glBindVertexArray( GLuint vao );
   void ShadowClientActiveTexture( GLenum texture );
-  void Begin( RegalContext * ctx, GLenum mode );
-  void End( RegalContext * ctx );
-  void RestoreVao( RegalContext * ctx );
-  void Flush( RegalContext * ctx );
-  void Provoke( RegalContext * ctx );
+  void Begin( GLenum mode );
+  void End(  );
+  void RestoreVao(  );
+  void Flush(  );
+  void Provoke(  );
 
-  template <int N, bool Norm, typename T> void Attribute( RegalContext * ctx, GLuint idx, const T * v )
+  template <int N, bool Norm, typename T> void Attribute( GLuint idx, const T * v )
   {
     if (idx >= max_vertex_attribs)
     {
@@ -849,29 +853,29 @@ struct Iff
     a.w = N > 3 ? ToFloat<Norm>( v[3] ) : 1.0f;
     ffstate.uniform.ver = ffstate.uniform.vabVer = ver.Update();
     if (idx == immProvoking)
-      Provoke( ctx );
+      Provoke();
   }
 
-  template <int N, typename T> void Attr( RegalContext *ctx, GLuint idx, T x, T y = 0, T z = 0, T w = 1 )
+  template <int N, typename T> void Attr( GLuint idx, T x, T y = 0, T z = 0, T w = 1 )
   {
     T v[4] = { x, y, z, w };
-    Attribute<N,false>( ctx, idx,v );
+    Attribute<N,false>( idx,v );
   }
 
-  template <int N, typename T> void AttrN( RegalContext *ctx, GLuint idx, T x, T y = 0, T z = 0, T w = 1 )
+  template <int N, typename T> void AttrN( GLuint idx, T x, T y = 0, T z = 0, T w = 1 )
   {
     T v[4] = { x, y, z, w };
-    Attribute<N,true>( ctx, idx, v );
+    Attribute<N,true>( idx, v );
   }
 
-  template <int N, typename T> void Attr( RegalContext *ctx, GLuint idx, const T * v )
+  template <int N, typename T> void Attr( GLuint idx, const T * v )
   {
-    Attribute<N,false>( ctx, idx, v );
+    Attribute<N,false>( idx, v );
   }
 
-  template <int N, typename T> void AttrN( RegalContext *ctx, GLuint idx, const T * v )
+  template <int N, typename T> void AttrN( GLuint idx, const T * v )
   {
-    Attribute<N,true>( ctx, idx, v );
+    Attribute<N,true>( idx, v );
   }
 
   GLuint AttrIndex( RegalFixedFunctionAttrib attr, int cat = -1 ) const;
@@ -1482,7 +1486,7 @@ struct Iff
     ShaderInstance::ProgramInstance inst;
     GLuint64 ffver;
     UniformMap ffuniforms;
-    void LocateUniforms( RegalContext * ctx, EmuProcsOriginateIff & orig );
+    void LocateUniforms( IffOriginate & orig );
   };
   
   struct UserProgramInstanceInfo {
@@ -1521,12 +1525,12 @@ struct Iff
     UniformMap uniforms;
     State::Store store;
 
-    void Init( RegalContext * ctx, const State::Store & sstore, GLuint vshd, GLuint fshd );
-    static void Shader( RegalContext * ctx, EmuProcsOriginateIff & orig, GLenum type, GLuint & shader, const GLchar *src );
-    void Attribs( RegalContext * ctx );
-    void UserShaderModeAttribs( RegalContext * ctx );
-    void Samplers( RegalContext * ctx, EmuProcsOriginateIff & orig );
-    void Uniforms( RegalContext * ctx, EmuProcsOriginateIff & origS );
+    void Init( const State::Store & sstore, GLuint vshd, GLuint fshd );
+    static void Shader( IffOriginate & orig, GLenum type, GLuint & shader, const GLchar *src );
+    void Attribs();
+    void UserShaderModeAttribs();
+    void Samplers( IffOriginate & orig );
+    void Uniforms( IffOriginate & orig );
   };
 
   MatrixStack modelview;
@@ -1569,7 +1573,7 @@ struct Iff
   bool legacy; // 2.x mac
 
   void InitFixedFunction(RegalContext &ctx);
-  void PreDraw( RegalContext * ctx );
+  void PreDraw(  );
   void SetCurrentMatrixStack( GLenum mode );
   bool ShadowMatrixMode( GLenum mode );
   void ShadowActiveTexture( GLenum texture );
@@ -1972,7 +1976,7 @@ struct Iff
     u.ver = r.ver = ver.Update();
   }
 
-  template <typename T> bool GetIndexedTexGenv( RegalContext * ctx, GLuint textureIndex,
+  template <typename T> bool GetIndexedTexGenv( GLuint textureIndex,
       GLenum coord, GLenum pname, T * params )
   {
     UNUSED_PARAMETER(ctx);
@@ -2038,19 +2042,19 @@ struct Iff
     return true;
   }
 
-  template <typename T> bool GetTexGenv( RegalContext * ctx, GLenum coord,
+  template <typename T> bool GetTexGenv( GLenum coord,
                                          GLenum pname, T * params )
   {
-    return GetIndexedTexGenv( ctx, shadowActiveTextureIndex, coord, pname, params );
+    return GetIndexedTexGenv( shadowActiveTextureIndex, coord, pname, params );
   }
 
-  template <typename T> bool GetMultiTexGenv( RegalContext * ctx, GLenum texunit,
+  template <typename T> bool GetMultiTexGenv( GLenum texunit,
       GLenum coord, GLenum pname, T * params )
   {
-    return GetIndexedTexGenv( ctx, texunit - GL_TEXTURE0, coord, pname, params );
+    return GetIndexedTexGenv( texunit - GL_TEXTURE0, coord, pname, params );
   }
 
-  bool glGetBooleanv( RegalContext * ctx, GLenum pname, GLboolean * param )
+  bool glGetBooleanv( GLenum pname, GLboolean * param )
   {
     State::Store & r = ffstate.raw;
     State::StoreUniform & u = ffstate.uniform;
@@ -2058,13 +2062,13 @@ struct Iff
     // FIXME: implement all FF gets!
 
     GLint p;
-    if (VaGet( ctx, pname, &p ))
+    if (VaGet( pname, &p ))
     {
       *param = ((p == 0) ? GL_FALSE : GL_TRUE);
       return true;
     }
 
-    if (IsEnabled( ctx, pname, *param ))
+    if (IsEnabled( pname, *param ))
       return true;
 
     switch( pname )
@@ -2185,18 +2189,18 @@ struct Iff
     return true;
   }
 
-  template <typename T> bool Get( RegalContext * ctx, GLenum pname, T * params )
+  template <typename T> bool Get( GLenum pname, T * params )
   {
     State::Store & r = ffstate.raw;
     State::StoreUniform & u = ffstate.uniform;
 
     // FIXME: implement all FF gets!
 
-    if (VaGet( ctx, pname, params ))
+    if (VaGet( pname, params ))
       return true;
 
     GLboolean enabled = GL_FALSE;
-    if (IsEnabled( ctx, pname, enabled ))
+    if (IsEnabled( pname, enabled ))
     {
       params[0] = static_cast<T>(enabled);
       return true;
@@ -2396,49 +2400,49 @@ struct Iff
   void Viewport( GLint x, GLint y, GLsizei w, GLsizei h );
   void DepthRange( GLfloat znear, GLfloat zfar );
 
-  template <typename T> void RasterPosition( RegalContext * ctx, T x, T y, T z = 0 )
+  template <typename T> void RasterPosition( T x, T y, T z = 0 )
   {
     const GLdouble xd = ToDouble<true>(x);
     const GLdouble yd = ToDouble<true>(y);
     const GLdouble zd = ToDouble<true>(z);
-    RasterPos( ctx, xd, yd, zd );
+    RasterPos( xd, yd, zd );
   }
 
-  template <typename T> void WindowPosition( RegalContext * ctx, T x, T y, T z = 0 )
+  template <typename T> void WindowPosition( T x, T y, T z = 0 )
   {
     const GLdouble xd = ToDouble<true>(x);
     const GLdouble yd = ToDouble<true>(y);
     const GLdouble zd = ToDouble<true>(z);
-    WindowPos( ctx, xd, yd, zd );
+    WindowPos( xd, yd, zd );
   }
 
-  void RasterPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z );
-  void WindowPos( RegalContext * ctx, GLdouble x, GLdouble y, GLdouble z );
-  void BindVertexArray( RegalContext * ctx, GLuint vao );
-  void EnableArray( RegalContext * ctx, GLuint index );
-  void DisableArray( RegalContext * ctx, GLuint index );
-  void UpdateUniforms( RegalContext * ctx );
-  void ClearVersionsForProgram( RegalContext *ctx );
+  void RasterPos( GLdouble x, GLdouble y, GLdouble z );
+  void WindowPos( GLdouble x, GLdouble y, GLdouble z );
+  void BindVertexArray( GLuint vao );
+  void EnableArray( GLuint index );
+  void DisableArray( GLuint index );
+  void UpdateUniforms(  );
+  void ClearVersionsForProgram(  );
   GLuint GetFixedFunctionStateHash();
-  GLuint CreateFixedFunctionVertexShader( RegalContext * ctx );
-  GLuint CreateFixedFunctionFragmentShader( RegalContext * ctx );
-  void UseFixedFunctionProgram( RegalContext * ctx );
-  void UseShaderProgram( RegalContext * ctx );
-  void ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length);
-  void LinkProgram( RegalContext *ctx, GLuint program );
-  GLuint CreateShader( RegalContext *ctx, GLenum shaderType );
-  void Uniform( RegalContext *ctx, GLenum type, int vecSize, GLint loc, GLsizei count, const void * data );
-  void Uniform( RegalContext *ctx, GLenum type, int cols, int rows, GLint loc, GLsizei count, const void * data );
+  GLuint CreateFixedFunctionVertexShader(  );
+  GLuint CreateFixedFunctionFragmentShader(  );
+  void UseFixedFunctionProgram(  );
+  void UseShaderProgram(  );
+  void ShaderSource( GLuint shader, GLsizei count, const GLchar * const * string, const GLint *length);
+  void LinkProgram( GLuint program );
+  GLuint CreateShader( GLenum shaderType );
+  void Uniform( GLenum type, int vecSize, GLint loc, GLsizei count, const void * data );
+  void Uniform( GLenum type, int cols, int rows, GLint loc, GLsizei count, const void * data );
       
-  template <typename T> void Uniform( RegalContext *ctx, int vecSize, GLint loc, GLsizei count, T v0, T v1 = 0, T v2 = 0, T v3 = 0 ) {
+  template <typename T> void Uniform( int vecSize, GLint loc, GLsizei count, T v0, T v1 = 0, T v2 = 0, T v3 = 0 ) {
     T v[] = { v0, v1, v2, v3 };
-    Uniform( ctx, TypeTraits<T>::glTypeEnum, vecSize, loc, count, v );
+    Uniform( TypeTraits<T>::glTypeEnum, vecSize, loc, count, v );
   }
-  template <typename T> void Uniform( RegalContext *ctx, int vecSize, GLint loc, GLsizei count, const T * v ) {
-    Uniform( ctx, TypeTraits<T>::glTypeEnum, vecSize, loc, count, v );
+  template <typename T> void Uniform( int vecSize, GLint loc, GLsizei count, const T * v ) {
+    Uniform( TypeTraits<T>::glTypeEnum, vecSize, loc, count, v );
   }
       
-  template <typename T> void UniformMatrix( RegalContext *ctx, int cols, int rows, GLint loc, GLsizei count, GLboolean transpose, const T * m ) {
+  template <typename T> void UniformMatrix( int cols, int rows, GLint loc, GLsizei count, GLboolean transpose, const T * m ) {
     if( transpose ) {
       T mat[16];
       int elements = rows * cols;
@@ -2449,13 +2453,11 @@ struct Iff
             mat[ c * rows + r ] = mm[ r * cols + c ];
           }
         }
-        Uniform( ctx, TypeTraits<T>::glTypeEnum, cols, rows, loc + i, 1, mat );
+        Uniform( TypeTraits<T>::glTypeEnum, cols, rows, loc + i, 1, mat );
       }
     }
-    Uniform( ctx, TypeTraits<T>::glTypeEnum, rows, cols, loc, count, m );
-  }
-  
-  void Init( RegalContext &ctx );
+    Uniform( TypeTraits<T>::glTypeEnum, rows, cols, loc, count, m );
+  }  
 };
 
 }; // namespace Emu

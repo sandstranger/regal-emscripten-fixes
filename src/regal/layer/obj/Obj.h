@@ -45,7 +45,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalEmu.h"
 #include "RegalPrivate.h"
 #include "RegalSharedMap.h"
-#include "RegalEmuProcsObj.h"
+#include "ObjProcs.h"
 
 REGAL_GLOBAL_END
 
@@ -62,14 +62,15 @@ struct Name
 
 struct NameTranslator
 {
-  RegalContext * context;
   shared_map< GLuint, Name > app2drv;
   shared_map< GLuint, Name * > drv2app;
 
-  void (REGAL_CALL *gen)( RegalContext *ctx, GLsizei n, GLuint * objs );
-  void (REGAL_CALL *del)( RegalContext *ctx, GLsizei n, const GLuint * objs );
+  typedef void (REGAL_CALL *GenProc)( Layer *layer, GLsizei n, GLuint * objs );
+  typedef void (REGAL_CALL *DelProc)( Layer *layer, GLsizei n, const GLuint * objs );
+  RegalProc<GenProc> gen;
+  RegalProc<DelProc> del;
 
-  NameTranslator() : gen( NULL ), del ( NULL )
+  NameTranslator()
   {
     drv2app[ 0 ] = & app2drv[ 0 ];  // special case 0
   }
@@ -82,7 +83,7 @@ struct NameTranslator
   GLuint Gen()
   {
     Name name;
-    gen( context, 1, & name.drv );
+    gen.proc( gen.layer, 1, & name.drv );
     // could be more clever here, and this could fail...
     name.app = name.drv;
     const GLuint searchLimit = 1000000000;
@@ -106,7 +107,7 @@ struct NameTranslator
     {
         Name & name = app2drv[ appName ];
         name.app = appName;
-        gen( context, 1, & name.drv );
+        gen.proc( gen.layer, 1, & name.drv );
         drv2app[ name.drv ] = &name;
     }
     return app2drv[ appName ].drv;
@@ -131,54 +132,51 @@ struct NameTranslator
     app2drv.erase( n.app );
     RegalAssert( drv2app.count( n.drv ) != 0 );
     drv2app.erase( n.drv );
-    del( context, 1, & n.drv );
+    del.proc( del.layer, 1, & n.drv );
   }
 };
-
-struct Obj
+  
+struct Obj : public Layer
 {
   NameTranslator bufferNames;
   NameTranslator vaoNames;
   NameTranslator textureNames;
-  EmuProcsOriginateObj orig;
+  ObjOriginate orig;
 
-  void Init( RegalContext &ctx )
+  virtual bool Initialize( const std::string & instanceInfo )
   {
+    RegalContext &ctx = *GetContext();
     orig.Initialize( ctx.dispatchGL );
-    EmuProcsInterceptObj( ctx.dispatchGL );
+    ObjIntercept( this, ctx.dispatchGL );
+
     RegalContext *sharingWith = ctx.shareGroup->front();
     if (sharingWith)
     {
-      bufferNames.context  = &ctx;
-      bufferNames.app2drv  = sharingWith->obj->bufferNames.app2drv;
-      bufferNames.drv2app  = sharingWith->obj->bufferNames.drv2app;
-      vaoNames.context     = &ctx;
-      vaoNames.app2drv     = sharingWith->obj->vaoNames.app2drv;
-      vaoNames.drv2app     = sharingWith->obj->vaoNames.drv2app;
-      textureNames.context = &ctx;
-      textureNames.app2drv = sharingWith->obj->textureNames.app2drv;
-      textureNames.drv2app = sharingWith->obj->textureNames.drv2app;
+      Obj *sharedObj = static_cast<Obj *>(sharingWith->find( GetName() ));
+      if( sharedObj ) {
+        bufferNames.app2drv  = sharedObj->bufferNames.app2drv;
+        bufferNames.drv2app  = sharedObj->bufferNames.drv2app;
+        vaoNames.app2drv     = sharedObj->vaoNames.app2drv;
+        vaoNames.drv2app     = sharedObj->vaoNames.drv2app;
+        textureNames.app2drv = sharedObj->textureNames.app2drv;
+        textureNames.drv2app = sharedObj->textureNames.drv2app;
+      }
     }
-
     bufferNames.gen  = orig.glGenBuffers;
     bufferNames.del  = orig.glDeleteBuffers;
     vaoNames.gen     = orig.glGenVertexArrays;
     vaoNames.del     = orig.glDeleteVertexArrays;
     textureNames.gen = orig.glGenTextures;
     textureNames.del = orig.glDeleteTextures;
+    return true;
   }
 
-  void Cleanup(RegalContext &ctx)
+  void BindBuffer(GLenum target, GLuint bufferBinding)
   {
-    UNUSED_PARAMETER(ctx);
+    RglBindBuffer( orig, target, bufferNames.ToDriverName( bufferBinding ) );
   }
 
-  void BindBuffer(RegalContext &ctx, GLenum target, GLuint bufferBinding)
-  {
-    orig.glBindBuffer( &ctx, target, bufferNames.ToDriverName( bufferBinding ) );
-  }
-
-  void GenBuffers(RegalContext &ctx, GLsizei n, GLuint *buffers)
+  void GenBuffers(GLsizei n, GLuint *buffers)
   {
     UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
@@ -186,7 +184,7 @@ struct Obj
     }
   }
 
-  void DeleteBuffers(RegalContext &ctx, GLsizei n, const GLuint *buffers)
+  void DeleteBuffers(GLsizei n, const GLuint *buffers)
   {
     UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
@@ -194,18 +192,18 @@ struct Obj
     }
   }
 
-  GLboolean IsBuffer(RegalContext &ctx, GLuint appName) const
+  GLboolean IsBuffer(GLuint appName) const
   {
     UNUSED_PARAMETER(ctx);
     return bufferNames.IsObject( appName );
   }
 
-  void BindVertexArray(RegalContext &ctx, GLuint vao)
+  void BindVertexArray(GLuint vao)
   {
-    orig.glBindVertexArray( &ctx, vaoNames.ToDriverName( vao ) );
+    RglBindVertexArray( orig, vaoNames.ToDriverName( vao ) );
   }
 
-  void GenVertexArrays(RegalContext &ctx, GLsizei n, GLuint *vaos)
+  void GenVertexArrays(GLsizei n, GLuint *vaos)
   {
     UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
@@ -213,7 +211,7 @@ struct Obj
     }
   }
 
-  void DeleteVertexArrays(RegalContext &ctx, GLsizei n, const GLuint * vaos)
+  void DeleteVertexArrays(GLsizei n, const GLuint * vaos)
   {
     UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
@@ -221,18 +219,18 @@ struct Obj
     }
   }
 
-  GLboolean IsVertexArray(RegalContext &ctx, GLuint appName) const
+  GLboolean IsVertexArray(GLuint appName) const
   {
     UNUSED_PARAMETER(ctx);
     return vaoNames.IsObject( appName );
   }
 
-  void BindTexture(RegalContext &ctx, GLenum target, GLuint name)
+  void BindTexture(GLenum target, GLuint name)
   {
-    orig.glBindTexture( &ctx, target, textureNames.ToDriverName( name ) );
+    RglBindTexture( orig, target, textureNames.ToDriverName( name ) );
   }
 
-  void GenTextures(RegalContext &ctx, GLsizei n, GLuint *names)
+  void GenTextures(GLsizei n, GLuint *names)
   {
     UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
@@ -240,7 +238,7 @@ struct Obj
     }
   }
 
-  void DeleteTextures(RegalContext &ctx, GLsizei n, const GLuint * names)
+  void DeleteTextures(GLsizei n, const GLuint * names)
   {
     UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
@@ -248,7 +246,7 @@ struct Obj
     }
   }
 
-  GLboolean IsTexture(RegalContext &ctx, GLuint name) const
+  GLboolean IsTexture(GLuint name) const
   {
     UNUSED_PARAMETER(ctx);
     return textureNames.IsObject( name );

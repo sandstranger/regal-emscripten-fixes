@@ -1673,7 +1673,7 @@ static void REGAL_CALL ppapi_glPushGroupMarkerEXT(GLsizei length, const GLchar *
   rCtx->ppapiES2->PushGroupMarkerEXT(rCtx->ppapiResource, length, marker);
 }
 
-void InitDispatchPpapi(Dispatch::GL &tbl)
+void InitDispatchPpapi( Layer *layer, Dispatch::GL &tbl )
 {
   // OpenGL ES 2.0 only
   tbl.glBlendFunc = ppapi_glBlendFunc;

@@ -57,6 +57,9 @@ using namespace std;
 #include "RegalPrivate.h"
 #include "RegalContext.h"
 
+#include "RegalContext.h"
+#include "Error.h"
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN

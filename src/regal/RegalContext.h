@@ -109,6 +109,16 @@ struct RegalContext
 
   GLLOGPROCREGAL      logCallback;
 
+  Layer * find( const std::string & name ) {
+    for( size_t i = 0; i < layer.size(); i++ ) {
+      Layer * l = layer[i];
+      if( l->GetName() == name ) {
+        return l;
+      }
+    }
+    return NULL;
+  }
+
   //
   // Regal context sharing
   //

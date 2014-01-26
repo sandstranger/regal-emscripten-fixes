@@ -55,7 +55,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
-#include "RegalEmuProcsPpa.h"
+#include "PpaProcs.h"
 
 REGAL_GLOBAL_END
 
@@ -66,15 +66,20 @@ namespace Emu
 
 // Work in progress...
 
-struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transform, State::Hint,
+struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, State::Transform, State::Hint,
     State::Enable, State::List, State::AccumBuffer, State::Scissor, State::Viewport, State::Line,
     State::Multisample, State::Eval, State::Fog, State::Point, State::PolygonStipple, State::ColorBuffer,
     State::PixelMode, State::Lighting
 {
-  void Init(RegalContext &ctx)
+  Ppa( RegalContext * ctx ) : Layer( ctx ) {}
+  
+  virtual std::string GetName() const { return "ppa"; }
+  
+  virtual bool Initialize( const std::string & instanceInfo )
   {
+    RegalContext &ctx = *GetContext();
     orig.Initialize( ctx.dispatchGL );
-    EmuProcsInterceptPpa( ctx.dispatchGL );
+    PpaIntercept( this, ctx.dispatchGL );
     activeTextureUnit = 0;
 
     // update emu info with the limits that this layer supports
@@ -84,14 +89,16 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     ctx.emuInfo->gl_max_draw_buffers       = REGAL_EMU_MAX_DRAW_BUFFERS;
     ctx.emuInfo->gl_max_texture_units      = REGAL_EMU_MAX_TEXTURE_UNITS;
     ctx.emuInfo->gl_max_viewports          = REGAL_EMU_MAX_VIEWPORTS;
+    return true;
+  }
+  
+  virtual void ResetIntercept() {
+    RegalContext * ctx = GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    PpaIntercept( this, ctx->dispatchGL );
   }
 
-  void Cleanup(RegalContext &ctx)
-  {
-    UNUSED_PARAMETER(ctx);
-  }
-
-  void PushAttrib(RegalContext *ctx, GLbitfield mask)
+  void PushAttrib(GLbitfield mask)
   {
     // from glspec44.compatibility.withchanges.pdf Sec. 21.6, p. 643
     //
@@ -100,9 +107,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     // MAX_ATTRIB_STACK_DEPTH.
     //
     // TODO: set correct GL error here
-
-    RegalAssert(ctx);
-    RegalAssert(ctx->emuInfo);
+    RegalContext *ctx = GetContext();
+    
     if (maskStack.size() >= ctx->emuInfo->gl_max_attrib_stack_depth)
       return;
 
@@ -176,7 +182,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_SCISSOR_BIT ",State::Scissor::toString());
       if (!State::Scissor::fullyDefined())
-        State::Scissor::getUndefined(orig,ctx);
+        State::Scissor::getUndefined(orig);
       scissorStack.push_back(State::Scissor());
       scissorStack.back() = *this;
       mask &= ~GL_SCISSOR_BIT;
@@ -186,7 +192,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_VIEWPORT_BIT ",State::Viewport::toString());
       if (!State::Viewport::fullyDefined())
-        State::Viewport::getUndefined(orig,ctx);
+        State::Viewport::getUndefined(orig);
       viewportStack.push_back(State::Viewport());
       viewportStack.back() = *this;
       mask &= ~GL_VIEWPORT_BIT;
@@ -244,7 +250,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_COLOR_BUFFER_BIT ",State::ColorBuffer::toString());
       if (!State::ColorBuffer::fullyDefined())
-        State::ColorBuffer::getUndefined(orig,ctx);
+        State::ColorBuffer::getUndefined(orig);
       colorBufferStack.push_back(State::ColorBuffer());
       colorBufferStack.back() = *this;
       mask &= ~GL_COLOR_BUFFER_BIT;
@@ -254,7 +260,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     {
       Internal("Regal::Ppa::PushAttrib GL_PIXEL_MODE_BIT ",State::PixelMode::toString());
       if (!State::PixelMode::fullyDefined())
-        State::PixelMode::getUndefined(orig,ctx);
+        State::PixelMode::getUndefined(orig);
       pixelModeStack.push_back(State::PixelMode());
       pixelModeStack.back() = *this;
       mask &= ~GL_PIXEL_MODE_BIT;
@@ -276,12 +282,11 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
       return;
 
     if (mask)
-      orig.glPushAttrib(ctx, mask);
+      RglPushAttrib( orig, mask);
   }
 
-  void PopAttrib(RegalContext *ctx)
+  void PopAttrib()
   {
-    RegalAssert(ctx);
     RegalAssert(maskStack.size());
 
     if (maskStack.size())
@@ -300,7 +305,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Depth::set(orig,ctx);
+        State::Depth::set(orig);
 
         mask &= ~GL_DEPTH_BUFFER_BIT;
       }
@@ -316,7 +321,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Stencil::set(orig,ctx);
+        State::Stencil::set(orig);
 
         mask &= ~GL_STENCIL_BUFFER_BIT;
       }
@@ -332,7 +337,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Polygon::set(orig,ctx);
+        State::Polygon::set(orig);
 
         mask &= ~GL_POLYGON_BIT;
       }
@@ -344,7 +349,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
 
         Internal("Regal::Ppa::PopAttrib GL_TRANSFORM_BIT ",State::Transform::toString());
 
-        State::Transform::transition(orig,ctx, transformStack.back());
+        State::Transform::transition(orig, transformStack.back());
         transformStack.pop_back();
 
         mask &= ~GL_TRANSFORM_BIT;
@@ -361,7 +366,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Hint::set(orig,ctx);
+        State::Hint::set(orig);
 
         mask &= ~GL_HINT_BIT;
       }
@@ -393,7 +398,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::List::set(orig,ctx);
+        State::List::set(orig);
 
         mask &= ~GL_LIST_BIT;
       }
@@ -409,7 +414,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::AccumBuffer::set(orig,ctx);
+        State::AccumBuffer::set(orig);
 
         mask &= ~GL_ACCUM_BUFFER_BIT;
       }
@@ -426,8 +431,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::Scissor::fullyDefined())
-          State::Scissor::getUndefined(orig,ctx);
-        State::Scissor::set(orig,ctx);
+          State::Scissor::getUndefined(orig);
+        State::Scissor::set(orig);
 
         mask &= ~GL_SCISSOR_BIT;
       }
@@ -444,8 +449,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::Viewport::fullyDefined())
-          State::Viewport::getUndefined(orig,ctx);
-        State::Viewport::set(orig,ctx);
+          State::Viewport::getUndefined(orig);
+        State::Viewport::set(orig);
 
         mask &= ~GL_VIEWPORT_BIT;
       }
@@ -461,7 +466,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Line::set(orig,ctx);
+        State::Line::set(orig);
 
         mask &= ~GL_LINE_BIT;
       }
@@ -493,7 +498,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Eval::set(orig,ctx);
+        State::Eval::set(orig);
 
         mask &= ~GL_EVAL_BIT;
       }
@@ -509,7 +514,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Fog::set(orig,ctx);
+        State::Fog::set(orig);
 
         mask &= ~GL_FOG_BIT;
       }
@@ -525,7 +530,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Point::set(orig,ctx);
+        State::Point::set(orig);
 
         mask &= ~GL_POINT_BIT;
       }
@@ -541,7 +546,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::PolygonStipple::set(orig,ctx);
+        State::PolygonStipple::set(orig);
 
         mask &= ~GL_POLYGON_STIPPLE_BIT;
       }
@@ -558,8 +563,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::ColorBuffer::fullyDefined())
-          State::ColorBuffer::getUndefined(orig,ctx);
-        State::ColorBuffer::set(orig,ctx);
+          State::ColorBuffer::getUndefined(orig);
+        State::ColorBuffer::set(orig);
 
         mask &= ~GL_COLOR_BUFFER_BIT;
       }
@@ -576,8 +581,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // since the glPushAttrib() - revisit
 
         if (!State::PixelMode::fullyDefined())
-          State::PixelMode::getUndefined(orig,ctx);
-        State::PixelMode::set(orig,ctx);
+          State::PixelMode::getUndefined(orig);
+        State::PixelMode::set(orig);
 
         mask &= ~GL_PIXEL_MODE_BIT;
       }
@@ -593,7 +598,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Lighting::set(orig,ctx);
+        State::Lighting::set(orig);
 
         mask &= ~GL_LIGHTING_BIT;
       }
@@ -604,14 +609,13 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         return;
 
       if (mask)
-        orig.glPopAttrib( ctx );
+        RglPopAttrib( orig );
     }
   }
 
-  template <typename T> bool glGetv(RegalContext *ctx, GLenum pname, T *params)
+  template <typename T> bool glGetv(GLenum pname, T *params)
   {
-    RegalAssert(ctx);
-    RegalAssert(ctx->info);
+    RegalContext * ctx = GetContext();
 
     if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
     {
@@ -752,7 +756,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         if ( index < array_size( State::ColorBuffer::drawBuffers ))
         {
           if (!State::ColorBuffer::fullyDefined())
-            State::ColorBuffer::getUndefined(orig,ctx);
+            State::ColorBuffer::getUndefined(orig);
           RegalAssertArrayIndex( State::ColorBuffer::drawBuffers, index );
           params[0] = static_cast<T>(State::ColorBuffer::drawBuffers[index]);
         }
@@ -979,7 +983,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
       case GL_READ_BUFFER:
       {
         if (!State::PixelMode::fullyDefined())
-          State::PixelMode::getUndefined(orig,ctx);
+          State::PixelMode::getUndefined(orig);
         params[0] = static_cast<T>(State::PixelMode::readBuffer);
       }
       break;
@@ -1059,9 +1063,9 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  template <typename T> bool glGeti_v(RegalContext *ctx, GLenum pname, GLuint index, T *params)
+  template <typename T> bool glGeti_v(GLenum pname, GLuint index, T *params)
   {
-    UNUSED_PARAMETER(ctx);
+    RegalContext * ctx = GetContext();
     switch (pname)
     {
       case GL_BLEND_DST_ALPHA:
@@ -1133,7 +1137,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         if (index < ctx->emuInfo->gl_max_viewports)
         {
           if (!State::Scissor::fullyDefined())
-            State::Scissor::getUndefined(orig,ctx);
+            State::Scissor::getUndefined(orig);
           params[0] = static_cast<T>(State::Scissor::scissorBox[index][0]);
           params[1] = static_cast<T>(State::Scissor::scissorBox[index][1]);
           params[2] = static_cast<T>(State::Scissor::scissorBox[index][2]);
@@ -1145,7 +1149,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         if (index < ctx->emuInfo->gl_max_viewports)
         {
           if (!State::Viewport::fullyDefined())
-            State::Viewport::getUndefined(orig,ctx);
+            State::Viewport::getUndefined(orig);
           params[0] = static_cast<T>(State::Viewport::viewport[index][0]);
           params[1] = static_cast<T>(State::Viewport::viewport[index][1]);
           params[2] = static_cast<T>(State::Viewport::viewport[index][2]);
@@ -1158,7 +1162,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  bool glGetPolygonStipple(RegalContext *ctx, GLubyte *pattern)
+  bool glGetPolygonStipple(GLubyte *pattern)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -1173,7 +1177,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  template <typename T> bool glGetColorTableParameterv(RegalContext *ctx, GLenum target, GLenum pname, T *params)
+  template <typename T> bool glGetColorTableParameterv(GLenum target, GLenum pname, T *params)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -1214,7 +1218,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  template <typename T> bool glGetConvolutionParameterv(RegalContext *ctx, GLenum target, GLenum pname, T *params)
+  template <typename T> bool glGetConvolutionParameterv(GLenum target, GLenum pname, T *params)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -1264,7 +1268,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  template <typename T> bool glGetLightv(RegalContext *ctx, GLenum light, GLenum pname, T *params)
+  template <typename T> bool glGetLightv(GLenum light, GLenum pname, T *params)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -1329,7 +1333,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  template <typename T> bool glGetMaterialv(RegalContext *ctx, GLenum face, GLenum pname, T *params)
+  template <typename T> bool glGetMaterialv(GLenum face, GLenum pname, T *params)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -1376,7 +1380,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  template <typename T> bool glGetMultiTexEnvv(RegalContext *ctx, GLenum texunit, GLenum target, GLenum pname, T *params)
+  template <typename T> bool glGetMultiTexEnvv(GLenum texunit, GLenum target, GLenum pname, T *params)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -1393,13 +1397,14 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  template <typename T> bool glGetTexEnvv(RegalContext *ctx, GLenum target, GLenum pname, T *params)
+  template <typename T> bool glGetTexEnvv(GLenum target, GLenum pname, T *params)
   {
-    return glGetMultiTexEnvv(ctx, GL_TEXTURE0+activeTextureUnit, target, pname, params);
+    return glGetMultiTexEnvv(GL_TEXTURE0+activeTextureUnit, target, pname, params);
   }
 
-  template <typename T> bool glGetTexParameter( RegalContext *ctx, GLenum target, GLenum pname, T * params )
+  template <typename T> bool glGetTexParameter( GLenum target, GLenum pname, T * params )
   {
+    RegalContext * ctx = GetContext();
     switch( pname ) {
       case GL_DEPTH_STENCIL_TEXTURE_MODE:
         if( ctx->info->es2 || ! ctx->info->gl_arb_stencil_texturing ) {
@@ -1440,25 +1445,23 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return false;
   }
   
-  template <typename T> bool glGetTextureParameter( RegalContext *ctx, GLuint texture, GLenum target, GLenum pname, T * params )
+  template <typename T> bool glGetTextureParameter( GLuint texture, GLenum target, GLenum pname, T * params )
   {
-    return glGetTexParameter( ctx, target, pname, params );
+    return glGetTexParameter( target, pname, params );
   }
 
-  template <typename T> bool glGetTexLevelParameter( RegalContext *ctx, GLenum target, GLint level, GLenum pname, T * params )
+  template <typename T> bool glGetTexLevelParameter( GLenum target, GLint level, GLenum pname, T * params )
   {
     return false;
   }
   
-  template <typename T> bool glGetTextureLevelParameter( RegalContext *ctx, GLuint texture, GLenum target, GLint level, GLenum pname, T * params )
+  template <typename T> bool glGetTextureLevelParameter( GLuint texture, GLenum target, GLint level, GLenum pname, T * params )
   {
-    return glGetTexLevelParameter( ctx, target, level, pname, params );
+    return glGetTexLevelParameter( target, level, pname, params );
   }
   
-  bool glIsEnabled(RegalContext *ctx, GLboolean &enabled, GLenum pname)
+  bool glIsEnabled(GLboolean &enabled, GLenum pname)
   {
-    UNUSED_PARAMETER(ctx);
-
     switch (pname)
     {
       case GL_ALPHA_TEST:
@@ -1752,7 +1755,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  bool glIsEnabledi(RegalContext *ctx, GLboolean &enabled, GLenum pname, GLuint index)
+  bool glIsEnabledi(GLboolean &enabled, GLenum pname, GLuint index)
   {
     UNUSED_PARAMETER(ctx);
 
@@ -1778,7 +1781,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  bool SetEnable(RegalContext *ctx, GLenum cap, GLboolean enabled)
+  bool SetEnable(GLenum cap, GLboolean enabled)
   {
     switch (cap)
     {
@@ -2156,6 +2159,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
         break;
     }
 
+    RegalContext * ctx = GetContext();
     if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
     {
       switch( cap )
@@ -2171,9 +2175,8 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return false;
   }
 
-  bool SetEnablei(RegalContext *ctx, GLenum cap, GLuint index, GLboolean enabled)
+  bool SetEnablei(GLenum cap, GLuint index, GLboolean enabled)
   {
-    UNUSED_PARAMETER(ctx);
     switch (cap)
     {
       case GL_BLEND:
@@ -2207,28 +2210,28 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
     return true;
   }
 
-  bool Enable(RegalContext *ctx, GLenum cap)
+  bool Enable(GLenum cap)
   {
     Internal("Regal::Ppa::Enable ",Token::toString(cap));
-    return SetEnable(ctx, cap, GL_TRUE);
+    return SetEnable(cap, GL_TRUE);
   }
 
-  bool Disable(RegalContext *ctx, GLenum cap)
+  bool Disable(GLenum cap)
   {
     Internal("Regal::Ppa::Disable ",Token::toString(cap));
-    return SetEnable(ctx, cap, GL_FALSE);
+    return SetEnable(cap, GL_FALSE);
   }
 
-  bool Enablei(RegalContext *ctx, GLenum cap, GLuint index)
+  bool Enablei(GLenum cap, GLuint index)
   {
     Internal("Regal::Ppa::Enablei ",Token::toString(cap),index);
-    return SetEnablei(ctx, cap, index, GL_TRUE);
+    return SetEnablei(cap, index, GL_TRUE);
   }
 
-  bool Disablei(RegalContext *ctx, GLenum cap, GLuint index)
+  bool Disablei(GLenum cap, GLuint index)
   {
     Internal("Regal::Ppa::Disablei ",Token::toString(cap),index);
-    return SetEnablei(ctx, cap, index, GL_FALSE);
+    return SetEnablei(cap, index, GL_FALSE);
   }
 
   void glActiveTexture( GLenum texture )
@@ -2289,7 +2292,7 @@ struct Ppa : public State::Stencil, State::Depth, State::Polygon, State::Transfo
   std::vector<State::Lighting>       lightingStack;
 
   GLuint activeTextureUnit;
-  EmuProcsOriginatePpa orig;
+  PpaOriginate orig;
 };
 
 }

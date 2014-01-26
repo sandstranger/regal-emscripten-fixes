@@ -36365,3906 +36365,3906 @@ static EGLBoolean REGAL_CALL trace_eglWaitClient(RegalContext *_context)
 
 #endif // REGAL_SYS_EGL
 
-void InitDispatchTrace(Dispatch::GL &tbl)
+void InitDispatchTrace( Layer *layer, Dispatch::GL &tbl )
 {
 
   // GL_VERSION_1_0
 
-  tbl.glAccum = trace_glAccum;
-  tbl.glAlphaFunc = trace_glAlphaFunc;
-  tbl.glBegin = trace_glBegin;
-  tbl.glBitmap = trace_glBitmap;
-  tbl.glBlendFunc = trace_glBlendFunc;
-  tbl.glCallList = trace_glCallList;
-  tbl.glCallLists = trace_glCallLists;
-  tbl.glClear = trace_glClear;
-  tbl.glClearAccum = trace_glClearAccum;
-  tbl.glClearColor = trace_glClearColor;
-  tbl.glClearDepth = trace_glClearDepth;
-  tbl.glClearIndex = trace_glClearIndex;
-  tbl.glClearStencil = trace_glClearStencil;
-  tbl.glClipPlane = trace_glClipPlane;
-  tbl.glColor3b = trace_glColor3b;
-  tbl.glColor3bv = trace_glColor3bv;
-  tbl.glColor3d = trace_glColor3d;
-  tbl.glColor3dv = trace_glColor3dv;
-  tbl.glColor3f = trace_glColor3f;
-  tbl.glColor3fv = trace_glColor3fv;
-  tbl.glColor3i = trace_glColor3i;
-  tbl.glColor3iv = trace_glColor3iv;
-  tbl.glColor3s = trace_glColor3s;
-  tbl.glColor3sv = trace_glColor3sv;
-  tbl.glColor3ub = trace_glColor3ub;
-  tbl.glColor3ubv = trace_glColor3ubv;
-  tbl.glColor3ui = trace_glColor3ui;
-  tbl.glColor3uiv = trace_glColor3uiv;
-  tbl.glColor3us = trace_glColor3us;
-  tbl.glColor3usv = trace_glColor3usv;
-  tbl.glColor4b = trace_glColor4b;
-  tbl.glColor4bv = trace_glColor4bv;
-  tbl.glColor4d = trace_glColor4d;
-  tbl.glColor4dv = trace_glColor4dv;
-  tbl.glColor4f = trace_glColor4f;
-  tbl.glColor4fv = trace_glColor4fv;
-  tbl.glColor4i = trace_glColor4i;
-  tbl.glColor4iv = trace_glColor4iv;
-  tbl.glColor4s = trace_glColor4s;
-  tbl.glColor4sv = trace_glColor4sv;
-  tbl.glColor4ub = trace_glColor4ub;
-  tbl.glColor4ubv = trace_glColor4ubv;
-  tbl.glColor4ui = trace_glColor4ui;
-  tbl.glColor4uiv = trace_glColor4uiv;
-  tbl.glColor4us = trace_glColor4us;
-  tbl.glColor4usv = trace_glColor4usv;
-  tbl.glColorMask = trace_glColorMask;
-  tbl.glColorMaterial = trace_glColorMaterial;
-  tbl.glCopyPixels = trace_glCopyPixels;
-  tbl.glCullFace = trace_glCullFace;
-  tbl.glDeleteLists = trace_glDeleteLists;
-  tbl.glDepthFunc = trace_glDepthFunc;
-  tbl.glDepthMask = trace_glDepthMask;
-  tbl.glDepthRange = trace_glDepthRange;
-  tbl.glDisable = trace_glDisable;
-  tbl.glDrawBuffer = trace_glDrawBuffer;
-  tbl.glDrawPixels = trace_glDrawPixels;
-  tbl.glEdgeFlag = trace_glEdgeFlag;
-  tbl.glEdgeFlagv = trace_glEdgeFlagv;
-  tbl.glEnable = trace_glEnable;
-  tbl.glEnd = trace_glEnd;
-  tbl.glEndList = trace_glEndList;
-  tbl.glEvalCoord1d = trace_glEvalCoord1d;
-  tbl.glEvalCoord1dv = trace_glEvalCoord1dv;
-  tbl.glEvalCoord1f = trace_glEvalCoord1f;
-  tbl.glEvalCoord1fv = trace_glEvalCoord1fv;
-  tbl.glEvalCoord2d = trace_glEvalCoord2d;
-  tbl.glEvalCoord2dv = trace_glEvalCoord2dv;
-  tbl.glEvalCoord2f = trace_glEvalCoord2f;
-  tbl.glEvalCoord2fv = trace_glEvalCoord2fv;
-  tbl.glEvalMesh1 = trace_glEvalMesh1;
-  tbl.glEvalMesh2 = trace_glEvalMesh2;
-  tbl.glEvalPoint1 = trace_glEvalPoint1;
-  tbl.glEvalPoint2 = trace_glEvalPoint2;
-  tbl.glFeedbackBuffer = trace_glFeedbackBuffer;
-  tbl.glFinish = trace_glFinish;
-  tbl.glFlush = trace_glFlush;
-  tbl.glFogf = trace_glFogf;
-  tbl.glFogfv = trace_glFogfv;
-  tbl.glFogi = trace_glFogi;
-  tbl.glFogiv = trace_glFogiv;
-  tbl.glFrontFace = trace_glFrontFace;
-  tbl.glFrustum = trace_glFrustum;
-  tbl.glGenLists = trace_glGenLists;
-  tbl.glGetBooleanv = trace_glGetBooleanv;
-  tbl.glGetClipPlane = trace_glGetClipPlane;
-  tbl.glGetDoublev = trace_glGetDoublev;
-  tbl.glGetError = trace_glGetError;
-  tbl.glGetFloatv = trace_glGetFloatv;
-  tbl.glGetIntegerv = trace_glGetIntegerv;
-  tbl.glGetLightfv = trace_glGetLightfv;
-  tbl.glGetLightiv = trace_glGetLightiv;
-  tbl.glGetMapdv = trace_glGetMapdv;
-  tbl.glGetMapfv = trace_glGetMapfv;
-  tbl.glGetMapiv = trace_glGetMapiv;
-  tbl.glGetMaterialfv = trace_glGetMaterialfv;
-  tbl.glGetMaterialiv = trace_glGetMaterialiv;
-  tbl.glGetPixelMapfv = trace_glGetPixelMapfv;
-  tbl.glGetPixelMapuiv = trace_glGetPixelMapuiv;
-  tbl.glGetPixelMapusv = trace_glGetPixelMapusv;
-  tbl.glGetPolygonStipple = trace_glGetPolygonStipple;
-  tbl.glGetString = trace_glGetString;
-  tbl.glGetTexEnvfv = trace_glGetTexEnvfv;
-  tbl.glGetTexEnviv = trace_glGetTexEnviv;
-  tbl.glGetTexGendv = trace_glGetTexGendv;
-  tbl.glGetTexGenfv = trace_glGetTexGenfv;
-  tbl.glGetTexGeniv = trace_glGetTexGeniv;
-  tbl.glGetTexImage = trace_glGetTexImage;
-  tbl.glGetTexLevelParameterfv = trace_glGetTexLevelParameterfv;
-  tbl.glGetTexLevelParameteriv = trace_glGetTexLevelParameteriv;
-  tbl.glGetTexParameterfv = trace_glGetTexParameterfv;
-  tbl.glGetTexParameteriv = trace_glGetTexParameteriv;
-  tbl.glHint = trace_glHint;
-  tbl.glIndexMask = trace_glIndexMask;
-  tbl.glIndexd = trace_glIndexd;
-  tbl.glIndexdv = trace_glIndexdv;
-  tbl.glIndexf = trace_glIndexf;
-  tbl.glIndexfv = trace_glIndexfv;
-  tbl.glIndexi = trace_glIndexi;
-  tbl.glIndexiv = trace_glIndexiv;
-  tbl.glIndexs = trace_glIndexs;
-  tbl.glIndexsv = trace_glIndexsv;
-  tbl.glInitNames = trace_glInitNames;
-  tbl.glIsEnabled = trace_glIsEnabled;
-  tbl.glIsList = trace_glIsList;
-  tbl.glLightModelf = trace_glLightModelf;
-  tbl.glLightModelfv = trace_glLightModelfv;
-  tbl.glLightModeli = trace_glLightModeli;
-  tbl.glLightModeliv = trace_glLightModeliv;
-  tbl.glLightf = trace_glLightf;
-  tbl.glLightfv = trace_glLightfv;
-  tbl.glLighti = trace_glLighti;
-  tbl.glLightiv = trace_glLightiv;
-  tbl.glLineStipple = trace_glLineStipple;
-  tbl.glLineWidth = trace_glLineWidth;
-  tbl.glListBase = trace_glListBase;
-  tbl.glLoadIdentity = trace_glLoadIdentity;
-  tbl.glLoadMatrixd = trace_glLoadMatrixd;
-  tbl.glLoadMatrixf = trace_glLoadMatrixf;
-  tbl.glLoadName = trace_glLoadName;
-  tbl.glLogicOp = trace_glLogicOp;
-  tbl.glMap1d = trace_glMap1d;
-  tbl.glMap1f = trace_glMap1f;
-  tbl.glMap2d = trace_glMap2d;
-  tbl.glMap2f = trace_glMap2f;
-  tbl.glMapGrid1d = trace_glMapGrid1d;
-  tbl.glMapGrid1f = trace_glMapGrid1f;
-  tbl.glMapGrid2d = trace_glMapGrid2d;
-  tbl.glMapGrid2f = trace_glMapGrid2f;
-  tbl.glMaterialf = trace_glMaterialf;
-  tbl.glMaterialfv = trace_glMaterialfv;
-  tbl.glMateriali = trace_glMateriali;
-  tbl.glMaterialiv = trace_glMaterialiv;
-  tbl.glMatrixMode = trace_glMatrixMode;
-  tbl.glMultMatrixd = trace_glMultMatrixd;
-  tbl.glMultMatrixf = trace_glMultMatrixf;
-  tbl.glNewList = trace_glNewList;
-  tbl.glNormal3b = trace_glNormal3b;
-  tbl.glNormal3bv = trace_glNormal3bv;
-  tbl.glNormal3d = trace_glNormal3d;
-  tbl.glNormal3dv = trace_glNormal3dv;
-  tbl.glNormal3f = trace_glNormal3f;
-  tbl.glNormal3fv = trace_glNormal3fv;
-  tbl.glNormal3i = trace_glNormal3i;
-  tbl.glNormal3iv = trace_glNormal3iv;
-  tbl.glNormal3s = trace_glNormal3s;
-  tbl.glNormal3sv = trace_glNormal3sv;
-  tbl.glOrtho = trace_glOrtho;
-  tbl.glPassThrough = trace_glPassThrough;
-  tbl.glPixelMapfv = trace_glPixelMapfv;
-  tbl.glPixelMapuiv = trace_glPixelMapuiv;
-  tbl.glPixelMapusv = trace_glPixelMapusv;
-  tbl.glPixelStoref = trace_glPixelStoref;
-  tbl.glPixelStorei = trace_glPixelStorei;
-  tbl.glPixelTransferf = trace_glPixelTransferf;
-  tbl.glPixelTransferi = trace_glPixelTransferi;
-  tbl.glPixelZoom = trace_glPixelZoom;
-  tbl.glPointSize = trace_glPointSize;
-  tbl.glPolygonMode = trace_glPolygonMode;
-  tbl.glPolygonStipple = trace_glPolygonStipple;
-  tbl.glPopAttrib = trace_glPopAttrib;
-  tbl.glPopMatrix = trace_glPopMatrix;
-  tbl.glPopName = trace_glPopName;
-  tbl.glPushAttrib = trace_glPushAttrib;
-  tbl.glPushMatrix = trace_glPushMatrix;
-  tbl.glPushName = trace_glPushName;
-  tbl.glRasterPos2d = trace_glRasterPos2d;
-  tbl.glRasterPos2dv = trace_glRasterPos2dv;
-  tbl.glRasterPos2f = trace_glRasterPos2f;
-  tbl.glRasterPos2fv = trace_glRasterPos2fv;
-  tbl.glRasterPos2i = trace_glRasterPos2i;
-  tbl.glRasterPos2iv = trace_glRasterPos2iv;
-  tbl.glRasterPos2s = trace_glRasterPos2s;
-  tbl.glRasterPos2sv = trace_glRasterPos2sv;
-  tbl.glRasterPos3d = trace_glRasterPos3d;
-  tbl.glRasterPos3dv = trace_glRasterPos3dv;
-  tbl.glRasterPos3f = trace_glRasterPos3f;
-  tbl.glRasterPos3fv = trace_glRasterPos3fv;
-  tbl.glRasterPos3i = trace_glRasterPos3i;
-  tbl.glRasterPos3iv = trace_glRasterPos3iv;
-  tbl.glRasterPos3s = trace_glRasterPos3s;
-  tbl.glRasterPos3sv = trace_glRasterPos3sv;
-  tbl.glRasterPos4d = trace_glRasterPos4d;
-  tbl.glRasterPos4dv = trace_glRasterPos4dv;
-  tbl.glRasterPos4f = trace_glRasterPos4f;
-  tbl.glRasterPos4fv = trace_glRasterPos4fv;
-  tbl.glRasterPos4i = trace_glRasterPos4i;
-  tbl.glRasterPos4iv = trace_glRasterPos4iv;
-  tbl.glRasterPos4s = trace_glRasterPos4s;
-  tbl.glRasterPos4sv = trace_glRasterPos4sv;
-  tbl.glReadBuffer = trace_glReadBuffer;
-  tbl.glReadPixels = trace_glReadPixels;
-  tbl.glRectd = trace_glRectd;
-  tbl.glRectdv = trace_glRectdv;
-  tbl.glRectf = trace_glRectf;
-  tbl.glRectfv = trace_glRectfv;
-  tbl.glRecti = trace_glRecti;
-  tbl.glRectiv = trace_glRectiv;
-  tbl.glRects = trace_glRects;
-  tbl.glRectsv = trace_glRectsv;
-  tbl.glRenderMode = trace_glRenderMode;
-  tbl.glRotated = trace_glRotated;
-  tbl.glRotatef = trace_glRotatef;
-  tbl.glScaled = trace_glScaled;
-  tbl.glScalef = trace_glScalef;
-  tbl.glScissor = trace_glScissor;
-  tbl.glSelectBuffer = trace_glSelectBuffer;
-  tbl.glShadeModel = trace_glShadeModel;
-  tbl.glStencilFunc = trace_glStencilFunc;
-  tbl.glStencilMask = trace_glStencilMask;
-  tbl.glStencilOp = trace_glStencilOp;
-  tbl.glTexCoord1d = trace_glTexCoord1d;
-  tbl.glTexCoord1dv = trace_glTexCoord1dv;
-  tbl.glTexCoord1f = trace_glTexCoord1f;
-  tbl.glTexCoord1fv = trace_glTexCoord1fv;
-  tbl.glTexCoord1i = trace_glTexCoord1i;
-  tbl.glTexCoord1iv = trace_glTexCoord1iv;
-  tbl.glTexCoord1s = trace_glTexCoord1s;
-  tbl.glTexCoord1sv = trace_glTexCoord1sv;
-  tbl.glTexCoord2d = trace_glTexCoord2d;
-  tbl.glTexCoord2dv = trace_glTexCoord2dv;
-  tbl.glTexCoord2f = trace_glTexCoord2f;
-  tbl.glTexCoord2fv = trace_glTexCoord2fv;
-  tbl.glTexCoord2i = trace_glTexCoord2i;
-  tbl.glTexCoord2iv = trace_glTexCoord2iv;
-  tbl.glTexCoord2s = trace_glTexCoord2s;
-  tbl.glTexCoord2sv = trace_glTexCoord2sv;
-  tbl.glTexCoord3d = trace_glTexCoord3d;
-  tbl.glTexCoord3dv = trace_glTexCoord3dv;
-  tbl.glTexCoord3f = trace_glTexCoord3f;
-  tbl.glTexCoord3fv = trace_glTexCoord3fv;
-  tbl.glTexCoord3i = trace_glTexCoord3i;
-  tbl.glTexCoord3iv = trace_glTexCoord3iv;
-  tbl.glTexCoord3s = trace_glTexCoord3s;
-  tbl.glTexCoord3sv = trace_glTexCoord3sv;
-  tbl.glTexCoord4d = trace_glTexCoord4d;
-  tbl.glTexCoord4dv = trace_glTexCoord4dv;
-  tbl.glTexCoord4f = trace_glTexCoord4f;
-  tbl.glTexCoord4fv = trace_glTexCoord4fv;
-  tbl.glTexCoord4i = trace_glTexCoord4i;
-  tbl.glTexCoord4iv = trace_glTexCoord4iv;
-  tbl.glTexCoord4s = trace_glTexCoord4s;
-  tbl.glTexCoord4sv = trace_glTexCoord4sv;
-  tbl.glTexEnvf = trace_glTexEnvf;
-  tbl.glTexEnvfv = trace_glTexEnvfv;
-  tbl.glTexEnvi = trace_glTexEnvi;
-  tbl.glTexEnviv = trace_glTexEnviv;
-  tbl.glTexGend = trace_glTexGend;
-  tbl.glTexGendv = trace_glTexGendv;
-  tbl.glTexGenf = trace_glTexGenf;
-  tbl.glTexGenfv = trace_glTexGenfv;
-  tbl.glTexGeni = trace_glTexGeni;
-  tbl.glTexGeniv = trace_glTexGeniv;
-  tbl.glTexImage1D = trace_glTexImage1D;
-  tbl.glTexImage2D = trace_glTexImage2D;
-  tbl.glTexParameterf = trace_glTexParameterf;
-  tbl.glTexParameterfv = trace_glTexParameterfv;
-  tbl.glTexParameteri = trace_glTexParameteri;
-  tbl.glTexParameteriv = trace_glTexParameteriv;
-  tbl.glTranslated = trace_glTranslated;
-  tbl.glTranslatef = trace_glTranslatef;
-  tbl.glVertex2d = trace_glVertex2d;
-  tbl.glVertex2dv = trace_glVertex2dv;
-  tbl.glVertex2f = trace_glVertex2f;
-  tbl.glVertex2fv = trace_glVertex2fv;
-  tbl.glVertex2i = trace_glVertex2i;
-  tbl.glVertex2iv = trace_glVertex2iv;
-  tbl.glVertex2s = trace_glVertex2s;
-  tbl.glVertex2sv = trace_glVertex2sv;
-  tbl.glVertex3d = trace_glVertex3d;
-  tbl.glVertex3dv = trace_glVertex3dv;
-  tbl.glVertex3f = trace_glVertex3f;
-  tbl.glVertex3fv = trace_glVertex3fv;
-  tbl.glVertex3i = trace_glVertex3i;
-  tbl.glVertex3iv = trace_glVertex3iv;
-  tbl.glVertex3s = trace_glVertex3s;
-  tbl.glVertex3sv = trace_glVertex3sv;
-  tbl.glVertex4d = trace_glVertex4d;
-  tbl.glVertex4dv = trace_glVertex4dv;
-  tbl.glVertex4f = trace_glVertex4f;
-  tbl.glVertex4fv = trace_glVertex4fv;
-  tbl.glVertex4i = trace_glVertex4i;
-  tbl.glVertex4iv = trace_glVertex4iv;
-  tbl.glVertex4s = trace_glVertex4s;
-  tbl.glVertex4sv = trace_glVertex4sv;
-  tbl.glViewport = trace_glViewport;
+  tbl.glAccum = MakeRegalProc( trace_glAccum, layer );
+  tbl.glAlphaFunc = MakeRegalProc( trace_glAlphaFunc, layer );
+  tbl.glBegin = MakeRegalProc( trace_glBegin, layer );
+  tbl.glBitmap = MakeRegalProc( trace_glBitmap, layer );
+  tbl.glBlendFunc = MakeRegalProc( trace_glBlendFunc, layer );
+  tbl.glCallList = MakeRegalProc( trace_glCallList, layer );
+  tbl.glCallLists = MakeRegalProc( trace_glCallLists, layer );
+  tbl.glClear = MakeRegalProc( trace_glClear, layer );
+  tbl.glClearAccum = MakeRegalProc( trace_glClearAccum, layer );
+  tbl.glClearColor = MakeRegalProc( trace_glClearColor, layer );
+  tbl.glClearDepth = MakeRegalProc( trace_glClearDepth, layer );
+  tbl.glClearIndex = MakeRegalProc( trace_glClearIndex, layer );
+  tbl.glClearStencil = MakeRegalProc( trace_glClearStencil, layer );
+  tbl.glClipPlane = MakeRegalProc( trace_glClipPlane, layer );
+  tbl.glColor3b = MakeRegalProc( trace_glColor3b, layer );
+  tbl.glColor3bv = MakeRegalProc( trace_glColor3bv, layer );
+  tbl.glColor3d = MakeRegalProc( trace_glColor3d, layer );
+  tbl.glColor3dv = MakeRegalProc( trace_glColor3dv, layer );
+  tbl.glColor3f = MakeRegalProc( trace_glColor3f, layer );
+  tbl.glColor3fv = MakeRegalProc( trace_glColor3fv, layer );
+  tbl.glColor3i = MakeRegalProc( trace_glColor3i, layer );
+  tbl.glColor3iv = MakeRegalProc( trace_glColor3iv, layer );
+  tbl.glColor3s = MakeRegalProc( trace_glColor3s, layer );
+  tbl.glColor3sv = MakeRegalProc( trace_glColor3sv, layer );
+  tbl.glColor3ub = MakeRegalProc( trace_glColor3ub, layer );
+  tbl.glColor3ubv = MakeRegalProc( trace_glColor3ubv, layer );
+  tbl.glColor3ui = MakeRegalProc( trace_glColor3ui, layer );
+  tbl.glColor3uiv = MakeRegalProc( trace_glColor3uiv, layer );
+  tbl.glColor3us = MakeRegalProc( trace_glColor3us, layer );
+  tbl.glColor3usv = MakeRegalProc( trace_glColor3usv, layer );
+  tbl.glColor4b = MakeRegalProc( trace_glColor4b, layer );
+  tbl.glColor4bv = MakeRegalProc( trace_glColor4bv, layer );
+  tbl.glColor4d = MakeRegalProc( trace_glColor4d, layer );
+  tbl.glColor4dv = MakeRegalProc( trace_glColor4dv, layer );
+  tbl.glColor4f = MakeRegalProc( trace_glColor4f, layer );
+  tbl.glColor4fv = MakeRegalProc( trace_glColor4fv, layer );
+  tbl.glColor4i = MakeRegalProc( trace_glColor4i, layer );
+  tbl.glColor4iv = MakeRegalProc( trace_glColor4iv, layer );
+  tbl.glColor4s = MakeRegalProc( trace_glColor4s, layer );
+  tbl.glColor4sv = MakeRegalProc( trace_glColor4sv, layer );
+  tbl.glColor4ub = MakeRegalProc( trace_glColor4ub, layer );
+  tbl.glColor4ubv = MakeRegalProc( trace_glColor4ubv, layer );
+  tbl.glColor4ui = MakeRegalProc( trace_glColor4ui, layer );
+  tbl.glColor4uiv = MakeRegalProc( trace_glColor4uiv, layer );
+  tbl.glColor4us = MakeRegalProc( trace_glColor4us, layer );
+  tbl.glColor4usv = MakeRegalProc( trace_glColor4usv, layer );
+  tbl.glColorMask = MakeRegalProc( trace_glColorMask, layer );
+  tbl.glColorMaterial = MakeRegalProc( trace_glColorMaterial, layer );
+  tbl.glCopyPixels = MakeRegalProc( trace_glCopyPixels, layer );
+  tbl.glCullFace = MakeRegalProc( trace_glCullFace, layer );
+  tbl.glDeleteLists = MakeRegalProc( trace_glDeleteLists, layer );
+  tbl.glDepthFunc = MakeRegalProc( trace_glDepthFunc, layer );
+  tbl.glDepthMask = MakeRegalProc( trace_glDepthMask, layer );
+  tbl.glDepthRange = MakeRegalProc( trace_glDepthRange, layer );
+  tbl.glDisable = MakeRegalProc( trace_glDisable, layer );
+  tbl.glDrawBuffer = MakeRegalProc( trace_glDrawBuffer, layer );
+  tbl.glDrawPixels = MakeRegalProc( trace_glDrawPixels, layer );
+  tbl.glEdgeFlag = MakeRegalProc( trace_glEdgeFlag, layer );
+  tbl.glEdgeFlagv = MakeRegalProc( trace_glEdgeFlagv, layer );
+  tbl.glEnable = MakeRegalProc( trace_glEnable, layer );
+  tbl.glEnd = MakeRegalProc( trace_glEnd, layer );
+  tbl.glEndList = MakeRegalProc( trace_glEndList, layer );
+  tbl.glEvalCoord1d = MakeRegalProc( trace_glEvalCoord1d, layer );
+  tbl.glEvalCoord1dv = MakeRegalProc( trace_glEvalCoord1dv, layer );
+  tbl.glEvalCoord1f = MakeRegalProc( trace_glEvalCoord1f, layer );
+  tbl.glEvalCoord1fv = MakeRegalProc( trace_glEvalCoord1fv, layer );
+  tbl.glEvalCoord2d = MakeRegalProc( trace_glEvalCoord2d, layer );
+  tbl.glEvalCoord2dv = MakeRegalProc( trace_glEvalCoord2dv, layer );
+  tbl.glEvalCoord2f = MakeRegalProc( trace_glEvalCoord2f, layer );
+  tbl.glEvalCoord2fv = MakeRegalProc( trace_glEvalCoord2fv, layer );
+  tbl.glEvalMesh1 = MakeRegalProc( trace_glEvalMesh1, layer );
+  tbl.glEvalMesh2 = MakeRegalProc( trace_glEvalMesh2, layer );
+  tbl.glEvalPoint1 = MakeRegalProc( trace_glEvalPoint1, layer );
+  tbl.glEvalPoint2 = MakeRegalProc( trace_glEvalPoint2, layer );
+  tbl.glFeedbackBuffer = MakeRegalProc( trace_glFeedbackBuffer, layer );
+  tbl.glFinish = MakeRegalProc( trace_glFinish, layer );
+  tbl.glFlush = MakeRegalProc( trace_glFlush, layer );
+  tbl.glFogf = MakeRegalProc( trace_glFogf, layer );
+  tbl.glFogfv = MakeRegalProc( trace_glFogfv, layer );
+  tbl.glFogi = MakeRegalProc( trace_glFogi, layer );
+  tbl.glFogiv = MakeRegalProc( trace_glFogiv, layer );
+  tbl.glFrontFace = MakeRegalProc( trace_glFrontFace, layer );
+  tbl.glFrustum = MakeRegalProc( trace_glFrustum, layer );
+  tbl.glGenLists = MakeRegalProc( trace_glGenLists, layer );
+  tbl.glGetBooleanv = MakeRegalProc( trace_glGetBooleanv, layer );
+  tbl.glGetClipPlane = MakeRegalProc( trace_glGetClipPlane, layer );
+  tbl.glGetDoublev = MakeRegalProc( trace_glGetDoublev, layer );
+  tbl.glGetError = MakeRegalProc( trace_glGetError, layer );
+  tbl.glGetFloatv = MakeRegalProc( trace_glGetFloatv, layer );
+  tbl.glGetIntegerv = MakeRegalProc( trace_glGetIntegerv, layer );
+  tbl.glGetLightfv = MakeRegalProc( trace_glGetLightfv, layer );
+  tbl.glGetLightiv = MakeRegalProc( trace_glGetLightiv, layer );
+  tbl.glGetMapdv = MakeRegalProc( trace_glGetMapdv, layer );
+  tbl.glGetMapfv = MakeRegalProc( trace_glGetMapfv, layer );
+  tbl.glGetMapiv = MakeRegalProc( trace_glGetMapiv, layer );
+  tbl.glGetMaterialfv = MakeRegalProc( trace_glGetMaterialfv, layer );
+  tbl.glGetMaterialiv = MakeRegalProc( trace_glGetMaterialiv, layer );
+  tbl.glGetPixelMapfv = MakeRegalProc( trace_glGetPixelMapfv, layer );
+  tbl.glGetPixelMapuiv = MakeRegalProc( trace_glGetPixelMapuiv, layer );
+  tbl.glGetPixelMapusv = MakeRegalProc( trace_glGetPixelMapusv, layer );
+  tbl.glGetPolygonStipple = MakeRegalProc( trace_glGetPolygonStipple, layer );
+  tbl.glGetString = MakeRegalProc( trace_glGetString, layer );
+  tbl.glGetTexEnvfv = MakeRegalProc( trace_glGetTexEnvfv, layer );
+  tbl.glGetTexEnviv = MakeRegalProc( trace_glGetTexEnviv, layer );
+  tbl.glGetTexGendv = MakeRegalProc( trace_glGetTexGendv, layer );
+  tbl.glGetTexGenfv = MakeRegalProc( trace_glGetTexGenfv, layer );
+  tbl.glGetTexGeniv = MakeRegalProc( trace_glGetTexGeniv, layer );
+  tbl.glGetTexImage = MakeRegalProc( trace_glGetTexImage, layer );
+  tbl.glGetTexLevelParameterfv = MakeRegalProc( trace_glGetTexLevelParameterfv, layer );
+  tbl.glGetTexLevelParameteriv = MakeRegalProc( trace_glGetTexLevelParameteriv, layer );
+  tbl.glGetTexParameterfv = MakeRegalProc( trace_glGetTexParameterfv, layer );
+  tbl.glGetTexParameteriv = MakeRegalProc( trace_glGetTexParameteriv, layer );
+  tbl.glHint = MakeRegalProc( trace_glHint, layer );
+  tbl.glIndexMask = MakeRegalProc( trace_glIndexMask, layer );
+  tbl.glIndexd = MakeRegalProc( trace_glIndexd, layer );
+  tbl.glIndexdv = MakeRegalProc( trace_glIndexdv, layer );
+  tbl.glIndexf = MakeRegalProc( trace_glIndexf, layer );
+  tbl.glIndexfv = MakeRegalProc( trace_glIndexfv, layer );
+  tbl.glIndexi = MakeRegalProc( trace_glIndexi, layer );
+  tbl.glIndexiv = MakeRegalProc( trace_glIndexiv, layer );
+  tbl.glIndexs = MakeRegalProc( trace_glIndexs, layer );
+  tbl.glIndexsv = MakeRegalProc( trace_glIndexsv, layer );
+  tbl.glInitNames = MakeRegalProc( trace_glInitNames, layer );
+  tbl.glIsEnabled = MakeRegalProc( trace_glIsEnabled, layer );
+  tbl.glIsList = MakeRegalProc( trace_glIsList, layer );
+  tbl.glLightModelf = MakeRegalProc( trace_glLightModelf, layer );
+  tbl.glLightModelfv = MakeRegalProc( trace_glLightModelfv, layer );
+  tbl.glLightModeli = MakeRegalProc( trace_glLightModeli, layer );
+  tbl.glLightModeliv = MakeRegalProc( trace_glLightModeliv, layer );
+  tbl.glLightf = MakeRegalProc( trace_glLightf, layer );
+  tbl.glLightfv = MakeRegalProc( trace_glLightfv, layer );
+  tbl.glLighti = MakeRegalProc( trace_glLighti, layer );
+  tbl.glLightiv = MakeRegalProc( trace_glLightiv, layer );
+  tbl.glLineStipple = MakeRegalProc( trace_glLineStipple, layer );
+  tbl.glLineWidth = MakeRegalProc( trace_glLineWidth, layer );
+  tbl.glListBase = MakeRegalProc( trace_glListBase, layer );
+  tbl.glLoadIdentity = MakeRegalProc( trace_glLoadIdentity, layer );
+  tbl.glLoadMatrixd = MakeRegalProc( trace_glLoadMatrixd, layer );
+  tbl.glLoadMatrixf = MakeRegalProc( trace_glLoadMatrixf, layer );
+  tbl.glLoadName = MakeRegalProc( trace_glLoadName, layer );
+  tbl.glLogicOp = MakeRegalProc( trace_glLogicOp, layer );
+  tbl.glMap1d = MakeRegalProc( trace_glMap1d, layer );
+  tbl.glMap1f = MakeRegalProc( trace_glMap1f, layer );
+  tbl.glMap2d = MakeRegalProc( trace_glMap2d, layer );
+  tbl.glMap2f = MakeRegalProc( trace_glMap2f, layer );
+  tbl.glMapGrid1d = MakeRegalProc( trace_glMapGrid1d, layer );
+  tbl.glMapGrid1f = MakeRegalProc( trace_glMapGrid1f, layer );
+  tbl.glMapGrid2d = MakeRegalProc( trace_glMapGrid2d, layer );
+  tbl.glMapGrid2f = MakeRegalProc( trace_glMapGrid2f, layer );
+  tbl.glMaterialf = MakeRegalProc( trace_glMaterialf, layer );
+  tbl.glMaterialfv = MakeRegalProc( trace_glMaterialfv, layer );
+  tbl.glMateriali = MakeRegalProc( trace_glMateriali, layer );
+  tbl.glMaterialiv = MakeRegalProc( trace_glMaterialiv, layer );
+  tbl.glMatrixMode = MakeRegalProc( trace_glMatrixMode, layer );
+  tbl.glMultMatrixd = MakeRegalProc( trace_glMultMatrixd, layer );
+  tbl.glMultMatrixf = MakeRegalProc( trace_glMultMatrixf, layer );
+  tbl.glNewList = MakeRegalProc( trace_glNewList, layer );
+  tbl.glNormal3b = MakeRegalProc( trace_glNormal3b, layer );
+  tbl.glNormal3bv = MakeRegalProc( trace_glNormal3bv, layer );
+  tbl.glNormal3d = MakeRegalProc( trace_glNormal3d, layer );
+  tbl.glNormal3dv = MakeRegalProc( trace_glNormal3dv, layer );
+  tbl.glNormal3f = MakeRegalProc( trace_glNormal3f, layer );
+  tbl.glNormal3fv = MakeRegalProc( trace_glNormal3fv, layer );
+  tbl.glNormal3i = MakeRegalProc( trace_glNormal3i, layer );
+  tbl.glNormal3iv = MakeRegalProc( trace_glNormal3iv, layer );
+  tbl.glNormal3s = MakeRegalProc( trace_glNormal3s, layer );
+  tbl.glNormal3sv = MakeRegalProc( trace_glNormal3sv, layer );
+  tbl.glOrtho = MakeRegalProc( trace_glOrtho, layer );
+  tbl.glPassThrough = MakeRegalProc( trace_glPassThrough, layer );
+  tbl.glPixelMapfv = MakeRegalProc( trace_glPixelMapfv, layer );
+  tbl.glPixelMapuiv = MakeRegalProc( trace_glPixelMapuiv, layer );
+  tbl.glPixelMapusv = MakeRegalProc( trace_glPixelMapusv, layer );
+  tbl.glPixelStoref = MakeRegalProc( trace_glPixelStoref, layer );
+  tbl.glPixelStorei = MakeRegalProc( trace_glPixelStorei, layer );
+  tbl.glPixelTransferf = MakeRegalProc( trace_glPixelTransferf, layer );
+  tbl.glPixelTransferi = MakeRegalProc( trace_glPixelTransferi, layer );
+  tbl.glPixelZoom = MakeRegalProc( trace_glPixelZoom, layer );
+  tbl.glPointSize = MakeRegalProc( trace_glPointSize, layer );
+  tbl.glPolygonMode = MakeRegalProc( trace_glPolygonMode, layer );
+  tbl.glPolygonStipple = MakeRegalProc( trace_glPolygonStipple, layer );
+  tbl.glPopAttrib = MakeRegalProc( trace_glPopAttrib, layer );
+  tbl.glPopMatrix = MakeRegalProc( trace_glPopMatrix, layer );
+  tbl.glPopName = MakeRegalProc( trace_glPopName, layer );
+  tbl.glPushAttrib = MakeRegalProc( trace_glPushAttrib, layer );
+  tbl.glPushMatrix = MakeRegalProc( trace_glPushMatrix, layer );
+  tbl.glPushName = MakeRegalProc( trace_glPushName, layer );
+  tbl.glRasterPos2d = MakeRegalProc( trace_glRasterPos2d, layer );
+  tbl.glRasterPos2dv = MakeRegalProc( trace_glRasterPos2dv, layer );
+  tbl.glRasterPos2f = MakeRegalProc( trace_glRasterPos2f, layer );
+  tbl.glRasterPos2fv = MakeRegalProc( trace_glRasterPos2fv, layer );
+  tbl.glRasterPos2i = MakeRegalProc( trace_glRasterPos2i, layer );
+  tbl.glRasterPos2iv = MakeRegalProc( trace_glRasterPos2iv, layer );
+  tbl.glRasterPos2s = MakeRegalProc( trace_glRasterPos2s, layer );
+  tbl.glRasterPos2sv = MakeRegalProc( trace_glRasterPos2sv, layer );
+  tbl.glRasterPos3d = MakeRegalProc( trace_glRasterPos3d, layer );
+  tbl.glRasterPos3dv = MakeRegalProc( trace_glRasterPos3dv, layer );
+  tbl.glRasterPos3f = MakeRegalProc( trace_glRasterPos3f, layer );
+  tbl.glRasterPos3fv = MakeRegalProc( trace_glRasterPos3fv, layer );
+  tbl.glRasterPos3i = MakeRegalProc( trace_glRasterPos3i, layer );
+  tbl.glRasterPos3iv = MakeRegalProc( trace_glRasterPos3iv, layer );
+  tbl.glRasterPos3s = MakeRegalProc( trace_glRasterPos3s, layer );
+  tbl.glRasterPos3sv = MakeRegalProc( trace_glRasterPos3sv, layer );
+  tbl.glRasterPos4d = MakeRegalProc( trace_glRasterPos4d, layer );
+  tbl.glRasterPos4dv = MakeRegalProc( trace_glRasterPos4dv, layer );
+  tbl.glRasterPos4f = MakeRegalProc( trace_glRasterPos4f, layer );
+  tbl.glRasterPos4fv = MakeRegalProc( trace_glRasterPos4fv, layer );
+  tbl.glRasterPos4i = MakeRegalProc( trace_glRasterPos4i, layer );
+  tbl.glRasterPos4iv = MakeRegalProc( trace_glRasterPos4iv, layer );
+  tbl.glRasterPos4s = MakeRegalProc( trace_glRasterPos4s, layer );
+  tbl.glRasterPos4sv = MakeRegalProc( trace_glRasterPos4sv, layer );
+  tbl.glReadBuffer = MakeRegalProc( trace_glReadBuffer, layer );
+  tbl.glReadPixels = MakeRegalProc( trace_glReadPixels, layer );
+  tbl.glRectd = MakeRegalProc( trace_glRectd, layer );
+  tbl.glRectdv = MakeRegalProc( trace_glRectdv, layer );
+  tbl.glRectf = MakeRegalProc( trace_glRectf, layer );
+  tbl.glRectfv = MakeRegalProc( trace_glRectfv, layer );
+  tbl.glRecti = MakeRegalProc( trace_glRecti, layer );
+  tbl.glRectiv = MakeRegalProc( trace_glRectiv, layer );
+  tbl.glRects = MakeRegalProc( trace_glRects, layer );
+  tbl.glRectsv = MakeRegalProc( trace_glRectsv, layer );
+  tbl.glRenderMode = MakeRegalProc( trace_glRenderMode, layer );
+  tbl.glRotated = MakeRegalProc( trace_glRotated, layer );
+  tbl.glRotatef = MakeRegalProc( trace_glRotatef, layer );
+  tbl.glScaled = MakeRegalProc( trace_glScaled, layer );
+  tbl.glScalef = MakeRegalProc( trace_glScalef, layer );
+  tbl.glScissor = MakeRegalProc( trace_glScissor, layer );
+  tbl.glSelectBuffer = MakeRegalProc( trace_glSelectBuffer, layer );
+  tbl.glShadeModel = MakeRegalProc( trace_glShadeModel, layer );
+  tbl.glStencilFunc = MakeRegalProc( trace_glStencilFunc, layer );
+  tbl.glStencilMask = MakeRegalProc( trace_glStencilMask, layer );
+  tbl.glStencilOp = MakeRegalProc( trace_glStencilOp, layer );
+  tbl.glTexCoord1d = MakeRegalProc( trace_glTexCoord1d, layer );
+  tbl.glTexCoord1dv = MakeRegalProc( trace_glTexCoord1dv, layer );
+  tbl.glTexCoord1f = MakeRegalProc( trace_glTexCoord1f, layer );
+  tbl.glTexCoord1fv = MakeRegalProc( trace_glTexCoord1fv, layer );
+  tbl.glTexCoord1i = MakeRegalProc( trace_glTexCoord1i, layer );
+  tbl.glTexCoord1iv = MakeRegalProc( trace_glTexCoord1iv, layer );
+  tbl.glTexCoord1s = MakeRegalProc( trace_glTexCoord1s, layer );
+  tbl.glTexCoord1sv = MakeRegalProc( trace_glTexCoord1sv, layer );
+  tbl.glTexCoord2d = MakeRegalProc( trace_glTexCoord2d, layer );
+  tbl.glTexCoord2dv = MakeRegalProc( trace_glTexCoord2dv, layer );
+  tbl.glTexCoord2f = MakeRegalProc( trace_glTexCoord2f, layer );
+  tbl.glTexCoord2fv = MakeRegalProc( trace_glTexCoord2fv, layer );
+  tbl.glTexCoord2i = MakeRegalProc( trace_glTexCoord2i, layer );
+  tbl.glTexCoord2iv = MakeRegalProc( trace_glTexCoord2iv, layer );
+  tbl.glTexCoord2s = MakeRegalProc( trace_glTexCoord2s, layer );
+  tbl.glTexCoord2sv = MakeRegalProc( trace_glTexCoord2sv, layer );
+  tbl.glTexCoord3d = MakeRegalProc( trace_glTexCoord3d, layer );
+  tbl.glTexCoord3dv = MakeRegalProc( trace_glTexCoord3dv, layer );
+  tbl.glTexCoord3f = MakeRegalProc( trace_glTexCoord3f, layer );
+  tbl.glTexCoord3fv = MakeRegalProc( trace_glTexCoord3fv, layer );
+  tbl.glTexCoord3i = MakeRegalProc( trace_glTexCoord3i, layer );
+  tbl.glTexCoord3iv = MakeRegalProc( trace_glTexCoord3iv, layer );
+  tbl.glTexCoord3s = MakeRegalProc( trace_glTexCoord3s, layer );
+  tbl.glTexCoord3sv = MakeRegalProc( trace_glTexCoord3sv, layer );
+  tbl.glTexCoord4d = MakeRegalProc( trace_glTexCoord4d, layer );
+  tbl.glTexCoord4dv = MakeRegalProc( trace_glTexCoord4dv, layer );
+  tbl.glTexCoord4f = MakeRegalProc( trace_glTexCoord4f, layer );
+  tbl.glTexCoord4fv = MakeRegalProc( trace_glTexCoord4fv, layer );
+  tbl.glTexCoord4i = MakeRegalProc( trace_glTexCoord4i, layer );
+  tbl.glTexCoord4iv = MakeRegalProc( trace_glTexCoord4iv, layer );
+  tbl.glTexCoord4s = MakeRegalProc( trace_glTexCoord4s, layer );
+  tbl.glTexCoord4sv = MakeRegalProc( trace_glTexCoord4sv, layer );
+  tbl.glTexEnvf = MakeRegalProc( trace_glTexEnvf, layer );
+  tbl.glTexEnvfv = MakeRegalProc( trace_glTexEnvfv, layer );
+  tbl.glTexEnvi = MakeRegalProc( trace_glTexEnvi, layer );
+  tbl.glTexEnviv = MakeRegalProc( trace_glTexEnviv, layer );
+  tbl.glTexGend = MakeRegalProc( trace_glTexGend, layer );
+  tbl.glTexGendv = MakeRegalProc( trace_glTexGendv, layer );
+  tbl.glTexGenf = MakeRegalProc( trace_glTexGenf, layer );
+  tbl.glTexGenfv = MakeRegalProc( trace_glTexGenfv, layer );
+  tbl.glTexGeni = MakeRegalProc( trace_glTexGeni, layer );
+  tbl.glTexGeniv = MakeRegalProc( trace_glTexGeniv, layer );
+  tbl.glTexImage1D = MakeRegalProc( trace_glTexImage1D, layer );
+  tbl.glTexImage2D = MakeRegalProc( trace_glTexImage2D, layer );
+  tbl.glTexParameterf = MakeRegalProc( trace_glTexParameterf, layer );
+  tbl.glTexParameterfv = MakeRegalProc( trace_glTexParameterfv, layer );
+  tbl.glTexParameteri = MakeRegalProc( trace_glTexParameteri, layer );
+  tbl.glTexParameteriv = MakeRegalProc( trace_glTexParameteriv, layer );
+  tbl.glTranslated = MakeRegalProc( trace_glTranslated, layer );
+  tbl.glTranslatef = MakeRegalProc( trace_glTranslatef, layer );
+  tbl.glVertex2d = MakeRegalProc( trace_glVertex2d, layer );
+  tbl.glVertex2dv = MakeRegalProc( trace_glVertex2dv, layer );
+  tbl.glVertex2f = MakeRegalProc( trace_glVertex2f, layer );
+  tbl.glVertex2fv = MakeRegalProc( trace_glVertex2fv, layer );
+  tbl.glVertex2i = MakeRegalProc( trace_glVertex2i, layer );
+  tbl.glVertex2iv = MakeRegalProc( trace_glVertex2iv, layer );
+  tbl.glVertex2s = MakeRegalProc( trace_glVertex2s, layer );
+  tbl.glVertex2sv = MakeRegalProc( trace_glVertex2sv, layer );
+  tbl.glVertex3d = MakeRegalProc( trace_glVertex3d, layer );
+  tbl.glVertex3dv = MakeRegalProc( trace_glVertex3dv, layer );
+  tbl.glVertex3f = MakeRegalProc( trace_glVertex3f, layer );
+  tbl.glVertex3fv = MakeRegalProc( trace_glVertex3fv, layer );
+  tbl.glVertex3i = MakeRegalProc( trace_glVertex3i, layer );
+  tbl.glVertex3iv = MakeRegalProc( trace_glVertex3iv, layer );
+  tbl.glVertex3s = MakeRegalProc( trace_glVertex3s, layer );
+  tbl.glVertex3sv = MakeRegalProc( trace_glVertex3sv, layer );
+  tbl.glVertex4d = MakeRegalProc( trace_glVertex4d, layer );
+  tbl.glVertex4dv = MakeRegalProc( trace_glVertex4dv, layer );
+  tbl.glVertex4f = MakeRegalProc( trace_glVertex4f, layer );
+  tbl.glVertex4fv = MakeRegalProc( trace_glVertex4fv, layer );
+  tbl.glVertex4i = MakeRegalProc( trace_glVertex4i, layer );
+  tbl.glVertex4iv = MakeRegalProc( trace_glVertex4iv, layer );
+  tbl.glVertex4s = MakeRegalProc( trace_glVertex4s, layer );
+  tbl.glVertex4sv = MakeRegalProc( trace_glVertex4sv, layer );
+  tbl.glViewport = MakeRegalProc( trace_glViewport, layer );
 
   // GL_VERSION_1_1
 
-  tbl.glAreTexturesResident = trace_glAreTexturesResident;
-  tbl.glArrayElement = trace_glArrayElement;
-  tbl.glBindTexture = trace_glBindTexture;
-  tbl.glColorPointer = trace_glColorPointer;
-  tbl.glCopyTexImage1D = trace_glCopyTexImage1D;
-  tbl.glCopyTexImage2D = trace_glCopyTexImage2D;
-  tbl.glCopyTexSubImage1D = trace_glCopyTexSubImage1D;
-  tbl.glCopyTexSubImage2D = trace_glCopyTexSubImage2D;
-  tbl.glDeleteTextures = trace_glDeleteTextures;
-  tbl.glDisableClientState = trace_glDisableClientState;
-  tbl.glDrawArrays = trace_glDrawArrays;
-  tbl.glDrawElements = trace_glDrawElements;
-  tbl.glEdgeFlagPointer = trace_glEdgeFlagPointer;
-  tbl.glEnableClientState = trace_glEnableClientState;
-  tbl.glGenTextures = trace_glGenTextures;
-  tbl.glGetPointerv = trace_glGetPointerv;
-  tbl.glIndexPointer = trace_glIndexPointer;
-  tbl.glIndexub = trace_glIndexub;
-  tbl.glIndexubv = trace_glIndexubv;
-  tbl.glInterleavedArrays = trace_glInterleavedArrays;
-  tbl.glIsTexture = trace_glIsTexture;
-  tbl.glNormalPointer = trace_glNormalPointer;
-  tbl.glPolygonOffset = trace_glPolygonOffset;
-  tbl.glPopClientAttrib = trace_glPopClientAttrib;
-  tbl.glPrioritizeTextures = trace_glPrioritizeTextures;
-  tbl.glPushClientAttrib = trace_glPushClientAttrib;
-  tbl.glTexCoordPointer = trace_glTexCoordPointer;
-  tbl.glTexSubImage1D = trace_glTexSubImage1D;
-  tbl.glTexSubImage2D = trace_glTexSubImage2D;
-  tbl.glVertexPointer = trace_glVertexPointer;
+  tbl.glAreTexturesResident = MakeRegalProc( trace_glAreTexturesResident, layer );
+  tbl.glArrayElement = MakeRegalProc( trace_glArrayElement, layer );
+  tbl.glBindTexture = MakeRegalProc( trace_glBindTexture, layer );
+  tbl.glColorPointer = MakeRegalProc( trace_glColorPointer, layer );
+  tbl.glCopyTexImage1D = MakeRegalProc( trace_glCopyTexImage1D, layer );
+  tbl.glCopyTexImage2D = MakeRegalProc( trace_glCopyTexImage2D, layer );
+  tbl.glCopyTexSubImage1D = MakeRegalProc( trace_glCopyTexSubImage1D, layer );
+  tbl.glCopyTexSubImage2D = MakeRegalProc( trace_glCopyTexSubImage2D, layer );
+  tbl.glDeleteTextures = MakeRegalProc( trace_glDeleteTextures, layer );
+  tbl.glDisableClientState = MakeRegalProc( trace_glDisableClientState, layer );
+  tbl.glDrawArrays = MakeRegalProc( trace_glDrawArrays, layer );
+  tbl.glDrawElements = MakeRegalProc( trace_glDrawElements, layer );
+  tbl.glEdgeFlagPointer = MakeRegalProc( trace_glEdgeFlagPointer, layer );
+  tbl.glEnableClientState = MakeRegalProc( trace_glEnableClientState, layer );
+  tbl.glGenTextures = MakeRegalProc( trace_glGenTextures, layer );
+  tbl.glGetPointerv = MakeRegalProc( trace_glGetPointerv, layer );
+  tbl.glIndexPointer = MakeRegalProc( trace_glIndexPointer, layer );
+  tbl.glIndexub = MakeRegalProc( trace_glIndexub, layer );
+  tbl.glIndexubv = MakeRegalProc( trace_glIndexubv, layer );
+  tbl.glInterleavedArrays = MakeRegalProc( trace_glInterleavedArrays, layer );
+  tbl.glIsTexture = MakeRegalProc( trace_glIsTexture, layer );
+  tbl.glNormalPointer = MakeRegalProc( trace_glNormalPointer, layer );
+  tbl.glPolygonOffset = MakeRegalProc( trace_glPolygonOffset, layer );
+  tbl.glPopClientAttrib = MakeRegalProc( trace_glPopClientAttrib, layer );
+  tbl.glPrioritizeTextures = MakeRegalProc( trace_glPrioritizeTextures, layer );
+  tbl.glPushClientAttrib = MakeRegalProc( trace_glPushClientAttrib, layer );
+  tbl.glTexCoordPointer = MakeRegalProc( trace_glTexCoordPointer, layer );
+  tbl.glTexSubImage1D = MakeRegalProc( trace_glTexSubImage1D, layer );
+  tbl.glTexSubImage2D = MakeRegalProc( trace_glTexSubImage2D, layer );
+  tbl.glVertexPointer = MakeRegalProc( trace_glVertexPointer, layer );
 
   // GL_VERSION_1_2
 
-  tbl.glBlendColor = trace_glBlendColor;
-  tbl.glBlendEquation = trace_glBlendEquation;
-  tbl.glCopyTexSubImage3D = trace_glCopyTexSubImage3D;
-  tbl.glDrawRangeElements = trace_glDrawRangeElements;
-  tbl.glTexImage3D = trace_glTexImage3D;
-  tbl.glTexSubImage3D = trace_glTexSubImage3D;
+  tbl.glBlendColor = MakeRegalProc( trace_glBlendColor, layer );
+  tbl.glBlendEquation = MakeRegalProc( trace_glBlendEquation, layer );
+  tbl.glCopyTexSubImage3D = MakeRegalProc( trace_glCopyTexSubImage3D, layer );
+  tbl.glDrawRangeElements = MakeRegalProc( trace_glDrawRangeElements, layer );
+  tbl.glTexImage3D = MakeRegalProc( trace_glTexImage3D, layer );
+  tbl.glTexSubImage3D = MakeRegalProc( trace_glTexSubImage3D, layer );
 
   // GL_VERSION_1_3
 
-  tbl.glActiveTexture = trace_glActiveTexture;
-  tbl.glClientActiveTexture = trace_glClientActiveTexture;
-  tbl.glCompressedTexImage1D = trace_glCompressedTexImage1D;
-  tbl.glCompressedTexImage2D = trace_glCompressedTexImage2D;
-  tbl.glCompressedTexImage3D = trace_glCompressedTexImage3D;
-  tbl.glCompressedTexSubImage1D = trace_glCompressedTexSubImage1D;
-  tbl.glCompressedTexSubImage2D = trace_glCompressedTexSubImage2D;
-  tbl.glCompressedTexSubImage3D = trace_glCompressedTexSubImage3D;
-  tbl.glGetCompressedTexImage = trace_glGetCompressedTexImage;
-  tbl.glLoadTransposeMatrixd = trace_glLoadTransposeMatrixd;
-  tbl.glLoadTransposeMatrixf = trace_glLoadTransposeMatrixf;
-  tbl.glMultTransposeMatrixd = trace_glMultTransposeMatrixd;
-  tbl.glMultTransposeMatrixf = trace_glMultTransposeMatrixf;
-  tbl.glMultiTexCoord1d = trace_glMultiTexCoord1d;
-  tbl.glMultiTexCoord1dv = trace_glMultiTexCoord1dv;
-  tbl.glMultiTexCoord1f = trace_glMultiTexCoord1f;
-  tbl.glMultiTexCoord1fv = trace_glMultiTexCoord1fv;
-  tbl.glMultiTexCoord1i = trace_glMultiTexCoord1i;
-  tbl.glMultiTexCoord1iv = trace_glMultiTexCoord1iv;
-  tbl.glMultiTexCoord1s = trace_glMultiTexCoord1s;
-  tbl.glMultiTexCoord1sv = trace_glMultiTexCoord1sv;
-  tbl.glMultiTexCoord2d = trace_glMultiTexCoord2d;
-  tbl.glMultiTexCoord2dv = trace_glMultiTexCoord2dv;
-  tbl.glMultiTexCoord2f = trace_glMultiTexCoord2f;
-  tbl.glMultiTexCoord2fv = trace_glMultiTexCoord2fv;
-  tbl.glMultiTexCoord2i = trace_glMultiTexCoord2i;
-  tbl.glMultiTexCoord2iv = trace_glMultiTexCoord2iv;
-  tbl.glMultiTexCoord2s = trace_glMultiTexCoord2s;
-  tbl.glMultiTexCoord2sv = trace_glMultiTexCoord2sv;
-  tbl.glMultiTexCoord3d = trace_glMultiTexCoord3d;
-  tbl.glMultiTexCoord3dv = trace_glMultiTexCoord3dv;
-  tbl.glMultiTexCoord3f = trace_glMultiTexCoord3f;
-  tbl.glMultiTexCoord3fv = trace_glMultiTexCoord3fv;
-  tbl.glMultiTexCoord3i = trace_glMultiTexCoord3i;
-  tbl.glMultiTexCoord3iv = trace_glMultiTexCoord3iv;
-  tbl.glMultiTexCoord3s = trace_glMultiTexCoord3s;
-  tbl.glMultiTexCoord3sv = trace_glMultiTexCoord3sv;
-  tbl.glMultiTexCoord4d = trace_glMultiTexCoord4d;
-  tbl.glMultiTexCoord4dv = trace_glMultiTexCoord4dv;
-  tbl.glMultiTexCoord4f = trace_glMultiTexCoord4f;
-  tbl.glMultiTexCoord4fv = trace_glMultiTexCoord4fv;
-  tbl.glMultiTexCoord4i = trace_glMultiTexCoord4i;
-  tbl.glMultiTexCoord4iv = trace_glMultiTexCoord4iv;
-  tbl.glMultiTexCoord4s = trace_glMultiTexCoord4s;
-  tbl.glMultiTexCoord4sv = trace_glMultiTexCoord4sv;
-  tbl.glSampleCoverage = trace_glSampleCoverage;
+  tbl.glActiveTexture = MakeRegalProc( trace_glActiveTexture, layer );
+  tbl.glClientActiveTexture = MakeRegalProc( trace_glClientActiveTexture, layer );
+  tbl.glCompressedTexImage1D = MakeRegalProc( trace_glCompressedTexImage1D, layer );
+  tbl.glCompressedTexImage2D = MakeRegalProc( trace_glCompressedTexImage2D, layer );
+  tbl.glCompressedTexImage3D = MakeRegalProc( trace_glCompressedTexImage3D, layer );
+  tbl.glCompressedTexSubImage1D = MakeRegalProc( trace_glCompressedTexSubImage1D, layer );
+  tbl.glCompressedTexSubImage2D = MakeRegalProc( trace_glCompressedTexSubImage2D, layer );
+  tbl.glCompressedTexSubImage3D = MakeRegalProc( trace_glCompressedTexSubImage3D, layer );
+  tbl.glGetCompressedTexImage = MakeRegalProc( trace_glGetCompressedTexImage, layer );
+  tbl.glLoadTransposeMatrixd = MakeRegalProc( trace_glLoadTransposeMatrixd, layer );
+  tbl.glLoadTransposeMatrixf = MakeRegalProc( trace_glLoadTransposeMatrixf, layer );
+  tbl.glMultTransposeMatrixd = MakeRegalProc( trace_glMultTransposeMatrixd, layer );
+  tbl.glMultTransposeMatrixf = MakeRegalProc( trace_glMultTransposeMatrixf, layer );
+  tbl.glMultiTexCoord1d = MakeRegalProc( trace_glMultiTexCoord1d, layer );
+  tbl.glMultiTexCoord1dv = MakeRegalProc( trace_glMultiTexCoord1dv, layer );
+  tbl.glMultiTexCoord1f = MakeRegalProc( trace_glMultiTexCoord1f, layer );
+  tbl.glMultiTexCoord1fv = MakeRegalProc( trace_glMultiTexCoord1fv, layer );
+  tbl.glMultiTexCoord1i = MakeRegalProc( trace_glMultiTexCoord1i, layer );
+  tbl.glMultiTexCoord1iv = MakeRegalProc( trace_glMultiTexCoord1iv, layer );
+  tbl.glMultiTexCoord1s = MakeRegalProc( trace_glMultiTexCoord1s, layer );
+  tbl.glMultiTexCoord1sv = MakeRegalProc( trace_glMultiTexCoord1sv, layer );
+  tbl.glMultiTexCoord2d = MakeRegalProc( trace_glMultiTexCoord2d, layer );
+  tbl.glMultiTexCoord2dv = MakeRegalProc( trace_glMultiTexCoord2dv, layer );
+  tbl.glMultiTexCoord2f = MakeRegalProc( trace_glMultiTexCoord2f, layer );
+  tbl.glMultiTexCoord2fv = MakeRegalProc( trace_glMultiTexCoord2fv, layer );
+  tbl.glMultiTexCoord2i = MakeRegalProc( trace_glMultiTexCoord2i, layer );
+  tbl.glMultiTexCoord2iv = MakeRegalProc( trace_glMultiTexCoord2iv, layer );
+  tbl.glMultiTexCoord2s = MakeRegalProc( trace_glMultiTexCoord2s, layer );
+  tbl.glMultiTexCoord2sv = MakeRegalProc( trace_glMultiTexCoord2sv, layer );
+  tbl.glMultiTexCoord3d = MakeRegalProc( trace_glMultiTexCoord3d, layer );
+  tbl.glMultiTexCoord3dv = MakeRegalProc( trace_glMultiTexCoord3dv, layer );
+  tbl.glMultiTexCoord3f = MakeRegalProc( trace_glMultiTexCoord3f, layer );
+  tbl.glMultiTexCoord3fv = MakeRegalProc( trace_glMultiTexCoord3fv, layer );
+  tbl.glMultiTexCoord3i = MakeRegalProc( trace_glMultiTexCoord3i, layer );
+  tbl.glMultiTexCoord3iv = MakeRegalProc( trace_glMultiTexCoord3iv, layer );
+  tbl.glMultiTexCoord3s = MakeRegalProc( trace_glMultiTexCoord3s, layer );
+  tbl.glMultiTexCoord3sv = MakeRegalProc( trace_glMultiTexCoord3sv, layer );
+  tbl.glMultiTexCoord4d = MakeRegalProc( trace_glMultiTexCoord4d, layer );
+  tbl.glMultiTexCoord4dv = MakeRegalProc( trace_glMultiTexCoord4dv, layer );
+  tbl.glMultiTexCoord4f = MakeRegalProc( trace_glMultiTexCoord4f, layer );
+  tbl.glMultiTexCoord4fv = MakeRegalProc( trace_glMultiTexCoord4fv, layer );
+  tbl.glMultiTexCoord4i = MakeRegalProc( trace_glMultiTexCoord4i, layer );
+  tbl.glMultiTexCoord4iv = MakeRegalProc( trace_glMultiTexCoord4iv, layer );
+  tbl.glMultiTexCoord4s = MakeRegalProc( trace_glMultiTexCoord4s, layer );
+  tbl.glMultiTexCoord4sv = MakeRegalProc( trace_glMultiTexCoord4sv, layer );
+  tbl.glSampleCoverage = MakeRegalProc( trace_glSampleCoverage, layer );
 
   // GL_VERSION_1_4
 
-  tbl.glBlendFuncSeparate = trace_glBlendFuncSeparate;
-  tbl.glFogCoordPointer = trace_glFogCoordPointer;
-  tbl.glFogCoordd = trace_glFogCoordd;
-  tbl.glFogCoorddv = trace_glFogCoorddv;
-  tbl.glFogCoordf = trace_glFogCoordf;
-  tbl.glFogCoordfv = trace_glFogCoordfv;
-  tbl.glMultiDrawArrays = trace_glMultiDrawArrays;
-  tbl.glMultiDrawElements = trace_glMultiDrawElements;
-  tbl.glPointParameterf = trace_glPointParameterf;
-  tbl.glPointParameterfv = trace_glPointParameterfv;
-  tbl.glPointParameteri = trace_glPointParameteri;
-  tbl.glPointParameteriv = trace_glPointParameteriv;
-  tbl.glSecondaryColor3b = trace_glSecondaryColor3b;
-  tbl.glSecondaryColor3bv = trace_glSecondaryColor3bv;
-  tbl.glSecondaryColor3d = trace_glSecondaryColor3d;
-  tbl.glSecondaryColor3dv = trace_glSecondaryColor3dv;
-  tbl.glSecondaryColor3f = trace_glSecondaryColor3f;
-  tbl.glSecondaryColor3fv = trace_glSecondaryColor3fv;
-  tbl.glSecondaryColor3i = trace_glSecondaryColor3i;
-  tbl.glSecondaryColor3iv = trace_glSecondaryColor3iv;
-  tbl.glSecondaryColor3s = trace_glSecondaryColor3s;
-  tbl.glSecondaryColor3sv = trace_glSecondaryColor3sv;
-  tbl.glSecondaryColor3ub = trace_glSecondaryColor3ub;
-  tbl.glSecondaryColor3ubv = trace_glSecondaryColor3ubv;
-  tbl.glSecondaryColor3ui = trace_glSecondaryColor3ui;
-  tbl.glSecondaryColor3uiv = trace_glSecondaryColor3uiv;
-  tbl.glSecondaryColor3us = trace_glSecondaryColor3us;
-  tbl.glSecondaryColor3usv = trace_glSecondaryColor3usv;
-  tbl.glSecondaryColorPointer = trace_glSecondaryColorPointer;
-  tbl.glWindowPos2d = trace_glWindowPos2d;
-  tbl.glWindowPos2dv = trace_glWindowPos2dv;
-  tbl.glWindowPos2f = trace_glWindowPos2f;
-  tbl.glWindowPos2fv = trace_glWindowPos2fv;
-  tbl.glWindowPos2i = trace_glWindowPos2i;
-  tbl.glWindowPos2iv = trace_glWindowPos2iv;
-  tbl.glWindowPos2s = trace_glWindowPos2s;
-  tbl.glWindowPos2sv = trace_glWindowPos2sv;
-  tbl.glWindowPos3d = trace_glWindowPos3d;
-  tbl.glWindowPos3dv = trace_glWindowPos3dv;
-  tbl.glWindowPos3f = trace_glWindowPos3f;
-  tbl.glWindowPos3fv = trace_glWindowPos3fv;
-  tbl.glWindowPos3i = trace_glWindowPos3i;
-  tbl.glWindowPos3iv = trace_glWindowPos3iv;
-  tbl.glWindowPos3s = trace_glWindowPos3s;
-  tbl.glWindowPos3sv = trace_glWindowPos3sv;
+  tbl.glBlendFuncSeparate = MakeRegalProc( trace_glBlendFuncSeparate, layer );
+  tbl.glFogCoordPointer = MakeRegalProc( trace_glFogCoordPointer, layer );
+  tbl.glFogCoordd = MakeRegalProc( trace_glFogCoordd, layer );
+  tbl.glFogCoorddv = MakeRegalProc( trace_glFogCoorddv, layer );
+  tbl.glFogCoordf = MakeRegalProc( trace_glFogCoordf, layer );
+  tbl.glFogCoordfv = MakeRegalProc( trace_glFogCoordfv, layer );
+  tbl.glMultiDrawArrays = MakeRegalProc( trace_glMultiDrawArrays, layer );
+  tbl.glMultiDrawElements = MakeRegalProc( trace_glMultiDrawElements, layer );
+  tbl.glPointParameterf = MakeRegalProc( trace_glPointParameterf, layer );
+  tbl.glPointParameterfv = MakeRegalProc( trace_glPointParameterfv, layer );
+  tbl.glPointParameteri = MakeRegalProc( trace_glPointParameteri, layer );
+  tbl.glPointParameteriv = MakeRegalProc( trace_glPointParameteriv, layer );
+  tbl.glSecondaryColor3b = MakeRegalProc( trace_glSecondaryColor3b, layer );
+  tbl.glSecondaryColor3bv = MakeRegalProc( trace_glSecondaryColor3bv, layer );
+  tbl.glSecondaryColor3d = MakeRegalProc( trace_glSecondaryColor3d, layer );
+  tbl.glSecondaryColor3dv = MakeRegalProc( trace_glSecondaryColor3dv, layer );
+  tbl.glSecondaryColor3f = MakeRegalProc( trace_glSecondaryColor3f, layer );
+  tbl.glSecondaryColor3fv = MakeRegalProc( trace_glSecondaryColor3fv, layer );
+  tbl.glSecondaryColor3i = MakeRegalProc( trace_glSecondaryColor3i, layer );
+  tbl.glSecondaryColor3iv = MakeRegalProc( trace_glSecondaryColor3iv, layer );
+  tbl.glSecondaryColor3s = MakeRegalProc( trace_glSecondaryColor3s, layer );
+  tbl.glSecondaryColor3sv = MakeRegalProc( trace_glSecondaryColor3sv, layer );
+  tbl.glSecondaryColor3ub = MakeRegalProc( trace_glSecondaryColor3ub, layer );
+  tbl.glSecondaryColor3ubv = MakeRegalProc( trace_glSecondaryColor3ubv, layer );
+  tbl.glSecondaryColor3ui = MakeRegalProc( trace_glSecondaryColor3ui, layer );
+  tbl.glSecondaryColor3uiv = MakeRegalProc( trace_glSecondaryColor3uiv, layer );
+  tbl.glSecondaryColor3us = MakeRegalProc( trace_glSecondaryColor3us, layer );
+  tbl.glSecondaryColor3usv = MakeRegalProc( trace_glSecondaryColor3usv, layer );
+  tbl.glSecondaryColorPointer = MakeRegalProc( trace_glSecondaryColorPointer, layer );
+  tbl.glWindowPos2d = MakeRegalProc( trace_glWindowPos2d, layer );
+  tbl.glWindowPos2dv = MakeRegalProc( trace_glWindowPos2dv, layer );
+  tbl.glWindowPos2f = MakeRegalProc( trace_glWindowPos2f, layer );
+  tbl.glWindowPos2fv = MakeRegalProc( trace_glWindowPos2fv, layer );
+  tbl.glWindowPos2i = MakeRegalProc( trace_glWindowPos2i, layer );
+  tbl.glWindowPos2iv = MakeRegalProc( trace_glWindowPos2iv, layer );
+  tbl.glWindowPos2s = MakeRegalProc( trace_glWindowPos2s, layer );
+  tbl.glWindowPos2sv = MakeRegalProc( trace_glWindowPos2sv, layer );
+  tbl.glWindowPos3d = MakeRegalProc( trace_glWindowPos3d, layer );
+  tbl.glWindowPos3dv = MakeRegalProc( trace_glWindowPos3dv, layer );
+  tbl.glWindowPos3f = MakeRegalProc( trace_glWindowPos3f, layer );
+  tbl.glWindowPos3fv = MakeRegalProc( trace_glWindowPos3fv, layer );
+  tbl.glWindowPos3i = MakeRegalProc( trace_glWindowPos3i, layer );
+  tbl.glWindowPos3iv = MakeRegalProc( trace_glWindowPos3iv, layer );
+  tbl.glWindowPos3s = MakeRegalProc( trace_glWindowPos3s, layer );
+  tbl.glWindowPos3sv = MakeRegalProc( trace_glWindowPos3sv, layer );
 
   // GL_VERSION_1_5
 
-  tbl.glBeginQuery = trace_glBeginQuery;
-  tbl.glBindBuffer = trace_glBindBuffer;
-  tbl.glBufferData = trace_glBufferData;
-  tbl.glBufferSubData = trace_glBufferSubData;
-  tbl.glDeleteBuffers = trace_glDeleteBuffers;
-  tbl.glDeleteQueries = trace_glDeleteQueries;
-  tbl.glEndQuery = trace_glEndQuery;
-  tbl.glGenBuffers = trace_glGenBuffers;
-  tbl.glGenQueries = trace_glGenQueries;
-  tbl.glGetBufferParameteriv = trace_glGetBufferParameteriv;
-  tbl.glGetBufferPointerv = trace_glGetBufferPointerv;
-  tbl.glGetBufferSubData = trace_glGetBufferSubData;
-  tbl.glGetQueryObjectiv = trace_glGetQueryObjectiv;
-  tbl.glGetQueryObjectuiv = trace_glGetQueryObjectuiv;
-  tbl.glGetQueryiv = trace_glGetQueryiv;
-  tbl.glIsBuffer = trace_glIsBuffer;
-  tbl.glIsQuery = trace_glIsQuery;
-  tbl.glMapBuffer = trace_glMapBuffer;
-  tbl.glUnmapBuffer = trace_glUnmapBuffer;
+  tbl.glBeginQuery = MakeRegalProc( trace_glBeginQuery, layer );
+  tbl.glBindBuffer = MakeRegalProc( trace_glBindBuffer, layer );
+  tbl.glBufferData = MakeRegalProc( trace_glBufferData, layer );
+  tbl.glBufferSubData = MakeRegalProc( trace_glBufferSubData, layer );
+  tbl.glDeleteBuffers = MakeRegalProc( trace_glDeleteBuffers, layer );
+  tbl.glDeleteQueries = MakeRegalProc( trace_glDeleteQueries, layer );
+  tbl.glEndQuery = MakeRegalProc( trace_glEndQuery, layer );
+  tbl.glGenBuffers = MakeRegalProc( trace_glGenBuffers, layer );
+  tbl.glGenQueries = MakeRegalProc( trace_glGenQueries, layer );
+  tbl.glGetBufferParameteriv = MakeRegalProc( trace_glGetBufferParameteriv, layer );
+  tbl.glGetBufferPointerv = MakeRegalProc( trace_glGetBufferPointerv, layer );
+  tbl.glGetBufferSubData = MakeRegalProc( trace_glGetBufferSubData, layer );
+  tbl.glGetQueryObjectiv = MakeRegalProc( trace_glGetQueryObjectiv, layer );
+  tbl.glGetQueryObjectuiv = MakeRegalProc( trace_glGetQueryObjectuiv, layer );
+  tbl.glGetQueryiv = MakeRegalProc( trace_glGetQueryiv, layer );
+  tbl.glIsBuffer = MakeRegalProc( trace_glIsBuffer, layer );
+  tbl.glIsQuery = MakeRegalProc( trace_glIsQuery, layer );
+  tbl.glMapBuffer = MakeRegalProc( trace_glMapBuffer, layer );
+  tbl.glUnmapBuffer = MakeRegalProc( trace_glUnmapBuffer, layer );
 
   // GL_VERSION_2_0
 
-  tbl.glAttachShader = trace_glAttachShader;
-  tbl.glBindAttribLocation = trace_glBindAttribLocation;
-  tbl.glBlendEquationSeparate = trace_glBlendEquationSeparate;
-  tbl.glCompileShader = trace_glCompileShader;
-  tbl.glCreateProgram = trace_glCreateProgram;
-  tbl.glCreateShader = trace_glCreateShader;
-  tbl.glDeleteProgram = trace_glDeleteProgram;
-  tbl.glDeleteShader = trace_glDeleteShader;
-  tbl.glDetachShader = trace_glDetachShader;
-  tbl.glDisableVertexAttribArray = trace_glDisableVertexAttribArray;
-  tbl.glDrawBuffers = trace_glDrawBuffers;
-  tbl.glEnableVertexAttribArray = trace_glEnableVertexAttribArray;
-  tbl.glGetActiveAttrib = trace_glGetActiveAttrib;
-  tbl.glGetActiveUniform = trace_glGetActiveUniform;
-  tbl.glGetAttachedShaders = trace_glGetAttachedShaders;
-  tbl.glGetAttribLocation = trace_glGetAttribLocation;
-  tbl.glGetProgramInfoLog = trace_glGetProgramInfoLog;
-  tbl.glGetProgramiv = trace_glGetProgramiv;
-  tbl.glGetShaderInfoLog = trace_glGetShaderInfoLog;
-  tbl.glGetShaderSource = trace_glGetShaderSource;
-  tbl.glGetShaderiv = trace_glGetShaderiv;
-  tbl.glGetUniformLocation = trace_glGetUniformLocation;
-  tbl.glGetUniformfv = trace_glGetUniformfv;
-  tbl.glGetUniformiv = trace_glGetUniformiv;
-  tbl.glGetVertexAttribPointerv = trace_glGetVertexAttribPointerv;
-  tbl.glGetVertexAttribdv = trace_glGetVertexAttribdv;
-  tbl.glGetVertexAttribfv = trace_glGetVertexAttribfv;
-  tbl.glGetVertexAttribiv = trace_glGetVertexAttribiv;
-  tbl.glIsProgram = trace_glIsProgram;
-  tbl.glIsShader = trace_glIsShader;
-  tbl.glLinkProgram = trace_glLinkProgram;
-  tbl.glShaderSource = trace_glShaderSource;
-  tbl.glStencilFuncSeparate = trace_glStencilFuncSeparate;
-  tbl.glStencilMaskSeparate = trace_glStencilMaskSeparate;
-  tbl.glStencilOpSeparate = trace_glStencilOpSeparate;
-  tbl.glUniform1f = trace_glUniform1f;
-  tbl.glUniform1fv = trace_glUniform1fv;
-  tbl.glUniform1i = trace_glUniform1i;
-  tbl.glUniform1iv = trace_glUniform1iv;
-  tbl.glUniform2f = trace_glUniform2f;
-  tbl.glUniform2fv = trace_glUniform2fv;
-  tbl.glUniform2i = trace_glUniform2i;
-  tbl.glUniform2iv = trace_glUniform2iv;
-  tbl.glUniform3f = trace_glUniform3f;
-  tbl.glUniform3fv = trace_glUniform3fv;
-  tbl.glUniform3i = trace_glUniform3i;
-  tbl.glUniform3iv = trace_glUniform3iv;
-  tbl.glUniform4f = trace_glUniform4f;
-  tbl.glUniform4fv = trace_glUniform4fv;
-  tbl.glUniform4i = trace_glUniform4i;
-  tbl.glUniform4iv = trace_glUniform4iv;
-  tbl.glUniformMatrix2fv = trace_glUniformMatrix2fv;
-  tbl.glUniformMatrix3fv = trace_glUniformMatrix3fv;
-  tbl.glUniformMatrix4fv = trace_glUniformMatrix4fv;
-  tbl.glUseProgram = trace_glUseProgram;
-  tbl.glValidateProgram = trace_glValidateProgram;
-  tbl.glVertexAttrib1d = trace_glVertexAttrib1d;
-  tbl.glVertexAttrib1dv = trace_glVertexAttrib1dv;
-  tbl.glVertexAttrib1f = trace_glVertexAttrib1f;
-  tbl.glVertexAttrib1fv = trace_glVertexAttrib1fv;
-  tbl.glVertexAttrib1s = trace_glVertexAttrib1s;
-  tbl.glVertexAttrib1sv = trace_glVertexAttrib1sv;
-  tbl.glVertexAttrib2d = trace_glVertexAttrib2d;
-  tbl.glVertexAttrib2dv = trace_glVertexAttrib2dv;
-  tbl.glVertexAttrib2f = trace_glVertexAttrib2f;
-  tbl.glVertexAttrib2fv = trace_glVertexAttrib2fv;
-  tbl.glVertexAttrib2s = trace_glVertexAttrib2s;
-  tbl.glVertexAttrib2sv = trace_glVertexAttrib2sv;
-  tbl.glVertexAttrib3d = trace_glVertexAttrib3d;
-  tbl.glVertexAttrib3dv = trace_glVertexAttrib3dv;
-  tbl.glVertexAttrib3f = trace_glVertexAttrib3f;
-  tbl.glVertexAttrib3fv = trace_glVertexAttrib3fv;
-  tbl.glVertexAttrib3s = trace_glVertexAttrib3s;
-  tbl.glVertexAttrib3sv = trace_glVertexAttrib3sv;
-  tbl.glVertexAttrib4Nbv = trace_glVertexAttrib4Nbv;
-  tbl.glVertexAttrib4Niv = trace_glVertexAttrib4Niv;
-  tbl.glVertexAttrib4Nsv = trace_glVertexAttrib4Nsv;
-  tbl.glVertexAttrib4Nub = trace_glVertexAttrib4Nub;
-  tbl.glVertexAttrib4Nubv = trace_glVertexAttrib4Nubv;
-  tbl.glVertexAttrib4Nuiv = trace_glVertexAttrib4Nuiv;
-  tbl.glVertexAttrib4Nusv = trace_glVertexAttrib4Nusv;
-  tbl.glVertexAttrib4bv = trace_glVertexAttrib4bv;
-  tbl.glVertexAttrib4d = trace_glVertexAttrib4d;
-  tbl.glVertexAttrib4dv = trace_glVertexAttrib4dv;
-  tbl.glVertexAttrib4f = trace_glVertexAttrib4f;
-  tbl.glVertexAttrib4fv = trace_glVertexAttrib4fv;
-  tbl.glVertexAttrib4iv = trace_glVertexAttrib4iv;
-  tbl.glVertexAttrib4s = trace_glVertexAttrib4s;
-  tbl.glVertexAttrib4sv = trace_glVertexAttrib4sv;
-  tbl.glVertexAttrib4ubv = trace_glVertexAttrib4ubv;
-  tbl.glVertexAttrib4uiv = trace_glVertexAttrib4uiv;
-  tbl.glVertexAttrib4usv = trace_glVertexAttrib4usv;
-  tbl.glVertexAttribPointer = trace_glVertexAttribPointer;
+  tbl.glAttachShader = MakeRegalProc( trace_glAttachShader, layer );
+  tbl.glBindAttribLocation = MakeRegalProc( trace_glBindAttribLocation, layer );
+  tbl.glBlendEquationSeparate = MakeRegalProc( trace_glBlendEquationSeparate, layer );
+  tbl.glCompileShader = MakeRegalProc( trace_glCompileShader, layer );
+  tbl.glCreateProgram = MakeRegalProc( trace_glCreateProgram, layer );
+  tbl.glCreateShader = MakeRegalProc( trace_glCreateShader, layer );
+  tbl.glDeleteProgram = MakeRegalProc( trace_glDeleteProgram, layer );
+  tbl.glDeleteShader = MakeRegalProc( trace_glDeleteShader, layer );
+  tbl.glDetachShader = MakeRegalProc( trace_glDetachShader, layer );
+  tbl.glDisableVertexAttribArray = MakeRegalProc( trace_glDisableVertexAttribArray, layer );
+  tbl.glDrawBuffers = MakeRegalProc( trace_glDrawBuffers, layer );
+  tbl.glEnableVertexAttribArray = MakeRegalProc( trace_glEnableVertexAttribArray, layer );
+  tbl.glGetActiveAttrib = MakeRegalProc( trace_glGetActiveAttrib, layer );
+  tbl.glGetActiveUniform = MakeRegalProc( trace_glGetActiveUniform, layer );
+  tbl.glGetAttachedShaders = MakeRegalProc( trace_glGetAttachedShaders, layer );
+  tbl.glGetAttribLocation = MakeRegalProc( trace_glGetAttribLocation, layer );
+  tbl.glGetProgramInfoLog = MakeRegalProc( trace_glGetProgramInfoLog, layer );
+  tbl.glGetProgramiv = MakeRegalProc( trace_glGetProgramiv, layer );
+  tbl.glGetShaderInfoLog = MakeRegalProc( trace_glGetShaderInfoLog, layer );
+  tbl.glGetShaderSource = MakeRegalProc( trace_glGetShaderSource, layer );
+  tbl.glGetShaderiv = MakeRegalProc( trace_glGetShaderiv, layer );
+  tbl.glGetUniformLocation = MakeRegalProc( trace_glGetUniformLocation, layer );
+  tbl.glGetUniformfv = MakeRegalProc( trace_glGetUniformfv, layer );
+  tbl.glGetUniformiv = MakeRegalProc( trace_glGetUniformiv, layer );
+  tbl.glGetVertexAttribPointerv = MakeRegalProc( trace_glGetVertexAttribPointerv, layer );
+  tbl.glGetVertexAttribdv = MakeRegalProc( trace_glGetVertexAttribdv, layer );
+  tbl.glGetVertexAttribfv = MakeRegalProc( trace_glGetVertexAttribfv, layer );
+  tbl.glGetVertexAttribiv = MakeRegalProc( trace_glGetVertexAttribiv, layer );
+  tbl.glIsProgram = MakeRegalProc( trace_glIsProgram, layer );
+  tbl.glIsShader = MakeRegalProc( trace_glIsShader, layer );
+  tbl.glLinkProgram = MakeRegalProc( trace_glLinkProgram, layer );
+  tbl.glShaderSource = MakeRegalProc( trace_glShaderSource, layer );
+  tbl.glStencilFuncSeparate = MakeRegalProc( trace_glStencilFuncSeparate, layer );
+  tbl.glStencilMaskSeparate = MakeRegalProc( trace_glStencilMaskSeparate, layer );
+  tbl.glStencilOpSeparate = MakeRegalProc( trace_glStencilOpSeparate, layer );
+  tbl.glUniform1f = MakeRegalProc( trace_glUniform1f, layer );
+  tbl.glUniform1fv = MakeRegalProc( trace_glUniform1fv, layer );
+  tbl.glUniform1i = MakeRegalProc( trace_glUniform1i, layer );
+  tbl.glUniform1iv = MakeRegalProc( trace_glUniform1iv, layer );
+  tbl.glUniform2f = MakeRegalProc( trace_glUniform2f, layer );
+  tbl.glUniform2fv = MakeRegalProc( trace_glUniform2fv, layer );
+  tbl.glUniform2i = MakeRegalProc( trace_glUniform2i, layer );
+  tbl.glUniform2iv = MakeRegalProc( trace_glUniform2iv, layer );
+  tbl.glUniform3f = MakeRegalProc( trace_glUniform3f, layer );
+  tbl.glUniform3fv = MakeRegalProc( trace_glUniform3fv, layer );
+  tbl.glUniform3i = MakeRegalProc( trace_glUniform3i, layer );
+  tbl.glUniform3iv = MakeRegalProc( trace_glUniform3iv, layer );
+  tbl.glUniform4f = MakeRegalProc( trace_glUniform4f, layer );
+  tbl.glUniform4fv = MakeRegalProc( trace_glUniform4fv, layer );
+  tbl.glUniform4i = MakeRegalProc( trace_glUniform4i, layer );
+  tbl.glUniform4iv = MakeRegalProc( trace_glUniform4iv, layer );
+  tbl.glUniformMatrix2fv = MakeRegalProc( trace_glUniformMatrix2fv, layer );
+  tbl.glUniformMatrix3fv = MakeRegalProc( trace_glUniformMatrix3fv, layer );
+  tbl.glUniformMatrix4fv = MakeRegalProc( trace_glUniformMatrix4fv, layer );
+  tbl.glUseProgram = MakeRegalProc( trace_glUseProgram, layer );
+  tbl.glValidateProgram = MakeRegalProc( trace_glValidateProgram, layer );
+  tbl.glVertexAttrib1d = MakeRegalProc( trace_glVertexAttrib1d, layer );
+  tbl.glVertexAttrib1dv = MakeRegalProc( trace_glVertexAttrib1dv, layer );
+  tbl.glVertexAttrib1f = MakeRegalProc( trace_glVertexAttrib1f, layer );
+  tbl.glVertexAttrib1fv = MakeRegalProc( trace_glVertexAttrib1fv, layer );
+  tbl.glVertexAttrib1s = MakeRegalProc( trace_glVertexAttrib1s, layer );
+  tbl.glVertexAttrib1sv = MakeRegalProc( trace_glVertexAttrib1sv, layer );
+  tbl.glVertexAttrib2d = MakeRegalProc( trace_glVertexAttrib2d, layer );
+  tbl.glVertexAttrib2dv = MakeRegalProc( trace_glVertexAttrib2dv, layer );
+  tbl.glVertexAttrib2f = MakeRegalProc( trace_glVertexAttrib2f, layer );
+  tbl.glVertexAttrib2fv = MakeRegalProc( trace_glVertexAttrib2fv, layer );
+  tbl.glVertexAttrib2s = MakeRegalProc( trace_glVertexAttrib2s, layer );
+  tbl.glVertexAttrib2sv = MakeRegalProc( trace_glVertexAttrib2sv, layer );
+  tbl.glVertexAttrib3d = MakeRegalProc( trace_glVertexAttrib3d, layer );
+  tbl.glVertexAttrib3dv = MakeRegalProc( trace_glVertexAttrib3dv, layer );
+  tbl.glVertexAttrib3f = MakeRegalProc( trace_glVertexAttrib3f, layer );
+  tbl.glVertexAttrib3fv = MakeRegalProc( trace_glVertexAttrib3fv, layer );
+  tbl.glVertexAttrib3s = MakeRegalProc( trace_glVertexAttrib3s, layer );
+  tbl.glVertexAttrib3sv = MakeRegalProc( trace_glVertexAttrib3sv, layer );
+  tbl.glVertexAttrib4Nbv = MakeRegalProc( trace_glVertexAttrib4Nbv, layer );
+  tbl.glVertexAttrib4Niv = MakeRegalProc( trace_glVertexAttrib4Niv, layer );
+  tbl.glVertexAttrib4Nsv = MakeRegalProc( trace_glVertexAttrib4Nsv, layer );
+  tbl.glVertexAttrib4Nub = MakeRegalProc( trace_glVertexAttrib4Nub, layer );
+  tbl.glVertexAttrib4Nubv = MakeRegalProc( trace_glVertexAttrib4Nubv, layer );
+  tbl.glVertexAttrib4Nuiv = MakeRegalProc( trace_glVertexAttrib4Nuiv, layer );
+  tbl.glVertexAttrib4Nusv = MakeRegalProc( trace_glVertexAttrib4Nusv, layer );
+  tbl.glVertexAttrib4bv = MakeRegalProc( trace_glVertexAttrib4bv, layer );
+  tbl.glVertexAttrib4d = MakeRegalProc( trace_glVertexAttrib4d, layer );
+  tbl.glVertexAttrib4dv = MakeRegalProc( trace_glVertexAttrib4dv, layer );
+  tbl.glVertexAttrib4f = MakeRegalProc( trace_glVertexAttrib4f, layer );
+  tbl.glVertexAttrib4fv = MakeRegalProc( trace_glVertexAttrib4fv, layer );
+  tbl.glVertexAttrib4iv = MakeRegalProc( trace_glVertexAttrib4iv, layer );
+  tbl.glVertexAttrib4s = MakeRegalProc( trace_glVertexAttrib4s, layer );
+  tbl.glVertexAttrib4sv = MakeRegalProc( trace_glVertexAttrib4sv, layer );
+  tbl.glVertexAttrib4ubv = MakeRegalProc( trace_glVertexAttrib4ubv, layer );
+  tbl.glVertexAttrib4uiv = MakeRegalProc( trace_glVertexAttrib4uiv, layer );
+  tbl.glVertexAttrib4usv = MakeRegalProc( trace_glVertexAttrib4usv, layer );
+  tbl.glVertexAttribPointer = MakeRegalProc( trace_glVertexAttribPointer, layer );
 
   // GL_VERSION_2_1
 
-  tbl.glUniformMatrix2x3fv = trace_glUniformMatrix2x3fv;
-  tbl.glUniformMatrix2x4fv = trace_glUniformMatrix2x4fv;
-  tbl.glUniformMatrix3x2fv = trace_glUniformMatrix3x2fv;
-  tbl.glUniformMatrix3x4fv = trace_glUniformMatrix3x4fv;
-  tbl.glUniformMatrix4x2fv = trace_glUniformMatrix4x2fv;
-  tbl.glUniformMatrix4x3fv = trace_glUniformMatrix4x3fv;
+  tbl.glUniformMatrix2x3fv = MakeRegalProc( trace_glUniformMatrix2x3fv, layer );
+  tbl.glUniformMatrix2x4fv = MakeRegalProc( trace_glUniformMatrix2x4fv, layer );
+  tbl.glUniformMatrix3x2fv = MakeRegalProc( trace_glUniformMatrix3x2fv, layer );
+  tbl.glUniformMatrix3x4fv = MakeRegalProc( trace_glUniformMatrix3x4fv, layer );
+  tbl.glUniformMatrix4x2fv = MakeRegalProc( trace_glUniformMatrix4x2fv, layer );
+  tbl.glUniformMatrix4x3fv = MakeRegalProc( trace_glUniformMatrix4x3fv, layer );
 
   // GL_VERSION_3_0
 
-  tbl.glBeginConditionalRender = trace_glBeginConditionalRender;
-  tbl.glBeginTransformFeedback = trace_glBeginTransformFeedback;
-  tbl.glBindFragDataLocation = trace_glBindFragDataLocation;
-  tbl.glClampColor = trace_glClampColor;
-  tbl.glClearBufferfi = trace_glClearBufferfi;
-  tbl.glClearBufferfv = trace_glClearBufferfv;
-  tbl.glClearBufferiv = trace_glClearBufferiv;
-  tbl.glClearBufferuiv = trace_glClearBufferuiv;
-  tbl.glColorMaski = trace_glColorMaski;
-  tbl.glDisablei = trace_glDisablei;
-  tbl.glEnablei = trace_glEnablei;
-  tbl.glEndConditionalRender = trace_glEndConditionalRender;
-  tbl.glEndTransformFeedback = trace_glEndTransformFeedback;
-  tbl.glGetBooleani_v = trace_glGetBooleani_v;
-  tbl.glGetFragDataLocation = trace_glGetFragDataLocation;
-  tbl.glGetStringi = trace_glGetStringi;
-  tbl.glGetTexParameterIiv = trace_glGetTexParameterIiv;
-  tbl.glGetTexParameterIuiv = trace_glGetTexParameterIuiv;
-  tbl.glGetTransformFeedbackVarying = trace_glGetTransformFeedbackVarying;
-  tbl.glGetUniformuiv = trace_glGetUniformuiv;
-  tbl.glGetVertexAttribIiv = trace_glGetVertexAttribIiv;
-  tbl.glGetVertexAttribIuiv = trace_glGetVertexAttribIuiv;
-  tbl.glIsEnabledi = trace_glIsEnabledi;
-  tbl.glTexParameterIiv = trace_glTexParameterIiv;
-  tbl.glTexParameterIuiv = trace_glTexParameterIuiv;
-  tbl.glTransformFeedbackVaryings = trace_glTransformFeedbackVaryings;
-  tbl.glUniform1ui = trace_glUniform1ui;
-  tbl.glUniform1uiv = trace_glUniform1uiv;
-  tbl.glUniform2ui = trace_glUniform2ui;
-  tbl.glUniform2uiv = trace_glUniform2uiv;
-  tbl.glUniform3ui = trace_glUniform3ui;
-  tbl.glUniform3uiv = trace_glUniform3uiv;
-  tbl.glUniform4ui = trace_glUniform4ui;
-  tbl.glUniform4uiv = trace_glUniform4uiv;
-  tbl.glVertexAttribI1i = trace_glVertexAttribI1i;
-  tbl.glVertexAttribI1iv = trace_glVertexAttribI1iv;
-  tbl.glVertexAttribI1ui = trace_glVertexAttribI1ui;
-  tbl.glVertexAttribI1uiv = trace_glVertexAttribI1uiv;
-  tbl.glVertexAttribI2i = trace_glVertexAttribI2i;
-  tbl.glVertexAttribI2iv = trace_glVertexAttribI2iv;
-  tbl.glVertexAttribI2ui = trace_glVertexAttribI2ui;
-  tbl.glVertexAttribI2uiv = trace_glVertexAttribI2uiv;
-  tbl.glVertexAttribI3i = trace_glVertexAttribI3i;
-  tbl.glVertexAttribI3iv = trace_glVertexAttribI3iv;
-  tbl.glVertexAttribI3ui = trace_glVertexAttribI3ui;
-  tbl.glVertexAttribI3uiv = trace_glVertexAttribI3uiv;
-  tbl.glVertexAttribI4bv = trace_glVertexAttribI4bv;
-  tbl.glVertexAttribI4i = trace_glVertexAttribI4i;
-  tbl.glVertexAttribI4iv = trace_glVertexAttribI4iv;
-  tbl.glVertexAttribI4sv = trace_glVertexAttribI4sv;
-  tbl.glVertexAttribI4ubv = trace_glVertexAttribI4ubv;
-  tbl.glVertexAttribI4ui = trace_glVertexAttribI4ui;
-  tbl.glVertexAttribI4uiv = trace_glVertexAttribI4uiv;
-  tbl.glVertexAttribI4usv = trace_glVertexAttribI4usv;
-  tbl.glVertexAttribIPointer = trace_glVertexAttribIPointer;
+  tbl.glBeginConditionalRender = MakeRegalProc( trace_glBeginConditionalRender, layer );
+  tbl.glBeginTransformFeedback = MakeRegalProc( trace_glBeginTransformFeedback, layer );
+  tbl.glBindFragDataLocation = MakeRegalProc( trace_glBindFragDataLocation, layer );
+  tbl.glClampColor = MakeRegalProc( trace_glClampColor, layer );
+  tbl.glClearBufferfi = MakeRegalProc( trace_glClearBufferfi, layer );
+  tbl.glClearBufferfv = MakeRegalProc( trace_glClearBufferfv, layer );
+  tbl.glClearBufferiv = MakeRegalProc( trace_glClearBufferiv, layer );
+  tbl.glClearBufferuiv = MakeRegalProc( trace_glClearBufferuiv, layer );
+  tbl.glColorMaski = MakeRegalProc( trace_glColorMaski, layer );
+  tbl.glDisablei = MakeRegalProc( trace_glDisablei, layer );
+  tbl.glEnablei = MakeRegalProc( trace_glEnablei, layer );
+  tbl.glEndConditionalRender = MakeRegalProc( trace_glEndConditionalRender, layer );
+  tbl.glEndTransformFeedback = MakeRegalProc( trace_glEndTransformFeedback, layer );
+  tbl.glGetBooleani_v = MakeRegalProc( trace_glGetBooleani_v, layer );
+  tbl.glGetFragDataLocation = MakeRegalProc( trace_glGetFragDataLocation, layer );
+  tbl.glGetStringi = MakeRegalProc( trace_glGetStringi, layer );
+  tbl.glGetTexParameterIiv = MakeRegalProc( trace_glGetTexParameterIiv, layer );
+  tbl.glGetTexParameterIuiv = MakeRegalProc( trace_glGetTexParameterIuiv, layer );
+  tbl.glGetTransformFeedbackVarying = MakeRegalProc( trace_glGetTransformFeedbackVarying, layer );
+  tbl.glGetUniformuiv = MakeRegalProc( trace_glGetUniformuiv, layer );
+  tbl.glGetVertexAttribIiv = MakeRegalProc( trace_glGetVertexAttribIiv, layer );
+  tbl.glGetVertexAttribIuiv = MakeRegalProc( trace_glGetVertexAttribIuiv, layer );
+  tbl.glIsEnabledi = MakeRegalProc( trace_glIsEnabledi, layer );
+  tbl.glTexParameterIiv = MakeRegalProc( trace_glTexParameterIiv, layer );
+  tbl.glTexParameterIuiv = MakeRegalProc( trace_glTexParameterIuiv, layer );
+  tbl.glTransformFeedbackVaryings = MakeRegalProc( trace_glTransformFeedbackVaryings, layer );
+  tbl.glUniform1ui = MakeRegalProc( trace_glUniform1ui, layer );
+  tbl.glUniform1uiv = MakeRegalProc( trace_glUniform1uiv, layer );
+  tbl.glUniform2ui = MakeRegalProc( trace_glUniform2ui, layer );
+  tbl.glUniform2uiv = MakeRegalProc( trace_glUniform2uiv, layer );
+  tbl.glUniform3ui = MakeRegalProc( trace_glUniform3ui, layer );
+  tbl.glUniform3uiv = MakeRegalProc( trace_glUniform3uiv, layer );
+  tbl.glUniform4ui = MakeRegalProc( trace_glUniform4ui, layer );
+  tbl.glUniform4uiv = MakeRegalProc( trace_glUniform4uiv, layer );
+  tbl.glVertexAttribI1i = MakeRegalProc( trace_glVertexAttribI1i, layer );
+  tbl.glVertexAttribI1iv = MakeRegalProc( trace_glVertexAttribI1iv, layer );
+  tbl.glVertexAttribI1ui = MakeRegalProc( trace_glVertexAttribI1ui, layer );
+  tbl.glVertexAttribI1uiv = MakeRegalProc( trace_glVertexAttribI1uiv, layer );
+  tbl.glVertexAttribI2i = MakeRegalProc( trace_glVertexAttribI2i, layer );
+  tbl.glVertexAttribI2iv = MakeRegalProc( trace_glVertexAttribI2iv, layer );
+  tbl.glVertexAttribI2ui = MakeRegalProc( trace_glVertexAttribI2ui, layer );
+  tbl.glVertexAttribI2uiv = MakeRegalProc( trace_glVertexAttribI2uiv, layer );
+  tbl.glVertexAttribI3i = MakeRegalProc( trace_glVertexAttribI3i, layer );
+  tbl.glVertexAttribI3iv = MakeRegalProc( trace_glVertexAttribI3iv, layer );
+  tbl.glVertexAttribI3ui = MakeRegalProc( trace_glVertexAttribI3ui, layer );
+  tbl.glVertexAttribI3uiv = MakeRegalProc( trace_glVertexAttribI3uiv, layer );
+  tbl.glVertexAttribI4bv = MakeRegalProc( trace_glVertexAttribI4bv, layer );
+  tbl.glVertexAttribI4i = MakeRegalProc( trace_glVertexAttribI4i, layer );
+  tbl.glVertexAttribI4iv = MakeRegalProc( trace_glVertexAttribI4iv, layer );
+  tbl.glVertexAttribI4sv = MakeRegalProc( trace_glVertexAttribI4sv, layer );
+  tbl.glVertexAttribI4ubv = MakeRegalProc( trace_glVertexAttribI4ubv, layer );
+  tbl.glVertexAttribI4ui = MakeRegalProc( trace_glVertexAttribI4ui, layer );
+  tbl.glVertexAttribI4uiv = MakeRegalProc( trace_glVertexAttribI4uiv, layer );
+  tbl.glVertexAttribI4usv = MakeRegalProc( trace_glVertexAttribI4usv, layer );
+  tbl.glVertexAttribIPointer = MakeRegalProc( trace_glVertexAttribIPointer, layer );
 
   // GL_VERSION_3_1
 
-  tbl.glDrawArraysInstanced = trace_glDrawArraysInstanced;
-  tbl.glDrawElementsInstanced = trace_glDrawElementsInstanced;
-  tbl.glPrimitiveRestartIndex = trace_glPrimitiveRestartIndex;
-  tbl.glTexBuffer = trace_glTexBuffer;
+  tbl.glDrawArraysInstanced = MakeRegalProc( trace_glDrawArraysInstanced, layer );
+  tbl.glDrawElementsInstanced = MakeRegalProc( trace_glDrawElementsInstanced, layer );
+  tbl.glPrimitiveRestartIndex = MakeRegalProc( trace_glPrimitiveRestartIndex, layer );
+  tbl.glTexBuffer = MakeRegalProc( trace_glTexBuffer, layer );
 
   // GL_VERSION_3_2
 
-  tbl.glFramebufferTexture = trace_glFramebufferTexture;
-  tbl.glGetBufferParameteri64v = trace_glGetBufferParameteri64v;
-  tbl.glGetInteger64i_v = trace_glGetInteger64i_v;
+  tbl.glFramebufferTexture = MakeRegalProc( trace_glFramebufferTexture, layer );
+  tbl.glGetBufferParameteri64v = MakeRegalProc( trace_glGetBufferParameteri64v, layer );
+  tbl.glGetInteger64i_v = MakeRegalProc( trace_glGetInteger64i_v, layer );
 
   // GL_VERSION_3_3
 
-  tbl.glVertexAttribDivisor = trace_glVertexAttribDivisor;
+  tbl.glVertexAttribDivisor = MakeRegalProc( trace_glVertexAttribDivisor, layer );
 
   // GL_VERSION_4_0
 
-  tbl.glBlendEquationSeparatei = trace_glBlendEquationSeparatei;
-  tbl.glBlendEquationi = trace_glBlendEquationi;
-  tbl.glBlendFuncSeparatei = trace_glBlendFuncSeparatei;
-  tbl.glBlendFunci = trace_glBlendFunci;
+  tbl.glBlendEquationSeparatei = MakeRegalProc( trace_glBlendEquationSeparatei, layer );
+  tbl.glBlendEquationi = MakeRegalProc( trace_glBlendEquationi, layer );
+  tbl.glBlendFuncSeparatei = MakeRegalProc( trace_glBlendFuncSeparatei, layer );
+  tbl.glBlendFunci = MakeRegalProc( trace_glBlendFunci, layer );
 
   // GL_3DFX_tbuffer
 
-  tbl.glTbufferMask3DFX = trace_glTbufferMask3DFX;
+  tbl.glTbufferMask3DFX = MakeRegalProc( trace_glTbufferMask3DFX, layer );
 
   // GL_AMD_debug_output
 
-  tbl.glDebugMessageCallbackAMD = trace_glDebugMessageCallbackAMD;
-  tbl.glDebugMessageEnableAMD = trace_glDebugMessageEnableAMD;
-  tbl.glDebugMessageInsertAMD = trace_glDebugMessageInsertAMD;
-  tbl.glGetDebugMessageLogAMD = trace_glGetDebugMessageLogAMD;
+  tbl.glDebugMessageCallbackAMD = MakeRegalProc( trace_glDebugMessageCallbackAMD, layer );
+  tbl.glDebugMessageEnableAMD = MakeRegalProc( trace_glDebugMessageEnableAMD, layer );
+  tbl.glDebugMessageInsertAMD = MakeRegalProc( trace_glDebugMessageInsertAMD, layer );
+  tbl.glGetDebugMessageLogAMD = MakeRegalProc( trace_glGetDebugMessageLogAMD, layer );
 
   // GL_AMD_draw_buffers_blend
 
-  tbl.glBlendEquationIndexedAMD = trace_glBlendEquationIndexedAMD;
-  tbl.glBlendEquationSeparateIndexedAMD = trace_glBlendEquationSeparateIndexedAMD;
-  tbl.glBlendFuncIndexedAMD = trace_glBlendFuncIndexedAMD;
-  tbl.glBlendFuncSeparateIndexedAMD = trace_glBlendFuncSeparateIndexedAMD;
+  tbl.glBlendEquationIndexedAMD = MakeRegalProc( trace_glBlendEquationIndexedAMD, layer );
+  tbl.glBlendEquationSeparateIndexedAMD = MakeRegalProc( trace_glBlendEquationSeparateIndexedAMD, layer );
+  tbl.glBlendFuncIndexedAMD = MakeRegalProc( trace_glBlendFuncIndexedAMD, layer );
+  tbl.glBlendFuncSeparateIndexedAMD = MakeRegalProc( trace_glBlendFuncSeparateIndexedAMD, layer );
 
   // GL_AMD_multi_draw_indirect
 
-  tbl.glMultiDrawArraysIndirectAMD = trace_glMultiDrawArraysIndirectAMD;
-  tbl.glMultiDrawElementsIndirectAMD = trace_glMultiDrawElementsIndirectAMD;
+  tbl.glMultiDrawArraysIndirectAMD = MakeRegalProc( trace_glMultiDrawArraysIndirectAMD, layer );
+  tbl.glMultiDrawElementsIndirectAMD = MakeRegalProc( trace_glMultiDrawElementsIndirectAMD, layer );
 
   // GL_AMD_name_gen_delete
 
-  tbl.glDeleteNamesAMD = trace_glDeleteNamesAMD;
-  tbl.glGenNamesAMD = trace_glGenNamesAMD;
-  tbl.glIsNameAMD = trace_glIsNameAMD;
+  tbl.glDeleteNamesAMD = MakeRegalProc( trace_glDeleteNamesAMD, layer );
+  tbl.glGenNamesAMD = MakeRegalProc( trace_glGenNamesAMD, layer );
+  tbl.glIsNameAMD = MakeRegalProc( trace_glIsNameAMD, layer );
 
   // GL_AMD_performance_monitor
 
-  tbl.glBeginPerfMonitorAMD = trace_glBeginPerfMonitorAMD;
-  tbl.glDeletePerfMonitorsAMD = trace_glDeletePerfMonitorsAMD;
-  tbl.glEndPerfMonitorAMD = trace_glEndPerfMonitorAMD;
-  tbl.glGenPerfMonitorsAMD = trace_glGenPerfMonitorsAMD;
-  tbl.glGetPerfMonitorCounterDataAMD = trace_glGetPerfMonitorCounterDataAMD;
-  tbl.glGetPerfMonitorCounterInfoAMD = trace_glGetPerfMonitorCounterInfoAMD;
-  tbl.glGetPerfMonitorCounterStringAMD = trace_glGetPerfMonitorCounterStringAMD;
-  tbl.glGetPerfMonitorCountersAMD = trace_glGetPerfMonitorCountersAMD;
-  tbl.glGetPerfMonitorGroupStringAMD = trace_glGetPerfMonitorGroupStringAMD;
-  tbl.glGetPerfMonitorGroupsAMD = trace_glGetPerfMonitorGroupsAMD;
-  tbl.glSelectPerfMonitorCountersAMD = trace_glSelectPerfMonitorCountersAMD;
+  tbl.glBeginPerfMonitorAMD = MakeRegalProc( trace_glBeginPerfMonitorAMD, layer );
+  tbl.glDeletePerfMonitorsAMD = MakeRegalProc( trace_glDeletePerfMonitorsAMD, layer );
+  tbl.glEndPerfMonitorAMD = MakeRegalProc( trace_glEndPerfMonitorAMD, layer );
+  tbl.glGenPerfMonitorsAMD = MakeRegalProc( trace_glGenPerfMonitorsAMD, layer );
+  tbl.glGetPerfMonitorCounterDataAMD = MakeRegalProc( trace_glGetPerfMonitorCounterDataAMD, layer );
+  tbl.glGetPerfMonitorCounterInfoAMD = MakeRegalProc( trace_glGetPerfMonitorCounterInfoAMD, layer );
+  tbl.glGetPerfMonitorCounterStringAMD = MakeRegalProc( trace_glGetPerfMonitorCounterStringAMD, layer );
+  tbl.glGetPerfMonitorCountersAMD = MakeRegalProc( trace_glGetPerfMonitorCountersAMD, layer );
+  tbl.glGetPerfMonitorGroupStringAMD = MakeRegalProc( trace_glGetPerfMonitorGroupStringAMD, layer );
+  tbl.glGetPerfMonitorGroupsAMD = MakeRegalProc( trace_glGetPerfMonitorGroupsAMD, layer );
+  tbl.glSelectPerfMonitorCountersAMD = MakeRegalProc( trace_glSelectPerfMonitorCountersAMD, layer );
 
   // GL_AMD_sample_positions
 
-  tbl.glSetMultisamplefvAMD = trace_glSetMultisamplefvAMD;
+  tbl.glSetMultisamplefvAMD = MakeRegalProc( trace_glSetMultisamplefvAMD, layer );
 
   // GL_AMD_vertex_shader_tessellator
 
-  tbl.glTessellationFactorAMD = trace_glTessellationFactorAMD;
-  tbl.glTessellationModeAMD = trace_glTessellationModeAMD;
+  tbl.glTessellationFactorAMD = MakeRegalProc( trace_glTessellationFactorAMD, layer );
+  tbl.glTessellationModeAMD = MakeRegalProc( trace_glTessellationModeAMD, layer );
 
   // GL_ANGLE_framebuffer_blit
 
-  tbl.glBlitFramebufferANGLE = trace_glBlitFramebufferANGLE;
+  tbl.glBlitFramebufferANGLE = MakeRegalProc( trace_glBlitFramebufferANGLE, layer );
 
   // GL_ANGLE_framebuffer_multisample
 
-  tbl.glRenderbufferStorageMultisampleANGLE = trace_glRenderbufferStorageMultisampleANGLE;
+  tbl.glRenderbufferStorageMultisampleANGLE = MakeRegalProc( trace_glRenderbufferStorageMultisampleANGLE, layer );
 
   // GL_APPLE_element_array
 
-  tbl.glDrawElementArrayAPPLE = trace_glDrawElementArrayAPPLE;
-  tbl.glDrawRangeElementArrayAPPLE = trace_glDrawRangeElementArrayAPPLE;
-  tbl.glElementPointerAPPLE = trace_glElementPointerAPPLE;
-  tbl.glMultiDrawElementArrayAPPLE = trace_glMultiDrawElementArrayAPPLE;
-  tbl.glMultiDrawRangeElementArrayAPPLE = trace_glMultiDrawRangeElementArrayAPPLE;
+  tbl.glDrawElementArrayAPPLE = MakeRegalProc( trace_glDrawElementArrayAPPLE, layer );
+  tbl.glDrawRangeElementArrayAPPLE = MakeRegalProc( trace_glDrawRangeElementArrayAPPLE, layer );
+  tbl.glElementPointerAPPLE = MakeRegalProc( trace_glElementPointerAPPLE, layer );
+  tbl.glMultiDrawElementArrayAPPLE = MakeRegalProc( trace_glMultiDrawElementArrayAPPLE, layer );
+  tbl.glMultiDrawRangeElementArrayAPPLE = MakeRegalProc( trace_glMultiDrawRangeElementArrayAPPLE, layer );
 
   // GL_APPLE_fence
 
-  tbl.glDeleteFencesAPPLE = trace_glDeleteFencesAPPLE;
-  tbl.glFinishFenceAPPLE = trace_glFinishFenceAPPLE;
-  tbl.glFinishObjectAPPLE = trace_glFinishObjectAPPLE;
-  tbl.glGenFencesAPPLE = trace_glGenFencesAPPLE;
-  tbl.glIsFenceAPPLE = trace_glIsFenceAPPLE;
-  tbl.glSetFenceAPPLE = trace_glSetFenceAPPLE;
-  tbl.glTestFenceAPPLE = trace_glTestFenceAPPLE;
-  tbl.glTestObjectAPPLE = trace_glTestObjectAPPLE;
+  tbl.glDeleteFencesAPPLE = MakeRegalProc( trace_glDeleteFencesAPPLE, layer );
+  tbl.glFinishFenceAPPLE = MakeRegalProc( trace_glFinishFenceAPPLE, layer );
+  tbl.glFinishObjectAPPLE = MakeRegalProc( trace_glFinishObjectAPPLE, layer );
+  tbl.glGenFencesAPPLE = MakeRegalProc( trace_glGenFencesAPPLE, layer );
+  tbl.glIsFenceAPPLE = MakeRegalProc( trace_glIsFenceAPPLE, layer );
+  tbl.glSetFenceAPPLE = MakeRegalProc( trace_glSetFenceAPPLE, layer );
+  tbl.glTestFenceAPPLE = MakeRegalProc( trace_glTestFenceAPPLE, layer );
+  tbl.glTestObjectAPPLE = MakeRegalProc( trace_glTestObjectAPPLE, layer );
 
   // GL_APPLE_flush_buffer_range
 
-  tbl.glBufferParameteriAPPLE = trace_glBufferParameteriAPPLE;
-  tbl.glFlushMappedBufferRangeAPPLE = trace_glFlushMappedBufferRangeAPPLE;
+  tbl.glBufferParameteriAPPLE = MakeRegalProc( trace_glBufferParameteriAPPLE, layer );
+  tbl.glFlushMappedBufferRangeAPPLE = MakeRegalProc( trace_glFlushMappedBufferRangeAPPLE, layer );
 
   // GL_APPLE_flush_render
 
-  tbl.glFinishRenderAPPLE = trace_glFinishRenderAPPLE;
-  tbl.glFlushRenderAPPLE = trace_glFlushRenderAPPLE;
-  tbl.glSwapAPPLE = trace_glSwapAPPLE;
+  tbl.glFinishRenderAPPLE = MakeRegalProc( trace_glFinishRenderAPPLE, layer );
+  tbl.glFlushRenderAPPLE = MakeRegalProc( trace_glFlushRenderAPPLE, layer );
+  tbl.glSwapAPPLE = MakeRegalProc( trace_glSwapAPPLE, layer );
 
   // GL_APPLE_framebuffer_multisample
 
-  tbl.glRenderbufferStorageMultisampleAPPLE = trace_glRenderbufferStorageMultisampleAPPLE;
-  tbl.glResolveMultisampleFramebufferAPPLE = trace_glResolveMultisampleFramebufferAPPLE;
+  tbl.glRenderbufferStorageMultisampleAPPLE = MakeRegalProc( trace_glRenderbufferStorageMultisampleAPPLE, layer );
+  tbl.glResolveMultisampleFramebufferAPPLE = MakeRegalProc( trace_glResolveMultisampleFramebufferAPPLE, layer );
 
   // GL_APPLE_object_purgeable
 
-  tbl.glGetObjectParameterivAPPLE = trace_glGetObjectParameterivAPPLE;
-  tbl.glObjectPurgeableAPPLE = trace_glObjectPurgeableAPPLE;
-  tbl.glObjectUnpurgeableAPPLE = trace_glObjectUnpurgeableAPPLE;
+  tbl.glGetObjectParameterivAPPLE = MakeRegalProc( trace_glGetObjectParameterivAPPLE, layer );
+  tbl.glObjectPurgeableAPPLE = MakeRegalProc( trace_glObjectPurgeableAPPLE, layer );
+  tbl.glObjectUnpurgeableAPPLE = MakeRegalProc( trace_glObjectUnpurgeableAPPLE, layer );
 
   // GL_APPLE_texture_range
 
-  tbl.glGetTexParameterPointervAPPLE = trace_glGetTexParameterPointervAPPLE;
-  tbl.glTextureRangeAPPLE = trace_glTextureRangeAPPLE;
+  tbl.glGetTexParameterPointervAPPLE = MakeRegalProc( trace_glGetTexParameterPointervAPPLE, layer );
+  tbl.glTextureRangeAPPLE = MakeRegalProc( trace_glTextureRangeAPPLE, layer );
 
   // GL_APPLE_vertex_array_object
 
-  tbl.glBindVertexArrayAPPLE = trace_glBindVertexArrayAPPLE;
-  tbl.glDeleteVertexArraysAPPLE = trace_glDeleteVertexArraysAPPLE;
-  tbl.glGenVertexArraysAPPLE = trace_glGenVertexArraysAPPLE;
-  tbl.glIsVertexArrayAPPLE = trace_glIsVertexArrayAPPLE;
+  tbl.glBindVertexArrayAPPLE = MakeRegalProc( trace_glBindVertexArrayAPPLE, layer );
+  tbl.glDeleteVertexArraysAPPLE = MakeRegalProc( trace_glDeleteVertexArraysAPPLE, layer );
+  tbl.glGenVertexArraysAPPLE = MakeRegalProc( trace_glGenVertexArraysAPPLE, layer );
+  tbl.glIsVertexArrayAPPLE = MakeRegalProc( trace_glIsVertexArrayAPPLE, layer );
 
   // GL_APPLE_vertex_array_range
 
-  tbl.glFlushVertexArrayRangeAPPLE = trace_glFlushVertexArrayRangeAPPLE;
-  tbl.glVertexArrayParameteriAPPLE = trace_glVertexArrayParameteriAPPLE;
-  tbl.glVertexArrayRangeAPPLE = trace_glVertexArrayRangeAPPLE;
+  tbl.glFlushVertexArrayRangeAPPLE = MakeRegalProc( trace_glFlushVertexArrayRangeAPPLE, layer );
+  tbl.glVertexArrayParameteriAPPLE = MakeRegalProc( trace_glVertexArrayParameteriAPPLE, layer );
+  tbl.glVertexArrayRangeAPPLE = MakeRegalProc( trace_glVertexArrayRangeAPPLE, layer );
 
   // GL_APPLE_vertex_program_evaluators
 
-  tbl.glDisableVertexAttribAPPLE = trace_glDisableVertexAttribAPPLE;
-  tbl.glEnableVertexAttribAPPLE = trace_glEnableVertexAttribAPPLE;
-  tbl.glIsVertexAttribEnabledAPPLE = trace_glIsVertexAttribEnabledAPPLE;
-  tbl.glMapVertexAttrib1dAPPLE = trace_glMapVertexAttrib1dAPPLE;
-  tbl.glMapVertexAttrib1fAPPLE = trace_glMapVertexAttrib1fAPPLE;
-  tbl.glMapVertexAttrib2dAPPLE = trace_glMapVertexAttrib2dAPPLE;
-  tbl.glMapVertexAttrib2fAPPLE = trace_glMapVertexAttrib2fAPPLE;
+  tbl.glDisableVertexAttribAPPLE = MakeRegalProc( trace_glDisableVertexAttribAPPLE, layer );
+  tbl.glEnableVertexAttribAPPLE = MakeRegalProc( trace_glEnableVertexAttribAPPLE, layer );
+  tbl.glIsVertexAttribEnabledAPPLE = MakeRegalProc( trace_glIsVertexAttribEnabledAPPLE, layer );
+  tbl.glMapVertexAttrib1dAPPLE = MakeRegalProc( trace_glMapVertexAttrib1dAPPLE, layer );
+  tbl.glMapVertexAttrib1fAPPLE = MakeRegalProc( trace_glMapVertexAttrib1fAPPLE, layer );
+  tbl.glMapVertexAttrib2dAPPLE = MakeRegalProc( trace_glMapVertexAttrib2dAPPLE, layer );
+  tbl.glMapVertexAttrib2fAPPLE = MakeRegalProc( trace_glMapVertexAttrib2fAPPLE, layer );
 
   // GL_ARB_ES2_compatibility
 
-  tbl.glClearDepthf = trace_glClearDepthf;
-  tbl.glDepthRangef = trace_glDepthRangef;
-  tbl.glGetShaderPrecisionFormat = trace_glGetShaderPrecisionFormat;
-  tbl.glReleaseShaderCompiler = trace_glReleaseShaderCompiler;
-  tbl.glShaderBinary = trace_glShaderBinary;
+  tbl.glClearDepthf = MakeRegalProc( trace_glClearDepthf, layer );
+  tbl.glDepthRangef = MakeRegalProc( trace_glDepthRangef, layer );
+  tbl.glGetShaderPrecisionFormat = MakeRegalProc( trace_glGetShaderPrecisionFormat, layer );
+  tbl.glReleaseShaderCompiler = MakeRegalProc( trace_glReleaseShaderCompiler, layer );
+  tbl.glShaderBinary = MakeRegalProc( trace_glShaderBinary, layer );
 
   // GL_ARB_base_instance
 
-  tbl.glDrawArraysInstancedBaseInstance = trace_glDrawArraysInstancedBaseInstance;
-  tbl.glDrawElementsInstancedBaseInstance = trace_glDrawElementsInstancedBaseInstance;
-  tbl.glDrawElementsInstancedBaseVertexBaseInstance = trace_glDrawElementsInstancedBaseVertexBaseInstance;
+  tbl.glDrawArraysInstancedBaseInstance = MakeRegalProc( trace_glDrawArraysInstancedBaseInstance, layer );
+  tbl.glDrawElementsInstancedBaseInstance = MakeRegalProc( trace_glDrawElementsInstancedBaseInstance, layer );
+  tbl.glDrawElementsInstancedBaseVertexBaseInstance = MakeRegalProc( trace_glDrawElementsInstancedBaseVertexBaseInstance, layer );
 
   // GL_ARB_blend_func_extended
 
-  tbl.glBindFragDataLocationIndexed = trace_glBindFragDataLocationIndexed;
-  tbl.glGetFragDataIndex = trace_glGetFragDataIndex;
+  tbl.glBindFragDataLocationIndexed = MakeRegalProc( trace_glBindFragDataLocationIndexed, layer );
+  tbl.glGetFragDataIndex = MakeRegalProc( trace_glGetFragDataIndex, layer );
 
   // GL_ARB_buffer_storage
 
-  tbl.glBufferStorage = trace_glBufferStorage;
-  tbl.glNamedBufferStorageEXT = trace_glNamedBufferStorageEXT;
+  tbl.glBufferStorage = MakeRegalProc( trace_glBufferStorage, layer );
+  tbl.glNamedBufferStorageEXT = MakeRegalProc( trace_glNamedBufferStorageEXT, layer );
 
   // GL_ARB_clear_buffer_object
 
-  tbl.glClearBufferData = trace_glClearBufferData;
-  tbl.glClearBufferSubData = trace_glClearBufferSubData;
-  tbl.glClearNamedBufferDataEXT = trace_glClearNamedBufferDataEXT;
+  tbl.glClearBufferData = MakeRegalProc( trace_glClearBufferData, layer );
+  tbl.glClearBufferSubData = MakeRegalProc( trace_glClearBufferSubData, layer );
+  tbl.glClearNamedBufferDataEXT = MakeRegalProc( trace_glClearNamedBufferDataEXT, layer );
 
   // GL_ARB_clear_texture
 
-  tbl.glClearTexImage = trace_glClearTexImage;
-  tbl.glClearTexSubImage = trace_glClearTexSubImage;
+  tbl.glClearTexImage = MakeRegalProc( trace_glClearTexImage, layer );
+  tbl.glClearTexSubImage = MakeRegalProc( trace_glClearTexSubImage, layer );
 
   // GL_ARB_color_buffer_float
 
-  tbl.glClampColorARB = trace_glClampColorARB;
+  tbl.glClampColorARB = MakeRegalProc( trace_glClampColorARB, layer );
 
   // GL_ARB_compute_shader
 
-  tbl.glDispatchCompute = trace_glDispatchCompute;
-  tbl.glDispatchComputeIndirect = trace_glDispatchComputeIndirect;
+  tbl.glDispatchCompute = MakeRegalProc( trace_glDispatchCompute, layer );
+  tbl.glDispatchComputeIndirect = MakeRegalProc( trace_glDispatchComputeIndirect, layer );
 
   // GL_ARB_copy_buffer
 
-  tbl.glCopyBufferSubData = trace_glCopyBufferSubData;
+  tbl.glCopyBufferSubData = MakeRegalProc( trace_glCopyBufferSubData, layer );
 
   // GL_ARB_copy_image
 
-  tbl.glCopyImageSubData = trace_glCopyImageSubData;
+  tbl.glCopyImageSubData = MakeRegalProc( trace_glCopyImageSubData, layer );
 
   // GL_ARB_debug_output
 
-  tbl.glDebugMessageCallbackARB = trace_glDebugMessageCallbackARB;
-  tbl.glDebugMessageControlARB = trace_glDebugMessageControlARB;
-  tbl.glDebugMessageInsertARB = trace_glDebugMessageInsertARB;
-  tbl.glGetDebugMessageLogARB = trace_glGetDebugMessageLogARB;
+  tbl.glDebugMessageCallbackARB = MakeRegalProc( trace_glDebugMessageCallbackARB, layer );
+  tbl.glDebugMessageControlARB = MakeRegalProc( trace_glDebugMessageControlARB, layer );
+  tbl.glDebugMessageInsertARB = MakeRegalProc( trace_glDebugMessageInsertARB, layer );
+  tbl.glGetDebugMessageLogARB = MakeRegalProc( trace_glGetDebugMessageLogARB, layer );
 
   // GL_ARB_draw_buffers
 
-  tbl.glDrawBuffersARB = trace_glDrawBuffersARB;
+  tbl.glDrawBuffersARB = MakeRegalProc( trace_glDrawBuffersARB, layer );
 
   // GL_ARB_draw_buffers_blend
 
-  tbl.glBlendEquationSeparateiARB = trace_glBlendEquationSeparateiARB;
-  tbl.glBlendEquationiARB = trace_glBlendEquationiARB;
-  tbl.glBlendFuncSeparateiARB = trace_glBlendFuncSeparateiARB;
-  tbl.glBlendFunciARB = trace_glBlendFunciARB;
+  tbl.glBlendEquationSeparateiARB = MakeRegalProc( trace_glBlendEquationSeparateiARB, layer );
+  tbl.glBlendEquationiARB = MakeRegalProc( trace_glBlendEquationiARB, layer );
+  tbl.glBlendFuncSeparateiARB = MakeRegalProc( trace_glBlendFuncSeparateiARB, layer );
+  tbl.glBlendFunciARB = MakeRegalProc( trace_glBlendFunciARB, layer );
 
   // GL_ARB_draw_elements_base_vertex
 
-  tbl.glDrawElementsBaseVertex = trace_glDrawElementsBaseVertex;
-  tbl.glDrawElementsInstancedBaseVertex = trace_glDrawElementsInstancedBaseVertex;
-  tbl.glDrawRangeElementsBaseVertex = trace_glDrawRangeElementsBaseVertex;
-  tbl.glMultiDrawElementsBaseVertex = trace_glMultiDrawElementsBaseVertex;
+  tbl.glDrawElementsBaseVertex = MakeRegalProc( trace_glDrawElementsBaseVertex, layer );
+  tbl.glDrawElementsInstancedBaseVertex = MakeRegalProc( trace_glDrawElementsInstancedBaseVertex, layer );
+  tbl.glDrawRangeElementsBaseVertex = MakeRegalProc( trace_glDrawRangeElementsBaseVertex, layer );
+  tbl.glMultiDrawElementsBaseVertex = MakeRegalProc( trace_glMultiDrawElementsBaseVertex, layer );
 
   // GL_ARB_draw_indirect
 
-  tbl.glDrawArraysIndirect = trace_glDrawArraysIndirect;
-  tbl.glDrawElementsIndirect = trace_glDrawElementsIndirect;
+  tbl.glDrawArraysIndirect = MakeRegalProc( trace_glDrawArraysIndirect, layer );
+  tbl.glDrawElementsIndirect = MakeRegalProc( trace_glDrawElementsIndirect, layer );
 
   // GL_ARB_draw_instanced
 
-  tbl.glDrawArraysInstancedARB = trace_glDrawArraysInstancedARB;
-  tbl.glDrawElementsInstancedARB = trace_glDrawElementsInstancedARB;
+  tbl.glDrawArraysInstancedARB = MakeRegalProc( trace_glDrawArraysInstancedARB, layer );
+  tbl.glDrawElementsInstancedARB = MakeRegalProc( trace_glDrawElementsInstancedARB, layer );
 
   // GL_ARB_framebuffer_no_attachments
 
-  tbl.glFramebufferParameteri = trace_glFramebufferParameteri;
-  tbl.glGetFramebufferParameteriv = trace_glGetFramebufferParameteriv;
-  tbl.glGetNamedFramebufferParameterivEXT = trace_glGetNamedFramebufferParameterivEXT;
-  tbl.glNamedFramebufferParameteriEXT = trace_glNamedFramebufferParameteriEXT;
+  tbl.glFramebufferParameteri = MakeRegalProc( trace_glFramebufferParameteri, layer );
+  tbl.glGetFramebufferParameteriv = MakeRegalProc( trace_glGetFramebufferParameteriv, layer );
+  tbl.glGetNamedFramebufferParameterivEXT = MakeRegalProc( trace_glGetNamedFramebufferParameterivEXT, layer );
+  tbl.glNamedFramebufferParameteriEXT = MakeRegalProc( trace_glNamedFramebufferParameteriEXT, layer );
 
   // GL_ARB_framebuffer_object
 
-  tbl.glBindFramebuffer = trace_glBindFramebuffer;
-  tbl.glBindRenderbuffer = trace_glBindRenderbuffer;
-  tbl.glBlitFramebuffer = trace_glBlitFramebuffer;
-  tbl.glCheckFramebufferStatus = trace_glCheckFramebufferStatus;
-  tbl.glDeleteFramebuffers = trace_glDeleteFramebuffers;
-  tbl.glDeleteRenderbuffers = trace_glDeleteRenderbuffers;
-  tbl.glFramebufferRenderbuffer = trace_glFramebufferRenderbuffer;
-  tbl.glFramebufferTexture1D = trace_glFramebufferTexture1D;
-  tbl.glFramebufferTexture2D = trace_glFramebufferTexture2D;
-  tbl.glFramebufferTexture3D = trace_glFramebufferTexture3D;
-  tbl.glFramebufferTextureLayer = trace_glFramebufferTextureLayer;
-  tbl.glGenFramebuffers = trace_glGenFramebuffers;
-  tbl.glGenRenderbuffers = trace_glGenRenderbuffers;
-  tbl.glGenerateMipmap = trace_glGenerateMipmap;
-  tbl.glGetFramebufferAttachmentParameteriv = trace_glGetFramebufferAttachmentParameteriv;
-  tbl.glGetRenderbufferParameteriv = trace_glGetRenderbufferParameteriv;
-  tbl.glIsFramebuffer = trace_glIsFramebuffer;
-  tbl.glIsRenderbuffer = trace_glIsRenderbuffer;
-  tbl.glRenderbufferStorage = trace_glRenderbufferStorage;
-  tbl.glRenderbufferStorageMultisample = trace_glRenderbufferStorageMultisample;
+  tbl.glBindFramebuffer = MakeRegalProc( trace_glBindFramebuffer, layer );
+  tbl.glBindRenderbuffer = MakeRegalProc( trace_glBindRenderbuffer, layer );
+  tbl.glBlitFramebuffer = MakeRegalProc( trace_glBlitFramebuffer, layer );
+  tbl.glCheckFramebufferStatus = MakeRegalProc( trace_glCheckFramebufferStatus, layer );
+  tbl.glDeleteFramebuffers = MakeRegalProc( trace_glDeleteFramebuffers, layer );
+  tbl.glDeleteRenderbuffers = MakeRegalProc( trace_glDeleteRenderbuffers, layer );
+  tbl.glFramebufferRenderbuffer = MakeRegalProc( trace_glFramebufferRenderbuffer, layer );
+  tbl.glFramebufferTexture1D = MakeRegalProc( trace_glFramebufferTexture1D, layer );
+  tbl.glFramebufferTexture2D = MakeRegalProc( trace_glFramebufferTexture2D, layer );
+  tbl.glFramebufferTexture3D = MakeRegalProc( trace_glFramebufferTexture3D, layer );
+  tbl.glFramebufferTextureLayer = MakeRegalProc( trace_glFramebufferTextureLayer, layer );
+  tbl.glGenFramebuffers = MakeRegalProc( trace_glGenFramebuffers, layer );
+  tbl.glGenRenderbuffers = MakeRegalProc( trace_glGenRenderbuffers, layer );
+  tbl.glGenerateMipmap = MakeRegalProc( trace_glGenerateMipmap, layer );
+  tbl.glGetFramebufferAttachmentParameteriv = MakeRegalProc( trace_glGetFramebufferAttachmentParameteriv, layer );
+  tbl.glGetRenderbufferParameteriv = MakeRegalProc( trace_glGetRenderbufferParameteriv, layer );
+  tbl.glIsFramebuffer = MakeRegalProc( trace_glIsFramebuffer, layer );
+  tbl.glIsRenderbuffer = MakeRegalProc( trace_glIsRenderbuffer, layer );
+  tbl.glRenderbufferStorage = MakeRegalProc( trace_glRenderbufferStorage, layer );
+  tbl.glRenderbufferStorageMultisample = MakeRegalProc( trace_glRenderbufferStorageMultisample, layer );
 
   // GL_ARB_geometry_shader4
 
-  tbl.glFramebufferTextureARB = trace_glFramebufferTextureARB;
-  tbl.glFramebufferTextureFaceARB = trace_glFramebufferTextureFaceARB;
-  tbl.glFramebufferTextureLayerARB = trace_glFramebufferTextureLayerARB;
-  tbl.glProgramParameteriARB = trace_glProgramParameteriARB;
+  tbl.glFramebufferTextureARB = MakeRegalProc( trace_glFramebufferTextureARB, layer );
+  tbl.glFramebufferTextureFaceARB = MakeRegalProc( trace_glFramebufferTextureFaceARB, layer );
+  tbl.glFramebufferTextureLayerARB = MakeRegalProc( trace_glFramebufferTextureLayerARB, layer );
+  tbl.glProgramParameteriARB = MakeRegalProc( trace_glProgramParameteriARB, layer );
 
   // GL_ARB_get_program_binary
 
-  tbl.glGetProgramBinary = trace_glGetProgramBinary;
-  tbl.glProgramBinary = trace_glProgramBinary;
-  tbl.glProgramParameteri = trace_glProgramParameteri;
+  tbl.glGetProgramBinary = MakeRegalProc( trace_glGetProgramBinary, layer );
+  tbl.glProgramBinary = MakeRegalProc( trace_glProgramBinary, layer );
+  tbl.glProgramParameteri = MakeRegalProc( trace_glProgramParameteri, layer );
 
   // GL_ARB_gpu_shader_fp64
 
-  tbl.glGetUniformdv = trace_glGetUniformdv;
-  tbl.glUniform1d = trace_glUniform1d;
-  tbl.glUniform1dv = trace_glUniform1dv;
-  tbl.glUniform2d = trace_glUniform2d;
-  tbl.glUniform2dv = trace_glUniform2dv;
-  tbl.glUniform3d = trace_glUniform3d;
-  tbl.glUniform3dv = trace_glUniform3dv;
-  tbl.glUniform4d = trace_glUniform4d;
-  tbl.glUniform4dv = trace_glUniform4dv;
-  tbl.glUniformMatrix2dv = trace_glUniformMatrix2dv;
-  tbl.glUniformMatrix2x3dv = trace_glUniformMatrix2x3dv;
-  tbl.glUniformMatrix2x4dv = trace_glUniformMatrix2x4dv;
-  tbl.glUniformMatrix3dv = trace_glUniformMatrix3dv;
-  tbl.glUniformMatrix3x2dv = trace_glUniformMatrix3x2dv;
-  tbl.glUniformMatrix3x4dv = trace_glUniformMatrix3x4dv;
-  tbl.glUniformMatrix4dv = trace_glUniformMatrix4dv;
-  tbl.glUniformMatrix4x2dv = trace_glUniformMatrix4x2dv;
-  tbl.glUniformMatrix4x3dv = trace_glUniformMatrix4x3dv;
+  tbl.glGetUniformdv = MakeRegalProc( trace_glGetUniformdv, layer );
+  tbl.glUniform1d = MakeRegalProc( trace_glUniform1d, layer );
+  tbl.glUniform1dv = MakeRegalProc( trace_glUniform1dv, layer );
+  tbl.glUniform2d = MakeRegalProc( trace_glUniform2d, layer );
+  tbl.glUniform2dv = MakeRegalProc( trace_glUniform2dv, layer );
+  tbl.glUniform3d = MakeRegalProc( trace_glUniform3d, layer );
+  tbl.glUniform3dv = MakeRegalProc( trace_glUniform3dv, layer );
+  tbl.glUniform4d = MakeRegalProc( trace_glUniform4d, layer );
+  tbl.glUniform4dv = MakeRegalProc( trace_glUniform4dv, layer );
+  tbl.glUniformMatrix2dv = MakeRegalProc( trace_glUniformMatrix2dv, layer );
+  tbl.glUniformMatrix2x3dv = MakeRegalProc( trace_glUniformMatrix2x3dv, layer );
+  tbl.glUniformMatrix2x4dv = MakeRegalProc( trace_glUniformMatrix2x4dv, layer );
+  tbl.glUniformMatrix3dv = MakeRegalProc( trace_glUniformMatrix3dv, layer );
+  tbl.glUniformMatrix3x2dv = MakeRegalProc( trace_glUniformMatrix3x2dv, layer );
+  tbl.glUniformMatrix3x4dv = MakeRegalProc( trace_glUniformMatrix3x4dv, layer );
+  tbl.glUniformMatrix4dv = MakeRegalProc( trace_glUniformMatrix4dv, layer );
+  tbl.glUniformMatrix4x2dv = MakeRegalProc( trace_glUniformMatrix4x2dv, layer );
+  tbl.glUniformMatrix4x3dv = MakeRegalProc( trace_glUniformMatrix4x3dv, layer );
 
   // GL_ARB_imaging
 
-  tbl.glColorSubTable = trace_glColorSubTable;
-  tbl.glColorTable = trace_glColorTable;
-  tbl.glColorTableParameterfv = trace_glColorTableParameterfv;
-  tbl.glColorTableParameteriv = trace_glColorTableParameteriv;
-  tbl.glConvolutionFilter1D = trace_glConvolutionFilter1D;
-  tbl.glConvolutionFilter2D = trace_glConvolutionFilter2D;
-  tbl.glConvolutionParameterf = trace_glConvolutionParameterf;
-  tbl.glConvolutionParameterfv = trace_glConvolutionParameterfv;
-  tbl.glConvolutionParameteri = trace_glConvolutionParameteri;
-  tbl.glConvolutionParameteriv = trace_glConvolutionParameteriv;
-  tbl.glCopyColorSubTable = trace_glCopyColorSubTable;
-  tbl.glCopyColorTable = trace_glCopyColorTable;
-  tbl.glCopyConvolutionFilter1D = trace_glCopyConvolutionFilter1D;
-  tbl.glCopyConvolutionFilter2D = trace_glCopyConvolutionFilter2D;
-  tbl.glGetColorTable = trace_glGetColorTable;
-  tbl.glGetColorTableParameterfv = trace_glGetColorTableParameterfv;
-  tbl.glGetColorTableParameteriv = trace_glGetColorTableParameteriv;
-  tbl.glGetConvolutionFilter = trace_glGetConvolutionFilter;
-  tbl.glGetConvolutionParameterfv = trace_glGetConvolutionParameterfv;
-  tbl.glGetConvolutionParameteriv = trace_glGetConvolutionParameteriv;
-  tbl.glGetHistogram = trace_glGetHistogram;
-  tbl.glGetHistogramParameterfv = trace_glGetHistogramParameterfv;
-  tbl.glGetHistogramParameteriv = trace_glGetHistogramParameteriv;
-  tbl.glGetMinmax = trace_glGetMinmax;
-  tbl.glGetMinmaxParameterfv = trace_glGetMinmaxParameterfv;
-  tbl.glGetMinmaxParameteriv = trace_glGetMinmaxParameteriv;
-  tbl.glGetSeparableFilter = trace_glGetSeparableFilter;
-  tbl.glHistogram = trace_glHistogram;
-  tbl.glMinmax = trace_glMinmax;
-  tbl.glResetHistogram = trace_glResetHistogram;
-  tbl.glResetMinmax = trace_glResetMinmax;
-  tbl.glSeparableFilter2D = trace_glSeparableFilter2D;
+  tbl.glColorSubTable = MakeRegalProc( trace_glColorSubTable, layer );
+  tbl.glColorTable = MakeRegalProc( trace_glColorTable, layer );
+  tbl.glColorTableParameterfv = MakeRegalProc( trace_glColorTableParameterfv, layer );
+  tbl.glColorTableParameteriv = MakeRegalProc( trace_glColorTableParameteriv, layer );
+  tbl.glConvolutionFilter1D = MakeRegalProc( trace_glConvolutionFilter1D, layer );
+  tbl.glConvolutionFilter2D = MakeRegalProc( trace_glConvolutionFilter2D, layer );
+  tbl.glConvolutionParameterf = MakeRegalProc( trace_glConvolutionParameterf, layer );
+  tbl.glConvolutionParameterfv = MakeRegalProc( trace_glConvolutionParameterfv, layer );
+  tbl.glConvolutionParameteri = MakeRegalProc( trace_glConvolutionParameteri, layer );
+  tbl.glConvolutionParameteriv = MakeRegalProc( trace_glConvolutionParameteriv, layer );
+  tbl.glCopyColorSubTable = MakeRegalProc( trace_glCopyColorSubTable, layer );
+  tbl.glCopyColorTable = MakeRegalProc( trace_glCopyColorTable, layer );
+  tbl.glCopyConvolutionFilter1D = MakeRegalProc( trace_glCopyConvolutionFilter1D, layer );
+  tbl.glCopyConvolutionFilter2D = MakeRegalProc( trace_glCopyConvolutionFilter2D, layer );
+  tbl.glGetColorTable = MakeRegalProc( trace_glGetColorTable, layer );
+  tbl.glGetColorTableParameterfv = MakeRegalProc( trace_glGetColorTableParameterfv, layer );
+  tbl.glGetColorTableParameteriv = MakeRegalProc( trace_glGetColorTableParameteriv, layer );
+  tbl.glGetConvolutionFilter = MakeRegalProc( trace_glGetConvolutionFilter, layer );
+  tbl.glGetConvolutionParameterfv = MakeRegalProc( trace_glGetConvolutionParameterfv, layer );
+  tbl.glGetConvolutionParameteriv = MakeRegalProc( trace_glGetConvolutionParameteriv, layer );
+  tbl.glGetHistogram = MakeRegalProc( trace_glGetHistogram, layer );
+  tbl.glGetHistogramParameterfv = MakeRegalProc( trace_glGetHistogramParameterfv, layer );
+  tbl.glGetHistogramParameteriv = MakeRegalProc( trace_glGetHistogramParameteriv, layer );
+  tbl.glGetMinmax = MakeRegalProc( trace_glGetMinmax, layer );
+  tbl.glGetMinmaxParameterfv = MakeRegalProc( trace_glGetMinmaxParameterfv, layer );
+  tbl.glGetMinmaxParameteriv = MakeRegalProc( trace_glGetMinmaxParameteriv, layer );
+  tbl.glGetSeparableFilter = MakeRegalProc( trace_glGetSeparableFilter, layer );
+  tbl.glHistogram = MakeRegalProc( trace_glHistogram, layer );
+  tbl.glMinmax = MakeRegalProc( trace_glMinmax, layer );
+  tbl.glResetHistogram = MakeRegalProc( trace_glResetHistogram, layer );
+  tbl.glResetMinmax = MakeRegalProc( trace_glResetMinmax, layer );
+  tbl.glSeparableFilter2D = MakeRegalProc( trace_glSeparableFilter2D, layer );
 
   // GL_ARB_instanced_arrays
 
-  tbl.glVertexAttribDivisorARB = trace_glVertexAttribDivisorARB;
+  tbl.glVertexAttribDivisorARB = MakeRegalProc( trace_glVertexAttribDivisorARB, layer );
 
   // GL_ARB_internalformat_query
 
-  tbl.glGetInternalformativ = trace_glGetInternalformativ;
+  tbl.glGetInternalformativ = MakeRegalProc( trace_glGetInternalformativ, layer );
 
   // GL_ARB_internalformat_query2
 
-  tbl.glGetInternalformati64v = trace_glGetInternalformati64v;
+  tbl.glGetInternalformati64v = MakeRegalProc( trace_glGetInternalformati64v, layer );
 
   // GL_ARB_invalidate_subdata
 
-  tbl.glInvalidateBufferData = trace_glInvalidateBufferData;
-  tbl.glInvalidateBufferSubData = trace_glInvalidateBufferSubData;
-  tbl.glInvalidateFramebuffer = trace_glInvalidateFramebuffer;
-  tbl.glInvalidateSubFramebuffer = trace_glInvalidateSubFramebuffer;
-  tbl.glInvalidateTexImage = trace_glInvalidateTexImage;
-  tbl.glInvalidateTexSubImage = trace_glInvalidateTexSubImage;
+  tbl.glInvalidateBufferData = MakeRegalProc( trace_glInvalidateBufferData, layer );
+  tbl.glInvalidateBufferSubData = MakeRegalProc( trace_glInvalidateBufferSubData, layer );
+  tbl.glInvalidateFramebuffer = MakeRegalProc( trace_glInvalidateFramebuffer, layer );
+  tbl.glInvalidateSubFramebuffer = MakeRegalProc( trace_glInvalidateSubFramebuffer, layer );
+  tbl.glInvalidateTexImage = MakeRegalProc( trace_glInvalidateTexImage, layer );
+  tbl.glInvalidateTexSubImage = MakeRegalProc( trace_glInvalidateTexSubImage, layer );
 
   // GL_ARB_map_buffer_range
 
-  tbl.glFlushMappedBufferRange = trace_glFlushMappedBufferRange;
-  tbl.glMapBufferRange = trace_glMapBufferRange;
+  tbl.glFlushMappedBufferRange = MakeRegalProc( trace_glFlushMappedBufferRange, layer );
+  tbl.glMapBufferRange = MakeRegalProc( trace_glMapBufferRange, layer );
 
   // GL_ARB_matrix_palette
 
-  tbl.glCurrentPaletteMatrixARB = trace_glCurrentPaletteMatrixARB;
-  tbl.glMatrixIndexPointerARB = trace_glMatrixIndexPointerARB;
-  tbl.glMatrixIndexubvARB = trace_glMatrixIndexubvARB;
-  tbl.glMatrixIndexuivARB = trace_glMatrixIndexuivARB;
-  tbl.glMatrixIndexusvARB = trace_glMatrixIndexusvARB;
+  tbl.glCurrentPaletteMatrixARB = MakeRegalProc( trace_glCurrentPaletteMatrixARB, layer );
+  tbl.glMatrixIndexPointerARB = MakeRegalProc( trace_glMatrixIndexPointerARB, layer );
+  tbl.glMatrixIndexubvARB = MakeRegalProc( trace_glMatrixIndexubvARB, layer );
+  tbl.glMatrixIndexuivARB = MakeRegalProc( trace_glMatrixIndexuivARB, layer );
+  tbl.glMatrixIndexusvARB = MakeRegalProc( trace_glMatrixIndexusvARB, layer );
 
   // GL_ARB_multi_bind
 
-  tbl.glBindBuffersBase = trace_glBindBuffersBase;
-  tbl.glBindBuffersRange = trace_glBindBuffersRange;
-  tbl.glBindImageTextures = trace_glBindImageTextures;
-  tbl.glBindSamplers = trace_glBindSamplers;
-  tbl.glBindTextures = trace_glBindTextures;
-  tbl.glBindVertexBuffers = trace_glBindVertexBuffers;
+  tbl.glBindBuffersBase = MakeRegalProc( trace_glBindBuffersBase, layer );
+  tbl.glBindBuffersRange = MakeRegalProc( trace_glBindBuffersRange, layer );
+  tbl.glBindImageTextures = MakeRegalProc( trace_glBindImageTextures, layer );
+  tbl.glBindSamplers = MakeRegalProc( trace_glBindSamplers, layer );
+  tbl.glBindTextures = MakeRegalProc( trace_glBindTextures, layer );
+  tbl.glBindVertexBuffers = MakeRegalProc( trace_glBindVertexBuffers, layer );
 
   // GL_ARB_multi_draw_indirect
 
-  tbl.glMultiDrawArraysIndirect = trace_glMultiDrawArraysIndirect;
-  tbl.glMultiDrawElementsIndirect = trace_glMultiDrawElementsIndirect;
+  tbl.glMultiDrawArraysIndirect = MakeRegalProc( trace_glMultiDrawArraysIndirect, layer );
+  tbl.glMultiDrawElementsIndirect = MakeRegalProc( trace_glMultiDrawElementsIndirect, layer );
 
   // GL_ARB_multisample
 
-  tbl.glSampleCoverageARB = trace_glSampleCoverageARB;
+  tbl.glSampleCoverageARB = MakeRegalProc( trace_glSampleCoverageARB, layer );
 
   // GL_ARB_multitexture
 
-  tbl.glActiveTextureARB = trace_glActiveTextureARB;
-  tbl.glClientActiveTextureARB = trace_glClientActiveTextureARB;
-  tbl.glMultiTexCoord1dARB = trace_glMultiTexCoord1dARB;
-  tbl.glMultiTexCoord1dvARB = trace_glMultiTexCoord1dvARB;
-  tbl.glMultiTexCoord1fARB = trace_glMultiTexCoord1fARB;
-  tbl.glMultiTexCoord1fvARB = trace_glMultiTexCoord1fvARB;
-  tbl.glMultiTexCoord1iARB = trace_glMultiTexCoord1iARB;
-  tbl.glMultiTexCoord1ivARB = trace_glMultiTexCoord1ivARB;
-  tbl.glMultiTexCoord1sARB = trace_glMultiTexCoord1sARB;
-  tbl.glMultiTexCoord1svARB = trace_glMultiTexCoord1svARB;
-  tbl.glMultiTexCoord2dARB = trace_glMultiTexCoord2dARB;
-  tbl.glMultiTexCoord2dvARB = trace_glMultiTexCoord2dvARB;
-  tbl.glMultiTexCoord2fARB = trace_glMultiTexCoord2fARB;
-  tbl.glMultiTexCoord2fvARB = trace_glMultiTexCoord2fvARB;
-  tbl.glMultiTexCoord2iARB = trace_glMultiTexCoord2iARB;
-  tbl.glMultiTexCoord2ivARB = trace_glMultiTexCoord2ivARB;
-  tbl.glMultiTexCoord2sARB = trace_glMultiTexCoord2sARB;
-  tbl.glMultiTexCoord2svARB = trace_glMultiTexCoord2svARB;
-  tbl.glMultiTexCoord3dARB = trace_glMultiTexCoord3dARB;
-  tbl.glMultiTexCoord3dvARB = trace_glMultiTexCoord3dvARB;
-  tbl.glMultiTexCoord3fARB = trace_glMultiTexCoord3fARB;
-  tbl.glMultiTexCoord3fvARB = trace_glMultiTexCoord3fvARB;
-  tbl.glMultiTexCoord3iARB = trace_glMultiTexCoord3iARB;
-  tbl.glMultiTexCoord3ivARB = trace_glMultiTexCoord3ivARB;
-  tbl.glMultiTexCoord3sARB = trace_glMultiTexCoord3sARB;
-  tbl.glMultiTexCoord3svARB = trace_glMultiTexCoord3svARB;
-  tbl.glMultiTexCoord4dARB = trace_glMultiTexCoord4dARB;
-  tbl.glMultiTexCoord4dvARB = trace_glMultiTexCoord4dvARB;
-  tbl.glMultiTexCoord4fARB = trace_glMultiTexCoord4fARB;
-  tbl.glMultiTexCoord4fvARB = trace_glMultiTexCoord4fvARB;
-  tbl.glMultiTexCoord4iARB = trace_glMultiTexCoord4iARB;
-  tbl.glMultiTexCoord4ivARB = trace_glMultiTexCoord4ivARB;
-  tbl.glMultiTexCoord4sARB = trace_glMultiTexCoord4sARB;
-  tbl.glMultiTexCoord4svARB = trace_glMultiTexCoord4svARB;
+  tbl.glActiveTextureARB = MakeRegalProc( trace_glActiveTextureARB, layer );
+  tbl.glClientActiveTextureARB = MakeRegalProc( trace_glClientActiveTextureARB, layer );
+  tbl.glMultiTexCoord1dARB = MakeRegalProc( trace_glMultiTexCoord1dARB, layer );
+  tbl.glMultiTexCoord1dvARB = MakeRegalProc( trace_glMultiTexCoord1dvARB, layer );
+  tbl.glMultiTexCoord1fARB = MakeRegalProc( trace_glMultiTexCoord1fARB, layer );
+  tbl.glMultiTexCoord1fvARB = MakeRegalProc( trace_glMultiTexCoord1fvARB, layer );
+  tbl.glMultiTexCoord1iARB = MakeRegalProc( trace_glMultiTexCoord1iARB, layer );
+  tbl.glMultiTexCoord1ivARB = MakeRegalProc( trace_glMultiTexCoord1ivARB, layer );
+  tbl.glMultiTexCoord1sARB = MakeRegalProc( trace_glMultiTexCoord1sARB, layer );
+  tbl.glMultiTexCoord1svARB = MakeRegalProc( trace_glMultiTexCoord1svARB, layer );
+  tbl.glMultiTexCoord2dARB = MakeRegalProc( trace_glMultiTexCoord2dARB, layer );
+  tbl.glMultiTexCoord2dvARB = MakeRegalProc( trace_glMultiTexCoord2dvARB, layer );
+  tbl.glMultiTexCoord2fARB = MakeRegalProc( trace_glMultiTexCoord2fARB, layer );
+  tbl.glMultiTexCoord2fvARB = MakeRegalProc( trace_glMultiTexCoord2fvARB, layer );
+  tbl.glMultiTexCoord2iARB = MakeRegalProc( trace_glMultiTexCoord2iARB, layer );
+  tbl.glMultiTexCoord2ivARB = MakeRegalProc( trace_glMultiTexCoord2ivARB, layer );
+  tbl.glMultiTexCoord2sARB = MakeRegalProc( trace_glMultiTexCoord2sARB, layer );
+  tbl.glMultiTexCoord2svARB = MakeRegalProc( trace_glMultiTexCoord2svARB, layer );
+  tbl.glMultiTexCoord3dARB = MakeRegalProc( trace_glMultiTexCoord3dARB, layer );
+  tbl.glMultiTexCoord3dvARB = MakeRegalProc( trace_glMultiTexCoord3dvARB, layer );
+  tbl.glMultiTexCoord3fARB = MakeRegalProc( trace_glMultiTexCoord3fARB, layer );
+  tbl.glMultiTexCoord3fvARB = MakeRegalProc( trace_glMultiTexCoord3fvARB, layer );
+  tbl.glMultiTexCoord3iARB = MakeRegalProc( trace_glMultiTexCoord3iARB, layer );
+  tbl.glMultiTexCoord3ivARB = MakeRegalProc( trace_glMultiTexCoord3ivARB, layer );
+  tbl.glMultiTexCoord3sARB = MakeRegalProc( trace_glMultiTexCoord3sARB, layer );
+  tbl.glMultiTexCoord3svARB = MakeRegalProc( trace_glMultiTexCoord3svARB, layer );
+  tbl.glMultiTexCoord4dARB = MakeRegalProc( trace_glMultiTexCoord4dARB, layer );
+  tbl.glMultiTexCoord4dvARB = MakeRegalProc( trace_glMultiTexCoord4dvARB, layer );
+  tbl.glMultiTexCoord4fARB = MakeRegalProc( trace_glMultiTexCoord4fARB, layer );
+  tbl.glMultiTexCoord4fvARB = MakeRegalProc( trace_glMultiTexCoord4fvARB, layer );
+  tbl.glMultiTexCoord4iARB = MakeRegalProc( trace_glMultiTexCoord4iARB, layer );
+  tbl.glMultiTexCoord4ivARB = MakeRegalProc( trace_glMultiTexCoord4ivARB, layer );
+  tbl.glMultiTexCoord4sARB = MakeRegalProc( trace_glMultiTexCoord4sARB, layer );
+  tbl.glMultiTexCoord4svARB = MakeRegalProc( trace_glMultiTexCoord4svARB, layer );
 
   // GL_ARB_occlusion_query
 
-  tbl.glBeginQueryARB = trace_glBeginQueryARB;
-  tbl.glDeleteQueriesARB = trace_glDeleteQueriesARB;
-  tbl.glEndQueryARB = trace_glEndQueryARB;
-  tbl.glGenQueriesARB = trace_glGenQueriesARB;
-  tbl.glGetQueryObjectivARB = trace_glGetQueryObjectivARB;
-  tbl.glGetQueryObjectuivARB = trace_glGetQueryObjectuivARB;
-  tbl.glGetQueryivARB = trace_glGetQueryivARB;
-  tbl.glIsQueryARB = trace_glIsQueryARB;
+  tbl.glBeginQueryARB = MakeRegalProc( trace_glBeginQueryARB, layer );
+  tbl.glDeleteQueriesARB = MakeRegalProc( trace_glDeleteQueriesARB, layer );
+  tbl.glEndQueryARB = MakeRegalProc( trace_glEndQueryARB, layer );
+  tbl.glGenQueriesARB = MakeRegalProc( trace_glGenQueriesARB, layer );
+  tbl.glGetQueryObjectivARB = MakeRegalProc( trace_glGetQueryObjectivARB, layer );
+  tbl.glGetQueryObjectuivARB = MakeRegalProc( trace_glGetQueryObjectuivARB, layer );
+  tbl.glGetQueryivARB = MakeRegalProc( trace_glGetQueryivARB, layer );
+  tbl.glIsQueryARB = MakeRegalProc( trace_glIsQueryARB, layer );
 
   // GL_ARB_point_parameters
 
-  tbl.glPointParameterfARB = trace_glPointParameterfARB;
-  tbl.glPointParameterfvARB = trace_glPointParameterfvARB;
+  tbl.glPointParameterfARB = MakeRegalProc( trace_glPointParameterfARB, layer );
+  tbl.glPointParameterfvARB = MakeRegalProc( trace_glPointParameterfvARB, layer );
 
   // GL_ARB_program_interface_query
 
-  tbl.glGetProgramInterfaceiv = trace_glGetProgramInterfaceiv;
-  tbl.glGetProgramResourceIndex = trace_glGetProgramResourceIndex;
-  tbl.glGetProgramResourceLocation = trace_glGetProgramResourceLocation;
-  tbl.glGetProgramResourceLocationIndex = trace_glGetProgramResourceLocationIndex;
-  tbl.glGetProgramResourceName = trace_glGetProgramResourceName;
-  tbl.glGetProgramResourceiv = trace_glGetProgramResourceiv;
+  tbl.glGetProgramInterfaceiv = MakeRegalProc( trace_glGetProgramInterfaceiv, layer );
+  tbl.glGetProgramResourceIndex = MakeRegalProc( trace_glGetProgramResourceIndex, layer );
+  tbl.glGetProgramResourceLocation = MakeRegalProc( trace_glGetProgramResourceLocation, layer );
+  tbl.glGetProgramResourceLocationIndex = MakeRegalProc( trace_glGetProgramResourceLocationIndex, layer );
+  tbl.glGetProgramResourceName = MakeRegalProc( trace_glGetProgramResourceName, layer );
+  tbl.glGetProgramResourceiv = MakeRegalProc( trace_glGetProgramResourceiv, layer );
 
   // GL_ARB_provoking_vertex
 
-  tbl.glProvokingVertex = trace_glProvokingVertex;
+  tbl.glProvokingVertex = MakeRegalProc( trace_glProvokingVertex, layer );
 
   // GL_ARB_robustness
 
-  tbl.glGetGraphicsResetStatusARB = trace_glGetGraphicsResetStatusARB;
-  tbl.glGetnColorTableARB = trace_glGetnColorTableARB;
-  tbl.glGetnCompressedTexImageARB = trace_glGetnCompressedTexImageARB;
-  tbl.glGetnConvolutionFilterARB = trace_glGetnConvolutionFilterARB;
-  tbl.glGetnHistogramARB = trace_glGetnHistogramARB;
-  tbl.glGetnMapdvARB = trace_glGetnMapdvARB;
-  tbl.glGetnMapfvARB = trace_glGetnMapfvARB;
-  tbl.glGetnMapivARB = trace_glGetnMapivARB;
-  tbl.glGetnMinmaxARB = trace_glGetnMinmaxARB;
-  tbl.glGetnPixelMapfvARB = trace_glGetnPixelMapfvARB;
-  tbl.glGetnPixelMapuivARB = trace_glGetnPixelMapuivARB;
-  tbl.glGetnPixelMapusvARB = trace_glGetnPixelMapusvARB;
-  tbl.glGetnPolygonStippleARB = trace_glGetnPolygonStippleARB;
-  tbl.glGetnSeparableFilterARB = trace_glGetnSeparableFilterARB;
-  tbl.glGetnTexImageARB = trace_glGetnTexImageARB;
-  tbl.glGetnUniformdvARB = trace_glGetnUniformdvARB;
-  tbl.glGetnUniformfvARB = trace_glGetnUniformfvARB;
-  tbl.glGetnUniformivARB = trace_glGetnUniformivARB;
-  tbl.glGetnUniformuivARB = trace_glGetnUniformuivARB;
-  tbl.glReadnPixelsARB = trace_glReadnPixelsARB;
+  tbl.glGetGraphicsResetStatusARB = MakeRegalProc( trace_glGetGraphicsResetStatusARB, layer );
+  tbl.glGetnColorTableARB = MakeRegalProc( trace_glGetnColorTableARB, layer );
+  tbl.glGetnCompressedTexImageARB = MakeRegalProc( trace_glGetnCompressedTexImageARB, layer );
+  tbl.glGetnConvolutionFilterARB = MakeRegalProc( trace_glGetnConvolutionFilterARB, layer );
+  tbl.glGetnHistogramARB = MakeRegalProc( trace_glGetnHistogramARB, layer );
+  tbl.glGetnMapdvARB = MakeRegalProc( trace_glGetnMapdvARB, layer );
+  tbl.glGetnMapfvARB = MakeRegalProc( trace_glGetnMapfvARB, layer );
+  tbl.glGetnMapivARB = MakeRegalProc( trace_glGetnMapivARB, layer );
+  tbl.glGetnMinmaxARB = MakeRegalProc( trace_glGetnMinmaxARB, layer );
+  tbl.glGetnPixelMapfvARB = MakeRegalProc( trace_glGetnPixelMapfvARB, layer );
+  tbl.glGetnPixelMapuivARB = MakeRegalProc( trace_glGetnPixelMapuivARB, layer );
+  tbl.glGetnPixelMapusvARB = MakeRegalProc( trace_glGetnPixelMapusvARB, layer );
+  tbl.glGetnPolygonStippleARB = MakeRegalProc( trace_glGetnPolygonStippleARB, layer );
+  tbl.glGetnSeparableFilterARB = MakeRegalProc( trace_glGetnSeparableFilterARB, layer );
+  tbl.glGetnTexImageARB = MakeRegalProc( trace_glGetnTexImageARB, layer );
+  tbl.glGetnUniformdvARB = MakeRegalProc( trace_glGetnUniformdvARB, layer );
+  tbl.glGetnUniformfvARB = MakeRegalProc( trace_glGetnUniformfvARB, layer );
+  tbl.glGetnUniformivARB = MakeRegalProc( trace_glGetnUniformivARB, layer );
+  tbl.glGetnUniformuivARB = MakeRegalProc( trace_glGetnUniformuivARB, layer );
+  tbl.glReadnPixelsARB = MakeRegalProc( trace_glReadnPixelsARB, layer );
 
   // GL_ARB_sample_shading
 
-  tbl.glMinSampleShading = trace_glMinSampleShading;
-  tbl.glMinSampleShadingARB = trace_glMinSampleShadingARB;
+  tbl.glMinSampleShading = MakeRegalProc( trace_glMinSampleShading, layer );
+  tbl.glMinSampleShadingARB = MakeRegalProc( trace_glMinSampleShadingARB, layer );
 
   // GL_ARB_sampler_objects
 
-  tbl.glBindSampler = trace_glBindSampler;
-  tbl.glDeleteSamplers = trace_glDeleteSamplers;
-  tbl.glGenSamplers = trace_glGenSamplers;
-  tbl.glGetSamplerParameterIiv = trace_glGetSamplerParameterIiv;
-  tbl.glGetSamplerParameterIuiv = trace_glGetSamplerParameterIuiv;
-  tbl.glGetSamplerParameterfv = trace_glGetSamplerParameterfv;
-  tbl.glGetSamplerParameteriv = trace_glGetSamplerParameteriv;
-  tbl.glIsSampler = trace_glIsSampler;
-  tbl.glSamplerParameterIiv = trace_glSamplerParameterIiv;
-  tbl.glSamplerParameterIuiv = trace_glSamplerParameterIuiv;
-  tbl.glSamplerParameterf = trace_glSamplerParameterf;
-  tbl.glSamplerParameterfv = trace_glSamplerParameterfv;
-  tbl.glSamplerParameteri = trace_glSamplerParameteri;
-  tbl.glSamplerParameteriv = trace_glSamplerParameteriv;
+  tbl.glBindSampler = MakeRegalProc( trace_glBindSampler, layer );
+  tbl.glDeleteSamplers = MakeRegalProc( trace_glDeleteSamplers, layer );
+  tbl.glGenSamplers = MakeRegalProc( trace_glGenSamplers, layer );
+  tbl.glGetSamplerParameterIiv = MakeRegalProc( trace_glGetSamplerParameterIiv, layer );
+  tbl.glGetSamplerParameterIuiv = MakeRegalProc( trace_glGetSamplerParameterIuiv, layer );
+  tbl.glGetSamplerParameterfv = MakeRegalProc( trace_glGetSamplerParameterfv, layer );
+  tbl.glGetSamplerParameteriv = MakeRegalProc( trace_glGetSamplerParameteriv, layer );
+  tbl.glIsSampler = MakeRegalProc( trace_glIsSampler, layer );
+  tbl.glSamplerParameterIiv = MakeRegalProc( trace_glSamplerParameterIiv, layer );
+  tbl.glSamplerParameterIuiv = MakeRegalProc( trace_glSamplerParameterIuiv, layer );
+  tbl.glSamplerParameterf = MakeRegalProc( trace_glSamplerParameterf, layer );
+  tbl.glSamplerParameterfv = MakeRegalProc( trace_glSamplerParameterfv, layer );
+  tbl.glSamplerParameteri = MakeRegalProc( trace_glSamplerParameteri, layer );
+  tbl.glSamplerParameteriv = MakeRegalProc( trace_glSamplerParameteriv, layer );
 
   // GL_ARB_separate_shader_objects
 
-  tbl.glActiveShaderProgram = trace_glActiveShaderProgram;
-  tbl.glBindProgramPipeline = trace_glBindProgramPipeline;
-  tbl.glCreateShaderProgramv = trace_glCreateShaderProgramv;
-  tbl.glDeleteProgramPipelines = trace_glDeleteProgramPipelines;
-  tbl.glGenProgramPipelines = trace_glGenProgramPipelines;
-  tbl.glGetProgramPipelineInfoLog = trace_glGetProgramPipelineInfoLog;
-  tbl.glGetProgramPipelineiv = trace_glGetProgramPipelineiv;
-  tbl.glIsProgramPipeline = trace_glIsProgramPipeline;
-  tbl.glProgramUniform1d = trace_glProgramUniform1d;
-  tbl.glProgramUniform1dv = trace_glProgramUniform1dv;
-  tbl.glProgramUniform1f = trace_glProgramUniform1f;
-  tbl.glProgramUniform1fv = trace_glProgramUniform1fv;
-  tbl.glProgramUniform1i = trace_glProgramUniform1i;
-  tbl.glProgramUniform1iv = trace_glProgramUniform1iv;
-  tbl.glProgramUniform1ui = trace_glProgramUniform1ui;
-  tbl.glProgramUniform1uiv = trace_glProgramUniform1uiv;
-  tbl.glProgramUniform2d = trace_glProgramUniform2d;
-  tbl.glProgramUniform2dv = trace_glProgramUniform2dv;
-  tbl.glProgramUniform2f = trace_glProgramUniform2f;
-  tbl.glProgramUniform2fv = trace_glProgramUniform2fv;
-  tbl.glProgramUniform2i = trace_glProgramUniform2i;
-  tbl.glProgramUniform2iv = trace_glProgramUniform2iv;
-  tbl.glProgramUniform2ui = trace_glProgramUniform2ui;
-  tbl.glProgramUniform2uiv = trace_glProgramUniform2uiv;
-  tbl.glProgramUniform3d = trace_glProgramUniform3d;
-  tbl.glProgramUniform3dv = trace_glProgramUniform3dv;
-  tbl.glProgramUniform3f = trace_glProgramUniform3f;
-  tbl.glProgramUniform3fv = trace_glProgramUniform3fv;
-  tbl.glProgramUniform3i = trace_glProgramUniform3i;
-  tbl.glProgramUniform3iv = trace_glProgramUniform3iv;
-  tbl.glProgramUniform3ui = trace_glProgramUniform3ui;
-  tbl.glProgramUniform3uiv = trace_glProgramUniform3uiv;
-  tbl.glProgramUniform4d = trace_glProgramUniform4d;
-  tbl.glProgramUniform4dv = trace_glProgramUniform4dv;
-  tbl.glProgramUniform4f = trace_glProgramUniform4f;
-  tbl.glProgramUniform4fv = trace_glProgramUniform4fv;
-  tbl.glProgramUniform4i = trace_glProgramUniform4i;
-  tbl.glProgramUniform4iv = trace_glProgramUniform4iv;
-  tbl.glProgramUniform4ui = trace_glProgramUniform4ui;
-  tbl.glProgramUniform4uiv = trace_glProgramUniform4uiv;
-  tbl.glProgramUniformMatrix2dv = trace_glProgramUniformMatrix2dv;
-  tbl.glProgramUniformMatrix2fv = trace_glProgramUniformMatrix2fv;
-  tbl.glProgramUniformMatrix2x3dv = trace_glProgramUniformMatrix2x3dv;
-  tbl.glProgramUniformMatrix2x3fv = trace_glProgramUniformMatrix2x3fv;
-  tbl.glProgramUniformMatrix2x4dv = trace_glProgramUniformMatrix2x4dv;
-  tbl.glProgramUniformMatrix2x4fv = trace_glProgramUniformMatrix2x4fv;
-  tbl.glProgramUniformMatrix3dv = trace_glProgramUniformMatrix3dv;
-  tbl.glProgramUniformMatrix3fv = trace_glProgramUniformMatrix3fv;
-  tbl.glProgramUniformMatrix3x2dv = trace_glProgramUniformMatrix3x2dv;
-  tbl.glProgramUniformMatrix3x2fv = trace_glProgramUniformMatrix3x2fv;
-  tbl.glProgramUniformMatrix3x4dv = trace_glProgramUniformMatrix3x4dv;
-  tbl.glProgramUniformMatrix3x4fv = trace_glProgramUniformMatrix3x4fv;
-  tbl.glProgramUniformMatrix4dv = trace_glProgramUniformMatrix4dv;
-  tbl.glProgramUniformMatrix4fv = trace_glProgramUniformMatrix4fv;
-  tbl.glProgramUniformMatrix4x2dv = trace_glProgramUniformMatrix4x2dv;
-  tbl.glProgramUniformMatrix4x2fv = trace_glProgramUniformMatrix4x2fv;
-  tbl.glProgramUniformMatrix4x3dv = trace_glProgramUniformMatrix4x3dv;
-  tbl.glProgramUniformMatrix4x3fv = trace_glProgramUniformMatrix4x3fv;
-  tbl.glUseProgramStages = trace_glUseProgramStages;
-  tbl.glValidateProgramPipeline = trace_glValidateProgramPipeline;
+  tbl.glActiveShaderProgram = MakeRegalProc( trace_glActiveShaderProgram, layer );
+  tbl.glBindProgramPipeline = MakeRegalProc( trace_glBindProgramPipeline, layer );
+  tbl.glCreateShaderProgramv = MakeRegalProc( trace_glCreateShaderProgramv, layer );
+  tbl.glDeleteProgramPipelines = MakeRegalProc( trace_glDeleteProgramPipelines, layer );
+  tbl.glGenProgramPipelines = MakeRegalProc( trace_glGenProgramPipelines, layer );
+  tbl.glGetProgramPipelineInfoLog = MakeRegalProc( trace_glGetProgramPipelineInfoLog, layer );
+  tbl.glGetProgramPipelineiv = MakeRegalProc( trace_glGetProgramPipelineiv, layer );
+  tbl.glIsProgramPipeline = MakeRegalProc( trace_glIsProgramPipeline, layer );
+  tbl.glProgramUniform1d = MakeRegalProc( trace_glProgramUniform1d, layer );
+  tbl.glProgramUniform1dv = MakeRegalProc( trace_glProgramUniform1dv, layer );
+  tbl.glProgramUniform1f = MakeRegalProc( trace_glProgramUniform1f, layer );
+  tbl.glProgramUniform1fv = MakeRegalProc( trace_glProgramUniform1fv, layer );
+  tbl.glProgramUniform1i = MakeRegalProc( trace_glProgramUniform1i, layer );
+  tbl.glProgramUniform1iv = MakeRegalProc( trace_glProgramUniform1iv, layer );
+  tbl.glProgramUniform1ui = MakeRegalProc( trace_glProgramUniform1ui, layer );
+  tbl.glProgramUniform1uiv = MakeRegalProc( trace_glProgramUniform1uiv, layer );
+  tbl.glProgramUniform2d = MakeRegalProc( trace_glProgramUniform2d, layer );
+  tbl.glProgramUniform2dv = MakeRegalProc( trace_glProgramUniform2dv, layer );
+  tbl.glProgramUniform2f = MakeRegalProc( trace_glProgramUniform2f, layer );
+  tbl.glProgramUniform2fv = MakeRegalProc( trace_glProgramUniform2fv, layer );
+  tbl.glProgramUniform2i = MakeRegalProc( trace_glProgramUniform2i, layer );
+  tbl.glProgramUniform2iv = MakeRegalProc( trace_glProgramUniform2iv, layer );
+  tbl.glProgramUniform2ui = MakeRegalProc( trace_glProgramUniform2ui, layer );
+  tbl.glProgramUniform2uiv = MakeRegalProc( trace_glProgramUniform2uiv, layer );
+  tbl.glProgramUniform3d = MakeRegalProc( trace_glProgramUniform3d, layer );
+  tbl.glProgramUniform3dv = MakeRegalProc( trace_glProgramUniform3dv, layer );
+  tbl.glProgramUniform3f = MakeRegalProc( trace_glProgramUniform3f, layer );
+  tbl.glProgramUniform3fv = MakeRegalProc( trace_glProgramUniform3fv, layer );
+  tbl.glProgramUniform3i = MakeRegalProc( trace_glProgramUniform3i, layer );
+  tbl.glProgramUniform3iv = MakeRegalProc( trace_glProgramUniform3iv, layer );
+  tbl.glProgramUniform3ui = MakeRegalProc( trace_glProgramUniform3ui, layer );
+  tbl.glProgramUniform3uiv = MakeRegalProc( trace_glProgramUniform3uiv, layer );
+  tbl.glProgramUniform4d = MakeRegalProc( trace_glProgramUniform4d, layer );
+  tbl.glProgramUniform4dv = MakeRegalProc( trace_glProgramUniform4dv, layer );
+  tbl.glProgramUniform4f = MakeRegalProc( trace_glProgramUniform4f, layer );
+  tbl.glProgramUniform4fv = MakeRegalProc( trace_glProgramUniform4fv, layer );
+  tbl.glProgramUniform4i = MakeRegalProc( trace_glProgramUniform4i, layer );
+  tbl.glProgramUniform4iv = MakeRegalProc( trace_glProgramUniform4iv, layer );
+  tbl.glProgramUniform4ui = MakeRegalProc( trace_glProgramUniform4ui, layer );
+  tbl.glProgramUniform4uiv = MakeRegalProc( trace_glProgramUniform4uiv, layer );
+  tbl.glProgramUniformMatrix2dv = MakeRegalProc( trace_glProgramUniformMatrix2dv, layer );
+  tbl.glProgramUniformMatrix2fv = MakeRegalProc( trace_glProgramUniformMatrix2fv, layer );
+  tbl.glProgramUniformMatrix2x3dv = MakeRegalProc( trace_glProgramUniformMatrix2x3dv, layer );
+  tbl.glProgramUniformMatrix2x3fv = MakeRegalProc( trace_glProgramUniformMatrix2x3fv, layer );
+  tbl.glProgramUniformMatrix2x4dv = MakeRegalProc( trace_glProgramUniformMatrix2x4dv, layer );
+  tbl.glProgramUniformMatrix2x4fv = MakeRegalProc( trace_glProgramUniformMatrix2x4fv, layer );
+  tbl.glProgramUniformMatrix3dv = MakeRegalProc( trace_glProgramUniformMatrix3dv, layer );
+  tbl.glProgramUniformMatrix3fv = MakeRegalProc( trace_glProgramUniformMatrix3fv, layer );
+  tbl.glProgramUniformMatrix3x2dv = MakeRegalProc( trace_glProgramUniformMatrix3x2dv, layer );
+  tbl.glProgramUniformMatrix3x2fv = MakeRegalProc( trace_glProgramUniformMatrix3x2fv, layer );
+  tbl.glProgramUniformMatrix3x4dv = MakeRegalProc( trace_glProgramUniformMatrix3x4dv, layer );
+  tbl.glProgramUniformMatrix3x4fv = MakeRegalProc( trace_glProgramUniformMatrix3x4fv, layer );
+  tbl.glProgramUniformMatrix4dv = MakeRegalProc( trace_glProgramUniformMatrix4dv, layer );
+  tbl.glProgramUniformMatrix4fv = MakeRegalProc( trace_glProgramUniformMatrix4fv, layer );
+  tbl.glProgramUniformMatrix4x2dv = MakeRegalProc( trace_glProgramUniformMatrix4x2dv, layer );
+  tbl.glProgramUniformMatrix4x2fv = MakeRegalProc( trace_glProgramUniformMatrix4x2fv, layer );
+  tbl.glProgramUniformMatrix4x3dv = MakeRegalProc( trace_glProgramUniformMatrix4x3dv, layer );
+  tbl.glProgramUniformMatrix4x3fv = MakeRegalProc( trace_glProgramUniformMatrix4x3fv, layer );
+  tbl.glUseProgramStages = MakeRegalProc( trace_glUseProgramStages, layer );
+  tbl.glValidateProgramPipeline = MakeRegalProc( trace_glValidateProgramPipeline, layer );
 
   // GL_ARB_shader_atomic_counters
 
-  tbl.glGetActiveAtomicCounterBufferiv = trace_glGetActiveAtomicCounterBufferiv;
+  tbl.glGetActiveAtomicCounterBufferiv = MakeRegalProc( trace_glGetActiveAtomicCounterBufferiv, layer );
 
   // GL_ARB_shader_image_load_store
 
-  tbl.glBindImageTexture = trace_glBindImageTexture;
-  tbl.glMemoryBarrier = trace_glMemoryBarrier;
+  tbl.glBindImageTexture = MakeRegalProc( trace_glBindImageTexture, layer );
+  tbl.glMemoryBarrier = MakeRegalProc( trace_glMemoryBarrier, layer );
 
   // GL_ARB_shader_objects
 
-  tbl.glAttachObjectARB = trace_glAttachObjectARB;
-  tbl.glCompileShaderARB = trace_glCompileShaderARB;
-  tbl.glCreateProgramObjectARB = trace_glCreateProgramObjectARB;
-  tbl.glCreateShaderObjectARB = trace_glCreateShaderObjectARB;
-  tbl.glDeleteObjectARB = trace_glDeleteObjectARB;
-  tbl.glDetachObjectARB = trace_glDetachObjectARB;
-  tbl.glGetActiveUniformARB = trace_glGetActiveUniformARB;
-  tbl.glGetAttachedObjectsARB = trace_glGetAttachedObjectsARB;
-  tbl.glGetHandleARB = trace_glGetHandleARB;
-  tbl.glGetInfoLogARB = trace_glGetInfoLogARB;
-  tbl.glGetObjectParameterfvARB = trace_glGetObjectParameterfvARB;
-  tbl.glGetObjectParameterivARB = trace_glGetObjectParameterivARB;
-  tbl.glGetShaderSourceARB = trace_glGetShaderSourceARB;
-  tbl.glGetUniformLocationARB = trace_glGetUniformLocationARB;
-  tbl.glGetUniformfvARB = trace_glGetUniformfvARB;
-  tbl.glGetUniformivARB = trace_glGetUniformivARB;
-  tbl.glLinkProgramARB = trace_glLinkProgramARB;
-  tbl.glShaderSourceARB = trace_glShaderSourceARB;
-  tbl.glUniform1fARB = trace_glUniform1fARB;
-  tbl.glUniform1fvARB = trace_glUniform1fvARB;
-  tbl.glUniform1iARB = trace_glUniform1iARB;
-  tbl.glUniform1ivARB = trace_glUniform1ivARB;
-  tbl.glUniform2fARB = trace_glUniform2fARB;
-  tbl.glUniform2fvARB = trace_glUniform2fvARB;
-  tbl.glUniform2iARB = trace_glUniform2iARB;
-  tbl.glUniform2ivARB = trace_glUniform2ivARB;
-  tbl.glUniform3fARB = trace_glUniform3fARB;
-  tbl.glUniform3fvARB = trace_glUniform3fvARB;
-  tbl.glUniform3iARB = trace_glUniform3iARB;
-  tbl.glUniform3ivARB = trace_glUniform3ivARB;
-  tbl.glUniform4fARB = trace_glUniform4fARB;
-  tbl.glUniform4fvARB = trace_glUniform4fvARB;
-  tbl.glUniform4iARB = trace_glUniform4iARB;
-  tbl.glUniform4ivARB = trace_glUniform4ivARB;
-  tbl.glUniformMatrix2fvARB = trace_glUniformMatrix2fvARB;
-  tbl.glUniformMatrix3fvARB = trace_glUniformMatrix3fvARB;
-  tbl.glUniformMatrix4fvARB = trace_glUniformMatrix4fvARB;
-  tbl.glUseProgramObjectARB = trace_glUseProgramObjectARB;
-  tbl.glValidateProgramARB = trace_glValidateProgramARB;
+  tbl.glAttachObjectARB = MakeRegalProc( trace_glAttachObjectARB, layer );
+  tbl.glCompileShaderARB = MakeRegalProc( trace_glCompileShaderARB, layer );
+  tbl.glCreateProgramObjectARB = MakeRegalProc( trace_glCreateProgramObjectARB, layer );
+  tbl.glCreateShaderObjectARB = MakeRegalProc( trace_glCreateShaderObjectARB, layer );
+  tbl.glDeleteObjectARB = MakeRegalProc( trace_glDeleteObjectARB, layer );
+  tbl.glDetachObjectARB = MakeRegalProc( trace_glDetachObjectARB, layer );
+  tbl.glGetActiveUniformARB = MakeRegalProc( trace_glGetActiveUniformARB, layer );
+  tbl.glGetAttachedObjectsARB = MakeRegalProc( trace_glGetAttachedObjectsARB, layer );
+  tbl.glGetHandleARB = MakeRegalProc( trace_glGetHandleARB, layer );
+  tbl.glGetInfoLogARB = MakeRegalProc( trace_glGetInfoLogARB, layer );
+  tbl.glGetObjectParameterfvARB = MakeRegalProc( trace_glGetObjectParameterfvARB, layer );
+  tbl.glGetObjectParameterivARB = MakeRegalProc( trace_glGetObjectParameterivARB, layer );
+  tbl.glGetShaderSourceARB = MakeRegalProc( trace_glGetShaderSourceARB, layer );
+  tbl.glGetUniformLocationARB = MakeRegalProc( trace_glGetUniformLocationARB, layer );
+  tbl.glGetUniformfvARB = MakeRegalProc( trace_glGetUniformfvARB, layer );
+  tbl.glGetUniformivARB = MakeRegalProc( trace_glGetUniformivARB, layer );
+  tbl.glLinkProgramARB = MakeRegalProc( trace_glLinkProgramARB, layer );
+  tbl.glShaderSourceARB = MakeRegalProc( trace_glShaderSourceARB, layer );
+  tbl.glUniform1fARB = MakeRegalProc( trace_glUniform1fARB, layer );
+  tbl.glUniform1fvARB = MakeRegalProc( trace_glUniform1fvARB, layer );
+  tbl.glUniform1iARB = MakeRegalProc( trace_glUniform1iARB, layer );
+  tbl.glUniform1ivARB = MakeRegalProc( trace_glUniform1ivARB, layer );
+  tbl.glUniform2fARB = MakeRegalProc( trace_glUniform2fARB, layer );
+  tbl.glUniform2fvARB = MakeRegalProc( trace_glUniform2fvARB, layer );
+  tbl.glUniform2iARB = MakeRegalProc( trace_glUniform2iARB, layer );
+  tbl.glUniform2ivARB = MakeRegalProc( trace_glUniform2ivARB, layer );
+  tbl.glUniform3fARB = MakeRegalProc( trace_glUniform3fARB, layer );
+  tbl.glUniform3fvARB = MakeRegalProc( trace_glUniform3fvARB, layer );
+  tbl.glUniform3iARB = MakeRegalProc( trace_glUniform3iARB, layer );
+  tbl.glUniform3ivARB = MakeRegalProc( trace_glUniform3ivARB, layer );
+  tbl.glUniform4fARB = MakeRegalProc( trace_glUniform4fARB, layer );
+  tbl.glUniform4fvARB = MakeRegalProc( trace_glUniform4fvARB, layer );
+  tbl.glUniform4iARB = MakeRegalProc( trace_glUniform4iARB, layer );
+  tbl.glUniform4ivARB = MakeRegalProc( trace_glUniform4ivARB, layer );
+  tbl.glUniformMatrix2fvARB = MakeRegalProc( trace_glUniformMatrix2fvARB, layer );
+  tbl.glUniformMatrix3fvARB = MakeRegalProc( trace_glUniformMatrix3fvARB, layer );
+  tbl.glUniformMatrix4fvARB = MakeRegalProc( trace_glUniformMatrix4fvARB, layer );
+  tbl.glUseProgramObjectARB = MakeRegalProc( trace_glUseProgramObjectARB, layer );
+  tbl.glValidateProgramARB = MakeRegalProc( trace_glValidateProgramARB, layer );
 
   // GL_ARB_shader_storage_buffer_object
 
-  tbl.glShaderStorageBlockBinding = trace_glShaderStorageBlockBinding;
+  tbl.glShaderStorageBlockBinding = MakeRegalProc( trace_glShaderStorageBlockBinding, layer );
 
   // GL_ARB_shader_subroutine
 
-  tbl.glGetActiveSubroutineName = trace_glGetActiveSubroutineName;
-  tbl.glGetActiveSubroutineUniformName = trace_glGetActiveSubroutineUniformName;
-  tbl.glGetActiveSubroutineUniformiv = trace_glGetActiveSubroutineUniformiv;
-  tbl.glGetProgramStageiv = trace_glGetProgramStageiv;
-  tbl.glGetProgramSubroutineParameteruivNV = trace_glGetProgramSubroutineParameteruivNV;
-  tbl.glGetSubroutineIndex = trace_glGetSubroutineIndex;
-  tbl.glGetSubroutineUniformLocation = trace_glGetSubroutineUniformLocation;
-  tbl.glGetUniformSubroutineuiv = trace_glGetUniformSubroutineuiv;
-  tbl.glProgramSubroutineParametersuivNV = trace_glProgramSubroutineParametersuivNV;
-  tbl.glUniformSubroutinesuiv = trace_glUniformSubroutinesuiv;
+  tbl.glGetActiveSubroutineName = MakeRegalProc( trace_glGetActiveSubroutineName, layer );
+  tbl.glGetActiveSubroutineUniformName = MakeRegalProc( trace_glGetActiveSubroutineUniformName, layer );
+  tbl.glGetActiveSubroutineUniformiv = MakeRegalProc( trace_glGetActiveSubroutineUniformiv, layer );
+  tbl.glGetProgramStageiv = MakeRegalProc( trace_glGetProgramStageiv, layer );
+  tbl.glGetProgramSubroutineParameteruivNV = MakeRegalProc( trace_glGetProgramSubroutineParameteruivNV, layer );
+  tbl.glGetSubroutineIndex = MakeRegalProc( trace_glGetSubroutineIndex, layer );
+  tbl.glGetSubroutineUniformLocation = MakeRegalProc( trace_glGetSubroutineUniformLocation, layer );
+  tbl.glGetUniformSubroutineuiv = MakeRegalProc( trace_glGetUniformSubroutineuiv, layer );
+  tbl.glProgramSubroutineParametersuivNV = MakeRegalProc( trace_glProgramSubroutineParametersuivNV, layer );
+  tbl.glUniformSubroutinesuiv = MakeRegalProc( trace_glUniformSubroutinesuiv, layer );
 
   // GL_ARB_shading_language_include
 
-  tbl.glCompileShaderIncludeARB = trace_glCompileShaderIncludeARB;
-  tbl.glDeleteNamedStringARB = trace_glDeleteNamedStringARB;
-  tbl.glGetNamedStringARB = trace_glGetNamedStringARB;
-  tbl.glGetNamedStringivARB = trace_glGetNamedStringivARB;
-  tbl.glIsNamedStringARB = trace_glIsNamedStringARB;
-  tbl.glNamedStringARB = trace_glNamedStringARB;
+  tbl.glCompileShaderIncludeARB = MakeRegalProc( trace_glCompileShaderIncludeARB, layer );
+  tbl.glDeleteNamedStringARB = MakeRegalProc( trace_glDeleteNamedStringARB, layer );
+  tbl.glGetNamedStringARB = MakeRegalProc( trace_glGetNamedStringARB, layer );
+  tbl.glGetNamedStringivARB = MakeRegalProc( trace_glGetNamedStringivARB, layer );
+  tbl.glIsNamedStringARB = MakeRegalProc( trace_glIsNamedStringARB, layer );
+  tbl.glNamedStringARB = MakeRegalProc( trace_glNamedStringARB, layer );
 
   // GL_ARB_sync
 
-  tbl.glClientWaitSync = trace_glClientWaitSync;
-  tbl.glDeleteSync = trace_glDeleteSync;
-  tbl.glFenceSync = trace_glFenceSync;
-  tbl.glGetInteger64v = trace_glGetInteger64v;
-  tbl.glGetSynciv = trace_glGetSynciv;
-  tbl.glIsSync = trace_glIsSync;
-  tbl.glWaitSync = trace_glWaitSync;
+  tbl.glClientWaitSync = MakeRegalProc( trace_glClientWaitSync, layer );
+  tbl.glDeleteSync = MakeRegalProc( trace_glDeleteSync, layer );
+  tbl.glFenceSync = MakeRegalProc( trace_glFenceSync, layer );
+  tbl.glGetInteger64v = MakeRegalProc( trace_glGetInteger64v, layer );
+  tbl.glGetSynciv = MakeRegalProc( trace_glGetSynciv, layer );
+  tbl.glIsSync = MakeRegalProc( trace_glIsSync, layer );
+  tbl.glWaitSync = MakeRegalProc( trace_glWaitSync, layer );
 
   // GL_ARB_tessellation_shader
 
-  tbl.glPatchParameterfv = trace_glPatchParameterfv;
-  tbl.glPatchParameteri = trace_glPatchParameteri;
+  tbl.glPatchParameterfv = MakeRegalProc( trace_glPatchParameterfv, layer );
+  tbl.glPatchParameteri = MakeRegalProc( trace_glPatchParameteri, layer );
 
   // GL_ARB_texture_buffer_object
 
-  tbl.glTexBufferARB = trace_glTexBufferARB;
+  tbl.glTexBufferARB = MakeRegalProc( trace_glTexBufferARB, layer );
 
   // GL_ARB_texture_buffer_range
 
-  tbl.glTexBufferRange = trace_glTexBufferRange;
-  tbl.glTextureBufferRangeEXT = trace_glTextureBufferRangeEXT;
+  tbl.glTexBufferRange = MakeRegalProc( trace_glTexBufferRange, layer );
+  tbl.glTextureBufferRangeEXT = MakeRegalProc( trace_glTextureBufferRangeEXT, layer );
 
   // GL_ARB_texture_compression
 
-  tbl.glCompressedTexImage1DARB = trace_glCompressedTexImage1DARB;
-  tbl.glCompressedTexImage2DARB = trace_glCompressedTexImage2DARB;
-  tbl.glCompressedTexImage3DARB = trace_glCompressedTexImage3DARB;
-  tbl.glCompressedTexSubImage1DARB = trace_glCompressedTexSubImage1DARB;
-  tbl.glCompressedTexSubImage2DARB = trace_glCompressedTexSubImage2DARB;
-  tbl.glCompressedTexSubImage3DARB = trace_glCompressedTexSubImage3DARB;
-  tbl.glGetCompressedTexImageARB = trace_glGetCompressedTexImageARB;
+  tbl.glCompressedTexImage1DARB = MakeRegalProc( trace_glCompressedTexImage1DARB, layer );
+  tbl.glCompressedTexImage2DARB = MakeRegalProc( trace_glCompressedTexImage2DARB, layer );
+  tbl.glCompressedTexImage3DARB = MakeRegalProc( trace_glCompressedTexImage3DARB, layer );
+  tbl.glCompressedTexSubImage1DARB = MakeRegalProc( trace_glCompressedTexSubImage1DARB, layer );
+  tbl.glCompressedTexSubImage2DARB = MakeRegalProc( trace_glCompressedTexSubImage2DARB, layer );
+  tbl.glCompressedTexSubImage3DARB = MakeRegalProc( trace_glCompressedTexSubImage3DARB, layer );
+  tbl.glGetCompressedTexImageARB = MakeRegalProc( trace_glGetCompressedTexImageARB, layer );
 
   // GL_ARB_texture_multisample
 
-  tbl.glGetMultisamplefv = trace_glGetMultisamplefv;
-  tbl.glSampleMaski = trace_glSampleMaski;
-  tbl.glTexImage2DMultisample = trace_glTexImage2DMultisample;
-  tbl.glTexImage3DMultisample = trace_glTexImage3DMultisample;
+  tbl.glGetMultisamplefv = MakeRegalProc( trace_glGetMultisamplefv, layer );
+  tbl.glSampleMaski = MakeRegalProc( trace_glSampleMaski, layer );
+  tbl.glTexImage2DMultisample = MakeRegalProc( trace_glTexImage2DMultisample, layer );
+  tbl.glTexImage3DMultisample = MakeRegalProc( trace_glTexImage3DMultisample, layer );
 
   // GL_ARB_texture_storage
 
-  tbl.glTexStorage1D = trace_glTexStorage1D;
-  tbl.glTexStorage2D = trace_glTexStorage2D;
-  tbl.glTexStorage3D = trace_glTexStorage3D;
-  tbl.glTextureStorage1DEXT = trace_glTextureStorage1DEXT;
-  tbl.glTextureStorage2DEXT = trace_glTextureStorage2DEXT;
-  tbl.glTextureStorage3DEXT = trace_glTextureStorage3DEXT;
+  tbl.glTexStorage1D = MakeRegalProc( trace_glTexStorage1D, layer );
+  tbl.glTexStorage2D = MakeRegalProc( trace_glTexStorage2D, layer );
+  tbl.glTexStorage3D = MakeRegalProc( trace_glTexStorage3D, layer );
+  tbl.glTextureStorage1DEXT = MakeRegalProc( trace_glTextureStorage1DEXT, layer );
+  tbl.glTextureStorage2DEXT = MakeRegalProc( trace_glTextureStorage2DEXT, layer );
+  tbl.glTextureStorage3DEXT = MakeRegalProc( trace_glTextureStorage3DEXT, layer );
 
   // GL_ARB_texture_storage_multisample
 
-  tbl.glTexStorage2DMultisample = trace_glTexStorage2DMultisample;
-  tbl.glTexStorage3DMultisample = trace_glTexStorage3DMultisample;
-  tbl.glTextureStorage2DMultisampleEXT = trace_glTextureStorage2DMultisampleEXT;
-  tbl.glTextureStorage3DMultisampleEXT = trace_glTextureStorage3DMultisampleEXT;
+  tbl.glTexStorage2DMultisample = MakeRegalProc( trace_glTexStorage2DMultisample, layer );
+  tbl.glTexStorage3DMultisample = MakeRegalProc( trace_glTexStorage3DMultisample, layer );
+  tbl.glTextureStorage2DMultisampleEXT = MakeRegalProc( trace_glTextureStorage2DMultisampleEXT, layer );
+  tbl.glTextureStorage3DMultisampleEXT = MakeRegalProc( trace_glTextureStorage3DMultisampleEXT, layer );
 
   // GL_ARB_texture_view
 
-  tbl.glTextureView = trace_glTextureView;
+  tbl.glTextureView = MakeRegalProc( trace_glTextureView, layer );
 
   // GL_ARB_timer_query
 
-  tbl.glGetQueryObjecti64v = trace_glGetQueryObjecti64v;
-  tbl.glGetQueryObjectui64v = trace_glGetQueryObjectui64v;
-  tbl.glQueryCounter = trace_glQueryCounter;
+  tbl.glGetQueryObjecti64v = MakeRegalProc( trace_glGetQueryObjecti64v, layer );
+  tbl.glGetQueryObjectui64v = MakeRegalProc( trace_glGetQueryObjectui64v, layer );
+  tbl.glQueryCounter = MakeRegalProc( trace_glQueryCounter, layer );
 
   // GL_ARB_transform_feedback2
 
-  tbl.glBindTransformFeedback = trace_glBindTransformFeedback;
-  tbl.glDeleteTransformFeedbacks = trace_glDeleteTransformFeedbacks;
-  tbl.glDrawTransformFeedback = trace_glDrawTransformFeedback;
-  tbl.glGenTransformFeedbacks = trace_glGenTransformFeedbacks;
-  tbl.glIsTransformFeedback = trace_glIsTransformFeedback;
-  tbl.glPauseTransformFeedback = trace_glPauseTransformFeedback;
-  tbl.glResumeTransformFeedback = trace_glResumeTransformFeedback;
+  tbl.glBindTransformFeedback = MakeRegalProc( trace_glBindTransformFeedback, layer );
+  tbl.glDeleteTransformFeedbacks = MakeRegalProc( trace_glDeleteTransformFeedbacks, layer );
+  tbl.glDrawTransformFeedback = MakeRegalProc( trace_glDrawTransformFeedback, layer );
+  tbl.glGenTransformFeedbacks = MakeRegalProc( trace_glGenTransformFeedbacks, layer );
+  tbl.glIsTransformFeedback = MakeRegalProc( trace_glIsTransformFeedback, layer );
+  tbl.glPauseTransformFeedback = MakeRegalProc( trace_glPauseTransformFeedback, layer );
+  tbl.glResumeTransformFeedback = MakeRegalProc( trace_glResumeTransformFeedback, layer );
 
   // GL_ARB_transform_feedback3
 
-  tbl.glBeginQueryIndexed = trace_glBeginQueryIndexed;
-  tbl.glDrawTransformFeedbackStream = trace_glDrawTransformFeedbackStream;
-  tbl.glEndQueryIndexed = trace_glEndQueryIndexed;
-  tbl.glGetQueryIndexediv = trace_glGetQueryIndexediv;
+  tbl.glBeginQueryIndexed = MakeRegalProc( trace_glBeginQueryIndexed, layer );
+  tbl.glDrawTransformFeedbackStream = MakeRegalProc( trace_glDrawTransformFeedbackStream, layer );
+  tbl.glEndQueryIndexed = MakeRegalProc( trace_glEndQueryIndexed, layer );
+  tbl.glGetQueryIndexediv = MakeRegalProc( trace_glGetQueryIndexediv, layer );
 
   // GL_ARB_transform_feedback_instanced
 
-  tbl.glDrawTransformFeedbackInstanced = trace_glDrawTransformFeedbackInstanced;
-  tbl.glDrawTransformFeedbackStreamInstanced = trace_glDrawTransformFeedbackStreamInstanced;
+  tbl.glDrawTransformFeedbackInstanced = MakeRegalProc( trace_glDrawTransformFeedbackInstanced, layer );
+  tbl.glDrawTransformFeedbackStreamInstanced = MakeRegalProc( trace_glDrawTransformFeedbackStreamInstanced, layer );
 
   // GL_ARB_transpose_matrix
 
-  tbl.glLoadTransposeMatrixdARB = trace_glLoadTransposeMatrixdARB;
-  tbl.glLoadTransposeMatrixfARB = trace_glLoadTransposeMatrixfARB;
-  tbl.glMultTransposeMatrixdARB = trace_glMultTransposeMatrixdARB;
-  tbl.glMultTransposeMatrixfARB = trace_glMultTransposeMatrixfARB;
+  tbl.glLoadTransposeMatrixdARB = MakeRegalProc( trace_glLoadTransposeMatrixdARB, layer );
+  tbl.glLoadTransposeMatrixfARB = MakeRegalProc( trace_glLoadTransposeMatrixfARB, layer );
+  tbl.glMultTransposeMatrixdARB = MakeRegalProc( trace_glMultTransposeMatrixdARB, layer );
+  tbl.glMultTransposeMatrixfARB = MakeRegalProc( trace_glMultTransposeMatrixfARB, layer );
 
   // GL_ARB_uniform_buffer_object
 
-  tbl.glBindBufferBase = trace_glBindBufferBase;
-  tbl.glBindBufferRange = trace_glBindBufferRange;
-  tbl.glGetActiveUniformBlockName = trace_glGetActiveUniformBlockName;
-  tbl.glGetActiveUniformBlockiv = trace_glGetActiveUniformBlockiv;
-  tbl.glGetActiveUniformName = trace_glGetActiveUniformName;
-  tbl.glGetActiveUniformsiv = trace_glGetActiveUniformsiv;
-  tbl.glGetIntegeri_v = trace_glGetIntegeri_v;
-  tbl.glGetUniformBlockIndex = trace_glGetUniformBlockIndex;
-  tbl.glGetUniformIndices = trace_glGetUniformIndices;
-  tbl.glUniformBlockBinding = trace_glUniformBlockBinding;
+  tbl.glBindBufferBase = MakeRegalProc( trace_glBindBufferBase, layer );
+  tbl.glBindBufferRange = MakeRegalProc( trace_glBindBufferRange, layer );
+  tbl.glGetActiveUniformBlockName = MakeRegalProc( trace_glGetActiveUniformBlockName, layer );
+  tbl.glGetActiveUniformBlockiv = MakeRegalProc( trace_glGetActiveUniformBlockiv, layer );
+  tbl.glGetActiveUniformName = MakeRegalProc( trace_glGetActiveUniformName, layer );
+  tbl.glGetActiveUniformsiv = MakeRegalProc( trace_glGetActiveUniformsiv, layer );
+  tbl.glGetIntegeri_v = MakeRegalProc( trace_glGetIntegeri_v, layer );
+  tbl.glGetUniformBlockIndex = MakeRegalProc( trace_glGetUniformBlockIndex, layer );
+  tbl.glGetUniformIndices = MakeRegalProc( trace_glGetUniformIndices, layer );
+  tbl.glUniformBlockBinding = MakeRegalProc( trace_glUniformBlockBinding, layer );
 
   // GL_ARB_vertex_array_object
 
-  tbl.glBindVertexArray = trace_glBindVertexArray;
-  tbl.glDeleteVertexArrays = trace_glDeleteVertexArrays;
-  tbl.glGenVertexArrays = trace_glGenVertexArrays;
-  tbl.glIsVertexArray = trace_glIsVertexArray;
+  tbl.glBindVertexArray = MakeRegalProc( trace_glBindVertexArray, layer );
+  tbl.glDeleteVertexArrays = MakeRegalProc( trace_glDeleteVertexArrays, layer );
+  tbl.glGenVertexArrays = MakeRegalProc( trace_glGenVertexArrays, layer );
+  tbl.glIsVertexArray = MakeRegalProc( trace_glIsVertexArray, layer );
 
   // GL_ARB_vertex_attrib_64bit
 
-  tbl.glGetVertexAttribLdv = trace_glGetVertexAttribLdv;
-  tbl.glVertexAttribL1d = trace_glVertexAttribL1d;
-  tbl.glVertexAttribL1dv = trace_glVertexAttribL1dv;
-  tbl.glVertexAttribL2d = trace_glVertexAttribL2d;
-  tbl.glVertexAttribL2dv = trace_glVertexAttribL2dv;
-  tbl.glVertexAttribL3d = trace_glVertexAttribL3d;
-  tbl.glVertexAttribL3dv = trace_glVertexAttribL3dv;
-  tbl.glVertexAttribL4d = trace_glVertexAttribL4d;
-  tbl.glVertexAttribL4dv = trace_glVertexAttribL4dv;
-  tbl.glVertexAttribLPointer = trace_glVertexAttribLPointer;
+  tbl.glGetVertexAttribLdv = MakeRegalProc( trace_glGetVertexAttribLdv, layer );
+  tbl.glVertexAttribL1d = MakeRegalProc( trace_glVertexAttribL1d, layer );
+  tbl.glVertexAttribL1dv = MakeRegalProc( trace_glVertexAttribL1dv, layer );
+  tbl.glVertexAttribL2d = MakeRegalProc( trace_glVertexAttribL2d, layer );
+  tbl.glVertexAttribL2dv = MakeRegalProc( trace_glVertexAttribL2dv, layer );
+  tbl.glVertexAttribL3d = MakeRegalProc( trace_glVertexAttribL3d, layer );
+  tbl.glVertexAttribL3dv = MakeRegalProc( trace_glVertexAttribL3dv, layer );
+  tbl.glVertexAttribL4d = MakeRegalProc( trace_glVertexAttribL4d, layer );
+  tbl.glVertexAttribL4dv = MakeRegalProc( trace_glVertexAttribL4dv, layer );
+  tbl.glVertexAttribLPointer = MakeRegalProc( trace_glVertexAttribLPointer, layer );
 
   // GL_ARB_vertex_attrib_binding
 
-  tbl.glBindVertexBuffer = trace_glBindVertexBuffer;
-  tbl.glVertexArrayBindVertexBufferEXT = trace_glVertexArrayBindVertexBufferEXT;
-  tbl.glVertexArrayVertexAttribBindingEXT = trace_glVertexArrayVertexAttribBindingEXT;
-  tbl.glVertexArrayVertexAttribFormatEXT = trace_glVertexArrayVertexAttribFormatEXT;
-  tbl.glVertexArrayVertexAttribIFormatEXT = trace_glVertexArrayVertexAttribIFormatEXT;
-  tbl.glVertexArrayVertexAttribLFormatEXT = trace_glVertexArrayVertexAttribLFormatEXT;
-  tbl.glVertexArrayVertexBindingDivisorEXT = trace_glVertexArrayVertexBindingDivisorEXT;
-  tbl.glVertexAttribBinding = trace_glVertexAttribBinding;
-  tbl.glVertexAttribFormat = trace_glVertexAttribFormat;
-  tbl.glVertexAttribIFormat = trace_glVertexAttribIFormat;
-  tbl.glVertexAttribLFormat = trace_glVertexAttribLFormat;
-  tbl.glVertexBindingDivisor = trace_glVertexBindingDivisor;
+  tbl.glBindVertexBuffer = MakeRegalProc( trace_glBindVertexBuffer, layer );
+  tbl.glVertexArrayBindVertexBufferEXT = MakeRegalProc( trace_glVertexArrayBindVertexBufferEXT, layer );
+  tbl.glVertexArrayVertexAttribBindingEXT = MakeRegalProc( trace_glVertexArrayVertexAttribBindingEXT, layer );
+  tbl.glVertexArrayVertexAttribFormatEXT = MakeRegalProc( trace_glVertexArrayVertexAttribFormatEXT, layer );
+  tbl.glVertexArrayVertexAttribIFormatEXT = MakeRegalProc( trace_glVertexArrayVertexAttribIFormatEXT, layer );
+  tbl.glVertexArrayVertexAttribLFormatEXT = MakeRegalProc( trace_glVertexArrayVertexAttribLFormatEXT, layer );
+  tbl.glVertexArrayVertexBindingDivisorEXT = MakeRegalProc( trace_glVertexArrayVertexBindingDivisorEXT, layer );
+  tbl.glVertexAttribBinding = MakeRegalProc( trace_glVertexAttribBinding, layer );
+  tbl.glVertexAttribFormat = MakeRegalProc( trace_glVertexAttribFormat, layer );
+  tbl.glVertexAttribIFormat = MakeRegalProc( trace_glVertexAttribIFormat, layer );
+  tbl.glVertexAttribLFormat = MakeRegalProc( trace_glVertexAttribLFormat, layer );
+  tbl.glVertexBindingDivisor = MakeRegalProc( trace_glVertexBindingDivisor, layer );
 
   // GL_ARB_vertex_blend
 
-  tbl.glVertexBlendARB = trace_glVertexBlendARB;
-  tbl.glWeightPointerARB = trace_glWeightPointerARB;
-  tbl.glWeightbvARB = trace_glWeightbvARB;
-  tbl.glWeightdvARB = trace_glWeightdvARB;
-  tbl.glWeightfvARB = trace_glWeightfvARB;
-  tbl.glWeightivARB = trace_glWeightivARB;
-  tbl.glWeightsvARB = trace_glWeightsvARB;
-  tbl.glWeightubvARB = trace_glWeightubvARB;
-  tbl.glWeightuivARB = trace_glWeightuivARB;
-  tbl.glWeightusvARB = trace_glWeightusvARB;
+  tbl.glVertexBlendARB = MakeRegalProc( trace_glVertexBlendARB, layer );
+  tbl.glWeightPointerARB = MakeRegalProc( trace_glWeightPointerARB, layer );
+  tbl.glWeightbvARB = MakeRegalProc( trace_glWeightbvARB, layer );
+  tbl.glWeightdvARB = MakeRegalProc( trace_glWeightdvARB, layer );
+  tbl.glWeightfvARB = MakeRegalProc( trace_glWeightfvARB, layer );
+  tbl.glWeightivARB = MakeRegalProc( trace_glWeightivARB, layer );
+  tbl.glWeightsvARB = MakeRegalProc( trace_glWeightsvARB, layer );
+  tbl.glWeightubvARB = MakeRegalProc( trace_glWeightubvARB, layer );
+  tbl.glWeightuivARB = MakeRegalProc( trace_glWeightuivARB, layer );
+  tbl.glWeightusvARB = MakeRegalProc( trace_glWeightusvARB, layer );
 
   // GL_ARB_vertex_buffer_object
 
-  tbl.glBindBufferARB = trace_glBindBufferARB;
-  tbl.glBufferDataARB = trace_glBufferDataARB;
-  tbl.glBufferSubDataARB = trace_glBufferSubDataARB;
-  tbl.glDeleteBuffersARB = trace_glDeleteBuffersARB;
-  tbl.glGenBuffersARB = trace_glGenBuffersARB;
-  tbl.glGetBufferParameterivARB = trace_glGetBufferParameterivARB;
-  tbl.glGetBufferPointervARB = trace_glGetBufferPointervARB;
-  tbl.glGetBufferSubDataARB = trace_glGetBufferSubDataARB;
-  tbl.glIsBufferARB = trace_glIsBufferARB;
-  tbl.glMapBufferARB = trace_glMapBufferARB;
-  tbl.glUnmapBufferARB = trace_glUnmapBufferARB;
+  tbl.glBindBufferARB = MakeRegalProc( trace_glBindBufferARB, layer );
+  tbl.glBufferDataARB = MakeRegalProc( trace_glBufferDataARB, layer );
+  tbl.glBufferSubDataARB = MakeRegalProc( trace_glBufferSubDataARB, layer );
+  tbl.glDeleteBuffersARB = MakeRegalProc( trace_glDeleteBuffersARB, layer );
+  tbl.glGenBuffersARB = MakeRegalProc( trace_glGenBuffersARB, layer );
+  tbl.glGetBufferParameterivARB = MakeRegalProc( trace_glGetBufferParameterivARB, layer );
+  tbl.glGetBufferPointervARB = MakeRegalProc( trace_glGetBufferPointervARB, layer );
+  tbl.glGetBufferSubDataARB = MakeRegalProc( trace_glGetBufferSubDataARB, layer );
+  tbl.glIsBufferARB = MakeRegalProc( trace_glIsBufferARB, layer );
+  tbl.glMapBufferARB = MakeRegalProc( trace_glMapBufferARB, layer );
+  tbl.glUnmapBufferARB = MakeRegalProc( trace_glUnmapBufferARB, layer );
 
   // GL_ARB_vertex_program
 
-  tbl.glBindProgramARB = trace_glBindProgramARB;
-  tbl.glDeleteProgramsARB = trace_glDeleteProgramsARB;
-  tbl.glDisableVertexAttribArrayARB = trace_glDisableVertexAttribArrayARB;
-  tbl.glEnableVertexAttribArrayARB = trace_glEnableVertexAttribArrayARB;
-  tbl.glGenProgramsARB = trace_glGenProgramsARB;
-  tbl.glGetProgramEnvParameterdvARB = trace_glGetProgramEnvParameterdvARB;
-  tbl.glGetProgramEnvParameterfvARB = trace_glGetProgramEnvParameterfvARB;
-  tbl.glGetProgramLocalParameterdvARB = trace_glGetProgramLocalParameterdvARB;
-  tbl.glGetProgramLocalParameterfvARB = trace_glGetProgramLocalParameterfvARB;
-  tbl.glGetProgramStringARB = trace_glGetProgramStringARB;
-  tbl.glGetProgramivARB = trace_glGetProgramivARB;
-  tbl.glGetVertexAttribPointervARB = trace_glGetVertexAttribPointervARB;
-  tbl.glGetVertexAttribdvARB = trace_glGetVertexAttribdvARB;
-  tbl.glGetVertexAttribfvARB = trace_glGetVertexAttribfvARB;
-  tbl.glGetVertexAttribivARB = trace_glGetVertexAttribivARB;
-  tbl.glIsProgramARB = trace_glIsProgramARB;
-  tbl.glProgramEnvParameter4dARB = trace_glProgramEnvParameter4dARB;
-  tbl.glProgramEnvParameter4dvARB = trace_glProgramEnvParameter4dvARB;
-  tbl.glProgramEnvParameter4fARB = trace_glProgramEnvParameter4fARB;
-  tbl.glProgramEnvParameter4fvARB = trace_glProgramEnvParameter4fvARB;
-  tbl.glProgramLocalParameter4dARB = trace_glProgramLocalParameter4dARB;
-  tbl.glProgramLocalParameter4dvARB = trace_glProgramLocalParameter4dvARB;
-  tbl.glProgramLocalParameter4fARB = trace_glProgramLocalParameter4fARB;
-  tbl.glProgramLocalParameter4fvARB = trace_glProgramLocalParameter4fvARB;
-  tbl.glProgramStringARB = trace_glProgramStringARB;
-  tbl.glVertexAttrib1dARB = trace_glVertexAttrib1dARB;
-  tbl.glVertexAttrib1dvARB = trace_glVertexAttrib1dvARB;
-  tbl.glVertexAttrib1fARB = trace_glVertexAttrib1fARB;
-  tbl.glVertexAttrib1fvARB = trace_glVertexAttrib1fvARB;
-  tbl.glVertexAttrib1sARB = trace_glVertexAttrib1sARB;
-  tbl.glVertexAttrib1svARB = trace_glVertexAttrib1svARB;
-  tbl.glVertexAttrib2dARB = trace_glVertexAttrib2dARB;
-  tbl.glVertexAttrib2dvARB = trace_glVertexAttrib2dvARB;
-  tbl.glVertexAttrib2fARB = trace_glVertexAttrib2fARB;
-  tbl.glVertexAttrib2fvARB = trace_glVertexAttrib2fvARB;
-  tbl.glVertexAttrib2sARB = trace_glVertexAttrib2sARB;
-  tbl.glVertexAttrib2svARB = trace_glVertexAttrib2svARB;
-  tbl.glVertexAttrib3dARB = trace_glVertexAttrib3dARB;
-  tbl.glVertexAttrib3dvARB = trace_glVertexAttrib3dvARB;
-  tbl.glVertexAttrib3fARB = trace_glVertexAttrib3fARB;
-  tbl.glVertexAttrib3fvARB = trace_glVertexAttrib3fvARB;
-  tbl.glVertexAttrib3sARB = trace_glVertexAttrib3sARB;
-  tbl.glVertexAttrib3svARB = trace_glVertexAttrib3svARB;
-  tbl.glVertexAttrib4NbvARB = trace_glVertexAttrib4NbvARB;
-  tbl.glVertexAttrib4NivARB = trace_glVertexAttrib4NivARB;
-  tbl.glVertexAttrib4NsvARB = trace_glVertexAttrib4NsvARB;
-  tbl.glVertexAttrib4NubARB = trace_glVertexAttrib4NubARB;
-  tbl.glVertexAttrib4NubvARB = trace_glVertexAttrib4NubvARB;
-  tbl.glVertexAttrib4NuivARB = trace_glVertexAttrib4NuivARB;
-  tbl.glVertexAttrib4NusvARB = trace_glVertexAttrib4NusvARB;
-  tbl.glVertexAttrib4bvARB = trace_glVertexAttrib4bvARB;
-  tbl.glVertexAttrib4dARB = trace_glVertexAttrib4dARB;
-  tbl.glVertexAttrib4dvARB = trace_glVertexAttrib4dvARB;
-  tbl.glVertexAttrib4fARB = trace_glVertexAttrib4fARB;
-  tbl.glVertexAttrib4fvARB = trace_glVertexAttrib4fvARB;
-  tbl.glVertexAttrib4ivARB = trace_glVertexAttrib4ivARB;
-  tbl.glVertexAttrib4sARB = trace_glVertexAttrib4sARB;
-  tbl.glVertexAttrib4svARB = trace_glVertexAttrib4svARB;
-  tbl.glVertexAttrib4ubvARB = trace_glVertexAttrib4ubvARB;
-  tbl.glVertexAttrib4uivARB = trace_glVertexAttrib4uivARB;
-  tbl.glVertexAttrib4usvARB = trace_glVertexAttrib4usvARB;
-  tbl.glVertexAttribPointerARB = trace_glVertexAttribPointerARB;
+  tbl.glBindProgramARB = MakeRegalProc( trace_glBindProgramARB, layer );
+  tbl.glDeleteProgramsARB = MakeRegalProc( trace_glDeleteProgramsARB, layer );
+  tbl.glDisableVertexAttribArrayARB = MakeRegalProc( trace_glDisableVertexAttribArrayARB, layer );
+  tbl.glEnableVertexAttribArrayARB = MakeRegalProc( trace_glEnableVertexAttribArrayARB, layer );
+  tbl.glGenProgramsARB = MakeRegalProc( trace_glGenProgramsARB, layer );
+  tbl.glGetProgramEnvParameterdvARB = MakeRegalProc( trace_glGetProgramEnvParameterdvARB, layer );
+  tbl.glGetProgramEnvParameterfvARB = MakeRegalProc( trace_glGetProgramEnvParameterfvARB, layer );
+  tbl.glGetProgramLocalParameterdvARB = MakeRegalProc( trace_glGetProgramLocalParameterdvARB, layer );
+  tbl.glGetProgramLocalParameterfvARB = MakeRegalProc( trace_glGetProgramLocalParameterfvARB, layer );
+  tbl.glGetProgramStringARB = MakeRegalProc( trace_glGetProgramStringARB, layer );
+  tbl.glGetProgramivARB = MakeRegalProc( trace_glGetProgramivARB, layer );
+  tbl.glGetVertexAttribPointervARB = MakeRegalProc( trace_glGetVertexAttribPointervARB, layer );
+  tbl.glGetVertexAttribdvARB = MakeRegalProc( trace_glGetVertexAttribdvARB, layer );
+  tbl.glGetVertexAttribfvARB = MakeRegalProc( trace_glGetVertexAttribfvARB, layer );
+  tbl.glGetVertexAttribivARB = MakeRegalProc( trace_glGetVertexAttribivARB, layer );
+  tbl.glIsProgramARB = MakeRegalProc( trace_glIsProgramARB, layer );
+  tbl.glProgramEnvParameter4dARB = MakeRegalProc( trace_glProgramEnvParameter4dARB, layer );
+  tbl.glProgramEnvParameter4dvARB = MakeRegalProc( trace_glProgramEnvParameter4dvARB, layer );
+  tbl.glProgramEnvParameter4fARB = MakeRegalProc( trace_glProgramEnvParameter4fARB, layer );
+  tbl.glProgramEnvParameter4fvARB = MakeRegalProc( trace_glProgramEnvParameter4fvARB, layer );
+  tbl.glProgramLocalParameter4dARB = MakeRegalProc( trace_glProgramLocalParameter4dARB, layer );
+  tbl.glProgramLocalParameter4dvARB = MakeRegalProc( trace_glProgramLocalParameter4dvARB, layer );
+  tbl.glProgramLocalParameter4fARB = MakeRegalProc( trace_glProgramLocalParameter4fARB, layer );
+  tbl.glProgramLocalParameter4fvARB = MakeRegalProc( trace_glProgramLocalParameter4fvARB, layer );
+  tbl.glProgramStringARB = MakeRegalProc( trace_glProgramStringARB, layer );
+  tbl.glVertexAttrib1dARB = MakeRegalProc( trace_glVertexAttrib1dARB, layer );
+  tbl.glVertexAttrib1dvARB = MakeRegalProc( trace_glVertexAttrib1dvARB, layer );
+  tbl.glVertexAttrib1fARB = MakeRegalProc( trace_glVertexAttrib1fARB, layer );
+  tbl.glVertexAttrib1fvARB = MakeRegalProc( trace_glVertexAttrib1fvARB, layer );
+  tbl.glVertexAttrib1sARB = MakeRegalProc( trace_glVertexAttrib1sARB, layer );
+  tbl.glVertexAttrib1svARB = MakeRegalProc( trace_glVertexAttrib1svARB, layer );
+  tbl.glVertexAttrib2dARB = MakeRegalProc( trace_glVertexAttrib2dARB, layer );
+  tbl.glVertexAttrib2dvARB = MakeRegalProc( trace_glVertexAttrib2dvARB, layer );
+  tbl.glVertexAttrib2fARB = MakeRegalProc( trace_glVertexAttrib2fARB, layer );
+  tbl.glVertexAttrib2fvARB = MakeRegalProc( trace_glVertexAttrib2fvARB, layer );
+  tbl.glVertexAttrib2sARB = MakeRegalProc( trace_glVertexAttrib2sARB, layer );
+  tbl.glVertexAttrib2svARB = MakeRegalProc( trace_glVertexAttrib2svARB, layer );
+  tbl.glVertexAttrib3dARB = MakeRegalProc( trace_glVertexAttrib3dARB, layer );
+  tbl.glVertexAttrib3dvARB = MakeRegalProc( trace_glVertexAttrib3dvARB, layer );
+  tbl.glVertexAttrib3fARB = MakeRegalProc( trace_glVertexAttrib3fARB, layer );
+  tbl.glVertexAttrib3fvARB = MakeRegalProc( trace_glVertexAttrib3fvARB, layer );
+  tbl.glVertexAttrib3sARB = MakeRegalProc( trace_glVertexAttrib3sARB, layer );
+  tbl.glVertexAttrib3svARB = MakeRegalProc( trace_glVertexAttrib3svARB, layer );
+  tbl.glVertexAttrib4NbvARB = MakeRegalProc( trace_glVertexAttrib4NbvARB, layer );
+  tbl.glVertexAttrib4NivARB = MakeRegalProc( trace_glVertexAttrib4NivARB, layer );
+  tbl.glVertexAttrib4NsvARB = MakeRegalProc( trace_glVertexAttrib4NsvARB, layer );
+  tbl.glVertexAttrib4NubARB = MakeRegalProc( trace_glVertexAttrib4NubARB, layer );
+  tbl.glVertexAttrib4NubvARB = MakeRegalProc( trace_glVertexAttrib4NubvARB, layer );
+  tbl.glVertexAttrib4NuivARB = MakeRegalProc( trace_glVertexAttrib4NuivARB, layer );
+  tbl.glVertexAttrib4NusvARB = MakeRegalProc( trace_glVertexAttrib4NusvARB, layer );
+  tbl.glVertexAttrib4bvARB = MakeRegalProc( trace_glVertexAttrib4bvARB, layer );
+  tbl.glVertexAttrib4dARB = MakeRegalProc( trace_glVertexAttrib4dARB, layer );
+  tbl.glVertexAttrib4dvARB = MakeRegalProc( trace_glVertexAttrib4dvARB, layer );
+  tbl.glVertexAttrib4fARB = MakeRegalProc( trace_glVertexAttrib4fARB, layer );
+  tbl.glVertexAttrib4fvARB = MakeRegalProc( trace_glVertexAttrib4fvARB, layer );
+  tbl.glVertexAttrib4ivARB = MakeRegalProc( trace_glVertexAttrib4ivARB, layer );
+  tbl.glVertexAttrib4sARB = MakeRegalProc( trace_glVertexAttrib4sARB, layer );
+  tbl.glVertexAttrib4svARB = MakeRegalProc( trace_glVertexAttrib4svARB, layer );
+  tbl.glVertexAttrib4ubvARB = MakeRegalProc( trace_glVertexAttrib4ubvARB, layer );
+  tbl.glVertexAttrib4uivARB = MakeRegalProc( trace_glVertexAttrib4uivARB, layer );
+  tbl.glVertexAttrib4usvARB = MakeRegalProc( trace_glVertexAttrib4usvARB, layer );
+  tbl.glVertexAttribPointerARB = MakeRegalProc( trace_glVertexAttribPointerARB, layer );
 
   // GL_ARB_vertex_shader
 
-  tbl.glBindAttribLocationARB = trace_glBindAttribLocationARB;
-  tbl.glGetActiveAttribARB = trace_glGetActiveAttribARB;
-  tbl.glGetAttribLocationARB = trace_glGetAttribLocationARB;
+  tbl.glBindAttribLocationARB = MakeRegalProc( trace_glBindAttribLocationARB, layer );
+  tbl.glGetActiveAttribARB = MakeRegalProc( trace_glGetActiveAttribARB, layer );
+  tbl.glGetAttribLocationARB = MakeRegalProc( trace_glGetAttribLocationARB, layer );
 
   // GL_ARB_vertex_type_2_10_10_10_rev
 
-  tbl.glColorP3ui = trace_glColorP3ui;
-  tbl.glColorP3uiv = trace_glColorP3uiv;
-  tbl.glColorP4ui = trace_glColorP4ui;
-  tbl.glColorP4uiv = trace_glColorP4uiv;
-  tbl.glMultiTexCoordP1ui = trace_glMultiTexCoordP1ui;
-  tbl.glMultiTexCoordP1uiv = trace_glMultiTexCoordP1uiv;
-  tbl.glMultiTexCoordP2ui = trace_glMultiTexCoordP2ui;
-  tbl.glMultiTexCoordP2uiv = trace_glMultiTexCoordP2uiv;
-  tbl.glMultiTexCoordP3ui = trace_glMultiTexCoordP3ui;
-  tbl.glMultiTexCoordP3uiv = trace_glMultiTexCoordP3uiv;
-  tbl.glMultiTexCoordP4ui = trace_glMultiTexCoordP4ui;
-  tbl.glMultiTexCoordP4uiv = trace_glMultiTexCoordP4uiv;
-  tbl.glNormalP3ui = trace_glNormalP3ui;
-  tbl.glNormalP3uiv = trace_glNormalP3uiv;
-  tbl.glSecondaryColorP3ui = trace_glSecondaryColorP3ui;
-  tbl.glSecondaryColorP3uiv = trace_glSecondaryColorP3uiv;
-  tbl.glTexCoordP1ui = trace_glTexCoordP1ui;
-  tbl.glTexCoordP1uiv = trace_glTexCoordP1uiv;
-  tbl.glTexCoordP2ui = trace_glTexCoordP2ui;
-  tbl.glTexCoordP2uiv = trace_glTexCoordP2uiv;
-  tbl.glTexCoordP3ui = trace_glTexCoordP3ui;
-  tbl.glTexCoordP3uiv = trace_glTexCoordP3uiv;
-  tbl.glTexCoordP4ui = trace_glTexCoordP4ui;
-  tbl.glTexCoordP4uiv = trace_glTexCoordP4uiv;
-  tbl.glVertexAttribP1ui = trace_glVertexAttribP1ui;
-  tbl.glVertexAttribP1uiv = trace_glVertexAttribP1uiv;
-  tbl.glVertexAttribP2ui = trace_glVertexAttribP2ui;
-  tbl.glVertexAttribP2uiv = trace_glVertexAttribP2uiv;
-  tbl.glVertexAttribP3ui = trace_glVertexAttribP3ui;
-  tbl.glVertexAttribP3uiv = trace_glVertexAttribP3uiv;
-  tbl.glVertexAttribP4ui = trace_glVertexAttribP4ui;
-  tbl.glVertexAttribP4uiv = trace_glVertexAttribP4uiv;
-  tbl.glVertexP2ui = trace_glVertexP2ui;
-  tbl.glVertexP2uiv = trace_glVertexP2uiv;
-  tbl.glVertexP3ui = trace_glVertexP3ui;
-  tbl.glVertexP3uiv = trace_glVertexP3uiv;
-  tbl.glVertexP4ui = trace_glVertexP4ui;
-  tbl.glVertexP4uiv = trace_glVertexP4uiv;
+  tbl.glColorP3ui = MakeRegalProc( trace_glColorP3ui, layer );
+  tbl.glColorP3uiv = MakeRegalProc( trace_glColorP3uiv, layer );
+  tbl.glColorP4ui = MakeRegalProc( trace_glColorP4ui, layer );
+  tbl.glColorP4uiv = MakeRegalProc( trace_glColorP4uiv, layer );
+  tbl.glMultiTexCoordP1ui = MakeRegalProc( trace_glMultiTexCoordP1ui, layer );
+  tbl.glMultiTexCoordP1uiv = MakeRegalProc( trace_glMultiTexCoordP1uiv, layer );
+  tbl.glMultiTexCoordP2ui = MakeRegalProc( trace_glMultiTexCoordP2ui, layer );
+  tbl.glMultiTexCoordP2uiv = MakeRegalProc( trace_glMultiTexCoordP2uiv, layer );
+  tbl.glMultiTexCoordP3ui = MakeRegalProc( trace_glMultiTexCoordP3ui, layer );
+  tbl.glMultiTexCoordP3uiv = MakeRegalProc( trace_glMultiTexCoordP3uiv, layer );
+  tbl.glMultiTexCoordP4ui = MakeRegalProc( trace_glMultiTexCoordP4ui, layer );
+  tbl.glMultiTexCoordP4uiv = MakeRegalProc( trace_glMultiTexCoordP4uiv, layer );
+  tbl.glNormalP3ui = MakeRegalProc( trace_glNormalP3ui, layer );
+  tbl.glNormalP3uiv = MakeRegalProc( trace_glNormalP3uiv, layer );
+  tbl.glSecondaryColorP3ui = MakeRegalProc( trace_glSecondaryColorP3ui, layer );
+  tbl.glSecondaryColorP3uiv = MakeRegalProc( trace_glSecondaryColorP3uiv, layer );
+  tbl.glTexCoordP1ui = MakeRegalProc( trace_glTexCoordP1ui, layer );
+  tbl.glTexCoordP1uiv = MakeRegalProc( trace_glTexCoordP1uiv, layer );
+  tbl.glTexCoordP2ui = MakeRegalProc( trace_glTexCoordP2ui, layer );
+  tbl.glTexCoordP2uiv = MakeRegalProc( trace_glTexCoordP2uiv, layer );
+  tbl.glTexCoordP3ui = MakeRegalProc( trace_glTexCoordP3ui, layer );
+  tbl.glTexCoordP3uiv = MakeRegalProc( trace_glTexCoordP3uiv, layer );
+  tbl.glTexCoordP4ui = MakeRegalProc( trace_glTexCoordP4ui, layer );
+  tbl.glTexCoordP4uiv = MakeRegalProc( trace_glTexCoordP4uiv, layer );
+  tbl.glVertexAttribP1ui = MakeRegalProc( trace_glVertexAttribP1ui, layer );
+  tbl.glVertexAttribP1uiv = MakeRegalProc( trace_glVertexAttribP1uiv, layer );
+  tbl.glVertexAttribP2ui = MakeRegalProc( trace_glVertexAttribP2ui, layer );
+  tbl.glVertexAttribP2uiv = MakeRegalProc( trace_glVertexAttribP2uiv, layer );
+  tbl.glVertexAttribP3ui = MakeRegalProc( trace_glVertexAttribP3ui, layer );
+  tbl.glVertexAttribP3uiv = MakeRegalProc( trace_glVertexAttribP3uiv, layer );
+  tbl.glVertexAttribP4ui = MakeRegalProc( trace_glVertexAttribP4ui, layer );
+  tbl.glVertexAttribP4uiv = MakeRegalProc( trace_glVertexAttribP4uiv, layer );
+  tbl.glVertexP2ui = MakeRegalProc( trace_glVertexP2ui, layer );
+  tbl.glVertexP2uiv = MakeRegalProc( trace_glVertexP2uiv, layer );
+  tbl.glVertexP3ui = MakeRegalProc( trace_glVertexP3ui, layer );
+  tbl.glVertexP3uiv = MakeRegalProc( trace_glVertexP3uiv, layer );
+  tbl.glVertexP4ui = MakeRegalProc( trace_glVertexP4ui, layer );
+  tbl.glVertexP4uiv = MakeRegalProc( trace_glVertexP4uiv, layer );
 
   // GL_ARB_viewport_array
 
-  tbl.glDepthRangeArrayv = trace_glDepthRangeArrayv;
-  tbl.glDepthRangeIndexed = trace_glDepthRangeIndexed;
-  tbl.glGetDoublei_v = trace_glGetDoublei_v;
-  tbl.glGetFloati_v = trace_glGetFloati_v;
-  tbl.glScissorArrayv = trace_glScissorArrayv;
-  tbl.glScissorIndexed = trace_glScissorIndexed;
-  tbl.glScissorIndexedv = trace_glScissorIndexedv;
-  tbl.glViewportArrayv = trace_glViewportArrayv;
-  tbl.glViewportIndexedf = trace_glViewportIndexedf;
-  tbl.glViewportIndexedfv = trace_glViewportIndexedfv;
+  tbl.glDepthRangeArrayv = MakeRegalProc( trace_glDepthRangeArrayv, layer );
+  tbl.glDepthRangeIndexed = MakeRegalProc( trace_glDepthRangeIndexed, layer );
+  tbl.glGetDoublei_v = MakeRegalProc( trace_glGetDoublei_v, layer );
+  tbl.glGetFloati_v = MakeRegalProc( trace_glGetFloati_v, layer );
+  tbl.glScissorArrayv = MakeRegalProc( trace_glScissorArrayv, layer );
+  tbl.glScissorIndexed = MakeRegalProc( trace_glScissorIndexed, layer );
+  tbl.glScissorIndexedv = MakeRegalProc( trace_glScissorIndexedv, layer );
+  tbl.glViewportArrayv = MakeRegalProc( trace_glViewportArrayv, layer );
+  tbl.glViewportIndexedf = MakeRegalProc( trace_glViewportIndexedf, layer );
+  tbl.glViewportIndexedfv = MakeRegalProc( trace_glViewportIndexedfv, layer );
 
   // GL_ARB_window_pos
 
-  tbl.glWindowPos2dARB = trace_glWindowPos2dARB;
-  tbl.glWindowPos2dvARB = trace_glWindowPos2dvARB;
-  tbl.glWindowPos2fARB = trace_glWindowPos2fARB;
-  tbl.glWindowPos2fvARB = trace_glWindowPos2fvARB;
-  tbl.glWindowPos2iARB = trace_glWindowPos2iARB;
-  tbl.glWindowPos2ivARB = trace_glWindowPos2ivARB;
-  tbl.glWindowPos2sARB = trace_glWindowPos2sARB;
-  tbl.glWindowPos2svARB = trace_glWindowPos2svARB;
-  tbl.glWindowPos3dARB = trace_glWindowPos3dARB;
-  tbl.glWindowPos3dvARB = trace_glWindowPos3dvARB;
-  tbl.glWindowPos3fARB = trace_glWindowPos3fARB;
-  tbl.glWindowPos3fvARB = trace_glWindowPos3fvARB;
-  tbl.glWindowPos3iARB = trace_glWindowPos3iARB;
-  tbl.glWindowPos3ivARB = trace_glWindowPos3ivARB;
-  tbl.glWindowPos3sARB = trace_glWindowPos3sARB;
-  tbl.glWindowPos3svARB = trace_glWindowPos3svARB;
+  tbl.glWindowPos2dARB = MakeRegalProc( trace_glWindowPos2dARB, layer );
+  tbl.glWindowPos2dvARB = MakeRegalProc( trace_glWindowPos2dvARB, layer );
+  tbl.glWindowPos2fARB = MakeRegalProc( trace_glWindowPos2fARB, layer );
+  tbl.glWindowPos2fvARB = MakeRegalProc( trace_glWindowPos2fvARB, layer );
+  tbl.glWindowPos2iARB = MakeRegalProc( trace_glWindowPos2iARB, layer );
+  tbl.glWindowPos2ivARB = MakeRegalProc( trace_glWindowPos2ivARB, layer );
+  tbl.glWindowPos2sARB = MakeRegalProc( trace_glWindowPos2sARB, layer );
+  tbl.glWindowPos2svARB = MakeRegalProc( trace_glWindowPos2svARB, layer );
+  tbl.glWindowPos3dARB = MakeRegalProc( trace_glWindowPos3dARB, layer );
+  tbl.glWindowPos3dvARB = MakeRegalProc( trace_glWindowPos3dvARB, layer );
+  tbl.glWindowPos3fARB = MakeRegalProc( trace_glWindowPos3fARB, layer );
+  tbl.glWindowPos3fvARB = MakeRegalProc( trace_glWindowPos3fvARB, layer );
+  tbl.glWindowPos3iARB = MakeRegalProc( trace_glWindowPos3iARB, layer );
+  tbl.glWindowPos3ivARB = MakeRegalProc( trace_glWindowPos3ivARB, layer );
+  tbl.glWindowPos3sARB = MakeRegalProc( trace_glWindowPos3sARB, layer );
+  tbl.glWindowPos3svARB = MakeRegalProc( trace_glWindowPos3svARB, layer );
 
   // GL_ATI_draw_buffers
 
-  tbl.glDrawBuffersATI = trace_glDrawBuffersATI;
+  tbl.glDrawBuffersATI = MakeRegalProc( trace_glDrawBuffersATI, layer );
 
   // GL_ATI_element_array
 
-  tbl.glDrawElementArrayATI = trace_glDrawElementArrayATI;
-  tbl.glDrawRangeElementArrayATI = trace_glDrawRangeElementArrayATI;
-  tbl.glElementPointerATI = trace_glElementPointerATI;
+  tbl.glDrawElementArrayATI = MakeRegalProc( trace_glDrawElementArrayATI, layer );
+  tbl.glDrawRangeElementArrayATI = MakeRegalProc( trace_glDrawRangeElementArrayATI, layer );
+  tbl.glElementPointerATI = MakeRegalProc( trace_glElementPointerATI, layer );
 
   // GL_ATI_envmap_bumpmap
 
-  tbl.glGetTexBumpParameterfvATI = trace_glGetTexBumpParameterfvATI;
-  tbl.glGetTexBumpParameterivATI = trace_glGetTexBumpParameterivATI;
-  tbl.glTexBumpParameterfvATI = trace_glTexBumpParameterfvATI;
-  tbl.glTexBumpParameterivATI = trace_glTexBumpParameterivATI;
+  tbl.glGetTexBumpParameterfvATI = MakeRegalProc( trace_glGetTexBumpParameterfvATI, layer );
+  tbl.glGetTexBumpParameterivATI = MakeRegalProc( trace_glGetTexBumpParameterivATI, layer );
+  tbl.glTexBumpParameterfvATI = MakeRegalProc( trace_glTexBumpParameterfvATI, layer );
+  tbl.glTexBumpParameterivATI = MakeRegalProc( trace_glTexBumpParameterivATI, layer );
 
   // GL_ATI_fragment_shader
 
-  tbl.glAlphaFragmentOp1ATI = trace_glAlphaFragmentOp1ATI;
-  tbl.glAlphaFragmentOp2ATI = trace_glAlphaFragmentOp2ATI;
-  tbl.glAlphaFragmentOp3ATI = trace_glAlphaFragmentOp3ATI;
-  tbl.glBeginFragmentShaderATI = trace_glBeginFragmentShaderATI;
-  tbl.glBindFragmentShaderATI = trace_glBindFragmentShaderATI;
-  tbl.glColorFragmentOp1ATI = trace_glColorFragmentOp1ATI;
-  tbl.glColorFragmentOp2ATI = trace_glColorFragmentOp2ATI;
-  tbl.glColorFragmentOp3ATI = trace_glColorFragmentOp3ATI;
-  tbl.glDeleteFragmentShaderATI = trace_glDeleteFragmentShaderATI;
-  tbl.glEndFragmentShaderATI = trace_glEndFragmentShaderATI;
-  tbl.glGenFragmentShadersATI = trace_glGenFragmentShadersATI;
-  tbl.glPassTexCoordATI = trace_glPassTexCoordATI;
-  tbl.glSampleMapATI = trace_glSampleMapATI;
-  tbl.glSetFragmentShaderConstantATI = trace_glSetFragmentShaderConstantATI;
+  tbl.glAlphaFragmentOp1ATI = MakeRegalProc( trace_glAlphaFragmentOp1ATI, layer );
+  tbl.glAlphaFragmentOp2ATI = MakeRegalProc( trace_glAlphaFragmentOp2ATI, layer );
+  tbl.glAlphaFragmentOp3ATI = MakeRegalProc( trace_glAlphaFragmentOp3ATI, layer );
+  tbl.glBeginFragmentShaderATI = MakeRegalProc( trace_glBeginFragmentShaderATI, layer );
+  tbl.glBindFragmentShaderATI = MakeRegalProc( trace_glBindFragmentShaderATI, layer );
+  tbl.glColorFragmentOp1ATI = MakeRegalProc( trace_glColorFragmentOp1ATI, layer );
+  tbl.glColorFragmentOp2ATI = MakeRegalProc( trace_glColorFragmentOp2ATI, layer );
+  tbl.glColorFragmentOp3ATI = MakeRegalProc( trace_glColorFragmentOp3ATI, layer );
+  tbl.glDeleteFragmentShaderATI = MakeRegalProc( trace_glDeleteFragmentShaderATI, layer );
+  tbl.glEndFragmentShaderATI = MakeRegalProc( trace_glEndFragmentShaderATI, layer );
+  tbl.glGenFragmentShadersATI = MakeRegalProc( trace_glGenFragmentShadersATI, layer );
+  tbl.glPassTexCoordATI = MakeRegalProc( trace_glPassTexCoordATI, layer );
+  tbl.glSampleMapATI = MakeRegalProc( trace_glSampleMapATI, layer );
+  tbl.glSetFragmentShaderConstantATI = MakeRegalProc( trace_glSetFragmentShaderConstantATI, layer );
 
   // GL_ATI_map_object_buffer
 
-  tbl.glMapObjectBufferATI = trace_glMapObjectBufferATI;
-  tbl.glUnmapObjectBufferATI = trace_glUnmapObjectBufferATI;
+  tbl.glMapObjectBufferATI = MakeRegalProc( trace_glMapObjectBufferATI, layer );
+  tbl.glUnmapObjectBufferATI = MakeRegalProc( trace_glUnmapObjectBufferATI, layer );
 
   // GL_ATI_pn_triangles
 
-  tbl.glPNTrianglesfATI = trace_glPNTrianglesfATI;
-  tbl.glPNTrianglesiATI = trace_glPNTrianglesiATI;
+  tbl.glPNTrianglesfATI = MakeRegalProc( trace_glPNTrianglesfATI, layer );
+  tbl.glPNTrianglesiATI = MakeRegalProc( trace_glPNTrianglesiATI, layer );
 
   // GL_ATI_separate_stencil
 
-  tbl.glStencilFuncSeparateATI = trace_glStencilFuncSeparateATI;
-  tbl.glStencilOpSeparateATI = trace_glStencilOpSeparateATI;
+  tbl.glStencilFuncSeparateATI = MakeRegalProc( trace_glStencilFuncSeparateATI, layer );
+  tbl.glStencilOpSeparateATI = MakeRegalProc( trace_glStencilOpSeparateATI, layer );
 
   // GL_ATI_vertex_array_object
 
-  tbl.glArrayObjectATI = trace_glArrayObjectATI;
-  tbl.glFreeObjectBufferATI = trace_glFreeObjectBufferATI;
-  tbl.glGetArrayObjectfvATI = trace_glGetArrayObjectfvATI;
-  tbl.glGetArrayObjectivATI = trace_glGetArrayObjectivATI;
-  tbl.glGetObjectBufferfvATI = trace_glGetObjectBufferfvATI;
-  tbl.glGetObjectBufferivATI = trace_glGetObjectBufferivATI;
-  tbl.glGetVariantArrayObjectfvATI = trace_glGetVariantArrayObjectfvATI;
-  tbl.glGetVariantArrayObjectivATI = trace_glGetVariantArrayObjectivATI;
-  tbl.glIsObjectBufferATI = trace_glIsObjectBufferATI;
-  tbl.glNewObjectBufferATI = trace_glNewObjectBufferATI;
-  tbl.glUpdateObjectBufferATI = trace_glUpdateObjectBufferATI;
-  tbl.glVariantArrayObjectATI = trace_glVariantArrayObjectATI;
+  tbl.glArrayObjectATI = MakeRegalProc( trace_glArrayObjectATI, layer );
+  tbl.glFreeObjectBufferATI = MakeRegalProc( trace_glFreeObjectBufferATI, layer );
+  tbl.glGetArrayObjectfvATI = MakeRegalProc( trace_glGetArrayObjectfvATI, layer );
+  tbl.glGetArrayObjectivATI = MakeRegalProc( trace_glGetArrayObjectivATI, layer );
+  tbl.glGetObjectBufferfvATI = MakeRegalProc( trace_glGetObjectBufferfvATI, layer );
+  tbl.glGetObjectBufferivATI = MakeRegalProc( trace_glGetObjectBufferivATI, layer );
+  tbl.glGetVariantArrayObjectfvATI = MakeRegalProc( trace_glGetVariantArrayObjectfvATI, layer );
+  tbl.glGetVariantArrayObjectivATI = MakeRegalProc( trace_glGetVariantArrayObjectivATI, layer );
+  tbl.glIsObjectBufferATI = MakeRegalProc( trace_glIsObjectBufferATI, layer );
+  tbl.glNewObjectBufferATI = MakeRegalProc( trace_glNewObjectBufferATI, layer );
+  tbl.glUpdateObjectBufferATI = MakeRegalProc( trace_glUpdateObjectBufferATI, layer );
+  tbl.glVariantArrayObjectATI = MakeRegalProc( trace_glVariantArrayObjectATI, layer );
 
   // GL_ATI_vertex_attrib_array_object
 
-  tbl.glGetVertexAttribArrayObjectfvATI = trace_glGetVertexAttribArrayObjectfvATI;
-  tbl.glGetVertexAttribArrayObjectivATI = trace_glGetVertexAttribArrayObjectivATI;
-  tbl.glVertexAttribArrayObjectATI = trace_glVertexAttribArrayObjectATI;
+  tbl.glGetVertexAttribArrayObjectfvATI = MakeRegalProc( trace_glGetVertexAttribArrayObjectfvATI, layer );
+  tbl.glGetVertexAttribArrayObjectivATI = MakeRegalProc( trace_glGetVertexAttribArrayObjectivATI, layer );
+  tbl.glVertexAttribArrayObjectATI = MakeRegalProc( trace_glVertexAttribArrayObjectATI, layer );
 
   // GL_ATI_vertex_streams
 
-  tbl.glClientActiveVertexStreamATI = trace_glClientActiveVertexStreamATI;
-  tbl.glNormalStream3bATI = trace_glNormalStream3bATI;
-  tbl.glNormalStream3bvATI = trace_glNormalStream3bvATI;
-  tbl.glNormalStream3dATI = trace_glNormalStream3dATI;
-  tbl.glNormalStream3dvATI = trace_glNormalStream3dvATI;
-  tbl.glNormalStream3fATI = trace_glNormalStream3fATI;
-  tbl.glNormalStream3fvATI = trace_glNormalStream3fvATI;
-  tbl.glNormalStream3iATI = trace_glNormalStream3iATI;
-  tbl.glNormalStream3ivATI = trace_glNormalStream3ivATI;
-  tbl.glNormalStream3sATI = trace_glNormalStream3sATI;
-  tbl.glNormalStream3svATI = trace_glNormalStream3svATI;
-  tbl.glVertexBlendEnvfATI = trace_glVertexBlendEnvfATI;
-  tbl.glVertexBlendEnviATI = trace_glVertexBlendEnviATI;
-  tbl.glVertexStream1dATI = trace_glVertexStream1dATI;
-  tbl.glVertexStream1dvATI = trace_glVertexStream1dvATI;
-  tbl.glVertexStream1fATI = trace_glVertexStream1fATI;
-  tbl.glVertexStream1fvATI = trace_glVertexStream1fvATI;
-  tbl.glVertexStream1iATI = trace_glVertexStream1iATI;
-  tbl.glVertexStream1ivATI = trace_glVertexStream1ivATI;
-  tbl.glVertexStream1sATI = trace_glVertexStream1sATI;
-  tbl.glVertexStream1svATI = trace_glVertexStream1svATI;
-  tbl.glVertexStream2dATI = trace_glVertexStream2dATI;
-  tbl.glVertexStream2dvATI = trace_glVertexStream2dvATI;
-  tbl.glVertexStream2fATI = trace_glVertexStream2fATI;
-  tbl.glVertexStream2fvATI = trace_glVertexStream2fvATI;
-  tbl.glVertexStream2iATI = trace_glVertexStream2iATI;
-  tbl.glVertexStream2ivATI = trace_glVertexStream2ivATI;
-  tbl.glVertexStream2sATI = trace_glVertexStream2sATI;
-  tbl.glVertexStream2svATI = trace_glVertexStream2svATI;
-  tbl.glVertexStream3dATI = trace_glVertexStream3dATI;
-  tbl.glVertexStream3dvATI = trace_glVertexStream3dvATI;
-  tbl.glVertexStream3fATI = trace_glVertexStream3fATI;
-  tbl.glVertexStream3fvATI = trace_glVertexStream3fvATI;
-  tbl.glVertexStream3iATI = trace_glVertexStream3iATI;
-  tbl.glVertexStream3ivATI = trace_glVertexStream3ivATI;
-  tbl.glVertexStream3sATI = trace_glVertexStream3sATI;
-  tbl.glVertexStream3svATI = trace_glVertexStream3svATI;
-  tbl.glVertexStream4dATI = trace_glVertexStream4dATI;
-  tbl.glVertexStream4dvATI = trace_glVertexStream4dvATI;
-  tbl.glVertexStream4fATI = trace_glVertexStream4fATI;
-  tbl.glVertexStream4fvATI = trace_glVertexStream4fvATI;
-  tbl.glVertexStream4iATI = trace_glVertexStream4iATI;
-  tbl.glVertexStream4ivATI = trace_glVertexStream4ivATI;
-  tbl.glVertexStream4sATI = trace_glVertexStream4sATI;
-  tbl.glVertexStream4svATI = trace_glVertexStream4svATI;
+  tbl.glClientActiveVertexStreamATI = MakeRegalProc( trace_glClientActiveVertexStreamATI, layer );
+  tbl.glNormalStream3bATI = MakeRegalProc( trace_glNormalStream3bATI, layer );
+  tbl.glNormalStream3bvATI = MakeRegalProc( trace_glNormalStream3bvATI, layer );
+  tbl.glNormalStream3dATI = MakeRegalProc( trace_glNormalStream3dATI, layer );
+  tbl.glNormalStream3dvATI = MakeRegalProc( trace_glNormalStream3dvATI, layer );
+  tbl.glNormalStream3fATI = MakeRegalProc( trace_glNormalStream3fATI, layer );
+  tbl.glNormalStream3fvATI = MakeRegalProc( trace_glNormalStream3fvATI, layer );
+  tbl.glNormalStream3iATI = MakeRegalProc( trace_glNormalStream3iATI, layer );
+  tbl.glNormalStream3ivATI = MakeRegalProc( trace_glNormalStream3ivATI, layer );
+  tbl.glNormalStream3sATI = MakeRegalProc( trace_glNormalStream3sATI, layer );
+  tbl.glNormalStream3svATI = MakeRegalProc( trace_glNormalStream3svATI, layer );
+  tbl.glVertexBlendEnvfATI = MakeRegalProc( trace_glVertexBlendEnvfATI, layer );
+  tbl.glVertexBlendEnviATI = MakeRegalProc( trace_glVertexBlendEnviATI, layer );
+  tbl.glVertexStream1dATI = MakeRegalProc( trace_glVertexStream1dATI, layer );
+  tbl.glVertexStream1dvATI = MakeRegalProc( trace_glVertexStream1dvATI, layer );
+  tbl.glVertexStream1fATI = MakeRegalProc( trace_glVertexStream1fATI, layer );
+  tbl.glVertexStream1fvATI = MakeRegalProc( trace_glVertexStream1fvATI, layer );
+  tbl.glVertexStream1iATI = MakeRegalProc( trace_glVertexStream1iATI, layer );
+  tbl.glVertexStream1ivATI = MakeRegalProc( trace_glVertexStream1ivATI, layer );
+  tbl.glVertexStream1sATI = MakeRegalProc( trace_glVertexStream1sATI, layer );
+  tbl.glVertexStream1svATI = MakeRegalProc( trace_glVertexStream1svATI, layer );
+  tbl.glVertexStream2dATI = MakeRegalProc( trace_glVertexStream2dATI, layer );
+  tbl.glVertexStream2dvATI = MakeRegalProc( trace_glVertexStream2dvATI, layer );
+  tbl.glVertexStream2fATI = MakeRegalProc( trace_glVertexStream2fATI, layer );
+  tbl.glVertexStream2fvATI = MakeRegalProc( trace_glVertexStream2fvATI, layer );
+  tbl.glVertexStream2iATI = MakeRegalProc( trace_glVertexStream2iATI, layer );
+  tbl.glVertexStream2ivATI = MakeRegalProc( trace_glVertexStream2ivATI, layer );
+  tbl.glVertexStream2sATI = MakeRegalProc( trace_glVertexStream2sATI, layer );
+  tbl.glVertexStream2svATI = MakeRegalProc( trace_glVertexStream2svATI, layer );
+  tbl.glVertexStream3dATI = MakeRegalProc( trace_glVertexStream3dATI, layer );
+  tbl.glVertexStream3dvATI = MakeRegalProc( trace_glVertexStream3dvATI, layer );
+  tbl.glVertexStream3fATI = MakeRegalProc( trace_glVertexStream3fATI, layer );
+  tbl.glVertexStream3fvATI = MakeRegalProc( trace_glVertexStream3fvATI, layer );
+  tbl.glVertexStream3iATI = MakeRegalProc( trace_glVertexStream3iATI, layer );
+  tbl.glVertexStream3ivATI = MakeRegalProc( trace_glVertexStream3ivATI, layer );
+  tbl.glVertexStream3sATI = MakeRegalProc( trace_glVertexStream3sATI, layer );
+  tbl.glVertexStream3svATI = MakeRegalProc( trace_glVertexStream3svATI, layer );
+  tbl.glVertexStream4dATI = MakeRegalProc( trace_glVertexStream4dATI, layer );
+  tbl.glVertexStream4dvATI = MakeRegalProc( trace_glVertexStream4dvATI, layer );
+  tbl.glVertexStream4fATI = MakeRegalProc( trace_glVertexStream4fATI, layer );
+  tbl.glVertexStream4fvATI = MakeRegalProc( trace_glVertexStream4fvATI, layer );
+  tbl.glVertexStream4iATI = MakeRegalProc( trace_glVertexStream4iATI, layer );
+  tbl.glVertexStream4ivATI = MakeRegalProc( trace_glVertexStream4ivATI, layer );
+  tbl.glVertexStream4sATI = MakeRegalProc( trace_glVertexStream4sATI, layer );
+  tbl.glVertexStream4svATI = MakeRegalProc( trace_glVertexStream4svATI, layer );
 
   // GL_EXT_bindable_uniform
 
-  tbl.glGetUniformBufferSizeEXT = trace_glGetUniformBufferSizeEXT;
-  tbl.glGetUniformOffsetEXT = trace_glGetUniformOffsetEXT;
-  tbl.glUniformBufferEXT = trace_glUniformBufferEXT;
+  tbl.glGetUniformBufferSizeEXT = MakeRegalProc( trace_glGetUniformBufferSizeEXT, layer );
+  tbl.glGetUniformOffsetEXT = MakeRegalProc( trace_glGetUniformOffsetEXT, layer );
+  tbl.glUniformBufferEXT = MakeRegalProc( trace_glUniformBufferEXT, layer );
 
   // GL_EXT_blend_color
 
-  tbl.glBlendColorEXT = trace_glBlendColorEXT;
+  tbl.glBlendColorEXT = MakeRegalProc( trace_glBlendColorEXT, layer );
 
   // GL_EXT_blend_equation_separate
 
-  tbl.glBlendEquationSeparateEXT = trace_glBlendEquationSeparateEXT;
+  tbl.glBlendEquationSeparateEXT = MakeRegalProc( trace_glBlendEquationSeparateEXT, layer );
 
   // GL_EXT_blend_func_separate
 
-  tbl.glBlendFuncSeparateEXT = trace_glBlendFuncSeparateEXT;
+  tbl.glBlendFuncSeparateEXT = MakeRegalProc( trace_glBlendFuncSeparateEXT, layer );
 
   // GL_EXT_blend_minmax
 
-  tbl.glBlendEquationEXT = trace_glBlendEquationEXT;
+  tbl.glBlendEquationEXT = MakeRegalProc( trace_glBlendEquationEXT, layer );
 
   // GL_EXT_color_subtable
 
-  tbl.glColorSubTableEXT = trace_glColorSubTableEXT;
-  tbl.glCopyColorSubTableEXT = trace_glCopyColorSubTableEXT;
+  tbl.glColorSubTableEXT = MakeRegalProc( trace_glColorSubTableEXT, layer );
+  tbl.glCopyColorSubTableEXT = MakeRegalProc( trace_glCopyColorSubTableEXT, layer );
 
   // GL_EXT_compiled_vertex_array
 
-  tbl.glLockArraysEXT = trace_glLockArraysEXT;
-  tbl.glUnlockArraysEXT = trace_glUnlockArraysEXT;
+  tbl.glLockArraysEXT = MakeRegalProc( trace_glLockArraysEXT, layer );
+  tbl.glUnlockArraysEXT = MakeRegalProc( trace_glUnlockArraysEXT, layer );
 
   // GL_EXT_convolution
 
-  tbl.glConvolutionFilter1DEXT = trace_glConvolutionFilter1DEXT;
-  tbl.glConvolutionFilter2DEXT = trace_glConvolutionFilter2DEXT;
-  tbl.glConvolutionParameterfEXT = trace_glConvolutionParameterfEXT;
-  tbl.glConvolutionParameterfvEXT = trace_glConvolutionParameterfvEXT;
-  tbl.glConvolutionParameteriEXT = trace_glConvolutionParameteriEXT;
-  tbl.glConvolutionParameterivEXT = trace_glConvolutionParameterivEXT;
-  tbl.glCopyConvolutionFilter1DEXT = trace_glCopyConvolutionFilter1DEXT;
-  tbl.glCopyConvolutionFilter2DEXT = trace_glCopyConvolutionFilter2DEXT;
-  tbl.glGetConvolutionFilterEXT = trace_glGetConvolutionFilterEXT;
-  tbl.glGetConvolutionParameterfvEXT = trace_glGetConvolutionParameterfvEXT;
-  tbl.glGetConvolutionParameterivEXT = trace_glGetConvolutionParameterivEXT;
-  tbl.glGetSeparableFilterEXT = trace_glGetSeparableFilterEXT;
-  tbl.glSeparableFilter2DEXT = trace_glSeparableFilter2DEXT;
+  tbl.glConvolutionFilter1DEXT = MakeRegalProc( trace_glConvolutionFilter1DEXT, layer );
+  tbl.glConvolutionFilter2DEXT = MakeRegalProc( trace_glConvolutionFilter2DEXT, layer );
+  tbl.glConvolutionParameterfEXT = MakeRegalProc( trace_glConvolutionParameterfEXT, layer );
+  tbl.glConvolutionParameterfvEXT = MakeRegalProc( trace_glConvolutionParameterfvEXT, layer );
+  tbl.glConvolutionParameteriEXT = MakeRegalProc( trace_glConvolutionParameteriEXT, layer );
+  tbl.glConvolutionParameterivEXT = MakeRegalProc( trace_glConvolutionParameterivEXT, layer );
+  tbl.glCopyConvolutionFilter1DEXT = MakeRegalProc( trace_glCopyConvolutionFilter1DEXT, layer );
+  tbl.glCopyConvolutionFilter2DEXT = MakeRegalProc( trace_glCopyConvolutionFilter2DEXT, layer );
+  tbl.glGetConvolutionFilterEXT = MakeRegalProc( trace_glGetConvolutionFilterEXT, layer );
+  tbl.glGetConvolutionParameterfvEXT = MakeRegalProc( trace_glGetConvolutionParameterfvEXT, layer );
+  tbl.glGetConvolutionParameterivEXT = MakeRegalProc( trace_glGetConvolutionParameterivEXT, layer );
+  tbl.glGetSeparableFilterEXT = MakeRegalProc( trace_glGetSeparableFilterEXT, layer );
+  tbl.glSeparableFilter2DEXT = MakeRegalProc( trace_glSeparableFilter2DEXT, layer );
 
   // GL_EXT_coordinate_frame
 
-  tbl.glBinormal3bEXT = trace_glBinormal3bEXT;
-  tbl.glBinormal3bvEXT = trace_glBinormal3bvEXT;
-  tbl.glBinormal3dEXT = trace_glBinormal3dEXT;
-  tbl.glBinormal3dvEXT = trace_glBinormal3dvEXT;
-  tbl.glBinormal3fEXT = trace_glBinormal3fEXT;
-  tbl.glBinormal3fvEXT = trace_glBinormal3fvEXT;
-  tbl.glBinormal3iEXT = trace_glBinormal3iEXT;
-  tbl.glBinormal3ivEXT = trace_glBinormal3ivEXT;
-  tbl.glBinormal3sEXT = trace_glBinormal3sEXT;
-  tbl.glBinormal3svEXT = trace_glBinormal3svEXT;
-  tbl.glBinormalPointerEXT = trace_glBinormalPointerEXT;
-  tbl.glTangent3bEXT = trace_glTangent3bEXT;
-  tbl.glTangent3bvEXT = trace_glTangent3bvEXT;
-  tbl.glTangent3dEXT = trace_glTangent3dEXT;
-  tbl.glTangent3dvEXT = trace_glTangent3dvEXT;
-  tbl.glTangent3fEXT = trace_glTangent3fEXT;
-  tbl.glTangent3fvEXT = trace_glTangent3fvEXT;
-  tbl.glTangent3iEXT = trace_glTangent3iEXT;
-  tbl.glTangent3ivEXT = trace_glTangent3ivEXT;
-  tbl.glTangent3sEXT = trace_glTangent3sEXT;
-  tbl.glTangent3svEXT = trace_glTangent3svEXT;
-  tbl.glTangentPointerEXT = trace_glTangentPointerEXT;
+  tbl.glBinormal3bEXT = MakeRegalProc( trace_glBinormal3bEXT, layer );
+  tbl.glBinormal3bvEXT = MakeRegalProc( trace_glBinormal3bvEXT, layer );
+  tbl.glBinormal3dEXT = MakeRegalProc( trace_glBinormal3dEXT, layer );
+  tbl.glBinormal3dvEXT = MakeRegalProc( trace_glBinormal3dvEXT, layer );
+  tbl.glBinormal3fEXT = MakeRegalProc( trace_glBinormal3fEXT, layer );
+  tbl.glBinormal3fvEXT = MakeRegalProc( trace_glBinormal3fvEXT, layer );
+  tbl.glBinormal3iEXT = MakeRegalProc( trace_glBinormal3iEXT, layer );
+  tbl.glBinormal3ivEXT = MakeRegalProc( trace_glBinormal3ivEXT, layer );
+  tbl.glBinormal3sEXT = MakeRegalProc( trace_glBinormal3sEXT, layer );
+  tbl.glBinormal3svEXT = MakeRegalProc( trace_glBinormal3svEXT, layer );
+  tbl.glBinormalPointerEXT = MakeRegalProc( trace_glBinormalPointerEXT, layer );
+  tbl.glTangent3bEXT = MakeRegalProc( trace_glTangent3bEXT, layer );
+  tbl.glTangent3bvEXT = MakeRegalProc( trace_glTangent3bvEXT, layer );
+  tbl.glTangent3dEXT = MakeRegalProc( trace_glTangent3dEXT, layer );
+  tbl.glTangent3dvEXT = MakeRegalProc( trace_glTangent3dvEXT, layer );
+  tbl.glTangent3fEXT = MakeRegalProc( trace_glTangent3fEXT, layer );
+  tbl.glTangent3fvEXT = MakeRegalProc( trace_glTangent3fvEXT, layer );
+  tbl.glTangent3iEXT = MakeRegalProc( trace_glTangent3iEXT, layer );
+  tbl.glTangent3ivEXT = MakeRegalProc( trace_glTangent3ivEXT, layer );
+  tbl.glTangent3sEXT = MakeRegalProc( trace_glTangent3sEXT, layer );
+  tbl.glTangent3svEXT = MakeRegalProc( trace_glTangent3svEXT, layer );
+  tbl.glTangentPointerEXT = MakeRegalProc( trace_glTangentPointerEXT, layer );
 
   // GL_EXT_copy_texture
 
-  tbl.glCopyTexImage1DEXT = trace_glCopyTexImage1DEXT;
-  tbl.glCopyTexImage2DEXT = trace_glCopyTexImage2DEXT;
-  tbl.glCopyTexSubImage1DEXT = trace_glCopyTexSubImage1DEXT;
-  tbl.glCopyTexSubImage2DEXT = trace_glCopyTexSubImage2DEXT;
-  tbl.glCopyTexSubImage3DEXT = trace_glCopyTexSubImage3DEXT;
+  tbl.glCopyTexImage1DEXT = MakeRegalProc( trace_glCopyTexImage1DEXT, layer );
+  tbl.glCopyTexImage2DEXT = MakeRegalProc( trace_glCopyTexImage2DEXT, layer );
+  tbl.glCopyTexSubImage1DEXT = MakeRegalProc( trace_glCopyTexSubImage1DEXT, layer );
+  tbl.glCopyTexSubImage2DEXT = MakeRegalProc( trace_glCopyTexSubImage2DEXT, layer );
+  tbl.glCopyTexSubImage3DEXT = MakeRegalProc( trace_glCopyTexSubImage3DEXT, layer );
 
   // GL_EXT_cull_vertex
 
-  tbl.glCullParameterdvEXT = trace_glCullParameterdvEXT;
-  tbl.glCullParameterfvEXT = trace_glCullParameterfvEXT;
+  tbl.glCullParameterdvEXT = MakeRegalProc( trace_glCullParameterdvEXT, layer );
+  tbl.glCullParameterfvEXT = MakeRegalProc( trace_glCullParameterfvEXT, layer );
 
   // GL_EXT_debug_label
 
-  tbl.glGetObjectLabelEXT = trace_glGetObjectLabelEXT;
-  tbl.glLabelObjectEXT = trace_glLabelObjectEXT;
+  tbl.glGetObjectLabelEXT = MakeRegalProc( trace_glGetObjectLabelEXT, layer );
+  tbl.glLabelObjectEXT = MakeRegalProc( trace_glLabelObjectEXT, layer );
 
   // GL_EXT_debug_marker
 
-  tbl.glInsertEventMarkerEXT = trace_glInsertEventMarkerEXT;
-  tbl.glPopGroupMarkerEXT = trace_glPopGroupMarkerEXT;
-  tbl.glPushGroupMarkerEXT = trace_glPushGroupMarkerEXT;
+  tbl.glInsertEventMarkerEXT = MakeRegalProc( trace_glInsertEventMarkerEXT, layer );
+  tbl.glPopGroupMarkerEXT = MakeRegalProc( trace_glPopGroupMarkerEXT, layer );
+  tbl.glPushGroupMarkerEXT = MakeRegalProc( trace_glPushGroupMarkerEXT, layer );
 
   // GL_EXT_depth_bounds_test
 
-  tbl.glDepthBoundsEXT = trace_glDepthBoundsEXT;
+  tbl.glDepthBoundsEXT = MakeRegalProc( trace_glDepthBoundsEXT, layer );
 
   // GL_EXT_direct_state_access
 
-  tbl.glBindMultiTextureEXT = trace_glBindMultiTextureEXT;
-  tbl.glCheckNamedFramebufferStatusEXT = trace_glCheckNamedFramebufferStatusEXT;
-  tbl.glClientAttribDefaultEXT = trace_glClientAttribDefaultEXT;
-  tbl.glCompressedMultiTexImage1DEXT = trace_glCompressedMultiTexImage1DEXT;
-  tbl.glCompressedMultiTexImage2DEXT = trace_glCompressedMultiTexImage2DEXT;
-  tbl.glCompressedMultiTexImage3DEXT = trace_glCompressedMultiTexImage3DEXT;
-  tbl.glCompressedMultiTexSubImage1DEXT = trace_glCompressedMultiTexSubImage1DEXT;
-  tbl.glCompressedMultiTexSubImage2DEXT = trace_glCompressedMultiTexSubImage2DEXT;
-  tbl.glCompressedMultiTexSubImage3DEXT = trace_glCompressedMultiTexSubImage3DEXT;
-  tbl.glCompressedTextureImage1DEXT = trace_glCompressedTextureImage1DEXT;
-  tbl.glCompressedTextureImage2DEXT = trace_glCompressedTextureImage2DEXT;
-  tbl.glCompressedTextureImage3DEXT = trace_glCompressedTextureImage3DEXT;
-  tbl.glCompressedTextureSubImage1DEXT = trace_glCompressedTextureSubImage1DEXT;
-  tbl.glCompressedTextureSubImage2DEXT = trace_glCompressedTextureSubImage2DEXT;
-  tbl.glCompressedTextureSubImage3DEXT = trace_glCompressedTextureSubImage3DEXT;
-  tbl.glCopyMultiTexImage1DEXT = trace_glCopyMultiTexImage1DEXT;
-  tbl.glCopyMultiTexImage2DEXT = trace_glCopyMultiTexImage2DEXT;
-  tbl.glCopyMultiTexSubImage1DEXT = trace_glCopyMultiTexSubImage1DEXT;
-  tbl.glCopyMultiTexSubImage2DEXT = trace_glCopyMultiTexSubImage2DEXT;
-  tbl.glCopyMultiTexSubImage3DEXT = trace_glCopyMultiTexSubImage3DEXT;
-  tbl.glCopyTextureImage1DEXT = trace_glCopyTextureImage1DEXT;
-  tbl.glCopyTextureImage2DEXT = trace_glCopyTextureImage2DEXT;
-  tbl.glCopyTextureSubImage1DEXT = trace_glCopyTextureSubImage1DEXT;
-  tbl.glCopyTextureSubImage2DEXT = trace_glCopyTextureSubImage2DEXT;
-  tbl.glCopyTextureSubImage3DEXT = trace_glCopyTextureSubImage3DEXT;
-  tbl.glDisableClientStateIndexedEXT = trace_glDisableClientStateIndexedEXT;
-  tbl.glDisableVertexArrayAttribEXT = trace_glDisableVertexArrayAttribEXT;
-  tbl.glDisableVertexArrayEXT = trace_glDisableVertexArrayEXT;
-  tbl.glEnableClientStateIndexedEXT = trace_glEnableClientStateIndexedEXT;
-  tbl.glEnableVertexArrayAttribEXT = trace_glEnableVertexArrayAttribEXT;
-  tbl.glEnableVertexArrayEXT = trace_glEnableVertexArrayEXT;
-  tbl.glFlushMappedNamedBufferRangeEXT = trace_glFlushMappedNamedBufferRangeEXT;
-  tbl.glFramebufferDrawBufferEXT = trace_glFramebufferDrawBufferEXT;
-  tbl.glFramebufferDrawBuffersEXT = trace_glFramebufferDrawBuffersEXT;
-  tbl.glFramebufferReadBufferEXT = trace_glFramebufferReadBufferEXT;
-  tbl.glGenerateMultiTexMipmapEXT = trace_glGenerateMultiTexMipmapEXT;
-  tbl.glGenerateTextureMipmapEXT = trace_glGenerateTextureMipmapEXT;
-  tbl.glGetCompressedMultiTexImageEXT = trace_glGetCompressedMultiTexImageEXT;
-  tbl.glGetCompressedTextureImageEXT = trace_glGetCompressedTextureImageEXT;
-  tbl.glGetDoubleIndexedvEXT = trace_glGetDoubleIndexedvEXT;
-  tbl.glGetFloatIndexedvEXT = trace_glGetFloatIndexedvEXT;
-  tbl.glGetFramebufferParameterivEXT = trace_glGetFramebufferParameterivEXT;
-  tbl.glGetMultiTexEnvfvEXT = trace_glGetMultiTexEnvfvEXT;
-  tbl.glGetMultiTexEnvivEXT = trace_glGetMultiTexEnvivEXT;
-  tbl.glGetMultiTexGendvEXT = trace_glGetMultiTexGendvEXT;
-  tbl.glGetMultiTexGenfvEXT = trace_glGetMultiTexGenfvEXT;
-  tbl.glGetMultiTexGenivEXT = trace_glGetMultiTexGenivEXT;
-  tbl.glGetMultiTexImageEXT = trace_glGetMultiTexImageEXT;
-  tbl.glGetMultiTexLevelParameterfvEXT = trace_glGetMultiTexLevelParameterfvEXT;
-  tbl.glGetMultiTexLevelParameterivEXT = trace_glGetMultiTexLevelParameterivEXT;
-  tbl.glGetMultiTexParameterIivEXT = trace_glGetMultiTexParameterIivEXT;
-  tbl.glGetMultiTexParameterIuivEXT = trace_glGetMultiTexParameterIuivEXT;
-  tbl.glGetMultiTexParameterfvEXT = trace_glGetMultiTexParameterfvEXT;
-  tbl.glGetMultiTexParameterivEXT = trace_glGetMultiTexParameterivEXT;
-  tbl.glGetNamedBufferParameterivEXT = trace_glGetNamedBufferParameterivEXT;
-  tbl.glGetNamedBufferPointervEXT = trace_glGetNamedBufferPointervEXT;
-  tbl.glGetNamedBufferSubDataEXT = trace_glGetNamedBufferSubDataEXT;
-  tbl.glGetNamedFramebufferAttachmentParameterivEXT = trace_glGetNamedFramebufferAttachmentParameterivEXT;
-  tbl.glGetNamedProgramLocalParameterIivEXT = trace_glGetNamedProgramLocalParameterIivEXT;
-  tbl.glGetNamedProgramLocalParameterIuivEXT = trace_glGetNamedProgramLocalParameterIuivEXT;
-  tbl.glGetNamedProgramLocalParameterdvEXT = trace_glGetNamedProgramLocalParameterdvEXT;
-  tbl.glGetNamedProgramLocalParameterfvEXT = trace_glGetNamedProgramLocalParameterfvEXT;
-  tbl.glGetNamedProgramStringEXT = trace_glGetNamedProgramStringEXT;
-  tbl.glGetNamedProgramivEXT = trace_glGetNamedProgramivEXT;
-  tbl.glGetNamedRenderbufferParameterivEXT = trace_glGetNamedRenderbufferParameterivEXT;
-  tbl.glGetPointerIndexedvEXT = trace_glGetPointerIndexedvEXT;
-  tbl.glGetTextureImageEXT = trace_glGetTextureImageEXT;
-  tbl.glGetTextureLevelParameterfvEXT = trace_glGetTextureLevelParameterfvEXT;
-  tbl.glGetTextureLevelParameterivEXT = trace_glGetTextureLevelParameterivEXT;
-  tbl.glGetTextureParameterIivEXT = trace_glGetTextureParameterIivEXT;
-  tbl.glGetTextureParameterIuivEXT = trace_glGetTextureParameterIuivEXT;
-  tbl.glGetTextureParameterfvEXT = trace_glGetTextureParameterfvEXT;
-  tbl.glGetTextureParameterivEXT = trace_glGetTextureParameterivEXT;
-  tbl.glGetVertexArrayIntegeri_vEXT = trace_glGetVertexArrayIntegeri_vEXT;
-  tbl.glGetVertexArrayIntegervEXT = trace_glGetVertexArrayIntegervEXT;
-  tbl.glGetVertexArrayPointeri_vEXT = trace_glGetVertexArrayPointeri_vEXT;
-  tbl.glGetVertexArrayPointervEXT = trace_glGetVertexArrayPointervEXT;
-  tbl.glMapNamedBufferEXT = trace_glMapNamedBufferEXT;
-  tbl.glMapNamedBufferRangeEXT = trace_glMapNamedBufferRangeEXT;
-  tbl.glMatrixFrustumEXT = trace_glMatrixFrustumEXT;
-  tbl.glMatrixLoadIdentityEXT = trace_glMatrixLoadIdentityEXT;
-  tbl.glMatrixLoadTransposedEXT = trace_glMatrixLoadTransposedEXT;
-  tbl.glMatrixLoadTransposefEXT = trace_glMatrixLoadTransposefEXT;
-  tbl.glMatrixLoaddEXT = trace_glMatrixLoaddEXT;
-  tbl.glMatrixLoadfEXT = trace_glMatrixLoadfEXT;
-  tbl.glMatrixMultTransposedEXT = trace_glMatrixMultTransposedEXT;
-  tbl.glMatrixMultTransposefEXT = trace_glMatrixMultTransposefEXT;
-  tbl.glMatrixMultdEXT = trace_glMatrixMultdEXT;
-  tbl.glMatrixMultfEXT = trace_glMatrixMultfEXT;
-  tbl.glMatrixOrthoEXT = trace_glMatrixOrthoEXT;
-  tbl.glMatrixPopEXT = trace_glMatrixPopEXT;
-  tbl.glMatrixPushEXT = trace_glMatrixPushEXT;
-  tbl.glMatrixRotatedEXT = trace_glMatrixRotatedEXT;
-  tbl.glMatrixRotatefEXT = trace_glMatrixRotatefEXT;
-  tbl.glMatrixScaledEXT = trace_glMatrixScaledEXT;
-  tbl.glMatrixScalefEXT = trace_glMatrixScalefEXT;
-  tbl.glMatrixTranslatedEXT = trace_glMatrixTranslatedEXT;
-  tbl.glMatrixTranslatefEXT = trace_glMatrixTranslatefEXT;
-  tbl.glMultiTexBufferEXT = trace_glMultiTexBufferEXT;
-  tbl.glMultiTexCoordPointerEXT = trace_glMultiTexCoordPointerEXT;
-  tbl.glMultiTexEnvfEXT = trace_glMultiTexEnvfEXT;
-  tbl.glMultiTexEnvfvEXT = trace_glMultiTexEnvfvEXT;
-  tbl.glMultiTexEnviEXT = trace_glMultiTexEnviEXT;
-  tbl.glMultiTexEnvivEXT = trace_glMultiTexEnvivEXT;
-  tbl.glMultiTexGendEXT = trace_glMultiTexGendEXT;
-  tbl.glMultiTexGendvEXT = trace_glMultiTexGendvEXT;
-  tbl.glMultiTexGenfEXT = trace_glMultiTexGenfEXT;
-  tbl.glMultiTexGenfvEXT = trace_glMultiTexGenfvEXT;
-  tbl.glMultiTexGeniEXT = trace_glMultiTexGeniEXT;
-  tbl.glMultiTexGenivEXT = trace_glMultiTexGenivEXT;
-  tbl.glMultiTexParameterIivEXT = trace_glMultiTexParameterIivEXT;
-  tbl.glMultiTexParameterIuivEXT = trace_glMultiTexParameterIuivEXT;
-  tbl.glMultiTexParameterfEXT = trace_glMultiTexParameterfEXT;
-  tbl.glMultiTexParameterfvEXT = trace_glMultiTexParameterfvEXT;
-  tbl.glMultiTexParameteriEXT = trace_glMultiTexParameteriEXT;
-  tbl.glMultiTexParameterivEXT = trace_glMultiTexParameterivEXT;
-  tbl.glMultiTexRenderbufferEXT = trace_glMultiTexRenderbufferEXT;
-  tbl.glMultiTexSubImage1DEXT = trace_glMultiTexSubImage1DEXT;
-  tbl.glMultiTexSubImage2DEXT = trace_glMultiTexSubImage2DEXT;
-  tbl.glMultiTexSubImage3DEXT = trace_glMultiTexSubImage3DEXT;
-  tbl.glNamedBufferDataEXT = trace_glNamedBufferDataEXT;
-  tbl.glNamedBufferSubDataEXT = trace_glNamedBufferSubDataEXT;
-  tbl.glNamedCopyBufferSubDataEXT = trace_glNamedCopyBufferSubDataEXT;
-  tbl.glNamedFramebufferRenderbufferEXT = trace_glNamedFramebufferRenderbufferEXT;
-  tbl.glNamedFramebufferTexture1DEXT = trace_glNamedFramebufferTexture1DEXT;
-  tbl.glNamedFramebufferTexture2DEXT = trace_glNamedFramebufferTexture2DEXT;
-  tbl.glNamedFramebufferTexture3DEXT = trace_glNamedFramebufferTexture3DEXT;
-  tbl.glNamedFramebufferTextureEXT = trace_glNamedFramebufferTextureEXT;
-  tbl.glNamedFramebufferTextureFaceEXT = trace_glNamedFramebufferTextureFaceEXT;
-  tbl.glNamedFramebufferTextureLayerEXT = trace_glNamedFramebufferTextureLayerEXT;
-  tbl.glNamedProgramLocalParameter4dEXT = trace_glNamedProgramLocalParameter4dEXT;
-  tbl.glNamedProgramLocalParameter4dvEXT = trace_glNamedProgramLocalParameter4dvEXT;
-  tbl.glNamedProgramLocalParameter4fEXT = trace_glNamedProgramLocalParameter4fEXT;
-  tbl.glNamedProgramLocalParameter4fvEXT = trace_glNamedProgramLocalParameter4fvEXT;
-  tbl.glNamedProgramLocalParameterI4iEXT = trace_glNamedProgramLocalParameterI4iEXT;
-  tbl.glNamedProgramLocalParameterI4ivEXT = trace_glNamedProgramLocalParameterI4ivEXT;
-  tbl.glNamedProgramLocalParameterI4uiEXT = trace_glNamedProgramLocalParameterI4uiEXT;
-  tbl.glNamedProgramLocalParameterI4uivEXT = trace_glNamedProgramLocalParameterI4uivEXT;
-  tbl.glNamedProgramLocalParameters4fvEXT = trace_glNamedProgramLocalParameters4fvEXT;
-  tbl.glNamedProgramLocalParametersI4ivEXT = trace_glNamedProgramLocalParametersI4ivEXT;
-  tbl.glNamedProgramLocalParametersI4uivEXT = trace_glNamedProgramLocalParametersI4uivEXT;
-  tbl.glNamedProgramStringEXT = trace_glNamedProgramStringEXT;
-  tbl.glNamedRenderbufferStorageEXT = trace_glNamedRenderbufferStorageEXT;
-  tbl.glNamedRenderbufferStorageMultisampleCoverageEXT = trace_glNamedRenderbufferStorageMultisampleCoverageEXT;
-  tbl.glNamedRenderbufferStorageMultisampleEXT = trace_glNamedRenderbufferStorageMultisampleEXT;
-  tbl.glProgramUniform1dEXT = trace_glProgramUniform1dEXT;
-  tbl.glProgramUniform1dvEXT = trace_glProgramUniform1dvEXT;
-  tbl.glProgramUniform1fEXT = trace_glProgramUniform1fEXT;
-  tbl.glProgramUniform1fvEXT = trace_glProgramUniform1fvEXT;
-  tbl.glProgramUniform1iEXT = trace_glProgramUniform1iEXT;
-  tbl.glProgramUniform1ivEXT = trace_glProgramUniform1ivEXT;
-  tbl.glProgramUniform1uiEXT = trace_glProgramUniform1uiEXT;
-  tbl.glProgramUniform1uivEXT = trace_glProgramUniform1uivEXT;
-  tbl.glProgramUniform2dEXT = trace_glProgramUniform2dEXT;
-  tbl.glProgramUniform2dvEXT = trace_glProgramUniform2dvEXT;
-  tbl.glProgramUniform2fEXT = trace_glProgramUniform2fEXT;
-  tbl.glProgramUniform2fvEXT = trace_glProgramUniform2fvEXT;
-  tbl.glProgramUniform2iEXT = trace_glProgramUniform2iEXT;
-  tbl.glProgramUniform2ivEXT = trace_glProgramUniform2ivEXT;
-  tbl.glProgramUniform2uiEXT = trace_glProgramUniform2uiEXT;
-  tbl.glProgramUniform2uivEXT = trace_glProgramUniform2uivEXT;
-  tbl.glProgramUniform3dEXT = trace_glProgramUniform3dEXT;
-  tbl.glProgramUniform3dvEXT = trace_glProgramUniform3dvEXT;
-  tbl.glProgramUniform3fEXT = trace_glProgramUniform3fEXT;
-  tbl.glProgramUniform3fvEXT = trace_glProgramUniform3fvEXT;
-  tbl.glProgramUniform3iEXT = trace_glProgramUniform3iEXT;
-  tbl.glProgramUniform3ivEXT = trace_glProgramUniform3ivEXT;
-  tbl.glProgramUniform3uiEXT = trace_glProgramUniform3uiEXT;
-  tbl.glProgramUniform3uivEXT = trace_glProgramUniform3uivEXT;
-  tbl.glProgramUniform4dEXT = trace_glProgramUniform4dEXT;
-  tbl.glProgramUniform4dvEXT = trace_glProgramUniform4dvEXT;
-  tbl.glProgramUniform4fEXT = trace_glProgramUniform4fEXT;
-  tbl.glProgramUniform4fvEXT = trace_glProgramUniform4fvEXT;
-  tbl.glProgramUniform4iEXT = trace_glProgramUniform4iEXT;
-  tbl.glProgramUniform4ivEXT = trace_glProgramUniform4ivEXT;
-  tbl.glProgramUniform4uiEXT = trace_glProgramUniform4uiEXT;
-  tbl.glProgramUniform4uivEXT = trace_glProgramUniform4uivEXT;
-  tbl.glProgramUniformMatrix2dvEXT = trace_glProgramUniformMatrix2dvEXT;
-  tbl.glProgramUniformMatrix2fvEXT = trace_glProgramUniformMatrix2fvEXT;
-  tbl.glProgramUniformMatrix2x3dvEXT = trace_glProgramUniformMatrix2x3dvEXT;
-  tbl.glProgramUniformMatrix2x3fvEXT = trace_glProgramUniformMatrix2x3fvEXT;
-  tbl.glProgramUniformMatrix2x4dvEXT = trace_glProgramUniformMatrix2x4dvEXT;
-  tbl.glProgramUniformMatrix2x4fvEXT = trace_glProgramUniformMatrix2x4fvEXT;
-  tbl.glProgramUniformMatrix3dvEXT = trace_glProgramUniformMatrix3dvEXT;
-  tbl.glProgramUniformMatrix3fvEXT = trace_glProgramUniformMatrix3fvEXT;
-  tbl.glProgramUniformMatrix3x2dvEXT = trace_glProgramUniformMatrix3x2dvEXT;
-  tbl.glProgramUniformMatrix3x2fvEXT = trace_glProgramUniformMatrix3x2fvEXT;
-  tbl.glProgramUniformMatrix3x4dvEXT = trace_glProgramUniformMatrix3x4dvEXT;
-  tbl.glProgramUniformMatrix3x4fvEXT = trace_glProgramUniformMatrix3x4fvEXT;
-  tbl.glProgramUniformMatrix4dvEXT = trace_glProgramUniformMatrix4dvEXT;
-  tbl.glProgramUniformMatrix4fvEXT = trace_glProgramUniformMatrix4fvEXT;
-  tbl.glProgramUniformMatrix4x2dvEXT = trace_glProgramUniformMatrix4x2dvEXT;
-  tbl.glProgramUniformMatrix4x2fvEXT = trace_glProgramUniformMatrix4x2fvEXT;
-  tbl.glProgramUniformMatrix4x3dvEXT = trace_glProgramUniformMatrix4x3dvEXT;
-  tbl.glProgramUniformMatrix4x3fvEXT = trace_glProgramUniformMatrix4x3fvEXT;
-  tbl.glPushClientAttribDefaultEXT = trace_glPushClientAttribDefaultEXT;
-  tbl.glTextureBufferEXT = trace_glTextureBufferEXT;
-  tbl.glTextureParameterIivEXT = trace_glTextureParameterIivEXT;
-  tbl.glTextureParameterIuivEXT = trace_glTextureParameterIuivEXT;
-  tbl.glTextureParameterfEXT = trace_glTextureParameterfEXT;
-  tbl.glTextureParameterfvEXT = trace_glTextureParameterfvEXT;
-  tbl.glTextureParameteriEXT = trace_glTextureParameteriEXT;
-  tbl.glTextureParameterivEXT = trace_glTextureParameterivEXT;
-  tbl.glTextureRenderbufferEXT = trace_glTextureRenderbufferEXT;
-  tbl.glTextureSubImage1DEXT = trace_glTextureSubImage1DEXT;
-  tbl.glTextureSubImage2DEXT = trace_glTextureSubImage2DEXT;
-  tbl.glTextureSubImage3DEXT = trace_glTextureSubImage3DEXT;
-  tbl.glUnmapNamedBufferEXT = trace_glUnmapNamedBufferEXT;
-  tbl.glVertexArrayColorOffsetEXT = trace_glVertexArrayColorOffsetEXT;
-  tbl.glVertexArrayEdgeFlagOffsetEXT = trace_glVertexArrayEdgeFlagOffsetEXT;
-  tbl.glVertexArrayFogCoordOffsetEXT = trace_glVertexArrayFogCoordOffsetEXT;
-  tbl.glVertexArrayIndexOffsetEXT = trace_glVertexArrayIndexOffsetEXT;
-  tbl.glVertexArrayMultiTexCoordOffsetEXT = trace_glVertexArrayMultiTexCoordOffsetEXT;
-  tbl.glVertexArrayNormalOffsetEXT = trace_glVertexArrayNormalOffsetEXT;
-  tbl.glVertexArraySecondaryColorOffsetEXT = trace_glVertexArraySecondaryColorOffsetEXT;
-  tbl.glVertexArrayTexCoordOffsetEXT = trace_glVertexArrayTexCoordOffsetEXT;
-  tbl.glVertexArrayVertexAttribIOffsetEXT = trace_glVertexArrayVertexAttribIOffsetEXT;
-  tbl.glVertexArrayVertexAttribOffsetEXT = trace_glVertexArrayVertexAttribOffsetEXT;
-  tbl.glVertexArrayVertexOffsetEXT = trace_glVertexArrayVertexOffsetEXT;
+  tbl.glBindMultiTextureEXT = MakeRegalProc( trace_glBindMultiTextureEXT, layer );
+  tbl.glCheckNamedFramebufferStatusEXT = MakeRegalProc( trace_glCheckNamedFramebufferStatusEXT, layer );
+  tbl.glClientAttribDefaultEXT = MakeRegalProc( trace_glClientAttribDefaultEXT, layer );
+  tbl.glCompressedMultiTexImage1DEXT = MakeRegalProc( trace_glCompressedMultiTexImage1DEXT, layer );
+  tbl.glCompressedMultiTexImage2DEXT = MakeRegalProc( trace_glCompressedMultiTexImage2DEXT, layer );
+  tbl.glCompressedMultiTexImage3DEXT = MakeRegalProc( trace_glCompressedMultiTexImage3DEXT, layer );
+  tbl.glCompressedMultiTexSubImage1DEXT = MakeRegalProc( trace_glCompressedMultiTexSubImage1DEXT, layer );
+  tbl.glCompressedMultiTexSubImage2DEXT = MakeRegalProc( trace_glCompressedMultiTexSubImage2DEXT, layer );
+  tbl.glCompressedMultiTexSubImage3DEXT = MakeRegalProc( trace_glCompressedMultiTexSubImage3DEXT, layer );
+  tbl.glCompressedTextureImage1DEXT = MakeRegalProc( trace_glCompressedTextureImage1DEXT, layer );
+  tbl.glCompressedTextureImage2DEXT = MakeRegalProc( trace_glCompressedTextureImage2DEXT, layer );
+  tbl.glCompressedTextureImage3DEXT = MakeRegalProc( trace_glCompressedTextureImage3DEXT, layer );
+  tbl.glCompressedTextureSubImage1DEXT = MakeRegalProc( trace_glCompressedTextureSubImage1DEXT, layer );
+  tbl.glCompressedTextureSubImage2DEXT = MakeRegalProc( trace_glCompressedTextureSubImage2DEXT, layer );
+  tbl.glCompressedTextureSubImage3DEXT = MakeRegalProc( trace_glCompressedTextureSubImage3DEXT, layer );
+  tbl.glCopyMultiTexImage1DEXT = MakeRegalProc( trace_glCopyMultiTexImage1DEXT, layer );
+  tbl.glCopyMultiTexImage2DEXT = MakeRegalProc( trace_glCopyMultiTexImage2DEXT, layer );
+  tbl.glCopyMultiTexSubImage1DEXT = MakeRegalProc( trace_glCopyMultiTexSubImage1DEXT, layer );
+  tbl.glCopyMultiTexSubImage2DEXT = MakeRegalProc( trace_glCopyMultiTexSubImage2DEXT, layer );
+  tbl.glCopyMultiTexSubImage3DEXT = MakeRegalProc( trace_glCopyMultiTexSubImage3DEXT, layer );
+  tbl.glCopyTextureImage1DEXT = MakeRegalProc( trace_glCopyTextureImage1DEXT, layer );
+  tbl.glCopyTextureImage2DEXT = MakeRegalProc( trace_glCopyTextureImage2DEXT, layer );
+  tbl.glCopyTextureSubImage1DEXT = MakeRegalProc( trace_glCopyTextureSubImage1DEXT, layer );
+  tbl.glCopyTextureSubImage2DEXT = MakeRegalProc( trace_glCopyTextureSubImage2DEXT, layer );
+  tbl.glCopyTextureSubImage3DEXT = MakeRegalProc( trace_glCopyTextureSubImage3DEXT, layer );
+  tbl.glDisableClientStateIndexedEXT = MakeRegalProc( trace_glDisableClientStateIndexedEXT, layer );
+  tbl.glDisableVertexArrayAttribEXT = MakeRegalProc( trace_glDisableVertexArrayAttribEXT, layer );
+  tbl.glDisableVertexArrayEXT = MakeRegalProc( trace_glDisableVertexArrayEXT, layer );
+  tbl.glEnableClientStateIndexedEXT = MakeRegalProc( trace_glEnableClientStateIndexedEXT, layer );
+  tbl.glEnableVertexArrayAttribEXT = MakeRegalProc( trace_glEnableVertexArrayAttribEXT, layer );
+  tbl.glEnableVertexArrayEXT = MakeRegalProc( trace_glEnableVertexArrayEXT, layer );
+  tbl.glFlushMappedNamedBufferRangeEXT = MakeRegalProc( trace_glFlushMappedNamedBufferRangeEXT, layer );
+  tbl.glFramebufferDrawBufferEXT = MakeRegalProc( trace_glFramebufferDrawBufferEXT, layer );
+  tbl.glFramebufferDrawBuffersEXT = MakeRegalProc( trace_glFramebufferDrawBuffersEXT, layer );
+  tbl.glFramebufferReadBufferEXT = MakeRegalProc( trace_glFramebufferReadBufferEXT, layer );
+  tbl.glGenerateMultiTexMipmapEXT = MakeRegalProc( trace_glGenerateMultiTexMipmapEXT, layer );
+  tbl.glGenerateTextureMipmapEXT = MakeRegalProc( trace_glGenerateTextureMipmapEXT, layer );
+  tbl.glGetCompressedMultiTexImageEXT = MakeRegalProc( trace_glGetCompressedMultiTexImageEXT, layer );
+  tbl.glGetCompressedTextureImageEXT = MakeRegalProc( trace_glGetCompressedTextureImageEXT, layer );
+  tbl.glGetDoubleIndexedvEXT = MakeRegalProc( trace_glGetDoubleIndexedvEXT, layer );
+  tbl.glGetFloatIndexedvEXT = MakeRegalProc( trace_glGetFloatIndexedvEXT, layer );
+  tbl.glGetFramebufferParameterivEXT = MakeRegalProc( trace_glGetFramebufferParameterivEXT, layer );
+  tbl.glGetMultiTexEnvfvEXT = MakeRegalProc( trace_glGetMultiTexEnvfvEXT, layer );
+  tbl.glGetMultiTexEnvivEXT = MakeRegalProc( trace_glGetMultiTexEnvivEXT, layer );
+  tbl.glGetMultiTexGendvEXT = MakeRegalProc( trace_glGetMultiTexGendvEXT, layer );
+  tbl.glGetMultiTexGenfvEXT = MakeRegalProc( trace_glGetMultiTexGenfvEXT, layer );
+  tbl.glGetMultiTexGenivEXT = MakeRegalProc( trace_glGetMultiTexGenivEXT, layer );
+  tbl.glGetMultiTexImageEXT = MakeRegalProc( trace_glGetMultiTexImageEXT, layer );
+  tbl.glGetMultiTexLevelParameterfvEXT = MakeRegalProc( trace_glGetMultiTexLevelParameterfvEXT, layer );
+  tbl.glGetMultiTexLevelParameterivEXT = MakeRegalProc( trace_glGetMultiTexLevelParameterivEXT, layer );
+  tbl.glGetMultiTexParameterIivEXT = MakeRegalProc( trace_glGetMultiTexParameterIivEXT, layer );
+  tbl.glGetMultiTexParameterIuivEXT = MakeRegalProc( trace_glGetMultiTexParameterIuivEXT, layer );
+  tbl.glGetMultiTexParameterfvEXT = MakeRegalProc( trace_glGetMultiTexParameterfvEXT, layer );
+  tbl.glGetMultiTexParameterivEXT = MakeRegalProc( trace_glGetMultiTexParameterivEXT, layer );
+  tbl.glGetNamedBufferParameterivEXT = MakeRegalProc( trace_glGetNamedBufferParameterivEXT, layer );
+  tbl.glGetNamedBufferPointervEXT = MakeRegalProc( trace_glGetNamedBufferPointervEXT, layer );
+  tbl.glGetNamedBufferSubDataEXT = MakeRegalProc( trace_glGetNamedBufferSubDataEXT, layer );
+  tbl.glGetNamedFramebufferAttachmentParameterivEXT = MakeRegalProc( trace_glGetNamedFramebufferAttachmentParameterivEXT, layer );
+  tbl.glGetNamedProgramLocalParameterIivEXT = MakeRegalProc( trace_glGetNamedProgramLocalParameterIivEXT, layer );
+  tbl.glGetNamedProgramLocalParameterIuivEXT = MakeRegalProc( trace_glGetNamedProgramLocalParameterIuivEXT, layer );
+  tbl.glGetNamedProgramLocalParameterdvEXT = MakeRegalProc( trace_glGetNamedProgramLocalParameterdvEXT, layer );
+  tbl.glGetNamedProgramLocalParameterfvEXT = MakeRegalProc( trace_glGetNamedProgramLocalParameterfvEXT, layer );
+  tbl.glGetNamedProgramStringEXT = MakeRegalProc( trace_glGetNamedProgramStringEXT, layer );
+  tbl.glGetNamedProgramivEXT = MakeRegalProc( trace_glGetNamedProgramivEXT, layer );
+  tbl.glGetNamedRenderbufferParameterivEXT = MakeRegalProc( trace_glGetNamedRenderbufferParameterivEXT, layer );
+  tbl.glGetPointerIndexedvEXT = MakeRegalProc( trace_glGetPointerIndexedvEXT, layer );
+  tbl.glGetTextureImageEXT = MakeRegalProc( trace_glGetTextureImageEXT, layer );
+  tbl.glGetTextureLevelParameterfvEXT = MakeRegalProc( trace_glGetTextureLevelParameterfvEXT, layer );
+  tbl.glGetTextureLevelParameterivEXT = MakeRegalProc( trace_glGetTextureLevelParameterivEXT, layer );
+  tbl.glGetTextureParameterIivEXT = MakeRegalProc( trace_glGetTextureParameterIivEXT, layer );
+  tbl.glGetTextureParameterIuivEXT = MakeRegalProc( trace_glGetTextureParameterIuivEXT, layer );
+  tbl.glGetTextureParameterfvEXT = MakeRegalProc( trace_glGetTextureParameterfvEXT, layer );
+  tbl.glGetTextureParameterivEXT = MakeRegalProc( trace_glGetTextureParameterivEXT, layer );
+  tbl.glGetVertexArrayIntegeri_vEXT = MakeRegalProc( trace_glGetVertexArrayIntegeri_vEXT, layer );
+  tbl.glGetVertexArrayIntegervEXT = MakeRegalProc( trace_glGetVertexArrayIntegervEXT, layer );
+  tbl.glGetVertexArrayPointeri_vEXT = MakeRegalProc( trace_glGetVertexArrayPointeri_vEXT, layer );
+  tbl.glGetVertexArrayPointervEXT = MakeRegalProc( trace_glGetVertexArrayPointervEXT, layer );
+  tbl.glMapNamedBufferEXT = MakeRegalProc( trace_glMapNamedBufferEXT, layer );
+  tbl.glMapNamedBufferRangeEXT = MakeRegalProc( trace_glMapNamedBufferRangeEXT, layer );
+  tbl.glMatrixFrustumEXT = MakeRegalProc( trace_glMatrixFrustumEXT, layer );
+  tbl.glMatrixLoadIdentityEXT = MakeRegalProc( trace_glMatrixLoadIdentityEXT, layer );
+  tbl.glMatrixLoadTransposedEXT = MakeRegalProc( trace_glMatrixLoadTransposedEXT, layer );
+  tbl.glMatrixLoadTransposefEXT = MakeRegalProc( trace_glMatrixLoadTransposefEXT, layer );
+  tbl.glMatrixLoaddEXT = MakeRegalProc( trace_glMatrixLoaddEXT, layer );
+  tbl.glMatrixLoadfEXT = MakeRegalProc( trace_glMatrixLoadfEXT, layer );
+  tbl.glMatrixMultTransposedEXT = MakeRegalProc( trace_glMatrixMultTransposedEXT, layer );
+  tbl.glMatrixMultTransposefEXT = MakeRegalProc( trace_glMatrixMultTransposefEXT, layer );
+  tbl.glMatrixMultdEXT = MakeRegalProc( trace_glMatrixMultdEXT, layer );
+  tbl.glMatrixMultfEXT = MakeRegalProc( trace_glMatrixMultfEXT, layer );
+  tbl.glMatrixOrthoEXT = MakeRegalProc( trace_glMatrixOrthoEXT, layer );
+  tbl.glMatrixPopEXT = MakeRegalProc( trace_glMatrixPopEXT, layer );
+  tbl.glMatrixPushEXT = MakeRegalProc( trace_glMatrixPushEXT, layer );
+  tbl.glMatrixRotatedEXT = MakeRegalProc( trace_glMatrixRotatedEXT, layer );
+  tbl.glMatrixRotatefEXT = MakeRegalProc( trace_glMatrixRotatefEXT, layer );
+  tbl.glMatrixScaledEXT = MakeRegalProc( trace_glMatrixScaledEXT, layer );
+  tbl.glMatrixScalefEXT = MakeRegalProc( trace_glMatrixScalefEXT, layer );
+  tbl.glMatrixTranslatedEXT = MakeRegalProc( trace_glMatrixTranslatedEXT, layer );
+  tbl.glMatrixTranslatefEXT = MakeRegalProc( trace_glMatrixTranslatefEXT, layer );
+  tbl.glMultiTexBufferEXT = MakeRegalProc( trace_glMultiTexBufferEXT, layer );
+  tbl.glMultiTexCoordPointerEXT = MakeRegalProc( trace_glMultiTexCoordPointerEXT, layer );
+  tbl.glMultiTexEnvfEXT = MakeRegalProc( trace_glMultiTexEnvfEXT, layer );
+  tbl.glMultiTexEnvfvEXT = MakeRegalProc( trace_glMultiTexEnvfvEXT, layer );
+  tbl.glMultiTexEnviEXT = MakeRegalProc( trace_glMultiTexEnviEXT, layer );
+  tbl.glMultiTexEnvivEXT = MakeRegalProc( trace_glMultiTexEnvivEXT, layer );
+  tbl.glMultiTexGendEXT = MakeRegalProc( trace_glMultiTexGendEXT, layer );
+  tbl.glMultiTexGendvEXT = MakeRegalProc( trace_glMultiTexGendvEXT, layer );
+  tbl.glMultiTexGenfEXT = MakeRegalProc( trace_glMultiTexGenfEXT, layer );
+  tbl.glMultiTexGenfvEXT = MakeRegalProc( trace_glMultiTexGenfvEXT, layer );
+  tbl.glMultiTexGeniEXT = MakeRegalProc( trace_glMultiTexGeniEXT, layer );
+  tbl.glMultiTexGenivEXT = MakeRegalProc( trace_glMultiTexGenivEXT, layer );
+  tbl.glMultiTexParameterIivEXT = MakeRegalProc( trace_glMultiTexParameterIivEXT, layer );
+  tbl.glMultiTexParameterIuivEXT = MakeRegalProc( trace_glMultiTexParameterIuivEXT, layer );
+  tbl.glMultiTexParameterfEXT = MakeRegalProc( trace_glMultiTexParameterfEXT, layer );
+  tbl.glMultiTexParameterfvEXT = MakeRegalProc( trace_glMultiTexParameterfvEXT, layer );
+  tbl.glMultiTexParameteriEXT = MakeRegalProc( trace_glMultiTexParameteriEXT, layer );
+  tbl.glMultiTexParameterivEXT = MakeRegalProc( trace_glMultiTexParameterivEXT, layer );
+  tbl.glMultiTexRenderbufferEXT = MakeRegalProc( trace_glMultiTexRenderbufferEXT, layer );
+  tbl.glMultiTexSubImage1DEXT = MakeRegalProc( trace_glMultiTexSubImage1DEXT, layer );
+  tbl.glMultiTexSubImage2DEXT = MakeRegalProc( trace_glMultiTexSubImage2DEXT, layer );
+  tbl.glMultiTexSubImage3DEXT = MakeRegalProc( trace_glMultiTexSubImage3DEXT, layer );
+  tbl.glNamedBufferDataEXT = MakeRegalProc( trace_glNamedBufferDataEXT, layer );
+  tbl.glNamedBufferSubDataEXT = MakeRegalProc( trace_glNamedBufferSubDataEXT, layer );
+  tbl.glNamedCopyBufferSubDataEXT = MakeRegalProc( trace_glNamedCopyBufferSubDataEXT, layer );
+  tbl.glNamedFramebufferRenderbufferEXT = MakeRegalProc( trace_glNamedFramebufferRenderbufferEXT, layer );
+  tbl.glNamedFramebufferTexture1DEXT = MakeRegalProc( trace_glNamedFramebufferTexture1DEXT, layer );
+  tbl.glNamedFramebufferTexture2DEXT = MakeRegalProc( trace_glNamedFramebufferTexture2DEXT, layer );
+  tbl.glNamedFramebufferTexture3DEXT = MakeRegalProc( trace_glNamedFramebufferTexture3DEXT, layer );
+  tbl.glNamedFramebufferTextureEXT = MakeRegalProc( trace_glNamedFramebufferTextureEXT, layer );
+  tbl.glNamedFramebufferTextureFaceEXT = MakeRegalProc( trace_glNamedFramebufferTextureFaceEXT, layer );
+  tbl.glNamedFramebufferTextureLayerEXT = MakeRegalProc( trace_glNamedFramebufferTextureLayerEXT, layer );
+  tbl.glNamedProgramLocalParameter4dEXT = MakeRegalProc( trace_glNamedProgramLocalParameter4dEXT, layer );
+  tbl.glNamedProgramLocalParameter4dvEXT = MakeRegalProc( trace_glNamedProgramLocalParameter4dvEXT, layer );
+  tbl.glNamedProgramLocalParameter4fEXT = MakeRegalProc( trace_glNamedProgramLocalParameter4fEXT, layer );
+  tbl.glNamedProgramLocalParameter4fvEXT = MakeRegalProc( trace_glNamedProgramLocalParameter4fvEXT, layer );
+  tbl.glNamedProgramLocalParameterI4iEXT = MakeRegalProc( trace_glNamedProgramLocalParameterI4iEXT, layer );
+  tbl.glNamedProgramLocalParameterI4ivEXT = MakeRegalProc( trace_glNamedProgramLocalParameterI4ivEXT, layer );
+  tbl.glNamedProgramLocalParameterI4uiEXT = MakeRegalProc( trace_glNamedProgramLocalParameterI4uiEXT, layer );
+  tbl.glNamedProgramLocalParameterI4uivEXT = MakeRegalProc( trace_glNamedProgramLocalParameterI4uivEXT, layer );
+  tbl.glNamedProgramLocalParameters4fvEXT = MakeRegalProc( trace_glNamedProgramLocalParameters4fvEXT, layer );
+  tbl.glNamedProgramLocalParametersI4ivEXT = MakeRegalProc( trace_glNamedProgramLocalParametersI4ivEXT, layer );
+  tbl.glNamedProgramLocalParametersI4uivEXT = MakeRegalProc( trace_glNamedProgramLocalParametersI4uivEXT, layer );
+  tbl.glNamedProgramStringEXT = MakeRegalProc( trace_glNamedProgramStringEXT, layer );
+  tbl.glNamedRenderbufferStorageEXT = MakeRegalProc( trace_glNamedRenderbufferStorageEXT, layer );
+  tbl.glNamedRenderbufferStorageMultisampleCoverageEXT = MakeRegalProc( trace_glNamedRenderbufferStorageMultisampleCoverageEXT, layer );
+  tbl.glNamedRenderbufferStorageMultisampleEXT = MakeRegalProc( trace_glNamedRenderbufferStorageMultisampleEXT, layer );
+  tbl.glProgramUniform1dEXT = MakeRegalProc( trace_glProgramUniform1dEXT, layer );
+  tbl.glProgramUniform1dvEXT = MakeRegalProc( trace_glProgramUniform1dvEXT, layer );
+  tbl.glProgramUniform1fEXT = MakeRegalProc( trace_glProgramUniform1fEXT, layer );
+  tbl.glProgramUniform1fvEXT = MakeRegalProc( trace_glProgramUniform1fvEXT, layer );
+  tbl.glProgramUniform1iEXT = MakeRegalProc( trace_glProgramUniform1iEXT, layer );
+  tbl.glProgramUniform1ivEXT = MakeRegalProc( trace_glProgramUniform1ivEXT, layer );
+  tbl.glProgramUniform1uiEXT = MakeRegalProc( trace_glProgramUniform1uiEXT, layer );
+  tbl.glProgramUniform1uivEXT = MakeRegalProc( trace_glProgramUniform1uivEXT, layer );
+  tbl.glProgramUniform2dEXT = MakeRegalProc( trace_glProgramUniform2dEXT, layer );
+  tbl.glProgramUniform2dvEXT = MakeRegalProc( trace_glProgramUniform2dvEXT, layer );
+  tbl.glProgramUniform2fEXT = MakeRegalProc( trace_glProgramUniform2fEXT, layer );
+  tbl.glProgramUniform2fvEXT = MakeRegalProc( trace_glProgramUniform2fvEXT, layer );
+  tbl.glProgramUniform2iEXT = MakeRegalProc( trace_glProgramUniform2iEXT, layer );
+  tbl.glProgramUniform2ivEXT = MakeRegalProc( trace_glProgramUniform2ivEXT, layer );
+  tbl.glProgramUniform2uiEXT = MakeRegalProc( trace_glProgramUniform2uiEXT, layer );
+  tbl.glProgramUniform2uivEXT = MakeRegalProc( trace_glProgramUniform2uivEXT, layer );
+  tbl.glProgramUniform3dEXT = MakeRegalProc( trace_glProgramUniform3dEXT, layer );
+  tbl.glProgramUniform3dvEXT = MakeRegalProc( trace_glProgramUniform3dvEXT, layer );
+  tbl.glProgramUniform3fEXT = MakeRegalProc( trace_glProgramUniform3fEXT, layer );
+  tbl.glProgramUniform3fvEXT = MakeRegalProc( trace_glProgramUniform3fvEXT, layer );
+  tbl.glProgramUniform3iEXT = MakeRegalProc( trace_glProgramUniform3iEXT, layer );
+  tbl.glProgramUniform3ivEXT = MakeRegalProc( trace_glProgramUniform3ivEXT, layer );
+  tbl.glProgramUniform3uiEXT = MakeRegalProc( trace_glProgramUniform3uiEXT, layer );
+  tbl.glProgramUniform3uivEXT = MakeRegalProc( trace_glProgramUniform3uivEXT, layer );
+  tbl.glProgramUniform4dEXT = MakeRegalProc( trace_glProgramUniform4dEXT, layer );
+  tbl.glProgramUniform4dvEXT = MakeRegalProc( trace_glProgramUniform4dvEXT, layer );
+  tbl.glProgramUniform4fEXT = MakeRegalProc( trace_glProgramUniform4fEXT, layer );
+  tbl.glProgramUniform4fvEXT = MakeRegalProc( trace_glProgramUniform4fvEXT, layer );
+  tbl.glProgramUniform4iEXT = MakeRegalProc( trace_glProgramUniform4iEXT, layer );
+  tbl.glProgramUniform4ivEXT = MakeRegalProc( trace_glProgramUniform4ivEXT, layer );
+  tbl.glProgramUniform4uiEXT = MakeRegalProc( trace_glProgramUniform4uiEXT, layer );
+  tbl.glProgramUniform4uivEXT = MakeRegalProc( trace_glProgramUniform4uivEXT, layer );
+  tbl.glProgramUniformMatrix2dvEXT = MakeRegalProc( trace_glProgramUniformMatrix2dvEXT, layer );
+  tbl.glProgramUniformMatrix2fvEXT = MakeRegalProc( trace_glProgramUniformMatrix2fvEXT, layer );
+  tbl.glProgramUniformMatrix2x3dvEXT = MakeRegalProc( trace_glProgramUniformMatrix2x3dvEXT, layer );
+  tbl.glProgramUniformMatrix2x3fvEXT = MakeRegalProc( trace_glProgramUniformMatrix2x3fvEXT, layer );
+  tbl.glProgramUniformMatrix2x4dvEXT = MakeRegalProc( trace_glProgramUniformMatrix2x4dvEXT, layer );
+  tbl.glProgramUniformMatrix2x4fvEXT = MakeRegalProc( trace_glProgramUniformMatrix2x4fvEXT, layer );
+  tbl.glProgramUniformMatrix3dvEXT = MakeRegalProc( trace_glProgramUniformMatrix3dvEXT, layer );
+  tbl.glProgramUniformMatrix3fvEXT = MakeRegalProc( trace_glProgramUniformMatrix3fvEXT, layer );
+  tbl.glProgramUniformMatrix3x2dvEXT = MakeRegalProc( trace_glProgramUniformMatrix3x2dvEXT, layer );
+  tbl.glProgramUniformMatrix3x2fvEXT = MakeRegalProc( trace_glProgramUniformMatrix3x2fvEXT, layer );
+  tbl.glProgramUniformMatrix3x4dvEXT = MakeRegalProc( trace_glProgramUniformMatrix3x4dvEXT, layer );
+  tbl.glProgramUniformMatrix3x4fvEXT = MakeRegalProc( trace_glProgramUniformMatrix3x4fvEXT, layer );
+  tbl.glProgramUniformMatrix4dvEXT = MakeRegalProc( trace_glProgramUniformMatrix4dvEXT, layer );
+  tbl.glProgramUniformMatrix4fvEXT = MakeRegalProc( trace_glProgramUniformMatrix4fvEXT, layer );
+  tbl.glProgramUniformMatrix4x2dvEXT = MakeRegalProc( trace_glProgramUniformMatrix4x2dvEXT, layer );
+  tbl.glProgramUniformMatrix4x2fvEXT = MakeRegalProc( trace_glProgramUniformMatrix4x2fvEXT, layer );
+  tbl.glProgramUniformMatrix4x3dvEXT = MakeRegalProc( trace_glProgramUniformMatrix4x3dvEXT, layer );
+  tbl.glProgramUniformMatrix4x3fvEXT = MakeRegalProc( trace_glProgramUniformMatrix4x3fvEXT, layer );
+  tbl.glPushClientAttribDefaultEXT = MakeRegalProc( trace_glPushClientAttribDefaultEXT, layer );
+  tbl.glTextureBufferEXT = MakeRegalProc( trace_glTextureBufferEXT, layer );
+  tbl.glTextureParameterIivEXT = MakeRegalProc( trace_glTextureParameterIivEXT, layer );
+  tbl.glTextureParameterIuivEXT = MakeRegalProc( trace_glTextureParameterIuivEXT, layer );
+  tbl.glTextureParameterfEXT = MakeRegalProc( trace_glTextureParameterfEXT, layer );
+  tbl.glTextureParameterfvEXT = MakeRegalProc( trace_glTextureParameterfvEXT, layer );
+  tbl.glTextureParameteriEXT = MakeRegalProc( trace_glTextureParameteriEXT, layer );
+  tbl.glTextureParameterivEXT = MakeRegalProc( trace_glTextureParameterivEXT, layer );
+  tbl.glTextureRenderbufferEXT = MakeRegalProc( trace_glTextureRenderbufferEXT, layer );
+  tbl.glTextureSubImage1DEXT = MakeRegalProc( trace_glTextureSubImage1DEXT, layer );
+  tbl.glTextureSubImage2DEXT = MakeRegalProc( trace_glTextureSubImage2DEXT, layer );
+  tbl.glTextureSubImage3DEXT = MakeRegalProc( trace_glTextureSubImage3DEXT, layer );
+  tbl.glUnmapNamedBufferEXT = MakeRegalProc( trace_glUnmapNamedBufferEXT, layer );
+  tbl.glVertexArrayColorOffsetEXT = MakeRegalProc( trace_glVertexArrayColorOffsetEXT, layer );
+  tbl.glVertexArrayEdgeFlagOffsetEXT = MakeRegalProc( trace_glVertexArrayEdgeFlagOffsetEXT, layer );
+  tbl.glVertexArrayFogCoordOffsetEXT = MakeRegalProc( trace_glVertexArrayFogCoordOffsetEXT, layer );
+  tbl.glVertexArrayIndexOffsetEXT = MakeRegalProc( trace_glVertexArrayIndexOffsetEXT, layer );
+  tbl.glVertexArrayMultiTexCoordOffsetEXT = MakeRegalProc( trace_glVertexArrayMultiTexCoordOffsetEXT, layer );
+  tbl.glVertexArrayNormalOffsetEXT = MakeRegalProc( trace_glVertexArrayNormalOffsetEXT, layer );
+  tbl.glVertexArraySecondaryColorOffsetEXT = MakeRegalProc( trace_glVertexArraySecondaryColorOffsetEXT, layer );
+  tbl.glVertexArrayTexCoordOffsetEXT = MakeRegalProc( trace_glVertexArrayTexCoordOffsetEXT, layer );
+  tbl.glVertexArrayVertexAttribIOffsetEXT = MakeRegalProc( trace_glVertexArrayVertexAttribIOffsetEXT, layer );
+  tbl.glVertexArrayVertexAttribOffsetEXT = MakeRegalProc( trace_glVertexArrayVertexAttribOffsetEXT, layer );
+  tbl.glVertexArrayVertexOffsetEXT = MakeRegalProc( trace_glVertexArrayVertexOffsetEXT, layer );
 
   // GL_EXT_discard_framebuffer
 
-  tbl.glDiscardFramebufferEXT = trace_glDiscardFramebufferEXT;
+  tbl.glDiscardFramebufferEXT = MakeRegalProc( trace_glDiscardFramebufferEXT, layer );
 
   // GL_EXT_draw_buffers2
 
-  tbl.glColorMaskIndexedEXT = trace_glColorMaskIndexedEXT;
-  tbl.glDisableIndexedEXT = trace_glDisableIndexedEXT;
-  tbl.glEnableIndexedEXT = trace_glEnableIndexedEXT;
-  tbl.glGetBooleanIndexedvEXT = trace_glGetBooleanIndexedvEXT;
-  tbl.glGetIntegerIndexedvEXT = trace_glGetIntegerIndexedvEXT;
-  tbl.glIsEnabledIndexedEXT = trace_glIsEnabledIndexedEXT;
+  tbl.glColorMaskIndexedEXT = MakeRegalProc( trace_glColorMaskIndexedEXT, layer );
+  tbl.glDisableIndexedEXT = MakeRegalProc( trace_glDisableIndexedEXT, layer );
+  tbl.glEnableIndexedEXT = MakeRegalProc( trace_glEnableIndexedEXT, layer );
+  tbl.glGetBooleanIndexedvEXT = MakeRegalProc( trace_glGetBooleanIndexedvEXT, layer );
+  tbl.glGetIntegerIndexedvEXT = MakeRegalProc( trace_glGetIntegerIndexedvEXT, layer );
+  tbl.glIsEnabledIndexedEXT = MakeRegalProc( trace_glIsEnabledIndexedEXT, layer );
 
   // GL_EXT_draw_instanced
 
-  tbl.glDrawArraysInstancedEXT = trace_glDrawArraysInstancedEXT;
-  tbl.glDrawElementsInstancedEXT = trace_glDrawElementsInstancedEXT;
+  tbl.glDrawArraysInstancedEXT = MakeRegalProc( trace_glDrawArraysInstancedEXT, layer );
+  tbl.glDrawElementsInstancedEXT = MakeRegalProc( trace_glDrawElementsInstancedEXT, layer );
 
   // GL_EXT_draw_range_elements
 
-  tbl.glDrawRangeElementsEXT = trace_glDrawRangeElementsEXT;
+  tbl.glDrawRangeElementsEXT = MakeRegalProc( trace_glDrawRangeElementsEXT, layer );
 
   // GL_EXT_fog_coord
 
-  tbl.glFogCoordPointerEXT = trace_glFogCoordPointerEXT;
-  tbl.glFogCoorddEXT = trace_glFogCoorddEXT;
-  tbl.glFogCoorddvEXT = trace_glFogCoorddvEXT;
-  tbl.glFogCoordfEXT = trace_glFogCoordfEXT;
-  tbl.glFogCoordfvEXT = trace_glFogCoordfvEXT;
+  tbl.glFogCoordPointerEXT = MakeRegalProc( trace_glFogCoordPointerEXT, layer );
+  tbl.glFogCoorddEXT = MakeRegalProc( trace_glFogCoorddEXT, layer );
+  tbl.glFogCoorddvEXT = MakeRegalProc( trace_glFogCoorddvEXT, layer );
+  tbl.glFogCoordfEXT = MakeRegalProc( trace_glFogCoordfEXT, layer );
+  tbl.glFogCoordfvEXT = MakeRegalProc( trace_glFogCoordfvEXT, layer );
 
   // GL_EXT_framebuffer_blit
 
-  tbl.glBlitFramebufferEXT = trace_glBlitFramebufferEXT;
+  tbl.glBlitFramebufferEXT = MakeRegalProc( trace_glBlitFramebufferEXT, layer );
 
   // GL_EXT_framebuffer_multisample
 
-  tbl.glRenderbufferStorageMultisampleEXT = trace_glRenderbufferStorageMultisampleEXT;
+  tbl.glRenderbufferStorageMultisampleEXT = MakeRegalProc( trace_glRenderbufferStorageMultisampleEXT, layer );
 
   // GL_EXT_framebuffer_object
 
-  tbl.glBindFramebufferEXT = trace_glBindFramebufferEXT;
-  tbl.glBindRenderbufferEXT = trace_glBindRenderbufferEXT;
-  tbl.glCheckFramebufferStatusEXT = trace_glCheckFramebufferStatusEXT;
-  tbl.glDeleteFramebuffersEXT = trace_glDeleteFramebuffersEXT;
-  tbl.glDeleteRenderbuffersEXT = trace_glDeleteRenderbuffersEXT;
-  tbl.glFramebufferRenderbufferEXT = trace_glFramebufferRenderbufferEXT;
-  tbl.glFramebufferTexture1DEXT = trace_glFramebufferTexture1DEXT;
-  tbl.glFramebufferTexture2DEXT = trace_glFramebufferTexture2DEXT;
-  tbl.glFramebufferTexture3DEXT = trace_glFramebufferTexture3DEXT;
-  tbl.glGenFramebuffersEXT = trace_glGenFramebuffersEXT;
-  tbl.glGenRenderbuffersEXT = trace_glGenRenderbuffersEXT;
-  tbl.glGenerateMipmapEXT = trace_glGenerateMipmapEXT;
-  tbl.glGetFramebufferAttachmentParameterivEXT = trace_glGetFramebufferAttachmentParameterivEXT;
-  tbl.glGetRenderbufferParameterivEXT = trace_glGetRenderbufferParameterivEXT;
-  tbl.glIsFramebufferEXT = trace_glIsFramebufferEXT;
-  tbl.glIsRenderbufferEXT = trace_glIsRenderbufferEXT;
-  tbl.glRenderbufferStorageEXT = trace_glRenderbufferStorageEXT;
+  tbl.glBindFramebufferEXT = MakeRegalProc( trace_glBindFramebufferEXT, layer );
+  tbl.glBindRenderbufferEXT = MakeRegalProc( trace_glBindRenderbufferEXT, layer );
+  tbl.glCheckFramebufferStatusEXT = MakeRegalProc( trace_glCheckFramebufferStatusEXT, layer );
+  tbl.glDeleteFramebuffersEXT = MakeRegalProc( trace_glDeleteFramebuffersEXT, layer );
+  tbl.glDeleteRenderbuffersEXT = MakeRegalProc( trace_glDeleteRenderbuffersEXT, layer );
+  tbl.glFramebufferRenderbufferEXT = MakeRegalProc( trace_glFramebufferRenderbufferEXT, layer );
+  tbl.glFramebufferTexture1DEXT = MakeRegalProc( trace_glFramebufferTexture1DEXT, layer );
+  tbl.glFramebufferTexture2DEXT = MakeRegalProc( trace_glFramebufferTexture2DEXT, layer );
+  tbl.glFramebufferTexture3DEXT = MakeRegalProc( trace_glFramebufferTexture3DEXT, layer );
+  tbl.glGenFramebuffersEXT = MakeRegalProc( trace_glGenFramebuffersEXT, layer );
+  tbl.glGenRenderbuffersEXT = MakeRegalProc( trace_glGenRenderbuffersEXT, layer );
+  tbl.glGenerateMipmapEXT = MakeRegalProc( trace_glGenerateMipmapEXT, layer );
+  tbl.glGetFramebufferAttachmentParameterivEXT = MakeRegalProc( trace_glGetFramebufferAttachmentParameterivEXT, layer );
+  tbl.glGetRenderbufferParameterivEXT = MakeRegalProc( trace_glGetRenderbufferParameterivEXT, layer );
+  tbl.glIsFramebufferEXT = MakeRegalProc( trace_glIsFramebufferEXT, layer );
+  tbl.glIsRenderbufferEXT = MakeRegalProc( trace_glIsRenderbufferEXT, layer );
+  tbl.glRenderbufferStorageEXT = MakeRegalProc( trace_glRenderbufferStorageEXT, layer );
 
   // GL_EXT_geometry_shader4
 
-  tbl.glFramebufferTextureEXT = trace_glFramebufferTextureEXT;
-  tbl.glFramebufferTextureFaceEXT = trace_glFramebufferTextureFaceEXT;
-  tbl.glProgramParameteriEXT = trace_glProgramParameteriEXT;
+  tbl.glFramebufferTextureEXT = MakeRegalProc( trace_glFramebufferTextureEXT, layer );
+  tbl.glFramebufferTextureFaceEXT = MakeRegalProc( trace_glFramebufferTextureFaceEXT, layer );
+  tbl.glProgramParameteriEXT = MakeRegalProc( trace_glProgramParameteriEXT, layer );
 
   // GL_EXT_gpu_program_parameters
 
-  tbl.glProgramEnvParameters4fvEXT = trace_glProgramEnvParameters4fvEXT;
-  tbl.glProgramLocalParameters4fvEXT = trace_glProgramLocalParameters4fvEXT;
+  tbl.glProgramEnvParameters4fvEXT = MakeRegalProc( trace_glProgramEnvParameters4fvEXT, layer );
+  tbl.glProgramLocalParameters4fvEXT = MakeRegalProc( trace_glProgramLocalParameters4fvEXT, layer );
 
   // GL_EXT_gpu_shader4
 
-  tbl.glBindFragDataLocationEXT = trace_glBindFragDataLocationEXT;
-  tbl.glGetFragDataLocationEXT = trace_glGetFragDataLocationEXT;
-  tbl.glGetUniformuivEXT = trace_glGetUniformuivEXT;
-  tbl.glGetVertexAttribIivEXT = trace_glGetVertexAttribIivEXT;
-  tbl.glGetVertexAttribIuivEXT = trace_glGetVertexAttribIuivEXT;
-  tbl.glUniform1uiEXT = trace_glUniform1uiEXT;
-  tbl.glUniform1uivEXT = trace_glUniform1uivEXT;
-  tbl.glUniform2uiEXT = trace_glUniform2uiEXT;
-  tbl.glUniform2uivEXT = trace_glUniform2uivEXT;
-  tbl.glUniform3uiEXT = trace_glUniform3uiEXT;
-  tbl.glUniform3uivEXT = trace_glUniform3uivEXT;
-  tbl.glUniform4uiEXT = trace_glUniform4uiEXT;
-  tbl.glUniform4uivEXT = trace_glUniform4uivEXT;
-  tbl.glVertexAttribI1iEXT = trace_glVertexAttribI1iEXT;
-  tbl.glVertexAttribI1ivEXT = trace_glVertexAttribI1ivEXT;
-  tbl.glVertexAttribI1uiEXT = trace_glVertexAttribI1uiEXT;
-  tbl.glVertexAttribI1uivEXT = trace_glVertexAttribI1uivEXT;
-  tbl.glVertexAttribI2iEXT = trace_glVertexAttribI2iEXT;
-  tbl.glVertexAttribI2ivEXT = trace_glVertexAttribI2ivEXT;
-  tbl.glVertexAttribI2uiEXT = trace_glVertexAttribI2uiEXT;
-  tbl.glVertexAttribI2uivEXT = trace_glVertexAttribI2uivEXT;
-  tbl.glVertexAttribI3iEXT = trace_glVertexAttribI3iEXT;
-  tbl.glVertexAttribI3ivEXT = trace_glVertexAttribI3ivEXT;
-  tbl.glVertexAttribI3uiEXT = trace_glVertexAttribI3uiEXT;
-  tbl.glVertexAttribI3uivEXT = trace_glVertexAttribI3uivEXT;
-  tbl.glVertexAttribI4bvEXT = trace_glVertexAttribI4bvEXT;
-  tbl.glVertexAttribI4iEXT = trace_glVertexAttribI4iEXT;
-  tbl.glVertexAttribI4ivEXT = trace_glVertexAttribI4ivEXT;
-  tbl.glVertexAttribI4svEXT = trace_glVertexAttribI4svEXT;
-  tbl.glVertexAttribI4ubvEXT = trace_glVertexAttribI4ubvEXT;
-  tbl.glVertexAttribI4uiEXT = trace_glVertexAttribI4uiEXT;
-  tbl.glVertexAttribI4uivEXT = trace_glVertexAttribI4uivEXT;
-  tbl.glVertexAttribI4usvEXT = trace_glVertexAttribI4usvEXT;
-  tbl.glVertexAttribIPointerEXT = trace_glVertexAttribIPointerEXT;
+  tbl.glBindFragDataLocationEXT = MakeRegalProc( trace_glBindFragDataLocationEXT, layer );
+  tbl.glGetFragDataLocationEXT = MakeRegalProc( trace_glGetFragDataLocationEXT, layer );
+  tbl.glGetUniformuivEXT = MakeRegalProc( trace_glGetUniformuivEXT, layer );
+  tbl.glGetVertexAttribIivEXT = MakeRegalProc( trace_glGetVertexAttribIivEXT, layer );
+  tbl.glGetVertexAttribIuivEXT = MakeRegalProc( trace_glGetVertexAttribIuivEXT, layer );
+  tbl.glUniform1uiEXT = MakeRegalProc( trace_glUniform1uiEXT, layer );
+  tbl.glUniform1uivEXT = MakeRegalProc( trace_glUniform1uivEXT, layer );
+  tbl.glUniform2uiEXT = MakeRegalProc( trace_glUniform2uiEXT, layer );
+  tbl.glUniform2uivEXT = MakeRegalProc( trace_glUniform2uivEXT, layer );
+  tbl.glUniform3uiEXT = MakeRegalProc( trace_glUniform3uiEXT, layer );
+  tbl.glUniform3uivEXT = MakeRegalProc( trace_glUniform3uivEXT, layer );
+  tbl.glUniform4uiEXT = MakeRegalProc( trace_glUniform4uiEXT, layer );
+  tbl.glUniform4uivEXT = MakeRegalProc( trace_glUniform4uivEXT, layer );
+  tbl.glVertexAttribI1iEXT = MakeRegalProc( trace_glVertexAttribI1iEXT, layer );
+  tbl.glVertexAttribI1ivEXT = MakeRegalProc( trace_glVertexAttribI1ivEXT, layer );
+  tbl.glVertexAttribI1uiEXT = MakeRegalProc( trace_glVertexAttribI1uiEXT, layer );
+  tbl.glVertexAttribI1uivEXT = MakeRegalProc( trace_glVertexAttribI1uivEXT, layer );
+  tbl.glVertexAttribI2iEXT = MakeRegalProc( trace_glVertexAttribI2iEXT, layer );
+  tbl.glVertexAttribI2ivEXT = MakeRegalProc( trace_glVertexAttribI2ivEXT, layer );
+  tbl.glVertexAttribI2uiEXT = MakeRegalProc( trace_glVertexAttribI2uiEXT, layer );
+  tbl.glVertexAttribI2uivEXT = MakeRegalProc( trace_glVertexAttribI2uivEXT, layer );
+  tbl.glVertexAttribI3iEXT = MakeRegalProc( trace_glVertexAttribI3iEXT, layer );
+  tbl.glVertexAttribI3ivEXT = MakeRegalProc( trace_glVertexAttribI3ivEXT, layer );
+  tbl.glVertexAttribI3uiEXT = MakeRegalProc( trace_glVertexAttribI3uiEXT, layer );
+  tbl.glVertexAttribI3uivEXT = MakeRegalProc( trace_glVertexAttribI3uivEXT, layer );
+  tbl.glVertexAttribI4bvEXT = MakeRegalProc( trace_glVertexAttribI4bvEXT, layer );
+  tbl.glVertexAttribI4iEXT = MakeRegalProc( trace_glVertexAttribI4iEXT, layer );
+  tbl.glVertexAttribI4ivEXT = MakeRegalProc( trace_glVertexAttribI4ivEXT, layer );
+  tbl.glVertexAttribI4svEXT = MakeRegalProc( trace_glVertexAttribI4svEXT, layer );
+  tbl.glVertexAttribI4ubvEXT = MakeRegalProc( trace_glVertexAttribI4ubvEXT, layer );
+  tbl.glVertexAttribI4uiEXT = MakeRegalProc( trace_glVertexAttribI4uiEXT, layer );
+  tbl.glVertexAttribI4uivEXT = MakeRegalProc( trace_glVertexAttribI4uivEXT, layer );
+  tbl.glVertexAttribI4usvEXT = MakeRegalProc( trace_glVertexAttribI4usvEXT, layer );
+  tbl.glVertexAttribIPointerEXT = MakeRegalProc( trace_glVertexAttribIPointerEXT, layer );
 
   // GL_EXT_histogram
 
-  tbl.glGetHistogramEXT = trace_glGetHistogramEXT;
-  tbl.glGetHistogramParameterfvEXT = trace_glGetHistogramParameterfvEXT;
-  tbl.glGetHistogramParameterivEXT = trace_glGetHistogramParameterivEXT;
-  tbl.glGetMinmaxEXT = trace_glGetMinmaxEXT;
-  tbl.glGetMinmaxParameterfvEXT = trace_glGetMinmaxParameterfvEXT;
-  tbl.glGetMinmaxParameterivEXT = trace_glGetMinmaxParameterivEXT;
-  tbl.glHistogramEXT = trace_glHistogramEXT;
-  tbl.glMinmaxEXT = trace_glMinmaxEXT;
-  tbl.glResetHistogramEXT = trace_glResetHistogramEXT;
-  tbl.glResetMinmaxEXT = trace_glResetMinmaxEXT;
+  tbl.glGetHistogramEXT = MakeRegalProc( trace_glGetHistogramEXT, layer );
+  tbl.glGetHistogramParameterfvEXT = MakeRegalProc( trace_glGetHistogramParameterfvEXT, layer );
+  tbl.glGetHistogramParameterivEXT = MakeRegalProc( trace_glGetHistogramParameterivEXT, layer );
+  tbl.glGetMinmaxEXT = MakeRegalProc( trace_glGetMinmaxEXT, layer );
+  tbl.glGetMinmaxParameterfvEXT = MakeRegalProc( trace_glGetMinmaxParameterfvEXT, layer );
+  tbl.glGetMinmaxParameterivEXT = MakeRegalProc( trace_glGetMinmaxParameterivEXT, layer );
+  tbl.glHistogramEXT = MakeRegalProc( trace_glHistogramEXT, layer );
+  tbl.glMinmaxEXT = MakeRegalProc( trace_glMinmaxEXT, layer );
+  tbl.glResetHistogramEXT = MakeRegalProc( trace_glResetHistogramEXT, layer );
+  tbl.glResetMinmaxEXT = MakeRegalProc( trace_glResetMinmaxEXT, layer );
 
   // GL_EXT_index_func
 
-  tbl.glIndexFuncEXT = trace_glIndexFuncEXT;
+  tbl.glIndexFuncEXT = MakeRegalProc( trace_glIndexFuncEXT, layer );
 
   // GL_EXT_index_material
 
-  tbl.glIndexMaterialEXT = trace_glIndexMaterialEXT;
+  tbl.glIndexMaterialEXT = MakeRegalProc( trace_glIndexMaterialEXT, layer );
 
   // GL_EXT_light_texture
 
-  tbl.glApplyTextureEXT = trace_glApplyTextureEXT;
-  tbl.glTextureLightEXT = trace_glTextureLightEXT;
-  tbl.glTextureMaterialEXT = trace_glTextureMaterialEXT;
+  tbl.glApplyTextureEXT = MakeRegalProc( trace_glApplyTextureEXT, layer );
+  tbl.glTextureLightEXT = MakeRegalProc( trace_glTextureLightEXT, layer );
+  tbl.glTextureMaterialEXT = MakeRegalProc( trace_glTextureMaterialEXT, layer );
 
   // GL_EXT_multi_draw_arrays
 
-  tbl.glMultiDrawArraysEXT = trace_glMultiDrawArraysEXT;
-  tbl.glMultiDrawElementsEXT = trace_glMultiDrawElementsEXT;
+  tbl.glMultiDrawArraysEXT = MakeRegalProc( trace_glMultiDrawArraysEXT, layer );
+  tbl.glMultiDrawElementsEXT = MakeRegalProc( trace_glMultiDrawElementsEXT, layer );
 
   // GL_EXT_multisample
 
-  tbl.glSampleMaskEXT = trace_glSampleMaskEXT;
-  tbl.glSamplePatternEXT = trace_glSamplePatternEXT;
+  tbl.glSampleMaskEXT = MakeRegalProc( trace_glSampleMaskEXT, layer );
+  tbl.glSamplePatternEXT = MakeRegalProc( trace_glSamplePatternEXT, layer );
 
   // GL_EXT_occlusion_query_boolean
 
-  tbl.glBeginQueryEXT = trace_glBeginQueryEXT;
-  tbl.glDeleteQueriesEXT = trace_glDeleteQueriesEXT;
-  tbl.glEndQueryEXT = trace_glEndQueryEXT;
-  tbl.glGenQueriesEXT = trace_glGenQueriesEXT;
-  tbl.glGetQueryObjectuivEXT = trace_glGetQueryObjectuivEXT;
-  tbl.glGetQueryivEXT = trace_glGetQueryivEXT;
-  tbl.glIsQueryEXT = trace_glIsQueryEXT;
+  tbl.glBeginQueryEXT = MakeRegalProc( trace_glBeginQueryEXT, layer );
+  tbl.glDeleteQueriesEXT = MakeRegalProc( trace_glDeleteQueriesEXT, layer );
+  tbl.glEndQueryEXT = MakeRegalProc( trace_glEndQueryEXT, layer );
+  tbl.glGenQueriesEXT = MakeRegalProc( trace_glGenQueriesEXT, layer );
+  tbl.glGetQueryObjectuivEXT = MakeRegalProc( trace_glGetQueryObjectuivEXT, layer );
+  tbl.glGetQueryivEXT = MakeRegalProc( trace_glGetQueryivEXT, layer );
+  tbl.glIsQueryEXT = MakeRegalProc( trace_glIsQueryEXT, layer );
 
   // GL_EXT_paletted_texture
 
-  tbl.glColorTableEXT = trace_glColorTableEXT;
-  tbl.glGetColorTableEXT = trace_glGetColorTableEXT;
-  tbl.glGetColorTableParameterfvEXT = trace_glGetColorTableParameterfvEXT;
-  tbl.glGetColorTableParameterivEXT = trace_glGetColorTableParameterivEXT;
+  tbl.glColorTableEXT = MakeRegalProc( trace_glColorTableEXT, layer );
+  tbl.glGetColorTableEXT = MakeRegalProc( trace_glGetColorTableEXT, layer );
+  tbl.glGetColorTableParameterfvEXT = MakeRegalProc( trace_glGetColorTableParameterfvEXT, layer );
+  tbl.glGetColorTableParameterivEXT = MakeRegalProc( trace_glGetColorTableParameterivEXT, layer );
 
   // GL_EXT_pixel_transform
 
-  tbl.glPixelTransformParameterfEXT = trace_glPixelTransformParameterfEXT;
-  tbl.glPixelTransformParameterfvEXT = trace_glPixelTransformParameterfvEXT;
-  tbl.glPixelTransformParameteriEXT = trace_glPixelTransformParameteriEXT;
-  tbl.glPixelTransformParameterivEXT = trace_glPixelTransformParameterivEXT;
+  tbl.glPixelTransformParameterfEXT = MakeRegalProc( trace_glPixelTransformParameterfEXT, layer );
+  tbl.glPixelTransformParameterfvEXT = MakeRegalProc( trace_glPixelTransformParameterfvEXT, layer );
+  tbl.glPixelTransformParameteriEXT = MakeRegalProc( trace_glPixelTransformParameteriEXT, layer );
+  tbl.glPixelTransformParameterivEXT = MakeRegalProc( trace_glPixelTransformParameterivEXT, layer );
 
   // GL_EXT_point_parameters
 
-  tbl.glPointParameterfEXT = trace_glPointParameterfEXT;
-  tbl.glPointParameterfvEXT = trace_glPointParameterfvEXT;
+  tbl.glPointParameterfEXT = MakeRegalProc( trace_glPointParameterfEXT, layer );
+  tbl.glPointParameterfvEXT = MakeRegalProc( trace_glPointParameterfvEXT, layer );
 
   // GL_EXT_polygon_offset
 
-  tbl.glPolygonOffsetEXT = trace_glPolygonOffsetEXT;
+  tbl.glPolygonOffsetEXT = MakeRegalProc( trace_glPolygonOffsetEXT, layer );
 
   // GL_EXT_provoking_vertex
 
-  tbl.glProvokingVertexEXT = trace_glProvokingVertexEXT;
+  tbl.glProvokingVertexEXT = MakeRegalProc( trace_glProvokingVertexEXT, layer );
 
   // GL_EXT_secondary_color
 
-  tbl.glSecondaryColor3bEXT = trace_glSecondaryColor3bEXT;
-  tbl.glSecondaryColor3bvEXT = trace_glSecondaryColor3bvEXT;
-  tbl.glSecondaryColor3dEXT = trace_glSecondaryColor3dEXT;
-  tbl.glSecondaryColor3dvEXT = trace_glSecondaryColor3dvEXT;
-  tbl.glSecondaryColor3fEXT = trace_glSecondaryColor3fEXT;
-  tbl.glSecondaryColor3fvEXT = trace_glSecondaryColor3fvEXT;
-  tbl.glSecondaryColor3iEXT = trace_glSecondaryColor3iEXT;
-  tbl.glSecondaryColor3ivEXT = trace_glSecondaryColor3ivEXT;
-  tbl.glSecondaryColor3sEXT = trace_glSecondaryColor3sEXT;
-  tbl.glSecondaryColor3svEXT = trace_glSecondaryColor3svEXT;
-  tbl.glSecondaryColor3ubEXT = trace_glSecondaryColor3ubEXT;
-  tbl.glSecondaryColor3ubvEXT = trace_glSecondaryColor3ubvEXT;
-  tbl.glSecondaryColor3uiEXT = trace_glSecondaryColor3uiEXT;
-  tbl.glSecondaryColor3uivEXT = trace_glSecondaryColor3uivEXT;
-  tbl.glSecondaryColor3usEXT = trace_glSecondaryColor3usEXT;
-  tbl.glSecondaryColor3usvEXT = trace_glSecondaryColor3usvEXT;
-  tbl.glSecondaryColorPointerEXT = trace_glSecondaryColorPointerEXT;
+  tbl.glSecondaryColor3bEXT = MakeRegalProc( trace_glSecondaryColor3bEXT, layer );
+  tbl.glSecondaryColor3bvEXT = MakeRegalProc( trace_glSecondaryColor3bvEXT, layer );
+  tbl.glSecondaryColor3dEXT = MakeRegalProc( trace_glSecondaryColor3dEXT, layer );
+  tbl.glSecondaryColor3dvEXT = MakeRegalProc( trace_glSecondaryColor3dvEXT, layer );
+  tbl.glSecondaryColor3fEXT = MakeRegalProc( trace_glSecondaryColor3fEXT, layer );
+  tbl.glSecondaryColor3fvEXT = MakeRegalProc( trace_glSecondaryColor3fvEXT, layer );
+  tbl.glSecondaryColor3iEXT = MakeRegalProc( trace_glSecondaryColor3iEXT, layer );
+  tbl.glSecondaryColor3ivEXT = MakeRegalProc( trace_glSecondaryColor3ivEXT, layer );
+  tbl.glSecondaryColor3sEXT = MakeRegalProc( trace_glSecondaryColor3sEXT, layer );
+  tbl.glSecondaryColor3svEXT = MakeRegalProc( trace_glSecondaryColor3svEXT, layer );
+  tbl.glSecondaryColor3ubEXT = MakeRegalProc( trace_glSecondaryColor3ubEXT, layer );
+  tbl.glSecondaryColor3ubvEXT = MakeRegalProc( trace_glSecondaryColor3ubvEXT, layer );
+  tbl.glSecondaryColor3uiEXT = MakeRegalProc( trace_glSecondaryColor3uiEXT, layer );
+  tbl.glSecondaryColor3uivEXT = MakeRegalProc( trace_glSecondaryColor3uivEXT, layer );
+  tbl.glSecondaryColor3usEXT = MakeRegalProc( trace_glSecondaryColor3usEXT, layer );
+  tbl.glSecondaryColor3usvEXT = MakeRegalProc( trace_glSecondaryColor3usvEXT, layer );
+  tbl.glSecondaryColorPointerEXT = MakeRegalProc( trace_glSecondaryColorPointerEXT, layer );
 
   // GL_EXT_separate_shader_objects
 
-  tbl.glActiveProgramEXT = trace_glActiveProgramEXT;
-  tbl.glCreateShaderProgramEXT = trace_glCreateShaderProgramEXT;
-  tbl.glUseShaderProgramEXT = trace_glUseShaderProgramEXT;
+  tbl.glActiveProgramEXT = MakeRegalProc( trace_glActiveProgramEXT, layer );
+  tbl.glCreateShaderProgramEXT = MakeRegalProc( trace_glCreateShaderProgramEXT, layer );
+  tbl.glUseShaderProgramEXT = MakeRegalProc( trace_glUseShaderProgramEXT, layer );
 
   // GL_EXT_shader_image_load_store
 
-  tbl.glBindImageTextureEXT = trace_glBindImageTextureEXT;
-  tbl.glMemoryBarrierEXT = trace_glMemoryBarrierEXT;
+  tbl.glBindImageTextureEXT = MakeRegalProc( trace_glBindImageTextureEXT, layer );
+  tbl.glMemoryBarrierEXT = MakeRegalProc( trace_glMemoryBarrierEXT, layer );
 
   // GL_EXT_stencil_clear_tag
 
-  tbl.glStencilClearTagEXT = trace_glStencilClearTagEXT;
+  tbl.glStencilClearTagEXT = MakeRegalProc( trace_glStencilClearTagEXT, layer );
 
   // GL_EXT_stencil_two_side
 
-  tbl.glActiveStencilFaceEXT = trace_glActiveStencilFaceEXT;
+  tbl.glActiveStencilFaceEXT = MakeRegalProc( trace_glActiveStencilFaceEXT, layer );
 
   // GL_EXT_subtexture
 
-  tbl.glTexSubImage1DEXT = trace_glTexSubImage1DEXT;
-  tbl.glTexSubImage2DEXT = trace_glTexSubImage2DEXT;
-  tbl.glTexSubImage3DEXT = trace_glTexSubImage3DEXT;
+  tbl.glTexSubImage1DEXT = MakeRegalProc( trace_glTexSubImage1DEXT, layer );
+  tbl.glTexSubImage2DEXT = MakeRegalProc( trace_glTexSubImage2DEXT, layer );
+  tbl.glTexSubImage3DEXT = MakeRegalProc( trace_glTexSubImage3DEXT, layer );
 
   // GL_EXT_texture3D
 
-  tbl.glTexImage3DEXT = trace_glTexImage3DEXT;
+  tbl.glTexImage3DEXT = MakeRegalProc( trace_glTexImage3DEXT, layer );
 
   // GL_EXT_texture_array
 
-  tbl.glFramebufferTextureLayerEXT = trace_glFramebufferTextureLayerEXT;
+  tbl.glFramebufferTextureLayerEXT = MakeRegalProc( trace_glFramebufferTextureLayerEXT, layer );
 
   // GL_EXT_texture_buffer_object
 
-  tbl.glTexBufferEXT = trace_glTexBufferEXT;
+  tbl.glTexBufferEXT = MakeRegalProc( trace_glTexBufferEXT, layer );
 
   // GL_EXT_texture_integer
 
-  tbl.glClearColorIiEXT = trace_glClearColorIiEXT;
-  tbl.glClearColorIuiEXT = trace_glClearColorIuiEXT;
-  tbl.glGetTexParameterIivEXT = trace_glGetTexParameterIivEXT;
-  tbl.glGetTexParameterIuivEXT = trace_glGetTexParameterIuivEXT;
-  tbl.glTexParameterIivEXT = trace_glTexParameterIivEXT;
-  tbl.glTexParameterIuivEXT = trace_glTexParameterIuivEXT;
+  tbl.glClearColorIiEXT = MakeRegalProc( trace_glClearColorIiEXT, layer );
+  tbl.glClearColorIuiEXT = MakeRegalProc( trace_glClearColorIuiEXT, layer );
+  tbl.glGetTexParameterIivEXT = MakeRegalProc( trace_glGetTexParameterIivEXT, layer );
+  tbl.glGetTexParameterIuivEXT = MakeRegalProc( trace_glGetTexParameterIuivEXT, layer );
+  tbl.glTexParameterIivEXT = MakeRegalProc( trace_glTexParameterIivEXT, layer );
+  tbl.glTexParameterIuivEXT = MakeRegalProc( trace_glTexParameterIuivEXT, layer );
 
   // GL_EXT_texture_object
 
-  tbl.glAreTexturesResidentEXT = trace_glAreTexturesResidentEXT;
-  tbl.glBindTextureEXT = trace_glBindTextureEXT;
-  tbl.glDeleteTexturesEXT = trace_glDeleteTexturesEXT;
-  tbl.glGenTexturesEXT = trace_glGenTexturesEXT;
-  tbl.glIsTextureEXT = trace_glIsTextureEXT;
-  tbl.glPrioritizeTexturesEXT = trace_glPrioritizeTexturesEXT;
+  tbl.glAreTexturesResidentEXT = MakeRegalProc( trace_glAreTexturesResidentEXT, layer );
+  tbl.glBindTextureEXT = MakeRegalProc( trace_glBindTextureEXT, layer );
+  tbl.glDeleteTexturesEXT = MakeRegalProc( trace_glDeleteTexturesEXT, layer );
+  tbl.glGenTexturesEXT = MakeRegalProc( trace_glGenTexturesEXT, layer );
+  tbl.glIsTextureEXT = MakeRegalProc( trace_glIsTextureEXT, layer );
+  tbl.glPrioritizeTexturesEXT = MakeRegalProc( trace_glPrioritizeTexturesEXT, layer );
 
   // GL_EXT_texture_perturb_normal
 
-  tbl.glTextureNormalEXT = trace_glTextureNormalEXT;
+  tbl.glTextureNormalEXT = MakeRegalProc( trace_glTextureNormalEXT, layer );
 
   // GL_EXT_timer_query
 
-  tbl.glGetQueryObjecti64vEXT = trace_glGetQueryObjecti64vEXT;
-  tbl.glGetQueryObjectui64vEXT = trace_glGetQueryObjectui64vEXT;
+  tbl.glGetQueryObjecti64vEXT = MakeRegalProc( trace_glGetQueryObjecti64vEXT, layer );
+  tbl.glGetQueryObjectui64vEXT = MakeRegalProc( trace_glGetQueryObjectui64vEXT, layer );
 
   // GL_EXT_transform_feedback
 
-  tbl.glBeginTransformFeedbackEXT = trace_glBeginTransformFeedbackEXT;
-  tbl.glBindBufferBaseEXT = trace_glBindBufferBaseEXT;
-  tbl.glBindBufferOffsetEXT = trace_glBindBufferOffsetEXT;
-  tbl.glBindBufferRangeEXT = trace_glBindBufferRangeEXT;
-  tbl.glEndTransformFeedbackEXT = trace_glEndTransformFeedbackEXT;
-  tbl.glGetTransformFeedbackVaryingEXT = trace_glGetTransformFeedbackVaryingEXT;
-  tbl.glTransformFeedbackVaryingsEXT = trace_glTransformFeedbackVaryingsEXT;
+  tbl.glBeginTransformFeedbackEXT = MakeRegalProc( trace_glBeginTransformFeedbackEXT, layer );
+  tbl.glBindBufferBaseEXT = MakeRegalProc( trace_glBindBufferBaseEXT, layer );
+  tbl.glBindBufferOffsetEXT = MakeRegalProc( trace_glBindBufferOffsetEXT, layer );
+  tbl.glBindBufferRangeEXT = MakeRegalProc( trace_glBindBufferRangeEXT, layer );
+  tbl.glEndTransformFeedbackEXT = MakeRegalProc( trace_glEndTransformFeedbackEXT, layer );
+  tbl.glGetTransformFeedbackVaryingEXT = MakeRegalProc( trace_glGetTransformFeedbackVaryingEXT, layer );
+  tbl.glTransformFeedbackVaryingsEXT = MakeRegalProc( trace_glTransformFeedbackVaryingsEXT, layer );
 
   // GL_EXT_vertex_array
 
-  tbl.glArrayElementEXT = trace_glArrayElementEXT;
-  tbl.glColorPointerEXT = trace_glColorPointerEXT;
-  tbl.glDrawArraysEXT = trace_glDrawArraysEXT;
-  tbl.glEdgeFlagPointerEXT = trace_glEdgeFlagPointerEXT;
-  tbl.glGetPointervEXT = trace_glGetPointervEXT;
-  tbl.glIndexPointerEXT = trace_glIndexPointerEXT;
-  tbl.glNormalPointerEXT = trace_glNormalPointerEXT;
-  tbl.glTexCoordPointerEXT = trace_glTexCoordPointerEXT;
-  tbl.glVertexPointerEXT = trace_glVertexPointerEXT;
+  tbl.glArrayElementEXT = MakeRegalProc( trace_glArrayElementEXT, layer );
+  tbl.glColorPointerEXT = MakeRegalProc( trace_glColorPointerEXT, layer );
+  tbl.glDrawArraysEXT = MakeRegalProc( trace_glDrawArraysEXT, layer );
+  tbl.glEdgeFlagPointerEXT = MakeRegalProc( trace_glEdgeFlagPointerEXT, layer );
+  tbl.glGetPointervEXT = MakeRegalProc( trace_glGetPointervEXT, layer );
+  tbl.glIndexPointerEXT = MakeRegalProc( trace_glIndexPointerEXT, layer );
+  tbl.glNormalPointerEXT = MakeRegalProc( trace_glNormalPointerEXT, layer );
+  tbl.glTexCoordPointerEXT = MakeRegalProc( trace_glTexCoordPointerEXT, layer );
+  tbl.glVertexPointerEXT = MakeRegalProc( trace_glVertexPointerEXT, layer );
 
   // GL_EXT_vertex_attrib_64bit
 
-  tbl.glGetVertexAttribLdvEXT = trace_glGetVertexAttribLdvEXT;
-  tbl.glVertexArrayVertexAttribLOffsetEXT = trace_glVertexArrayVertexAttribLOffsetEXT;
-  tbl.glVertexAttribL1dEXT = trace_glVertexAttribL1dEXT;
-  tbl.glVertexAttribL1dvEXT = trace_glVertexAttribL1dvEXT;
-  tbl.glVertexAttribL2dEXT = trace_glVertexAttribL2dEXT;
-  tbl.glVertexAttribL2dvEXT = trace_glVertexAttribL2dvEXT;
-  tbl.glVertexAttribL3dEXT = trace_glVertexAttribL3dEXT;
-  tbl.glVertexAttribL3dvEXT = trace_glVertexAttribL3dvEXT;
-  tbl.glVertexAttribL4dEXT = trace_glVertexAttribL4dEXT;
-  tbl.glVertexAttribL4dvEXT = trace_glVertexAttribL4dvEXT;
-  tbl.glVertexAttribLPointerEXT = trace_glVertexAttribLPointerEXT;
+  tbl.glGetVertexAttribLdvEXT = MakeRegalProc( trace_glGetVertexAttribLdvEXT, layer );
+  tbl.glVertexArrayVertexAttribLOffsetEXT = MakeRegalProc( trace_glVertexArrayVertexAttribLOffsetEXT, layer );
+  tbl.glVertexAttribL1dEXT = MakeRegalProc( trace_glVertexAttribL1dEXT, layer );
+  tbl.glVertexAttribL1dvEXT = MakeRegalProc( trace_glVertexAttribL1dvEXT, layer );
+  tbl.glVertexAttribL2dEXT = MakeRegalProc( trace_glVertexAttribL2dEXT, layer );
+  tbl.glVertexAttribL2dvEXT = MakeRegalProc( trace_glVertexAttribL2dvEXT, layer );
+  tbl.glVertexAttribL3dEXT = MakeRegalProc( trace_glVertexAttribL3dEXT, layer );
+  tbl.glVertexAttribL3dvEXT = MakeRegalProc( trace_glVertexAttribL3dvEXT, layer );
+  tbl.glVertexAttribL4dEXT = MakeRegalProc( trace_glVertexAttribL4dEXT, layer );
+  tbl.glVertexAttribL4dvEXT = MakeRegalProc( trace_glVertexAttribL4dvEXT, layer );
+  tbl.glVertexAttribLPointerEXT = MakeRegalProc( trace_glVertexAttribLPointerEXT, layer );
 
   // GL_EXT_vertex_shader
 
-  tbl.glBeginVertexShaderEXT = trace_glBeginVertexShaderEXT;
-  tbl.glBindLightParameterEXT = trace_glBindLightParameterEXT;
-  tbl.glBindMaterialParameterEXT = trace_glBindMaterialParameterEXT;
-  tbl.glBindParameterEXT = trace_glBindParameterEXT;
-  tbl.glBindTexGenParameterEXT = trace_glBindTexGenParameterEXT;
-  tbl.glBindTextureUnitParameterEXT = trace_glBindTextureUnitParameterEXT;
-  tbl.glBindVertexShaderEXT = trace_glBindVertexShaderEXT;
-  tbl.glDeleteVertexShaderEXT = trace_glDeleteVertexShaderEXT;
-  tbl.glDisableVariantClientStateEXT = trace_glDisableVariantClientStateEXT;
-  tbl.glEnableVariantClientStateEXT = trace_glEnableVariantClientStateEXT;
-  tbl.glEndVertexShaderEXT = trace_glEndVertexShaderEXT;
-  tbl.glExtractComponentEXT = trace_glExtractComponentEXT;
-  tbl.glGenSymbolsEXT = trace_glGenSymbolsEXT;
-  tbl.glGenVertexShadersEXT = trace_glGenVertexShadersEXT;
-  tbl.glGetInvariantBooleanvEXT = trace_glGetInvariantBooleanvEXT;
-  tbl.glGetInvariantFloatvEXT = trace_glGetInvariantFloatvEXT;
-  tbl.glGetInvariantIntegervEXT = trace_glGetInvariantIntegervEXT;
-  tbl.glGetLocalConstantBooleanvEXT = trace_glGetLocalConstantBooleanvEXT;
-  tbl.glGetLocalConstantFloatvEXT = trace_glGetLocalConstantFloatvEXT;
-  tbl.glGetLocalConstantIntegervEXT = trace_glGetLocalConstantIntegervEXT;
-  tbl.glGetVariantBooleanvEXT = trace_glGetVariantBooleanvEXT;
-  tbl.glGetVariantFloatvEXT = trace_glGetVariantFloatvEXT;
-  tbl.glGetVariantIntegervEXT = trace_glGetVariantIntegervEXT;
-  tbl.glGetVariantPointervEXT = trace_glGetVariantPointervEXT;
-  tbl.glInsertComponentEXT = trace_glInsertComponentEXT;
-  tbl.glIsVariantEnabledEXT = trace_glIsVariantEnabledEXT;
-  tbl.glSetInvariantEXT = trace_glSetInvariantEXT;
-  tbl.glSetLocalConstantEXT = trace_glSetLocalConstantEXT;
-  tbl.glShaderOp1EXT = trace_glShaderOp1EXT;
-  tbl.glShaderOp2EXT = trace_glShaderOp2EXT;
-  tbl.glShaderOp3EXT = trace_glShaderOp3EXT;
-  tbl.glSwizzleEXT = trace_glSwizzleEXT;
-  tbl.glVariantPointerEXT = trace_glVariantPointerEXT;
-  tbl.glVariantbvEXT = trace_glVariantbvEXT;
-  tbl.glVariantdvEXT = trace_glVariantdvEXT;
-  tbl.glVariantfvEXT = trace_glVariantfvEXT;
-  tbl.glVariantivEXT = trace_glVariantivEXT;
-  tbl.glVariantsvEXT = trace_glVariantsvEXT;
-  tbl.glVariantubvEXT = trace_glVariantubvEXT;
-  tbl.glVariantuivEXT = trace_glVariantuivEXT;
-  tbl.glVariantusvEXT = trace_glVariantusvEXT;
-  tbl.glWriteMaskEXT = trace_glWriteMaskEXT;
+  tbl.glBeginVertexShaderEXT = MakeRegalProc( trace_glBeginVertexShaderEXT, layer );
+  tbl.glBindLightParameterEXT = MakeRegalProc( trace_glBindLightParameterEXT, layer );
+  tbl.glBindMaterialParameterEXT = MakeRegalProc( trace_glBindMaterialParameterEXT, layer );
+  tbl.glBindParameterEXT = MakeRegalProc( trace_glBindParameterEXT, layer );
+  tbl.glBindTexGenParameterEXT = MakeRegalProc( trace_glBindTexGenParameterEXT, layer );
+  tbl.glBindTextureUnitParameterEXT = MakeRegalProc( trace_glBindTextureUnitParameterEXT, layer );
+  tbl.glBindVertexShaderEXT = MakeRegalProc( trace_glBindVertexShaderEXT, layer );
+  tbl.glDeleteVertexShaderEXT = MakeRegalProc( trace_glDeleteVertexShaderEXT, layer );
+  tbl.glDisableVariantClientStateEXT = MakeRegalProc( trace_glDisableVariantClientStateEXT, layer );
+  tbl.glEnableVariantClientStateEXT = MakeRegalProc( trace_glEnableVariantClientStateEXT, layer );
+  tbl.glEndVertexShaderEXT = MakeRegalProc( trace_glEndVertexShaderEXT, layer );
+  tbl.glExtractComponentEXT = MakeRegalProc( trace_glExtractComponentEXT, layer );
+  tbl.glGenSymbolsEXT = MakeRegalProc( trace_glGenSymbolsEXT, layer );
+  tbl.glGenVertexShadersEXT = MakeRegalProc( trace_glGenVertexShadersEXT, layer );
+  tbl.glGetInvariantBooleanvEXT = MakeRegalProc( trace_glGetInvariantBooleanvEXT, layer );
+  tbl.glGetInvariantFloatvEXT = MakeRegalProc( trace_glGetInvariantFloatvEXT, layer );
+  tbl.glGetInvariantIntegervEXT = MakeRegalProc( trace_glGetInvariantIntegervEXT, layer );
+  tbl.glGetLocalConstantBooleanvEXT = MakeRegalProc( trace_glGetLocalConstantBooleanvEXT, layer );
+  tbl.glGetLocalConstantFloatvEXT = MakeRegalProc( trace_glGetLocalConstantFloatvEXT, layer );
+  tbl.glGetLocalConstantIntegervEXT = MakeRegalProc( trace_glGetLocalConstantIntegervEXT, layer );
+  tbl.glGetVariantBooleanvEXT = MakeRegalProc( trace_glGetVariantBooleanvEXT, layer );
+  tbl.glGetVariantFloatvEXT = MakeRegalProc( trace_glGetVariantFloatvEXT, layer );
+  tbl.glGetVariantIntegervEXT = MakeRegalProc( trace_glGetVariantIntegervEXT, layer );
+  tbl.glGetVariantPointervEXT = MakeRegalProc( trace_glGetVariantPointervEXT, layer );
+  tbl.glInsertComponentEXT = MakeRegalProc( trace_glInsertComponentEXT, layer );
+  tbl.glIsVariantEnabledEXT = MakeRegalProc( trace_glIsVariantEnabledEXT, layer );
+  tbl.glSetInvariantEXT = MakeRegalProc( trace_glSetInvariantEXT, layer );
+  tbl.glSetLocalConstantEXT = MakeRegalProc( trace_glSetLocalConstantEXT, layer );
+  tbl.glShaderOp1EXT = MakeRegalProc( trace_glShaderOp1EXT, layer );
+  tbl.glShaderOp2EXT = MakeRegalProc( trace_glShaderOp2EXT, layer );
+  tbl.glShaderOp3EXT = MakeRegalProc( trace_glShaderOp3EXT, layer );
+  tbl.glSwizzleEXT = MakeRegalProc( trace_glSwizzleEXT, layer );
+  tbl.glVariantPointerEXT = MakeRegalProc( trace_glVariantPointerEXT, layer );
+  tbl.glVariantbvEXT = MakeRegalProc( trace_glVariantbvEXT, layer );
+  tbl.glVariantdvEXT = MakeRegalProc( trace_glVariantdvEXT, layer );
+  tbl.glVariantfvEXT = MakeRegalProc( trace_glVariantfvEXT, layer );
+  tbl.glVariantivEXT = MakeRegalProc( trace_glVariantivEXT, layer );
+  tbl.glVariantsvEXT = MakeRegalProc( trace_glVariantsvEXT, layer );
+  tbl.glVariantubvEXT = MakeRegalProc( trace_glVariantubvEXT, layer );
+  tbl.glVariantuivEXT = MakeRegalProc( trace_glVariantuivEXT, layer );
+  tbl.glVariantusvEXT = MakeRegalProc( trace_glVariantusvEXT, layer );
+  tbl.glWriteMaskEXT = MakeRegalProc( trace_glWriteMaskEXT, layer );
 
   // GL_EXT_vertex_weighting
 
-  tbl.glVertexWeightPointerEXT = trace_glVertexWeightPointerEXT;
-  tbl.glVertexWeightfEXT = trace_glVertexWeightfEXT;
-  tbl.glVertexWeightfvEXT = trace_glVertexWeightfvEXT;
+  tbl.glVertexWeightPointerEXT = MakeRegalProc( trace_glVertexWeightPointerEXT, layer );
+  tbl.glVertexWeightfEXT = MakeRegalProc( trace_glVertexWeightfEXT, layer );
+  tbl.glVertexWeightfvEXT = MakeRegalProc( trace_glVertexWeightfvEXT, layer );
 
   // GL_EXT_x11_sync_object
 
-  tbl.glImportSyncEXT = trace_glImportSyncEXT;
+  tbl.glImportSyncEXT = MakeRegalProc( trace_glImportSyncEXT, layer );
 
   // GL_GREMEDY_frame_terminator
 
-  tbl.glFrameTerminatorGREMEDY = trace_glFrameTerminatorGREMEDY;
+  tbl.glFrameTerminatorGREMEDY = MakeRegalProc( trace_glFrameTerminatorGREMEDY, layer );
 
   // GL_GREMEDY_string_marker
 
-  tbl.glStringMarkerGREMEDY = trace_glStringMarkerGREMEDY;
+  tbl.glStringMarkerGREMEDY = MakeRegalProc( trace_glStringMarkerGREMEDY, layer );
 
   // GL_HP_image_transform
 
-  tbl.glGetImageTransformParameterfvHP = trace_glGetImageTransformParameterfvHP;
-  tbl.glGetImageTransformParameterivHP = trace_glGetImageTransformParameterivHP;
-  tbl.glImageTransformParameterfHP = trace_glImageTransformParameterfHP;
-  tbl.glImageTransformParameterfvHP = trace_glImageTransformParameterfvHP;
-  tbl.glImageTransformParameteriHP = trace_glImageTransformParameteriHP;
-  tbl.glImageTransformParameterivHP = trace_glImageTransformParameterivHP;
+  tbl.glGetImageTransformParameterfvHP = MakeRegalProc( trace_glGetImageTransformParameterfvHP, layer );
+  tbl.glGetImageTransformParameterivHP = MakeRegalProc( trace_glGetImageTransformParameterivHP, layer );
+  tbl.glImageTransformParameterfHP = MakeRegalProc( trace_glImageTransformParameterfHP, layer );
+  tbl.glImageTransformParameterfvHP = MakeRegalProc( trace_glImageTransformParameterfvHP, layer );
+  tbl.glImageTransformParameteriHP = MakeRegalProc( trace_glImageTransformParameteriHP, layer );
+  tbl.glImageTransformParameterivHP = MakeRegalProc( trace_glImageTransformParameterivHP, layer );
 
   // GL_IBM_multimode_draw_arrays
 
-  tbl.glMultiModeDrawArraysIBM = trace_glMultiModeDrawArraysIBM;
-  tbl.glMultiModeDrawElementsIBM = trace_glMultiModeDrawElementsIBM;
+  tbl.glMultiModeDrawArraysIBM = MakeRegalProc( trace_glMultiModeDrawArraysIBM, layer );
+  tbl.glMultiModeDrawElementsIBM = MakeRegalProc( trace_glMultiModeDrawElementsIBM, layer );
 
   // GL_IBM_vertex_array_lists
 
-  tbl.glColorPointerListIBM = trace_glColorPointerListIBM;
-  tbl.glEdgeFlagPointerListIBM = trace_glEdgeFlagPointerListIBM;
-  tbl.glFogCoordPointerListIBM = trace_glFogCoordPointerListIBM;
-  tbl.glIndexPointerListIBM = trace_glIndexPointerListIBM;
-  tbl.glNormalPointerListIBM = trace_glNormalPointerListIBM;
-  tbl.glSecondaryColorPointerListIBM = trace_glSecondaryColorPointerListIBM;
-  tbl.glTexCoordPointerListIBM = trace_glTexCoordPointerListIBM;
-  tbl.glVertexPointerListIBM = trace_glVertexPointerListIBM;
+  tbl.glColorPointerListIBM = MakeRegalProc( trace_glColorPointerListIBM, layer );
+  tbl.glEdgeFlagPointerListIBM = MakeRegalProc( trace_glEdgeFlagPointerListIBM, layer );
+  tbl.glFogCoordPointerListIBM = MakeRegalProc( trace_glFogCoordPointerListIBM, layer );
+  tbl.glIndexPointerListIBM = MakeRegalProc( trace_glIndexPointerListIBM, layer );
+  tbl.glNormalPointerListIBM = MakeRegalProc( trace_glNormalPointerListIBM, layer );
+  tbl.glSecondaryColorPointerListIBM = MakeRegalProc( trace_glSecondaryColorPointerListIBM, layer );
+  tbl.glTexCoordPointerListIBM = MakeRegalProc( trace_glTexCoordPointerListIBM, layer );
+  tbl.glVertexPointerListIBM = MakeRegalProc( trace_glVertexPointerListIBM, layer );
 
   // GL_IMG_multisampled_render_to_texture
 
-  tbl.glFramebufferTexture2DMultisampleIMG = trace_glFramebufferTexture2DMultisampleIMG;
-  tbl.glRenderbufferStorageMultisampleIMG = trace_glRenderbufferStorageMultisampleIMG;
+  tbl.glFramebufferTexture2DMultisampleIMG = MakeRegalProc( trace_glFramebufferTexture2DMultisampleIMG, layer );
+  tbl.glRenderbufferStorageMultisampleIMG = MakeRegalProc( trace_glRenderbufferStorageMultisampleIMG, layer );
 
   // GL_INGR_blend_func_separate
 
-  tbl.glBlendFuncSeparateINGR = trace_glBlendFuncSeparateINGR;
+  tbl.glBlendFuncSeparateINGR = MakeRegalProc( trace_glBlendFuncSeparateINGR, layer );
 
   // GL_INTEL_parallel_arrays
 
-  tbl.glColorPointervINTEL = trace_glColorPointervINTEL;
-  tbl.glNormalPointervINTEL = trace_glNormalPointervINTEL;
-  tbl.glTexCoordPointervINTEL = trace_glTexCoordPointervINTEL;
-  tbl.glVertexPointervINTEL = trace_glVertexPointervINTEL;
+  tbl.glColorPointervINTEL = MakeRegalProc( trace_glColorPointervINTEL, layer );
+  tbl.glNormalPointervINTEL = MakeRegalProc( trace_glNormalPointervINTEL, layer );
+  tbl.glTexCoordPointervINTEL = MakeRegalProc( trace_glTexCoordPointervINTEL, layer );
+  tbl.glVertexPointervINTEL = MakeRegalProc( trace_glVertexPointervINTEL, layer );
 
   // GL_KHR_debug
 
-  tbl.glDebugMessageCallback = trace_glDebugMessageCallback;
-  tbl.glDebugMessageControl = trace_glDebugMessageControl;
-  tbl.glDebugMessageInsert = trace_glDebugMessageInsert;
-  tbl.glGetDebugMessageLog = trace_glGetDebugMessageLog;
-  tbl.glGetObjectLabel = trace_glGetObjectLabel;
-  tbl.glGetObjectPtrLabel = trace_glGetObjectPtrLabel;
-  tbl.glObjectLabel = trace_glObjectLabel;
-  tbl.glObjectPtrLabel = trace_glObjectPtrLabel;
-  tbl.glPopDebugGroup = trace_glPopDebugGroup;
-  tbl.glPushDebugGroup = trace_glPushDebugGroup;
+  tbl.glDebugMessageCallback = MakeRegalProc( trace_glDebugMessageCallback, layer );
+  tbl.glDebugMessageControl = MakeRegalProc( trace_glDebugMessageControl, layer );
+  tbl.glDebugMessageInsert = MakeRegalProc( trace_glDebugMessageInsert, layer );
+  tbl.glGetDebugMessageLog = MakeRegalProc( trace_glGetDebugMessageLog, layer );
+  tbl.glGetObjectLabel = MakeRegalProc( trace_glGetObjectLabel, layer );
+  tbl.glGetObjectPtrLabel = MakeRegalProc( trace_glGetObjectPtrLabel, layer );
+  tbl.glObjectLabel = MakeRegalProc( trace_glObjectLabel, layer );
+  tbl.glObjectPtrLabel = MakeRegalProc( trace_glObjectPtrLabel, layer );
+  tbl.glPopDebugGroup = MakeRegalProc( trace_glPopDebugGroup, layer );
+  tbl.glPushDebugGroup = MakeRegalProc( trace_glPushDebugGroup, layer );
 
   // GL_KTX_buffer_region
 
-  tbl.glBufferRegionEnabled = trace_glBufferRegionEnabled;
-  tbl.glDeleteBufferRegion = trace_glDeleteBufferRegion;
-  tbl.glDrawBufferRegion = trace_glDrawBufferRegion;
-  tbl.glNewBufferRegion = trace_glNewBufferRegion;
-  tbl.glReadBufferRegion = trace_glReadBufferRegion;
+  tbl.glBufferRegionEnabled = MakeRegalProc( trace_glBufferRegionEnabled, layer );
+  tbl.glDeleteBufferRegion = MakeRegalProc( trace_glDeleteBufferRegion, layer );
+  tbl.glDrawBufferRegion = MakeRegalProc( trace_glDrawBufferRegion, layer );
+  tbl.glNewBufferRegion = MakeRegalProc( trace_glNewBufferRegion, layer );
+  tbl.glReadBufferRegion = MakeRegalProc( trace_glReadBufferRegion, layer );
 
   // GL_MESA_resize_buffers
 
-  tbl.glResizeBuffersMESA = trace_glResizeBuffersMESA;
+  tbl.glResizeBuffersMESA = MakeRegalProc( trace_glResizeBuffersMESA, layer );
 
   // GL_MESA_window_pos
 
-  tbl.glWindowPos2dMESA = trace_glWindowPos2dMESA;
-  tbl.glWindowPos2dvMESA = trace_glWindowPos2dvMESA;
-  tbl.glWindowPos2fMESA = trace_glWindowPos2fMESA;
-  tbl.glWindowPos2fvMESA = trace_glWindowPos2fvMESA;
-  tbl.glWindowPos2iMESA = trace_glWindowPos2iMESA;
-  tbl.glWindowPos2ivMESA = trace_glWindowPos2ivMESA;
-  tbl.glWindowPos2sMESA = trace_glWindowPos2sMESA;
-  tbl.glWindowPos2svMESA = trace_glWindowPos2svMESA;
-  tbl.glWindowPos3dMESA = trace_glWindowPos3dMESA;
-  tbl.glWindowPos3dvMESA = trace_glWindowPos3dvMESA;
-  tbl.glWindowPos3fMESA = trace_glWindowPos3fMESA;
-  tbl.glWindowPos3fvMESA = trace_glWindowPos3fvMESA;
-  tbl.glWindowPos3iMESA = trace_glWindowPos3iMESA;
-  tbl.glWindowPos3ivMESA = trace_glWindowPos3ivMESA;
-  tbl.glWindowPos3sMESA = trace_glWindowPos3sMESA;
-  tbl.glWindowPos3svMESA = trace_glWindowPos3svMESA;
-  tbl.glWindowPos4dMESA = trace_glWindowPos4dMESA;
-  tbl.glWindowPos4dvMESA = trace_glWindowPos4dvMESA;
-  tbl.glWindowPos4fMESA = trace_glWindowPos4fMESA;
-  tbl.glWindowPos4fvMESA = trace_glWindowPos4fvMESA;
-  tbl.glWindowPos4iMESA = trace_glWindowPos4iMESA;
-  tbl.glWindowPos4ivMESA = trace_glWindowPos4ivMESA;
-  tbl.glWindowPos4sMESA = trace_glWindowPos4sMESA;
-  tbl.glWindowPos4svMESA = trace_glWindowPos4svMESA;
+  tbl.glWindowPos2dMESA = MakeRegalProc( trace_glWindowPos2dMESA, layer );
+  tbl.glWindowPos2dvMESA = MakeRegalProc( trace_glWindowPos2dvMESA, layer );
+  tbl.glWindowPos2fMESA = MakeRegalProc( trace_glWindowPos2fMESA, layer );
+  tbl.glWindowPos2fvMESA = MakeRegalProc( trace_glWindowPos2fvMESA, layer );
+  tbl.glWindowPos2iMESA = MakeRegalProc( trace_glWindowPos2iMESA, layer );
+  tbl.glWindowPos2ivMESA = MakeRegalProc( trace_glWindowPos2ivMESA, layer );
+  tbl.glWindowPos2sMESA = MakeRegalProc( trace_glWindowPos2sMESA, layer );
+  tbl.glWindowPos2svMESA = MakeRegalProc( trace_glWindowPos2svMESA, layer );
+  tbl.glWindowPos3dMESA = MakeRegalProc( trace_glWindowPos3dMESA, layer );
+  tbl.glWindowPos3dvMESA = MakeRegalProc( trace_glWindowPos3dvMESA, layer );
+  tbl.glWindowPos3fMESA = MakeRegalProc( trace_glWindowPos3fMESA, layer );
+  tbl.glWindowPos3fvMESA = MakeRegalProc( trace_glWindowPos3fvMESA, layer );
+  tbl.glWindowPos3iMESA = MakeRegalProc( trace_glWindowPos3iMESA, layer );
+  tbl.glWindowPos3ivMESA = MakeRegalProc( trace_glWindowPos3ivMESA, layer );
+  tbl.glWindowPos3sMESA = MakeRegalProc( trace_glWindowPos3sMESA, layer );
+  tbl.glWindowPos3svMESA = MakeRegalProc( trace_glWindowPos3svMESA, layer );
+  tbl.glWindowPos4dMESA = MakeRegalProc( trace_glWindowPos4dMESA, layer );
+  tbl.glWindowPos4dvMESA = MakeRegalProc( trace_glWindowPos4dvMESA, layer );
+  tbl.glWindowPos4fMESA = MakeRegalProc( trace_glWindowPos4fMESA, layer );
+  tbl.glWindowPos4fvMESA = MakeRegalProc( trace_glWindowPos4fvMESA, layer );
+  tbl.glWindowPos4iMESA = MakeRegalProc( trace_glWindowPos4iMESA, layer );
+  tbl.glWindowPos4ivMESA = MakeRegalProc( trace_glWindowPos4ivMESA, layer );
+  tbl.glWindowPos4sMESA = MakeRegalProc( trace_glWindowPos4sMESA, layer );
+  tbl.glWindowPos4svMESA = MakeRegalProc( trace_glWindowPos4svMESA, layer );
 
   // GL_NV_conditional_render
 
-  tbl.glBeginConditionalRenderNV = trace_glBeginConditionalRenderNV;
-  tbl.glEndConditionalRenderNV = trace_glEndConditionalRenderNV;
+  tbl.glBeginConditionalRenderNV = MakeRegalProc( trace_glBeginConditionalRenderNV, layer );
+  tbl.glEndConditionalRenderNV = MakeRegalProc( trace_glEndConditionalRenderNV, layer );
 
   // GL_NV_copy_image
 
-  tbl.glCopyImageSubDataNV = trace_glCopyImageSubDataNV;
+  tbl.glCopyImageSubDataNV = MakeRegalProc( trace_glCopyImageSubDataNV, layer );
 
   // GL_NV_coverage_sample
 
-  tbl.glCoverageMaskNV = trace_glCoverageMaskNV;
-  tbl.glCoverageOperationNV = trace_glCoverageOperationNV;
+  tbl.glCoverageMaskNV = MakeRegalProc( trace_glCoverageMaskNV, layer );
+  tbl.glCoverageOperationNV = MakeRegalProc( trace_glCoverageOperationNV, layer );
 
   // GL_NV_depth_buffer_float
 
-  tbl.glClearDepthdNV = trace_glClearDepthdNV;
-  tbl.glDepthBoundsdNV = trace_glDepthBoundsdNV;
-  tbl.glDepthRangedNV = trace_glDepthRangedNV;
+  tbl.glClearDepthdNV = MakeRegalProc( trace_glClearDepthdNV, layer );
+  tbl.glDepthBoundsdNV = MakeRegalProc( trace_glDepthBoundsdNV, layer );
+  tbl.glDepthRangedNV = MakeRegalProc( trace_glDepthRangedNV, layer );
 
   // GL_NV_draw_buffers
 
-  tbl.glDrawBuffersNV = trace_glDrawBuffersNV;
+  tbl.glDrawBuffersNV = MakeRegalProc( trace_glDrawBuffersNV, layer );
 
   // GL_NV_evaluators
 
-  tbl.glEvalMapsNV = trace_glEvalMapsNV;
-  tbl.glGetMapAttribParameterfvNV = trace_glGetMapAttribParameterfvNV;
-  tbl.glGetMapAttribParameterivNV = trace_glGetMapAttribParameterivNV;
-  tbl.glGetMapControlPointsNV = trace_glGetMapControlPointsNV;
-  tbl.glGetMapParameterfvNV = trace_glGetMapParameterfvNV;
-  tbl.glGetMapParameterivNV = trace_glGetMapParameterivNV;
-  tbl.glMapControlPointsNV = trace_glMapControlPointsNV;
-  tbl.glMapParameterfvNV = trace_glMapParameterfvNV;
-  tbl.glMapParameterivNV = trace_glMapParameterivNV;
+  tbl.glEvalMapsNV = MakeRegalProc( trace_glEvalMapsNV, layer );
+  tbl.glGetMapAttribParameterfvNV = MakeRegalProc( trace_glGetMapAttribParameterfvNV, layer );
+  tbl.glGetMapAttribParameterivNV = MakeRegalProc( trace_glGetMapAttribParameterivNV, layer );
+  tbl.glGetMapControlPointsNV = MakeRegalProc( trace_glGetMapControlPointsNV, layer );
+  tbl.glGetMapParameterfvNV = MakeRegalProc( trace_glGetMapParameterfvNV, layer );
+  tbl.glGetMapParameterivNV = MakeRegalProc( trace_glGetMapParameterivNV, layer );
+  tbl.glMapControlPointsNV = MakeRegalProc( trace_glMapControlPointsNV, layer );
+  tbl.glMapParameterfvNV = MakeRegalProc( trace_glMapParameterfvNV, layer );
+  tbl.glMapParameterivNV = MakeRegalProc( trace_glMapParameterivNV, layer );
 
   // GL_NV_explicit_multisample
 
-  tbl.glGetMultisamplefvNV = trace_glGetMultisamplefvNV;
-  tbl.glSampleMaskIndexedNV = trace_glSampleMaskIndexedNV;
-  tbl.glTexRenderbufferNV = trace_glTexRenderbufferNV;
+  tbl.glGetMultisamplefvNV = MakeRegalProc( trace_glGetMultisamplefvNV, layer );
+  tbl.glSampleMaskIndexedNV = MakeRegalProc( trace_glSampleMaskIndexedNV, layer );
+  tbl.glTexRenderbufferNV = MakeRegalProc( trace_glTexRenderbufferNV, layer );
 
   // GL_NV_fence
 
-  tbl.glDeleteFencesNV = trace_glDeleteFencesNV;
-  tbl.glFinishFenceNV = trace_glFinishFenceNV;
-  tbl.glGenFencesNV = trace_glGenFencesNV;
-  tbl.glGetFenceivNV = trace_glGetFenceivNV;
-  tbl.glIsFenceNV = trace_glIsFenceNV;
-  tbl.glSetFenceNV = trace_glSetFenceNV;
-  tbl.glTestFenceNV = trace_glTestFenceNV;
+  tbl.glDeleteFencesNV = MakeRegalProc( trace_glDeleteFencesNV, layer );
+  tbl.glFinishFenceNV = MakeRegalProc( trace_glFinishFenceNV, layer );
+  tbl.glGenFencesNV = MakeRegalProc( trace_glGenFencesNV, layer );
+  tbl.glGetFenceivNV = MakeRegalProc( trace_glGetFenceivNV, layer );
+  tbl.glIsFenceNV = MakeRegalProc( trace_glIsFenceNV, layer );
+  tbl.glSetFenceNV = MakeRegalProc( trace_glSetFenceNV, layer );
+  tbl.glTestFenceNV = MakeRegalProc( trace_glTestFenceNV, layer );
 
   // GL_NV_fragment_program
 
-  tbl.glGetProgramNamedParameterdvNV = trace_glGetProgramNamedParameterdvNV;
-  tbl.glGetProgramNamedParameterfvNV = trace_glGetProgramNamedParameterfvNV;
-  tbl.glProgramNamedParameter4dNV = trace_glProgramNamedParameter4dNV;
-  tbl.glProgramNamedParameter4dvNV = trace_glProgramNamedParameter4dvNV;
-  tbl.glProgramNamedParameter4fNV = trace_glProgramNamedParameter4fNV;
-  tbl.glProgramNamedParameter4fvNV = trace_glProgramNamedParameter4fvNV;
+  tbl.glGetProgramNamedParameterdvNV = MakeRegalProc( trace_glGetProgramNamedParameterdvNV, layer );
+  tbl.glGetProgramNamedParameterfvNV = MakeRegalProc( trace_glGetProgramNamedParameterfvNV, layer );
+  tbl.glProgramNamedParameter4dNV = MakeRegalProc( trace_glProgramNamedParameter4dNV, layer );
+  tbl.glProgramNamedParameter4dvNV = MakeRegalProc( trace_glProgramNamedParameter4dvNV, layer );
+  tbl.glProgramNamedParameter4fNV = MakeRegalProc( trace_glProgramNamedParameter4fNV, layer );
+  tbl.glProgramNamedParameter4fvNV = MakeRegalProc( trace_glProgramNamedParameter4fvNV, layer );
 
   // GL_NV_framebuffer_multisample_coverage
 
-  tbl.glRenderbufferStorageMultisampleCoverageNV = trace_glRenderbufferStorageMultisampleCoverageNV;
+  tbl.glRenderbufferStorageMultisampleCoverageNV = MakeRegalProc( trace_glRenderbufferStorageMultisampleCoverageNV, layer );
 
   // GL_NV_geometry_program4
 
-  tbl.glProgramVertexLimitNV = trace_glProgramVertexLimitNV;
+  tbl.glProgramVertexLimitNV = MakeRegalProc( trace_glProgramVertexLimitNV, layer );
 
   // GL_NV_gpu_program4
 
-  tbl.glGetProgramEnvParameterIivNV = trace_glGetProgramEnvParameterIivNV;
-  tbl.glGetProgramEnvParameterIuivNV = trace_glGetProgramEnvParameterIuivNV;
-  tbl.glGetProgramLocalParameterIivNV = trace_glGetProgramLocalParameterIivNV;
-  tbl.glGetProgramLocalParameterIuivNV = trace_glGetProgramLocalParameterIuivNV;
-  tbl.glProgramEnvParameterI4iNV = trace_glProgramEnvParameterI4iNV;
-  tbl.glProgramEnvParameterI4ivNV = trace_glProgramEnvParameterI4ivNV;
-  tbl.glProgramEnvParameterI4uiNV = trace_glProgramEnvParameterI4uiNV;
-  tbl.glProgramEnvParameterI4uivNV = trace_glProgramEnvParameterI4uivNV;
-  tbl.glProgramEnvParametersI4ivNV = trace_glProgramEnvParametersI4ivNV;
-  tbl.glProgramEnvParametersI4uivNV = trace_glProgramEnvParametersI4uivNV;
-  tbl.glProgramLocalParameterI4iNV = trace_glProgramLocalParameterI4iNV;
-  tbl.glProgramLocalParameterI4ivNV = trace_glProgramLocalParameterI4ivNV;
-  tbl.glProgramLocalParameterI4uiNV = trace_glProgramLocalParameterI4uiNV;
-  tbl.glProgramLocalParameterI4uivNV = trace_glProgramLocalParameterI4uivNV;
-  tbl.glProgramLocalParametersI4ivNV = trace_glProgramLocalParametersI4ivNV;
-  tbl.glProgramLocalParametersI4uivNV = trace_glProgramLocalParametersI4uivNV;
+  tbl.glGetProgramEnvParameterIivNV = MakeRegalProc( trace_glGetProgramEnvParameterIivNV, layer );
+  tbl.glGetProgramEnvParameterIuivNV = MakeRegalProc( trace_glGetProgramEnvParameterIuivNV, layer );
+  tbl.glGetProgramLocalParameterIivNV = MakeRegalProc( trace_glGetProgramLocalParameterIivNV, layer );
+  tbl.glGetProgramLocalParameterIuivNV = MakeRegalProc( trace_glGetProgramLocalParameterIuivNV, layer );
+  tbl.glProgramEnvParameterI4iNV = MakeRegalProc( trace_glProgramEnvParameterI4iNV, layer );
+  tbl.glProgramEnvParameterI4ivNV = MakeRegalProc( trace_glProgramEnvParameterI4ivNV, layer );
+  tbl.glProgramEnvParameterI4uiNV = MakeRegalProc( trace_glProgramEnvParameterI4uiNV, layer );
+  tbl.glProgramEnvParameterI4uivNV = MakeRegalProc( trace_glProgramEnvParameterI4uivNV, layer );
+  tbl.glProgramEnvParametersI4ivNV = MakeRegalProc( trace_glProgramEnvParametersI4ivNV, layer );
+  tbl.glProgramEnvParametersI4uivNV = MakeRegalProc( trace_glProgramEnvParametersI4uivNV, layer );
+  tbl.glProgramLocalParameterI4iNV = MakeRegalProc( trace_glProgramLocalParameterI4iNV, layer );
+  tbl.glProgramLocalParameterI4ivNV = MakeRegalProc( trace_glProgramLocalParameterI4ivNV, layer );
+  tbl.glProgramLocalParameterI4uiNV = MakeRegalProc( trace_glProgramLocalParameterI4uiNV, layer );
+  tbl.glProgramLocalParameterI4uivNV = MakeRegalProc( trace_glProgramLocalParameterI4uivNV, layer );
+  tbl.glProgramLocalParametersI4ivNV = MakeRegalProc( trace_glProgramLocalParametersI4ivNV, layer );
+  tbl.glProgramLocalParametersI4uivNV = MakeRegalProc( trace_glProgramLocalParametersI4uivNV, layer );
 
   // GL_NV_gpu_shader5
 
-  tbl.glGetUniformi64vNV = trace_glGetUniformi64vNV;
-  tbl.glProgramUniform1i64NV = trace_glProgramUniform1i64NV;
-  tbl.glProgramUniform1i64vNV = trace_glProgramUniform1i64vNV;
-  tbl.glProgramUniform1ui64NV = trace_glProgramUniform1ui64NV;
-  tbl.glProgramUniform1ui64vNV = trace_glProgramUniform1ui64vNV;
-  tbl.glProgramUniform2i64NV = trace_glProgramUniform2i64NV;
-  tbl.glProgramUniform2i64vNV = trace_glProgramUniform2i64vNV;
-  tbl.glProgramUniform2ui64NV = trace_glProgramUniform2ui64NV;
-  tbl.glProgramUniform2ui64vNV = trace_glProgramUniform2ui64vNV;
-  tbl.glProgramUniform3i64NV = trace_glProgramUniform3i64NV;
-  tbl.glProgramUniform3i64vNV = trace_glProgramUniform3i64vNV;
-  tbl.glProgramUniform3ui64NV = trace_glProgramUniform3ui64NV;
-  tbl.glProgramUniform3ui64vNV = trace_glProgramUniform3ui64vNV;
-  tbl.glProgramUniform4i64NV = trace_glProgramUniform4i64NV;
-  tbl.glProgramUniform4i64vNV = trace_glProgramUniform4i64vNV;
-  tbl.glProgramUniform4ui64NV = trace_glProgramUniform4ui64NV;
-  tbl.glProgramUniform4ui64vNV = trace_glProgramUniform4ui64vNV;
-  tbl.glUniform1i64NV = trace_glUniform1i64NV;
-  tbl.glUniform1i64vNV = trace_glUniform1i64vNV;
-  tbl.glUniform1ui64NV = trace_glUniform1ui64NV;
-  tbl.glUniform1ui64vNV = trace_glUniform1ui64vNV;
-  tbl.glUniform2i64NV = trace_glUniform2i64NV;
-  tbl.glUniform2i64vNV = trace_glUniform2i64vNV;
-  tbl.glUniform2ui64NV = trace_glUniform2ui64NV;
-  tbl.glUniform2ui64vNV = trace_glUniform2ui64vNV;
-  tbl.glUniform3i64NV = trace_glUniform3i64NV;
-  tbl.glUniform3i64vNV = trace_glUniform3i64vNV;
-  tbl.glUniform3ui64NV = trace_glUniform3ui64NV;
-  tbl.glUniform3ui64vNV = trace_glUniform3ui64vNV;
-  tbl.glUniform4i64NV = trace_glUniform4i64NV;
-  tbl.glUniform4i64vNV = trace_glUniform4i64vNV;
-  tbl.glUniform4ui64NV = trace_glUniform4ui64NV;
-  tbl.glUniform4ui64vNV = trace_glUniform4ui64vNV;
+  tbl.glGetUniformi64vNV = MakeRegalProc( trace_glGetUniformi64vNV, layer );
+  tbl.glProgramUniform1i64NV = MakeRegalProc( trace_glProgramUniform1i64NV, layer );
+  tbl.glProgramUniform1i64vNV = MakeRegalProc( trace_glProgramUniform1i64vNV, layer );
+  tbl.glProgramUniform1ui64NV = MakeRegalProc( trace_glProgramUniform1ui64NV, layer );
+  tbl.glProgramUniform1ui64vNV = MakeRegalProc( trace_glProgramUniform1ui64vNV, layer );
+  tbl.glProgramUniform2i64NV = MakeRegalProc( trace_glProgramUniform2i64NV, layer );
+  tbl.glProgramUniform2i64vNV = MakeRegalProc( trace_glProgramUniform2i64vNV, layer );
+  tbl.glProgramUniform2ui64NV = MakeRegalProc( trace_glProgramUniform2ui64NV, layer );
+  tbl.glProgramUniform2ui64vNV = MakeRegalProc( trace_glProgramUniform2ui64vNV, layer );
+  tbl.glProgramUniform3i64NV = MakeRegalProc( trace_glProgramUniform3i64NV, layer );
+  tbl.glProgramUniform3i64vNV = MakeRegalProc( trace_glProgramUniform3i64vNV, layer );
+  tbl.glProgramUniform3ui64NV = MakeRegalProc( trace_glProgramUniform3ui64NV, layer );
+  tbl.glProgramUniform3ui64vNV = MakeRegalProc( trace_glProgramUniform3ui64vNV, layer );
+  tbl.glProgramUniform4i64NV = MakeRegalProc( trace_glProgramUniform4i64NV, layer );
+  tbl.glProgramUniform4i64vNV = MakeRegalProc( trace_glProgramUniform4i64vNV, layer );
+  tbl.glProgramUniform4ui64NV = MakeRegalProc( trace_glProgramUniform4ui64NV, layer );
+  tbl.glProgramUniform4ui64vNV = MakeRegalProc( trace_glProgramUniform4ui64vNV, layer );
+  tbl.glUniform1i64NV = MakeRegalProc( trace_glUniform1i64NV, layer );
+  tbl.glUniform1i64vNV = MakeRegalProc( trace_glUniform1i64vNV, layer );
+  tbl.glUniform1ui64NV = MakeRegalProc( trace_glUniform1ui64NV, layer );
+  tbl.glUniform1ui64vNV = MakeRegalProc( trace_glUniform1ui64vNV, layer );
+  tbl.glUniform2i64NV = MakeRegalProc( trace_glUniform2i64NV, layer );
+  tbl.glUniform2i64vNV = MakeRegalProc( trace_glUniform2i64vNV, layer );
+  tbl.glUniform2ui64NV = MakeRegalProc( trace_glUniform2ui64NV, layer );
+  tbl.glUniform2ui64vNV = MakeRegalProc( trace_glUniform2ui64vNV, layer );
+  tbl.glUniform3i64NV = MakeRegalProc( trace_glUniform3i64NV, layer );
+  tbl.glUniform3i64vNV = MakeRegalProc( trace_glUniform3i64vNV, layer );
+  tbl.glUniform3ui64NV = MakeRegalProc( trace_glUniform3ui64NV, layer );
+  tbl.glUniform3ui64vNV = MakeRegalProc( trace_glUniform3ui64vNV, layer );
+  tbl.glUniform4i64NV = MakeRegalProc( trace_glUniform4i64NV, layer );
+  tbl.glUniform4i64vNV = MakeRegalProc( trace_glUniform4i64vNV, layer );
+  tbl.glUniform4ui64NV = MakeRegalProc( trace_glUniform4ui64NV, layer );
+  tbl.glUniform4ui64vNV = MakeRegalProc( trace_glUniform4ui64vNV, layer );
 
   // GL_NV_half_float
 
-  tbl.glColor3hNV = trace_glColor3hNV;
-  tbl.glColor3hvNV = trace_glColor3hvNV;
-  tbl.glColor4hNV = trace_glColor4hNV;
-  tbl.glColor4hvNV = trace_glColor4hvNV;
-  tbl.glFogCoordhNV = trace_glFogCoordhNV;
-  tbl.glFogCoordhvNV = trace_glFogCoordhvNV;
-  tbl.glMultiTexCoord1hNV = trace_glMultiTexCoord1hNV;
-  tbl.glMultiTexCoord1hvNV = trace_glMultiTexCoord1hvNV;
-  tbl.glMultiTexCoord2hNV = trace_glMultiTexCoord2hNV;
-  tbl.glMultiTexCoord2hvNV = trace_glMultiTexCoord2hvNV;
-  tbl.glMultiTexCoord3hNV = trace_glMultiTexCoord3hNV;
-  tbl.glMultiTexCoord3hvNV = trace_glMultiTexCoord3hvNV;
-  tbl.glMultiTexCoord4hNV = trace_glMultiTexCoord4hNV;
-  tbl.glMultiTexCoord4hvNV = trace_glMultiTexCoord4hvNV;
-  tbl.glNormal3hNV = trace_glNormal3hNV;
-  tbl.glNormal3hvNV = trace_glNormal3hvNV;
-  tbl.glSecondaryColor3hNV = trace_glSecondaryColor3hNV;
-  tbl.glSecondaryColor3hvNV = trace_glSecondaryColor3hvNV;
-  tbl.glTexCoord1hNV = trace_glTexCoord1hNV;
-  tbl.glTexCoord1hvNV = trace_glTexCoord1hvNV;
-  tbl.glTexCoord2hNV = trace_glTexCoord2hNV;
-  tbl.glTexCoord2hvNV = trace_glTexCoord2hvNV;
-  tbl.glTexCoord3hNV = trace_glTexCoord3hNV;
-  tbl.glTexCoord3hvNV = trace_glTexCoord3hvNV;
-  tbl.glTexCoord4hNV = trace_glTexCoord4hNV;
-  tbl.glTexCoord4hvNV = trace_glTexCoord4hvNV;
-  tbl.glVertex2hNV = trace_glVertex2hNV;
-  tbl.glVertex2hvNV = trace_glVertex2hvNV;
-  tbl.glVertex3hNV = trace_glVertex3hNV;
-  tbl.glVertex3hvNV = trace_glVertex3hvNV;
-  tbl.glVertex4hNV = trace_glVertex4hNV;
-  tbl.glVertex4hvNV = trace_glVertex4hvNV;
-  tbl.glVertexAttrib1hNV = trace_glVertexAttrib1hNV;
-  tbl.glVertexAttrib1hvNV = trace_glVertexAttrib1hvNV;
-  tbl.glVertexAttrib2hNV = trace_glVertexAttrib2hNV;
-  tbl.glVertexAttrib2hvNV = trace_glVertexAttrib2hvNV;
-  tbl.glVertexAttrib3hNV = trace_glVertexAttrib3hNV;
-  tbl.glVertexAttrib3hvNV = trace_glVertexAttrib3hvNV;
-  tbl.glVertexAttrib4hNV = trace_glVertexAttrib4hNV;
-  tbl.glVertexAttrib4hvNV = trace_glVertexAttrib4hvNV;
-  tbl.glVertexAttribs1hvNV = trace_glVertexAttribs1hvNV;
-  tbl.glVertexAttribs2hvNV = trace_glVertexAttribs2hvNV;
-  tbl.glVertexAttribs3hvNV = trace_glVertexAttribs3hvNV;
-  tbl.glVertexAttribs4hvNV = trace_glVertexAttribs4hvNV;
-  tbl.glVertexWeighthNV = trace_glVertexWeighthNV;
-  tbl.glVertexWeighthvNV = trace_glVertexWeighthvNV;
+  tbl.glColor3hNV = MakeRegalProc( trace_glColor3hNV, layer );
+  tbl.glColor3hvNV = MakeRegalProc( trace_glColor3hvNV, layer );
+  tbl.glColor4hNV = MakeRegalProc( trace_glColor4hNV, layer );
+  tbl.glColor4hvNV = MakeRegalProc( trace_glColor4hvNV, layer );
+  tbl.glFogCoordhNV = MakeRegalProc( trace_glFogCoordhNV, layer );
+  tbl.glFogCoordhvNV = MakeRegalProc( trace_glFogCoordhvNV, layer );
+  tbl.glMultiTexCoord1hNV = MakeRegalProc( trace_glMultiTexCoord1hNV, layer );
+  tbl.glMultiTexCoord1hvNV = MakeRegalProc( trace_glMultiTexCoord1hvNV, layer );
+  tbl.glMultiTexCoord2hNV = MakeRegalProc( trace_glMultiTexCoord2hNV, layer );
+  tbl.glMultiTexCoord2hvNV = MakeRegalProc( trace_glMultiTexCoord2hvNV, layer );
+  tbl.glMultiTexCoord3hNV = MakeRegalProc( trace_glMultiTexCoord3hNV, layer );
+  tbl.glMultiTexCoord3hvNV = MakeRegalProc( trace_glMultiTexCoord3hvNV, layer );
+  tbl.glMultiTexCoord4hNV = MakeRegalProc( trace_glMultiTexCoord4hNV, layer );
+  tbl.glMultiTexCoord4hvNV = MakeRegalProc( trace_glMultiTexCoord4hvNV, layer );
+  tbl.glNormal3hNV = MakeRegalProc( trace_glNormal3hNV, layer );
+  tbl.glNormal3hvNV = MakeRegalProc( trace_glNormal3hvNV, layer );
+  tbl.glSecondaryColor3hNV = MakeRegalProc( trace_glSecondaryColor3hNV, layer );
+  tbl.glSecondaryColor3hvNV = MakeRegalProc( trace_glSecondaryColor3hvNV, layer );
+  tbl.glTexCoord1hNV = MakeRegalProc( trace_glTexCoord1hNV, layer );
+  tbl.glTexCoord1hvNV = MakeRegalProc( trace_glTexCoord1hvNV, layer );
+  tbl.glTexCoord2hNV = MakeRegalProc( trace_glTexCoord2hNV, layer );
+  tbl.glTexCoord2hvNV = MakeRegalProc( trace_glTexCoord2hvNV, layer );
+  tbl.glTexCoord3hNV = MakeRegalProc( trace_glTexCoord3hNV, layer );
+  tbl.glTexCoord3hvNV = MakeRegalProc( trace_glTexCoord3hvNV, layer );
+  tbl.glTexCoord4hNV = MakeRegalProc( trace_glTexCoord4hNV, layer );
+  tbl.glTexCoord4hvNV = MakeRegalProc( trace_glTexCoord4hvNV, layer );
+  tbl.glVertex2hNV = MakeRegalProc( trace_glVertex2hNV, layer );
+  tbl.glVertex2hvNV = MakeRegalProc( trace_glVertex2hvNV, layer );
+  tbl.glVertex3hNV = MakeRegalProc( trace_glVertex3hNV, layer );
+  tbl.glVertex3hvNV = MakeRegalProc( trace_glVertex3hvNV, layer );
+  tbl.glVertex4hNV = MakeRegalProc( trace_glVertex4hNV, layer );
+  tbl.glVertex4hvNV = MakeRegalProc( trace_glVertex4hvNV, layer );
+  tbl.glVertexAttrib1hNV = MakeRegalProc( trace_glVertexAttrib1hNV, layer );
+  tbl.glVertexAttrib1hvNV = MakeRegalProc( trace_glVertexAttrib1hvNV, layer );
+  tbl.glVertexAttrib2hNV = MakeRegalProc( trace_glVertexAttrib2hNV, layer );
+  tbl.glVertexAttrib2hvNV = MakeRegalProc( trace_glVertexAttrib2hvNV, layer );
+  tbl.glVertexAttrib3hNV = MakeRegalProc( trace_glVertexAttrib3hNV, layer );
+  tbl.glVertexAttrib3hvNV = MakeRegalProc( trace_glVertexAttrib3hvNV, layer );
+  tbl.glVertexAttrib4hNV = MakeRegalProc( trace_glVertexAttrib4hNV, layer );
+  tbl.glVertexAttrib4hvNV = MakeRegalProc( trace_glVertexAttrib4hvNV, layer );
+  tbl.glVertexAttribs1hvNV = MakeRegalProc( trace_glVertexAttribs1hvNV, layer );
+  tbl.glVertexAttribs2hvNV = MakeRegalProc( trace_glVertexAttribs2hvNV, layer );
+  tbl.glVertexAttribs3hvNV = MakeRegalProc( trace_glVertexAttribs3hvNV, layer );
+  tbl.glVertexAttribs4hvNV = MakeRegalProc( trace_glVertexAttribs4hvNV, layer );
+  tbl.glVertexWeighthNV = MakeRegalProc( trace_glVertexWeighthNV, layer );
+  tbl.glVertexWeighthvNV = MakeRegalProc( trace_glVertexWeighthvNV, layer );
 
   // GL_NV_occlusion_query
 
-  tbl.glBeginOcclusionQueryNV = trace_glBeginOcclusionQueryNV;
-  tbl.glDeleteOcclusionQueriesNV = trace_glDeleteOcclusionQueriesNV;
-  tbl.glEndOcclusionQueryNV = trace_glEndOcclusionQueryNV;
-  tbl.glGenOcclusionQueriesNV = trace_glGenOcclusionQueriesNV;
-  tbl.glGetOcclusionQueryivNV = trace_glGetOcclusionQueryivNV;
-  tbl.glGetOcclusionQueryuivNV = trace_glGetOcclusionQueryuivNV;
-  tbl.glIsOcclusionQueryNV = trace_glIsOcclusionQueryNV;
+  tbl.glBeginOcclusionQueryNV = MakeRegalProc( trace_glBeginOcclusionQueryNV, layer );
+  tbl.glDeleteOcclusionQueriesNV = MakeRegalProc( trace_glDeleteOcclusionQueriesNV, layer );
+  tbl.glEndOcclusionQueryNV = MakeRegalProc( trace_glEndOcclusionQueryNV, layer );
+  tbl.glGenOcclusionQueriesNV = MakeRegalProc( trace_glGenOcclusionQueriesNV, layer );
+  tbl.glGetOcclusionQueryivNV = MakeRegalProc( trace_glGetOcclusionQueryivNV, layer );
+  tbl.glGetOcclusionQueryuivNV = MakeRegalProc( trace_glGetOcclusionQueryuivNV, layer );
+  tbl.glIsOcclusionQueryNV = MakeRegalProc( trace_glIsOcclusionQueryNV, layer );
 
   // GL_NV_parameter_buffer_object
 
-  tbl.glProgramBufferParametersIivNV = trace_glProgramBufferParametersIivNV;
-  tbl.glProgramBufferParametersIuivNV = trace_glProgramBufferParametersIuivNV;
-  tbl.glProgramBufferParametersfvNV = trace_glProgramBufferParametersfvNV;
+  tbl.glProgramBufferParametersIivNV = MakeRegalProc( trace_glProgramBufferParametersIivNV, layer );
+  tbl.glProgramBufferParametersIuivNV = MakeRegalProc( trace_glProgramBufferParametersIuivNV, layer );
+  tbl.glProgramBufferParametersfvNV = MakeRegalProc( trace_glProgramBufferParametersfvNV, layer );
 
   // GL_NV_path_rendering
 
-  tbl.glCopyPathNV = trace_glCopyPathNV;
-  tbl.glCoverFillPathInstancedNV = trace_glCoverFillPathInstancedNV;
-  tbl.glCoverFillPathNV = trace_glCoverFillPathNV;
-  tbl.glCoverStrokePathInstancedNV = trace_glCoverStrokePathInstancedNV;
-  tbl.glCoverStrokePathNV = trace_glCoverStrokePathNV;
-  tbl.glDeletePathsNV = trace_glDeletePathsNV;
-  tbl.glGenPathsNV = trace_glGenPathsNV;
-  tbl.glGetPathColorGenfvNV = trace_glGetPathColorGenfvNV;
-  tbl.glGetPathColorGenivNV = trace_glGetPathColorGenivNV;
-  tbl.glGetPathCommandsNV = trace_glGetPathCommandsNV;
-  tbl.glGetPathCoordsNV = trace_glGetPathCoordsNV;
-  tbl.glGetPathDashArrayNV = trace_glGetPathDashArrayNV;
-  tbl.glGetPathLengthNV = trace_glGetPathLengthNV;
-  tbl.glGetPathMetricRangeNV = trace_glGetPathMetricRangeNV;
-  tbl.glGetPathMetricsNV = trace_glGetPathMetricsNV;
-  tbl.glGetPathParameterfvNV = trace_glGetPathParameterfvNV;
-  tbl.glGetPathParameterivNV = trace_glGetPathParameterivNV;
-  tbl.glGetPathSpacingNV = trace_glGetPathSpacingNV;
-  tbl.glGetPathTexGenfvNV = trace_glGetPathTexGenfvNV;
-  tbl.glGetPathTexGenivNV = trace_glGetPathTexGenivNV;
-  tbl.glInterpolatePathsNV = trace_glInterpolatePathsNV;
-  tbl.glIsPathNV = trace_glIsPathNV;
-  tbl.glIsPointInFillPathNV = trace_glIsPointInFillPathNV;
-  tbl.glIsPointInStrokePathNV = trace_glIsPointInStrokePathNV;
-  tbl.glPathColorGenNV = trace_glPathColorGenNV;
-  tbl.glPathCommandsNV = trace_glPathCommandsNV;
-  tbl.glPathCoordsNV = trace_glPathCoordsNV;
-  tbl.glPathCoverDepthFuncNV = trace_glPathCoverDepthFuncNV;
-  tbl.glPathDashArrayNV = trace_glPathDashArrayNV;
-  tbl.glPathFogGenNV = trace_glPathFogGenNV;
-  tbl.glPathGlyphRangeNV = trace_glPathGlyphRangeNV;
-  tbl.glPathGlyphsNV = trace_glPathGlyphsNV;
-  tbl.glPathParameterfNV = trace_glPathParameterfNV;
-  tbl.glPathParameterfvNV = trace_glPathParameterfvNV;
-  tbl.glPathParameteriNV = trace_glPathParameteriNV;
-  tbl.glPathParameterivNV = trace_glPathParameterivNV;
-  tbl.glPathStencilDepthOffsetNV = trace_glPathStencilDepthOffsetNV;
-  tbl.glPathStencilFuncNV = trace_glPathStencilFuncNV;
-  tbl.glPathStringNV = trace_glPathStringNV;
-  tbl.glPathSubCommandsNV = trace_glPathSubCommandsNV;
-  tbl.glPathSubCoordsNV = trace_glPathSubCoordsNV;
-  tbl.glPathTexGenNV = trace_glPathTexGenNV;
-  tbl.glPointAlongPathNV = trace_glPointAlongPathNV;
-  tbl.glStencilFillPathInstancedNV = trace_glStencilFillPathInstancedNV;
-  tbl.glStencilFillPathNV = trace_glStencilFillPathNV;
-  tbl.glStencilStrokePathInstancedNV = trace_glStencilStrokePathInstancedNV;
-  tbl.glStencilStrokePathNV = trace_glStencilStrokePathNV;
-  tbl.glTransformPathNV = trace_glTransformPathNV;
-  tbl.glWeightPathsNV = trace_glWeightPathsNV;
+  tbl.glCopyPathNV = MakeRegalProc( trace_glCopyPathNV, layer );
+  tbl.glCoverFillPathInstancedNV = MakeRegalProc( trace_glCoverFillPathInstancedNV, layer );
+  tbl.glCoverFillPathNV = MakeRegalProc( trace_glCoverFillPathNV, layer );
+  tbl.glCoverStrokePathInstancedNV = MakeRegalProc( trace_glCoverStrokePathInstancedNV, layer );
+  tbl.glCoverStrokePathNV = MakeRegalProc( trace_glCoverStrokePathNV, layer );
+  tbl.glDeletePathsNV = MakeRegalProc( trace_glDeletePathsNV, layer );
+  tbl.glGenPathsNV = MakeRegalProc( trace_glGenPathsNV, layer );
+  tbl.glGetPathColorGenfvNV = MakeRegalProc( trace_glGetPathColorGenfvNV, layer );
+  tbl.glGetPathColorGenivNV = MakeRegalProc( trace_glGetPathColorGenivNV, layer );
+  tbl.glGetPathCommandsNV = MakeRegalProc( trace_glGetPathCommandsNV, layer );
+  tbl.glGetPathCoordsNV = MakeRegalProc( trace_glGetPathCoordsNV, layer );
+  tbl.glGetPathDashArrayNV = MakeRegalProc( trace_glGetPathDashArrayNV, layer );
+  tbl.glGetPathLengthNV = MakeRegalProc( trace_glGetPathLengthNV, layer );
+  tbl.glGetPathMetricRangeNV = MakeRegalProc( trace_glGetPathMetricRangeNV, layer );
+  tbl.glGetPathMetricsNV = MakeRegalProc( trace_glGetPathMetricsNV, layer );
+  tbl.glGetPathParameterfvNV = MakeRegalProc( trace_glGetPathParameterfvNV, layer );
+  tbl.glGetPathParameterivNV = MakeRegalProc( trace_glGetPathParameterivNV, layer );
+  tbl.glGetPathSpacingNV = MakeRegalProc( trace_glGetPathSpacingNV, layer );
+  tbl.glGetPathTexGenfvNV = MakeRegalProc( trace_glGetPathTexGenfvNV, layer );
+  tbl.glGetPathTexGenivNV = MakeRegalProc( trace_glGetPathTexGenivNV, layer );
+  tbl.glInterpolatePathsNV = MakeRegalProc( trace_glInterpolatePathsNV, layer );
+  tbl.glIsPathNV = MakeRegalProc( trace_glIsPathNV, layer );
+  tbl.glIsPointInFillPathNV = MakeRegalProc( trace_glIsPointInFillPathNV, layer );
+  tbl.glIsPointInStrokePathNV = MakeRegalProc( trace_glIsPointInStrokePathNV, layer );
+  tbl.glPathColorGenNV = MakeRegalProc( trace_glPathColorGenNV, layer );
+  tbl.glPathCommandsNV = MakeRegalProc( trace_glPathCommandsNV, layer );
+  tbl.glPathCoordsNV = MakeRegalProc( trace_glPathCoordsNV, layer );
+  tbl.glPathCoverDepthFuncNV = MakeRegalProc( trace_glPathCoverDepthFuncNV, layer );
+  tbl.glPathDashArrayNV = MakeRegalProc( trace_glPathDashArrayNV, layer );
+  tbl.glPathFogGenNV = MakeRegalProc( trace_glPathFogGenNV, layer );
+  tbl.glPathGlyphRangeNV = MakeRegalProc( trace_glPathGlyphRangeNV, layer );
+  tbl.glPathGlyphsNV = MakeRegalProc( trace_glPathGlyphsNV, layer );
+  tbl.glPathParameterfNV = MakeRegalProc( trace_glPathParameterfNV, layer );
+  tbl.glPathParameterfvNV = MakeRegalProc( trace_glPathParameterfvNV, layer );
+  tbl.glPathParameteriNV = MakeRegalProc( trace_glPathParameteriNV, layer );
+  tbl.glPathParameterivNV = MakeRegalProc( trace_glPathParameterivNV, layer );
+  tbl.glPathStencilDepthOffsetNV = MakeRegalProc( trace_glPathStencilDepthOffsetNV, layer );
+  tbl.glPathStencilFuncNV = MakeRegalProc( trace_glPathStencilFuncNV, layer );
+  tbl.glPathStringNV = MakeRegalProc( trace_glPathStringNV, layer );
+  tbl.glPathSubCommandsNV = MakeRegalProc( trace_glPathSubCommandsNV, layer );
+  tbl.glPathSubCoordsNV = MakeRegalProc( trace_glPathSubCoordsNV, layer );
+  tbl.glPathTexGenNV = MakeRegalProc( trace_glPathTexGenNV, layer );
+  tbl.glPointAlongPathNV = MakeRegalProc( trace_glPointAlongPathNV, layer );
+  tbl.glStencilFillPathInstancedNV = MakeRegalProc( trace_glStencilFillPathInstancedNV, layer );
+  tbl.glStencilFillPathNV = MakeRegalProc( trace_glStencilFillPathNV, layer );
+  tbl.glStencilStrokePathInstancedNV = MakeRegalProc( trace_glStencilStrokePathInstancedNV, layer );
+  tbl.glStencilStrokePathNV = MakeRegalProc( trace_glStencilStrokePathNV, layer );
+  tbl.glTransformPathNV = MakeRegalProc( trace_glTransformPathNV, layer );
+  tbl.glWeightPathsNV = MakeRegalProc( trace_glWeightPathsNV, layer );
 
   // GL_NV_pixel_data_range
 
-  tbl.glFlushPixelDataRangeNV = trace_glFlushPixelDataRangeNV;
-  tbl.glPixelDataRangeNV = trace_glPixelDataRangeNV;
+  tbl.glFlushPixelDataRangeNV = MakeRegalProc( trace_glFlushPixelDataRangeNV, layer );
+  tbl.glPixelDataRangeNV = MakeRegalProc( trace_glPixelDataRangeNV, layer );
 
   // GL_NV_point_sprite
 
-  tbl.glPointParameteriNV = trace_glPointParameteriNV;
-  tbl.glPointParameterivNV = trace_glPointParameterivNV;
+  tbl.glPointParameteriNV = MakeRegalProc( trace_glPointParameteriNV, layer );
+  tbl.glPointParameterivNV = MakeRegalProc( trace_glPointParameterivNV, layer );
 
   // GL_NV_present_video
 
-  tbl.glGetVideoi64vNV = trace_glGetVideoi64vNV;
-  tbl.glGetVideoivNV = trace_glGetVideoivNV;
-  tbl.glGetVideoui64vNV = trace_glGetVideoui64vNV;
-  tbl.glGetVideouivNV = trace_glGetVideouivNV;
-  tbl.glPresentFrameDualFillNV = trace_glPresentFrameDualFillNV;
-  tbl.glPresentFrameKeyedNV = trace_glPresentFrameKeyedNV;
+  tbl.glGetVideoi64vNV = MakeRegalProc( trace_glGetVideoi64vNV, layer );
+  tbl.glGetVideoivNV = MakeRegalProc( trace_glGetVideoivNV, layer );
+  tbl.glGetVideoui64vNV = MakeRegalProc( trace_glGetVideoui64vNV, layer );
+  tbl.glGetVideouivNV = MakeRegalProc( trace_glGetVideouivNV, layer );
+  tbl.glPresentFrameDualFillNV = MakeRegalProc( trace_glPresentFrameDualFillNV, layer );
+  tbl.glPresentFrameKeyedNV = MakeRegalProc( trace_glPresentFrameKeyedNV, layer );
 
   // GL_NV_primitive_restart
 
-  tbl.glPrimitiveRestartIndexNV = trace_glPrimitiveRestartIndexNV;
-  tbl.glPrimitiveRestartNV = trace_glPrimitiveRestartNV;
+  tbl.glPrimitiveRestartIndexNV = MakeRegalProc( trace_glPrimitiveRestartIndexNV, layer );
+  tbl.glPrimitiveRestartNV = MakeRegalProc( trace_glPrimitiveRestartNV, layer );
 
   // GL_NV_read_buffer
 
-  tbl.glReadBufferNV = trace_glReadBufferNV;
+  tbl.glReadBufferNV = MakeRegalProc( trace_glReadBufferNV, layer );
 
   // GL_NV_register_combiners
 
-  tbl.glCombinerInputNV = trace_glCombinerInputNV;
-  tbl.glCombinerOutputNV = trace_glCombinerOutputNV;
-  tbl.glCombinerParameterfNV = trace_glCombinerParameterfNV;
-  tbl.glCombinerParameterfvNV = trace_glCombinerParameterfvNV;
-  tbl.glCombinerParameteriNV = trace_glCombinerParameteriNV;
-  tbl.glCombinerParameterivNV = trace_glCombinerParameterivNV;
-  tbl.glFinalCombinerInputNV = trace_glFinalCombinerInputNV;
-  tbl.glGetCombinerInputParameterfvNV = trace_glGetCombinerInputParameterfvNV;
-  tbl.glGetCombinerInputParameterivNV = trace_glGetCombinerInputParameterivNV;
-  tbl.glGetCombinerOutputParameterfvNV = trace_glGetCombinerOutputParameterfvNV;
-  tbl.glGetCombinerOutputParameterivNV = trace_glGetCombinerOutputParameterivNV;
-  tbl.glGetFinalCombinerInputParameterfvNV = trace_glGetFinalCombinerInputParameterfvNV;
-  tbl.glGetFinalCombinerInputParameterivNV = trace_glGetFinalCombinerInputParameterivNV;
+  tbl.glCombinerInputNV = MakeRegalProc( trace_glCombinerInputNV, layer );
+  tbl.glCombinerOutputNV = MakeRegalProc( trace_glCombinerOutputNV, layer );
+  tbl.glCombinerParameterfNV = MakeRegalProc( trace_glCombinerParameterfNV, layer );
+  tbl.glCombinerParameterfvNV = MakeRegalProc( trace_glCombinerParameterfvNV, layer );
+  tbl.glCombinerParameteriNV = MakeRegalProc( trace_glCombinerParameteriNV, layer );
+  tbl.glCombinerParameterivNV = MakeRegalProc( trace_glCombinerParameterivNV, layer );
+  tbl.glFinalCombinerInputNV = MakeRegalProc( trace_glFinalCombinerInputNV, layer );
+  tbl.glGetCombinerInputParameterfvNV = MakeRegalProc( trace_glGetCombinerInputParameterfvNV, layer );
+  tbl.glGetCombinerInputParameterivNV = MakeRegalProc( trace_glGetCombinerInputParameterivNV, layer );
+  tbl.glGetCombinerOutputParameterfvNV = MakeRegalProc( trace_glGetCombinerOutputParameterfvNV, layer );
+  tbl.glGetCombinerOutputParameterivNV = MakeRegalProc( trace_glGetCombinerOutputParameterivNV, layer );
+  tbl.glGetFinalCombinerInputParameterfvNV = MakeRegalProc( trace_glGetFinalCombinerInputParameterfvNV, layer );
+  tbl.glGetFinalCombinerInputParameterivNV = MakeRegalProc( trace_glGetFinalCombinerInputParameterivNV, layer );
 
   // GL_NV_register_combiners2
 
-  tbl.glCombinerStageParameterfvNV = trace_glCombinerStageParameterfvNV;
-  tbl.glGetCombinerStageParameterfvNV = trace_glGetCombinerStageParameterfvNV;
+  tbl.glCombinerStageParameterfvNV = MakeRegalProc( trace_glCombinerStageParameterfvNV, layer );
+  tbl.glGetCombinerStageParameterfvNV = MakeRegalProc( trace_glGetCombinerStageParameterfvNV, layer );
 
   // GL_NV_shader_buffer_load
 
-  tbl.glGetBufferParameterui64vNV = trace_glGetBufferParameterui64vNV;
-  tbl.glGetIntegerui64vNV = trace_glGetIntegerui64vNV;
-  tbl.glGetNamedBufferParameterui64vNV = trace_glGetNamedBufferParameterui64vNV;
-  tbl.glGetUniformui64vNV = trace_glGetUniformui64vNV;
-  tbl.glIsBufferResidentNV = trace_glIsBufferResidentNV;
-  tbl.glIsNamedBufferResidentNV = trace_glIsNamedBufferResidentNV;
-  tbl.glMakeBufferNonResidentNV = trace_glMakeBufferNonResidentNV;
-  tbl.glMakeBufferResidentNV = trace_glMakeBufferResidentNV;
-  tbl.glMakeNamedBufferNonResidentNV = trace_glMakeNamedBufferNonResidentNV;
-  tbl.glMakeNamedBufferResidentNV = trace_glMakeNamedBufferResidentNV;
-  tbl.glProgramUniformui64NV = trace_glProgramUniformui64NV;
-  tbl.glProgramUniformui64vNV = trace_glProgramUniformui64vNV;
-  tbl.glUniformui64NV = trace_glUniformui64NV;
-  tbl.glUniformui64vNV = trace_glUniformui64vNV;
+  tbl.glGetBufferParameterui64vNV = MakeRegalProc( trace_glGetBufferParameterui64vNV, layer );
+  tbl.glGetIntegerui64vNV = MakeRegalProc( trace_glGetIntegerui64vNV, layer );
+  tbl.glGetNamedBufferParameterui64vNV = MakeRegalProc( trace_glGetNamedBufferParameterui64vNV, layer );
+  tbl.glGetUniformui64vNV = MakeRegalProc( trace_glGetUniformui64vNV, layer );
+  tbl.glIsBufferResidentNV = MakeRegalProc( trace_glIsBufferResidentNV, layer );
+  tbl.glIsNamedBufferResidentNV = MakeRegalProc( trace_glIsNamedBufferResidentNV, layer );
+  tbl.glMakeBufferNonResidentNV = MakeRegalProc( trace_glMakeBufferNonResidentNV, layer );
+  tbl.glMakeBufferResidentNV = MakeRegalProc( trace_glMakeBufferResidentNV, layer );
+  tbl.glMakeNamedBufferNonResidentNV = MakeRegalProc( trace_glMakeNamedBufferNonResidentNV, layer );
+  tbl.glMakeNamedBufferResidentNV = MakeRegalProc( trace_glMakeNamedBufferResidentNV, layer );
+  tbl.glProgramUniformui64NV = MakeRegalProc( trace_glProgramUniformui64NV, layer );
+  tbl.glProgramUniformui64vNV = MakeRegalProc( trace_glProgramUniformui64vNV, layer );
+  tbl.glUniformui64NV = MakeRegalProc( trace_glUniformui64NV, layer );
+  tbl.glUniformui64vNV = MakeRegalProc( trace_glUniformui64vNV, layer );
 
   // GL_NV_texture_barrier
 
-  tbl.glTextureBarrierNV = trace_glTextureBarrierNV;
+  tbl.glTextureBarrierNV = MakeRegalProc( trace_glTextureBarrierNV, layer );
 
   // GL_NV_texture_multisample
 
-  tbl.glTexImage2DMultisampleCoverageNV = trace_glTexImage2DMultisampleCoverageNV;
-  tbl.glTexImage3DMultisampleCoverageNV = trace_glTexImage3DMultisampleCoverageNV;
-  tbl.glTextureImage2DMultisampleCoverageNV = trace_glTextureImage2DMultisampleCoverageNV;
-  tbl.glTextureImage2DMultisampleNV = trace_glTextureImage2DMultisampleNV;
-  tbl.glTextureImage3DMultisampleCoverageNV = trace_glTextureImage3DMultisampleCoverageNV;
-  tbl.glTextureImage3DMultisampleNV = trace_glTextureImage3DMultisampleNV;
+  tbl.glTexImage2DMultisampleCoverageNV = MakeRegalProc( trace_glTexImage2DMultisampleCoverageNV, layer );
+  tbl.glTexImage3DMultisampleCoverageNV = MakeRegalProc( trace_glTexImage3DMultisampleCoverageNV, layer );
+  tbl.glTextureImage2DMultisampleCoverageNV = MakeRegalProc( trace_glTextureImage2DMultisampleCoverageNV, layer );
+  tbl.glTextureImage2DMultisampleNV = MakeRegalProc( trace_glTextureImage2DMultisampleNV, layer );
+  tbl.glTextureImage3DMultisampleCoverageNV = MakeRegalProc( trace_glTextureImage3DMultisampleCoverageNV, layer );
+  tbl.glTextureImage3DMultisampleNV = MakeRegalProc( trace_glTextureImage3DMultisampleNV, layer );
 
   // GL_NV_transform_feedback
 
-  tbl.glActiveVaryingNV = trace_glActiveVaryingNV;
-  tbl.glBeginTransformFeedbackNV = trace_glBeginTransformFeedbackNV;
-  tbl.glBindBufferBaseNV = trace_glBindBufferBaseNV;
-  tbl.glBindBufferOffsetNV = trace_glBindBufferOffsetNV;
-  tbl.glBindBufferRangeNV = trace_glBindBufferRangeNV;
-  tbl.glEndTransformFeedbackNV = trace_glEndTransformFeedbackNV;
-  tbl.glGetActiveVaryingNV = trace_glGetActiveVaryingNV;
-  tbl.glGetTransformFeedbackVaryingNV = trace_glGetTransformFeedbackVaryingNV;
-  tbl.glGetVaryingLocationNV = trace_glGetVaryingLocationNV;
-  tbl.glTransformFeedbackAttribsNV = trace_glTransformFeedbackAttribsNV;
-  tbl.glTransformFeedbackVaryingsNV = trace_glTransformFeedbackVaryingsNV;
+  tbl.glActiveVaryingNV = MakeRegalProc( trace_glActiveVaryingNV, layer );
+  tbl.glBeginTransformFeedbackNV = MakeRegalProc( trace_glBeginTransformFeedbackNV, layer );
+  tbl.glBindBufferBaseNV = MakeRegalProc( trace_glBindBufferBaseNV, layer );
+  tbl.glBindBufferOffsetNV = MakeRegalProc( trace_glBindBufferOffsetNV, layer );
+  tbl.glBindBufferRangeNV = MakeRegalProc( trace_glBindBufferRangeNV, layer );
+  tbl.glEndTransformFeedbackNV = MakeRegalProc( trace_glEndTransformFeedbackNV, layer );
+  tbl.glGetActiveVaryingNV = MakeRegalProc( trace_glGetActiveVaryingNV, layer );
+  tbl.glGetTransformFeedbackVaryingNV = MakeRegalProc( trace_glGetTransformFeedbackVaryingNV, layer );
+  tbl.glGetVaryingLocationNV = MakeRegalProc( trace_glGetVaryingLocationNV, layer );
+  tbl.glTransformFeedbackAttribsNV = MakeRegalProc( trace_glTransformFeedbackAttribsNV, layer );
+  tbl.glTransformFeedbackVaryingsNV = MakeRegalProc( trace_glTransformFeedbackVaryingsNV, layer );
 
   // GL_NV_transform_feedback2
 
-  tbl.glBindTransformFeedbackNV = trace_glBindTransformFeedbackNV;
-  tbl.glDeleteTransformFeedbacksNV = trace_glDeleteTransformFeedbacksNV;
-  tbl.glDrawTransformFeedbackNV = trace_glDrawTransformFeedbackNV;
-  tbl.glGenTransformFeedbacksNV = trace_glGenTransformFeedbacksNV;
-  tbl.glIsTransformFeedbackNV = trace_glIsTransformFeedbackNV;
-  tbl.glPauseTransformFeedbackNV = trace_glPauseTransformFeedbackNV;
-  tbl.glResumeTransformFeedbackNV = trace_glResumeTransformFeedbackNV;
+  tbl.glBindTransformFeedbackNV = MakeRegalProc( trace_glBindTransformFeedbackNV, layer );
+  tbl.glDeleteTransformFeedbacksNV = MakeRegalProc( trace_glDeleteTransformFeedbacksNV, layer );
+  tbl.glDrawTransformFeedbackNV = MakeRegalProc( trace_glDrawTransformFeedbackNV, layer );
+  tbl.glGenTransformFeedbacksNV = MakeRegalProc( trace_glGenTransformFeedbacksNV, layer );
+  tbl.glIsTransformFeedbackNV = MakeRegalProc( trace_glIsTransformFeedbackNV, layer );
+  tbl.glPauseTransformFeedbackNV = MakeRegalProc( trace_glPauseTransformFeedbackNV, layer );
+  tbl.glResumeTransformFeedbackNV = MakeRegalProc( trace_glResumeTransformFeedbackNV, layer );
 
   // GL_NV_vertex_array_range
 
-  tbl.glFlushVertexArrayRangeNV = trace_glFlushVertexArrayRangeNV;
-  tbl.glVertexArrayRangeNV = trace_glVertexArrayRangeNV;
+  tbl.glFlushVertexArrayRangeNV = MakeRegalProc( trace_glFlushVertexArrayRangeNV, layer );
+  tbl.glVertexArrayRangeNV = MakeRegalProc( trace_glVertexArrayRangeNV, layer );
 
   // GL_NV_vertex_attrib_integer_64bit
 
-  tbl.glGetVertexAttribLi64vNV = trace_glGetVertexAttribLi64vNV;
-  tbl.glGetVertexAttribLui64vNV = trace_glGetVertexAttribLui64vNV;
-  tbl.glVertexAttribL1i64NV = trace_glVertexAttribL1i64NV;
-  tbl.glVertexAttribL1i64vNV = trace_glVertexAttribL1i64vNV;
-  tbl.glVertexAttribL1ui64NV = trace_glVertexAttribL1ui64NV;
-  tbl.glVertexAttribL1ui64vNV = trace_glVertexAttribL1ui64vNV;
-  tbl.glVertexAttribL2i64NV = trace_glVertexAttribL2i64NV;
-  tbl.glVertexAttribL2i64vNV = trace_glVertexAttribL2i64vNV;
-  tbl.glVertexAttribL2ui64NV = trace_glVertexAttribL2ui64NV;
-  tbl.glVertexAttribL2ui64vNV = trace_glVertexAttribL2ui64vNV;
-  tbl.glVertexAttribL3i64NV = trace_glVertexAttribL3i64NV;
-  tbl.glVertexAttribL3i64vNV = trace_glVertexAttribL3i64vNV;
-  tbl.glVertexAttribL3ui64NV = trace_glVertexAttribL3ui64NV;
-  tbl.glVertexAttribL3ui64vNV = trace_glVertexAttribL3ui64vNV;
-  tbl.glVertexAttribL4i64NV = trace_glVertexAttribL4i64NV;
-  tbl.glVertexAttribL4i64vNV = trace_glVertexAttribL4i64vNV;
-  tbl.glVertexAttribL4ui64NV = trace_glVertexAttribL4ui64NV;
-  tbl.glVertexAttribL4ui64vNV = trace_glVertexAttribL4ui64vNV;
-  tbl.glVertexAttribLFormatNV = trace_glVertexAttribLFormatNV;
+  tbl.glGetVertexAttribLi64vNV = MakeRegalProc( trace_glGetVertexAttribLi64vNV, layer );
+  tbl.glGetVertexAttribLui64vNV = MakeRegalProc( trace_glGetVertexAttribLui64vNV, layer );
+  tbl.glVertexAttribL1i64NV = MakeRegalProc( trace_glVertexAttribL1i64NV, layer );
+  tbl.glVertexAttribL1i64vNV = MakeRegalProc( trace_glVertexAttribL1i64vNV, layer );
+  tbl.glVertexAttribL1ui64NV = MakeRegalProc( trace_glVertexAttribL1ui64NV, layer );
+  tbl.glVertexAttribL1ui64vNV = MakeRegalProc( trace_glVertexAttribL1ui64vNV, layer );
+  tbl.glVertexAttribL2i64NV = MakeRegalProc( trace_glVertexAttribL2i64NV, layer );
+  tbl.glVertexAttribL2i64vNV = MakeRegalProc( trace_glVertexAttribL2i64vNV, layer );
+  tbl.glVertexAttribL2ui64NV = MakeRegalProc( trace_glVertexAttribL2ui64NV, layer );
+  tbl.glVertexAttribL2ui64vNV = MakeRegalProc( trace_glVertexAttribL2ui64vNV, layer );
+  tbl.glVertexAttribL3i64NV = MakeRegalProc( trace_glVertexAttribL3i64NV, layer );
+  tbl.glVertexAttribL3i64vNV = MakeRegalProc( trace_glVertexAttribL3i64vNV, layer );
+  tbl.glVertexAttribL3ui64NV = MakeRegalProc( trace_glVertexAttribL3ui64NV, layer );
+  tbl.glVertexAttribL3ui64vNV = MakeRegalProc( trace_glVertexAttribL3ui64vNV, layer );
+  tbl.glVertexAttribL4i64NV = MakeRegalProc( trace_glVertexAttribL4i64NV, layer );
+  tbl.glVertexAttribL4i64vNV = MakeRegalProc( trace_glVertexAttribL4i64vNV, layer );
+  tbl.glVertexAttribL4ui64NV = MakeRegalProc( trace_glVertexAttribL4ui64NV, layer );
+  tbl.glVertexAttribL4ui64vNV = MakeRegalProc( trace_glVertexAttribL4ui64vNV, layer );
+  tbl.glVertexAttribLFormatNV = MakeRegalProc( trace_glVertexAttribLFormatNV, layer );
 
   // GL_NV_vertex_buffer_unified_memory
 
-  tbl.glBufferAddressRangeNV = trace_glBufferAddressRangeNV;
-  tbl.glColorFormatNV = trace_glColorFormatNV;
-  tbl.glEdgeFlagFormatNV = trace_glEdgeFlagFormatNV;
-  tbl.glFogCoordFormatNV = trace_glFogCoordFormatNV;
-  tbl.glGetIntegerui64i_vNV = trace_glGetIntegerui64i_vNV;
-  tbl.glIndexFormatNV = trace_glIndexFormatNV;
-  tbl.glNormalFormatNV = trace_glNormalFormatNV;
-  tbl.glSecondaryColorFormatNV = trace_glSecondaryColorFormatNV;
-  tbl.glTexCoordFormatNV = trace_glTexCoordFormatNV;
-  tbl.glVertexAttribFormatNV = trace_glVertexAttribFormatNV;
-  tbl.glVertexAttribIFormatNV = trace_glVertexAttribIFormatNV;
-  tbl.glVertexFormatNV = trace_glVertexFormatNV;
+  tbl.glBufferAddressRangeNV = MakeRegalProc( trace_glBufferAddressRangeNV, layer );
+  tbl.glColorFormatNV = MakeRegalProc( trace_glColorFormatNV, layer );
+  tbl.glEdgeFlagFormatNV = MakeRegalProc( trace_glEdgeFlagFormatNV, layer );
+  tbl.glFogCoordFormatNV = MakeRegalProc( trace_glFogCoordFormatNV, layer );
+  tbl.glGetIntegerui64i_vNV = MakeRegalProc( trace_glGetIntegerui64i_vNV, layer );
+  tbl.glIndexFormatNV = MakeRegalProc( trace_glIndexFormatNV, layer );
+  tbl.glNormalFormatNV = MakeRegalProc( trace_glNormalFormatNV, layer );
+  tbl.glSecondaryColorFormatNV = MakeRegalProc( trace_glSecondaryColorFormatNV, layer );
+  tbl.glTexCoordFormatNV = MakeRegalProc( trace_glTexCoordFormatNV, layer );
+  tbl.glVertexAttribFormatNV = MakeRegalProc( trace_glVertexAttribFormatNV, layer );
+  tbl.glVertexAttribIFormatNV = MakeRegalProc( trace_glVertexAttribIFormatNV, layer );
+  tbl.glVertexFormatNV = MakeRegalProc( trace_glVertexFormatNV, layer );
 
   // GL_NV_vertex_program
 
-  tbl.glAreProgramsResidentNV = trace_glAreProgramsResidentNV;
-  tbl.glBindProgramNV = trace_glBindProgramNV;
-  tbl.glDeleteProgramsNV = trace_glDeleteProgramsNV;
-  tbl.glExecuteProgramNV = trace_glExecuteProgramNV;
-  tbl.glGenProgramsNV = trace_glGenProgramsNV;
-  tbl.glGetProgramParameterdvNV = trace_glGetProgramParameterdvNV;
-  tbl.glGetProgramParameterfvNV = trace_glGetProgramParameterfvNV;
-  tbl.glGetProgramStringNV = trace_glGetProgramStringNV;
-  tbl.glGetProgramivNV = trace_glGetProgramivNV;
-  tbl.glGetTrackMatrixivNV = trace_glGetTrackMatrixivNV;
-  tbl.glGetVertexAttribPointervNV = trace_glGetVertexAttribPointervNV;
-  tbl.glGetVertexAttribdvNV = trace_glGetVertexAttribdvNV;
-  tbl.glGetVertexAttribfvNV = trace_glGetVertexAttribfvNV;
-  tbl.glGetVertexAttribivNV = trace_glGetVertexAttribivNV;
-  tbl.glIsProgramNV = trace_glIsProgramNV;
-  tbl.glLoadProgramNV = trace_glLoadProgramNV;
-  tbl.glProgramParameter4dNV = trace_glProgramParameter4dNV;
-  tbl.glProgramParameter4dvNV = trace_glProgramParameter4dvNV;
-  tbl.glProgramParameter4fNV = trace_glProgramParameter4fNV;
-  tbl.glProgramParameter4fvNV = trace_glProgramParameter4fvNV;
-  tbl.glProgramParameters4dvNV = trace_glProgramParameters4dvNV;
-  tbl.glProgramParameters4fvNV = trace_glProgramParameters4fvNV;
-  tbl.glRequestResidentProgramsNV = trace_glRequestResidentProgramsNV;
-  tbl.glTrackMatrixNV = trace_glTrackMatrixNV;
-  tbl.glVertexAttrib1dNV = trace_glVertexAttrib1dNV;
-  tbl.glVertexAttrib1dvNV = trace_glVertexAttrib1dvNV;
-  tbl.glVertexAttrib1fNV = trace_glVertexAttrib1fNV;
-  tbl.glVertexAttrib1fvNV = trace_glVertexAttrib1fvNV;
-  tbl.glVertexAttrib1sNV = trace_glVertexAttrib1sNV;
-  tbl.glVertexAttrib1svNV = trace_glVertexAttrib1svNV;
-  tbl.glVertexAttrib2dNV = trace_glVertexAttrib2dNV;
-  tbl.glVertexAttrib2dvNV = trace_glVertexAttrib2dvNV;
-  tbl.glVertexAttrib2fNV = trace_glVertexAttrib2fNV;
-  tbl.glVertexAttrib2fvNV = trace_glVertexAttrib2fvNV;
-  tbl.glVertexAttrib2sNV = trace_glVertexAttrib2sNV;
-  tbl.glVertexAttrib2svNV = trace_glVertexAttrib2svNV;
-  tbl.glVertexAttrib3dNV = trace_glVertexAttrib3dNV;
-  tbl.glVertexAttrib3dvNV = trace_glVertexAttrib3dvNV;
-  tbl.glVertexAttrib3fNV = trace_glVertexAttrib3fNV;
-  tbl.glVertexAttrib3fvNV = trace_glVertexAttrib3fvNV;
-  tbl.glVertexAttrib3sNV = trace_glVertexAttrib3sNV;
-  tbl.glVertexAttrib3svNV = trace_glVertexAttrib3svNV;
-  tbl.glVertexAttrib4dNV = trace_glVertexAttrib4dNV;
-  tbl.glVertexAttrib4dvNV = trace_glVertexAttrib4dvNV;
-  tbl.glVertexAttrib4fNV = trace_glVertexAttrib4fNV;
-  tbl.glVertexAttrib4fvNV = trace_glVertexAttrib4fvNV;
-  tbl.glVertexAttrib4sNV = trace_glVertexAttrib4sNV;
-  tbl.glVertexAttrib4svNV = trace_glVertexAttrib4svNV;
-  tbl.glVertexAttrib4ubNV = trace_glVertexAttrib4ubNV;
-  tbl.glVertexAttrib4ubvNV = trace_glVertexAttrib4ubvNV;
-  tbl.glVertexAttribPointerNV = trace_glVertexAttribPointerNV;
-  tbl.glVertexAttribs1dvNV = trace_glVertexAttribs1dvNV;
-  tbl.glVertexAttribs1fvNV = trace_glVertexAttribs1fvNV;
-  tbl.glVertexAttribs1svNV = trace_glVertexAttribs1svNV;
-  tbl.glVertexAttribs2dvNV = trace_glVertexAttribs2dvNV;
-  tbl.glVertexAttribs2fvNV = trace_glVertexAttribs2fvNV;
-  tbl.glVertexAttribs2svNV = trace_glVertexAttribs2svNV;
-  tbl.glVertexAttribs3dvNV = trace_glVertexAttribs3dvNV;
-  tbl.glVertexAttribs3fvNV = trace_glVertexAttribs3fvNV;
-  tbl.glVertexAttribs3svNV = trace_glVertexAttribs3svNV;
-  tbl.glVertexAttribs4dvNV = trace_glVertexAttribs4dvNV;
-  tbl.glVertexAttribs4fvNV = trace_glVertexAttribs4fvNV;
-  tbl.glVertexAttribs4svNV = trace_glVertexAttribs4svNV;
-  tbl.glVertexAttribs4ubvNV = trace_glVertexAttribs4ubvNV;
+  tbl.glAreProgramsResidentNV = MakeRegalProc( trace_glAreProgramsResidentNV, layer );
+  tbl.glBindProgramNV = MakeRegalProc( trace_glBindProgramNV, layer );
+  tbl.glDeleteProgramsNV = MakeRegalProc( trace_glDeleteProgramsNV, layer );
+  tbl.glExecuteProgramNV = MakeRegalProc( trace_glExecuteProgramNV, layer );
+  tbl.glGenProgramsNV = MakeRegalProc( trace_glGenProgramsNV, layer );
+  tbl.glGetProgramParameterdvNV = MakeRegalProc( trace_glGetProgramParameterdvNV, layer );
+  tbl.glGetProgramParameterfvNV = MakeRegalProc( trace_glGetProgramParameterfvNV, layer );
+  tbl.glGetProgramStringNV = MakeRegalProc( trace_glGetProgramStringNV, layer );
+  tbl.glGetProgramivNV = MakeRegalProc( trace_glGetProgramivNV, layer );
+  tbl.glGetTrackMatrixivNV = MakeRegalProc( trace_glGetTrackMatrixivNV, layer );
+  tbl.glGetVertexAttribPointervNV = MakeRegalProc( trace_glGetVertexAttribPointervNV, layer );
+  tbl.glGetVertexAttribdvNV = MakeRegalProc( trace_glGetVertexAttribdvNV, layer );
+  tbl.glGetVertexAttribfvNV = MakeRegalProc( trace_glGetVertexAttribfvNV, layer );
+  tbl.glGetVertexAttribivNV = MakeRegalProc( trace_glGetVertexAttribivNV, layer );
+  tbl.glIsProgramNV = MakeRegalProc( trace_glIsProgramNV, layer );
+  tbl.glLoadProgramNV = MakeRegalProc( trace_glLoadProgramNV, layer );
+  tbl.glProgramParameter4dNV = MakeRegalProc( trace_glProgramParameter4dNV, layer );
+  tbl.glProgramParameter4dvNV = MakeRegalProc( trace_glProgramParameter4dvNV, layer );
+  tbl.glProgramParameter4fNV = MakeRegalProc( trace_glProgramParameter4fNV, layer );
+  tbl.glProgramParameter4fvNV = MakeRegalProc( trace_glProgramParameter4fvNV, layer );
+  tbl.glProgramParameters4dvNV = MakeRegalProc( trace_glProgramParameters4dvNV, layer );
+  tbl.glProgramParameters4fvNV = MakeRegalProc( trace_glProgramParameters4fvNV, layer );
+  tbl.glRequestResidentProgramsNV = MakeRegalProc( trace_glRequestResidentProgramsNV, layer );
+  tbl.glTrackMatrixNV = MakeRegalProc( trace_glTrackMatrixNV, layer );
+  tbl.glVertexAttrib1dNV = MakeRegalProc( trace_glVertexAttrib1dNV, layer );
+  tbl.glVertexAttrib1dvNV = MakeRegalProc( trace_glVertexAttrib1dvNV, layer );
+  tbl.glVertexAttrib1fNV = MakeRegalProc( trace_glVertexAttrib1fNV, layer );
+  tbl.glVertexAttrib1fvNV = MakeRegalProc( trace_glVertexAttrib1fvNV, layer );
+  tbl.glVertexAttrib1sNV = MakeRegalProc( trace_glVertexAttrib1sNV, layer );
+  tbl.glVertexAttrib1svNV = MakeRegalProc( trace_glVertexAttrib1svNV, layer );
+  tbl.glVertexAttrib2dNV = MakeRegalProc( trace_glVertexAttrib2dNV, layer );
+  tbl.glVertexAttrib2dvNV = MakeRegalProc( trace_glVertexAttrib2dvNV, layer );
+  tbl.glVertexAttrib2fNV = MakeRegalProc( trace_glVertexAttrib2fNV, layer );
+  tbl.glVertexAttrib2fvNV = MakeRegalProc( trace_glVertexAttrib2fvNV, layer );
+  tbl.glVertexAttrib2sNV = MakeRegalProc( trace_glVertexAttrib2sNV, layer );
+  tbl.glVertexAttrib2svNV = MakeRegalProc( trace_glVertexAttrib2svNV, layer );
+  tbl.glVertexAttrib3dNV = MakeRegalProc( trace_glVertexAttrib3dNV, layer );
+  tbl.glVertexAttrib3dvNV = MakeRegalProc( trace_glVertexAttrib3dvNV, layer );
+  tbl.glVertexAttrib3fNV = MakeRegalProc( trace_glVertexAttrib3fNV, layer );
+  tbl.glVertexAttrib3fvNV = MakeRegalProc( trace_glVertexAttrib3fvNV, layer );
+  tbl.glVertexAttrib3sNV = MakeRegalProc( trace_glVertexAttrib3sNV, layer );
+  tbl.glVertexAttrib3svNV = MakeRegalProc( trace_glVertexAttrib3svNV, layer );
+  tbl.glVertexAttrib4dNV = MakeRegalProc( trace_glVertexAttrib4dNV, layer );
+  tbl.glVertexAttrib4dvNV = MakeRegalProc( trace_glVertexAttrib4dvNV, layer );
+  tbl.glVertexAttrib4fNV = MakeRegalProc( trace_glVertexAttrib4fNV, layer );
+  tbl.glVertexAttrib4fvNV = MakeRegalProc( trace_glVertexAttrib4fvNV, layer );
+  tbl.glVertexAttrib4sNV = MakeRegalProc( trace_glVertexAttrib4sNV, layer );
+  tbl.glVertexAttrib4svNV = MakeRegalProc( trace_glVertexAttrib4svNV, layer );
+  tbl.glVertexAttrib4ubNV = MakeRegalProc( trace_glVertexAttrib4ubNV, layer );
+  tbl.glVertexAttrib4ubvNV = MakeRegalProc( trace_glVertexAttrib4ubvNV, layer );
+  tbl.glVertexAttribPointerNV = MakeRegalProc( trace_glVertexAttribPointerNV, layer );
+  tbl.glVertexAttribs1dvNV = MakeRegalProc( trace_glVertexAttribs1dvNV, layer );
+  tbl.glVertexAttribs1fvNV = MakeRegalProc( trace_glVertexAttribs1fvNV, layer );
+  tbl.glVertexAttribs1svNV = MakeRegalProc( trace_glVertexAttribs1svNV, layer );
+  tbl.glVertexAttribs2dvNV = MakeRegalProc( trace_glVertexAttribs2dvNV, layer );
+  tbl.glVertexAttribs2fvNV = MakeRegalProc( trace_glVertexAttribs2fvNV, layer );
+  tbl.glVertexAttribs2svNV = MakeRegalProc( trace_glVertexAttribs2svNV, layer );
+  tbl.glVertexAttribs3dvNV = MakeRegalProc( trace_glVertexAttribs3dvNV, layer );
+  tbl.glVertexAttribs3fvNV = MakeRegalProc( trace_glVertexAttribs3fvNV, layer );
+  tbl.glVertexAttribs3svNV = MakeRegalProc( trace_glVertexAttribs3svNV, layer );
+  tbl.glVertexAttribs4dvNV = MakeRegalProc( trace_glVertexAttribs4dvNV, layer );
+  tbl.glVertexAttribs4fvNV = MakeRegalProc( trace_glVertexAttribs4fvNV, layer );
+  tbl.glVertexAttribs4svNV = MakeRegalProc( trace_glVertexAttribs4svNV, layer );
+  tbl.glVertexAttribs4ubvNV = MakeRegalProc( trace_glVertexAttribs4ubvNV, layer );
 
   // GL_NV_video_capture
 
-  tbl.glBeginVideoCaptureNV = trace_glBeginVideoCaptureNV;
-  tbl.glBindVideoCaptureStreamBufferNV = trace_glBindVideoCaptureStreamBufferNV;
-  tbl.glBindVideoCaptureStreamTextureNV = trace_glBindVideoCaptureStreamTextureNV;
-  tbl.glEndVideoCaptureNV = trace_glEndVideoCaptureNV;
-  tbl.glGetVideoCaptureStreamdvNV = trace_glGetVideoCaptureStreamdvNV;
-  tbl.glGetVideoCaptureStreamfvNV = trace_glGetVideoCaptureStreamfvNV;
-  tbl.glGetVideoCaptureStreamivNV = trace_glGetVideoCaptureStreamivNV;
-  tbl.glGetVideoCaptureivNV = trace_glGetVideoCaptureivNV;
-  tbl.glVideoCaptureNV = trace_glVideoCaptureNV;
-  tbl.glVideoCaptureStreamParameterdvNV = trace_glVideoCaptureStreamParameterdvNV;
-  tbl.glVideoCaptureStreamParameterfvNV = trace_glVideoCaptureStreamParameterfvNV;
-  tbl.glVideoCaptureStreamParameterivNV = trace_glVideoCaptureStreamParameterivNV;
+  tbl.glBeginVideoCaptureNV = MakeRegalProc( trace_glBeginVideoCaptureNV, layer );
+  tbl.glBindVideoCaptureStreamBufferNV = MakeRegalProc( trace_glBindVideoCaptureStreamBufferNV, layer );
+  tbl.glBindVideoCaptureStreamTextureNV = MakeRegalProc( trace_glBindVideoCaptureStreamTextureNV, layer );
+  tbl.glEndVideoCaptureNV = MakeRegalProc( trace_glEndVideoCaptureNV, layer );
+  tbl.glGetVideoCaptureStreamdvNV = MakeRegalProc( trace_glGetVideoCaptureStreamdvNV, layer );
+  tbl.glGetVideoCaptureStreamfvNV = MakeRegalProc( trace_glGetVideoCaptureStreamfvNV, layer );
+  tbl.glGetVideoCaptureStreamivNV = MakeRegalProc( trace_glGetVideoCaptureStreamivNV, layer );
+  tbl.glGetVideoCaptureivNV = MakeRegalProc( trace_glGetVideoCaptureivNV, layer );
+  tbl.glVideoCaptureNV = MakeRegalProc( trace_glVideoCaptureNV, layer );
+  tbl.glVideoCaptureStreamParameterdvNV = MakeRegalProc( trace_glVideoCaptureStreamParameterdvNV, layer );
+  tbl.glVideoCaptureStreamParameterfvNV = MakeRegalProc( trace_glVideoCaptureStreamParameterfvNV, layer );
+  tbl.glVideoCaptureStreamParameterivNV = MakeRegalProc( trace_glVideoCaptureStreamParameterivNV, layer );
 
   // GL_OES_blend_equation_separate
 
-  tbl.glBlendEquationSeparateOES = trace_glBlendEquationSeparateOES;
+  tbl.glBlendEquationSeparateOES = MakeRegalProc( trace_glBlendEquationSeparateOES, layer );
 
   // GL_OES_blend_func_separate
 
-  tbl.glBlendFuncSeparateOES = trace_glBlendFuncSeparateOES;
+  tbl.glBlendFuncSeparateOES = MakeRegalProc( trace_glBlendFuncSeparateOES, layer );
 
   // GL_OES_blend_subtract
 
-  tbl.glBlendEquationOES = trace_glBlendEquationOES;
+  tbl.glBlendEquationOES = MakeRegalProc( trace_glBlendEquationOES, layer );
 
   // GL_OES_framebuffer_object
 
-  tbl.glBindFramebufferOES = trace_glBindFramebufferOES;
-  tbl.glBindRenderbufferOES = trace_glBindRenderbufferOES;
-  tbl.glCheckFramebufferStatusOES = trace_glCheckFramebufferStatusOES;
-  tbl.glDeleteFramebuffersOES = trace_glDeleteFramebuffersOES;
-  tbl.glDeleteRenderbuffersOES = trace_glDeleteRenderbuffersOES;
-  tbl.glFramebufferRenderbufferOES = trace_glFramebufferRenderbufferOES;
-  tbl.glFramebufferTexture2DOES = trace_glFramebufferTexture2DOES;
-  tbl.glGenFramebuffersOES = trace_glGenFramebuffersOES;
-  tbl.glGenRenderbuffersOES = trace_glGenRenderbuffersOES;
-  tbl.glGenerateMipmapOES = trace_glGenerateMipmapOES;
-  tbl.glGetFramebufferAttachmentParameterivOES = trace_glGetFramebufferAttachmentParameterivOES;
-  tbl.glGetRenderbufferParameterivOES = trace_glGetRenderbufferParameterivOES;
-  tbl.glIsFramebufferOES = trace_glIsFramebufferOES;
-  tbl.glIsRenderbufferOES = trace_glIsRenderbufferOES;
-  tbl.glRenderbufferStorageOES = trace_glRenderbufferStorageOES;
+  tbl.glBindFramebufferOES = MakeRegalProc( trace_glBindFramebufferOES, layer );
+  tbl.glBindRenderbufferOES = MakeRegalProc( trace_glBindRenderbufferOES, layer );
+  tbl.glCheckFramebufferStatusOES = MakeRegalProc( trace_glCheckFramebufferStatusOES, layer );
+  tbl.glDeleteFramebuffersOES = MakeRegalProc( trace_glDeleteFramebuffersOES, layer );
+  tbl.glDeleteRenderbuffersOES = MakeRegalProc( trace_glDeleteRenderbuffersOES, layer );
+  tbl.glFramebufferRenderbufferOES = MakeRegalProc( trace_glFramebufferRenderbufferOES, layer );
+  tbl.glFramebufferTexture2DOES = MakeRegalProc( trace_glFramebufferTexture2DOES, layer );
+  tbl.glGenFramebuffersOES = MakeRegalProc( trace_glGenFramebuffersOES, layer );
+  tbl.glGenRenderbuffersOES = MakeRegalProc( trace_glGenRenderbuffersOES, layer );
+  tbl.glGenerateMipmapOES = MakeRegalProc( trace_glGenerateMipmapOES, layer );
+  tbl.glGetFramebufferAttachmentParameterivOES = MakeRegalProc( trace_glGetFramebufferAttachmentParameterivOES, layer );
+  tbl.glGetRenderbufferParameterivOES = MakeRegalProc( trace_glGetRenderbufferParameterivOES, layer );
+  tbl.glIsFramebufferOES = MakeRegalProc( trace_glIsFramebufferOES, layer );
+  tbl.glIsRenderbufferOES = MakeRegalProc( trace_glIsRenderbufferOES, layer );
+  tbl.glRenderbufferStorageOES = MakeRegalProc( trace_glRenderbufferStorageOES, layer );
 
   // GL_OES_get_program_binary
 
-  tbl.glGetProgramBinaryOES = trace_glGetProgramBinaryOES;
-  tbl.glProgramBinaryOES = trace_glProgramBinaryOES;
+  tbl.glGetProgramBinaryOES = MakeRegalProc( trace_glGetProgramBinaryOES, layer );
+  tbl.glProgramBinaryOES = MakeRegalProc( trace_glProgramBinaryOES, layer );
 
   // GL_OES_mapbuffer
 
-  tbl.glGetBufferPointervOES = trace_glGetBufferPointervOES;
-  tbl.glMapBufferOES = trace_glMapBufferOES;
-  tbl.glUnmapBufferOES = trace_glUnmapBufferOES;
+  tbl.glGetBufferPointervOES = MakeRegalProc( trace_glGetBufferPointervOES, layer );
+  tbl.glMapBufferOES = MakeRegalProc( trace_glMapBufferOES, layer );
+  tbl.glUnmapBufferOES = MakeRegalProc( trace_glUnmapBufferOES, layer );
 
   // GL_OES_matrix_palette
 
-  tbl.glCurrentPaletteMatrixOES = trace_glCurrentPaletteMatrixOES;
+  tbl.glCurrentPaletteMatrixOES = MakeRegalProc( trace_glCurrentPaletteMatrixOES, layer );
 
   // GL_OES_texture_3D
 
-  tbl.glCompressedTexImage3DOES = trace_glCompressedTexImage3DOES;
-  tbl.glCompressedTexSubImage3DOES = trace_glCompressedTexSubImage3DOES;
-  tbl.glCopyTexSubImage3DOES = trace_glCopyTexSubImage3DOES;
-  tbl.glFramebufferTexture3DOES = trace_glFramebufferTexture3DOES;
-  tbl.glTexImage3DOES = trace_glTexImage3DOES;
-  tbl.glTexSubImage3DOES = trace_glTexSubImage3DOES;
+  tbl.glCompressedTexImage3DOES = MakeRegalProc( trace_glCompressedTexImage3DOES, layer );
+  tbl.glCompressedTexSubImage3DOES = MakeRegalProc( trace_glCompressedTexSubImage3DOES, layer );
+  tbl.glCopyTexSubImage3DOES = MakeRegalProc( trace_glCopyTexSubImage3DOES, layer );
+  tbl.glFramebufferTexture3DOES = MakeRegalProc( trace_glFramebufferTexture3DOES, layer );
+  tbl.glTexImage3DOES = MakeRegalProc( trace_glTexImage3DOES, layer );
+  tbl.glTexSubImage3DOES = MakeRegalProc( trace_glTexSubImage3DOES, layer );
 
   // GL_OES_texture_cube_map
 
-  tbl.glGetTexGenfvOES = trace_glGetTexGenfvOES;
-  tbl.glGetTexGenivOES = trace_glGetTexGenivOES;
-  tbl.glGetTexGenxvOES = trace_glGetTexGenxvOES;
-  tbl.glTexGenfOES = trace_glTexGenfOES;
-  tbl.glTexGenfvOES = trace_glTexGenfvOES;
-  tbl.glTexGeniOES = trace_glTexGeniOES;
-  tbl.glTexGenivOES = trace_glTexGenivOES;
-  tbl.glTexGenxOES = trace_glTexGenxOES;
-  tbl.glTexGenxvOES = trace_glTexGenxvOES;
+  tbl.glGetTexGenfvOES = MakeRegalProc( trace_glGetTexGenfvOES, layer );
+  tbl.glGetTexGenivOES = MakeRegalProc( trace_glGetTexGenivOES, layer );
+  tbl.glGetTexGenxvOES = MakeRegalProc( trace_glGetTexGenxvOES, layer );
+  tbl.glTexGenfOES = MakeRegalProc( trace_glTexGenfOES, layer );
+  tbl.glTexGenfvOES = MakeRegalProc( trace_glTexGenfvOES, layer );
+  tbl.glTexGeniOES = MakeRegalProc( trace_glTexGeniOES, layer );
+  tbl.glTexGenivOES = MakeRegalProc( trace_glTexGenivOES, layer );
+  tbl.glTexGenxOES = MakeRegalProc( trace_glTexGenxOES, layer );
+  tbl.glTexGenxvOES = MakeRegalProc( trace_glTexGenxvOES, layer );
 
   // GL_OES_vertex_array_object
 
-  tbl.glBindVertexArrayOES = trace_glBindVertexArrayOES;
-  tbl.glDeleteVertexArraysOES = trace_glDeleteVertexArraysOES;
-  tbl.glGenVertexArraysOES = trace_glGenVertexArraysOES;
-  tbl.glIsVertexArrayOES = trace_glIsVertexArrayOES;
+  tbl.glBindVertexArrayOES = MakeRegalProc( trace_glBindVertexArrayOES, layer );
+  tbl.glDeleteVertexArraysOES = MakeRegalProc( trace_glDeleteVertexArraysOES, layer );
+  tbl.glGenVertexArraysOES = MakeRegalProc( trace_glGenVertexArraysOES, layer );
+  tbl.glIsVertexArrayOES = MakeRegalProc( trace_glIsVertexArrayOES, layer );
 
   // GL_PGI_misc_hints
 
-  tbl.glHintPGI = trace_glHintPGI;
+  tbl.glHintPGI = MakeRegalProc( trace_glHintPGI, layer );
 
   // GL_REGAL_ES1_0_compatibility
 
-  tbl.glAlphaFuncx = trace_glAlphaFuncx;
-  tbl.glClearColorx = trace_glClearColorx;
-  tbl.glClearDepthx = trace_glClearDepthx;
-  tbl.glColor4x = trace_glColor4x;
-  tbl.glDepthRangex = trace_glDepthRangex;
-  tbl.glFogx = trace_glFogx;
-  tbl.glFogxv = trace_glFogxv;
-  tbl.glFrustumf = trace_glFrustumf;
-  tbl.glFrustumx = trace_glFrustumx;
-  tbl.glLightModelx = trace_glLightModelx;
-  tbl.glLightModelxv = trace_glLightModelxv;
-  tbl.glLightx = trace_glLightx;
-  tbl.glLightxv = trace_glLightxv;
-  tbl.glLineWidthx = trace_glLineWidthx;
-  tbl.glLoadMatrixx = trace_glLoadMatrixx;
-  tbl.glMaterialx = trace_glMaterialx;
-  tbl.glMaterialxv = trace_glMaterialxv;
-  tbl.glMultMatrixx = trace_glMultMatrixx;
-  tbl.glMultiTexCoord4x = trace_glMultiTexCoord4x;
-  tbl.glNormal3x = trace_glNormal3x;
-  tbl.glOrthof = trace_glOrthof;
-  tbl.glOrthox = trace_glOrthox;
-  tbl.glPointSizex = trace_glPointSizex;
-  tbl.glPolygonOffsetx = trace_glPolygonOffsetx;
-  tbl.glRotatex = trace_glRotatex;
-  tbl.glSampleCoveragex = trace_glSampleCoveragex;
-  tbl.glScalex = trace_glScalex;
-  tbl.glTexEnvx = trace_glTexEnvx;
-  tbl.glTexEnvxv = trace_glTexEnvxv;
-  tbl.glTexParameterx = trace_glTexParameterx;
-  tbl.glTranslatex = trace_glTranslatex;
+  tbl.glAlphaFuncx = MakeRegalProc( trace_glAlphaFuncx, layer );
+  tbl.glClearColorx = MakeRegalProc( trace_glClearColorx, layer );
+  tbl.glClearDepthx = MakeRegalProc( trace_glClearDepthx, layer );
+  tbl.glColor4x = MakeRegalProc( trace_glColor4x, layer );
+  tbl.glDepthRangex = MakeRegalProc( trace_glDepthRangex, layer );
+  tbl.glFogx = MakeRegalProc( trace_glFogx, layer );
+  tbl.glFogxv = MakeRegalProc( trace_glFogxv, layer );
+  tbl.glFrustumf = MakeRegalProc( trace_glFrustumf, layer );
+  tbl.glFrustumx = MakeRegalProc( trace_glFrustumx, layer );
+  tbl.glLightModelx = MakeRegalProc( trace_glLightModelx, layer );
+  tbl.glLightModelxv = MakeRegalProc( trace_glLightModelxv, layer );
+  tbl.glLightx = MakeRegalProc( trace_glLightx, layer );
+  tbl.glLightxv = MakeRegalProc( trace_glLightxv, layer );
+  tbl.glLineWidthx = MakeRegalProc( trace_glLineWidthx, layer );
+  tbl.glLoadMatrixx = MakeRegalProc( trace_glLoadMatrixx, layer );
+  tbl.glMaterialx = MakeRegalProc( trace_glMaterialx, layer );
+  tbl.glMaterialxv = MakeRegalProc( trace_glMaterialxv, layer );
+  tbl.glMultMatrixx = MakeRegalProc( trace_glMultMatrixx, layer );
+  tbl.glMultiTexCoord4x = MakeRegalProc( trace_glMultiTexCoord4x, layer );
+  tbl.glNormal3x = MakeRegalProc( trace_glNormal3x, layer );
+  tbl.glOrthof = MakeRegalProc( trace_glOrthof, layer );
+  tbl.glOrthox = MakeRegalProc( trace_glOrthox, layer );
+  tbl.glPointSizex = MakeRegalProc( trace_glPointSizex, layer );
+  tbl.glPolygonOffsetx = MakeRegalProc( trace_glPolygonOffsetx, layer );
+  tbl.glRotatex = MakeRegalProc( trace_glRotatex, layer );
+  tbl.glSampleCoveragex = MakeRegalProc( trace_glSampleCoveragex, layer );
+  tbl.glScalex = MakeRegalProc( trace_glScalex, layer );
+  tbl.glTexEnvx = MakeRegalProc( trace_glTexEnvx, layer );
+  tbl.glTexEnvxv = MakeRegalProc( trace_glTexEnvxv, layer );
+  tbl.glTexParameterx = MakeRegalProc( trace_glTexParameterx, layer );
+  tbl.glTranslatex = MakeRegalProc( trace_glTranslatex, layer );
 
   // GL_REGAL_ES1_1_compatibility
 
-  tbl.glClipPlanef = trace_glClipPlanef;
-  tbl.glClipPlanex = trace_glClipPlanex;
-  tbl.glGetClipPlanef = trace_glGetClipPlanef;
-  tbl.glGetClipPlanex = trace_glGetClipPlanex;
-  tbl.glGetFixedv = trace_glGetFixedv;
-  tbl.glGetLightxv = trace_glGetLightxv;
-  tbl.glGetMaterialxv = trace_glGetMaterialxv;
-  tbl.glGetTexEnvxv = trace_glGetTexEnvxv;
-  tbl.glGetTexParameterxv = trace_glGetTexParameterxv;
-  tbl.glPointParameterx = trace_glPointParameterx;
-  tbl.glPointParameterxv = trace_glPointParameterxv;
-  tbl.glPointSizePointerOES = trace_glPointSizePointerOES;
-  tbl.glTexParameterxv = trace_glTexParameterxv;
+  tbl.glClipPlanef = MakeRegalProc( trace_glClipPlanef, layer );
+  tbl.glClipPlanex = MakeRegalProc( trace_glClipPlanex, layer );
+  tbl.glGetClipPlanef = MakeRegalProc( trace_glGetClipPlanef, layer );
+  tbl.glGetClipPlanex = MakeRegalProc( trace_glGetClipPlanex, layer );
+  tbl.glGetFixedv = MakeRegalProc( trace_glGetFixedv, layer );
+  tbl.glGetLightxv = MakeRegalProc( trace_glGetLightxv, layer );
+  tbl.glGetMaterialxv = MakeRegalProc( trace_glGetMaterialxv, layer );
+  tbl.glGetTexEnvxv = MakeRegalProc( trace_glGetTexEnvxv, layer );
+  tbl.glGetTexParameterxv = MakeRegalProc( trace_glGetTexParameterxv, layer );
+  tbl.glPointParameterx = MakeRegalProc( trace_glPointParameterx, layer );
+  tbl.glPointParameterxv = MakeRegalProc( trace_glPointParameterxv, layer );
+  tbl.glPointSizePointerOES = MakeRegalProc( trace_glPointSizePointerOES, layer );
+  tbl.glTexParameterxv = MakeRegalProc( trace_glTexParameterxv, layer );
 
   // GL_SGIS_detail_texture
 
-  tbl.glDetailTexFuncSGIS = trace_glDetailTexFuncSGIS;
-  tbl.glGetDetailTexFuncSGIS = trace_glGetDetailTexFuncSGIS;
+  tbl.glDetailTexFuncSGIS = MakeRegalProc( trace_glDetailTexFuncSGIS, layer );
+  tbl.glGetDetailTexFuncSGIS = MakeRegalProc( trace_glGetDetailTexFuncSGIS, layer );
 
   // GL_SGIS_fog_function
 
-  tbl.glFogFuncSGIS = trace_glFogFuncSGIS;
-  tbl.glGetFogFuncSGIS = trace_glGetFogFuncSGIS;
+  tbl.glFogFuncSGIS = MakeRegalProc( trace_glFogFuncSGIS, layer );
+  tbl.glGetFogFuncSGIS = MakeRegalProc( trace_glGetFogFuncSGIS, layer );
 
   // GL_SGIS_multisample
 
-  tbl.glSampleMaskSGIS = trace_glSampleMaskSGIS;
-  tbl.glSamplePatternSGIS = trace_glSamplePatternSGIS;
+  tbl.glSampleMaskSGIS = MakeRegalProc( trace_glSampleMaskSGIS, layer );
+  tbl.glSamplePatternSGIS = MakeRegalProc( trace_glSamplePatternSGIS, layer );
 
   // GL_SGIS_pixel_texture
 
-  tbl.glGetPixelTexGenParameterfvSGIS = trace_glGetPixelTexGenParameterfvSGIS;
-  tbl.glGetPixelTexGenParameterivSGIS = trace_glGetPixelTexGenParameterivSGIS;
-  tbl.glPixelTexGenParameterfSGIS = trace_glPixelTexGenParameterfSGIS;
-  tbl.glPixelTexGenParameterfvSGIS = trace_glPixelTexGenParameterfvSGIS;
-  tbl.glPixelTexGenParameteriSGIS = trace_glPixelTexGenParameteriSGIS;
-  tbl.glPixelTexGenParameterivSGIS = trace_glPixelTexGenParameterivSGIS;
+  tbl.glGetPixelTexGenParameterfvSGIS = MakeRegalProc( trace_glGetPixelTexGenParameterfvSGIS, layer );
+  tbl.glGetPixelTexGenParameterivSGIS = MakeRegalProc( trace_glGetPixelTexGenParameterivSGIS, layer );
+  tbl.glPixelTexGenParameterfSGIS = MakeRegalProc( trace_glPixelTexGenParameterfSGIS, layer );
+  tbl.glPixelTexGenParameterfvSGIS = MakeRegalProc( trace_glPixelTexGenParameterfvSGIS, layer );
+  tbl.glPixelTexGenParameteriSGIS = MakeRegalProc( trace_glPixelTexGenParameteriSGIS, layer );
+  tbl.glPixelTexGenParameterivSGIS = MakeRegalProc( trace_glPixelTexGenParameterivSGIS, layer );
 
   // GL_SGIS_point_parameters
 
-  tbl.glPointParameterfSGIS = trace_glPointParameterfSGIS;
-  tbl.glPointParameterfvSGIS = trace_glPointParameterfvSGIS;
+  tbl.glPointParameterfSGIS = MakeRegalProc( trace_glPointParameterfSGIS, layer );
+  tbl.glPointParameterfvSGIS = MakeRegalProc( trace_glPointParameterfvSGIS, layer );
 
   // GL_SGIS_sharpen_texture
 
-  tbl.glGetSharpenTexFuncSGIS = trace_glGetSharpenTexFuncSGIS;
-  tbl.glSharpenTexFuncSGIS = trace_glSharpenTexFuncSGIS;
+  tbl.glGetSharpenTexFuncSGIS = MakeRegalProc( trace_glGetSharpenTexFuncSGIS, layer );
+  tbl.glSharpenTexFuncSGIS = MakeRegalProc( trace_glSharpenTexFuncSGIS, layer );
 
   // GL_SGIS_texture4D
 
-  tbl.glTexImage4DSGIS = trace_glTexImage4DSGIS;
-  tbl.glTexSubImage4DSGIS = trace_glTexSubImage4DSGIS;
+  tbl.glTexImage4DSGIS = MakeRegalProc( trace_glTexImage4DSGIS, layer );
+  tbl.glTexSubImage4DSGIS = MakeRegalProc( trace_glTexSubImage4DSGIS, layer );
 
   // GL_SGIS_texture_color_mask
 
-  tbl.glTextureColorMaskSGIS = trace_glTextureColorMaskSGIS;
+  tbl.glTextureColorMaskSGIS = MakeRegalProc( trace_glTextureColorMaskSGIS, layer );
 
   // GL_SGIS_texture_filter4
 
-  tbl.glGetTexFilterFuncSGIS = trace_glGetTexFilterFuncSGIS;
-  tbl.glTexFilterFuncSGIS = trace_glTexFilterFuncSGIS;
+  tbl.glGetTexFilterFuncSGIS = MakeRegalProc( trace_glGetTexFilterFuncSGIS, layer );
+  tbl.glTexFilterFuncSGIS = MakeRegalProc( trace_glTexFilterFuncSGIS, layer );
 
   // GL_SGIX_async
 
-  tbl.glAsyncMarkerSGIX = trace_glAsyncMarkerSGIX;
-  tbl.glDeleteAsyncMarkersSGIX = trace_glDeleteAsyncMarkersSGIX;
-  tbl.glFinishAsyncSGIX = trace_glFinishAsyncSGIX;
-  tbl.glGenAsyncMarkersSGIX = trace_glGenAsyncMarkersSGIX;
-  tbl.glIsAsyncMarkerSGIX = trace_glIsAsyncMarkerSGIX;
-  tbl.glPollAsyncSGIX = trace_glPollAsyncSGIX;
+  tbl.glAsyncMarkerSGIX = MakeRegalProc( trace_glAsyncMarkerSGIX, layer );
+  tbl.glDeleteAsyncMarkersSGIX = MakeRegalProc( trace_glDeleteAsyncMarkersSGIX, layer );
+  tbl.glFinishAsyncSGIX = MakeRegalProc( trace_glFinishAsyncSGIX, layer );
+  tbl.glGenAsyncMarkersSGIX = MakeRegalProc( trace_glGenAsyncMarkersSGIX, layer );
+  tbl.glIsAsyncMarkerSGIX = MakeRegalProc( trace_glIsAsyncMarkerSGIX, layer );
+  tbl.glPollAsyncSGIX = MakeRegalProc( trace_glPollAsyncSGIX, layer );
 
   // GL_SGIX_flush_raster
 
-  tbl.glFlushRasterSGIX = trace_glFlushRasterSGIX;
+  tbl.glFlushRasterSGIX = MakeRegalProc( trace_glFlushRasterSGIX, layer );
 
   // GL_SGIX_fragment_lighting
 
-  tbl.glFragmentColorMaterialSGIX = trace_glFragmentColorMaterialSGIX;
-  tbl.glFragmentLightModelfSGIX = trace_glFragmentLightModelfSGIX;
-  tbl.glFragmentLightModelfvSGIX = trace_glFragmentLightModelfvSGIX;
-  tbl.glFragmentLightModeliSGIX = trace_glFragmentLightModeliSGIX;
-  tbl.glFragmentLightModelivSGIX = trace_glFragmentLightModelivSGIX;
-  tbl.glFragmentLightfSGIX = trace_glFragmentLightfSGIX;
-  tbl.glFragmentLightfvSGIX = trace_glFragmentLightfvSGIX;
-  tbl.glFragmentLightiSGIX = trace_glFragmentLightiSGIX;
-  tbl.glFragmentLightivSGIX = trace_glFragmentLightivSGIX;
-  tbl.glFragmentMaterialfSGIX = trace_glFragmentMaterialfSGIX;
-  tbl.glFragmentMaterialfvSGIX = trace_glFragmentMaterialfvSGIX;
-  tbl.glFragmentMaterialiSGIX = trace_glFragmentMaterialiSGIX;
-  tbl.glFragmentMaterialivSGIX = trace_glFragmentMaterialivSGIX;
-  tbl.glGetFragmentLightfvSGIX = trace_glGetFragmentLightfvSGIX;
-  tbl.glGetFragmentLightivSGIX = trace_glGetFragmentLightivSGIX;
-  tbl.glGetFragmentMaterialfvSGIX = trace_glGetFragmentMaterialfvSGIX;
-  tbl.glGetFragmentMaterialivSGIX = trace_glGetFragmentMaterialivSGIX;
-  tbl.glLightEnviSGIX = trace_glLightEnviSGIX;
+  tbl.glFragmentColorMaterialSGIX = MakeRegalProc( trace_glFragmentColorMaterialSGIX, layer );
+  tbl.glFragmentLightModelfSGIX = MakeRegalProc( trace_glFragmentLightModelfSGIX, layer );
+  tbl.glFragmentLightModelfvSGIX = MakeRegalProc( trace_glFragmentLightModelfvSGIX, layer );
+  tbl.glFragmentLightModeliSGIX = MakeRegalProc( trace_glFragmentLightModeliSGIX, layer );
+  tbl.glFragmentLightModelivSGIX = MakeRegalProc( trace_glFragmentLightModelivSGIX, layer );
+  tbl.glFragmentLightfSGIX = MakeRegalProc( trace_glFragmentLightfSGIX, layer );
+  tbl.glFragmentLightfvSGIX = MakeRegalProc( trace_glFragmentLightfvSGIX, layer );
+  tbl.glFragmentLightiSGIX = MakeRegalProc( trace_glFragmentLightiSGIX, layer );
+  tbl.glFragmentLightivSGIX = MakeRegalProc( trace_glFragmentLightivSGIX, layer );
+  tbl.glFragmentMaterialfSGIX = MakeRegalProc( trace_glFragmentMaterialfSGIX, layer );
+  tbl.glFragmentMaterialfvSGIX = MakeRegalProc( trace_glFragmentMaterialfvSGIX, layer );
+  tbl.glFragmentMaterialiSGIX = MakeRegalProc( trace_glFragmentMaterialiSGIX, layer );
+  tbl.glFragmentMaterialivSGIX = MakeRegalProc( trace_glFragmentMaterialivSGIX, layer );
+  tbl.glGetFragmentLightfvSGIX = MakeRegalProc( trace_glGetFragmentLightfvSGIX, layer );
+  tbl.glGetFragmentLightivSGIX = MakeRegalProc( trace_glGetFragmentLightivSGIX, layer );
+  tbl.glGetFragmentMaterialfvSGIX = MakeRegalProc( trace_glGetFragmentMaterialfvSGIX, layer );
+  tbl.glGetFragmentMaterialivSGIX = MakeRegalProc( trace_glGetFragmentMaterialivSGIX, layer );
+  tbl.glLightEnviSGIX = MakeRegalProc( trace_glLightEnviSGIX, layer );
 
   // GL_SGIX_framezoom
 
-  tbl.glFrameZoomSGIX = trace_glFrameZoomSGIX;
+  tbl.glFrameZoomSGIX = MakeRegalProc( trace_glFrameZoomSGIX, layer );
 
   // GL_SGIX_igloo_interface
 
-  tbl.glIglooInterfaceSGIX = trace_glIglooInterfaceSGIX;
+  tbl.glIglooInterfaceSGIX = MakeRegalProc( trace_glIglooInterfaceSGIX, layer );
 
   // GL_SGIX_instruments
 
-  tbl.glGetInstrumentsSGIX = trace_glGetInstrumentsSGIX;
-  tbl.glInstrumentsBufferSGIX = trace_glInstrumentsBufferSGIX;
-  tbl.glPollInstrumentsSGIX = trace_glPollInstrumentsSGIX;
-  tbl.glReadInstrumentsSGIX = trace_glReadInstrumentsSGIX;
-  tbl.glStartInstrumentsSGIX = trace_glStartInstrumentsSGIX;
-  tbl.glStopInstrumentsSGIX = trace_glStopInstrumentsSGIX;
+  tbl.glGetInstrumentsSGIX = MakeRegalProc( trace_glGetInstrumentsSGIX, layer );
+  tbl.glInstrumentsBufferSGIX = MakeRegalProc( trace_glInstrumentsBufferSGIX, layer );
+  tbl.glPollInstrumentsSGIX = MakeRegalProc( trace_glPollInstrumentsSGIX, layer );
+  tbl.glReadInstrumentsSGIX = MakeRegalProc( trace_glReadInstrumentsSGIX, layer );
+  tbl.glStartInstrumentsSGIX = MakeRegalProc( trace_glStartInstrumentsSGIX, layer );
+  tbl.glStopInstrumentsSGIX = MakeRegalProc( trace_glStopInstrumentsSGIX, layer );
 
   // GL_SGIX_list_priority
 
-  tbl.glGetListParameterfvSGIX = trace_glGetListParameterfvSGIX;
-  tbl.glGetListParameterivSGIX = trace_glGetListParameterivSGIX;
-  tbl.glListParameterfSGIX = trace_glListParameterfSGIX;
-  tbl.glListParameterfvSGIX = trace_glListParameterfvSGIX;
-  tbl.glListParameteriSGIX = trace_glListParameteriSGIX;
-  tbl.glListParameterivSGIX = trace_glListParameterivSGIX;
+  tbl.glGetListParameterfvSGIX = MakeRegalProc( trace_glGetListParameterfvSGIX, layer );
+  tbl.glGetListParameterivSGIX = MakeRegalProc( trace_glGetListParameterivSGIX, layer );
+  tbl.glListParameterfSGIX = MakeRegalProc( trace_glListParameterfSGIX, layer );
+  tbl.glListParameterfvSGIX = MakeRegalProc( trace_glListParameterfvSGIX, layer );
+  tbl.glListParameteriSGIX = MakeRegalProc( trace_glListParameteriSGIX, layer );
+  tbl.glListParameterivSGIX = MakeRegalProc( trace_glListParameterivSGIX, layer );
 
   // GL_SGIX_pixel_texture
 
-  tbl.glPixelTexGenSGIX = trace_glPixelTexGenSGIX;
+  tbl.glPixelTexGenSGIX = MakeRegalProc( trace_glPixelTexGenSGIX, layer );
 
   // GL_SGIX_polynomial_ffd
 
-  tbl.glDeformSGIX = trace_glDeformSGIX;
-  tbl.glDeformationMap3dSGIX = trace_glDeformationMap3dSGIX;
-  tbl.glDeformationMap3fSGIX = trace_glDeformationMap3fSGIX;
-  tbl.glLoadIdentityDeformationMapSGIX = trace_glLoadIdentityDeformationMapSGIX;
+  tbl.glDeformSGIX = MakeRegalProc( trace_glDeformSGIX, layer );
+  tbl.glDeformationMap3dSGIX = MakeRegalProc( trace_glDeformationMap3dSGIX, layer );
+  tbl.glDeformationMap3fSGIX = MakeRegalProc( trace_glDeformationMap3fSGIX, layer );
+  tbl.glLoadIdentityDeformationMapSGIX = MakeRegalProc( trace_glLoadIdentityDeformationMapSGIX, layer );
 
   // GL_SGIX_reference_plane
 
-  tbl.glReferencePlaneSGIX = trace_glReferencePlaneSGIX;
+  tbl.glReferencePlaneSGIX = MakeRegalProc( trace_glReferencePlaneSGIX, layer );
 
   // GL_SGIX_sprite
 
-  tbl.glSpriteParameterfSGIX = trace_glSpriteParameterfSGIX;
-  tbl.glSpriteParameterfvSGIX = trace_glSpriteParameterfvSGIX;
-  tbl.glSpriteParameteriSGIX = trace_glSpriteParameteriSGIX;
-  tbl.glSpriteParameterivSGIX = trace_glSpriteParameterivSGIX;
+  tbl.glSpriteParameterfSGIX = MakeRegalProc( trace_glSpriteParameterfSGIX, layer );
+  tbl.glSpriteParameterfvSGIX = MakeRegalProc( trace_glSpriteParameterfvSGIX, layer );
+  tbl.glSpriteParameteriSGIX = MakeRegalProc( trace_glSpriteParameteriSGIX, layer );
+  tbl.glSpriteParameterivSGIX = MakeRegalProc( trace_glSpriteParameterivSGIX, layer );
 
   // GL_SGIX_tag_sample_buffer
 
-  tbl.glTagSampleBufferSGIX = trace_glTagSampleBufferSGIX;
+  tbl.glTagSampleBufferSGIX = MakeRegalProc( trace_glTagSampleBufferSGIX, layer );
 
   // GL_SGI_color_table
 
-  tbl.glColorTableParameterfvSGI = trace_glColorTableParameterfvSGI;
-  tbl.glColorTableParameterivSGI = trace_glColorTableParameterivSGI;
-  tbl.glColorTableSGI = trace_glColorTableSGI;
-  tbl.glCopyColorTableSGI = trace_glCopyColorTableSGI;
-  tbl.glGetColorTableParameterfvSGI = trace_glGetColorTableParameterfvSGI;
-  tbl.glGetColorTableParameterivSGI = trace_glGetColorTableParameterivSGI;
-  tbl.glGetColorTableSGI = trace_glGetColorTableSGI;
+  tbl.glColorTableParameterfvSGI = MakeRegalProc( trace_glColorTableParameterfvSGI, layer );
+  tbl.glColorTableParameterivSGI = MakeRegalProc( trace_glColorTableParameterivSGI, layer );
+  tbl.glColorTableSGI = MakeRegalProc( trace_glColorTableSGI, layer );
+  tbl.glCopyColorTableSGI = MakeRegalProc( trace_glCopyColorTableSGI, layer );
+  tbl.glGetColorTableParameterfvSGI = MakeRegalProc( trace_glGetColorTableParameterfvSGI, layer );
+  tbl.glGetColorTableParameterivSGI = MakeRegalProc( trace_glGetColorTableParameterivSGI, layer );
+  tbl.glGetColorTableSGI = MakeRegalProc( trace_glGetColorTableSGI, layer );
 
   // GL_SUNX_constant_data
 
-  tbl.glFinishTextureSUNX = trace_glFinishTextureSUNX;
+  tbl.glFinishTextureSUNX = MakeRegalProc( trace_glFinishTextureSUNX, layer );
 
   // GL_SUN_global_alpha
 
-  tbl.glGlobalAlphaFactorbSUN = trace_glGlobalAlphaFactorbSUN;
-  tbl.glGlobalAlphaFactordSUN = trace_glGlobalAlphaFactordSUN;
-  tbl.glGlobalAlphaFactorfSUN = trace_glGlobalAlphaFactorfSUN;
-  tbl.glGlobalAlphaFactoriSUN = trace_glGlobalAlphaFactoriSUN;
-  tbl.glGlobalAlphaFactorsSUN = trace_glGlobalAlphaFactorsSUN;
-  tbl.glGlobalAlphaFactorubSUN = trace_glGlobalAlphaFactorubSUN;
-  tbl.glGlobalAlphaFactoruiSUN = trace_glGlobalAlphaFactoruiSUN;
-  tbl.glGlobalAlphaFactorusSUN = trace_glGlobalAlphaFactorusSUN;
+  tbl.glGlobalAlphaFactorbSUN = MakeRegalProc( trace_glGlobalAlphaFactorbSUN, layer );
+  tbl.glGlobalAlphaFactordSUN = MakeRegalProc( trace_glGlobalAlphaFactordSUN, layer );
+  tbl.glGlobalAlphaFactorfSUN = MakeRegalProc( trace_glGlobalAlphaFactorfSUN, layer );
+  tbl.glGlobalAlphaFactoriSUN = MakeRegalProc( trace_glGlobalAlphaFactoriSUN, layer );
+  tbl.glGlobalAlphaFactorsSUN = MakeRegalProc( trace_glGlobalAlphaFactorsSUN, layer );
+  tbl.glGlobalAlphaFactorubSUN = MakeRegalProc( trace_glGlobalAlphaFactorubSUN, layer );
+  tbl.glGlobalAlphaFactoruiSUN = MakeRegalProc( trace_glGlobalAlphaFactoruiSUN, layer );
+  tbl.glGlobalAlphaFactorusSUN = MakeRegalProc( trace_glGlobalAlphaFactorusSUN, layer );
 
   // GL_SUN_mesh_array
 
-  tbl.glDrawMeshArraysSUN = trace_glDrawMeshArraysSUN;
+  tbl.glDrawMeshArraysSUN = MakeRegalProc( trace_glDrawMeshArraysSUN, layer );
 
   // GL_SUN_triangle_list
 
-  tbl.glReplacementCodePointerSUN = trace_glReplacementCodePointerSUN;
-  tbl.glReplacementCodeubSUN = trace_glReplacementCodeubSUN;
-  tbl.glReplacementCodeubvSUN = trace_glReplacementCodeubvSUN;
-  tbl.glReplacementCodeuiSUN = trace_glReplacementCodeuiSUN;
-  tbl.glReplacementCodeuivSUN = trace_glReplacementCodeuivSUN;
-  tbl.glReplacementCodeusSUN = trace_glReplacementCodeusSUN;
-  tbl.glReplacementCodeusvSUN = trace_glReplacementCodeusvSUN;
+  tbl.glReplacementCodePointerSUN = MakeRegalProc( trace_glReplacementCodePointerSUN, layer );
+  tbl.glReplacementCodeubSUN = MakeRegalProc( trace_glReplacementCodeubSUN, layer );
+  tbl.glReplacementCodeubvSUN = MakeRegalProc( trace_glReplacementCodeubvSUN, layer );
+  tbl.glReplacementCodeuiSUN = MakeRegalProc( trace_glReplacementCodeuiSUN, layer );
+  tbl.glReplacementCodeuivSUN = MakeRegalProc( trace_glReplacementCodeuivSUN, layer );
+  tbl.glReplacementCodeusSUN = MakeRegalProc( trace_glReplacementCodeusSUN, layer );
+  tbl.glReplacementCodeusvSUN = MakeRegalProc( trace_glReplacementCodeusvSUN, layer );
 
   // GL_SUN_vertex
 
-  tbl.glColor3fVertex3fSUN = trace_glColor3fVertex3fSUN;
-  tbl.glColor3fVertex3fvSUN = trace_glColor3fVertex3fvSUN;
-  tbl.glColor4fNormal3fVertex3fSUN = trace_glColor4fNormal3fVertex3fSUN;
-  tbl.glColor4fNormal3fVertex3fvSUN = trace_glColor4fNormal3fVertex3fvSUN;
-  tbl.glColor4ubVertex2fSUN = trace_glColor4ubVertex2fSUN;
-  tbl.glColor4ubVertex2fvSUN = trace_glColor4ubVertex2fvSUN;
-  tbl.glColor4ubVertex3fSUN = trace_glColor4ubVertex3fSUN;
-  tbl.glColor4ubVertex3fvSUN = trace_glColor4ubVertex3fvSUN;
-  tbl.glNormal3fVertex3fSUN = trace_glNormal3fVertex3fSUN;
-  tbl.glNormal3fVertex3fvSUN = trace_glNormal3fVertex3fvSUN;
-  tbl.glReplacementCodeuiColor3fVertex3fSUN = trace_glReplacementCodeuiColor3fVertex3fSUN;
-  tbl.glReplacementCodeuiColor3fVertex3fvSUN = trace_glReplacementCodeuiColor3fVertex3fvSUN;
-  tbl.glReplacementCodeuiColor4fNormal3fVertex3fSUN = trace_glReplacementCodeuiColor4fNormal3fVertex3fSUN;
-  tbl.glReplacementCodeuiColor4fNormal3fVertex3fvSUN = trace_glReplacementCodeuiColor4fNormal3fVertex3fvSUN;
-  tbl.glReplacementCodeuiColor4ubVertex3fSUN = trace_glReplacementCodeuiColor4ubVertex3fSUN;
-  tbl.glReplacementCodeuiColor4ubVertex3fvSUN = trace_glReplacementCodeuiColor4ubVertex3fvSUN;
-  tbl.glReplacementCodeuiNormal3fVertex3fSUN = trace_glReplacementCodeuiNormal3fVertex3fSUN;
-  tbl.glReplacementCodeuiNormal3fVertex3fvSUN = trace_glReplacementCodeuiNormal3fVertex3fvSUN;
-  tbl.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = trace_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN;
-  tbl.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = trace_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN;
-  tbl.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN = trace_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN;
-  tbl.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = trace_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN;
-  tbl.glReplacementCodeuiTexCoord2fVertex3fSUN = trace_glReplacementCodeuiTexCoord2fVertex3fSUN;
-  tbl.glReplacementCodeuiTexCoord2fVertex3fvSUN = trace_glReplacementCodeuiTexCoord2fVertex3fvSUN;
-  tbl.glReplacementCodeuiVertex3fSUN = trace_glReplacementCodeuiVertex3fSUN;
-  tbl.glReplacementCodeuiVertex3fvSUN = trace_glReplacementCodeuiVertex3fvSUN;
-  tbl.glTexCoord2fColor3fVertex3fSUN = trace_glTexCoord2fColor3fVertex3fSUN;
-  tbl.glTexCoord2fColor3fVertex3fvSUN = trace_glTexCoord2fColor3fVertex3fvSUN;
-  tbl.glTexCoord2fColor4fNormal3fVertex3fSUN = trace_glTexCoord2fColor4fNormal3fVertex3fSUN;
-  tbl.glTexCoord2fColor4fNormal3fVertex3fvSUN = trace_glTexCoord2fColor4fNormal3fVertex3fvSUN;
-  tbl.glTexCoord2fColor4ubVertex3fSUN = trace_glTexCoord2fColor4ubVertex3fSUN;
-  tbl.glTexCoord2fColor4ubVertex3fvSUN = trace_glTexCoord2fColor4ubVertex3fvSUN;
-  tbl.glTexCoord2fNormal3fVertex3fSUN = trace_glTexCoord2fNormal3fVertex3fSUN;
-  tbl.glTexCoord2fNormal3fVertex3fvSUN = trace_glTexCoord2fNormal3fVertex3fvSUN;
-  tbl.glTexCoord2fVertex3fSUN = trace_glTexCoord2fVertex3fSUN;
-  tbl.glTexCoord2fVertex3fvSUN = trace_glTexCoord2fVertex3fvSUN;
-  tbl.glTexCoord4fColor4fNormal3fVertex4fSUN = trace_glTexCoord4fColor4fNormal3fVertex4fSUN;
-  tbl.glTexCoord4fColor4fNormal3fVertex4fvSUN = trace_glTexCoord4fColor4fNormal3fVertex4fvSUN;
-  tbl.glTexCoord4fVertex4fSUN = trace_glTexCoord4fVertex4fSUN;
-  tbl.glTexCoord4fVertex4fvSUN = trace_glTexCoord4fVertex4fvSUN;
+  tbl.glColor3fVertex3fSUN = MakeRegalProc( trace_glColor3fVertex3fSUN, layer );
+  tbl.glColor3fVertex3fvSUN = MakeRegalProc( trace_glColor3fVertex3fvSUN, layer );
+  tbl.glColor4fNormal3fVertex3fSUN = MakeRegalProc( trace_glColor4fNormal3fVertex3fSUN, layer );
+  tbl.glColor4fNormal3fVertex3fvSUN = MakeRegalProc( trace_glColor4fNormal3fVertex3fvSUN, layer );
+  tbl.glColor4ubVertex2fSUN = MakeRegalProc( trace_glColor4ubVertex2fSUN, layer );
+  tbl.glColor4ubVertex2fvSUN = MakeRegalProc( trace_glColor4ubVertex2fvSUN, layer );
+  tbl.glColor4ubVertex3fSUN = MakeRegalProc( trace_glColor4ubVertex3fSUN, layer );
+  tbl.glColor4ubVertex3fvSUN = MakeRegalProc( trace_glColor4ubVertex3fvSUN, layer );
+  tbl.glNormal3fVertex3fSUN = MakeRegalProc( trace_glNormal3fVertex3fSUN, layer );
+  tbl.glNormal3fVertex3fvSUN = MakeRegalProc( trace_glNormal3fVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiColor3fVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiColor3fVertex3fSUN, layer );
+  tbl.glReplacementCodeuiColor3fVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiColor3fVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiColor4fNormal3fVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiColor4fNormal3fVertex3fSUN, layer );
+  tbl.glReplacementCodeuiColor4fNormal3fVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiColor4fNormal3fVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiColor4ubVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiColor4ubVertex3fSUN, layer );
+  tbl.glReplacementCodeuiColor4ubVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiColor4ubVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiNormal3fVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiNormal3fVertex3fSUN, layer );
+  tbl.glReplacementCodeuiNormal3fVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiNormal3fVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fSUN, layer );
+  tbl.glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiTexCoord2fColor4fNormal3fVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiTexCoord2fNormal3fVertex3fSUN, layer );
+  tbl.glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiTexCoord2fNormal3fVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiTexCoord2fVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiTexCoord2fVertex3fSUN, layer );
+  tbl.glReplacementCodeuiTexCoord2fVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiTexCoord2fVertex3fvSUN, layer );
+  tbl.glReplacementCodeuiVertex3fSUN = MakeRegalProc( trace_glReplacementCodeuiVertex3fSUN, layer );
+  tbl.glReplacementCodeuiVertex3fvSUN = MakeRegalProc( trace_glReplacementCodeuiVertex3fvSUN, layer );
+  tbl.glTexCoord2fColor3fVertex3fSUN = MakeRegalProc( trace_glTexCoord2fColor3fVertex3fSUN, layer );
+  tbl.glTexCoord2fColor3fVertex3fvSUN = MakeRegalProc( trace_glTexCoord2fColor3fVertex3fvSUN, layer );
+  tbl.glTexCoord2fColor4fNormal3fVertex3fSUN = MakeRegalProc( trace_glTexCoord2fColor4fNormal3fVertex3fSUN, layer );
+  tbl.glTexCoord2fColor4fNormal3fVertex3fvSUN = MakeRegalProc( trace_glTexCoord2fColor4fNormal3fVertex3fvSUN, layer );
+  tbl.glTexCoord2fColor4ubVertex3fSUN = MakeRegalProc( trace_glTexCoord2fColor4ubVertex3fSUN, layer );
+  tbl.glTexCoord2fColor4ubVertex3fvSUN = MakeRegalProc( trace_glTexCoord2fColor4ubVertex3fvSUN, layer );
+  tbl.glTexCoord2fNormal3fVertex3fSUN = MakeRegalProc( trace_glTexCoord2fNormal3fVertex3fSUN, layer );
+  tbl.glTexCoord2fNormal3fVertex3fvSUN = MakeRegalProc( trace_glTexCoord2fNormal3fVertex3fvSUN, layer );
+  tbl.glTexCoord2fVertex3fSUN = MakeRegalProc( trace_glTexCoord2fVertex3fSUN, layer );
+  tbl.glTexCoord2fVertex3fvSUN = MakeRegalProc( trace_glTexCoord2fVertex3fvSUN, layer );
+  tbl.glTexCoord4fColor4fNormal3fVertex4fSUN = MakeRegalProc( trace_glTexCoord4fColor4fNormal3fVertex4fSUN, layer );
+  tbl.glTexCoord4fColor4fNormal3fVertex4fvSUN = MakeRegalProc( trace_glTexCoord4fColor4fNormal3fVertex4fvSUN, layer );
+  tbl.glTexCoord4fVertex4fSUN = MakeRegalProc( trace_glTexCoord4fVertex4fSUN, layer );
+  tbl.glTexCoord4fVertex4fvSUN = MakeRegalProc( trace_glTexCoord4fVertex4fvSUN, layer );
 
   // GL_WIN_swap_hint
 
-  tbl.glAddSwapHintRectWIN = trace_glAddSwapHintRectWIN;
+  tbl.glAddSwapHintRectWIN = MakeRegalProc( trace_glAddSwapHintRectWIN, layer );
 
 }
 
-void InitDispatchTrace(Dispatch::Global &tbl)
+void InitDispatchTrace( Layer * layer, Dispatch::Global &tbl)
 {
 
 #if REGAL_SYS_WGL
   // WGL_3DL_stereo_control
 
-  tbl.wglSetStereoEmitterState3DL = trace_wglSetStereoEmitterState3DL;
+  tbl.wglSetStereoEmitterState3DL = MakeRegalProc(trace_wglSetStereoEmitterState3DL, layer);
 
   // WGL_AMD_gpu_association
 
-  tbl.wglBlitContextFramebufferAMD = trace_wglBlitContextFramebufferAMD;
-  tbl.wglCreateAssociatedContextAMD = trace_wglCreateAssociatedContextAMD;
-  tbl.wglCreateAssociatedContextAttribsAMD = trace_wglCreateAssociatedContextAttribsAMD;
-  tbl.wglDeleteAssociatedContextAMD = trace_wglDeleteAssociatedContextAMD;
-  tbl.wglGetContextGPUIDAMD = trace_wglGetContextGPUIDAMD;
-  tbl.wglGetCurrentAssociatedContextAMD = trace_wglGetCurrentAssociatedContextAMD;
-  tbl.wglGetGPUIDsAMD = trace_wglGetGPUIDsAMD;
-  tbl.wglGetGPUInfoAMD = trace_wglGetGPUInfoAMD;
-  tbl.wglMakeAssociatedContextCurrentAMD = trace_wglMakeAssociatedContextCurrentAMD;
+  tbl.wglBlitContextFramebufferAMD = MakeRegalProc(trace_wglBlitContextFramebufferAMD, layer);
+  tbl.wglCreateAssociatedContextAMD = MakeRegalProc(trace_wglCreateAssociatedContextAMD, layer);
+  tbl.wglCreateAssociatedContextAttribsAMD = MakeRegalProc(trace_wglCreateAssociatedContextAttribsAMD, layer);
+  tbl.wglDeleteAssociatedContextAMD = MakeRegalProc(trace_wglDeleteAssociatedContextAMD, layer);
+  tbl.wglGetContextGPUIDAMD = MakeRegalProc(trace_wglGetContextGPUIDAMD, layer);
+  tbl.wglGetCurrentAssociatedContextAMD = MakeRegalProc(trace_wglGetCurrentAssociatedContextAMD, layer);
+  tbl.wglGetGPUIDsAMD = MakeRegalProc(trace_wglGetGPUIDsAMD, layer);
+  tbl.wglGetGPUInfoAMD = MakeRegalProc(trace_wglGetGPUInfoAMD, layer);
+  tbl.wglMakeAssociatedContextCurrentAMD = MakeRegalProc(trace_wglMakeAssociatedContextCurrentAMD, layer);
 
   // WGL_ARB_buffer_region
 
-  tbl.wglCreateBufferRegionARB = trace_wglCreateBufferRegionARB;
-  tbl.wglDeleteBufferRegionARB = trace_wglDeleteBufferRegionARB;
-  tbl.wglRestoreBufferRegionARB = trace_wglRestoreBufferRegionARB;
-  tbl.wglSaveBufferRegionARB = trace_wglSaveBufferRegionARB;
+  tbl.wglCreateBufferRegionARB = MakeRegalProc(trace_wglCreateBufferRegionARB, layer);
+  tbl.wglDeleteBufferRegionARB = MakeRegalProc(trace_wglDeleteBufferRegionARB, layer);
+  tbl.wglRestoreBufferRegionARB = MakeRegalProc(trace_wglRestoreBufferRegionARB, layer);
+  tbl.wglSaveBufferRegionARB = MakeRegalProc(trace_wglSaveBufferRegionARB, layer);
 
   // WGL_ARB_create_context
 
-  tbl.wglCreateContextAttribsARB = trace_wglCreateContextAttribsARB;
+  tbl.wglCreateContextAttribsARB = MakeRegalProc(trace_wglCreateContextAttribsARB, layer);
 
   // WGL_ARB_extensions_string
 
-  tbl.wglGetExtensionsStringARB = trace_wglGetExtensionsStringARB;
+  tbl.wglGetExtensionsStringARB = MakeRegalProc(trace_wglGetExtensionsStringARB, layer);
 
   // WGL_ARB_make_current_read
 
-  tbl.wglGetCurrentReadDCARB = trace_wglGetCurrentReadDCARB;
-  tbl.wglMakeContextCurrentARB = trace_wglMakeContextCurrentARB;
+  tbl.wglGetCurrentReadDCARB = MakeRegalProc(trace_wglGetCurrentReadDCARB, layer);
+  tbl.wglMakeContextCurrentARB = MakeRegalProc(trace_wglMakeContextCurrentARB, layer);
 
   // WGL_ARB_pbuffer
 
-  tbl.wglCreatePbufferARB = trace_wglCreatePbufferARB;
-  tbl.wglDestroyPbufferARB = trace_wglDestroyPbufferARB;
-  tbl.wglGetPbufferDCARB = trace_wglGetPbufferDCARB;
-  tbl.wglQueryPbufferARB = trace_wglQueryPbufferARB;
-  tbl.wglReleasePbufferDCARB = trace_wglReleasePbufferDCARB;
+  tbl.wglCreatePbufferARB = MakeRegalProc(trace_wglCreatePbufferARB, layer);
+  tbl.wglDestroyPbufferARB = MakeRegalProc(trace_wglDestroyPbufferARB, layer);
+  tbl.wglGetPbufferDCARB = MakeRegalProc(trace_wglGetPbufferDCARB, layer);
+  tbl.wglQueryPbufferARB = MakeRegalProc(trace_wglQueryPbufferARB, layer);
+  tbl.wglReleasePbufferDCARB = MakeRegalProc(trace_wglReleasePbufferDCARB, layer);
 
   // WGL_ARB_render_texture
 
-  tbl.wglBindTexImageARB = trace_wglBindTexImageARB;
-  tbl.wglReleaseTexImageARB = trace_wglReleaseTexImageARB;
-  tbl.wglSetPbufferAttribARB = trace_wglSetPbufferAttribARB;
+  tbl.wglBindTexImageARB = MakeRegalProc(trace_wglBindTexImageARB, layer);
+  tbl.wglReleaseTexImageARB = MakeRegalProc(trace_wglReleaseTexImageARB, layer);
+  tbl.wglSetPbufferAttribARB = MakeRegalProc(trace_wglSetPbufferAttribARB, layer);
 
   // WGL_EXT_display_color_table
 
-  tbl.wglBindDisplayColorTableEXT = trace_wglBindDisplayColorTableEXT;
-  tbl.wglCreateDisplayColorTableEXT = trace_wglCreateDisplayColorTableEXT;
-  tbl.wglDestroyDisplayColorTableEXT = trace_wglDestroyDisplayColorTableEXT;
-  tbl.wglLoadDisplayColorTableEXT = trace_wglLoadDisplayColorTableEXT;
+  tbl.wglBindDisplayColorTableEXT = MakeRegalProc(trace_wglBindDisplayColorTableEXT, layer);
+  tbl.wglCreateDisplayColorTableEXT = MakeRegalProc(trace_wglCreateDisplayColorTableEXT, layer);
+  tbl.wglDestroyDisplayColorTableEXT = MakeRegalProc(trace_wglDestroyDisplayColorTableEXT, layer);
+  tbl.wglLoadDisplayColorTableEXT = MakeRegalProc(trace_wglLoadDisplayColorTableEXT, layer);
 
   // WGL_EXT_extensions_string
 
-  tbl.wglGetExtensionsStringEXT = trace_wglGetExtensionsStringEXT;
+  tbl.wglGetExtensionsStringEXT = MakeRegalProc(trace_wglGetExtensionsStringEXT, layer);
 
   // WGL_EXT_make_current_read
 
-  tbl.wglGetCurrentReadDCEXT = trace_wglGetCurrentReadDCEXT;
-  tbl.wglMakeContextCurrentEXT = trace_wglMakeContextCurrentEXT;
+  tbl.wglGetCurrentReadDCEXT = MakeRegalProc(trace_wglGetCurrentReadDCEXT, layer);
+  tbl.wglMakeContextCurrentEXT = MakeRegalProc(trace_wglMakeContextCurrentEXT, layer);
 
   // WGL_EXT_pbuffer
 
-  tbl.wglCreatePbufferEXT = trace_wglCreatePbufferEXT;
-  tbl.wglDestroyPbufferEXT = trace_wglDestroyPbufferEXT;
-  tbl.wglGetPbufferDCEXT = trace_wglGetPbufferDCEXT;
-  tbl.wglQueryPbufferEXT = trace_wglQueryPbufferEXT;
-  tbl.wglReleasePbufferDCEXT = trace_wglReleasePbufferDCEXT;
+  tbl.wglCreatePbufferEXT = MakeRegalProc(trace_wglCreatePbufferEXT, layer);
+  tbl.wglDestroyPbufferEXT = MakeRegalProc(trace_wglDestroyPbufferEXT, layer);
+  tbl.wglGetPbufferDCEXT = MakeRegalProc(trace_wglGetPbufferDCEXT, layer);
+  tbl.wglQueryPbufferEXT = MakeRegalProc(trace_wglQueryPbufferEXT, layer);
+  tbl.wglReleasePbufferDCEXT = MakeRegalProc(trace_wglReleasePbufferDCEXT, layer);
 
   // WGL_EXT_pixel_format
 
-  tbl.wglChoosePixelFormatEXT = trace_wglChoosePixelFormatEXT;
+  tbl.wglChoosePixelFormatEXT = MakeRegalProc(trace_wglChoosePixelFormatEXT, layer);
 
   // WGL_EXT_swap_control
 
-  tbl.wglGetSwapIntervalEXT = trace_wglGetSwapIntervalEXT;
-  tbl.wglSwapIntervalEXT = trace_wglSwapIntervalEXT;
+  tbl.wglGetSwapIntervalEXT = MakeRegalProc(trace_wglGetSwapIntervalEXT, layer);
+  tbl.wglSwapIntervalEXT = MakeRegalProc(trace_wglSwapIntervalEXT, layer);
 
   // WGL_GDI
 
-  tbl.wglChoosePixelFormat = trace_wglChoosePixelFormat;
-  tbl.wglDescribePixelFormat = trace_wglDescribePixelFormat;
-  tbl.wglGetPixelFormat = trace_wglGetPixelFormat;
-  tbl.wglSetPixelFormat = trace_wglSetPixelFormat;
-  tbl.wglSwapBuffers = trace_wglSwapBuffers;
+  tbl.wglChoosePixelFormat = MakeRegalProc(trace_wglChoosePixelFormat, layer);
+  tbl.wglDescribePixelFormat = MakeRegalProc(trace_wglDescribePixelFormat, layer);
+  tbl.wglGetPixelFormat = MakeRegalProc(trace_wglGetPixelFormat, layer);
+  tbl.wglSetPixelFormat = MakeRegalProc(trace_wglSetPixelFormat, layer);
+  tbl.wglSwapBuffers = MakeRegalProc(trace_wglSwapBuffers, layer);
 
   // WGL_I3D_digital_video_control
 
-  tbl.wglGetDigitalVideoParametersI3D = trace_wglGetDigitalVideoParametersI3D;
-  tbl.wglSetDigitalVideoParametersI3D = trace_wglSetDigitalVideoParametersI3D;
+  tbl.wglGetDigitalVideoParametersI3D = MakeRegalProc(trace_wglGetDigitalVideoParametersI3D, layer);
+  tbl.wglSetDigitalVideoParametersI3D = MakeRegalProc(trace_wglSetDigitalVideoParametersI3D, layer);
 
   // WGL_I3D_gamma
 
-  tbl.wglGetGammaTableI3D = trace_wglGetGammaTableI3D;
-  tbl.wglGetGammaTableParametersI3D = trace_wglGetGammaTableParametersI3D;
-  tbl.wglSetGammaTableI3D = trace_wglSetGammaTableI3D;
-  tbl.wglSetGammaTableParametersI3D = trace_wglSetGammaTableParametersI3D;
+  tbl.wglGetGammaTableI3D = MakeRegalProc(trace_wglGetGammaTableI3D, layer);
+  tbl.wglGetGammaTableParametersI3D = MakeRegalProc(trace_wglGetGammaTableParametersI3D, layer);
+  tbl.wglSetGammaTableI3D = MakeRegalProc(trace_wglSetGammaTableI3D, layer);
+  tbl.wglSetGammaTableParametersI3D = MakeRegalProc(trace_wglSetGammaTableParametersI3D, layer);
 
   // WGL_I3D_genlock
 
-  tbl.wglDisableGenlockI3D = trace_wglDisableGenlockI3D;
-  tbl.wglEnableGenlockI3D = trace_wglEnableGenlockI3D;
-  tbl.wglGenlockSampleRateI3D = trace_wglGenlockSampleRateI3D;
-  tbl.wglGenlockSourceDelayI3D = trace_wglGenlockSourceDelayI3D;
-  tbl.wglGenlockSourceEdgeI3D = trace_wglGenlockSourceEdgeI3D;
-  tbl.wglGenlockSourceI3D = trace_wglGenlockSourceI3D;
-  tbl.wglGetGenlockSampleRateI3D = trace_wglGetGenlockSampleRateI3D;
-  tbl.wglGetGenlockSourceDelayI3D = trace_wglGetGenlockSourceDelayI3D;
-  tbl.wglGetGenlockSourceEdgeI3D = trace_wglGetGenlockSourceEdgeI3D;
-  tbl.wglGetGenlockSourceI3D = trace_wglGetGenlockSourceI3D;
-  tbl.wglIsEnabledGenlockI3D = trace_wglIsEnabledGenlockI3D;
-  tbl.wglQueryGenlockMaxSourceDelayI3D = trace_wglQueryGenlockMaxSourceDelayI3D;
+  tbl.wglDisableGenlockI3D = MakeRegalProc(trace_wglDisableGenlockI3D, layer);
+  tbl.wglEnableGenlockI3D = MakeRegalProc(trace_wglEnableGenlockI3D, layer);
+  tbl.wglGenlockSampleRateI3D = MakeRegalProc(trace_wglGenlockSampleRateI3D, layer);
+  tbl.wglGenlockSourceDelayI3D = MakeRegalProc(trace_wglGenlockSourceDelayI3D, layer);
+  tbl.wglGenlockSourceEdgeI3D = MakeRegalProc(trace_wglGenlockSourceEdgeI3D, layer);
+  tbl.wglGenlockSourceI3D = MakeRegalProc(trace_wglGenlockSourceI3D, layer);
+  tbl.wglGetGenlockSampleRateI3D = MakeRegalProc(trace_wglGetGenlockSampleRateI3D, layer);
+  tbl.wglGetGenlockSourceDelayI3D = MakeRegalProc(trace_wglGetGenlockSourceDelayI3D, layer);
+  tbl.wglGetGenlockSourceEdgeI3D = MakeRegalProc(trace_wglGetGenlockSourceEdgeI3D, layer);
+  tbl.wglGetGenlockSourceI3D = MakeRegalProc(trace_wglGetGenlockSourceI3D, layer);
+  tbl.wglIsEnabledGenlockI3D = MakeRegalProc(trace_wglIsEnabledGenlockI3D, layer);
+  tbl.wglQueryGenlockMaxSourceDelayI3D = MakeRegalProc(trace_wglQueryGenlockMaxSourceDelayI3D, layer);
 
   // WGL_I3D_image_buffer
 
-  tbl.wglAssociateImageBufferEventsI3D = trace_wglAssociateImageBufferEventsI3D;
-  tbl.wglCreateImageBufferI3D = trace_wglCreateImageBufferI3D;
-  tbl.wglDestroyImageBufferI3D = trace_wglDestroyImageBufferI3D;
-  tbl.wglReleaseImageBufferEventsI3D = trace_wglReleaseImageBufferEventsI3D;
+  tbl.wglAssociateImageBufferEventsI3D = MakeRegalProc(trace_wglAssociateImageBufferEventsI3D, layer);
+  tbl.wglCreateImageBufferI3D = MakeRegalProc(trace_wglCreateImageBufferI3D, layer);
+  tbl.wglDestroyImageBufferI3D = MakeRegalProc(trace_wglDestroyImageBufferI3D, layer);
+  tbl.wglReleaseImageBufferEventsI3D = MakeRegalProc(trace_wglReleaseImageBufferEventsI3D, layer);
 
   // WGL_I3D_swap_frame_lock
 
-  tbl.wglDisableFrameLockI3D = trace_wglDisableFrameLockI3D;
-  tbl.wglEnableFrameLockI3D = trace_wglEnableFrameLockI3D;
-  tbl.wglIsEnabledFrameLockI3D = trace_wglIsEnabledFrameLockI3D;
-  tbl.wglQueryFrameLockMasterI3D = trace_wglQueryFrameLockMasterI3D;
+  tbl.wglDisableFrameLockI3D = MakeRegalProc(trace_wglDisableFrameLockI3D, layer);
+  tbl.wglEnableFrameLockI3D = MakeRegalProc(trace_wglEnableFrameLockI3D, layer);
+  tbl.wglIsEnabledFrameLockI3D = MakeRegalProc(trace_wglIsEnabledFrameLockI3D, layer);
+  tbl.wglQueryFrameLockMasterI3D = MakeRegalProc(trace_wglQueryFrameLockMasterI3D, layer);
 
   // WGL_I3D_swap_frame_usage
 
-  tbl.wglBeginFrameTrackingI3D = trace_wglBeginFrameTrackingI3D;
-  tbl.wglEndFrameTrackingI3D = trace_wglEndFrameTrackingI3D;
-  tbl.wglGetFrameUsageI3D = trace_wglGetFrameUsageI3D;
-  tbl.wglQueryFrameTrackingI3D = trace_wglQueryFrameTrackingI3D;
+  tbl.wglBeginFrameTrackingI3D = MakeRegalProc(trace_wglBeginFrameTrackingI3D, layer);
+  tbl.wglEndFrameTrackingI3D = MakeRegalProc(trace_wglEndFrameTrackingI3D, layer);
+  tbl.wglGetFrameUsageI3D = MakeRegalProc(trace_wglGetFrameUsageI3D, layer);
+  tbl.wglQueryFrameTrackingI3D = MakeRegalProc(trace_wglQueryFrameTrackingI3D, layer);
 
   // WGL_NV_DX_interop
 
-  tbl.wglDXCloseDeviceNV = trace_wglDXCloseDeviceNV;
-  tbl.wglDXLockObjectsNV = trace_wglDXLockObjectsNV;
-  tbl.wglDXObjectAccessNV = trace_wglDXObjectAccessNV;
-  tbl.wglDXOpenDeviceNV = trace_wglDXOpenDeviceNV;
-  tbl.wglDXRegisterObjectNV = trace_wglDXRegisterObjectNV;
-  tbl.wglDXSetResourceShareHandleNV = trace_wglDXSetResourceShareHandleNV;
-  tbl.wglDXUnlockObjectsNV = trace_wglDXUnlockObjectsNV;
-  tbl.wglDXUnregisterObjectNV = trace_wglDXUnregisterObjectNV;
+  tbl.wglDXCloseDeviceNV = MakeRegalProc(trace_wglDXCloseDeviceNV, layer);
+  tbl.wglDXLockObjectsNV = MakeRegalProc(trace_wglDXLockObjectsNV, layer);
+  tbl.wglDXObjectAccessNV = MakeRegalProc(trace_wglDXObjectAccessNV, layer);
+  tbl.wglDXOpenDeviceNV = MakeRegalProc(trace_wglDXOpenDeviceNV, layer);
+  tbl.wglDXRegisterObjectNV = MakeRegalProc(trace_wglDXRegisterObjectNV, layer);
+  tbl.wglDXSetResourceShareHandleNV = MakeRegalProc(trace_wglDXSetResourceShareHandleNV, layer);
+  tbl.wglDXUnlockObjectsNV = MakeRegalProc(trace_wglDXUnlockObjectsNV, layer);
+  tbl.wglDXUnregisterObjectNV = MakeRegalProc(trace_wglDXUnregisterObjectNV, layer);
 
   // WGL_NV_copy_image
 
-  tbl.wglCopyImageSubDataNV = trace_wglCopyImageSubDataNV;
+  tbl.wglCopyImageSubDataNV = MakeRegalProc(trace_wglCopyImageSubDataNV, layer);
 
   // WGL_NV_gpu_affinity
 
-  tbl.wglCreateAffinityDCNV = trace_wglCreateAffinityDCNV;
-  tbl.wglDeleteDCNV = trace_wglDeleteDCNV;
-  tbl.wglEnumGpusFromAffinityDCNV = trace_wglEnumGpusFromAffinityDCNV;
-  tbl.wglEnumGpusNV = trace_wglEnumGpusNV;
+  tbl.wglCreateAffinityDCNV = MakeRegalProc(trace_wglCreateAffinityDCNV, layer);
+  tbl.wglDeleteDCNV = MakeRegalProc(trace_wglDeleteDCNV, layer);
+  tbl.wglEnumGpusFromAffinityDCNV = MakeRegalProc(trace_wglEnumGpusFromAffinityDCNV, layer);
+  tbl.wglEnumGpusNV = MakeRegalProc(trace_wglEnumGpusNV, layer);
 
   // WGL_NV_present_video
 
-  tbl.wglBindVideoDeviceNV = trace_wglBindVideoDeviceNV;
-  tbl.wglEnumerateVideoDevicesNV = trace_wglEnumerateVideoDevicesNV;
-  tbl.wglQueryCurrentContextNV = trace_wglQueryCurrentContextNV;
+  tbl.wglBindVideoDeviceNV = MakeRegalProc(trace_wglBindVideoDeviceNV, layer);
+  tbl.wglEnumerateVideoDevicesNV = MakeRegalProc(trace_wglEnumerateVideoDevicesNV, layer);
+  tbl.wglQueryCurrentContextNV = MakeRegalProc(trace_wglQueryCurrentContextNV, layer);
 
   // WGL_NV_swap_group
 
-  tbl.wglBindSwapBarrierNV = trace_wglBindSwapBarrierNV;
-  tbl.wglJoinSwapGroupNV = trace_wglJoinSwapGroupNV;
-  tbl.wglQueryFrameCountNV = trace_wglQueryFrameCountNV;
-  tbl.wglQueryMaxSwapGroupsNV = trace_wglQueryMaxSwapGroupsNV;
-  tbl.wglQuerySwapGroupNV = trace_wglQuerySwapGroupNV;
-  tbl.wglResetFrameCountNV = trace_wglResetFrameCountNV;
+  tbl.wglBindSwapBarrierNV = MakeRegalProc(trace_wglBindSwapBarrierNV, layer);
+  tbl.wglJoinSwapGroupNV = MakeRegalProc(trace_wglJoinSwapGroupNV, layer);
+  tbl.wglQueryFrameCountNV = MakeRegalProc(trace_wglQueryFrameCountNV, layer);
+  tbl.wglQueryMaxSwapGroupsNV = MakeRegalProc(trace_wglQueryMaxSwapGroupsNV, layer);
+  tbl.wglQuerySwapGroupNV = MakeRegalProc(trace_wglQuerySwapGroupNV, layer);
+  tbl.wglResetFrameCountNV = MakeRegalProc(trace_wglResetFrameCountNV, layer);
 
   // WGL_NV_vertex_array_range
 
-  tbl.wglAllocateMemoryNV = trace_wglAllocateMemoryNV;
-  tbl.wglFreeMemoryNV = trace_wglFreeMemoryNV;
+  tbl.wglAllocateMemoryNV = MakeRegalProc(trace_wglAllocateMemoryNV, layer);
+  tbl.wglFreeMemoryNV = MakeRegalProc(trace_wglFreeMemoryNV, layer);
 
   // WGL_NV_video_capture
 
-  tbl.wglBindVideoCaptureDeviceNV = trace_wglBindVideoCaptureDeviceNV;
-  tbl.wglEnumerateVideoCaptureDevicesNV = trace_wglEnumerateVideoCaptureDevicesNV;
-  tbl.wglLockVideoCaptureDeviceNV = trace_wglLockVideoCaptureDeviceNV;
-  tbl.wglQueryVideoCaptureDeviceNV = trace_wglQueryVideoCaptureDeviceNV;
-  tbl.wglReleaseVideoCaptureDeviceNV = trace_wglReleaseVideoCaptureDeviceNV;
+  tbl.wglBindVideoCaptureDeviceNV = MakeRegalProc(trace_wglBindVideoCaptureDeviceNV, layer);
+  tbl.wglEnumerateVideoCaptureDevicesNV = MakeRegalProc(trace_wglEnumerateVideoCaptureDevicesNV, layer);
+  tbl.wglLockVideoCaptureDeviceNV = MakeRegalProc(trace_wglLockVideoCaptureDeviceNV, layer);
+  tbl.wglQueryVideoCaptureDeviceNV = MakeRegalProc(trace_wglQueryVideoCaptureDeviceNV, layer);
+  tbl.wglReleaseVideoCaptureDeviceNV = MakeRegalProc(trace_wglReleaseVideoCaptureDeviceNV, layer);
 
   // WGL_NV_video_output
 
-  tbl.wglBindVideoImageNV = trace_wglBindVideoImageNV;
-  tbl.wglGetVideoDeviceNV = trace_wglGetVideoDeviceNV;
-  tbl.wglGetVideoInfoNV = trace_wglGetVideoInfoNV;
-  tbl.wglReleaseVideoDeviceNV = trace_wglReleaseVideoDeviceNV;
-  tbl.wglReleaseVideoImageNV = trace_wglReleaseVideoImageNV;
-  tbl.wglSendPbufferToVideoNV = trace_wglSendPbufferToVideoNV;
+  tbl.wglBindVideoImageNV = MakeRegalProc(trace_wglBindVideoImageNV, layer);
+  tbl.wglGetVideoDeviceNV = MakeRegalProc(trace_wglGetVideoDeviceNV, layer);
+  tbl.wglGetVideoInfoNV = MakeRegalProc(trace_wglGetVideoInfoNV, layer);
+  tbl.wglReleaseVideoDeviceNV = MakeRegalProc(trace_wglReleaseVideoDeviceNV, layer);
+  tbl.wglReleaseVideoImageNV = MakeRegalProc(trace_wglReleaseVideoImageNV, layer);
+  tbl.wglSendPbufferToVideoNV = MakeRegalProc(trace_wglSendPbufferToVideoNV, layer);
 
   // WGL_OML_sync_control
 
-  tbl.wglGetMscRateOML = trace_wglGetMscRateOML;
-  tbl.wglGetSyncValuesOML = trace_wglGetSyncValuesOML;
-  tbl.wglSwapBuffersMscOML = trace_wglSwapBuffersMscOML;
-  tbl.wglSwapLayerBuffersMscOML = trace_wglSwapLayerBuffersMscOML;
-  tbl.wglWaitForMscOML = trace_wglWaitForMscOML;
-  tbl.wglWaitForSbcOML = trace_wglWaitForSbcOML;
+  tbl.wglGetMscRateOML = MakeRegalProc(trace_wglGetMscRateOML, layer);
+  tbl.wglGetSyncValuesOML = MakeRegalProc(trace_wglGetSyncValuesOML, layer);
+  tbl.wglSwapBuffersMscOML = MakeRegalProc(trace_wglSwapBuffersMscOML, layer);
+  tbl.wglSwapLayerBuffersMscOML = MakeRegalProc(trace_wglSwapLayerBuffersMscOML, layer);
+  tbl.wglWaitForMscOML = MakeRegalProc(trace_wglWaitForMscOML, layer);
+  tbl.wglWaitForSbcOML = MakeRegalProc(trace_wglWaitForSbcOML, layer);
 
   // WGL_core
 
-  tbl.wglCopyContext = trace_wglCopyContext;
-  tbl.wglCreateContext = trace_wglCreateContext;
-  tbl.wglCreateLayerContext = trace_wglCreateLayerContext;
-  tbl.wglDeleteContext = trace_wglDeleteContext;
-  tbl.wglDescribeLayerPlane = trace_wglDescribeLayerPlane;
-  tbl.wglGetCurrentContext = trace_wglGetCurrentContext;
-  tbl.wglGetCurrentDC = trace_wglGetCurrentDC;
-  tbl.wglGetLayerPaletteEntries = trace_wglGetLayerPaletteEntries;
-  tbl.wglMakeCurrent = trace_wglMakeCurrent;
-  tbl.wglRealizeLayerPalette = trace_wglRealizeLayerPalette;
-  tbl.wglSetLayerPaletteEntries = trace_wglSetLayerPaletteEntries;
-  tbl.wglShareLists = trace_wglShareLists;
-  tbl.wglSwapLayerBuffers = trace_wglSwapLayerBuffers;
-  tbl.wglSwapMultipleBuffers = trace_wglSwapMultipleBuffers;
-  tbl.wglUseFontBitmapsA = trace_wglUseFontBitmapsA;
-  tbl.wglUseFontBitmapsW = trace_wglUseFontBitmapsW;
-  tbl.wglUseFontOutlinesA = trace_wglUseFontOutlinesA;
-  tbl.wglUseFontOutlinesW = trace_wglUseFontOutlinesW;
+  tbl.wglCopyContext = MakeRegalProc(trace_wglCopyContext, layer);
+  tbl.wglCreateContext = MakeRegalProc(trace_wglCreateContext, layer);
+  tbl.wglCreateLayerContext = MakeRegalProc(trace_wglCreateLayerContext, layer);
+  tbl.wglDeleteContext = MakeRegalProc(trace_wglDeleteContext, layer);
+  tbl.wglDescribeLayerPlane = MakeRegalProc(trace_wglDescribeLayerPlane, layer);
+  tbl.wglGetCurrentContext = MakeRegalProc(trace_wglGetCurrentContext, layer);
+  tbl.wglGetCurrentDC = MakeRegalProc(trace_wglGetCurrentDC, layer);
+  tbl.wglGetLayerPaletteEntries = MakeRegalProc(trace_wglGetLayerPaletteEntries, layer);
+  tbl.wglMakeCurrent = MakeRegalProc(trace_wglMakeCurrent, layer);
+  tbl.wglRealizeLayerPalette = MakeRegalProc(trace_wglRealizeLayerPalette, layer);
+  tbl.wglSetLayerPaletteEntries = MakeRegalProc(trace_wglSetLayerPaletteEntries, layer);
+  tbl.wglShareLists = MakeRegalProc(trace_wglShareLists, layer);
+  tbl.wglSwapLayerBuffers = MakeRegalProc(trace_wglSwapLayerBuffers, layer);
+  tbl.wglSwapMultipleBuffers = MakeRegalProc(trace_wglSwapMultipleBuffers, layer);
+  tbl.wglUseFontBitmapsA = MakeRegalProc(trace_wglUseFontBitmapsA, layer);
+  tbl.wglUseFontBitmapsW = MakeRegalProc(trace_wglUseFontBitmapsW, layer);
+  tbl.wglUseFontOutlinesA = MakeRegalProc(trace_wglUseFontOutlinesA, layer);
+  tbl.wglUseFontOutlinesW = MakeRegalProc(trace_wglUseFontOutlinesW, layer);
 #endif // REGAL_SYS_WGL
 
 #if REGAL_SYS_GLX && REGAL_SYS_X11
 
   // GLX_VERSION_1_0
 
-  tbl.glXChooseVisual = trace_glXChooseVisual;
-  tbl.glXCopyContext = trace_glXCopyContext;
-  tbl.glXCreateContext = trace_glXCreateContext;
-  tbl.glXCreateGLXPixmap = trace_glXCreateGLXPixmap;
-  tbl.glXDestroyContext = trace_glXDestroyContext;
-  tbl.glXDestroyGLXPixmap = trace_glXDestroyGLXPixmap;
-  tbl.glXGetConfig = trace_glXGetConfig;
-  tbl.glXGetCurrentContext = trace_glXGetCurrentContext;
-  tbl.glXGetCurrentDrawable = trace_glXGetCurrentDrawable;
-  tbl.glXIsDirect = trace_glXIsDirect;
-  tbl.glXMakeCurrent = trace_glXMakeCurrent;
-  tbl.glXQueryExtension = trace_glXQueryExtension;
-  tbl.glXQueryVersion = trace_glXQueryVersion;
-  tbl.glXSwapBuffers = trace_glXSwapBuffers;
-  tbl.glXUseXFont = trace_glXUseXFont;
-  tbl.glXWaitGL = trace_glXWaitGL;
-  tbl.glXWaitX = trace_glXWaitX;
+  tbl.glXChooseVisual = MakeRegalProc(trace_glXChooseVisual, layer);
+  tbl.glXCopyContext = MakeRegalProc(trace_glXCopyContext, layer);
+  tbl.glXCreateContext = MakeRegalProc(trace_glXCreateContext, layer);
+  tbl.glXCreateGLXPixmap = MakeRegalProc(trace_glXCreateGLXPixmap, layer);
+  tbl.glXDestroyContext = MakeRegalProc(trace_glXDestroyContext, layer);
+  tbl.glXDestroyGLXPixmap = MakeRegalProc(trace_glXDestroyGLXPixmap, layer);
+  tbl.glXGetConfig = MakeRegalProc(trace_glXGetConfig, layer);
+  tbl.glXGetCurrentContext = MakeRegalProc(trace_glXGetCurrentContext, layer);
+  tbl.glXGetCurrentDrawable = MakeRegalProc(trace_glXGetCurrentDrawable, layer);
+  tbl.glXIsDirect = MakeRegalProc(trace_glXIsDirect, layer);
+  tbl.glXMakeCurrent = MakeRegalProc(trace_glXMakeCurrent, layer);
+  tbl.glXQueryExtension = MakeRegalProc(trace_glXQueryExtension, layer);
+  tbl.glXQueryVersion = MakeRegalProc(trace_glXQueryVersion, layer);
+  tbl.glXSwapBuffers = MakeRegalProc(trace_glXSwapBuffers, layer);
+  tbl.glXUseXFont = MakeRegalProc(trace_glXUseXFont, layer);
+  tbl.glXWaitGL = MakeRegalProc(trace_glXWaitGL, layer);
+  tbl.glXWaitX = MakeRegalProc(trace_glXWaitX, layer);
 
   // GLX_VERSION_1_1
 
-  tbl.glXGetClientString = trace_glXGetClientString;
-  tbl.glXQueryExtensionsString = trace_glXQueryExtensionsString;
-  tbl.glXQueryServerString = trace_glXQueryServerString;
+  tbl.glXGetClientString = MakeRegalProc(trace_glXGetClientString, layer);
+  tbl.glXQueryExtensionsString = MakeRegalProc(trace_glXQueryExtensionsString, layer);
+  tbl.glXQueryServerString = MakeRegalProc(trace_glXQueryServerString, layer);
 
   // GLX_VERSION_1_2
 
-  tbl.glXGetCurrentDisplay = trace_glXGetCurrentDisplay;
+  tbl.glXGetCurrentDisplay = MakeRegalProc(trace_glXGetCurrentDisplay, layer);
 
   // GLX_VERSION_1_3
 
-  tbl.glXChooseFBConfig = trace_glXChooseFBConfig;
-  tbl.glXCreateNewContext = trace_glXCreateNewContext;
-  tbl.glXCreatePbuffer = trace_glXCreatePbuffer;
-  tbl.glXCreatePixmap = trace_glXCreatePixmap;
-  tbl.glXCreateWindow = trace_glXCreateWindow;
-  tbl.glXDestroyPbuffer = trace_glXDestroyPbuffer;
-  tbl.glXDestroyPixmap = trace_glXDestroyPixmap;
-  tbl.glXDestroyWindow = trace_glXDestroyWindow;
-  tbl.glXGetCurrentReadDrawable = trace_glXGetCurrentReadDrawable;
-  tbl.glXGetFBConfigAttrib = trace_glXGetFBConfigAttrib;
-  tbl.glXGetFBConfigs = trace_glXGetFBConfigs;
-  tbl.glXGetSelectedEvent = trace_glXGetSelectedEvent;
-  tbl.glXGetVisualFromFBConfig = trace_glXGetVisualFromFBConfig;
-  tbl.glXMakeContextCurrent = trace_glXMakeContextCurrent;
-  tbl.glXQueryContext = trace_glXQueryContext;
-  tbl.glXQueryDrawable = trace_glXQueryDrawable;
-  tbl.glXSelectEvent = trace_glXSelectEvent;
+  tbl.glXChooseFBConfig = MakeRegalProc(trace_glXChooseFBConfig, layer);
+  tbl.glXCreateNewContext = MakeRegalProc(trace_glXCreateNewContext, layer);
+  tbl.glXCreatePbuffer = MakeRegalProc(trace_glXCreatePbuffer, layer);
+  tbl.glXCreatePixmap = MakeRegalProc(trace_glXCreatePixmap, layer);
+  tbl.glXCreateWindow = MakeRegalProc(trace_glXCreateWindow, layer);
+  tbl.glXDestroyPbuffer = MakeRegalProc(trace_glXDestroyPbuffer, layer);
+  tbl.glXDestroyPixmap = MakeRegalProc(trace_glXDestroyPixmap, layer);
+  tbl.glXDestroyWindow = MakeRegalProc(trace_glXDestroyWindow, layer);
+  tbl.glXGetCurrentReadDrawable = MakeRegalProc(trace_glXGetCurrentReadDrawable, layer);
+  tbl.glXGetFBConfigAttrib = MakeRegalProc(trace_glXGetFBConfigAttrib, layer);
+  tbl.glXGetFBConfigs = MakeRegalProc(trace_glXGetFBConfigs, layer);
+  tbl.glXGetSelectedEvent = MakeRegalProc(trace_glXGetSelectedEvent, layer);
+  tbl.glXGetVisualFromFBConfig = MakeRegalProc(trace_glXGetVisualFromFBConfig, layer);
+  tbl.glXMakeContextCurrent = MakeRegalProc(trace_glXMakeContextCurrent, layer);
+  tbl.glXQueryContext = MakeRegalProc(trace_glXQueryContext, layer);
+  tbl.glXQueryDrawable = MakeRegalProc(trace_glXQueryDrawable, layer);
+  tbl.glXSelectEvent = MakeRegalProc(trace_glXSelectEvent, layer);
 
   // GLX_VERSION_1_4
 
-  tbl.glXGetProcAddress = trace_glXGetProcAddress;
+  tbl.glXGetProcAddress = MakeRegalProc(trace_glXGetProcAddress, layer);
 
   // GLX_ARB_create_context
 
-  tbl.glXCreateContextAttribsARB = trace_glXCreateContextAttribsARB;
+  tbl.glXCreateContextAttribsARB = MakeRegalProc(trace_glXCreateContextAttribsARB, layer);
 
   // GLX_ARB_get_proc_address
 
-  tbl.glXGetProcAddressARB = trace_glXGetProcAddressARB;
+  tbl.glXGetProcAddressARB = MakeRegalProc(trace_glXGetProcAddressARB, layer);
 
   // GLX_EXT_import_context
 
-  tbl.glXFreeContextEXT = trace_glXFreeContextEXT;
-  tbl.glXGetContextIDEXT = trace_glXGetContextIDEXT;
-  tbl.glXImportContextEXT = trace_glXImportContextEXT;
-  tbl.glXQueryContextInfoEXT = trace_glXQueryContextInfoEXT;
+  tbl.glXFreeContextEXT = MakeRegalProc(trace_glXFreeContextEXT, layer);
+  tbl.glXGetContextIDEXT = MakeRegalProc(trace_glXGetContextIDEXT, layer);
+  tbl.glXImportContextEXT = MakeRegalProc(trace_glXImportContextEXT, layer);
+  tbl.glXQueryContextInfoEXT = MakeRegalProc(trace_glXQueryContextInfoEXT, layer);
 
   // GLX_EXT_swap_control
 
-  tbl.glXSwapIntervalEXT = trace_glXSwapIntervalEXT;
+  tbl.glXSwapIntervalEXT = MakeRegalProc(trace_glXSwapIntervalEXT, layer);
 
   // GLX_EXT_texture_from_pixmap
 
-  tbl.glXBindTexImageEXT = trace_glXBindTexImageEXT;
-  tbl.glXReleaseTexImageEXT = trace_glXReleaseTexImageEXT;
+  tbl.glXBindTexImageEXT = MakeRegalProc(trace_glXBindTexImageEXT, layer);
+  tbl.glXReleaseTexImageEXT = MakeRegalProc(trace_glXReleaseTexImageEXT, layer);
 
   // GLX_MESA_agp_offset
 
-  tbl.glXGetAGPOffsetMESA = trace_glXGetAGPOffsetMESA;
+  tbl.glXGetAGPOffsetMESA = MakeRegalProc(trace_glXGetAGPOffsetMESA, layer);
 
   // GLX_MESA_copy_sub_buffer
 
-  tbl.glXCopySubBufferMESA = trace_glXCopySubBufferMESA;
+  tbl.glXCopySubBufferMESA = MakeRegalProc(trace_glXCopySubBufferMESA, layer);
 
   // GLX_MESA_pixmap_colormap
 
-  tbl.glXCreateGLXPixmapMESA = trace_glXCreateGLXPixmapMESA;
+  tbl.glXCreateGLXPixmapMESA = MakeRegalProc(trace_glXCreateGLXPixmapMESA, layer);
 
   // GLX_MESA_release_buffers
 
-  tbl.glXReleaseBuffersMESA = trace_glXReleaseBuffersMESA;
+  tbl.glXReleaseBuffersMESA = MakeRegalProc(trace_glXReleaseBuffersMESA, layer);
 
   // GLX_MESA_set_3dfx_mode
 
-  tbl.glXSet3DfxModeMESA = trace_glXSet3DfxModeMESA;
+  tbl.glXSet3DfxModeMESA = MakeRegalProc(trace_glXSet3DfxModeMESA, layer);
 
   // GLX_MESA_swap_control
 
-  tbl.glXGetSwapIntervalMESA = trace_glXGetSwapIntervalMESA;
-  tbl.glXSwapIntervalMESA = trace_glXSwapIntervalMESA;
+  tbl.glXGetSwapIntervalMESA = MakeRegalProc(trace_glXGetSwapIntervalMESA, layer);
+  tbl.glXSwapIntervalMESA = MakeRegalProc(trace_glXSwapIntervalMESA, layer);
 
   // GLX_NV_copy_image
 
-  tbl.glXCopyImageSubDataNV = trace_glXCopyImageSubDataNV;
+  tbl.glXCopyImageSubDataNV = MakeRegalProc(trace_glXCopyImageSubDataNV, layer);
 
   // GLX_NV_present_video
 
-  tbl.glXBindVideoDeviceNV = trace_glXBindVideoDeviceNV;
-  tbl.glXEnumerateVideoDevicesNV = trace_glXEnumerateVideoDevicesNV;
+  tbl.glXBindVideoDeviceNV = MakeRegalProc(trace_glXBindVideoDeviceNV, layer);
+  tbl.glXEnumerateVideoDevicesNV = MakeRegalProc(trace_glXEnumerateVideoDevicesNV, layer);
 
   // GLX_NV_swap_group
 
-  tbl.glXBindSwapBarrierNV = trace_glXBindSwapBarrierNV;
-  tbl.glXJoinSwapGroupNV = trace_glXJoinSwapGroupNV;
-  tbl.glXQueryFrameCountNV = trace_glXQueryFrameCountNV;
-  tbl.glXQueryMaxSwapGroupsNV = trace_glXQueryMaxSwapGroupsNV;
-  tbl.glXQuerySwapGroupNV = trace_glXQuerySwapGroupNV;
-  tbl.glXResetFrameCountNV = trace_glXResetFrameCountNV;
+  tbl.glXBindSwapBarrierNV = MakeRegalProc(trace_glXBindSwapBarrierNV, layer);
+  tbl.glXJoinSwapGroupNV = MakeRegalProc(trace_glXJoinSwapGroupNV, layer);
+  tbl.glXQueryFrameCountNV = MakeRegalProc(trace_glXQueryFrameCountNV, layer);
+  tbl.glXQueryMaxSwapGroupsNV = MakeRegalProc(trace_glXQueryMaxSwapGroupsNV, layer);
+  tbl.glXQuerySwapGroupNV = MakeRegalProc(trace_glXQuerySwapGroupNV, layer);
+  tbl.glXResetFrameCountNV = MakeRegalProc(trace_glXResetFrameCountNV, layer);
 
   // GLX_NV_vertex_array_range
 
-  tbl.glXAllocateMemoryNV = trace_glXAllocateMemoryNV;
-  tbl.glXFreeMemoryNV = trace_glXFreeMemoryNV;
+  tbl.glXAllocateMemoryNV = MakeRegalProc(trace_glXAllocateMemoryNV, layer);
+  tbl.glXFreeMemoryNV = MakeRegalProc(trace_glXFreeMemoryNV, layer);
 
   // GLX_NV_video_capture
 
-  tbl.glXBindVideoCaptureDeviceNV = trace_glXBindVideoCaptureDeviceNV;
-  tbl.glXEnumerateVideoCaptureDevicesNV = trace_glXEnumerateVideoCaptureDevicesNV;
-  tbl.glXLockVideoCaptureDeviceNV = trace_glXLockVideoCaptureDeviceNV;
-  tbl.glXQueryVideoCaptureDeviceNV = trace_glXQueryVideoCaptureDeviceNV;
-  tbl.glXReleaseVideoCaptureDeviceNV = trace_glXReleaseVideoCaptureDeviceNV;
+  tbl.glXBindVideoCaptureDeviceNV = MakeRegalProc(trace_glXBindVideoCaptureDeviceNV, layer);
+  tbl.glXEnumerateVideoCaptureDevicesNV = MakeRegalProc(trace_glXEnumerateVideoCaptureDevicesNV, layer);
+  tbl.glXLockVideoCaptureDeviceNV = MakeRegalProc(trace_glXLockVideoCaptureDeviceNV, layer);
+  tbl.glXQueryVideoCaptureDeviceNV = MakeRegalProc(trace_glXQueryVideoCaptureDeviceNV, layer);
+  tbl.glXReleaseVideoCaptureDeviceNV = MakeRegalProc(trace_glXReleaseVideoCaptureDeviceNV, layer);
 
   // GLX_NV_video_output
 
-  tbl.glXBindVideoImageNV = trace_glXBindVideoImageNV;
-  tbl.glXGetVideoDeviceNV = trace_glXGetVideoDeviceNV;
-  tbl.glXGetVideoInfoNV = trace_glXGetVideoInfoNV;
-  tbl.glXReleaseVideoDeviceNV = trace_glXReleaseVideoDeviceNV;
-  tbl.glXReleaseVideoImageNV = trace_glXReleaseVideoImageNV;
-  tbl.glXSendPbufferToVideoNV = trace_glXSendPbufferToVideoNV;
+  tbl.glXBindVideoImageNV = MakeRegalProc(trace_glXBindVideoImageNV, layer);
+  tbl.glXGetVideoDeviceNV = MakeRegalProc(trace_glXGetVideoDeviceNV, layer);
+  tbl.glXGetVideoInfoNV = MakeRegalProc(trace_glXGetVideoInfoNV, layer);
+  tbl.glXReleaseVideoDeviceNV = MakeRegalProc(trace_glXReleaseVideoDeviceNV, layer);
+  tbl.glXReleaseVideoImageNV = MakeRegalProc(trace_glXReleaseVideoImageNV, layer);
+  tbl.glXSendPbufferToVideoNV = MakeRegalProc(trace_glXSendPbufferToVideoNV, layer);
 
   // GLX_OML_sync_control
 
-  tbl.glXGetMscRateOML = trace_glXGetMscRateOML;
-  tbl.glXGetSyncValuesOML = trace_glXGetSyncValuesOML;
-  tbl.glXSwapBuffersMscOML = trace_glXSwapBuffersMscOML;
-  tbl.glXWaitForMscOML = trace_glXWaitForMscOML;
-  tbl.glXWaitForSbcOML = trace_glXWaitForSbcOML;
+  tbl.glXGetMscRateOML = MakeRegalProc(trace_glXGetMscRateOML, layer);
+  tbl.glXGetSyncValuesOML = MakeRegalProc(trace_glXGetSyncValuesOML, layer);
+  tbl.glXSwapBuffersMscOML = MakeRegalProc(trace_glXSwapBuffersMscOML, layer);
+  tbl.glXWaitForMscOML = MakeRegalProc(trace_glXWaitForMscOML, layer);
+  tbl.glXWaitForSbcOML = MakeRegalProc(trace_glXWaitForSbcOML, layer);
 
   // GLX_SGIX_fbconfig
 
-  tbl.glXCreateContextWithConfigSGIX = trace_glXCreateContextWithConfigSGIX;
-  tbl.glXCreateGLXPixmapWithConfigSGIX = trace_glXCreateGLXPixmapWithConfigSGIX;
-  tbl.glXGetFBConfigAttribSGIX = trace_glXGetFBConfigAttribSGIX;
-  tbl.glXGetFBConfigFromVisualSGIX = trace_glXGetFBConfigFromVisualSGIX;
-  tbl.glXGetVisualFromFBConfigSGIX = trace_glXGetVisualFromFBConfigSGIX;
+  tbl.glXCreateContextWithConfigSGIX = MakeRegalProc(trace_glXCreateContextWithConfigSGIX, layer);
+  tbl.glXCreateGLXPixmapWithConfigSGIX = MakeRegalProc(trace_glXCreateGLXPixmapWithConfigSGIX, layer);
+  tbl.glXGetFBConfigAttribSGIX = MakeRegalProc(trace_glXGetFBConfigAttribSGIX, layer);
+  tbl.glXGetFBConfigFromVisualSGIX = MakeRegalProc(trace_glXGetFBConfigFromVisualSGIX, layer);
+  tbl.glXGetVisualFromFBConfigSGIX = MakeRegalProc(trace_glXGetVisualFromFBConfigSGIX, layer);
 
   // GLX_SGIX_pbuffer
 
-  tbl.glXCreateGLXPbufferSGIX = trace_glXCreateGLXPbufferSGIX;
-  tbl.glXDestroyGLXPbufferSGIX = trace_glXDestroyGLXPbufferSGIX;
-  tbl.glXGetSelectedEventSGIX = trace_glXGetSelectedEventSGIX;
-  tbl.glXQueryGLXPbufferSGIX = trace_glXQueryGLXPbufferSGIX;
-  tbl.glXSelectEventSGIX = trace_glXSelectEventSGIX;
+  tbl.glXCreateGLXPbufferSGIX = MakeRegalProc(trace_glXCreateGLXPbufferSGIX, layer);
+  tbl.glXDestroyGLXPbufferSGIX = MakeRegalProc(trace_glXDestroyGLXPbufferSGIX, layer);
+  tbl.glXGetSelectedEventSGIX = MakeRegalProc(trace_glXGetSelectedEventSGIX, layer);
+  tbl.glXQueryGLXPbufferSGIX = MakeRegalProc(trace_glXQueryGLXPbufferSGIX, layer);
+  tbl.glXSelectEventSGIX = MakeRegalProc(trace_glXSelectEventSGIX, layer);
 
   // GLX_SGIX_swap_barrier
 
-  tbl.glXBindSwapBarrierSGIX = trace_glXBindSwapBarrierSGIX;
-  tbl.glXQueryMaxSwapBarriersSGIX = trace_glXQueryMaxSwapBarriersSGIX;
+  tbl.glXBindSwapBarrierSGIX = MakeRegalProc(trace_glXBindSwapBarrierSGIX, layer);
+  tbl.glXQueryMaxSwapBarriersSGIX = MakeRegalProc(trace_glXQueryMaxSwapBarriersSGIX, layer);
 
   // GLX_SGIX_swap_group
 
-  tbl.glXJoinSwapGroupSGIX = trace_glXJoinSwapGroupSGIX;
+  tbl.glXJoinSwapGroupSGIX = MakeRegalProc(trace_glXJoinSwapGroupSGIX, layer);
 
   // GLX_SGIX_video_resize
 
-  tbl.glXBindChannelToWindowSGIX = trace_glXBindChannelToWindowSGIX;
-  tbl.glXChannelRectSGIX = trace_glXChannelRectSGIX;
-  tbl.glXChannelRectSyncSGIX = trace_glXChannelRectSyncSGIX;
-  tbl.glXQueryChannelDeltasSGIX = trace_glXQueryChannelDeltasSGIX;
-  tbl.glXQueryChannelRectSGIX = trace_glXQueryChannelRectSGIX;
+  tbl.glXBindChannelToWindowSGIX = MakeRegalProc(trace_glXBindChannelToWindowSGIX, layer);
+  tbl.glXChannelRectSGIX = MakeRegalProc(trace_glXChannelRectSGIX, layer);
+  tbl.glXChannelRectSyncSGIX = MakeRegalProc(trace_glXChannelRectSyncSGIX, layer);
+  tbl.glXQueryChannelDeltasSGIX = MakeRegalProc(trace_glXQueryChannelDeltasSGIX, layer);
+  tbl.glXQueryChannelRectSGIX = MakeRegalProc(trace_glXQueryChannelRectSGIX, layer);
 
   // GLX_SGI_cushion
 
-  tbl.glXCushionSGI = trace_glXCushionSGI;
+  tbl.glXCushionSGI = MakeRegalProc(trace_glXCushionSGI, layer);
 
   // GLX_SGI_make_current_read
 
-  tbl.glXGetCurrentReadDrawableSGI = trace_glXGetCurrentReadDrawableSGI;
-  tbl.glXMakeCurrentReadSGI = trace_glXMakeCurrentReadSGI;
+  tbl.glXGetCurrentReadDrawableSGI = MakeRegalProc(trace_glXGetCurrentReadDrawableSGI, layer);
+  tbl.glXMakeCurrentReadSGI = MakeRegalProc(trace_glXMakeCurrentReadSGI, layer);
 
   // GLX_SGI_swap_control
 
-  tbl.glXSwapIntervalSGI = trace_glXSwapIntervalSGI;
+  tbl.glXSwapIntervalSGI = MakeRegalProc(trace_glXSwapIntervalSGI, layer);
 
   // GLX_SGI_video_sync
 
-  tbl.glXGetVideoSyncSGI = trace_glXGetVideoSyncSGI;
-  tbl.glXWaitVideoSyncSGI = trace_glXWaitVideoSyncSGI;
+  tbl.glXGetVideoSyncSGI = MakeRegalProc(trace_glXGetVideoSyncSGI, layer);
+  tbl.glXWaitVideoSyncSGI = MakeRegalProc(trace_glXWaitVideoSyncSGI, layer);
 #endif // REGAL_SYS_GLX && REGAL_SYS_X11
 
 #if REGAL_SYS_OSX
 
   // CGL_VERSION_1_0
 
-  tbl.CGLChoosePixelFormat = trace_CGLChoosePixelFormat;
-  tbl.CGLClearDrawable = trace_CGLClearDrawable;
-  tbl.CGLCopyContext = trace_CGLCopyContext;
-  tbl.CGLCreateContext = trace_CGLCreateContext;
-  tbl.CGLDescribePixelFormat = trace_CGLDescribePixelFormat;
-  tbl.CGLDescribeRenderer = trace_CGLDescribeRenderer;
-  tbl.CGLDestroyContext = trace_CGLDestroyContext;
-  tbl.CGLDestroyPixelFormat = trace_CGLDestroyPixelFormat;
-  tbl.CGLDestroyRendererInfo = trace_CGLDestroyRendererInfo;
-  tbl.CGLDisable = trace_CGLDisable;
-  tbl.CGLEnable = trace_CGLEnable;
-  tbl.CGLErrorString = trace_CGLErrorString;
-  tbl.CGLFlushDrawable = trace_CGLFlushDrawable;
-  tbl.CGLGetOffScreen = trace_CGLGetOffScreen;
-  tbl.CGLGetOption = trace_CGLGetOption;
-  tbl.CGLGetParameter = trace_CGLGetParameter;
-  tbl.CGLGetVersion = trace_CGLGetVersion;
-  tbl.CGLGetVirtualScreen = trace_CGLGetVirtualScreen;
-  tbl.CGLIsEnabled = trace_CGLIsEnabled;
-  tbl.CGLQueryRendererInfo = trace_CGLQueryRendererInfo;
-  tbl.CGLSetFullScreen = trace_CGLSetFullScreen;
-  tbl.CGLSetOffScreen = trace_CGLSetOffScreen;
-  tbl.CGLSetOption = trace_CGLSetOption;
-  tbl.CGLSetParameter = trace_CGLSetParameter;
-  tbl.CGLSetVirtualScreen = trace_CGLSetVirtualScreen;
+  tbl.CGLChoosePixelFormat = MakeRegalProc(trace_CGLChoosePixelFormat, layer);
+  tbl.CGLClearDrawable = MakeRegalProc(trace_CGLClearDrawable, layer);
+  tbl.CGLCopyContext = MakeRegalProc(trace_CGLCopyContext, layer);
+  tbl.CGLCreateContext = MakeRegalProc(trace_CGLCreateContext, layer);
+  tbl.CGLDescribePixelFormat = MakeRegalProc(trace_CGLDescribePixelFormat, layer);
+  tbl.CGLDescribeRenderer = MakeRegalProc(trace_CGLDescribeRenderer, layer);
+  tbl.CGLDestroyContext = MakeRegalProc(trace_CGLDestroyContext, layer);
+  tbl.CGLDestroyPixelFormat = MakeRegalProc(trace_CGLDestroyPixelFormat, layer);
+  tbl.CGLDestroyRendererInfo = MakeRegalProc(trace_CGLDestroyRendererInfo, layer);
+  tbl.CGLDisable = MakeRegalProc(trace_CGLDisable, layer);
+  tbl.CGLEnable = MakeRegalProc(trace_CGLEnable, layer);
+  tbl.CGLErrorString = MakeRegalProc(trace_CGLErrorString, layer);
+  tbl.CGLFlushDrawable = MakeRegalProc(trace_CGLFlushDrawable, layer);
+  tbl.CGLGetOffScreen = MakeRegalProc(trace_CGLGetOffScreen, layer);
+  tbl.CGLGetOption = MakeRegalProc(trace_CGLGetOption, layer);
+  tbl.CGLGetParameter = MakeRegalProc(trace_CGLGetParameter, layer);
+  tbl.CGLGetVersion = MakeRegalProc(trace_CGLGetVersion, layer);
+  tbl.CGLGetVirtualScreen = MakeRegalProc(trace_CGLGetVirtualScreen, layer);
+  tbl.CGLIsEnabled = MakeRegalProc(trace_CGLIsEnabled, layer);
+  tbl.CGLQueryRendererInfo = MakeRegalProc(trace_CGLQueryRendererInfo, layer);
+  tbl.CGLSetFullScreen = MakeRegalProc(trace_CGLSetFullScreen, layer);
+  tbl.CGLSetOffScreen = MakeRegalProc(trace_CGLSetOffScreen, layer);
+  tbl.CGLSetOption = MakeRegalProc(trace_CGLSetOption, layer);
+  tbl.CGLSetParameter = MakeRegalProc(trace_CGLSetParameter, layer);
+  tbl.CGLSetVirtualScreen = MakeRegalProc(trace_CGLSetVirtualScreen, layer);
 
   // CGL_VERSION_1_1
 
-  tbl.CGLCreatePBuffer = trace_CGLCreatePBuffer;
-  tbl.CGLDescribePBuffer = trace_CGLDescribePBuffer;
-  tbl.CGLDestroyPBuffer = trace_CGLDestroyPBuffer;
-  tbl.CGLGetPBuffer = trace_CGLGetPBuffer;
-  tbl.CGLSetPBuffer = trace_CGLSetPBuffer;
-  tbl.CGLTexImagePBuffer = trace_CGLTexImagePBuffer;
+  tbl.CGLCreatePBuffer = MakeRegalProc(trace_CGLCreatePBuffer, layer);
+  tbl.CGLDescribePBuffer = MakeRegalProc(trace_CGLDescribePBuffer, layer);
+  tbl.CGLDestroyPBuffer = MakeRegalProc(trace_CGLDestroyPBuffer, layer);
+  tbl.CGLGetPBuffer = MakeRegalProc(trace_CGLGetPBuffer, layer);
+  tbl.CGLSetPBuffer = MakeRegalProc(trace_CGLSetPBuffer, layer);
+  tbl.CGLTexImagePBuffer = MakeRegalProc(trace_CGLTexImagePBuffer, layer);
 
   // CGL_VERSION_1_2
 
-  tbl.CGLGetContextRetainCount = trace_CGLGetContextRetainCount;
-  tbl.CGLGetGlobalOption = trace_CGLGetGlobalOption;
-  tbl.CGLGetPBufferRetainCount = trace_CGLGetPBufferRetainCount;
-  tbl.CGLGetPixelFormat = trace_CGLGetPixelFormat;
-  tbl.CGLGetPixelFormatRetainCount = trace_CGLGetPixelFormatRetainCount;
-  tbl.CGLLockContext = trace_CGLLockContext;
-  tbl.CGLReleaseContext = trace_CGLReleaseContext;
-  tbl.CGLReleasePBuffer = trace_CGLReleasePBuffer;
-  tbl.CGLReleasePixelFormat = trace_CGLReleasePixelFormat;
-  tbl.CGLRetainContext = trace_CGLRetainContext;
-  tbl.CGLRetainPBuffer = trace_CGLRetainPBuffer;
-  tbl.CGLRetainPixelFormat = trace_CGLRetainPixelFormat;
-  tbl.CGLSetGlobalOption = trace_CGLSetGlobalOption;
-  tbl.CGLUnlockContext = trace_CGLUnlockContext;
+  tbl.CGLGetContextRetainCount = MakeRegalProc(trace_CGLGetContextRetainCount, layer);
+  tbl.CGLGetGlobalOption = MakeRegalProc(trace_CGLGetGlobalOption, layer);
+  tbl.CGLGetPBufferRetainCount = MakeRegalProc(trace_CGLGetPBufferRetainCount, layer);
+  tbl.CGLGetPixelFormat = MakeRegalProc(trace_CGLGetPixelFormat, layer);
+  tbl.CGLGetPixelFormatRetainCount = MakeRegalProc(trace_CGLGetPixelFormatRetainCount, layer);
+  tbl.CGLLockContext = MakeRegalProc(trace_CGLLockContext, layer);
+  tbl.CGLReleaseContext = MakeRegalProc(trace_CGLReleaseContext, layer);
+  tbl.CGLReleasePBuffer = MakeRegalProc(trace_CGLReleasePBuffer, layer);
+  tbl.CGLReleasePixelFormat = MakeRegalProc(trace_CGLReleasePixelFormat, layer);
+  tbl.CGLRetainContext = MakeRegalProc(trace_CGLRetainContext, layer);
+  tbl.CGLRetainPBuffer = MakeRegalProc(trace_CGLRetainPBuffer, layer);
+  tbl.CGLRetainPixelFormat = MakeRegalProc(trace_CGLRetainPixelFormat, layer);
+  tbl.CGLSetGlobalOption = MakeRegalProc(trace_CGLSetGlobalOption, layer);
+  tbl.CGLUnlockContext = MakeRegalProc(trace_CGLUnlockContext, layer);
 
   // CGL_VERSION_1_3
 
-  tbl.CGLGetCurrentContext = trace_CGLGetCurrentContext;
-  tbl.CGLGetShareGroup = trace_CGLGetShareGroup;
-  tbl.CGLGetSurface = trace_CGLGetSurface;
-  tbl.CGLSetCurrentContext = trace_CGLSetCurrentContext;
-  tbl.CGLSetSurface = trace_CGLSetSurface;
-  tbl.CGLTexImageIOSurface2D = trace_CGLTexImageIOSurface2D;
-  tbl.CGLUpdateContext = trace_CGLUpdateContext;
+  tbl.CGLGetCurrentContext = MakeRegalProc(trace_CGLGetCurrentContext, layer);
+  tbl.CGLGetShareGroup = MakeRegalProc(trace_CGLGetShareGroup, layer);
+  tbl.CGLGetSurface = MakeRegalProc(trace_CGLGetSurface, layer);
+  tbl.CGLSetCurrentContext = MakeRegalProc(trace_CGLSetCurrentContext, layer);
+  tbl.CGLSetSurface = MakeRegalProc(trace_CGLSetSurface, layer);
+  tbl.CGLTexImageIOSurface2D = MakeRegalProc(trace_CGLTexImageIOSurface2D, layer);
+  tbl.CGLUpdateContext = MakeRegalProc(trace_CGLUpdateContext, layer);
 #endif // REGAL_SYS_OSX
 
 #if REGAL_SYS_EGL
 
   // EGL_ANGLE_query_surface_pointer
 
-  tbl.eglQuerySurfacePointerANGLE = trace_eglQuerySurfacePointerANGLE;
+  tbl.eglQuerySurfacePointerANGLE = MakeRegalProc(trace_eglQuerySurfacePointerANGLE, layer);
 
   // EGL_KHR_fence_sync
 
-  tbl.eglClientWaitSyncKHR = trace_eglClientWaitSyncKHR;
-  tbl.eglCreateSyncKHR = trace_eglCreateSyncKHR;
-  tbl.eglDestroySyncKHR = trace_eglDestroySyncKHR;
-  tbl.eglGetSyncAttribKHR = trace_eglGetSyncAttribKHR;
+  tbl.eglClientWaitSyncKHR = MakeRegalProc(trace_eglClientWaitSyncKHR, layer);
+  tbl.eglCreateSyncKHR = MakeRegalProc(trace_eglCreateSyncKHR, layer);
+  tbl.eglDestroySyncKHR = MakeRegalProc(trace_eglDestroySyncKHR, layer);
+  tbl.eglGetSyncAttribKHR = MakeRegalProc(trace_eglGetSyncAttribKHR, layer);
 
   // EGL_KHR_image_base
 
-  tbl.eglCreateImageKHR = trace_eglCreateImageKHR;
-  tbl.eglDestroyImageKHR = trace_eglDestroyImageKHR;
+  tbl.eglCreateImageKHR = MakeRegalProc(trace_eglCreateImageKHR, layer);
+  tbl.eglDestroyImageKHR = MakeRegalProc(trace_eglDestroyImageKHR, layer);
 
   // EGL_KHR_lock_surface
 
-  tbl.eglLockSurfaceKHR = trace_eglLockSurfaceKHR;
-  tbl.eglUnlockSurfaceKHR = trace_eglUnlockSurfaceKHR;
+  tbl.eglLockSurfaceKHR = MakeRegalProc(trace_eglLockSurfaceKHR, layer);
+  tbl.eglUnlockSurfaceKHR = MakeRegalProc(trace_eglUnlockSurfaceKHR, layer);
 
   // EGL_MESA_drm_image
 
-  tbl.eglCreateDRMImageMESA = trace_eglCreateDRMImageMESA;
-  tbl.eglExportDRMImageMESA = trace_eglExportDRMImageMESA;
+  tbl.eglCreateDRMImageMESA = MakeRegalProc(trace_eglCreateDRMImageMESA, layer);
+  tbl.eglExportDRMImageMESA = MakeRegalProc(trace_eglExportDRMImageMESA, layer);
 
   // EGL_NV_post_sub_buffer
 
-  tbl.eglPostSubBufferNV = trace_eglPostSubBufferNV;
+  tbl.eglPostSubBufferNV = MakeRegalProc(trace_eglPostSubBufferNV, layer);
 
   // EGL_NV_sync
 
-  tbl.eglClientWaitSyncNV = trace_eglClientWaitSyncNV;
-  tbl.eglCreateFenceSyncNV = trace_eglCreateFenceSyncNV;
-  tbl.eglDestroySyncNV = trace_eglDestroySyncNV;
-  tbl.eglFenceNV = trace_eglFenceNV;
-  tbl.eglGetSyncAttribNV = trace_eglGetSyncAttribNV;
-  tbl.eglSignalSyncNV = trace_eglSignalSyncNV;
+  tbl.eglClientWaitSyncNV = MakeRegalProc(trace_eglClientWaitSyncNV, layer);
+  tbl.eglCreateFenceSyncNV = MakeRegalProc(trace_eglCreateFenceSyncNV, layer);
+  tbl.eglDestroySyncNV = MakeRegalProc(trace_eglDestroySyncNV, layer);
+  tbl.eglFenceNV = MakeRegalProc(trace_eglFenceNV, layer);
+  tbl.eglGetSyncAttribNV = MakeRegalProc(trace_eglGetSyncAttribNV, layer);
+  tbl.eglSignalSyncNV = MakeRegalProc(trace_eglSignalSyncNV, layer);
 
   // EGL_NV_system_time
 
-  tbl.eglGetSystemTimeFrequencyNV = trace_eglGetSystemTimeFrequencyNV;
-  tbl.eglGetSystemTimeNV = trace_eglGetSystemTimeNV;
+  tbl.eglGetSystemTimeFrequencyNV = MakeRegalProc(trace_eglGetSystemTimeFrequencyNV, layer);
+  tbl.eglGetSystemTimeNV = MakeRegalProc(trace_eglGetSystemTimeNV, layer);
 
   // EGL_VERSION_1_0
 
-  tbl.eglChooseConfig = trace_eglChooseConfig;
-  tbl.eglCopyBuffers = trace_eglCopyBuffers;
-  tbl.eglCreateContext = trace_eglCreateContext;
-  tbl.eglCreatePbufferSurface = trace_eglCreatePbufferSurface;
-  tbl.eglCreatePixmapSurface = trace_eglCreatePixmapSurface;
-  tbl.eglCreateWindowSurface = trace_eglCreateWindowSurface;
-  tbl.eglDestroyContext = trace_eglDestroyContext;
-  tbl.eglDestroySurface = trace_eglDestroySurface;
-  tbl.eglGetConfigAttrib = trace_eglGetConfigAttrib;
-  tbl.eglGetConfigs = trace_eglGetConfigs;
-  tbl.eglGetCurrentContext = trace_eglGetCurrentContext;
-  tbl.eglGetCurrentDisplay = trace_eglGetCurrentDisplay;
-  tbl.eglGetCurrentSurface = trace_eglGetCurrentSurface;
-  tbl.eglGetDisplay = trace_eglGetDisplay;
-  tbl.eglGetError = trace_eglGetError;
-  tbl.eglGetProcAddress = trace_eglGetProcAddress;
-  tbl.eglInitialize = trace_eglInitialize;
-  tbl.eglMakeCurrent = trace_eglMakeCurrent;
-  tbl.eglQueryContext = trace_eglQueryContext;
-  tbl.eglQueryString = trace_eglQueryString;
-  tbl.eglQuerySurface = trace_eglQuerySurface;
-  tbl.eglSwapBuffers = trace_eglSwapBuffers;
-  tbl.eglTerminate = trace_eglTerminate;
-  tbl.eglWaitGL = trace_eglWaitGL;
-  tbl.eglWaitNative = trace_eglWaitNative;
+  tbl.eglChooseConfig = MakeRegalProc(trace_eglChooseConfig, layer);
+  tbl.eglCopyBuffers = MakeRegalProc(trace_eglCopyBuffers, layer);
+  tbl.eglCreateContext = MakeRegalProc(trace_eglCreateContext, layer);
+  tbl.eglCreatePbufferSurface = MakeRegalProc(trace_eglCreatePbufferSurface, layer);
+  tbl.eglCreatePixmapSurface = MakeRegalProc(trace_eglCreatePixmapSurface, layer);
+  tbl.eglCreateWindowSurface = MakeRegalProc(trace_eglCreateWindowSurface, layer);
+  tbl.eglDestroyContext = MakeRegalProc(trace_eglDestroyContext, layer);
+  tbl.eglDestroySurface = MakeRegalProc(trace_eglDestroySurface, layer);
+  tbl.eglGetConfigAttrib = MakeRegalProc(trace_eglGetConfigAttrib, layer);
+  tbl.eglGetConfigs = MakeRegalProc(trace_eglGetConfigs, layer);
+  tbl.eglGetCurrentContext = MakeRegalProc(trace_eglGetCurrentContext, layer);
+  tbl.eglGetCurrentDisplay = MakeRegalProc(trace_eglGetCurrentDisplay, layer);
+  tbl.eglGetCurrentSurface = MakeRegalProc(trace_eglGetCurrentSurface, layer);
+  tbl.eglGetDisplay = MakeRegalProc(trace_eglGetDisplay, layer);
+  tbl.eglGetError = MakeRegalProc(trace_eglGetError, layer);
+  tbl.eglGetProcAddress = MakeRegalProc(trace_eglGetProcAddress, layer);
+  tbl.eglInitialize = MakeRegalProc(trace_eglInitialize, layer);
+  tbl.eglMakeCurrent = MakeRegalProc(trace_eglMakeCurrent, layer);
+  tbl.eglQueryContext = MakeRegalProc(trace_eglQueryContext, layer);
+  tbl.eglQueryString = MakeRegalProc(trace_eglQueryString, layer);
+  tbl.eglQuerySurface = MakeRegalProc(trace_eglQuerySurface, layer);
+  tbl.eglSwapBuffers = MakeRegalProc(trace_eglSwapBuffers, layer);
+  tbl.eglTerminate = MakeRegalProc(trace_eglTerminate, layer);
+  tbl.eglWaitGL = MakeRegalProc(trace_eglWaitGL, layer);
+  tbl.eglWaitNative = MakeRegalProc(trace_eglWaitNative, layer);
 
   // EGL_VERSION_1_1
 
-  tbl.eglBindTexImage = trace_eglBindTexImage;
-  tbl.eglReleaseTexImage = trace_eglReleaseTexImage;
+  tbl.eglBindTexImage = MakeRegalProc(trace_eglBindTexImage, layer);
+  tbl.eglReleaseTexImage = MakeRegalProc(trace_eglReleaseTexImage, layer);
 
   // EGL_VERSION_1_2
 
-  tbl.eglBindAPI = trace_eglBindAPI;
-  tbl.eglCreatePbufferFromClientBuffer = trace_eglCreatePbufferFromClientBuffer;
-  tbl.eglQueryAPI = trace_eglQueryAPI;
-  tbl.eglReleaseThread = trace_eglReleaseThread;
-  tbl.eglSurfaceAttrib = trace_eglSurfaceAttrib;
-  tbl.eglSwapInterval = trace_eglSwapInterval;
-  tbl.eglWaitClient = trace_eglWaitClient;
+  tbl.eglBindAPI = MakeRegalProc(trace_eglBindAPI, layer);
+  tbl.eglCreatePbufferFromClientBuffer = MakeRegalProc(trace_eglCreatePbufferFromClientBuffer, layer);
+  tbl.eglQueryAPI = MakeRegalProc(trace_eglQueryAPI, layer);
+  tbl.eglReleaseThread = MakeRegalProc(trace_eglReleaseThread, layer);
+  tbl.eglSurfaceAttrib = MakeRegalProc(trace_eglSurfaceAttrib, layer);
+  tbl.eglSwapInterval = MakeRegalProc(trace_eglSwapInterval, layer);
+  tbl.eglWaitClient = MakeRegalProc(trace_eglWaitClient, layer);
 #endif // REGAL_SYS_EGL
 
 }
