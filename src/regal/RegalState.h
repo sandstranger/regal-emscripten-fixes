@@ -105,9 +105,9 @@ inline static void setEnable(Procs &dt, const GLenum cap, const GLboolean enable
 inline static void setEnablei(Procs &dt, const GLenum cap, const GLuint index, const GLboolean enable)
 {
   if (enable)
-    dt.glEnablei(cap,index);
+    RglEnablei( dt, cap,index);
   else
-    dt.glDisablei(cap,index);
+    RglDisablei( dt, cap,index);
 }
 
 inline static void enableToString(string_list &tmp, const GLboolean b, const char *bEnum, const char *delim = "\n")
@@ -399,7 +399,7 @@ struct Enable
   template <typename Procs>
   inline Enable &get(Procs & dt)
   {
-    RegalContext & ctx = *dt.glIsEnabled.layer.GetContext();
+    RegalContext & ctx = *dt.glIsEnabled.layer->GetContext();
 
     alphaTest = RglIsEnabled( dt,GL_ALPHA_TEST);
     autoNormal = RglIsEnabled( dt,GL_AUTO_NORMAL);
@@ -515,7 +515,7 @@ struct Enable
   template <typename Procs>
   inline const Enable &set(Procs & dt) const
   {
-    RegalContext & ctx = *dt.glIsEnabled.layer.GetContext();
+    RegalContext & ctx = *dt.glIsEnabled.layer->GetContext();
     
     setEnable(dt,GL_ALPHA_TEST,alphaTest);
     setEnable(dt,GL_AUTO_NORMAL,autoNormal);
@@ -770,20 +770,20 @@ struct Depth
   template <typename Procs>
   inline Depth &get(Procs &dt)
   {
-    enable = dt.glIsEnabled(GL_DEPTH_TEST);
-    dt.glGetIntegerv(GL_DEPTH_FUNC,reinterpret_cast<GLint *>(&func));
-    dt.glGetFloatv(GL_DEPTH_CLEAR_VALUE,reinterpret_cast<GLfloat *>(&clear));
-    dt.glGetBooleanv(GL_DEPTH_WRITEMASK,&mask);
+    enable = RglIsEnabled( dt,  GL_DEPTH_TEST );
+    RglGetIntegerv( dt,  GL_DEPTH_FUNC, reinterpret_cast<GLint *>(&func) );
+    RglGetFloatv( dt,  GL_DEPTH_CLEAR_VALUE, reinterpret_cast<GLfloat *>(&clear) );
+    RglGetBooleanv( dt,  GL_DEPTH_WRITEMASK, &mask );
     return *this;
   }
 
   template <typename Procs>
-  inline const Depth &set(Procs &dt, RegalContext *ctx) const
+  inline const Depth &set(Procs &dt) const
   {
-    setEnable(dt,GL_DEPTH_TEST,enable);
-    dt.glDepthFunc(func);
-    dt.glClearDepth(clear);
-    dt.glDepthMask(mask);
+    setEnable( dt, GL_DEPTH_TEST, enable);
+    RglDepthFunc( dt, func );
+    RglClearDepth( dt, clear );
+    RglDepthMask( dt, mask );
     return *this;
   }
 
@@ -849,22 +849,22 @@ struct StencilFace
   template <typename Procs>
   inline StencilFace &get(Procs &dt, GLenum face)
   {
-    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_FUNC            : GL_STENCIL_BACK_FUNC,            reinterpret_cast<GLint *>(&func)     );
-    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_REF             : GL_STENCIL_BACK_REF,             &ref                                 );
-    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_VALUE_MASK      : GL_STENCIL_BACK_VALUE_MASK,      reinterpret_cast<GLint *>(&valueMask));
-    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_WRITEMASK       : GL_STENCIL_BACK_WRITEMASK,       reinterpret_cast<GLint *>(&writeMask));
-    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_FAIL            : GL_STENCIL_BACK_FAIL,            reinterpret_cast<GLint *>(&fail)     );
-    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_FAIL : GL_STENCIL_BACK_PASS_DEPTH_FAIL, reinterpret_cast<GLint *>(&zfail)    );
-    dt.glGetIntegerv(face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_PASS : GL_STENCIL_BACK_PASS_DEPTH_PASS, reinterpret_cast<GLint *>(&zpass)    );
+    RglGetIntegerv( dt, face==GL_FRONT ? GL_STENCIL_FUNC            : GL_STENCIL_BACK_FUNC,            reinterpret_cast<GLint *>(&func)     );
+    RglGetIntegerv( dt, face==GL_FRONT ? GL_STENCIL_REF             : GL_STENCIL_BACK_REF,             &ref                                 );
+    RglGetIntegerv( dt, face==GL_FRONT ? GL_STENCIL_VALUE_MASK      : GL_STENCIL_BACK_VALUE_MASK,      reinterpret_cast<GLint *>(&valueMask));
+    RglGetIntegerv( dt, face==GL_FRONT ? GL_STENCIL_WRITEMASK       : GL_STENCIL_BACK_WRITEMASK,       reinterpret_cast<GLint *>(&writeMask));
+    RglGetIntegerv( dt, face==GL_FRONT ? GL_STENCIL_FAIL            : GL_STENCIL_BACK_FAIL,            reinterpret_cast<GLint *>(&fail)     );
+    RglGetIntegerv( dt, face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_FAIL : GL_STENCIL_BACK_PASS_DEPTH_FAIL, reinterpret_cast<GLint *>(&zfail)    );
+    RglGetIntegerv( dt, face==GL_FRONT ? GL_STENCIL_PASS_DEPTH_PASS : GL_STENCIL_BACK_PASS_DEPTH_PASS, reinterpret_cast<GLint *>(&zpass)    );
     return *this;
   }
 
   template <typename Procs>
   inline const StencilFace &set(Procs &dt, GLenum face) const
   {
-    dt.glStencilFuncSeparate(face,func,ref,valueMask);
-    dt.glStencilMaskSeparate(face,writeMask);
-    dt.glStencilOpSeparate(face,fail,zfail,zpass);
+    RglStencilFuncSeparate( dt, face,func,ref,valueMask);
+    RglStencilMaskSeparate( dt, face,writeMask);
+    RglStencilOpSeparate( dt, face,fail,zfail,zpass);
     return *this;
   }
 
@@ -906,20 +906,20 @@ struct Stencil
   template <typename Procs>
   inline Stencil &get(Procs &dt)
   {
-    enable = dt.glIsEnabled(GL_STENCIL_TEST);
-    dt.glGetIntegerv(GL_STENCIL_CLEAR_VALUE,&clear);
+    enable = RglIsEnabled( dt, GL_STENCIL_TEST);
+    RglGetIntegerv( dt, GL_STENCIL_CLEAR_VALUE,&clear);
     front.get(dt,GL_FRONT);
     back.get(dt,GL_BACK );   // What about GL < 2.0 ?
     return *this;
   }
 
   template <typename Procs>
-  inline const Stencil &set(Procs &dt, RegalContext * ctx) const
+  inline const Stencil &set(Procs &dt) const
   {
-    setEnable(dt,GL_STENCIL_TEST,enable);
-    dt.glClearStencil(clear);
-    front.set(dt,GL_FRONT);
-    back.set(dt,GL_BACK);
+    setEnable( dt, GL_STENCIL_TEST, enable );
+    RglClearStencil( dt, clear );
+    front.set( dt, GL_FRONT );
+    back.set( dt, GL_BACK );
     return *this;
   }
 
@@ -1079,35 +1079,35 @@ struct Polygon
   template <typename Procs>
   inline Polygon &get(Procs &dt)
   {
-    cullEnable = dt.glIsEnabled(GL_CULL_FACE);
-    dt.glGetIntegerv(GL_CULL_FACE_MODE,reinterpret_cast<GLint *>(&cullFaceMode));
-    dt.glGetIntegerv(GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
-    dt.glGetIntegerv(GL_POLYGON_MODE,reinterpret_cast<GLint *>(mode));
-    dt.glGetIntegerv(GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
-    smoothEnable  = dt.glIsEnabled(GL_POLYGON_SMOOTH);
-    stippleEnable = dt.glIsEnabled(GL_POLYGON_STIPPLE);
-    offsetFill    = dt.glIsEnabled(GL_POLYGON_OFFSET_FILL);
-    offsetLine    = dt.glIsEnabled(GL_POLYGON_OFFSET_LINE);
-    offsetPoint   = dt.glIsEnabled(GL_POLYGON_OFFSET_POINT);
-    dt.glGetFloatv(GL_POLYGON_OFFSET_FACTOR,&factor);
-    dt.glGetFloatv(GL_POLYGON_OFFSET_UNITS,&units);
+    cullEnable = RglIsEnabled( dt, GL_CULL_FACE);
+    RglGetIntegerv( dt, GL_CULL_FACE_MODE,reinterpret_cast<GLint *>(&cullFaceMode));
+    RglGetIntegerv( dt, GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
+    RglGetIntegerv( dt, GL_POLYGON_MODE,reinterpret_cast<GLint *>(mode));
+    RglGetIntegerv( dt, GL_FRONT_FACE,reinterpret_cast<GLint *>(&frontFace));
+    smoothEnable  = RglIsEnabled( dt, GL_POLYGON_SMOOTH);
+    stippleEnable = RglIsEnabled( dt, GL_POLYGON_STIPPLE);
+    offsetFill    = RglIsEnabled( dt, GL_POLYGON_OFFSET_FILL);
+    offsetLine    = RglIsEnabled( dt, GL_POLYGON_OFFSET_LINE);
+    offsetPoint   = RglIsEnabled( dt, GL_POLYGON_OFFSET_POINT);
+    RglGetFloatv( dt, GL_POLYGON_OFFSET_FACTOR,&factor);
+    RglGetFloatv( dt, GL_POLYGON_OFFSET_UNITS,&units);
     return *this;
   }
 
   template <typename Procs>
-  inline const Polygon &set(Procs &dt, RegalContext * ctx) const
+  inline const Polygon &set(Procs &dt) const
   {
     setEnable(dt,GL_CULL_FACE,cullEnable);
-    dt.glCullFace(cullFaceMode);
-    dt.glFrontFace(frontFace);
-    dt.glPolygonMode(GL_FRONT,mode[0]);
-    dt.glPolygonMode(GL_BACK,mode[1]);
+    RglCullFace( dt, cullFaceMode);
+    RglFrontFace( dt, frontFace);
+    RglPolygonMode( dt, GL_FRONT,mode[0]);
+    RglPolygonMode( dt, GL_BACK,mode[1]);
     setEnable(dt,GL_POLYGON_SMOOTH,smoothEnable);
     setEnable(dt,GL_POLYGON_STIPPLE,stippleEnable);
     setEnable(dt,GL_POLYGON_OFFSET_FILL,offsetFill);
     setEnable(dt,GL_POLYGON_OFFSET_LINE,offsetLine);
     setEnable(dt,GL_POLYGON_OFFSET_POINT,offsetPoint);
-    dt.glPolygonOffset(factor,units);
+    RglPolygonOffset( dt, factor,units);
     return *this;
   }
 
@@ -1350,28 +1350,28 @@ struct Hint
   template <typename Procs>
   inline Hint &get(Procs &dt)
   {
-    dt.glGetIntegerv(GL_PERSPECTIVE_CORRECTION_HINT,reinterpret_cast<GLint *>(&perspectiveCorrection));
-    dt.glGetIntegerv(GL_POINT_SMOOTH_HINT,reinterpret_cast<GLint *>(&pointSmooth));
-    dt.glGetIntegerv(GL_LINE_SMOOTH_HINT,reinterpret_cast<GLint *>(&lineSmooth));
-    dt.glGetIntegerv(GL_POLYGON_SMOOTH_HINT,reinterpret_cast<GLint *>(&polygonSmooth));
-    dt.glGetIntegerv(GL_FOG_HINT,reinterpret_cast<GLint *>(&fog));
-    dt.glGetIntegerv(GL_GENERATE_MIPMAP_HINT,reinterpret_cast<GLint *>(&generateMipmap));
-    dt.glGetIntegerv(GL_TEXTURE_COMPRESSION_HINT,reinterpret_cast<GLint *>(&textureCompression));
-    dt.glGetIntegerv(GL_FRAGMENT_SHADER_DERIVATIVE_HINT,reinterpret_cast<GLint *>(&fragmentShaderDerivative));
+    RglGetIntegerv( dt, GL_PERSPECTIVE_CORRECTION_HINT,reinterpret_cast<GLint *>(&perspectiveCorrection));
+    RglGetIntegerv( dt, GL_POINT_SMOOTH_HINT,reinterpret_cast<GLint *>(&pointSmooth));
+    RglGetIntegerv( dt, GL_LINE_SMOOTH_HINT,reinterpret_cast<GLint *>(&lineSmooth));
+    RglGetIntegerv( dt, GL_POLYGON_SMOOTH_HINT,reinterpret_cast<GLint *>(&polygonSmooth));
+    RglGetIntegerv( dt, GL_FOG_HINT,reinterpret_cast<GLint *>(&fog));
+    RglGetIntegerv( dt, GL_GENERATE_MIPMAP_HINT,reinterpret_cast<GLint *>(&generateMipmap));
+    RglGetIntegerv( dt, GL_TEXTURE_COMPRESSION_HINT,reinterpret_cast<GLint *>(&textureCompression));
+    RglGetIntegerv( dt, GL_FRAGMENT_SHADER_DERIVATIVE_HINT,reinterpret_cast<GLint *>(&fragmentShaderDerivative));
     return *this;
   }
 
   template <typename Procs>
   inline const Hint &set(Procs &dt) const
   {
-    dt.glHint(GL_PERSPECTIVE_CORRECTION_HINT, perspectiveCorrection);
-    dt.glHint(GL_POINT_SMOOTH_HINT, pointSmooth);
-    dt.glHint(GL_LINE_SMOOTH_HINT, lineSmooth);
-    dt.glHint(GL_POLYGON_SMOOTH_HINT, polygonSmooth);
-    dt.glHint(GL_FOG_HINT, fog);
-    dt.glHint(GL_GENERATE_MIPMAP_HINT, generateMipmap);
-    dt.glHint(GL_TEXTURE_COMPRESSION_HINT, textureCompression);
-    dt.glHint(GL_FRAGMENT_SHADER_DERIVATIVE_HINT, fragmentShaderDerivative);
+    RglHint( dt, GL_PERSPECTIVE_CORRECTION_HINT, perspectiveCorrection);
+    RglHint( dt, GL_POINT_SMOOTH_HINT, pointSmooth);
+    RglHint( dt, GL_LINE_SMOOTH_HINT, lineSmooth);
+    RglHint( dt, GL_POLYGON_SMOOTH_HINT, polygonSmooth);
+    RglHint( dt, GL_FOG_HINT, fog);
+    RglHint( dt, GL_GENERATE_MIPMAP_HINT, generateMipmap);
+    RglHint( dt, GL_TEXTURE_COMPRESSION_HINT, textureCompression);
+    RglHint( dt, GL_FRAGMENT_SHADER_DERIVATIVE_HINT, fragmentShaderDerivative);
     return *this;
   }
 
@@ -1445,14 +1445,14 @@ struct List
   template <typename Procs>
   inline List &get(Procs &dt)
   {
-    dt.glGetIntegerv(GL_LIST_BASE,reinterpret_cast<GLint *>(&base));
+    RglGetIntegerv( dt, GL_LIST_BASE,reinterpret_cast<GLint *>(&base));
     return *this;
   }
 
   template <typename Procs>
   inline const List &set(Procs &dt) const
   {
-    dt.glListBase(base);
+    RglListBase( dt, base);
     return *this;
   }
 
@@ -1491,14 +1491,14 @@ struct AccumBuffer
   template <typename Procs>
   inline AccumBuffer &get(Procs &dt)
   {
-    dt.glGetFloatv(GL_ACCUM_CLEAR_VALUE,&(clear[0]));
+    RglGetFloatv( dt, GL_ACCUM_CLEAR_VALUE,&(clear[0]));
     return *this;
   }
 
   template <typename Procs>
   inline const AccumBuffer &set(Procs &dt) const
   {
-    dt.glClearAccum(clear[0],clear[1],clear[2],clear[3]);
+    RglClearAccum( dt, clear[0],clear[1],clear[2],clear[3]);
     return *this;
   }
 
@@ -1595,8 +1595,8 @@ struct Scissor
     {
       RegalAssertArrayIndex( scissorTest, ii );
       RegalAssertArrayIndex( valid, ii );
-      scissorTest[ii] = dt.glIsEnabledi(GL_SCISSOR_TEST,static_cast<GLuint>(ii));
-      dt.glGetIntegeri_v(GL_SCISSOR_BOX, static_cast<GLuint>(ii), &scissorBox[ii][0]);
+      scissorTest[ii] = RglIsEnabledi( dt, GL_SCISSOR_TEST,static_cast<GLuint>(ii));
+      RglGetIntegeri_v( dt, GL_SCISSOR_BOX, static_cast<GLuint>(ii), &scissorBox[ii][0]);
       valid[ii] = true;
     }
     return *this;
@@ -1613,7 +1613,7 @@ struct Scissor
       RegalAssertArrayIndex( valid, ii );
       setEnablei(dt, GL_SCISSOR_TEST,static_cast<GLuint>(ii),scissorTest[ii]);
       if (valid[ii])
-        dt.glScissorIndexedv(static_cast<GLuint>(ii), &scissorBox[ii][0]);
+        RglScissorIndexedv( dt, static_cast<GLuint>(ii), &scissorBox[ii][0]);
     }
     return *this;
   }
@@ -1764,8 +1764,8 @@ struct Viewport
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( valid, ii );
-      dt.glGetFloati_v(GL_VIEWPORT, static_cast<GLuint>(ii), &viewport[ii][0]);
-      dt.glGetDoublei_v(GL_DEPTH_RANGE, static_cast<GLuint>(ii), &depthRange[ii][0]);
+      RglGetFloati_v( dt, GL_VIEWPORT, static_cast<GLuint>(ii), &viewport[ii][0]);
+      RglGetDoublei_v( dt, GL_DEPTH_RANGE, static_cast<GLuint>(ii), &depthRange[ii][0]);
       valid[ii] = true;
     }
     return *this;
@@ -1774,13 +1774,13 @@ struct Viewport
   template <typename Procs>
   inline const Viewport &set(Procs &dt) const
   {
-    dt.glDepthRangeArrayv(0, REGAL_EMU_MAX_VIEWPORTS, &depthRange[0][0] );
+    RglDepthRangeArrayv( dt, 0, REGAL_EMU_MAX_VIEWPORTS, &depthRange[0][0] );
     size_t n = array_size( valid );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( valid, ii );
       if (valid[ii])
-        dt.glViewportIndexedfv(static_cast<GLuint>(ii), &viewport[ii][0] );
+        RglViewportIndexedfv( dt, static_cast<GLuint>(ii), &viewport[ii][0] );
     }
     return *this;
   }
@@ -1926,22 +1926,22 @@ struct Line
   template <typename Procs>
   inline Line &get(Procs &dt)
   {
-    dt.glGetFloatv(GL_LINE_WIDTH,&width);
-    smooth = dt.glIsEnabled(GL_LINE_SMOOTH);
-    stipple = dt.glIsEnabled(GL_LINE_STIPPLE);
-    dt.glGetIntegerv(GL_LINE_STIPPLE_PATTERN,&stippleRepeat);
+    RglGetFloatv( dt, GL_LINE_WIDTH,&width);
+    smooth = RglIsEnabled( dt, GL_LINE_SMOOTH);
+    stipple = RglIsEnabled( dt, GL_LINE_STIPPLE);
+    RglGetIntegerv( dt, GL_LINE_STIPPLE_PATTERN,&stippleRepeat);
     stipplePattern = static_cast<GLushort>(stippleRepeat);
-    dt.glGetIntegerv(GL_LINE_STIPPLE_REPEAT,&stippleRepeat);
+    RglGetIntegerv( dt, GL_LINE_STIPPLE_REPEAT,&stippleRepeat);
     return *this;
   }
 
   template <typename Procs>
   inline const Line &set(Procs &dt) const
   {
-    dt.glLineWidth(width);
+    RglLineWidth( dt, width);
     setEnable(dt, GL_LINE_SMOOTH, smooth);
     setEnable(dt, GL_LINE_STIPPLE, stipple);
-    dt.glLineStipple(stippleRepeat, stipplePattern);
+    RglLineStipple( dt, stippleRepeat, stipplePattern);
     return *this;
   }
 
@@ -2010,24 +2010,24 @@ struct Multisample
   template <typename Procs>
   inline Multisample &get( Procs & dt)
   {
-    RegalContext & ctx = *dt.glIsEnabled.layer.GetContext();
+    RegalContext & ctx = *dt.glIsEnabled.layer->GetContext();
     
-    multisample = dt.glIsEnabled(GL_MULTISAMPLE);
-    sampleAlphaToCoverage = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_COVERAGE);
-    sampleAlphaToOne = dt.glIsEnabled(GL_SAMPLE_ALPHA_TO_ONE);
-    sampleCoverage = dt.glIsEnabled(GL_SAMPLE_COVERAGE);
-    dt.glGetFloatv(GL_SAMPLE_COVERAGE_VALUE,&sampleCoverageValue);
-    dt.glGetBooleanv(GL_SAMPLE_COVERAGE_INVERT,&sampleCoverageInvert);
+    multisample = RglIsEnabled( dt, GL_MULTISAMPLE);
+    sampleAlphaToCoverage = RglIsEnabled( dt, GL_SAMPLE_ALPHA_TO_COVERAGE);
+    sampleAlphaToOne = RglIsEnabled( dt, GL_SAMPLE_ALPHA_TO_ONE);
+    sampleCoverage = RglIsEnabled( dt, GL_SAMPLE_COVERAGE);
+    RglGetFloatv( dt, GL_SAMPLE_COVERAGE_VALUE,&sampleCoverageValue);
+    RglGetBooleanv( dt, GL_SAMPLE_COVERAGE_INVERT,&sampleCoverageInvert);
     if (ctx.info->gl_version_4_0 || ctx.info->gl_arb_sample_shading)
-      sampleShading = dt.glIsEnabled(GL_SAMPLE_SHADING);
-    dt.glGetFloatv(GL_MIN_SAMPLE_SHADING_VALUE,&minSampleShadingValue);
+      sampleShading = RglIsEnabled( dt, GL_SAMPLE_SHADING);
+    RglGetFloatv( dt, GL_MIN_SAMPLE_SHADING_VALUE,&minSampleShadingValue);
     return *this;
   }
 
   template <typename Procs>
   inline const Multisample &set(Procs & dt) const
   {
-    RegalContext & ctx = *dt.glIsEnabled.layer.GetContext();
+    RegalContext & ctx = *dt.glIsEnabled.layer->GetContext();
     
     setEnable(dt,GL_MULTISAMPLE,multisample);
     setEnable(dt,GL_SAMPLE_ALPHA_TO_COVERAGE,sampleAlphaToCoverage);
@@ -2115,15 +2115,15 @@ struct Eval
   template <typename Procs>
   inline Eval &get(Procs &dt)
   {
-    autoNormal = dt.glIsEnabled(GL_AUTO_NORMAL);
+    autoNormal = RglIsEnabled( dt, GL_AUTO_NORMAL);
     for (size_t ii=0; ii<9; ii++)
-      map1dEnables[ii] = dt.glIsEnabled(static_cast<GLenum>(GL_MAP1_COLOR_4+ii));
+      map1dEnables[ii] = RglIsEnabled( dt, static_cast<GLenum>(GL_MAP1_COLOR_4+ii));
     for (size_t ii=0; ii<9; ii++)
-      map2dEnables[ii] = dt.glIsEnabled(static_cast<GLenum>(GL_MAP2_COLOR_4+ii));
-    dt.glGetDoublev(GL_MAP1_GRID_DOMAIN, map1GridDomain);
-    dt.glGetDoublev(GL_MAP2_GRID_DOMAIN, map2GridDomain);
-    dt.glGetIntegerv(GL_MAP1_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map1GridSegments));
-    dt.glGetIntegerv(GL_MAP2_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map2GridSegments));
+      map2dEnables[ii] = RglIsEnabled( dt, static_cast<GLenum>(GL_MAP2_COLOR_4+ii));
+    RglGetDoublev( dt, GL_MAP1_GRID_DOMAIN, map1GridDomain);
+    RglGetDoublev( dt, GL_MAP2_GRID_DOMAIN, map2GridDomain);
+    RglGetIntegerv( dt, GL_MAP1_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map1GridSegments));
+    RglGetIntegerv( dt, GL_MAP2_GRID_SEGMENTS,reinterpret_cast<GLint *>(&map2GridSegments));
     return *this;
   }
 
@@ -2135,8 +2135,8 @@ struct Eval
       setEnable(dt,static_cast<GLenum>(GL_MAP1_COLOR_4+ii),map1dEnables[ii]);
     for (size_t ii=0; ii<9; ii++)
       setEnable(dt,static_cast<GLenum>(GL_MAP2_COLOR_4+ii),map2dEnables[ii]);
-    dt.glMapGrid1d(map1GridSegments, map1GridDomain[0], map1GridDomain[1]);
-    dt.glMapGrid2d(map2GridSegments[0], map2GridDomain[0], map2GridDomain[1],
+    RglMapGrid1d( dt, map1GridSegments, map1GridDomain[0], map1GridDomain[1]);
+    RglMapGrid2d( dt, map2GridSegments[0], map2GridDomain[0], map2GridDomain[1],
                              map2GridSegments[1], map2GridDomain[2], map2GridDomain[3]);
     return *this;
   }
@@ -2222,29 +2222,29 @@ struct Fog
   template <typename Procs>
   inline Fog &get(Procs &dt)
   {
-    dt.glGetFloatv(GL_FOG_COLOR,color);
-    dt.glGetFloatv(GL_FOG_INDEX,&index);
-    dt.glGetFloatv(GL_FOG_DENSITY,&density);
-    dt.glGetFloatv(GL_FOG_START,&start);
-    dt.glGetFloatv(GL_FOG_END,&end);
-    dt.glGetIntegerv(GL_FOG_MODE,reinterpret_cast<GLint *>(&mode));
-    enable = dt.glIsEnabled(GL_FOG);
-    dt.glGetIntegerv(GL_FOG_COORD_SRC,reinterpret_cast<GLint *>(&coordSrc));
-    colorSum = dt.glIsEnabled(GL_COLOR_SUM);
+    RglGetFloatv( dt, GL_FOG_COLOR,color);
+    RglGetFloatv( dt, GL_FOG_INDEX,&index);
+    RglGetFloatv( dt, GL_FOG_DENSITY,&density);
+    RglGetFloatv( dt, GL_FOG_START,&start);
+    RglGetFloatv( dt, GL_FOG_END,&end);
+    RglGetIntegerv( dt, GL_FOG_MODE,reinterpret_cast<GLint *>(&mode));
+    enable = RglIsEnabled( dt, GL_FOG);
+    RglGetIntegerv( dt, GL_FOG_COORD_SRC,reinterpret_cast<GLint *>(&coordSrc));
+    colorSum = RglIsEnabled( dt, GL_COLOR_SUM);
     return *this;
   }
 
   template <typename Procs>
   inline const Fog &set(Procs &dt) const
   {
-    dt.glFogfv(GL_FOG_COLOR,color);
-    dt.glFogf(GL_FOG_INDEX,index);
-    dt.glFogf(GL_FOG_DENSITY,density);
-    dt.glFogf(GL_FOG_START,start);
-    dt.glFogf(GL_FOG_END,end);
-    dt.glFogi(GL_FOG_MODE,mode);
+    RglFogfv( dt, GL_FOG_COLOR,color);
+    RglFogf( dt, GL_FOG_INDEX,index);
+    RglFogf( dt, GL_FOG_DENSITY,density);
+    RglFogf( dt, GL_FOG_START,start);
+    RglFogf( dt, GL_FOG_END,end);
+    RglFogi( dt, GL_FOG_MODE,mode);
     setEnable(dt,GL_FOG,enable);
-    dt.glFogi(GL_FOG_COORD_SRC,coordSrc);
+    RglFogi( dt, GL_FOG_COORD_SRC,coordSrc);
     setEnable(dt,GL_COLOR_SUM,colorSum);
     return *this;
   }
@@ -2316,21 +2316,21 @@ struct Point
   }
 
   template <typename Procs>
-  inline Point &get(Procs &dt, RegalContext * ctx)
+  inline Point &get(Procs &dt)
   {
-    dt.glGetFloatv(GL_POINT_SIZE,&size);
-    smooth = dt.glIsEnabled(GL_POINT_SMOOTH);
-    sprite = dt.glIsEnabled(GL_POINT_SPRITE);
-    dt.glGetFloatv(GL_POINT_SIZE_MIN,&sizeMin);
-    dt.glGetFloatv(GL_POINT_SIZE_MAX,&sizeMin);
-    dt.glGetFloatv(GL_POINT_FADE_THRESHOLD_SIZE,&fadeThresholdSize);
-    dt.glGetFloatv(GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
-    dt.glGetIntegerv(GL_POINT_SPRITE_COORD_ORIGIN,reinterpret_cast<GLint *>(&spriteCoordOrigin));
+    RglGetFloatv( dt, GL_POINT_SIZE,&size);
+    smooth = RglIsEnabled( dt, GL_POINT_SMOOTH);
+    sprite = RglIsEnabled( dt, GL_POINT_SPRITE);
+    RglGetFloatv( dt, GL_POINT_SIZE_MIN,&sizeMin);
+    RglGetFloatv( dt, GL_POINT_SIZE_MAX,&sizeMin);
+    RglGetFloatv( dt, GL_POINT_FADE_THRESHOLD_SIZE,&fadeThresholdSize);
+    RglGetFloatv( dt, GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
+    RglGetIntegerv( dt, GL_POINT_SPRITE_COORD_ORIGIN,reinterpret_cast<GLint *>(&spriteCoordOrigin));
     size_t n = array_size( coordReplace );
     for (size_t ii=0; ii<n; ii++)
     {
       GLint coord;
-      dt.glGetMultiTexEnvivEXT(static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,&coord);
+      RglGetMultiTexEnvivEXT( dt, static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,&coord);
       RegalAssertArrayIndex( coordReplace, ii );
       coordReplace[ii] = static_cast<GLboolean>(coord);
     }
@@ -2340,19 +2340,19 @@ struct Point
   template <typename Procs>
   inline const Point &set(Procs &dt) const
   {
-    dt.glPointSize(size);
+    RglPointSize( dt, size);
     setEnable(dt,GL_POINT_SMOOTH,smooth);
     setEnable(dt,GL_POINT_SPRITE,sprite);
-    dt.glPointParameterf(GL_POINT_SIZE_MIN,sizeMin);
-    dt.glPointParameterf(GL_POINT_SIZE_MAX,sizeMax);
-    dt.glPointParameterf(GL_POINT_FADE_THRESHOLD_SIZE,fadeThresholdSize);
-    dt.glPointParameterfv(GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
-    dt.glPointParameteri(GL_POINT_SPRITE_COORD_ORIGIN,spriteCoordOrigin);
+    RglPointParameterf( dt, GL_POINT_SIZE_MIN,sizeMin);
+    RglPointParameterf( dt, GL_POINT_SIZE_MAX,sizeMax);
+    RglPointParameterf( dt, GL_POINT_FADE_THRESHOLD_SIZE,fadeThresholdSize);
+    RglPointParameterfv( dt, GL_POINT_DISTANCE_ATTENUATION,distanceAttenuation);
+    RglPointParameteri( dt, GL_POINT_SPRITE_COORD_ORIGIN,spriteCoordOrigin);
     size_t n = array_size( coordReplace );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( coordReplace, ii );
-      dt.glMultiTexEnviEXT(static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,coordReplace[ii]);
+      RglMultiTexEnviEXT( dt, static_cast<GLenum>(GL_TEXTURE0+ii),GL_POINT_SPRITE,GL_COORD_REPLACE,coordReplace[ii]);
     }
     return *this;
   }
@@ -2460,14 +2460,14 @@ struct PolygonStipple
   template <typename Procs>
   inline PolygonStipple &get(Procs &dt)
   {
-    dt.glGetPolygonStipple(pattern);
+    RglGetPolygonStipple( dt, pattern);
     return *this;
   }
 
   template <typename Procs>
-  inline const PolygonStipple &set(Procs &dt, RegalContext * ctx) const
+  inline const PolygonStipple &set(Procs &dt) const
   {
-    dt.glPolygonStipple(pattern);
+    RglPolygonStipple( dt, pattern);
     return *this;
   }
 
@@ -2619,82 +2619,82 @@ struct ColorBuffer
   }
 
   template <typename Procs>
-  inline ColorBuffer &get(Procs &dt, RegalContext * ctx)
+  inline ColorBuffer &get(Procs &dt)
   {
-    dt.glGetIntegerv(GL_CLAMP_FRAGMENT_COLOR,reinterpret_cast<GLint *>(&clampFragmentColor));
-    dt.glGetIntegerv(GL_CLAMP_READ_COLOR,reinterpret_cast<GLint *>(&clampReadColor));
-    alphaTest = dt.glIsEnabled(GL_ALPHA_TEST);
-    dt.glGetIntegerv(GL_ALPHA_TEST_FUNC,reinterpret_cast<GLint *>(&alphaTestFunc));
-    dt.glGetFloatv(GL_ALPHA_TEST_REF,&alphaTestRef);
+    RglGetIntegerv( dt, GL_CLAMP_FRAGMENT_COLOR,reinterpret_cast<GLint *>(&clampFragmentColor));
+    RglGetIntegerv( dt, GL_CLAMP_READ_COLOR,reinterpret_cast<GLint *>(&clampReadColor));
+    alphaTest = RglIsEnabled( dt, GL_ALPHA_TEST);
+    RglGetIntegerv( dt, GL_ALPHA_TEST_FUNC,reinterpret_cast<GLint *>(&alphaTestFunc));
+    RglGetFloatv( dt, GL_ALPHA_TEST_REF,&alphaTestRef);
     size_t n = array_size( blend );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blend, ii );
-      blend[ii] = dt.glIsEnabledi(GL_BLEND, ii);
+      blend[ii] = RglIsEnabledi( dt, GL_BLEND, ii);
     }
     n = array_size( blendSrcRgb );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendSrcRgb, ii );
-      dt.glGetIntegeri_v(GL_BLEND_SRC_RGB, ii, reinterpret_cast<GLint *>(&blendSrcRgb[ii]));
+      RglGetIntegeri_v( dt, GL_BLEND_SRC_RGB, ii, reinterpret_cast<GLint *>(&blendSrcRgb[ii]));
     }
     n = array_size( blendSrcAlpha );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendSrcAlpha, ii );
-      dt.glGetIntegeri_v(GL_BLEND_SRC_ALPHA, ii, reinterpret_cast<GLint *>(&blendSrcAlpha[ii]));
+      RglGetIntegeri_v( dt, GL_BLEND_SRC_ALPHA, ii, reinterpret_cast<GLint *>(&blendSrcAlpha[ii]));
     }
     n = array_size( blendDstRgb );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendDstRgb, ii );
-      dt.glGetIntegeri_v(GL_BLEND_DST_RGB, ii, reinterpret_cast<GLint *>(&blendDstRgb[ii]));
+      RglGetIntegeri_v( dt, GL_BLEND_DST_RGB, ii, reinterpret_cast<GLint *>(&blendDstRgb[ii]));
     }
     n = array_size( blendDstAlpha );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendDstAlpha, ii );
-      dt.glGetIntegeri_v(GL_BLEND_DST_ALPHA, ii, reinterpret_cast<GLint *>(&blendDstAlpha[ii]));
+      RglGetIntegeri_v( dt, GL_BLEND_DST_ALPHA, ii, reinterpret_cast<GLint *>(&blendDstAlpha[ii]));
     }
     n = array_size( blendEquationRgb );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendEquationRgb, ii );
-      dt.glGetIntegeri_v(GL_BLEND_EQUATION_RGB, ii, reinterpret_cast<GLint *>(&blendEquationRgb[ii]));
+      RglGetIntegeri_v( dt, GL_BLEND_EQUATION_RGB, ii, reinterpret_cast<GLint *>(&blendEquationRgb[ii]));
     }
     n = array_size( blendEquationAlpha );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendEquationAlpha, ii );
-      dt.glGetIntegeri_v(GL_BLEND_EQUATION_ALPHA, ii, reinterpret_cast<GLint *>(&blendEquationAlpha[ii]));
+      RglGetIntegeri_v( dt, GL_BLEND_EQUATION_ALPHA, ii, reinterpret_cast<GLint *>(&blendEquationAlpha[ii]));
     }
-    dt.glGetFloatv(GL_BLEND_COLOR,blendColor);
-    framebufferSRGB = dt.glIsEnabled(GL_FRAMEBUFFER_SRGB);
-    dither = dt.glIsEnabled(GL_DITHER);
-    indexLogicOp = dt.glIsEnabled(GL_INDEX_LOGIC_OP);
-    colorLogicOp  = dt.glIsEnabled(GL_COLOR_LOGIC_OP);
-    dt.glGetIntegerv(GL_LOGIC_OP_MODE, reinterpret_cast<GLint *>(&logicOpMode));
-    dt.glGetIntegerv(GL_INDEX_WRITEMASK, reinterpret_cast<GLint *>(&indexWritemask));
+    RglGetFloatv( dt, GL_BLEND_COLOR,blendColor);
+    framebufferSRGB = RglIsEnabled( dt, GL_FRAMEBUFFER_SRGB);
+    dither = RglIsEnabled( dt, GL_DITHER);
+    indexLogicOp = RglIsEnabled( dt, GL_INDEX_LOGIC_OP);
+    colorLogicOp  = RglIsEnabled( dt, GL_COLOR_LOGIC_OP);
+    RglGetIntegerv( dt, GL_LOGIC_OP_MODE, reinterpret_cast<GLint *>(&logicOpMode));
+    RglGetIntegerv( dt, GL_INDEX_WRITEMASK, reinterpret_cast<GLint *>(&indexWritemask));
     for (GLuint ii=0; ii<REGAL_EMU_MAX_DRAW_BUFFERS; ii++)
-      dt.glGetBooleani_v(GL_COLOR_WRITEMASK, ii, &colorWritemask[ii][0]);
-    dt.glGetFloatv(GL_COLOR_CLEAR_VALUE,colorClearValue);
-    dt.glGetFloatv(GL_INDEX_CLEAR_VALUE,&indexClearValue);
+      RglGetBooleani_v( dt, GL_COLOR_WRITEMASK, ii, &colorWritemask[ii][0]);
+    RglGetFloatv( dt, GL_COLOR_CLEAR_VALUE,colorClearValue);
+    RglGetFloatv( dt, GL_INDEX_CLEAR_VALUE,&indexClearValue);
     n = array_size( drawBuffers );
     for (size_t ii=0; ii<n; ii++)
     {
       RegalAssertArrayIndex( drawBuffers, ii );
-      dt.glGetIntegerv(static_cast<GLenum>(GL_DRAW_BUFFER0+ii), reinterpret_cast<GLint *>(&drawBuffers[ii]));
+      RglGetIntegerv( dt, static_cast<GLenum>(GL_DRAW_BUFFER0+ii), reinterpret_cast<GLint *>(&drawBuffers[ii]));
     }
     return *this;
   }
 
   template <typename Procs>
-  inline const ColorBuffer &set(Procs &dt, RegalContext * ctx) const
+  inline const ColorBuffer &set(Procs &dt) const
   {
-    dt.glClampColor(GL_CLAMP_FRAGMENT_COLOR,clampFragmentColor);
-    dt.glClampColor(GL_CLAMP_READ_COLOR,clampReadColor);
+    RglClampColor( dt, GL_CLAMP_FRAGMENT_COLOR,clampFragmentColor);
+    RglClampColor( dt, GL_CLAMP_READ_COLOR,clampReadColor);
     setEnable(dt,GL_ALPHA_TEST,alphaTest);
-    dt.glAlphaFunc(alphaTestFunc,alphaTestRef);
+    RglAlphaFunc( dt, alphaTestFunc,alphaTestRef);
     size_t n = array_size( blend );
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
@@ -2708,30 +2708,30 @@ struct ColorBuffer
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendSrcRgb, ii );
-      dt.glBlendFuncSeparatei(ii,blendSrcRgb[ii],blendSrcAlpha[ii],blendDstRgb[ii],blendDstAlpha[ii]);
+      RglBlendFuncSeparatei( dt, ii,blendSrcRgb[ii],blendSrcAlpha[ii],blendDstRgb[ii],blendDstAlpha[ii]);
     }
     n = array_size( blendEquationRgb );
     RegalAssert(array_size( blendEquationAlpha ) == n);
     for (GLuint ii=0; ii<static_cast<GLuint>(n); ii++)
     {
       RegalAssertArrayIndex( blendEquationRgb, ii );
-      dt.glBlendEquationSeparatei(ii,blendEquationRgb[ii],blendEquationAlpha[ii]);
+      RglBlendEquationSeparatei( dt, ii,blendEquationRgb[ii],blendEquationAlpha[ii]);
     }
-    dt.glBlendColor(blendColor[0],blendColor[1],blendColor[2],blendColor[3]);
+    RglBlendColor( dt, blendColor[0],blendColor[1],blendColor[2],blendColor[3]);
     setEnable(dt,GL_FRAMEBUFFER_SRGB,framebufferSRGB);
     setEnable(dt,GL_DITHER,dither);
     setEnable(dt,GL_INDEX_LOGIC_OP,indexLogicOp);
     setEnable(dt,GL_COLOR_LOGIC_OP,colorLogicOp);
-    dt.glLogicOp(logicOpMode);
-    dt.glIndexMask(indexWritemask);
+    RglLogicOp( dt, logicOpMode);
+    RglIndexMask( dt, indexWritemask);
     for (GLuint ii=0; ii<REGAL_EMU_MAX_DRAW_BUFFERS; ii++)
-      dt.glColorMaski(ii, colorWritemask[ii][0], colorWritemask[ii][1], colorWritemask[ii][2], colorWritemask[ii][3]);
-    dt.glClearColor(colorClearValue[0],colorClearValue[1],colorClearValue[2],colorClearValue[3]);
-    dt.glClearIndex(indexClearValue);
+      RglColorMaski( dt, ii, colorWritemask[ii][0], colorWritemask[ii][1], colorWritemask[ii][2], colorWritemask[ii][3]);
+    RglClearColor( dt, colorClearValue[0],colorClearValue[1],colorClearValue[2],colorClearValue[3]);
+    RglClearIndex( dt, indexClearValue);
     if (valid)
     {
       RegalAssert(array_size( drawBuffers ) >= REGAL_EMU_MAX_DRAW_BUFFERS);
-      dt.glDrawBuffers(REGAL_EMU_MAX_DRAW_BUFFERS, drawBuffers);
+      RglDrawBuffers( dt, REGAL_EMU_MAX_DRAW_BUFFERS, drawBuffers);
     }
     return *this;
   }
@@ -3091,7 +3091,7 @@ struct PixelMode
   {
     if (!valid)
     {
-      dt.glGetIntegerv(GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
+      RglGetIntegerv( dt, GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
       valid = true;
     }
   }
@@ -3147,65 +3147,65 @@ struct PixelMode
   }
 
   template <typename Procs>
-  inline PixelMode &get(Procs &dt, RegalContext * ctx)
+  inline PixelMode &get(Procs &dt)
   {
-    dt.glGetIntegerv(GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
-    dt.glGetBooleanv(GL_MAP_COLOR,&mapColor);
-    dt.glGetBooleanv(GL_MAP_STENCIL,&mapStencil);
-    dt.glGetIntegerv(GL_INDEX_SHIFT,&indexShift);
-    dt.glGetIntegerv(GL_INDEX_OFFSET,&indexOffset);
-    dt.glGetFloatv(GL_RED_SCALE,&redScale);
-    dt.glGetFloatv(GL_RED_BIAS,&redBias);
-    dt.glGetFloatv(GL_GREEN_SCALE,&greenScale);
-    dt.glGetFloatv(GL_GREEN_BIAS,&greenBias);
-    dt.glGetFloatv(GL_BLUE_SCALE,&blueScale);
-    dt.glGetFloatv(GL_BLUE_BIAS,&blueBias);
-    dt.glGetFloatv(GL_ALPHA_SCALE,&alphaScale);
-    dt.glGetFloatv(GL_ALPHA_BIAS,&alphaBias);
-    colorTable = dt.glIsEnabled(GL_COLOR_TABLE);
-    postConvolutionColorTable = dt.glIsEnabled(GL_POST_CONVOLUTION_COLOR_TABLE);
-    postColorMatrixColorTable = dt.glIsEnabled(GL_POST_COLOR_MATRIX_COLOR_TABLE);
-    dt.glGetColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
-    dt.glGetColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
-    dt.glGetColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
-    dt.glGetColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
-    dt.glGetColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
-    dt.glGetColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
-    convolution1d = dt.glIsEnabled(GL_CONVOLUTION_1D);
-    convolution2d = dt.glIsEnabled(GL_CONVOLUTION_2D);
-    separable2d = dt.glIsEnabled(GL_SEPARABLE_2D);
-    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
-    dt.glGetConvolutionParameteriv(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[0]));
-    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
-    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
-    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
-    dt.glGetConvolutionParameteriv(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[1]));
-    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
-    dt.glGetConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
-    dt.glGetConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
-    dt.glGetConvolutionParameteriv(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[2]));
-    dt.glGetConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
-    dt.glGetConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_RED_SCALE,&postConvolutionRedScale);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_RED_BIAS,&postConvolutionRedBias);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_GREEN_SCALE,&postConvolutionGreenScale);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_GREEN_BIAS,&postConvolutionGreenBias);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_BLUE_SCALE,&postConvolutionBlueScale);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_BLUE_BIAS,&postConvolutionBlueBias);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_ALPHA_SCALE,&postConvolutionAlphaScale);
-    dt.glGetFloatv(GL_POST_CONVOLUTION_ALPHA_BIAS,&postConvolutionAlphaBias);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_RED_SCALE,&postColorMatrixRedScale);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_RED_BIAS,&postColorMatrixRedBias);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_GREEN_SCALE,&postColorMatrixGreenScale);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_GREEN_BIAS,&postColorMatrixGreenBias);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_BLUE_SCALE,&postColorMatrixBlueScale);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_BLUE_BIAS,&postColorMatrixBlueBias);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_ALPHA_SCALE,&postColorMatrixAlphaScale);
-    dt.glGetFloatv(GL_POST_COLOR_MATRIX_ALPHA_BIAS,&postColorMatrixAlphaBias);
-    histogram = dt.glIsEnabled(GL_HISTOGRAM);
-    minmax = dt.glIsEnabled(GL_MINMAX);
-    dt.glGetFloatv(GL_ZOOM_X,&zoomX);
-    dt.glGetFloatv(GL_ZOOM_Y,&zoomY);
+    RglGetIntegerv( dt, GL_READ_BUFFER,reinterpret_cast<GLint *>(&readBuffer));
+    RglGetBooleanv( dt, GL_MAP_COLOR,&mapColor);
+    RglGetBooleanv( dt, GL_MAP_STENCIL,&mapStencil);
+    RglGetIntegerv( dt, GL_INDEX_SHIFT,&indexShift);
+    RglGetIntegerv( dt, GL_INDEX_OFFSET,&indexOffset);
+    RglGetFloatv( dt, GL_RED_SCALE,&redScale);
+    RglGetFloatv( dt, GL_RED_BIAS,&redBias);
+    RglGetFloatv( dt, GL_GREEN_SCALE,&greenScale);
+    RglGetFloatv( dt, GL_GREEN_BIAS,&greenBias);
+    RglGetFloatv( dt, GL_BLUE_SCALE,&blueScale);
+    RglGetFloatv( dt, GL_BLUE_BIAS,&blueBias);
+    RglGetFloatv( dt, GL_ALPHA_SCALE,&alphaScale);
+    RglGetFloatv( dt, GL_ALPHA_BIAS,&alphaBias);
+    colorTable = RglIsEnabled( dt, GL_COLOR_TABLE);
+    postConvolutionColorTable = RglIsEnabled( dt, GL_POST_CONVOLUTION_COLOR_TABLE);
+    postColorMatrixColorTable = RglIsEnabled( dt, GL_POST_COLOR_MATRIX_COLOR_TABLE);
+    RglGetColorTableParameterfv( dt, GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
+    RglGetColorTableParameterfv( dt, GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
+    RglGetColorTableParameterfv( dt, GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
+    RglGetColorTableParameterfv( dt, GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
+    RglGetColorTableParameterfv( dt, GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
+    RglGetColorTableParameterfv( dt, GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
+    convolution1d = RglIsEnabled( dt, GL_CONVOLUTION_1D);
+    convolution2d = RglIsEnabled( dt, GL_CONVOLUTION_2D);
+    separable2d = RglIsEnabled( dt, GL_SEPARABLE_2D);
+    RglGetConvolutionParameterfv( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
+    RglGetConvolutionParameteriv( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[0]));
+    RglGetConvolutionParameterfv( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
+    RglGetConvolutionParameterfv( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
+    RglGetConvolutionParameterfv( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
+    RglGetConvolutionParameteriv( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[1]));
+    RglGetConvolutionParameterfv( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
+    RglGetConvolutionParameterfv( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
+    RglGetConvolutionParameterfv( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
+    RglGetConvolutionParameteriv( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,  reinterpret_cast<GLint *>(&convolutionBorderMode[2]));
+    RglGetConvolutionParameterfv( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
+    RglGetConvolutionParameterfv( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_RED_SCALE,&postConvolutionRedScale);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_RED_BIAS,&postConvolutionRedBias);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_GREEN_SCALE,&postConvolutionGreenScale);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_GREEN_BIAS,&postConvolutionGreenBias);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_BLUE_SCALE,&postConvolutionBlueScale);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_BLUE_BIAS,&postConvolutionBlueBias);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_ALPHA_SCALE,&postConvolutionAlphaScale);
+    RglGetFloatv( dt, GL_POST_CONVOLUTION_ALPHA_BIAS,&postConvolutionAlphaBias);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_RED_SCALE,&postColorMatrixRedScale);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_RED_BIAS,&postColorMatrixRedBias);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_GREEN_SCALE,&postColorMatrixGreenScale);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_GREEN_BIAS,&postColorMatrixGreenBias);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_BLUE_SCALE,&postColorMatrixBlueScale);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_BLUE_BIAS,&postColorMatrixBlueBias);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_ALPHA_SCALE,&postColorMatrixAlphaScale);
+    RglGetFloatv( dt, GL_POST_COLOR_MATRIX_ALPHA_BIAS,&postColorMatrixAlphaBias);
+    histogram = RglIsEnabled( dt, GL_HISTOGRAM);
+    minmax = RglIsEnabled( dt, GL_MINMAX);
+    RglGetFloatv( dt, GL_ZOOM_X,&zoomX);
+    RglGetFloatv( dt, GL_ZOOM_Y,&zoomY);
     return *this;
   }
 
@@ -3213,62 +3213,62 @@ struct PixelMode
   inline const PixelMode &set(Procs &dt) const
   {
     if (valid)
-      dt.glReadBuffer(readBuffer);
-    dt.glPixelTransferi(GL_MAP_COLOR, mapColor);
-    dt.glPixelTransferi(GL_MAP_STENCIL,mapStencil);
-    dt.glPixelTransferi(GL_INDEX_SHIFT,indexShift);
-    dt.glPixelTransferi(GL_INDEX_OFFSET,indexOffset);
-    dt.glPixelTransferf(GL_RED_SCALE,redScale);
-    dt.glPixelTransferf(GL_RED_BIAS,redBias);
-    dt.glPixelTransferf(GL_GREEN_SCALE,greenScale);
-    dt.glPixelTransferf(GL_GREEN_BIAS,greenBias);
-    dt.glPixelTransferf(GL_BLUE_SCALE,blueScale);
-    dt.glPixelTransferf(GL_BLUE_BIAS,blueBias);
-    dt.glPixelTransferf(GL_ALPHA_SCALE,alphaScale);
-    dt.glPixelTransferf(GL_ALPHA_BIAS,alphaBias);
+      RglReadBuffer( dt, readBuffer);
+    RglPixelTransferi( dt, GL_MAP_COLOR, mapColor);
+    RglPixelTransferi( dt, GL_MAP_STENCIL,mapStencil);
+    RglPixelTransferi( dt, GL_INDEX_SHIFT,indexShift);
+    RglPixelTransferi( dt, GL_INDEX_OFFSET,indexOffset);
+    RglPixelTransferf( dt, GL_RED_SCALE,redScale);
+    RglPixelTransferf( dt, GL_RED_BIAS,redBias);
+    RglPixelTransferf( dt, GL_GREEN_SCALE,greenScale);
+    RglPixelTransferf( dt, GL_GREEN_BIAS,greenBias);
+    RglPixelTransferf( dt, GL_BLUE_SCALE,blueScale);
+    RglPixelTransferf( dt, GL_BLUE_BIAS,blueBias);
+    RglPixelTransferf( dt, GL_ALPHA_SCALE,alphaScale);
+    RglPixelTransferf( dt, GL_ALPHA_BIAS,alphaBias);
     setEnable(dt,GL_COLOR_TABLE,colorTable);
     setEnable(dt,GL_POST_CONVOLUTION_COLOR_TABLE,postConvolutionColorTable);
     setEnable(dt,GL_POST_COLOR_MATRIX_COLOR_TABLE,postColorMatrixColorTable);
-    dt.glColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
-    dt.glColorTableParameterfv(GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
-    dt.glColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
-    dt.glColorTableParameterfv(GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
-    dt.glColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
-    dt.glColorTableParameterfv(GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
+    RglColorTableParameterfv( dt, GL_COLOR_TABLE,                   GL_COLOR_TABLE_SCALE, &colorTableScale[0][0]);
+    RglColorTableParameterfv( dt, GL_COLOR_TABLE,                   GL_COLOR_TABLE_BIAS,  &colorTableBias[0][0]);
+    RglColorTableParameterfv( dt, GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_SCALE, &colorTableScale[1][0]);
+    RglColorTableParameterfv( dt, GL_POST_CONVOLUTION_COLOR_TABLE,  GL_COLOR_TABLE_BIAS,  &colorTableBias[1][0]);
+    RglColorTableParameterfv( dt, GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_SCALE, &colorTableScale[2][0]);
+    RglColorTableParameterfv( dt, GL_POST_COLOR_MATRIX_COLOR_TABLE, GL_COLOR_TABLE_BIAS,  &colorTableBias[2][0]);
     setEnable(dt,GL_CONVOLUTION_1D,convolution1d);
     setEnable(dt,GL_CONVOLUTION_2D,convolution2d);
     setEnable(dt,GL_SEPARABLE_2D,separable2d);
-    dt.glConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
-    dt.glConvolutionParameteri(GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [0]);
-    dt.glConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
-    dt.glConvolutionParameterfv(GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
-    dt.glConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
-    dt.glConvolutionParameteri(GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [1]);
-    dt.glConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
-    dt.glConvolutionParameterfv(GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
-    dt.glConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
-    dt.glConvolutionParameteri(GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [2]);
-    dt.glConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
-    dt.glConvolutionParameterfv(GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_RED_SCALE,   postConvolutionRedScale);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_RED_BIAS,    postConvolutionRedBias);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_GREEN_SCALE, postConvolutionGreenScale);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_GREEN_BIAS,  postConvolutionGreenBias);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_BLUE_SCALE,  postConvolutionBlueScale);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_BLUE_BIAS,   postConvolutionBlueBias);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_ALPHA_SCALE, postConvolutionAlphaScale);
-    dt.glPixelTransferf(GL_POST_CONVOLUTION_ALPHA_BIAS,  postConvolutionAlphaBias);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_RED_SCALE,  postColorMatrixRedScale);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_RED_BIAS,   postColorMatrixRedBias);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_GREEN_SCALE,postColorMatrixGreenScale);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_GREEN_BIAS, postColorMatrixGreenBias);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_BLUE_SCALE, postColorMatrixBlueScale);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_BLUE_BIAS,  postColorMatrixBlueBias);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_ALPHA_SCALE,postColorMatrixAlphaScale);
-    dt.glPixelTransferf(GL_POST_COLOR_MATRIX_ALPHA_BIAS, postColorMatrixAlphaBias);
+    RglConvolutionParameterfv( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[0][0]);
+    RglConvolutionParameteri( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [0]);
+    RglConvolutionParameterfv( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[0][0]);
+    RglConvolutionParameterfv( dt, GL_CONVOLUTION_1D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [0][0]);
+    RglConvolutionParameterfv( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[1][0]);
+    RglConvolutionParameteri( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [1]);
+    RglConvolutionParameterfv( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[1][0]);
+    RglConvolutionParameterfv( dt, GL_CONVOLUTION_2D, GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [1][0]);
+    RglConvolutionParameterfv( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_COLOR, &convolutionBorderColor[2][0]);
+    RglConvolutionParameteri( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_BORDER_MODE,   convolutionBorderMode [2]);
+    RglConvolutionParameterfv( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_SCALE, &convolutionFilterScale[2][0]);
+    RglConvolutionParameterfv( dt, GL_SEPARABLE_2D,   GL_CONVOLUTION_FILTER_BIAS,  &convolutionFilterBias [2][0]);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_RED_SCALE,   postConvolutionRedScale);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_RED_BIAS,    postConvolutionRedBias);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_GREEN_SCALE, postConvolutionGreenScale);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_GREEN_BIAS,  postConvolutionGreenBias);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_BLUE_SCALE,  postConvolutionBlueScale);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_BLUE_BIAS,   postConvolutionBlueBias);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_ALPHA_SCALE, postConvolutionAlphaScale);
+    RglPixelTransferf( dt, GL_POST_CONVOLUTION_ALPHA_BIAS,  postConvolutionAlphaBias);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_RED_SCALE,  postColorMatrixRedScale);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_RED_BIAS,   postColorMatrixRedBias);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_GREEN_SCALE,postColorMatrixGreenScale);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_GREEN_BIAS, postColorMatrixGreenBias);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_BLUE_SCALE, postColorMatrixBlueScale);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_BLUE_BIAS,  postColorMatrixBlueBias);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_ALPHA_SCALE,postColorMatrixAlphaScale);
+    RglPixelTransferf( dt, GL_POST_COLOR_MATRIX_ALPHA_BIAS, postColorMatrixAlphaBias);
     setEnable(dt,GL_HISTOGRAM,histogram);
     setEnable(dt,GL_MINMAX,minmax);
-    dt.glPixelZoom(zoomX,zoomY);
+    RglPixelZoom( dt, zoomX,zoomY);
     return *this;
   }
 
@@ -3621,24 +3621,24 @@ struct LightingFace
   template <typename Procs>
   inline LightingFace &get(Procs &dt, GLenum face)
   {
-    dt.glGetMaterialfv(face, GL_AMBIENT,       ambient);
-    dt.glGetMaterialfv(face, GL_DIFFUSE,       diffuse);
-    dt.glGetMaterialfv(face, GL_SPECULAR,      specular);
-    dt.glGetMaterialfv(face, GL_EMISSION,      emission);
-    dt.glGetMaterialfv(face, GL_SHININESS,     &shininess);
-    dt.glGetMaterialfv(face, GL_COLOR_INDEXES, colorIndexes);
+    RglGetMaterialfv( dt, face, GL_AMBIENT,       ambient);
+    RglGetMaterialfv( dt, face, GL_DIFFUSE,       diffuse);
+    RglGetMaterialfv( dt, face, GL_SPECULAR,      specular);
+    RglGetMaterialfv( dt, face, GL_EMISSION,      emission);
+    RglGetMaterialfv( dt, face, GL_SHININESS,     &shininess);
+    RglGetMaterialfv( dt, face, GL_COLOR_INDEXES, colorIndexes);
     return *this;
   }
 
   template <typename Procs>
   inline const LightingFace &set(Procs &dt, GLenum face) const
   {
-    dt.glMaterialfv(face, GL_AMBIENT,       ambient);
-    dt.glMaterialfv(face, GL_DIFFUSE,       diffuse);
-    dt.glMaterialfv(face, GL_SPECULAR,      specular);
-    dt.glMaterialfv(face, GL_EMISSION,      emission);
-    dt.glMaterialf (face, GL_SHININESS,     shininess);
-    dt.glMaterialfv(face, GL_COLOR_INDEXES, colorIndexes);
+    RglMaterialfv( dt, face, GL_AMBIENT,       ambient);
+    RglMaterialfv( dt, face, GL_DIFFUSE,       diffuse);
+    RglMaterialfv( dt, face, GL_SPECULAR,      specular);
+    RglMaterialfv( dt, face, GL_EMISSION,      emission);
+    RglMaterialf( dt, face, GL_SHININESS,     shininess);
+    RglMaterialfv( dt, face, GL_COLOR_INDEXES, colorIndexes);
     return *this;
   }
 
@@ -3726,17 +3726,17 @@ struct LightingLight
   template <typename Procs>
   inline LightingLight &get(Procs &dt, GLenum light)
   {
-    enabled = dt.glIsEnabled(light);
-    dt.glGetLightfv(light, GL_AMBIENT,               ambient);
-    dt.glGetLightfv(light, GL_DIFFUSE,               diffuse);
-    dt.glGetLightfv(light, GL_SPECULAR,              specular);
-    dt.glGetLightfv(light, GL_POSITION,              position);
-    dt.glGetLightfv(light, GL_CONSTANT_ATTENUATION,  &constantAttenuation);
-    dt.glGetLightfv(light, GL_LINEAR_ATTENUATION,    &linearAttenuation);
-    dt.glGetLightfv(light, GL_QUADRATIC_ATTENUATION, &quadraticAttenuation);
-    dt.glGetLightfv(light, GL_SPOT_DIRECTION,        spotDirection);
-    dt.glGetLightfv(light, GL_SPOT_EXPONENT,         &spotExponent);
-    dt.glGetLightfv(light, GL_SPOT_CUTOFF,           &spotCutoff);
+    enabled = RglIsEnabled( dt, light);
+    RglGetLightfv( dt, light, GL_AMBIENT,               ambient);
+    RglGetLightfv( dt, light, GL_DIFFUSE,               diffuse);
+    RglGetLightfv( dt, light, GL_SPECULAR,              specular);
+    RglGetLightfv( dt, light, GL_POSITION,              position);
+    RglGetLightfv( dt, light, GL_CONSTANT_ATTENUATION,  &constantAttenuation);
+    RglGetLightfv( dt, light, GL_LINEAR_ATTENUATION,    &linearAttenuation);
+    RglGetLightfv( dt, light, GL_QUADRATIC_ATTENUATION, &quadraticAttenuation);
+    RglGetLightfv( dt, light, GL_SPOT_DIRECTION,        spotDirection);
+    RglGetLightfv( dt, light, GL_SPOT_EXPONENT,         &spotExponent);
+    RglGetLightfv( dt, light, GL_SPOT_CUTOFF,           &spotCutoff);
     return *this;
   }
 
@@ -3744,16 +3744,16 @@ struct LightingLight
   inline const LightingLight &set(Procs &dt, GLenum light) const
   {
     setEnable(dt,light,enabled);
-    dt.glLightfv(light, GL_AMBIENT,               ambient);
-    dt.glLightfv(light, GL_DIFFUSE,               diffuse);
-    dt.glLightfv(light, GL_SPECULAR,              specular);
-    dt.glLightfv(light, GL_POSITION,              position);
-    dt.glLightf (light, GL_CONSTANT_ATTENUATION,  constantAttenuation);
-    dt.glLightf (light, GL_LINEAR_ATTENUATION,    linearAttenuation);
-    dt.glLightf (light, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
-    dt.glLightfv(light, GL_SPOT_DIRECTION,        spotDirection);
-    dt.glLightf (light, GL_SPOT_EXPONENT,         spotExponent);
-    dt.glLightf (light, GL_SPOT_CUTOFF,           spotCutoff);
+    RglLightfv( dt, light, GL_AMBIENT,               ambient);
+    RglLightfv( dt, light, GL_DIFFUSE,               diffuse);
+    RglLightfv( dt, light, GL_SPECULAR,              specular);
+    RglLightfv( dt, light, GL_POSITION,              position);
+    RglLightf( dt, light, GL_CONSTANT_ATTENUATION,  constantAttenuation);
+    RglLightf( dt, light, GL_LINEAR_ATTENUATION,    linearAttenuation);
+    RglLightf( dt, light, GL_QUADRATIC_ATTENUATION, quadraticAttenuation);
+    RglLightfv( dt, light, GL_SPOT_DIRECTION,        spotDirection);
+    RglLightf( dt, light, GL_SPOT_EXPONENT,         spotExponent);
+    RglLightf( dt, light, GL_SPOT_CUTOFF,           spotCutoff);
     return *this;
   }
 
@@ -3855,19 +3855,19 @@ struct Lighting
   template <typename Procs>
   Lighting &get(Procs &dt)
   {
-    dt.glGetIntegerv(GL_SHADE_MODEL,reinterpret_cast<GLint *>(&shadeModel));
-    dt.glGetIntegerv(GL_CLAMP_VERTEX_COLOR,reinterpret_cast<GLint *>(&clampVertexColor));
-    dt.glGetIntegerv(GL_PROVOKING_VERTEX,reinterpret_cast<GLint *>(&provokingVertex));
-    lighting = dt.glIsEnabled(GL_LIGHTING);
-    colorMaterial = dt.glIsEnabled(GL_COLOR_MATERIAL);
-    dt.glGetIntegerv(GL_COLOR_MATERIAL_PARAMETER,reinterpret_cast<GLint *>(&colorMaterialParameter));
-    dt.glGetIntegerv(GL_COLOR_MATERIAL_FACE,reinterpret_cast<GLint *>(&colorMaterialFace));
+    RglGetIntegerv( dt, GL_SHADE_MODEL,reinterpret_cast<GLint *>(&shadeModel));
+    RglGetIntegerv( dt, GL_CLAMP_VERTEX_COLOR,reinterpret_cast<GLint *>(&clampVertexColor));
+    RglGetIntegerv( dt, GL_PROVOKING_VERTEX,reinterpret_cast<GLint *>(&provokingVertex));
+    lighting = RglIsEnabled( dt, GL_LIGHTING);
+    colorMaterial = RglIsEnabled( dt, GL_COLOR_MATERIAL);
+    RglGetIntegerv( dt, GL_COLOR_MATERIAL_PARAMETER,reinterpret_cast<GLint *>(&colorMaterialParameter));
+    RglGetIntegerv( dt, GL_COLOR_MATERIAL_FACE,reinterpret_cast<GLint *>(&colorMaterialFace));
     front.get(dt,GL_FRONT);
     back.get(dt,GL_BACK);
-    dt.glGetFloatv(GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
-    dt.glGetBooleanv(GL_LIGHT_MODEL_LOCAL_VIEWER,&lightModelLocalViewer);
-    dt.glGetBooleanv(GL_LIGHT_MODEL_TWO_SIDE,&lightModelTwoSide);
-    dt.glGetIntegerv(GL_LIGHT_MODEL_COLOR_CONTROL,reinterpret_cast<GLint *>(&lightModelColorControl));
+    RglGetFloatv( dt, GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
+    RglGetBooleanv( dt, GL_LIGHT_MODEL_LOCAL_VIEWER,&lightModelLocalViewer);
+    RglGetBooleanv( dt, GL_LIGHT_MODEL_TWO_SIDE,&lightModelTwoSide);
+    RglGetIntegerv( dt, GL_LIGHT_MODEL_COLOR_CONTROL,reinterpret_cast<GLint *>(&lightModelColorControl));
     size_t n = array_size( lights );
     for (size_t ii=0; ii<n; ii++)
     {
@@ -3880,18 +3880,18 @@ struct Lighting
   template <typename Procs>
   const Lighting &set(Procs &dt) const
   {
-    dt.glShadeModel(shadeModel);
-    dt.glClampColor(GL_CLAMP_VERTEX_COLOR,clampVertexColor);
-    dt.glProvokingVertex(provokingVertex);
+    RglShadeModel( dt, shadeModel);
+    RglClampColor( dt, GL_CLAMP_VERTEX_COLOR,clampVertexColor);
+    RglProvokingVertex( dt, provokingVertex);
     setEnable(dt,GL_LIGHTING,lighting);
     setEnable(dt,GL_COLOR_MATERIAL,colorMaterial);
-    dt.glColorMaterial(colorMaterialFace,colorMaterialParameter);
+    RglColorMaterial( dt, colorMaterialFace,colorMaterialParameter);
     front.set(dt,GL_FRONT);
     back.set(dt,GL_BACK);
-    dt.glLightModelfv(GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
-    dt.glLightModeli(GL_LIGHT_MODEL_LOCAL_VIEWER,lightModelLocalViewer);
-    dt.glLightModeli(GL_LIGHT_MODEL_TWO_SIDE,lightModelTwoSide);
-    dt.glLightModeli(GL_LIGHT_MODEL_COLOR_CONTROL,lightModelColorControl);
+    RglLightModelfv( dt, GL_LIGHT_MODEL_AMBIENT,lightModelAmbient);
+    RglLightModeli( dt, GL_LIGHT_MODEL_LOCAL_VIEWER,lightModelLocalViewer);
+    RglLightModeli( dt, GL_LIGHT_MODEL_TWO_SIDE,lightModelTwoSide);
+    RglLightModeli( dt, GL_LIGHT_MODEL_COLOR_CONTROL,lightModelColorControl);
     size_t n = array_size( lights );
     for (size_t ii=0; ii<n; ii++)
     {

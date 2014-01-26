@@ -35,6 +35,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalHelper.h"
+#include "RegalDispatch.h"
 
 using std::size_t;
 
@@ -1084,22 +1085,20 @@ getInfoLog
 (
   RegalContext * ctx,
   ::std::string &log,
-  void (REGAL_CALL *getInfoLog)      (RegalContext *,GLuint,GLsizei,GLsizei *,GLchar *),
-  void (REGAL_CALL *getInfoLogLength)(RegalContext *,GLuint,GLenum,GLint *),
+  RegalProc<void (REGAL_CALL *)(Layer *,GLuint,GLsizei,GLsizei *,GLchar *)> getInfoLog,
+  RegalProc<void (REGAL_CALL *)(Layer *,GLuint,GLenum,GLint *)> getInfoLogLength,
   GLuint obj
 )
 {
-  RegalAssert(getInfoLog);
-  RegalAssert(getInfoLogLength);
 
   GLint length = 0;
-  getInfoLogLength(ctx,obj,GL_INFO_LOG_LENGTH,&length);
+  getInfoLogLength.proc( getInfoLogLength.layer, obj, GL_INFO_LOG_LENGTH, &length );
 
   if (length)
   {
     log.resize(length);
     RegalAssert(log.length()==size_t(length));
-    getInfoLog(ctx,obj,length,NULL,&log[0]);
+    getInfoLog.proc( getInfoLog.layer, obj, length, NULL, &log[0] );
   }
   else
     log.clear();

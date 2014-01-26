@@ -57,7 +57,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalToken.h"
 #include "RegalContext.h"
 #include "RegalContextInfo.h"
-#include "RegalEmuProcsPpca.h"
+#include "PpcaProcs.h"
 
 REGAL_GLOBAL_END
 

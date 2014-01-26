@@ -47,7 +47,7 @@ REGAL_GLOBAL_BEGIN
 #include <GL/Regal.h>
 
 #include "RegalContext.h"
-#include "RegalEmuProcsQuads.h"
+#include "QuadsProcs.h"
 
 REGAL_GLOBAL_END
 
@@ -55,7 +55,7 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-struct Quads
+struct Quads : public Layer
 {
   void Init(RegalContext &ctx);
   void Cleanup(RegalContext &ctx);
@@ -80,7 +80,7 @@ struct Quads
   GLuint quadIndexBuffer;
   bool   gl_quads_follow_provoking_vertex_convention : 1;
   bool   cullingFaces : 1;
-  EmuProcsOriginateQuads orig;
+  QuadsOriginate orig;
 };
 
 }

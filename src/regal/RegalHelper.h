@@ -36,6 +36,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+#include "RegalDispatch.h"
 
 REGAL_GLOBAL_END
 
@@ -130,8 +131,8 @@ namespace helper {
    (
     RegalContext * ctx,
     ::std::string &log,
-    void (REGAL_CALL *getInfoLog)      (RegalContext *,GLuint,GLsizei,GLsizei *,GLchar *),
-    void (REGAL_CALL *getInfoLogLength)(RegalContext *,GLuint,GLenum,GLint *),
+    RegalProc<void (REGAL_CALL *)(Layer *,GLuint,GLsizei,GLsizei *,GLchar *)> getInfoLog,
+    RegalProc<void (REGAL_CALL *)(Layer *,GLuint,GLenum,GLint *)> getInfoLogLength,
     GLuint obj
   );
 }

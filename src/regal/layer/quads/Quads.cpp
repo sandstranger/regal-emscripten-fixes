@@ -75,10 +75,10 @@ the number of vertices drawn.
 
 #if REGAL_EMULATION
 
-#include "RegalQuads.h"
+#include "Quads.h"
+#include "QuadsProcs.h"
 #include "RegalContextInfo.h"
 #include "RegalToken.h"
-#include "RegalEmuProcsQuads.h"
 
 REGAL_GLOBAL_BEGIN
 

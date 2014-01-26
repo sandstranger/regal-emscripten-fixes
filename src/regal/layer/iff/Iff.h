@@ -1503,8 +1503,9 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
 
     // Iff::Program
 
-    Program()
-      : ver(0)
+    Program( Iff * iffLayer )
+      : iff( iffLayer )
+      , ver(0)
       , pg(0)
       , vs(0)
       , fs(0)
@@ -1514,6 +1515,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
     {
     }
 
+    Iff * iff;
     GLuint64 ver;
     GLuint   pg;
     GLuint   vs;
@@ -2059,6 +2061,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
     State::Store & r = ffstate.raw;
     State::StoreUniform & u = ffstate.uniform;
 
+    RegalContext * ctx = GetContext();
     // FIXME: implement all FF gets!
 
     GLint p;
@@ -2195,6 +2198,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
     State::StoreUniform & u = ffstate.uniform;
 
     // FIXME: implement all FF gets!
+    RegalContext * ctx = GetContext();
 
     if (VaGet( pname, params ))
       return true;

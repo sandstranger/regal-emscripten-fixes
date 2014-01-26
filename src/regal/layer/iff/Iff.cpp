@@ -1809,9 +1809,9 @@ void Program::Init( const Store & sstore, GLuint vshd, GLuint fshd )
   Internal("Regal::Iff::Program::Init","()");
 
   // update emu info with the limits that this layer supports
-  EmuProcsOriginateIff & orig = ctx->iff->orig;
+  IffOriginate & orig = iff->orig;
+  RegalContext * ctx = iff->GetContext();
 
-  RegalAssert(ctx);
   RegalAssert(ctx->emuInfo);
   ctx->emuInfo->gl_max_texture_coords = REGAL_EMU_MAX_TEXTURE_COORDS;
   ctx->emuInfo->gl_max_vertex_attribs = REGAL_EMU_MAX_VERTEX_ATTRIBS;
@@ -1819,14 +1819,13 @@ void Program::Init( const Store & sstore, GLuint vshd, GLuint fshd )
 
   ver = ::std::numeric_limits<GLuint64>::max();
   progcount = 0;
-  RegalAssert(ctx);
   store = sstore;
   pg = RglCreateProgram( orig );
   vs = vshd;
   RglAttachShader( orig, pg, vs );
   fs = fshd;
   RglAttachShader( orig, pg, fs );
-  Attribs( ctx );
+  Attribs();
   RglLinkProgram( orig, pg );
 
 #ifndef NDEBUG
@@ -1841,12 +1840,12 @@ void Program::Init( const Store & sstore, GLuint vshd, GLuint fshd )
 #endif
 
   RglUseProgram( orig, pg );
-  Samplers( ctx, orig );
-  Uniforms( ctx, orig );
-  RglUseProgram( orig, ctx->iff->program );
+  Samplers( orig );
+  Uniforms( orig );
+  RglUseProgram( orig, iff->program );
 }
 
-void Program::Shader( EmuProcsOriginateIff & orig, GLenum type, GLuint & shader, const GLchar *src )
+void Program::Shader( IffOriginate & orig, GLenum type, GLuint & shader, const GLchar *src )
 {
   Internal("Regal::Iff::Program::Shader","()");
 
@@ -1872,11 +1871,11 @@ void Program::Shader( EmuProcsOriginateIff & orig, GLenum type, GLuint & shader,
 
 }
 
-void Program::Attribs(  )
+void Program::Attribs()
 {
   Internal("Regal::Iff::Program::Attribs","()");
 
-  EmuProcsOriginateIff & orig = ctx->iff->orig;
+  IffOriginate & orig = ctx->iff->orig;
   
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Vertex );
   RglBindAttribLocation( orig, pg, ctx->iff->ffAttrMap[ RFF2A_Vertex ], "rglVertex" );
@@ -1919,11 +1918,11 @@ void Program::Attribs(  )
 }
 
 // seth: for user program mode just do all the bind attribs, aliasing is OK in GL
-void Program::UserShaderModeAttribs(  )
+void Program::UserShaderModeAttribs()
 {
   Internal("Regal::Iff::Program::UserShaderModeAttribs","()");
 
-  EmuProcsOriginateIff & orig = ctx->iff->orig;
+  IffOriginate & orig = ctx->iff->orig;
   
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Vertex );
   RegalAssertArrayIndex( ctx->iff->ffAttrMap, RFF2A_Normal );
@@ -1951,7 +1950,7 @@ void Program::UserShaderModeAttribs(  )
 }
 
 
-void Program::Samplers( EmuProcsOriginateIff & orig )
+void Program::Samplers( IffOriginate & orig )
 {
   Internal("Regal::Iff::Program::Samplers","()");
 
@@ -1980,7 +1979,7 @@ void Iff::UserProgramInstance::LocateUniforms( IffOriginate & orig ) {
   }
 }
   
-void Program::Uniforms( EmuProcsOriginateIff & orig )
+void Program::Uniforms( IffOriginate & orig )
 {
   Internal("Regal::Iff::Program::Uniforms","()");
 
@@ -2450,12 +2449,12 @@ void Iff::Begin( GLenum mode )
   immPrim = mode;
 }
 
-void Iff::End(  )
+void Iff::End()
 {
   Flush( ctx );
 }
 
-void Iff::RestoreVao(  )
+void Iff::RestoreVao()
 {
   if (immActive)
   {
@@ -2465,7 +2464,7 @@ void Iff::RestoreVao(  )
   }
 }
 
-void Iff::Flush(  )
+void Iff::Flush()
 {
   if (immCurrent>0)   // Do nothing for empty buffer
   {
@@ -2478,7 +2477,7 @@ void Iff::Flush(  )
   }
 }
 
-void Iff::Provoke(  )
+void Iff::Provoke()
 {
   memcpy( immArray + immCurrent * max_vertex_attribs * sizeof(Float4), &immVab[0].x, max_vertex_attribs * sizeof(Float4) );
   immCurrent++;
@@ -2642,7 +2641,7 @@ void Iff::InitFixedFunction(RegalContext &ctx)
   fmtmap[ GL_RG32UI      ] = GL_RG;
 }
 
-void Iff::PreDraw(  )
+void Iff::PreDraw()
 {
   if (programPipeline)
     return;    // FIXME: Eventually will need to handle empty or partially populated PPO
@@ -3540,7 +3539,7 @@ void Iff::State::Process( Iff * ffn )
 }
 
   
-void Iff::UpdateUniforms(  )
+void Iff::UpdateUniforms()
 {
   Internal("Regal::Iff::UpdateUniforms", print_optional(ctx,Logging::pointers));
 
@@ -3856,7 +3855,7 @@ void Iff::UpdateUniforms(  )
 }
 
 // a debug routine for forcing instanced program's uniforms to be updated
-void Iff::ClearVersionsForProgram(  )
+void Iff::ClearVersionsForProgram()
 {
   Internal("Regal::Iff::UpdateUniforms", print_optional(ctx,Logging::pointers));
 
@@ -4034,7 +4033,7 @@ GLuint Iff::GetFixedFunctionStateHash() {
   return ffstate.processed.hash;
 }
   
-void Iff::UseFixedFunctionProgram(  )
+void Iff::UseFixedFunctionProgram()
 {
   Internal("Regal::Iff::UseFixedFunctionProgram", print_optional(ctx,Logging::pointers));
 
@@ -4092,7 +4091,7 @@ void Iff::UseFixedFunctionProgram(  )
   UpdateUniforms( ctx );
 }
   
-GLuint Iff::CreateFixedFunctionVertexShader(  ) {
+GLuint Iff::CreateFixedFunctionVertexShader() {
   ffstate.Process( this );
   string_list vsSrc;
   GenerateVertexShaderSource( this, ffstate, vsSrc );
@@ -4101,7 +4100,7 @@ GLuint Iff::CreateFixedFunctionVertexShader(  ) {
   return vs;
 }
   
-GLuint Iff::CreateFixedFunctionFragmentShader(  ) {
+GLuint Iff::CreateFixedFunctionFragmentShader() {
   ffstate.Process( this );
   string_list fsSrc;
   GenerateFragmentShaderSource( this, fsSrc );
@@ -4114,7 +4113,7 @@ bool NeedsUserShaderProgramInstance( State::Store & st ) {
   return st.alphaTest.enable && st.alphaTest.comp != Iff::CF_Always;
 }
   
-void Iff::UseShaderProgram(  )
+void Iff::UseShaderProgram()
 {
   Internal("Regal::Iff::UseShaderProgram", print_optional(ctx,Logging::pointers));
 

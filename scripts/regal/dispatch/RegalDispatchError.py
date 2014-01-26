@@ -55,7 +55,7 @@ def apiErrorFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'error_', name, params)
-      code += '  Err * self = static_cast<Err *>( layer );\n'
+      code += '  Err * self = static_cast<Err *>( _layer );\n'
       if name != 'glGetError':
         code += '  GLenum _error = GL_NO_ERROR;\n'
         code += '  if (!self->inBeginEnd)\n'

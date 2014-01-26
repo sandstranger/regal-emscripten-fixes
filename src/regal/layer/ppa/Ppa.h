@@ -382,7 +382,7 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Enable::set(*ctx, orig);
+        State::Enable::set(orig);
 
         mask &= ~GL_ENABLE_BIT;
       }
@@ -482,7 +482,7 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
         // Ideally we'd only set the state that has changed
         // since the glPushAttrib() - revisit
 
-        State::Multisample::set(*ctx, orig);
+        State::Multisample::set(orig);
 
         mask &= ~GL_MULTISAMPLE_BIT;
       }
@@ -604,7 +604,7 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
       }
 
       // Pass the rest through, for now
-
+      RegalContext * ctx = GetContext();
       if (ctx->info->core || ctx->info->es1 || ctx->info->es2)
         return;
 
