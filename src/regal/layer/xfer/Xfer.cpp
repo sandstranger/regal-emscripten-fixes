@@ -54,7 +54,7 @@ typedef Regal::StringList string_list;
 #include <squish.h>
 #endif
 
-#include "RegalXfer.h"
+#include "Xfer.h"
 #include "RegalLog.h"
 #include "RegalToken.h"
 #include "RegalHelper.h"
@@ -78,9 +78,9 @@ namespace Emu {
 
   // scrub target format for sRGB on ES 2.0
 
-  inline GLenum TargetFormat(const RegalContext &context, GLenum internalformat, GLenum format)
+  inline GLenum TargetFormat(const RegalContext * context, GLenum internalformat, GLenum format)
   {
-    if (context.isES2())
+    if (context->isES2())
     {
       switch( internalformat )
       {
@@ -122,11 +122,10 @@ namespace Emu {
     }
   }
 
-  static void SubImage2D( RegalContext * ctx, GLenum target, GLint internalFormat, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels )
+  static void SubImage2D( Xfer * xfer, GLenum target, GLint internalFormat, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels )
   {
-    Internal("Regal::Xfer::SubImage2D","ctx=",ctx," target=",Token::GLenumToString(target)," internalFormat=",Token::GLenumToString(internalFormat)," level=",level," format=",Token::GLenumToString(format)," type=",Token::GLenumToString(type));
-    RegalAssert(ctx);
-    EmuProcsOriginateXfer & orig = ctx->xfer->orig;
+    Internal("Regal::Xfer::SubImage2D"," target=",Token::GLenumToString(target)," internalFormat=",Token::GLenumToString(internalFormat)," level=",level," format=",Token::GLenumToString(format)," type=",Token::GLenumToString(type));
+    XferOriginate & orig = xfer->orig;
     
     int complex = 0;
     int tgttype = 0;
@@ -153,20 +152,20 @@ namespace Emu {
 
     if( complex ) {
       GLubyte * vline = (GLubyte *)alloca( width * 4 * sizeof( GLint ) );
-      int rowLength = ctx->xfer->unpackRowLength;
+      int rowLength = xfer->unpackRowLength;
       int pixelSize = 0;
       pixelSize = (int)PixelSize( format, type );
       if( rowLength == 0 ) {
         rowLength = pixelSize * width;
         RegalAssert( rowLength != 0 );
       } else {
-        rowLength = pixelSize * ctx->xfer->unpackRowLength;
+        rowLength = pixelSize * xfer->unpackRowLength;
       }
       // now unpack the packed formats into their canonical formats
       const GLubyte * pix = static_cast<const GLubyte *>(pixels);
-      pix += ctx->xfer->unpackSkipRows * rowLength + ctx->xfer->unpackSkipPixels * pixelSize;
-      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_ROWS, 0 );
-      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_PIXELS, 0 );
+      pix += xfer->unpackSkipRows * rowLength + xfer->unpackSkipPixels * pixelSize;
+      RglPixelStorei( orig, GL_UNPACK_SKIP_ROWS, 0 );
+      RglPixelStorei( orig, GL_UNPACK_SKIP_PIXELS, 0 );
       for( int i = 0; i < height; i++ ) {
         switch( complex ) {
           case 1:
@@ -200,13 +199,13 @@ namespace Emu {
           default:
             break;
         }
-        orig.glTexSubImage2D( ctx, target, level, xoffset, yoffset + i, width, 1, TargetFormat(*ctx, internalFormat, tgtfmt), tgttype, vline );
+        RglTexSubImage2D( orig, target, level, xoffset, yoffset + i, width, 1, TargetFormat( xfer->GetContext(), internalFormat, tgtfmt), tgttype, vline );
         pix += rowLength;
       }
-      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_ROWS, ctx->xfer->unpackSkipRows );
-      orig.glPixelStorei( ctx, GL_UNPACK_SKIP_PIXELS, ctx->xfer->unpackSkipPixels );
+      RglPixelStorei( orig, GL_UNPACK_SKIP_ROWS, xfer->unpackSkipRows );
+      RglPixelStorei( orig, GL_UNPACK_SKIP_PIXELS, xfer->unpackSkipPixels );
     } else {
-        orig.glTexSubImage2D( ctx, target, level, xoffset, yoffset, width, height, TargetFormat(*ctx, internalFormat, tgtfmt), type, pixels );
+        RglTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, TargetFormat( xfer->GetContext(), internalFormat, tgtfmt), type, pixels );
     }
   }
 
@@ -264,12 +263,11 @@ namespace Emu {
   // See also:
   //     [1] http://en.wikipedia.org/wiki/S3_Texture_Compression
 
-  static void CompressedSubImage2D( RegalContext * ctx, GLenum target, GLint level, GLint internalFormat, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data )
+  static void CompressedSubImage2D( Xfer * xfer, GLenum target, GLint level, GLint internalFormat, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data )
   {
     Internal("Regal::Xfer::CompressedSubImage2D","target=", Token::GLenumToString(target), " level=", level,
              " format=", Token::GLenumToString(format));
-    RegalAssert(ctx);
-    EmuProcsOriginateXfer & orig = ctx->xfer->orig;
+    XferOriginate & orig = xfer->orig;
 
 #if !REGAL_NO_SQUISH
     if( ShouldDecompress( ctx, format ) )
@@ -319,11 +317,11 @@ namespace Emu {
     else
 #endif
     {
-      orig.glCompressedTexSubImage2D( ctx, target, level, xoffset, yoffset, width, height, TargetFormat(*ctx, internalFormat, format), imageSize, data );
+      RglCompressedTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, TargetFormat( xfer->GetContext(), internalFormat, format), imageSize, data );
     }
   }
 
-void Xfer::PixelStore( RegalContext * ctx, GLenum pname, GLint param )
+void Xfer::PixelStore( GLenum pname, GLint param )
 {
   UNUSED_PARAMETER(ctx);
 
@@ -335,10 +333,10 @@ void Xfer::PixelStore( RegalContext * ctx, GLenum pname, GLint param )
   }
 }
 
-void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels )
+void Xfer::TexImage2D( GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels )
 {
-  Internal("Regal::Xfer::TexImage2D","ctx=",ctx," target=",Token::GLenumToString(target)," level=",level," internalFormat=",Token::GLenumToString(internalFormat));
-  RegalAssert(ctx);
+  Internal("Regal::Xfer::TexImage2D"," target=",Token::GLenumToString(target)," level=",level," internalFormat=",Token::GLenumToString(internalFormat));
+  RegalContext * ctx = GetContext();
 
   if (ctx->isCore() || ctx->isES2())
   {
@@ -355,13 +353,13 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
     // Only supported in desktop mode
 
     case GL_RGB5:
-      orig.glTexImage2D( ctx, target, level, internalFormat, width, height, border, format, type, pixels );
+      RglTexImage2D( orig, target, level, internalFormat, width, height, border, format, type, pixels );
       return;
 
     // Formats common to GL and ES 2.0, just pass-through directly.
 
     case GL_RGB5_A1:
-      orig.glTexImage2D( ctx, target, level, internalFormat, width, height, border, format, type, pixels );
+      RglTexImage2D( orig, target, level, internalFormat, width, height, border, format, type, pixels );
       return;
 
     default:
@@ -393,34 +391,34 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
     default:                                 break;
   }
 
-  targetFormat = TargetFormat(*ctx, internalFormat, targetFormat);
+  targetFormat = TargetFormat(ctx, internalFormat, targetFormat);
 
   // For ES 2.0, internalFormat == targetFormat
 
   if (ctx->isES2())
     internalFormat = targetFormat;
 
-  orig.glTexImage2D( ctx, target, level, internalFormat, width, height, border, targetFormat, targetType, NULL );
+  RglTexImage2D( orig, target, level, internalFormat, width, height, border, targetFormat, targetType, NULL );
   name2ifmt[ textureBinding2D[ activeTextureIndex ] ] = internalFormat;
   if( pixels ) {
-    SubImage2D( ctx, target, internalFormat, level, 0, 0, width, height, format, type, pixels );
+    SubImage2D( this, target, internalFormat, level, 0, 0, width, height, format, type, pixels );
   }
 }
 
-void Xfer::TexSubImage2D( RegalContext * ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels )
+void Xfer::TexSubImage2D( GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels )
 {
   GLint internalFormat = name2ifmt[ textureBinding2D[ activeTextureIndex ] ];
   Internal("Regal::Xfer::TexSubImage2D","target=", Token::GLenumToString(target), " level=", level,
            " internalFormat=", Token::GLenumToString(internalFormat), " format=", Token::GLenumToString(format));
-  SubImage2D( ctx, target, internalFormat, level , xoffset, yoffset, width, height, format, type, pixels );
+  SubImage2D( this, target, internalFormat, level , xoffset, yoffset, width, height, format, type, pixels );
 }
 
-void Xfer::CompressedTexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data )
+void Xfer::CompressedTexImage2D( GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data )
 {
   Internal("Regal::Xfer::CompressedTexImage2D","target=", Token::GLenumToString(target), " level=", level,
            " format=", Token::GLenumToString(internalFormat));
+  RegalContext * ctx = GetContext();
 
-  RegalAssert(ctx);
   if( ShouldDecompress( ctx, internalFormat ) ) {
     Internal("Regal::Xfer::CompressedTexImage2D","decompressing texture data");
     GLenum ifmt = GL_RGBA;
@@ -433,14 +431,14 @@ void Xfer::CompressedTexImage2D( RegalContext * ctx, GLenum target, GLint level,
         if (internalFormat == GL_COMPRESSED_SRGB_S3TC_DXT1_EXT ||
             internalFormat == GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT)
           ifmt = GL_SRGB_ALPHA_EXT;
-        orig.glTexImage2D( ctx, target, level, ifmt, width, height, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, NULL );
+        RglTexImage2D( orig, target, level, ifmt, width, height, border, TargetFormat(ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, NULL );
         if( width == 4 && height == 4 ) {
           const GLubyte tail[] = { 255, 255, 255, 255,
                                    255, 255, 255, 255,
                                    255, 255, 255, 255,
                                    255, 255, 255, 255 };
-          orig.glTexImage2D( ctx, target, level + 1, ifmt, 2, 2, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
-          orig.glTexImage2D( ctx, target, level + 2, ifmt, 1, 1, border, TargetFormat(*ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
+          RglTexImage2D( orig, target, level + 1, ifmt, 2, 2, border, TargetFormat(ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
+          RglTexImage2D( orig, target, level + 2, ifmt, 1, 1, border, TargetFormat(ctx, ifmt, GL_RGBA), GL_UNSIGNED_BYTE, tail );
         }
         break;
       default:
@@ -449,22 +447,22 @@ void Xfer::CompressedTexImage2D( RegalContext * ctx, GLenum target, GLint level,
     name2ifmt[ textureBinding2D[ activeTextureIndex ] ] = internalFormat;
     if( imageSize ) {
       GLint ifmt = name2ifmt[ textureBinding2D[ activeTextureIndex ] ];
-      CompressedSubImage2D( ctx, target, level, ifmt, 0, 0, width, height, internalFormat, imageSize, data );
+      CompressedSubImage2D( this, target, level, ifmt, 0, 0, width, height, internalFormat, imageSize, data );
     }
   } else {
      name2ifmt[ textureBinding2D[ activeTextureIndex ] ] = internalFormat;
-     orig.glCompressedTexImage2D( ctx, target, level, internalFormat, width, height, border, imageSize, data );
+     RglCompressedTexImage2D( orig, target, level, internalFormat, width, height, border, imageSize, data );
   }
 }
 
-void Xfer::CompressedTexSubImage2D( RegalContext * ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data )
+void Xfer::CompressedTexSubImage2D( GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data )
 {
   UNUSED_PARAMETER(format);
   GLint ifmt = name2ifmt[ textureBinding2D[ activeTextureIndex ] ];
   Internal("Regal::Xfer::CompressedTexSubImage2D","target=", Token::GLenumToString(target), " level=", level,
            " format=", Token::GLenumToString(format), " iformat=", Token::GLenumToString(ifmt));
 
-  CompressedSubImage2D( ctx, target, level, ifmt, xoffset, yoffset, width, height, ifmt, imageSize, data );
+  CompressedSubImage2D( this, target, level, ifmt, xoffset, yoffset, width, height, ifmt, imageSize, data );
 }
 
 }

@@ -46,7 +46,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
-#include "RegalEmuProcsTexSto.h"
+#include "TexStoProcs.h"
 
 #include <cmath>
 
@@ -59,12 +59,21 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu {
 
-  struct TexSto
+  struct TexSto : public Layer
   {
-    void Init( RegalContext &ctx )
-    {
-      orig.Initialize( ctx.dispatchGL );
-      EmuProcsInterceptTexSto( ctx.dispatchGL );
+    TexSto( RegalContext * ctx ) : Layer( ctx ) {}
+    
+    virtual std::string GetName() const { return "texsto"; }
+    
+    bool Initialize( const std::string & instanceInfo ) {
+      ResetInterception();
+      return true;
+    }
+    
+    virtual void ResetInterception() {
+      RegalContext * ctx = GetContext();
+      orig.Initialize( ctx->dispatchGL );
+      TexStoIntercept( this, ctx->dispatchGL );
     }
 
     GLenum BindingFromTarget(GLenum target)
@@ -86,25 +95,20 @@ namespace Emu {
       return 0;
     }
 
-    void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width )
+    void TextureStorage( GLenum target, GLsizei levels, GLenum internalformat, GLsizei width )
     {
       for (GLsizei i = 0; i < levels; i++)
       {
-        orig.glTexImage1D( ctx, target, i, internalformat, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        RglTexImage1D( orig, target, i, internalformat, width, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
         width = std::max<GLsizei>(1, width/2);
       }
 
       GLint id;
-      orig.glGetIntegerv( ctx, BindingFromTarget(target), &id );
+      RglGetIntegerv( orig, BindingFromTarget(target), &id );
       immutableTextures.insert( id );
     }
 
-    void Cleanup(RegalContext &ctx)
-    {
-      UNUSED_PARAMETER(ctx);
-    }
-
-    void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height )
+    void TextureStorage( GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height )
     {
       for (GLsizei i = 0; i < levels; i++)
       {
@@ -113,11 +117,11 @@ namespace Emu {
           for (int f = 0; f < 6; f++)
           {
             GLenum face = GL_TEXTURE_CUBE_MAP_POSITIVE_X + f;
-            orig.glTexImage2D( ctx, face, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+            RglTexImage2D( orig, face, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
           }
         }
         else
-          orig.glTexImage2D( ctx, target, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+          RglTexImage2D( orig, target, i, internalformat, width, height, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
 
         width = std::max<GLsizei>(1, width/2);
         if (target != GL_TEXTURE_1D_ARRAY)
@@ -125,15 +129,15 @@ namespace Emu {
       }
 
       GLint id;
-      orig.glGetIntegerv( ctx, BindingFromTarget(target), &id );
+      RglGetIntegerv( orig, BindingFromTarget(target), &id );
       immutableTextures.insert( id );
     }
 
-    void TextureStorage( RegalContext * ctx, GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth )
+    void TextureStorage(GLenum target, GLsizei levels, GLenum internalformat, GLsizei width, GLsizei height, GLsizei depth )
     {
       for (GLsizei i = 0; i < levels; i++)
       {
-        orig.glTexImage3D( ctx, target, i, internalformat, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
+        RglTexImage3D( orig, target, i, internalformat, width, height, depth, 0, GL_RGBA, GL_UNSIGNED_BYTE, NULL);
         width = std::max<GLsizei>(1, width/2);
         height = std::max<GLsizei>(1, height/2);
         if (target != GL_TEXTURE_2D_ARRAY && target != GL_TEXTURE_CUBE_MAP_ARRAY)
@@ -141,18 +145,18 @@ namespace Emu {
       }
 
       GLint id;
-      orig.glGetIntegerv( ctx, BindingFromTarget(target), &id );
+      RglGetIntegerv( orig, BindingFromTarget(target), &id );
       immutableTextures.insert( id );
     }
 
     template< typename T >
-    bool GetTexParameterv( RegalContext * ctx, GLenum target, GLenum pname, T * params )
+    bool GetTexParameterv( GLenum target, GLenum pname, T * params )
     {
       if (pname != GL_TEXTURE_IMMUTABLE_FORMAT)
         return false;
 
       GLint id;
-      orig.glGetIntegerv( ctx, BindingFromTarget(target), &id );
+      RglGetIntegerv( orig, BindingFromTarget(target), &id );
 
       if (immutableTextures.find( id ) != immutableTextures.end())
         *params = static_cast<T>(GL_TRUE);
@@ -162,7 +166,7 @@ namespace Emu {
       return true;
     }
 
-    void DeleteTextures( RegalContext * ctx, GLsizei n, const GLuint *textures )
+    void DeleteTextures( GLsizei n, const GLuint *textures )
     {
       UNUSED_PARAMETER( ctx );
 
@@ -177,7 +181,7 @@ namespace Emu {
     }
 
     std::set<GLuint> immutableTextures;
-    EmuProcsOriginateTexSto orig;
+    TexStoOriginate orig;
   };
 
 }

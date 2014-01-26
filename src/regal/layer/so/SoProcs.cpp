@@ -63,7 +63,7 @@ static void REGAL_CALL so_glActiveTexture(Layer *_layer, GLenum texture)
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->ActiveTexture( *_context, texture ) ) {
+  if ( self->ActiveTexture( texture ) ) {
      return;
   }
 
@@ -78,7 +78,7 @@ static void REGAL_CALL so_glActiveTextureARB(Layer *_layer, GLenum texture)
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->ActiveTexture( *_context, texture ) ) {
+  if ( self->ActiveTexture( texture ) ) {
      return;
   }
 
@@ -93,7 +93,7 @@ static void REGAL_CALL so_glBindSampler(Layer *_layer, GLuint unit, GLuint sampl
   SoOriginate & orig = self->orig;
 
   // impl
-  _context->so->BindSampler( unit, sampler ); return;
+  self->BindSampler( unit, sampler ); return;
 
   RglBindSampler( orig, unit, sampler );
 
@@ -106,7 +106,7 @@ static void REGAL_CALL so_glBindTexture(Layer *_layer, GLenum target, GLuint tex
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->BindTexture( *_context, target, texture ) ) {
+  if ( self->BindTexture( target, texture ) ) {
      return;
   }
 
@@ -121,7 +121,7 @@ static void REGAL_CALL so_glDeleteSamplers(Layer *_layer, GLsizei count, const G
   SoOriginate & orig = self->orig;
 
   // impl
-  _context->so->DeleteSamplers( count, samplers ); return;
+  self->DeleteSamplers( count, samplers ); return;
 
   RglDeleteSamplers( orig, count, samplers );
 
@@ -134,7 +134,7 @@ static void REGAL_CALL so_glDeleteTextures(Layer *_layer, GLsizei n, const GLuin
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->DeleteTextures( *_context, n, textures );
+  self->DeleteTextures( n, textures );
 
   RglDeleteTextures( orig, n, textures );
 
@@ -147,7 +147,7 @@ static void REGAL_CALL so_glDrawArrays(Layer *_layer, GLenum mode, GLint first, 
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawArrays( orig, mode, first, count );
 
@@ -160,7 +160,7 @@ static void REGAL_CALL so_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint firs
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawArraysEXT( orig, mode, first, count );
 
@@ -173,7 +173,7 @@ static void REGAL_CALL so_glDrawArraysIndirect(Layer *_layer, GLenum mode, const
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawArraysIndirect( orig, mode, indirect );
 
@@ -186,7 +186,7 @@ static void REGAL_CALL so_glDrawArraysInstanced(Layer *_layer, GLenum mode, GLin
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawArraysInstanced( orig, mode, start, count, primcount );
 
@@ -199,7 +199,7 @@ static void REGAL_CALL so_glDrawArraysInstancedARB(Layer *_layer, GLenum mode, G
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawArraysInstancedARB( orig, mode, start, count, primcount );
 
@@ -212,7 +212,7 @@ static void REGAL_CALL so_glDrawArraysInstancedEXT(Layer *_layer, GLenum mode, G
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawArraysInstancedEXT( orig, mode, start, count, primcount );
 
@@ -225,7 +225,7 @@ static void REGAL_CALL so_glDrawElementArrayAPPLE(Layer *_layer, GLenum mode, GL
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementArrayAPPLE( orig, mode, first, count );
 
@@ -238,7 +238,7 @@ static void REGAL_CALL so_glDrawElementArrayATI(Layer *_layer, GLenum mode, GLsi
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementArrayATI( orig, mode, count );
 
@@ -251,7 +251,7 @@ static void REGAL_CALL so_glDrawElements(Layer *_layer, GLenum mode, GLsizei cou
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElements( orig, mode, count, type, indices );
 
@@ -264,7 +264,7 @@ static void REGAL_CALL so_glDrawElementsBaseVertex(Layer *_layer, GLenum mode, G
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementsBaseVertex( orig, mode, count, type, indices, basevertex );
 
@@ -277,7 +277,7 @@ static void REGAL_CALL so_glDrawElementsIndirect(Layer *_layer, GLenum mode, GLe
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementsIndirect( orig, mode, type, indirect );
 
@@ -290,7 +290,7 @@ static void REGAL_CALL so_glDrawElementsInstanced(Layer *_layer, GLenum mode, GL
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementsInstanced( orig, mode, count, type, indices, primcount );
 
@@ -303,7 +303,7 @@ static void REGAL_CALL so_glDrawElementsInstancedARB(Layer *_layer, GLenum mode,
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementsInstancedARB( orig, mode, count, type, indices, primcount );
 
@@ -316,7 +316,7 @@ static void REGAL_CALL so_glDrawElementsInstancedBaseVertex(Layer *_layer, GLenu
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementsInstancedBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
@@ -329,7 +329,7 @@ static void REGAL_CALL so_glDrawElementsInstancedEXT(Layer *_layer, GLenum mode,
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawElementsInstancedEXT( orig, mode, count, type, indices, primcount );
 
@@ -342,7 +342,7 @@ static void REGAL_CALL so_glDrawRangeElementArrayAPPLE(Layer *_layer, GLenum mod
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawRangeElementArrayAPPLE( orig, mode, start, end, first, count );
 
@@ -355,7 +355,7 @@ static void REGAL_CALL so_glDrawRangeElementArrayATI(Layer *_layer, GLenum mode,
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawRangeElementArrayATI( orig, mode, start, end, count );
 
@@ -368,7 +368,7 @@ static void REGAL_CALL so_glDrawRangeElements(Layer *_layer, GLenum mode, GLuint
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawRangeElements( orig, mode, start, end, count, type, indices );
 
@@ -381,7 +381,7 @@ static void REGAL_CALL so_glDrawRangeElementsBaseVertex(Layer *_layer, GLenum mo
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawRangeElementsBaseVertex( orig, mode, start, end, count, type, indices, basevertex );
 
@@ -394,7 +394,7 @@ static void REGAL_CALL so_glDrawRangeElementsEXT(Layer *_layer, GLenum mode, GLu
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglDrawRangeElementsEXT( orig, mode, start, end, count, type, indices );
 
@@ -407,7 +407,7 @@ static void REGAL_CALL so_glGenSamplers(Layer *_layer, GLsizei count, GLuint *sa
   SoOriginate & orig = self->orig;
 
   // impl
-  _context->so->GenSamplers( count, samplers ); return;
+  self->GenSamplers( count, samplers ); return;
 
   RglGenSamplers( orig, count, samplers );
 
@@ -420,7 +420,7 @@ static void REGAL_CALL so_glGenTextures(Layer *_layer, GLsizei n, GLuint *textur
   SoOriginate & orig = self->orig;
 
   // impl
-  _context->so->GenTextures( *_context, n, textures ); return;
+  self->GenTextures( n, textures ); return;
 
   RglGenTextures( orig, n, textures );
 
@@ -433,7 +433,7 @@ static void REGAL_CALL so_glGetDoublev(Layer *_layer, GLenum pname, GLdouble *pa
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->Get( pname, params ) ) {
+  if ( self->Get( pname, params ) ) {
      return;
   }
 
@@ -448,7 +448,7 @@ static void REGAL_CALL so_glGetFloatv(Layer *_layer, GLenum pname, GLfloat *para
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->Get( pname, params ) ) {
+  if ( self->Get( pname, params ) ) {
      return;
   }
 
@@ -463,7 +463,7 @@ static void REGAL_CALL so_glGetInteger64v(Layer *_layer, GLenum pname, GLint64 *
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->Get( pname, params ) ) {
+  if ( self->Get( pname, params ) ) {
      return;
   }
 
@@ -478,7 +478,7 @@ static void REGAL_CALL so_glGetIntegerv(Layer *_layer, GLenum pname, GLint *para
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->Get( pname, params ) ) {
+  if ( self->Get( pname, params ) ) {
      return;
   }
 
@@ -493,7 +493,7 @@ static void REGAL_CALL so_glGetSamplerParameterIiv(Layer *_layer, GLuint sampler
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetSamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->GetSamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -508,7 +508,7 @@ static void REGAL_CALL so_glGetSamplerParameterIuiv(Layer *_layer, GLuint sample
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetSamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->GetSamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -523,7 +523,7 @@ static void REGAL_CALL so_glGetSamplerParameterfv(Layer *_layer, GLuint sampler,
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetSamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->GetSamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -538,7 +538,7 @@ static void REGAL_CALL so_glGetSamplerParameteriv(Layer *_layer, GLuint sampler,
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetSamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->GetSamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -553,7 +553,7 @@ static void REGAL_CALL so_glGetTexParameterIiv(Layer *_layer, GLenum target, GLe
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetTexParameterv( *_context, target, pname, params ) ) {
+  if ( self->GetTexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -568,7 +568,7 @@ static void REGAL_CALL so_glGetTexParameterIuiv(Layer *_layer, GLenum target, GL
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetTexParameterv( *_context, target, pname, params ) ) {
+  if ( self->GetTexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -583,7 +583,7 @@ static void REGAL_CALL so_glGetTexParameterfv(Layer *_layer, GLenum target, GLen
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetTexParameterv( *_context, target, pname, params ) ) {
+  if ( self->GetTexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -598,7 +598,7 @@ static void REGAL_CALL so_glGetTexParameteriv(Layer *_layer, GLenum target, GLen
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->GetTexParameterv( *_context, target, pname, params ) ) {
+  if ( self->GetTexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -613,7 +613,7 @@ static GLboolean REGAL_CALL so_glIsSampler(Layer *_layer, GLuint sampler)
   SoOriginate & orig = self->orig;
 
   // impl
-  return _context->so->IsSampler( sampler );
+  return self->IsSampler( sampler );
 
   return RglIsSampler( orig, sampler );
 
@@ -626,7 +626,7 @@ static void REGAL_CALL so_glMultiDrawArrays(Layer *_layer, GLenum mode, const GL
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawArrays( orig, mode, first, count, primcount );
 
@@ -639,7 +639,7 @@ static void REGAL_CALL so_glMultiDrawArraysEXT(Layer *_layer, GLenum mode, const
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawArraysEXT( orig, mode, first, count, primcount );
 
@@ -652,7 +652,7 @@ static void REGAL_CALL so_glMultiDrawArraysIndirect(Layer *_layer, GLenum mode, 
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawArraysIndirect( orig, mode, indirect, primcount, stride );
 
@@ -665,7 +665,7 @@ static void REGAL_CALL so_glMultiDrawArraysIndirectAMD(Layer *_layer, GLenum mod
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawArraysIndirectAMD( orig, mode, indirect, primcount, stride );
 
@@ -678,7 +678,7 @@ static void REGAL_CALL so_glMultiDrawElementArrayAPPLE(Layer *_layer, GLenum mod
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawElementArrayAPPLE( orig, mode, first, count, primcount );
 
@@ -691,7 +691,7 @@ static void REGAL_CALL so_glMultiDrawElements(Layer *_layer, GLenum mode, const 
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawElements( orig, mode, count, type, indices, primcount );
 
@@ -704,7 +704,7 @@ static void REGAL_CALL so_glMultiDrawElementsBaseVertex(Layer *_layer, GLenum mo
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawElementsBaseVertex( orig, mode, count, type, indices, primcount, basevertex );
 
@@ -717,7 +717,7 @@ static void REGAL_CALL so_glMultiDrawElementsEXT(Layer *_layer, GLenum mode, con
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawElementsEXT( orig, mode, count, type, indices, primcount );
 
@@ -730,7 +730,7 @@ static void REGAL_CALL so_glMultiDrawElementsIndirect(Layer *_layer, GLenum mode
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawElementsIndirect( orig, mode, type, indirect, primcount, stride );
 
@@ -743,7 +743,7 @@ static void REGAL_CALL so_glMultiDrawElementsIndirectAMD(Layer *_layer, GLenum m
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawElementsIndirectAMD( orig, mode, type, indirect, primcount, stride );
 
@@ -756,7 +756,7 @@ static void REGAL_CALL so_glMultiDrawRangeElementArrayAPPLE(Layer *_layer, GLenu
   SoOriginate & orig = self->orig;
 
   // prefix
-  _context->so->PreDraw( *_context );
+  self->PreDraw();
 
   RglMultiDrawRangeElementArrayAPPLE( orig, mode, start, end, first, count, primcount );
 
@@ -769,7 +769,7 @@ static void REGAL_CALL so_glSamplerParameterIiv(Layer *_layer, GLuint sampler, G
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->SamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->SamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -784,7 +784,7 @@ static void REGAL_CALL so_glSamplerParameterIuiv(Layer *_layer, GLuint sampler, 
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->SamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->SamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -799,7 +799,7 @@ static void REGAL_CALL so_glSamplerParameterf(Layer *_layer, GLuint sampler, GLe
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->SamplerParameter( *_context, sampler, pname, param )) {
+  if ( self->SamplerParameter( sampler, pname, param )) {
      return;
   }
 
@@ -814,7 +814,7 @@ static void REGAL_CALL so_glSamplerParameterfv(Layer *_layer, GLuint sampler, GL
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->SamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->SamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -829,7 +829,7 @@ static void REGAL_CALL so_glSamplerParameteri(Layer *_layer, GLuint sampler, GLe
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->SamplerParameter( *_context, sampler, pname, param )) {
+  if ( self->SamplerParameter( sampler, pname, param )) {
      return;
   }
 
@@ -844,7 +844,7 @@ static void REGAL_CALL so_glSamplerParameteriv(Layer *_layer, GLuint sampler, GL
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->SamplerParameterv( *_context, sampler, pname, params )) {
+  if ( self->SamplerParameterv( sampler, pname, params )) {
      return;
   }
 
@@ -859,7 +859,7 @@ static void REGAL_CALL so_glTexParameterIiv(Layer *_layer, GLenum target, GLenum
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameterv( *_context, target, pname, params ) ) {
+  if ( self->TexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -874,7 +874,7 @@ static void REGAL_CALL so_glTexParameterIivEXT(Layer *_layer, GLenum target, GLe
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameterv( *_context, target, pname, params ) ) {
+  if ( self->TexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -889,7 +889,7 @@ static void REGAL_CALL so_glTexParameterIuiv(Layer *_layer, GLenum target, GLenu
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameterv( *_context, target, pname, params ) ) {
+  if ( self->TexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -904,7 +904,7 @@ static void REGAL_CALL so_glTexParameterIuivEXT(Layer *_layer, GLenum target, GL
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameterv( *_context, target, pname, params ) ) {
+  if ( self->TexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -919,7 +919,7 @@ static void REGAL_CALL so_glTexParameterf(Layer *_layer, GLenum target, GLenum p
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameter( *_context, target, pname, param ) ) {
+  if ( self->TexParameter( target, pname, param ) ) {
      return;
   }
 
@@ -934,7 +934,7 @@ static void REGAL_CALL so_glTexParameterfv(Layer *_layer, GLenum target, GLenum 
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameterv( *_context, target, pname, params ) ) {
+  if ( self->TexParameterv( target, pname, params ) ) {
      return;
   }
 
@@ -949,7 +949,7 @@ static void REGAL_CALL so_glTexParameteri(Layer *_layer, GLenum target, GLenum p
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameter( *_context, target, pname, param ) ) {
+  if ( self->TexParameter( target, pname, param ) ) {
      return;
   }
 
@@ -964,7 +964,7 @@ static void REGAL_CALL so_glTexParameteriv(Layer *_layer, GLenum target, GLenum 
   SoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->so->TexParameterv( *_context, target, pname, params ) ) {
+  if ( self->TexParameterv( target, pname, params ) ) {
      return;
   }
 

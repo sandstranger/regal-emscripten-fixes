@@ -1503,8 +1503,8 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
 
     // Iff::Program
 
-    Program( Iff * iffLayer )
-      : iff( iffLayer )
+    Program()
+      : iff( NULL )
       , ver(0)
       , pg(0)
       , vs(0)
@@ -1527,7 +1527,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
     UniformMap uniforms;
     State::Store store;
 
-    void Init( const State::Store & sstore, GLuint vshd, GLuint fshd );
+    void Init( Iff * iffLayer, const State::Store & sstore, GLuint vshd, GLuint fshd );
     static void Shader( IffOriginate & orig, GLenum type, GLuint & shader, const GLchar *src );
     void Attribs();
     void UserShaderModeAttribs();
@@ -1575,7 +1575,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
   bool legacy; // 2.x mac
 
   void InitFixedFunction(RegalContext &ctx);
-  void PreDraw(  );
+  void PreDraw();
   void SetCurrentMatrixStack( GLenum mode );
   bool ShadowMatrixMode( GLenum mode );
   void ShadowActiveTexture( GLenum texture );

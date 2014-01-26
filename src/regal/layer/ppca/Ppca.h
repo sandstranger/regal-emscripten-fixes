@@ -66,21 +66,30 @@ REGAL_NAMESPACE_BEGIN
 namespace Emu
 {
 
-struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
+struct Ppca : public Layer, public ClientState::VertexArray, ClientState::PixelStore
 {
-  Ppca()
-  : driverAllowsVertexAttributeArraysWithoutBoundBuffer(true)
+  Ppca( RegalContext * ctx )
+  : Layer( ctx )
+  , driverAllowsVertexAttributeArraysWithoutBoundBuffer(true)
   {
   }
 
-  void Init(RegalContext &ctx)
+  virtual std::string GetName() const { return "ppca"; }
+  
+  virtual bool Initialize()
   {
-    orig.Initialize( ctx.dispatchGL );
-    EmuProcsInterceptPpca( ctx.dispatchGL );
-    Reset(ctx);
+    ResetIntercept();
+    Reset();
+    return true;
+  }
+  
+  virtual void ResetIntercept() {
+    RegalContext * ctx = GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    PpcaIntercept( this, ctx->dispatchGL );
   }
 
-  void Reset(RegalContext &ctx)
+  void Reset()
   {
     ClientState::VertexArray::Reset();
     ClientState::PixelStore::Reset();
@@ -90,26 +99,21 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     pixelStoreStack.clear();
 
     // update emu info with the limits that this layer supports
-
-    RegalAssert(ctx.emuInfo);
-    ctx.emuInfo->gl_max_vertex_attrib_bindings    = REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS;
-    ctx.emuInfo->gl_max_client_attrib_stack_depth = REGAL_EMU_MAX_CLIENT_ATTRIB_STACK_DEPTH;
-    ctx.emuInfo->gl_max_vertex_attribs            = REGAL_EMU_MAX_VERTEX_ATTRIBS;
+    RegalContext * ctx = GetContext();
+    ctx->emuInfo->gl_max_vertex_attrib_bindings    = REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS;
+    ctx->emuInfo->gl_max_client_attrib_stack_depth = REGAL_EMU_MAX_CLIENT_ATTRIB_STACK_DEPTH;
+    ctx->emuInfo->gl_max_vertex_attribs            = REGAL_EMU_MAX_VERTEX_ATTRIBS;
 
     // Chromium/PepperAPI GLES generates an error (visible through glGetError) and
     // logs a message if a call is made to glVertexAttribPointer and no
     // GL_ARRAY_BUFFER is bound.
 
-    driverAllowsVertexAttributeArraysWithoutBoundBuffer = ( !ctx.isES2() || ctx.info->vendor != "Chromium" );
+    driverAllowsVertexAttributeArraysWithoutBoundBuffer = ( !ctx->isES2() || ctx->info->vendor != "Chromium" );
   }
 
-  void Cleanup(RegalContext &ctx)
+  void glPushClientAttrib(GLbitfield mask)
   {
-    UNUSED_PARAMETER(ctx);
-  }
-
-  void glPushClientAttrib(RegalContext &ctx, GLbitfield mask)
-  {
+    RegalContext * ctx = GetContext();
     // from glspec43.compatibility.20130214.withchanges.pdf Sec. 21.6, p. 622
     //
     // A STACK_OVERFLOW error is generated if PushClientAttrib is called
@@ -118,8 +122,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     //
     // TODO: set correct GL error here
 
-    RegalAssert(ctx.emuInfo);
-    if (maskStack.size() >= ctx.emuInfo->gl_max_client_attrib_stack_depth)
+    if (maskStack.size() >= ctx->emuInfo->gl_max_client_attrib_stack_depth)
       return;
 
     maskStack.push_back(mask);
@@ -142,14 +145,14 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
     // Pass the rest through, for now
 
-    if (ctx.isCore() || ctx.isES1() || ctx.isES2())
+    if (ctx->isCore() || ctx->isES1() || ctx->isES2())
       return;
 
     if (mask)
-      orig.glPushClientAttrib( &ctx, mask);
+      RglPushClientAttrib( orig, mask);
   }
 
-  void glPopClientAttrib(RegalContext &ctx)
+  void glPopClientAttrib()
   {
     // from glspec43.compatibility.20130214.withchanges.pdf Sec. 21.6, p. 622
     //
@@ -167,7 +170,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     if (mask&GL_CLIENT_VERTEX_ARRAY_BIT)
     {
       RegalAssert(vertexArrayStack.size());
-      ClientState::VertexArray::transition(orig, &ctx, vertexArrayStack.back(), driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+      ClientState::VertexArray::transition(orig, vertexArrayStack.back(), driverAllowsVertexAttributeArraysWithoutBoundBuffer);
       vertexArrayStack.pop_back();
 
       Internal("Regal::Ppca::PopClientAttrib GL_CLIENT_VERTEX_ARRAY_BIT ",ClientState::VertexArray::toString());
@@ -178,7 +181,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     if (mask&GL_CLIENT_PIXEL_STORE_BIT)
     {
       RegalAssert(pixelStoreStack.size());
-      ClientState::PixelStore::transition(orig, &ctx, pixelStoreStack.back());
+      ClientState::PixelStore::transition(orig, pixelStoreStack.back());
       pixelStoreStack.pop_back();
 
       Internal("Regal::Ppca::PopClientAttrib GL_CLIENT_PIXEL_STORE_BIT ",ClientState::PixelStore::toString());
@@ -187,15 +190,15 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     }
 
     // Pass the rest through, for now
-
-    if (ctx.isCore() || ctx.isES1() || ctx.isES2())
+    RegalContext * ctx = GetContext();
+    if (ctx->isCore() || ctx->isES1() || ctx->isES2())
       return;
 
     if (mask)
-      orig.glPopClientAttrib( &ctx );
+      RglPopClientAttrib( orig );
   }
 
-  void glClientAttribDefaultEXT(RegalContext &ctx, GLbitfield mask)
+  void glClientAttribDefaultEXT(GLbitfield mask)
   {
     if (mask&GL_CLIENT_VERTEX_ARRAY_BIT)
     {
@@ -205,7 +208,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
       // Ideally we'd only set the state that has changed - revisit
 
-      ClientState::VertexArray::set(orig,&ctx,driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+      ClientState::VertexArray::set(orig,driverAllowsVertexAttributeArraysWithoutBoundBuffer);
 
       mask &= ~GL_CLIENT_VERTEX_ARRAY_BIT;
     }
@@ -218,25 +221,25 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
 
       // Ideally we'd only set the state that has changed - revisit
 
-      ClientState::PixelStore::set(orig,&ctx);
+      ClientState::PixelStore::set(orig);
 
       mask &= ~GL_CLIENT_PIXEL_STORE_BIT;
     }
 
     // Pass the rest through, for now
-
-    if (ctx.isCore() || ctx.isES1() || ctx.isES2())
+    RegalContext * ctx = GetContext();
+    if (ctx->isCore() || ctx->isES1() || ctx->isES2())
       return;
 
     if (mask)
-      orig.glClientAttribDefaultEXT( &ctx, mask);
+      RglClientAttribDefaultEXT( orig, mask);
   }
 
-  void glPushClientAttribDefaultEXT(RegalContext &ctx, GLbitfield mask)
+  void glPushClientAttribDefaultEXT(GLbitfield mask)
   {
     GLbitfield tmpMask = mask;
-    glPushClientAttrib(ctx, tmpMask);
-    glClientAttribDefaultEXT(ctx, mask);
+    glPushClientAttrib(tmpMask);
+    glClientAttribDefaultEXT(mask);
   }
 
   void glBindBuffer( GLenum target, GLuint buffer )
@@ -251,23 +254,22 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     ClientState::PixelStore::glDeleteBuffers(n,buffers);
   }
 
-  bool glGetv(RegalContext &ctx, GLenum pname, GLboolean *params)
+  bool glGetv(GLenum pname, GLboolean *params)
   {
+    RegalContext * ctx = GetContext();
     switch (pname)
     {
       case GL_CLIENT_ATTRIB_STACK_DEPTH:
         params[0] = (maskStack.size() != 0);
         break;
       case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH:
-        params[0] = (ctx.emuInfo->gl_max_client_attrib_stack_depth != 0);
+        params[0] = (ctx->emuInfo->gl_max_client_attrib_stack_depth != 0);
         break;
       case GL_MAX_VERTEX_ATTRIB_BINDINGS:
-        RegalAssert(ctx.emuInfo);
-        params[0] = (ctx.emuInfo->gl_max_vertex_attrib_bindings != 0);
+        params[0] = (ctx->emuInfo->gl_max_vertex_attrib_bindings != 0);
         break;
       case GL_MAX_VERTEX_ATTRIBS:
-        RegalAssert(ctx.emuInfo);
-        params[0] = (ctx.emuInfo->gl_max_vertex_attribs != 0);
+        params[0] = (ctx->emuInfo->gl_max_vertex_attribs != 0);
         break;
 
       default:
@@ -276,24 +278,22 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
     return true;
   }
 
-  template <typename T> bool glGetv(RegalContext &ctx, GLenum pname, T *params)
+  template <typename T> bool glGetv(GLenum pname, T *params)
   {
+    RegalContext * ctx = GetContext();
     switch (pname)
     {
       case GL_MAX_CLIENT_ATTRIB_STACK_DEPTH:
-        RegalAssert(ctx.emuInfo);
-        params[0] = static_cast<T>(ctx.emuInfo->gl_max_client_attrib_stack_depth);
+        params[0] = static_cast<T>(ctx->emuInfo->gl_max_client_attrib_stack_depth);
         break;
       case GL_CLIENT_ATTRIB_STACK_DEPTH:
         params[0] = static_cast<T>(maskStack.size());
         break;
       case GL_MAX_VERTEX_ATTRIB_BINDINGS:
-        RegalAssert(ctx.emuInfo);
-        params[0] = static_cast<T>(ctx.emuInfo->gl_max_vertex_attrib_bindings);
+        params[0] = static_cast<T>(ctx->emuInfo->gl_max_vertex_attrib_bindings);
         break;
       case GL_MAX_VERTEX_ATTRIBS:
-        RegalAssert(ctx.emuInfo);
-        params[0] = static_cast<T>(ctx.emuInfo->gl_max_vertex_attribs);
+        params[0] = static_cast<T>(ctx->emuInfo->gl_max_vertex_attribs);
         break;
 
       default:
@@ -319,7 +319,7 @@ struct Ppca : public ClientState::VertexArray, ClientState::PixelStore
   std::vector<GLbitfield>                maskStack;
   std::vector<ClientState::VertexArray>  vertexArrayStack;
   std::vector<ClientState::PixelStore>   pixelStoreStack;
-  EmuProcsOriginatePpca orig;
+  PpcaOriginate orig;
 };
 
 }

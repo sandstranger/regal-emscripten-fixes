@@ -57,9 +57,12 @@ namespace Emu {
 
 struct Quads : public Layer
 {
-  void Init(RegalContext &ctx);
-  void Cleanup(RegalContext &ctx);
-  bool glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei count);
+  Quads( RegalContext * ctx ) : Layer( ctx ) {}
+  virtual std::string GetName() const { return "quads"; }
+  virtual bool Initialize( const std::string & instanceInfo );
+  virtual void ResetIntercept();
+
+  bool glDrawArrays(GLenum mode, GLint first, GLsizei count);
 
   void glBindBuffer(GLenum target, GLuint buffer );
   void glFrontFace(GLenum mode);

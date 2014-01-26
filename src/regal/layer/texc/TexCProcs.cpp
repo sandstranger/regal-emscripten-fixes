@@ -63,7 +63,7 @@ static void REGAL_CALL texc_glActiveTexture(Layer *_layer, GLenum texture)
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowActiveTexture( texture );
+  self->ShadowActiveTexture( texture );
 
   RglActiveTexture( orig, texture );
 
@@ -76,7 +76,7 @@ static void REGAL_CALL texc_glActiveTextureARB(Layer *_layer, GLenum texture)
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowActiveTexture( texture );
+  self->ShadowActiveTexture( texture );
 
   RglActiveTextureARB( orig, texture );
 
@@ -89,7 +89,7 @@ static void REGAL_CALL texc_glBindTexture(Layer *_layer, GLenum target, GLuint t
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowBindTexture( target, texture );
+  self->ShadowBindTexture( target, texture );
 
   RglBindTexture( orig, target, texture );
 
@@ -102,7 +102,7 @@ static void REGAL_CALL texc_glBindTextureEXT(Layer *_layer, GLenum target, GLuin
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowBindTexture( target, texture );
+  self->ShadowBindTexture( target, texture );
 
   RglBindTextureEXT( orig, target, texture );
 
@@ -115,7 +115,7 @@ static void REGAL_CALL texc_glDeleteTextures(Layer *_layer, GLsizei n, const GLu
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowDeleteTextures( n, textures );
+  self->ShadowDeleteTextures( n, textures );
 
   RglDeleteTextures( orig, n, textures );
 
@@ -128,7 +128,7 @@ static void REGAL_CALL texc_glDeleteTexturesEXT(Layer *_layer, GLsizei n, const 
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowDeleteTextures( n, textures );
+  self->ShadowDeleteTextures( n, textures );
 
   RglDeleteTexturesEXT( orig, n, textures );
 
@@ -142,8 +142,8 @@ static void REGAL_CALL texc_glGenTextures(Layer *_layer, GLsizei n, GLuint *text
 
   // impl
 
-  orig.glGenTextures( _context, n, textures );
-  _context->texc->ShadowGenTextures( n, textures );
+  RglGenTextures( orig, n, textures );
+  self->ShadowGenTextures( n, textures );
   return;
 
   RglGenTextures( orig, n, textures );
@@ -158,8 +158,8 @@ static void REGAL_CALL texc_glGenTexturesEXT(Layer *_layer, GLsizei n, GLuint *t
 
   // impl
 
-  orig.glGenTextures( _context, n, textures );
-  _context->texc->ShadowGenTextures( n, textures );
+  RglGenTextures( orig, n, textures );
+  self->ShadowGenTextures( n, textures );
   return;
 
   RglGenTexturesEXT( orig, n, textures );
@@ -173,7 +173,7 @@ static void REGAL_CALL texc_glGenerateMipmap(Layer *_layer, GLenum target)
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowGenerateMipmap( target );
+  self->ShadowGenerateMipmap( target );
 
   RglGenerateMipmap( orig, target );
 
@@ -186,7 +186,7 @@ static void REGAL_CALL texc_glGenerateMipmapEXT(Layer *_layer, GLenum target)
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowGenerateMipmap( target );
+  self->ShadowGenerateMipmap( target );
 
   RglGenerateMipmapEXT( orig, target );
 
@@ -199,7 +199,7 @@ static void REGAL_CALL texc_glPixelStorei(Layer *_layer, GLenum pname, GLint par
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowPixelStore( pname, param );
+  self->ShadowPixelStore( pname, param );
 
   RglPixelStorei( orig, pname, param );
 
@@ -212,7 +212,7 @@ static void REGAL_CALL texc_glTexImage2D(Layer *_layer, GLenum target, GLint lev
   TexCOriginate & orig = self->orig;
 
   // prefix
-  _context->texc->ShadowTexImage2D( target, level, format, type );
+  self->ShadowTexImage2D( target, level, format, type );
 
   RglTexImage2D( orig, target, level, internalformat, width, height, border, format, type, pixels );
 
@@ -228,19 +228,19 @@ static void REGAL_CALL texc_glTexSubImage2D(Layer *_layer, GLenum target, GLint 
 
   GLenum targetFormat;
   GLenum targetType;
-  _context->texc->GetFormatAndType( target, level, &targetFormat, &targetType );
-  Emu::ConvertedBuffer _buffer( _context->texc->unpackPSS, targetFormat, targetType );
+  self->GetFormatAndType( target, level, &targetFormat, &targetType );
+  Emu::ConvertedBuffer _buffer( self->unpackPSS, targetFormat, targetType );
   if ( _buffer.ConvertFrom( width, height, format, type, pixels ) )
   {
-    if (_context->texc->unpackPSS.alignment != 4)
-      orig.glPixelStorei( _context, GL_UNPACK_ALIGNMENT, 4 );
-    orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, targetFormat, targetType, _buffer.Get() );
-    if (_context->texc->unpackPSS.alignment != 4)
-      orig.glPixelStorei( _context, GL_UNPACK_ALIGNMENT, _context->texc->unpackPSS.alignment );
+    if (self->unpackPSS.alignment != 4)
+      RglPixelStorei(orig, GL_UNPACK_ALIGNMENT, 4 );
+    RglTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, targetFormat, targetType, _buffer.Get() );
+    if (self->unpackPSS.alignment != 4)
+      RglPixelStorei(orig, GL_UNPACK_ALIGNMENT, self->unpackPSS.alignment );
   }
   else
   {
-    orig.glTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels );
+    RglTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, format, type, pixels );
   }
   return;
 

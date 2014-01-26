@@ -63,7 +63,7 @@ static void REGAL_CALL rect_glRectd(Layer *_layer, GLdouble x1, GLdouble y1, GLd
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
+  self->glRect( x1, y1, x2, y2 ); return;
 
   RglRectd( orig, x1, y1, x2, y2 );
 
@@ -76,7 +76,7 @@ static void REGAL_CALL rect_glRectdv(Layer *_layer, const GLdouble *v1, const GL
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRectv( _context, v1, v2 ); return;
+  self->glRectv( v1, v2 ); return;
 
   RglRectdv( orig, v1, v2 );
 
@@ -89,7 +89,7 @@ static void REGAL_CALL rect_glRectf(Layer *_layer, GLfloat x1, GLfloat y1, GLflo
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
+  self->glRect( x1, y1, x2, y2 ); return;
 
   RglRectf( orig, x1, y1, x2, y2 );
 
@@ -102,7 +102,7 @@ static void REGAL_CALL rect_glRectfv(Layer *_layer, const GLfloat *v1, const GLf
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRectv( _context, v1, v2 ); return;
+  self->glRectv( v1, v2 ); return;
 
   RglRectfv( orig, v1, v2 );
 
@@ -115,7 +115,7 @@ static void REGAL_CALL rect_glRecti(Layer *_layer, GLint x1, GLint y1, GLint x2,
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
+  self->glRect( x1, y1, x2, y2 ); return;
 
   RglRecti( orig, x1, y1, x2, y2 );
 
@@ -128,7 +128,7 @@ static void REGAL_CALL rect_glRectiv(Layer *_layer, const GLint *v1, const GLint
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRectv( _context, v1, v2 ); return;
+  self->glRectv( v1, v2 ); return;
 
   RglRectiv( orig, v1, v2 );
 
@@ -141,7 +141,7 @@ static void REGAL_CALL rect_glRects(Layer *_layer, GLshort x1, GLshort y1, GLsho
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRect( _context, x1, y1, x2, y2 ); return;
+  self->glRect( x1, y1, x2, y2 ); return;
 
   RglRects( orig, x1, y1, x2, y2 );
 
@@ -154,7 +154,7 @@ static void REGAL_CALL rect_glRectsv(Layer *_layer, const GLshort *v1, const GLs
   RectOriginate & orig = self->orig;
 
   // impl
-  _context->rect->glRectv( _context, v1, v2 ); return;
+  self->glRectv( v1, v2 ); return;
 
   RglRectsv( orig, v1, v2 );
 

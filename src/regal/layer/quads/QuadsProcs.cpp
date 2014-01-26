@@ -63,7 +63,7 @@ static void REGAL_CALL quads_glBindBuffer(Layer *_layer, GLenum target, GLuint b
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glBindBuffer( target, buffer );
+  self->glBindBuffer( target, buffer );
 
   RglBindBuffer( orig, target, buffer );
 
@@ -76,7 +76,7 @@ static void REGAL_CALL quads_glCullFace(Layer *_layer, GLenum mode)
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glCullFace( mode );
+  self->glCullFace( mode );
 
   RglCullFace( orig, mode );
 
@@ -89,7 +89,7 @@ static void REGAL_CALL quads_glDisable(Layer *_layer, GLenum cap)
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glDisable( cap );
+  self->glDisable( cap );
 
   RglDisable( orig, cap );
 
@@ -103,7 +103,7 @@ static void REGAL_CALL quads_glDrawArrays(Layer *_layer, GLenum mode, GLint firs
 
   // impl
 
-  if ( _context->quads->glDrawArrays( _context, mode, first, count ) ) {
+  if ( self->glDrawArrays( mode, first, count ) ) {
     return;
   }
 
@@ -119,7 +119,7 @@ static void REGAL_CALL quads_glDrawArraysEXT(Layer *_layer, GLenum mode, GLint f
 
   // impl
 
-  if ( _context->quads->glDrawArrays( _context, mode, first, count ) ) {
+  if ( self->glDrawArrays( mode, first, count ) ) {
     return;
   }
 
@@ -134,7 +134,7 @@ static void REGAL_CALL quads_glEnable(Layer *_layer, GLenum cap)
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glEnable( cap );
+  self->glEnable( cap );
 
   RglEnable( orig, cap );
 
@@ -147,7 +147,7 @@ static void REGAL_CALL quads_glFrontFace(Layer *_layer, GLenum mode)
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glFrontFace( mode );
+  self->glFrontFace( mode );
 
   RglFrontFace( orig, mode );
 
@@ -160,7 +160,7 @@ static void REGAL_CALL quads_glPolygonMode(Layer *_layer, GLenum face, GLenum mo
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glPolygonMode( face, mode );
+  self->glPolygonMode( face, mode );
 
   RglPolygonMode( orig, face, mode );
 
@@ -173,7 +173,7 @@ static void REGAL_CALL quads_glProvokingVertex(Layer *_layer, GLenum mode)
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glProvokingVertex( mode );
+  self->glProvokingVertex( mode );
 
   RglProvokingVertex( orig, mode );
 
@@ -186,7 +186,7 @@ static void REGAL_CALL quads_glProvokingVertexEXT(Layer *_layer, GLenum mode)
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glProvokingVertex( mode );
+  self->glProvokingVertex( mode );
 
   RglProvokingVertexEXT( orig, mode );
 
@@ -199,7 +199,7 @@ static void REGAL_CALL quads_glShadeModel(Layer *_layer, GLenum mode)
   QuadsOriginate & orig = self->orig;
 
   // prefix
-  _context->quads->glShadeModel( mode );
+  self->glShadeModel( mode );
 
   RglShadeModel( orig, mode );
 

@@ -63,7 +63,7 @@ static void REGAL_CALL xfer_glActiveTexture(Layer *_layer, GLenum texture)
   XferOriginate & orig = self->orig;
 
   // prefix
-  _context->xfer->ShadowActiveTexture( texture );
+  self->ShadowActiveTexture( texture );
 
   RglActiveTexture( orig, texture );
 
@@ -76,7 +76,7 @@ static void REGAL_CALL xfer_glActiveTextureARB(Layer *_layer, GLenum texture)
   XferOriginate & orig = self->orig;
 
   // prefix
-  _context->xfer->ShadowActiveTexture( texture );
+  self->ShadowActiveTexture( texture );
 
   RglActiveTextureARB( orig, texture );
 
@@ -89,7 +89,7 @@ static void REGAL_CALL xfer_glCompressedTexImage2D(Layer *_layer, GLenum target,
   XferOriginate & orig = self->orig;
 
   // impl
-  _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data ); return;
+  self->CompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data ); return;
 
   RglCompressedTexImage2D( orig, target, level, internalformat, width, height, border, imageSize, data );
 
@@ -102,7 +102,7 @@ static void REGAL_CALL xfer_glCompressedTexImage2DARB(Layer *_layer, GLenum targ
   XferOriginate & orig = self->orig;
 
   // impl
-  _context->xfer->CompressedTexImage2D( _context, target, level, internalformat, width, height, border, imageSize, data ); return;
+  self->CompressedTexImage2D(target, level, internalformat, width, height, border, imageSize, data ); return;
 
   RglCompressedTexImage2DARB( orig, target, level, internalformat, width, height, border, imageSize, data );
 
@@ -115,7 +115,7 @@ static void REGAL_CALL xfer_glCompressedTexSubImage2D(Layer *_layer, GLenum targ
   XferOriginate & orig = self->orig;
 
   // impl
-  _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
+  self->CompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
 
   RglCompressedTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
@@ -128,7 +128,7 @@ static void REGAL_CALL xfer_glCompressedTexSubImage2DARB(Layer *_layer, GLenum t
   XferOriginate & orig = self->orig;
 
   // impl
-  _context->xfer->CompressedTexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
+  self->CompressedTexSubImage2D(target, level, xoffset, yoffset, width, height, format, imageSize, data ); return;
 
   RglCompressedTexSubImage2DARB( orig, target, level, xoffset, yoffset, width, height, format, imageSize, data );
 
@@ -141,7 +141,7 @@ static void REGAL_CALL xfer_glPixelStoref(Layer *_layer, GLenum pname, GLfloat p
   XferOriginate & orig = self->orig;
 
   // prefix
-  _context->xfer->PixelStore( _context, pname, param );
+  self->PixelStore(pname, param );
 
   RglPixelStoref( orig, pname, param );
 
@@ -154,7 +154,7 @@ static void REGAL_CALL xfer_glPixelStorei(Layer *_layer, GLenum pname, GLint par
   XferOriginate & orig = self->orig;
 
   // prefix
-  _context->xfer->PixelStore( _context, pname, param );
+  self->PixelStore(pname, param );
 
   RglPixelStorei( orig, pname, param );
 
@@ -167,7 +167,7 @@ static void REGAL_CALL xfer_glTexImage2D(Layer *_layer, GLenum target, GLint lev
   XferOriginate & orig = self->orig;
 
   // impl
-  _context->xfer->TexImage2D( _context, target, level, internalformat, width, height, border, format, type, pixels ); return;
+  self->TexImage2D(target, level, internalformat, width, height, border, format, type, pixels ); return;
 
   RglTexImage2D( orig, target, level, internalformat, width, height, border, format, type, pixels );
 
@@ -180,7 +180,7 @@ static void REGAL_CALL xfer_glTexSubImage2D(Layer *_layer, GLenum target, GLint 
   XferOriginate & orig = self->orig;
 
   // impl
-  _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
+  self->TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
 
   RglTexSubImage2D( orig, target, level, xoffset, yoffset, width, height, format, type, pixels );
 
@@ -193,7 +193,7 @@ static void REGAL_CALL xfer_glTexSubImage2DEXT(Layer *_layer, GLenum target, GLi
   XferOriginate & orig = self->orig;
 
   // impl
-  _context->xfer->TexSubImage2D( _context, target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
+  self->TexSubImage2D(target, level, xoffset, yoffset, width, height, format, type, pixels ); return;
 
   RglTexSubImage2DEXT( orig, target, level, xoffset, yoffset, width, height, format, type, pixels );
 

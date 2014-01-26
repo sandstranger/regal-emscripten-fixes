@@ -89,7 +89,7 @@ namespace ClientState
   typedef StringList string_list;
 
   template <typename Procs>
-  inline static void enable(Procs &dt, RegalContext * ctx, const GLenum cap, const GLboolean enable)
+  inline static void enable(Procs &dt, const GLenum cap, const GLboolean enable)
   {
     if (enable)
       RglEnableClientState( dt,cap);
@@ -98,7 +98,7 @@ namespace ClientState
   }
 
   template <typename Procs>
-  inline static void enablei(Procs &dt, RegalContext * ctx, const GLenum cap, const GLuint index, const GLboolean enable)
+  inline static void enablei(Procs &dt, const GLenum cap, const GLuint index, const GLboolean enable)
   {
     if (enable)
       RglEnableClientStateiEXT( dt,cap,index);
@@ -214,7 +214,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    const NamedVertexArray &set(Procs &dt, RegalContext * ctx, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
+    const NamedVertexArray &set(Procs &dt, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -224,7 +224,7 @@ namespace ClientState
         {
           if (vaInt < 7)
           {
-            enable(dt,ctx,vaEnum[vaInt][0],enabled);
+            enable(dt,vaEnum[vaInt][0],enabled);
             RglBindBuffer( dt, GL_ARRAY_BUFFER,buffer);
             switch (vaInt)
             {
@@ -256,7 +256,7 @@ namespace ClientState
           else
           {
             GLuint index = static_cast<GLuint>(vaInt - 7);
-            enablei(dt,ctx,vaEnum[7][0],index,enabled);
+            enablei(dt,vaEnum[7][0],index,enabled);
             RglBindBuffer( dt, GL_ARRAY_BUFFER,buffer);
             RglMultiTexCoordPointerEXT( dt, GL_TEXTURE0+index,size,type,stride,pointer);
           }
@@ -266,7 +266,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    void transition(Procs &dt, RegalContext * ctx, NamedVertexArray &to, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
+    void transition(Procs &dt, NamedVertexArray &to, vaName va, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
     {
       GLint vaInt = static_cast<GLint>(va);
       RegalAssert(vaInt >= 0 && vaInt < static_cast<GLint>(nNamedArrays));
@@ -279,7 +279,7 @@ namespace ClientState
             if (enabled != to.enabled)
             {
               enabled = to.enabled;
-              enable(dt,ctx,vaEnum[vaInt][0],enabled);
+              enable(dt,vaEnum[vaInt][0],enabled);
             }
             if (buffer != to.buffer)
             {
@@ -329,7 +329,7 @@ namespace ClientState
             if (enabled != to.enabled)
             {
               enabled = to.enabled;
-              enablei(dt,ctx,vaEnum[7][0], index, enabled);
+              enablei(dt,vaEnum[7][0], index, enabled);
             }
             if (buffer != to.buffer)
             {
@@ -433,7 +433,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    VertexBufferBindPoint &get(Procs &dt, RegalContext * ctx, GLuint index)
+    VertexBufferBindPoint &get(Procs &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -447,7 +447,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    const VertexBufferBindPoint &set(Procs &dt, RegalContext * ctx, GLuint index) const
+    const VertexBufferBindPoint &set(Procs &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -459,7 +459,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    void transition(Procs &dt, RegalContext * ctx, VertexBufferBindPoint &to, GLuint index)
+    void transition(Procs &dt, VertexBufferBindPoint &to, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIB_BINDINGS)
@@ -536,7 +536,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    GenericVertexArray &get(Procs &dt, RegalContext * ctx, GLuint index)
+    GenericVertexArray &get(Procs &dt, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -560,7 +560,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    const GenericVertexArray &set(Procs &dt, RegalContext * ctx, GLuint index) const
+    const GenericVertexArray &set(Procs &dt, GLuint index) const
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -581,7 +581,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    void transition(Procs &dt, RegalContext * ctx, GenericVertexArray &to, GLuint index)
+    void transition(Procs &dt, GenericVertexArray &to, GLuint index)
     {
       RegalAssert(index < REGAL_EMU_MAX_VERTEX_ATTRIBS);
       if (index < REGAL_EMU_MAX_VERTEX_ATTRIBS)
@@ -728,7 +728,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    VertexArray &get(Procs &dt, RegalContext * ctx)
+    VertexArray &get(Procs &dt)
     {
       RglGetIntegerv( dt, GL_VERTEX_ARRAY_BINDING,reinterpret_cast<GLint*>(&vertexArrayBinding));
       if (vertexArrayBinding)
@@ -754,18 +754,18 @@ namespace ClientState
     }
 
     template <typename Procs>
-    const VertexArray &set(Procs &dt, RegalContext * ctx, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
+    const VertexArray &set(Procs &dt, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer) const
     {
       RglBindVertexArray( dt, 0);
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
-        named[n-ii-1].set(dt,ctx,static_cast<vaName>(n-ii-1),driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+        named[n-ii-1].set(dt,static_cast<vaName>(n-ii-1),driverAllowsVertexAttributeArraysWithoutBoundBuffer);
       n = array_size( bindings );
       for (size_t ii=0; ii<n; ii++)
-        bindings[ii].set(dt,ctx,static_cast<GLuint>(ii));
+        bindings[ii].set(dt,static_cast<GLuint>(ii));
       n = array_size( generic );
       for (size_t ii=0; ii<n; ii++)
-        generic[n-ii-1].set(dt,ctx,static_cast<GLuint>(n-ii-1));
+        generic[n-ii-1].set(dt,static_cast<GLuint>(n-ii-1));
       RglBindBuffer( dt, GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
       RglClientActiveTexture( dt, clientActiveTexture);
       if (primitiveRestartFixedIndex)
@@ -783,7 +783,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    void transition(Procs &dt, RegalContext * ctx, VertexArray &to, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
+    void transition(Procs &dt, VertexArray &to, bool driverAllowsVertexAttributeArraysWithoutBoundBuffer)
     {
       GLuint tmpVertexArrayBinding = to.vertexArrayBinding;
       if (vertexArrayBinding) {
@@ -792,13 +792,13 @@ namespace ClientState
       }
       size_t n = array_size( named );
       for (size_t ii=0; ii<n; ii++)
-        named[n-ii-1].transition(dt,ctx,to.named[n-ii-1],static_cast<vaName>(n-ii-1),driverAllowsVertexAttributeArraysWithoutBoundBuffer);
+        named[n-ii-1].transition(dt,to.named[n-ii-1],static_cast<vaName>(n-ii-1),driverAllowsVertexAttributeArraysWithoutBoundBuffer);
       n = array_size( bindings );
       for (size_t ii=0; ii<n; ii++)
-        bindings[ii].transition(dt,ctx,to.bindings[ii],static_cast<GLuint>(ii));
+        bindings[ii].transition(dt,to.bindings[ii],static_cast<GLuint>(ii));
       n = array_size( generic );
       for (size_t ii=0; ii<n; ii++)
-        generic[n-ii-1].transition(dt,ctx,to.generic[n-ii-1],static_cast<GLuint>(n-ii-1));
+        generic[n-ii-1].transition(dt,to.generic[n-ii-1],static_cast<GLuint>(n-ii-1));
       if (elementArrayBufferBinding != to.elementArrayBufferBinding) {
         elementArrayBufferBinding = to.elementArrayBufferBinding;
         RglBindBuffer( dt,GL_ELEMENT_ARRAY_BUFFER,elementArrayBufferBinding);
@@ -1798,7 +1798,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    PixelStore &get(Procs &dt, RegalContext * ctx)
+    PixelStore &get(Procs &dt)
     {
       RglGetBooleanv( dt, GL_UNPACK_SWAP_BYTES,&unpackSwapBytes);
       RglGetBooleanv( dt, GL_UNPACK_LSB_FIRST,&unpackLsbFirst);
@@ -1822,7 +1822,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    const PixelStore &set(Procs &dt, RegalContext * ctx) const
+    const PixelStore &set(Procs &dt) const
     {
       RglPixelStorei( dt, GL_UNPACK_SWAP_BYTES,unpackSwapBytes);
       RglPixelStorei( dt, GL_UNPACK_LSB_FIRST,unpackLsbFirst);
@@ -1846,7 +1846,7 @@ namespace ClientState
     }
 
     template <typename Procs>
-    void transition(Procs &dt, RegalContext * ctx, PixelStore &to)
+    void transition(Procs &dt, PixelStore &to)
     {
       if (unpackSwapBytes != to.unpackSwapBytes) {
         unpackSwapBytes = to.unpackSwapBytes;

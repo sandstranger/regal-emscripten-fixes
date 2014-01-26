@@ -6,24 +6,24 @@ soFormulae = {
 
     'GenSamplers' : {
         'entries' : [ 'glGenSamplers' ],
-        'impl' : [ '_context->so->GenSamplers( ${arg0plus} ); return;' ],
+        'impl' : [ 'self->GenSamplers( ${arg0plus} ); return;' ],
     },
     'DeleteSamplers' : {
         'entries' : [ 'glDeleteSamplers' ],
-        'impl' : [ '_context->so->DeleteSamplers( ${arg0plus} ); return;' ],
+        'impl' : [ 'self->DeleteSamplers( ${arg0plus} ); return;' ],
     },
     'IsSampler' : {
         'entries' : [ 'glIsSampler' ],
-        'impl' : [ 'return _context->so->IsSampler( ${arg0} );' ],
+        'impl' : [ 'return self->IsSampler( ${arg0} );' ],
     },
     'BindSampler' : {
         'entries' : [ 'glBindSampler' ],
-        'impl' : [ '_context->so->BindSampler( ${arg0plus} ); return;' ],
+        'impl' : [ 'self->BindSampler( ${arg0plus} ); return;' ],
     },
     'GetSamplerParameterv' : {
         'entries' : [ 'glGetSamplerParameter(I|)(u|)(f|i)v' ],
         'impl' : [
-            'if ( _context->so->GetSamplerParameterv( *_context, ${arg0plus} )) {',
+            'if ( self->GetSamplerParameterv( ${arg0plus} )) {',
             '   return;',
             '}',
         ]
@@ -31,7 +31,7 @@ soFormulae = {
     'SamplerParameter' : {
         'entries' : [ 'glSamplerParameter(I|)(u|)(f|i)(v|)' ],
         'impl' : [
-            'if ( _context->so->SamplerParameter${m4}( *_context, ${arg0plus} )) {',
+            'if ( self->SamplerParameter${m4}( ${arg0plus} )) {',
             '   return;',
             '}',
         ]
@@ -39,23 +39,23 @@ soFormulae = {
     'ActiveTexture' : {
         'entries' : [ 'glActiveTexture(ARB|)' ],
         'impl' : [
-            'if ( _context->so->ActiveTexture( *_context, ${arg0plus} ) ) {',
+            'if ( self->ActiveTexture( ${arg0plus} ) ) {',
             '   return;',
             '}',
         ]
     },
     'GenTextures' : {
         'entries' : [ 'glGenTextures' ],
-        'impl' : [ '_context->so->GenTextures( *_context, ${arg0plus} ); return;' ],
+        'impl' : [ 'self->GenTextures( ${arg0plus} ); return;' ],
     },
     'DeleteTextures' : {
         'entries' : [ 'glDeleteTextures' ],
-        'prefix' : [ '_context->so->DeleteTextures( *_context, ${arg0plus} );' ],
+        'prefix' : [ 'self->DeleteTextures( ${arg0plus} );' ],
     },
     'BindTexture' : {
         'entries' : [ 'glBindTexture' ],
         'impl' : [
-          'if ( _context->so->BindTexture( *_context, ${arg0plus} ) ) {',
+          'if ( self->BindTexture( ${arg0plus} ) ) {',
             '   return;',
           '}',
       ]
@@ -63,7 +63,7 @@ soFormulae = {
     'TexParameter' : {
         'entries' : [ 'glTexParameter(I|)(u|)(f|i)(v|)(EXT|)' ],
         'impl' : [
-            'if ( _context->so->TexParameter${m4}( *_context, ${arg0plus} ) ) {',
+            'if ( self->TexParameter${m4}( ${arg0plus} ) ) {',
             '   return;',
             '}',
         ]
@@ -71,7 +71,7 @@ soFormulae = {
     'GetTexParameterv' : {
         'entries' : [ 'glGetTexParameter(I|)(u|)(f|i)v' ],
         'impl' : [
-            'if ( _context->so->GetTexParameterv( *_context, ${arg0plus} ) ) {',
+            'if ( self->GetTexParameterv( ${arg0plus} ) ) {',
             '   return;',
             '}',
         ]
@@ -79,7 +79,7 @@ soFormulae = {
     'Get' : {
         'entries' : [ 'glGet(Double|Float|Integer|Integer64)v' ],
         'impl' : [
-            'if ( _context->so->Get( ${arg0plus} ) ) {',
+            'if ( self->Get( ${arg0plus} ) ) {',
             '   return;',
             '}',
         ]
@@ -87,7 +87,7 @@ soFormulae = {
     'PreDraw' : {
         'entries' : [ 'gl(Multi|)Draw(Range|)(Arrays|Element|Elements)(Instanced|Indirect|BaseVertex|InstancedBaseVertex|Array|)(ARB|EXT|AMD|ATI|APPLE|)' ],
         'prefix' : [
-          '_context->so->PreDraw( *_context );',
+          'self->PreDraw();',
         ],
     },
 }

@@ -63,7 +63,7 @@ static void REGAL_CALL texsto_glDeleteTextures(Layer *_layer, GLsizei n, const G
   TexStoOriginate & orig = self->orig;
 
   // prefix
-  _context->texsto->DeleteTextures( _context, n, textures );
+  self->DeleteTextures(n, textures );
 
   RglDeleteTextures( orig, n, textures );
 
@@ -76,7 +76,7 @@ static void REGAL_CALL texsto_glGetTexParameterIiv(Layer *_layer, GLenum target,
   TexStoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+  if ( self->GetTexParameterv(target, pname, params ) ) {
      return;
   }
 
@@ -91,7 +91,7 @@ static void REGAL_CALL texsto_glGetTexParameterIuiv(Layer *_layer, GLenum target
   TexStoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+  if ( self->GetTexParameterv(target, pname, params ) ) {
      return;
   }
 
@@ -106,7 +106,7 @@ static void REGAL_CALL texsto_glGetTexParameterfv(Layer *_layer, GLenum target, 
   TexStoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+  if ( self->GetTexParameterv(target, pname, params ) ) {
      return;
   }
 
@@ -121,7 +121,7 @@ static void REGAL_CALL texsto_glGetTexParameteriv(Layer *_layer, GLenum target, 
   TexStoOriginate & orig = self->orig;
 
   // impl
-  if ( _context->texsto->GetTexParameterv( _context, target, pname, params ) ) {
+  if ( self->GetTexParameterv(target, pname, params ) ) {
      return;
   }
 
@@ -136,7 +136,7 @@ static void REGAL_CALL texsto_glTexStorage1D(Layer *_layer, GLenum target, GLsiz
   TexStoOriginate & orig = self->orig;
 
   // impl
-  _context->texsto->TextureStorage( _context, target, levels, internalformat, width ); return;
+  self->TextureStorage(target, levels, internalformat, width ); return;
 
   RglTexStorage1D( orig, target, levels, internalformat, width );
 
@@ -149,7 +149,7 @@ static void REGAL_CALL texsto_glTexStorage1DEXT(Layer *_layer, GLenum target, GL
   TexStoOriginate & orig = self->orig;
 
   // impl
-  _context->texsto->TextureStorage( _context, target, levels, internalformat, width ); return;
+  self->TextureStorage(target, levels, internalformat, width ); return;
 
   RglTexStorage1DEXT( orig, target, levels, internalformat, width );
 
@@ -162,7 +162,7 @@ static void REGAL_CALL texsto_glTexStorage2D(Layer *_layer, GLenum target, GLsiz
   TexStoOriginate & orig = self->orig;
 
   // impl
-  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height ); return;
+  self->TextureStorage(target, levels, internalformat, width, height ); return;
 
   RglTexStorage2D( orig, target, levels, internalformat, width, height );
 
@@ -175,7 +175,7 @@ static void REGAL_CALL texsto_glTexStorage2DEXT(Layer *_layer, GLenum target, GL
   TexStoOriginate & orig = self->orig;
 
   // impl
-  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height ); return;
+  self->TextureStorage(target, levels, internalformat, width, height ); return;
 
   RglTexStorage2DEXT( orig, target, levels, internalformat, width, height );
 
@@ -188,7 +188,7 @@ static void REGAL_CALL texsto_glTexStorage3D(Layer *_layer, GLenum target, GLsiz
   TexStoOriginate & orig = self->orig;
 
   // impl
-  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height, depth ); return;
+  self->TextureStorage(target, levels, internalformat, width, height, depth ); return;
 
   RglTexStorage3D( orig, target, levels, internalformat, width, height, depth );
 
@@ -201,7 +201,7 @@ static void REGAL_CALL texsto_glTexStorage3DEXT(Layer *_layer, GLenum target, GL
   TexStoOriginate & orig = self->orig;
 
   // impl
-  _context->texsto->TextureStorage( _context, target, levels, internalformat, width, height, depth ); return;
+  self->TextureStorage(target, levels, internalformat, width, height, depth ); return;
 
   RglTexStorage3DEXT( orig, target, levels, internalformat, width, height, depth );
 

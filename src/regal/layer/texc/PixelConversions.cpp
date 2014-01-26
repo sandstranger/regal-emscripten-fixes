@@ -46,7 +46,7 @@ REGAL_GLOBAL_BEGIN
 
 #include <map>
 
-#include "RegalPixelConversions.h"
+#include "PixelConversions.h"
 
 REGAL_GLOBAL_END
 
@@ -55,7 +55,7 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Conversion {
 
-#include "RegalPixelConversions.inl"
+#include "PixelConversions.inl"
 
 // ===========================================================================
 // Conversion registry.

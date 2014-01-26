@@ -129,7 +129,6 @@ namespace helper {
 
    bool getInfoLog
    (
-    RegalContext * ctx,
     ::std::string &log,
     RegalProc<void (REGAL_CALL *)(Layer *,GLuint,GLsizei,GLsizei *,GLchar *)> getInfoLog,
     RegalProc<void (REGAL_CALL *)(Layer *,GLuint,GLenum,GLint *)> getInfoLogLength,
