@@ -206,7 +206,7 @@ def generate(apis, args):
   generateContextInfoSource(apis, args)
   generateEmuInfoHeader(apis, args)
   generateEmuInfoSource(apis, args)
-  generateTraceSource( apis, args )
+  #generateTraceSource( apis, args )
   generatePublicHeader(apis, args)
   generateSource(apis, args)
   generateSystemHeader(apis, args)

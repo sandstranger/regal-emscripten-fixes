@@ -2048,53 +2048,11 @@ namespace Emu
     for (size_t i = 0; i < n; ++i)
       ffprogs[ i ] = Program();
   }
-  
-  void Iff::Cleanup( RegalContext &ctx )
-  {
-    Internal("Regal::Iff::Cleanup","()");
     
-    RestoreVao();
-    
-    RglDeleteBuffers( orig, 1, &immVbo);
-    RglDeleteVertexArrays( orig, 1, &immVao);
-    
-    size_t n = array_size( ffprogs );
-    for (size_t i = 0; i < n; ++i)
-    {
-      RegalAssertArrayIndex( ffprogs, i );
-      const Program &pgm = ffprogs[i];
-      if (pgm.pg)
-      {
-        if (&pgm == currprog)
-        {
-          RglUseProgram( orig, 0);
-          currprog = NULL;
-        }
-        RglDeleteShader( orig, pgm.vs);
-        RglDeleteShader( orig, pgm.fs);
-        RglDeleteProgram( orig, pgm.pg);
-      }
-    }
-    
-    const bool isWebGLish = (ctx.info->vendor == "Chromium" || ctx.info->webgl);
-    
-    RglBindBuffer( orig, GL_ARRAY_BUFFER, 0);
-    RglBindBuffer( orig, GL_ELEMENT_ARRAY_BUFFER, 0);
-    for (GLuint i=0; i<ctx.emuInfo->gl_max_vertex_attribs; ++i)
-    {
-      // Chromium/PepperAPI GLES generates an error (visible through glGetError)
-      // and logs a message if a call is made to glVertexAttribPointer and no
-      // GL_ARRAY_BUFFER is bound.
-      if (!isWebGLish)
-        RglVertexAttribPointer( orig, i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
-      RglDisableVertexAttribArray( orig, i);
-    }
-  }
-  
-  void Iff::InitVertexArray(RegalContext &ctx)
+  void Iff::InitVertexArray()
   {
     Internal("Regal::Iff::InitVertexArray","()");
-    max_vertex_attribs = ctx.emuInfo->gl_max_vertex_attribs;
+    max_vertex_attribs = GetContext()->emuInfo->gl_max_vertex_attribs;
     
     if (max_vertex_attribs >= 16)
     {
@@ -2165,7 +2123,7 @@ namespace Emu
     if ( idx < max_vertex_attribs )
     {
       RglEnableVertexAttribArray( orig, idx );
-      EnableArray( ctx, idx ); // keep ffn up to date
+      EnableArray( idx ); // keep ffn up to date
     }
   }
   
@@ -2174,12 +2132,12 @@ namespace Emu
     const GLuint idx = ClientStateToIndex( state );
     if (idx == GLuint(~0))
       return;
-    RestoreVao( ctx );
+    RestoreVao();
     RegalAssert( idx < max_vertex_attribs );
     if ( idx < max_vertex_attribs )
     {
       RglDisableVertexAttribArray( orig, idx );
-      DisableArray( ctx, idx ); // keep ffn up to date
+      DisableArray( idx ); // keep ffn up to date
     }
   }
   
@@ -2209,40 +2167,40 @@ namespace Emu
     if (stride < 0)
       return;
     
-    RestoreVao( ctx );
+    RestoreVao();
     RglVertexAttribPointer( orig, ffAttrMap[ RFF2A_Vertex ], size, type, GL_FALSE, stride, pointer );
   }
   
   void Iff::NormalPointer( GLenum type, GLsizei stride, const GLvoid *pointer )
   {
-    RestoreVao( ctx );
+    RestoreVao();
     GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
     RglVertexAttribPointer( orig, ffAttrMap[ RFF2A_Normal ], 3, type, n, stride, pointer );
   }
   
   void Iff::ColorPointer( GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
   {
-    RestoreVao( ctx );
+    RestoreVao();
     GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
     RglVertexAttribPointer( orig, ffAttrMap[ RFF2A_Color ], size, type, n, stride, pointer );
   }
   
   void Iff::SecondaryColorPointer( GLint size, GLenum type, GLsizei stride, const GLvoid *pointer )
   {
-    RestoreVao( ctx );
+    RestoreVao();
     GLboolean n = type == GL_FLOAT ? GL_FALSE : GL_TRUE;
     RglVertexAttribPointer( orig, ffAttrMap[ RFF2A_SecondaryColor ], size, type, n, stride, pointer );
   }
   
   void Iff::FogCoordPointer( GLenum type, GLsizei stride, const GLvoid *pointer )
   {
-    RestoreVao( ctx );
+    RestoreVao();
     RglVertexAttribPointer( orig, ffAttrMap[ RFF2A_FogCoord ], 1, type, GL_FALSE, stride, pointer );
   }
   
   void Iff::EdgeFlagPointer( GLsizei stride, const GLvoid *pointer )
   {
-    RestoreVao( ctx );
+    RestoreVao();
     GLuint index = ffAttrMap[ RFF2A_EdgeFlag ];
     if (index == RFF2A_Invalid)
       return;
@@ -2256,7 +2214,7 @@ namespace Emu
       // FIXME: set an error here!
       return;
     }
-    RestoreVao( ctx );
+    RestoreVao();
     RglVertexAttribPointer( orig, ffAttrTexBegin + catIndex, size, type, GL_FALSE, stride, pointer );
   }
   
@@ -2362,11 +2320,11 @@ namespace Emu
     return true;
   }
   
-  void Iff::InitImmediate(RegalContext &ctx)
+  void Iff::InitImmediate()
   {
     RglGenVertexArrays( orig, 1, & immVao );
     RglBindVertexArray( orig, immVao );
-    BindVertexArray( &ctx, immVao ); // to keep ffn current
+    BindVertexArray( immVao ); // to keep ffn current
     RglGenBuffers( orig, 1, & immVbo );
     RglBindBuffer( orig, GL_ARRAY_BUFFER, immVbo );
     
@@ -2378,31 +2336,31 @@ namespace Emu
     
     for (GLuint i = 0; i < max_vertex_attribs; i++)
     {
-      EnableArray( &ctx, i ); // to keep ffn current
+      EnableArray( i ); // to keep ffn current
       RglEnableVertexAttribArray( orig, i );
       RglVertexAttribPointer( orig, i, 4, GL_FLOAT, GL_FALSE, max_vertex_attribs * sizeof(Float4), (GLubyte *)NULL + i * sizeof(Float4) );
     }
     RglBindVertexArray( orig, 0 );
-    BindVertexArray( &ctx, 0 ); // to keep ffn current
+    BindVertexArray( 0 ); // to keep ffn current
     
     // The initial texture coordinates are (s; t; r; q) = (0; 0; 0; 1)
     // for each texture coordinate set.
     
     memset(&immVab, 0, sizeof(immVab));
     for (catIndex = 0; catIndex < REGAL_EMU_MAX_TEXTURE_UNITS; catIndex++)
-      Attr<4>( &ctx, AttrIndex( RFF2A_TexCoord ), 0, 0, 0, 1 );
+      Attr<4>( AttrIndex( RFF2A_TexCoord ), 0, 0, 0, 1 );
     
     catIndex = 0;
     
     // The initial current normal has coordinates (0; 0; 1).
     
-    Attr<3>( &ctx, AttrIndex( RFF2A_Normal ), 0, 0, 1 );
+    Attr<3>( AttrIndex( RFF2A_Normal ), 0, 0, 1 );
     
     // The initial RGBA color is (R;G;B;A) = (1; 1; 1; 1) and
     // the initial RGBA secondary color is (0; 0; 0; 1).
     
-    Attr<4>( &ctx, AttrIndex( RFF2A_Color ), 1, 1, 1, 1 );
-    Attr<4>( &ctx, AttrIndex( RFF2A_SecondaryColor ), 0, 0, 0, 1 );
+    Attr<4>( AttrIndex( RFF2A_Color ), 1, 1, 1, 1 );
+    Attr<4>( AttrIndex( RFF2A_SecondaryColor ), 0, 0, 0, 1 );
     
     // The initial fog coordinate is zero.
     
@@ -2414,7 +2372,6 @@ namespace Emu
   
   GLboolean Iff::IsVertexArray( GLuint name )
   {
-    RegalAssert( ctx != NULL );
     if (name == immVao )
       return GL_FALSE;
     return RglIsVertexArray( orig, name );
@@ -2427,7 +2384,7 @@ namespace Emu
     if (immActive == false)
     {
       immShadowVao = vao;
-      BindVertexArray( ctx, vao );
+      BindVertexArray( vao );
     }
   }
   
@@ -2445,16 +2402,16 @@ namespace Emu
     {
       immActive = true;
       RglBindVertexArray( orig, immVao );
-      BindVertexArray( ctx, immVao );  // keep ffn current
+      BindVertexArray( immVao );  // keep ffn current
     }
-    PreDraw( ctx );
+    PreDraw();
     immCurrent = 0;
     immPrim = mode;
   }
   
   void Iff::End()
   {
-    Flush( ctx );
+    Flush();
   }
   
   void Iff::RestoreVao()
@@ -2462,7 +2419,7 @@ namespace Emu
     if (immActive)
     {
       RglBindVertexArray( orig, immShadowVao );
-      BindVertexArray( ctx, immShadowVao );
+      BindVertexArray( immShadowVao );
       immActive = false;
     }
   }
@@ -2474,7 +2431,7 @@ namespace Emu
       RglBufferData( orig, GL_ARRAY_BUFFER, immCurrent * max_vertex_attribs * sizeof(Float4), immArray, GL_DYNAMIC_DRAW );
       
       GLenum derivedPrim = immPrim;
-      if (( immPrim == GL_POLYGON ) && ( ctx->info->core == true || ctx->info->es2 ))
+      if (( immPrim == GL_POLYGON ) && ( GetContext()->info->core == true || GetContext()->info->es2 ))
         derivedPrim = GL_TRIANGLE_FAN;
       RglDrawArrays( orig, derivedPrim, 0, immCurrent );
     }
@@ -2487,7 +2444,7 @@ namespace Emu
     
     if ( immCurrent >= ((REGAL_IMMEDIATE_BUFFER_SIZE * REGAL_EMU_MAX_VERTEX_ATTRIBS) / max_vertex_attribs) )
     {
-      Flush( ctx );
+      Flush();
       int restartVerts = 0;
       switch( immPrim )
       {
@@ -2544,14 +2501,12 @@ namespace Emu
     return ~0u;
   }
   
-  void Iff::InitFixedFunction(RegalContext &ctx)
+  void Iff::InitFixedFunction()
   {
     Internal("Regal::Iff::InitFixedFunction","()");
-    
-    RegalAssert(ctx.info);
-    
-    gles   = ctx.info->es2;
-    legacy = ctx.info->compat && ctx.info->gl_version_major<=2;
+    RegalContext * ctx = GetContext();
+    gles   = ctx->info->es2;
+    legacy = ctx->info->compat && ctx->info->gl_version_major<=2;
     
     vaoAttrMap[0] = 0;
     
@@ -2651,9 +2606,9 @@ namespace Emu
     
     ver.Reset();
     if  (program)
-      UseShaderProgram( ctx );
+      UseShaderProgram();
     else
-      UseFixedFunctionProgram( ctx );
+      UseFixedFunctionProgram();
   }
   
   void Iff::SetCurrentMatrixStack( GLenum mode )
@@ -3378,12 +3333,12 @@ namespace Emu
     sb.SetTranslate( s + b );
     r3::Matrix4f m = sb * projection.Top() * modelview.Top();
     m.MultMatrixVec( pos );
-    WindowPos( ctx, pos.x, pos.y, pos.z );
+    WindowPos( pos.x, pos.y, pos.z );
   }
   
   void Iff::WindowPos( GLdouble x, GLdouble y, GLdouble z )
   {
-    if (ctx->isCore() || ctx->isCompat())
+    if (GetContext()->isCore() || GetContext()->isCompat())
     {
       // todo - cache rasterpos and implement glDrawPixels and glBitmap
       return;
@@ -3393,7 +3348,6 @@ namespace Emu
   
   void Iff::BindVertexArray( GLuint vao )
   {
-    UNUSED_PARAMETER(ctx);
     vaoAttrMap[ currVao ] = ffstate.raw.attrArrayFlags;
     currVao = vao;
     ffstate.raw.attrArrayFlags = vaoAttrMap[ currVao ];
@@ -3402,14 +3356,14 @@ namespace Emu
   
   void Iff::EnableArray( GLuint index )
   {
-    RestoreVao( ctx );
+    RestoreVao();
     ffstate.raw.attrArrayFlags |= 1 << index;
     ffstate.raw.ver = ffstate.uniform.vabVer = ver.Update();
   }
   
   void Iff::DisableArray( GLuint index )
   {
-    RestoreVao( ctx );
+    RestoreVao();
     ffstate.raw.attrArrayFlags &= ~( 1 << index );
     ffstate.raw.ver = ffstate.uniform.vabVer = ver.Update();
   }
@@ -3421,7 +3375,7 @@ namespace Emu
     return sh;
   }
   
-  bool Iff::Init( const std::string & instanceInfo )
+  bool Iff::Initialize( const std::string & instanceInfo )
   {
     RegalContext &ctx = *GetContext();
     
@@ -3443,11 +3397,11 @@ namespace Emu
     
     RegalContext *sharingWith = ctx.shareGroup->front();
     if (sharingWith)
-      textureObjToFmt = sharingWith->iff->textureObjToFmt;
+      textureObjToFmt = static_cast<Iff*>(sharingWith->find("iff"))->textureObjToFmt;
     
-    InitVertexArray(ctx);
-    InitFixedFunction(ctx);
-    InitImmediate(ctx);
+    InitVertexArray();
+    InitFixedFunction();
+    InitImmediate();
     return true;
   }
   
@@ -3544,8 +3498,6 @@ namespace Emu
   
   void Iff::UpdateUniforms()
   {
-    Internal("Regal::Iff::UpdateUniforms", print_optional(ctx,Logging::pointers));
-    
     UniformMap * umap = NULL;
     if( currinst ) {
       if( currinst->prevInstance == NULL ) {
@@ -3860,7 +3812,7 @@ namespace Emu
   // a debug routine for forcing instanced program's uniforms to be updated
   void Iff::ClearVersionsForProgram()
   {
-    Internal("Regal::Iff::UpdateUniforms", print_optional(ctx,Logging::pointers));
+    Internal("Regal::Iff::UpdateUniforms", print_optional(GetContext(),Logging::pointers));
     
     UniformMap * umap = NULL;
     if( currinst && currinst->prevInstance) {
@@ -4038,8 +3990,6 @@ namespace Emu
   
   void Iff::UseFixedFunctionProgram()
   {
-    Internal("Regal::Iff::UseFixedFunctionProgram", print_optional(ctx,Logging::pointers));
-    
     if ( currprog != NULL && currprog->ver == ver.Current() )
     {
       return;
@@ -4083,15 +4033,15 @@ namespace Emu
         RglDeleteProgram( orig, p->pg );
         *p = Program();
       }
-      GLuint vs = CreateFixedFunctionVertexShader( ctx );
-      GLuint fs = CreateFixedFunctionFragmentShader( ctx );
-      p->Init( this, ctx, ffstate.processed, vs, fs );
+      GLuint vs = CreateFixedFunctionVertexShader();
+      GLuint fs = CreateFixedFunctionFragmentShader();
+      p->Init( this, ffstate.processed, vs, fs );
       p->progcount = progcount;
     }
     RegalAssertArrayIndex( ffprogs, base + match );
     currprog = & ffprogs[ base + match ];
     RglUseProgram( orig, currprog->pg );
-    UpdateUniforms( ctx );
+    UpdateUniforms();
   }
   
   GLuint Iff::CreateFixedFunctionVertexShader() {
@@ -4099,7 +4049,7 @@ namespace Emu
     string_list vsSrc;
     GenerateVertexShaderSource( this, ffstate, vsSrc );
     GLuint vs;
-    Program::Shader( ctx, orig, GL_VERTEX_SHADER, vs, vsSrc.str().c_str() );
+    Program::Shader( orig, GL_VERTEX_SHADER, vs, vsSrc.str().c_str() );
     return vs;
   }
   
@@ -4108,7 +4058,7 @@ namespace Emu
     string_list fsSrc;
     GenerateFragmentShaderSource( this, fsSrc );
     GLuint fs;
-    Program::Shader( ctx, orig, GL_FRAGMENT_SHADER, fs, fsSrc.str().c_str() );
+    Program::Shader( orig, GL_FRAGMENT_SHADER, fs, fsSrc.str().c_str() );
     return fs;
   }
   
@@ -4118,7 +4068,6 @@ namespace Emu
   
   void Iff::UseShaderProgram()
   {
-    Internal("Regal::Iff::UseShaderProgram", print_optional(ctx,Logging::pointers));
     
     ffstate.Process( this );
     
@@ -4156,7 +4105,7 @@ namespace Emu
         ShaderInstance::InitProgramInstance( instProcs, currinst->program, currprog->pg, currinst->instances[ k ].inst );
         currinst->prevKey = k;
         currinst->prevInstance = &currinst->instances[ k ];
-        currinst->prevInstance->LocateUniforms( ctx, orig );
+        currinst->prevInstance->LocateUniforms( orig );
       }
       
       UserProgramInstanceKey k( ffstate.processed );
@@ -4186,7 +4135,7 @@ namespace Emu
         }
         
         ShaderInstance::CreateProgramInstance( instProcs, currinst->program, sources, upi.inst );
-        upi.LocateUniforms( ctx, orig );
+        upi.LocateUniforms( orig );
         RglUseProgram( orig, upi.inst.prog );
       }
       
@@ -4196,7 +4145,7 @@ namespace Emu
       }
     }
     
-    UpdateUniforms( ctx );
+    UpdateUniforms();
   }
   
   static int remove_version( string &str) {
@@ -4272,6 +4221,7 @@ namespace Emu
       remove_precision( src );
     }
     
+    RegalContext * ctx = GetContext();
     // Preamble
     
     string_list ss;
@@ -4477,15 +4427,15 @@ namespace Emu
         ver.Reset();
         Program & p = shprogmap[ program ];
         p.pg = program;
-        p.UserShaderModeAttribs(ctx);
+        p.UserShaderModeAttribs();
       }
     }
     RglLinkProgram( orig, program );
     Program & p = shprogmap[ program ];
     
     RglUseProgram( orig, program );
-    p.Samplers( ctx, orig );
-    p.Uniforms( ctx, orig );
+    p.Samplers( orig );
+    p.Uniforms( orig );
     if( this->program != 0 ) {
       RglUseProgram( orig, this->program );
     }

@@ -88,8 +88,8 @@ def apiTraceFuncDefineCode(apis, args):
         continue
 
       name   = function.name
-      params = paramsDefaultCode(function.parameters, True, "RegalContext *_context")
-      callParams = paramsNameCode(function.parameters, "_context")
+      params = paramsDefaultCode(function.parameters, True, "Layer *_layer")
+      callParams = paramsNameCode(function.parameters, "self->next")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
@@ -111,7 +111,7 @@ def apiTraceFuncDefineCode(apis, args):
       categoryPrev = category
 
       code += 'static %sREGAL_CALL %s%s(%s) \n{\n' % (rType, 'trace_', name, params)
-      code += '  Internal("trace_%s","()");\n' % name
+      code += '  Trace * self = static_cast<Trace *>(_layer);\n'
       code += '  //Thread::ThreadLocal &_instance = Thread::ThreadLocal::instance();\n'
       code += '  //UNUSED_PARAMETER( instance );\n'
       if function.needsContext:

@@ -657,8 +657,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
   virtual bool Initialize( const std::string & instanceInfo );
   virtual void ResetIntercept();
   
-  void Cleanup(RegalContext &ctx);
-  void InitVertexArray(RegalContext &ctx);
+  void InitVertexArray();
   GLuint ClientStateToIndex(GLenum state);
   void EnableClientState( GLenum state );
   void DisableClientState( GLenum state );
@@ -826,7 +825,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
   GLuint  immShadowVao;
   IffOriginate orig;
 
-  void InitImmediate(RegalContext &ctx);
+  void InitImmediate();
   void glDeleteVertexArrays( GLsizei n, const GLuint * arrays );
   void glDeleteBuffers( GLsizei n, const GLuint * buffers );
   GLboolean IsVertexArray( GLuint name );
@@ -1574,7 +1573,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
   bool gles;   // what about ES1?
   bool legacy; // 2.x mac
 
-  void InitFixedFunction(RegalContext &ctx);
+  void InitFixedFunction();
   void PreDraw();
   void SetCurrentMatrixStack( GLenum mode );
   bool ShadowMatrixMode( GLenum mode );

@@ -79,7 +79,7 @@ iffFormulae = {
     },
     'ImmEnd' : {
         'entries' : [ 'glEnd' ],
-        'impl' : [ 'self->End( _context ); return;', ],
+        'impl' : [ 'self->End(); return;', ],
     },
     'ImmAttr' : {
         'entries' : [ 'glVertexAttrib(1|2|3|4)(N|)(b|d|f|i|s|ub|us)(v|)(ARB|)' ],
@@ -113,7 +113,7 @@ iffFormulae = {
 #           'gl(Vertex|Normal|Color|SecondaryColor|FogCoord|TexCoord)Pointer',
             'glGetVertexAttrib(d|f|i|Pointer)v(ARB|)',
             ],
-        'prefix' : [ 'self->RestoreVao( _context );' ],
+        'prefix' : [ 'self->RestoreVao();' ],
     },
 
 
@@ -173,7 +173,7 @@ iffFormulae = {
     'FfnGetTexEnv' : {
         'entries' : [ 'glGetTexEnv(i|f)(v|)(EXT|)' ],
         'impl' : [
-            'self->RestoreVao( _context );',
+            'self->RestoreVao();',
             'if ( self->GetTexEnv( ${arg0plus} ) ) {',
             '    return;',
             '}',
@@ -210,7 +210,7 @@ iffFormulae = {
     'FfnGetBoolean' : {
         'entries' : [ 'glGetBooleanv' ],
         'impl' : [
-            'self->RestoreVao( _context );',
+            'self->RestoreVao();',
             'if ( self->glGetBooleanv(${arg0plus} ) ) {',
             '    return;',
             '}',
@@ -219,7 +219,7 @@ iffFormulae = {
     'FfnGet' : {
         'entries' : [ 'glGet(Integer|Float|Double)v' ],
         'impl' : [
-            'self->RestoreVao( _context );',
+            'self->RestoreVao();',
             'if ( self->Get(${arg0plus} ) ) {',
             '    return;',
             '}',
@@ -228,7 +228,7 @@ iffFormulae = {
     'FfnGetMultiTexGenv' : {
         'entries' : [ 'glGetMultiTexGen(d|f|i)vEXT' ],
         'impl' : [
-            'self->RestoreVao( _context );',
+            'self->RestoreVao();',
             'if ( self->GetMultiTexGenv(${arg0plus} ) ) {',
             '    return;',
             '}',
@@ -237,7 +237,7 @@ iffFormulae = {
     'FfnGetTexGenv' : {
         'entries' : [ 'glGetTexGen(d|f|i)v' ],
         'impl' : [
-            'self->RestoreVao( _context );',
+            'self->RestoreVao();',
             'if ( self->GetTexGenv(${arg0plus} ) ) {',
             '    return;',
             '}',
@@ -246,7 +246,7 @@ iffFormulae = {
     # TODO - GL_ARB_base_instance ?
     'FfnPreDraw' : {
         'entries' : [ 'gl(Multi|)Draw(Range|)(Arrays|Element|Elements)(Instanced|Indirect|BaseVertex|InstancedBaseVertex|Array|)(ARB|EXT|AMD|ATI|APPLE|)' ],
-        'prefix' : [ 'self->PreDraw( _context );', ],
+        'prefix' : [ 'self->PreDraw();', ],
     },
     'FfnModifyMatrix' : {
         'entries' : [
@@ -278,7 +278,7 @@ iffFormulae = {
     'EnableArray' : {
         'entries' : [ 'gl(Enable|Disable)VertexAttribArray(ARB|)' ],
         'prefix' : [
-            'self->RestoreVao( _context );',
+            'self->RestoreVao();',
             'self->${m1}Array(${arg0} );',
         ],
     },
