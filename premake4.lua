@@ -6,7 +6,11 @@ solution "regal"
   project "regal"
     kind "StaticLib"
     language "C++"
-    files { "src/regal/**.h", "src/regal/**.cpp" }
+    files { 
+      "src/regal/**.h",
+      "src/regal/**.cpp",
+      "src/mongoose/mongoose.c"
+    }
     includedirs { 
       "include",
       "src/mongoose",

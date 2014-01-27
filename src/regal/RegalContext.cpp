@@ -97,6 +97,10 @@ RegalContext::Init()
 
   memset( &dispatchGL, 0, sizeof( Dispatch::GL ) );
 
+  // have to invoke the loader to get hooked up to GL before we query the context info
+  void InitDispatchLoader( Layer * l, Dispatch::GL & dt );
+  InitDispatchLoader( NULL, dispatchGL );
+
   RegalAssert(this);
   if (!info)
   {
@@ -111,6 +115,9 @@ RegalContext::Init()
     RegalAssert(emuInfo);
     emuInfo->init(*info);
   }
+
+  void InitLayers( RegalContext * ctx );
+  InitLayers( this );
 
   initialized = true;
 }
