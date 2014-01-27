@@ -173,15 +173,11 @@ namespace Logging
   extern bool enableApp;
   extern bool enableDriver;
   extern bool enableInternal;
-  extern bool enableHttp;
 
   // Logging configuration
 
   extern int  maxLines;
   extern int  maxBytes;
-
-  extern bool frameTime;        // Per-frame elapsed time to info log
-  extern bool frameStatistics;  // Per-frame call statistics
 
   extern bool pointers;         // Enabled by default, otherwise empty
   extern bool thread;           // Disabled by default
@@ -198,12 +194,6 @@ namespace Logging
   extern bool         log;
   extern std::string  logFilename;
   extern FILE        *logOutput;
-
-  // JSON output
-
-  extern bool         json;
-  extern std::string  jsonFilename;
-  extern FILE        *jsonOutput;
 
   // Buffering for HTTP query purposes
 
@@ -266,14 +256,6 @@ namespace Logging
     ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_INTERNAL, __FILE__, __LINE__, "internal", " | ", name, print_string( __VA_ARGS__) ); }
 #else
 #define Internal(...) {}
-#endif
-
-#if REGAL_LOG_HTTP
-#define HTrace(...) { \
-  if (::REGAL_NAMESPACE_INTERNAL::Logging::enableHttp) \
-    ::REGAL_NAMESPACE_INTERNAL::Logging::Output( ::REGAL_NAMESPACE_INTERNAL::Logging::LOG_HTTP, __FILE__, __LINE__, "http    ", " | ", NULL, print_string( __VA_ARGS__) ); }
-#else
-#define HTrace(...) {}
 #endif
 
 REGAL_NAMESPACE_END

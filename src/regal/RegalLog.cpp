@@ -80,12 +80,9 @@ namespace Logging {
   bool enableApp      = false;
   bool enableDriver   = false;
   bool enableInternal = false;
-  bool enableHttp     = true;
 
   int  maxLines        = (REGAL_LOG_MAX_LINES);
   int  maxBytes        = (REGAL_LOG_MAX_BYTES);
-  bool frameTime       = false;
-  bool frameStatistics = false;
   bool pointers        = (REGAL_LOG_POINTERS);
   bool thread          = false;
   bool process         = false;
@@ -103,10 +100,6 @@ namespace Logging {
 #endif
 
   FILE        *logOutput    = NULL;
-
-  bool         json         = false;
-  std::string  jsonFilename;
-  FILE        *jsonOutput   = NULL;
 
   Thread::Mutex          *bufferMutex = NULL;
   std::list<std::string> *buffer = NULL;
@@ -134,7 +127,6 @@ namespace Logging {
     getEnv("REGAL_LOG_APP",      enableApp);
     getEnv("REGAL_LOG_DRIVER",   enableDriver);
     getEnv("REGAL_LOG_INTERNAL", enableInternal);
-    getEnv("REGAL_LOG_HTTP",     enableHttp);
 
     //
 
@@ -143,7 +135,7 @@ namespace Logging {
     if (tmp && atoi(tmp)) enableApp = enableDriver = true;
 
     tmp = getEnv("REGAL_LOG_ALL");
-    if (tmp && atoi(tmp)) enableError = enableWarning = enableInfo = enableApp = enableDriver = enableInternal = enableHttp = true;
+    if (tmp && atoi(tmp)) enableError = enableWarning = enableInfo = enableApp = enableDriver = enableInternal = true;
 
     //
 
@@ -151,9 +143,6 @@ namespace Logging {
     getEnv("REGAL_LOG_MAX_BYTES", maxBytes);
 
     getEnv("REGAL_LOG_ONCE", once, REGAL_LOG_ONCE);
-
-    getEnv("REGAL_FRAME_TIME",       frameTime);
-    getEnv("REGAL_FRAME_STATISTICS", frameStatistics);
 
     getEnv("REGAL_LOG_POINTERS", pointers, REGAL_LOG_POINTERS);
     getEnv("REGAL_LOG_THREAD",   thread,   REGAL_LOG_THREAD);
@@ -176,13 +165,6 @@ namespace Logging {
 
     if (logFilename.length())
       logOutput = fileOpen(logFilename.c_str(),"wt");
-
-    // JSON logging
-
-    if (jsonFilename.length())
-      jsonOutput = fileOpen(jsonFilename.c_str(),"wt");
-    if (jsonOutput)
-      fprintf(jsonOutput,"%s","{ \"traceEvents\" : [\n");
 
     Internal("Logging::Init","()");
 
@@ -216,10 +198,6 @@ namespace Logging {
     Info("REGAL_LOG_INTERNAL        ", enableInternal  ? "enabled" : "disabled");
 #endif
 
-#if REGAL_LOG_HTTP
-    Info("REGAL_LOG_HTTP            ", enableHttp      ? "enabled" : "disabled");
-#endif
-
 #if REGAL_LOG_CALLBACK
     Info("REGAL_LOG_CALLBACK        ", callback        ? "enabled" : "disabled");
 #endif
@@ -239,9 +217,6 @@ namespace Logging {
 #if REGAL_LOG_PROCESS
     Info("REGAL_LOG_PROCESS         ", process         ? "enabled" : "disabled");
 #endif
-
-    Info("REGAL_FRAME_TIME          ", frameTime       ? "enabled" : "disabled");
-    Info("REGAL_FRAME_STATISTICS    ", frameStatistics ? "enabled" : "disabled");
   }
 
   void Cleanup()

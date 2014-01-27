@@ -567,7 +567,6 @@ extern "C" {
       case GL_LOG_APP_REGAL:      Logging::enableApp      = false; return;
       case GL_LOG_DRIVER_REGAL:   Logging::enableDriver   = false; return;
       case GL_LOG_INTERNAL_REGAL: Logging::enableInternal = false; return;
-      case GL_LOG_HTTP_REGAL:     Logging::enableHttp     = false; return;
       default: break;
     }
     RglDisable(_context->dispatchGL, cap);
@@ -623,7 +622,6 @@ extern "C" {
       case GL_LOG_APP_REGAL:      Logging::enableApp      = true; return;
       case GL_LOG_DRIVER_REGAL:   Logging::enableDriver   = true; return;
       case GL_LOG_INTERNAL_REGAL: Logging::enableInternal = true; return;
-      case GL_LOG_HTTP_REGAL:     Logging::enableHttp     = true; return;
       default: break;
     }
     RglEnable(_context->dispatchGL, cap);
@@ -1225,7 +1223,6 @@ extern "C" {
       case GL_LOG_APP_REGAL:      return Logging::enableApp      ? GL_TRUE : GL_FALSE;
       case GL_LOG_DRIVER_REGAL:   return Logging::enableDriver   ? GL_TRUE : GL_FALSE;
       case GL_LOG_INTERNAL_REGAL: return Logging::enableInternal ? GL_TRUE : GL_FALSE;
-      case GL_LOG_HTTP_REGAL:     return Logging::enableHttp     ? GL_TRUE : GL_FALSE;
       default: break;
     }
     return RglIsEnabled(_context->dispatchGL, cap);

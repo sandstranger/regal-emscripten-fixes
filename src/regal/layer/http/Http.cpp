@@ -178,18 +178,12 @@ const char * const br = "<br/>\n";
 static int log_message(const struct mg_connection * conn, const char *message)
 {
   UNUSED_PARAMETER(conn);
-  HTrace(message ? message : "");
   return 1;
 }
 
 static int begin_request(struct mg_connection * conn)
 {
-  const struct mg_request_info *request_info = mg_get_request_info( conn );
-  
-  HTrace(request_info->request_method ? request_info->request_method : "", " ",
-         request_info->uri            ? request_info->uri            : "",
-         request_info->query_string   ?                        "?"   : "",
-         request_info->query_string   ? request_info->query_string   : "");
+  //const struct mg_request_info *request_info = mg_get_request_info( conn );
   
   Connection connection( conn );
   
@@ -252,8 +246,6 @@ void Http::Stop()
   
   if (mgctx)
   {
-    HTrace("Closing HTTP connections.");
-    
     // Currently there is a problem with shutting down mongoose
     // on Windows - so just skip the cleanup for now.
     
@@ -1189,16 +1181,6 @@ struct EnableHandler : public RequestHandler {
     else if (!strcmp("GL_LOG_APP_REGAL",     conn.request_info->query_string)) Logging::enableApp      = true;
     else if (!strcmp("GL_LOG_DRIVER_REGAL",  conn.request_info->query_string)) Logging::enableDriver   = true;
     else if (!strcmp("GL_LOG_INTERNAL_REGAL",conn.request_info->query_string)) Logging::enableInternal = true;
-    else if (!strcmp("GL_LOG_HTTP_REGAL",    conn.request_info->query_string)) Logging::enableHttp     = true;
-    
-    else if (!strcmp("REGAL_FRAME_TIME",     conn.request_info->query_string)) Logging::frameTime      = true;
-    
-    else if (!strcmp("REGAL_MD5_COLOR",      conn.request_info->query_string)) Config::frameMd5Color    = true;
-    else if (!strcmp("REGAL_MD5_STENCIL",    conn.request_info->query_string)) Config::frameMd5Stencil  = true;
-    else if (!strcmp("REGAL_MD5_DEPTH",      conn.request_info->query_string)) Config::frameMd5Depth    = true;
-    else if (!strcmp("REGAL_SAVE_COLOR",     conn.request_info->query_string)) Config::frameSaveColor   = true;
-    else if (!strcmp("REGAL_SAVE_STENCIL",   conn.request_info->query_string)) Config::frameSaveStencil = true;
-    else if (!strcmp("REGAL_SAVE_DEPTH",     conn.request_info->query_string)) Config::frameSaveDepth   = true;
     
     body += print_string("glEnable(", conn.request_info->query_string, ");",br,br);
     body += print_string("<a href=\"/glDisable?",conn.request_info->query_string,"\">toggle</a>");
@@ -1219,16 +1201,6 @@ struct DisableHandler : public RequestHandler {
     else if (!strcmp("GL_LOG_APP_REGAL",     conn.request_info->query_string)) Logging::enableApp      = false;
     else if (!strcmp("GL_LOG_DRIVER_REGAL",  conn.request_info->query_string)) Logging::enableDriver   = false;
     else if (!strcmp("GL_LOG_INTERNAL_REGAL",conn.request_info->query_string)) Logging::enableInternal = false;
-    else if (!strcmp("GL_LOG_HTTP_REGAL",    conn.request_info->query_string)) Logging::enableHttp     = false;
-    
-    else if (!strcmp("REGAL_FRAME_TIME",     conn.request_info->query_string)) Logging::frameTime      = false;
-    
-    else if (!strcmp("REGAL_MD5_COLOR",      conn.request_info->query_string)) Config::frameMd5Color    = false;
-    else if (!strcmp("REGAL_MD5_STENCIL",    conn.request_info->query_string)) Config::frameMd5Stencil  = false;
-    else if (!strcmp("REGAL_MD5_DEPTH",      conn.request_info->query_string)) Config::frameMd5Depth    = false;
-    else if (!strcmp("REGAL_SAVE_COLOR",     conn.request_info->query_string)) Config::frameSaveColor   = false;
-    else if (!strcmp("REGAL_SAVE_STENCIL",   conn.request_info->query_string)) Config::frameSaveStencil = false;
-    else if (!strcmp("REGAL_SAVE_DEPTH",     conn.request_info->query_string)) Config::frameSaveDepth   = false;
     
     body += print_string("glDisable(", conn.request_info->query_string, ");",br,br);
     body += print_string("<a href=\"/glEnable?",conn.request_info->query_string,"\">toggle</a>");

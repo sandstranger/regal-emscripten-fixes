@@ -77,13 +77,13 @@ TH2RC th2rc;
 Thread::Mutex *sc2rcMutex = NULL;
 Thread::Mutex *th2rcMutex = NULL;
 
-void InitDispatchLoader( Dispatch::Global & );
+void InitDispatchLoader( Layer * layer, Dispatch::Global & );
 
 Init::Init()
 {
   atexit(atExit);
 
-  InitDispatchLoader( dispatchGlobal );
+  InitDispatchLoader( NULL, dispatchGlobal );
   
 #if !defined(REGAL_NAMESPACE) && REGAL_SYS_WGL
   // Check our phony advapi32.dll, gdi32.dll and user32.dll dependencies
