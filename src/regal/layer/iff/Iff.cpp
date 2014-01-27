@@ -4452,7 +4452,11 @@ namespace Emu
     p.UpdateUniformStore( loc, count, data );
   }
   
-  
+  void Iff::ResetInterception() {
+    RegalContext * ctx = GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    IffIntercept( this, ctx->dispatchGL );
+  }
   
   
   

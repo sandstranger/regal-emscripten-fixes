@@ -655,7 +655,7 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
   Iff( RegalContext * ctx );
   virtual std::string GetName() const { return "iff"; }
   virtual bool Initialize( const std::string & instanceInfo );
-  virtual void ResetIntercept();
+  virtual void ResetInterception();
   
   void InitVertexArray();
   GLuint ClientStateToIndex(GLenum state);

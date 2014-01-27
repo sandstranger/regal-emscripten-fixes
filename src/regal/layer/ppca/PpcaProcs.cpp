@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "Ppca.h"
 #include "PpcaProcs.h"
+
+extern "C" Regal::Layer * createPpca( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::Ppca( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -1006,5 +1008,3 @@ void PpcaIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

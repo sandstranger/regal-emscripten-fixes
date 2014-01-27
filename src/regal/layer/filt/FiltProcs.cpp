@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "Filt.h"
 #include "FiltProcs.h"
+
+extern "C" Regal::Layer * createFilt( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::Filt( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -3432,5 +3434,3 @@ void FiltIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

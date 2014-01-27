@@ -143,6 +143,16 @@ struct Obj : public Layer
   NameTranslator textureNames;
   ObjOriginate orig;
 
+  Obj( RegalContext * ctx ) : Layer( ctx ) {}
+  
+  virtual std::string GetName() const { return "obj"; }
+  
+  virtual void ResetInterception() {
+    RegalContext &ctx = *GetContext();
+    orig.Initialize( ctx.dispatchGL );
+    ObjIntercept( this, ctx.dispatchGL );
+  }
+  
   virtual bool Initialize( const std::string & instanceInfo )
   {
     RegalContext &ctx = *GetContext();

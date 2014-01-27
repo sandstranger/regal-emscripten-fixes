@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "TexC.h"
 #include "TexCProcs.h"
+
+extern "C" Regal::Layer * createTexC( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::TexC( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -265,5 +267,3 @@ void TexCIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

@@ -54,6 +54,8 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 ${LOCAL_INCLUDE}
 
+${CONSTRUCTOR}
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -66,6 +68,15 @@ REGAL_NAMESPACE_END
 
 ${ENDIF}
 ''')
+
+def apiEmuProcsConstructor( e ):
+  code = ''
+  code +=     '\n'
+  code +=     'extern "C" Regal::Layer * create%s( Regal::RegalContext * ctx ) {\n' % e['type']
+  code +=     '  return new Regal::Emu::%s( ctx );\n' % e['type']
+  code +=     '}\n'
+  code +=     '\n'
+  return code;
 
 ##############################################################################################
 
@@ -207,11 +218,12 @@ def generateEmuSource(apis, args):
     origfuncs = orig[ e['type'] ] = []
     s['LOCAL_CODE']      = apiEmuProcsSourceCode( e, apis, origfuncs )
     s['LOCAL_INCLUDE']   = '#include "%s.h"\n#include "%sProcs.h"\n' % (e['type'],e['type'])
+    s['CONSTRUCTOR']     = apiEmuProcsConstructor( e )
     s['API_DISPATCH_FUNC_DEFINE'] = ''
     s['API_DISPATCH_FUNC_INIT'] = ''
     s['API_DISPATCH_GLOBAL_FUNC_INIT'] = ''
-    s['IFDEF'] = '#if REGAL_EMULATION\n\n'
-    s['ENDIF'] = '#endif // REGAL_EMULATION\n'
+    s['IFDEF'] = ''
+    s['ENDIF'] = ''
 
     outputCode( '%s/layer/%s/%sProcs.cpp' % (args.srcdir, e['name'], e['type']), emuProcsSourceTemplate.substitute(s))
 

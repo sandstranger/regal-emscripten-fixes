@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "BaseVertex.h"
 #include "BaseVertexProcs.h"
+
+extern "C" Regal::Layer * createBaseVertex( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::BaseVertex( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -896,5 +898,3 @@ void BaseVertexIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

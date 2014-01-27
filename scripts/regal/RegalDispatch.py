@@ -200,7 +200,7 @@ struct Layer {
 
   Layer( RegalContext * context ) : ctx( context ) {}
   RegalContext * GetContext() { return ctx; }
-  virtual std::string GetName() = 0;
+  virtual std::string GetName() const = 0;
   virtual bool Initialize( const std::string & instanceInfo ) = 0;
   virtual void ResetInterception() = 0;
   private:

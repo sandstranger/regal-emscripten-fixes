@@ -58,7 +58,7 @@ struct Bin : public Layer
   BinOriginate orig;
   
   Bin( RegalContext * ctx ) : Layer(ctx) {}
-  virtual std::string GetName() { return "bin"; }
+  virtual std::string GetName() const { return "bin"; }
   virtual bool Initialize( const std::string & instanceInfo ) {
     ResetInterception();
     return true;

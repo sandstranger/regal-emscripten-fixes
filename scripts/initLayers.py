@@ -32,14 +32,35 @@ using namespace std;
 #include "RegalContext.h"
 #include "RegalDispatch.h"
 
+extern "C" {
+
+''' )
+
+  for e in j:
+    c = e['constructor']
+    if c and len(c) == 0:
+      print e
+      print "must have a constructor member, exiting"
+      exit(1)
+
+    if e['module'] == "builtin":
+      out.write( "Regal::Layer * %s(Regal::RegalContext *);\n" % c )
+
+  out.write( '''
+}
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
 typedef Layer *(*Constructor)( RegalContext * ctx );
 
+void * mod = NULL;
 Constructor GetConstructor( const char * constructorName ) {
-  Constructor c = reinterpret_cast<Constructor>( dlsym( NULL, constructorName ) );
+  if( mod == NULL ) {
+     mod = dlopen( NULL, RTLD_LAZY );
+  }
+  Constructor c = reinterpret_cast<Constructor>( dlsym( mod, constructorName ) );
   return c;
 }
 
@@ -58,7 +79,8 @@ void InitLayers( RegalContext * ctx ) {
     if 'instanceInfo' in e: 
      instInf = e['instanceInfo'] 
 
-    out.write( "  constr = GetConstructor( \"%s\" );\n" % c )
+    if e['module'] == "builtin":
+      out.write( "  constr = %s;\n" % c )
     out.write( "  if( constr ) {\n" )
     out.write( "    layer = constr( ctx );\n" )
     out.write( "    bool success = layer->Initialize( \"%s\" );\n" % instInf )

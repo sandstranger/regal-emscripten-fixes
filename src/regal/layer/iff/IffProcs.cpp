@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "Iff.h"
 #include "IffProcs.h"
+
+extern "C" Regal::Layer * createIff( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::Iff( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -7992,5 +7994,3 @@ void IffIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

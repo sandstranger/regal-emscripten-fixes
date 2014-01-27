@@ -76,14 +76,14 @@ struct Ppca : public Layer, public ClientState::VertexArray, ClientState::PixelS
 
   virtual std::string GetName() const { return "ppca"; }
   
-  virtual bool Initialize()
+  virtual bool Initialize( const std::string & instanceInfo )
   {
-    ResetIntercept();
+    ResetInterception();
     Reset();
     return true;
   }
   
-  virtual void ResetIntercept() {
+  virtual void ResetInterception() {
     RegalContext * ctx = GetContext();
     orig.Initialize( ctx->dispatchGL );
     PpcaIntercept( this, ctx->dispatchGL );

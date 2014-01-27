@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "Hint.h"
 #include "HintProcs.h"
+
+extern "C" Regal::Layer * createHint( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::Hint( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -140,5 +142,3 @@ void HintIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

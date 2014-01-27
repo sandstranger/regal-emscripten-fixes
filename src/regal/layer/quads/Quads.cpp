@@ -92,7 +92,7 @@ REGAL_NAMESPACE_BEGIN
 
 namespace Emu
 {
-  void Quads::ResetIntercept() {
+  void Quads::ResetInterception() {
     RegalContext * ctx = GetContext();
     orig.Initialize( ctx->dispatchGL );
     QuadsIntercept( this, ctx->dispatchGL );

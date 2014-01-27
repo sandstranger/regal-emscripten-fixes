@@ -60,7 +60,7 @@ namespace Emu {
   {
     Filt( RegalContext * ctx ) : Layer( ctx ), fboID(0) {}
 
-    virtual std::string GetName() { return "filt"; }
+    virtual std::string GetName() const { return "filt"; }
     virtual bool Initialize( const std::string & instanceInfo ) {
       ResetInterception();
       return true;

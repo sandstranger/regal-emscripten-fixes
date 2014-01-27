@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "Quads.h"
 #include "QuadsProcs.h"
+
+extern "C" Regal::Layer * createQuads( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::Quads( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -220,5 +222,3 @@ void QuadsIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

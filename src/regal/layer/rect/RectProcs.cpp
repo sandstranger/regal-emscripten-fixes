@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "Rect.h"
 #include "RectProcs.h"
+
+extern "C" Regal::Layer * createRect( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::Rect( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -172,5 +174,3 @@ void RectIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

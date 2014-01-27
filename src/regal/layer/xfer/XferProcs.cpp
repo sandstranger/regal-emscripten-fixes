@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalPrivate.h"
@@ -49,6 +47,10 @@ REGAL_GLOBAL_BEGIN
 #include "RegalDispatch.h"
 #include "Xfer.h"
 #include "XferProcs.h"
+
+extern "C" Regal::Layer * createXfer( Regal::RegalContext * ctx ) {
+  return new Regal::Emu::Xfer( ctx );
+}
 
 REGAL_GLOBAL_END
 
@@ -214,5 +216,3 @@ void XferIntercept( Layer *layer, Dispatch::GL & dt ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

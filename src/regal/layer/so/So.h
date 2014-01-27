@@ -72,6 +72,12 @@ namespace Emu {
 
     virtual std::string GetName() const { return "so"; }
     
+    virtual void ResetInterception() {
+      RegalContext * ctx = GetContext();
+      orig.Initialize( ctx->dispatchGL );
+      SoIntercept( this, ctx->dispatchGL );
+    }
+    
     virtual bool Initialize( const std::string & instanceInfo ) {
       RegalContext * ctx = GetContext();
       

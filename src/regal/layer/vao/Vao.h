@@ -117,7 +117,7 @@ namespace Emu
     
     virtual std::string GetName() const { return "vao"; }
     
-    virtual void ResetIntercept() {
+    virtual void ResetInterception() {
       RegalContext * ctx = GetContext();
       orig.Initialize( ctx->dispatchGL );
       VaoIntercept( this, ctx->dispatchGL );

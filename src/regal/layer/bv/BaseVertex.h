@@ -68,7 +68,7 @@ namespace Emu {
 {
   BaseVertex( RegalContext * ctx ) : Layer( ctx ) {}
   
-  virtual std::string GetName() { return "bv"; }
+  virtual std::string GetName() const { return "bv"; }
   
   virtual void ResetInterception() {
     RegalContext * ctx = GetContext();

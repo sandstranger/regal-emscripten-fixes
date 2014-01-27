@@ -1,6 +1,6 @@
 [
   {
-    "constructor": "createFilter",
-    "module": 0
+    "constructor": "createFilt",
+    "module": "builtin"
   }
 ]

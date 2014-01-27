@@ -92,7 +92,7 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
     return true;
   }
   
-  virtual void ResetIntercept() {
+  virtual void ResetInterception() {
     RegalContext * ctx = GetContext();
     orig.Initialize( ctx->dispatchGL );
     PpaIntercept( this, ctx->dispatchGL );

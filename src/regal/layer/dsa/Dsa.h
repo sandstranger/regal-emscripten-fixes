@@ -70,7 +70,7 @@ namespace Emu {
   {
     Dsa( RegalContext * ctx ) : Layer(ctx) {}
 
-    virtual std::string GetName() { return "dsa"; }
+    virtual std::string GetName() const { return "dsa"; }
 
     virtual void ResetInterception() {
       RegalContext * ctx = GetContext();

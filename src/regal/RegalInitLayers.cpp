@@ -22,21 +22,31 @@ using namespace std;
 #include "RegalContext.h"
 #include "RegalDispatch.h"
 
+extern "C" {
+
+Regal::Layer * createFilt(Regal::RegalContext *);
+
+}
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
 
 typedef Layer *(*Constructor)( RegalContext * ctx );
 
+void * mod = NULL;
 Constructor GetConstructor( const char * constructorName ) {
-  Constructor c = reinterpret_cast<Constructor>( dlsym( NULL, constructorName ) );
+  if( mod == NULL ) {
+     mod = dlopen( NULL, RTLD_LAZY );
+  }
+  Constructor c = reinterpret_cast<Constructor>( dlsym( mod, constructorName ) );
   return c;
 }
 
 void InitLayers( RegalContext * ctx ) {
   Constructor constr = NULL;
   Layer * layer = NULL;
-  constr = GetConstructor( "createFilter" );
+  constr = createFilt;
   if( constr ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );

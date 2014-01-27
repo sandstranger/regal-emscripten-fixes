@@ -172,7 +172,11 @@ namespace Emu {
     TexC( RegalContext * ctx );
     virtual std::string GetName() const { return "texc"; }
     virtual bool Initialize( const std::string & instanceInfo );
-    virtual void ResetIntercept();
+    virtual void ResetInterception() {
+      RegalContext * ctx = GetContext();
+      orig.Initialize( ctx->dispatchGL );
+      TexCIntercept( this, ctx->dispatchGL );
+    }
     
     void Reset_();
     

@@ -60,7 +60,7 @@ struct Quads : public Layer
   Quads( RegalContext * ctx ) : Layer( ctx ) {}
   virtual std::string GetName() const { return "quads"; }
   virtual bool Initialize( const std::string & instanceInfo );
-  virtual void ResetIntercept();
+  virtual void ResetInterception();
 
   bool glDrawArrays(GLenum mode, GLint first, GLsizei count);
 
