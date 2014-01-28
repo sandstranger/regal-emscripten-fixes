@@ -19717,7 +19717,7 @@ static void REGAL_CALL log_glAddSwapHintRectWIN(Layer *_layer, GLint x, GLint y,
 
 static BOOL REGAL_CALL log_wglSetStereoEmitterState3DL(Layer *_layer, HDC hDC, UINT uState)
 {
-    BOOL  ret = RwglSetStereoEmitterState3DL(dispatchGlobal, hDC, uState);
+    BOOL  ret = RwglSetStereoEmitterState3DL(nextGlobal, hDC, uState);
     Driver("wglSetStereoEmitterState3DL","(", print_optional(hDC,Logging::pointers), ", ", uState, ")", " returned ", ret);
     return ret;
 }
@@ -19726,62 +19726,62 @@ static BOOL REGAL_CALL log_wglSetStereoEmitterState3DL(Layer *_layer, HDC hDC, U
 
 static VOID REGAL_CALL log_wglBlitContextFramebufferAMD(Layer *_layer, HGLRC dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
-    RwglBlitContextFramebufferAMD(dispatchGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    RwglBlitContextFramebufferAMD(nextGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
     Driver("wglBlitContextFramebufferAMD","(", print_optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ", ", GLblitFramebufferToString(mask), ", ", toString(filter), ")");
 }
 
 static HGLRC REGAL_CALL log_wglCreateAssociatedContextAMD(Layer *_layer, UINT id)
 {
-    HGLRC  ret = RwglCreateAssociatedContextAMD(dispatchGlobal, id);
+    HGLRC  ret = RwglCreateAssociatedContextAMD(nextGlobal, id);
     Driver("wglCreateAssociatedContextAMD","(", id, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static HGLRC REGAL_CALL log_wglCreateAssociatedContextAttribsAMD(Layer *_layer, UINT id, HGLRC hShareContext, const int *attribList)
 {
-    HGLRC  ret = RwglCreateAssociatedContextAttribsAMD(dispatchGlobal, id, hShareContext, attribList);
+    HGLRC  ret = RwglCreateAssociatedContextAttribsAMD(nextGlobal, id, hShareContext, attribList);
     Driver("wglCreateAssociatedContextAttribsAMD","(", id, ", ", print_optional(hShareContext,Logging::pointers), ", ", print_optional(attribList,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDeleteAssociatedContextAMD(Layer *_layer, HGLRC hglrc)
 {
-    BOOL  ret = RwglDeleteAssociatedContextAMD(dispatchGlobal, hglrc);
+    BOOL  ret = RwglDeleteAssociatedContextAMD(nextGlobal, hglrc);
     Driver("wglDeleteAssociatedContextAMD","(", print_optional(hglrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static UINT REGAL_CALL log_wglGetContextGPUIDAMD(Layer *_layer, HGLRC hglrc)
 {
-    UINT  ret = RwglGetContextGPUIDAMD(dispatchGlobal, hglrc);
+    UINT  ret = RwglGetContextGPUIDAMD(nextGlobal, hglrc);
     Driver("wglGetContextGPUIDAMD","(", print_optional(hglrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static HGLRC REGAL_CALL log_wglGetCurrentAssociatedContextAMD(Layer *_layer)
 {
-    HGLRC  ret = RwglGetCurrentAssociatedContextAMD(dispatchGlobal);
+    HGLRC  ret = RwglGetCurrentAssociatedContextAMD(nextGlobal);
     Driver("wglGetCurrentAssociatedContextAMD","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static UINT REGAL_CALL log_wglGetGPUIDsAMD(Layer *_layer, UINT maxCount, UINT *ids)
 {
-    UINT  ret = RwglGetGPUIDsAMD(dispatchGlobal, maxCount, ids);
+    UINT  ret = RwglGetGPUIDsAMD(nextGlobal, maxCount, ids);
     Driver("wglGetGPUIDsAMD","(", maxCount, ", ", print_array(ids,maxCount), ")", " returned ", ret);
     return ret;
 }
 
 static INT REGAL_CALL log_wglGetGPUInfoAMD(Layer *_layer, UINT id, int property, GLenum dataType, UINT size, void *data)
 {
-    INT  ret = RwglGetGPUInfoAMD(dispatchGlobal, id, property, dataType, size, data);
+    INT  ret = RwglGetGPUInfoAMD(nextGlobal, id, property, dataType, size, data);
     Driver("wglGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", print_optional(data,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglMakeAssociatedContextCurrentAMD(Layer *_layer, HGLRC hglrc)
 {
-    BOOL  ret = RwglMakeAssociatedContextCurrentAMD(dispatchGlobal, hglrc);
+    BOOL  ret = RwglMakeAssociatedContextCurrentAMD(nextGlobal, hglrc);
     Driver("wglMakeAssociatedContextCurrentAMD","(", print_optional(hglrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -19790,27 +19790,27 @@ static BOOL REGAL_CALL log_wglMakeAssociatedContextCurrentAMD(Layer *_layer, HGL
 
 static HANDLE REGAL_CALL log_wglCreateBufferRegionARB(Layer *_layer, HDC hDC, int iLayerPlane, UINT uType)
 {
-    HANDLE  ret = RwglCreateBufferRegionARB(dispatchGlobal, hDC, iLayerPlane, uType);
+    HANDLE  ret = RwglCreateBufferRegionARB(nextGlobal, hDC, iLayerPlane, uType);
     Driver("wglCreateBufferRegionARB","(", print_optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", uType, ")", " returned ", ret);
     return ret;
 }
 
 static VOID REGAL_CALL log_wglDeleteBufferRegionARB(Layer *_layer, HANDLE hRegion)
 {
-    RwglDeleteBufferRegionARB(dispatchGlobal, hRegion);
+    RwglDeleteBufferRegionARB(nextGlobal, hRegion);
     Driver("wglDeleteBufferRegionARB","(", hRegion, ")");
 }
 
 static BOOL REGAL_CALL log_wglRestoreBufferRegionARB(Layer *_layer, HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc)
 {
-    BOOL  ret = RwglRestoreBufferRegionARB(dispatchGlobal, hRegion, x, y, width, height, xSrc, ySrc);
+    BOOL  ret = RwglRestoreBufferRegionARB(nextGlobal, hRegion, x, y, width, height, xSrc, ySrc);
     Driver("wglRestoreBufferRegionARB","(", hRegion, ", ", x, ", ", y, ", ", width, ", ", height, ", ", xSrc, ", ", ySrc, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSaveBufferRegionARB(Layer *_layer, HANDLE hRegion, int x, int y, int width, int height)
 {
-    BOOL  ret = RwglSaveBufferRegionARB(dispatchGlobal, hRegion, x, y, width, height);
+    BOOL  ret = RwglSaveBufferRegionARB(nextGlobal, hRegion, x, y, width, height);
     Driver("wglSaveBufferRegionARB","(", hRegion, ", ", x, ", ", y, ", ", width, ", ", height, ")", " returned ", ret);
     return ret;
 }
@@ -19819,7 +19819,7 @@ static BOOL REGAL_CALL log_wglSaveBufferRegionARB(Layer *_layer, HANDLE hRegion,
 
 static HGLRC REGAL_CALL log_wglCreateContextAttribsARB(Layer *_layer, HDC hDC, HGLRC hShareContext, const int *piAttribList)
 {
-    HGLRC  ret = RwglCreateContextAttribsARB(dispatchGlobal, hDC, hShareContext, piAttribList);
+    HGLRC  ret = RwglCreateContextAttribsARB(nextGlobal, hDC, hShareContext, piAttribList);
     Driver("wglCreateContextAttribsARB","(", print_optional(hDC,Logging::pointers), ", ", print_optional(hShareContext,Logging::pointers), ", ", print_optional(piAttribList,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -19828,7 +19828,7 @@ static HGLRC REGAL_CALL log_wglCreateContextAttribsARB(Layer *_layer, HDC hDC, H
 
 static const char *REGAL_CALL log_wglGetExtensionsStringARB(Layer *_layer, HDC hDC)
 {
-    const char * ret = RwglGetExtensionsStringARB(dispatchGlobal, hDC);
+    const char * ret = RwglGetExtensionsStringARB(nextGlobal, hDC);
     Driver("wglGetExtensionsStringARB","(", print_optional(hDC,Logging::pointers), ")", " returned ", print_quote(ret,'"'));
     return ret;
 }
@@ -19837,14 +19837,14 @@ static const char *REGAL_CALL log_wglGetExtensionsStringARB(Layer *_layer, HDC h
 
 static HDC REGAL_CALL log_wglGetCurrentReadDCARB(Layer *_layer)
 {
-    HDC  ret = RwglGetCurrentReadDCARB(dispatchGlobal);
+    HDC  ret = RwglGetCurrentReadDCARB(nextGlobal);
     Driver("wglGetCurrentReadDCARB","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglMakeContextCurrentARB(Layer *_layer, HDC hDrawDC, HDC hReadDC, HGLRC hglrc)
 {
-    BOOL  ret = RwglMakeContextCurrentARB(dispatchGlobal, hDrawDC, hReadDC, hglrc);
+    BOOL  ret = RwglMakeContextCurrentARB(nextGlobal, hDrawDC, hReadDC, hglrc);
     Driver("wglMakeContextCurrentARB","(", print_optional(hDrawDC,Logging::pointers), ", ", print_optional(hReadDC,Logging::pointers), ", ", print_optional(hglrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -19853,35 +19853,35 @@ static BOOL REGAL_CALL log_wglMakeContextCurrentARB(Layer *_layer, HDC hDrawDC, 
 
 static HPBUFFERARB REGAL_CALL log_wglCreatePbufferARB(Layer *_layer, HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList)
 {
-    HPBUFFERARB  ret = RwglCreatePbufferARB(dispatchGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
+    HPBUFFERARB  ret = RwglCreatePbufferARB(nextGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
     Driver("wglCreatePbufferARB","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", print_optional(piAttribList,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDestroyPbufferARB(Layer *_layer, HPBUFFERARB hPbuffer)
 {
-    BOOL  ret = RwglDestroyPbufferARB(dispatchGlobal, hPbuffer);
+    BOOL  ret = RwglDestroyPbufferARB(nextGlobal, hPbuffer);
     Driver("wglDestroyPbufferARB","(", print_optional(hPbuffer,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static HDC REGAL_CALL log_wglGetPbufferDCARB(Layer *_layer, HPBUFFERARB hPbuffer)
 {
-    HDC  ret = RwglGetPbufferDCARB(dispatchGlobal, hPbuffer);
+    HDC  ret = RwglGetPbufferDCARB(nextGlobal, hPbuffer);
     Driver("wglGetPbufferDCARB","(", print_optional(hPbuffer,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryPbufferARB(Layer *_layer, HPBUFFERARB hPbuffer, int iAttribute, int *piValue)
 {
-    BOOL  ret = RwglQueryPbufferARB(dispatchGlobal, hPbuffer, iAttribute, piValue);
+    BOOL  ret = RwglQueryPbufferARB(nextGlobal, hPbuffer, iAttribute, piValue);
     Driver("wglQueryPbufferARB","(", print_optional(hPbuffer,Logging::pointers), ", ", iAttribute, ", ", print_array(piValue,1), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_wglReleasePbufferDCARB(Layer *_layer, HPBUFFERARB hPbuffer, HDC hDC)
 {
-    int  ret = RwglReleasePbufferDCARB(dispatchGlobal, hPbuffer, hDC);
+    int  ret = RwglReleasePbufferDCARB(nextGlobal, hPbuffer, hDC);
     Driver("wglReleasePbufferDCARB","(", print_optional(hPbuffer,Logging::pointers), ", ", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -19890,21 +19890,21 @@ static int REGAL_CALL log_wglReleasePbufferDCARB(Layer *_layer, HPBUFFERARB hPbu
 
 static BOOL REGAL_CALL log_wglChoosePixelFormatARB(Layer *_layer, HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats)
 {
-    BOOL  ret = RwglChoosePixelFormatARB(dispatchGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
+    BOOL  ret = RwglChoosePixelFormatARB(nextGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
     Driver("wglChoosePixelFormatARB","(", print_optional(hDC,Logging::pointers), ", ", print_optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ", ", print_optional(piFormats,Logging::pointers), ", ", print_array(nNumFormats,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetPixelFormatAttribfvARB(Layer *_layer, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues)
 {
-    BOOL  ret = RwglGetPixelFormatAttribfvARB(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
+    BOOL  ret = RwglGetPixelFormatAttribfvARB(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
     Driver("wglGetPixelFormatAttribfvARB","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", print_array(piAttributes,nAttributes), ", ", print_array(pfValues,nAttributes), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetPixelFormatAttribivARB(Layer *_layer, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues)
 {
-    BOOL  ret = RwglGetPixelFormatAttribivARB(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
+    BOOL  ret = RwglGetPixelFormatAttribivARB(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
     Driver("wglGetPixelFormatAttribivARB","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", print_array(piAttributes,nAttributes), ", ", print_array(piValues,nAttributes), ")", " returned ", ret);
     return ret;
 }
@@ -19913,21 +19913,21 @@ static BOOL REGAL_CALL log_wglGetPixelFormatAttribivARB(Layer *_layer, HDC hDC, 
 
 static BOOL REGAL_CALL log_wglBindTexImageARB(Layer *_layer, HPBUFFERARB hPbuffer, int iBuffer)
 {
-    BOOL  ret = RwglBindTexImageARB(dispatchGlobal, hPbuffer, iBuffer);
+    BOOL  ret = RwglBindTexImageARB(nextGlobal, hPbuffer, iBuffer);
     Driver("wglBindTexImageARB","(", print_optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglReleaseTexImageARB(Layer *_layer, HPBUFFERARB hPbuffer, int iBuffer)
 {
-    BOOL  ret = RwglReleaseTexImageARB(dispatchGlobal, hPbuffer, iBuffer);
+    BOOL  ret = RwglReleaseTexImageARB(nextGlobal, hPbuffer, iBuffer);
     Driver("wglReleaseTexImageARB","(", print_optional(hPbuffer,Logging::pointers), ", ", iBuffer, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSetPbufferAttribARB(Layer *_layer, HPBUFFERARB hPbuffer, const int *piAttribList)
 {
-    BOOL  ret = RwglSetPbufferAttribARB(dispatchGlobal, hPbuffer, piAttribList);
+    BOOL  ret = RwglSetPbufferAttribARB(nextGlobal, hPbuffer, piAttribList);
     Driver("wglSetPbufferAttribARB","(", print_optional(hPbuffer,Logging::pointers), ", ", print_optional(piAttribList,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -19936,27 +19936,27 @@ static BOOL REGAL_CALL log_wglSetPbufferAttribARB(Layer *_layer, HPBUFFERARB hPb
 
 static GLboolean REGAL_CALL log_wglBindDisplayColorTableEXT(Layer *_layer, GLushort id)
 {
-    GLboolean  ret = RwglBindDisplayColorTableEXT(dispatchGlobal, id);
+    GLboolean  ret = RwglBindDisplayColorTableEXT(nextGlobal, id);
     Driver("wglBindDisplayColorTableEXT","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
 static GLboolean REGAL_CALL log_wglCreateDisplayColorTableEXT(Layer *_layer, GLushort id)
 {
-    GLboolean  ret = RwglCreateDisplayColorTableEXT(dispatchGlobal, id);
+    GLboolean  ret = RwglCreateDisplayColorTableEXT(nextGlobal, id);
     Driver("wglCreateDisplayColorTableEXT","(", id, ")", " returned ", toString(ret));
     return ret;
 }
 
 static VOID REGAL_CALL log_wglDestroyDisplayColorTableEXT(Layer *_layer, GLushort id)
 {
-    RwglDestroyDisplayColorTableEXT(dispatchGlobal, id);
+    RwglDestroyDisplayColorTableEXT(nextGlobal, id);
     Driver("wglDestroyDisplayColorTableEXT","(", id, ")");
 }
 
 static GLboolean REGAL_CALL log_wglLoadDisplayColorTableEXT(Layer *_layer, const GLushort *table, GLuint length)
 {
-    GLboolean  ret = RwglLoadDisplayColorTableEXT(dispatchGlobal, table, length);
+    GLboolean  ret = RwglLoadDisplayColorTableEXT(nextGlobal, table, length);
     Driver("wglLoadDisplayColorTableEXT","(", print_array(table,length), ", ", length, ")", " returned ", toString(ret));
     return ret;
 }
@@ -19965,7 +19965,7 @@ static GLboolean REGAL_CALL log_wglLoadDisplayColorTableEXT(Layer *_layer, const
 
 static const char *REGAL_CALL log_wglGetExtensionsStringEXT(Layer *_layer)
 {
-    const char * ret = RwglGetExtensionsStringEXT(dispatchGlobal);
+    const char * ret = RwglGetExtensionsStringEXT(nextGlobal);
     Driver("wglGetExtensionsStringEXT","()", " returned ", print_quote(ret,'"'));
     return ret;
 }
@@ -19974,14 +19974,14 @@ static const char *REGAL_CALL log_wglGetExtensionsStringEXT(Layer *_layer)
 
 static HDC REGAL_CALL log_wglGetCurrentReadDCEXT(Layer *_layer)
 {
-    HDC  ret = RwglGetCurrentReadDCEXT(dispatchGlobal);
+    HDC  ret = RwglGetCurrentReadDCEXT(nextGlobal);
     Driver("wglGetCurrentReadDCEXT","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglMakeContextCurrentEXT(Layer *_layer, HDC hDrawDC, HDC hReadDC, HGLRC hglrc)
 {
-    BOOL  ret = RwglMakeContextCurrentEXT(dispatchGlobal, hDrawDC, hReadDC, hglrc);
+    BOOL  ret = RwglMakeContextCurrentEXT(nextGlobal, hDrawDC, hReadDC, hglrc);
     Driver("wglMakeContextCurrentEXT","(", print_optional(hDrawDC,Logging::pointers), ", ", print_optional(hReadDC,Logging::pointers), ", ", print_optional(hglrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -19990,35 +19990,35 @@ static BOOL REGAL_CALL log_wglMakeContextCurrentEXT(Layer *_layer, HDC hDrawDC, 
 
 static HPBUFFEREXT REGAL_CALL log_wglCreatePbufferEXT(Layer *_layer, HDC hDC, int iPixelFormat, int iWidth, int iHeight, const int *piAttribList)
 {
-    HPBUFFEREXT  ret = RwglCreatePbufferEXT(dispatchGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
+    HPBUFFEREXT  ret = RwglCreatePbufferEXT(nextGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
     Driver("wglCreatePbufferEXT","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iWidth, ", ", iHeight, ", ", print_optional(piAttribList,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDestroyPbufferEXT(Layer *_layer, HPBUFFEREXT hPbuffer)
 {
-    BOOL  ret = RwglDestroyPbufferEXT(dispatchGlobal, hPbuffer);
+    BOOL  ret = RwglDestroyPbufferEXT(nextGlobal, hPbuffer);
     Driver("wglDestroyPbufferEXT","(", print_optional(hPbuffer,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static HDC REGAL_CALL log_wglGetPbufferDCEXT(Layer *_layer, HPBUFFEREXT hPbuffer)
 {
-    HDC  ret = RwglGetPbufferDCEXT(dispatchGlobal, hPbuffer);
+    HDC  ret = RwglGetPbufferDCEXT(nextGlobal, hPbuffer);
     Driver("wglGetPbufferDCEXT","(", print_optional(hPbuffer,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryPbufferEXT(Layer *_layer, HPBUFFEREXT hPbuffer, int iAttribute, int *piValue)
 {
-    BOOL  ret = RwglQueryPbufferEXT(dispatchGlobal, hPbuffer, iAttribute, piValue);
+    BOOL  ret = RwglQueryPbufferEXT(nextGlobal, hPbuffer, iAttribute, piValue);
     Driver("wglQueryPbufferEXT","(", print_optional(hPbuffer,Logging::pointers), ", ", iAttribute, ", ", print_array(piValue,1), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_wglReleasePbufferDCEXT(Layer *_layer, HPBUFFEREXT hPbuffer, HDC hDC)
 {
-    int  ret = RwglReleasePbufferDCEXT(dispatchGlobal, hPbuffer, hDC);
+    int  ret = RwglReleasePbufferDCEXT(nextGlobal, hPbuffer, hDC);
     Driver("wglReleasePbufferDCEXT","(", print_optional(hPbuffer,Logging::pointers), ", ", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20027,21 +20027,21 @@ static int REGAL_CALL log_wglReleasePbufferDCEXT(Layer *_layer, HPBUFFEREXT hPbu
 
 static BOOL REGAL_CALL log_wglChoosePixelFormatEXT(Layer *_layer, HDC hDC, const int *piAttribIList, const FLOAT *pfAttribFList, UINT nMaxFormats, int *piFormats, UINT *nNumFormats)
 {
-    BOOL  ret = RwglChoosePixelFormatEXT(dispatchGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
+    BOOL  ret = RwglChoosePixelFormatEXT(nextGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
     Driver("wglChoosePixelFormatEXT","(", print_optional(hDC,Logging::pointers), ", ", print_optional(piAttribIList,Logging::pointers), ", ", pfAttribFList, ", ", nMaxFormats, ", ", print_optional(piFormats,Logging::pointers), ", ", print_array(nNumFormats,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetPixelFormatAttribfvEXT(Layer *_layer, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, FLOAT *pfValues)
 {
-    BOOL  ret = RwglGetPixelFormatAttribfvEXT(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
+    BOOL  ret = RwglGetPixelFormatAttribfvEXT(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
     Driver("wglGetPixelFormatAttribfvEXT","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", print_array(piAttributes,nAttributes), ", ", print_array(pfValues,nAttributes), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetPixelFormatAttribivEXT(Layer *_layer, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nAttributes, const int *piAttributes, int *piValues)
 {
-    BOOL  ret = RwglGetPixelFormatAttribivEXT(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
+    BOOL  ret = RwglGetPixelFormatAttribivEXT(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
     Driver("wglGetPixelFormatAttribivEXT","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nAttributes, ", ", print_array(piAttributes,nAttributes), ", ", print_array(piValues,nAttributes), ")", " returned ", ret);
     return ret;
 }
@@ -20050,14 +20050,14 @@ static BOOL REGAL_CALL log_wglGetPixelFormatAttribivEXT(Layer *_layer, HDC hDC, 
 
 static int REGAL_CALL log_wglGetSwapIntervalEXT(Layer *_layer)
 {
-    int  ret = RwglGetSwapIntervalEXT(dispatchGlobal);
+    int  ret = RwglGetSwapIntervalEXT(nextGlobal);
     Driver("wglGetSwapIntervalEXT","()", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSwapIntervalEXT(Layer *_layer, int interval)
 {
-    BOOL  ret = RwglSwapIntervalEXT(dispatchGlobal, interval);
+    BOOL  ret = RwglSwapIntervalEXT(nextGlobal, interval);
     Driver("wglSwapIntervalEXT","(", interval, ")", " returned ", ret);
     return ret;
 }
@@ -20066,42 +20066,42 @@ static BOOL REGAL_CALL log_wglSwapIntervalEXT(Layer *_layer, int interval)
 
 static BOOL REGAL_CALL log_SwapBuffers(Layer *_layer, HDC hDC)
 {
-    BOOL  ret = RSwapBuffers(dispatchGlobal, hDC);
+    BOOL  ret = RSwapBuffers(nextGlobal, hDC);
     Driver("SwapBuffers","(", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_wglChoosePixelFormat(Layer *_layer, HDC hDC, const PIXELFORMATDESCRIPTOR *ppfd)
 {
-    int  ret = RwglChoosePixelFormat(dispatchGlobal, hDC, ppfd);
+    int  ret = RwglChoosePixelFormat(nextGlobal, hDC, ppfd);
     Driver("wglChoosePixelFormat","(", print_optional(hDC,Logging::pointers), ", ", print_optional(ppfd,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_wglDescribePixelFormat(Layer *_layer, HDC hDC, int iPixelFormat, UINT nBytes, LPPIXELFORMATDESCRIPTOR ppfd)
 {
-    int  ret = RwglDescribePixelFormat(dispatchGlobal, hDC, iPixelFormat, nBytes, ppfd);
+    int  ret = RwglDescribePixelFormat(nextGlobal, hDC, iPixelFormat, nBytes, ppfd);
     Driver("wglDescribePixelFormat","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", nBytes, ", ", print_optional(ppfd,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_wglGetPixelFormat(Layer *_layer, HDC hDC)
 {
-    int  ret = RwglGetPixelFormat(dispatchGlobal, hDC);
+    int  ret = RwglGetPixelFormat(nextGlobal, hDC);
     Driver("wglGetPixelFormat","(", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSetPixelFormat(Layer *_layer, HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd)
 {
-    BOOL  ret = RwglSetPixelFormat(dispatchGlobal, hDC, iPixelFormat, ppfd);
+    BOOL  ret = RwglSetPixelFormat(nextGlobal, hDC, iPixelFormat, ppfd);
     Driver("wglSetPixelFormat","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", print_optional(ppfd,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSwapBuffers(Layer *_layer, HDC hDC)
 {
-    BOOL  ret = RwglSwapBuffers(dispatchGlobal, hDC);
+    BOOL  ret = RwglSwapBuffers(nextGlobal, hDC);
     Driver("wglSwapBuffers","(", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20110,14 +20110,14 @@ static BOOL REGAL_CALL log_wglSwapBuffers(Layer *_layer, HDC hDC)
 
 static BOOL REGAL_CALL log_wglGetDigitalVideoParametersI3D(Layer *_layer, HDC hDC, int iAttribute, int *piValue)
 {
-    BOOL  ret = RwglGetDigitalVideoParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+    BOOL  ret = RwglGetDigitalVideoParametersI3D(nextGlobal, hDC, iAttribute, piValue);
     Driver("wglGetDigitalVideoParametersI3D","(", print_optional(hDC,Logging::pointers), ", ", iAttribute, ", ", print_optional(piValue,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSetDigitalVideoParametersI3D(Layer *_layer, HDC hDC, int iAttribute, const int *piValue)
 {
-    BOOL  ret = RwglSetDigitalVideoParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+    BOOL  ret = RwglSetDigitalVideoParametersI3D(nextGlobal, hDC, iAttribute, piValue);
     Driver("wglSetDigitalVideoParametersI3D","(", print_optional(hDC,Logging::pointers), ", ", iAttribute, ", ", print_optional(piValue,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20126,28 +20126,28 @@ static BOOL REGAL_CALL log_wglSetDigitalVideoParametersI3D(Layer *_layer, HDC hD
 
 static BOOL REGAL_CALL log_wglGetGammaTableI3D(Layer *_layer, HDC hDC, int iEntries, USHORT *puRed, USHORT *puGreen, USHORT *puBlue)
 {
-    BOOL  ret = RwglGetGammaTableI3D(dispatchGlobal, hDC, iEntries, puRed, puGreen, puBlue);
+    BOOL  ret = RwglGetGammaTableI3D(nextGlobal, hDC, iEntries, puRed, puGreen, puBlue);
     Driver("wglGetGammaTableI3D","(", print_optional(hDC,Logging::pointers), ", ", iEntries, ", ", print_array(puRed,iEntries), ", ", print_array(puGreen,iEntries), ", ", print_array(puBlue,iEntries), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetGammaTableParametersI3D(Layer *_layer, HDC hDC, int iAttribute, int *piValue)
 {
-    BOOL  ret = RwglGetGammaTableParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+    BOOL  ret = RwglGetGammaTableParametersI3D(nextGlobal, hDC, iAttribute, piValue);
     Driver("wglGetGammaTableParametersI3D","(", print_optional(hDC,Logging::pointers), ", ", iAttribute, ", ", print_optional(piValue,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSetGammaTableI3D(Layer *_layer, HDC hDC, int iEntries, const USHORT *puRed, const USHORT *puGreen, const USHORT *puBlue)
 {
-    BOOL  ret = RwglSetGammaTableI3D(dispatchGlobal, hDC, iEntries, puRed, puGreen, puBlue);
+    BOOL  ret = RwglSetGammaTableI3D(nextGlobal, hDC, iEntries, puRed, puGreen, puBlue);
     Driver("wglSetGammaTableI3D","(", print_optional(hDC,Logging::pointers), ", ", iEntries, ", ", print_array(puRed,iEntries), ", ", print_array(puGreen,iEntries), ", ", print_array(puBlue,iEntries), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSetGammaTableParametersI3D(Layer *_layer, HDC hDC, int iAttribute, const int *piValue)
 {
-    BOOL  ret = RwglSetGammaTableParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+    BOOL  ret = RwglSetGammaTableParametersI3D(nextGlobal, hDC, iAttribute, piValue);
     Driver("wglSetGammaTableParametersI3D","(", print_optional(hDC,Logging::pointers), ", ", iAttribute, ", ", print_optional(piValue,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20156,84 +20156,84 @@ static BOOL REGAL_CALL log_wglSetGammaTableParametersI3D(Layer *_layer, HDC hDC,
 
 static BOOL REGAL_CALL log_wglDisableGenlockI3D(Layer *_layer, HDC hDC)
 {
-    BOOL  ret = RwglDisableGenlockI3D(dispatchGlobal, hDC);
+    BOOL  ret = RwglDisableGenlockI3D(nextGlobal, hDC);
     Driver("wglDisableGenlockI3D","(", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglEnableGenlockI3D(Layer *_layer, HDC hDC)
 {
-    BOOL  ret = RwglEnableGenlockI3D(dispatchGlobal, hDC);
+    BOOL  ret = RwglEnableGenlockI3D(nextGlobal, hDC);
     Driver("wglEnableGenlockI3D","(", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGenlockSampleRateI3D(Layer *_layer, HDC hDC, UINT uRate)
 {
-    BOOL  ret = RwglGenlockSampleRateI3D(dispatchGlobal, hDC, uRate);
+    BOOL  ret = RwglGenlockSampleRateI3D(nextGlobal, hDC, uRate);
     Driver("wglGenlockSampleRateI3D","(", print_optional(hDC,Logging::pointers), ", ", uRate, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGenlockSourceDelayI3D(Layer *_layer, HDC hDC, UINT uDelay)
 {
-    BOOL  ret = RwglGenlockSourceDelayI3D(dispatchGlobal, hDC, uDelay);
+    BOOL  ret = RwglGenlockSourceDelayI3D(nextGlobal, hDC, uDelay);
     Driver("wglGenlockSourceDelayI3D","(", print_optional(hDC,Logging::pointers), ", ", uDelay, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGenlockSourceEdgeI3D(Layer *_layer, HDC hDC, UINT uEdge)
 {
-    BOOL  ret = RwglGenlockSourceEdgeI3D(dispatchGlobal, hDC, uEdge);
+    BOOL  ret = RwglGenlockSourceEdgeI3D(nextGlobal, hDC, uEdge);
     Driver("wglGenlockSourceEdgeI3D","(", print_optional(hDC,Logging::pointers), ", ", uEdge, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGenlockSourceI3D(Layer *_layer, HDC hDC, UINT uSource)
 {
-    BOOL  ret = RwglGenlockSourceI3D(dispatchGlobal, hDC, uSource);
+    BOOL  ret = RwglGenlockSourceI3D(nextGlobal, hDC, uSource);
     Driver("wglGenlockSourceI3D","(", print_optional(hDC,Logging::pointers), ", ", uSource, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetGenlockSampleRateI3D(Layer *_layer, HDC hDC, UINT *uRate)
 {
-    BOOL  ret = RwglGetGenlockSampleRateI3D(dispatchGlobal, hDC, uRate);
+    BOOL  ret = RwglGetGenlockSampleRateI3D(nextGlobal, hDC, uRate);
     Driver("wglGetGenlockSampleRateI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(uRate,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetGenlockSourceDelayI3D(Layer *_layer, HDC hDC, UINT *uDelay)
 {
-    BOOL  ret = RwglGetGenlockSourceDelayI3D(dispatchGlobal, hDC, uDelay);
+    BOOL  ret = RwglGetGenlockSourceDelayI3D(nextGlobal, hDC, uDelay);
     Driver("wglGetGenlockSourceDelayI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(uDelay,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetGenlockSourceEdgeI3D(Layer *_layer, HDC hDC, UINT *uEdge)
 {
-    BOOL  ret = RwglGetGenlockSourceEdgeI3D(dispatchGlobal, hDC, uEdge);
+    BOOL  ret = RwglGetGenlockSourceEdgeI3D(nextGlobal, hDC, uEdge);
     Driver("wglGetGenlockSourceEdgeI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(uEdge,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetGenlockSourceI3D(Layer *_layer, HDC hDC, UINT *uSource)
 {
-    BOOL  ret = RwglGetGenlockSourceI3D(dispatchGlobal, hDC, uSource);
+    BOOL  ret = RwglGetGenlockSourceI3D(nextGlobal, hDC, uSource);
     Driver("wglGetGenlockSourceI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(uSource,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglIsEnabledGenlockI3D(Layer *_layer, HDC hDC, BOOL *pFlag)
 {
-    BOOL  ret = RwglIsEnabledGenlockI3D(dispatchGlobal, hDC, pFlag);
+    BOOL  ret = RwglIsEnabledGenlockI3D(nextGlobal, hDC, pFlag);
     Driver("wglIsEnabledGenlockI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(pFlag,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryGenlockMaxSourceDelayI3D(Layer *_layer, HDC hDC, UINT *uMaxLineDelay, UINT *uMaxPixelDelay)
 {
-    BOOL  ret = RwglQueryGenlockMaxSourceDelayI3D(dispatchGlobal, hDC, uMaxLineDelay, uMaxPixelDelay);
+    BOOL  ret = RwglQueryGenlockMaxSourceDelayI3D(nextGlobal, hDC, uMaxLineDelay, uMaxPixelDelay);
     Driver("wglQueryGenlockMaxSourceDelayI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(uMaxLineDelay,1), ", ", print_array(uMaxPixelDelay,1), ")", " returned ", ret);
     return ret;
 }
@@ -20242,28 +20242,28 @@ static BOOL REGAL_CALL log_wglQueryGenlockMaxSourceDelayI3D(Layer *_layer, HDC h
 
 static BOOL REGAL_CALL log_wglAssociateImageBufferEventsI3D(Layer *_layer, HDC hDC, const HANDLE *pEvent, const LPVOID *pAddress, const DWORD *pSize, UINT count)
 {
-    BOOL  ret = RwglAssociateImageBufferEventsI3D(dispatchGlobal, hDC, pEvent, pAddress, pSize, count);
+    BOOL  ret = RwglAssociateImageBufferEventsI3D(nextGlobal, hDC, pEvent, pAddress, pSize, count);
     Driver("wglAssociateImageBufferEventsI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(pEvent,count), ", ", print_array(pAddress,count), ", ", print_array(pSize,count), ", ", count, ")", " returned ", ret);
     return ret;
 }
 
 static LPVOID REGAL_CALL log_wglCreateImageBufferI3D(Layer *_layer, HDC hDC, DWORD dwSize, UINT uFlags)
 {
-    LPVOID  ret = RwglCreateImageBufferI3D(dispatchGlobal, hDC, dwSize, uFlags);
+    LPVOID  ret = RwglCreateImageBufferI3D(nextGlobal, hDC, dwSize, uFlags);
     Driver("wglCreateImageBufferI3D","(", print_optional(hDC,Logging::pointers), ", ", dwSize, ", ", uFlags, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDestroyImageBufferI3D(Layer *_layer, HDC hDC, LPVOID pAddress)
 {
-    BOOL  ret = RwglDestroyImageBufferI3D(dispatchGlobal, hDC, pAddress);
+    BOOL  ret = RwglDestroyImageBufferI3D(nextGlobal, hDC, pAddress);
     Driver("wglDestroyImageBufferI3D","(", print_optional(hDC,Logging::pointers), ", ", print_optional(pAddress,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglReleaseImageBufferEventsI3D(Layer *_layer, HDC hDC, const LPVOID *pAddress, UINT count)
 {
-    BOOL  ret = RwglReleaseImageBufferEventsI3D(dispatchGlobal, hDC, pAddress, count);
+    BOOL  ret = RwglReleaseImageBufferEventsI3D(nextGlobal, hDC, pAddress, count);
     Driver("wglReleaseImageBufferEventsI3D","(", print_optional(hDC,Logging::pointers), ", ", print_array(pAddress,count), ", ", count, ")", " returned ", ret);
     return ret;
 }
@@ -20272,28 +20272,28 @@ static BOOL REGAL_CALL log_wglReleaseImageBufferEventsI3D(Layer *_layer, HDC hDC
 
 static BOOL REGAL_CALL log_wglDisableFrameLockI3D(Layer *_layer)
 {
-    BOOL  ret = RwglDisableFrameLockI3D(dispatchGlobal);
+    BOOL  ret = RwglDisableFrameLockI3D(nextGlobal);
     Driver("wglDisableFrameLockI3D","()", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglEnableFrameLockI3D(Layer *_layer)
 {
-    BOOL  ret = RwglEnableFrameLockI3D(dispatchGlobal);
+    BOOL  ret = RwglEnableFrameLockI3D(nextGlobal);
     Driver("wglEnableFrameLockI3D","()", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglIsEnabledFrameLockI3D(Layer *_layer, BOOL *pFlag)
 {
-    BOOL  ret = RwglIsEnabledFrameLockI3D(dispatchGlobal, pFlag);
+    BOOL  ret = RwglIsEnabledFrameLockI3D(nextGlobal, pFlag);
     Driver("wglIsEnabledFrameLockI3D","(", print_array(pFlag,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryFrameLockMasterI3D(Layer *_layer, BOOL *pFlag)
 {
-    BOOL  ret = RwglQueryFrameLockMasterI3D(dispatchGlobal, pFlag);
+    BOOL  ret = RwglQueryFrameLockMasterI3D(nextGlobal, pFlag);
     Driver("wglQueryFrameLockMasterI3D","(", print_array(pFlag,1), ")", " returned ", ret);
     return ret;
 }
@@ -20302,28 +20302,28 @@ static BOOL REGAL_CALL log_wglQueryFrameLockMasterI3D(Layer *_layer, BOOL *pFlag
 
 static BOOL REGAL_CALL log_wglBeginFrameTrackingI3D(Layer *_layer)
 {
-    BOOL  ret = RwglBeginFrameTrackingI3D(dispatchGlobal);
+    BOOL  ret = RwglBeginFrameTrackingI3D(nextGlobal);
     Driver("wglBeginFrameTrackingI3D","()", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglEndFrameTrackingI3D(Layer *_layer)
 {
-    BOOL  ret = RwglEndFrameTrackingI3D(dispatchGlobal);
+    BOOL  ret = RwglEndFrameTrackingI3D(nextGlobal);
     Driver("wglEndFrameTrackingI3D","()", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetFrameUsageI3D(Layer *_layer, float *pUsage)
 {
-    BOOL  ret = RwglGetFrameUsageI3D(dispatchGlobal, pUsage);
+    BOOL  ret = RwglGetFrameUsageI3D(nextGlobal, pUsage);
     Driver("wglGetFrameUsageI3D","(", print_array(pUsage,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryFrameTrackingI3D(Layer *_layer, DWORD *pFrameCount, DWORD *pMissedFrames, float *pLastMissedUsage)
 {
-    BOOL  ret = RwglQueryFrameTrackingI3D(dispatchGlobal, pFrameCount, pMissedFrames, pLastMissedUsage);
+    BOOL  ret = RwglQueryFrameTrackingI3D(nextGlobal, pFrameCount, pMissedFrames, pLastMissedUsage);
     Driver("wglQueryFrameTrackingI3D","(", print_array(pFrameCount,1), ", ", print_array(pMissedFrames,1), ", ", print_array(pLastMissedUsage,1), ")", " returned ", ret);
     return ret;
 }
@@ -20332,56 +20332,56 @@ static BOOL REGAL_CALL log_wglQueryFrameTrackingI3D(Layer *_layer, DWORD *pFrame
 
 static BOOL REGAL_CALL log_wglDXCloseDeviceNV(Layer *_layer, HANDLE hDevice)
 {
-    BOOL  ret = RwglDXCloseDeviceNV(dispatchGlobal, hDevice);
+    BOOL  ret = RwglDXCloseDeviceNV(nextGlobal, hDevice);
     Driver("wglDXCloseDeviceNV","(", hDevice, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDXLockObjectsNV(Layer *_layer, HANDLE hDevice, GLint count, HANDLE *hObjects)
 {
-    BOOL  ret = RwglDXLockObjectsNV(dispatchGlobal, hDevice, count, hObjects);
+    BOOL  ret = RwglDXLockObjectsNV(nextGlobal, hDevice, count, hObjects);
     Driver("wglDXLockObjectsNV","(", hDevice, ", ", count, ", ", hObjects, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDXObjectAccessNV(Layer *_layer, HANDLE hObject, GLenum access)
 {
-    BOOL  ret = RwglDXObjectAccessNV(dispatchGlobal, hObject, access);
+    BOOL  ret = RwglDXObjectAccessNV(nextGlobal, hObject, access);
     Driver("wglDXObjectAccessNV","(", hObject, ", ", toString(access), ")", " returned ", ret);
     return ret;
 }
 
 static HANDLE REGAL_CALL log_wglDXOpenDeviceNV(Layer *_layer, GLvoid *dxDevice)
 {
-    HANDLE  ret = RwglDXOpenDeviceNV(dispatchGlobal, dxDevice);
+    HANDLE  ret = RwglDXOpenDeviceNV(nextGlobal, dxDevice);
     Driver("wglDXOpenDeviceNV","(", print_optional(dxDevice,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static HANDLE REGAL_CALL log_wglDXRegisterObjectNV(Layer *_layer, HANDLE hDevice, GLvoid *dxObject, GLuint name, GLenum type, GLenum access)
 {
-    HANDLE  ret = RwglDXRegisterObjectNV(dispatchGlobal, hDevice, dxObject, name, type, access);
+    HANDLE  ret = RwglDXRegisterObjectNV(nextGlobal, hDevice, dxObject, name, type, access);
     Driver("wglDXRegisterObjectNV","(", hDevice, ", ", print_optional(dxObject,Logging::pointers), ", ", name, ", ", toString(type), ", ", toString(access), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDXSetResourceShareHandleNV(Layer *_layer, GLvoid *dxObject, HANDLE shareHandle)
 {
-    BOOL  ret = RwglDXSetResourceShareHandleNV(dispatchGlobal, dxObject, shareHandle);
+    BOOL  ret = RwglDXSetResourceShareHandleNV(nextGlobal, dxObject, shareHandle);
     Driver("wglDXSetResourceShareHandleNV","(", print_optional(dxObject,Logging::pointers), ", ", shareHandle, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDXUnlockObjectsNV(Layer *_layer, HANDLE hDevice, GLint count, HANDLE *hObjects)
 {
-    BOOL  ret = RwglDXUnlockObjectsNV(dispatchGlobal, hDevice, count, hObjects);
+    BOOL  ret = RwglDXUnlockObjectsNV(nextGlobal, hDevice, count, hObjects);
     Driver("wglDXUnlockObjectsNV","(", hDevice, ", ", count, ", ", hObjects, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDXUnregisterObjectNV(Layer *_layer, HANDLE hDevice, HANDLE hObject)
 {
-    BOOL  ret = RwglDXUnregisterObjectNV(dispatchGlobal, hDevice, hObject);
+    BOOL  ret = RwglDXUnregisterObjectNV(nextGlobal, hDevice, hObject);
     Driver("wglDXUnregisterObjectNV","(", hDevice, ", ", hObject, ")", " returned ", ret);
     return ret;
 }
@@ -20390,7 +20390,7 @@ static BOOL REGAL_CALL log_wglDXUnregisterObjectNV(Layer *_layer, HANDLE hDevice
 
 static BOOL REGAL_CALL log_wglCopyImageSubDataNV(Layer *_layer, HGLRC hSrcRC, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, HGLRC hDstRC, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
 {
-    BOOL  ret = RwglCopyImageSubDataNV(dispatchGlobal, hSrcRC, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, hDstRC, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
+    BOOL  ret = RwglCopyImageSubDataNV(nextGlobal, hSrcRC, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, hDstRC, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
     Driver("wglCopyImageSubDataNV","(", print_optional(hSrcRC,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", print_optional(hDstRC,Logging::pointers), ", ", dstName, ", ", toString(dstTarget), ", ", dstLevel, ", ", dstX, ", ", dstY, ", ", dstZ, ")", " returned ", ret);
     return ret;
 }
@@ -20399,35 +20399,35 @@ static BOOL REGAL_CALL log_wglCopyImageSubDataNV(Layer *_layer, HGLRC hSrcRC, GL
 
 static HDC REGAL_CALL log_wglCreateAffinityDCNV(Layer *_layer, const HGPUNV *phGpuList)
 {
-    HDC  ret = RwglCreateAffinityDCNV(dispatchGlobal, phGpuList);
+    HDC  ret = RwglCreateAffinityDCNV(nextGlobal, phGpuList);
     Driver("wglCreateAffinityDCNV","(", phGpuList, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDeleteDCNV(Layer *_layer, HDC hAffinityDC)
 {
-    BOOL  ret = RwglDeleteDCNV(dispatchGlobal, hAffinityDC);
+    BOOL  ret = RwglDeleteDCNV(nextGlobal, hAffinityDC);
     Driver("wglDeleteDCNV","(", print_optional(hAffinityDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglEnumGpuDevicesNV(Layer *_layer, HGPUNV hGpu, UINT iDeviceIndex, PGPU_DEVICE lpGpuDevice)
 {
-    BOOL  ret = RwglEnumGpuDevicesNV(dispatchGlobal, hGpu, iDeviceIndex, lpGpuDevice);
+    BOOL  ret = RwglEnumGpuDevicesNV(nextGlobal, hGpu, iDeviceIndex, lpGpuDevice);
     Driver("wglEnumGpuDevicesNV","(", print_optional(hGpu,Logging::pointers), ", ", iDeviceIndex, ", ", print_optional(lpGpuDevice,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglEnumGpusFromAffinityDCNV(Layer *_layer, HDC hAffinityDC, UINT iGpuIndex, HGPUNV *hGpu)
 {
-    BOOL  ret = RwglEnumGpusFromAffinityDCNV(dispatchGlobal, hAffinityDC, iGpuIndex, hGpu);
+    BOOL  ret = RwglEnumGpusFromAffinityDCNV(nextGlobal, hAffinityDC, iGpuIndex, hGpu);
     Driver("wglEnumGpusFromAffinityDCNV","(", print_optional(hAffinityDC,Logging::pointers), ", ", iGpuIndex, ", ", print_array(hGpu,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglEnumGpusNV(Layer *_layer, UINT iGpuIndex, HGPUNV *phGpu)
 {
-    BOOL  ret = RwglEnumGpusNV(dispatchGlobal, iGpuIndex, phGpu);
+    BOOL  ret = RwglEnumGpusNV(nextGlobal, iGpuIndex, phGpu);
     Driver("wglEnumGpusNV","(", iGpuIndex, ", ", print_array(phGpu,1), ")", " returned ", ret);
     return ret;
 }
@@ -20436,21 +20436,21 @@ static BOOL REGAL_CALL log_wglEnumGpusNV(Layer *_layer, UINT iGpuIndex, HGPUNV *
 
 static BOOL REGAL_CALL log_wglBindVideoDeviceNV(Layer *_layer, HDC hDC, unsigned int uVideoSlot, HVIDEOOUTPUTDEVICENV hVideoDevice, const int *piAttribList)
 {
-    BOOL  ret = RwglBindVideoDeviceNV(dispatchGlobal, hDC, uVideoSlot, hVideoDevice, piAttribList);
+    BOOL  ret = RwglBindVideoDeviceNV(nextGlobal, hDC, uVideoSlot, hVideoDevice, piAttribList);
     Driver("wglBindVideoDeviceNV","(", print_optional(hDC,Logging::pointers), ", ", uVideoSlot, ", ", print_optional(hVideoDevice,Logging::pointers), ", ", print_optional(piAttribList,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_wglEnumerateVideoDevicesNV(Layer *_layer, HDC hDC, HVIDEOOUTPUTDEVICENV *phDeviceList)
 {
-    int  ret = RwglEnumerateVideoDevicesNV(dispatchGlobal, hDC, phDeviceList);
+    int  ret = RwglEnumerateVideoDevicesNV(nextGlobal, hDC, phDeviceList);
     Driver("wglEnumerateVideoDevicesNV","(", print_optional(hDC,Logging::pointers), ", ", phDeviceList, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryCurrentContextNV(Layer *_layer, int iAttribute, int *piValue)
 {
-    BOOL  ret = RwglQueryCurrentContextNV(dispatchGlobal, iAttribute, piValue);
+    BOOL  ret = RwglQueryCurrentContextNV(nextGlobal, iAttribute, piValue);
     Driver("wglQueryCurrentContextNV","(", iAttribute, ", ", print_optional(piValue,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20459,42 +20459,42 @@ static BOOL REGAL_CALL log_wglQueryCurrentContextNV(Layer *_layer, int iAttribut
 
 static BOOL REGAL_CALL log_wglBindSwapBarrierNV(Layer *_layer, GLuint group, GLuint barrier)
 {
-    BOOL  ret = RwglBindSwapBarrierNV(dispatchGlobal, group, barrier);
+    BOOL  ret = RwglBindSwapBarrierNV(nextGlobal, group, barrier);
     Driver("wglBindSwapBarrierNV","(", group, ", ", barrier, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglJoinSwapGroupNV(Layer *_layer, HDC hDC, GLuint group)
 {
-    BOOL  ret = RwglJoinSwapGroupNV(dispatchGlobal, hDC, group);
+    BOOL  ret = RwglJoinSwapGroupNV(nextGlobal, hDC, group);
     Driver("wglJoinSwapGroupNV","(", print_optional(hDC,Logging::pointers), ", ", group, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryFrameCountNV(Layer *_layer, HDC hDC, GLuint *count)
 {
-    BOOL  ret = RwglQueryFrameCountNV(dispatchGlobal, hDC, count);
+    BOOL  ret = RwglQueryFrameCountNV(nextGlobal, hDC, count);
     Driver("wglQueryFrameCountNV","(", print_optional(hDC,Logging::pointers), ", ", print_array(count,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryMaxSwapGroupsNV(Layer *_layer, HDC hDC, GLuint *maxGroups, GLuint *maxBarriers)
 {
-    BOOL  ret = RwglQueryMaxSwapGroupsNV(dispatchGlobal, hDC, maxGroups, maxBarriers);
+    BOOL  ret = RwglQueryMaxSwapGroupsNV(nextGlobal, hDC, maxGroups, maxBarriers);
     Driver("wglQueryMaxSwapGroupsNV","(", print_optional(hDC,Logging::pointers), ", ", print_array(maxGroups,1), ", ", print_array(maxBarriers,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQuerySwapGroupNV(Layer *_layer, HDC hDC, GLuint *group, GLuint *barrier)
 {
-    BOOL  ret = RwglQuerySwapGroupNV(dispatchGlobal, hDC, group, barrier);
+    BOOL  ret = RwglQuerySwapGroupNV(nextGlobal, hDC, group, barrier);
     Driver("wglQuerySwapGroupNV","(", print_optional(hDC,Logging::pointers), ", ", print_array(group,1), ", ", print_array(barrier,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglResetFrameCountNV(Layer *_layer, HDC hDC)
 {
-    BOOL  ret = RwglResetFrameCountNV(dispatchGlobal, hDC);
+    BOOL  ret = RwglResetFrameCountNV(nextGlobal, hDC);
     Driver("wglResetFrameCountNV","(", print_optional(hDC,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20503,14 +20503,14 @@ static BOOL REGAL_CALL log_wglResetFrameCountNV(Layer *_layer, HDC hDC)
 
 static void *REGAL_CALL log_wglAllocateMemoryNV(Layer *_layer, GLsizei size, GLfloat readfreq, GLfloat writefreq, GLfloat priority)
 {
-    void * ret = RwglAllocateMemoryNV(dispatchGlobal, size, readfreq, writefreq, priority);
+    void * ret = RwglAllocateMemoryNV(nextGlobal, size, readfreq, writefreq, priority);
     Driver("wglAllocateMemoryNV","(", size, ", ", readfreq, ", ", writefreq, ", ", priority, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static void REGAL_CALL log_wglFreeMemoryNV(Layer *_layer, void *pointer)
 {
-    RwglFreeMemoryNV(dispatchGlobal, pointer);
+    RwglFreeMemoryNV(nextGlobal, pointer);
     Driver("wglFreeMemoryNV","(", print_optional(pointer,Logging::pointers), ")");
 }
 
@@ -20518,35 +20518,35 @@ static void REGAL_CALL log_wglFreeMemoryNV(Layer *_layer, void *pointer)
 
 static BOOL REGAL_CALL log_wglBindVideoCaptureDeviceNV(Layer *_layer, UINT uVideoSlot, HVIDEOINPUTDEVICENV hDevice)
 {
-    BOOL  ret = RwglBindVideoCaptureDeviceNV(dispatchGlobal, uVideoSlot, hDevice);
+    BOOL  ret = RwglBindVideoCaptureDeviceNV(nextGlobal, uVideoSlot, hDevice);
     Driver("wglBindVideoCaptureDeviceNV","(", uVideoSlot, ", ", print_optional(hDevice,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static UINT REGAL_CALL log_wglEnumerateVideoCaptureDevicesNV(Layer *_layer, HDC hDC, HVIDEOINPUTDEVICENV *phDeviceList)
 {
-    UINT  ret = RwglEnumerateVideoCaptureDevicesNV(dispatchGlobal, hDC, phDeviceList);
+    UINT  ret = RwglEnumerateVideoCaptureDevicesNV(nextGlobal, hDC, phDeviceList);
     Driver("wglEnumerateVideoCaptureDevicesNV","(", print_optional(hDC,Logging::pointers), ", ", print_array(phDeviceList,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglLockVideoCaptureDeviceNV(Layer *_layer, HDC hDC, HVIDEOINPUTDEVICENV hDevice)
 {
-    BOOL  ret = RwglLockVideoCaptureDeviceNV(dispatchGlobal, hDC, hDevice);
+    BOOL  ret = RwglLockVideoCaptureDeviceNV(nextGlobal, hDC, hDevice);
     Driver("wglLockVideoCaptureDeviceNV","(", print_optional(hDC,Logging::pointers), ", ", print_optional(hDevice,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglQueryVideoCaptureDeviceNV(Layer *_layer, HDC hDC, HVIDEOINPUTDEVICENV hDevice, int iAttribute, int *piValue)
 {
-    BOOL  ret = RwglQueryVideoCaptureDeviceNV(dispatchGlobal, hDC, hDevice, iAttribute, piValue);
+    BOOL  ret = RwglQueryVideoCaptureDeviceNV(nextGlobal, hDC, hDevice, iAttribute, piValue);
     Driver("wglQueryVideoCaptureDeviceNV","(", print_optional(hDC,Logging::pointers), ", ", print_optional(hDevice,Logging::pointers), ", ", iAttribute, ", ", print_array(piValue,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglReleaseVideoCaptureDeviceNV(Layer *_layer, HDC hDC, HVIDEOINPUTDEVICENV hDevice)
 {
-    BOOL  ret = RwglReleaseVideoCaptureDeviceNV(dispatchGlobal, hDC, hDevice);
+    BOOL  ret = RwglReleaseVideoCaptureDeviceNV(nextGlobal, hDC, hDevice);
     Driver("wglReleaseVideoCaptureDeviceNV","(", print_optional(hDC,Logging::pointers), ", ", print_optional(hDevice,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20555,42 +20555,42 @@ static BOOL REGAL_CALL log_wglReleaseVideoCaptureDeviceNV(Layer *_layer, HDC hDC
 
 static BOOL REGAL_CALL log_wglBindVideoImageNV(Layer *_layer, HPVIDEODEV hVideoDevice, HPBUFFERARB hPbuffer, int iVideoBuffer)
 {
-    BOOL  ret = RwglBindVideoImageNV(dispatchGlobal, hVideoDevice, hPbuffer, iVideoBuffer);
+    BOOL  ret = RwglBindVideoImageNV(nextGlobal, hVideoDevice, hPbuffer, iVideoBuffer);
     Driver("wglBindVideoImageNV","(", print_optional(hVideoDevice,Logging::pointers), ", ", print_optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetVideoDeviceNV(Layer *_layer, HDC hDC, int numDevices, HPVIDEODEV *hVideoDevice)
 {
-    BOOL  ret = RwglGetVideoDeviceNV(dispatchGlobal, hDC, numDevices, hVideoDevice);
+    BOOL  ret = RwglGetVideoDeviceNV(nextGlobal, hDC, numDevices, hVideoDevice);
     Driver("wglGetVideoDeviceNV","(", print_optional(hDC,Logging::pointers), ", ", numDevices, ", ", print_array(hVideoDevice,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetVideoInfoNV(Layer *_layer, HPVIDEODEV hpVideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo)
 {
-    BOOL  ret = RwglGetVideoInfoNV(dispatchGlobal, hpVideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
+    BOOL  ret = RwglGetVideoInfoNV(nextGlobal, hpVideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
     Driver("wglGetVideoInfoNV","(", print_optional(hpVideoDevice,Logging::pointers), ", ", print_array(pulCounterOutputPbuffer,1), ", ", print_array(pulCounterOutputVideo,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglReleaseVideoDeviceNV(Layer *_layer, HPVIDEODEV hVideoDevice)
 {
-    BOOL  ret = RwglReleaseVideoDeviceNV(dispatchGlobal, hVideoDevice);
+    BOOL  ret = RwglReleaseVideoDeviceNV(nextGlobal, hVideoDevice);
     Driver("wglReleaseVideoDeviceNV","(", print_optional(hVideoDevice,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglReleaseVideoImageNV(Layer *_layer, HPBUFFERARB hPbuffer, int iVideoBuffer)
 {
-    BOOL  ret = RwglReleaseVideoImageNV(dispatchGlobal, hPbuffer, iVideoBuffer);
+    BOOL  ret = RwglReleaseVideoImageNV(nextGlobal, hPbuffer, iVideoBuffer);
     Driver("wglReleaseVideoImageNV","(", print_optional(hPbuffer,Logging::pointers), ", ", iVideoBuffer, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSendPbufferToVideoNV(Layer *_layer, HPBUFFERARB hPbuffer, int iBufferType, unsigned long *pulCounterPbuffer, BOOL bBlock)
 {
-    BOOL  ret = RwglSendPbufferToVideoNV(dispatchGlobal, hPbuffer, iBufferType, pulCounterPbuffer, bBlock);
+    BOOL  ret = RwglSendPbufferToVideoNV(nextGlobal, hPbuffer, iBufferType, pulCounterPbuffer, bBlock);
     Driver("wglSendPbufferToVideoNV","(", print_optional(hPbuffer,Logging::pointers), ", ", iBufferType, ", ", print_array(pulCounterPbuffer,1), ", ", bBlock, ")", " returned ", ret);
     return ret;
 }
@@ -20599,42 +20599,42 @@ static BOOL REGAL_CALL log_wglSendPbufferToVideoNV(Layer *_layer, HPBUFFERARB hP
 
 static BOOL REGAL_CALL log_wglGetMscRateOML(Layer *_layer, HDC hDC, INT32 *numerator, INT32 *denominator)
 {
-    BOOL  ret = RwglGetMscRateOML(dispatchGlobal, hDC, numerator, denominator);
+    BOOL  ret = RwglGetMscRateOML(nextGlobal, hDC, numerator, denominator);
     Driver("wglGetMscRateOML","(", print_optional(hDC,Logging::pointers), ", ", print_array(numerator,1), ", ", print_array(denominator,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglGetSyncValuesOML(Layer *_layer, HDC hDC, INT64 *ust, INT64 *msc, INT64 *sbc)
 {
-    BOOL  ret = RwglGetSyncValuesOML(dispatchGlobal, hDC, ust, msc, sbc);
+    BOOL  ret = RwglGetSyncValuesOML(nextGlobal, hDC, ust, msc, sbc);
     Driver("wglGetSyncValuesOML","(", print_optional(hDC,Logging::pointers), ", ", print_array(ust,1), ", ", print_array(msc,1), ", ", print_array(sbc,1), ")", " returned ", ret);
     return ret;
 }
 
 static INT64 REGAL_CALL log_wglSwapBuffersMscOML(Layer *_layer, HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder)
 {
-    INT64  ret = RwglSwapBuffersMscOML(dispatchGlobal, hDC, target_msc, divisor, remainder);
+    INT64  ret = RwglSwapBuffersMscOML(nextGlobal, hDC, target_msc, divisor, remainder);
     Driver("wglSwapBuffersMscOML","(", print_optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ")", " returned ", ret);
     return ret;
 }
 
 static INT64 REGAL_CALL log_wglSwapLayerBuffersMscOML(Layer *_layer, HDC hDC, int fuPlanes, INT64 target_msc, INT64 divisor, INT64 remainder)
 {
-    INT64  ret = RwglSwapLayerBuffersMscOML(dispatchGlobal, hDC, fuPlanes, target_msc, divisor, remainder);
+    INT64  ret = RwglSwapLayerBuffersMscOML(nextGlobal, hDC, fuPlanes, target_msc, divisor, remainder);
     Driver("wglSwapLayerBuffersMscOML","(", print_optional(hDC,Logging::pointers), ", ", fuPlanes, ", ", target_msc, ", ", divisor, ", ", remainder, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglWaitForMscOML(Layer *_layer, HDC hDC, INT64 target_msc, INT64 divisor, INT64 remainder, INT64 *ust, INT64 *msc, INT64 *sbc)
 {
-    BOOL  ret = RwglWaitForMscOML(dispatchGlobal, hDC, target_msc, divisor, remainder, ust, msc, sbc);
+    BOOL  ret = RwglWaitForMscOML(nextGlobal, hDC, target_msc, divisor, remainder, ust, msc, sbc);
     Driver("wglWaitForMscOML","(", print_optional(hDC,Logging::pointers), ", ", target_msc, ", ", divisor, ", ", remainder, ", ", print_array(ust,1), ", ", print_array(msc,1), ", ", print_array(sbc,1), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglWaitForSbcOML(Layer *_layer, HDC hDC, INT64 target_sbc, INT64 *ust, INT64 *msc, INT64 *sbc)
 {
-    BOOL  ret = RwglWaitForSbcOML(dispatchGlobal, hDC, target_sbc, ust, msc, sbc);
+    BOOL  ret = RwglWaitForSbcOML(nextGlobal, hDC, target_sbc, ust, msc, sbc);
     Driver("wglWaitForSbcOML","(", print_optional(hDC,Logging::pointers), ", ", target_sbc, ", ", print_array(ust,1), ", ", print_array(msc,1), ", ", print_array(sbc,1), ")", " returned ", ret);
     return ret;
 }
@@ -20643,140 +20643,140 @@ static BOOL REGAL_CALL log_wglWaitForSbcOML(Layer *_layer, HDC hDC, INT64 target
 
 static BOOL REGAL_CALL log_wglCopyContext(Layer *_layer, HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask)
 {
-    BOOL  ret = RwglCopyContext(dispatchGlobal, hglrcSrc, hglrcDst, mask);
+    BOOL  ret = RwglCopyContext(nextGlobal, hglrcSrc, hglrcDst, mask);
     Driver("wglCopyContext","(", print_optional(hglrcSrc,Logging::pointers), ", ", print_optional(hglrcDst,Logging::pointers), ", ", mask, ")", " returned ", ret);
     return ret;
 }
 
 static HGLRC REGAL_CALL log_wglCreateContext(Layer *_layer, HDC hDC)
 {
-    HGLRC  ret = RwglCreateContext(dispatchGlobal, hDC);
+    HGLRC  ret = RwglCreateContext(nextGlobal, hDC);
     Driver("wglCreateContext","(", print_optional(hDC,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static HGLRC REGAL_CALL log_wglCreateLayerContext(Layer *_layer, HDC hDC, int iLayerPlane)
 {
-    HGLRC  ret = RwglCreateLayerContext(dispatchGlobal, hDC, iLayerPlane);
+    HGLRC  ret = RwglCreateLayerContext(nextGlobal, hDC, iLayerPlane);
     Driver("wglCreateLayerContext","(", print_optional(hDC,Logging::pointers), ", ", iLayerPlane, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDeleteContext(Layer *_layer, HGLRC hglrc)
 {
-    BOOL  ret = RwglDeleteContext(dispatchGlobal, hglrc);
+    BOOL  ret = RwglDeleteContext(nextGlobal, hglrc);
     Driver("wglDeleteContext","(", print_optional(hglrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglDescribeLayerPlane(Layer *_layer, HDC hDC, int iPixelFormat, int iLayerPlane, UINT nBytes, LPLAYERPLANEDESCRIPTOR plpd)
 {
-    BOOL  ret = RwglDescribeLayerPlane(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nBytes, plpd);
+    BOOL  ret = RwglDescribeLayerPlane(nextGlobal, hDC, iPixelFormat, iLayerPlane, nBytes, plpd);
     Driver("wglDescribeLayerPlane","(", print_optional(hDC,Logging::pointers), ", ", iPixelFormat, ", ", iLayerPlane, ", ", nBytes, ", ", print_optional(plpd,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static HGLRC REGAL_CALL log_wglGetCurrentContext(Layer *_layer)
 {
-    HGLRC  ret = RwglGetCurrentContext(dispatchGlobal);
+    HGLRC  ret = RwglGetCurrentContext(nextGlobal);
     Driver("wglGetCurrentContext","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static HDC REGAL_CALL log_wglGetCurrentDC(Layer *_layer)
 {
-    HDC  ret = RwglGetCurrentDC(dispatchGlobal);
+    HDC  ret = RwglGetCurrentDC(nextGlobal);
     Driver("wglGetCurrentDC","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static PROC REGAL_CALL log_wglGetDefaultProcAddress(Layer *_layer, LPCSTR lpszProc)
 {
-    PROC  ret = RwglGetDefaultProcAddress(dispatchGlobal, lpszProc);
+    PROC  ret = RwglGetDefaultProcAddress(nextGlobal, lpszProc);
     Driver("wglGetDefaultProcAddress","(", print_quote(lpszProc,'"'), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static int REGAL_CALL log_wglGetLayerPaletteEntries(Layer *_layer, HDC hDC, int iLayerPlane, int iStart, int nEntries, COLORREF *pcr)
 {
-    int  ret = RwglGetLayerPaletteEntries(dispatchGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
+    int  ret = RwglGetLayerPaletteEntries(nextGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
     Driver("wglGetLayerPaletteEntries","(", print_optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ", ", print_array(pcr,ret), ")", " returned ", ret);
     return ret;
 }
 
 static PROC REGAL_CALL log_wglGetProcAddress(Layer *_layer, LPCSTR lpszProc)
 {
-    PROC  ret = RwglGetProcAddress(dispatchGlobal, lpszProc);
+    PROC  ret = RwglGetProcAddress(nextGlobal, lpszProc);
     Driver("wglGetProcAddress","(", print_quote(lpszProc,'"'), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglMakeCurrent(Layer *_layer, HDC hDC, HGLRC hglrc)
 {
-    BOOL  ret = RwglMakeCurrent(dispatchGlobal, hDC, hglrc);
+    BOOL  ret = RwglMakeCurrent(nextGlobal, hDC, hglrc);
     Driver("wglMakeCurrent","(", print_optional(hDC,Logging::pointers), ", ", print_optional(hglrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglRealizeLayerPalette(Layer *_layer, HDC hDC, int iLayerPlane, BOOL bRealize)
 {
-    BOOL  ret = RwglRealizeLayerPalette(dispatchGlobal, hDC, iLayerPlane, bRealize);
+    BOOL  ret = RwglRealizeLayerPalette(nextGlobal, hDC, iLayerPlane, bRealize);
     Driver("wglRealizeLayerPalette","(", print_optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", bRealize, ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_wglSetLayerPaletteEntries(Layer *_layer, HDC hDC, int iLayerPlane, int iStart, int nEntries, const COLORREF *pcr)
 {
-    int  ret = RwglSetLayerPaletteEntries(dispatchGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
+    int  ret = RwglSetLayerPaletteEntries(nextGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
     Driver("wglSetLayerPaletteEntries","(", print_optional(hDC,Logging::pointers), ", ", iLayerPlane, ", ", iStart, ", ", nEntries, ", ", print_array(pcr,nEntries), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglShareLists(Layer *_layer, HGLRC hglrcShare, HGLRC hglrcSrc)
 {
-    BOOL  ret = RwglShareLists(dispatchGlobal, hglrcShare, hglrcSrc);
+    BOOL  ret = RwglShareLists(nextGlobal, hglrcShare, hglrcSrc);
     Driver("wglShareLists","(", print_optional(hglrcShare,Logging::pointers), ", ", print_optional(hglrcSrc,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglSwapLayerBuffers(Layer *_layer, HDC hDC, UINT fuPlanes)
 {
-    BOOL  ret = RwglSwapLayerBuffers(dispatchGlobal, hDC, fuPlanes);
+    BOOL  ret = RwglSwapLayerBuffers(nextGlobal, hDC, fuPlanes);
     Driver("wglSwapLayerBuffers","(", print_optional(hDC,Logging::pointers), ", ", fuPlanes, ")", " returned ", ret);
     return ret;
 }
 
 static DWORD REGAL_CALL log_wglSwapMultipleBuffers(Layer *_layer, UINT n, const WGLSWAP *ps)
 {
-    DWORD  ret = RwglSwapMultipleBuffers(dispatchGlobal, n, ps);
+    DWORD  ret = RwglSwapMultipleBuffers(nextGlobal, n, ps);
     Driver("wglSwapMultipleBuffers","(", n, ", ", ps, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglUseFontBitmapsA(Layer *_layer, HDC hDC, DWORD first, DWORD count, DWORD listBase)
 {
-    BOOL  ret = RwglUseFontBitmapsA(dispatchGlobal, hDC, first, count, listBase);
+    BOOL  ret = RwglUseFontBitmapsA(nextGlobal, hDC, first, count, listBase);
     Driver("wglUseFontBitmapsA","(", print_optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglUseFontBitmapsW(Layer *_layer, HDC hDC, DWORD first, DWORD count, DWORD listBase)
 {
-    BOOL  ret = RwglUseFontBitmapsW(dispatchGlobal, hDC, first, count, listBase);
+    BOOL  ret = RwglUseFontBitmapsW(nextGlobal, hDC, first, count, listBase);
     Driver("wglUseFontBitmapsW","(", print_optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglUseFontOutlinesA(Layer *_layer, HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf)
 {
-    BOOL  ret = RwglUseFontOutlinesA(dispatchGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
+    BOOL  ret = RwglUseFontOutlinesA(nextGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
     Driver("wglUseFontOutlinesA","(", print_optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ", ", print_optional(lpgmf,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static BOOL REGAL_CALL log_wglUseFontOutlinesW(Layer *_layer, HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf)
 {
-    BOOL  ret = RwglUseFontOutlinesW(dispatchGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
+    BOOL  ret = RwglUseFontOutlinesW(nextGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
     Driver("wglUseFontOutlinesW","(", print_optional(hDC,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ", ", deviation, ", ", extrusion, ", ", format, ", ", print_optional(lpgmf,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -20789,113 +20789,113 @@ static BOOL REGAL_CALL log_wglUseFontOutlinesW(Layer *_layer, HDC hDC, DWORD fir
 
 static XVisualInfo *REGAL_CALL log_glXChooseVisual(Layer *_layer, Display *dpy, int screen, int *attribList)
 {
-    XVisualInfo * ret = RglXChooseVisual(dispatchGlobal, dpy, screen, attribList);
+    XVisualInfo * ret = RglXChooseVisual(nextGlobal, dpy, screen, attribList);
     Driver("glXChooseVisual","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_optional(attribList,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static void REGAL_CALL log_glXCopyContext(Layer *_layer, Display *dpy, GLXContext src, GLXContext dst, unsigned long mask)
 {
-    RglXCopyContext(dispatchGlobal, dpy, src, dst, mask);
+    RglXCopyContext(nextGlobal, dpy, src, dst, mask);
     Driver("glXCopyContext","(", print_optional(dpy,Logging::pointers), ", ", print_optional(src,Logging::pointers), ", ", print_optional(dst,Logging::pointers), ", ", mask, ")");
 }
 
 static GLXContext REGAL_CALL log_glXCreateContext(Layer *_layer, Display *dpy, XVisualInfo *vis, GLXContext shareList, Bool direct)
 {
-    GLXContext  ret = RglXCreateContext(dispatchGlobal, dpy, vis, shareList, direct);
+    GLXContext  ret = RglXCreateContext(nextGlobal, dpy, vis, shareList, direct);
     Driver("glXCreateContext","(", print_optional(dpy,Logging::pointers), ", ", print_optional(vis,Logging::pointers), ", ", print_optional(shareList,Logging::pointers), ", ", direct, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXPixmap REGAL_CALL log_glXCreateGLXPixmap(Layer *_layer, Display *dpy, XVisualInfo *vis, Pixmap pixmap)
 {
-    GLXPixmap  ret = RglXCreateGLXPixmap(dispatchGlobal, dpy, vis, pixmap);
+    GLXPixmap  ret = RglXCreateGLXPixmap(nextGlobal, dpy, vis, pixmap);
     Driver("glXCreateGLXPixmap","(", print_optional(dpy,Logging::pointers), ", ", print_optional(vis,Logging::pointers), ", ", print_optional(pixmap,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static void REGAL_CALL log_glXDestroyContext(Layer *_layer, Display *dpy, GLXContext ctx)
 {
-    RglXDestroyContext(dispatchGlobal, dpy, ctx);
+    RglXDestroyContext(nextGlobal, dpy, ctx);
     Driver("glXDestroyContext","(", print_optional(dpy,Logging::pointers), ", ", print_optional(ctx,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glXDestroyGLXPixmap(Layer *_layer, Display *dpy, GLXPixmap pix)
 {
-    RglXDestroyGLXPixmap(dispatchGlobal, dpy, pix);
+    RglXDestroyGLXPixmap(nextGlobal, dpy, pix);
     Driver("glXDestroyGLXPixmap","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pix,Logging::pointers), ")");
 }
 
 static int REGAL_CALL log_glXGetConfig(Layer *_layer, Display *dpy, XVisualInfo *vis, int attrib, int *value)
 {
-    int  ret = RglXGetConfig(dispatchGlobal, dpy, vis, attrib, value);
+    int  ret = RglXGetConfig(nextGlobal, dpy, vis, attrib, value);
     Driver("glXGetConfig","(", print_optional(dpy,Logging::pointers), ", ", print_optional(vis,Logging::pointers), ", ", attrib, ", ", print_optional(value,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static GLXContext REGAL_CALL log_glXGetCurrentContext(Layer *_layer)
 {
-    GLXContext  ret = RglXGetCurrentContext(dispatchGlobal);
+    GLXContext  ret = RglXGetCurrentContext(nextGlobal);
     Driver("glXGetCurrentContext","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXDrawable REGAL_CALL log_glXGetCurrentDrawable(Layer *_layer)
 {
-    GLXDrawable  ret = RglXGetCurrentDrawable(dispatchGlobal);
+    GLXDrawable  ret = RglXGetCurrentDrawable(nextGlobal);
     Driver("glXGetCurrentDrawable","()", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXIsDirect(Layer *_layer, Display *dpy, GLXContext ctx)
 {
-    Bool  ret = RglXIsDirect(dispatchGlobal, dpy, ctx);
+    Bool  ret = RglXIsDirect(nextGlobal, dpy, ctx);
     Driver("glXIsDirect","(", print_optional(dpy,Logging::pointers), ", ", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXMakeCurrent(Layer *_layer, Display *dpy, GLXDrawable drawable, GLXContext ctx)
 {
-    Bool  ret = RglXMakeCurrent(dispatchGlobal, dpy, drawable, ctx);
+    Bool  ret = RglXMakeCurrent(nextGlobal, dpy, drawable, ctx);
     Driver("glXMakeCurrent","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXQueryExtension(Layer *_layer, Display *dpy, int *errorBase, int *eventBase)
 {
-    Bool  ret = RglXQueryExtension(dispatchGlobal, dpy, errorBase, eventBase);
+    Bool  ret = RglXQueryExtension(nextGlobal, dpy, errorBase, eventBase);
     Driver("glXQueryExtension","(", print_optional(dpy,Logging::pointers), ", ", print_optional(errorBase,Logging::pointers), ", ", print_optional(eventBase,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXQueryVersion(Layer *_layer, Display *dpy, int *major, int *minor)
 {
-    Bool  ret = RglXQueryVersion(dispatchGlobal, dpy, major, minor);
+    Bool  ret = RglXQueryVersion(nextGlobal, dpy, major, minor);
     Driver("glXQueryVersion","(", print_optional(dpy,Logging::pointers), ", ", print_optional(major,Logging::pointers), ", ", print_optional(minor,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static void REGAL_CALL log_glXSwapBuffers(Layer *_layer, Display *dpy, GLXDrawable drawable)
 {
-    RglXSwapBuffers(dispatchGlobal, dpy, drawable);
+    RglXSwapBuffers(nextGlobal, dpy, drawable);
     Driver("glXSwapBuffers","(", print_optional(dpy,Logging::pointers), ", ", drawable, ")");
 }
 
 static void REGAL_CALL log_glXUseXFont(Layer *_layer, Font font, int first, int count, int listBase)
 {
-    RglXUseXFont(dispatchGlobal, font, first, count, listBase);
+    RglXUseXFont(nextGlobal, font, first, count, listBase);
     Driver("glXUseXFont","(", print_optional(font,Logging::pointers), ", ", first, ", ", count, ", ", listBase, ")");
 }
 
 static void REGAL_CALL log_glXWaitGL(Layer *_layer)
 {
-    RglXWaitGL(dispatchGlobal);
+    RglXWaitGL(nextGlobal);
     Driver("glXWaitGL","()");
 }
 
 static void REGAL_CALL log_glXWaitX(Layer *_layer)
 {
-    RglXWaitX(dispatchGlobal);
+    RglXWaitX(nextGlobal);
     Driver("glXWaitX","()");
 }
 
@@ -20903,21 +20903,21 @@ static void REGAL_CALL log_glXWaitX(Layer *_layer)
 
 static const char *REGAL_CALL log_glXGetClientString(Layer *_layer, Display *dpy, int name)
 {
-    const char * ret = RglXGetClientString(dispatchGlobal, dpy, name);
+    const char * ret = RglXGetClientString(nextGlobal, dpy, name);
     Driver("glXGetClientString","(", print_optional(dpy,Logging::pointers), ", ", name, ")", " returned ", print_quote(ret,'"'));
     return ret;
 }
 
 static const char *REGAL_CALL log_glXQueryExtensionsString(Layer *_layer, Display *dpy, int screen)
 {
-    const char * ret = RglXQueryExtensionsString(dispatchGlobal, dpy, screen);
+    const char * ret = RglXQueryExtensionsString(nextGlobal, dpy, screen);
     Driver("glXQueryExtensionsString","(", print_optional(dpy,Logging::pointers), ", ", screen, ")", " returned ", print_quote(ret,'"'));
     return ret;
 }
 
 static const char *REGAL_CALL log_glXQueryServerString(Layer *_layer, Display *dpy, int screen, int name)
 {
-    const char * ret = RglXQueryServerString(dispatchGlobal, dpy, screen, name);
+    const char * ret = RglXQueryServerString(nextGlobal, dpy, screen, name);
     Driver("glXQueryServerString","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", name, ")", " returned ", print_quote(ret,'"'));
     return ret;
 }
@@ -20926,7 +20926,7 @@ static const char *REGAL_CALL log_glXQueryServerString(Layer *_layer, Display *d
 
 static Display *REGAL_CALL log_glXGetCurrentDisplay(Layer *_layer)
 {
-    Display * ret = RglXGetCurrentDisplay(dispatchGlobal);
+    Display * ret = RglXGetCurrentDisplay(nextGlobal);
     Driver("glXGetCurrentDisplay","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -20935,114 +20935,114 @@ static Display *REGAL_CALL log_glXGetCurrentDisplay(Layer *_layer)
 
 static GLXFBConfig *REGAL_CALL log_glXChooseFBConfig(Layer *_layer, Display *dpy, int screen, const int *attrib_list, int *nelements)
 {
-    GLXFBConfig * ret = RglXChooseFBConfig(dispatchGlobal, dpy, screen, attrib_list, nelements);
+    GLXFBConfig * ret = RglXChooseFBConfig(nextGlobal, dpy, screen, attrib_list, nelements);
     Driver("glXChooseFBConfig","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_optional(attrib_list,Logging::pointers), ", ", print_array(nelements,1), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXContext REGAL_CALL log_glXCreateNewContext(Layer *_layer, Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct)
 {
-    GLXContext  ret = RglXCreateNewContext(dispatchGlobal, dpy, config, render_type, share_list, direct);
+    GLXContext  ret = RglXCreateNewContext(nextGlobal, dpy, config, render_type, share_list, direct);
     Driver("glXCreateNewContext","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", print_optional(share_list,Logging::pointers), ", ", direct, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXPbuffer REGAL_CALL log_glXCreatePbuffer(Layer *_layer, Display *dpy, GLXFBConfig config, const int *attrib_list)
 {
-    GLXPbuffer  ret = RglXCreatePbuffer(dispatchGlobal, dpy, config, attrib_list);
+    GLXPbuffer  ret = RglXCreatePbuffer(nextGlobal, dpy, config, attrib_list);
     Driver("glXCreatePbuffer","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", print_optional(attrib_list,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXPixmap REGAL_CALL log_glXCreatePixmap(Layer *_layer, Display *dpy, GLXFBConfig config, Pixmap pixmap, const int *attrib_list)
 {
-    GLXPixmap  ret = RglXCreatePixmap(dispatchGlobal, dpy, config, pixmap, attrib_list);
+    GLXPixmap  ret = RglXCreatePixmap(nextGlobal, dpy, config, pixmap, attrib_list);
     Driver("glXCreatePixmap","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", print_optional(pixmap,Logging::pointers), ", ", print_optional(attrib_list,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXWindow REGAL_CALL log_glXCreateWindow(Layer *_layer, Display *dpy, GLXFBConfig config, Window win, const int *attrib_list)
 {
-    GLXWindow  ret = RglXCreateWindow(dispatchGlobal, dpy, config, win, attrib_list);
+    GLXWindow  ret = RglXCreateWindow(nextGlobal, dpy, config, win, attrib_list);
     Driver("glXCreateWindow","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", win, ", ", print_optional(attrib_list,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static void REGAL_CALL log_glXDestroyPbuffer(Layer *_layer, Display *dpy, GLXPbuffer pbuf)
 {
-    RglXDestroyPbuffer(dispatchGlobal, dpy, pbuf);
+    RglXDestroyPbuffer(nextGlobal, dpy, pbuf);
     Driver("glXDestroyPbuffer","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glXDestroyPixmap(Layer *_layer, Display *dpy, GLXPixmap pixmap)
 {
-    RglXDestroyPixmap(dispatchGlobal, dpy, pixmap);
+    RglXDestroyPixmap(nextGlobal, dpy, pixmap);
     Driver("glXDestroyPixmap","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pixmap,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glXDestroyWindow(Layer *_layer, Display *dpy, GLXWindow win)
 {
-    RglXDestroyWindow(dispatchGlobal, dpy, win);
+    RglXDestroyWindow(nextGlobal, dpy, win);
     Driver("glXDestroyWindow","(", print_optional(dpy,Logging::pointers), ", ", print_optional(win,Logging::pointers), ")");
 }
 
 static GLXDrawable REGAL_CALL log_glXGetCurrentReadDrawable(Layer *_layer)
 {
-    GLXDrawable  ret = RglXGetCurrentReadDrawable(dispatchGlobal);
+    GLXDrawable  ret = RglXGetCurrentReadDrawable(nextGlobal);
     Driver("glXGetCurrentReadDrawable","()", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXGetFBConfigAttrib(Layer *_layer, Display *dpy, GLXFBConfig config, int attribute, int *value)
 {
-    int  ret = RglXGetFBConfigAttrib(dispatchGlobal, dpy, config, attribute, value);
+    int  ret = RglXGetFBConfigAttrib(nextGlobal, dpy, config, attribute, value);
     Driver("glXGetFBConfigAttrib","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ", ", print_array(value,1), ")", " returned ", ret);
     return ret;
 }
 
 static GLXFBConfig *REGAL_CALL log_glXGetFBConfigs(Layer *_layer, Display *dpy, int screen, int *nelements)
 {
-    GLXFBConfig * ret = RglXGetFBConfigs(dispatchGlobal, dpy, screen, nelements);
+    GLXFBConfig * ret = RglXGetFBConfigs(nextGlobal, dpy, screen, nelements);
     Driver("glXGetFBConfigs","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_array(nelements,1), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static void REGAL_CALL log_glXGetSelectedEvent(Layer *_layer, Display *dpy, GLXDrawable draw, unsigned long *event_mask)
 {
-    RglXGetSelectedEvent(dispatchGlobal, dpy, draw, event_mask);
+    RglXGetSelectedEvent(nextGlobal, dpy, draw, event_mask);
     Driver("glXGetSelectedEvent","(", print_optional(dpy,Logging::pointers), ", ", draw, ", ", print_array(event_mask,1), ")");
 }
 
 static XVisualInfo *REGAL_CALL log_glXGetVisualFromFBConfig(Layer *_layer, Display *dpy, GLXFBConfig config)
 {
-    XVisualInfo * ret = RglXGetVisualFromFBConfig(dispatchGlobal, dpy, config);
+    XVisualInfo * ret = RglXGetVisualFromFBConfig(nextGlobal, dpy, config);
     Driver("glXGetVisualFromFBConfig","(", print_optional(dpy,Logging::pointers), ", ", config, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static Bool REGAL_CALL log_glXMakeContextCurrent(Layer *_layer, Display *display, GLXDrawable draw, GLXDrawable read, GLXContext ctx)
 {
-    Bool  ret = RglXMakeContextCurrent(dispatchGlobal, display, draw, read, ctx);
+    Bool  ret = RglXMakeContextCurrent(nextGlobal, display, draw, read, ctx);
     Driver("glXMakeContextCurrent","(", print_optional(display,Logging::pointers), ", ", draw, ", ", read, ", ", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXQueryContext(Layer *_layer, Display *dpy, GLXContext ctx, int attribute, int *value)
 {
-    int  ret = RglXQueryContext(dispatchGlobal, dpy, ctx, attribute, value);
+    int  ret = RglXQueryContext(nextGlobal, dpy, ctx, attribute, value);
     Driver("glXQueryContext","(", print_optional(dpy,Logging::pointers), ", ", print_optional(ctx,Logging::pointers), ", ", GLXenumToString(attribute), ", ", print_array(value,1), ")", " returned ", ret);
     return ret;
 }
 
 static void REGAL_CALL log_glXQueryDrawable(Layer *_layer, Display *dpy, GLXDrawable draw, int attribute, unsigned int *value)
 {
-    RglXQueryDrawable(dispatchGlobal, dpy, draw, attribute, value);
+    RglXQueryDrawable(nextGlobal, dpy, draw, attribute, value);
     Driver("glXQueryDrawable","(", print_optional(dpy,Logging::pointers), ", ", draw, ", ", attribute, ", ", print_array(value,1), ")");
 }
 
 static void REGAL_CALL log_glXSelectEvent(Layer *_layer, Display *dpy, GLXDrawable draw, unsigned long event_mask)
 {
-    RglXSelectEvent(dispatchGlobal, dpy, draw, event_mask);
+    RglXSelectEvent(nextGlobal, dpy, draw, event_mask);
     Driver("glXSelectEvent","(", print_optional(dpy,Logging::pointers), ", ", draw, ", ", event_mask, ")");
 }
 
@@ -21050,7 +21050,7 @@ static void REGAL_CALL log_glXSelectEvent(Layer *_layer, Display *dpy, GLXDrawab
 
 static __GLXextFuncPtr REGAL_CALL log_glXGetProcAddress(Layer *_layer, const GLubyte *procName)
 {
-    __GLXextFuncPtr  ret = RglXGetProcAddress(dispatchGlobal, procName);
+    __GLXextFuncPtr  ret = RglXGetProcAddress(nextGlobal, procName);
     Driver("glXGetProcAddress","(", print_quote(reinterpret_cast<const char *>(procName),'"'), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -21059,62 +21059,62 @@ static __GLXextFuncPtr REGAL_CALL log_glXGetProcAddress(Layer *_layer, const GLu
 
 static void REGAL_CALL log_glXBlitContextFramebufferAMD(Layer *_layer, GLXContext dstCtx, GLint srcX0, GLint srcY0, GLint srcX1, GLint srcY1, GLint dstX0, GLint dstY0, GLint dstX1, GLint dstY1, GLbitfield mask, GLenum filter)
 {
-    RglXBlitContextFramebufferAMD(dispatchGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+    RglXBlitContextFramebufferAMD(nextGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
     Driver("glXBlitContextFramebufferAMD","(", print_optional(dstCtx,Logging::pointers), ", ", srcX0, ", ", srcY0, ", ", srcX1, ", ", srcY1, ", ", dstX0, ", ", dstY0, ", ", dstX1, ", ", dstY1, ", ", GLblitFramebufferToString(mask), ", ", toString(filter), ")");
 }
 
 static GLXContext REGAL_CALL log_glXCreateAssociatedContextAMD(Layer *_layer, unsigned int id, GLXContext share_list)
 {
-    GLXContext  ret = RglXCreateAssociatedContextAMD(dispatchGlobal, id, share_list);
+    GLXContext  ret = RglXCreateAssociatedContextAMD(nextGlobal, id, share_list);
     Driver("glXCreateAssociatedContextAMD","(", id, ", ", print_optional(share_list,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXContext REGAL_CALL log_glXCreateAssociatedContextAttribsAMD(Layer *_layer, unsigned int id, GLXContext share_context, const int *attribList)
 {
-    GLXContext  ret = RglXCreateAssociatedContextAttribsAMD(dispatchGlobal, id, share_context, attribList);
+    GLXContext  ret = RglXCreateAssociatedContextAttribsAMD(nextGlobal, id, share_context, attribList);
     Driver("glXCreateAssociatedContextAttribsAMD","(", id, ", ", print_optional(share_context,Logging::pointers), ", ", print_optional(attribList,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static Bool REGAL_CALL log_glXDeleteAssociatedContextAMD(Layer *_layer, GLXContext ctx)
 {
-    Bool  ret = RglXDeleteAssociatedContextAMD(dispatchGlobal, ctx);
+    Bool  ret = RglXDeleteAssociatedContextAMD(nextGlobal, ctx);
     Driver("glXDeleteAssociatedContextAMD","(", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static unsigned int REGAL_CALL log_glXGetContextGPUIDAMD(Layer *_layer, GLXContext ctx)
 {
-    unsigned int  ret = RglXGetContextGPUIDAMD(dispatchGlobal, ctx);
+    unsigned int  ret = RglXGetContextGPUIDAMD(nextGlobal, ctx);
     Driver("glXGetContextGPUIDAMD","(", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static GLXContext REGAL_CALL log_glXGetCurrentAssociatedContextAMD(Layer *_layer)
 {
-    GLXContext  ret = RglXGetCurrentAssociatedContextAMD(dispatchGlobal);
+    GLXContext  ret = RglXGetCurrentAssociatedContextAMD(nextGlobal);
     Driver("glXGetCurrentAssociatedContextAMD","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static unsigned int REGAL_CALL log_glXGetGPUIDsAMD(Layer *_layer, unsigned int maxCount, unsigned int *ids)
 {
-    unsigned int  ret = RglXGetGPUIDsAMD(dispatchGlobal, maxCount, ids);
+    unsigned int  ret = RglXGetGPUIDsAMD(nextGlobal, maxCount, ids);
     Driver("glXGetGPUIDsAMD","(", maxCount, ", ", ids, ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXGetGPUInfoAMD(Layer *_layer, unsigned int id, int property, GLenum dataType, unsigned int size, GLvoid *data)
 {
-    int  ret = RglXGetGPUInfoAMD(dispatchGlobal, id, property, dataType, size, data);
+    int  ret = RglXGetGPUInfoAMD(nextGlobal, id, property, dataType, size, data);
     Driver("glXGetGPUInfoAMD","(", id, ", ", property, ", ", toString(dataType), ", ", size, ", ", print_optional(data,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXMakeAssociatedContextCurrentAMD(Layer *_layer, GLXContext ctx)
 {
-    Bool  ret = RglXMakeAssociatedContextCurrentAMD(dispatchGlobal, ctx);
+    Bool  ret = RglXMakeAssociatedContextCurrentAMD(nextGlobal, ctx);
     Driver("glXMakeAssociatedContextCurrentAMD","(", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -21123,7 +21123,7 @@ static Bool REGAL_CALL log_glXMakeAssociatedContextCurrentAMD(Layer *_layer, GLX
 
 static GLXContext REGAL_CALL log_glXCreateContextAttribsARB(Layer *_layer, Display *dpy, GLXFBConfig config, GLXContext share_context, Bool direct, const int *attrib_list)
 {
-    GLXContext  ret = RglXCreateContextAttribsARB(dispatchGlobal, dpy, config, share_context, direct, attrib_list);
+    GLXContext  ret = RglXCreateContextAttribsARB(nextGlobal, dpy, config, share_context, direct, attrib_list);
     Driver("glXCreateContextAttribsARB","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", print_optional(share_context,Logging::pointers), ", ", direct, ", ", print_optional(attrib_list,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -21132,7 +21132,7 @@ static GLXContext REGAL_CALL log_glXCreateContextAttribsARB(Layer *_layer, Displ
 
 static __GLXextFuncPtr REGAL_CALL log_glXGetProcAddressARB(Layer *_layer, const GLubyte *procName)
 {
-    __GLXextFuncPtr  ret = RglXGetProcAddressARB(dispatchGlobal, procName);
+    __GLXextFuncPtr  ret = RglXGetProcAddressARB(nextGlobal, procName);
     Driver("glXGetProcAddressARB","(", print_quote(reinterpret_cast<const char *>(procName),'"'), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -21141,19 +21141,19 @@ static __GLXextFuncPtr REGAL_CALL log_glXGetProcAddressARB(Layer *_layer, const 
 
 static void REGAL_CALL log_glXBindTexImageATI(Layer *_layer, Display *dpy, GLXPbuffer pbuf, int buffer)
 {
-    RglXBindTexImageATI(dispatchGlobal, dpy, pbuf, buffer);
+    RglXBindTexImageATI(nextGlobal, dpy, pbuf, buffer);
     Driver("glXBindTexImageATI","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ", ", buffer, ")");
 }
 
 static void REGAL_CALL log_glXDrawableAttribATI(Layer *_layer, Display *dpy, GLXDrawable draw, const int *attrib_list)
 {
-    RglXDrawableAttribATI(dispatchGlobal, dpy, draw, attrib_list);
+    RglXDrawableAttribATI(nextGlobal, dpy, draw, attrib_list);
     Driver("glXDrawableAttribATI","(", print_optional(dpy,Logging::pointers), ", ", draw, ", ", print_optional(attrib_list,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glXReleaseTexImageATI(Layer *_layer, Display *dpy, GLXPbuffer pbuf, int buffer)
 {
-    RglXReleaseTexImageATI(dispatchGlobal, dpy, pbuf, buffer);
+    RglXReleaseTexImageATI(nextGlobal, dpy, pbuf, buffer);
     Driver("glXReleaseTexImageATI","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ", ", buffer, ")");
 }
 
@@ -21161,27 +21161,27 @@ static void REGAL_CALL log_glXReleaseTexImageATI(Layer *_layer, Display *dpy, GL
 
 static void REGAL_CALL log_glXFreeContextEXT(Layer *_layer, Display *dpy, GLXContext context)
 {
-    RglXFreeContextEXT(dispatchGlobal, dpy, context);
+    RglXFreeContextEXT(nextGlobal, dpy, context);
     Driver("glXFreeContextEXT","(", print_optional(dpy,Logging::pointers), ", ", print_optional(context,Logging::pointers), ")");
 }
 
 static GLXContextID REGAL_CALL log_glXGetContextIDEXT(Layer *_layer, const GLXContext context)
 {
-    GLXContextID  ret = RglXGetContextIDEXT(dispatchGlobal, context);
+    GLXContextID  ret = RglXGetContextIDEXT(nextGlobal, context);
     Driver("glXGetContextIDEXT","(", context, ")", " returned ", ret);
     return ret;
 }
 
 static GLXContext REGAL_CALL log_glXImportContextEXT(Layer *_layer, Display *dpy, GLXContextID contextID)
 {
-    GLXContext  ret = RglXImportContextEXT(dispatchGlobal, dpy, contextID);
+    GLXContext  ret = RglXImportContextEXT(nextGlobal, dpy, contextID);
     Driver("glXImportContextEXT","(", print_optional(dpy,Logging::pointers), ", ", contextID, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static int REGAL_CALL log_glXQueryContextInfoEXT(Layer *_layer, Display *dpy, GLXContext context, int attribute, int *value)
 {
-    int  ret = RglXQueryContextInfoEXT(dispatchGlobal, dpy, context, attribute, value);
+    int  ret = RglXQueryContextInfoEXT(nextGlobal, dpy, context, attribute, value);
     Driver("glXQueryContextInfoEXT","(", print_optional(dpy,Logging::pointers), ", ", print_optional(context,Logging::pointers), ", ", attribute, ", ", print_array(value,1), ")", " returned ", ret);
     return ret;
 }
@@ -21190,7 +21190,7 @@ static int REGAL_CALL log_glXQueryContextInfoEXT(Layer *_layer, Display *dpy, GL
 
 static void REGAL_CALL log_glXSwapIntervalEXT(Layer *_layer, Display *dpy, GLXDrawable drawable, int interval)
 {
-    RglXSwapIntervalEXT(dispatchGlobal, dpy, drawable, interval);
+    RglXSwapIntervalEXT(nextGlobal, dpy, drawable, interval);
     Driver("glXSwapIntervalEXT","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", interval, ")");
 }
 
@@ -21198,13 +21198,13 @@ static void REGAL_CALL log_glXSwapIntervalEXT(Layer *_layer, Display *dpy, GLXDr
 
 static void REGAL_CALL log_glXBindTexImageEXT(Layer *_layer, Display *display, GLXDrawable drawable, int buffer, const int *attrib_list)
 {
-    RglXBindTexImageEXT(dispatchGlobal, display, drawable, buffer, attrib_list);
+    RglXBindTexImageEXT(nextGlobal, display, drawable, buffer, attrib_list);
     Driver("glXBindTexImageEXT","(", print_optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ", ", print_optional(attrib_list,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glXReleaseTexImageEXT(Layer *_layer, Display *display, GLXDrawable drawable, int buffer)
 {
-    RglXReleaseTexImageEXT(dispatchGlobal, display, drawable, buffer);
+    RglXReleaseTexImageEXT(nextGlobal, display, drawable, buffer);
     Driver("glXReleaseTexImageEXT","(", print_optional(display,Logging::pointers), ", ", drawable, ", ", buffer, ")");
 }
 
@@ -21212,7 +21212,7 @@ static void REGAL_CALL log_glXReleaseTexImageEXT(Layer *_layer, Display *display
 
 static unsigned int REGAL_CALL log_glXGetAGPOffsetMESA(Layer *_layer, const void *pointer)
 {
-    unsigned int  ret = RglXGetAGPOffsetMESA(dispatchGlobal, pointer);
+    unsigned int  ret = RglXGetAGPOffsetMESA(nextGlobal, pointer);
     Driver("glXGetAGPOffsetMESA","(", print_optional(pointer,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -21221,7 +21221,7 @@ static unsigned int REGAL_CALL log_glXGetAGPOffsetMESA(Layer *_layer, const void
 
 static void REGAL_CALL log_glXCopySubBufferMESA(Layer *_layer, Display *dpy, GLXDrawable drawable, int x, int y, int width, int height)
 {
-    RglXCopySubBufferMESA(dispatchGlobal, dpy, drawable, x, y, width, height);
+    RglXCopySubBufferMESA(nextGlobal, dpy, drawable, x, y, width, height);
     Driver("glXCopySubBufferMESA","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", x, ", ", y, ", ", width, ", ", height, ")");
 }
 
@@ -21229,7 +21229,7 @@ static void REGAL_CALL log_glXCopySubBufferMESA(Layer *_layer, Display *dpy, GLX
 
 static GLXPixmap REGAL_CALL log_glXCreateGLXPixmapMESA(Layer *_layer, Display *dpy, XVisualInfo *visual, Pixmap pixmap, Colormap cmap)
 {
-    GLXPixmap  ret = RglXCreateGLXPixmapMESA(dispatchGlobal, dpy, visual, pixmap, cmap);
+    GLXPixmap  ret = RglXCreateGLXPixmapMESA(nextGlobal, dpy, visual, pixmap, cmap);
     Driver("glXCreateGLXPixmapMESA","(", print_optional(dpy,Logging::pointers), ", ", print_optional(visual,Logging::pointers), ", ", print_optional(pixmap,Logging::pointers), ", ", cmap, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -21238,7 +21238,7 @@ static GLXPixmap REGAL_CALL log_glXCreateGLXPixmapMESA(Layer *_layer, Display *d
 
 static Bool REGAL_CALL log_glXReleaseBuffersMESA(Layer *_layer, Display *dpy, GLXDrawable d)
 {
-    Bool  ret = RglXReleaseBuffersMESA(dispatchGlobal, dpy, d);
+    Bool  ret = RglXReleaseBuffersMESA(nextGlobal, dpy, d);
     Driver("glXReleaseBuffersMESA","(", print_optional(dpy,Logging::pointers), ", ", d, ")", " returned ", ret);
     return ret;
 }
@@ -21247,7 +21247,7 @@ static Bool REGAL_CALL log_glXReleaseBuffersMESA(Layer *_layer, Display *dpy, GL
 
 static GLboolean REGAL_CALL log_glXSet3DfxModeMESA(Layer *_layer, GLint mode)
 {
-    GLboolean  ret = RglXSet3DfxModeMESA(dispatchGlobal, mode);
+    GLboolean  ret = RglXSet3DfxModeMESA(nextGlobal, mode);
     Driver("glXSet3DfxModeMESA","(", mode, ")", " returned ", toString(ret));
     return ret;
 }
@@ -21256,14 +21256,14 @@ static GLboolean REGAL_CALL log_glXSet3DfxModeMESA(Layer *_layer, GLint mode)
 
 static int REGAL_CALL log_glXGetSwapIntervalMESA(Layer *_layer)
 {
-    int  ret = RglXGetSwapIntervalMESA(dispatchGlobal);
+    int  ret = RglXGetSwapIntervalMESA(nextGlobal);
     Driver("glXGetSwapIntervalMESA","()", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXSwapIntervalMESA(Layer *_layer, unsigned int interval)
 {
-    int  ret = RglXSwapIntervalMESA(dispatchGlobal, interval);
+    int  ret = RglXSwapIntervalMESA(nextGlobal, interval);
     Driver("glXSwapIntervalMESA","(", interval, ")", " returned ", ret);
     return ret;
 }
@@ -21272,7 +21272,7 @@ static int REGAL_CALL log_glXSwapIntervalMESA(Layer *_layer, unsigned int interv
 
 static void REGAL_CALL log_glXCopyImageSubDataNV(Layer *_layer, Display *dpy, GLXContext srcCtx, GLuint srcName, GLenum srcTarget, GLint srcLevel, GLint srcX, GLint srcY, GLint srcZ, GLXContext dstCtx, GLuint dstName, GLenum dstTarget, GLint dstLevel, GLint dstX, GLint dstY, GLint dstZ, GLsizei width, GLsizei height, GLsizei depth)
 {
-    RglXCopyImageSubDataNV(dispatchGlobal, dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
+    RglXCopyImageSubDataNV(nextGlobal, dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
     Driver("glXCopyImageSubDataNV","(", print_optional(dpy,Logging::pointers), ", ", print_optional(srcCtx,Logging::pointers), ", ", srcName, ", ", toString(srcTarget), ", ", srcLevel, ", ", srcX, ", ", srcY, ", ", srcZ, ", ", print_optional(dstCtx,Logging::pointers), ", ", dstName, ", ", toString(dstTarget), ", ", dstLevel, ", ", dstX, ", ", dstY, ", ", dstZ, ")");
 }
 
@@ -21280,14 +21280,14 @@ static void REGAL_CALL log_glXCopyImageSubDataNV(Layer *_layer, Display *dpy, GL
 
 static int REGAL_CALL log_glXBindVideoDeviceNV(Layer *_layer, Display *dpy, unsigned int video_slot, unsigned int video_device, const int *attrib_list)
 {
-    int  ret = RglXBindVideoDeviceNV(dispatchGlobal, dpy, video_slot, video_device, attrib_list);
+    int  ret = RglXBindVideoDeviceNV(nextGlobal, dpy, video_slot, video_device, attrib_list);
     Driver("glXBindVideoDeviceNV","(", print_optional(dpy,Logging::pointers), ", ", video_slot, ", ", video_device, ", ", print_optional(attrib_list,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static unsigned int *REGAL_CALL log_glXEnumerateVideoDevicesNV(Layer *_layer, Display *dpy, int screen, int *nelements)
 {
-    unsigned int * ret = RglXEnumerateVideoDevicesNV(dispatchGlobal, dpy, screen, nelements);
+    unsigned int * ret = RglXEnumerateVideoDevicesNV(nextGlobal, dpy, screen, nelements);
     Driver("glXEnumerateVideoDevicesNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_array(nelements,1), ")", " returned ", ret);
     return ret;
 }
@@ -21296,42 +21296,42 @@ static unsigned int *REGAL_CALL log_glXEnumerateVideoDevicesNV(Layer *_layer, Di
 
 static Bool REGAL_CALL log_glXBindSwapBarrierNV(Layer *_layer, Display *dpy, GLuint group, GLuint barrier)
 {
-    Bool  ret = RglXBindSwapBarrierNV(dispatchGlobal, dpy, group, barrier);
+    Bool  ret = RglXBindSwapBarrierNV(nextGlobal, dpy, group, barrier);
     Driver("glXBindSwapBarrierNV","(", print_optional(dpy,Logging::pointers), ", ", group, ", ", barrier, ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXJoinSwapGroupNV(Layer *_layer, Display *dpy, GLXDrawable drawable, GLuint group)
 {
-    Bool  ret = RglXJoinSwapGroupNV(dispatchGlobal, dpy, drawable, group);
+    Bool  ret = RglXJoinSwapGroupNV(nextGlobal, dpy, drawable, group);
     Driver("glXJoinSwapGroupNV","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", group, ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXQueryFrameCountNV(Layer *_layer, Display *dpy, int screen, GLuint *count)
 {
-    Bool  ret = RglXQueryFrameCountNV(dispatchGlobal, dpy, screen, count);
+    Bool  ret = RglXQueryFrameCountNV(nextGlobal, dpy, screen, count);
     Driver("glXQueryFrameCountNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_array(count,1), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXQueryMaxSwapGroupsNV(Layer *_layer, Display *dpy, int screen, GLuint *maxGroups, GLuint *maxBarriers)
 {
-    Bool  ret = RglXQueryMaxSwapGroupsNV(dispatchGlobal, dpy, screen, maxGroups, maxBarriers);
+    Bool  ret = RglXQueryMaxSwapGroupsNV(nextGlobal, dpy, screen, maxGroups, maxBarriers);
     Driver("glXQueryMaxSwapGroupsNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_array(maxGroups,1), ", ", print_array(maxBarriers,1), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXQuerySwapGroupNV(Layer *_layer, Display *dpy, GLXDrawable drawable, GLuint *group, GLuint *barrier)
 {
-    Bool  ret = RglXQuerySwapGroupNV(dispatchGlobal, dpy, drawable, group, barrier);
+    Bool  ret = RglXQuerySwapGroupNV(nextGlobal, dpy, drawable, group, barrier);
     Driver("glXQuerySwapGroupNV","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", print_array(group,1), ", ", print_array(barrier,1), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXResetFrameCountNV(Layer *_layer, Display *dpy, int screen)
 {
-    Bool  ret = RglXResetFrameCountNV(dispatchGlobal, dpy, screen);
+    Bool  ret = RglXResetFrameCountNV(nextGlobal, dpy, screen);
     Driver("glXResetFrameCountNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ")", " returned ", ret);
     return ret;
 }
@@ -21340,14 +21340,14 @@ static Bool REGAL_CALL log_glXResetFrameCountNV(Layer *_layer, Display *dpy, int
 
 static void *REGAL_CALL log_glXAllocateMemoryNV(Layer *_layer, GLsizei size, GLfloat readFrequency, GLfloat writeFrequency, GLfloat priority)
 {
-    void * ret = RglXAllocateMemoryNV(dispatchGlobal, size, readFrequency, writeFrequency, priority);
+    void * ret = RglXAllocateMemoryNV(nextGlobal, size, readFrequency, writeFrequency, priority);
     Driver("glXAllocateMemoryNV","(", size, ", ", readFrequency, ", ", writeFrequency, ", ", priority, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static void REGAL_CALL log_glXFreeMemoryNV(Layer *_layer, void *pointer)
 {
-    RglXFreeMemoryNV(dispatchGlobal, pointer);
+    RglXFreeMemoryNV(nextGlobal, pointer);
     Driver("glXFreeMemoryNV","(", print_optional(pointer,Logging::pointers), ")");
 }
 
@@ -21355,34 +21355,34 @@ static void REGAL_CALL log_glXFreeMemoryNV(Layer *_layer, void *pointer)
 
 static int REGAL_CALL log_glXBindVideoCaptureDeviceNV(Layer *_layer, Display *dpy, unsigned int video_capture_slot, GLXVideoCaptureDeviceNV device)
 {
-    int  ret = RglXBindVideoCaptureDeviceNV(dispatchGlobal, dpy, video_capture_slot, device);
+    int  ret = RglXBindVideoCaptureDeviceNV(nextGlobal, dpy, video_capture_slot, device);
     Driver("glXBindVideoCaptureDeviceNV","(", print_optional(dpy,Logging::pointers), ", ", video_capture_slot, ", ", device, ")", " returned ", ret);
     return ret;
 }
 
 static GLXVideoCaptureDeviceNV *REGAL_CALL log_glXEnumerateVideoCaptureDevicesNV(Layer *_layer, Display *dpy, int screen, int *nelements)
 {
-    GLXVideoCaptureDeviceNV * ret = RglXEnumerateVideoCaptureDevicesNV(dispatchGlobal, dpy, screen, nelements);
+    GLXVideoCaptureDeviceNV * ret = RglXEnumerateVideoCaptureDevicesNV(nextGlobal, dpy, screen, nelements);
     Driver("glXEnumerateVideoCaptureDevicesNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_optional(nelements,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static void REGAL_CALL log_glXLockVideoCaptureDeviceNV(Layer *_layer, Display *dpy, GLXVideoCaptureDeviceNV device)
 {
-    RglXLockVideoCaptureDeviceNV(dispatchGlobal, dpy, device);
+    RglXLockVideoCaptureDeviceNV(nextGlobal, dpy, device);
     Driver("glXLockVideoCaptureDeviceNV","(", print_optional(dpy,Logging::pointers), ", ", device, ")");
 }
 
 static int REGAL_CALL log_glXQueryVideoCaptureDeviceNV(Layer *_layer, Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value)
 {
-    int  ret = RglXQueryVideoCaptureDeviceNV(dispatchGlobal, dpy, device, attribute, value);
+    int  ret = RglXQueryVideoCaptureDeviceNV(nextGlobal, dpy, device, attribute, value);
     Driver("glXQueryVideoCaptureDeviceNV","(", print_optional(dpy,Logging::pointers), ", ", device, ", ", attribute, ", ", print_optional(value,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static void REGAL_CALL log_glXReleaseVideoCaptureDeviceNV(Layer *_layer, Display *dpy, GLXVideoCaptureDeviceNV device)
 {
-    RglXReleaseVideoCaptureDeviceNV(dispatchGlobal, dpy, device);
+    RglXReleaseVideoCaptureDeviceNV(nextGlobal, dpy, device);
     Driver("glXReleaseVideoCaptureDeviceNV","(", print_optional(dpy,Logging::pointers), ", ", device, ")");
 }
 
@@ -21390,42 +21390,42 @@ static void REGAL_CALL log_glXReleaseVideoCaptureDeviceNV(Layer *_layer, Display
 
 static int REGAL_CALL log_glXBindVideoImageNV(Layer *_layer, Display *dpy, GLXVideoDeviceNV VideoDevice, GLXPbuffer pbuf, int iVideoBuffer)
 {
-    int  ret = RglXBindVideoImageNV(dispatchGlobal, dpy, VideoDevice, pbuf, iVideoBuffer);
+    int  ret = RglXBindVideoImageNV(nextGlobal, dpy, VideoDevice, pbuf, iVideoBuffer);
     Driver("glXBindVideoImageNV","(", print_optional(dpy,Logging::pointers), ", ", print_optional(VideoDevice,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ", ", iVideoBuffer, ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXGetVideoDeviceNV(Layer *_layer, Display *dpy, int screen, int numVideoDevices, GLXVideoDeviceNV *pVideoDevice)
 {
-    int  ret = RglXGetVideoDeviceNV(dispatchGlobal, dpy, screen, numVideoDevices, pVideoDevice);
+    int  ret = RglXGetVideoDeviceNV(nextGlobal, dpy, screen, numVideoDevices, pVideoDevice);
     Driver("glXGetVideoDeviceNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", numVideoDevices, ", ", print_array(pVideoDevice,numVideoDevices), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXGetVideoInfoNV(Layer *_layer, Display *dpy, int screen, GLXVideoDeviceNV VideoDevice, unsigned long *pulCounterOutputPbuffer, unsigned long *pulCounterOutputVideo)
 {
-    int  ret = RglXGetVideoInfoNV(dispatchGlobal, dpy, screen, VideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
+    int  ret = RglXGetVideoInfoNV(nextGlobal, dpy, screen, VideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
     Driver("glXGetVideoInfoNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_optional(VideoDevice,Logging::pointers), ", ", print_array(pulCounterOutputPbuffer,1), ", ", print_array(pulCounterOutputVideo,1), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXReleaseVideoDeviceNV(Layer *_layer, Display *dpy, int screen, GLXVideoDeviceNV VideoDevice)
 {
-    int  ret = RglXReleaseVideoDeviceNV(dispatchGlobal, dpy, screen, VideoDevice);
+    int  ret = RglXReleaseVideoDeviceNV(nextGlobal, dpy, screen, VideoDevice);
     Driver("glXReleaseVideoDeviceNV","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_optional(VideoDevice,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXReleaseVideoImageNV(Layer *_layer, Display *dpy, GLXPbuffer pbuf)
 {
-    int  ret = RglXReleaseVideoImageNV(dispatchGlobal, dpy, pbuf);
+    int  ret = RglXReleaseVideoImageNV(nextGlobal, dpy, pbuf);
     Driver("glXReleaseVideoImageNV","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXSendPbufferToVideoNV(Layer *_layer, Display *dpy, GLXPbuffer pbuf, int iBufferType, unsigned long *pulCounterPbuffer, GLboolean bBlock)
 {
-    int  ret = RglXSendPbufferToVideoNV(dispatchGlobal, dpy, pbuf, iBufferType, pulCounterPbuffer, bBlock);
+    int  ret = RglXSendPbufferToVideoNV(nextGlobal, dpy, pbuf, iBufferType, pulCounterPbuffer, bBlock);
     Driver("glXSendPbufferToVideoNV","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ", ", iBufferType, ", ", print_array(pulCounterPbuffer,1), ", ", toString(bBlock), ")", " returned ", ret);
     return ret;
 }
@@ -21434,35 +21434,35 @@ static int REGAL_CALL log_glXSendPbufferToVideoNV(Layer *_layer, Display *dpy, G
 
 static Bool REGAL_CALL log_glXGetMscRateOML(Layer *_layer, Display *dpy, GLXDrawable drawable, int32_t *numerator, int32_t *denominator)
 {
-    Bool  ret = RglXGetMscRateOML(dispatchGlobal, dpy, drawable, numerator, denominator);
+    Bool  ret = RglXGetMscRateOML(nextGlobal, dpy, drawable, numerator, denominator);
     Driver("glXGetMscRateOML","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", print_array(numerator,1), ", ", print_array(denominator,1), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXGetSyncValuesOML(Layer *_layer, Display *dpy, GLXDrawable drawable, int64_t *ust, int64_t *msc, int64_t *sbc)
 {
-    Bool  ret = RglXGetSyncValuesOML(dispatchGlobal, dpy, drawable, ust, msc, sbc);
+    Bool  ret = RglXGetSyncValuesOML(nextGlobal, dpy, drawable, ust, msc, sbc);
     Driver("glXGetSyncValuesOML","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", print_array(ust,1), ", ", print_array(msc,1), ", ", print_array(sbc,1), ")", " returned ", ret);
     return ret;
 }
 
 static int64_t REGAL_CALL log_glXSwapBuffersMscOML(Layer *_layer, Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder)
 {
-    int64_t  ret = RglXSwapBuffersMscOML(dispatchGlobal, dpy, drawable, target_msc, divisor, remainder);
+    int64_t  ret = RglXSwapBuffersMscOML(nextGlobal, dpy, drawable, target_msc, divisor, remainder);
     Driver("glXSwapBuffersMscOML","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXWaitForMscOML(Layer *_layer, Display *dpy, GLXDrawable drawable, int64_t target_msc, int64_t divisor, int64_t remainder, int64_t *ust, int64_t *msc, int64_t *sbc)
 {
-    Bool  ret = RglXWaitForMscOML(dispatchGlobal, dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc);
+    Bool  ret = RglXWaitForMscOML(nextGlobal, dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc);
     Driver("glXWaitForMscOML","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", target_msc, ", ", divisor, ", ", remainder, ", ", print_array(ust,1), ", ", print_array(msc,1), ", ", print_array(sbc,1), ")", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXWaitForSbcOML(Layer *_layer, Display *dpy, GLXDrawable drawable, int64_t target_sbc, int64_t *ust, int64_t *msc, int64_t *sbc)
 {
-    Bool  ret = RglXWaitForSbcOML(dispatchGlobal, dpy, drawable, target_sbc, ust, msc, sbc);
+    Bool  ret = RglXWaitForSbcOML(nextGlobal, dpy, drawable, target_sbc, ust, msc, sbc);
     Driver("glXWaitForSbcOML","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", target_sbc, ", ", print_array(ust,1), ", ", print_array(msc,1), ", ", print_array(sbc,1), ")", " returned ", ret);
     return ret;
 }
@@ -21471,42 +21471,42 @@ static Bool REGAL_CALL log_glXWaitForSbcOML(Layer *_layer, Display *dpy, GLXDraw
 
 static GLXFBConfigSGIX *REGAL_CALL log_glXChooseFBConfigSGIX(Layer *_layer, Display *dpy, int screen, const int *attrib_list, int *nelements)
 {
-    GLXFBConfigSGIX * ret = RglXChooseFBConfigSGIX(dispatchGlobal, dpy, screen, attrib_list, nelements);
+    GLXFBConfigSGIX * ret = RglXChooseFBConfigSGIX(nextGlobal, dpy, screen, attrib_list, nelements);
     Driver("glXChooseFBConfigSGIX","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_optional(attrib_list,Logging::pointers), ", ", print_optional(nelements,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static GLXContext REGAL_CALL log_glXCreateContextWithConfigSGIX(Layer *_layer, Display *dpy, GLXFBConfig config, int render_type, GLXContext share_list, Bool direct)
 {
-    GLXContext  ret = RglXCreateContextWithConfigSGIX(dispatchGlobal, dpy, config, render_type, share_list, direct);
+    GLXContext  ret = RglXCreateContextWithConfigSGIX(nextGlobal, dpy, config, render_type, share_list, direct);
     Driver("glXCreateContextWithConfigSGIX","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", render_type, ", ", print_optional(share_list,Logging::pointers), ", ", direct, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static GLXPixmap REGAL_CALL log_glXCreateGLXPixmapWithConfigSGIX(Layer *_layer, Display *dpy, GLXFBConfig config, Pixmap pixmap)
 {
-    GLXPixmap  ret = RglXCreateGLXPixmapWithConfigSGIX(dispatchGlobal, dpy, config, pixmap);
+    GLXPixmap  ret = RglXCreateGLXPixmapWithConfigSGIX(nextGlobal, dpy, config, pixmap);
     Driver("glXCreateGLXPixmapWithConfigSGIX","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", print_optional(pixmap,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static int REGAL_CALL log_glXGetFBConfigAttribSGIX(Layer *_layer, Display *dpy, GLXFBConfigSGIX config, int attribute, int *value)
 {
-    int  ret = RglXGetFBConfigAttribSGIX(dispatchGlobal, dpy, config, attribute, value);
+    int  ret = RglXGetFBConfigAttribSGIX(nextGlobal, dpy, config, attribute, value);
     Driver("glXGetFBConfigAttribSGIX","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", attribute, ", ", print_array(value,1), ")", " returned ", ret);
     return ret;
 }
 
 static GLXFBConfigSGIX REGAL_CALL log_glXGetFBConfigFromVisualSGIX(Layer *_layer, Display *dpy, XVisualInfo *vis)
 {
-    GLXFBConfigSGIX  ret = RglXGetFBConfigFromVisualSGIX(dispatchGlobal, dpy, vis);
+    GLXFBConfigSGIX  ret = RglXGetFBConfigFromVisualSGIX(nextGlobal, dpy, vis);
     Driver("glXGetFBConfigFromVisualSGIX","(", print_optional(dpy,Logging::pointers), ", ", print_optional(vis,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static XVisualInfo *REGAL_CALL log_glXGetVisualFromFBConfigSGIX(Layer *_layer, Display *dpy, GLXFBConfig config)
 {
-    XVisualInfo * ret = RglXGetVisualFromFBConfigSGIX(dispatchGlobal, dpy, config);
+    XVisualInfo * ret = RglXGetVisualFromFBConfigSGIX(nextGlobal, dpy, config);
     Driver("glXGetVisualFromFBConfigSGIX","(", print_optional(dpy,Logging::pointers), ", ", config, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -21515,32 +21515,32 @@ static XVisualInfo *REGAL_CALL log_glXGetVisualFromFBConfigSGIX(Layer *_layer, D
 
 static GLXPbuffer REGAL_CALL log_glXCreateGLXPbufferSGIX(Layer *_layer, Display *dpy, GLXFBConfig config, unsigned int width, unsigned int height, int *attrib_list)
 {
-    GLXPbuffer  ret = RglXCreateGLXPbufferSGIX(dispatchGlobal, dpy, config, width, height, attrib_list);
+    GLXPbuffer  ret = RglXCreateGLXPbufferSGIX(nextGlobal, dpy, config, width, height, attrib_list);
     Driver("glXCreateGLXPbufferSGIX","(", print_optional(dpy,Logging::pointers), ", ", config, ", ", width, ", ", height, ", ", print_optional(attrib_list,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static void REGAL_CALL log_glXDestroyGLXPbufferSGIX(Layer *_layer, Display *dpy, GLXPbuffer pbuf)
 {
-    RglXDestroyGLXPbufferSGIX(dispatchGlobal, dpy, pbuf);
+    RglXDestroyGLXPbufferSGIX(nextGlobal, dpy, pbuf);
     Driver("glXDestroyGLXPbufferSGIX","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ")");
 }
 
 static void REGAL_CALL log_glXGetSelectedEventSGIX(Layer *_layer, Display *dpy, GLXDrawable drawable, unsigned long *mask)
 {
-    RglXGetSelectedEventSGIX(dispatchGlobal, dpy, drawable, mask);
+    RglXGetSelectedEventSGIX(nextGlobal, dpy, drawable, mask);
     Driver("glXGetSelectedEventSGIX","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", print_array(mask,1), ")");
 }
 
 static void REGAL_CALL log_glXQueryGLXPbufferSGIX(Layer *_layer, Display *dpy, GLXPbuffer pbuf, int attribute, unsigned int *value)
 {
-    RglXQueryGLXPbufferSGIX(dispatchGlobal, dpy, pbuf, attribute, value);
+    RglXQueryGLXPbufferSGIX(nextGlobal, dpy, pbuf, attribute, value);
     Driver("glXQueryGLXPbufferSGIX","(", print_optional(dpy,Logging::pointers), ", ", print_optional(pbuf,Logging::pointers), ", ", attribute, ", ", print_array(value,1), ")");
 }
 
 static void REGAL_CALL log_glXSelectEventSGIX(Layer *_layer, Display *dpy, GLXDrawable drawable, unsigned long mask)
 {
-    RglXSelectEventSGIX(dispatchGlobal, dpy, drawable, mask);
+    RglXSelectEventSGIX(nextGlobal, dpy, drawable, mask);
     Driver("glXSelectEventSGIX","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", mask, ")");
 }
 
@@ -21548,13 +21548,13 @@ static void REGAL_CALL log_glXSelectEventSGIX(Layer *_layer, Display *dpy, GLXDr
 
 static void REGAL_CALL log_glXBindSwapBarrierSGIX(Layer *_layer, Display *dpy, GLXDrawable drawable, int barrier)
 {
-    RglXBindSwapBarrierSGIX(dispatchGlobal, dpy, drawable, barrier);
+    RglXBindSwapBarrierSGIX(nextGlobal, dpy, drawable, barrier);
     Driver("glXBindSwapBarrierSGIX","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", barrier, ")");
 }
 
 static Bool REGAL_CALL log_glXQueryMaxSwapBarriersSGIX(Layer *_layer, Display *dpy, int screen, int *max)
 {
-    Bool  ret = RglXQueryMaxSwapBarriersSGIX(dispatchGlobal, dpy, screen, max);
+    Bool  ret = RglXQueryMaxSwapBarriersSGIX(nextGlobal, dpy, screen, max);
     Driver("glXQueryMaxSwapBarriersSGIX","(", print_optional(dpy,Logging::pointers), ", ", screen, ", ", print_array(max,1), ")", " returned ", ret);
     return ret;
 }
@@ -21563,7 +21563,7 @@ static Bool REGAL_CALL log_glXQueryMaxSwapBarriersSGIX(Layer *_layer, Display *d
 
 static void REGAL_CALL log_glXJoinSwapGroupSGIX(Layer *_layer, Display *dpy, GLXDrawable drawable, GLXDrawable member)
 {
-    RglXJoinSwapGroupSGIX(dispatchGlobal, dpy, drawable, member);
+    RglXJoinSwapGroupSGIX(nextGlobal, dpy, drawable, member);
     Driver("glXJoinSwapGroupSGIX","(", print_optional(dpy,Logging::pointers), ", ", drawable, ", ", member, ")");
 }
 
@@ -21571,35 +21571,35 @@ static void REGAL_CALL log_glXJoinSwapGroupSGIX(Layer *_layer, Display *dpy, GLX
 
 static int REGAL_CALL log_glXBindChannelToWindowSGIX(Layer *_layer, Display *display, int screen, int channel, Window window)
 {
-    int  ret = RglXBindChannelToWindowSGIX(dispatchGlobal, display, screen, channel, window);
+    int  ret = RglXBindChannelToWindowSGIX(nextGlobal, display, screen, channel, window);
     Driver("glXBindChannelToWindowSGIX","(", print_optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", window, ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXChannelRectSGIX(Layer *_layer, Display *display, int screen, int channel, int x, int y, int w, int h)
 {
-    int  ret = RglXChannelRectSGIX(dispatchGlobal, display, screen, channel, x, y, w, h);
+    int  ret = RglXChannelRectSGIX(nextGlobal, display, screen, channel, x, y, w, h);
     Driver("glXChannelRectSGIX","(", print_optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", x, ", ", y, ", ", w, ", ", h, ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXChannelRectSyncSGIX(Layer *_layer, Display *display, int screen, int channel, GLenum synctype)
 {
-    int  ret = RglXChannelRectSyncSGIX(dispatchGlobal, display, screen, channel, synctype);
+    int  ret = RglXChannelRectSyncSGIX(nextGlobal, display, screen, channel, synctype);
     Driver("glXChannelRectSyncSGIX","(", print_optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", toString(synctype), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXQueryChannelDeltasSGIX(Layer *_layer, Display *display, int screen, int channel, int *x, int *y, int *w, int *h)
 {
-    int  ret = RglXQueryChannelDeltasSGIX(dispatchGlobal, display, screen, channel, x, y, w, h);
+    int  ret = RglXQueryChannelDeltasSGIX(nextGlobal, display, screen, channel, x, y, w, h);
     Driver("glXQueryChannelDeltasSGIX","(", print_optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", print_array(x,1), ", ", print_array(y,1), ", ", print_array(w,1), ", ", print_array(h,1), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXQueryChannelRectSGIX(Layer *_layer, Display *display, int screen, int channel, int *dx, int *dy, int *dw, int *dh)
 {
-    int  ret = RglXQueryChannelRectSGIX(dispatchGlobal, display, screen, channel, dx, dy, dw, dh);
+    int  ret = RglXQueryChannelRectSGIX(nextGlobal, display, screen, channel, dx, dy, dw, dh);
     Driver("glXQueryChannelRectSGIX","(", print_optional(display,Logging::pointers), ", ", screen, ", ", channel, ", ", print_array(dx,1), ", ", print_array(dy,1), ", ", print_array(dw,1), ", ", print_array(dh,1), ")", " returned ", ret);
     return ret;
 }
@@ -21608,7 +21608,7 @@ static int REGAL_CALL log_glXQueryChannelRectSGIX(Layer *_layer, Display *displa
 
 static void REGAL_CALL log_glXCushionSGI(Layer *_layer, Display *dpy, Window window, float cushion)
 {
-    RglXCushionSGI(dispatchGlobal, dpy, window, cushion);
+    RglXCushionSGI(nextGlobal, dpy, window, cushion);
     Driver("glXCushionSGI","(", print_optional(dpy,Logging::pointers), ", ", window, ", ", cushion, ")");
 }
 
@@ -21616,14 +21616,14 @@ static void REGAL_CALL log_glXCushionSGI(Layer *_layer, Display *dpy, Window win
 
 static GLXDrawable REGAL_CALL log_glXGetCurrentReadDrawableSGI(Layer *_layer)
 {
-    GLXDrawable  ret = RglXGetCurrentReadDrawableSGI(dispatchGlobal);
+    GLXDrawable  ret = RglXGetCurrentReadDrawableSGI(nextGlobal);
     Driver("glXGetCurrentReadDrawableSGI","()", " returned ", ret);
     return ret;
 }
 
 static Bool REGAL_CALL log_glXMakeCurrentReadSGI(Layer *_layer, Display *dpy, GLXDrawable draw, GLXDrawable read, GLXContext ctx)
 {
-    Bool  ret = RglXMakeCurrentReadSGI(dispatchGlobal, dpy, draw, read, ctx);
+    Bool  ret = RglXMakeCurrentReadSGI(nextGlobal, dpy, draw, read, ctx);
     Driver("glXMakeCurrentReadSGI","(", print_optional(dpy,Logging::pointers), ", ", draw, ", ", read, ", ", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -21632,7 +21632,7 @@ static Bool REGAL_CALL log_glXMakeCurrentReadSGI(Layer *_layer, Display *dpy, GL
 
 static int REGAL_CALL log_glXSwapIntervalSGI(Layer *_layer, int interval)
 {
-    int  ret = RglXSwapIntervalSGI(dispatchGlobal, interval);
+    int  ret = RglXSwapIntervalSGI(nextGlobal, interval);
     Driver("glXSwapIntervalSGI","(", interval, ")", " returned ", ret);
     return ret;
 }
@@ -21641,14 +21641,14 @@ static int REGAL_CALL log_glXSwapIntervalSGI(Layer *_layer, int interval)
 
 static int REGAL_CALL log_glXGetVideoSyncSGI(Layer *_layer, unsigned int *count)
 {
-    int  ret = RglXGetVideoSyncSGI(dispatchGlobal, count);
+    int  ret = RglXGetVideoSyncSGI(nextGlobal, count);
     Driver("glXGetVideoSyncSGI","(", print_array(count,1), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXWaitVideoSyncSGI(Layer *_layer, int divisor, int remainder, unsigned int *count)
 {
-    int  ret = RglXWaitVideoSyncSGI(dispatchGlobal, divisor, remainder, count);
+    int  ret = RglXWaitVideoSyncSGI(nextGlobal, divisor, remainder, count);
     Driver("glXWaitVideoSyncSGI","(", divisor, ", ", remainder, ", ", print_array(count,1), ")", " returned ", ret);
     return ret;
 }
@@ -21657,7 +21657,7 @@ static int REGAL_CALL log_glXWaitVideoSyncSGI(Layer *_layer, int divisor, int re
 
 static Status REGAL_CALL log_glXGetTransparentIndexSUN(Layer *_layer, Display *dpy, Window overlay, Window underlay, unsigned long *pTransparentIndex)
 {
-    Status  ret = RglXGetTransparentIndexSUN(dispatchGlobal, dpy, overlay, underlay, pTransparentIndex);
+    Status  ret = RglXGetTransparentIndexSUN(nextGlobal, dpy, overlay, underlay, pTransparentIndex);
     Driver("glXGetTransparentIndexSUN","(", print_optional(dpy,Logging::pointers), ", ", overlay, ", ", underlay, ", ", print_array(pTransparentIndex,1), ")", " returned ", ret);
     return ret;
 }
@@ -21666,14 +21666,14 @@ static Status REGAL_CALL log_glXGetTransparentIndexSUN(Layer *_layer, Display *d
 
 static int REGAL_CALL log_glXGetVideoResizeSUN(Layer *_layer, Display *display, GLXDrawable window, float *factor)
 {
-    int  ret = RglXGetVideoResizeSUN(dispatchGlobal, display, window, factor);
+    int  ret = RglXGetVideoResizeSUN(nextGlobal, display, window, factor);
     Driver("glXGetVideoResizeSUN","(", print_optional(display,Logging::pointers), ", ", window, ", ", print_array(factor,1), ")", " returned ", ret);
     return ret;
 }
 
 static int REGAL_CALL log_glXVideoResizeSUN(Layer *_layer, Display *display, GLXDrawable window, float factor)
 {
-    int  ret = RglXVideoResizeSUN(dispatchGlobal, display, window, factor);
+    int  ret = RglXVideoResizeSUN(nextGlobal, display, window, factor);
     Driver("glXVideoResizeSUN","(", print_optional(display,Logging::pointers), ", ", window, ", ", factor, ")", " returned ", ret);
     return ret;
 }
@@ -21686,174 +21686,174 @@ static int REGAL_CALL log_glXVideoResizeSUN(Layer *_layer, Display *display, GLX
 
 static CGLError REGAL_CALL log_CGLChoosePixelFormat(Layer *_layer, const CGLPixelFormatAttribute *attribs, CGLPixelFormatObj *pix, GLint *npix)
 {
-    CGLError  ret = RCGLChoosePixelFormat(dispatchGlobal, attribs, pix, npix);
+    CGLError  ret = RCGLChoosePixelFormat(nextGlobal, attribs, pix, npix);
     Driver("CGLChoosePixelFormat","(", attribs, ", ", pix, ", ", print_optional(npix,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLClearDrawable(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLClearDrawable(dispatchGlobal, ctx);
+    CGLError  ret = RCGLClearDrawable(nextGlobal, ctx);
     Driver("CGLClearDrawable","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLCopyContext(Layer *_layer, CGLContextObj src, CGLContextObj dst, GLbitfield mask)
 {
-    CGLError  ret = RCGLCopyContext(dispatchGlobal, src, dst, mask);
+    CGLError  ret = RCGLCopyContext(nextGlobal, src, dst, mask);
     Driver("CGLCopyContext","(", src, ", ", dst, ", ", GLpushAttribToString(mask), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLCreateContext(Layer *_layer, CGLPixelFormatObj pix, CGLContextObj share, CGLContextObj *ctx)
 {
-    CGLError  ret = RCGLCreateContext(dispatchGlobal, pix, share, ctx);
+    CGLError  ret = RCGLCreateContext(nextGlobal, pix, share, ctx);
     Driver("CGLCreateContext","(", pix, ", ", share, ", ", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDescribePixelFormat(Layer *_layer, CGLPixelFormatObj pix, GLint pix_num, CGLPixelFormatAttribute attrib, GLint *value)
 {
-    CGLError  ret = RCGLDescribePixelFormat(dispatchGlobal, pix, pix_num, attrib, value);
+    CGLError  ret = RCGLDescribePixelFormat(nextGlobal, pix, pix_num, attrib, value);
     Driver("CGLDescribePixelFormat","(", pix, ", ", pix_num, ", ", attrib, ", ", print_optional(value,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDescribeRenderer(Layer *_layer, CGLRendererInfoObj rend, GLint rend_num, CGLRendererProperty prop, GLint *value)
 {
-    CGLError  ret = RCGLDescribeRenderer(dispatchGlobal, rend, rend_num, prop, value);
+    CGLError  ret = RCGLDescribeRenderer(nextGlobal, rend, rend_num, prop, value);
     Driver("CGLDescribeRenderer","(", rend, ", ", rend_num, ", ", prop, ", ", print_optional(value,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDestroyContext(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLDestroyContext(dispatchGlobal, ctx);
+    CGLError  ret = RCGLDestroyContext(nextGlobal, ctx);
     Driver("CGLDestroyContext","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDestroyPixelFormat(Layer *_layer, CGLPixelFormatObj pix)
 {
-    CGLError  ret = RCGLDestroyPixelFormat(dispatchGlobal, pix);
+    CGLError  ret = RCGLDestroyPixelFormat(nextGlobal, pix);
     Driver("CGLDestroyPixelFormat","(", pix, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDestroyRendererInfo(Layer *_layer, CGLRendererInfoObj rend)
 {
-    CGLError  ret = RCGLDestroyRendererInfo(dispatchGlobal, rend);
+    CGLError  ret = RCGLDestroyRendererInfo(nextGlobal, rend);
     Driver("CGLDestroyRendererInfo","(", rend, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDisable(Layer *_layer, CGLContextObj ctx, CGLContextEnable pname)
 {
-    CGLError  ret = RCGLDisable(dispatchGlobal, ctx, pname);
+    CGLError  ret = RCGLDisable(nextGlobal, ctx, pname);
     Driver("CGLDisable","(", ctx, ", ", pname, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLEnable(Layer *_layer, CGLContextObj ctx, CGLContextEnable pname)
 {
-    CGLError  ret = RCGLEnable(dispatchGlobal, ctx, pname);
+    CGLError  ret = RCGLEnable(nextGlobal, ctx, pname);
     Driver("CGLEnable","(", ctx, ", ", pname, ")", " returned ", ret);
     return ret;
 }
 
 static const char *REGAL_CALL log_CGLErrorString(Layer *_layer, CGLError error)
 {
-    const char * ret = RCGLErrorString(dispatchGlobal, error);
+    const char * ret = RCGLErrorString(nextGlobal, error);
     Driver("CGLErrorString","(", error, ")", " returned ", print_quote(ret,'"'));
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLFlushDrawable(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLFlushDrawable(dispatchGlobal, ctx);
+    CGLError  ret = RCGLFlushDrawable(nextGlobal, ctx);
     Driver("CGLFlushDrawable","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLGetOffScreen(Layer *_layer, CGLContextObj ctx, GLsizei *width, GLsizei *height, GLsizei *rowbytes, void **baseaddr)
 {
-    CGLError  ret = RCGLGetOffScreen(dispatchGlobal, ctx, width, height, rowbytes, baseaddr);
+    CGLError  ret = RCGLGetOffScreen(nextGlobal, ctx, width, height, rowbytes, baseaddr);
     Driver("CGLGetOffScreen","(", ctx, ", ", print_optional(width,Logging::pointers), ", ", print_optional(height,Logging::pointers), ", ", print_optional(rowbytes,Logging::pointers), ", ", print_optional(baseaddr,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLGetOption(Layer *_layer, CGLGlobalOption pname, GLint *param)
 {
-    CGLError  ret = RCGLGetOption(dispatchGlobal, pname, param);
+    CGLError  ret = RCGLGetOption(nextGlobal, pname, param);
     Driver("CGLGetOption","(", pname, ", ", print_optional(param,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLGetParameter(Layer *_layer, CGLContextObj ctx, CGLContextParameter pname, GLint *params)
 {
-    CGLError  ret = RCGLGetParameter(dispatchGlobal, ctx, pname, params);
+    CGLError  ret = RCGLGetParameter(nextGlobal, ctx, pname, params);
     Driver("CGLGetParameter","(", ctx, ", ", pname, ", ", print_optional(params,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static void REGAL_CALL log_CGLGetVersion(Layer *_layer, GLint *majorvers, GLint *minorvers)
 {
-    RCGLGetVersion(dispatchGlobal, majorvers, minorvers);
+    RCGLGetVersion(nextGlobal, majorvers, minorvers);
     Driver("CGLGetVersion","(", print_optional(majorvers,Logging::pointers), ", ", print_optional(minorvers,Logging::pointers), ")");
 }
 
 static CGLError REGAL_CALL log_CGLGetVirtualScreen(Layer *_layer, CGLContextObj ctx, GLint *screen)
 {
-    CGLError  ret = RCGLGetVirtualScreen(dispatchGlobal, ctx, screen);
+    CGLError  ret = RCGLGetVirtualScreen(nextGlobal, ctx, screen);
     Driver("CGLGetVirtualScreen","(", ctx, ", ", print_optional(screen,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLIsEnabled(Layer *_layer, CGLContextObj ctx, CGLContextEnable pname, GLint *enable)
 {
-    CGLError  ret = RCGLIsEnabled(dispatchGlobal, ctx, pname, enable);
+    CGLError  ret = RCGLIsEnabled(nextGlobal, ctx, pname, enable);
     Driver("CGLIsEnabled","(", ctx, ", ", pname, ", ", print_optional(enable,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLQueryRendererInfo(Layer *_layer, GLuint display_mask, CGLRendererInfoObj *rend, GLint *nrend)
 {
-    CGLError  ret = RCGLQueryRendererInfo(dispatchGlobal, display_mask, rend, nrend);
+    CGLError  ret = RCGLQueryRendererInfo(nextGlobal, display_mask, rend, nrend);
     Driver("CGLQueryRendererInfo","(", display_mask, ", ", rend, ", ", print_optional(nrend,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetFullScreen(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLSetFullScreen(dispatchGlobal, ctx);
+    CGLError  ret = RCGLSetFullScreen(nextGlobal, ctx);
     Driver("CGLSetFullScreen","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetOffScreen(Layer *_layer, CGLContextObj ctx, GLsizei width, GLsizei height, GLsizei rowbytes, void *baseaddr)
 {
-    CGLError  ret = RCGLSetOffScreen(dispatchGlobal, ctx, width, height, rowbytes, baseaddr);
+    CGLError  ret = RCGLSetOffScreen(nextGlobal, ctx, width, height, rowbytes, baseaddr);
     Driver("CGLSetOffScreen","(", ctx, ", ", width, ", ", height, ", ", rowbytes, ", ", print_optional(baseaddr,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetOption(Layer *_layer, CGLGlobalOption pname, GLint param)
 {
-    CGLError  ret = RCGLSetOption(dispatchGlobal, pname, param);
+    CGLError  ret = RCGLSetOption(nextGlobal, pname, param);
     Driver("CGLSetOption","(", pname, ", ", param, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetParameter(Layer *_layer, CGLContextObj ctx, CGLContextParameter pname, const GLint *params)
 {
-    CGLError  ret = RCGLSetParameter(dispatchGlobal, ctx, pname, params);
+    CGLError  ret = RCGLSetParameter(nextGlobal, ctx, pname, params);
     Driver("CGLSetParameter","(", ctx, ", ", pname, ", ", print_optional(params,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetVirtualScreen(Layer *_layer, CGLContextObj ctx, GLint screen)
 {
-    CGLError  ret = RCGLSetVirtualScreen(dispatchGlobal, ctx, screen);
+    CGLError  ret = RCGLSetVirtualScreen(nextGlobal, ctx, screen);
     Driver("CGLSetVirtualScreen","(", ctx, ", ", screen, ")", " returned ", ret);
     return ret;
 }
@@ -21862,42 +21862,42 @@ static CGLError REGAL_CALL log_CGLSetVirtualScreen(Layer *_layer, CGLContextObj 
 
 static CGLError REGAL_CALL log_CGLCreatePBuffer(Layer *_layer, GLsizei width, GLsizei height, GLenum target, GLenum internalFormat, GLint max_level, CGLPBufferObj *pbuffer)
 {
-    CGLError  ret = RCGLCreatePBuffer(dispatchGlobal, width, height, target, internalFormat, max_level, pbuffer);
+    CGLError  ret = RCGLCreatePBuffer(nextGlobal, width, height, target, internalFormat, max_level, pbuffer);
     Driver("CGLCreatePBuffer","(", width, ", ", height, ", ", toString(target), ", ", toString(internalFormat), ", ", max_level, ", ", pbuffer, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDescribePBuffer(Layer *_layer, CGLPBufferObj pbuffer, GLsizei *width, GLsizei *height, GLenum *target, GLenum *internalFormat, GLint *mipmap)
 {
-    CGLError  ret = RCGLDescribePBuffer(dispatchGlobal, pbuffer, width, height, target, internalFormat, mipmap);
+    CGLError  ret = RCGLDescribePBuffer(nextGlobal, pbuffer, width, height, target, internalFormat, mipmap);
     Driver("CGLDescribePBuffer","(", pbuffer, ", ", print_optional(width,Logging::pointers), ", ", print_optional(height,Logging::pointers), ", ", print_optional(target,Logging::pointers), ", ", print_optional(internalFormat,Logging::pointers), ", ", print_optional(mipmap,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLDestroyPBuffer(Layer *_layer, CGLPBufferObj pbuffer)
 {
-    CGLError  ret = RCGLDestroyPBuffer(dispatchGlobal, pbuffer);
+    CGLError  ret = RCGLDestroyPBuffer(nextGlobal, pbuffer);
     Driver("CGLDestroyPBuffer","(", pbuffer, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLGetPBuffer(Layer *_layer, CGLContextObj ctx, CGLPBufferObj *pbuffer, GLenum *face, GLint *level, GLint *screen)
 {
-    CGLError  ret = RCGLGetPBuffer(dispatchGlobal, ctx, pbuffer, face, level, screen);
+    CGLError  ret = RCGLGetPBuffer(nextGlobal, ctx, pbuffer, face, level, screen);
     Driver("CGLGetPBuffer","(", ctx, ", ", pbuffer, ", ", print_optional(face,Logging::pointers), ", ", print_optional(level,Logging::pointers), ", ", print_optional(screen,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetPBuffer(Layer *_layer, CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum face, GLint level, GLint screen)
 {
-    CGLError  ret = RCGLSetPBuffer(dispatchGlobal, ctx, pbuffer, face, level, screen);
+    CGLError  ret = RCGLSetPBuffer(nextGlobal, ctx, pbuffer, face, level, screen);
     Driver("CGLSetPBuffer","(", ctx, ", ", pbuffer, ", ", toString(face), ", ", level, ", ", screen, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLTexImagePBuffer(Layer *_layer, CGLContextObj ctx, CGLPBufferObj pbuffer, GLenum source)
 {
-    CGLError  ret = RCGLTexImagePBuffer(dispatchGlobal, ctx, pbuffer, source);
+    CGLError  ret = RCGLTexImagePBuffer(nextGlobal, ctx, pbuffer, source);
     Driver("CGLTexImagePBuffer","(", ctx, ", ", pbuffer, ", ", toString(source), ")", " returned ", ret);
     return ret;
 }
@@ -21906,95 +21906,95 @@ static CGLError REGAL_CALL log_CGLTexImagePBuffer(Layer *_layer, CGLContextObj c
 
 static GLuint REGAL_CALL log_CGLGetContextRetainCount(Layer *_layer, CGLContextObj ctx)
 {
-    GLuint  ret = RCGLGetContextRetainCount(dispatchGlobal, ctx);
+    GLuint  ret = RCGLGetContextRetainCount(nextGlobal, ctx);
     Driver("CGLGetContextRetainCount","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLGetGlobalOption(Layer *_layer, CGLGlobalOption pname, GLint *params)
 {
-    CGLError  ret = RCGLGetGlobalOption(dispatchGlobal, pname, params);
+    CGLError  ret = RCGLGetGlobalOption(nextGlobal, pname, params);
     Driver("CGLGetGlobalOption","(", pname, ", ", print_optional(params,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static GLuint REGAL_CALL log_CGLGetPBufferRetainCount(Layer *_layer, CGLPBufferObj pbuffer)
 {
-    GLuint  ret = RCGLGetPBufferRetainCount(dispatchGlobal, pbuffer);
+    GLuint  ret = RCGLGetPBufferRetainCount(nextGlobal, pbuffer);
     Driver("CGLGetPBufferRetainCount","(", pbuffer, ")", " returned ", ret);
     return ret;
 }
 
 static CGLPixelFormatObj REGAL_CALL log_CGLGetPixelFormat(Layer *_layer, CGLContextObj ctx)
 {
-    CGLPixelFormatObj  ret = RCGLGetPixelFormat(dispatchGlobal, ctx);
+    CGLPixelFormatObj  ret = RCGLGetPixelFormat(nextGlobal, ctx);
     Driver("CGLGetPixelFormat","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static GLuint REGAL_CALL log_CGLGetPixelFormatRetainCount(Layer *_layer, CGLPixelFormatObj pix)
 {
-    GLuint  ret = RCGLGetPixelFormatRetainCount(dispatchGlobal, pix);
+    GLuint  ret = RCGLGetPixelFormatRetainCount(nextGlobal, pix);
     Driver("CGLGetPixelFormatRetainCount","(", pix, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLLockContext(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLLockContext(dispatchGlobal, ctx);
+    CGLError  ret = RCGLLockContext(nextGlobal, ctx);
     Driver("CGLLockContext","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static void REGAL_CALL log_CGLReleaseContext(Layer *_layer, CGLContextObj ctx)
 {
-    RCGLReleaseContext(dispatchGlobal, ctx);
+    RCGLReleaseContext(nextGlobal, ctx);
     Driver("CGLReleaseContext","(", ctx, ")");
 }
 
 static void REGAL_CALL log_CGLReleasePBuffer(Layer *_layer, CGLPBufferObj pbuffer)
 {
-    RCGLReleasePBuffer(dispatchGlobal, pbuffer);
+    RCGLReleasePBuffer(nextGlobal, pbuffer);
     Driver("CGLReleasePBuffer","(", pbuffer, ")");
 }
 
 static void REGAL_CALL log_CGLReleasePixelFormat(Layer *_layer, CGLPixelFormatObj pix)
 {
-    RCGLReleasePixelFormat(dispatchGlobal, pix);
+    RCGLReleasePixelFormat(nextGlobal, pix);
     Driver("CGLReleasePixelFormat","(", pix, ")");
 }
 
 static CGLContextObj REGAL_CALL log_CGLRetainContext(Layer *_layer, CGLContextObj ctx)
 {
-    CGLContextObj  ret = RCGLRetainContext(dispatchGlobal, ctx);
+    CGLContextObj  ret = RCGLRetainContext(nextGlobal, ctx);
     Driver("CGLRetainContext","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLPBufferObj REGAL_CALL log_CGLRetainPBuffer(Layer *_layer, CGLPBufferObj pbuffer)
 {
-    CGLPBufferObj  ret = RCGLRetainPBuffer(dispatchGlobal, pbuffer);
+    CGLPBufferObj  ret = RCGLRetainPBuffer(nextGlobal, pbuffer);
     Driver("CGLRetainPBuffer","(", pbuffer, ")", " returned ", ret);
     return ret;
 }
 
 static CGLPixelFormatObj REGAL_CALL log_CGLRetainPixelFormat(Layer *_layer, CGLPixelFormatObj pix)
 {
-    CGLPixelFormatObj  ret = RCGLRetainPixelFormat(dispatchGlobal, pix);
+    CGLPixelFormatObj  ret = RCGLRetainPixelFormat(nextGlobal, pix);
     Driver("CGLRetainPixelFormat","(", pix, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetGlobalOption(Layer *_layer, CGLGlobalOption pname, const GLint *params)
 {
-    CGLError  ret = RCGLSetGlobalOption(dispatchGlobal, pname, params);
+    CGLError  ret = RCGLSetGlobalOption(nextGlobal, pname, params);
     Driver("CGLSetGlobalOption","(", pname, ", ", print_optional(params,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLUnlockContext(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLUnlockContext(dispatchGlobal, ctx);
+    CGLError  ret = RCGLUnlockContext(nextGlobal, ctx);
     Driver("CGLUnlockContext","(", ctx, ")", " returned ", ret);
     return ret;
 }
@@ -22003,49 +22003,49 @@ static CGLError REGAL_CALL log_CGLUnlockContext(Layer *_layer, CGLContextObj ctx
 
 static CGLContextObj REGAL_CALL log_CGLGetCurrentContext(Layer *_layer)
 {
-    CGLContextObj  ret = RCGLGetCurrentContext(dispatchGlobal);
+    CGLContextObj  ret = RCGLGetCurrentContext(nextGlobal);
     Driver("CGLGetCurrentContext","()", " returned ", ret);
     return ret;
 }
 
 static CGLShareGroupObj REGAL_CALL log_CGLGetShareGroup(Layer *_layer, CGLContextObj ctx)
 {
-    CGLShareGroupObj  ret = RCGLGetShareGroup(dispatchGlobal, ctx);
+    CGLShareGroupObj  ret = RCGLGetShareGroup(nextGlobal, ctx);
     Driver("CGLGetShareGroup","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLGetSurface(Layer *_layer, CGLContextObj ctx, CGSConnectionID *conn, CGSWindowID *win, CGSSurfaceID *srf)
 {
-    CGLError  ret = RCGLGetSurface(dispatchGlobal, ctx, conn, win, srf);
+    CGLError  ret = RCGLGetSurface(nextGlobal, ctx, conn, win, srf);
     Driver("CGLGetSurface","(", ctx, ", ", conn, ", ", win, ", ", srf, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetCurrentContext(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLSetCurrentContext(dispatchGlobal, ctx);
+    CGLError  ret = RCGLSetCurrentContext(nextGlobal, ctx);
     Driver("CGLSetCurrentContext","(", ctx, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLSetSurface(Layer *_layer, CGLContextObj ctx, CGSConnectionID conn, CGSWindowID win, CGSSurfaceID srf)
 {
-    CGLError  ret = RCGLSetSurface(dispatchGlobal, ctx, conn, win, srf);
+    CGLError  ret = RCGLSetSurface(nextGlobal, ctx, conn, win, srf);
     Driver("CGLSetSurface","(", ctx, ", ", conn, ", ", win, ", ", srf, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLTexImageIOSurface2D(Layer *_layer, CGLContextObj ctx, GLenum target, GLenum internal_format, GLsizei width, GLsizei height, GLenum format, GLenum type, IOSurfaceRef ioSurface, GLuint plane)
 {
-    CGLError  ret = RCGLTexImageIOSurface2D(dispatchGlobal, ctx, target, internal_format, width, height, format, type, ioSurface, plane);
+    CGLError  ret = RCGLTexImageIOSurface2D(nextGlobal, ctx, target, internal_format, width, height, format, type, ioSurface, plane);
     Driver("CGLTexImageIOSurface2D","(", ctx, ", ", toString(target), ", ", toString(internal_format), ", ", width, ", ", height, ", ", toString(format), ", ", toString(type), ", ", ioSurface, ", ", plane, ")", " returned ", ret);
     return ret;
 }
 
 static CGLError REGAL_CALL log_CGLUpdateContext(Layer *_layer, CGLContextObj ctx)
 {
-    CGLError  ret = RCGLUpdateContext(dispatchGlobal, ctx);
+    CGLError  ret = RCGLUpdateContext(nextGlobal, ctx);
     Driver("CGLUpdateContext","(", ctx, ")", " returned ", ret);
     return ret;
 }
@@ -22058,7 +22058,7 @@ static CGLError REGAL_CALL log_CGLUpdateContext(Layer *_layer, CGLContextObj ctx
 
 static EGLBoolean REGAL_CALL log_eglQuerySurfacePointerANGLE(Layer *_layer, EGLDisplay dpy, EGLSurface surface, EGLint attribute, GLvoid **value)
 {
-    EGLBoolean  ret = ReglQuerySurfacePointerANGLE(dispatchGlobal, dpy, surface, attribute, value);
+    EGLBoolean  ret = ReglQuerySurfacePointerANGLE(nextGlobal, dpy, surface, attribute, value);
     Driver("eglQuerySurfacePointerANGLE","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", attribute, ", ", print_optional(value,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -22067,28 +22067,28 @@ static EGLBoolean REGAL_CALL log_eglQuerySurfacePointerANGLE(Layer *_layer, EGLD
 
 static EGLint REGAL_CALL log_eglClientWaitSyncKHR(Layer *_layer, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags, EGLTimeKHR timeout)
 {
-    EGLint  ret = ReglClientWaitSyncKHR(dispatchGlobal, dpy, GLsync, flags, timeout);
+    EGLint  ret = ReglClientWaitSyncKHR(nextGlobal, dpy, GLsync, flags, timeout);
     Driver("eglClientWaitSyncKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")", " returned ", ret);
     return ret;
 }
 
 static EGLSyncKHR REGAL_CALL log_eglCreateSyncKHR(Layer *_layer, EGLDisplay dpy, EGLenum type, const EGLint *attrib_list)
 {
-    EGLSyncKHR  ret = ReglCreateSyncKHR(dispatchGlobal, dpy, type, attrib_list);
+    EGLSyncKHR  ret = ReglCreateSyncKHR(nextGlobal, dpy, type, attrib_list);
     Driver("eglCreateSyncKHR","(", print_optional(dpy,Logging::pointers), ", ", EGLenumToString(type), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglDestroySyncKHR(Layer *_layer, EGLDisplay dpy, EGLSyncKHR GLsync)
 {
-    EGLBoolean  ret = ReglDestroySyncKHR(dispatchGlobal, dpy, GLsync);
+    EGLBoolean  ret = ReglDestroySyncKHR(nextGlobal, dpy, GLsync);
     Driver("eglDestroySyncKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(GLsync,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglGetSyncAttribKHR(Layer *_layer, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint attribute, EGLint *value)
 {
-    EGLBoolean  ret = ReglGetSyncAttribKHR(dispatchGlobal, dpy, GLsync, attribute, value);
+    EGLBoolean  ret = ReglGetSyncAttribKHR(nextGlobal, dpy, GLsync, attribute, value);
     Driver("eglGetSyncAttribKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")", " returned ", ret);
     return ret;
 }
@@ -22097,14 +22097,14 @@ static EGLBoolean REGAL_CALL log_eglGetSyncAttribKHR(Layer *_layer, EGLDisplay d
 
 static EGLImageKHR REGAL_CALL log_eglCreateImageKHR(Layer *_layer, EGLDisplay dpy, EGLContext ctx, EGLenum target, EGLClientBuffer buffer, const EGLint *attrib_list)
 {
-    EGLImageKHR  ret = ReglCreateImageKHR(dispatchGlobal, dpy, ctx, target, buffer, attrib_list);
+    EGLImageKHR  ret = ReglCreateImageKHR(nextGlobal, dpy, ctx, target, buffer, attrib_list);
     Driver("eglCreateImageKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(ctx,Logging::pointers), ", ", EGLenumToString(target), ", ", print_optional(buffer,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglDestroyImageKHR(Layer *_layer, EGLDisplay dpy, EGLImageKHR image)
 {
-    EGLBoolean  ret = ReglDestroyImageKHR(dispatchGlobal, dpy, image);
+    EGLBoolean  ret = ReglDestroyImageKHR(nextGlobal, dpy, image);
     Driver("eglDestroyImageKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(image,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -22113,14 +22113,14 @@ static EGLBoolean REGAL_CALL log_eglDestroyImageKHR(Layer *_layer, EGLDisplay dp
 
 static EGLBoolean REGAL_CALL log_eglLockSurfaceKHR(Layer *_layer, EGLDisplay display, EGLSurface surface, const EGLint *attrib_list)
 {
-    EGLBoolean  ret = ReglLockSurfaceKHR(dispatchGlobal, display, surface, attrib_list);
+    EGLBoolean  ret = ReglLockSurfaceKHR(nextGlobal, display, surface, attrib_list);
     Driver("eglLockSurfaceKHR","(", print_optional(display,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", attrib_list, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglUnlockSurfaceKHR(Layer *_layer, EGLDisplay display, EGLSurface surface)
 {
-    EGLBoolean  ret = ReglUnlockSurfaceKHR(dispatchGlobal, display, surface);
+    EGLBoolean  ret = ReglUnlockSurfaceKHR(nextGlobal, display, surface);
     Driver("eglUnlockSurfaceKHR","(", print_optional(display,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -22129,21 +22129,21 @@ static EGLBoolean REGAL_CALL log_eglUnlockSurfaceKHR(Layer *_layer, EGLDisplay d
 
 static EGLBoolean REGAL_CALL log_eglStreamConsumerAcquireKHR(Layer *_layer, EGLDisplay dpy, EGLStreamKHR stream)
 {
-    EGLBoolean  ret = ReglStreamConsumerAcquireKHR(dispatchGlobal, dpy, stream);
+    EGLBoolean  ret = ReglStreamConsumerAcquireKHR(nextGlobal, dpy, stream);
     Driver("eglStreamConsumerAcquireKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(stream,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglStreamConsumerGLTextureExternalKHR(Layer *_layer, EGLDisplay dpy, EGLStreamKHR stream)
 {
-    EGLBoolean  ret = ReglStreamConsumerGLTextureExternalKHR(dispatchGlobal, dpy, stream);
+    EGLBoolean  ret = ReglStreamConsumerGLTextureExternalKHR(nextGlobal, dpy, stream);
     Driver("eglStreamConsumerGLTextureExternalKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(stream,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglStreamConsumerReleaseKHR(Layer *_layer, EGLDisplay dpy, EGLStreamKHR stream)
 {
-    EGLBoolean  ret = ReglStreamConsumerReleaseKHR(dispatchGlobal, dpy, stream);
+    EGLBoolean  ret = ReglStreamConsumerReleaseKHR(nextGlobal, dpy, stream);
     Driver("eglStreamConsumerReleaseKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(stream,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -22152,14 +22152,14 @@ static EGLBoolean REGAL_CALL log_eglStreamConsumerReleaseKHR(Layer *_layer, EGLD
 
 static EGLStreamKHR REGAL_CALL log_eglCreateStreamFromFileDescriptorKHR(Layer *_layer, EGLDisplay dpy, EGLNativeFileDescriptorKHR file_descriptor)
 {
-    EGLStreamKHR  ret = ReglCreateStreamFromFileDescriptorKHR(dispatchGlobal, dpy, file_descriptor);
+    EGLStreamKHR  ret = ReglCreateStreamFromFileDescriptorKHR(nextGlobal, dpy, file_descriptor);
     Driver("eglCreateStreamFromFileDescriptorKHR","(", print_optional(dpy,Logging::pointers), ", ", file_descriptor, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLNativeFileDescriptorKHR REGAL_CALL log_eglGetStreamFileDescriptorKHR(Layer *_layer, EGLDisplay dpy, EGLStreamKHR stream)
 {
-    EGLNativeFileDescriptorKHR  ret = ReglGetStreamFileDescriptorKHR(dispatchGlobal, dpy, stream);
+    EGLNativeFileDescriptorKHR  ret = ReglGetStreamFileDescriptorKHR(nextGlobal, dpy, stream);
     Driver("eglGetStreamFileDescriptorKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(stream,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
@@ -22168,7 +22168,7 @@ static EGLNativeFileDescriptorKHR REGAL_CALL log_eglGetStreamFileDescriptorKHR(L
 
 static EGLSurface REGAL_CALL log_eglCreateStreamProducerSurfaceKHR(Layer *_layer, EGLDisplay dpy, EGLConfig config, EGLStreamKHR stream, const EGLint *attrib_list)
 {
-    EGLSurface  ret = ReglCreateStreamProducerSurfaceKHR(dispatchGlobal, dpy, config, stream, attrib_list);
+    EGLSurface  ret = ReglCreateStreamProducerSurfaceKHR(nextGlobal, dpy, config, stream, attrib_list);
     Driver("eglCreateStreamProducerSurfaceKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(config,Logging::pointers), ", ", print_optional(stream,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
@@ -22177,7 +22177,7 @@ static EGLSurface REGAL_CALL log_eglCreateStreamProducerSurfaceKHR(Layer *_layer
 
 static EGLint REGAL_CALL log_eglWaitSyncKHR(Layer *_layer, EGLDisplay dpy, EGLSyncKHR GLsync, EGLint flags)
 {
-    EGLint  ret = ReglWaitSyncKHR(dispatchGlobal, dpy, GLsync, flags);
+    EGLint  ret = ReglWaitSyncKHR(nextGlobal, dpy, GLsync, flags);
     Driver("eglWaitSyncKHR","(", print_optional(dpy,Logging::pointers), ", ", print_optional(GLsync,Logging::pointers), ", ", flags, ")", " returned ", ret);
     return ret;
 }
@@ -22186,14 +22186,14 @@ static EGLint REGAL_CALL log_eglWaitSyncKHR(Layer *_layer, EGLDisplay dpy, EGLSy
 
 static EGLImageKHR REGAL_CALL log_eglCreateDRMImageMESA(Layer *_layer, EGLDisplay dpy, const EGLint *attrib_list)
 {
-    EGLImageKHR  ret = ReglCreateDRMImageMESA(dispatchGlobal, dpy, attrib_list);
+    EGLImageKHR  ret = ReglCreateDRMImageMESA(nextGlobal, dpy, attrib_list);
     Driver("eglCreateDRMImageMESA","(", print_optional(dpy,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglExportDRMImageMESA(Layer *_layer, EGLDisplay dpy, EGLImageKHR image, EGLint *name, EGLint *handle, EGLint *stride)
 {
-    EGLBoolean  ret = ReglExportDRMImageMESA(dispatchGlobal, dpy, image, name, handle, stride);
+    EGLBoolean  ret = ReglExportDRMImageMESA(nextGlobal, dpy, image, name, handle, stride);
     Driver("eglExportDRMImageMESA","(", print_optional(dpy,Logging::pointers), ", ", print_optional(image,Logging::pointers), ", ", name, ", ", handle, ", ", stride, ")", " returned ", ret);
     return ret;
 }
@@ -22202,13 +22202,13 @@ static EGLBoolean REGAL_CALL log_eglExportDRMImageMESA(Layer *_layer, EGLDisplay
 
 static void REGAL_CALL log_eglCoverageMaskNV(Layer *_layer, GLboolean mask)
 {
-    ReglCoverageMaskNV(dispatchGlobal, mask);
+    ReglCoverageMaskNV(nextGlobal, mask);
     Driver("eglCoverageMaskNV","(", toString(mask), ")");
 }
 
 static void REGAL_CALL log_eglCoverageOperationNV(Layer *_layer, GLenum operation)
 {
-    ReglCoverageOperationNV(dispatchGlobal, operation);
+    ReglCoverageOperationNV(nextGlobal, operation);
     Driver("eglCoverageOperationNV","(", toString(operation), ")");
 }
 
@@ -22216,7 +22216,7 @@ static void REGAL_CALL log_eglCoverageOperationNV(Layer *_layer, GLenum operatio
 
 static EGLBoolean REGAL_CALL log_eglPostSubBufferNV(Layer *_layer, EGLDisplay dpy, EGLSurface surface, EGLint x, EGLint y, EGLint width, EGLint height)
 {
-    EGLBoolean  ret = ReglPostSubBufferNV(dispatchGlobal, dpy, surface, x, y, width, height);
+    EGLBoolean  ret = ReglPostSubBufferNV(nextGlobal, dpy, surface, x, y, width, height);
     Driver("eglPostSubBufferNV","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", x, ", ", y, ", ", width, ", ", height, ")", " returned ", ret);
     return ret;
 }
@@ -22225,42 +22225,42 @@ static EGLBoolean REGAL_CALL log_eglPostSubBufferNV(Layer *_layer, EGLDisplay dp
 
 static EGLint REGAL_CALL log_eglClientWaitSyncNV(Layer *_layer, EGLSyncNV GLsync, EGLint flags, EGLTimeNV timeout)
 {
-    EGLint  ret = ReglClientWaitSyncNV(dispatchGlobal, GLsync, flags, timeout);
+    EGLint  ret = ReglClientWaitSyncNV(nextGlobal, GLsync, flags, timeout);
     Driver("eglClientWaitSyncNV","(", print_optional(GLsync,Logging::pointers), ", ", flags, ", ", timeout, ")", " returned ", ret);
     return ret;
 }
 
 static EGLSyncNV REGAL_CALL log_eglCreateFenceSyncNV(Layer *_layer, EGLDisplay dpy, EGLenum condition, const EGLint *attrib_list)
 {
-    EGLSyncNV  ret = ReglCreateFenceSyncNV(dispatchGlobal, dpy, condition, attrib_list);
+    EGLSyncNV  ret = ReglCreateFenceSyncNV(nextGlobal, dpy, condition, attrib_list);
     Driver("eglCreateFenceSyncNV","(", print_optional(dpy,Logging::pointers), ", ", EGLenumToString(condition), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglDestroySyncNV(Layer *_layer, EGLSyncNV GLsync)
 {
-    EGLBoolean  ret = ReglDestroySyncNV(dispatchGlobal, GLsync);
+    EGLBoolean  ret = ReglDestroySyncNV(nextGlobal, GLsync);
     Driver("eglDestroySyncNV","(", print_optional(GLsync,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglFenceNV(Layer *_layer, EGLSyncNV GLsync)
 {
-    EGLBoolean  ret = ReglFenceNV(dispatchGlobal, GLsync);
+    EGLBoolean  ret = ReglFenceNV(nextGlobal, GLsync);
     Driver("eglFenceNV","(", print_optional(GLsync,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglGetSyncAttribNV(Layer *_layer, EGLSyncNV GLsync, EGLint attribute, EGLint *value)
 {
-    EGLBoolean  ret = ReglGetSyncAttribNV(dispatchGlobal, GLsync, attribute, value);
+    EGLBoolean  ret = ReglGetSyncAttribNV(nextGlobal, GLsync, attribute, value);
     Driver("eglGetSyncAttribNV","(", print_optional(GLsync,Logging::pointers), ", ", attribute, ", ", value, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglSignalSyncNV(Layer *_layer, EGLSyncNV GLsync, EGLenum mode)
 {
-    EGLBoolean  ret = ReglSignalSyncNV(dispatchGlobal, GLsync, mode);
+    EGLBoolean  ret = ReglSignalSyncNV(nextGlobal, GLsync, mode);
     Driver("eglSignalSyncNV","(", print_optional(GLsync,Logging::pointers), ", ", EGLenumToString(mode), ")", " returned ", ret);
     return ret;
 }
@@ -22269,14 +22269,14 @@ static EGLBoolean REGAL_CALL log_eglSignalSyncNV(Layer *_layer, EGLSyncNV GLsync
 
 static EGLuint64NV REGAL_CALL log_eglGetSystemTimeFrequencyNV(Layer *_layer)
 {
-    EGLuint64NV  ret = ReglGetSystemTimeFrequencyNV(dispatchGlobal);
+    EGLuint64NV  ret = ReglGetSystemTimeFrequencyNV(nextGlobal);
     Driver("eglGetSystemTimeFrequencyNV","()", " returned ", ret);
     return ret;
 }
 
 static EGLuint64NV REGAL_CALL log_eglGetSystemTimeNV(Layer *_layer)
 {
-    EGLuint64NV  ret = ReglGetSystemTimeNV(dispatchGlobal);
+    EGLuint64NV  ret = ReglGetSystemTimeNV(nextGlobal);
     Driver("eglGetSystemTimeNV","()", " returned ", ret);
     return ret;
 }
@@ -22285,175 +22285,175 @@ static EGLuint64NV REGAL_CALL log_eglGetSystemTimeNV(Layer *_layer)
 
 static EGLBoolean REGAL_CALL log_eglChooseConfig(Layer *_layer, EGLDisplay dpy, const EGLint *attrib_list, EGLConfig *configs, EGLint config_size, EGLint *num_config)
 {
-    EGLBoolean  ret = ReglChooseConfig(dispatchGlobal, dpy, attrib_list, configs, config_size, num_config);
+    EGLBoolean  ret = ReglChooseConfig(nextGlobal, dpy, attrib_list, configs, config_size, num_config);
     Driver("eglChooseConfig","(", print_optional(dpy,Logging::pointers), ", ", attrib_list, ", ", configs, ", ", config_size, ", ", num_config, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglCopyBuffers(Layer *_layer, EGLDisplay dpy, EGLSurface surface, EGLNativePixmapType target)
 {
-    EGLBoolean  ret = ReglCopyBuffers(dispatchGlobal, dpy, surface, target);
+    EGLBoolean  ret = ReglCopyBuffers(nextGlobal, dpy, surface, target);
     Driver("eglCopyBuffers","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", print_optional(target,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLContext REGAL_CALL log_eglCreateContext(Layer *_layer, EGLDisplay dpy, EGLConfig config, EGLContext share_context, const EGLint *attrib_list)
 {
-    EGLContext  ret = ReglCreateContext(dispatchGlobal, dpy, config, share_context, attrib_list);
+    EGLContext  ret = ReglCreateContext(nextGlobal, dpy, config, share_context, attrib_list);
     Driver("eglCreateContext","(", print_optional(dpy,Logging::pointers), ", ", print_optional(config,Logging::pointers), ", ", print_optional(share_context,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLSurface REGAL_CALL log_eglCreatePbufferSurface(Layer *_layer, EGLDisplay dpy, EGLConfig config, const EGLint *attrib_list)
 {
-    EGLSurface  ret = ReglCreatePbufferSurface(dispatchGlobal, dpy, config, attrib_list);
+    EGLSurface  ret = ReglCreatePbufferSurface(nextGlobal, dpy, config, attrib_list);
     Driver("eglCreatePbufferSurface","(", print_optional(dpy,Logging::pointers), ", ", print_optional(config,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLSurface REGAL_CALL log_eglCreatePixmapSurface(Layer *_layer, EGLDisplay dpy, EGLConfig config, EGLNativePixmapType pixmap, const EGLint *attrib_list)
 {
-    EGLSurface  ret = ReglCreatePixmapSurface(dispatchGlobal, dpy, config, pixmap, attrib_list);
+    EGLSurface  ret = ReglCreatePixmapSurface(nextGlobal, dpy, config, pixmap, attrib_list);
     Driver("eglCreatePixmapSurface","(", print_optional(dpy,Logging::pointers), ", ", print_optional(config,Logging::pointers), ", ", print_optional(pixmap,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLSurface REGAL_CALL log_eglCreateWindowSurface(Layer *_layer, EGLDisplay dpy, EGLConfig config, EGLNativeWindowType win, const EGLint *attrib_list)
 {
-    EGLSurface  ret = ReglCreateWindowSurface(dispatchGlobal, dpy, config, win, attrib_list);
+    EGLSurface  ret = ReglCreateWindowSurface(nextGlobal, dpy, config, win, attrib_list);
     Driver("eglCreateWindowSurface","(", print_optional(dpy,Logging::pointers), ", ", print_optional(config,Logging::pointers), ", ", print_optional(win,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglDestroyContext(Layer *_layer, EGLDisplay dpy, EGLContext ctx)
 {
-    EGLBoolean  ret = ReglDestroyContext(dispatchGlobal, dpy, ctx);
+    EGLBoolean  ret = ReglDestroyContext(nextGlobal, dpy, ctx);
     Driver("eglDestroyContext","(", print_optional(dpy,Logging::pointers), ", ", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglDestroySurface(Layer *_layer, EGLDisplay dpy, EGLSurface surface)
 {
-    EGLBoolean  ret = ReglDestroySurface(dispatchGlobal, dpy, surface);
+    EGLBoolean  ret = ReglDestroySurface(nextGlobal, dpy, surface);
     Driver("eglDestroySurface","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglGetConfigAttrib(Layer *_layer, EGLDisplay dpy, EGLConfig config, EGLint attribute, EGLint *value)
 {
-    EGLBoolean  ret = ReglGetConfigAttrib(dispatchGlobal, dpy, config, attribute, value);
+    EGLBoolean  ret = ReglGetConfigAttrib(nextGlobal, dpy, config, attribute, value);
     Driver("eglGetConfigAttrib","(", print_optional(dpy,Logging::pointers), ", ", print_optional(config,Logging::pointers), ", ", attribute, ", ", value, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglGetConfigs(Layer *_layer, EGLDisplay dpy, EGLConfig *configs, EGLint config_size, EGLint *num_config)
 {
-    EGLBoolean  ret = ReglGetConfigs(dispatchGlobal, dpy, configs, config_size, num_config);
+    EGLBoolean  ret = ReglGetConfigs(nextGlobal, dpy, configs, config_size, num_config);
     Driver("eglGetConfigs","(", print_optional(dpy,Logging::pointers), ", ", configs, ", ", config_size, ", ", num_config, ")", " returned ", ret);
     return ret;
 }
 
 static EGLContext REGAL_CALL log_eglGetCurrentContext(Layer *_layer)
 {
-    EGLContext  ret = ReglGetCurrentContext(dispatchGlobal);
+    EGLContext  ret = ReglGetCurrentContext(nextGlobal);
     Driver("eglGetCurrentContext","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLDisplay REGAL_CALL log_eglGetCurrentDisplay(Layer *_layer)
 {
-    EGLDisplay  ret = ReglGetCurrentDisplay(dispatchGlobal);
+    EGLDisplay  ret = ReglGetCurrentDisplay(nextGlobal);
     Driver("eglGetCurrentDisplay","()", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLSurface REGAL_CALL log_eglGetCurrentSurface(Layer *_layer, EGLint readdraw)
 {
-    EGLSurface  ret = ReglGetCurrentSurface(dispatchGlobal, readdraw);
+    EGLSurface  ret = ReglGetCurrentSurface(nextGlobal, readdraw);
     Driver("eglGetCurrentSurface","(", readdraw, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLDisplay REGAL_CALL log_eglGetDisplay(Layer *_layer, EGLNativeDisplayType display_id)
 {
-    EGLDisplay  ret = ReglGetDisplay(dispatchGlobal, display_id);
+    EGLDisplay  ret = ReglGetDisplay(nextGlobal, display_id);
     Driver("eglGetDisplay","(", print_optional(display_id,Logging::pointers), ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLint REGAL_CALL log_eglGetError(Layer *_layer)
 {
-    EGLint  ret = ReglGetError(dispatchGlobal);
+    EGLint  ret = ReglGetError(nextGlobal);
     Driver("eglGetError","()", " returned ", ret);
     return ret;
 }
 
 static __eglMustCastToProperFunctionPointerType REGAL_CALL log_eglGetProcAddress(Layer *_layer, const char *procname)
 {
-    __eglMustCastToProperFunctionPointerType  ret = ReglGetProcAddress(dispatchGlobal, procname);
+    __eglMustCastToProperFunctionPointerType  ret = ReglGetProcAddress(nextGlobal, procname);
     Driver("eglGetProcAddress","(", print_quote(procname,'"'), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglInitialize(Layer *_layer, EGLDisplay dpy, EGLint *major, EGLint *minor)
 {
-    EGLBoolean  ret = ReglInitialize(dispatchGlobal, dpy, major, minor);
+    EGLBoolean  ret = ReglInitialize(nextGlobal, dpy, major, minor);
     Driver("eglInitialize","(", print_optional(dpy,Logging::pointers), ", ", major, ", ", minor, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglMakeCurrent(Layer *_layer, EGLDisplay dpy, EGLSurface draw, EGLSurface read, EGLContext ctx)
 {
-    EGLBoolean  ret = ReglMakeCurrent(dispatchGlobal, dpy, draw, read, ctx);
+    EGLBoolean  ret = ReglMakeCurrent(nextGlobal, dpy, draw, read, ctx);
     Driver("eglMakeCurrent","(", print_optional(dpy,Logging::pointers), ", ", print_optional(draw,Logging::pointers), ", ", print_optional(read,Logging::pointers), ", ", print_optional(ctx,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglQueryContext(Layer *_layer, EGLDisplay dpy, EGLContext ctx, EGLint attribute, EGLint *value)
 {
-    EGLBoolean  ret = ReglQueryContext(dispatchGlobal, dpy, ctx, attribute, value);
+    EGLBoolean  ret = ReglQueryContext(nextGlobal, dpy, ctx, attribute, value);
     Driver("eglQueryContext","(", print_optional(dpy,Logging::pointers), ", ", print_optional(ctx,Logging::pointers), ", ", attribute, ", ", value, ")", " returned ", ret);
     return ret;
 }
 
 static const char *REGAL_CALL log_eglQueryString(Layer *_layer, EGLDisplay dpy, EGLint name)
 {
-    const char * ret = ReglQueryString(dispatchGlobal, dpy, name);
+    const char * ret = ReglQueryString(nextGlobal, dpy, name);
     Driver("eglQueryString","(", print_optional(dpy,Logging::pointers), ", ", EGLenumToString(name), ")", " returned ", print_quote(ret,'"'));
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglQuerySurface(Layer *_layer, EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint *value)
 {
-    EGLBoolean  ret = ReglQuerySurface(dispatchGlobal, dpy, surface, attribute, value);
+    EGLBoolean  ret = ReglQuerySurface(nextGlobal, dpy, surface, attribute, value);
     Driver("eglQuerySurface","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglSwapBuffers(Layer *_layer, EGLDisplay dpy, EGLSurface surface)
 {
-    EGLBoolean  ret = ReglSwapBuffers(dispatchGlobal, dpy, surface);
+    EGLBoolean  ret = ReglSwapBuffers(nextGlobal, dpy, surface);
     Driver("eglSwapBuffers","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglTerminate(Layer *_layer, EGLDisplay dpy)
 {
-    EGLBoolean  ret = ReglTerminate(dispatchGlobal, dpy);
+    EGLBoolean  ret = ReglTerminate(nextGlobal, dpy);
     Driver("eglTerminate","(", print_optional(dpy,Logging::pointers), ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglWaitGL(Layer *_layer)
 {
-    EGLBoolean  ret = ReglWaitGL(dispatchGlobal);
+    EGLBoolean  ret = ReglWaitGL(nextGlobal);
     Driver("eglWaitGL","()", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglWaitNative(Layer *_layer, EGLint engine)
 {
-    EGLBoolean  ret = ReglWaitNative(dispatchGlobal, engine);
+    EGLBoolean  ret = ReglWaitNative(nextGlobal, engine);
     Driver("eglWaitNative","(", engine, ")", " returned ", ret);
     return ret;
 }
@@ -22462,14 +22462,14 @@ static EGLBoolean REGAL_CALL log_eglWaitNative(Layer *_layer, EGLint engine)
 
 static EGLBoolean REGAL_CALL log_eglBindTexImage(Layer *_layer, EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
-    EGLBoolean  ret = ReglBindTexImage(dispatchGlobal, dpy, surface, buffer);
+    EGLBoolean  ret = ReglBindTexImage(nextGlobal, dpy, surface, buffer);
     Driver("eglBindTexImage","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", buffer, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglReleaseTexImage(Layer *_layer, EGLDisplay dpy, EGLSurface surface, EGLint buffer)
 {
-    EGLBoolean  ret = ReglReleaseTexImage(dispatchGlobal, dpy, surface, buffer);
+    EGLBoolean  ret = ReglReleaseTexImage(nextGlobal, dpy, surface, buffer);
     Driver("eglReleaseTexImage","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", buffer, ")", " returned ", ret);
     return ret;
 }
@@ -22478,49 +22478,49 @@ static EGLBoolean REGAL_CALL log_eglReleaseTexImage(Layer *_layer, EGLDisplay dp
 
 static EGLBoolean REGAL_CALL log_eglBindAPI(Layer *_layer, EGLenum api)
 {
-    EGLBoolean  ret = ReglBindAPI(dispatchGlobal, api);
+    EGLBoolean  ret = ReglBindAPI(nextGlobal, api);
     Driver("eglBindAPI","(", EGLenumToString(api), ")", " returned ", ret);
     return ret;
 }
 
 static EGLSurface REGAL_CALL log_eglCreatePbufferFromClientBuffer(Layer *_layer, EGLDisplay dpy, EGLenum buftype, EGLClientBuffer buffer, EGLConfig config, const EGLint *attrib_list)
 {
-    EGLSurface  ret = ReglCreatePbufferFromClientBuffer(dispatchGlobal, dpy, buftype, buffer, config, attrib_list);
+    EGLSurface  ret = ReglCreatePbufferFromClientBuffer(nextGlobal, dpy, buftype, buffer, config, attrib_list);
     Driver("eglCreatePbufferFromClientBuffer","(", dpy, ", ", EGLenumToString(buftype), ", ", print_optional(buffer,Logging::pointers), ", ", print_optional(config,Logging::pointers), ", ", attrib_list, ")", " returned ", print_optional(ret,Logging::pointers));
     return ret;
 }
 
 static EGLenum REGAL_CALL log_eglQueryAPI(Layer *_layer)
 {
-    EGLenum  ret = ReglQueryAPI(dispatchGlobal);
+    EGLenum  ret = ReglQueryAPI(nextGlobal);
     Driver("eglQueryAPI","()", " returned ", EGLenumToString(ret));
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglReleaseThread(Layer *_layer)
 {
-    EGLBoolean  ret = ReglReleaseThread(dispatchGlobal);
+    EGLBoolean  ret = ReglReleaseThread(nextGlobal);
     Driver("eglReleaseThread","()", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglSurfaceAttrib(Layer *_layer, EGLDisplay dpy, EGLSurface surface, EGLint attribute, EGLint value)
 {
-    EGLBoolean  ret = ReglSurfaceAttrib(dispatchGlobal, dpy, surface, attribute, value);
+    EGLBoolean  ret = ReglSurfaceAttrib(nextGlobal, dpy, surface, attribute, value);
     Driver("eglSurfaceAttrib","(", print_optional(dpy,Logging::pointers), ", ", print_optional(surface,Logging::pointers), ", ", attribute, ", ", value, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglSwapInterval(Layer *_layer, EGLDisplay dpy, EGLint interval)
 {
-    EGLBoolean  ret = ReglSwapInterval(dispatchGlobal, dpy, interval);
+    EGLBoolean  ret = ReglSwapInterval(nextGlobal, dpy, interval);
     Driver("eglSwapInterval","(", print_optional(dpy,Logging::pointers), ", ", interval, ")", " returned ", ret);
     return ret;
 }
 
 static EGLBoolean REGAL_CALL log_eglWaitClient(Layer *_layer)
 {
-    EGLBoolean  ret = ReglWaitClient(dispatchGlobal);
+    EGLBoolean  ret = ReglWaitClient(nextGlobal);
     Driver("eglWaitClient","()", " returned ", ret);
     return ret;
 }

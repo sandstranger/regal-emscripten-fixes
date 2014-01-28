@@ -36271,7 +36271,7 @@ static BOOL REGAL_CALL http_wglSetStereoEmitterState3DL(Layer *_layer, HDC hDC, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSetStereoEmitterState3DL(dispatchGlobal, hDC, uState);
+  ret = RwglSetStereoEmitterState3DL(nextGlobal, hDC, uState);
   return ret;
 }
 
@@ -36287,7 +36287,7 @@ static VOID REGAL_CALL http_wglBlitContextFramebufferAMD(Layer *_layer, HGLRC ds
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RwglBlitContextFramebufferAMD(dispatchGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+  RwglBlitContextFramebufferAMD(nextGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
 static HGLRC REGAL_CALL http_wglCreateAssociatedContextAMD(Layer *_layer, UINT id)
@@ -36301,7 +36301,7 @@ static HGLRC REGAL_CALL http_wglCreateAssociatedContextAMD(Layer *_layer, UINT i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateAssociatedContextAMD(dispatchGlobal, id);
+  ret = RwglCreateAssociatedContextAMD(nextGlobal, id);
   return ret;
 }
 
@@ -36316,7 +36316,7 @@ static HGLRC REGAL_CALL http_wglCreateAssociatedContextAttribsAMD(Layer *_layer,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateAssociatedContextAttribsAMD(dispatchGlobal, id, hShareContext, attribList);
+  ret = RwglCreateAssociatedContextAttribsAMD(nextGlobal, id, hShareContext, attribList);
   return ret;
 }
 
@@ -36331,7 +36331,7 @@ static BOOL REGAL_CALL http_wglDeleteAssociatedContextAMD(Layer *_layer, HGLRC h
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDeleteAssociatedContextAMD(dispatchGlobal, hglrc);
+  ret = RwglDeleteAssociatedContextAMD(nextGlobal, hglrc);
   return ret;
 }
 
@@ -36346,7 +36346,7 @@ static UINT REGAL_CALL http_wglGetContextGPUIDAMD(Layer *_layer, HGLRC hglrc)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetContextGPUIDAMD(dispatchGlobal, hglrc);
+  ret = RwglGetContextGPUIDAMD(nextGlobal, hglrc);
   return ret;
 }
 
@@ -36361,7 +36361,7 @@ static HGLRC REGAL_CALL http_wglGetCurrentAssociatedContextAMD(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetCurrentAssociatedContextAMD(dispatchGlobal);
+  ret = RwglGetCurrentAssociatedContextAMD(nextGlobal);
   return ret;
 }
 
@@ -36376,7 +36376,7 @@ static UINT REGAL_CALL http_wglGetGPUIDsAMD(Layer *_layer, UINT maxCount, UINT *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGPUIDsAMD(dispatchGlobal, maxCount, ids);
+  ret = RwglGetGPUIDsAMD(nextGlobal, maxCount, ids);
   return ret;
 }
 
@@ -36391,7 +36391,7 @@ static INT REGAL_CALL http_wglGetGPUInfoAMD(Layer *_layer, UINT id, int property
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGPUInfoAMD(dispatchGlobal, id, property, dataType, size, data);
+  ret = RwglGetGPUInfoAMD(nextGlobal, id, property, dataType, size, data);
   return ret;
 }
 
@@ -36406,7 +36406,7 @@ static BOOL REGAL_CALL http_wglMakeAssociatedContextCurrentAMD(Layer *_layer, HG
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglMakeAssociatedContextCurrentAMD(dispatchGlobal, hglrc);
+  ret = RwglMakeAssociatedContextCurrentAMD(nextGlobal, hglrc);
   return ret;
 }
 
@@ -36423,7 +36423,7 @@ static HANDLE REGAL_CALL http_wglCreateBufferRegionARB(Layer *_layer, HDC hDC, i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateBufferRegionARB(dispatchGlobal, hDC, iLayerPlane, uType);
+  ret = RwglCreateBufferRegionARB(nextGlobal, hDC, iLayerPlane, uType);
   return ret;
 }
 
@@ -36437,7 +36437,7 @@ static VOID REGAL_CALL http_wglDeleteBufferRegionARB(Layer *_layer, HANDLE hRegi
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RwglDeleteBufferRegionARB(dispatchGlobal, hRegion);
+  RwglDeleteBufferRegionARB(nextGlobal, hRegion);
 }
 
 static BOOL REGAL_CALL http_wglRestoreBufferRegionARB(Layer *_layer, HANDLE hRegion, int x, int y, int width, int height, int xSrc, int ySrc)
@@ -36451,7 +36451,7 @@ static BOOL REGAL_CALL http_wglRestoreBufferRegionARB(Layer *_layer, HANDLE hReg
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglRestoreBufferRegionARB(dispatchGlobal, hRegion, x, y, width, height, xSrc, ySrc);
+  ret = RwglRestoreBufferRegionARB(nextGlobal, hRegion, x, y, width, height, xSrc, ySrc);
   return ret;
 }
 
@@ -36466,7 +36466,7 @@ static BOOL REGAL_CALL http_wglSaveBufferRegionARB(Layer *_layer, HANDLE hRegion
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSaveBufferRegionARB(dispatchGlobal, hRegion, x, y, width, height);
+  ret = RwglSaveBufferRegionARB(nextGlobal, hRegion, x, y, width, height);
   return ret;
 }
 
@@ -36483,7 +36483,7 @@ static HGLRC REGAL_CALL http_wglCreateContextAttribsARB(Layer *_layer, HDC hDC, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateContextAttribsARB(dispatchGlobal, hDC, hShareContext, piAttribList);
+  ret = RwglCreateContextAttribsARB(nextGlobal, hDC, hShareContext, piAttribList);
   return ret;
 }
 
@@ -36500,7 +36500,7 @@ static const char *REGAL_CALL http_wglGetExtensionsStringARB(Layer *_layer, HDC 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetExtensionsStringARB(dispatchGlobal, hDC);
+  ret = RwglGetExtensionsStringARB(nextGlobal, hDC);
   return ret;
 }
 
@@ -36517,7 +36517,7 @@ static HDC REGAL_CALL http_wglGetCurrentReadDCARB(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetCurrentReadDCARB(dispatchGlobal);
+  ret = RwglGetCurrentReadDCARB(nextGlobal);
   return ret;
 }
 
@@ -36532,7 +36532,7 @@ static BOOL REGAL_CALL http_wglMakeContextCurrentARB(Layer *_layer, HDC hDrawDC,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglMakeContextCurrentARB(dispatchGlobal, hDrawDC, hReadDC, hglrc);
+  ret = RwglMakeContextCurrentARB(nextGlobal, hDrawDC, hReadDC, hglrc);
   return ret;
 }
 
@@ -36549,7 +36549,7 @@ static HPBUFFERARB REGAL_CALL http_wglCreatePbufferARB(Layer *_layer, HDC hDC, i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreatePbufferARB(dispatchGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
+  ret = RwglCreatePbufferARB(nextGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
   return ret;
 }
 
@@ -36564,7 +36564,7 @@ static BOOL REGAL_CALL http_wglDestroyPbufferARB(Layer *_layer, HPBUFFERARB hPbu
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDestroyPbufferARB(dispatchGlobal, hPbuffer);
+  ret = RwglDestroyPbufferARB(nextGlobal, hPbuffer);
   return ret;
 }
 
@@ -36579,7 +36579,7 @@ static HDC REGAL_CALL http_wglGetPbufferDCARB(Layer *_layer, HPBUFFERARB hPbuffe
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetPbufferDCARB(dispatchGlobal, hPbuffer);
+  ret = RwglGetPbufferDCARB(nextGlobal, hPbuffer);
   return ret;
 }
 
@@ -36594,7 +36594,7 @@ static BOOL REGAL_CALL http_wglQueryPbufferARB(Layer *_layer, HPBUFFERARB hPbuff
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryPbufferARB(dispatchGlobal, hPbuffer, iAttribute, piValue);
+  ret = RwglQueryPbufferARB(nextGlobal, hPbuffer, iAttribute, piValue);
   return ret;
 }
 
@@ -36609,7 +36609,7 @@ static int REGAL_CALL http_wglReleasePbufferDCARB(Layer *_layer, HPBUFFERARB hPb
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglReleasePbufferDCARB(dispatchGlobal, hPbuffer, hDC);
+  ret = RwglReleasePbufferDCARB(nextGlobal, hPbuffer, hDC);
   return ret;
 }
 
@@ -36626,7 +36626,7 @@ static BOOL REGAL_CALL http_wglChoosePixelFormatARB(Layer *_layer, HDC hDC, cons
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglChoosePixelFormatARB(dispatchGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
+  ret = RwglChoosePixelFormatARB(nextGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
   return ret;
 }
 
@@ -36641,7 +36641,7 @@ static BOOL REGAL_CALL http_wglGetPixelFormatAttribfvARB(Layer *_layer, HDC hDC,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetPixelFormatAttribfvARB(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
+  ret = RwglGetPixelFormatAttribfvARB(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
   return ret;
 }
 
@@ -36656,7 +36656,7 @@ static BOOL REGAL_CALL http_wglGetPixelFormatAttribivARB(Layer *_layer, HDC hDC,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetPixelFormatAttribivARB(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
+  ret = RwglGetPixelFormatAttribivARB(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
   return ret;
 }
 
@@ -36673,7 +36673,7 @@ static BOOL REGAL_CALL http_wglBindTexImageARB(Layer *_layer, HPBUFFERARB hPbuff
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglBindTexImageARB(dispatchGlobal, hPbuffer, iBuffer);
+  ret = RwglBindTexImageARB(nextGlobal, hPbuffer, iBuffer);
   return ret;
 }
 
@@ -36688,7 +36688,7 @@ static BOOL REGAL_CALL http_wglReleaseTexImageARB(Layer *_layer, HPBUFFERARB hPb
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglReleaseTexImageARB(dispatchGlobal, hPbuffer, iBuffer);
+  ret = RwglReleaseTexImageARB(nextGlobal, hPbuffer, iBuffer);
   return ret;
 }
 
@@ -36703,7 +36703,7 @@ static BOOL REGAL_CALL http_wglSetPbufferAttribARB(Layer *_layer, HPBUFFERARB hP
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSetPbufferAttribARB(dispatchGlobal, hPbuffer, piAttribList);
+  ret = RwglSetPbufferAttribARB(nextGlobal, hPbuffer, piAttribList);
   return ret;
 }
 
@@ -36720,7 +36720,7 @@ static GLboolean REGAL_CALL http_wglBindDisplayColorTableEXT(Layer *_layer, GLus
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglBindDisplayColorTableEXT(dispatchGlobal, id);
+  ret = RwglBindDisplayColorTableEXT(nextGlobal, id);
   return ret;
 }
 
@@ -36735,7 +36735,7 @@ static GLboolean REGAL_CALL http_wglCreateDisplayColorTableEXT(Layer *_layer, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateDisplayColorTableEXT(dispatchGlobal, id);
+  ret = RwglCreateDisplayColorTableEXT(nextGlobal, id);
   return ret;
 }
 
@@ -36749,7 +36749,7 @@ static VOID REGAL_CALL http_wglDestroyDisplayColorTableEXT(Layer *_layer, GLusho
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RwglDestroyDisplayColorTableEXT(dispatchGlobal, id);
+  RwglDestroyDisplayColorTableEXT(nextGlobal, id);
 }
 
 static GLboolean REGAL_CALL http_wglLoadDisplayColorTableEXT(Layer *_layer, const GLushort *table, GLuint length)
@@ -36763,7 +36763,7 @@ static GLboolean REGAL_CALL http_wglLoadDisplayColorTableEXT(Layer *_layer, cons
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglLoadDisplayColorTableEXT(dispatchGlobal, table, length);
+  ret = RwglLoadDisplayColorTableEXT(nextGlobal, table, length);
   return ret;
 }
 
@@ -36780,7 +36780,7 @@ static const char *REGAL_CALL http_wglGetExtensionsStringEXT(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetExtensionsStringEXT(dispatchGlobal);
+  ret = RwglGetExtensionsStringEXT(nextGlobal);
   return ret;
 }
 
@@ -36797,7 +36797,7 @@ static HDC REGAL_CALL http_wglGetCurrentReadDCEXT(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetCurrentReadDCEXT(dispatchGlobal);
+  ret = RwglGetCurrentReadDCEXT(nextGlobal);
   return ret;
 }
 
@@ -36812,7 +36812,7 @@ static BOOL REGAL_CALL http_wglMakeContextCurrentEXT(Layer *_layer, HDC hDrawDC,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglMakeContextCurrentEXT(dispatchGlobal, hDrawDC, hReadDC, hglrc);
+  ret = RwglMakeContextCurrentEXT(nextGlobal, hDrawDC, hReadDC, hglrc);
   return ret;
 }
 
@@ -36829,7 +36829,7 @@ static HPBUFFEREXT REGAL_CALL http_wglCreatePbufferEXT(Layer *_layer, HDC hDC, i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreatePbufferEXT(dispatchGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
+  ret = RwglCreatePbufferEXT(nextGlobal, hDC, iPixelFormat, iWidth, iHeight, piAttribList);
   return ret;
 }
 
@@ -36844,7 +36844,7 @@ static BOOL REGAL_CALL http_wglDestroyPbufferEXT(Layer *_layer, HPBUFFEREXT hPbu
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDestroyPbufferEXT(dispatchGlobal, hPbuffer);
+  ret = RwglDestroyPbufferEXT(nextGlobal, hPbuffer);
   return ret;
 }
 
@@ -36859,7 +36859,7 @@ static HDC REGAL_CALL http_wglGetPbufferDCEXT(Layer *_layer, HPBUFFEREXT hPbuffe
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetPbufferDCEXT(dispatchGlobal, hPbuffer);
+  ret = RwglGetPbufferDCEXT(nextGlobal, hPbuffer);
   return ret;
 }
 
@@ -36874,7 +36874,7 @@ static BOOL REGAL_CALL http_wglQueryPbufferEXT(Layer *_layer, HPBUFFEREXT hPbuff
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryPbufferEXT(dispatchGlobal, hPbuffer, iAttribute, piValue);
+  ret = RwglQueryPbufferEXT(nextGlobal, hPbuffer, iAttribute, piValue);
   return ret;
 }
 
@@ -36889,7 +36889,7 @@ static int REGAL_CALL http_wglReleasePbufferDCEXT(Layer *_layer, HPBUFFEREXT hPb
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglReleasePbufferDCEXT(dispatchGlobal, hPbuffer, hDC);
+  ret = RwglReleasePbufferDCEXT(nextGlobal, hPbuffer, hDC);
   return ret;
 }
 
@@ -36906,7 +36906,7 @@ static BOOL REGAL_CALL http_wglChoosePixelFormatEXT(Layer *_layer, HDC hDC, cons
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglChoosePixelFormatEXT(dispatchGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
+  ret = RwglChoosePixelFormatEXT(nextGlobal, hDC, piAttribIList, pfAttribFList, nMaxFormats, piFormats, nNumFormats);
   return ret;
 }
 
@@ -36921,7 +36921,7 @@ static BOOL REGAL_CALL http_wglGetPixelFormatAttribfvEXT(Layer *_layer, HDC hDC,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetPixelFormatAttribfvEXT(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
+  ret = RwglGetPixelFormatAttribfvEXT(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, pfValues);
   return ret;
 }
 
@@ -36936,7 +36936,7 @@ static BOOL REGAL_CALL http_wglGetPixelFormatAttribivEXT(Layer *_layer, HDC hDC,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetPixelFormatAttribivEXT(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
+  ret = RwglGetPixelFormatAttribivEXT(nextGlobal, hDC, iPixelFormat, iLayerPlane, nAttributes, piAttributes, piValues);
   return ret;
 }
 
@@ -36953,7 +36953,7 @@ static int REGAL_CALL http_wglGetSwapIntervalEXT(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetSwapIntervalEXT(dispatchGlobal);
+  ret = RwglGetSwapIntervalEXT(nextGlobal);
   return ret;
 }
 
@@ -36968,7 +36968,7 @@ static BOOL REGAL_CALL http_wglSwapIntervalEXT(Layer *_layer, int interval)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSwapIntervalEXT(dispatchGlobal, interval);
+  ret = RwglSwapIntervalEXT(nextGlobal, interval);
   return ret;
 }
 
@@ -36992,7 +36992,7 @@ static BOOL REGAL_CALL http_SwapBuffers(Layer *_layer, HDC hDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RSwapBuffers(dispatchGlobal, hDC);
+  ret = RSwapBuffers(nextGlobal, hDC);
   self->count.lastFrame = self->count.call;
   return ret;
 }
@@ -37008,7 +37008,7 @@ static int REGAL_CALL http_wglChoosePixelFormat(Layer *_layer, HDC hDC, const PI
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglChoosePixelFormat(dispatchGlobal, hDC, ppfd);
+  ret = RwglChoosePixelFormat(nextGlobal, hDC, ppfd);
   return ret;
 }
 
@@ -37023,7 +37023,7 @@ static int REGAL_CALL http_wglDescribePixelFormat(Layer *_layer, HDC hDC, int iP
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDescribePixelFormat(dispatchGlobal, hDC, iPixelFormat, nBytes, ppfd);
+  ret = RwglDescribePixelFormat(nextGlobal, hDC, iPixelFormat, nBytes, ppfd);
   return ret;
 }
 
@@ -37038,7 +37038,7 @@ static int REGAL_CALL http_wglGetPixelFormat(Layer *_layer, HDC hDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetPixelFormat(dispatchGlobal, hDC);
+  ret = RwglGetPixelFormat(nextGlobal, hDC);
   return ret;
 }
 
@@ -37053,7 +37053,7 @@ static BOOL REGAL_CALL http_wglSetPixelFormat(Layer *_layer, HDC hDC, int iPixel
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSetPixelFormat(dispatchGlobal, hDC, iPixelFormat, ppfd);
+  ret = RwglSetPixelFormat(nextGlobal, hDC, iPixelFormat, ppfd);
   return ret;
 }
 
@@ -37075,7 +37075,7 @@ static BOOL REGAL_CALL http_wglSwapBuffers(Layer *_layer, HDC hDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSwapBuffers(dispatchGlobal, hDC);
+  ret = RwglSwapBuffers(nextGlobal, hDC);
   self->count.lastFrame = self->count.call;
   return ret;
 }
@@ -37093,7 +37093,7 @@ static BOOL REGAL_CALL http_wglGetDigitalVideoParametersI3D(Layer *_layer, HDC h
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetDigitalVideoParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+  ret = RwglGetDigitalVideoParametersI3D(nextGlobal, hDC, iAttribute, piValue);
   return ret;
 }
 
@@ -37108,7 +37108,7 @@ static BOOL REGAL_CALL http_wglSetDigitalVideoParametersI3D(Layer *_layer, HDC h
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSetDigitalVideoParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+  ret = RwglSetDigitalVideoParametersI3D(nextGlobal, hDC, iAttribute, piValue);
   return ret;
 }
 
@@ -37125,7 +37125,7 @@ static BOOL REGAL_CALL http_wglGetGammaTableI3D(Layer *_layer, HDC hDC, int iEnt
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGammaTableI3D(dispatchGlobal, hDC, iEntries, puRed, puGreen, puBlue);
+  ret = RwglGetGammaTableI3D(nextGlobal, hDC, iEntries, puRed, puGreen, puBlue);
   return ret;
 }
 
@@ -37140,7 +37140,7 @@ static BOOL REGAL_CALL http_wglGetGammaTableParametersI3D(Layer *_layer, HDC hDC
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGammaTableParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+  ret = RwglGetGammaTableParametersI3D(nextGlobal, hDC, iAttribute, piValue);
   return ret;
 }
 
@@ -37155,7 +37155,7 @@ static BOOL REGAL_CALL http_wglSetGammaTableI3D(Layer *_layer, HDC hDC, int iEnt
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSetGammaTableI3D(dispatchGlobal, hDC, iEntries, puRed, puGreen, puBlue);
+  ret = RwglSetGammaTableI3D(nextGlobal, hDC, iEntries, puRed, puGreen, puBlue);
   return ret;
 }
 
@@ -37170,7 +37170,7 @@ static BOOL REGAL_CALL http_wglSetGammaTableParametersI3D(Layer *_layer, HDC hDC
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSetGammaTableParametersI3D(dispatchGlobal, hDC, iAttribute, piValue);
+  ret = RwglSetGammaTableParametersI3D(nextGlobal, hDC, iAttribute, piValue);
   return ret;
 }
 
@@ -37187,7 +37187,7 @@ static BOOL REGAL_CALL http_wglDisableGenlockI3D(Layer *_layer, HDC hDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDisableGenlockI3D(dispatchGlobal, hDC);
+  ret = RwglDisableGenlockI3D(nextGlobal, hDC);
   return ret;
 }
 
@@ -37202,7 +37202,7 @@ static BOOL REGAL_CALL http_wglEnableGenlockI3D(Layer *_layer, HDC hDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEnableGenlockI3D(dispatchGlobal, hDC);
+  ret = RwglEnableGenlockI3D(nextGlobal, hDC);
   return ret;
 }
 
@@ -37217,7 +37217,7 @@ static BOOL REGAL_CALL http_wglGenlockSampleRateI3D(Layer *_layer, HDC hDC, UINT
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGenlockSampleRateI3D(dispatchGlobal, hDC, uRate);
+  ret = RwglGenlockSampleRateI3D(nextGlobal, hDC, uRate);
   return ret;
 }
 
@@ -37232,7 +37232,7 @@ static BOOL REGAL_CALL http_wglGenlockSourceDelayI3D(Layer *_layer, HDC hDC, UIN
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGenlockSourceDelayI3D(dispatchGlobal, hDC, uDelay);
+  ret = RwglGenlockSourceDelayI3D(nextGlobal, hDC, uDelay);
   return ret;
 }
 
@@ -37247,7 +37247,7 @@ static BOOL REGAL_CALL http_wglGenlockSourceEdgeI3D(Layer *_layer, HDC hDC, UINT
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGenlockSourceEdgeI3D(dispatchGlobal, hDC, uEdge);
+  ret = RwglGenlockSourceEdgeI3D(nextGlobal, hDC, uEdge);
   return ret;
 }
 
@@ -37262,7 +37262,7 @@ static BOOL REGAL_CALL http_wglGenlockSourceI3D(Layer *_layer, HDC hDC, UINT uSo
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGenlockSourceI3D(dispatchGlobal, hDC, uSource);
+  ret = RwglGenlockSourceI3D(nextGlobal, hDC, uSource);
   return ret;
 }
 
@@ -37277,7 +37277,7 @@ static BOOL REGAL_CALL http_wglGetGenlockSampleRateI3D(Layer *_layer, HDC hDC, U
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGenlockSampleRateI3D(dispatchGlobal, hDC, uRate);
+  ret = RwglGetGenlockSampleRateI3D(nextGlobal, hDC, uRate);
   return ret;
 }
 
@@ -37292,7 +37292,7 @@ static BOOL REGAL_CALL http_wglGetGenlockSourceDelayI3D(Layer *_layer, HDC hDC, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGenlockSourceDelayI3D(dispatchGlobal, hDC, uDelay);
+  ret = RwglGetGenlockSourceDelayI3D(nextGlobal, hDC, uDelay);
   return ret;
 }
 
@@ -37307,7 +37307,7 @@ static BOOL REGAL_CALL http_wglGetGenlockSourceEdgeI3D(Layer *_layer, HDC hDC, U
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGenlockSourceEdgeI3D(dispatchGlobal, hDC, uEdge);
+  ret = RwglGetGenlockSourceEdgeI3D(nextGlobal, hDC, uEdge);
   return ret;
 }
 
@@ -37322,7 +37322,7 @@ static BOOL REGAL_CALL http_wglGetGenlockSourceI3D(Layer *_layer, HDC hDC, UINT 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetGenlockSourceI3D(dispatchGlobal, hDC, uSource);
+  ret = RwglGetGenlockSourceI3D(nextGlobal, hDC, uSource);
   return ret;
 }
 
@@ -37337,7 +37337,7 @@ static BOOL REGAL_CALL http_wglIsEnabledGenlockI3D(Layer *_layer, HDC hDC, BOOL 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglIsEnabledGenlockI3D(dispatchGlobal, hDC, pFlag);
+  ret = RwglIsEnabledGenlockI3D(nextGlobal, hDC, pFlag);
   return ret;
 }
 
@@ -37352,7 +37352,7 @@ static BOOL REGAL_CALL http_wglQueryGenlockMaxSourceDelayI3D(Layer *_layer, HDC 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryGenlockMaxSourceDelayI3D(dispatchGlobal, hDC, uMaxLineDelay, uMaxPixelDelay);
+  ret = RwglQueryGenlockMaxSourceDelayI3D(nextGlobal, hDC, uMaxLineDelay, uMaxPixelDelay);
   return ret;
 }
 
@@ -37369,7 +37369,7 @@ static BOOL REGAL_CALL http_wglAssociateImageBufferEventsI3D(Layer *_layer, HDC 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglAssociateImageBufferEventsI3D(dispatchGlobal, hDC, pEvent, pAddress, pSize, count);
+  ret = RwglAssociateImageBufferEventsI3D(nextGlobal, hDC, pEvent, pAddress, pSize, count);
   return ret;
 }
 
@@ -37384,7 +37384,7 @@ static LPVOID REGAL_CALL http_wglCreateImageBufferI3D(Layer *_layer, HDC hDC, DW
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateImageBufferI3D(dispatchGlobal, hDC, dwSize, uFlags);
+  ret = RwglCreateImageBufferI3D(nextGlobal, hDC, dwSize, uFlags);
   return ret;
 }
 
@@ -37399,7 +37399,7 @@ static BOOL REGAL_CALL http_wglDestroyImageBufferI3D(Layer *_layer, HDC hDC, LPV
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDestroyImageBufferI3D(dispatchGlobal, hDC, pAddress);
+  ret = RwglDestroyImageBufferI3D(nextGlobal, hDC, pAddress);
   return ret;
 }
 
@@ -37414,7 +37414,7 @@ static BOOL REGAL_CALL http_wglReleaseImageBufferEventsI3D(Layer *_layer, HDC hD
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglReleaseImageBufferEventsI3D(dispatchGlobal, hDC, pAddress, count);
+  ret = RwglReleaseImageBufferEventsI3D(nextGlobal, hDC, pAddress, count);
   return ret;
 }
 
@@ -37431,7 +37431,7 @@ static BOOL REGAL_CALL http_wglDisableFrameLockI3D(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDisableFrameLockI3D(dispatchGlobal);
+  ret = RwglDisableFrameLockI3D(nextGlobal);
   return ret;
 }
 
@@ -37446,7 +37446,7 @@ static BOOL REGAL_CALL http_wglEnableFrameLockI3D(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEnableFrameLockI3D(dispatchGlobal);
+  ret = RwglEnableFrameLockI3D(nextGlobal);
   return ret;
 }
 
@@ -37461,7 +37461,7 @@ static BOOL REGAL_CALL http_wglIsEnabledFrameLockI3D(Layer *_layer, BOOL *pFlag)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglIsEnabledFrameLockI3D(dispatchGlobal, pFlag);
+  ret = RwglIsEnabledFrameLockI3D(nextGlobal, pFlag);
   return ret;
 }
 
@@ -37476,7 +37476,7 @@ static BOOL REGAL_CALL http_wglQueryFrameLockMasterI3D(Layer *_layer, BOOL *pFla
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryFrameLockMasterI3D(dispatchGlobal, pFlag);
+  ret = RwglQueryFrameLockMasterI3D(nextGlobal, pFlag);
   return ret;
 }
 
@@ -37493,7 +37493,7 @@ static BOOL REGAL_CALL http_wglBeginFrameTrackingI3D(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglBeginFrameTrackingI3D(dispatchGlobal);
+  ret = RwglBeginFrameTrackingI3D(nextGlobal);
   return ret;
 }
 
@@ -37508,7 +37508,7 @@ static BOOL REGAL_CALL http_wglEndFrameTrackingI3D(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEndFrameTrackingI3D(dispatchGlobal);
+  ret = RwglEndFrameTrackingI3D(nextGlobal);
   return ret;
 }
 
@@ -37523,7 +37523,7 @@ static BOOL REGAL_CALL http_wglGetFrameUsageI3D(Layer *_layer, float *pUsage)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetFrameUsageI3D(dispatchGlobal, pUsage);
+  ret = RwglGetFrameUsageI3D(nextGlobal, pUsage);
   return ret;
 }
 
@@ -37538,7 +37538,7 @@ static BOOL REGAL_CALL http_wglQueryFrameTrackingI3D(Layer *_layer, DWORD *pFram
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryFrameTrackingI3D(dispatchGlobal, pFrameCount, pMissedFrames, pLastMissedUsage);
+  ret = RwglQueryFrameTrackingI3D(nextGlobal, pFrameCount, pMissedFrames, pLastMissedUsage);
   return ret;
 }
 
@@ -37555,7 +37555,7 @@ static BOOL REGAL_CALL http_wglDXCloseDeviceNV(Layer *_layer, HANDLE hDevice)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXCloseDeviceNV(dispatchGlobal, hDevice);
+  ret = RwglDXCloseDeviceNV(nextGlobal, hDevice);
   return ret;
 }
 
@@ -37570,7 +37570,7 @@ static BOOL REGAL_CALL http_wglDXLockObjectsNV(Layer *_layer, HANDLE hDevice, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXLockObjectsNV(dispatchGlobal, hDevice, count, hObjects);
+  ret = RwglDXLockObjectsNV(nextGlobal, hDevice, count, hObjects);
   return ret;
 }
 
@@ -37585,7 +37585,7 @@ static BOOL REGAL_CALL http_wglDXObjectAccessNV(Layer *_layer, HANDLE hObject, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXObjectAccessNV(dispatchGlobal, hObject, access);
+  ret = RwglDXObjectAccessNV(nextGlobal, hObject, access);
   return ret;
 }
 
@@ -37600,7 +37600,7 @@ static HANDLE REGAL_CALL http_wglDXOpenDeviceNV(Layer *_layer, GLvoid *dxDevice)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXOpenDeviceNV(dispatchGlobal, dxDevice);
+  ret = RwglDXOpenDeviceNV(nextGlobal, dxDevice);
   return ret;
 }
 
@@ -37615,7 +37615,7 @@ static HANDLE REGAL_CALL http_wglDXRegisterObjectNV(Layer *_layer, HANDLE hDevic
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXRegisterObjectNV(dispatchGlobal, hDevice, dxObject, name, type, access);
+  ret = RwglDXRegisterObjectNV(nextGlobal, hDevice, dxObject, name, type, access);
   return ret;
 }
 
@@ -37630,7 +37630,7 @@ static BOOL REGAL_CALL http_wglDXSetResourceShareHandleNV(Layer *_layer, GLvoid 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXSetResourceShareHandleNV(dispatchGlobal, dxObject, shareHandle);
+  ret = RwglDXSetResourceShareHandleNV(nextGlobal, dxObject, shareHandle);
   return ret;
 }
 
@@ -37645,7 +37645,7 @@ static BOOL REGAL_CALL http_wglDXUnlockObjectsNV(Layer *_layer, HANDLE hDevice, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXUnlockObjectsNV(dispatchGlobal, hDevice, count, hObjects);
+  ret = RwglDXUnlockObjectsNV(nextGlobal, hDevice, count, hObjects);
   return ret;
 }
 
@@ -37660,7 +37660,7 @@ static BOOL REGAL_CALL http_wglDXUnregisterObjectNV(Layer *_layer, HANDLE hDevic
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDXUnregisterObjectNV(dispatchGlobal, hDevice, hObject);
+  ret = RwglDXUnregisterObjectNV(nextGlobal, hDevice, hObject);
   return ret;
 }
 
@@ -37677,7 +37677,7 @@ static BOOL REGAL_CALL http_wglCopyImageSubDataNV(Layer *_layer, HGLRC hSrcRC, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCopyImageSubDataNV(dispatchGlobal, hSrcRC, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, hDstRC, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
+  ret = RwglCopyImageSubDataNV(nextGlobal, hSrcRC, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, hDstRC, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
   return ret;
 }
 
@@ -37694,7 +37694,7 @@ static HDC REGAL_CALL http_wglCreateAffinityDCNV(Layer *_layer, const HGPUNV *ph
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateAffinityDCNV(dispatchGlobal, phGpuList);
+  ret = RwglCreateAffinityDCNV(nextGlobal, phGpuList);
   return ret;
 }
 
@@ -37709,7 +37709,7 @@ static BOOL REGAL_CALL http_wglDeleteDCNV(Layer *_layer, HDC hAffinityDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDeleteDCNV(dispatchGlobal, hAffinityDC);
+  ret = RwglDeleteDCNV(nextGlobal, hAffinityDC);
   return ret;
 }
 
@@ -37724,7 +37724,7 @@ static BOOL REGAL_CALL http_wglEnumGpuDevicesNV(Layer *_layer, HGPUNV hGpu, UINT
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEnumGpuDevicesNV(dispatchGlobal, hGpu, iDeviceIndex, lpGpuDevice);
+  ret = RwglEnumGpuDevicesNV(nextGlobal, hGpu, iDeviceIndex, lpGpuDevice);
   return ret;
 }
 
@@ -37739,7 +37739,7 @@ static BOOL REGAL_CALL http_wglEnumGpusFromAffinityDCNV(Layer *_layer, HDC hAffi
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEnumGpusFromAffinityDCNV(dispatchGlobal, hAffinityDC, iGpuIndex, hGpu);
+  ret = RwglEnumGpusFromAffinityDCNV(nextGlobal, hAffinityDC, iGpuIndex, hGpu);
   return ret;
 }
 
@@ -37754,7 +37754,7 @@ static BOOL REGAL_CALL http_wglEnumGpusNV(Layer *_layer, UINT iGpuIndex, HGPUNV 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEnumGpusNV(dispatchGlobal, iGpuIndex, phGpu);
+  ret = RwglEnumGpusNV(nextGlobal, iGpuIndex, phGpu);
   return ret;
 }
 
@@ -37771,7 +37771,7 @@ static BOOL REGAL_CALL http_wglBindVideoDeviceNV(Layer *_layer, HDC hDC, unsigne
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglBindVideoDeviceNV(dispatchGlobal, hDC, uVideoSlot, hVideoDevice, piAttribList);
+  ret = RwglBindVideoDeviceNV(nextGlobal, hDC, uVideoSlot, hVideoDevice, piAttribList);
   return ret;
 }
 
@@ -37786,7 +37786,7 @@ static int REGAL_CALL http_wglEnumerateVideoDevicesNV(Layer *_layer, HDC hDC, HV
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEnumerateVideoDevicesNV(dispatchGlobal, hDC, phDeviceList);
+  ret = RwglEnumerateVideoDevicesNV(nextGlobal, hDC, phDeviceList);
   return ret;
 }
 
@@ -37801,7 +37801,7 @@ static BOOL REGAL_CALL http_wglQueryCurrentContextNV(Layer *_layer, int iAttribu
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryCurrentContextNV(dispatchGlobal, iAttribute, piValue);
+  ret = RwglQueryCurrentContextNV(nextGlobal, iAttribute, piValue);
   return ret;
 }
 
@@ -37818,7 +37818,7 @@ static BOOL REGAL_CALL http_wglBindSwapBarrierNV(Layer *_layer, GLuint group, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglBindSwapBarrierNV(dispatchGlobal, group, barrier);
+  ret = RwglBindSwapBarrierNV(nextGlobal, group, barrier);
   return ret;
 }
 
@@ -37833,7 +37833,7 @@ static BOOL REGAL_CALL http_wglJoinSwapGroupNV(Layer *_layer, HDC hDC, GLuint gr
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglJoinSwapGroupNV(dispatchGlobal, hDC, group);
+  ret = RwglJoinSwapGroupNV(nextGlobal, hDC, group);
   return ret;
 }
 
@@ -37848,7 +37848,7 @@ static BOOL REGAL_CALL http_wglQueryFrameCountNV(Layer *_layer, HDC hDC, GLuint 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryFrameCountNV(dispatchGlobal, hDC, count);
+  ret = RwglQueryFrameCountNV(nextGlobal, hDC, count);
   return ret;
 }
 
@@ -37863,7 +37863,7 @@ static BOOL REGAL_CALL http_wglQueryMaxSwapGroupsNV(Layer *_layer, HDC hDC, GLui
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryMaxSwapGroupsNV(dispatchGlobal, hDC, maxGroups, maxBarriers);
+  ret = RwglQueryMaxSwapGroupsNV(nextGlobal, hDC, maxGroups, maxBarriers);
   return ret;
 }
 
@@ -37878,7 +37878,7 @@ static BOOL REGAL_CALL http_wglQuerySwapGroupNV(Layer *_layer, HDC hDC, GLuint *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQuerySwapGroupNV(dispatchGlobal, hDC, group, barrier);
+  ret = RwglQuerySwapGroupNV(nextGlobal, hDC, group, barrier);
   return ret;
 }
 
@@ -37893,7 +37893,7 @@ static BOOL REGAL_CALL http_wglResetFrameCountNV(Layer *_layer, HDC hDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglResetFrameCountNV(dispatchGlobal, hDC);
+  ret = RwglResetFrameCountNV(nextGlobal, hDC);
   return ret;
 }
 
@@ -37910,7 +37910,7 @@ static void *REGAL_CALL http_wglAllocateMemoryNV(Layer *_layer, GLsizei size, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglAllocateMemoryNV(dispatchGlobal, size, readfreq, writefreq, priority);
+  ret = RwglAllocateMemoryNV(nextGlobal, size, readfreq, writefreq, priority);
   return ret;
 }
 
@@ -37924,7 +37924,7 @@ static void REGAL_CALL http_wglFreeMemoryNV(Layer *_layer, void *pointer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RwglFreeMemoryNV(dispatchGlobal, pointer);
+  RwglFreeMemoryNV(nextGlobal, pointer);
 }
 
 // WGL_NV_video_capture
@@ -37940,7 +37940,7 @@ static BOOL REGAL_CALL http_wglBindVideoCaptureDeviceNV(Layer *_layer, UINT uVid
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglBindVideoCaptureDeviceNV(dispatchGlobal, uVideoSlot, hDevice);
+  ret = RwglBindVideoCaptureDeviceNV(nextGlobal, uVideoSlot, hDevice);
   return ret;
 }
 
@@ -37955,7 +37955,7 @@ static UINT REGAL_CALL http_wglEnumerateVideoCaptureDevicesNV(Layer *_layer, HDC
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglEnumerateVideoCaptureDevicesNV(dispatchGlobal, hDC, phDeviceList);
+  ret = RwglEnumerateVideoCaptureDevicesNV(nextGlobal, hDC, phDeviceList);
   return ret;
 }
 
@@ -37970,7 +37970,7 @@ static BOOL REGAL_CALL http_wglLockVideoCaptureDeviceNV(Layer *_layer, HDC hDC, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglLockVideoCaptureDeviceNV(dispatchGlobal, hDC, hDevice);
+  ret = RwglLockVideoCaptureDeviceNV(nextGlobal, hDC, hDevice);
   return ret;
 }
 
@@ -37985,7 +37985,7 @@ static BOOL REGAL_CALL http_wglQueryVideoCaptureDeviceNV(Layer *_layer, HDC hDC,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglQueryVideoCaptureDeviceNV(dispatchGlobal, hDC, hDevice, iAttribute, piValue);
+  ret = RwglQueryVideoCaptureDeviceNV(nextGlobal, hDC, hDevice, iAttribute, piValue);
   return ret;
 }
 
@@ -38000,7 +38000,7 @@ static BOOL REGAL_CALL http_wglReleaseVideoCaptureDeviceNV(Layer *_layer, HDC hD
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglReleaseVideoCaptureDeviceNV(dispatchGlobal, hDC, hDevice);
+  ret = RwglReleaseVideoCaptureDeviceNV(nextGlobal, hDC, hDevice);
   return ret;
 }
 
@@ -38017,7 +38017,7 @@ static BOOL REGAL_CALL http_wglBindVideoImageNV(Layer *_layer, HPVIDEODEV hVideo
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglBindVideoImageNV(dispatchGlobal, hVideoDevice, hPbuffer, iVideoBuffer);
+  ret = RwglBindVideoImageNV(nextGlobal, hVideoDevice, hPbuffer, iVideoBuffer);
   return ret;
 }
 
@@ -38032,7 +38032,7 @@ static BOOL REGAL_CALL http_wglGetVideoDeviceNV(Layer *_layer, HDC hDC, int numD
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetVideoDeviceNV(dispatchGlobal, hDC, numDevices, hVideoDevice);
+  ret = RwglGetVideoDeviceNV(nextGlobal, hDC, numDevices, hVideoDevice);
   return ret;
 }
 
@@ -38047,7 +38047,7 @@ static BOOL REGAL_CALL http_wglGetVideoInfoNV(Layer *_layer, HPVIDEODEV hpVideoD
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetVideoInfoNV(dispatchGlobal, hpVideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
+  ret = RwglGetVideoInfoNV(nextGlobal, hpVideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
   return ret;
 }
 
@@ -38062,7 +38062,7 @@ static BOOL REGAL_CALL http_wglReleaseVideoDeviceNV(Layer *_layer, HPVIDEODEV hV
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglReleaseVideoDeviceNV(dispatchGlobal, hVideoDevice);
+  ret = RwglReleaseVideoDeviceNV(nextGlobal, hVideoDevice);
   return ret;
 }
 
@@ -38077,7 +38077,7 @@ static BOOL REGAL_CALL http_wglReleaseVideoImageNV(Layer *_layer, HPBUFFERARB hP
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglReleaseVideoImageNV(dispatchGlobal, hPbuffer, iVideoBuffer);
+  ret = RwglReleaseVideoImageNV(nextGlobal, hPbuffer, iVideoBuffer);
   return ret;
 }
 
@@ -38092,7 +38092,7 @@ static BOOL REGAL_CALL http_wglSendPbufferToVideoNV(Layer *_layer, HPBUFFERARB h
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSendPbufferToVideoNV(dispatchGlobal, hPbuffer, iBufferType, pulCounterPbuffer, bBlock);
+  ret = RwglSendPbufferToVideoNV(nextGlobal, hPbuffer, iBufferType, pulCounterPbuffer, bBlock);
   return ret;
 }
 
@@ -38109,7 +38109,7 @@ static BOOL REGAL_CALL http_wglGetMscRateOML(Layer *_layer, HDC hDC, INT32 *nume
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetMscRateOML(dispatchGlobal, hDC, numerator, denominator);
+  ret = RwglGetMscRateOML(nextGlobal, hDC, numerator, denominator);
   return ret;
 }
 
@@ -38124,7 +38124,7 @@ static BOOL REGAL_CALL http_wglGetSyncValuesOML(Layer *_layer, HDC hDC, INT64 *u
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetSyncValuesOML(dispatchGlobal, hDC, ust, msc, sbc);
+  ret = RwglGetSyncValuesOML(nextGlobal, hDC, ust, msc, sbc);
   return ret;
 }
 
@@ -38139,7 +38139,7 @@ static INT64 REGAL_CALL http_wglSwapBuffersMscOML(Layer *_layer, HDC hDC, INT64 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSwapBuffersMscOML(dispatchGlobal, hDC, target_msc, divisor, remainder);
+  ret = RwglSwapBuffersMscOML(nextGlobal, hDC, target_msc, divisor, remainder);
   return ret;
 }
 
@@ -38154,7 +38154,7 @@ static INT64 REGAL_CALL http_wglSwapLayerBuffersMscOML(Layer *_layer, HDC hDC, i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSwapLayerBuffersMscOML(dispatchGlobal, hDC, fuPlanes, target_msc, divisor, remainder);
+  ret = RwglSwapLayerBuffersMscOML(nextGlobal, hDC, fuPlanes, target_msc, divisor, remainder);
   return ret;
 }
 
@@ -38169,7 +38169,7 @@ static BOOL REGAL_CALL http_wglWaitForMscOML(Layer *_layer, HDC hDC, INT64 targe
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglWaitForMscOML(dispatchGlobal, hDC, target_msc, divisor, remainder, ust, msc, sbc);
+  ret = RwglWaitForMscOML(nextGlobal, hDC, target_msc, divisor, remainder, ust, msc, sbc);
   return ret;
 }
 
@@ -38184,7 +38184,7 @@ static BOOL REGAL_CALL http_wglWaitForSbcOML(Layer *_layer, HDC hDC, INT64 targe
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglWaitForSbcOML(dispatchGlobal, hDC, target_sbc, ust, msc, sbc);
+  ret = RwglWaitForSbcOML(nextGlobal, hDC, target_sbc, ust, msc, sbc);
   return ret;
 }
 
@@ -38201,7 +38201,7 @@ static BOOL REGAL_CALL http_wglCopyContext(Layer *_layer, HGLRC hglrcSrc, HGLRC 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCopyContext(dispatchGlobal, hglrcSrc, hglrcDst, mask);
+  ret = RwglCopyContext(nextGlobal, hglrcSrc, hglrcDst, mask);
   return ret;
 }
 
@@ -38216,7 +38216,7 @@ static HGLRC REGAL_CALL http_wglCreateContext(Layer *_layer, HDC hDC)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateContext(dispatchGlobal, hDC);
+  ret = RwglCreateContext(nextGlobal, hDC);
   return ret;
 }
 
@@ -38231,7 +38231,7 @@ static HGLRC REGAL_CALL http_wglCreateLayerContext(Layer *_layer, HDC hDC, int i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglCreateLayerContext(dispatchGlobal, hDC, iLayerPlane);
+  ret = RwglCreateLayerContext(nextGlobal, hDC, iLayerPlane);
   return ret;
 }
 
@@ -38246,7 +38246,7 @@ static BOOL REGAL_CALL http_wglDeleteContext(Layer *_layer, HGLRC hglrc)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDeleteContext(dispatchGlobal, hglrc);
+  ret = RwglDeleteContext(nextGlobal, hglrc);
   return ret;
 }
 
@@ -38261,7 +38261,7 @@ static BOOL REGAL_CALL http_wglDescribeLayerPlane(Layer *_layer, HDC hDC, int iP
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglDescribeLayerPlane(dispatchGlobal, hDC, iPixelFormat, iLayerPlane, nBytes, plpd);
+  ret = RwglDescribeLayerPlane(nextGlobal, hDC, iPixelFormat, iLayerPlane, nBytes, plpd);
   return ret;
 }
 
@@ -38276,7 +38276,7 @@ static HGLRC REGAL_CALL http_wglGetCurrentContext(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetCurrentContext(dispatchGlobal);
+  ret = RwglGetCurrentContext(nextGlobal);
   return ret;
 }
 
@@ -38291,7 +38291,7 @@ static HDC REGAL_CALL http_wglGetCurrentDC(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetCurrentDC(dispatchGlobal);
+  ret = RwglGetCurrentDC(nextGlobal);
   return ret;
 }
 
@@ -38306,7 +38306,7 @@ static PROC REGAL_CALL http_wglGetDefaultProcAddress(Layer *_layer, LPCSTR lpszP
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetDefaultProcAddress(dispatchGlobal, lpszProc);
+  ret = RwglGetDefaultProcAddress(nextGlobal, lpszProc);
   return ret;
 }
 
@@ -38321,7 +38321,7 @@ static int REGAL_CALL http_wglGetLayerPaletteEntries(Layer *_layer, HDC hDC, int
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetLayerPaletteEntries(dispatchGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
+  ret = RwglGetLayerPaletteEntries(nextGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
   return ret;
 }
 
@@ -38336,7 +38336,7 @@ static PROC REGAL_CALL http_wglGetProcAddress(Layer *_layer, LPCSTR lpszProc)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglGetProcAddress(dispatchGlobal, lpszProc);
+  ret = RwglGetProcAddress(nextGlobal, lpszProc);
   return ret;
 }
 
@@ -38351,7 +38351,7 @@ static BOOL REGAL_CALL http_wglMakeCurrent(Layer *_layer, HDC hDC, HGLRC hglrc)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglMakeCurrent(dispatchGlobal, hDC, hglrc);
+  ret = RwglMakeCurrent(nextGlobal, hDC, hglrc);
   return ret;
 }
 
@@ -38366,7 +38366,7 @@ static BOOL REGAL_CALL http_wglRealizeLayerPalette(Layer *_layer, HDC hDC, int i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglRealizeLayerPalette(dispatchGlobal, hDC, iLayerPlane, bRealize);
+  ret = RwglRealizeLayerPalette(nextGlobal, hDC, iLayerPlane, bRealize);
   return ret;
 }
 
@@ -38381,7 +38381,7 @@ static int REGAL_CALL http_wglSetLayerPaletteEntries(Layer *_layer, HDC hDC, int
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSetLayerPaletteEntries(dispatchGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
+  ret = RwglSetLayerPaletteEntries(nextGlobal, hDC, iLayerPlane, iStart, nEntries, pcr);
   return ret;
 }
 
@@ -38396,7 +38396,7 @@ static BOOL REGAL_CALL http_wglShareLists(Layer *_layer, HGLRC hglrcShare, HGLRC
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglShareLists(dispatchGlobal, hglrcShare, hglrcSrc);
+  ret = RwglShareLists(nextGlobal, hglrcShare, hglrcSrc);
   return ret;
 }
 
@@ -38411,7 +38411,7 @@ static BOOL REGAL_CALL http_wglSwapLayerBuffers(Layer *_layer, HDC hDC, UINT fuP
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSwapLayerBuffers(dispatchGlobal, hDC, fuPlanes);
+  ret = RwglSwapLayerBuffers(nextGlobal, hDC, fuPlanes);
   return ret;
 }
 
@@ -38426,7 +38426,7 @@ static DWORD REGAL_CALL http_wglSwapMultipleBuffers(Layer *_layer, UINT n, const
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglSwapMultipleBuffers(dispatchGlobal, n, ps);
+  ret = RwglSwapMultipleBuffers(nextGlobal, n, ps);
   return ret;
 }
 
@@ -38441,7 +38441,7 @@ static BOOL REGAL_CALL http_wglUseFontBitmapsA(Layer *_layer, HDC hDC, DWORD fir
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglUseFontBitmapsA(dispatchGlobal, hDC, first, count, listBase);
+  ret = RwglUseFontBitmapsA(nextGlobal, hDC, first, count, listBase);
   return ret;
 }
 
@@ -38456,7 +38456,7 @@ static BOOL REGAL_CALL http_wglUseFontBitmapsW(Layer *_layer, HDC hDC, DWORD fir
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglUseFontBitmapsW(dispatchGlobal, hDC, first, count, listBase);
+  ret = RwglUseFontBitmapsW(nextGlobal, hDC, first, count, listBase);
   return ret;
 }
 
@@ -38471,7 +38471,7 @@ static BOOL REGAL_CALL http_wglUseFontOutlinesA(Layer *_layer, HDC hDC, DWORD fi
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglUseFontOutlinesA(dispatchGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
+  ret = RwglUseFontOutlinesA(nextGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
   return ret;
 }
 
@@ -38486,7 +38486,7 @@ static BOOL REGAL_CALL http_wglUseFontOutlinesW(Layer *_layer, HDC hDC, DWORD fi
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RwglUseFontOutlinesW(dispatchGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
+  ret = RwglUseFontOutlinesW(nextGlobal, hDC, first, count, listBase, deviation, extrusion, format, lpgmf);
   return ret;
 }
 
@@ -38507,7 +38507,7 @@ static XVisualInfo *REGAL_CALL http_glXChooseVisual(Layer *_layer, Display *dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXChooseVisual(dispatchGlobal, dpy, screen, attribList);
+  ret = RglXChooseVisual(nextGlobal, dpy, screen, attribList);
   return ret;
 }
 
@@ -38521,7 +38521,7 @@ static void REGAL_CALL http_glXCopyContext(Layer *_layer, Display *dpy, GLXConte
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXCopyContext(dispatchGlobal, dpy, src, dst, mask);
+  RglXCopyContext(nextGlobal, dpy, src, dst, mask);
 }
 
 static GLXContext REGAL_CALL http_glXCreateContext(Layer *_layer, Display *dpy, XVisualInfo *vis, GLXContext shareList, Bool direct)
@@ -38535,7 +38535,7 @@ static GLXContext REGAL_CALL http_glXCreateContext(Layer *_layer, Display *dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateContext(dispatchGlobal, dpy, vis, shareList, direct);
+  ret = RglXCreateContext(nextGlobal, dpy, vis, shareList, direct);
   return ret;
 }
 
@@ -38550,7 +38550,7 @@ static GLXPixmap REGAL_CALL http_glXCreateGLXPixmap(Layer *_layer, Display *dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateGLXPixmap(dispatchGlobal, dpy, vis, pixmap);
+  ret = RglXCreateGLXPixmap(nextGlobal, dpy, vis, pixmap);
   return ret;
 }
 
@@ -38564,7 +38564,7 @@ static void REGAL_CALL http_glXDestroyContext(Layer *_layer, Display *dpy, GLXCo
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXDestroyContext(dispatchGlobal, dpy, ctx);
+  RglXDestroyContext(nextGlobal, dpy, ctx);
 }
 
 static void REGAL_CALL http_glXDestroyGLXPixmap(Layer *_layer, Display *dpy, GLXPixmap pix)
@@ -38577,7 +38577,7 @@ static void REGAL_CALL http_glXDestroyGLXPixmap(Layer *_layer, Display *dpy, GLX
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXDestroyGLXPixmap(dispatchGlobal, dpy, pix);
+  RglXDestroyGLXPixmap(nextGlobal, dpy, pix);
 }
 
 static int REGAL_CALL http_glXGetConfig(Layer *_layer, Display *dpy, XVisualInfo *vis, int attrib, int *value)
@@ -38591,7 +38591,7 @@ static int REGAL_CALL http_glXGetConfig(Layer *_layer, Display *dpy, XVisualInfo
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetConfig(dispatchGlobal, dpy, vis, attrib, value);
+  ret = RglXGetConfig(nextGlobal, dpy, vis, attrib, value);
   return ret;
 }
 
@@ -38606,7 +38606,7 @@ static GLXContext REGAL_CALL http_glXGetCurrentContext(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetCurrentContext(dispatchGlobal);
+  ret = RglXGetCurrentContext(nextGlobal);
   return ret;
 }
 
@@ -38621,7 +38621,7 @@ static GLXDrawable REGAL_CALL http_glXGetCurrentDrawable(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetCurrentDrawable(dispatchGlobal);
+  ret = RglXGetCurrentDrawable(nextGlobal);
   return ret;
 }
 
@@ -38636,7 +38636,7 @@ static Bool REGAL_CALL http_glXIsDirect(Layer *_layer, Display *dpy, GLXContext 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXIsDirect(dispatchGlobal, dpy, ctx);
+  ret = RglXIsDirect(nextGlobal, dpy, ctx);
   return ret;
 }
 
@@ -38651,7 +38651,7 @@ static Bool REGAL_CALL http_glXMakeCurrent(Layer *_layer, Display *dpy, GLXDrawa
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXMakeCurrent(dispatchGlobal, dpy, drawable, ctx);
+  ret = RglXMakeCurrent(nextGlobal, dpy, drawable, ctx);
   return ret;
 }
 
@@ -38666,7 +38666,7 @@ static Bool REGAL_CALL http_glXQueryExtension(Layer *_layer, Display *dpy, int *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryExtension(dispatchGlobal, dpy, errorBase, eventBase);
+  ret = RglXQueryExtension(nextGlobal, dpy, errorBase, eventBase);
   return ret;
 }
 
@@ -38681,7 +38681,7 @@ static Bool REGAL_CALL http_glXQueryVersion(Layer *_layer, Display *dpy, int *ma
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryVersion(dispatchGlobal, dpy, major, minor);
+  ret = RglXQueryVersion(nextGlobal, dpy, major, minor);
   return ret;
 }
 
@@ -38702,7 +38702,7 @@ static void REGAL_CALL http_glXSwapBuffers(Layer *_layer, Display *dpy, GLXDrawa
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXSwapBuffers(dispatchGlobal, dpy, drawable);
+  RglXSwapBuffers(nextGlobal, dpy, drawable);
   self->count.lastFrame = self->count.call;
 }
 
@@ -38716,7 +38716,7 @@ static void REGAL_CALL http_glXUseXFont(Layer *_layer, Font font, int first, int
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXUseXFont(dispatchGlobal, font, first, count, listBase);
+  RglXUseXFont(nextGlobal, font, first, count, listBase);
 }
 
 static void REGAL_CALL http_glXWaitGL(Layer *_layer)
@@ -38729,7 +38729,7 @@ static void REGAL_CALL http_glXWaitGL(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXWaitGL(dispatchGlobal);
+  RglXWaitGL(nextGlobal);
 }
 
 static void REGAL_CALL http_glXWaitX(Layer *_layer)
@@ -38742,7 +38742,7 @@ static void REGAL_CALL http_glXWaitX(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXWaitX(dispatchGlobal);
+  RglXWaitX(nextGlobal);
 }
 
 // GLX_VERSION_1_1
@@ -38758,7 +38758,7 @@ static const char *REGAL_CALL http_glXGetClientString(Layer *_layer, Display *dp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetClientString(dispatchGlobal, dpy, name);
+  ret = RglXGetClientString(nextGlobal, dpy, name);
   return ret;
 }
 
@@ -38773,7 +38773,7 @@ static const char *REGAL_CALL http_glXQueryExtensionsString(Layer *_layer, Displ
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryExtensionsString(dispatchGlobal, dpy, screen);
+  ret = RglXQueryExtensionsString(nextGlobal, dpy, screen);
   return ret;
 }
 
@@ -38788,7 +38788,7 @@ static const char *REGAL_CALL http_glXQueryServerString(Layer *_layer, Display *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryServerString(dispatchGlobal, dpy, screen, name);
+  ret = RglXQueryServerString(nextGlobal, dpy, screen, name);
   return ret;
 }
 
@@ -38805,7 +38805,7 @@ static Display *REGAL_CALL http_glXGetCurrentDisplay(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetCurrentDisplay(dispatchGlobal);
+  ret = RglXGetCurrentDisplay(nextGlobal);
   return ret;
 }
 
@@ -38822,7 +38822,7 @@ static GLXFBConfig *REGAL_CALL http_glXChooseFBConfig(Layer *_layer, Display *dp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXChooseFBConfig(dispatchGlobal, dpy, screen, attrib_list, nelements);
+  ret = RglXChooseFBConfig(nextGlobal, dpy, screen, attrib_list, nelements);
   return ret;
 }
 
@@ -38837,7 +38837,7 @@ static GLXContext REGAL_CALL http_glXCreateNewContext(Layer *_layer, Display *dp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateNewContext(dispatchGlobal, dpy, config, render_type, share_list, direct);
+  ret = RglXCreateNewContext(nextGlobal, dpy, config, render_type, share_list, direct);
   return ret;
 }
 
@@ -38852,7 +38852,7 @@ static GLXPbuffer REGAL_CALL http_glXCreatePbuffer(Layer *_layer, Display *dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreatePbuffer(dispatchGlobal, dpy, config, attrib_list);
+  ret = RglXCreatePbuffer(nextGlobal, dpy, config, attrib_list);
   return ret;
 }
 
@@ -38867,7 +38867,7 @@ static GLXPixmap REGAL_CALL http_glXCreatePixmap(Layer *_layer, Display *dpy, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreatePixmap(dispatchGlobal, dpy, config, pixmap, attrib_list);
+  ret = RglXCreatePixmap(nextGlobal, dpy, config, pixmap, attrib_list);
   return ret;
 }
 
@@ -38882,7 +38882,7 @@ static GLXWindow REGAL_CALL http_glXCreateWindow(Layer *_layer, Display *dpy, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateWindow(dispatchGlobal, dpy, config, win, attrib_list);
+  ret = RglXCreateWindow(nextGlobal, dpy, config, win, attrib_list);
   return ret;
 }
 
@@ -38896,7 +38896,7 @@ static void REGAL_CALL http_glXDestroyPbuffer(Layer *_layer, Display *dpy, GLXPb
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXDestroyPbuffer(dispatchGlobal, dpy, pbuf);
+  RglXDestroyPbuffer(nextGlobal, dpy, pbuf);
 }
 
 static void REGAL_CALL http_glXDestroyPixmap(Layer *_layer, Display *dpy, GLXPixmap pixmap)
@@ -38909,7 +38909,7 @@ static void REGAL_CALL http_glXDestroyPixmap(Layer *_layer, Display *dpy, GLXPix
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXDestroyPixmap(dispatchGlobal, dpy, pixmap);
+  RglXDestroyPixmap(nextGlobal, dpy, pixmap);
 }
 
 static void REGAL_CALL http_glXDestroyWindow(Layer *_layer, Display *dpy, GLXWindow win)
@@ -38922,7 +38922,7 @@ static void REGAL_CALL http_glXDestroyWindow(Layer *_layer, Display *dpy, GLXWin
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXDestroyWindow(dispatchGlobal, dpy, win);
+  RglXDestroyWindow(nextGlobal, dpy, win);
 }
 
 static GLXDrawable REGAL_CALL http_glXGetCurrentReadDrawable(Layer *_layer)
@@ -38936,7 +38936,7 @@ static GLXDrawable REGAL_CALL http_glXGetCurrentReadDrawable(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetCurrentReadDrawable(dispatchGlobal);
+  ret = RglXGetCurrentReadDrawable(nextGlobal);
   return ret;
 }
 
@@ -38951,7 +38951,7 @@ static int REGAL_CALL http_glXGetFBConfigAttrib(Layer *_layer, Display *dpy, GLX
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetFBConfigAttrib(dispatchGlobal, dpy, config, attribute, value);
+  ret = RglXGetFBConfigAttrib(nextGlobal, dpy, config, attribute, value);
   return ret;
 }
 
@@ -38966,7 +38966,7 @@ static GLXFBConfig *REGAL_CALL http_glXGetFBConfigs(Layer *_layer, Display *dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetFBConfigs(dispatchGlobal, dpy, screen, nelements);
+  ret = RglXGetFBConfigs(nextGlobal, dpy, screen, nelements);
   return ret;
 }
 
@@ -38980,7 +38980,7 @@ static void REGAL_CALL http_glXGetSelectedEvent(Layer *_layer, Display *dpy, GLX
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXGetSelectedEvent(dispatchGlobal, dpy, draw, event_mask);
+  RglXGetSelectedEvent(nextGlobal, dpy, draw, event_mask);
 }
 
 static XVisualInfo *REGAL_CALL http_glXGetVisualFromFBConfig(Layer *_layer, Display *dpy, GLXFBConfig config)
@@ -38994,7 +38994,7 @@ static XVisualInfo *REGAL_CALL http_glXGetVisualFromFBConfig(Layer *_layer, Disp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetVisualFromFBConfig(dispatchGlobal, dpy, config);
+  ret = RglXGetVisualFromFBConfig(nextGlobal, dpy, config);
   return ret;
 }
 
@@ -39009,7 +39009,7 @@ static Bool REGAL_CALL http_glXMakeContextCurrent(Layer *_layer, Display *displa
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXMakeContextCurrent(dispatchGlobal, display, draw, read, ctx);
+  ret = RglXMakeContextCurrent(nextGlobal, display, draw, read, ctx);
   return ret;
 }
 
@@ -39024,7 +39024,7 @@ static int REGAL_CALL http_glXQueryContext(Layer *_layer, Display *dpy, GLXConte
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryContext(dispatchGlobal, dpy, ctx, attribute, value);
+  ret = RglXQueryContext(nextGlobal, dpy, ctx, attribute, value);
   return ret;
 }
 
@@ -39038,7 +39038,7 @@ static void REGAL_CALL http_glXQueryDrawable(Layer *_layer, Display *dpy, GLXDra
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXQueryDrawable(dispatchGlobal, dpy, draw, attribute, value);
+  RglXQueryDrawable(nextGlobal, dpy, draw, attribute, value);
 }
 
 static void REGAL_CALL http_glXSelectEvent(Layer *_layer, Display *dpy, GLXDrawable draw, unsigned long event_mask)
@@ -39051,7 +39051,7 @@ static void REGAL_CALL http_glXSelectEvent(Layer *_layer, Display *dpy, GLXDrawa
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXSelectEvent(dispatchGlobal, dpy, draw, event_mask);
+  RglXSelectEvent(nextGlobal, dpy, draw, event_mask);
 }
 
 // GLX_VERSION_1_4
@@ -39067,7 +39067,7 @@ static __GLXextFuncPtr REGAL_CALL http_glXGetProcAddress(Layer *_layer, const GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetProcAddress(dispatchGlobal, procName);
+  ret = RglXGetProcAddress(nextGlobal, procName);
   return ret;
 }
 
@@ -39083,7 +39083,7 @@ static void REGAL_CALL http_glXBlitContextFramebufferAMD(Layer *_layer, GLXConte
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXBlitContextFramebufferAMD(dispatchGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
+  RglXBlitContextFramebufferAMD(nextGlobal, dstCtx, srcX0, srcY0, srcX1, srcY1, dstX0, dstY0, dstX1, dstY1, mask, filter);
 }
 
 static GLXContext REGAL_CALL http_glXCreateAssociatedContextAMD(Layer *_layer, unsigned int id, GLXContext share_list)
@@ -39097,7 +39097,7 @@ static GLXContext REGAL_CALL http_glXCreateAssociatedContextAMD(Layer *_layer, u
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateAssociatedContextAMD(dispatchGlobal, id, share_list);
+  ret = RglXCreateAssociatedContextAMD(nextGlobal, id, share_list);
   return ret;
 }
 
@@ -39112,7 +39112,7 @@ static GLXContext REGAL_CALL http_glXCreateAssociatedContextAttribsAMD(Layer *_l
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateAssociatedContextAttribsAMD(dispatchGlobal, id, share_context, attribList);
+  ret = RglXCreateAssociatedContextAttribsAMD(nextGlobal, id, share_context, attribList);
   return ret;
 }
 
@@ -39127,7 +39127,7 @@ static Bool REGAL_CALL http_glXDeleteAssociatedContextAMD(Layer *_layer, GLXCont
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXDeleteAssociatedContextAMD(dispatchGlobal, ctx);
+  ret = RglXDeleteAssociatedContextAMD(nextGlobal, ctx);
   return ret;
 }
 
@@ -39142,7 +39142,7 @@ static unsigned int REGAL_CALL http_glXGetContextGPUIDAMD(Layer *_layer, GLXCont
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetContextGPUIDAMD(dispatchGlobal, ctx);
+  ret = RglXGetContextGPUIDAMD(nextGlobal, ctx);
   return ret;
 }
 
@@ -39157,7 +39157,7 @@ static GLXContext REGAL_CALL http_glXGetCurrentAssociatedContextAMD(Layer *_laye
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetCurrentAssociatedContextAMD(dispatchGlobal);
+  ret = RglXGetCurrentAssociatedContextAMD(nextGlobal);
   return ret;
 }
 
@@ -39172,7 +39172,7 @@ static unsigned int REGAL_CALL http_glXGetGPUIDsAMD(Layer *_layer, unsigned int 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetGPUIDsAMD(dispatchGlobal, maxCount, ids);
+  ret = RglXGetGPUIDsAMD(nextGlobal, maxCount, ids);
   return ret;
 }
 
@@ -39187,7 +39187,7 @@ static int REGAL_CALL http_glXGetGPUInfoAMD(Layer *_layer, unsigned int id, int 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetGPUInfoAMD(dispatchGlobal, id, property, dataType, size, data);
+  ret = RglXGetGPUInfoAMD(nextGlobal, id, property, dataType, size, data);
   return ret;
 }
 
@@ -39202,7 +39202,7 @@ static Bool REGAL_CALL http_glXMakeAssociatedContextCurrentAMD(Layer *_layer, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXMakeAssociatedContextCurrentAMD(dispatchGlobal, ctx);
+  ret = RglXMakeAssociatedContextCurrentAMD(nextGlobal, ctx);
   return ret;
 }
 
@@ -39219,7 +39219,7 @@ static GLXContext REGAL_CALL http_glXCreateContextAttribsARB(Layer *_layer, Disp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateContextAttribsARB(dispatchGlobal, dpy, config, share_context, direct, attrib_list);
+  ret = RglXCreateContextAttribsARB(nextGlobal, dpy, config, share_context, direct, attrib_list);
   return ret;
 }
 
@@ -39236,7 +39236,7 @@ static __GLXextFuncPtr REGAL_CALL http_glXGetProcAddressARB(Layer *_layer, const
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetProcAddressARB(dispatchGlobal, procName);
+  ret = RglXGetProcAddressARB(nextGlobal, procName);
   return ret;
 }
 
@@ -39252,7 +39252,7 @@ static void REGAL_CALL http_glXBindTexImageATI(Layer *_layer, Display *dpy, GLXP
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXBindTexImageATI(dispatchGlobal, dpy, pbuf, buffer);
+  RglXBindTexImageATI(nextGlobal, dpy, pbuf, buffer);
 }
 
 static void REGAL_CALL http_glXDrawableAttribATI(Layer *_layer, Display *dpy, GLXDrawable draw, const int *attrib_list)
@@ -39265,7 +39265,7 @@ static void REGAL_CALL http_glXDrawableAttribATI(Layer *_layer, Display *dpy, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXDrawableAttribATI(dispatchGlobal, dpy, draw, attrib_list);
+  RglXDrawableAttribATI(nextGlobal, dpy, draw, attrib_list);
 }
 
 static void REGAL_CALL http_glXReleaseTexImageATI(Layer *_layer, Display *dpy, GLXPbuffer pbuf, int buffer)
@@ -39278,7 +39278,7 @@ static void REGAL_CALL http_glXReleaseTexImageATI(Layer *_layer, Display *dpy, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXReleaseTexImageATI(dispatchGlobal, dpy, pbuf, buffer);
+  RglXReleaseTexImageATI(nextGlobal, dpy, pbuf, buffer);
 }
 
 // GLX_EXT_import_context
@@ -39293,7 +39293,7 @@ static void REGAL_CALL http_glXFreeContextEXT(Layer *_layer, Display *dpy, GLXCo
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXFreeContextEXT(dispatchGlobal, dpy, context);
+  RglXFreeContextEXT(nextGlobal, dpy, context);
 }
 
 static GLXContextID REGAL_CALL http_glXGetContextIDEXT(Layer *_layer, const GLXContext context)
@@ -39307,7 +39307,7 @@ static GLXContextID REGAL_CALL http_glXGetContextIDEXT(Layer *_layer, const GLXC
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetContextIDEXT(dispatchGlobal, context);
+  ret = RglXGetContextIDEXT(nextGlobal, context);
   return ret;
 }
 
@@ -39322,7 +39322,7 @@ static GLXContext REGAL_CALL http_glXImportContextEXT(Layer *_layer, Display *dp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXImportContextEXT(dispatchGlobal, dpy, contextID);
+  ret = RglXImportContextEXT(nextGlobal, dpy, contextID);
   return ret;
 }
 
@@ -39337,7 +39337,7 @@ static int REGAL_CALL http_glXQueryContextInfoEXT(Layer *_layer, Display *dpy, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryContextInfoEXT(dispatchGlobal, dpy, context, attribute, value);
+  ret = RglXQueryContextInfoEXT(nextGlobal, dpy, context, attribute, value);
   return ret;
 }
 
@@ -39353,7 +39353,7 @@ static void REGAL_CALL http_glXSwapIntervalEXT(Layer *_layer, Display *dpy, GLXD
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXSwapIntervalEXT(dispatchGlobal, dpy, drawable, interval);
+  RglXSwapIntervalEXT(nextGlobal, dpy, drawable, interval);
 }
 
 // GLX_EXT_texture_from_pixmap
@@ -39368,7 +39368,7 @@ static void REGAL_CALL http_glXBindTexImageEXT(Layer *_layer, Display *display, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXBindTexImageEXT(dispatchGlobal, display, drawable, buffer, attrib_list);
+  RglXBindTexImageEXT(nextGlobal, display, drawable, buffer, attrib_list);
 }
 
 static void REGAL_CALL http_glXReleaseTexImageEXT(Layer *_layer, Display *display, GLXDrawable drawable, int buffer)
@@ -39381,7 +39381,7 @@ static void REGAL_CALL http_glXReleaseTexImageEXT(Layer *_layer, Display *displa
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXReleaseTexImageEXT(dispatchGlobal, display, drawable, buffer);
+  RglXReleaseTexImageEXT(nextGlobal, display, drawable, buffer);
 }
 
 // GLX_MESA_agp_offset
@@ -39397,7 +39397,7 @@ static unsigned int REGAL_CALL http_glXGetAGPOffsetMESA(Layer *_layer, const voi
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetAGPOffsetMESA(dispatchGlobal, pointer);
+  ret = RglXGetAGPOffsetMESA(nextGlobal, pointer);
   return ret;
 }
 
@@ -39413,7 +39413,7 @@ static void REGAL_CALL http_glXCopySubBufferMESA(Layer *_layer, Display *dpy, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXCopySubBufferMESA(dispatchGlobal, dpy, drawable, x, y, width, height);
+  RglXCopySubBufferMESA(nextGlobal, dpy, drawable, x, y, width, height);
 }
 
 // GLX_MESA_pixmap_colormap
@@ -39429,7 +39429,7 @@ static GLXPixmap REGAL_CALL http_glXCreateGLXPixmapMESA(Layer *_layer, Display *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateGLXPixmapMESA(dispatchGlobal, dpy, visual, pixmap, cmap);
+  ret = RglXCreateGLXPixmapMESA(nextGlobal, dpy, visual, pixmap, cmap);
   return ret;
 }
 
@@ -39446,7 +39446,7 @@ static Bool REGAL_CALL http_glXReleaseBuffersMESA(Layer *_layer, Display *dpy, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXReleaseBuffersMESA(dispatchGlobal, dpy, d);
+  ret = RglXReleaseBuffersMESA(nextGlobal, dpy, d);
   return ret;
 }
 
@@ -39463,7 +39463,7 @@ static GLboolean REGAL_CALL http_glXSet3DfxModeMESA(Layer *_layer, GLint mode)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXSet3DfxModeMESA(dispatchGlobal, mode);
+  ret = RglXSet3DfxModeMESA(nextGlobal, mode);
   return ret;
 }
 
@@ -39480,7 +39480,7 @@ static int REGAL_CALL http_glXGetSwapIntervalMESA(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetSwapIntervalMESA(dispatchGlobal);
+  ret = RglXGetSwapIntervalMESA(nextGlobal);
   return ret;
 }
 
@@ -39495,7 +39495,7 @@ static int REGAL_CALL http_glXSwapIntervalMESA(Layer *_layer, unsigned int inter
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXSwapIntervalMESA(dispatchGlobal, interval);
+  ret = RglXSwapIntervalMESA(nextGlobal, interval);
   return ret;
 }
 
@@ -39511,7 +39511,7 @@ static void REGAL_CALL http_glXCopyImageSubDataNV(Layer *_layer, Display *dpy, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXCopyImageSubDataNV(dispatchGlobal, dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
+  RglXCopyImageSubDataNV(nextGlobal, dpy, srcCtx, srcName, srcTarget, srcLevel, srcX, srcY, srcZ, dstCtx, dstName, dstTarget, dstLevel, dstX, dstY, dstZ, width, height, depth);
 }
 
 // GLX_NV_present_video
@@ -39527,7 +39527,7 @@ static int REGAL_CALL http_glXBindVideoDeviceNV(Layer *_layer, Display *dpy, uns
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXBindVideoDeviceNV(dispatchGlobal, dpy, video_slot, video_device, attrib_list);
+  ret = RglXBindVideoDeviceNV(nextGlobal, dpy, video_slot, video_device, attrib_list);
   return ret;
 }
 
@@ -39542,7 +39542,7 @@ static unsigned int *REGAL_CALL http_glXEnumerateVideoDevicesNV(Layer *_layer, D
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXEnumerateVideoDevicesNV(dispatchGlobal, dpy, screen, nelements);
+  ret = RglXEnumerateVideoDevicesNV(nextGlobal, dpy, screen, nelements);
   return ret;
 }
 
@@ -39559,7 +39559,7 @@ static Bool REGAL_CALL http_glXBindSwapBarrierNV(Layer *_layer, Display *dpy, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXBindSwapBarrierNV(dispatchGlobal, dpy, group, barrier);
+  ret = RglXBindSwapBarrierNV(nextGlobal, dpy, group, barrier);
   return ret;
 }
 
@@ -39574,7 +39574,7 @@ static Bool REGAL_CALL http_glXJoinSwapGroupNV(Layer *_layer, Display *dpy, GLXD
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXJoinSwapGroupNV(dispatchGlobal, dpy, drawable, group);
+  ret = RglXJoinSwapGroupNV(nextGlobal, dpy, drawable, group);
   return ret;
 }
 
@@ -39589,7 +39589,7 @@ static Bool REGAL_CALL http_glXQueryFrameCountNV(Layer *_layer, Display *dpy, in
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryFrameCountNV(dispatchGlobal, dpy, screen, count);
+  ret = RglXQueryFrameCountNV(nextGlobal, dpy, screen, count);
   return ret;
 }
 
@@ -39604,7 +39604,7 @@ static Bool REGAL_CALL http_glXQueryMaxSwapGroupsNV(Layer *_layer, Display *dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryMaxSwapGroupsNV(dispatchGlobal, dpy, screen, maxGroups, maxBarriers);
+  ret = RglXQueryMaxSwapGroupsNV(nextGlobal, dpy, screen, maxGroups, maxBarriers);
   return ret;
 }
 
@@ -39619,7 +39619,7 @@ static Bool REGAL_CALL http_glXQuerySwapGroupNV(Layer *_layer, Display *dpy, GLX
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQuerySwapGroupNV(dispatchGlobal, dpy, drawable, group, barrier);
+  ret = RglXQuerySwapGroupNV(nextGlobal, dpy, drawable, group, barrier);
   return ret;
 }
 
@@ -39634,7 +39634,7 @@ static Bool REGAL_CALL http_glXResetFrameCountNV(Layer *_layer, Display *dpy, in
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXResetFrameCountNV(dispatchGlobal, dpy, screen);
+  ret = RglXResetFrameCountNV(nextGlobal, dpy, screen);
   return ret;
 }
 
@@ -39651,7 +39651,7 @@ static void *REGAL_CALL http_glXAllocateMemoryNV(Layer *_layer, GLsizei size, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXAllocateMemoryNV(dispatchGlobal, size, readFrequency, writeFrequency, priority);
+  ret = RglXAllocateMemoryNV(nextGlobal, size, readFrequency, writeFrequency, priority);
   return ret;
 }
 
@@ -39665,7 +39665,7 @@ static void REGAL_CALL http_glXFreeMemoryNV(Layer *_layer, void *pointer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXFreeMemoryNV(dispatchGlobal, pointer);
+  RglXFreeMemoryNV(nextGlobal, pointer);
 }
 
 // GLX_NV_video_capture
@@ -39681,7 +39681,7 @@ static int REGAL_CALL http_glXBindVideoCaptureDeviceNV(Layer *_layer, Display *d
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXBindVideoCaptureDeviceNV(dispatchGlobal, dpy, video_capture_slot, device);
+  ret = RglXBindVideoCaptureDeviceNV(nextGlobal, dpy, video_capture_slot, device);
   return ret;
 }
 
@@ -39696,7 +39696,7 @@ static GLXVideoCaptureDeviceNV *REGAL_CALL http_glXEnumerateVideoCaptureDevicesN
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXEnumerateVideoCaptureDevicesNV(dispatchGlobal, dpy, screen, nelements);
+  ret = RglXEnumerateVideoCaptureDevicesNV(nextGlobal, dpy, screen, nelements);
   return ret;
 }
 
@@ -39710,7 +39710,7 @@ static void REGAL_CALL http_glXLockVideoCaptureDeviceNV(Layer *_layer, Display *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXLockVideoCaptureDeviceNV(dispatchGlobal, dpy, device);
+  RglXLockVideoCaptureDeviceNV(nextGlobal, dpy, device);
 }
 
 static int REGAL_CALL http_glXQueryVideoCaptureDeviceNV(Layer *_layer, Display *dpy, GLXVideoCaptureDeviceNV device, int attribute, int *value)
@@ -39724,7 +39724,7 @@ static int REGAL_CALL http_glXQueryVideoCaptureDeviceNV(Layer *_layer, Display *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryVideoCaptureDeviceNV(dispatchGlobal, dpy, device, attribute, value);
+  ret = RglXQueryVideoCaptureDeviceNV(nextGlobal, dpy, device, attribute, value);
   return ret;
 }
 
@@ -39738,7 +39738,7 @@ static void REGAL_CALL http_glXReleaseVideoCaptureDeviceNV(Layer *_layer, Displa
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXReleaseVideoCaptureDeviceNV(dispatchGlobal, dpy, device);
+  RglXReleaseVideoCaptureDeviceNV(nextGlobal, dpy, device);
 }
 
 // GLX_NV_video_output
@@ -39754,7 +39754,7 @@ static int REGAL_CALL http_glXBindVideoImageNV(Layer *_layer, Display *dpy, GLXV
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXBindVideoImageNV(dispatchGlobal, dpy, VideoDevice, pbuf, iVideoBuffer);
+  ret = RglXBindVideoImageNV(nextGlobal, dpy, VideoDevice, pbuf, iVideoBuffer);
   return ret;
 }
 
@@ -39769,7 +39769,7 @@ static int REGAL_CALL http_glXGetVideoDeviceNV(Layer *_layer, Display *dpy, int 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetVideoDeviceNV(dispatchGlobal, dpy, screen, numVideoDevices, pVideoDevice);
+  ret = RglXGetVideoDeviceNV(nextGlobal, dpy, screen, numVideoDevices, pVideoDevice);
   return ret;
 }
 
@@ -39784,7 +39784,7 @@ static int REGAL_CALL http_glXGetVideoInfoNV(Layer *_layer, Display *dpy, int sc
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetVideoInfoNV(dispatchGlobal, dpy, screen, VideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
+  ret = RglXGetVideoInfoNV(nextGlobal, dpy, screen, VideoDevice, pulCounterOutputPbuffer, pulCounterOutputVideo);
   return ret;
 }
 
@@ -39799,7 +39799,7 @@ static int REGAL_CALL http_glXReleaseVideoDeviceNV(Layer *_layer, Display *dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXReleaseVideoDeviceNV(dispatchGlobal, dpy, screen, VideoDevice);
+  ret = RglXReleaseVideoDeviceNV(nextGlobal, dpy, screen, VideoDevice);
   return ret;
 }
 
@@ -39814,7 +39814,7 @@ static int REGAL_CALL http_glXReleaseVideoImageNV(Layer *_layer, Display *dpy, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXReleaseVideoImageNV(dispatchGlobal, dpy, pbuf);
+  ret = RglXReleaseVideoImageNV(nextGlobal, dpy, pbuf);
   return ret;
 }
 
@@ -39829,7 +39829,7 @@ static int REGAL_CALL http_glXSendPbufferToVideoNV(Layer *_layer, Display *dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXSendPbufferToVideoNV(dispatchGlobal, dpy, pbuf, iBufferType, pulCounterPbuffer, bBlock);
+  ret = RglXSendPbufferToVideoNV(nextGlobal, dpy, pbuf, iBufferType, pulCounterPbuffer, bBlock);
   return ret;
 }
 
@@ -39846,7 +39846,7 @@ static Bool REGAL_CALL http_glXGetMscRateOML(Layer *_layer, Display *dpy, GLXDra
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetMscRateOML(dispatchGlobal, dpy, drawable, numerator, denominator);
+  ret = RglXGetMscRateOML(nextGlobal, dpy, drawable, numerator, denominator);
   return ret;
 }
 
@@ -39861,7 +39861,7 @@ static Bool REGAL_CALL http_glXGetSyncValuesOML(Layer *_layer, Display *dpy, GLX
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetSyncValuesOML(dispatchGlobal, dpy, drawable, ust, msc, sbc);
+  ret = RglXGetSyncValuesOML(nextGlobal, dpy, drawable, ust, msc, sbc);
   return ret;
 }
 
@@ -39876,7 +39876,7 @@ static int64_t REGAL_CALL http_glXSwapBuffersMscOML(Layer *_layer, Display *dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXSwapBuffersMscOML(dispatchGlobal, dpy, drawable, target_msc, divisor, remainder);
+  ret = RglXSwapBuffersMscOML(nextGlobal, dpy, drawable, target_msc, divisor, remainder);
   return ret;
 }
 
@@ -39891,7 +39891,7 @@ static Bool REGAL_CALL http_glXWaitForMscOML(Layer *_layer, Display *dpy, GLXDra
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXWaitForMscOML(dispatchGlobal, dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc);
+  ret = RglXWaitForMscOML(nextGlobal, dpy, drawable, target_msc, divisor, remainder, ust, msc, sbc);
   return ret;
 }
 
@@ -39906,7 +39906,7 @@ static Bool REGAL_CALL http_glXWaitForSbcOML(Layer *_layer, Display *dpy, GLXDra
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXWaitForSbcOML(dispatchGlobal, dpy, drawable, target_sbc, ust, msc, sbc);
+  ret = RglXWaitForSbcOML(nextGlobal, dpy, drawable, target_sbc, ust, msc, sbc);
   return ret;
 }
 
@@ -39923,7 +39923,7 @@ static GLXFBConfigSGIX *REGAL_CALL http_glXChooseFBConfigSGIX(Layer *_layer, Dis
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXChooseFBConfigSGIX(dispatchGlobal, dpy, screen, attrib_list, nelements);
+  ret = RglXChooseFBConfigSGIX(nextGlobal, dpy, screen, attrib_list, nelements);
   return ret;
 }
 
@@ -39938,7 +39938,7 @@ static GLXContext REGAL_CALL http_glXCreateContextWithConfigSGIX(Layer *_layer, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateContextWithConfigSGIX(dispatchGlobal, dpy, config, render_type, share_list, direct);
+  ret = RglXCreateContextWithConfigSGIX(nextGlobal, dpy, config, render_type, share_list, direct);
   return ret;
 }
 
@@ -39953,7 +39953,7 @@ static GLXPixmap REGAL_CALL http_glXCreateGLXPixmapWithConfigSGIX(Layer *_layer,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateGLXPixmapWithConfigSGIX(dispatchGlobal, dpy, config, pixmap);
+  ret = RglXCreateGLXPixmapWithConfigSGIX(nextGlobal, dpy, config, pixmap);
   return ret;
 }
 
@@ -39968,7 +39968,7 @@ static int REGAL_CALL http_glXGetFBConfigAttribSGIX(Layer *_layer, Display *dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetFBConfigAttribSGIX(dispatchGlobal, dpy, config, attribute, value);
+  ret = RglXGetFBConfigAttribSGIX(nextGlobal, dpy, config, attribute, value);
   return ret;
 }
 
@@ -39983,7 +39983,7 @@ static GLXFBConfigSGIX REGAL_CALL http_glXGetFBConfigFromVisualSGIX(Layer *_laye
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetFBConfigFromVisualSGIX(dispatchGlobal, dpy, vis);
+  ret = RglXGetFBConfigFromVisualSGIX(nextGlobal, dpy, vis);
   return ret;
 }
 
@@ -39998,7 +39998,7 @@ static XVisualInfo *REGAL_CALL http_glXGetVisualFromFBConfigSGIX(Layer *_layer, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetVisualFromFBConfigSGIX(dispatchGlobal, dpy, config);
+  ret = RglXGetVisualFromFBConfigSGIX(nextGlobal, dpy, config);
   return ret;
 }
 
@@ -40015,7 +40015,7 @@ static GLXPbuffer REGAL_CALL http_glXCreateGLXPbufferSGIX(Layer *_layer, Display
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXCreateGLXPbufferSGIX(dispatchGlobal, dpy, config, width, height, attrib_list);
+  ret = RglXCreateGLXPbufferSGIX(nextGlobal, dpy, config, width, height, attrib_list);
   return ret;
 }
 
@@ -40029,7 +40029,7 @@ static void REGAL_CALL http_glXDestroyGLXPbufferSGIX(Layer *_layer, Display *dpy
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXDestroyGLXPbufferSGIX(dispatchGlobal, dpy, pbuf);
+  RglXDestroyGLXPbufferSGIX(nextGlobal, dpy, pbuf);
 }
 
 static void REGAL_CALL http_glXGetSelectedEventSGIX(Layer *_layer, Display *dpy, GLXDrawable drawable, unsigned long *mask)
@@ -40042,7 +40042,7 @@ static void REGAL_CALL http_glXGetSelectedEventSGIX(Layer *_layer, Display *dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXGetSelectedEventSGIX(dispatchGlobal, dpy, drawable, mask);
+  RglXGetSelectedEventSGIX(nextGlobal, dpy, drawable, mask);
 }
 
 static void REGAL_CALL http_glXQueryGLXPbufferSGIX(Layer *_layer, Display *dpy, GLXPbuffer pbuf, int attribute, unsigned int *value)
@@ -40055,7 +40055,7 @@ static void REGAL_CALL http_glXQueryGLXPbufferSGIX(Layer *_layer, Display *dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXQueryGLXPbufferSGIX(dispatchGlobal, dpy, pbuf, attribute, value);
+  RglXQueryGLXPbufferSGIX(nextGlobal, dpy, pbuf, attribute, value);
 }
 
 static void REGAL_CALL http_glXSelectEventSGIX(Layer *_layer, Display *dpy, GLXDrawable drawable, unsigned long mask)
@@ -40068,7 +40068,7 @@ static void REGAL_CALL http_glXSelectEventSGIX(Layer *_layer, Display *dpy, GLXD
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXSelectEventSGIX(dispatchGlobal, dpy, drawable, mask);
+  RglXSelectEventSGIX(nextGlobal, dpy, drawable, mask);
 }
 
 // GLX_SGIX_swap_barrier
@@ -40083,7 +40083,7 @@ static void REGAL_CALL http_glXBindSwapBarrierSGIX(Layer *_layer, Display *dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXBindSwapBarrierSGIX(dispatchGlobal, dpy, drawable, barrier);
+  RglXBindSwapBarrierSGIX(nextGlobal, dpy, drawable, barrier);
 }
 
 static Bool REGAL_CALL http_glXQueryMaxSwapBarriersSGIX(Layer *_layer, Display *dpy, int screen, int *max)
@@ -40097,7 +40097,7 @@ static Bool REGAL_CALL http_glXQueryMaxSwapBarriersSGIX(Layer *_layer, Display *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryMaxSwapBarriersSGIX(dispatchGlobal, dpy, screen, max);
+  ret = RglXQueryMaxSwapBarriersSGIX(nextGlobal, dpy, screen, max);
   return ret;
 }
 
@@ -40113,7 +40113,7 @@ static void REGAL_CALL http_glXJoinSwapGroupSGIX(Layer *_layer, Display *dpy, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXJoinSwapGroupSGIX(dispatchGlobal, dpy, drawable, member);
+  RglXJoinSwapGroupSGIX(nextGlobal, dpy, drawable, member);
 }
 
 // GLX_SGIX_video_resize
@@ -40129,7 +40129,7 @@ static int REGAL_CALL http_glXBindChannelToWindowSGIX(Layer *_layer, Display *di
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXBindChannelToWindowSGIX(dispatchGlobal, display, screen, channel, window);
+  ret = RglXBindChannelToWindowSGIX(nextGlobal, display, screen, channel, window);
   return ret;
 }
 
@@ -40144,7 +40144,7 @@ static int REGAL_CALL http_glXChannelRectSGIX(Layer *_layer, Display *display, i
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXChannelRectSGIX(dispatchGlobal, display, screen, channel, x, y, w, h);
+  ret = RglXChannelRectSGIX(nextGlobal, display, screen, channel, x, y, w, h);
   return ret;
 }
 
@@ -40159,7 +40159,7 @@ static int REGAL_CALL http_glXChannelRectSyncSGIX(Layer *_layer, Display *displa
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXChannelRectSyncSGIX(dispatchGlobal, display, screen, channel, synctype);
+  ret = RglXChannelRectSyncSGIX(nextGlobal, display, screen, channel, synctype);
   return ret;
 }
 
@@ -40174,7 +40174,7 @@ static int REGAL_CALL http_glXQueryChannelDeltasSGIX(Layer *_layer, Display *dis
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryChannelDeltasSGIX(dispatchGlobal, display, screen, channel, x, y, w, h);
+  ret = RglXQueryChannelDeltasSGIX(nextGlobal, display, screen, channel, x, y, w, h);
   return ret;
 }
 
@@ -40189,7 +40189,7 @@ static int REGAL_CALL http_glXQueryChannelRectSGIX(Layer *_layer, Display *displ
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXQueryChannelRectSGIX(dispatchGlobal, display, screen, channel, dx, dy, dw, dh);
+  ret = RglXQueryChannelRectSGIX(nextGlobal, display, screen, channel, dx, dy, dw, dh);
   return ret;
 }
 
@@ -40205,7 +40205,7 @@ static void REGAL_CALL http_glXCushionSGI(Layer *_layer, Display *dpy, Window wi
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RglXCushionSGI(dispatchGlobal, dpy, window, cushion);
+  RglXCushionSGI(nextGlobal, dpy, window, cushion);
 }
 
 // GLX_SGI_make_current_read
@@ -40221,7 +40221,7 @@ static GLXDrawable REGAL_CALL http_glXGetCurrentReadDrawableSGI(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetCurrentReadDrawableSGI(dispatchGlobal);
+  ret = RglXGetCurrentReadDrawableSGI(nextGlobal);
   return ret;
 }
 
@@ -40236,7 +40236,7 @@ static Bool REGAL_CALL http_glXMakeCurrentReadSGI(Layer *_layer, Display *dpy, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXMakeCurrentReadSGI(dispatchGlobal, dpy, draw, read, ctx);
+  ret = RglXMakeCurrentReadSGI(nextGlobal, dpy, draw, read, ctx);
   return ret;
 }
 
@@ -40253,7 +40253,7 @@ static int REGAL_CALL http_glXSwapIntervalSGI(Layer *_layer, int interval)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXSwapIntervalSGI(dispatchGlobal, interval);
+  ret = RglXSwapIntervalSGI(nextGlobal, interval);
   return ret;
 }
 
@@ -40270,7 +40270,7 @@ static int REGAL_CALL http_glXGetVideoSyncSGI(Layer *_layer, unsigned int *count
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetVideoSyncSGI(dispatchGlobal, count);
+  ret = RglXGetVideoSyncSGI(nextGlobal, count);
   return ret;
 }
 
@@ -40285,7 +40285,7 @@ static int REGAL_CALL http_glXWaitVideoSyncSGI(Layer *_layer, int divisor, int r
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXWaitVideoSyncSGI(dispatchGlobal, divisor, remainder, count);
+  ret = RglXWaitVideoSyncSGI(nextGlobal, divisor, remainder, count);
   return ret;
 }
 
@@ -40302,7 +40302,7 @@ static Status REGAL_CALL http_glXGetTransparentIndexSUN(Layer *_layer, Display *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetTransparentIndexSUN(dispatchGlobal, dpy, overlay, underlay, pTransparentIndex);
+  ret = RglXGetTransparentIndexSUN(nextGlobal, dpy, overlay, underlay, pTransparentIndex);
   return ret;
 }
 
@@ -40319,7 +40319,7 @@ static int REGAL_CALL http_glXGetVideoResizeSUN(Layer *_layer, Display *display,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXGetVideoResizeSUN(dispatchGlobal, display, window, factor);
+  ret = RglXGetVideoResizeSUN(nextGlobal, display, window, factor);
   return ret;
 }
 
@@ -40334,7 +40334,7 @@ static int REGAL_CALL http_glXVideoResizeSUN(Layer *_layer, Display *display, GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RglXVideoResizeSUN(dispatchGlobal, display, window, factor);
+  ret = RglXVideoResizeSUN(nextGlobal, display, window, factor);
   return ret;
 }
 
@@ -40355,7 +40355,7 @@ static CGLError REGAL_CALL http_CGLChoosePixelFormat(Layer *_layer, const CGLPix
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLChoosePixelFormat(dispatchGlobal, attribs, pix, npix);
+  ret = RCGLChoosePixelFormat(nextGlobal, attribs, pix, npix);
   return ret;
 }
 
@@ -40370,7 +40370,7 @@ static CGLError REGAL_CALL http_CGLClearDrawable(Layer *_layer, CGLContextObj ct
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLClearDrawable(dispatchGlobal, ctx);
+  ret = RCGLClearDrawable(nextGlobal, ctx);
   return ret;
 }
 
@@ -40385,7 +40385,7 @@ static CGLError REGAL_CALL http_CGLCopyContext(Layer *_layer, CGLContextObj src,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLCopyContext(dispatchGlobal, src, dst, mask);
+  ret = RCGLCopyContext(nextGlobal, src, dst, mask);
   return ret;
 }
 
@@ -40400,7 +40400,7 @@ static CGLError REGAL_CALL http_CGLCreateContext(Layer *_layer, CGLPixelFormatOb
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLCreateContext(dispatchGlobal, pix, share, ctx);
+  ret = RCGLCreateContext(nextGlobal, pix, share, ctx);
   return ret;
 }
 
@@ -40415,7 +40415,7 @@ static CGLError REGAL_CALL http_CGLDescribePixelFormat(Layer *_layer, CGLPixelFo
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDescribePixelFormat(dispatchGlobal, pix, pix_num, attrib, value);
+  ret = RCGLDescribePixelFormat(nextGlobal, pix, pix_num, attrib, value);
   return ret;
 }
 
@@ -40430,7 +40430,7 @@ static CGLError REGAL_CALL http_CGLDescribeRenderer(Layer *_layer, CGLRendererIn
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDescribeRenderer(dispatchGlobal, rend, rend_num, prop, value);
+  ret = RCGLDescribeRenderer(nextGlobal, rend, rend_num, prop, value);
   return ret;
 }
 
@@ -40445,7 +40445,7 @@ static CGLError REGAL_CALL http_CGLDestroyContext(Layer *_layer, CGLContextObj c
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDestroyContext(dispatchGlobal, ctx);
+  ret = RCGLDestroyContext(nextGlobal, ctx);
   return ret;
 }
 
@@ -40460,7 +40460,7 @@ static CGLError REGAL_CALL http_CGLDestroyPixelFormat(Layer *_layer, CGLPixelFor
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDestroyPixelFormat(dispatchGlobal, pix);
+  ret = RCGLDestroyPixelFormat(nextGlobal, pix);
   return ret;
 }
 
@@ -40475,7 +40475,7 @@ static CGLError REGAL_CALL http_CGLDestroyRendererInfo(Layer *_layer, CGLRendere
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDestroyRendererInfo(dispatchGlobal, rend);
+  ret = RCGLDestroyRendererInfo(nextGlobal, rend);
   return ret;
 }
 
@@ -40490,7 +40490,7 @@ static CGLError REGAL_CALL http_CGLDisable(Layer *_layer, CGLContextObj ctx, CGL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDisable(dispatchGlobal, ctx, pname);
+  ret = RCGLDisable(nextGlobal, ctx, pname);
   return ret;
 }
 
@@ -40505,7 +40505,7 @@ static CGLError REGAL_CALL http_CGLEnable(Layer *_layer, CGLContextObj ctx, CGLC
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLEnable(dispatchGlobal, ctx, pname);
+  ret = RCGLEnable(nextGlobal, ctx, pname);
   return ret;
 }
 
@@ -40520,7 +40520,7 @@ static const char *REGAL_CALL http_CGLErrorString(Layer *_layer, CGLError error)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLErrorString(dispatchGlobal, error);
+  ret = RCGLErrorString(nextGlobal, error);
   return ret;
 }
 
@@ -40542,7 +40542,7 @@ static CGLError REGAL_CALL http_CGLFlushDrawable(Layer *_layer, CGLContextObj ct
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLFlushDrawable(dispatchGlobal, ctx);
+  ret = RCGLFlushDrawable(nextGlobal, ctx);
   self->count.lastFrame = self->count.call;
   return ret;
 }
@@ -40558,7 +40558,7 @@ static CGLError REGAL_CALL http_CGLGetOffScreen(Layer *_layer, CGLContextObj ctx
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetOffScreen(dispatchGlobal, ctx, width, height, rowbytes, baseaddr);
+  ret = RCGLGetOffScreen(nextGlobal, ctx, width, height, rowbytes, baseaddr);
   return ret;
 }
 
@@ -40573,7 +40573,7 @@ static CGLError REGAL_CALL http_CGLGetOption(Layer *_layer, CGLGlobalOption pnam
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetOption(dispatchGlobal, pname, param);
+  ret = RCGLGetOption(nextGlobal, pname, param);
   return ret;
 }
 
@@ -40588,7 +40588,7 @@ static CGLError REGAL_CALL http_CGLGetParameter(Layer *_layer, CGLContextObj ctx
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetParameter(dispatchGlobal, ctx, pname, params);
+  ret = RCGLGetParameter(nextGlobal, ctx, pname, params);
   return ret;
 }
 
@@ -40602,7 +40602,7 @@ static void REGAL_CALL http_CGLGetVersion(Layer *_layer, GLint *majorvers, GLint
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RCGLGetVersion(dispatchGlobal, majorvers, minorvers);
+  RCGLGetVersion(nextGlobal, majorvers, minorvers);
 }
 
 static CGLError REGAL_CALL http_CGLGetVirtualScreen(Layer *_layer, CGLContextObj ctx, GLint *screen)
@@ -40616,7 +40616,7 @@ static CGLError REGAL_CALL http_CGLGetVirtualScreen(Layer *_layer, CGLContextObj
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetVirtualScreen(dispatchGlobal, ctx, screen);
+  ret = RCGLGetVirtualScreen(nextGlobal, ctx, screen);
   return ret;
 }
 
@@ -40631,7 +40631,7 @@ static CGLError REGAL_CALL http_CGLIsEnabled(Layer *_layer, CGLContextObj ctx, C
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLIsEnabled(dispatchGlobal, ctx, pname, enable);
+  ret = RCGLIsEnabled(nextGlobal, ctx, pname, enable);
   return ret;
 }
 
@@ -40646,7 +40646,7 @@ static CGLError REGAL_CALL http_CGLQueryRendererInfo(Layer *_layer, GLuint displ
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLQueryRendererInfo(dispatchGlobal, display_mask, rend, nrend);
+  ret = RCGLQueryRendererInfo(nextGlobal, display_mask, rend, nrend);
   return ret;
 }
 
@@ -40661,7 +40661,7 @@ static CGLError REGAL_CALL http_CGLSetFullScreen(Layer *_layer, CGLContextObj ct
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetFullScreen(dispatchGlobal, ctx);
+  ret = RCGLSetFullScreen(nextGlobal, ctx);
   return ret;
 }
 
@@ -40676,7 +40676,7 @@ static CGLError REGAL_CALL http_CGLSetOffScreen(Layer *_layer, CGLContextObj ctx
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetOffScreen(dispatchGlobal, ctx, width, height, rowbytes, baseaddr);
+  ret = RCGLSetOffScreen(nextGlobal, ctx, width, height, rowbytes, baseaddr);
   return ret;
 }
 
@@ -40691,7 +40691,7 @@ static CGLError REGAL_CALL http_CGLSetOption(Layer *_layer, CGLGlobalOption pnam
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetOption(dispatchGlobal, pname, param);
+  ret = RCGLSetOption(nextGlobal, pname, param);
   return ret;
 }
 
@@ -40706,7 +40706,7 @@ static CGLError REGAL_CALL http_CGLSetParameter(Layer *_layer, CGLContextObj ctx
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetParameter(dispatchGlobal, ctx, pname, params);
+  ret = RCGLSetParameter(nextGlobal, ctx, pname, params);
   return ret;
 }
 
@@ -40721,7 +40721,7 @@ static CGLError REGAL_CALL http_CGLSetVirtualScreen(Layer *_layer, CGLContextObj
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetVirtualScreen(dispatchGlobal, ctx, screen);
+  ret = RCGLSetVirtualScreen(nextGlobal, ctx, screen);
   return ret;
 }
 
@@ -40738,7 +40738,7 @@ static CGLError REGAL_CALL http_CGLCreatePBuffer(Layer *_layer, GLsizei width, G
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLCreatePBuffer(dispatchGlobal, width, height, target, internalFormat, max_level, pbuffer);
+  ret = RCGLCreatePBuffer(nextGlobal, width, height, target, internalFormat, max_level, pbuffer);
   return ret;
 }
 
@@ -40753,7 +40753,7 @@ static CGLError REGAL_CALL http_CGLDescribePBuffer(Layer *_layer, CGLPBufferObj 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDescribePBuffer(dispatchGlobal, pbuffer, width, height, target, internalFormat, mipmap);
+  ret = RCGLDescribePBuffer(nextGlobal, pbuffer, width, height, target, internalFormat, mipmap);
   return ret;
 }
 
@@ -40768,7 +40768,7 @@ static CGLError REGAL_CALL http_CGLDestroyPBuffer(Layer *_layer, CGLPBufferObj p
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLDestroyPBuffer(dispatchGlobal, pbuffer);
+  ret = RCGLDestroyPBuffer(nextGlobal, pbuffer);
   return ret;
 }
 
@@ -40783,7 +40783,7 @@ static CGLError REGAL_CALL http_CGLGetPBuffer(Layer *_layer, CGLContextObj ctx, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetPBuffer(dispatchGlobal, ctx, pbuffer, face, level, screen);
+  ret = RCGLGetPBuffer(nextGlobal, ctx, pbuffer, face, level, screen);
   return ret;
 }
 
@@ -40798,7 +40798,7 @@ static CGLError REGAL_CALL http_CGLSetPBuffer(Layer *_layer, CGLContextObj ctx, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetPBuffer(dispatchGlobal, ctx, pbuffer, face, level, screen);
+  ret = RCGLSetPBuffer(nextGlobal, ctx, pbuffer, face, level, screen);
   return ret;
 }
 
@@ -40813,7 +40813,7 @@ static CGLError REGAL_CALL http_CGLTexImagePBuffer(Layer *_layer, CGLContextObj 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLTexImagePBuffer(dispatchGlobal, ctx, pbuffer, source);
+  ret = RCGLTexImagePBuffer(nextGlobal, ctx, pbuffer, source);
   return ret;
 }
 
@@ -40830,7 +40830,7 @@ static GLuint REGAL_CALL http_CGLGetContextRetainCount(Layer *_layer, CGLContext
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetContextRetainCount(dispatchGlobal, ctx);
+  ret = RCGLGetContextRetainCount(nextGlobal, ctx);
   return ret;
 }
 
@@ -40845,7 +40845,7 @@ static CGLError REGAL_CALL http_CGLGetGlobalOption(Layer *_layer, CGLGlobalOptio
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetGlobalOption(dispatchGlobal, pname, params);
+  ret = RCGLGetGlobalOption(nextGlobal, pname, params);
   return ret;
 }
 
@@ -40860,7 +40860,7 @@ static GLuint REGAL_CALL http_CGLGetPBufferRetainCount(Layer *_layer, CGLPBuffer
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetPBufferRetainCount(dispatchGlobal, pbuffer);
+  ret = RCGLGetPBufferRetainCount(nextGlobal, pbuffer);
   return ret;
 }
 
@@ -40875,7 +40875,7 @@ static CGLPixelFormatObj REGAL_CALL http_CGLGetPixelFormat(Layer *_layer, CGLCon
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetPixelFormat(dispatchGlobal, ctx);
+  ret = RCGLGetPixelFormat(nextGlobal, ctx);
   return ret;
 }
 
@@ -40890,7 +40890,7 @@ static GLuint REGAL_CALL http_CGLGetPixelFormatRetainCount(Layer *_layer, CGLPix
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetPixelFormatRetainCount(dispatchGlobal, pix);
+  ret = RCGLGetPixelFormatRetainCount(nextGlobal, pix);
   return ret;
 }
 
@@ -40905,7 +40905,7 @@ static CGLError REGAL_CALL http_CGLLockContext(Layer *_layer, CGLContextObj ctx)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLLockContext(dispatchGlobal, ctx);
+  ret = RCGLLockContext(nextGlobal, ctx);
   return ret;
 }
 
@@ -40919,7 +40919,7 @@ static void REGAL_CALL http_CGLReleaseContext(Layer *_layer, CGLContextObj ctx)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RCGLReleaseContext(dispatchGlobal, ctx);
+  RCGLReleaseContext(nextGlobal, ctx);
 }
 
 static void REGAL_CALL http_CGLReleasePBuffer(Layer *_layer, CGLPBufferObj pbuffer)
@@ -40932,7 +40932,7 @@ static void REGAL_CALL http_CGLReleasePBuffer(Layer *_layer, CGLPBufferObj pbuff
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RCGLReleasePBuffer(dispatchGlobal, pbuffer);
+  RCGLReleasePBuffer(nextGlobal, pbuffer);
 }
 
 static void REGAL_CALL http_CGLReleasePixelFormat(Layer *_layer, CGLPixelFormatObj pix)
@@ -40945,7 +40945,7 @@ static void REGAL_CALL http_CGLReleasePixelFormat(Layer *_layer, CGLPixelFormatO
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  RCGLReleasePixelFormat(dispatchGlobal, pix);
+  RCGLReleasePixelFormat(nextGlobal, pix);
 }
 
 static CGLContextObj REGAL_CALL http_CGLRetainContext(Layer *_layer, CGLContextObj ctx)
@@ -40959,7 +40959,7 @@ static CGLContextObj REGAL_CALL http_CGLRetainContext(Layer *_layer, CGLContextO
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLRetainContext(dispatchGlobal, ctx);
+  ret = RCGLRetainContext(nextGlobal, ctx);
   return ret;
 }
 
@@ -40974,7 +40974,7 @@ static CGLPBufferObj REGAL_CALL http_CGLRetainPBuffer(Layer *_layer, CGLPBufferO
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLRetainPBuffer(dispatchGlobal, pbuffer);
+  ret = RCGLRetainPBuffer(nextGlobal, pbuffer);
   return ret;
 }
 
@@ -40989,7 +40989,7 @@ static CGLPixelFormatObj REGAL_CALL http_CGLRetainPixelFormat(Layer *_layer, CGL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLRetainPixelFormat(dispatchGlobal, pix);
+  ret = RCGLRetainPixelFormat(nextGlobal, pix);
   return ret;
 }
 
@@ -41004,7 +41004,7 @@ static CGLError REGAL_CALL http_CGLSetGlobalOption(Layer *_layer, CGLGlobalOptio
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetGlobalOption(dispatchGlobal, pname, params);
+  ret = RCGLSetGlobalOption(nextGlobal, pname, params);
   return ret;
 }
 
@@ -41019,7 +41019,7 @@ static CGLError REGAL_CALL http_CGLUnlockContext(Layer *_layer, CGLContextObj ct
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLUnlockContext(dispatchGlobal, ctx);
+  ret = RCGLUnlockContext(nextGlobal, ctx);
   return ret;
 }
 
@@ -41036,7 +41036,7 @@ static CGLContextObj REGAL_CALL http_CGLGetCurrentContext(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetCurrentContext(dispatchGlobal);
+  ret = RCGLGetCurrentContext(nextGlobal);
   return ret;
 }
 
@@ -41051,7 +41051,7 @@ static CGLShareGroupObj REGAL_CALL http_CGLGetShareGroup(Layer *_layer, CGLConte
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetShareGroup(dispatchGlobal, ctx);
+  ret = RCGLGetShareGroup(nextGlobal, ctx);
   return ret;
 }
 
@@ -41066,7 +41066,7 @@ static CGLError REGAL_CALL http_CGLGetSurface(Layer *_layer, CGLContextObj ctx, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLGetSurface(dispatchGlobal, ctx, conn, win, srf);
+  ret = RCGLGetSurface(nextGlobal, ctx, conn, win, srf);
   return ret;
 }
 
@@ -41081,7 +41081,7 @@ static CGLError REGAL_CALL http_CGLSetCurrentContext(Layer *_layer, CGLContextOb
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetCurrentContext(dispatchGlobal, ctx);
+  ret = RCGLSetCurrentContext(nextGlobal, ctx);
   return ret;
 }
 
@@ -41096,7 +41096,7 @@ static CGLError REGAL_CALL http_CGLSetSurface(Layer *_layer, CGLContextObj ctx, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLSetSurface(dispatchGlobal, ctx, conn, win, srf);
+  ret = RCGLSetSurface(nextGlobal, ctx, conn, win, srf);
   return ret;
 }
 
@@ -41111,7 +41111,7 @@ static CGLError REGAL_CALL http_CGLTexImageIOSurface2D(Layer *_layer, CGLContext
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLTexImageIOSurface2D(dispatchGlobal, ctx, target, internal_format, width, height, format, type, ioSurface, plane);
+  ret = RCGLTexImageIOSurface2D(nextGlobal, ctx, target, internal_format, width, height, format, type, ioSurface, plane);
   return ret;
 }
 
@@ -41126,7 +41126,7 @@ static CGLError REGAL_CALL http_CGLUpdateContext(Layer *_layer, CGLContextObj ct
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = RCGLUpdateContext(dispatchGlobal, ctx);
+  ret = RCGLUpdateContext(nextGlobal, ctx);
   return ret;
 }
 
@@ -41147,7 +41147,7 @@ static EGLBoolean REGAL_CALL http_eglQuerySurfacePointerANGLE(Layer *_layer, EGL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglQuerySurfacePointerANGLE(dispatchGlobal, dpy, surface, attribute, value);
+  ret = ReglQuerySurfacePointerANGLE(nextGlobal, dpy, surface, attribute, value);
   return ret;
 }
 
@@ -41164,7 +41164,7 @@ static EGLint REGAL_CALL http_eglClientWaitSyncKHR(Layer *_layer, EGLDisplay dpy
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglClientWaitSyncKHR(dispatchGlobal, dpy, GLsync, flags, timeout);
+  ret = ReglClientWaitSyncKHR(nextGlobal, dpy, GLsync, flags, timeout);
   return ret;
 }
 
@@ -41179,7 +41179,7 @@ static EGLSyncKHR REGAL_CALL http_eglCreateSyncKHR(Layer *_layer, EGLDisplay dpy
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateSyncKHR(dispatchGlobal, dpy, type, attrib_list);
+  ret = ReglCreateSyncKHR(nextGlobal, dpy, type, attrib_list);
   return ret;
 }
 
@@ -41194,7 +41194,7 @@ static EGLBoolean REGAL_CALL http_eglDestroySyncKHR(Layer *_layer, EGLDisplay dp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglDestroySyncKHR(dispatchGlobal, dpy, GLsync);
+  ret = ReglDestroySyncKHR(nextGlobal, dpy, GLsync);
   return ret;
 }
 
@@ -41209,7 +41209,7 @@ static EGLBoolean REGAL_CALL http_eglGetSyncAttribKHR(Layer *_layer, EGLDisplay 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetSyncAttribKHR(dispatchGlobal, dpy, GLsync, attribute, value);
+  ret = ReglGetSyncAttribKHR(nextGlobal, dpy, GLsync, attribute, value);
   return ret;
 }
 
@@ -41226,7 +41226,7 @@ static EGLImageKHR REGAL_CALL http_eglCreateImageKHR(Layer *_layer, EGLDisplay d
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateImageKHR(dispatchGlobal, dpy, ctx, target, buffer, attrib_list);
+  ret = ReglCreateImageKHR(nextGlobal, dpy, ctx, target, buffer, attrib_list);
   return ret;
 }
 
@@ -41241,7 +41241,7 @@ static EGLBoolean REGAL_CALL http_eglDestroyImageKHR(Layer *_layer, EGLDisplay d
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglDestroyImageKHR(dispatchGlobal, dpy, image);
+  ret = ReglDestroyImageKHR(nextGlobal, dpy, image);
   return ret;
 }
 
@@ -41258,7 +41258,7 @@ static EGLBoolean REGAL_CALL http_eglLockSurfaceKHR(Layer *_layer, EGLDisplay di
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglLockSurfaceKHR(dispatchGlobal, display, surface, attrib_list);
+  ret = ReglLockSurfaceKHR(nextGlobal, display, surface, attrib_list);
   return ret;
 }
 
@@ -41273,7 +41273,7 @@ static EGLBoolean REGAL_CALL http_eglUnlockSurfaceKHR(Layer *_layer, EGLDisplay 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglUnlockSurfaceKHR(dispatchGlobal, display, surface);
+  ret = ReglUnlockSurfaceKHR(nextGlobal, display, surface);
   return ret;
 }
 
@@ -41290,7 +41290,7 @@ static EGLBoolean REGAL_CALL http_eglStreamConsumerAcquireKHR(Layer *_layer, EGL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglStreamConsumerAcquireKHR(dispatchGlobal, dpy, stream);
+  ret = ReglStreamConsumerAcquireKHR(nextGlobal, dpy, stream);
   return ret;
 }
 
@@ -41305,7 +41305,7 @@ static EGLBoolean REGAL_CALL http_eglStreamConsumerGLTextureExternalKHR(Layer *_
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglStreamConsumerGLTextureExternalKHR(dispatchGlobal, dpy, stream);
+  ret = ReglStreamConsumerGLTextureExternalKHR(nextGlobal, dpy, stream);
   return ret;
 }
 
@@ -41320,7 +41320,7 @@ static EGLBoolean REGAL_CALL http_eglStreamConsumerReleaseKHR(Layer *_layer, EGL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglStreamConsumerReleaseKHR(dispatchGlobal, dpy, stream);
+  ret = ReglStreamConsumerReleaseKHR(nextGlobal, dpy, stream);
   return ret;
 }
 
@@ -41337,7 +41337,7 @@ static EGLStreamKHR REGAL_CALL http_eglCreateStreamFromFileDescriptorKHR(Layer *
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateStreamFromFileDescriptorKHR(dispatchGlobal, dpy, file_descriptor);
+  ret = ReglCreateStreamFromFileDescriptorKHR(nextGlobal, dpy, file_descriptor);
   return ret;
 }
 
@@ -41352,7 +41352,7 @@ static EGLNativeFileDescriptorKHR REGAL_CALL http_eglGetStreamFileDescriptorKHR(
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetStreamFileDescriptorKHR(dispatchGlobal, dpy, stream);
+  ret = ReglGetStreamFileDescriptorKHR(nextGlobal, dpy, stream);
   return ret;
 }
 
@@ -41369,7 +41369,7 @@ static EGLSurface REGAL_CALL http_eglCreateStreamProducerSurfaceKHR(Layer *_laye
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateStreamProducerSurfaceKHR(dispatchGlobal, dpy, config, stream, attrib_list);
+  ret = ReglCreateStreamProducerSurfaceKHR(nextGlobal, dpy, config, stream, attrib_list);
   return ret;
 }
 
@@ -41386,7 +41386,7 @@ static EGLint REGAL_CALL http_eglWaitSyncKHR(Layer *_layer, EGLDisplay dpy, EGLS
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglWaitSyncKHR(dispatchGlobal, dpy, GLsync, flags);
+  ret = ReglWaitSyncKHR(nextGlobal, dpy, GLsync, flags);
   return ret;
 }
 
@@ -41403,7 +41403,7 @@ static EGLImageKHR REGAL_CALL http_eglCreateDRMImageMESA(Layer *_layer, EGLDispl
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateDRMImageMESA(dispatchGlobal, dpy, attrib_list);
+  ret = ReglCreateDRMImageMESA(nextGlobal, dpy, attrib_list);
   return ret;
 }
 
@@ -41418,7 +41418,7 @@ static EGLBoolean REGAL_CALL http_eglExportDRMImageMESA(Layer *_layer, EGLDispla
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglExportDRMImageMESA(dispatchGlobal, dpy, image, name, handle, stride);
+  ret = ReglExportDRMImageMESA(nextGlobal, dpy, image, name, handle, stride);
   return ret;
 }
 
@@ -41434,7 +41434,7 @@ static void REGAL_CALL http_eglCoverageMaskNV(Layer *_layer, GLboolean mask)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ReglCoverageMaskNV(dispatchGlobal, mask);
+  ReglCoverageMaskNV(nextGlobal, mask);
 }
 
 static void REGAL_CALL http_eglCoverageOperationNV(Layer *_layer, GLenum operation)
@@ -41447,7 +41447,7 @@ static void REGAL_CALL http_eglCoverageOperationNV(Layer *_layer, GLenum operati
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ReglCoverageOperationNV(dispatchGlobal, operation);
+  ReglCoverageOperationNV(nextGlobal, operation);
 }
 
 // EGL_NV_post_sub_buffer
@@ -41463,7 +41463,7 @@ static EGLBoolean REGAL_CALL http_eglPostSubBufferNV(Layer *_layer, EGLDisplay d
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglPostSubBufferNV(dispatchGlobal, dpy, surface, x, y, width, height);
+  ret = ReglPostSubBufferNV(nextGlobal, dpy, surface, x, y, width, height);
   return ret;
 }
 
@@ -41480,7 +41480,7 @@ static EGLint REGAL_CALL http_eglClientWaitSyncNV(Layer *_layer, EGLSyncNV GLsyn
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglClientWaitSyncNV(dispatchGlobal, GLsync, flags, timeout);
+  ret = ReglClientWaitSyncNV(nextGlobal, GLsync, flags, timeout);
   return ret;
 }
 
@@ -41495,7 +41495,7 @@ static EGLSyncNV REGAL_CALL http_eglCreateFenceSyncNV(Layer *_layer, EGLDisplay 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateFenceSyncNV(dispatchGlobal, dpy, condition, attrib_list);
+  ret = ReglCreateFenceSyncNV(nextGlobal, dpy, condition, attrib_list);
   return ret;
 }
 
@@ -41510,7 +41510,7 @@ static EGLBoolean REGAL_CALL http_eglDestroySyncNV(Layer *_layer, EGLSyncNV GLsy
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglDestroySyncNV(dispatchGlobal, GLsync);
+  ret = ReglDestroySyncNV(nextGlobal, GLsync);
   return ret;
 }
 
@@ -41525,7 +41525,7 @@ static EGLBoolean REGAL_CALL http_eglFenceNV(Layer *_layer, EGLSyncNV GLsync)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglFenceNV(dispatchGlobal, GLsync);
+  ret = ReglFenceNV(nextGlobal, GLsync);
   return ret;
 }
 
@@ -41540,7 +41540,7 @@ static EGLBoolean REGAL_CALL http_eglGetSyncAttribNV(Layer *_layer, EGLSyncNV GL
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetSyncAttribNV(dispatchGlobal, GLsync, attribute, value);
+  ret = ReglGetSyncAttribNV(nextGlobal, GLsync, attribute, value);
   return ret;
 }
 
@@ -41555,7 +41555,7 @@ static EGLBoolean REGAL_CALL http_eglSignalSyncNV(Layer *_layer, EGLSyncNV GLsyn
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglSignalSyncNV(dispatchGlobal, GLsync, mode);
+  ret = ReglSignalSyncNV(nextGlobal, GLsync, mode);
   return ret;
 }
 
@@ -41572,7 +41572,7 @@ static EGLuint64NV REGAL_CALL http_eglGetSystemTimeFrequencyNV(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetSystemTimeFrequencyNV(dispatchGlobal);
+  ret = ReglGetSystemTimeFrequencyNV(nextGlobal);
   return ret;
 }
 
@@ -41587,7 +41587,7 @@ static EGLuint64NV REGAL_CALL http_eglGetSystemTimeNV(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetSystemTimeNV(dispatchGlobal);
+  ret = ReglGetSystemTimeNV(nextGlobal);
   return ret;
 }
 
@@ -41604,7 +41604,7 @@ static EGLBoolean REGAL_CALL http_eglChooseConfig(Layer *_layer, EGLDisplay dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglChooseConfig(dispatchGlobal, dpy, attrib_list, configs, config_size, num_config);
+  ret = ReglChooseConfig(nextGlobal, dpy, attrib_list, configs, config_size, num_config);
   return ret;
 }
 
@@ -41619,7 +41619,7 @@ static EGLBoolean REGAL_CALL http_eglCopyBuffers(Layer *_layer, EGLDisplay dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCopyBuffers(dispatchGlobal, dpy, surface, target);
+  ret = ReglCopyBuffers(nextGlobal, dpy, surface, target);
   return ret;
 }
 
@@ -41634,7 +41634,7 @@ static EGLContext REGAL_CALL http_eglCreateContext(Layer *_layer, EGLDisplay dpy
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateContext(dispatchGlobal, dpy, config, share_context, attrib_list);
+  ret = ReglCreateContext(nextGlobal, dpy, config, share_context, attrib_list);
   return ret;
 }
 
@@ -41649,7 +41649,7 @@ static EGLSurface REGAL_CALL http_eglCreatePbufferSurface(Layer *_layer, EGLDisp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreatePbufferSurface(dispatchGlobal, dpy, config, attrib_list);
+  ret = ReglCreatePbufferSurface(nextGlobal, dpy, config, attrib_list);
   return ret;
 }
 
@@ -41664,7 +41664,7 @@ static EGLSurface REGAL_CALL http_eglCreatePixmapSurface(Layer *_layer, EGLDispl
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreatePixmapSurface(dispatchGlobal, dpy, config, pixmap, attrib_list);
+  ret = ReglCreatePixmapSurface(nextGlobal, dpy, config, pixmap, attrib_list);
   return ret;
 }
 
@@ -41679,7 +41679,7 @@ static EGLSurface REGAL_CALL http_eglCreateWindowSurface(Layer *_layer, EGLDispl
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreateWindowSurface(dispatchGlobal, dpy, config, win, attrib_list);
+  ret = ReglCreateWindowSurface(nextGlobal, dpy, config, win, attrib_list);
   return ret;
 }
 
@@ -41694,7 +41694,7 @@ static EGLBoolean REGAL_CALL http_eglDestroyContext(Layer *_layer, EGLDisplay dp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglDestroyContext(dispatchGlobal, dpy, ctx);
+  ret = ReglDestroyContext(nextGlobal, dpy, ctx);
   return ret;
 }
 
@@ -41709,7 +41709,7 @@ static EGLBoolean REGAL_CALL http_eglDestroySurface(Layer *_layer, EGLDisplay dp
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglDestroySurface(dispatchGlobal, dpy, surface);
+  ret = ReglDestroySurface(nextGlobal, dpy, surface);
   return ret;
 }
 
@@ -41724,7 +41724,7 @@ static EGLBoolean REGAL_CALL http_eglGetConfigAttrib(Layer *_layer, EGLDisplay d
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetConfigAttrib(dispatchGlobal, dpy, config, attribute, value);
+  ret = ReglGetConfigAttrib(nextGlobal, dpy, config, attribute, value);
   return ret;
 }
 
@@ -41739,7 +41739,7 @@ static EGLBoolean REGAL_CALL http_eglGetConfigs(Layer *_layer, EGLDisplay dpy, E
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetConfigs(dispatchGlobal, dpy, configs, config_size, num_config);
+  ret = ReglGetConfigs(nextGlobal, dpy, configs, config_size, num_config);
   return ret;
 }
 
@@ -41754,7 +41754,7 @@ static EGLContext REGAL_CALL http_eglGetCurrentContext(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetCurrentContext(dispatchGlobal);
+  ret = ReglGetCurrentContext(nextGlobal);
   return ret;
 }
 
@@ -41769,7 +41769,7 @@ static EGLDisplay REGAL_CALL http_eglGetCurrentDisplay(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetCurrentDisplay(dispatchGlobal);
+  ret = ReglGetCurrentDisplay(nextGlobal);
   return ret;
 }
 
@@ -41784,7 +41784,7 @@ static EGLSurface REGAL_CALL http_eglGetCurrentSurface(Layer *_layer, EGLint rea
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetCurrentSurface(dispatchGlobal, readdraw);
+  ret = ReglGetCurrentSurface(nextGlobal, readdraw);
   return ret;
 }
 
@@ -41799,7 +41799,7 @@ static EGLDisplay REGAL_CALL http_eglGetDisplay(Layer *_layer, EGLNativeDisplayT
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetDisplay(dispatchGlobal, display_id);
+  ret = ReglGetDisplay(nextGlobal, display_id);
   return ret;
 }
 
@@ -41814,7 +41814,7 @@ static EGLint REGAL_CALL http_eglGetError(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetError(dispatchGlobal);
+  ret = ReglGetError(nextGlobal);
   return ret;
 }
 
@@ -41829,7 +41829,7 @@ static __eglMustCastToProperFunctionPointerType REGAL_CALL http_eglGetProcAddres
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglGetProcAddress(dispatchGlobal, procname);
+  ret = ReglGetProcAddress(nextGlobal, procname);
   return ret;
 }
 
@@ -41844,7 +41844,7 @@ static EGLBoolean REGAL_CALL http_eglInitialize(Layer *_layer, EGLDisplay dpy, E
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglInitialize(dispatchGlobal, dpy, major, minor);
+  ret = ReglInitialize(nextGlobal, dpy, major, minor);
   return ret;
 }
 
@@ -41859,7 +41859,7 @@ static EGLBoolean REGAL_CALL http_eglMakeCurrent(Layer *_layer, EGLDisplay dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglMakeCurrent(dispatchGlobal, dpy, draw, read, ctx);
+  ret = ReglMakeCurrent(nextGlobal, dpy, draw, read, ctx);
   return ret;
 }
 
@@ -41874,7 +41874,7 @@ static EGLBoolean REGAL_CALL http_eglQueryContext(Layer *_layer, EGLDisplay dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglQueryContext(dispatchGlobal, dpy, ctx, attribute, value);
+  ret = ReglQueryContext(nextGlobal, dpy, ctx, attribute, value);
   return ret;
 }
 
@@ -41889,7 +41889,7 @@ static const char *REGAL_CALL http_eglQueryString(Layer *_layer, EGLDisplay dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglQueryString(dispatchGlobal, dpy, name);
+  ret = ReglQueryString(nextGlobal, dpy, name);
   return ret;
 }
 
@@ -41904,7 +41904,7 @@ static EGLBoolean REGAL_CALL http_eglQuerySurface(Layer *_layer, EGLDisplay dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglQuerySurface(dispatchGlobal, dpy, surface, attribute, value);
+  ret = ReglQuerySurface(nextGlobal, dpy, surface, attribute, value);
   return ret;
 }
 
@@ -41926,7 +41926,7 @@ static EGLBoolean REGAL_CALL http_eglSwapBuffers(Layer *_layer, EGLDisplay dpy, 
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglSwapBuffers(dispatchGlobal, dpy, surface);
+  ret = ReglSwapBuffers(nextGlobal, dpy, surface);
   self->count.lastFrame = self->count.call;
   return ret;
 }
@@ -41942,7 +41942,7 @@ static EGLBoolean REGAL_CALL http_eglTerminate(Layer *_layer, EGLDisplay dpy)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglTerminate(dispatchGlobal, dpy);
+  ret = ReglTerminate(nextGlobal, dpy);
   return ret;
 }
 
@@ -41957,7 +41957,7 @@ static EGLBoolean REGAL_CALL http_eglWaitGL(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglWaitGL(dispatchGlobal);
+  ret = ReglWaitGL(nextGlobal);
   return ret;
 }
 
@@ -41972,7 +41972,7 @@ static EGLBoolean REGAL_CALL http_eglWaitNative(Layer *_layer, EGLint engine)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglWaitNative(dispatchGlobal, engine);
+  ret = ReglWaitNative(nextGlobal, engine);
   return ret;
 }
 
@@ -41989,7 +41989,7 @@ static EGLBoolean REGAL_CALL http_eglBindTexImage(Layer *_layer, EGLDisplay dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglBindTexImage(dispatchGlobal, dpy, surface, buffer);
+  ret = ReglBindTexImage(nextGlobal, dpy, surface, buffer);
   return ret;
 }
 
@@ -42004,7 +42004,7 @@ static EGLBoolean REGAL_CALL http_eglReleaseTexImage(Layer *_layer, EGLDisplay d
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglReleaseTexImage(dispatchGlobal, dpy, surface, buffer);
+  ret = ReglReleaseTexImage(nextGlobal, dpy, surface, buffer);
   return ret;
 }
 
@@ -42021,7 +42021,7 @@ static EGLBoolean REGAL_CALL http_eglBindAPI(Layer *_layer, EGLenum api)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglBindAPI(dispatchGlobal, api);
+  ret = ReglBindAPI(nextGlobal, api);
   return ret;
 }
 
@@ -42036,7 +42036,7 @@ static EGLSurface REGAL_CALL http_eglCreatePbufferFromClientBuffer(Layer *_layer
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglCreatePbufferFromClientBuffer(dispatchGlobal, dpy, buftype, buffer, config, attrib_list);
+  ret = ReglCreatePbufferFromClientBuffer(nextGlobal, dpy, buftype, buffer, config, attrib_list);
   return ret;
 }
 
@@ -42051,7 +42051,7 @@ static EGLenum REGAL_CALL http_eglQueryAPI(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglQueryAPI(dispatchGlobal);
+  ret = ReglQueryAPI(nextGlobal);
   return ret;
 }
 
@@ -42066,7 +42066,7 @@ static EGLBoolean REGAL_CALL http_eglReleaseThread(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglReleaseThread(dispatchGlobal);
+  ret = ReglReleaseThread(nextGlobal);
   return ret;
 }
 
@@ -42081,7 +42081,7 @@ static EGLBoolean REGAL_CALL http_eglSurfaceAttrib(Layer *_layer, EGLDisplay dpy
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglSurfaceAttrib(dispatchGlobal, dpy, surface, attribute, value);
+  ret = ReglSurfaceAttrib(nextGlobal, dpy, surface, attribute, value);
   return ret;
 }
 
@@ -42096,7 +42096,7 @@ static EGLBoolean REGAL_CALL http_eglSwapInterval(Layer *_layer, EGLDisplay dpy,
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglSwapInterval(dispatchGlobal, dpy, interval);
+  ret = ReglSwapInterval(nextGlobal, dpy, interval);
   return ret;
 }
 
@@ -42111,7 +42111,7 @@ static EGLBoolean REGAL_CALL http_eglWaitClient(Layer *_layer)
     self->runState = RS_Pause;
   }
   self->YieldToHttpServer( self->inBeginEnd == 0 );
-  ret = ReglWaitClient(dispatchGlobal);
+  ret = ReglWaitClient(nextGlobal);
   return ret;
 }
 

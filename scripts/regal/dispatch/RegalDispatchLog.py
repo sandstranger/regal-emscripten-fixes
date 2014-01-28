@@ -100,7 +100,7 @@ def generateDispatchLog(apis, args):
       if function.needsContext:
         callParams = paramsNameCode(function.parameters, "self->next")
       else:
-        callParams = paramsNameCode(function.parameters, "dispatchGlobal")
+        callParams = paramsNameCode(function.parameters, "nextGlobal")
       rType  = typeCode(function.ret.type)
       category  = getattr(function, 'category', None)
       version   = getattr(function, 'version', None)
