@@ -32,8 +32,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_HTTP
-
 REGAL_NAMESPACE_BEGIN
 
 unsigned char favicon[2238] =
@@ -182,4 +180,3 @@ unsigned char favicon[2238] =
 
 REGAL_NAMESPACE_END
 
-#endif

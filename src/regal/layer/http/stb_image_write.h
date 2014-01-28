@@ -24,9 +24,9 @@ USAGE:
 
    There are three functions, one for each image file format:
 
-     int stbi_write_png(char const *filename, int w, int h, int comp, const void *data, int stride_in_bytes);
-     int stbi_write_bmp(char const *filename, int w, int h, int comp, const void *data);
-     int stbi_write_tga(char const *filename, int w, int h, int comp, const void *data);
+     int regal_stbi_write_png(char const *filename, int w, int h, int comp, const void *data, int stride_in_bytes);
+     int regal_stbi_write_bmp(char const *filename, int w, int h, int comp, const void *data);
+     int regal_stbi_write_tga(char const *filename, int w, int h, int comp, const void *data);
 
    Each function returns 0 on failure and non-0 on success.
    
@@ -58,11 +58,11 @@ USAGE:
 extern "C" {
 #endif
 
-extern int stbi_write_png(char const *filename, int w, int h, int comp, const void *data, int stride_in_bytes);
-extern int stbi_write_bmp(char const *filename, int w, int h, int comp, const void *data);
-extern int stbi_write_tga(char const *filename, int w, int h, int comp, const void *data);
+extern int regal_stbi_write_png(char const *filename, int w, int h, int comp, const void *data, int stride_in_bytes);
+extern int regal_stbi_write_bmp(char const *filename, int w, int h, int comp, const void *data);
+extern int regal_stbi_write_tga(char const *filename, int w, int h, int comp, const void *data);
 
-extern unsigned char *stbi_write_png_to_mem(unsigned char *pixels, int stride_bytes, int x, int y, int n, int *out_len);
+extern unsigned char *regal_stbi_write_png_to_mem(unsigned char *pixels, int stride_bytes, int x, int y, int n, int *out_len);
 
 #ifdef __cplusplus
 }
@@ -167,7 +167,7 @@ static int outfile(char const *filename, int rgb_dir, int vdir, int x, int y, in
    return f != NULL;
 }
 
-int stbi_write_bmp(char const *filename, int x, int y, int comp, const void *data)
+int regal_stbi_write_bmp(char const *filename, int x, int y, int comp, const void *data)
 {
    int pad = (-x*3) & 3;
    return outfile(filename,-1,-1,x,y,comp,(void *) data,0,pad,
@@ -176,7 +176,7 @@ int stbi_write_bmp(char const *filename, int x, int y, int comp, const void *dat
             40, x,y, 1,24, 0,0,0,0,0,0);             // bitmap header
 }
 
-int stbi_write_tga(char const *filename, int x, int y, int comp, const void *data)
+int regal_stbi_write_tga(char const *filename, int x, int y, int comp, const void *data)
 {
    int has_alpha = !(comp & 1);
    return outfile(filename, -1,-1, x, y, comp, (void *) data, has_alpha, 0,
@@ -264,8 +264,8 @@ static unsigned int stbi__zhash(unsigned char *data)
 #define stbi__ZHASH   16384
 
 
-unsigned char * stbi_zlib_compress(unsigned char *data, int data_len, int *out_len, int quality);
-unsigned char * stbi_zlib_compress(unsigned char *data, int data_len, int *out_len, int quality)
+static unsigned char * stbi_zlib_compress(unsigned char *data, int data_len, int *out_len, int quality);
+static unsigned char * stbi_zlib_compress(unsigned char *data, int data_len, int *out_len, int quality)
 {
    static unsigned short lengthc[] = { 3,4,5,6,7,8,9,10,11,13,15,17,19,23,27,31,35,43,51,59,67,83,99,115,131,163,195,227,258, 259 };
    static unsigned char  lengtheb[]= { 0,0,0,0,0,0,0, 0, 1, 1, 1, 1, 2, 2, 2, 2, 3, 3, 3, 3, 4, 4, 4,  4,  5,  5,  5,  5,  0 };
@@ -368,8 +368,8 @@ unsigned char * stbi_zlib_compress(unsigned char *data, int data_len, int *out_l
    return (unsigned char *) stbi__sbraw(out);
 }
 
-unsigned int stbi__crc32(unsigned char *buffer, int len);
-unsigned int stbi__crc32(unsigned char *buffer, int len)
+static unsigned int stbi__crc32(unsigned char *buffer, int len);
+static unsigned int stbi__crc32(unsigned char *buffer, int len)
 {
    static unsigned int crc_table[256];
    unsigned int crc = ~0u;
@@ -401,7 +401,7 @@ static unsigned char stbi__paeth(int a, int b, int c)
    return (unsigned char) c;
 }
 
-unsigned char *stbi_write_png_to_mem(unsigned char *pixels, int stride_bytes, int x, int y, int n, int *out_len)
+unsigned char *regal_stbi_write_png_to_mem(unsigned char *pixels, int stride_bytes, int x, int y, int n, int *out_len)
 {
    int ctype[5] = { -1, 0, 4, 2, 6 };
    unsigned char sig[8] = { 137,80,78,71,13,10,26,10 };
@@ -491,11 +491,11 @@ unsigned char *stbi_write_png_to_mem(unsigned char *pixels, int stride_bytes, in
    return out;
 }
 
-int stbi_write_png(char const *filename, int x, int y, int comp, const void *data, int stride_bytes)
+int regal_stbi_write_png(char const *filename, int x, int y, int comp, const void *data, int stride_bytes)
 {
    FILE *f;
    int len;
-   unsigned char *png = stbi_write_png_to_mem((unsigned char *) data, stride_bytes, x, y, comp, &len);
+   unsigned char *png = regal_stbi_write_png_to_mem((unsigned char *) data, stride_bytes, x, y, comp, &len);
    if (!png) return 0;
    f = fopen(filename, "wb");
    if (!f) { free(png); return 0; }

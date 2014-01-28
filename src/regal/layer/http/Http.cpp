@@ -32,27 +32,6 @@
 
 #include "RegalUtil.h"
 
-#if ! REGAL_HTTP
-
-REGAL_GLOBAL_BEGIN
-#include "RegalHttp.h"
-
-REGAL_GLOBAL_END
-
-REGAL_NAMESPACE_BEGIN
-
-Http::Http() {}
-Http::~Http() {}
-void Http::Init() {}
-void Http::Start() {}
-void Http::Stop() {}
-void Http::YieldToHttpServer( RegalContext *, bool ) {}
-void Regal::Http::GlProcs::Initialize( Regal::Dispatch::GL * ) {}
-
-REGAL_NAMESPACE_END
-
-#else // REGAL_HTTP
-
 #define REGAL_HTTP_LOCAL_JQUERY 0
 
 #define REGAL_HTTP_IMAGE_WRITE_IMPL 1
@@ -203,9 +182,9 @@ static int begin_request(struct mg_connection * conn)
   return 1;  // Mark as handled for Mongoose
 }
 
-void Http::Start()
+static void HttpStart()
 {
-  Internal("Http::Start","()");
+  Internal("HttpStart","()");
   
   if (enabled)
   {
@@ -240,9 +219,9 @@ void Http::Start()
   }
 }
 
-void Http::Stop()
+static void HttpStop()
 {
-  Internal("Http::Stop","()");
+  Internal("HttpStop","()");
   
   if (mgctx)
   {
@@ -564,7 +543,7 @@ struct TextureHandler : public RequestHandler {
             memcpy( s, t, stride );
           }
           int out_len = 0;
-          unsigned char * img = stbi_write_png_to_mem(pixels, width * 4, width, height, 4, &out_len );
+          unsigned char * img = regal_stbi_write_png_to_mem(pixels, width * 4, width, height, 4, &out_len );
           
           string http = print_string(
                                      "HTTP/1.1 200 OK\r\n"
@@ -1064,7 +1043,7 @@ struct FboHandler : public RequestHandler {
         memcpy( s, t, stride );
       }
       int out_len = 0;
-      unsigned char * img = stbi_write_png_to_mem(pixels, fi.width * 4, fi.width, fi.height, 4, &out_len );
+      unsigned char * img = regal_stbi_write_png_to_mem(pixels, fi.width * 4, fi.width, fi.height, 4, &out_len );
       
       string http = print_string(
                                  "HTTP/1.1 200 OK\r\n"
@@ -1301,6 +1280,12 @@ void Redirect( Connection & conn, const string & redirect_to ) {
 
 static void HttpInit()
 {
+  static bool initialized = false;
+  if( initialized ) {
+    return;
+  }
+  initialized = true;
+  
 #if REGAL_SYS_OSX
   pp.CGLSetCurrentContext = dispatchGlobal.CGLSetCurrentContext;
 #elif REGAL_SYS_WGL
@@ -1311,7 +1296,7 @@ static void HttpInit()
   pp.eglMakeCurrent = dispatchGlobal.eglMakeCurrent;
 #endif
   
-  Internal("Http::Init","()");
+  Internal("HttpInit","()");
   
   // Environment variable HTTP configuration
   
@@ -1353,6 +1338,10 @@ int addInstance( Http * inst ) {
   int c = instanceCount;
   instanceCount++;
   instances[ c ] = inst;
+  if( instances.size() == 1 ) {
+    HttpInit();
+    HttpStart();
+  }
   return c;
 }
 
@@ -1362,6 +1351,9 @@ void delInstance( int idx ) {
     return;
   }
   instances.erase( idx );
+  if( instances.size() == 0 ) {
+    HttpStop();
+  }
 }
 
 Http::Http( RegalContext * ctx ) : Layer( ctx ), runState( RS_Run ), debugGroupStackDepth( -1 ), stepOverGroupDepth( -1 ), inBeginEnd( 0 )
@@ -1383,6 +1375,7 @@ Http::Http( RegalContext * ctx ) : Layer( ctx ), runState( RS_Run ), debugGroupS
 
 Http::~Http()
 {
+  delInstance( instanceNum );
   for( size_t i = 0; i < breakpoint.size(); i++ ) {
     delete breakpoint[i];
   }
@@ -1492,6 +1485,4 @@ void Http::GlProcs::Initialize( Dispatch::GL * tbl ) {
 }
 
 REGAL_NAMESPACE_END
-
-#endif
 
