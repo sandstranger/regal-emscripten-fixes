@@ -48,7 +48,7 @@ public:
 
   virtual std::string GetName() const { return "log"; }
   virtual bool Initialize( const std::string & instanceInfo );
-  virtual void ResetIntercept();  
+  virtual void ResetInterception();
 
   Dispatch::GL next;
 };

@@ -322,7 +322,7 @@ namespace Emu {
     TexCIntercept( this, ctx->dispatchGL );
     
     RegalContext * sharingWith = ctx->shareGroup->front();
-    if ( sharingWith != NULL ) {
+    if ( sharingWith != NULL && sharingWith != ctx ) {
       mapTextureToTextureState = static_cast<TexC *>(sharingWith->find("texc"))->mapTextureToTextureState;
     }
     

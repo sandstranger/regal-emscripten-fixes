@@ -137,7 +137,7 @@ namespace Emu
         max_vertex_attribs = REGAL_EMU_MAX_VERTEX_ATTRIBS;
       
       RegalContext *sharingWith = ctx->shareGroup->front();
-      if (sharingWith)
+      if (sharingWith && sharingWith != ctx)
         objects = static_cast<Vao*>(sharingWith->find("vao"))->objects;
       
       // we have RFF2A maps for sets of 8 and 16 attributes. if

@@ -104,6 +104,7 @@ def generatePpapiSource(apis, args):
   substitute['COPYRIGHT']       = args.copyright
   substitute['DISPATCH_NAME'] = 'Ppapi'
   substitute['LOCAL_INCLUDE'] = '#include <ppapi/c/ppb_opengles2.h>'
+  substitute['CONSTRUCTOR']   = ''
   substitute['LOCAL_CODE']    = ''
   substitute['API_DISPATCH_FUNC_DEFINE'] = funcDefine
   substitute['API_DISPATCH_FUNC_INIT'] = funcInit

@@ -3396,7 +3396,7 @@ namespace Emu
     legacy = false;
     
     RegalContext *sharingWith = ctx.shareGroup->front();
-    if (sharingWith)
+    if (sharingWith && sharingWith != &ctx )
       textureObjToFmt = static_cast<Iff*>(sharingWith->find("iff"))->textureObjToFmt;
     
     InitVertexArray();

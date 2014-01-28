@@ -30,6 +30,8 @@ using namespace std;
 #include "RegalContext.h"
 ${LOCAL_INCLUDE}
 
+${CONSTRUCTOR}
+
 REGAL_GLOBAL_END
 
 REGAL_NAMESPACE_BEGIN
@@ -80,6 +82,15 @@ REGAL_NAMESPACE_END
 ${ENDIF}
 #endif // ${HEADER_NAME}
 ''')
+
+def apiDispatchLayerConstructor( e ):
+  code = ''
+  code +=     '\n'
+  code +=     'extern "C" Regal::Layer * create%s( Regal::RegalContext * ctx ) {\n' % e
+  code +=     '  return new Regal::%s( ctx );\n' % e
+  code +=     '}\n'
+  code +=     '\n'
+  return code;
 
 
 def apiDispatchFuncInitCode(apis, args, dispatchName, exclude=[], filter = lambda x : True, cond = None):

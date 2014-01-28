@@ -56,7 +56,7 @@ public:
   
   virtual std::string GetName() const { return "err"; }
   virtual bool Initialize( const std::string & instanceInfo );
-  virtual void ResetIntercept();
+  virtual void ResetInterception();
   
   ::RegalErrorCallback callback;
   bool inBeginEnd;

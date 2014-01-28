@@ -24,7 +24,21 @@ using namespace std;
 
 extern "C" {
 
+Regal::Layer * createLog(Regal::RegalContext *);
 Regal::Layer * createFilt(Regal::RegalContext *);
+Regal::Layer * createTexC(Regal::RegalContext *);
+Regal::Layer * createVao(Regal::RegalContext *);
+Regal::Layer * createDsa(Regal::RegalContext *);
+Regal::Layer * createSo(Regal::RegalContext *);
+Regal::Layer * createQuads(Regal::RegalContext *);
+Regal::Layer * createIff(Regal::RegalContext *);
+Regal::Layer * createTexSto(Regal::RegalContext *);
+Regal::Layer * createBaseVertex(Regal::RegalContext *);
+Regal::Layer * createPpca(Regal::RegalContext *);
+Regal::Layer * createPpa(Regal::RegalContext *);
+Regal::Layer * createHint(Regal::RegalContext *);
+Regal::Layer * createObj(Regal::RegalContext *);
+Regal::Layer * createHttp(Regal::RegalContext *);
 
 }
 
@@ -46,7 +60,119 @@ Constructor GetConstructor( const char * constructorName ) {
 void InitLayers( RegalContext * ctx ) {
   Constructor constr = NULL;
   Layer * layer = NULL;
+  constr = createLog;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
   constr = createFilt;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createTexC;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createVao;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createDsa;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createSo;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createQuads;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createIff;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createTexSto;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createBaseVertex;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createPpca;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createPpa;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createHint;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createObj;
+  if( constr ) {
+    layer = constr( ctx );
+    bool success = layer->Initialize( "" );
+    if( success ) {
+      ctx->layer.push_back( layer );
+    }
+  }
+  constr = createHttp;
   if( constr ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );

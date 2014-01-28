@@ -1,6 +1,19 @@
 [
-  {
-    "constructor": "createFilt",
-    "module": "builtin"
-  }
+  { "constructor": "createLog",       "module": "builtin" },
+
+  { "constructor": "createFilt",       "module": "builtin" },
+  { "constructor": "createTexC",       "module": "builtin" },
+  { "constructor": "createVao",        "module": "builtin" },
+  { "constructor": "createDsa",        "module": "builtin" },
+  { "constructor": "createSo",         "module": "builtin" },
+  { "constructor": "createQuads",      "module": "builtin" },
+  { "constructor": "createIff",        "module": "builtin" },
+  { "constructor": "createTexSto",     "module": "builtin" },
+  { "constructor": "createBaseVertex", "module": "builtin" },
+  { "constructor": "createPpca",       "module": "builtin" },
+  { "constructor": "createPpa",        "module": "builtin" },
+  { "constructor": "createHint",       "module": "builtin" },
+  { "constructor": "createObj",        "module": "builtin" },
+
+  { "constructor": "createHttp",       "module": "builtin" }
 ]

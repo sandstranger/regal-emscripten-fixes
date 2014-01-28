@@ -114,7 +114,7 @@ public:
   ~Http();
   virtual std::string GetName() const { return "http"; }
   virtual bool Initialize( const std::string & instanceInfo );
-  virtual void ResetIntercept();
+  virtual void ResetInterception();
 
   std::map<GLuint, HttpFboInfo> fbo;
   std::set<GLuint> vao;
