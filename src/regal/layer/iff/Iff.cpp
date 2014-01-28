@@ -4426,6 +4426,7 @@ namespace Emu
         ffstate.Process( this );
         ver.Reset();
         Program & p = shprogmap[ program ];
+        p.iff = this;
         p.pg = program;
         p.UserShaderModeAttribs();
       }
