@@ -5,19 +5,19 @@ solution "regal"
   -- A project defines one build target
   project "regal"
     kind "StaticLib"
+    buildoptions "-stdlib=libstdc++"
     language "C++"
     files { 
-      "src/regal/**.h",
-      "src/regal/**.cpp",
-      "src/mongoose/mongoose.c"
+      "../../src/regal/**.h",
+      "../../src/regal/**.cpp",
+      "../../src/regal/**.c",
     }
     includedirs { 
-      "include",
-      "src/mongoose",
-      "src/lookup3",
-      "src/glsl/include",
-      "src/glsl/src/glsl",
-      "src/glsl/src/mesa"
+      "../../include",
+      "../../src/lookup3",
+      "../../src/glsl/include",
+      "../../src/glsl/src/glsl",
+      "../../src/glsl/src/mesa"
     }
                           
     configuration "Debug"
