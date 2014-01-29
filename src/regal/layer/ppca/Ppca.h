@@ -78,7 +78,13 @@ struct Ppca : public Layer, public ClientState::VertexArray, ClientState::PixelS
   
   virtual bool Initialize( const std::string & instanceInfo )
   {
-    ResetInterception();
+    RegalContext * ctx = GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    bool emulationNeeded = ctx->info->es1 || ctx->info->es2 || ctx->info->core;
+    if( emulationNeeded == false ) {
+      return false;
+    }
+    PpcaIntercept( this, ctx->dispatchGL );
     Reset();
     return true;
   }

@@ -102,7 +102,10 @@ namespace Emu
     RegalContext * ctx = GetContext();
     orig.Initialize( ctx->dispatchGL );
     // if not supported, return false here
-    
+    bool emulationNeeded = ctx->info->es1 || ctx->info->es2 || ctx->info->core;
+    if( emulationNeeded == false ) {
+      return false;
+    }
     QuadsIntercept( this, ctx->dispatchGL );
     elementArrayBuffer = 0;
     RglGenBuffers( orig, 1, &quadIndexBuffer);

@@ -129,7 +129,18 @@ namespace Emu
       clientActiveTexture = GL_TEXTURE0;
       orig.Initialize( ctx->dispatchGL );
       // if not supported or not needed return false here
+      
+      bool from_core = (   ctx->info->gl_version_major >= 3
+                        || ctx->info->gles_version_major >= 3 );
+      bool from_ext = ctx->info->gl_arb_vertex_array_object;
+      // need to handle the default vao case, which core profile doesn't handle...
+      bool emulationNeeded = ctx->info->core || ( from_core == false && from_ext == false );
+      if( emulationNeeded == false ) {
+        return false;
+      }      
       VaoIntercept( this, ctx->dispatchGL );
+      
+      ctx->emuInfo->gl_arb_vertex_array_object = GL_TRUE;
       
       max_vertex_attribs = ctx->emuInfo->gl_max_vertex_attribs;
       RegalAssert( max_vertex_attribs <= REGAL_EMU_MAX_VERTEX_ATTRIBS );

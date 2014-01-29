@@ -85,7 +85,11 @@ void InitLayers( RegalContext * ctx ) {
     out.write( "    layer = constr( ctx );\n" )
     out.write( "    bool success = layer->Initialize( \"%s\" );\n" % instInf )
     out.write( "    if( success ) {\n" )
+    out.write( "      Info(\"%s initialization succeeded.\");\n" % c )
     out.write( "      ctx->layer.push_back( layer );\n" )
+    out.write( "    } else {\n" )
+    out.write( "      Info(\"%s initialization failed.\");\n" % c )
+    out.write( "      delete layer;\n" )
     out.write( "    }\n" )
     out.write( "  }\n" )
 

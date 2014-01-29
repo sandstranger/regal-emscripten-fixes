@@ -89,7 +89,13 @@ namespace Emu {
     virtual std::string GetName() const { return "rect"; }
     
     virtual bool Initialize( const std::string & instanceInfo ) {
-      ResetInterception();
+      RegalContext * ctx = GetContext();
+      orig.Initialize( ctx->dispatchGL );
+      bool emulationNeeded = ctx->info->es1 || ctx->info->es2 || ctx->info->core;
+      if( emulationNeeded == false ) {
+        return false;
+      }
+      RectIntercept( this, ctx->dispatchGL );
       return true;
     }
     

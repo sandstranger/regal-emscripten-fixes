@@ -55,6 +55,7 @@ REGAL_NAMESPACE_BEGIN
 struct Layer {
 
   Layer( RegalContext * context ) : ctx( context ) {}
+  virtual ~Layer() {}
   RegalContext * GetContext() { return ctx; }
   virtual std::string GetName() const = 0;
   virtual bool Initialize( const std::string & instanceInfo ) = 0;

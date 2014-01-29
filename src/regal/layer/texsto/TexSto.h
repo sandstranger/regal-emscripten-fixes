@@ -66,7 +66,19 @@ namespace Emu {
     virtual std::string GetName() const { return "texsto"; }
     
     bool Initialize( const std::string & instanceInfo ) {
-      ResetInterception();
+      RegalContext * ctx = GetContext();
+      orig.Initialize( ctx->dispatchGL );
+      TexStoIntercept( this, ctx->dispatchGL );
+
+      bool from_core = ctx->info->gl_version_4_2;
+      bool from_ext = ctx->info->gl_arb_texture_storage || ctx->info->gl_ext_texture_storage;
+      bool emulationNeeded = from_core == false && from_ext == false;
+      if( emulationNeeded ) {
+        return false;
+      }
+
+      TexStoIntercept( this, ctx->dispatchGL );
+
       return true;
     }
     

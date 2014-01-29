@@ -3381,6 +3381,14 @@ namespace Emu
     
     orig.Initialize( ctx.dispatchGL );
     instProcs.Initialize( ctx.dispatchGL );
+    bool emulationNeeded = ctx.info->es2 || ctx.info->core;
+    bool has_glsl = (   ctx.info->gl_version_major >= 2
+                     || ctx.info->gles_version_major >= 2 );
+    bool has_vao = ctx.emuInfo->gl_arb_vertex_array_object;
+    bool emulationSupported = has_glsl && has_vao;
+    if( emulationNeeded == false || emulationSupported == false ) {
+      return false;
+    }
     IffIntercept( this, ctx.dispatchGL );
     
     shadowMatrixMode = GL_MODELVIEW;

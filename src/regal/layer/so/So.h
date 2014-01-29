@@ -83,7 +83,12 @@ namespace Emu {
       
       orig.Initialize( ctx->dispatchGL );
       // if not needed or not supported, return false now
-      
+      bool from_core = ctx->info->gl_version_3_3 == GL_TRUE || ctx->info->gles_version_major >= 3;
+      bool from_ext = ctx->info->gl_arb_sampler_objects == GL_TRUE;
+      bool emulationNeeded = ! ( from_core || from_ext );
+      if( emulationNeeded == false ) {
+        return false;
+      }
       SoIntercept( this, ctx->dispatchGL );
       activeTextureUnit = 0;
       nextSamplerObjectId = 1;

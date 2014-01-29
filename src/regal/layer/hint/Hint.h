@@ -88,8 +88,8 @@ struct Hint : public Layer
     RegalContext * ctx = GetContext();
     orig.Initialize( ctx->dispatchGL );
     // check whether we can init
-    bool canInit = true;
-    if( canInit == false ) {
+    bool emulationNeeded = ctx->info->es2;
+    if( emulationNeeded == false ) {
       return false;
     }
     HintIntercept( this, ctx->dispatchGL );

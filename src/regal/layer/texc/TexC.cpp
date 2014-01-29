@@ -319,6 +319,10 @@ namespace Emu {
     
     orig.Initialize( ctx->dispatchGL );
     // if not supported or not needed return false here
+    bool emulationNeeded = ctx->info->es2;
+    if( emulationNeeded == false ) {
+      return false;
+    }
     TexCIntercept( this, ctx->dispatchGL );
     
     RegalContext * sharingWith = ctx->shareGroup->front();

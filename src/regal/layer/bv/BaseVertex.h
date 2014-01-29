@@ -77,7 +77,18 @@ namespace Emu {
   }
   
   virtual bool Initialize( const std::string & instanceInfo ) {
-    ResetInterception();
+    RegalContext * ctx = GetContext();
+    orig.Initialize( ctx->dispatchGL );
+    
+    bool from_core = ctx->info->gl_version_3_2;
+    bool from_ext = ctx->info->gl_arb_draw_elements_base_vertex;
+    bool emulationNeeded = from_core == false && from_ext == false;
+
+    if( emulationNeeded == false ) {
+      return false;
+    }
+    
+    BaseVertexIntercept( this, ctx->dispatchGL );
     return true;
   }
 

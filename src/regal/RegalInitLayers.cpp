@@ -65,7 +65,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createLog initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createLog initialization failed.");
+      delete layer;
     }
   }
   constr = createFilt;
@@ -73,7 +77,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createFilt initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createFilt initialization failed.");
+      delete layer;
     }
   }
   constr = createTexC;
@@ -81,7 +89,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createTexC initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createTexC initialization failed.");
+      delete layer;
     }
   }
   constr = createVao;
@@ -89,7 +101,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createVao initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createVao initialization failed.");
+      delete layer;
     }
   }
   constr = createDsa;
@@ -97,7 +113,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createDsa initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createDsa initialization failed.");
+      delete layer;
     }
   }
   constr = createSo;
@@ -105,7 +125,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createSo initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createSo initialization failed.");
+      delete layer;
     }
   }
   constr = createQuads;
@@ -113,7 +137,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createQuads initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createQuads initialization failed.");
+      delete layer;
     }
   }
   constr = createIff;
@@ -121,7 +149,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createIff initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createIff initialization failed.");
+      delete layer;
     }
   }
   constr = createTexSto;
@@ -129,7 +161,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createTexSto initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createTexSto initialization failed.");
+      delete layer;
     }
   }
   constr = createBaseVertex;
@@ -137,7 +173,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createBaseVertex initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createBaseVertex initialization failed.");
+      delete layer;
     }
   }
   constr = createPpca;
@@ -145,7 +185,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createPpca initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createPpca initialization failed.");
+      delete layer;
     }
   }
   constr = createPpa;
@@ -153,7 +197,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createPpa initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createPpa initialization failed.");
+      delete layer;
     }
   }
   constr = createHint;
@@ -161,7 +209,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createHint initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createHint initialization failed.");
+      delete layer;
     }
   }
   constr = createObj;
@@ -169,7 +221,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createObj initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createObj initialization failed.");
+      delete layer;
     }
   }
   constr = createHttp;
@@ -177,7 +233,11 @@ void InitLayers( RegalContext * ctx ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );
     if( success ) {
+      Info("createHttp initialization succeeded.");
       ctx->layer.push_back( layer );
+    } else {
+      Info("createHttp initialization failed.");
+      delete layer;
     }
   }
 

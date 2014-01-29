@@ -79,6 +79,10 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
   {
     RegalContext &ctx = *GetContext();
     orig.Initialize( ctx.dispatchGL );
+    bool emulationNeeded = ctx.info->compat == false;
+    if( emulationNeeded == false ) {
+      return false;
+    }
     PpaIntercept( this, ctx.dispatchGL );
     activeTextureUnit = 0;
 
