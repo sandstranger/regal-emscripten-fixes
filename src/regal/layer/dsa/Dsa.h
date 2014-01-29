@@ -43,6 +43,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include "RegalEmu.h"
+#include "RegalEmuInfo.h"
 #include "DsaProcs.h"
 
 REGAL_GLOBAL_END
@@ -109,6 +110,8 @@ namespace Emu {
         return false;
       }
       DsaIntercept( this, ctx->dispatchGL );
+      
+      ctx->emuInfo->gl_ext_direct_state_access = GL_TRUE;
       
       callDepth = 0;
       drv.matrixMode = GL_MODELVIEW;
