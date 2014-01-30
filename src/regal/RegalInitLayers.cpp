@@ -156,7 +156,7 @@ void InitLayers( RegalContext * ctx ) {
       delete layer;
     }
   }
-  constr = NULL; //createTexSto;  // looks like a possible memory corruption here...
+  constr = createTexSto;  // looks like a possible memory corruption here...
   if( constr ) {
     layer = constr( ctx );
     bool success = layer->Initialize( "" );

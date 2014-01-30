@@ -68,7 +68,6 @@ namespace Emu {
     bool Initialize( const std::string & instanceInfo ) {
       RegalContext * ctx = GetContext();
       orig.Initialize( ctx->dispatchGL );
-      TexStoIntercept( this, ctx->dispatchGL );
 
       bool from_core = ctx->info->gl_version_4_2;
       bool from_ext = ctx->info->gl_arb_texture_storage || ctx->info->gl_ext_texture_storage;
@@ -76,7 +75,6 @@ namespace Emu {
       if( emulationNeeded ) {
         return false;
       }
-
       TexStoIntercept( this, ctx->dispatchGL );
 
       return true;
@@ -180,11 +178,7 @@ namespace Emu {
 
     void DeleteTextures( GLsizei n, const GLuint *textures )
     {
-      UNUSED_PARAMETER( ctx );
-
-      if (immutableTextures.empty())
-        return;
-
+      return;
       for( int i  = 0; i < n; i++ ) {
         if( immutableTextures.find(textures[i]) != immutableTextures.end() ) {
            immutableTextures.erase(textures[i]);
