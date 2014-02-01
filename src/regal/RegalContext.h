@@ -141,13 +141,10 @@ struct RegalContext
         CGLSetCurrentContext       = dispatchGlobal.CGLSetCurrentContext;
       #elif REGAL_SYS_EGL
         eglMakeCurrent       = dispatchGlobal.eglMakeCurrent;
-        eglMakeCurrent_layer = dispatchGlobal.eglMakeCurrent_layer;
       #elif REGAL_SYS_GLX
         glXMakeCurrent       = dispatchGlobal.glXMakeCurrent;
-        glXMakeCurrent_layer = dispatchGlobal.glXMakeCurrent_layer;
       #elif REGAL_SYS_WGL
         wglMakeCurrent       = dispatchGlobal.wglMakeCurrent;
-        wglMakeCurrent_layer = dispatchGlobal.wglMakeCurrent_layer;
       #else
         # error "Implement me!"
       #endif
@@ -156,13 +153,10 @@ struct RegalContext
       REGALCGLSETCURRENTCONTEXTPROC CGLSetCurrentContext;
     #elif REGAL_SYS_EGL
       REGALEGLMAKECURRENTPROC eglMakeCurrent;
-      Layer * eglMakeCurrent_layer;
     #elif REGAL_SYS_GLX
       REGALGLXMAKECURRENTPROC glXMakeCurrent;
-      Layer * glXMakeCurrent_layer;
     #elif REGAL_SYS_WGL
       REGALWGLMAKECURRENTPROC wglMakeCurrent;
-       wglMakeCurrent;
     #else
       # error "Implement me!"
     #endif

@@ -5,7 +5,9 @@ solution "regal"
   -- A project defines one build target
   project "regal"
     kind "StaticLib"
-    buildoptions "-stdlib=libstdc++"
+    if os.is("macosx") then
+      buildoptions "-stdlib=libstdc++"
+    end
     language "C++"
     files { 
       "../../src/regal/**.h",
