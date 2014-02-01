@@ -16,6 +16,7 @@ solution "regal"
     }
     includedirs { 
       "../../include",
+      "../../src/regal",
       "../../src/lookup3",
       "../../src/glsl/include",
       "../../src/glsl/src/glsl",

@@ -817,7 +817,7 @@ windowManagerStateDescription(Display *display, Window w)
     const Atom _NET_WM_STATE_FULLSCREEN = XInternAtom(display,"_NET_WM_STATE_FULLSCREEN",True);
     const Atom _NET_WM_STATE_FOCUSED    = XInternAtom(display,"_NET_WM_STATE_FOCUSED",True);
 
-    string_list<std::string> tmp;
+    StringList tmp;
 
     for (unsigned long i=0; i<nitems; ++i)
     {

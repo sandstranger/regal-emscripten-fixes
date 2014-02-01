@@ -1291,7 +1291,7 @@ static void HttpInit()
 #elif REGAL_SYS_WGL
   pp.wglMakeCurrent = dispatchGlobal.wglMakeCurrent;
 #elif REGAL_SYS_GLX
-  pp.glXMakeCurrent = dispatchGlobal.glxMakeCurrent;
+  pp.glXMakeCurrent = dispatchGlobal.glXMakeCurrent;
 #elif REGAL_SYS_EGL
   pp.eglMakeCurrent = dispatchGlobal.eglMakeCurrent;
 #endif
