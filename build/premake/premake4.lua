@@ -7,7 +7,7 @@ solution "regal"
 
   -- A project defines one build target
   project "regalStatic"
-    targetname "regal"
+    targetname "Regal"
     kind "StaticLib"
     if os.is("macosx") and _ACTION == "xcode4" then
       buildoptions "-stdlib=libstdc++"
@@ -26,7 +26,7 @@ solution "regal"
     
   -- A project defines one build target
   project "regalDynamic"
-    targetname "regal"
+    targetname "Regal"
     kind "SharedLib"
     language "C++"
     files ( regalFiles )
