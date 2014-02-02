@@ -49,7 +49,7 @@ solution "regal"
     targetname "regal"
     kind "SharedLib"
     if os.is("macosx") then
-      buildoptions "-stdlib=libstdc++"
+      -- buildoptions "-stdlib=libstdc++"
     end
     language "C++"
     files ( regalFiles )
