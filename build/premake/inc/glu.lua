@@ -1,0 +1,5 @@
+
+gluFiles = {
+  ../../src/glu/**.c
+}
+
