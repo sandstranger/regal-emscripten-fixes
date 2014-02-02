@@ -13,7 +13,7 @@ regalExcludes = {
   "../../src/glsl/**/builtin_compiler/**"
 }
 
-regalInc = {
+regalIncludes = {
   "../../include",
   "../../src/regal",
   "../../src/lookup3",

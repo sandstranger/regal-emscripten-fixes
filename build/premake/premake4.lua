@@ -3,18 +3,19 @@ solution "regal"
   configurations { "Debug", "Release" }
 
   require "inc/regal" 
+  require "inc/glu" 
 
   -- A project defines one build target
   project "regalStatic"
     targetname "regal"
     kind "StaticLib"
-    if os.is("macosx") then
+    if os.is("macosx") and _ACTION == "xcode4" then
       buildoptions "-stdlib=libstdc++"
     end
     language "C++"
     files ( regalFiles )
     excludes ( regalExcludes )
-    includedirs ( regalInc )
+    includedirs ( regalIncludes )
                           
     configuration "Debug"
       defines { "DEBUG" }
@@ -27,13 +28,15 @@ solution "regal"
   project "regalDynamic"
     targetname "regal"
     kind "SharedLib"
-    if os.is("macosx") then
-      -- buildoptions "-stdlib=libstdc++"
-    end
     language "C++"
     files ( regalFiles )
     excludes ( regalExcludes )
-    includedirs ( regalInc )
+    includedirs ( regalIncludes )
+    if os.is("macosx") then
+      files ( gluFiles )
+      excludes( gluExcludes )
+      includedirs( gluIncludes )
+    end
                           
     configuration "Debug"
       defines { "DEBUG" }
