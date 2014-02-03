@@ -53,7 +53,9 @@ extern "C" {
 
 #include <stddef.h>
 #include <stdarg.h>
+#if ! _WIN32
 #include <stdbool.h>
+#endif
 #include "main/compiler.h"
 
 /**

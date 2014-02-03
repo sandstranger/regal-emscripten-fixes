@@ -1980,8 +1980,6 @@ template <> inline GLfloat RFFToFloatN( int i, const int * p )
   template <typename T> bool GetIndexedTexGenv( GLuint textureIndex,
       GLenum coord, GLenum pname, T * params )
   {
-    UNUSED_PARAMETER(ctx);
-
     if (textureIndex >= REGAL_EMU_MAX_TEXTURE_UNITS)
       return false;
 

@@ -42,21 +42,9 @@ REGAL_GLOBAL_BEGIN
 #include <unistd.h>
 #endif
 
-// Windows TLS API
-
-#if REGAL_SYS_WGL && REGAL_WIN_TLS
-extern "C" { DWORD __stdcall TlsAlloc    (void);          }
-extern "C" { int   __stdcall TlsFree     (DWORD);         }
-extern "C" { void* __stdcall TlsGetValue (DWORD);         }
-extern "C" { int   __stdcall TlsSetValue (DWORD, void *); }
-#endif
-
-// Windows process and thread ID
-
 #if REGAL_SYS_WGL
-extern "C" { DWORD __stdcall GetCurrentProcessId (void);          }
-extern "C" { DWORD __stdcall GetCurrentThreadId  (void);          }
-#endif
+ #include <windows.h>
+#endif 
 
 REGAL_GLOBAL_END
 

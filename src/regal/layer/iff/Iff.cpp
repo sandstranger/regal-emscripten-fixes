@@ -1850,7 +1850,6 @@ namespace Emu
   {
     Internal("Regal::Iff::Program::Shader","()");
     
-    UNUSED_PARAMETER(ctx);
     
     const GLchar *srcs[] = { src };
     GLint len[] = { 0 };
@@ -1954,9 +1953,7 @@ namespace Emu
   void Program::Samplers( IffOriginate & orig )
   {
     Internal("Regal::Iff::Program::Samplers","()");
-    
-    UNUSED_PARAMETER(ctx);
-    
+        
     for ( GLint ii = 0; ii < REGAL_EMU_MAX_TEXTURE_UNITS; ii++ )
     {
       std::string samplerName = print_string("rglSampler",ii);
@@ -1983,8 +1980,6 @@ namespace Emu
   void Program::Uniforms( IffOriginate & orig )
   {
     Internal("Regal::Iff::Program::Uniforms","()");
-    
-    UNUSED_PARAMETER(ctx);
     
     size_t n = array_size( regalFFUniformInfo );
     for ( size_t i = 1; i < n; i++ )

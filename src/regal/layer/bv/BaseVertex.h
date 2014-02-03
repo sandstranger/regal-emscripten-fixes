@@ -44,8 +44,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include <vector>
@@ -97,8 +95,6 @@ namespace Emu {
   
   void adjust(GLint basevertex)
   {
-    UNUSED_PARAMETER(ctx);
-
     GLuint currentVBO = ClientState::VertexArray::arrayBufferBinding;
 
     size_t num = array_size( ClientState::VertexArray::named );
@@ -239,7 +235,5 @@ namespace Emu {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION
 
 #endif // ! __REGAL_BASEVERTEX_H__

@@ -57,7 +57,7 @@ REGAL_NAMESPACE_BEGIN
 namespace Emu {
   
   template<typename P, typename T> inline void DsaGetv( P & orig, GLenum pname, T * params ) {
-    UNUSED_PARAMETER(orig); UNUSED_PARAMETER(ctx); UNUSED_PARAMETER(pname); UNUSED_PARAMETER(params);
+    UNUSED_PARAMETER(orig); UNUSED_PARAMETER(pname); UNUSED_PARAMETER(params);
   }
   template<typename P> inline void DsaGetv( P & orig, GLenum pname, GLfloat * params ) {
     RglGetFloatv( orig, pname, params );

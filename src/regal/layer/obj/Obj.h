@@ -188,7 +188,6 @@ struct Obj : public Layer
 
   void GenBuffers(GLsizei n, GLuint *buffers)
   {
-    UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
       buffers[ i ] = bufferNames.Gen();
     }
@@ -196,7 +195,6 @@ struct Obj : public Layer
 
   void DeleteBuffers(GLsizei n, const GLuint *buffers)
   {
-    UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
       bufferNames.Delete( buffers[ i ] );
     }
@@ -204,7 +202,6 @@ struct Obj : public Layer
 
   GLboolean IsBuffer(GLuint appName) const
   {
-    UNUSED_PARAMETER(ctx);
     return bufferNames.IsObject( appName );
   }
 
@@ -215,7 +212,6 @@ struct Obj : public Layer
 
   void GenVertexArrays(GLsizei n, GLuint *vaos)
   {
-    UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
       vaos[ i ] = vaoNames.Gen();
     }
@@ -223,7 +219,6 @@ struct Obj : public Layer
 
   void DeleteVertexArrays(GLsizei n, const GLuint * vaos)
   {
-    UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
       vaoNames.Delete( vaos[ i ] );
     }
@@ -231,7 +226,6 @@ struct Obj : public Layer
 
   GLboolean IsVertexArray(GLuint appName) const
   {
-    UNUSED_PARAMETER(ctx);
     return vaoNames.IsObject( appName );
   }
 
@@ -242,7 +236,6 @@ struct Obj : public Layer
 
   void GenTextures(GLsizei n, GLuint *names)
   {
-    UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
       names[ i ] = textureNames.Gen();
     }
@@ -250,7 +243,6 @@ struct Obj : public Layer
 
   void DeleteTextures(GLsizei n, const GLuint * names)
   {
-    UNUSED_PARAMETER(ctx);
     for( int i = 0; i < n; i++ ) {
       textureNames.Delete( names[ i ] );
     }
@@ -258,7 +250,6 @@ struct Obj : public Layer
 
   GLboolean IsTexture(GLuint name) const
   {
-    UNUSED_PARAMETER(ctx);
     return textureNames.IsObject( name );
   }
 };

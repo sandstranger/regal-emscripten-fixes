@@ -40,8 +40,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include <vector>
@@ -1168,8 +1166,6 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 
   bool glGetPolygonStipple(GLubyte *pattern)
   {
-    UNUSED_PARAMETER(ctx);
-
     // If a non-zero named buffer object is bound to the GL_PIXEL_PACK_BUFFER target
     // (see glBindBuffer) while a polygon stipple pattern is requested, pattern is
     // treated as a byte offset into the buffer object's data store.
@@ -1183,8 +1179,6 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 
   template <typename T> bool glGetColorTableParameterv(GLenum target, GLenum pname, T *params)
   {
-    UNUSED_PARAMETER(ctx);
-
     GLuint index = 0;
     switch (pname)
     {
@@ -1224,8 +1218,6 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 
   template <typename T> bool glGetConvolutionParameterv(GLenum target, GLenum pname, T *params)
   {
-    UNUSED_PARAMETER(ctx);
-
     GLuint index = 0;
     switch (pname)
     {
@@ -1274,8 +1266,6 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 
   template <typename T> bool glGetLightv(GLenum light, GLenum pname, T *params)
   {
-    UNUSED_PARAMETER(ctx);
-
     GLint ii = light - GL_LIGHT0;
     if (ii < 0 || static_cast<size_t>(ii) >= array_size( State::Lighting::lights ))
       return false;
@@ -1339,8 +1329,6 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 
   template <typename T> bool glGetMaterialv(GLenum face, GLenum pname, T *params)
   {
-    UNUSED_PARAMETER(ctx);
-
     if (face != GL_FRONT && face != GL_BACK)
       return false;
 
@@ -1386,8 +1374,6 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 
   template <typename T> bool glGetMultiTexEnvv(GLenum texunit, GLenum target, GLenum pname, T *params)
   {
-    UNUSED_PARAMETER(ctx);
-
     if (target != GL_POINT_SPRITE || pname != GL_COORD_REPLACE)
       return false;
 
@@ -1761,8 +1747,6 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 
   bool glIsEnabledi(GLboolean &enabled, GLenum pname, GLuint index)
   {
-    UNUSED_PARAMETER(ctx);
-
     switch (pname)
     {
       case GL_BLEND:
@@ -2302,7 +2286,5 @@ struct Ppa : public Layer, public State::Stencil, State::Depth, State::Polygon, 
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION
 
 #endif // ! __REGAL_PPA_H__

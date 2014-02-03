@@ -323,8 +323,6 @@ namespace Emu {
 
 void Xfer::PixelStore( GLenum pname, GLint param )
 {
-  UNUSED_PARAMETER(ctx);
-
   switch( pname ) {
     case GL_UNPACK_ROW_LENGTH: unpackRowLength = param; break;
     case GL_UNPACK_SKIP_ROWS: unpackSkipRows = param; break;

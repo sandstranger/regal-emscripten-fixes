@@ -1,5 +1,6 @@
 
 regalFiles = { 
+  "../../include/GL/Regal.h",
   "../../src/regal/**.h",
   "../../src/regal/**.cpp",
   "../../src/regal/**.c",

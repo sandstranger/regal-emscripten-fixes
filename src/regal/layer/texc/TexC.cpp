@@ -33,8 +33,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include <utility>
@@ -112,6 +110,9 @@ namespace Emu {
     const size_t targetStride        = ( width * targetPixelSize + ( targetAlign - 1 ) ) & ~( targetAlign - 1 );
     
     const size_t sourcePixelSize     = sourceConverter->GetPackedPixelByteSize();
+#if REGAL_SYS_WGL
+#undef max
+#endif
     const size_t sourceAlignment     = std::max( sourceConverter->GetPackedPixelAlignmentSize(), static_cast<size_t>( pss_.alignment ) );
     const size_t sourcePixelsPerRow  = width;
     const size_t sourceStride        = ( sourcePixelsPerRow * sourcePixelSize + sourceAlignment - 1 ) & ~( sourceAlignment - 1 );
@@ -484,5 +485,3 @@ namespace Emu {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION

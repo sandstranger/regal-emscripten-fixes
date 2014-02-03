@@ -32,8 +32,6 @@
 
 #include "RegalUtil.h"
 
-#if REGAL_EMULATION
-
 REGAL_GLOBAL_BEGIN
 
 #include "RegalLog.h"
@@ -52,7 +50,6 @@ namespace Emu {
 
   bool Filt::BindTexture(GLenum target, GLuint name)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
     UNUSED_PARAMETER(name);
 
@@ -74,7 +71,6 @@ namespace Emu {
 
   bool Filt::BindFramebuffer(GLenum target, GLuint framebuffer)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
     UNUSED_PARAMETER(framebuffer);
 
@@ -85,8 +81,6 @@ namespace Emu {
 
   bool Filt::DrawBuffers(GLsizei n, const GLenum *bufs)
   {
-    UNUSED_PARAMETER(ctx);
-
     if (!GetContext()->isES2())
       return false;
 
@@ -142,7 +136,6 @@ namespace Emu {
 
   bool Filt::FilterTexParameter(GLenum target, GLenum pname, GLfloat param, GLfloat &newParam)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
 
     if (!GetContext()->isES2() && !GetContext()->isCore())
@@ -171,7 +164,6 @@ namespace Emu {
 
    bool Filt::GetTexParameteriv(GLenum target, GLenum pname, GLint *params)
    {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
     UNUSED_PARAMETER(pname);
     UNUSED_PARAMETER(params);
@@ -239,7 +231,6 @@ namespace Emu {
 
   bool Filt::GenerateMipmap(GLenum target)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
 
     if (!GetContext()->isES2())
@@ -269,7 +260,6 @@ namespace Emu {
 
   bool Filt::ReadBuffer(GLenum src)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(src);
 
     if (!GetContext()->isES2() || !GetContext()->info->gl_nv_read_buffer)
@@ -321,7 +311,6 @@ namespace Emu {
 
   bool Filt::RenderMode(GLenum mode)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(mode);
 
     if (GetContext()->isCore() || GetContext()->isES2())
@@ -336,7 +325,6 @@ namespace Emu {
 
   bool Filt::FramebufferAttachmentSupported(GLenum attachment)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(attachment);
 
     // If we're running on a non-ES context, then all attachments from EXT_framebuffer_object
@@ -359,7 +347,6 @@ namespace Emu {
 
   bool Filt::PixelStorei(GLenum pname, GLint param)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(pname);
     UNUSED_PARAMETER(param);
 
@@ -424,7 +411,6 @@ namespace Emu {
 
   bool Filt::PolygonMode(GLenum face, GLenum mode)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(face);
     UNUSED_PARAMETER(mode);
 
@@ -614,7 +600,6 @@ namespace Emu {
 
   bool Filt::TexImage2D(GLenum target, GLint level, GLint internalformat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid* data)
   {
-    UNUSED_PARAMETER(ctx);
     UNUSED_PARAMETER(target);
     UNUSED_PARAMETER(level);
     UNUSED_PARAMETER(internalformat);
@@ -642,5 +627,3 @@ namespace Emu {
 }
 
 REGAL_NAMESPACE_END
-
-#endif // REGAL_EMULATION
