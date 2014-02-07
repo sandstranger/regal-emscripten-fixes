@@ -40965,6 +40965,7 @@ REGAL_DECL void REGAL_CALL glAddSwapHintRectWIN(GLint x, GLint y, GLsizei width,
 #endif
 
 #if REGAL_SYS_WGL
+#if REGAL_SYS_WGL_DECLARE_WGL
 
 /**
  ** WGL_3DL_stereo_control
@@ -42412,6 +42413,7 @@ typedef int (REGAL_CALL *PFNWGLGETPIXELFORMATPROC)(HDC hDC);
 #endif
 
 #ifndef REGAL_NO_DECLARATION_WGL_GDI
+REGAL_DECL BOOL REGAL_CALL SwapBuffers(HDC hDC);
 
 REGAL_DECL BOOL REGAL_CALL wglSetPixelFormat(HDC hDC, int iPixelFormat, const PIXELFORMATDESCRIPTOR *ppfd);
 
@@ -43552,11 +43554,49 @@ typedef int (REGAL_CALL *PFNWGLSETLAYERPALETTEENTRIESPROC)(HDC hDC, int iLayerPl
 #endif
 
 #ifndef REGAL_NO_DECLARATION_WGL_CORE
+REGAL_DECL BOOL REGAL_CALL wglCopyContext(HGLRC hglrcSrc, HGLRC hglrcDst, UINT mask);
+
+REGAL_DECL BOOL REGAL_CALL wglDeleteContext(HGLRC hglrc);
+
+REGAL_DECL BOOL REGAL_CALL wglDescribeLayerPlane(HDC hDC, int iPixelFormat, int iLayerPlane, UINT nBytes, LPLAYERPLANEDESCRIPTOR plpd);
+
+REGAL_DECL BOOL REGAL_CALL wglMakeCurrent(HDC hDC, HGLRC hglrc);
+
+REGAL_DECL BOOL REGAL_CALL wglRealizeLayerPalette(HDC hDC, int iLayerPlane, BOOL bRealize);
+
+REGAL_DECL BOOL REGAL_CALL wglShareLists(HGLRC hglrcShare, HGLRC hglrcSrc);
+
+REGAL_DECL BOOL REGAL_CALL wglSwapLayerBuffers(HDC hDC, UINT fuPlanes);
+
+REGAL_DECL BOOL REGAL_CALL wglUseFontBitmapsA(HDC hDC, DWORD first, DWORD count, DWORD listBase);
+
+REGAL_DECL BOOL REGAL_CALL wglUseFontBitmapsW(HDC hDC, DWORD first, DWORD count, DWORD listBase);
+
+REGAL_DECL BOOL REGAL_CALL wglUseFontOutlinesA(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+
+REGAL_DECL BOOL REGAL_CALL wglUseFontOutlinesW(HDC hDC, DWORD first, DWORD count, DWORD listBase, FLOAT deviation, FLOAT extrusion, int format, LPGLYPHMETRICSFLOAT lpgmf);
+
+REGAL_DECL DWORD REGAL_CALL wglSwapMultipleBuffers(UINT n, const WGLSWAP *ps);
+
+REGAL_DECL HDC REGAL_CALL wglGetCurrentDC(void);
+
+REGAL_DECL HGLRC REGAL_CALL wglCreateContext(HDC hDC);
+
+REGAL_DECL HGLRC REGAL_CALL wglCreateLayerContext(HDC hDC, int iLayerPlane);
+
+REGAL_DECL HGLRC REGAL_CALL wglGetCurrentContext(void);
 
 REGAL_DECL PROC REGAL_CALL wglGetDefaultProcAddress(LPCSTR lpszProc);
 
+REGAL_DECL PROC REGAL_CALL wglGetProcAddress(LPCSTR lpszProc);
+
+REGAL_DECL int REGAL_CALL wglGetLayerPaletteEntries(HDC hDC, int iLayerPlane, int iStart, int nEntries, COLORREF *pcr);
+
+REGAL_DECL int REGAL_CALL wglSetLayerPaletteEntries(HDC hDC, int iLayerPlane, int iStart, int nEntries, const COLORREF *pcr);
+
 #endif
 
+#endif /* REGAL_SYS_WGL_DECLARE_WGL */
 #endif /* REGAL_SYS_WGL */
 
 #if REGAL_SYS_GLX
