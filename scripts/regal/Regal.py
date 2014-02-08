@@ -79,6 +79,19 @@ ${REGAL_SYS}
 #define _OPENGL_H
 
 #include <stddef.h>
+#if defined(_WIN32)
+  typedef __int64 int64_t;
+  typedef unsigned __int64 uint64_t;
+  #if defined(REGAL_SYS_WGL_DECLARE_WGL) && !defined(_WINDEF_)
+    struct HDC__ {int unused;};
+    typedef struct HDC__* HDC;
+    struct HGLRC__ {int unused;};
+    typedef struct HGLRC__* HGLRC;
+  #endif
+#else
+  #include <inttypes.h>
+#endif
+
 
 ${API_TYPEDEF}
 

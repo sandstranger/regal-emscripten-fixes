@@ -48,7 +48,8 @@ REGAL_GLOBAL_BEGIN
 #include "RegalThread.h"
 #include "RegalPrivate.h"
 #include "RegalContextInfo.h"
-#include "RegalDispatch.h"
+#include "RegalDispatchGL.h"
+#include "RegalDispatchGlobal.h" // unfortunate to include this just for park/unpark defines
 #include "RegalScopedPtr.h"
 #include "RegalSharedList.h"
 

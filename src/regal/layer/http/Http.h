@@ -39,7 +39,7 @@ REGAL_GLOBAL_BEGIN
 
 //#include "pcre.h"
 
-#include "RegalDispatch.h"
+#include "RegalDispatchGL.h"
 #include "RegalMutex.h"
 
 REGAL_GLOBAL_END

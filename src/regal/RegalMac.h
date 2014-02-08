@@ -45,6 +45,7 @@
 REGAL_GLOBAL_BEGIN
 
 #include <GL/Regal.h>
+#include <GL/RegalCGL.h>
 
 REGAL_GLOBAL_END
 

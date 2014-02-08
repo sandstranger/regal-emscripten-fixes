@@ -40,7 +40,7 @@
 
 REGAL_GLOBAL_BEGIN
 
-#include "RegalDispatch.h"
+#include "RegalDispatchGlobal.h"
 
 REGAL_GLOBAL_END
 

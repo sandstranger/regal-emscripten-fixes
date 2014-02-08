@@ -48,6 +48,7 @@ REGAL_GLOBAL_BEGIN
 #include "RegalContext.h"
 #include "RegalEmuInfo.h"
 #include "RegalContextInfo.h"
+#include "RegalDispatchGlobal.h"
 
 REGAL_GLOBAL_END
 
