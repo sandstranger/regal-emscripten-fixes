@@ -30,7 +30,7 @@ from ApiUtil import typeIsVoid
 from ApiCodeGen import *
 
 from Regal                   import *
-from RegalWGL                import generateWglPublicHeader
+from RegalWinSys             import generateWinSysHeaders
 from RegalEnum               import *
 from RegalSystem             import *
 from RegalContext            import *
@@ -208,7 +208,7 @@ def generate(apis, args):
   generateEmuInfoSource(apis, args)
   #generateTraceSource( apis, args )
   generatePublicHeader(apis, args)
-  generateWglPublicHeader(apis, args)
+  generateWinSysHeaders(apis, args)
   generateSource(apis, args)
   generateSystemHeader(apis, args)
   generateEmuSource( apis, args )

@@ -38,9 +38,6 @@
   $ astyle --style=allman --indent=spaces=2 --indent-switches
 */
 
-#ifndef __REGAL_WGL_DECLARATIONS_H
-#define __REGAL_WGL_DECLARATIONS_H
-
 #include <GL/Regal.h>
 
 #ifndef __REGAL_WGL_H__
