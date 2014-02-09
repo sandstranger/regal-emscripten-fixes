@@ -307,19 +307,15 @@ void *GetProcAddress( const char *entry )
   if (!entry)
       return NULL;
 
-  static const char *lib_OpenGL_filename = "/System/Library/Frameworks/OpenGL.framework/OpenGL";
+  static const char *lib_OpenGL_filename = NULL;
+  
+  if( lib_OpenGL_filename == NULL ) {
+    lib_OpenGL_filename = libraryLocation( LIBRARY_GL );
+  }  // "/System/Library/Frameworks/OpenGL.framework/OpenGL";
   static void       *lib_OpenGL = NULL;
 
-  static const char *lib_GL_filename = "/System/Library/Frameworks/OpenGL.framework/Libraries/libGL.dylib";
-  static void       *lib_GL = NULL;
-
-  if (!lib_OpenGL || !lib_GL)
+  if (!lib_OpenGL )
   {
-    // this chdir business is a hacky solution to avoid recursion
-    // when using libRegal as libGL via symlink and DYLD_LIBRARY_PATH=.
-
-    char *oldCwd = getcwd(NULL,0);
-    chdir("/");
 
     // CGL entry points are in OpenGL framework
 
@@ -333,33 +329,14 @@ void *GetProcAddress( const char *entry )
         }
       }
     }
-
-    // GL entry point are in libGL.dylib
-
-    if (!lib_GL) {
-      char temp_filename[] = "/tmp/tmp.Regal.XXXX";
-      if (mktemp(temp_filename) != NULL ) {
-        if (symlink(lib_GL_filename, temp_filename) == 0 ) {
-          lib_GL = dlopen(temp_filename , RTLD_LOCAL | RTLD_NOW | RTLD_FIRST);
-          Info("Loading libGL from ",lib_GL_filename,lib_GL ? " succeeded." : " failed.");
-          remove( temp_filename );
-        }
-      }
-    }
-
-    chdir(oldCwd);
-    free(oldCwd);
   }
 
-  if (lib_OpenGL && lib_GL)
+  if (lib_OpenGL)
   {
     void *sym = dlsym( lib_OpenGL, entry );
     Internal("Regal::GetProcAddress ",lib_OpenGL_filename," load of ",entry,sym ? " succeeded." : " failed.");
     if (sym)
       return sym;
-    sym = dlsym( lib_GL, entry );
-    Internal("Regal::GetProcAddress ",lib_GL_filename," load of ",entry,sym ? " succeeded." : " failed.");
-    return sym;
   }
 
   return NULL;
