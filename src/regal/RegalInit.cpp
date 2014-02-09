@@ -83,8 +83,6 @@ Init::Init()
 {
   atexit(atExit);
 
-  InitDispatchLoader( NULL, dispatchGlobal );
-  
 #if !defined(REGAL_NAMESPACE) && REGAL_SYS_WGL
   // Check our phony advapi32.dll, gdi32.dll and user32.dll dependencies
   // to prevent them being optimized out of a release-mode binary.
@@ -115,6 +113,9 @@ Init::Init()
     th2rcMutex = new Thread::Mutex();
     Logging::createLocks();
   }
+  
+  InitDispatchLoader( NULL, dispatchGlobal );
+
 }
 
 Init::~Init()
