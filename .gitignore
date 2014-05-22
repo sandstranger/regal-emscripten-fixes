@@ -7,7 +7,10 @@ obj
 depends
 built
 build
+obj/
 !/build/
+!src/regal/layer/bin
+!src/regal/layer/obj
 xcuserdata
 project.xcworkspace
 .DS_Store
