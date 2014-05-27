@@ -1,10 +1,16 @@
 lib
 tmp
 bin
+obj
+!src/regal/layer/bin
+!src/regal/layer/obj
 depends
 built
 build
+obj/
 !/build/
+!src/regal/layer/bin
+!src/regal/layer/obj
 xcuserdata
 project.xcworkspace
 .DS_Store
@@ -46,7 +52,6 @@ build/win32/vs2010/Regal/ipch
 # android build products
 gen/
 libs/
-obj/
 build.xml
 local.properties
 proguard-project.txt
