@@ -162,6 +162,8 @@ void RegalContext::parkContext( RegalContext::ParkProcs & pp )
   RwglMakeCurrent( pp, NULL, NULL );
   #elif REGAL_SYS_GLX
   RglXMakeCurrent( pp, x11Display, None, NULL );
+  #elif REGAL_SYS_IOS
+    # warning "IOS support for park/unpark needs to be implemented."
   #else
   # error "Implement me!"
   #endif
@@ -176,6 +178,8 @@ void RegalContext::unparkContext( RegalContext::ParkProcs & pp )
   RwglMakeCurrent( pp, hdc, hglrc );
   #elif REGAL_SYS_GLX
   RglXMakeCurrent( pp, x11Display, x11Drawable, reinterpret_cast<GLXContext>(sysCtx) );
+  #elif REGAL_SYS_IOS
+    # warning "IOS support for park/unpark needs to be implemented."
   #else
   # error "Implement me!"
   #endif

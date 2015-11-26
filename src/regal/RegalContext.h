@@ -136,8 +136,7 @@ struct RegalContext
   // unparkContext() makes it current to the calling thread
 
   struct ParkProcs {
-    template <typename T>
-    void init( T & dt ) {
+    void init() {
       #if REGAL_SYS_OSX
         CGLSetCurrentContext       = dispatchGlobal.CGLSetCurrentContext;
       #elif REGAL_SYS_EGL
@@ -146,6 +145,8 @@ struct RegalContext
         glXMakeCurrent       = dispatchGlobal.glXMakeCurrent;
       #elif REGAL_SYS_WGL
         wglMakeCurrent       = dispatchGlobal.wglMakeCurrent;
+      #elif REGAL_SYS_IOS
+        # warning "IOS support for park/unpark needs to be implemented."
       #else
         # error "Implement me!"
       #endif
@@ -158,6 +159,8 @@ struct RegalContext
       REGALGLXMAKECURRENTPROC glXMakeCurrent;
     #elif REGAL_SYS_WGL
       REGALWGLMAKECURRENTPROC wglMakeCurrent;
+    #elif REGAL_SYS_IOS
+      # warning "IOS support for park/unpark needs to be implemented."
     #else
       # error "Implement me!"
     #endif

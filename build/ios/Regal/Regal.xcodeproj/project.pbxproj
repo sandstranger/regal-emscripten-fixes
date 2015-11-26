@@ -412,7 +412,6 @@
 			isa = PBXGroup;
 			children = (
 				BCDF66A5178F170800EE9569 /* apitrace */,
-				BCDF6697178F16E100EE9569 /* apitrace */,
 				43FC5F4B15C4619B00D0177C /* linear.h */,
 				BC020956160D1C65003FAB99 /* md5 */,
 				43FC5FA515C461A100D0177C /* mongoose */,
@@ -553,13 +552,6 @@
 				BC020957160D1C73003FAB99 /* md5.c */,
 			);
 			name = md5;
-			sourceTree = "<group>";
-		};
-		BCDF6697178F16E100EE9569 /* apitrace */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			name = apitrace;
 			sourceTree = "<group>";
 		};
 		BCDF6698178F16E900EE9569 /* snappy */ = {
