@@ -1,0 +1,811 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		8659BD9A1C08D1D00075680D /* Regal.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD601C08D1D00075680D /* Regal.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BD9B1C08D1D00075680D /* RegalBreak.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD621C08D1D00075680D /* RegalBreak.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BD9C1C08D1D00075680D /* RegalConfig.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD651C08D1D00075680D /* RegalConfig.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BD9D1C08D1D00075680D /* RegalContext.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD671C08D1D00075680D /* RegalContext.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BD9E1C08D1D00075680D /* RegalContextInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD691C08D1D00075680D /* RegalContextInfo.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BD9F1C08D1D00075680D /* RegalDispatch.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD6B1C08D1D00075680D /* RegalDispatch.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA01C08D1D00075680D /* RegalDllMain.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD6F1C08D1D00075680D /* RegalDllMain.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA11C08D1D00075680D /* RegalEmu.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD701C08D1D00075680D /* RegalEmu.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA21C08D1D00075680D /* RegalEmuInfo.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD721C08D1D00075680D /* RegalEmuInfo.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA31C08D1D00075680D /* RegalHelper.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD761C08D1D00075680D /* RegalHelper.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA41C08D1D00075680D /* RegalInit.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD781C08D1D00075680D /* RegalInit.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA51C08D1D00075680D /* RegalInitLayers.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD7A1C08D1D00075680D /* RegalInitLayers.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA61C08D1D00075680D /* RegalLog.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD7C1C08D1D00075680D /* RegalLog.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA71C08D1D00075680D /* RegalMac.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD7F1C08D1D00075680D /* RegalMac.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA81C08D1D00075680D /* RegalMarker.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD811C08D1D00075680D /* RegalMarker.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDA91C08D1D00075680D /* RegalShader.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD8B1C08D1D00075680D /* RegalShader.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDAA1C08D1D00075680D /* RegalShaderInstance.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD8D1C08D1D00075680D /* RegalShaderInstance.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDAB1C08D1D00075680D /* RegalToken.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD961C08D1D00075680D /* RegalToken.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BDAC1C08D1D00075680D /* RegalUtil.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BD981C08D1D00075680D /* RegalUtil.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEA71C08DAEB0075680D /* BinProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE471C08DAEB0075680D /* BinProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEA81C08DAEB0075680D /* BaseVertexProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE4B1C08DAEB0075680D /* BaseVertexProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEA91C08DAEB0075680D /* DsaProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE4F1C08DAEB0075680D /* DsaProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEAA1C08DAEB0075680D /* ErrorProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE531C08DAEB0075680D /* ErrorProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEAB1C08DAEB0075680D /* Filt.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE551C08DAEB0075680D /* Filt.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEAC1C08DAEB0075680D /* FiltProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE571C08DAEB0075680D /* FiltProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEAD1C08DAEB0075680D /* HintProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE5B1C08DAEB0075680D /* HintProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEAE1C08DAEB0075680D /* Favicon.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE5E1C08DAEB0075680D /* Favicon.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEAF1C08DAEB0075680D /* Http.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE611C08DAEB0075680D /* Http.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEB01C08DAEB0075680D /* HttpProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE631C08DAEB0075680D /* HttpProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEB11C08DAEB0075680D /* mongoose.c in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE661C08DAEB0075680D /* mongoose.c */; settings = {ASSET_TAGS = (); }; };
+		8659BEB21C08DAEB0075680D /* README.md in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE681C08DAEB0075680D /* README.md */; settings = {ASSET_TAGS = (); }; };
+		8659BEB31C08DAEB0075680D /* UserManual.md in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE6A1C08DAEB0075680D /* UserManual.md */; settings = {ASSET_TAGS = (); }; };
+		8659BEB41C08DAEB0075680D /* Iff.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE6C1C08DAEB0075680D /* Iff.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEB51C08DAEB0075680D /* IffProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE6E1C08DAEB0075680D /* IffProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEB61C08DAEB0075680D /* LoaderProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE721C08DAEB0075680D /* LoaderProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEB71C08DAEB0075680D /* LogProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE751C08DAEB0075680D /* LogProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEB81C08DAEB0075680D /* ObjProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE781C08DAEB0075680D /* ObjProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEB91C08DAEB0075680D /* PpaProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE7C1C08DAEB0075680D /* PpaProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEBA1C08DAEB0075680D /* PpapiProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE7F1C08DAEB0075680D /* PpapiProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEBB1C08DAEB0075680D /* PpcaProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE821C08DAEB0075680D /* PpcaProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEBC1C08DAEB0075680D /* Quads.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE851C08DAEB0075680D /* Quads.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEBD1C08DAEB0075680D /* QuadsProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE871C08DAEB0075680D /* QuadsProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEBE1C08DAEB0075680D /* RectProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE8B1C08DAEB0075680D /* RectProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEBF1C08DAEB0075680D /* So.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE8E1C08DAEB0075680D /* So.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC01C08DAEB0075680D /* SoProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE901C08DAEB0075680D /* SoProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC11C08DAEB0075680D /* PixelConversions.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE931C08DAEB0075680D /* PixelConversions.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC21C08DAEB0075680D /* TexC.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE961C08DAEB0075680D /* TexC.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC31C08DAEB0075680D /* TexCProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE981C08DAEB0075680D /* TexCProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC41C08DAEB0075680D /* TexStoProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BE9C1C08DAEB0075680D /* TexStoProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC51C08DAEB0075680D /* VaoProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BEA01C08DAEB0075680D /* VaoProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC61C08DAEB0075680D /* Xfer.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BEA31C08DAEB0075680D /* Xfer.cpp */; settings = {ASSET_TAGS = (); }; };
+		8659BEC71C08DAEB0075680D /* XferProcs.cpp in Sources */ = {isa = PBXBuildFile; fileRef = 8659BEA51C08DAEB0075680D /* XferProcs.cpp */; settings = {ASSET_TAGS = (); }; };
+/* End PBXBuildFile section */
+
+/* Begin PBXCopyFilesBuildPhase section */
+		8659BD501C08D0F10075680D /* CopyFiles */ = {
+			isa = PBXCopyFilesBuildPhase;
+			buildActionMask = 2147483647;
+			dstPath = "include/$(PRODUCT_NAME)";
+			dstSubfolderSpec = 16;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXCopyFilesBuildPhase section */
+
+/* Begin PBXFileReference section */
+		8659BD521C08D0F10075680D /* libregal.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libregal.a; sourceTree = BUILT_PRODUCTS_DIR; };
+		8659BD601C08D1D00075680D /* Regal.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = Regal.cpp; path = ../../../src/regal/Regal.cpp; sourceTree = "<group>"; };
+		8659BD611C08D1D00075680D /* Regal.def */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Regal.def; path = ../../../src/regal/Regal.def; sourceTree = "<group>"; };
+		8659BD621C08D1D00075680D /* RegalBreak.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalBreak.cpp; path = ../../../src/regal/RegalBreak.cpp; sourceTree = "<group>"; };
+		8659BD631C08D1D00075680D /* RegalBreak.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalBreak.h; path = ../../../src/regal/RegalBreak.h; sourceTree = "<group>"; };
+		8659BD641C08D1D00075680D /* RegalClientState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalClientState.h; path = ../../../src/regal/RegalClientState.h; sourceTree = "<group>"; };
+		8659BD651C08D1D00075680D /* RegalConfig.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalConfig.cpp; path = ../../../src/regal/RegalConfig.cpp; sourceTree = "<group>"; };
+		8659BD661C08D1D00075680D /* RegalConfig.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalConfig.h; path = ../../../src/regal/RegalConfig.h; sourceTree = "<group>"; };
+		8659BD671C08D1D00075680D /* RegalContext.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalContext.cpp; path = ../../../src/regal/RegalContext.cpp; sourceTree = "<group>"; };
+		8659BD681C08D1D00075680D /* RegalContext.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalContext.h; path = ../../../src/regal/RegalContext.h; sourceTree = "<group>"; };
+		8659BD691C08D1D00075680D /* RegalContextInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalContextInfo.cpp; path = ../../../src/regal/RegalContextInfo.cpp; sourceTree = "<group>"; };
+		8659BD6A1C08D1D00075680D /* RegalContextInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalContextInfo.h; path = ../../../src/regal/RegalContextInfo.h; sourceTree = "<group>"; };
+		8659BD6B1C08D1D00075680D /* RegalDispatch.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalDispatch.cpp; path = ../../../src/regal/RegalDispatch.cpp; sourceTree = "<group>"; };
+		8659BD6C1C08D1D00075680D /* RegalDispatch.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalDispatch.h; path = ../../../src/regal/RegalDispatch.h; sourceTree = "<group>"; };
+		8659BD6D1C08D1D00075680D /* RegalDispatchGL.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalDispatchGL.h; path = ../../../src/regal/RegalDispatchGL.h; sourceTree = "<group>"; };
+		8659BD6E1C08D1D00075680D /* RegalDispatchGlobal.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalDispatchGlobal.h; path = ../../../src/regal/RegalDispatchGlobal.h; sourceTree = "<group>"; };
+		8659BD6F1C08D1D00075680D /* RegalDllMain.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalDllMain.cpp; path = ../../../src/regal/RegalDllMain.cpp; sourceTree = "<group>"; };
+		8659BD701C08D1D00075680D /* RegalEmu.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmu.cpp; path = ../../../src/regal/RegalEmu.cpp; sourceTree = "<group>"; };
+		8659BD711C08D1D00075680D /* RegalEmu.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmu.h; path = ../../../src/regal/RegalEmu.h; sourceTree = "<group>"; };
+		8659BD721C08D1D00075680D /* RegalEmuInfo.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalEmuInfo.cpp; path = ../../../src/regal/RegalEmuInfo.cpp; sourceTree = "<group>"; };
+		8659BD731C08D1D00075680D /* RegalEmuInfo.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEmuInfo.h; path = ../../../src/regal/RegalEmuInfo.h; sourceTree = "<group>"; };
+		8659BD741C08D1D00075680D /* RegalEnum.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalEnum.h; path = ../../../src/regal/RegalEnum.h; sourceTree = "<group>"; };
+		8659BD751C08D1D00075680D /* RegalFloat4.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalFloat4.h; path = ../../../src/regal/RegalFloat4.h; sourceTree = "<group>"; };
+		8659BD761C08D1D00075680D /* RegalHelper.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalHelper.cpp; path = ../../../src/regal/RegalHelper.cpp; sourceTree = "<group>"; };
+		8659BD771C08D1D00075680D /* RegalHelper.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalHelper.h; path = ../../../src/regal/RegalHelper.h; sourceTree = "<group>"; };
+		8659BD781C08D1D00075680D /* RegalInit.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalInit.cpp; path = ../../../src/regal/RegalInit.cpp; sourceTree = "<group>"; };
+		8659BD791C08D1D00075680D /* RegalInit.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalInit.h; path = ../../../src/regal/RegalInit.h; sourceTree = "<group>"; };
+		8659BD7A1C08D1D00075680D /* RegalInitLayers.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalInitLayers.cpp; path = ../../../src/regal/RegalInitLayers.cpp; sourceTree = "<group>"; };
+		8659BD7B1C08D1D00075680D /* RegalLayer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalLayer.h; path = ../../../src/regal/RegalLayer.h; sourceTree = "<group>"; };
+		8659BD7C1C08D1D00075680D /* RegalLog.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalLog.cpp; path = ../../../src/regal/RegalLog.cpp; sourceTree = "<group>"; };
+		8659BD7D1C08D1D00075680D /* RegalLog.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalLog.h; path = ../../../src/regal/RegalLog.h; sourceTree = "<group>"; };
+		8659BD7E1C08D1D00075680D /* Regalm.def */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = Regalm.def; path = ../../../src/regal/Regalm.def; sourceTree = "<group>"; };
+		8659BD7F1C08D1D00075680D /* RegalMac.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalMac.cpp; path = ../../../src/regal/RegalMac.cpp; sourceTree = "<group>"; };
+		8659BD801C08D1D00075680D /* RegalMac.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalMac.h; path = ../../../src/regal/RegalMac.h; sourceTree = "<group>"; };
+		8659BD811C08D1D00075680D /* RegalMarker.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalMarker.cpp; path = ../../../src/regal/RegalMarker.cpp; sourceTree = "<group>"; };
+		8659BD821C08D1D00075680D /* RegalMarker.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalMarker.h; path = ../../../src/regal/RegalMarker.h; sourceTree = "<group>"; };
+		8659BD831C08D1D00075680D /* RegalMutex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalMutex.h; path = ../../../src/regal/RegalMutex.h; sourceTree = "<group>"; };
+		8659BD841C08D1D00075680D /* RegalNamespace.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalNamespace.h; path = ../../../src/regal/RegalNamespace.h; sourceTree = "<group>"; };
+		8659BD851C08D1D00075680D /* RegalPPAPI.def */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; name = RegalPPAPI.def; path = ../../../src/regal/RegalPPAPI.def; sourceTree = "<group>"; };
+		8659BD861C08D1D00075680D /* RegalPrecompile.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalPrecompile.h; path = ../../../src/regal/RegalPrecompile.h; sourceTree = "<group>"; };
+		8659BD871C08D1D00075680D /* RegalPrint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalPrint.h; path = ../../../src/regal/RegalPrint.h; sourceTree = "<group>"; };
+		8659BD881C08D1D00075680D /* RegalPrivate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalPrivate.h; path = ../../../src/regal/RegalPrivate.h; sourceTree = "<group>"; };
+		8659BD891C08D1D00075680D /* RegalPush.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalPush.h; path = ../../../src/regal/RegalPush.h; sourceTree = "<group>"; };
+		8659BD8A1C08D1D00075680D /* RegalScopedPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalScopedPtr.h; path = ../../../src/regal/RegalScopedPtr.h; sourceTree = "<group>"; };
+		8659BD8B1C08D1D00075680D /* RegalShader.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalShader.cpp; path = ../../../src/regal/RegalShader.cpp; sourceTree = "<group>"; };
+		8659BD8C1C08D1D00075680D /* RegalShader.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalShader.h; path = ../../../src/regal/RegalShader.h; sourceTree = "<group>"; };
+		8659BD8D1C08D1D00075680D /* RegalShaderInstance.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalShaderInstance.cpp; path = ../../../src/regal/RegalShaderInstance.cpp; sourceTree = "<group>"; };
+		8659BD8E1C08D1D00075680D /* RegalShaderInstance.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalShaderInstance.h; path = ../../../src/regal/RegalShaderInstance.h; sourceTree = "<group>"; };
+		8659BD8F1C08D1D00075680D /* RegalSharedList.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalSharedList.h; path = ../../../src/regal/RegalSharedList.h; sourceTree = "<group>"; };
+		8659BD901C08D1D00075680D /* RegalSharedMap.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalSharedMap.h; path = ../../../src/regal/RegalSharedMap.h; sourceTree = "<group>"; };
+		8659BD911C08D1D00075680D /* RegalSharedPtr.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalSharedPtr.h; path = ../../../src/regal/RegalSharedPtr.h; sourceTree = "<group>"; };
+		8659BD921C08D1D00075680D /* RegalState.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalState.h; path = ../../../src/regal/RegalState.h; sourceTree = "<group>"; };
+		8659BD931C08D1D00075680D /* RegalSystem.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalSystem.h; path = ../../../src/regal/RegalSystem.h; sourceTree = "<group>"; };
+		8659BD941C08D1D00075680D /* RegalThread.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalThread.h; path = ../../../src/regal/RegalThread.h; sourceTree = "<group>"; };
+		8659BD951C08D1D00075680D /* RegalTimer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalTimer.h; path = ../../../src/regal/RegalTimer.h; sourceTree = "<group>"; };
+		8659BD961C08D1D00075680D /* RegalToken.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalToken.cpp; path = ../../../src/regal/RegalToken.cpp; sourceTree = "<group>"; };
+		8659BD971C08D1D00075680D /* RegalToken.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalToken.h; path = ../../../src/regal/RegalToken.h; sourceTree = "<group>"; };
+		8659BD981C08D1D00075680D /* RegalUtil.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; name = RegalUtil.cpp; path = ../../../src/regal/RegalUtil.cpp; sourceTree = "<group>"; };
+		8659BD991C08D1D00075680D /* RegalUtil.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = RegalUtil.h; path = ../../../src/regal/RegalUtil.h; sourceTree = "<group>"; };
+		8659BE461C08DAEB0075680D /* Bin.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Bin.h; sourceTree = "<group>"; };
+		8659BE471C08DAEB0075680D /* BinProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BinProcs.cpp; sourceTree = "<group>"; };
+		8659BE481C08DAEB0075680D /* BinProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BinProcs.h; sourceTree = "<group>"; };
+		8659BE4A1C08DAEB0075680D /* BaseVertex.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVertex.h; sourceTree = "<group>"; };
+		8659BE4B1C08DAEB0075680D /* BaseVertexProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = BaseVertexProcs.cpp; sourceTree = "<group>"; };
+		8659BE4C1C08DAEB0075680D /* BaseVertexProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BaseVertexProcs.h; sourceTree = "<group>"; };
+		8659BE4E1C08DAEB0075680D /* Dsa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Dsa.h; sourceTree = "<group>"; };
+		8659BE4F1C08DAEB0075680D /* DsaProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = DsaProcs.cpp; sourceTree = "<group>"; };
+		8659BE501C08DAEB0075680D /* DsaProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DsaProcs.h; sourceTree = "<group>"; };
+		8659BE521C08DAEB0075680D /* Error.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Error.h; sourceTree = "<group>"; };
+		8659BE531C08DAEB0075680D /* ErrorProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ErrorProcs.cpp; sourceTree = "<group>"; };
+		8659BE551C08DAEB0075680D /* Filt.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Filt.cpp; sourceTree = "<group>"; };
+		8659BE561C08DAEB0075680D /* Filt.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Filt.h; sourceTree = "<group>"; };
+		8659BE571C08DAEB0075680D /* FiltProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = FiltProcs.cpp; sourceTree = "<group>"; };
+		8659BE581C08DAEB0075680D /* FiltProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = FiltProcs.h; sourceTree = "<group>"; };
+		8659BE5A1C08DAEB0075680D /* Hint.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Hint.h; sourceTree = "<group>"; };
+		8659BE5B1C08DAEB0075680D /* HintProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HintProcs.cpp; sourceTree = "<group>"; };
+		8659BE5C1C08DAEB0075680D /* HintProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = HintProcs.h; sourceTree = "<group>"; };
+		8659BE5E1C08DAEB0075680D /* Favicon.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Favicon.cpp; sourceTree = "<group>"; };
+		8659BE5F1C08DAEB0075680D /* Favicon.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Favicon.h; sourceTree = "<group>"; };
+		8659BE601C08DAEB0075680D /* Favicon.svg */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; path = Favicon.svg; sourceTree = "<group>"; };
+		8659BE611C08DAEB0075680D /* Http.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Http.cpp; sourceTree = "<group>"; };
+		8659BE621C08DAEB0075680D /* Http.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Http.h; sourceTree = "<group>"; };
+		8659BE631C08DAEB0075680D /* HttpProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = HttpProcs.cpp; sourceTree = "<group>"; };
+		8659BE641C08DAEB0075680D /* jscode.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = jscode.h; sourceTree = "<group>"; };
+		8659BE651C08DAEB0075680D /* LICENSE.txt */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = LICENSE.txt; sourceTree = "<group>"; };
+		8659BE661C08DAEB0075680D /* mongoose.c */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.c; path = mongoose.c; sourceTree = "<group>"; };
+		8659BE671C08DAEB0075680D /* mongoose.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = mongoose.h; sourceTree = "<group>"; };
+		8659BE681C08DAEB0075680D /* README.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
+		8659BE691C08DAEB0075680D /* stb_image_write.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = stb_image_write.h; sourceTree = "<group>"; };
+		8659BE6A1C08DAEB0075680D /* UserManual.md */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = net.daringfireball.markdown; path = UserManual.md; sourceTree = "<group>"; };
+		8659BE6C1C08DAEB0075680D /* Iff.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Iff.cpp; sourceTree = "<group>"; };
+		8659BE6D1C08DAEB0075680D /* Iff.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Iff.h; sourceTree = "<group>"; };
+		8659BE6E1C08DAEB0075680D /* IffProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = IffProcs.cpp; sourceTree = "<group>"; };
+		8659BE6F1C08DAEB0075680D /* IffProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = IffProcs.h; sourceTree = "<group>"; };
+		8659BE701C08DAEB0075680D /* linear.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = linear.h; sourceTree = "<group>"; };
+		8659BE721C08DAEB0075680D /* LoaderProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LoaderProcs.cpp; sourceTree = "<group>"; };
+		8659BE741C08DAEB0075680D /* Log.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Log.h; sourceTree = "<group>"; };
+		8659BE751C08DAEB0075680D /* LogProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = LogProcs.cpp; sourceTree = "<group>"; };
+		8659BE771C08DAEB0075680D /* Obj.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Obj.h; sourceTree = "<group>"; };
+		8659BE781C08DAEB0075680D /* ObjProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = ObjProcs.cpp; sourceTree = "<group>"; };
+		8659BE791C08DAEB0075680D /* ObjProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ObjProcs.h; sourceTree = "<group>"; };
+		8659BE7B1C08DAEB0075680D /* Ppa.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ppa.h; sourceTree = "<group>"; };
+		8659BE7C1C08DAEB0075680D /* PpaProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PpaProcs.cpp; sourceTree = "<group>"; };
+		8659BE7D1C08DAEB0075680D /* PpaProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PpaProcs.h; sourceTree = "<group>"; };
+		8659BE7F1C08DAEB0075680D /* PpapiProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PpapiProcs.cpp; sourceTree = "<group>"; };
+		8659BE811C08DAEB0075680D /* Ppca.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Ppca.h; sourceTree = "<group>"; };
+		8659BE821C08DAEB0075680D /* PpcaProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PpcaProcs.cpp; sourceTree = "<group>"; };
+		8659BE831C08DAEB0075680D /* PpcaProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PpcaProcs.h; sourceTree = "<group>"; };
+		8659BE851C08DAEB0075680D /* Quads.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Quads.cpp; sourceTree = "<group>"; };
+		8659BE861C08DAEB0075680D /* Quads.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Quads.h; sourceTree = "<group>"; };
+		8659BE871C08DAEB0075680D /* QuadsProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = QuadsProcs.cpp; sourceTree = "<group>"; };
+		8659BE881C08DAEB0075680D /* QuadsProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = QuadsProcs.h; sourceTree = "<group>"; };
+		8659BE8A1C08DAEB0075680D /* Rect.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Rect.h; sourceTree = "<group>"; };
+		8659BE8B1C08DAEB0075680D /* RectProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = RectProcs.cpp; sourceTree = "<group>"; };
+		8659BE8C1C08DAEB0075680D /* RectProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RectProcs.h; sourceTree = "<group>"; };
+		8659BE8E1C08DAEB0075680D /* So.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = So.cpp; sourceTree = "<group>"; };
+		8659BE8F1C08DAEB0075680D /* So.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = So.h; sourceTree = "<group>"; };
+		8659BE901C08DAEB0075680D /* SoProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = SoProcs.cpp; sourceTree = "<group>"; };
+		8659BE911C08DAEB0075680D /* SoProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = SoProcs.h; sourceTree = "<group>"; };
+		8659BE931C08DAEB0075680D /* PixelConversions.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = PixelConversions.cpp; sourceTree = "<group>"; };
+		8659BE941C08DAEB0075680D /* PixelConversions.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PixelConversions.h; sourceTree = "<group>"; };
+		8659BE951C08DAEB0075680D /* PixelConversions.inl */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = PixelConversions.inl; sourceTree = "<group>"; };
+		8659BE961C08DAEB0075680D /* TexC.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TexC.cpp; sourceTree = "<group>"; };
+		8659BE971C08DAEB0075680D /* TexC.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TexC.h; sourceTree = "<group>"; };
+		8659BE981C08DAEB0075680D /* TexCProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TexCProcs.cpp; sourceTree = "<group>"; };
+		8659BE991C08DAEB0075680D /* TexCProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TexCProcs.h; sourceTree = "<group>"; };
+		8659BE9B1C08DAEB0075680D /* TexSto.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TexSto.h; sourceTree = "<group>"; };
+		8659BE9C1C08DAEB0075680D /* TexStoProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = TexStoProcs.cpp; sourceTree = "<group>"; };
+		8659BE9D1C08DAEB0075680D /* TexStoProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TexStoProcs.h; sourceTree = "<group>"; };
+		8659BE9F1C08DAEB0075680D /* Vao.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Vao.h; sourceTree = "<group>"; };
+		8659BEA01C08DAEB0075680D /* VaoProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = VaoProcs.cpp; sourceTree = "<group>"; };
+		8659BEA11C08DAEB0075680D /* VaoProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = VaoProcs.h; sourceTree = "<group>"; };
+		8659BEA31C08DAEB0075680D /* Xfer.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = Xfer.cpp; sourceTree = "<group>"; };
+		8659BEA41C08DAEB0075680D /* Xfer.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = Xfer.h; sourceTree = "<group>"; };
+		8659BEA51C08DAEB0075680D /* XferProcs.cpp */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.cpp.cpp; path = XferProcs.cpp; sourceTree = "<group>"; };
+		8659BEA61C08DAEB0075680D /* XferProcs.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = XferProcs.h; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		8659BD4F1C08D0F10075680D /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		8659BD491C08D0F10075680D = {
+			isa = PBXGroup;
+			children = (
+				8659BD5E1C08D1920075680D /* src */,
+				8659BD531C08D0F10075680D /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		8659BD531C08D0F10075680D /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				8659BD521C08D0F10075680D /* libregal.a */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		8659BD5E1C08D1920075680D /* src */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE441C08DAEB0075680D /* layer */,
+				8659BD601C08D1D00075680D /* Regal.cpp */,
+				8659BD611C08D1D00075680D /* Regal.def */,
+				8659BD621C08D1D00075680D /* RegalBreak.cpp */,
+				8659BD631C08D1D00075680D /* RegalBreak.h */,
+				8659BD641C08D1D00075680D /* RegalClientState.h */,
+				8659BD651C08D1D00075680D /* RegalConfig.cpp */,
+				8659BD661C08D1D00075680D /* RegalConfig.h */,
+				8659BD671C08D1D00075680D /* RegalContext.cpp */,
+				8659BD681C08D1D00075680D /* RegalContext.h */,
+				8659BD691C08D1D00075680D /* RegalContextInfo.cpp */,
+				8659BD6A1C08D1D00075680D /* RegalContextInfo.h */,
+				8659BD6B1C08D1D00075680D /* RegalDispatch.cpp */,
+				8659BD6C1C08D1D00075680D /* RegalDispatch.h */,
+				8659BD6D1C08D1D00075680D /* RegalDispatchGL.h */,
+				8659BD6E1C08D1D00075680D /* RegalDispatchGlobal.h */,
+				8659BD6F1C08D1D00075680D /* RegalDllMain.cpp */,
+				8659BD701C08D1D00075680D /* RegalEmu.cpp */,
+				8659BD711C08D1D00075680D /* RegalEmu.h */,
+				8659BD721C08D1D00075680D /* RegalEmuInfo.cpp */,
+				8659BD731C08D1D00075680D /* RegalEmuInfo.h */,
+				8659BD741C08D1D00075680D /* RegalEnum.h */,
+				8659BD751C08D1D00075680D /* RegalFloat4.h */,
+				8659BD761C08D1D00075680D /* RegalHelper.cpp */,
+				8659BD771C08D1D00075680D /* RegalHelper.h */,
+				8659BD781C08D1D00075680D /* RegalInit.cpp */,
+				8659BD791C08D1D00075680D /* RegalInit.h */,
+				8659BD7A1C08D1D00075680D /* RegalInitLayers.cpp */,
+				8659BD7B1C08D1D00075680D /* RegalLayer.h */,
+				8659BD7C1C08D1D00075680D /* RegalLog.cpp */,
+				8659BD7D1C08D1D00075680D /* RegalLog.h */,
+				8659BD7E1C08D1D00075680D /* Regalm.def */,
+				8659BD7F1C08D1D00075680D /* RegalMac.cpp */,
+				8659BD801C08D1D00075680D /* RegalMac.h */,
+				8659BD811C08D1D00075680D /* RegalMarker.cpp */,
+				8659BD821C08D1D00075680D /* RegalMarker.h */,
+				8659BD831C08D1D00075680D /* RegalMutex.h */,
+				8659BD841C08D1D00075680D /* RegalNamespace.h */,
+				8659BD851C08D1D00075680D /* RegalPPAPI.def */,
+				8659BD861C08D1D00075680D /* RegalPrecompile.h */,
+				8659BD871C08D1D00075680D /* RegalPrint.h */,
+				8659BD881C08D1D00075680D /* RegalPrivate.h */,
+				8659BD891C08D1D00075680D /* RegalPush.h */,
+				8659BD8A1C08D1D00075680D /* RegalScopedPtr.h */,
+				8659BD8B1C08D1D00075680D /* RegalShader.cpp */,
+				8659BD8C1C08D1D00075680D /* RegalShader.h */,
+				8659BD8D1C08D1D00075680D /* RegalShaderInstance.cpp */,
+				8659BD8E1C08D1D00075680D /* RegalShaderInstance.h */,
+				8659BD8F1C08D1D00075680D /* RegalSharedList.h */,
+				8659BD901C08D1D00075680D /* RegalSharedMap.h */,
+				8659BD911C08D1D00075680D /* RegalSharedPtr.h */,
+				8659BD921C08D1D00075680D /* RegalState.h */,
+				8659BD931C08D1D00075680D /* RegalSystem.h */,
+				8659BD941C08D1D00075680D /* RegalThread.h */,
+				8659BD951C08D1D00075680D /* RegalTimer.h */,
+				8659BD961C08D1D00075680D /* RegalToken.cpp */,
+				8659BD971C08D1D00075680D /* RegalToken.h */,
+				8659BD981C08D1D00075680D /* RegalUtil.cpp */,
+				8659BD991C08D1D00075680D /* RegalUtil.h */,
+			);
+			name = src;
+			sourceTree = "<group>";
+		};
+		8659BE441C08DAEB0075680D /* layer */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE451C08DAEB0075680D /* bin */,
+				8659BE491C08DAEB0075680D /* bv */,
+				8659BE4D1C08DAEB0075680D /* dsa */,
+				8659BE511C08DAEB0075680D /* error */,
+				8659BE541C08DAEB0075680D /* filt */,
+				8659BE591C08DAEB0075680D /* hint */,
+				8659BE5D1C08DAEB0075680D /* http */,
+				8659BE6B1C08DAEB0075680D /* iff */,
+				8659BE711C08DAEB0075680D /* loader */,
+				8659BE731C08DAEB0075680D /* log */,
+				8659BE761C08DAEB0075680D /* obj */,
+				8659BE7A1C08DAEB0075680D /* ppa */,
+				8659BE7E1C08DAEB0075680D /* ppapi */,
+				8659BE801C08DAEB0075680D /* ppca */,
+				8659BE841C08DAEB0075680D /* quads */,
+				8659BE891C08DAEB0075680D /* rect */,
+				8659BE8D1C08DAEB0075680D /* so */,
+				8659BE921C08DAEB0075680D /* texc */,
+				8659BE9A1C08DAEB0075680D /* texsto */,
+				8659BE9E1C08DAEB0075680D /* vao */,
+				8659BEA21C08DAEB0075680D /* xfer */,
+			);
+			name = layer;
+			path = ../../../src/regal/layer;
+			sourceTree = "<group>";
+		};
+		8659BE451C08DAEB0075680D /* bin */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE461C08DAEB0075680D /* Bin.h */,
+				8659BE471C08DAEB0075680D /* BinProcs.cpp */,
+				8659BE481C08DAEB0075680D /* BinProcs.h */,
+			);
+			path = bin;
+			sourceTree = "<group>";
+		};
+		8659BE491C08DAEB0075680D /* bv */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE4A1C08DAEB0075680D /* BaseVertex.h */,
+				8659BE4B1C08DAEB0075680D /* BaseVertexProcs.cpp */,
+				8659BE4C1C08DAEB0075680D /* BaseVertexProcs.h */,
+			);
+			path = bv;
+			sourceTree = "<group>";
+		};
+		8659BE4D1C08DAEB0075680D /* dsa */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE4E1C08DAEB0075680D /* Dsa.h */,
+				8659BE4F1C08DAEB0075680D /* DsaProcs.cpp */,
+				8659BE501C08DAEB0075680D /* DsaProcs.h */,
+			);
+			path = dsa;
+			sourceTree = "<group>";
+		};
+		8659BE511C08DAEB0075680D /* error */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE521C08DAEB0075680D /* Error.h */,
+				8659BE531C08DAEB0075680D /* ErrorProcs.cpp */,
+			);
+			path = error;
+			sourceTree = "<group>";
+		};
+		8659BE541C08DAEB0075680D /* filt */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE551C08DAEB0075680D /* Filt.cpp */,
+				8659BE561C08DAEB0075680D /* Filt.h */,
+				8659BE571C08DAEB0075680D /* FiltProcs.cpp */,
+				8659BE581C08DAEB0075680D /* FiltProcs.h */,
+			);
+			path = filt;
+			sourceTree = "<group>";
+		};
+		8659BE591C08DAEB0075680D /* hint */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE5A1C08DAEB0075680D /* Hint.h */,
+				8659BE5B1C08DAEB0075680D /* HintProcs.cpp */,
+				8659BE5C1C08DAEB0075680D /* HintProcs.h */,
+			);
+			path = hint;
+			sourceTree = "<group>";
+		};
+		8659BE5D1C08DAEB0075680D /* http */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE5E1C08DAEB0075680D /* Favicon.cpp */,
+				8659BE5F1C08DAEB0075680D /* Favicon.h */,
+				8659BE601C08DAEB0075680D /* Favicon.svg */,
+				8659BE611C08DAEB0075680D /* Http.cpp */,
+				8659BE621C08DAEB0075680D /* Http.h */,
+				8659BE631C08DAEB0075680D /* HttpProcs.cpp */,
+				8659BE641C08DAEB0075680D /* jscode.h */,
+				8659BE651C08DAEB0075680D /* LICENSE.txt */,
+				8659BE661C08DAEB0075680D /* mongoose.c */,
+				8659BE671C08DAEB0075680D /* mongoose.h */,
+				8659BE681C08DAEB0075680D /* README.md */,
+				8659BE691C08DAEB0075680D /* stb_image_write.h */,
+				8659BE6A1C08DAEB0075680D /* UserManual.md */,
+			);
+			path = http;
+			sourceTree = "<group>";
+		};
+		8659BE6B1C08DAEB0075680D /* iff */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE6C1C08DAEB0075680D /* Iff.cpp */,
+				8659BE6D1C08DAEB0075680D /* Iff.h */,
+				8659BE6E1C08DAEB0075680D /* IffProcs.cpp */,
+				8659BE6F1C08DAEB0075680D /* IffProcs.h */,
+				8659BE701C08DAEB0075680D /* linear.h */,
+			);
+			path = iff;
+			sourceTree = "<group>";
+		};
+		8659BE711C08DAEB0075680D /* loader */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE721C08DAEB0075680D /* LoaderProcs.cpp */,
+			);
+			path = loader;
+			sourceTree = "<group>";
+		};
+		8659BE731C08DAEB0075680D /* log */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE741C08DAEB0075680D /* Log.h */,
+				8659BE751C08DAEB0075680D /* LogProcs.cpp */,
+			);
+			path = log;
+			sourceTree = "<group>";
+		};
+		8659BE761C08DAEB0075680D /* obj */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE771C08DAEB0075680D /* Obj.h */,
+				8659BE781C08DAEB0075680D /* ObjProcs.cpp */,
+				8659BE791C08DAEB0075680D /* ObjProcs.h */,
+			);
+			path = obj;
+			sourceTree = "<group>";
+		};
+		8659BE7A1C08DAEB0075680D /* ppa */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE7B1C08DAEB0075680D /* Ppa.h */,
+				8659BE7C1C08DAEB0075680D /* PpaProcs.cpp */,
+				8659BE7D1C08DAEB0075680D /* PpaProcs.h */,
+			);
+			path = ppa;
+			sourceTree = "<group>";
+		};
+		8659BE7E1C08DAEB0075680D /* ppapi */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE7F1C08DAEB0075680D /* PpapiProcs.cpp */,
+			);
+			path = ppapi;
+			sourceTree = "<group>";
+		};
+		8659BE801C08DAEB0075680D /* ppca */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE811C08DAEB0075680D /* Ppca.h */,
+				8659BE821C08DAEB0075680D /* PpcaProcs.cpp */,
+				8659BE831C08DAEB0075680D /* PpcaProcs.h */,
+			);
+			path = ppca;
+			sourceTree = "<group>";
+		};
+		8659BE841C08DAEB0075680D /* quads */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE851C08DAEB0075680D /* Quads.cpp */,
+				8659BE861C08DAEB0075680D /* Quads.h */,
+				8659BE871C08DAEB0075680D /* QuadsProcs.cpp */,
+				8659BE881C08DAEB0075680D /* QuadsProcs.h */,
+			);
+			path = quads;
+			sourceTree = "<group>";
+		};
+		8659BE891C08DAEB0075680D /* rect */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE8A1C08DAEB0075680D /* Rect.h */,
+				8659BE8B1C08DAEB0075680D /* RectProcs.cpp */,
+				8659BE8C1C08DAEB0075680D /* RectProcs.h */,
+			);
+			path = rect;
+			sourceTree = "<group>";
+		};
+		8659BE8D1C08DAEB0075680D /* so */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE8E1C08DAEB0075680D /* So.cpp */,
+				8659BE8F1C08DAEB0075680D /* So.h */,
+				8659BE901C08DAEB0075680D /* SoProcs.cpp */,
+				8659BE911C08DAEB0075680D /* SoProcs.h */,
+			);
+			path = so;
+			sourceTree = "<group>";
+		};
+		8659BE921C08DAEB0075680D /* texc */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE931C08DAEB0075680D /* PixelConversions.cpp */,
+				8659BE941C08DAEB0075680D /* PixelConversions.h */,
+				8659BE951C08DAEB0075680D /* PixelConversions.inl */,
+				8659BE961C08DAEB0075680D /* TexC.cpp */,
+				8659BE971C08DAEB0075680D /* TexC.h */,
+				8659BE981C08DAEB0075680D /* TexCProcs.cpp */,
+				8659BE991C08DAEB0075680D /* TexCProcs.h */,
+			);
+			path = texc;
+			sourceTree = "<group>";
+		};
+		8659BE9A1C08DAEB0075680D /* texsto */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE9B1C08DAEB0075680D /* TexSto.h */,
+				8659BE9C1C08DAEB0075680D /* TexStoProcs.cpp */,
+				8659BE9D1C08DAEB0075680D /* TexStoProcs.h */,
+			);
+			path = texsto;
+			sourceTree = "<group>";
+		};
+		8659BE9E1C08DAEB0075680D /* vao */ = {
+			isa = PBXGroup;
+			children = (
+				8659BE9F1C08DAEB0075680D /* Vao.h */,
+				8659BEA01C08DAEB0075680D /* VaoProcs.cpp */,
+				8659BEA11C08DAEB0075680D /* VaoProcs.h */,
+			);
+			path = vao;
+			sourceTree = "<group>";
+		};
+		8659BEA21C08DAEB0075680D /* xfer */ = {
+			isa = PBXGroup;
+			children = (
+				8659BEA31C08DAEB0075680D /* Xfer.cpp */,
+				8659BEA41C08DAEB0075680D /* Xfer.h */,
+				8659BEA51C08DAEB0075680D /* XferProcs.cpp */,
+				8659BEA61C08DAEB0075680D /* XferProcs.h */,
+			);
+			path = xfer;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		8659BD511C08D0F10075680D /* regal */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = 8659BD5B1C08D0F10075680D /* Build configuration list for PBXNativeTarget "regal" */;
+			buildPhases = (
+				8659BD4E1C08D0F10075680D /* Sources */,
+				8659BD4F1C08D0F10075680D /* Frameworks */,
+				8659BD501C08D0F10075680D /* CopyFiles */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = regal;
+			productName = regalStatic;
+			productReference = 8659BD521C08D0F10075680D /* libregal.a */;
+			productType = "com.apple.product-type.library.static";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		8659BD4A1C08D0F10075680D /* Project object */ = {
+			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0700;
+				ORGANIZATIONNAME = xyzw;
+				TargetAttributes = {
+					8659BD511C08D0F10075680D = {
+						CreatedOnToolsVersion = 7.0;
+					};
+				};
+			};
+			buildConfigurationList = 8659BD4D1C08D0F10075680D /* Build configuration list for PBXProject "regalStatic" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = 8659BD491C08D0F10075680D;
+			productRefGroup = 8659BD531C08D0F10075680D /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				8659BD511C08D0F10075680D /* regal */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXSourcesBuildPhase section */
+		8659BD4E1C08D0F10075680D /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				8659BEB81C08DAEB0075680D /* ObjProcs.cpp in Sources */,
+				8659BEAB1C08DAEB0075680D /* Filt.cpp in Sources */,
+				8659BEC51C08DAEB0075680D /* VaoProcs.cpp in Sources */,
+				8659BEC01C08DAEB0075680D /* SoProcs.cpp in Sources */,
+				8659BEA91C08DAEB0075680D /* DsaProcs.cpp in Sources */,
+				8659BDAA1C08D1D00075680D /* RegalShaderInstance.cpp in Sources */,
+				8659BEB61C08DAEB0075680D /* LoaderProcs.cpp in Sources */,
+				8659BEA71C08DAEB0075680D /* BinProcs.cpp in Sources */,
+				8659BEB21C08DAEB0075680D /* README.md in Sources */,
+				8659BEAD1C08DAEB0075680D /* HintProcs.cpp in Sources */,
+				8659BEC71C08DAEB0075680D /* XferProcs.cpp in Sources */,
+				8659BDAB1C08D1D00075680D /* RegalToken.cpp in Sources */,
+				8659BD9A1C08D1D00075680D /* Regal.cpp in Sources */,
+				8659BEBD1C08DAEB0075680D /* QuadsProcs.cpp in Sources */,
+				8659BEAA1C08DAEB0075680D /* ErrorProcs.cpp in Sources */,
+				8659BEB71C08DAEB0075680D /* LogProcs.cpp in Sources */,
+				8659BEC21C08DAEB0075680D /* TexC.cpp in Sources */,
+				8659BEB31C08DAEB0075680D /* UserManual.md in Sources */,
+				8659BD9D1C08D1D00075680D /* RegalContext.cpp in Sources */,
+				8659BDA91C08D1D00075680D /* RegalShader.cpp in Sources */,
+				8659BEA81C08DAEB0075680D /* BaseVertexProcs.cpp in Sources */,
+				8659BEAE1C08DAEB0075680D /* Favicon.cpp in Sources */,
+				8659BDA41C08D1D00075680D /* RegalInit.cpp in Sources */,
+				8659BEAC1C08DAEB0075680D /* FiltProcs.cpp in Sources */,
+				8659BEB91C08DAEB0075680D /* PpaProcs.cpp in Sources */,
+				8659BDA01C08D1D00075680D /* RegalDllMain.cpp in Sources */,
+				8659BD9B1C08D1D00075680D /* RegalBreak.cpp in Sources */,
+				8659BEB41C08DAEB0075680D /* Iff.cpp in Sources */,
+				8659BDA81C08D1D00075680D /* RegalMarker.cpp in Sources */,
+				8659BEBA1C08DAEB0075680D /* PpapiProcs.cpp in Sources */,
+				8659BD9C1C08D1D00075680D /* RegalConfig.cpp in Sources */,
+				8659BD9E1C08D1D00075680D /* RegalContextInfo.cpp in Sources */,
+				8659BDA51C08D1D00075680D /* RegalInitLayers.cpp in Sources */,
+				8659BDA61C08D1D00075680D /* RegalLog.cpp in Sources */,
+				8659BEAF1C08DAEB0075680D /* Http.cpp in Sources */,
+				8659BEC41C08DAEB0075680D /* TexStoProcs.cpp in Sources */,
+				8659BEB11C08DAEB0075680D /* mongoose.c in Sources */,
+				8659BEC61C08DAEB0075680D /* Xfer.cpp in Sources */,
+				8659BEBC1C08DAEB0075680D /* Quads.cpp in Sources */,
+				8659BDA71C08D1D00075680D /* RegalMac.cpp in Sources */,
+				8659BD9F1C08D1D00075680D /* RegalDispatch.cpp in Sources */,
+				8659BEBE1C08DAEB0075680D /* RectProcs.cpp in Sources */,
+				8659BEBB1C08DAEB0075680D /* PpcaProcs.cpp in Sources */,
+				8659BEC11C08DAEB0075680D /* PixelConversions.cpp in Sources */,
+				8659BEBF1C08DAEB0075680D /* So.cpp in Sources */,
+				8659BEC31C08DAEB0075680D /* TexCProcs.cpp in Sources */,
+				8659BEB01C08DAEB0075680D /* HttpProcs.cpp in Sources */,
+				8659BEB51C08DAEB0075680D /* IffProcs.cpp in Sources */,
+				8659BDA11C08D1D00075680D /* RegalEmu.cpp in Sources */,
+				8659BDAC1C08D1D00075680D /* RegalUtil.cpp in Sources */,
+				8659BDA21C08D1D00075680D /* RegalEmuInfo.cpp in Sources */,
+				8659BDA31C08D1D00075680D /* RegalHelper.cpp in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin XCBuildConfiguration section */
+		8659BD591C08D0F10075680D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = dwarf;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				ENABLE_TESTABILITY = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = YES;
+				ONLY_ACTIVE_ARCH = YES;
+				SDKROOT = iphoneos;
+			};
+			name = Debug;
+		};
+		8659BD5A1C08D0F10075680D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				CLANG_CXX_LANGUAGE_STANDARD = "gnu++0x";
+				CLANG_CXX_LIBRARY = "libc++";
+				CLANG_ENABLE_MODULES = YES;
+				CLANG_ENABLE_OBJC_ARC = YES;
+				CLANG_WARN_BOOL_CONVERSION = YES;
+				CLANG_WARN_CONSTANT_CONVERSION = YES;
+				CLANG_WARN_DIRECT_OBJC_ISA_USAGE = YES_ERROR;
+				CLANG_WARN_EMPTY_BODY = YES;
+				CLANG_WARN_ENUM_CONVERSION = YES;
+				CLANG_WARN_INT_CONVERSION = YES;
+				CLANG_WARN_OBJC_ROOT_CLASS = YES_ERROR;
+				CLANG_WARN_UNREACHABLE_CODE = YES;
+				CLANG_WARN__DUPLICATE_METHOD_MATCH = YES;
+				COPY_PHASE_STRIP = NO;
+				DEBUG_INFORMATION_FORMAT = "dwarf-with-dsym";
+				ENABLE_NS_ASSERTIONS = NO;
+				ENABLE_STRICT_OBJC_MSGSEND = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_NO_COMMON_BLOCKS = YES;
+				GCC_WARN_64_TO_32_BIT_CONVERSION = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES_ERROR;
+				GCC_WARN_UNDECLARED_SELECTOR = YES;
+				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
+				GCC_WARN_UNUSED_FUNCTION = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 9.0;
+				MTL_ENABLE_DEBUG_INFO = NO;
+				SDKROOT = iphoneos;
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		8659BD5C1C08D0F10075680D /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					../../../include,
+					../../../src/regal,
+					../../../src/lookup3,
+					../../../src/glsl/include,
+					../../../src/glsl/src/glsl,
+					../../../src/glsl/src/mesa,
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Debug;
+		};
+		8659BD5D1C08D0F10075680D /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				HEADER_SEARCH_PATHS = (
+					../../../include,
+					../../../src/regal,
+					../../../src/lookup3,
+					../../../src/glsl/include,
+					../../../src/glsl/src/glsl,
+					../../../src/glsl/src/mesa,
+				);
+				OTHER_LDFLAGS = "-ObjC";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				SKIP_INSTALL = YES;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		8659BD4D1C08D0F10075680D /* Build configuration list for PBXProject "regalStatic" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8659BD591C08D0F10075680D /* Debug */,
+				8659BD5A1C08D0F10075680D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		8659BD5B1C08D0F10075680D /* Build configuration list for PBXNativeTarget "regal" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				8659BD5C1C08D0F10075680D /* Debug */,
+				8659BD5D1C08D0F10075680D /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = 8659BD4A1C08D0F10075680D /* Project object */;
+}

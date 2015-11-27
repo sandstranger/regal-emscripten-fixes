@@ -48,6 +48,8 @@ REGAL_GLOBAL_BEGIN
 #include "Bin.h"
 #include "BinProcs.h"
 
+#error foo
+
 extern "C" Regal::Layer * createBin( Regal::RegalContext * ctx ) {
   return new Regal::Emu::Bin( ctx );
 }
