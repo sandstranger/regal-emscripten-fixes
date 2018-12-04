@@ -120,7 +120,7 @@ static void myError(GLenum error)
 
 int main(int argc, const char *argv[])
 {
-  #ifndef EMSCRIPTEN
+  #ifndef __EMSCRIPTEN__
   glutInitDisplayString("rgba>=8 depth double");
   glutInitWindowSize(500, 500);
   #endif
@@ -137,7 +137,7 @@ int main(int argc, const char *argv[])
 
   // Regal workaround for Emscripten GLUT emulation
 
-  #ifdef EMSCRIPTEN
+  #ifdef __EMSCRIPTEN__
   RegalMakeCurrent((RegalSystemContext)1);
   #endif
 

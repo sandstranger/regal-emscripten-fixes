@@ -120,10 +120,10 @@ static void myError(GLenum error)
 
 int main(int argc, const char *argv[])
 {
-  #ifndef EMSCRIPTEN
+#ifndef __EMSCRIPTEN__
   glutInitDisplayString("rgba>=8 depth double");
+#endif
   glutInitWindowSize(500, 500);
-  #endif
   glutInit( &argc, (char **) argv);
   glutCreateWindow("dreamtorus");
 
@@ -137,7 +137,7 @@ int main(int argc, const char *argv[])
 
   // Regal workaround for Emscripten GLUT emulation
 
-  #ifdef EMSCRIPTEN
+  #ifdef __EMSCRIPTEN__
   RegalMakeCurrent((RegalSystemContext)1);
   #endif
 
@@ -183,5 +183,6 @@ int main(int argc, const char *argv[])
   glutReshapeFunc(dreamTorusReshape);
   glutKeyboardFunc(myKeyboard);
   glutMainLoop();
+  dreamTorusReshape(500,500);
   return 0;
 }

@@ -48,7 +48,7 @@ struct Torus {
     Torus( float c, float t ) : circleRadius( c ), tubeRadius( t ) {}
     void Vertex( float u, float v )
     {
-        glPushGroupMarkerEXT(0, "Torus::Vertex");
+        //glPushGroupMarkerEXT(0, "Torus::Vertex");
 
         float theta = (float) (u * 2.0 * M_PI);
         float rho   = (float) (v * 2.0 * M_PI);
@@ -63,13 +63,13 @@ struct Torus {
         glMultiTexCoord2f( texunit, u, v );
         glVertex3f( x, y, z );
 
-        glPopGroupMarkerEXT();
+        //glPopGroupMarkerEXT();
     }
 };
 
 static void drawAnObject()
 {
-  glPushGroupMarkerEXT(0, "drawAnObject");
+  //glPushGroupMarkerEXT(0, "drawAnObject");
 
   Torus t( 0.7f, 0.2f );
   int I = 30;
@@ -89,7 +89,7 @@ static void drawAnObject()
     glEnd();
   }
 
-  glPopGroupMarkerEXT();
+  //glPopGroupMarkerEXT();
 }
 
 static int width;
@@ -101,7 +101,7 @@ void dreamTorusReshape( int w, int h ) {
 
     float a = float(w)/float(h);
 
-    glPushGroupMarkerEXT(0, "reshape");
+    //glPushGroupMarkerEXT(0, "reshape");
 
     glViewport(0, 0, width, height);
     glMatrixMode( GL_PROJECTION );
@@ -115,7 +115,7 @@ void dreamTorusReshape( int w, int h ) {
     glLoadIdentity();
     glTranslatef( 0, 0, -2 );
 
-    glPopGroupMarkerEXT();
+    //glPopGroupMarkerEXT();
 }
 
 
@@ -139,7 +139,7 @@ static GLuint tex;
 
 void dreamTorusInit()
 {
-    glPushGroupMarkerEXT(0, "init");
+    //glPushGroupMarkerEXT(0, "init");
 
     glGenTextures( 1, &tex );
     GLubyte pix[] = {
@@ -205,7 +205,7 @@ void dreamTorusInit()
     GLdouble clip[] = { 1, 1, -1, 0 };
     glClipPlane( GL_CLIP_PLANE3, clip );
 
-    glPopGroupMarkerEXT();
+    //glPopGroupMarkerEXT();
 }
 
 void dreamTorusDisplay( bool clear )
@@ -217,7 +217,7 @@ void dreamTorusDisplay( bool clear )
         dreamTorusInit();
     }
 
-    glPushGroupMarkerEXT(0, "display");
+    //glPushGroupMarkerEXT(0, "display");
 
 #if 1
     if( count == 0 ) {
@@ -282,7 +282,7 @@ void dreamTorusDisplay( bool clear )
         r = 0.0f;
     }
 
-    glPopGroupMarkerEXT();
+    //glPopGroupMarkerEXT();
 
     glFrameTerminatorGREMEDY();
 
