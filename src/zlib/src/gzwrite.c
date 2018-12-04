@@ -4,7 +4,7 @@
  */
 
 #include "gzguts.h"
-#ifdef EMSCRIPTEN
+#ifdef __EMSCRIPTEN__
 #include <fcntl.h> // for open
 #include <unistd.h> // for close
 #endif //__EMSCRIPTEN__ //

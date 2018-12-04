@@ -2079,7 +2079,11 @@ void Iff::Cleanup( RegalContext &ctx )
     }
   }
 
+#ifdef __EMSCRIPTEN__
+  const bool isWebGLish = true;
+#else
   const bool isWebGLish = (ctx.info->vendor == "Chromium" || ctx.info->webgl);
+#endif
 
   tbl.glBindBuffer(GL_ARRAY_BUFFER, 0);
   tbl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);

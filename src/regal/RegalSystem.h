@@ -82,7 +82,7 @@
 # ifndef REGAL_SYS_GLX
 #  define REGAL_SYS_GLX 0
 # endif
-#elif defined(EMSCRIPTEN)
+#elif defined(__EMSCRIPTEN__)
 # ifndef REGAL_SYS_EMSCRIPTEN
 #  define REGAL_SYS_EMSCRIPTEN 1
 # endif

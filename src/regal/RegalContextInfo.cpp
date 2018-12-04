@@ -896,7 +896,7 @@ ContextInfo::init(const RegalContext &context)
   #endif
 
   #if REGAL_SYS_EMSCRIPTEN
-  webgl = starts_with(version, "WebGL");
+  webgl = true;
   #endif
 
   // For Mesa3D EGL/ES 2.0 on desktop Linux the version string doesn't start with
