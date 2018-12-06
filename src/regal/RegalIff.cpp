@@ -931,7 +931,12 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       break;
   }
   if ( env.rgb.scale != 1.0 )
-    s << "        p.xyz = clamp(" << env.rgb.scale << " * p.xyz, 0.0, 1.0);\n";
+  {
+    std::ostringstream stringStream;
+    stringStream << std::fixed << env.rgb.scale;
+    s << "        p.xyz = clamp(" << stringStream.str() << " * p.xyz, 0.0, 1.0);\n";
+  }
+
   if ( skipAlpha )
   {
     s << "        p.w = p.x;\n";
@@ -1001,8 +1006,12 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         break;
         break;
     }
-    if ( env.a.scale != 1.0 )
-      s << "        p.w = clamp(" << env.a.scale << " * p.w, 0.0, 1.0);\n";
+    if ( env.a.scale != 1.0 ) {
+        std::ostringstream stringStream;
+        stringStream << std::fixed << env.a.scale;
+
+        s << "        p.w = clamp(" << stringStream.str() << " * p.w, 0.0, 1.0);\n";
+    }
   }
   s << "    }\n";
 }
