@@ -437,11 +437,14 @@ _mesa_glsl_initialize_types(struct _mesa_glsl_parse_state *state)
       glsl_type::generate_EXT_texture_array_types(state->symbols,
 				       state->EXT_texture_array_warn);
    }
-	
-	if (state->EXT_shadow_samplers_enable && state->es_shader) {
-		glsl_type::generate_EXT_shadow_samplers_types(state->symbols,
-						state->EXT_shadow_samplers_warn);
-	}
+
+#if !REGAL_SYS_EMSCRIPTEN
+   if (state->EXT_shadow_samplers_enable && state->es_shader) {
+      glsl_type::generate_EXT_shadow_samplers_types(state->symbols,
+                                                    state->EXT_shadow_samplers_warn);
+   }
+#endif
+
 	
    /* We cannot check for language_version == 100 here because we need the
     * types to support fixed-function program generation.  But this is fine
