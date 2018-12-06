@@ -4388,8 +4388,10 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
       ss << "#version 140\n";
 #else
       ss << "#version 100\n";
+#if !REGAL_SYS_EMSCRIPTEN // Do not use shadow samplers extension on WebGL
       ss << "#extension GL_EXT_shadow_samplers : enable\n";
       ss << "#define shadow2D(a,b) vec4(shadow2DEXT(a,b))\n";
+#endif
 #endif
     }
   } else if (legacy) {
