@@ -2079,12 +2079,6 @@ void Iff::Cleanup( RegalContext &ctx )
     }
   }
 
-#ifdef __EMSCRIPTEN__
-  const bool isWebGLish = true;
-#else
-  const bool isWebGLish = (ctx.info->vendor == "Chromium" || ctx.info->webgl);
-#endif
-
   tbl.glBindBuffer(GL_ARRAY_BUFFER, 0);
   tbl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, 0);
   for (GLuint i=0; i<ctx.emuInfo->gl_max_vertex_attribs; ++i)
@@ -2092,8 +2086,9 @@ void Iff::Cleanup( RegalContext &ctx )
     // Chromium/PepperAPI GLES generates an error (visible through glGetError)
     // and logs a message if a call is made to glVertexAttribPointer and no
     // GL_ARRAY_BUFFER is bound.
-    if (!isWebGLish)
-      tbl.glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+#if !(REGAL_SYS_EMSCRIPTEN||REGAL_SYS_PPAPI)
+    tbl.glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
+#endif
     tbl.glDisableVertexAttribArray(i);
   }
 }
