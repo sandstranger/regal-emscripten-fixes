@@ -33,7 +33,11 @@ initialize_mesa_context(struct gl_context *ctx, gl_api api)
    if (api == API_OPENGLES2)
    {
 	   ctx->Extensions.OES_standard_derivatives = GL_TRUE;
-	   ctx->Extensions.EXT_shadow_samplers = GL_TRUE;
+#if REGAL_SYS_EMSCRIPTEN
+       ctx->Extensions.EXT_shadow_samplers = GL_FALSE;
+#else
+       ctx->Extensions.EXT_shadow_samplers = GL_TRUE;
+#endif
    }
 
    ctx->Const.GLSLVersion = 140;
