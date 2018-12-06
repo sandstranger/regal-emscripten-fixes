@@ -232,10 +232,10 @@ EmuInfo::init(const ContextInfo &contextInfo)
   // Qualcomm fails with float4 attribs with 256 byte stride, so artificially limit to 8 attribs (n*16 is used
   // as the stride in RegalIFF).  WebGL (and Pepper) explicitly disallows stride > 255 as well.
 
-#ifdef __EMSCRIPTEN__
+#if (REGAL_SYS_EMSCRIPTEN||REGAL_SYS_PPAPI)
   gl_max_vertex_attribs = std::min<GLuint>(gl_max_vertex_attribs,8);
 #else
-  if (contextInfo.vendor == "Qualcomm" || contextInfo.vendor == "Chromium" || contextInfo.webgl)
+  if (contextInfo.vendor == "Qualcomm")
     gl_max_vertex_attribs = std::min<GLuint>(gl_max_vertex_attribs,8);
 #endif
 
