@@ -119,7 +119,7 @@ namespace Shader {
     if (api == API_OPENGLES2)
     {
       ctx->Extensions.OES_standard_derivatives = GL_TRUE;
-#if REGAL_SYS_EMSCRIPTEN
+#if REGAL_SYS_EMSCRIPTEN // Not sure if this is needed
       ctx->Extensions.EXT_shadow_samplers = GL_FALSE;
 #else
       ctx->Extensions.EXT_shadow_samplers = GL_TRUE;
