@@ -20,6 +20,7 @@ project.xcworkspace
 *.sdf
 *.swp
 *.opensdf
+.idea
 j
 j0
 j1
