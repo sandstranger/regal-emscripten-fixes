@@ -122,8 +122,9 @@ int main(int argc, const char *argv[])
 {
   #ifndef __EMSCRIPTEN__
   glutInitDisplayString("rgba>=8 depth double");
-  glutInitWindowSize(500, 500);
   #endif
+  glutInitWindowSize(500, 500);
+
   glutInit( &argc, (char **) argv);
   glutCreateWindow("alphatorus");
 

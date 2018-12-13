@@ -4,10 +4,8 @@
  */
 
 #include "gzguts.h"
-#ifdef __EMSCRIPTEN__
 #include <fcntl.h> // for open
 #include <unistd.h> // for close
-#endif //__EMSCRIPTEN__
 
 /* Local functions */
 local int gz_load OF((gz_statep, unsigned char *, unsigned, unsigned *));
