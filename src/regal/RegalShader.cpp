@@ -119,7 +119,8 @@ namespace Shader {
     if (api == API_OPENGLES2)
     {
       ctx->Extensions.OES_standard_derivatives = GL_TRUE;
-#if REGAL_SYS_EMSCRIPTEN // Not sure if this is needed
+#if REGAL_SYS_EMSCRIPTEN
+      // GAB NOTE Dec 2018: Disable EXT_shadow_samplers on Emscripten/WebGL. This is not a valid WebGL extension
       ctx->Extensions.EXT_shadow_samplers = GL_FALSE;
 #else
       ctx->Extensions.EXT_shadow_samplers = GL_TRUE;

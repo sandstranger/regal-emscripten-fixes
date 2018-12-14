@@ -2095,7 +2095,8 @@ void Iff::Cleanup( RegalContext &ctx )
     // Chromium/PepperAPI GLES generates an error (visible through glGetError)
     // and logs a message if a call is made to glVertexAttribPointer and no
     // GL_ARRAY_BUFFER is bound.
-#if !(REGAL_SYS_EMSCRIPTEN||REGAL_SYS_PPAPI) // To be tested again on EMSCRIPTEN
+#if !(/*REGAL_SYS_EMSCRIPTEN||*/REGAL_SYS_PPAPI)
+    // GAB NOTE Dec 2018: the following does not seem to fail with Emscripten. Tested with latest version of Chrome and Firefox.
     tbl.glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 #endif
     tbl.glDisableVertexAttribArray(i);
@@ -2383,12 +2384,14 @@ void Iff::InitImmediate(RegalContext &ctx)
   tbl.glGenBuffers( 1, & immVboElement );
   tbl.glBindBuffer( GL_ELEMENT_ARRAY_BUFFER, immVboElement );
 
-#if REGAL_SYS_EMSCRIPTEN // To be tested again on EMSCRIPTEN
+//#if REGAL_SYS_EMSCRIPTEN
+  // GAB NOTE Dec 2018: the following does not seem necessary anymore. Tested with latest version of Chrome and Firefox.
+
   // We need this to be an allocated buffer for WebGL, because a dangling VertexAttribPointer
   // doesn't work.  XXX -- this might be a Firefox bug, check?
-  tbl.glBufferData( GL_ARRAY_BUFFER, sizeof( immArray ), NULL, GL_STATIC_DRAW );
-  tbl.glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( immArrayElement ), NULL, GL_STATIC_DRAW );
-#endif
+  //tbl.glBufferData( GL_ARRAY_BUFFER, sizeof( immArray ), NULL, GL_STATIC_DRAW );
+  //tbl.glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( immArrayElement ), NULL, GL_STATIC_DRAW );
+//#endif
 
   for (GLuint i = 0; i < max_vertex_attribs; i++)
   {
@@ -4392,7 +4395,8 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
       ss << "#version 140\n";
 #else
       ss << "#version 100\n";
-#if !REGAL_SYS_EMSCRIPTEN // Do not use shadow samplers extension on Emscripten/WebGL
+#if !REGAL_SYS_EMSCRIPTEN
+      // GAB NOTE Dec 2018: do not use EXT_shadow_samplers on Emscripten/WebGL. This is not a valid WebGL extension, and make shader compilation fail.
       ss << "#extension GL_EXT_shadow_samplers : enable\n";
       ss << "#define shadow2D(a,b) vec4(shadow2DEXT(a,b))\n";
 #endif
