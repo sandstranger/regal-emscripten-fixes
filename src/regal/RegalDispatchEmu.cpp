@@ -27305,12 +27305,20 @@ static void *REGAL_CALL emu_glMapBuffer(GLenum target, GLenum access)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        if (_context->isES2())
-        {
-          DispatchTableGL *_next = _context->dispatcher.emulation.next();
-          RegalAssert(_next);
-          return _next->call(&_next->glMapBufferOES)(target, access);
-        }
+        #if REGAL_SYS_EMSCRIPTEN
+          Warning("Regal does not support glMapBuffer for WebGL - skipping.");
+          #if REGAL_BREAK
+          Break::Filter();
+          #endif
+          return GL_FALSE;
+        #else
+          if (_context->isES2())
+          {
+            DispatchTableGL *_next = _context->dispatcher.emulation.next();
+            RegalAssert(_next);
+            return _next->call(&_next->glMapBufferOES)(target, access);
+          }
+        #endif
       }
       #endif
     default:
@@ -27388,12 +27396,20 @@ static GLboolean REGAL_CALL emu_glUnmapBuffer(GLenum target)
       {
         Push<int> pushLevel(_context->emuLevel);
         _context->emuLevel = 0;
-        if (_context->isES2())
-        {
-          DispatchTableGL *_next = _context->dispatcher.emulation.next();
-          RegalAssert(_next);
-          return _next->call(&_next->glUnmapBufferOES)(target);
-        }
+        #if REGAL_SYS_EMSCRIPTEN
+          Warning("Regal does not support glUnmapBuffer for WebGL - skipping.");
+          #if REGAL_BREAK
+          Break::Filter();
+          #endif
+          return GL_FALSE;
+        #else
+          if (_context->isES2())
+          {
+              DispatchTableGL *_next = _context->dispatcher.emulation.next();
+              RegalAssert(_next);
+              return _next->call(&_next->glUnmapBufferOES)(target);
+          }
+        #endif
       }
       #endif
     default:
