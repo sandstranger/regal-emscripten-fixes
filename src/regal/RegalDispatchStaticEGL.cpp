@@ -194,10 +194,7 @@ void InitDispatchTableStaticEGL(DispatchTableGlobal &tbl)
 {
   // EGL global dispatch
   tbl.reglChooseConfig = ::eglChooseConfig;
-  tbl.reglCopyBuffers = ::eglCopyBuffers;
   tbl.reglCreateContext = ::eglCreateContext;
-  tbl.reglCreatePbufferSurface = ::eglCreatePbufferSurface;
-  tbl.reglCreatePixmapSurface = ::eglCreatePixmapSurface;
   tbl.reglCreateWindowSurface = ::eglCreateWindowSurface;
   tbl.reglDestroyContext = ::eglDestroyContext;
   tbl.reglDestroySurface = ::eglDestroySurface;
@@ -216,19 +213,24 @@ void InitDispatchTableStaticEGL(DispatchTableGlobal &tbl)
   tbl.reglQuerySurface = ::eglQuerySurface;
   tbl.reglSwapBuffers = ::eglSwapBuffers;
   tbl.reglTerminate = ::eglTerminate;
-  tbl.reglWaitGL = ::eglWaitGL;
   tbl.reglWaitNative = ::eglWaitNative;
-  tbl.reglBindTexImage = ::eglBindTexImage;
-  tbl.reglReleaseTexImage = ::eglReleaseTexImage;
   tbl.reglBindAPI = ::eglBindAPI;
-  tbl.reglCreatePbufferFromClientBuffer = ::eglCreatePbufferFromClientBuffer;
   tbl.reglQueryAPI = ::eglQueryAPI;
   tbl.reglReleaseThread = ::eglReleaseThread;
-  tbl.reglSurfaceAttrib = ::eglSurfaceAttrib;
   tbl.reglSwapInterval = ::eglSwapInterval;
   tbl.reglWaitClient = ::eglWaitClient;
 
 #if !REGAL_SYS_EMSCRIPTEN
+  // As of Dec 2018, these are not implemented on Emscripten
+  tbl.reglCreatePixmapSurface = ::eglCreatePixmapSurface;
+  tbl.reglCopyBuffers = ::eglCopyBuffers;
+  tbl.reglCreatePbufferSurface = ::eglCreatePbufferSurface;
+  tbl.reglCreatePbufferFromClientBuffer = ::eglCreatePbufferFromClientBuffer;
+  tbl.reglSurfaceAttrib = ::eglSurfaceAttrib;
+  tbl.reglBindTexImage = ::eglBindTexImage;
+  tbl.reglReleaseTexImage = ::eglReleaseTexImage;
+  tbl.reglWaitGL = ::eglWaitGL;
+
   tbl.reglQuerySurfacePointerANGLE = ::eglQuerySurfacePointerANGLE;
   tbl.reglClientWaitSyncKHR = ::eglClientWaitSyncKHR;
   tbl.reglCreateSyncKHR = ::eglCreateSyncKHR;

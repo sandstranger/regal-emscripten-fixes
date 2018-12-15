@@ -438,7 +438,7 @@ _mesa_glsl_initialize_types(struct _mesa_glsl_parse_state *state)
 				       state->EXT_texture_array_warn);
    }
 
-#if !REGAL_SYS_EMSCRIPTEN
+#ifndef __EMSCRIPTEN__ // Not sure if this is usefull
    if (state->EXT_shadow_samplers_enable && state->es_shader) {
       glsl_type::generate_EXT_shadow_samplers_types(state->symbols,
                                                     state->EXT_shadow_samplers_warn);
