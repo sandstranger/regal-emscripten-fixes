@@ -180,6 +180,10 @@ ifneq ($(REGAL_NO_TLS),)
 REGAL.CFLAGS         += -DREGAL_NO_TLS=$(REGAL_NO_TLS)
 endif
 
+ifneq ($(REGAL_THREAD_LOCKING),)
+REGAL.CFLAGS         += -DREGAL_THREAD_LOCKING=$(REGAL_THREAD_LOCKING)
+endif
+
 REGAL.CFLAGS         += -fvisibility=hidden
 
 REGAL.SRCS.NAMES     := $(notdir $(REGAL.SRCS))
