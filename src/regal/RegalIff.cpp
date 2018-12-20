@@ -896,7 +896,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       s << "        vec3 csrc" << i << " = ";
       if ( op == Iff::TCO_OneMinusColor || op == Iff::TCO_OneMinusAlpha )
       {
-        s << "1 - ";
+        s << "1.0 - ";
       }
       s << source << suffix << ";\n";
     }
@@ -976,7 +976,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         s << "        float asrc" << i << " = ";
         if ( op == Iff::TCO_OneMinusAlpha )
         {
-          s << "1 - ";
+          s << "1.0 - ";
         }
         s << source << ".w;\n";
       }
@@ -1837,7 +1837,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, GLuint vshd, GLuin
   Attribs( ctx );
   tbl.call(&tbl.glLinkProgram)( pg );
 
-#ifndef NDEBUG
+//#ifndef NDEBUG
   GLint status = 0;
   tbl.call(&tbl.glGetProgramiv)( pg, GL_LINK_STATUS, &status );
   if (!status)
@@ -1846,7 +1846,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, GLuint vshd, GLuin
     if (helper::getInfoLog(log,tbl.call(&tbl.glGetProgramInfoLog),tbl.call(&tbl.glGetProgramiv),pg))
       Warning( "Regal::Program::Init", log);
   }
-#endif
+//#endif
 
   tbl.call(&tbl.glUseProgram)( pg );
   Samplers( ctx, tbl );
@@ -1864,10 +1864,13 @@ void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GL
   GLint len[] = { 0 };
   len[0] = (GLint)strlen( src );
   shader = tbl.call(&tbl.glCreateShader)(type);
+  Info("Ici:", shader);
+  Info("La:",src);
   tbl.call(&tbl.glShaderSource)( shader, 1, srcs, len );
   tbl.call(&tbl.glCompileShader)( shader );
 
-#ifndef NDEBUG
+
+//#ifndef NDEBUG
   GLint status = 0;
   tbl.call(&tbl.glGetShaderiv)( shader, GL_COMPILE_STATUS, &status );
   if (!status)
@@ -1876,7 +1879,7 @@ void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GL
     if (helper::getInfoLog(log,tbl.call(&tbl.glGetShaderInfoLog),tbl.call(&tbl.glGetShaderiv),shader))
       Warning("Regal::Program::Shader", log);
   }
-#endif
+//#endif
 
 }
 
