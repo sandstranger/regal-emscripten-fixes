@@ -983,7 +983,7 @@ ContextInfo::init(const RegalContext &context)
 
   extensionsSet.insert(driverExtensions.begin(),driverExtensions.end());
 
-  Info("OpenGL extensions: ",extensionsSet);
+  Info("OpenGL extensions: ",extensions);
 
   if (!es1 && !es2)
   {
