@@ -21437,10 +21437,15 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
+#ifdef __EMSCRIPTEN__
+        // GAB Note Dec 2018: glClientActiveTexture seems to be correctly emulated. I don't know why we would report a skip warning.
+        return;
+#else
           Warning("Regal does not support glClientActiveTexture for ES 2.0 - skipping.");
           #if REGAL_BREAK
           Break::Filter();
           #endif
+#endif
           return ;
         }
       }
