@@ -920,7 +920,9 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       break;
     case Iff::TEC_Dot3Rgb:
     case Iff::TEC_Dot3Rgba:
-      s << "        p.xyz = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n";
+      // GAB Note Dec 2018: Not sure this is correct for DOT3 bump mapping
+      s << "        float NdotL = max(dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) ),0.0);\n";
+      s << "        p.xyz = vec3(NdotL,NdotL,NdotL);\n";
       break;
     case Iff::TEC_Interpolate:
       s << "        p.xyz = mix( csrc0, csrc1, csrc2);\n";
@@ -930,7 +932,8 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       break;
       break;
   }
-  if ( env.rgb.scale != 1.0 )
+  // GAB Note Dec 2018: always apply the scale, so that value will be clamped
+  //if ( env.rgb.scale != 1.0 )
   {
     std::ostringstream stringStream;
     stringStream << std::fixed << env.rgb.scale;
@@ -1006,7 +1009,9 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         break;
         break;
     }
-    if ( env.a.scale != 1.0 ) {
+    // GAB Note Dec 2018: always apply the scale, so that value will be clamped
+    //if ( env.a.scale != 1.0 )
+    {
         std::ostringstream stringStream;
         stringStream << std::fixed << env.a.scale;
 
@@ -1864,11 +1869,8 @@ void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GL
   GLint len[] = { 0 };
   len[0] = (GLint)strlen( src );
   shader = tbl.call(&tbl.glCreateShader)(type);
-  Info("Ici:", shader);
-  Info("La:",src);
   tbl.call(&tbl.glShaderSource)( shader, 1, srcs, len );
   tbl.call(&tbl.glCompileShader)( shader );
-
 
 //#ifndef NDEBUG
   GLint status = 0;
