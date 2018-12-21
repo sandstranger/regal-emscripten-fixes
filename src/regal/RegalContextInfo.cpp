@@ -1714,10 +1714,6 @@ ContextInfo::init(const RegalContext &context)
   egl_nv_system_time                                 = stringSetFind(e,"EGL_NV_system_time");
 #endif /* REGAL_SYS_EGL */
 
-  Info("OES_vertex_array_object", gl_oes_vertex_array_object);
-  Info("WEBGL_compressed_texture_s3tc", gl_ext_texture_compression_s3tc);
-  Info("GL_EXT_texture_filter_anisotropic", gl_ext_texture_filter_anisotropic);
-
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
   RegalAssert(context.dispatcher.driver.glGetBooleanv);
 
