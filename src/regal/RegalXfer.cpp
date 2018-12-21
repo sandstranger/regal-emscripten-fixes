@@ -353,11 +353,13 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
 
   switch (internalFormat)
   {
-    // Only supported in desktop mode
+#ifndef __EMSCRITPEN__
+      // Only supported in desktop mode
 
     case GL_RGB5:
       tbl.glTexImage2D( target, level, internalFormat, width, height, border, format, type, pixels );
       return;
+#endif
 
     // Formats common to GL and ES 2.0, just pass-through directly.
 
