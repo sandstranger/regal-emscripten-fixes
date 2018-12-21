@@ -983,7 +983,7 @@ ContextInfo::init(const RegalContext &context)
 
   extensionsSet.insert(driverExtensions.begin(),driverExtensions.end());
 
-  Info("OpenGL extensions: ",extensions);
+  Info("OpenGL extensions: ",extensionsSet);
 
   if (!es1 && !es2)
   {
@@ -1298,7 +1298,7 @@ ContextInfo::init(const RegalContext &context)
   gl_ext_texture_buffer_object                       = stringSetFind(e,"GL_EXT_texture_buffer_object");
   gl_ext_texture_compression_latc                    = stringSetFind(e,"GL_EXT_texture_compression_latc");
   gl_ext_texture_compression_rgtc                    = stringSetFind(e,"GL_EXT_texture_compression_rgtc");
-  gl_ext_texture_compression_s3tc                    = stringSetFind(e,"GL_EXT_texture_compression_s3tc");
+  gl_ext_texture_compression_s3tc                    = stringSetFind(e,"GL_EXT_texture_compression_s3tc")||stringSetFind(e,"WEBGL_texture_compression_s3tc");
   gl_ext_texture_cube_map                            = stringSetFind(e,"GL_EXT_texture_cube_map");
   gl_ext_texture_edge_clamp                          = stringSetFind(e,"GL_EXT_texture_edge_clamp");
   gl_ext_texture_env_combine                         = stringSetFind(e,"GL_EXT_texture_env_combine");
@@ -1713,6 +1713,10 @@ ContextInfo::init(const RegalContext &context)
   egl_nv_sync                                        = stringSetFind(e,"EGL_NV_sync");
   egl_nv_system_time                                 = stringSetFind(e,"EGL_NV_system_time");
 #endif /* REGAL_SYS_EGL */
+
+  Info("OES_vertex_array_object", gl_oes_vertex_array_object);
+  Info("WEBGL_compressed_texture_s3tc", gl_ext_texture_compression_s3tc);
+  Info("GL_EXT_texture_filter_anisotropic", gl_ext_texture_filter_anisotropic);
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
   RegalAssert(context.dispatcher.driver.glGetBooleanv);
