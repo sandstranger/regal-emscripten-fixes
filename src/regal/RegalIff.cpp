@@ -2732,6 +2732,9 @@ void Iff::InitFixedFunction(RegalContext &ctx)
   fmtmap[ GL_RGB16F_ARB ]       = GL_RGB;
   fmtmap[ GL_RGBA32F_ARB ]      = GL_RGB;
 
+  // GAB Note Dec 2018: This was missing
+  fmtmap[ GL_DEPTH_COMPONENT ]   = GL_DEPTH_COMPONENT;
+
   fmtmap[ GL_DEPTH_COMPONENT16 ] = GL_DEPTH_COMPONENT16;
 
   fmtmap[ GL_INTENSITY16F_ARB ] = GL_INTENSITY;

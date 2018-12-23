@@ -639,6 +639,8 @@ namespace Emu {
 
     if (ctx.isES2())
     {
+      // GAB TODO: Need to filter out "GL_DEPTH_TEXTURE" of internal format if OES_depth_texture|ARB_depth_texture not present
+
       switch ( target )
       {
         case GL_PROXY_TEXTURE_CUBE_MAP:
