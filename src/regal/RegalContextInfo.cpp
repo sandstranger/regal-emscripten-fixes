@@ -1456,7 +1456,7 @@ ContextInfo::init(const RegalContext &context)
   gl_oes_blend_subtract                              = stringSetFind(e,"GL_OES_blend_subtract");
   gl_oes_compressed_etc1_rgb8_texture                = stringSetFind(e,"GL_OES_compressed_ETC1_RGB8_texture");
   gl_oes_compressed_paletted_texture                 = stringSetFind(e,"GL_OES_compressed_paletted_texture");
-  gl_oes_depth_texture                               = stringSetFind(e,"GL_OES_depth_texture");
+  gl_oes_depth_texture                               = stringSetFind(e,"GL_OES_depth_texture")||stringSetFind(e,"WEBGL_depth_texture");
   gl_oes_draw_texture                                = stringSetFind(e,"GL_OES_draw_texture");
   gl_oes_element_index_uint                          = stringSetFind(e,"GL_OES_element_index_uint");
   gl_oes_fbo_render_mipmap                           = stringSetFind(e,"GL_OES_fbo_render_mipmap");
