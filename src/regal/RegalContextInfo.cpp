@@ -1087,7 +1087,7 @@ ContextInfo::init(const RegalContext &context)
   gl_arb_clear_buffer_object                         = stringSetFind(e,"GL_ARB_clear_buffer_object");
   gl_arb_clear_texture                               = stringSetFind(e,"GL_ARB_clear_texture");
   gl_arb_clip_control                                = stringSetFind(e,"GL_ARB_clip_control");
-  gl_arb_color_buffer_float                          = stringSetFind(e,"GL_ARB_color_buffer_float")||stringSetFind(e,"WEBGL_color_buffer_float");
+  gl_arb_color_buffer_float                          = stringSetFind(e,"GL_ARB_color_buffer_float");
   gl_arb_compressed_texture_pixel_storage            = stringSetFind(e,"GL_ARB_compressed_texture_pixel_storage");
   gl_arb_compute_shader                              = stringSetFind(e,"GL_ARB_compute_shader");
   gl_arb_compute_variable_group_size                 = stringSetFind(e,"GL_ARB_compute_variable_group_size");
@@ -1713,23 +1713,6 @@ ContextInfo::init(const RegalContext &context)
   egl_nv_sync                                        = stringSetFind(e,"EGL_NV_sync");
   egl_nv_system_time                                 = stringSetFind(e,"EGL_NV_system_time");
 #endif /* REGAL_SYS_EGL */
-
-    Info("gl_angle_instanced_arrays ", gl_angle_instanced_arrays ? "enabled" : "disabled");
-    Info("gl_ext_blend_minmax: ", gl_ext_blend_minmax ? "enabled" : "disabled");
-    Info("gl_ext_color_buffer_half_float: ", gl_ext_color_buffer_half_float ? "enabled" : "disabled");
-    Info("gl_ext_disjoint_timer_query: ", gl_ext_disjoint_timer_query ? "enabled" : "disabled");
-    Info("gl_ext_srgb ", gl_ext_srgb ? "enabled" : "disabled");
-                 Info("gl_oes_element_index_uint ", gl_oes_element_index_uint ? "enabled" : "disabled");
-                 Info("gl_oes_standard_derivatives ", gl_oes_standard_derivatives ? "enabled" : "disabled");
-                 Info("gl_arb_texture_float ", gl_arb_texture_float ? "enabled" : "disabled");
-                 Info("gl_oes_vertex_array_object ", gl_oes_vertex_array_object ? "enabled" : "disabled");
-                 Info("gl_ext_texture_filter_anisotropic ", gl_ext_texture_filter_anisotropic ? "enabled" : "disabled");
-                 Info("gl_ext_texture_compression_s3tc ", gl_ext_texture_compression_s3tc ? "enabled" : "disabled");
-                 Info("gl_oes_depth_texture ", gl_oes_depth_texture ? "enabled" : "disabled");
-                 Info("gl_arb_draw_buffers ", gl_arb_draw_buffers ? "enabled" : "disabled");
-                 Info("gl_arb_color_buffer_float ", gl_arb_color_buffer_float ? "enabled" : "disabled");
-
-
 
   RegalAssert(context.dispatcher.driver.glGetIntegerv);
   RegalAssert(context.dispatcher.driver.glGetBooleanv);
