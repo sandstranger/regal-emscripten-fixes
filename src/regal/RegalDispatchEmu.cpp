@@ -3346,9 +3346,9 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum buf)
         _context->emuLevel = 13;
         if( !_context->isES2() ) {
           _context->ppa->glDrawBuffer( buf );
-          _context->dispatcher.emulation.glDrawBuffer( buf );
         }
-        return;
+        // GAB Note Dec 2018: on ES2 context, proceed to next layer
+        return _context->dispatcher.emulation.glDrawBuffer( buf );
       }
       #endif
     case 13 :
@@ -3373,8 +3373,18 @@ static void REGAL_CALL emu_glDrawBuffer(GLenum buf)
         {
           DispatchTableGL *_next = _context->dispatcher.emulation.next();
           RegalAssert(_next);
-          if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit)
+          if (_context->info->gl_nv_framebuffer_blit || _context->info->gl_ext_framebuffer_blit) {
             return _next->call(&_next->glDrawBuffer)(buf);
+          }
+          else
+          {
+            // GAB Note Dec 2018: glDrawBuffer is not supported on ES profiles without gl_nv/ext_framebuffer_blit
+            Warning("Regal does not support glDrawBuffer for ES2 profiles without gl_nv/ext_framebuffer_blit - skipping.");
+            #if REGAL_BREAK
+            Break::Filter();
+            #endif
+            return;
+          }
         }
       }
       #endif
@@ -21428,6 +21438,9 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
       }
       #endif
     case 3 :
+        #if REGAL_EMU_VAO
+        return;
+        #endif
     case 2 :
     case 1 :
       #if REGAL_EMU_FILTER
@@ -21437,15 +21450,10 @@ static void REGAL_CALL emu_glClientActiveTexture(GLenum texture)
         _context->emuLevel = 0;
         if (_context->isES2())
         {
-#ifdef __EMSCRIPTEN__
-        // GAB Note Dec 2018: glClientActiveTexture seems to be correctly emulated. I don't know why we would report a skip warning.
-        return;
-#else
           Warning("Regal does not support glClientActiveTexture for ES 2.0 - skipping.");
           #if REGAL_BREAK
           Break::Filter();
           #endif
-#endif
           return ;
         }
       }
