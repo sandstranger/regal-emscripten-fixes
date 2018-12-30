@@ -1895,7 +1895,8 @@ struct Iff
         plane.w = RFFToFloat( 3, param );
         ffstate.SetTexgen( this, idx, pname, & plane.x );
         //<> dsn: is this 'return' right?  Shouldn't we be updating ver?
-        return true;
+        //GAB Note Dec 2018: ok, do not return now so that version can update
+        //return true;
       }
       break;
       default:
