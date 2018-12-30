@@ -921,7 +921,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
     case Iff::TEC_Dot3Rgb:
     case Iff::TEC_Dot3Rgba:
       // GAB Note Dec 2018: Not sure this is correct for DOT3 bump mapping
-      s << "        float NdotL = max(dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) ),0.0);\n";
+      s << "        float NdotL = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n";
       s << "        p.xyz = vec3(NdotL,NdotL,NdotL);\n";
       break;
     case Iff::TEC_Interpolate:
