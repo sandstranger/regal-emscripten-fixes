@@ -851,6 +851,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
   for ( int i = 0; i < rgbSources; i++ )
   {
     bool skip = false;
+    bool selecttexenvcolor = false;
     string source;
     Iff::TexenvCombineSrc src = i == 0 ? env.rgb.src0 : i == 1 ? env.rgb.src1 : env.rgb.src2;
     switch( src )
@@ -859,7 +860,10 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         source = "rglFrontColor";
         break;
       case Iff::TCS_Constant:
-        source = "rglConstantColor";
+        // GAB Note Dec 2018: rglConstantColor is never bound, rglTexEnvColor must be used instead. The index will be append later on.
+        // source = "rglConstantColor";
+        source = "rglTexEnvColor";
+        selecttexenvcolor = true;
         break;
       case Iff::TCS_Previous:
         source = "p";
@@ -898,7 +902,14 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       {
         s << "1.0 - ";
       }
-      s << source << suffix << ";\n";
+      // GAB Note Dec 2018: in case TexEnvColor is chosen, be sure to add the index
+      if (selecttexenvcolor)
+      {
+          s << source << i << suffix << ";\n";
+      }
+      else {
+          s << source << suffix << ";\n";
+      }
     }
   }
   switch( env.rgb.mode )
@@ -920,7 +931,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       break;
     case Iff::TEC_Dot3Rgb:
     case Iff::TEC_Dot3Rgba:
-      // GAB Note Dec 2018: Not sure this is correct for DOT3 bump mapping
+      // GAB Note Dec 2018: Correctly compute DOT3 bumpmapping
       s << "        float NdotL = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n";
       s << "        p.xyz = vec3(NdotL,NdotL,NdotL);\n";
       break;
@@ -949,6 +960,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
     for ( int i = 0; i < aSources; i++ )
     {
       bool skip = false;
+      bool selecttexenvcolor = false;
       string source;
       Iff::TexenvCombineSrc src = i == 0 ? env.a.src0 : i == 1 ? env.a.src1 : env.a.src2;
       switch( src )
@@ -957,7 +969,10 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
           source = "rglFrontColor";
           break;
         case Iff::TCS_Constant:
-          source = "rglConstantColor";
+          // GAB Note Dec 2018: rglConstantColor is never bound, use rglTexEnvColor instead. The index will be append later on.
+          // source = "rglConstantColor";
+          source = "rglTexEnvColor";
+          selecttexenvcolor = true;
           break;
         case Iff::TCS_Previous:
           source = "p";
@@ -981,7 +996,16 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         {
           s << "1.0 - ";
         }
-        s << source << ".w;\n";
+        // GAB Note Dec 2018: in case TexEnvColor is chosen, be sure to add the index
+        if (selecttexenvcolor)
+        {
+            s << source << "i" << ".w;\n";
+        }
+        else
+        {
+            s << source << ".w;\n";
+        }
+
       }
     }
     switch( env.a.mode )
@@ -1186,16 +1210,23 @@ static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
         env.rgb.src0 == Iff::TCS_Constant ||
         env.rgb.src1 == Iff::TCS_Constant ||
         env.rgb.src2 == Iff::TCS_Constant ;
+
+      if (needsConstantColor)
+      {
+          // GAB Note Dec 2018: constant color must be mapped to TexEnvColor for things to work later on
+          src << "uniform vec4 rglTexEnvColor" << i << ";\n";
+      }
     }
     if ( env.mode == Iff::TEM_Blend )
     {
       src << "uniform vec4 rglTexEnvColor" << i << ";\n";
     }
   }
-  if ( needsConstantColor )
-  {
-    src << "uniform vec4 rglConstantColor;\n";
-  }
+  // GAB Note Dec 2018: rglConstantColor is never bound, so I disable it
+  //if ( needsConstantColor )
+  //{
+  //  src << "uniform vec4 rglConstantColor;\n";
+  //}
   n = array_size( st.clipPlaneEnabled );
   for ( size_t i = 0; i < n; i++ )
   {
@@ -1842,7 +1873,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, GLuint vshd, GLuin
   Attribs( ctx );
   tbl.call(&tbl.glLinkProgram)( pg );
 
-//#ifndef NDEBUG
+#ifndef NDEBUG
   GLint status = 0;
   tbl.call(&tbl.glGetProgramiv)( pg, GL_LINK_STATUS, &status );
   if (!status)
@@ -1851,7 +1882,7 @@ void Program::Init( RegalContext * ctx, const Store & sstore, GLuint vshd, GLuin
     if (helper::getInfoLog(log,tbl.call(&tbl.glGetProgramInfoLog),tbl.call(&tbl.glGetProgramiv),pg))
       Warning( "Regal::Program::Init", log);
   }
-//#endif
+#endif
 
   tbl.call(&tbl.glUseProgram)( pg );
   Samplers( ctx, tbl );
@@ -1872,7 +1903,7 @@ void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GL
   tbl.call(&tbl.glShaderSource)( shader, 1, srcs, len );
   tbl.call(&tbl.glCompileShader)( shader );
 
-//#ifndef NDEBUG
+#ifndef NDEBUG
   GLint status = 0;
   tbl.call(&tbl.glGetShaderiv)( shader, GL_COMPILE_STATUS, &status );
   if (!status)
@@ -1881,7 +1912,7 @@ void Program::Shader( RegalContext * ctx, DispatchTableGL & tbl, GLenum type, GL
     if (helper::getInfoLog(log,tbl.call(&tbl.glGetShaderInfoLog),tbl.call(&tbl.glGetShaderiv),shader))
       Warning("Regal::Program::Shader", log);
   }
-//#endif
+#endif
 
 }
 
@@ -2100,8 +2131,7 @@ void Iff::Cleanup( RegalContext &ctx )
     // Chromium/PepperAPI GLES generates an error (visible through glGetError)
     // and logs a message if a call is made to glVertexAttribPointer and no
     // GL_ARRAY_BUFFER is bound.
-#if !(/*REGAL_SYS_EMSCRIPTEN||*/REGAL_SYS_PPAPI)
-    // GAB NOTE Dec 2018: the following does not seem to fail with Emscripten. Tested with latest version of Chrome and Firefox.
+#if !REGAL_SYS_PPAPI
     tbl.glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 #endif
     tbl.glDisableVertexAttribArray(i);
