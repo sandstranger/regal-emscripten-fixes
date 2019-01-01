@@ -120,9 +120,9 @@ static void myError(GLenum error)
 
 int main(int argc, const char *argv[])
 {
-#ifndef __EMSCRIPTEN__
+  #ifndef __EMSCRIPTEN__
   glutInitDisplayString("rgba>=8 depth double");
-#endif
+  #endif
   glutInitWindowSize(500, 500);
   glutInit( &argc, (char **) argv);
   glutCreateWindow("dreamtorus");
@@ -183,6 +183,5 @@ int main(int argc, const char *argv[])
   glutReshapeFunc(dreamTorusReshape);
   glutKeyboardFunc(myKeyboard);
   glutMainLoop();
-  dreamTorusReshape(500,500);
   return 0;
 }
