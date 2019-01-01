@@ -91,28 +91,28 @@ struct EmuInfo
 
   // Emulated extensions and limits
 
-  GLboolean gl_arb_draw_buffers : 1;
-  GLboolean gl_arb_draw_elements_base_vertex : 1;
-  GLboolean gl_arb_multitexture : 1;
-  GLboolean gl_arb_sampler_objects : 1;
-  GLboolean gl_arb_texture_cube_map : 1;
-  GLboolean gl_arb_texture_env_combine : 1;
-  GLboolean gl_arb_texture_env_dot3 : 1;
-  GLboolean gl_arb_texture_storage : 1;
-  GLboolean gl_arb_vertex_array_object : 1;
-  GLboolean gl_ati_draw_buffers : 1;
-  GLboolean gl_ext_blend_color : 1;
-  GLboolean gl_ext_blend_subtract : 1;
-  GLboolean gl_ext_direct_state_access : 1;
-  GLboolean gl_ext_framebuffer_blit : 1;
-  GLboolean gl_ext_framebuffer_object : 1;
-  GLboolean gl_ext_texture_cube_map : 1;
-  GLboolean gl_ext_texture_edge_clamp : 1;
-  GLboolean gl_ext_texture_env_combine : 1;
-  GLboolean gl_ext_texture_env_dot3 : 1;
-  GLboolean gl_ibm_texture_mirrored_repeat : 1;
-  GLboolean gl_nv_blend_square : 1;
-  GLboolean gl_nv_path_rendering : 1;
+  GLboolean gl_arb_draw_buffers;
+  GLboolean gl_arb_draw_elements_base_vertex;
+  GLboolean gl_arb_multitexture;
+  GLboolean gl_arb_sampler_objects;
+  GLboolean gl_arb_texture_cube_map;
+  GLboolean gl_arb_texture_env_combine;
+  GLboolean gl_arb_texture_env_dot3;
+  GLboolean gl_arb_texture_storage;
+  GLboolean gl_arb_vertex_array_object;
+  GLboolean gl_ati_draw_buffers;
+  GLboolean gl_ext_blend_color;
+  GLboolean gl_ext_blend_subtract;
+  GLboolean gl_ext_direct_state_access;
+  GLboolean gl_ext_framebuffer_blit;
+  GLboolean gl_ext_framebuffer_object;
+  GLboolean gl_ext_texture_cube_map;
+  GLboolean gl_ext_texture_edge_clamp;
+  GLboolean gl_ext_texture_env_combine;
+  GLboolean gl_ext_texture_env_dot3;
+  GLboolean gl_ibm_texture_mirrored_repeat;
+  GLboolean gl_nv_blend_square;
+  GLboolean gl_nv_path_rendering;
 
   GLuint gl_max_attrib_stack_depth;
   GLuint gl_max_client_attrib_stack_depth;
