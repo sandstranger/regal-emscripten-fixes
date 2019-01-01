@@ -192,12 +192,12 @@ EmuInfo::init(const ContextInfo &contextInfo)
   Info("Regal extensions : ",extensions);
 
   gl_arb_draw_buffers                   = false;
-  gl_arb_draw_elements_base_vertex      = false;
-  gl_arb_multitexture                   = false;
+  gl_arb_draw_elements_base_vertex      = REGAL_EMU_BASEVERTEX;
+  gl_arb_multitexture                   = REGAL_EMU_IFF;
   gl_arb_sampler_objects                = false;
-  gl_arb_texture_cube_map               = false;
-  gl_arb_texture_env_combine            = false;
-  gl_arb_texture_env_dot3               = false;
+  gl_arb_texture_cube_map               = REGAL_EMU_IFF;
+  gl_arb_texture_env_combine            = REGAL_EMU_IFF;
+  gl_arb_texture_env_dot3               = REGAL_EMU_IFF;
   gl_arb_texture_storage                = false;
   gl_arb_vertex_array_object            = false;
   gl_ati_draw_buffers                   = false;
@@ -206,10 +206,10 @@ EmuInfo::init(const ContextInfo &contextInfo)
   gl_ext_direct_state_access            = false;
   gl_ext_framebuffer_blit               = false;
   gl_ext_framebuffer_object             = false;
-  gl_ext_texture_cube_map               = false;
-  gl_ext_texture_edge_clamp             = false;
-  gl_ext_texture_env_combine            = false;
-  gl_ext_texture_env_dot3               = false;
+  gl_ext_texture_cube_map               = REGAL_EMU_IFF;
+  gl_ext_texture_edge_clamp             = REGAL_EMU_IFF;
+  gl_ext_texture_env_combine            = REGAL_EMU_IFF;
+  gl_ext_texture_env_dot3               = REGAL_EMU_IFF;
   gl_ibm_texture_mirrored_repeat        = false;
   gl_nv_blend_square                    = false;
   gl_nv_path_rendering                  = false;
@@ -235,8 +235,9 @@ EmuInfo::init(const ContextInfo &contextInfo)
 #if (REGAL_SYS_EMSCRIPTEN||REGAL_SYS_PPAPI)
   gl_max_vertex_attribs = std::min<GLuint>(gl_max_vertex_attribs,8);
 #else
-  // Qualcomm fails with float4 attribs with 256 byte stride. Also limit to 8 attribs in that case
-  if (contextInfo.vendor == "Qualcomm") {
+  // Qualcomm fails with float4 attribs with 256 byte stride.
+  // Limit to 8 attribs in that case, as well as general WebGL also
+  if (contextInfo.vendor == "Qualcomm" || contextInfo.webgl) {
     gl_max_vertex_attribs = std::min<GLuint>(gl_max_vertex_attribs, 8);
   }
 #endif
