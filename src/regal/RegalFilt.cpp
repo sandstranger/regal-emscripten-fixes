@@ -121,11 +121,10 @@ namespace Emu {
           break;
 
 #ifdef __EMSCRIPTEN__
-        // GAB NOTE: sometime gl_ext_texture_filter_anisotropic is supported on browsers
-          case GL_TEXTURE_MAX_ANISOTROPY_EXT:
-            if (ctx.info->gl_ext_texture_filter_anisotropic) {
-              return false;
-            }
+        // GAB NOTE: gl_ext_texture_filter_anisotropic might be supported on browsers
+        case GL_TEXTURE_MAX_ANISOTROPY_EXT:
+          if (ctx.info->gl_ext_texture_filter_anisotropic)
+            return false;
 #endif
 
         // sRGB is supported for Tegra 4 onwards
@@ -639,8 +638,6 @@ namespace Emu {
 
     if (ctx.isES2())
     {
-      // GAB TODO: Need to filter out "GL_DEPTH_TEXTURE" of internal format if OES_depth_texture|ARB_depth_texture not present
-
       switch ( target )
       {
         case GL_PROXY_TEXTURE_CUBE_MAP:
