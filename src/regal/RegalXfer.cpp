@@ -141,6 +141,13 @@ namespace Emu {
       tgttype = GL_UNSIGNED_BYTE;
     }
     if ( format == GL_BGRA && type == GL_UNSIGNED_INT_8_8_8_8_REV ) {
+      // GAB NOTE Dec 2018: Not sure about this one: BGRA+REVERSE is equivalent to RGBA no?
+      complex = 1;
+      tgtfmt = GL_RGBA;
+      tgttype = GL_UNSIGNED_BYTE;
+    }
+    if ( format == GL_BGRA && type == GL_UNSIGNED_BYTE ) {
+      // GAB NOTE Dec 2018: This one seems to be missing. But not sure
       complex = 1;
       tgtfmt = GL_RGBA;
       tgttype = GL_UNSIGNED_BYTE;
@@ -219,6 +226,8 @@ namespace Emu {
     {
       case GL_COMPRESSED_RGB_S3TC_DXT1_EXT:
       case GL_COMPRESSED_RGBA_S3TC_DXT1_EXT:
+        // GAB: added, but need to implement
+      case GL_COMPRESSED_RGBA_S3TC_DXT3_EXT:
       case GL_COMPRESSED_RGBA_S3TC_DXT5_EXT:
       case GL_COMPRESSED_SRGB_S3TC_DXT1_EXT:
       case GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT:
@@ -312,7 +321,11 @@ namespace Emu {
             tbl.glTexSubImage2D( target, level, xoffset, yoffset + i, width, 4, TargetFormat(*ctx, internalFormat, GL_RGBA), GL_UNSIGNED_BYTE, vline );
           }
           break;
-        default:
+
+          case GL_COMPRESSED_RGBA_S3TC_DXT3_EXT:
+            // GAB: Need to implement
+            break;
+          default:
           break;
       }
     }
@@ -353,19 +366,24 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
 
   switch (internalFormat)
   {
+#ifdef __EMSCRITPEN__
+      // GAB Note Dec 2018: we could possibly handle:
+      //   GL_RGBA4   => using GL_RGBA/GL_RGBA with GL_UNSIGNED_SHORT_4_4_4_4 type
+      //   GL_RGB5_A1 => using GL_RGBA/GL_RGBA with GL_UNSIGNED_SHORT_5_5_5_1 type
+      // TO BE TESTED
+#else
     // Only supported in desktop mode
-
     case GL_RGB5:
       tbl.glTexImage2D( target, level, internalFormat, width, height, border, format, type, pixels );
       return;
 
     // Formats common to GL and ES 2.0, just pass-through directly.
-
     case GL_RGB5_A1:
       tbl.glTexImage2D( target, level, internalFormat, width, height, border, format, type, pixels );
       return;
+#endif
 
-    default:
+      default:
       break;
   }
 
@@ -401,6 +419,7 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
   if (ctx->isES2())
     internalFormat = targetFormat;
 
+  // GAB Note Dec 2018: I think passing NULL to the pixel argument is something that makes Chrome complaining
   tbl.glTexImage2D( target, level, internalFormat, width, height, border, targetFormat, targetType, NULL );
   name2ifmt[ textureBinding2D[ activeTextureIndex ] ] = internalFormat;
   if( pixels ) {
@@ -429,6 +448,7 @@ void Xfer::CompressedTexImage2D( RegalContext * ctx, GLenum target, GLint level,
     switch( internalFormat ) {
       case GL_COMPRESSED_RGB_S3TC_DXT1_EXT:
       case GL_COMPRESSED_RGBA_S3TC_DXT1_EXT:
+      case GL_COMPRESSED_RGBA_S3TC_DXT3_EXT:
       case GL_COMPRESSED_RGBA_S3TC_DXT5_EXT:
       case GL_COMPRESSED_SRGB_S3TC_DXT1_EXT:
       case GL_COMPRESSED_SRGB_ALPHA_S3TC_DXT5_EXT:

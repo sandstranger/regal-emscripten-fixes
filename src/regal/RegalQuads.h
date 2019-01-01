@@ -77,8 +77,8 @@ struct Quads
   GLenum cullFace;
   GLuint elementArrayBuffer;
   GLuint quadIndexBuffer;
-  bool   gl_quads_follow_provoking_vertex_convention : 1;
-  bool   cullingFaces : 1;
+  bool   gl_quads_follow_provoking_vertex_convention;
+  bool   cullingFaces;
 };
 
 }

@@ -88,7 +88,7 @@ ifeq ($(MODE),release)
 REGAL.CFLAGS       += -DNDEBUG
 REGAL.CFLAGS       += -DREGAL_DECL_EXPORT=1
 REGAL.CFLAGS       += -DREGAL_LOG_ALL=0
-REGAL.CFLAGS       += -DREGAL_LOG_ONCE=0
+REGAL.CFLAGS       += -DREGAL_LOG_ONCE=1
 REGAL.CFLAGS       += -DREGAL_LOG_JSON=0
 REGAL.CFLAGS       += -DREGAL_HTTP=0
 REGAL.CFLAGS       += -DREGAL_NO_ASSERT=1
@@ -142,6 +142,8 @@ REGAL.CFLAGS  += -DREGAL_HTTP=0
 REGAL.CFLAGS  += -Wno-constant-logical-operand
 REGAL.CFLAGS  += -DREGAL_PLUGIN=0
 REGAL.CFLAGS  += -DREGAL_TRACE=0
+# GAB Dec 2018: Disable libPNG usage in all cases (ie. even if Debug build)
+REGAL.CFLAGS  += -DREGAL_NO_PNG=1
 # GAB Dec 2018: Optimizer is disabled by default now, as it is probably no more really useful with latest mobile platforms
 REGAL.CFLAGS  += -DREGAL_GLSL_OPTIMIZER=0
 REGAL_LOG     := 0

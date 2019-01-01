@@ -895,6 +895,10 @@ ContextInfo::init(const RegalContext &context)
   }
   #endif
 
+  #if REGAL_SYS_EMSCRIPTEN
+  webgl = starts_with(version, "WebGL");
+  #endif
+
   // For Mesa3D EGL/ES 2.0 on desktop Linux the version string doesn't start with
   // "OpenGL ES" Is that a Mesa3D bug? Perhaps...
 
@@ -909,7 +913,7 @@ ContextInfo::init(const RegalContext &context)
   }
   #endif
 
-  #if REGAL_SYS_ES2 && REGAL_SYS_EMSCRIPTEN
+  #if REGAL_SYS_ES2 && REGAL_SYS_EGL && REGAL_SYS_EMSCRIPTEN
   {
     es1 = false;
     es2 = true;
@@ -1045,7 +1049,7 @@ ContextInfo::init(const RegalContext &context)
   gl_amd_vertex_shader_tessellator                   = stringSetFind(e,"GL_AMD_vertex_shader_tessellator");
   gl_angle_framebuffer_blit                          = stringSetFind(e,"GL_ANGLE_framebuffer_blit");
   gl_angle_framebuffer_multisample                   = stringSetFind(e,"GL_ANGLE_framebuffer_multisample");
-  gl_angle_instanced_arrays                          = stringSetFind(e,"GL_ANGLE_instanced_arrays");
+  gl_angle_instanced_arrays                          = stringSetFind(e,"GL_ANGLE_instanced_arrays")||stringSetFind(e,"ANGLE_instanced_arrays");
   gl_angle_pack_reverse_row_order                    = stringSetFind(e,"GL_ANGLE_pack_reverse_row_order");
   gl_angle_program_binary                            = stringSetFind(e,"GL_ANGLE_program_binary");
   gl_angle_texture_compression_dxt1                  = stringSetFind(e,"GL_ANGLE_texture_compression_dxt1");
@@ -1227,7 +1231,7 @@ ContextInfo::init(const RegalContext &context)
   gl_ext_blend_color                                 = stringSetFind(e,"GL_EXT_blend_color");
   gl_ext_blend_equation_separate                     = stringSetFind(e,"GL_EXT_blend_equation_separate");
   gl_ext_blend_func_separate                         = stringSetFind(e,"GL_EXT_blend_func_separate");
-  gl_ext_blend_minmax                                = stringSetFind(e,"GL_EXT_blend_minmax");
+  gl_ext_blend_minmax                                = stringSetFind(e,"GL_EXT_blend_minmax")||stringSetFind(e,"EXT_blend_minmax");
   gl_ext_blend_subtract                              = stringSetFind(e,"GL_EXT_blend_subtract");
   gl_ext_clip_volume_hint                            = stringSetFind(e,"GL_EXT_clip_volume_hint");
   gl_ext_cmyka                                       = stringSetFind(e,"GL_EXT_cmyka");
@@ -1303,7 +1307,7 @@ ContextInfo::init(const RegalContext &context)
   gl_ext_texture_edge_clamp                          = stringSetFind(e,"GL_EXT_texture_edge_clamp");
   gl_ext_texture_env_combine                         = stringSetFind(e,"GL_EXT_texture_env_combine");
   gl_ext_texture_env_dot3                            = stringSetFind(e,"GL_EXT_texture_env_dot3");
-  gl_ext_texture_filter_anisotropic                  = stringSetFind(e,"GL_EXT_texture_filter_anisotropic");
+  gl_ext_texture_filter_anisotropic                  = stringSetFind(e,"GL_EXT_texture_filter_anisotropic")||stringSetFind(e,"EXT_texture_filter_anisotropic");
   gl_ext_texture_format_bgra8888                     = stringSetFind(e,"GL_EXT_texture_format_BGRA8888");
   gl_ext_texture_integer                             = stringSetFind(e,"GL_EXT_texture_integer");
   gl_ext_texture_lod_bias                            = stringSetFind(e,"GL_EXT_texture_lod_bias");
@@ -1458,7 +1462,7 @@ ContextInfo::init(const RegalContext &context)
   gl_oes_compressed_paletted_texture                 = stringSetFind(e,"GL_OES_compressed_paletted_texture");
   gl_oes_depth_texture                               = stringSetFind(e,"GL_OES_depth_texture");
   gl_oes_draw_texture                                = stringSetFind(e,"GL_OES_draw_texture");
-  gl_oes_element_index_uint                          = stringSetFind(e,"GL_OES_element_index_uint");
+  gl_oes_element_index_uint                          = stringSetFind(e,"GL_OES_element_index_uint")||stringSetFind(e,"OES_element_index_uint");
   gl_oes_fbo_render_mipmap                           = stringSetFind(e,"GL_OES_fbo_render_mipmap");
   gl_oes_framebuffer_object                          = stringSetFind(e,"GL_OES_framebuffer_object");
   gl_oes_get_program_binary                          = stringSetFind(e,"GL_OES_get_program_binary");
@@ -1472,7 +1476,7 @@ ContextInfo::init(const RegalContext &context)
   gl_oes_required_internalformat                     = stringSetFind(e,"GL_OES_required_internalformat");
   gl_oes_rgb8_rgba8                                  = stringSetFind(e,"GL_OES_rgb8_rgba8");
   gl_oes_single_precision                            = stringSetFind(e,"GL_OES_single_precision");
-  gl_oes_standard_derivatives                        = stringSetFind(e,"GL_OES_standard_derivatives");
+  gl_oes_standard_derivatives                        = stringSetFind(e,"GL_OES_standard_derivatives")||stringSetFind(e,"OES_standard_derivatives");
   gl_oes_stencil1                                    = stringSetFind(e,"GL_OES_stencil1");
   gl_oes_stencil4                                    = stringSetFind(e,"GL_OES_stencil4");
   gl_oes_stencil8                                    = stringSetFind(e,"GL_OES_stencil8");
@@ -1480,7 +1484,7 @@ ContextInfo::init(const RegalContext &context)
   gl_oes_texture_3d                                  = stringSetFind(e,"GL_OES_texture_3D");
   gl_oes_texture_cube_map                            = stringSetFind(e,"GL_OES_texture_cube_map");
   gl_oes_texture_mirrored_repeat                     = stringSetFind(e,"GL_OES_texture_mirrored_repeat");
-  gl_oes_vertex_array_object                         = stringSetFind(e,"GL_OES_vertex_array_object");
+  gl_oes_vertex_array_object                         = stringSetFind(e,"GL_OES_vertex_array_object")||stringSetFind(e,"OES_vertex_array_object");
   gl_oes_vertex_half_float                           = stringSetFind(e,"GL_OES_vertex_half_float");
   gl_oes_vertex_type_10_10_10_2                      = stringSetFind(e,"GL_OES_vertex_type_10_10_10_2");
   gl_oml_interlace                                   = stringSetFind(e,"GL_OML_interlace");

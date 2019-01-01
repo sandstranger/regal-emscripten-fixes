@@ -851,6 +851,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
   for ( int i = 0; i < rgbSources; i++ )
   {
     bool skip = false;
+    bool selecttexenvcolor = false;
     string source;
     Iff::TexenvCombineSrc src = i == 0 ? env.rgb.src0 : i == 1 ? env.rgb.src1 : env.rgb.src2;
     switch( src )
@@ -859,7 +860,10 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         source = "rglFrontColor";
         break;
       case Iff::TCS_Constant:
-        source = "rglConstantColor";
+        // GAB Note Dec 2018: rglConstantColor is never bound, rglTexEnvColor must be used instead. The index will be append later on.
+        // source = "rglConstantColor";
+        source = "rglTexEnvColor";
+        selecttexenvcolor = true;
         break;
       case Iff::TCS_Previous:
         source = "p";
@@ -896,9 +900,18 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       s << "        vec3 csrc" << i << " = ";
       if ( op == Iff::TCO_OneMinusColor || op == Iff::TCO_OneMinusAlpha )
       {
-        s << "1 - ";
+        // GAB Note Dec 2018: fixed Shader compilation issue due to usage of int instead of float
+        // s << "1 - ";
+        s << "1.0 - ";
       }
-      s << source << suffix << ";\n";
+      // GAB Note Dec 2018: in case TexEnvColor is chosen, be sure to add the index
+      if (selecttexenvcolor)
+      {
+          s << source << i << suffix << ";\n";
+      }
+      else {
+          s << source << suffix << ";\n";
+      }
     }
   }
   switch( env.rgb.mode )
@@ -920,7 +933,10 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       break;
     case Iff::TEC_Dot3Rgb:
     case Iff::TEC_Dot3Rgba:
-      s << "        p.xyz = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n";
+      // GAB Note Dec 2018: fixed Shader compilation issue ue to bad swizzle (float assigned to .xyz)
+      // s << "        p.xyz = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n"; // <=
+      s << "        float NdotL = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n";
+      s << "        p.xyz = vec3(NdotL,NdotL,NdotL);\n";
       break;
     case Iff::TEC_Interpolate:
       s << "        p.xyz = mix( csrc0, csrc1, csrc2);\n";
@@ -930,8 +946,11 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       break;
       break;
   }
-  if ( env.rgb.scale != 1.0 )
+  // GAB Note Dec 2018: always apply the scale, so that value will be clamped
+  //if ( env.rgb.scale != 1.0 )
   {
+    // GAB Note Dec 2018: fixed Shader compilation due to float->int conversion (eg. 1.0 => 1)
+    // s << "        p.xyz = clamp(" << env.rgb.scale << " * p.xyz, 0.0, 1.0);\n";
     std::ostringstream stringStream;
     stringStream << std::fixed << env.rgb.scale;
     s << "        p.xyz = clamp(" << stringStream.str() << " * p.xyz, 0.0, 1.0);\n";
@@ -946,6 +965,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
     for ( int i = 0; i < aSources; i++ )
     {
       bool skip = false;
+      bool selecttexenvcolor = false;
       string source;
       Iff::TexenvCombineSrc src = i == 0 ? env.a.src0 : i == 1 ? env.a.src1 : env.a.src2;
       switch( src )
@@ -954,7 +974,10 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
           source = "rglFrontColor";
           break;
         case Iff::TCS_Constant:
-          source = "rglConstantColor";
+          // GAB Note Dec 2018: rglConstantColor is never bound, use rglTexEnvColor instead. The index will be append later on.
+          // source = "rglConstantColor";
+          source = "rglTexEnvColor";
+          selecttexenvcolor = true;
           break;
         case Iff::TCS_Previous:
           source = "p";
@@ -976,9 +999,20 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         s << "        float asrc" << i << " = ";
         if ( op == Iff::TCO_OneMinusAlpha )
         {
-          s << "1 - ";
+          // GAB Note Dec 2018: fixed Shader compilation issue due to usage of int instead of float
+          // s << "1 - ";
+          s << "1.0 - ";
         }
-        s << source << ".w;\n";
+        // GAB Note Dec 2018: in case TexEnvColor is chosen, be sure to add the index
+        if (selecttexenvcolor)
+        {
+            s << source << i << ".w;\n";
+        }
+        else
+        {
+            s << source << ".w;\n";
+        }
+
       }
     }
     switch( env.a.mode )
@@ -1006,11 +1040,14 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         break;
         break;
     }
-    if ( env.a.scale != 1.0 ) {
-        std::ostringstream stringStream;
-        stringStream << std::fixed << env.a.scale;
-
-        s << "        p.w = clamp(" << stringStream.str() << " * p.w, 0.0, 1.0);\n";
+    // GAB Note Dec 2018: always apply the scale, so that value will be clamped
+    //if ( env.a.scale != 1.0 )
+    {
+      // GAB Note Dec 2018: fixed Shader compilation due to float->int conversion (eg. 1.0 => 1)
+      // s << "        p.w = clamp(" << env.a.scale << " * p.w, 0.0, 1.0);\n";
+      std::ostringstream stringStream;
+      stringStream << std::fixed << env.a.scale;
+      s << "        p.w = clamp(" << stringStream.str() << " * p.w, 0.0, 1.0);\n";
     }
   }
   s << "    }\n";
@@ -1181,16 +1218,23 @@ static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
         env.rgb.src0 == Iff::TCS_Constant ||
         env.rgb.src1 == Iff::TCS_Constant ||
         env.rgb.src2 == Iff::TCS_Constant ;
+
+      // GAB Note Dec 2018: constant color must be mapped to TexEnvColor for things to work later on
+      if (needsConstantColor)
+      {
+          src << "uniform vec4 rglTexEnvColor" << i << ";\n";
+      }
     }
     if ( env.mode == Iff::TEM_Blend )
     {
       src << "uniform vec4 rglTexEnvColor" << i << ";\n";
     }
   }
-  if ( needsConstantColor )
-  {
-    src << "uniform vec4 rglConstantColor;\n";
-  }
+  // GAB Note Dec 2018: rglConstantColor is never bound, so I disable it
+  //if ( needsConstantColor )
+  //{
+  //  src << "uniform vec4 rglConstantColor;\n";
+  //}
   n = array_size( st.clipPlaneEnabled );
   for ( size_t i = 0; i < n; i++ )
   {
@@ -2095,8 +2139,7 @@ void Iff::Cleanup( RegalContext &ctx )
     // Chromium/PepperAPI GLES generates an error (visible through glGetError)
     // and logs a message if a call is made to glVertexAttribPointer and no
     // GL_ARRAY_BUFFER is bound.
-#if !(/*REGAL_SYS_EMSCRIPTEN||*/REGAL_SYS_PPAPI)
-    // GAB NOTE Dec 2018: the following does not seem to fail with Emscripten. Tested with latest version of Chrome and Firefox.
+#if !REGAL_SYS_PPAPI
     tbl.glVertexAttribPointer(i, 4, GL_FLOAT, GL_FALSE, 0, NULL);
 #endif
     tbl.glDisableVertexAttribArray(i);
@@ -2389,8 +2432,8 @@ void Iff::InitImmediate(RegalContext &ctx)
 
   // We need this to be an allocated buffer for WebGL, because a dangling VertexAttribPointer
   // doesn't work.  XXX -- this might be a Firefox bug, check?
-  //tbl.glBufferData( GL_ARRAY_BUFFER, sizeof( immArray ), NULL, GL_STATIC_DRAW );
-  //tbl.glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( immArrayElement ), NULL, GL_STATIC_DRAW );
+  tbl.glBufferData( GL_ARRAY_BUFFER, sizeof( immArray ), NULL, GL_STATIC_DRAW );
+  tbl.glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( immArrayElement ), NULL, GL_STATIC_DRAW );
 //#endif
 
   for (GLuint i = 0; i < max_vertex_attribs; i++)
@@ -2726,6 +2769,9 @@ void Iff::InitFixedFunction(RegalContext &ctx)
 
   fmtmap[ GL_RGB16F_ARB ]       = GL_RGB;
   fmtmap[ GL_RGBA32F_ARB ]      = GL_RGB;
+
+  // GAB Note Dec 2018: This was missing
+  fmtmap[ GL_DEPTH_COMPONENT ]   = GL_DEPTH_COMPONENT;
 
   fmtmap[ GL_DEPTH_COMPONENT16 ] = GL_DEPTH_COMPONENT16;
 

@@ -120,6 +120,13 @@ namespace Emu {
         case GL_TEXTURE_WRAP_T:
           break;
 
+#ifdef __EMSCRIPTEN__
+        // GAB NOTE: gl_ext_texture_filter_anisotropic might be supported on browsers
+        case GL_TEXTURE_MAX_ANISOTROPY_EXT:
+          if (ctx.info->gl_ext_texture_filter_anisotropic)
+            return false;
+#endif
+
         // sRGB is supported for Tegra 4 onwards
 
         case GL_TEXTURE_SRGB_DECODE_EXT:

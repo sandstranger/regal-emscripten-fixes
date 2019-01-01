@@ -23,9 +23,10 @@ LN :=
 # Defining this means that Regal will link statically to GL
 # and EGL, and code will have to #include <GL/Regal.h> before any GL
 # includes to pull in a bunch of #defines (e.g. #define glGetError rglGetError).
+#
 #EMSCRIPTEN_STATIC = -DREGAL_SYS_EMSCRIPTEN_STATIC=1
 
-CFLAGS.DEBUG   = -O2 $(EMSCRIPTEN_STATIC)
+CFLAGS.DEBUG   = -O1 -g $(EMSCRIPTEN_STATIC)
 CFLAGS.RELEASE = -O2 $(EMSCRIPTEN_STATIC)
 
 LIB.STATIC = lib$(NAME).a
