@@ -999,7 +999,7 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         // GAB Note Dec 2018: in case TexEnvColor is chosen, be sure to add the index
         if (selecttexenvcolor)
         {
-            s << source << "i" << ".w;\n";
+            s << source << i << ".w;\n";
         }
         else
         {
