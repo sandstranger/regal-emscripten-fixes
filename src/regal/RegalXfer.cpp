@@ -124,7 +124,7 @@ namespace Emu {
 
   static void SubImage2D( RegalContext * ctx, GLenum target, GLint internalFormat, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels )
   {
-      Internal("Regal::Xfer::SubImage2D","ctx=",ctx," target=",Token::GLenumToString(target)," internalFormat=",Token::GLenumToString(internalFormat)," level=",level," format=",Token::GLenumToString(format)," type=",Token::GLenumToString(type));
+    Internal("Regal::Xfer::SubImage2D","ctx=",ctx," target=",Token::GLenumToString(target)," internalFormat=",Token::GLenumToString(internalFormat)," level=",level," format=",Token::GLenumToString(format)," type=",Token::GLenumToString(type));
     RegalAssert(ctx);
 
     DispatchTableGL & tbl = ctx->dispatcher.emulation;
@@ -275,7 +275,7 @@ namespace Emu {
 
   static void CompressedSubImage2D( RegalContext * ctx, GLenum target, GLint level, GLint internalFormat, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLsizei imageSize, const GLvoid *data )
   {
-      Internal("Regal::Xfer::CompressedSubImage2D","target=", Token::GLenumToString(target), " level=", level,
+    Internal("Regal::Xfer::CompressedSubImage2D","target=", Token::GLenumToString(target), " level=", level,
              " format=", Token::GLenumToString(format));
     RegalAssert(ctx);
     DispatchTableGL & tbl = ctx->dispatcher.emulation;
@@ -350,7 +350,7 @@ void Xfer::PixelStore( RegalContext * ctx, GLenum pname, GLint param )
 
 void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLenum format, GLenum type, const GLvoid *pixels )
 {
-    Internal("Regal::Xfer::TexImage2D","ctx=",ctx," target=",Token::GLenumToString(target)," level=",level," internalFormat=",Token::GLenumToString(internalFormat));
+  Internal("Regal::Xfer::TexImage2D","ctx=",ctx," target=",Token::GLenumToString(target)," level=",level," internalFormat=",Token::GLenumToString(internalFormat));
   RegalAssert(ctx);
   DispatchTableGL &tbl = ctx->dispatcher.emulation;
 
@@ -430,20 +430,20 @@ void Xfer::TexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint int
 void Xfer::TexSubImage2D( RegalContext * ctx, GLenum target, GLint level, GLint xoffset, GLint yoffset, GLsizei width, GLsizei height, GLenum format, GLenum type, const GLvoid *pixels )
 {
   GLint internalFormat = name2ifmt[ textureBinding2D[ activeTextureIndex ] ];
-    Internal("Regal::Xfer::TexSubImage2D","target=", Token::GLenumToString(target), " level=", level,
+  Internal("Regal::Xfer::TexSubImage2D","target=", Token::GLenumToString(target), " level=", level,
            " internalFormat=", Token::GLenumToString(internalFormat), " format=", Token::GLenumToString(format));
   SubImage2D( ctx, target, internalFormat, level , xoffset, yoffset, width, height, format, type, pixels );
 }
 
 void Xfer::CompressedTexImage2D( RegalContext * ctx, GLenum target, GLint level, GLint internalFormat, GLsizei width, GLsizei height, GLint border, GLsizei imageSize, const GLvoid *data )
 {
-      Internal("Regal::Xfer::CompressedTexImage2D","target=", Token::GLenumToString(target), " level=", level,
+  Internal("Regal::Xfer::CompressedTexImage2D","target=", Token::GLenumToString(target), " level=", level,
            " format=", Token::GLenumToString(internalFormat));
 
   RegalAssert(ctx);
   DispatchTableGL & tbl = ctx->dispatcher.emulation;
   if( ShouldDecompress( ctx, internalFormat ) ) {
-      Internal("Regal::Xfer::CompressedTexImage2D","decompressing texture data");
+    Internal("Regal::Xfer::CompressedTexImage2D","decompressing texture data");
     GLenum ifmt = GL_RGBA;
     switch( internalFormat ) {
       case GL_COMPRESSED_RGB_S3TC_DXT1_EXT:
@@ -483,7 +483,7 @@ void Xfer::CompressedTexSubImage2D( RegalContext * ctx, GLenum target, GLint lev
 {
   UNUSED_PARAMETER(format);
   GLint ifmt = name2ifmt[ textureBinding2D[ activeTextureIndex ] ];
-    Internal("Regal::Xfer::CompressedTexSubImage2D","target=", Token::GLenumToString(target), " level=", level,
+  Internal("Regal::Xfer::CompressedTexSubImage2D","target=", Token::GLenumToString(target), " level=", level,
            " format=", Token::GLenumToString(format), " iformat=", Token::GLenumToString(ifmt));
 
   CompressedSubImage2D( ctx, target, level, ifmt, xoffset, yoffset, width, height, ifmt, imageSize, data );
