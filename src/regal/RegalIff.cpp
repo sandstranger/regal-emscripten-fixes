@@ -900,6 +900,8 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       s << "        vec3 csrc" << i << " = ";
       if ( op == Iff::TCO_OneMinusColor || op == Iff::TCO_OneMinusAlpha )
       {
+        // GAB Note Dec 2018: fixed Shader compilation issue due to usage of int instead of float
+        // s << "1 - ";
         s << "1.0 - ";
       }
       // GAB Note Dec 2018: in case TexEnvColor is chosen, be sure to add the index
@@ -931,7 +933,8 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
       break;
     case Iff::TEC_Dot3Rgb:
     case Iff::TEC_Dot3Rgba:
-      // GAB Note Dec 2018: Correctly compute DOT3 bumpmapping
+      // GAB Note Dec 2018: fixed Shader compilation issue ue to bad swizzle (float assigned to .xyz)
+      // s << "        p.xyz = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n"; // <=
       s << "        float NdotL = dot( ( 2.0 * csrc0 - 1.0 ), ( 2.0 * csrc1 - 1.0 ) );\n";
       s << "        p.xyz = vec3(NdotL,NdotL,NdotL);\n";
       break;
@@ -946,6 +949,8 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
   // GAB Note Dec 2018: always apply the scale, so that value will be clamped
   //if ( env.rgb.scale != 1.0 )
   {
+    // GAB Note Dec 2018: fixed Shader compilation due to float->int conversion (eg. 1.0 => 1)
+    // s << "        p.xyz = clamp(" << env.rgb.scale << " * p.xyz, 0.0, 1.0);\n";
     std::ostringstream stringStream;
     stringStream << std::fixed << env.rgb.scale;
     s << "        p.xyz = clamp(" << stringStream.str() << " * p.xyz, 0.0, 1.0);\n";
@@ -994,6 +999,8 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
         s << "        float asrc" << i << " = ";
         if ( op == Iff::TCO_OneMinusAlpha )
         {
+          // GAB Note Dec 2018: fixed Shader compilation issue due to usage of int instead of float
+          // s << "1 - ";
           s << "1.0 - ";
         }
         // GAB Note Dec 2018: in case TexEnvColor is chosen, be sure to add the index
@@ -1036,10 +1043,11 @@ static void AddTexEnvCombine( Iff::TextureEnv & env, string_list & s )
     // GAB Note Dec 2018: always apply the scale, so that value will be clamped
     //if ( env.a.scale != 1.0 )
     {
-        std::ostringstream stringStream;
-        stringStream << std::fixed << env.a.scale;
-
-        s << "        p.w = clamp(" << stringStream.str() << " * p.w, 0.0, 1.0);\n";
+      // GAB Note Dec 2018: fixed Shader compilation due to float->int conversion (eg. 1.0 => 1)
+      // s << "        p.w = clamp(" << env.a.scale << " * p.w, 0.0, 1.0);\n";
+      std::ostringstream stringStream;
+      stringStream << std::fixed << env.a.scale;
+      s << "        p.w = clamp(" << stringStream.str() << " * p.w, 0.0, 1.0);\n";
     }
   }
   s << "    }\n";
@@ -1211,9 +1219,9 @@ static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
         env.rgb.src1 == Iff::TCS_Constant ||
         env.rgb.src2 == Iff::TCS_Constant ;
 
+      // GAB Note Dec 2018: constant color must be mapped to TexEnvColor for things to work later on
       if (needsConstantColor)
       {
-          // GAB Note Dec 2018: constant color must be mapped to TexEnvColor for things to work later on
           src << "uniform vec4 rglTexEnvColor" << i << ";\n";
       }
     }
@@ -2424,8 +2432,8 @@ void Iff::InitImmediate(RegalContext &ctx)
 
   // We need this to be an allocated buffer for WebGL, because a dangling VertexAttribPointer
   // doesn't work.  XXX -- this might be a Firefox bug, check?
-  //tbl.glBufferData( GL_ARRAY_BUFFER, sizeof( immArray ), NULL, GL_STATIC_DRAW );
-  //tbl.glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( immArrayElement ), NULL, GL_STATIC_DRAW );
+  tbl.glBufferData( GL_ARRAY_BUFFER, sizeof( immArray ), NULL, GL_STATIC_DRAW );
+  tbl.glBufferData( GL_ELEMENT_ARRAY_BUFFER, sizeof( immArrayElement ), NULL, GL_STATIC_DRAW );
 //#endif
 
   for (GLuint i = 0; i < max_vertex_attribs; i++)
