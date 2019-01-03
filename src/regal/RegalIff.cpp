@@ -318,6 +318,11 @@ static void GenerateVertexShaderSource( const Iff * rff, const Iff::State & stat
   }
 
   n = array_size( st.tex );
+  // GAB Note Jan 2019: define rglTEXCOORD like gl_TexCoord, that is an array of vec4
+  if (n > 0) {
+    src << "#define gl_TexCoord rglTEXCOORD\n";
+    src << "out vec4 rglTEXCOORD[" << n << "];\n";
+  }
   for ( size_t i = 0; i < n; i++ )
   {
     RegalAssertArrayIndex( st.tex, i );
@@ -348,7 +353,6 @@ static void GenerateVertexShaderSource( const Iff * rff, const Iff::State & stat
           break;
       }
     }
-    src << "out vec4 rglTEXCOORD" << i << ";\n";
   }
 
   if ( hasNormalMap )
@@ -664,11 +668,11 @@ static void GenerateVertexShaderSource( const Iff * rff, const Iff::State & stat
     }
     if ( t.useMatrix )
     {
-      src << "    rglTEXCOORD" << i << " = rglTextureMatrix" << i << " * tc;\n";
+      src << "    rglTEXCOORD[" << i << "] = rglTextureMatrix" << i << " * tc;\n";
     }
     else
     {
-      src << "    rglTEXCOORD" << i << " = tc;\n";
+      src << "    rglTEXCOORD[" << i << "] = tc;\n";
     }
   }
   n = array_size( st.clipPlaneEnabled );
@@ -1201,6 +1205,11 @@ static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
   }
   bool needsConstantColor = false;
   size_t n = array_size( rff->ffstate.processed.tex );
+  // GAB Note Jan 2019: define rglTEXCOORD like gl_TexCoord, that is an array of vec4
+  if (n > 0) {
+    src << "#define gl_TexCoord rglTEXCOORD\n";
+    src << "in vec4 rglTEXCOORD[" << n << "];\n";
+  }
   for ( size_t i = 0; i < n; i++ )
   {
     RegalAssertArrayIndex( rff->ffstate.processed.tex, i );
@@ -1210,7 +1219,6 @@ static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
       continue;
     }
     src << "uniform sampler" << TargetSuffix( static_cast<Iff::TextureTargetBitfield>(t.enables) ) << " rglSampler" << i << ";\n";
-    src << "in vec4 rglTEXCOORD" << i << ";\n";
     Iff::TextureEnv & env = t.unit.env;
     if ( env.mode == Iff::TEM_Combine )
     {
@@ -1295,14 +1303,14 @@ static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
       case Iff::TT_2D:
       {
         src << "    s = " << TextureFetch( rff->gles, rff->legacy, b )
-            << "( rglSampler" << i << ", rglTEXCOORD" << i
-            << TextureFetchSwizzle( rff->gles, rff->legacy, b ) << " / rglTEXCOORD" << i << ".w );\n";
+            << "( rglSampler" << i << ", rglTEXCOORD[" << i << "]"
+            << TextureFetchSwizzle( rff->gles, rff->legacy, b ) << " / rglTEXCOORD[" << i << "].w );\n";
         break;
       }
       case Iff::TT_CubeMap:
       {
         src << "    s = " << TextureFetch( rff->gles, rff->legacy, b )
-            << "( rglSampler" << i << ", rglTEXCOORD" << i
+            << "( rglSampler" << i << ", rglTEXCOORD[" << i << "]"
             << TextureFetchSwizzle( rff->gles, rff->legacy, b ) << " );\n";
         break;
       }
@@ -4596,6 +4604,15 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
     }
   }
 
+  // GAB Note Jan 2019: take "gl_TexCoord" into consideration
+  // Assume its size is REGAL_EMU_MAX_TEXTURE_UNITS (maybe this could be optimized by analysing max index used in the source shader
+  if ( shaderTypeMap[ shader ] == GL_VERTEX_SHADER ) {
+    ss << "#define gl_TexCoord rglTEXCOORD\n";
+    ss << "out vec4 rglTEXCOORD[" << REGAL_EMU_MAX_TEXTURE_UNITS << "];\n";
+  } else {
+    ss << "#define gl_TexCoord rglTEXCOORD\n";
+    ss << "in vec4 rglTEXCOORD[" << REGAL_EMU_MAX_TEXTURE_UNITS << "];\n";
+  }
 
   const char * matrixSuffix[] = { "", "Inverse", "Transpose", "InverseTranspose" };
 
