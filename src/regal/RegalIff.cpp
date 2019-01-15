@@ -320,7 +320,6 @@ static void GenerateVertexShaderSource( const Iff * rff, const Iff::State & stat
   n = array_size( st.tex );
   // GAB Note Jan 2019: define rglTEXCOORD like gl_TexCoord, that is an array of vec4
   if (n > 0) {
-    src << "#define gl_TexCoord rglTEXCOORD\n";
     src << "out vec4 rglTEXCOORD[" << n << "];\n";
   }
   for ( size_t i = 0; i < n; i++ )
@@ -1207,7 +1206,6 @@ static void GenerateFragmentShaderSource( Iff * rff, string_list &src )
   size_t n = array_size( rff->ffstate.processed.tex );
   // GAB Note Jan 2019: define rglTEXCOORD like gl_TexCoord, that is an array of vec4
   if (n > 0) {
-    src << "#define gl_TexCoord rglTEXCOORD\n";
     src << "in vec4 rglTEXCOORD[" << n << "];\n";
   }
   for ( size_t i = 0; i < n; i++ )
