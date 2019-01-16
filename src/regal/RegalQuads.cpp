@@ -262,10 +262,12 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
         }
       }
 
+      dt.call(&dt.glBindBuffer)( GL_ELEMENT_ARRAY_BUFFER, quadIndexBuffer);
       while (myCount >= 2)
       {
+        dt.call(&dt.glBufferData)( GL_ELEMENT_ARRAY_BUFFER, n * 6 * sizeof( GLuint ), indices, GL_STATIC_DRAW );
         Internal("Regal::Emu::Quads::glDrawArrays","glDrawElements(GL_TRIANGLES,",n*6,",GL_UNSIGNED_INT, [])");
-        dt.call(&dt.glDrawElements)(GL_TRIANGLES, n*6, GL_UNSIGNED_INT, indices);
+        dt.call(&dt.glDrawElements)(GL_TRIANGLES, n*6, GL_UNSIGNED_INT, 0);
         myCount -= (EMU_QUADS_BUFFER_SIZE * 2);
 
         if (myCount >= 2)
@@ -275,6 +277,7 @@ bool Quads::glDrawArrays(RegalContext *ctx, GLenum mode, GLint first, GLsizei co
             indices[ii] += (EMU_QUADS_BUFFER_SIZE * 2);
         }
       }
+      dt.call(&dt.glBindBuffer)( GL_ELEMENT_ARRAY_BUFFER, elementArrayBuffer );
     }
     else if ( mode == GL_QUADS )
     {
