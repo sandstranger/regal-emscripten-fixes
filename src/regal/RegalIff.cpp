@@ -4451,6 +4451,9 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
       // GAB NOTE Dec 2018: do not use EXT_shadow_samplers on Emscripten/WebGL. This is not a valid WebGL extension, and make shader compilation fail.
       ss << "#extension GL_EXT_shadow_samplers : enable\n";
       ss << "#define shadow2D(a,b) vec4(shadow2DEXT(a,b))\n";
+#else
+      // GAB Note Dec: 2019: OES_standard_derivatives is available on all browsers
+      ss << "#extension GL_OES_standard_derivatives : enable\n";
 #endif
 #endif
     }
@@ -4584,6 +4587,10 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
 
   if( src.find( "gl_ModelViewMatrix" ) != string::npos || uses_ftransform ) {
     ss << "uniform mat4 rglModelViewMatrix;\n";
+  }
+
+  if( src.find( "gl_ModelViewMatrixInverseTranspose" ) != string::npos ) {
+    ss << "uniform mat4 rglModelViewMatrixInverseTranspose;\n";
   }
 
   if( src.find( "gl_ProjectionMatrix" ) != string::npos || uses_ftransform ) {
