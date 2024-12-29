@@ -51,7 +51,7 @@
  */
 
 
-#include <snappy.h>
+#include "snappy.h"
 
 #include <iostream>
 #include <algorithm>
