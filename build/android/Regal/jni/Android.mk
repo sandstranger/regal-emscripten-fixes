@@ -15,7 +15,7 @@ endif
 
 # apitrace still needs -DANDROID=1 
 
-regal_cflags :=-Wno-register -Wno-tautological-constant-out-of-range-compare -Wno-misleading-indentation -DREGAL_GLSL_OPTIMIZER=0 -DANDROID=1 -DREGAL_NO_PNG=1 -DREGAL_CONFIG_FILE=/data/.regal -Werror -Wno-constant-logical-operand
+regal_cflags :=-Wno-register -DREGAL_EMULATION=1 -DREGAL_EMU_TEXC=1 -Wno-tautological-constant-out-of-range-compare -Wno-misleading-indentation -DREGAL_GLSL_OPTIMIZER=0 -DREGAL_SYS_EGL=1 -DREGAL_SYS_ES2=1 -DANDROID=1 -DREGAL_NO_PNG=1 -DREGAL_CONFIG_FILE=/data/.regal -Werror -Wno-constant-logical-operand
 
 regal_path   := $(LOCAL_PATH)/../../../..
 
