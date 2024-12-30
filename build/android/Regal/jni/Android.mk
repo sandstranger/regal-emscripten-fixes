@@ -183,7 +183,7 @@ LOCAL_ARM_MODE  := arm
 include $(BUILD_STATIC_LIBRARY)
 
 include $(CLEAR_VARS)
-LOCAL_MODULE := Regal
+LOCAL_MODULE := GL
 LOCAL_SRC_FILES := $(regal_src_files)
 LOCAL_CFLAGS := $(regal_cflags)
 LOCAL_C_INCLUDES := $(regal_c_includes)
