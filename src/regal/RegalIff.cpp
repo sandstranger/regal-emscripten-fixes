@@ -4446,8 +4446,9 @@ void Iff::ShaderSource( RegalContext *ctx, GLuint shader, GLsizei count, const G
 #if REGAL_FORCE_DESKTOP_GLSL
       ss << "#version 140\n";
 #else
-      ss << "#version 100\n";
-#if !REGAL_SYS_EMSCRIPTEN
+        ss << "#version 100\n";
+
+#if !REGAL_SYS_EMSCRIPTEN && !ANDROID
       // GAB NOTE Dec 2018: do not use EXT_shadow_samplers on Emscripten/WebGL. This is not a valid WebGL extension, and make shader compilation fail.
       ss << "#extension GL_EXT_shadow_samplers : enable\n";
       ss << "#define shadow2D(a,b) vec4(shadow2DEXT(a,b))\n";
